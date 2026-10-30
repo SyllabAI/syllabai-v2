@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_6M5JB7CjvwdDykMS",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "12ac238bfd47f80b9969aee04bcaddd2e369136daef71e5f82813b340dba0530",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "368b0ac8fa46498860d30ef19b0a49f93b8826496d5f6b572364405cccde1bda",
+    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
   },
   "packageId": "igcse-chemistry::rn_6M5JB7CjvwdDykMS",
   "subject": "igcse-chemistry",
@@ -192,6 +192,88 @@
       ]
     },
     {
+      "id": "rn_6M5JB7CjvwdDykMS::L1::Q6",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L1",
+      "stem": "Give the two approximate volume percentages that describe dry air, naming the gas each one belongs to.",
+      "misconceptionClass": "air percentages recall",
+      "kind": "recall",
+      "modelAnswer": "Nitrogen is about 80 percent (roughly four-fifths) and oxygen about 20 percent (roughly one-fifth) of dry air by volume.",
+      "keywords": [
+        "80",
+        "twenty",
+        "20",
+        "four-fifths",
+        "one-fifth",
+        "nitrogen",
+        "oxygen",
+        "percent"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L1::Q7",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L1",
+      "stem": "List the minor constituents that fill the small remaining share of dry air.",
+      "misconceptionClass": "remainder gases recall",
+      "kind": "recall",
+      "modelAnswer": "Small proportions of carbon dioxide, water vapour and the noble gases make up the remainder of dry air.",
+      "keywords": [
+        "carbon",
+        "dioxide",
+        "co2",
+        "water",
+        "vapour",
+        "vapor",
+        "noble",
+        "gases",
+        "remainder"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L1::Q8",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L1",
+      "stem": "Explain why carbon dioxide is described as significant even though it is only a very small part of the air.",
+      "misconceptionClass": "small share big role reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Carbon dioxide is present only in a very small amount, yet it has a large warming role, so its effect on the atmosphere is far bigger than its share of the air suggests.",
+      "keywords": [
+        "warming",
+        "warm",
+        "heat",
+        "large",
+        "big",
+        "small",
+        "amount",
+        "significant",
+        "role",
+        "effect"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L1::Q9",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L1",
+      "stem": "A sample of dry air sealed today is compared with one trapped in rock 200 million years ago. State what the lesson says about how their compositions should compare and what that tells you about the atmosphere.",
+      "misconceptionClass": "atmosphere stability application",
+      "kind": "application",
+      "modelAnswer": "The proportion of gases in the air has changed little in 200 million years, so the two samples should be very similar in composition; the atmosphere has stayed remarkably stable over that time.",
+      "keywords": [
+        "changed",
+        "change",
+        "little",
+        "stable",
+        "stability",
+        "similar",
+        "200",
+        "million",
+        "years",
+        "composition",
+        "proportion"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_6M5JB7CjvwdDykMS::L2::Q1",
       "moduleId": "rn_6M5JB7CjvwdDykMS::L2",
       "stem": "Why does the water level inside the bell jar rise during the experiment?",
@@ -370,6 +452,99 @@
           "misconception": "complete consumption assumed"
         }
       ]
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L2::Q6",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L2",
+      "stem": "State what happens to the gas volume inside the sealed bell jar as the phosphorus burns, and what that does to the water beneath.",
+      "misconceptionClass": "water rise reasoning recall",
+      "kind": "recall",
+      "modelAnswer": "The burning phosphorus consumes the oxygen inside the sealed jar, so the gas volume falls and water rises up the jar to take its place.",
+      "keywords": [
+        "oxygen",
+        "consumed",
+        "consumes",
+        "used",
+        "burns",
+        "burning",
+        "volume",
+        "water",
+        "rises",
+        "rise",
+        "climbs",
+        "falls"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L2::Q7",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L2",
+      "stem": "What property makes phosphorus a suitable reactant for measuring the oxygen content of air?",
+      "misconceptionClass": "phosphorus suitability recall",
+      "kind": "recall",
+      "modelAnswer": "Phosphorus keeps burning until no oxygen is left, so it uses up all the oxygen in the sealed sample of air.",
+      "keywords": [
+        "keeps",
+        "burning",
+        "burns",
+        "until",
+        "oxygen",
+        "left",
+        "all",
+        "consumes",
+        "uses",
+        "whole"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L2::Q8",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L2",
+      "stem": "Explain why the air sample in this experiment must be measured and sealed before the reactant is used.",
+      "misconceptionClass": "sealed sample reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A chosen reactant consumes the oxygen from a measured, sealed sample of air; if the jar leaked or the starting volume were unknown, the rise in water could not be converted into a fair percentage of oxygen.",
+      "keywords": [
+        "sealed",
+        "seal",
+        "measured",
+        "volume",
+        "known",
+        "leak",
+        "leaks",
+        "leaked",
+        "percentage",
+        "oxygen",
+        "fair",
+        "start"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L2::Q9",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L2",
+      "stem": "A student proposes leaving the bell jar loosely lidded so more phosphorus can be added part-way through. Predict and explain the effect on the result, naming the safety property of phosphorus that makes care essential.",
+      "misconceptionClass": "loose lid prediction",
+      "kind": "application",
+      "modelAnswer": "The jar must stay sealed: a loose lid lets fresh air in, so oxygen keeps being replaced and the final water rise no longer equals the oxygen fraction of the original sample. Phosphorus is also toxic, so careless handling adds real danger.",
+      "keywords": [
+        "sealed",
+        "seal",
+        "loose",
+        "lid",
+        "fresh",
+        "air",
+        "oxygen",
+        "replaced",
+        "toxic",
+        "danger",
+        "dangerous",
+        "wrong",
+        "invalid",
+        "care",
+        "careless"
+      ],
+      "options": []
     }
   ]
 }

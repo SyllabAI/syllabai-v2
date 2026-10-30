@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_gBGX339WBpwyCrFF",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "cf81b5b5c6b0fe28a64f970f0cae75bba001b98205ece23ae2be73abd1bec2dc",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "428b79fbc55b241dcf9d565b831fca6944c4b48f94659e9455722360e6cd8138",
+    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
   },
   "packageId": "igcse-chemistry::rn_gBGX339WBpwyCrFF",
   "subject": "igcse-chemistry",
@@ -192,6 +192,89 @@
       ]
     },
     {
+      "id": "rn_gBGX339WBpwyCrFF::L1::Q6",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L1",
+      "stem": "In the heating of zinc with copper(II) oxide, state the equation and identify the reducing agent.",
+      "misconceptionClass": "oxide displacement recall",
+      "kind": "recall",
+      "modelAnswer": "Zn + CuO gives ZnO + Cu on heating; the zinc is the reducing agent because it takes the oxygen for itself.",
+      "keywords": [
+        "zn",
+        "cuo",
+        "zno",
+        "cu",
+        "reducing",
+        "agent",
+        "zinc",
+        "oxygen",
+        "takes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L1::Q7",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L1",
+      "stem": "State the displacement rule for metals in one sentence.",
+      "misconceptionClass": "displacement rule recall",
+      "kind": "recall",
+      "modelAnswer": "A more reactive metal displaces a less reactive metal from its compounds.",
+      "keywords": [
+        "more",
+        "reactive",
+        "displaces",
+        "displacement",
+        "less",
+        "compounds",
+        "metal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L1::Q8",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L1",
+      "stem": "A crucible holds sodium oxide powder mixed with magnesium powder and is heated strongly. Account for the complete absence of change, using the displacement rule.",
+      "misconceptionClass": "no displacement oxide reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Sodium already outranks magnesium in the reactivity series, so magnesium cannot displace sodium from its oxide; only a more reactive metal can take oxygen away from a less reactive one's compound.",
+      "keywords": [
+        "sodium",
+        "magnesium",
+        "no",
+        "reaction",
+        "cannot",
+        "can't",
+        "displace",
+        "displaces",
+        "more",
+        "reactive",
+        "outranks",
+        "oxide"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L1::Q9",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L1",
+      "stem": "Magnesium powder is heated with zinc oxide. Predict whether a reaction happens, write the equation, and name the reducing agent.",
+      "misconceptionClass": "oxide displacement prediction",
+      "kind": "application",
+      "modelAnswer": "Magnesium is more reactive than zinc, so it does react: Mg + ZnO gives MgO + Zn, with magnesium acting as the reducing agent by taking the oxygen.",
+      "keywords": [
+        "mg",
+        "zno",
+        "mgo",
+        "zinc",
+        "magnesium",
+        "reducing",
+        "agent",
+        "displaces",
+        "displacement",
+        "oxygen",
+        "reacts"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_gBGX339WBpwyCrFF::L2::Q1",
       "moduleId": "rn_gBGX339WBpwyCrFF::L2",
       "stem": "What is seen when a piece of magnesium is left in blue copper(II) sulfate solution?",
@@ -370,6 +453,91 @@
           "misconception": "method denied"
         }
       ]
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L2::Q6",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L2",
+      "stem": "Give the word and symbol equations for what happens when magnesium sits in copper(II) sulfate solution.",
+      "misconceptionClass": "salt solution equation recall",
+      "kind": "recall",
+      "modelAnswer": "Magnesium + copper(II) sulfate gives magnesium sulfate + copper: Mg + CuSO4 gives MgSO4 + Cu.",
+      "keywords": [
+        "magnesium",
+        "sulfate",
+        "sulphate",
+        "copper",
+        "mgso4",
+        "cuso4",
+        "mg",
+        "displacement"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L2::Q7",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L2",
+      "stem": "State the two observations that show magnesium has displaced copper from copper(II) sulfate solution.",
+      "misconceptionClass": "solution observations recall",
+      "kind": "recall",
+      "modelAnswer": "The blue colour of the solution fades as colourless magnesium sulfate forms, and brown copper appears, coating the magnesium surface and falling to the bottom as solid metal.",
+      "keywords": [
+        "blue",
+        "fades",
+        "fade",
+        "colourless",
+        "colorless",
+        "copper",
+        "coats",
+        "coating",
+        "solid",
+        "bottom",
+        "brown"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L2::Q8",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L2",
+      "stem": "A strip of zinc is left standing in sodium chloride solution overnight. Account for the complete lack of change.",
+      "misconceptionClass": "inert pair reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Sodium is more reactive than zinc, so zinc cannot displace sodium from its salt; no more reactive metal is present anywhere in the tube, so no reaction can occur.",
+      "keywords": [
+        "sodium",
+        "more",
+        "reactive",
+        "cannot",
+        "can't",
+        "displace",
+        "no",
+        "reaction",
+        "zinc",
+        "none",
+        "inert"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L2::Q9",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L2",
+      "stem": "A metal strip M placed in silver nitrate solution becomes coated with silver while M itself fades into solution. State what this observation proves about M's place in the reactivity series and justify the deduction.",
+      "misconceptionClass": "series deduction application",
+      "kind": "application",
+      "modelAnswer": "M must be more reactive than silver: only a more reactive metal displaces a less reactive one from its salt, so M goes into solution as its salt forms while silver leaves the solution and coats the strip.",
+      "keywords": [
+        "more",
+        "reactive",
+        "displaces",
+        "displacement",
+        "silver",
+        "salt",
+        "solution",
+        "coated",
+        "coats",
+        "fades",
+        "above"
+      ],
+      "options": []
     }
   ]
 }

@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_jXXsc4wt2344BjxX",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "515d552ee84b02cd08a6d2fd09594ee6752ceee27fb8b41ac4ed842b479a291e",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "50a1e31e02732ac86e530d9e7fb9804789fccfdfc2ee9ebb0e45348d74cb3575",
+    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
   },
   "packageId": "igcse-chemistry::rn_jXXsc4wt2344BjxX",
   "subject": "igcse-chemistry",
@@ -192,6 +192,93 @@
       ]
     },
     {
+      "id": "rn_jXXsc4wt2344BjxX::L1::Q6",
+      "moduleId": "rn_jXXsc4wt2344BjxX::L1",
+      "stem": "What ion do halogen atoms form when they react, and what is its charge called?",
+      "misconceptionClass": "halide ion recall",
+      "kind": "recall",
+      "modelAnswer": "A halogen atom gains one electron during reactions to form a -1 ion called a halide ion.",
+      "keywords": [
+        "halide",
+        "halides",
+        "-1",
+        "minus",
+        "one",
+        "1",
+        "electron",
+        "electrons",
+        "gain",
+        "gains",
+        "ion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jXXsc4wt2344BjxX::L1::Q7",
+      "moduleId": "rn_jXXsc4wt2344BjxX::L1",
+      "stem": "Which halogen is the most reactive of the group, and what atomic feature makes it so?",
+      "misconceptionClass": "most reactive halogen recall",
+      "kind": "recall",
+      "modelAnswer": "Fluorine is the most reactive halogen in the group because it has the smallest atom.",
+      "keywords": [
+        "fluorine",
+        "smallest",
+        "small",
+        "most",
+        "reactive",
+        "atom"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jXXsc4wt2344BjxX::L1::Q8",
+      "moduleId": "rn_jXXsc4wt2344BjxX::L1",
+      "stem": "Explain why the reactivity of the Group 7 non-metals falls on descending the group.",
+      "misconceptionClass": "group 7 trend reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The number of electron shells increases by one with each element down the group, so the outer shell lies further from the nucleus; the growing distance weakens the attraction for the electron being gained, making it harder to gain and lowering the reactivity.",
+      "keywords": [
+        "shells",
+        "shell",
+        "further",
+        "distance",
+        "nucleus",
+        "weaker",
+        "weakens",
+        "weak",
+        "attraction",
+        "harder",
+        "gain",
+        "falls",
+        "falls",
+        "decreases"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jXXsc4wt2344BjxX::L1::Q9",
+      "moduleId": "rn_jXXsc4wt2344BjxX::L1",
+      "stem": "Astatine sits below iodine in Group 7. Predict whether astatine reacts more or less readily than iodine, and state how many electrons one astatine atom gains when it reacts.",
+      "misconceptionClass": "unseen halogen prediction",
+      "kind": "application",
+      "modelAnswer": "Astatine reacts less readily than iodine, because reactivity decreases down the group; each astatine atom gains one electron to form a -1 halide ion.",
+      "keywords": [
+        "less",
+        "readily",
+        "reactivity",
+        "decreases",
+        "falls",
+        "one",
+        "1",
+        "electron",
+        "gains",
+        "halide",
+        "-1",
+        "astatine"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_jXXsc4wt2344BjxX::L2::Q1",
       "moduleId": "rn_jXXsc4wt2344BjxX::L2",
       "stem": "How many electrons does each Group 7 atom carry in its outermost shell?",
@@ -370,6 +457,88 @@
           "misconception": "gain and loss swapped in the chain"
         }
       ]
+    },
+    {
+      "id": "rn_jXXsc4wt2344BjxX::L2::Q6",
+      "moduleId": "rn_jXXsc4wt2344BjxX::L2",
+      "stem": "State the number of outer-shell electrons shared by every Group 7 atom.",
+      "misconceptionClass": "outer shell census recall",
+      "kind": "recall",
+      "modelAnswer": "All Group 7 atoms have seven electrons in their outermost shell.",
+      "keywords": [
+        "seven",
+        "7",
+        "outer",
+        "outermost",
+        "shell",
+        "electrons"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jXXsc4wt2344BjxX::L2::Q7",
+      "moduleId": "rn_jXXsc4wt2344BjxX::L2",
+      "stem": "Going from chlorine to bromine to iodine, what is added to the atom at each step?",
+      "misconceptionClass": "shell addition recall",
+      "kind": "recall",
+      "modelAnswer": "One filled shell is added at each element, so the number of shells rises by one on descending the group.",
+      "keywords": [
+        "filled",
+        "shell",
+        "shells",
+        "added",
+        "adds",
+        "one",
+        "rises",
+        "rise",
+        "increase",
+        "increases"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jXXsc4wt2344BjxX::L2::Q8",
+      "moduleId": "rn_jXXsc4wt2344BjxX::L2",
+      "stem": "Explain why gaining an electron becomes harder for the halogens as the group is descended.",
+      "misconceptionClass": "electron gain reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The added shells carry the outermost shell further from the nucleus, so the attraction between the nucleus and the incoming electron grows weaker with distance, and gaining that electron becomes harder, so reactivity falls.",
+      "keywords": [
+        "further",
+        "distance",
+        "nucleus",
+        "weaker",
+        "weakens",
+        "weak",
+        "attraction",
+        "incoming",
+        "electron",
+        "harder",
+        "falls",
+        "reactivity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jXXsc4wt2344BjxX::L2::Q9",
+      "moduleId": "rn_jXXsc4wt2344BjxX::L2",
+      "stem": "Chlorine's outer shell occupies period 3 while bromine's occupies period 4. Using this lesson's distance law, predict which atom attracts an incoming electron more strongly and name the more reactive halogen of the pair.",
+      "misconceptionClass": "period comparison application",
+      "kind": "application",
+      "modelAnswer": "Chlorine attracts the incoming electron more strongly: its outer shell is one shell closer to the nucleus, so the attraction is greater and the electron is easier to gain, making chlorine the more reactive halogen.",
+      "keywords": [
+        "chlorine",
+        "closer",
+        "close",
+        "stronger",
+        "attraction",
+        "easier",
+        "easily",
+        "more",
+        "reactive",
+        "bromine"
+      ],
+      "options": []
     }
   ]
 }

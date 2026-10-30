@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_WJD4ZN4kQfzJNSPV",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "2680821b9121a1f472fc3b356ec7f0bb026b33d0cef8b0bf95a527f41466699f",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "cefbde0ee618b67a47c34ebe30f2a29011d36b4aa4011290aa7d6295f43d37e7",
+    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
   },
   "packageId": "igcse-chemistry::rn_WJD4ZN4kQfzJNSPV",
   "subject": "igcse-chemistry",
@@ -192,6 +192,96 @@
       ]
     },
     {
+      "id": "rn_WJD4ZN4kQfzJNSPV::L1::Q6",
+      "moduleId": "rn_WJD4ZN4kQfzJNSPV::L1",
+      "stem": "Describe how the burette is set up for this oxygen-measuring practical.",
+      "misconceptionClass": "apparatus set-up recall",
+      "kind": "recall",
+      "modelAnswer": "Iron filings or a piece of iron wool are placed in the bottom of the closed burette, which is then inverted into a trough of water and clamped vertically.",
+      "keywords": [
+        "iron",
+        "filings",
+        "wool",
+        "burette",
+        "inverted",
+        "trough",
+        "water",
+        "clamped",
+        "vertically",
+        "closed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WJD4ZN4kQfzJNSPV::L1::Q7",
+      "moduleId": "rn_WJD4ZN4kQfzJNSPV::L1",
+      "stem": "How long is the apparatus left standing, and which readings are taken?",
+      "misconceptionClass": "timing readings recall",
+      "kind": "recall",
+      "modelAnswer": "The starting water level is recorded and the burette is read again after 3-4 days.",
+      "keywords": [
+        "3-4",
+        "days",
+        "level",
+        "levels",
+        "recorded",
+        "record",
+        "read",
+        "start",
+        "starting",
+        "again"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WJD4ZN4kQfzJNSPV::L1::Q8",
+      "moduleId": "rn_WJD4ZN4kQfzJNSPV::L1",
+      "stem": "Explain why a little water is used to moisten the inside of the burette before the iron is added.",
+      "misconceptionClass": "moistening purpose reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The iron needs water as well as oxygen to react and rust, so moistening the inside supplies that water and lets the iron consume the oxygen trapped in the burette, which is the change the water level records.",
+      "keywords": [
+        "water",
+        "rust",
+        "rusting",
+        "moisture",
+        "moisten",
+        "moistening",
+        "oxygen",
+        "react",
+        "reaction",
+        "consumes",
+        "consume",
+        "used"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WJD4ZN4kQfzJNSPV::L1::Q9",
+      "moduleId": "rn_WJD4ZN4kQfzJNSPV::L1",
+      "stem": "Give two design features of this practical that make the trapped air a fixed, fully measured sample, and say why each one matters.",
+      "misconceptionClass": "design justification application",
+      "kind": "application",
+      "modelAnswer": "The closed burette inverted into the trough of water seals the air sample inside so no gas can enter or leave, and the dead volume from the last graduation to the tap is measured by draining 50.0 mL of water, so the whole volume of trapped air is known before the wait begins.",
+      "keywords": [
+        "sealed",
+        "seal",
+        "closed",
+        "inverted",
+        "trough",
+        "dead",
+        "volume",
+        "measured",
+        "draining",
+        "50",
+        "50.0",
+        "known",
+        "fixed",
+        "whole"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_WJD4ZN4kQfzJNSPV::L2::Q1",
       "moduleId": "rn_WJD4ZN4kQfzJNSPV::L2",
       "stem": "Why is the initial air volume calculated as (50.0 + 3.8) - 2.6 rather than read as 50.0 mL?",
@@ -370,6 +460,87 @@
           "misconception": "composition inverted in the conclusion"
         }
       ]
+    },
+    {
+      "id": "rn_WJD4ZN4kQfzJNSPV::L2::Q6",
+      "moduleId": "rn_WJD4ZN4kQfzJNSPV::L2",
+      "stem": "Show how the initial volume of air, 51.2 mL, is built up in this write-up.",
+      "misconceptionClass": "initial volume calculation recall",
+      "kind": "recall",
+      "modelAnswer": "Initial volume of air = (50.0 + 3.8) - 2.6 = 51.2 mL.",
+      "keywords": [
+        "50.0",
+        "3.8",
+        "2.6",
+        "51.2",
+        "initial",
+        "volume",
+        "air",
+        "dead"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WJD4ZN4kQfzJNSPV::L2::Q7",
+      "moduleId": "rn_WJD4ZN4kQfzJNSPV::L2",
+      "stem": "State what the 10.1 mL obtained by subtracting the final air volume from the initial air volume tells you.",
+      "misconceptionClass": "oxygen volume meaning recall",
+      "kind": "recall",
+      "modelAnswer": "It is the volume of oxygen used up by the iron from the original sample of air.",
+      "keywords": [
+        "oxygen",
+        "used",
+        "use",
+        "consumed",
+        "consumes",
+        "volume",
+        "iron",
+        "air"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WJD4ZN4kQfzJNSPV::L2::Q8",
+      "moduleId": "rn_WJD4ZN4kQfzJNSPV::L2",
+      "stem": "Explain why the conclusion quotes approximately 20 percent rather than an exact figure.",
+      "misconceptionClass": "approximate result reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The calculation gives 19.7 percent, which is close to the accepted value of about 20 percent; real readings carry small uncertainties, so the write-up states the approximate figure the evidence supports.",
+      "keywords": [
+        "19.7",
+        "approximately",
+        "approximate",
+        "20",
+        "percent",
+        "close",
+        "uncertainty",
+        "uncertainties",
+        "accepted",
+        "evidence"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WJD4ZN4kQfzJNSPV::L2::Q9",
+      "moduleId": "rn_WJD4ZN4kQfzJNSPV::L2",
+      "stem": "A second run with the same initial volume of 51.2 mL ends at 53.9 - 13.0 = 40.9 mL of air. Calculate the oxygen volume and the percentage of oxygen for this run, and state whether it still supports the conclusion.",
+      "misconceptionClass": "repeat run calculation",
+      "kind": "application",
+      "modelAnswer": "Oxygen used = 51.2 - 40.9 = 10.3 mL; percentage = 10.3 / 51.2 x 100 = 20.1 percent, so yes, the repeat still agrees with oxygen making up about 20 percent of air.",
+      "keywords": [
+        "10.3",
+        "20.1",
+        "percent",
+        "oxygen",
+        "51.2",
+        "40.9",
+        "agrees",
+        "agreement",
+        "supports",
+        "20",
+        "yes"
+      ],
+      "options": []
     }
   ]
 }
