@@ -114,6 +114,10 @@ d.style.colorScheme=dark?"dark":"light";
 }catch(e){}})();`;
 
 export const metadata: Metadata = {
+  // UX review 2026-10-31 F-08: canonical + Open Graph URLs on the course
+  // pages are relative — metadataBase is the absolute base they resolve
+  // against (the deployment's canonical home).
+  metadataBase: new URL("https://syllabai-hub-v2.vercel.app"),
   // UX audit 2026-10-02 #14: a template brands every nested title (pages
   // export the bare page name; the suffix is appended exactly once here).
   title: {

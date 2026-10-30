@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { listCourses, loadHubCourse } from "@/lib/courses";
+import { courseMetaDescription, courseTitle } from "@/lib/format";
 import { hasPastPapers } from "@/lib/past-papers";
 import { courseHasCorpusPapers } from "@/lib/pastpapers-corpus";
 import { getSenecaForCourse } from "@/lib/seneca-hub";
@@ -38,7 +39,12 @@ export async function generateStaticParams() {
 
 // UX audit 2026-10-02 #14: every /courses/[course]/* page shared the root
 // <title> — the tab read the same on the dashboard and 40 levels deep in a
-// chemistry deck. The course label flows through the root template.
+// chemistry deck. The composed course title flows through the root template.
+// UX review 2026-10-31 F-08: the bare label regressed on registered lanes
+// (label falls back to the subject — "Geography", level dropped), and the
+// global meta description described a different product on every Cambridge
+// lane. courseTitle guarantees subject + variant + level; the description
+// names only the counts this lane actually holds.
 export async function generateMetadata({
   params,
 }: {
@@ -47,7 +53,10 @@ export async function generateMetadata({
   const { course: slug } = await params;
   const hub = await loadHubCourse(slug);
   if (!hub) return {};
-  return { title: hub.meta.label };
+  return {
+    title: courseTitle(hub.meta),
+    description: courseMetaDescription(hub.meta, hub.stats),
+  };
 }
 
 export default async function CourseLayout({
