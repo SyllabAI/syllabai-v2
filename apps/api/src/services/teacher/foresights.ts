@@ -64,6 +64,14 @@
  *     (plan §4); T-MIG-053 t2's raw-mastery cell law governs THAT surface,
  *     not this one. ONE clock anchor feeds decay, relaxation and the wire
  *     asOf (ADR-031 posture).
+ *   CONTEXT-ONLY RECENCY + REASON BREAKDOWN (v1.1, ADR-CLASS-0003): cells
+ *     and context rows carry lastPracticedAt — the most recent roster
+ *     last_practiced_at (Query A already selects the column; ZERO new reads,
+ *     the batching law below is re-pinned unchanged) — and distribution
+ *     carries atRiskByReason, the in-memory AT_RISK fold. BOTH classify
+ *     nothing: the decision tables are byte-unchanged from Stage A, the
+ *     policy marker stays foresights/v1, and no staleness threshold is
+ *     invented (C6 — the raw instant is exposed, the reader judges).
  *   BATCHED BY CONSTRUCTION (§11 posture inherited): ONE skill_states query
  *     and ONE misconception_states query over roster × (target ∪ chain ∪
  *     anchors), everything else grouped in memory; empty IN lists issue NO
@@ -337,6 +345,16 @@ export async function classForesights(
     }
   }
 
+  // v1.1 context recency (ADR-CLASS-0003 D1): the most recent roster
+  // last_practiced_at per node — Query A already returned the column, so this
+  // fold costs NO read; unmeasured nodes stay absent → null on the wire.
+  const lastPracticedByNode = new Map<string, Date>();
+  for (const s of skills) {
+    const at = mapDate(s.last_practiced_at);
+    const cur = lastPracticedByNode.get(s.node_id);
+    if (cur == null || at > cur) lastPracticedByNode.set(s.node_id, at);
+  }
+
   // ── Query B — ONE misconception_states read over roster × misco-under-direct
   const miscoIds = new Set<string>();
   for (const d of directMap.keys()) {
@@ -405,6 +423,7 @@ export async function classForesights(
         masteryBand: mean == null ? "UNMEASURED" : bandOf(mean, engine.decay),
         weak: mean != null && mean < engine.weakMasteryCeiling,
         learnersWithActiveMisconception: activeMiscoLearnersByNode.get(node.id)?.size ?? 0,
+        lastPracticedAt: lastPracticedByNode.get(node.id)?.toISOString() ?? null,
       };
     },
   );
@@ -425,6 +444,7 @@ export async function classForesights(
         learnersMeasured: measured,
         meanEffectiveMastery: mean,
         masteryBand: mean == null ? "UNMEASURED" : bandOf(mean, engine.decay),
+        lastPracticedAt: lastPracticedByNode.get(p.id)?.toISOString() ?? null,
       };
     });
 
@@ -530,6 +550,20 @@ export async function classForesights(
     prereqBandCounts[c.masteryBand] += 1;
   }
 
+  // v1.1 (ADR-CLASS-0003 D2, plan §11.2 adopted): the AT_RISK fold by §5
+  // reason — keys always present (zeros, not absent); UNMEASURED_PREREQ cannot
+  // occur (the §5 table makes NOT_ASSESSABLE a different state) and the guard
+  // keeps that invariant type-safe regardless. In-memory only, zero reads.
+  const atRiskByReason = {
+    LOW_MASTERY_PREREQ: 0,
+    ACTIVE_MISCONCEPTION_PREREQ: 0,
+    LOW_MASTERY_AND_ACTIVE_MISCONCEPTION_PREREQ: 0,
+  };
+  for (const l of learnerRows) {
+    if (l.state !== "AT_RISK" || l.reason == null || l.reason === "UNMEASURED_PREREQ") continue;
+    atRiskByReason[l.reason] += 1;
+  }
+
   return {
     policy: FORESIGHTS_POLICY,
     classId,
@@ -557,6 +591,7 @@ export async function classForesights(
       atRisk: learnerRows.filter((l) => l.state === "AT_RISK").length,
       notAssessable: learnerRows.filter((l) => l.state === "NOT_ASSESSABLE").length,
       prereqBandCounts,
+      atRiskByReason,
     },
     learners: learnerRows,
   };
