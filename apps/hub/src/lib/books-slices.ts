@@ -30,8 +30,23 @@
  * names the SAME documentId AND docVersion as the live chapter registry —
  * a registry shift with a stale manifest degrades to the whole-book mount
  * (the 133c behavior), never to wrong slices.
+ *
+ * T-BOOK-SERVE r1 (operator trace 1a18d92606b3b151, "still greyed out" on
+ * igcse-physics-19; the standing order "we dont need parsing for book pdf in
+ * book shelf", trace 1a18d6866b38000d): the manifest is promoted from a
+ * whole-book/slice MOUNT source into the shelf+viewer data source of record
+ * whenever the DB chapter registry has no rows for the book (the DB leg is
+ * operator-gated and Neon-paused; the slices and manifests are already LIVE
+ * on the archive edge). The book block grows ADDITIVE optional fields —
+ * title/author/source/units, all present on the r0 manifests of record
+ * (chemistry included), all parse-derived from the dry-ingest receipts —
+ * consumed only by the new builders below. The mirror stays structural:
+ * unknown fields were always stripped, optional additions cannot fail an
+ * older parse, and the schema literal does not move (no shape break).
  */
 import { z } from "zod";
+
+import type { BookChapter, BookShelfEntry } from "@syllabai/contracts";
 
 export const pageRangeTuple = z
   .tuple([z.number().int().min(1), z.number().int().min(1)])
@@ -72,12 +87,106 @@ export const sliceManifestMirror = z.object({
     docVersion: z.number().int().min(1),
     courseSlug: z.string().min(1),
     specKey: z.string().min(1),
+    // ── T-BOOK-SERVE r1 additive book block (all present on the r0
+    // manifests of record; optional here so older manifests still parse) ──
+    /** the book title of record (canonical_json equivalent). */
+    title: z.string().min(1).optional(),
+    /** the printed author line of record; absent = render no author row. */
+    author: z.string().optional(),
+    /** the root student-book.pdf coordinates (the viewer's page space). */
+    source: z
+      .object({
+        archivePath: z.string().min(1),
+        sha256: z.string().min(1),
+        pages: z.number().int().min(1),
+      })
+      .optional(),
+    /** unit titles of record (parse-derived); absent = "Unit N" bare headers. */
+    units: z
+      .array(
+        z.object({
+          index: z.number().int().min(1),
+          title: z.string().min(1),
+        }),
+      )
+      .optional(),
   }),
   slices: z.array(sliceEntryMirror).min(1),
 });
 
 export type BookSliceEntry = z.infer<typeof sliceEntryMirror>;
 export type BookSliceManifest = z.infer<typeof sliceManifestMirror>;
+
+/** The chapterKey grammar's unit prefix ("u1:c1" → 1). */
+const CHAPTER_KEY_UNIT_RE = /^u(\d+):c\d+$/;
+
+/**
+ * T-BOOK-SERVE r1 — the shelf entry built from a serving manifest, the
+ * no-parse data path of record. Requires the additive title+source block
+ * (every manifest of record carries it); a manifest without them builds NO
+ * entry — never a fabricated book. checksum = the root student-book.pdf
+ * sha256 (the same digest the DB leg stores in documents.checksum).
+ * Returns null when the manifest cannot honestly describe a book.
+ */
+export function shelfEntryFromManifest(m: BookSliceManifest): BookShelfEntry | null {
+  const { title, source } = m.book;
+  if (!title || !source) return null;
+  return {
+    documentId: m.book.documentId,
+    docVersion: m.book.docVersion,
+    courseId: m.book.courseSlug,
+    title,
+    author: m.book.author ?? "",
+    pages: source.pages,
+    checksum: source.sha256,
+  };
+}
+
+/**
+ * T-BOOK-SERVE r1 — the chapter registry built from a serving manifest.
+ * The lesson/whole slices ARE the chapter TOC of record (r0 receipt law:
+ * manifest ranges == deriveToc registry ranges exactly), so the mapping is
+ * a projection, not an invention: unitIndex from the chapterKey grammar,
+ * unitTitle from the manifest units block (null when absent — the shelf
+ * renders a bare "Unit N" header, honest), chapterIndex = the global
+ * chapter_no ordinal over the manifest's lesson/whole order (the DB leg
+ * writes the same sequence), pdf pages from the slice pdfRange, and the
+ * DB-only affordances honestly null/empty: book_pages (citation coords),
+ * learningObjective, specCodes (→ no related-notes join — there is no
+ * parsed spec spine on this path), validationState "SUGGESTED" (exactly
+ * what the DB leg would write; the T-C20 gate continues to govern every
+ * PACK surface — rail/lesson/progress — which stay DB-only and render
+ * their honest absent states here).
+ */
+export function chaptersFromManifest(m: BookSliceManifest): BookChapter[] {
+  const unitTitles = new Map((m.book.units ?? []).map((u) => [u.index, u.title]));
+  const out: BookChapter[] = [];
+  let ordinal = 0;
+  for (const s of m.slices) {
+    if (s.role !== "lesson" && s.role !== "whole") continue;
+    ordinal += 1;
+    const unitMatch = CHAPTER_KEY_UNIT_RE.exec(s.chapterKey);
+    const unitIndex = unitMatch ? Number(unitMatch[1]) : null;
+    out.push({
+      documentId: m.book.documentId,
+      docVersion: m.book.docVersion,
+      courseId: m.book.courseSlug,
+      unitIndex,
+      unitTitle: unitIndex != null ? (unitTitles.get(unitIndex) ?? null) : null,
+      chapterIndex: ordinal,
+      chapterKey: s.chapterKey,
+      title: s.title ?? `Chapter ${ordinal}`,
+      bookPageStart: null,
+      bookPageEnd: null,
+      pdfPageStart: s.pdfRange[0],
+      pdfPageEnd: s.pdfRange[1],
+      learningObjective: null,
+      specCodes: [],
+      validationState: "SUGGESTED",
+    });
+  }
+  return out;
+}
 
 /** One chapter's mount coordinates derived from the manifest. */
 export interface BookChapterSlices {
@@ -110,7 +219,9 @@ export function bookSliceMapOf(m: BookSliceManifest): BookSliceMap {
   };
 }
 
-/** Strict manifest-acceptance law: same book, same registry version, same course. */
+/** Strict manifest-acceptance law: same book, same registry version, same course.
+ * (r1: the DB-less path calls this with the manifest's OWN book block — a
+ * tautology that keeps the drift-guard call shape uniform at the call sites.) */
 export function manifestMatchesBook(
   m: BookSliceManifest,
   book: { documentId: string; docVersion: number; courseSlug: string },

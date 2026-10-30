@@ -86,7 +86,7 @@ export default async function BookViewerPage({
   if (!hub) notFound();
   const { meta } = hub;
 
-  const chapters = await fetchBookChapters(docId);
+  const chapters = await fetchBookChapters(docId, slug);
   if (chapters === null || chapters.length === 0) notFound();
 
   // the shelf is the title source of record; a transient shelf hiccup

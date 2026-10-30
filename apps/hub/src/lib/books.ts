@@ -32,7 +32,12 @@ import type { BookChapter, BookShelfEntry } from "@syllabai/contracts";
 import { coreBaseUrl } from "./core-proxy";
 import { corpusSpecsForCourse } from "./pastpapers-corpus";
 import { booksRawUrl } from "./pastpapers-shared";
-import { sliceManifestMirror, type BookSliceManifest } from "./books-slices";
+import {
+  chaptersFromManifest,
+  shelfEntryFromManifest,
+  sliceManifestMirror,
+  type BookSliceManifest,
+} from "./books-slices";
 
 // ── the strict-shape mirrors (bookShelfEntrySchema / bookChapterSchema) ─────
 
@@ -103,24 +108,58 @@ async function getJson<T>(path: string, parse: (raw: unknown) => T): Promise<T |
  * The shelf of a course: VALIDATED books only (the api enforces the T-C20
  * gate; a null here means "unavailable", an empty array means "honestly
  * none published yet" — the two render differently).
+ *
+ * T-BOOK-SERVE r1 — the no-parse manifest path (operator order "we dont
+ * need parsing for book pdf in book shelf", trace 1a18d6866b38000d; the
+ * greyed-out report on igcse-physics-19, trace 1a18d92606b3b151): when the
+ * DB leg yields nothing for the course (operator-gated apply + T-C20 flip
+ * still pending, or Neon paused) AND the course has a committed serving
+ * manifest on the archive of record, the shelf serves the manifest's book.
+ * The DB stays primary — the moment the rows land (same deterministic
+ * documentId the r0 receipts pinned), they take over verbatim and the
+ * pack surfaces (rail/lesson/progress) remain DB-gated throughout.
  */
-export function fetchBookShelf(courseSlug: string): Promise<BookShelfEntry[] | null> {
-  return getJson(
+export async function fetchBookShelf(courseSlug: string): Promise<BookShelfEntry[] | null> {
+  const db = await getJson(
     `/api/v1/content/books?courseId=${encodeURIComponent(courseSlug)}`,
     (raw) => shelfArray.parse(raw) as BookShelfEntry[],
   );
+  if (db && db.length > 0) return db;
+  const manifest = await fetchBookManifest(courseSlug);
+  const entry = manifest ? shelfEntryFromManifest(manifest) : null;
+  if (entry && !db?.some((b) => b.documentId === entry.documentId)) {
+    return [...(db ?? []), entry];
+  }
+  return db;
 }
 
 /**
  * The chapter registry (with spec joins) of one book. Empty array = unknown
  * OR not-yet-validated book (the api's T-C20 404 collapses to empty here) —
  * callers render the same honest not-found either way.
+ *
+ * T-BOOK-SERVE r1 — the no-parse manifest path: when the DB has no rows for
+ * this book and the course's committed serving manifest NAMES the same
+ * documentId (the drift-guard is the name match itself — no half-serves),
+ * the registry is the manifest's lesson/whole TOC projected onto the
+ * BookChapter shape (lib/books-slices.ts chaptersFromManifest — a
+ * projection of the r0-verified deriveToc equality, never an invention).
  */
-export function fetchBookChapters(documentId: string): Promise<BookChapter[] | null> {
-  return getJson(
+export async function fetchBookChapters(
+  documentId: string,
+  courseSlug: string,
+): Promise<BookChapter[] | null> {
+  const db = await getJson(
     `/api/v1/content/books/${encodeURIComponent(documentId)}/chapters`,
     (raw) => chaptersArray.parse(raw) as BookChapter[],
   );
+  if (db && db.length > 0) return db;
+  const manifest = await fetchBookManifest(courseSlug);
+  if (manifest && manifest.book.documentId === documentId) {
+    const built = chaptersFromManifest(manifest);
+    if (built.length > 0) return built;
+  }
+  return db;
 }
 
 /**
@@ -173,6 +212,26 @@ export async function fetchBookSlices(
   documentId: string,
   docVersion: number,
 ): Promise<BookSliceManifest | null> {
+  const m = await fetchBookManifest(courseSlug);
+  if (
+    m &&
+    (m.book.documentId !== documentId ||
+      m.book.docVersion !== docVersion ||
+      m.book.courseSlug !== courseSlug)
+  ) {
+    return null;
+  }
+  return m;
+}
+
+/**
+ * The raw serving manifest of a course's primary book — NO drift guard
+ * (the guard lives at the call sites that hold DB truth to guard against).
+ * Same archive fetch + revalidate law as fetchBookSlices.
+ */
+export async function fetchBookManifest(
+  courseSlug: string,
+): Promise<BookSliceManifest | null> {
   const spec = corpusSpecsForCourse(courseSlug);
   if (!spec || spec.specs.length === 0) return null;
   const url = booksRawUrl(`books/${spec.specs[0]}/manifest.json`);
@@ -185,15 +244,7 @@ export async function fetchBookSlices(
     if (!res.ok) return null;
     const parsed = sliceManifestMirror.safeParse(await res.json());
     if (!parsed.success) return null;
-    const m = parsed.data;
-    if (
-      m.book.documentId !== documentId ||
-      m.book.docVersion !== docVersion ||
-      m.book.courseSlug !== courseSlug
-    ) {
-      return null;
-    }
-    return m;
+    return parsed.data;
   } catch {
     return null;
   }

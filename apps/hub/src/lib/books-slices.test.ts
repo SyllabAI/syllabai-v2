@@ -352,3 +352,91 @@ describe("the v2 manifest law (133i — the boundary-corrected geometry)", () =>
     ).toBe(false);
   });
 });
+
+// ── T-BOOK-SERVE r1 — the no-parse manifest builders (shelf + registry) ─────
+
+import { chaptersFromManifest, shelfEntryFromManifest } from "./books-slices";
+
+const r1Manifest = sliceManifestMirror.parse({
+  schema: "book-slices-manifest-v2",
+  book: {
+    documentId: "d9b72a0a-23fb-5938-a0a7-a7494e7ebf9e",
+    docVersion: 1,
+    courseSlug: "igcse-physics-19",
+    specKey: "pearson-edexcel/international-gcse/physics/4ph1",
+    title: "Edexcel International GCSE (9-1) Physics Student Book",
+    author: "Brian Arnold, Penny Johnson, Steve Woolley",
+    source: {
+      archivePath: "books/pearson-edexcel/international-gcse/physics/4ph1/student-book.pdf",
+      sha256: "9b0783d9fe99790a08255eb1f2ebb6eab5833c03ef8e36dd51b7643ac68a313a",
+      pages: 308,
+    },
+    units: [
+      { index: 1, title: "Forces and Motion" },
+      { index: 2, title: "Electricity" },
+    ],
+  },
+  slices: [
+    entry({ file: "chapters/u1_c1.pdf", role: "lesson", chapterKey: "u1:c1", title: "Movement and position", pdfRange: [13, 27] }),
+    entry({ file: "chapters/u1_c2.pdf", role: "lesson", chapterKey: "u1:c2", title: "Forces and shape", pdfRange: [28, 37] }),
+    entry({ file: "chapters/u2_c1.pdf", role: "lesson", chapterKey: "u2:c1", title: "Magnetism", pdfRange: [60, 71] }),
+    entry({ file: "units/u1_practice.pdf", role: "unit_exam", chapterKey: "u1:xexam-practice", pdfRange: [55, 59] }),
+  ],
+});
+
+describe("manifest → shelf/registry builders (T-BOOK-SERVE r1)", () => {
+  it("builds the shelf entry from the additive book block", () => {
+    const e = shelfEntryFromManifest(r1Manifest);
+    expect(e).not.toBeNull();
+    expect(e!.documentId).toBe("d9b72a0a-23fb-5938-a0a7-a7494e7ebf9e");
+    expect(e!.courseId).toBe("igcse-physics-19");
+    expect(e!.title).toBe("Edexcel International GCSE (9-1) Physics Student Book");
+    expect(e!.author).toBe("Brian Arnold, Penny Johnson, Steve Woolley");
+    expect(e!.pages).toBe(308);
+    expect(e!.checksum).toBe("9b0783d9fe99790a08255eb1f2ebb6eab5833c03ef8e36dd51b7643ac68a313a");
+  });
+
+  it("builds NO shelf entry without the title+source block (never a fabricated book)", () => {
+    const bare = sliceManifestMirror.parse({
+      schema: "book-slices-manifest-v1",
+      book: {
+        documentId: "e6c0db50-0f84-55de-b50c-e4d49285cd6d",
+        docVersion: 1,
+        courseSlug: "igcse-chemistry-19",
+        specKey: "pearson-edexcel/international-gcse/chemistry/4ch1",
+      },
+      slices: manifest.slices,
+    });
+    expect(shelfEntryFromManifest(bare)).toBeNull();
+  });
+
+  it("projects the lesson/whole slices onto the chapter registry (unit_exam excluded)", () => {
+    const chs = chaptersFromManifest(r1Manifest);
+    expect(chs).toHaveLength(3); // the unit_exam row is NOT a chapter
+    expect(chs.map((c) => c.chapterIndex)).toEqual([1, 2, 3]); // global chapter_no ordinal
+    expect(chs[0]!.chapterKey).toBe("u1:c1");
+    expect(chs[2]!.chapterKey).toBe("u2:c1");
+  });
+
+  it("joins unit titles from the units block, honestly null when absent", () => {
+    const chs = chaptersFromManifest(r1Manifest);
+    expect(chs[0]!.unitIndex).toBe(1);
+    expect(chs[0]!.unitTitle).toBe("Forces and Motion");
+    expect(chs[2]!.unitIndex).toBe(2);
+    expect(chs[2]!.unitTitle).toBe("Electricity");
+    const untitled = chaptersFromManifest(manifest); // v1 fixture: no units block
+    expect(untitled[0]!.unitTitle).toBeNull();
+    expect(untitled[0]!.unitIndex).toBe(1);
+  });
+
+  it("carries the pdf coordinates and the honest DB-absent nulls", () => {
+    const chs = chaptersFromManifest(r1Manifest);
+    expect(chs[0]!.pdfPageStart).toBe(13);
+    expect(chs[0]!.pdfPageEnd).toBe(27);
+    expect(chs[0]!.bookPageStart).toBeNull();
+    expect(chs[0]!.bookPageEnd).toBeNull();
+    expect(chs[0]!.learningObjective).toBeNull();
+    expect(chs[0]!.specCodes).toEqual([]);
+    expect(chs[0]!.validationState).toBe("SUGGESTED");
+  });
+});
