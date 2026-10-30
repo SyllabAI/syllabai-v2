@@ -778,11 +778,11 @@ function StructuredPart({
           printed part label sits on the SAME line as the part text —
           "(b) Explain why hot water evaporates…" — as on the printed
           paper, instead of PARTLABEL-1's chip-on-its-own-line above it.
-          Flex baseline row: the label is metric-matched to the prose body
-          (text-base + leading-relaxed == the <Markdown> wrapper's
-          leading-relaxed at the inherited 16px body size — no typography
-          plugin, so those ARE the part-text metrics), and items-baseline
-          lines the label up with the first text baseline exactly. The md
+          Flex baseline row + items-baseline: the label lines up with the
+          first text baseline exactly. The label itself is one size smaller
+          than the prose (text-sm) per the T-OEQ-PARTLABEL-3 operator font
+          note (trace 1a18a2e4) — PARTLABEL-2 had it metric-matched at
+          text-base; the operator refined the size down after seeing it. The md
           block is flex-1, so wrapped lines hang under the text column.
           Census of record (all three EQ courses, both planes, 8,439
           parts): zero figure-first parts, so the baseline edge case never
@@ -790,7 +790,7 @@ function StructuredPart({
           layout-identical to the bare pre-467 block. */}
       <div className="flex items-baseline gap-x-1.5">
         {labelChip && (
-          <span className="shrink-0 text-base font-semibold leading-relaxed tabular-nums">
+          <span className="shrink-0 text-sm font-semibold tabular-nums">
             {labelChip}
           </span>
         )}
@@ -1368,10 +1368,11 @@ function McqPart({
       {/* T-OEQ-PARTLABEL-2 (operator refinement, trace 1a18a0ea): the
           printed part label sits on the SAME line as the stem — "(b) The
           circuit shows…" — with the options list staying a separate block
-          below. Same metric-matched baseline row as StructuredPart. */}
+          below. Same baseline row as StructuredPart; the label is one size smaller
+          than the stem (T-OEQ-PARTLABEL-3 font note). */}
       <div className="flex items-baseline gap-x-1.5">
         {labelChip && (
-          <span className="shrink-0 text-base font-semibold leading-relaxed tabular-nums">
+          <span className="shrink-0 text-sm font-semibold tabular-nums">
             {labelChip}
           </span>
         )}
