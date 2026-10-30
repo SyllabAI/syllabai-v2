@@ -3,7 +3,7 @@ task:
   id: T-MG-CROPMARK-1
   title: "MG parity Phase 4 — the crop-then-mark pipeline (markQuestionRegion equivalent): the paper-mark/v1 identity module + the 202/poll mark API + the typed regrade channel, writing through the Phase-2 award bridge"
   owner: "main agent (Z.ai, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)"
-  status: OPEN
+  status: OPEN  # run-002 (the crop producer) landed on its branch; run-001 merged of record (PR #531)
   priority: P2
   band: T-MG-MARK-PARITY (interactive paper marking) — additive api service module + routes over the Phase-1/2 planes of record
   wave: mg-parity-phase4-cropmark
@@ -83,3 +83,67 @@ task:
     (~1,700/3,338 pages — a 9.9GB recycled-disk limit, disclosed; CI's hub
     workflow is the arbiter). .syllabai/tasks/T-MG-CROPMARK-1.yaml +
     .syllabai/receipts/T-MG-CROPMARK-1/run-001.json bookkeeping.
+
+
+    run-002 (2026-10-31). Operator dispatch "run-002 — the crop producer"
+    (trace 1a18e2e94ec7a3dd) — the client half of the crop-then-mark
+    pipeline, pre-registered by run-001's pointers (the §3.4 UI half the
+    run-001 divergence #2 named "the run-002 surface"). Branch
+    t-mg-cropmark-1/run-002 off origin/main 9e679923 (the run-001 lane
+    addendum tip). HUB-ONLY run: zero api/contracts/db bytes, zero schema,
+    zero migrations, zero fenced files, pdf-pane byte-untouched.
+    Lands (10 added + 4 modified — every modified line additive, disclosed):
+    - apps/hub/src/lib/paper-marks.ts: the wire client over the run-001
+      202+poll API (POST /paper-marks/regions/:id/mark → 202 {markId};
+      GET /marks/:markId poll; the DEFINED 4xx envelopes → honest
+      "rejected" messages; pollUntilTerminal — the loop law with injectable
+      delay/poll/cancel, terminal|lost|timeout|cancelled states, retry: 0
+      — the client never re-POSTs); SCHEMA MIRROR law (zod v4 local
+      mirrors, type-only canonical imports); no-store; Bearer
+      caller-supplied; no learnerId anywhere.
+    - region-mark/region-crop.ts: the PURE crop geometry — rectToViewSpace
+      (the pane's user-rot law, pp-viewer-prefs-v1 read at click grain),
+      unionRects/clampRect, planRegionViewRect (per-page filter → map →
+      union), planCrop (fractions × rendered-bitmap dims — the §3.4
+      render-resolution law), estimateDataUrlBytes, chooseImageDataUrl
+      (png → jpeg 0.92 → honest too_large BEFORE the POST; the 4 MB cap
+      mirrored from contracts).
+    - region-mark/produce-crop.ts: the thin DOM executor — the [data-page]
+      holder (the ONLY pane coupling, the InkLayer law), the pane canvas
+      (the non-pp-inkLayer canvas), 1:1 bitmap blit + the live ink painted
+      via paint.ts (clear:false — ONE stroke rendering path, zero drift),
+      crop bounds clip the strokes (crop-then-mark by construction),
+      tainted-canvas honest export_blocked.
+    - region-mark/region-mark-state.ts: the PURE honest-lifecycle reducer
+      (start→cropped→accepted→progress→succeeded|failed|timeout; timeout
+      keeps the markId for Check-again — the SAME handle, never a re-POST;
+      dismiss bookkeeping; awardsTotals from the served rows).
+    - region-mark/RegionMarkLayer.tsx: the clickable regions surface —
+      zero chrome unless authed + ?paperId= + a markable regions payload
+      (fetchPaperRegions); the structure-only MutationObserver + one
+      pointer-events-auto rect-button portal per [data-page] holder (the
+      InkLayer pattern); markable regions only; the honest result panel
+      (score Σ from award rows, per-point ✓/✗, chatMessage, pointsNotScored,
+      strategiesForImprovement on failures only — the §3.6 law at panel
+      grain, transcription in a disclosure, ledger receipt line).
+    - ink/live-ink.ts: the read seam — the crop producer composites the
+      CURRENT working set (the draw-then-mark debounce race + toggle-off
+      persisted strokes); read-only registry keyed by sourceUrl (the
+      single-writer law untouched).
+    - InkLayer.tsx (+6 lines): registers/unregisters the live reader.
+    - paint.ts (+9 lines): the PaintOptions clear opt (default unchanged).
+    - paper-viewer-client.tsx (+14 lines): the paperId prop + the
+      RegionMarkLayer mount inside the QP ink-host wrapper (view-mode QP
+      only — the mock keeps exam conditions by layout).
+    - view page (+11 lines): the ?paperId= uuid-validated deep-link (the
+      F-022 posture — malformed/absent = the honest zero-chrome default).
+    Tests 51 (region-crop 22 / region-mark-state 9 / live-ink 5 /
+    paper-marks 15). Verification of record: bun test apps/api packages —
+    3200 / 0 fail / 13 skip (CI parity); bun test apps/hub — the two
+    tail failures are NOT this lane's (ugm.render katex corpus —
+    pre-existing on the clean tree, verified by stash; question-cla —
+    full-run cross-file state pollution, passes alone); hub tsc --noEmit
+    clean; next build --experimental-build-mode compile exit 0 (the
+    sandbox's 1.1 GB free disk cannot hold the full static-export
+    prerender — CI's hub workflow is the arbiter of record, the run-001
+    posture); golden selftest OK; zero-core census GATE GREEN.

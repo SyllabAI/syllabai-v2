@@ -92,6 +92,7 @@ import {
   type InkTextShape,
 } from "./ink";
 import { createInkSync, type InkSyncSnapshot } from "./ink-sync";
+import { registerLiveInk, unregisterLiveInk } from "./live-ink";
 import { paintShapes, sizeBackingStore } from "./paint";
 import {
   applyProtractorSnap,
@@ -196,6 +197,16 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   // Latest-shapes ref: the pointer/rAF paths read without re-binding.
   const shapesRef = useRef<InkShape[]>(snap.shapes);
   shapesRef.current = snap.shapes;
+
+  // T-MG-CROPMARK-1 run-002: the live-ink READ seam — the crop producer
+  // composites the CURRENT working set (debounce-window edits and
+  // toggle-off persisted strokes included). Read-only: the single-writer
+  // law is untouched; the registry holds a reader fn, never a listener.
+  useEffect(() => {
+    if (!sourceUrl) return;
+    registerLiveInk(sourceUrl, () => shapesRef.current);
+    return () => unregisterLiveInk(sourceUrl);
+  }, [sourceUrl]);
 
   // Undo/redo are session-local full-set snapshots (the doc IS the state;
   // sync-conflict rebases fold into the same set — history survives).

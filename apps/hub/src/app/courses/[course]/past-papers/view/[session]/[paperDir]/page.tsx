@@ -42,10 +42,10 @@ export default async function CorpusPaperPage({
   searchParams,
 }: {
   params: Promise<{ course: string; session: string; paperDir: string }>;
-  searchParams: Promise<{ doc?: string; mode?: string; page?: string; src?: string }>;
+  searchParams: Promise<{ doc?: string; mode?: string; page?: string; src?: string; paperId?: string }>;
 }) {
   const { course: slug, session, paperDir } = await params;
-  const { doc, mode, page, src } = await searchParams;
+  const { doc, mode, page, src, paperId: paperIdParam } = await searchParams;
   const hub = await loadHubCourse(slug);
   if (!hub) notFound();
 
@@ -59,6 +59,15 @@ export default async function CorpusPaperPage({
   // or malformed param just reads page 1 (the default), never throws
   const parsedPage = Number.parseInt(page ?? "", 10);
   const initialPage = Number.isInteger(parsedPage) && parsedPage > 1 ? parsedPage : undefined;
+
+  // T-MG-CROPMARK-1 run-002: the clickable regions surface arms ONLY for a
+  // well-formed paper-asset uuid (?paperId=) — a malformed/absent param is
+  // the honest zero-chrome default (the F-022 posture: never throws).
+  const paperId =
+    paperIdParam &&
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(paperIdParam)
+      ? paperIdParam
+      : undefined;
 
   // The honest way back: the toolbar's "Parsed text" link opens the reader
   // with ?text=1, which disarms its auto-open — a user who came here for the
@@ -89,6 +98,7 @@ export default async function CorpusPaperPage({
         initialPage={initialPage}
         initialPageDoc={docParam === "ms" ? "ms" : "qp"}
         sourceHref={sourceHref}
+        paperId={paperId}
       />
     </div>
   );
