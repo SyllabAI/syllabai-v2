@@ -474,3 +474,16 @@ Work Log:
 
 Stage Summary:
 - LANDED (branch): the test-builder weak-area lane is SOURCE-AWARE — the law-pinned server view when the explicit bridge resolves and the route serves it; the LABELED sample cohort otherwise; live targeting assembles on the SERVER (validated-only, deterministic) with the vocabulary-isolation law pinned; the three CD-A disclosures closed. Receipt .syllabai/receipts/CD-A-hub/run-001-r0.json. Open follow-ups unchanged: the /api/v1/teacher/class/* mount gap (own lane), printable server-paper rendering (own tranche), CD-B/CD-C re-draft on request, PAT rotation standing. Zero DB contact held end-to-end.
+
+---
+Task ID: CD-A-hub run-001 landing addendum (same trace 1a18c3130e0a29f5)
+Agent: main-lane (session web-528c0352)
+Task: PR bookkeeping for CD-A-hub run-001.
+
+Work Log:
+- PR #491 opened (https://github.com/SyllabAI/syllabai-v2/pull/491) from t-testbuilder-hub/cda-hub-run-001 @ 999da7fd (off origin/main f271d3a4 — main had advanced with the R3 stage-B wave-1 lane; zero file overlap, no rebase needed at open time).
+- CI 2/2 GREEN on the PR head: verify success + hub success (bounded poll 3). The hub check green on the head CONFIRMS the local full-battery finding of record — the 7 local fails are the standing parallel-interference + pre-existing corpus set, not real reds.
+- Receipt updated (status PR-OPEN-CI-GREEN, awaiting integrator merge). Bookkeeping-only.
+
+Stage Summary:
+- CD-A-hub run-001 is OPEN with CI green: the test-builder weak-area lane consumes the law-pinned view (explicit curriculumCode->knowledgeNodeId bridge, fail-closed; labeled sample fallback; live targeting assembles on the server with the vocabulary-isolation law); the three CD-A disclosures closed. Awaiting integrator merge; zero DB contact held end-to-end.
