@@ -1,0 +1,82 @@
+{
+ "lane": "T-MG-MP-RECT-2 run-001",
+ "paper": {
+  "paperCode": "1MA1/1F",
+  "sessionLabel": "June 2025",
+  "pages": 20,
+  "printCode": "P76402A0120"
+ },
+ "sources": {
+  "qp": {
+   "file": "qp-1ma1-1f-jun2025.pdf",
+   "sha256": "562b3d0f8c98be10c6f183cd883726dac5cbb7100377c1536d34e78f02731f9a",
+   "url": "https://assets.mathsgenie.co.uk/sources/genie/past-papers/2025/pearson/gcse-maths/1ma1-1f/question-paper-562b3d0f.pdf"
+  },
+  "ms": {
+   "file": "ms-1ma1-1f-jun2025.pdf",
+   "sha256": "cffb921c90b87a8d776662d67ac2e82f059764b2d0d133c297803d528df3d1eb",
+   "url": "https://assets.mathsgenie.co.uk/sources/genie/past-papers/2025/pearson/gcse-maths/1ma1-1f/mark-scheme-cffb921c.pdf"
+  }
+ },
+ "instrument": "extract_rects.py",
+ "manifest": {
+  "file": "manifest-1ma1-1f-jun2025.json",
+  "sha256": "601ccece3f1ecf6899146af14923bed173b940efbc50cfa6f9287ef0e2acf2e9",
+  "rows": 76,
+  "questions": 26,
+  "perQuestionRows": {
+   "1": 1,
+   "2": 1,
+   "3": 1,
+   "4": 1,
+   "5": 1,
+   "6": 4,
+   "7": 4,
+   "8": 2,
+   "9": 3,
+   "10": 3,
+   "11": 4,
+   "12": 5,
+   "13": 3,
+   "14": 3,
+   "15": 3,
+   "16": 4,
+   "17": 3,
+   "18": 2,
+   "19": 2,
+   "20": 5,
+   "21": 3,
+   "22": 6,
+   "23": 3,
+   "24": 4,
+   "25": 3,
+   "26": 2
+  }
+ },
+ "oracle": {
+  "uuid": "1d9e943d-f246-4866-9636-35da6dba7e47",
+  "regions": 64,
+  "geometryStrict": 33,
+  "geometryContained": 30,
+  "geometryMiss": 1,
+  "missClass": "8.p1 grain divergence (their partless grounding vs our MS-faithful 8.a/8.b; question-grain rect contained)",
+  "marksAgree": 37,
+  "marksCompared": 38,
+  "tolerance": 0.03
+ },
+ "census": {
+  "rows": 76,
+  "msValueSum": 80,
+  "footerSum": 80,
+  "branchCollapsed": [
+   "q17 (P1,P1,C1 alternative-method branch trimmed)"
+  ]
+ },
+ "overlays": [
+  "overlay-p3.png",
+  "overlay-p7.png",
+  "overlay-p12.png"
+ ],
+ "grainLaw": "part-block per MS-labeled part; question-block for MS-partless; one row per point, ordinal 0",
+ "refLaw": "q{n}{part}-{k} in MS row order; deployment seed --dry-run = the 1:1 resolver gate"
+}
