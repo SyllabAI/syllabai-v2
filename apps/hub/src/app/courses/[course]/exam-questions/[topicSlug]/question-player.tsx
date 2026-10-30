@@ -1489,9 +1489,12 @@ function McqPart({
                     className={cn(
                       // audit 2026-10-30 (motion review): press feedback —
                       // scale(0.97) on :active, the tactile floor for the
-                      // player's primary tap target; transform joins the
-                      // transition-property list so the press animates.
-                      "flex size-11 items-center justify-center rounded-full border text-sm font-semibold transition-[color,background-color,border-color,transform] active:scale-[0.97]",
+                      // player's primary tap target. Tailwind v4's scale
+                      // utility emits the individual `scale` property
+                      // (verified in compiled CSS), so it is `scale` — not
+                      // `transform` — that joins the transition-property
+                      // list for the press to animate.
+                      "flex size-11 items-center justify-center rounded-full border text-sm font-semibold transition-[color,background-color,border-color,scale] active:scale-[0.97]",
                       showWrong
                         ? "border-destructive/40 bg-destructive/15 text-destructive"
                         : showCorrect

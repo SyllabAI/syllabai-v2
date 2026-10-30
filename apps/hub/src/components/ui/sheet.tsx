@@ -60,7 +60,8 @@ function SheetContent({
         // audit 2026-10-30 (question-player motion review): the drawer curve —
         // iOS-like cubic-bezier(0.32,0.72,0,1) — with a 400ms open (was 500ms
         // ease-in-out); the close stays 300ms. Deliberate open, snappier
-        // dismiss. The tw-animate-css 1.3.5 --animate-in shorthand reads
+        // dismiss. The tw-animate-css --animate-in shorthand (declared
+        // ^1.3.5, lockfile resolves 1.4.0 — same shape in both) reads
         // var(--tw-duration)/var(--tw-ease), so these classes really drive
         // the slide keyframes, not just CSS transitions.
         className={cn(
