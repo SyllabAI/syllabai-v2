@@ -78,6 +78,7 @@ import {
   type Course,
 } from "@/lib/progress";
 import type { ExamQuestion } from "@/lib/contracts";
+import { scrollBehavior } from "@/lib/reduced-motion";
 import { partDisplayLabel } from "@/lib/part-label";
 import { api, ApiError, aiAskErrorMessage } from "@/lib/api";
 import type {
@@ -253,8 +254,11 @@ export function QuestionPlayer({
     return null;
   }, [activeIdx, visible, bridge]);
 
+  // audit 2026-10-30 (motion review): grid jumps honor reduced motion —
+  // the unguarded spelling of the contract TypedAnswerWorkspace already
+  // implemented inline (scrollBehavior() consolidates all three sites).
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById(id)?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
   };
 
   return (
@@ -398,7 +402,12 @@ export function QuestionPlayer({
       {claAnchorIdx !== null && claFor === null && (
         <Button
           size="sm"
-          className="fixed bottom-6 right-6 z-40 h-12 gap-2 rounded-full px-5 shadow-lg"
+          // audit 2026-10-30 (motion review): entrance fade+zoom from 0.95 —
+          // a fixed-position control must not pop from nothing. The Q-chip
+          // label swap itself stays INSTANT: it re-fires on every anchor
+          // change while scrolling (IntersectionObserver), and animating a
+          // high-frequency swap would breach frequency-appropriateness.
+          className="fixed bottom-6 right-6 z-40 h-12 gap-2 rounded-full px-5 shadow-lg animate-in fade-in-0 zoom-in-95 duration-200 ease-out"
           aria-haspopup="dialog"
           aria-label={`Ask the contextual assistant about question ${claAnchorIdx + 1}${
             activeIdx !== null && activeIdx !== claAnchorIdx
@@ -887,12 +896,11 @@ function TypedAnswerWorkspace({
   //   keystroke mid-typing.
   const submitShortcut = () => {
     if (coreLive) {
-      const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
       const btn = document.querySelector<HTMLButtonElement>(
         `[data-question-block="${question.id}"] [data-core-submit]`,
       );
       if (btn) {
-        btn.scrollIntoView({ block: "center", behavior: reduced ? "auto" : "smooth" });
+        btn.scrollIntoView({ block: "center", behavior: scrollBehavior() });
         btn.focus({ preventScroll: true });
       }
       return;
@@ -905,8 +913,7 @@ function TypedAnswerWorkspace({
   // motion gets the instant variant)
   useEffect(() => {
     if (mark.kind !== "done") return;
-    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    resultRef.current?.scrollIntoView({ block: "nearest", behavior: reduced ? "auto" : "smooth" });
+    resultRef.current?.scrollIntoView({ block: "nearest", behavior: scrollBehavior() });
   }, [mark.kind]);
 
   const onType = (value: string) => {
@@ -1480,7 +1487,11 @@ function McqPart({
                     disabled={submitted}
                     onClick={() => (multi ? toggleMulti(o.label) : setChosen(o.label))}
                     className={cn(
-                      "flex size-11 items-center justify-center rounded-full border text-sm font-semibold transition-colors",
+                      // audit 2026-10-30 (motion review): press feedback —
+                      // scale(0.97) on :active, the tactile floor for the
+                      // player's primary tap target; transform joins the
+                      // transition-property list so the press animates.
+                      "flex size-11 items-center justify-center rounded-full border text-sm font-semibold transition-[color,background-color,border-color,transform] active:scale-[0.97]",
                       showWrong
                         ? "border-destructive/40 bg-destructive/15 text-destructive"
                         : showCorrect

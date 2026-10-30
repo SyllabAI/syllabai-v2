@@ -867,7 +867,12 @@ export function QuestionClaOverlay({
             aria-label="Contextual Learning Assistant"
             aria-describedby="cla-question-anchor"
             tabIndex={-1}
-            className="fixed bottom-4 right-4 z-50 flex h-[640px] min-h-[400px] max-h-[calc(100dvh-5.5rem)] w-[410px] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border bg-background shadow-lg outline-none"
+            // audit 2026-10-30 (question-player motion review): entrance
+            // fade+zoom from 0.95, scaling from the bottom-right corner —
+            // this panel is corner-anchored (popup-like), not centered, so
+            // the modal exemption does not apply and the origin rides the
+            // edge nearest the floating button that summons it.
+            className="fixed bottom-4 right-4 z-50 flex h-[640px] min-h-[400px] max-h-[calc(100dvh-5.5rem)] w-[410px] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border bg-background shadow-lg outline-none animate-in fade-in-0 zoom-in-95 origin-bottom-right duration-200 ease-out"
           >
             <div className="flex items-center gap-1 border-b px-3 py-2.5">{panelHeader}</div>
             {panelBody}
