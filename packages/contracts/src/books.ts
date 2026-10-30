@@ -56,7 +56,19 @@ export type PageRange = z.infer<typeof pageRangeSchema>;
  *  already conforming). The widening is additive — no chemistry value moves,
  *  collision laws unchanged — and mirrors the printed-section law: each new
  *  value names a verbatim printed section marker ("EXAMPLE n", "EXTENSION
- *  WORK", "PRACTICAL: …"), never a re-typed chemistry chunk. */
+ *  WORK", "PRACTICAL: …"), never a re-typed chemistry chunk.
+ *
+ *  2026-10-30 ADDITIVE WIDENING r2 (the 4PH1/4BI1 serving lane, operator
+ *  order trace 1a18d6866b38000d "proceed with 4ph1 and 4bi1"; the 134e
+ *  precedent verbatim): the biology 4BI1 package of record
+ *  (edexcel_igcse_biology_chunks_v1.jsonl, 863 chunks, sha-pinned
+ *  974ad65d… in parse_report_v1.json) carries one further PRINTED-STREAM
+ *  MARKER type the 20-value census never saw — biology_only ×2 (the
+ *  verbatim "BIOLOGY ONLY" margin marker that separates the
+ *  double-award stream from the biology-only stream in the printed book;
+ *  rows bio_v1_u1_c1_pdf006_0061 and bio_v1_u5_c16_pdf118_0754 — every
+ *  other field of every other row already conforming). Additive — no
+ *  existing value moves, collision laws unchanged. */
 export const BOOK_CONTENT_TYPES = [
   "body",
   "key_point",
@@ -79,6 +91,9 @@ export const BOOK_CONTENT_TYPES = [
   "worked_example",
   "extension_work",
   "practical",
+  // biology 4BI1 print census (the 134e precedent, additive r2): the
+  // verbatim "BIOLOGY ONLY" printed stream marker.
+  "biology_only",
 ] as const;
 export const bookContentTypeSchema = z.enum(BOOK_CONTENT_TYPES);
 export type BookContentType = (typeof BOOK_CONTENT_TYPES)[number];

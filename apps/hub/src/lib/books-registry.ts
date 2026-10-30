@@ -22,6 +22,8 @@
 /** Courses whose books archive home exists on the books repo of record. */
 const BOOKS_ARCHIVE_COURSES: ReadonlySet<string> = new Set([
   "igcse-chemistry-19", // pearson-edexcel/international-gcse/chemistry/4ch1
+  "igcse-physics-19", // pearson-edexcel/international-gcse/physics/4ph1 (r0 serving package, resources 7564388a+e9f41fda; shelf live-gates on the T-C20 flip)
+  "igcse-biology-19", // pearson-edexcel/international-gcse/biology/4bi1 (r0 serving package, resources 7564388a+e9f41fda; shelf live-gates on the T-C20 flip)
 ]);
 
 /** Build-safe entry gate: does this course have a committed books home? */

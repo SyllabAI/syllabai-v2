@@ -76,9 +76,9 @@ describe("books — the corpus package grammar (v3 of record)", () => {
     expect((c as Record<string, unknown>)["some_future_field"]).toBe(1);
   });
 
-  test("rejects a content_type outside the censused 20-value enum", () => {
+  test("rejects a content_type outside the censused 21-value enum", () => {
     expect(() => bookChunkSchema.parse({ ...loChunk, content_type: "speculative" })).toThrow();
-    expect(BOOK_CONTENT_TYPES).toHaveLength(20);
+    expect(BOOK_CONTENT_TYPES).toHaveLength(21);
   });
 
   test("polished chunk: text_original + llm_repaired ride through", () => {
@@ -577,6 +577,32 @@ describe("books — the physics 4PH1 print census (the additive widening)", () =
   test("practical parses (physics printed section, the 20th value)", () => {
     const c = bookChunkSchema.parse(practicalChunk);
     expect(c.content_type).toBe("practical");
+  });
+
+  // the 4BI1 print census (the 134e precedent, additive r2): the verbatim
+  // "BIOLOGY ONLY" margin marker — rows bio_v1_u1_c1_pdf006_0061 and
+  // bio_v1_u5_c16_pdf118_0754 of the package of record.
+  const biologyOnlyChunk = {
+    ...workedExampleChunk,
+    id: "bio_v1_u1_c1_pdf006_0061",
+    book_title: "Edexcel International GCSE (9-1) Biology Student Book",
+    author: "Philip Bradfield, Steve Potter",
+    unit_no: 1,
+    unit_name: "Organisms and Life Processes",
+    chapter_no: 1,
+    chapter_title: "Life processes",
+    section: "BIOLOGY ONLY",
+    content_type: "biology_only",
+    book_pages: [3, 4],
+    pdf_pages: [6, 7],
+    char_count: 1293,
+    text: "BIOLOGY ONLY\n\n• Understand the advantages and disadvantages of using stem cells in medicine…",
+  };
+
+  test("biology_only parses (biology printed stream marker, the 21st value)", () => {
+    const c = bookChunkSchema.parse(biologyOnlyChunk);
+    expect(c.content_type).toBe("biology_only");
+    expect(c.book_pages).toEqual([3, 4]);
   });
 
   test("the widening is additive — every chemistry value unchanged", () => {
