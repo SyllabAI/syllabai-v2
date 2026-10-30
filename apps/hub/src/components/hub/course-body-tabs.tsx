@@ -19,10 +19,14 @@ import { cn } from "@/lib/utils";
  *
  * Tab state is CLIENT-side on purpose: the course root is prerendered at
  * build (ADR-021 perf pass, tranche 4.12) and must not read searchParams
- * server-side. ?tab=topics deep links still work — the initial state is
- * synced from the URL after hydration and switches are written back with
- * history.replaceState, mirroring the original site's ?tab= addressing
- * without giving up the static HTML.
+ * server-side. The URL's ?tab= param is the SINGLE source of truth — read
+ * through an external store, written by pushTab with history.pushState
+ * plus an explicit listener notify (pushState does not fire popstate), so
+ * the pane can never drift from the address bar: deep links resolve after
+ * hydration, tab clicks become real history entries (MG's tab links are
+ * real hrefs), and Back/Forward land on whatever ?tab= says. The earlier
+ * pickedTab ?? urlTab split could desync exactly there — Back after a
+ * click kept the clicked pane while the URL moved on (run-002 fix).
  */
 
 export interface TopicLink {
@@ -47,23 +51,42 @@ export interface TopicGroup {
 
 type BodyTab = "topics" | "resources";
 
-/** ?tab= URL read — an external store, not component state: SSR/hydration
- *  see the server snapshot (null → resources pane), then the client snapshot
- *  re-renders the pane the URL asked for. popstate covers back/forward. */
-function subscribeToLocation(onChange: () => void) {
+/** The ?tab= external store — the URL is the single source of truth. The
+ *  client snapshot re-reads the address bar on every notify; the server
+ *  snapshot is null (→ resources pane) so SSR/hydration stay static
+ *  (ADR-021). pushState/replaceState do NOT fire popstate, so programmatic
+ *  switches notify by hand; popstate covers back/forward and any other
+ *  history navigation. Snapshot returns a primitive, so value-identity
+ *  keeps useSyncExternalStore loop-free without caching. */
+const tabListeners = new Set<() => void>();
+
+function readUrlTab(): BodyTab | null {
+  const t = new URLSearchParams(window.location.search).get("tab");
+  return t === "topics" || t === "resources" ? t : null;
+}
+
+function subscribeToTab(onChange: () => void): () => void {
+  tabListeners.add(onChange);
   window.addEventListener("popstate", onChange);
-  return () => window.removeEventListener("popstate", onChange);
+  return () => {
+    tabListeners.delete(onChange);
+    window.removeEventListener("popstate", onChange);
+  };
 }
 
 function useUrlTab(): BodyTab | null {
-  return useSyncExternalStore(
-    subscribeToLocation,
-    () => {
-      const t = new URLSearchParams(window.location.search).get("tab");
-      return t === "topics" || t === "resources" ? t : null;
-    },
-    () => null,
-  );
+  return useSyncExternalStore(subscribeToTab, readUrlTab, () => null);
+}
+
+/** pushTab — the writer half of the store: a real history entry (MG's tab
+ *  links are real hrefs, so Back restores the previous tab), then the
+ *  manual notify popstate can't give us. Mutates a copy of the current
+ *  URL, so any other query params stay intact. */
+function pushTab(t: BodyTab) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("tab", t);
+  window.history.pushState(null, "", url);
+  for (const l of tabListeners) l();
 }
 
 /** Decorative completion ring — the MG topic-row anatomy; hub surfaces will
@@ -161,19 +184,9 @@ export default function CourseBodyTabs({
    *  framework explainer) — an RSC payload passed into this client shell */
   resources: React.ReactNode;
 }) {
-  const [pickedTab, setPickedTab] = useState<BodyTab | null>(null);
   const urlTab = useUrlTab();
-  const tab: BodyTab = pickedTab ?? urlTab ?? "resources";
+  const tab: BodyTab = urlTab ?? "resources";
   const [q, setQ] = useState("");
-
-  const switchTab = (t: BodyTab) => {
-    setPickedTab(t);
-    // keep the MG-style ?tab= address bar in sync for deep links; replaceState
-    // (no history spam) — popstate handles back/forward via the store above
-    const url = new URL(window.location.href);
-    url.searchParams.set("tab", t);
-    window.history.replaceState(null, "", url);
-  };
 
   const query = q.trim().toLowerCase();
   const filtered = useMemo(
@@ -200,7 +213,7 @@ export default function CourseBodyTabs({
           <button
             key={t.key}
             type="button"
-            onClick={() => switchTab(t.key)}
+            onClick={() => pushTab(t.key)}
             aria-pressed={tab === t.key}
             className={cn(
               "flex items-center gap-1.5 border-b-[3px] px-1 pb-2.5 pt-1 transition-colors",

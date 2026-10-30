@@ -83,3 +83,50 @@ task:
     only modified pre-existing files are schema.ts (additive append),
     rebaseline.test.ts (the band-bump pins), contracts/index.ts (the
     barrel one-liner) and apps/api index.ts (the wiring block).
+    run-003 (2026-10-30). Operator dispatch "run-003" (trace 1a18c5b591bd2d0d).
+    The surface lands exactly per plan §3.3 + the run-001 verdict
+    consequences (native canvas ink on pdf-pane v4): a STANDALONE ink layer
+    over the view-mode QP pane of the past-papers viewer — the pdf-pane v4
+    monolith UNTOUCHED (the Risk-4 freeze-frame law; the RegionOverlay
+    composition law): InkLayer portals one canvas into each rendered
+    [data-page] page holder (the pane's own relative positioning context),
+    tracked by a structure-only MutationObserver — zero pixel math, zero
+    re-measure listeners; the two-phase zoom stretches the overlay for
+    free (E3). Grammar of record (the run-002 opaque-grant consumed):
+    stroke {id, kind, page, color, widthFrac, points[[x,y]…]} + text
+    {id, kind, page, color, sizeFrac, x, y, text} — coordinates normalized
+    0..1 page fractions, widths as page-width fractions (ink scales with
+    the paper); container law unchanged {schema:'syllabai-ink/1', shapes[]}.
+    Toolbar parity list: pen colour (4, the run-001 spike palette verbatim)
+    + thickness (3 page-relative steps) + undo/redo/clear (session-local
+    full-set snapshots, doc-global) + text boxes (click-to-place, Enter
+    commits). Perf pin: coalesced capture (>=1.2 css px), rAF-throttled
+    repaint, backing store dpr <= 2 (the pdf-pane:987 law via
+    sizeBackingStore). Persistence: lib/pdf-drawings.ts (the regions.ts
+    law: zod-v4 local mirror, honest-failure, no-store, Bearer from
+    localStorage['syllabai.token']) + the ink-sync controller (base-carrying
+    debounced PUT; 409 -> GET + rebaseShapes union-by-id + retry ONCE;
+    second 409 -> honest conflict state; failures preserve the working set;
+    single-timer debounce law — the run's own tests caught and fixed a
+    double-timer race; flush-before-dispose). Keyed by sourceUrl =
+    corpusRawUrl(qpPath) (the canonical raw corpus URL — the
+    external-document fallback key; documentRefType rides the paper_asset
+    default, inert for sourceUrl-keyed rows under the refine). Scope
+    honesty: books/citations untouched; mock-mode panes excluded (exam
+    conditions); anonymous visitors see zero chrome (no token -> renders
+    nothing); gesture law: ink mode owns the page gesture (touch-action
+    none), one tap toggles off. Tests: 21 new (ink grammar/geometry/rebase
+    12 + ink-sync controller 9) — pins (a) container round-trip,
+    normalized-clamp + honest-parse, rebase union/id-collision/no-clobber,
+    the revision law client-half (base-carry, 409 rebase-retry, second-409
+    conflict, error-preserves-set, mid-flight edit re-schedule, flush).
+    Local verify: bun test ink 21/21; bun test apps/api packages 3145
+    total / 0 fail (3132 pass + 13 skip, byte-stable); typecheck exit 0;
+    golden selftest OK; retrieval-eval 0 fail + 19/19 selftest; zero-core
+    census GATE GREEN; build:hub SUCCESS (the production build compiles
+    the ink module). The ONLY modified pre-existing file is
+    paper-viewer-client.tsx (the host-wrapper composition block — the
+    T-MIG disclosed-commit precedent; the s140 comment carried + the
+    hidden/flex classes moved to the wrapper). Fence census at head:
+    cla.ts a9fdabfd / cla service.ts db4573c7 EXACT; zero identity-plane
+    paths.

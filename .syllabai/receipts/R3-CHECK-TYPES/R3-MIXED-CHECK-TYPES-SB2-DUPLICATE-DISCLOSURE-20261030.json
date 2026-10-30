@@ -1,0 +1,44 @@
+{
+  "receipt": "R3-MIXED-CHECK-TYPES-SB2-DUPLICATE-DISCLOSURE-20261030",
+  "format": "disclosure-receipt/0.1",
+  "date": "2026-10-30",
+  "generated_at_utc": "2026-10-30T11:45:00Z",
+  "operator_directive": "\"continue\" (session trace 1a18c72e01b84211), resuming the stage-B execution of record opened by \"stage B proceed\" (trace 1a18bc1ca2cf48e5) — per the standing instruction to continue the last task without asking further questions",
+  "task_attempted": "R3-MIXED-CHECK-TYPES stage B wave 2 (S-B2) — the wave-2 authoring register (12 T1 Principles notes / 24 lessons / +96 written items: 48 recall, 24 explain-why, 24 application), per the S-B1 ledger NEXT pointer",
+  "finding": {
+    "summary": "S-B2 was ALREADY EXECUTED OF RECORD by a parallel lane under a fresher, explicit operator gate BEFORE this session's execution could land",
+    "of_record_lane": {
+      "operator_trace": "1a18c3fc617d21b9 (\"wave 2 proceed\")",
+      "resources_pr": 237,
+      "branch": "integration/r3-stageb2-20261030 (remote, head 7e0276ee)",
+      "pr_state_at_disclosure": "open, mergeable_state clean, sync CI SUCCESS at head (2026-10-30T10:14:57Z)",
+      "tranche": "identical to this session's plan: 12 notes / 24 lessons / 96 written items (their PR body likewise corrects the S-B1 ledger's 23-lesson estimate to 24 from source-0.4)",
+      "claimed_gates": "198/198 pipeline gates GREEN (their title); manifest v9"
+    },
+    "reconciliation": "the earlier session-summary interpretation of \"stage B proceed\" as a FIGURES-2.1C gate is REJECTED by the worklog of record: trace 1a18a0218b7f44fd (\"probe and execute\") is R3-MIXED-CHECK-TYPES stage A of record, and the FIGURES family queue was already empty of record (live spot-check receipt). \"Stage B\" of record = R3-MIXED-CHECK-TYPES stage B; wave 1 consumed by S-B1 (v2 commit f271d3a4), wave 2 by the parallel lane under its own trace"
+  },
+  "duplicate_lane_withdrawn": {
+    "when": "BEFORE any remote contact: the single push attempt was rejected (remote ref already existed — the parallel lane's branch); no force used, no PR opened, zero resources bytes from this session on the remote",
+    "local_commits_disclosed": {
+      "branch": "integration/r3-stageb2-20261030 (LOCAL ONLY, renamed superseded/r3-stageb2-duplicate-local-20261030 to avoid ref confusion with the of-record branch)",
+      "commit_A": "5fdb1c6002c622d92feda6b63799d072265c1b03 (source-0.5 generation: 12 authored guided-lesson/0.5 notes + tooling/r3-stageb2-authoring/ x3 KP-anchor provenance)",
+      "commit_C": "71e445b3894dadd26565e082a6842a6a208d2cca (hub-import-1.4 x12 + question-packages-1.1 x12 + hub-import-manifest-v9.json + INT-3-transform-record-r3-stageb2.json + promotion receipt + tooling/r3-stageb2-pipeline.js)"
+    },
+    "authoring_quality_evidence_not_of_record": "scripts/r3-stageb2/audit_authoring.py GREEN: A0 inventory 12/24/96; kind order [recall, recall, explain-why, application] x24; self-grading audit under the hub keyword law (guided-written.ts: case-insensitive whole-token [a-z0-9]+ match) — every model answer grades correct under its own keywords; token-Jaccard >= 0.6 stem-overlap vs all 1,195 MCQ stems + 112 existing written stems: 0 findings; arithmetic in model answers code-verified (45.00-8.00=37.00; (60x69)+(40x71)=6980 -> 69.8; 31/2=15.5; 22/4=5.5; 27-13=14)",
+    "pipeline_evidence_not_of_record": "local pipeline 196/196 gates GREEN (D-1 x12, C-6 ajv x224, C-2 224 shas == manifest v8, written-kind invariants x96, MCQ deep conservation x12, C-5 closure x24, D-2 x12, C-9 88 byte-identical, G-E x112: 88 == v8 anchors, 12 R3-live == stage-B1 anchors exactly; grand 1,480,588 chars +27,927; checks 1,307 -> 1,403, MCQ 1,195 conserved)",
+    "disposition": "SUPERSDED — the of-record S-B2 generation is PR #237's; these local artifacts are retained unpushed under scripts/r3-stageb2/ as evidence only and MUST NOT be promoted"
+  },
+  "stage_b_ledger_after_of_record_b2_merges": {
+    "written_live": "208 / ~956 (16 stage A + 96 S-B1 + 96 S-B2)",
+    "remaining": "~748 items across ~187 lessons / 88 notes",
+    "next": "stage-B wave 3 (the wave-3 register notes), OPERATOR-GATED per the ledger convention — this session's standing 'continue' is consumed by the withdrawal disclosure; no wave-3 execution from this session"
+  },
+  "disciplines_held": [
+    "zero-DB",
+    "fetch-first re-ground before every write (both mains re-fetched; the rejected push was the fetch-first discipline catching the parallel lane before any force)",
+    "token unechoed",
+    "resources additive-only (nothing pushed at all)",
+    "no force",
+    "receipts + worklog of record (this disclosure)"
+  ]
+}

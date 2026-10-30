@@ -1,0 +1,30 @@
+{
+ "attempts": [
+  {
+   "at": "2026-10-30T~11:45Z (transcript of record)",
+   "http_status": 405,
+   "response": {
+    "message": "Pull Request has merge conflicts"
+   }
+  },
+  {
+   "at": "2026-10-30T11:56:54Z (artifact of record)",
+   "http_status": 405,
+   "response": {
+    "message": "Pull Request has merge conflicts",
+    "status": "405"
+   }
+  },
+  {
+   "at": "2026-10-30T12:02:35Z",
+   "http_status": 405,
+   "response": {
+    "message": "Pull Request has merge conflicts",
+    "documentation_url": "https://docs.github.com/rest/pulls/pulls#merge-a-pull-request",
+    "status": "405"
+   },
+   "note": "re-verification refusal at bookkeeping time, main @ 8f685c84 (post-#494)"
+  }
+ ],
+ "note": "the operator-ordered merge leg \u2014 refused live every attempt; the PR object's mergeable:clean is stale; NOT MERGED"
+}

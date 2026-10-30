@@ -1,0 +1,61 @@
+G-E3 ok: 66 slices match the frozen corpus constants; grand 66 sets / 20 series / 1281q / 2443p / 6600m (66 x printed 100 = 6600)
+G-E2 ok: part-sum, markPoints sum-law and spec-code shapes hold on all official sets
+  DELTA changed: official-4mb1-01-2019-06 offp_2019-06_01_20
+  DELTA changed: official-4mb1-01-2019-06 offp_2019-06_01_27
+  DELTA changed: official-4mb1-01-2020-06 offp_2020-06_01_9
+  DELTA changed: official-4mb1-01-2020-11 offp_2020-11_01_9
+  DELTA changed: official-4mb1-01-2021-01 offp_2021-01_01_23
+  DELTA changed: official-4mb1-01-2021-11 offp_2021-11_01_26-a
+  DELTA changed: official-4mb1-01-2023-01 offp_2023-01_01_15
+  DELTA changed: official-4mb1-01-2023-06 offp_2023-06_01_17
+  DELTA changed: official-4mb1-01-2023-11 offp_2023-11_01_1-b
+  DELTA changed: official-4mb1-01-2023-11 offp_2023-11_01_12-b
+  DELTA changed: official-4mb1-01-2024-11 offp_2024-11_01_7
+  DELTA changed: official-4mb1-01-2026-06 offp_2026-06_01_10
+  DELTA changed: official-4mb1-01r-2023-06 offp_2023-06_01r_18
+  DELTA changed: official-4mb1-01r-2023-06 offp_2023-06_01r_24
+  DELTA changed: official-4mb1-01r-2024-06 offp_2024-06_01r_19
+  DELTA changed: official-4mb1-01r-2025-06 offp_2025-06_01r_14
+  DELTA changed: official-4mb1-01r-2026-06 offp_2026-06_01r_12
+  DELTA changed: official-4mb1-01r-2026-06 offp_2026-06_01r_13
+  DELTA changed: official-4mb1-02-2018-06 offp_2018-06_02_7-d
+  DELTA changed: official-4mb1-02-2019-01 offp_2019-01_02_5-b
+  DELTA changed: official-4mb1-02-2019-01 offp_2019-01_02_9-b
+  DELTA changed: official-4mb1-02-2019-06 offp_2019-06_02_4-d
+  DELTA changed: official-4mb1-02-2020-01 offp_2020-01_02_2-b
+  DELTA changed: official-4mb1-02-2021-01 offp_2021-01_02_7
+  DELTA changed: official-4mb1-02-2021-06 offp_2021-06_02_9-c
+  DELTA changed: official-4mb1-02-2021-11 offp_2021-11_02_5-c
+  DELTA changed: official-4mb1-02-2022-01 offp_2022-01_02_11-d
+  DELTA changed: official-4mb1-02-2022-01 offp_2022-01_02_11-e
+  DELTA changed: official-4mb1-02-2022-06 offp_2022-06_02_1
+  DELTA changed: official-4mb1-02-2022-06 offp_2022-06_02_9-c
+  DELTA changed: official-4mb1-02-2023-01 offp_2023-01_02_3
+  DELTA changed: official-4mb1-02-2023-01 offp_2023-01_02_7-a
+  DELTA changed: official-4mb1-02-2025-06 offp_2025-06_02_12-d-i
+  DELTA changed: official-4mb1-02r-2018-06 offp_2018-06_02r_8-b
+  DELTA changed: official-4mb1-02r-2019-06 offp_2019-06_02r_5-c
+  DELTA changed: official-4mb1-02r-2020-06 offp_2020-06_02r_6-b
+  DELTA changed: official-4mb1-02r-2020-06 offp_2020-06_02r_6-c
+  DELTA changed: official-4mb1-02r-2020-06 offp_2020-06_02r_6-f
+  DELTA changed: official-4mb1-02r-2020-06 offp_2020-06_02r_7-d
+  DELTA changed: official-4mb1-02r-2020-11 offp_2020-11_02r_6-b
+  DELTA changed: official-4mb1-02r-2020-11 offp_2020-11_02r_6-c
+  DELTA changed: official-4mb1-02r-2020-11 offp_2020-11_02r_6-f
+  DELTA changed: official-4mb1-02r-2020-11 offp_2020-11_02r_7-d
+  DELTA changed: official-4mb1-02r-2021-01 offp_2021-01_02r_11
+  DELTA changed: official-4mb1-02r-2021-01 offp_2021-01_02r_7-c
+  DELTA changed: official-4mb1-02r-2022-01 offp_2022-01_02r_5-a-i
+  DELTA changed: official-4mb1-02r-2022-01 offp_2022-01_02r_6-d
+  DELTA changed: official-4mb1-02r-2022-06 offp_2022-06_02r_4-d
+  DELTA changed: official-4mb1-02r-2023-06 offp_2023-06_02r_6-c
+  DELTA changed: official-4mb1-02r-2026-06 offp_2026-06_02r_10-b
+  DELTA changed: official-4mb1-02r-2026-06 offp_2026-06_02r_5
+Traceback (most recent call last):
+  File "/home/z/my-project/repos/syllabai-resources/scripts/official_examq_export_hub_mb.py", line 814, in <module>
+    main()
+  File "/home/z/my-project/repos/syllabai-resources/scripts/official_examq_export_hub_mb.py", line 791, in main
+    run_gates(out, raw, raw_op, args.expected_deltas, args.allow_new_official,
+  File "/home/z/my-project/repos/syllabai-resources/scripts/official_examq_export_hub_mb.py", line 682, in run_gates
+    raise ExportGateError(
+ExportGateError: G-E1: 51 deltas vs the bundle of record with no --expected-deltas census (the reproducibility law)

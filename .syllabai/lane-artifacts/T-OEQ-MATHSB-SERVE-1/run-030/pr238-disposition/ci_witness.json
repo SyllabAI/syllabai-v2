@@ -1,0 +1,23 @@
+{
+ "head_sha": "80c587d01aa318d3c7a5f06fe66407ab5632e047",
+ "captured_at": "2026-10-30T12:02:35Z",
+ "check_runs": [
+  {
+   "name": "sync",
+   "status": "completed",
+   "conclusion": "success",
+   "id": 124013213689
+  }
+ ],
+ "workflow_runs": [
+  {
+   "id": 41040922409,
+   "name": "Google Drive Sync",
+   "event": "push",
+   "status": "completed",
+   "conclusion": "success",
+   "created_at": "2026-10-30T10:27:45Z"
+  }
+ ],
+ "note": "corpus-gates did NOT run on the PR head; only the Google Drive Sync check executed (success). The PR object's mergeable:clean is stale (live merge PUT refuses; true fork point 3f6547b1)."
+}

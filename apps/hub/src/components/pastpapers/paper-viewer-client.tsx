@@ -44,6 +44,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { PdfPane, type PdfPaneHandle } from "@/components/pastpapers/pdf-pane";
+import { InkLayer } from "@/components/pastpapers/ink/InkLayer";
 import {
   corpusRawUrl,
   corpusViewerUrl,
@@ -139,6 +140,9 @@ export function PaperViewerClient({
   // (via the pane's text index), labelled "auto-detected", manual fallback.
   const qpPaneRef = useRef<PdfPaneHandle | null>(null);
   const msPaneRef = useRef<PdfPaneHandle | null>(null);
+  // T-MG-INK-1 run-003: the ink layer's host wrapper (the view-mode QP
+  // pane's positioning + observation root; see the composition block).
+  const qpInkHostRef = useRef<HTMLDivElement | null>(null);
   const [breakState, setBreakState] = useState<BreakState>("loading");
   const [breakSource, setBreakSource] = useState<BreakSource>("manual");
   const [rows, setRows] = useState<BreakRow[]>([]);
@@ -800,25 +804,41 @@ export function PaperViewerClient({
           </div>
         )}
         {qpUrl && qpPaneUrl && (
-          <PdfPane
-            url={qpPaneUrl}
-            fallbackUrl={qpUrl}
-            downloadUrl={qpUrl}
-            label={`Question paper — ${paper.ref}`}
-            active={doc === "qp" || doc === "split"}
-            initialPage={initialPageDoc !== "ms" ? initialPage : undefined}
-            /* s140 audit: the old split-mode "lg:block" OVERRODE the pane's
-               base `flex` at lg → display:block → the flex-1 scroller lost
-               its bounds and grew to the full 25k-px document height (the
-               pages you could SEE stayed blank while canvases painted ~14
-               pages down). The pane needs NOTHING extra in split mode — it
-               is visible at every width (mobile split falls back to QP-only)
-               and flexes inside the bounded grid row. */
+          /* T-MG-INK-1 run-003 (plan §3.3): the ink layer's host wrapper —
+           * a STANDALONE composition (the pdf-pane monolith is untouched;
+           * the RegionOverlay law): InkLayer portals one canvas into each
+           * [data-page] holder inside THIS subtree and floats its toolbar
+           * here. View-mode QP only (mock keeps exam conditions). */
+          <div
+            ref={qpInkHostRef}
             className={cn(
-              "h-full min-h-0 w-full flex-1",
+              "relative h-full min-h-0 w-full flex-1",
               doc === "ms" && "hidden",
             )}
-          />
+          >
+            <PdfPane
+              url={qpPaneUrl}
+              fallbackUrl={qpUrl}
+              downloadUrl={qpUrl}
+              label={`Question paper — ${paper.ref}`}
+              active={doc === "qp" || doc === "split"}
+              initialPage={initialPageDoc !== "ms" ? initialPage : undefined}
+              /* s140 audit: the old split-mode "lg:block" OVERRODE the pane's
+                 base `flex` at lg → display:block → the flex-1 scroller lost
+                 its bounds and grew to the full 25k-px document height (the
+                 pages you could SEE stayed blank while canvases painted ~14
+                 pages down). The pane needs NOTHING extra in split mode — it
+                 is visible at every width (mobile split falls back to QP-only)
+                 and flexes inside the bounded grid row. The hidden/flex-1
+                 classes moved to the ink host wrapper (the wrapper owns the
+                 layout slot now; the pane fills it). */
+              className="h-full min-h-0 w-full"
+            />
+            <InkLayer
+              hostRef={qpInkHostRef}
+              sourceUrl={paper.qpPath ? corpusRawUrl(paper.qpPath) : null}
+            />
+          </div>
         )}
         {msUrl && msPaneUrl && (
           <PdfPane
