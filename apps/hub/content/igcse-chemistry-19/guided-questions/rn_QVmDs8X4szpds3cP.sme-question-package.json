@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_QVmDs8X4szpds3cP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "bda1ba331a7dc4eaf8ed81e7fda081b2b6d4ef605b881dc4525b480a46156d38",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "7ccc7e15d2ea6fc207c95cdf67f83b9127d24e2ef200dff8d34dc3d8a4fd815b",
+    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
   },
   "packageId": "igcse-chemistry::rn_QVmDs8X4szpds3cP",
   "subject": "igcse-chemistry",
@@ -192,6 +192,69 @@
       ]
     },
     {
+      "id": "rn_QVmDs8X4szpds3cP::L1::Q6",
+      "moduleId": "rn_QVmDs8X4szpds3cP::L1",
+      "stem": "State what the leftover undissolved solid guarantees about the solution.",
+      "misconceptionClass": "saturation guarantee",
+      "kind": "recall",
+      "modelAnswer": "It is the guarantee that the solution is saturated.",
+      "keywords": [
+        "saturated",
+        "saturation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_QVmDs8X4szpds3cP::L1::Q7",
+      "moduleId": "rn_QVmDs8X4szpds3cP::L1",
+      "stem": "State what may enter the pre-weighed evaporating basin.",
+      "misconceptionClass": "transfer rule",
+      "kind": "recall",
+      "modelAnswer": "Only clear solution — no undissolved solid.",
+      "keywords": [
+        "clear",
+        "solution",
+        "only"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_QVmDs8X4szpds3cP::L1::Q8",
+      "moduleId": "rn_QVmDs8X4szpds3cP::L1",
+      "stem": "Explain why this practical measures the solubility at one chosen temperature rather than across a range.",
+      "misconceptionClass": "single temperature logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because solubility changes with temperature — the practical measures a solid's solubility at one chosen temperature, so the solution must be held at that temperature for the measurement to mean one clean point.",
+      "keywords": [
+        "temperature",
+        "one",
+        "single",
+        "chosen",
+        "changes",
+        "change",
+        "point"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_QVmDs8X4szpds3cP::L1::Q9",
+      "moduleId": "rn_QVmDs8X4szpds3cP::L1",
+      "stem": "A student weighs the dried basin once and records it immediately. State the flaw in that working, and the fix.",
+      "misconceptionClass": "constant mass applied",
+      "kind": "application",
+      "modelAnswer": "One weighing may still hold water — the basin must be reheated, cooled and reweighed until two masses agree (heated to constant mass), confirming all the water has gone.",
+      "keywords": [
+        "constant",
+        "reweigh",
+        "reheated",
+        "again",
+        "agree",
+        "twice",
+        "repeat"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_QVmDs8X4szpds3cP::L2::Q1",
       "moduleId": "rn_QVmDs8X4szpds3cP::L2",
       "stem": "With basin 25.00 g, basin plus solution 74.50 g and basin plus dry solid 37.00 g, what is the mass of water?",
@@ -370,6 +433,70 @@
           "misconception": "raw mass quoted unscaled"
         }
       ]
+    },
+    {
+      "id": "rn_QVmDs8X4szpds3cP::L2::Q6",
+      "moduleId": "rn_QVmDs8X4szpds3cP::L2",
+      "stem": "State how the mass of the solution is obtained from the weighings.",
+      "misconceptionClass": "solution mass",
+      "kind": "recall",
+      "modelAnswer": "Mass of solution is the filled basin minus the empty basin.",
+      "keywords": [
+        "filled",
+        "minus",
+        "empty",
+        "takeaway",
+        "difference",
+        "subtract"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_QVmDs8X4szpds3cP::L2::Q7",
+      "moduleId": "rn_QVmDs8X4szpds3cP::L2",
+      "stem": "State how the solubility figure is calculated from the solid and water masses.",
+      "misconceptionClass": "solubility calculation",
+      "kind": "recall",
+      "modelAnswer": "The solid mass is scaled up to 100 grams of water (solid mass divided by water mass, then multiplied by 100).",
+      "keywords": [
+        "100",
+        "scaled",
+        "scale",
+        "divided",
+        "multiply",
+        "multiplied"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_QVmDs8X4szpds3cP::L2::Q8",
+      "moduleId": "rn_QVmDs8X4szpds3cP::L2",
+      "stem": "Explain why the solid mass is scaled to exactly 100 grams of water.",
+      "misconceptionClass": "scaling logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because solubility values are stated in grams per 100 grams of solvent (water), so scaling to 100 g makes the number comparable with tables and curves.",
+      "keywords": [
+        "100",
+        "grams",
+        "per",
+        "solubility",
+        "standard",
+        "comparable"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_QVmDs8X4szpds3cP::L2::Q9",
+      "moduleId": "rn_QVmDs8X4szpds3cP::L2",
+      "stem": "A basin weighs 30.00 g empty, 55.00 g with solution, and 41.00 g with dry solid. State the mass of water in the sample.",
+      "misconceptionClass": "water mass applied",
+      "kind": "application",
+      "modelAnswer": "Solution = 55.00 − 30.00 = 25.00 g; solid = 41.00 − 30.00 = 11.00 g; water = 25.00 − 11.00 = 14.00 g.",
+      "keywords": [
+        "14",
+        "14.00"
+      ],
+      "options": []
     }
   ]
 }

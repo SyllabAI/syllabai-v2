@@ -1,0 +1,298 @@
+{
+  "format": "hub-import-run-receipt/0.1",
+  "generated_at_utc": "2026-10-30T12:41:09Z",
+  "feed": "r3-stageb3-v10",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "landing_law": "revision",
+  "generated_at_utc_note": "figures feed: declared revision of the 112 lesson artifacts (G-DELTA); additive-only law unchanged for everything else",
+  "operator_trace": "1a18c9f53d7b8dd1",
+  "operator_directive": "run the R3 mixed check types stage-B wave 3 chain — import the S-B3 tranche (the wave-3 authoring register: 12 notes / 24 lessons / 96 written items; operator ignition trace 1a18c9f53d7b8dd1 'wave 3 proceed'). Declared hub revision = 48 files: the 24 S-B2 re-issues (PR #237 generation, bytes fetched @ pin — the S-B2 hub import rides this cumulative manifest) + the 24 S-B3 re-issues",
+  "runner": {
+    "path": "apps/hub/scripts/import_guided/run_import.mjs",
+    "id": "hub-import-runner/1.0",
+    "runtime": "node v24.22.1"
+  },
+  "feed_config": {
+    "manifest": "hub-import-manifest-v10.json",
+    "manifest_version": 10,
+    "promo": {
+      "commit": "163cb2f32848136ccf3cf1d29bb918b0e61a3fcd",
+      "tree": "77a6a1ea9464eb14b9e9731ec53e499cb46ff555",
+      "parent": "c09b05bb2645f637f3d4efb572810ebdd52c216f",
+      "trace": "1a18c9f53d7b8dd1"
+    },
+    "promotion_pending": false,
+    "integration_branch": "(main ancestry)",
+    "artifact_pin": "71922d1510ee9e00400667670b40f36e1ae5d456",
+    "figures_feed": true
+  },
+  "gates": {
+    "P0": "promotion commit preflight (tree/parent/message/ancestry or declared pending promotion)",
+    "GA": "manifest integrity (format/version/kinds/counts/conservation/adapter/trace + survivor byte-identity + schemas byte-anchored)",
+    "GB": "224/224 fetched raw @ pinned commit, sha256+bytes exact",
+    "GC": "ajv draft-07 ×224 vs both target schemas",
+    "GD": "X ×112 — derived-ID grammar, checkRefs↔questions bidirectional 1:1 (1,195 checks), pinned provenance, figure closure both ways (200 figures)",
+    "GE": "Φ — per-note stream anchors ×112 vs the feed's INT-3 record; wave subtotals ×10; grand stream vs manifest; legacy-anchor equality ×112 (figures carried no prose)",
+    "GDELTA": "declared revision: exactly the 112 lesson files carry new bytes; question packages byte-identical ×112",
+    "LAND": "byte-exact atomic landing (revision law) — 112 lesson files revised",
+    "GV": "cold re-read ×224; closing identity re-derived from disk; loader rel-shape probe; static-build pickup; idempotence 224/224; figure counts re-derived from disk"
+  },
+  "gate_results": [
+    {
+      "stage": "P0",
+      "name": "promotion commit resolves",
+      "ok": true,
+      "detail": "163cb2f32848136ccf3cf1d29bb918b0e61a3fcd"
+    },
+    {
+      "stage": "P0",
+      "name": "tree matches promotion receipt",
+      "ok": true,
+      "detail": "tree=77a6a1ea9464eb14b9e9731ec53e499cb46ff555"
+    },
+    {
+      "stage": "P0",
+      "name": "parent matches promotion receipt",
+      "ok": true,
+      "detail": "parent=c09b05bb2645f637f3d4efb572810ebdd52c216f"
+    },
+    {
+      "stage": "P0",
+      "name": "message carries promotion trace",
+      "ok": true,
+      "detail": "Merge pull request #240 from SyllabAI/integration/r3-stageb3-20261030\n\ncontent(R3-CHECK-TY"
+    },
+    {
+      "stage": "P0",
+      "name": "promotion commit remains main ancestor",
+      "ok": true,
+      "detail": "status=identical behind_by=0"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest fetched @ promotion commit",
+      "ok": true,
+      "detail": "72502B"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest byte-identical to lane survivor",
+      "ok": true,
+      "detail": "remote a43aba4f29c5 vs survivor a43aba4f29c5"
+    },
+    {
+      "stage": "G-A",
+      "name": "format hub-import-manifest/1.0",
+      "ok": true,
+      "detail": "hub-import-manifest/1.0"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest_version 10",
+      "ok": true,
+      "detail": "10"
+    },
+    {
+      "stage": "G-A",
+      "name": "224 artifacts listed",
+      "ok": true,
+      "detail": "224"
+    },
+    {
+      "stage": "G-A",
+      "name": "kinds 112/112 (generation-union: 110x1.3 + 2x1.4 + 112 packages)",
+      "ok": true,
+      "detail": "{\"hub-lesson-import-1.4\":36,\"hub-lesson-import-1.3\":76,\"sme-question-package\":112}"
+    },
+    {
+      "stage": "G-A",
+      "name": "counts == closing identity",
+      "ok": true,
+      "detail": "{\"notes\":112,\"lessons\":239,\"checks\":1499,\"keyPoints\":1212,\"distractors\":3565,\"glossaryTerms\":654,\"figures\":200,\"figures_module_mapped\":122,\"figures_note_level\":78,\"workedExamples_populated\":112,\"workedExamples_null\":0,\"authored_chars_conserved\":1501204,\"authored_chars_v3_baseline\":1347771,\"added_chars\":153433,\"captions_coalesced\":143,\"captions_row_context\":16,\"captions_inline\":3,\"captions_none\":38,\"binding_heading_unique\":90,\"binding_sole_lesson\":0,\"binding_content_overlap\":12,\"binding_note_level\":78,\"binding_unresolved\":20,\"figures_binding_narrowed\":102,\"figures_claims_changed\":12,\"figures_wholesale_claims_kept\":2,\"checks_written\":304,\"checks_mcq\":1195,\"written_recall\":152,\"written_explain_why\":76,\"written_application\":76}"
+    },
+    {
+      "stage": "G-A",
+      "name": "conservation block present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "stage": "G-A",
+      "name": "adapter of record",
+      "ok": true,
+      "detail": "guided-lesson-0.5--hub-lesson-import-1.4"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest carries promotion operator trace",
+      "ok": true,
+      "detail": "1a18c9f53d7b8dd1"
+    },
+    {
+      "stage": "G-A",
+      "name": "artifact paths conform to the feed's path-map families",
+      "ok": true,
+      "detail": "224 conform"
+    },
+    {
+      "stage": "G-A",
+      "name": "hub schema byte-identical to survivor",
+      "ok": true,
+      "detail": "11761B"
+    },
+    {
+      "stage": "G-A",
+      "name": "package schema byte-identical to survivor",
+      "ok": true,
+      "detail": "5833B"
+    },
+    {
+      "stage": "G-B",
+      "name": "224/224 artifacts fetched + sha256/bytes exact",
+      "ok": true,
+      "detail": "all exact"
+    },
+    {
+      "stage": "G-C",
+      "name": "ajv draft-07 ×224 (guided-lesson-0.5--hub-lesson-import-1.4 + sme-question-package/1.0)",
+      "ok": true,
+      "detail": "all pass"
+    },
+    {
+      "stage": "G-D",
+      "name": "X ×112: grammar + checkRefs↔questions + figure closure + provenance",
+      "ok": true,
+      "detail": "1,195 checks + 200 figures resolve"
+    },
+    {
+      "stage": "G-E",
+      "name": "per-note stream anchors ×112 (sha256 + chars)",
+      "ok": true,
+      "detail": "all conserved"
+    },
+    {
+      "stage": "G-E",
+      "name": "wave stream subtotals ×10 vs manifest",
+      "ok": true,
+      "detail": "all match"
+    },
+    {
+      "stage": "G-E",
+      "name": "grand stream vs manifest",
+      "ok": true,
+      "detail": "1501204 chars 2726c21bddcf"
+    },
+    {
+      "stage": "LAND",
+      "name": "224 artifacts landed byte-exact (revision law)",
+      "ok": true,
+      "detail": "0 written, 48 revised, 176 already identical"
+    },
+    {
+      "stage": "G-DELTA",
+      "name": "revision touched ONLY the declared pilot files (2 lessons + 2 packages)",
+      "ok": true,
+      "detail": "48 revised (rn_2VnK66PqbvFKdKYt.hub-lesson-import.json, rn_4tzwS4GZjPybwtkS.hub-lesson-import.json, rn_8Nv33F4dD3kkZnY6.hub-lesson-import.json, rn_Hkwmd9GSp3gdxxR5.hub-lesson-import.json, rn_N4HX8tqbdhTQcHyS.hub-lesson-import.json, rn_QVmDs8X4szpds3cP.hub-lesson-import.json, rn_R3ptwxGTTvdBFvyP.hub-lesson-import.json, rn_RvgxXR36425BFMcx.hub-lesson-import.json, rn_S7GPh8BBPBbmhYKm.hub-lesson-import.json, rn_Syxyh4Fct8KFg8NQ.hub-lesson-import.json, rn_T55t3HNsgyZcXZtN.hub-lesson-import.json, rn_TWGVV6RXN3Ktqb9h.hub-lesson-import.json, rn_TsfqyK9BYMtN2Bfd.hub-lesson-import.json, rn_VyXFNyxZHZGkxqTG.hub-lesson-import.json, rn_YBWYstSRgM2QPzQq.hub-lesson-import.json, rn_b3XCzdtfQddbJjVf.hub-lesson-import.json, rn_cTk2cs2h2BKQ3y3B.hub-lesson-import.json, rn_kb2VkFMdBTbmG33t.hub-lesson-import.json, rn_mBqgkpZ3hbSBmWCC.hub-lesson-import.json, rn_mbcBZkygY4YpG2bf.hub-lesson-import.json, rn_pWzTTBv3B4yGFfj3.hub-lesson-import.json, rn_vXPcH3vS8wv7BFkK.hub-lesson-import.json, rn_vzGMZxqQtWYVWB7h.hub-lesson-import.json, rn_yj4y972FxCWnDnSg.hub-lesson-import.json, rn_2VnK66PqbvFKdKYt.sme-question-package.json, rn_4tzwS4GZjPybwtkS.sme-question-package.json, rn_8Nv33F4dD3kkZnY6.sme-question-package.json, rn_Hkwmd9GSp3gdxxR5.sme-question-package.json, rn_N4HX8tqbdhTQcHyS.sme-question-package.json, rn_QVmDs8X4szpds3cP.sme-question-package.json, rn_R3ptwxGTTvdBFvyP.sme-question-package.json, rn_RvgxXR36425BFMcx.sme-question-package.json, rn_S7GPh8BBPBbmhYKm.sme-question-package.json, rn_Syxyh4Fct8KFg8NQ.sme-question-package.json, rn_T55t3HNsgyZcXZtN.sme-question-package.json, rn_TWGVV6RXN3Ktqb9h.sme-question-package.json, rn_TsfqyK9BYMtN2Bfd.sme-question-package.json, rn_VyXFNyxZHZGkxqTG.sme-question-package.json, rn_YBWYstSRgM2QPzQq.sme-question-package.json, rn_b3XCzdtfQddbJjVf.sme-question-package.json, rn_cTk2cs2h2BKQ3y3B.sme-question-package.json, rn_kb2VkFMdBTbmG33t.sme-question-package.json, rn_mBqgkpZ3hbSBmWCC.sme-question-package.json, rn_mbcBZkygY4YpG2bf.sme-question-package.json, rn_pWzTTBv3B4yGFfj3.sme-question-package.json, rn_vXPcH3vS8wv7BFkK.sme-question-package.json, rn_vzGMZxqQtWYVWB7h.sme-question-package.json, rn_yj4y972FxCWnDnSg.sme-question-package.json); undeclared: 0"
+    },
+    {
+      "stage": "G-DELTA",
+      "name": "question packages byte-identical post-land vs manifest ×112",
+      "ok": true,
+      "detail": "0 drift"
+    },
+    {
+      "stage": "LAND",
+      "name": "guided-import.json index landed (runner-owned, re-issued)",
+      "ok": true,
+      "detail": "66284B"
+    },
+    {
+      "stage": "G-V",
+      "name": "cold re-read ×224 byte-identical vs manifest sha",
+      "ok": true,
+      "detail": "disk == fetched bytes"
+    },
+    {
+      "stage": "G-V",
+      "name": "closing identity re-derived from disk",
+      "ok": true,
+      "detail": "{\"notes\":112,\"lessons\":239,\"checks\":1499,\"keyPoints\":1212,\"distractors\":3565,\"glossaryTerms\":654}"
+    },
+    {
+      "stage": "G-V",
+      "name": "figure counts re-derived from disk",
+      "ok": true,
+      "detail": "{\"figures\":200,\"moduleMapped\":122,\"noteLevel\":78,\"modulesWithFigures\":81}"
+    },
+    {
+      "stage": "G-V",
+      "name": "loader rel-shape probe (content/<rel>)",
+      "ok": true,
+      "detail": "igcse-chemistry-19/guided-lessons/rn_2MpXPtNXvn8pQm3r.hub-lesson-import.json , igcse-chemistry-19/guided-questions/rn_2MpXPtNXvn8pQm3r.sme-question-package.json , igcse-chemistry-19/guided-import.json"
+    },
+    {
+      "stage": "G-V",
+      "name": "static build copies content/ recursively (cpSync recursive in build_corpus_static.mjs)",
+      "ok": true,
+      "detail": "whole-tree copy — new guided-* subdirs publish with the next build"
+    },
+    {
+      "stage": "G-V",
+      "name": "idempotence re-landing 224/224 identical-exists",
+      "ok": true,
+      "detail": "224/224"
+    }
+  ],
+  "landing": {
+    "hub_tree": "/home/z/my-project/syllabai-v2/apps/hub",
+    "pack": "content/igcse-chemistry-19/",
+    "lessons_dir": "guided-lessons/ (112 files)",
+    "questions_dir": "guided-questions/ (112 files)",
+    "index": "guided-import.json (guided-import-index/1.0)",
+    "files_written": 0,
+    "files_revised": 48,
+    "files_already_identical": 176,
+    "bytes_landed": 3139499,
+    "revision_log": [
+      {
+        "file": "rn_2VnK66PqbvFKdKYt.hub-lesson-import.json",
+        "from": 12850,
+        "to": 13178
+      },
+      {
+        "file": "rn_4tzwS4GZjPybwtkS.hub-lesson-import.json",
+        "from": 9874,
+        "to": 10202
+      },
+      {
+        "file": "rn_8Nv33F4dD3kkZnY6.hub-lesson-import.json",
+        "from": 9678,
+        "to": 10006
+      },
+      "… 48 lesson files total"
+    ]
+  },
+  "counts_landed": {
+    "notes": 112,
+    "lessons": 239,
+    "checks": 1499,
+    "keyPoints": 1212,
+    "distractors": 3565,
+    "glossaryTerms": 654
+  },
+  "figures_landed": {
+    "figures": 200,
+    "moduleMapped": 122,
+    "noteLevel": 78,
+    "modulesWithFigures": 81
+  },
+  "conservation_recomputed": {
+    "authored_chars": 1501204,
+    "authored_stream_sha256": "2726c21bddcfdb95ae073b861cc413f58eae5923a6a5967ca2e53d3bd9996790"
+  },
+  "next_operator_gated": [
+    "commit the hub tree addition (runner + content/igcse-chemistry-19/guided-*) per standing convention — push auto-bakes the hub (git-linked law)",
+    "hub PR (atomic): FEED runner + TS optional fields + renderer figure cards + revised artifacts + re-issued guided-import.json; merges only after resources PR #207"
+  ],
+  "duration_ms": 17227
+}

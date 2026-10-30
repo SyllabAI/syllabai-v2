@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_YBWYstSRgM2QPzQq",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "52a0af6293df107468d5c8f26a13f1974da18f8888c34ca73e64160970a87ac8",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "1e99fcbd299fdb504bbfaeca20c665754adc2138525b37ee7ff9846015564cf4",
+    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
   },
   "packageId": "igcse-chemistry::rn_YBWYstSRgM2QPzQq",
   "subject": "igcse-chemistry",
@@ -192,6 +192,65 @@
       ]
     },
     {
+      "id": "rn_YBWYstSRgM2QPzQq::L1::Q6",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L1",
+      "stem": "State what happens to the vapour inside the condenser.",
+      "misconceptionClass": "condenser process",
+      "kind": "recall",
+      "modelAnswer": "It cools and condenses into the pure liquid, which collects in a beaker.",
+      "keywords": [
+        "cools",
+        "cool",
+        "condenses",
+        "condense",
+        "condensing",
+        "condensation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L1::Q7",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L1",
+      "stem": "State which liquid boils first when fractionally distilling ethanol (boiling point 78 °C) and water (boiling point 100 °C).",
+      "misconceptionClass": "boiling order",
+      "kind": "recall",
+      "modelAnswer": "Ethanol — heat the mixture to the lowest boiling point present, and that substance boils first and distils out.",
+      "keywords": [
+        "ethanol",
+        "78"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L1::Q8",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L1",
+      "stem": "Explain why heating stops when the thermometer reaches 100 °C during the fractional distillation of ethanol and water.",
+      "misconceptionClass": "stop temperature logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because 100 °C is water's boiling point — collecting past it would distil water instead of the ethanol, which comes over at 78 °C.",
+      "keywords": [
+        "water",
+        "100",
+        "boiling",
+        "bp",
+        "point"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L1::Q9",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L1",
+      "stem": "A student has propanol (boiling point 97 °C) mixed with ethanol (boiling point 78 °C). State which liquid distils first, and at what thermometer reading it comes over.",
+      "misconceptionClass": "lower bp first applied",
+      "kind": "application",
+      "modelAnswer": "Ethanol distils first — heat the mixture to the lowest boiling point present, and that substance boils first — so the ethanol comes over at 78 °C.",
+      "keywords": [
+        "ethanol",
+        "78"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_YBWYstSRgM2QPzQq::L2::Q1",
       "moduleId": "rn_YBWYstSRgM2QPzQq::L2",
       "stem": "Sand is stirred into water. Which technique recovers the sand, and what is the sand left on the paper called?",
@@ -370,6 +429,70 @@
           "misconception": "regulation invented"
         }
       ]
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L2::Q6",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L2",
+      "stem": "State the names for the liquid that passes through the filter paper and the solid left on it.",
+      "misconceptionClass": "filtrate vs residue",
+      "kind": "recall",
+      "modelAnswer": "The liquid that passes through is the filtrate; the solid left on the paper is the residue.",
+      "keywords": [
+        "filtrate",
+        "residue"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L2::Q7",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L2",
+      "stem": "State what paper chromatography separates, and how.",
+      "misconceptionClass": "chromatography definition",
+      "kind": "recall",
+      "modelAnswer": "Dissolved substances, by the different distances they travel with a solvent up the paper.",
+      "keywords": [
+        "distances",
+        "distance",
+        "travel",
+        "solvent",
+        "dissolved"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L2::Q8",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L2",
+      "stem": "Explain why crystallisation works for a solid whose solubility falls as the hot solution cools.",
+      "misconceptionClass": "crystallisation logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the hot solution holds a lot of dissolved solid; as it cools the solubility falls, the solution can hold less, and the excess solid forms crystals.",
+      "keywords": [
+        "cools",
+        "cooling",
+        "cold",
+        "less",
+        "hold",
+        "falls",
+        "fall",
+        "excess",
+        "crystals"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L2::Q9",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L2",
+      "stem": "Two dyes are placed on the same chromatography paper. Dye A is more soluble in the solvent than dye B. State which dye travels further up the paper.",
+      "misconceptionClass": "solubility vs distance applied",
+      "kind": "application",
+      "modelAnswer": "Dye A — more soluble substances travel further up the paper (the pencil line stays above the solvent level throughout the run).",
+      "keywords": [
+        "more",
+        "soluble",
+        "further",
+        "faster"
+      ],
+      "options": []
     }
   ]
 }

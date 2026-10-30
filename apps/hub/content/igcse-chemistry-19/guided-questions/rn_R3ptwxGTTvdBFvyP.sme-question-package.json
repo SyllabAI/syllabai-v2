@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_R3ptwxGTTvdBFvyP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "8e129f9647a7907c37083c7dff5bc8a35b01ed31ee9d8577dcca3fe7d25f79a3",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "e5d084bbe79677d76c652fd890de3c7822d78197f51148576b7a6b4b7f0bf9dc",
+    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
   },
   "packageId": "igcse-chemistry::rn_R3ptwxGTTvdBFvyP",
   "subject": "igcse-chemistry",
@@ -192,6 +192,73 @@
       ]
     },
     {
+      "id": "rn_R3ptwxGTTvdBFvyP::L1::Q6",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L1",
+      "stem": "State what a pure substance produces on a chromatogram, and what an impure sample produces.",
+      "misconceptionClass": "spot count purity",
+      "kind": "recall",
+      "modelAnswer": "A pure substance produces one spot; an impure sample produces more than one.",
+      "keywords": [
+        "one",
+        "1",
+        "more",
+        "impure",
+        "pure"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L1::Q7",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L1",
+      "stem": "State what a mixture shows on the chromatography paper.",
+      "misconceptionClass": "mixture spots",
+      "kind": "recall",
+      "modelAnswer": "It separates, showing each of its components as a separate spot.",
+      "keywords": [
+        "separates",
+        "separate",
+        "separated",
+        "spots",
+        "spot",
+        "components",
+        "component"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L1::Q8",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L1",
+      "stem": "Explain why matching is done by horizontal alignment of dots in a black-and-white exam chromatogram.",
+      "misconceptionClass": "black-white matching logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because exam chromatograms are black and white, colour cannot identify anything — dots that line up horizontally (sit at the same height) mark the same substance.",
+      "keywords": [
+        "black",
+        "white",
+        "colour",
+        "color",
+        "height",
+        "level",
+        "horizontal",
+        "alignment"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L1::Q9",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L1",
+      "stem": "A food dye's chromatogram shows two spots. State whether the dye is pure or a mixture.",
+      "misconceptionClass": "spot count applied",
+      "kind": "application",
+      "modelAnswer": "A mixture — more than one spot means the sample is impure (a mixture of components); a pure substance gives one spot.",
+      "keywords": [
+        "mixture",
+        "impure",
+        "two"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_R3ptwxGTTvdBFvyP::L2::Q1",
       "moduleId": "rn_R3ptwxGTTvdBFvyP::L2",
       "stem": "What is the Rf value of a substance?",
@@ -370,6 +437,74 @@
           "misconception": "solvent fingerprint"
         }
       ]
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L2::Q6",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L2",
+      "stem": "State the three properties of an Rf value.",
+      "misconceptionClass": "Rf properties",
+      "kind": "recall",
+      "modelAnswer": "It is a ratio, it carries no units, and it always stays below one.",
+      "keywords": [
+        "ratio",
+        "units",
+        "unit",
+        "below",
+        "less",
+        "one"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L2::Q7",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L2",
+      "stem": "State what exam mark schemes reward in Rf measurements.",
+      "misconceptionClass": "ruler work",
+      "kind": "recall",
+      "modelAnswer": "Careful ruler work on both distances — measured from the baseline to the centre of each dot or front.",
+      "keywords": [
+        "ruler",
+        "careful",
+        "precise",
+        "centre",
+        "center",
+        "accurate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L2::Q8",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L2",
+      "stem": "Explain why an Rf value can never reach one or go above it.",
+      "misconceptionClass": "Rf ceiling logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the substance never travels further than the solvent front — its distance is divided by the larger solvent distance, so the ratio stays below one.",
+      "keywords": [
+        "front",
+        "further",
+        "less",
+        "below",
+        "smaller",
+        "never",
+        "distance"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L2::Q9",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L2",
+      "stem": "An unknown dye gives Rf = 0.52 in solvent X; the data table lists dye P at 0.52 and dye Q at 0.31 in solvent X. State which dye the unknown likely is, and how to confirm it.",
+      "misconceptionClass": "Rf identification applied",
+      "kind": "application",
+      "modelAnswer": "Dye P — measured Rf values compared with tables of known values identify the components of a mixture; run the known dye alongside on the same paper and check the spots line up.",
+      "keywords": [
+        "p",
+        "0.52",
+        "table",
+        "compare",
+        "comparing"
+      ],
+      "options": []
     }
   ]
 }

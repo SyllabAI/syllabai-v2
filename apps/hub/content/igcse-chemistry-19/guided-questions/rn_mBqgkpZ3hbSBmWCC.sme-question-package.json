@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_mBqgkpZ3hbSBmWCC",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a4d4bd23e14205b0d6ea4709e9906368a0a509d61b7e440c2cd98cf2c99f068d",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "bb1b30d87537834dc3a46db86ed23038d9b5c5449f38cc0b11f0d5e0f49cc5bd",
+    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
   },
   "packageId": "igcse-chemistry::rn_mBqgkpZ3hbSBmWCC",
   "subject": "igcse-chemistry",
@@ -192,6 +192,72 @@
       ]
     },
     {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L1::Q6",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L1",
+      "stem": "State which element is the exception to the group-number rule, and what its outer shell holds.",
+      "misconceptionClass": "helium exception recall",
+      "kind": "recall",
+      "modelAnswer": "Helium — it sits in Group 0 with just two electrons in its only shell.",
+      "keywords": [
+        "helium",
+        "two",
+        "2",
+        "0"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L1::Q7",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L1",
+      "stem": "State how reactivity changes as you go down Group 7.",
+      "misconceptionClass": "group 7 trend recall",
+      "kind": "recall",
+      "modelAnswer": "It decreases — Group 7 elements turn less reactive further down the group.",
+      "keywords": [
+        "decrease",
+        "decreases",
+        "decreasing",
+        "less",
+        "falls",
+        "fall"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L1::Q8",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L1",
+      "stem": "Explain why the group number works as a shorthand for how an element will react and bond.",
+      "misconceptionClass": "group shorthand logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the group number equals the outer-shell electron count, and the outer electrons are the ones that take part in reactions and bonding.",
+      "keywords": [
+        "outer",
+        "group",
+        "equals",
+        "equal",
+        "react",
+        "bond",
+        "bonding"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L1::Q9",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L1",
+      "stem": "A student observes that bromine, a Group 7 element, reacts with potassium. State what this one observation predicts about chlorine and iodine.",
+      "misconceptionClass": "group prediction applied",
+      "kind": "application",
+      "modelAnswer": "As members of the same group they are predicted to react in a similar way — observing one member of a group lets you predict how its partners react.",
+      "keywords": [
+        "similar",
+        "similarly",
+        "predict",
+        "predicted",
+        "group"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_mBqgkpZ3hbSBmWCC::L2::Q1",
       "moduleId": "rn_mBqgkpZ3hbSBmWCC::L2",
       "stem": "Why do the noble gases not readily react?",
@@ -370,6 +436,72 @@
           "misconception": "metallic properties misapplied"
         }
       ]
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L2::Q6",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L2",
+      "stem": "State how the noble gases exist as elements: how many atoms each particle holds, what they look like, and their flammability.",
+      "misconceptionClass": "noble gas properties recall",
+      "kind": "recall",
+      "modelAnswer": "They are monatomic (single atoms), colourless non-metal gases, and they do not catch fire at room temperature.",
+      "keywords": [
+        "monatomic",
+        "single",
+        "colourless",
+        "colorless",
+        "nonmetal",
+        "non-metal",
+        "gas",
+        "gases",
+        "fire"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L2::Q7",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L2",
+      "stem": "State which noble gas has the configuration 2,8,8, and what that configuration shows about its third shell.",
+      "misconceptionClass": "argon configuration recall",
+      "kind": "recall",
+      "modelAnswer": "Argon — 2,8,8 shows a full third shell in this model, which is why argon sits inert in Group 0.",
+      "keywords": [
+        "argon",
+        "full",
+        "complete",
+        "inert"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L2::Q8",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L2",
+      "stem": "Explain why noble gases need not lose, gain or share electrons.",
+      "misconceptionClass": "full shell no reaction logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because their outer shells are already full, so they have no need to lose, gain or share electrons to reach a stable arrangement.",
+      "keywords": [
+        "full",
+        "already",
+        "stable",
+        "complete"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L2::Q9",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L2",
+      "stem": "A newly discovered element is suspected to be a noble gas. State how many outer electrons it must carry (helium excepted), and what that predicts about the molecules it forms.",
+      "misconceptionClass": "noble gas prediction applied",
+      "kind": "application",
+      "modelAnswer": "Eight outer electrons — a full outer shell — so it will not form molecules easily.",
+      "keywords": [
+        "eight",
+        "8",
+        "molecules",
+        "molecule",
+        "full"
+      ],
+      "options": []
     }
   ]
 }

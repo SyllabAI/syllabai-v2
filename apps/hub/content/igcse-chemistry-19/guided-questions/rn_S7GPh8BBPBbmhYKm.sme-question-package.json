@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_S7GPh8BBPBbmhYKm",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "acf68b85ca0cffd27266f8936968191b865de556d8aee9c7455d27a56bb60493",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "5f76d42878573dff746e619e0e7325975f8e8ce9956b0948a776acf3a04df598",
+    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
   },
   "packageId": "igcse-chemistry::rn_S7GPh8BBPBbmhYKm",
   "subject": "igcse-chemistry",
@@ -192,6 +192,75 @@
       ]
     },
     {
+      "id": "rn_S7GPh8BBPBbmhYKm::L1::Q6",
+      "moduleId": "rn_S7GPh8BBPBbmhYKm::L1",
+      "stem": "State what eventually happens to diffusing particles left long enough.",
+      "misconceptionClass": "diffusion end state",
+      "kind": "recall",
+      "modelAnswer": "Given time, the particles end up evenly spread throughout the available space.",
+      "keywords": [
+        "evenly",
+        "spread",
+        "even",
+        "throughout",
+        "uniform",
+        "distributed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S7GPh8BBPBbmhYKm::L1::Q7",
+      "moduleId": "rn_S7GPh8BBPBbmhYKm::L1",
+      "stem": "State the energy input diffusion needs.",
+      "misconceptionClass": "energy recall",
+      "kind": "recall",
+      "modelAnswer": "None — diffusion needs no energy input (it only speeds up at higher temperatures).",
+      "keywords": [
+        "no",
+        "none",
+        "without",
+        "nothing",
+        "zero"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S7GPh8BBPBbmhYKm::L1::Q8",
+      "moduleId": "rn_S7GPh8BBPBbmhYKm::L1",
+      "stem": "Explain why diffusion happens in gases and liquids but not in solids.",
+      "misconceptionClass": "states of diffusion logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because diffusion requires particles in random motion — the particles of gases and liquids move randomly, while solid particles only vibrate about fixed positions.",
+      "keywords": [
+        "random",
+        "motion",
+        "moving",
+        "move",
+        "vibrate",
+        "vibrating",
+        "fixed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S7GPh8BBPBbmhYKm::L1::Q9",
+      "moduleId": "rn_S7GPh8BBPBbmhYKm::L1",
+      "stem": "A drop of food colouring spreads through a beaker of cold water very slowly. State two changes that would make it spread faster.",
+      "misconceptionClass": "diffusion speed applied",
+      "kind": "application",
+      "modelAnswer": "Warm the water — diffusion speeds up at higher temperatures — and remember liquids always diffuse slower than gases because their particles are closely packed and move slowly.",
+      "keywords": [
+        "warm",
+        "warmer",
+        "hot",
+        "hotter",
+        "temperature",
+        "heat",
+        "heating"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_S7GPh8BBPBbmhYKm::L2::Q1",
       "moduleId": "rn_S7GPh8BBPBbmhYKm::L2",
       "stem": "What happens to the solute particles when a solution is diluted?",
@@ -370,6 +439,73 @@
           "misconception": "process confused"
         }
       ]
+    },
+    {
+      "id": "rn_S7GPh8BBPBbmhYKm::L2::Q6",
+      "moduleId": "rn_S7GPh8BBPBbmhYKm::L2",
+      "stem": "State what dilution means.",
+      "misconceptionClass": "dilution definition",
+      "kind": "recall",
+      "modelAnswer": "Dilution means adding more solvent, typically water, to an existing solution.",
+      "keywords": [
+        "solvent",
+        "water",
+        "adding",
+        "add",
+        "more"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S7GPh8BBPBbmhYKm::L2::Q7",
+      "moduleId": "rn_S7GPh8BBPBbmhYKm::L2",
+      "stem": "State what happens to the colour of a solution with each dilution.",
+      "misconceptionClass": "colour trend",
+      "kind": "recall",
+      "modelAnswer": "The colour grows fainter with each dilution, but it does not disappear immediately.",
+      "keywords": [
+        "fainter",
+        "paler",
+        "faint",
+        "lighter",
+        "weaker"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S7GPh8BBPBbmhYKm::L2::Q8",
+      "moduleId": "rn_S7GPh8BBPBbmhYKm::L2",
+      "stem": "Explain what the lasting faint colour after many dilutions shows about a small crystal of potassium manganate(VII).",
+      "misconceptionClass": "particle number logic",
+      "kind": "explain-why",
+      "modelAnswer": "It shows that even a small crystal must contain a huge number of tiny particles — enough to keep colouring the water after so much dilution.",
+      "keywords": [
+        "huge",
+        "large",
+        "many",
+        "number",
+        "particles",
+        "millions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S7GPh8BBPBbmhYKm::L2::Q9",
+      "moduleId": "rn_S7GPh8BBPBbmhYKm::L2",
+      "stem": "A student dilutes a solution 1:10 three times in a row. State what happens to the concentration of the solute overall.",
+      "misconceptionClass": "repeated dilution applied",
+      "kind": "application",
+      "modelAnswer": "It falls with each dilution — adding solvent lowers the concentration of the solute particles, so after three dilutions the concentration is much lower.",
+      "keywords": [
+        "lower",
+        "falls",
+        "fall",
+        "lowers",
+        "less",
+        "decreases",
+        "decrease"
+      ],
+      "options": []
     }
   ]
 }

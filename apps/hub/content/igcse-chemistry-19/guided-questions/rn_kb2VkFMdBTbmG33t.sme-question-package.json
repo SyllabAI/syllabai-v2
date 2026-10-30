@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_kb2VkFMdBTbmG33t",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b79d9ae5c44cce109c85d91aab18e1578f52199b0b39ba649ec4ed7fa1d5d973",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "d0b11274f81072c0508bff747ab23a41a877f6e613ba8e39c691c48cf65f1d04",
+    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
   },
   "packageId": "igcse-chemistry::rn_kb2VkFMdBTbmG33t",
   "subject": "igcse-chemistry",
@@ -192,6 +192,72 @@
       ]
     },
     {
+      "id": "rn_kb2VkFMdBTbmG33t::L1::Q6",
+      "moduleId": "rn_kb2VkFMdBTbmG33t::L1",
+      "stem": "State the three kinds of sub-atomic particle inside an atom.",
+      "misconceptionClass": "sub-atomic particles",
+      "kind": "recall",
+      "modelAnswer": "Protons, neutrons and electrons.",
+      "keywords": [
+        "protons",
+        "neutrons",
+        "electrons",
+        "proton",
+        "neutron",
+        "electron"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kb2VkFMdBTbmG33t::L1::Q7",
+      "moduleId": "rn_kb2VkFMdBTbmG33t::L1",
+      "stem": "State the path electrons take around the nucleus.",
+      "misconceptionClass": "electron paths",
+      "kind": "recall",
+      "modelAnswer": "Electrons race around the nucleus along orbital paths known as shells.",
+      "keywords": [
+        "shells",
+        "shell",
+        "orbit",
+        "orbital",
+        "paths"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kb2VkFMdBTbmG33t::L1::Q8",
+      "moduleId": "rn_kb2VkFMdBTbmG33t::L1",
+      "stem": "Explain why an atom's mass is effectively all contained in its nucleus.",
+      "misconceptionClass": "nucleus mass logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because a proton and a neutron each have relative mass 1, while an electron's mass of about 1/1840 is treated as negligible — so effectively all of an atom's mass sits in its nucleus, where the protons and neutrons are.",
+      "keywords": [
+        "negligible",
+        "1840",
+        "nucleus",
+        "protons",
+        "neutrons",
+        "mass"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kb2VkFMdBTbmG33t::L1::Q9",
+      "moduleId": "rn_kb2VkFMdBTbmG33t::L1",
+      "stem": "A particle diagram shows two hydrogen atoms joined chemically to one oxygen atom. State whether the particle shown is an atom or a molecule, and why.",
+      "misconceptionClass": "molecule identification applied",
+      "kind": "application",
+      "modelAnswer": "A molecule — a molecule is two or more atoms joined chemically, and this particle joins three atoms.",
+      "keywords": [
+        "molecule",
+        "joined",
+        "three",
+        "3",
+        "two"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_kb2VkFMdBTbmG33t::L2::Q1",
       "moduleId": "rn_kb2VkFMdBTbmG33t::L2",
       "stem": "An atom has atomic number 11 and mass number 23. How many electrons does it hold?",
@@ -370,6 +436,70 @@
           "misconception": "average reduced to a single isotope"
         }
       ]
+    },
+    {
+      "id": "rn_kb2VkFMdBTbmG33t::L2::Q6",
+      "moduleId": "rn_kb2VkFMdBTbmG33t::L2",
+      "stem": "State how the number of neutrons in an atom is found.",
+      "misconceptionClass": "neutron count",
+      "kind": "recall",
+      "modelAnswer": "Take the atomic number away from the mass number (neutrons = mass number − atomic number).",
+      "keywords": [
+        "mass",
+        "atomic",
+        "minus",
+        "takeaway",
+        "subtract",
+        "take",
+        "away",
+        "difference"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kb2VkFMdBTbmG33t::L2::Q7",
+      "moduleId": "rn_kb2VkFMdBTbmG33t::L2",
+      "stem": "State the particle counts for lithium (atomic number 3, mass number 7).",
+      "misconceptionClass": "lithium counts",
+      "kind": "recall",
+      "modelAnswer": "3 protons, 3 electrons and 4 neutrons.",
+      "keywords": [
+        "3",
+        "4",
+        "three",
+        "four"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kb2VkFMdBTbmG33t::L2::Q8",
+      "moduleId": "rn_kb2VkFMdBTbmG33t::L2",
+      "stem": "Explain why an atom's atomic number also tells you its electron count.",
+      "misconceptionClass": "neutral atom logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because in a neutral atom the electrons equal the protons — the atomic number counts protons in the nucleus, and in a neutral atom it counts the electrons too.",
+      "keywords": [
+        "neutral",
+        "equal",
+        "equals",
+        "same",
+        "protons",
+        "electrons"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kb2VkFMdBTbmG33t::L2::Q9",
+      "moduleId": "rn_kb2VkFMdBTbmG33t::L2",
+      "stem": "Atom X and atom Y both carry 17 protons; X holds 18 neutrons and Y holds 20. State the relationship between X and Y.",
+      "misconceptionClass": "isotope spotting applied",
+      "kind": "application",
+      "modelAnswer": "They are isotopes — isotopes share an element and proton count but differ in their neutron counts.",
+      "keywords": [
+        "isotopes",
+        "isotope"
+      ],
+      "options": []
     }
   ]
 }

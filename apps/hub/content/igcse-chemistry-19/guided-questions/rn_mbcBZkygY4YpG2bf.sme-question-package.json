@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_mbcBZkygY4YpG2bf",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "653faf8073313ff0a8fc993a8bb5800da94506aa2d0fc3fcd76143e7d52b2b16",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "ecdfbd30b3785a81c9aec5b37e6b9dc0d4b02c668e533c1e1b0a52f6982a3353",
+    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
   },
   "packageId": "igcse-chemistry::rn_mbcBZkygY4YpG2bf",
   "subject": "igcse-chemistry",
@@ -192,6 +192,74 @@
       ]
     },
     {
+      "id": "rn_mbcBZkygY4YpG2bf::L1::Q6",
+      "moduleId": "rn_mbcBZkygY4YpG2bf::L1",
+      "stem": "Name the three noble gases the note names for electronic structures.",
+      "misconceptionClass": "noble gas names recall",
+      "kind": "recall",
+      "modelAnswer": "Helium, neon and argon.",
+      "keywords": [
+        "helium",
+        "neon",
+        "argon"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_mbcBZkygY4YpG2bf::L1::Q7",
+      "moduleId": "rn_mbcBZkygY4YpG2bf::L1",
+      "stem": "State what every metal atom does in ion forming, and what every non-metal atom does.",
+      "misconceptionClass": "metal non-metal behaviour recall",
+      "kind": "recall",
+      "modelAnswer": "Every metal atom loses electrons and becomes a positive ion; every non-metal gains electrons and becomes a negative ion.",
+      "keywords": [
+        "metal",
+        "metals",
+        "loses",
+        "lose",
+        "positive",
+        "nonmetal",
+        "non-metal",
+        "gains",
+        "gain",
+        "negative"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_mbcBZkygY4YpG2bf::L1::Q8",
+      "moduleId": "rn_mbcBZkygY4YpG2bf::L1",
+      "stem": "Explain why an atom that gives up electrons ends up with a positive charge.",
+      "misconceptionClass": "positive charge logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because electrons are negative — losing them leaves more protons than electrons, so the particle's overall charge is positive.",
+      "keywords": [
+        "protons",
+        "proton",
+        "electrons",
+        "electron",
+        "more",
+        "positive",
+        "negative"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_mbcBZkygY4YpG2bf::L1::Q9",
+      "moduleId": "rn_mbcBZkygY4YpG2bf::L1",
+      "stem": "An oxygen atom has 8 electrons (2,6) and gains 2 more. State the ion's charge and the noble-gas structure it now matches.",
+      "misconceptionClass": "oxygen ion applied",
+      "kind": "application",
+      "modelAnswer": "The ion carries a 2- charge and matches the 2,8 structure of neon.",
+      "keywords": [
+        "2-",
+        "negative",
+        "neon",
+        "2,8"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_mbcBZkygY4YpG2bf::L2::Q1",
       "moduleId": "rn_mbcBZkygY4YpG2bf::L2",
       "stem": "Which statement describes an anion?",
@@ -370,6 +438,75 @@
           "misconception": "shell removal invented"
         }
       ]
+    },
+    {
+      "id": "rn_mbcBZkygY4YpG2bf::L2::Q6",
+      "moduleId": "rn_mbcBZkygY4YpG2bf::L2",
+      "stem": "Define a cation.",
+      "misconceptionClass": "cation definition recall",
+      "kind": "recall",
+      "modelAnswer": "A cation is a positive ion that forms when an atom loses electrons, leaving more protons than electrons.",
+      "keywords": [
+        "positive",
+        "loses",
+        "lose",
+        "lost",
+        "cation",
+        "protons"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_mbcBZkygY4YpG2bf::L2::Q7",
+      "moduleId": "rn_mbcBZkygY4YpG2bf::L2",
+      "stem": "State the charge on the magnesium ion and on the bromide ion from the lesson's examples.",
+      "misconceptionClass": "example charges recall",
+      "kind": "recall",
+      "modelAnswer": "Magnesium loses 2 electrons for a 2+ charge; bromine gains 1 electron for a 1- charge.",
+      "keywords": [
+        "magnesium",
+        "bromine",
+        "bromide",
+        "2+",
+        "1-"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_mbcBZkygY4YpG2bf::L2::Q8",
+      "moduleId": "rn_mbcBZkygY4YpG2bf::L2",
+      "stem": "Explain why an anion carries a negative charge.",
+      "misconceptionClass": "anion charge logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because gaining electrons leaves more electrons than protons, so the overall charge is negative.",
+      "keywords": [
+        "gaining",
+        "gain",
+        "gains",
+        "electrons",
+        "electron",
+        "protons",
+        "more",
+        "negative"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_mbcBZkygY4YpG2bf::L2::Q9",
+      "moduleId": "rn_mbcBZkygY4YpG2bf::L2",
+      "stem": "Aluminium (Group 3) reacts with sulfur (Group 6). State which element forms the cation, which forms the anion, and each ion's charge.",
+      "misconceptionClass": "cation anion assignment applied",
+      "kind": "application",
+      "modelAnswer": "Aluminium is the cation at 3+ (a Group 3 metal donating its three outer electrons); sulfur is the anion at 2- (a Group 6 non-metal receiving two electrons).",
+      "keywords": [
+        "aluminium",
+        "aluminum",
+        "cation",
+        "sulfur",
+        "sulphur",
+        "anion"
+      ],
+      "options": []
     }
   ]
 }

@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_Hkwmd9GSp3gdxxR5",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "ac3c01fe9c7f4f21ecd4afc4ec026b597763ca9480a3d72ff81abb07e9458127",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "c00abdb3556a787302cb15e638fc69d887e4450e4209a71c69905824dbcff6c1",
+    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
   },
   "packageId": "igcse-chemistry::rn_Hkwmd9GSp3gdxxR5",
   "subject": "igcse-chemistry",
@@ -192,6 +192,69 @@
       ]
     },
     {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L1::Q6",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L1",
+      "stem": "State what the empirical formula shows.",
+      "misconceptionClass": "empirical definition recall",
+      "kind": "recall",
+      "modelAnswer": "The simplest whole-number ratio of the atoms of each element present.",
+      "keywords": [
+        "simplest",
+        "simple",
+        "whole",
+        "number",
+        "ratio",
+        "atoms"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L1::Q7",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L1",
+      "stem": "State which class of compound is always written in empirical form.",
+      "misconceptionClass": "ionic empirical recall",
+      "kind": "recall",
+      "modelAnswer": "Ionic compounds are always written as empirical formulae.",
+      "keywords": [
+        "ionic",
+        "ions",
+        "ion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L1::Q8",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L1",
+      "stem": "Explain why ethanoic acid's molecular formula, C2H4O2, and its empirical formula, CH2O, differ.",
+      "misconceptionClass": "common factor logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the counts in C2H4O2 share a common factor of two — dividing every count down to the simplest whole-number ratio gives CH2O.",
+      "keywords": [
+        "simplest",
+        "whole",
+        "number",
+        "ratio",
+        "factor",
+        "two",
+        "2",
+        "divide",
+        "dividing"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L1::Q9",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L1",
+      "stem": "A compound analyses as 40.0% carbon, 6.7% hydrogen and 53.3% oxygen (C 12, H 1, O 16). Run the element-by-element table and state the empirical formula.",
+      "misconceptionClass": "empirical table applied",
+      "kind": "application",
+      "modelAnswer": "C: 40.0 / 12 = 3.33; H: 6.7 / 1 = 6.7; O: 53.3 / 16 = 3.33; dividing by the smallest gives 1 : 2 : 1, so the empirical formula is CH2O.",
+      "keywords": [
+        "ch2o"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_Hkwmd9GSp3gdxxR5::L2::Q1",
       "moduleId": "rn_Hkwmd9GSp3gdxxR5::L2",
       "stem": "Ethane's empirical formula is CH3 and its molecular formula is C2H6. What is the multiplier?",
@@ -370,6 +433,72 @@
           "misconception": "ionic rule misapplied"
         }
       ]
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L2::Q6",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L2",
+      "stem": "State how the multiplier between the empirical and molecular formulae is obtained.",
+      "misconceptionClass": "multiplier recall",
+      "kind": "recall",
+      "modelAnswer": "Divide the molecular formula's mass by the empirical formula's own mass.",
+      "keywords": [
+        "divide",
+        "divided",
+        "dividing",
+        "molecular",
+        "empirical",
+        "mass"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L2::Q7",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L2",
+      "stem": "State what a hydrated salt carries in its crystal structure, and how it is written.",
+      "misconceptionClass": "hydrated salt recall",
+      "kind": "recall",
+      "modelAnswer": "Water molecules, written after a dot — for example CuSO4.5H2O.",
+      "keywords": [
+        "water",
+        "dot",
+        "cuso4",
+        "molecules",
+        "molecule"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L2::Q8",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L2",
+      "stem": "Explain why the same empirical table still works when the substance is a hydrated salt.",
+      "misconceptionClass": "table adaptation logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the table only needs two substances and their relative formula masses — salt and water replace the elements, and Mr values replace the atomic ones, so the same mole-and-ratio steps run unchanged.",
+      "keywords": [
+        "salt",
+        "water",
+        "relative",
+        "formula",
+        "masses",
+        "replace",
+        "replaces",
+        "same"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L2::Q9",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L2",
+      "stem": "A compound's empirical formula is NO2 (N 14, O 16) and its relative formula mass is 92. State the multiplier and the molecular formula.",
+      "misconceptionClass": "molecular formula applied",
+      "kind": "application",
+      "modelAnswer": "Empirical mass = 14 + (2 x 16) = 46; 92 / 46 = 2, so the multiplier is 2 and the molecular formula is N2O4.",
+      "keywords": [
+        "n2o4",
+        "multiplier",
+        "2"
+      ],
+      "options": []
     }
   ]
 }

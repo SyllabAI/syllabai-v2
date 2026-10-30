@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_Syxyh4Fct8KFg8NQ",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b57df7e45aaff76d8099bffe18b81631e76e4e91572dd831eae9725063039387",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "80a9b0a088af1502420f0a6128ed9fd7c4ba68514230bfa474dff8e64cef1421",
+    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
   },
   "packageId": "igcse-chemistry::rn_Syxyh4Fct8KFg8NQ",
   "subject": "igcse-chemistry",
@@ -192,6 +192,70 @@
       ]
     },
     {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L1::Q6",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L1",
+      "stem": "State how many electrons the first and second shells can each hold in the simplified model used for the first twenty elements.",
+      "misconceptionClass": "shell capacity recall",
+      "kind": "recall",
+      "modelAnswer": "The first shell holds 2 electrons and the second holds 8 (and in this course the third shell is also treated as holding 8).",
+      "keywords": [
+        "2",
+        "two",
+        "8",
+        "eight"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L1::Q7",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L1",
+      "stem": "Describe what the numbers in an electronic configuration such as 2,8,1 count.",
+      "misconceptionClass": "configuration meaning",
+      "kind": "recall",
+      "modelAnswer": "They count the electrons in each shell, separated by commas, counting from the nucleus outwards.",
+      "keywords": [
+        "electrons",
+        "electron",
+        "shell",
+        "shells",
+        "commas",
+        "outwards"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L1::Q8",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L1",
+      "stem": "Explain why potassium and calcium are described as breaking the simple filling pattern.",
+      "misconceptionClass": "fourth shell exception logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because their electrons enter the fourth shell before the third shell fills further — potassium's nineteenth electron starts the fourth shell, giving 2,8,8,1.",
+      "keywords": [
+        "fourth",
+        "4th",
+        "nineteenth",
+        "19th",
+        "before"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L1::Q9",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L1",
+      "stem": "A sodium atom has 11 electrons and forms an ion with a 1+ charge by losing its single outer electron. State how many occupied shells the ion has and the electrons in its outer shell.",
+      "misconceptionClass": "sodium ion configuration applied",
+      "kind": "application",
+      "modelAnswer": "Two occupied shells with 8 electrons in the outer shell — the configuration is 2,8.",
+      "keywords": [
+        "2,8",
+        "two",
+        "8",
+        "eight",
+        "outer"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_Syxyh4Fct8KFg8NQ::L2::Q1",
       "moduleId": "rn_Syxyh4Fct8KFg8NQ::L2",
       "stem": "An atom has the configuration 2,8,6. Which period of the Periodic Table is it in?",
@@ -370,6 +434,67 @@
           "misconception": "group count misread"
         }
       ]
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L2::Q6",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L2",
+      "stem": "State what the last number in an electronic configuration shows.",
+      "misconceptionClass": "last number meaning",
+      "kind": "recall",
+      "modelAnswer": "It shows the number of outer electrons, and that count gives the group.",
+      "keywords": [
+        "outer",
+        "electrons",
+        "electron",
+        "group"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L2::Q7",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L2",
+      "stem": "State how to read an element's period from its electronic configuration.",
+      "misconceptionClass": "period reading",
+      "kind": "recall",
+      "modelAnswer": "Count the number-groups in the configuration — the number of occupied shells equals the period.",
+      "keywords": [
+        "count",
+        "number",
+        "occupied",
+        "shells",
+        "shell",
+        "groups"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L2::Q8",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L2",
+      "stem": "Explain why the exam Periodic Table alone does not give an element's period directly.",
+      "misconceptionClass": "period not printed logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the table prints the group number but not the period number, so you must label the period yourself from the occupied-shell count.",
+      "keywords": [
+        "group",
+        "period",
+        "label",
+        "printed",
+        "prints"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L2::Q9",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L2",
+      "stem": "Element X sits in the same group as chlorine, whose configuration is 2,8,7. State how many outer-shell electrons an atom of X has.",
+      "misconceptionClass": "shared outer count applied",
+      "kind": "application",
+      "modelAnswer": "Seven — atoms in the same group share their count of outer-shell electrons, so X has 7 outer electrons like chlorine.",
+      "keywords": [
+        "seven",
+        "7"
+      ],
+      "options": []
     }
   ]
 }

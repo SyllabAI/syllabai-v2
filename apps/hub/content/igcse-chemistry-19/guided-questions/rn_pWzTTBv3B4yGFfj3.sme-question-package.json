@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_pWzTTBv3B4yGFfj3",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "6e29ef056558a4fe0e4860aa84c8f79219fb8b4c5c022a60d7572f6ef31fcd6f",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "b95fc7cb702bd589099b2c292ff202a1e912962da0c9731f4d4a0671ede58738",
+    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
   },
   "packageId": "igcse-chemistry::rn_pWzTTBv3B4yGFfj3",
   "subject": "igcse-chemistry",
@@ -192,6 +192,75 @@
       ]
     },
     {
+      "id": "rn_pWzTTBv3B4yGFfj3::L1::Q6",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L1",
+      "stem": "State the raw material a formula-by-experiment working starts from.",
+      "misconceptionClass": "mass data recall",
+      "kind": "recall",
+      "modelAnswer": "Mass measurements taken before and after the reaction.",
+      "keywords": [
+        "mass",
+        "masses",
+        "weighing",
+        "weighings",
+        "before",
+        "after"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L1::Q7",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L1",
+      "stem": "Name the three kinds of compound the note says can have their formulae found experimentally.",
+      "misconceptionClass": "compound kinds recall",
+      "kind": "recall",
+      "modelAnswer": "Metal oxides, water, and salts holding water of crystallisation.",
+      "keywords": [
+        "oxide",
+        "oxides",
+        "water",
+        "salts",
+        "salt",
+        "crystallisation",
+        "crystallisation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L1::Q8",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L1",
+      "stem": "Explain why the before-and-after masses must be converted into moles before the formula can be deduced.",
+      "misconceptionClass": "moles for ratio logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because formulae are ratios of atoms, and moles count particles — converting the masses into moles turns the data into the molar ratio that gives the empirical formula.",
+      "keywords": [
+        "moles",
+        "mole",
+        "ratio",
+        "atoms",
+        "particles"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L1::Q9",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L1",
+      "stem": "Two experiments are planned: one where a gas escapes from an open crucible, and one where everything stays as solids in a sealed vessel. State which suits the mass-change method better, and why.",
+      "misconceptionClass": "experiment selection applied",
+      "kind": "application",
+      "modelAnswer": "The gas-escape experiment — experiments where a gas is lost or gained are the easiest to handle, because the mass change is easy to see.",
+      "keywords": [
+        "gas",
+        "escape",
+        "escapes",
+        "lost",
+        "gained",
+        "mass",
+        "change"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_pWzTTBv3B4yGFfj3::L2::Q1",
       "moduleId": "rn_pWzTTBv3B4yGFfj3::L2",
       "stem": "Why must the hydrated salt be heated until the blue colour completely disappears?",
@@ -370,6 +439,71 @@
           "misconception": "multiplication and division swapped"
         }
       ]
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L2::Q6",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L2",
+      "stem": "State the aim of the hydrated copper sulfate experiment in formula form.",
+      "misconceptionClass": "experiment aim recall",
+      "kind": "recall",
+      "modelAnswer": "To determine the formula of hydrated copper sulfate, written CuSO4.xH2O.",
+      "keywords": [
+        "formula",
+        "cuso4",
+        "hydrated",
+        "copper",
+        "sulfate",
+        "sulphate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L2::Q7",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L2",
+      "stem": "State why the salt must not be overheated.",
+      "misconceptionClass": "overheating guard recall",
+      "kind": "recall",
+      "modelAnswer": "A decomposed salt loses extra mass, and that extra loss corrupts the water-to-salt ratio.",
+      "keywords": [
+        "decompose",
+        "decomposes",
+        "decomposed",
+        "extra",
+        "corrupts",
+        "ratio",
+        "loss"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L2::Q8",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L2",
+      "stem": "Explain why the water's mass in this experiment is found by subtraction.",
+      "misconceptionClass": "subtraction logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because heating drives the water off as steam — the hydrated mass minus the anhydrous mass left in the dish is exactly the water's contribution.",
+      "keywords": [
+        "minus",
+        "subtract",
+        "subtraction",
+        "difference",
+        "hydrated",
+        "anhydrous"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L2::Q9",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L2",
+      "stem": "A dish holds 2.50 g of hydrated salt; after gentle heating, 1.60 g of anhydrous solid remains. State the mass of water driven off.",
+      "misconceptionClass": "water mass applied",
+      "kind": "application",
+      "modelAnswer": "2.50 - 1.60 = 0.90 g of water.",
+      "keywords": [
+        "0.90",
+        "0.9"
+      ],
+      "options": []
     }
   ]
 }
