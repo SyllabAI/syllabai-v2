@@ -9,6 +9,7 @@
  * rest of the registry. The current course is marked. Client island —
  * the roster lives in localStorage, so this cannot be a server component.
  */
+import { useState } from "react";
 import Link from "next/link";
 import { Check, ChevronsUpDown, LayoutDashboard } from "lucide-react";
 import {
@@ -27,6 +28,17 @@ export interface SwitcherCourse {
   label: string;
   subject: string;
   level: string;
+  /** registry board label (boardOf) — without it the 56 Cambridge lanes
+   *  sharing subjects with the Edexcel set are indistinguishable rows
+   *  (UX review F-14); absent = Edexcel, matching boardOf's rule */
+  board?: string;
+}
+
+/** Short board form for the narrow dropdown row (the full
+ *  "Cambridge International" squeezes the label); "Cambridge" is the word
+ *  students actually use and the directory's own search alias carries it. */
+function boardShort(board: string | undefined): string | undefined {
+  return board === "Cambridge International" ? "Cambridge" : board;
 }
 
 export function CourseSwitcher({
@@ -40,10 +52,23 @@ export function CourseSwitcher({
   // it — "pick from the registry below" was a promise the rows couldn't keep.
   const { slugs, add } = useMySubjects();
   const bySlug = new Map(courses.map((c) => [c.slug, c]));
+  // UX review F-14: a 106-item unsearchable list is slower than leaving for
+  // the directory — type-to-filter across label, subject, board and level.
+  const [filter, setFilter] = useState("");
+  const needle = filter.trim().toLowerCase();
+  const matches = (c: SwitcherCourse) =>
+    !needle ||
+    c.label.toLowerCase().includes(needle) ||
+    c.subject.toLowerCase().includes(needle) ||
+    (c.board ?? "").toLowerCase().includes(needle) ||
+    c.level.toLowerCase().includes(needle);
 
   // roster order first (registry-validated), then the remaining registry
-  const roster = slugs.map((s) => bySlug.get(s)).filter((c): c is SwitcherCourse => Boolean(c));
-  const rest = courses.filter((c) => !slugs.includes(c.slug));
+  const roster = slugs
+    .map((s) => bySlug.get(s))
+    .filter((c): c is SwitcherCourse => Boolean(c))
+    .filter(matches);
+  const rest = courses.filter((c) => !slugs.includes(c.slug)).filter(matches);
   const cur = bySlug.get(current);
 
   const row = (c: SwitcherCourse) => {
@@ -60,7 +85,9 @@ export function CourseSwitcher({
         >
           <Check className={cn("size-4", active ? "opacity-100" : "opacity-0")} aria-hidden />
           <span className="min-w-0 flex-1 truncate">{c.label}</span>
-          <span className="shrink-0 text-[11px] text-muted-foreground">{c.level}</span>
+          <span className="shrink-0 text-[11px] text-muted-foreground">
+            {[boardShort(c.board), c.level].filter(Boolean).join(" · ")}
+          </span>
         </Link>
       </DropdownMenuItem>
     );
@@ -84,8 +111,26 @@ export function CourseSwitcher({
         <ChevronsUpDown className="size-3.5 shrink-0 text-muted-foreground" aria-hidden />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-72">
-        <DropdownMenuLabel>My subjects</DropdownMenuLabel>
-        {roster.length > 0 ? roster.map(row) : (
+        {/* F-14 type-to-filter. Key events stop here so Radix's menu
+            typeahead never steals them; Escape stays available to Radix's
+            document listener for closing, arrows resume once focus leaves. */}
+        <div onKeyDown={(e) => e.stopPropagation()} className="px-2 pb-1 pt-1">
+          <input
+            type="text"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            placeholder={`Filter ${courses.length} subjects…`}
+            aria-label="Filter subjects"
+            className="w-full rounded-md border bg-muted px-2.5 py-1.5 text-sm outline-none transition placeholder:text-muted-foreground focus:border-primary focus:bg-background focus:ring-2 focus:ring-primary/25"
+          />
+        </div>
+        {roster.length > 0 && (
+          <>
+            <DropdownMenuLabel>My subjects</DropdownMenuLabel>
+            {roster.map(row)}
+          </>
+        )}
+        {!needle && roster.length === 0 && (
           <p className="px-2 py-1.5 text-xs text-muted-foreground">
             No saved subjects yet — pick from the registry below.
           </p>
@@ -96,6 +141,11 @@ export function CourseSwitcher({
             <DropdownMenuLabel>All subjects</DropdownMenuLabel>
             <div className="max-h-72 overflow-y-auto">{rest.map(row)}</div>
           </>
+        )}
+        {needle && roster.length === 0 && rest.length === 0 && (
+          <p className="px-2 py-1.5 text-xs text-muted-foreground">
+            No subjects match &ldquo;{filter}&rdquo;.
+          </p>
         )}
       </DropdownMenuContent>
     </DropdownMenu>
