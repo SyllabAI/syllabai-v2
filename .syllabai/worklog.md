@@ -22903,3 +22903,9 @@ Work Log:
 
 Stage Summary:
 - resources PR #238 closed as superseded by the merged F122 wave (#236, b541dda8); the official-papers corpus back-sync saga is single-threaded of record again — one landing (#236), one discharged twin (#238, closed for audit). No plane bytes, no DB, no other lane touched.
+## R0-AUTO-91 receipt — 2026-10-30T16:55Z (Job 438940, sweep 00:30+08 10-31; covers flap-voided 00:00 sweep)
+
+- Merged PR #508 (hub course sidebar rides the MathsGenie x RevisionDojo look — NavRow shared component, badge split by kind, w-64→w-72, desktop/mobile dedup; head a1a9ca46 [author-updated], CI verify+hub 2/2 first-hand; apps/hub globals.css +29/-57 + course-shell.tsx +214/-166) — merge sha c8824ecf; new main tip CI 2/2 GREEN.
+- Merged PR #509 (T-MG-INK-2 run-001 — maths instruments over the run-003 ink layer: ruler + protractor geometry of record, aspect law, snap; operator dispatch trace 1a18d2a48c6b9fc9; head 2b5e5af1, CI verify+hub 2/2 first-hand; 6 files additive — InkLayer +432/-22, InstrumentGuides/instruments/instruments.test new, .syllabai task+receipt bookkeeping; schema/contracts/api UNTOUCHED) — merge sha 988688a3; new main tip CI 2/2 GREEN (3 re-check rounds).
+- #296 gate-b: hub failure persists (unchanged head bd2c0b1e) → skip, static saga residual.
+- Notes: (1) 00:00 sweep flap #17 — sandbox failed to start, zero operations, no lock residue; this round covered the void; (2) mirror reset #280 at this sweep start — local HEAD at 89962a5d, NINTH consecutive identical signature; recovered fetch-first zero data loss; (3) during the flap window parallel instances merged #507 (audit registry census), #512 (4PH1 KaTeX tranche 1), #513 (T-BOOK-SERVE r0) — main 351f2fe4 → verified CI 2/2 first-hand before merging; (4) remaining open: #511 (audit question-player motion), #514 (T-BOOK-SERVE r1) — next sweep oldest-first; (5) receipt numbering tail re-read: 90 still max → 91; zero force-push, zero auth failures, boundaries held.
