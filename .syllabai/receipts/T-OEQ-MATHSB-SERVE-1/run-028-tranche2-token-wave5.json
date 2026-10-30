@@ -1,0 +1,72 @@
+{
+  "lane": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-028-tranche2-token-wave5",
+  "title": "Tranche-2 token repair wave-5 partial discharge: 19/58 ledger-derived units adjudicated page-first — 32 fix tuples / 17 field writes / 10 pids changed (plane edbe22de -> f7a8c687), 9 zero-fix discharges (3 page-evidenced + 6 ctx-class), 2 CATCH-ALL rows + 2 catch-all singles, wave-6 continuation 39 units filed",
+  "operatorOrder": "wave-5",
+  "operatorTrace": "1a18bc21e005e04d",
+  "date": "2026-10-30",
+  "environmentRecoveryOfRecord": "sandbox recycled between run-027 landing and this run: local clone reset to an Oct-24-era state (4008e6ce; T-OEQ lane receipts absent from working tree; run-022-era scripts mirror wiped). Recovery: fetch-first restored the full object store (origin/main 3245de7c at start, moved twice mid-run to 5ae6ba93 then 2517f69d); main ff-only; askpass rebuilt (zero token bytes); hub deps rebuilt via bun install --frozen-lockfile (947 packages, hoisted to the workspace ROOT node_modules — the scratch gate scripts resolve via a node_modules symlink; disclosed for the next recovery); QP/MS pages rendered from the upload/ official-4MB1-* PDF set @150dpi (the run-026 pastpapers-source law not needed this run — upload set survived). Probe-before-work discipline caught the stale clone before any write.",
+  "scopeReconciliation": {
+    "ofRecordBasis": "run-027 receipt wave5Continuation = 58 units of record (run027_w5_continuation.json; triage needsPage + pagemap pages, NO candidates field). Candidates joined by unitKey from run026_w3_worklist.json (the classification of record, 103-unit scan era): 58/58 covered, 550 candidates. Re-located against plane pin edbe22de25724627: 550/550 tokens found at fresh offsets, payloadLens drift check per member = ZERO drift (confirms waves 2/3/4 + partlabel-3 did not touch residual part field bytes).",
+    "adopted": 58,
+    "receiptDelta": 0,
+    "worklistArtifact": "run028_w5_worklist.json (58 units, fresh candidates + drift verdicts)"
+  },
+  "wave5Execution": {
+    "pagesReadFirstHand": 18,
+    "unitsAdjudicated": 19,
+    "fixUnits": 10,
+    "zeroFixUnits": 9,
+    "changedPids": 10,
+    "fixTuples": 32,
+    "fieldWrites": 17,
+    "fixUnitList": [
+      "offp_2020-06_02r_9-a (4y² glued sup in Show-that clause; diagram-label run furniture discharged)",
+      "offp_2020-11_02r_9-a (TWIN lockstep, identical print/barcode P62019A02236)",
+      "offp_2023-06_01r_23-a (ON² x3 spaced + 19.5²/18²/39²/36² x3 glued; √ fences LEAVE)",
+      "offp_2023-06_01r_23-b (AM² spaced + 19.5²–\"10\"² deleted-sup pair restored print-verbatim + CATCH-ALL digit-glued 19.52/\"10\"2 x2 rows w3 scan missed)",
+      "offp_2023-06_01r_21-b (eg 3² = 160 + 13² deleted-sup pair restored print-verbatim; √160 radical-loss fence)",
+      "offp_2022-06_01_24 (DIVERGED sol 1434/m0 1438 handled per-field 5+5: BN = 12² − \"6\"² anchored, 6.5², sin⁻¹ catch-all inverse-trig, AB² glued, Alt-row deleted-sup AGGREGATE restored 1:1 Tier-B; mirror extra tuple: m0 carries flattened (12sin 30)2 where sol has real ²; 12ξ3 ξ-glyph radical fence disclosed)",
+      "offp_2022-01_01_4 ([AC =] 15² − 8² anchored double sup; ms p6 needle-located — unit had no mapped ms page; √ fence)",
+      "offp_2022-01_02_9 (6 tuples: \"48.01\"²/\"64.335\"² glued x2 each + AC² spaced + \"48.01\"²/\"76.8\"²/\"64.3\"² SPACED quoted-sup variant x4 each — new variant of the run-027 glued class; √ over AC-row fence)",
+      "offp_2025-11_02_4-a (∠ADC = 56° ∠ABC = ∠BAD = 90° + ∠POQ = 72° operator restoration, run-027 11-d class + run-017 ∠ class, tokens 1:1; diagram label runs furniture)",
+      "offp_2026-06_02_5-b (EG² glued sup in Alt-2 M1 note; ms p12 needle-located; ∠DEG row already real)"
+    ],
+    "zeroFixLaw": "3 PAGE-EVIDENCED (2022-01 01 10 'given 3' marks bleed ms p8; 2022-01 01 26 radical-flatten fences 8 3/4 3/48 3 qp p22; 2024-11 01 4 prose adjacency + M0 markcode ms p6) + 6 CTX-CLASS-CITED per the run-025 named-class law (2025-06 02 9-a all SCT trig/fsw weaves/Figure-3 prose; 2025-06 02 9-b sqrt-loss \"34\" + formula-sheet FLEET fence + A0; 2026-06 02 7-c prose adjacency/marks bleeds; 2024-06 02r 2-b prose adjacency 'eg 17x/or 7x/and 10x'; 2021-01 01r 19 SCT + already-real 5²+5² sups; 2023-01 02 9-a diagram label run + prose)",
+    "newClasses": [
+      "SPACED quoted-sup variant: '\"76.8\" 2' -> '\"76.8\"$^2$' x4-rows (2022-01 02 9) joins the run-027 glued '\"16\"2' class",
+      "digit-glued CATCH-ALL: 23-b '19.52'/'\"10\"2' rows the w3 letter-class scan missed (run-025 catch-all law, print-verified ms p19)",
+      "mirror-side sup divergence: 2022-06 01 24 m0 '(12sin 30)2' vs sol real '²' — diverged-mirror per-field tuples (run-026 8-diverged precedent extended)"
+    ],
+    "fencesHonored": "radical-flatten (8 3 / 6 3 / 12 3 / 48 3 / 12ξ3 ξ-glyph), sqrt-loss (√ over 19.5²−18² / 15²−8² / 12²−\"6\"² / 6.5²−(12sin30)² / 19.5²−\"10\"² / 432−407 / √56.25), deleted-sup inside weave walls (23-b (AC/2)² row + 7.5²), fraction weaves FS (run-004 R4-A), QP formula-sheet FLEET class (run-027 fence STANDS — operator ruling still pending), mark-code runs (M0 A0), furniture (diagram label runs, marks bleeds, prose adjacency, SCT trig)"
+  },
+  "planeOfRecord": { "before": "edbe22de25724627", "after": "f7a8c687d329ffb5", "bytes": 3722053, "path": "apps/hub/content/igcse-maths-b-16/official-papers.json" },
+  "gates": {
+    "battery": "11/11 GREEN dry-run (plane_pin edbe22de, census_EXACT 66/1281/2443/6600 pre==post, marks_map_identical, PUA_FFFD_delta_clean, dollar_parity, changed_set_EXACT 17 field writes, mirror_integrity incl diverged 24 per-field + lockstep x8, serialization single-line, scrub clean, token_discharge 32/32, class_post_census no-growth)",
+    "failClosedCatch": "zero fail-closed refusals this run (all 32 tuple exp counts hit exactly on first dry-run — the count-dump-before-ledger discipline)",
+    "katex": "54/54 new spans OK @ katex 0.16.47 throwOnError",
+    "render": "17/17 projected fields GREEN through the ACTUAL hub engine (react-markdown + remark-gfm + remark-math + rehype-raw + rehype-sanitize + local rehypeKatexMhchem; 107 total .katex spans, zero katex-error, zero count regressions)"
+  },
+  "landing": {
+    "branch": "t-oeq-mathsb/run-028 PUSHED (content cf37d3ab on 5ae6ba93 base: plane + lane artifacts incl 18 evidence PNGs; race-guard fetch-first — origin/main +2 mid-run (NEON-PAUSE-001 bookkeeping), plane byte-verified UNTOUCHED, branch cut from 5ae6ba93)",
+    "pr": "PR #484 — https://github.com/SyllabAI/syllabai-v2/pull/484",
+    "ci": "2/2 GREEN (verify + hub) on first head cf37d3ab",
+    "merge": "5d0cd05d9af9c4a3c13df015b1279342c25952de merged, merge_method=merge",
+    "vercel": "commit status on merge sha went pending -> 'Canceled from the Vercel Dashboard' ~10min post-merge. ADJUDICATION (differs from run-022/run-027 precedents): concurrent merge pressure — main advanced +7 commits from 4 further PRs (#481 T-MG-INK-1, #482 foresights, #483 g9-labelvis, #485 run-029 R2 exporter-law by a parallel lane instance) within ~40min; Vercel auto-cancels superseded queued builds. Prior sha 5ae6ba93 Vercel SUCCESS (channel healthy); the follow-on main-head builds carry this plane (plane byte-verified f7a8c687 EXACT on 2517f69d). NOT the event-drop class: the follow-on build serves the plane. FAIL-LOUD disclosed regardless.",
+    "liveSpotCheck": "PASS — corpus endpoint sha16 f7a8c687d329ffb5 EXACT (3,722,053 B) cache-busted; served-content markers 14/14 HIT (4y^2 twins, ON^2=56.25, 19.5^2, 39^2, escaped \"10\"$^2$ [ = 280.25], eg 3^2=160+13^2, BN=12^2, AN=6.5^2, sin^-1, 15^2, escaped \"48.01\"$^2$+\"64.335\"$^2$, ADC=56, POQ=72, EG or $EG^2$) + negative controls 3/3 ABSENT (19.52 − 182 / AN = 6.52 − (12sin 30)2 / ADC 56° ABC BAD 90°); old 'ON 2' count in served corpus = 0; one marker MISS was a probe-side spelling artifact ($-terminated marker), corrected and re-verified HIT — no plane defect",
+    "mainConcurrency": "main 5d0cd05d -> 2517f69d post-merge (4 PRs by desk/parallel lanes incl run-029 on THIS lane: 'R2 exporter-law alignment', operator R2-first pick — the run-021 menu item consumed by that instance); plane UNTOUCHED by all of them (f7a8c687 EXACT on 2517f69d)"
+  },
+  "wave6Continuation": {
+    "residualUnits": 39,
+    "map": "run028_w6_continuation.json (39 units, triage+pages intact; candidates live in run028_w5_worklist.json join) — clusters: 01-2021-11/2023-11/2024-06/2026-06 + 01r-2020-01/2024-06 + 02r-2025-06 (3 each), 8 papers x2, 9 singles",
+    "note": "formula-sheet fleet class STILL fenced awaiting operator ruling (dedicated restoration run vs per-wave fences); run-029 (R2 exporter-law) landed on this lane from a parallel instance — wave-6 executor should read run-029's receipt first for exporter-law interactions"
+  },
+  "corpusSide": "rides the NEXT converter run (standing disposition): +10 changed pids join the standing back-sync debt (1468 + 24 + 20 + 7 = 1519 + 10 = 1529-pid class; exact ledger per run receipts); NO solo converter trigger, NO solo resources PR",
+  "credentials": "operator PAT env/GIT_ASKPASS inline per command (askpass zero token bytes); standing ROTATION-REQUIRED order re-flagged for BOTH tokens (GitHub …JU4, Vercel vcp_…aoT3) — UNCHANGED, still awaiting rotation",
+  "bookkeeping": "receipt + worklog entry + landing block are bookkeeping-only .syllabai/** direct to main per the 28346abe/67d4f475/0026b4b4/a80e8649/54d6a104/c195f5d1 precedent; fetch-first, ff-only, no force",
+  "writeSet": {
+    "content": "apps/hub/content/igcse-maths-b-16/official-papers.json (edbe22de25724627 -> f7a8c687d329ffb5)",
+    "evidence": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-028/ = run028_w5_worklist.json + run028_fixes.py + run028_apply.py + run028_projection.json + run028_w6_continuation.json + run028_katex_gate.mjs + run028_render_gate.mjs + katex_gate.out + render_gate.out + evidence/ (18 first-hand-read 150dpi PNGs)",
+    "scriptsMirror": "/home/z/my-project/scripts/run028_{w5_plan,pr_api,spotcheck}.py + scratch/oeq_run028/{run028_fixes,run028_apply}.py + run028_{katex,render}_gate.mjs"
+  }
+}
