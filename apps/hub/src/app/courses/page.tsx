@@ -1,11 +1,22 @@
 import type { Metadata } from "next";
 import { listCourses } from "@/lib/courses";
+import { corpusPapersForCourse } from "@/lib/pastpapers-corpus";
 import { CourseDirectory } from "./course-directory";
 
 export const metadata: Metadata = { title: "Browse courses" };
 
 export default async function CoursesIndexPage() {
   const courses = await listCourses();
+  // UX review 2026-10-31 F-01: the intro promises the official QP+MS archive
+  // "on every course page the archive covers" — but nothing said WHICH lanes,
+  // so a chemistry student could click the most polished card into a grey
+  // ghost tile. The cards now badge the committed corpus archive per course
+  // (one in-memory index lookup per row, computed at build on this static
+  // page; the official parsed plane needs per-course bundle loads and stays
+  // out of the directory's budget — an unbadged lane is never a false claim).
+  const archivePapers = Object.fromEntries(
+    courses.map((c) => [c.slug, corpusPapersForCourse(c.slug).length]),
+  );
   return (
     <div className="space-y-6">
       <header className="space-y-2">
@@ -24,7 +35,7 @@ export default async function CoursesIndexPage() {
           concept graph.
         </p>
       </header>
-      <CourseDirectory courses={courses} />
+      <CourseDirectory courses={courses} archivePapers={archivePapers} />
     </div>
   );
 }

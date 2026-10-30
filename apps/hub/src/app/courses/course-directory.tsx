@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,12 +18,39 @@ const BOARD_SEARCH_ALIASES: Record<string, string> = {
   Edexcel: "pearson edexcel",
 };
 
-export function CourseDirectory({ courses }: { courses: CourseMeta[] }) {
+export function CourseDirectory({
+  courses,
+  archivePapers,
+}: {
+  courses: CourseMeta[];
+  /** slug -> committed corpus archive paper count (UX review F-01); rows
+   *  absent from the map or at 0 simply carry no badge — never a false one */
+  archivePapers?: Record<string, number>;
+}) {
   const [q, setQ] = useState("");
   // Audit #4: the directory rendered no board anywhere and offered no way
   // to filter by one — with two boards in the registry the cards were not
   // tellable apart and a board's lanes were unfindable card-by-card.
-  const [board, setBoard] = useState<string | null>(null);
+  const [board, setBoardState] = useState<string | null>(null);
+  // UX review F-05 companion: the course pages' board crumb links to
+  // /courses?board=… — land pre-filtered. Applied after mount so the SSR
+  // HTML stays the unfiltered directory (no hydration mismatch); chip
+  // toggles keep the URL in sync via replaceState (shareable, no history
+  // spam). Invalid values are refused — the filter only ever names a real
+  // registry board.
+  useEffect(() => {
+    const b = new URLSearchParams(window.location.search).get("board");
+    if (b && boards.some(([name]) => name === b)) setBoardState(b);
+    // `boards` derives from the courses prop via useMemo — stable per mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const setBoard = (b: string | null) => {
+    setBoardState(b);
+    const url = new URL(window.location.href);
+    if (b) url.searchParams.set("board", b);
+    else url.searchParams.delete("board");
+    window.history.replaceState(null, "", url);
+  };
   // same subject+code lanes (e.g. Accounting 4AC1 ×2) — show the lane
   // qualifier from the slug so the cards are tellable apart (UX audit P2-7)
   const subtitles = useMemo(() => duplicateVariants(courses), [courses]);
@@ -110,8 +137,8 @@ export function CourseDirectory({ courses }: { courses: CourseMeta[] }) {
                 <Card
                   className={
                     c.hasBundle
-                      ? "h-full border-primary/30 transition-colors group-hover:border-primary/60 group-focus-visible:border-primary/60"
-                      : "h-full transition-colors group-hover:border-primary/40 group-focus-visible:border-primary/60"
+                      ? "h-full border-primary/30 transition-colors group-hover:border-primary/60 group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
+                      : "h-full transition-colors group-hover:border-primary/40 group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
                   }
                 >
                   <CardContent className="flex items-start gap-3 p-4">
@@ -127,7 +154,16 @@ export function CourseDirectory({ courses }: { courses: CourseMeta[] }) {
                         <Badge variant="secondary" className="text-[10.5px]">
                           {boardOf(c)}
                         </Badge>
-                        {c.status === "pilot" ? (
+                        {(archivePapers?.[c.slug] ?? 0) > 0 && (
+                        <Badge
+                          variant="secondary"
+                          className="text-[10.5px]"
+                          title="Official question papers + mark schemes, readable on the course page"
+                        >
+                          {archivePapers?.[c.slug]} past paper{(archivePapers?.[c.slug] ?? 0) === 1 ? "" : "s"}
+                        </Badge>
+                      )}
+                      {c.status === "pilot" ? (
                           <Badge className="text-[10.5px] uppercase">pilot corpus · official spec tree</Badge>
                         ) : c.status === "full" ? (
                           <Badge variant="outline" className="text-[10.5px] uppercase">
