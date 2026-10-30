@@ -1,0 +1,87 @@
+{
+  "format": "r3-mixed-check-types-stageb6-live-spotcheck/1.0",
+  "wave": "R3-MIXED-CHECK-TYPES stage B wave 6 (S-B6) — the wave-6 authoring register, 12 notes / 24 lessons / 96 written items",
+  "operator_trace": "1a18dfb539a4c839",
+  "generated_at_utc": "2026-10-31T19:12:00Z",
+  "chain_of_record": {
+    "resources_pr": 245,
+    "resources_merge_fix_pr": 246,
+    "resources_merge_commit": "6b70de744337f41a1cbb9a8ad5ee8e501cd184dc",
+    "resources_merge_commit_note": "promotion commit of record = the PR #246 merge-of-record fix; PR #245 merged a2c2b6ce first but its merge message lacked the operator trace, so the hub import runner P0 gate ('message carries promotion trace') fail-closed; PR #246 re-merged the IDENTICAL content behind one empty commit cf7d7482 with tree 268787f8 byte-identical to the #245 merge tree — zero content delta, disclosed",
+    "resources_first_merge_commit": "a2c2b6cec5d7aa31b1ac79ee5a291dc004ac7cdb",
+    "resources_commit_a": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51",
+    "resources_commit_c": "b872e4f33c4ff5fe67150286b8a6b3ca38107d79",
+    "resources_wave_open_main": "3e918c441d0ceb58e5154e57afec563f29b00161",
+    "hub_pr": 530,
+    "hub_head": "6ee89fad63caed94c987498fb75fce765548b9d1",
+    "hub_merge_commit": "cbd0004174fb9e47e9f7cc55e2d5838d59d7ecd6",
+    "hub_pr_ci": "2/2 completed:success at head 6ee89fad (verify + hub)",
+    "hub_merge_sha_ci": "2/2 completed:success at merge sha cbd00041 (poll 12)",
+    "race_guard": "two races, both census-0: (1) resources main advanced 3e918c44 -> 019b9f7f between wave open and the #245 merge (SIB PR #244 lane, 2 commits / 14 files; overlap with the 30 stage-B files = 0); (2) hub main advanced 6fff2471 -> ec3133e9 between PR #530 open and merge (overlap census 0) — merged clean"
+  },
+  "import_run": {
+    "feed": "r3-stageb6-v13",
+    "checks": "34/34 pass, 0 hard failures",
+    "landing": "0 written + 24 revised + 200 identical-existing (224 artifacts) — declared 24-file G-DELTA exact",
+    "identity_from_disk": {
+      "notes": 112,
+      "lessons": 239,
+      "checks": 1787,
+      "keyPoints": 1212,
+      "distractors": 3565,
+      "glossaryTerms": 654
+    },
+    "stream_conserved": "1,602,286 chars, sha eed6cc149d0fb9b8… (== pipeline grand)",
+    "receipt": ".syllabai/receipts/R3-CHECK-TYPES/HUB-IMPORT-RUN-20261031-r3-stageb6.json"
+  },
+  "bake_probe": {
+    "method": "occurrence-aware str.count on SSR HTML (never grep -c line counting); 45s interval; 15-min window",
+    "green_at": "poll 1, 19:01:51Z",
+    "targets": {
+      "rn_9WM8QhSxmYpGhjqd (2-lesson wave-6 note)": {
+        "your_answer": "8/8",
+        "stems": {
+          "Equal-sized pieces of magnesium and iron are dropped": 2,
+          "The fizzing is effervescence of carbon dioxide": 1
+        }
+      },
+      "rn_sX8yyBxHn8bS7t46 (2-lesson wave-6 note)": {
+        "your_answer": "8/8",
+        "stems": {
+          "Iron filings dropped into copper(II) sulfate solution": 2,
+          "Define oxidation in terms of oxygen": 2
+        }
+      }
+    },
+    "calibrations_unchanged": {
+      "rn_xT8XsdJtDX5gNFXj (S-B1)": "Your answer x8/8",
+      "rn_2VnK66PqbvFKdKYt (S-B2)": "Your answer x8/8"
+    },
+    "law_2_1b": "'from the revision note' occurrence count == 0 on all probed learner surfaces (wave-6 targets + calibrations)",
+    "provenance_footer": "wave-6 note SSR carries pinned at 286b5ac8 (x4) and promoted …6b70de74 (x2) — the commit-A / promotion-commit pins live on the learner surface"
+  },
+  "dom_flow_walk": {
+    "surface": "https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/guided-lessons/rn_9WM8QhSxmYpGhjqd",
+    "gate": "Medium confidence gate",
+    "screenshot": "download/r3-stageb6/walk-rn9WM8-Q9-application.png",
+    "steps": [
+      "Q1-Q5 MCQ path untouched: radio options, Submit answer -> verdict role=status 'Great job!' with explanations; empty submit blocked (Submit disabled until a choice is made)",
+      "Q6 recall (written): textbox 'Your answer' + Submit; zero-keyword miss probe — keyword-free answer ('copper') grades 'Not quite.' with the model answer rendered verbatim ('The metal must sit above hydrogen in the reactivity series…') and the input locked (disabled) after settle",
+      "Q7 recall keyword hit: 'sulfate salts' -> verdict role=status 'Great job!' + RECALL label + model answer verbatim ('Sulfuric acid forms sulfate salts, while hydro…')",
+      "Q8 explain-why keyword hit: 'because it reacts explosively with acids' -> 'Great job!' + EXPLAIN WHY label + model answer verbatim ('Potassium and sodium sit so high in …')",
+      "Q9 application keyword hit: 'magnesium is more reactive so it fizzes faster' -> 'Great job!' + APPLICATION label + model answer verbatim ('Magnesium is the more reactive metal…')"
+    ],
+    "verdict": "PASS — renderer law unchanged from stage A: written kinds render a labelled free-text input, submit -> verdict role=status + model answer ALWAYS shown on settle; empty submit blocked; zero-keyword miss fails closed to reveal-only-style verdict + model answer + locked"
+  },
+  "census_landed": {
+    "checks": "1,691 -> 1,787 (written 496 -> 592: 296 recall / 148 explain-why / 148 application; 1,195 MCQs conserved)",
+    "ledger": "592/~956 written live (16 stage A + 96x3 waves + 88 S-B4 + 104 S-B5 + 96 S-B6); ~364 remain across ~91 lessons / 41 notes",
+    "next": "stage B wave 7 (next register tranche) remains operator-gated per the ledger convention"
+  },
+  "disclosures": [
+    "resources main advanced mid-flight twice: YCH12 polish lane (3e918c44 at wave open) and SIB PR #244 (019b9f7f) while the S-B6 branch was open — race census 0 both times",
+    "hub main advanced 6fff2471 -> ec3133e9 between PR #530 open and merge — race census 0",
+    "merge-of-record fix lane: PR #245 merged a2c2b6ce without the operator trace in its merge message; the hub runner P0 gate fail-closed and refused the import; PR #246 re-merged the identical content (empty commit cf7d7482, tree 268787f8 byte-identical) as the trace-bearing promotion commit 6b70de74 — every artifact sha unchanged",
+    "sandbox-recycle losses this window: gh CLI re-installed via API calls (curl), no other tooling loss (ajv lanes survived)"
+  ]
+}
