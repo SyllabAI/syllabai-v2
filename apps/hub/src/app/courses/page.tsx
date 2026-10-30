@@ -13,13 +13,15 @@ export default async function CoursesIndexPage() {
         <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
           {courses.filter((c) => c.board == null).length} Edexcel IAL/IGCSE course variants and{" "}
           {courses.filter((c) => c.board != null).length} Cambridge International courses —{" "}
-          {courses.length} Learning Hubs. The Edexcel bundles are imported from the
-          operator-authorized Save My Exams corpus (revision notes, exam questions and flashcards
-          organised around each course&apos;s corpus specification tree); the Cambridge
-          International courses launch past-papers-first — the official QP+MS archive is live on
-          every course page while their teaching banks stay honestly empty until the resource
-          wave lands. The 4CH1 Chemistry pilot additionally runs on the official Pearson
-          specification tree with its concept graph.
+          {courses.length} Learning Hubs. The bundles are imported from the operator-authorized
+          Save My Exams corpus — revision notes, exam questions and flashcards organised around
+          each course&apos;s corpus specification tree — and the Cambridge International lanes
+          run the same import: the resource wave has landed, their teaching banks are live
+          alongside the official QP+MS past-paper archive on every course page the archive
+          covers. The few lanes the publisher never shipped (no SME exam questions; the newest
+          wave has no past papers yet) stay honestly empty rather than fabricated. The 4CH1
+          Chemistry pilot additionally runs on the official Pearson specification tree with its
+          concept graph.
         </p>
       </header>
       <CourseDirectory courses={courses} />

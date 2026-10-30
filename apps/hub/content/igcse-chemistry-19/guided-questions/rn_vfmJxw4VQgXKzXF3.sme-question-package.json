@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_vfmJxw4VQgXKzXF3",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "f6f44979448db7632883612b330ba64a907a3cfedbb03e94e268d93727f40030",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "1d4d5cc1d90126828ec044d26e9b5de2f3bdb8796780f293118d5c2ccc5221f5",
+    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
   },
   "packageId": "igcse-chemistry::rn_vfmJxw4VQgXKzXF3",
   "subject": "igcse-chemistry",
@@ -192,6 +192,91 @@
       ]
     },
     {
+      "id": "rn_vfmJxw4VQgXKzXF3::L1::Q6",
+      "moduleId": "rn_vfmJxw4VQgXKzXF3::L1",
+      "stem": "Describe what non-metal atoms do, instead of forming ions, to reach a full outer shell.",
+      "misconceptionClass": "covalent formation recall",
+      "kind": "recall",
+      "modelAnswer": "Non-metal atoms share pairs of electrons to gain full outer shells, instead of forming ions.",
+      "keywords": [
+        "share",
+        "shares",
+        "sharing",
+        "shared",
+        "pairs",
+        "pair",
+        "electrons",
+        "electron",
+        "full",
+        "outer",
+        "shell",
+        "ions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vfmJxw4VQgXKzXF3::L1::Q7",
+      "moduleId": "rn_vfmJxw4VQgXKzXF3::L1",
+      "stem": "State the term for the outer electrons that take no part in a covalent bond.",
+      "misconceptionClass": "non-bonding term recall",
+      "kind": "recall",
+      "modelAnswer": "Outer electrons that take no part in the bond are called non-bonding electrons.",
+      "keywords": [
+        "non-bonding",
+        "nonbonding",
+        "non",
+        "bonding",
+        "electrons",
+        "electron",
+        "outer",
+        "no",
+        "part"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vfmJxw4VQgXKzXF3::L1::Q8",
+      "moduleId": "rn_vfmJxw4VQgXKzXF3::L1",
+      "stem": "Explain why a covalent bond is described as very strong.",
+      "misconceptionClass": "bond strength reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Each shared pair of electrons is one covalent bond, and the bonds are very strong because the shared pair grips both atoms to their full outer shells — a lot of energy is needed to break it.",
+      "keywords": [
+        "shared",
+        "pair",
+        "strong",
+        "strength",
+        "bond",
+        "bonds",
+        "covalent",
+        "energy",
+        "break",
+        "grip"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vfmJxw4VQgXKzXF3::L1::Q9",
+      "moduleId": "rn_vfmJxw4VQgXKzXF3::L1",
+      "stem": "Two solids are handed to a student: one is water ice, a simple molecular substance, and one is diamond. Using the classification rule of record, sort each into its covalent structure family.",
+      "misconceptionClass": "structure family sorting",
+      "kind": "application",
+      "modelAnswer": "Covalently bonded substances are either simple molecular structures, like water, or giant covalent structures, like diamond; so the ice is simple molecular and the diamond is giant covalent.",
+      "keywords": [
+        "simple",
+        "molecular",
+        "water",
+        "ice",
+        "giant",
+        "covalent",
+        "diamond",
+        "structure",
+        "structures",
+        "family"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_vfmJxw4VQgXKzXF3::L2::Q1",
       "moduleId": "rn_vfmJxw4VQgXKzXF3::L2",
       "stem": "Between which two things does the electrostatic attraction of a covalent bond act?",
@@ -370,6 +455,96 @@
           "misconception": "bond strength confused with intermolecular strength"
         }
       ]
+    },
+    {
+      "id": "rn_vfmJxw4VQgXKzXF3::L2::Q6",
+      "moduleId": "rn_vfmJxw4VQgXKzXF3::L2",
+      "stem": "State how a single covalent bond is drawn in a displayed formula, using hydrogen as the example.",
+      "misconceptionClass": "displayed formula recall",
+      "kind": "recall",
+      "modelAnswer": "A covalent bond is drawn as a short straight line between the two atoms, such as H-H.",
+      "keywords": [
+        "line",
+        "straight",
+        "short",
+        "drawn",
+        "draw",
+        "between",
+        "atoms",
+        "h-h",
+        "hh",
+        "displayed",
+        "formula"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vfmJxw4VQgXKzXF3::L2::Q7",
+      "moduleId": "rn_vfmJxw4VQgXKzXF3::L2",
+      "stem": "State the charges on the shared pair and on each nucleus in a covalent bond, and what follows between them.",
+      "misconceptionClass": "electrostatic partners recall",
+      "kind": "recall",
+      "modelAnswer": "The electrons in the pair carry a negative charge and each nucleus carries a positive one, so strong electrostatic attraction follows between them.",
+      "keywords": [
+        "negative",
+        "positive",
+        "electrons",
+        "electron",
+        "pair",
+        "nucleus",
+        "nuclei",
+        "electrostatic",
+        "attraction",
+        "charge"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vfmJxw4VQgXKzXF3::L2::Q8",
+      "moduleId": "rn_vfmJxw4VQgXKzXF3::L2",
+      "stem": "Explain the mistake in drawing shared covalent electrons as fixed dots sitting still between two atoms.",
+      "misconceptionClass": "charge cloud reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The shared electrons are best regarded as charge clouds in constant motion, not as points fixed in place, because the electrons move continuously within the region between the two atoms.",
+      "keywords": [
+        "charge",
+        "clouds",
+        "cloud",
+        "motion",
+        "moving",
+        "move",
+        "constant",
+        "constantly",
+        "not",
+        "fixed",
+        "points",
+        "electrons"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vfmJxw4VQgXKzXF3::L2::Q9",
+      "moduleId": "rn_vfmJxw4VQgXKzXF3::L2",
+      "stem": "A student asks why a chlorine molecule is more stable than two separate chlorine atoms. Using the noble-gas arrangement of record, answer the student.",
+      "misconceptionClass": "stability via sharing application",
+      "kind": "application",
+      "modelAnswer": "Sharing lets each atom reach an arrangement similar to a noble gas, which makes each atom more stable; in Cl2 each chlorine atom completes its outer shell through the shared pair.",
+      "keywords": [
+        "sharing",
+        "shared",
+        "noble",
+        "gas",
+        "arrangement",
+        "similar",
+        "stable",
+        "stability",
+        "more",
+        "outer",
+        "shell",
+        "complete",
+        "cl2"
+      ],
+      "options": []
     }
   ]
 }

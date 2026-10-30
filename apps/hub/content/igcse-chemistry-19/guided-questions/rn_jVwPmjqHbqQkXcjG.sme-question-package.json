@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_jVwPmjqHbqQkXcjG",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a8fd590884218fdf9a6a0f56687b51a4088276d368e25c78561f51f8631ebe9a",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "7ef964e5b3a45c3f3104c60a7f840cda7011912744845ab551481888b65b775d",
+    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
   },
   "packageId": "igcse-chemistry::rn_jVwPmjqHbqQkXcjG",
   "subject": "igcse-chemistry",
@@ -192,6 +192,101 @@
       ]
     },
     {
+      "id": "rn_jVwPmjqHbqQkXcjG::L1::Q6",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L1",
+      "stem": "Describe the arrangement of ions in an ionic solid.",
+      "misconceptionClass": "lattice arrangement recall",
+      "kind": "recall",
+      "modelAnswer": "An ionic compound packs positive and negative ions alternately into a regular giant lattice.",
+      "keywords": [
+        "positive",
+        "negative",
+        "ions",
+        "ion",
+        "alternately",
+        "alternating",
+        "regular",
+        "giant",
+        "lattice",
+        "packs",
+        "packed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L1::Q7",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L1",
+      "stem": "State how the size of the charges on ions affects the strength of the forces and the melting point.",
+      "misconceptionClass": "charge magnitude effect recall",
+      "kind": "recall",
+      "modelAnswer": "The larger the charges on the ions, the stronger the forces and the higher the melting point.",
+      "keywords": [
+        "larger",
+        "large",
+        "bigger",
+        "charges",
+        "charge",
+        "stronger",
+        "strong",
+        "forces",
+        "force",
+        "higher",
+        "melting",
+        "point"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L1::Q8",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L1",
+      "stem": "Explain why so much thermal energy is needed to melt an ionic solid.",
+      "misconceptionClass": "lattice energy reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Strong electrostatic forces of attraction between opposite charges hold the lattice together in all directions, so a large amount of thermal energy is needed to overcome them before the solid melts.",
+      "keywords": [
+        "strong",
+        "electrostatic",
+        "forces",
+        "force",
+        "attraction",
+        "opposite",
+        "charges",
+        "large",
+        "amount",
+        "thermal",
+        "energy",
+        "overcome",
+        "all",
+        "directions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L1::Q9",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L1",
+      "stem": "A comparison table lists sodium chloride and magnesium oxide with their ion charges. Using the charge rule of record, predict which melts at the higher temperature and justify the prediction.",
+      "misconceptionClass": "melting point comparison application",
+      "kind": "application",
+      "modelAnswer": "Magnesium oxide melts at the higher temperature: its ions carry 2+ and 2- charges, larger than the single charges of sodium chloride, so its forces are stronger and more energy is needed to separate them.",
+      "keywords": [
+        "magnesium",
+        "oxide",
+        "mgo",
+        "higher",
+        "2+",
+        "2-",
+        "larger",
+        "charges",
+        "stronger",
+        "forces",
+        "energy",
+        "single",
+        "sodium",
+        "chloride"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_jVwPmjqHbqQkXcjG::L2::Q1",
       "moduleId": "rn_jVwPmjqHbqQkXcjG::L2",
       "stem": "Why does solid sodium chloride not conduct electricity?",
@@ -370,6 +465,98 @@
           "misconception": "atom flow confused with ion flow"
         }
       ]
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L2::Q6",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L2",
+      "stem": "State what a current needs in order to flow, in terms of particles.",
+      "misconceptionClass": "conduction requirement recall",
+      "kind": "recall",
+      "modelAnswer": "Electrical conduction needs mobile charged particles, such as electrons or ions, to carry the current.",
+      "keywords": [
+        "mobile",
+        "moving",
+        "move",
+        "charged",
+        "charge",
+        "particles",
+        "particle",
+        "electrons",
+        "ions",
+        "carry",
+        "current"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L2::Q7",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L2",
+      "stem": "State what happens to the ions of an ionic compound when it dissolves in water, and what this allows.",
+      "misconceptionClass": "dissolving release recall",
+      "kind": "recall",
+      "modelAnswer": "Dissolving in water releases the ions from the lattice, so an aqueous ionic compound can conduct.",
+      "keywords": [
+        "dissolving",
+        "dissolve",
+        "dissolved",
+        "water",
+        "releases",
+        "release",
+        "ions",
+        "lattice",
+        "aqueous",
+        "solution",
+        "conduct",
+        "conduction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L2::Q8",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L2",
+      "stem": "Explain why a solid ionic compound is a poor conductor, referring to the position of its ions.",
+      "misconceptionClass": "solid lattice immobility reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Solid ionic compounds are poor conductors because their ions are fixed in the lattice and cannot move, so there are no mobile charged particles to carry a current.",
+      "keywords": [
+        "fixed",
+        "locked",
+        "lattice",
+        "cannot",
+        "cant",
+        "not",
+        "move",
+        "moved",
+        "mobile",
+        "ions",
+        "poor",
+        "conduct"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L2::Q9",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L2",
+      "stem": "During the electrolysis of molten potassium bromide, a student asks whether electrons travel through the liquid. Using the particle picture of record, answer the student and name the real charge carriers.",
+      "misconceptionClass": "charge carrier identification",
+      "kind": "application",
+      "modelAnswer": "No: it is the ions that move and carry the charge, never electrons, when an ionic compound conducts; in the molten potassium bromide the free-moving K+ and Br- ions carry the current.",
+      "keywords": [
+        "ions",
+        "ion",
+        "never",
+        "not",
+        "electrons",
+        "electron",
+        "carry",
+        "carries",
+        "charge",
+        "k+",
+        "br-",
+        "potassium",
+        "bromide"
+      ],
+      "options": []
     }
   ]
 }

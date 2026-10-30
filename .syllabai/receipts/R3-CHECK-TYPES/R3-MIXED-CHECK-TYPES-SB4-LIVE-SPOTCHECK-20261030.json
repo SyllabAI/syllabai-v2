@@ -1,0 +1,80 @@
+{
+  "receipt": "R3-MIXED-CHECK-TYPES-SB4-LIVE-SPOTCHECK-20261030",
+  "format": "live-spotcheck-receipt/0.1",
+  "date": "2026-10-30",
+  "generated_at_utc": "2026-10-30T15:20:00Z",
+  "operator_trace": "1a18d09c1263e991",
+  "chain_of_record": {
+    "resources": "PR #242 (S-B4) merged e76925db (commits A fa1f3020 + C e5531961; manifest v11; 263/263 pipeline gates GREEN; authoring audit GREEN pre-commit)",
+    "hub_pr": "PR #510 head 81f8471f (2 commits: runner FEED r3-stageb4-v11 3abeb3b0 + the 22-artifact tranche landing 81f8471f) opened and CI'd by this lane",
+    "hub_merge": "PR #510 merged by this lane (merge method 'merge') -> merge commit 2634acb6; merge-sha CI verify+hub 2/2 completed success"
+  },
+  "merge_gates": {
+    "import_run": "GREEN 34/34, 0 hard failures @ resources merge e76925db (FEED r3-stageb4-v11; receipt download/integration/HUB-IMPORT-RUN-20261030-r3-stageb4.json): 22 revised (11 hub-lesson-import-1.4 + 11 sme-question-package/1.1), 202 identical-existing, G-DELTA == declared, identity from disk checks 1,587, grand stream 1,532,885 chars conserved",
+    "pr_head_ci": "verify: completed/success; hub: completed/success (check-runs on 81f8471f)",
+    "mergeable_state": "clean",
+    "race_guard": "main moved dafe8604 -> 8d6b3932 (unrelated bookkeeping) during the run; mergeable clean at merge time; 24-file diff = guided-import.json x1 + hub-lesson-import x11 + sme-question-package x11 + run_import.mjs x1; zero identity-plane/bookkeeping paths",
+    "merge_sha_ci": "verify: completed/success; hub: completed/success on 2634acb6 (poll 8)"
+  },
+  "surface": "https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/guided-lessons/{rn_3YZNCXSQQqXTT6HR,rn_J7ZcTWyRxRgWQ45R,rn_4tzwS4GZjPybwtkS,rn_xT8XsdJtDX5gNFXj}",
+  "deploy_probe": {
+    "method": "curl served HTML (incl. RSC payload) post-merge, then agent-browser DOM walk",
+    "bake": "pre-bake 8 polls (15:03-15:10Z: 0 written markers on the S-B4 note); bake landed at poll 9 15:11:37Z (~1 bake cycle after the 2634acb6 merge)",
+    "rn_3YZN_S_B4": {
+      "your_answer_labels": 8,
+      "sb4_stems": {"State what a binary ionic compound contains": 2, "State which substance is always the product at the cathode": 2}
+    },
+    "rn_J7Zc_S_B4": {
+      "your_answer_labels": 8,
+      "sb4_stems": {"State the overall charge of every ionic compound": 2}
+    },
+    "rn_4tzw_S_B3_calibration": {"your_answer_labels": 8, "note": "S-B3 pattern unchanged on the same build"},
+    "rn_xT8X_S_B1_calibration": {"your_answer_labels": 8, "note": "S-B1 pattern unchanged on the same build"},
+    "provenance_law_2_1B": "0 hits for 'from the revision note' on all four pages"
+  },
+  "flow_walk": {
+    "note": "rn_3YZNCXSQQqXTT6HR",
+    "lesson": "L1 Electrolysis of molten compounds (Calculate Concentrations neighbour register — wave 4)",
+    "confidence_gate": "Medium (locked after choice, continue-gated) — selected, flow advanced",
+    "mcq_path": "Q1-Q5 single-select radiogroups (4 options each) + Submit answer (disabled until selection) + Next question — untouched from stage A; 5 verdicts role=status 'Great job!' walked (binary-two-elements, melting-frees-ions, charge-steering, bromide-anode, lead-cathode explanations)",
+    "written_Q6_recall": {
+      "stem": "State what a binary ionic compound contains, and name the classic example given in the note.",
+      "empty_submit": "Submit answer disabled while textarea empty (blocked)",
+      "miss_input": "a compound made of three metals",
+      "verdict": "Not quite.",
+      "model_answer_shown": "Model answer: A binary ionic compound contains just two elements joined by ionic bonding; the classic example is lead(II) bromide.",
+      "input_locked_after_settle": true
+    },
+    "written_Q7_recall": {
+      "stem": "State which substance is always the product at the cathode and which is always the product at the anode, when a molten binary ionic compound is electrolysed.",
+      "hit_input": "the metal always forms at the cathode and the non-metal at the anode",
+      "verdict": "Great job!",
+      "model_answer_shown": "Model answer: The cathode product is always the metal, and the anode product is always the non-metal.",
+      "input_locked_after_settle": true
+    },
+    "written_Q8_explain_why": {
+      "kind_label": "WRITTEN RESPONSE · EXPLAIN WHY",
+      "stem": "Explain why solid lead(II) bromide cannot be electrolysed, and what heating it past its melting point changes.",
+      "hit_input": "heated past its melting point the ions can move freely so the melt conducts",
+      "verdict": "Great job!",
+      "model_answer_shown": "Model answer: In the solid the ions are held in place, but heated beyond its melting point the compound becomes molten and its ions can move freely, so the melt can conduct and electrolysis can happen.",
+      "input_locked_after_settle": true
+    },
+    "a11y": "role=status verdicts; 'Your answer' label on the textbox; model answer ALWAYS shown on settle"
+  },
+  "static_read_layer": "written cards SSR 8/8 on both S-B4 probe notes (same law as the S-B1/S-B3 receipt read-layer walks); S-B3 and S-B1 calibration pages unchanged on the same build",
+  "screenshots": [
+    "download/r3-stageb4/sb4-flow-q7-hit-greatjob.png",
+    "download/r3-stageb4/sb4-flow-q8-explainwhy.png"
+  ],
+  "census_landed": {
+    "checks": 1587,
+    "checks_mcq": 1195,
+    "checks_written": 392,
+    "written_recall": 196,
+    "written_explain_why": 98,
+    "written_application": 98,
+    "recomputed_from_disk": "apps/hub/content/igcse-chemistry-19/guided-questions/*.sme-question-package.json @ merge 2634acb6 (runner identity-from-disk gate)"
+  },
+  "acceptance": "S-B4 tranche live: 88 written items across the 11 wave-4 notes render with keyword auto-grade + model-answer-on-settle at the flow stage (recall miss/hit + explain-why hit walked on the lead of the tranche); MCQs unchanged; 2.1B provenance law held; renderer law per the S-B4 hub_side_note verified in the DOM"
+}
