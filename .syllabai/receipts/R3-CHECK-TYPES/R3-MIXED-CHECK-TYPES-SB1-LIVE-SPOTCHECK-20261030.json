@@ -1,0 +1,52 @@
+{
+  "receipt": "R3-MIXED-CHECK-TYPES-SB1-LIVE-SPOTCHECK-20261030",
+  "format": "live-spotcheck-receipt/0.1",
+  "date": "2026-10-30",
+  "generated_at_utc": "2026-10-30T09:55:51Z",
+  "operator_trace": "1a18bc1ca2cf48e5",
+  "surface": "https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/guided-lessons/{rn_xT8XsdJtDX5gNFXj,rn_2d6Yb8GwGfRRd6pZ}",
+  "deploy_probe": {
+    "method": "curl served HTML (incl. RSC payload) post-merge, then agent-browser DOM walk",
+    "bake": "S-B1 live on first poll after the hub merge c5e8101f (~1 bake cycle)",
+    "rn_xT8X": {
+      "written_cards": 8,
+      "sb1_stem_avogadro": 2,
+      "pilot_baseline_same_build": "rn_2Mp 8 written cards / 8 your-answer labels (stage-A pattern intact)"
+    },
+    "rn_2d6Y": {
+      "written_cards": 8,
+      "stems": {
+        "rates_condition": 2,
+        "haber_process": 2
+      }
+    },
+    "provenance_law_2_1B": "0 hits for 'from the revision note' on both pages",
+    "promotion_pins": "note-level promotion pins render from the same law as stage A (hub merge c5e8101f / resources merge 763e730a)"
+  },
+  "flow_walk": {
+    "note": "rn_xT8XsdJtDX5gNFXj",
+    "lesson": "L1 The Mole",
+    "confidence_gate": "Medium (locked after choice, continue-gated)",
+    "mcq_path": "Q1-Q5 single-select radiogroups + Submit answer + Next question — untouched from stage A (5 questions walked)",
+    "written_Q6_recall": {
+      "stem": "State the value of the Avogadro constant.",
+      "kind_label": "WRITTEN RESPONSE · RECALL",
+      "empty_submit": "Submit answer disabled while textarea empty (blocked)",
+      "miss_input": "a dozen eggs",
+      "verdict": "Not quite.",
+      "model_answer_shown": "Model answer: 6.02 × 10^23 particles per mole.",
+      "input_locked_after_settle": true
+    },
+    "written_Q7_recall": {
+      "stem": "State what the molar mass of an element matches, in grams.",
+      "hit_input": "the relative atomic mass, Ar",
+      "verdict": "Great job!",
+      "model_answer_shown": "Model answer: The relative atomic mass (Ar) — the mass of one mole of the element in grams.",
+      "input_locked_after_settle": true
+    },
+    "a11y": "role=status verdicts; 'Your answer' label on the textbox; keyboard-operable"
+  },
+  "static_read_layer": "written cards render 8/8 on both S-B1 notes (same law as the stage-A pilot receipt's read-layer walk)",
+  "screenshot": "download/r3-stageb1/sb1-flow-q7-hit-greatjob.png",
+  "acceptance": "S-B1 tranche live: 96 written items across the 10 wave-1 notes render with keyword auto-grade + model-answer-on-settle at the flow stage; MCQs unchanged; 2.1B provenance law held"
+}

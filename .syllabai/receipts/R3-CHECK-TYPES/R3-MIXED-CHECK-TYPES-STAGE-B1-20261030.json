@@ -1,0 +1,110 @@
+{
+  "receipt": "R3-MIXED-CHECK-TYPES-STAGE-B1-20261030",
+  "format": "wave-receipt/0.1",
+  "date": "2026-10-30",
+  "generated_at_utc": "2026-10-30T09:39:40Z",
+  "operator_trace": "1a18bc1ca2cf48e5",
+  "operator_directive": "stage B proceed (opening the stage-B contract of record in R3-MIXED-CHECK-TYPES-STAGE-A-20261030.json followups: 'corpus rollout ~956 authored items ... in authoring waves with per-note SCHEMA PASS gates, wave receipt + recalibration, matching the waves 1-5 authoring discipline; tranche order mirrors the authoring register')",
+  "wave": "R3-MIXED-CHECK-TYPES stage B wave 1 (S-B1) — the wave-1 authoring register: 10 notes / 24 lessons / +96 authored written items (48 recall, 24 explain-why, 24 application)",
+  "tranche": {
+    "basis": "wave-1 authoring register of record (the 10-note instrumented sample: wave-1 timing receipts; pacing basis measuredWave1 = 10 notes / 24 lessons / 120 checks)",
+    "notes": [
+      "rn_2d6Yb8GwGfRRd6pZ",
+      "rn_4SgDJv8rKxpQQSBh",
+      "rn_HZM2WRjPPT8Srcxt",
+      "rn_JCfdFrHsCkrmMbFj",
+      "rn_TM4QVMgXVxs4vbfY",
+      "rn_fQSYvKRMDBj3s2Bx",
+      "rn_jNJ4gTmcHqdFqsNh",
+      "rn_kJg2gwF77vdFZZ2H",
+      "rn_wTtM2fQVVjntRm64",
+      "rn_xT8XsdJtDX5gNFXj"
+    ],
+    "lessons": 24,
+    "written_items": 96,
+    "kinds": {
+      "recall": 48,
+      "explain-why": 24,
+      "application": 24
+    },
+    "per_lesson_shape": "[recall, recall, explain-why, application] appended after the 5 MCQs (the SME set shape of record; pilot order of record)"
+  },
+  "authoring_quality": {
+    "anchor_law": "every item KP-anchored (authoring-time provenance in tooling/r3-stageb1-authoring/, stripped from emitted bytes per ADAPTER-SPEC 0.5)",
+    "mcq_overlap_check": "stems checked against all 120 of-record MCQ stems (token-Jaccard >= 0.6: 0 flags)",
+    "self_grading_audit": "the wave's own audit (each model answer must grade correct under its own keyword law): caught 2 rn_xT8X L2 equation-form answers (symbolic ÷/× answers carry no gradeable tokens) — fixed to carry their verbal forms; branch rewritten pre-merge and disclosed",
+    "keyword_style": "pilot-calibrated: specific content tokens with synonym/inflection sets; 1-20 keywords per item"
+  },
+  "resources_side": {
+    "pr": 230,
+    "branch": "integration/r3-stageb1-20261030",
+    "commits": {
+      "A": "78ad6a2073c669231bb40bd7266674a257c6003e (source-0.5 generation: 10 authored guided-lesson/0.5 notes; supersedes the pre-merge push 86e8bdfb, disclosed)",
+      "C": "43949603c20695ebd54ad5551fa71c0cc9ff8a8e (schema union bump + outputs + manifest v8 + records + pipeline)"
+    },
+    "merge_commit": "763e730afc815d88f0880b34d3d2594103318a95",
+    "merge_tree": "fad4ffcd3bc50a88ae4a02d1ec155603ef08b2f5",
+    "merge_parent": "a6c7f09532296ec57b7c1ec9292076d239c48303",
+    "ci": "sync SUCCESS @ 43949603 (2026-10-30T09:29:16Z)",
+    "additive_only": "27 files added, 1 modified (sme-question-package/1.1 schema: questions maxItems 25->45 union-safe raise), 0 deleted, +14,369/-1",
+    "schema_delta": "ONE union-safe raise (the 1.0-inherited cap assumed 5x5 MCQs; 9 checks x 5 lessons = 45); ajv re-proven x112 artifacts — everything previously valid stays valid",
+    "pipeline_gates": "142/142 GREEN (A0 inventory, P0 committed==rebuilt x10, D-1 x10, C-6 ajv x10 sources + x12 lessons + x12 packages + x100 untouched pairs, written-kind invariants x96, MCQ deep conservation x10, C-5 x12 incl pilot re-proofs, D-2 x10, C-9 x100, G-E streams x112 + grand + waves x10)",
+    "manifest": "hub-import-manifest-v8.json: 224 artifacts, exactly 20 re-issued vs v7",
+    "conservation": {
+      "grand_stream": "1,452,661 chars sha 24be22d75885351f… (+22,754 vs v7's 1,429,907)",
+      "mcqs": "1,195 byte-identical",
+      "pilots": "2 stage-A packages/lessons byte-identical (anchors re-proven == stage-A exactly)",
+      "untouched_waves": "8 of 10 wave subtotals byte-equal to v7 (declared preserved)"
+    },
+    "records": [
+      "records/INT-3-transform-record-r3-stageb1.json",
+      "records/R3-CHECK-TYPES-STAGEB1-PROMOTION-20261030.json"
+    ]
+  },
+  "hub_side": {
+    "pr": 488,
+    "branch": "r3-stageb1-hub-v8",
+    "commits": {
+      "feed": "97a9d6f8 (FEED r3-stageb1-v8)",
+      "content": "47be6f71 (the S-B1 tranche lands)"
+    },
+    "merge_commit": "c5e8101f036e861380f55fa62491bdc73dfd7f21",
+    "ci": "verify + hub SUCCESS @ 47be6f71 (09:36:32Z / 09:37:30Z)",
+    "import_run": {
+      "feed": "r3-stageb1-v8",
+      "receipt": "download/integration/HUB-IMPORT-RUN-20261030-r3-stageb1.json",
+      "result": "GREEN — 34/34 gates, 0 hard failures",
+      "landing": "0 written + 20 revised + 204 identical-existing + re-issued guided-import.json"
+    },
+    "identity_from_disk": {
+      "notes": 112,
+      "lessons": 239,
+      "checks": 1307,
+      "keyPoints": 1212,
+      "distractors": 3565,
+      "glossaryTerms": 654
+    },
+    "figures_from_disk": {
+      "figures": 200,
+      "moduleMapped": 122,
+      "noteLevel": 78,
+      "modulesWithFigures": 81
+    },
+    "renderer": "unchanged from stage A (no renderer code in this PR) — written kinds render labelled inputs, keyword auto-grade + model answer always shown on settle; MCQ path untouched"
+  },
+  "stage_b_ledger": {
+    "written_live": "112 / ~956 (16 stage A + 96 S-B1)",
+    "remaining": "~844 items across 211 lessons / 100 notes",
+    "next": "stage-B wave 2 = the wave-2 register notes (12 notes, T1 Principles), OPERATOR-GATED"
+  },
+  "disciplines_held": [
+    "zero-DB",
+    "fetch-first re-ground before every write",
+    "token unechoed",
+    "resources additive-only",
+    "mechanical transform NOTHING-authored-beyond-the-declared-items",
+    "receipts + worklog of record",
+    "merge via REST on green CI",
+    "no force (the one pre-merge branch rewrite was the lane's own minutes-old unreviewed head, disclosed here and in the commit messages)"
+  ]
+}
