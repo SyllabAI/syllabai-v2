@@ -1,0 +1,58 @@
+{
+  "task": "RN-DEBRIS-1 run-001 — the \\text{}/MathML-speech debris cleanup curation lane (operator order trace 1a18d8b36b853aad: \"fire the \\text{} debris cleanup lane\")",
+  "date": "2026-10-30",
+  "agent": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "residualOfRecord": [
+    "RN-RECONSUME-1 run-001: 'the \\text{} debris cleanup = the disclosed follow-up curation lane (baseline refrozen to the corpus-of-record meanwhile)'",
+    "RN-REPLAY-2: residual unchanged",
+    "EQFC-CONSUME-1 run-001: 'the \\text{} debris cleanup = the follow-up curation lane' — speech-baseline refreeze named it 'the aria-label-to-LaTeX cleanup'"
+  ],
+  "fetchFirst": {
+    "worklogTail": "v2 worklog re-read at lane open: last blocks R3-SB3/CONSUME-3/T-MG-INK/R0-AUTO — no newer owner claims the debris lane; lane OPEN",
+    "resourcesTip": "e9f41fda (fix(books) 7564388a relink) — resources corpus UNTOUCHED by this lane (see at-source finding)",
+    "v2TipAtOpen": "229a16f6; landing base advanced to 15853387 (R0-AUTO-91, #508/#509) — branch cut at the new tip per race-guard"
+  },
+  "atSourceFinding": {
+    "statement": "The debris is NOT in the resources md sources. Fleet census (rn_debris1_census_r0.json, 15,500 md files across all 7 planes): the gate's MathML-speech classes are absent at source (span 2 / multiline 3 / baretext 7 — all docs/examples or prose false-positives, zero gate-furniture \\text{}), and the 67,182 \\text{} occurrences in md are legitimate LaTeX inside math (67,166 plain-words e.g. \\text{volume}). The debris lives in the DERIVED parsed corpus (apps/hub/content/**/*.json) as PR-#220 converter residual classes — exactly the frozenNote's 'corpus-faithful converter residual' language. Fix-at-source therefore = the converter/grammar layer in v2 (the shared speech-math/speech-extras chain), not a resources edit."
+  },
+  "censusAtOpen": {
+    "gateBaseline": { "span": 655, "dollar": 1, "textwrap": 10, "multiline": 107, "baretext": 9, "danglingRefs": 0 },
+    "reproducedExactly": true,
+    "topPackages": ["cie-igcse-physics-23 (87)", "ial-maths-20-decision-1 (49)", "igcse-maths-b-16 (46)", "igcse-maths-a-18-higher (45)", "cie-a-level-physics-25 (40)"],
+    "fields": { "notes.json": 621, "questions.json": 155, "flashcards.json": 6 }
+  },
+  "grammarWork": {
+    "rootCauseFixes": [
+      "speech-math.ts: (?<!pre) lookbehind on the 4 sub/superscript atom+terminated rules — presubscript/presuperscript were being suffix-eaten ('presubscript blank' -> 'pre_{}' garbage that passed hasResidualGrammar)",
+      "harness discoveries codified: L1 the input sanitizer strips \\n sequences (\\notin/\\ne eaten) — pre-passes must emit speech vocabulary; L2 the straight-rule word boundary fails before '_' — subscript artifacts rewritten as 'x _{1}' (glue rejoins); recon-path double-escape guard ('\\\\times' = rowbreak+text)"
+    ],
+    "passSet": "enclosePass (circle/box/bottom enclose -> \\textcircled/\\boxed/\\underline; degree-minute-second runs), isoPass (terminator-less/greek/unicode-minus/?-payload/scriptbase isotope forms; charge superscripts), miscPass (size-px strip, stack strip, stretchy/left/right curly, angle brackets, lvert/rvert, less/greater-or-equal-than, integral_ ranges, sum-of-at-eos, not-an-element-of, bold-italic greek, unit words, prose-in-set-braces, apostrophe/union/intersection pre-maps + leaked \\text{} un-wrap), prose-fragment isotope pass for bare lines",
+    "empiricalLoop": "probe r0->r8 with full-segment eyeball each round (NO-GUESS doctrine); refusal census by construct at every round",
+    "safetyLaws": "every replacement katexOk(throwOnError) && !hasResidualGrammar && !double-escape && !verify-gate-MARK residue; unfixed content stays verbatim (renders as code, never garbage)"
+  },
+  "engineRun": {
+    "mode": "dict-less (the 23a page dictionaries work/mathml-cache absent in this recycled sandbox — the residual population already exhausted the dict chain at the last full run, so the grammar path is the honest floor; disclosed standing debt)",
+    "scope": "content/<pkg>/{notes,questions,official-papers,flashcards}.json — 321 files, 66 changed",
+    "conversions": { "span": "637 fixed / 2 unfixed (floor)", "dollar": "10/10 + the 2 leaked \\text{apostrophe} lines repaired", "multiline": "107 blocks line-wise", "textwrap": "6 \\text{of} connectives -> \\times; authored \\text{numerator}/\\text{denominator} quartet LEFT (faithful)", "baretext": "7 fixed incl. 2 prose isotope fragments; biology reaction-rate/mitotic-index formulas converted" },
+    "serialization": "per-file format detection (mixed tree: compact vs indent=1+NL) — unchanged files byte-identical, changed files same-format; verified via git-diff review (initial indent-only re-print caught and reverted before landing)"
+  },
+  "gates": {
+    "verify_corpus_23a": "PASSED — span 2 / dollar 0 / textwrap 4 / multiline 0 / baretext 5 / danglingRefs 0 (from 655/1/10/107/9)",
+    "verify_flashcard_sync_courses": "exit 0",
+    "validate_cie_bundles": "CIE VALIDATOR PASSED (393 PASS)"
+  },
+  "baselineRefreeze": {
+    "file": "apps/hub/speech-baseline.json",
+    "counts": { "span": 2, "dollar": 0, "textwrap": 4, "multiline": 0, "baretext": 5, "danglingRefs": 0 },
+    "floorClasses": {
+      "span2": "the two corrupted 'E_ k a f t e r end_' cie-a-level-physics-25 spans (upstream letter-scramble; conversion would guess content — left rendering as code per the 23a never-garbage law)",
+      "textwrap4": "authored \\text{numerator}/\\text{denominator} worked-step labels in a-level maths solutionMd (faithful prose, not debris)",
+      "baretext5": "2 'end cell walls' prose false-positives (translocation notes) + 1 chemistry isotope image-alt line + 1 physics table-row alt line + 1 physics alt-led list line (![...]-led, structurally excluded)"
+    }
+  },
+  "standingDebt": [
+    "dict-less run: a full-dict re-run against the rebuilt mathml-cache belongs to the corpus back-sync lane (may convert part of the remaining floor honestly)",
+    "pre-existing $x \\text{'} (t)$ authored forms in further-maths notes (gate-clean, KaTeX-renders, out of lane scope)"
+  ],
+  "files": "68 changed: 66 content JSON + speech-baseline.json + src/lib/speech-math.ts; artifacts .syllabai/lane-artifacts/RN-DEBRIS-1/"
+}
