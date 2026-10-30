@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_wTtM2fQVVjntRm64",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b0b22d2c9302fc9271aaa5ed5078cab51a06b835acf0b5a99774c6139f27da0a",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "827277abe3fa3d44d6360e5544d317bbb1912165d5869ea7b69c74679b61eccd",
+    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
   },
   "packageId": "igcse-chemistry::rn_wTtM2fQVVjntRm64",
   "subject": "igcse-chemistry",
@@ -178,6 +178,69 @@
       ]
     },
     {
+      "id": "rn_wTtM2fQVVjntRm64::L1::Q6",
+      "moduleId": "rn_wTtM2fQVVjntRm64::L1",
+      "stem": "State the acid-base character of metal oxides.",
+      "misconceptionClass": "oxide character",
+      "kind": "recall",
+      "modelAnswer": "Metal oxides are basic.",
+      "keywords": [
+        "basic",
+        "base",
+        "alkaline"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wTtM2fQVVjntRm64::L1::Q7",
+      "moduleId": "rn_wTtM2fQVVjntRm64::L1",
+      "stem": "State how many outer-shell electrons a non-metal atom holds.",
+      "misconceptionClass": "outer electron count",
+      "kind": "recall",
+      "modelAnswer": "Four to seven (metals hold one to three).",
+      "keywords": [
+        "four",
+        "seven",
+        "4",
+        "7"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wTtM2fQVVjntRm64::L1::Q8",
+      "moduleId": "rn_wTtM2fQVVjntRm64::L1",
+      "stem": "Explain why the electrical conductivity test is decisive when sorting metals from non-metals.",
+      "misconceptionClass": "conductivity test logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because metals conduct well while non-metals are poor conductors, so a conductivity reading separates the two classes cleanly.",
+      "keywords": [
+        "conduct",
+        "conducts",
+        "conducting",
+        "conductor",
+        "conductors",
+        "well",
+        "poor"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wTtM2fQVVjntRm64::L1::Q9",
+      "moduleId": "rn_wTtM2fQVVjntRm64::L1",
+      "stem": "The oxide of element X dissolves in water and the solution turns universal indicator purple, well above pH 7. State the acid-base character of X's oxide and the class of element X.",
+      "misconceptionClass": "oxide classification applied",
+      "kind": "application",
+      "modelAnswer": "The oxide is basic (alkaline), so X is a metal — metal oxides are basic.",
+      "keywords": [
+        "basic",
+        "base",
+        "alkaline",
+        "metal",
+        "metals"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_wTtM2fQVVjntRm64::L2::Q1",
       "moduleId": "rn_wTtM2fQVVjntRm64::L2",
       "stem": "An element sits immediately to the left of the zig-zag line on the periodic table. Classify it.",
@@ -328,6 +391,63 @@
           "misconception": "symbol-shape heuristic"
         }
       ]
+    },
+    {
+      "id": "rn_wTtM2fQVVjntRm64::L2::Q6",
+      "moduleId": "rn_wTtM2fQVVjntRm64::L2",
+      "stem": "State which side of the periodic table the non-metals occupy.",
+      "misconceptionClass": "table position",
+      "kind": "recall",
+      "modelAnswer": "The right-hand side — metals sit on the left.",
+      "keywords": [
+        "right",
+        "rhs"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wTtM2fQVVjntRm64::L2::Q7",
+      "moduleId": "rn_wTtM2fQVVjntRm64::L2",
+      "stem": "State which class of element makes up the vast majority of the periodic table.",
+      "misconceptionClass": "majority class",
+      "kind": "recall",
+      "modelAnswer": "The metals.",
+      "keywords": [
+        "metals",
+        "metal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wTtM2fQVVjntRm64::L2::Q8",
+      "moduleId": "rn_wTtM2fQVVjntRm64::L2",
+      "stem": "Explain why elements bordering the zig-zag line are hard to classify as simply metal or non-metal.",
+      "misconceptionClass": "borderline logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because elements bordering that line show traits of both sides — they are the semi-metals, or metalloids.",
+      "keywords": [
+        "both",
+        "mix",
+        "mixture",
+        "traits",
+        "metalloid",
+        "metalloids",
+        "semi"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wTtM2fQVVjntRm64::L2::Q9",
+      "moduleId": "rn_wTtM2fQVVjntRm64::L2",
+      "stem": "A newly discovered element is placed three columns in from the right-hand edge of the periodic table, clear of the zig-zag line. State its class using its position alone.",
+      "misconceptionClass": "position classification applied",
+      "kind": "application",
+      "modelAnswer": "A non-metal — on the periodic table metals sit on the left and non-metals on the right, so position is itself the classifier.",
+      "keywords": [
+        "non",
+        "right"
+      ],
+      "options": []
     }
   ]
 }

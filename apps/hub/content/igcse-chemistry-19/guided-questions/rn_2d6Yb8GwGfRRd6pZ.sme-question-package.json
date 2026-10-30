@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_2d6Yb8GwGfRRd6pZ",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "39e6fceb916466bc94800f8893208e8a9208d06e69435c0b85cbb621a3b15d75",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "5d75e44413ef478510708cde16abd3d7988037757e9f289320d96651ec6d508f",
+    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
   },
   "packageId": "igcse-chemistry::rn_2d6Yb8GwGfRRd6pZ",
   "subject": "igcse-chemistry",
@@ -192,6 +192,71 @@
       ]
     },
     {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L1::Q6",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L1",
+      "stem": "State the condition on the two reaction rates that defines equilibrium in a reversible reaction.",
+      "misconceptionClass": "equilibrium definition",
+      "kind": "recall",
+      "modelAnswer": "Equilibrium is reached when the rates of the forward and reverse reactions become equal.",
+      "keywords": [
+        "rate",
+        "rates",
+        "equal",
+        "equals",
+        "forward",
+        "reverse"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L1::Q7",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L1",
+      "stem": "State the system condition a reversible reaction needs before equilibrium can be reached.",
+      "misconceptionClass": "closed system recall",
+      "kind": "recall",
+      "modelAnswer": "A closed system is required, so no species can leave the vessel and nothing can enter.",
+      "keywords": [
+        "closed",
+        "system",
+        "sealed",
+        "vessel"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L1::Q8",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L1",
+      "stem": "Explain why a reversible reaction reaches equilibrium instead of running to completion.",
+      "misconceptionClass": "equilibrium logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because a reversible reaction runs in both the forward and reverse directions: as products build up the reverse reaction runs faster, until the two rates become equal at equilibrium.",
+      "keywords": [
+        "forward",
+        "reverse",
+        "both",
+        "equal",
+        "rates",
+        "rate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L1::Q9",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L1",
+      "stem": "A student claims that a reaction mixture at equilibrium must contain equal amounts of reactants and products. Use what stays constant at equilibrium to answer the claim.",
+      "misconceptionClass": "constant vs equal amounts",
+      "kind": "application",
+      "modelAnswer": "The claim is wrong: at equilibrium it is the concentrations of reactants and products that stay constant while nothing else changes, which is not the same as saying the amounts are equal.",
+      "keywords": [
+        "constant",
+        "concentration",
+        "concentrations",
+        "amount",
+        "amounts"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_2d6Yb8GwGfRRd6pZ::L2::Q1",
       "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L2",
       "stem": "At the start of the Haber process, why is the forward rate at its highest?",
@@ -370,6 +435,64 @@
           "misconception": "equal amounts claimed"
         }
       ]
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L2::Q6",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L2",
+      "stem": "State the industrial process used in the note as the example of a reaction reaching equilibrium.",
+      "misconceptionClass": "example recall",
+      "kind": "recall",
+      "modelAnswer": "The Haber process, run in a sealed container.",
+      "keywords": [
+        "haber"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L2::Q7",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L2",
+      "stem": "State the vessel condition under which the Haber process reaches equilibrium.",
+      "misconceptionClass": "vessel condition recall",
+      "kind": "recall",
+      "modelAnswer": "It runs in a sealed container, forming a closed system.",
+      "keywords": [
+        "sealed",
+        "closed",
+        "container",
+        "vessel"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L2::Q8",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L2",
+      "stem": "Explain why the backward reaction speeds up as the Haber process proceeds.",
+      "misconceptionClass": "rate shift logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the ammonia concentration rises as the reaction proceeds, and the backward reaction decomposes ammonia back into nitrogen and hydrogen, so more ammonia means a faster backward reaction.",
+      "keywords": [
+        "ammonia",
+        "decomposes",
+        "decompose",
+        "decomposing",
+        "backward"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L2::Q9",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L2",
+      "stem": "A sealed Haber vessel has run for several hours: the amounts of nitrogen, hydrogen and ammonia have stopped changing. State which reaction is faster at that moment, the forward or the backward.",
+      "misconceptionClass": "equilibrium rates applied",
+      "kind": "application",
+      "modelAnswer": "Neither — the two rates have become equal, because equilibrium has been reached.",
+      "keywords": [
+        "neither",
+        "equal",
+        "same",
+        "equilibrium"
+      ],
+      "options": []
     }
   ]
 }

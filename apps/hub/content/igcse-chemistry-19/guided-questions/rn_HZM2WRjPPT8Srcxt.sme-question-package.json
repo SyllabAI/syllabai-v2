@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_HZM2WRjPPT8Srcxt",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "074abd494b4df3f551af42bbdba65f826d0ab48e3924e19a4e3e107401e1d7e0",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "41bceb6b64b0c18feca31c5a01ac14c7aadf50b80e8276aba994e1a4df6fed59",
+    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
   },
   "packageId": "igcse-chemistry::rn_HZM2WRjPPT8Srcxt",
   "subject": "igcse-chemistry",
@@ -190,6 +190,63 @@
           "misconception": "contradicts the definition of soluble"
         }
       ]
+    },
+    {
+      "id": "rn_HZM2WRjPPT8Srcxt::L1::Q6",
+      "moduleId": "rn_HZM2WRjPPT8Srcxt::L1",
+      "stem": "A cup of sugar water is made by stirring sugar into hot tea. State which substance is the solvent.",
+      "misconceptionClass": "solvent identification",
+      "kind": "recall",
+      "modelAnswer": "The tea (the water in it) is the solvent — the liquid doing the dissolving.",
+      "keywords": [
+        "water",
+        "tea",
+        "liquid"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HZM2WRjPPT8Srcxt::L1::Q7",
+      "moduleId": "rn_HZM2WRjPPT8Srcxt::L1",
+      "stem": "State the term for the mixture formed once a solute has dissolved in a solvent.",
+      "misconceptionClass": "solution definition",
+      "kind": "recall",
+      "modelAnswer": "A solution.",
+      "keywords": [
+        "solution"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HZM2WRjPPT8Srcxt::L1::Q8",
+      "moduleId": "rn_HZM2WRjPPT8Srcxt::L1",
+      "stem": "Explain why no more salt can dissolve in a solution that is already saturated.",
+      "misconceptionClass": "saturation logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because a saturated solution already holds the maximum amount of dissolved solute the solvent can take, so no more solute can be dissolved.",
+      "keywords": [
+        "maximum",
+        "max",
+        "holds",
+        "hold",
+        "full",
+        "limit",
+        "dissolved"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HZM2WRjPPT8Srcxt::L1::Q9",
+      "moduleId": "rn_HZM2WRjPPT8Srcxt::L1",
+      "stem": "A student keeps stirring sugar into tea until some sugar sits at the bottom and will not dissolve, however long they stir. State the term describing the tea at that moment.",
+      "misconceptionClass": "saturation applied",
+      "kind": "application",
+      "modelAnswer": "The tea is a saturated solution — it holds the maximum amount of dissolved solute the solvent can take.",
+      "keywords": [
+        "saturated",
+        "saturation"
+      ],
+      "options": []
     }
   ]
 }
