@@ -572,7 +572,180 @@ const FEEDS = {
     },
     targetSchemas: ["hub/lesson-import/1.4", "sme-question-package/1.1"],
   },
+  "r3-stageb3-v10": {
+    manifest: "hub-import-manifest-v10.json",
+    manifest_version: 10,
+    lesson_kind: "hub-lesson-import-1.4", // legacy single-kind field; v10 uses lessonKinds below
+    lessonKinds: { "hub-lesson-import-1.3": 76, "hub-lesson-import-1.4": 36 }, // generation-union census (2 stage-A pilots + 10 S-B1 + 12 S-B2 + 12 S-B3 at 1.4)
+    adapter: "guided-lesson-0.5--hub-lesson-import-1.4",
+    directive: "run the R3 mixed check types stage-B wave 3 chain — import the S-B3 tranche (the wave-3 authoring register: 12 notes / 24 lessons / 96 written items; operator ignition trace 1a18c9f53d7b8dd1 'wave 3 proceed'). Declared hub revision = 48 files: the 24 S-B2 re-issues (PR #237 generation, bytes fetched @ pin — the S-B2 hub import rides this cumulative manifest) + the 24 S-B3 re-issues",
+    promo: {
+      // promotion commit of record = the resources PR #240 MERGE commit (S-B3 commit C 1199c3c
+      // content; merge-order convention: #237 merged first as e679c919, disclosed in receipts)
+      commit: "163cb2f32848136ccf3cf1d29bb918b0e61a3fcd",
+      tree: "77a6a1ea9464eb14b9e9731ec53e499cb46ff555",
+      parent: "c09b05bb2645f637f3d4efb572810ebdd52c216f", // resources main first-parent at the #240 merge (advanced past e679c919 with unrelated lanes mid-wave; disclosed in receipts)
+      trace: "1a18c9f53d7b8dd1",
+    },
+    integration_branch: null, // ancestry of record — hub run happens only after the resources PR merges
+    artifact_pin: "71922d1510ee9e00400667670b40f36e1ae5d456", // the 76 untouched lessons keep the source-0.4 (1.3) pin
+    artifact_pins_by_note: {
+      // the 36 R3 notes (2 pilots + 10 S-B1 + 12 S-B2 + 12 S-B3) re-pin BOTH channels to
+      // their source-0.5 generation commits
+      rn_2MpXPtNXvn8pQm3r: "80afdb8e02b628754f0e522d257e54d046ba5b0f",
+      rn_8T5GfPn2q7sY2YCh: "80afdb8e02b628754f0e522d257e54d046ba5b0f",
+      rn_2d6Yb8GwGfRRd6pZ: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_4SgDJv8rKxpQQSBh: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_HZM2WRjPPT8Srcxt: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_JCfdFrHsCkrmMbFj: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_TM4QVMgXVxs4vbfY: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_fQSYvKRMDBj3s2Bx: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_jNJ4gTmcHqdFqsNh: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_kJg2gwF77vdFZZ2H: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_wTtM2fQVVjntRm64: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_xT8XsdJtDX5gNFXj: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_2VnK66PqbvFKdKYt: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_S7GPh8BBPBbmhYKm: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_cTk2cs2h2BKQ3y3B: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_QVmDs8X4szpds3cP: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_TWGVV6RXN3Ktqb9h: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_RvgxXR36425BFMcx: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_YBWYstSRgM2QPzQq: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_R3ptwxGTTvdBFvyP: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_TsfqyK9BYMtN2Bfd: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_kb2VkFMdBTbmG33t: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_vzGMZxqQtWYVWB7h: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_b3XCzdtfQddbJjVf: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_Syxyh4Fct8KFg8NQ: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_mBqgkpZ3hbSBmWCC: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_N4HX8tqbdhTQcHyS: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_VyXFNyxZHZGkxqTG: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_vXPcH3vS8wv7BFkK: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_pWzTTBv3B4yGFfj3: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_yj4y972FxCWnDnSg: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_Hkwmd9GSp3gdxxR5: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_4tzwS4GZjPybwtkS: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_T55t3HNsgyZcXZtN: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_mbcBZkygY4YpG2bf: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_8Nv33F4dD3kkZnY6: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
+    },
+    pkg_pin: "4d857c472fd725597ac21db189542c8f12c82dba", // INT-0 — the 76 untouched packages stay byte-identical
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    pilotDelta: {
+      files: [
+        // 48 declared: 24 S-B2 re-issues (hub revision rides this manifest) + 24 S-B3 re-issues
+        "rn_2VnK66PqbvFKdKYt.hub-lesson-import.json",
+        "rn_S7GPh8BBPBbmhYKm.hub-lesson-import.json",
+        "rn_cTk2cs2h2BKQ3y3B.hub-lesson-import.json",
+        "rn_QVmDs8X4szpds3cP.hub-lesson-import.json",
+        "rn_TWGVV6RXN3Ktqb9h.hub-lesson-import.json",
+        "rn_RvgxXR36425BFMcx.hub-lesson-import.json",
+        "rn_YBWYstSRgM2QPzQq.hub-lesson-import.json",
+        "rn_R3ptwxGTTvdBFvyP.hub-lesson-import.json",
+        "rn_TsfqyK9BYMtN2Bfd.hub-lesson-import.json",
+        "rn_kb2VkFMdBTbmG33t.hub-lesson-import.json",
+        "rn_vzGMZxqQtWYVWB7h.hub-lesson-import.json",
+        "rn_b3XCzdtfQddbJjVf.hub-lesson-import.json",
+        "rn_Syxyh4Fct8KFg8NQ.hub-lesson-import.json",
+        "rn_mBqgkpZ3hbSBmWCC.hub-lesson-import.json",
+        "rn_N4HX8tqbdhTQcHyS.hub-lesson-import.json",
+        "rn_VyXFNyxZHZGkxqTG.hub-lesson-import.json",
+        "rn_vXPcH3vS8wv7BFkK.hub-lesson-import.json",
+        "rn_pWzTTBv3B4yGFfj3.hub-lesson-import.json",
+        "rn_yj4y972FxCWnDnSg.hub-lesson-import.json",
+        "rn_Hkwmd9GSp3gdxxR5.hub-lesson-import.json",
+        "rn_4tzwS4GZjPybwtkS.hub-lesson-import.json",
+        "rn_T55t3HNsgyZcXZtN.hub-lesson-import.json",
+        "rn_mbcBZkygY4YpG2bf.hub-lesson-import.json",
+        "rn_8Nv33F4dD3kkZnY6.hub-lesson-import.json",
+        "rn_2VnK66PqbvFKdKYt.sme-question-package.json",
+        "rn_S7GPh8BBPBbmhYKm.sme-question-package.json",
+        "rn_cTk2cs2h2BKQ3y3B.sme-question-package.json",
+        "rn_QVmDs8X4szpds3cP.sme-question-package.json",
+        "rn_TWGVV6RXN3Ktqb9h.sme-question-package.json",
+        "rn_RvgxXR36425BFMcx.sme-question-package.json",
+        "rn_YBWYstSRgM2QPzQq.sme-question-package.json",
+        "rn_R3ptwxGTTvdBFvyP.sme-question-package.json",
+        "rn_TsfqyK9BYMtN2Bfd.sme-question-package.json",
+        "rn_kb2VkFMdBTbmG33t.sme-question-package.json",
+        "rn_vzGMZxqQtWYVWB7h.sme-question-package.json",
+        "rn_b3XCzdtfQddbJjVf.sme-question-package.json",
+        "rn_Syxyh4Fct8KFg8NQ.sme-question-package.json",
+        "rn_mBqgkpZ3hbSBmWCC.sme-question-package.json",
+        "rn_N4HX8tqbdhTQcHyS.sme-question-package.json",
+        "rn_VyXFNyxZHZGkxqTG.sme-question-package.json",
+        "rn_vXPcH3vS8wv7BFkK.sme-question-package.json",
+        "rn_pWzTTBv3B4yGFfj3.sme-question-package.json",
+        "rn_yj4y972FxCWnDnSg.sme-question-package.json",
+        "rn_Hkwmd9GSp3gdxxR5.sme-question-package.json",
+        "rn_4tzwS4GZjPybwtkS.sme-question-package.json",
+        "rn_T55t3HNsgyZcXZtN.sme-question-package.json",
+        "rn_mbcBZkygY4YpG2bf.sme-question-package.json",
+        "rn_8Nv33F4dD3kkZnY6.sme-question-package.json"
+      ],
+    },
+    schemas: {
+      hub: "/home/z/my-project/scripts/r3-survivors/hub-lesson-import.1.4.schema.json",
+      pkg: "/home/z/my-project/scripts/r3-survivors/sme-question-package.1.1.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.4.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.1.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/r3-survivors/hub-import-manifest-v10.json",
+      int3: "/home/z/my-project/scripts/r3-survivors/INT-3-transform-record-r3-stageb3.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261030-r3-stageb3.json`,
+    identity: {
+      "notes": 112,
+      "lessons": 239,
+      "checks": 1499,
+      "keyPoints": 1212,
+      "distractors": 3565,
+      "glossaryTerms": 654,
+      "figures": 200,
+      "figures_module_mapped": 122,
+      "figures_note_level": 78,
+      "workedExamples_populated": 112,
+      "workedExamples_null": 0,
+      "authored_chars_conserved": 1501204,
+      "authored_chars_v3_baseline": 1347771,
+      "added_chars": 153433,
+      "captions_coalesced": 143,
+      "captions_row_context": 16,
+      "captions_inline": 3,
+      "captions_none": 38,
+      "binding_heading_unique": 90,
+      "binding_sole_lesson": 0,
+      "binding_content_overlap": 12,
+      "binding_note_level": 78,
+      "binding_unresolved": 20,
+      "figures_binding_narrowed": 102,
+      "figures_claims_changed": 12,
+      "figures_wholesale_claims_kept": 2,
+      "checks_written": 304,
+      "checks_mcq": 1195,
+      "written_recall": 152,
+      "written_explain_why": 76,
+      "written_application": 76
+    },
+    figures_feed: true,
+    we_feed: true, // the v10 stream is the declared baseline; this feed's equality gate is per-note vs the INT-3 r3-stageb3 anchors (76 exact at v9; 24 prior-R3 at their own anchors exactly; 12 S-B3 notes carry the 96 written items' tokens)
+    landing: "revision", // declared G-DELTA: exactly the 48 declared files re-pin (24 S-B2 + 24 S-B3); everything else byte-identical
+    relFor(a) {
+      if (!a.path.startsWith("SME-GuidedLessons/integration/")) throw new Error(`v10 manifest path not integration-relative: ${a.path}`);
+      return a.path;
+    },
+    pathFamily(a) {
+      return (
+        ((a.kind === "hub-lesson-import-1.3" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.3/")) ||
+          (a.kind === "hub-lesson-import-1.4" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.4/"))) ||
+        (a.kind === "sme-question-package" && (a.path.startsWith("SME-GuidedLessons/integration/question-packages/") || a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.1/")))
+      );
+    },
+    targetSchemas: ["hub/lesson-import/1.4", "sme-question-package/1.1"],
+  },
 };
+
 
 const FEED_ID = process.env.FEED || "fullcorpus-v2";
 const F = FEEDS[FEED_ID];
