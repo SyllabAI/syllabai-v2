@@ -1,0 +1,75 @@
+{
+ "lane": "T-OEQ-PHYS-FORMAT-1",
+ "run": "run-001-katex-t1",
+ "title": "4PH1 official plane KaTeX conversion pass tranche 1 - strict-line symbol/numeric equations typeset $...$ (automated, content-preserving), full damage-class census filed for the evidence waves",
+ "operatorOrder": "trace 1a18d65b00980cf1: 'open that wave - starting with the KaTeX conversion pass' (the formatting/rendering thread, trace 1a18d360264b86c9: 'We had a rule about using llm to improve. There is no need to keep verbatim')",
+ "date": "2026-10-30",
+ "planeOfRecord": {
+  "path": "apps/hub/content/igcse-physics-19/official-papers.json",
+  "before": "0c03fdc76b7fde4033120d57348da297e293acc2d150d7de02a6781462cb23f7",
+  "after": "2cfd90da6fab890934c8fddbf7617e60a227d9dcbb42c212bdeef5d685e40531",
+  "diff": "160 lines changed (+160/-160), single file"
+ },
+ "lawOfThePass": {
+  "pre_registered": "convert ONLY whole lines that are pure symbol/numeric equations (lhs '=' rhs over the safe math charset) with ZERO damage/furniture signatures; unicode->LaTeX map total and invertible; presentation-only (spacing + delimiters + map)",
+  "unicode_map": "x times/div/approx/le/ge/propto/sqrt(...)/Delta/Greek(19)/frac(1/2,1/4,3/4)/^{2},^{3},^{4},^{-1},^{\\circ}/%/cdot; nothing else",
+  "skip_law": "every skipped line is CENSUSED by damage class into the run-002 worklist - never silently dropped"
+ },
+ "censusOfRecord": {
+  "converted_lines": 194,
+  "changed_fields": 160,
+  "unique_segments": 91,
+  "per_field_class": {
+   "solutionMd": 97,
+   "mp0": 97
+  },
+  "papers_touched": 40,
+  "of_55": true,
+  "mirror_law": "markPoints textMd converted by the SAME deterministic law as solutionMd (lockstep by construction; per-field-class counts equal)"
+ },
+ "gates": {
+  "G1_structure_marks": "OK (55 sets / 540 questions / 2254 parts; marks[] identical)",
+  "G2_identity_reconstruction": "OK - every edited field reconstructed through the inverse map (space-normalized) == original, 160/160 fields",
+  "G3_pua_control": "OK (0) | U+FFFD: 2 pre-existing (0 new; worklist class)",
+  "G4_raw_dollar_parity": "OK (388 delimiter chars, even, no escapes; plane had 0 $ before)",
+  "G5_katex_gate": "OK - katex 0.16.23 renderToString(throwOnError:true), 91/91 unique segments, 0 failures (hub's own version, r0_tierb_katex_gate.js method)",
+  "G6_serialization_byte_law": "OK - json.dumps(indent=1, ensure_ascii=False), no trailing newline, round-trip exact (the file's own serialization preserved)"
+ },
+ "worklistOfRecord_for_run002": {
+  "note": "pre-registered evidence-gated worklist (page-read waves per the maths-B UIUX-TIER-B NO-GUESS doctrine); full samples in evidence mirror",
+  "classes": {
+   "word-symbol": 1861,
+   "paren-prompt": 380,
+   "ms-furniture": 552,
+   "S1-subsup": 577,
+   "S1-parensup": 47,
+   "unit-tail": 261,
+   "abbr": 200,
+   "S1-decimal": 420,
+   "S1-funcinv": 16,
+   "S1-x10": 316,
+   "foreign-char": 30,
+   "S1-negexp": 177,
+   "sqrt-bare": 10,
+   "unit-paren": 97,
+   "cont-line": 12,
+   "S1-leadzero": 12,
+   "arith-fail": 4,
+   "S1-zero-lhs": 6,
+   "S1-suvat-shape": 2,
+   "paren-imbalance": 2
+  },
+  "residual_disclosure": "digit-cluster sup-loss WITHOUT structural signature is mechanically invisible (e.g. 's = 652 / 26' where 652 = 65^2) - the eyes-on wave sweeps it; same disclosure class as maths-B run-024",
+  "U+FFFD": "2 pre-existing replacement chars on the plane - located for run-002"
+ },
+ "standingDebt": [
+  "RESOURCES BACK-SYNC LAW: this pass lives v2-side (the maths-B UIUX-TIER-B precedent); any future resources-side 4PH1 exporter re-export would OVERWRITE the served KaTeX state - the exporter must learn this pass (or re-apply it) before any physics back-sync; filed so the maths-B F122 pattern is not repeated blind",
+  "questions.md human renders in the resources corpus are now presentation-stale for the 194 converted lines (same disclosure as maths-B run-017; regen rides with the next converter run)"
+ ],
+ "evidence": {
+  "converter": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/phys_katex_pass.py",
+  "payload": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run001-payload.json (conversions[] with where/orig/latex, full unique_segments[], worklist samples)"
+ },
+ "discipline": "read-only recon then single-file serving-plane edit; resources corpus untouched (zero corpus-side writes); zero DB/Neon/prod contact; fetch-first, no force; receipt + worklog + evidence in the same PR; fail-closed gates (any gate failure aborts before write)",
+ "verdict": "RUN-001 CLOSED: 194/194 converted lines individually eyeballed clean (91 unique segments, all gated); six gates green; the full damage census (2,701 skip lines across 20 classes) filed as the run-002+ worklist of record"
+}
