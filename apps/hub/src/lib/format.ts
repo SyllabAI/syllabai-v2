@@ -1,8 +1,10 @@
 /**
- * Shared display formatters for the teacher console (ported from
- * syllabai-web's lib/format.ts, T-028). Pure presentation helpers — no
- * business rules; every value they render comes from a backend read model.
+ * Shared display formatters (ported from syllabai-web's lib/format.ts,
+ * T-028). Pure presentation helpers — no business rules; every value they
+ * render comes from a backend read model. Client-safe: the only import is
+ * lib/board (also client-safe), so hub client surfaces share these too.
  */
+import { boardOf } from "./board";
 
 /** Compact relative time: "just now", "4 min ago", "3 h ago", "2 d ago". */
 export function formatRelative(iso: string): string {
@@ -37,6 +39,67 @@ export function formatDue(iso: string): string {
         ? `${Math.floor(absDays * 24)} h`
         : `${Math.max(1, Math.floor(absDays * 60))} min`;
   return ms < 0 ? `overdue · ${unit}` : `due in ${unit}`;
+}
+
+/**
+ * Count display helper (UX review 2026-10-31 F-15): the course page printed
+ * "1075 questions", "1189 cards" and "67 papers" side by side — one device
+ * (the per-tile count) wearing five formats, with four-digit numbers slow to
+ * read unseparated. One helper, one format. "en-GB" is pinned (not
+ * locale-default) so server and client renders agree byte-for-byte
+ * (hydration) and the grouping follows the UK convention of the audience
+ * (Edexcel / Cambridge International).
+ */
+export function fmtCount(n: number): string {
+  return n.toLocaleString("en-GB");
+}
+
+/**
+ * Course display title (UX review 2026-10-31 F-08): tab titles were
+ * inconsistent across lanes because registry labels are — "Chemistry —
+ * A-Level" carries its level, the registered lanes fall back to the bare
+ * subject ("Geography"). The composer keeps the registry's variant detail
+ * ("Maths — Mechanics") and guarantees the level is present exactly once.
+ */
+export function courseTitle(
+  meta: { subject: string; level: string; label: string },
+): string {
+  const base = meta.label.trim() || meta.subject;
+  return base.includes(meta.level) ? base : `${base} — ${meta.level}`;
+}
+
+/**
+ * Per-course meta description (UX review 2026-10-31 F-08): the global site
+ * blurb ("Spec-anchored revision for Edexcel IGCSE & IAL…") served verbatim
+ * on Cambridge lanes, including empty ones. The description is composed from
+ * the same live counts the tiles print — name only what exists, and say
+ * honestly what happens on a lane whose bundle has not landed.
+ */
+export function courseMetaDescription(
+  meta: { slug: string; subject: string; level: string; label: string; code: string; board?: string },
+  stats: { notes: number; questions: number; flashcards: number },
+): string {
+  const qual = `${boardOf(meta)} ${meta.level} ${meta.subject}`;
+  const parts: string[] = [];
+  if (stats.notes > 0) {
+    parts.push(`${fmtCount(stats.notes)} revision note${stats.notes === 1 ? "" : "s"}`);
+  }
+  if (stats.questions > 0) {
+    parts.push(`${fmtCount(stats.questions)} exam-style question${stats.questions === 1 ? "" : "s"}`);
+  }
+  if (stats.flashcards > 0) {
+    parts.push(`${fmtCount(stats.flashcards)} flashcard${stats.flashcards === 1 ? "" : "s"}`);
+  }
+  if (parts.length === 0) {
+    return (
+      `${qual} (${meta.code}) on SyllabAI Hub — the full revision hub for this course ` +
+      "switches on the moment its content bundle lands."
+    );
+  }
+  return (
+    `${qual} (${meta.code}) revision hub: ${parts.join(", ")}, organised around ` +
+    "the course's specification."
+  );
 }
 
 /**
