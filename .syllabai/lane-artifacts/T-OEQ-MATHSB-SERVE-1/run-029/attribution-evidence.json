@@ -1,0 +1,74 @@
+{
+ "run": "run-029-exporter-law-alignment",
+ "cut": "main@5f170f98746f4bd21ce8e6b73af02e6a83fa4028 (resources tip, anonymous clone)",
+ "planeOfRecordInput": "v2 HEAD apps/hub/content/igcse-maths-b-16/official-papers.json sha256 edbe22de25724627",
+ "exporterR2": "official_examq_export_hub_mb_f119_r2.py sha256 7846c6171f8393819f87f259ef88f9a50958dd2be5cd5a3a0c451dfc9f4b749f",
+ "ledger": "synced-fields-ledger.json — 26 fields (run-017 C120-C146 pins minus C145), fresh-verified corpus==plane at resources 5f170f98 <-> plane edbe22de",
+ "surgicalAttribution": {
+  "stageOldVsStageNewChanged": [
+   {
+    "pid": "offp_2025-06_01_12",
+    "fieldsChangedStageOldToNew": [
+     "problemMd"
+    ]
+   },
+   {
+    "pid": "offp_2026-06_01r_18",
+    "fieldsChangedStageOldToNew": [
+     "problemMd"
+    ]
+   },
+   {
+    "pid": "offp_2026-06_01r_19",
+    "fieldsChangedStageOldToNew": [
+     "problemMd",
+     "solutionMd",
+     "markPoints"
+    ]
+   },
+   {
+    "pid": "offp_2026-06_01r_25",
+    "fieldsChangedStageOldToNew": [
+     "solutionMd",
+     "markPoints"
+    ]
+   },
+   {
+    "pid": "offp_2026-06_01r_27-a",
+    "fieldsChangedStageOldToNew": [
+     "problemMd"
+    ]
+   }
+  ],
+  "assertion": "exactly 5 pids / exactly the 8 ledgered fields; zero collateral outside the ledger",
+  "postR2FullyByteEqualPids": [
+   "offp_2025-06_01_12",
+   "offp_2026-06_01r_19",
+   "offp_2026-06_01r_25",
+   "offp_2026-06_01r_27-a"
+  ],
+  "residuals": {
+   "offp_2026-06_01r_18": {
+    "postR2StageVsPlaneDiffs": [
+     "assets"
+    ]
+   }
+  },
+  "residualClass": "offp_2026-06_01r_18 assets: plane carries the real crop (page 14, asset_18_diagram.png), corpus still crop-required — the diagram-artwork back-sync class (R1 debt, rides the next converter run; no exporter transform involved)"
+ },
+ "census": {
+  "baselineDeltas": 1469,
+  "r2Deltas": 1465,
+  "dropped": [
+   "offp_2025-06_01_12",
+   "offp_2026-06_01r_19",
+   "offp_2026-06_01r_25",
+   "offp_2026-06_01r_27-a"
+  ],
+  "added": []
+ },
+ "determinism": "stage2 == stage3 BYTE-IDENTICAL (cmp clean, both files)",
+ "negativeTest": "poisoned ledger (C145 added) REFUSED: 'G-E7: SYNCED-FIELD LEDGER DRIFT at offp_2026-06_01r_27-b problem_md — the corpus pass-through value != the plane of record; run the R1 corpus back-sync for this field before the R2 lane (fail-closed, no silent pass-through of drifted fields)'",
+ "questionsJson": "stage-old == stage-new byte-identical; in-run G-E4 2,920,322 B passthrough",
+ "namespaceCollisionDisclosure": "the run-028 number was consumed by the parallel lane PR #484 (t-oeq-mathsb/run-028, tranche-2 token wave-5 content discharge, merged 5d0cd05d) while this lane worked — renumbered run-028 -> run-029 per the T-MIG-016 renumber precedent (namespace hygiene); this lane is the R2 exporter-law alignment act, unrelated scope to the token waves"
+}
