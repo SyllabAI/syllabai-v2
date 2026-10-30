@@ -285,22 +285,31 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // (uq_mark_point_rect_point_ordinal rides uniqueConstraints, not the
   // index count — the mpa precedent) on top of the ruling-A baseline
   // -> 84/791/114/83/146.
-  test("84/791/114/83/146 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // T-MG-AWARDS-1 run-001 (0018_mark-awards, plan of record
+  // docs/MG-MARK-PARITY-PLAN.md §3.2, the RECT-1 fold precedent):
+  // mark_awards adds 1 table, 16 columns, 1 index, 2 fks, 4 checks;
+  // mark_working_blocks adds 1 table, 8 columns, 1 index, 1 fk, 1 check
+  // (uq_mark_awards_learner_doc_region_code_ordinal rides
+  // uniqueConstraints, not the index count — the mpa precedent) on top
+  // of the RECT-1 baseline -> 86/815/116/86/151.
+  test("86/815/116/86/151 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 84/84");
-    expect(v.inventory).toContain("columns 791");
-    expect(v.inventory).toContain("indexes 114");
-    expect(v.inventory).toContain("fks 83");
-    expect(v.inventory).toContain("checks 146");
+    expect(v.inventory).toContain("tables 86/86");
+    expect(v.inventory).toContain("columns 815");
+    expect(v.inventory).toContain("indexes 116");
+    expect(v.inventory).toContain("fks 86");
+    expect(v.inventory).toContain("checks 151");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(84);
+    expect(run.size).toBe(86);
     expect(run.has("public.mark_bands")).toBe(true); // ADR-040 — the levels analog of mark_points
     expect(run.has("public.mark_point_rects")).toBe(true); // T-MG-MP-RECT-1 — the geometry plane on the definition join
+    expect(run.has("public.mark_awards")).toBe(true); // T-MG-AWARDS-1 — the award plane (per-award ledger, the DC-7 claim)
+    expect(run.has("public.mark_working_blocks")).toBe(true); // T-MG-AWARDS-1 — the evidence-pointer target
     expect(run.has("public.warehouse_registry")).toBe(true);
     // T-SENECA-001 run-004 — the pack side families ride 0014 in MAIN; the
     // corpus table itself lives in the sci-chem warehouse, never here

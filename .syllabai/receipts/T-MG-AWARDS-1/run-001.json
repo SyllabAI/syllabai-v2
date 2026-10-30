@@ -1,0 +1,59 @@
+{
+  "task": "T-MG-AWARDS-1",
+  "run": "run-001",
+  "date": "2026-10-30",
+  "operator_word": {
+    "trace": "1a18a028b0638c99",
+    "message": "Phase 2",
+    "meaning": "plan §3.2 carding — the award plane (T-MG-AWARDS-1), unblocked by PR #464 (T-MG-MP-RECT-1) landing verified in run-002 of the parent"
+  },
+  "provenance": {
+    "plan_of_record": "docs/MG-MARK-PARITY-PLAN.md §3.2",
+    "branch": "t-mg-awards-1/run-001",
+    "base": "origin/main 74bbab67 (PR #467 tip, fences verified a9fdabfd/db4573c7 EXACT)",
+    "lane_discipline": "additive-only, fences zero-touch, pdf-pane.tsx untouched, fetch-first, ff-only push, no force"
+  },
+  "findings_of_record": [
+    "award plane = per-AWARD grain ledger (the thing THEIRS lacks): one row per mark point assessed, duplicate codes (P1/P1) disambiguated by ordinal — their pointsScored[] positions become rows",
+    "the DC-7 claim at row granularity: UNIQUE(learner_id, document_ref_id, region_key, code, ordinal) + INSERT ... ON CONFLICT DO NOTHING is the createGradedEvidencePublisher evidence_emitted guard, award-shaped; suppressed re-fire = zero rows written, 200 never an error",
+    "zero-orphan ordering: workingRef is generated BEFORE the claim and carried ON the claimed row; the working-block insert runs ONLY on a won claim — a suppressed re-fire writes nothing",
+    "NO new event store (plan §3.2 verbatim): mark_awards IS the evidence record of record; the progress surface (Phase 6) rolls up real rows — DC-7's never-a-local-counter law holds without forcing paper rows into the attempt-anchored ai_mark_events (whose attemptId/answerId NOT NULL FKs cannot carry region-keyed awards)",
+    "write-side score law: non-awarded rows carry score 0, so served region score = Σ score = Σ awarded, maxScore = Σ max_score (the ledger rows are the region max authority)",
+    "POST identity bridge: regionId is the REAL questions.id / question_parts.id that RECT-1's regions API serves; the region key re-derives through the SAME §3.1 law — the q{n} positional fallback needs a window function (nulls-last semantics a row-value comparison cannot carry)",
+    "ledger-preserving FK posture: cascade on learner delete (PII, the ai_mark_events precedent), NO cascade on mark_point delete (the record of record outlives mark-scheme edits)",
+    "seed vs pipeline divergence disclosed: the seed UPSERTS (fixture grounder), the pipeline claims (once-only) — deliberate, documented in both headers"
+  ],
+  "census_pins": {
+    "before": "84/791/114/83/146",
+    "after": "86/815/116/86/151",
+    "delta": "+2 tables (mark_awards 16 cols, mark_working_blocks 8 cols), +2 indexes, +3 fks, +5 checks; uq_mark_awards_learner_doc_region_code_ordinal rides uniqueConstraints (the mpa precedent)"
+  },
+  "acceptance_pins": {
+    "a_ledger": "PASS — service test: region score 2 (Σ awarded), maxScore 3 (Σ max_score), P1 ordinals {0,1} distinct ids, non-awarded C1 serves score 0",
+    "b_evidence": "PASS — service test: workingRef resolves to the working block inline in the same region slice (kind/content/createdAt served)",
+    "c_event": "PASS — service test over a stateful claim simulation on the ACTUAL conflict target: won claim → 1 award row carrying working_ref + 1 working block; re-fire → claim re-issued and absorbed, zero rows, no orphan block; frozenParity double posture pinned",
+    "d_posture": "PASS — route tests: unauthed GET/POST → 401 shell first; the ledger query receives getAuth(c).userId; no learnerId exists on any wire shape (contract-level law)"
+  },
+  "gates": {
+    "paper_awards_tests": "23/23",
+    "full_suite": "3636 pass / 0 fail / 13 skip (208 files)",
+    "typecheck": "0 (contracts + shared + db + api)",
+    "hub_local_tsc": "clean (the RECT-1 CI-repair lesson pre-paid)",
+    "db_check": "green",
+    "rebaseline": "26/26"
+  },
+  "fences": {
+    "apps/api/src/routes/cla.ts": "a9fdabfd (byte-EXACT at base 74bbab67)",
+    "apps/api/src/services/cla/service.ts": "db4573c7 (byte-EXACT at base 74bbab67)",
+    "pdf-pane.tsx": "untouched (plan law: the monolith is not this tranche's surface)"
+  },
+  "phase4_handoff": [
+    "the POST /api/v1/paper-marks/regions/:regionId/awards write site is LIVE — Phase 4 (T-MG-CROPMARK-1) builds the crop→vision→doctrine pipeline and writes through the service seam (createPaperAwardPublisher in-process) or the route",
+    "mark_working_blocks content jsonb is the opaque payload — Phase 4's crop/transcription shapes own its inner schema",
+    "the seed fixture placeholders align to the live corpus at the first real run (loud-fail exit 3 on unresolvable identity)"
+  ],
+  "open_questions": [
+    "Phase 6 progress rings: the evidence rollup joins mark_awards — the rollup surface extension is T-MG-FEEDBACK-1's lane, not this one",
+    "region ordering in the ledger response is region_key asc (lexicographic) — Phase 6 UI orders via the regions API join if human ordering is needed"
+  ]
+}

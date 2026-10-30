@@ -10578,6 +10578,316 @@
         }
       },
       "isRLSEnabled": false
+    },
+    "public.mark_awards": {
+      "name": "mark_awards",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "learner_id": {
+          "name": "learner_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "document_ref_type": {
+          "name": "document_ref_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "document_ref_id": {
+          "name": "document_ref_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "region_key": {
+          "name": "region_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mark_point_id": {
+          "name": "mark_point_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "page": {
+          "name": "page",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "awarded": {
+          "name": "awarded",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "score": {
+          "name": "score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "max_score": {
+          "name": "max_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ordinal": {
+          "name": "ordinal",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "working_ref": {
+          "name": "working_ref",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pipeline_version": {
+          "name": "pipeline_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "feedback": {
+          "name": "feedback",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "ix_mark_awards_learner_doc": {
+          "name": "ix_mark_awards_learner_doc",
+          "columns": [
+            {
+              "expression": "learner_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            },
+            {
+              "expression": "document_ref_type",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            },
+            {
+              "expression": "document_ref_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "mark_awards_learner_id_fkey": {
+          "name": "mark_awards_learner_id_fkey",
+          "tableFrom": "mark_awards",
+          "tableTo": "users",
+          "columnsFrom": [
+            "learner_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "mark_awards_mark_point_id_fkey": {
+          "name": "mark_awards_mark_point_id_fkey",
+          "tableFrom": "mark_awards",
+          "tableTo": "mark_points",
+          "columnsFrom": [
+            "mark_point_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "uq_mark_awards_learner_doc_region_code_ordinal": {
+          "name": "uq_mark_awards_learner_doc_region_code_ordinal",
+          "nullsNotDistinct": false,
+          "columns": [
+            "learner_id",
+            "document_ref_id",
+            "region_key",
+            "code",
+            "ordinal"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "mark_awards_score_check": {
+          "name": "mark_awards_score_check",
+          "value": "score >= 0 AND score <= max_score"
+        },
+        "mark_awards_max_score_check": {
+          "name": "mark_awards_max_score_check",
+          "value": "max_score > 0"
+        },
+        "mark_awards_ordinal_check": {
+          "name": "mark_awards_ordinal_check",
+          "value": "ordinal >= 0"
+        },
+        "mark_awards_page_check": {
+          "name": "mark_awards_page_check",
+          "value": "page IS NULL OR page > 0"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.mark_working_blocks": {
+      "name": "mark_working_blocks",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "learner_id": {
+          "name": "learner_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "document_ref_type": {
+          "name": "document_ref_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "document_ref_id": {
+          "name": "document_ref_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "region_key": {
+          "name": "region_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kind": {
+          "name": "kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content": {
+          "name": "content",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "ix_mark_working_blocks_learner_doc": {
+          "name": "ix_mark_working_blocks_learner_doc",
+          "columns": [
+            {
+              "expression": "learner_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            },
+            {
+              "expression": "document_ref_type",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            },
+            {
+              "expression": "document_ref_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "mark_working_blocks_learner_id_fkey": {
+          "name": "mark_working_blocks_learner_id_fkey",
+          "tableFrom": "mark_working_blocks",
+          "tableTo": "users",
+          "columnsFrom": [
+            "learner_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "mark_working_blocks_kind_check": {
+          "name": "mark_working_blocks_kind_check",
+          "value": "kind IN ('ink', 'text', 'structure')"
+        }
+      },
+      "isRLSEnabled": false
     }
   },
   "enums": {},

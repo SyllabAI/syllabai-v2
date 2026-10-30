@@ -50,6 +50,7 @@ import { buildCronRouters } from "./routes/cron";
 import { buildQuestionsRouters } from "./routes/questions";
 import { buildExamPapersRouters } from "./routes/exam-papers";
 import { buildPaperRegionsRouters } from "./routes/paper-regions";
+import { buildPaperAwardsRouters } from "./routes/paper-awards";
 import { buildTestBuilderRouters } from "./routes/testbuilder";
 import { buildAnswerInputRouters } from "./routes/answer-input";
 import { buildTeacherMarkingRouters } from "./routes/teachermarking";
@@ -97,6 +98,7 @@ const cron = buildCronRouters();
 const questions = buildQuestionsRouters();
 const examPapers = buildExamPapersRouters();
 const paperRegions = buildPaperRegionsRouters();
+const paperAwards = buildPaperAwardsRouters();
 const testbuilder = buildTestBuilderRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
@@ -418,6 +420,18 @@ app.route("/api/v1/questions", questions.questionsRoute);
 // block + import + construction are the minimal app-level wiring per the
 // T-MIG-010/020/021/030/031/032 disclosed-commit precedent.
 app.route("/api/v1/paper-assets", paperRegions.paperAssetsRoute);
+
+// Paper-marks award router (T-MG-AWARDS-1 — MG parity). Plan of record
+// docs/MG-MARK-PARITY-PLAN.md §3.2: GET /api/v1/paper-marks (the
+// getRegionMarks ledger, learner-scoped — the JWT context supplies the
+// learner, never the wire) + POST /api/v1/paper-marks/regions/:regionId/
+// awards (Phase 4's pipeline write site — the DC-7 claim-before-write
+// once-only seam lives in the service). Learner-scoped PII surface;
+// auth shell mirrors selfmark/assessment (authenticated-only). Additive
+// module — no fenced file touched; this mount block + import +
+// construction are the minimal app-level wiring per the
+// T-MIG-010/020/021/030/031/032 disclosed-commit precedent.
+app.route("/api/v1/paper-marks", paperAwards.paperMarksRoute);
 
 // Test-builder + answer-input routers (T-MIG-034 — Wave 3). Path parity with
 // the frozen core: TestBuilderController under /api/v1/teacher/tests (the
