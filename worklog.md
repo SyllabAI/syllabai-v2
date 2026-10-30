@@ -477,3 +477,12 @@ Stage Summary:
 - LANDED: the ClassAnalyticsPort wake-up (frozen-core parity restoration) - /api/v1/teacher/tests/weakness-options serves the real law-pinned class-evidence view on production boots; the route wire is byte-unchanged (the 200 shape was always the contract).
 - Open: CD-A-hub (operator-gated), the /api/v1/teacher/class/* mount gap, CD-B/CD-C re-draft on request (their drafts died with the recycled session), PAT rotation standing.
 - Zero DB contact held end-to-end; all work fakeSql-pinned.
+
+---
+Task ID: CD-A run-001 landing addendum (same trace 1a18c0171724f5ed)
+Agent: main-lane (session web-528c0352)
+Task: PR bookkeeping for CD-A run-001.
+
+Work Log:
+- PR #489 opened (https://github.com/SyllabAI/syllabai-v2/pull/489) from t-class-adapter-cda/run-001 @ 1cb5a6a0 (rebased onto c40c876b — a peer PR #486 landed mid-lane; rebased clean, gates re-run on the rebased head: testbuilder+teacher battery 113 pass / 0 fail).
+- CI 2/2 GREEN on the PR head: verify success + hub success. Receipt updated (status PR-OPEN-CI-GREEN, awaiting integrator merge). Bookkeeping-only.

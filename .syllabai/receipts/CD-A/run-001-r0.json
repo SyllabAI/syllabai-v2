@@ -45,5 +45,12 @@
     "CD-A-hub: wire api.testBuilderWeaknessOptions into the hub test-builder weakness lane (needs the slug->rootId resolution design decision - operator gated)",
     "the /api/v1/teacher/class/* mount gap (hub Class Intelligence dark path) - needs its own task",
     "CD-B / CD-C from the lost state-check remain unexecuted backlog (drafts lost with the recycled session - re-draft on request)"
-  ]
+  ],
+  "pr": {
+    "number": 489,
+    "url": "https://github.com/SyllabAI/syllabai-v2/pull/489",
+    "head": "1cb5a6a0 (rebased onto c40c876b)",
+    "ci": "verify success + hub success (2/2 GREEN on the PR head)"
+  },
+  "status": "PR-OPEN-CI-GREEN (awaiting integrator merge)"
 }
