@@ -352,4 +352,4 @@ Work Log:
 - Local green of record: bun install --frozen-lockfile (952 pkgs); bun run typecheck (contracts/shared/db/api) clean; bun run build:hub (corpus prebuild + next build) clean; bun test apps/hub/src/lib/part-label.test.ts 13/13. CI of record: this PR's verify + hub jobs.
 
 Stage Summary:
-- T-OEQ-PARTLABEL-2 of record pending CI: part labels print on the same line as the part text — the printed-paper reading the operator asked for. One file changed (question-player.tsx, +66/-38); lib/part-label.ts derivation untouched (fail-closed law intact, 13/13). Receipt: .syllabai/receipts/T-OEQ-PARTLABEL-2/run-001.json (this commit).
+- T-OEQ-PARTLABEL-2 LANDED of record (CI verify+hub 2/2 GREEN on head 0c3410df; PR #469 merged — merge commit 2da5a15a7b8f104f, API GET merged:true): part labels print on the same line as the part text — the printed-paper reading the operator asked for. One file changed (question-player.tsx, +66/-38); lib/part-label.ts derivation untouched (fail-closed law intact, 13/13). Receipt: .syllabai/receipts/T-OEQ-PARTLABEL-2/run-001.json (merge close-out appended).

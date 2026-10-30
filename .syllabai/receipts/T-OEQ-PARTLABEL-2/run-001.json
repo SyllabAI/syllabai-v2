@@ -26,7 +26,8 @@
   "bun run build:hub (corpus prebuild + next build) — clean",
   "bun test apps/hub/src/lib/part-label.test.ts — 13 pass / 0 fail"
  ],
- "ci_of_record": "this PR's verify + hub jobs green before merge; merge confirmed by API GET merged:true",
+ "ci_of_record": "PR #469 verify + hub 2/2 GREEN on head 0c3410df (run on the PR merge ref)",
+ "merge_of_record": "PR #469 merged via API PUT at 2026-10-30 — merge commit 2da5a15a7b8f104f6e437bef5e045e045a3ce8d4 = main tip; merged:true confirmed by GET (merged_by SyllabAI, the operator PAT). Close-out appended to the receipt in this commit.",
  "not_done_here": [
   "No exporter/data change — the official plane keeps sourcePaper.questionPart:null; Option A (data-plane label fields + G-E4 byte-exact re-export) remains open pending operator review of this interim.",
   "No resources-repo contact; no DB contact; single learner-surface file."
