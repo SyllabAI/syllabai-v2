@@ -1,0 +1,47 @@
+{
+ "task": "T-MG-INK-1 run-001",
+ "date": "2026-10-30",
+ "operator": {
+  "dispatch": "Phase 3",
+  "trace": "1a18bd3f2c4b0901",
+  "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+ },
+ "plan_of_record": "docs/MG-MARK-PARITY-PLAN.md \u00a73.3 (decision gate, carded not pre-decided) + \u00a75.5",
+ "class": "decision-gate spike + verdict receipt \u2014 Phase 3 opens with the gate; NO surface code in this run (the gate's own sequencing law)",
+ "verdict": {
+  "decision": "native canvas ink on pdf-pane v4",
+  "default_clause": "NOT triggered \u2014 the spike is conclusive (licence alone is decisive), so the plan's inconclusive-default (tldraw headless) falls away",
+  "record": "docs/MG-INK-SDK-GATE.md (decision record of record)"
+ },
+ "evidence": {
+  "licence_decisive": "tldraw 5.6.0 umbrella/@tldraw/editor/@tldraw/driver = tldraw license: free tier 'Not to use the Software in Production Environments' + technical enforcement that 'may collect and transmit usage data to tldraw' \u2014 production learner surface disqualified; learner-ink surface + third-party compliance telemetry violates the Phase-2 PII posture law. MIT survives only in 6 subpackages that carry the doc format, not the tool suite.",
+  "bundle_measured_gz": {
+   "tldraw_full": 575518,
+   "tldraw_headless_store": 46212,
+   "native_ref": 1314,
+   "method": "esbuild minified ESM, gzip -9, react external (hub react@19.3.0 satisfies tldraw peer ^19.2.1)"
+  },
+  "dpr_zoom": "native rides the RegionOverlay overlay law (normalized 0..1, CSS percentages) + the s145 two-phase zoom's compositor live phase; tldraw owns its camera and would fight the substrate",
+  "persistence": "single-writer per (learner,documentRef); observed doc 11,148 B / 17 shapes \u2192 full-doc PUT + revision LWW 409 is right-sized; tldraw op-log solves multi-writer we do not have"
+ },
+ "discipline": "zero target-site writes (public npm registry + public GitHub licence file, read-only GETs, dossier precedent); zero DB contact; no schema/API/UI code in this run; binaries sandbox-local (node_modules not committed)",
+ "deliverables": {
+  "decision_record": "docs/MG-INK-SDK-GATE.md",
+  "lane_artifacts": [
+   "spike-log.json",
+   "measure.js",
+   "entry-a-full.jsx",
+   "entry-b-headless.js",
+   "ink-native-ref.js",
+   "tldraw-LICENSE.md"
+  ],
+  "tcard": ".syllabai/tasks/T-MG-INK-1.yaml"
+ },
+ "sandbox_recovery_note": "sandbox recycled between sessions: working clone rebuilt from origin; push credential recovered from the audit mirror's stored remote config (legacy PAT still live, ROTATION-REQUIRED flag unchanged and re-flagged)",
+ "consequences": [
+  "run-002: learner_pdf_drawings schema + GET/PUT /api/v1/learner/pdf-drawings exactly per plan \u00a73.3 (doc container {schema, shapes[]}, schema id 'syllabai-ink/1')",
+  "run-003: surface \u2014 standalone ink layer over past-papers only, our toolbar (colour/thickness/undo/redo/clear/text), perf pin dpr cap 2",
+  "T-MG-INK-2 (maths instruments): unchanged, bespoke over the native stroke pipeline",
+  "op-log/canvas.commit sync: dead for this phase (E4); reversal clause in the decision record"
+ ]
+}
