@@ -32,11 +32,27 @@
   "tree census re-verified on the FINAL committed bytes: labelled/null == (2,239/15, 2,607/0, 1,723/720); questions.json sizes == the served of-record (2,057,977 / 2,605,409)",
   "manifest deep-diffs: importSource is the only touched key on all three, each in its own serialization convention"
  ],
- "ci_of_record": "PR verify + hub — see merge_of_record (filled post-merge in the close-out)",
- "merge_of_record": "see close-out",
+ "ci_of_record": "PR #477 head c6ccc87 (post the origin/main merge commit) verify + hub 2/2 GREEN; merge sha 4fbe8142e353 re-pulled post-merge: verify + hub SUCCESS again (2/2, the CI double verification)",
+ "merge_of_record": "PR #477 MERGED via API PUT at 2026-10-30T01:45:03Z — merge commit 4fbe8142e353 = main tip; merged:true confirmed by GET (state closed, merged true); mid-lane origin movement handled by append-union (the R3-MIXED-CHECK-TYPES bookkeeping commit + the T-OEQ-MATHSB-SERVE-1 run-026 worklog entry landed between the PR filings; zero content-path overlap, worklog resolved both-sides-kept)",
  "not_done_here": [
   "The G9 rendered-benchmark label-visibility case — QUEUED (the gate gap that let the original defect ship; filed in AGENTS.md Known open work + LEDGER F119)",
   "The maths-B corpus back-sync (1,461-pid standing debt + the 1,469-delta corpus-lag census) — the NEXT re-export MUST port printed_part_label + G-E6 into the maths-B port first (the F119 port ships in this receipt dir)",
   "The SME questions.json planes — byte-untouched by design (G-E4 law)"
- ]
+ ],
+ "live_spot_check": {
+  "surface": "https://syllabai-hub-v2.vercel.app (the git-connected bake serving the merged 4fbe8142 code — verified after the bake rolled)",
+  "physics_playback": {
+   "url": "/courses/igcse-physics-19/past-papers/june-2019-4ph1-1p",
+   "check": "headless DOM (agent-browser): 47 spans.shrink-0.text-sm.font-semibold.tabular-nums, 0 legacy text-base spans; sampled (a)(i)/(a)(ii)/(b)(i)/(b)(ii) — sameRow=true, topDelta=0, label left of text (the same-line baseline row at the smaller size)",
+   "note": "pre-bake probe showed 47 text-base spans (the PARTLABEL-2 rendering) — the bake witness therefore proves BOTH the deploy and the font swap"
+  },
+  "maths_b_playback": {
+   "url": "/courses/igcse-maths-b-16/past-papers/june-2019-4mb1-01",
+   "check": "24 text-sm label spans, samples '(a)','(b)' — the field-write labels serving; bare whole-question numbers render no chip as designed"
+  },
+  "chemistry_playback": {
+   "url": "/courses/igcse-chemistry-19/past-papers/june-2019-4ch1-1c",
+   "check": "64 text-sm label spans, samples '(a)','(b)(i)','(b)(ii)','(c)' — matches the slice's 64-part census exactly"
+  }
+ }
 }
