@@ -788,9 +788,9 @@ function StructuredPart({
           parts): zero figure-first parts, so the baseline edge case never
           fires on attested corpus. null label = single flex-1 child —
           layout-identical to the bare pre-467 block. */}
-      <div className="flex items-baseline gap-x-1.5">
+      <div className="flex items-baseline gap-x-1.5" data-part-row={part.id}>
         {labelChip && (
-          <span className="shrink-0 text-sm font-semibold tabular-nums">
+          <span className="shrink-0 text-sm font-semibold tabular-nums" data-part-label={labelChip}>
             {labelChip}
           </span>
         )}
@@ -1370,9 +1370,9 @@ function McqPart({
           circuit shows…" — with the options list staying a separate block
           below. Same baseline row as StructuredPart; the label is one size smaller
           than the stem (T-OEQ-PARTLABEL-3 font note). */}
-      <div className="flex items-baseline gap-x-1.5">
+      <div className="flex items-baseline gap-x-1.5" data-part-row={part.id}>
         {labelChip && (
-          <span className="shrink-0 text-sm font-semibold tabular-nums">
+          <span className="shrink-0 text-sm font-semibold tabular-nums" data-part-label={labelChip}>
             {labelChip}
           </span>
         )}
