@@ -1,0 +1,85 @@
+version: 1
+task:
+  id: T-MG-CROPMARK-1
+  title: "MG parity Phase 4 — the crop-then-mark pipeline (markQuestionRegion equivalent): the paper-mark/v1 identity module + the 202/poll mark API + the typed regrade channel, writing through the Phase-2 award bridge"
+  owner: "main agent (Z.ai, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)"
+  status: OPEN
+  priority: P2
+  band: T-MG-MARK-PARITY (interactive paper marking) — additive api service module + routes over the Phase-1/2 planes of record
+  wave: mg-parity-phase4-cropmark
+  deps: [T-MG-MP-RECT-1, T-MG-AWARDS-1, T-MG-INK-1]
+  plan_of_record: "docs/MG-MARK-PARITY-PLAN.md §3.4 (the crop-then-mark pipeline) + §1.7/§1.8 (the doctrine + scoping sentences of record, observed verbatim on the live attempt)"
+  parent: T-MG-MARK-PARITY-1
+  acceptance_pins:
+    - "(doctrine pin) a correct-conclusion-zero-working fixture scores 0/N with the doctrine sentence ('the question explicitly requires all working, so the conclusion alone earns no marks') in the served thoughtProcess — the sentence is IN the marking prompt of record and rides every refusal"
+    - "(scoping pin) a two-region fixture where region A's crop, A's definition rows, A's prior working context and A's verdict are invisible to region B's marking — the §1.8 9.b proof ('The handwriting in part (a) is outside the scope of this marking.') made into a regression test, enforced BY CONSTRUCTION at the transcriber/marker/context seams"
+    - "(ledger pin) awards land with definition-plane ordinals + markPointIds through the once-only DC-7 claim (the claim IS the row — one insert per award; a suppressed re-fire emits nothing and writes no block; ONE region-grain working block per run, riding the first row)"
+    - "(transcription pin) feedback.thoughtProcess BEGINS with the transcribed answer — the prompt instructs it AND the pipeline enforces it (a missing verbatim prefix is prepended; no double prefix when present); feedback.attempt IS the transcription"
+    - "(identity pin) the marking prompt lives in the NEW module's prompt.ts as the identity slot paper-mark/v1 — the tutor identity is zero-touch; the model never mints ledger truth (codes/scores/maxScores/ordinals/markPointIds come from mark_points; the verdict is POSITION-joined with ref-echo verification: duplicate P1/P1 refs stay duplicated, count must equal, hallucinated refs are honest marking_output_invalid)"
+  execution_record: >
+    run-001 (2026-10-31). Operator dispatch "Phase 4 — T-MG-CROPMARK-1"
+    (trace 1a18dfce4db3e79d) — the Phase-4 card per the run-003/T-MG-INK-2
+    consequences pointer. Branch t-mg-cropmark-1/run-001 off origin/main
+    42019392. The §3.4 declared surface (NO UI bullet in §3.4 — the crop
+    producer and the region-highlight/feedback UI are the run-002/§3.6
+    surfaces; disclosed):
+    packages/contracts/src/paper-marking.ts (the wire of record — the
+    imageDataUrl data-URL law png/jpeg/webp; the 202 accepted shape
+    {markId, status:"queued"}; the poll snapshot schema with the ASSEMBLED
+    award rows [the per-award ledger ids stay the claim's gen_random_uuid()
+    outputs, served by the Phase-2 ledger read, never fabricated]; the
+    regrade {answerHtml} typed channel; the regrade/mark/poll path
+    schemas) + the additive barrel one-liner;
+    apps/api/src/services/paper-marking/prompt.ts (the paper-mark/v1
+    identity module: PIPELINE_VERSION stamped on every award row; the
+    verbatim DOCTRINE_SENTENCE of §1.7; the crop-transcription prompt with
+    the region-scoping rule + the answer-input LaTeX law mirrored
+    structurally; the doctrine-match prompt with the anti-hallucination
+    law and the positional echo instruction; the deterministic
+    buildMarkingUserPrompt over definition rows + region-scoped context +
+    transcription);
+    apps/api/src/services/paper-marking/index.ts (the PaperMarking
+    pipeline: plan() = Phase-2 resolveRegion OF RECORD + definition rows
+    [part regions: the direct questionPartId join; question regions: the
+    HIGHEST question_version's scheme] + min-page over mark_point_rects +
+    422 no_mark_points on the honest-empty census; markRegion() =
+    imageDataUrl parse [strict base64 + 4MB cap, the answer-input posture
+    structural duplicate] → vision transcribe via the TranscriptionProvider
+    seam [type imported from answer-input, the llmchain bridges precedent]
+    → doctrine-match via the PaperMarkingLlm port → positional join with
+    ref-echo verification → awards assembly [ledger truth from the
+    definition plane; score = marks iff awarded else 0 — the Phase-2 write
+    law] → recordRegionAwards through the Phase-2 write site of record →
+    receipt; regradePart() = the typed channel with NO vision step and a
+    text working block; the MarkJobRegistry — the in-process NON-DURABLE
+    202+poll law [disclosed], lifecycle queued→running→succeeded|failed,
+    frozen-copy snapshots, waitAll() test seam; the honest-failure
+    taxonomy: crop_malformed 400 / crop_too_large 413 /
+    no_mark_points 422 / transcription_nothing_readable 422 /
+    transcription_unavailable 503 / marking_unavailable 503 /
+    marking_output_invalid 502 [never fabricated awards]);
+    apps/api/src/routes/paper-marking/index.ts (the router: auth shell
+    FIRST; POST /regions/:regionId/mark with the fail-fast pre-checks
+    [uuid, body, imageDataUrl bytes, 404, 422] then 202; POST
+    /parts/:partId/regrade; GET /marks/:markId poll [404 unknown mark,
+    schema-validated snapshot]; the buildPaperMarkingRouters composition
+    root with the smartmark seam posture [injected chain/sql/awards/
+    transcriber/markingLlm/registry; EXPLICIT-null seam law — undefined
+    means the chain default, null means honestly dormant; lazy database
+    resolution]; chainAsPaperMarkingLlm — the ONE FailoverLlmChain of
+    record onto the pipeline port) + the index.ts mount block;
+    tests: service.test.ts 18 [pin a + pin d + pin c at service grain +
+    the honest-failure taxonomy + the crop wire law + the typed channel +
+    the context seam + the registry lifecycle] + scoping.test.ts 1 [pin b,
+    the two-region fixture] + routes.test.ts 14 [401 shell / 400
+    malformed / validation / 413 / 404 T-C20 / 422 / 202+poll lifecycle
+    with a deferred fake / failed-job poll honesty / dormant-seam poll /
+    regrade envelope / posture pin via claim params / composition-root
+    seams] — 33 total.
+    Verification of record: paper-marking 33/33; full suite 3200 tests /
+    0 fail / 13 skip; typecheck exit 0 (contracts+shared+db+api); golden
+    selftest OK; hub build Compiled successfully + Running TypeScript
+    Finished (24.9s) before the SANDBOX-ONLY ENOSPC in static prerender
+    (~1,700/3,338 pages — a 9.9GB recycled-disk limit, disclosed; CI's hub
+    workflow is the arbiter). .syllabai/tasks/T-MG-CROPMARK-1.yaml +
+    .syllabai/receipts/T-MG-CROPMARK-1/run-001.json bookkeeping.

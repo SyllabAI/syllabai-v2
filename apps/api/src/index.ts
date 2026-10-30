@@ -51,6 +51,7 @@ import { buildQuestionsRouters } from "./routes/questions";
 import { buildExamPapersRouters } from "./routes/exam-papers";
 import { buildPaperRegionsRouters } from "./routes/paper-regions";
 import { buildPaperAwardsRouters } from "./routes/paper-awards";
+import { buildPaperMarkingRouters } from "./routes/paper-marking";
 import { buildLearnerPdfDrawingsRouters } from "./routes/learner/pdf-drawings"; // T-MG-INK-1 (r0) — the annotation-ink persistence plane (v2-native, additive; the T-SENECA-001 one-import-line precedent)
 import { buildTestBuilderRouters } from "./routes/testbuilder";
 import { buildAnswerInputRouters } from "./routes/answer-input";
@@ -101,6 +102,7 @@ const questions = buildQuestionsRouters();
 const examPapers = buildExamPapersRouters();
 const paperRegions = buildPaperRegionsRouters();
 const paperAwards = buildPaperAwardsRouters();
+const paperMarking = buildPaperMarkingRouters();
 const learnerPdfDrawings = buildLearnerPdfDrawingsRouters();
 const testbuilder = buildTestBuilderRouters();
 const teachermarking = buildTeacherMarkingRouters();
@@ -436,6 +438,20 @@ app.route("/api/v1/paper-assets", paperRegions.paperAssetsRoute);
 // construction are the minimal app-level wiring per the
 // T-MIG-010/020/021/030/031/032 disclosed-commit precedent.
 app.route("/api/v1/paper-marks", paperAwards.paperMarksRoute);
+
+// Paper-marking pipeline router (T-MG-CROPMARK-1 run-001 — MG parity Phase
+// 4). Plan of record docs/MG-MARK-PARITY-PLAN.md §3.4: POST
+// /api/v1/paper-marks/regions/:regionId/mark (the crop-then-mark entry —
+// 202 + poll, retry: 0) + GET /api/v1/paper-marks/marks/:markId (the poll)
+// + POST /api/v1/paper-marks/parts/:partId/regrade (the typed channel).
+// The pipeline resolves regions through the Phase-2 bridge of record and
+// writes mark_awards through the Phase-2 claim site — the identity
+// `paper-mark/v1` lives in the NEW module's prompt.ts (the tutor identity
+// is zero-touch). Learner-scoped PII surface; auth shell mirrors
+// paper-awards/selfmark (authenticated-only). Additive module — this mount
+// block + import + construction are the minimal app-level wiring per the
+// T-MIG-010/020/021/030/031/032 disclosed-commit precedent.
+app.route("/api/v1/paper-marks", paperMarking.paperMarkingRoute);
 
 // Learner PDF drawing (annotation ink) router (T-MG-INK-1 run-002 — MG
 // parity Phase 3). Plan of record docs/MG-MARK-PARITY-PLAN.md §3.3 (the

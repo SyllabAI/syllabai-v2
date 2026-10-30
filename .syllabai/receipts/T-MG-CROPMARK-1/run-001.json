@@ -1,0 +1,67 @@
+{
+  "task": "T-MG-CROPMARK-1 run-001",
+  "date": "2026-10-31",
+  "operator": {
+    "dispatch": "Phase 4 — T-MG-CROPMARK-1",
+    "trace": "1a18dfce4db3e79d",
+    "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+  },
+  "plan_of_record": "docs/MG-MARK-PARITY-PLAN.md §3.4 (the crop-then-mark pipeline, markQuestionRegion equivalent) over the Phase-1/2 planes of record; doctrine + scoping sentences from §1.7/§1.8 verbatim",
+  "class": "additive api module + routes + contracts — the ONLY modified pre-existing files are apps/api/src/index.ts (+16 mount/import lines) and packages/contracts/src/index.ts (+1 barrel line); zero schema, zero migrations, zero fenced files (cla.ts / services/cla/service.ts untouched); no hub src file touched",
+  "merge_word_expected": null,
+  "what_lands": {
+    "contracts": "packages/contracts/src/paper-marking.ts — the wire of record: imageDataUrl data-URL law (png/jpeg/webp, syntax-only; the 4MB byte cap is api-side), 202 accepted {markId, status:'queued'}, the poll snapshot (status enum queued|running|succeeded|failed; succeeded carries transcription + feedback + ASSEMBLED award rows + the claim receipt; failed carries the honest {code, message}), the regrade {answerHtml: 1..20000} typed channel, path schemas; barrel one-liner",
+    "identity": "apps/api/src/services/paper-marking/prompt.ts — the paper-mark/v1 identity slot (PIPELINE_VERSION stamped on every award row); the verbatim doctrine sentence of §1.7 in the marking prompt; the crop-transcription prompt with the region-scoping rule and the answer-input LaTeX delimiter law mirrored structurally; the positional-echo verdict instruction; deterministic buildMarkingUserPrompt",
+    "pipeline": "apps/api/src/services/paper-marking/index.ts — plan() through the Phase-2 resolveRegion bridge of record (404 T-C20) + definition rows (part: questionPartId join; question: the highest question_version's scheme) + min-page over mark_point_rects + 422 no_mark_points; markRegion(): strict-base64/4MB parse → TranscriptionProvider vision step ([empty]→422, throw→503) → PaperMarkingLlm doctrine-match → POSITION-join with ref-echo verification (duplicate P1/P1 stay positional; count equality; hallucinated/misordered refs → 502 marking_output_invalid) → awards assembly (codes/scores/maxScores/ordinals/markPointIds from mark_points; score=marks iff awarded) → recordRegionAwards through the Phase-2 write site (the DC-7 once-only claim; ONE region-grain working block on the first row; suppressed re-fire writes nothing) → receipt; regradePart(): the typed channel, NO vision step, text working block; MarkJobRegistry: in-process NON-DURABLE 202+poll (queued→running→succeeded|failed, frozen snapshots, waitAll test seam); the honest-failure taxonomy",
+    "routes": "apps/api/src/routes/paper-marking/index.ts — auth shell FIRST (learner rides the JWT context, never the wire); POST /regions/:regionId/mark (fail-fast pre-checks then 202), POST /parts/:partId/regrade, GET /marks/:markId (404 unknown, schema-validated); buildPaperMarkingRouters composition root (smartmark seam posture; EXPLICIT-null seam law; lazy DB resolution); chainAsPaperMarkingLlm onto the ONE chain of record + chainAsTranscriptionProvider for the vision seam; the index.ts mount block (+16 lines)"
+  },
+  "pins": {
+    "doctrine_pin": "correct-conclusion-zero-working fixture scores 0/3 with the doctrine sentence in the served thoughtProcess; pointsNotScored itemized 1:1; the sentence asserted IN PAPER_MARK_SYSTEM_PROMPT",
+    "scoping_pin": "two-region fixture (17.a three-point / 17.b one-point): the transcriber receives each region's OWN crop bytes; B's marker prompt holds B's definitions, no A context, no A transcription; award rows land under each regionKey with each region's own markPointIds",
+    "ledger_pin": "ordinals 0,1,2 + definition markPointIds; the claim fires once per row; ONE working block per run; the suppressed re-fire → {emitted:0, suppressed:3, workingBlocks:0} and no second block",
+    "transcription_pin": "thoughtProcess startsWith(transcription) enforced pipeline-side (missing prefix prepended; present prefix stored verbatim, no doubling); feedback.attempt IS the transcription",
+    "identity_pin": "the model never mints ledger truth; the tutor identity is zero-touch (no prompt.ts import, no modification anywhere in the lane)"
+  },
+  "divergences_disclosed": [
+    "the job registry is IN-PROCESS and NON-DURABLE — a process restart loses queued/running jobs (the poll then 404s honestly); retry: 0 per their offline class, a re-mark is a NEW job whose award writes are absorbed idempotently by the once-only claim; a durable queue (if ever needed) is a later additive card",
+    "§3.4 declares NO UI bullet — the crop producer (the client composite of the page render + ink strokes clipped to the region rect, per the run-003 consequence pointer) and the clickable regions/feedback UI are the run-002 / §3.6 surfaces; this run ships the pipeline + the API the producer will call (the regrade typed channel is exercisable end-to-end today)",
+    "the poll snapshot carries the ASSEMBLED award rows (code/awarded/score/maxScore/ordinal/markPointId/page) — the per-award ledger ids are the claim's gen_random_uuid() outputs, served by the Phase-2 ledger read, never fabricated in the job view",
+    "ONE working block per marking run (region-grain evidence riding the first assembled row) rather than one block per award row — the crop/transcription belongs to the region; the publisher's once-only ordering means a suppressed re-fire writes no block",
+    "the doctrine-match is POSITION-joined to mark_points with ref-echo verification — the model echoes the given refs in the given order (duplicate P1/P1 stay duplicated in position); count equality + echo match are enforced, violations are honest 502s",
+    "award-row page = min page over the region's mark_point_rects (null when no rect grounds); their ledger's page semantics were not observable at dossier grain",
+    "question regions ride the HIGHEST question_version's mark_schemes (the (question_id, version desc) index law); part regions ride the direct questionPartId join — plan §3.4's 'questionPartId join' is realized as BOTH bridges",
+    "hub build verified to 'Compiled successfully + Running TypeScript Finished' — the static-export prerender ENOSPC'd at ~1,700/3,338 pages on a 9.9GB recycled sandbox (disk limit, not a code error); CI's hub workflow is the arbiter of record"
+  ],
+  "verification": {
+    "paper_marking_tests": "33/33 (service 18 + scoping 1 + routes 14)",
+    "api_packages_suite": "bun test apps/api packages — 3200 total / 0 fail / 13 skip",
+    "typecheck": "exit 0 (contracts, shared, db, api)",
+    "golden_selftest": "OK",
+    "hub_build": "Compiled successfully (36.2s) + Running TypeScript Finished (24.9s); static-export ENOSPC at ~1,700/3,338 pages (sandbox disk limit, disclosed above)"
+  },
+  "file_census": {
+    "added": [
+      "packages/contracts/src/paper-marking.ts",
+      "apps/api/src/services/paper-marking/prompt.ts",
+      "apps/api/src/services/paper-marking/sql.ts",
+      "apps/api/src/services/paper-marking/index.ts",
+      "apps/api/src/routes/paper-marking/index.ts",
+      "apps/api/test/paper-marking/service.test.ts",
+      "apps/api/test/paper-marking/scoping.test.ts",
+      "apps/api/test/paper-marking/routes.test.ts",
+      ".syllabai/tasks/T-MG-CROPMARK-1.yaml",
+      ".syllabai/receipts/T-MG-CROPMARK-1/run-001.json"
+    ],
+    "modified": [
+      "packages/contracts/src/index.ts (+1 barrel line)",
+      "apps/api/src/index.ts (+16 mount/import lines)"
+    ],
+    "deleted": []
+  },
+  "consequences_pointer": "run-001 bespoke the pipeline over the Phase-2 award bridge + the ONE llmchain of record; the crop producer (run-002) composes the run-003 ink layer's stroke stream with the rendered page canvas clipped to the Phase-1 rect geometry; Phase 6 consumes the ledger through the existing paper-marks read API unchanged",
+  "push": {
+    "branch": "t-mg-cropmark-1/run-001",
+    "base": "42019392a3633851b37346995790695b883cc1e1",
+    "law": "fetch-first, ff-only, no force"
+  }
+}
