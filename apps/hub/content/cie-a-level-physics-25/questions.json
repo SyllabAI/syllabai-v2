@@ -36918,22 +36918,22 @@
        {
         "label": "A",
         "isCorrect": false,
-        "textMd": "`X presubscript 95 presuperscript 239`"
+        "textMd": "${}_{95}^{239}\\mathrm{X}$"
        },
        {
         "label": "B",
         "isCorrect": false,
-        "textMd": "`X presubscript 92 presuperscript 237`"
+        "textMd": "${}_{92}^{237}\\mathrm{X}$"
        },
        {
         "label": "C",
         "isCorrect": false,
-        "textMd": "`X presubscript 93 presuperscript 239`"
+        "textMd": "${}_{93}^{239}\\mathrm{X}$"
        },
        {
         "label": "D",
         "isCorrect": true,
-        "textMd": "`X presubscript 92 presuperscript 235`"
+        "textMd": "${}_{92}^{235}\\mathrm{X}$"
        }
       ],
       "sourcePaper": {
@@ -38100,22 +38100,22 @@
        {
         "label": "A",
         "isCorrect": false,
-        "textMd": "`P presubscript 82 presuperscript 230 b`"
+        "textMd": "${}_{82}^{230}\\mathrm{P} b$"
        },
        {
         "label": "B",
         "isCorrect": false,
-        "textMd": "`A presubscript 85 presuperscript 227 t`"
+        "textMd": "${}_{85}^{227}\\mathrm{A} t$"
        },
        {
         "label": "C",
         "isCorrect": false,
-        "textMd": "`F presubscript 87 presuperscript 225 r`"
+        "textMd": "${}_{87}^{225}\\mathrm{F} r$"
        },
        {
         "label": "D",
         "isCorrect": true,
-        "textMd": "`R presubscript 88 presuperscript 224 a`"
+        "textMd": "${}_{88}^{224}\\mathrm{R} a$"
        }
       ],
       "sourcePaper": {
@@ -91585,7 +91585,7 @@
        "questionPart": null
       },
       "problemMd": "Fig. 1.4 shows another potential divider circuit which includes a thermistor with resistance *R*.\n\n![5-3-s-q--q4d-hard-aqa-a-level-physics](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-physics-25/10-d-c-circuits/10-3-potential-dividers/assets/074-5-3-s-q-q4d-hard-aqa-a-level-physics.png)\n\n**Fig. 1.4**\n\nThe battery has an EMF of 12 V, with negligible internal resistance. At room temperature, the resistance of the thermistor is 5 kΩ.\n\nCalculate the current in the battery at room temperature.",
-      "solutionMd": "List the known quantities:\n\n- Resistance of the thermistor (at room temperature), *R* = 5 kΩ = 5000 Ω\n- Resistance between AC = 20 kΩ = 20 000 Ω\n- Resistance between CE = 20 kΩ = 20 000 Ω\n- Resistance between BD = 10 kΩ = 10 000 Ω\n- EMF of the battery = 12 V\n\nDetermine the series resistances:\n\n- Resistors in series $R_{T} = R_{1} + R_{2} + R_{3} + \\times \\times \\times$\n- There are two resistors in series between** **A and E, so $R_{T}=R_{1}+R_{2}$\n- Therefore, the total resistance between** **A and E = resistance between AC + resistance between CE = 20 000 + 20 000 = 40 000 Ω **AND**\n- There are two resistors in series between B and F, so $R_{T}=R_{1}+R_{2}$\n- Therefore, the total resistance between B and F = resistance between BD + resistance of the thermistor (at room temperature) = 10 000 + 5000 = 15 000 Ω **[1 mark]**\n\nDetermine the total resistance of the circuit:\n\n- Resistors in parallel `1 over R subscript T equals 1 over R subscript 1 plus 1 over R subscript 2 plus 1 over R subscript 3 plus times times times`\n- The resistance between** **A and E is in parallel to the resistance between B and F\n- Therefore $\\frac{1}{R_{T}}=\\frac{1}{R_{1}}+\\frac{1}{R_{2}}=\\frac{1}{40000}+\\frac{1}{15000}=\\frac{11}{120000}$\n- Therefore *R*<sub>T</sub> = $\\frac{120000}{11}$ = 10 909 Ω **[1 mark]**\n\nDetermine the current through the battery:\n\n- Using Ohm’s law across the battery, *V* = *IR*\n- *V* is the EMF *ϵ *of the cell\n- Therefore 12 = *I* × 10 909\n- *I* = $\\frac{12}{10909}$ = 1.1 × 10<sup>–3</sup> A **[1 mark]**\n\n**[Total: 3 marks]**",
+      "solutionMd": "List the known quantities:\n\n- Resistance of the thermistor (at room temperature), *R* = 5 kΩ = 5000 Ω\n- Resistance between AC = 20 kΩ = 20 000 Ω\n- Resistance between CE = 20 kΩ = 20 000 Ω\n- Resistance between BD = 10 kΩ = 10 000 Ω\n- EMF of the battery = 12 V\n\nDetermine the series resistances:\n\n- Resistors in series $R_{T} = R_{1} + R_{2} + R_{3} + \\times \\times \\times$\n- There are two resistors in series between** **A and E, so $R_{T}=R_{1}+R_{2}$\n- Therefore, the total resistance between** **A and E = resistance between AC + resistance between CE = 20 000 + 20 000 = 40 000 Ω **AND**\n- There are two resistors in series between B and F, so $R_{T}=R_{1}+R_{2}$\n- Therefore, the total resistance between B and F = resistance between BD + resistance of the thermistor (at room temperature) = 10 000 + 5000 = 15 000 Ω **[1 mark]**\n\nDetermine the total resistance of the circuit:\n\n- Resistors in parallel $\\frac{1}{R} _{T} = \\frac{1}{R} _{1} + \\frac{1}{R} _{2} + \\frac{1}{R} _{3} + \\times \\times \\times$\n- The resistance between** **A and E is in parallel to the resistance between B and F\n- Therefore $\\frac{1}{R_{T}}=\\frac{1}{R_{1}}+\\frac{1}{R_{2}}=\\frac{1}{40000}+\\frac{1}{15000}=\\frac{11}{120000}$\n- Therefore *R*<sub>T</sub> = $\\frac{120000}{11}$ = 10 909 Ω **[1 mark]**\n\nDetermine the current through the battery:\n\n- Using Ohm’s law across the battery, *V* = *IR*\n- *V* is the EMF *ϵ *of the cell\n- Therefore 12 = *I* × 10 909\n- *I* = $\\frac{12}{10909}$ = 1.1 × 10<sup>–3</sup> A **[1 mark]**\n\n**[Total: 3 marks]**",
       "smeSpecPointIds": [
        "spcpt_bSgwKCG9dmvYKsqt",
        "spcpt_3FdkPXGJ3SjWhMDH"
@@ -91647,7 +91647,7 @@
        "questionPart": null
       },
       "problemMd": "Ionising radiation often comes in three forms: alpha, beta and gamma.\n\nTable 1.1 below shows information about the properties of each type of radiation.\n\n| **Type** | **Nuclear notation** | **Relative charge** |\n|---|---|---|\n| **Alpha** |   | +2 |\n| **Beta** | `beta _ - 1 ^ 0` |   |\n| **Gamma** |   |   |\n\n**Table 1.1   **\n\nComplete the missing information in Table 1.1.",
-      "solutionMd": "A completed Table 1.1 that would score full credit is shown below:\n\n| **Type** | **Nuclear notation** | **Relative charge** |\n|---|---|---|\n| **Alpha** | $\\ \\\\alpha pre_{2} pre^{4}$** ****OR**** **`He presubscript 2 presuperscript 4` | +2 |\n| **Beta** | `beta _ - 1 ^ 0` | **Final answer:** **–1** |\n| **Gamma** | $\\ \\\\gamma pre_{0} pre^{0}$ | **Final answer:** **0** |\n\n- **[1 mark]** for each correct entry\n\n**[Total: 4 marks]**",
+      "solutionMd": "A completed Table 1.1 that would score full credit is shown below:\n\n| **Type** | **Nuclear notation** | **Relative charge** |\n|---|---|---|\n| **Alpha** | $\\ \\\\alpha pre_{2} pre^{4}$** ****OR**** **${}_{2}^{4}\\mathrm{He}$ | +2 |\n| **Beta** | `beta _ - 1 ^ 0` | **Final answer:** **–1** |\n| **Gamma** | $\\ \\\\gamma pre_{0} pre^{0}$ | **Final answer:** **0** |\n\n- **[1 mark]** for each correct entry\n\n**[Total: 4 marks]**",
       "smeSpecPointIds": [
        "spcpt_hqmJY4MT3zxKmGNj"
       ]
@@ -91978,7 +91978,7 @@
        "questionPart": null
       },
       "problemMd": "When a nucleus of plutonium-239 absorbs a neutron, the following reaction may take place.\n\n$Pu_{94}^{239} + \\mathrm{n} pre_{b} pre^{a} \\rightarrow \\text{Xe} pre_{54} pre^{x} + \\text{Zr} pre_{y} pre^{103} + 3 \\mathrm{n} pre_{b} pre^{a}$\n\nState the values of *a*, *b*, *x* and *y*.",
-      "solutionMd": "The values of *a*, *b*, *x* and *y* are:\n\n`Pu _ 94 ^ 239 + n _ 0 ^ 1 -> Xe _ 54 ^ 134 + Zr _ 40 ^ 103 + 3 n _ 0 ^ 1`\n\n- *a *= 1 **AND** *b* = 0 **[1 mark]**\n\nCalculate *x*:\n\n- 239 + 1 = *x* + 103 + (3 × 1)\n- *x* = 240 – 106\n- *x* = 134 **[1 mark]**\n\nCalculate *y*:\n\n- 94 + 0 = 54 + *y* + (3 × 0)\n- *y* = 94 – 54\n- *y* = 40 **[1 mark]**\n\n**[Total: 3 marks]**\n\n> *On the right-hand side, *`3 n presubscript 0 presuperscript 1 space`*means that there are **3** neutrons, so **both** the mass number (1) and the atomic number (0) must be **multiplied** by 3.*",
+      "solutionMd": "The values of *a*, *b*, *x* and *y* are:\n\n`Pu _ 94 ^ 239 + n _ 0 ^ 1 -> Xe _ 54 ^ 134 + Zr _ 40 ^ 103 + 3 n _ 0 ^ 1`\n\n- *a *= 1 **AND** *b* = 0 **[1 mark]**\n\nCalculate *x*:\n\n- 239 + 1 = *x* + 103 + (3 × 1)\n- *x* = 240 – 106\n- *x* = 134 **[1 mark]**\n\nCalculate *y*:\n\n- 94 + 0 = 54 + *y* + (3 × 0)\n- *y* = 94 – 54\n- *y* = 40 **[1 mark]**\n\n**[Total: 3 marks]**\n\n> *On the right-hand side, *$3 {}_{0}^{1}\\mathrm{n}  $*means that there are **3** neutrons, so **both** the mass number (1) and the atomic number (0) must be **multiplied** by 3.*",
       "smeSpecPointIds": [
        "spcpt_ZzSDSvvX8P9K4vPX"
       ]
@@ -92198,7 +92198,7 @@
        "questionPart": null
       },
       "problemMd": "A radioactive nucleus `X _ 85 ^ 229` undergoes a beta−minus decay followed by an alpha decay to form a daughter nucleus $\\mathrm{Y} pre_{Z} pre^{A}$.\n\nWrite a decay equation for this interaction and hence determine the values of A and Z.",
-      "solutionMd": "List the known quantities:\n\n- Alpha particle = `alpha presubscript 2 presuperscript 4`\n- Beta–minus particle = `beta presubscript negative 1 end presubscript presuperscript 0`\n\nCombine the equations for alpha and beta–minus into one decay equation:\n\n- `X _ 85 ^ 229 -> Y _ Z ^ A + alpha _ 2 ^ 4 + beta _ - 1 ^ 0 + v _ e -bar` **[1 mark]**\n\nState the values of A and Z:\n\n- A = 225, Z = 84 **[1 mark]**\n\n**[Total: 2 marks]**\n\n> *Don't forget to include the anti-neutrino! *\n\n> *Read the question carefully. It tells you what the daughter nucleus is, so don't get confused with using the daughter nucleus from either the alpha or beta decay. *",
+      "solutionMd": "List the known quantities:\n\n- Alpha particle = ${}_{2}^{4}\\mathrm{ \\alpha }$\n- Beta–minus particle = ${}_{- 1}^{0}\\mathrm{ \\beta }$\n\nCombine the equations for alpha and beta–minus into one decay equation:\n\n- `X _ 85 ^ 229 -> Y _ Z ^ A + alpha _ 2 ^ 4 + beta _ - 1 ^ 0 + v _ e -bar` **[1 mark]**\n\nState the values of A and Z:\n\n- A = 225, Z = 84 **[1 mark]**\n\n**[Total: 2 marks]**\n\n> *Don't forget to include the anti-neutrino! *\n\n> *Read the question carefully. It tells you what the daughter nucleus is, so don't get confused with using the daughter nucleus from either the alpha or beta decay. *",
       "smeSpecPointIds": [
        "spcpt_Prtmyd7yKn2Vg43f"
       ]
@@ -92218,8 +92218,8 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Thorium, `Th presubscript 90 presuperscript 232` decays to an isotope of Radium (Ra) through a series of transformations. The particles emitted in successive transformations are:\n\n$αββγα$\n\nDetermine the resulting nuclide after these successive transformations.",
-      "solutionMd": "Determine the resulting nuclide after these successive transformations:\n\n- During $α$ emission, an alpha particle `alpha presubscript 2 presuperscript 4` is released from each starting atom\n\n  - The mass number decreases by 4 and the proton number decreases by 2\n- During $β$ emission, an electron (or positron) is released\n\n  - The proton number increases by 1, but there is no change in the mass number\n- During $γ$ emission, electromagnetic gamma rays are emitted\n\n  - There is no reduction in mass or proton number\n\nA flow diagram of the processes involved is obtained using the periodic table:\n\n- $Th_{90}^{232} \\rightarrow Ra_{88}^{228} \\rightarrow Ac_{89}^{228} \\rightarrow Th_{90}^{228} \\rightarrow Th_{90}^{228} \\rightarrow Ra_{88}^{224}$\n\n  - All $α$ decays correct; **[1 mark]**\n  - All  $β$decays correct; **[1 mark]**\n\nState the final decay product:\n\n- `Ra presubscript 88 presuperscript 224`** [1 mark]**\n\n**[Total: 3 marks]**\n\n> *Remember that the proton number of each element in the periodic table is unique. Look up each proton number to obtain the correct element. *",
+      "problemMd": "Thorium, ${}_{90}^{232}\\mathrm{Th}$ decays to an isotope of Radium (Ra) through a series of transformations. The particles emitted in successive transformations are:\n\n$αββγα$\n\nDetermine the resulting nuclide after these successive transformations.",
+      "solutionMd": "Determine the resulting nuclide after these successive transformations:\n\n- During $α$ emission, an alpha particle ${}_{2}^{4}\\mathrm{ \\alpha }$ is released from each starting atom\n\n  - The mass number decreases by 4 and the proton number decreases by 2\n- During $β$ emission, an electron (or positron) is released\n\n  - The proton number increases by 1, but there is no change in the mass number\n- During $γ$ emission, electromagnetic gamma rays are emitted\n\n  - There is no reduction in mass or proton number\n\nA flow diagram of the processes involved is obtained using the periodic table:\n\n- $Th_{90}^{232} \\rightarrow Ra_{88}^{228} \\rightarrow Ac_{89}^{228} \\rightarrow Th_{90}^{228} \\rightarrow Th_{90}^{228} \\rightarrow Ra_{88}^{224}$\n\n  - All $α$ decays correct; **[1 mark]**\n  - All  $β$decays correct; **[1 mark]**\n\nState the final decay product:\n\n- ${}_{88}^{224}\\mathrm{Ra}$** [1 mark]**\n\n**[Total: 3 marks]**\n\n> *Remember that the proton number of each element in the periodic table is unique. Look up each proton number to obtain the correct element. *",
       "smeSpecPointIds": [
        "spcpt_Prtmyd7yKn2Vg43f"
       ]
@@ -92260,8 +92260,8 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "A nucleus of Bohrium $\\text{Bh} pre_{Y} pre^{X}$ decays to Mendelevium `Md presubscript 101 presuperscript 255` by a sequence of three alpha particle emissions.\n\nDetermine the number of neutrons in a nucleus of $\\text{Bh} pre_{Y} pre^{X}$.",
-      "solutionMd": "Write a decay equation for this reaction:\n\n- $\\text{Bh} pre_{Y} pre^{X} \\rightarrow Md_{101}^{255} + 3 \\ \\\\alpha pre_{2} pre^{4}$ **[1 mark]**\n\nCalculate the number of neutrons:\n\n- X = 255 + (3 × 4) = 267\n- Y = 101 + (3 × 2) = 107\n- Therefore, Bohrium = `Bh presubscript 107 presuperscript 267`\n\n  - Hence, the number of neutrons = 267 – 107 = 160** ****[1 mark]**\n\n**[Total: 2 marks]**",
+      "problemMd": "A nucleus of Bohrium $\\text{Bh} pre_{Y} pre^{X}$ decays to Mendelevium ${}_{101}^{255}\\mathrm{Md}$ by a sequence of three alpha particle emissions.\n\nDetermine the number of neutrons in a nucleus of $\\text{Bh} pre_{Y} pre^{X}$.",
+      "solutionMd": "Write a decay equation for this reaction:\n\n- $\\text{Bh} pre_{Y} pre^{X} \\rightarrow Md_{101}^{255} + 3 \\ \\\\alpha pre_{2} pre^{4}$ **[1 mark]**\n\nCalculate the number of neutrons:\n\n- X = 255 + (3 × 4) = 267\n- Y = 101 + (3 × 2) = 107\n- Therefore, Bohrium = ${}_{107}^{267}\\mathrm{Bh}$\n\n  - Hence, the number of neutrons = 267 – 107 = 160** ****[1 mark]**\n\n**[Total: 2 marks]**",
       "smeSpecPointIds": [
        "spcpt_Prtmyd7yKn2Vg43f"
       ]
@@ -92581,7 +92581,7 @@
        "questionPart": null
       },
       "problemMd": "Carbon–10 `( C _ 6 ^ 10 )` is an isotope that decays to an isotope of boron (symbol $B$) by the emission of a β<sup>+</sup> particle.\n\n(i) Complete the nuclear equation for this decay, including the proton and nucleon numbers of all the particles involved.\n\n`C _ 6 ^ 10 ->`\n\n[3]\n\n(ii) During the decay, a quark in the carbon-10 nucleus changes into a different type.\n\nState the change of quark that occurs.\n\n[1]",
-      "solutionMd": "(i)  The nuclear equation for the decay is:\n\n`C _ 6 ^ 10 -> B _ 5 ^ 10 + beta _ 1 ^ 0 ^ ( + ) end ^ + nu _ 0 ^ 0`\n\n- `B _ 5 ^ 10` **[1 mark]**\n- `beta _ 1 ^ 0 ^ ( + ) end ^ / e _ 1 ^ 0 ^ +` **[1 mark]**\n- `nu presubscript 0 presuperscript 0` **[1 mark]** ** **\n\n(ii) The change of quark is:\n\n- <u>Up</u> quark to <u>down</u> quark; **[1 mark]**\n\n**[Total: 4 marks]**\n\n> *Although you have not been given the proton and nucleon numbers of the boron nucleus, you can figure these out as the top row of numbers and the bottom row of numbers must **balance** on both sides of the equation.*\n\n> *For example, on the left-hand side, the proton number is 6. On the right-hand side, the proton number is 1 + 0 = 1. Therefore, the proton number of boron must be 5 so both sides have a total of 6.*",
+      "solutionMd": "(i)  The nuclear equation for the decay is:\n\n`C _ 6 ^ 10 -> B _ 5 ^ 10 + beta _ 1 ^ 0 ^ ( + ) end ^ + nu _ 0 ^ 0`\n\n- `B _ 5 ^ 10` **[1 mark]**\n- `beta _ 1 ^ 0 ^ ( + ) end ^ / e _ 1 ^ 0 ^ +` **[1 mark]**\n- ${}_{0}^{0}\\mathrm{nu}$ **[1 mark]** ** **\n\n(ii) The change of quark is:\n\n- <u>Up</u> quark to <u>down</u> quark; **[1 mark]**\n\n**[Total: 4 marks]**\n\n> *Although you have not been given the proton and nucleon numbers of the boron nucleus, you can figure these out as the top row of numbers and the bottom row of numbers must **balance** on both sides of the equation.*\n\n> *For example, on the left-hand side, the proton number is 6. On the right-hand side, the proton number is 1 + 0 = 1. Therefore, the proton number of boron must be 5 so both sides have a total of 6.*",
       "smeSpecPointIds": [
        "spcpt_wDvbGbb8SyMrMqjY"
       ]
@@ -92789,8 +92789,8 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "State the number of 'up' quarks in the nucleus of `Al presubscript 13 presuperscript 27`.",
-      "solutionMd": "The number of 'up' quarks in the nucleus of `Al presubscript 13 presuperscript 27` is:\n\nDetermine the number of protons and neutrons:\n\n- There are 13 protons\n- There are 27 – 13 = 14 neutrons\n\nCalculate the number of up quarks:\n\n- A proton (uud) has 2 up quarks and a neutron (udd) has 1 up quark\n- Number of up quarks = (13 × 2) + (14 × 1) = 40 **[1 mark]**\n\n**[Total: 1 mark]**",
+      "problemMd": "State the number of 'up' quarks in the nucleus of ${}_{13}^{27}\\mathrm{Al}$.",
+      "solutionMd": "The number of 'up' quarks in the nucleus of ${}_{13}^{27}\\mathrm{Al}$ is:\n\nDetermine the number of protons and neutrons:\n\n- There are 13 protons\n- There are 27 – 13 = 14 neutrons\n\nCalculate the number of up quarks:\n\n- A proton (uud) has 2 up quarks and a neutron (udd) has 1 up quark\n- Number of up quarks = (13 × 2) + (14 × 1) = 40 **[1 mark]**\n\n**[Total: 1 mark]**",
       "smeSpecPointIds": [
        "spcpt_6fVMdVc2kKCpMRbW"
       ]

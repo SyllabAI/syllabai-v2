@@ -337,8 +337,8 @@ export function speechToTex(raw: string): string | null {
     // "apostrophe apostrophe" → f^{''} — KaTeX rejects a space between primes
     s = s.replace(/to the power of (.+?) end exponent/g,
       (_m, x: string) => ` ^{${x.trim().replace(/'\s+'/g, "''")}} `);
-    s = s.replace(/subscript (.+?) end subscript/g, (_m, x: string) => ` _{${x.trim()}} `);
-    s = s.replace(/superscript (.+?) end superscript/g, (_m, x: string) => ` ^{${x.trim()}} `);
+    s = s.replace(/(?<!pre)subscript (.+?) end subscript/g, (_m, x: string) => ` _{${x.trim()}} `);
+    s = s.replace(/(?<!pre)superscript (.+?) end superscript/g, (_m, x: string) => ` ^{${x.trim()}} `);
     s = s.replace(/sum from (.+?) to (.+?) of /g, " \\sum_{$1}^{$2} ");
     s = s.replace(/integral from (.+?) to (.+?) of /g, " \\int_{$1}^{$2} ");
     s = s.replace(/limit as (.+?) (?:rightwards arrow|approaches) (.+?) of /g,
@@ -373,8 +373,8 @@ export function speechToTex(raw: string): string | null {
   s = s.replace(/to the power of (?:bold italic |bold |straight )?negative (blank|[a-zA-Z0-9.]+)/g, " ^{-$1} ");
   s = s.replace(/to the power of (?:bold italic |bold |straight )?(blank|[a-zA-Z0-9.]+)/g,
     (_m, a: string) => ` ^{${a.replace(/^(?:bold italic |bold |straight )/, "")}} `);
-  s = s.replace(/subscript (?:bold italic |bold |straight )?(blank|[a-zA-Z0-9.]+)/g, " _{$1} ");
-  s = s.replace(/superscript (?:bold italic |bold |straight )?(blank|[a-zA-Z0-9.]+)/g, " ^{$1} ");
+  s = s.replace(/(?<!pre)subscript (?:bold italic |bold |straight )?(blank|[a-zA-Z0-9.]+)/g, " _{$1} ");
+  s = s.replace(/(?<!pre)superscript (?:bold italic |bold |straight )?(blank|[a-zA-Z0-9.]+)/g, " ^{$1} ");
 
   // big operators without limits
   s = s.replace(/stack sum/g, " \\sum ");
