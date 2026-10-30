@@ -89,26 +89,6 @@ function pushTab(t: BodyTab) {
   for (const l of tabListeners) l();
 }
 
-/** Decorative completion ring — the MG topic-row anatomy; hub surfaces will
- *  wire real per-topic progress here when the learner-model plane lands. */
-function ProgressRing({ label }: { label: string }) {
-  return (
-    <div role="img" aria-label={label} className="relative size-6 flex-none">
-      <svg aria-hidden className="size-6" viewBox="0 0 24 24">
-        <circle
-          className="text-muted-foreground/25"
-          cx="12"
-          cy="12"
-          fill="none"
-          r="8.25"
-          stroke="currentColor"
-          strokeWidth="3.5"
-        />
-      </svg>
-    </div>
-  );
-}
-
 function Chevron({ open }: { open: boolean }) {
   return (
     <ChevronDown
@@ -133,7 +113,10 @@ function SubtopicRow({ row, index }: { row: TopicSubtopicRow; index: number }) {
           onClick={() => setOpen((v) => !v)}
           className="flex w-full items-center gap-3 rounded-xl px-3 py-3 pr-2 text-left leading-tight transition-colors hover:bg-muted"
         >
-          <ProgressRing label={`0 of ${row.links.length} resource kinds completed`} />
+          {/* UX review F-07: the decorative completion rings are gone — 138
+              permanently-empty rings per lane announced "0 of N completed"
+              to screen readers for progress nothing measures. The honest
+              signals (per-row resource count, real chips) remain. */}
           <span className="min-w-0 flex-auto text-sm font-medium">
             <span className="mr-1.5 text-muted-foreground">{index + 1}.</span>
             {row.title}
@@ -143,7 +126,6 @@ function SubtopicRow({ row, index }: { row: TopicSubtopicRow; index: number }) {
         </button>
       ) : (
         <div className="flex w-full items-center gap-3 px-3 py-3 pr-2 leading-tight opacity-60">
-          <ProgressRing label="No resources yet" />
           <span className="min-w-0 flex-auto text-sm font-medium">
             <span className="mr-1.5 text-muted-foreground">{index + 1}.</span>
             {row.title}
@@ -154,7 +136,7 @@ function SubtopicRow({ row, index }: { row: TopicSubtopicRow; index: number }) {
         </div>
       )}
       {open && expandable && (
-        <div className="pb-2 pl-10 pr-4">
+        <div className="pb-2 pl-3 pr-4">
           <div className="flex flex-wrap gap-2">
             {row.links.map((l) => (
               <Link
@@ -249,7 +231,6 @@ export default function CourseBodyTabs({
             {filtered.map((g) => (
               <section key={g.code} className="rounded-2xl border bg-card p-1">
                 <div className="flex items-center gap-3 rounded-xl px-3 py-3 pr-2">
-                  <ProgressRing label={`0 of ${g.subtopics.length} completed`} />
                   <span className="min-w-0 flex-auto text-base font-semibold">
                     {g.number}. {g.title}
                   </span>
