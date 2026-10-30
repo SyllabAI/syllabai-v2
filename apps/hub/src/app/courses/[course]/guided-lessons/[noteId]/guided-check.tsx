@@ -255,11 +255,11 @@ function WrittenCheck({ index, question, verdict, onSettle }: WrittenProps) {
         </p>
         {gradable && (
           <div className="grid gap-1.5">
-            <label htmlFor={`written-check-${index}`} className="text-[13px] font-medium">
+            <label htmlFor={`written-check-${question.id.replace(/[^a-z0-9]/gi, "-")}`} className="text-[13px] font-medium">
               Your answer
             </label>
             <textarea
-              id={`written-check-${index}`}
+              id={`written-check-${question.id.replace(/[^a-z0-9]/gi, "-")}`}
               value={text}
               onChange={(e) => setText(e.target.value)}
               disabled={settled}
