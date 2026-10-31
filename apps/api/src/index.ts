@@ -66,6 +66,8 @@ import { buildClassroomRouters } from "./routes/classroom";
 import { buildTeacherAssignmentsRouters } from "./routes/assignments";
 import { buildAssignmentPacksRouters } from "./routes/assignment-packs"; // T-SENECA-001 (r5) — the Seneca resource packs (v2-native, additive; the T-TEACH-012 one-mount-line precedent)
 import { buildTeachingToolkitRouters } from "./routes/teaching-toolkit";
+import { buildTeachMeRouters } from "./teach-me"; // T-TEACHME-001 run-002 — the learn-by-teaching lane (ADR-040; plan docs/TEACH_ME_PLAN.md §6)
+import { createTeachMeStore } from "./teach-me/sql";
 import { buildResearchRouters } from "./routes/research";
 import { buildIngestionRouters } from "./routes/ingestion";
 import { buildBooksApp } from "./services/books";
@@ -150,6 +152,14 @@ const claThreads = buildClaThreadsRouters(process.env);
 const answerInput = buildAnswerInputRouters(process.env, { chain: llmChain });
 const llmadmin = buildLlmAdminRouters(process.env, llmChain);
 const teachingToolkit = buildTeachingToolkitRouters(process.env, { chain: llmChain });
+// T-TEACHME-001 run-002 — the Teach-Me store rides the same DATABASE_URL the
+// per-router builders use; THE ONE CHAIN OF RECORD is injected. Every D3/D4
+// constant (quota, ceilings, word floor, overlap) lives in the module's ONE
+// config object (apps/api/src/teach-me/config.ts), never here.
+const teachMe = buildTeachMeRouters({
+  chain: llmChain,
+  store: createTeachMeStore(createSql(requireDatabaseUrl(process.env as { DATABASE_URL?: string }))),
+});
 
 const app = new Hono();
 
@@ -726,6 +736,20 @@ app.route("/api/v1/learners/me", assignmentPacks.learnerPacksRoute);
 // per the T-MIG-010/020/021/030/032/033/034/041t2/052t2/T-MIG-117
 // precedent so R0 can ratify or lift them out at review.
 app.route("/api/v1/teacher/toolkit", teachingToolkit.toolkitRoute);
+
+// Teach-Me routers (T-TEACHME-001 run-002 — the learn-by-teaching lane,
+// doctrine ADR-040): the learner-scoped family /api/v1/learners/me/teach-me/**
+// (create / message / end / history / permalink). The module owns its authz
+// internally (getAuth + typed fail-closed errors) and writes ONLY the teach_*
+// planes — AI_SUGGESTED evidence (kind TEACH_SESSION) via the append-only
+// coverage ledger; of-record mastery has no write path (D1, test-pinned).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-TEACHME-001, R0 ratification requested): the
+// import + store construction + one mount line + this comment are the minimal
+// app-level wiring, shipped as a separate commit per the
+// T-MIG-010/020/021/030/032/033/034/041t2/052t2/117 + T-SENECA-001 +
+// T-TEACH-012 precedent so R0 can ratify or lift them out at review.
+app.route("/api/v1/learners/me", teachMe.teachMeRoute);
 
 // Revision-notes + knowledge + teacher-KG/coverage/concept-graph routers
 // (T-MIG-082 tranche-1 — the deferred-mount band, r4b). Path parity with the
