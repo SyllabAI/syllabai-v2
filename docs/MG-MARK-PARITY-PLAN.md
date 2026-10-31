@@ -284,6 +284,16 @@ Ordering law: identity before geometry before awards before ink before pipeline 
 - **Progress join**: region awards feed the topic tree through the EXISTING evidence rollup (questionPartId → topicNodeIds via question_spec_points/question_topics — the DC-7 census seams). A region award moves the same rings a marked part moves. No new projection.
 - **Acceptance pins**: (a) ring pin — a region award advances the topic ring exactly like a marked part (DC-7 integration-test pattern); (b) copy pin — feedback panel renders all five feedbackObject fields with the failure-only strategies law; (c) rollup pin — paper card shows Σ score/Σ maxScore from the ledger, never a local counter.
 
+### 3.7 Post-closure follow-up — T-MG-INK-3: the anonymous local-only ink posture
+
+**Goal**: open the DRAW layer to logged-out learners per the operator's design law of record ("marking = login-constrained; the other tools don't have to be"), without touching any identity-bearing plane. Ruled after the lane closure (five of six phases landed; Phase 5 waived by choice).
+
+- **Posture**: no-token view-mode QP renders the SAME ink surface in LOCAL mode — same toolbar, same maths instruments, same `syllabai-ink/1` doc schema verbatim, persisted browser-side (IndexedDB, ONE store, key = `sourceUrl` — the existing doc-identity law), ZERO server contact (no GET, no PUT, no Bearer, no telemetry). The pill states the posture honestly: "Local only — saved on this device. Log in to sync." Sync mode (token present) is byte-identical to the shipped behavior and never consults the local store.
+- **Migration consent law**: login never auto-migrates local ink. An explicit "Upload to account" (union-by-id via the existing `rebaseShapes` law into the fetched server doc, one confirmed PUT — the local doc clears only after the PUT confirms) or an explicit "Discard local" is the only path; dismissal keeps the local doc and re-arms next visit.
+- **Scope invariants (re-pinned verbatim)**: mock-mode exclusion (anonymous mock = exam conditions, zero chrome); MS-pane exclusion (QP pane only); region-mark token+paperId gate — anonymous marking stays IMPOSSIBLE and local ink NEVER feeds the ledger; past-papers-QP-only scope (books/citations excluded).
+- **Acceptance pins**: (a) zero-contact — anonymous ink makes zero network calls (fetch-spy pinned); (b) persistence — draw/reload survives locally across tab close, quota failure renders an honest error, never a fabricated sync state; (c) migration — consent-gated only, clear-after-confirmed-PUT; (d) zero-touch — zero migrations (packages/db untouched), fences EXACT, pdf-pane.tsx untouched, no learnerId on any local shape.
+- **Spec of record**: `.syllabai/tasks/T-MG-INK-3.yaml` (run-001, the spec run — zero code). Implementation is run-002 on a separate operator dispatch.
+
 ## 4. Lane compliance (gate-by-gate, per phase)
 
 **Branch/PR staging**: one branch per phase run — `t-mg-mp-rect-1/run-001`, `t-mg-awards-1/run-001`, … — each PR titled `<type>(T-MG-<PHASE>-1): run-001 — <summary>` citing this doc. Phases 1–2 are migration-bearing (packages/db) and MUST ride the established migration discipline (drizzle additive migrations, no destructive ops, no renames); Phases 3–6 are API/UI additive modules.
