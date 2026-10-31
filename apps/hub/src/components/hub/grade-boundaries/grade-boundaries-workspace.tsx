@@ -18,6 +18,15 @@
  * the three calculator modes, session/average state and every pure calc
  * call are byte-identical to run-002.
  *
+ * T-GRADE-003 run-002 (operator eyeball of the live page): the summary-row
+ * modal chip-wall collapses to one muted sentence; the meter floor rides
+ * bg-border/60 so the track reads at 0% on every theme; the linear table
+ * groups paper-combination rows under one session cell (rowSpan) with the
+ * corpus's own labels only; the achieved-grade column paint waits for real
+ * slider interaction (markTouched). Page hero trimmed to MG's compact
+ * breadcrumb + title + exam-code band (description dropped — provenance
+ * lives in the workspace footer).
+ *
  * MathsGenie predicted-grade-calculator feature set, hub shell:
  *   - Table | Graph toggle (MG's view pair) over the same corpus;
  *   - session pills incl. "Average" (MG's modal-grade mode);
@@ -122,6 +131,10 @@ export function GradeBoundariesWorkspace({
   const [view, setView] = useState<"table" | "graph">("table");
   const [sessionPick, setSessionPick] = useState<string>("average");
   const [mark, setMark] = useState<number>(0);
+  // T-GRADE-003 run-002: the grade-column paint follows real interaction —
+  // an untouched slider (0 marks) must not paint the lowest grade down the
+  // whole table (MG's page is quiet until the visitor moves the control).
+  const [markTouched, setMarkTouched] = useState(false);
   const maxMark = calc?.maxMark ?? null;
   const canCalculate = isLinear;
 
@@ -392,6 +405,35 @@ export function GradeBoundariesWorkspace({
   const aggLadder = activeAgg?.cashIn?.gradeLadder ?? ladder;
 
   // ------------------------------------------------------------------
+  // T-GRADE-003 run-002 — MathsGenie-parity refinements (operator saw the
+  // live page and called four gaps): (1) the modal chip-wall in the summary
+  // row collapses to one muted sentence — MG keeps that row to a line and
+  // the per-session grades already live as the table's grade columns;
+  // (2) the meter floor rides bg-border/60 instead of bg-muted so the track
+  // stays legible at 0% on every theme; (3) the linear table groups its
+  // paper-combination rows under ONE session cell (rowSpan, MG's
+  // one-row-per-series look) — labelled variants keep their chips, and
+  // sessions the source document publishes without a combination label get
+  // an honest footnote, never invented labels; (4) the achieved-grade
+  // column paint (and the per-row grade chip) wait for real slider
+  // interaction (markTouched) instead of painting the lowest grade column
+  // wall-to-wall on load.
+  // ------------------------------------------------------------------
+  const agreeCount =
+    average?.perSeries.filter((p) => p.grade === average.grade).length ?? 0;
+  const aggAgreeCount =
+    aggAverage?.perSeries.filter((p) => p.grade === aggAverage.grade).length ??
+    0;
+  // run-002: consecutive same-session runs of the corpus order — the shape
+  // the parser emits (standard row before its R/regional sibling).
+  const linearGroups: GradeBoundariesSeries[][] = [];
+  for (const s of entry.series) {
+    const last = linearGroups[linearGroups.length - 1];
+    if (last && last[0].session === s.session) last.push(s);
+    else linearGroups.push([s]);
+  }
+
+  // ------------------------------------------------------------------
   // T-GRADE-003 run-001 — MathsGenie-parity presentation helpers.
   // Layout, shapes and padding clone MG's predicted-grade-calculator
   // page (saved DOM: upload/Edexcel IGCSE Biology … MathsGenie.html):
@@ -513,33 +555,26 @@ export function GradeBoundariesWorkspace({
                     aria-valuemin={0}
                     aria-valuemax={maxMark ?? 0}
                     aria-valuenow={clampedMark}
-                    className="mt-2 h-3 overflow-hidden rounded-full bg-muted"
+                    className="mt-2 h-3 overflow-hidden rounded-full bg-border/60"
                   >
                     <div
                       className="h-full rounded-full bg-accent-primary-foreground transition-[width]"
                       style={{ width: `${meterPct}%` }}
                     />
                   </div>
+                  <div className="mt-2 flex items-baseline justify-between gap-x-4 text-xs text-muted-foreground">
+                    <span>0</span>
+                    <span>Max {maxMark}</span>
+                  </div>
                   {sessionPick === "average" &&
-                  average &&
-                  average.perSeries.length > 0 ? (
-                    <div className="mt-2 flex flex-wrap gap-1">
-                      {average.perSeries.map((p) => (
-                        <Badge
-                          key={p.session}
-                          variant="outline"
-                          className="font-mono text-[10px]"
-                        >
-                          {p.session}: {p.grade ?? "–"}
-                        </Badge>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="mt-2 flex items-baseline justify-between gap-x-4 text-xs text-muted-foreground">
-                      <span>0</span>
-                      <span>Max {maxMark}</span>
-                    </div>
-                  )}
+                    average &&
+                    average.perSeries.length > 0 && (
+                      <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                        Grade {average.grade} in {agreeCount} of{" "}
+                        {average.perSeries.length} sessions — each
+                        session&apos;s grade is a column in the table below.
+                      </p>
+                    )}
                 </div>
               </div>
 
@@ -552,8 +587,11 @@ export function GradeBoundariesWorkspace({
                   max={maxMark ?? 1}
                   step={1}
                   aria-label="Total mark"
-                  onValueChange={(v) => setMark(v[0] ?? 0)}
-                  className="[&_[data-slot=slider-range]]:bg-accent-primary-foreground [&_[data-slot=slider-thumb]]:size-5 [&_[data-slot=slider-thumb]]:border-accent-primary-foreground [&_[data-slot=slider-track]]:h-3"
+                  onValueChange={(v) => {
+                    setMarkTouched(true);
+                    setMark(v[0] ?? 0);
+                  }}
+                  className="[&_[data-slot=slider-range]]:bg-accent-primary-foreground [&_[data-slot=slider-thumb]]:size-5 [&_[data-slot=slider-thumb]]:border-accent-primary-foreground [&_[data-slot=slider-track]]:h-3 [&_[data-slot=slider-track]]:bg-border/60"
                 />
                 <p className="text-right text-sm font-medium tabular-nums tracking-tight">
                   {clampedMark} / {maxMark}
@@ -586,17 +624,10 @@ export function GradeBoundariesWorkspace({
                         Modal across {aggAverage.perSeries.length} sessions —
                         same unit marks
                       </p>
-                      <div className="mt-2 flex flex-wrap gap-1">
-                        {aggAverage.perSeries.map((p) => (
-                          <Badge
-                            key={p.session}
-                            variant="outline"
-                            className="font-mono text-[10px]"
-                          >
-                            {p.session}: {p.grade ?? "–"}
-                          </Badge>
-                        ))}
-                      </div>
+                      <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                        Grade {aggAverage.grade} in {aggAgreeCount} of{" "}
+                        {aggAverage.perSeries.length} sessions.
+                      </p>
                     </div>
                   </div>
                 ) : (
@@ -643,7 +674,7 @@ export function GradeBoundariesWorkspace({
                         aria-valuemin={0}
                         aria-valuemax={aggResult?.maxUms ?? 0}
                         aria-valuenow={aggResult?.totalUms ?? 0}
-                        className="mt-2 h-3 overflow-hidden rounded-full bg-muted"
+                        className="mt-2 h-3 overflow-hidden rounded-full bg-border/60"
                       >
                         <div
                           className="h-full rounded-full bg-accent-primary-foreground transition-[width]"
@@ -808,64 +839,97 @@ export function GradeBoundariesWorkspace({
                           </tr>
                         </thead>
                         <tbody>
-                          {entry.series.map((s, i) => {
-                            const rowLadder = s.gradeLadder ?? ladder;
-                            const rowGrade =
-                              canCalculate && s.boundaries
-                                ? gradeForMark(s.boundaries, rowLadder, clampedMark)
-                                : null;
-                            return (
-                              <tr
-                                key={`${s.session}-${s.papersNote ?? i}`}
-                                className="border-b border-border last:border-0"
-                              >
-                                <td className="whitespace-nowrap px-4 py-3 text-center font-medium">
-                                  {s.session}
-                                </td>
-                                <td className="whitespace-nowrap px-3 py-3">
-                                  <span className="flex items-center justify-center gap-1.5">
-                                    <span className="font-mono text-xs text-muted-foreground">
-                                      {s.papersNote ?? s.scale ?? "—"}
-                                    </span>
-                                    {isRegionalVariant(s.papersNote) && (
-                                      <Badge variant="outline" className="px-1 py-0 text-[10px]">R</Badge>
-                                    )}
-                                    {s.tier && (
-                                      <Badge variant="outline" className="px-1 py-0 text-[10px] capitalize">
-                                        {s.tier}
-                                      </Badge>
-                                    )}
-                                    {canCalculate && rowGrade && (
-                                      <Badge className="px-1.5 py-0 text-[10px]">{rowGrade}</Badge>
-                                    )}
-                                  </span>
-                                </td>
-                                {ladder.map((g) => {
-                                  const isAchieved = canCalculate && rowGrade === g;
-                                  return (
+                          {linearGroups.map((rows, gi) =>
+                            rows.map((s, j) => {
+                              const rowLadder = s.gradeLadder ?? ladder;
+                              const rowGrade =
+                                canCalculate && s.boundaries
+                                  ? gradeForMark(s.boundaries, rowLadder, clampedMark)
+                                  : null;
+                              const lastOfGroup = j === rows.length - 1;
+                              const lastOverall =
+                                gi === linearGroups.length - 1 && lastOfGroup;
+                              // one rule per group boundary; hairlines inside
+                              const groupRule = lastOverall
+                                ? ""
+                                : lastOfGroup
+                                  ? "border-b-2 border-border"
+                                  : "border-b border-border";
+                              return (
+                                <tr
+                                  key={`${s.session}-${gi}-${j}`}
+                                  className={groupRule}
+                                >
+                                  {j === 0 && (
                                     <td
-                                      key={g}
+                                      rowSpan={rows.length}
                                       className={
-                                        "px-3 py-3 text-center tabular-nums" +
-                                        (isAchieved
-                                          ? " rounded-md bg-accent-primary font-semibold text-accent-primary-foreground"
-                                          : "")
+                                        "whitespace-nowrap px-4 py-3 text-center align-middle font-medium" +
+                                        (lastOverall ? "" : " border-b-2 border-border")
                                       }
                                     >
-                                      {fmtGradeCell(s.boundaries?.[g])}
+                                      {s.session}
                                     </td>
-                                  );
-                                })}
-                                <td className="px-3 py-3 text-center tabular-nums text-muted-foreground">
-                                  {s.maxMark ?? "—"}
-                                </td>
-                              </tr>
-                            );
-                          })}
+                                  )}
+                                  <td className="whitespace-nowrap px-3 py-3">
+                                    <span className="flex items-center justify-center gap-1.5">
+                                      <span className="font-mono text-xs text-muted-foreground">
+                                        {s.papersNote ??
+                                          (rows.length > 1
+                                            ? "—"
+                                            : (s.scale ?? "—"))}
+                                      </span>
+                                      {isRegionalVariant(s.papersNote) && (
+                                        <Badge variant="outline" className="px-1 py-0 text-[10px]">R</Badge>
+                                      )}
+                                      {s.tier && (
+                                        <Badge variant="outline" className="px-1 py-0 text-[10px] capitalize">
+                                          {s.tier}
+                                        </Badge>
+                                      )}
+                                      {canCalculate && markTouched && rowGrade && (
+                                        <Badge className="px-1.5 py-0 text-[10px]">{rowGrade}</Badge>
+                                      )}
+                                    </span>
+                                  </td>
+                                  {ladder.map((g) => {
+                                    const isAchieved =
+                                      canCalculate && markTouched && rowGrade === g;
+                                    return (
+                                      <td
+                                        key={g}
+                                        className={
+                                          "px-3 py-3 text-center tabular-nums" +
+                                          (isAchieved
+                                            ? " rounded-md bg-accent-primary font-semibold text-accent-primary-foreground"
+                                            : "")
+                                        }
+                                      >
+                                        {fmtGradeCell(s.boundaries?.[g])}
+                                      </td>
+                                    );
+                                  })}
+                                  <td className="px-3 py-3 text-center tabular-nums text-muted-foreground">
+                                    {s.maxMark ?? "—"}
+                                  </td>
+                                </tr>
+                              );
+                            }),
+                          )}
                         </tbody>
                       </table>
                     </div>
                   </div>
+                  {linearGroups.some(
+                    (g) => g.length > 1 && g.some((r) => !r.papersNote),
+                  ) && (
+                    <p className="text-xs leading-relaxed text-muted-foreground">
+                      Where a session shows more than one row, the source
+                      document publishes several paper combinations for that
+                      series; rows without a combination label appear in
+                      source order, exactly as issued.
+                    </p>
+                  )}
                 </section>
               )}
 

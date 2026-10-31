@@ -54,11 +54,6 @@ export default async function GradeBoundariesPage({
         meta={meta}
         title={`Grade Boundaries — ${meta.code}`}
         crumb="Grade Boundaries"
-        description={
-          entry
-            ? `Official ${boardOf(meta)} grade boundaries for ${entry.series.length} exam sessions — the boundary tables, the trend across sessions, and a mark-to-grade calculator. Sourced from the awarding bodies' own published documents, sha256-recorded in the resources corpus.`
-            : "Official session-by-session grade boundaries for this course land as the corpus rollout continues — nothing is estimated or invented in the meantime."
-        }
       />
       {entry ? (
         <GradeBoundariesWorkspace entry={entry} />
