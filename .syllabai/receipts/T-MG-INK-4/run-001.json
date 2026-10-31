@@ -1,0 +1,38 @@
+{
+  "task": "T-MG-INK-4 run-001",
+  "date": "2026-11-01",
+  "operator": {
+    "dispatch": "spec this as T-MG-INK-4 (carded-not-built, same discipline), scoping math text box + eraser (+ optionally real shape select/move)",
+    "trace": "1a192e6fc58fc1fd",
+    "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+  },
+  "context_of_record": "issued immediately after the operator asked 'did you add all the tools from mathsgenie? there was a text input tool' (trace 1a192e0ae56a06cd) and this session answered with a LIVE census of the operator-cited URL (headless Chromium on mathsgenie.co.uk/paper/igcse/chemistry/edexcel/igcse-chemistry-2025-june-4ch1-2c): the text tool IS shipped on our side, but the census exposed exactly three gaps — Math text box, Erase, Select — which this card specs",
+  "class": "additive docs + .syllabai bookkeeping ONLY — zero code bytes, zero schema, zero contracts, zero api, zero db, zero hub; the implementation is run-002 on a separate operator word",
+  "what_lands": {
+    "task_card": ".syllabai/tasks/T-MG-INK-4.yaml — the spec of record: mtext kind (KaTeX DOM-overlay render, textarea editing, MathLive declined on the SDK-gate discipline), tombstone kind (target-id reuse through the existing rebaseShapes local-wins law — deletion finally representable with ZERO merge-law changes), eraser (whole-shape atomic, css-px hit-disc, one commit per gesture), select/move (single-shape, dashed bbox, translate + tombstone delete), painter hardening (explicit skip for unknown kinds — the latent else-paintText throw), and the disclosed mtext-in-crop blindspot",
+    "plan_card": "docs/MG-MARK-PARITY-PLAN.md §3.8 — the post-closure follow-up #2 card, so the plan remains the single governing document",
+    "receipt": "this file"
+  },
+  "decisions_of_record": [
+    "container law: syllabai-ink/1 VERBATIM, never bumped — the server contract (packages/contracts/src/pdf-drawings.ts inkDocSchema) validates the container only (shapes: z.array(z.unknown()), elements opaque), so new kinds ride the existing wire with zero contract/api/db bytes; the honest-parse boundary IS the forward/backward compat law; a version bump would make old clients parseDoc→null the whole doc (forbidden)",
+    "mtext kind: { id, kind:'mtext', page, color, sizeFrac, x, y, tex } — KaTeX source 1..1000 chars; renders via katex.renderToString(throwOnError:false, displayMode:false) in a pointer-events:none DOM overlay per [data-page] (the InstrumentGuides family), normalized 0..1 positioning, sizeFrac × page-width sizing, currentColor; malformed tex renders error-styled honestly; editing = inline textarea (LaTeX), commit blur/Ctrl+Enter, Esc cancels",
+    "NOT MathLive: MG's math box is a MathLive <math-field> (virtual-keyboard policy manual, observed live) — declined on the MG-INK-SDK-GATE bundle/licence discipline (the tldraw verdict stands); katex ^0.16.23 is already a hub dependency",
+    "tombstone kind: { id: <targetId>, kind:'tombstone', page } — deletion reuses the target's id so the existing rebaseShapes union-by-id (local-wins on collision) makes erasure survive every 409 rebase and migration upload with zero merge-law changes; old clients drop the unknown kind and their full-doc PUT persists the deletion (pass-through-safe); undo restores the pre-erase snapshot verbatim; Clear all stays set-replacement (the disclosed cross-writer asymmetry of the revision law stands)",
+    "eraser: dedicated tool, whole-shape atomic (no pixel erase — shapes are atomic in the grammar), hit-disc tolerance css-px max(12, current pen width px) dpr-independent, ONE commit per gesture (one undo step), no eraser-size UI",
+    "select/move (the operator's 'optionally' DECIDED IN): explicit Select tool; tap hit-test (strokes: point-to-segment distance ≤ css-px tolerance; text/mtext: bbox + 4 css px) → dashed bbox affordance (DOM overlay); drag translates (css-px intent converted per-axis at commit — the aspect law); Delete/Backspace or ✕ tombstones; Esc/tap-empty deselects; SINGLE-shape only, no rotate/resize/multi-select (guides keep their own grips)",
+    "painter hardening: paintShapes kind-switch with explicit skip for tombstone/mtext/ANY unknown kind (the current `else paintText` would throw s.text.split on undefined for an unknown kind — a latent hazard against forward evolution); strokes+text painting byte-identical; the T-MG-CROPMARK-1 crop composite keeps strokes+text verbatim",
+    "crop disclosure: mtext does NOT composite into the region-crop marking bitmap this run (the DOM overlay is not canvas pixels) — rasterization (font-inlined foreignObject) is a NAMED future card candidate on the operator's word, never silently assumed; marking is login-gated anyway, the anonymous posture is untouched",
+    "posture invariants re-pinned verbatim: mock-mode exclusion, MS-pane exclusion, region-mark token+paperId gate (anonymous marking stays impossible, local ink never feeds the ledger), past-papers-QP-only; sync gate preserved (sync module never constructed without a token); new kinds flow through BOTH stores via the shared packDoc/parseDoc boundary; the local store's zero-contact law untouched"
+  ],
+  "gates_this_run": {
+    "gate_a_carded_not_built": "PASS — zero implementation code; the spec is the deliverable",
+    "gate_b_zero_touch": "PASS — additive docs/.syllabai only; fences re-checked at the branch base",
+    "gate_c_no_tbd": "PASS — every product decision decided in the card (container, mtext render/edit, tombstone/merge, eraser granularity, select/move scope, painter hardening, crop disclosure, Browse non-goal)"
+  },
+  "next_of": "run-002 (the implementation) awaits the operator's word; estimate ~1 small run — ink.ts (+2 kinds, kind-first parseShape ~+90), paint.ts (skip law ~+15), MathTextOverlay.tsx new (~+80), InkLayer.tsx (3 tools + erase/select/move gesture router + mtext editor + selection chrome ~+300), tests (~+250)",
+  "lineage": {
+    "lane_closure": "T-MG-MARK-PARITY-1 closed 5-of-6 phases (receipt 0c02cd60); this is post-closure follow-up #2 on the T-MG-INK-3 line (spec PR #556 merge 83dc4d28, implementation merge 51ac790c receipt 4876aab2), a NARROW operator-ruled extension, not a phase reopen",
+    "ink_laws_inherited": "PR #494 (surface) + #509 (instruments) + T-MG-INK-3 run-002 (local posture) — the drawing stack, toolbar law, undo/redo 50-step law, honest-parse law, honest-pill law, debounce law, flush-before-dispose law, zero-contact law",
+    "census_of_record": "live headless-Chromium census of the operator-cited 4CH1/2C URL, 2026-11-01: MG toolbar Browse/Select/Text/Math text box (MathLive math-field)/Draw/Erase/Pen colour (black/red/blue/green)/Pen thickness (medium/thick/extra thick)/Line/Ruler/Protractor/Compasses + Undo/Redo/Clear all; our shipped toolbar Pen/Text box/Line/Ruler/Protractor/Compasses + same colours/widths + Undo/Redo/Clear all"
+  }
+}

@@ -1,0 +1,64 @@
+version: 1
+task:
+  id: T-MG-INK-4
+  title: "MG parity follow-up #2 — the missing ink tools: math text box, eraser, shape select/move (additive kinds inside the syllabai-ink/1 container; marking/ledger planes untouched)"
+  owner: "main agent (Z.ai, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)"
+  status: OPEN
+  priority: P3
+  band: T-MG-MARK-PARITY (interactive paper marking) — post-closure follow-up card #2, operator-ruled after the T-MG-INK-3 implementation landed
+  wave: mg-parity-phase3-ink
+  deps: [T-MG-INK-1, T-MG-INK-2, T-MG-INK-3]
+  plan_of_record: "docs/MG-MARK-PARITY-PLAN.md §3.8 (added this run); inherits the shipped ink laws of T-MG-INK-1/2/3"
+  parent: T-MG-MARK-PARITY-1
+  acceptance_pins:
+    # ── run-001 (THIS run): the spec, carded not built ──
+    - "(gate-a) carded-not-built pin — run-001 lands the SPEC ONLY (T-card + plan §3.8 card + receipt); zero implementation code; implementation is a separate operator dispatch (run-002)"
+    - "(gate-b) zero-touch pin — Gate 1 + fence census clean; additive docs/.syllabai bytes only; no schema, no API, no hub code, no contracts, no db"
+    - "(gate-c) no-TBD pin — every open product decision is DECIDED in this card (container law, mtext kind + render path, tombstone deletion law, eraser granularity, select/move scope, painter hardening, crop disclosure); no placeholders"
+    # ── run-002 (the implementation, on the operator's word) ──
+    - "(run-002) container pin — the doc container stays syllabai-ink/1 VERBATIM (a version bump would make old clients parseDoc→null the WHOLE doc); zero contract bytes (pdf-drawings.ts validates the container only — shapes are z.array(z.unknown()), the elements opaque), zero api bytes, zero db bytes, zero identity plane"
+    - "(run-002) mtext pin — new shape kind { id, kind:'mtext', page, color, sizeFrac, x, y, tex } (tex = KaTeX source, 1..1000 chars); renders via katex.renderToString(throwOnError:false, displayMode:false) in a pointer-events:none DOM overlay per [data-page] (the InstrumentGuides family), positioned by the normalized 0..1 law, font size = sizeFrac × page css width, color via currentColor; malformed tex renders the error-styled source honestly (never blank, never throws); editing = inline textarea (LaTeX source), commit on blur / Ctrl+Enter, Esc cancels, empty commit cancels; NOT MathLive (bundle/licence discipline — the MG-INK-SDK-GATE verdict stands; katex ^0.16.23 is already a hub dependency)"
+    - "(run-002) tombstone pin — deletion is representable: an erase commits { id: <targetId>, kind:'tombstone', page: <targetPage> } — the tombstone REUSES the target's id so the existing rebaseShapes union-by-id law (local-wins on id collision) makes erasure survive every 409 rebase and migration upload with ZERO merge-law changes; old clients drop the unknown kind at the honest-parse boundary (the erased shape is absent for them; their full-doc PUT persists the deletion); undo restores the pre-erase snapshot verbatim (resurrection by explicit undo is correct); Clear all stays set-replacement (the disclosed cross-writer asymmetry of the revision law stands)"
+    - "(run-002) eraser pin — a dedicated Erase tool: whole-shape atomic (no pixel/partial erase — shapes are atomic in the grammar); hit-disc tolerance = css-px max(12, current pen width px), dpr-independent; one commit per gesture (one undo step per erase gesture); no eraser-size UI this run"
+    - "(run-002) select pin — a dedicated Select tool: tap hit-test (strokes: point-to-segment distance ≤ tolerance in css px; text/mtext: bbox + 4 css px inflation) → dashed bbox affordance (DOM overlay, the guides family); drag translates (css-px intent converted to normalized per-axis at commit — the aspect law); Delete/Backspace or the ✕ affordance tombstones the selected shape (the same deletion law); Esc / tap-empty deselects; SINGLE-shape selection only — no rotate/resize of shapes (guides keep their own grips), no multi-select"
+    - "(run-002) painter pin — paintShapes hardens: kind-switch with explicit skip for tombstone + mtext + ANY unknown kind (the current `else paintText` routes unknown kinds at s.text and would throw — a latent hazard against forward schema evolution); strokes + text painting byte-identical (test-pinned); the T-MG-CROPMARK-1 crop composite keeps compositing strokes + text verbatim"
+    - "(run-002) crop disclosure pin — mtext does NOT composite into the region-crop bitmap this run (the DOM overlay is not canvas pixels); the rasterization path (font-inlined foreignObject) is a named future card candidate, never silently assumed; disclosed in the PR body and the receipt"
+    - "(run-002) posture pin — the T-MG-INK-3 invariants hold verbatim and stay test-pinned: mock-mode exclusion, MS-pane exclusion (QP pane only), region-mark token+paperId gate (anonymous marking stays IMPOSSIBLE — local ink never feeds the ledger), past-papers-QP-only; the sync gate preserved (the sync module is never constructed without a token); the new kinds flow through BOTH stores (sync jsonb + IndexedDB) via the shared packDoc/parseDoc boundary; the local store's zero-contact law untouched (no new network imports)"
+    - "(run-002) zero-touch pin — zero migrations (packages/db untouched), fences EXACT (routes/cla.ts a9fdabfd, services/cla/service.ts db4573c7), pdf-pane.tsx untouched, packages/contracts/** byte-absent, no learnerId anywhere (nothing leaves the device in local mode; no new identity plane in sync mode)"
+  non_goals:
+    - "no MathLive / virtual math keyboard / symbol palette (MG's policy is manual too; KaTeX + textarea is the decided editor)"
+    - "no pixel/partial erasing, no eraser-size UI (whole-shape atomic this run)"
+    - "no multi-select, no rotate/resize of committed shapes, no Browse tool (the ink-off toggle stays the pan posture — functionally equivalent)"
+    - "no mtext-in-crop rasterization this run (disclosed; a named future card candidate on the operator's word)"
+    - "no schema or contract change of any kind (the container law: syllabai-ink/1 verbatim, shapes opaque server-side)"
+    - "no anonymous marking — the ledger, feedback panel, highlights, rollups stay learner-scoped verbatim"
+  execution_record: >
+    run-001 (2026-11-01). Operator dispatch "spec this as T-MG-INK-4 (carded-not-built,
+    same discipline), scoping math text box + eraser (+ optionally real shape
+    select/move)" (trace 1a192e6fc58fc1fd), ruled after the operator asked "did you
+    add all the tools from mathsgenie? there was a text input tool" and this session's
+    live census of the operator-cited URL (headless Chromium, 2026-11-01) confirmed
+    the gaps: MG toolbar = Browse / Select / Text / Math text box (a MathLive
+    <math-field>, virtual-keyboard policy manual) / Draw / Erase / Pen colour
+    (black/red/blue/green) / Pen thickness (medium/thick/extra thick) / Line / Ruler /
+    Protractor / Compasses + Undo/Redo/Clear all; ours shipped Pen / Text box / Line /
+    Ruler / Protractor / Compasses with the same 4 colours and 3 widths — the gaps
+    are exactly Math text box, Erase, and Select (ours manipulates only instrument
+    guides). The spec decides, per the codebase facts of record: the server contract
+    validates the container ONLY (packages/contracts/src/pdf-drawings.ts inkDocSchema:
+    shapes: z.array(z.unknown()) — "the elements are opaque at this grain"), so new
+    shape kinds ride the existing wire with ZERO contract/api/db bytes and the
+    container stays syllabai-ink/1 (a bump would make old clients parseDoc→null the
+    whole doc — forbidden); the honest-parse boundary (parseShape → null, dropped,
+    never a throw) IS the forward/backward-compat law. Deletion becomes representable
+    via the tombstone kind (target-id reuse + the existing rebaseShapes local-wins
+    law — zero merge-law changes); mtext renders via the ALREADY-DEPENDENCY katex in
+    a DOM overlay (the InstrumentGuides family) — MathLive explicitly declined on the
+    MG-INK-SDK-GATE bundle/licence discipline; the crop-composite blindspot for mtext
+    is disclosed, never silent; the painter's latent `else paintText` throw for
+    unknown kinds is hardened. Estimate: one small run — ink.ts (+2 kinds, kind-first
+    parseShape ~+90), paint.ts (skip law ~+15), MathTextOverlay.tsx new (~+80),
+    InkLayer.tsx (3 tools + erase/select/move gesture router + mtext editor +
+    selection chrome ~+300), tests (~+250). The lane was already a post-closure
+    follow-up (T-MG-INK-3); this card extends the same narrow follow-up line by
+    explicit operator word and does not reopen any phase card.

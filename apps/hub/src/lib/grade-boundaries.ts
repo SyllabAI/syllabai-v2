@@ -1,6 +1,6 @@
 import "server-only";
 /**
- * Grade Boundaries — the committed corpus loader (T-GRADE-1).
+ * Grade Boundaries — the committed corpus loader (T-GRADE-1, run-002 split).
  *
  * The bundle is the mechanical import of the of-record resources lane
  * (`SyllabAI/syllabai-resources` GradeBoundaries/hub-import, sha-proven
@@ -9,148 +9,27 @@ import "server-only";
  * lib/courses.ts: strict zod at the boundary, honest null for absent
  * courses, `cache()` per request — a course without corpus data resolves
  * to null and the card/page render the roadmap state, never a stub.
+ *
+ * RUN-002: the zod contract of record moved to ./grade-boundaries-schema
+ * so the prebuild bundle validator and bun:test share the exact shape the
+ * loader enforces (the wave-2 CIE/modular series shapes without a
+ * series-level boundaries row must parse — a loader/contract drift here
+ * nulls the WHOLE bundle and every course card falls back to roadmap).
  */
 import { cache } from "react";
-import { z } from "zod";
 import { loadContentJson } from "@/lib/corpus";
+import { GradeBoundariesSchema } from "./grade-boundaries-schema";
+import type {
+  GradeBoundariesBundle,
+  GradeBoundariesCourse,
+} from "./grade-boundaries-schema";
 
-export const GradeBoundariesSchema = z.object({
-  schema: z.string(),
-  generated: z.string(),
-  generator: z.string(),
-  source: z.object({
-    lane: z.string(),
-    documents: z.number(),
-    manifest_sha16: z.string().nullable(),
-  }),
-  counts: z.object({
-    courses_served: z.number(),
-    courses_roadmap: z.number(),
-    courses_total: z.number(),
-  }),
-  courses: z.record(
-    z.string(),
-    z.object({
-      code: z.string(),
-      board: z.string(),
-      level: z.string().nullable(),
-      title: z.string().nullable(),
-      gradeLadder: z.array(z.string()).nullable(),
-      tier: z.string().nullable().optional(),
-      calculator: z
-        .object({
-          mode: z.string(),
-          maxMark: z.number().nullable().optional(),
-          // aggregate-ums mode (T-GRADE-2): the cash-in composition is
-          // official Pearson structure metadata from the resources lane
-          cashIn: z.string().optional(),
-          required: z.array(z.string()).optional(),
-          optionalPairs: z
-            .array(z.tuple([z.string(), z.string()]))
-            .optional(),
-          aStar: z
-            .object({
-              overallMin: z.number(),
-              a2Min: z.number(),
-              a2Units: z.array(z.string()),
-            })
-            .optional(),
-        })
-        .nullable(),
-      reviewRequired: z.boolean(),
-      series: z.array(
-        z.object({
-          session: z.string(),
-          year: z.number(),
-          scale: z.string().optional(),
-          maxMark: z.number().optional(),
-          boundaries: z.record(z.string(), z.number().nullable()),
-          gradeLadder: z.array(z.string()).nullable().optional(),
-          papersNote: z.string().nullable().optional(),
-          tier: z.string().nullable().optional(),
-          units: z
-            .array(
-              z.object({
-                code: z.string(),
-                title: z.string(),
-                maxMark: z.number(),
-                boundaries: z.record(z.string(), z.number().nullable()),
-                ums: z
-                  .object({
-                    maxMark: z.number(),
-                    boundaries: z.record(z.string(), z.number().nullable()),
-                  })
-                  .nullable()
-                  .optional(),
-              }),
-            )
-            .optional(),
-          // the full cash-in composition (standard variants, composition
-          // order) — every unit the aggregate calculator converts, even on
-          // "-unit-N" pages whose tables only list their own unit
-          calculatorUnits: z
-            .array(
-              z.object({
-                code: z.string(),
-                title: z.string(),
-                maxMark: z.number(),
-                boundaries: z.record(z.string(), z.number().nullable()),
-                ums: z
-                  .object({
-                    maxMark: z.number(),
-                    boundaries: z.record(z.string(), z.number().nullable()),
-                  })
-                  .nullable()
-                  .optional(),
-              }),
-            )
-            .optional(),
-          cashIns: z
-            .array(
-              z.object({
-                code: z.string(),
-                title: z.string(),
-                maxMark: z.number(),
-                boundaries: z.record(z.string(), z.number().nullable()),
-                gradeLadder: z.array(z.string()).optional(),
-              }),
-            )
-            .optional(),
-          components: z
-            .array(
-              z.object({
-                code: z.string(),
-                maxMark: z.number(),
-                boundaries: z.record(z.string(), z.number().nullable()),
-              }),
-            )
-            .optional(),
-          routes: z
-            .array(
-              z.object({
-                combination: z.string(),
-                option: z.string().nullable().optional(),
-                award: z.string().nullable().optional(),
-                maxWeightedMark: z.number(),
-                boundaries: z.record(z.string(), z.number().nullable()),
-              }),
-            )
-            .optional(),
-          source: z
-            .object({
-              family: z.string(),
-              sha256_16: z.string(),
-            })
-            .optional(),
-        }),
-      ),
-    }),
-  ),
-});
-
-export type GradeBoundariesBundle = z.infer<typeof GradeBoundariesSchema>;
-export type GradeBoundariesCourse = GradeBoundariesBundle["courses"][string];
-export type GradeBoundariesSeries = GradeBoundariesCourse["series"][number];
+export { GradeBoundariesSchema } from "./grade-boundaries-schema";
+export type {
+  GradeBoundariesBundle,
+  GradeBoundariesCourse,
+  GradeBoundariesSeries,
+} from "./grade-boundaries-schema";
 
 const BUNDLE_REL = "grade-boundaries/bundle.v1.json";
 
