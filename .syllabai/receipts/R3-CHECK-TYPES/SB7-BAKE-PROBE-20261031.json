@@ -1,0 +1,42 @@
+{
+  "baked": true,
+  "poll": 6,
+  "pages": {
+    "rn_5g8Dd6y89tkCVJsN": {
+      "your_answer": 8,
+      "expected": 8,
+      "stem_hits": 2,
+      "law_hits": 0
+    },
+    "rn_T6S7R66N2wSZpWyc": {
+      "your_answer": 12,
+      "expected": 12,
+      "stem_hits": 2,
+      "law_hits": 0
+    },
+    "rn_xT8XsdJtDX5gNFXj": {
+      "your_answer": 8,
+      "expected": 8,
+      "stem_hits": null,
+      "law_hits": 0
+    },
+    "rn_2VnK66PqbvFKdKYt": {
+      "your_answer": 8,
+      "expected": 8,
+      "stem_hits": null,
+      "law_hits": 0
+    }
+  },
+  "format": "r3-check-types-sb7-bake-probe/1.0",
+  "generated_at_utc": "2026-10-31T03:14:04Z",
+  "targets": [
+    "rn_5g8Dd6y89tkCVJsN",
+    "rn_T6S7R66N2wSZpWyc"
+  ],
+  "calibrations": [
+    "rn_xT8XsdJtDX5gNFXj",
+    "rn_2VnK66PqbvFKdKYt"
+  ],
+  "method": "occurrence-aware str.count over production SSR HTML; 45s polls; 20-min window",
+  "operator_trace": "1a18fd512d610f7d"
+}

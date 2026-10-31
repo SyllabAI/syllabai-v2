@@ -1,0 +1,62 @@
+{
+  "format": "r3-check-types-live-spotcheck/1.0",
+  "wave": "R3-MIXED-CHECK-TYPES stage B wave 7 (S-B7) — the wave-7 authoring register (9 notes / 19 lessons / 76 written items)",
+  "operator_trace": "1a18fd512d610f7d",
+  "generated_at_utc": "2026-10-31T03:25:00Z",
+  "verdict": "PASS",
+  "pins_of_record": {
+    "resources_merge": "652ca2d4e7709647cfd68040a56d817ae985fc5e (PR #248, tree 7f2270fe, parent 7343e125, trace-bearing merge message)",
+    "commit_A": "a8889009338bc5ce09edfed1d610d8cc9c9457b4",
+    "hub_merge": "057ec3ec0906723b521ad79f9f8b98f7252a298f (PR #534, head a5f631cc, CI 2/2 at each tip)"
+  },
+  "bake_probe": {
+    "receipt": "SB7-BAKE-PROBE-20261031.json",
+    "method": "occurrence-aware str.count over production SSR HTML; 45s polls; 20-min window",
+    "result": "GREEN at poll 6 (03:14:04Z) after 5 pre-bake polls clean (~1 bake cycle post-merge)",
+    "targets": {
+      "rn_5g8Dd6y89tkCVJsN": { "your_answer": "8/8 (2 lessons x 4 written)", "wave7_stem_hits": 2, "law_hits": 0 },
+      "rn_T6S7R66N2wSZpWyc": { "your_answer": "12/12 (3 lessons x 4 written)", "wave7_stem_hits": 2, "law_hits": 0 }
+    },
+    "calibrations": {
+      "rn_xT8XsdJtDX5gNFXj (S-B1)": { "your_answer": "8/8", "law_hits": 0 },
+      "rn_2VnK66PqbvFKdKYt (S-B2)": { "your_answer": "8/8", "law_hits": 0 }
+    },
+    "provenance_2_1B_law": "'from the revision note' 0 hits on all four probed pages"
+  },
+  "dom_flow_walk": {
+    "note": "rn_5g8Dd6y89tkCVJsN (2 lessons, Medium gate), production URL, agent-browser DOM walk",
+    "lesson_1": {
+      "gate": "Medium selected then locked for the lesson (radios disabled)",
+      "mcq_q1_q5": "options key-A per of-record package; click-grades immediately; role=status 'Correct — <explanation>' per question; selected option aria-checked=true + disabled (locked); MCQ path byte-path unchanged",
+      "q6_written_recall_miss_probe": {
+        "empty_submit": "Submit answer disabled at empty textarea (verified)",
+        "learner_text": "copper (zero-keyword nonsense)",
+        "verdict": "'Not quite.' rendered",
+        "model_answer": "'A pipette measures a fixed volume of the alkali into the conical flask' VERBATIM",
+        "lock": "textarea disabled after settle"
+      },
+      "q7_written_recall_hit": "keyword-bearing correct answer -> 'Great job!' + model answer VERBATIM + locked",
+      "q8_written_explain_why": "label 'Written response · explain why' + hit -> 'Great job!' + model answer VERBATIM + locked",
+      "q9_written_application": "hit -> 'Great job!' + model answer VERBATIM + locked"
+    },
+    "between_lessons": "Quick recall practice item presented (pre-existing feature, untouched): 'Reveal model answer' + self-grade buttons ('I had it' / 'Not yet')",
+    "lesson_2": {
+      "gate": "Medium gate re-presented and locked",
+      "mcq_q1_q5": "key-A click-grades; 'Correct —' verdicts; locked",
+      "written_q6_q9": "hits with keyword-bearing answers -> 'Great job!' + model answer VERBATIM + locked on each; 'Written response · explain why' label live on Q8",
+      "completion": "lesson-set completion CTA present; lesson chip advanced to '1 of 2 complete' then set completion state"
+    },
+    "provenance_footer": "live: 'Guided content from the SME authoring corpus — note rn_5g8Dd6y89tkCVJsN, pinned at a8889009338b · promoted SyllabAI/syllabai-resources 652ca2d4e770'",
+    "screenshots": [
+      "download/r3-stageb7/walk-rn5g8-Q7-hit.png",
+      "download/r3-stageb7/walk-rn5g8-Q9-application.png",
+      "download/r3-stageb7/walk-rn5g8-L2-Q9-final.png"
+    ]
+  },
+  "law_probes": {
+    "2_1B_provenance": "0 x 'from the revision note' on all probed SSR surfaces",
+    "reveal_only_fail_closed": "not exercised this walk (all 76 items carry modelAnswer + keywords by construction; verified at C-6/invariants)",
+    "empty_submit": "blocked on BOTH channels (MCQ Submit disabled at empty; written Submit answer disabled at empty)"
+  },
+  "notes": "Walk executed through the live Medium-gate flow (layers -> checks phase), not the prerendered hidden tree; 'Great job!' verdicts confirmed on written hits; the miss probe consumed L1 Q6 (single-attempt law honoured: textarea locked after settle)."
+}
