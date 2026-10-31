@@ -1,0 +1,34 @@
+{
+  "task": "T-MG-INK-6 run-001",
+  "date": "2026-11-01",
+  "operator": {
+    "dispatch": "draft the card and start the spec run. pointerdown",
+    "trace": "1a19369b42448829",
+    "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+  },
+  "context_of_record": "issued after the operator demanded first-hand proof ('You tell me yourself. https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/past-papers/view/2026-06/4CH1-1C?doc=qp — Is this fucking working like mathsgenie?', trace 1a1934e67be2d2a9) and the owning session ran a full live feature audit on PRODUCTION (headless Chromium, 2026-11-01): viewer/toolbar/pen/erase/select+move/undo PASS; KaTeX mtext render + run-003 re-edit PASS when opened; IndexedDB reload persistence PASS (docs store, 4 shapes rehydrate: 2 strokes + 1 tombstone + 1 mtext). Two P1 defects PROVEN first-hand: (A) text/math draft editors flash-close within the opening gesture (MutationObserver caught 'New text annotation' mount then vanish; final textarea count 0 after every trusted click; synthetic dispatchEvent pointerdown — which skips the compat-mousedown focus transfer — opens the editor fine, isolating the root cause to the press-focus race, not the React path); (B) one zoom permanently unmounts the first pages' ink canvases (stable across minutes and scroll; scroll does not revive; reload restores; data intact in IndexedDB). The operator's ruling cards defect A with the pointerdown law; defect B is split out as a named next-card candidate (T-MG-INK-7)",
+  "class": "additive docs + .syllabai bookkeeping ONLY — zero code bytes, zero schema, zero contracts, zero api, zero db, zero hub; the implementation is run-002 on a separate operator word",
+  "what_lands": {
+    "task_card": ".syllabai/tasks/T-MG-INK-6.yaml — the spec of record: the pointerdown law (e.preventDefault() in the mode==='text' and mode==='math' branches of the canvas onPointerDown, after the right-button guard, before any setDraft/setMathDraft — canceling pointerdown suppresses the compat mousedown per the Pointer Events spec, so the autoFocus'd draft textarea is never blurred by the browser's press-focus transfer), one law covering BOTH the create path and the run-003 re-edit path; commit semantics (Enter/Escape/blur, empty-cancels, same-id in-place edit) untouched; the regression seam pinned at the InkCanvas handler (preventDefault exactly once in text/math, absent in pen/line/erase/select, editor mounts prefilled on re-edit, Enter commits / Escape discards); id_note records that numeral 5 was never carded (the named candidates discharged as T-MG-INK-4 run-003)",
+    "plan_card": "docs/MG-MARK-PARITY-PLAN.md §3.9 — the post-closure follow-up #3 card, so the plan remains the single governing document",
+    "receipt": "this file"
+  },
+  "decisions_of_record": [
+    "the pointerdown law — NOT the pointerup-open alternative (operator's trailing word 'pointerdown' rules the approach), NOT a rAF/refocus timer hack: preventDefault on the opening press closes the ROOT cause (the compat-mousedown press-focus transfer) rather than papering over the symptom",
+    "scope = the two text/math branches ONLY: pen/erase/select/line/instrument branches verified working live today and gain nothing (no preventDefault — pinned negative so the working tools cannot regress); touch/pen pointerTypes get the same law uniformly (touchAction:none already set; no scroll/gesture side effects on a canvas)",
+    "commit semantics untouched by design: the fix eliminates ONLY the spurious opening-gesture blur; real outside blurs (another tool, another page) still commit/cancel exactly as shipped — the shipped Enter/Escape/blur law is test-pinned so the fix cannot regress it",
+    "defect B (zoom → first pages' ink canvases permanently unmounted; data intact) is a DIFFERENT subsystem (InkLayer holder rescan vs the pane's zoom refreeze virtualizer) and is EXPLICITLY a non-goal here — named next-card candidate T-MG-INK-7 on the operator's word, never silently bundled",
+    "posture invariants re-pinned verbatim: mock-mode exclusion, MS-pane exclusion, region-mark token+paperId gate (anonymous marking stays impossible), past-papers-QP-only, sync gate preserved, local-store zero-contact law untouched, no MathLive (MG-INK-SDK-GATE verdict stands), container syllabai-ink/1 verbatim, fences EXACT (routes/cla.ts a9fdabfd, services/cla/service.ts db4573c7)"
+  ],
+  "gates_this_run": {
+    "gate_a_carded_not_built": "PASS — zero implementation code; the spec is the deliverable",
+    "gate_b_zero_touch": "PASS — additive docs/.syllabai only; fences re-checked at the branch base 5e3d883e",
+    "gate_c_no_tbd": "PASS — every product decision decided in the card (the preventDefault law + exact placement, the right-button guard order, the uniform pointerType stance, the untouched commit semantics, the jsdom regression seam, the other-tools blast radius = none, the defect-B split, the id-5 skip note)"
+  },
+  "next_of": "run-002 (the implementation) awaits the operator's word; estimate one small run — InkLayer.tsx (+2 preventDefault calls + comments, ~+10) and the regression-seam tests (~+120); then T-MG-INK-7 (the zoom holder-window defect) on a separate operator word",
+  "lineage": {
+    "lane_closure": "T-MG-MARK-PARITY-1 closed 5-of-6 phases (receipt 0c02cd60); this is post-closure follow-up #3 on the operator-ruled ink line (T-MG-INK-3 → T-MG-INK-4 run-001/002/003 incl. PR #575 merge 2d727de4 → T-MG-INK-6), a NARROW extension, not a phase reopen",
+    "audit_of_record": "live production audit of the operator-cited 4CH1/1C QP URL, 2026-11-01, headless Chromium — per-feature results and the two P1 defect repros (MutationObserver mount-then-vanish; zoom canvas-window staleness) recorded in the session traces 1a1934e67be2d2a9→1a1935f72f2cba99",
+    "ink_laws_inherited": "PR #494 (surface) + #509 (instruments) + T-MG-INK-3 run-002 (local posture) + T-MG-INK-4 run-002 (mtext/tombstone/eraser/select) + run-003 (crop raster + re-edit) — the drawing stack, toolbar law, undo/redo 50-step law, honest-parse law, honest-pill law, debounce law, flush-before-dispose law, zero-contact law"
+  }
+}
