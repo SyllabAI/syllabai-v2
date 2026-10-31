@@ -1,0 +1,65 @@
+version: 1
+task:
+  id: T-MG-INK-6
+  title: "MG parity follow-up #3 — the text/math draft editors must survive real pointer input (the pointerdown law; editors currently flash-close within the opening gesture, so text/math annotation is UNUSABLE with a mouse)"
+  owner: "main agent (Z.ai, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)"
+  status: OPEN
+  priority: P1
+  band: T-MG-MARK-PARITY (interactive paper marking) — post-closure follow-up card #3, operator-ruled after the owning session's live defect audit of the shipped T-MG-INK-4 surface
+  wave: mg-parity-phase3-ink
+  deps: [T-MG-INK-1, T-MG-INK-2, T-MG-INK-3, T-MG-INK-4]
+  plan_of_record: "docs/MG-MARK-PARITY-PLAN.md §3.9 (added this run); inherits the shipped ink laws of T-MG-INK-1/2/3/4"
+  parent: T-MG-MARK-PARITY-1
+  id_note: >
+    The numeral 5 was never carded — the two named candidates informally
+    discussed as "T-MG-INK-5" (mtext into crop rasterization; re-edit of
+    existing text/mtext) were discharged as T-MG-INK-4 run-003 (PR #575,
+    merge 2d727de4) under the INK-4 card. This card continues the lane at 6.
+  acceptance_pins:
+    # ── run-001 (THIS run): the spec, carded not built ──
+    - "(gate-a) carded-not-built pin — run-001 lands the SPEC ONLY (T-card + plan §3.9 card + receipt); zero implementation code; implementation is a separate operator dispatch (run-002)"
+    - "(gate-b) zero-touch pin — Gate 1 + fence census clean; additive docs/.syllabai bytes only; no schema, no API, no hub code, no contracts, no db"
+    - "(gate-c) no-TBD pin — every open product decision is DECIDED in this card (the preventDefault law and its exact placement, the untouched commit semantics, the test seam, the other-tools blast radius = none, the defect-B split); no placeholders"
+    # ── run-002 (the implementation, on the operator's word) ──
+    - "(run-002) pointerdown law — in the canvas onPointerDown, the mode==='text' and mode==='math' branches call e.preventDefault() for the opening press (after the mouse right-button guard so context menus survive), BEFORE any setDraft/setMathDraft; per the Pointer Events spec, canceling pointerdown suppresses the compat mousedown, so the browser's press-focus transfer never fires and the autoFocus'd draft textarea KEEPS focus — the spurious onBlur→commit-with-empty-value→unmount race inside the opening gesture is closed at the root; ONE law covers BOTH the create path (empty-canvas tap) and the run-003 re-edit path (tap on an existing text/mtext — same branches, same race); pen/erase/select/line/instrument branches gain NOTHING (verified: they work today and must stay byte-identical in behaviour)"
+    - "(run-002) survival pin — with a TRUSTED pointer sequence (pointerdown → native mousedown → pointerup → click, i.e. what a real mouse/touch/pen produces), the draft editor REMAINS mounted and focused after the gesture settles: T-tool tap → textarea[aria-label='New text annotation'] stays open for typing; Σ-tool tap → textarea[aria-label='New math annotation'] stays open for typing; tap on an existing text/mtext with its own tool → the prefilled 'Edit … annotation' editor stays open; the flash-close observable of record (editor mounts then is gone within the same gesture — proven live via MutationObserver on production, 2026-11-01) is gone"
+    - "(run-002) commit-semantics pin — the fix changes NOTHING about commit law: Enter (no shift) commits, Escape cancels, blur commits (blur from a REAL outside interaction — another tool click, another page tap that opens a different editor — still commits/cancels exactly as shipped); empty create-commit still cancels; empty edit-commit still cancels (the shape unchanged); editTextShape/editMathShape same-id in-place replacement untouched; undo/redo untouched"
+    - "(run-002) regression-seam pin — the law is test-pinned at the InkCanvas handler seam in jsdom (ResizeObserver stubbed where the test mounts it): (a) mode='text' and mode='math' pointerdown calls preventDefault exactly once; (b) mode='pen'/'line'/'erase'/'select' pointerdown does NOT call preventDefault (no behaviour change for the working tools); (c) text/math pointerdown mounts the draft textarea with the correct aria-label, and the re-edit tap mounts it PREFILLED with the target's text/tex; (d) Enter on a filled draft commits the shape, Escape discards — the shipped semantics, pinned so the fix cannot regress them"
+    - "(run-002) zero-touch pin — zero migrations (packages/db untouched), fences EXACT (routes/cla.ts a9fdabfd, services/cla/service.ts db4573c7), pdf-pane.tsx untouched, packages/contracts/** byte-absent, zero api/db bytes, no learnerId anywhere; the only hub code that may change is apps/hub/src/components/pastpapers/ink/InkLayer.tsx (+ its test file); container syllabai-ink/1 VERBATIM; honest-parse, tombstone, mtext, re-edit, painter and crop-raster laws of T-MG-INK-4 untouched"
+    - "(run-002) posture pin — the T-MG-INK-3/4 invariants hold verbatim: mock-mode exclusion, MS-pane exclusion (QP pane only), region-mark token+paperId gate (anonymous marking stays IMPOSSIBLE), past-papers-QP-only, sync gate preserved, local store zero-contact law untouched; no MathLive (the MG-INK-SDK-GATE verdict stands); katex unchanged"
+  non_goals:
+    - "DEFECT B IS NOT THIS CARD: the zoom/holder-window staleness (after one zoom the first pages' ink canvases unmount and never re-mount until reload — data intact, view lost; proven live 2026-11-01) is a DIFFERENT subsystem (InkLayer holder rescan vs the pane's refreeze virtualizer) and is a NAMED next-card candidate (T-MG-INK-7) on the operator's word — never silently bundled"
+    - "no change to any commit/rebase/undo semantics, no change to the eraser/select/move gestures, no change to the instrument guides"
+    - "no pointerup-open alternative (the operator ruled the pointerdown law — trace 1a19369b42448829); no focus-timer/rAF refocus hack (the preventDefault law closes the root cause)"
+    - "no MathLive / virtual math keyboard / symbol palette; no new tools; no schema or contract change of any kind"
+    - "no anonymous marking — the ledger, feedback panel, highlights, rollups stay learner-scoped verbatim"
+  execution_record: >
+    run-001 (2026-11-01). Operator dispatch "draft the card and start the spec
+    run. pointerdown" (trace 1a19369b42448829), ruled after the operator
+    demanded first-hand proof ("You tell me yourself. <the 4CH1-1C qp URL>.
+    Is this fucking working like mathsgenie?", trace 1a1934e67be2d2a9) and the
+    owning session ran a full live feature audit on production (headless
+    Chromium, 2026-11-01, traces 1a1934e67be2d2a9→1a1935f72f2cba99). Audit of
+    record: viewer/toolbar/pen/erase/select+move/undo all PASS; KaTeX mtext
+    render + run-003 re-edit law PASS (when opened); IndexedDB persistence
+    across reload PASS (docs store, 4 shapes rehydrate). Two P1 defects
+    PROVEN: (A) text/math draft editors cannot be opened by a real pointer —
+    the editor textarea mounts and unmounts within the opening gesture
+    (MutationObserver caught 'New text annotation' mount then vanish; final
+    textarea count 0 after every trusted click; synthetic
+    dispatchEvent pointerdown — which skips the compat-mousedown focus
+    transfer — opens the editor fine, isolating the root cause to the
+    press-focus race, not the React path); (B) one zoom permanently unmounts
+    the ink canvases of the first pages (stable across minutes and scroll;
+    scroll does not revive; reload restores). The operator's ruling cards
+    defect A with the pointerdown law (the pin wording fixes the exact
+    mechanism: preventDefault on the opening press suppresses the compat
+    mousedown per the Pointer Events spec, so the autoFocus'd textarea is
+    never blurred by the browser's press-focus); defect B is explicitly
+    split out as the named next-card candidate. The fix surface is two
+    branches of one handler in InkLayer.tsx; the shipped commit semantics
+    (Enter/Escape/blur), the re-edit law, and every other tool's behaviour
+    are untouched. Estimate: one small run — InkLayer.tsx (+2
+    preventDefault calls + the survival-relevant comments, ~+10) and the
+    regression-seam tests (~+120). The lane remains a post-closure
+    follow-up line (T-MG-INK-3 → 4 → 6); no phase card reopens.
