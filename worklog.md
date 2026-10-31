@@ -621,3 +621,20 @@ Work Log:
 Stage Summary:
 - Branches of record: resources t-gradeb-1/pipeline @ 72ca0cb; hub t-gradeb-1/hub-grade-boundaries (this commit). PRs cross-referenced; merge order resources→hub (import receipt pins the resources merge sha at merge time).
 - Open queue: CIE_IDS extension (56 roadmap courses); IAL/modular aggregation calculator wave; Jan 2023 + Nov 2021 Pearson docs (no slug found — recorded in fetch-missing.json, never invented); local bun typecheck+test counters live in the receipt.
+
+## T-GRADE-002 run-001 — grade boundaries wave 2 (CIE unlock + aggregation calculator)
+
+Agent: r-main (Z.ai, session web-19f335c2, chat 14bc199d)
+Task: "extend CIE_IDS to unlock the 56 roadmap CIE courses, the IAL/modular aggregation calculator wave".
+
+Work Log:
+- Correction of record: CIE's per-session grade-threshold listing pages are server-rendered — run-001's "JS-rendered, not crawlable" conclusion only held for syllabus pages. fetch_cie.py is now a parallel session-listing crawler; 118 CIE docs fetched (June/November 2024-2026, 30/31 wanted syllabi) with sha256 MANIFEST provenance. Honest absences documented: 0264 (first assessment March 2027 — official CIE page), 0490 June series (not published; November served).
+- Parsers: parse_cie.py v2 (award-section tagging linear/staged/AS, A*-inference for pre-2026 docs, data-row-vs-ladder guard, Double Award 9-9…1-1 ladders; 259 wave-1 route rows byte-identical); parse_pearson.py gains the 4XSD1 split-ladder stitch (two-segment 17-grade pair ladder; June 2025's labels missing from the text layer — in-order pairing verified against June 2026's positional result; 653 wave-1 rows re-verified).
+- Aggregation structure curated with citations (Information Manual 2025/26 compositions incl. the five official YMA01 applied pairs; "IAL results explained" A* rules; 2024 modular specs) — structure metadata only, boundary values stay document-sourced. Course-map overrides for the 10 modular unit slugs; builder v2 emits aggregate-ums calculators + per-series calculatorUnits (standard variants) + level-filtered CIE routes + per-cash-in ladders.
+- Gates GREEN: schema 0 errors (24 Pearson + 119 CIE docs), MathsGenie parity 6/6 EXACT, CIE coverage 30/31 (0264 documented-absent), 28 aggregate-ums courses structurally sound. Bundle: 105 served / 1 roadmap / 106 (was 50/56; remaining roadmap = 0264 by fact).
+- Hub: bundle re-imported; zod schema extended additively; rawToUms (piecewise-linear through each unit's own published raw+UMS boundary pairs) + aggregateUms + gradeFromAggregation (board A* rule) + usableOptionalPairs; 18/18 bun tests on real corpus fixtures; workspace rebuilt (aggregate panel with per-unit inputs → UMS chips → total → grade, official-pair selector, A2-shortfall text, Average modal mode, honest per-session ineligible notes, cash-in/components/route-award tables, cash-in-UMS + modal-route trend graphs). tsc 0, eslint 0, full hub build GREEN.
+- Ceremony: .syllabai/tasks/T-GRADE-002-aggregation-cie-unlock.yaml, .syllabai/worklog.md + this worklog appended, receipt .syllabai/receipts/T-GRADE/T-GRADE-002-AGGREGATION.json.
+
+Stage Summary:
+- Branches of record: resources t-gradeb-1/pipeline (wave-2 commit 009e8bf4 advanced onto the OPEN PR #257 branch), hub t-gradeb-2/hub-aggregation (this commit — NEW branch cut from moved main because PR #552 (T-GRADE-001) had already merged as 24c9fd35; .syllabai/worklog.md zero-loss union over the R0-AUTO-98 entry). Push via the Git Data API (6.3GB resources clone makes git push infeasible here); merge order resources→hub unchanged.
+- Open queue: YFM01 Further Maths aggregation (multi-route cash-in + unit locking — needs a verified official worked example); Jan 2023 + Nov 2021 Pearson golden sessions (recorded absent, never invented); best-combination cash-in search (Pearson awards the best valid combination; this wave grades the entered marks).

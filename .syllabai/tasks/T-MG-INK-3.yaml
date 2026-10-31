@@ -1,0 +1,45 @@
+version: 1
+task:
+  id: T-MG-INK-3
+  title: "MG parity follow-up — the anonymous local-only ink posture (logged-out drawing with browser-local persistence; marking/ledger planes untouched)"
+  owner: "main agent (Z.ai, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)"
+  status: OPEN
+  priority: P3
+  band: T-MG-MARK-PARITY (interactive paper marking) — post-closure follow-up card, operator-ruled after the lane closure
+  wave: mg-parity-phase3-ink
+  deps: [T-MG-INK-1, T-MG-INK-2]
+  plan_of_record: "docs/MG-MARK-PARITY-PLAN.md §3.7 (added this run); inherits the shipped ink laws of T-MG-INK-1/2"
+  parent: T-MG-MARK-PARITY-1
+  acceptance_pins:
+    # ── run-001 (THIS run): the spec, carded not built ──
+    - "(gate-a) carded-not-built pin — run-001 lands the SPEC ONLY (T-card + plan §3.7 card + receipt); zero implementation code; implementation is a separate operator dispatch (run-002)"
+    - "(gate-b) zero-touch pin — Gate 1 + fence census clean; additive docs/.syllabai bytes only; no schema, no API, no hub code, no contracts"
+    - "(gate-c) no-TBD pin — every open product decision is DECIDED in this card (storage engine, key law, migration consent, pill copy, scope invariants); no placeholders"
+    # ── run-002 (the implementation, on the operator's word) ──
+    - "(run-002) zero-contact pin — anonymous view-mode QP renders the SAME ink toolbar/canvas in LOCAL mode with ZERO network calls (fetch-spy pinned: no GET, no PUT, no Bearer, no telemetry); the sync module is never constructed without a token (current gate preserved)"
+    - "(run-002) storage pin — persistence is browser IndexedDB, one store, key = sourceUrl (the EXISTING doc-identity law — the same key the server doc uses); doc schema byte-unchanged (syllabai-ink/1); draw/reload survives across tab close; ONE store, no localStorage fallback (disclosed non-goal)"
+    - "(run-002) honesty pin — local mode's pill shows exactly ONE state: 'Local only — saved on this device. Log in to sync.' (role=status); a quota/write failure renders an honest error (role=alert), never a fabricated saving/synced/conflict state; the sync-pill states of record (Saving…/Saved/Edited elsewhere/error) are SYNC-mode-only"
+    - "(run-002) migration pin — login NEVER auto-migrates local ink; when a local doc exists and a token appears, an inline notice offers exactly: 'Upload to account' (union-by-id merge via the EXISTING rebaseShapes law into the fetched server doc, one debounced PUT on the normal sync path) | 'Discard local' (deletes the local key) | dismiss (keeps local, re-arms next visit); the local doc clears ONLY after the server PUT confirms — a failed upload keeps local ink and says so"
+    - "(run-002) sync-mode pin — logged-in UX byte-identical to the shipped layer; sync mode NEVER consults the local store (the server doc is the single truth there)"
+    - "(run-002) scope pin — the four invariants hold verbatim and stay test-pinned: mock-mode exclusion (anonymous mock = exam conditions, zero chrome), MS-pane exclusion (QP pane only), region-mark token+paperId gate (anonymous marking stays IMPOSSIBLE — local ink NEVER feeds the ledger), past-papers-QP-only scope (books/citations excluded)"
+    - "(run-002) zero-touch pin — zero migrations (packages/db untouched), fences EXACT (routes/cla.ts a9fdabfd, services/cla/service.ts db4573c7), pdf-pane.tsx untouched, no new identity plane, no learnerId on any local shape (none exists — nothing leaves the device)"
+  non_goals:
+    - "no anonymous sync / cross-device (the whole posture is local-only)"
+    - "no anonymous marking — the ledger, feedback panel, highlights, rollups stay learner-scoped verbatim"
+    - "no localStorage fallback, no storage-settings UI, no multi-document manager"
+    - "no schema or contract change of any kind (syllabai-ink/1 verbatim)"
+  execution_record: >
+    run-001 (2026-10-31). Operator dispatch "spec the anonymous local-only ink posture
+    as a small follow-up run" (trace 1a1927e1e0a7079d), ruled immediately after the
+    LANE CLOSURE receipt (0c02cd60) resolved Phase 5. The spec decides, per the
+    operator's design law "marking = login; drawing = open": LOCAL mode is the
+    no-token branch of the SAME ink surface (gate branch at InkLayer's
+    `if (!token || !sourceUrl || !sync) return null` becomes render-local instead of
+    render-nothing), reusing the entire drawing stack (paint.ts dpr-cap-2 renderer,
+    toolbar, undo/redo 50-step law, structure-only observer) with a browser-local
+    store replacing the learner-keyed sync. Zero schema/contract/API bytes; the
+    ledger planes are fenced out by the scope pin. Estimate: one small run —
+    InkLayer gate branch + pill variants + migration notice (~60-90 lines),
+    apps/hub/src/lib/ink-local-store.ts (~80-100 lines), tests (~100-150 lines).
+    The lane was CLOSED at 5-of-6 phases; this card re-opens a NARROW follow-up by
+    explicit operator word and does not reopen any Phase card.

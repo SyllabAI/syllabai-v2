@@ -40,7 +40,21 @@ export const GradeBoundariesSchema = z.object({
       calculator: z
         .object({
           mode: z.string(),
-          maxMark: z.number().nullable(),
+          maxMark: z.number().nullable().optional(),
+          // aggregate-ums mode (T-GRADE-2): the cash-in composition is
+          // official Pearson structure metadata from the resources lane
+          cashIn: z.string().optional(),
+          required: z.array(z.string()).optional(),
+          optionalPairs: z
+            .array(z.tuple([z.string(), z.string()]))
+            .optional(),
+          aStar: z
+            .object({
+              overallMin: z.number(),
+              a2Min: z.number(),
+              a2Units: z.array(z.string()),
+            })
+            .optional(),
         })
         .nullable(),
       reviewRequired: z.boolean(),
@@ -71,6 +85,26 @@ export const GradeBoundariesSchema = z.object({
               }),
             )
             .optional(),
+          // the full cash-in composition (standard variants, composition
+          // order) — every unit the aggregate calculator converts, even on
+          // "-unit-N" pages whose tables only list their own unit
+          calculatorUnits: z
+            .array(
+              z.object({
+                code: z.string(),
+                title: z.string(),
+                maxMark: z.number(),
+                boundaries: z.record(z.string(), z.number().nullable()),
+                ums: z
+                  .object({
+                    maxMark: z.number(),
+                    boundaries: z.record(z.string(), z.number().nullable()),
+                  })
+                  .nullable()
+                  .optional(),
+              }),
+            )
+            .optional(),
           cashIns: z
             .array(
               z.object({
@@ -78,6 +112,7 @@ export const GradeBoundariesSchema = z.object({
                 title: z.string(),
                 maxMark: z.number(),
                 boundaries: z.record(z.string(), z.number().nullable()),
+                gradeLadder: z.array(z.string()).optional(),
               }),
             )
             .optional(),
@@ -95,6 +130,7 @@ export const GradeBoundariesSchema = z.object({
               z.object({
                 combination: z.string(),
                 option: z.string().nullable().optional(),
+                award: z.string().nullable().optional(),
                 maxWeightedMark: z.number(),
                 boundaries: z.record(z.string(), z.number().nullable()),
               }),
