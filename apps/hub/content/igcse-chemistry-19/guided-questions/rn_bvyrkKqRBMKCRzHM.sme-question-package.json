@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_bvyrkKqRBMKCRzHM",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "378d52f1b8f26f650492084b2c1c876a7b17384d962f0ca541d1457fe1d739a3",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "a482c43be0cfa7b8cce35c9d03400ae5e8830a9aad89ac80c84a710683893575",
+    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
   },
   "packageId": "igcse-chemistry::rn_bvyrkKqRBMKCRzHM",
   "subject": "igcse-chemistry",
@@ -192,6 +192,54 @@
       ]
     },
     {
+      "id": "rn_bvyrkKqRBMKCRzHM::L1::Q6",
+      "moduleId": "rn_bvyrkKqRBMKCRzHM::L1",
+      "stem": "State the word that describes an addition polymer's chemical unreactiveness.",
+      "misconceptionClass": "inert label recall",
+      "kind": "recall",
+      "modelAnswer": "The polymer is described as inert.",
+      "keywords": [
+        "inert"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bvyrkKqRBMKCRzHM::L1::Q7",
+      "moduleId": "rn_bvyrkKqRBMKCRzHM::L1",
+      "stem": "Name the elements joined by the strong bonds that run along an addition polymer's backbone.",
+      "misconceptionClass": "carbon-carbon backbone recall",
+      "kind": "recall",
+      "modelAnswer": "The backbone bonds join carbon atoms to carbon atoms — strong carbon-carbon bonds.",
+      "keywords": [
+        "carbon"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bvyrkKqRBMKCRzHM::L1::Q8",
+      "moduleId": "rn_bvyrkKqRBMKCRzHM::L1",
+      "stem": "Explain why a plastic bottle made of an addition polymer can persist in soil for decades.",
+      "misconceptionClass": "inertness blocks biodegradation",
+      "kind": "explain-why",
+      "modelAnswer": "Decomposers cannot break the polymer down because its strong carbon-carbon bonds make it inert, so it cannot biodegrade.",
+      "keywords": [
+        "decomposers"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bvyrkKqRBMKCRzHM::L1::Q9",
+      "moduleId": "rn_bvyrkKqRBMKCRzHM::L1",
+      "stem": "A council considers shipping its plastic waste to a bigger landfill. State the long-term land consequence that makes this a temporary fix only.",
+      "misconceptionClass": "landfill land pressure",
+      "kind": "application",
+      "modelAnswer": "Landfill disposal takes up valuable land and the sites fill up quickly, so a bigger site only delays the same problem.",
+      "keywords": [
+        "valuable"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_bvyrkKqRBMKCRzHM::L2::Q1",
       "moduleId": "rn_bvyrkKqRBMKCRzHM::L2",
       "stem": "Which greenhouse gas does burning polymers release?",
@@ -370,6 +418,54 @@
           "misconception": "logic muddled"
         }
       ]
+    },
+    {
+      "id": "rn_bvyrkKqRBMKCRzHM::L2::Q6",
+      "moduleId": "rn_bvyrkKqRBMKCRzHM::L2",
+      "stem": "State the greenhouse gas released when polymers are burned.",
+      "misconceptionClass": "carbon dioxide from burning recall",
+      "kind": "recall",
+      "modelAnswer": "Burning polymers releases carbon dioxide, a greenhouse gas.",
+      "keywords": [
+        "dioxide"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bvyrkKqRBMKCRzHM::L2::Q7",
+      "moduleId": "rn_bvyrkKqRBMKCRzHM::L2",
+      "stem": "Name the toxic gas released when PVC is incinerated.",
+      "misconceptionClass": "hydrogen chloride from PVC recall",
+      "kind": "recall",
+      "modelAnswer": "Hydrogen chloride is released when polymers containing chlorine, such as PVC, are burned.",
+      "keywords": [
+        "chloride"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bvyrkKqRBMKCRzHM::L2::Q8",
+      "moduleId": "rn_bvyrkKqRBMKCRzHM::L2",
+      "stem": "Explain why a build-up of carbon monoxide from an incinerator is dangerous to people nearby.",
+      "misconceptionClass": "carbon monoxide toxicity law",
+      "kind": "explain-why",
+      "modelAnswer": "Carbon monoxide is toxic because it reduces the blood's capacity to carry oxygen around the body.",
+      "keywords": [
+        "oxygen"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bvyrkKqRBMKCRzHM::L2::Q9",
+      "moduleId": "rn_bvyrkKqRBMKCRzHM::L2",
+      "stem": "A waste plant burns mixed polymer waste and uses the heat to warm nearby greenhouses. State the energy benefit being exploited and one toxic product that incomplete burning adds to the emissions.",
+      "misconceptionClass": "heat benefit against incomplete products",
+      "kind": "application",
+      "modelAnswer": "Burning polymers releases a lot of heat energy, which warms the greenhouses; incomplete combustion also produces toxic carbon monoxide.",
+      "keywords": [
+        "monoxide"
+      ],
+      "options": []
     }
   ]
 }

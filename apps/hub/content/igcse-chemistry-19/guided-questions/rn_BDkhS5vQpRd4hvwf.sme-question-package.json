@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_BDkhS5vQpRd4hvwf",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "8c21764009d75988b6e76f51ee291ba6e1e5907e1a4145a5d0d7be8fdef4c4c6",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "49b73866ba12f7bb79543bfad1871d03e2543020ef3fbf3f319c0efb3719a045",
+    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
   },
   "packageId": "igcse-chemistry::rn_BDkhS5vQpRd4hvwf",
   "subject": "igcse-chemistry",
@@ -192,6 +192,54 @@
       ]
     },
     {
+      "id": "rn_BDkhS5vQpRd4hvwf::L1::Q6",
+      "moduleId": "rn_BDkhS5vQpRd4hvwf::L1",
+      "stem": "State the name given to the reaction between an alcohol and a carboxylic acid that makes an ester.",
+      "misconceptionClass": "esterification naming recall",
+      "kind": "recall",
+      "modelAnswer": "The reaction is called esterification.",
+      "keywords": [
+        "esterification"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BDkhS5vQpRd4hvwf::L1::Q7",
+      "moduleId": "rn_BDkhS5vQpRd4hvwf::L1",
+      "stem": "State the small molecule released when the alcohol and the acid join to make the ester.",
+      "misconceptionClass": "condensation water recall",
+      "kind": "recall",
+      "modelAnswer": "A molecule of water is released as the reactants join.",
+      "keywords": [
+        "water"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BDkhS5vQpRd4hvwf::L1::Q8",
+      "moduleId": "rn_BDkhS5vQpRd4hvwf::L1",
+      "stem": "An ester formula is written CH3COOC2H5. Explain what the two parts on either side of the COO group represent.",
+      "misconceptionClass": "two chains around the ester link",
+      "kind": "explain-why",
+      "modelAnswer": "The CH3CO part comes from the carboxylic acid chain and the C2H5 part comes from the alcohol chain, joined through the ester link.",
+      "keywords": [
+        "chain"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BDkhS5vQpRd4hvwf::L1::Q9",
+      "moduleId": "rn_BDkhS5vQpRd4hvwf::L1",
+      "stem": "Propanol is reacted with ethanoic acid in the presence of the usual catalyst. Name the ester produced.",
+      "misconceptionClass": "predicting the ester from reactants",
+      "kind": "application",
+      "modelAnswer": "The ester is propyl ethanoate.",
+      "keywords": [
+        "propyl"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_BDkhS5vQpRd4hvwf::L2::Q1",
       "moduleId": "rn_BDkhS5vQpRd4hvwf::L2",
       "stem": "Which ester forms from methanol and ethanoic acid?",
@@ -370,6 +418,54 @@
           "misconception": "phase overstated"
         }
       ]
+    },
+    {
+      "id": "rn_BDkhS5vQpRd4hvwf::L2::Q6",
+      "moduleId": "rn_BDkhS5vQpRd4hvwf::L2",
+      "stem": "Name the ester formed when pentanol reacts with butanoic acid.",
+      "misconceptionClass": "pentyl butanoate recall",
+      "kind": "recall",
+      "modelAnswer": "The ester is pentyl butanoate.",
+      "keywords": [
+        "pentyl"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BDkhS5vQpRd4hvwf::L2::Q7",
+      "moduleId": "rn_BDkhS5vQpRd4hvwf::L2",
+      "stem": "State the ending that the alcohol-derived part of an ester name always carries.",
+      "misconceptionClass": "yl ending recall",
+      "kind": "recall",
+      "modelAnswer": "The part from the alcohol always ends in yl.",
+      "keywords": [
+        "yl"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BDkhS5vQpRd4hvwf::L2::Q8",
+      "moduleId": "rn_BDkhS5vQpRd4hvwf::L2",
+      "stem": "Explain why ethyl ethanoate, rather than the reactants it was made from, is chosen to carry a fruity scent in a food flavouring.",
+      "misconceptionClass": "volatility carries the scent",
+      "kind": "explain-why",
+      "modelAnswer": "Esters are volatile liquids with distinctive sweet smells, so the ester itself carries the fruity aroma while the acid and alcohol do not.",
+      "keywords": [
+        "volatile"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BDkhS5vQpRd4hvwf::L2::Q9",
+      "moduleId": "rn_BDkhS5vQpRd4hvwf::L2",
+      "stem": "An ester is named methyl butanoate. State which acid family member contributed its chain to this ester.",
+      "misconceptionClass": "reading the acid from the oate part",
+      "kind": "application",
+      "modelAnswer": "The acid partner is butanoic acid — the butanoate part of the name comes from the carboxylic acid.",
+      "keywords": [
+        "butanoic"
+      ],
+      "options": []
     }
   ]
 }

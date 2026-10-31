@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_bGgYrQXP2tqrYwdV",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "ca03118023476f31e847cae6985ac6cfc2ceaa62390f46105eb103de89f3e786",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "69bb04f19453441fb7999928a615c65daf1ae181afdfd125f5db4e0bb449459e",
+    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
   },
   "packageId": "igcse-chemistry::rn_bGgYrQXP2tqrYwdV",
   "subject": "igcse-chemistry",
@@ -192,6 +192,54 @@
       ]
     },
     {
+      "id": "rn_bGgYrQXP2tqrYwdV::L1::Q6",
+      "moduleId": "rn_bGgYrQXP2tqrYwdV::L1",
+      "stem": "In most condensation polymerisations, what is the formula of the small molecule that is released?",
+      "misconceptionClass": "water as the released molecule",
+      "kind": "recall",
+      "modelAnswer": "The small molecule is H2O — water.",
+      "keywords": [
+        "h2o"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bGgYrQXP2tqrYwdV::L1::Q7",
+      "moduleId": "rn_bGgYrQXP2tqrYwdV::L1",
+      "stem": "State the difference between the product lists of addition and condensation polymerisation.",
+      "misconceptionClass": "polymer only versus polymer plus small molecule",
+      "kind": "recall",
+      "modelAnswer": "Addition polymerisation forms the polymer molecule only, while condensation also releases a small molecule such as water.",
+      "keywords": [
+        "only"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bGgYrQXP2tqrYwdV::L1::Q8",
+      "moduleId": "rn_bGgYrQXP2tqrYwdV::L1",
+      "stem": "Explain why each condensation monomer must carry a functional group at both ends of its molecule.",
+      "misconceptionClass": "two-ended monomers grow chains",
+      "kind": "explain-why",
+      "modelAnswer": "A group at each end lets one monomer link to the next monomer on either side, so the chain can keep growing in both directions.",
+      "keywords": [
+        "chain"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bGgYrQXP2tqrYwdV::L1::Q9",
+      "moduleId": "rn_bGgYrQXP2tqrYwdV::L1",
+      "stem": "State how many water molecules form for each ester linkage made, and hence how many were released for a chain with 150 ester linkages.",
+      "misconceptionClass": "one water per ester link",
+      "kind": "application",
+      "modelAnswer": "One water molecule forms for every ester linkage made, so 150 ester linkages release 150 water molecules.",
+      "keywords": [
+        "one"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_bGgYrQXP2tqrYwdV::L2::Q1",
       "moduleId": "rn_bGgYrQXP2tqrYwdV::L2",
       "stem": "What is terylene?",
@@ -372,6 +420,54 @@
       ]
     },
     {
+      "id": "rn_bGgYrQXP2tqrYwdV::L2::Q6",
+      "moduleId": "rn_bGgYrQXP2tqrYwdV::L2",
+      "stem": "State the functional group carried at both ends of a dicarboxylic acid monomer.",
+      "misconceptionClass": "dicarboxylic acid ends recall",
+      "kind": "recall",
+      "modelAnswer": "A dicarboxylic acid carries a COOH group at either end.",
+      "keywords": [
+        "cooh"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bGgYrQXP2tqrYwdV::L2::Q7",
+      "moduleId": "rn_bGgYrQXP2tqrYwdV::L2",
+      "stem": "What name is given to a monomer that carries an OH group at both of its ends?",
+      "misconceptionClass": "diol naming recall",
+      "kind": "recall",
+      "modelAnswer": "Such a monomer is a diol.",
+      "keywords": [
+        "diol"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bGgYrQXP2tqrYwdV::L2::Q8",
+      "moduleId": "rn_bGgYrQXP2tqrYwdV::L2",
+      "stem": "Explain why making a polyester from a dicarboxylic acid and a diol releases exactly one water molecule per ester link formed.",
+      "misconceptionClass": "one COOH plus one OH per link",
+      "kind": "explain-why",
+      "modelAnswer": "Each COOH group reacts with one OH group, and that single pairing releases one water as the ester link closes.",
+      "keywords": [
+        "pairing"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bGgYrQXP2tqrYwdV::L2::Q9",
+      "moduleId": "rn_bGgYrQXP2tqrYwdV::L2",
+      "stem": "A polyester is boiled with water and breaks back into its two monomers. State the name of this reverse process and the small molecule it consumes.",
+      "misconceptionClass": "hydrolysis as the reverse route",
+      "kind": "application",
+      "modelAnswer": "The process is hydrolysis — water is added back to break the ester links into the monomers.",
+      "keywords": [
+        "hydrolysis"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_bGgYrQXP2tqrYwdV::L3::Q1",
       "moduleId": "rn_bGgYrQXP2tqrYwdV::L3",
       "stem": "Which raw materials are biopolyesters synthesised from?",
@@ -550,6 +646,54 @@
           "misconception": "family crossed"
         }
       ]
+    },
+    {
+      "id": "rn_bGgYrQXP2tqrYwdV::L3::Q6",
+      "moduleId": "rn_bGgYrQXP2tqrYwdV::L3",
+      "stem": "Name the two feedstocks from which micro-organisms build biopolyesters.",
+      "misconceptionClass": "biopolyester feedstocks recall",
+      "kind": "recall",
+      "modelAnswer": "Biopolyesters are synthesised from sugars and plant oils.",
+      "keywords": [
+        "sugars"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bGgYrQXP2tqrYwdV::L3::Q7",
+      "moduleId": "rn_bGgYrQXP2tqrYwdV::L3",
+      "stem": "List the three functional group types found along a biopolyester chain.",
+      "misconceptionClass": "ester amide ether groups recall",
+      "kind": "recall",
+      "modelAnswer": "The chains contain ester, amide and ether functional groups.",
+      "keywords": [
+        "amide"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bGgYrQXP2tqrYwdV::L3::Q8",
+      "moduleId": "rn_bGgYrQXP2tqrYwdV::L3",
+      "stem": "Explain why a biopolyester breaks down in the environment while an ordinary addition polymer does not.",
+      "misconceptionClass": "linker groups enable biodegradation",
+      "kind": "explain-why",
+      "modelAnswer": "The ester, amide and ether groups along the biopolyester chain give it its biodegradable character, which addition polymers lack because their carbon-carbon backbone is inert.",
+      "keywords": [
+        "biodegradable"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bGgYrQXP2tqrYwdV::L3::Q9",
+      "moduleId": "rn_bGgYrQXP2tqrYwdV::L3",
+      "stem": "A supermarket wants packaging that composts after use. State which family of polymers meets this requirement and what happens to it in the ground.",
+      "misconceptionClass": "choosing the biodegradable family",
+      "kind": "application",
+      "modelAnswer": "Biopolyesters meet the requirement — they biodegrade naturally in the environment once their job is done.",
+      "keywords": [
+        "biopolyesters"
+      ],
+      "options": []
     }
   ]
 }
