@@ -72,6 +72,20 @@ type NavItem = {
  * --primary/--muted raws per the #500 alias contract, no hardcoded hex.
  * course-nav-item stays on the row as the documented theme hook
  * (globals.css); aria-current stays load-bearing for it and for a11y.
+ *
+ * run-005 tier-a (interactivity feel, capture-verbatim — see the
+ * interactivity analysis over the operator-supplied captures):
+ * (1) hover affordances ride [@media(hover:hover)] — BOTH references gate
+ *     every hover that way, so touch devices never sticky-hover a row;
+ * (2) icons brighten on row hover via the named group (group/navitem,
+ *     opacity-60 → group-hover:opacity-100). No transition class on the
+ *     icon — neither reference transitions it, they snap; (3) the keyboard
+ *     focus ring rides the accent pair token (ring-accent-primary-foreground/50),
+ *     the references' focus-visible recipe, replacing ring-ring/60;
+ * (4) the shell's content swaps fade in (animate-in fade-in, 200ms ease-out,
+ *     matching the aside's width ease) so the collapse/expand ease no longer
+ *     ends in a hard pop. Opacity-only, which the 2026-10-30 reduced-motion
+ *     audit keeps by design ("fewer and gentler, not zero").
  */
 function NavRow({
   item,
@@ -118,14 +132,25 @@ function NavRow({
       onClick={onNavigate}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "course-nav-item relative flex items-center gap-2.5 rounded-xl px-2 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-inset",
+        "course-nav-item group/navitem relative flex items-center gap-2.5 rounded-xl px-2 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-foreground/50 focus-visible:ring-inset",
         indent && "ml-7",
         active
           ? "bg-accent-primary text-accent-primary-foreground"
-          : "text-foreground/60 hover:bg-muted hover:text-foreground",
+          : "text-foreground/60 [@media(hover:hover)]:hover:bg-muted [@media(hover:hover)]:hover:text-foreground",
       )}
     >
-      <item.icon className="size-4 shrink-0" aria-hidden />
+      {/* run-005 tier-a: idle icons sit at 60% and brighten on ROW hover
+          (the references' exact recipe, touch-gated); the active pill's
+          icon stays at full ink like MG's active row. */}
+      <item.icon
+        aria-hidden
+        className={cn(
+          "size-4 shrink-0",
+          active
+            ? "opacity-100"
+            : "opacity-60 [@media(hover:hover)]:group-hover/navitem:opacity-100",
+        )}
+      />
       <span className="truncate">{item.label}</span>
       {badge}
     </Link>
@@ -383,11 +408,15 @@ export function CourseShell({
   // behind it — the old two-aside mount swap could not animate, and the
   // original w-0 collapse swallowed its own re-open button, which is why
   // the rail gets a full 44px, keeping "Show menu" reachable).
+  // run-005 tier-a: the swap-in content fades (animate-in fade-in, 200ms
+  // ease-out, the aside's own ease) so the width ease lands soft on BOTH
+  // directions instead of popping. Opacity-only — the shape the
+  // reduced-motion audit contract keeps.
   const railButton = (
     <Button
       variant="outline"
       size="icon"
-      className="size-9 shadow-xs"
+      className="size-9 animate-in fade-in duration-200 shadow-xs"
       onClick={() => setHidden(false)}
       aria-label="Show menu"
       title="Show menu"
@@ -397,7 +426,9 @@ export function CourseShell({
   );
 
   const sidebar = (
-    <div className="flex h-full flex-col">
+    // run-005 tier-a: mount fade pairs the content swap with the width
+    // ease (expand direction; the railButton carries the collapse side).
+    <div className="flex h-full flex-col animate-in fade-in duration-200 ease-out">
       <div className="flex items-center justify-between px-4 py-3">
         <span className="text-sm font-semibold tracking-tight">{data.course.label ?? data.course.subject}</span>
         <Button
