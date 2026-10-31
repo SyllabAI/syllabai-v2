@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_NdJGQM8BqHmTy7Vg",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "f0d92cd1c3760ac1ed3b34fa660927875a32ed69c10a763bf9d86bcf3306904d",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "b9ae24861c44e9534d696102a605b063198e41e2fe8799b7b8259556bc32966c",
+    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
   },
   "packageId": "igcse-chemistry::rn_NdJGQM8BqHmTy7Vg",
   "subject": "igcse-chemistry",
@@ -192,6 +192,56 @@
       ]
     },
     {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L1::Q6",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L1",
+      "stem": "Give the number of carbon atoms signalled by the stem hex.",
+      "misconceptionClass": "hex stem recall",
+      "kind": "recall",
+      "modelAnswer": "Hex counts six carbon atoms.",
+      "keywords": [
+        "six",
+        "6"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L1::Q7",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L1",
+      "stem": "Name the suffix that signals an O-H group on the chain.",
+      "misconceptionClass": "alcohol suffix recall",
+      "kind": "recall",
+      "modelAnswer": "The suffix -anol marks the alcohol family, as in methanol.",
+      "keywords": [
+        "anol"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L1::Q8",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L1",
+      "stem": "Explain how the name methanol tells you both the chain length and the family of the molecule.",
+      "misconceptionClass": "two-part name reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The stem meth counts one carbon atom and the suffix -anol shows the alcohol group, so the single name encodes both facts at once.",
+      "keywords": [
+        "meth",
+        "suffix"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L1::Q9",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L1",
+      "stem": "An unknown straight-chain molecule has six carbons and one C=C bond. Write its name.",
+      "misconceptionClass": "name-from-structure application",
+      "kind": "application",
+      "modelAnswer": "Hexene - hex for the six carbons, -ene for the double bond.",
+      "keywords": [
+        "hexene"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_NdJGQM8BqHmTy7Vg::L2::Q1",
       "moduleId": "rn_NdJGQM8BqHmTy7Vg::L2",
       "stem": "Why are the carbon atoms in a chain numbered when naming?",
@@ -370,6 +420,56 @@
           "misconception": "system swapped"
         }
       ]
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L2::Q6",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L2",
+      "stem": "State the prefix used when a molecule carries two of the same functional group.",
+      "misconceptionClass": "di- prefix recall",
+      "kind": "recall",
+      "modelAnswer": "The prefix di- is attached to the second part of the name for two identical groups.",
+      "keywords": [
+        "di"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L2::Q7",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L2",
+      "stem": "What job do the numbers in an organic name do?",
+      "misconceptionClass": "position-number purpose recall",
+      "kind": "recall",
+      "modelAnswer": "They give the position of the functional group or side chain along the carbon chain.",
+      "keywords": [
+        "position"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L2::Q8",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L2",
+      "stem": "Explain how the naming rules separate two isomers that share one molecular formula.",
+      "misconceptionClass": "isomer-naming reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The same rules are applied to each different structure in turn, so every isomer receives a name that reflects its own arrangement of atoms.",
+      "keywords": [
+        "structure",
+        "different"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L2::Q9",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L2",
+      "stem": "A name reads 2-chlorobutane. State how many carbons the chain has and what sits on carbon number 2.",
+      "misconceptionClass": "read-the-name application",
+      "kind": "application",
+      "modelAnswer": "But counts four carbons, and the 2 says a chlorine atom (the chloro group) sits on carbon number 2.",
+      "keywords": [
+        "four",
+        "chlorine"
+      ],
+      "options": []
     }
   ]
 }

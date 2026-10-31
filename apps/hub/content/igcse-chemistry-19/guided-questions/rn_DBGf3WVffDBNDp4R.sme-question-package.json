@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_DBGf3WVffDBNDp4R",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "122a3148f328fc3a02d2f87e5047352d9885d4cee5678997ada1aec06084e54d",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "d664187abc8bf3c2d2923a550f84b967986df53bb59ab534b3148ba2d669518f",
+    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
   },
   "packageId": "igcse-chemistry::rn_DBGf3WVffDBNDp4R",
   "subject": "igcse-chemistry",
@@ -192,6 +192,55 @@
       ]
     },
     {
+      "id": "rn_DBGf3WVffDBNDp4R::L1::Q6",
+      "moduleId": "rn_DBGf3WVffDBNDp4R::L1",
+      "stem": "Give the product of the reaction between ethene and bromine.",
+      "misconceptionClass": "dibromoethane product recall",
+      "kind": "recall",
+      "modelAnswer": "The double bond opens and bromine adds across it to give dibromoethane, with one bromine atom on each of the two carbons.",
+      "keywords": [
+        "dibromoethane"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DBGf3WVffDBNDp4R::L1::Q7",
+      "moduleId": "rn_DBGf3WVffDBNDp4R::L1",
+      "stem": "State the type of reaction by which alkenes take atoms onto their double bond.",
+      "misconceptionClass": "addition-type recall",
+      "kind": "recall",
+      "modelAnswer": "Alkenes undergo addition reactions, with atoms adding across the C=C double bond.",
+      "keywords": [
+        "addition"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DBGf3WVffDBNDp4R::L1::Q8",
+      "moduleId": "rn_DBGf3WVffDBNDp4R::L1",
+      "stem": "Explain why the addition of bromine to an alkene leaves exactly one organic product.",
+      "misconceptionClass": "single-product reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Both bromine atoms join the molecule, one bonding to each of the two carbons of the old double bond, so a single dibromoalkane molecule is the only product.",
+      "keywords": [
+        "carbons",
+        "both"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DBGf3WVffDBNDp4R::L1::Q9",
+      "moduleId": "rn_DBGf3WVffDBNDp4R::L1",
+      "stem": "Chlorine is bubbled into liquid propene instead of bromine. Name the organic product formed.",
+      "misconceptionClass": "any-halogen-any-alkene application",
+      "kind": "application",
+      "modelAnswer": "The halogen adds across the C=C in the same way, giving dichloropropane with one chlorine on each double-bond carbon.",
+      "keywords": [
+        "dichloropropane"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_DBGf3WVffDBNDp4R::L2::Q1",
       "moduleId": "rn_DBGf3WVffDBNDp4R::L2",
       "stem": "Why is bromine water used instead of pure bromine for the test?",
@@ -370,6 +419,55 @@
           "misconception": "mechanism invented"
         }
       ]
+    },
+    {
+      "id": "rn_DBGf3WVffDBNDp4R::L2::Q6",
+      "moduleId": "rn_DBGf3WVffDBNDp4R::L2",
+      "stem": "State the safety reason that makes bromine water the reagent of choice when testing for a C=C bond.",
+      "misconceptionClass": "bromine-water safety recall",
+      "kind": "recall",
+      "modelAnswer": "Bromine water is an orange solution that is safer to handle than bromine itself.",
+      "keywords": [
+        "safer"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DBGf3WVffDBNDp4R::L2::Q7",
+      "moduleId": "rn_DBGf3WVffDBNDp4R::L2",
+      "stem": "A few drops of bromine water are added to hexane and the tube is shaken. State the final colour of the mixture.",
+      "misconceptionClass": "alkane-test outcome recall",
+      "kind": "recall",
+      "modelAnswer": "It stays orange, because the alkane offers no C=C bond for the bromine to add across.",
+      "keywords": [
+        "orange"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DBGf3WVffDBNDp4R::L2::Q8",
+      "moduleId": "rn_DBGf3WVffDBNDp4R::L2",
+      "stem": "Explain, in terms of the bromine present, why the orange colour fades when an alkene is shaken with bromine water.",
+      "misconceptionClass": "decolourising mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The bromine atoms bond to the two carbons of the double bond, so no free bromine remains dissolved in the water and the orange colour disappears.",
+      "keywords": [
+        "free"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DBGf3WVffDBNDp4R::L2::Q9",
+      "moduleId": "rn_DBGf3WVffDBNDp4R::L2",
+      "stem": "Two unlabelled bottles hold hexane and hexene. Describe how one shake-test with bromine water tells them apart.",
+      "misconceptionClass": "two-bottle test application",
+      "kind": "application",
+      "modelAnswer": "Shake a little bromine water with each: the alkane leaves the mixture orange, while the alkene decolourises it as bromine adds across its C=C, so the tube that fades identifies hexene.",
+      "keywords": [
+        "fades",
+        "decolourises"
+      ],
+      "options": []
     }
   ]
 }

@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_DrqzYWZMScqGrbWT",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "32066412e889ad3e1359d52a2db5cbfafd2323aef7cd74f0f6d6f1e0286f5529",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "41a524d73d0d0986af7934fa9a751f444b29fb2fd9cd1df879d6496201242179",
+    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
   },
   "packageId": "igcse-chemistry::rn_DrqzYWZMScqGrbWT",
   "subject": "igcse-chemistry",
@@ -192,6 +192,58 @@
       ]
     },
     {
+      "id": "rn_DrqzYWZMScqGrbWT::L1::Q6",
+      "moduleId": "rn_DrqzYWZMScqGrbWT::L1",
+      "stem": "Name the two fraction feedstocks most often cracked in this process.",
+      "misconceptionClass": "cracking feedstock recall",
+      "kind": "recall",
+      "modelAnswer": "Kerosene and diesel oil are the usual feedstocks for cracking.",
+      "keywords": [
+        "kerosene",
+        "diesel"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DrqzYWZMScqGrbWT::L1::Q7",
+      "moduleId": "rn_DrqzYWZMScqGrbWT::L1",
+      "stem": "Give the approximate temperature, in degrees Celsius, to which hydrocarbons are heated for catalytic cracking.",
+      "misconceptionClass": "cracking temperature recall",
+      "kind": "recall",
+      "modelAnswer": "Around 600 to 700 degrees Celsius, hot enough to vaporise the hydrocarbons.",
+      "keywords": [
+        "600",
+        "700"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DrqzYWZMScqGrbWT::L1::Q8",
+      "moduleId": "rn_DrqzYWZMScqGrbWT::L1",
+      "stem": "Explain how the alumina or silica used in catalytic cracking helps long-chain molecules fall apart.",
+      "misconceptionClass": "catalyst-surface reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The vaporised hydrocarbons pass over the hot powdered alumina or silica, whose surface breaks the covalent bonds, so thermal decomposition follows and the chains split.",
+      "keywords": [
+        "breaks",
+        "bonds"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DrqzYWZMScqGrbWT::L1::Q9",
+      "moduleId": "rn_DrqzYWZMScqGrbWT::L1",
+      "stem": "Cracking a long alkane yields ethene among the products. Explain why the products always include members of two different hydrocarbon families.",
+      "misconceptionClass": "product-mixture reasoning",
+      "kind": "application",
+      "modelAnswer": "The random bond-breaking is a thermal decomposition that delivers a mixture of shorter alkanes and alkenes, so both families appear every time.",
+      "keywords": [
+        "alkanes",
+        "alkenes"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_DrqzYWZMScqGrbWT::L2::Q1",
       "moduleId": "rn_DrqzYWZMScqGrbWT::L2",
       "stem": "What does supply mean in the fraction balance?",
@@ -370,6 +422,58 @@
           "misconception": "nonsense criterion"
         }
       ]
+    },
+    {
+      "id": "rn_DrqzYWZMScqGrbWT::L2::Q6",
+      "moduleId": "rn_DrqzYWZMScqGrbWT::L2",
+      "stem": "State what the word supply means when balancing the fractions from crude oil.",
+      "misconceptionClass": "supply definition recall",
+      "kind": "recall",
+      "modelAnswer": "Supply is how much of a fraction refining the crude oil can produce.",
+      "keywords": [
+        "refining",
+        "produce"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DrqzYWZMScqGrbWT::L2::Q7",
+      "moduleId": "rn_DrqzYWZMScqGrbWT::L2",
+      "stem": "Name the two surplus fractions that are commonly cracked.",
+      "misconceptionClass": "surplus-fraction recall",
+      "kind": "recall",
+      "modelAnswer": "Fuel oil and bitumen sit in surplus, so they are the fractions cracked into the wanted shorter-chain products.",
+      "keywords": [
+        "fuel",
+        "oil",
+        "bitumen"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DrqzYWZMScqGrbWT::L2::Q8",
+      "moduleId": "rn_DrqzYWZMScqGrbWT::L2",
+      "stem": "Explain why an oil refinery cannot simply sell its fractions in the proportions the column delivers.",
+      "misconceptionClass": "supply-demand mismatch reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because what refining supplies does not match what customers demand: long-chain fractions pile up in surplus while short-chain fuels such as petrol, kerosene and diesel are wanted in larger amounts, so cracking must convert the excess.",
+      "keywords": [
+        "demand",
+        "supplies"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DrqzYWZMScqGrbWT::L2::Q9",
+      "moduleId": "rn_DrqzYWZMScqGrbWT::L2",
+      "stem": "A refinery finds its fuel-oil tank overflowing while petrol orders go unmet. State the process the refinery should run and the products it should expect.",
+      "misconceptionClass": "refinery-decision application",
+      "kind": "application",
+      "modelAnswer": "Crack the surplus fuel oil: heating the vapours to 600-700 degrees Celsius over the hot catalyst gives shorter alkanes and alkenes, easing the petrol shortfall.",
+      "keywords": [
+        "crack"
+      ],
+      "options": []
     }
   ]
 }

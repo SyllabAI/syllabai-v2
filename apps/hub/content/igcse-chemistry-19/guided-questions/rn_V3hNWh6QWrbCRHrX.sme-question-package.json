@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_V3hNWh6QWrbCRHrX",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "f3a99affe9a616a939f76eef17443357dd3cd341b79a84e133304575013c0937",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "107deef1eb0125ca76ed2421dd85b40ce1f1ef7326d906274e29219904a010dd",
+    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
   },
   "packageId": "igcse-chemistry::rn_V3hNWh6QWrbCRHrX",
   "subject": "igcse-chemistry",
@@ -192,6 +192,58 @@
       ]
     },
     {
+      "id": "rn_V3hNWh6QWrbCRHrX::L1::Q6",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L1",
+      "stem": "Define the word fuel.",
+      "misconceptionClass": "fuel definition recall",
+      "kind": "recall",
+      "modelAnswer": "A fuel is a substance that releases heat energy when it burns - an exothermic change.",
+      "keywords": [
+        "releases",
+        "heat"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L1::Q7",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L1",
+      "stem": "Name the three main fossil fuels and state what they all are in terms of supply.",
+      "misconceptionClass": "fossil-fuel list recall",
+      "kind": "recall",
+      "modelAnswer": "Coal, oil (crude oil) and natural gas - and all of them are finite resources.",
+      "keywords": [
+        "coal",
+        "finite"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L1::Q8",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L1",
+      "stem": "Explain why no fossil fuel can burn without an acid-rain implication.",
+      "misconceptionClass": "sulfur-impurity reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Every fossil fuel contains small amounts of sulfur impurities alongside its carbon and hydrogen, and those impurities burn to sulfur dioxide, the gas that dissolves in raindrops to make acid rain.",
+      "keywords": [
+        "sulfur",
+        "impurities"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L1::Q9",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L1",
+      "stem": "A camp stove burns butane, C4H10, in plenty of air. Deduce the balanced equation for its complete combustion.",
+      "misconceptionClass": "butane balancing application",
+      "kind": "application",
+      "modelAnswer": "2C4H10 + 13O2 -> 8CO2 + 10H2O.",
+      "keywords": [
+        "8co2",
+        "10h2o"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_V3hNWh6QWrbCRHrX::L2::Q1",
       "moduleId": "rn_V3hNWh6QWrbCRHrX::L2",
       "stem": "Which condition causes incomplete combustion in a boiler?",
@@ -372,6 +424,59 @@
       ]
     },
     {
+      "id": "rn_V3hNWh6QWrbCRHrX::L2::Q6",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L2",
+      "stem": "List the three products of incomplete combustion.",
+      "misconceptionClass": "incomplete products recall",
+      "kind": "recall",
+      "modelAnswer": "Unburnt fuel as soot, carbon monoxide and water.",
+      "keywords": [
+        "soot",
+        "monoxide",
+        "water"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L2::Q7",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L2",
+      "stem": "Write the balanced equation for methane burning in a limited oxygen supply to give carbon monoxide.",
+      "misconceptionClass": "CO-route equation recall",
+      "kind": "recall",
+      "modelAnswer": "2CH4 + 3O2 -> 2CO + 4H2O.",
+      "keywords": [
+        "2ch4",
+        "3o2"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L2::Q8",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L2",
+      "stem": "Explain why a boiler running in a closed room is where incomplete combustion is most likely to strike.",
+      "misconceptionClass": "appliance-context reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A closed room runs short of air, so the flame receives insufficient oxygen - exactly the condition that forces incomplete combustion instead of the complete burning the appliance was designed for.",
+      "keywords": [
+        "insufficient",
+        "oxygen"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L2::Q9",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L2",
+      "stem": "A methane flame in very poor air leaves a black layer on a cold pan. Write the equation the note gives for this outcome and name the black deposit.",
+      "misconceptionClass": "soot-route application",
+      "kind": "application",
+      "modelAnswer": "CH4 + O2 -> C + 2H2O; the black deposit is carbon soot.",
+      "keywords": [
+        "carbon",
+        "soot"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_V3hNWh6QWrbCRHrX::L3::Q1",
       "moduleId": "rn_V3hNWh6QWrbCRHrX::L3",
       "stem": "Why is carbon monoxide especially dangerous in the home?",
@@ -550,6 +655,59 @@
           "misconception": "question-type rule invented"
         }
       ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L3::Q6",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L3",
+      "stem": "State the three sensory properties of carbon monoxide that make it so dangerous indoors.",
+      "misconceptionClass": "CO stealth properties recall",
+      "kind": "recall",
+      "modelAnswer": "It is odourless, colourless and tasteless, so it can be inhaled without being noticed.",
+      "keywords": [
+        "odourless",
+        "colourless",
+        "tasteless"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L3::Q7",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L3",
+      "stem": "State how many times more strongly haemoglobin binds carbon monoxide than oxygen.",
+      "misconceptionClass": "haemoglobin affinity recall",
+      "kind": "recall",
+      "modelAnswer": "Around 200 to 250 times more strongly, forming stable carboxyhaemoglobin.",
+      "keywords": [
+        "200",
+        "250"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L3::Q8",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L3",
+      "stem": "Explain why inhaled carbon monoxide reduces the oxygen reaching the body's tissues.",
+      "misconceptionClass": "CO-binding reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The CO is absorbed into the red blood cells and binds tightly to the molecules that normally carry oxygen, cutting the capacity of the blood to transport oxygen round the body.",
+      "keywords": [
+        "binds",
+        "capacity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L3::Q9",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L3",
+      "stem": "A family lights a charcoal heater inside a sealed tent and dizziness soon sets in. State which gas is responsible and why the tent's confinement matters.",
+      "misconceptionClass": "sealed-tent CO application",
+      "kind": "application",
+      "modelAnswer": "Carbon monoxide from the incomplete burning of the charcoal is responsible: it binds to the blood's oxygen carriers, and the sealed tent keeps oxygen scarce so the incomplete combustion - and the CO - keep building.",
+      "keywords": [
+        "monoxide",
+        "binds"
+      ],
+      "options": []
     }
   ]
 }

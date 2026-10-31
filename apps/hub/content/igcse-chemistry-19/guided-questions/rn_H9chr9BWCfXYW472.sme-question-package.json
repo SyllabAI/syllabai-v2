@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_H9chr9BWCfXYW472",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "ae50f45521727e1d1e1ce45275420f37f26b9d40db2217d07b2939c03c1c38df",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "e38a2aa5fc6284251ab43c5c56f6566030b8b47a6f29b0b38142ad5d7978f96a",
+    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
   },
   "packageId": "igcse-chemistry::rn_H9chr9BWCfXYW472",
   "subject": "igcse-chemistry",
@@ -192,6 +192,56 @@
       ]
     },
     {
+      "id": "rn_H9chr9BWCfXYW472::L1::Q6",
+      "moduleId": "rn_H9chr9BWCfXYW472::L1",
+      "stem": "State the property that decides where a hydrocarbon vapour condenses in a fractionating column.",
+      "misconceptionClass": "boiling-point sorting recall",
+      "kind": "recall",
+      "modelAnswer": "Its boiling point: molecules of similar chain length have similar boiling points, so each fraction condenses at its own height in the column.",
+      "keywords": [
+        "boiling"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L1::Q7",
+      "moduleId": "rn_H9chr9BWCfXYW472::L1",
+      "stem": "Describe the temperature gradient inside a fractionating column.",
+      "misconceptionClass": "column gradient recall",
+      "kind": "recall",
+      "modelAnswer": "The column is hot at the bottom and cooler towards the top.",
+      "keywords": [
+        "hot",
+        "cooler"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L1::Q8",
+      "moduleId": "rn_H9chr9BWCfXYW472::L1",
+      "stem": "Explain why crude oil itself is of little direct use before it is separated.",
+      "misconceptionClass": "mixture-uselessness reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "It is a mixture of many different hydrocarbons, and a jumble of chains has no single set of useful properties until the fractions are separated out.",
+      "keywords": [
+        "mixture"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L1::Q9",
+      "moduleId": "rn_H9chr9BWCfXYW472::L1",
+      "stem": "A hydrocarbon's boiling point is 320 degrees Celsius. State where in the fractionating column it will condense, giving the reason.",
+      "misconceptionClass": "condensation-height application",
+      "kind": "application",
+      "modelAnswer": "It condenses low down the column, near the hot bottom, because only down there is the temperature below its boiling point; high-boiling vapours never rise far before condensing.",
+      "keywords": [
+        "low",
+        "bottom"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_H9chr9BWCfXYW472::L2::Q1",
       "moduleId": "rn_H9chr9BWCfXYW472::L2",
       "stem": "Which fraction is used for surfacing roads and roofs?",
@@ -372,6 +422,56 @@
       ]
     },
     {
+      "id": "rn_H9chr9BWCfXYW472::L2::Q6",
+      "moduleId": "rn_H9chr9BWCfXYW472::L2",
+      "stem": "State which fraction fuels jet aircraft.",
+      "misconceptionClass": "fraction-use recall",
+      "kind": "recall",
+      "modelAnswer": "Kerosene is the fraction that fuels jet aircraft.",
+      "keywords": [
+        "kerosene"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L2::Q7",
+      "moduleId": "rn_H9chr9BWCfXYW472::L2",
+      "stem": "State how viscosity changes as chain length grows along the fraction ladder.",
+      "misconceptionClass": "viscosity trend recall",
+      "kind": "recall",
+      "modelAnswer": "Viscosity rises: the longer molecules attract one another more, so the liquid flows less easily and feels thicker.",
+      "keywords": [
+        "rises",
+        "thicker"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L2::Q8",
+      "moduleId": "rn_H9chr9BWCfXYW472::L2",
+      "stem": "Explain why volatility falls from refinery gas at the top of the ladder to bitumen at the bottom.",
+      "misconceptionClass": "volatility trend reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "As the molecules grow larger the attractions between them strengthen, so far less evaporates easily: bigger molecules mean lower volatility, which is why bitumen barely evaporates at all.",
+      "keywords": [
+        "larger",
+        "attraction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L2::Q9",
+      "moduleId": "rn_H9chr9BWCfXYW472::L2",
+      "stem": "Refinery gas boils below 25 degrees Celsius and bitumen above 350. A refinery stream boils at 180 degrees Celsius. Name its fraction.",
+      "misconceptionClass": "boiling-range application",
+      "kind": "application",
+      "modelAnswer": "At 180 degrees Celsius the stream sits in the kerosene range, the jet-fuel fraction of the ladder.",
+      "keywords": [
+        "kerosene"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_H9chr9BWCfXYW472::L3::Q1",
       "moduleId": "rn_H9chr9BWCfXYW472::L3",
       "stem": "Which of these is obtained from crude oil?",
@@ -550,6 +650,62 @@
           "misconception": "alias misassigned"
         }
       ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L3::Q6",
+      "moduleId": "rn_H9chr9BWCfXYW472::L3",
+      "stem": "List three products of crude oil other than fuels.",
+      "misconceptionClass": "non-fuel products recall",
+      "kind": "recall",
+      "modelAnswer": "Polymers, lubricants, solvents, detergents and adhesives are all obtained from crude oil - any three of these.",
+      "keywords": [
+        "polymers",
+        "lubricants",
+        "solvents",
+        "detergents",
+        "adhesives"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L3::Q7",
+      "moduleId": "rn_H9chr9BWCfXYW472::L3",
+      "stem": "State three kinds of transport that run on oil products.",
+      "misconceptionClass": "transport uses recall",
+      "kind": "recall",
+      "modelAnswer": "Cars, trains and aircraft all run on oil products.",
+      "keywords": [
+        "cars",
+        "trains",
+        "aircraft"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L3::Q8",
+      "moduleId": "rn_H9chr9BWCfXYW472::L3",
+      "stem": "Explain why carbon can form the huge variety of compounds the petrochemical industry sells.",
+      "misconceptionClass": "carbon-bonding reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Carbon bonds strongly and repeatedly to itself, building chains and rings of almost any length, which lets it assemble a huge number of organic compounds for the industry to draw on.",
+      "keywords": [
+        "bonds",
+        "itself"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L3::Q9",
+      "moduleId": "rn_H9chr9BWCfXYW472::L3",
+      "stem": "A country discovers oil and builds its first petrochemical industry. Explain two different ways this changes what the country can make.",
+      "misconceptionClass": "industry-impact application",
+      "kind": "application",
+      "modelAnswer": "Its separated fractions supply transport fuels for cars, trains and aircraft, and the same oil feeds polymers, solvents, detergents and adhesives, so the industry underpins both transport and manufacturing development.",
+      "keywords": [
+        "fuels",
+        "polymers"
+      ],
+      "options": []
     }
   ]
 }

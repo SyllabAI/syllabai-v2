@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_wDdXr5k7gknQ7xJp",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "39a46352f2836e88e752ac6eb4ab4c967a6b431b9d48eb3507d5a1967e1adcfa",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "0ce2173477a9339e8f1dbff81ff915ef21453dd1b9f6d23c83788479117d0ee7",
+    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
   },
   "packageId": "igcse-chemistry::rn_wDdXr5k7gknQ7xJp",
   "subject": "igcse-chemistry",
@@ -192,6 +192,59 @@
       ]
     },
     {
+      "id": "rn_wDdXr5k7gknQ7xJp::L1::Q6",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L1",
+      "stem": "State the definition of a hydrocarbon.",
+      "misconceptionClass": "hydrocarbon definition recall",
+      "kind": "recall",
+      "modelAnswer": "A compound whose molecules contain hydrogen and carbon atoms and no other element - only those two.",
+      "keywords": [
+        "hydrogen",
+        "only"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L1::Q7",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L1",
+      "stem": "Name two carbon compounds that are excluded from organic chemistry by convention.",
+      "misconceptionClass": "conventional exclusions recall",
+      "kind": "recall",
+      "modelAnswer": "Metal carbonates, carbon dioxide and carbon monoxide are the conventional exclusions - any two of them.",
+      "keywords": [
+        "carbonates",
+        "dioxide",
+        "monoxide"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L1::Q8",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L1",
+      "stem": "Explain why ethanol, which contains oxygen, cannot be called a hydrocarbon.",
+      "misconceptionClass": "only-two-elements reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The hydrocarbon rule admits hydrogen and carbon only; any other element present - here oxygen - disqualifies the molecule.",
+      "keywords": [
+        "rule",
+        "other"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L1::Q9",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L1",
+      "stem": "A fuel supplier lists natural gas as its product. State which hydrocarbon dominates natural gas and why hydrocarbons matter commercially.",
+      "misconceptionClass": "natural-gas application",
+      "kind": "application",
+      "modelAnswer": "Natural gas consists mainly of methane, and hydrocarbons matter because fuels such as petrol and natural gas are built from them.",
+      "keywords": [
+        "methane",
+        "petrol"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_wDdXr5k7gknQ7xJp::L2::Q1",
       "moduleId": "rn_wDdXr5k7gknQ7xJp::L2",
       "stem": "Hydrogen peroxide has the molecular formula H2O2. What is its empirical formula?",
@@ -372,6 +425,55 @@
       ]
     },
     {
+      "id": "rn_wDdXr5k7gknQ7xJp::L2::Q6",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L2",
+      "stem": "What does an empirical formula give you about the atoms in a molecule?",
+      "misconceptionClass": "empirical formula recall",
+      "kind": "recall",
+      "modelAnswer": "The simplest whole-number ratio of the atoms in a molecule.",
+      "keywords": [
+        "ratio"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L2::Q7",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L2",
+      "stem": "Which of the five formula types would you draw to display every single bond explicitly?",
+      "misconceptionClass": "displayed-formula choice recall",
+      "kind": "recall",
+      "modelAnswer": "The displayed formula, which shows every atom and every bond including their spatial arrangement.",
+      "keywords": [
+        "displayed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L2::Q8",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L2",
+      "stem": "Explain the difference in job between a molecular formula and a general formula.",
+      "misconceptionClass": "formula-jobs reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A molecular formula counts the actual atoms in one molecule, while a general formula carrying the letter n describes a whole family of compounds at once.",
+      "keywords": [
+        "family",
+        "counts"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L2::Q9",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L2",
+      "stem": "A hydrocarbon sample is found to contain molecules of C4H10 exactly. State its empirical formula.",
+      "misconceptionClass": "empirical-from-molecular application",
+      "kind": "application",
+      "modelAnswer": "Dividing every subscript by 2, the simplest whole-number ratio is C2H5.",
+      "keywords": [
+        "c2h5"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_wDdXr5k7gknQ7xJp::L3::Q1",
       "moduleId": "rn_wDdXr5k7gknQ7xJp::L3",
       "stem": "What makes two compounds members of the same homologous series?",
@@ -550,6 +652,57 @@
           "misconception": "rate trend overstated"
         }
       ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L3::Q6",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L3",
+      "stem": "State the two things every member of a homologous series shares.",
+      "misconceptionClass": "homologous-series membership recall",
+      "kind": "recall",
+      "modelAnswer": "The same functional group and similar chemical properties.",
+      "keywords": [
+        "functional",
+        "group"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L3::Q7",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L3",
+      "stem": "State the fixed difference between neighbouring members of a homologous series.",
+      "misconceptionClass": "CH2-step recall",
+      "kind": "recall",
+      "modelAnswer": "They differ by one CH2 unit between neighbours.",
+      "keywords": [
+        "ch2"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L3::Q8",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L3",
+      "stem": "Explain what gradation means down a homologous series, giving one property that shows it.",
+      "misconceptionClass": "gradation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Physical properties change gradually as the chains grow longer - for example the boiling point rises member by member instead of jumping.",
+      "keywords": [
+        "gradually",
+        "boiling"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L3::Q9",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L3",
+      "stem": "Propene and cyclopropane share one molecular formula. State that formula and the name of the relationship between the two molecules.",
+      "misconceptionClass": "isomer-pair application",
+      "kind": "application",
+      "modelAnswer": "Both are C3H6; sharing the molecular formula but differing in their displayed formulae makes them isomers.",
+      "keywords": [
+        "c3h6",
+        "isomers"
+      ],
+      "options": []
     }
   ]
 }

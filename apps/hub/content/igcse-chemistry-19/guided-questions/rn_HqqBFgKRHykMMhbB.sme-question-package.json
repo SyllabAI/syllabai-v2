@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_HqqBFgKRHykMMhbB",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "e0b57847940c0e3543370127f33c4310a75d0f84e0feefd50c65e1cac3a75789",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "1ccdf67e032d344bb1692dccfca6341d66d725e52bdaa10841356c9c62ea7488",
+    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
   },
   "packageId": "igcse-chemistry::rn_HqqBFgKRHykMMhbB",
   "subject": "igcse-chemistry",
@@ -192,6 +192,57 @@
       ]
     },
     {
+      "id": "rn_HqqBFgKRHykMMhbB::L1::Q6",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L1",
+      "stem": "Define substitution in one sentence.",
+      "misconceptionClass": "substitution definition recall",
+      "kind": "recall",
+      "modelAnswer": "Substitution happens when one atom or functional group in a molecule is replaced by another.",
+      "keywords": [
+        "replaced"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L1::Q7",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L1",
+      "stem": "State what distinguishes an addition reaction from every other reaction type at this level.",
+      "misconceptionClass": "addition definition recall",
+      "kind": "recall",
+      "modelAnswer": "Two or more molecules combine into a single larger product, with no other products formed.",
+      "keywords": [
+        "single",
+        "larger"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L1::Q8",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L1",
+      "stem": "Both the methane-bromine and the ethene-bromine reactions consume one Br2 molecule. Explain why the first needs ultraviolet light while the second does not.",
+      "misconceptionClass": "substitution-vs-addition conditions reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Methane is a saturated alkane, so swapping a halogen for a hydrogen is substitution and only proceeds under UV radiation; ethene is an alkene whose C=C opens by addition, a move that needs no UV condition.",
+      "keywords": [
+        "substitution",
+        "addition"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L1::Q9",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L1",
+      "stem": "Ethene is reacted with hydrogen bromide, HBr. State how many products form and classify the reaction.",
+      "misconceptionClass": "HBr addition application",
+      "kind": "application",
+      "modelAnswer": "Addition: the molecules combine into the single larger product bromoethane, so just one product forms.",
+      "keywords": [
+        "addition",
+        "single"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_HqqBFgKRHykMMhbB::L2::Q1",
       "moduleId": "rn_HqqBFgKRHykMMhbB::L2",
       "stem": "What are the products when methane burns completely in air?",
@@ -370,6 +421,59 @@
           "misconception": "addition confused"
         }
       ]
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L2::Q6",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L2",
+      "stem": "State the two products of the complete combustion of any hydrocarbon.",
+      "misconceptionClass": "complete-combustion products recall",
+      "kind": "recall",
+      "modelAnswer": "Carbon dioxide and water, formed when air or oxygen is in unlimited supply.",
+      "keywords": [
+        "dioxide",
+        "water"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L2::Q7",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L2",
+      "stem": "Write the balanced equation for the complete combustion of propane.",
+      "misconceptionClass": "propane combustion equation recall",
+      "kind": "recall",
+      "modelAnswer": "C3H8 + 5O2 -> 3CO2 + 4H2O.",
+      "keywords": [
+        "c3h8",
+        "3co2"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L2::Q8",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L2",
+      "stem": "Explain why a blue flame differs from a yellow, sooty flame in terms of the oxygen available and the carbon product.",
+      "misconceptionClass": "flame-colour reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A blue flame has plenty of oxygen, so the carbon leaves as carbon dioxide; a yellow, sooty flame is oxygen-starved, so incomplete combustion gives carbon monoxide and carbon soot instead.",
+      "keywords": [
+        "monoxide",
+        "limited"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L2::Q9",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L2",
+      "stem": "A Bunsen burner's air hole is slowly closed. State what happens to the flame colour and name the carbon-containing products that begin to appear.",
+      "misconceptionClass": "air-hole application",
+      "kind": "application",
+      "modelAnswer": "The flame turns yellow and luminous as incomplete combustion sets in, producing carbon monoxide and carbon soot alongside water.",
+      "keywords": [
+        "yellow",
+        "monoxide",
+        "soot"
+      ],
+      "options": []
     }
   ]
 }
