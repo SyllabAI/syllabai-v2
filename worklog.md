@@ -606,3 +606,18 @@ Work Log:
 Stage Summary:
 - The AS pure-1/2 planes are UGM-SERVED of record on this branch: 514 byte-true rows (348+166) over 47/47 non-folded spec points + 3 folded, zero gaps, zero new capture, zero new adjudication, zero corpus text moves. UGM-integrated course planes: 7 -> 9 of record.
 - Receipts of record: .syllabai/receipts/T-UGM-AS-PURE-1/{run-001-feasibility-r0,cie-as-maths-20-pure-1-r0,cie-as-maths-20-pure-2-r0}.json. Verification: bun 93/93 (bundle file), tsc zero-delta, full-suite fail-set identical to baseline. Next: operator merge word (R0-AUTO-79); then live spot-check per the render-lane convention on request.
+
+---
+Task ID: T-GRADE-001 run-001 (operator trace 1a191d55e2154601: "For every course page, add a new card called Grade Boundaries … mathsgenie predicted-grade-calculator … store everything in syllabai-resources, new folder GradeBoundaries")
+Agent: r-main (Z.ai, session web-19f335c2, chat 14bc199d)
+Task: Open the T-GRADE band end-to-end — resources corpus lane + hub card/page lane, full ceremony, branches + PRs.
+
+Work Log:
+- Recon of record: MG live calculator decoded (session pills incl. Average, Table/Graph toggle, total-mark /180 calculator; per-session overallBoundaries model extracted from the RSC payload = the golden master); hub course-page card bands + course-shell nav + content-plane loader laws read; resources repo rules (AGENT.md) + SubjectIntelligence precedent read; master pack search confirmed NO prior grade-boundaries band (only founding-brainstorm/backlog mentions) — T-GRADE is genuinely new.
+- Resources: fetched 33 official PDFs (Pearson 24 across 3 families + CIE 9), sha256 MANIFEST; Pearson parser rebuilt on pdfplumber positional joins after the token-order parser corrupted tiered rows (4CH1 Jun 2026 9=141 vs true 150 — the MathsGenie golden gate caught it); 24 docs / 922 subjects / 0 warnings; gates ALL GREEN (G1 0 errors, G2 parity 6/6 EXACT, G3 coverage 6>=6); CIE parser handles both layout generations incl. option-coded route rows; hub-import bundle.v1 built — 50/106 courses served, 56 honest roadmap, calculator mode linear-total only (modular/IAL/CIE = display-only with an honest note).
+- Hub: mechanical import content/grade-boundaries/bundle.v1.json; lib/grade-boundaries.ts (zod-strict, cache(), honest null) + lib/grade-boundaries-calc.ts (pure: minimum-mark gradeForMark, modalGradeAcrossSeries = MG Average, marksToNextGrade, R-variant detection) + 14-assert bun test; /courses/[course]/grade-boundaries page (registry-keyed prerender, honest empty state); GradeBoundariesWorkspace client component (session pills + Average, Table|Graph tabs, recharts per-grade trend graph, slider+number calculator, unit/UMS + CIE route tables, provenance footer); card in the Exam Practice band (ready keyed on corpus, roadmap otherwise).
+- Ceremony: .syllabai/tasks/T-GRADE-001-hub-card-page.yaml (scope allowed/forbidden), .syllabai/worklog.md + this worklog appended, receipt .syllabai/receipts/T-GRADE/T-GRADE-001-LANDING.json.
+
+Stage Summary:
+- Branches of record: resources t-gradeb-1/pipeline @ 72ca0cb; hub t-gradeb-1/hub-grade-boundaries (this commit). PRs cross-referenced; merge order resources→hub (import receipt pins the resources merge sha at merge time).
+- Open queue: CIE_IDS extension (56 roadmap courses); IAL/modular aggregation calculator wave; Jan 2023 + Nov 2021 Pearson docs (no slug found — recorded in fetch-missing.json, never invented); local bun typecheck+test counters live in the receipt.

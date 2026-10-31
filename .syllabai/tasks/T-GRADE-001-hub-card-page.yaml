@@ -1,0 +1,79 @@
+version: 1
+task:
+  id: T-GRADE-001
+  title: "Grade Boundaries — course card + page (table/graph/calculator) over the mechanically-imported official boundaries corpus; companion resources lane GradeBoundaries (fetch/parse/gates/bundle)"
+  owner: "main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3, chat 14bc199d-dd6a-40d0-afad-c2b58230a956, trace 1a191d55e2154601)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-GRADE (grade boundaries)
+  wave: gradeb-phase-A
+  deps: []
+  execution_record: >
+    Operator request (trace 1a191d55e2154601): a "Grade Boundaries" card on
+    every course page, carrying the MathsGenie predicted-grade-calculator
+    feature set (table, graph, calculator), with the corpus stored in
+    syllabai-resources GradeBoundaries. RESOURCES LANE (companion PR,
+    syllabai-resources branch t-gradeb-1/pipeline): 33 official PDFs fetched
+    from Pearson (slug-matrix probe, %PDF+final-URL verified, sha256
+    MANIFEST.jsonl) and Cambridge (known-ID registry) — 12 linear IGCSE
+    sessions, 4 modular, 8 IAL, 9 CIE threshold tables; positional
+    (pdfplumber x-coordinate) Pearson parser after the token-order parser
+    provably shifted columns on tiered rows (4CH1 Jun 2026 9=141 vs true
+    150 — caught by the golden gate, which is why the gate exists);
+    24 docs / 922 subjects / 0 warnings; GATES GREEN (G1 schema+monotonic
+    0 errors; G2 MathsGenie golden-master parity 6/6 EXACT on overlapping
+    sessions; G3 coverage 6>=6); hub-import bundle built: 50/106 courses
+    served, 56 honest roadmap, tier-split 4MA1 F/H, unit-filtered 4X suites,
+    IAL unit+cash-in blocks, CIE component+route tables. HUB (this PR):
+    content/grade-boundaries/bundle.v1.json (the mechanical import of the
+    resources bundle of record — merge-after-resources law, resources PR
+    cross-referenced); lib/grade-boundaries.ts (zod-strict loader, cache(),
+    honest null); lib/grade-boundaries-calc.ts (pure gradeForMark minimum-
+    mark law, modalGradeAcrossSeries = MG's Average mode, marksToNextGrade,
+    R-variant detection) with bun tests (grade-boundaries-calc.test.ts);
+    app/courses/[course]/grade-boundaries/page.tsx (prerendered per
+    registered course, honest roadmap state when the corpus lacks the
+    course); components/hub/grade-boundaries/grade-boundaries-workspace.tsx
+    ("use client" — session pills incl. Average, Table|Graph tabs, recharts
+    trend graph per grade, slider+number mark calculator for linear-total
+    courses, modular unit/UMS + CIE route tables for display-only courses,
+    provenance footer); course-page card in the Exam Practice band
+    (ready keyed on the corpus; roadmap badge otherwise). LOCAL PROOF:
+    resources validate.py ALL GREEN re-run; hub bun test
+    grade-boundaries-calc 14/14 + tsc --noEmit 0 (see receipt for the
+    exact counters at cut time). PENDING-OPERATOR: merge order — resources
+    PR first, then this PR (the import receipt pins the resources merge
+    sha at merge time); CI verdict on both PRs is the merge gate.
+base:
+  repo: "syllabai-v2 @ origin/main (branch t-gradeb-1/hub-grade-boundaries)"
+basis: >
+  Operator instruction (trace 1a191d55e2154601, "For every course page, add
+  a new card called Grade Boundaries … what I want basically is the
+  mathsgenie predicted-grade-calculator … store everything in
+  syllabai-resources, new folder GradeBoundaries"); operator clarification
+  round: full MG feature set (table, graph, calculator), hybrid data
+  doctrine (official PDFs first, curated fallbacks flagged reviewRequired),
+  all-courses rollout, branches+PRs, full ceremony. Corpus conventions:
+  lib/courses.ts registry laws (honest absent states, never invented data);
+  static-params prerender discipline (registry-keyed); card anatomy
+  (hub-coursepage-mg-layout ResourceItem bands); AGENT_COORDINATION merge
+  order (resources-PR-first/hub-PR-second).
+scope:
+  allowed:
+    - "apps/hub/content/grade-boundaries/bundle.v1.json (new, mechanical import)"
+    - "apps/hub/src/lib/grade-boundaries.ts (new)"
+    - "apps/hub/src/lib/grade-boundaries-calc.ts (new)"
+    - "apps/hub/src/lib/grade-boundaries-calc.test.ts (new)"
+    - "apps/hub/src/app/courses/[course]/grade-boundaries/** (new)"
+    - "apps/hub/src/components/hub/grade-boundaries/** (new)"
+    - "apps/hub/src/app/courses/[course]/page.tsx (one card + its loader, additive)"
+    - ".syllabai/tasks/T-GRADE-001-hub-card-page.yaml"
+    - ".syllabai/worklog.md (append only)"
+    - "worklog.md (append only)"
+    - ".syllabai/receipts/T-GRADE/** (new)"
+  forbidden:
+    - "packages/contracts/** (no core DTO changes — boundaries never touch the core plane)"
+    - "packages/db/** (zero DDL — boundaries serve from the committed corpus, not Neon)"
+    - "apps/api/** (no routes — read-only static corpus by design)"
+    - "content/** other namespaces (the import is grade-boundaries/ only)"
+    - "lib/courses.ts (registry untouched — the map joins its committed snapshot upstream)"

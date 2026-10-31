@@ -15,6 +15,7 @@ import {
   ScrollText,
   Sparkles,
   Target,
+  TrendingUp,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -32,6 +33,7 @@ import { allCourseParams } from "@/lib/static-params";
 import { courseHasBookArchive } from "@/lib/books-registry";
 import { getUgmBundle, ugmStationNames } from "@/lib/ugm";
 import { loadGuidedIndex } from "@/lib/guided-lessons";
+import { getGradeBoundariesSummary } from "@/lib/grade-boundaries";
 
 type FrameworkTag = "Study" | "Practice" | "Diagnose";
 
@@ -157,6 +159,10 @@ export default async function CourseHubPage({
   // banner uses) — live courses get real counts from the index, never
   // hardcoded; courses without one keep an honest roadmap card.
   const guided = await loadGuidedIndex(meta.slug);
+  // T-GRADE-1: the boundaries card keys on the mechanically-imported
+  // official corpus (resources GradeBoundaries lane, sha-proven) — a
+  // course without data keeps the honest roadmap state.
+  const gradeBoundaries = await getGradeBoundariesSummary(meta.slug);
 
   // Topics tab data (hub-coursepage-mg-layout): the canonical spec tree with
   // per-subtopic counts + canonical hrefs — the SAME joins the sidebar uses,
@@ -282,6 +288,25 @@ export default async function CourseHubPage({
           tags: ["Practice", "Diagnose"],
           ready: false,
           tint: "bg-chart-1/15",
+        },
+        {
+          // T-GRADE-1 — the Grade Boundaries card (operator request, trace
+          // 1a191d55e2154601: the MathsGenie predicted-grade-calculator
+          // feature set). Live only where the official corpus has this
+          // course; every other course keeps the honest roadmap card.
+          icon: TrendingUp,
+          title: "Grade Boundaries",
+          desc: gradeBoundaries
+            ? "Official boundaries for every recent session — the trend graph, boundary tables and a mark-to-grade calculator."
+            : "Official session-by-session grade boundaries with a trend graph and mark-to-grade calculator — landing with the corpus rollout.",
+          tags: ["Practice", "Diagnose"],
+          href: gradeBoundaries ? `${base}/grade-boundaries` : undefined,
+          ctaLabel: gradeBoundaries ? "See boundaries" : undefined,
+          countLabel: gradeBoundaries
+            ? `${fmtCount(gradeBoundaries.seriesCount)} session rows`
+            : undefined,
+          ready: !!gradeBoundaries,
+          tint: "bg-chart-3/15",
         },
       ],
     },
