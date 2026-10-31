@@ -25,11 +25,15 @@ task:
     - "(run-002) crop disclosure pin — mtext does NOT composite into the region-crop bitmap this run (the DOM overlay is not canvas pixels); the rasterization path (font-inlined foreignObject) is a named future card candidate, never silently assumed; disclosed in the PR body and the receipt"
     - "(run-002) posture pin — the T-MG-INK-3 invariants hold verbatim and stay test-pinned: mock-mode exclusion, MS-pane exclusion (QP pane only), region-mark token+paperId gate (anonymous marking stays IMPOSSIBLE — local ink never feeds the ledger), past-papers-QP-only; the sync gate preserved (the sync module is never constructed without a token); the new kinds flow through BOTH stores (sync jsonb + IndexedDB) via the shared packDoc/parseDoc boundary; the local store's zero-contact law untouched (no new network imports)"
     - "(run-002) zero-touch pin — zero migrations (packages/db untouched), fences EXACT (routes/cla.ts a9fdabfd, services/cla/service.ts db4573c7), pdf-pane.tsx untouched, packages/contracts/** byte-absent, no learnerId anywhere (nothing leaves the device in local mode; no new identity plane in sync mode)"
+    # ── run-003 (the named candidates discharged, on the operator's word) ──
+    - "(run-003) crop-raster pin — the mtext kind joins the region-crop marking bitmap (the run-002 named candidate, discharged): produceRegionCrop is ASYNC and composites a font-inlined foreignObject SVG — the SAME katex.renderToString(throwOnError:false, displayMode:false, output:'html') output the DOM overlay renders, the KaTeX css collected from the document's own stylesheets with every url(...) font inlined as a data URI (SVG-as-image loads no external resources), drawn AFTER the sync ink pass at the bitmap scale the strokes paint at (sizeFrac × page-bitmap width, anchor − crop origin); EVERY raster failure (no KaTeX css / a font fetch failure / a decode failure) degrades to the plain-text rendering of the RAW KaTeX source — honest degradation, never silent, never a throw; the pure half (mtextRasterItems + buildMtextSvg) is test-pinned, the browser seams stay thin"
+    - "(run-003) re-edit pin — tapping an EXISTING text/mtext box with its OWN tool (Text tool → text, Math tool → mtext) opens the inline textarea editor PREFILLED (the MG parity posture; an empty-canvas tap still creates); commit replaces the content IN PLACE via editTextShape/editMathShape (the same id = the merge key — the edit is the newer intent and survives every 409 rebase exactly like a move), one commit = one snapshot = one undo step; empty commit = CANCEL (the shape is unchanged — deletion stays the erase/✕ surface, never the editor); Esc cancels; colour/size/anchor untouched (content-only edit — recolour/resize is delete + re-add, disclosed); the single-editor law: switching tap targets abandons the previous uncommitted edit (the shipped draft behaviour, disclosed)"
+    - "(run-003) zero-touch pin — fences EXACT (routes/cla.ts a9fdabfd, services/cla/service.ts db4573c7), pdf-pane.tsx untouched, packages/contracts/** byte-absent, zero api/db bytes, no learnerId anywhere; the ledger/marking planes untouched (the crop change is client-side rasterization only — anonymous marking stays IMPOSSIBLE, local ink never feeds the ledger)"
   non_goals:
     - "no MathLive / virtual math keyboard / symbol palette (MG's policy is manual too; KaTeX + textarea is the decided editor)"
     - "no pixel/partial erasing, no eraser-size UI (whole-shape atomic this run)"
     - "no multi-select, no rotate/resize of committed shapes, no Browse tool (the ink-off toggle stays the pan posture — functionally equivalent)"
-    - "no mtext-in-crop rasterization this run (disclosed; a named future card candidate on the operator's word)"
+    - "no mtext-in-crop rasterization this run (disclosed; a named future card candidate on the operator's word) — DISCHARGED by run-003 (operator trace 1a193259a20b5271)"
     - "no schema or contract change of any kind (the container law: syllabai-ink/1 verbatim, shapes opaque server-side)"
     - "no anonymous marking — the ledger, feedback panel, highlights, rollups stay learner-scoped verbatim"
   execution_record: >
@@ -62,3 +66,23 @@ task:
     selection chrome ~+300), tests (~+250). The lane was already a post-closure
     follow-up (T-MG-INK-3); this card extends the same narrow follow-up line by
     explicit operator word and does not reopen any phase card.
+
+    run-003 (2026-11-01). Operator dispatch "Proceed with mtext into crop
+    rasterization, re-editing of existing text/mtext" (trace 1a193259a20b5271) —
+    the two named candidates of the run-002 receipt/worklog, discharged in one
+    run. Crop raster: the spec's named path verbatim (font-inlined
+    foreignObject) — produceRegionCrop goes async, composites the SAME KaTeX
+    html the overlay renders through an SVG foreignObject with the KaTeX css
+    collected from the document's own stylesheets and every font url() inlined
+    as a data URI (cached once per session, only when a crop carries mtext);
+    drawn at the stroke bitmap scale; every failure falls back to the raw-source
+    plain-text rendering. Re-edit: tap an existing text/mtext with its own tool
+    → prefilled inline editor → same-id in-place replacement (editTextShape/
+    editMathShape in the pure module; the edit survives the union-by-id rebase
+    like a move), one snapshot per commit, empty = cancel, content-only.
+    Verification: bun test 133 pass / 0 fail (122 pre-existing + 11 new: 6
+    re-edit pins + 5 raster pins), hub typecheck clean, eslint zero NEW findings
+    (5 ink-dir + 2 RegionMarkLayer baseline findings, all pre-existing,
+    disclosed). Card amendment rides the implementation PR (the operator's
+    single dispatch covered both; the run-001/002 spec/impl split was
+    operator-worded) — disclosed.

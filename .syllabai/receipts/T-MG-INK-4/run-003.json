@@ -1,0 +1,46 @@
+{
+  "task": "T-MG-INK-4 run-003",
+  "date": "2026-11-01",
+  "operator": {
+    "dispatch": "Proceed with mtext into crop rasterization, re-editing of existing text/mtext",
+    "trace": "1a193259a20b5271",
+    "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+  },
+  "context_of_record": "dispatches the two named candidates of the run-002 receipt/worklog (the mtext-in-crop rasterization card and re-editing of existing text/mtext) — this run discharges both; the card amendment rides the implementation PR (the operator's single dispatch covered spec+impl; the run-001/002 split was operator-worded — disclosed)",
+  "class": "additive hub ink/crop code + tests + .syllabai bookkeeping ONLY — zero schema, zero contracts, zero api bytes, zero db, zero identity plane; pdf-pane.tsx untouched; the two CLA fences untouched",
+  "what_lands": {
+    "raster": "apps/hub/src/components/pastpapers/ink/mtext-raster.ts (new) — the PURE half is test-pinned: mtextRasterItems (the crop-space mapping: anchor − crop origin, sizeFrac × page-bitmap width — the same scale the strokes paint at, INK_COLORS resolved, the renderer injected verbatim-tex) and buildMtextSvg (the foreignObject SVG: crop-size attrs, the XHTML namespace on the wrapper div, the CDATA-wrapped css, per-item absolute divs left/top/font-size/color + the KaTeX html verbatim, null on empty); the browser seams stay thin and honestly untested: collectKatexCssText (walks document.styleSheets, keeps /katex/i rules — cross-origin sheets skipped), katexFontCss (session-cached: collect + inline every url(...) font as a data URI; a failed fetch keeps the original url — that face degrades honestly), svgToImage (data-URI Image, null on failure — never taints the crop), renderTexHtml (the overlay's EXACT options: throwOnError:false, displayMode:false, output:'html' — ONE render law, two consumers)",
+    "crop": "apps/hub/src/components/pastpapers/region-mark/produce-crop.ts — produceRegionCrop is ASYNC (the only caller RegionMarkLayer.markRegion awaits; the same start-state UI covers the await); step (3) added after the sync ink pass: mtexts of the page → items → SVG → Image → drawImage(0,0,sw,sh); EVERY failure (no KaTeX css / font fetch failure / decode failure / empty html) degrades to the plain-text rendering of the RAW KaTeX source (monospace stack, textBaseline top, the 1.25 line law) — honest degradation, never silent, never a throw; the 4 MB export law untouched",
+    "reedit": "apps/hub/src/components/pastpapers/ink/ink.ts — editTextShape/editMathShape: content replacement IN PLACE (same id = the merge key — the edit is the newer intent and wins every union-by-id rebase exactly like a move, test-pinned); empty value = the SAME array returned (the cancel law encoded once); kind-guarded (a tombstone never regrows a body, a stroke is never retexted); siblings keep identity (one commit = one snapshot = one undo step)",
+    "layer": "apps/hub/src/components/pastpapers/ink/InkLayer.tsx — the tap-hit re-edit law: tapping an EXISTING text/mtext box with its OWN tool (topmostFamilyHit: the same shapeHitTest geometry the erase/select gestures read, family-filtered, back-to-front) opens the prefilled inline textarea (Text tool → text, Math tool → mtext; empty-canvas tap still creates — the MG parity posture); commitTextEdit/commitMathEdit wire the in-place replacement; empty commit cancels (the shape is unchanged — deletion stays the erase/✕ surface); Esc cancels; aria-labels distinguish New/Edit",
+    "overlay": "apps/hub/src/components/pastpapers/ink/MathTextOverlay.tsx — the stale run-002 CROP DISCLOSURE comment replaced by the run-003 CROP RASTER law (the overlay stays untouched code-wise — comment-only)",
+    "painter": "apps/hub/src/components/pastpapers/ink/paint.ts — UNTOUCHED (the sync kind-switch stands: strokes + text only; mtext composites ONLY in the crop producer's dedicated pass); paint.test.ts comment updated to point at the run-003 raster path"
+  },
+  "pins_verification": {
+    "crop_raster_pin": "PASS — the spec's named path verbatim (font-inlined foreignObject); the ONE render law both sides; bitmap-scale drawing; honest raw-source fallback on every failure; pure half test-pinned, browser seams thin",
+    "reedit_pin": "PASS — own-tool tap → prefilled editor; same-id in-place replacement; survives the 409 rebase (test-pinned via rebaseShapes); one commit = one undo step; empty = cancel; content-only (colour/size/anchor untouched — recolour/resize is delete + re-add, disclosed); the single-editor law: switching tap targets abandons the previous uncommitted edit (the shipped draft behaviour, disclosed)",
+    "posture_pin": "PASS — the four scope invariants untouched (mock-mode exclusion, MS-pane exclusion, region-mark token+paperId gate, past-papers-QP-only — all diff-absent); the sync gate preserved verbatim; the crop change is CLIENT-SIDE rasterization only — anonymous marking stays IMPOSSIBLE, local ink never feeds the ledger; zero new network surfaces in the local mode (the font fetches are same-origin asset reads on the marking path, which is login-gated)",
+    "zero_touch_pin": "PASS — packages/db untouched (zero migrations); fences EXACT (routes/cla.ts a9fdabfd, services/cla/service.ts db4573c7 — re-verified at the branch base); pdf-pane.tsx untouched; packages/contracts/** byte-absent; no learnerId anywhere; no new identity plane"
+  },
+  "local_verification": "bun test apps/hub/src/components/pastpapers/ — 133 pass / 0 fail (122 pre-existing + 11 new: 6 re-edit pins + 5 raster pins), 769 expect() calls; bun run --cwd apps/hub typecheck clean (tsc --noEmit exit 0); eslint on the 8 changed files: 7 findings ALL pre-existing baseline (InkLayer: react-hooks/refs ×3 + preserve-manual-memoization + exhaustive-deps — the run-002 receipt's 5, line-shifted; RegionMarkLayer: set-state-in-effect ×2 — T-MG-CROPMARK-1-era, outside run-002's ink-dir lint scope, now visible under the widened lint set) — ZERO new, disclosed",
+  "disclosures": [
+    "the raster fallback renders the RAW KaTeX source as plain text (a degraded but honest crop — never silence); the happy path needs the KaTeX css present in the document (the overlay imports it on the same surface)",
+    "font inlining costs one session-cached fetch set (~hundreds of KB) only when a crop actually carries mtext; a failed face keeps the original url() and that face falls back in the SVG",
+    "re-edit is content-only: colour/size/anchor are NOT editable in the editor (recolour/resize = delete + re-add); the single-editor law: switching tap targets abandons the previous uncommitted edit (the shipped draft behaviour)",
+    "the card amendment (yaml run-003 pins + plan §3.8 bullet) rides the implementation PR — the operator's single dispatch covered both; the run-001/002 spec/impl split was operator-worded",
+    "the display-layer caveat of record: this session's tool outputs twice rendered the byte-identical ink.test.ts line `expect(hits[hits.length - 1])` as `hitsits` (transport mangling); boolean/hex byte probes proved the file valid BEFORE any edit — no repair was needed, the suite was already green"
+  ],
+  "gates_this_run": {
+    "gate_1_identity": "PASS — the diff enumerates exactly: 2 added modules (mtext-raster.ts, mtext-raster.test.ts) + 2 bookkeeping (yaml, plan, receipt) + 5 modified (produce-crop.ts, RegionMarkLayer.tsx, InkLayer.tsx, ink.ts, MathTextOverlay.tsx comment, paint.test.ts comment, ink.test.ts); zero identity-plane paths (prompt.ts / PROMPT_VERSION / packages/** / apps/api/** byte-absent)",
+    "gate_2_ci": "verify + hub awaited at the head sha after push (recorded in the PR body; the dual check at the merge sha remains the merge-word gate)",
+    "gate_3_fences": "PASS — CLA fence blobs EXACT at the branch base (re-verified this run)",
+    "gate_4_mergeability": "ff-only pushes, fetch-first, no force — the standing push law",
+    "gate_5_title_form": "feat(mg-parity): T-MG-INK-4 run-003 — per the plan §5 law"
+  },
+  "next_of": "the PR awaits the operator's merge word; post-merge the owning-session worklog section lands on main (the run-001/002 discipline)",
+  "lineage": {
+    "spec_of_record": "PR #571 (run-001, merge ec5949da) — .syllabai/tasks/T-MG-INK-4.yaml + docs/MG-MARK-PARITY-PLAN.md §3.8",
+    "implementation_of_record": "PR #573 (run-002, merge ee94e77e) — the mtext/tombstone kinds, the DOM overlay, the eraser + select/move, the painter hardening",
+    "census_of_record": "the live 4CH1/2C census of 2026-11-01 (run-001's receipt) — this run discharges the two named candidates it spawned; no census gap remains on the tool family"
+  }
+}
