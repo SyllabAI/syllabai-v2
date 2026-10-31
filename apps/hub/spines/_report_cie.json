@@ -1,8 +1,510 @@
 {
- "resourcesSha": "a4ce9f5559990a97950355d8f4cc85d30a796301",
+ "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
  "board": "Cambridge CIE",
- "generatedUtc": "2026-10-19T19:02:22Z",
+ "generatedUtc": "2026-10-31T14:52:03Z",
  "courses": {
+  "cie-a-level-accounting-21": {
+   "qual": "cie-a-level-accounting-2023-2025",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 4,
+    "subtopics": 17,
+    "specPoints": 34,
+    "parsePool": 34,
+    "scopedPool": 34,
+    "orphans": 0
+   },
+   "warnings": [
+    "subtopic 1.4 title drift (page-wrap artifact): kept 'Reconciliation and verification'; also seen ['Reconciliation and verification continued']",
+    "subtopic 1.5 title drift (page-wrap artifact): kept 'Preparation of financial statements'; also seen ['Preparation of financial statements continued']",
+    "subtopic 1.6 title drift (page-wrap artifact): kept 'Analysis and communication of accounting information'; also seen ['Analysis and communication of accounting information continued']",
+    "subtopic 2.2 title drift (page-wrap artifact): kept 'Traditional costing methods'; also seen ['Traditional costing methods continued']",
+    "subtopic 3.1 title drift (page-wrap artifact): kept 'Preparation of financial statements'; also seen ['Preparation of financial statements continued']",
+    "duplicate subtopic title 'Preparation of financial statements' in section 'Financial accounting (A Level)' (official key 3.1) — suffixed with key",
+    "subtopic 3.2 title drift (page-wrap artifact): kept 'Regulatory and ethical considerations'; also seen ['Regulatory and ethical considerations continued']",
+    "duplicate subtopic title 'Analysis and communication of accounting information' in section 'Financial accounting (A Level)' (official key 3.5) — suffixed with key"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-a-level-biology-25": {
+   "qual": "cie-a-level-biology-2025-2027",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 19,
+    "subtopics": 44,
+    "specPoints": 257,
+    "parsePool": 257,
+    "scopedPool": 257,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "duplicate subtopic title 'Control and coordination in' in section 'Control and coordination' (official key 15.2) — suffixed with key"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 1,
+    "examples": [
+     "5.1.1a"
+    ]
+   }
+  },
+  "cie-a-level-business-23": {
+   "qual": "cie-a-level-business-2023-2025",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 10,
+    "subtopics": 34,
+    "specPoints": 116,
+    "parsePool": 116,
+    "scopedPool": 116,
+    "orphans": 0
+   },
+   "warnings": [
+    "subtopic 1.1 title drift (page-wrap artifact): kept 'Enterprise'; also seen ['Enterprise continued']",
+    "subtopic 2.1 title drift (page-wrap artifact): kept 'Human resource management (HRM)'; also seen ['Human resource management (HRM) continued']",
+    "subtopic 3.3 title drift (page-wrap artifact): kept 'The marketing mix'; also seen ['The marketing mix continued']",
+    "subtopic 4.1 title drift (page-wrap artifact): kept 'The nature of operations'; also seen ['The nature of operations continued']",
+    "subtopic 6.1 title drift (page-wrap artifact): kept 'External influences on business activity'; also seen ['External influences on business activity continued']",
+    "subtopic 7.1 title drift (page-wrap artifact): kept 'Organisational structure'; also seen ['Organisational structure continued']",
+    "subtopic 7.2 title drift (page-wrap artifact): kept 'Business communication'; also seen ['Business communication continued']",
+    "subtopic 9.1 title drift (page-wrap artifact): kept 'Location and scale'; also seen ['Location and scale continued']",
+    "subtopic 9.3 title drift (page-wrap artifact): kept 'Operations strategy'; also seen ['Operations strategy continued']",
+    "subtopic 10.1 title drift (page-wrap artifact): kept 'Financial statements'; also seen ['Financial statements continued']",
+    "subtopic 10.2 title drift (page-wrap artifact): kept 'Analysis of published accounts'; also seen ['Analysis of published accounts continued']",
+    "subtopic 10.4 title drift (page-wrap artifact): kept 'Finance and accounting strategy'; also seen ['Finance and accounting strategy continued']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-a-level-chemistry-25": {
+   "qual": "cie-a-level-chemistry-2025-2027",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 37,
+    "subtopics": 90,
+    "specPoints": 356,
+    "parsePool": 356,
+    "scopedPool": 356,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 1 title drift (page-wrap artifact): kept 'Atomic structure'; also seen ['Analytical techniques']",
+    "subtopic 1.1 title drift (page-wrap artifact): kept 'Particles in the atom and atomic radius'; also seen ['× abundance of M ion']",
+    "duplicate subtopic title 'Homogeneous and heterogeneous catalysts' in section 'Reaction kinetics' (official key 26.2) — suffixed with key",
+    "duplicate subtopic title 'Similarities and trends in the properties of the Group 2 metals, magnesium to barium, and' in section 'Group' (official key 27.1) — suffixed with key",
+    "duplicate subtopic title 'Formulas, functional groups and the naming of organic compounds' in section 'Chemistry of transition elements' (official key 29.1) — suffixed with key",
+    "duplicate subtopic title 'Characteristic organic reactions' in section 'Chemistry of transition elements' (official key 29.2) — suffixed with key",
+    "duplicate subtopic title 'Alcohols' in section 'Hydroxy compounds' (official key 32.1) — suffixed with key",
+    "duplicate subtopic title 'Carboxylic acids' in section 'Carboxylic acids and derivatives' (official key 33.1) — suffixed with key",
+    "duplicate subtopic title 'Esters' in section 'Carboxylic acids and derivatives' (official key 33.2) — suffixed with key",
+    "duplicate subtopic title 'Organic synthesis' in section 'Organic synthesis' (official key 36.1) — suffixed with key"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 1,
+    "examples": [
+     "1.1.6a"
+    ]
+   }
+  },
+  "cie-a-level-computer-science-19": {
+   "qual": "cie-a-level-computer-science-2024-2025",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 20,
+    "subtopics": 44,
+    "specPoints": 227,
+    "parsePool": 227,
+    "scopedPool": 227,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "duplicate subtopic title 'Algorithms' in section 'Computational thinking and Problem-solving' (official key 19.1) — suffixed with key"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-a-level-economics-23": {
+   "qual": "cie-a-level-economics-2023-2025",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 11,
+    "subtopics": 53,
+    "specPoints": 253,
+    "parsePool": 253,
+    "scopedPool": 253,
+    "orphans": 0
+   },
+   "warnings": [
+    "topic 8 title drift (page-wrap artifact): kept 'Government microeconomic intervention (A Level)'; also seen ['The price system and the microeconomy (A Level)']",
+    "subtopic 7.6 title drift (page-wrap artifact): kept 'Different market structures'; also seen ['Different market structures continued']",
+    "subtopic 8.1 title drift (page-wrap artifact): kept 'Government policies to achieve efficient resource allocation and correct market failure'; also seen ['Government policies to achieve efficient resource allocation and correct market failure continued']",
+    "subtopic 9.2 title drift (page-wrap artifact): kept 'Economic growth and sustainability'; also seen ['Economic growth and sustainability continued']",
+    "subtopic 9.4 title drift (page-wrap artifact): kept 'Money and banking'; also seen ['Money and banking continued']",
+    "duplicate subtopic title 'Government macroeconomic policy objectives' in section 'Government macroeconomic intervention (A Level)' (official key 10.1) — suffixed with key",
+    "duplicate subtopic title 'Exchange rates' in section 'International economic issues (A Level)' (official key 11.2) — suffixed with key"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-a-level-maths-20-mechanics": {
+   "qual": "cie-a-level-maths-2023-2025",
+   "rule": {
+    "kind": "topic_numbers",
+    "values": [
+     "4"
+    ]
+   },
+   "counts": {
+    "topics": 1,
+    "subtopics": 5,
+    "specPoints": 22,
+    "parsePool": 146,
+    "scopedPool": 22,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 4 title drift (page-wrap artifact): kept 'Pure Mathematics'; also seen ['Mechanics']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-a-level-maths-20-probability-and-statistics-1": {
+   "qual": "cie-a-level-maths-2023-2025",
+   "rule": {
+    "kind": "topic_numbers",
+    "values": [
+     "5"
+    ]
+   },
+   "counts": {
+    "topics": 1,
+    "subtopics": 5,
+    "specPoints": 17,
+    "parsePool": 146,
+    "scopedPool": 17,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 5 title drift (page-wrap artifact): kept 'Mechanics'; also seen ['Probability & Statistics']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-a-level-maths-20-probability-and-statistics-2": {
+   "qual": "cie-a-level-maths-2023-2025",
+   "rule": {
+    "kind": "topic_numbers",
+    "values": [
+     "6"
+    ]
+   },
+   "counts": {
+    "topics": 1,
+    "subtopics": 5,
+    "specPoints": 18,
+    "parsePool": 146,
+    "scopedPool": 18,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-a-level-maths-20-pure-1": {
+   "qual": "cie-a-level-maths-2023-2025",
+   "rule": {
+    "kind": "topic_numbers",
+    "values": [
+     "1"
+    ]
+   },
+   "counts": {
+    "topics": 1,
+    "subtopics": 8,
+    "specPoints": 33,
+    "parsePool": 146,
+    "scopedPool": 33,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 3,
+    "examples": [
+     "1.3.1a",
+     "1.3.2a",
+     "1.4.1a"
+    ]
+   }
+  },
+  "cie-a-level-maths-20-pure-3": {
+   "qual": "cie-a-level-maths-2023-2025",
+   "rule": {
+    "kind": "topic_numbers",
+    "values": [
+     "3"
+    ]
+   },
+   "counts": {
+    "topics": 1,
+    "subtopics": 9,
+    "specPoints": 43,
+    "parsePool": 146,
+    "scopedPool": 39,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "pure3 3.1 algebra split applied (T-SPECS-CIE-PARSE-REPAIR-1): +4 points 3.1.3-3.1.6 (official bullets 2-5, glued into parse 3.1.2), 3.1.1 notes-column leak trimmed, 3.1.2 trimmed to the bullet-1 relations limb (superscripts restored), orders after 3.1.2 +4"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-a-level-physics-25": {
+   "qual": "cie-a-level-physics-2025-2027",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 25,
+    "subtopics": 76,
+    "specPoints": 303,
+    "parsePool": 303,
+    "scopedPool": 303,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 12,
+    "examples": [
+     "13.2.1a",
+     "15.3.1a",
+     "15.3.1b",
+     "15.3.1c",
+     "17.2.1a",
+     "18.3.1a",
+     "19.2.1a",
+     "22.2.1a"
+    ]
+   }
+  },
+  "cie-as-english-general-paper-21": {
+   "qual": "cie-as-english-general-paper-2028-2030",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 1,
+    "subtopics": 1,
+    "specPoints": 73,
+    "parsePool": 73,
+    "scopedPool": 73,
+    "orphans": 0
+   },
+   "warnings": [
+    "topic S1 title drift (page-wrap artifact): kept 'Economic, historical, moral, political and social issues'; also seen ['3 Literature, language, the arts, crafts, and the media']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-as-environmental-management-20": {
+   "qual": "cie-as-environmental-management-2025-2027",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 8,
+    "subtopics": 28,
+    "specPoints": 126,
+    "parsePool": 126,
+    "scopedPool": 126,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "duplicate subtopic title 'Ecosystems' in section 'Managing ecosystems and biodiversity' (official key 4.1) — suffixed with key"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-accounting-21": {
+   "qual": "cie-igcse-accounting-2023-2025",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 7,
+    "subtopics": 27,
+    "specPoints": 144,
+    "parsePool": 144,
+    "scopedPool": 144,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-accounting-25": {
+   "qual": "cie-igcse-accounting-2027-2029",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 7,
+    "subtopics": 28,
+    "specPoints": 177,
+    "parsePool": 177,
+    "scopedPool": 177,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-biology-23": {
+   "qual": "cie-igcse-biology-2023-2025",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 21,
+    "subtopics": 61,
+    "specPoints": 388,
+    "parsePool": 388,
+    "scopedPool": 388,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic 6.1 title drift (page-wrap artifact): kept 'Photosynthesis'; also seen ['Photosynthesis continued']",
+    "subtopic 10.1 title drift (page-wrap artifact): kept 'Diseases and immunity'; also seen ['Diseases and immunity continued']",
+    "subtopic 12.3 title drift (page-wrap artifact): kept 'Anaerobic respiration'; also seen ['Anaerobic respiration continued']",
+    "subtopic 16.3 title drift (page-wrap artifact): kept 'Sexual reproduction in plants'; also seen ['Sexual reproduction in plants continued']",
+    "subtopic 17.1 title drift (page-wrap artifact): kept 'Chromosomes, genes and proteins'; also seen ['Chromosomes, genes and proteins continued']",
+    "subtopic 17.4 title drift (page-wrap artifact): kept 'Monohybrid inheritance'; also seen ['Monohybrid inheritance continued']",
+    "subtopic 19.2 title drift (page-wrap artifact): kept 'Food chains and food webs'; also seen ['Food chains and food webs continued']",
+    "subtopic 21.3 title drift (page-wrap artifact): kept 'Genetic modification'; also seen ['Genetic modification continued']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-business-23": {
+   "qual": "cie-igcse-business-2023-2025",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 6,
+    "subtopics": 25,
+    "specPoints": 63,
+    "parsePool": 63,
+    "scopedPool": 63,
+    "orphans": 0
+   },
+   "warnings": [
+    "subtopic 1.3 title drift (page-wrap artifact): kept 'Enterprise, business growth and size'; also seen ['Enterprise, business growth and size continued']",
+    "subtopic 5.3 title drift (page-wrap artifact): kept 'Income statements'; also seen ['Income statements continued']",
+    "subtopic 6.3 title drift (page-wrap artifact): kept 'Business and the international economy'; also seen ['Business and the international economy continued']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-business-25": {
+   "qual": "cie-igcse-business-2027-2029",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 5,
+    "subtopics": 24,
+    "specPoints": 52,
+    "parsePool": 52,
+    "scopedPool": 52,
+    "orphans": 0
+   },
+   "warnings": [
+    "subtopic 2.2 title drift (page-wrap artifact): kept 'Organisation and management'; also seen ['Organisation and management continued']",
+    "subtopic 2.4 title drift (page-wrap artifact): kept 'Motivating employees'; also seen ['Motivating employees continued']",
+    "subtopic 3.3 title drift (page-wrap artifact): kept 'Marketing mix'; also seen ['Marketing mix continued']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
   "cie-igcse-chemistry-23": {
    "qual": "cie-igcse-chemistry-2023-2025",
    "rule": {
@@ -28,6 +530,810 @@
     "suffixed": 1,
     "examples": [
      "7.2.2a"
+    ]
+   }
+  },
+  "cie-igcse-computer-science-23": {
+   "qual": "cie-igcse-computer-science-2023-2025",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 7,
+    "subtopics": 21,
+    "specPoints": 88,
+    "parsePool": 88,
+    "scopedPool": 88,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 6 title drift (page-wrap artifact): kept 'Automated and emerging technologies'; also seen ['Algorithm design and problem-solving']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 5,
+    "examples": [
+     "6.3.1a",
+     "6.3.2a",
+     "6.3.3a",
+     "6.3.4a",
+     "8.1.1a"
+    ]
+   }
+  },
+  "cie-igcse-economics-20": {
+   "qual": "cie-igcse-economics-2023-2025",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 6,
+    "subtopics": 39,
+    "specPoints": 129,
+    "parsePool": 129,
+    "scopedPool": 129,
+    "orphans": 0
+   },
+   "warnings": [
+    "subtopic 4.3 title drift (page-wrap artifact): kept 'Fiscal policy'; also seen ['Fiscal policy continued']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-economics-25": {
+   "qual": "cie-igcse-economics-2027-2029",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 6,
+    "subtopics": 36,
+    "specPoints": 113,
+    "parsePool": 113,
+    "scopedPool": 113,
+    "orphans": 0
+   },
+   "warnings": [
+    "subtopic 2.2 title drift (page-wrap artifact): kept 'Demand'; also seen ['Demand continued']",
+    "subtopic 3.3 title drift (page-wrap artifact): kept 'Workers'; also seen ['Workers continued']",
+    "subtopic 3.7 title drift (page-wrap artifact): kept 'Types of markets'; also seen ['Types of markets continued']",
+    "subtopic 4.2 title drift (page-wrap artifact): kept 'Fiscal policy'; also seen ['Fiscal policy continued']",
+    "subtopic 5.2 title drift (page-wrap artifact): kept 'Poverty'; also seen ['Poverty continued']",
+    "subtopic 6.2 title drift (page-wrap artifact): kept 'Globalisation and trade restrictions'; also seen ['Globalisation and trade restrictions continued']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-english-language-20": {
+   "qual": "cie-igcse-english-language-2024-2026",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 14,
+    "subtopics": 14,
+    "specPoints": 163,
+    "parsePool": 163,
+    "scopedPool": 163,
+    "orphans": 0
+   },
+   "warnings": [
+    "topic S1 title drift (page-wrap artifact): kept 'Why choose this syllabus?'; also seen ['Planning and Teaching and Learning and revision Results']",
+    "topic S2 title drift (page-wrap artifact): kept 'Syllabus overview'; also seen ['Reading']",
+    "topic S4 title drift (page-wrap artifact): kept 'Speaking and Listening'; also seen ['Details of the assessment']",
+    "topic S5 title drift (page-wrap artifact): kept 'Level Marks Description'; also seen ['What else you need to know']",
+    "duplicate subtopic title 'General' in section 'General' (official key _) — suffixed with key",
+    "duplicate subtopic title 'General' in section 'General' (official key _) — suffixed with key",
+    "duplicate subtopic title 'General' in section 'General' (official key _) — suffixed with key",
+    "duplicate subtopic title 'General' in section 'General' (official key _) — suffixed with key",
+    "duplicate subtopic title 'General' in section 'General' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Level Marks Description' in section 'Level Marks Description' (official key _) — suffixed with key"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-english-language-25": {
+   "qual": "cie-igcse-english-language-2027-2029",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 23,
+    "subtopics": 23,
+    "specPoints": 209,
+    "parsePool": 209,
+    "scopedPool": 209,
+    "orphans": 0
+   },
+   "warnings": [
+    "topic S1 title drift (page-wrap artifact): kept 'Why choose this syllabus?'; also seen ['Level Marks Description']",
+    "topic S2 title drift (page-wrap artifact): kept 'Syllabus overview'; also seen ['Level Marks Description']",
+    "topic S4 title drift (page-wrap artifact): kept 'Details of the assessment'; also seen ['6 9–10 General']",
+    "topic S5 title drift (page-wrap artifact): kept 'Specific – descriptive Specific – narrative'; also seen ['What else you need to know']",
+    "duplicate subtopic title 'Specific – descriptive Specific – narrative' in section 'Specific – descriptive Specific – narrative' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Specific – descriptive Specific – narrative' in section 'Specific – descriptive Specific – narrative' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Specific – descriptive Specific – narrative' in section 'Specific – descriptive Specific – narrative' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Specific – descriptive Specific – narrative' in section 'Specific – descriptive Specific – narrative' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Specific – descriptive Specific – narrative' in section 'Specific – descriptive Specific – narrative' (official key _) — suffixed with key"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-english-literature-21": {
+   "qual": "cie-igcse-english-literature-2023-2025",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 15,
+    "subtopics": 15,
+    "specPoints": 203,
+    "parsePool": 203,
+    "scopedPool": 203,
+    "orphans": 0
+   },
+   "warnings": [
+    "duplicate subtopic title 'Section A: Poetry' in section 'Section A: Poetry' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Set texts for examination in 2023 – Paper' in section 'Set texts for examination in 2023 – Paper' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Section A: Poetry' in section 'Section A: Poetry' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Section A: Poetry' in section 'Section A: Poetry' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Section B: Prose' in section 'Section B: Prose' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Set texts for examination in 2024 – Paper' in section 'Set texts for examination in 2024 – Paper' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Section A: Poetry' in section 'Section A: Poetry' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Section A: Poetry' in section 'Section A: Poetry' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Section B: Prose' in section 'Section B: Prose' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Set texts for examination in 2025 – Paper' in section 'Set texts for examination in 2025 – Paper' (official key _) — suffixed with key"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-environmental-management-25": {
+   "qual": "cie-igcse-environmental-management-2027-2029",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 7,
+    "subtopics": 30,
+    "specPoints": 142,
+    "parsePool": 142,
+    "scopedPool": 142,
+    "orphans": 0
+   },
+   "warnings": [
+    "subtopic 1.3 title drift (page-wrap artifact): kept 'Sustainable management of rocks, ores and minerals'; also seen ['Sustainable management of rocks, ores and minerals continued']",
+    "subtopic 2.1 title drift (page-wrap artifact): kept 'Soils and crop growth'; also seen ['Soils and crop growth continued']",
+    "subtopic 2.2 title drift (page-wrap artifact): kept 'Food production and crop yield'; also seen ['Food production and crop yield continued']",
+    "subtopic 2.3 title drift (page-wrap artifact): kept 'Soil erosion'; also seen ['Soil erosion continued']",
+    "subtopic 3.1 title drift (page-wrap artifact): kept 'Water sources and supply'; also seen ['Water sources and supply continued']",
+    "subtopic 3.2 title drift (page-wrap artifact): kept 'Water pollution'; also seen ['Water pollution continued']",
+    "subtopic 3.4 title drift (page-wrap artifact): kept 'Marine aquaculture'; also seen ['Marine aquaculture continued']",
+    "subtopic 3.5 title drift (page-wrap artifact): kept 'Oil pollution'; also seen ['Oil pollution continued']",
+    "subtopic 3.6 title drift (page-wrap artifact): kept 'Plastic pollution'; also seen ['Plastic pollution continued']",
+    "subtopic 4.2 title drift (page-wrap artifact): kept 'Climate change'; also seen ['Climate change continued']",
+    "subtopic 5.1 title drift (page-wrap artifact): kept 'Ecosystems'; also seen ['Ecosystems continued']",
+    "subtopic 5.4 title drift (page-wrap artifact): kept 'Fieldwork investigations'; also seen ['Fieldwork investigations continued']",
+    "subtopic 6.1 title drift (page-wrap artifact): kept 'Earthquakes and volcanoes'; also seen ['Earthquakes and volcanoes continued']",
+    "subtopic 7.1 title drift (page-wrap artifact): kept 'Human population density, distribution and structure'; also seen ['Human population density, distribution and structure continued']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-further-maths-additional-maths-25": {
+   "qual": "cie-igcse-further-maths-additional-maths-2025-2027",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 14,
+    "subtopics": 34,
+    "specPoints": 77,
+    "parsePool": 68,
+    "scopedPool": 68,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "fm25 topics 3/9/12 materialized (T-SPECS-CIE-PARSE-REPAIR-2): +3 topics, +9 subtopics, +9 points (3.1.1,3.2.1,3.3.1,9.1.1,12.1.1-12.5.1), statement/example split policy codified (over-split codes byte-stable; sub-bullet-less statements land as point N.M.1)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 1,
+    "examples": [
+     "10.6.1a"
+    ]
+   }
+  },
+  "cie-igcse-geography-20": {
+   "qual": "cie-igcse-geography-2025-2026",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 3,
+    "subtopics": 19,
+    "specPoints": 113,
+    "parsePool": 113,
+    "scopedPool": 113,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-geography-25": {
+   "qual": "cie-igcse-geography-2025-2026",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 3,
+    "subtopics": 19,
+    "specPoints": 113,
+    "parsePool": 113,
+    "scopedPool": 113,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-history-18": {
+   "qual": "cie-igcse-history-2024-2026",
+   "rule": {
+    "kind": "all",
+    "topic_split_map": {
+     "S4.012": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.013": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.014": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.015": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.016": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.017": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.018": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.019": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.020": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.021": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.022": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.023": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.024": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.025": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.026": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.027": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.028": [
+      "S4L",
+      "2 To what extent was the League of Nations a success?"
+     ],
+     "S4.029": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ],
+     "S4.030": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ],
+     "S4.031": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ],
+     "S4.032": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ],
+     "S4.033": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ],
+     "S4.034": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ],
+     "S4.035": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ],
+     "S4.036": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ],
+     "S4.037": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ],
+     "S4.038": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ],
+     "S4.039": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ],
+     "S4.040": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ],
+     "S4.041": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ],
+     "S4.042": [
+      "S4H",
+      "3 How far was Hitler’s foreign policy to blame for the outbreak of war in Europe in 1939?"
+     ]
+    }
+   },
+   "counts": {
+    "topics": 23,
+    "subtopics": 23,
+    "specPoints": 371,
+    "parsePool": 371,
+    "scopedPool": 371,
+    "orphans": 0
+   },
+   "warnings": [
+    "T-SPECS-TS4-REPAIR-1 topic split applied: S4.012-028 -> topic 'S4L' (Core B 2, League of Nations), S4.029-042 -> topic 'S4H' (Core B 3, Hitler's foreign policy); official codes STABLE; the parse's topic field mislabels S4.029-042 as the League section (the section-3 heading was missed at the Core A -> Core B boundary)",
+    "topic S1 title drift (page-wrap artifact): kept 'Were the revolutions of 1848 important?'; also seen ['nineteenth century?']",
+    "topic S2 title drift (page-wrap artifact): kept 'How was Italy unified?'; also seen ['6 What caused the First World War?']",
+    "topic S3 title drift (page-wrap artifact): kept 'How was Germany unified?'; also seen ['1 Was the Treaty of Versailles fair?']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-ict-21": {
+   "qual": "cie-igcse-ict-2023-2025",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 15,
+    "subtopics": 52,
+    "specPoints": 95,
+    "parsePool": 95,
+    "scopedPool": 95,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 18 title drift (page-wrap artifact): kept 'Databases'; also seen ['Presentations']",
+    "duplicate subtopic title 'Manipulate data' in section 'Spreadsheets' (official key 20.2) — suffixed with key",
+    "duplicate subtopic title 'Present data' in section 'Spreadsheets' (official key 20.3) — suffixed with key"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 6,
+    "examples": [
+     "18.2.1a",
+     "21.2.1a",
+     "21.3.1a",
+     "4.1.1a",
+     "4.1.2a",
+     "8.2.1a"
+    ]
+   }
+  },
+  "cie-igcse-maths-25-core": {
+   "qual": "cie-igcse-maths-2025-2027",
+   "rule": {
+    "kind": "code_prefix",
+    "value": "C"
+   },
+   "counts": {
+    "topics": 9,
+    "subtopics": 53,
+    "specPoints": 112,
+    "parsePool": 290,
+    "scopedPool": 112,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic C4.1 title drift (page-wrap artifact): kept 'Geometrical terms Notes and examples'; also seen ['Geometrical terms (continued) Notes and examples']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 2,
+    "examples": [
+     "C4.1.1a",
+     "C7.1.1a"
+    ]
+   }
+  },
+  "cie-igcse-maths-25-extended": {
+   "qual": "cie-igcse-maths-2025-2027",
+   "rule": {
+    "kind": "code_prefix",
+    "value": "E"
+   },
+   "counts": {
+    "topics": 9,
+    "subtopics": 72,
+    "specPoints": 178,
+    "parsePool": 290,
+    "scopedPool": 178,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic E4.1 title drift (page-wrap artifact): kept 'Geometrical terms Notes and examples'; also seen ['Geometrical terms (continued) Notes and examples']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 4,
+    "examples": [
+     "E2.10.1a",
+     "E6.3.1a",
+     "E6.5.1a",
+     "E7.1.1a"
+    ]
+   }
+  },
+  "cie-igcse-maths-international-maths-23-core": {
+   "qual": "cie-igcse-maths-international-maths-2025-2027",
+   "rule": {
+    "kind": "code_prefix",
+    "value": "C"
+   },
+   "counts": {
+    "topics": 10,
+    "subtopics": 55,
+    "specPoints": 109,
+    "parsePool": 274,
+    "scopedPool": 109,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic C5.1 title drift (page-wrap artifact): kept 'Geometrical terms Notes and examples'; also seen ['Geometrical terms (continued) Notes and examples']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 3,
+    "examples": [
+     "C10.5.1a",
+     "C5.1.3a",
+     "C8.1.1a"
+    ]
+   }
+  },
+  "cie-igcse-maths-international-maths-23-extended": {
+   "qual": "cie-igcse-maths-international-maths-2025-2027",
+   "rule": {
+    "kind": "code_prefix",
+    "value": "E"
+   },
+   "counts": {
+    "topics": 10,
+    "subtopics": 70,
+    "specPoints": 165,
+    "parsePool": 274,
+    "scopedPool": 165,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic E5.1 title drift (page-wrap artifact): kept 'Geometrical terms Notes and examples'; also seen ['Geometrical terms']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 7,
+    "examples": [
+     "E10.5.1a",
+     "E5.1.1a",
+     "E5.1.2a",
+     "E5.1.3a",
+     "E7.3.1a",
+     "E7.5.1a",
+     "E8.1.1a"
+    ]
+   }
+  },
+  "cie-igcse-physics-23": {
+   "qual": "cie-igcse-physics-2023-2025",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 6,
+    "subtopics": 24,
+    "specPoints": 294,
+    "parsePool": 294,
+    "scopedPool": 294,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic 1.5 title drift (page-wrap artifact): kept 'Forces'; also seen ['Forces continued']",
+    "subtopic 1.7 title drift (page-wrap artifact): kept 'Energy, work and power'; also seen ['Energy, work and power continued']",
+    "subtopic 2.1 title drift (page-wrap artifact): kept 'Kinetic particle model of matter'; also seen ['Kinetic particle model of matter continued']",
+    "subtopic 2.3 title drift (page-wrap artifact): kept 'Transfer of thermal energy'; also seen ['Transfer of thermal energy continued']",
+    "subtopic 3.1 title drift (page-wrap artifact): kept 'General properties of waves'; also seen ['General properties of waves continued']",
+    "subtopic 3.2 title drift (page-wrap artifact): kept 'Light'; also seen ['Light continued']",
+    "subtopic 3.3 title drift (page-wrap artifact): kept 'Electromagnetic spectrum'; also seen ['Electromagnetic spectrum continued']",
+    "subtopic 3.4 title drift (page-wrap artifact): kept 'Sound'; also seen ['Sound continued']",
+    "subtopic 4.2 title drift (page-wrap artifact): kept 'Electrical quantities'; also seen ['Electrical quantities continued']",
+    "subtopic 4.3 title drift (page-wrap artifact): kept 'Electric circuits'; also seen ['Electric circuits continued']",
+    "subtopic 4.5 title drift (page-wrap artifact): kept 'Electromagnetic effects'; also seen ['Electromagnetic effects continued']",
+    "subtopic 5.2 title drift (page-wrap artifact): kept 'Radioactivity'; also seen ['Radioactivity continued']",
+    "subtopic 6.1 title drift (page-wrap artifact): kept 'Earth and the Solar System'; also seen ['Earth and the Solar System continued']",
+    "subtopic 6.2 title drift (page-wrap artifact): kept 'Stars and the Universe'; also seen ['Stars and the Universe continued']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 106,
+    "examples": [
+     "1.5.1a",
+     "1.5.1b",
+     "1.5.2a",
+     "1.5.2b",
+     "1.5.3a",
+     "1.5.3b",
+     "1.5.4a",
+     "1.5.5a"
+    ]
+   }
+  },
+  "cie-igcse-religious-studies-23": {
+   "qual": "cie-igcse-religious-studies-2025-2027",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 18,
+    "subtopics": 85,
+    "specPoints": 364,
+    "parsePool": 364,
+    "scopedPool": 364,
+    "orphans": 0
+   },
+   "warnings": [
+    "duplicate subtopic title 'Changes to festivals and fasts' in section 'Festivals and fasts' (official key I4.4) — suffixed with key",
+    "duplicate subtopic title 'Tradition and change' in section 'Rites of passage; religion and the family' (official key I5.5) — suffixed with key",
+    "duplicate subtopic title 'Changes to festivals and fasts' in section 'Festivals and fasts' (official key J4.5) — suffixed with key",
+    "duplicate subtopic title 'Tradition and change' in section 'Rites of passage; religion and the family' (official key J5.7) — suffixed with key"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-science-co-ordinated-sciences-double-award-23-biology": {
+   "qual": "cie-igcse-science-co-ordinated-sciences-double-award-2025-2027",
+   "rule": {
+    "kind": "scope_eq",
+    "value": "Biology"
+   },
+   "counts": {
+    "topics": 19,
+    "subtopics": 43,
+    "specPoints": 230,
+    "parsePool": 632,
+    "scopedPool": 230,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry": {
+   "qual": "cie-igcse-science-co-ordinated-sciences-double-award-2025-2027",
+   "rule": {
+    "kind": "scope_eq",
+    "value": "Chemistry"
+   },
+   "counts": {
+    "topics": 12,
+    "subtopics": 46,
+    "specPoints": 181,
+    "parsePool": 632,
+    "scopedPool": 181,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-science-co-ordinated-sciences-double-award-23-physics": {
+   "qual": "cie-igcse-science-co-ordinated-sciences-double-award-2025-2027",
+   "rule": {
+    "kind": "scope_eq",
+    "value": "Physics"
+   },
+   "counts": {
+    "topics": 6,
+    "subtopics": 23,
+    "specPoints": 221,
+    "parsePool": 632,
+    "scopedPool": 221,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic P4 title drift (page-wrap artifact): kept 'Electricity and magnetism'; also seen ['Electricity']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 74,
+    "examples": [
+     "P1.5.1a",
+     "P1.5.1b",
+     "P1.5.2a",
+     "P1.5.2b",
+     "P1.5.3a",
+     "P1.5.3b",
+     "P1.6.1a",
+     "P1.6.1b"
+    ]
+   }
+  },
+  "cie-igcse-science-combined-science-23-biology": {
+   "qual": "cie-igcse-science-combined-science-2023-2024",
+   "rule": {
+    "kind": "scope_eq",
+    "value": "Biology"
+   },
+   "counts": {
+    "topics": 12,
+    "subtopics": 20,
+    "specPoints": 70,
+    "parsePool": 238,
+    "scopedPool": 70,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic B10 title drift (page-wrap artifact): kept 'Reproduction'; also seen ['Coordination and response']",
+    "subtopic B10.3 title drift (page-wrap artifact): kept 'Sexual reproduction in humans'; also seen ['Sexual reproduction in humans continued']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-science-combined-science-23-chemistry": {
+   "qual": "cie-igcse-science-combined-science-2023-2024",
+   "rule": {
+    "kind": "scope_eq",
+    "value": "Chemistry"
+   },
+   "counts": {
+    "topics": 12,
+    "subtopics": 32,
+    "specPoints": 82,
+    "parsePool": 238,
+    "scopedPool": 82,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic C8 title drift (page-wrap artifact): kept 'Acids, bases and salts'; also seen ['Chemical reactions']",
+    "topic C11 title drift (page-wrap artifact): kept 'Air and water'; also seen ['Metals']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-igcse-science-combined-science-23-physics": {
+   "qual": "cie-igcse-science-combined-science-2023-2024",
+   "rule": {
+    "kind": "scope_eq",
+    "value": "Physics"
+   },
+   "counts": {
+    "topics": 6,
+    "subtopics": 24,
+    "specPoints": 86,
+    "parsePool": 238,
+    "scopedPool": 86,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 8,
+    "examples": [
+     "P3.3.1a",
+     "P3.3.1b",
+     "P3.3.1c",
+     "P3.3.2a",
+     "P4.2.1a",
+     "P4.2.1b",
+     "P4.2.2a",
+     "P4.2.3a"
     ]
    }
   }
