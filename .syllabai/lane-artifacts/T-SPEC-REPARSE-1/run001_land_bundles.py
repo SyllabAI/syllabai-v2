@@ -23,6 +23,17 @@ COURSES = [
     'cie-as-maths-20-probability-and-statistics-1',
     'cie-as-maths-20-pure-1',
     'ial-physics-19',
+    # T-SPEC-REPARSE-1 run-002: the ial-maths unit fleet
+    'ial-maths-20-pure-1',
+    'ial-maths-20-pure-2',
+    'ial-maths-20-pure-3',
+    'ial-maths-20-pure-4',
+    'ial-maths-20-mechanics-1',
+    'ial-maths-20-mechanics-2',
+    'ial-maths-20-statistics-1',
+    'ial-maths-20-statistics-2',
+    'ial-maths-20-decision-1',
+    'ial-further-maths-18-further-pure-1',
 ]
 WHOLESALE = {'cie-as-environmental-management-20'}
 
