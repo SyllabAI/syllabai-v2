@@ -79,6 +79,7 @@ import {
 } from "@/lib/progress";
 import type { ExamQuestion } from "@/lib/contracts";
 import { scrollBehavior } from "@/lib/reduced-motion";
+import { radioNav, rovingTabIndex } from "@/lib/radio-nav";
 import { partDisplayLabel } from "@/lib/part-label";
 import { api, ApiError, aiAskErrorMessage } from "@/lib/api";
 import type {
@@ -1412,7 +1413,7 @@ function McqPart({
             role={multi ? "group" : "radiogroup"}
             aria-label={multi ? "MCQ options — tick the correct set" : "MCQ options"}
           >
-            {options.map((o) => {
+            {options.map((o, oi) => {
               const isChosen = multi ? chosenMulti.includes(o.label) : chosen === o.label;
               const showCorrect = submitted && o.isCorrect;
               const showWrong = submitted && isChosen && !o.isCorrect;
@@ -1421,7 +1422,15 @@ function McqPart({
                   key={o.label}
                   role={multi ? "checkbox" : "radio"}
                   aria-checked={isChosen}
-                  tabIndex={submitted ? -1 : 0}
+                  tabIndex={
+                    // audit-0006 PR-2 — the radiogroup keyboard laws:
+                    // single-choice = roving tabindex (ONE tab stop in the
+                    // group, arrows do the moving, like a native radio set);
+                    // multi = per-option tab stops (the checkbox law — each
+                    // box is independently reachable with Tab). Submitted
+                    // options leave the tab order either way.
+                    submitted ? -1 : multi ? 0 : rovingTabIndex(isChosen, oi === 0, chosen !== null)
+                  }
                   onClick={() => (multi ? toggleMulti(o.label) : setChosen(o.label))}
                   onKeyDown={(e) => {
                     if (submitted) return;
@@ -1429,6 +1438,21 @@ function McqPart({
                       e.preventDefault();
                       if (multi) toggleMulti(o.label);
                       else setChosen(o.label);
+                      return;
+                    }
+                    if (!multi) {
+                      // radio law — selection follows focus (focus + click,
+                      // so the single onClick stays the one selection path)
+                      const group = e.currentTarget.parentElement;
+                      const items = group
+                        ? Array.from(group.querySelectorAll<HTMLElement>('[role="radio"]'))
+                        : [];
+                      const nav = radioNav(e.key, items.indexOf(e.currentTarget), items.length);
+                      if (nav.handled && nav.nextIndex !== null) {
+                        e.preventDefault();
+                        items[nav.nextIndex].focus();
+                        items[nav.nextIndex].click();
+                      }
                     }
                   }}
                   className={cn(
@@ -1475,7 +1499,7 @@ function McqPart({
               role={multi ? "group" : "radiogroup"}
               aria-label={multi ? "MCQ answer letters — tick the correct set" : "MCQ answer letters"}
             >
-              {options.map((o) => {
+              {options.map((o, oi) => {
                 const isChosen = multi ? chosenMulti.includes(o.label) : chosen === o.label;
                 const showCorrect = submitted && o.isCorrect;
                 const showWrong = submitted && isChosen && !o.isCorrect;
@@ -1485,7 +1509,31 @@ function McqPart({
                     role={multi ? "checkbox" : "radio"}
                     aria-checked={isChosen}
                     disabled={submitted}
+                    tabIndex={
+                      // audit-0006 PR-2 — same radiogroup laws as the full
+                      // option list: roving tabindex when single-choice,
+                      // per-option stops when multi (disabled already drops
+                      // submitted options from the tab order)
+                      submitted ? -1 : multi ? 0 : rovingTabIndex(isChosen, oi === 0, chosen !== null)
+                    }
                     onClick={() => (multi ? toggleMulti(o.label) : setChosen(o.label))}
+                    onKeyDown={(e) => {
+                      if (submitted) return;
+                      if (!multi && (e.key.startsWith("Arrow") || e.key === "Home" || e.key === "End")) {
+                        // radio law — selection follows focus (focus + click,
+                        // so the single onClick stays the one selection path)
+                        const group = e.currentTarget.parentElement;
+                        const items = group
+                          ? Array.from(group.querySelectorAll<HTMLElement>('[role="radio"]'))
+                          : [];
+                        const nav = radioNav(e.key, items.indexOf(e.currentTarget), items.length);
+                        if (nav.handled && nav.nextIndex !== null) {
+                          e.preventDefault();
+                          items[nav.nextIndex].focus();
+                          items[nav.nextIndex].click();
+                        }
+                      }
+                    }}
                     className={cn(
                       // audit 2026-10-30 (motion review): press feedback —
                       // scale(0.97) on :active, the tactile floor for the
