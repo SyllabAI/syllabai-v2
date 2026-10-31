@@ -1,0 +1,48 @@
+{
+ "task": "RN-DEBRIS-2 run-001 full-dict re-pass",
+ "date": "2026-10-31",
+ "target": "apps/hub/content/cie-a-level-physics-25/notes.json (note rn_hCnswpDDCpNDKfkn, Elastic & Inelastic Collisions)",
+ "dictRebuild": {
+  "fetcher": "apps/hub/scripts/cie/cie_fetch_math_23a.ts (of-record, unmodified)",
+  "pages": 1,
+  "pairs": 13,
+  "unparsed": 0,
+  "cache": "work/mathml-cache/4d90212dd14718a3.json",
+  "mirror": ".syllabai/lane-artifacts/RN-DEBRIS-2/pagedict-rn_hCnswpDDCpNDKfkn.json"
+ },
+ "conversions": [
+  {
+   "id": "span-1",
+   "old": "`E_ k a f t e r end_=1 half (m_ x+m_ y) v_ x+y end_ superscript 2`",
+   "new": "$E_{kafter} = \\frac{1}{2} \\left(m_{x} + m_{y}\\right) v_{x + y}^{2}$",
+   "via": "page-evidence-dict",
+   "dictKey": "E subscript k space a f t e r end subscript space equals space 1 half open parentheses m subscript x plus m subscript y close parentheses v subscript x plus y end subscript superscript 2"
+  },
+  {
+   "id": "span-2",
+   "old": "`E_ k a f t e r end_=1 half (2m) v_ x+y end_ superscript 2`",
+   "new": "$E_{kafter} = \\frac{1}{2} \\left(2 m\\right) v_{x + y}^{2}$",
+   "via": "page-evidence-dict",
+   "dictKey": "E subscript k space a f t e r end subscript space equals space 1 half open parentheses 2 m close parentheses v subscript x plus y end subscript superscript 2"
+  },
+  {
+   "id": "dollar-1",
+   "old": "$E_ k a f t e r end_=1 \\text{half} ( 2m ) (v_ x / 2)²=1 \\text{fourth} m v_ x^{2}$",
+   "new": "$E_{kafter} = \\frac{1}{2} \\left(2 m\\right) \\left(\\frac{v_{x}}{2}\\right)^{2} = \\frac{1}{4} m v_{x}^{2}$",
+   "via": "page-evidence-dict",
+   "dictKey": "E subscript k space a f t e r end subscript equals 1 half left parenthesis 2 m right parenthesis open parentheses v subscript x over 2 close parentheses squared equals 1 fourth m v subscript x superscript 2"
+  }
+ ],
+ "normalization": "dict tex verbatim modulo \\textrm{ } artifact gaps (of-record mergeTextRuns law) + E_{k a f t e r}->E_{kafter} letter-run collapse matching the note's own 6 established clean occurrences",
+ "guards": "3/3 green (katex throwOnError, hasResidualGrammar false, gate MARK false) — apps/hub/scripts/rn_debris2_guard.ts",
+ "gates": {
+  "corpus": "PASSED span 0 / dollar 0 / textwrap 4 / multiline 0 / baretext 5 / dangling 0",
+  "flashcardSync": "exit 0",
+  "cieValidator": "PASSED",
+  "baseline": "speech-baseline.json span 2->0, frozenNote amended"
+ },
+ "protectedUntouched": [
+  "textwrap 4 authored \\text{numerator}/\\text{denominator} labels",
+  "baretext 5: 2 'end cell walls' prose false-positives + 3 ![...]-led structurally excluded alt lines"
+ ]
+}
