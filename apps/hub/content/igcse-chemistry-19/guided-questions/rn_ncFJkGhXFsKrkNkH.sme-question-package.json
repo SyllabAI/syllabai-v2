@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_ncFJkGhXFsKrkNkH",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "cfcb584184878ace4ce4054f80c37ae3c24d7447fc7bb8f1e0fd0d10a952b7c9",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "f45ad62c093dc30fe1fdf3336f0aa27e6dfcd034984aaaf6e3088572e909a8aa",
+    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
   },
   "packageId": "igcse-chemistry::rn_ncFJkGhXFsKrkNkH",
   "subject": "igcse-chemistry",
@@ -192,6 +192,54 @@
       ]
     },
     {
+      "id": "rn_ncFJkGhXFsKrkNkH::L1::Q6",
+      "moduleId": "rn_ncFJkGhXFsKrkNkH::L1",
+      "stem": "State the reagent that adds across the ethene double bond in industrial ethanol production.",
+      "misconceptionClass": "steam hydration recall",
+      "kind": "recall",
+      "modelAnswer": "Steam adds across the ethene double bond.",
+      "keywords": [
+        "steam"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ncFJkGhXFsKrkNkH::L1::Q7",
+      "moduleId": "rn_ncFJkGhXFsKrkNkH::L1",
+      "stem": "Give the two operating numbers — temperature and pressure — for the industrial hydration of ethene.",
+      "misconceptionClass": "hydration conditions recall",
+      "kind": "recall",
+      "modelAnswer": "The plant runs at about 300 degrees Celsius and 60 to 70 atmospheres of pressure.",
+      "keywords": [
+        "300"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ncFJkGhXFsKrkNkH::L1::Q8",
+      "moduleId": "rn_ncFJkGhXFsKrkNkH::L1",
+      "stem": "Explain why unreacted ethene can be drawn off from the top of the chamber while the liquids stay behind.",
+      "misconceptionClass": "ethene boils far below the liquids",
+      "kind": "explain-why",
+      "modelAnswer": "Ethene boils at minus 103 degrees Celsius, far below the boiling points of ethanol and water, so it leaves as a gas while the liquids remain.",
+      "keywords": [
+        "103"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ncFJkGhXFsKrkNkH::L1::Q9",
+      "moduleId": "rn_ncFJkGhXFsKrkNkH::L1",
+      "stem": "An oil refinery cracks long molecules before the ethene is hydrated. State the family of feedstock that cracking starts from and name the product stream used here.",
+      "misconceptionClass": "cracking supplies the ethene",
+      "kind": "application",
+      "modelAnswer": "Cracking starts from long-chain hydrocarbons and produces the ethene feedstock that the hydration plant uses.",
+      "keywords": [
+        "hydrocarbons"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_ncFJkGhXFsKrkNkH::L2::Q1",
       "moduleId": "rn_ncFJkGhXFsKrkNkH::L2",
       "stem": "Why must air be kept out of a fermentation vessel?",
@@ -370,6 +418,54 @@
           "misconception": "volatility reversed"
         }
       ]
+    },
+    {
+      "id": "rn_ncFJkGhXFsKrkNkH::L2::Q6",
+      "moduleId": "rn_ncFJkGhXFsKrkNkH::L2",
+      "stem": "Write the equation, with formulae, for the fermentation of glucose.",
+      "misconceptionClass": "fermentation equation recall",
+      "kind": "recall",
+      "modelAnswer": "C6H12O6 gives 2CO2 plus 2C2H5OH — glucose breaks into carbon dioxide and ethanol.",
+      "keywords": [
+        "c6h12o6"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ncFJkGhXFsKrkNkH::L2::Q7",
+      "moduleId": "rn_ncFJkGhXFsKrkNkH::L2",
+      "stem": "State the optimum temperature for yeast in fermentation and the window around it.",
+      "misconceptionClass": "fermentation temperature window",
+      "kind": "recall",
+      "modelAnswer": "Yeast works best at about 30 degrees Celsius, inside a 25 to 35 degree window.",
+      "keywords": [
+        "30"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ncFJkGhXFsKrkNkH::L2::Q8",
+      "moduleId": "rn_ncFJkGhXFsKrkNkH::L2",
+      "stem": "Explain why the fermentation vessel is sealed from the air.",
+      "misconceptionClass": "anaerobic respiration requirement",
+      "kind": "explain-why",
+      "modelAnswer": "Air is excluded because the yeast must respire without oxygen to make ethanol — the ethanol-forming route is anaerobic.",
+      "keywords": [
+        "oxygen"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ncFJkGhXFsKrkNkH::L2::Q9",
+      "moduleId": "rn_ncFJkGhXFsKrkNkH::L2",
+      "stem": "A brewer's vat stops producing ethanol at about 15 percent alcohol even though sugar remains. State the cause and the operating consequence for the plant.",
+      "misconceptionClass": "yeast death caps the batch",
+      "kind": "application",
+      "modelAnswer": "The yeast has died — yeast dies once the alcohol reaches about 15 percent, so the route runs in batches rather than continuously.",
+      "keywords": [
+        "dies"
+      ],
+      "options": []
     }
   ]
 }

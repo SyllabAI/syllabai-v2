@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_2z53qk2CdWrVVc7V",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "69ed43dbdfcf6f17fb2519c7aba7c54bfe97f423faecd8226b59239a98b1da1c",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "3d008dd076b42402adb7041c4218998b4c68edc5ff53765efd9a98624dcd9271",
+    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
   },
   "packageId": "igcse-chemistry::rn_2z53qk2CdWrVVc7V",
   "subject": "igcse-chemistry",
@@ -192,6 +192,54 @@
       ]
     },
     {
+      "id": "rn_2z53qk2CdWrVVc7V::L1::Q6",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L1",
+      "stem": "Write down the family formula that every carboxylic acid member follows.",
+      "misconceptionClass": "family general formula recall",
+      "kind": "recall",
+      "modelAnswer": "The general formula is CnH2n+1COOH, which can be shortened to RCOOH.",
+      "keywords": [
+        "cnh2n"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L1::Q7",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L1",
+      "stem": "How many alkyl carbons does the family formula count for methanoic acid, HCOOH?",
+      "misconceptionClass": "methanoic acid n=0 recall",
+      "kind": "recall",
+      "modelAnswer": "For methanoic acid the alkyl chain count n is zero — HCOOH carries just the carboxyl carbon.",
+      "keywords": [
+        "zero"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L1::Q8",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L1",
+      "stem": "Explain why the n in CnH2n+1COOH does not count the carboxyl carbon itself.",
+      "misconceptionClass": "n counts alkyl chain only",
+      "kind": "explain-why",
+      "modelAnswer": "Because n counts only the alkyl chain; the COOH group is written separately at the end, so n never includes the carboxyl carbon.",
+      "keywords": [
+        "alkyl"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L1::Q9",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L1",
+      "stem": "Propanoic acid has three carbons in total. Using the family formula CnH2n+1COOH, state the value of n for propanoic acid.",
+      "misconceptionClass": "applying n to a named member",
+      "kind": "application",
+      "modelAnswer": "n equals two for propanoic acid — two alkyl carbons plus the carboxyl carbon gives three in total.",
+      "keywords": [
+        "two"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_2z53qk2CdWrVVc7V::L2::Q1",
       "moduleId": "rn_2z53qk2CdWrVVc7V::L2",
       "stem": "Which name belongs to CH3CH2COOH?",
@@ -370,6 +418,54 @@
           "misconception": "ring invented"
         }
       ]
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L2::Q6",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L2",
+      "stem": "Name the first four carboxylic acids in order of chain length.",
+      "misconceptionClass": "first four members recall",
+      "kind": "recall",
+      "modelAnswer": "Methanoic acid, ethanoic acid, propanoic acid and butanoic acid.",
+      "keywords": [
+        "methanoic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L2::Q7",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L2",
+      "stem": "What is vinegar, in terms of its composition?",
+      "misconceptionClass": "vinegar composition recall",
+      "kind": "recall",
+      "modelAnswer": "Vinegar is an aqueous solution of ethanoic acid, at about 5 percent by volume.",
+      "keywords": [
+        "ethanoic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L2::Q8",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L2",
+      "stem": "Explain how the name ethanoic acid encodes the chain length of the acid.",
+      "misconceptionClass": "naming law alkan plus oic acid",
+      "kind": "explain-why",
+      "modelAnswer": "The name is built as alkan plus oic acid, and the ethan root stands for the two-carbon alkyl chain.",
+      "keywords": [
+        "ethan"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L2::Q9",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L2",
+      "stem": "Give the molecular formula of the acid that follows ethanoic acid in the series, and name it.",
+      "misconceptionClass": "extending the series one member",
+      "kind": "application",
+      "modelAnswer": "The next member is propanoic acid, CH3CH2COOH, with three carbons in total.",
+      "keywords": [
+        "propanoic"
+      ],
+      "options": []
     }
   ]
 }

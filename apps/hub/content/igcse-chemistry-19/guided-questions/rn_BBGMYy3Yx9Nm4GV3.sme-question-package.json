@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_BBGMYy3Yx9Nm4GV3",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "cfd4e43359088cf93699e675b05c81c578e2d8f8b0b1239329550b4505805e22",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "62f0c7c8ca23f81f53951469ea314a5020003b6aa001d97f855bdc0d1e3d19f5",
+    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
   },
   "packageId": "igcse-chemistry::rn_BBGMYy3Yx9Nm4GV3",
   "subject": "igcse-chemistry",
@@ -192,6 +192,54 @@
       ]
     },
     {
+      "id": "rn_BBGMYy3Yx9Nm4GV3::L1::Q6",
+      "moduleId": "rn_BBGMYy3Yx9Nm4GV3::L1",
+      "stem": "Name the product trio from reacting a carboxylic acid with a metal carbonate.",
+      "misconceptionClass": "carbonate product set recall",
+      "kind": "recall",
+      "modelAnswer": "A salt, water and carbon dioxide are produced.",
+      "keywords": [
+        "dioxide"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BBGMYy3Yx9Nm4GV3::L1::Q7",
+      "moduleId": "rn_BBGMYy3Yx9Nm4GV3::L1",
+      "stem": "Give the suffix that ends the name of every salt made from a carboxylic acid.",
+      "misconceptionClass": "anoate suffix recall",
+      "kind": "recall",
+      "modelAnswer": "Every such salt name ends in anoate.",
+      "keywords": [
+        "anoate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BBGMYy3Yx9Nm4GV3::L1::Q8",
+      "moduleId": "rn_BBGMYy3Yx9Nm4GV3::L1",
+      "stem": "Ethanoic acid fizzes when magnesium is added. Name the gas and explain where it comes from.",
+      "misconceptionClass": "metal route gas identity",
+      "kind": "explain-why",
+      "modelAnswer": "The gas is hydrogen — the metal displaces the acidic hydrogen from the COOH group of the acid.",
+      "keywords": [
+        "hydrogen"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BBGMYy3Yx9Nm4GV3::L1::Q9",
+      "moduleId": "rn_BBGMYy3Yx9Nm4GV3::L1",
+      "stem": "Methanoic acid reacts with sodium carbonate in solution. State the name of the salt formed.",
+      "misconceptionClass": "naming the methanoate salt",
+      "kind": "application",
+      "modelAnswer": "The salt is sodium methanoate, formed alongside water and carbon dioxide.",
+      "keywords": [
+        "methanoate"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_BBGMYy3Yx9Nm4GV3::L2::Q1",
       "moduleId": "rn_BBGMYy3Yx9Nm4GV3::L2",
       "stem": "In the equation 2CH3COOH + Mg gives (CH3COO)2Mg + H2, why are two acid molecules needed?",
@@ -370,6 +418,54 @@
           "misconception": "reactant confused"
         }
       ]
+    },
+    {
+      "id": "rn_BBGMYy3Yx9Nm4GV3::L2::Q6",
+      "moduleId": "rn_BBGMYy3Yx9Nm4GV3::L2",
+      "stem": "Give the balanced equation, in symbols, for ethanoic acid reacting with magnesium.",
+      "misconceptionClass": "magnesium ethanoate equation recall",
+      "kind": "recall",
+      "modelAnswer": "2CH3COOH + Mg gives (CH3COO)2Mg + H2.",
+      "keywords": [
+        "mg"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BBGMYy3Yx9Nm4GV3::L2::Q7",
+      "moduleId": "rn_BBGMYy3Yx9Nm4GV3::L2",
+      "stem": "Name the three products when butanoic acid reacts with potassium carbonate.",
+      "misconceptionClass": "butanoate carbonate product set",
+      "kind": "recall",
+      "modelAnswer": "Potassium butanoate, water and carbon dioxide.",
+      "keywords": [
+        "butanoate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BBGMYy3Yx9Nm4GV3::L2::Q8",
+      "moduleId": "rn_BBGMYy3Yx9Nm4GV3::L2",
+      "stem": "Explain why two molecules of ethanoic acid are needed for every magnesium atom in the reaction equation.",
+      "misconceptionClass": "two acids satisfy one metal ion",
+      "kind": "explain-why",
+      "modelAnswer": "Each ethanoate ion carries one negative charge, and magnesium forms 2+ ions, so two acid molecules are needed to satisfy the metal ion twice.",
+      "keywords": [
+        "ion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BBGMYy3Yx9Nm4GV3::L2::Q9",
+      "moduleId": "rn_BBGMYy3Yx9Nm4GV3::L2",
+      "stem": "Complete the symbol equation: 2CH3CH2CH2COOH + K2CO3 gives two molecules of the salt, plus water and carbon dioxide. State the formula of one salt molecule.",
+      "misconceptionClass": "writing the butanoate salt formula",
+      "kind": "application",
+      "modelAnswer": "Each salt molecule is CH3CH2CH2COOK — potassium butanoate.",
+      "keywords": [
+        "butanoate"
+      ],
+      "options": []
     }
   ]
 }
