@@ -7,7 +7,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { pollMark, pollUntilTerminal, requestRegionMark, type MirroredPollSnapshot } from "./paper-marks";
+import { pollMark, pollUntilTerminal, requestRegionMark, fetchPaperMarksLedger, type MirroredPollSnapshot } from "./paper-marks";
 
 const TOKEN = "tok";
 
@@ -206,5 +206,97 @@ describe("T-MG-CROPMARK-1 run-002 — pollUntilTerminal (the loop law)", () => {
       poll: async () => ({ outcome: "failed" }),
     });
     expect(r).toEqual({ status: "failed", snapshot: null });
+  });
+});
+
+// ── T-MG-FEEDBACK-1 run-001 — fetchPaperMarksLedger (the ledger read) ───────
+
+const LEDGER = {
+  documentRefType: "paper_asset",
+  documentRefId: "47000000-0000-4000-8000-000000000001",
+  regions: [
+    {
+      regionKey: "1MA1/1F-q9.p1",
+      page: 4,
+      score: 1,
+      maxScore: 1,
+      awards: [
+        {
+          id: "aa000000-0000-4000-8000-000000000001",
+          code: "B1",
+          awarded: true,
+          score: 1,
+          maxScore: 1,
+          ordinal: 0,
+          markPointId: "ab000000-0000-4000-8000-000000000001",
+          page: 4,
+          workingRef: null,
+          pipelineVersion: "paper-mark/v1",
+          feedback: {
+            attempt: "full",
+            chatMessage: "So it says simplify…",
+            pointsScored: ["B1: combined the terms"],
+            pointsNotScored: [],
+            thoughtProcess: "2x\n\nThe transcription matches the scheme.",
+            strategiesForImprovement: [],
+          },
+          createdAt: "2026-10-31T00:00:00Z",
+        },
+      ],
+      workingBlocks: [],
+    },
+  ],
+};
+
+describe("T-MG-FEEDBACK-1 run-001 — fetchPaperMarksLedger", () => {
+  test("no token → no_token before any request", async () => {
+    const { impl, calls } = fetchDouble([{ status: 200, body: LEDGER }]);
+    const r = await fetchPaperMarksLedger(LEDGER.documentRefId, null, impl);
+    expect(r).toEqual({ outcome: "no_token" });
+    expect(calls).toHaveLength(0);
+  });
+
+  test("no origin → unconfigured", async () => {
+    const saved = process.env.NEXT_PUBLIC_API_BASE_URL;
+    delete process.env.NEXT_PUBLIC_API_BASE_URL;
+    try {
+      const { impl } = fetchDouble([]);
+      const r = await fetchPaperMarksLedger(LEDGER.documentRefId, TOKEN, impl);
+      expect(r).toEqual({ outcome: "unconfigured" });
+    } finally {
+      process.env.NEXT_PUBLIC_API_BASE_URL = saved;
+    }
+  });
+
+  test("200 ledger parses through the strict mirror and rides the query of record", async () => {
+    const { impl, calls } = fetchDouble([{ status: 200, body: LEDGER }]);
+    const r = await fetchPaperMarksLedger(LEDGER.documentRefId, TOKEN, impl);
+    expect(r.outcome).toBe("ledger");
+    if (r.outcome === "ledger") {
+      expect(r.ledger.regions).toHaveLength(1);
+      expect(r.ledger.regions[0]!.score).toBe(1);
+      expect(r.ledger.regions[0]!.awards[0]!.code).toBe("B1");
+    }
+    expect(calls[0]!.url).toContain("/api/v1/paper-marks?");
+    expect(calls[0]!.url).toContain("documentRefType=paper_asset");
+    expect(calls[0]!.url).toContain(`documentRefId=${LEDGER.documentRefId}`);
+    expect((calls[0]!.init?.headers as Record<string, string>).Authorization).toBe(`Bearer ${TOKEN}`);
+  });
+
+  test("honest-empty ledger (regions: []) is a DEFINED outcome", async () => {
+    const { impl } = fetchDouble([
+      { status: 200, body: { documentRefType: "paper_asset", documentRefId: LEDGER.documentRefId, regions: [] } },
+    ]);
+    const r = await fetchPaperMarksLedger(LEDGER.documentRefId, TOKEN, impl);
+    expect(r.outcome).toBe("ledger");
+  });
+
+  test("non-200 / malformed / network → failed — never a fabricated ledger", async () => {
+    const down = fetchDouble([{ status: 500, body: { error: "x" } }]);
+    expect((await fetchPaperMarksLedger(LEDGER.documentRefId, TOKEN, down.impl)).outcome).toBe("failed");
+    const bad = fetchDouble([{ status: 200, body: { documentRefType: "paper_asset", regions: "nope" } }]);
+    expect((await fetchPaperMarksLedger(LEDGER.documentRefId, TOKEN, bad.impl)).outcome).toBe("failed");
+    const err = fetchDouble([{ throw: true }]);
+    expect((await fetchPaperMarksLedger(LEDGER.documentRefId, TOKEN, err.impl)).outcome).toBe("failed");
   });
 });

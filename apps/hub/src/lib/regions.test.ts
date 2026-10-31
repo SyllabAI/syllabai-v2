@@ -4,7 +4,7 @@
  * is honest-null. Network-free (fetch is stubbed).
  */
 import { describe, expect, test, afterEach } from "bun:test";
-import { fetchPaperRegions } from "./regions";
+import { fetchPaperRegions, resolvePaperAsset, resolvePaperAssetCached } from "./regions";
 
 const ORIGINAL = { base: process.env.NEXT_PUBLIC_API_BASE_URL, core: process.env.SYLLABAI_CORE_BASE_URL };
 
@@ -100,5 +100,73 @@ describe("fetchPaperRegions — the mirror law", () => {
     expect(res!.regions[0]!.questionPartId).not.toBeNull(); // the WIRED law
     expect(seenAuth).toBe("Bearer tok-123");
     expect(seenPath).toContain("/api/v1/paper-assets/47000000-0000-4000-8000-000000000001/regions");
+  });
+});
+
+// ── T-MG-FEEDBACK-1 run-001 — resolvePaperAsset (the identity bridge) ───────
+
+describe("resolvePaperAsset — the honest-failure law", () => {
+  test("no base url → null; no token → null without a request", async () => {
+    delete process.env.NEXT_PUBLIC_API_BASE_URL;
+    delete process.env.SYLLABAI_CORE_BASE_URL;
+    expect(await resolvePaperAsset("1MA1/1F", "June 2025", "tok")).toBeNull();
+    process.env.NEXT_PUBLIC_API_BASE_URL = "https://api.example.test";
+    stubFetch(() => {
+      throw new Error("must not be called");
+    });
+    expect(await resolvePaperAsset("1MA1/1F", "June 2025", null)).toBeNull();
+  });
+
+  test("404 (the not-ingested steady state) → null — never a fabricated uuid", async () => {
+    process.env.NEXT_PUBLIC_API_BASE_URL = "https://api.example.test";
+    stubFetch(() => Promise.resolve(new Response("{}", { status: 404 })));
+    expect(await resolvePaperAsset("1MA1/1F", "June 2025", "tok")).toBeNull();
+  });
+
+  test("malformed body / network error → null", async () => {
+    process.env.NEXT_PUBLIC_API_BASE_URL = "https://api.example.test";
+    stubFetch(() => Promise.resolve(new Response(JSON.stringify({ paperId: "nope" }), { status: 200 })));
+    expect(await resolvePaperAsset("1MA1/1F", "June 2025", "tok")).toBeNull();
+    stubFetch(() => Promise.reject(new Error("down")));
+    expect(await resolvePaperAsset("1MA1/1F", "June 2025", "tok")).toBeNull();
+  });
+});
+
+describe("resolvePaperAsset — the mirror + request law", () => {
+  test("valid pair parses, rides the auth header, encodes the query", async () => {
+    process.env.NEXT_PUBLIC_API_BASE_URL = "https://api.example.test";
+    let seenUrl = "";
+    let seenAuth = "";
+    stubFetch((url: unknown, init?: RequestInit) => {
+      seenUrl = String(url);
+      seenAuth = String((init?.headers as Record<string, string>).Authorization);
+      return Promise.resolve(
+        new Response(JSON.stringify({ paperId: "47000000-0000-4000-8000-000000000009" }), { status: 200 }),
+      );
+    });
+    const res = await resolvePaperAsset("1MA1/1F", "June 2025", "tok-123");
+    expect(res).toEqual({ paperId: "47000000-0000-4000-8000-000000000009" });
+    expect(seenUrl).toContain("/api/v1/paper-assets/resolve?");
+    expect(seenUrl).toContain("paperCode=1MA1%2F1F");
+    expect(seenUrl).toContain("sessionLabel=June%202025");
+    expect(seenAuth).toBe("Bearer tok-123");
+  });
+
+  test("resolvePaperAssetCached memoizes one promise per identity pair", async () => {
+    process.env.NEXT_PUBLIC_API_BASE_URL = "https://api.example.test";
+    let calls = 0;
+    stubFetch(() => {
+      calls += 1;
+      return Promise.resolve(
+        new Response(JSON.stringify({ paperId: "47000000-0000-4000-8000-000000000008" }), { status: 200 }),
+      );
+    });
+    const [a, b] = await Promise.all([
+      resolvePaperAssetCached("4CH1/1C", "June 2025", "tok"),
+      resolvePaperAssetCached("4CH1/1C", "June 2025", "tok"),
+    ]);
+    expect(a).toEqual({ paperId: "47000000-0000-4000-8000-000000000008" });
+    expect(b).toEqual(a);
+    expect(calls).toBe(1);
   });
 });

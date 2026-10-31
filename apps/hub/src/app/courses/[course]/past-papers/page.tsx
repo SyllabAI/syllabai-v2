@@ -29,6 +29,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { InteractiveChip } from "@/components/pastpapers/interactive-chip";
 import { MockResultsStrip } from "@/components/pastpapers/mock-results-strip";
+import { PaperMarksRollup } from "@/components/pastpapers/paper-marks-rollup";
 import { allCourseParams } from "@/lib/static-params";
 
 /** PDFs stream from raw.githubusercontent.com — warm the connection early. */
@@ -202,6 +203,10 @@ export default async function PastPapersPage({
                       <div className="min-w-0 flex-1 basis-52">
                         <p className="flex flex-wrap items-center gap-1.5">
                           <span className="font-mono text-sm font-semibold">{p.ref}</span>
+                          {/* T-MG-FEEDBACK-1: the learner's AI-mark rollup for
+                              this paper, from the award ledger (absent unless
+                              the paper is ingested AND carries marks). */}
+                          <PaperMarksRollup paperCode={p.ref} sessionLabel={sessionLabel(p.sessionId)} />
                           <span className="text-xs text-muted-foreground">{p.title}</span>
                           {p.specBadge && (
                             <Badge variant="outline" className="text-[10px] text-muted-foreground">

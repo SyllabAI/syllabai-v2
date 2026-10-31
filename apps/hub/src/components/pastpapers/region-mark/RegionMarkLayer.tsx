@@ -36,11 +36,14 @@ import { createPortal } from "react-dom";
 import { Check, Loader2, ScanSearch, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { Markdown } from "@/components/markdown";
 import { cn } from "@/lib/utils";
 import { fetchPaperRegions, type MirroredRegionsResponse } from "@/lib/regions";
 import {
+  fetchPaperMarksLedger,
   pollUntilTerminal,
   requestRegionMark,
+  type MirroredPaperMarksLedger,
 } from "@/lib/paper-marks";
 import { readLiveInk } from "@/components/pastpapers/ink/live-ink";
 import type { PaperAssetRegion } from "@syllabai/contracts";
@@ -57,6 +60,11 @@ import {
   regionMarkReducer,
   type RegionMarkEntry,
 } from "./region-mark-state";
+import {
+  feedbackCopyModel,
+  ledgerRegionScores,
+  ledgerTotals,
+} from "./paper-feedback";
 
 const TOKEN_KEY = "syllabai.token";
 
@@ -90,6 +98,10 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
   const [payload, setPayload] = useState<MirroredRegionsResponse | null>(null);
   const [holders, setHolders] = useState<HolderEntry[]>([]);
   const [marks, dispatch] = useReducer(regionMarkReducer, undefined, initialRegionMarkState);
+  const [ledger, setLedger] = useState<MirroredPaperMarksLedger | null>(null);
+  /** bumped after a succeeded session mark — the highlight/rollup truth
+   * RE-READS the ledger (pin c: never a local counter). */
+  const [ledgerVersion, setLedgerVersion] = useState(0);
   const cancelledRef = useRef<Set<string>>(new Set());
 
   // The v0 pilot posture (the InkLayer token law, verbatim).
@@ -123,9 +135,39 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
     [payload],
   );
 
-  // Holder presence tracking (structure-only observer; the InkLayer law).
+  // THE LEDGER (T-MG-FEEDBACK-1): the calling learner's award rows for
+  // this paper — the highlight + paper-rollup truth of record. Honest-null
+  // on any failure (no marks shown); refetched on ledgerVersion bumps
+  // (after each succeeded session mark — Σ from the ledger, never a local
+  // counter). no-store (the paper-marks client law). Deferred one
+  // microtask (the MockResultsStrip hydration-safe pattern).
   useEffect(() => {
-    if (!enabled || !hostRef.current) return;
+    let alive = true;
+    void Promise.resolve().then(() => {
+      if (!alive) return;
+      if (!token || !paperId) {
+        setLedger(null);
+        return;
+      }
+      void fetchPaperMarksLedger(paperId, token).then((r) => {
+        if (alive) setLedger(r.outcome === "ledger" ? r.ledger : null);
+      });
+    });
+    return () => {
+      alive = false;
+    };
+  }, [token, paperId, ledgerVersion]);
+
+  /** regionKey → the served award slice (the highlight join). */
+  const ledgerScores = useMemo(() => (ledger ? ledgerRegionScores(ledger) : null), [ledger]);
+  const paperTotals = useMemo(() => (ledger && ledger.regions.length > 0 ? ledgerTotals(ledger) : null), [ledger]);
+
+  // Holder presence tracking (structure-only observer; the InkLayer law).
+  // T-MG-FEEDBACK-1: holders are also wanted when the interactive surface
+  // is OFF but the ledger carries marks (the highlight-only overlay).
+  const wantsHolders = enabled || (ledgerScores !== null && ledgerScores.size > 0);
+  useEffect(() => {
+    if (!wantsHolders || !hostRef.current) return;
     const host = hostRef.current;
     const rescan = () => {
       const found: HolderEntry[] = [];
@@ -144,7 +186,7 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
     const obs = new MutationObserver(rescan);
     obs.observe(host, { childList: true, subtree: true });
     return () => obs.disconnect();
-  }, [enabled, hostRef]);
+  }, [wantsHolders, hostRef]);
 
   useEffect(() => () => {
     cancelledRef.current = new Set();
@@ -192,6 +234,7 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
     if (loop.status === "cancelled") return;
     if (loop.status === "succeeded") {
       dispatch({ type: "succeeded", regionId: region.id, snapshot: loop.snapshot });
+      setLedgerVersion((v) => v + 1); // the highlights/rollup re-read the LEDGER
       return;
     }
     if (loop.status === "failed") {
@@ -230,6 +273,7 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
     if (loop.status === "cancelled") return;
     if (loop.status === "succeeded") {
       dispatch({ type: "succeeded", regionId, snapshot: loop.snapshot });
+      setLedgerVersion((v) => v + 1);
       return;
     }
     if (loop.status === "timeout") {
@@ -253,6 +297,9 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
 
   // Zero-chrome gates (the honest defaults): anonymous, no deep-link
   // paperId, no sourceUrl, no regions plane, or an unmarkable paper.
+  // T-MG-FEEDBACK-1: a ledger with marks does NOT force the surface on —
+  // highlights render inside the same gate (a paper without a regions
+  // plane has no rects to anchor them, and stays a clean paper).
   if (!token || !paperId || !sourceUrl || !payload || markableRegions.length === 0) return null;
 
   const active: RegionMarkEntry | null = marks.activeId ? marks.entries[marks.activeId] ?? null : null;
@@ -260,33 +307,56 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
 
   return (
     <>
-      <Button
-        size="sm"
-        variant={enabled ? "secondary" : "outline"}
-        className={cn(
-          "absolute bottom-3 left-2 z-40 h-8 gap-1.5 bg-background/95 text-xs shadow-md backdrop-blur",
+      <div className="absolute bottom-3 left-2 z-40 flex items-center gap-2">
+        <Button
+          size="sm"
+          variant={enabled ? "secondary" : "outline"}
+          className={cn("h-8 gap-1.5 bg-background/95 text-xs shadow-md backdrop-blur")}
+          aria-pressed={enabled}
+          aria-label="Mark regions with AI (crop-then-mark)"
+          onClick={() => setEnabled((v) => !v)}
+        >
+          <ScanSearch className="size-3.5" aria-hidden /> Mark regions
+        </Button>
+        {/* the paper-level rollup (pin c): Σ score / Σ maxScore FROM THE
+            LEDGER — the same truth the highlights draw, re-read after every
+            succeeded mark. Hidden while zero marks exist. */}
+        {paperTotals && (
+          <span
+            className="rounded-full border bg-background/95 px-2 py-0.5 text-[11px] font-medium tabular-nums text-emerald-700 shadow-sm backdrop-blur"
+            title="Your AI-marked total for this paper (from the award ledger)"
+          >
+            Marked {paperTotals.score}/{paperTotals.max}
+          </span>
         )}
-        aria-pressed={enabled}
-        aria-label="Mark regions with AI (crop-then-mark)"
-        onClick={() => setEnabled((v) => !v)}
-      >
-        <ScanSearch className="size-3.5" aria-hidden /> Mark regions
-      </Button>
+      </div>
 
-      {/* one clickable-rect portal per mounted page holder */}
-      {enabled &&
-        holders.map(({ page, el }) => {
-          const rects = markableRegions.flatMap((r) =>
-            r.rects
-              .filter((rect) => rect.page === page)
-              .map((rect) => ({ region: r, rect })),
-          );
-          if (rects.length === 0) return null;
-          return createPortal(
-            <div className="pointer-events-none absolute inset-0 z-30" aria-hidden="false">
-              {rects.map(({ region, rect }) => {
+      {/* one rect portal per mounted page holder: interactive buttons while
+          the surface is ON; ledger highlights (pointer-events-none) always
+          when the surface is OFF but marks exist */}
+      {holders.map(({ page, el }) => {
+        const rects = markableRegions.flatMap((r) =>
+          r.rects
+            .filter((rect) => rect.page === page)
+            .map((rect) => ({ region: r, rect })),
+        );
+        const marks_ = ledgerScores
+          ? [...ledgerScores.entries()]
+              .map(([regionKey, total]) => ({ regionKey, total }))
+              .filter(({ regionKey }) => rects.some(({ region }) => region.regionKey === regionKey))
+          : [];
+        // surface OFF + no marks on this page → nothing (the clean paper);
+        // surface ON → the interactive buttons render regardless.
+        if (!enabled && marks_.length === 0) return null;
+        return createPortal(
+          <div className="pointer-events-none absolute inset-0 z-30" aria-hidden="false">
+            {/* the interactive buttons (surface ON only — the gesture law) */}
+            {enabled &&
+              rects.map(({ region, rect }) => {
                 const entry = marks.entries[region.id];
-                const busy = entry?.phase === "cropping" || entry?.phase === "queued" || entry?.phase === "running";
+                const busy =
+                  entry?.phase === "cropping" || entry?.phase === "queued" || entry?.phase === "running";
+                const awarded = ledgerScores?.get(region.regionKey) ?? null;
                 return (
                   <button
                     key={`${region.id}:${rect.ordinal}`}
@@ -294,7 +364,7 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
                     className={cn(
                       "pointer-events-auto absolute rounded-sm border-2 border-dashed border-emerald-600/80 bg-emerald-400/5 transition-colors",
                       "hover:bg-emerald-400/20 hover:border-emerald-600 focus-visible:bg-emerald-400/20 focus-visible:outline-2 focus-visible:outline-emerald-700",
-                      busy && "border-solid border-emerald-600 bg-emerald-400/20",
+                      (busy || awarded) && "border-solid border-emerald-600 bg-emerald-400/20",
                     )}
                     style={{
                       left: `${rect.x * 100}%`,
@@ -302,15 +372,54 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
                       width: `${rect.width * 100}%`,
                       height: `${rect.height * 100}%`,
                     }}
-                    aria-label={`Mark region ${region.regionKey} — ${region.marks} mark${region.marks === 1 ? "" : "s"} with AI`}
+                    aria-label={
+                      awarded
+                        ? `Region ${region.regionKey} — marked ${awarded.score}/${awarded.max} (mark again with AI)`
+                        : `Mark region ${region.regionKey} — ${region.marks} mark${region.marks === 1 ? "" : "s"} with AI`
+                    }
                     onClick={() => void markRegion(region, page)}
-                  />
+                  >
+                    {awarded && (
+                      <span className="absolute -top-2.5 right-1 rounded-full bg-emerald-600 px-1.5 py-px text-[10px] font-semibold leading-tight text-white shadow">
+                        {awarded.score}/{awarded.max}
+                      </span>
+                    )}
+                  </button>
                 );
               })}
-            </div>,
-            el,
-          );
-        })}
+            {/* the LEDGER highlights (always — with the surface OFF they
+                are the whole overlay, pointer-events-none: the paper keeps
+                its gestures) */}
+            {marks_.map(({ regionKey, total }) => {
+              const hits = rects.filter(({ region }) => region.regionKey === regionKey);
+              if (hits.length === 0) return null;
+              return (
+                <div key={`hl-${regionKey}`}>
+                  {hits.map(({ region, rect }) =>
+                    enabled ? null : ( // the ON-state button already carries the chip
+                      <div
+                        key={`${region.id}:${rect.ordinal}`}
+                        className="absolute rounded-sm border-2 border-solid border-emerald-600/70 bg-emerald-400/5"
+                        style={{
+                          left: `${rect.x * 100}%`,
+                          top: `${rect.y * 100}%`,
+                          width: `${rect.width * 100}%`,
+                          height: `${rect.height * 100}%`,
+                        }}
+                      >
+                        <span className="absolute -top-2.5 right-1 rounded-full bg-emerald-600 px-1.5 py-px text-[10px] font-semibold leading-tight text-white shadow">
+                          {total.score}/{total.max}
+                        </span>
+                      </div>
+                    ),
+                  )}
+                </div>
+              );
+            })}
+          </div>,
+          el,
+        );
+      })}
 
       {/* the honest result panel — the most recent mark */}
       {active && (
@@ -413,7 +522,10 @@ function PanelBody({
     );
   }
   const totals = awardsTotals(snap);
-  const failed = totals.score < totals.max;
+  // T-MG-FEEDBACK-1 (pin b): the FIVE feedbackObject fields via the copy
+  // model of record — chatMessage as markdown, both point lists, the
+  // transcription-first reasoning, and the FAILURE-ONLY strategies law.
+  const copy = snap.feedback ? feedbackCopyModel(snap.feedback, totals.score, totals.max) : null;
   return (
     <div className="space-y-2">
       <p className="flex items-center gap-1.5 font-medium text-emerald-700">
@@ -433,22 +545,32 @@ function PanelBody({
           ))}
         </ul>
       )}
-      {snap.feedback?.chatMessage && <p className="whitespace-pre-wrap text-[13px]">{snap.feedback.chatMessage}</p>}
-      {snap.feedback && snap.feedback.pointsNotScored.length > 0 && (
+      {copy && copy.chatMessage.length > 0 && <Markdown className="text-[13px]">{copy.chatMessage}</Markdown>}
+      {copy && copy.scored.length > 0 && (
         <div className="text-[13px]">
-          <p className="font-medium">Not scored</p>
+          <p className="font-medium">Scored</p>
           <ul className="list-disc pl-4">
-            {snap.feedback.pointsNotScored.map((p, i) => (
+            {copy.scored.map((p, i) => (
               <li key={i}>{p}</li>
             ))}
           </ul>
         </div>
       )}
-      {snap.feedback && failed && snap.feedback.strategiesForImprovement.length > 0 && (
+      {copy && copy.notScored.length > 0 && (
+        <div className="text-[13px]">
+          <p className="font-medium">Not scored</p>
+          <ul className="list-disc pl-4">
+            {copy.notScored.map((p, i) => (
+              <li key={i}>{p}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {copy && copy.strategies && (
         <div className="text-[13px]">
           <p className="font-medium">How to improve</p>
           <ul className="list-disc pl-4">
-            {snap.feedback.strategiesForImprovement.map((p, i) => (
+            {copy.strategies.map((p, i) => (
               <li key={i}>{p}</li>
             ))}
           </ul>
@@ -458,6 +580,12 @@ function PanelBody({
         <details className="text-[13px]">
           <summary className="cursor-pointer text-muted-foreground">Your working (transcribed)</summary>
           <p className="mt-1 whitespace-pre-wrap">{snap.transcription}</p>
+        </details>
+      )}
+      {copy && copy.transcription && (
+        <details className="text-[13px]">
+          <summary className="cursor-pointer text-muted-foreground">Marker reasoning (transcription-first)</summary>
+          <p className="mt-1 whitespace-pre-wrap">{copy.transcription}</p>
         </details>
       )}
       {snap.receipt && (

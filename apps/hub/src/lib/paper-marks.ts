@@ -238,3 +238,93 @@ export async function pollUntilTerminal(deps: PollLoopDeps): Promise<PollLoopRes
   }
   return { status: "timeout", markId: deps.markId };
 }
+
+// ── T-MG-FEEDBACK-1 run-001 — the ledger read (plan §3.6 surfaces) ──────────
+// GET /api/v1/paper-marks — the getRegionMarks contract (the Phase-2
+// servedMarkAward/servedRegionMarks/paperMarksLedger shapes, mirrored per
+// the SCHEMA MIRROR law above; canonical shapes imported TYPE-ONLY).
+
+const servedAwardMirror = z.object({
+  id: z.string().uuid(),
+  code: z.string().min(1),
+  awarded: z.boolean(),
+  score: z.number().int().min(0),
+  maxScore: z.number().int().min(1),
+  ordinal: z.number().int().min(0),
+  markPointId: z.string().uuid().nullable(),
+  page: z.number().int().min(1).nullable(),
+  workingRef: z.string().uuid().nullable(),
+  pipelineVersion: z.string().min(1),
+  feedback: feedbackMirror,
+  createdAt: z.string(),
+});
+
+const servedWorkingBlockMirror = z.object({
+  id: z.string().uuid(),
+  kind: z.enum(["ink", "text", "structure"]),
+  content: z.unknown(),
+  createdAt: z.string(),
+});
+
+const regionMarksMirror = z.object({
+  regionKey: z.string().min(1),
+  page: z.number().int().min(1).nullable(),
+  score: z.number().int().min(0),
+  maxScore: z.number().int().min(0),
+  awards: z.array(servedAwardMirror),
+  workingBlocks: z.array(servedWorkingBlockMirror),
+});
+
+const ledgerMirror = z.object({
+  documentRefType: z.enum([
+    "printable",
+    "paper_asset",
+    "uploaded_paper",
+    "daily_five_sheet",
+    "collection_worksheet",
+    "paper_mark_submission",
+  ]),
+  documentRefId: z.string().uuid(),
+  regions: z.array(regionMarksMirror),
+});
+
+export type MirroredPaperMarksLedger = z.infer<typeof ledgerMirror>;
+
+/** The defined GET ledger outcomes (the honest-outcome law, run-002 shape). */
+export type PaperMarksLedgerResult =
+  | { outcome: "ledger"; ledger: MirroredPaperMarksLedger }
+  | { outcome: "no_token" }
+  | { outcome: "unconfigured" }
+  | { outcome: "failed" };
+
+/**
+ * GET /api/v1/paper-marks?documentRefType=paper_asset&documentRefId=<uuid>
+ * — the CALLING learner's award ledger for one paper (Phase-2 posture: the
+ * learner rides the JWT, never the wire). The 200 honest-empty
+ * (regions: []) is a DEFINED outcome; everything undefined (network, 5xx,
+ * garbage) collapses to "failed" — never a fabricated ledger.
+ */
+export async function fetchPaperMarksLedger(
+  documentRefId: string,
+  token: string | null,
+  fetchImpl: typeof fetch = fetch,
+): Promise<PaperMarksLedgerResult> {
+  if (!token) return { outcome: "no_token" };
+  const base = marksBaseUrl();
+  if (!base) return { outcome: "unconfigured" };
+  try {
+    const qs = `documentRefType=paper_asset&documentRefId=${encodeURIComponent(documentRefId)}`;
+    const res = await fetchImpl(`${base}/api/v1/paper-marks?${qs}`, {
+      headers: authHeaders(token),
+      cache: "no-store",
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!res.ok) return { outcome: "failed" };
+    const parsed = ledgerMirror.safeParse(await res.json().catch(() => null));
+    return parsed.success
+      ? { outcome: "ledger", ledger: parsed.data as MirroredPaperMarksLedger }
+      : { outcome: "failed" };
+  } catch {
+    return { outcome: "failed" };
+  }
+}

@@ -91,3 +91,62 @@ export async function fetchPaperRegions(
     return null;
   }
 }
+
+// ── T-MG-FEEDBACK-1 run-001 — the corpus-card→ledger identity bridge ────────
+
+/** The strict-shape mirror (paperAssetResolveResponseSchema). */
+const resolveResponseMirror = z.object({ paperId: z.string().uuid() });
+
+export type MirroredPaperAssetResolve = z.infer<typeof resolveResponseMirror>;
+
+/**
+ * GET /api/v1/paper-assets/resolve?paperCode&sessionLabel — honest-null on
+ * any failure. The 404 (a corpus paper not ingested as an exam_papers row)
+ * IS a defined steady state of the Phase-6 rollup: null renders nothing,
+ * never a fabricated 0/0.
+ */
+export async function resolvePaperAsset(
+  paperCode: string,
+  sessionLabel: string,
+  token: string | null,
+  fetchImpl: typeof fetch = fetch,
+): Promise<MirroredPaperAssetResolve | null> {
+  const base = regionsBaseUrl();
+  if (!base || !token) return null;
+  try {
+    const qs = `paperCode=${encodeURIComponent(paperCode)}&sessionLabel=${encodeURIComponent(sessionLabel)}`;
+    const res = await fetchImpl(`${base}/api/v1/paper-assets/resolve?${qs}`, {
+      headers: { Accept: "application/json", Authorization: `Bearer ${token}` },
+      cache: "no-store",
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!res.ok) return null;
+    const parsed = resolveResponseMirror.safeParse(await res.json().catch(() => null));
+    return parsed.success ? parsed.data : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * The per-session promise memo (the paper-card economy: the archive list
+ * mounts one rollup per paper row; React strict-mode double-effects and
+ * re-renders would re-fire identical resolves). Keyed by the identity pair
+ * + token presence; a 404's null is KEPT for the session (honest — a
+ * not-ingested paper does not become ingested mid-page).
+ */
+const resolveMemo = new Map<string, Promise<MirroredPaperAssetResolve | null>>();
+
+export function resolvePaperAssetCached(
+  paperCode: string,
+  sessionLabel: string,
+  token: string | null,
+): Promise<MirroredPaperAssetResolve | null> {
+  const key = `${paperCode}|${sessionLabel}|${token ? "auth" : "anon"}`;
+  let p = resolveMemo.get(key);
+  if (!p) {
+    p = resolvePaperAsset(paperCode, sessionLabel, token).catch(() => null);
+    resolveMemo.set(key, p);
+  }
+  return p;
+}

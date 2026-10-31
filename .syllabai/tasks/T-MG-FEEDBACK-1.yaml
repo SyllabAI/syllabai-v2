@@ -1,0 +1,54 @@
+version: 1
+task:
+  id: T-MG-FEEDBACK-1
+  title: "MG parity Phase 6 — feedback + progress surfaces: the ledger-lit region highlights, the five-field feedback panel, the paper-card rollup, and the DC-7 region-award join (region awards move the rings)"
+  owner: "main agent (Z.ai, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)"
+  status: OPEN  # run-001 (the surfaces) on its branch awaiting the operator merge word
+  priority: P2
+  band: T-MG-MARK-PARITY (interactive paper marking) — additive api modules + hub surfaces over the Phases 1/2/4 planes of record
+  wave: mg-parity-phase6-feedback
+  deps: [T-MG-MP-RECT-1, T-MG-AWARDS-1, T-MG-CROPMARK-1]
+  plan_of_record: "docs/MG-MARK-PARITY-PLAN.md §3.6 (feedback + progress surfaces) + §1.6 (the observed feedbackObject decomposition and the failure-only strategies law)"
+  parent: T-MG-MARK-PARITY-1
+  acceptance_pins:
+    - "(ring pin) a region award advances the topic ring EXACTLY like a marked part (the DC-7 integration-test pattern): the SAME projection reads the mark_awards rows attributed through the definition-plane join (mark_point_id → mark_points.question_part_id → question_parts → question_versions → questions) and the node walk rides question_topics / question_spec_points UNCHANGED — no new projection, no new event store, no schema migration"
+    - "(copy pin) the feedback panel renders all five feedbackObject fields — chatMessage (markdown), pointsScored[], pointsNotScored[], thoughtProcess, strategiesForImprovement[] — with the FAILURE-ONLY strategies law (suppressed on a full-score region even when the payload carries entries)"
+    - "(rollup pin) the paper card shows Σ score / Σ maxScore FROM THE LEDGER (GET /api/v1/paper-marks per-region slices), never a local counter; 'Log your mark' (the manual mock tally) stays untouched"
+  execution_record: >
+    run-001 (2026-10-31). Operator dispatch "Phase 6 — T-MG-FEEDBACK-1"
+    (trace 1a18fd24176264e5). Branch t-mg-feedback-1/run-001 cut at
+    origin/main a0a10923 (R0-AUTO-93's tip). Reality-check first (the
+    standing rule): T-MG-INK-2 run-001 (PR #509, 988688a3), CROPMARK-1
+    run-001 (PR #531, a911c4fe) and run-002 (PR #533, 5e7da07c) all landed;
+    the only open PR (#296) is the unrelated T-SPECS-CIE receipt lane; the
+    suspended merge word's plausible targets are all merged — the lane was
+    clear for Phase 6. THE §3.6 SURFACES, all additive:
+    packages/contracts/src/paper-assets-resolve.ts (NEW file — the
+    corpus-card identity bridge: (paperCode, sessionLabel) → paperId, the
+    seed's uq_exam_paper_identity law of record; 404 = the honest
+    not-ingested steady state) + the index.ts barrel one-liner (the
+    run-001 CROPMARK precedent); apps/api paper-regions service+route (the
+    GET /resolve endpoint, corpus-content auth shell unchanged);
+    services/learner/progress-rollup.ts (the SECOND event fact source of
+    the SAME projection: loadRegionAwardFacts — the region-key dedupe
+    restores the per-part marked-part unit [one region mark = one marked
+    part, however many P1/P1/C1 rows its run assembled]; gradedQuestions ∪
+    the attributed question ids; today.markedParts + the PRACTISE
+    threshold count both sources; attribution is honest-null — a
+    free-form/unresolvable award joins NOTHING and moves no node);
+    apps/hub lib/regions.ts (resolvePaperAsset + the per-session promise
+    memo), lib/paper-marks.ts (fetchPaperMarksLedger — the strict mirror
+    of the Phase-2 ledger contract), region-mark/paper-feedback.ts (PURE
+    copy+rollup model: the five-field decomposition, the failure-only
+    strategies law, Σ from the ledger slices, the regionKey highlight
+    join), RegionMarkLayer.tsx (ledger-driven region highlights with
+    score chips — pointer-events-none with the surface OFF, scored
+    styling + chips on the interactive buttons with the surface ON; the
+    paper-level "Marked 5/11" chip next to the toggle; the panel upgrade
+    to the five-field copy law with chatMessage via the hub Markdown
+    component; ledger re-read after every succeeded mark — Σ from the
+    ledger, never the session reducer), paper-marks-rollup.tsx (NEW — the
+    archive paper-card badge, resolve→ledger→Σ, honest-absent default)
+    + the one-line-per-card mount on the course past-papers page.
+    'Log your mark' (paper-viewer-client's manual mock tally) untouched;
+    pdf-pane.tsx byte-untouched; mock-mode QP exclusion intact.

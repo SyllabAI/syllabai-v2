@@ -45,6 +45,10 @@ function fixture(overrides: {
   marks?: Array<{ question_id: string; created_at: string }>;
   attempts?: Array<{ question_id: string; created_at: string; question_type: string }>;
   viewed?: Array<{ note_id: string; viewed_at: string }>;
+  /** T-MG-FEEDBACK-1: the region-award join rows (the mark_awards →
+   * mark_points → part → version → question chain, AS SERVED by the inner
+   * joins — a row here is a ledger row the SQL attributed). */
+  awards?: Array<{ document_ref_id: string; region_key: string; created_at: string; question_id: string }>;
 } = {}) {
   const rows: Record<string, unknown[]> = {
     // ORDER MATTERS: the most specific key must precede any key that is a
@@ -81,6 +85,7 @@ function fixture(overrides: {
     ],
     "attempts a join questions": overrides.attempts ?? [],
     "ai_mark_events": overrides.marks ?? [],
+    "mark_points mp on mp.id = a.mark_point_id": overrides.awards ?? [],
   };
   const fn = (async (strings: TemplateStringsArray, ...params: unknown[]) => {
     const text = strings.join("?").replace(/\s+/g, " ").trim();
@@ -276,5 +281,104 @@ describe("DC-7 — (c) consistency pin: one projection, one today", () => {
     // and the ring fractions the plan's own tree-reading derives are the
     // SAME walk: the plan projection embeds the progress projection's today
     expect(plan.thresholds).toEqual({ practise: 5 });
+  });
+});
+
+// ── T-MG-FEEDBACK-1 run-001 — the Phase-6 region-award join (plan §3.6) ────
+// The pins: (a) ring pin — a region award advances the topic ring EXACTLY
+// like a marked part (the DC-7 integration-test pattern, mirrored from the
+// (a) event pins above); the unit law — one distinct marked region is one
+// marked part, however many award rows its run assembled; and the
+// honest-null law — an attributed question with no node links moves no
+// ring (real ledger row, no fabricated anchor).
+const PAPER = "d0000000-0000-4000-8000-000000000001";
+
+describe("T-MG-FEEDBACK-1 — the region-award join (plan §3.6)", () => {
+  test("(a) RING PIN: a region award advances the topic ring exactly like a marked part", async () => {
+    // the SAME assertions the ai_mark_events row earned above, earned by a
+    // mark_awards row attributed through the definition-plane join
+    const sql = fixture({
+      awards: [
+        { document_ref_id: PAPER, region_key: "9.p1", created_at: `${TODAY_ISO}07:00:00Z`, question_id: Q2 },
+      ],
+    });
+    const p = await buildProgressProjection(sql, LEARNER, "igcse-chemistry-19", NOW);
+    expect(nodeOf(p, "4CH1-2.1").questions.leafDone).toBe(true);
+    expect(nodeOf(p, "4CH1-S1-b").questions.fraction).toBe(1);
+    expect(nodeOf(p, "4CH1-S1").questions).toEqual({ done: 1, total: 2, fraction: 0.5, leafDone: true });
+    expect(nodeOf(p, "4CH1-S1-a").questions.done).toBe(0);
+    expect(nodeOf(p, "4CH1-2.1").notes.done).toBe(0);
+    expect(p.today.markedParts).toBe(1);
+  });
+
+  test("unit law: three award rows (P1/P1/C1) on ONE region count ONE marked part", async () => {
+    const sql = fixture({
+      awards: [
+        { document_ref_id: PAPER, region_key: "17.p1", created_at: `${TODAY_ISO}07:00:00Z`, question_id: Q2 },
+        { document_ref_id: PAPER, region_key: "17.p1", created_at: `${TODAY_ISO}07:00:01Z`, question_id: Q2 },
+        { document_ref_id: PAPER, region_key: "17.p1", created_at: `${TODAY_ISO}07:00:02Z`, question_id: Q2 },
+      ],
+    });
+    const p = await buildProgressProjection(sql, LEARNER, "igcse-chemistry-19", NOW);
+    expect(p.today.markedParts).toBe(1);
+    // the ring moves once (distinct questions, the same walk as smartmark's)
+    expect(nodeOf(p, "4CH1-S1-b").questions.fraction).toBe(1);
+    const plan = await buildPlanProjection(sql, LEARNER, "igcse-chemistry-19", NOW);
+    expect(plan.tasks.find((t) => t.taskId === "practise:4CH1-S1-b")!.markedParts).toBe(1);
+  });
+
+  test("two distinct regions on one paper are two marked parts", async () => {
+    const sql = fixture({
+      awards: [
+        { document_ref_id: PAPER, region_key: "9.p1", created_at: `${TODAY_ISO}07:00:00Z`, question_id: Q2 },
+        { document_ref_id: PAPER, region_key: "9.a", created_at: `${TODAY_ISO}07:05:00Z`, question_id: Q2 },
+      ],
+    });
+    const p = await buildProgressProjection(sql, LEARNER, "igcse-chemistry-19", NOW);
+    expect(p.today.markedParts).toBe(2);
+    // rings stay per-question distinct (both facts attribute Q2)
+    expect(nodeOf(p, "4CH1-S1-b").questions.fraction).toBe(1);
+  });
+
+  test("honest-null: an attributed question with no node links counts today, moves no ring", async () => {
+    const UNLINKED = "b0000000-0000-4000-8000-000000000009";
+    const sql = fixture({
+      awards: [
+        { document_ref_id: PAPER, region_key: "20.p1", created_at: `${TODAY_ISO}07:00:00Z`, question_id: UNLINKED },
+      ],
+    });
+    const p = await buildProgressProjection(sql, LEARNER, "igcse-chemistry-19", NOW);
+    // the marked-part fact is real (the marking act happened)
+    expect(p.today.markedParts).toBe(1);
+    // but no node moves — no fabricated tree anchor
+    expect(nodeOf(p, "4CH1-S1-b").questions.done).toBe(0);
+    expect(nodeOf(p, "4CH1-S1-a").questions.done).toBe(0);
+  });
+
+  test("the FIFTH distinct marked region flips the PRACTISE task", async () => {
+    const sql = fixture({
+      awards: ["1", "2", "3", "4", "5"].map((n) => ({
+        document_ref_id: PAPER,
+        region_key: `9.p${n}`,
+        created_at: `${TODAY_ISO}0${n}:00:00Z`,
+        question_id: Q2,
+      })),
+    });
+    const plan = await buildPlanProjection(sql, LEARNER, "igcse-chemistry-19", NOW);
+    const practise = plan.tasks.find((t) => t.taskId === "practise:4CH1-S1-b")!;
+    expect(practise.markedParts).toBe(5);
+    expect(practise.complete).toBe(true);
+    expect(practise.autoCompletedBy).toBe("MARKED_PARTS");
+  });
+
+  test("yesterday's region award is cumulative on the rings, out of today", async () => {
+    const sql = fixture({
+      awards: [
+        { document_ref_id: PAPER, region_key: "9.p1", created_at: `${YESTERDAY_ISO}10:00:00Z`, question_id: Q2 },
+      ],
+    });
+    const p = await buildProgressProjection(sql, LEARNER, "igcse-chemistry-19", NOW);
+    expect(nodeOf(p, "4CH1-2.1").questions.leafDone).toBe(true);
+    expect(p.today.markedParts).toBe(0);
   });
 });

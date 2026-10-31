@@ -93,6 +93,27 @@ const LABELED_PART = /^[a-z]/i;
 export class PaperRegions {
   constructor(private readonly sql: SqlFn) {}
 
+  /**
+   * GET /api/v1/paper-assets/resolve — T-MG-FEEDBACK-1 run-001 (plan
+   * §3.6): the corpus-card identity pair (paperCode, sessionLabel) → the
+   * exam_papers uuid the award ledger keys on. The RESOLUTION LAW OF
+   * RECORD is the deployment seed's step (A)
+   * (scripts/seed-mark-point-rects.ts): uq_exam_paper_identity
+   * (paper_code, session_label) — at most one row by constraint. Unknown
+   * pair → 404 (the T-C20 envelope; the honest not-ingested steady state
+   * of a corpus paper, never conflated with malformed input).
+   */
+  async resolve(paperCode: string, sessionLabel: string): Promise<{ paperId: string }> {
+    const rows = (await this.sql`
+      select p.id from exam_papers p
+      where p.paper_code = ${paperCode} and p.session_label = ${sessionLabel}
+    `) as unknown as Array<{ id: string }>;
+    if (rows.length === 0) {
+      throw new NotFoundException("exam paper", `${paperCode} / ${sessionLabel}`);
+    }
+    return { paperId: rows[0]!.id };
+  }
+
   async regions(paperId: string): Promise<PaperAssetRegionsResponse> {
     // (A) the asset exists — the 404 T-C20 path on unknown id.
     const papers = await this.sql`

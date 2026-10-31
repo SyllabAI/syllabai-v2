@@ -2,6 +2,9 @@
  * Paper-assets regions router — T-MG-MP-RECT-1 run-001.
  * Plan of record: docs/MG-MARK-PARITY-PLAN.md §3.1.
  *
+ *   GET /api/v1/paper-assets/resolve?paperCode&sessionLabel
+ *     → { paperId } (200) | 404 unknown pair | 400 malformed query
+ *       (T-MG-FEEDBACK-1 run-001 — the corpus-card→ledger identity bridge)
  *   GET /api/v1/paper-assets/:id/regions
  *     → PaperAssetRegionsResponse (200) | 404 unknown paper | 400 malformed id
  *
@@ -23,7 +26,10 @@ import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../../services/identity/users";
 import { BadRequestException } from "../../services/identity/errors";
 import { requireAuth } from "../../middleware/auth";
-import { paperAssetIdPathSchema } from "@syllabai/contracts";
+import {
+  paperAssetIdPathSchema,
+  paperAssetResolveQuerySchema,
+} from "@syllabai/contracts";
 
 /** Port of MethodArgumentTypeMismatchException handling
  * (GlobalExceptionHandler.java:167-170): 400 bad_request, fixed client
@@ -41,6 +47,21 @@ export function createPaperRegionsRouter(regions: PaperRegions): Hono {
     const gate = requireAuth(c);
     if (gate instanceof Response) return gate;
     await next();
+  });
+
+  // GET /resolve — T-MG-FEEDBACK-1 run-001 (plan §3.6): the corpus-card
+  // identity pair (paperCode, sessionLabel) → { paperId } — the award
+  // ledger's documentRefId (the seed's uq_exam_paper_identity law).
+  // 200 shape | 400 malformed query | 404 unknown pair (the honest
+  // not-ingested steady state). Registered before /:id/regions for
+  // readability; the paths are disjoint (one segment vs two).
+  r.get("/resolve", async (c) => {
+    const parsed = paperAssetResolveQuerySchema.safeParse({
+      paperCode: c.req.query("paperCode"),
+      sessionLabel: c.req.query("sessionLabel"),
+    });
+    if (!parsed.success) throw malformedRequest();
+    return c.json(await regions.resolve(parsed.data.paperCode, parsed.data.sessionLabel));
   });
 
   // GET /:id/regions — the §3.1 contract: 200 shape | 404 unknown | 400

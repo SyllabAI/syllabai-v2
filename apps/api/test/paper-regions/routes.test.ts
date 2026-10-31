@@ -114,3 +114,59 @@ describe("GET /:id/regions — binding + payload law", () => {
     expect(() => paperAssetRegionsResponseSchema.parse(body)).not.toThrow();
   });
 });
+
+// ── T-MG-FEEDBACK-1 run-001 — GET /resolve (plan §3.6) ─────────────────────
+// The corpus-card identity pair (paperCode, sessionLabel) → the exam_papers
+// uuid the award ledger keys on. Law of record: the seed's
+// uq_exam_paper_identity (paper_code, session_label) selection. 200 shape |
+// 400 malformed query | 404 unknown pair (the honest not-ingested state).
+
+describe("GET /resolve — the corpus-card→ledger identity bridge (T-MG-FEEDBACK-1)", () => {
+  test("known pair → 200 { paperId } contract-valid", async () => {
+    const { app } = makeApp(asStudent, [
+      {
+        match: /from exam_papers p\s*\n?\s*where p\.paper_code = \? and p\.session_label = \?/,
+        rows: [{ id: PAPER_ID }],
+      },
+    ]);
+    const res = await app.request(`${BASE}/resolve?paperCode=${encodeURIComponent("1MA1/1F")}&sessionLabel=${encodeURIComponent("June 2025")}`);
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body).toEqual({ paperId: PAPER_ID });
+  });
+
+  test("unknown pair → 404 T-C20 (the honest not-ingested steady state)", async () => {
+    const { app } = makeApp(asStudent, [
+      {
+        match: /from exam_papers p\s*\n?\s*where p\.paper_code = \? and p\.session_label = \?/,
+        rows: [],
+      },
+    ]);
+    const res = await app.request(`${BASE}/resolve?paperCode=1MA1%2F1F&sessionLabel=June%202025`);
+    expect(res.status).toBe(404);
+    const body = await res.json();
+    expect(body.error).toBe("not_found");
+    expect(body.message).toContain("exam paper");
+  });
+
+  test("malformed query (missing sessionLabel) → 400 bad_request 'malformed request'", async () => {
+    const { app } = makeApp(asStudent);
+    const res = await app.request(`${BASE}/resolve?paperCode=1MA1%2F1F`);
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("bad_request");
+    expect(body.message).toBe("malformed request");
+  });
+
+  test("empty paperCode → 400 (the min(1) degenerate)", async () => {
+    const { app } = makeApp(asStudent);
+    const res = await app.request(`${BASE}/resolve?paperCode=&sessionLabel=June%202025`);
+    expect(res.status).toBe(400);
+  });
+
+  test("unauthed resolve → 401 shell answers before any handler body", async () => {
+    const { app } = makeApp(anon);
+    const res = await app.request(`${BASE}/resolve?paperCode=1MA1%2F1F&sessionLabel=June%202025`);
+    expect(res.status).toBe(401);
+  });
+});
