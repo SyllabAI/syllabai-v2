@@ -10,7 +10,14 @@
  *     mount themselves, exactly like SaveMyExams' second column;
  *   - on mobile the tree is reachable from the course drawer instead.
  */
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -58,6 +65,27 @@ type NavItem = {
       (Saved questions under Exam Questions), never invented depth. */
   children?: NavItem[];
 };
+
+// run-008 C-1 (tier-c-mining.md): the drag-resize handle constants. Clamps
+// and default are OURS (MG's are not in the capture); default = 256 = the
+// w-64 class state, so today's look is untouched until the user drags.
+const SIDEBAR_MIN_W = 200;
+const SIDEBAR_MAX_W = 340;
+const SIDEBAR_DEFAULT_W = 256;
+const SIDEBAR_WIDTH_KEY = "hub:course-rail-width";
+const SIDEBAR_RESIZE_STEP = 16;
+
+const clampSidebarWidth = (n: number) =>
+  Math.min(SIDEBAR_MAX_W, Math.max(SIDEBAR_MIN_W, n));
+
+function persistSidebarWidth(w: number) {
+  try {
+    window.localStorage.setItem(SIDEBAR_WIDTH_KEY, String(w));
+  } catch {
+    // storage blocked / full — the width just won't survive a reload
+    // (honest degrade, same posture as the other hub prefs)
+  }
+}
 
 /**
  * run-004b — the course nav row, corrected against the operator-supplied
@@ -317,6 +345,81 @@ function CourseNav({
   );
 }
 
+/**
+ * run-008 C-1 (tier-c-mining.md) — the sidebar resize handle.
+ *
+ * Anatomy is MG's verbatim (byte 2348113): the last child of the aside, an
+ * 8px strip straddling the border edge (`-right-1 w-2`, z-10, touch-none,
+ * select-none; the aside's overflow-hidden leaves the inner 4px live — MG's
+ * live zone is the same 4px, so this is faithful, not a regression).
+ *
+ * The one deliberate UPGRADE over the reference: MG's handle is aria-hidden
+ * (pointer-only, invisible to AT). Our keyboard-fairness law requires a
+ * parity path, so ours is a real WAI-ARIA separator — focusable,
+ * aria-valuenow/min/max announcing the current width, ArrowLeft/ArrowRight
+ * ±16px steps, Home/End to the clamps, focus ring riding the accent token
+ * pair with ring-inset (the strip is 4px visible; an outset ring would be
+ * clipped into invisibility by the aside's overflow-hidden).
+ *
+ * No new motion: the drag is direct manipulation (the aside's width ease is
+ * suppressed inline while dragging), and there is no hover effect beyond the
+ * cursor — MG's handle ships exactly that, and "fewer and gentler" holds.
+ */
+function SidebarResizeHandle({
+  asideId,
+  width,
+  dragging,
+  onPointerDown,
+  onPointerMove,
+  onDragEnd,
+  onKeyDown,
+}: {
+  asideId: string;
+  width: number | null;
+  dragging: boolean;
+  onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
+  onPointerMove: (e: React.PointerEvent<HTMLDivElement>) => void;
+  onDragEnd: () => void;
+  onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => void;
+}) {
+  // if the handle unmounts mid-drag (route swap → auto-collapse), pointer
+  // capture dies with it — make sure the shell's drag state resets. The
+  // parent's onDragEnd is stable + idempotent, so the cleanup is safe.
+  const dragEndRef = useRef(onDragEnd);
+  useEffect(() => {
+    dragEndRef.current = onDragEnd;
+  }, [onDragEnd]);
+  useEffect(() => {
+    return () => dragEndRef.current();
+  }, []);
+
+  const announced = width ?? SIDEBAR_DEFAULT_W;
+  return (
+    <div
+      role="separator"
+      aria-orientation="vertical"
+      aria-label="Resize sidebar width"
+      aria-controls={asideId}
+      aria-valuenow={announced}
+      aria-valuemin={SIDEBAR_MIN_W}
+      aria-valuemax={SIDEBAR_MAX_W}
+      aria-valuetext={`${announced} pixels`}
+      tabIndex={0}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onDragEnd}
+      onLostPointerCapture={onDragEnd}
+      onKeyDown={onKeyDown}
+      className={cn(
+        "absolute inset-y-0 -right-1 z-10 w-2 cursor-col-resize touch-none select-none",
+        "rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-primary-foreground/50",
+        "focus-visible:bg-accent-primary/25",
+        dragging && "bg-accent-primary/25",
+      )}
+    />
+  );
+}
+
 export function CourseShell({
   data,
   children,
@@ -327,6 +430,76 @@ export function CourseShell({
   const pathname = usePathname();
 
   const [open, setOpen] = useState(false); // mobile drawer
+
+  // run-008 C-1: user-chosen expanded width. null = never resized → the
+  // w-64 class state (SSR renders null too, so hydration matches). The
+  // rail state ignores it entirely — the 44px rail is fixed by design.
+  const [sidebarWidth, setSidebarWidth] = useState<number | null>(null);
+  const [sidebarDragging, setSidebarDragging] = useState(false);
+  const asideRef = useRef<HTMLElement | null>(null);
+  const dragStartRef = useRef<{ x: number; w: number } | null>(null);
+  // live mirror of the width during a drag — pointerup can land in the same
+  // batch as the last pointermove, so the state read could be stale
+  const dragWidthRef = useRef<number | null>(null);
+  const asideId = useId();
+
+  // restore a saved width once on mount (guarded like the other hub prefs)
+  useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(SIDEBAR_WIDTH_KEY);
+      if (raw === null || raw.trim() === "") return;
+      const n = Number(raw);
+      if (!Number.isFinite(n)) return;
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setSidebarWidth(clampSidebarWidth(Math.round(n)));
+    } catch {
+      // private mode / blocked storage — default width
+    }
+  }, []);
+
+  // stable + idempotent: safe to call from pointerup, lostpointercapture,
+  // or the handle's unmount cleanup (route swap mid-drag)
+  const endSidebarDrag = useCallback(() => {
+    const w = dragWidthRef.current;
+    dragStartRef.current = null;
+    dragWidthRef.current = null;
+    setSidebarDragging(false);
+    if (w !== null) persistSidebarWidth(w);
+  }, []);
+
+  const onHandlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const aside = asideRef.current;
+    if (!aside || e.button !== 0) return;
+    e.preventDefault();
+    e.currentTarget.setPointerCapture(e.pointerId);
+    dragStartRef.current = { x: e.clientX, w: aside.getBoundingClientRect().width };
+    setSidebarDragging(true);
+  };
+
+  const onHandlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const start = dragStartRef.current;
+    if (!start) return;
+    // relative tracking (start width + dx) — drift-free, no jump at grab;
+    // equivalent to MG's absolute edge tracking since the aside sits at x=0
+    const next = clampSidebarWidth(Math.round(start.w + (e.clientX - start.x)));
+    dragWidthRef.current = next;
+    setSidebarWidth(next);
+  };
+
+  const onHandleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const current = sidebarWidth ?? SIDEBAR_DEFAULT_W;
+    let next: number | null = null;
+    if (e.key === "ArrowLeft") next = current - SIDEBAR_RESIZE_STEP;
+    else if (e.key === "ArrowRight") next = current + SIDEBAR_RESIZE_STEP;
+    else if (e.key === "Home") next = SIDEBAR_MIN_W;
+    else if (e.key === "End") next = SIDEBAR_MAX_W;
+    if (next === null) return;
+    e.preventDefault();
+    const clamped = clampSidebarWidth(next);
+    setSidebarWidth(clamped);
+    persistSidebarWidth(clamped); // keyboard steps commit immediately
+  };
+
   // Desktop collapse ("Hide menu") — SSR-initialised to the document-focus
   // auto-collapse (s146): previously `false` at first paint, so a deep link
   // to the paper viewer rendered the 256px sidebar for one hydration frame
@@ -537,15 +710,31 @@ export function CourseShell({
         {/* desktop sidebar — the one and only course sidebar; run-004b: one
             element that animates width between the panel (w-64: back to the
             references' narrow rhythm now that the tiles are gone — 288px was
-            tile-repair) and the 44px icon rail, MG's transition-[width] ease */}
+            tile-repair) and the 44px icon rail, MG's transition-[width] ease.
+            run-008 C-1: the expanded width becomes continuous — a user-dragged
+            width rides inline style (beats any width class); the rail keeps
+            its w-11 class and never gets inline width, so collapse/expand
+            still morphs between 44px and the remembered expanded width. */}
         <aside
+          id={asideId}
+          ref={asideRef}
           className={cn(
             "sticky hidden shrink-0 overflow-hidden border-r bg-background transition-[width] duration-200 ease-out motion-reduce:transition-none lg:flex lg:flex-col",
-            hidden ? "w-11" : "w-64",
+            hidden ? "w-11" : sidebarWidth === null ? "w-64" : undefined,
             viewerRoute
               ? "top-0 h-[calc(100dvh-1px)]"
               : "top-14 h-[calc(100dvh-3.5rem-1px)]",
           )}
+          style={
+            hidden || sidebarWidth === null
+              ? undefined
+              : {
+                  width: sidebarWidth,
+                  // a 200ms width ease lags a live drag — kill the transition
+                  // while the pointer is down, restored on release (spec C-1)
+                  ...(sidebarDragging ? { transition: "none" } : {}),
+                }
+          }
           aria-label="Course navigation"
         >
           {/* header: course label + collapse toggle / re-open toggle */}
@@ -586,6 +775,21 @@ export function CourseShell({
           <div className={cn("flex border-t py-3", hidden ? "justify-center px-0.5" : "px-3")}>
             <ThemeToggle variant={hidden ? "icon" : "row"} />
           </div>
+
+          {/* run-008 C-1: the resize handle, expanded-state only (the rail is
+              fixed 44px by design — a different contract from MG's, whose rail
+              is unpinned). */}
+          {!hidden && (
+            <SidebarResizeHandle
+              asideId={asideId}
+              width={sidebarWidth}
+              dragging={sidebarDragging}
+              onPointerDown={onHandlePointerDown}
+              onPointerMove={onHandlePointerMove}
+              onDragEnd={endSidebarDrag}
+              onKeyDown={onHandleKeyDown}
+            />
+          )}
         </aside>
 
         {/* content column */}
