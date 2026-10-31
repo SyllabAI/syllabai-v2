@@ -4,7 +4,6 @@ import { listCourses, boardOf, loadHubCourse } from "@/lib/courses";
 import { getGradeBoundaries } from "@/lib/grade-boundaries";
 import { CourseHeader } from "@/components/hub/course-header";
 import { GradeBoundariesWorkspace } from "@/components/hub/grade-boundaries/grade-boundaries-workspace";
-import { Card, CardContent } from "@/components/ui/card";
 
 /**
  * Grade Boundaries (T-GRADE-1) — the per-course boundaries surface behind
@@ -64,8 +63,8 @@ export default async function GradeBoundariesPage({
       {entry ? (
         <GradeBoundariesWorkspace entry={entry} />
       ) : (
-        <Card>
-          <CardContent className="p-8 text-center">
+        <div className="mx-auto max-w-3xl">
+          <div className="rounded-2xl border-2 bg-card p-8 text-center">
             <p className="text-sm font-medium">No boundaries in the corpus yet</p>
             <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
               The GradeBoundaries lane fetches and parses the awarding bodies&apos;
@@ -73,8 +72,8 @@ export default async function GradeBoundariesPage({
               specification lands there, this page lights up with its full
               tables, graph and calculator.
             </p>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       )}
     </div>
   );

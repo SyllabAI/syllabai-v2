@@ -682,14 +682,16 @@ Task: production card-greyout fix — hub loader zod vs the wave-2 bundle shapes
 Stage Summary:
 - Root cause one-liner: run-001 changed the bundle shape (CIE routes/components, modular units/cash-ins — series without an overall boundaries row) but not the hub loader zod, which still REQUIRED series.boundaries; safeParse rejected the whole 106-course bundle, the loader resolved null, and every course page's Grade Boundaries card honestly fell back to roadmap. Data was never wrong; the two schemas drifted.
 - Guard of record: scripts/validate_gradeb_bundle.ts now runs in the prebuild chain (and as verify:gradeb with its bun:test twin) asserting the exact loader schema + the disjoint-shape law (linear-total ⇔ boundaries present; 21/28/56 partition) on the committed bundle — the drift class that produced this incident now fails the build instead of greying the product.
-- Branches of record: hub t-gradeb-2/loader-schema-fix cut from main after #558/#559 merged (resources lane unchanged — bundle correct as shipped). Push via Git Data API; PR hub-first.
+- Branches of record: hub t-gradeb-2/loader-schema-fix cut from main after #558/#559/#561/#564 merged (resources lane unchanged — bundle correct as shipped). Push via Git Data API; PR hub-first.
 
 ---
-Task ID: T-GRADE-002 (run-002)
-Agent: main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3, chat 14bc199d-dd6a-40d0-afad-c2b58230a956, trace 1a192b11d76d25a1)
-Task: production card-greyout fix — hub loader zod vs the wave-2 bundle shapes (branch t-gradeb-2/loader-schema-fix)
+Task ID: T-GRADE-003 (run-001)
+Agent: main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3, chat 14bc199d-dd6a-40d0-afad-c2b58230a956, trace 1a193119a0405849)
+Task: MathsGenie layout parity for the grade-boundaries page — same layout, shapes, padding, seamlessly theme-integrated (branch t-gradeb-3/mg-parity-layout)
 
 Stage Summary:
-- Root cause one-liner: run-001 changed the bundle shape (CIE routes/components, modular units/cash-ins — series without an overall boundaries row) but not the hub loader zod, which still REQUIRED series.boundaries; safeParse rejected the whole 106-course bundle, the loader resolved null, and every course page's Grade Boundaries card honestly fell back to roadmap. Data was never wrong; the two schemas drifted.
-- Guard of record: scripts/validate_gradeb_bundle.ts now runs in the prebuild chain (and as verify:gradeb with its bun:test twin) asserting the exact loader schema + the disjoint-shape law (linear-total ⇔ boundaries present; 21/28/56 partition) on the committed bundle — the drift class that produced this incident now fails the build instead of greying the product.
-- Branches of record: hub t-gradeb-2/loader-schema-fix cut from main after #558/#559/#561/#564 merged (resources lane unchanged — bundle correct as shipped). Push via Git Data API; PR hub-first.
+- Reference of record: the operator-attached saved MG page DOM (autopsied, not remembered) — max-w-3xl column, ONE rounded-2xl border-2 box, session pill row -> hairline separator -> grade rail (size-14/16 bordered badge) + h-3 meter -> 12rem/1fr/4rem slider grid -> separator -> display-font title + underline Table|Graph tabs -> rounded-2xl tables (bg-muted heads, centered cells) -> muted provenance footer; MG's own tokens read from their CSS map 1:1 onto the hub's shadcn slots (--accent-primary pair etc.).
+- Implementation of record: workspace JSX rebuilt to that anatomy (token-only styling — zero hex/shadows/per-theme rules, all radii via the --radius chain so quiet-green squares and candy-shop rounds apply themselves); page.tsx no-corpus state in the same box language; ZERO logic deltas (state/memos/calc/tests byte-identical to run-002; bundle sha16 9c7bc67671dd31e9 untouched).
+- Proof of record: bun test 26/26, verify:gradeb GREEN, tsc 0, eslint 0 (both changed files), hub build GREEN (106 gb pages prerendered), 11/11 layout markers in the prerendered physics page, headless-browser screenshots across linear (slider 0 -> max, grade badge U->9, column highlights), IAL aggregate (UMS meter, official-pair pills, unit inputs), Graph tab, and quiet-green + candy-shop re-skins.
+- Hygiene: b3158de8's DUPLICATED run-002 root-worklog entry (stale + updated copies) deduped to the updated one — same corruption family as the .syllabai/worklog.md duplicate fixed during the #566 race intake; root worklog was missed because it auto-merged.
+- Receipt of record: .syllabai/receipts/T-GRADE/T-GRADE-003-RUN001-MG-PARITY.json.
