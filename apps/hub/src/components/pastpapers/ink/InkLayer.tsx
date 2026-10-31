@@ -79,12 +79,15 @@ import {
   AlertTriangle,
   Check,
   Compass,
+  Eraser,
   Gauge,
   Loader2,
   Minus,
+  MousePointer2,
   Pen,
   Redo2,
   Ruler,
+  Sigma,
   Trash2,
   Type,
   Undo2,
@@ -98,18 +101,25 @@ import {
   INK_COLOR_KEYS,
   INK_WIDTH_FRACS,
   clamp01,
+  eraseShapes,
   makeShapeId,
   normalizePoint,
   rebaseShapes,
+  shapeBoundsCss,
+  shapesHitIds,
   shouldAppendPoint,
+  translateShape,
   type InkColor,
+  type InkMathShape,
   type InkShape,
   type InkStrokeShape,
   type InkTextShape,
+  type MeasuredSize,
 } from "./ink";
 import { createInkLocal, inkLocalClear, inkLocalLoad } from "./ink-local-store";
 import { createInkSync, type InkSyncSnapshot } from "./ink-sync";
 import { registerLiveInk, unregisterLiveInk } from "./live-ink";
+import { MathTextOverlay } from "./MathTextOverlay";
 import { paintShapes, sizeBackingStore } from "./paint";
 import {
   applyProtractorSnap,
@@ -134,6 +144,16 @@ import {
 import { ProtractorGuideView, RulerGuideView, holderRead } from "./InstrumentGuides";
 
 const TOKEN_KEY = "syllabai.token";
+
+/** T-MG-INK-4 — the tool modes of record. The MG census family closes:
+ * pen / text / MATH (the Math text box) / SELECT / ERASE + the four
+ * maths instruments. Browse stays the ink-off toggle posture (the
+ * spec's disclosed non-goal). */
+type InkToolMode = "pen" | "text" | "math" | "erase" | "select" | InstrumentMode;
+
+/** The erase/select hit tolerance (the spec's css-px hit-disc law:
+ * max(this, the pen's own width) — dpr-independent). */
+const ERASE_TOL_CSS_PX = 12;
 
 const SERVER_SNAPSHOT: InkSyncSnapshot = {
   status: "loading",
@@ -167,7 +187,7 @@ type LocalInkMigration =
 export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   const [token, setToken] = useState<string | null>(null);
   const [enabled, setEnabled] = useState(false);
-  const [mode, setMode] = useState<"pen" | "text" | InstrumentMode>("pen");
+  const [mode, setMode] = useState<InkToolMode>("pen");
   const [color, setColor] = useState<InkColor>("black");
   const [widthIdx, setWidthIdx] = useState(1);
   const [holders, setHolders] = useState<HolderEntry[]>([]);
@@ -393,6 +413,37 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
     [commit],
   );
 
+  // ── T-MG-INK-4 commit paths ──
+  // The math text box commits an ordinary mtext shape (the DOM overlay
+  // renders it; the doc carries the KaTeX source verbatim).
+  const commitMath = useCallback(
+    (shape: Omit<InkMathShape, "id" | "kind">) => {
+      const m: InkMathShape = { id: makeShapeId(), kind: "mtext", ...shape };
+      commit([...shapesRef.current, m]);
+    },
+    [commit],
+  );
+
+  // Erase: the tombstone law — every target becomes its tombstone IN
+  // PLACE (same id), one commit per gesture (one undo step). Deletion
+  // survives every rebase because the id IS the merge key.
+  const commitErase = useCallback(
+    (ids: string[]) => {
+      if (ids.length === 0) return;
+      commit(eraseShapes(shapesRef.current, new Set(ids)));
+    },
+    [commit],
+  );
+
+  // Move: replace the moved shape IN PLACE (same id — the move is the
+  // newer intent; local-wins on rebase).
+  const commitMove = useCallback(
+    (moved: InkShape) => {
+      commit(shapesRef.current.map((s) => (s.id === moved.id ? moved : s)));
+    },
+    [commit],
+  );
+
   // ── instrument-guide callbacks (T-MG-INK-2) ──
   // Drag/rotate/remove live in ANY mode (the tldraw posture); snap-DRAW
   // routes through the canvas only in the guide's own mode.
@@ -472,9 +523,45 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
           >
             <Type className="size-4" aria-hidden />
           </Button>
+          {/* T-MG-INK-4: the math text box (the MG census tool) — the
+            * mtext kind via the KaTeX DOM overlay. */}
+          <Button
+            size="sm"
+            variant={mode === "math" ? "secondary" : "ghost"}
+            className="size-8 px-0"
+            aria-pressed={mode === "math"}
+            aria-label="Math text box tool"
+            onClick={() => setMode("math")}
+          >
+            <Sigma className="size-4" aria-hidden />
+          </Button>
+          <span className="mx-1 h-5 w-px bg-border" aria-hidden />
+          {/* T-MG-INK-4: select + erase (the census tools) — shapes are
+            * first-class now: single-shape select/move, whole-shape
+            * atomic erase via the tombstone law. */}
+          <Button
+            size="sm"
+            variant={mode === "select" ? "secondary" : "ghost"}
+            className="size-8 px-0"
+            aria-pressed={mode === "select"}
+            aria-label="Select tool"
+            onClick={() => setMode("select")}
+          >
+            <MousePointer2 className="size-4" aria-hidden />
+          </Button>
+          <Button
+            size="sm"
+            variant={mode === "erase" ? "secondary" : "ghost"}
+            className="size-8 px-0"
+            aria-pressed={mode === "erase"}
+            aria-label="Erase tool"
+            onClick={() => setMode("erase")}
+          >
+            <Eraser className="size-4" aria-hidden />
+          </Button>
+          <span className="mx-1 h-5 w-px bg-border" aria-hidden />
           {/* T-MG-INK-2: the maths instruments (the MG census family).
             * Each emits ORDINARY strokes — zero schema impact. */}
-          <span className="mx-1 h-5 w-px bg-border" aria-hidden />
           <Button
             size="sm"
             variant={mode === "line" ? "secondary" : "ghost"}
@@ -718,6 +805,9 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
               widthFrac={INK_WIDTH_FRACS[widthIdx]}
               onCommitStroke={commitStroke}
               onCommitText={commitText}
+              onCommitMath={commitMath}
+              onCommitErase={commitErase}
+              onCommitMove={commitMove}
               ruler={rulerGuide?.page === page ? rulerGuide : null}
               protractor={protractorGuide?.page === page ? protractorGuide : null}
               onGuideDown={guideDown}
@@ -778,11 +868,15 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
 interface InkCanvasProps {
   page: number;
   shapes: InkShape[];
-  mode: "pen" | "text" | InstrumentMode;
+  mode: InkToolMode;
   color: InkColor;
   widthFrac: number;
   onCommitStroke: (page: number, points: Array<[number, number]>) => void;
   onCommitText: (shape: Omit<InkTextShape, "id" | "kind">) => void;
+  // T-MG-INK-4: the math text box + the erase/select commit paths.
+  onCommitMath: (shape: Omit<InkMathShape, "id" | "kind">) => void;
+  onCommitErase: (ids: string[]) => void;
+  onCommitMove: (moved: InkShape) => void;
   // T-MG-INK-2: the page-matched guides + the guide callbacks (the guide
   // state lives in InkLayer; the canvas only routes gestures to it).
   ruler?: RulerGuide | null;
@@ -803,7 +897,7 @@ interface InkCanvasProps {
   guideSlot?: React.ReactNode;
 }
 
-type DragKind = "freehand" | "line" | "ruler" | "protractor" | "compasses" | "guide";
+type DragKind = "freehand" | "line" | "ruler" | "protractor" | "compasses" | "guide" | "erase" | "move";
 
 /** One page's ink canvas — portaled into the pane's page holder. The
  * gesture router for every ink mode: freehand (pen), text placement, and
@@ -817,6 +911,9 @@ function InkCanvas({
   widthFrac,
   onCommitStroke,
   onCommitText,
+  onCommitMath,
+  onCommitErase,
+  onCommitMove,
   ruler,
   protractor,
   onGuideDown,
@@ -837,6 +934,51 @@ function InkCanvas({
   const rawRef = useRef<Array<[number, number]>>([]);
   const pivotRef = useRef<{ x: number; y: number } | null>(null);
   const [sweepDeg, setSweepDeg] = useState<number | null>(null);
+  // ── T-MG-INK-4 state: math draft, erase sweep, select/move ──
+  const [mathDraft, setMathDraft] = useState<{ x: number; y: number; value: string } | null>(null);
+  const [erasePreview, setErasePreview] = useState<Set<string> | null>(null);
+  const [movePreview, setMovePreview] = useState<InkShape | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  // The dashed-bbox affordance in NORMALIZED fractions (zoom-invariant —
+  // the RegionOverlay geometry law at chrome grain).
+  const [selBox, setSelBox] = useState<{ l: number; t: number; w: number; h: number } | null>(null);
+  const moveStartRef = useRef<{ clientX: number; clientY: number; shape: InkShape; moved: boolean } | null>(null);
+  // The DOM-measured mtext boxes (css px), refreshed at gesture start —
+  // the pure module never reads the DOM (the MeasuredSize seam).
+  const measuredRef = useRef<Map<string, MeasuredSize>>(new Map());
+
+  // The display set = the working set with the LIVE erase/move previews
+  // folded in (the preview is visual only — nothing commits until the
+  // gesture ends; the erase preview shows tombstoned targets, i.e. gone).
+  const displayShapes = useMemo(() => {
+    let out = shapes;
+    if (erasePreview && erasePreview.size > 0) out = eraseShapes(out, erasePreview);
+    if (movePreview) out = out.map((s) => (s.id === movePreview.id ? movePreview : s));
+    return out;
+  }, [shapes, erasePreview, movePreview]);
+
+  const readMeasured = useCallback((id: string): MeasuredSize | undefined => measuredRef.current.get(id), []);
+
+  const measureMtexts = useCallback(() => {
+    const holder = canvasRef.current?.parentElement;
+    const next = new Map<string, MeasuredSize>();
+    if (holder) {
+      for (const el of holder.querySelectorAll<HTMLElement>("[data-mtext-id]")) {
+        const id = el.dataset.mtextId;
+        if (!id) continue;
+        const r = el.getBoundingClientRect();
+        next.set(id, { w: r.width, h: r.height });
+      }
+    }
+    measuredRef.current = next;
+  }, []);
+
+  // Selection is select-mode-only chrome: the AFFORDANCE derives from
+  // the live shape set (a selected shape that got erased/tombstoned
+  // auto-hides; the fractions are zoom-invariant so a stale box stays
+  // honest). No effect, no cascading setState — the render gates it.
+  const selectedShape =
+    mode === "select" && selectedId ? displayShapes.find((s) => s.id === selectedId) ?? null : null;
 
   const repaint = useCallback(() => {
     const canvas = canvasRef.current;
@@ -846,8 +988,8 @@ function InkCanvas({
     const box = canvas.getBoundingClientRect();
     boxRef.current = { cssW: box.width, cssH: box.height };
     sizeBackingStore(ctx, canvas, box.width, box.height, window.devicePixelRatio || 1);
-    paintShapes(ctx, boxRef.current, shapes, activeRef.current ? { color, widthFrac, points: activeRef.current } : null);
-  }, [shapes, color, widthFrac]);
+    paintShapes(ctx, boxRef.current, displayShapes, activeRef.current ? { color, widthFrac, points: activeRef.current } : null);
+  }, [displayShapes, color, widthFrac]);
 
   // box resize (zoom/refreeze/window resize) → re-size + re-paint
   useEffect(() => {
@@ -871,9 +1013,9 @@ function InkCanvas({
       const canvas = canvasRef.current;
       const ctx = canvas?.getContext("2d");
       if (!canvas || !ctx) return;
-      paintShapes(ctx, boxRef.current, shapes, activeRef.current ? { color, widthFrac, points: activeRef.current } : null);
+      paintShapes(ctx, boxRef.current, displayShapes, activeRef.current ? { color, widthFrac, points: activeRef.current } : null);
     });
-  }, [shapes, color, widthFrac]);
+  }, [displayShapes, color, widthFrac]);
 
   useEffect(() => () => cancelAnimationFrame(rafRef.current), []);
 
@@ -890,6 +1032,52 @@ function InkCanvas({
           e.clientY,
         );
         setDraft({ x, y, value: "" });
+        return;
+      }
+      if (mode === "math") {
+        if (e.pointerType === "mouse" && e.button !== 0) return;
+        const box = canvas.getBoundingClientRect();
+        const [x, y] = normalizePoint(
+          { left: box.left, top: box.top, width: box.width, height: box.height },
+          e.clientX,
+          e.clientY,
+        );
+        setMathDraft({ x, y, value: "" });
+        return;
+      }
+      if (mode === "erase" || mode === "select") {
+        if (e.pointerType === "mouse" && e.button !== 0) return;
+        const box = canvas.getBoundingClientRect();
+        const cssBox = { cssW: box.width, cssH: box.height };
+        const frac = normalizePoint(
+          { left: box.left, top: box.top, width: box.width, height: box.height },
+          e.clientX,
+          e.clientY,
+        );
+        measureMtexts();
+        const hits = shapesHitIds(displayShapes, { x: frac[0], y: frac[1] }, cssBox, ERASE_TOL_CSS_PX, readMeasured);
+        if (mode === "erase") {
+          canvas.setPointerCapture(e.pointerId);
+          dragKindRef.current = "erase";
+          setErasePreview(hits.length > 0 ? new Set(hits) : new Set());
+          return;
+        }
+        // select: the LAST hit is the topmost (doc/paint order)
+        const topId = hits.length > 0 ? hits[hits.length - 1]! : null;
+        const shape = topId ? displayShapes.find((s) => s.id === topId) ?? null : null;
+        if (shape) {
+          setSelectedId(shape.id);
+          const b = shapeBoundsCss(shape, cssBox, measuredRef.current.get(shape.id));
+          if (b && cssBox.cssW > 0 && cssBox.cssH > 0) {
+            setSelBox({ l: b.x / cssBox.cssW, t: b.y / cssBox.cssH, w: b.w / cssBox.cssW, h: b.h / cssBox.cssH });
+          }
+          moveStartRef.current = { clientX: e.clientX, clientY: e.clientY, shape, moved: false };
+          canvas.setPointerCapture(e.pointerId);
+          dragKindRef.current = "move";
+          return;
+        }
+        setSelectedId(null);
+        setSelBox(null);
         return;
       }
       if (e.pointerType === "mouse" && e.button !== 0) return;
@@ -951,7 +1139,7 @@ function InkCanvas({
       lastPxRef.current = [e.clientX, e.clientY];
       scheduleLive();
     },
-    [mode, ruler, protractor, onGuideDown, onGuideCreate, scheduleLive],
+    [mode, ruler, protractor, onGuideDown, onGuideCreate, scheduleLive, displayShapes, readMeasured, measureMtexts],
   );
 
   const onPointerMove = useCallback(
@@ -967,6 +1155,36 @@ function InkCanvas({
       const cssBox = { cssW: box.width, cssH: box.height };
       const frac = normalizePoint(nbox, e.clientX, e.clientY);
       lastPxRef.current = [e.clientX, e.clientY];
+      if (kind === "erase") {
+        const hits = shapesHitIds(displayShapes, { x: frac[0], y: frac[1] }, cssBox, ERASE_TOL_CSS_PX, readMeasured);
+        if (hits.length > 0) {
+          setErasePreview((prev) => {
+            const next = new Set(prev ?? []);
+            let changed = false;
+            for (const id of hits) {
+              if (!next.has(id)) {
+                next.add(id);
+                changed = true;
+              }
+            }
+            return changed ? next : prev;
+          });
+        }
+        scheduleLive();
+        return;
+      }
+      if (kind === "move") {
+        const st = moveStartRef.current;
+        if (st) {
+          const dx = (e.clientX - st.clientX) / box.width;
+          const dy = (e.clientY - st.clientY) / box.height;
+          if (dx !== 0 || dy !== 0) st.moved = true;
+          const moved = translateShape(st.shape, dx, dy);
+          if (moved) setMovePreview(moved);
+          scheduleLive();
+        }
+        return;
+      }
       if (kind === "guide") {
         onGuideMove?.(guideToolRef.current ?? "ruler", { x: frac[0], y: frac[1] }, cssBox);
         return;
@@ -1019,7 +1237,7 @@ function InkCanvas({
         scheduleLive();
       }
     },
-    [ruler, protractor, onGuideMove, scheduleLive],
+    [ruler, protractor, onGuideMove, scheduleLive, displayShapes, readMeasured],
   );
 
   const endStroke = useCallback(() => {
@@ -1032,6 +1250,23 @@ function InkCanvas({
     if (kind === "guide") {
       guideToolRef.current = null;
       return; // guide manipulation commits no ink
+    }
+    if (kind === "erase") {
+      // ONE commit per gesture (one undo step): the swept targets become
+      // tombstones atomically; an empty sweep just repaints.
+      const ids = erasePreview ? [...erasePreview] : [];
+      setErasePreview(null);
+      if (ids.length > 0) onCommitErase(ids);
+      else repaint();
+      return;
+    }
+    if (kind === "move") {
+      const moved = movePreview;
+      const st = moveStartRef.current;
+      moveStartRef.current = null;
+      setMovePreview(null);
+      if (moved && st?.moved) onCommitMove(moved);
+      return;
     }
     const canvas = canvasRef.current;
     const cssBox = boxRef.current.cssW > 0 ? boxRef.current : canvas ? { cssW: canvas.getBoundingClientRect().width, cssH: canvas.getBoundingClientRect().height } : { cssW: 0, cssH: 0 };
@@ -1089,7 +1324,7 @@ function InkCanvas({
     // freehand (the run-003 law)
     if (active && active.length >= 2) onCommitStroke(page, active);
     else repaint();
-  }, [onCommitStroke, page, repaint, ruler, protractor]);
+  }, [onCommitStroke, onCommitErase, onCommitMove, page, repaint, ruler, protractor, erasePreview, movePreview]);
 
   const commitDraft = useCallback(() => {
     if (!draft) return;
@@ -1109,12 +1344,41 @@ function InkCanvas({
     setDraft(null);
   }, [draft, color, onCommitText, page]);
 
-  const instrumentCursor =
-    mode === "line" || mode === "compasses"
-      ? "crosshair"
-      : mode === "ruler" || mode === "protractor"
-        ? "move"
-        : "crosshair";
+  // T-MG-INK-4: the math draft commits an mtext at the same relative
+  // size law as the text editor (14 css px at commit time).
+  const commitMathDraft = useCallback(() => {
+    if (!mathDraft) return;
+    const value = mathDraft.value.trim();
+    const { cssW } = boxRef.current;
+    if (value && cssW > 0) {
+      onCommitMath({
+        page,
+        color,
+        sizeFrac: clamp01(14 / cssW),
+        x: mathDraft.x,
+        y: mathDraft.y,
+        tex: value,
+      });
+    }
+    setMathDraft(null);
+  }, [mathDraft, color, onCommitMath, page]);
+
+  // The select affordance's ✕ — the tombstone law via the erase path.
+  const eraseSelected = useCallback(() => {
+    if (!selectedId) return;
+    onCommitErase([selectedId]);
+    setSelectedId(null);
+    setSelBox(null);
+  }, [selectedId, onCommitErase]);
+
+  const toolCursor =
+    mode === "text" || mode === "math"
+      ? "text"
+      : mode === "select"
+        ? "default"
+        : mode === "ruler" || mode === "protractor"
+          ? "move"
+          : "crosshair";
 
   return (
     <>
@@ -1123,7 +1387,7 @@ function InkCanvas({
         aria-hidden="true"
         data-ink-page={page}
         className="pp-inkLayer absolute inset-0 z-30 h-full w-full"
-        style={{ touchAction: "none", cursor: mode === "text" ? "text" : instrumentCursor }}
+        style={{ touchAction: "none", cursor: toolCursor }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endStroke}
@@ -1148,6 +1412,42 @@ function InkCanvas({
         </div>
       )}
       {guideSlot}
+      {/* T-MG-INK-4: the mtext overlays — DOM chrome (pointer-events:
+        * none) in the InstrumentGuides family; the canvas keeps the
+        * gesture; erase/select read these boxes via [data-mtext-id]. */}
+      {displayShapes.filter((s): s is InkMathShape => s.kind === "mtext").map((s) => (
+        <MathTextOverlay key={s.id} shape={s} />
+      ))}
+      {/* the select affordance — dashed bbox (normalized fractions,
+        * zoom-invariant) + the ✕ delete (tombstone via the erase path);
+        * gated on the selected shape EXISTING in the live display set */}
+      {mode === "select" && selectedShape && selBox && (
+        <>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute z-40 rounded border border-dashed border-foreground/70"
+            style={{
+              left: `${selBox.l * 100}%`,
+              top: `${selBox.t * 100}%`,
+              width: `${selBox.w * 100}%`,
+              height: `${selBox.h * 100}%`,
+            }}
+          />
+          <button
+            type="button"
+            aria-label="Erase selected shape"
+            onClick={eraseSelected}
+            className="absolute z-40 flex size-5 items-center justify-center rounded-full border bg-background/95 text-muted-foreground shadow-md"
+            style={{
+              left: `${(selBox.l + selBox.w) * 100}%`,
+              top: `${selBox.t * 100}%`,
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <X className="size-3" aria-hidden />
+          </button>
+        </>
+      )}
       {draft && (
         <textarea
           autoFocus
@@ -1165,6 +1465,25 @@ function InkCanvas({
           className="absolute z-40 min-h-10 w-40 resize rounded border bg-background/95 p-1 text-xs shadow-md backdrop-blur"
           style={{ left: `${draft.x * 100}%`, top: `${draft.y * 100}%` }}
           placeholder="Type, then Enter"
+        />
+      )}
+      {mathDraft && (
+        <textarea
+          autoFocus
+          aria-label="New math annotation"
+          value={mathDraft.value}
+          onChange={(e) => setMathDraft({ ...mathDraft, value: e.target.value })}
+          onBlur={commitMathDraft}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              commitMathDraft();
+            }
+            if (e.key === "Escape") setMathDraft(null);
+          }}
+          className="absolute z-40 min-h-10 w-44 resize rounded border bg-background/95 p-1 font-mono text-xs shadow-md backdrop-blur"
+          style={{ left: `${mathDraft.x * 100}%`, top: `${mathDraft.y * 100}%` }}
+          placeholder="LaTeX, then Enter"
         />
       )}
     </>
