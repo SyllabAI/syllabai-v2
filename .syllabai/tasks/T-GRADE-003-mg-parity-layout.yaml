@@ -1,0 +1,105 @@
+version: 1
+task:
+  id: T-GRADE-003
+  title: "Grade Boundaries wave 3 — MathsGenie layout parity for the grade-boundaries page (same layout, shapes, padding — all themes)"
+  owner: "main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3, chat 14bc199d-dd6a-40d0-afad-c2b58230a956, trace 1a193119a0405849)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-GRADE (grade boundaries)
+  wave: gradeb-phase-C
+  deps: [T-GRADE-001, T-GRADE-002]
+  execution_record: >
+    Operator order (trace 1a193119a0405849): "I want the layout of the grade
+    boundaries page to look more like maths genie. I have attached an example.
+    Basically the same layout, shapes, padding etc. But seamlessly integrated
+    with all the syllabai themes. Act as a senior UI/UX designer" (attachment:
+    saved MathsGenie page DOM, Edexcel IGCSE Biology Grade Calculator).
+    REFERENCE AUTOPSY (from the saved DOM, not from memory): MG's page is
+    itself a shadcn-style token system — max-w-3xl centered column over a
+    container px-4 py-8 sm:px-6 md:py-12; ONE box (rounded-2xl border-2)
+    holding a flex flex-col gap-4 stack: session pill row (aria-label "Grade
+    boundaries", Average + every series, rounded-xl border-2 buttons) →
+    separator (bg-subtle h-0.5) → grade summary row (my-4: left rail w-36/
+    sm:w-40 with border-r-2 carrying a size-14/16 rounded-xl/2xl bordered
+    grade badge + label; right side a h-3 rounded-full meter with accent-
+    primary-foreground fill and baseline labels) → slider row (grid
+    [minmax(0,12rem)_1fr_minmax(4rem,auto)] gap-2 sm:gap-6, track h-3,
+    thumb size-5, right-aligned mark) → muted explainer sentence →
+    separator → h5 title "Grade boundaries" + underline tabs (Table|Graph,
+    px-3 py-1.5 triggers with a 2px rounded indicator) → table wrapped in
+    inline-flex rounded-2xl border-2, thead bg-muted with border-b-2 px-4
+    py-2.5 muted centered th, td px-4 py-3 centered with hairline row rules
+    → muted page footer with an underline-offset-4 link. MG tokens read
+    straight from their CSS (--background #fff/#191919, --muted #f5f5f5/
+    #242424, --border-subtle #f0f0f0/#282828, --accent-primary-foreground
+    #1cb0f6/#46cbe3, fonts Manrope+Inter) — i.e. the exact token SLOTS the
+    hub already runs (the hub's --accent-primary pair was adopted from MG/RD
+    in run-004b). HUB IMPLEMENTATION (branch t-gradeb-3/mg-parity-layout,
+    off main 0ea81159): grade-boundaries-workspace.tsx JSX return rebuilt to
+    that anatomy 1:1 — max-w-3xl column, one rounded-2xl border-2 bg-card
+    box (p-4 sm:p-6) containing session pills (accent-primary active fill,
+    hand-rolled to keep the token pair, Button component dropped), hairline
+    separators (h-0.5 bg-border/60), grade rail (size-14/16 rounded-xl/2xl
+    border-2 font-display badge + border-r-2 rail w-36/40) + h-3 meter
+    (role=progressbar, accent-primary-foreground fill) + baseline labels,
+    12rem/1fr/4rem slider grid (Slider re-skinned via data-slot arbitrary
+    selectors: track h-3, thumb size-5, range accent-primary-foreground),
+    per-mode sublines (marks-to-next / modal-across-N / A2-aggregate-A* gap),
+    aggregate-ums keeps unit raw inputs + official-pair pills inside the box,
+    underline Table|Graph tabs beside the display-font title (after:
+    indicator over a border-b-2 rail), every table (linear / cash-in / unit /
+    CIE component / CIE route) re-wrapped in rounded-2xl border-2 with
+    bg-muted heads and centered tabular cells, honest no-calculator note +
+    provenance footer restyled to MG's muted footer slot; page.tsx no-corpus
+    state re-wrapped in the same box language (Card dropped). ZERO logic
+    deltas: all state, memos, calc calls and tests byte-identical to
+    T-GRADE-002 run-002. THEME PROOF (headless browser against the
+    standalone build): SME light, quiet-green (squared 6px radii + fern
+    pill + its own spine underline tabs) and candy-shop (40px round-everything
+    + cherry pill + Fraunces display) all re-skin the identical DOM —
+    verified from screenshots; token-only styling (no hex, no shadows, no
+    per-theme rules added). HYGIENE: the root worklog.md run-002 entry that
+    b3158de8 committed TWICE (once with a stale #558/#559 branch line, once
+    updated to #558/#559/#561/#564) is deduped to the updated entry — same
+    corruption class as the .syllabai/worklog.md duplicate + stray marker
+    fixed during the PR #566 race intake; root worklog was missed because it
+    auto-merged (single-side modification).
+    Local proof: bun test 26/26 (18 calc + 8 bundle, incl. the committed-
+    bundle regression anchors), verify:gradeb GREEN, hub tsc 0, eslint 0 on
+    both changed files, full hub build GREEN with 106 grade-boundaries pages
+    prerendered; prerendered igcse-physics-19/grade-boundaries.html carries
+    all 11 layout markers (box, max-w-3xl, pill group aria, rail badge,
+    h-3 meter, slider grid, underline tabs rail, accent fill, muted heads,
+    Average pill, zero legacy Cards); live standalone screenshots: linear
+    (igcse-physics-19) with slider at 0 and at max (grade 9 badge + full
+    meter + grade-9 column highlights), IAL aggregate (ial-maths-20-pure-1,
+    June 2024 session: UMS meter, official-pair pills, unit input grid),
+    trend Graph tab, quiet-green + candy-shop theme re-skins.
+  doctrine: >
+    Same band doctrine as T-GRADE-001/002. NEW laws this wave: (1) layout
+    parity is cloned from the operator-supplied reference DOM (shapes,
+    spacing, proportions), NEVER from guessed memory of the site; (2) the
+    clone renders through the hub's own token ladder only — a layout is
+    "seamlessly integrated" iff zero hardcoded colors/radii/shadows ship and
+    every theme re-skins it without per-theme rules; (3) parity is
+    PRESENTATION-ONLY: calculator modes, session state and every pure calc
+    call stay byte-identical; MG chrome without a hub counterpart (target-
+    grade select, per-paper mark chips when no breakdown is published, the
+    decorative blurred hero image, the circular More menu) is consciously
+    NOT invented — honest absence beats fake feature parity.
+scope:
+  allowed:
+    - "apps/hub/src/components/hub/grade-boundaries/grade-boundaries-workspace.tsx (JSX/presentation rebuild, logic identical)"
+    - "apps/hub/src/app/courses/[course]/grade-boundaries/page.tsx (no-corpus box restyle, Card import dropped)"
+    - ".syllabai/tasks/T-GRADE-003-mg-parity-layout.yaml"
+    - ".syllabai/worklog.md (append only)"
+    - "worklog.md (run-002 duplicate entry removed — hygiene; T-GRADE-003 entry appended)"
+    - ".syllabai/receipts/T-GRADE/** (new)"
+  forbidden:
+    - "packages/contracts/** (no core DTO changes)"
+    - "packages/db/** (zero DDL)"
+    - "apps/api/** (no routes)"
+    - "lib/courses.ts (registry untouched)"
+    - "content/grade-boundaries/bundle.v1.json (data plane untouched — sha16 must stay 9c7bc67671dd31e9)"
+    - "src/lib/grade-boundaries*.ts / grade-boundaries-calc* (logic plane untouched)"
+    - "any hardcoded color/radius/shadow or per-theme override in the workspace"

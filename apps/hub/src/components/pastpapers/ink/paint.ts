@@ -58,8 +58,16 @@ export function paintShapes(
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
   for (const s of shapes) {
+    // T-MG-INK-4 painter hardening: an EXPLICIT kind-switch — mtext is
+    // the DOM overlay's (./MathTextOverlay), tombstones are deletions,
+    // and ANY unknown kind (forward schema evolution) is skipped
+    // honestly. The old `else paintText` fallthrough would have routed
+    // an unknown kind at s.text and thrown. Strokes + text painting is
+    // byte-identical to the shipped law (the T-MG-CROPMARK-1 crop
+    // composite keeps compositing strokes + text verbatim; the
+    // mtext-in-crop blindspot is the spec's disclosed limitation).
     if (s.kind === "stroke") paintStroke(ctx, box, s.color, s.widthFrac, s.points);
-    else paintText(ctx, box, s);
+    else if (s.kind === "text") paintText(ctx, box, s);
   }
   if (activeStroke && activeStroke.points.length >= 2) {
     paintStroke(ctx, box, activeStroke.color, activeStroke.widthFrac, activeStroke.points);

@@ -17,8 +17,22 @@
  * excluded by name). pdf-pane stays byte-untouched (the monolith freeze).
  * Rotation: the caller supplies the pane's user-rot offset (read at click
  * time via readViewerRotation — event grain, never a listener).
+ *
+ * T-MG-INK-4 run-003: the producer is ASYNC now — the mtext kind joins
+ * the crop via the font-inlined foreignObject raster (./ink/mtext-raster,
+ * the spec's named card), drawn AFTER the sync ink pass at the same
+ * bitmap-scale law. Every raster failure degrades to the plain-text
+ * rendering of the RAW KaTeX source (honest, never silent, never a
+ * throw) — the crop still shows what the learner wrote.
  */
-import type { InkShape } from "../ink/ink";
+import { INK_COLORS, type InkMathShape, type InkShape } from "../ink/ink";
+import {
+  buildMtextSvg,
+  katexFontCss,
+  mtextRasterItems,
+  renderTexHtml,
+  svgToImage,
+} from "../ink/mtext-raster";
 import { paintShapes } from "../ink/paint";
 import {
   chooseImageDataUrl,
@@ -26,6 +40,10 @@ import {
   type NormRect,
   PAPER_MARK_BYTE_CAP,
 } from "./region-crop";
+
+/** The fallback brush's font (a monospace stack reads as SOURCE — the
+ * degraded path renders the raw KaTeX text, never a fabricated render). */
+const MTEXT_FALLBACK_FONT = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
 
 export interface ProduceCropInput {
   /** The viewer host subtree that contains the [data-page] holders. */
@@ -61,7 +79,7 @@ export function findPageCanvas(holder: HTMLElement): HTMLCanvasElement | null {
   return null;
 }
 
-export function produceRegionCrop(input: ProduceCropInput): ProduceCropResult {
+export async function produceRegionCrop(input: ProduceCropInput): Promise<ProduceCropResult> {
   const capBytes = input.capBytes ?? PAPER_MARK_BYTE_CAP;
   const holder = input.host.querySelector<HTMLElement>(`[data-page="${input.page}"]`);
   if (!holder) return { ok: false, reason: "holder_missing" };
@@ -99,6 +117,47 @@ export function produceRegionCrop(input: ProduceCropInput): ProduceCropResult {
     );
     ctx.restore();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
+  }
+
+  // (3) T-MG-INK-4 run-003: the mtext kind joins the crop — the SAME
+  // KaTeX html the DOM overlay renders, rasterized through the
+  // font-inlined foreignObject path at the bitmap scale the strokes
+  // paint at (sizeFrac × page-bitmap width). Any failure in the chain
+  // (no KaTeX css, a font fetch failure, a decode failure) falls back
+  // to the plain-text rendering of the RAW source — honest degradation.
+  const mtexts = pageShapes.filter((s): s is InkMathShape => s.kind === "mtext");
+  if (mtexts.length > 0) {
+    let rastered = false;
+    const fontCss = await katexFontCss();
+    if (fontCss) {
+      const items = mtextRasterItems(
+        mtexts,
+        pageCanvas.width,
+        pageCanvas.height,
+        plan,
+        renderTexHtml,
+      ).filter((it) => it.html.length > 0);
+      const svg = buildMtextSvg(items, plan.sw, plan.sh, fontCss);
+      const img = svg ? await svgToImage(svg) : null;
+      if (img) {
+        ctx.drawImage(img, 0, 0, plan.sw, plan.sh);
+        rastered = true;
+      }
+    }
+    if (!rastered) {
+      ctx.textBaseline = "top";
+      for (const s of mtexts) {
+        const sizePx = s.sizeFrac * pageCanvas.width;
+        ctx.font = `${sizePx}px ${MTEXT_FALLBACK_FONT}`;
+        ctx.fillStyle = INK_COLORS[s.color];
+        const x = s.x * pageCanvas.width - plan.sx;
+        const y = s.y * pageCanvas.height - plan.sy;
+        const lines = s.tex.split("\n");
+        for (let i = 0; i < lines.length; i++) {
+          ctx.fillText(lines[i]!, x, y + i * sizePx * 1.25);
+        }
+      }
+    }
   }
 
   try {

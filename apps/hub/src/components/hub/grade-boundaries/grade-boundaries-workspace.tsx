@@ -1,8 +1,22 @@
 "use client";
 
 /**
- * GradeBoundariesWorkspace (T-GRADE-1 + T-GRADE-2) — the course
+ * GradeBoundariesWorkspace (T-GRADE-1 + T-GRADE-2 + T-GRADE-3) — the course
  * grade-boundaries surface.
+ *
+ * T-GRADE-3 run-001: MathsGenie LAYOUT parity (operator brief: "the layout
+ * … more like maths genie … same layout, shapes, padding … seamlessly
+ * integrated with all the syllabai themes"). Cloned from MG's saved page
+ * DOM: a max-w-3xl column with ONE rounded-2xl border-2 box → session pill
+ * row → hairline separator → grade rail (size-14/16 bordered badge over a
+ * border-r-2 rail) + h-3 meter → 12rem/1fr/4rem slider grid → separator →
+ * display-font title + underline Table|Graph tabs → rounded-2xl tables with
+ * bg-muted heads and centered cells → muted provenance footer. All colors,
+ * radii and fonts stay on the hub token ladder (--accent-primary pair,
+ * --muted, --border, --radius chain, --app-font-display) so SME,
+ * quiet-green, candy-shop and plum re-skin it unchanged. Logic untouched:
+ * the three calculator modes, session/average state and every pure calc
+ * call are byte-identical to run-002.
  *
  * MathsGenie predicted-grade-calculator feature set, hub shell:
  *   - Table | Graph toggle (MG's view pair) over the same corpus;
@@ -20,20 +34,12 @@
  *     corpus (bundle.v1.json) — provenance printed in the footer.
  */
 import { useMemo, useState } from "react";
-import {
-  BarChart3,
-  CalendarRange,
-  Info,
-  Sigma,
-  Table2,
-  TrendingUp,
-} from "lucide-react";
+import { Info } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 import {
   aggregateUms,
   gradeForMark,
@@ -385,380 +391,474 @@ export function GradeBoundariesWorkspace({
 
   const aggLadder = activeAgg?.cashIn?.gradeLadder ?? ladder;
 
-  return (
-    <div className="space-y-5">
-      {/* session pills (MG: Average + every series) */}
-      <div className="flex flex-wrap items-center gap-1.5">
-        <Button
-          variant={sessionPick === "average" ? "default" : "outline"}
-          size="sm"
-          className="h-8 rounded-full"
-          aria-pressed={sessionPick === "average"}
-          onClick={() => setSessionPick("average")}
-        >
-          <Sigma className="size-3.5" aria-hidden /> Average
-        </Button>
-        {sessions.map((s) => (
-          <Button
-            key={s.session}
-            variant={sessionPick === s.session ? "default" : "outline"}
-            size="sm"
-            className="h-8 rounded-full"
-            aria-pressed={sessionPick === s.session}
-            onClick={() => setSessionPick(s.session)}
-          >
-            <CalendarRange className="size-3.5" aria-hidden /> {s.session}
-          </Button>
-        ))}
-      </div>
+  // ------------------------------------------------------------------
+  // T-GRADE-003 run-001 — MathsGenie-parity presentation helpers.
+  // Layout, shapes and padding clone MG's predicted-grade-calculator
+  // page (saved DOM: upload/Edexcel IGCSE Biology … MathsGenie.html):
+  // one rounded-2xl border-2 box on a max-w-3xl column → session pill
+  // row → hairline separator → grade rail (bordered badge) + meter →
+  // slider row (12rem/1fr/4rem grid) → separator → title + underline
+  // Table|Graph tabs → rounded-2xl tables (bg-muted heads, centered
+  // cells). Every color/radius/font rides the hub token ladder, so all
+  // four themes (SME, quiet-green, candy-shop, plum) re-skin it as-is.
+  // ------------------------------------------------------------------
+  const meterPct = maxMark
+    ? Math.min(100, Math.max(0, (clampedMark / maxMark) * 100))
+    : 0;
+  const aggMeterPct =
+    aggResult && aggResult.maxUms > 0
+      ? Math.min(
+          100,
+          Math.max(0, (aggResult.totalUms / aggResult.maxUms) * 100),
+        )
+      : 0;
+  // MG's pill pair — active fill is the --accent-primary token pair (the
+  // same idiom the hub sidebar already borrows from MG/RD, run-004b).
+  const pillCls = (active: boolean) =>
+    cn(
+      "inline-flex h-8 cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-xl border-2 border-transparent px-3 text-sm font-medium transition-colors",
+      active
+        ? "bg-accent-primary text-accent-primary-foreground"
+        : "text-muted-foreground hover:bg-muted hover:text-foreground",
+    );
+  // MG's underline tab pair (their tabs-list underline variant): the
+  // active trigger carries a 2px rounded accent bar over a hairline rail.
+  const underlineList =
+    "h-auto w-fit items-start gap-1 rounded-none border-b-2 bg-transparent p-0";
+  const underlineTrigger =
+    "h-auto flex-1 rounded-none border-0 px-3 py-1.5 text-sm data-[state=active]:bg-transparent data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent dark:data-[state=active]:border-0 relative after:absolute after:inset-x-2 after:-bottom-[2px] after:hidden after:h-0.5 after:rounded-full after:bg-accent-primary-foreground after:content-[''] data-[state=active]:after:block";
+  // MG separators inside the box: 2px hairline wash
+  const sep = (
+    <div aria-hidden className="h-0.5 w-full rounded-full bg-border/60" />
+  );
+  // MG table chrome: rounded-2xl border-2 wrapper, bg-muted head row,
+  // centered cells with hairline row rules
+  const tableBox =
+    "inline-flex min-w-full overflow-hidden rounded-2xl border-2";
+  const thCls =
+    "border-b-2 border-border px-3 py-2.5 text-center font-medium text-muted-foreground";
+  const thClsLeft =
+    "border-b-2 border-border py-2.5 pl-4 pr-3 text-left font-medium text-muted-foreground";
+  const railBadge =
+    "flex size-14 items-center justify-center rounded-xl border-2 bg-background font-display text-2xl font-bold tabular-nums sm:size-16 sm:rounded-2xl";
 
-      {/* linear-total calculator (one mark slider) */}
-      {canCalculate && (
-        <Card>
-          <CardContent className="flex flex-col gap-5 p-5 lg:flex-row lg:items-center">
-            <div className="min-w-0 flex-1 space-y-3">
-              <div className="flex items-baseline justify-between gap-3">
-                <p className="text-sm font-medium">
-                  {sessionPick === "average"
-                    ? "Your total mark (across all papers)"
-                    : `Your total mark — ${sessionPick}`}
+  return (
+    <div className="mx-auto max-w-3xl space-y-3">
+      {/* the MG calculator box — one bordered card for the whole surface */}
+      <div className="rounded-2xl border-2 bg-card p-4 sm:p-6">
+        <div className="flex flex-col gap-4">
+          {/* session pills (MG: Average + every series, inside the box) */}
+          <div
+            role="group"
+            aria-label="Grade boundaries exam session"
+            className="flex flex-wrap items-center gap-1.5"
+          >
+            <button
+              type="button"
+              aria-pressed={sessionPick === "average"}
+              className={pillCls(sessionPick === "average")}
+              onClick={() => setSessionPick("average")}
+            >
+              Average
+            </button>
+            {sessions.map((s) => (
+              <button
+                key={s.session}
+                type="button"
+                aria-pressed={sessionPick === s.session}
+                className={pillCls(sessionPick === s.session)}
+                onClick={() => setSessionPick(s.session)}
+              >
+                {s.session}
+              </button>
+            ))}
+          </div>
+
+          {sep}
+
+          {/* linear-total calculator — MG's grade rail + meter + slider */}
+          {canCalculate && (
+            <div className="my-2 flex flex-col gap-5">
+              <div className="flex items-start gap-4 sm:gap-5">
+                <div className="flex w-36 shrink-0 flex-col items-center gap-2 border-r-2 pr-4 sm:w-40 sm:pr-5">
+                  <span aria-live="polite" className={railBadge}>
+                    {sessionPick === "average"
+                      ? (average?.grade ?? "–")
+                      : (achieved?.grade ?? "–")}
+                  </span>
+                  <span className="text-center text-sm font-medium text-muted-foreground">
+                    {sessionPick === "average"
+                      ? "Most likely grade"
+                      : `Predicted — ${sessionPick}`}
+                  </span>
+                </div>
+                <div className="min-w-0 flex-1 pt-1">
+                  <div className="flex items-baseline justify-between gap-x-4 text-sm">
+                    <span className="font-medium">
+                      {sessionPick === "average"
+                        ? `Modal across ${sessions.length} sessions`
+                        : achieved?.next
+                          ? `${achieved.next.marks} more mark${achieved.next.marks === 1 ? "" : "s"} to grade ${achieved.next.grade}`
+                          : clampedMark >= (calcRow?.maxMark ?? 0)
+                            ? "Top of the ladder"
+                            : "Boundary not published"}
+                    </span>
+                    <span className="tabular-nums text-muted-foreground">
+                      {clampedMark} / {maxMark} marks
+                    </span>
+                  </div>
+                  <div
+                    role="progressbar"
+                    aria-label="Total mark on the grade scale"
+                    aria-valuemin={0}
+                    aria-valuemax={maxMark ?? 0}
+                    aria-valuenow={clampedMark}
+                    className="mt-2 h-3 overflow-hidden rounded-full bg-muted"
+                  >
+                    <div
+                      className="h-full rounded-full bg-accent-primary-foreground transition-[width]"
+                      style={{ width: `${meterPct}%` }}
+                    />
+                  </div>
+                  {sessionPick === "average" &&
+                  average &&
+                  average.perSeries.length > 0 ? (
+                    <div className="mt-2 flex flex-wrap gap-1">
+                      {average.perSeries.map((p) => (
+                        <Badge
+                          key={p.session}
+                          variant="outline"
+                          className="font-mono text-[10px]"
+                        >
+                          {p.session}: {p.grade ?? "–"}
+                        </Badge>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="mt-2 flex items-baseline justify-between gap-x-4 text-xs text-muted-foreground">
+                      <span>0</span>
+                      <span>Max {maxMark}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-[minmax(0,12rem)_1fr_minmax(4rem,auto)] sm:gap-6">
+                <p className="truncate font-display text-sm font-semibold">
+                  Total mark
                 </p>
-                <p className="text-sm tabular-nums text-muted-foreground">
+                <Slider
+                  value={[clampedMark]}
+                  max={maxMark ?? 1}
+                  step={1}
+                  aria-label="Total mark"
+                  onValueChange={(v) => setMark(v[0] ?? 0)}
+                  className="[&_[data-slot=slider-range]]:bg-accent-primary-foreground [&_[data-slot=slider-thumb]]:size-5 [&_[data-slot=slider-thumb]]:border-accent-primary-foreground [&_[data-slot=slider-track]]:h-3"
+                />
+                <p className="text-right text-sm font-medium tabular-nums tracking-tight">
                   {clampedMark} / {maxMark}
                 </p>
               </div>
-              <Slider
-                value={[clampedMark]}
-                max={maxMark ?? 1}
-                step={1}
-                aria-label="Total mark"
-                onValueChange={(v) => setMark(v[0] ?? 0)}
-              />
-              <div className="flex items-center gap-2">
-                <Input
-                  type="number"
-                  inputMode="numeric"
-                  min={0}
-                  max={maxMark ?? undefined}
-                  value={clampedMark}
-                  aria-label="Total mark (number input)"
-                  className="h-9 w-28 tabular-nums"
-                  onChange={(e) => setMark(Number(e.target.value) || 0)}
-                />
-                <span className="text-xs text-muted-foreground">
-                  enter the total across all papers
-                </span>
-              </div>
-            </div>
-            <div className="shrink-0 lg:w-64">
-              {sessionPick === "average" && average ? (
-                <div className="rounded-xl border bg-muted/40 p-4 text-center">
-                  <p className="text-xs uppercase tracking-wide text-muted-foreground">
-                    Most likely grade (modal across {sessions.length} sessions)
-                  </p>
-                  <p className="mt-1 text-4xl font-bold tabular-nums">
-                    {average.grade ?? "–"}
-                  </p>
-                  <div className="mt-2 flex flex-wrap justify-center gap-1">
-                    {average.perSeries.map((p) => (
-                      <Badge key={p.session} variant="outline" className="font-mono text-[10px]">
-                        {p.session}: {p.grade ?? "–"}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              ) : achieved ? (
-                <div className="rounded-xl border bg-muted/40 p-4 text-center">
-                  <p className="text-xs uppercase tracking-wide text-muted-foreground">
-                    Predicted grade — {sessionPick}
-                  </p>
-                  <p className="mt-1 text-5xl font-bold tabular-nums">
-                    {achieved.grade ?? "–"}
-                  </p>
-                  <p className="mt-2 text-xs text-muted-foreground">
-                    {achieved.next
-                      ? `${achieved.next.marks} more mark${achieved.next.marks === 1 ? "" : "s"} for grade ${achieved.next.grade}`
-                      : clampedMark >= (calcRow?.maxMark ?? 0)
-                        ? "top of the ladder"
-                        : "boundary not available"}
-                  </p>
-                </div>
-              ) : null}
-            </div>
-          </CardContent>
-        </Card>
-      )}
-
-      {/* aggregate-ums calculator (IAL / modular IGCSE) */}
-      {isAgg && (
-        <Card>
-          <CardContent className="space-y-4 p-5">
-            {sessionPick === "average" ? (
-              aggAverage && aggAverage.perSeries.length > 0 ? (
-                <div className="flex flex-col items-center gap-2 py-2 text-center">
-                  <p className="text-xs uppercase tracking-wide text-muted-foreground">
-                    Most likely grade (modal across{" "}
-                    {aggAverage.perSeries.length} sessions, same unit marks)
-                  </p>
-                  <p className="text-4xl font-bold tabular-nums">
-                    {aggAverage.grade ?? "–"}
-                  </p>
-                  <div className="flex flex-wrap justify-center gap-1">
-                    {aggAverage.perSeries.map((p) => (
-                      <Badge
-                        key={p.session}
-                        variant="outline"
-                        className="font-mono text-[10px]"
-                      >
-                        {p.session}: {p.grade ?? "–"}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <p className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Info className="size-4" aria-hidden /> No session in the
-                  corpus can compose the {calc?.cashIn} aggregation.
-                </p>
-              )
-            ) : !activeAgg?.eligible ? (
-              <p className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Info className="size-4" aria-hidden /> The {calc?.cashIn}{" "}
-                composition cannot be examined in {sessionPick} — one or more
-                units were not offered that session. The tables below stay
-                fully live.
+              <p className="text-sm text-muted-foreground">
+                No per-paper breakdown is published for this
+                qualification&apos;s boundaries — enter your total across all
+                papers, the same total {entry.board} grades against.
               </p>
-            ) : (
-              <>
-                {activeAgg.pairs.length > 1 && (
-                  <div className="flex flex-wrap items-center gap-1.5">
-                    <span className="mr-1 text-xs text-muted-foreground">
-                      Optional applied pair
-                    </span>
-                    {activeAgg.pairs.map((p, i) => (
-                      <Button
-                        key={`${p[0]}+${p[1]}`}
-                        variant={i === Math.min(pairIdx, activeAgg.pairs.length - 1) ? "default" : "outline"}
-                        size="sm"
-                        className="h-7 rounded-full font-mono text-[11px]"
-                        aria-pressed={i === pairIdx}
-                        onClick={() => setPairIdx(i)}
-                      >
-                        {p[0]} + {p[1]}
-                      </Button>
-                    ))}
-                  </div>
-                )}
-                <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                  {compositionUnits.map((u) => {
-                    const raw = Math.max(
-                      0,
-                      Math.min(u.maxMark, Math.round(unitMarks[u.code] ?? 0) || 0),
-                    );
-                    const ums = rawToUms(u, raw);
-                    return (
-                      <div
-                        key={u.code}
-                        className="flex items-center gap-2 rounded-xl border bg-muted/30 px-3 py-2"
-                      >
-                        <div className="min-w-0 flex-1">
-                          <p className="truncate font-mono text-[11px] text-muted-foreground">
-                            {u.code}
-                          </p>
-                          <Input
-                            type="number"
-                            inputMode="numeric"
-                            min={0}
-                            max={u.maxMark}
-                            value={raw}
-                            aria-label={`Raw mark for ${u.code}`}
-                            className="h-8 w-20 tabular-nums"
-                            onChange={(e) =>
-                              setUnitMarks((m) => ({
-                                ...m,
-                                [u.code]: Number(e.target.value) || 0,
-                              }))
-                            }
-                          />
-                        </div>
-                        <div className="text-right">
-                          <p className="text-lg font-semibold tabular-nums">
-                            {ums ?? "–"}
-                          </p>
-                          <p className="text-[10px] uppercase tracking-wide text-muted-foreground">
-                            UMS / {u.ums?.maxMark ?? "?"}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className="flex flex-col gap-4 border-t pt-4 sm:flex-row sm:items-center">
-                  <div className="flex-1">
-                    <p className="text-sm font-medium">
-                      Aggregated UMS — {activeAgg.cashIn!.code} cash-in
-                      <span className="ml-2 font-normal text-muted-foreground">
-                        {aggResult?.totalUms ?? 0} / {aggResult?.maxUms ?? 0}
-                      </span>
-                    </p>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      raw marks convert to UMS through each unit&apos;s own
-                      published boundaries; the cash-in grades the UMS total
-                      {aggGrade?.aStarRuleApplied
-                        ? " — A* via the A2-aggregate rule (A overall + 90% of A2 UMS)"
-                        : ""}
-                      .
-                    </p>
-                  </div>
-                  <div className="rounded-xl border bg-muted/40 px-6 py-3 text-center sm:w-56">
-                    <p className="text-xs uppercase tracking-wide text-muted-foreground">
-                      Predicted grade — {sessionPick}
-                    </p>
-                    <p className="text-4xl font-bold tabular-nums">
-                      {aggGrade?.grade ?? "–"}
-                    </p>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      {aggAStarGap
-                        ? `A2 aggregate ${aggAStarGap.have}/${aggAStarGap.need} — ${aggAStarGap.need - aggAStarGap.have} more A2 UMS for A*`
-                        : aggNext
-                          ? `${aggNext.marks} more UMS for grade ${aggNext.grade}`
-                          : "top of the ladder"}
-                    </p>
-                  </div>
-                </div>
-              </>
-            )}
-          </CardContent>
-        </Card>
-      )}
-
-      {/* table | graph */}
-      <Tabs value={view} onValueChange={(v) => setView(v as "table" | "graph")}>
-        <TabsList>
-          <TabsTrigger value="table">
-            <Table2 className="size-4" aria-hidden /> Table
-          </TabsTrigger>
-          <TabsTrigger value="graph">
-            <BarChart3 className="size-4" aria-hidden /> Graph
-          </TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="table" className="mt-3 space-y-4">
-          {/* linear total-mark rows (Edexcel linear International GCSE) */}
-          {hasLinearRows && (
-            <Card>
-              <CardContent className="p-0">
-                <div className="overflow-x-auto">
-                  <table className="w-full min-w-[560px] text-sm">
-                    <caption className="sr-only">
-                      Minimum marks for each grade, by exam session
-                    </caption>
-                    <thead>
-                      <tr className="border-b bg-muted/40 text-left">
-                        <th scope="col" className="px-4 py-2.5 font-medium">Session</th>
-                        <th scope="col" className="px-3 py-2.5 font-medium">Papers</th>
-                        {ladder.map((g) => (
-                          <th key={g} scope="col" className="px-3 py-2.5 text-center font-medium">{g}</th>
-                        ))}
-                        <th scope="col" className="px-3 py-2.5 text-right font-medium">Max</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {entry.series.map((s, i) => {
-                        const rowLadder = s.gradeLadder ?? ladder;
-                        const rowGrade = canCalculate && s.boundaries
-                          ? gradeForMark(s.boundaries, rowLadder, clampedMark)
-                          : null;
-                        return (
-                          <tr
-                            key={`${s.session}-${s.papersNote ?? i}`}
-                            className="border-b last:border-0"
-                          >
-                            <td className="whitespace-nowrap px-4 py-2.5 font-medium">
-                              {s.session}
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-2.5">
-                              <span className="flex items-center gap-1.5">
-                                <span className="font-mono text-xs text-muted-foreground">
-                                  {s.papersNote ?? s.scale ?? "—"}
-                                </span>
-                                {isRegionalVariant(s.papersNote) && (
-                                  <Badge variant="outline" className="px-1 py-0 text-[10px]">R</Badge>
-                                )}
-                                {s.tier && (
-                                  <Badge variant="outline" className="px-1 py-0 text-[10px] capitalize">
-                                    {s.tier}
-                                  </Badge>
-                                )}
-                                {canCalculate && rowGrade && (
-                                  <Badge className="px-1.5 py-0 text-[10px]">{rowGrade}</Badge>
-                                )}
-                              </span>
-                            </td>
-                            {ladder.map((g) => {
-                              const isAchieved = canCalculate && rowGrade === g;
-                              return (
-                                <td
-                                  key={g}
-                                  className={
-                                    "px-3 py-2.5 text-center tabular-nums" +
-                                    (isAchieved ? " rounded-md bg-accent-primary font-semibold text-accent-primary-foreground" : "")
-                                  }
-                                >
-                                  {fmtGradeCell(s.boundaries?.[g])}
-                                </td>
-                              );
-                            })}
-                            <td className="px-3 py-2.5 text-right tabular-nums text-muted-foreground">
-                              {s.maxMark ?? "—"}
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              </CardContent>
-            </Card>
+            </div>
           )}
 
-          {/* cash-in (overall qualification) rows — the qualification-level
-              UMS ladder, incl. Double Award pair ladders (4XSD1) */}
-          {entry.series.some((s) => (s.cashIns?.length ?? 0) > 0) && (
-            <Card>
-              <CardContent className="space-y-4 p-4">
-                <p className="text-sm font-semibold">
-                  Cash-in — the overall qualification (UMS)
+          {/* aggregate-ums calculator — same rail/meter language, UMS scale */}
+          {isAgg && (
+            <div className="my-2 flex flex-col gap-5">
+              {sessionPick === "average" ? (
+                aggAverage && aggAverage.perSeries.length > 0 ? (
+                  <div className="flex items-start gap-4 sm:gap-5">
+                    <div className="flex w-36 shrink-0 flex-col items-center gap-2 border-r-2 pr-4 sm:w-40 sm:pr-5">
+                      <span aria-live="polite" className={railBadge}>
+                        {aggAverage.grade ?? "–"}
+                      </span>
+                      <span className="text-center text-sm font-medium text-muted-foreground">
+                        Most likely grade
+                      </span>
+                    </div>
+                    <div className="min-w-0 flex-1 pt-1">
+                      <p className="text-sm font-medium">
+                        Modal across {aggAverage.perSeries.length} sessions —
+                        same unit marks
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-1">
+                        {aggAverage.perSeries.map((p) => (
+                          <Badge
+                            key={p.session}
+                            variant="outline"
+                            className="font-mono text-[10px]"
+                          >
+                            {p.session}: {p.grade ?? "–"}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Info className="size-4" aria-hidden /> No session in the
+                    corpus can compose the {calc?.cashIn} aggregation.
+                  </p>
+                )
+              ) : !activeAgg?.eligible ? (
+                <p className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Info className="size-4" aria-hidden /> The {calc?.cashIn}{" "}
+                  composition cannot be examined in {sessionPick} — one or more
+                  units were not offered that session. The tables below stay
+                  fully live.
                 </p>
-                {entry.series.slice(0, 4).map((s) => (
-                  <div key={s.session} className="space-y-2">
-                    <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                      {s.session}
-                    </p>
-                    <div className="overflow-x-auto">
-                      <table className="w-full min-w-[520px] text-xs">
+              ) : (
+                <>
+                  <div className="flex items-start gap-4 sm:gap-5">
+                    <div className="flex w-36 shrink-0 flex-col items-center gap-2 border-r-2 pr-4 sm:w-40 sm:pr-5">
+                      <span aria-live="polite" className={railBadge}>
+                        {aggGrade?.grade ?? "–"}
+                      </span>
+                      <span className="text-center text-sm font-medium text-muted-foreground">
+                        Predicted — {sessionPick}
+                      </span>
+                    </div>
+                    <div className="min-w-0 flex-1 pt-1">
+                      <div className="flex items-baseline justify-between gap-x-4 text-sm">
+                        <span className="font-medium">
+                          {aggAStarGap
+                            ? `A2 aggregate ${aggAStarGap.have}/${aggAStarGap.need} — ${aggAStarGap.need - aggAStarGap.have} more A2 UMS for A*`
+                            : aggNext
+                              ? `${aggNext.marks} more UMS to grade ${aggNext.grade}`
+                              : "Top of the ladder"}
+                        </span>
+                        <span className="tabular-nums text-muted-foreground">
+                          {aggResult?.totalUms ?? 0} / {aggResult?.maxUms ?? 0}{" "}
+                          UMS
+                        </span>
+                      </div>
+                      <div
+                        role="progressbar"
+                        aria-label="Aggregated UMS on the cash-in scale"
+                        aria-valuemin={0}
+                        aria-valuemax={aggResult?.maxUms ?? 0}
+                        aria-valuenow={aggResult?.totalUms ?? 0}
+                        className="mt-2 h-3 overflow-hidden rounded-full bg-muted"
+                      >
+                        <div
+                          className="h-full rounded-full bg-accent-primary-foreground transition-[width]"
+                          style={{ width: `${aggMeterPct}%` }}
+                        />
+                      </div>
+                      <div className="mt-2 flex items-baseline justify-between gap-x-4 text-xs text-muted-foreground">
+                        <span>0</span>
+                        <span>
+                          {activeAgg.cashIn!.code} cash-in · max{" "}
+                          {aggResult?.maxUms ?? 0}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {activeAgg.pairs.length > 1 && (
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <span className="mr-1 text-xs text-muted-foreground">
+                        Optional applied pair
+                      </span>
+                      {activeAgg.pairs.map((p, i) => (
+                        <button
+                          key={`${p[0]}+${p[1]}`}
+                          type="button"
+                          aria-pressed={
+                            i === Math.min(pairIdx, activeAgg.pairs.length - 1)
+                          }
+                          className={cn(
+                            pillCls(
+                              i ===
+                                Math.min(pairIdx, activeAgg.pairs.length - 1),
+                            ),
+                            "h-7 px-2.5 font-mono text-[11px]",
+                          )}
+                          onClick={() => setPairIdx(i)}
+                        >
+                          {p[0]} + {p[1]}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                    {compositionUnits.map((u) => {
+                      const raw = Math.max(
+                        0,
+                        Math.min(u.maxMark, Math.round(unitMarks[u.code] ?? 0) || 0),
+                      );
+                      const ums = rawToUms(u, raw);
+                      return (
+                        <div
+                          key={u.code}
+                          className="flex items-center gap-2 rounded-xl border bg-background px-3 py-2"
+                        >
+                          <div className="min-w-0 flex-1">
+                            <p className="truncate font-mono text-[11px] text-muted-foreground">
+                              {u.code}
+                            </p>
+                            <Input
+                              type="number"
+                              inputMode="numeric"
+                              min={0}
+                              max={u.maxMark}
+                              value={raw}
+                              aria-label={`Raw mark for ${u.code}`}
+                              className="h-8 w-20 tabular-nums"
+                              onChange={(e) =>
+                                setUnitMarks((m) => ({
+                                  ...m,
+                                  [u.code]: Number(e.target.value) || 0,
+                                }))
+                              }
+                            />
+                          </div>
+                          <div className="text-right">
+                            <p className="text-lg font-semibold tabular-nums">
+                              {ums ?? "–"}
+                            </p>
+                            <p className="text-[10px] uppercase tracking-wide text-muted-foreground">
+                              UMS / {u.ums?.maxMark ?? "?"}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  <p className="text-sm text-muted-foreground">
+                    Raw marks convert to UMS through each unit&apos;s own
+                    published boundaries; the {activeAgg.cashIn!.code} cash-in
+                    grades the UMS total
+                    {aggGrade?.aStarRuleApplied
+                      ? " — A* via the A2-aggregate rule (A overall + 90% of A2 UMS)"
+                      : ""}
+                    .
+                  </p>
+                </>
+              )}
+            </div>
+          )}
+
+          {/* honest limitation note for courses still without a calculator */}
+          {!canCalculate && !isAgg && (
+            <p className="flex items-start gap-2 text-sm text-muted-foreground">
+              <Info className="mt-0.5 size-4 shrink-0" aria-hidden />
+              <span>
+                The mark-to-grade calculator needs a verified cash-in
+                composition. This qualification is {entry.board}{" "}
+                {entry.code.startsWith("4X") || entry.code.startsWith("Y")
+                  ? "modular — the aggregation calculator lands once this cash-in's unit rules are encoded from the official specification"
+                  : "route-based — the grade depends on which component combination was sat"}
+                . The tables and trend graph below are fully live.
+              </span>
+            </p>
+          )}
+
+          {sep}
+
+          {/* title + underline tabs (MG: "Grade boundaries" | Table/Graph) */}
+          <Tabs value={view} onValueChange={(v) => setView(v as "table" | "graph")}>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h5 className="font-display text-lg font-bold tracking-tight">
+                Grade boundaries
+              </h5>
+              <TabsList className={underlineList}>
+                <TabsTrigger value="table" className={underlineTrigger}>
+                  Table
+                </TabsTrigger>
+                <TabsTrigger value="graph" className={underlineTrigger}>
+                  Graph
+                </TabsTrigger>
+              </TabsList>
+            </div>
+
+            <TabsContent value="table" className="mt-4 space-y-6">
+              {/* linear total-mark rows (Edexcel linear International GCSE) */}
+              {hasLinearRows && (
+                <section className="space-y-3">
+                  <div className="overflow-x-auto">
+                    <div className={tableBox}>
+                      <table className="w-full min-w-[560px] border-collapse text-sm">
+                        <caption className="sr-only">
+                          Minimum marks for each grade, by exam series
+                        </caption>
+                        <thead className="bg-muted leading-normal">
+                          <tr>
+                            <th scope="col" className={`${thCls} px-4`}>
+                              Exam series
+                            </th>
+                            <th scope="col" className={thCls}>
+                              Papers
+                            </th>
+                            {ladder.map((g) => (
+                              <th key={g} scope="col" className={thCls}>
+                                {g}
+                              </th>
+                            ))}
+                            <th scope="col" className={thCls}>
+                              Max
+                            </th>
+                          </tr>
+                        </thead>
                         <tbody>
-                          {(s.cashIns ?? []).map((c) => {
-                            const cLadder = c.gradeLadder ?? ladder;
+                          {entry.series.map((s, i) => {
+                            const rowLadder = s.gradeLadder ?? ladder;
+                            const rowGrade =
+                              canCalculate && s.boundaries
+                                ? gradeForMark(s.boundaries, rowLadder, clampedMark)
+                                : null;
                             return (
-                              <tr key={c.code} className="border-b last:border-0">
-                                <td className="whitespace-nowrap py-1.5 pr-3 font-mono">
-                                  {c.code}
-                                  <span className="ml-1.5 text-muted-foreground">
-                                    {c.title}
+                              <tr
+                                key={`${s.session}-${s.papersNote ?? i}`}
+                                className="border-b border-border last:border-0"
+                              >
+                                <td className="whitespace-nowrap px-4 py-3 text-center font-medium">
+                                  {s.session}
+                                </td>
+                                <td className="whitespace-nowrap px-3 py-3">
+                                  <span className="flex items-center justify-center gap-1.5">
+                                    <span className="font-mono text-xs text-muted-foreground">
+                                      {s.papersNote ?? s.scale ?? "—"}
+                                    </span>
+                                    {isRegionalVariant(s.papersNote) && (
+                                      <Badge variant="outline" className="px-1 py-0 text-[10px]">R</Badge>
+                                    )}
+                                    {s.tier && (
+                                      <Badge variant="outline" className="px-1 py-0 text-[10px] capitalize">
+                                        {s.tier}
+                                      </Badge>
+                                    )}
+                                    {canCalculate && rowGrade && (
+                                      <Badge className="px-1.5 py-0 text-[10px]">{rowGrade}</Badge>
+                                    )}
                                   </span>
                                 </td>
-                                <td className="whitespace-nowrap py-1.5 pr-3 text-muted-foreground">
-                                  UMS · {c.maxMark}
+                                {ladder.map((g) => {
+                                  const isAchieved = canCalculate && rowGrade === g;
+                                  return (
+                                    <td
+                                      key={g}
+                                      className={
+                                        "px-3 py-3 text-center tabular-nums" +
+                                        (isAchieved
+                                          ? " rounded-md bg-accent-primary font-semibold text-accent-primary-foreground"
+                                          : "")
+                                      }
+                                    >
+                                      {fmtGradeCell(s.boundaries?.[g])}
+                                    </td>
+                                  );
+                                })}
+                                <td className="px-3 py-3 text-center tabular-nums text-muted-foreground">
+                                  {s.maxMark ?? "—"}
                                 </td>
-                                {cLadder.map((g) => (
-                                  <td
-                                    key={g}
-                                    className="px-2 py-1.5 text-center tabular-nums"
-                                  >
-                                    {fmtGradeCell(c.boundaries[g])}
-                                  </td>
-                                ))}
                               </tr>
                             );
                           })}
@@ -766,255 +866,375 @@ export function GradeBoundariesWorkspace({
                       </table>
                     </div>
                   </div>
-                ))}
-                {entry.series.length > 4 && (
-                  <p className="text-xs text-muted-foreground">
-                    Showing the latest 4 sessions — {entry.series.length} in the corpus.
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-          )}
-
-          {/* modular unit rows (Edexcel 4X suites / IAL units) */}
-          {entry.series.some((s) => (s.units?.length ?? 0) > 0) && (
-            <Card>
-              <CardContent className="space-y-4 p-4">
-                <p className="text-sm font-semibold">Unit boundaries (raw / UMS)</p>
-                {entry.series.slice(0, 4).map((s) => (
-                  <div key={s.session} className="space-y-2">
-                    <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                      {s.session}
-                    </p>
-                    <div className="overflow-x-auto">
-                      <table className="w-full min-w-[520px] text-xs">
-                        <thead>
-                          <tr className="border-b text-left text-muted-foreground">
-                            <th scope="col" className="py-1.5 pr-3 font-medium">Unit</th>
-                            <th scope="col" className="py-1.5 pr-3 font-medium">Scale</th>
-                            {ladder.map((g) => (
-                              <th key={g} scope="col" className="px-2 py-1.5 text-center font-medium">{g}</th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {(s.units ?? []).flatMap((u) => {
-                            const rows = [
-                              <tr key={`${u.code}-raw`} className="border-b last:border-0">
-                                <td className="py-1.5 pr-3 font-mono">{u.code} <span className="text-muted-foreground">{u.title}</span></td>
-                                <td className="py-1.5 pr-3">Raw · {u.maxMark}</td>
-                                {ladder.map((g) => (
-                                  <td key={g} className="px-2 py-1.5 text-center tabular-nums">{fmtGradeCell(u.boundaries[g])}</td>
-                                ))}
-                              </tr>,
-                            ];
-                            if (u.ums) {
-                              rows.push(
-                                <tr key={`${u.code}-ums`} className="border-b last:border-0 text-muted-foreground">
-                                  <td className="py-1.5 pr-3" />
-                                  <td className="py-1.5 pr-3">UMS · {u.ums.maxMark}</td>
-                                  {ladder.map((g) => (
-                                    <td key={g} className="px-2 py-1.5 text-center tabular-nums">{fmtGradeCell(u.ums?.boundaries[g])}</td>
-                                  ))}
-                                </tr>,
-                              );
-                            }
-                            return rows;
-                          })}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                ))}
-                {entry.series.length > 4 && (
-                  <p className="text-xs text-muted-foreground">
-                    Showing the latest 4 sessions — {entry.series.length} in the corpus.
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-          )}
-
-          {/* CIE component thresholds */}
-          {entry.series.some((s) => (s.components?.length ?? 0) > 0) && (
-            <Card>
-              <CardContent className="space-y-4 p-4">
-                <p className="text-sm font-semibold">
-                  Component thresholds (minimum raw marks)
-                </p>
-                {entry.series.slice(0, 4).map((s) => (
-                  <div key={s.session} className="space-y-2">
-                    <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                      {s.session}
-                    </p>
-                    <div className="overflow-x-auto">
-                      <table className="w-full min-w-[520px] text-xs">
-                        <thead>
-                          <tr className="border-b text-left text-muted-foreground">
-                            <th scope="col" className="py-1.5 pr-3 font-medium">Component</th>
-                            <th scope="col" className="py-1.5 pr-3 text-right font-medium">Max</th>
-                            {(s.gradeLadder ?? ladder).map((g) => (
-                              <th key={g} scope="col" className="px-2 py-1.5 text-center font-medium">{g}</th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {(s.components ?? []).map((c) => (
-                            <tr key={c.code} className="border-b last:border-0">
-                              <td className="whitespace-nowrap py-1.5 pr-3 font-mono">{c.code}</td>
-                              <td className="py-1.5 pr-3 text-right tabular-nums">{c.maxMark}</td>
-                              {(s.gradeLadder ?? ladder).map((g) => (
-                                <td key={g} className="px-2 py-1.5 text-center tabular-nums">{fmtGradeCell(c.boundaries[g])}</td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                ))}
-                {entry.series.length > 4 && (
-                  <p className="text-xs text-muted-foreground">
-                    Showing the latest 4 sessions — {entry.series.length} in the corpus.
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-          )}
-
-          {/* CIE route tables */}
-          {entry.series.some((s) => (s.routes?.length ?? 0) > 0) && (
-            <Card>
-              <CardContent className="space-y-4 p-4">
-                <p className="text-sm font-semibold">
-                  Syllabus thresholds by route (weighted marks)
-                </p>
-                {entry.series.slice(0, 4).map((s) => (
-                  <div key={s.session} className="space-y-2">
-                    <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                      {s.session}
-                    </p>
-                    <div className="overflow-x-auto">
-                      <table className="w-full min-w-[520px] text-xs">
-                        <thead>
-                          <tr className="border-b text-left text-muted-foreground">
-                            <th scope="col" className="py-1.5 pr-3 font-medium">Route</th>
-                            <th scope="col" className="py-1.5 pr-3 text-right font-medium">Max</th>
-                            {(s.gradeLadder ?? ladder).map((g) => (
-                              <th key={g} scope="col" className="px-2 py-1.5 text-center font-medium">{g}</th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {(s.routes ?? []).map((r) => (
-                            <tr key={`${r.option ?? ""}${r.combination}`} className="border-b last:border-0">
-                              <td className="whitespace-nowrap py-1.5 pr-3 font-mono">
-                                {r.option ? <Badge variant="outline" className="mr-1.5 px-1 py-0 text-[10px]">{r.option}</Badge> : null}
-                                {r.combination}
-                                {awardLabel(r.award) && (
-                                  <Badge variant="outline" className="ml-1.5 px-1 py-0 text-[10px] text-muted-foreground">
-                                    {awardLabel(r.award)}
-                                  </Badge>
-                                )}
-                              </td>
-                              <td className="py-1.5 pr-3 text-right tabular-nums">{r.maxWeightedMark}</td>
-                              {(s.gradeLadder ?? ladder).map((g) => (
-                                <td key={g} className="px-2 py-1.5 text-center tabular-nums">{fmtGradeCell(r.boundaries[g])}</td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          )}
-        </TabsContent>
-
-        <TabsContent value="graph" className="mt-3">
-          <Card>
-            <CardContent className="p-4">
-              {graphMode === "none" ? (
-                <p className="flex items-center gap-2 py-10 text-sm text-muted-foreground">
-                  <Info className="size-4 shrink-0" aria-hidden /> No
-                  comparable single ladder exists across sessions for this
-                  qualification yet.
-                </p>
-              ) : (
-                <>
-                  <div className="h-[380px] w-full">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={graphRows} margin={{ top: 8, right: 12, bottom: 4, left: 0 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-                        <XAxis
-                          dataKey="session"
-                          tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
-                          interval="preserveStartEnd"
-                        />
-                        <YAxis
-                          domain={[0, graphMax || "auto"]}
-                          tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
-                          width={44}
-                        />
-                        <ReTooltip
-                          contentStyle={{
-                            background: "var(--background)",
-                            border: "1px solid var(--border)",
-                            borderRadius: 12,
-                            fontSize: 12,
-                          }}
-                        />
-                        {graphGrades.map((g, i) => (
-                          <Line
-                            key={g}
-                            type="monotone"
-                            dataKey={g}
-                            name={`Grade ${g}`}
-                            stroke={CHART_VAR[i % CHART_VAR.length]}
-                            strokeWidth={2}
-                            dot={{ r: 2.5 }}
-                            activeDot={{ r: 4 }}
-                            connectNulls
-                          />
-                        ))}
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </div>
-                  <p className="mt-2 text-center text-xs text-muted-foreground">
-                    {graphCaption}
-                  </p>
-                </>
+                </section>
               )}
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
 
-      {/* honest limitation note for courses still without a calculator */}
-      {!canCalculate && !isAgg && (
-        <Card>
-          <CardContent className="flex items-start gap-3 p-4">
-            <Info className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
-            <p className="text-sm text-muted-foreground">
-              The mark-to-grade calculator needs a verified cash-in
-              composition. This qualification is {entry.board}{" "}
-              {entry.code.startsWith("4X") || entry.code.startsWith("Y")
-                ? "modular — the aggregation calculator lands once this cash-in's unit rules are encoded from the official specification"
-                : "route-based — the grade depends on which component combination was sat"}
-              . The tables and trend graph above are fully live.
-            </p>
-          </CardContent>
-        </Card>
-      )}
+              {/* cash-in (overall qualification) rows — the qualification-level
+                  UMS ladder, incl. Double Award pair ladders (4XSD1) */}
+              {entry.series.some((s) => (s.cashIns?.length ?? 0) > 0) && (
+                <section className="space-y-3">
+                  <p className="font-display text-sm font-semibold">
+                    Cash-in — the overall qualification (UMS)
+                  </p>
+                  {entry.series.slice(0, 4).map((s) => (
+                    <div key={s.session} className="space-y-2">
+                      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                        {s.session}
+                      </p>
+                      <div className="overflow-x-auto">
+                        <div className={tableBox}>
+                          <table className="w-full min-w-[520px] border-collapse text-sm">
+                            <tbody>
+                              {(s.cashIns ?? []).map((c) => {
+                                const cLadder = c.gradeLadder ?? ladder;
+                                return (
+                                  <tr
+                                    key={c.code}
+                                    className="border-b border-border last:border-0"
+                                  >
+                                    <td className="whitespace-nowrap py-2.5 pl-4 pr-3 font-medium">
+                                      {c.code}
+                                      <span className="ml-1.5 font-normal text-muted-foreground">
+                                        {c.title}
+                                      </span>
+                                    </td>
+                                    <td className="whitespace-nowrap py-2.5 pr-3 text-muted-foreground">
+                                      UMS · {c.maxMark}
+                                    </td>
+                                    {cLadder.map((g) => (
+                                      <td
+                                        key={g}
+                                        className="px-3 py-2.5 text-center tabular-nums"
+                                      >
+                                        {fmtGradeCell(c.boundaries[g])}
+                                      </td>
+                                    ))}
+                                  </tr>
+                                );
+                              })}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  {entry.series.length > 4 && (
+                    <p className="text-xs text-muted-foreground">
+                      Showing the latest 4 sessions — {entry.series.length} in
+                      the corpus.
+                    </p>
+                  )}
+                </section>
+              )}
 
-      {/* provenance */}
-      <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
-        <TrendingUp className="size-3.5" aria-hidden />
-        Source: official {entry.board} grade-boundary documents — every file
-        sha256-recorded in the syllabai-resources GradeBoundaries lane. A
-        boundary is the minimum mark for the grade.
+              {/* modular unit rows (Edexcel 4X suites / IAL units) */}
+              {entry.series.some((s) => (s.units?.length ?? 0) > 0) && (
+                <section className="space-y-3">
+                  <p className="font-display text-sm font-semibold">
+                    Unit boundaries (raw / UMS)
+                  </p>
+                  {entry.series.slice(0, 4).map((s) => (
+                    <div key={s.session} className="space-y-2">
+                      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                        {s.session}
+                      </p>
+                      <div className="overflow-x-auto">
+                        <div className={tableBox}>
+                          <table className="w-full min-w-[520px] border-collapse text-sm">
+                            <thead className="bg-muted leading-normal">
+                              <tr>
+                                <th scope="col" className={thClsLeft}>
+                                  Unit
+                                </th>
+                                <th scope="col" className={thClsLeft}>
+                                  Scale
+                                </th>
+                                {ladder.map((g) => (
+                                  <th key={g} scope="col" className={thCls}>
+                                    {g}
+                                  </th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {(s.units ?? []).flatMap((u) => {
+                                const rows = [
+                                  <tr
+                                    key={`${u.code}-raw`}
+                                    className="border-b border-border last:border-0"
+                                  >
+                                    <td className="whitespace-nowrap py-2.5 pl-4 pr-3 font-medium">
+                                      {u.code}{" "}
+                                      <span className="font-normal text-muted-foreground">
+                                        {u.title}
+                                      </span>
+                                    </td>
+                                    <td className="whitespace-nowrap py-2.5 pr-3">
+                                      Raw · {u.maxMark}
+                                    </td>
+                                    {ladder.map((g) => (
+                                      <td
+                                        key={g}
+                                        className="px-3 py-2.5 text-center tabular-nums"
+                                      >
+                                        {fmtGradeCell(u.boundaries[g])}
+                                      </td>
+                                    ))}
+                                  </tr>,
+                                ];
+                                if (u.ums) {
+                                  rows.push(
+                                    <tr
+                                      key={`${u.code}-ums`}
+                                      className="border-b border-border text-muted-foreground last:border-0"
+                                    >
+                                      <td className="py-2.5 pl-4 pr-3" />
+                                      <td className="py-2.5 pr-3">
+                                        UMS · {u.ums.maxMark}
+                                      </td>
+                                      {ladder.map((g) => (
+                                        <td
+                                          key={g}
+                                          className="px-3 py-2.5 text-center tabular-nums"
+                                        >
+                                          {fmtGradeCell(u.ums?.boundaries[g])}
+                                        </td>
+                                      ))}
+                                    </tr>,
+                                  );
+                                }
+                                return rows;
+                              })}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  {entry.series.length > 4 && (
+                    <p className="text-xs text-muted-foreground">
+                      Showing the latest 4 sessions — {entry.series.length} in
+                      the corpus.
+                    </p>
+                  )}
+                </section>
+              )}
+
+              {/* CIE component thresholds */}
+              {entry.series.some((s) => (s.components?.length ?? 0) > 0) && (
+                <section className="space-y-3">
+                  <p className="font-display text-sm font-semibold">
+                    Component thresholds (minimum raw marks)
+                  </p>
+                  {entry.series.slice(0, 4).map((s) => (
+                    <div key={s.session} className="space-y-2">
+                      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                        {s.session}
+                      </p>
+                      <div className="overflow-x-auto">
+                        <div className={tableBox}>
+                          <table className="w-full min-w-[520px] border-collapse text-sm">
+                            <thead className="bg-muted leading-normal">
+                              <tr>
+                                <th scope="col" className={thClsLeft}>
+                                  Component
+                                </th>
+                                <th scope="col" className={thCls}>
+                                  Max
+                                </th>
+                                {(s.gradeLadder ?? ladder).map((g) => (
+                                  <th key={g} scope="col" className={thCls}>
+                                    {g}
+                                  </th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {(s.components ?? []).map((c) => (
+                                <tr
+                                  key={c.code}
+                                  className="border-b border-border last:border-0"
+                                >
+                                  <td className="whitespace-nowrap py-2.5 pl-4 pr-3 font-medium">
+                                    {c.code}
+                                  </td>
+                                  <td className="py-2.5 pr-3 text-center tabular-nums">
+                                    {c.maxMark}
+                                  </td>
+                                  {(s.gradeLadder ?? ladder).map((g) => (
+                                    <td
+                                      key={g}
+                                      className="px-3 py-2.5 text-center tabular-nums"
+                                    >
+                                      {fmtGradeCell(c.boundaries[g])}
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  {entry.series.length > 4 && (
+                    <p className="text-xs text-muted-foreground">
+                      Showing the latest 4 sessions — {entry.series.length} in
+                      the corpus.
+                    </p>
+                  )}
+                </section>
+              )}
+
+              {/* CIE route tables */}
+              {entry.series.some((s) => (s.routes?.length ?? 0) > 0) && (
+                <section className="space-y-3">
+                  <p className="font-display text-sm font-semibold">
+                    Syllabus thresholds by route (weighted marks)
+                  </p>
+                  {entry.series.slice(0, 4).map((s) => (
+                    <div key={s.session} className="space-y-2">
+                      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                        {s.session}
+                      </p>
+                      <div className="overflow-x-auto">
+                        <div className={tableBox}>
+                          <table className="w-full min-w-[520px] border-collapse text-sm">
+                            <thead className="bg-muted leading-normal">
+                              <tr>
+                                <th scope="col" className={thClsLeft}>
+                                  Route
+                                </th>
+                                <th scope="col" className={thCls}>
+                                  Max
+                                </th>
+                                {(s.gradeLadder ?? ladder).map((g) => (
+                                  <th key={g} scope="col" className={thCls}>
+                                    {g}
+                                  </th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {(s.routes ?? []).map((r) => (
+                                <tr
+                                  key={`${r.option ?? ""}${r.combination}`}
+                                  className="border-b border-border last:border-0"
+                                >
+                                  <td className="whitespace-nowrap py-2.5 pl-4 pr-3 font-medium">
+                                    {r.option ? (
+                                      <Badge
+                                        variant="outline"
+                                        className="mr-1.5 px-1 py-0 text-[10px]"
+                                      >
+                                        {r.option}
+                                      </Badge>
+                                    ) : null}
+                                    {r.combination}
+                                    {awardLabel(r.award) && (
+                                      <Badge
+                                        variant="outline"
+                                        className="ml-1.5 px-1 py-0 text-[10px] text-muted-foreground"
+                                      >
+                                        {awardLabel(r.award)}
+                                      </Badge>
+                                    )}
+                                  </td>
+                                  <td className="py-2.5 pr-3 text-center tabular-nums">
+                                    {r.maxWeightedMark}
+                                  </td>
+                                  {(s.gradeLadder ?? ladder).map((g) => (
+                                    <td
+                                      key={g}
+                                      className="px-3 py-2.5 text-center tabular-nums"
+                                    >
+                                      {fmtGradeCell(r.boundaries[g])}
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </section>
+              )}
+            </TabsContent>
+
+            <TabsContent value="graph" className="mt-4">
+              <div className="rounded-2xl border-2 p-4">
+                {graphMode === "none" ? (
+                  <p className="flex items-center gap-2 py-10 text-sm text-muted-foreground">
+                    <Info className="size-4 shrink-0" aria-hidden /> No
+                    comparable single ladder exists across sessions for this
+                    qualification yet.
+                  </p>
+                ) : (
+                  <>
+                    <div className="h-[380px] w-full">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart
+                          data={graphRows}
+                          margin={{ top: 8, right: 12, bottom: 4, left: 0 }}
+                        >
+                          <CartesianGrid
+                            strokeDasharray="3 3"
+                            stroke="var(--border)"
+                          />
+                          <XAxis
+                            dataKey="session"
+                            tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
+                            interval="preserveStartEnd"
+                          />
+                          <YAxis
+                            domain={[0, graphMax || "auto"]}
+                            tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
+                            width={44}
+                          />
+                          <ReTooltip
+                            contentStyle={{
+                              background: "var(--background)",
+                              border: "1px solid var(--border)",
+                              borderRadius: 12,
+                              fontSize: 12,
+                            }}
+                          />
+                          {graphGrades.map((g, i) => (
+                            <Line
+                              key={g}
+                              type="monotone"
+                              dataKey={g}
+                              name={`Grade ${g}`}
+                              stroke={CHART_VAR[i % CHART_VAR.length]}
+                              strokeWidth={2}
+                              dot={{ r: 2.5 }}
+                              activeDot={{ r: 4 }}
+                              connectNulls
+                            />
+                          ))}
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
+                    <p className="mt-2 text-center text-xs text-muted-foreground">
+                      {graphCaption}
+                    </p>
+                  </>
+                )}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
+
+      {/* provenance footer (MG's muted page footer slot) */}
+      <p className="flex items-start gap-1.5 px-1 text-sm text-muted-foreground">
+        <span>
+          Source: official {entry.board} grade-boundary documents — every file
+          sha256-recorded in the syllabai-resources GradeBoundaries lane. A
+          boundary is the minimum mark for the grade.
+        </span>
       </p>
     </div>
   );

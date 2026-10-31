@@ -1,0 +1,48 @@
+{
+  "schema": "syllabai.receipt/1",
+  "task": "T-GRADE-003 (run-001)",
+  "title": "Grade Boundaries — MathsGenie layout parity (same layout, shapes, padding — hub-token themed)",
+  "generated": "2026-10-31T18:05:00Z",
+  "trace": "1a193119a0405849",
+  "agent": "Z.ai main agent (zai-web session web-19f335c2-abed-4ade-968a-305029b290e3)",
+  "plane": {
+    "hub_branch": "t-gradeb-3/mg-parity-layout (new branch cut from main 0ea81159 after PR #570 merged; resources lane untouched)",
+    "reported_by": "operator: 'layout of the grade boundaries page … more like maths genie … same layout, shapes, padding etc. But seamlessly integrated with all the syllabai themes. Act as a senior UI/UX designer' + saved MG page DOM attachment"
+  },
+  "reference_autopsy": {
+    "source": "operator-attached saved DOM of mathsgenie.co.uk Edexcel IGCSE Biology Grade Calculator (parsed, not guessed)",
+    "anatomy": "max-w-3xl column; ONE rounded-2xl border-2 box: session pill row -> bg-subtle h-0.5 separator -> grade rail (w-36/40 border-r-2, size-14/16 rounded-xl/2xl bordered badge) + h-3 meter -> [minmax(0,12rem)_1fr_minmax(4rem,auto)] slider row (h-3 track, size-5 thumb) -> muted explainer -> separator -> display-font h5 + underline Table|Graph tabs -> rounded-2xl border-2 tables (bg-muted head, border-b-2 px-4 py-2.5 th, px-4 py-3 centered td) -> muted footer",
+    "mg_tokens_read": "--background #fff/#191919, --muted #f5f5f5/#242424, --border-subtle #f0f0f0/#282828, --accent-primary-foreground #1cb0f6/#46cbe3, fonts Manrope/Inter — the same shadcn slots the hub already runs"
+  },
+  "hub_surface": {
+    "workspace": "grade-boundaries-workspace.tsx return rebuilt to MG anatomy 1:1 — accent-primary session pills, hairline separators, grade rail + role=progressbar meter, MG slider grid via data-slot arbitrary selectors, underline tabs (after: indicator over border-b-2 rail), all five table families in rounded-2xl border-2 wrappers, honest note + provenance in MG's muted footer slot",
+    "page": "no-corpus state re-wrapped in the same box language (Card import dropped)",
+    "logic_delta": "ZERO — state/memos/calc calls/tests byte-identical to T-GRADE-002 run-002; data plane untouched (bundle sha16 9c7bc67671dd31e9)"
+  },
+  "theme_integration": {
+    "law": "token-only styling: no hex, no shadows, no per-theme rules; every shape rides the --radius chain (rounded-xl/2xl) and every color the alias contract",
+    "proof": "headless-browser screenshots of the standalone build: SME light, quiet-green (6px squared + fern + its spine underline tabs) and candy-shop (40px round-everything + cherry + Fraunces) all re-skin the identical DOM"
+  },
+  "local_proof": {
+    "bun_test": "26/26 pass (18 calc + 8 bundle incl. committed-bundle regression anchors)",
+    "verify_gradeb": "GREEN (validate_gradeb_bundle.ts + bun test twin)",
+    "hub_tsc": "0 errors",
+    "hub_eslint": "0 on both changed files",
+    "hub_build": "GREEN — 106 grade-boundaries pages prerendered",
+    "prerender_markers": "igcse-physics-19/grade-boundaries.html carries 11/11 layout markers (box, max-w-3xl, pill-group aria, rail badge, h-3 meter, slider grid, underline rail, accent fill, muted heads, Average pill, zero legacy Cards)",
+    "live_screenshots": "linear course slider at 0 (grade U) and at max (grade 9 badge, full meter, grade-9 column highlights); IAL aggregate ial-maths-20-pure-1 June 2024 (UMS meter, YMA01 pair pills, unit input grid); Graph tab; quiet-green + candy-shop re-skins"
+  },
+  "hygiene": {
+    "root_worklog_dedupe": "b3158de8 committed the run-002 root-worklog entry TWICE (stale '#558/#559' copy + updated '#558/#559/#561/#564' copy) — now deduped to the updated entry; same corruption class as the .syllabai/worklog.md duplicate + stray marker fixed during the PR #566 race intake, missed there because root worklog.md auto-merged (single-side modification)"
+  },
+  "conscious_deviations": [
+    "MG's target-grade header select, per-paper mark chips (no breakdown published for our linear courses) and decorative blurred hero are NOT cloned — honest absence beats fake feature parity; target-grade selector filed as a follow-up",
+    "Papers column (papersNote + R/tier badges) and Max column retained beside the MG series table — real corpus data MG does not carry",
+    "secondary tables (cash-in / unit / component / route) keep left-aligned label columns for legibility at their row counts; the primary linear table is fully centered like MG"
+  ],
+  "open_queue": [
+    "post-merge: eyeball the live production page on one course per calculator mode",
+    "candidate follow-up: MG's target-grade selector driving the meter (feature, needs its own run)",
+    "candidate follow-up: a worklog CI lint (conflict-marker grep + duplicate-entry detection) — the worklog has now been corrupted twice by hand-edits"
+  ]
+}

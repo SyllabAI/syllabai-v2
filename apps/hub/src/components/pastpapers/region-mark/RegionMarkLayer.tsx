@@ -209,7 +209,10 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
       dispatch({ type: "failed", regionId: region.id, detail: CROP_REASONS.holder_missing });
       return;
     }
-    const crop = produceRegionCrop({ host, page, viewRect, shapes: readLiveInk(sourceUrl) });
+    // T-MG-INK-4 run-003: the producer is async now (the mtext
+    // foreignObject raster may await its font css + decode) — the same
+    // start-state UI covers the await; failures land in the same arm.
+    const crop = await produceRegionCrop({ host, page, viewRect, shapes: readLiveInk(sourceUrl) });
     if (!crop.ok) {
       dispatch({ type: "failed", regionId: region.id, detail: CROP_REASONS[crop.reason] ?? crop.reason });
       return;
