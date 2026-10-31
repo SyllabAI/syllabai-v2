@@ -1,0 +1,70 @@
+{
+  "task": "T-SPEC-REPARSE-1",
+  "run": "run-001",
+  "date": "2026-10-31",
+  "operatorOrder": {
+    "trace": "1a19210a03f889f1",
+    "text": "Fire source re-parse lane",
+    "context": "the filed follow-up (1) of T-SPEC-RENDER-1 run-001 (trace 1a191bfda316f6d1): 'source re-parse for the interleave/superscript/subscript/lost-formula classes' — the operator's fix-at-source adjudication of the spec-viewer audit"
+  },
+  "scope": "fix-at-source re-parse of the official specification parses in syllabai-resources (Official-Specifications/parsed) + propagation through the v2 spine/bundle serving plane; render layer untouched (T-SPEC-RENDER-1's spec-statement.ts picks the repaired titles up unchanged)",
+  "method": {
+    "engine": "scripts/spec_source_reparse.py (NEW, committed in resources PR #260)",
+    "discipline": "zero-invention: every output char is a printed texttrace glyph, a render-verified font-map replacement, or a structural joiner the of-record laws already insert; assemblies that cannot be proven abort and keep the old text (fail-closed)",
+    "fontMaps": "per-qual MathMagic subset maps (the subsets re-assign glyph ids per PDF), every mapping render-verified against the same PDF's pixels: 9709 MMGreekItalic{4:'A',5:'θ',6:'λ'}, MMVariableA{1:'(',6:')'}, MMBinary{1:'±',2:'×',3:'∩'}, MMRelation{2:'~',3:'≡'}, MMVariable{1:'∑'}, MMGreek{1:'+',4:'='}, SymbolMT{120:'•'}; EMM MMBinary{1:'⁄'}, MMGreek{2:'='}",
+    "otherLaws": "column de-interleave by x-band with head-cut + noise filters; super/subscript reattach by tightness + baseline-zone signature (bottom-aligned small = subscript, floating = superscript, standalone small variable = inline); inline/stacked fraction rebuilds to U+2044 (the printed-bar law); ligature-safe gap logic (degenerate-bbox guard); space-glyph-driven separation with gap fallback; zero-degradation gate (a rebuild that loses words/chars vs the old row is rejected)"
+  },
+  "repairs": {
+    "rowsRepaired": 71,
+    "perQual": {
+      "cie-a-level-maths-2023-2025": "9 rows: 6.1.1 'Po(λ)', 6.1.2 'X~Po(λ)', 5.3.3 'P(A∩B) and P(A)×P(B)', 5.1.5 '∑x and ∑x², or coded totals ∑(x−a) and ∑(x−a)²', 1.5.3 'sin⁻¹x, cos⁻¹x, tan⁻¹x', 1.5.4 'sinθ⁄cosθ≡tanθ and sin²θ+cos²θ ≡ 1' (inline fraction), 2.3.2 + 3.3.2 (statement de-interleave + dash items 'sec²θ≡1+tan²θ...', 'sin(A ± B)' expansions), 3.5.3 statement de-interleave",
+      "cie-igcse-business-2023-2025": "59 rows: statement/notes de-interleave (the '\\x07…: • first-notes-line' merge class) — text = statement band, sub_items = complete notes bullets",
+      "cie-as-environmental-management-2025-2027": "2.4.4 rebuilt ('use data to:' + (a)-(d) items) + 5 spurious note-rows deleted (2.4.1-dup2…2.4.5, the right-column re-reads incl. the code-assembled '2' row) — counts 131 -> 126",
+      "cie-a-level-chemistry-2025-2027": "7.2.1 'H₂SO₄, HNO₃, CH₃COOH' subscripts recovered",
+      "ial-physics": "45: 'n₁sin θ₁= n₂sin θ₂ where refractive index is n=c⁄v' (fraction stack rebuilt with the printed-bar U+2044 law + subscripts)",
+      "cie-igcse-chemistry-2023-2025": "0 rows (11.2.3 nomatch — kept old + disclosed)"
+    },
+    "twoLayers": "ial-physics canonical spec_points.json mirrored (resources PR #261) — the layer build_official_spines.py consumes for Edexcel quals; CIE quals are single-parse per the adapter contract"
+  },
+  "failClosed": {
+    "abortedRows": [
+      "CIE_A_LEVEL_MATHS_2023_2025:3.9.5 (superscript θ has no Unicode equivalent — 'e^{iθ}' cluster)",
+      "CIE_A_LEVEL_CHEMISTRY_2025_2027:1.2.2 (the ʸₓA isotope cluster straddles a line wrap; the trailing 'where y is the mass…x is the atomic…' variables remain dropped in the old text)",
+      "CIE_A_LEVEL_CHEMISTRY_2025_2027:16.1.2"
+    ],
+    "nomatchRows": ["2.1.1", "14.2.2", "37.3.1", "37.3.2 (9701)", "11.2.3 (0620)"],
+    "disclosure": "aborted/nomatch rows keep their old text; a future pass may take them (the machinery is in scripts/spec_source_reparse.py)"
+  },
+  "gates": {
+    "idempotence": "re-probe after apply: 0 proposals / 0 deletes on all six quals",
+    "finalizeReports": "gates=PASS 58/58 quals",
+    "validateParsed": "ran (crossref report refreshed); pre-existing crash on CIE course dirs fixed defensively (return-None skip) — disclosed",
+    "resourcesCI": "PR #260: official-export-gates SUCCESS; corpus-gates failure = the standing c10/c11 notes-graph saga (same signature on prior lanes' commits d0bc7598 et al., zero overlap with this diff)",
+    "mapLawCensus": "GREEN 0 reds, bundles 56, nodes 10,204, max dbCode 25 <= 40",
+    "validateCieBundles": "PASS (CIE_PIN_REPARSE1 added to the pin allow-list per the fa7ede6/0c8892d pin-vintage precedent; EMM manifest counts refreshed 131->126)",
+    "validateSpines": "statement_diff_count 0",
+    "verifyCorpus23a": "PASS",
+    "verifyFlashcardSync": "PASS",
+    "v2CI": "PR #555: hub + verify 2/2 SUCCESS at df096ae3"
+  },
+  "landing": {
+    "resources": "PR #260 MERGED e9e86e22 (parsed rows + engine + reports); PR #261 MERGED 1912a2c5 (canonical-layer mirror)",
+    "v2": "PR #555 MERGED 4ecdc7bd: pins (Edexcel RESOURCES_SHA 1912a2c5, CIE CIE_RESOURCES_SHA e9e86e22), 54 spines rebuilt (phase-0 44 + wave-2 AS 10 via CIE_RECEIPT — content diffs confined to the repaired codes; pure-2 unchanged, known ghost), 11 bundles landed title-verbatim (7 A-level/IGCSE + 3 AS siblings sharing dbCodes + ial-physics-19), manifests re-stamped",
+    "cacheNote": "the spine builder's cache is pin-blind (dest.exists() short-circuit) — the lane cleared work/spines-cache before rebuilds; disclosed as an operational hazard for future pin bumps",
+    "raceGuard": "v2 rebased over f99969a2 (PR #554, zero namespace overlap); resources #261 cut at 139d9595 after the #260 merge"
+  },
+  "prodLive": {
+    "physics19": "n₁sin θ₁= n₂sin θ₂ where refractive index is n=c⁄v",
+    "ps2": "Po(λ) (x3 rows)",
+    "ps1": "P(A∩B) and P(A)×P(B) + ∑(x−a) and ∑(x−a)²",
+    "pure1": "sin⁻¹x, cos⁻¹x, tan⁻¹x",
+    "business23": "'The purpose and nature of business activity:' lead + 'Concepts of needs, wants, scarcity and opportunity cost' bullet (de-interleaved, list structure via T-SPEC-RENDER-1's render layer)"
+  },
+  "filedFollowUps": [
+    "ial-maths 146 flagged two-column-line-interleave rows (predate this lane; the machinery generalizes — a dedicated pass), igcse-geography 20",
+    "the three aborted rows + five nomatch rows above",
+    "ends_colon image sub-lists (T-SPEC-RENDER-1 follow-up (2), untouched)",
+    "corpus back-sync curation pass (standing residual)"
+  ],
+  "discipline": "fetch-first (worklog tip + receipts + T-SPEC-RENDER-1 receipt read before any write); zero-invention abort guards; code/structure conservation; tokens via env only (never argv/URL/logs); FF push no force; CI bounded poll; receipts .syllabai-only; zero DB/Neon contact"
+}
