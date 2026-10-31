@@ -19,6 +19,9 @@ COURSES = [
     'cie-a-level-maths-20-pure-3',
     'cie-as-environmental-management-20',
     'cie-igcse-business-23',
+    'cie-as-chemistry-25',
+    'cie-as-maths-20-probability-and-statistics-1',
+    'cie-as-maths-20-pure-1',
     'ial-physics-19',
 ]
 WHOLESALE = {'cie-as-environmental-management-20'}
