@@ -1,0 +1,56 @@
+{
+  "schema": "syllabai.receipt/1",
+  "task": "T-GRADE-001",
+  "title": "Grade Boundaries — card + page over the mechanically-imported official boundaries corpus",
+  "generated": "2026-10-31T13:05:00Z",
+  "trace": "1a191d55e2154601",
+  "agent": "Z.ai main agent (zai-web session web-19f335c2-abed-4ade-968a-305029b290e3)",
+  "plane": {
+    "hub_branch": "t-gradeb-1/hub-grade-boundaries",
+    "resources_branch": "t-gradeb-1/pipeline",
+    "resources_head_at_cut": "72ca0cb",
+    "merge_order_law": "resources PR first, hub PR second; hub import receipt pins the resources merge sha at merge time"
+  },
+  "corpus": {
+    "documents_fetched": 33,
+    "pearson_docs": 24,
+    "cie_docs": 9,
+    "subjects_parsed": 922,
+    "parse_warnings": 0,
+    "gates": {
+      "G1_schema_monotonic": "GREEN (0 errors)",
+      "G2_mg_golden_parity": "GREEN (6/6 exact: June 2019, January 2020, January 2022, June 2022, November 2023, June 2026)",
+      "G3_coverage": "GREEN (6 >= 6)"
+    },
+    "bundle": {
+      "file": "apps/hub/content/grade-boundaries/bundle.v1.json",
+      "bytes": 877701,
+      "courses_served": 50,
+      "courses_roadmap": 56,
+      "courses_total": 106,
+      "generator": "GradeBoundaries/scripts/build_hub_import.py v1"
+    }
+  },
+  "hub_surface": {
+    "card": "course page Exam Practice band, ready keyed on the corpus, roadmap state otherwise",
+    "page": "/courses/[course]/grade-boundaries — registry-keyed prerender, honest empty state",
+    "workspace": "session pills + Average (modal), Table|Graph tabs, per-grade recharts trend, slider+number mark calculator (linear-total only), modular unit/UMS + CIE route tables, provenance footer",
+    "calculator_law": "minimum-mark semantics (boundary = the minimum mark for the grade); null boundaries excluded; U floor"
+  },
+  "local_proof": {
+    "bun_test": "grade-boundaries-calc.test.ts 8 pass / 0 fail (22 expects)",
+    "tsc_noEmit": "0 errors",
+    "eslint_changed_files": "0 problems",
+    "resources_validate": "PARITY 6 exact / 0 mismatches / 6 overlapping; VALIDATE 24 docs, 0 errors"
+  },
+  "disclosures": [
+    "bun.lock drifted during the local bun install (workspace post-v2 churn) and was restored byte-exact — no lockfile change ships in this PR.",
+    "January 2023 + November 2021 linear IGCSE docs exist on mathsgenie but no Pearson slug probed returned them; recorded in raw/fetch-missing.json — the parity gate runs on the 6 sessions of record.",
+    "Calculator is honest-display-only for modular/IAL/CIE (no single total-mark route); aggregation wave is a follow-up task band.",
+    "Session-level variant rows (1C/2C vs 1CR/2CR) are both served and labelled; the graph and Average mode use the standard variant per session (primaryRow law)."
+  ],
+  "pending_operator": [
+    "Review + merge resources PR, then hub PR (import receipt re-stamp with the resources merge sha can be a one-line commit if required by the mechanical-import law).",
+    "PAT rotation (the session PAT was used for branch push + PR creation only; no settings, no force, no deletes)."
+  ]
+}
