@@ -1,0 +1,66 @@
+{
+  "task": "T-SPEC-RENDER-1",
+  "run": "run-001",
+  "date": "2026-10-31",
+  "operatorOrder": {
+    "trace": "1a191bfda316f6d1",
+    "text": "go through the specification viewer page of all courses, look for rendering errors — parsing errors and limitations, bullet points in same line etc. Use katex and stuff to get best web rendering"
+  },
+  "scope": "apps/hub specification explorer (/courses/[course]/specification) — all 106 committed curricula; presentation layer only, corpus stays spine-verbatim",
+  "audit": {
+    "bundlesScanned": 106,
+    "specPointTitlesScanned": 12251,
+    "bulletSeparatorTitles": 1462,
+    "bulletSeparatorOccurrences": 5372,
+    "joinLawClassification": {
+      "exactJoinLawMatches": 1411,
+      "sourceInlineBulletTitles": 51,
+      "unmatched": 0,
+      "lawOfRecord": "build_official_spines.py meta.subItemRecovery: text (+':') + ' • ' + sub_items inline"
+    },
+    "interleaveTitles": 37,
+    "tightBulletOccurrences": 12,
+    "controlCharBEL": 1207,
+    "puaChars": 134,
+    "latexCommandsInTitles": 0,
+    "katexAdjudication": "spec titles carry zero LaTeX; statements carry Unicode math (≤ ≥ × ⁿ ²) which renders natively — the web-render gap was list structure, not math markup; BEL/PUA classes already normalized at render by T-SPEC-AUDIT-1 normalizeSpecText (all 14 corpus PUA codepoints mapped)"
+  },
+  "fix": {
+    "files": [
+      "apps/hub/src/lib/spec-statement.ts (NEW — parseSpecStatement: exact ' • ' join-law inverse + conservative inline part-marker split)",
+      "apps/hub/src/lib/spec-statement.test.ts (NEW — 18 bun-test gates)",
+      "apps/hub/src/app/courses/[course]/specification/page.tsx (build-time VM)",
+      "apps/hub/src/app/courses/[course]/specification/client.tsx (lead + <ul> render, part-lines indented)"
+    ],
+    "partMarkerRule": "clause-boundary (segment start / after . ; : ? ! ) ]) or ascending-chain continuation; successor text must start with a word char — symbol definitions 'pico (p), nano (n)', cross-refs '2.4.1(a)–(d)' and '28.4.1(a) and 28.4.1(b)' all rejected",
+    "zeroInvention": "every rendered line is a verbatim slice of the normalized statement text"
+  },
+  "verification": {
+    "unitTests": "18/18 PASS (bun test src/lib/spec-statement.test.ts)",
+    "corpusHarness": {
+      "invariants": "I1 zero-info-loss / I2 hygiene / I3 idempotence / I4 hydrate-safety",
+      "violations": 0,
+      "statementsWithStructuredVM": 1522,
+      "totalItemsRecovered": 5545,
+      "statementsUnchanged": 10729
+    },
+    "typecheck": "tsc --noEmit clean",
+    "build": "full next build GREEN incl. prebuild corpus verifiers (verify_corpus_23a, verify_flashcard_sync_courses, validate_cie_bundles); prerendered HTML carries <ul> (igcse-chemistry-19: 53 lists)",
+    "ci": "PR #550 checks hub + verify 2/2 success at head 7cd8490f",
+    "deploy": "Vercel dpl_6LuHsWokFPdgn36a2xbbD9PLDrFv READY (auto-deploy of merge)",
+    "prodLive": {
+      "igcse-chemistry-19": { "http": 200, "lists": 22, "li": 71 },
+      "cie-igcse-business-23": { "http": 200, "lists": 59, "li": 167 },
+      "ial-biology-18": { "http": 200, "lists": 36, "li": 81 },
+      "cie-a-level-business-23": { "http": 200, "lists": 116, "li": 358 },
+      "note": "prod list/li counts equal the corpus harness predictions per course; agent-browser screenshots of igcse-chemistry-19 and cie-igcse-business-23 confirm printed-layout bullets"
+    }
+  },
+  "pr": { "number": 550, "branch": "tspec-render1-hub-v1", "head": "7cd8490f", "merge": "0b6fe1de", "method": "merge" },
+  "filedFollowUps": [
+    "source re-parse (fix-at-source class, NOT papered over at render): 37 two-column interleave titles (cie-as-environmental-management-20, cie-igcse-business-23, cie-igcse-maths-25-extended); CIE maths superscript/subscript loss ('a x − b y' for a²x − b²y); CIE chemistry subscript scatter ('H SO' + floating 3/4/2); Pearson lost formula objects ('P = ' with the equation gone); CIE maths-2020 symbol-font garbling ('P ^ A +', 'Po m ^ h')",
+    "ends_colon statements whose printed sub-lists were images in the source PDF (e.g. cie-a-level-computer-science-19 logic gate symbols)",
+    "corpus back-sync curation pass (standing residual)"
+  ],
+  "discipline": "fetch-first (worklog tip + receipts checked for zero-duplication vs T-SPEC-AUDIT-1 — different defect class, no overlap); fail-closed harness with abort-on-violation; corpus untouched (presentation layer only); tokens via env only; FF push no force; CI bounded poll ≤4×75s; receipts .syllabai-only"
+}
