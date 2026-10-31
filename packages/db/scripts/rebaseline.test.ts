@@ -299,20 +299,29 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // the index count — the mpa precedent) on top of the AWARDS-1 baseline
   // -> 87/824/117/87/154 (measured: rebaseline.ts verify PASS, 0 drifts,
   // on the union end-state).
-  test("87/824/117/87/154 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // T-TEACHME-001 run-001 (0020_teach-me, ADR-040 doctrine): the learn-by-
+  // teaching lane adds 4 tables, 40 columns, 7 indexes, 5 fks, 9 checks —
+  // teach_sessions (14 cols incl. the quota/ceiling counters the sentinel
+  // reads), teach_objectives (7), teach_objective_coverages (9, the append-
+  // only ledger — its law lives in the 0020 trigger, not the index count),
+  // teach_misconception_candidates (10, incl. the partial-open unique index)
+  // on top of the INK-4 baseline -> 91/864/124/92/163 (measured: rebaseline.ts
+  // verify PASS, 0 drifts, on the union end-state).
+  test("91/864/124/92/163 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 87/87");
-    expect(v.inventory).toContain("columns 824");
-    expect(v.inventory).toContain("indexes 117");
-    expect(v.inventory).toContain("fks 87");
-    expect(v.inventory).toContain("checks 154");
+    expect(v.inventory).toContain("tables 91/91");
+    expect(v.inventory).toContain("columns 864");
+    expect(v.inventory).toContain("indexes 124");
+    expect(v.inventory).toContain("fks 92");
+    expect(v.inventory).toContain("checks 163");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(87);
+    expect(run.size).toBe(91);
+    expect(run.has("public.teach_sessions")).toBe(true); // T-TEACHME-001 — the learn-by-teaching lane
     expect(run.has("public.mark_bands")).toBe(true); // ADR-040 — the levels analog of mark_points
     expect(run.has("public.mark_point_rects")).toBe(true); // T-MG-MP-RECT-1 — the geometry plane on the definition join
     expect(run.has("public.mark_awards")).toBe(true); // T-MG-AWARDS-1 — the award plane (per-award ledger, the DC-7 claim)

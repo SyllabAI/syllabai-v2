@@ -1,0 +1,145 @@
+version: 1
+task:
+  id: T-TEACHME-001
+  title: 'Teach-Me — the learn-by-teaching lane (Feynman pupil persona) on the course page: spec-point-grounded
+    objectives, probe chat, verdict chips, review card, suggested practice; evidence class fixed by ADR-040'
+  owner: Super Z (zai-web session web-5e612468-7ecd-499d-8b14-7c05e8412405, chat 97a19c8c-d041-4ae2-9754-07fef634fc42,
+    dispatch trace 1a19340982b7ffa9)
+  status: 'IN_PROGRESS # commissioned ''accept all'' 2026-11-01 (rulings below); run-001 (contracts + migration)
+    dispatched — PR pending; run-002 api lane next; DB apply of 0020 awaits operator DATABASE_URL (T-SENECA-001
+    precedent)'
+  priority: P1
+  band: T-TEACHME (student learn-by-teaching lane)
+  wave: teachme-phase-A
+  deps: []
+  scope:
+    allowed:
+    - packages/contracts/** (additive teach-me contract file + barrel line only)
+    - packages/db/** (additive migration + schema tables + meta snapshot)
+    - apps/api/src/** (self-contained teach-me routes/services behind the flags gate)
+    - apps/hub/src/app/courses/[course]/teach-me/**
+    - apps/hub/src/components/hub/teach-me/**
+    - apps/hub/src/lib/api.ts (client fns) + apps/hub/src/lib/courses.ts (card mount read-only)
+    - docs/TEACH_ME_PLAN.md + .syllabai/receipts/T-TEACHME-001/**
+    forbidden:
+    - any mutation of of-record learner mastery from teach-session evidence (writes go through the AI_SUGGESTED
+      evidence path only)
+    - any change to the frozen tutor family surfaces (T-MIG-060/070/092/106) — this is a sibling lane, not a tutor
+      change
+    - existing teacher pages and the T-TEACH toolkit band
+    - live LLM calls inside CI (fixture replay only, per the T-MIG-039 behavioural-gate law)
+  research: 'LIVE PROBE OF RECORD (2026-10-31, operator-owned MathsGenie account, one free session spent; evidence
+    pack download/mg-probe/ — PROBE-FINDINGS.md + 10 screenshots): the original is a 4-step wizard — topics (up
+    to 3 from a grade-banded spec tree, or "describe your own") → pupil difficulty (Easy "knows nothing" / Medium
+    "knows the basics but mixes things up" / Hard "gets the basics and grills you on the tricky parts") → session
+    length (Quick Review = 3 objectives / In-Depth = 4) → mode (Chat / Voice "New"). Auto-generated per-topic learning
+    objectives carry status + topic tag and TICK OFF AUTOMATICALLY when the student''s explanation covers them —
+    no mid-session scoring screen. The pupil''s probe pattern is stable across all 4 exchanges: paraphrase its updated
+    understanding back, then ask the next edge-case question (carrying when a 9 rounds up; leading zeros in 0.004728;
+    dp-vs-sf discrimination). Each student message gets an expandable verdict chip (observed "Great") holding an
+    extractive Feedback line naming the covered learning point. THE PERSONA NEVER BREAKS CHARACTER: when the student
+    made a real error (2nd decimal place of 0.004728 miscounted as 7), Baby Genie said "okay, that clicks, thanks!"
+    — the correction appears only in the post-session review ("the digits after the decimal point are 0, 0, 4, 7,
+    2, 8, so the 2nd decimal digit is 0 and the deciding digit is 4"), alongside 3 quoted Strengths and Suggested
+    Practice items that link REAL platform resources (Rounding · Question Bank / Notes). End of session: "Generating
+    session review…" (async) → review card → NPS survey; session permalink URL; landing keeps a history list (Today
+    · Maths · 4m ago · Completed). METERING OF RECORD: Teach Genie is NOT Energy-metered (Ask Genie and AI marking
+    are; XP 3 / energy 11 / streak 2 all unchanged after a full session) — it is a separate "2 free sessions" lifetime
+    meter, then a hard paywall ("Go unlimited with Pro", 40%-off countdown, 12/3/1-month plans, "Most popular" pre-selected).
+    Unprobed (free quota consumed by an accidental no-topic start that fell back to a suggested osmosis topic):
+    weak/vague-explanation gating, review response to a fully wrong explanation, Ask-for-help behaviour, Voice mode,
+    attachments (disabled on free).
+
+    '
+  notes: 'NAME: feature working title "Teach-Me" (the original''s "Teach Genie"/"Baby Genie" branding is theirs;
+    pupil persona name is an operator ruling — open_questions Q1). SYLLABAI TWISTS over the original, all native
+    to our corpus: (1) objectives are drawn from the CANONICAL SPEC TREE (picker ≤3 spec points, MG ≤3 topics) and
+    each objective records the spec-point ids it covers; (2) probe targets come from the spec-point registry, so
+    the review card can render per-spec-point verdicts, not just prose; (3) misconception mining: the review judge
+    ALSO classifies wrong-but-confident statements against the misconception registry into a candidate queue (BDT
+    evidence class, AI_SUGGESTED, never auto-promoted); (4) exam anchoring: "where would this show up in an exam?"
+    attaches a REAL past-paper part from the serving corpus for the pilot course instead of a hypothetical; (5)
+    KG closure: the review surfaces prerequisite warnings from the T-C11 graph when a taught point has a weak prerequisite;
+    (6) suggested practice links the course''s real question-bank sets and revision notes. EVIDENCE HONESTY: teach-session
+    evidence is a NEW evidence kind TEACH_SESSION, append-only, tier AI_SUGGESTED, NEVER mutating of-record mastery;
+    teacher ratification rides the existing workbench staged-decision pattern. In-session correction policy is an
+    operator ruling (open_questions Q3): option A = MG-faithful (persona never breaks character; review discloses
+    — recommended for run-1, simplest, and the review-of-record already carries the correction); option B = fail-loud
+    (persona disengages and labels the statement a misconception in-session). ANTIGAMING: min-word floor + verbatim-overlap
+    check against the course''s revision-note corpus (pasted-note detection, deterministic, fail-closed to "not
+    covered") + cross-session dedupe per (student, spec point). COST: 5–7 LLM turns per session on the existing
+    LlmProvider free chain (Groq → Gemini → OpenRouter failover, T-023 lineage) — coverage judge and review generator
+    are separate pinned prompts v1 with fixture replay in CI; per-session token ceiling asserted in tests. GATES:
+    bun test + tsc --noEmit + eslint on touched files; behavioural gate on all LLM output (T-MIG-039 law); zod-strict
+    contracts; flags.json gate teachMe (pilot igcse-chemistry-19, honest roadmap state elsewhere); receipt under
+    .syllabai/receipts/T-TEACHME-001/.
+
+    '
+  plan: 'run-000 (commission round, no code): operator rules Q1–Q5 (open_questions); ADR-040 drafted in the master
+    pack (teach-session evidence class + in-session correction doctrine); docs/TEACH_ME_PLAN.md expanded from this
+    file; the two open probe questions (vague-explanation gating, fully-wrong review response) re-probed if the
+    operator obtains Pro or a second account — they gate the anti-gaming constants, not the build. run-001 (data
+    + contracts): contracts/teach-me.ts (Session, Objective, Coverage, VerdictChip, ReviewCard, zod-strict); additive
+    migration: teach_sessions, teach_objectives, teach_objective_coverages, teach_misconception_candidates; DB apply
+    against Neon awaits operator DATABASE_URL (the T-SENECA-001 precedent). run-002 (api lane): session lifecycle
+    — POST create (spec-point ids + difficulty + length → objectives generated from the canonical spec tree), POST
+    message (coverage judge → verdict chip + objective auto-advance + probe generation), POST end (async review
+    generation: strengths / areas-for-improvement / misconception candidates / suggested-practice links), GET history.
+    Pinned prompts v1 + fixture replay tests + token-ceiling test; fail-closed refusal on LLM shape drift. run-003
+    (hub lane): /courses/[course]/teach-me — wizard (spec-tree picker ≤3, difficulty, length, mode=Chat v1), chat
+    player (verdict chips, objectives panel with live tick-off, Ask-for-help stub gated OFF v1), review card (per-spec-point
+    verdicts, misconception notes, suggested practice linking real course resources), session history list, honest
+    "import pending" roadmap state for non-pilot courses; course- page card in the Learn band keyed on the flags
+    gate. run-004 (optional polish, operator-gated): Voice mode feasibility spike (hub TTS/STT posture), attachments,
+    XP/streak integration IF the operator wants a reward loop (the original grants none — XP/energy/streak unchanged
+    across a full session).
+
+    '
+  open_questions: 'Q1 persona/feature name (working: Teach-Me / the Pupil) and whether a mascot exists (the original''s
+    Baby Genie is load-bearing for the fiction; SyllabAI has none today). Q2 evidence class sign-off: TEACH_SESSION
+    as AI_SUGGESTED-only, workbench-ratified, never of-record without a teacher — ADR-040. Q3 in-session correction
+    doctrine: A = persona never breaks character, review discloses (MG-faithful, recommended v1) vs B = fail-loud
+    in-session. Paper B note: option A leaves a window where a student is congratulated for wrong teaching — if
+    the pilot measures it, the disclosure timing becomes a research finding, which is exactly the kind of pre-registered
+    comparison Paper B wants. Q4 cost ceiling: max LLM turns/session and daily per-student session cap on the free
+    chain (original: 2 sessions lifetime free, unmetered energy — we must pick our own quota law before exposing
+    to pilot students). Q5 anti-gaming constants (min words, overlap threshold) — provisional defaults in run-002
+    tests pending the vague-explanation re-probe.
+
+    '
+rulings: 'Q1: feature name "Teach-Me"; pupil character "the Pupil" (simple avatar, NO custom mascot art in v1; revisit
+  after pilot feedback). Q2: ADR-040 SIGNED OFF — new evidence kind TEACH_SESSION, tier AI_SUGGESTED, append-only;
+  never mutates of-record mastery; teacher ratification in the workbench is the only path to record status. Q3:
+  Option A (MG-faithful) + one guardrail — the persona never breaks character in-session; the pupil NEVER actively
+  confirms a statement that contradicts course canon (on contradiction it stays in character and expresses confusion,
+  e.g. "wait, that doesn''t match the example you gave me…?"); full correction stays in the review card. A-vs-B
+  disclosure timing pre-registered in Paper B as a researchable comparison. Q4: quota law — 3 sessions/student/day
+  during the pilot; Quick = 3 objectives / In-Depth = 4 (original-faithful); hard per-session LLM-call and token
+  ceilings asserted in tests; monitored by the existing quota sentinel; NO lifetime meter (the original''s "2 free
+  sessions" is a monetization wall — ours is cost protection under the $0/no-card doctrine). Q5: anti-gaming defaults,
+  provisional until the vague-explanation re-probe, all in ONE config object so the re-probe can retune without
+  code changes: min 40 words per explanation message for coverage credit (sub-floor → in-character nudge, no chip);
+  verbatim-overlap flag at 80% vs the course''s revision-note corpus → fail-closed "objective not covered"; no repeat
+  coverage credit per (student, spec point) within 7 days (session-local ticks unaffected). SCOPE (same message:
+  "for all subjects? or the pilot 4ch1 first?"): build is subject-agnostic from day one (spec-point-keyed, course_id
+  is data not code); rollout is gated per course by content prerequisites — Wave 0 = 4CH1 pilot (igcse-chemistry-19),
+  Wave 1 = courses passing the content gate (spec tree + indexed notes corpus + question-bank links), Wave 2 = all
+  subjects. See TEACH_ME_PLAN.md §1.
+
+  '
+base:
+  repo: syllabai-v2 @ origin/main (branch t-teachme-1/run-001 — house run-NN law; the draft's t-teachme-1/commission
+    name is superseded)
+basis: 'Operator IM commission (chat 97a19c8c-d041-4ae2-9754-07fef634fc42, 2026-10-31): "I am thinking of adding
+  a feature to SyllabAI. Basically it is the TeachGenie feature from mathsgenie, or the TeachJojo feature from revisiondojo.
+  Analyze this feature." followed by the operator-provided MathsGenie login (email code flow, session trace 1a19307ea51e257d)
+  and "draft the task file" (trace 1a193129cb95eb3d). Feature analysis built on: (a) the operator''s own MathsGenie
+  reverse-engineering repo (research/ 08-alevel-lessons-teachgenie.md, research/features/06-ask-genie.md, research/features/
+  10-member-area.md — auth wall + Energy/XP economy documented there, Teach Genie flow shape captured pre-login);
+  (b) RevisionDojo Teach Jojo public page (≤5 syllabus sub-topics, objectives tick one by one, mastery tracking
+  across sessions — the cross-session coverage overlay is their retention hook); (c) the live probe of record in
+  research above. House conventions honoured: lib/courses.ts honest-absent law, static-params prerender, hub-coursepage
+  card anatomy, AGENT_COORDINATION merge order, receipts + append-only worklog, $0/no-card hosting doctrine (ADR-035/F-188
+  lineage).
+
+  '
