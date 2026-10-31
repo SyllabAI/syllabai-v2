@@ -202,7 +202,11 @@ function NavRow({
  * run-005 tier-b: groups FOLD. The label becomes a disclosure button
  * (aria-expanded, WAI-ARIA disclosure pattern; the chevron rides MG's
  * transition-transform rotate idiom, instant fold like the references'
- * un-animated collapsibles). Fold state is per-renderer in-memory — the
+ * un-animated collapsibles; run-006: motion-reduce:transition-none kills
+ * the rotate easing under prefers-reduced-motion — the audit law stays
+ * "fewer and gentler, not zero": the rotation turns instant and keeps
+ * communicating fold state, same posture as the aside width morph).
+ * Fold state is per-renderer in-memory — the
  * sidebar and the drawer each remember their own, a reload opens all.
  * On the rail the labels step aside for MG's hairline dividers
  * (h-0.5 w-6 mx-auto) with the name kept for AT in sr-only.
@@ -246,7 +250,7 @@ function CourseNav({
               <ChevronDown
                 aria-hidden
                 className={cn(
-                  "size-4 shrink-0 transition-transform duration-200",
+                  "size-4 shrink-0 transition-transform duration-200 motion-reduce:transition-none",
                   closed && "-rotate-90",
                 )}
               />
