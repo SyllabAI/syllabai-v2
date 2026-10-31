@@ -42,7 +42,7 @@ REPO = Path(__file__).resolve().parent.parent
 # upstream parse this build is pinned to (resources main @ T-KG-16: paper/unit
 # applicability derived for the remaining quals — spines don't consume it, so
 # this is a provenance pin bump; T-KG-15/14 repairs beneath)
-RESOURCES_SHA = "1912a2c5877357faf0bc42e1563bc4bddadb0c0f"  # T-SPEC-REPARSE-1 run-001 + canonical mirror
+RESOURCES_SHA = "159ab8540e1fe6f184a5bd1b9523a18146060664"  # T-SPEC-REPARSE-1 run-002 (ial-maths de-interleave)
 RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{RESOURCES_SHA}"
 DEFAULT_CACHE = Path("/home/z/my-project/work/spines-cache")
 
