@@ -28,6 +28,7 @@ import { corpusPapersForCourse } from "@/lib/pastpapers-corpus";
 import { buildPracticePapers } from "@/lib/practice-papers";
 import { battleServedFor } from "@/lib/battle-course";
 import { CourseHeader } from "@/components/hub/course-header";
+import { StrengthsPanel } from "./strengths/strengths-panel";
 import CourseBodyTabs from "@/components/hub/course-body-tabs";
 import type { TopicGroup } from "@/components/hub/course-body-tabs";
 import { CourseSwitcher } from "@/components/hub/course-switcher";
@@ -63,12 +64,18 @@ interface ResourceItem {
  * against the real savemyexams.com course reference page), now carrying the
  * MathsGenie course-page anatomy (hub-coursepage-mg-layout, operator request
  * via chat trace 1a18c3f754d0e421):
- *   gradient hero (CourseHeader) · Topics | Resources body tab pair ·
- *   Resources = MG tile rows (tinted icon square + bold title + count) in
- *   the Ask the tutor / Practise / Track & improve / Learn bands (T-COURSE-BANDS-1
- *   run-001, operator plan B trace 1a192f93789cfe2d: the Exam Practice band
- *   split by job — question surfaces vs trackers/reference), with the spec
- *   strip and revision-framework explainer kept verbatim in content.
+ *   gradient hero (CourseHeader) · Topics | Resources | Strengths &
+ *   Weaknesses body tab trio · Resources = MG tile rows (tinted icon square
+ *   + bold title + count) in the Ask the tutor / Practise / Track & improve /
+ *   Learn bands (T-COURSE-BANDS-1 run-001, operator plan B trace
+ *   1a192f93789cfe2d: the Exam Practice band split by job — question
+ *   surfaces vs trackers/reference), with the spec strip and
+ *   revision-framework explainer kept verbatim in content. The hero's own
+ *   Course Resources / Strengths & Weaknesses tab pair is retired (operator
+ *   request trace 1a19368d4aa8384d) — Strengths & Weaknesses lives here as
+ *   the trio's third pane (StrengthsPanel + provenance disclosure, deep
+ *   links keep working via /courses/[course]/strengths), so the page runs
+ *   ONE tab system instead of two.
  * Corpus discipline kept: a card only links when the committed bundle
  * actually has the content; roadmap surfaces stay explicitly marked.
  * NOTHING was removed — every card, badge, tag and honest state from the
@@ -614,8 +621,6 @@ export default async function CourseHubPage({
       />
       <CourseHeader
         meta={meta}
-        activeTab="resources"
-        showTabs
         title={meta.subject}
         description={`Tools designed specifically for the ${qual} syllabus (${meta.code}): revision notes, the student book, exam-style questions and flashcards organised around the ${officialTree ? "official specification tree" : "corpus specification tree"} — with provenance kept visible on every item.`}
       >
@@ -671,7 +676,30 @@ export default async function CourseHubPage({
           </CardContent>
         </Card>
       ) : (
-        <CourseBodyTabs groups={topicGroups} subtopicCount={subtopicCount} resources={resourcesPane} />
+        <CourseBodyTabs
+          groups={topicGroups}
+          subtopicCount={subtopicCount}
+          resources={resourcesPane}
+          strengths={
+            <>
+              <StrengthsPanel course={meta.slug} />
+              {/* the strengths route page's provenance disclosure, kept
+                  verbatim so the inline pane and the deep-linked page tell
+                  the same honest data story */}
+              <details className="mt-6 rounded-md border bg-muted/40 px-3 py-2 text-xs leading-relaxed text-muted-foreground">
+                <summary className="cursor-pointer text-xs font-medium text-foreground">
+                  About this data
+                </summary>
+                <p className="mt-2">
+                  <span className="font-medium text-foreground">Where this data lives:</span> the bars read ONLY the
+                  drill&apos;s own practice log (the zero-stakes lane — never your gradebook or progress rings), and
+                  every decayed value is computed at read and never stored (ADR-031). Structured (written) drill
+                  parts stay ungraded until you self-check them against the mark scheme.
+                </p>
+              </details>
+            </>
+          }
+        />
       )}
     </div>
   );
