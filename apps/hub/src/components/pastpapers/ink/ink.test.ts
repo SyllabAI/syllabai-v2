@@ -322,3 +322,69 @@ describe("T-MG-INK-4 run-002 — the hit laws (erase/select)", () => {
     expect(shapeBoundsCss(makeTombstone({ id: "a", page: 1 }), box, undefined)).toBeNull();
   });
 });
+
+// ── T-MG-INK-4 run-003 — the re-edit law ──
+
+import {
+  editMathShape,
+  editTextShape,
+} from "./ink";
+
+describe("T-MG-INK-4 run-003 — the re-edit law (content replacement in place)", () => {
+  const text = (over: Partial<InkShape> = {}): InkShape =>
+    ({
+      id: "t1",
+      kind: "text",
+      page: 1,
+      color: "red",
+      sizeFrac: 0.02,
+      x: 0.3,
+      y: 0.4,
+      text: "before",
+      ...(over as object),
+    }) as InkShape;
+
+  test("editTextShape replaces the content IN PLACE (same id, geometry/colour untouched)", () => {
+    const t = text();
+    const [out] = editTextShape([t], "t1", "after");
+    expect(out).toMatchObject({ id: "t1", kind: "text", text: "after", color: "red", sizeFrac: 0.02, x: 0.3, y: 0.4 });
+  });
+
+  test("editMathShape replaces the tex IN PLACE (same id)", () => {
+    const m = mtext({ id: "m1", tex: "x^2" });
+    const [out] = editMathShape([m], "m1", "y^3");
+    expect(out).toMatchObject({ id: "m1", kind: "mtext", tex: "y^3" });
+  });
+
+  test("the edit is the newer intent: it WINS the union-by-id rebase (the move law's precedent)", () => {
+    const stored = [text({ text: "stale" })];
+    const local = editTextShape(stored, "t1", "edited");
+    expect(rebaseShapes(stored, local)).toEqual(local);
+  });
+
+  test("an empty value is a no-op — the SAME array returns (empty commit cancels, both sides)", () => {
+    const arr = [text(), mtext()];
+    expect(editTextShape(arr, "t1", "")).toBe(arr);
+    expect(editMathShape(arr, "m1", "")).toBe(arr);
+  });
+
+  test("unknown ids and other kinds pass through untouched (a tombstone never regrows a body)", () => {
+    const tomb = makeTombstone({ id: "t1", page: 1 });
+    const s = stroke({ id: "s1" });
+    const arr = [s, tomb];
+    const out = editTextShape(arr, "t1", "nope");
+    expect(out[1]).toBe(tomb);
+    expect(out[1]!.kind).toBe("tombstone");
+    expect(editTextShape(arr, "unknown", "nope")).toEqual(arr);
+    const out2 = editTextShape([s], "s1", "nope");
+    expect(out2[0]).toBe(s);
+  });
+
+  test("map semantics: siblings keep identity (one edit commit = one snapshot = one undo step)", () => {
+    const s = stroke();
+    const t = text({ id: "t2" });
+    const out = editTextShape([s, t], "t2", "after");
+    expect(out[0]).toBe(s);
+    expect(out).toHaveLength(2);
+  });
+});

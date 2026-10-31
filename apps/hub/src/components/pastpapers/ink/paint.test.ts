@@ -98,6 +98,6 @@ describe("T-MG-INK-4 run-002 — the painter hardening pin", () => {
     paintShapes(ctx as unknown as CanvasRenderingContext2D, box, [strokeShape, mtextShape], null, { clear: false });
     expect(ctx.ops).not.toContain("clear");
     expect(ctx.ops).toContain("stroke");
-    expect(ctx.ops).not.toContain("text:"); // mtext alone is invisible to the crop (the disclosed limitation)
+    expect(ctx.ops).not.toContain("text:"); // mtext is not the sync painter's kind — run-003 composites it in produce-crop (the foreignObject raster)
   });
 });

@@ -101,6 +101,8 @@ import {
   INK_COLOR_KEYS,
   INK_WIDTH_FRACS,
   clamp01,
+  editMathShape,
+  editTextShape,
   eraseShapes,
   makeShapeId,
   normalizePoint,
@@ -420,6 +422,26 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
     (shape: Omit<InkMathShape, "id" | "kind">) => {
       const m: InkMathShape = { id: makeShapeId(), kind: "mtext", ...shape };
       commit([...shapesRef.current, m]);
+    },
+    [commit],
+  );
+
+  // ── T-MG-INK-4 run-003: the re-edit paths ──
+  // Content replacement IN PLACE (the same id = the merge key — the move
+  // law's newer-intent precedent, so an edit survives every 409 rebase
+  // exactly like a move does); one commit → one undo step. Colour, size
+  // and anchor untouched (content-only edit — recolour/resize is delete
+  // + re-add, disclosed).
+  const commitTextEdit = useCallback(
+    (id: string, text: string) => {
+      commit(editTextShape(shapesRef.current, id, text));
+    },
+    [commit],
+  );
+
+  const commitMathEdit = useCallback(
+    (id: string, tex: string) => {
+      commit(editMathShape(shapesRef.current, id, tex));
     },
     [commit],
   );
@@ -806,6 +828,8 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
               onCommitStroke={commitStroke}
               onCommitText={commitText}
               onCommitMath={commitMath}
+              onCommitTextEdit={commitTextEdit}
+              onCommitMathEdit={commitMathEdit}
               onCommitErase={commitErase}
               onCommitMove={commitMove}
               ruler={rulerGuide?.page === page ? rulerGuide : null}
@@ -875,6 +899,10 @@ interface InkCanvasProps {
   onCommitText: (shape: Omit<InkTextShape, "id" | "kind">) => void;
   // T-MG-INK-4: the math text box + the erase/select commit paths.
   onCommitMath: (shape: Omit<InkMathShape, "id" | "kind">) => void;
+  // T-MG-INK-4 run-003: the re-edit paths — content replacement in place
+  // (the same id; empty value = cancel at the source).
+  onCommitTextEdit: (id: string, text: string) => void;
+  onCommitMathEdit: (id: string, tex: string) => void;
   onCommitErase: (ids: string[]) => void;
   onCommitMove: (moved: InkShape) => void;
   // T-MG-INK-2: the page-matched guides + the guide callbacks (the guide
@@ -899,6 +927,26 @@ interface InkCanvasProps {
 
 type DragKind = "freehand" | "line" | "ruler" | "protractor" | "compasses" | "guide" | "erase" | "move";
 
+/** The run-003 re-edit tap law: the TOPMOST hit of the given family
+ * (text | mtext) under the point — shapeHitTest owns the geometry (the
+ * same bounds law erase/select read), this only filters the family and
+ * walks the hits back-to-front (doc order = paint order). */
+function topmostFamilyHit<K extends "text" | "mtext">(
+  family: K,
+  shapes: InkShape[],
+  frac: { x: number; y: number },
+  box: { cssW: number; cssH: number },
+  tolCssPx: number,
+  measured?: (id: string) => MeasuredSize | undefined,
+): Extract<InkShape, { kind: K }> | null {
+  const hits = shapesHitIds(shapes, frac, box, tolCssPx, measured);
+  for (let i = hits.length - 1; i >= 0; i--) {
+    const s = shapes.find((sh) => sh.id === hits[i]);
+    if (s && s.kind === family) return s as Extract<InkShape, { kind: K }>;
+  }
+  return null;
+}
+
 /** One page's ink canvas — portaled into the pane's page holder. The
  * gesture router for every ink mode: freehand (pen), text placement, and
  * the T-MG-INK-2 instruments (line / ruler / protractor / compasses),
@@ -912,6 +960,8 @@ function InkCanvas({
   onCommitStroke,
   onCommitText,
   onCommitMath,
+  onCommitTextEdit,
+  onCommitMathEdit,
   onCommitErase,
   onCommitMove,
   ruler,
@@ -927,7 +977,7 @@ function InkCanvas({
   const activeRef = useRef<Array<[number, number]> | null>(null);
   const lastPxRef = useRef<[number, number] | null>(null);
   const rafRef = useRef(0);
-  const [draft, setDraft] = useState<{ x: number; y: number; value: string } | null>(null);
+  const [draft, setDraft] = useState<{ x: number; y: number; value: string; editId?: string } | null>(null);
   // instrument drag state (T-MG-INK-2)
   const dragKindRef = useRef<DragKind | null>(null);
   const guideToolRef = useRef<"ruler" | "protractor" | null>(null);
@@ -935,7 +985,7 @@ function InkCanvas({
   const pivotRef = useRef<{ x: number; y: number } | null>(null);
   const [sweepDeg, setSweepDeg] = useState<number | null>(null);
   // ── T-MG-INK-4 state: math draft, erase sweep, select/move ──
-  const [mathDraft, setMathDraft] = useState<{ x: number; y: number; value: string } | null>(null);
+  const [mathDraft, setMathDraft] = useState<{ x: number; y: number; value: string; editId?: string } | null>(null);
   const [erasePreview, setErasePreview] = useState<Set<string> | null>(null);
   const [movePreview, setMovePreview] = useState<InkShape | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -1026,23 +1076,41 @@ function InkCanvas({
       if (mode === "text") {
         if (e.pointerType === "mouse" && e.button !== 0) return;
         const box = canvas.getBoundingClientRect();
-        const [x, y] = normalizePoint(
+        const cssBox = { cssW: box.width, cssH: box.height };
+        const frac = normalizePoint(
           { left: box.left, top: box.top, width: box.width, height: box.height },
           e.clientX,
           e.clientY,
         );
-        setDraft({ x, y, value: "" });
+        // T-MG-INK-4 run-003: the tap-hit re-edit law — a tap on an
+        // EXISTING text box (topmost of the family) opens it for editing;
+        // an empty-canvas tap creates a new one (the MG parity posture).
+        const target = topmostFamilyHit("text", displayShapes, { x: frac[0], y: frac[1] }, cssBox, ERASE_TOL_CSS_PX);
+        setDraft(
+          target
+            ? { x: target.x, y: target.y, value: target.text, editId: target.id }
+            : { x: frac[0], y: frac[1], value: "" },
+        );
         return;
       }
       if (mode === "math") {
         if (e.pointerType === "mouse" && e.button !== 0) return;
         const box = canvas.getBoundingClientRect();
-        const [x, y] = normalizePoint(
+        const cssBox = { cssW: box.width, cssH: box.height };
+        const frac = normalizePoint(
           { left: box.left, top: box.top, width: box.width, height: box.height },
           e.clientX,
           e.clientY,
         );
-        setMathDraft({ x, y, value: "" });
+        // run-003: the mtext twin — the measured-truth hit law (the same
+        // read the erase/select gestures use), topmost of the family.
+        measureMtexts();
+        const target = topmostFamilyHit("mtext", displayShapes, { x: frac[0], y: frac[1] }, cssBox, ERASE_TOL_CSS_PX, readMeasured);
+        setMathDraft(
+          target
+            ? { x: target.x, y: target.y, value: target.tex, editId: target.id }
+            : { x: frac[0], y: frac[1], value: "" },
+        );
         return;
       }
       if (mode === "erase" || mode === "select") {
@@ -1329,6 +1397,14 @@ function InkCanvas({
   const commitDraft = useCallback(() => {
     if (!draft) return;
     const value = draft.value.trim();
+    // run-003: the edit path — content replaced in place (same id); an
+    // empty commit is a CANCEL (the shape is unchanged — deletion stays
+    // the erase/✕ surface, never the editor).
+    if (draft.editId) {
+      if (value) onCommitTextEdit(draft.editId, value);
+      setDraft(null);
+      return;
+    }
     const { cssW } = boxRef.current;
     if (value && cssW > 0) {
       onCommitText({
@@ -1342,13 +1418,19 @@ function InkCanvas({
       });
     }
     setDraft(null);
-  }, [draft, color, onCommitText, page]);
+  }, [draft, onCommitTextEdit, color, onCommitText, page]);
 
   // T-MG-INK-4: the math draft commits an mtext at the same relative
-  // size law as the text editor (14 css px at commit time).
+  // size law as the text editor (14 css px at commit time). run-003:
+  // the edit twin — content replaced in place (same id), empty = cancel.
   const commitMathDraft = useCallback(() => {
     if (!mathDraft) return;
     const value = mathDraft.value.trim();
+    if (mathDraft.editId) {
+      if (value) onCommitMathEdit(mathDraft.editId, value);
+      setMathDraft(null);
+      return;
+    }
     const { cssW } = boxRef.current;
     if (value && cssW > 0) {
       onCommitMath({
@@ -1361,7 +1443,7 @@ function InkCanvas({
       });
     }
     setMathDraft(null);
-  }, [mathDraft, color, onCommitMath, page]);
+  }, [mathDraft, onCommitMathEdit, color, onCommitMath, page]);
 
   // The select affordance's ✕ — the tombstone law via the erase path.
   const eraseSelected = useCallback(() => {
@@ -1451,7 +1533,7 @@ function InkCanvas({
       {draft && (
         <textarea
           autoFocus
-          aria-label="New text annotation"
+          aria-label={draft.editId ? "Edit text annotation" : "New text annotation"}
           value={draft.value}
           onChange={(e) => setDraft({ ...draft, value: e.target.value })}
           onBlur={commitDraft}
@@ -1470,7 +1552,7 @@ function InkCanvas({
       {mathDraft && (
         <textarea
           autoFocus
-          aria-label="New math annotation"
+          aria-label={mathDraft.editId ? "Edit math annotation" : "New math annotation"}
           value={mathDraft.value}
           onChange={(e) => setMathDraft({ ...mathDraft, value: e.target.value })}
           onBlur={commitMathDraft}
