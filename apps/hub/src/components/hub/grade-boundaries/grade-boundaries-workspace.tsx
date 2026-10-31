@@ -45,6 +45,7 @@ import {
   rawToUms,
   usableOptionalPairs,
   type AggregationUnit,
+  type BoundaryRow,
 } from "@/lib/grade-boundaries-calc";
 import type {
   GradeBoundariesCourse,
@@ -124,21 +125,29 @@ export function GradeBoundariesWorkspace({
   const calcRow = activeSession ? activeSession.primary : null;
 
   const achieved = useMemo(() => {
-    if (!canCalculate || !calcRow || !calcRow.maxMark) return null;
+    // run-002: the linear calculator only grades on sessions that carry an
+    // overall boundary row (linear-total courses always do — asserted by
+    // scripts/validate_gradeb_bundle.ts; guard keeps the type honest).
+    const row = calcRow?.boundaries;
+    if (!canCalculate || !row || !calcRow?.maxMark) return null;
     const rowLadder = calcRow.gradeLadder ?? ladder;
     return {
-      grade: gradeForMark(calcRow.boundaries, rowLadder, clampedMark),
-      next: marksToNextGrade(calcRow.boundaries, rowLadder, clampedMark),
+      grade: gradeForMark(row, rowLadder, clampedMark),
+      next: marksToNextGrade(row, rowLadder, clampedMark),
     };
   }, [canCalculate, calcRow, clampedMark, ladder]);
 
   const average = useMemo(() => {
     if (!canCalculate || sessionPick !== "average") return null;
     return modalGradeAcrossSeries(
-      sessions.map((s) => ({
-        session: s.session,
-        boundaries: primaryRow(s.rows).boundaries,
-      })),
+      sessions
+        .map((s) => ({
+          session: s.session,
+          boundaries: primaryRow(s.rows).boundaries,
+        }))
+        .filter((x): x is { session: string; boundaries: BoundaryRow } =>
+          !!x.boundaries,
+        ),
       ladder,
       clampedMark,
     );
@@ -311,7 +320,7 @@ export function GradeBoundariesWorkspace({
     if (graphMode === "linear") {
       return [...sessions]
         .sort((a, b) => a.year - b.year || a.session.localeCompare(b.session))
-        .map((s) => ({ session: s.session, ...s.primary.boundaries }));
+        .map((s) => ({ session: s.session, ...(s.primary.boundaries ?? {}) }));
     }
     if (graphMode === "cashin") {
       return [...sessions]
@@ -657,7 +666,7 @@ export function GradeBoundariesWorkspace({
                     <tbody>
                       {entry.series.map((s, i) => {
                         const rowLadder = s.gradeLadder ?? ladder;
-                        const rowGrade = canCalculate
+                        const rowGrade = canCalculate && s.boundaries
                           ? gradeForMark(s.boundaries, rowLadder, clampedMark)
                           : null;
                         return (
@@ -696,7 +705,7 @@ export function GradeBoundariesWorkspace({
                                     (isAchieved ? " rounded-md bg-accent-primary font-semibold text-accent-primary-foreground" : "")
                                   }
                                 >
-                                  {fmtGradeCell(s.boundaries[g])}
+                                  {fmtGradeCell(s.boundaries?.[g])}
                                 </td>
                               );
                             })}

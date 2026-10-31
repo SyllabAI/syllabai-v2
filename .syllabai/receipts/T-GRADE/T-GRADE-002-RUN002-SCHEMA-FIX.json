@@ -1,0 +1,33 @@
+{
+  "schema": "syllabai.receipt/1",
+  "task": "T-GRADE-002 (run-002)",
+  "title": "Grade Boundaries — hub loader zod vs wave-2 bundle shapes (production card-greyout fix)",
+  "generated": "2026-10-31T16:31:31Z",
+  "trace": "1a192b11d76d25a1",
+  "agent": "Z.ai main agent (zai-web session web-19f335c2-abed-4ade-968a-305029b290e3)",
+  "plane": {
+    "hub_branch": "t-gradeb-2/loader-schema-fix (new branch cut from main after PR #558 (T-GRADE-002 run-001) merged as 9af78115 and PR #559 as b8aab8f6; resources lane unchanged — bundle correct as shipped)",
+    "reported_by": "operator: Grade Boundaries card grey/unclickable at https://syllabai-hub-v2.vercel.app/courses/igcse-physics-19?tab=resources"
+  },
+  "corpus": {
+    "bundle_state": "UNCHANGED — content/grade-boundaries/bundle.v1.json sha16 9c7bc67671dd31e9, counts 105 served / 1 roadmap / 106 total",
+    "fetch_plane": "/corpus/grade-boundaries/bundle.v1.json 200 on production, byte-identical to the committed file (data was never the bug)",
+    "offending_shape": "345 series across 84 courses (55 CIE route/component shapes + 29 modular/IAL unit/cash-in shapes) legitimately omit the series-level boundaries row"
+  },
+  "hub_surface": {
+    "loader": "lib/grade-boundaries-schema.ts (NEW schema of record, bun:test-importable; series.boundaries now optional with the disjoint-shape law documented) — lib/grade-boundaries.ts re-exports keep consumer import sites unchanged",
+    "workspace": "5 null-guarded s.boundaries call sites (achieved row, average modal filter, linear graph spread, linear table rowGrade + cells); linear-total behaviour unchanged",
+    "regression_gate": "scripts/validate_gradeb_bundle.ts in the prebuild chain (schema + counts law + per-course shape invariants, exit 1) + bun:test twin src/lib/grade-boundaries-bundle.test.ts; verify:gradeb script added"
+  },
+  "local_proof": {
+    "bun_test": "26/26 pass (18 calc + 8 bundle incl. regression anchors: igcse-physics-19 served with overall rows; CIE route-shape and modular unit-shape courses parse)",
+    "hub_tsc": "0 errors",
+    "hub_eslint": "lane files clean (13 errors/5 warnings pre-existing on main in unrelated files)",
+    "hub_build": "GREEN — prebuild gates pass; 106 grade-boundaries pages prerendered",
+    "rendered": "prerendered /courses/igcse-physics-19.html carries the enabled card ('See boundaries', '19 session rows', grade-boundaries href) and the grade-boundaries page renders June 2019 / January 2020 rows; CIE chemistry route tables + IAL Maths P1 YMA01/WMA11 render; cie-igcse-business-25 keeps the honest roadmap card"
+  },
+  "open_queue": [
+    "post-merge: confirm the enabled card + data tables on production for a linear (igcse-physics-19), an aggregate-ums (ial-maths-20-pure-1) and a CIE (cie-a-level-chemistry-25) course",
+    "fast CI lane could also run verify:gradeb (currently enforced by the hub build lane's prebuild chain)"
+  ]
+}
