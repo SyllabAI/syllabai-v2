@@ -1,0 +1,79 @@
+{
+  "format": "r3-stageb10-live-spotcheck/1.0",
+  "wave": "R3-CHECK-TYPES stage B wave 10 (S-B10) — the FINAL register tranche",
+  "operator_trace": "1a19138e39ac2c69",
+  "generated_at_utc": "2026-10-31T10:20:00Z",
+  "hub": "https://syllabai-hub-v2.vercel.app",
+  "pins": {
+    "resources_merge_of_record": "e967e75f133977fe57855e2b1445527e2f40feef",
+    "resources_pr": 255,
+    "resources_tree": "9be5ff7353e994871e640f654be736ce90139e5b",
+    "resources_parent": "32d2542a07c66f3dec3c0f87c7dd578e18909bea",
+    "hub_merge_of_record": "2dc7f755d568859e4a2761f0748f9e9f1784f523",
+    "hub_pr": 549,
+    "hub_head": "89c6cc70",
+    "manifest": "hub-import-manifest-v17.json",
+    "manifest_sha256": "34d9a5efbd720dc25d6178b02a7e316da327eda7076c529fc2dd6583a72668c3"
+  },
+  "bake_probe": {
+    "result": "GREEN",
+    "receipt": "download/r3-stageb10/bake-probe-sb10.json",
+    "attempts": 4,
+    "window_note": "GREEN on attempt 4 of the 45s poll loop (~3 min redeploy window; attempts 1-3 showed the pre-bake v16 surface with both calibrations already green)",
+    "targets": "7 S-B10 notes at lessons-x-4 'Your answer' counts (8 for the six 2-lesson notes, 12 for the three-lesson rn_bGgYrQXP2tqrYwdV) + >=1 authored wave-10 stem each",
+    "calibrations": {
+      "rn_3wZh9qRT7qFJn9QW": "S-B8 note unchanged at 8 'Your answer'",
+      "rn_6c2G8nJpFSnQnbcP": "S-B9 note unchanged at 8 'Your answer'"
+    },
+    "law_2_1b": "learner-surface 'from the revision note' hits == 0 on all 9 probed pages",
+    "stems_probed": {
+      "rn_2z53qk2CdWrVVc7V": "Write down the family formula",
+      "rn_7ZMc3T3J4SJXfNdR": "State the catalyst used in the flask",
+      "rn_BBGMYy3Yx9Nm4GV3": "Name the product trio",
+      "rn_BDkhS5vQpRd4hvwf": "reaction is called esterification",
+      "rn_bGgYrQXP2tqrYwdV": "water molecules form for each ester linkage",
+      "rn_bvyrkKqRBMKCRzHM": "persist in soil for decades",
+      "rn_ncFJkGhXFsKrkNkH": "optimum temperature for yeast in fermentation"
+    }
+  },
+  "dom_flow_walk": {
+    "result": "PASS",
+    "tool": "agent-browser (headless Chromium, anonymous session)",
+    "notes": [
+      {
+        "noteId": "rn_2z53qk2CdWrVVc7V",
+        "walk": [
+          "confidence gate with per-level learner-facing descriptions; Medium selected; lesson 1 of 2 (The carboxyl group and the general formula)",
+          "layered reveal (Continue) through opening/key points/depth layers/terms/example to 'Continue to the checks'",
+          "MCQ Q1-Q5 answered with per-item role=status verdicts and named explanations ('Great job!' on -COOH, alkyl-chain counting, methanoic n=0, R = hydrocarbon chain, RCOOH) — MCQ path byte-law unchanged",
+          "Q6 (recall, KP2, keywords cnh2n) ZERO-KEYWORD MISS 'a purple elephant balanced seventeen umbrellas on a quartz harmonica' -> verdict 'Not quite. Model answer: The general formula is CnH2n+1COOH, which can be shortened to RCOOH.' — input locked, model answer ALWAYS shown on settle (screenshot 04)",
+          "Q7 (recall, KP5, keywords zero) keyword-HIT 'the count is zero' -> 'Great job!' + model answer (screenshot 05)",
+          "Q8 (explain-why, KP4, keywords alkyl) keyword-HIT -> 'Great job!' + model answer (screenshot 06)",
+          "Q9 (application, KP2, keywords two) keyword-HIT 'three carbons total, so the alkyl part carries two' -> 'Great job!' + model answer (screenshot 07)"
+        ]
+      },
+      {
+        "noteId": "rn_bGgYrQXP2tqrYwdV",
+        "walk": [
+          "confidence gate; Medium selected; lesson 1 of 3 (Condensation versus addition) — the 0.5 shape-normalization note of this wave",
+          "layered reveal to 'Continue to the checks'",
+          "MCQ Q1-Q5 answered with role=status verdicts (monomer counts, water as the small molecule, two functional groups, extra product distinction, ester linkages)",
+          "Q6 (recall, KP2, keywords h2o) ZERO-KEYWORD MISS 'zebra umbrellas parade beneath seventeen quartz harmonicas' -> 'Not quite. Model answer: The small molecule is H2O — water.' (screenshot 08)",
+          "Q7 (recall, KP5, keywords only) keyword-HIT 'polymer molecule only, with no other product' -> 'Great job!' + model answer (screenshot 09)"
+        ]
+      }
+    ],
+    "screenshots": "download/r3-stageb10/dom-walk/ (9 PNGs: 01-03 MCQ verdicts, 04/08 zero-keyword miss + model answer, 05/06/07/09 keyword-hit verdicts)"
+  },
+  "census_landed": {
+    "checks_total": 2151,
+    "checks_mcq": 1195,
+    "checks_written": 956,
+    "written_recall": 478,
+    "written_explain_why": 239,
+    "written_application": 239,
+    "cumulative_r3": "112 notes / 239 lessons / 956 written items — the ~956 total of record REACHED; STAGE B COMPLETE",
+    "lesson_kinds": "112x hub-lesson-import-1.4 (the 7 wave-10 notes upgraded 1.3->1.4 this wave)"
+  },
+  "lane_discipline": "zero DB access, zero Vercel API calls, read-only hub GETs + anonymous DOM walk; no payment instruments; tokens never echoed"
+}
