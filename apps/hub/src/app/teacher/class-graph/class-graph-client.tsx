@@ -56,7 +56,7 @@ const BAND_LABEL: Record<UnderstandingBand, string> = {
 };
 
 const BAND_CLASS: Record<UnderstandingBand, string> = {
-  strong: "bg-chart-2/15 text-chart-2 border-chart-2/40",
+  strong: "bg-chart-2/15 text-foreground border-chart-2/40",
   good: "bg-chart-2/10 text-foreground border-chart-2/30",
   developing: "bg-chart-4/15 text-foreground border-chart-4/40",
   weak: "bg-chart-5/15 text-foreground border-chart-5/40",

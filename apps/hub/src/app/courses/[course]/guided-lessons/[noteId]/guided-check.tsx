@@ -144,16 +144,16 @@ function GuidedCheck({ index, question, pickedKey, revealed, onPick, onReveal }:
                   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
                   state === "idle" && "hover:border-primary/40",
                   state === "picked" && "border-primary/60 bg-primary/5",
-                  state === "correct" && "border-emerald-600/50 bg-emerald-600/10 dark:border-emerald-500/40 dark:bg-emerald-500/10",
-                  state === "wrong" && "border-red-600/50 bg-red-600/10 dark:border-red-500/40 dark:bg-red-500/10",
+                  state === "correct" && "border-success/50 bg-success/10",
+                  state === "wrong" && "border-destructive/50 bg-destructive/10",
                   settled && "cursor-default",
                 )}
               >
                 <span
                   className={cn(
                     "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border text-[11px] font-semibold",
-                    state === "correct" && "border-emerald-600/60 text-emerald-700 dark:text-emerald-400",
-                    state === "wrong" && "border-red-600/60 text-red-700 dark:text-red-400",
+                    state === "correct" && "border-success/60 text-success",
+                    state === "wrong" && "border-destructive/60 text-destructive-ink",
                     (state === "idle" || state === "picked") && "text-muted-foreground",
                   )}
                   aria-hidden
@@ -185,8 +185,8 @@ function GuidedCheck({ index, question, pickedKey, revealed, onPick, onReveal }:
             className={cn(
               "mt-3 text-[13px] font-medium",
               pickedOption.correct
-                ? "text-emerald-700 dark:text-emerald-400"
-                : "text-red-700 dark:text-red-400",
+                ? "text-success"
+                : "text-destructive",
             )}
             role="status"
           >
@@ -290,10 +290,10 @@ function WrittenCheck({ index, question, verdict, onSettle }: WrittenProps) {
         {settled && (
           <div className="space-y-2" role="status">
             {verdict === "correct" && (
-              <p className="text-[13px] font-medium text-emerald-700 dark:text-emerald-400">Correct</p>
+              <p className="text-[13px] font-medium text-success">Correct</p>
             )}
             {verdict === "notquite" && (
-              <p className="text-[13px] font-medium text-red-700 dark:text-red-400">Not quite</p>
+              <p className="text-[13px] font-medium text-destructive">Not quite</p>
             )}
             {modelAnswer ? (
               <p className="text-[13px] leading-relaxed text-muted-foreground">

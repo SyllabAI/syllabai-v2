@@ -1041,7 +1041,7 @@ export function TutorChat({
             <AlertDialogCancel disabled={deleting}>Keep it</AlertDialogCancel>
             <AlertDialogAction
               disabled={deleting}
-              className="bg-destructive text-white hover:bg-destructive/90"
+              className="bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive/60"
               onClick={(e) => {
                 e.preventDefault();
                 void confirmDeleteServer();

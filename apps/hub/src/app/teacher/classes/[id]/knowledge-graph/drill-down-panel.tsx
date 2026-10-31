@@ -59,12 +59,12 @@ function relative(iso: string): string {
 }
 
 const BAND_BADGE: Record<string, { label: string; className: string }> = {
-  LOW: { label: "Weak", className: "bg-rose-100 text-rose-800 border-rose-200" },
+  LOW: { label: "Weak", className: "bg-destructive/10 text-destructive-ink border-destructive/30" },
   DEVELOPING: {
     label: "Developing",
-    className: "bg-amber-100 text-amber-800 border-amber-200",
+    className: "bg-warn/10 text-warn-ink border-warn/30",
   },
-  SECURE: { label: "Secure", className: "bg-emerald-100 text-emerald-800 border-emerald-200" },
+  SECURE: { label: "Secure", className: "bg-success/10 text-success border-success/30" },
 };
 
 const COVERAGE_LABEL: Record<string, string> = {
@@ -214,19 +214,19 @@ export function NodeDrillDown({
                 {/* the §13.3 distribution, restated — never disagreeing with the cell */}
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
                   <span>
-                    <span className="font-medium text-rose-700">
+                    <span className="font-medium text-destructive">
                       {data.strugglingCount}
                     </span>{" "}
                     struggling
                   </span>
                   <span>
-                    <span className="font-medium text-amber-700">
+                    <span className="font-medium text-warn">
                       {data.developingCount}
                     </span>{" "}
                     developing
                   </span>
                   <span>
-                    <span className="font-medium text-emerald-700">
+                    <span className="font-medium text-success">
                       {data.proficientCount}
                     </span>{" "}
                     proficient
@@ -280,7 +280,7 @@ export function NodeDrillDown({
                                     <Badge
                                       key={m.misconceptionNodeId}
                                       variant="outline"
-                                      className="border-red-200 bg-red-50 text-[10px] text-red-800"
+                                      className="border-destructive/30 bg-destructive/10 text-[10px] text-destructive-ink"
                                     >
                                       <TriangleAlert className="mr-1 size-3" aria-hidden />
                                       {m.title}
@@ -316,8 +316,8 @@ export function NodeDrillDown({
                                         variant="outline"
                                         className={`font-mono text-[10px] ${
                                           a.correct
-                                            ? "border-emerald-200 bg-emerald-50 text-emerald-800"
-                                            : "border-rose-200 bg-rose-50 text-rose-800"
+                                            ? "border-success/30 bg-success/10 text-success"
+                                            : "border-destructive/30 bg-destructive/10 text-destructive-ink"
                                         }`}
                                       >
                                         {a.questionRef ?? a.questionId.slice(0, 8)}

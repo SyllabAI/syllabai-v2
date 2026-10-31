@@ -62,6 +62,7 @@ import {
   Sparkles,
   ThumbsDown,
   ThumbsUp,
+  X,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -439,7 +440,7 @@ export function GuidedLessonFlow({
                         <span
                           className={cn(
                             "flex size-6 shrink-0 items-center justify-center rounded-full border text-[11px] font-semibold",
-                            done && "border-emerald-600/50 bg-emerald-600/10 text-emerald-700 dark:border-emerald-500/40 dark:text-emerald-400",
+                            done && "border-success/50 bg-success/10 text-success",
                             !done && active && "border-primary/60 text-primary",
                             !done && !active && "text-muted-foreground",
                           )}
@@ -1129,12 +1130,12 @@ function CheckQuestion({
           <div className="space-y-2" role="status">
             {gradable &&
               (answered.correct ? (
-                <p className="flex items-center gap-2 text-[13px] font-semibold text-emerald-700 dark:text-emerald-400">
+                <p className="flex items-center gap-2 text-[13px] font-semibold text-success">
                   <ThumbsUp className="size-4" aria-hidden />
                   Great job!
                 </p>
               ) : (
-                <p className="text-[13px] font-semibold text-red-700 dark:text-red-400">Not quite.</p>
+                <p className="text-[13px] font-semibold text-destructive">Not quite.</p>
               ))}
             {modelAnswer ? (
               <p className="text-[13px] leading-relaxed text-muted-foreground">
@@ -1183,21 +1184,21 @@ function CheckQuestion({
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
                 state === "idle" && "hover:border-primary/40",
                 state === "picked" && "border-primary/60 bg-primary/5",
-                state === "correct" && "border-emerald-600/50 bg-emerald-600/10 dark:border-emerald-500/40 dark:bg-emerald-500/10",
-                state === "wrong" && "border-red-600/50 bg-red-600/10 dark:border-red-500/40 dark:bg-red-500/10",
+                state === "correct" && "border-success/50 bg-success/10",
+                state === "wrong" && "border-destructive/50 bg-destructive/10",
                 settled && "cursor-default",
               )}
             >
               <span
                 className={cn(
                   "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border text-[11px] font-semibold",
-                  state === "correct" && "border-emerald-600/60 text-emerald-700 dark:text-emerald-400",
-                  state === "wrong" && "border-red-600/60 text-red-700 dark:text-red-400",
+                  state === "correct" && "border-success/60 text-success",
+                  state === "wrong" && "border-destructive/60 text-destructive-ink",
                   (state === "idle" || state === "picked") && "text-muted-foreground",
                 )}
                 aria-hidden
               >
-                {state === "correct" ? <Check className="size-3" /> : state === "wrong" ? <Check className="size-3" /> : o.key}
+                {state === "correct" ? <Check className="size-3" /> : state === "wrong" ? <X className="size-3" /> : o.key}
               </span>
               <span className="min-w-0">{o.text}</span>
             </button>
@@ -1221,12 +1222,12 @@ function CheckQuestion({
       {settled && answered && (
         <div className="space-y-2" role="status">
           {answered.correct ? (
-            <p className="flex items-center gap-2 text-[13px] font-semibold text-emerald-700 dark:text-emerald-400">
+            <p className="flex items-center gap-2 text-[13px] font-semibold text-success">
               <ThumbsUp className="size-4" aria-hidden />
               Great job!
             </p>
           ) : (
-            <p className="text-[13px] font-semibold text-red-700 dark:text-red-400">
+            <p className="text-[13px] font-semibold text-destructive">
               Not quite — the answer is {correctOption?.key}.
             </p>
           )}
@@ -1273,7 +1274,7 @@ function FinishedView({
     <Card>
       <CardContent className="space-y-4 p-5 sm:p-6">
         <div className="space-y-1">
-          <p className="flex items-center gap-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400">
+          <p className="flex items-center gap-2 text-sm font-semibold text-success">
             <BookOpenCheck className="size-4" aria-hidden />
             Lesson set complete
           </p>
@@ -1290,7 +1291,7 @@ function FinishedView({
             const recal = state.recalibrated[mod.id];
             return (
               <li key={mod.id} className="flex items-center gap-3 rounded-md border px-3 py-2.5">
-                <Check className="size-4 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden />
+                <Check className="size-4 shrink-0 text-success" aria-hidden />
                 <span className="min-w-0 flex-1">
                   <span className="block text-[13px] font-medium">{mod.title}</span>
                   {/* R-6: the confidence trajectory this lesson actually had */}
@@ -1569,7 +1570,7 @@ function MixedPractice({
               <ArrowRight className="size-4" aria-hidden />
             </Button>
           ) : (
-            <p className="text-[13px] font-medium text-emerald-700 dark:text-emerald-400">
+            <p className="text-[13px] font-medium text-success">
               Mixed practice done — nice work.
             </p>
           )}
@@ -1605,8 +1606,8 @@ function MixedPractice({
                   className={cn(
                     "text-[13px] font-medium",
                     auto
-                      ? "text-emerald-700 dark:text-emerald-400"
-                      : "text-amber-700 dark:text-amber-400",
+                      ? "text-success"
+                      : "text-warn",
                   )}
                 >
                   {auto

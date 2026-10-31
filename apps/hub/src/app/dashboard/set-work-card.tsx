@@ -125,13 +125,13 @@ export function SetWorkCard() {
                       {overdue && !mySubmission && (
                         <Badge
                           variant="outline"
-                          className="text-xs text-rose-600 dark:text-rose-400"
+                          className="text-xs text-destructive"
                         >
                           Overdue
                         </Badge>
                       )}
                       {mySubmission ? (
-                        <span className="flex items-center gap-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                        <span className="flex items-center gap-1 text-xs font-medium text-success">
                           <CircleCheck className="size-3.5" aria-hidden="true" />
                           Handed in
                           {mySubmission.score !== null
