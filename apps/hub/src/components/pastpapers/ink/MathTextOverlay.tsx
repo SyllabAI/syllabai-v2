@@ -20,10 +20,13 @@
  * surface is the plain LaTeX textarea (the InkLayer math draft), no
  * virtual keyboard (MG's math-field policy is `manual` too).
  *
- * CROP DISCLOSURE (the spec's honest limitation): this overlay is not
- * canvas pixels, so `mtext` does NOT composite into the T-MG-CROPMARK-1
- * region-crop marking bitmap this run — the painter skips the kind
- * (./paint.ts) and a rasterization card is a named future candidate.
+ * CROP RASTER (T-MG-INK-4 run-003 — the run-002 disclosure discharged):
+ * this overlay is still not canvas pixels, so the crop never reads it —
+ * instead the crop producer (../region-mark/produce-crop) re-renders the
+ * SAME renderToString output (the options below are the ONE render law,
+ * two consumers) through the font-inlined foreignObject raster
+ * (./mtext-raster) at the stroke bitmap scale; every raster failure
+ * falls back to the raw-source plain text (honest degradation).
  */
 import "katex/dist/katex.min.css";
 

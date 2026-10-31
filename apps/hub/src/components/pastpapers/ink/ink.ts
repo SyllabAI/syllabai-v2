@@ -240,6 +240,27 @@ export function eraseShapes(shapes: InkShape[], ids: ReadonlySet<string>): InkSh
 }
 
 /**
+ * T-MG-INK-4 run-003 — the re-edit law: a text/mtext box's CONTENT is
+ * replaceable IN PLACE (same id — the id IS the merge key, so an edit is
+ * the newer intent and survives every union-by-id rebase exactly like a
+ * move does; one edit commit = one snapshot = one undo step). Colour,
+ * size and anchor are NOT touched (a content-only edit — recolour/
+ * resize is delete + re-add, disclosed). An empty value is a no-op (the
+ * caller's editor treats empty commit as cancel — the same law on both
+ * sides). Unknown ids and other kinds pass through untouched.
+ */
+export function editTextShape(shapes: InkShape[], id: string, text: string): InkShape[] {
+  if (text.length === 0) return shapes;
+  return shapes.map((s) => (s.id === id && s.kind === "text" ? { ...s, text } : s));
+}
+
+/** The mtext twin of the re-edit law (KaTeX source replacement). */
+export function editMathShape(shapes: InkShape[], id: string, tex: string): InkShape[] {
+  if (tex.length === 0) return shapes;
+  return shapes.map((s) => (s.id === id && s.kind === "mtext" ? { ...s, tex } : s));
+}
+
+/**
  * Translate a shape by normalized deltas (the move law: css-px intent
  * converted per-axis by the caller — the aspect law), clamped into the
  * page box. A tombstone is not movable (null). All other kinds move
