@@ -1,0 +1,1620 @@
+{
+ "schema": "syllabai-demo.lane-receipt/1.0",
+ "kind": "feasibility",
+ "lane": "T-UGM-0606-1",
+ "run": "run-001",
+ "operatorTrace": "1a19299d29df9705",
+ "question": "Can the CIE 9709 UGM substrate of record (the three native bundles on cie-a-level-maths-20-pure-1/2/3) serve the Cambridge IGCSE Additional Mathematics 0606 (2025-2027) spec of record point-by-point, and under which vehicle?",
+ "method": "two-sided adjudication: target = the 0606 curriculum+spine of record (77 SPEC_POINTs, capture with T-SPECS-CIE parse-repair provenance); source = per-point row-evidence census distilled from the three native UGM bundles (93 source points, 817 row bindings, computed directly from resources[].specPoints[] bindings); operator-ordered delegation ran the per-point adjudication under the X-lane law (DIRECT/DIRECT_THIN/PARTIAL/PARTIAL_VERY_THIN/FOLDED_INTO/GAP -> mechanical depthGrade map) on local data only (no network, no tokens); desk-level independent verification re-asserted coverage, source-code + nBoundResources fidelity, grade-map equality, fold inheritance and aggregate arithmetic, and spot-read 14 rows",
+ "census": {
+  "targets": {
+   "specPoints": 77,
+   "topics": 14,
+   "subtopics": 34
+  },
+  "sourceSubstrate": {
+   "courses": [
+    "cie-a-level-maths-20-pure-1",
+    "cie-a-level-maths-20-pure-2",
+    "cie-a-level-maths-20-pure-3"
+   ],
+   "sourceSpecPoints": 93,
+   "rowBindings": 817,
+   "zeroRowSourcePoints": 18,
+   "bundleBlobsOfRecord": {
+    "pure-1 ugm-resources.json": {
+     "bytes": 2279149,
+     "blobSha1": "bfb9d813f8879079d1aa4723b7fc8bd8629417c1"
+    },
+    "pure-2 ugm-resources.json": {
+     "bytes": 844853,
+     "blobSha1": "826bcd4a2d50f80b08c8f013ecdda90c4f86e2ab"
+    },
+    "pure-3 ugm-resources.json": {
+     "bytes": 796596,
+     "blobSha1": "57929cd50e8cc79a927b3b444038235d6d5eb3a5"
+    }
+   }
+  },
+  "clsCounts": {
+   "DIRECT": 54,
+   "DIRECT_THIN": 3,
+   "FOLDED_INTO": 1,
+   "GAP": 3,
+   "PARTIAL": 16
+  },
+  "depthGradeCounts": {
+   "INSUFFICIENT": 3,
+   "SERVES": 58,
+   "SERVES_WITH_GUARD": 16
+  },
+  "totals": {
+   "served": 74,
+   "of77": 77,
+   "gaps": 3,
+   "gapShare": 0.039
+  }
+ },
+ "matrix": [
+  {
+   "code": "12.1.1",
+   "title": "Binomial theorem for (a + b)ⁿ, positive integer n",
+   "topic": "Series",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.6.1",
+     "nBoundResources": 13
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"binomial theorem for expansion of (a + b)ⁿ for positive integer n\" ⊆ source 1.6.1 \"use the expansion of (a + b)^n, where n is a positive integer\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "12.2.1",
+   "title": "General term nCr aⁿ⁻ʳ bʳ, 0 ⩽ r ⩽ n",
+   "topic": "Series",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.6.1",
+     "nBoundResources": 13
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"general term nCr aⁿ⁻ʳbʳ\" rides source 1.6.1 \"expansion of (a + b)^n, positive integer n\"; general term is intrinsic to the expansion",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "12.3.1",
+   "title": "Recognise arithmetic and geometric progressions",
+   "topic": "Series",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.6.2",
+     "nBoundResources": 3
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"recognise arithmetic and geometric progressions\" = source 1.6.2 verbatim; thin: only 3 rows, high 2/3",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "12.4.1",
+   "title": "nth term and sum of first n terms of AP/GP problems",
+   "topic": "Series",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.6.3",
+     "nBoundResources": 28
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"formulas for the nth term and for the sum of the first n terms\" ⊆ source 1.6.3 \"use the formulae for the nth term and for the sum of the first n terms\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "12.5.1",
+   "title": "Convergence condition and sum to infinity of a GP",
+   "topic": "Series",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.6.4",
+     "nBoundResources": 14
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"condition for the convergence … sum to infinity of a convergent geometric progression\" = source 1.6.4 verbatim",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "9.1.1",
+   "title": "Arc length and sector area, radian measure",
+   "topic": "Circular measure",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.4.1",
+     "nBoundResources": 17
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"arc length and sector area … radian measure\" ⊆ source 1.4.1 \"definition of a radian\" + fold 1.4.1a \"arc length and sector area of a circle\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "3.1.1",
+   "title": "Remainder and factor theorems",
+   "topic": "Factors of polynomials",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.1.4",
+     "nBoundResources": 21
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"know and use the remainder and factor theorems\" ⊆ source 3.1.4 \"use the factor theorem and the remainder theorem\"; 21 rows, high 16",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "3.2.1",
+   "title": "Find factors of polynomials",
+   "topic": "Factors of polynomials",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.1.4",
+     "nBoundResources": 21
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"find factors of polynomials\" ⊆ source 3.1.4 factor theorem: locating linear factors then factorising fully",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "3.3.1",
+   "title": "Solve cubic equations",
+   "topic": "Factors of polynomials",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.1.4",
+     "nBoundResources": 21
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"solve cubic equations\" ⊆ source 3.1.4: factor theorem gives first factor, then factorise to solve",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "1.3.1",
+   "title": "Function notation: f(x) = 2eˣ example",
+   "topic": "Functions",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.2.1",
+     "nBoundResources": 11
+    }
+   ],
+   "foldedInto": null,
+   "note": "target statement \"recognise and use function notation\" (example f(x) = 2eˣ) ⊆ source 1.2.1 \"understand the terms function, domain, range…\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "1.3.2",
+   "title": "Function notation: f : x ↦ lg x, x > 0",
+   "topic": "Functions",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.2.1",
+     "nBoundResources": 11
+    }
+   ],
+   "foldedInto": null,
+   "note": "target notation example \"f : x ↦ lg x, for x > 0\" ⊆ source 1.2.1 function/domain/range terms; 11 rows all high",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "1.3.3",
+   "title": "Function notation: f⁻¹(x)",
+   "topic": "Functions",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.2.3",
+     "nBoundResources": 10
+    }
+   ],
+   "foldedInto": null,
+   "note": "target notation example f⁻¹(x) ⊆ source 1.2.3 \"determine whether or not a given function is one-one, and find the inverse\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "1.3.4",
+   "title": "Function notation: fg(x) = f(g(x))",
+   "topic": "Functions",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.2.2",
+     "nBoundResources": 17
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"fg(x) [= f(g(x))]\" ⊆ source 1.2.2 \"find the composition of two given functions\"; 17 rows, high 15",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "1.3.5",
+   "title": "Function notation: f²(x) = f(f(x))",
+   "topic": "Functions",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.2.2",
+     "nBoundResources": 17
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"f²(x) [= f(f(x))]\" ⊆ source 1.2.2 composition of two functions; self-composition rides the same point",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "1.4.1",
+   "title": "Graph y = a sin bx + c",
+   "topic": "Functions",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.5.1",
+     "nBoundResources": 23
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.2.5",
+     "nBoundResources": 9
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"y = a sin bx + c\" = stretch/translation of source 1.5.1 \"graphs of the sine… functions\" via 1.2.5 y = af(x), f(ax), f(x)+a",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "1.4.2",
+   "title": "Graph y = a cos bx + c",
+   "topic": "Functions",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.5.1",
+     "nBoundResources": 23
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.2.5",
+     "nBoundResources": 9
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"y = a cos bx + c\" = stretch/translation of source 1.5.1 cosine graphs via 1.2.5 transformations",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "1.4.3",
+   "title": "Graph y = a tan bx + c",
+   "topic": "Functions",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.5.1",
+     "nBoundResources": 23
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.2.5",
+     "nBoundResources": 9
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"y = a tan bx + c\" ⊆ source 1.5.1 tangent graphs (angles of any size) + 1.2.5 transformations",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "1.6.2",
+   "title": "Find the inverse of a one-one function, correct notation",
+   "topic": "Functions",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.2.3",
+     "nBoundResources": 10
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"find the inverse of a one–one function. Correct notation must be used\" ⊆ source 1.2.3 \"find the inverse of a one-one function in simple cases\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "2.5.1",
+   "title": "Solution set of quadratic inequalities: –3 < x < 4",
+   "topic": "Quadratic functions",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.3",
+     "nBoundResources": 20
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"solution set for quadratic inequalities\" (e.g. –3 < x < 4) ⊆ source 1.1.3 \"solve quadratic… inequalities, in one unknown\"; 20 rows",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "2.5.2",
+   "title": "Solution set of quadratic inequalities: x < 1 or x > 6",
+   "topic": "Quadratic functions",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.3",
+     "nBoundResources": 20
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"x < 1 or x > 6\" solution-set form ⊆ source 1.1.3 quadratic inequalities; same point, well-populated",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "4.1.1",
+   "title": "Modulus equation |ax + b| = c",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.2",
+     "nBoundResources": 27
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.1",
+     "nBoundResources": 5
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"|ax + b| = c\" ⊆ source 2.1.2 modulus relations \"|a| = |b| ⇔ a = b… when solving equations\" + 2.1.1 graph of y = |ax + b|",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "4.1.2",
+   "title": "Modulus equation |ax + b| = cx + d",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.2",
+     "nBoundResources": 27
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.1",
+     "nBoundResources": 5
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"|ax + b| = cx + d\" ⊆ source 2.1.2 \"solving equations and inequalities\"; 27 rows, high 17; 2.1.1 graphical support",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "4.1.3",
+   "title": "Modulus equation |ax + b| = |cx + d|",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.2",
+     "nBoundResources": 27
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.1",
+     "nBoundResources": 5
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"|ax + b| = |cx + d|\" ⊆ source 2.1.2 relation |a| = |b| ⇔ a² = b² applied to equations",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "4.1.4",
+   "title": "Modulus equation |ax² + bx + c| = d",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.2",
+     "nBoundResources": 27
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.3",
+     "nBoundResources": 20
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"|ax² + bx + c| = d\" spans 2.1.2 modulus relations + 1.1.3 quadratic solving; quadratic-in-modulus beyond source linear examples",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "4.2.1",
+   "title": "Modulus inequality k|ax + b| > c",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.2",
+     "nBoundResources": 27
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.1",
+     "nBoundResources": 5
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"k|ax + b| > c\" ⊆ source 2.1.2 \"|x – a| < b ⇔ a – b < x < a + b when solving… inequalities\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "4.2.2",
+   "title": "Modulus inequality k|ax + b| ⩽ c",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.2",
+     "nBoundResources": 27
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.1",
+     "nBoundResources": 5
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"k|ax + b| ⩽ c\" ⊆ source 2.1.2 modulus inequality relations; well-populated (27 rows)",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "4.2.3",
+   "title": "Modulus inequality k|ax + b| ⩽ |cx + d|",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.2",
+     "nBoundResources": 27
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.1",
+     "nBoundResources": 5
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"k|ax + b| ⩽ |cx + d|\" ⊆ source 2.1.2 modulus relations for inequalities",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "4.2.4",
+   "title": "Modulus inequality |ax + b| ⩽ cx + d",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.2",
+     "nBoundResources": 27
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.1",
+     "nBoundResources": 5
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"|ax + b| ⩽ cx + d\" ⊆ source 2.1.2 modulus inequalities; 2.1.1 graph support",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "4.2.5",
+   "title": "Modulus inequality |ax² + bx + c| > d",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.2",
+     "nBoundResources": 27
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.3",
+     "nBoundResources": 20
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"|ax² + bx + c| > d\" spans 2.1.2 modulus inequalities + 1.1.3 quadratic inequality technique; quadratic-in-modulus beyond source",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "4.2.6",
+   "title": "Modulus inequality |ax² + bx + c| ⩽ d",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.1.2",
+     "nBoundResources": 27
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.3",
+     "nBoundResources": 20
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"|ax² + bx + c| ⩽ d\" spans 2.1.2 + 1.1.3; no source point states quadratic-in-modulus inequalities explicitly",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "4.3.1",
+   "title": "Substitution to form quadratic: x⁶ + x³ – 12 = 0",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.5",
+     "nBoundResources": 11
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"use substitution to form and solve a quadratic\" ⊆ source 1.1.5 \"recognise and solve equations in x which are quadratic in some function of x\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "4.3.2",
+   "title": "Substitution to form quadratic: 3eˣ = 12 – 5e⁻ˣ",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.5",
+     "nBoundResources": 11
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.2.3",
+     "nBoundResources": 15
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"3eˣ = 12 – 5e⁻ˣ\" quadratic in eˣ ⊆ source 1.1.5; logarithm finish in 2.2.3 \"unknown appears in indices\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "4.3.3",
+   "title": "Identify the appropriate substitution",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.5",
+     "nBoundResources": 11
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"candidates are expected to identify the appropriate substitution\" ⊆ source 1.1.5 \"recognise… quadratic in some function of x\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "4.5.1",
+   "title": "Cubic inequality f(x) ⩾ d",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.1.4",
+     "nBoundResources": 21
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.7.4",
+     "nBoundResources": 38
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.3",
+     "nBoundResources": 20
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"solve graphically cubic inequalities f(x) ⩾ d\" spans 3.1.4 factor theorem + 1.7.4 curve sketching + 1.1.3 inequality technique; no cubic-inequality source point",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "4.5.2",
+   "title": "Cubic inequality f(x) > d",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.1.4",
+     "nBoundResources": 21
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.7.4",
+     "nBoundResources": 38
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.3",
+     "nBoundResources": 20
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"cubic inequalities f(x) > d\" spans 3.1.4 factorisation + 1.7.4 sketching + 1.1.3 inequality-solving analogue; guard on cubic framing",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "4.5.3",
+   "title": "Cubic inequality f(x) ⩽ d",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.1.4",
+     "nBoundResources": 21
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.7.4",
+     "nBoundResources": 38
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.3",
+     "nBoundResources": 20
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"cubic inequalities f(x) ⩽ d\" spans 3.1.4 + 1.7.4 + 1.1.3; no source point states cubic inequalities",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "4.5.4",
+   "title": "Cubic inequality f(x) < d, three linear factors",
+   "topic": "Equations, inequalities and graphs",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.1.4",
+     "nBoundResources": 21
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.7.4",
+     "nBoundResources": 38
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.3",
+     "nBoundResources": 20
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"f(x) < d where f(x) is a product of three linear factors\" spans 3.1.4 factor theorem + 1.7.4 sketching + 1.1.3 technique",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "5.1.1",
+   "title": "Simultaneous: y – x + 3 = 0 and x² – 3xy + y² + 19 = 0",
+   "topic": "Simultaneous equations",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.4",
+     "nBoundResources": 10
+    }
+   ],
+   "foldedInto": null,
+   "note": "target pair (one linear, one quadratic) ⊆ source 1.1.4 \"solve by substitution… one is linear and one is quadratic\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "5.1.2",
+   "title": "Simultaneous non-linear pair: x/y = 4 and xy = 3",
+   "topic": "Simultaneous equations",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.4",
+     "nBoundResources": 10
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.5",
+     "nBoundResources": 11
+    }
+   ],
+   "foldedInto": null,
+   "note": "target non-linear pair \"x/y = 4 and xy = 3\" beyond source 1.1.4 \"one linear and one quadratic\"; substitution still reduces to quadratic (1.1.5)",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "5.1.3",
+   "title": "Simultaneous: 1/x + 1/y = 4 and y = x – 2",
+   "topic": "Simultaneous equations",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.4",
+     "nBoundResources": 10
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.1.5",
+     "nBoundResources": 11
+    }
+   ],
+   "foldedInto": null,
+   "note": "target reciprocal pair \"1/x + 1/y = 4 and y = x – 2\" beyond source 1.1.4 linear+quadratic; same substitution method, 1.1.5 support",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "6.2.1",
+   "title": "Laws of logarithms: combine to single base 10 log",
+   "topic": "Logarithmic and exponential functions",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.2.1",
+     "nBoundResources": 19
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.2.1",
+     "nBoundResources": 16
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"write 3 + 2lg p – lg q as a single base 10 logarithm\" ⊆ source 2.2.1 \"use the laws of logarithms\"; 3.2.1 duplicate (16 rows)",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "6.2.2",
+   "title": "Write a logarithm as a natural logarithm",
+   "topic": "Logarithmic and exponential functions",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.2.1",
+     "nBoundResources": 19
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.2.2",
+     "nBoundResources": 3
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"write… as a natural logarithm\" needs change of base; source laws \"(excluding change of base)\", ln x properties only in 2.2.2 (3 rows)",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "7.4.1",
+   "title": "Transform to straight-line form; gradient/intercept",
+   "topic": "Straight-line graphs",
+   "subtopic": null,
+   "cls": "DIRECT_THIN",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.2.4",
+     "nBoundResources": 2
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.2.4",
+     "nBoundResources": 2
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"to straight-line form… gradient or intercept\" ⊆ source 2.2.4 \"use logarithms to transform… to linear form\"; thin: 2 rows each",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "7.4.2",
+   "title": "Transform from straight-line form to y = Ax + B",
+   "topic": "Straight-line graphs",
+   "subtopic": null,
+   "cls": "DIRECT_THIN",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.2.4",
+     "nBoundResources": 2
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.2.4",
+     "nBoundResources": 2
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"from straight-line form to y = Ax + B / y = A ln x + B\" ⊆ source 2.2.4 reverse direction; thin: 2 rows each of 2.2.4/3.2.4",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "8.1.2",
+   "title": "Circle equations (x–a)²+(y–b)²=r², x²+y²+2gx+2fy+c=0",
+   "topic": "Coordinate geometry of the circle",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.3.2",
+     "nBoundResources": 60
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"(x – a)² + (y – b)² = r², x² + y² + 2gx + 2fy + c = 0\" ⊆ source 1.3.2 fold 1.3.2a \"circle with centre (a, b) and radius r\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "8.2.1",
+   "title": "Line–circle intersection: line is a tangent",
+   "topic": "Coordinate geometry of the circle",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.3.2",
+     "nBoundResources": 60
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"intersection of a [line and a circle]: is a tangent\" ⊆ source 1.3.2 \"solving problems involving lines and circles\" (fold 1.3.2a); 60 rows",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "8.2.2",
+   "title": "Line–circle intersection: line is a chord",
+   "topic": "Coordinate geometry of the circle",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.3.2",
+     "nBoundResources": 60
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"is a chord\" ⊆ source 1.3.2 \"problems involving lines and circles\" (fold 1.3.2a), points of intersection included",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "8.2.3",
+   "title": "Line–circle intersection: does not intersect",
+   "topic": "Coordinate geometry of the circle",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.3.2",
+     "nBoundResources": 60
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"does not intersect the circle\" ⊆ source 1.3.2 \"problems involving lines and circles\" (fold 1.3.2a)",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "8.4.1",
+   "title": "Two circles intersect",
+   "topic": "Coordinate geometry of the circle",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.3.2",
+     "nBoundResources": 60
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"intersection of [two circles]: intersect\" extends source 1.3.2 \"lines and circles\"; circle–circle pairing beyond the line–circle fold 1.3.2a",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "8.4.2",
+   "title": "Two circles touch",
+   "topic": "Coordinate geometry of the circle",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.3.2",
+     "nBoundResources": 60
+    }
+   ],
+   "foldedInto": null,
+   "note": "target two circles \"touch\" extends source 1.3.2 \"lines and circles\"; same toolkit (centres, radii, distance) but circle–circle not explicit",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "8.4.3",
+   "title": "Two circles do not intersect",
+   "topic": "Coordinate geometry of the circle",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.3.2",
+     "nBoundResources": 60
+    }
+   ],
+   "foldedInto": null,
+   "note": "target two circles \"do not intersect\" extends source 1.3.2 \"lines and circles\"; circle–circle case beyond fold 1.3.2a scope",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "10.4.2",
+   "title": "Pythagorean identities sin²+cos²=1, sec²=1+tan², cosec²=1+cot²",
+   "topic": "Trigonometry",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.3.2",
+     "nBoundResources": 24
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.3.1",
+     "nBoundResources": 4
+    }
+   ],
+   "foldedInto": null,
+   "note": "target three identities ⊆ source 2.3.2 \"familiarity in particular with… sec²θ ≡ 1 + tan²θ and cosec²θ ≡ 1 + cot²θ\"; 24 rows, high 23",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "10.5.1",
+   "title": "Trig equation cot θ = tan θ",
+   "topic": "Trigonometry",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.3.2",
+     "nBoundResources": 24
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.5.5",
+     "nBoundResources": 11
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"cot θ = tan θ\" ⊆ source 2.3.2 identities (sec/cosec/cot) \"in the course of solving equations\" + 1.5.5 solutions in a specified interval",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "10.5.2",
+   "title": "Trig equation sec²θ + tan θ – 3 = 0",
+   "topic": "Trigonometry",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.3.2",
+     "nBoundResources": 24
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.5.5",
+     "nBoundResources": 11
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"sec²θ + tan θ – 3 = 0\" ⊆ source 2.3.2 sec² identity use in solving equations + 1.5.5 interval solutions",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "10.5.3",
+   "title": "Trig equation 5 sin 3θ = …",
+   "topic": "Trigonometry",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.3.2",
+     "nBoundResources": 24
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.5.5",
+     "nBoundResources": 11
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"5 sin 3θ…\" multiple-angle equation ⊆ source 1.5.5 \"simple trigonometrical equations\" + 2.3.2 solving with identities",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "10.5.4",
+   "title": "Trig equation 3 cosec 2θ…",
+   "topic": "Trigonometry",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.3.2",
+     "nBoundResources": 24
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.5.5",
+     "nBoundResources": 11
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"3 cosec 2θ…\" ⊆ source 2.3.2 identities incl. cosec²θ ≡ 1 + cot²θ in solving + 1.5.5 interval solutions",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "10.6.1",
+   "title": "Prove identity sin x tan x + cos x = sec x",
+   "topic": "Trigonometry",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.3.2",
+     "nBoundResources": 24
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.5.4",
+     "nBoundResources": 14
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"prove sin x tan x + cos x = sec x\" ⊆ source 2.3.2 \"identities for the simplification… of expressions\" + 1.5.4 \"e.g. in proving identities\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "10.6.1a",
+   "title": "Prove trigonometric relationship — second example identity",
+   "topic": "Trigonometry",
+   "subtopic": null,
+   "cls": "FOLDED_INTO",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.3.2",
+     "nBoundResources": 24
+    }
+   ],
+   "foldedInto": "10.6.1",
+   "note": "duplicate example identity (dup-code suffix \"a\") under \"prove trigonometric relationships\"; strictly rides parent 10.6.1",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "10.6.2",
+   "title": "Prove identity … = 2 cosec θ",
+   "topic": "Trigonometry",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.3.2",
+     "nBoundResources": 24
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.5.4",
+     "nBoundResources": 14
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"… = 2 cosec θ\" ⊆ source 2.3.2 identities incl. cosec²θ ≡ 1 + cot²θ + 1.5.4 proving identities",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "11.3.1",
+   "title": "Permutations/combinations with repetition of objects",
+   "topic": "Permutations and combinations",
+   "subtopic": null,
+   "cls": "GAP",
+   "servedBy": [],
+   "foldedInto": null,
+   "note": "permutations & combinations with repetition sit in 9709 S1; the captured UGM substrate is pure-lines only, zero combinatorics rows",
+   "depthGrade": "INSUFFICIENT"
+  },
+  {
+   "code": "11.3.2",
+   "title": "Permutations with objects arranged in a circle",
+   "topic": "Permutations and combinations",
+   "subtopic": null,
+   "cls": "GAP",
+   "servedBy": [],
+   "foldedInto": null,
+   "note": "circular permutations belong to 9709 S1; pure-lines substrate (P1-P3) has no combinatorics content at all",
+   "depthGrade": "INSUFFICIENT"
+  },
+  {
+   "code": "11.3.3",
+   "title": "Arrangement vs selection boundary cases",
+   "topic": "Permutations and combinations",
+   "subtopic": null,
+   "cls": "GAP",
+   "servedBy": [],
+   "foldedInto": null,
+   "note": "arrangement/selection (permutation vs combination) content sits in 9709 S1; absent from the captured pure-lines substrate",
+   "depthGrade": "INSUFFICIENT"
+  },
+  {
+   "code": "13.3.1",
+   "title": "Vector magnitude, add/subtract, equate like elements",
+   "topic": "Vectors in two dimensions",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.7.2",
+     "nBoundResources": 11
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.7.3",
+     "nBoundResources": 5
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"magnitude, add/subtract vectors, equating like elements\" ⊆ source 3.7.2 \"addition and subtraction… geometrical terms\" + 3.7.3 magnitude/position vectors",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "13.3.2",
+   "title": "Vector geometry problems, more complex cases",
+   "topic": "Vectors in two dimensions",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.7.2",
+     "nBoundResources": 11
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.7.3",
+     "nBoundResources": 5
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"problems using vector geometry… more complex cases\" beyond source 3.7.2/3.7.3 operation interpretation; 9709 P3 focus is 3D lines",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "14.2.2",
+   "title": "Notations f′(x), f″(x), dy/dx",
+   "topic": "Calculus",
+   "subtopic": null,
+   "cls": "DIRECT_THIN",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.7.1",
+     "nBoundResources": 5
+    }
+   ],
+   "foldedInto": null,
+   "note": "target notations f′(x), f″(x), dy/dx ⊆ source 1.7.1 \"use the notations dy/dx, f′(x), f″(x)\"; thin: 5 rows, high 2/5",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "14.3.2",
+   "title": "Derivatives incl. composites: differentiate (3x+4)³",
+   "topic": "Calculus",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.7.2",
+     "nBoundResources": 39
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"differentiate (3x + 4)³\" ⊆ source 1.7.2 \"composite functions using the chain rule\"; 39 rows, high 27",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "14.3.3",
+   "title": "Derivatives of sin/cos/tan, radians",
+   "topic": "Calculus",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.4.1",
+     "nBoundResources": 13
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.7.2",
+     "nBoundResources": 39
+    }
+   ],
+   "foldedInto": null,
+   "note": "target trig derivatives (radians) ⊆ source 2.4.1 \"derivatives of e^x, ln x, sin x, cos x, tan x… composites\"; 1.7.2 polynomial support",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "14.11.1",
+   "title": "Integrate powers of x incl. 1/(ax+b), arbitrary constant",
+   "topic": "Calculus",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.5.1",
+     "nBoundResources": 10
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.5.1",
+     "nBoundResources": 9
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"integrate sums of powers of x including 1/(ax+b), arbitrary constant\" ⊆ source 3.5.1/2.5.1 \"reverse differentiation… 1/(ax+b)\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "14.12.1",
+   "title": "Integrate (ax+b)ⁿ any rational n incl. n = –1",
+   "topic": "Calculus",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.5.1",
+     "nBoundResources": 10
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.5.1",
+     "nBoundResources": 9
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.8.1",
+     "nBoundResources": 2
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"(ax+b)ⁿ for any rational n, includes n = –1\" = source 1.8.1 \"(ax+b)ⁿ for any rational n except –1\" + 2.5.1/3.5.1 \"1/(ax+b)\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "14.12.2",
+   "title": "Integrate sin(ax+b)",
+   "topic": "Calculus",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.5.1",
+     "nBoundResources": 10
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.5.1",
+     "nBoundResources": 9
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"sin(ax+b)\" ⊆ source 2.5.1/3.5.1 \"integration of… sin(ax+b)\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "14.12.3",
+   "title": "Integrate cos(ax+b)",
+   "topic": "Calculus",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.5.1",
+     "nBoundResources": 10
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.5.1",
+     "nBoundResources": 9
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"cos(ax+b)\" ⊆ source 2.5.1/3.5.1 \"integration of… cos(ax+b)\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "14.12.4",
+   "title": "Integrate sec²(ax+b)",
+   "topic": "Calculus",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.5.1",
+     "nBoundResources": 10
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.5.1",
+     "nBoundResources": 9
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"sec²(ax+b)\" (parsed \"sec (ax+b)\") ⊆ source 2.5.1/3.5.1 \"integration of… sec²(ax+b)\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "14.12.5",
+   "title": "Integrate e^(ax+b)",
+   "topic": "Calculus",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-3",
+     "code": "3.5.1",
+     "nBoundResources": 10
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-2",
+     "code": "2.5.1",
+     "nBoundResources": 9
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"e^(ax+b)\" (parsed \"e\") ⊆ source 2.5.1/3.5.1 \"integration of e^(ax+b)\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "14.13.1",
+   "title": "Area between a line and a curve",
+   "topic": "Calculus",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.8.4",
+     "nBoundResources": 12
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"area between a line and a curve\" ⊆ source 1.8.4 \"area of a region… between a curve and a line\"; 12 rows",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "14.13.2",
+   "title": "Area between two curves",
+   "topic": "Calculus",
+   "subtopic": null,
+   "cls": "DIRECT",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.8.4",
+     "nBoundResources": 12
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"between two curves\" = source 1.8.4 verbatim \"…or between two curves\"",
+   "depthGrade": "SERVES"
+  },
+  {
+   "code": "14.13.3",
+   "title": "Area as a sum of two areas",
+   "topic": "Calculus",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.8.4",
+     "nBoundResources": 12
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.8.3",
+     "nBoundResources": 10
+    }
+   ],
+   "foldedInto": null,
+   "note": "target \"a sum of two areas\" spans 1.8.4 bounded regions + 1.8.3 definite integral evaluation; sum-of-areas regions not verbatim in source",
+   "depthGrade": "SERVES_WITH_GUARD"
+  },
+  {
+   "code": "14.15.3",
+   "title": "Sketch displacement/velocity/speed/acceleration–time graphs",
+   "topic": "Calculus",
+   "subtopic": null,
+   "cls": "PARTIAL",
+   "servedBy": [
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.7.3",
+     "nBoundResources": 29
+    },
+    {
+     "course": "cie-a-level-maths-20-pure-1",
+     "code": "1.7.4",
+     "nBoundResources": 38
+    }
+   ],
+   "foldedInto": null,
+   "note": "target kinematics graphs (displacement/velocity/speed/acceleration–time) ⊃ source 1.7.3 \"rates of change\" + 1.7.4 sketching; kinematics framing is 9709 M1, absent from pure substrate",
+   "depthGrade": "SERVES_WITH_GUARD"
+  }
+ ],
+ "keyFindings": [
+  "54 of 77 points are DIRECT re-serves — 0606 is, by and large, the same pure mathematics the A-level corpus already serves, at lower demand",
+  "16 SERVES_WITH_GUARD, the largest guard families being modulus equations/inequalities (4.1-4.5), circle-circle intersection (8.4.x), sum-of-areas integration (14.13.x) and 2D vector geometry (13.3.x) — served with disclosure, not refused",
+  "3 honest gaps = the whole Permutations & combinations subtopic (11.3.1/2/3): counting theory sits in 9709 S1 and the captured UGM substrate is pure-lines only (verified: the only 'combination' in source titles is 1.2.5 function transformations)",
+  "1 folded row: 10.6.1a rides parent 10.6.1 per the native dup-code fold law (spine of record carries it as a synthetic suffix point)",
+  "the 18 zero-row source points (pure-1 fold trio; pure-3 3.3.2/3.5.4/3.7.7 and the 3.8.x/3.9.x complex-numbers + differential-equations block) matched NO target point — 0606 carries no complex-number or DE content"
+ ],
+ "disclosures": [
+  "62/77 target titles carry PDF column-bleed signatures of record (measured as titles <25 chars or not sentence-initial; e.g. 4.1.4 captured as '| ax + bx + c | = d' with lost superscripts, 10.5.3 as '5 sin 3'); codes and topic/subtopic structure are clean of record; adjudication proceeded on codes + subtopic context with a conservative bias to GUARD where scope was uncertain",
+  "row evidence predates and is independent of the IAL mirrors — no mirror-derived depthGrades entered this matrix",
+  "subagent adjudication was operator-ordered delegation (trace 1a19299d29df9705); its one pre-write correction of record: source point 3.1.4 (factor/remainder theorem) lives in pure-3, not pure-2 — caught by the (course, code) validity assertion"
+ ],
+ "surfaces": {
+  "targetCourse": "apps/hub/content/cie-igcse-further-maths-additional-maths-25/ of record (curriculum.json 126 nodes; NO ugm-resources.json yet)",
+  "targetSpine": "apps/hub/spines/cie-igcse-further-maths-additional-maths-25.json",
+  "sourceBundles": [
+   "apps/hub/content/cie-a-level-maths-20-pure-1/ugm-resources.json",
+   "apps/hub/content/cie-a-level-maths-20-pure-2/ugm-resources.json",
+   "apps/hub/content/cie-a-level-maths-20-pure-3/ugm-resources.json"
+  ],
+  "flags": "apps/hub/content/flags.json (ugmLaneResources.courses — 9 planes of record, 0606 not yet flagged)"
+ },
+ "buildShape": "run-002 (pending operator commission): the X-lane mirror vehicle per T-UGM-XBOARD-IAL-1 — cie-igcse-further-maths-additional-maths-25/ugm-resources.json with per-row servedFromCourse/textOfRecordUnder provenance into the pure-1/2/3 bundles, depthGrade per this matrix, INSUFFICIENT -> null pick + zero rows (honest-gap law), schema 1.2, flags.ugmLaneResources.courses += the 0606 slug, ugm.bundle.test.ts point pins",
+ "delegation": {
+  "mode": "operator-ordered delegate (trace 1a19299d29df9705)",
+  "adjudication": "subagent agent-15050e23 (general-purpose, local-data-only brief, no network)",
+  "deskVerification": "independent re-assertion (a)-(e) + 14-row spot-read, all pass"
+ },
+ "reviewState": {
+  "state": "SUGGESTED",
+  "note": "Agent-generated per AGENT.md rule 2"
+ },
+ "generatedUtc": "2026-10-31T16:06:38Z",
+ "verdict": "FEASIBLE (cross-plane re-serve with per-row adjudication) — 74/77 served (58 SERVES + 16 SERVES_WITH_GUARD, incl. 1 folded), 3 honest gaps (Permutations & combinations -> 9709 S1) disclosed at 3.9%; run-002 mirror build ready for operator commission"
+}

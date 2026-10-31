@@ -656,3 +656,20 @@ Work Log:
 Stage Summary:
 - Plane of record: 2021ec4730bf1c83 -> 801474a740be6546 (official-papers.json single-file write behind the 13-gate battery); zero corpus/DB bytes from this side.
 - Residual open: tranche-2 = 76 remaining convertible parts + the 31-mention class census; corpus rider discharge on the next converter run (operator-gated); ledger finding: 2021-06 02 7-b pre-existing glue sentence left as-is; PAT rotation standing order (CRITICAL-OVERDUE, unchanged); FLEET formula-sheet fence ruling (operator).
+
+
+## T-UGM-0606-1 run-001 — 0606 Add Maths feasibility (operator trace 1a19299d29df9705)
+
+Agent: main (Z.ai, session web-6e44932a, chat 80480363)
+Task: "Delegate 0606 Add Maths feasibility run" — adjudicate the cie-igcse-further-maths-additional-maths-25 spec of record (0606 2025-2027, 77 SPEC_POINTs) against the 9709 pure UGM substrate of record, point by point.
+
+Work Log:
+- Recon of record: the 0606 plane exists (curriculum 126 nodes / 77 SPEC_POINTs + official spine with parse-repair provenance) and carries NO ugm-resources.json — un-integrated. Substrate of record = the three native UGM bundles: 93 source spec points, 817 row bindings, 18 zero-row source points (incl. the whole pure-3 complex/DE block).
+- Adjudication (operator-ordered delegation, local-data-only subagent, X-lane law): DIRECT 54 / PARTIAL 16 / DIRECT_THIN 3 / FOLDED_INTO 1 / GAP 3 -> 58 SERVES + 16 SERVES_WITH_GUARD + 3 INSUFFICIENT = 74/77 served (gap share 3.9%).
+- Desk verification of record: independent re-assertion (coverage set-equality, source-code + nBoundResources fidelity, mechanical grade map, fold inheritance, aggregate arithmetic) ALL PASS + 14-row spot-read. Subagent's own pre-write catch: 3.1.4 lives in pure-3, not pure-2. Desk's own correction: its first fold assertion conflated target/source code namespaces (foldedInto is target-namespace) — fixed, then all pass.
+- Honest gaps of record: 11.3.1/11.3.2/11.3.3 — the entire Permutations & combinations subtopic sits in 9709 S1; the captured substrate is pure-lines only (the sole 'combination' in source titles = 1.2.5 function transformations, verified). INSUFFICIENT -> null pick + zero rows per the honest-gap law.
+- Disclosures of record: 62/77 target titles carry PDF column-bleed signatures (capture-of-record condition; codes + topic structure clean; uncertain scope biased to GUARD); 10.6.1a is a synthetic dup-code suffix folded into 10.6.1; row evidence predates and is independent of the IAL mirrors.
+
+Stage Summary:
+- **VERDICT: FEASIBLE (cross-plane re-serve with per-row adjudication). Run-002 mirror build (X-lane vehicle: per-row servedFromCourse/textOfRecordUnder provenance + depthGrade + honest-gap zeros + flags + bundle tests) ready for operator commission.**
+- Receipt of record: .syllabai/receipts/T-UGM-0606-1/run-001-feasibility-r0.json (77-row matrix embedded).
