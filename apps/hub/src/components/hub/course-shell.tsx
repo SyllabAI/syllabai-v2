@@ -835,7 +835,12 @@ export function CourseShell({
             )}
           </div>
 
-          <div className={cn("min-h-0 flex-1 overflow-y-auto pb-6", sidebarOpen ? "px-3" : "px-1")}>
+          {/* run-011: scrollbar-none — the references' sidebar scroll
+              affordance (RD's aside scroller and MG's nav scroller both ship
+              scrollbar-none + overflow-y-auto). Wheel/touch/keyboard scroll
+              preserved; the bar itself suppressed — one scroller serves all
+              three shapes (expanded, 44px rail, run-009 float). */}
+          <div className={cn("scrollbar-none min-h-0 flex-1 overflow-y-auto pb-6", sidebarOpen ? "px-3" : "px-1")}>
             <CourseNav navGroups={navGroups} pathname={pathname} onNavigate={() => setOpen(false)} collapsed={!sidebarOpen} />
           </div>
 
@@ -921,7 +926,8 @@ function MobileDrawerInner({
           <X className="size-4" aria-hidden />
         </Button>
       </div>
-      <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-6">
+      {/* run-011: RD's mobile drawer ships scrollbar-none too. */}
+      <div className="scrollbar-none min-h-0 flex-1 overflow-y-auto px-3 pb-6">
         <CourseNav navGroups={navGroups} pathname={pathname} onNavigate={onNavigate} />
 
         {/* resource-flavoured topic tree (mobile navigation). Papers are
