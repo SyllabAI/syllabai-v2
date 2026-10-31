@@ -6,8 +6,8 @@ task:
   owner: Super Z (zai-web session web-5e612468-7ecd-499d-8b14-7c05e8412405, chat 97a19c8c-d041-4ae2-9754-07fef634fc42,
     dispatch trace 1a19340982b7ffa9)
   status: 'IN_PROGRESS # commissioned ''accept all'' 2026-11-01 (rulings below); run-001 (contracts + migration)
-    dispatched — PR pending; run-002 api lane next; DB apply of 0020 awaits operator DATABASE_URL (T-SENECA-001
-    precedent)'
+    MERGED via PR #580 @ b8871ca; run-002 (api lane) THIS BRANCH — PR of record; DB apply of 0020/0021 on a
+    Neon BRANCH awaits the operator (T-SENECA-001 precedent)'
   priority: P1
   band: T-TEACHME (student learn-by-teaching lane)
   wave: teachme-phase-A
@@ -94,6 +94,8 @@ task:
     XP/streak integration IF the operator wants a reward loop (the original grants none — XP/energy/streak unchanged
     across a full session).
 
+    run-002 (2026-11-01, this branch, PR of record): API lane landed on the run-001 seam. Branch t-teachme-1/run-002 @ b8871ca (origin/main after the PR #580 merge). Files: apps/api/src/teach-me/** (config = the ONE constants object Q4/Q5; service = D1–D4 law pure; sql.ts = the real store over the house SqlFn seam; prompts.ts byte-exact-embedded from the pinned .md files; routes = HTTP mapping only), migration 0021_teach-messages.sql (teach_messages + teach_review_cards + the RECEIPTED re-scope of teach_candidates_open_idx to (session_id) — the 0020 global form would have failed the second session ever to reach review; change control per the 0020 header''s own disclosure law), rebaseline pins 93/875/126/94/165 (0 drifts), behavioural gate suite apps/api/test/teach-me/** (21 tests, T-MIG-039 fixture replay, no live LLM, no Neon). Gates first-hand: typecheck 0 errors (5 packages), bun test 3227 pass / 0 fail. Out-of-fence: apps/api/src/index.ts one-mount wiring in a separate disclosed commit. D4 physical mapping of record: evidence row = the coverage ledger append; the 7-day repeat-credit dedupe materialises in teach_sessions.flags.evidenceCredits[] {specPointId, objectiveId, messageSeq, credited, kind TEACH_SESSION, tier AI_SUGGESTED}.
+
     '
   open_questions: 'Q1 persona/feature name (working: Teach-Me / the Pupil) and whether a mascot exists (the original''s
     Baby Genie is load-bearing for the fiction; SyllabAI has none today). Q2 evidence class sign-off: TEACH_SESSION
@@ -125,21 +127,5 @@ rulings: 'Q1: feature name "Teach-Me"; pupil character "the Pupil" (simple avata
   is data not code); rollout is gated per course by content prerequisites — Wave 0 = 4CH1 pilot (igcse-chemistry-19),
   Wave 1 = courses passing the content gate (spec tree + indexed notes corpus + question-bank links), Wave 2 = all
   subjects. See TEACH_ME_PLAN.md §1.
-
-  '
-base:
-  repo: syllabai-v2 @ origin/main (branch t-teachme-1/run-001 — house run-NN law; the draft's t-teachme-1/commission
-    name is superseded)
-basis: 'Operator IM commission (chat 97a19c8c-d041-4ae2-9754-07fef634fc42, 2026-10-31): "I am thinking of adding
-  a feature to SyllabAI. Basically it is the TeachGenie feature from mathsgenie, or the TeachJojo feature from revisiondojo.
-  Analyze this feature." followed by the operator-provided MathsGenie login (email code flow, session trace 1a19307ea51e257d)
-  and "draft the task file" (trace 1a193129cb95eb3d). Feature analysis built on: (a) the operator''s own MathsGenie
-  reverse-engineering repo (research/ 08-alevel-lessons-teachgenie.md, research/features/06-ask-genie.md, research/features/
-  10-member-area.md — auth wall + Energy/XP economy documented there, Teach Genie flow shape captured pre-login);
-  (b) RevisionDojo Teach Jojo public page (≤5 syllabus sub-topics, objectives tick one by one, mastery tracking
-  across sessions — the cross-session coverage overlay is their retention hook); (c) the live probe of record in
-  research above. House conventions honoured: lib/courses.ts honest-absent law, static-params prerender, hub-coursepage
-  card anatomy, AGENT_COORDINATION merge order, receipts + append-only worklog, $0/no-card hosting doctrine (ADR-035/F-188
-  lineage).
 
   '

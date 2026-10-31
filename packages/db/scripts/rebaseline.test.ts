@@ -305,23 +305,33 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // reads), teach_objectives (7), teach_objective_coverages (9, the append-
   // only ledger — its law lives in the 0020 trigger, not the index count),
   // teach_misconception_candidates (10, incl. the partial-open unique index)
-  // on top of the INK-4 baseline -> 91/864/124/92/163 (measured: rebaseline.ts
-  // verify PASS, 0 drifts, on the union end-state).
-  test("91/864/124/92/163 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // on top of the INK-4 baseline -> 91/864/124/92/163.
+  // T-TEACHME-001 run-002 (0021_teach-messages, plan §6): the API lane adds
+  // teach_messages (7 cols, 1 index, 1 fk, 2 checks — the transcript plane,
+  // the judge's {{TRANSCRIPT}} ground) and teach_review_cards (4 cols, 1
+  // unique index, 1 fk — the ReviewCard of record), and re-scopes
+  // teach_candidates_open_idx to (session_id) under receipted change control
+  // (one open candidate per SESSION — the 0020 global form would have failed
+  // the second session ever to reach review) on top of the run-001 baseline
+  // -> 93/875/126/94/165 (measured: rebaseline.ts verify PASS, 0 drifts, on
+  // the union end-state).
+  test("93/875/126/94/165 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 91/91");
-    expect(v.inventory).toContain("columns 864");
-    expect(v.inventory).toContain("indexes 124");
-    expect(v.inventory).toContain("fks 92");
-    expect(v.inventory).toContain("checks 163");
+    expect(v.inventory).toContain("tables 93/93");
+    expect(v.inventory).toContain("columns 875");
+    expect(v.inventory).toContain("indexes 126");
+    expect(v.inventory).toContain("fks 94");
+    expect(v.inventory).toContain("checks 165");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(91);
+    expect(run.size).toBe(93);
     expect(run.has("public.teach_sessions")).toBe(true); // T-TEACHME-001 — the learn-by-teaching lane
+    expect(run.has("public.teach_messages")).toBe(true); // T-TEACHME-001 run-002 — the transcript plane
+    expect(run.has("public.teach_review_cards")).toBe(true); // T-TEACHME-001 run-002 — the ReviewCard of record
     expect(run.has("public.mark_bands")).toBe(true); // ADR-040 — the levels analog of mark_points
     expect(run.has("public.mark_point_rects")).toBe(true); // T-MG-MP-RECT-1 — the geometry plane on the definition join
     expect(run.has("public.mark_awards")).toBe(true); // T-MG-AWARDS-1 — the award plane (per-award ledger, the DC-7 claim)

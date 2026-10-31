@@ -2067,7 +2067,8 @@ export const teachMisconceptionCandidates = pgTable("teach_misconception_candida
         createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
 }, (table) => [
         index("teach_candidates_session_idx").on(table.sessionId),
-        uniqueIndex("teach_candidates_open_idx").on(table.status).where(sql`status = 'candidate'`),
+        // re-scoped by 0021 (run-002 change control): one open candidate per SESSION, not globally
+        uniqueIndex("teach_candidates_open_idx").on(table.sessionId).where(sql`status = 'candidate'`),
         foreignKey({
                 columns: [table.sessionId],
                 foreignColumns: [teachSessions.id],
@@ -2075,4 +2076,36 @@ export const teachMisconceptionCandidates = pgTable("teach_misconception_candida
         }),
         check("teach_candidates_confidence_check", sql`confidence >= 0 AND confidence <= 1`),
         check("teach_candidates_status_check", sql`status IN ('candidate','ratified','rejected')`),
+]);
+
+export const teachMessages = pgTable("teach_messages", {
+        id: uuid().primaryKey().notNull(),
+        sessionId: uuid("session_id").notNull(),
+        seq: integer().notNull(), // per-session running message ordinal (both roles)
+        role: text().notNull(), // app-supplied ('student'|'pupil')
+        kind: text(), // app-supplied (opening|paraphrase_probe|clarify_nudge|confusion); null for student rows
+        text: text().notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        index("teach_messages_session_seq_idx").on(table.sessionId, table.seq),
+        foreignKey({
+                columns: [table.sessionId],
+                foreignColumns: [teachSessions.id],
+                name: "teach_messages_session_id_fkey"
+        }),
+        check("teach_messages_role_check", sql`role IN ('student','pupil')`),
+        check("teach_messages_kind_check", sql`kind IN ('opening','paraphrase_probe','clarify_nudge','confusion')`),
+]);
+export const teachReviewCards = pgTable("teach_review_cards", {
+        id: uuid().primaryKey().notNull(),
+        sessionId: uuid("session_id").notNull(),
+        card: jsonb().notNull(), // the ReviewCard of record (run-002 service validates before insert)
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        uniqueIndex("teach_review_cards_session_idx").on(table.sessionId),
+        foreignKey({
+                columns: [table.sessionId],
+                foreignColumns: [teachSessions.id],
+                name: "teach_review_cards_session_id_fkey"
+        }),
 ]);
