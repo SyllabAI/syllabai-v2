@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_qb9TBhB6VmnFGjvf",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "95ed3e3d157f83a3efad1ce6ab47b9ff0467c5937b19cd16dca6e24f052354d2",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "6eeafba2ad4df1210c6f5057390ffda7f031d81bfd235ad11cf7fb0854910842",
+    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
   },
   "packageId": "igcse-chemistry::rn_qb9TBhB6VmnFGjvf",
   "subject": "igcse-chemistry",
@@ -192,6 +192,68 @@
       ]
     },
     {
+      "id": "rn_qb9TBhB6VmnFGjvf::L1::Q6",
+      "moduleId": "rn_qb9TBhB6VmnFGjvf::L1",
+      "stem": "State what happens to the two pairs of ions when the soluble reactant salts meet in a precipitation reaction.",
+      "misconceptionClass": "partner-swap recall",
+      "kind": "recall",
+      "modelAnswer": "The two soluble salts swap partners: each metal ion pairs with the other non-metal ion, forming the insoluble salt plus a third soluble salt.",
+      "keywords": [
+        "swap",
+        "swaps",
+        "swapped",
+        "exchange",
+        "exchanged"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qb9TBhB6VmnFGjvf::L1::Q7",
+      "moduleId": "rn_qb9TBhB6VmnFGjvf::L1",
+      "stem": "State the other name chemists give to this partner-swapping type of reaction.",
+      "misconceptionClass": "double decomposition recall",
+      "kind": "recall",
+      "modelAnswer": "The reaction is also called double decomposition.",
+      "keywords": [
+        "double",
+        "decomposition",
+        "decompose"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qb9TBhB6VmnFGjvf::L1::Q8",
+      "moduleId": "rn_qb9TBhB6VmnFGjvf::L1",
+      "stem": "Explain why a soluble product would defeat this preparation method entirely.",
+      "misconceptionClass": "soluble-product defeat explain",
+      "kind": "explain-why",
+      "modelAnswer": "If the product salt were soluble it would stay dissolved in the solution instead of falling out as a solid, so no precipitate could form, be filtered or be collected.",
+      "keywords": [
+        "dissolved",
+        "solution",
+        "stays",
+        "remains",
+        "filtered",
+        "solid"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qb9TBhB6VmnFGjvf::L1::Q9",
+      "moduleId": "rn_qb9TBhB6VmnFGjvf::L1",
+      "stem": "Silver nitrate solution is mixed with sodium chloride solution. Write the pattern equation and name the solid product.",
+      "misconceptionClass": "pattern-equation application",
+      "kind": "application",
+      "modelAnswer": "AgNO3 + NaCl giving AgCl + NaNO3; the white precipitate is silver chloride.",
+      "keywords": [
+        "agcl",
+        "nacl",
+        "nano3",
+        "white"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_qb9TBhB6VmnFGjvf::L2::Q1",
       "moduleId": "rn_qb9TBhB6VmnFGjvf::L2",
       "stem": "Why is the second solution added in slight excess?",
@@ -370,6 +432,70 @@
           "misconception": "literal misreading"
         }
       ]
+    },
+    {
+      "id": "rn_qb9TBhB6VmnFGjvf::L2::Q6",
+      "moduleId": "rn_qb9TBhB6VmnFGjvf::L2",
+      "stem": "State how much of the second solution is added and when the addition is stopped.",
+      "misconceptionClass": "slight-excess endpoint recall",
+      "kind": "recall",
+      "modelAnswer": "The second solution is added until it sits in slight excess, a little beyond the amount needed to react.",
+      "keywords": [
+        "slight",
+        "excess",
+        "beyond",
+        "stops",
+        "until"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qb9TBhB6VmnFGjvf::L2::Q7",
+      "moduleId": "rn_qb9TBhB6VmnFGjvf::L2",
+      "stem": "State the liquid used to wash the collected precipitate and what that wash removes.",
+      "misconceptionClass": "wash purpose recall",
+      "kind": "recall",
+      "modelAnswer": "Distilled water washes away traces of the reactant solutions that are contaminating the residue.",
+      "keywords": [
+        "distilled",
+        "traces",
+        "contaminating",
+        "residue",
+        "pure"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qb9TBhB6VmnFGjvf::L2::Q8",
+      "moduleId": "rn_qb9TBhB6VmnFGjvf::L2",
+      "stem": "Explain why a slight excess of the second solution guarantees the greatest possible amount of precipitate.",
+      "misconceptionClass": "maximum yield explain",
+      "kind": "explain-why",
+      "modelAnswer": "With the second solution in slight excess, every limiting ion from the first solution finds a partner to react with, so the largest possible amount of insoluble salt forms.",
+      "keywords": [
+        "limiting",
+        "every",
+        "largest",
+        "partner",
+        "fully"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qb9TBhB6VmnFGjvf::L2::Q9",
+      "moduleId": "rn_qb9TBhB6VmnFGjvf::L2",
+      "stem": "A student adds the second solution drop by drop until no more solid appears, then adds five further drops. Comment on this approach.",
+      "misconceptionClass": "slight-excess procedure application",
+      "kind": "application",
+      "modelAnswer": "That is exactly the slight-excess method: stopping once no more precipitate forms and then adding a little more ensures the maximum precipitate without a wasteful large surplus.",
+      "keywords": [
+        "excess",
+        "maximum",
+        "ensures",
+        "slight",
+        "surplus"
+      ],
+      "options": []
     }
   ]
 }

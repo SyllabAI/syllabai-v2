@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_vVdP57QhDYSVfZgy",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4327a83a516d75321b84d492da0a5239c1fd0b12f3c90ed1854610ede5291b10",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "44380407b7fce67a947cccf79453afd479587db4aed3766d4beba02636b19879",
+    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
   },
   "packageId": "igcse-chemistry::rn_vVdP57QhDYSVfZgy",
   "subject": "igcse-chemistry",
@@ -192,6 +192,67 @@
       ]
     },
     {
+      "id": "rn_vVdP57QhDYSVfZgy::L1::Q6",
+      "moduleId": "rn_vVdP57QhDYSVfZgy::L1",
+      "stem": "Name the two metals commonly used for the flame-test loop.",
+      "misconceptionClass": "loop wire recall",
+      "kind": "recall",
+      "modelAnswer": "The loop is made from an unreactive metal wire, commonly nichrome or platinum.",
+      "keywords": [
+        "nichrome",
+        "platinum",
+        "unreactive"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vVdP57QhDYSVfZgy::L1::Q7",
+      "moduleId": "rn_vVdP57QhDYSVfZgy::L1",
+      "stem": "Describe how the loop is cleaned before the sample is picked up.",
+      "misconceptionClass": "cleaning step recall",
+      "kind": "recall",
+      "modelAnswer": "The wire is dipped in dilute acid and held in the blue flame until no colour shows.",
+      "keywords": [
+        "dilute",
+        "acid",
+        "until",
+        "colour"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vVdP57QhDYSVfZgy::L1::Q8",
+      "moduleId": "rn_vVdP57QhDYSVfZgy::L1",
+      "stem": "Explain the consequence of skipping the acid-cleaning step before a flame test.",
+      "misconceptionClass": "contamination consequence explain",
+      "kind": "explain-why",
+      "modelAnswer": "Leftover ions on the wire from earlier samples would add their own flame colours and mask the true result, so the cation could be misidentified.",
+      "keywords": [
+        "leftover",
+        "mask",
+        "masks",
+        "contaminate",
+        "false"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vVdP57QhDYSVfZgy::L1::Q9",
+      "moduleId": "rn_vVdP57QhDYSVfZgy::L1",
+      "stem": "A student holds the sample deep inside the blue cone rather than where the method says. Suggest why the observation may be poor.",
+      "misconceptionClass": "flame position application",
+      "kind": "application",
+      "modelAnswer": "The colour develops best at the edge of the hot blue flame; buried in the cone the sample may not paint the flame clearly, so the reading is hard to take.",
+      "keywords": [
+        "edge",
+        "develops",
+        "clearly",
+        "hot",
+        "read"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_vVdP57QhDYSVfZgy::L2::Q1",
       "moduleId": "rn_vVdP57QhDYSVfZgy::L2",
       "stem": "Which cation gives a lilac flame?",
@@ -370,6 +431,66 @@
           "misconception": "physics fiction"
         }
       ]
+    },
+    {
+      "id": "rn_vVdP57QhDYSVfZgy::L2::Q6",
+      "moduleId": "rn_vVdP57QhDYSVfZgy::L2",
+      "stem": "State the flame colour shown by lithium ions.",
+      "misconceptionClass": "lithium colour recall",
+      "kind": "recall",
+      "modelAnswer": "Lithium ions colour the flame red.",
+      "keywords": [
+        "red",
+        "crimson"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vVdP57QhDYSVfZgy::L2::Q7",
+      "moduleId": "rn_vVdP57QhDYSVfZgy::L2",
+      "stem": "State the flame colour of calcium ions and name one other flame colour it is easily mistaken for.",
+      "misconceptionClass": "colour-pair confusion recall",
+      "kind": "recall",
+      "modelAnswer": "Calcium ions give an orange-red flame, a colour easily confused with sodium's yellow or lithium's red.",
+      "keywords": [
+        "yellow",
+        "confused",
+        "confusion",
+        "red"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vVdP57QhDYSVfZgy::L2::Q8",
+      "moduleId": "rn_vVdP57QhDYSVfZgy::L2",
+      "stem": "Explain why the flame colours of potassium and of copper(II) must be reported precisely and never blurred together.",
+      "misconceptionClass": "precise colour explain",
+      "kind": "explain-why",
+      "modelAnswer": "Lilac is the flame colour of potassium ions while blue-green belongs to copper(II) ions; blurring the two would misreport the cation, and the precise colour is required for the mark.",
+      "keywords": [
+        "lilac",
+        "blue",
+        "green",
+        "precise",
+        "misreport"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vVdP57QhDYSVfZgy::L2::Q9",
+      "moduleId": "rn_vVdP57QhDYSVfZgy::L2",
+      "stem": "A flame test on an unknown sample gives a strong yellow colour. Name the cation and state the step that guards against a false reading.",
+      "misconceptionClass": "yellow identification application",
+      "kind": "application",
+      "modelAnswer": "Yellow shows sodium ions; the loop must be cleaned in dilute acid and burned clean first so leftover sodium traces cannot colour the flame.",
+      "keywords": [
+        "sodium",
+        "na",
+        "clean",
+        "traces",
+        "leftover"
+      ],
+      "options": []
     }
   ]
 }

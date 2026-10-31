@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_6ZCysv9GnNQmc3w2",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7fa9c7a29b9c95e3ec980a4191b469d1a5a26e206d3a82509aaeba979f9293ca",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "be3feb3b3f3b5cf73ca14234ff9479288bdb9741fd7785d33e9eb328db5404d2",
+    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
   },
   "packageId": "igcse-chemistry::rn_6ZCysv9GnNQmc3w2",
   "subject": "igcse-chemistry",
@@ -192,6 +192,72 @@
       ]
     },
     {
+      "id": "rn_6ZCysv9GnNQmc3w2::L1::Q6",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L1",
+      "stem": "Name the separation technique used to remove undissolved solid from the salt solution.",
+      "misconceptionClass": "filtration step recall",
+      "kind": "recall",
+      "modelAnswer": "Filtration removes the excess (undissolved) base, leaving only the salt and water in solution.",
+      "keywords": [
+        "filtration",
+        "filter",
+        "filtered",
+        "filtering",
+        "residue"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L1::Q7",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L1",
+      "stem": "State the condition that lets larger crystals grow during the final stage of the preparation.",
+      "misconceptionClass": "crystal growth recall",
+      "kind": "recall",
+      "modelAnswer": "Slow evaporation over several days lets larger crystals grow.",
+      "keywords": [
+        "slow",
+        "slowly",
+        "slower",
+        "days",
+        "several"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L1::Q8",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L1",
+      "stem": "Explain the purpose of having some undissolved base left over at the end of the reaction.",
+      "misconceptionClass": "excess-base purpose explain",
+      "kind": "explain-why",
+      "modelAnswer": "Leftover base proves that every trace of acid has reacted, so the solution contains only the salt and water formed.",
+      "keywords": [
+        "acid",
+        "reacted",
+        "reacts",
+        "fully",
+        "completely",
+        "proves"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L1::Q9",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L1",
+      "stem": "During evaporation a student keeps heating until every trace of liquid has disappeared. Predict the consequence for the batch.",
+      "misconceptionClass": "over-heated batch application",
+      "kind": "application",
+      "modelAnswer": "The solution becomes completely dry, so crystals cannot form properly; heating past this stage can also decompose the salt and spoils the batch.",
+      "keywords": [
+        "decompose",
+        "decomposes",
+        "spoiled",
+        "spoils",
+        "properly",
+        "cannot"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_6ZCysv9GnNQmc3w2::L2::Q1",
       "moduleId": "rn_6ZCysv9GnNQmc3w2::L2",
       "stem": "Which reagents make copper(II) sulfate by this method?",
@@ -370,6 +436,74 @@
           "misconception": "contradicts the method"
         }
       ]
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L2::Q6",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L2",
+      "stem": "Name the two reagents used to prepare copper(II) sulfate by the insoluble-base method.",
+      "misconceptionClass": "reagent pair recall",
+      "kind": "recall",
+      "modelAnswer": "Copper(II) oxide is warmed with dilute sulfuric acid to make copper(II) sulfate.",
+      "keywords": [
+        "oxide",
+        "sulfuric",
+        "warm",
+        "warmed",
+        "warming",
+        "black"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L2::Q7",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L2",
+      "stem": "State the observation when a carbonate base reacts with dilute acid.",
+      "misconceptionClass": "carbonate observation recall",
+      "kind": "recall",
+      "modelAnswer": "The mixture fizzes as bubbles of carbon dioxide gas are released into the air.",
+      "keywords": [
+        "fizz",
+        "fizzing",
+        "fizzes",
+        "effervescence",
+        "bubbles",
+        "carbon",
+        "dioxide"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L2::Q8",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L2",
+      "stem": "Explain why unreacted acid must not remain in the copper sulfate solution while it evaporates.",
+      "misconceptionClass": "concentrating acid explain",
+      "kind": "explain-why",
+      "modelAnswer": "As the water evaporates the leftover acid becomes more and more concentrated, which is dangerous and would contaminate the crystals formed.",
+      "keywords": [
+        "concentrated",
+        "concentrates",
+        "dangerous",
+        "danger",
+        "contaminate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L2::Q9",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L2",
+      "stem": "A student has no copper(II) oxide but does have magnesium ribbon. Explain whether the magnesium could be used to make a salt from dilute sulfuric acid.",
+      "misconceptionClass": "metal-instead-of-base application",
+      "kind": "application",
+      "modelAnswer": "Yes - magnesium sits above hydrogen in the reactivity series, so it reacts with the acid to give the soluble salt magnesium sulfate plus hydrogen gas, and the excess metal is filtered off.",
+      "keywords": [
+        "above",
+        "reactivity",
+        "series",
+        "soluble",
+        "filtered",
+        "yes"
+      ],
+      "options": []
     }
   ]
 }

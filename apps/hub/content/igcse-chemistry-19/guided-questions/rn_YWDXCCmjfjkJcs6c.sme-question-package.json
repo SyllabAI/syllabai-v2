@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_YWDXCCmjfjkJcs6c",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "70119e84395e4e4f459780f4c551905f3c1bb0206b26a5b9916b07031f8c800e",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "88fff20a72ef47facc469cabc855b07fbf89b5eeb5384390698c5178069ef610",
+    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
   },
   "packageId": "igcse-chemistry::rn_YWDXCCmjfjkJcs6c",
   "subject": "igcse-chemistry",
@@ -192,6 +192,69 @@
       ]
     },
     {
+      "id": "rn_YWDXCCmjfjkJcs6c::L1::Q6",
+      "moduleId": "rn_YWDXCCmjfjkJcs6c::L1",
+      "stem": "State the colour change of anhydrous copper(II) sulfate when water is added to it.",
+      "misconceptionClass": "cuso4 colour change recall",
+      "kind": "recall",
+      "modelAnswer": "The white anhydrous powder turns blue.",
+      "keywords": [
+        "white",
+        "turns",
+        "powder",
+        "hydrated"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YWDXCCmjfjkJcs6c::L1::Q7",
+      "moduleId": "rn_YWDXCCmjfjkJcs6c::L1",
+      "stem": "Write the equation for anhydrous copper(II) sulfate binding water of crystallisation.",
+      "misconceptionClass": "hydration equation recall",
+      "kind": "recall",
+      "modelAnswer": "CuSO4 + 5H2O giving CuSO4.5H2O - the white salt takes five waters into its structure.",
+      "keywords": [
+        "cuso4",
+        "5h2o",
+        "five",
+        "hydrated",
+        "hydrate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YWDXCCmjfjkJcs6c::L1::Q8",
+      "moduleId": "rn_YWDXCCmjfjkJcs6c::L1",
+      "stem": "Explain why the white and blue forms of copper(II) sulfate count as different substances.",
+      "misconceptionClass": "anhydrous-vs-hydrated explain",
+      "kind": "explain-why",
+      "modelAnswer": "The white powder is the anhydrous salt with no water of crystallisation, while the blue solid is the hydrated salt holding five water molecules per copper sulfate unit, so their structures and formulas differ.",
+      "keywords": [
+        "anhydrous",
+        "hydrated",
+        "holding",
+        "waters",
+        "structures",
+        "formulas"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YWDXCCmjfjkJcs6c::L1::Q9",
+      "moduleId": "rn_YWDXCCmjfjkJcs6c::L1",
+      "stem": "A sealed vial holds either ethanol or pure water. Describe how anhydrous copper(II) sulfate could identify which liquid is water.",
+      "misconceptionClass": "liquid identification application",
+      "kind": "application",
+      "modelAnswer": "Add a little of each liquid to white anhydrous copper(II) sulfate: the sample that turns the powder blue contains water, and the one leaving it white is not water.",
+      "keywords": [
+        "blue",
+        "turns",
+        "hydration",
+        "positive"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_YWDXCCmjfjkJcs6c::L2::Q1",
       "moduleId": "rn_YWDXCCmjfjkJcs6c::L2",
       "stem": "What property identifies pure water in the physical test?",
@@ -370,6 +433,70 @@
           "misconception": "invented condition"
         }
       ]
+    },
+    {
+      "id": "rn_YWDXCCmjfjkJcs6c::L2::Q6",
+      "moduleId": "rn_YWDXCCmjfjkJcs6c::L2",
+      "stem": "State the boiling point of pure water measured at standard pressure.",
+      "misconceptionClass": "pure-water boiling point recall",
+      "kind": "recall",
+      "modelAnswer": "Pure water boils at exactly 100 degrees Celsius.",
+      "keywords": [
+        "100",
+        "hundred",
+        "exactly",
+        "celsius"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YWDXCCmjfjkJcs6c::L2::Q7",
+      "moduleId": "rn_YWDXCCmjfjkJcs6c::L2",
+      "stem": "Name the vessel that holds the sample during the careful heating and the instrument that reads how hot it is.",
+      "misconceptionClass": "apparatus pair recall",
+      "kind": "recall",
+      "modelAnswer": "The sample is heated gently in a boiling tube and its temperature is read with a thermometer.",
+      "keywords": [
+        "boiling",
+        "tube",
+        "thermometer",
+        "gently"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YWDXCCmjfjkJcs6c::L2::Q8",
+      "moduleId": "rn_YWDXCCmjfjkJcs6c::L2",
+      "stem": "Explain why a sample that boils at 102 degrees Celsius is judged not to be pure water.",
+      "misconceptionClass": "elevated boiling point explain",
+      "kind": "explain-why",
+      "modelAnswer": "Dissolved impurities raise the boiling point above the pure value of 100 degrees Celsius, so any reading higher than 100 signals dissolved substances in the sample.",
+      "keywords": [
+        "impurities",
+        "raise",
+        "raises",
+        "higher",
+        "dissolved",
+        "above"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YWDXCCmjfjkJcs6c::L2::Q9",
+      "moduleId": "rn_YWDXCCmjfjkJcs6c::L2",
+      "stem": "A liquid melts at minus 3 degrees Celsius instead of 0. Predict what this shows about the sample and link it to the boiling test.",
+      "misconceptionClass": "depressed melting point application",
+      "kind": "application",
+      "modelAnswer": "The depressed melting point shows dissolved impurities; the same impurities would raise the boiling point above 100 degrees Celsius, so the sample is not pure water.",
+      "keywords": [
+        "impurities",
+        "impure",
+        "depressed",
+        "depresses",
+        "lowered",
+        "raise"
+      ],
+      "options": []
     }
   ]
 }
