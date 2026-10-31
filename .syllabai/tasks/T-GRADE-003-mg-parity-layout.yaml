@@ -64,6 +64,40 @@ task:
     corruption class as the .syllabai/worklog.md duplicate + stray marker
     fixed during the PR #566 race intake; root worklog was missed because it
     auto-merged (single-side modification).
+    RUN-002 (operator eyeball of the LIVE page, trace 1a1935935266dab1:
+    "run-002 on the same lane closing all four — hero trim, chip-wall →
+    subline, meter floor contrast, and variant-row grouping with the
+    highlight fix"): four gaps the operator called against the deployed
+    run-001, all closed in the same lane/branch. (1) HERO TRIM — the
+    grade-boundaries page.tsx drops the CourseHeader description prop
+    entirely (MG's band is breadcrumb + title + spec chip; provenance
+    already lives in the workspace footer; CourseHeader's API unchanged for
+    every other route). (2) CHIP-WALL → SUBLINE — run-001's per-series
+    Badge wall in the linear summary row (and its aggregate twin) collapses
+    to one muted sentence: "Grade {modal} in {k} of {N} sessions — each
+    session's grade is a column in the table below."; the 0/Max baseline
+    labels now render in EVERY mode instead of being displaced by the
+    chips. (3) METER FLOOR — both progressbar tracks and the slider track
+    ride bg-border/60 instead of bg-muted, so the track reads at 0% on
+    every theme. (4) VARIANT-ROW GROUPING + HIGHLIGHT FIX — the linear
+    table groups consecutive same-session corpus rows under ONE rowSpan
+    session cell (hairline rules inside the group, 2px rule at group
+    boundaries; labelled variants keep their Papers chips; sessions the
+    source document publishes without a combination label show an em-dash
+    plus one honest footnote — never invented labels); the achieved-grade
+    column paint and the per-row grade chip wait for real slider
+    interaction (new markTouched presentation flag) instead of painting
+    the lowest grade column wall-to-wall on load. Calc plane untouched:
+    gradeForMark/marksToNextGrade/modalGradeAcrossSeries calls unchanged;
+    markTouched gates presentation only. Local proof: hub tsc 0, eslint 0
+    (both changed files), bun test 26/26, verify:gradeb GREEN, full hub
+    build GREEN; prerendered igcse-chemistry-19/grade-boundaries.html
+    carries the run-002 markers (modal subline, bg-border/60 meter floor,
+    11 rowSpan session cells, honest footnote, zero chip-wall classes,
+    zero hero-description strings); headless standalone screenshots:
+    SME default (quiet page — no column paint), slider at End (grade-9
+    column paints, per-row chip appears, meter full), quiet-green +
+    candy-shop re-skins of the identical DOM.
     Local proof: bun test 26/26 (18 calc + 8 bundle, incl. the committed-
     bundle regression anchors), verify:gradeb GREEN, hub tsc 0, eslint 0 on
     both changed files, full hub build GREEN with 106 grade-boundaries pages

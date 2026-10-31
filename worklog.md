@@ -695,3 +695,14 @@ Stage Summary:
 - Proof of record: bun test 26/26, verify:gradeb GREEN, tsc 0, eslint 0 (both changed files), hub build GREEN (106 gb pages prerendered), 11/11 layout markers in the prerendered physics page, headless-browser screenshots across linear (slider 0 -> max, grade badge U->9, column highlights), IAL aggregate (UMS meter, official-pair pills, unit inputs), Graph tab, and quiet-green + candy-shop re-skins.
 - Hygiene: b3158de8's DUPLICATED run-002 root-worklog entry (stale + updated copies) deduped to the updated one — same corruption family as the .syllabai/worklog.md duplicate fixed during the #566 race intake; root worklog was missed because it auto-merged.
 - Receipt of record: .syllabai/receipts/T-GRADE/T-GRADE-003-RUN001-MG-PARITY.json.
+
+---
+Task ID: T-GRADE-003 (run-002)
+Agent: main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3, chat 14bc199d-dd6a-40d0-afad-c2b58230a956, trace 1a1935935266dab1)
+Task: MathsGenie parity refinements on the live page — hero trim, chip-wall -> subline, meter floor contrast, variant-row grouping + highlight gate (same lane/branch t-gradeb-3/mg-parity-layout)
+
+Stage Summary:
+- Operator order of record: after eyeballing the LIVE run-001 page (deploy-intake lesson: run-001's merge deployment was canceled by Vercel during the #577 window and production briefly served the pre-redesign build; retriggered via 36ebcb1e), the operator named four gaps: "hero trim, chip-wall -> subline, meter floor contrast, and variant-row grouping with the highlight fix".
+- Fixes of record: (1) hero = MG-compact breadcrumb + title + exam-code band (CourseHeader description dropped on this route only, API unchanged elsewhere; provenance stays in the footer); (2) modal chip-wall -> one muted sentence ("Grade X in k of N sessions") with 0/Max baseline labels restored in every mode; (3) meter + slider tracks ride bg-border/60 so the floor reads at 0% on every theme; (4) linear table groups same-session corpus rows under one rowSpan session cell (labelled variants keep their chips, unlabelled pairs get an em-dash + honest footnote — zero invented labels) and the achieved-column paint / per-row chip gate on markTouched so the untouched page stays quiet.
+- Proof of record: tsc 0, eslint 0 (both files), bun test 26/26, verify:gradeb GREEN, hub build GREEN (106 gb pages), run-002 markers present and legacy markers absent in the prerendered chemistry HTML, headless screenshots across SME default/touched + quiet-green + candy-shop.
+- Receipt of record: .syllabai/receipts/T-GRADE/T-GRADE-003-RUN002-MG-PARITY-FIXES.json.

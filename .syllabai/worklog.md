@@ -23364,3 +23364,20 @@ Work Log:
 - Lane state of record: T-MG-INK-4 = spec (run-001, #571, merge ec5949da) + implementation (run-002, #573, merge ee94e77e) + the named candidates discharged (run-003, #577, merge 2d727de4) — the tool-family census is CLOSED: MG parity on Pen / Text box / Math text box / Select / Erase / Line / Ruler / Protractor / Compasses with the same 4 colours × 3 widths + Undo/Redo/Clear all; Browse stays the ink-off toggle posture (the spec's disclosed non-goal). No carded future candidates remain on this lane.
 - next_of: none carded — the lane awaits the operator's word (any further ink work = a new operator-ruled card).
 - Discipline: additive hub ink/crop code + tests + bookkeeping-only .syllabai/**; fetch-first, ff-only, no force; zero DB/Neon/prod contact; token never printed.
+
+---
+
+Task ID: T-GRADE-003 (run-002)
+Agent: main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3, chat 14bc199d-dd6a-40d0-afad-c2b58230a956, trace 1a1935935266dab1)
+Task: MathsGenie parity refinements on the live page — hero trim, chip-wall -> subline, meter floor contrast, variant-row grouping + highlight gate (same lane/branch t-gradeb-3/mg-parity-layout)
+
+Work Log:
+- Operator saw the LIVE page (production had briefly served a stale pre-#575 build: Vercel canceled the 53efeb26 deployment during the #577 window — retriggered via empty commit 36ebcb1e, 7a3ea63f deployment completed 18:53Z) and then ordered run-002 closing four named gaps: "hero trim, chip-wall -> subline, meter floor contrast, and variant-row grouping with the highlight fix".
+- Fix 1 (hero): grade-boundaries page.tsx drops the CourseHeader description prop — the band is MG-compact (breadcrumb + title + exam-code pill); CourseHeader API unchanged for every other route; provenance stays in the workspace footer.
+- Fix 2 (chip-wall): the linear summary row's per-series Badge wall and its aggregate twin collapse to one muted sentence ("Grade {modal} in {k} of {N} sessions — each session's grade is a column in the table below."); the 0/Max baseline labels now render in EVERY mode instead of being displaced by the chips.
+- Fix 3 (meter floor): both progressbar tracks and the slider track ride bg-border/60 (was bg-muted/unset) — legible at 0% on every theme.
+- Fix 4 (grouping + highlight): linear table groups consecutive same-session corpus rows under ONE rowSpan session cell (hairline inside the group, 2px rule at group boundaries); labelled variants keep their Papers chips; sessions the source publishes without a combination label (4CH1 June 2019 / January 2020 pairs) show an em-dash + one honest footnote — zero invented labels; the achieved-grade column paint and per-row grade chip gate on a new markTouched presentation flag (slider onValueChange), so the untouched page no longer paints the lowest grade column wall-to-wall.
+- Laws: token-only (the floor is bg-border/60, the same wash as the box separators; no hex/shadow/per-theme rule); presentation-only (state/memos/calc calls byte-identical to run-001; bundle sha16 9c7bc67671dd31e9 untouched); scope = the two hub files run-001 already owned + ritual files.
+- Local proof: hub tsc 0; eslint 0 (both changed files); bun test 26/26; verify:gradeb GREEN; full hub build GREEN (106 gb pages); prerendered chemistry HTML carries the run-002 markers (subline, bg-border/60 floor, 11 rowSpan cells, footnote; chip-wall class and hero-description string ABSENT); headless standalone screenshots: SME default (quiet), SME slider at End (grade-9 column paints + per-row chip + full meter), quiet-green + candy-shop re-skins of the identical DOM.
+- Receipt: .syllabai/receipts/T-GRADE/T-GRADE-003-RUN002-MG-PARITY-FIXES.json.
+- Discipline: fetch-first; fail-closed; zero-invention (em-dash + footnote for unlabelled variants, never A/B labels); tokens via env only (never argv/URL/logs); ff push no force; race-guard merge-intake; CI bounded poll; receipts .syllabai-only; zero DB/Neon contact.
