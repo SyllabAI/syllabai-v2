@@ -638,3 +638,21 @@ Work Log:
 Stage Summary:
 - Branches of record: resources t-gradeb-1/pipeline (wave-2 commit 009e8bf4 advanced onto the OPEN PR #257 branch), hub t-gradeb-2/hub-aggregation (this commit — NEW branch cut from moved main because PR #552 (T-GRADE-001) had already merged as 24c9fd35; .syllabai/worklog.md zero-loss union over the R0-AUTO-98 entry). Push via the Git Data API (6.3GB resources clone makes git push infeasible here); merge order resources→hub unchanged.
 - Open queue: YFM01 Further Maths aggregation (multi-route cash-in + unit locking — needs a verified official worked example); Jan 2023 + Nov 2021 Pearson golden sessions (recorded absent, never invented); best-combination cash-in search (Pearson awards the best valid combination; this wave grades the entered marks).
+
+## T-OEQ-MATHSB-SERVE-1 run-035 — Mode-A table->GFM conversion wave, tranche-1 (operator trace 1a1929aae11158ed)
+
+Agent: main (Z.ai, session web-da4ab8b1, chat 1f3003b6)
+Task: "next improvement wave is exactly #2 scaled up: a Mode-A pass converting more of those 106 table crops into GFM markdown tables with KaTeX cells"
+
+Work Log:
+- Census of record first-hand on the sha-verified plane pin 2021ec4730bf1c83: 99 table-crop parts = 1 already GFM (the 2025-06 23(a) wage precedent) + 4 pictorial keep-crops (spinner/dice) + 94 Mode-A convertible (grouped-frequency / curve table-of-values / information tables) + 31 table-mentions-without-crop noted; census artifact committed.
+- Tranche-1 = 18 parts across 16 papers in 3 classes (5 grouped-frequency, 9 table-of-values, 4 information). Evidence: 18 corpus crop PNGs -> 5 labeled contact sheets READ first-hand; 4 printed-page renders @150dpi READ for the Mode-B repairs; per-value arithmetic cross-checks on every transcribed number.
+- Mode-B repairs carried with page-first evidence: 2018-06 02 10-a equation restored to y = x^2 - 5x + 8/x (p30 READ); 2021-06 02 6-a to y = x^2 + 2x + 4/x, x != 0 (p12 READ); 2022-06 02 1 GDP formula un-linearised to the printed display fraction (p2 READ); 2021-01 02 7 the printed sqrt RESTORED (a proportional to 1/sqrt(b); arithmetically corroborated c=1500, a=6.75 exact) — the plane had dropped it; crop-evidenced superscript repairs (2x^3 x2, x^2 x2, x^3 - 10x^2).
+- Conversion shape = the wage-table precedent: run-on table text -> GFM md table (KaTeX cells, print-faithful blanks), table image ref removed, table crop asset dropped from assets[] (17 drops); 2024-06 01r 19 pie-chart crop KEPT with alt relabelled (chart half essential); sibling plot parts untouched (own refs kept); 0 solutionMd/markPoints writes (mirror law untouched).
+- Gates ALL GREEN: probe-before-work 18/18 byte-match; battery 13/13 (run-033 11-gate clone + gfm_table_shape + asset_integrity; kill-fragment old-form discharge fail-closed both ways); katex 206/206 NEW $-spans @ katex 0.16.47 throwOnError; render 18/18 through the ACTUAL hub engine (react-markdown + remark-gfm + remark-math + rehype-raw + rehype-sanitize + local rehypeKatexMhchem) with 18/18 real <table>, 0 exceptions, 0 katex-error, img counts exact, total .katex 206.
+- Race guard: origin/main moved 2b5f0b1c -> b8aab8f6 mid-run (other lanes); plane byte-identical at the new tip — branch cut fresh at b8aab8f6 and the write re-applied behind the full battery; no force.
+- Corpus rider accounting: 18 pids / 35 plane field writes (18 problemMd + 17 assets[]) across 16 papers accrue vs the corpus of record — ride the NEXT converter run per the standing law (NO solo converter trigger, NO solo resources PR); the 17 dropped table-crop PNGs become corpus deletions on that run; questions.md regen rides.
+
+Stage Summary:
+- Plane of record: 2021ec4730bf1c83 -> 801474a740be6546 (official-papers.json single-file write behind the 13-gate battery); zero corpus/DB bytes from this side.
+- Residual open: tranche-2 = 76 remaining convertible parts + the 31-mention class census; corpus rider discharge on the next converter run (operator-gated); ledger finding: 2021-06 02 7-b pre-existing glue sentence left as-is; PAT rotation standing order (CRITICAL-OVERDUE, unchanged); FLEET formula-sheet fence ruling (operator).

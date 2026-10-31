@@ -1,0 +1,77 @@
+{
+ "lane": "T-OEQ-MATHSB-SERVE-1",
+ "run": "run-035-table-gfm-tranche1",
+ "title": "Mode-A table->GFM conversion wave, TRANCHE-1 of record: 18 table-crop parts across 16 papers converted to GFM markdown tables with KaTeX cells (5 grouped-frequency + 9 curve table-of-values + 4 information tables), 17 table crops dropped, the 2024-06 pie-chart crop kept with alt relabelled; 6 Mode-B print-evidenced notation repairs carried (incl. the 2021-01 02 7 dropped-sqrt restoration and the 2018-06 02 10-a lost-8-over-x equation) — plane 2021ec4730bf1c83 -> 801474a740be6546; battery 13/13 GREEN, katex 206/206 @0.16.47 throwOnError, hub-engine render 18/18 with 18/18 real <table>",
+ "operatorOrder": "next improvement wave is exactly #2 scaled up: a Mode-A pass converting more of those 106 table crops into GFM markdown tables with KaTeX cells",
+ "operatorTrace": "1a1929aae11158ed",
+ "date": "2026-10-31",
+ "agent": "main (Z.ai, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+ "environmentRecoveryOfRecord": "fresh sandbox window: prior-session scratch recycled except the sha-verified plane cache (scratch/toeq_state/fmt, sha256 2021ec4730bf1c83 re-verified at open); v2 re-cloned sparse-blobless ANONYMOUS, stale 4008e6ce Oct-24 clone recovered fetch-first ff-only to origin/main; hub deps bun install --frozen-lockfile (678 packages, workspace-root node_modules; gate scripts resolve via the disclosed node_modules symlink); QP pages rendered from the upload/ official-4MB1-* PDF set @150dpi; corpus crop PNGs fetched from the resources corpus of record (main); PAT read-only from .creds/syllabai.env (0600), never printed",
+ "censusOfRecord": {
+  "basis": "first-hand walk of the served plane 2021ec4730bf1c83 (sha-verified before any read)",
+  "tableCropParts": 99,
+  "alreadyGfm": 1,
+  "pictorialKeepCrop": 4,
+  "convertible": 94,
+  "tableMentionsWithoutCrop": 31,
+  "artifact": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-035/run035_table_census.json"
+ },
+ "tranche1Execution": {
+  "partsConverted": 18,
+  "papers": 16,
+  "classes": {
+   "grouped-frequency": 5,
+   "table-of-values": 9,
+   "information": 4
+  },
+  "fixTuples": 18,
+  "fieldWrites": 35,
+  "fieldWriteSplits": "18 problemMd rewrites + 17 assets[] table-crop drops; 0 solutionMd / 0 markPoints writes (mirror law untouched)",
+  "evidenceForm": "5 labeled contact sheets (18 corpus crop PNGs of record) READ first-hand + 4 printed-page renders @150dpi READ (zoom_2018-06_02_p30, zoom_2021-06_02_p12, zoom_2022-06_02_p2, zoom_2021-01_02_p14) + per-value arithmetic cross-checks",
+  "modeBRepairs": [
+   "2018-06 02 10-a: 'y = x^2 - 5x + x' -> $y = x^2 - 5x + \\frac{8}{x}$ (printed p30 display fraction READ; y(6)=7.33 exact)",
+   "2021-06 02 6-a: 'y = x^2 + 2x + x!=0 x' -> $y = x^2 + 2x + \\frac{4}{x}, x \\ne 0$ (printed p12 READ; y(-0.5)=-8.75 exact)",
+   "2022-06 02 1: linearised GDP formula -> display fraction GDP per capita = total GDP / population (printed p2 READ)",
+   "2021-01 02 7: plane DROPPED the printed sqrt — 'proportional to b' -> $\\sqrt{b}$ (printed p14 READ; chain a*c^1.5=const gives c=1500 and a=6.75 EXACT)",
+   "crop-evidenced superscript repairs: 2020-06/2020-11 11-a '2x 3'->$2x^3$, 2022-01 11-d 'x 2'->$x^2$ (unique monic quadratic), 2021-01 02 11-a 'x 3 - 10x 2'->$x^3 - 10x^2$"
+  ],
+  "conversionShape": "wage-table precedent (2025-06 23-a): run-on table text -> GFM md table with KaTeX cells and print-faithful blank cells; table image ref removed; table crop asset dropped from assets[]; sibling plot parts untouched (own refs kept); 2024-06 01r 19 pie-chart crop KEPT (chart half essential) with image alt relabelled table -> pie chart"
+ },
+ "planeOfRecord": {
+  "before": "2021ec4730bf1c83",
+  "after": "801474a740be6546",
+  "bytes": 3716329,
+  "path": "apps/hub/content/igcse-maths-b-16/official-papers.json"
+ },
+ "gates": {
+  "battery": "13/13 GREEN (--write run; plane_pin 2021ec4730bf1c83, census_EXACT 66/1281/2443/6600 pre==post, marks_map_identical, PUA_FFFD_delta_clean, dollar_parity, changed_set_EXACT 35 fields, mirror_integrity 0 solutionMd/markPoints moves, serialization single-line roundtrip, scrub clean, old_form_discharge kill-fragments fail-closed BOTH ways, gfm_table_shape uniform columns, asset_integrity kept-assets untouched, class_post_census no growth) — run-033 11-gate clone + 2 wave-specific gates",
+  "probeBeforeWork": "18/18 old texts + 17 drop targets byte-match census vs live plane",
+  "katex": "206/206 NEW $-spans OK @ katex 0.16.47 throwOnError (hub version)",
+  "render": "18/18 projected fields through the ACTUAL hub pipeline engine (react-markdown + remark-gfm + remark-math + rehype-raw + rehype-sanitize + local rehypeKatexMhchem), 0 exceptions, 0 katex-error, 0 count drops, 18/18 real <table> rendered, img counts exact (2->1 histogram kept, 1->1 pie kept, 1->0 elsewhere), total .katex 206"
+ },
+ "raceGuard": "origin/main moved 2b5f0b1c -> b8aab8f6 mid-run (PRs #558/#559 other lanes); plane byte-identical 2021ec4730bf1c83 at the new tip — branch cut fresh at b8aab8f6, write re-applied behind the full battery; no force",
+ "corpusRiderAccount": {
+  "accruedByThisRun": "18 changed pids (18 problemMd + 17 assets[]) vs the corpus of record (last maths-B back-sync run-034/#251 at plane 2021ec47; corpus unchanged since) — ride the NEXT converter run per the standing law (NO solo converter trigger, NO solo resources PR); the 17 dropped table-crop PNGs become corpus deletions on that run; questions.md regen rides",
+  "standingLaw": "post-F122 rider population now = this wave's 18 pids; F122's synced-fields ledger + B1-B7 battery guard the byte-no-op law"
+ },
+ "residualOpenOnCard": [
+  "tranche-2: 76 remaining convertible table-crop parts (94 - 18) + the 31 table-mentions-without-crop class census",
+  "corpus rider discharge on the next converter run (operator-gated, 18 pids / 35 field writes / 17 PNG deletions)",
+  "ledger finding: 2021-06 02 7-b pre-existing glue sentence 'Calculate the interest she receives in one year.' (from 7-a) left as-is — out of wave scope",
+  "FLEET formula-sheet fence ruling (operator — run-027 fence STANDS)",
+  "PAT rotation standing order (GitHub …JU4 / Vercel vcp_…aoT3) — CRITICAL-OVERDUE, unchanged"
+ ],
+ "evidence": [
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-035/run035_table_census.json",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-035/run035_fixes.py",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-035/run035_apply.py",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-035/run035_projection.json",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-035/run035_katex_gate.mjs",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-035/run035_render_gate.mjs",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-035/crop_manifest.json",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-035/evidence/ (sheet-01..05 + zoom pages, 9 PNGs)",
+  ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-034-corpus-rider-discharge.json (predecessor)"
+ ],
+ "verdict": "TABLE-GFM-TRANCHE1-OF-RECORD-COMPLETE",
+ "bookkeeping": "plane edit (single-file serving-plane write behind the 13-gate fail-closed battery) + receipt + worklog + evidence in the same PR; zero corpus/DB bytes; verified at local==origin/main b8aab8f6 before write; fetch-first race-guard push, ff-only, no force"
+}
