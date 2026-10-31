@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_6c2G8nJpFSnQnbcP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "36736f64ede332f077cd938bc4e738e9d59d940e072355bb0b3428588c2c20ee",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "dfd13367c3b31697346fe787dc6c11298135afe15bf2941a931a78352110ca6d",
+    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
   },
   "packageId": "igcse-chemistry::rn_6c2G8nJpFSnQnbcP",
   "subject": "igcse-chemistry",
@@ -192,6 +192,55 @@
       ]
     },
     {
+      "id": "rn_6c2G8nJpFSnQnbcP::L1::Q6",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L1",
+      "stem": "State the general formula of the alkanes in terms of n.",
+      "misconceptionClass": "alkane general formula recall",
+      "kind": "recall",
+      "modelAnswer": "The alkanes follow CnH2n+2, where n is any whole number.",
+      "keywords": [
+        "cnh2n"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L1::Q7",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L1",
+      "stem": "Which type of bond runs between the carbon atoms throughout an alkane molecule?",
+      "misconceptionClass": "saturated bond-type recall",
+      "kind": "recall",
+      "modelAnswer": "Only single bonds join the carbon atoms in an alkane, which is what makes the family saturated.",
+      "keywords": [
+        "single"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L1::Q8",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L1",
+      "stem": "Explain why an alkane cannot take part in an addition reaction.",
+      "misconceptionClass": "no-addition-without-C=C reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Addition needs a C=C double bond that can open, and an alkane's carbons are joined by single bonds only, so there is no double bond for atoms to add across.",
+      "keywords": [
+        "double",
+        "bonds"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L1::Q9",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L1",
+      "stem": "A molecule of an alkane is found to contain 12 carbon atoms. Deduce its molecular formula.",
+      "misconceptionClass": "CnH2n+2 substitution application",
+      "kind": "application",
+      "modelAnswer": "Substituting n = 12 into CnH2n+2 gives C12H26.",
+      "keywords": [
+        "c12h26"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_6c2G8nJpFSnQnbcP::L2::Q1",
       "moduleId": "rn_6c2G8nJpFSnQnbcP::L2",
       "stem": "Which molecular formula belongs to pentane?",
@@ -370,6 +419,57 @@
           "misconception": "representation swapped"
         }
       ]
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L2::Q6",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L2",
+      "stem": "Name the alkane whose molecules contain three carbon atoms, and give its molecular formula.",
+      "misconceptionClass": "first-five alkanes recall",
+      "kind": "recall",
+      "modelAnswer": "The three-carbon alkane is propane, C3H8.",
+      "keywords": [
+        "propane",
+        "c3h8"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L2::Q7",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L2",
+      "stem": "How many bonds surround each carbon atom in a displayed formula of any alkane?",
+      "misconceptionClass": "displayed-formula four-bond recall",
+      "kind": "recall",
+      "modelAnswer": "Every carbon is drawn with four single bonds in a displayed formula.",
+      "keywords": [
+        "four"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L2::Q8",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L2",
+      "stem": "Explain what changes from one named alkane to the next in the series from methane to pentane.",
+      "misconceptionClass": "chain-growth reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The carbon chain grows one atom at a time: each member extends the chain by a further carbon, adding a CH2 step from methane through to pentane.",
+      "keywords": [
+        "carbon",
+        "chain"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L2::Q9",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L2",
+      "stem": "A student draws a displayed formula for ethane but joins the two carbon atoms with a double line. Name the hydrocarbon family the drawing now suggests.",
+      "misconceptionClass": "family-recognition application",
+      "kind": "application",
+      "modelAnswer": "A C=C double bond is the functional group of the alkenes, so drawn that way the picture reads as ethene rather than ethane.",
+      "keywords": [
+        "alkenes",
+        "ethene"
+      ],
+      "options": []
     }
   ]
 }

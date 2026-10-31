@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_MmqCNJfWbtYzRVqT",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a44c20c6291ca3f8a2d9a8451df50a3024db120035219653b451df1079520f4d",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "f3af823b475bce932e4d2e96bad2f7be2e406ff5b531686de25afb66e090becd",
+    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
   },
   "packageId": "igcse-chemistry::rn_MmqCNJfWbtYzRVqT",
   "subject": "igcse-chemistry",
@@ -192,6 +192,57 @@
       ]
     },
     {
+      "id": "rn_MmqCNJfWbtYzRVqT::L1::Q6",
+      "moduleId": "rn_MmqCNJfWbtYzRVqT::L1",
+      "stem": "State the condition without which an alkane ignores a halogen.",
+      "misconceptionClass": "UV condition recall",
+      "kind": "recall",
+      "modelAnswer": "Ultraviolet radiation (UV light) must be present for the reaction to occur.",
+      "keywords": [
+        "ultraviolet",
+        "uv"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MmqCNJfWbtYzRVqT::L1::Q7",
+      "moduleId": "rn_MmqCNJfWbtYzRVqT::L1",
+      "stem": "Give the two products when methane reacts with chlorine under UV light.",
+      "misconceptionClass": "chlorine substitution products recall",
+      "kind": "recall",
+      "modelAnswer": "Chloromethane, CH3Cl, and hydrogen chloride, HCl.",
+      "keywords": [
+        "chloromethane",
+        "hcl"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MmqCNJfWbtYzRVqT::L1::Q8",
+      "moduleId": "rn_MmqCNJfWbtYzRVqT::L1",
+      "stem": "Explain why the methane-bromine reaction is classified as substitution rather than addition.",
+      "misconceptionClass": "substitution classification reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A bromine atom replaces one hydrogen atom of methane, giving CH3Br and HBr; nothing adds across a bond and the two bromine atoms end up in different molecules, which is why the move is substitution and not addition.",
+      "keywords": [
+        "replaces"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MmqCNJfWbtYzRVqT::L1::Q9",
+      "moduleId": "rn_MmqCNJfWbtYzRVqT::L1",
+      "stem": "Methane is brominated under UV in a shortage of bromine. State why the mixture contains no doubly-brominated product.",
+      "misconceptionClass": "mono-substitution application",
+      "kind": "application",
+      "modelAnswer": "The reaction is limited to mono-substitution: only one halogen atom replaces a hydrogen per methane molecule, so no dibrominated product forms.",
+      "keywords": [
+        "mono",
+        "once"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_MmqCNJfWbtYzRVqT::L2::Q1",
       "moduleId": "rn_MmqCNJfWbtYzRVqT::L2",
       "stem": "Balance the chlorine substitution: CH4 + Cl2 -> ?",
@@ -370,6 +421,59 @@
           "misconception": "observation denied"
         }
       ]
+    },
+    {
+      "id": "rn_MmqCNJfWbtYzRVqT::L2::Q6",
+      "moduleId": "rn_MmqCNJfWbtYzRVqT::L2",
+      "stem": "What generic family name covers organic molecules that carry a halogen atom?",
+      "misconceptionClass": "haloalkane family-name recall",
+      "kind": "recall",
+      "modelAnswer": "They are called halogenoalkanes, or haloalkanes for short.",
+      "keywords": [
+        "haloalkanes",
+        "halogenoalkanes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MmqCNJfWbtYzRVqT::L2::Q7",
+      "moduleId": "rn_MmqCNJfWbtYzRVqT::L2",
+      "stem": "List four uses of halogenoalkanes.",
+      "misconceptionClass": "haloalkane uses recall",
+      "kind": "recall",
+      "modelAnswer": "Solvents, refrigerants, propellants and pharmaceuticals.",
+      "keywords": [
+        "solvents",
+        "refrigerants",
+        "propellants",
+        "pharmaceuticals"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MmqCNJfWbtYzRVqT::L2::Q8",
+      "moduleId": "rn_MmqCNJfWbtYzRVqT::L2",
+      "stem": "Explain why CFC refrigerants were withdrawn even though they performed well.",
+      "misconceptionClass": "CFC phase-out reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "CFCs are chlorofluorocarbons that harm the ozone layer, so the whole family was phased out despite its usefulness.",
+      "keywords": [
+        "ozone"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MmqCNJfWbtYzRVqT::L2::Q9",
+      "moduleId": "rn_MmqCNJfWbtYzRVqT::L2",
+      "stem": "A workshop needs a degreasing fluid and picks a solvent made by the UV substitution route. Write the equation for making it from methane and chlorine.",
+      "misconceptionClass": "chlorination equation application",
+      "kind": "application",
+      "modelAnswer": "CH4 + Cl2 -> CH3Cl + HCl, run under ultraviolet light.",
+      "keywords": [
+        "ch3cl",
+        "hcl"
+      ],
+      "options": []
     }
   ]
 }

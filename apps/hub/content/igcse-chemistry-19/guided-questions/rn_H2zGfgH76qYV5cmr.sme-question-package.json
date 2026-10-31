@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_H2zGfgH76qYV5cmr",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "e5724f0ed4e299e3cdc8943dc0b4e1a4b2aeeb990393236365fe86d39bad0b6a",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "99754d9b9179a8128e83b765823a0dc12725a1e4b82ed470a0998049ad257c54",
+    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
   },
   "packageId": "igcse-chemistry::rn_H2zGfgH76qYV5cmr",
   "subject": "igcse-chemistry",
@@ -192,6 +192,55 @@
       ]
     },
     {
+      "id": "rn_H2zGfgH76qYV5cmr::L1::Q6",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L1",
+      "stem": "Write down the general formula that every alkene obeys.",
+      "misconceptionClass": "alkene general formula recall",
+      "kind": "recall",
+      "modelAnswer": "The alkenes follow CnH2n, two hydrogens fewer than the alkane recipe.",
+      "keywords": [
+        "cnh2n"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L1::Q7",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L1",
+      "stem": "Which bond defines the functional group shared by all alkenes?",
+      "misconceptionClass": "functional-group bond recall",
+      "kind": "recall",
+      "modelAnswer": "Every alkene carries a C=C double bond as its functional group.",
+      "keywords": [
+        "double"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L1::Q8",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L1",
+      "stem": "Explain why an alkene reacts far more readily than an alkane with bromine.",
+      "misconceptionClass": "reactivity-via-C=C reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The C=C double bond can open, letting each carbon form one more single bond with the incoming atoms, whereas an alkane's bonds are already saturated and cannot open, so the alkene is much more reactive.",
+      "keywords": [
+        "open",
+        "reactive"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L1::Q9",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L1",
+      "stem": "An alkene molecule is measured to contain 6 carbon atoms. Deduce its molecular formula.",
+      "misconceptionClass": "CnH2n substitution application",
+      "kind": "application",
+      "modelAnswer": "Substituting n = 6 into CnH2n gives C6H12.",
+      "keywords": [
+        "c6h12"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_H2zGfgH76qYV5cmr::L2::Q1",
       "moduleId": "rn_H2zGfgH76qYV5cmr::L2",
       "stem": "Which molecular formula belongs to propene?",
@@ -370,6 +419,56 @@
           "misconception": "requirement inverted"
         }
       ]
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L2::Q6",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L2",
+      "stem": "Give the molecular formula of but-1-ene.",
+      "misconceptionClass": "but-1-ene formula recall",
+      "kind": "recall",
+      "modelAnswer": "But-1-ene is C4H8.",
+      "keywords": [
+        "c4h8"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L2::Q7",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L2",
+      "stem": "Between which two carbon atoms does the double bond sit in pent-2-ene?",
+      "misconceptionClass": "position-number recall",
+      "kind": "recall",
+      "modelAnswer": "Between the second and third carbon atoms of the chain.",
+      "keywords": [
+        "second",
+        "third"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L2::Q8",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L2",
+      "stem": "Explain why every alkene contains two fewer hydrogen atoms than the alkane with the same number of carbons.",
+      "misconceptionClass": "formula-gap reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Two of the links a saturated chain would spend on hydrogens are taken up by the carbon-carbon double bond, so the family carries two fewer hydrogens: CnH2n instead of CnH2n+2.",
+      "keywords": [
+        "double"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L2::Q9",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L2",
+      "stem": "A student draws but-1-ene with the C=C shown as a single line between the first two carbons. State which family the drawing now represents and what the correct drawing must show.",
+      "misconceptionClass": "displayed-drawing application",
+      "kind": "application",
+      "modelAnswer": "Drawn with one line between those carbons the picture reads as the alkane butane; the correct displayed formula must show the double bond as two parallel lines.",
+      "keywords": [
+        "alkane",
+        "butane"
+      ],
+      "options": []
     }
   ]
 }

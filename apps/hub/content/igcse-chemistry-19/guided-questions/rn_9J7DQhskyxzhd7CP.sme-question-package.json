@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_9J7DQhskyxzhd7CP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b075b4e01e8408c1de84dcb1b2a9aad53f709cf542435a8c1992e53ac9fcec5c",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "4c9d8310dd0b4856c2d234f822702b7984ebf21a61a2abf8eaed93d50d99f039",
+    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
   },
   "packageId": "igcse-chemistry::rn_9J7DQhskyxzhd7CP",
   "subject": "igcse-chemistry",
@@ -192,6 +192,58 @@
       ]
     },
     {
+      "id": "rn_9J7DQhskyxzhd7CP::L1::Q6",
+      "moduleId": "rn_9J7DQhskyxzhd7CP::L1",
+      "stem": "Name the two oxides that form from air inside a vehicle engine.",
+      "misconceptionClass": "engine NOx products recall",
+      "kind": "recall",
+      "modelAnswer": "Nitric oxide, NO, and nitrogen dioxide, NO2, are the two engine-formed oxides of nitrogen.",
+      "keywords": [
+        "dioxide",
+        "nitric"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_9J7DQhskyxzhd7CP::L1::Q7",
+      "moduleId": "rn_9J7DQhskyxzhd7CP::L1",
+      "stem": "Write the balanced equation for the burning of the sulfur impurity in a fuel.",
+      "misconceptionClass": "sulfur-burning equation recall",
+      "kind": "recall",
+      "modelAnswer": "The impurity burns as S + O2 -> SO2.",
+      "keywords": [
+        "so2"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_9J7DQhskyxzhd7CP::L1::Q8",
+      "moduleId": "rn_9J7DQhskyxzhd7CP::L1",
+      "stem": "Explain why a catalytic converter is fitted to a car even though nitrogen and oxygen only combine at the high temperatures inside the engine.",
+      "misconceptionClass": "converter-purpose reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because the exhaust still carries carbon monoxide and unburned hydrocarbons as well as the NOx formed at engine temperature, and the converter renders those harmful gases harmless before they leave the tailpipe.",
+      "keywords": [
+        "carbon",
+        "monoxide",
+        "harmless"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_9J7DQhskyxzhd7CP::L1::Q9",
+      "moduleId": "rn_9J7DQhskyxzhd7CP::L1",
+      "stem": "In a blast furnace, air is blown through white-hot coke. State which pollutant gases this process shares with the internal combustion engine.",
+      "misconceptionClass": "blast-furnace NOx transfer",
+      "kind": "application",
+      "modelAnswer": "The same oxides of nitrogen: at such high temperatures air nitrogen reacts with oxygen to give NO and NO2, just as in an engine.",
+      "keywords": [
+        "nitrogen",
+        "oxides"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_9J7DQhskyxzhd7CP::L2::Q1",
       "moduleId": "rn_9J7DQhskyxzhd7CP::L2",
       "stem": "Which acid forms when sulfur dioxide dissolves in rainwater with oxygen?",
@@ -370,6 +422,58 @@
           "misconception": "cycle denied"
         }
       ]
+    },
+    {
+      "id": "rn_9J7DQhskyxzhd7CP::L2::Q6",
+      "moduleId": "rn_9J7DQhskyxzhd7CP::L2",
+      "stem": "Give the balanced equation for the route from sulfur dioxide to the acid it forms in raindrops.",
+      "misconceptionClass": "acid-rain sulfur route recall",
+      "kind": "recall",
+      "modelAnswer": "2SO2 + O2 + 2H2O -> 2H2SO4.",
+      "keywords": [
+        "h2so4",
+        "2h2so4"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_9J7DQhskyxzhd7CP::L2::Q7",
+      "moduleId": "rn_9J7DQhskyxzhd7CP::L2",
+      "stem": "Which two acids form when nitrogen dioxide dissolves in rain water?",
+      "misconceptionClass": "acid-rain nitrogen acids recall",
+      "kind": "recall",
+      "modelAnswer": "A mixture of nitrous acid, HNO2, and nitric acid, HNO3.",
+      "keywords": [
+        "nitrous",
+        "nitric"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_9J7DQhskyxzhd7CP::L2::Q8",
+      "moduleId": "rn_9J7DQhskyxzhd7CP::L2",
+      "stem": "Explain why carbonate statues in cities suffer more than granite ones from the pollution this note describes.",
+      "misconceptionClass": "carbonate-corrosion reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Acid rain corrodes carbonate rock because the acid reacts with the carbonate in the statue's surface and dissolves it away, while granite offers no carbonate for the droplets to attack.",
+      "keywords": [
+        "corrodes",
+        "dissolves"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_9J7DQhskyxzhd7CP::L2::Q9",
+      "moduleId": "rn_9J7DQhskyxzhd7CP::L2",
+      "stem": "Lightning accompanies a thunderstorm over countryside far from any traffic. Explain which acid-rain precursor can still be forming.",
+      "misconceptionClass": "lightning NOx application",
+      "kind": "application",
+      "modelAnswer": "Lightning provides energy for nitrogen and oxygen in the air to combine, so nitrogen oxides still form; the NO2 then reacts with rain water to give nitrous and nitric acids.",
+      "keywords": [
+        "nitrogen",
+        "no2"
+      ],
+      "options": []
     }
   ]
 }
