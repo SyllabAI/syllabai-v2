@@ -1971,3 +1971,108 @@ export const learnerPdfDrawings = pgTable("learner_pdf_drawings", {
         check("learner_pdf_drawings_doc_container_check", sql`jsonb_typeof(doc -> 'shapes') = 'array' AND doc ->> 'schema' = 'syllabai-ink/1'`),
         check("learner_pdf_drawings_revision_check", sql`revision >= 1`),
 ]);
+
+// ============================================================================
+// T-TEACHME-001 run-001 — the Teach-Me lane (ADR-040): four ADDITIVE tables.
+// Doctrine of record (ADR-040 D1, operator "accept all" 2026-11-01): this lane
+// appends AI_SUGGESTED evidence (kind TEACH_SESSION) ONLY — no column here
+// feeds of-record mastery; workbench ratification is the sole promotion path.
+// Vocabularies are text + CHECK per the v2-native migration law (no new pg
+// enums — 0018/0019 precedent). The APPEND-ONLY law on coverages is enforced
+// by the 0020 trigger (teach_coverages_append_only), which drizzle does not
+// model — keep it in the migration, it survives db:pull untouched.
+// FKs are NO ACTION on purpose: sessions are records, never cascade-deleted.
+// ============================================================================
+export const teachSessions = pgTable("teach_sessions", {
+        id: uuid().primaryKey().notNull(),
+        userId: uuid("user_id").notNull(),
+        courseId: text("course_id").notNull(),
+        specPointIds: jsonb("spec_point_ids").notNull(),
+        difficulty: text("difficulty").notNull(),
+        length: text("length").notNull(),
+        mode: text("mode").notNull(), // app-supplied ('chat'); no DB text defaults (house law)
+        status: text("status").notNull(), // app-supplied ('active')
+        messageCount: integer("message_count").default(0).notNull(),
+        llmCallCount: integer("llm_call_count").default(0).notNull(),
+        tokensUsed: integer("tokens_used").default(0).notNull(),
+        flags: jsonb("flags").default({}).notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+        endedAt: timestamp("ended_at", { withTimezone: true, mode: 'string' }),
+}, (table) => [
+        index("teach_sessions_user_created_idx").on(table.userId, table.createdAt),
+        index("teach_sessions_course_created_idx").on(table.courseId, table.createdAt),
+        foreignKey({
+                columns: [table.userId],
+                foreignColumns: [users.id],
+                name: "teach_sessions_user_id_fkey"
+        }),
+        check("teach_sessions_spec_points_check", sql`jsonb_typeof(spec_point_ids) = 'array' AND jsonb_array_length(spec_point_ids) BETWEEN 1 AND 3`),
+        check("teach_sessions_difficulty_check", sql`difficulty IN ('easy','medium','hard')`),
+        check("teach_sessions_length_check", sql`length IN ('quick','in_depth')`),
+        check("teach_sessions_mode_check", sql`mode IN ('chat')`),
+        check("teach_sessions_status_check", sql`status IN ('active','review_pending','completed','abandoned')`),
+]);
+export const teachObjectives = pgTable("teach_objectives", {
+        id: uuid().primaryKey().notNull(),
+        sessionId: uuid("session_id").notNull(),
+        ordinal: smallint("ordinal").notNull(),
+        text: text("text").notNull(),
+        specPointIds: jsonb("spec_point_ids").notNull(),
+        status: text("status").notNull(), // app-supplied ('not_started')
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        index("teach_objectives_session_idx").on(table.sessionId, table.ordinal),
+        foreignKey({
+                columns: [table.sessionId],
+                foreignColumns: [teachSessions.id],
+                name: "teach_objectives_session_id_fkey"
+        }),
+        check("teach_objectives_ordinal_check", sql`ordinal BETWEEN 1 AND 4`),
+        check("teach_objectives_status_check", sql`status IN ('not_started','covered','not_covered','flagged')`),
+]);
+export const teachObjectiveCoverages = pgTable("teach_objective_coverages", {
+        id: uuid().primaryKey().notNull(),
+        sessionId: uuid("session_id").notNull(),
+        objectiveId: uuid("objective_id").notNull(),
+        messageSeq: integer("message_seq").notNull(),
+        covered: boolean().notNull(),
+        evidenceQuote: text("evidence_quote").notNull(),
+        verdict: text().notNull(),
+        contradictionDetected: boolean("contradiction_detected").default(false).notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        index("teach_coverages_objective_idx").on(table.objectiveId),
+        index("teach_coverages_session_seq_idx").on(table.sessionId, table.messageSeq),
+        foreignKey({
+                columns: [table.sessionId],
+                foreignColumns: [teachSessions.id],
+                name: "teach_objective_coverages_session_id_fkey"
+        }),
+        foreignKey({
+                columns: [table.objectiveId],
+                foreignColumns: [teachObjectives.id],
+                name: "teach_objective_coverages_objective_id_fkey"
+        }),
+]);
+export const teachMisconceptionCandidates = pgTable("teach_misconception_candidates", {
+        id: uuid().primaryKey().notNull(),
+        sessionId: uuid("session_id").notNull(),
+        specPointIds: jsonb("spec_point_ids").notNull(),
+        statement: text().notNull(),
+        matchedMisconceptionId: text("matched_misconception_id"),
+        confidence: doublePrecision("confidence").notNull(),
+        status: text("status").notNull(), // app-supplied ('candidate')
+        reviewedBy: uuid("reviewed_by"),
+        reviewedAt: timestamp("reviewed_at", { withTimezone: true, mode: 'string' }),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        index("teach_candidates_session_idx").on(table.sessionId),
+        uniqueIndex("teach_candidates_open_idx").on(table.status).where(sql`status = 'candidate'`),
+        foreignKey({
+                columns: [table.sessionId],
+                foreignColumns: [teachSessions.id],
+                name: "teach_misconception_candidates_session_id_fkey"
+        }),
+        check("teach_candidates_confidence_check", sql`confidence >= 0 AND confidence <= 1`),
+        check("teach_candidates_status_check", sql`status IN ('candidate','ratified','rejected')`),
+]);
