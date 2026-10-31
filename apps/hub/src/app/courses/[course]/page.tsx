@@ -14,6 +14,7 @@ import {
   ListTree,
   ScrollText,
   Sparkles,
+  Swords,
   Target,
   TrendingUp,
 } from "lucide-react";
@@ -24,6 +25,7 @@ import { courseMetaDescription, courseTitle, fmtCount } from "@/lib/format";
 import { collectPastPapers } from "@/lib/past-papers";
 import { corpusPapersForCourse } from "@/lib/pastpapers-corpus";
 import { buildPracticePapers } from "@/lib/practice-papers";
+import { battleServedFor } from "@/lib/battle-course";
 import { CourseHeader } from "@/components/hub/course-header";
 import CourseBodyTabs from "@/components/hub/course-body-tabs";
 import type { TopicGroup } from "@/components/hub/course-body-tabs";
@@ -307,6 +309,25 @@ export default async function CourseHubPage({
             : undefined,
           ready: !!gradeBoundaries,
           tint: "bg-chart-3/15",
+        },
+        {
+          // F-186 — the Strength Battle card (operator order, trace
+          // 1a192c9d3ddbb92d: the battle surfaced on EVERY course page, as
+          // roadmap). `ready` keys on the F-186 rollout law of record
+          // (lib/battle-course.ts — the pinned 4CH1 pilot today): the served
+          // course gets the live CTA into /practice/battle, every other
+          // course keeps the honest roadmap card — the same posture the
+          // Target Test / Mock Exams ghosts ride (never a dead CTA).
+          icon: Swords,
+          title: "Strength Battle",
+          desc: battleServedFor(meta.slug)
+            ? "Three questions, sixty seconds, head-to-head against the fair-coin sparring bot — the same real bank the drill serves, with the examiner's mark schemes revealed instantly. Zero stakes: battles ride your practice log, never a gradebook."
+            : "Three questions, sixty seconds, head-to-head against a sparring bot on the same real exam-question bank — the drill wearing competitive energy, mark schemes revealed instantly. Rolling out course by course.",
+          tags: ["Practice", "Diagnose"],
+          href: battleServedFor(meta.slug) ? "/practice/battle" : undefined,
+          ctaLabel: battleServedFor(meta.slug) ? "Battle the bot" : undefined,
+          ready: battleServedFor(meta.slug),
+          tint: "bg-primary/10",
         },
       ],
     },
