@@ -107,6 +107,11 @@ export const sliceManifestMirror = z.object({
         z.object({
           index: z.number().int().min(1),
           title: z.string().min(1),
+          /** T-BOOK-SERVE IAL — additive display label (the chapter registry's
+           * unitTitle); the IAL books author Topic-prefixed labels ("Topic 5 —
+           * Further Mechanics") because the IAL book's own top-level word is
+           * TOPIC and a "Unit N" prefix would misstate its structure. */
+          label: z.string().min(1).optional(),
         }),
       )
       .optional(),
@@ -159,7 +164,7 @@ export function shelfEntryFromManifest(m: BookSliceManifest): BookShelfEntry | n
  * their honest absent states here).
  */
 export function chaptersFromManifest(m: BookSliceManifest): BookChapter[] {
-  const unitTitles = new Map((m.book.units ?? []).map((u) => [u.index, u.title]));
+  const unitTitles = new Map((m.book.units ?? []).map((u) => [u.index, u.label ?? u.title]));
   const out: BookChapter[] = [];
   let ordinal = 0;
   for (const s of m.slices) {

@@ -29,6 +29,7 @@ import { z } from "zod";
 
 import type { BookChapter, BookShelfEntry } from "@syllabai/contracts";
 
+import { bookManifestPathsForCourse } from "./books-registry";
 import { coreBaseUrl } from "./core-proxy";
 import { corpusSpecsForCourse } from "./pastpapers-corpus";
 import { booksRawUrl } from "./pastpapers-shared";
@@ -124,13 +125,15 @@ export async function fetchBookShelf(courseSlug: string): Promise<BookShelfEntry
     `/api/v1/content/books?courseId=${encodeURIComponent(courseSlug)}`,
     (raw) => shelfArray.parse(raw) as BookShelfEntry[],
   );
-  if (db && db.length > 0) return db;
-  const manifest = await fetchBookManifest(courseSlug);
-  const entry = manifest ? shelfEntryFromManifest(manifest) : null;
-  if (entry && !db?.some((b) => b.documentId === entry.documentId)) {
-    return [...(db ?? []), entry];
+  const manifests = await fetchBookManifests(courseSlug);
+  const entries = manifests
+    .map(shelfEntryFromManifest)
+    .filter((e): e is BookShelfEntry => e != null);
+  const out = [...(db ?? [])];
+  for (const e of entries) {
+    if (!out.some((b) => b.documentId === e.documentId)) out.push(e);
   }
-  return db;
+  return out;
 }
 
 /**
@@ -154,8 +157,10 @@ export async function fetchBookChapters(
     (raw) => chaptersArray.parse(raw) as BookChapter[],
   );
   if (db && db.length > 0) return db;
-  const manifest = await fetchBookManifest(courseSlug);
-  if (manifest && manifest.book.documentId === documentId) {
+  const manifest = (await fetchBookManifests(courseSlug)).find(
+    (m) => m.book.documentId === documentId,
+  );
+  if (manifest) {
     const built = chaptersFromManifest(manifest);
     if (built.length > 0) return built;
   }
@@ -202,52 +207,65 @@ export {
 } from "./books-slices";
 
 /**
- * The slice manifest of a course's primary book, resolved against the LIVE
- * registry (drift-guarded). null = no manifest / any mismatch — callers
- * fall back to the whole-book mount silently (honest degradation, no
- * fabricated slices).
+ * The slice manifest of ONE book of a course, resolved against the committed
+ * registry by documentId and drift-guarded against the caller's book truth.
+ * null = no such manifest / any mismatch — callers fall back to the
+ * whole-book mount silently (honest degradation, no fabricated slices).
  */
 export async function fetchBookSlices(
   courseSlug: string,
   documentId: string,
   docVersion: number,
 ): Promise<BookSliceManifest | null> {
-  const m = await fetchBookManifest(courseSlug);
-  if (
-    m &&
-    (m.book.documentId !== documentId ||
-      m.book.docVersion !== docVersion ||
-      m.book.courseSlug !== courseSlug)
-  ) {
+  const m = (await fetchBookManifests(courseSlug)).find(
+    (x) => x.book.documentId === documentId,
+  );
+  if (!m) return null;
+  if (m.book.docVersion !== docVersion || m.book.courseSlug !== courseSlug) {
     return null;
   }
   return m;
 }
 
 /**
- * The raw serving manifest of a course's primary book — NO drift guard
- * (the guard lives at the call sites that hold DB truth to guard against).
- * Same archive fetch + revalidate law as fetchBookSlices.
+ * T-BOOK-SERVE IAL — the committed manifest set of a course (the MULTI-BOOK
+ * MANIFEST LAW: one manifest FILE per book; the registry names the exact
+ * books/-relative paths). Every path is fetched with the same archive +
+ * revalidate law; a failing/malformed member is dropped (honest absence —
+ * never a fabricated book), the rest are the course's books of record.
+ */
+export async function fetchBookManifests(
+  courseSlug: string,
+): Promise<BookSliceManifest[]> {
+  const paths = bookManifestPathsForCourse(courseSlug);
+  if (paths.length === 0) return [];
+  const fetched = await Promise.all(
+    paths.map(async (p) => {
+      try {
+        const res = await fetch(booksRawUrl(`books/${p}`), {
+          headers: { Accept: "application/json" },
+          next: { revalidate: 900 },
+          signal: AbortSignal.timeout(15_000),
+        });
+        if (!res.ok) return null;
+        const parsed = sliceManifestMirror.safeParse(await res.json());
+        return parsed.success ? parsed.data : null;
+      } catch {
+        return null;
+      }
+    }),
+  );
+  return fetched.filter((m): m is BookSliceManifest => m != null);
+}
+
+/**
+ * The primary (first committed) manifest of a course — the single-book
+ * convenience shape kept for any caller that predates the multi-book law.
  */
 export async function fetchBookManifest(
   courseSlug: string,
 ): Promise<BookSliceManifest | null> {
-  const spec = corpusSpecsForCourse(courseSlug);
-  if (!spec || spec.specs.length === 0) return null;
-  const url = booksRawUrl(`books/${spec.specs[0]}/manifest.json`);
-  try {
-    const res = await fetch(url, {
-      headers: { Accept: "application/json" },
-      next: { revalidate: 900 },
-      signal: AbortSignal.timeout(15_000),
-    });
-    if (!res.ok) return null;
-    const parsed = sliceManifestMirror.safeParse(await res.json());
-    if (!parsed.success) return null;
-    return parsed.data;
-  } catch {
-    return null;
-  }
+  return (await fetchBookManifests(courseSlug))[0] ?? null;
 }
 
 /** The corpus-relative path of one slice file (books/<specKey>/<rel>). */
@@ -255,4 +273,19 @@ export function bookSlicePathForCourse(courseSlug: string, rel: string): string 
   const spec = corpusSpecsForCourse(courseSlug);
   if (!spec || spec.specs.length === 0) return null;
   return `books/${spec.specs[0]}/${rel}`;
+}
+
+/**
+ * T-BOOK-SERVE IAL — the PER-BOOK path laws (multi-book courses resolve per
+ * book via the matched manifest, never per course): the manifest's own
+ * archivePath IS the book's root-PDF corpus path, and its specKey scopes the
+ * slice files (the 2-book YPH11 lane scopes slices under sb1//sb2/ — the
+ * manifest's file fields already carry that prefix).
+ */
+export function bookCorpusPathForManifest(m: BookSliceManifest): string | null {
+  return m.book.source?.archivePath ?? null;
+}
+
+export function bookSlicePathForManifest(m: BookSliceManifest, rel: string): string {
+  return `books/${m.book.specKey}/${rel}`;
 }

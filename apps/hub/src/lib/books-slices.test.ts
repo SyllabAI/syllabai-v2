@@ -7,6 +7,7 @@ import { describe, expect, it } from "bun:test";
 
 import {
   bookSliceMapOf,
+  chaptersFromManifest,
   clampPage,
   manifestMatchesBook,
   resolveChapterMount,
@@ -438,5 +439,47 @@ describe("manifest → shelf/registry builders (T-BOOK-SERVE r1)", () => {
     expect(chs[0]!.learningObjective).toBeNull();
     expect(chs[0]!.specCodes).toEqual([]);
     expect(chs[0]!.validationState).toBe("SUGGESTED");
+  });
+});
+
+describe("T-BOOK-SERVE IAL — the units label law", () => {
+  const ialManifest = (units: unknown[]) =>
+    sliceManifestMirror.parse({
+      schema: "book-slices-manifest-v2",
+      book: {
+        documentId: "7e6891e1-e41c-5eaf-8aa4-003baffc3907",
+        docVersion: 1,
+        courseSlug: "ial-physics-19",
+        specKey: "pearson-edexcel/international-a-level/physics/yph11",
+        title: "Pearson Edexcel International AS Level Physics Student Book 1",
+        units,
+      },
+      slices: [
+        entry({
+          file: "sb1/chapters/u1_c1.pdf",
+          role: "lesson",
+          chapterKey: "u1:c1",
+          pdfRange: [19, 44],
+          questionsStartPage: 43,
+        }),
+      ],
+    });
+
+  it("projects the additive unit label into the chapter unitTitle when authored", () => {
+    const m = ialManifest([{ index: 1, title: "Mechanics", label: "Topic 1 — Mechanics" }]);
+    const chapters = chaptersFromManifest(m);
+    expect(chapters).toHaveLength(1);
+    expect(chapters[0].unitIndex).toBe(1);
+    expect(chapters[0].unitTitle).toBe("Topic 1 — Mechanics");
+  });
+
+  it("keeps the plain title when no label is authored (older manifests unchanged)", () => {
+    const m = ialManifest([{ index: 1, title: "Mechanics" }]);
+    expect(chaptersFromManifest(m)[0].unitTitle).toBe("Mechanics");
+  });
+
+  it("renders honestly bare when the manifest carries no units block", () => {
+    const m = ialManifest([]);
+    expect(chaptersFromManifest(m)[0].unitTitle).toBeNull();
   });
 });

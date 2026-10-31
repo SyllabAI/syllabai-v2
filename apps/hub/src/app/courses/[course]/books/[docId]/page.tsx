@@ -14,7 +14,7 @@ import {
   fetchBookShelf,
   bookCorpusPathForCourse,
   bookPaneUrl,
-  bookSlicePathForCourse,
+  bookSlicePathForManifest,
   fetchBookSlices,
 } from "@/lib/books";
 import {
@@ -23,6 +23,7 @@ import {
   resolveUnitExamMount,
   type BookSliceEntry,
 } from "@/lib/books-slices";
+import type { BookSliceManifest } from "@/lib/books-slices";
 import { booksRawUrl, corpusViewerUrl } from "@/lib/pastpapers-shared";
 import { PdfPane } from "@/components/pastpapers/pdf-pane";
 import {
@@ -94,11 +95,15 @@ export default async function BookViewerPage({
   const shelf = await fetchBookShelf(slug);
   const book = shelf?.find((b) => b.documentId === docId) ?? null;
 
-  const wholePdfPath = bookCorpusPathForCourse(slug, "student-book.pdf");
-  if (!wholePdfPath) notFound(); // a course outside the corpus archive has no pane
-
   const slices = await fetchBookSlices(slug, docId, chapters[0].docVersion);
   const sliceMap = slices ? bookSliceMapOf(slices) : null;
+
+  // T-BOOK-SERVE IAL — the per-book path law: the matched manifest names the
+  // book's own root PDF (multi-book courses resolve per book, not per
+  // course); the course-level law stays as the no-manifest fallback.
+  const wholePdfPath =
+    slices?.book.source?.archivePath ?? bookCorpusPathForCourse(slug, "student-book.pdf");
+  if (!wholePdfPath) notFound(); // a course outside the corpus archive has no pane
 
   // ── unit exam-practice mounts (manifest rows, disjoint from chapters) ──────
   const unitRow =
@@ -111,6 +116,7 @@ export default async function BookViewerPage({
       mount: { entry: unitResolved.mount!, label: unitRow.title ?? "Exam practice" },
       initialPage: unitResolved.initialPage,
       wholePdfPath,
+      slices,
     });
   }
 
@@ -145,6 +151,7 @@ export default async function BookViewerPage({
       mount: { entry: unitResolved.mount!, label: unitSpanForPage.title ?? "Exam practice" },
       initialPage: unitResolved.initialPage,
       wholePdfPath,
+      slices,
     });
   }
 
@@ -206,7 +213,7 @@ export default async function BookViewerPage({
     : null;
 
   // slice pane path; null → whole-book fallback (the 133c mount)
-  const sliceRel = mountEntry ? bookSlicePathForCourse(slug, mountEntry.file) : null;
+  const sliceRel = mountEntry && slices ? bookSlicePathForManifest(slices, mountEntry.file) : null;
   const panePath = sliceRel ?? wholePdfPath;
 
   return (
@@ -319,20 +326,22 @@ export default async function BookViewerPage({
 
 /** The unit exam-practice mount's own layout (no chapter prev/next). */
 function renderMount({
-  slug,
+  slug: _slug,
   bookTitle,
   mount,
   initialPage,
   wholePdfPath,
+  slices,
 }: {
   slug: string;
   bookTitle: string;
   mount: { entry: BookSliceEntry; label: string };
   initialPage: number;
   wholePdfPath: string;
+  slices: BookSliceManifest | null;
 }) {
   const { entry, label } = mount;
-  const sliceRel = bookSlicePathForCourse(slug, entry.file);
+  const sliceRel = slices ? bookSlicePathForManifest(slices, entry.file) : null;
   const panePath = sliceRel ?? wholePdfPath;
   return (
     <div className="flex h-[calc(100dvh-3.5rem)] flex-col px-3 pt-2 sm:px-5">
