@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_v5JjfpT6grhtq3QW",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7735010d35450a50d098d31e26f6897b2d99e82424298b7bd2ea7f94e473f9b6",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "df1f7a5627b4c149f41afad6467330e90ff0d6b7a9a8fb74478e5c7f8b14cf88",
+    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
   },
   "packageId": "igcse-chemistry::rn_v5JjfpT6grhtq3QW",
   "subject": "igcse-chemistry",
@@ -192,6 +192,68 @@
       ]
     },
     {
+      "id": "rn_v5JjfpT6grhtq3QW::L1::Q6",
+      "moduleId": "rn_v5JjfpT6grhtq3QW::L1",
+      "stem": "State the reagent added first when testing a solution for metal cations.",
+      "misconceptionClass": "first reagent recall",
+      "kind": "recall",
+      "modelAnswer": "A few drops of sodium hydroxide solution are added first, and any precipitate is noted.",
+      "keywords": [
+        "sodium",
+        "naoh",
+        "drops",
+        "alkali"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_v5JjfpT6grhtq3QW::L1::Q7",
+      "moduleId": "rn_v5JjfpT6grhtq3QW::L1",
+      "stem": "State the colour and the identity of the precipitate given by iron(III) ions.",
+      "misconceptionClass": "iron(iii) precipitate recall",
+      "kind": "recall",
+      "modelAnswer": "Iron(III) ions give an orange-brown precipitate of iron(III) hydroxide.",
+      "keywords": [
+        "orange",
+        "brown",
+        "hydroxide",
+        "rust"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_v5JjfpT6grhtq3QW::L1::Q8",
+      "moduleId": "rn_v5JjfpT6grhtq3QW::L1",
+      "stem": "Explain why a solution can give no precipitate with sodium hydroxide yet still contain a metal cation.",
+      "misconceptionClass": "negative-result explain",
+      "kind": "explain-why",
+      "modelAnswer": "The hydroxide of that metal may be soluble, so no solid forms; alternatively the solution may hold too few ions for a precipitate to be seen.",
+      "keywords": [
+        "soluble",
+        "few",
+        "dissolves",
+        "dissolved",
+        "trace"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_v5JjfpT6grhtq3QW::L1::Q9",
+      "moduleId": "rn_v5JjfpT6grhtq3QW::L1",
+      "stem": "Two unknown solutions give a pale green precipitate and a light blue precipitate respectively with sodium hydroxide. Identify the cation in each.",
+      "misconceptionClass": "paired cation identification application",
+      "kind": "application",
+      "modelAnswer": "Pale green shows iron(II) ions; light blue shows copper(II) ions.",
+      "keywords": [
+        "iron",
+        "copper",
+        "fe",
+        "cu",
+        "ii"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_v5JjfpT6grhtq3QW::L2::Q1",
       "moduleId": "rn_v5JjfpT6grhtq3QW::L2",
       "stem": "How is the ammonium test made to work?",
@@ -370,6 +432,67 @@
           "misconception": "invented protocol"
         }
       ]
+    },
+    {
+      "id": "rn_v5JjfpT6grhtq3QW::L2::Q6",
+      "moduleId": "rn_v5JjfpT6grhtq3QW::L2",
+      "stem": "State the two actions performed on the mixture in the test for ammonium ions.",
+      "misconceptionClass": "test actions recall",
+      "kind": "recall",
+      "modelAnswer": "Sodium hydroxide is added and the mixture is warmed to release ammonia gas.",
+      "keywords": [
+        "warmed",
+        "warm",
+        "heated",
+        "heat",
+        "released"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_v5JjfpT6grhtq3QW::L2::Q7",
+      "moduleId": "rn_v5JjfpT6grhtq3QW::L2",
+      "stem": "Write the ionic equation for the reaction that releases ammonia in the ammonium test.",
+      "misconceptionClass": "ionic equation recall",
+      "kind": "recall",
+      "modelAnswer": "NH4+ + OH- giving NH3 + H2O (the ammonium ion plus the hydroxide ion give ammonia and water).",
+      "keywords": [
+        "nh4",
+        "oh",
+        "nh3",
+        "h2o"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_v5JjfpT6grhtq3QW::L2::Q8",
+      "moduleId": "rn_v5JjfpT6grhtq3QW::L2",
+      "stem": "Explain why a barely visible cloudiness can still be recorded as a positive ammonium test.",
+      "misconceptionClass": "faint positive explain",
+      "kind": "explain-why",
+      "modelAnswer": "Even a faint cloudiness shows that ammonia gas was produced, and any released ammonia turns damp red litmus blue, so a weak result still confirms ammonium ions.",
+      "keywords": [
+        "faint",
+        "weak",
+        "confirms",
+        "produced",
+        "trace"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_v5JjfpT6grhtq3QW::L2::Q9",
+      "moduleId": "rn_v5JjfpT6grhtq3QW::L2",
+      "stem": "A warm mixture of a fertiliser sample with sodium hydroxide turns damp red litmus paper blue. State what this shows about the sample.",
+      "misconceptionClass": "fertiliser deduction application",
+      "kind": "application",
+      "modelAnswer": "The sample contains ammonium ions - the added alkali released ammonia gas, which is the positive result of the ammonium test.",
+      "keywords": [
+        "ammonium",
+        "ammonia",
+        "contains"
+      ],
+      "options": []
     }
   ]
 }

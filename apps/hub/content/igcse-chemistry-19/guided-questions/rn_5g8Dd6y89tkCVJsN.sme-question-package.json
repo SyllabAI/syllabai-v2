@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_5g8Dd6y89tkCVJsN",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "da2b18a753f5afc394e34a779b3e4ed61a12a5dd5f8afb7c00413e013b572479",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "1ea4ca3ea4c1a8e8be424f81517a0b3314efa042c32d2bca21ff25f4fef43348",
+    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
   },
   "packageId": "igcse-chemistry::rn_5g8Dd6y89tkCVJsN",
   "subject": "igcse-chemistry",
@@ -192,6 +192,72 @@
       ]
     },
     {
+      "id": "rn_5g8Dd6y89tkCVJsN::L1::Q6",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L1",
+      "stem": "State the piece of apparatus used to measure the alkali into the conical flask in a titration.",
+      "misconceptionClass": "titration apparatus recall",
+      "kind": "recall",
+      "modelAnswer": "A pipette measures a fixed volume of the alkali into the conical flask.",
+      "keywords": [
+        "pipette",
+        "pipettes",
+        "volumetric",
+        "fixed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L1::Q7",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L1",
+      "stem": "Which two burette readings are used to calculate the volume of acid run in during the titration?",
+      "misconceptionClass": "burette difference recall",
+      "kind": "recall",
+      "modelAnswer": "The starting reading is subtracted from the final reading; the difference between the two burette values is the volume of acid added.",
+      "keywords": [
+        "starting",
+        "initial",
+        "final",
+        "difference",
+        "subtracted"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L1::Q8",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L1",
+      "stem": "Explain why only a few drops of indicator are added in a titration.",
+      "misconceptionClass": "indicator quantity explain",
+      "kind": "explain-why",
+      "modelAnswer": "A few drops already give a clear colour change, so more is unnecessary; a large amount of indicator could itself react with the acid or alkali and spoil the accuracy of the measured volume.",
+      "keywords": [
+        "colour",
+        "clear",
+        "react",
+        "accuracy",
+        "spoil",
+        "unnecessary",
+        "large"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L1::Q9",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L1",
+      "stem": "A student runs acid in quickly near the end point and the colour goes past its first change. State the effect on the recorded volume.",
+      "misconceptionClass": "overshoot effect application",
+      "kind": "application",
+      "modelAnswer": "The flask has received more acid than the neutral volume, so the recorded reading is larger than it should be and the titration result comes out too high.",
+      "keywords": [
+        "larger",
+        "high",
+        "beyond",
+        "pale",
+        "overshoot",
+        "extra"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_5g8Dd6y89tkCVJsN::L2::Q1",
       "moduleId": "rn_5g8Dd6y89tkCVJsN::L2",
       "stem": "Why is the second mixture made without indicator?",
@@ -370,6 +436,71 @@
           "misconception": "unrelated synthesis imagined"
         }
       ]
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L2::Q6",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L2",
+      "stem": "State what is left out when the measured titration volumes are repeated for the real batch.",
+      "misconceptionClass": "indicator-free repeat recall",
+      "kind": "recall",
+      "modelAnswer": "The indicator is left out, so the repeat mixture contains only the salt and water formed by the reaction.",
+      "keywords": [
+        "indicator",
+        "omitted",
+        "excluded",
+        "colourless"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L2::Q7",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L2",
+      "stem": "Describe how the solid crystals are separated from the liquid once they have appeared.",
+      "misconceptionClass": "decantation recall",
+      "kind": "recall",
+      "modelAnswer": "The crystals are left to form, and the excess solution above them is decanted (poured) off.",
+      "keywords": [
+        "decant",
+        "decanted",
+        "decanting",
+        "poured",
+        "pour",
+        "above"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L2::Q8",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L2",
+      "stem": "Explain why heating is stopped while some water still remains with the crystals.",
+      "misconceptionClass": "water of crystallisation explain",
+      "kind": "explain-why",
+      "modelAnswer": "Some water is left behind to allow for water of crystallisation; heating to dryness would overheat the salt and could make it decompose.",
+      "keywords": [
+        "crystallisation",
+        "decompose",
+        "decomposes",
+        "decomposition",
+        "overheat",
+        "overheating"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L2::Q9",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L2",
+      "stem": "A student heats the salt solution until the evaporating basin is bone dry. Predict what has gone wrong.",
+      "misconceptionClass": "over-evaporated batch application",
+      "kind": "application",
+      "modelAnswer": "All the water has been driven off, so no saturated solution was left for crystals to form, and any water of crystallisation has been lost; the salt may also have decomposed.",
+      "keywords": [
+        "driven",
+        "lost",
+        "decomposed",
+        "overheated",
+        "saturated"
+      ],
+      "options": []
     }
   ]
 }

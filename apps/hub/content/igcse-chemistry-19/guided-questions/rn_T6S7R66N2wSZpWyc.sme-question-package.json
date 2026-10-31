@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_T6S7R66N2wSZpWyc",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "497bbd1b9f8bf4a7242cab6dc0f4ecb0d51a90cff67ec6ebc7aae279ad23c759",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "21b7d69a9f92bbe3bfc92ce4285ca3caf15f58bdde136f4072e1bed94c68250f",
+    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
   },
   "packageId": "igcse-chemistry::rn_T6S7R66N2wSZpWyc",
   "subject": "igcse-chemistry",
@@ -192,6 +192,66 @@
       ]
     },
     {
+      "id": "rn_T6S7R66N2wSZpWyc::L1::Q6",
+      "moduleId": "rn_T6S7R66N2wSZpWyc::L1",
+      "stem": "State the colour change seen when damp red litmus paper is held in ammonia gas.",
+      "misconceptionClass": "ammonia litmus recall",
+      "kind": "recall",
+      "modelAnswer": "The damp red litmus paper turns blue.",
+      "keywords": [
+        "blue",
+        "turns",
+        "turn"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_T6S7R66N2wSZpWyc::L1::Q7",
+      "moduleId": "rn_T6S7R66N2wSZpWyc::L1",
+      "stem": "State the two-stage observation produced by chlorine on damp blue litmus paper, in order.",
+      "misconceptionClass": "chlorine litmus recall",
+      "kind": "recall",
+      "modelAnswer": "Chlorine turns the damp blue litmus paper red first and then bleaches it white.",
+      "keywords": [
+        "white",
+        "bleaches",
+        "bleaching",
+        "bleach",
+        "then"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_T6S7R66N2wSZpWyc::L1::Q8",
+      "moduleId": "rn_T6S7R66N2wSZpWyc::L1",
+      "stem": "Explain why the litmus paper must not touch the glass sides during the ammonium-ion test.",
+      "misconceptionClass": "false-positive risk explain",
+      "kind": "explain-why",
+      "modelAnswer": "Sodium hydroxide traces clinging to the glass would also turn red litmus blue, giving a false positive; only the gas above the solution should be sampled.",
+      "keywords": [
+        "false",
+        "positive",
+        "traces",
+        "sodium",
+        "hydroxide",
+        "cling"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_T6S7R66N2wSZpWyc::L1::Q9",
+      "moduleId": "rn_T6S7R66N2wSZpWyc::L1",
+      "stem": "Gas X turns damp red litmus paper blue; gas Y turns damp blue litmus paper red and then white. Identify both gases.",
+      "misconceptionClass": "two-gas identification application",
+      "kind": "application",
+      "modelAnswer": "Gas X is ammonia and gas Y is chlorine.",
+      "keywords": [
+        "ammonia",
+        "chlorine"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_T6S7R66N2wSZpWyc::L2::Q1",
       "moduleId": "rn_T6S7R66N2wSZpWyc::L2",
       "stem": "What is limewater?",
@@ -372,6 +432,68 @@
       ]
     },
     {
+      "id": "rn_T6S7R66N2wSZpWyc::L2::Q6",
+      "moduleId": "rn_T6S7R66N2wSZpWyc::L2",
+      "stem": "State the chemical identity of limewater.",
+      "misconceptionClass": "limewater identity recall",
+      "kind": "recall",
+      "modelAnswer": "Limewater is calcium hydroxide dissolved in water, so it is a calcium hydroxide solution.",
+      "keywords": [
+        "calcium",
+        "hydroxide",
+        "dissolved",
+        "solution"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_T6S7R66N2wSZpWyc::L2::Q7",
+      "moduleId": "rn_T6S7R66N2wSZpWyc::L2",
+      "stem": "Describe the appearance change that counts as a positive limewater result.",
+      "misconceptionClass": "cloudy-white result recall",
+      "kind": "recall",
+      "modelAnswer": "Bubbling the gas through limewater turns the limewater cloudy white.",
+      "keywords": [
+        "cloudy",
+        "white",
+        "milky",
+        "cloudiness"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_T6S7R66N2wSZpWyc::L2::Q8",
+      "moduleId": "rn_T6S7R66N2wSZpWyc::L2",
+      "stem": "Explain why an extinguished splint is not accepted as a test for carbon dioxide.",
+      "misconceptionClass": "non-specific splint explain",
+      "kind": "explain-why",
+      "modelAnswer": "Other gases such as nitrogen also extinguish a burning splint, so a flame going out is a shared property and identifies none of them specifically.",
+      "keywords": [
+        "nitrogen",
+        "extinguish",
+        "extinguishes",
+        "shared",
+        "property",
+        "flame"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_T6S7R66N2wSZpWyc::L2::Q9",
+      "moduleId": "rn_T6S7R66N2wSZpWyc::L2",
+      "stem": "Two unknown gases are bubbled through separate limewater samples; one sample turns cloudy and the other stays clear. State what each result shows.",
+      "misconceptionClass": "paired limewater readings application",
+      "kind": "application",
+      "modelAnswer": "The cloudy sample shows carbon dioxide is present; the clear one shows that gas is not carbon dioxide (a negative result).",
+      "keywords": [
+        "present",
+        "absent",
+        "dioxide",
+        "negative"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_T6S7R66N2wSZpWyc::L3::Q1",
       "moduleId": "rn_T6S7R66N2wSZpWyc::L3",
       "stem": "Which splint is used for the hydrogen test?",
@@ -550,6 +672,69 @@
           "misconception": "sound attributed wrongly"
         }
       ]
+    },
+    {
+      "id": "rn_T6S7R66N2wSZpWyc::L3::Q6",
+      "moduleId": "rn_T6S7R66N2wSZpWyc::L3",
+      "stem": "State the observation that confirms hydrogen when a lit splint is used.",
+      "misconceptionClass": "squeaky pop recall",
+      "kind": "recall",
+      "modelAnswer": "The lit splint gives a squeaky pop at the mouth of the tube.",
+      "keywords": [
+        "squeaky",
+        "pop",
+        "bang",
+        "mouth"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_T6S7R66N2wSZpWyc::L3::Q7",
+      "moduleId": "rn_T6S7R66N2wSZpWyc::L3",
+      "stem": "State what a glowing splint does when it is lowered into a tube of oxygen.",
+      "misconceptionClass": "glowing splint recall",
+      "kind": "recall",
+      "modelAnswer": "A glowing splint relights in oxygen.",
+      "keywords": [
+        "relight",
+        "relights",
+        "relighting",
+        "bursts",
+        "flame"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_T6S7R66N2wSZpWyc::L3::Q8",
+      "moduleId": "rn_T6S7R66N2wSZpWyc::L3",
+      "stem": "Explain why the splint is held at the mouth of the tube in the hydrogen test.",
+      "misconceptionClass": "air-supply explain",
+      "kind": "explain-why",
+      "modelAnswer": "The gas needs the oxygen of the surrounding air to burn, so the flame only pops where hydrogen meets air at the tube mouth; pushed deep inside there is no air to support the combustion.",
+      "keywords": [
+        "air",
+        "oxygen",
+        "outside",
+        "combustion",
+        "support"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_T6S7R66N2wSZpWyc::L3::Q9",
+      "moduleId": "rn_T6S7R66N2wSZpWyc::L3",
+      "stem": "An unknown gas gives the classic sharp sound with a lit splint, while a glowing splint lowered into it does not relight. Identify the gas and justify both readings.",
+      "misconceptionClass": "paired splint identification application",
+      "kind": "application",
+      "modelAnswer": "The gas is hydrogen: the squeaky pop shows hydrogen burning rapidly to give water, and the failure to relight shows the gas is not oxygen.",
+      "keywords": [
+        "pop",
+        "squeaky",
+        "water",
+        "burning",
+        "burns"
+      ],
+      "options": []
     }
   ]
 }

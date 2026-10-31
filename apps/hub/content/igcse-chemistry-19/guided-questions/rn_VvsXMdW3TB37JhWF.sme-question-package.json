@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_VvsXMdW3TB37JhWF",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "707fc125d03eefc2368b2910032afe7e86bf4d6a72fd1d4d211cf1ee84040904",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "19df1c55938b51e647ebdc0c5d0346950f1fda224d54401df23378ec865a9b3d",
+    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
   },
   "packageId": "igcse-chemistry::rn_VvsXMdW3TB37JhWF",
   "subject": "igcse-chemistry",
@@ -192,6 +192,69 @@
       ]
     },
     {
+      "id": "rn_VvsXMdW3TB37JhWF::L1::Q6",
+      "moduleId": "rn_VvsXMdW3TB37JhWF::L1",
+      "stem": "State the products formed when an acid reacts with a base.",
+      "misconceptionClass": "neutralisation products recall",
+      "kind": "recall",
+      "modelAnswer": "A neutralisation reaction between an acid and a base gives a salt and water.",
+      "keywords": [
+        "salt",
+        "salts",
+        "water",
+        "neutralisation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VvsXMdW3TB37JhWF::L1::Q7",
+      "moduleId": "rn_VvsXMdW3TB37JhWF::L1",
+      "stem": "State the pH values that identify an alkali.",
+      "misconceptionClass": "alkali ph-band recall",
+      "kind": "recall",
+      "modelAnswer": "An alkali has a pH above 7 (any value greater than 7).",
+      "keywords": [
+        "above",
+        "7",
+        "seven",
+        "greater",
+        "higher"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VvsXMdW3TB37JhWF::L1::Q8",
+      "moduleId": "rn_VvsXMdW3TB37JhWF::L1",
+      "stem": "Explain why copper(II) oxide is a base but is not an alkali.",
+      "misconceptionClass": "base-vs-alkali explain",
+      "kind": "explain-why",
+      "modelAnswer": "Copper(II) oxide neutralises acids, so it is a base, but it does not dissolve in water, so it cannot be an alkali; every alkali is a soluble base while many bases never dissolve.",
+      "keywords": [
+        "dissolve",
+        "dissolves",
+        "dissolving",
+        "soluble",
+        "water"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VvsXMdW3TB37JhWF::L1::Q9",
+      "moduleId": "rn_VvsXMdW3TB37JhWF::L1",
+      "stem": "A colourless solution turns red litmus paper blue. State what class of substance it is and one pH value it could have.",
+      "misconceptionClass": "litmus classification application",
+      "kind": "application",
+      "modelAnswer": "It is basic (alkaline) - an alkali or soluble base - with a pH above 7, such as pH 11.",
+      "keywords": [
+        "alkaline",
+        "alkali",
+        "basic",
+        "above",
+        "11"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_VvsXMdW3TB37JhWF::L2::Q1",
       "moduleId": "rn_VvsXMdW3TB37JhWF::L2",
       "stem": "Which ions does aqueous potassium hydroxide contain?",
@@ -370,6 +433,72 @@
           "misconception": "invented ion pair"
         }
       ]
+    },
+    {
+      "id": "rn_VvsXMdW3TB37JhWF::L2::Q6",
+      "moduleId": "rn_VvsXMdW3TB37JhWF::L2",
+      "stem": "Name the two ions present in a solution of sodium hydroxide.",
+      "misconceptionClass": "alkali ion pair recall",
+      "kind": "recall",
+      "modelAnswer": "Sodium hydroxide solution contains sodium ions (Na+) and hydroxide ions (OH-).",
+      "keywords": [
+        "na",
+        "oh",
+        "charged",
+        "cations",
+        "anions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VvsXMdW3TB37JhWF::L2::Q7",
+      "moduleId": "rn_VvsXMdW3TB37JhWF::L2",
+      "stem": "Name the two ions present in aqueous ammonia and state how they come to exist.",
+      "misconceptionClass": "aqueous ammonia ions recall",
+      "kind": "recall",
+      "modelAnswer": "Aqueous ammonia contains ammonium ions (NH4+) and hydroxide ions (OH-), formed when ammonia reacts with the water.",
+      "keywords": [
+        "ammonium",
+        "nh4",
+        "reacts",
+        "reaction",
+        "formed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VvsXMdW3TB37JhWF::L2::Q8",
+      "moduleId": "rn_VvsXMdW3TB37JhWF::L2",
+      "stem": "Explain why the words ammonia and ammonium must not be confused with each other.",
+      "misconceptionClass": "ammonia-vs-ammonium explain",
+      "kind": "explain-why",
+      "modelAnswer": "Ammonia is the neutral gas NH3, while ammonium is the positive ion NH4+ that exists in solution; one is a gas and the other an ion, and their formulas differ by one hydrogen.",
+      "keywords": [
+        "gas",
+        "ion",
+        "nh3",
+        "nh4",
+        "hydrogen",
+        "formula"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VvsXMdW3TB37JhWF::L2::Q9",
+      "moduleId": "rn_VvsXMdW3TB37JhWF::L2",
+      "stem": "A student adds sodium hydroxide dropwise to dilute hydrochloric acid. Explain why the mixture can pass from turning litmus red to turning litmus blue.",
+      "misconceptionClass": "neutralisation swing application",
+      "kind": "application",
+      "modelAnswer": "The added alkali first neutralises the acid; once every H+ has reacted, spare hydroxide ions remain in solution, so the mixture becomes alkaline and turns red litmus blue.",
+      "keywords": [
+        "neutralises",
+        "neutralised",
+        "spare",
+        "alkaline",
+        "remains",
+        "leftover"
+      ],
+      "options": []
     }
   ]
 }

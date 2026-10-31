@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_pBp5Z5C2RHTKk7Wn",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a168fdb8628b9bc7699cbafa688fa09bc914001ab6e57aebecd31c82d5fdc2fe",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "1fa442c635c8c8b4a14a32fc4e97dac999ae2c45a9516cd8316d503a58bb4d02",
+    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
   },
   "packageId": "igcse-chemistry::rn_pBp5Z5C2RHTKk7Wn",
   "subject": "igcse-chemistry",
@@ -192,6 +192,65 @@
       ]
     },
     {
+      "id": "rn_pBp5Z5C2RHTKk7Wn::L1::Q6",
+      "moduleId": "rn_pBp5Z5C2RHTKk7Wn::L1",
+      "stem": "Name the two starting solutions used to prepare the insoluble salt lead(II) sulfate.",
+      "misconceptionClass": "reactant pair recall",
+      "kind": "recall",
+      "modelAnswer": "Lead(II) nitrate solution and potassium sulfate solution are mixed together.",
+      "keywords": [
+        "nitrate",
+        "potassium"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pBp5Z5C2RHTKk7Wn::L1::Q7",
+      "moduleId": "rn_pBp5Z5C2RHTKk7Wn::L1",
+      "stem": "State the solubility requirements for the two reactants and for the product in a precipitation preparation.",
+      "misconceptionClass": "solubility requirements recall",
+      "kind": "recall",
+      "modelAnswer": "Both starting salts must be soluble while the product salt must be insoluble, so only the product falls out of solution as a solid.",
+      "keywords": [
+        "soluble",
+        "insoluble",
+        "dissolve",
+        "falls",
+        "solid"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pBp5Z5C2RHTKk7Wn::L1::Q8",
+      "moduleId": "rn_pBp5Z5C2RHTKk7Wn::L1",
+      "stem": "Explain why potassium nitrate does not appear in the collected solid sample.",
+      "misconceptionClass": "spectator fate explain",
+      "kind": "explain-why",
+      "modelAnswer": "Potassium nitrate is soluble, so it stays dissolved in the liquid above the precipitate and is washed away rather than collected.",
+      "keywords": [
+        "soluble",
+        "dissolved",
+        "stays",
+        "liquid",
+        "washed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pBp5Z5C2RHTKk7Wn::L1::Q9",
+      "moduleId": "rn_pBp5Z5C2RHTKk7Wn::L1",
+      "stem": "A student mixes sodium sulfate solution with lead(II) nitrate solution instead. State the solid that forms and the two ions that come together to make it.",
+      "misconceptionClass": "ion-pair transfer application",
+      "kind": "application",
+      "modelAnswer": "Lead(II) sulfate still forms - the lead ions meet the sulfate ions and precipitate; only the spectator partner changes, with sodium nitrate staying in solution.",
+      "keywords": [
+        "precipitate",
+        "precipitates",
+        "white"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_pBp5Z5C2RHTKk7Wn::L2::Q1",
       "moduleId": "rn_pBp5Z5C2RHTKk7Wn::L2",
       "stem": "What volumes and concentrations are used for each solution?",
@@ -370,6 +429,70 @@
           "misconception": "false reassurance"
         }
       ]
+    },
+    {
+      "id": "rn_pBp5Z5C2RHTKk7Wn::L2::Q6",
+      "moduleId": "rn_pBp5Z5C2RHTKk7Wn::L2",
+      "stem": "State the volume and concentration of lead(II) nitrate solution used at the start of the method.",
+      "misconceptionClass": "measured volume recall",
+      "kind": "recall",
+      "modelAnswer": "25 cm3 of 0.5 mol dm-3 lead(II) nitrate solution is measured into a small beaker.",
+      "keywords": [
+        "25",
+        "cm3",
+        "beaker",
+        "measured"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pBp5Z5C2RHTKk7Wn::L2::Q7",
+      "moduleId": "rn_pBp5Z5C2RHTKk7Wn::L2",
+      "stem": "State what the collected precipitate is washed with and the purpose of that wash.",
+      "misconceptionClass": "distilled-water wash recall",
+      "kind": "recall",
+      "modelAnswer": "The residue (the lead(II) sulfate precipitate) is washed with distilled water to remove traces of the other solutions.",
+      "keywords": [
+        "distilled",
+        "residue",
+        "traces",
+        "purify",
+        "impurities"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pBp5Z5C2RHTKk7Wn::L2::Q8",
+      "moduleId": "rn_pBp5Z5C2RHTKk7Wn::L2",
+      "stem": "Explain why filtration is the correct separation technique for this preparation.",
+      "misconceptionClass": "filtration choice explain",
+      "kind": "explain-why",
+      "modelAnswer": "The product is an insoluble solid suspended in liquid, so filtering traps the precipitate as the residue while the soluble spectators pass through as the filtrate.",
+      "keywords": [
+        "insoluble",
+        "solid",
+        "residue",
+        "filtrate",
+        "traps"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pBp5Z5C2RHTKk7Wn::L2::Q9",
+      "moduleId": "rn_pBp5Z5C2RHTKk7Wn::L2",
+      "stem": "The collected solid is still damp at the end of the filtration. Describe the final step and one safety precaution tied to this product.",
+      "misconceptionClass": "drying and safety application",
+      "kind": "application",
+      "modelAnswer": "The sample is left in a warm oven to dry; lead salts are toxic, so gloves and careful handling are needed throughout.",
+      "keywords": [
+        "oven",
+        "dry",
+        "dried",
+        "toxic",
+        "gloves",
+        "lead"
+      ],
+      "options": []
     }
   ]
 }
