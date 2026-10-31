@@ -10,13 +10,14 @@
  *     mount themselves, exactly like SaveMyExams' second column;
  *   - on mobile the tree is reachable from the course drawer instead.
  */
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   BookMarked,
   BookOpen,
   Bookmark,
+  ChevronDown,
   CircleHelp,
   Compass,
   FileQuestion,
@@ -31,6 +32,8 @@ import {
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import {
   CourseDataProvider,
@@ -86,17 +89,29 @@ type NavItem = {
  *     matching the aside's width ease) so the collapse/expand ease no longer
  *     ends in a hard pop. Opacity-only, which the 2026-10-30 reduced-motion
  *     audit keeps by design ("fewer and gentler, not zero").
+ *
+ * run-005 tier-b (structure, capture-verbatim): the row gains a second
+ * shape — the 44px rail (collapsed) KEEPS rows mounted as 36px icon pills
+ * (MG's rail-keep: labels hide, rows never unmount), each labelled by a
+ * Radix tooltip (MG's data-slot="tooltip-trigger" recipe; the portal
+ * escapes the aside's overflow-hidden) plus aria-label. Badges and tree
+ * indent are expanded-only — a count pill has no business in a 36px icon
+ * row. The tier-a content-swap fade retires here: rail-keep turns the
+ * collapse swap into a morph, so there is nothing left to fade.
  */
 function NavRow({
   item,
   active,
   onNavigate,
   indent = false,
+  collapsed = false,
 }: {
   item: NavItem;
   active: boolean;
   onNavigate?: () => void;
   indent?: boolean;
+  /** run-005 tier-b: the 44px rail shape — icon-only 36px row + tooltip. */
+  collapsed?: boolean;
 }) {
   // numeric badges (harvested counts, e.g. Seneca "1,736") render as quiet
   // neutral pills; "roadmap" renders as the accent pair inverted (RD "New")
@@ -118,22 +133,29 @@ function NavRow({
       <span
         aria-disabled
         title="Not part of the pilot corpus yet"
-        className="flex cursor-not-allowed items-center gap-2.5 rounded-xl px-2 py-2 text-sm text-muted-foreground"
+        className={cn(
+          "flex cursor-not-allowed items-center rounded-xl text-sm text-muted-foreground",
+          collapsed ? "size-9 justify-center" : "gap-2.5 px-2 py-2",
+        )}
       >
         <item.icon className="size-4 shrink-0 text-muted-foreground/70" aria-hidden />
-        <span className="truncate">{item.label}</span>
-        {badge}
+        {!collapsed && <span className="truncate">{item.label}</span>}
+        {!collapsed && badge}
       </span>
     );
   }
-  return (
+  const link = (
     <Link
       href={item.href}
       onClick={onNavigate}
       aria-current={active ? "page" : undefined}
+      aria-label={collapsed ? item.label : undefined}
       className={cn(
-        "course-nav-item group/navitem relative flex items-center gap-2.5 rounded-xl px-2 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-foreground/50 focus-visible:ring-inset",
-        indent && "ml-7",
+        "course-nav-item group/navitem relative flex rounded-xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-foreground/50 focus-visible:ring-inset",
+        collapsed
+          ? "size-9 items-center justify-center"
+          : "items-center gap-2.5 px-2 py-2",
+        indent && !collapsed && "ml-7",
         active
           ? "bg-accent-primary text-accent-primary-foreground"
           : "text-foreground/60 [@media(hover:hover)]:hover:bg-muted [@media(hover:hover)]:hover:text-foreground",
@@ -151,9 +173,21 @@ function NavRow({
             : "opacity-60 [@media(hover:hover)]:group-hover/navitem:opacity-100",
         )}
       />
-      <span className="truncate">{item.label}</span>
-      {badge}
+      {!collapsed && <span className="truncate">{item.label}</span>}
+      {!collapsed && badge}
     </Link>
+  );
+  // run-005 tier-b: rail rows are labelled by tooltips (hover AND focus —
+  // a native title never fires on keyboard focus), MG's collapsed-rail
+  // recipe. The wrapper is UNCONDITIONAL: asChild keeps the Link identity
+  // so the collapse toggle never remounts the row or drops focus; the
+  // content only mounts on the rail, where the label is otherwise hidden.
+  if (!collapsed) return link;
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>{link}</TooltipTrigger>
+      <TooltipContent side="right">{item.label}</TooltipContent>
+    </Tooltip>
   );
 }
 
@@ -164,24 +198,62 @@ function NavRow({
  * read techy where both references read calm. Tree children render under
  * their parent behind RD's 2px rail at 17px. One renderer so the two
  * surfaces cannot drift (the pre-run-004 duplication is what let them).
+ *
+ * run-005 tier-b: groups FOLD. The label becomes a disclosure button
+ * (aria-expanded, WAI-ARIA disclosure pattern; the chevron rides MG's
+ * transition-transform rotate idiom, instant fold like the references'
+ * un-animated collapsibles). Fold state is per-renderer in-memory — the
+ * sidebar and the drawer each remember their own, a reload opens all.
+ * On the rail the labels step aside for MG's hairline dividers
+ * (h-0.5 w-6 mx-auto) with the name kept for AT in sr-only.
  */
 function CourseNav({
   navGroups,
   pathname,
   onNavigate,
+  collapsed = false,
 }: {
   navGroups: { label: string; items: NavItem[] }[];
   pathname: string;
   onNavigate?: () => void;
+  collapsed?: boolean;
 }) {
+  const [closedGroups, setClosedGroups] = useState<Record<string, boolean>>({});
+  const navId = useId();
   return (
     <nav aria-label="Course sections">
-      {navGroups.map((g) => (
+      {navGroups.map((g) => {
+        // the rail never folds (hairlines are not controls); expanded
+        // groups fold on their own label — closed state is in-memory only
+        const closed = !collapsed && closedGroups[g.label] === true;
+        const regionId = `${navId}-${g.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+        return (
         <div key={g.label}>
-          <p className="px-2.5 pb-1 pt-5 text-sm font-medium text-muted-foreground">
-            {g.label}
-          </p>
-          <ul className="space-y-0.5">
+          {collapsed ? (
+            <>
+              <p className="sr-only">{g.label}</p>
+              <div aria-hidden className="mx-auto my-1.5 h-0.5 w-6 rounded-full bg-border" />
+            </>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setClosedGroups((s) => ({ ...s, [g.label]: !closed }))}
+              aria-expanded={!closed}
+              aria-controls={closed ? undefined : regionId}
+              className="flex w-full cursor-pointer items-center justify-between gap-2 rounded-xl px-2.5 pb-1 pt-5 text-sm font-medium text-muted-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-foreground/50 focus-visible:ring-inset [@media(hover:hover)]:hover:text-foreground"
+            >
+              {g.label}
+              <ChevronDown
+                aria-hidden
+                className={cn(
+                  "size-4 shrink-0 transition-transform duration-200",
+                  closed && "-rotate-90",
+                )}
+              />
+            </button>
+          )}
+          {!closed && (
+          <ul id={regionId} className="space-y-0.5">
             {g.items.map((item) => {
               // UX audit 2026-10-02 #13: a sibling row that claims the
               // current path via `exact` (e.g. Saved questions under
@@ -199,7 +271,7 @@ function CourseNav({
                   (pathname.startsWith(item.href) && !exactSiblings));
               return (
                 <li key={item.label}>
-                  <NavRow item={item} active={active} onNavigate={onNavigate} />
+                  <NavRow item={item} active={active} onNavigate={onNavigate} collapsed={collapsed} />
                   {item.children && (
                     <div className="relative mt-0.5 mb-1 space-y-0.5">
                       {/* RD's tree rail: 2px hairline at 17px spanning the
@@ -219,6 +291,7 @@ function CourseNav({
                             active={childActive}
                             onNavigate={onNavigate}
                             indent
+                            collapsed={collapsed}
                           />
                         );
                       })}
@@ -228,8 +301,10 @@ function CourseNav({
               );
             })}
           </ul>
+          )}
         </div>
-      ))}
+        );
+      })}
     </nav>
   );
 }
@@ -404,48 +479,17 @@ export function CourseShell({
   // NOTE (run-004b): the rail is no longer its own <aside> — the shell is
   // ONE element that animates its width between the expanded panel and the
   // 44px icon rail (MG's transition-[width] collapse; overflow-hidden
-  // clips the panel while it slides shut and the rail content swaps in
-  // behind it — the old two-aside mount swap could not animate, and the
-  // original w-0 collapse swallowed its own re-open button, which is why
-  // the rail gets a full 44px, keeping "Show menu" reachable).
-  // run-005 tier-a: the swap-in content fades (animate-in fade-in, 200ms
-  // ease-out, the aside's own ease) so the width ease lands soft on BOTH
-  // directions instead of popping. Opacity-only — the shape the
-  // reduced-motion audit contract keeps.
-  const railButton = (
-    <Button
-      variant="outline"
-      size="icon"
-      className="size-9 animate-in fade-in duration-200 shadow-xs"
-      onClick={() => setHidden(false)}
-      aria-label="Show menu"
-      title="Show menu"
-    >
-      <PanelLeftOpen className="size-4" aria-hidden />
-    </Button>
-  );
-
-  const sidebar = (
-    // run-005 tier-a: mount fade pairs the content swap with the width
-    // ease (expand direction; the railButton carries the collapse side).
-    <div className="flex h-full flex-col animate-in fade-in duration-200 ease-out">
-      <div className="flex items-center justify-between px-4 py-3">
-        <span className="text-sm font-semibold tracking-tight">{data.course.label ?? data.course.subject}</span>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="h-8 gap-1.5 px-2 text-xs text-muted-foreground"
-          onClick={() => setHidden(true)}
-        >
-          <PanelLeftClose className="size-4" aria-hidden /> Hide menu
-        </Button>
-      </div>
-
-      <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-6">
-        <CourseNav navGroups={navGroups} pathname={pathname} onNavigate={() => setOpen(false)} />
-      </div>
-    </div>
-  );
+  // clips the panel while it slides shut — the old two-aside mount swap
+  // could not animate, and the original w-0 collapse swallowed its own
+  // re-open button, which is why the rail gets a full 44px, keeping
+  // "Show menu" reachable).
+  // run-005 tier-b: the swap is gone entirely. Rail-keep (MG's recipe)
+  // keeps the nav mounted in BOTH shapes — the aside is one persistent
+  // three-region column (header / scroll area / footer dock) whose rows
+  // morph between full rows and 36px icon pills; nothing unmounts on
+  // collapse, so the width ease has no content swap to soften and the
+  // tier-a swap fade retires with it. The footer dock rides the existing
+  // ThemeToggle (one store, shared with the app-shell's own controls).
 
   return (
     <CourseDataProvider data={data}>
@@ -489,14 +533,51 @@ export function CourseShell({
         <aside
           className={cn(
             "sticky hidden shrink-0 overflow-hidden border-r bg-background transition-[width] duration-200 ease-out motion-reduce:transition-none lg:flex lg:flex-col",
-            hidden ? "w-11 items-center pt-3" : "w-64",
+            hidden ? "w-11" : "w-64",
             viewerRoute
               ? "top-0 h-[calc(100dvh-1px)]"
               : "top-14 h-[calc(100dvh-3.5rem-1px)]",
           )}
           aria-label="Course navigation"
         >
-          {hidden ? railButton : sidebar}
+          {/* header: course label + collapse toggle / re-open toggle */}
+          <div className={cn("flex items-center py-3", hidden ? "justify-center" : "justify-between px-4")}>
+            {hidden ? (
+              <Button
+                variant="outline"
+                size="icon"
+                className="size-9 shadow-xs"
+                onClick={() => setHidden(false)}
+                aria-label="Show menu"
+                title="Show menu"
+              >
+                <PanelLeftOpen className="size-4" aria-hidden />
+              </Button>
+            ) : (
+              <>
+                <span className="text-sm font-semibold tracking-tight">{data.course.label ?? data.course.subject}</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 gap-1.5 px-2 text-xs text-muted-foreground"
+                  onClick={() => setHidden(true)}
+                >
+                  <PanelLeftClose className="size-4" aria-hidden /> Hide menu
+                </Button>
+              </>
+            )}
+          </div>
+
+          <div className={cn("min-h-0 flex-1 overflow-y-auto pb-6", hidden ? "px-1" : "px-3")}>
+            <CourseNav navGroups={navGroups} pathname={pathname} onNavigate={() => setOpen(false)} collapsed={hidden} />
+          </div>
+
+          {/* run-005 tier-b footer dock: MG pins a theme/settings footer
+              under the scroll area; ours rides the existing ThemeToggle
+              (same store the app-shell header/footer already drive). */}
+          <div className={cn("flex border-t py-3", hidden ? "justify-center px-0.5" : "px-3")}>
+            <ThemeToggle variant={hidden ? "icon" : "row"} />
+          </div>
         </aside>
 
         {/* content column */}
@@ -580,6 +661,12 @@ function MobileDrawerInner({
             </div>
           </div>
         )}
+      </div>
+
+      {/* run-005 tier-b: the same footer dock the desktop sidebar carries —
+          theme switching must not be desktop-only */}
+      <div className="border-t px-3 py-3">
+        <ThemeToggle variant="row" />
       </div>
     </div>
   );
