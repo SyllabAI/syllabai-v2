@@ -23203,6 +23203,15 @@ Stage Summary:
 - CONSEQUENCE DISCLOSURE: hub-v2 is git-linked — merging the PR auto-bakes a hub production deployment; churn-only (docs+worklog), content-plane untouched, alias switches only on READY, fail-safe on ERROR.
 - NEXT: the runbook is standing guidance only — activating a new subject (B1..B8 + wave 1) remains a NEW operator-gated contract.
 
+## NS-4PH1 WAVE-1 CONTRACT OPENED — new subject igcse-physics-19, Edexcel IGCSE Physics 4PH1 (operator trace 1a192830222371a5 'open the new subject's wave-1 contract. The new subject 4ph1 physics.')
+
+- What: `.syllabai/receipts/NS-4PH1/NS-4PH1-WAVE-1-CONTRACT-20261031.json` (NEW) — the new-subject contract of record under `.syllabai/docs/new-subject-runbook.md` (hub PR #554, merge f99969a2a): B1..B8 decided at open — B1 course-id `igcse-physics-19` (byte-identical both planes + live 200 on the operator-cited surface); **B6 manifest continuity DECIDED: continue the global-continuous v-series, physics enters at v18; per-course series rejected** (rationale in the receipt); B3 pilot-first, B5 zero schema delta, B7 figureless start, B8 zero-DB inherited.
+- Register census of record: **127 notes / 8 topic dirs** (topic-nested layout vs chemistry's flat 112; flattening = D-2, fixed at the pilot); projection ~271 lessons at the chemistry ratio of record (2.1339/note); live gap verified (revision-notes 200; guided plane serves no lesson markers; hub content dir has NO guided-lessons//guided-questions//guided-import.json).
+- Clean slate: zero prior physics guided lanes (FEEDS table, hub receipts, resources SME-GuidedLessons/ all grep-0) — no duplicate-contract risk. Pins: hub f99969a2a / resources 1912a2c58 (T-SPEC-REPARSE-1 IAL_PHYSICS in-flight, unrelated lane, disclosed).
+- Dependencies of record: **D-1 derive `spec_point_resolution.json` for igcse-physics-19** (188 spec_point_links; basis Official-Specifications/igcse-physics/ 2017-spec PDF + spec.json; gate closes at/before the pilot's resources commit A); D-2 note-id minting + flattening law (fixed at the pilot).
+- NEXT: stage-A pilot authoring session owed under this contract — ONE physics note at the 9-check law through the full chain (resources commit A/B/C merge-first, hub FEED ns4ph1-stagea-v18 + 34/34, live spot-check); wave buckets partition at wave open on operator ignition; every wave operator-gated.
+- Gates: bookkeeping-only `.syllabai/**` — zero code bytes, zero schema, zero content-plane bytes, zero resources writes, no imports, no DB/Vercel writes; fetch-first re-ground at open + pre-push; race-guard rev-list re-check at push; merge method "merge"; auto-bake consequence churn-only, disclosed.
+
 ## T-GRADE-002 run-001 — CIE session-listing unlock + IAL/modular aggregate-ums calculator (trace 1a19222d36f71611)
 
 - Operator order: "extend CIE_IDS to unlock the 56 roadmap CIE courses, the IAL/modular aggregation calculator wave".

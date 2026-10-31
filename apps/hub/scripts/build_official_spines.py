@@ -42,7 +42,7 @@ REPO = Path(__file__).resolve().parent.parent
 # upstream parse this build is pinned to (resources main @ T-KG-16: paper/unit
 # applicability derived for the remaining quals — spines don't consume it, so
 # this is a provenance pin bump; T-KG-15/14 repairs beneath)
-RESOURCES_SHA = "340803c9af4a949d3e274251b08697c6b42ba016"
+RESOURCES_SHA = "1912a2c5877357faf0bc42e1563bc4bddadb0c0f"  # T-SPEC-REPARSE-1 run-001 + canonical mirror
 RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{RESOURCES_SHA}"
 DEFAULT_CACHE = Path("/home/z/my-project/work/spines-cache")
 
@@ -61,7 +61,7 @@ BOARD = "Pearson Edexcel"
 CIE_BOARD = "Cambridge CIE"
 # resources main @ CIE-PHASE0-1/1: parse_report counts + pdf_sha1 verified identical
 # across 4add496..a4ce9f5 for all 7 multi-bank/representative specs before pinning
-CIE_RESOURCES_SHA = "a0b10aac9e6ba66fba398c2e9a8d009c54092bee"
+CIE_RESOURCES_SHA = "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec"  # T-SPEC-REPARSE-1 (71-row fix-at-source re-parse)
 CIE_RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{CIE_RESOURCES_SHA}"
 # SME-WAVE2 r1 (residual 2): env override follows the lane-worktree pattern of
 # CIE_CACHE/CIE_STAGING — the of-record phase-0 receipt stays byte-untouched and
