@@ -101,3 +101,153 @@ export function primaryRow<T extends { papersNote?: string | null }>(
 ): T {
   return rows.find((r) => !isRegionalVariant(r.papersNote)) ?? rows[0];
 }
+
+// ---------------------------------------------------------------------------
+// Modular / IAL aggregation (T-GRADE-2)
+//
+// Boards award modular qualifications on aggregated UMS: each unit's raw
+// mark converts to UMS through the unit's OWN published raw+UMS boundary
+// pairs (piecewise-linear per grade point — the boards' documented method),
+// then the UMS total is graded against the cash-in's UMS boundaries.
+// The composition (which units, which optional pairs) is official board
+// structure metadata carried by the bundle; every boundary VALUE is still
+// document-sourced.
+// ---------------------------------------------------------------------------
+
+export interface AggregationUnit {
+  code: string;
+  title: string;
+  maxMark: number;
+  boundaries: BoundaryRow;
+  ums?: {
+    maxMark: number;
+    boundaries: BoundaryRow;
+  } | null;
+}
+
+/**
+ * Raw -> UMS conversion for one unit: piecewise-linear between the
+ * (raw boundary, UMS boundary) points of the unit's own published grade
+ * boundaries, anchored at (0, 0) and (maxRaw, maxUms). A null boundary
+ * (tier-capped / greyed grade) simply contributes no point. Rounds to the
+ * nearest whole UMS mark.
+ */
+export function rawToUms(unit: AggregationUnit, raw: number): number | null {
+  if (!unit.ums || !Number.isFinite(raw)) return null;
+  const r = Math.max(0, Math.min(unit.maxMark, Math.round(raw)));
+  const ladder = Object.keys(unit.ums.boundaries);
+  const points: [number, number][] = [[0, 0]];
+  for (const g of ladder) {
+    const rb = unit.boundaries[g];
+    const ub = unit.ums.boundaries[g];
+    if (typeof rb === "number" && typeof ub === "number") {
+      points.push([rb, ub]);
+    }
+  }
+  points.push([unit.maxMark, unit.ums.maxMark]);
+  points.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  // exact hit / below the first point
+  if (r <= points[0][0]) {
+    return r === points[0][0] ? points[0][1] : 0;
+  }
+  for (let i = 0; i < points.length - 1; i++) {
+    const [r0, u0] = points[i];
+    const [r1, u1] = points[i + 1];
+    if (r >= r0 && r <= r1) {
+      if (r1 === r0) return u1;
+      const frac = (r - r0) / (r1 - r0);
+      return Math.round(u0 + frac * (u1 - u0));
+    }
+  }
+  return unit.ums.maxMark;
+}
+
+/** Optional pairs the session can actually compose (both units present). */
+export function usableOptionalPairs(
+  optionalPairs: [string, string][] | undefined,
+  units: AggregationUnit[],
+): [string, string][] {
+  if (!optionalPairs) return [];
+  const codes = new Set(units.map((u) => u.code));
+  return optionalPairs.filter(([a, b]) => codes.has(a) && codes.has(b));
+}
+
+export interface AggregateInput {
+  units: AggregationUnit[];
+  /** raw mark per unit code (missing/empty treated as 0) */
+  marks: Record<string, number>;
+}
+
+export interface AggregateOutcome {
+  perUnit: { code: string; raw: number; ums: number | null; maxUms: number }[];
+  totalUms: number;
+  maxUms: number;
+  /** null when any unit could not convert (no UMS table) */
+  complete: boolean;
+}
+
+/** Convert every composition unit and sum the UMS.
+ *
+ * The caller passes exactly the units that cash in (required units plus,
+ * for pair-based compositions, the chosen pair's units) — pair selection
+ * is a UI concern, this stays pure. */
+export function aggregateUms(input: AggregateInput): AggregateOutcome {
+  const perUnit = input.units.map((u) => {
+    const raw = Math.max(
+      0,
+      Math.min(u.maxMark, Math.round(input.marks[u.code] ?? 0) || 0),
+    );
+    const ums = rawToUms(u, raw);
+    return {
+      code: u.code,
+      raw,
+      ums,
+      maxUms: u.ums?.maxMark ?? 0,
+    };
+  });
+  const complete = perUnit.every((p) => p.ums !== null);
+  return {
+    perUnit,
+    totalUms: perUnit.reduce((acc, p) => acc + (p.ums ?? 0), 0),
+    maxUms: perUnit.reduce((acc, p) => acc + p.maxUms, 0),
+    complete,
+  };
+}
+
+/**
+ * Grade an aggregated UMS total against the cash-in boundaries, applying
+ * the board's A* aggregate rule when the cash-in table itself has no A*
+ * boundary: grade A overall AND at least (a2Min) UMS across the A2 units
+ * (Pearson: "at least 90% of the A2 UMS marks" — Mathematics 480 overall
+ * + 180/200 from P3+P4; six-unit IALs 480 + 270/300).
+ */
+export function gradeFromAggregation(
+  cashIn: {
+    boundaries: BoundaryRow;
+    gradeLadder?: string[];
+  },
+  aStar:
+    | { overallMin: number; a2Min: number; a2Units: string[] }
+    | undefined,
+  agg: AggregateOutcome,
+): { grade: string | null; aStarRuleApplied: boolean } {
+  const ladder = cashIn.gradeLadder ?? Object.keys(cashIn.boundaries);
+  let grade = gradeForMark(cashIn.boundaries, ladder, agg.totalUms);
+  let aStarRuleApplied = false;
+  if (
+    aStar &&
+    agg.complete &&
+    cashIn.boundaries["A*"] === undefined &&
+    agg.totalUms >= aStar.overallMin &&
+    aStar.a2Units.reduce(
+      (acc, code) =>
+        acc +
+        (agg.perUnit.find((p) => p.code === code)?.ums ?? 0),
+      0,
+    ) >= aStar.a2Min
+  ) {
+    grade = "A*";
+    aStarRuleApplied = true;
+  }
+  return { grade, aStarRuleApplied };
+}

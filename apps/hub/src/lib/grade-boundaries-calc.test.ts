@@ -89,3 +89,220 @@ describe("variant helpers", () => {
     expect(primaryRow([{ papersNote: "1CR 2CR", v: "only" }]).v).toBe("only");
   });
 });
+
+// ---------------------------------------------------------------------------
+// T-GRADE-2 — modular / IAL aggregation
+//
+// Fixtures are REAL corpus rows (sha256-recorded documents in the resources
+// lane): WCH11 November 2020, 4WM1H June 2026, and the June 2026 YMA01
+// composition (Pearson Information Manual structure).
+// ---------------------------------------------------------------------------
+
+import {
+  aggregateUms,
+  gradeFromAggregation,
+  rawToUms,
+  usableOptionalPairs,
+  type AggregationUnit,
+} from "./grade-boundaries-calc";
+
+// WCH11 November 2020: raw /80 -> UMS /120 (A 54->96, B 45->84, …)
+const WCH11: AggregationUnit = {
+  code: "WCH11",
+  title: "Unit 1: Structure, Bonding and Introduction to Organic Chemistry",
+  maxMark: 80,
+  boundaries: { A: 54, B: 45, C: 37, D: 29, E: 21, U: 0 },
+  ums: {
+    maxMark: 120,
+    boundaries: { A: 96, B: 84, C: 72, D: 60, E: 48, U: 0 },
+  },
+};
+
+// 4WM1H June 2026: raw /100 -> UMS /120, Foundation-style null grades 2/1
+const WM1H: AggregationUnit = {
+  code: "4WM1H",
+  title: "Unit 1H: Higher Tier",
+  maxMark: 100,
+  boundaries: {
+    "9": 80, "8": 67, "7": 55, "6": 45, "5": 35,
+    "4": 25, "3": 20, "2": null, "1": null, U: 0,
+  },
+  ums: {
+    maxMark: 120,
+    boundaries: {
+      "9": 108, "8": 96, "7": 84, "6": 72, "5": 60,
+      "4": 48, "3": 42, "2": null, "1": null, U: 0,
+    },
+  },
+};
+
+// YMA01 June 2026 composition: P1-P4 mandatory + one official applied pair
+const WMA = (code: string, a: number, aStarB?: number): AggregationUnit => ({
+  code,
+  title: code,
+  maxMark: 75,
+  boundaries: aStarB
+    ? { "A*": aStarB, A: a, B: a - 6, C: a - 12, D: a - 18, E: a - 24, U: 0 }
+    : { A: a, B: a - 7, C: a - 14, D: a - 21, E: a - 28, U: 0 },
+  ums: {
+    maxMark: 100,
+    boundaries: aStarB
+      ? { "A*": 90, A: 80, B: 70, C: 60, D: 50, E: 40, U: 0 }
+      : { A: 80, B: 70, C: 60, D: 50, E: 40, U: 0 },
+  },
+});
+const YMA01_UNITS: AggregationUnit[] = [
+  WMA("WMA11", 54),
+  WMA("WMA12", 48),
+  WMA("WMA13", 57, 63),
+  WMA("WMA14", 58, 65),
+  WMA("WME01", 57),
+  WMA("WST01", 65),
+];
+const YMA01_CASHIN = {
+  boundaries: { A: 480, B: 420, C: 360, D: 300, E: 240, U: 0 },
+  gradeLadder: ["A", "B", "C", "D", "E", "U"],
+};
+const YMA01_ASTAR = { overallMin: 480, a2Min: 180, a2Units: ["WMA13", "WMA14"] };
+
+describe("rawToUms (piecewise-linear through the unit's own boundary pairs)", () => {
+  it("maps each published boundary exactly onto its UMS grade point", () => {
+    expect(rawToUms(WCH11, 54)).toBe(96); // A raw -> A UMS
+    expect(rawToUms(WCH11, 45)).toBe(84); // B
+    expect(rawToUms(WCH11, 21)).toBe(48); // E
+    expect(rawToUms(WCH11, 0)).toBe(0);
+    expect(rawToUms(WCH11, 80)).toBe(120); // max raw -> max UMS
+  });
+
+  it("interpolates linearly between adjacent grade points", () => {
+    // between E (21 -> 48) and D (29 -> 60): 25 is halfway -> 54
+    expect(rawToUms(WCH11, 25)).toBe(54);
+    // above A: 54 -> 96 and 80 -> 120, so 67 -> 96 + (13/26)*24 = 108
+    expect(rawToUms(WCH11, 67)).toBe(108);
+  });
+
+  it("skips null boundaries (tier-capped 9-1 units) and clamps", () => {
+    expect(rawToUms(WM1H, 20)).toBe(42); // grade 3 point
+    expect(rawToUms(WM1H, 10)).toBe(21); // halfway 0 -> (20, 42)
+    expect(rawToUms(WM1H, 80)).toBe(108); // grade 9 point
+    expect(rawToUms(WM1H, 100)).toBe(120);
+    expect(rawToUms(WM1H, 130)).toBe(120); // clamped above max
+    expect(rawToUms(WM1H, -5)).toBe(0); // clamped below zero
+  });
+
+  it("returns null without a UMS table", () => {
+    expect(rawToUms({ ...WCH11, ums: null }, 50)).toBe(null);
+  });
+});
+
+const marks = (m: Record<string, number>) => m;
+
+describe("aggregateUms + gradeFromAggregation (YMA01 June 2026 composition)", () => {
+  it("sums per-unit UMS and grades against the cash-in boundaries", () => {
+    const units = YMA01_UNITS.filter((u) =>
+      ["WMA11", "WMA12", "WMA13", "WMA14", "WME01", "WST01"].includes(u.code),
+    );
+    // all six units at the A boundary raw: UMS = 6 * 80 = 480 -> grade A
+    const agg = aggregateUms({
+      units,
+      marks: marks({
+        WMA11: 54, WMA12: 48, WMA13: 57, WMA14: 58, WME01: 57, WST01: 65,
+      }),
+    });
+    expect(agg.totalUms).toBe(480);
+    expect(agg.maxUms).toBe(600);
+    expect(agg.complete).toBe(true);
+    const res = gradeFromAggregation(YMA01_CASHIN, YMA01_ASTAR, agg);
+    expect(res.grade).toBe("A"); // A2 UMS = 160 < 180, so A* rule not met
+    expect(res.aStarRuleApplied).toBe(false);
+  });
+
+  it("awards A* through the official A2 rule (A overall + 180/200 from P3+P4)", () => {
+    const units = YMA01_UNITS.filter((u) =>
+      ["WMA11", "WMA12", "WMA13", "WMA14", "WME01", "WST01"].includes(u.code),
+    );
+    // P3/P4 maxed (90+90 A2 UMS >= 180), applied pair at A, total 480+
+    const agg = aggregateUms({
+      units,
+      marks: marks({
+        WMA11: 54, // 80 UMS
+        WMA12: 48, // 80
+        WMA13: 75, // 100
+        WMA14: 75, // 100
+        WME01: 57, // 80
+        WST01: 65, // 80
+      }),
+    });
+    expect(agg.totalUms).toBe(520);
+    const res = gradeFromAggregation(YMA01_CASHIN, YMA01_ASTAR, agg);
+    expect(res.grade).toBe("A*");
+    expect(res.aStarRuleApplied).toBe(true);
+  });
+
+  it("stays at A when the A2 aggregate falls short even with 480+ total", () => {
+    const units = YMA01_UNITS.filter((u) =>
+      ["WMA11", "WMA12", "WMA13", "WMA14", "WME01", "WST01"].includes(u.code),
+    );
+    const agg = aggregateUms({
+      units,
+      marks: marks({
+        WMA11: 75, WMA12: 75, // 200 from AS units
+        WMA13: 57, WMA14: 58, // A2 UMS only 160
+        WME01: 75, WST01: 65, // 160 from applied
+      }),
+    });
+    expect(agg.totalUms).toBe(540);
+    expect(gradeFromAggregation(YMA01_CASHIN, YMA01_ASTAR, agg).grade)
+      .toBe("A");
+  });
+
+  it("grades below A without touching the A* rule", () => {
+    const units = YMA01_UNITS.filter((u) =>
+      ["WMA11", "WMA12", "WMA13", "WMA14", "WME01", "WST01"].includes(u.code),
+    );
+    const agg = aggregateUms({
+      units,
+      marks: marks({
+        WMA11: 40, WMA12: 34, WMA13: 45, WMA14: 46, WME01: 43, WST01: 51,
+      }),
+    });
+    // exact C-boundary raws -> 6 x 60 = 360 UMS
+    const res = gradeFromAggregation(YMA01_CASHIN, YMA01_ASTAR, agg);
+    expect(res.grade).toBe("C");
+  });
+});
+
+describe("usableOptionalPairs + modular 4XMAH cash-in", () => {
+  it("filters pairs to those whose units the session actually lists", () => {
+    const pairs = usableOptionalPairs(
+      [
+        ["WME01", "WST01"],
+        ["WME01", "WDM11"],
+        ["WST01", "WST02"],
+      ],
+      YMA01_UNITS,
+    );
+    expect(pairs).toEqual([["WME01", "WST01"]]); // WDM11/WST02 not in fixture
+  });
+
+  it("grades the modular Maths A Higher cash-in on aggregated UMS", () => {
+    const WM2H: AggregationUnit = {
+      ...WM1H,
+      code: "4WM2H",
+      boundaries: { ...WM1H.boundaries, "9": 77, "8": 66, "7": 55, "6": 44, "5": 34, "4": 24, "3": 19 },
+    };
+    const agg = aggregateUms({
+      units: [WM1H, WM2H],
+      marks: marks({ "4WM1H": 80, "4WM2H": 77 }), // both at the 9 boundary
+    });
+    expect(agg.totalUms).toBe(216); // 108 + 108
+    const cashin = {
+      boundaries: {
+        "9": 216, "8": 192, "7": 168, "6": 144, "5": 120, "4": 96,
+        "3": 84, "2": null, "1": null, U: 0,
+      },
+      gradeLadder: ["9", "8", "7", "6", "5", "4", "3", "2", "1", "U"],
+    };
+    expect(gradeFromAggregation(cashin, undefined, agg).grade).toBe("9");
+  });
+});
