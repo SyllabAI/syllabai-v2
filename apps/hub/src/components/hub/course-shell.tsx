@@ -53,6 +53,13 @@ import { courseHasBookArchive } from "@/lib/books-registry";
 
 export type { SidebarData, SidebarVariant } from "@/components/hub/course-data-context";
 
+/** The collapsed rail is fixed 44px (`w-11`) by design — run-008 C-1 made only
+ * the EXPANDED width continuous; the rail never takes inline width. run-010
+ * uses the same constant as the hover-intent boundary (pointerenter must
+ * arrive through the rail strip, not the panel area). Keep in lockstep with
+ * the `w-11` classes below. */
+const SIDEBAR_RAIL_PX = 44;
+
 type NavItem = {
   href: string;
   label: string;
@@ -540,7 +547,21 @@ export function CourseShell({
   // rail must navigate, not float a panel), and never on viewer routes
   // (s146: the PDF is the screen — a transient panel over it on mouse-travel
   // is exactly the chrome the document-focus contract removes).
+  //
+  // run-010 (visual-smoke finding, prod repro): "Hide menu" clicked with the
+  // pointer resting inside the panel looked like a no-op — as the width ease
+  // shrinks the panel under the stationary pointer, the browser re-dispatches
+  // pointerenter at the resting coordinates (boundary churn from the DOM
+  // swap under the pointer), the guard below saw `hidden === true` and
+  // re-floated the panel mid-collapse. Hover-intent means entering through
+  // the 44px rail strip (the rail is the leftmost column and the float
+  // opens to its right), so an enter farther right is churn, not intent:
+  // ignore it. A real pointer re-entry while the float is animating under
+  // the pointer is out of the rail contract the same way (the reference
+  // rails — MG byte 1891064 w-16, RD --collapsed-width: 64px — are also
+  // left-edge strips).
   const onAsidePointerEnter = (e: React.PointerEvent<HTMLElement>) => {
+    if (e.clientX > SIDEBAR_RAIL_PX) return;
     if (hidden && !viewerRoute && e.pointerType !== "touch") setRailHover(true);
   };
   const onAsidePointerLeave = () => {
@@ -814,7 +835,12 @@ export function CourseShell({
             )}
           </div>
 
-          <div className={cn("min-h-0 flex-1 overflow-y-auto pb-6", sidebarOpen ? "px-3" : "px-1")}>
+          {/* run-011: scrollbar-none — the references' sidebar scroll
+              affordance (RD's aside scroller and MG's nav scroller both ship
+              scrollbar-none + overflow-y-auto). Wheel/touch/keyboard scroll
+              preserved; the bar itself suppressed — one scroller serves all
+              three shapes (expanded, 44px rail, run-009 float). */}
+          <div className={cn("scrollbar-none min-h-0 flex-1 overflow-y-auto pb-6", sidebarOpen ? "px-3" : "px-1")}>
             <CourseNav navGroups={navGroups} pathname={pathname} onNavigate={() => setOpen(false)} collapsed={!sidebarOpen} />
           </div>
 
@@ -900,7 +926,8 @@ function MobileDrawerInner({
           <X className="size-4" aria-hidden />
         </Button>
       </div>
-      <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-6">
+      {/* run-011: RD's mobile drawer ships scrollbar-none too. */}
+      <div className="scrollbar-none min-h-0 flex-1 overflow-y-auto px-3 pb-6">
         <CourseNav navGroups={navGroups} pathname={pathname} onNavigate={onNavigate} />
 
         {/* resource-flavoured topic tree (mobile navigation). Papers are

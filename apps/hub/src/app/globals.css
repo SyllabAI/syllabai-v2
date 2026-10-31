@@ -1298,6 +1298,24 @@
   scrollbar-width: thin;
 }
 
+/* run-011 (capture-grounded): the references' sidebar scroll affordance.
+   Both captures ship the IDENTICAL rule on their sidebar scroll containers —
+   RD  <aside aria-label="Navigation sidebar"> → "scrollbar-none … overflow-y-auto"
+   MG  sidebar <nav> scroller                  → "scrollbar-none … overflow-y-auto"
+   .scrollbar-none{-ms-overflow-style:none;scrollbar-width:none} (+ webkit
+   display:none). The sidebar still scrolls (wheel / touch / keyboard all
+   keep working) — only the bar itself is suppressed; a visible classic bar
+   would steal ~15px of the panel width and dent row alignment in every
+   shape (expanded, 44px rail, run-009 float). The page content column keeps
+   its own scrollbar — the references' content column does too. */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* Polish (2026-09-28, s133): exam-paper answer-line conventions survive into
    the corpus as literal dot-leader runs ("1..............2.............."),
    12–135 dots long, 153 questions affected. A dot run has no break

@@ -1,0 +1,66 @@
+{
+  "task": "T-TEACHME-001",
+  "run": "run-001",
+  "agent": "Super Z (zai-web session web-5e612468-7ecd-499d-8b14-7c05e8412405, chat 97a19c8c-d041-4ae2-9754-07fef634fc42, dispatch trace 1a19340982b7ffa9)",
+  "date": "2026-11-01",
+  "branch": "t-teachme-1/run-001",
+  "base": "80dd518 (origin/main at claim)",
+  "operator_commission": {
+    "trace": "1a19340982b7ffa9",
+    "quote": "accept all. Can we start implementing, for all subjects? Or choose the pilot 4ch1 first? … dispatch run-001 to your fleet (contracts + migration PR, branch t-teachme-1/commission)"
+  },
+  "rulings_of_record": {
+    "Q1": "feature 'Teach-Me'; pupil 'the Pupil'; no mascot art v1",
+    "Q2": "ADR-040 signed off: TEACH_SESSION / AI_SUGGESTED / append-only; workbench ratification only",
+    "Q3": "option A + no-affirmation guardrail (contradiction => in-character confusion; correction lives in the review card); A-vs-B pre-registered in Paper B",
+    "Q4": "3 sessions/day; Quick=3 / In-Depth=4; <=10 LLM calls & <=60k tokens/session asserted in CI; quota sentinel; no lifetime meter",
+    "Q5": "provisional: >=40 words, 0.80 verbatim-overlap flag (fail-closed), 7-day repeat-credit dedupe — one config object in run-002"
+  },
+  "scope_ruling": "4CH1 pilot first (igcse-chemistry-19), subject-agnostic build; waves per docs/TEACH_ME_PLAN.md §1 (content gate G1–G4 per course)",
+  "gates": {
+    "contracts_tsc_noEmit": "0 errors (packages/contracts, incl. teach-me.ts)",
+    "contracts_bun_test": "teach-me.test.ts: 8 pass / 0 fail / 24 expect() (positive, negative, zod-strict, doctrine pins)",
+    "db_tsc_noEmit": "0 errors (packages/db, incl. the 4 teach-* pgTable exports)",
+    "migration_trio": "0020_teach-me.sql (6.7KB, 15 statements + append-only trigger) + meta/0020_snapshot.json (91 tables, 4 new) + journal idx 20 — hand-authored per the 0016–0019 precedent (drizzle-kit generate BLOCKED at main, pre-existing: 0000_snapshot and 0019_snapshot share id bd8a24c3-f316-4e27-be6f-ebc4d048cd1b)",
+    "rebaseline_verify": "VERIFY PASS — 91/91 tables, 0 drifts (91/864/124/92/163, was 87/824/117/87/154); 0000 baseline advanced with the 4 teach-* tables (T-SENECA-001 precedent)",
+    "house_test_gate": "bun test apps/api packages: 3206 pass / 13 skip / 0 fail (incl. 8 new teach-me contract pins + 2 advanced rebaseline pins)",
+    "eslint": "n/a for touched files (eslint config is per-app; only apps/hub has one; no hub files in this PR — CI re-checks)"
+  },
+  "verification_of_record": {
+    "frozen_families_untouched": [
+      "apps/api/src/** byte-untouched (no api files in the diff)",
+      "apps/hub/** byte-untouched (hub lane is run-003)",
+      "packages/contracts/src/index.ts: ONE additive export line (scope 'barrel line only')",
+      "packages/db/src/schema/schema.ts: additive append ONLY (4 tables after learner_pdf_drawings; zero edits above line 1973)"
+    ],
+    "additive_db_law": "0020 creates ONLY new tables/indexes/FKs/one trigger; no ALTER of existing tables; no new pg enums (text+CHECK law); FKs NO ACTION (records, never cascaded)",
+    "append_only_law": "teach_coverages_append_only trigger (BEFORE UPDATE OR DELETE RAISE) enforces ADR-040 D1 at the DB layer; drizzle does not model it — survives db:pull",
+    "evidence_path": "AI_SUGGESTED TEACH_SESSION appends with 7-day (student, spec-point) dedupe are run-002 service code — the schema carries only the ledger tables (documented in the migration header)",
+    "mastery_invariant": "no diff hunk touches mastery/of-record tables or their schema exports",
+    "rebaseline_law": "0000_snapshot.json is the checked-in baseline of record; advanced with exactly the 4 new tables — no other hunk (byte-diff checked); rebaseline.ts verify PASS offline",
+    "no_text_db_defaults": "the 4 status/mode vocabularies carry NO DB defaults (house law — no ::text cast defaults anywhere in the baseline); the app supplies them, CHECKs constrain them"
+  },
+  "pending_inputs": [
+    "DATABASE_URL (Neon BRANCH, T-MIG-002 discipline) — apply 0020 on a branch, rebaseline counts (expect 91/91 tables), then the run-002 lane lands the service",
+    "CI (bun test + tsc + eslint) on the PR — local first-hand gates recorded above; CI is the binding gate",
+    "flags.json teachMe flip stays with run-003 (hub lane); nothing renders from this PR"
+  ],
+  "files": {
+    "new": [
+      "packages/contracts/src/teach-me.ts",
+      "packages/contracts/src/teach-me.test.ts",
+      "packages/db/drizzle/0020_teach-me.sql",
+      "packages/db/drizzle/meta/0020_snapshot.json",
+      "docs/TEACH_ME_PLAN.md",
+      ".syllabai/tasks/T-TEACHME-001.yaml",
+      ".syllabai/receipts/T-TEACHME-001/run-001.json"
+    ],
+    "modified": [
+      "packages/contracts/src/index.ts (one export line, precedent-chain comment)",
+      "packages/db/src/schema/schema.ts (4 additive pgTable exports + doctrine header comment)",
+      "packages/db/drizzle/meta/_journal.json (idx 20 entry, 0019-style)",
+      "packages/db/drizzle/meta/0000_snapshot.json (rebaseline: +4 tables, pins 87/824/117/87/154 -> 91/864/124/92/163)",
+      "packages/db/scripts/rebaseline.test.ts (pin bump + T-TEACHME-001 comment, count-bump tradition)"
+    ]
+  }
+}
