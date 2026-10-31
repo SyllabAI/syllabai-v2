@@ -37,9 +37,24 @@
  * "paper_asset" default, inert for sourceUrl-keyed rows under the
  * sourceUrl-OR-documentRef refine).
  *
- * SCOPE: learner-only (no token → renders nothing, honest zero chrome);
- * view-mode QP pane only (the mock keeps exam conditions; books and
- * citations are excluded by the plan's scope honesty).
+ * LOCAL PERSISTENCE (T-MG-INK-3 run-002, plan §3.7 — the operator's
+ * design law "marking = login-constrained; the other tools don't have
+ * to be"): WITHOUT a token the SAME surface mounts in LOCAL mode on the
+ * browser-local store (./ink-local-store — IndexedDB, ONE store, key =
+ * sourceUrl, syllabai-ink/1 verbatim, ZERO network calls). The pill
+ * states the posture honestly ("Local only — saved on this device.
+ * Log in to sync."); the sync states are sync-mode-only. Login NEVER
+ * auto-migrates: the consent-gated notice offers exactly Upload to
+ * account (rebaseShapes union-by-id, one PUT on the normal sync path,
+ * the local key clears only after the PUT confirms) | Discard local |
+ * dismiss (keeps local, re-arms next visit).
+ *
+ * SCOPE: view-mode QP pane only (the mock keeps exam conditions; books
+ * and citations are excluded by the plan's scope honesty). With a token
+ * the layer is learner-only as shipped; without one it renders the
+ * local-only surface — nothing leaves the device, no learnerId exists
+ * on any local shape, and the ledger planes stay fenced out (the
+ * region-mark token+paperId gate is untouched).
  *
  * A11Y POSTURE: the toolbar is the accessible surface (role=toolbar,
  * labelled controls); the ink canvas is aria-hidden (freehand strokes
@@ -85,12 +100,14 @@ import {
   clamp01,
   makeShapeId,
   normalizePoint,
+  rebaseShapes,
   shouldAppendPoint,
   type InkColor,
   type InkShape,
   type InkStrokeShape,
   type InkTextShape,
 } from "./ink";
+import { createInkLocal, inkLocalClear, inkLocalLoad } from "./ink-local-store";
 import { createInkSync, type InkSyncSnapshot } from "./ink-sync";
 import { registerLiveInk, unregisterLiveInk } from "./live-ink";
 import { paintShapes, sizeBackingStore } from "./paint";
@@ -138,6 +155,15 @@ interface HolderEntry {
   el: HTMLElement;
 }
 
+/** T-MG-INK-3 run-002 — the consent-gated migration notice's states
+ * (sync mode only; LOCAL mode never migrates — there is nothing to
+ * migrate onto). `failed` is the honest upload-failure phase: the local
+ * ink is kept and the notice says so. */
+type LocalInkMigration =
+  | { phase: "armed"; localShapes: InkShape[] }
+  | { phase: "uploading"; localShapes: InkShape[] }
+  | { phase: "failed"; localShapes: InkShape[] };
+
 export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   const [token, setToken] = useState<string | null>(null);
   const [enabled, setEnabled] = useState(false);
@@ -162,13 +188,16 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
     }
   }, []);
 
-  const sync = useMemo(
-    () =>
-      sourceUrl
-        ? createInkSync({ sourceUrl, token })
-        : null,
-    [sourceUrl, token],
-  );
+  // T-MG-INK-3 run-002: the persistence MODE FORK of record — WITH a
+  // token the sync controller is constructed exactly as shipped (and
+  // NEVER without one: the sync gate is preserved verbatim); WITHOUT a
+  // token the SAME surface mounts on the browser-local store (IndexedDB,
+  // key = sourceUrl, zero network — ./ink-local-store never touches the
+  // wire, so the fetch-spy pin holds by construction).
+  const sync = useMemo(() => {
+    if (!sourceUrl) return null;
+    return token ? createInkSync({ sourceUrl, token }) : createInkLocal({ sourceUrl });
+  }, [sourceUrl, token]);
 
   useEffect(() => {
     if (!sync) return;
@@ -207,6 +236,76 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
     registerLiveInk(sourceUrl, () => shapesRef.current);
     return () => unregisterLiveInk(sourceUrl);
   }, [sourceUrl]);
+
+  // ── T-MG-INK-3 run-002: the consent-gated migration (SYNC mode only) ──
+  // Login NEVER auto-migrates local ink. The notice arms when a token
+  // exists AND a local doc exists for this sourceUrl (probed AFTER the
+  // server doc's own read so the offer never races the GET); the
+  // working set stays the server doc's — sync mode never DRAWS from
+  // the local store.
+  const [migration, setMigration] = useState<LocalInkMigration | null>(null);
+  const migrationDismissed = useRef(false);
+  useEffect(() => {
+    if (!sync || !token || !sourceUrl) return;
+    if (snap.status === "loading") return;
+    let alive = true;
+    void inkLocalLoad(sourceUrl).then((doc) => {
+      if (!alive || migrationDismissed.current) return;
+      if (!doc || doc.shapes.length === 0) return;
+      setMigration((m) => m ?? { phase: "armed", localShapes: doc.shapes });
+    });
+    return () => {
+      alive = false;
+    };
+  }, [sync, token, sourceUrl, snap.status]);
+
+  // "Upload to account": union-by-id via the EXISTING rebaseShapes law
+  // (server doc first, the local intent appended — id collision = local
+  // wins, the newer intent), then ONE debounced PUT on the normal sync
+  // path. No new wire shape, no new endpoint.
+  const uploadLocalInk = useCallback(() => {
+    if (!sync || !migration) return;
+    sync.applyLocal(rebaseShapes(shapesRef.current, migration.localShapes));
+    setMigration({ ...migration, phase: "uploading" });
+  }, [sync, migration]);
+
+  // The epilogue watch on the normal-path snapshot: the local key
+  // clears ONLY after the server PUT confirms (synced + not dirty); a
+  // failed/conflicted upload keeps local ink and says so (the honest
+  // failed phase). A failed CLEAR keeps the notice honestly armed — the
+  // upload is idempotent (union-by-id) and Discard can retry the delete.
+  useEffect(() => {
+    if (!sync || !migration || !sourceUrl) return;
+    if (migration.phase !== "uploading") return;
+    if (snap.status === "error" || snap.status === "conflict") {
+      setMigration({ ...migration, phase: "failed" });
+      return;
+    }
+    if (snap.status === "synced" && !snap.dirty) {
+      void inkLocalClear(sourceUrl).then((ok) => {
+        if (ok) setMigration(null);
+        else
+          setMigration((m) =>
+            m && m.phase === "uploading" ? { phase: "armed", localShapes: m.localShapes } : m,
+          );
+      });
+    }
+  }, [sync, migration, snap.status, snap.dirty, sourceUrl]);
+
+  // "Discard local": deletes the local key; the notice resolves.
+  const discardLocalInk = useCallback(() => {
+    if (!sourceUrl) return;
+    void inkLocalClear(sourceUrl).then((ok) => {
+      if (ok) setMigration(null);
+    });
+  }, [sourceUrl]);
+
+  // Dismiss: keeps the local doc and re-arms next visit (per-mount —
+  // within THIS mount the offer never re-fires once dismissed).
+  const dismissMigration = useCallback(() => {
+    migrationDismissed.current = true;
+    setMigration(null);
+  }, []);
 
   // Undo/redo are session-local full-set snapshots (the doc IS the state;
   // sync-conflict rebases fold into the same set — history survives).
@@ -336,7 +435,10 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
     [rulerGuide, protractorGuide],
   );
 
-  if (!token || !sourceUrl || !sync) return null;
+  // T-MG-INK-3 run-002: the gate is the SURFACE gate (a sourceUrl to key
+  // on), not a token gate — the token chooses the persistence mode
+  // (sync vs local) in the fork above, never whether the surface renders.
+  if (!sourceUrl || !sync) return null;
 
   return (
     <>
@@ -480,30 +582,53 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             <Trash2 className="size-4" aria-hidden />
           </Button>
           <span className="mx-1 h-5 w-px bg-border" aria-hidden />
-          {/* the sync status pill — honest states only */}
-          {snap.status === "saving" && (
-            <span className="flex items-center gap-1 px-1 text-[11px] text-muted-foreground" role="status">
-              <Loader2 className="size-3 animate-spin" aria-hidden /> Saving…
-            </span>
-          )}
-          {snap.status === "synced" && (
-            <span className="flex items-center gap-1 px-1 text-[11px] text-muted-foreground" role="status">
-              <Check className="size-3" aria-hidden /> {snap.dirty ? "Saving…" : "Saved"}
-            </span>
-          )}
-          {snap.status === "conflict" && (
-            <span className="flex items-center gap-1 px-1 text-[11px] text-amber-600" role="alert">
-              <AlertTriangle className="size-3" aria-hidden /> Edited elsewhere
-            </span>
-          )}
-          {snap.status === "error" && (
+          {/* the status pill — honest states only. T-MG-INK-3 run-002:
+              LOCAL mode renders exactly ONE healthy state (the posture
+              statement, role=status) plus the honest error; the sync
+              states (Saving…/Saved/Edited elsewhere) are sync-mode-only. */}
+          {token ? (
+            <>
+              {snap.status === "saving" && (
+                <span className="flex items-center gap-1 px-1 text-[11px] text-muted-foreground" role="status">
+                  <Loader2 className="size-3 animate-spin" aria-hidden /> Saving…
+                </span>
+              )}
+              {snap.status === "synced" && (
+                <span className="flex items-center gap-1 px-1 text-[11px] text-muted-foreground" role="status">
+                  <Check className="size-3" aria-hidden /> {snap.dirty ? "Saving…" : "Saved"}
+                </span>
+              )}
+              {snap.status === "conflict" && (
+                <span className="flex items-center gap-1 px-1 text-[11px] text-amber-600" role="alert">
+                  <AlertTriangle className="size-3" aria-hidden /> Edited elsewhere
+                </span>
+              )}
+              {snap.status === "error" && (
+                <button
+                  type="button"
+                  className="flex items-center gap-1 rounded px-1 text-[11px] text-destructive underline underline-offset-2"
+                  onClick={() => sync.retry()}
+                >
+                  <AlertTriangle className="size-3" aria-hidden /> Retry sync
+                </button>
+              )}
+            </>
+          ) : snap.status === "error" ? (
             <button
               type="button"
               className="flex items-center gap-1 rounded px-1 text-[11px] text-destructive underline underline-offset-2"
               onClick={() => sync.retry()}
             >
-              <AlertTriangle className="size-3" aria-hidden /> Retry sync
+              <AlertTriangle className="size-3" aria-hidden /> Couldn't save on this device — retry
             </button>
+          ) : (
+            <span
+              className="flex items-center gap-1 px-1 text-[11px] text-muted-foreground"
+              role="status"
+              aria-label="Local only — saved on this device. Log in to sync."
+            >
+              Local only — saved on this device. Log in to sync.
+            </span>
           )}
           <Button
             size="sm"
@@ -525,6 +650,59 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
         >
           <Pen className="size-3.5" aria-hidden /> Ink
         </Button>
+      )}
+
+      {/* T-MG-INK-3 run-002: the consent-gated migration notice — sync
+          mode only, floating above the ink launcher. Exactly three exits:
+          Upload to account | Discard local | dismiss (keeps local,
+          re-arms next visit). Login never auto-migrates. */}
+      {migration && token && sourceUrl && (
+        <div
+          aria-label="Ink saved on this device"
+          className="absolute bottom-14 right-2 z-40 max-w-72 rounded-lg border bg-background/95 p-3 text-xs shadow-md backdrop-blur"
+        >
+          <p className="text-muted-foreground">
+            {migration.phase === "failed"
+              ? "Upload didn't complete — your ink is still saved on this device."
+              : "You have ink on this paper saved only on this device."}
+          </p>
+          <div className="mt-2 flex items-center gap-2">
+            <Button
+              size="sm"
+              variant="secondary"
+              className="h-7 px-2 text-xs"
+              disabled={migration.phase === "uploading"}
+              onClick={uploadLocalInk}
+            >
+              {migration.phase === "uploading" ? (
+                <>
+                  <Loader2 className="size-3 animate-spin" aria-hidden /> Uploading…
+                </>
+              ) : (
+                "Upload to account"
+              )}
+            </Button>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="h-7 px-2 text-xs text-destructive"
+              disabled={migration.phase === "uploading"}
+              onClick={discardLocalInk}
+            >
+              Discard local
+            </Button>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="ml-auto size-7 px-0"
+              aria-label="Dismiss — keep this ink on this device"
+              disabled={migration.phase === "uploading"}
+              onClick={dismissMigration}
+            >
+              <X className="size-3.5" aria-hidden />
+            </Button>
+          </div>
+        </div>
       )}
 
       {/* one canvas portal per mounted page holder */}
