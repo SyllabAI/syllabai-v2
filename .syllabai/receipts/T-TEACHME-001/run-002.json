@@ -1,0 +1,64 @@
+{
+  "task": "T-TEACHME-001",
+  "run": "run-002",
+  "agent": "Super Z (zai-web session web-5e612468-7ecd-499d-8b14-7c05e8412405, chat 97a19c8c-d041-4ae2-9754-07fef634fc42, trace 1a1936de033dd7c1)",
+  "date": "2026-11-01",
+  "branch": "t-teachme-1/run-002",
+  "base": "b8871ca (origin/main after the run-001 merge, PR #580)",
+  "operator_commission": {
+    "ruling": "CI green merge → run-002 (operator IM, 2026-11-01, trace 1a1936de033dd7c1)",
+    "carrier": "PR #580 merged at b8871ca by this agent under the operator's standing dispatch; CI hub+verify success pre-merge (first-hand API read)"
+  },
+  "scope": "API lane (plan §6/§14 run-002): the teach-me module (config/types/service/sql/routes), pinned prompts v1 wired byte-exact, the one-config-object constants (Q4/Q5), migration 0021 (teach_messages + teach_review_cards + the receipted teach_candidates_open_idx re-scope), behavioural gate suite, out-of-fence one-mount wiring",
+  "gates": {
+    "typecheck": "bun run typecheck (contracts/shared/db/api/hub) — 0 errors",
+    "tests": "bun test apps/api packages — 3227 pass / 13 skip / 0 fail (21 new teach-me tests: quota, ceilings, word floor, overlap, dedupe, D2 guardrail + runtime affirmation refusal, shape drift, evidence projection, mastery invariant, append-only source scan, prompt byte-pinning, flags parity, ownership, end idempotence, gates, chain-down, extractive law, config sanity)",
+    "rebaseline": "verifyBaseline — 93/875/126/94/165, ok=true, 0 drifts (measured on the union end-state)",
+    "live_llm": "none — T-MIG-039 fixture replay only; FakeChain/FakeStore in-memory plane",
+    "eslint": "n/a for the touched api files per app config (no hub files in this lane)"
+  },
+  "laws_landed": {
+    "D1": "coverage ledger append-only (teach_objective_coverages; 0021 keeps INSERT-only law) + evidence-credit projection in teach_sessions.flags.evidenceCredits[] with kind TEACH_SESSION / tier AI_SUGGESTED + mastery-invariant test",
+    "D2": "pinned charter fused into teachme.turn.v1; contradiction⇒confusion asserted in fixtures AND at runtime (affirmation marker on contradiction = LLM_SHAPE_DRIFT); corrections live only in the review card",
+    "D3": "quota 3/day (UTC, server-side), Quick≤5 / In-Depth≤6, ≤10 LLM calls, ≤60k estimated tokens — all fail-closed typed",
+    "D4": "≥40-word floor (sub-floor ⇒ nudge, no judge call), ≥0.80 verbatim shingle overlap ⇒ flagged (no credit), 7-day repeat-credit dedupe per (user, spec point)",
+    "T-MIG-039": "every LLM output zod-validated against the pinned prompt's JSON shape; truncation, non-extractive quotes, invented registry ids / exam anchors / practice hrefs all refused LLM_SHAPE_DRIFT"
+  },
+  "disclosures": [
+    "teach_sessions.tokens_used is a chars/4 estimate (LlmChainResponse carries no usage payload) — fail-closed ceiling law uses it regardless; sentinel treats it as an estimate.",
+    "0021 change control: run-001's 0020 shipped teach_candidates_open_idx as a GLOBAL partial unique on (status) WHERE candidate — the second session ever to reach review would fail its candidate insert (Wave-0 day one). 0021 re-scopes to (session_id) under the 0020 header's own disclosure law; insert path is also idempotent (23505 swallowed per row).",
+    "Wave-0 loader laws: revision_note.spec_point_codes is delimited TEXT (regex-narrowed in SQL, exact-token-verified in JS); knowledge_nodes.applicability not filtered in v1 (flags gate is the course scoping of record); prereqWarnings pass through [] until the T-C11 edge relation vocabulary is confirmed; chain-down maps to the toolkit's honest 503 PROVIDER_UNAVAILABLE posture (outside the contract's closed logic-error enum by design).",
+    "GET /teach-me/sessions/:id returns {session, transcript, review} — a documented composition of existing contract types (plan §6 route 5), not a new schema."
+  ],
+  "pending_inputs": [
+    "CI on this PR is the binding gate; local results above are first-hand.",
+    "Wave-0 content reality: the canon/corpus/anchor loaders hit real tables — 4CH1 G1–G3 rows must exist before the flag flip (run-003) or create refuses COURSE_NOT_ELIGIBLE fail-closed (by design).",
+    "Vague-explanation re-probe (operator; needs Pro/second account) retunes apps/api/src/teach-me/config.ts ONLY."
+  ],
+  "files": {
+    "added": [
+      "apps/api/src/teach-me/config.ts",
+      "apps/api/src/teach-me/types.ts",
+      "apps/api/src/teach-me/prompts.ts",
+      "apps/api/src/teach-me/prompts/pupil.md",
+      "apps/api/src/teach-me/prompts/teachme-turn-v1.md",
+      "apps/api/src/teach-me/prompts/teachme-review-v1.md",
+      "apps/api/src/teach-me/service.ts",
+      "apps/api/src/teach-me/sql.ts",
+      "apps/api/src/teach-me/index.ts",
+      "apps/api/test/teach-me/fixtures.ts",
+      "apps/api/test/teach-me/behavioural.test.ts",
+      "packages/db/drizzle/0021_teach-messages.sql",
+      "packages/db/drizzle/meta/0021_snapshot.json"
+    ],
+    "modified": [
+      "packages/db/drizzle/meta/0000_snapshot.json (end-state +2 tables, candidates idx re-scope)",
+      "packages/db/drizzle/meta/_journal.json (idx 21)",
+      "packages/db/src/schema/schema.ts (teachMessages + teachReviewCards + candidates idx re-scope)",
+      "packages/db/scripts/rebaseline.test.ts (pins 91/864/124/92/163 → 93/875/126/94/165)",
+      "apps/api/src/index.ts (OUT-OF-FENCE, separate commit: import + store construction + one mount line)",
+      ".syllabai/tasks/T-TEACHME-001.yaml (execution_record only)",
+      "worklog.md + .syllabai/worklog.md (append-only entries)"
+    ]
+  }
+}
