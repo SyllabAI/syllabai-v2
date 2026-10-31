@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_x5m8QBWxtKvxQ9sx",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "650f80d1c68a835f748f7e166fdeda8219b136360b96d1ef73b9f21d2d8a932b",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "7649fc38478e9db2837ca086f7187ebb7b09e7c86af0d1ccc4bc4cf75e71b3f6",
+    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
   },
   "packageId": "igcse-chemistry::rn_x5m8QBWxtKvxQ9sx",
   "subject": "igcse-chemistry",
@@ -192,6 +192,60 @@
       ]
     },
     {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L1::Q6",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L1",
+      "stem": "State the temperature change observed in the reaction mixture during an exothermic reaction.",
+      "misconceptionClass": "exothermic temperature recall",
+      "kind": "recall",
+      "modelAnswer": "Exothermic reactions give heat energy out to the surroundings, so the temperature of the reaction mixture rises.",
+      "keywords": [
+        "rises",
+        "give",
+        "out"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L1::Q7",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L1",
+      "stem": "State the direction of temperature movement inside an endothermic reaction mixture.",
+      "misconceptionClass": "endothermic temperature recall",
+      "kind": "recall",
+      "modelAnswer": "Endothermic reactions take heat in from the surroundings, so the temperature of the reaction mixture falls.",
+      "keywords": [
+        "falls",
+        "take"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L1::Q8",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L1",
+      "stem": "Explain why a displacement reaction cannot be classified from its type alone.",
+      "misconceptionClass": "displacement either way explain",
+      "kind": "explain-why",
+      "modelAnswer": "Displacement reactions can transfer energy either way, so some give heat out while others take it in, and only the measured temperature change reveals which.",
+      "keywords": [
+        "either",
+        "measured",
+        "reveals"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L1::Q9",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L1",
+      "stem": "Two unknown reactions are set up side by side, each with a thermometer in the mixture. State what single reading separates exothermic from endothermic in each tube.",
+      "misconceptionClass": "thermometer classification application",
+      "kind": "application",
+      "modelAnswer": "Whether the thermometer shows a rise or a fall separates them: a temperature rise marks an exothermic change and a fall marks an endothermic one.",
+      "keywords": [
+        "rise",
+        "fall"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_x5m8QBWxtKvxQ9sx::L2::Q1",
       "moduleId": "rn_x5m8QBWxtKvxQ9sx::L2",
       "stem": "A student claims energy was destroyed in a reaction that cooled. What is the correct response?",
@@ -370,6 +424,62 @@
           "misconception": "products hoard heat"
         }
       ]
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L2::Q6",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L2",
+      "stem": "State the law that says energy cannot be created or destroyed.",
+      "misconceptionClass": "conservation law recall",
+      "kind": "recall",
+      "modelAnswer": "The law of conservation of energy says energy cannot be created or destroyed, only transferred.",
+      "keywords": [
+        "conservation",
+        "transferred"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L2::Q7",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L2",
+      "stem": "State two reaction types that always give energy out.",
+      "misconceptionClass": "exothermic examples recall",
+      "kind": "recall",
+      "modelAnswer": "Neutralisation and combustion are exothermic examples that always give energy out.",
+      "keywords": [
+        "neutralisation",
+        "combustion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L2::Q8",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L2",
+      "stem": "Account for the energy gap that opens between products and reactants in an exothermic change.",
+      "misconceptionClass": "energy account explain",
+      "kind": "explain-why",
+      "modelAnswer": "The energy released moved to the surroundings, and because energy is conserved the products must hold less energy than the reactants by exactly the amount transferred.",
+      "keywords": [
+        "conserved",
+        "transferred",
+        "moved",
+        "surroundings"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L2::Q9",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L2",
+      "stem": "A results table lists temperature changes of -6, +2 and -9 degrees Celsius for three reactions. State how the table classifies each row.",
+      "misconceptionClass": "sign classification application",
+      "kind": "application",
+      "modelAnswer": "The negative temperature changes mark endothermic rows and the positive change marks an exothermic row, so the table classifies each reaction by the sign of its temperature change.",
+      "keywords": [
+        "negative",
+        "positive",
+        "rows",
+        "sign"
+      ],
+      "options": []
     }
   ]
 }

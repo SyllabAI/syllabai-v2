@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_tvwj4VZ6yFscPJfD",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "084bce7003dc2a508f27b27dd0c651b4344138aa98653bb68a555fbfb8964b2b",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "a0a0a33ee2c159cede8e82c574a6cf565ad7e13dd775828b29d93074d358777c",
+    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
   },
   "packageId": "igcse-chemistry::rn_tvwj4VZ6yFscPJfD",
   "subject": "igcse-chemistry",
@@ -192,6 +192,64 @@
       ]
     },
     {
+      "id": "rn_tvwj4VZ6yFscPJfD::L1::Q6",
+      "moduleId": "rn_tvwj4VZ6yFscPJfD::L1",
+      "stem": "State what a catalyst does to the rate of a reaction and to itself by the end.",
+      "misconceptionClass": "catalyst definition recall",
+      "kind": "recall",
+      "modelAnswer": "A catalyst raises the rate of the reaction yet finishes chemically unchanged.",
+      "keywords": [
+        "raises",
+        "unchanged",
+        "finishes",
+        "chemically"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tvwj4VZ6yFscPJfD::L1::Q7",
+      "moduleId": "rn_tvwj4VZ6yFscPJfD::L1",
+      "stem": "State where a catalyst is written in a chemical equation.",
+      "misconceptionClass": "catalyst notation recall",
+      "kind": "recall",
+      "modelAnswer": "A catalyst is written above or below the reaction arrow rather than in the equation itself.",
+      "keywords": [
+        "above",
+        "below",
+        "arrow"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tvwj4VZ6yFscPJfD::L1::Q8",
+      "moduleId": "rn_tvwj4VZ6yFscPJfD::L1",
+      "stem": "Explain why weighing a catalyst before and after a reaction gives the same reading.",
+      "misconceptionClass": "mass conservation explain",
+      "kind": "explain-why",
+      "modelAnswer": "The catalyst is not consumed or altered by the reaction, so its mass reads exactly the same before and after.",
+      "keywords": [
+        "consumed",
+        "altered",
+        "mass",
+        "reads"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tvwj4VZ6yFscPJfD::L1::Q9",
+      "moduleId": "rn_tvwj4VZ6yFscPJfD::L1",
+      "stem": "A technician has 2 g of manganese(IV) oxide and a recipe calling for 0.2 g per run. State what happens to the remaining catalyst and what this shows about the quantity needed.",
+      "misconceptionClass": "small amounts application",
+      "kind": "application",
+      "modelAnswer": "The remaining catalyst can be reused in later runs unchanged, showing that only small amounts of a catalyst are needed to have an effect.",
+      "keywords": [
+        "reused",
+        "small",
+        "effect"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_tvwj4VZ6yFscPJfD::L2::Q1",
       "moduleId": "rn_tvwj4VZ6yFscPJfD::L2",
       "stem": "How does a catalyst speed up a reaction?",
@@ -370,6 +428,62 @@
           "misconception": "molecule swapped"
         }
       ]
+    },
+    {
+      "id": "rn_tvwj4VZ6yFscPJfD::L2::Q6",
+      "moduleId": "rn_tvwj4VZ6yFscPJfD::L2",
+      "stem": "Name the biological molecules that speed up reactions in living systems without being used up.",
+      "misconceptionClass": "enzymes recall",
+      "kind": "recall",
+      "modelAnswer": "Enzymes act as the catalysts in biological systems.",
+      "keywords": [
+        "enzymes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tvwj4VZ6yFscPJfD::L2::Q7",
+      "moduleId": "rn_tvwj4VZ6yFscPJfD::L2",
+      "stem": "State how a solid catalyst provides its lower-energy route.",
+      "misconceptionClass": "surface adsorption recall",
+      "kind": "recall",
+      "modelAnswer": "The catalyst attracts reactant molecules onto its surface, providing a lower-energy route for the reaction.",
+      "keywords": [
+        "attracts",
+        "surface",
+        "molecules"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tvwj4VZ6yFscPJfD::L2::Q8",
+      "moduleId": "rn_tvwj4VZ6yFscPJfD::L2",
+      "stem": "Explain why more collisions succeed on a catalysed route.",
+      "misconceptionClass": "lower-energy route explain",
+      "kind": "explain-why",
+      "modelAnswer": "The catalyst opens a lower-energy pathway, so a greater proportion of colliding molecules carries the energy needed to succeed.",
+      "keywords": [
+        "pathway",
+        "proportion",
+        "colliding"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tvwj4VZ6yFscPJfD::L2::Q9",
+      "moduleId": "rn_tvwj4VZ6yFscPJfD::L2",
+      "stem": "An industrial process switches to a better catalyst. State the two commercial gains recorded in industry.",
+      "misconceptionClass": "industrial gains application",
+      "kind": "application",
+      "modelAnswer": "Catalysis raises production rates and reduces the energy costs of the process, so the plant gains speed and savings.",
+      "keywords": [
+        "raises",
+        "production",
+        "reduces",
+        "costs",
+        "savings"
+      ],
+      "options": []
     }
   ]
 }

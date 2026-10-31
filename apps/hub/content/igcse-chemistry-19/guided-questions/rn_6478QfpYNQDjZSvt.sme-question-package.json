@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_6478QfpYNQDjZSvt",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "0c4b50f3b8e9049b1a1dacfc10663c3f6f125a53f09ad25bfb3630c2614dc497",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "971b491d4690aeb981ca687bc506484c857699a1325da9441a6c2f48aad5c893",
+    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
   },
   "packageId": "igcse-chemistry::rn_6478QfpYNQDjZSvt",
   "subject": "igcse-chemistry",
@@ -192,6 +192,64 @@
       ]
     },
     {
+      "id": "rn_6478QfpYNQDjZSvt::L1::Q6",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L1",
+      "stem": "State how the acid is added to the alkali during the temperature-change practical.",
+      "misconceptionClass": "acid addition recall",
+      "kind": "recall",
+      "modelAnswer": "The acid is added in 5 cm3 portions, recording the highest temperature reached after each addition.",
+      "keywords": [
+        "portions",
+        "5",
+        "cm3",
+        "increments"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L1::Q7",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L1",
+      "stem": "Name the container used to hold the reacting solutions in this calorimetry practical.",
+      "misconceptionClass": "calorimeter recall",
+      "kind": "recall",
+      "modelAnswer": "A polystyrene calorimeter with a lid holds the solutions while they react.",
+      "keywords": [
+        "polystyrene",
+        "calorimeter",
+        "cup"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L1::Q8",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L1",
+      "stem": "Explain why a lid is required on the calorimeter in this practical.",
+      "misconceptionClass": "lid purpose explain",
+      "kind": "explain-why",
+      "modelAnswer": "The lid prevents heat loss from the calorimeter to the surroundings, so the temperature rise recorded reflects the reaction rather than lost energy.",
+      "keywords": [
+        "heat",
+        "loss",
+        "prevents",
+        "surroundings"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L1::Q9",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L1",
+      "stem": "After a 5 cm3 portion of acid is stirred in, the thermometer reading keeps rising for a moment. State which temperature the student should record for this addition.",
+      "misconceptionClass": "peak reading application",
+      "kind": "application",
+      "modelAnswer": "The student records the highest temperature reached by the mixture after the addition, because that peak shows the full energy released by the portion added.",
+      "keywords": [
+        "highest",
+        "peak",
+        "maximum"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_6478QfpYNQDjZSvt::L2::Q1",
       "moduleId": "rn_6478QfpYNQDjZSvt::L2",
       "stem": "What goes on the two axes of the graph plotted from this practical?",
@@ -370,6 +428,61 @@
           "misconception": "topic intrusion"
         }
       ]
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L2::Q6",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L2",
+      "stem": "State the two quantities recorded in the results table for the neutralisation practical.",
+      "misconceptionClass": "table columns recall",
+      "kind": "recall",
+      "modelAnswer": "The table records the volume of acid added against the highest temperature the mixture reached.",
+      "keywords": [
+        "volume",
+        "temperature",
+        "acid"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L2::Q7",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L2",
+      "stem": "Which line is drawn through the plotted points on the results graph?",
+      "misconceptionClass": "line of best fit recall",
+      "kind": "recall",
+      "modelAnswer": "A line of best fit is drawn through the plotted points on the graph.",
+      "keywords": [
+        "best",
+        "fit"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L2::Q8",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L2",
+      "stem": "Explain why a bigger temperature difference between the start and the peak means more energy was transferred by the reaction.",
+      "misconceptionClass": "temperature difference explain",
+      "kind": "explain-why",
+      "modelAnswer": "The temperature difference shows the energy absorbed or released; a larger rise means the reaction transferred more energy to warm the mixture, assuming the same mass and specific heat capacity.",
+      "keywords": [
+        "absorbed",
+        "released",
+        "warm",
+        "capacity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L2::Q9",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L2",
+      "stem": "A student's graph peaks at 25 cm3 of acid and flattens either side. State what the graph shows at that volume.",
+      "misconceptionClass": "peak volume application",
+      "kind": "application",
+      "modelAnswer": "The graph identifies 25 cm3 as the volume of acid causing the biggest temperature change, marking the point where the reactants exactly neutralise each other.",
+      "keywords": [
+        "biggest",
+        "neutralise"
+      ],
+      "options": []
     }
   ]
 }

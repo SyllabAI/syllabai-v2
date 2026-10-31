@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_y85XYRv5QfgZFQxv",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "1e04311b112db053c21725c33ec74847a63008b594b0b1f169e4d3f9c63a4dac",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "fd355ff07c62531ab287f82bd9e4282a9916040cef4bafc38100bc483de2db9d",
+    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
   },
   "packageId": "igcse-chemistry::rn_y85XYRv5QfgZFQxv",
   "subject": "igcse-chemistry",
@@ -192,6 +192,60 @@
       ]
     },
     {
+      "id": "rn_y85XYRv5QfgZFQxv::L1::Q6",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L1",
+      "stem": "State what the height difference between the reactant and product levels shows on a reaction profile.",
+      "misconceptionClass": "profile height recall",
+      "kind": "recall",
+      "modelAnswer": "The height difference represents the overall enthalpy change of the reaction.",
+      "keywords": [
+        "enthalpy",
+        "overall"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L1::Q7",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L1",
+      "stem": "State the sign of the enthalpy value and the arrow direction for an exothermic profile.",
+      "misconceptionClass": "profile exothermic recall",
+      "kind": "recall",
+      "modelAnswer": "For an exothermic reaction the enthalpy value is negative and the arrow points downwards.",
+      "keywords": [
+        "negative",
+        "downwards"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L1::Q8",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L1",
+      "stem": "Explain what the climb from the reactant level up to the peak of the curve marks on a reaction profile.",
+      "misconceptionClass": "activation energy explain",
+      "kind": "explain-why",
+      "modelAnswer": "The climb marks the activation energy, the energy needed to start the reaction before the products can form.",
+      "keywords": [
+        "activation",
+        "needed",
+        "start"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L1::Q9",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L1",
+      "stem": "A profile shows the product level above the reactant level with an upward arrow. State the enthalpy sign and the type of change drawn.",
+      "misconceptionClass": "profile endothermic application",
+      "kind": "application",
+      "modelAnswer": "The enthalpy value is positive and the profile shows an endothermic change, because the products end higher than the reactants.",
+      "keywords": [
+        "positive",
+        "endothermic",
+        "higher"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_y85XYRv5QfgZFQxv::L2::Q1",
       "moduleId": "rn_y85XYRv5QfgZFQxv::L2",
       "stem": "How does a catalyst appear on a reaction profile?",
@@ -370,6 +424,62 @@
           "misconception": "absurd link"
         }
       ]
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L2::Q6",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L2",
+      "stem": "State what catalysts provide to the reactants on an energy profile.",
+      "misconceptionClass": "catalyst pathway recall",
+      "kind": "recall",
+      "modelAnswer": "Catalysts provide the reactants with an alternative pathway of lower activation energy.",
+      "keywords": [
+        "alternative",
+        "pathway",
+        "lower",
+        "activation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L2::Q7",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L2",
+      "stem": "State how the catalysed and uncatalysed runs differ in the time they take.",
+      "misconceptionClass": "catalysed timing recall",
+      "kind": "recall",
+      "modelAnswer": "The catalysed reaction finishes faster than the same reaction without the catalyst.",
+      "keywords": [
+        "finishes",
+        "faster"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L2::Q8",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L2",
+      "stem": "Explain why lowering the peak of the profile means more molecules can react successfully.",
+      "misconceptionClass": "peak lowering explain",
+      "kind": "explain-why",
+      "modelAnswer": "A lower peak means a greater proportion of molecules carries the energy needed for an effective collision, so more collisions succeed.",
+      "keywords": [
+        "proportion",
+        "carries",
+        "effective"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L2::Q9",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L2",
+      "stem": "After a catalyst is added to a reaction, a second profile is drawn on the same axes. State what stays identical between the two profiles.",
+      "misconceptionClass": "levels unchanged application",
+      "kind": "application",
+      "modelAnswer": "The reactant and product levels stay unchanged by adding the catalyst; only the peak height falls.",
+      "keywords": [
+        "levels",
+        "unchanged",
+        "falls"
+      ],
+      "options": []
     }
   ]
 }

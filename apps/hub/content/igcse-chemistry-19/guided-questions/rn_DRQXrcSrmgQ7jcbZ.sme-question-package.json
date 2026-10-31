@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_DRQXrcSrmgQ7jcbZ",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b9f4ec2a87b2a45590d78a759d8fbd9f8b3caca02ead07ecfa44a7c1a8eae21b",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "b1b59ca9691d2ed8d05f355d3f0e3f0584b8468bb03431021d05a079677adb51",
+    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
   },
   "packageId": "igcse-chemistry::rn_DRQXrcSrmgQ7jcbZ",
   "subject": "igcse-chemistry",
@@ -192,6 +192,59 @@
       ]
     },
     {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L1::Q6",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L1",
+      "stem": "State what a shift to the right means for an equilibrium mixture.",
+      "misconceptionClass": "shift right recall",
+      "kind": "recall",
+      "modelAnswer": "A shift to the right means the forward reaction is favoured, so more products form.",
+      "keywords": [
+        "forward",
+        "products",
+        "favoured"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L1::Q7",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L1",
+      "stem": "Which direction of shift does raising the temperature cause at equilibrium?",
+      "misconceptionClass": "temperature shift recall",
+      "kind": "recall",
+      "modelAnswer": "Raising the temperature shifts the equilibrium in the direction of the endothermic reaction.",
+      "keywords": [
+        "endothermic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L1::Q8",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L1",
+      "stem": "Explain why lowering the temperature favours the exothermic direction at equilibrium.",
+      "misconceptionClass": "exothermic shift explain",
+      "kind": "explain-why",
+      "modelAnswer": "Lowering the temperature removes thermal energy from the mixture, so the equilibrium shifts in the exothermic direction, which releases heat and restores the balance.",
+      "keywords": [
+        "releases",
+        "heat",
+        "restores"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L1::Q9",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L1",
+      "stem": "A closed system's equilibrium shifts left after the conditions change. State what forms more as a result.",
+      "misconceptionClass": "shift left application",
+      "kind": "application",
+      "modelAnswer": "A shift to the left favours the reverse reaction, so more reactants form.",
+      "keywords": [
+        "reverse",
+        "reactants"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_DRQXrcSrmgQ7jcbZ::L2::Q1",
       "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L2",
       "stem": "Why does increased pressure favour fewer gas molecules?",
@@ -372,6 +425,60 @@
       ]
     },
     {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L2::Q6",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L2",
+      "stem": "Which side of an equilibrium does increasing the pressure favour?",
+      "misconceptionClass": "pressure side recall",
+      "kind": "recall",
+      "modelAnswer": "Increasing the pressure favours the reaction producing the fewest gas molecules.",
+      "keywords": [
+        "fewest",
+        "fewer",
+        "molecules"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L2::Q7",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L2",
+      "stem": "State which substances in an equilibrium mixture are affected by a pressure change.",
+      "misconceptionClass": "pressure scope recall",
+      "kind": "recall",
+      "modelAnswer": "Only gases in the equilibrium mixture are affected by changes in pressure; solids and liquids are not.",
+      "keywords": [
+        "gases",
+        "gas"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L2::Q8",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L2",
+      "stem": "Explain why changing the pressure has no effect on an equilibrium with equal numbers of gas molecules on both sides.",
+      "misconceptionClass": "equal molecules explain",
+      "kind": "explain-why",
+      "modelAnswer": "With equal numbers of gas molecules on each side, raising or lowering the pressure squeezes both sides equally, so neither direction is favoured and the balance stays unchanged.",
+      "keywords": [
+        "balance",
+        "unchanged",
+        "equally"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L2::Q9",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L2",
+      "stem": "The pressure over an equilibrium mixture is decreased. State which reaction direction is favoured.",
+      "misconceptionClass": "pressure drop application",
+      "kind": "application",
+      "modelAnswer": "Decreasing the pressure favours the reaction producing the most gas molecules, because that side counteracts the pressure drop.",
+      "keywords": [
+        "most",
+        "counteracts"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_DRQXrcSrmgQ7jcbZ::L3::Q1",
       "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L3",
       "stem": "What effect does a catalyst have on the position of equilibrium?",
@@ -550,6 +657,63 @@
           "misconception": "consumption myth"
         }
       ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L3::Q6",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L3",
+      "stem": "State the effect of a catalyst on the time needed to reach equilibrium.",
+      "misconceptionClass": "catalyst time recall",
+      "kind": "recall",
+      "modelAnswer": "A catalyst increases the rate at which equilibrium is reached, so the mixture gets there sooner.",
+      "keywords": [
+        "rate",
+        "sooner",
+        "faster"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L3::Q7",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L3",
+      "stem": "State what a catalyst does to the position of an equilibrium.",
+      "misconceptionClass": "catalyst position recall",
+      "kind": "recall",
+      "modelAnswer": "A catalyst leaves the equilibrium position exactly where it was, changing only how quickly it is attained.",
+      "keywords": [
+        "leaves",
+        "unchanged"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L3::Q8",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L3",
+      "stem": "Explain why the concentrations at equilibrium are the same whether or not a catalyst is present.",
+      "misconceptionClass": "catalyst concentrations explain",
+      "kind": "explain-why",
+      "modelAnswer": "A catalyst speeds the forward and backward reactions equally, so the rates still balance at the same composition; the mixture simply gets there sooner.",
+      "keywords": [
+        "equally",
+        "balance",
+        "composition",
+        "sooner"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L3::Q9",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L3",
+      "stem": "Two identical rate graphs are drawn, one with a catalyst and one without. State how the catalysed curve differs.",
+      "misconceptionClass": "catalysed curve application",
+      "kind": "application",
+      "modelAnswer": "The catalysed run flattens sooner because equilibrium is reached faster, but it levels off at the identical final level, since the position is unchanged.",
+      "keywords": [
+        "flattens",
+        "sooner",
+        "level",
+        "unchanged"
+      ],
+      "options": []
     }
   ]
 }

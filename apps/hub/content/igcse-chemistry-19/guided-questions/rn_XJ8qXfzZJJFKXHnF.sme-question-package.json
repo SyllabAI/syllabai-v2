@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_XJ8qXfzZJJFKXHnF",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4b2902eee71a446d10548b470b3837b3e53ec5e3c8b538289dd0dfa3cb15031e",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "3bade22b6a96a7188cf152cc3e5b004aa896ff54bab5e7bffd0303a9f1a7d585",
+    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
   },
   "packageId": "igcse-chemistry::rn_XJ8qXfzZJJFKXHnF",
   "subject": "igcse-chemistry",
@@ -192,6 +192,65 @@
       ]
     },
     {
+      "id": "rn_XJ8qXfzZJJFKXHnF::L1::Q6",
+      "moduleId": "rn_XJ8qXfzZJJFKXHnF::L1",
+      "stem": "State where the gas is collected in the surface area experiment.",
+      "misconceptionClass": "gas collection recall",
+      "kind": "recall",
+      "modelAnswer": "A delivery tube feeds the gas into an inverted measuring cylinder standing in a water trough.",
+      "keywords": [
+        "delivery",
+        "tube",
+        "trough",
+        "inverted"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_XJ8qXfzZJJFKXHnF::L1::Q7",
+      "moduleId": "rn_XJ8qXfzZJJFKXHnF::L1",
+      "stem": "State what is watched in the concentration experiment as the mixture clouds.",
+      "misconceptionClass": "cross marker recall",
+      "kind": "recall",
+      "modelAnswer": "A cross drawn under the flask is watched until it disappears as the mixture clouds.",
+      "keywords": [
+        "cross",
+        "disappears",
+        "flask"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_XJ8qXfzZJJFKXHnF::L1::Q8",
+      "moduleId": "rn_XJ8qXfzZJJFKXHnF::L1",
+      "stem": "Explain why sodium thiosulfate is diluted with water in the concentration experiment.",
+      "misconceptionClass": "thiosulfate dilution explain",
+      "kind": "explain-why",
+      "modelAnswer": "Diluting the sodium thiosulfate with water gives reaction mixtures of different concentrations, so the effect of concentration on the rate can be tested.",
+      "keywords": [
+        "diluting",
+        "different",
+        "concentrations",
+        "effect"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_XJ8qXfzZJJFKXHnF::L1::Q9",
+      "moduleId": "rn_XJ8qXfzZJJFKXHnF::L1",
+      "stem": "Two chip sizes are tested and the gas volume read after the same fixed time. State the comparison this timing choice allows.",
+      "misconceptionClass": "fixed timing application",
+      "kind": "application",
+      "modelAnswer": "Reading every gas volume over the same fixed time means the two chip sizes can be compared fairly, since only the surface area differs between the runs.",
+      "keywords": [
+        "fairly",
+        "compared",
+        "differs",
+        "runs"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_XJ8qXfzZJJFKXHnF::L2::Q1",
       "moduleId": "rn_XJ8qXfzZJJFKXHnF::L2",
       "stem": "What times the end of the temperature experiment?",
@@ -372,6 +431,61 @@
       ]
     },
     {
+      "id": "rn_XJ8qXfzZJJFKXHnF::L2::Q6",
+      "moduleId": "rn_XJ8qXfzZJJFKXHnF::L2",
+      "stem": "State what is measured in the temperature experiment once the magnesium strip is added.",
+      "misconceptionClass": "stopwatch timing recall",
+      "kind": "recall",
+      "modelAnswer": "A stopwatch is started and the time taken for the magnesium metal to dissolve is recorded.",
+      "keywords": [
+        "stopwatch",
+        "dissolve",
+        "recorded"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_XJ8qXfzZJJFKXHnF::L2::Q7",
+      "moduleId": "rn_XJ8qXfzZJJFKXHnF::L2",
+      "stem": "State the catalyst added to hydrogen peroxide in the catalyst experiment.",
+      "misconceptionClass": "peroxide catalyst recall",
+      "kind": "recall",
+      "modelAnswer": "Manganese(IV) oxide is added to hydrogen peroxide, and the oxygen produced is collected.",
+      "keywords": [
+        "manganese",
+        "iv"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_XJ8qXfzZJJFKXHnF::L2::Q8",
+      "moduleId": "rn_XJ8qXfzZJJFKXHnF::L2",
+      "stem": "Explain why the catalyst experiment is repeated without the catalyst.",
+      "misconceptionClass": "control run explain",
+      "kind": "explain-why",
+      "modelAnswer": "Repeating the run without the catalyst gives a control gas volume, so the two runs can be compared to show how much faster the catalysed decomposition is.",
+      "keywords": [
+        "control",
+        "compared",
+        "faster",
+        "runs"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_XJ8qXfzZJJFKXHnF::L2::Q9",
+      "moduleId": "rn_XJ8qXfzZJJFKXHnF::L2",
+      "stem": "A student heats the acid to 40 degrees Celsius for one run and 60 degrees Celsius for another. State which piece of apparatus keeps each run at its set temperature.",
+      "misconceptionClass": "water bath application",
+      "kind": "application",
+      "modelAnswer": "A water bath holds each run at its set temperature while the dilute hydrochloric acid is heated.",
+      "keywords": [
+        "bath",
+        "holds"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_XJ8qXfzZJJFKXHnF::L3::Q1",
       "moduleId": "rn_XJ8qXfzZJJFKXHnF::L3",
       "stem": "What shape distinguishes the graph of a faster reaction from a slower one?",
@@ -550,6 +664,67 @@
           "misconception": "topic crossed"
         }
       ]
+    },
+    {
+      "id": "rn_XJ8qXfzZJJFKXHnF::L3::Q6",
+      "moduleId": "rn_XJ8qXfzZJJFKXHnF::L3",
+      "stem": "State the four factors affecting the rate of a reaction.",
+      "misconceptionClass": "rate factors recall",
+      "kind": "recall",
+      "modelAnswer": "The factors are concentration or pressure, temperature, the surface area of solids, and catalysts.",
+      "keywords": [
+        "concentration",
+        "pressure",
+        "temperature",
+        "surface",
+        "catalysts"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_XJ8qXfzZJJFKXHnF::L3::Q7",
+      "moduleId": "rn_XJ8qXfzZJJFKXHnF::L3",
+      "stem": "State how a faster reaction looks different on a rate graph.",
+      "misconceptionClass": "rate graph shape recall",
+      "kind": "recall",
+      "modelAnswer": "A faster reaction shows a steeper starting gradient that becomes horizontal sooner.",
+      "keywords": [
+        "steeper",
+        "gradient",
+        "horizontal",
+        "sooner"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_XJ8qXfzZJJFKXHnF::L3::Q8",
+      "moduleId": "rn_XJ8qXfzZJJFKXHnF::L3",
+      "stem": "Explain why graphs for reactions run under changed conditions all finish at the same amount of product.",
+      "misconceptionClass": "same product explain",
+      "kind": "explain-why",
+      "modelAnswer": "Changing the conditions only alters how quickly the reaction reaches completion, not how much product the limiting amounts of reactants can make, so every curve levels at the same final amount.",
+      "keywords": [
+        "completion",
+        "limiting",
+        "amounts",
+        "final"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_XJ8qXfzZJJFKXHnF::L3::Q9",
+      "moduleId": "rn_XJ8qXfzZJJFKXHnF::L3",
+      "stem": "A chemical plant wants to make its product faster without hiring more staff. State the commercial benefit of raising the rate of reaction.",
+      "misconceptionClass": "industry benefit application",
+      "kind": "application",
+      "modelAnswer": "Faster production is more efficient and sustainable, cutting the time and energy cost per batch for the plant.",
+      "keywords": [
+        "efficient",
+        "sustainable",
+        "cutting",
+        "batch"
+      ],
+      "options": []
     }
   ]
 }

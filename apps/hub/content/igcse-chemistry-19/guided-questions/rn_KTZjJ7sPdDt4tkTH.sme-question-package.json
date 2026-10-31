@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_KTZjJ7sPdDt4tkTH",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4649fc86a02ba5fd71d61db6b3ecb3c53e5d1675724c656c51816c93f16a4935",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "23433b4593fadf71c7c1238e0ae3d2674a1b5c19441648eaca4fee8bb6dfea7f",
+    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
   },
   "packageId": "igcse-chemistry::rn_KTZjJ7sPdDt4tkTH",
   "subject": "igcse-chemistry",
@@ -192,6 +192,63 @@
       ]
     },
     {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L1::Q6",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L1",
+      "stem": "State why breaking bonds takes in energy.",
+      "misconceptionClass": "bond breaking recall",
+      "kind": "recall",
+      "modelAnswer": "Bond-breaking is endothermic because energy must be taken in to pull the atoms apart and break their bonds.",
+      "keywords": [
+        "endothermic",
+        "taken",
+        "apart"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L1::Q7",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L1",
+      "stem": "State the unit in which bond energies are usually quoted.",
+      "misconceptionClass": "bond energy unit recall",
+      "kind": "recall",
+      "modelAnswer": "Bond energies are usually quoted in kilojoules per mole of bonds.",
+      "keywords": [
+        "kilojoules",
+        "mole",
+        "kj"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L1::Q8",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L1",
+      "stem": "Explain why making new bonds is an exothermic process.",
+      "misconceptionClass": "bond making explain",
+      "kind": "explain-why",
+      "modelAnswer": "Bond-making is exothermic because energy is released as the new bonds form and the atoms settle into a lower-energy arrangement.",
+      "keywords": [
+        "released",
+        "lower",
+        "arrangement"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L1::Q9",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L1",
+      "stem": "In a reaction the energy taken in to break bonds is 850 kilojoules per mole while the energy released when bonds form is 900 kilojoules per mole. State whether the reaction is exothermic or endothermic overall, with a reason.",
+      "misconceptionClass": "bond balance application",
+      "kind": "application",
+      "modelAnswer": "More energy is given out forming bonds than is taken in breaking them, so the reaction is exothermic overall.",
+      "keywords": [
+        "given",
+        "out",
+        "forming",
+        "net"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_KTZjJ7sPdDt4tkTH::L2::Q1",
       "moduleId": "rn_KTZjJ7sPdDt4tkTH::L2",
       "stem": "Why does an exothermic reaction carry a negative enthalpy change?",
@@ -372,6 +429,59 @@
       ]
     },
     {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L2::Q6",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L2",
+      "stem": "State the subtraction that defines the overall enthalpy change in terms of energy in and energy out.",
+      "misconceptionClass": "enthalpy equation recall",
+      "kind": "recall",
+      "modelAnswer": "The overall enthalpy change equals the energy in minus the energy out.",
+      "keywords": [
+        "equals",
+        "minus"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L2::Q7",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L2",
+      "stem": "State the sign of the enthalpy change for an exothermic reaction and why.",
+      "misconceptionClass": "exothermic sign recall",
+      "kind": "recall",
+      "modelAnswer": "Exothermic reactions have a negative enthalpy change because the reactants hold more energy than the products.",
+      "keywords": [
+        "negative",
+        "reactants"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L2::Q8",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L2",
+      "stem": "Explain why an endothermic reaction has a positive enthalpy change.",
+      "misconceptionClass": "endothermic sign explain",
+      "kind": "explain-why",
+      "modelAnswer": "In an endothermic reaction the energy needed to break bonds exceeds the energy released forming them, so the products hold more energy than the reactants and the enthalpy change is positive.",
+      "keywords": [
+        "exceeds",
+        "hold"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L2::Q9",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L2",
+      "stem": "A reaction releases 1200 kilojoules per mole when new bonds form but needs 1350 kilojoules per mole to break the original bonds. State the sign of its enthalpy change and the type of reaction.",
+      "misconceptionClass": "sign determination application",
+      "kind": "application",
+      "modelAnswer": "The energy taken in exceeds the energy given out, so the enthalpy change is positive and the reaction is endothermic.",
+      "keywords": [
+        "positive",
+        "endothermic",
+        "exceeds"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_KTZjJ7sPdDt4tkTH::L3::Q1",
       "moduleId": "rn_KTZjJ7sPdDt4tkTH::L3",
       "stem": "Why write a displayed formula equation before counting bonds?",
@@ -550,6 +660,62 @@
           "misconception": "unit confusion"
         }
       ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L3::Q6",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L3",
+      "stem": "State how the energy in is found for a reaction priced with bond energies.",
+      "misconceptionClass": "energy in recall",
+      "kind": "recall",
+      "modelAnswer": "Add together the bond energies of all the bonds in the reactants to find the energy in.",
+      "keywords": [
+        "add",
+        "together",
+        "reactants"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L3::Q7",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L3",
+      "stem": "State the subtraction that gives the enthalpy change once energy in and energy out are known.",
+      "misconceptionClass": "enthalpy subtraction recall",
+      "kind": "recall",
+      "modelAnswer": "The enthalpy change equals the energy in minus the energy out.",
+      "keywords": [
+        "minus",
+        "subtracting"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L3::Q8",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L3",
+      "stem": "Explain why the balancing numbers of an equation must be respected when pricing a reaction with bond energies.",
+      "misconceptionClass": "balancing numbers explain",
+      "kind": "explain-why",
+      "modelAnswer": "Balancing numbers tell you how many of each bond are broken or made, so ignoring them miscounts the total energy in and out and gives a wrong enthalpy change.",
+      "keywords": [
+        "miscounts",
+        "total",
+        "wrong"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L3::Q9",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L3",
+      "stem": "A student prices a reaction but misses one C-H bond on the reactant side. State which type of formula would have prevented the error and why.",
+      "misconceptionClass": "displayed formula application",
+      "kind": "application",
+      "modelAnswer": "A displayed formula equation shows every bond explicitly, so the missed bond would have been spotted before counting.",
+      "keywords": [
+        "displayed",
+        "shows",
+        "explicitly",
+        "spotted"
+      ],
+      "options": []
     }
   ]
 }
