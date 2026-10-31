@@ -1,0 +1,34 @@
+{
+  "task": "T-MG-INK-3 run-001",
+  "date": "2026-10-31",
+  "operator": {
+    "dispatch": "spec the anonymous local-only ink posture as a small follow-up run",
+    "trace": "1a1927e1e0a7079d",
+    "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+  },
+  "context_of_record": "issued immediately after the T-MG-MARK-PARITY-1 LANE CLOSURE receipt (0c02cd60, operator ruling 'uploading outside papers isn't a priority' trace 1a1913c61c42240d) and the operator's design ruling of the same window: 'marking should be login-constrained; the other tools don't have to be' — this run specs exactly that split",
+  "class": "additive docs + .syllabai bookkeeping ONLY — zero code bytes, zero schema, zero contracts, zero api, zero hub; the implementation is run-002 on a separate operator word",
+  "what_lands": {
+    "task_card": ".syllabai/tasks/T-MG-INK-3.yaml — the spec of record: LOCAL mode = the no-token branch of the same ink surface; IndexedDB keyed by sourceUrl; syllabai-ink/1 doc verbatim; zero-contact law (no GET/PUT/Bearer/telemetry in local mode); honest single-state pill; consent-gated migration (explicit upload via rebaseShapes union-by-id with clear-after-confirmed-PUT, or explicit discard); the four scope invariants re-pinned verbatim (mock exclusion, MS-pane exclusion, region-mark token+paperId gate, past-papers-QP-only)",
+    "plan_card": "docs/MG-MARK-PARITY-PLAN.md §3.7 — the post-closure follow-up card, so the plan remains the single governing document",
+    "receipt": "this file"
+  },
+  "decisions_of_record": [
+    "storage engine: IndexedDB, ONE store, key = sourceUrl (the existing doc-identity law) — no localStorage fallback",
+    "doc schema: syllabai-ink/1 verbatim — no schema change, no migration, no new identity plane",
+    "sync gate: preserved verbatim — the sync module is never constructed without a token; local mode never touches the network",
+    "pill copy: 'Local only — saved on this device. Log in to sync.' — one honest state in local mode; sync states are sync-mode-only",
+    "migration: consent-gated, never automatic; upload = union-by-id via the existing rebaseShapes law, local doc cleared only after the PUT confirms; discard = delete local key; dismiss re-arms next visit",
+    "scope invariants: mock-mode exclusion, MS-pane exclusion, region-mark token+paperId gate (anonymous marking stays impossible), past-papers-QP-only — all unchanged"
+  ],
+  "gates_this_run": {
+    "gate_a_carded_not_built": "PASS — zero implementation code; the spec is the deliverable",
+    "gate_b_zero_touch": "PASS — additive docs/.syllabai only; fences re-checked at the branch base",
+    "gate_c_no_tbd": "PASS — every product decision decided in the card"
+  },
+  "next_of": "run-002 (the implementation) awaits the operator's word; estimate ~1 small run (InkLayer gate branch + ink-local-store.ts + tests)",
+  "lineage": {
+    "lane_closure": "T-MG-MARK-PARITY-1 closed 5-of-6 phases (receipt 0c02cd60); this card is a NARROW operator-ruled follow-up, not a phase reopen",
+    "ink_laws_inherited": "PR #494 (surface) + #509 (instruments) — the entire drawing stack, toolbar law, undo/redo law, observer law, honest-pill law"
+  }
+}
