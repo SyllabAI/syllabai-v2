@@ -1,0 +1,45 @@
+{
+  "task": "RN-DEBRIS-2 run-001 — the full-dict re-pass over the RN-DEBRIS-1 floor (operator order trace 1a18fdf59c6c155d: \"deeper dictionary-based re-run\")",
+  "date": "2026-10-31",
+  "agent": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "residualOfRecord": [
+    "RN-DEBRIS-1 run-001 receipt: 'dict-less run — a full-dict re-run against the rebuilt mathml-cache belongs to the corpus back-sync lane (may honestly convert part of the floor)'",
+    "speech-baseline.json frozenNote (RN-DEBRIS-1): 'the MathML page dictionaries (work/mathml-cache) were absent in this environment — the run was dict-less; a full-dict re-run is part of the corpus back-sync lane'"
+  ],
+  "fetchFirst": {
+    "worklogTail": "v2 worklog re-read at lane open: 22,984 lines, tail blocks T-OEQ-PHYS-FORMAT-1 run-003 / S-B6 / R0-AUTO-92/93 / T-MG-CROPMARK-1 addendum — no newer owner claims the full-dict re-pass; lane OPEN",
+    "v2TipAtOpen": "a0a10923 (R0-AUTO-93 bookkeeping); local mirror reset fetch-first to origin/main (stale Oct-13 checkout + broken node_modules symlink recovered, zero data loss)",
+    "resourcesRepo": "UNTOUCHED by this lane (per the RN-DEBRIS-1 at-source finding — the debris lives in the derived parsed corpus)"
+  },
+  "dictRebuild": {
+    "fetcher": "apps/hub/scripts/cie/cie_fetch_math_23a.ts — OF-RECORD script, byte-unmodified, driven via CIE_CONTENT stub carrying the real note record (rn_hCnswpDDCpNDKfkn) so the scanner targets exactly the floor-owning page",
+    "page": "https://www.savemyexams.com/a-level/physics/cie/25/revision-notes/3-dynamics/3-3-linear-momentum-and-its-conservation/elastic-and-inelastic-collisions",
+    "result": "1 page fetched, 13 aria->LaTeX pairs, 0 unparsed",
+    "cache": "work/mathml-cache/4d90212dd14718a3.json (mirrored: .syllabai/lane-artifacts/RN-DEBRIS-2/pagedict-rn_hCnswpDDCpNDKfkn.json)"
+  },
+  "theJoin": {
+    "decode": "the corrupted 'E_ k a f t e r end_' class = the upstream Chrome-MathML aria style 'E subscript k space a f t e r end subscript' (E_{k,after} — kinetic energy AFTER collision) after the old PR-#220 converter half-ate it; the letter-spaced 'a f t e r' run is UPSTREAM aria style, not corpus corruption",
+    "evidence": "token-by-token correspondence verified for all 3 pairs: E_ k<->'E subscript k', a f t e r<->'a f t e r', end_<->'end subscript', 1 half<->'1 half', (m_ x+m_ y)<->'open parentheses m subscript x plus m subscript y close parentheses', v_ x+y end_ superscript 2<->'v subscript x plus y end subscript superscript 2', (v_ x / 2)²<->'open parentheses v subscript x over 2 close parentheses squared'",
+    "law": "replacements are the DICT's MathML->LaTeX output verbatim modulo (a) \\textrm{ } artifact gaps (of-record mergeTextRuns law), (b) E_{k a f t e r}->E_{kafter} letter-run collapse matching the note's own 6 established clean occurrences of the same symbol, (c) whitespace collapse of (a). dollar-1 derives EXACTLY; span-1/2 differ only by the documented artifact-strip whitespace. NO hand-invented math."
+  },
+  "conversions": "3 (2 code spans = the gate's entire span-2 floor + 1 gate-invisible $-segment remnant rendering 'E_ k a f t e r end_' literally inside math); full before/after + dict keys in rn_debris2_apply_report_r0.json",
+  "guards": "3/3 GREEN (apps/hub/scripts/rn_debris2_guard.ts): katex.renderToString throwOnError, hasResidualGrammar=false, gate MARK=false. Apply engine gates: G1 count==1 byte-level, G2 JSON parse both sides, G3 parse-level diff exactly 1 bodyMd of note rn_hCnswpDDCpNDKfkn with all new forms present + old absent, G4 idempotency (re-run: 0 changes)",
+  "gates": {
+    "corpus": "PASSED — span 0 / dollar 0 / textwrap 4 / multiline 0 / baretext 5 / danglingRefs 0 (span 2->0)",
+    "baseline": "speech-baseline.json refrozen span 2->0 with amended frozenNote (RN-DEBRIS-2 line appended, prior note preserved verbatim)",
+    "flashcardSync": "exit 0",
+    "cieValidator": "PASSED"
+  },
+  "protectedUntouched": [
+    "textwrap 4 = authored \\text{numerator}/\\text{denominator} worked-step labels (faithful prose, not debris)",
+    "baretext 5 = 2 'end cell walls' prose false-positives (English translocation notes; the chain's looksLikeSpeechText/cie-plain guards decline them — conversion would damage prose) + 3 ![...]-led structurally excluded alt lines (the bare-line handler excludes ![ lines by construction)"
+  ],
+  "censusDisclosure": {
+    "finding": "letter-spaced-run regex census over the parsed corpus: 51 files / 431 raw hits (rn_debris2_letterspace_census_r0.json) — the E_{k,after} decode proves this family's true content is dict-recoverable the same way (e.g. chemistry 'o x i d i s e d s p e c i e s' / stats 'i s t r u e t h e n' classes); raw hits are UNCLASSIFIED and include legitimate content (genetics 'h h t t' genotypes)",
+    "disposition": "OUT OF THIS LANE'S SCOPE (the of-record scope is the gate floor); registered as the operator-gated follow-up: a per-page dict re-join wave with per-string classification"
+  },
+  "landing": {
+    "plan": "branch rn-debris-2/run-001 cut at the open tip; PR carries content + baseline + guard script + lane artifacts (pagedict mirror, apply engine, apply report, census); this receipt finalized with merge/CI/bake facts in the closing bookkeeping commit",
+    "discipline": "fetch-first, race-guard (re-cut if main advances with file overlap), FF push no force, CI bounded poll, sha-pinned merge PUT, bake witness + live spot-check before closure"
+  }
+}
