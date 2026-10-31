@@ -1,0 +1,60 @@
+{
+  "task": "T-SPEC-REPARSE-1",
+  "run": "run-002",
+  "date": "2026-10-31",
+  "operatorOrder": {
+    "trace": "1a192a4f2ca47375",
+    "text": "a dedicated pass for the ial-maths 146 interleave rows (the machinery now generalizes), and the remaining 8 disclosed rows.",
+    "context": "the two filed follow-ups of run-001"
+  },
+  "scope": "the 146 ial-maths two-column-line-interleave flagged rows (both layers) + re-adjudication of the 8 run-001 disclosed residuals",
+  "ialMaths": {
+    "targets": "the 146 flagged rows; the 45 t_spec_apply_repairs rebuilt rows are outside the flagged set and untouched; zero overlap verified",
+    "shipped": 113,
+    "aborted": 31,
+    "examples": [
+      "FP1-1.1 'Definition of complex numbers in the form a + ib and r cos θ + i r sin θ.'",
+      "FP1-2.2 notes item 'Knowledge of the identity α³ + β³ ≡ (α + β)³ − 3αβ(α + β).'",
+      "FP1-1.6 '…quartic equation with real coefficients.' + 'f(x) = x⁴ − x³ − 5x² + 7x + 10'",
+      "P1-1.1 'Laws of indices for all rational exponents.'"
+    ],
+    "twoLayerLaw": "canonical spec_points.json mirrored x113 (the spine-builder input); interleave flag cleared on repaired rows (reparse-1.0 provenance kept); flagged census 149 (33 aborted keep interleave + 113 reparse + 3 others)",
+    "hygieneGate": "new SCATTER_RE gate (3+ consecutive single-char tokens = un-attached superscript scatter) — rejected 11 assemblies that would have traded one defect for another"
+  },
+  "residualReAdjudication": {
+    "neverDamaged": {
+      "rows": ["CIE_A_LEVEL_CHEMISTRY_2025_2027:2.1.1", ":37.3.1", ":37.3.2"],
+      "evidence": "the geometry rebuild equals the served text byte-for-byte — the parse flags were false-positives; no repair needed"
+    },
+    "stayFailed": {
+      "14.2.2": "the parse's oy points at the previous row's formula-satellite line; the statement is ordinal-anchored and cross-page; two repair attempts (code-line and ordinal-anchored regions) degraded or fused text — reverted, stays flagged",
+      "16.1.2": "same oy-satellite drift class — stays flagged",
+      "1.2.2": "the ˣ-sup y-sub A isotope cluster: no Unicode subscript-y exists; the trailing 'where x is the mass…y is the atomic…' variables drop; two attempts degraded — excluded, stays flagged",
+      "11.2.3": "the region crosses a column boundary — rebuild garbled, stays flagged",
+      "3.9.5": "superscript θ (e^{iθ}) has no Unicode form; Greek variables excluded from the letter-only inline fallback (semantically load-bearing) — stays flagged"
+    }
+  },
+  "gates": {
+    "idempotence": "re-probe after apply: 0 proposals / 0 deletes (ial-maths)",
+    "finalizeReports": "gates=PASS 58/58 quals (ial-maths stmts=242 flags=149)",
+    "validateSpines": "statement_diff_count 0",
+    "validateCieBundles": "PASS",
+    "mapLawCensus": "GREEN 0 reds, max dbCode 25 <= 40",
+    "verifyCorpus23a": "PASS",
+    "verifyFlashcardSync": "0 fails",
+    "resourcesCI": "PR #264 official-export-gates SUCCESS; corpus-gates = the standing c10/c11 saga (disclosed, zero overlap)",
+    "v2CI": "PR #563 hub + verify 2/2 SUCCESS at 50d8e065"
+  },
+  "landing": {
+    "resources": "PR #264 MERGED 159ab854",
+    "v2": "PR #563 MERGED 78e1a115 (merge-intake of origin/main 8900c20d pre-verified zero namespace overlap — race-guard); RESOURCES_SHA -> 159ab854; 10 spines rebuilt (ial-maths-20-* x9 + ial-further-maths-18-further-pure-1), 76 served titles changed, all inside the repaired codes; 10 bundles landed title-verbatim, manifests re-stamped",
+    "prodNote": "the Vercel build queue was backed up by concurrent lanes at close (BUILDING a84b982d / d235620a, both descending from 78e1a115 — the repairs go live when the queue drains; CI + local gate battery already prove the landing)"
+  },
+  "filedFollowUps": [
+    "the 31 ial-maths hygiene-gated aborts (2-D notes cells needing richer linearisation)",
+    "14.2.2/16.1.2 need a parse-level oy repair (ordinal-anchored) before any text pass",
+    "11.2.3's column-crossing layout; 1.2.2's cluster representation; 3.9.5's e^{iθ}",
+    "corpus back-sync curation pass (standing residual)"
+  ],
+  "discipline": "fetch-first; fail-closed; zero-invention; tokens via env only; FF push no force; race-guard merge-intake; CI bounded poll; receipts .syllabai-only; zero DB/Neon contact"
+}
