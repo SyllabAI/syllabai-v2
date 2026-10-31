@@ -1,0 +1,85 @@
+{
+ "lane": "T-OEQ-PHYS-FORMAT-1",
+ "run": "run-005-human-page-read",
+ "title": "4PH1 human page-read wave over the stay-residual targets - the eyes decide, spans corroborate (executes run-004 standingDebt item 3 verbatim)",
+ "operatorOrder": "'the 3 human-page-read residuals' - the 3 stay-residual targets run-004 parked for human eyes (2 nuclear-equation lines + the eyeball-rejected restitution line), plus the reconciliation target (run-004's third payload-AMBIGUOUS line, which the receipt prose had not named); all FOUR read",
+ "date": "2026-10-31",
+ "planeOfRecord": {
+  "path": "apps/hub/content/igcse-physics-19/official-papers.json",
+  "before": {
+   "blob_sha1": "2edef4db04bd4abc86b79415227128b5f72d5cf2",
+   "sha256": "78d8a29d88da317d8cf3c0493cd71379e513a95f081a3e2eda98e938ccc63e60"
+  },
+  "before_is": "run-004's output state exactly - sha256 == run-004 receipt's recorded after-sha (VINDICATED: the receipts record sha256-of-bytes; the session-open '2edef4db mismatch' was blob-sha1-vs-sha256 confusion on the reader's side, no bookkeeping slip ever existed); zero commits touched the physics plane after de36d67 (verified)",
+  "after": {
+   "blob_sha1": "e3a737c2d8d1f6c021c8327f55b6efbe28d95da6",
+   "sha256": "06d1848fed7a248ecbbbd90d92a092e40d3a9770b5c47b4bfba1cc375fc6faee"
+  },
+  "diff": "1 json line, 1 field (problemMd, QP-only - no solutionMd/mp0 mirror exists for QP problemMd; mirror law does not bite)"
+ },
+ "worklistOfRecord": {
+  "source": "run-004 receipt standingDebt item 3 + run-004 payload AMBIGUOUS set (3) + the eyeball-rejected RESTORE (#396)",
+  "targets": [
+   "official-4ph1-1p-2022-06|offq_2022-06_1p_5|p2|problemMd (nuclear decay equation)",
+   "official-4ph1-1p-2026-06|offq_2026-06_1p_7|p0|problemMd (nuclear equation, X/Y/Z unknowns)",
+   "official-4ph1-2pr-2025-06|offq_2025-06_2pr_5|p3|problemMd (restitution formula)",
+   "official-4ph1-1p-2023-06|offq_2023-06_1p_9|p0|problemMd (manometer pressure - reconciliation target)"
+  ]
+ },
+ "pageEvidenceLayer": {
+  "archive": "SyllabAI/syllabai-pastpapers (sparse blob:none clone, 4 paper dirs, ~18 MB)",
+  "files": "4 QP PDFs of record: 2022-06/4PH1-1P p13, 2026-06/4PH1-1P p18, 2025-06/4PH1-2PR p14, 2023-06/4PH1-1P p22+p23",
+  "method": "page-image READS at 2.0x zoom (5 page images, the eyes layer, primary) + PyMuPDF 1.26.7 span bands (text, size, baseline origin y) as numeric corroboration",
+  "spansOfRecord": "run005-payload.json spans_of_record (7 bands, incl. the 2022 sup row y=328.84 / sub row y=343.48 stacks and the 2025 fraction digits size 6.97 at +3.1pt below their h's)"
+ },
+ "lawOfRecord": [
+  "L1 page decides: verdicts from page-image reads; spans corroborate; the engine's bare-window consensus does not adjudicate this wave",
+  "L2 in-place geometry: present glyphs repositioned under run-002's Unicode law (SUP/SUB maps + run-001 denorm imported verbatim); NO reordering of existing corpus glyphs, ever",
+  "L3 page-evidenced insertion (FIRST USE, pre-registered allow-list): page-printed glyphs absent from the corpus may be inserted ONLY inside the contiguous equation token run, ONLY at page position, ONLY when the whole equation is then Unicode-representable. Vector-art glyphs qualify only when insertion needs no reordering: the 2022 arrow slots between Th and Rn (allow-listed); the 2025 sqrt forces fraction re-linearization, a reorder, so its line closes",
+  "L4 no mixed restorations (restitution precedent upheld): a formula with any token unrepresentable in the field's convention closes unrestored with evidence",
+  "L5 alphabet extension (pre-registered): U+208B subscript-minus joins the inverse map for the restored line only (page sub row y=343.48; run-002's SUB map carries digits only)"
+ ],
+ "verdicts": {
+  "V1_2022-06_nuclear_decay": "RESTORE - APPLIED: '232 Th 220 Rn + 4 α + 0 −1 β' -> '²³²₉₀Th → ²²⁰₈₆Rn + ⁴₂α + ⁰₋₁β'; repositioned 232/220/4/0 to sup and −1 to sub (page rows y=328.84 / y=343.48); page-evidenced insertions ₉₀ ₈₆ ₂ (sub-row spans) and → (vector-art arrow, page-image-evidenced, no text span - text layer carries only the gap at x=216.8); prose 'thorium-232'/'radon-220' stays flat (page-flat); stack-separator spaces dropped (page-flush adjacency, absorbed by the space-insensitive G2 comparison); dashed answer boxes remain unrepresented (corpus write-on convention, cf. 'pressure difference = Pa')",
+  "V2_2026-06_nuclear_equations": "CLOSE-UNREPRESENTABLE - page reads sup X sub Y n + sup232 sub90 Th -> sup233 sub90 Th; sup233 sub90 Th -> 2 sup0 sub Z β + sup233 sub92 U. Unicode has no subscript y or z: the question's own unknowns cannot be rendered in the problemMd convention (0 $-segments corpus-wide, verified at open - a KaTeX segment would be a corpus-convention change, not a format restoration). No mixed restorations (L4). The corpus '2Z0 β' is additionally order-mangled (extraction x-order: sub Z x=301.4 precedes sup 0 x=302.1) - documented, not repaired. Extraction losses documented: sub 90/90/90/92 stacks, unknown flattening",
+  "V3_2025-06_restitution": "CLOSE-EXTRACTION-LOSS - page reads coefficient of restitution = √(h₂/h₁); ALL SIX h-instances carry subscript digits (prose size 7.0 sub rows y=127.34/175.29; fraction digits size 6.97 at +3.1pt under their h's) - run-004's 'flattened-fraction numerator ambiguity' is SETTLED: subscripted. But the radical is vector art: NO text span exists - the corpus never received it, and the faithful form requires the sqrt insertion AND fraction re-linearization (a reorder, outside L2/L3). Restoring h-digits alone would leave the formula sqrt-less - run-004's rejection UPHELD with completed evidence. Proposal of record for a future pre-registered wave: replace 'h2 coefficient of restitution = h1' with 'coefficient of restitution = √(h₂ / h₁)'",
+  "V4_2023-06_pressure": "CLOSE-PAGE-CONFIRMED-NOOP - entire line page-flat: formula words size 12 on one baseline (g italic, same size/baseline), 0.094 m flat, 14 000 flat; the m³'s 3 IS raised on the page (size 7.0, y=486.83) and the corpus ALREADY carries ³ - the printed state is already served. The engine's lone raised-vs-flat instance resolves to a plain-prose region ('...gas tap and t...') - a phantom cluster. Reconciles run-004's payload-vs-prose tension: all four eyes-on targets now carry page verdicts"
+ },
+ "gates": {
+  "G1_structure_marks": "OK (55 sets / 540 questions / 2254 parts; marks[] byte-identical)",
+  "G2_identity_reconstruction": "OK - composed identity for the insertion class: strip the 4-item allow-list from the after-segment, invert through run-002 SUP/SUB + the U+208B extension, run-001 denorm dash/space normalization -> both sides '232Th220Rn+4α+0-1β'",
+  "G3_pua_control": "OK (0/0/0 before and after)",
+  "G4_dollar_accounting": "OK - raw-$ 460->460, $-lines 230->230 (line-definition: text lines within fields; 180 fields carry them)",
+  "G5_katex_gate": "OK - katex 0.16.23 throwOnError over all 230 segments, 0 failures; segment set byte-identical to base",
+  "G6_serialization_byte_law": "OK - json.dumps(indent=1, ensure_ascii=False) no trailing newline, round-trip exact",
+  "G7_dollar_line_protection": "OK - changed line $-free both sides; pre-existing segments byte-identical",
+  "G8_idempotence": "OK - re-apply changes nothing (before-segment absent post-apply); equation segment's SUSPECT classes ['S1-digitclus'] -> [] (the Unicode stacks clear the 3-digit-cluster flag); field level retains S1-digitclus/S1-funcinv SOLELY via the page-flat prose isotope names ('thorium-232'/'radon-220') - false-positive residue of the class, the nuclear-notation damage itself is repaired",
+  "single_field_discipline": "OK - exactly 1 field differs across the whole plane"
+ },
+ "bringUpNotes": [
+  "mutation-target bug caught by the sha256 cross-check: the first apply mutated the pristine tree while serializing the untouched deep copy - the write was a byte-level no-op and every gate ran trivially green on base==base; disk stayed pristine throughout (fail-closed held in effect); fix: locate the same field coordinates inside the copy tree, keep the base pristine; gates then exercised the real edit (blob e3a737c2, diff 1 line)",
+  "dollar-stats definition fix: run-004's '$-lines' counts TEXT LINES within fields (230), not fields (180) - the open-state assert caught the conflation before any write",
+  "span-band filter fixed mid-bring-up (bbox-top clipping dropped the sup rows); bands widened and re-extracted before any verdict was finalized"
+ ],
+ "disclosures": [
+  "2022-06 (b) lead-in prose - 'Granite contains the isotope thorium-232 (²³²₉₀Th)' / 'radon-220 (²²⁰₈₆Rn)' (spans size 7.0, y=67-113) - was NEVER extracted: corpus part p1 begins at '(i) State two differences' - pre-existing extraction loss, out of format scope (content absent, not flattened)",
+  "dashed answer boxes in the 2022 equation remain unrepresented (corpus write-on convention)",
+  "the restored line remains census-visible via prose-only flags (disclosed under G8)",
+  "run-004 receipt shas vindicated as sha256-of-bytes; no slip existed (correction of this session's opening hypothesis)"
+ ],
+ "standingDebt": [
+  "RESOURCES BACK-SYNC LAW (inherited): run-001..005 live v2-side; any future resources-side 4PH1 exporter re-export must learn/re-apply all five passes",
+  "questions.md human renders presentation-stale for restored lines (regen rides the next converter run)",
+  "V3 faithful-sqrt proposal ('coefficient of restitution = √(h₂ / h₁)') rides a future pre-registered wave (insertion + re-linearization class)",
+  "2026 nuclear notation needs a corpus-convention decision (KaTeX-in-problemMd or a Unicode letter-subscript extension) before its unknowns can ever be rendered - proposal filed, not enacted"
+ ],
+ "evidence": {
+  "apply": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run005_apply.py",
+  "page_render": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run005_render_pages.py",
+  "span_extraction": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run005_spans.py",
+  "payload": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run005-payload.json (verdict ledger + insertions allow-list + spans_of_record)",
+  "grammar_of_record": "phys_s1_restore.py (run-002 SUP/SUB) + phys_katex_pass.py (run-001 denorm) + run004_engine.py (SUSPECT) imported verbatim"
+ },
+ "discipline": "fetch-first, no force; read-only page recon before any write; pre-registered law with first-use insertion allow-list disclosed BEFORE apply; fail-closed gates (the mutation-target no-op write was caught by the sha cross-check, disk pristine, fixed, re-run); single-file serving-plane edit; resources corpus untouched; zero DB/Neon/prod contact; receipt + worklog + evidence in the same PR",
+ "verdict": "RUN-005 CLOSED: all four eyes-on targets page-read (eyes primary, spans corroborating) - 1 restoration applied (the 2022 nuclear decay equation, first-use page-evidenced insertion), 3 closes with completed evidence (2026 unrepresentable unknowns; 2025 sqrt extraction-loss with the 6/6-subscript settlement and a filed proposal; 2023 page-confirmed no-op); run-004's 3-target debt retired; eight gates green"
+}

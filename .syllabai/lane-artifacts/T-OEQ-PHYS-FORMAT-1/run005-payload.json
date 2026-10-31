@@ -1,0 +1,605 @@
+{
+ "lane": "T-OEQ-PHYS-FORMAT-1",
+ "run": "run-005-human-page-read",
+ "targets": [
+  {
+   "id": "V1",
+   "slug": "official-4ph1-1p-2022-06",
+   "kind": "qp",
+   "where": "official-4ph1-1p-2022-06|offq_2022-06_1p_5|p2|problemMd",
+   "receipt_role": "stay-residual #1 of run-004 (nuclear decay equation line)",
+   "page_of_record": "past-papers/pearson-edexcel/international-gcse/physics/4ph1/past-papers/2022-06/4PH1-1P/qp.pdf p13",
+   "eyes": "display equation is full nuclear notation: sup 232 / sub 90 / Th -> sup 220 / sub 86 / Rn + dashed-box sup 4 sub 2 alpha + dashed-box sup 0 sub -1 beta; prose \"thorium-232\"/\"radon-220\" flat (hyphen notation); arrow present as vector art (no text span - text layer carries only the gap span at x=216.8); prose isotope instances stay flat",
+   "verdict": "RESTORE",
+   "before_seg": "232 Th 220 Rn + 4 α + 0 −1 β",
+   "repositioned": [
+    "232->sup",
+    "220->sup",
+    "4->sup",
+    "0->sup",
+    "-1->sub (sub row y=343.48, U+2212->U+208B per L5)"
+   ],
+   "insertions": [
+    {
+     "g": "₉₀",
+     "evidence": "span \"90\" size 12.83 y=343.48 x=122.5 (sub row under sup 232 at x=115.8)"
+    },
+    {
+     "g": "₈₆",
+     "evidence": "span \"86\" size 12.83 y=343.48 x=237.2 (sub row under sup 220 at x=230.8)"
+    },
+    {
+     "g": "₂",
+     "evidence": "span \"2\" size 12.83 y=343.48 x=353.4 (sub row under sup 4 at x=353.2)"
+    },
+    {
+     "g": "→",
+     "evidence": "vector-art arrow between Th and Rn terms; page-image-evidenced; insertion needs no reordering (L3), unlike the 2025 sqrt"
+    }
+   ],
+   "space_artifacts_dropped": [
+    "stack-separator space after the 232/220 digit runs (page-flush stack adjacency; absorbed by the space-insensitive G2 comparison)"
+   ],
+   "alphabet_extension": "U+208B subscript-minus new to the corpus alphabet; inverse registered in INV (L5)",
+   "unrepresented": [
+    "dashed answer boxes before the alpha/beta stacks (corpus write-on convention, cf. \"pressure difference = Pa\")"
+   ],
+   "census_note": "the (b) lead-in prose with its inline (sup232 sub90 Th)/(sup220 sub86 Rn) parentheticals (spans size 7.0 at y=67-113) was never extracted: part p1 begins at \"(i) State two differences\" - pre-existing extraction loss, disclosed, out of format scope"
+  },
+  {
+   "id": "V2",
+   "slug": "official-4ph1-1p-2026-06",
+   "kind": "qp",
+   "where": "official-4ph1-1p-2026-06|offq_2026-06_1p_7|p0|problemMd",
+   "receipt_role": "stay-residual #2 of run-004 (nuclear equation line)",
+   "page_of_record": "past-papers/pearson-edexcel/international-gcse/physics/4ph1/past-papers/2026-06/4PH1-1P/qp.pdf p18",
+   "eyes": "eq1: sup X sub Y n + sup 232 sub 90 Th -> sup 233 sub 90 Th (unknowns X/Y printed as the neutron's super/subscripts); eq2: sup 233 sub 90 Th -> 2 sup 0 sub Z beta + sup 233 sub 92 U (coefficient 2 baseline, sup 0, sub Z)",
+   "verdict": "CLOSE-UNREPRESENTABLE",
+   "reasons": [
+    "Unicode has no subscript y and no subscript z: the question's own unknowns (sup X sub Y n; 2 sup 0 sub Z beta) cannot be rendered in the field convention",
+    "problemMd carries 0 $-segments corpus-wide (verified at open): a KaTeX segment would be a corpus-convention change, not a format restoration (L4)",
+    "no mixed restorations (restitution precedent): partial stacking of the numeric tokens while X/Y/Z stay flattened would misrepresent the printed equations",
+    "the corpus \"2Z0 β\" is additionally order-mangled (extraction x-order: sub Z x=301.4 precedes sup 0 x=302.1; page prints 0 above, Z below after the coefficient 2) - documented, not repaired",
+    "extraction losses documented: sub 90/90/90/92 stacks absent; unknowns flattened"
+   ]
+  },
+  {
+   "id": "V3",
+   "slug": "official-4ph1-2pr-2025-06",
+   "kind": "qp",
+   "where": "official-4ph1-2pr-2025-06|offq_2025-06_2pr_5|p3|problemMd",
+   "receipt_role": "stay-residual #3 of run-004 (restitution formula line, eyeball-rejected in run-004)",
+   "page_of_record": "past-papers/pearson-edexcel/international-gcse/physics/4ph1/past-papers/2025-06/4PH1-2PR/qp.pdf p14",
+   "eyes": "formula is coefficient of restitution = sqrt(h2/h1): radical over a stacked fraction; ALL SIX h-instances carry subscript digits - prose (h1)/(h2) size 7.0 sub rows y=127.34/175.29; diagram labels h1/h2; inside the fraction the digits are size 6.97 at y=510.44 (+3.1 under numerator h) and y=527.79 (+3.1 under denominator h) - the run-004 \"flattened-fraction numerator ambiguity\" is settled: SUBSCRIPTED",
+   "verdict": "CLOSE-EXTRACTION-LOSS",
+   "reasons": [
+    "the sqrt radical is VECTOR ART: no text span exists in the extraction layer - the corpus never received it (same dropout class as the 2022 arrow)",
+    "the faithful form \"coefficient of restitution = √(h₂ / h₁)\" requires the sqrt insertion AND fraction re-linearization: the corpus's \"h2 coefficient of restitution = h1\" is the extractor's numerator-then-words-then-denominator shape, so h2 must move after the \"=\" - a REORDER, outside L2/L3",
+    "restoring the h-digits alone would leave the formula misrepresenting the page (sqrt-less) - run-004's rejection is UPHELD, now with the completed evidence",
+    "proposal of record for a future pre-registered wave: replace the flattened span \"h2 coefficient of restitution = h1\" with \"coefficient of restitution = √(h₂ / h₁)\""
+   ]
+  },
+  {
+   "id": "V4",
+   "slug": "official-4ph1-1p-2023-06",
+   "kind": "qp",
+   "where": "official-4ph1-1p-2023-06|offq_2023-06_1p_9|p0|problemMd",
+   "receipt_role": "payload-vs-prose reconciliation: run-004's third AMBIGUOUS target (this wave reads all four eyes-on targets; the receipt prose had named the restitution line instead of this one - both now carry page verdicts)",
+   "page_of_record": "past-papers/pearson-edexcel/international-gcse/physics/4ph1/past-papers/2023-06/4PH1-1P/qp.pdf p22",
+   "eyes": "entire line page-flat: formula words size 12 on one baseline (g italic, same size and baseline - no super/subscript anywhere); \"0.094 m\" flat; \"14 000 kg / m3\" with the 3 raised (size 7.0, y=486.83, 4pt above baseline) - the corpus ALREADY carries the Unicode ³, so the printed state is already served",
+   "verdict": "CLOSE-PAGE-CONFIRMED-NOOP",
+   "reasons": [
+    "every suspect cluster on the line is page-flat or already correctly restored",
+    "the engine's lone raised-vs-flat instance resolves to a plain-prose region (\"...gas tap and t...\") - a phantom cluster, consistent with the S1-decimal class being driven by the genuine flat decimals 0.094 / 14 000"
+   ]
+  }
+ ],
+ "applied": {
+  "where": "official-4ph1-1p-2022-06|offq_2022-06_1p_5|p2|problemMd",
+  "before_seg": "232 Th 220 Rn + 4 α + 0 −1 β",
+  "after_seg": "²³²₉₀Th → ²²⁰₈₆Rn + ⁴₂α + ⁰₋₁β",
+  "field_chars": 287,
+  "new_field_chars": 289
+ },
+ "spans_of_record": {
+  "2022-06-1p-p13-equation": [
+   {
+    "text": "232",
+    "size": 12.83,
+    "origin_y": 328.84,
+    "origin_x": 115.8
+   },
+   {
+    "text": "90",
+    "size": 12.83,
+    "origin_y": 343.48,
+    "origin_x": 122.5
+   },
+   {
+    "text": "Th   ",
+    "size": 22.0,
+    "origin_y": 336.16,
+    "origin_x": 136.7
+   },
+   {
+    "text": "   ",
+    "size": 22.0,
+    "origin_y": 336.16,
+    "origin_x": 216.8
+   },
+   {
+    "text": "220",
+    "size": 12.83,
+    "origin_y": 328.84,
+    "origin_x": 230.8
+   },
+   {
+    "text": "86",
+    "size": 12.83,
+    "origin_y": 343.48,
+    "origin_x": 237.2
+   },
+   {
+    "text": "Rn   +   ",
+    "size": 22.0,
+    "origin_y": 336.16,
+    "origin_x": 251.1
+   },
+   {
+    "text": " ",
+    "size": 22.0,
+    "origin_y": 336.16,
+    "origin_x": 350.5
+   },
+   {
+    "text": "4",
+    "size": 12.83,
+    "origin_y": 328.84,
+    "origin_x": 353.2
+   },
+   {
+    "text": "2",
+    "size": 12.83,
+    "origin_y": 343.48,
+    "origin_x": 353.4
+   },
+   {
+    "text": " ",
+    "size": 22.0,
+    "origin_y": 336.16,
+    "origin_x": 360.0
+   },
+   {
+    "text": "α",
+    "size": 22.0,
+    "origin_y": 336.16,
+    "origin_x": 362.7
+   },
+   {
+    "text": "   +   ",
+    "size": 22.0,
+    "origin_y": 336.16,
+    "origin_x": 374.3
+   },
+   {
+    "text": " ",
+    "size": 22.0,
+    "origin_y": 336.16,
+    "origin_x": 449.4
+   },
+   {
+    "text": "−1",
+    "size": 12.83,
+    "origin_y": 343.49,
+    "origin_x": 452.1
+   },
+   {
+    "text": "0",
+    "size": 12.83,
+    "origin_y": 328.84,
+    "origin_x": 459.2
+   },
+   {
+    "text": " ",
+    "size": 22.0,
+    "origin_y": 336.16,
+    "origin_x": 465.7
+   },
+   {
+    "text": "β",
+    "size": 22.0,
+    "origin_y": 336.16,
+    "origin_x": 468.5
+   }
+  ],
+  "2022-06-1p-p13-prose-parentheticals": [
+   {
+    "text": "232",
+    "size": 7.0,
+    "origin_y": 67.37,
+    "origin_x": 292.9
+   },
+   {
+    "text": "90",
+    "size": 7.0,
+    "origin_y": 75.36,
+    "origin_x": 296.7
+   },
+   {
+    "text": "\t",
+    "size": 12.0,
+    "origin_y": 95.34,
+    "origin_x": 42.5
+   },
+   {
+    "text": "\t",
+    "size": 12.0,
+    "origin_y": 95.34,
+    "origin_x": 60.9
+   },
+   {
+    "text": "Thorium‑232 decays by a sequence of alpha decays and beta decays to form ",
+    "size": 12.0,
+    "origin_y": 95.34,
+    "origin_x": 79.4
+   },
+   {
+    "text": "radon‑220 (",
+    "size": 12.0,
+    "origin_y": 109.34,
+    "origin_x": 79.4
+   },
+   {
+    "text": "220",
+    "size": 7.0,
+    "origin_y": 105.34,
+    "origin_x": 137.4
+   },
+   {
+    "text": "86",
+    "size": 7.0,
+    "origin_y": 113.33,
+    "origin_x": 140.9
+   },
+   {
+    "text": "Rn).",
+    "size": 12.0,
+    "origin_y": 109.34,
+    "origin_x": 148.5
+   }
+  ],
+  "2026-06-1p-p18-eq1": [
+   {
+    "text": "\tDO NOT WRITE IN THIS AREA\t\t",
+    "size": 12.0,
+    "origin_y": 336.13,
+    "origin_x": 573.8
+   },
+   {
+    "text": "X",
+    "size": 10.49,
+    "origin_y": 346.02,
+    "origin_x": 223.3
+   },
+   {
+    "text": "Y",
+    "size": 10.49,
+    "origin_y": 358.0,
+    "origin_x": 222.6
+   },
+   {
+    "text": " n  +  ",
+    "size": 18.0,
+    "origin_y": 352.01,
+    "origin_x": 228.0
+   },
+   {
+    "text": "232",
+    "size": 10.49,
+    "origin_y": 346.02,
+    "origin_x": 266.2
+   },
+   {
+    "text": "90",
+    "size": 10.49,
+    "origin_y": 358.0,
+    "origin_x": 271.9
+   },
+   {
+    "text": " Th  ",
+    "size": 18.0,
+    "origin_y": 352.01,
+    "origin_x": 282.6
+   },
+   {
+    "text": "→",
+    "size": 18.0,
+    "origin_y": 352.01,
+    "origin_x": 310.6
+   },
+   {
+    "text": "  ",
+    "size": 18.0,
+    "origin_y": 352.01,
+    "origin_x": 328.6
+   },
+   {
+    "text": "233",
+    "size": 10.49,
+    "origin_y": 346.02,
+    "origin_x": 336.2
+   },
+   {
+    "text": "90",
+    "size": 10.49,
+    "origin_y": 358.0,
+    "origin_x": 340.8
+   },
+   {
+    "text": " Th",
+    "size": 18.0,
+    "origin_y": 352.01,
+    "origin_x": 351.6
+   }
+  ],
+  "2026-06-1p-p18-eq2": [
+   {
+    "text": "233",
+    "size": 10.49,
+    "origin_y": 414.33,
+    "origin_x": 222.8
+   },
+   {
+    "text": "90",
+    "size": 10.49,
+    "origin_y": 426.32,
+    "origin_x": 228.5
+   },
+   {
+    "text": " Th  ",
+    "size": 18.0,
+    "origin_y": 420.33,
+    "origin_x": 239.3
+   },
+   {
+    "text": "→",
+    "size": 18.0,
+    "origin_y": 420.33,
+    "origin_x": 267.2
+   },
+   {
+    "text": "  2",
+    "size": 18.0,
+    "origin_y": 420.33,
+    "origin_x": 285.2
+   },
+   {
+    "text": "0 ",
+    "size": 10.49,
+    "origin_y": 414.33,
+    "origin_x": 302.1
+   },
+   {
+    "text": "Z",
+    "size": 10.49,
+    "origin_y": 426.32,
+    "origin_x": 301.4
+   },
+   {
+    "text": " ",
+    "size": 18.0,
+    "origin_y": 420.33,
+    "origin_x": 306.9
+   },
+   {
+    "text": "β",
+    "size": 18.0,
+    "origin_y": 420.33,
+    "origin_x": 309.2
+   },
+   {
+    "text": "  +  ",
+    "size": 18.0,
+    "origin_y": 420.33,
+    "origin_x": 318.1
+   },
+   {
+    "text": "233",
+    "size": 10.49,
+    "origin_y": 414.33,
+    "origin_x": 344.1
+   },
+   {
+    "text": "92 ",
+    "size": 10.49,
+    "origin_y": 426.32,
+    "origin_x": 348.7
+   },
+   {
+    "text": "U",
+    "size": 18.0,
+    "origin_y": 420.33,
+    "origin_x": 360.8
+   }
+  ],
+  "2025-06-2pr-p14-formula": [
+   {
+    "text": "\t",
+    "size": 12.0,
+    "origin_y": 522.14,
+    "origin_x": 573.8
+   },
+   {
+    "text": "coefficient of restitution",
+    "size": 12.0,
+    "origin_y": 515.13,
+    "origin_x": 219.8
+   },
+   {
+    "text": "h",
+    "size": 12.0,
+    "origin_y": 507.35,
+    "origin_x": 362.3
+   },
+   {
+    "text": "h",
+    "size": 12.0,
+    "origin_y": 524.69,
+    "origin_x": 363.0
+   },
+   {
+    "text": "2",
+    "size": 6.97,
+    "origin_y": 510.44,
+    "origin_x": 368.8
+   },
+   {
+    "text": "1",
+    "size": 6.97,
+    "origin_y": 527.79,
+    "origin_x": 369.0
+   },
+   {
+    "text": "=",
+    "size": 12.0,
+    "origin_y": 515.13,
+    "origin_x": 343.3
+   }
+  ],
+  "2025-06-2pr-p14-prose-h": [
+   {
+    "text": "1",
+    "size": 7.0,
+    "origin_y": 127.34,
+    "origin_x": 357.0
+   },
+   {
+    "text": "\t",
+    "size": 12.0,
+    "origin_y": 147.32,
+    "origin_x": 42.5
+   },
+   {
+    "text": "\t The ball hits the ground and bounces.",
+    "size": 12.0,
+    "origin_y": 147.32,
+    "origin_x": 73.5
+   },
+   {
+    "text": "\t",
+    "size": 12.0,
+    "origin_y": 171.29,
+    "origin_x": 42.5
+   },
+   {
+    "text": "\t At the top of its bounce, the ball reaches a height (h",
+    "size": 12.0,
+    "origin_y": 171.29,
+    "origin_x": 73.5
+   },
+   {
+    "text": "2",
+    "size": 7.0,
+    "origin_y": 175.29,
+    "origin_x": 339.2
+   },
+   {
+    "text": ") above the ground.",
+    "size": 12.0,
+    "origin_y": 171.3,
+    "origin_x": 342.8
+   }
+  ],
+  "2023-06-1p-p22-formula": [
+   {
+    "text": "pressure difference = density × ",
+    "size": 12.0,
+    "origin_y": 400.64,
+    "origin_x": 167.3
+   },
+   {
+    "text": "g",
+    "size": 12.0,
+    "origin_y": 400.64,
+    "origin_x": 323.9
+   },
+   {
+    "text": " × height difference",
+    "size": 12.0,
+    "origin_y": 400.64,
+    "origin_x": 330.2
+   },
+   {
+    "text": "\t",
+    "size": 12.0,
+    "origin_y": 428.86,
+    "origin_x": 42.5
+   },
+   {
+    "text": "\t The height difference between the two surfaces is 0.094 m.",
+    "size": 12.0,
+    "origin_y": 428.86,
+    "origin_x": 73.5
+   },
+   {
+    "text": "\t",
+    "size": 12.0,
+    "origin_y": 452.84,
+    "origin_x": 42.5
+   },
+   {
+    "text": "\t Calculate the pressure difference between the gas from the gas tap and ",
+    "size": 12.0,
+    "origin_y": 452.84,
+    "origin_x": 73.5
+   },
+   {
+    "text": "the atmosphere.",
+    "size": 12.0,
+    "origin_y": 466.84,
+    "origin_x": 79.4
+   },
+   {
+    "text": "\t",
+    "size": 12.0,
+    "origin_y": 490.82,
+    "origin_x": 42.5
+   },
+   {
+    "text": "\t [for liquid, density = 14 000 kg / m",
+    "size": 12.0,
+    "origin_y": 490.82,
+    "origin_x": 73.5
+   },
+   {
+    "text": "3",
+    "size": 7.0,
+    "origin_y": 486.83,
+    "origin_x": 245.9
+   },
+   {
+    "text": " ]",
+    "size": 12.0,
+    "origin_y": 490.82,
+    "origin_x": 249.5
+   },
+   {
+    "text": "(2)",
+    "size": 12.0,
+    "origin_y": 504.83,
+    "origin_x": 495.8
+   }
+  ]
+ },
+ "page_images_rendered": [
+  "2022-06-1p-p13",
+  "2023-06-1p-p22",
+  "2023-06-1p-p23",
+  "2026-06-1p-p18",
+  "2025-06-2pr-p14"
+ ],
+ "render_scripts": [
+  "run005_render_pages.py (2.0x zoom page images, read as images)",
+  "run005_spans.py (PyMuPDF span bands, this payload's spans_of_record)"
+ ]
+}
