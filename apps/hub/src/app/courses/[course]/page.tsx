@@ -12,6 +12,7 @@ import {
   GraduationCap,
   Lightbulb,
   ListTree,
+  NotebookPen,
   ScrollText,
   Sparkles,
   Swords,
@@ -328,6 +329,21 @@ export default async function CourseHubPage({
           ctaLabel: battleServedFor(meta.slug) ? "Battle the bot" : undefined,
           ready: battleServedFor(meta.slug),
           tint: "bg-primary/10",
+        },
+        {
+          // T-MLOG-CARD-1 — the Mistakes Log card (operator order, trace
+          // 1a192dd3f62f3ebd: the RevisionDojo Mistakes Log feature set
+          // surfaced on every course page, as roadmap). No surface exists
+          // yet — the card rides the honest roadmap posture (the Target
+          // Test / Mock Exams ghosts): no href, no CTA, never a dead link.
+          // When the lane lands, flip `ready` here; per-course gating would
+          // key a lib law the same way lib/battle-course.ts does.
+          icon: NotebookPen,
+          title: "Mistakes Log",
+          desc: "Every question you get wrong, kept in one place — logged with your answer, filtered by subject, topic and mastery state, then retried with the solution nearby until it sticks.",
+          tags: ["Practice", "Diagnose"],
+          ready: false,
+          tint: "bg-chart-4/15",
         },
       ],
     },
