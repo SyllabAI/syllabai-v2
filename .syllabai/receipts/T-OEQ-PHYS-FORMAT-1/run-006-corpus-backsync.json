@@ -1,0 +1,59 @@
+{
+ "lane": "T-OEQ-PHYS-FORMAT-1",
+ "run": "run-006-corpus-backsync",
+ "title": "the 4PH1 corpus back-sync + questions.md regen (resources F127/PR #252 merged 8f6a6a80) + the v2 manifest re-stamp — the RESOURCES BACK-SYNC LAW discharged for run-001..005 and the questions.md presentation-stale standing debt retired end-to-end",
+ "operatorOrder": "Proceed with questions.md regen rides the next converter run",
+ "operatorTrace": "1a190e0aa0abae3d",
+ "date": "2026-10-31",
+ "planeOfRecord": {
+  "path": "apps/hub/content/igcse-physics-19/official-papers.json",
+  "before": {"blob_sha1": "e3a737c2d8d1f6c021c8327f55b6efbe28d95da6", "sha256": "06d1848fed7a248ecbbbd90d92a092e40d3a9770b5c47b4bfba1cc375fc6faee"},
+  "after": {"blob_sha1": "e3a737c2d8d1f6c021c8327f55b6efbe28d95da6", "sha256": "06d1848fed7a248ecbbbd90d92a092e40d3a9770b5c47b4bfba1cc375fc6faee"},
+  "diff": "ZERO bytes — the plane of record is untouched by this run; the corpus learned it (the v2 leg is the manifest importSource re-stamp + this receipt/worklog only)"
+ },
+ "manifestOfRecord": {
+  "path": "apps/hub/content/igcse-physics-19/manifest.json",
+  "what": "importSource.ref 7cbf12ca (the F119 cut) -> 8f6a6a80 (the F127 back-sync merge); the F127 stamp paragraph PREPENDED to the note with the F119/G-E4-PHYS-STAMP-1/RN-RECONSUME-1 lineage preserved verbatim below (the stamp convention)",
+  "proof": "the exporter run WITH --manifest --source-cut main@8f6a6a80 at the consumed law: G-E5 proven (all 55 staging topics content-identical to the declared cut), staged plane byte-identical to the plane of record (sha256 06d1848f), staged manifest = the only v2 delta"
+ },
+ "resourcesLeg": {
+  "pr": "#252",
+  "branch": "t-oeq-phys-backsync-1",
+  "head": "028aad41 (rebased on run-034/#251 90a49387 after the F126/Task-34 number clash — this wave renumbers to F127/Task 35)",
+  "mergedSha": "8f6a6a803261bec07306b141ad83afba19f9ae1e",
+  "files": "112 modified (54 topic.json + 54 questions.md + LEDGER.md + AGENTS.md + LANE-STATUS.md + scripts-tests.yml) + 4 new (battery, pins, synced-fields ledger, the f127 standing disclosure)",
+  "theChange": "corpus := the v2 plane of record per field — 339 pids / 766 field writes / 54 slices (164 problem_md as WRAP DECOMPOSITIONS via the exporter's own sentinel machinery: the emitted question-stem prefix + appended asset-figure suffix subtracted so the corpus keeps the converter's field semantics; 301 solution_md + 301 mark_points[0] verbatim, the solution/mp0 mirror law byte-preserved; 7 stem_md regions synced where a restoration reached the emitted stem prose — each decomposition/sync accepted ONLY when the of-record rebuild round-trips the plane value byte-exactly)",
+  "ci": "official-export-gates SUCCESS on the rebased head (the F125 r2-consumed twin landed by run-034/#251 discharges the stale-disclosure refusal); corpus-gates red SOLELY on the pre-existing graph_check 1694 (c10/c11 anchor class, notes-lane repair scope — A/B-proven pre-existing here and independently by run-034's receipt; the job dies at graph_check before the battery steps, so the F127 B1-B7 battery is CI-blocked and verified GREEN first-hand on the rebased tree, 766/766 pins); sync pending at merge (non-required) — the #236/F122 disposition"
+ },
+ "closureProofs": {
+  "G-E1_noop": "the r2-consumed-proof-era exporter (438aacb6, the CONSUMED LAW — the last under which exporter(corpus)==plane was proven byte-exact) re-run over the back-synced corpus vs the plane of record: 55/55 slices, 0 deltas (new/gone/changed all empty)",
+  "G-E3": "55 slices / 540 questions / 2254 parts / 4970 marks — MULTI-SERIES constants exact",
+  "renderer": "questions.md regenerated with the of-record renderer (write_questions_md): double-render determinism proven; untouched slices byte-identical to HEAD (T2 law); synced stems render EXACTLY ONCE (no fold doubling — the corpus keeps stem_md/problem_md field semantics)",
+  "presentation": "questions.md restored-presentation census: $-segments 0 -> 117, superscript-restoration hits 1 -> 129, the run-005 nuclear-decay line '²³²₉₀Th → ²²⁰₈₆Rn + ⁴₂α + ⁰₋₁β' served verbatim",
+  "G3_inheritance": "zero PUA/U+FFFD/C0 in every written corpus value (the runs' G3 gates inherited)",
+  "byte_laws": "topic.json json.dumps(indent=1, ensure_ascii=False) no trailing newline (T1: 55/55 round-trip byte-identity pre-flight); manifest compact single-line no trailing newline, lineage verbatim",
+  "battery": "B1-B7 GREEN (766 C-law pins == corpus; ledger==pins key sets; grammar; zero PUA; G-E2 corpus sums; render determinism + nuclear-line pin; negative control detected)"
+ },
+ "attribution": {
+  "law": "every delta pid attributes to the run-001..005 payloads (R1 closure: 339/339, zero unattributed); the solution/mp0 field classes reconcile with the receipts' mirror law (301 solutionMd + 301 markPoints[0] lockstep, 164 problemMd)",
+  "payload_union": "491 pids carried in the five payloads; 152 have no net census delta (the edited-then-reverted/superseded class — run-004 re-adjudications + the run-005 false-positive repair); the 2 no-signature outliers (2022-06 1p_11-b-iv solutionMd+mp0, the corrupt-glyph -> sqrt restoration) trace to run-002's payload"
+ },
+ "disclosures": [
+  "the CONSUMED EXPORTER LAW of record = the r2-consumed-proof-era exporter (438aacb6); the CURRENT exporter law (F121/F123/F125 post-date the no-op proof) emits the group-stem serving class the physics plane does not serve yet: the standing evolution census (421 pids across 55 sets) filed as scripts/exporter-disclosures/2026-10-31-f127-groupstem-evolution-4ph1-standing.json — the physics twin of the F121 serving decision, PENDING THE OPERATOR'S RULING, not executed by this run",
+  "the first executor draft relied on the exporter's stem fold-guard (the maths-B F122 corpus state); replaced pre-push by the uniform wrap-decomposition law after the questions.md render showed the stale-stem/doubled-stem class — the shipped corpus keeps stem/part field semantics and single renders",
+  "the F126/Task-34 numbering granted to the parallel maths-B run-034 (#251) mid-flight — renumbered F127/Task 35 at the rebase, content byte-identical",
+  "CI graph_check red (1694) pre-existing at the base (7343e125 notes-dir deletion per run-034's receipt) — disclosed, not fixed (notes-lane scope)"
+ ],
+ "standingDebt": [
+  "RESOURCES BACK-SYNC LAW: DISCHARGED for run-001..005 (the corpus now carries them; future hand-repairs land on the corpus first, or re-run the F127 shape)",
+  "questions.md presentation-stale: RETIRED (the regen landed corpus-side; future regens ride every corpus wave by construction)",
+  "the F121-groupstem physics serving decision (421-pid evolution census) + the 2026 nuclear-notation convention decision (inherited from run-005): both operator-gated, both filed",
+  "the CI graph red (1694) is notes-lane repair scope (per run-034's disclosure); the physics battery's CI leg activates when corpus-gates goes green"
+ ],
+ "discipline": "fetch-first + race-guard at every leg (the rebase hit the live #251 merge mid-PR — union-resolved per the house precedent); read-only recon before any write; the consumed exporter law pre-registered before the first write; fail-closed aborts exercised twice during bring-up (the fold-guard double-render class; the wrap-mismatch class) and fixed in the executor, disk pristine at each reset; single-plane zero-diff on v2; resources corpus the only content change; zero DB/Neon/prod contact; receipt + worklog + evidence in the PRs",
+ "evidence": {
+  "resources": "PR #252 (receipt-bearing commit 028aad41): scripts/official_examq_phys_backsync_tests.py + scripts/oeq_phys_backsync_pins.json + scripts/oeq_phys_synced_fields.json + scripts/exporter-disclosures/2026-10-31-f127-groupstem-evolution-4ph1-standing.json; LEDGER.md F127 section; AGENTS.md Task 35; LANE-STATUS.md F127 note",
+  "sandbox_mirrors": "scripts/run006_{census_diff,census_r2era,reconcile,evo_shape,backsync,verify,emit_pins}.py + /tmp/physrun/{field_census.json,field_census_r2era.json,r2era_fielddetail.json,evolution_census.json,reconciliation.json,backsync_report.json}"
+ },
+ "verdict": "RUN-006 CLOSED: the 4PH1 corpus of record now carries the run-001..005 restorations (766 field writes, round-trip-verified byte-exact) and the questions.md human renders are presentation-fresh — the exporter re-export is a byte-level no-op against the untouched plane of record; the BACK-SYNC LAW and the questions.md standing debt are both retired; the manifest pin advanced to the merged cut with the lineage preserved verbatim"
+}
