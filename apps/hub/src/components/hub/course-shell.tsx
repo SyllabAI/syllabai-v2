@@ -509,6 +509,19 @@ export function CourseShell({
   const menuBtnRef = useRef<HTMLButtonElement>(null);
   const drawerPanelRef = useRef<HTMLDivElement>(null);
 
+  // run-009 hover-expand (ref-analysis/hover-expand-analysis.md): with the
+  // rail collapsed, pointer hover floats the panel open over the content and
+  // leaving collapses it back. Both references run this on the same
+  // architecture — an in-flow reservation + a floating panel (MG byte
+  // 2307648: spacer w-55 + absolute aside, data-slot="pinnable-rail"; RD
+  // byte 2860705: width holder + absolute z-50 panel, --collapsed-width:
+  // 64px) — so the transient expansion never reflows the content column.
+  // railHover is transient by definition (never persisted); the pinned
+  // toggle keeps its exact semantics.
+  const [railHover, setRailHover] = useState(false);
+  const sidebarOpen = !hidden || railHover; // expanded-state chrome
+  const sidebarFloating = hidden && railHover; // fixed overlay + 44px spacer
+
   // Document-focus routes (past-paper viewer / interactive player) collapse
   // the sidebar to the 44px rail automatically — on those screens the PDF is
   // the whole point (user-reported: "such a small viewport for the pdf").
@@ -521,6 +534,19 @@ export function CourseShell({
   // top on it, and the drawer trigger (which lives in the suppressed bar)
   // never renders.
   const viewerRoute = isViewerRoute(pathname);
+
+  // run-009: hover-expand pointer gating — mouse/pen only (both references
+  // gate every hover affordance in @media(hover:hover); a touch tap on the
+  // rail must navigate, not float a panel), and never on viewer routes
+  // (s146: the PDF is the screen — a transient panel over it on mouse-travel
+  // is exactly the chrome the document-focus contract removes).
+  const onAsidePointerEnter = (e: React.PointerEvent<HTMLElement>) => {
+    if (hidden && !viewerRoute && e.pointerType !== "touch") setRailHover(true);
+  };
+  const onAsidePointerLeave = () => {
+    if (railHover) setRailHover(false);
+  };
+
   const autoCollapsedRef = useRef(false);
   useEffect(() => {
     if (focusRoute) {
@@ -707,6 +733,12 @@ export function CourseShell({
           </div>
         )}
 
+        {/* run-009 hover-expand: the spacer plays MG's byte-2307648 role —
+            while the panel floats (fixed) it holds the 44px rail reservation
+            so the content column never reflows; it exists only during the
+            transient hover expansion. */}
+        {sidebarFloating && <div aria-hidden className="hidden w-11 shrink-0 lg:block" />}
+
         {/* desktop sidebar — the one and only course sidebar; run-004b: one
             element that animates width between the panel (w-64: back to the
             references' narrow rhythm now that the tiles are gone — 288px was
@@ -714,19 +746,30 @@ export function CourseShell({
             run-008 C-1: the expanded width becomes continuous — a user-dragged
             width rides inline style (beats any width class); the rail keeps
             its w-11 class and never gets inline width, so collapse/expand
-            still morphs between 44px and the remembered expanded width. */}
+            still morphs between 44px and the remembered expanded width.
+            run-009: while the collapsed rail is hovered, the SAME element
+            switches to fixed and expands to the remembered width — the
+            references' hover-expand on their spacer+float architecture
+            (analysis doc §3), anchored to the viewport because our document
+            scrolls where their app shell does not. */}
         <aside
           id={asideId}
           ref={asideRef}
+          onPointerEnter={onAsidePointerEnter}
+          onPointerLeave={onAsidePointerLeave}
           className={cn(
-            "sticky hidden shrink-0 overflow-hidden border-r bg-background transition-[width] duration-200 ease-out motion-reduce:transition-none lg:flex lg:flex-col",
-            hidden ? "w-11" : sidebarWidth === null ? "w-64" : undefined,
-            viewerRoute
-              ? "top-0 h-[calc(100dvh-1px)]"
-              : "top-14 h-[calc(100dvh-3.5rem-1px)]",
+            "hidden shrink-0 overflow-hidden border-r bg-background transition-[width] duration-200 ease-out motion-reduce:transition-none lg:flex lg:flex-col",
+            sidebarFloating
+              ? // transient float: same visual spot the sticky rail occupies
+                // (top-14 under the 56px header), above the page content
+                "fixed left-0 top-14 z-30 h-[calc(100dvh-3.5rem-1px)]"
+              : viewerRoute
+                ? "sticky top-0 h-[calc(100dvh-1px)]"
+                : "sticky top-14 h-[calc(100dvh-3.5rem-1px)]",
+            sidebarOpen ? (sidebarWidth === null ? "w-64" : undefined) : "w-11",
           )}
           style={
-            hidden || sidebarWidth === null
+            !sidebarOpen || sidebarWidth === null
               ? undefined
               : {
                   width: sidebarWidth,
@@ -738,48 +781,54 @@ export function CourseShell({
           aria-label="Course navigation"
         >
           {/* header: course label + collapse toggle / re-open toggle */}
-          <div className={cn("flex items-center py-3", hidden ? "justify-center" : "justify-between px-4")}>
-            {hidden ? (
-              <Button
-                variant="outline"
-                size="icon"
-                className="size-9 shadow-xs"
-                onClick={() => setHidden(false)}
-                aria-label="Show menu"
-                title="Show menu"
-              >
-                <PanelLeftOpen className="size-4" aria-hidden />
-              </Button>
-            ) : (
+          <div className={cn("flex items-center py-3", sidebarOpen ? "justify-between px-4" : "justify-center")}>
+            {sidebarOpen ? (
               <>
                 <span className="text-sm font-semibold tracking-tight">{data.course.label ?? data.course.subject}</span>
                 <Button
                   variant="ghost"
                   size="sm"
                   className="h-8 gap-1.5 px-2 text-xs text-muted-foreground"
-                  onClick={() => setHidden(true)}
+                  onClick={() => {
+                    setHidden(true);
+                    setRailHover(false); // run-009: "Hide" closes NOW, not on pointer-leave
+                  }}
                 >
                   <PanelLeftClose className="size-4" aria-hidden /> Hide menu
                 </Button>
               </>
+            ) : (
+              <Button
+                variant="outline"
+                size="icon"
+                className="size-9 shadow-xs"
+                onClick={() => {
+                  setHidden(false);
+                  setRailHover(false);
+                }}
+                aria-label="Show menu"
+                title="Show menu"
+              >
+                <PanelLeftOpen className="size-4" aria-hidden />
+              </Button>
             )}
           </div>
 
-          <div className={cn("min-h-0 flex-1 overflow-y-auto pb-6", hidden ? "px-1" : "px-3")}>
-            <CourseNav navGroups={navGroups} pathname={pathname} onNavigate={() => setOpen(false)} collapsed={hidden} />
+          <div className={cn("min-h-0 flex-1 overflow-y-auto pb-6", sidebarOpen ? "px-3" : "px-1")}>
+            <CourseNav navGroups={navGroups} pathname={pathname} onNavigate={() => setOpen(false)} collapsed={!sidebarOpen} />
           </div>
 
           {/* run-005 tier-b footer dock: MG pins a theme/settings footer
               under the scroll area; ours rides the existing ThemeToggle
               (same store the app-shell header/footer already drive). */}
-          <div className={cn("flex border-t py-3", hidden ? "justify-center px-0.5" : "px-3")}>
-            <ThemeToggle variant={hidden ? "icon" : "row"} />
+          <div className={cn("flex border-t py-3", sidebarOpen ? "px-3" : "justify-center px-0.5")}>
+            <ThemeToggle variant={sidebarOpen ? "row" : "icon"} />
           </div>
 
           {/* run-008 C-1: the resize handle, expanded-state only (the rail is
               fixed 44px by design — a different contract from MG's, whose rail
               is unpinned). */}
-          {!hidden && (
+          {sidebarOpen && (
             <SidebarResizeHandle
               asideId={asideId}
               width={sidebarWidth}
