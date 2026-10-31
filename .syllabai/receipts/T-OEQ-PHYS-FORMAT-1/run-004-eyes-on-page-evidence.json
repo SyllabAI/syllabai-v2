@@ -1,0 +1,70 @@
+{
+ "lane": "T-OEQ-PHYS-FORMAT-1",
+ "run": "run-004-eyes-on-page-evidence",
+ "title": "4PH1 eyes-on page-evidence wave over the residual S1 lines - glyph-geometry adjudication against the archive PDFs of record (the PAGE decides; NO-GUESS law, calibrated on run-002's 1,839 restorations)",
+ "operatorOrder": "trace 1a18fd1d3b0f2df1: 'eyes-on page-evidence wave over the residual S1 lines' (per run-002/run-003 standingDebt: 'eyes-on page-evidence wave (next): the residual S1 lines per run-002's census + the $s = 652 / 26$ $-segment interior')",
+ "date": "2026-10-31",
+ "planeOfRecord": {
+  "path": "apps/hub/content/igcse-physics-19/official-papers.json",
+  "before": "99d30484ef709c8d6d56cd9e894215ade91b7f92c9244c5beff22a4ededd567c",
+  "before_is": "run-003's after-sha exactly - verified untouched at wave open (sandbox-recycle recovery of record: fresh sparse clone, receipts/converters of record recovered from origin/main)",
+  "after": "78d8a29d88da317d8cf3c0493cd71379e513a95f081a3e2eda98e938ccc63e60",
+  "diff": "phase A: 76 census-record line-edits across 64 fields (31 solutionMd + 31 mp0 mirrors + 2 problemMd; some fields carry multiple restored lines) + 2 disclosed $-segment-interior repairs; phase B: 8 re-qualified CONVERT lines swept (4 unique x mirror law, inside the same fields); single file, 64 changed json lines"
+ },
+ "worklistOfRecord": {
+  "source": "run002-residual-census.json s1 lists (793 records) + run-001's disclosed 652/26 $-segment interior",
+  "census_validation": "793/793 records intact on the current plane at their recorded where (0 missing, 0 drifted)",
+  "unique_targets": "408 (384 solutionMd/mp0 mirror pairs dedupe + 25 problemMd) + 1 segment interior",
+  "adjudication": "RESTORE 107 targets (40 with NET proposals, 67 page-confirmed no-ops), FLAT 296, AMBIGUOUS 3, NOT-FOUND 2"
+ },
+ "pageEvidenceLayer": {
+  "source": "SyllabAI/syllabai-pastpapers archive of record (sparse blob:none clone, 4PH1 subtree, 181 MB)",
+  "coverage": "75 evidence files: 53 MS + 22 QP PDFs (all papers in the worklist), PyMuPDF 1.26.7 span extraction (text, font size, baseline origin y) per page",
+  "symbol_font_decode": "Symbol-font PUA decoded empirically from context: F0B4->x-multiply, F070->pi, F044->Delta, F0B0->degree (math) - the reason pdftotext-flattened corpus lines match the page layer at all; other PUA is page furniture",
+  "method": "glyph-geometry verdicts: each suspect cluster's spans measured against the cluster's own first glyph group - SUP (size ratio <= 0.85, raised dy <= -0.4pt) / SUB (ratio <= 0.85, lowered or Pearson size-marked at-baseline) / FLAT (ratio >= 0.90, |dy| <= 1.5pt) / AMB; whitespace-normalized matching with shrinking context windows (full line, +/-12, +/-6, bare cluster); multi-instance consensus law: every printed instance must agree, raised-vs-flat across instances = AMBIGUOUS (dropped, never guessed)"
+ },
+ "calibrationOfRecord": {
+  "positive_controls": "run-002's 1,839 restorations (payload edits of record); 1,684 located, 1,646 CONFIRMED at every changed position, 22 PARTIAL, 14 AMBIG, 0 CONTRADICT (the page NEVER contradicts a run-002 restoration), 160 EXTRA page-evidenced proposals beyond run-002's conservative grammar (validating the engine catches more than the mechanical law)",
+  "negative_controls": "MS allow-list decimals ('allow 3.72, 3.715...') page-confirmed FLAT; zero-lhs quartet ('0 = 18^2...', '0 = 35^2...', '0 = [1.9 x 3.7]...', '-67 = 1 mark max') page-read-verified FLAT by direct span inspection - the MS genuinely prints '0 =' (v substituted as 0) and '-67'",
+  "detector_bugs_fixed_during_bringup": "coordinate-system mismatch (raw vs normalized positions); greedy [A-Za-z][0-9]+ swallowing the next token's digits (V2+0.08 -> V20); space-collapsed false clusters (') 2.8' -> ')2' matching a restored-superscript instance - fixed by FLAT-contradicts-RAISED consensus + space-preserving selection layer); single-span clusters self-basing (fixed by out-of-cluster fallback base); negexp single-digit pattern (10-[0-9] -> 10-[0-9]+)"
+ },
+ "censusOfRecord": {
+  "phaseA_restored": "38 net targets = 76 census-record line-edits across 64 fields (31 solutionMd + 31 mp0 mirrors + 2 problemMd) - families: 0.45^2/1.714^2/4.20^2 arithmetic-confirmed decimal supers (0.45^2+2x3.4x2.0=13.8 = the line's own v^2 = 13.8), (x 10^N) exponent families, p1V1=p2V2 / m1u1+m2u2 gas/momentum subscripts, 75^2=(0^2 +) suvat rearrangement, A1/A2 ammeter labels, m^2/cm^2 unit tails, 1.714^2 (the line run-002's receipt flagged as needing its 'a' anchor - page evidence settles it), 10^-31/10^-25 negexp tails",
+  "seg652_interior_repair": "$s = 652 / 26$ -> $s = 65^{2} / 26$ (both solutionMd + mp0) - page p11 shows 's = 65' + raised '2' + ' / 26 ' flat; run-001's disclosure CONFIRMED (65^2/26 = 162.5 with the sibling 65^2 = (0^2) + 2 x 13 x s); the G7 exception class, explicitly allow-listed, katex-gated",
+  "phaseB_sweep": "8 re-qualified CONVERT lines (4 unique x mirror) swept under run-001's UNCHANGED law (imported verbatim): v^2 = 0.45^2 + (2 x 3.4 x 2.0) / 1.714^2 = 0^2 + 2 x a x 0.63 / 4.20^2 = 1.45^2 + (2 x 9.6 x s) / 75^2 = (0^2 +) 2 x 4.1 x s -> $-segments, katex-gated",
+  "closed_flat": "296 targets page-confirmed FLAT (genuine decimals in MS allow-lists, MP-labels, isotope names, sin45 angle args, -67) + 67 RESTORE-verdict targets whose every proposal was a no-op (page confirms the restored state) - these CLOSE with page evidence",
+  "stays_residual": "3 targets: 2 nuclear-equation lines (prose isotope names vs equation mass numbers disagree under the bare-window consensus - the 652-style parenthetical '(220 86 Rn)' insertion breaks contiguity) + 1 REJECTED by eyeball (the restitution QP line: h1/h2 confirmed at 5 of 6 instances, the flattened-fraction numerator instance ambiguous - a partial restoration would misrepresent the formula); 6 census records"
+ },
+ "gates": {
+  "G1_structure_marks": "OK (55 sets / 540 questions / 2254 parts; marks[] identical)",
+  "G2_identity_reconstruction": "OK - 76 changed lines: phase A through the FLAT_MAP inverse (dash-variant normalization, run-002's disclosed class); phase B through run-001's denorm COMPOSED with flat-normalization; seg652 allow-listed pair",
+  "G3_pua_control": "OK (0) | U+FFFD: 0 pre-existing, 0 new",
+  "G4_dollar_accounting": "OK - 444 -> 460 = +2x8 phase-B exactly; segment delta = the disclosed 652 pair + the 8 new CONVERT segments; counts within mirror law (1 qp-only / 2 solutionMd+mp0)",
+  "G5_katex_gate": "OK - katex 0.16.23 throwOnError, 5 new/changed unique segments, 0 failures (hub's own version)",
+  "G6_serialization_byte_law": "OK - json.dumps(indent=1, ensure_ascii=False), round-trip exact",
+  "G7_dollar_line_protection": "OK - old side of every change $-free; all pre-existing segments byte-identical except the 2 disclosed 652 interiors",
+  "G8_idempotence": "OK - post-apply re-census: CONVERT 0 (phase B swept all re-qualified), $-lines 222 -> 230 (+8 exactly), S1-leadzero 2->0, S1-negexp 2->0, S1-x10 71->37, S1-subsup 132->104, S1-decimal 517->519 with the DISCLOSED +2 classifier-cascade (12 restored lines fall through to lower-priority guards once their primary damage resolves - a taxonomy artifact, not new damage: all 12 are lines this run restored), S1-parensup/funcinv/zero-lhs unchanged"
+ },
+ "bringUpNotes": [
+  "two gate bugs caught and fixed BEFORE any write (fail-closed held, plane sha unchanged on retry): G2 needed the composed denorm+flatnorm identity for phase-B lines (denorm strips the trailing ';' - both sides normalized); G7 asserted on unchanged lines (missing the a==b skip G2 has)",
+  "the FLAT-contradicts-RAISED consensus was added after the eyeball caught two false positives ('2.8'/'2.6' lead digits proposed from space-collapsed ')2' windows matching a restored-superscript instance) - the fix DOWNGRADED those lines and the eyeball re-ran on the final engine state",
+  "one eyeball REJECTION (#39 restitution line) - page evidence partial, formula would be misrepresented; stays residual"
+ ],
+ "standingDebt": [
+  "RESOURCES BACK-SYNC LAW (inherited, still open): run-001 + run-002 + run-003 + run-004 live v2-side; any future resources-side 4PH1 exporter re-export must learn/re-apply all four passes",
+  "questions.md human renders presentation-stale for the restored/swept lines (regen rides the next converter run)",
+  "the 3 stay-residual targets need human page-read eyes (2 nuclear equations with parenthetical mass-number notation, 1 flattened-fraction line); the remaining non-S1 residual classes (word-symbol 2203, ms-furniture 704, paren-prompt 435, unit-tail, abbr, foreign-char, sqrt-bare, cont-line) are OTHER waves' territory per run-001's taxonomy",
+  "the S1-decimal fall-through cascade (+2 and future) is a taxonomy artifact - any future S1-decimal wave must re-adjudicate against the page, not the class count"
+ ],
+ "evidence": {
+  "engine": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run004_engine.py",
+  "evidence_builder": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run004_evidence.py",
+  "calibration": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run004_calibrate.py",
+  "residual_runner": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run004_residual.py",
+  "apply": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run004_apply.py",
+  "payload": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run004-payload.json (408 adjudication verdicts + calibration of record + apply payload)",
+  "grammar_of_record": "phys_katex_pass.py (run-001) + phys_s1_restore.py (run-002) imported verbatim"
+ },
+ "discipline": "pre-registered NO-GUESS law (the PAGE decides, calibrated on the restorations of record before any residual adjudication); full 107-RESTORE-set eyeball before apply (false positives caught and engine-fixed, one line rejected); read-only recon then single-file serving-plane edit; resources corpus untouched; zero DB/Neon/prod contact; fetch-first, no force; receipt + worklog + evidence in the same PR; fail-closed gates (two bring-up gate bugs aborted before write)",
+ "verdict": "RUN-004 CLOSED: the 793-line S1 residual of record fully adjudicated against the page of record - 38 net restorations + 1 disclosed segment-interior repair + 8 same-law KaTeX sweeps applied; 363 targets closed page-confirmed-flat; 3 stay residual for human eyes; detector calibrated on run-002's 1,839 restorations at 0 contradictions; eight gates green"
+}
