@@ -40,6 +40,17 @@
   },
   "landing": {
     "plan": "branch rn-debris-2/run-001 cut at the open tip; PR carries content + baseline + guard script + lane artifacts (pagedict mirror, apply engine, apply report, census); this receipt finalized with merge/CI/bake facts in the closing bookkeeping commit",
-    "discipline": "fetch-first, race-guard (re-cut if main advances with file overlap), FF push no force, CI bounded poll, sha-pinned merge PUT, bake witness + live spot-check before closure"
+    "discipline": "fetch-first, race-guard (re-cut if main advances with file overlap), FF push no force, CI bounded poll, sha-pinned merge PUT, bake witness + live spot-check before closure",
+    "executed": {
+      "branch": "rn-debris-2/run-001 cut at 057ec3ec (S-B7 import PR #534 landed mid-flight a0a10923->057ec3ec; PR-file overlap census ZERO, branch re-cut per race-guard)",
+      "pr": 535,
+      "headSha": "36ffc4f8ec59aa3a11fa9c4b5792233564bf598b",
+      "headCI": "verify+hub 2/2 completed success (bounded poll round 3 of 4)",
+      "mergeMethod": "api PUT method=merge, sha-pinned",
+      "mergeSha": "deb81253",
+      "mergeShaCI": "verify+hub 2/2 completed success (poll round 4)",
+      "bake": "dpl_Fyub9xSHw42Q9ezzTHvZMSXLrLFg READY @ deb81253, alias syllabai-hub-v2.vercel.app assigned (v6 list + v13 aliasAssigned, both first-hand)",
+      "liveSpotCheck": "/corpus/cie-a-level-physics-25/notes.json 200 — all 3 new forms served x1 each (JSON-escaped patterns), zero 'E_ k a f t e r end_' remnants; /corpus-index.json 200"
+    }
   }
 }
