@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_dgVRCKCwn4rTGxGZ",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "afb5501298f58057dd4d5bfd63b28ea2de6b588d94003edd93c9f4dd36620336",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "9e2d094fb293614ab8bac5b18ddf11730d077d22acd180e8616ebe4fdbf073f8",
+    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
   },
   "packageId": "igcse-chemistry::rn_dgVRCKCwn4rTGxGZ",
   "subject": "igcse-chemistry",
@@ -192,6 +192,61 @@
       ]
     },
     {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L1::Q6",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L1",
+      "stem": "State the three quantities needed to calculate the heat energy change.",
+      "misconceptionClass": "Q inputs recall",
+      "kind": "recall",
+      "modelAnswer": "The heat energy change is found from the mass heated, the temperature change and the specific heat capacity.",
+      "keywords": [
+        "mass",
+        "specific",
+        "capacity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L1::Q7",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L1",
+      "stem": "State the specific heat capacity assumed for the solutions in these calculations.",
+      "misconceptionClass": "SHC value recall",
+      "kind": "recall",
+      "modelAnswer": "Solutions are assumed to share water's specific heat capacity of 4.18 J/g/°C.",
+      "keywords": [
+        "4",
+        "18",
+        "water"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L1::Q8",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L1",
+      "stem": "Explain why a temperature change in degrees Celsius can be used directly in the Q expression without converting to kelvin.",
+      "misconceptionClass": "kelvin equivalence explain",
+      "kind": "explain-why",
+      "modelAnswer": "A temperature difference has the same size in degrees Celsius as in kelvin, so the value of the temperature change substituted into Q is unchanged.",
+      "keywords": [
+        "difference",
+        "size",
+        "unchanged"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L1::Q9",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L1",
+      "stem": "A mixture of mass 100 g warms by 8 degrees Celsius. State the three inputs that should be substituted into the Q expression.",
+      "misconceptionClass": "substitute inputs application",
+      "kind": "application",
+      "modelAnswer": "Substitute m = 100, the specific heat capacity 4.18 and the 8-degree rise for the temperature difference, then multiply them to get Q in joules.",
+      "keywords": [
+        "substitute",
+        "multiply"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_dgVRCKCwn4rTGxGZ::L2::Q1",
       "moduleId": "rn_dgVRCKCwn4rTGxGZ::L2",
       "stem": "A calculation gives Q = 3135 J and the temperature rose. What is the final quoted answer?",
@@ -372,6 +427,61 @@
       ]
     },
     {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L2::Q6",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L2",
+      "stem": "State the sign carried by the heat energy change when the reaction mixture warms up.",
+      "misconceptionClass": "exothermic sign recall",
+      "kind": "recall",
+      "modelAnswer": "A temperature rise shows an exothermic reaction, so the heat energy change must be given as negative.",
+      "keywords": [
+        "negative",
+        "exothermic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L2::Q7",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L2",
+      "stem": "State the conversion that turns Q in joules into kilojoules.",
+      "misconceptionClass": "joules to kilojoules recall",
+      "kind": "recall",
+      "modelAnswer": "Dividing the value of Q by 1000 converts it from joules to kilojoules.",
+      "keywords": [
+        "dividing",
+        "1000"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L2::Q8",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L2",
+      "stem": "Explain why a perfect calculation without its negative sign still loses the chemistry for an exothermic answer.",
+      "misconceptionClass": "sign chemistry explain",
+      "kind": "explain-why",
+      "modelAnswer": "The negative sign carries the chemistry, showing the system gave energy out to the surroundings; without it the answer reads as if energy flowed the wrong way.",
+      "keywords": [
+        "gave",
+        "surroundings",
+        "flowed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L2::Q9",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L2",
+      "stem": "A combustion calculation returns 4.5 kilojoules per gram of fuel. State the sign the final answer must carry and why.",
+      "misconceptionClass": "combustion sign application",
+      "kind": "application",
+      "modelAnswer": "Combustion is always exothermic, so the answer must be given as -4.5, showing energy released by the burning fuel.",
+      "keywords": [
+        "always",
+        "exothermic",
+        "released",
+        "burning"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_dgVRCKCwn4rTGxGZ::L3::Q1",
       "moduleId": "rn_dgVRCKCwn4rTGxGZ::L3",
       "stem": "What distinguishes the molar enthalpy change from the heat energy change?",
@@ -550,6 +660,63 @@
           "misconception": "double counting"
         }
       ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L3::Q6",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L3",
+      "stem": "State how the energy released per gram of fuel is calculated.",
+      "misconceptionClass": "energy per gram recall",
+      "kind": "recall",
+      "modelAnswer": "Energy released per gram is the heat energy change divided by the mass of fuel burned.",
+      "keywords": [
+        "divided",
+        "burned"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L3::Q7",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L3",
+      "stem": "State the unit carried by the molar enthalpy change.",
+      "misconceptionClass": "molar unit recall",
+      "kind": "recall",
+      "modelAnswer": "The molar enthalpy change carries the unit kilojoules per mole, written kJ/mol.",
+      "keywords": [
+        "kilojoules",
+        "mole",
+        "kj",
+        "mol"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L3::Q8",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L3",
+      "stem": "Explain how the moles of fuel burned are found from its mass.",
+      "misconceptionClass": "moles from mass explain",
+      "kind": "explain-why",
+      "modelAnswer": "The mass of fuel is divided by its relative formula mass, converting grams into the number of moles burned.",
+      "keywords": [
+        "relative",
+        "formula",
+        "converting"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L3::Q9",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L3",
+      "stem": "Two fuels warm the same water beaker by different amounts, but one burned twice the mass of the other. State which quantities must be computed before the two fuels can be compared fairly.",
+      "misconceptionClass": "fair fuel comparison application",
+      "kind": "application",
+      "modelAnswer": "The energy released must be scaled per gram or per mole for each fuel, so the fair comparison uses the energy per gram or the molar enthalpy change rather than the raw experiment totals.",
+      "keywords": [
+        "scaled",
+        "per",
+        "fair",
+        "molar"
+      ],
+      "options": []
     }
   ]
 }

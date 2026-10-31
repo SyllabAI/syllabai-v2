@@ -1261,27 +1261,26 @@ const FEEDS = {
     },
     targetSchemas: ["hub/lesson-import/1.4", "sme-question-package/1.1"],
   },
-  "r3-stageb7-v14": {
-    manifest: "hub-import-manifest-v14.json",
-    manifest_version: 14,
+  "r3-stageb8-v15": {
+    manifest: "hub-import-manifest-v15.json",
+    manifest_version: 15,
     lesson_kind: "hub-lesson-import-1.4", // legacy single-kind field; v12 uses lessonKinds below
-    lessonKinds: { "hub-lesson-import-1.3": 32, "hub-lesson-import-1.4": 80 }, // generation-union census (2 stage-A pilots + 10 S-B1 + 12 S-B2 + 12 S-B3 + 11 S-B4 + 12 S-B5 + 12 S-B6 + 9 S-B7 at 1.4)
+    lessonKinds: { "hub-lesson-import-1.3": 18, "hub-lesson-import-1.4": 94 }, // generation-union census (2 stage-A pilots + 10 S-B1 + 12 S-B2 + 12 S-B3 + 11 S-B4 + 12 S-B5 + 12 S-B6 + 9 S-B7 + 14 S-B8 at 1.4)
     adapter: "guided-lesson-0.5--hub-lesson-import-1.4",
-    directive: "run the R3 mixed check types stage-B wave 7 chain — import the S-B7 tranche (the wave-7 authoring register: 9 notes / 19 lessons / 76 written items; operator ignition trace 1a18fd512d610f7d 'wave 7'). Declared hub revision = 18 files: the 9 S-B7 re-issues (PR #248 generation, bytes fetched @ pin). The S-B2/S-B3/S-B4/S-B5/S-B6 re-issues are already live on the hub at their v9/v10/v11/v12/v13 pins and are re-proved byte-identical at this manifest",
+    directive: "run the R3 mixed check types stage-B wave 8 chain — import the S-B8 tranche (the wave-8 authoring register: 14 notes / 32 lessons / 128 written items; operator ignition trace 1a1900aa14eb84d5 'STAGE-B WAVE 8'). Declared hub revision = 28 files: the 14 S-B8 re-issues (PR #249 generation, bytes fetched @ pin). The S-B2/S-B3/S-B4/S-B5/S-B6/S-B7 re-issues are already live on the hub at their v9/v10/v11/v12/v13/v14 pins and are re-proved byte-identical at this manifest",
     promo: {
-      // promotion commit of record = the resources PR #248 MERGE commit (trace-bearing merge
-      // message first-time-right this wave; mid-flight race disclosed in receipts: main advanced
-      // b57b77f6 -> 7343e125 ("Delete Chemistry IGCSE Revision Notes directory", 300 files) after
-      // the wave opened — PR-file overlap census 0, merge clean on the advanced main)
-      commit: "652ca2d4e7709647cfd68040a56d817ae985fc5e",
-      tree: "7f2270fec63d118193b867199e65cd3ed8189327",
-      parent: "7343e12561541215cbd7bdc7a2d9f3f20bc93a7b", // resources main first-parent at the #248 merge
-      trace: "1a18fd512d610f7d",
+      // promotion commit of record = the resources PR #249 MERGE commit (trace-bearing merge
+      // message first-time-right this wave; no mid-flight race: main at the #249 merge equals the
+      // wave-open main of record 7819d8a4 — merge parents recorded in the receipt)
+      commit: "88dfb3dee9d85c5e533c3d99646678bb588fb559",
+      tree: "980bdb846a68bbce9e81e93f244c0b5f28fc69be",
+      parent: "7819d8a4aed0aefd53a9709f737d73159868432c", // resources main first-parent at the #249 merge
+      trace: "1a1900aa14eb84d5",
     },
     integration_branch: null, // ancestry of record — hub run happens only after the resources PR merges
-    artifact_pin: "71922d1510ee9e00400667670b40f36e1ae5d456", // the 53 untouched lessons keep the source-0.4 (1.3) pin
+    artifact_pin: "71922d1510ee9e00400667670b40f36e1ae5d456", // the 18 untouched lessons keep the source-0.4 (1.3) pin
     artifact_pins_by_note: {
-      // the 80 R3 notes (2 pilots + 10 S-B1 + 12 S-B2 + 12 S-B3 + 11 S-B4 + 12 S-B5 + 12 S-B6 + 9 S-B7) re-pin BOTH channels to
+      // the 94 R3 notes (2 pilots + 10 S-B1 + 12 S-B2 + 12 S-B3 + 11 S-B4 + 12 S-B5 + 12 S-B6 + 9 S-B7 + 14 S-B8) re-pin BOTH channels to
       // their source-0.5 generation commits
       rn_2MpXPtNXvn8pQm3r: "80afdb8e02b628754f0e522d257e54d046ba5b0f",
       rn_8T5GfPn2q7sY2YCh: "80afdb8e02b628754f0e522d257e54d046ba5b0f",
@@ -1363,31 +1362,55 @@ const FEEDS = {
       rn_pBp5Z5C2RHTKk7Wn: "a8889009338bc5ce09edfed1d610d8cc9c9457b4",
       rn_qb9TBhB6VmnFGjvf: "a8889009338bc5ce09edfed1d610d8cc9c9457b4",
       rn_v5JjfpT6grhtq3QW: "a8889009338bc5ce09edfed1d610d8cc9c9457b4",
-      rn_vVdP57QhDYSVfZgy: "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
+      rn_vVdP57QhDYSVfZgy: "a8889009338bc5ce09edfed1d610d8cc9c9457b4",
+      rn_3wZh9qRT7qFJn9QW: "51a6ed34e715a270c1d1525d1cff903777337437",
+      rn_6478QfpYNQDjZSvt: "51a6ed34e715a270c1d1525d1cff903777337437",
+      rn_DRQXrcSrmgQ7jcbZ: "51a6ed34e715a270c1d1525d1cff903777337437",
+      rn_H6ZVkxvdNgYDvfFb: "51a6ed34e715a270c1d1525d1cff903777337437",
+      rn_HNXFQt7vM32g6PMv: "51a6ed34e715a270c1d1525d1cff903777337437",
+      rn_KTZjJ7sPdDt4tkTH: "51a6ed34e715a270c1d1525d1cff903777337437",
+      rn_XJ8qXfzZJJFKXHnF: "51a6ed34e715a270c1d1525d1cff903777337437",
+      rn_Zh6Pw56rjdMkPCD4: "51a6ed34e715a270c1d1525d1cff903777337437",
+      rn_dgVRCKCwn4rTGxGZ: "51a6ed34e715a270c1d1525d1cff903777337437",
+      rn_t68QRDhwR6r5gxYX: "51a6ed34e715a270c1d1525d1cff903777337437",
+      rn_tvwj4VZ6yFscPJfD: "51a6ed34e715a270c1d1525d1cff903777337437",
+      rn_w25KHshCMNQWwftj: "51a6ed34e715a270c1d1525d1cff903777337437",
+      rn_x5m8QBWxtKvxQ9sx: "51a6ed34e715a270c1d1525d1cff903777337437",
+      rn_y85XYRv5QfgZFQxv: "51a6ed34e715a270c1d1525d1cff903777337437"
     },
-    pkg_pin: "4d857c472fd725597ac21db189542c8f12c82dba", // INT-0 — the 41 untouched packages stay byte-identical
+    pkg_pin: "4d857c472fd725597ac21db189542c8f12c82dba", // INT-0 — the 18 untouched packages stay byte-identical
     checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
     pilotDelta: {
       files: [
-        // 18 declared: the 9 S-B7 re-issues (hub revision rides this manifest)
-        "rn_5g8Dd6y89tkCVJsN.hub-lesson-import.json",
-        "rn_6ZCysv9GnNQmc3w2.hub-lesson-import.json",
-        "rn_T6S7R66N2wSZpWyc.hub-lesson-import.json",
-        "rn_VvsXMdW3TB37JhWF.hub-lesson-import.json",
-        "rn_YWDXCCmjfjkJcs6c.hub-lesson-import.json",
-        "rn_pBp5Z5C2RHTKk7Wn.hub-lesson-import.json",
-        "rn_qb9TBhB6VmnFGjvf.hub-lesson-import.json",
-        "rn_v5JjfpT6grhtq3QW.hub-lesson-import.json",
-        "rn_vVdP57QhDYSVfZgy.hub-lesson-import.json",
-        "rn_5g8Dd6y89tkCVJsN.sme-question-package.json",
-        "rn_6ZCysv9GnNQmc3w2.sme-question-package.json",
-        "rn_T6S7R66N2wSZpWyc.sme-question-package.json",
-        "rn_VvsXMdW3TB37JhWF.sme-question-package.json",
-        "rn_YWDXCCmjfjkJcs6c.sme-question-package.json",
-        "rn_pBp5Z5C2RHTKk7Wn.sme-question-package.json",
-        "rn_qb9TBhB6VmnFGjvf.sme-question-package.json",
-        "rn_v5JjfpT6grhtq3QW.sme-question-package.json",
-        "rn_vVdP57QhDYSVfZgy.sme-question-package.json"
+        // 28 declared: the 14 S-B8 re-issues (hub revision rides this manifest)
+        "rn_3wZh9qRT7qFJn9QW.hub-lesson-import.json",
+        "rn_6478QfpYNQDjZSvt.hub-lesson-import.json",
+        "rn_DRQXrcSrmgQ7jcbZ.hub-lesson-import.json",
+        "rn_H6ZVkxvdNgYDvfFb.hub-lesson-import.json",
+        "rn_HNXFQt7vM32g6PMv.hub-lesson-import.json",
+        "rn_KTZjJ7sPdDt4tkTH.hub-lesson-import.json",
+        "rn_XJ8qXfzZJJFKXHnF.hub-lesson-import.json",
+        "rn_Zh6Pw56rjdMkPCD4.hub-lesson-import.json",
+        "rn_dgVRCKCwn4rTGxGZ.hub-lesson-import.json",
+        "rn_t68QRDhwR6r5gxYX.hub-lesson-import.json",
+        "rn_tvwj4VZ6yFscPJfD.hub-lesson-import.json",
+        "rn_w25KHshCMNQWwftj.hub-lesson-import.json",
+        "rn_x5m8QBWxtKvxQ9sx.hub-lesson-import.json",
+        "rn_y85XYRv5QfgZFQxv.hub-lesson-import.json",
+        "rn_3wZh9qRT7qFJn9QW.sme-question-package.json",
+        "rn_6478QfpYNQDjZSvt.sme-question-package.json",
+        "rn_DRQXrcSrmgQ7jcbZ.sme-question-package.json",
+        "rn_H6ZVkxvdNgYDvfFb.sme-question-package.json",
+        "rn_HNXFQt7vM32g6PMv.sme-question-package.json",
+        "rn_KTZjJ7sPdDt4tkTH.sme-question-package.json",
+        "rn_XJ8qXfzZJJFKXHnF.sme-question-package.json",
+        "rn_Zh6Pw56rjdMkPCD4.sme-question-package.json",
+        "rn_dgVRCKCwn4rTGxGZ.sme-question-package.json",
+        "rn_t68QRDhwR6r5gxYX.sme-question-package.json",
+        "rn_tvwj4VZ6yFscPJfD.sme-question-package.json",
+        "rn_w25KHshCMNQWwftj.sme-question-package.json",
+        "rn_x5m8QBWxtKvxQ9sx.sme-question-package.json",
+        "rn_y85XYRv5QfgZFQxv.sme-question-package.json"
       ],
     },
     schemas: {
@@ -1397,14 +1420,14 @@ const FEEDS = {
       pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.1.schema.json",
     },
     survivors: {
-      manifest: "/home/z/my-project/scripts/r3-survivors/hub-import-manifest-v14.json",
-      int3: "/home/z/my-project/scripts/r3-survivors/INT-3-transform-record-r3-stageb7.json",
+      manifest: "/home/z/my-project/scripts/r3-survivors/hub-import-manifest-v15.json",
+      int3: "/home/z/my-project/scripts/r3-survivors/INT-3-transform-record-r3-stageb8.json",
     },
-    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261031-r3-stageb7.json`,
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261031-r3-stageb8.json`,
     identity: {
       "notes": 112,
       "lessons": 239,
-      "checks": 1863,
+      "checks": 1991,
       "keyPoints": 1212,
       "distractors": 3565,
       "glossaryTerms": 654,
@@ -1413,9 +1436,9 @@ const FEEDS = {
       "figures_note_level": 78,
       "workedExamples_populated": 112,
       "workedExamples_null": 0,
-      "authored_chars_conserved": 1623107,
+      "authored_chars_conserved": 1656599,
       "authored_chars_v3_baseline": 1347771,
-      "added_chars": 275336,
+      "added_chars": 308828,
       "captions_coalesced": 143,
       "captions_row_context": 16,
       "captions_inline": 3,
@@ -1428,17 +1451,17 @@ const FEEDS = {
       "figures_binding_narrowed": 102,
       "figures_claims_changed": 12,
       "figures_wholesale_claims_kept": 2,
-      "checks_written": 668,
+      "checks_written": 796,
       "checks_mcq": 1195,
-      "written_recall": 334,
-      "written_explain_why": 167,
-      "written_application": 167
+      "written_recall": 398,
+      "written_explain_why": 199,
+      "written_application": 199
     },
     figures_feed: true,
-    we_feed: true, // the v14 stream is the declared baseline; this feed's equality gate is per-note vs the INT-3 r3-stageb7 anchors (32 exact at v13; 71 prior-R3 at their own anchors exactly; 9 S-B7 notes carry the 76 written items' tokens)
-    landing: "revision", // declared G-DELTA: exactly the 18 declared files re-pin (9 S-B7); everything else byte-identical
+    we_feed: true, // the v15 stream is the declared baseline; this feed's equality gate is per-note vs the INT-3 r3-stageb8 anchors (18 exact at v14; 80 prior-R3 at their own anchors exactly; 14 S-B8 notes carry the 128 written items' tokens)
+    landing: "revision", // declared G-DELTA: exactly the 28 declared files re-pin (14 S-B8); everything else byte-identical
     relFor(a) {
-      if (!a.path.startsWith("SME-GuidedLessons/integration/")) throw new Error(`v13 manifest path not integration-relative: ${a.path}`);
+      if (!a.path.startsWith("SME-GuidedLessons/integration/")) throw new Error(`v15 manifest path not integration-relative: ${a.path}`);
       return a.path;
     },
     pathFamily(a) {

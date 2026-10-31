@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_H6ZVkxvdNgYDvfFb",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "74cdb48d4f3dbbe7a08c47f7a80e618e3c4880c40dd406bcb5db272ab887215e",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "3a4d6d3d4764583440326903d08c89ce6fcd660730e54080337e9f19dc5a11f6",
+    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
   },
   "packageId": "igcse-chemistry::rn_H6ZVkxvdNgYDvfFb",
   "subject": "igcse-chemistry",
@@ -192,6 +192,60 @@
       ]
     },
     {
+      "id": "rn_H6ZVkxvdNgYDvfFb::L1::Q6",
+      "moduleId": "rn_H6ZVkxvdNgYDvfFb::L1",
+      "stem": "State the quantity measured in the marble chip experiment after the bung is closed.",
+      "misconceptionClass": "gas volume recall",
+      "kind": "recall",
+      "modelAnswer": "The volume of gas produced in a fixed time is recorded after the marble chips are added and the bung closed.",
+      "keywords": [
+        "volume",
+        "gas",
+        "produced"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H6ZVkxvdNgYDvfFb::L1::Q7",
+      "moduleId": "rn_H6ZVkxvdNgYDvfFb::L1",
+      "stem": "How is the surface area investigation repeated to allow comparison?",
+      "misconceptionClass": "repeat sizes recall",
+      "kind": "recall",
+      "modelAnswer": "The method is repeated with different sizes of marble chips so the rates can be compared.",
+      "keywords": [
+        "sizes",
+        "different"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H6ZVkxvdNgYDvfFb::L1::Q8",
+      "moduleId": "rn_H6ZVkxvdNgYDvfFb::L1",
+      "stem": "Explain why a fixed volume of hydrochloric acid is used for each run in the marble chip experiment.",
+      "misconceptionClass": "fixed acid explain",
+      "kind": "explain-why",
+      "modelAnswer": "A fixed volume of acid keeps the amount of reactant the same between runs, so any change in rate is due to the surface area alone, making the comparison fair.",
+      "keywords": [
+        "alone",
+        "fair",
+        "concentration"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H6ZVkxvdNgYDvfFb::L1::Q9",
+      "moduleId": "rn_H6ZVkxvdNgYDvfFb::L1",
+      "stem": "A second investigation varies the acid concentration with the same chip size. State the other variable the first investigation covers.",
+      "misconceptionClass": "other variable application",
+      "kind": "application",
+      "modelAnswer": "The investigation covers both chip size and acid concentration, so the other variable is the surface area of the marble chips.",
+      "keywords": [
+        "area",
+        "surface"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_H6ZVkxvdNgYDvfFb::L2::Q1",
       "moduleId": "rn_H6ZVkxvdNgYDvfFb::L2",
       "stem": "What belongs in the results table?",
@@ -370,6 +424,63 @@
           "misconception": "control misread"
         }
       ]
+    },
+    {
+      "id": "rn_H6ZVkxvdNgYDvfFb::L2::Q6",
+      "moduleId": "rn_H6ZVkxvdNgYDvfFb::L2",
+      "stem": "State the two columns of the results table in the marble chip investigation.",
+      "misconceptionClass": "results columns recall",
+      "kind": "recall",
+      "modelAnswer": "The table records chip size against the volume of gas produced in thirty seconds.",
+      "keywords": [
+        "size",
+        "thirty",
+        "seconds",
+        "volume"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H6ZVkxvdNgYDvfFb::L2::Q7",
+      "moduleId": "rn_H6ZVkxvdNgYDvfFb::L2",
+      "stem": "State what becomes available to the dilute hydrochloric acid when a chip is broken into smaller pieces.",
+      "misconceptionClass": "exposed surface recall",
+      "kind": "recall",
+      "modelAnswer": "More surface particles of the marble are exposed to the dilute hydrochloric acid.",
+      "keywords": [
+        "particles",
+        "surface"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H6ZVkxvdNgYDvfFb::L2::Q8",
+      "moduleId": "rn_H6ZVkxvdNgYDvfFb::L2",
+      "stem": "Explain why extra exposed surface makes collisions more frequent and successful.",
+      "misconceptionClass": "collision frequency explain",
+      "kind": "explain-why",
+      "modelAnswer": "Extra exposed surface puts more particles where the acid can reach them, so collisions happen more often and the number of successful collisions rises.",
+      "keywords": [
+        "often",
+        "rises",
+        "frequently"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H6ZVkxvdNgYDvfFb::L2::Q9",
+      "moduleId": "rn_H6ZVkxvdNgYDvfFb::L2",
+      "stem": "Powdered marble reacts faster than single large chips of the same mass. State the collision-based reason for the faster rate.",
+      "misconceptionClass": "powder rate application",
+      "kind": "application",
+      "modelAnswer": "The powder has a greater surface area for collisions, so the increased collision count per second raises the rate of reaction.",
+      "keywords": [
+        "increased",
+        "count",
+        "raises",
+        "collisions"
+      ],
+      "options": []
     }
   ]
 }

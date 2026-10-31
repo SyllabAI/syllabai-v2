@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_t68QRDhwR6r5gxYX",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "896e336e57952664ec4a8d47feebc4c299140f152eb6e00cccf7f53f2cb84479",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "70fefa0fd4527da0cd527a632f2a9e3d06a3a303e9e541e28dd37d38d3d57fbe",
+    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
   },
   "packageId": "igcse-chemistry::rn_t68QRDhwR6r5gxYX",
   "subject": "igcse-chemistry",
@@ -192,6 +192,61 @@
       ]
     },
     {
+      "id": "rn_t68QRDhwR6r5gxYX::L1::Q6",
+      "moduleId": "rn_t68QRDhwR6r5gxYX::L1",
+      "stem": "State the symbol used to show a reversible reaction in an equation.",
+      "misconceptionClass": "reversible symbol recall",
+      "kind": "recall",
+      "modelAnswer": "A symbol with two half arrowheads, one pointing each way, indicates that the reaction is reversible.",
+      "keywords": [
+        "half",
+        "arrowheads"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t68QRDhwR6r5gxYX::L1::Q7",
+      "moduleId": "rn_t68QRDhwR6r5gxYX::L1",
+      "stem": "State which reaction forms the reactants in a reversible system.",
+      "misconceptionClass": "reverse direction recall",
+      "kind": "recall",
+      "modelAnswer": "The reverse reaction forms the reactants while the forward reaction forms the products.",
+      "keywords": [
+        "reverse",
+        "forward"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t68QRDhwR6r5gxYX::L1::Q8",
+      "moduleId": "rn_t68QRDhwR6r5gxYX::L1",
+      "stem": "Explain why the products of a reversible reaction do not simply accumulate unchanged.",
+      "misconceptionClass": "both ways explain",
+      "kind": "explain-why",
+      "modelAnswer": "The product molecules can react again or decompose to reform the reactants, so both directions run at once and the products are continuously being turned back.",
+      "keywords": [
+        "decompose",
+        "reform",
+        "continuously",
+        "turned"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t68QRDhwR6r5gxYX::L1::Q9",
+      "moduleId": "rn_t68QRDhwR6r5gxYX::L1",
+      "stem": "Ammonium chloride is heated in a closed tube and the products are cooled again. State how the way the change runs is controlled in this reversible system.",
+      "misconceptionClass": "direction control application",
+      "kind": "application",
+      "modelAnswer": "Changing the conditions controls it: heating drives the decomposition and cooling lets the gases rejoin, so the reaction runs each way in turn.",
+      "keywords": [
+        "heating",
+        "cooling",
+        "conditions"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_t68QRDhwR6r5gxYX::L2::Q1",
       "moduleId": "rn_t68QRDhwR6r5gxYX::L2",
       "stem": "What happens when the hot gases from heated ammonium chloride cool down?",
@@ -370,6 +425,62 @@
           "misconception": "wrong products"
         }
       ]
+    },
+    {
+      "id": "rn_t68QRDhwR6r5gxYX::L2::Q6",
+      "moduleId": "rn_t68QRDhwR6r5gxYX::L2",
+      "stem": "State the two gases formed when ammonium chloride is warmed.",
+      "misconceptionClass": "ammonium chloride recall",
+      "kind": "recall",
+      "modelAnswer": "Warm ammonium chloride splits into ammonia and hydrogen chloride gases, which rejoin on cooling.",
+      "keywords": [
+        "ammonia",
+        "hydrogen",
+        "rejoin"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t68QRDhwR6r5gxYX::L2::Q7",
+      "moduleId": "rn_t68QRDhwR6r5gxYX::L2",
+      "stem": "State the colour of hydrated copper(II) sulfate and what it holds in its crystal structure.",
+      "misconceptionClass": "hydrated copper recall",
+      "kind": "recall",
+      "modelAnswer": "Hydrated copper(II) sulfate is blue and holds water inside its crystal structure.",
+      "keywords": [
+        "blue",
+        "water"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t68QRDhwR6r5gxYX::L2::Q8",
+      "moduleId": "rn_t68QRDhwR6r5gxYX::L2",
+      "stem": "Explain why heating hydrated copper(II) sulfate is classified as an endothermic change.",
+      "misconceptionClass": "dehydration endothermic explain",
+      "kind": "explain-why",
+      "modelAnswer": "Heating drives the water off the hydrated crystals, and the change takes energy in from the flame, so it is endothermic and leaves the white anhydrous powder behind.",
+      "keywords": [
+        "takes",
+        "drives",
+        "anhydrous"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t68QRDhwR6r5gxYX::L2::Q9",
+      "moduleId": "rn_t68QRDhwR6r5gxYX::L2",
+      "stem": "A few drops of water are added to the white powder and the tube warms noticeably. State the two observations that show the reverse change has happened.",
+      "misconceptionClass": "rehydration observations application",
+      "kind": "application",
+      "modelAnswer": "The white powder turns blue again and a large amount of heat is given out, so adding water has reversed the change.",
+      "keywords": [
+        "turns",
+        "blue",
+        "given",
+        "reversed"
+      ],
+      "options": []
     }
   ]
 }

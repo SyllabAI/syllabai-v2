@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_HNXFQt7vM32g6PMv",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "2d2f221ce005cd289ca376b87f3f8921fe38a8767a5f71f1bb58a0db32d7e3c1",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "bb805685de5330511b09594fe290ba2efbe860174bd7f0d78f84e43f9ee0be63",
+    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
   },
   "packageId": "igcse-chemistry::rn_HNXFQt7vM32g6PMv",
   "subject": "igcse-chemistry",
@@ -192,6 +192,60 @@
       ]
     },
     {
+      "id": "rn_HNXFQt7vM32g6PMv::L1::Q6",
+      "moduleId": "rn_HNXFQt7vM32g6PMv::L1",
+      "stem": "Which axis carries the energy scale in an energy level diagram, and what does the other axis track?",
+      "misconceptionClass": "diagram axes recall",
+      "kind": "recall",
+      "modelAnswer": "Energy is plotted up the vertical axis, while the horizontal axis tracks how far the reaction has progressed.",
+      "keywords": [
+        "vertical",
+        "horizontal",
+        "progressed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HNXFQt7vM32g6PMv::L1::Q7",
+      "moduleId": "rn_HNXFQt7vM32g6PMv::L1",
+      "stem": "State the direction of the arrow on an energy level diagram for an exothermic change.",
+      "misconceptionClass": "arrow direction recall",
+      "kind": "recall",
+      "modelAnswer": "The arrow points downwards for exothermic reactions and upwards for endothermic ones.",
+      "keywords": [
+        "downwards",
+        "down"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HNXFQt7vM32g6PMv::L1::Q8",
+      "moduleId": "rn_HNXFQt7vM32g6PMv::L1",
+      "stem": "Explain what the height difference between the reactant and product levels shows on an energy level diagram.",
+      "misconceptionClass": "height difference explain",
+      "kind": "explain-why",
+      "modelAnswer": "The height difference represents the overall enthalpy change of the reaction, showing how much energy the products hold relative to the reactants.",
+      "keywords": [
+        "enthalpy",
+        "overall",
+        "relative"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HNXFQt7vM32g6PMv::L1::Q9",
+      "moduleId": "rn_HNXFQt7vM32g6PMv::L1",
+      "stem": "A diagram shows the reactant level below the product level. State the type of reaction drawn and justify it.",
+      "misconceptionClass": "level order application",
+      "kind": "application",
+      "modelAnswer": "Reactants sitting below the products shows an endothermic reaction, because energy has been taken in to raise the product level.",
+      "keywords": [
+        "endothermic",
+        "taken"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_HNXFQt7vM32g6PMv::L2::Q1",
       "moduleId": "rn_HNXFQt7vM32g6PMv::L2",
       "stem": "Which set of features must every energy level diagram carry?",
@@ -370,6 +424,60 @@
           "misconception": "absurd cue"
         }
       ]
+    },
+    {
+      "id": "rn_HNXFQt7vM32g6PMv::L2::Q6",
+      "moduleId": "rn_HNXFQt7vM32g6PMv::L2",
+      "stem": "State how the reactant and product levels are arranged in the exothermic sketch.",
+      "misconceptionClass": "sketch arrangement recall",
+      "kind": "recall",
+      "modelAnswer": "The exothermic sketch shows reactants high, products low and a downward arrow between the two levels.",
+      "keywords": [
+        "high",
+        "low",
+        "downward",
+        "arrow"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HNXFQt7vM32g6PMv::L2::Q7",
+      "moduleId": "rn_HNXFQt7vM32g6PMv::L2",
+      "stem": "State the sign of the enthalpy change in the endothermic sketch.",
+      "misconceptionClass": "enthalpy sign recall",
+      "kind": "recall",
+      "modelAnswer": "The enthalpy change is positive for the endothermic sketch and negative for the exothermic one.",
+      "keywords": [
+        "positive"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HNXFQt7vM32g6PMv::L2::Q8",
+      "moduleId": "rn_HNXFQt7vM32g6PMv::L2",
+      "stem": "Explain why both energy level sketches need labelled axes and named levels.",
+      "misconceptionClass": "sketch labels explain",
+      "kind": "explain-why",
+      "modelAnswer": "Labelled axes and named energy levels make the direction of energy change unambiguous, so a reader can tell exothermic from endothermic at a glance and the sketch carries the chemistry.",
+      "keywords": [
+        "direction",
+        "unambiguous",
+        "reader"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HNXFQt7vM32g6PMv::L2::Q9",
+      "moduleId": "rn_HNXFQt7vM32g6PMv::L2",
+      "stem": "A reaction mixture cools from 21 degrees Celsius to 17 degrees Celsius as it reacts. State whether energy is given out or taken in, and classify the change.",
+      "misconceptionClass": "cooling classify application",
+      "kind": "application",
+      "modelAnswer": "The temperature fall shows energy is taken in from the surroundings by the reaction, so the change is endothermic.",
+      "keywords": [
+        "endothermic",
+        "fall"
+      ],
+      "options": []
     }
   ]
 }

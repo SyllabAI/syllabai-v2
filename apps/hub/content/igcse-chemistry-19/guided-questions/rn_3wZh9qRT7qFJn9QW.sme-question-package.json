@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_3wZh9qRT7qFJn9QW",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4a37664fe469f254eb1b7f3651894901212d59719976e284d3467e00dbe6e3a0",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "b216f7cf9d66908586af04fc55961cdb1c2aff04aa4d8b017bfac7138ac4a0d8",
+    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
   },
   "packageId": "igcse-chemistry::rn_3wZh9qRT7qFJn9QW",
   "subject": "igcse-chemistry",
@@ -192,6 +192,68 @@
       ]
     },
     {
+      "id": "rn_3wZh9qRT7qFJn9QW::L1::Q6",
+      "moduleId": "rn_3wZh9qRT7qFJn9QW::L1",
+      "stem": "State the piece of apparatus that connects the conical flask to the inverted measuring cylinder in the peroxide practical.",
+      "misconceptionClass": "peroxide apparatus recall",
+      "kind": "recall",
+      "modelAnswer": "A delivery tube carries the oxygen gas from the flask to the inverted measuring cylinder.",
+      "keywords": [
+        "delivery",
+        "tube",
+        "carries"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3wZh9qRT7qFJn9QW::L1::Q7",
+      "moduleId": "rn_3wZh9qRT7qFJn9QW::L1",
+      "stem": "Name the four solid candidates that can be tested on hydrogen peroxide in this investigation.",
+      "misconceptionClass": "candidate solids recall",
+      "kind": "recall",
+      "modelAnswer": "The candidates are manganese(IV) oxide, lead(II) oxide, iron(III) oxide and copper(II) oxide.",
+      "keywords": [
+        "manganese",
+        "lead",
+        "iron",
+        "copper",
+        "oxides"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3wZh9qRT7qFJn9QW::L1::Q8",
+      "moduleId": "rn_3wZh9qRT7qFJn9QW::L1",
+      "stem": "Explain why the bung must be closed before the catalyst is added in the gas-volume experiment.",
+      "misconceptionClass": "bung sealing explain",
+      "kind": "explain-why",
+      "modelAnswer": "Closing the bung first stops oxygen escaping, so all the gas made flows along the delivery tube into the measuring cylinder and the volume recorded in the fixed time is the true amount.",
+      "keywords": [
+        "oxygen",
+        "escaping",
+        "escape",
+        "lost",
+        "collected"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3wZh9qRT7qFJn9QW::L1::Q9",
+      "moduleId": "rn_3wZh9qRT7qFJn9QW::L1",
+      "stem": "A student tests copper(II) oxide and then repeats the run with iron(III) oxide. State the purpose of repeating the run with each solid.",
+      "misconceptionClass": "repeat purpose application",
+      "kind": "application",
+      "modelAnswer": "Repeating the experiment with different catalysts lets their gas volumes in the fixed time be compared, so the fastest candidate can be ranked fairly.",
+      "keywords": [
+        "compare",
+        "compared",
+        "comparison",
+        "ranked",
+        "fair"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_3wZh9qRT7qFJn9QW::L2::Q1",
       "moduleId": "rn_3wZh9qRT7qFJn9QW::L2",
       "stem": "Why plot all catalysts on the same graph rather than four separate ones?",
@@ -370,6 +432,65 @@
           "misconception": "absurd extension"
         }
       ]
+    },
+    {
+      "id": "rn_3wZh9qRT7qFJn9QW::L2::Q6",
+      "moduleId": "rn_3wZh9qRT7qFJn9QW::L2",
+      "stem": "State why all the catalyst results are plotted on one graph.",
+      "misconceptionClass": "shared graph recall",
+      "kind": "recall",
+      "modelAnswer": "All the results share one graph so the speeds of the different catalysts can be ranked against each other.",
+      "keywords": [
+        "rank",
+        "ranked",
+        "ranking",
+        "speeds",
+        "compared"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3wZh9qRT7qFJn9QW::L2::Q7",
+      "moduleId": "rn_3wZh9qRT7qFJn9QW::L2",
+      "stem": "On the shared graph, which reading identifies the fastest catalytic decomposition tested?",
+      "misconceptionClass": "tallest reading recall",
+      "kind": "recall",
+      "modelAnswer": "The tallest reading on the graph marks the fastest catalytic decomposition tested.",
+      "keywords": [
+        "tallest",
+        "highest",
+        "peak"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3wZh9qRT7qFJn9QW::L2::Q8",
+      "moduleId": "rn_3wZh9qRT7qFJn9QW::L2",
+      "stem": "Explain why every reading must share the same time window for the comparison to be fair.",
+      "misconceptionClass": "fair window explain",
+      "kind": "explain-why",
+      "modelAnswer": "Each gas volume is measured over the same fixed time, so the readings differ only because of the catalysts; different windows would give longer runs an unfair advantage.",
+      "keywords": [
+        "fixed",
+        "unfair",
+        "advantage",
+        "windows"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3wZh9qRT7qFJn9QW::L2::Q9",
+      "moduleId": "rn_3wZh9qRT7qFJn9QW::L2",
+      "stem": "One candidate solid gives a negligible gas reading on the shared graph. State what this shows about the solid.",
+      "misconceptionClass": "negligible reading application",
+      "kind": "application",
+      "modelAnswer": "A negligible reading shows the solid is acting as a poor catalyst for the decomposition, barely speeding the reaction up at all.",
+      "keywords": [
+        "poor",
+        "weak",
+        "ineffective"
+      ],
+      "options": []
     }
   ]
 }

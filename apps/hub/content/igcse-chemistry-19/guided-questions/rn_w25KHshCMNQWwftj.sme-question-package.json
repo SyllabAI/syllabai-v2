@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_w25KHshCMNQWwftj",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4f00e6d39ceb75d8db22bd9c12f2ba7aaa2a34f545e2fcfb75a28a0bb68e8524",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "4af9f8912aa3a4d9093f46e9b5558f77d7be6a4964ce89d187dac585b931c02c",
+    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
   },
   "packageId": "igcse-chemistry::rn_w25KHshCMNQWwftj",
   "subject": "igcse-chemistry",
@@ -192,6 +192,66 @@
       ]
     },
     {
+      "id": "rn_w25KHshCMNQWwftj::L1::Q6",
+      "moduleId": "rn_w25KHshCMNQWwftj::L1",
+      "stem": "State the measurement used to find the energy produced when two solutions react.",
+      "misconceptionClass": "solution calorimetry recall",
+      "kind": "recall",
+      "modelAnswer": "The temperature change is measured as the solutions are mixed, and from it the energy produced is found.",
+      "keywords": [
+        "temperature",
+        "measured",
+        "mixed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_w25KHshCMNQWwftj::L1::Q7",
+      "moduleId": "rn_w25KHshCMNQWwftj::L1",
+      "stem": "State two simple containers that can serve as a calorimeter.",
+      "misconceptionClass": "calorimeter containers recall",
+      "kind": "recall",
+      "modelAnswer": "A polystyrene cup, a vacuum flask or a metal can can all serve as a simple calorimeter.",
+      "keywords": [
+        "polystyrene",
+        "cup",
+        "vacuum",
+        "flask",
+        "metal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_w25KHshCMNQWwftj::L1::Q8",
+      "moduleId": "rn_w25KHshCMNQWwftj::L1",
+      "stem": "Explain the purpose of the insulation around the container in solution calorimetry.",
+      "misconceptionClass": "insulation explain",
+      "kind": "explain-why",
+      "modelAnswer": "Insulation prevents heat loss to the surroundings, so the temperature change recorded belongs to the reaction alone.",
+      "keywords": [
+        "prevents",
+        "surroundings",
+        "alone",
+        "loss"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_w25KHshCMNQWwftj::L1::Q9",
+      "moduleId": "rn_w25KHshCMNQWwftj::L1",
+      "stem": "A student assumes the solution's density is 1 g/cm3 to estimate its mass from its volume. State the other standard assumptions about heat in this method.",
+      "misconceptionClass": "calorimetry assumptions application",
+      "kind": "application",
+      "modelAnswer": "The method assumes the specific heat capacity is 4.18 J/g/°C and that heat losses to the surroundings are negligible.",
+      "keywords": [
+        "specific",
+        "capacity",
+        "negligible",
+        "losses"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_w25KHshCMNQWwftj::L2::Q1",
       "moduleId": "rn_w25KHshCMNQWwftj::L2",
       "stem": "Why is the spirit burner weighed before and after the experiment?",
@@ -370,6 +430,63 @@
           "misconception": "invented sink"
         }
       ]
+    },
+    {
+      "id": "rn_w25KHshCMNQWwftj::L2::Q6",
+      "moduleId": "rn_w25KHshCMNQWwftj::L2",
+      "stem": "State how the fuel is weighed in the combustion practical.",
+      "misconceptionClass": "spirit burner recall",
+      "kind": "recall",
+      "modelAnswer": "A spirit burner with the fuel is weighed before and after the run to find how much fuel burned.",
+      "keywords": [
+        "spirit",
+        "burner"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_w25KHshCMNQWwftj::L2::Q7",
+      "moduleId": "rn_w25KHshCMNQWwftj::L2",
+      "stem": "State the temperature rise at which the flame is put out in the combustion experiment.",
+      "misconceptionClass": "extinguish point recall",
+      "kind": "recall",
+      "modelAnswer": "The flame is extinguished once the water has risen by about 20 degrees Celsius, and the final temperature is recorded.",
+      "keywords": [
+        "20",
+        "risen",
+        "about"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_w25KHshCMNQWwftj::L2::Q8",
+      "moduleId": "rn_w25KHshCMNQWwftj::L2",
+      "stem": "Explain why the measured temperature rise understates the true energy released by the burning fuel.",
+      "misconceptionClass": "error sources explain",
+      "kind": "explain-why",
+      "modelAnswer": "Heat escapes to the surroundings and some fuel burns incompletely, so the water receives less energy than the combustion actually released.",
+      "keywords": [
+        "escapes",
+        "incompletely",
+        "receives",
+        "actually"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_w25KHshCMNQWwftj::L2::Q9",
+      "moduleId": "rn_w25KHshCMNQWwftj::L2",
+      "stem": "A student's flame flickers in a draught. State the two simple defences against this error source.",
+      "misconceptionClass": "draught defences application",
+      "kind": "application",
+      "modelAnswer": "A lid over the calorimeter and shielding from draughts reduce the heat lost to the surroundings.",
+      "keywords": [
+        "lid",
+        "shielding",
+        "draughts",
+        "reduce"
+      ],
+      "options": []
     }
   ]
 }
