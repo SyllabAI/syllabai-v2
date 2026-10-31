@@ -23170,3 +23170,11 @@ Stage Summary:
 - FILED FOLLOW-UPS (new operator-gated items, deliberately untouched here): (1) source re-parse for the interleave/superscript/subscript/lost-formula classes above; (2) ends_colon statements whose printed sub-lists were images in the source PDF (e.g. cie-a-level-computer-science-19 logic gate symbols); (3) corpus back-sync curation pass (standing residual).
 - Receipt: .syllabai/receipts/T-SPEC-RENDER-1/run-001-spec-render-r0.json.
 - Discipline: fetch-first; fail-closed harness; corpus untouched (presentation layer only); tokens via env only (never argv/URL/logs); FF push no force; CI bounded poll; bookkeeping-only .syllabai/** on this commit; zero DB/Neon contact.
+
+## R0-AUTO-97 receipt — 2026-10-31T12:30Z sweep (Job 438940)
+
+- Merged PR #551 (hub-sidebar T-SIDEBAR-FEEL-1 run-002 tier-b — course-shell footer dock + rail-keep + tooltips; head cc9dfd58, CI verify+hub 2/2 first-hand; 1 file apps/hub/src/components/hub/course-shell.tsx, +147/−60) — merge sha 7270b361; new main tip CI 2/2 GREEN (verify round 1, hub round 2 — normal bounded re-checks).
+- Zero reviews, zero issue comments, zero review comments; mergeable=clean at check time, base cut exactly at then-tip 57154ff0 (no intake needed).
+- Boundaries: single file inside apps/hub/**; zero *.java; no core/hub repo content; no Neon/prod/db contact.
+- Skipped: #296 (head bd2c0b1e unchanged) — hub failure persists on gate-b, static saga residual.
+- Notes: (1) mirror reset hit at sweep start: local 89962a5d → origin 57154ff0 — SAME phantom signature, ~24th consecutive observation, source still unidentified, zero data loss; (2) lane progress on fetch: #550 T-SPEC-RENDER-1 specification explorer restoration landed by a concurrent sweep (merge 0b6fe1de + its own receipt); (3) tail re-read pre-write: 96 still max → 97; (4) zero force-push, zero auth failures, boundaries held.
