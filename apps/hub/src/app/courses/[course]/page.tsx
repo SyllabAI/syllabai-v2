@@ -65,7 +65,9 @@ interface ResourceItem {
  * via chat trace 1a18c3f754d0e421):
  *   gradient hero (CourseHeader) · Topics | Resources body tab pair ·
  *   Resources = MG tile rows (tinted icon square + bold title + count) in
- *   the same Ask the tutor / Exam Practice / Revision bands, with the spec
+ *   the Ask the tutor / Practise / Track & improve / Learn bands (T-COURSE-BANDS-1
+ *   run-001, operator plan B trace 1a192f93789cfe2d: the Exam Practice band
+ *   split by job — question surfaces vs trackers/reference), with the spec
  *   strip and revision-framework explainer kept verbatim in content.
  * Corpus discipline kept: a card only links when the committed bundle
  * actually has the content; roadmap surfaces stay explicitly marked.
@@ -228,9 +230,13 @@ export default async function CourseHubPage({
       ],
     },
     {
-      id: "exam-practice",
-      title: "Exam Practice",
-      tagline: "Test yourself with questions, tests and exam papers and identify areas for improvement.",
+      // T-COURSE-BANDS-1 run-001 (operator plan B, trace 1a192f93789cfe2d):
+      // the Exam Practice band split by job — the question surfaces stay
+      // here in Practise (banks → papers → adaptive → engagement, the
+      // learner journey); the trackers/reference moved to Track & improve.
+      id: "practise",
+      title: "Practise",
+      tagline: "Test yourself with questions, tests and exam papers.",
       items: [
         {
           icon: FileQuestion,
@@ -240,14 +246,6 @@ export default async function CourseHubPage({
           href: `${base}/exam-questions`,
           countLabel: `${fmtCount(stats.questions)} question${stats.questions === 1 ? "" : "s"} · ${fmtCount(stats.questionSets)} set${stats.questionSets === 1 ? "" : "s"}`,
           ready: stats.questions > 0,
-          tint: "bg-chart-2/15",
-        },
-        {
-          icon: Target,
-          title: "Target Test",
-          desc: "Custom exam practice to target your weak spots — Phase C of the build plan.",
-          tags: ["Practice", "Diagnose"],
-          ready: false,
           tint: "bg-chart-2/15",
         },
         {
@@ -293,23 +291,12 @@ export default async function CourseHubPage({
           tint: "bg-chart-1/15",
         },
         {
-          // T-GRADE-1 — the Grade Boundaries card (operator request, trace
-          // 1a191d55e2154601: the MathsGenie predicted-grade-calculator
-          // feature set). Live only where the official corpus has this
-          // course; every other course keeps the honest roadmap card.
-          icon: TrendingUp,
-          title: "Grade Boundaries",
-          desc: gradeBoundaries
-            ? "Official boundaries for every recent session — the trend graph, boundary tables and a mark-to-grade calculator."
-            : "Official session-by-session grade boundaries with a trend graph and mark-to-grade calculator — landing with the corpus rollout.",
+          icon: Target,
+          title: "Target Test",
+          desc: "Custom exam practice to target your weak spots — Phase C of the build plan.",
           tags: ["Practice", "Diagnose"],
-          href: gradeBoundaries ? `${base}/grade-boundaries` : undefined,
-          ctaLabel: gradeBoundaries ? "See boundaries" : undefined,
-          countLabel: gradeBoundaries
-            ? `${fmtCount(gradeBoundaries.seriesCount)} session rows`
-            : undefined,
-          ready: !!gradeBoundaries,
-          tint: "bg-chart-3/15",
+          ready: false,
+          tint: "bg-chart-2/15",
         },
         {
           // F-186 — the Strength Battle card (operator order, trace
@@ -330,6 +317,17 @@ export default async function CourseHubPage({
           ready: battleServedFor(meta.slug),
           tint: "bg-primary/10",
         },
+      ],
+    },
+    {
+      // T-COURSE-BANDS-1 run-001 (operator plan B): the tracker/reference
+      // band the Exam Practice split creates — how you did and what to do
+      // next (Mistakes Log) plus the grade reference (Grade Boundaries).
+      // The learner journey closes here: practise → track → back into Learn.
+      id: "track",
+      title: "Track & improve",
+      tagline: "See where you're losing marks and what to do next — mistakes, boundaries and progress.",
+      items: [
         {
           // T-MLOG-CARD-1 — the Mistakes Log card (operator order, trace
           // 1a192dd3f62f3ebd: the RevisionDojo Mistakes Log feature set
@@ -338,6 +336,8 @@ export default async function CourseHubPage({
           // Test / Mock Exams ghosts): no href, no CTA, never a dead link.
           // When the lane lands, flip `ready` here; per-course gating would
           // key a lib law the same way lib/battle-course.ts does.
+          // T-COURSE-BANDS-1: relocated from the Exam Practice band — the
+          // tracker's home of record is Track & improve.
           icon: NotebookPen,
           title: "Mistakes Log",
           desc: "Every question you get wrong, kept in one place — logged with your answer, filtered by subject, topic and mastery state, then retried with the solution nearby until it sticks.",
@@ -345,11 +345,36 @@ export default async function CourseHubPage({
           ready: false,
           tint: "bg-chart-4/15",
         },
+        {
+          // T-GRADE-1 — the Grade Boundaries card (operator request, trace
+          // 1a191d55e2154601: the MathsGenie predicted-grade-calculator
+          // feature set). Live only where the official corpus has this
+          // course; every other course keeps the honest roadmap card.
+          // T-COURSE-BANDS-1: relocated from the Exam Practice band —
+          // reference data belongs beside the tracker, not among the
+          // question surfaces.
+          icon: TrendingUp,
+          title: "Grade Boundaries",
+          desc: gradeBoundaries
+            ? "Official boundaries for every recent session — the trend graph, boundary tables and a mark-to-grade calculator."
+            : "Official session-by-session grade boundaries with a trend graph and mark-to-grade calculator — landing with the corpus rollout.",
+          tags: ["Practice", "Diagnose"],
+          href: gradeBoundaries ? `${base}/grade-boundaries` : undefined,
+          ctaLabel: gradeBoundaries ? "See boundaries" : undefined,
+          countLabel: gradeBoundaries
+            ? `${fmtCount(gradeBoundaries.seriesCount)} session rows`
+            : undefined,
+          ready: !!gradeBoundaries,
+          tint: "bg-chart-3/15",
+        },
       ],
     },
     {
-      id: "revision",
-      title: "Revision",
+      // T-COURSE-BANDS-1 run-001: "Revision" → "Learn" — the content band
+      // keeps its inventory and tagline; the name joins the learner loop
+      // (learn → practise → track) the band set now tells end to end.
+      id: "learn",
+      title: "Learn",
       tagline: "Comprehensive content covering your entire exam specification.",
       items: [
         {
