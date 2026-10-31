@@ -30,6 +30,8 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-ink: var(--destructive-ink);
   /* semantic status hues — theme-aware (SME: emerald/amber/sky/... family;
      Quiet Green: fern/clay/teal/violet/plum). Alpha modifiers work: bg-success/10 */
   --color-success: var(--success);
@@ -73,6 +75,9 @@
   --success-ink: #ffffff; /* copy-on-success: white on emerald-700 = 5.5:1 */
   --warn: #b45309;      /* amber-700 */
   --warn-ink: #78350f;  /* amber-900 — body copy on warn washes */
+  --destructive-foreground: #ffffff; /* copy-on-destructive fill: white on
+    oklch(0.577 0.245 27.325) = 4.76:1 — the button.tsx text-white law */
+  --destructive-ink: #991b1b; /* red-800 — copy on destructive washes = 6.95:1 */
   --info: #0369a1;      /* sky-700 */
   --cat: #6d28d9;       /* violet-700 */
   --sim: #a21caf;       /* fuchsia-700 */
@@ -126,6 +131,8 @@
   --success-ink: #064e3b; /* copy-on-success: emerald-900 on emerald-400 = 5.7:1 (white failed dark mode at 1.9:1) */
   --warn: #fbbf24;      /* amber-400 */
   --warn-ink: #fcd34d;  /* amber-300 */
+  --destructive-foreground: #ffffff; /* on dark:bg-destructive/60 over card = 6.03:1 */
+  --destructive-ink: #fca5a5; /* red-300 — copy on destructive washes = 8.31:1 */
   --info: #38bdf8;      /* sky-400 */
   --cat: #a78bfa;       /* violet-400 */
   --sim: #e879f9;       /* fuchsia-400 */
@@ -236,6 +243,8 @@
   --accent: var(--surface-sunken);
   --accent-foreground: var(--ink);
   --destructive: var(--danger-qg);
+  --destructive-foreground: #ffffff; /* light fill 5.70:1; dark /60 fill 5.70:1 */
+  --destructive-ink: var(--clay-deep); /* wash copy — re-resolves per mode */
   --border: var(--line);
   --input: var(--line);
   --ring: var(--teal);
@@ -463,9 +472,11 @@
   --accent-ink: #d11450;
   --danger-cs: #d11450;
   --focus-cs: #b2578c;
-  --success: var(--mulberry);
-  --success-ink: #ffffff; /* copy-on-success: white on mulberry = 4.5:1 */
+  --success: #9d4378; /* deeper mulberry — wash copy 5.18:1, white-on-fill 5.99:1
+    (raw --mulberry stays: it is also --ink-faint/--line-strong/--chart-2) */
+  --success-ink: #ffffff; /* copy-on-success: white on mulberry = 5.99:1 */
   --warn: #d11450;  --warn-ink: #3c0d28;
+  --destructive-ink: #3c0d28; /* plum ink — copy on destructive washes = 14.6:1 */
   --info: #8a3a63;
   --cat: #3c0d28;  --sim: #b2578c;
 
@@ -539,6 +550,7 @@
   --focus-cs: #ff5c8d;
   --success: #e3a8cd;
   --success-ink: #3c0d28; /* copy-on-success: CS ink on pink = 8.4:1 */
+  --destructive-ink: #ffe9f2; /* bubblegum — copy on destructive washes = 10.4:1 */
   --warn: #ff5c8d;  --warn-ink: #ffe9f2;
   --info: #e3a8cd;
   --cat: #ffe9f2;  --sim: #e3a8cd;
@@ -886,6 +898,7 @@
   --accent: var(--surface-sunken);
   --accent-foreground: var(--ink);
   --destructive: var(--danger-pm);
+  --destructive-ink: var(--danger-pm); /* wash copy — the documented text/wash voice */
   --destructive-foreground: #ffffff; /* audit F5: the toast landmine —
     light fill is plum ink #23132E, so its labels need the paper voice
     (17.4:1); dark re-resolves below onto the text-voice fills */

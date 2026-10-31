@@ -232,7 +232,7 @@ describe("foresights panel golden — C7 comprehension fixtures (the gate CK-12 
   test("READY: the state style, the ready group, and NO unlock CTA (the answer is: assign T)", () => {
     const html = render(READY);
     expect(html).toContain('data-state="ASSESSABLE_READY"');
-    expect(html).toContain("bg-emerald-50");
+    expect(html).toContain("bg-success/10");
     expect(html).toContain("Looks ready");
     expect(html).toContain("Readiness prior: ready");
     // the C1 headline byte-exact, as the FIRST content the panel renders
@@ -250,7 +250,7 @@ describe("foresights panel golden — C7 comprehension fixtures (the gate CK-12 
   test("AT_RISK: weak codes named, misco flagged, the weakest rows queued FIRST (no re-sort)", () => {
     const html = render(AT_RISK);
     expect(html).toContain('data-state="ASSESSABLE_AT_RISK"');
-    expect(html).toContain("bg-amber-50");
+    expect(html).toContain("bg-warn/10");
     // C1: the headline names k-of-n AND the codes — the explanation IS the codes
     expect(html).toContain(
       "Expect Topic b to land hard: 1 of 1 prerequisites sit below the class's ready line (4CH1-S1-a-1).",

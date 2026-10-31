@@ -285,7 +285,7 @@ export function BattleClient({ course }: { course: string }) {
                         </span>
                       )
                     ) : (
-                      <span className="text-xs text-amber-600">after the clock — real evidence, zero battle marks</span>
+                      <span className="text-xs text-warn">after the clock — real evidence, zero battle marks</span>
                     )
                   ) : (
                     <span className="text-xs text-muted-foreground">unanswered</span>

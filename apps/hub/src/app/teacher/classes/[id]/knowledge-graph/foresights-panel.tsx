@@ -65,14 +65,14 @@ import { cn } from "@/lib/utils";
 
 /** the §13.3 four-state band vocabulary → the shared chip classes */
 const BAND_CHIP: Record<string, { label: string; className: string }> = {
-  LOW: { label: "LOW", className: "bg-rose-50 text-rose-800 border-rose-200" },
+  LOW: { label: "LOW", className: "bg-destructive/10 text-destructive-ink border-destructive/30" },
   DEVELOPING: {
     label: "DEVELOPING",
-    className: "bg-amber-50 text-amber-800 border-amber-200",
+    className: "bg-warn/10 text-warn-ink border-warn/30",
   },
   SECURE: {
     label: "SECURE",
-    className: "bg-emerald-50 text-emerald-800 border-emerald-200",
+    className: "bg-success/10 text-success border-success/30",
   },
   UNMEASURED: {
     label: "UNMEASURED",
@@ -108,19 +108,19 @@ const GROUP_LABEL: Record<ForesightsLearnerState, string> = {
 
 /** the state-styled headline container (visual classes pinned by the goldens) */
 const STATE_CARD: Record<ClassForesightsView["classState"], string> = {
-  ASSESSABLE_READY: "border-emerald-300 bg-emerald-50 text-emerald-950",
-  ASSESSABLE_AT_RISK: "border-amber-300 bg-amber-50 text-amber-950",
+  ASSESSABLE_READY: "border-success/40 bg-success/10 text-success",
+  ASSESSABLE_AT_RISK: "border-warn/40 bg-warn/10 text-warn-ink",
   NOT_ASSESSABLE: "border-border bg-muted/50 text-foreground",
 };
 
 const STATE_CHIP: Record<ClassForesightsView["classState"], { label: string; className: string }> = {
   ASSESSABLE_READY: {
     label: "Readiness prior: ready",
-    className: "border-emerald-300 bg-emerald-100 text-emerald-900",
+    className: "border-success/40 bg-success/15 text-success",
   },
   ASSESSABLE_AT_RISK: {
     label: "Readiness prior: at risk",
-    className: "border-amber-300 bg-amber-100 text-amber-900",
+    className: "border-warn/40 bg-warn/15 text-warn-ink",
   },
   NOT_ASSESSABLE: {
     label: "Readiness prior: cannot assess yet",
@@ -200,17 +200,17 @@ export function ForesightsPanel({ view }: { view: ClassForesightsView }) {
                   className={cn(
                     "rounded-md border px-2.5 py-1.5",
                     band.className,
-                    p.weak && "border-rose-300",
+                    p.weak && "border-warn/40",
                   )}
                 >
                   <p className="flex items-center gap-1.5 text-xs font-medium">
                     <span className="font-mono">{p.code}</span>
                     <span>{band.label}</span>
                     {p.weak ? (
-                      <TriangleAlert className="size-3 text-rose-700" aria-label="below the class's ready line" />
+                      <TriangleAlert className="size-3 text-warn" aria-label="below the class's ready line" />
                     ) : null}
                     {p.learnersWithActiveMisconception > 0 ? (
-                      <span className="inline-flex items-center gap-0.5 text-rose-700">
+                      <span className="inline-flex items-center gap-0.5 text-warn">
                         <ShieldAlert className="size-3" aria-hidden />
                         {p.learnersWithActiveMisconception}
                       </span>

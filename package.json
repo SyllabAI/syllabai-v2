@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "scripts": {
-    "typecheck": "bun run --cwd packages/contracts typecheck && bun run --cwd packages/shared typecheck && bun run --cwd packages/db typecheck && bun run --cwd apps/api typecheck",
+    "typecheck": "bun run --cwd packages/contracts typecheck && bun run --cwd packages/shared typecheck && bun run --cwd packages/db typecheck && bun run --cwd apps/api typecheck && bun run --cwd apps/hub typecheck",
     "test": "bun test apps/api packages",
     "build:api": "bun run --cwd apps/api build",
     "dev:api": "bun run --cwd apps/api dev",
