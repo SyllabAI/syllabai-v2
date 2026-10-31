@@ -11,7 +11,7 @@ import {
   bookCorpusPathForCourse,
   bookPaneUrl,
   bookSliceMapOf,
-  bookSlicePathForCourse,
+  bookSlicePathForManifest,
   fetchBookSlices,
 } from "@/lib/books";
 import { booksRawUrl } from "@/lib/pastpapers-shared";
@@ -107,15 +107,18 @@ export default async function BooksShelfPage({
 /** One book: registry grouped by unit; each chapter a page-range mount. */
 async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) {
   const chapters = await fetchBookChapters(book.documentId, slug);
-  const pdfPath = bookCorpusPathForCourse(slug, "student-book.pdf");
+  // T-BOOK-SERVE IAL — the per-book path law: the matched manifest names the
+  // book's own root PDF (multi-book courses resolve per book, not per
+  // course); the course-level law stays as the no-manifest fallback.
+  const slices = await fetchBookSlices(slug, book.documentId, book.docVersion);
+  const sliceMap = slices ? bookSliceMapOf(slices) : null;
+  const pdfPath = slices?.book.source?.archivePath ?? bookCorpusPathForCourse(slug, "student-book.pdf");
   const paneUrl = pdfPath ? bookPaneUrl(pdfPath) : null;
 
   // 133e: the slice map (drift-guarded) — chapter links warm their OWN
   // slice (~0.1–3MB) instead of the whole book; 133h: each unit's list
   // ENDS with its unnumbered exam-practice row (the practice affordances
   // left the viewer per trace 1a154fdfa70ec415 — the TOC is their home).
-  const slices = await fetchBookSlices(slug, book.documentId, book.docVersion);
-  const sliceMap = slices ? bookSliceMapOf(slices) : null;
 
   // T-BOOK-033 — the Lesson shelf affordance: PUBLISHED packs only (T-C20:
   // a pack that has not been operator-VALIDATED simply is not here). The
@@ -176,9 +179,8 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
             const unitExamHref = unitExam
               ? `/courses/${slug}/books/${book.documentId}?chapter=${encodeURIComponent(unitExam.chapterKey)}`
               : null;
-            const unitExamSliceRel = unitExam
-              ? bookSlicePathForCourse(slug, unitExam.file)
-              : null;
+            const unitExamSliceRel =
+              unitExam && slices ? bookSlicePathForManifest(slices, unitExam.file) : null;
             const unitExamWarmUrl = unitExamSliceRel ? bookPaneUrl(unitExamSliceRel) : null;
             return (
             <section key={unitTitle} className="space-y-1.5">
@@ -187,12 +189,9 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
               </h3>
               <ul className="divide-y rounded-md border">
                 {rows.map((ch) => {
-                  const sliceRel = sliceMap?.byChapter.get(ch.chapterKey)
-                    ? bookSlicePathForCourse(
-                        slug,
-                        sliceMap.byChapter.get(ch.chapterKey)!.mount.file,
-                      )
-                    : null;
+                  const mountEntry = sliceMap?.byChapter.get(ch.chapterKey)?.mount ?? null;
+                  const sliceRel =
+                    mountEntry && slices ? bookSlicePathForManifest(slices, mountEntry.file) : null;
                   const warmUrl = sliceRel ? bookPaneUrl(sliceRel) : paneUrl;
                   return (
                   <li key={ch.chapterKey} className="flex items-center gap-2 px-3 py-2">
@@ -308,8 +307,16 @@ function groupByUnit(chapters: BookChapter[]): Array<[string, BookChapter[]]> {
   const out: Array<[string, BookChapter[]]> = [];
   const byUnit = new Map<string, BookChapter[]>();
   for (const ch of chapters) {
+    // T-BOOK-SERVE IAL — the Topic label law: IAL manifests author
+    // Topic-prefixed unit labels (the IAL book's own top-level word is
+    // TOPIC; "Unit N" would misstate its structure) and render verbatim;
+    // every other book keeps the Unit N template.
     const key =
-      ch.unitIndex != null ? `Unit ${ch.unitIndex} — ${ch.unitTitle ?? ""}` : "Book matter";
+      ch.unitTitle != null && ch.unitTitle.startsWith("Topic ")
+        ? ch.unitTitle
+        : ch.unitIndex != null
+          ? `Unit ${ch.unitIndex} — ${ch.unitTitle ?? ""}`
+          : "Book matter";
     const list = byUnit.get(key) ?? [];
     list.push(ch);
     byUnit.set(key, list);
