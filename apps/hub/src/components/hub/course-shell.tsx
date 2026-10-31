@@ -139,7 +139,7 @@ function NavRow({
         )}
       >
         <item.icon className="size-4 shrink-0 text-muted-foreground/70" aria-hidden />
-        {!collapsed && <span className="truncate">{item.label}</span>}
+        {!collapsed && <span className="min-w-0 flex-1 truncate">{item.label}</span>}
         {!collapsed && badge}
       </span>
     );
@@ -173,7 +173,11 @@ function NavRow({
             : "opacity-60 [@media(hover:hover)]:group-hover/navitem:opacity-100",
         )}
       />
-      {!collapsed && <span className="truncate">{item.label}</span>}
+      {/* run-007 C-3: MG's label guard (min-w-0 flex-1, capture bytes
+          2309898/2344575) — a flex item's implicit min-width is its content,
+          so a bare `truncate` span never ellipsized, it hard-clipped at the
+          aside's overflow-hidden edge. title = the v1 overflow affordance. */}
+      {!collapsed && <span className="min-w-0 flex-1 truncate" title={item.label}>{item.label}</span>}
       {!collapsed && badge}
     </Link>
   );
@@ -605,7 +609,9 @@ export function CourseShell({
             >
               <Menu className="size-4" aria-hidden /> Menu
             </Button>
-            <span className="truncate text-sm font-medium">{data.course.label ?? data.course.subject}</span>
+            {/* run-007 C-3: same guard as the nav rows — this span is a flex
+                item of the trigger bar, so long course names hard-clipped. */}
+            <span className="min-w-0 truncate text-sm font-medium">{data.course.label ?? data.course.subject}</span>
           </div>
           )}
           {children}
@@ -637,7 +643,7 @@ function MobileDrawerInner({
     <div className="flex h-full flex-col">
       <div className="flex items-center justify-between px-4 py-3">
         <span className="text-sm font-semibold tracking-tight">{data.course.label ?? data.course.subject}</span>
-        <Button variant="ghost" size="icon" className="size-9" onClick={onNavigate} aria-label="Close menu">
+        <Button variant="ghost" size="icon" className="size-9 [@media(hover:none)]:size-11" onClick={onNavigate} aria-label="Close menu">
           <X className="size-4" aria-hidden />
         </Button>
       </div>
