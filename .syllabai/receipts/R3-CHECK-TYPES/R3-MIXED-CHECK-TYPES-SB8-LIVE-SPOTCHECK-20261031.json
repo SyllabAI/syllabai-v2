@@ -1,0 +1,67 @@
+{
+  "format": "r3-check-types-live-spotcheck/1.0",
+  "wave": "R3-MIXED-CHECK-TYPES stage B wave 8 (S-B8) — the wave-8 authoring register (14 notes / 32 lessons / 128 written items)",
+  "operator_trace": "1a1900aa14eb84d5",
+  "generated_at_utc": "2026-10-31T04:12:00Z",
+  "verdict": "PASS",
+  "pins_of_record": {
+    "resources_merge": "88dfb3dee9d85c5e533c3d99646678bb588fb559 (PR #249, tree 980bdb84, parent 7819d8a4 = wave-open main of record; trace-bearing merge message, method merge)",
+    "commit_A": "51a6ed34e715a270c1d1525d1cff903777337437",
+    "commit_C": "8044389f645accac88534a2eaca18b0605dfd665",
+    "hub_merge": "f2a39a7d6cab6c251f759efd1f47039615b06898 (PR #540, head e88b8672, CI success at head and merge sha)"
+  },
+  "bake_probe": {
+    "receipt": "SB8-BAKE-PROBE-20261031.json",
+    "method": "occurrence-aware str.count over production SSR HTML; 45s polls; 20-min window",
+    "result": "GREEN at poll 6 (~5 pre-bake polls clean, ~1 bake cycle post-merge)",
+    "targets": {
+      "rn_3wZh9qRT7qFJn9QW": { "your_answer": "8/8 (2 lessons x 4 written)", "wave8_stem_hits": 2, "law_hits": 0 },
+      "rn_KTZjJ7sPdDt4tkTH": { "your_answer": "12/12 (3 lessons x 4 written)", "wave8_stem_hits": 1, "law_hits": 0 }
+    },
+    "calibrations": {
+      "rn_xT8XsdJtDX5gNFXj (S-B1)": { "your_answer": "8/8", "law_hits": 0 },
+      "rn_2VnK66PqbvFKdKYt (S-B2)": { "your_answer": "8/8", "law_hits": 0 },
+      "rn_5g8Dd6y89tkCVJsN (S-B7)": { "your_answer": "8/8", "law_hits": 0 }
+    },
+    "provenance_2_1B_law": "'from the revision note' 0 hits on all five probed pages"
+  },
+  "dom_flow_walk": {
+    "notes": "rn_3wZh9qRT7qFJn9QW (lesson set, both lessons, High/Medium gates) + rn_KTZjJ7sPdDt4tkTH L1 — production URL, agent-browser DOM walk",
+    "note_1_header_census": "'2 guided lessons · 18 checks' live on the note page (10 MCQ + 8 written = 2 lessons x 9)",
+    "note_1_lesson_1": {
+      "gate": "gate radios locked after choice (lesson-resume state shows saved rating disabled)",
+      "mcq_q1_q5": "option click-grades immediately; Submit answer disabled at empty option state; Next question advances; selected options locked",
+      "q6_written_recall_hit": "keyword-bearing answer 'A delivery tube carries the gas into the measuring cylinder' -> role=status 'Great job!' + 'Model answer: A delivery tube carries the oxygen gas from the flask to the inverted measuring cylinder.' VERBATIM (matches the authored modelAnswer of record)",
+      "q7_q9": "answered through to lesson completion; one zero-keyword miss -> 'Not quite.' + model answer VERBATIM",
+      "completion": "lesson chip advanced to '1 of 2 complete'"
+    },
+    "note_1_lesson_2": {
+      "gate": "saved rating resumed and locked (radios disabled)",
+      "mcqs": "answered with semantic-name radio clicks; 'Not quite.' observed on one miss with model answer VERBATIM",
+      "q6_written_miss_probe": "zero-keyword answer -> 'Not quite.' + 'Model answer: All the results share one graph so the speeds of the different catalysts can be ranked against each other.' VERBATIM + textarea locked (disabled=true verified via DOM)",
+      "q7_written_hit": "keyword-bearing answer -> 'Great job!' + 'Model answer: The tallest reading on the graph marks the fastest catalytic decomposition tested.' VERBATIM",
+      "q8_written_miss": "'Not quite.' + verbatim explain-why model answer + textarea locked (disabled=true)",
+      "q9_written_miss": "'Not quite.' + verbatim application model answer",
+      "completion": "lesson chip '2 of 2 complete'; set completion CTA present",
+      "empty_submit": "Submit answer disabled at empty textarea (verified twice via DOM)"
+    },
+    "note_2_l1_q6": "keyword-bearing answer -> 'Great job!' + 'Model answer: Bond-breaking is endothermic because energy must be taken in to pull the atoms apart and break their bonds.' VERBATIM (authored modelAnswer of record); empty-submit disabled verified on the following item",
+    "provenance_footer": "live on both notes: 'Guided content from the SME authoring corpus — note rn_3wZh9qRT7qFJn9QW, pinned at 51a6ed34e715 · promoted SyllabAI/syllabai-resources 88dfb3dee9d8' (same pins on rn_KTZjJ7sPdDt4tkTH)",
+    "screenshots": [
+      "download/r3-stageb8/walk-rn3wZ-L2-Q7-hit.png",
+      "download/r3-stageb8/walk-rn3wZ-L2-Q8-miss-locked.png",
+      "download/r3-stageb8/walk-rn3wZ-L2-Q9-modelanswer.png",
+      "download/r3-stageb8/walk-rnKTZ-L1-Q6-hit.png"
+    ]
+  },
+  "census_landed": {
+    "hub_identity_from_disk": { "notes": 112, "lessons": 239, "checks": 1991, "checks_mcq": 1195, "checks_written": 796, "written_recall": 398, "written_explain_why": 199, "written_application": 199 },
+    "grand_stream": "1656599 chars sha 26bfbf4dd923299f… conserved (== resources INT-3 record)",
+    "declared_delta": "28 re-issued (14 lessons 1.3->1.4 checkRefs ::Q6..::Q9 + 14 packages 1.0->1.1 +128 written); 206 identical-existing re-proved"
+  },
+  "receipts": [
+    ".syllabai/receipts/R3-CHECK-TYPES/R3-MIXED-CHECK-TYPES-SB8-LIVE-SPOTCHECK-20261031.json",
+    ".syllabai/receipts/R3-CHECK-TYPES/HUB-IMPORT-RUN-20261031-r3-stageb8.json",
+    ".syllabai/receipts/R3-CHECK-TYPES/SB8-BAKE-PROBE-20261031.json"
+  ]
+}
