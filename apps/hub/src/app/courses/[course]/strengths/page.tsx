@@ -38,7 +38,6 @@ export default async function StrengthsPage({
           explicit disclosure. */}
       <CourseHeader
         meta={meta}
-        activeTab="strengths"
         title="Strengths & Weaknesses"
         crumb="Strengths & Weaknesses"
         description="Your strengths per specification point — see what to practise next. Bars update as you practise and gently fade where skills decay. Sign in to see yours."

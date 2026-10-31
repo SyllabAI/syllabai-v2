@@ -51,7 +51,9 @@ check("home: data-mode badge in footer only", "data: " in home or "neon" in home
 check("hub: no global demo sidebar", 'aria-label="Primary"' not in hub)
 check("hub: one course sidebar (Hide menu once)", hub.count("Hide menu") == 1, f"count={hub.count('Hide menu')}")
 check("hub: NO topic tree on hub (SME: index pages have no tree)", "View all topics" not in hub)
-check("hub: no hub tabs duplication — tabs present on hub root", "Course Resources" in hub and "Strengths &amp; Weaknesses" in hub)
+check("hub: hero tab pair gone — body tab trio on the root (operator trace 1a192c8ad6b77ad9)",
+      'aria-label="Hub tabs"' not in hub and hub.count("aria-pressed=") == 3,
+      f"aria-pressed={hub.count('aria-pressed=')}")
 qi = visible_html(PAGES["questions_index"])
 check("questions index: no hub tabs (SME: tabs only on hub root)", 'aria-label="Hub tabs"' not in qi)
 check("questions index: no raw topic IDs (top_)", "top_" not in qi)

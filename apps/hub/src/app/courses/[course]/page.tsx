@@ -34,6 +34,7 @@ import { courseHasBookArchive } from "@/lib/books-registry";
 import { getUgmBundle, ugmStationNames } from "@/lib/ugm";
 import { loadGuidedIndex } from "@/lib/guided-lessons";
 import { getGradeBoundariesSummary } from "@/lib/grade-boundaries";
+import { StrengthsPanel } from "./strengths/strengths-panel";
 
 type FrameworkTag = "Study" | "Practice" | "Diagnose";
 
@@ -60,7 +61,10 @@ interface ResourceItem {
  * against the real savemyexams.com course reference page), now carrying the
  * MathsGenie course-page anatomy (hub-coursepage-mg-layout, operator request
  * via chat trace 1a18c3f754d0e421):
- *   gradient hero (CourseHeader) · Topics | Resources body tab pair ·
+ *   gradient hero (CourseHeader, tab-free — the hero's Course Resources /
+ *   Strengths & Weaknesses pair removed per operator chat trace
+ *   1a192c8ad6b77ad9) · Topics | Resources | Strengths & Weaknesses body
+ *   tab trio ·
  *   Resources = MG tile rows (tinted icon square + bold title + count) in
  *   the same Ask the tutor / Exam Practice / Revision bands, with the spec
  *   strip and revision-framework explainer kept verbatim in content.
@@ -542,6 +546,27 @@ export default async function CourseHubPage({
     </>
   );
 
+  /** The Strengths & Weaknesses body-tab slot — the same StrengthsPanel the
+   *  /strengths route renders (F-184) plus the About-this-data disclosure;
+   *  the route stays live for the sidebar deep link. The panel gates on
+   *  sign-in itself, so anonymous visitors get the honest invitation. */
+  const strengthsPane = (
+    <>
+      <StrengthsPanel course={meta.slug} />
+      <details className="rounded-md border bg-muted/40 px-3 py-2 text-xs leading-relaxed text-muted-foreground">
+        <summary className="cursor-pointer text-xs font-medium text-foreground">
+          About this data
+        </summary>
+        <p className="mt-2">
+          <span className="font-medium text-foreground">Where this data lives:</span> the bars read ONLY the
+          drill&apos;s own practice log (the zero-stakes lane — never your gradebook or progress rings), and
+          every decayed value is computed at read and never stored (ADR-031). Structured (written) drill
+          parts stay ungraded until you self-check them against the mark scheme.
+        </p>
+      </details>
+    </>
+  );
+
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
       {/* structured data (F-08): same honestly composed text as the meta
@@ -552,8 +577,6 @@ export default async function CourseHubPage({
       />
       <CourseHeader
         meta={meta}
-        activeTab="resources"
-        showTabs
         title={meta.subject}
         description={`Tools designed specifically for the ${qual} syllabus (${meta.code}): revision notes, the student book, exam-style questions and flashcards organised around the ${officialTree ? "official specification tree" : "corpus specification tree"} — with provenance kept visible on every item.`}
       >
@@ -609,7 +632,12 @@ export default async function CourseHubPage({
           </CardContent>
         </Card>
       ) : (
-        <CourseBodyTabs groups={topicGroups} subtopicCount={subtopicCount} resources={resourcesPane} />
+        <CourseBodyTabs
+          groups={topicGroups}
+          subtopicCount={subtopicCount}
+          resources={resourcesPane}
+          strengths={strengthsPane}
+        />
       )}
     </div>
   );

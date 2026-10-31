@@ -2,15 +2,19 @@
 
 import { useMemo, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { ChevronDown, List, LayoutGrid, Search } from "lucide-react";
+import { ChartColumn, ChevronDown, List, LayoutGrid, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
- * Course-body tab pair (hub-coursepage-mg-layout) — the MathsGenie
+ * Course-body tab trio (hub-coursepage-mg-layout) — the MathsGenie
  * course-page signature: "Topics" (search + grouped topic cards, each row
- * expanding to its real per-subtopic resource links) beside "Resources"
+ * expanding to its real per-subtopic resource links), "Resources"
  * (the categorised resource surface, server-rendered by the page and passed
- * through as `resources`).
+ * through as `resources`) and "Strengths & Weaknesses" (the decay-driven
+ * strength surface, also a server slot — operator request trace
+ * 1a192c8ad6b77ad9 moved it here from the hero band, whose tab pair was
+ * removed; the /strengths route and the sidebar entry stay live for deep
+ * links).
  *
  * Honest-data discipline: the topic groups arrive from the server built from
  * the canonical spec tree + per-subtopic counts + canonical hrefs. A row
@@ -49,7 +53,7 @@ export interface TopicGroup {
   subtopics: TopicSubtopicRow[];
 }
 
-type BodyTab = "topics" | "resources";
+type BodyTab = "topics" | "resources" | "strengths";
 
 /** The ?tab= external store — the URL is the single source of truth. The
  *  client snapshot re-reads the address bar on every notify; the server
@@ -62,7 +66,7 @@ const tabListeners = new Set<() => void>();
 
 function readUrlTab(): BodyTab | null {
   const t = new URLSearchParams(window.location.search).get("tab");
-  return t === "topics" || t === "resources" ? t : null;
+  return t === "topics" || t === "resources" || t === "strengths" ? t : null;
 }
 
 function subscribeToTab(onChange: () => void): () => void {
@@ -159,12 +163,17 @@ export default function CourseBodyTabs({
   groups,
   subtopicCount,
   resources,
+  strengths,
 }: {
   groups: TopicGroup[];
   subtopicCount: number;
   /** the server-rendered Resources pane (spec strip + resource bands +
    *  framework explainer) — an RSC payload passed into this client shell */
   resources: React.ReactNode;
+  /** the server-rendered Strengths & Weaknesses slot (StrengthsPanel + the
+   *  About-this-data disclosure) — an RSC payload passed into this client
+   *  shell; the panel's own sign-in gate covers signed-out visitors */
+  strengths: React.ReactNode;
 }) {
   const urlTab = useUrlTab();
   const tab: BodyTab = urlTab ?? "resources";
@@ -184,12 +193,13 @@ export default function CourseBodyTabs({
 
   return (
     <div>
-      {/* the MG tab pair */}
+      {/* the MG tab row */}
       <div className="mt-6 flex items-end gap-5 border-b text-sm font-semibold">
         {(
           [
             { key: "topics", label: "Topics", icon: List },
             { key: "resources", label: "Resources", icon: LayoutGrid },
+            { key: "strengths", label: "Strengths & Weaknesses", icon: ChartColumn },
           ] as const
         ).map((t) => (
           <button
@@ -256,6 +266,8 @@ export default function CourseBodyTabs({
             </p>
           </div>
         </>
+      ) : tab === "strengths" ? (
+        <div className="mt-6 flex flex-col gap-8">{strengths}</div>
       ) : (
         <div className="mt-6 flex flex-col gap-8">{resources}</div>
       )}
