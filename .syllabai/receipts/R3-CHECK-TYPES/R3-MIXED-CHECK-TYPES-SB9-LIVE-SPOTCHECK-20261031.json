@@ -1,0 +1,74 @@
+{
+  "format": "r3-stageb9-live-spotcheck/1.0",
+  "wave": "R3-CHECK-TYPES stage B wave 9 (S-B9)",
+  "operator_trace": "1a190d455ab9612d",
+  "generated_at_utc": "2026-10-31T05:05:00Z",
+  "hub": "https://syllabai-hub-v2.vercel.app",
+  "pins": {
+    "resources_merge_of_record": "7dd46c2730b6fc2edd75146b2581098967707592",
+    "resources_pr": 253,
+    "resources_tree": "5db091a3679c2521f30d0fdbe891da11e7558e5a",
+    "resources_parent": "90a49387fd6019338a3f7e9c27cf31fc304e728b",
+    "hub_merge_of_record": "667bb9acfbd4b28127773917b94e14b4626e4937",
+    "hub_pr": 545,
+    "hub_head": "23d3ba5c0b79ce439259a5be4fae0fd415889dce",
+    "manifest": "hub-import-manifest-v16.json",
+    "manifest_sha256": "c06b66608856f6ed486895dba81c3d687ce3acc31e4b8c3ec1d8c2cacb3008ef"
+  },
+  "bake_probe": {
+    "result": "GREEN",
+    "receipt": "download/r3-stageb9/bake-probe-sb9.json",
+    "attempts": 13,
+    "window_note": "GREEN on attempt 13 of the 45s poll loop (~10 min redeploy window; attempts 1-12 showed the pre-bake v15 surface with both calibrations already green)",
+    "targets": "11 S-B9 notes at lessons-x-4 'Your answer' counts (8 for 2-lesson notes, 12 for the three 3-lesson notes rn_H9chr9BWCfXYW472 / rn_V3hNWh6QWrbCRHrX / rn_wDdXr5k7gknQ7xJp) + >=1 authored wave-9 stem each",
+    "calibrations": {
+      "rn_3wZh9qRT7qFJn9QW": "S-B8 note unchanged at 8 'Your answer'",
+      "rn_2MpXPtNXvn8pQm3r": "stage-A pilot unchanged at 8 'Your answer'"
+    },
+    "law_2_1b": "learner-surface 'from the revision note' hits == 0 on all 13 probed pages (occurrence-aware str.count)"
+  },
+  "dom_flow_walk": {
+    "result": "PASS",
+    "tool": "agent-browser (headless Chromium, anonymous session)",
+    "notes": [
+      {
+        "noteId": "rn_6c2G8nJpFSnQnbcP",
+        "walk": [
+          "confidence gate WITH per-level learner-facing descriptions; Medium selected; lesson 1 of 2",
+          "layered reveal (Continue) through opening/key points/depth layers/terms/example to 'Continue to the checks'",
+          "MCQ Q1-Q5 answered with per-item role=status verdicts and named explanations ('Great job! Single bonds only is the exact sense...', 'Substituting gives H = 2(3) + 2 = 8, so propane is C3H8', ...) — MCQ path byte-law unchanged",
+          "Q6 (recall, KP3) ZERO-KEYWORD MISS 'a purple elephant balanced seventeen umbrellas...' -> verdict 'Not quite. Model answer: The alkanes follow CnH2n+2, where n is any whole number.' role=status, model answer VERBATIM, item locked after settle; empty submit blocked (Submit disabled)",
+          "Q7 (recall, KP1) keyword hit 'single' -> 'Great job! Model answer: Only single bonds join the carbon atoms in an alkane...'",
+          "Q8 (explain-why, KP2) keyword hit 'double' -> 'Great job! Model answer: Addition needs a C=C double bond that can open...'",
+          "Q9 (application, KP3) keyword hit 'c12h26' -> 'Great job! Model answer: Substituting n = 12 into CnH2n+2 gives C12H26.'",
+          "lesson tally advanced to '1 of 2 complete'; recalibration-only re-rate (Medium pre-set as default, lesson stays rated)",
+          "lesson 2 via the High gate ('take me straight to the checks' — skip path live): Q6 keyword hit 'propane, C3H8' -> 'Great job!'; Q7 keyword hit 'four single bonds' -> 'Great job!'"
+        ],
+        "screenshots": ["dom-walk/01-q6-notquite-model-answer.png", "dom-walk/02-q7-keyword-hit-correct.png", "dom-walk/03-q9-application-c12h26-correct.png", "dom-walk/04-l2-q6-propane-keyword-hit.png", "dom-walk/05-l2-q7-four-bonds-hit.png"]
+      },
+      {
+        "noteId": "rn_wDdXr5k7gknQ7xJp",
+        "walk": [
+          "High gate straight to the checks; lesson 1 of 3",
+          "MCQ Q1-Q5 walked (first-option answers, per-item role=status verdicts, disabled-submit gating between items)",
+          "Q6 (recall, KP3) zero-keyword miss 'seventeen umbrellas on a quartz harmonica' -> 'Not quite. Model answer: A compound whose molecules contain hydrogen and carbon atoms and no other element - only those two.' role=status, model answer VERBATIM",
+          "Q7 (recall, KP2) answered with the definition text (0 keywords of that item) -> 'Not quite. Model answer: Metal carbonates, carbon dioxide and carbon monoxide are the conventional exclusions - any two of them.' — SECOND miss case: grading law item-scoped, model answer verbatim, both misses fail-closed",
+          "2.1B learner-surface law re-verified in-DOM: 'from the revision note' hits == 0"
+        ],
+        "screenshots": ["dom-walk/06-note2-q6-miss-model-answer.png", "dom-walk/07-note2-q7-keyword-hit.png"]
+      }
+    ],
+    "verdict_law_confirmed": "written kinds: 0 keyword hits -> 'Not quite.' + model answer verbatim + locked; >=1 hit -> 'Great job!' + model answer; verdicts ride role=status; MCQ path untouched; reveal-only fail-closed when keywords absent (not exercised — all 100 items carry keywords)"
+  },
+  "census_landed": {
+    "checks_total": 2091,
+    "checks_mcq": 1195,
+    "checks_written": 896,
+    "written_recall": 448,
+    "written_explain_why": 224,
+    "written_application": 224,
+    "cumulative_r3": "105 notes / 224 lessons / 896 written items",
+    "wave10_remaining": "7 notes / 15 lessons / 60 written items -> ~956 total exactly"
+  },
+  "lane_discipline": "zero DB access, zero Vercel API calls, read-only hub GETs + anonymous DOM walk; no payment instruments; tokens never echoed"
+}
