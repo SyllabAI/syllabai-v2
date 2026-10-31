@@ -3,6 +3,7 @@ import { getCourseBundle, loadHubCourse } from "@/lib/courses";
 import { getDataProvider } from "@/lib/data";
 import { CourseHeader } from "@/components/hub/course-header";
 import { normalizeSpecText } from "@/lib/spec-text";
+import { parseSpecStatement } from "@/lib/spec-statement";
 import { SpecificationExplorer, type SpecTopicVM } from "./client";
 import { allCourseParams } from "@/lib/static-params";
 
@@ -43,6 +44,10 @@ export default async function CourseSpecificationPage({
       .map((n) => ({
         code: n.code,
         text: normalizeSpecText(n.title),
+        // T-SPEC-RENDER-1: recover the printed list structure the import join
+        // law flattened (' • ' sub_items; inline '(i)…(ii)' parts) — verbatim
+        // slices only, parsed once at build so the prerendered HTML carries it
+        statement: parseSpecStatement(n.title),
         applicability: n.applicability ?? null,
       }));
 
