@@ -164,6 +164,10 @@ function fixture(opts: {
     if (text.includes("from revision_note")) return NOTES;
     if (text.includes("from attempts a join questions")) return rows.attempts;
     if (text.includes("from ai_mark_events")) return rows.marks;
+    // T-MG-FEEDBACK-1: the region-award join (the SECOND marked-part fact
+    // source of the same projection) — this fixture exercises no paper
+    // marks, so it serves the honest empty.
+    if (text.includes("from mark_awards a")) return [];
     if (text.includes("from question_topics")) return rows.qTopics;
     if (text.includes("from question_spec_points")) return rows.qSpecPoints;
     throw new Error(`study-plan.test fixture: unmatched query: ${text.slice(0, 140)}`);

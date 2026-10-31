@@ -1,0 +1,55 @@
+{
+  "task": "T-MG-FEEDBACK-1 run-001",
+  "date": "2026-10-31",
+  "operator": {
+    "dispatch": "Phase 6 — T-MG-FEEDBACK-1",
+    "trace": "1a18fd24176264e5",
+    "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+  },
+  "plan_of_record": "docs/MG-MARK-PARITY-PLAN.md §3.6 (feedback + progress surfaces); the run-003 consequence pointer ('Phase 4 uses ink layer as region-ink source') already realized by CROPMARK-1 run-002 — this run lights the ledger up on the learner surfaces and joins it to the topic tree",
+  "class": "additive api modules + hub surfaces + ONE disclosed additive contracts barrel line — zero migrations (packages/db untouched), zero fenced files (cla.ts / services/cla/service.ts untouched by construction, census re-run), prompt.ts / PROMPT_VERSION untouched, pdf-pane.tsx byte-untouched; existing contracts files untouched except the index.ts +1 barrel line (the CROPMARK-1 run-001 precedent)",
+  "what_lands": {
+    "identity_bridge": "packages/contracts/src/paper-assets-resolve.ts (NEW) + apps/api paper-regions service/route — GET /api/v1/paper-assets/resolve?paperCode&sessionLabel → { paperId } | 404 unknown pair (the honest not-ingested steady state) | 400 malformed. RESOLUTION LAW OF RECORD: the deployment seed's uq_exam_paper_identity (paper_code, session_label) selection (scripts/seed-mark-point-rects.ts step A). The rollup pin's substrate: the corpus card knows (ref = unit/variant, sessionLabel(sessionId)); the award ledger keys on the exam_papers uuid",
+    "progress_join": "services/learner/progress-rollup.ts — the Phase-6 join per the plan's own words: region awards feed the topic tree through the EXISTING evidence rollup, NO new projection. loadRegionAwardFacts: mark_awards → mark_points → question_parts → question_versions → questions (inner joins — a free-form/unresolvable award joins NOTHING, honest-null); the (document_ref_id, region_key) dedupe restores the marked-part unit (one region mark = one marked part, however many award rows); gradedQuestions ∪ attributed ids (the ring walk rides question_topics/question_spec_points UNCHANGED); today.markedParts and the PRACTISE threshold count BOTH sources",
+    "ledger_client": "apps/hub/src/lib/paper-marks.ts — fetchPaperMarksLedger: the strict mirror of the Phase-2 paperMarksLedger contract (servedMarkAward/servedRegionMarks), DEFINED outcomes (ledger | no_token | unconfigured | failed), no-store, Bearer caller-supplied, no learnerId on any shape",
+    "resolve_client": "apps/hub/src/lib/regions.ts — resolvePaperAsset (+ resolvePaperAssetCached, the per-session promise memo: the archive's one-badge-per-row economy dedupes strict-mode double-effects; a 404's null is kept for the session)",
+    "copy_model": "region-mark/paper-feedback.ts (PURE) — feedbackCopyModel: the FIVE feedbackObject fields with the FAILURE-ONLY strategies law (score < max renders strategies, a full-score region suppresses them even when the payload carries entries); ledgerTotals (Σ score/Σ maxScore over the served slices); ledgerRegionScores (the regionKey highlight join)",
+    "surface_layer": "RegionMarkLayer.tsx — the ledger loads alongside the regions plane and lights marked regions: score chips on the interactive buttons (surface ON) and a pointer-events-none highlight-only overlay with chips (surface OFF — the paper keeps its gestures); the paper-level 'Marked n/m' chip beside the toggle, Σ from the ledger; the panel renders all five fields (chatMessage via the hub Markdown component — the sanitized corpus renderer, both point lists, transcription + the transcription-first marker reasoning in disclosures); every succeeded mark bumps a ledgerVersion — the highlights/rollup RE-READ the ledger, never a local counter",
+    "paper_card": "paper-marks-rollup.tsx (NEW, client) — the archive paper-card badge: resolve → ledger → Σ, the honest-absent law (no token / not-ingested 404 / zero award rows / failure → renders NOTHING, never a fabricated 0/0); mounted one-per-row on the course past-papers page next to the paper ref"
+  },
+  "pins": {
+    "ring_pin": "the DC-7 integration-test pattern over the repo's fakeSql harness — a region award attributed to Q2 moves EXACTLY the nodes an ai_mark_events row moves (spec-point leaf binary, subtopic fraction, topic fraction, untouched siblings zero); the unit law pinned (3 award rows on ONE region = markedParts 1); the honest-null pinned (an attributed question with no node links counts today, moves no ring); the fifth DISTINCT region flips the PRACTISE task; yesterday's award is cumulative on rings, out of today",
+    "copy_pin": "the five fields surface through feedbackCopyModel with the failure-only strategies law pinned four ways (failure renders, full-score suppresses non-empty payload, empty payload renders absent on both classes, empty thoughtProcess renders absent)",
+    "rollup_pin": "Σ from the ledger slices (5/11-shape fixture), empty ledger renders nothing, unanchored ledger regions still count into Σ (anchoring decides where a highlight can be DRAWN, never whether a mark exists)",
+    "identity_pin": "resolve: 200 contract-valid | 404 the not-ingested steady state | 400 malformed (missing/empty params) | 401 shell-first; the strict mirrors fail any contract drift loudly at the seam"
+  },
+  "divergences_disclosed": [
+    "the marked-part UNIT for today.markedParts and the PRACTISE threshold is the distinct marked REGION (document_ref_id, region_key) — smartmark's unit is one ai_mark_events row per part, and the paper ledger is per-AWARD grain (one run assembles P1/P1/C1 rows), so the region-key dedupe restores the per-part unit; the rings are unaffected either way (distinct questions by construction)",
+    "attribution is honest-null on free-form/unresolvable awards: mark_awards rows with mark_point_id null (or whose mark_point does not resolve to a wired part) move NO node — real ledger rows, no fabricated tree anchor (the plan's null-law carried to the projection)",
+    "the Phase-2 'event spine join' wording is realized READ-side, not WRITE-side: ai_mark_events requires NOT NULL attempt_id/answer_id/question_part_id (no paper-region analog exists) and Phase 6 is a non-migration phase — writing that table was impossible without a schema change; the projection reads mark_awards through the definition-plane join instead (same rows the DC-7 claim wrote, zero new stores, zero migrations)",
+    "the §3.6 rollup's paper-card substrate needed a corpus→ledger identity join that did not exist (the run-002 disclosure named it: 'no fuzzy corpus→exam_papers identity join was invented'); this run lands it as the EXACT seed law (uq_exam_paper_identity) instead of a fuzzy join — papers not ingested as exam_papers rows 404 honestly and render no badge",
+    "the corpus archive carries MANY not-yet-ingested papers: each card fires at most one resolve (+ one ledger read when ingested); the per-session promise memo dedupes strict-mode/re-render refires; a resolved 404's null is kept for the session (honest — a paper does not become ingested mid-page)",
+    "RegionMarkLayer's ledger-driven highlights render inside the run-002 zero-chrome gate verbatim: a paper without a served regions plane has no rects to anchor highlights and stays a clean paper even if a ledger carried rows for it",
+    "unanchored ledger regions (a regionKey the served plane does not carry) still count into Σ and rollups — the ledger is the paper's total authority; they simply have no rect to highlight",
+    "pre-existing, NOT of this lane (verified by stash on the clean tree): hub bun test's ugm.render katex corpus failure; hub lint's 13 baseline errors (incl. 2 in RegionMarkLayer from run-002) — this run adds ZERO net-new lint errors and zero net-new test failures",
+    "the pre-existing hub token/regions effects in RegionMarkLayer keep their set-state-in-effect lint errors (run-002 law verbatim, untouched); the NEW ledger effect uses the repo's deferred-microtask pattern instead"
+  ],
+  "verification": {
+    "new_tests": "29 — progress-rollup 6 (ring pin, unit law, two-regions, honest-null, fifth-region flip, day scoping) + paper-regions routes 5 (resolve 200/404/400-empty/400-missing/401) + regions mirror 5 (honest-failure 3, mirror+memo 2) + paper-marks ledger 5 (no_token gate, unconfigured, strict parse + request law, honest-empty, failed class) + paper-feedback 8 (copy pin 4, rollup pin 3, highlight join 1)",
+    "api_packages_suite": "bun test apps/api packages — 3211 total / 0 fail / 13 skip (the CI parity gate; the study-plan fixture gained the mark_awards key serving the honest empty)",
+    "typecheck": "bun run typecheck (contracts/shared/db/api) — clean",
+    "hub_unit_tests": "bun test apps/hub/src — 654 tests / 1 fail, the pre-existing ugm.render katex corpus failure (stash-verified on the clean tree; identical on main)",
+    "hub_lint": "zero NET-NEW errors vs main (13 baseline errors unchanged; the two RegionMarkLayer entries are run-002's own, line-shifted)",
+    "hub_build": "bun run build:hub — exit 0, FULL prerender this time (the run-002 disk limitation did not recur)",
+    "golden_selftest": "OK + retrieval-eval 0 fail + 19/19 selftest",
+    "zero_core_census": "GATE GREEN",
+    "fence_census": "cla.ts / services/cla/service.ts / packages/db / prompt.ts / PROMPT_VERSION — all untouched (diff-enumerated)"
+  },
+  "lineage": {
+    "run_003_ink_1": "PR #494 merged 8f685c84 (the standalone ink surface)",
+    "ink_2_run_001": "PR #509 merged 988688a3 (the maths instruments)",
+    "cropmark_run_001": "PR #531 merged a911c4fe (the crop-then-mark pipeline)",
+    "cropmark_run_002": "PR #533 merged 5e7da07c (the crop producer — this run's region-ink source and clickable-regions base)",
+    "branch": "t-mg-feedback-1/run-001 cut at origin/main a0a10923"
+  }
+}

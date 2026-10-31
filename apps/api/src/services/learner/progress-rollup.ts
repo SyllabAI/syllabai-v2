@@ -236,6 +236,71 @@ async function loadNoteLinks(sql: SqlFn, universe: CourseUniverse): Promise<Note
 }
 
 /**
+ * T-MG-FEEDBACK-1 run-001 — the Phase-6 progress join (plan §3.6: "region
+ * awards feed the topic tree through the EXISTING evidence rollup … A
+ * region award moves the same rings a marked part moves. No new
+ * projection."). The SECOND event fact source of the SAME projection: the
+ * paper-region award ledger (mark_awards, the T-MG-AWARDS-1 plane)
+ * attributed to its question through the definition-plane join
+ * mark_point_id → mark_points.question_part_id → question_parts →
+ * question_versions → questions (the plan's "questionPartId →
+ * topicNodeIds" seam — the node walk below rides question_topics /
+ * question_spec_points, the DC-7 census seams, UNCHANGED).
+ *
+ * THE UNIT LAW: the marked-part fact is the distinct MARKED REGION
+ * (document_ref_id, region_key) — one region mark is one marked part,
+ * however many award rows (P1/P1/C1) its run assembled (smartmark's unit
+ * is one row per part; the paper ledger is per-AWARD grain, so the
+ * region-key dedupe restores the per-part unit — disclosed in the run-001
+ * PR body). created_at of the region's EARLIEST row = the marking act's
+ * instant (the once-only claim writes a region's rows in one run; a
+ * re-mark is absorbed, never re-dated). Attribution is HONEST-NULL:
+ * award rows whose mark_point_id is null (free-form regions) or whose
+ * mark_point does not resolve to a part join NOTHING and move no node —
+ * real ledger rows, no fabricated tree anchor.
+ */
+export interface RegionAwardFact {
+  questionId: string;
+  documentRefId: string;
+  regionKey: string;
+  /** the marking act's instant (the region's earliest award row) */
+  createdAt: string;
+}
+
+async function loadRegionAwardFacts(sql: SqlFn, learnerId: string): Promise<RegionAwardFact[]> {
+  const rows = (await sql`
+    select a.document_ref_id as document_ref_id, a.region_key as region_key,
+           a.created_at as created_at, q.id as question_id
+    from mark_awards a
+    join mark_points mp on mp.id = a.mark_point_id
+    join question_parts p on p.id = mp.question_part_id
+    join question_versions v on v.id = p.question_version_id
+    join questions q on q.id = v.question_id
+    where a.learner_id = ${learnerId}
+    order by a.created_at asc, a.document_ref_id asc, a.region_key asc
+  `) as unknown as Array<{
+    document_ref_id: string;
+    region_key: string;
+    created_at: string;
+    question_id: string;
+  }>;
+  const seen = new Set<string>();
+  const facts: RegionAwardFact[] = [];
+  for (const r of rows) {
+    const key = `${r.document_ref_id}|${r.region_key}`;
+    if (seen.has(key)) continue; // ordered asc → the earliest row wins
+    seen.add(key);
+    facts.push({
+      questionId: r.question_id,
+      documentRefId: r.document_ref_id,
+      regionKey: r.region_key,
+      createdAt: r.created_at,
+    });
+  }
+  return facts;
+}
+
+/**
  * THE projection (acceptance (a)'s event→projection integration law):
  * the persisted event facts move exactly the nodes they should — a marked
  * part moves its question's topic/spec-point nodes and their PART_OF
@@ -261,6 +326,9 @@ export async function buildProgressProjection(
   const markRows = (await sql`
     select question_id, created_at from ai_mark_events where learner_id = ${learnerId}
   `) as unknown as Array<{ question_id: string; created_at: string }>;
+  // T-MG-FEEDBACK-1 run-001: the paper-region award facts (the SECOND
+  // event source — same projection, same node walk, no new store).
+  const regionFacts = await loadRegionAwardFacts(sql, learnerId);
   const viewedRows = (await sql`
     select note_id, viewed_at from revision_note_viewed where user_id = ${learnerId}
   `) as unknown as Array<{ note_id: string; viewed_at: string }>;
@@ -274,6 +342,7 @@ export async function buildProgressProjection(
   const gradedQuestions = new Set([
     ...attemptRows.map((r) => r.question_id),
     ...markRows.map((r) => r.question_id),
+    ...regionFacts.map((f) => f.questionId),
   ]);
 
   // per node: totals + done counters per dimension (distinct-by-construction:
@@ -325,7 +394,11 @@ export async function buildProgressProjection(
   const dayStartIso = dayStart.toISOString();
   const today: ProgressToday = {
     notesChecked: viewedRows.filter((r) => r.viewed_at >= dayStartIso).length,
-    markedParts: markRows.filter((r) => r.created_at >= dayStartIso).length,
+    // each ai_mark_events row AND each distinct marked region IS one
+    // marked part (the T-MG-FEEDBACK-1 unit law — see the loader)
+    markedParts:
+      markRows.filter((r) => r.created_at >= dayStartIso).length +
+      regionFacts.filter((f) => f.createdAt >= dayStartIso).length,
     mcqSubmitted: attemptRows.filter(
       (r) => r.created_at >= dayStartIso && r.question_type.startsWith("MCQ"),
     ).length,
@@ -363,13 +436,16 @@ export async function buildPlanProjection(
   const markRows = (await sql`
     select question_id, created_at from ai_mark_events where learner_id = ${learnerId}
   `) as unknown as Array<{ question_id: string; created_at: string }>;
+  // T-MG-FEEDBACK-1 run-001: the region-award facts ride the SAME
+  // marked-part counter (one distinct marked region = one marked part).
+  const regionFacts = await loadRegionAwardFacts(sql, learnerId);
 
   // marked PARTS per node subtree: each ai_mark_events row IS one marked
   // part (the spec's unit — "five marked parts is the proposed default";
   // "2 to 5 to 7 percent across three parts"), NOT one distinct question.
   // A mark counts for every node its question touches and their PART_OF
   // ancestors (same walk as the rings — one projection, never a second
-  // counter).
+  // counter). Region-award facts count under the same unit law.
   const nodesOfQuestion = new Map<string, Set<string>>();
   for (const [nodeId, questions] of qLinks.byNode) {
     for (const qid of questions) {
@@ -381,6 +457,11 @@ export async function buildPlanProjection(
   const markedByNode = new Map<string, number>();
   for (const row of markRows) {
     for (const n of nodesOfQuestion.get(row.question_id) ?? []) {
+      markedByNode.set(n, (markedByNode.get(n) ?? 0) + 1);
+    }
+  }
+  for (const fact of regionFacts) {
+    for (const n of nodesOfQuestion.get(fact.questionId) ?? []) {
       markedByNode.set(n, (markedByNode.get(n) ?? 0) + 1);
     }
   }
