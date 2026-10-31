@@ -1,0 +1,109 @@
+{
+  "receipt": "NS-4PH1-WAVE-1-CONTRACT-20261031",
+  "format": "wave-receipt/0.1",
+  "kind": "new-subject wave-1 contract — OPENED by operator ignition; NO authoring, NO resources write, NO import executed in this act",
+  "date": "2026-10-31",
+  "generated_at_utc": "2026-10-31T15:17:12Z",
+  "operator_trace": "1a192830222371a5",
+  "operator_directive": "open the new subject's wave-1 contract. The new subject 4ph1 physics. https://syllabai-hub-v2.vercel.app/courses/igcse-physics-19/revision-notes (verbatim)",
+  "program_of_record": "NS-4PH1 — new-subject guided-lessons activation for Edexcel International GCSE Physics 4PH1 (2017 spec), course-id igcse-physics-19, under the standing guidance .syllabai/docs/new-subject-runbook.md (hub PR #554, merge-of-record f99969a2a)",
+  "contract_chain": [
+    ".syllabai/docs/new-subject-runbook.md of record (§1.1: operator ignition opens the gate; B6 decision owed before wave 1)",
+    "R3-MIXED-CHECK-TYPES-STAGE-A-20261030.json — the pilot-first contract precedent (stage-A pilot 2 notes / 4 lessons / 16 written, then operator-gated corpus rollout)",
+    "worklog of record: 'STAGE B IS COMPLETE — any further R3-CHECK-TYPES work is a new operator-gated contract' — this receipt IS that new contract, new subject"
+  ],
+  "state_context": {
+    "planes": {
+      "resources_inventory": "SME-RevisionNotes/igcse-physics-19/ PRESENT (assets/, manifest.json, notes/) — manifest schema syllabai.sme-revision-notes-course/1.0, course_slug igcse-physics-19, source savemyexams.com/igcse/physics/edexcel/19/revision-notes/, counts: 127 pages scraped / 0 fetch failures, 373 assets / 0 failures, 188 spec_point_links",
+      "hub_landing_plane": "apps/hub/content/igcse-physics-19/ PRESENT (concept-graph.json, curriculum.json, flashcards.json, learner-sim.json, manifest.json, notes.json, official-papers.json, questions.json) — NO guided-lessons/, NO guided-questions/, NO guided-import.json: the guided plane is ABSENT (the gap this programme fills)",
+      "live": "GET /courses/igcse-physics-19/revision-notes = 200 (operator-cited surface); /courses/igcse-physics-19/guided-lessons serves 0 'Your answer' markers and 0 guided-lessons/rn_* links (no lesson corpus served)"
+    },
+    "clean_slate": "zero prior physics guided lanes of record: run_import.mjs FEEDS table 0 physics entries; hub .syllabai/receipts/ 0 physics lane dirs; resources SME-GuidedLessons/ 0 physics paths (grep-verified at contract time) — no duplicate-contract risk (S-B2 precedent class)",
+    "register_census_of_record": {
+      "notes": 127,
+      "topic_dirs": 8,
+      "topics": [
+        "1-forces-and-motion",
+        "2-electricity",
+        "3-waves",
+        "4-energy-resources-and-energy-transfers",
+        "5-solids-liquids-and-gases",
+        "6-magnetism-and-electromagnetism",
+        "7-radioactivity-and-particles",
+        "8-astrophysics"
+      ],
+      "layout": "topic-nested notes/<topic>/<subtopic>/<note>.md (chemistry's 112 are flat) — the hub landing is flat per note; flattening is an authoring-pipeline concern fixed at the pilot (D-2)",
+      "sizing_projection": "at the chemistry ratio of record (239/112 = 2.1339 lessons/note) the register projects to ~271 lessons; exact counts are authoring-time of-record, never projected into receipts",
+      "chemistry_comparison": "112 notes -> 239 lessons -> 2,151 checks = 1,195 MCQ + 478 recall + 239 explain-why + 239 application (of record)"
+    },
+    "environment_pins": {
+      "hub_main_at_open": "f99969a2a (the new-subject-runbook merge of record)",
+      "resources_main_at_open": "1912a2c58 (T-SPEC-REPARSE-1 run-001 addendum, IAL_PHYSICS canonical-layer mirror — unrelated lane, disclosed as in-flight spec-plane activity)"
+    }
+  },
+  "bootstrap_decisions": {
+    "B1_course_id": {
+      "decision": "igcse-physics-19",
+      "basis": "byte-identical on both planes (resources SME-RevisionNotes/igcse-physics-19/ + hub apps/hub/content/igcse-physics-19/, ls-tree-verified at open); operator-cited live surface /courses/igcse-physics-19/revision-notes = 200",
+      "delta_vs_runbook": "inventory lacks spec_point_resolution.json (chemistry has it) — dependency D-1"
+    },
+    "B2_sizing_law": {
+      "decision": "inherit unchanged: 1 note -> 1-3 lessons; every lesson carries exactly 9 checks = 5 MCQ + 2 recall + 1 explain-why + 1 application; the full corpus census is re-derived from disk at every wave",
+      "basis": "subject-agnostic battery of record (hub receipt census 2,151 = 1,195 + 478 + 239 + 239; per-lesson 9.0 exact)"
+    },
+    "B3_pilot_first": {
+      "decision": "stage-A pilot = ONE physics note (authoring picks the note; precedent class: chemistry pilot 2 notes / 4 lessons / 16 written) through the FULL chain — resources commit A/B/C + PR merge, hub FEED + 34-gate import + PR merge, live spot-check (bake probe + DOM walk) — BEFORE any register wave",
+      "basis": "runbook §0 B3 + R3-MIXED-CHECK-TYPES stage-A precedent"
+    },
+    "B4_buckets": {
+      "decision": "the remaining register is partitioned into wave buckets at wave open only; the final wave takes the remainder; never re-bucket mid-programme",
+      "basis": "runbook §0 B4"
+    },
+    "B5_schema_baseline": {
+      "decision": "inherit guided-lesson/0.5 -> hub-lesson-import/1.4 -> sme-question-package/1.1 EXACTLY; zero schema delta planned (contract of record packages/contracts/src/sme-question-package.ts + ADAPTER-SPEC-guided-lesson-0.5-to-hub-1.4.md); any schema need discovered at the pilot FAILS CLOSED into a disclosed amendment receipt, never a silent schema edit",
+      "basis": "runbook §0 B5; the stage-A contract created the union schemas once (commit B of record f02e6e3) — new subjects consume them"
+    },
+    "B6_manifest_continuity": {
+      "decision": "CONTINUE the global-continuous hub-import-manifest v-series — physics enters at v18 (stage-A pilot). Per-course series REJECTED.",
+      "rationale": "(i) the series already spans generation classes (fullcorpus era, figures-0.2/2.x generations, R3 stage-A v7, stage-B v8..v17) — a new subject is a new generation class on the SAME hub-import plane; (ii) the hub 34-gate battery (preflight vs prior manifest shas, survivor byte-identity, grand-stream conservation) is manifest-chain-scoped — a fork would create two parallel manifest chains over one hub plane; (iii) runner FEEDS are additive per FEED (first physics FEED: ns4ph1-stagea-v18) while the manifest stays the single pin frame; (iv) output artifacts are rn_-keyed (integration/hub-import-1.4/rn_<id>.hub-lesson-import.json) — physics mints new rn_ ids, zero collision, additive-only holds",
+      "first_version": "v18",
+      "supersedes": "hub-import-manifest-v17.json"
+    },
+    "B7_figures": {
+      "decision": "figureless start — physics rides the source->import->packages chain with no figures feed; figures remain a LATER additive generation under the dual-FEED law (chemistry ran fullcorpus + R3 figureless; figures-0.2/2.x were separate additive generations with G-DELTA revision)",
+      "basis": "runbook §0 B7 + the figures generation history of record"
+    },
+    "B8_zero_db": {
+      "decision": "inherit unchanged: checked-in content only, byte-exact atomic landing (revision law), zero DB writes, zero Vercel API writes, git-linked auto-bake = disclosed churn-only consequence (alias switches only on READY)",
+      "basis": "runbook §0 B8"
+    }
+  },
+  "dependencies": {
+    "D-1_spec_point_resolution": {
+      "what": "derive SME-RevisionNotes/igcse-physics-19/spec_point_resolution.json (schema syllabai.sme-notes-spec-resolution/1.0 — the chemistry file is the structure of record: 112/112 legacy_matched, 162/162 resolved, AI_VALIDATED operator-delegated)",
+      "why": "the 9-check law is spec-anchored (KP-index provenance + spec-code set equality at the C-2-class gates); the physics inventory carries 188 spec_point_links in manifest.json but NO resolution file",
+      "basis_of_record": "the notes' spec_point_links + Official-Specifications/igcse-physics/ (international-gcse-physics-2017-specification.pdf + spec.json, PRESENT on resources) + T-SPEC-REPARSE-1 canonical-layer mirrors (in-flight unrelated lane)",
+      "gate": "must be CLOSED at or before the pilot's resources commit A"
+    },
+    "D-2_note_id_minting_and_flattening": {
+      "what": "the deterministic law mapping topic-nested source notes -> flat rn_<id> artifacts (id minting + flattening)",
+      "why": "rn_ id law + the hub's flat per-note landing require it; chemistry's flat register never exercised this",
+      "gate": "fixed at the pilot and recorded in its promotion receipt"
+    }
+  },
+  "naming_of_record": {
+    "program": "NS-4PH1",
+    "lanes": "ns4ph1-stagea (pilot), ns4ph1-waveN (register waves N=1..)",
+    "resources_branch": "integration/<lane>-<yyyymmdd>",
+    "hub_branch": "<lane>-hub-vM",
+    "feed": "<lane>-vM (first: ns4ph1-stagea-v18)",
+    "manifest": "hub-import-manifest-v18.json (first physics version)",
+    "hub_receipts": ".syllabai/receipts/NS-4PH1/",
+    "source_namespace": "SME-GuidedLessons/igcse-physics-19/ (course-scoped, NEW; exact subdir layout fixed at the pilot's commit A)",
+    "tooling_lane": "SME-GuidedLessons/tooling/<lane>-authoring/ + <lane>-pipeline.js (runbook §1.4)"
+  },
+  "gate_battery_inheritance": "resources-side pipeline battery (stage-A of record: 33/33 — P0 pins, C-1/C-2 upstream fidelity, D-1/D-2 determinism, C-6 ajv, written-kind invariants, MCQ deep conservation, C-5 checkRefs closure, C-9 package sha conservation, G-E stream + grand) + hub-side 34 gates (P0/G-A/G-B/G-C/G-D/G-E/G-DELTA/LAND/G-V, identity from disk) + live spot-check (bake probe lessons-x-4 'Your answer' + calibrations + 2.1B learner-surface law 0 hits + agent-browser DOM walk with screenshots); GREEN at head AND post-merge on every PR",
+  "merge_order_law": "resources PR merges FIRST; the hub chain follows (S-B1 merge-order convention of record); merge method 'merge', never squash; additive-only on both planes; race-guard at every push",
+  "next": "STAGE-A PILOT authoring session owed under this contract: close D-1 (and D-2 at authoring), author ONE physics note at the 9-check law, ride the full chain, file the pilot receipts — THEN the wave-1 bucket partition on operator ignition; every register wave remains operator-gated",
+  "scope_of_this_commit": "bookkeeping-only .syllabai/** (this receipt + worklog append); zero code bytes, zero schema, zero content-plane bytes, zero resources writes, no imports executed"
+}
