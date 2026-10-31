@@ -164,3 +164,161 @@ describe("T-MG-INK-1 run-003 — grammar hygiene", () => {
     ]);
   });
 });
+
+// ── T-MG-INK-4 run-002 — the new kinds, the tombstone law, the hit laws ──
+
+import {
+  eraseShapes,
+  makeTombstone,
+  parseShape as parseShape4,
+  pointSegmentDistCss,
+  shapeBoundsCss,
+  shapeHitTest,
+  shapesHitIds,
+  translateShape,
+} from "./ink";
+
+const mtext = (over: Partial<InkShape> = {}): InkShape => ({
+  id: "m1",
+  kind: "mtext",
+  page: 1,
+  color: "black",
+  sizeFrac: 0.02,
+  x: 0.1,
+  y: 0.1,
+  tex: "\\frac{d}{dx}x^2=2x",
+  ...(over as object),
+}) as InkShape;
+
+describe("T-MG-INK-4 run-002 — the container law (the new kinds ride syllabai-ink/1)", () => {
+  test("mtext parses honestly: fields kept, anchor clamped", () => {
+    const s = parseShape4({ id: "m1", kind: "mtext", page: 2, color: "red", sizeFrac: 0.03, x: -1, y: 2, tex: "e^{i\\pi}+1=0" });
+    expect(s).not.toBeNull();
+    expect(s).toMatchObject({ kind: "mtext", page: 2, color: "red", x: 0, y: 1, tex: "e^{i\\pi}+1=0" });
+  });
+
+  test("mtext rejects: missing colour, empty tex, tex over the 1000-char cap, sizeFrac out of band", () => {
+    expect(parseShape4({ id: "m", kind: "mtext", page: 1, sizeFrac: 0.02, x: 0, y: 0, tex: "x" })).toBeNull();
+    expect(parseShape4({ id: "m", kind: "mtext", page: 1, color: "black", sizeFrac: 0.02, x: 0, y: 0, tex: "" })).toBeNull();
+    expect(parseShape4({ id: "m", kind: "mtext", page: 1, color: "black", sizeFrac: 0.02, x: 0, y: 0, tex: "x".repeat(1001) })).toBeNull();
+    expect(parseShape4({ id: "m", kind: "mtext", page: 1, color: "black", sizeFrac: 0.5, x: 0, y: 0, tex: "x" })).toBeNull();
+  });
+
+  test("tombstone parses with NO color and NO geometry (the deletion law)", () => {
+    const s = parseShape4({ id: "s1", kind: "tombstone", page: 3 });
+    expect(s).toEqual({ id: "s1", kind: "tombstone", page: 3 });
+  });
+
+  test("an UNKNOWN kind drops at the honest-parse boundary (never throws)", () => {
+    expect(parseShape4({ id: "u", kind: "CallRepository", page: 1 })).toBeNull();
+  });
+
+  test("the old kinds keep their exact law: stroke/text still require a colour", () => {
+    expect(parseShape4({ id: "s", kind: "stroke", page: 1, widthFrac: 0.0038, points: [[0, 0], [1, 1]] })).toBeNull();
+    expect(parseShape4({ id: "t", kind: "text", page: 1, sizeFrac: 0.02, x: 0, y: 0, text: "hi" })).toBeNull();
+  });
+
+  test("pack/parse round-trips the new kinds byte-faithfully", () => {
+    const doc = packDoc([mtext(), { id: "s1", kind: "tombstone", page: 1 } as InkShape]);
+    const back = parseDoc(doc);
+    expect(back!.shapes).toEqual(doc.shapes);
+  });
+});
+
+describe("T-MG-INK-4 run-002 — the tombstone law (deletion is representable)", () => {
+  test("makeTombstone reuses the target's id and page — nothing else", () => {
+    expect(makeTombstone({ id: "a", page: 7 })).toEqual({ id: "a", kind: "tombstone", page: 7 });
+  });
+
+  test("eraseShapes replaces targets IN PLACE (stable order, no duplicates)", () => {
+    const shapes = [stroke({ id: "a" }), mtext({ id: "b" }), stroke({ id: "c" })];
+    const out = eraseShapes(shapes, new Set(["a", "c", "not-there"]));
+    expect(out.map((s) => s.id)).toEqual(["a", "b", "c"]);
+    expect(out[0]).toEqual({ id: "a", kind: "tombstone", page: 1 });
+    expect(out[2]).toEqual({ id: "c", kind: "tombstone", page: 1 });
+    expect(out[1]).toEqual(mtext({ id: "b" }));
+  });
+
+  test("an erasure SURVIVES the rebase: stored stroke + local tombstone (same id) → tombstone wins", () => {
+    const stored = [stroke({ id: "a" })];
+    const local = [makeTombstone({ id: "a", page: 1 })];
+    const merged = rebaseShapes(stored, local);
+    expect(merged).toHaveLength(1);
+    expect(merged[0]!.kind).toBe("tombstone");
+  });
+
+  test("an erasure SURVIVES the migration upload (local tombstone over the server shape)", () => {
+    const serverDoc = [stroke({ id: "a" }), stroke({ id: "b" })];
+    const localDoc = [makeTombstone({ id: "a", page: 1 })];
+    const merged = rebaseShapes(serverDoc, localDoc);
+    expect(merged.map((s) => s.kind)).toEqual(["tombstone", "stroke"]);
+  });
+
+  test("undo is the honest resurrection: local pre-erase snapshot wins the rebase", () => {
+    const otherWriter = [makeTombstone({ id: "a", page: 1 })];
+    const preEraseSnapshot = [stroke({ id: "a" })];
+    expect(rebaseShapes(otherWriter, preEraseSnapshot)[0]!.kind).toBe("stroke");
+  });
+});
+
+describe("T-MG-INK-4 run-002 — the move law (css-px intent, normalized per-axis)", () => {
+  test("stroke points translate and clamp into the page box", () => {
+    const moved = translateShape(stroke({ points: [[0.1, 0.1], [0.2, 0.2]] }), 0.05, -0.2) as Extract<InkShape, { kind: "stroke" }>;
+    expect(moved.points).toHaveLength(2);
+    expect(moved.points[0]![0]).toBeCloseTo(0.15, 12);
+    expect(moved.points[0]![1]).toBe(0);
+    expect(moved.points[1]![0]).toBeCloseTo(0.25, 12);
+    expect(moved.points[1]![1]).toBe(0);
+  });
+
+  test("text/mtext anchors translate; tombstones are NOT movable", () => {
+    const t = translateShape(mtext({ x: 0.9, y: 0.5 }), 0.2, 0.1) as Extract<InkShape, { kind: "mtext" }>;
+    expect(t.x).toBe(1);
+    expect(t.y).toBe(0.6);
+    expect(translateShape(makeTombstone({ id: "a", page: 1 }), 0.1, 0.1)).toBeNull();
+  });
+});
+
+describe("T-MG-INK-4 run-002 — the hit laws (erase/select)", () => {
+  const box = { cssW: 800, cssH: 1000 };
+
+  test("pointSegmentDistCss is the honest css-px distance", () => {
+    expect(pointSegmentDistCss({ x: 400, y: 500 }, [0, 0.5], [1, 0.5], box)).toBe(0);
+    expect(pointSegmentDistCss({ x: 400, y: 520 }, [0, 0.5], [1, 0.5], box)).toBe(20);
+  });
+
+  test("strokes hit within max(tol, pen width) of their path", () => {
+    const s = stroke({ points: [[0, 0.5], [1, 0.5]] }); // pen 0.0038×800 = 3.04 css px
+    expect(shapeHitTest(s, { x: 0.5, y: 0.51 }, box, 12)).toBe(true); // 10 css px ≤ tol 12
+    expect(shapeHitTest(s, { x: 0.5, y: 0.514 }, box, 12)).toBe(false); // 14 css px > tol 12
+    expect(shapeHitTest(s, { x: 0.5, y: 0.53 }, box, 12)).toBe(false);
+  });
+
+  test("text hits its estimated bbox (inflated 4 css px); mtext hits the MEASURED truth", () => {
+    const t = mtext({ id: "t", kind: "text", text: "show that", sizeFrac: 0.02, x: 0.4, y: 0.4 } as Partial<InkShape>);
+    // fontSize 16 → w = 9*0.6*16 = 86.4, h = 20 → x∈[315.6..406], y∈[316..340]
+    expect(shapeHitTest(t, { x: 0.45, y: 0.42 }, box, 12)).toBe(true);
+    expect(shapeHitTest(t, { x: 0.6, y: 0.42 }, box, 12)).toBe(false);
+    const m = mtext({ id: "m", kind: "mtext" });
+    expect(shapeHitTest(m, { x: 0.2, y: 0.12 }, box, 12, { w: 200, h: 40 })).toBe(true);
+    expect(shapeHitTest(m, { x: 0.5, y: 0.12 }, box, 12, { w: 200, h: 40 })).toBe(false);
+  });
+
+  test("tombstones are NEVER hittable (deletions, not ink)", () => {
+    expect(shapeHitTest(makeTombstone({ id: "a", page: 1 }), { x: 0.5, y: 0.5 }, box, 999)).toBe(false);
+  });
+
+  test("shapesHitIds returns every hit in doc order (select takes the LAST = topmost)", () => {
+    const shapes = [stroke({ id: "a", points: [[0, 0.5], [1, 0.5]] }), mtext({ id: "m", kind: "mtext", x: 0.4, y: 0.48, tex: "x" })];
+    const hits = shapesHitIds(shapes, { x: 0.45, y: 0.5 }, box, 12, (id) => (id === "m" ? { w: 150, h: 40 } : undefined));
+    expect(hits).toEqual(["a", "m"]);
+    expect(hits[hits.length - 1]).toBe("m");
+  });
+
+  test("shapeBoundsCss: strokes bound their path (+pen), tombstones bound nothing", () => {
+    const b = shapeBoundsCss(stroke({ points: [[0.25, 0.25], [0.75, 0.75]] }), box, undefined);
+    expect(b).not.toBeNull();
+    expect(b!.x).toBeCloseTo(0.25 * 800 - 1.52, 1);
+    expect(shapeBoundsCss(makeTombstone({ id: "a", page: 1 }), box, undefined)).toBeNull();
+  });
+});

@@ -1,0 +1,50 @@
+{
+  "task": "T-MG-INK-4 run-002",
+  "date": "2026-11-01",
+  "operator": {
+    "dispatch": "merge and run-002",
+    "trace": "1a192f9b6c189be9",
+    "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+  },
+  "context_of_record": "dispatched by the same operator word that merged the spec of record (PR #571, merge ec5949da, run-001 receipt + worklog section on main) — this run builds the carded-not-built implementation to the run-002 pins (plan §3.8 / .syllabai/tasks/T-MG-INK-4.yaml)",
+  "class": "additive hub ink code + tests + .syllabai bookkeeping ONLY — zero schema, zero contracts, zero api bytes, zero db, zero identity plane; pdf-pane.tsx untouched; the two CLA fences untouched",
+  "what_lands": {
+    "grammar": "apps/hub/src/components/pastpapers/ink/ink.ts — the mtext kind {id, kind:'mtext', page, color, sizeFrac, x, y, tex} (KaTeX source 1..1000 chars, the same normalized anchor/sizeFrac laws as text) and the tombstone kind {id, kind:'tombstone', page} REUSING the target's id; parseShape is KIND-FIRST now (the color pre-check moved inside the kinds that need one — stroke/text accept/reject behavior byte-identical, pinned; the tombstone needs no color; unknown kinds drop honestly at the boundary); the pure helpers of record: makeTombstone, eraseShapes (targets replaced IN PLACE, stable order, no duplicates), translateShape (normalized per-axis, clamped, tombstones not movable), shapeBoundsCss (strokes bound their path + pen; text = the DISCLOSED chars×0.6em hit ESTIMATE; mtext = the DOM-measured truth via the MeasuredSize seam), pointSegmentDistCss, shapeHitTest (strokes within max(tol, pen width); text/mtext bounds inflated 4 css px; tombstones NEVER hittable), shapesHitIds (doc order; the LAST hit is the topmost)",
+    "painter": "apps/hub/src/components/pastpapers/ink/paint.ts — the kind-switch hardening: strokes + text paint byte-identically; mtext skips (the DOM overlay's); tombstones and ANY unknown kind skip honestly (the old `else paintText` would have thrown s.text.split on undefined); the T-MG-CROPMARK-1 crop composite keeps strokes + text verbatim (the mtext-in-crop blindspot is the spec's disclosed limitation)",
+    "overlay": "apps/hub/src/components/pastpapers/ink/MathTextOverlay.tsx — the mtext DOM chrome: katex.renderToString(throwOnError:false, displayMode:false, output:'html') with the honest catch; pointer-events:none absolute overlay per [data-page] (the InstrumentGuides family) so the canvas keeps the gesture; normalized 0..1 anchor; font size = sizeFrac × the holder's live css width (self-measured ResizeObserver — zoom/reflow ride free); currentColor; katex/dist/katex.min.css imported (the markdown.tsx precedent); NOT MathLive (the MG-INK-SDK-GATE discipline)",
+    "layer": "apps/hub/src/components/pastpapers/ink/InkLayer.tsx — the toolbar closes the census family: Math text box (Sigma) | Select (MousePointer2) | Erase (Eraser) join Pen/Text/Line/Ruler/Protractor/Compasses; the gesture router gains erase (pointer sweep → shapesHitIds → LIVE tombstone preview → ONE commit per gesture) and select (tap hit-test topmost → dashed bbox affordance in NORMALIZED fractions (zoom-invariant) + ✕ delete → tombstone; drag → translateShape preview → ONE commit on up, css-px intent converted per-axis); the math draft (textarea, Enter/blur commits, Esc cancels, Shift+Enter newline) commits an mtext at the text editor's 14-css-px size law; the display set folds the erase/move previews visually (nothing commits until the gesture ends); NO keyboard bindings (the Risk-4 pane freeze-frame stands — the ✕ affordance is the delete surface)",
+    "tests": "ink.test.ts +13 pins (mtext/tombstone parse laws incl. the no-color tombstone and the 1000-char tex cap; unknown-kind honest drop; the old kinds' color law unchanged; pack/parse round-trip of the new kinds; makeTombstone id-reuse; eraseShapes in-place replacement; erasure SURVIVES the rebase AND the migration upload; undo = the honest resurrection; move law clamped; pointSegmentDistCss; stroke hit max(tol,pen); text estimate + mtext measured truth; tombstones never hittable; shapesHitIds doc order) — plus paint.test.ts 4 pins (strokes/text byte-identical; mtext/tombstone skip; unknown kind skips without a throw; the clear:false crop-composite law with mtext invisible)"
+  },
+  "pins_verification": {
+    "container_pin": "PASS — syllabai-ink/1 VERBATIM (INK_DOC_SCHEMA_ID untouched); zero contract bytes (packages/contracts byte-absent from the diff — the server validates the container only, shapes z.array(z.unknown()) opaque); zero api bytes; zero db bytes; the honest-parse boundary is the compat law (old clients drop mtext/tombstone and their full-doc PUT persists deletions — pinned)",
+    "mtext_pin": "PASS — katex renderToString throwOnError:false in a pointer-events:none DOM overlay per [data-page], normalized 0..1, sizeFrac×page-width, currentColor, honest error-styled render; editing = the inline textarea; NOT MathLive; katex ^0.16.23 was already a hub dependency (zero package.json change)",
+    "tombstone_pin": "PASS — target-id reuse through the existing rebaseShapes local-wins law (zero merge-law changes — the rebase function itself is UNTOUCHED); erasure survives the 409 rebase and the migration upload (both pinned); undo restores the pre-erase snapshot verbatim (pinned); Clear all stays set-replacement",
+    "eraser_pin": "PASS — whole-shape atomic; hit-disc max(12, pen width) css px dpr-independent; ONE commit per gesture (one undo step); no eraser-size UI",
+    "select_pin": "PASS — tap hit-test (strokes: point-to-segment ≤ max(tol,pen); text: the disclosed 0.6em estimate + 4 css px; mtext: the DOM-measured truth) → dashed bbox + ✕; drag translates (css-px intent, normalized per-axis at commit); SINGLE-shape only; no rotate/resize/multi-select; guides keep their own grips",
+    "painter_pin": "PASS — the explicit kind-switch with the unknown-kind skip (the latent else-paintText throw is gone — pinned); strokes + text byte-identical (pinned); the crop composite keeps strokes + text verbatim (pinned)",
+    "crop_disclosure_pin": "PASS — mtext does NOT composite into the region-crop bitmap this run (the DOM overlay is not canvas pixels); disclosed in the PR body, the receipt, and the plan §3.8 card; a rasterization card is the named future candidate",
+    "posture_pin": "PASS — the four scope invariants untouched (mock-mode exclusion, MS-pane exclusion, region-mark token+paperId gate, past-papers-QP-only — all diff-absent); the sync gate preserved (the sync controller is never constructed without a token — the fork is untouched); the new kinds flow through BOTH stores via the shared packDoc/parseDoc boundary; the local store's zero-contact law untouched (no new network imports)",
+    "zero_touch_pin": "PASS — packages/db untouched (zero migrations); fences EXACT (routes/cla.ts a9fdabfd, services/cla/service.ts db4573c7 — re-verified at the branch base); pdf-pane.tsx untouched; packages/contracts/** byte-absent; no learnerId anywhere; no new identity plane"
+  },
+  "local_verification": "bun test apps/hub/src/components/pastpapers/ — 122 pass / 0 fail (99 pre-existing + 23 new: 19 ink pins + 4 paint pins), 744 expect() calls; bun run --cwd apps/hub typecheck clean; eslint on the ink dir returns exactly the 5 pre-existing main-baseline findings (refs ×3, the compilation-skip, the pre-existing missing-'page' deps) — zero new",
+  "disclosures": [
+    "mtext does not composite into the marking-crop bitmap this run (DOM overlay, not canvas pixels) — the rasterization path (font-inlined foreignObject) is the named future card, never silently assumed; marking is login-gated and the anonymous posture is untouched",
+    "text hit-testing uses a DISCLOSED chars×0.6em estimate (rendering stays canvas truth); mtext hit-testing uses the DOM-measured truth via the MeasuredSize seam",
+    "no keyboard delete binding — the Risk-4 pane freeze-frame law stands; the ✕ affordance is the delete surface (the spec's 'Delete/Backspace OR the ✕ affordance' is discharged by the ✕)",
+    "selection persists across mode switches as zoom-invariant fractions and auto-hides when the selected shape is erased (the derived-existence law — zero setState-in-effect)",
+    "re-editing an existing text/mtext shape is NOT in this run (delete + re-add is the path); the spec pinned create-only editing"
+  ],
+  "gates_this_run": {
+    "gate_1_identity": "PASS — 7 files = 1 added module + 1 added test + 1 added receipt + 4 modified ink paths + 1 modified test; zero identity-plane paths (prompt.ts / PROMPT_VERSION / packages/** / apps/api/** byte-absent from the diff)",
+    "gate_2_ci": "verify + hub awaited at the head sha (recorded in the PR body; the dual check at the merge sha remains the merge-word gate)",
+    "gate_3_fences": "PASS — CLA fence blobs EXACT at the branch base (re-verified this run)",
+    "gate_4_mergeability": "ff-only pushes, fetch-first, no force — the standing push law",
+    "gate_5_title_form": "feat(mg-parity): T-MG-INK-4 run-002 — per the plan §5 law"
+  },
+  "next_of": "the PR awaits the operator's merge word; post-merge the owning-session worklog section lands on main (the run-001 discipline)",
+  "lineage": {
+    "spec_of_record": "PR #571 (run-001, merge ec5949da) — .syllabai/tasks/T-MG-INK-4.yaml + docs/MG-MARK-PARITY-PLAN.md §3.8",
+    "ink_laws_inherited": "PR #494 (surface) + #509 (instruments) + T-MG-INK-3 (local posture, PR #556 spec + implementation) — the drawing stack, toolbar law, undo/redo 50-step law, honest-parse law, honest-pill law, debounce law, flush-before-dispose law, zero-contact law",
+    "census_of_record": "the live 4CH1/2C census of 2026-11-01 (run-001's receipt) — this run closes the three gaps it exposed (Math text box, Erase, Select); Browse stays the ink-off toggle posture per the spec's disclosed non-goal"
+  }
+}
