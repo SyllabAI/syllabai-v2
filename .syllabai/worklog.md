@@ -23136,3 +23136,12 @@ Stage Summary:
 - Receipt: .syllabai/receipts/T-OEQ-PHYS-FORMAT-1/run-007-groupstem-serve.json; evidence: .syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/{run007_apply.py, run007-payload.json}.
 - Standing debt: the resources leg (F128/Task 36) files next — the f127 r2-consumed twin + the 421-pin zero-network group-stem battery + LEDGER/AGENTS/LANE-STATUS + the two hygiene fixes; the 2026 nuclear-notation convention decision and the sqrt-faithful-form proposal remain operator-gated.
 - Discipline: fetch-first; read-only recon before any write; laws pre-registered; single-file serving-plane edit; resources corpus untouched; zero DB/Neon/prod contact; receipt + worklog + evidence in the same PR; no force on main.
+
+## R0-AUTO-96 receipt — 2026-10-31T09:30Z sweep (Job 438940)
+
+- Merged PR #547 (hub-sidebar T-SIDEBAR-FEEL-1 — course-shell capture-verbatim interactivity fee; head f920eed2, CI verify+hub 2/2 first-hand; 1 file apps/hub/src/components/hub/course-shell.tsx, +36/−5) — merge sha 070b2cba; new main tip CI 2/2 GREEN (verify round 1, hub round 2 — normal bounded re-checks).
+- Zero reviews, zero issue comments, zero review comments; mergeable=clean at check time (no intake needed).
+- Boundaries: single file inside apps/hub/**; zero *.java; no core/hub repo content; no Neon/prod/db contact.
+- Labeling variance disclosed: branch ref t-sidebar-feel-1/run-001 vs title "run-005 tier-a" — the lane's own run-numbering quirk on a single PR, no claim collision, no duplicate task ID against any other open work; observed-not-blocking, same class as the merge-title-form variance already on record.
+- Skipped: #296 (head bd2c0b1e unchanged) — hub failure persists on gate-b, static saga residual.
+- Notes: (1) mirror reset hit at sweep start: local 89962a5d → origin 7e5733ba — SAME phantom signature, ~21st consecutive observation across ledger, source still unidentified, zero data loss; (2) lane progress on fetch: #545 S-B9 wave 9 hub landing, #548 T-OEQ-PHYS-FORMAT-1 run-007 group-intro serving wave, T-MG-MARK-PARITY-1 LANE CLOSURE (operator waives Phase 5 T-MG-UPLOAD-1, trace 1a1913c61c42240d — plan closes 5-of-6 phases landed); (3) tail re-read pre-write: 95 still max → 96; (4) zero force-push, zero auth failures, boundaries held.
