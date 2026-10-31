@@ -1,0 +1,45 @@
+cut = main@1843afe294f6ed48cf3c1930e4bbeadfbaeed2ac
+--- run034-stage1 exit=0
+G-E5 ok: 66/66 consumed topics content-identical to the declared data cut main@1843afe294f6ed48cf3c1930e4bbeadfbaeed2ac (modulo the converter header)
+G-E3 ok: 66 slices match the frozen corpus constants; grand 66 sets / 20 series / 1281q / 2443p / 6600m (66 x printed 100 = 6600)
+G-E2 ok: part-sum, markPoints sum-law and spec-code shapes hold on all official sets
+census emission: wrote /tmp/run034_deltas.json (0 delta part ids across 0 new-set slugs)
+G-E1 ok: regeneration is a byte-level no-op against the bundle of record
+G-E1b ok: set-level identity fields byte-equal on all 66 common official sets
+G-E7 ok: 2684/2684 synced-field keys pass through corpus==plane byte-verified against the plane of record (R2 ledger law)
+G-E6 ok: questionPart == the id-derived printed label on all official parts (1594 one-level, 129 two-level, 0 three-level, 720 path-less/null)
+G-E4 ok: questions.json byte-identical passthrough (2920322 bytes, 65 SME sets, single-line compact law)
+sets: 65 SME kept + 66 official | questions: 1281 | parts: 2443 | markPoints: 2404 | figure crops: 626 | honest stubs: 0
+written: /tmp/run034-stage1/content/igcse-maths-b-16/questions.json + /tmp/run034-stage1/content/igcse-maths-b-16/official-papers.json
+
+census: {"changed": {}, "gone": {}, "new": {}}
+census zero-delta: True
+--- run034-stage2 exit=0
+G-E5 ok: 66/66 consumed topics content-identical to the declared data cut main@1843afe294f6ed48cf3c1930e4bbeadfbaeed2ac (modulo the converter header)
+G-E3 ok: 66 slices match the frozen corpus constants; grand 66 sets / 20 series / 1281q / 2443p / 6600m (66 x printed 100 = 6600)
+G-E2 ok: part-sum, markPoints sum-law and spec-code shapes hold on all official sets
+G-E1 ok: regeneration is a byte-level no-op against the bundle of record
+G-E1b ok: set-level identity fields byte-equal on all 66 common official sets
+G-E7 ok: 2684/2684 synced-field keys pass through corpus==plane byte-verified against the plane of record (R2 ledger law)
+G-E6 ok: questionPart == the id-derived printed label on all official parts (1594 one-level, 129 two-level, 0 three-level, 720 path-less/null)
+G-E4 ok: questions.json byte-identical passthrough (2920322 bytes, 65 SME sets, single-line compact law)
+sets: 65 SME kept + 66 official | questions: 1281 | parts: 2443 | markPoints: 2404 | figure crops: 626 | honest stubs: 0
+written: /tmp/run034-stage2/content/igcse-maths-b-16/questions.json + /tmp/run034-stage2/content/igcse-maths-b-16/official-papers.json
+
+--- run034-stage3 exit=0
+G-E5 ok: 66/66 consumed topics content-identical to the declared data cut main@1843afe294f6ed48cf3c1930e4bbeadfbaeed2ac (modulo the converter header)
+G-E3 ok: 66 slices match the frozen corpus constants; grand 66 sets / 20 series / 1281q / 2443p / 6600m (66 x printed 100 = 6600)
+G-E2 ok: part-sum, markPoints sum-law and spec-code shapes hold on all official sets
+G-E1 ok: regeneration is a byte-level no-op against the bundle of record
+G-E1b ok: set-level identity fields byte-equal on all 66 common official sets
+G-E7 ok: 2684/2684 synced-field keys pass through corpus==plane byte-verified against the plane of record (R2 ledger law)
+G-E6 ok: questionPart == the id-derived printed label on all official parts (1594 one-level, 129 two-level, 0 three-level, 720 path-less/null)
+G-E4 ok: questions.json byte-identical passthrough (2920322 bytes, 65 SME sets, single-line compact law)
+sets: 65 SME kept + 66 official | questions: 1281 | parts: 2443 | markPoints: 2404 | figure crops: 626 | honest stubs: 0
+written: /tmp/run034-stage3/content/igcse-maths-b-16/questions.json + /tmp/run034-stage3/content/igcse-maths-b-16/official-papers.json
+
+stage2 sha 2021ec4730bf1c83
+stage3 sha 2021ec4730bf1c83  determinism: True
+served sha 2021ec4730bf1c83  BYTE-NO-OP: True
+served size 3722872  staged size 3722872
+questions.json determinism: True, passthrough vs v2: n/a
