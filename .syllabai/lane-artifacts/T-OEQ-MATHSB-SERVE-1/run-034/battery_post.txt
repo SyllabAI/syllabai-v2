@@ -1,0 +1,12 @@
+PASS  B2 ledger==pins key set — ledger 2684 keys, pins 2684 keys, delta 0
+PASS  B3 ledger grammar (closed field set, exact keys) — 2684 entries
+PASS  B3n duplicate keys absent (loader would refuse)
+PASS  B3n unknown fields absent (loader would refuse)
+PASS  B1 all back-sync pins verify against the corpus — 2684/2684 pins hold
+PASS  B4 zero PUA/FFFD/control in ledgered values — 0 hits
+PASS  B5 mark-point sums == part marks on pinned parts — 0 violations
+PASS  B5b part-sum == question total on all 66 topics
+PASS  B6 F114 C-generation pins still verify (C145 as re-pointed) — 27/27 hold
+PASS  B7 negative control: mutated value is DETECTED
+
+All back-sync battery legs hold (2684 pins, 2684 ledger keys).
