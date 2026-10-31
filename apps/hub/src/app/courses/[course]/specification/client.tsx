@@ -25,10 +25,14 @@ import {
 import { Label } from "@/components/ui/label";
 import { Filter, GraduationCap, Layers, ListChecks, Lock } from "lucide-react";
 import type { SpecApplicability } from "@/lib/contracts";
+import type { SpecStatementVM } from "@/lib/spec-statement";
 
 export interface SpecPointVM {
   code: string;
   text: string;
+  /** T-SPEC-RENDER-1: printed list structure recovered from the flattened
+   *  bundle string (null items = no structure, render `text` as-is). */
+  statement: SpecStatementVM;
   applicability: SpecApplicability | null;
 }
 
@@ -264,7 +268,26 @@ export function SpecificationExplorer({ topics, totalPoints }: Props) {
                             <Badge variant="outline" className="shrink-0 font-mono text-[10px]">
                               {p.code}
                             </Badge>
-                            <span className="min-w-0 flex-1 text-sm leading-relaxed">{p.text}</span>
+                            {p.statement.items ? (
+                              <div className="min-w-0 flex-1 text-sm leading-relaxed">
+                                {p.statement.lead && <p>{p.statement.lead}</p>}
+                                <ul className="ml-4 mt-1 list-disc space-y-1 marker:text-muted-foreground/60">
+                                  {p.statement.items.map((lines, i) => (
+                                    <li key={i}>
+                                      {lines.map((line, j) =>
+                                        j === 0 ? (
+                                          <span key={j} className="block">{line}</span>
+                                        ) : (
+                                          <span key={j} className="mt-0.5 block pl-4">{line}</span>
+                                        ),
+                                      )}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ) : (
+                              <span className="min-w-0 flex-1 text-sm leading-relaxed">{p.text}</span>
+                            )}
                             {chips.length > 0 && (
                               <span
                                 className="flex shrink-0 flex-wrap gap-1"
