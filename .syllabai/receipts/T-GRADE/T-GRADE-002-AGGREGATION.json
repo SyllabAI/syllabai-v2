@@ -1,0 +1,68 @@
+{
+  "schema": "syllabai.receipt/1",
+  "task": "T-GRADE-002",
+  "title": "Grade Boundaries wave 2 — CIE session-listing unlock + IAL/modular aggregate-ums calculator",
+  "generated": "2026-10-31T16:10:00Z",
+  "trace": "1a19222d36f71611",
+  "agent": "Z.ai main agent (zai-web session web-19f335c2-abed-4ade-968a-305029b290e3)",
+  "plane": {
+    "hub_branch": "t-gradeb-2/hub-aggregation (new branch cut from main after PR #552 (T-GRADE-001 lane B) merged as 24c9fd35; worklog.md + .syllabai/worklog.md landed as zero-loss append unions over the moved main)",
+    "resources_branch": "t-gradeb-1/pipeline",
+    "merge_order_law": "resources PR first, hub PR second (unchanged from T-GRADE-001)"
+  },
+  "corpus": {
+    "documents_fetched": 157,
+    "pearson_docs": 24,
+    "cie_docs": 119,
+    "cie_sessions": [
+      "June 2026",
+      "June 2025",
+      "November 2025",
+      "November 2024"
+    ],
+    "cie_method": "server-rendered /grade-threshold-tables/<session>/ listing crawl (run-001 'JS-rendered' conclusion corrected), CIE_IDS as verified fallback seed",
+    "cie_honest_absences": {
+      "0264": "first assessment March 2027 (official CIE syllabus page) — no award exists yet",
+      "0490": "June 2025/June 2026 not published by CIE; November 2024/2025 served"
+    },
+    "regression_proofs": {
+      "cie_route_rows_reverified": 259,
+      "pearson_rows_reverified": 653,
+      "result": "byte-identical (only intra-session ordering swaps of same-code variant rows)"
+    },
+    "gates": {
+      "G1_schema_monotonic": "GREEN (0 errors, 24 Pearson + 119 CIE docs)",
+      "G2_mg_golden_parity": "GREEN (6/6 exact)",
+      "G3b_cie_coverage": "GREEN (30/31 map syllabi parsed; 0264 documented-absent)",
+      "G3c_aggregation_structure": "GREEN (28 aggregate-ums courses, UMS maxima sum to cash-in maxima; per-session unit absences are info-level honest states)"
+    },
+    "bundle": {
+      "file": "apps/hub/content/grade-boundaries/bundle.v1.json",
+      "courses_served": 105,
+      "courses_roadmap": 1,
+      "courses_total": 106,
+      "roadmap_remaining": "cie-igcse-business-25 (0264 — no award exists yet)",
+      "aggregate_ums_courses": 28
+    }
+  },
+  "hub_surface": {
+    "calculator_modes": {
+      "linear-total": "unchanged (Edexcel linear International GCSE)",
+      "aggregate-ums": "NEW — per-unit raw inputs -> rawToUms (piecewise-linear through each unit's own published raw+UMS pairs) -> UMS total graded against the cash-in boundaries; official optional-pair selector for YMA01; board A* rule (A overall + 90% of A2 UMS; Maths 180/200 from P3+P4); Average mode = modal aggregate grade across sessions; per-session honest ineligible note",
+      "display-only": "now only genuinely display-only courses (YFM01 multi-route cash-in, CIE route-based)"
+    },
+    "tables": "cash-in card (incl. the 4XSD1 Double Award pair ladder 99-9..1-1), CIE component-thresholds card, unit raw/UMS card, CIE route card with award badges (A Level linear/staged/AS)",
+    "graph": "no longer empty for non-linear courses — cash-in UMS trend (modular/IAL), modal-combination route trend (CIE)"
+  },
+  "local_proof": {
+    "bun_test": "18/18 pass (grade-boundaries-calc.test.ts, real corpus fixtures incl. A2-aggregate A* cases)",
+    "hub_tsc": "0 errors",
+    "hub_eslint": "0 problems",
+    "hub_build": "GREEN (full prerender renders every course grade-boundaries page against the new bundle)"
+  },
+  "open_queue": [
+    "YFM01 Further Maths aggregation (multi-route cash-in with unit locking — needs a verified official worked example before encoding)",
+    "Pearson January 2023 / November 2021 golden sessions (no slug found — recorded in fetch-missing.json, never invented)",
+    "best-combination cash-in search (Pearson awards the best valid unit combination; this wave grades the marks the user enters)"
+  ]
+}

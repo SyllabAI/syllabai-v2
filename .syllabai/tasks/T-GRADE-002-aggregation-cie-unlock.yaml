@@ -1,0 +1,95 @@
+version: 1
+task:
+  id: T-GRADE-002
+  title: "Grade Boundaries wave 2 — CIE session-listing unlock (all roadmap CIE courses) + IAL/modular aggregate-ums calculator"
+  owner: "main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3, chat 14bc199d-dd6a-40d0-afad-c2b58230a956, trace 1a19222d36f71611)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-GRADE (grade boundaries)
+  wave: gradeb-phase-B
+  deps: [T-GRADE-001]
+  execution_record: >
+    Operator order (trace 1a19222d36f71611): "extend CIE_IDS to unlock the 56
+    roadmap CIE courses, the IAL/modular aggregation calculator wave".
+    RESOURCES LANE (branch t-gradeb-1/pipeline, companion PR): the
+    /grade-threshold-tables/<session>/ hub listing pages proved
+    SERVER-RENDERED (the run-001 "JS-rendered, not crawlable" conclusion only
+    held for the syllabus pages) — fetch_cie.py rewritten as a parallel
+    session-listing crawler over June 2026 / June 2025 / November 2025 /
+    November 2024 for both programme levels; 118 CIE docs now in the corpus
+    (30/31 course-map syllabi; 0264 Business honestly absent — first
+    assessment March 2027 per official CIE syllabus page; 0490 June series
+    not published — November 2024/2025 present). parse_cie.py v2: award-section
+    tagging (A-Level-linear / A-Level-staged / AS, exact standalone headers;
+    pre-2026 docs infer per-route award from the A* column, never on IGCSE
+    docs), ladder-tail guard (data rows ending in single digits can no longer
+    masquerade as a grade ladder), 9-9…1-1 pair-ladder tokens for 0973 Double
+    Award; 259 wave-1 CIE route rows re-verified byte-identical.
+    parse_pearson.py: the 4XSD1 Science (Double Award) modular cash-in prints
+    a 17-grade pair ladder as TWO segments (99…54 + 44…11+U; June 2025's
+    text layer lacks the second segment's labels entirely) — stitched
+    positionally / in-order, cross-session equality verified against the
+    rendered PDF; 653 wave-1 Pearson rows re-verified. curated/aggregation.json
+    (cited): official Pearson cash-in compositions (Information Manual
+    2025/26 — YMA01 = WMA11-14 + one of the FIVE official applied pairs;
+    YBI11/YCH11/YPH11 = units 1-6) and A* rules (IAL results explained —
+    A overall + 90% of A2 UMS; Maths 480 + 180/200 from P3+P4; six-unit IAL
+    480 + 270/300); modular compositions from the 2024 specs (4XSD1 =
+    Biology 1-2 + Chemistry 3-4 + Physics 5-6). course-map.yaml: explicit
+    gbCashIn/gbUnits overrides for the 10 modular unit slugs (compound
+    4XMAF/4XMAH codes can never join documents; the legacy suite join would
+    mis-join the shared-code 4XSD1 sciences). build_hub_import.py v2:
+    aggregate-ums calculator blocks, per-series calculatorUnits (standard
+    variants, composition order), CIE routes level-filtered by award,
+    cash-ins carry their own gradeLadder. GATES GREEN: G1 0 errors (24
+    Pearson + 119 CIE docs); G2 MathsGenie parity 6/6 EXACT; G3(b) CIE
+    coverage 30/31 (0264 documented-absent); G3(c) 28 aggregate-ums courses
+    structurally sound (UMS maxima sum to cash-in maxima). BUNDLE: 105
+    served / 1 roadmap / 106 total (was 50/56).
+    HUB (this PR): bundle.v1.json re-imported (mechanical); loader schema
+    extended (calculator cashIn/required/optionalPairs/aStar, series
+    calculatorUnits + cashIns gradeLadder + routes award — all optional,
+    zod-strict); lib/grade-boundaries-calc.ts gains rawToUms
+    (piecewise-linear through each unit's OWN published raw+UMS boundary
+    pairs, anchored (0,0)->(max,max), null boundaries skipped, nearest-UMS
+    rounding), usableOptionalPairs, aggregateUms, gradeFromAggregation
+    (board A* rule when the cash-in table has no A* column);
+    grade-boundaries-calc.test.ts 18/18 with REAL corpus fixtures (WCH11
+    November 2020, 4WM1H June 2026, YMA01 June 2026 composition incl. the
+    A2-aggregate A* cases); workspace rebuilt: aggregate-ums panel
+    (per-unit raw inputs -> UMS chips -> total -> grade, official-pair
+    selector for YMA01, A2-shortfall text, Average mode = modal aggregate
+    grade across sessions), honest per-session ineligible note (e.g. P3/P4
+    before their first award), cash-in table card (4XSD1 pair ladder),
+    CIE component-thresholds card, route award badges, trend graph now
+    cash-in-UMS (modular/IAL) and modal-route (CIE) instead of empty,
+    display-only note narrowed to genuinely display-only courses.
+    Local proof: bun test 18/18, hub tsc 0, hub eslint 0, full hub build
+    GREEN (prerender renders every course page against the new bundle).
+  doctrine: >
+    Same band doctrine as T-GRADE-001 (official PDFs first, zero-invention,
+    honest absence states, all-courses rollout, branches+PRs, full
+    ceremony). NEW laws this wave: (1) the CIE unlock is a LISTING CRAWL,
+    not an ID registry — the registry stays as verified fallback seed;
+    (2) aggregation STRUCTURE metadata (compositions, A* rules) lives in
+    the resources curated lane with official citations and never carries
+    boundary VALUES; (3) per-session compositions that cannot exist
+    (units not examined) degrade honestly to display-only for that
+    session — never fabricated.
+scope:
+  allowed:
+    - "apps/hub/content/grade-boundaries/bundle.v1.json (re-import of the resources bundle of record)"
+    - "apps/hub/src/lib/grade-boundaries.ts (schema extension, additive optional fields)"
+    - "apps/hub/src/lib/grade-boundaries-calc.ts (aggregation helpers, additive)"
+    - "apps/hub/src/lib/grade-boundaries-calc.test.ts (new fixtures/tests)"
+    - "apps/hub/src/components/hub/grade-boundaries/** (workspace upgrade)"
+    - ".syllabai/tasks/T-GRADE-002-aggregation-cie-unlock.yaml"
+    - ".syllabai/worklog.md (append only)"
+    - "worklog.md (append only)"
+    - ".syllabai/receipts/T-GRADE/** (new)"
+  forbidden:
+    - "packages/contracts/** (still no core DTO changes)"
+    - "packages/db/** (still zero DDL — corpus-served)"
+    - "apps/api/** (no routes)"
+    - "lib/courses.ts (registry untouched)"
+    - "any boundary VALUE authored outside the resources documents (structure metadata only, cited)"
