@@ -16,7 +16,7 @@
  * courseRef for a scoped tutor; the pilot-tutor line for the legacy entry)
  * and clears via `onClearAll`, which the caller binds to the same scope.
  */
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -26,6 +26,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useIdentity } from "@/lib/identity";
 import type { TutorSessionSummary } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { radioNav } from "@/lib/radio-nav";
 import type { Thread } from "./threads";
 import {
   deleteThread,
@@ -434,16 +435,43 @@ function DropdownSlot({
   onDelete: () => void;
 }) {
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeAndRefocus = () => {
+    setOpen(false);
+    triggerRef.current?.focus();
+  };
   return (
-    <div className="relative pr-1.5">
+    // audit-0006 PR-2: the close-on-outside-interaction law moved from the
+    // trigger's onBlur to a relatedTarget guard on the whole slot. The old
+    // trigger-level `setTimeout(() => setOpen(false), 120)` unmounted the
+    // menu out from under keyboard users — tabbing from the trigger into
+    // its own menu closed it 120ms later mid-navigation (and the items,
+    // outline-none with hover-only highlight, were invisible anyway). The
+    // menu is now a real keyboard surface: focus lands on the first item
+    // when it opens, arrows move through it (role="menu" law, the shared
+    // radio-nav helper), Escape closes and returns focus to the trigger,
+    // and the menu stays mounted while focus is anywhere inside the slot.
+    <div
+      className="relative pr-1.5"
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpen(false);
+      }}
+    >
       <button
+        ref={triggerRef}
         type="button"
         aria-label="Conversation options"
+        aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        onBlur={() => setTimeout(() => setOpen(false), 120)}
+        onKeyDown={(e) => {
+          if (!open && (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ")) {
+            e.preventDefault();
+            setOpen(true);
+          }
+        }}
         className={cn(
-          "flex size-8 items-center justify-center rounded text-muted-foreground transition-opacity hover:bg-background hover:text-foreground",
+          "flex size-8 items-center justify-center rounded text-muted-foreground transition-opacity hover:bg-background hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
           open ? "opacity-100" : "opacity-100 lg:opacity-0 lg:group-hover/item:opacity-100 lg:focus-visible:opacity-100",
         )}
       >
@@ -453,11 +481,31 @@ function DropdownSlot({
         <div
           role="menu"
           className="absolute right-1.5 top-7 z-20 w-36 rounded-md border bg-popover p-1 text-popover-foreground shadow-md"
+          onKeyDown={(e) => {
+            if (e.key === "Escape") {
+              e.preventDefault();
+              closeAndRefocus();
+              return;
+            }
+            const items = Array.from(
+              e.currentTarget.querySelectorAll<HTMLButtonElement>('[role="menuitem"]'),
+            );
+            const nav = radioNav(
+              e.key,
+              items.indexOf(document.activeElement as HTMLButtonElement),
+              items.length,
+            );
+            if (nav.handled && nav.nextIndex !== null) {
+              e.preventDefault();
+              items[nav.nextIndex].focus();
+            }
+          }}
         >
           <button
             role="menuitem"
             type="button"
-            className="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-xs outline-none hover:bg-accent hover:text-accent-foreground"
+            autoFocus
+            className="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-xs outline-none hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground"
             onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               setOpen(false);
@@ -469,11 +517,14 @@ function DropdownSlot({
           <button
             role="menuitem"
             type="button"
-            className="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-xs text-destructive outline-none hover:bg-destructive/10"
+            className="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-xs text-destructive outline-none hover:bg-destructive/10 focus-visible:bg-destructive/10"
             onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               setOpen(false);
               onDelete();
+              // the item's thread row unmounts — put focus back on the
+              // trigger so the keyboard path never drops to <body>
+              triggerRef.current?.focus();
             }}
           >
             <Trash2 className="size-3" aria-hidden /> Delete

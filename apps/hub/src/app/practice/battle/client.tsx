@@ -26,6 +26,7 @@ import { Markdown } from "@/components/markdown";
 import { PartProblem } from "@/components/part-problem";
 import { SpecChip } from "@/components/provenance";
 import { getToken } from "@/lib/api";
+import { radioNav, rovingTabIndex } from "@/lib/radio-nav";
 import {
   fetchDrillAddresses,
   postDrillEvidence,
@@ -347,13 +348,36 @@ export function BattleClient({ course }: { course: string }) {
             <PartProblem md={part.problemMd} />
             {part.choices && part.choices.length > 0 ? (
               <div className="space-y-2" role="radiogroup" aria-label="Answer choices">
-                {part.choices.map((ch) => (
+                {part.choices.map((ch, ci) => (
                   <button
                     key={ch.label}
                     type="button"
                     role="radio"
                     aria-checked={chosen === ch.label}
+                    tabIndex={
+                      // audit-0006 PR-2 — the radiogroup law: one tab stop
+                      // (the checked option, or the first before anything is
+                      // chosen), arrows move focus and selection follows
+                      // focus — the native-radio behavior role="radio"
+                      // promises but this group never delivered.
+                      rovingTabIndex(chosen === ch.label, ci === 0, chosen !== null)
+                    }
                     onClick={() => setChosen(ch.label)}
+                    onKeyDown={(e) => {
+                      // the closure re-widens part.choices — re-narrow here
+                      const choices = part.choices;
+                      if (!choices) return;
+                      const nav = radioNav(e.key, ci, choices.length);
+                      if (nav.handled && nav.nextIndex !== null) {
+                        e.preventDefault();
+                        setChosen(choices[nav.nextIndex].label);
+                        const group = e.currentTarget.parentElement;
+                        const items = group
+                          ? Array.from(group.querySelectorAll<HTMLElement>('[role="radio"]'))
+                          : [];
+                        items[nav.nextIndex]?.focus();
+                      }
+                    }}
                     className={`flex w-full items-start gap-3 rounded-md border px-3 py-2 text-left text-sm transition-colors ${
                       chosen === ch.label ? "border-primary bg-primary/5" : "hover:bg-muted/50"
                     }`}

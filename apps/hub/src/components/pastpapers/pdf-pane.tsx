@@ -2108,7 +2108,7 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
             placeholder="Find in document…"
             aria-label="Find in document"
             autoComplete="off"
-            className="h-9 w-32 bg-transparent text-xs outline-none placeholder:text-muted-foreground sm:w-44"
+            className="h-9 w-32 bg-transparent text-xs outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] sm:w-44"
           />
           <span
             className="whitespace-nowrap px-0.5 text-[11px] tabular-nums text-muted-foreground"
