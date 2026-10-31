@@ -7,7 +7,6 @@ import { describe, expect, it } from "bun:test";
 
 import {
   bookSliceMapOf,
-  chaptersFromManifest,
   clampPage,
   manifestMatchesBook,
   resolveChapterMount,

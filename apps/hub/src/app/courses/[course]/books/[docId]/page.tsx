@@ -326,7 +326,7 @@ export default async function BookViewerPage({
 
 /** The unit exam-practice mount's own layout (no chapter prev/next). */
 function renderMount({
-  slug: _slug,
+  slug,
   bookTitle,
   mount,
   initialPage,
