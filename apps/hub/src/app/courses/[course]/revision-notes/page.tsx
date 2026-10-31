@@ -6,6 +6,17 @@ import type { RevisionNote } from "@/lib/contracts";
 
 export const dynamic = "force-dynamic";
 
+/**
+ * Revision Notes index page — the same RevisionDojo-pattern treatment as the
+ * exam-questions questionbank index (trace 1a19342adcb572ed, merged PR #578;
+ * "same treatment" operator instruction, guided-study actions kept): one
+ * narrow centered column, an RD-style one-liner under the header, then
+ * numbered topic sections whose rows are SUB-TOPICS (ProgressRing + label +
+ * right-aligned note count) navigating to the canonical note — the notes
+ * index renders in notes-index.tsx (client: read dots + rings over the real
+ * learner overlay). Legacy ?spec= deep links still resolve to their
+ * sub-topic row via the canonical spec tree.
+ */
 export default async function CourseRevisionNotesPage({
   params,
   searchParams,
@@ -31,12 +42,12 @@ export default async function CourseRevisionNotesPage({
   }));
 
   return (
-    <div className="px-4 py-6 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
       <CourseHeader
         meta={meta}
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Revision Notes`}
         crumb="Revision Notes"
-        description={`Revision notes mapped to the official ${meta.code} specification — ${stats.notes} note${stats.notes === 1 ? "" : "s"} across ${Object.keys(hub.counts).filter((c) => (hub.counts[c]?.notes ?? 0) > 0).length} subtopics, with examiner tips and worked examples.`}
+        description={`Choose a topic to read concise revision notes — ${stats.notes} note${stats.notes === 1 ? "" : "s"} across ${Object.keys(hub.counts).filter((c) => (hub.counts[c]?.notes ?? 0) > 0).length} subtopics, with examiner tips and worked examples.`}
       />
       <div className="mt-6">
         <NotesIndex
