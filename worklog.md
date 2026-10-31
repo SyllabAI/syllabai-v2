@@ -673,3 +673,23 @@ Work Log:
 Stage Summary:
 - **VERDICT: FEASIBLE (cross-plane re-serve with per-row adjudication). Run-002 mirror build (X-lane vehicle: per-row servedFromCourse/textOfRecordUnder provenance + depthGrade + honest-gap zeros + flags + bundle tests) ready for operator commission.**
 - Receipt of record: .syllabai/receipts/T-UGM-0606-1/run-001-feasibility-r0.json (77-row matrix embedded).
+
+---
+Task ID: T-GRADE-002 (run-002)
+Agent: main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3, chat 14bc199d-dd6a-40d0-afad-c2b58230a956, trace 1a192b11d76d25a1)
+Task: production card-greyout fix — hub loader zod vs the wave-2 bundle shapes (branch t-gradeb-2/loader-schema-fix)
+
+Stage Summary:
+- Root cause one-liner: run-001 changed the bundle shape (CIE routes/components, modular units/cash-ins — series without an overall boundaries row) but not the hub loader zod, which still REQUIRED series.boundaries; safeParse rejected the whole 106-course bundle, the loader resolved null, and every course page's Grade Boundaries card honestly fell back to roadmap. Data was never wrong; the two schemas drifted.
+- Guard of record: scripts/validate_gradeb_bundle.ts now runs in the prebuild chain (and as verify:gradeb with its bun:test twin) asserting the exact loader schema + the disjoint-shape law (linear-total ⇔ boundaries present; 21/28/56 partition) on the committed bundle — the drift class that produced this incident now fails the build instead of greying the product.
+- Branches of record: hub t-gradeb-2/loader-schema-fix cut from main after #558/#559 merged (resources lane unchanged — bundle correct as shipped). Push via Git Data API; PR hub-first.
+
+---
+Task ID: T-GRADE-002 (run-002)
+Agent: main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3, chat 14bc199d-dd6a-40d0-afad-c2b58230a956, trace 1a192b11d76d25a1)
+Task: production card-greyout fix — hub loader zod vs the wave-2 bundle shapes (branch t-gradeb-2/loader-schema-fix)
+
+Stage Summary:
+- Root cause one-liner: run-001 changed the bundle shape (CIE routes/components, modular units/cash-ins — series without an overall boundaries row) but not the hub loader zod, which still REQUIRED series.boundaries; safeParse rejected the whole 106-course bundle, the loader resolved null, and every course page's Grade Boundaries card honestly fell back to roadmap. Data was never wrong; the two schemas drifted.
+- Guard of record: scripts/validate_gradeb_bundle.ts now runs in the prebuild chain (and as verify:gradeb with its bun:test twin) asserting the exact loader schema + the disjoint-shape law (linear-total ⇔ boundaries present; 21/28/56 partition) on the committed bundle — the drift class that produced this incident now fails the build instead of greying the product.
+- Branches of record: hub t-gradeb-2/loader-schema-fix cut from main after #558/#559/#561/#564 merged (resources lane unchanged — bundle correct as shipped). Push via Git Data API; PR hub-first.

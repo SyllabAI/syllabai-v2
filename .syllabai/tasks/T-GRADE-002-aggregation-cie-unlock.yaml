@@ -66,6 +66,36 @@ task:
     display-only note narrowed to genuinely display-only courses.
     Local proof: bun test 18/18, hub tsc 0, hub eslint 0, full hub build
     GREEN (prerender renders every course page against the new bundle).
+    RUN-002 (production card-greyout fix, trace 1a192b11d76d25a1): operator
+    reported the Grade Boundaries card grey/unclickable on production
+    (igcse-physics-19). Diagnosis: the bundle data was correct and already
+    deployed byte-identical (sha16 9c7bc67671dd31e9, fetch plane 200) — but
+    run-001 extended the BUNDLE shape (CIE route/component series, modular
+    unit/cash-in series) without extending the HUB LOADER zod: series
+    boundaries stayed a REQUIRED record, 345 series across 84 courses
+    (55 CIE + 29 modular/IAL unit) legitimately omit it, safeParse failed,
+    loadGradeBoundariesBundle() returned null, and EVERY course card fell
+    back to the honest roadmap state. Missed by CI because the hub lane
+    asserts build-green (not rendered data) and the calc tests feed
+    fixtures, never the committed bundle. Fix: schema of record split into
+    lib/grade-boundaries-schema.ts (importable from bun:test/bun scripts —
+    the loader is server-only), series boundaries now optional with the
+    disjoint-shape law documented, workspace null-guards at the 5
+    boundaries call sites (linear-total ⇔ boundaries present, asserted),
+    NEW prebuild gate scripts/validate_gradeb_bundle.ts wired into the
+    prebuild chain (schema + counts law + per-course shape invariants,
+    zero-tolerance exit 1) and its bun:test twin
+    grade-boundaries-bundle.test.ts (8 tests incl. regression anchors:
+    igcse-physics-19 stays served with overall rows, CIE route-shape and
+    modular unit-shape courses parse). Local proof: bun test 26/26 (18
+    calc + 8 bundle), hub tsc 0, lane files eslint-clean (13 errors/
+    5 warnings are pre-existing on main in unrelated files), full hub
+    build GREEN with 106 grade-boundaries pages prerendered; prerendered
+    igcse-physics-19 HTML carries the enabled card ("See boundaries", "19
+    session rows", grade-boundaries href) and June 2019/January 2020
+    boundary rows; CIE chemistry route tables and IAL Maths P1 YMA01/
+    WMA11 units render; cie-igcse-business-25 keeps the honest roadmap
+    card.
   doctrine: >
     Same band doctrine as T-GRADE-001 (official PDFs first, zero-invention,
     honest absence states, all-courses rollout, branches+PRs, full
@@ -80,6 +110,10 @@ scope:
   allowed:
     - "apps/hub/content/grade-boundaries/bundle.v1.json (re-import of the resources bundle of record)"
     - "apps/hub/src/lib/grade-boundaries.ts (schema extension, additive optional fields)"
+    - "apps/hub/src/lib/grade-boundaries-schema.ts (run-002: schema of record split, series.boundaries optional)"
+    - "apps/hub/src/lib/grade-boundaries-bundle.test.ts (run-002: committed-bundle regression tests)"
+    - "apps/hub/scripts/validate_gradeb_bundle.ts (run-002: prebuild bundle gate)"
+    - "apps/hub/package.json (run-002: prebuild chain + verify:gradeb script only)"
     - "apps/hub/src/lib/grade-boundaries-calc.ts (aggregation helpers, additive)"
     - "apps/hub/src/lib/grade-boundaries-calc.test.ts (new fixtures/tests)"
     - "apps/hub/src/components/hub/grade-boundaries/** (workspace upgrade)"
