@@ -1,0 +1,43 @@
+{
+  "task": "T-MG-INK-3 run-002",
+  "date": "2026-10-31",
+  "operator": {
+    "dispatch": "run-002",
+    "trace": "1a192a70855c9a91",
+    "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+  },
+  "context_of_record": "dispatched immediately after the spec of record merged (PR #556, merge 83dc4d28, run-001 receipt landed + worklog section on main) — this run builds the carded-not-built implementation on the operator's own word, per the design law of record 'marking = login-constrained; the other tools don't have to be'",
+  "class": "additive hub code + tests + .syllabai bookkeeping ONLY — zero schema, zero contracts, zero api bytes, zero identity plane; pdf-pane.tsx untouched; packages/db untouched; the two CLA fences untouched",
+  "what_lands": {
+    "local_store": "apps/hub/src/components/pastpapers/ink/ink-local-store.ts — the IndexedDB persistence controller: ONE database ('syllabai-ink') ONE store ('docs'), keyPath sourceUrl (the existing doc-identity law), record {sourceUrl, doc} with the syllabai-ink/1 container VERBATIM through the shared parseDoc boundary; controller surface mirrors InkSync exactly (init/applyLocal/retry/flush/subscribe/getSnapshot/dispose/doc) so InkLayer swaps transparently; single-timer 900ms trailing debounce, flush-before-dispose, honest error on write failure and on unreadable store (working set always preserved); ZERO network imports by construction",
+    "mode_fork": "apps/hub/src/components/pastpapers/ink/InkLayer.tsx — the gate branch becomes render-local: token ? createInkSync({sourceUrl, token}) : createInkLocal({sourceUrl}) — the sync gate preserved verbatim (the sync controller is NEVER constructed without a token); the render gate is the SURFACE gate (!sourceUrl || !sync), so anonymous view-mode QP renders the SAME toolbar/canvas/instruments on the local store",
+    "honest_pill": "LOCAL mode renders exactly ONE healthy state — 'Local only — saved on this device. Log in to sync.' (role=status) — plus the honest error ('Couldn't save on this device — retry', role=alert); the Saving…/Saved/Edited elsewhere states are sync-mode-only, never fabricated locally",
+    "migration_consent": "sync-mode-only inline notice, armed when a token exists AND a local doc exists for the sourceUrl (probed AFTER the server GET lands; never auto-migrates): 'Upload to account' (rebaseShapes union-by-id into the fetched server doc, ONE debounced PUT on the normal sync path, the local key clears ONLY after the PUT confirms — syncs+not-dirty watch; failed/conflicted upload → honest failed phase, local ink kept and said so) | 'Discard local' (deletes the local key) | dismiss (keeps local, re-arms next visit — per-mount)",
+    "tests": "apps/hub/src/components/pastpapers/ink/ink-local-store.test.ts — 8 pins: fetch-spy ZERO-CONTACT across the full lifecycle (init → edit → debounce → write → flush → retry, zero calls), storage pin (ONE store, key=sourceUrl, syllabai-ink/1 verbatim, draw→reload survives via a fresh controller), honest-parse pin (corrupt doc drops bad shapes at parseDoc, never throws), unreadable-store honest error, write-failure error + preserved set + retry lands, mid-flight edit re-schedule, flush-before-dispose + dispose kills timers, migration helpers honest-degrade where IndexedDB is absent",
+    "card": ".syllabai/tasks/T-MG-INK-3.yaml — run-002 execution record appended",
+    "receipt": "this file"
+  },
+  "pins_verification": {
+    "zero_contact_pin": "PASS — createInkLocal imports no network client (structural); the fetch-spy test drives the full lifecycle with fetch replaced by a rejecting spy and asserts zero calls; the mode fork guarantees createInkSync is never constructed without a token (the sync gate preserved verbatim)",
+    "storage_pin": "PASS — IndexedDB ONE store, key = sourceUrl, doc schema byte-unchanged (syllabai-ink/1 through packDoc/parseDoc only); no localStorage fallback anywhere; draw→reload pinned via the fresh-controller replay test; the IndexedDB seam itself is the thin default behind the injectable backend (open → one tx → close), reviewed against the IDB spec and degraded-honestly pinned in bun CI where indexedDB is absent",
+    "honesty_pin": "PASS — one LOCAL state + role=alert error, pinned in code and comments; quota/write failure → status error with the working set preserved (test-pinned); sync states byte-identical in the token branch",
+    "migration_pin": "PASS — consent-gated only; arm requires token + existing local doc + server GET landed; upload = rebaseShapes union-by-id on the normal sync path (no new wire/endpoint); clear fires only on synced+!dirty after the upload PUT; failed upload keeps local ink with honest copy; dismiss re-arms per visit",
+    "sync_mode_pin": "logged-in construction path byte-identical (createInkSync with the same deps as shipped); the local store is consulted in sync mode ONLY by the read-only migration probe (inkLocalLoad) — the working set is never drawn from it",
+    "scope_pin": "PASS — the four invariants hold verbatim and untouched: mock-mode exclusion and MS-pane exclusion are composition-level (the ink host wrapper hides on doc==='ms'; the mock viewer never mounts InkLayer); region-mark token+paperId gate untouched (RegionMarkLayer diff-absent); past-papers-QP-only scope untouched; no learnerId exists on any local record ({sourceUrl, doc} only — nothing leaves the device)",
+    "zero_touch_pin": "PASS — packages/db untouched (zero migrations), fences EXACT (routes/cla.ts a9fdabfd, services/cla/service.ts db4573c7 — re-verified at the branch base), pdf-pane.tsx untouched, no new identity plane"
+  },
+  "path_disclosure": "the store module lives at apps/hub/src/components/pastpapers/ink/ink-local-store.ts (beside the ink modules it mirrors) rather than the estimate's apps/hub/src/lib/ — module cohesion with ink-sync.ts, zero behavioral difference",
+  "gates_this_run": {
+    "gate_1_identity": "PASS — additive hub ink paths + .syllabai bookkeeping only; zero identity-plane paths; disclosed freezes byte-absent from the diff",
+    "gate_2_ci": "verify + hub workflows awaited at the head sha (recorded in the PR body; dual check at merge sha remains the merge-word gate)",
+    "gate_3_fences": "PASS — CLA fence blobs EXACT at the branch base",
+    "gate_4_mergeability": "ff-only pushes, fetch-first, no force — the standing push law",
+    "gate_5_title_form": "feat(mg-parity): T-MG-INK-3 run-002 — per the plan §5 law"
+  },
+  "next_of": "the PR awaits the operator's merge word; post-merge the owning-session worklog section lands on main (the #536 / run-001 discipline)",
+  "lineage": {
+    "spec_of_record": "PR #556 (run-001, merge 83dc4d28) — .syllabai/tasks/T-MG-INK-3.yaml + docs/MG-MARK-PARITY-PLAN.md §3.7",
+    "ink_laws_inherited": "PR #494 (surface) + #509 (instruments) — the entire drawing stack, toolbar law, undo/redo law, observer law, honest-pill law, debounce law, flush-before-dispose law",
+    "lane_status": "T-MG-MARK-PARITY-1 remains CLOSED (5-of-6, receipt 0c02cd60); this is the NARROW operator-ruled follow-up card, run-002 of T-MG-INK-3"
+  }
+}

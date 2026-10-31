@@ -43,3 +43,23 @@ task:
     apps/hub/src/lib/ink-local-store.ts (~80-100 lines), tests (~100-150 lines).
     The lane was CLOSED at 5-of-6 phases; this card re-opens a NARROW follow-up by
     explicit operator word and does not reopen any Phase card.
+
+    run-002 (2026-10-31). Operator dispatch "run-002" (trace 1a192a70855c9a91) —
+    the implementation, built to the pins above. The mode fork lands in InkLayer
+    (token ? createInkSync : createInkLocal — the sync gate preserved verbatim:
+    the sync controller is NEVER constructed without a token); the local
+    controller lives at apps/hub/src/components/pastpapers/ink/ink-local-store.ts
+    (beside the ink modules it mirrors, not lib/ — module cohesion, zero
+    behavioral difference from the estimate): IndexedDB ONE database ONE store
+    ("syllabai-ink"/"docs"), keyPath sourceUrl, syllabai-ink/1 VERBATIM through
+    the shared parseDoc boundary, single-timer 900ms debounce, flush-before-
+    dispose, honest error on write/unreadable-store failure, ZERO network
+    imports by construction. The pill forks honestly (LOCAL renders exactly one
+    state "Local only — saved on this device. Log in to sync." + role=alert
+    error; the Saving…/Saved/Edited elsewhere states stay sync-mode-only). The
+    migration notice is consent-gated and sync-mode-only (armed when a token
+    exists AND a local doc exists, probed after the server GET; Upload to
+    account = rebaseShapes union-by-id onto the normal sync path with
+    clear-only-after-confirmed-PUT; Discard local deletes the key; dismiss keeps
+    local and re-arms next visit). Tests: ink-local-store.test.ts — 8 pins
+    including the fetch-spy zero-contact full-lifecycle pin.
