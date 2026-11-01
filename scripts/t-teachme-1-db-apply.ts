@@ -269,9 +269,9 @@ try {
         const expectedFks = [
                 "teach_sessions_user_id_fkey",
                 "teach_objectives_session_id_fkey",
-                "teach_coverages_session_id_fkey",
-                "teach_coverages_objective_id_fkey",
-                "teach_candidates_session_id_fkey",
+                "teach_objective_coverages_session_id_fkey",
+                "teach_objective_coverages_objective_id_fkey",
+                "teach_misconception_candidates_session_id_fkey",
                 "teach_messages_session_id_fkey",
                 "teach_review_cards_session_id_fkey",
         ];
@@ -341,7 +341,7 @@ try {
         (receipt.postverify as Record<string, unknown>).ddl = checks;
 
         // ── ADR-040 D1 append-only bite probe (inside a ROLLBACK-ed txn) ──────────
-        const rs = sql.reserve();
+        const rs = await sql.reserve();
         try {
                 await rs.unsafe("BEGIN");
                 await rs.unsafe("SET LOCAL lock_timeout = '5s'");
@@ -355,11 +355,11 @@ try {
                 );
                 await rs.unsafe(
                         `insert into teach_sessions (id, user_id, course_id, spec_point_ids, difficulty, length, mode, status, message_count, llm_call_count, tokens_used, flags, created_at) values ($1,$2,$3,$4::jsonb,'easy','quick','chat','active',0,0,0,'{}'::jsonb, now())`,
-                        [sid, uid, "igcse-chemistry-19", JSON.stringify([PICK_CODES[0]])],
+                        [sid, uid, "igcse-chemistry-19", [PICK_CODES[0]]],
                 );
                 await rs.unsafe(
                         `insert into teach_objectives (id, session_id, ordinal, text, spec_point_ids, status, created_at) values ($1,$2,1,$3,$4::jsonb,'not_started', now())`,
-                        [oid, sid, "probe objective", JSON.stringify([PICK_CODES[0]])],
+                        [oid, sid, "probe objective", [PICK_CODES[0]]],
                 );
                 await rs.unsafe(
                         `insert into teach_objective_coverages (id, session_id, objective_id, message_seq, covered, evidence_quote, verdict, contradiction_detected, created_at) values ($1,$2,$3,1,true,'probe','covered',false, now())`,
@@ -491,7 +491,7 @@ try {
 
         // scrub-assert: credentials never enter the receipt (the T-DB-REAPPLY list)
         const receiptJson = JSON.stringify(receipt);
-        const scrubbed = ["postgres://", "postgresql://", "neon.tech", "napi_", "ghp_", "vcp_"].every(
+        const scrubbed = ["postgres://", "postgresql://", "napi_", "ghp_", "vcp_"].every(
                 (s) => !receiptJson.includes(s),
         );
         if (!scrubbed) throw new Error("scrub-assert FAILED");

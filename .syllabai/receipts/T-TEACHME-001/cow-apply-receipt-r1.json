@@ -1,0 +1,309 @@
+{
+ "task": "T-TEACHME-001",
+ "what": "migrations 0020_teach-me.sql + 0021_teach-messages.sql raw-SQL apply, then the 4CH1 G1–G3 canon/corpus census (repair-if-proven-missing, branch-write only)",
+ "mode": "apply",
+ "target_host": "ep-broad-queen-a5q489qz.us-east-2.aws.neon.tech",
+ "migrations": [
+  {
+   "file": "packages/db/drizzle/0020_teach-me.sql",
+   "sha256": "1f79067d0c0da0418c4f2881583587b6324f5eccc779f9796dcbb50f72a0c0a7",
+   "statement_count": 18
+  },
+  {
+   "file": "packages/db/drizzle/0021_teach-messages.sql",
+   "sha256": "01a973204f60640304786617d2cd6c7a290c82b167936bbb56bd9cbb98fc952f",
+   "statement_count": 8
+  }
+ ],
+ "change_control_note": "0021 carries the RECEIPTED re-scope of teach_candidates_open_idx from the 0020 global (status) form to (session_id) WHERE status='candidate' — per the 0021 header's own disclosure law; post-verify asserts the re-scoped form and the absence of the global form.",
+ "pick_codes": {
+  "count": 182,
+  "first": "4CH1-1.1",
+  "last": "4CH1-4.9"
+ },
+ "preflight": {
+  "referenced_tables_present": true,
+  "teach_targets": {
+   "teach_sessions": false,
+   "teach_objectives": false,
+   "teach_objective_coverages": false,
+   "teach_misconception_candidates": false,
+   "teach_messages": false,
+   "teach_review_cards": false
+  },
+  "fourCH1_plane": [
+   {
+    "node_type": "SPEC_POINT",
+    "n": 182
+   },
+   {
+    "node_type": "SUBJECT",
+    "n": 1
+   },
+   {
+    "node_type": "SUBTOPIC",
+    "n": 12
+   },
+   {
+    "node_type": "TOPIC",
+    "n": 28
+   },
+   {
+    "node_type": "UNIT",
+    "n": 4
+   }
+  ],
+  "fourCH1_spec_points": {
+   "total": 182,
+   "undescribed": 0
+  },
+  "fourCH1_question_anchors": 6627,
+  "revision_note_4ch1": {
+   "rows": 112,
+   "corpora": 1
+  },
+  "pick_codes": 182,
+  "statements_to_apply": [
+   18,
+   8
+  ]
+ },
+ "applied": [
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 0,
+   "head": "-- T-TEACHME-001 run-001 (plan of record: docs/TEACH_ME_PLAN.md; doctrin",
+   "ms": 281
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 1,
+   "head": "CREATE INDEX \"teach_sessions_user_created_idx\" ON \"teach_sessions\" USING",
+   "ms": 208
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 2,
+   "head": "CREATE INDEX \"teach_sessions_course_created_idx\" ON \"teach_sessions\" USI",
+   "ms": 209
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 3,
+   "head": "ALTER TABLE \"teach_sessions\" ADD CONSTRAINT \"teach_sessions_user_id_fkey",
+   "ms": 230
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 4,
+   "head": "CREATE TABLE \"teach_objectives\" ( \"id\" uuid PRIMARY KEY NOT NULL, \"sessi",
+   "ms": 212
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 5,
+   "head": "CREATE INDEX \"teach_objectives_session_idx\" ON \"teach_objectives\" USING ",
+   "ms": 208
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 6,
+   "head": "ALTER TABLE \"teach_objectives\" ADD CONSTRAINT \"teach_objectives_session_",
+   "ms": 209
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 7,
+   "head": "CREATE TABLE \"teach_objective_coverages\" ( \"id\" uuid PRIMARY KEY NOT NUL",
+   "ms": 212
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 8,
+   "head": "CREATE INDEX \"teach_coverages_objective_idx\" ON \"teach_objective_coverag",
+   "ms": 209
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 9,
+   "head": "CREATE INDEX \"teach_coverages_session_seq_idx\" ON \"teach_objective_cover",
+   "ms": 209
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 10,
+   "head": "ALTER TABLE \"teach_objective_coverages\" ADD CONSTRAINT \"teach_objective_",
+   "ms": 209
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 11,
+   "head": "ALTER TABLE \"teach_objective_coverages\" ADD CONSTRAINT \"teach_objective_",
+   "ms": 210
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 12,
+   "head": "CREATE TABLE \"teach_misconception_candidates\" ( \"id\" uuid PRIMARY KEY NO",
+   "ms": 217
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 13,
+   "head": "CREATE INDEX \"teach_candidates_session_idx\" ON \"teach_misconception_cand",
+   "ms": 209
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 14,
+   "head": "CREATE UNIQUE INDEX \"teach_candidates_open_idx\" ON \"teach_misconception_",
+   "ms": 209
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 15,
+   "head": "ALTER TABLE \"teach_misconception_candidates\" ADD CONSTRAINT \"teach_misco",
+   "ms": 209
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 16,
+   "head": "-- ADR-040 D1 append-only law: the coverage ledger takes INSERTs only. D",
+   "ms": 216
+  },
+  {
+   "mig": "0020_teach-me.sql",
+   "i": 17,
+   "head": "CREATE TRIGGER \"teach_coverages_append_only\" BEFORE UPDATE OR DELETE ON ",
+   "ms": 210
+  },
+  {
+   "mig": "0021_teach-messages.sql",
+   "i": 0,
+   "head": "-- T-TEACHME-001 run-002 (plan of record: docs/TEACH_ME_PLAN.md §6; doct",
+   "ms": 211
+  },
+  {
+   "mig": "0021_teach-messages.sql",
+   "i": 1,
+   "head": "CREATE INDEX \"teach_messages_session_seq_idx\" ON \"teach_messages\" USING ",
+   "ms": 214
+  },
+  {
+   "mig": "0021_teach-messages.sql",
+   "i": 2,
+   "head": "ALTER TABLE \"teach_messages\" ADD CONSTRAINT \"teach_messages_session_id_f",
+   "ms": 209
+  },
+  {
+   "mig": "0021_teach-messages.sql",
+   "i": 3,
+   "head": "CREATE TABLE \"teach_review_cards\" ( \"id\" uuid PRIMARY KEY NOT NULL, \"ses",
+   "ms": 209
+  },
+  {
+   "mig": "0021_teach-messages.sql",
+   "i": 4,
+   "head": "CREATE UNIQUE INDEX \"teach_review_cards_session_idx\" ON \"teach_review_ca",
+   "ms": 209
+  },
+  {
+   "mig": "0021_teach-messages.sql",
+   "i": 5,
+   "head": "ALTER TABLE \"teach_review_cards\" ADD CONSTRAINT \"teach_review_cards_sess",
+   "ms": 209
+  },
+  {
+   "mig": "0021_teach-messages.sql",
+   "i": 6,
+   "head": "DROP INDEX \"teach_candidates_open_idx\";",
+   "ms": 215
+  },
+  {
+   "mig": "0021_teach-messages.sql",
+   "i": 7,
+   "head": "CREATE UNIQUE INDEX \"teach_candidates_open_idx\" ON \"teach_misconception_",
+   "ms": 209
+  }
+ ],
+ "postverify": {
+  "ddl": {
+   "teach_tables": [
+    "teach_messages",
+    "teach_misconception_candidates",
+    "teach_objective_coverages",
+    "teach_objectives",
+    "teach_review_cards",
+    "teach_sessions",
+    "teacher_validation_events",
+    "teaching_coverage",
+    "teaching_coverage_events",
+    "teaching_toolkit_resources",
+    "teaching_toolkit_usage"
+   ],
+   "cols_teach_sessions_exact": true,
+   "cols_teach_objectives_exact": true,
+   "cols_teach_objective_coverages_exact": true,
+   "cols_teach_misconception_candidates_exact": true,
+   "cols_teach_messages_exact": true,
+   "cols_teach_review_cards_exact": true,
+   "checks_teach_sessions": true,
+   "checks_teach_objectives": true,
+   "checks_teach_misconception_candidates": true,
+   "checks_teach_messages": true,
+   "fks": true,
+   "teach_candidates_open_idx": {
+    "rescoped": true,
+    "global_form_present": false,
+    "def_shape": "CREATE UNIQUE INDEX teach_candidates_open_idx ON public.teach_misconception_candidates USING btree (session_id) WHERE (status = 'candidate'::text)"
+   },
+   "teach_review_cards_unique": true,
+   "append_only_trigger_present": true,
+   "forbid_mutation_fn": true
+  }
+ },
+ "append_only_probe": {
+  "update_blocked": true,
+  "delete_blocked": true,
+  "session_row_still_mutable": true,
+  "rolled_back": true
+ },
+ "canon": {
+  "g1_loader_rows": 182,
+  "missing_codes": [],
+  "undescribed_before": 0,
+  "titles_aligned_with_bundle": 160,
+  "provenance_law": "lineage untouched (spec:4CH1-2017); description composition = canonicalKG subtopic + bundle paper applicability, per-row guarded, version+1",
+  "repair": {
+   "needed": false,
+   "missing": 0,
+   "undescribed": 0,
+   "applied": 0,
+   "rows": []
+  },
+  "undescribed_after": 0
+ },
+ "gates": {
+  "G1_canon_described": {
+   "green": true,
+   "rows": 182,
+   "undescribed": 0,
+   "law": "service.ts createSession: missing/undescribed → COURSE_NOT_ELIGIBLE fail-closed"
+  },
+  "G2_note_corpus": {
+   "green": true,
+   "pattern_rows": 112,
+   "sampled": 24,
+   "law": "service.ts createSession: zero notes → overlap detector fails open (forbidden) → COURSE_NOT_ELIGIBLE fail-closed"
+  },
+  "G3_serving_links": {
+   "green": true,
+   "question_anchors_4ch1": 6627,
+   "law": "plan §1 G3: question-bank sets + notes linked in the serving corpus (Suggested Practice must link real resources)"
+  },
+  "all_green": true
+ },
+ "verdict": "APPLIED_GATES_GREEN",
+ "errors": [],
+ "elapsed_ms": 30537
+}

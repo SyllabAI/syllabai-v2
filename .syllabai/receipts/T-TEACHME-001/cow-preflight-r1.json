@@ -1,0 +1,79 @@
+{
+ "task": "T-TEACHME-001",
+ "what": "migrations 0020_teach-me.sql + 0021_teach-messages.sql raw-SQL apply, then the 4CH1 G1–G3 canon/corpus census (repair-if-proven-missing, branch-write only)",
+ "mode": "preflight",
+ "target_host": "ep-long-tree-a5b836cz.us-east-2.aws.neon.tech",
+ "migrations": [
+  {
+   "file": "packages/db/drizzle/0020_teach-me.sql",
+   "sha256": "1f79067d0c0da0418c4f2881583587b6324f5eccc779f9796dcbb50f72a0c0a7",
+   "statement_count": 18
+  },
+  {
+   "file": "packages/db/drizzle/0021_teach-messages.sql",
+   "sha256": "01a973204f60640304786617d2cd6c7a290c82b167936bbb56bd9cbb98fc952f",
+   "statement_count": 8
+  }
+ ],
+ "change_control_note": "0021 carries the RECEIPTED re-scope of teach_candidates_open_idx from the 0020 global (status) form to (session_id) WHERE status='candidate' — per the 0021 header's own disclosure law; post-verify asserts the re-scoped form and the absence of the global form.",
+ "pick_codes": {
+  "count": 182,
+  "first": "4CH1-1.1",
+  "last": "4CH1-4.9"
+ },
+ "preflight": {
+  "referenced_tables_present": true,
+  "teach_targets": {
+   "teach_sessions": false,
+   "teach_objectives": false,
+   "teach_objective_coverages": false,
+   "teach_misconception_candidates": false,
+   "teach_messages": false,
+   "teach_review_cards": false
+  },
+  "fourCH1_plane": [
+   {
+    "node_type": "SPEC_POINT",
+    "n": 182
+   },
+   {
+    "node_type": "SUBJECT",
+    "n": 1
+   },
+   {
+    "node_type": "SUBTOPIC",
+    "n": 12
+   },
+   {
+    "node_type": "TOPIC",
+    "n": 28
+   },
+   {
+    "node_type": "UNIT",
+    "n": 4
+   }
+  ],
+  "fourCH1_spec_points": {
+   "total": 182,
+   "undescribed": 0
+  },
+  "fourCH1_question_anchors": 6627,
+  "revision_note_4ch1": {
+   "rows": 112,
+   "corpora": 1
+  },
+  "pick_codes": 182,
+  "statements_to_apply": [
+   18,
+   8
+  ]
+ },
+ "applied": [],
+ "postverify": {},
+ "append_only_probe": null,
+ "canon": null,
+ "gates": null,
+ "verdict": "PREFLIGHT-OK",
+ "errors": [],
+ "elapsed_ms": 9059
+}
