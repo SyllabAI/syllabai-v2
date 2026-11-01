@@ -23724,3 +23724,13 @@ worklog(r0): T-UGM-0606-1 run-002 (operator commission trace 1a1955c294758a5d "M
 - CI: verify PASS at head 20139e7a; hub RED on the merge ref — main's OWN break: the T-GRADE-8 bundle import (042690ef, bundle f6e2a18c4f81636d) violates 4 invariants (ial-further-maths-18-further-pure-1 Oct 2022/2023/2024/2025 empty units[]), main's push-triggered hub run failing identically; this branch's bundle is the clean 7ba6951347f5c37e (verify:gradeb 32/32 at head) and content/** is byte-absent from the diff — disclosed on the PR with the shas; fences 170fcb8c/af45d2d1 byte-identical base↔head.
 - Discipline: fetch-first, ff-only, no force; zero contracts/api/db bytes; container syllabai-ink/1 verbatim; no MathLive; the standing PAT-rotation reminder of record.
 - Anti-truncation asserts: this section appended byte-exact; new = old + section.
+
+## R0-AUTO-108 receipt — 2026-11-02T06:30 sweep (Job 438940)
+
+- Zero merges this sweep (1 open PR, gate-b).
+- SAGA RETIRED: #296 (T-SPECS-CIE-TRANCHE2-B02 run-001 receipt — the hub-red static saga, carried gate-b skip since R0-AUTO-101) was **closed unmerged** off-sweep — verified via PR JSON (state=closed, merged=False). The hub-failure residual never greened; the PR exits the open set without landing. Ledger item retires.
+- ESCALATION (promoted): #600 (T-OEQ-PHYS-FORMAT-1 run-008, head 33646378 unchanged) — ZERO registered check-runs for ~15h post-open (check-runs total_count=0 first-hand ×5 across sweeps); the #575/#581/#584/#585/#593 event-drop class; the author's registered retrigger remedy (close-reopen / fresh head) has NOT been applied in 15h — the lane appears inert, not merely unlucky. Operator input requested: nudge the author lane to retrigger, or rule on the PR. Gate-b skip stands regardless (absent CI ≠ success).
+- Escalation watch (carried): #568 + #583 duplicate-task collision — no operator ruling on record yet.
+- Main tip 3f66445b (T-MG-INK-7 run-001, #621 merged off-sweep) — CI verify+hub 2/2 GREEN first-hand this sweep (gates-green-first satisfied for this push).
+- Boundaries: zero diffs merged this sweep; receipt commit .syllabai/** only; zero *.java; no core/hub repo content; no Neon/prod/db contact.
+- Notes: (1) ledger after this sweep: #600 zero-CI escalation (promoted) + #568/#583 collision ruling (carried); #296 retires; (2) tail re-read pre-write: 107 still max → 108; (3) zero force-push, zero auth failures, boundaries held.
