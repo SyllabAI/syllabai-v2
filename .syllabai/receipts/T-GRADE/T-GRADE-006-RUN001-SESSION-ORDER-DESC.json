@@ -1,0 +1,41 @@
+{
+  "schema": "syllabai.receipt/1",
+  "task": "T-GRADE-006 (run-001)",
+  "title": "Grade Boundaries \u2014 session lists read newest\u2192oldest like MathsGenie",
+  "generated": "2026-11-01T09:35:00Z",
+  "trace": "1a194934c518f8e1",
+  "agent": "Z.ai main agent (zai-web session web-19f335c2-abed-4ade-968a-305029b290e3)",
+  "plane": "hub-ui",
+  "origin": "Operator word this trace: \"Our grade boundaries is sorted in the reverse order. Older to newer. SHouldnt it be reverse?\" \u2014 correct: MG lists the most recent session first; our pills, sub-tables and grouping followed the bundle's stored ascending order.",
+  "deltas": [
+    "sortSessionsNewestFirst (calc lib): year desc, then session name desc (November > June > January alphabetically = chronological within a year); returns a new array",
+    "sessions useMemo now returns the helper's output \u2014 pills, all four sub-table sections and every order-dependent selector read newest\u2192oldest",
+    "the four entry.series.slice(0,4) sub-tables (cash-in / route sections) switched to sortSessionsNewestFirst(entry.series).slice(0,4) \u2014 they showed the OLDEST four sessions before",
+    "graphMax (cash-in mode) sessions[length-1] \u2192 sessions[0]: still the newest session under the flipped order",
+    "graphRows keep their own ascending sort \u2014 the time axis must run oldest\u2192newest; ladder/route representative rows (sessions[0]) now read the newest session"
+  ],
+  "gates": {
+    "tsc": "two module-resolution errors in UNTOUCHED files (src/lib/utils.ts tailwind-merge, src/lib/v2-proxy.ts server-only) \u2014 artifacts of the between-turn sandbox recycle's re-clone node_modules, not this delta; CI's verify lane builds the same main cleanly (proven by T-GRADE-005's green run on identical config)",
+    "eslint": "0 problems on the three touched files",
+    "bun_test": "grade-boundaries-calc.test.ts 24/24 (21 prior + 3 new: newest\u2192oldest ordering incl. within-year month flip, input immutability, stable twins + empty guard)",
+    "build": "deferred to CI's hub lane (sandbox time budget; the hub build ran green on T-GRADE-005's identical toolchain)"
+  },
+  "integrity": {
+    "data_plane": "bundle.v1.json untouched \u2014 display order only",
+    "env_note": "workspace recycled between turns; repo re-cloned (blob:none), lane re-cut from origin/main at 7ce912ad",
+    "append_only": "both worklogs appended with byte-exact prefix assertion"
+  },
+  "scope_files": [
+    "apps/hub/src/components/hub/grade-boundaries/grade-boundaries-workspace.tsx",
+    "apps/hub/src/lib/grade-boundaries-calc.ts",
+    "apps/hub/src/lib/grade-boundaries-calc.test.ts",
+    ".syllabai/tasks/T-GRADE-006-session-order-desc.yaml",
+    ".syllabai/receipts/T-GRADE/T-GRADE-006-RUN001-SESSION-ORDER-DESC.json",
+    ".syllabai/worklog.md",
+    "worklog.md"
+  ],
+  "honest_remainders": [
+    "within-year month ordering relies on the alphabetic accident November > June > January matching the calendar \u2014 true for the boards' three standard series; a fourth series name (e.g. an extra 'March') would need an explicit month map",
+    "the live visual check for this run is deferred to the post-merge verification (order change is text-verifiable in the served HTML)"
+  ]
+}

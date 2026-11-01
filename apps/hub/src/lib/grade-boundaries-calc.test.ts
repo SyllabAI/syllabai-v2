@@ -6,6 +6,7 @@ import {
   marksToNextGrade,
   modalGradeAcrossSeries,
   primaryRow,
+  sortSessionsNewestFirst,
 } from "./grade-boundaries-calc";
 
 // June 2026 4CH1 standard row (golden-master verified upstream)
@@ -352,5 +353,42 @@ describe("usableOptionalPairs + modular 4XMAH cash-in", () => {
       gradeLadder: ["9", "8", "7", "6", "5", "4", "3", "2", "1", "U"],
     };
     expect(gradeFromAggregation(cashin, undefined, agg).grade).toBe("9");
+  });
+});
+
+describe("sortSessionsNewestFirst (MathsGenie lists the newest session first)", () => {
+  it("orders newest→oldest across years and months", () => {
+    const out = sortSessionsNewestFirst([
+      { year: 2020, session: "November" },
+      { year: 2026, session: "June" },
+      { year: 2021, session: "January" },
+      { year: 2025, session: "June" },
+      { year: 2026, session: "January" },
+    ]);
+    expect(out.map((s) => `${s.session} ${s.year}`)).toEqual([
+      "June 2026", // same year: November > June > January alphabetically
+      "January 2026",
+      "June 2025",
+      "January 2021",
+      "November 2020",
+    ]);
+  });
+
+  it("returns a new array and leaves the input order untouched", () => {
+    const input = [
+      { year: 2020, session: "November" },
+      { year: 2026, session: "June" },
+    ];
+    const out = sortSessionsNewestFirst(input);
+    expect(out).not.toBe(input);
+    expect(input[0].year).toBe(2020);
+    expect(out[0].year).toBe(2026);
+  });
+
+  it("is stable for identical keys and empty input", () => {
+    expect(sortSessionsNewestFirst([])).toEqual([]);
+    const twin = { year: 2024, session: "June" };
+    const out = sortSessionsNewestFirst([twin, { ...twin }]);
+    expect(out).toHaveLength(2);
   });
 });

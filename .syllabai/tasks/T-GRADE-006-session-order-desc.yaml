@@ -1,0 +1,60 @@
+version: 1
+task:
+  id: T-GRADE-006
+  title: "Grade Boundaries wave 6 — session lists read newest→oldest like MathsGenie (operator: 'Our grade boundaries is sorted in the reverse order. Older to newer. Shouldnt it be reverse?')"
+  owner: "main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-GRADE (grade boundaries)
+  wave: gradeb-phase-C
+  deps: [T-GRADE-005]
+  execution_record: >
+    Origin (operator word this trace): "Our grade boundaries is sorted in
+    the reverse order. Older to newer. SHouldnt it be reverse?" — correct:
+    MathsGenie lists the most recent session first; our pills, the four
+    per-session sub-tables and the grouping order followed the bundle's
+    stored ascending order (the November 2020 screenshot even showed the
+    aggregate sub-table opening on NOVEMBER 2020). Fix at ONE point: new
+    pure helper sortSessionsNewestFirst in the calc lib (year desc, then
+    session name desc — November > June > January alphabetically IS the
+    chronological order within a year; returns a new array) applied to the
+    sessions useMemo — which feeds the pills, all four sub-table sections
+    and every order-dependent selector — plus the four entry.series.slice
+    sub-tables switched to the same helper. Order-dependent semantics
+    audited and kept honest: the graphRows keep their own ascending sort
+    (a time axis must run oldest→newest left→right); graphMax for the
+    cash-in mode pointed at sessions[length-1] (the newest under the old
+    order) and now points at sessions[0] (still the newest after the
+    flip); the ladder/route representative rows (sessions[0]) now read the
+    newest session, which is the better representative. Sandbox note: the
+    workspace was recycled between turns — the repo was re-cloned
+    (blob:none) and the lane re-cut from origin/main at 7ce912ad;
+    local tsc reports two module-resolution errors in untouched files
+    (src/lib/utils.ts tailwind-merge, src/lib/v2-proxy.ts server-only)
+    that are artifacts of the re-clone's node_modules, not of this delta —
+    CI's verify lane builds the same main cleanly. Gates: eslint on the
+    three touched files 0 problems; calc tests 24/24 (21 prior + 3 new:
+    newest→oldest ordering incl. within-year month flip, input
+    immutability, stable twins + empty guard).
+  doctrine: >
+    Same band doctrine as T-GRADE-001..005. THIS wave's law: display order
+    is a presentation decision and lives in exactly one helper with tests;
+    the graph's chronological axis is deliberately NOT flipped (time runs
+    forward); zero boundary values, zero bundle bytes, zero registry/DB/API
+    planes touched.
+scope:
+  allowed:
+    - "apps/hub/src/components/hub/grade-boundaries/grade-boundaries-workspace.tsx (sessions sort + sub-table slices + graphMax index)"
+    - "apps/hub/src/lib/grade-boundaries-calc.ts (sortSessionsNewestFirst)"
+    - "apps/hub/src/lib/grade-boundaries-calc.test.ts (3 new tests)"
+    - ".syllabai/tasks/T-GRADE-006-session-order-desc.yaml (this card)"
+    - ".syllabai/receipts/T-GRADE/T-GRADE-006-RUN001-SESSION-ORDER-DESC.json (new)"
+    - ".syllabai/worklog.md (append only)"
+    - "worklog.md (append only)"
+  forbidden:
+    - "packages/contracts/** (no core DTO changes)"
+    - "packages/db/** (zero DDL)"
+    - "apps/api/** (no routes)"
+    - "apps/hub/content/grade-boundaries/bundle.v1.json (data plane frozen)"
+    - "lib/courses.ts (registry untouched)"
+    - "flipping the graph's time axis"

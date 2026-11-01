@@ -794,3 +794,15 @@ Work Log:
 
 Stage Summary:
 - Plane of record 801474a740be6546 -> 6b6ba8799cf1c0f7 (3,685,915 bytes). Receipt .syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-036-table-gfm-tranche2.json; artifacts .syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-036/ (fixes a-d + apply + both gates + projection + sheet map + 13 evidence sheets + qp_pages). Branch of record: t-oeq-mathsb-tablegfm-1/run-036 (base 64fdb91c). Corpus riders accrue: 95 pids / 178 field writes / 58 PNG deletions ride the NEXT converter run (standing law, no solo converter trigger). Residuals on card: mention-no-crop class census; grid/histogram serving gaps; 4 Mode-C equation fragments; FLEET formula-sheet fence ruling; PAT rotation standing order (CRITICAL-OVERDUE).
+
+---
+
+Task ID: T-GRADE-006 (run-001) — session lists newest→oldest (operator trace 1a194934c518f8e1: "Our grade boundaries is sorted in the reverse order. Older to newer. SHouldnt it be reverse?")
+
+Work Log:
+- Order fix at one point: sortSessionsNewestFirst (calc lib, tested) drives the sessions useMemo (pills, sub-tables, selectors) and the four entry.series.slice sub-tables — previously oldest-first everywhere, MG lists newest first; graph time axis deliberately stays chronological; graphMax re-pointed at sessions[0] (still the newest).
+- Gates: eslint 0 on touched files; calc tests 24/24 (+3 new); tsc noise in untouched files disclosed as re-clone artifacts (sandbox recycled between turns — repo re-cloned blob:none, lane re-cut from origin/main 7ce912ad); build deferred to CI hub lane.
+
+Stage Summary:
+- Grade-boundaries lists now read newest→oldest like MathsGenie's page; receipt .syllabai/receipts/T-GRADE/T-GRADE-006-RUN001-SESSION-ORDER-DESC.json; lane t-gradeb-6/session-order-desc, PR of record.
+- Discipline: fetch-first; fail-closed; append-only worklogs (byte-exact prefix assert); zero force-push, zero auth failures, boundaries held.
