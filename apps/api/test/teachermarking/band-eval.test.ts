@@ -545,6 +545,9 @@ const BA_ID = "e5000000-0000-4000-8000-000000000001";
 function captureRoutes(overrides: {
   schemes?: Array<Record<string, unknown>>;
   bands?: Array<Record<string, unknown>>;
+  /** OD-1 MA-10: how many VALIDATED part-bound LEVELS siblings the capture
+   *  guard counts on the answer's part (default 1 = single-axis, silent). */
+  captureSiblings?: number;
 } = {}): Route[] {
   return [
     {
@@ -566,8 +569,19 @@ function captureRoutes(overrides: {
       }] : []),
     },
     {
+      // OD-1 MA-10 — the capture guard resolves the question's newest version
+      match: /select id from question_versions where question_id = \? order by version desc limit 1/,
+      rows: [{ id: VERSION_ID }],
+    },
+    {
       match: /select ms\.id, ms\.scheme_kind from mark_schemes ms/,
       rows: overrides.schemes ?? [{ id: SCHEME_ID, scheme_kind: "LEVELS" }],
+    },
+    {
+      // OD-1 MA-10 — the capture guard's sibling count (the answer's part,
+      // the question's newest version); 1 = single-axis, the guard is silent
+      match: /select count\(\*\)::int as n from mark_schemes/,
+      rows: [{ n: overrides.captureSiblings ?? 1 }],
     },
     {
       match: /select level_index, marks_min, marks_max from mark_bands/,
@@ -657,6 +671,16 @@ describe("recordHumanMark — the band capture side (ADR-040 §5.5)", () => {
     await expect(
       module.marking.recordHumanMark(BA_ID, MARKER_ID, 2, null, null, BAND_CAPTURE),
     ).rejects.toThrow("band placement awardedMarks 3 must equal the mark's marksAwarded 2");
+  });
+
+  test("OD-1 MA-10: a multi-axis part refuses the band capture BEFORE any state write", async () => {
+    const { module, sql } = build(captureRoutes({ captureSiblings: 2 }));
+    await expect(
+      module.marking.recordHumanMark(BA_ID, MARKER_ID, 3, null, null, BAND_CAPTURE),
+    ).rejects.toThrow("MULTI_AXIS_CAPTURE_NOT_WIRED");
+    // nothing written: no state change, no human mark
+    expect(sql.queries.some((q) => q.includes("update answers set"))).toBe(false);
+    expect(sql.queries.some((q) => q.includes("insert into human_marks"))).toBe(false);
   });
 });
 

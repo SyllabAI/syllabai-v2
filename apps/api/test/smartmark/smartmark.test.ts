@@ -322,6 +322,26 @@ describe("SmartMarkService.markAttempt — the ONE engine", () => {
     expect(row.failure_reason).toBeNull();
   });
 
+  test("OD-1 MA-10: a multi-axis part (2+ VALIDATED part-bound LEVELS siblings) refuses honestly — nothing marked", async () => {
+    const axisRows = [
+      { id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A },
+      { id: "70000000-0000-0000-0000-00000000000b", validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A },
+    ];
+    const sql = fakeSql(markRoutes({ validatedSchemes: axisRows, newestScheme: axisRows }));
+    const pub = claimingPublisher();
+    const results = await new SmartMarkService(sql, okGenerator, pub, FIXED_CLOCK).markAttempt(ATTEMPT_ID);
+    const row = results.get(ANSWER_A)!;
+    expect(row.validation_passed).toBe(false);
+    expect(row.marks_awarded).toBe(0);
+    expect(row.failure_reason).toBe("MULTI_AXIS_DISPATCH_NOT_WIRED");
+    expect(sql.queries.some((q) => RESULT_INSERT.test(q))).toBe(true); // append-only refusal row persisted
+    expect(sql.queries.some((q) => ANSWER_SMART_UPDATE.test(q))).toBe(false);
+    expect(sql.queries.some((q) => ATTEMPT_SMART_UPDATE.test(q))).toBe(false);
+    expect(sql.queries.some((q) => ATTEMPT_TOTAL_UPDATE.test(q))).toBe(false);
+    expect(sql.queries.some((q) => POINTS_MATCH.test(q))).toBe(false); // no axis dispatch ever ran
+    expect(pub.count).toBe(0); // no evidence
+  });
+
   test("κ gate fail-closed: no evaluations → authoritative false → NO evidence even when complete", async () => {
     const sql = fakeSql(markRoutes({ kappaAll: [], kappaPaper: [] }));
     const results = await new SmartMarkService(sql, okGenerator, claimingPublisher(), FIXED_CLOCK).markAttempt(ATTEMPT_ID);

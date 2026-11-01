@@ -850,14 +850,28 @@ export class TeacherSmartMarkService {
     // then the version-level unbound scheme, then (never silently taken)
     // a different part's scheme; newest-first within each slot.
     const validatedRows = (await this.sql`
-      select id, validation_state, scheme_kind from mark_schemes
+      select id, validation_state, scheme_kind, question_part_id from mark_schemes
       where question_version_id = ${versionId} and validation_state = ${"VALIDATED"}
       order by case when question_part_id = ${answer.question_part_id} then 0
                     when question_part_id is null then 1 else 2 end,
                created_at desc
-    `) as unknown as Array<{ id: string; validation_state: string; scheme_kind: string | null }>;
+    `) as unknown as Array<{ id: string; validation_state: string; scheme_kind: string | null; question_part_id: string | null }>;
     if (validatedRows.length === 0) {
       return this.refuseUnvalidatedScheme(answer, versionId);
+    }
+    // OD-1 MA-10 (multi-axis R4 consumption law, r0): TWO OR MORE VALIDATED
+    // part-bound LEVELS siblings on this answer's part = a multi-axis
+    // printed grid — the per-axis dispatch leg is not wired yet (PR-B); a
+    // single-scheme dispatch would range-check an 8/12-mark essay against
+    // ONE axis's bands. Honest refusal, append-only, nothing marked.
+    const levelSiblings = validatedRows.filter(
+      (r) =>
+        (r.scheme_kind ?? "POINTS") === "LEVELS" &&
+        r.question_part_id != null &&
+        String(r.question_part_id) === String(answer.question_part_id),
+    ).length;
+    if (levelSiblings >= 2) {
+      return this.refuseMultiAxisDispatch(answer, versionId);
     }
     const scheme = validatedRows[0]!;
     if ((scheme.scheme_kind ?? "POINTS") === "LEVELS") {
@@ -1094,6 +1108,41 @@ export class TeacherSmartMarkService {
     };
   }
 
+  /** OD-1 MA-10 — the multi-axis dispatch refusal: the honest append-only row
+   *  stamped with the newest scheme of the version (the V34 law), failure
+   *  reason MULTI_AXIS_DISPATCH_NOT_WIRED; nothing is marked, no state
+   *  changes, no evidence. Lifted by PR-B's per-axis dispatch leg. */
+  private async refuseMultiAxisDispatch(
+    answer: MarkingAnswerRow,
+    questionVersionId: string,
+  ): Promise<SmartMarkResultRow> {
+    const refusedRows = (await this.sql`
+      select id, validation_state from mark_schemes
+      where question_version_id = ${questionVersionId} order by created_at desc
+    `) as unknown as Array<{ id: string; validation_state: string }>;
+    if (refusedRows.length === 0) throw new NotFoundError("mark scheme", questionVersionId);
+    const refused = refusedRows[0]!;
+    const resultId = this.clock.newId();
+    await this.sql`
+      insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
+        marks_awarded, confidence, validation_passed, breakdown, failure_reason,
+        mark_scheme_id, scheme_validation_state, raw_output, created_at)
+      values (${resultId}, ${answer.id}, ${PIPELINE_VERSION}, ${null}, ${0}, ${null}, ${false},
+        ${JSON.stringify([])}, ${"MULTI_AXIS_DISPATCH_NOT_WIRED"}, ${refused.id},
+        ${refused.validation_state}, ${null}, ${this.clock.now().toISOString()})
+    `;
+    return {
+      id: resultId,
+      answer_id: answer.id,
+      model_id: null,
+      marks_awarded: 0,
+      confidence: null,
+      validation_passed: false,
+      breakdown: [],
+      failure_reason: "MULTI_AXIS_DISPATCH_NOT_WIRED",
+    };
+  }
+
   /**
    * recomputeAttemptTotal (:146-153): re-reads the attempt's answers AFTER
    * the state write, sums non-null marks, and applies recordTotalMarks law —
@@ -1231,6 +1280,7 @@ export class TeacherMarkingService {
     // is the calibration artifact, not a second score).
     let bandPlacementJson: string | null = null;
     if (bandPlacement !== null) {
+      await this.assertBandCaptureWired(answer);
       bandPlacementJson = JSON.stringify(
         await this.validateBandPlacement(answer.question_id, bandPlacement, marksAwarded),
       );
@@ -1285,6 +1335,31 @@ export class TeacherMarkingService {
       createdAt,
       ...(bandPlacement !== null ? { bandPlacement } : {}),
     };
+  }
+
+  /** OD-1 MA-10 — the multi-axis capture guard: a band placement against a
+   *  part whose printed grid is multi-axis (TWO OR MORE VALIDATED part-bound
+   *  LEVELS siblings on the question's newest version) is refused BEFORE any
+   *  state write — the single-placement band_decision_v1 shape cannot carry
+   *  per-axis placements (PR-B wires the per-axis capture + the OD-2
+   *  part-scoped resolution). A refused capture writes nothing. */
+  private async assertBandCaptureWired(answer: MarkingAnswerRow): Promise<void> {
+    const versionRows = (await this.sql`
+      select id from question_versions where question_id = ${answer.question_id}
+      order by version desc limit 1
+    `) as unknown as Array<{ id: string }>;
+    if (versionRows.length === 0) return; // validateBandPlacement 404s honestly
+    const sibRows = (await this.sql`
+      select count(*)::int as n from mark_schemes
+      where question_version_id = ${versionRows[0]!.id}
+        and validation_state = ${"VALIDATED"} and scheme_kind = ${"LEVELS"}
+        and question_part_id = ${answer.question_part_id}
+    `) as unknown as Array<{ n: number }>;
+    if (Number(sibRows[0]?.n ?? 0) >= 2) {
+      throw new ConflictError(
+        "MULTI_AXIS_CAPTURE_NOT_WIRED -- this part's printed grid is multi-axis; per-axis band capture awaits the consumption PR (OD-1 MA-10); refused, nothing written",
+      );
+    }
   }
 
   /** ADR-040 §5.5 — the band capture's LEVELS validation: the question's

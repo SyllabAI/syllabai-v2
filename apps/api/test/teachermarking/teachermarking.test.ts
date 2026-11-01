@@ -192,7 +192,7 @@ function markAnswerRoutes(overrides: {
     },
     { match: /select id from question_versions/, rows: [{ id: "v1" }] },
     {
-      match: /select id, validation_state, scheme_kind from mark_schemes where question_version_id = \? and validation_state = \?/,
+      match: /select id, validation_state, scheme_kind, question_part_id from mark_schemes where question_version_id = \? and validation_state = \?/,
       rows: [{ id: SCHEME_ID, validation_state: "VALIDATED" }],
     },
     { match: /from mark_points/, rows: POINT_ROWS },
@@ -1207,7 +1207,7 @@ describe("TeacherSmartMarkService.markAnswer — the ADR-040 §5.4 band dispatch
   function bandRoutes(): Route[] {
     const routes = markAnswerRoutes();
     // the validated-scheme read now carries scheme_kind: LEVELS
-    const validated = routes.find((r) => String(r.match.source).includes("scheme_kind from mark_schemes"));
+    const validated = routes.find((r) => String(r.match.source).includes("scheme_kind, question_part_id from mark_schemes"));
     if (validated) validated.rows = [LEVELS_ROW];
     // the band branch's two-step reads (kind re-assert + guidance; the bands)
     routes.push({ match: /select validation_state, scheme_kind, general_guidance from mark_schemes where id = \?$/, rows: [{ validation_state: "VALIDATED", scheme_kind: "LEVELS", general_guidance: "Marks are for linked statements." }] });
@@ -1246,6 +1246,29 @@ describe("TeacherSmartMarkService.markAnswer — the ADR-040 §5.4 band dispatch
     expect(row.marks_awarded).toBe(0);
     expect(row.breakdown).toEqual([]);
     expect(sql.queries.some((q) => q.includes("from mark_bands"))).toBe(false);
+    expect(sql.queries.some((q) => q.includes("update answers set"))).toBe(false);
+    expect(publisher.calls.length).toBe(0);
+  });
+
+  test("OD-1 MA-10: a multi-axis part (2+ VALIDATED part-bound LEVELS siblings) refuses honestly — nothing marked", async () => {
+    const routes = bandRoutes();
+    const validated = routes.find((r) => String(r.match.source).includes("scheme_kind, question_part_id from mark_schemes"));
+    if (validated) {
+      validated.rows = [
+        { id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A },
+        { id: "70000000-0000-0000-0000-00000000000b", validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A },
+      ];
+    }
+    const publisher = spyPublisher();
+    const sql = spySql(routes);
+    // the refusal stamps the newest scheme of the version (the V34 law)
+    routes.push({ match: /select id, validation_state from mark_schemes where question_version_id = \? order by created_at desc/, rows: [{ id: SCHEME_ID, validation_state: "VALIDATED" }] });
+    const module = buildTeacherMarkingModule(sql, okGenerator(), publisher, clock, bandGenerator());
+    const row = await module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID);
+    expect(row.validation_passed).toBe(false);
+    expect(row.marks_awarded).toBe(0);
+    expect(row.failure_reason).toBe("MULTI_AXIS_DISPATCH_NOT_WIRED");
+    expect(sql.queries.some((q) => q.includes("from mark_bands"))).toBe(false); // no axis dispatch ever ran
     expect(sql.queries.some((q) => q.includes("update answers set"))).toBe(false);
     expect(publisher.calls.length).toBe(0);
   });
