@@ -23695,3 +23695,10 @@ worklog(r0): T-UGM-0606-1 run-002 (operator commission trace 1a1955c294758a5d "M
 
 - Upstream syllabai-resources: harvest_pearson_index.py (Pearson's own Algolia DAM index — creds public in page hidden inputs) recovered 14 docs; parse 40 docs/1209 subjects/0 warnings; validator honestly-absence fix for cancelled-award linear docs; G1 0 / G2 8-8 EXACT / agg 0.
 - This repo: mechanical bundle import, sha256_16 f6e2a18c4f81636d; 23 courses +150 sessions (IAL +140, modular +10); 4CH1 unchanged at 13 (Jan 2021/Nov 2020 have no overall chemistry awards — honest).
+## R0-arbitration ruling5 — PR #296 CLOSED AS SUPERSEDED (operator word, IM trace 1a1984556c02f509)
+
+- Operator order verbatim: "close it as superseded, along with disposing of comments and recording receipts" (2026-11-02, session web-c414c074 / chat 08b3170a).
+- Ruling executed on PR #296 (head bd2c0b1e, unchanged through the R0-AUTO-101..107 carry streak): disposition comment of record posted (https://github.com/SyllabAI/syllabai-v2/pull/296#issuecomment-6562082185) → state=closed → closed state verified first-hand (closed_at 2026-11-01T18:29:04Z).
+- Verdict basis: T-PR-TRIAGE-1 (2026-10-29) "#296 closed relanded-by" now executed on the PR object; head frozen since the static-four era; the hub red is from the healed pin-red era and clean-main stash-runs reproduce the standing 7-failure signature (5 UGM spec-point bijection + 1 UGM katex + 1 cla-thread isolation) — zero delta attributable to the PR; gate-b law preserved (no waiver-merge, considered and rejected).
+- Escalation ledger retires its last carried item: #593/#597 resolved R0-AUTO-105 (#593 merged 704daa8f, twin #597 closed unmerged); #568/#583 resolved (T-COURSE-TABS-1, #583 merged d0e28478 on operator merge word, #568 duplicate-closed); #296 resolved by this ruling. The merge-desk open-PR queue is empty.
+- Receipt: .syllabai/receipts/R0-arbitration/ruling5-pr296-superseded-closure.json. Baseline of record: main 00cdcda5cb1f88aec0c978c4fad5ec972e5451af at action time. Bookkeeping-only .syllabai/**; fetch-first; FF push, no force; token env-only, never echoed.
