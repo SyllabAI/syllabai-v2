@@ -29,13 +29,18 @@ import {
   Compass,
   FileQuestion,
   Files,
+  GraduationCap,
   LayoutDashboard,
+  Lightbulb,
+  ListTree,
+  Map,
   Menu,
   PanelLeftClose,
   PanelLeftOpen,
   ScrollText,
   Sparkles,
   Target,
+  TrendingUp,
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -651,7 +656,30 @@ export function CourseShell({
     {
       label: "Course",
       items: [
+        // run-013 R1/G2 (sidebar content audit): the dashboard's band-1
+        // flagship — the tutor — finally rides the persistent chrome. The
+        // gate is the ADR-030 law itself (the registry curriculumCode, the
+        // SAME field the band card and the /tutor page key on); a course
+        // without a validated serving corpus shows NO row here — the honest
+        // "not yet connected" state stays on the dashboard card. The row
+        // never pills: /tutor sits outside /courses/*, which is correct —
+        // it is a session surface, not a course route.
+        ...(data.course.curriculumCode
+          ? [{ href: `/tutor?course=${data.course.slug}`, label: "Course Tutor", icon: GraduationCap }]
+          : []),
         { href: base, label: "Course Resources", icon: LayoutDashboard, exact: pathname === base },
+        // run-013 R1/G1 (audit HIGH): the corpus spine — prerendered for ALL
+        // 109 courses (ADR-021 allCourseParams) — was chrome-less on desktop;
+        // its only persistent entry was a small exam-code pill in the page
+        // header, which on a phone was the sole route into the most
+        // subject-specific tool the platform has.
+        { href: `${base}/specification`, label: "Specification", icon: ListTree },
+        // run-013 R1/G3 (audit HIGH-ish): official grade boundaries live for
+        // 106/109 courses (single committed bundle) — the same
+        // getGradeBoundariesSummary the Track card keys on; absent-when-absent.
+        ...(data.hasGradeBoundaries
+          ? [{ href: `${base}/grade-boundaries`, label: "Grade Boundaries", icon: TrendingUp }]
+          : []),
         { href: `${base}/strengths`, label: "Strengths & Weaknesses", icon: Compass, exact: pathname === `${base}/strengths` },
       ],
     },
@@ -674,6 +702,21 @@ export function CourseShell({
           badge: courseHasBookArchive(data.course.slug) ? undefined : "roadmap",
         },
         { href: `${base}/flashcards`, label: "Flashcards", icon: CircleHelp },
+        // run-013 R1/G4 (audit MEDIUM): guided lessons — the committed
+        // guided-import.json gate (the SAME loadGuidedIndex the Learn-band
+        // card keys on). Absent-when-absent (the Seneca law) means this row
+        // self-updates as the corpus rollout progresses — coverage 1/109
+        // today, and the chrome never shows a placeholder for the other 108.
+        ...(data.hasGuidedLessons
+          ? [{ href: `${base}/guided-lessons`, label: "Guided lessons", icon: Lightbulb }]
+          : []),
+        // run-013 R1/G5 (audit MEDIUM-LOW): Underground Mathematics — the
+        // SAME absent=OFF law as lib/ugm.ts (flag + committed bundle or
+        // nothing, errors degrade to OFF); the SAME getUgmBundle the
+        // Learn-band card keys on. 10 maths courses today.
+        ...(data.hasUgm
+          ? [{ href: `${base}/ugm`, label: "Underground Mathematics", icon: Map }]
+          : []),
         // T-SENECA-001 Task 43: harvested Seneca course content — the row
         // only renders for courses with a registered Seneca bundle under the
         // live flag (courses without a mapping show nothing, never a
