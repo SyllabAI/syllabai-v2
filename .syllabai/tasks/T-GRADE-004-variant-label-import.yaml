@@ -1,0 +1,73 @@
+version: 1
+task:
+  id: T-GRADE-004
+  title: "Grade Boundaries wave 4 — variant-label re-import: the resources lane's parse fix fills the 2019/2020-era papersNote holes (data plane only)"
+  owner: "main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3, trace 1a194934c518f8e1)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-GRADE (grade boundaries)
+  wave: gradeb-phase-C
+  deps: [T-GRADE-001, T-GRADE-002, T-GRADE-003]
+  execution_record: >
+    Origin (resources lane, same trace): the T-GRADE-3 NOTE (commit 7854805d,
+    syllabai-resources t-gradeb-1/pipeline) diagnosed the unlabelled 4CH1
+    variant rows — Pearson changed the papers-note wording between layout
+    generations (2019/2020 era: "Papers 1C & 2C" / "Papers 1B, 1C & 1P" /
+    singular "Paper 01"; 2022+ era: "Paper(s) 1C 2C" / "Paper(s) 1B 1C 1P"),
+    and parse_pearson's Paper(s)-only matcher dropped every note line in
+    January 2019, June 2019 and January 2020. The fix run (resources commit
+    0f136e4c, T-GRADE-3 run-001) widened the matcher to all three wordings
+    and normalized to the canonical 2022+ shape, re-parsed 24 docs / 922
+    subjects / 0 warnings, asserted ZERO value movement (129 parsed fills:
+    Jan 2019 20 / Jun 2019 74 / Jan 2020 35 — every one None ->
+    document-sourced label), rebuilt the bundle (sha256_16
+    9c7bc67671dd31e9 -> 533671bf1070ff93, 133 series fills across 21 served
+    slugs, 227 (course, session) joins verified label-list-equal), and kept
+    every gate GREEN (G1 0 errors, G2 MathsGenie parity 6/6 EXACT, G3 CIE
+    30/31 with 0264 honestly absent, G3(c) 28 aggregate-ums courses 0
+    errors). THIS side of the lane is the mechanical re-import: the new
+    bundle replaces apps/hub/content/grade-boundaries/bundle.v1.json.
+    ZERO hub code deltas: the loader schema already carries papersNote
+    (z.string().nullable().optional(), T-GRADE-002 run-002), the workspace
+    already renders the paper label, the isRegionalVariant R badge and the
+    honest em-dash + footnote for rows the source publishes without a
+    combination label (T-GRADE-003 run-002) — the data fix alone retires
+    the em-dash for every previously unlabelled variant group (4CH1 June
+    2019 / January 2020 now show 1C 2C / 1CR 2CR + the R badge). Honest
+    remainders that keep the footnote law alive: the two 4ES1 rows whose
+    document subline reads "Speaking Endorsement" (not a paper combination;
+    the 2022+ era numbers that paper 03) and the January 2020 single rows
+    whose document prints no note line at all (4AC1/4CM1/4HB1) stay
+    papersNote null — the em-dash is the source's own silence, never an
+    invention.
+    Local proof: apps/hub prebuild validator GREEN (schema pass, 105/106
+    served — 21 linear-total, 28 aggregate-ums, 56 display-only, 1
+    roadmap); bun test apps/hub 26/26 (18 calc + 8 bundle, the
+    committed-bundle regression anchors now load the NEW bundle through the
+    strict loader schema); zero code files touched (tsc/eslint planes
+    byte-identical to main).
+  doctrine: >
+    Same band doctrine as T-GRADE-001/002/003. THIS wave's law: the data
+    plane moves ONLY behind the resources lane's own gates — a re-import
+    without a zero-value-movement assert would be indistinguishable from
+    drift, so the assert of record (129 parsed fills, zero rewrites, zero
+    reorders, parity 6/6 byte-identical) is part of the receipt; the hub
+    renders the source's own labels verbatim and keeps the em-dash +
+    footnote for rows the source itself leaves unlabelled; T-GRADE-003's
+    "data plane untouched (sha16 must stay 9c7bc67671dd31e9)" constraint
+    was scoped to that task — this task supersedes it with the receipted
+    transition to 533671bf1070ff93.
+scope:
+  allowed:
+    - "apps/hub/content/grade-boundaries/bundle.v1.json (re-import from the resources lane's gated rebuild — sha16 9c7bc67671dd31e9 -> 533671bf1070ff93)"
+    - ".syllabai/tasks/T-GRADE-004-variant-label-import.yaml (this card)"
+    - ".syllabai/receipts/T-GRADE/T-GRADE-004-RUN001-VARIANT-LABEL-IMPORT.json (new)"
+    - ".syllabai/worklog.md (append only)"
+    - "worklog.md (append only)"
+  forbidden:
+    - "packages/contracts/** (no core DTO changes)"
+    - "packages/db/** (zero DDL)"
+    - "apps/api/** (no routes)"
+    - "apps/hub/src/** (ZERO code deltas — schema and workspace already carry papersNote)"
+    - "lib/courses.ts (registry untouched)"
+    - "any hardcoded color/radius/shadow or per-theme override anywhere"
