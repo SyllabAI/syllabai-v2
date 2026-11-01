@@ -23,7 +23,7 @@ import {
   BookOpenCheck,
 
   ChevronDown,
-  CircleHelp,
+  Dumbbell,
   FileQuestion,
   FlaskConical,
   GraduationCap,
@@ -34,6 +34,7 @@ import {
   Network,
   ScrollText,
   Sparkles,
+  SquareStack,
   User,
   Waypoints,
   Zap,
@@ -62,19 +63,24 @@ import kgDataIndex from "../../../public/kg/data/index.json";
 // the header's course-scoped links at a course the deployment no longer has
 import coursesRegistry from "../../../content/courses.json";
 
+// run-014 (audit F8): every row carries a desc — the three course-scoped rows
+// were the bare ones. Their copy is trimmed from the course-hub resource cards'
+// own descriptions (courses/[course]/page.tsx), not invented.
 const TOOLS = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, desc: "My subjects" },
   { href: "/courses", label: "Courses", icon: GraduationCap, desc: "All Learning Hubs" },
-  { href: "/revision-notes", label: "Revision Notes", icon: BookOpen },
-  { href: "/exam-questions", label: "Exam Questions", icon: FileQuestion },
-  { href: "/flashcards", label: "Flashcards", icon: CircleHelp },
+  { href: "/revision-notes", label: "Revision Notes", icon: BookOpen, desc: "Concise notes by topic" },
+  { href: "/exam-questions", label: "Exam Questions", icon: FileQuestion, desc: "Exam-style, by topic" },
+  { href: "/flashcards", label: "Flashcards", icon: SquareStack, desc: "Facts & definitions" },
   { href: "/past-papers", label: "Past Papers", icon: ScrollText, desc: "Every past paper" },
 ] as const;
 
 const MORE_TOOLS = [
   { href: "/tutor", label: "AI Tutor", icon: Sparkles },
   { href: "/assistant", label: "Assistant", icon: BookOpenCheck },
-  { href: "/practice", label: "Practice", icon: Zap },
+  // run-014 (audit F8): Dumbbell — Zap stays the header CTA's glyph; one icon
+  // must not name two different actions in the same header.
+  { href: "/practice", label: "Practice", icon: Dumbbell },
   { href: "/knowledge-graph", label: "Knowledge Graph", icon: Network },
   { href: "/graph-explorer", label: "Graph Explorer", icon: Waypoints },
   { href: "/learner", label: "My Progress", icon: User },
@@ -209,6 +215,10 @@ export function AppShell({
           </Link>
 
           <DropdownMenu>
+            {/* run-014 (audit F1, WCAG 2.5.3 Label-in-Name): the visible label
+                is "Study tools" at every width that shows text (sm+); the old
+                sm–lg "Menu" text contradicted the aria-label. Below sm the
+                trigger is icon-only, where the aria-label is the sole name. */}
             <DropdownMenuTrigger
               aria-label="Study tools"
               className={cn(
@@ -216,13 +226,15 @@ export function AppShell({
                 "hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               )}
             >
-              <Layers className="size-4 lg:hidden" aria-hidden />
-              <span className="hidden sm:inline lg:hidden">Menu</span>
-              <span className="hidden lg:inline">Study tools</span>
+              <Layers className="size-4 sm:hidden" aria-hidden />
+              <span className="hidden sm:inline">Study tools</span>
               <ChevronDown className="size-3.5 text-muted-foreground" aria-hidden />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-64">
-              <DropdownMenuLabel>Study tools</DropdownMenuLabel>
+              {/* run-014 (audit F8): the in-menu title only where the trigger
+                  is icon-only (phones) — at sm+ the trigger already names the
+                  menu and the label read as a duplicate. */}
+              <DropdownMenuLabel className="sm:hidden">Study tools</DropdownMenuLabel>
               {TOOLS.map((t) => (
                 <DropdownMenuItem key={t.href} asChild>
                   <Link
