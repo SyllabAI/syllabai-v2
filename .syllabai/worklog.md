@@ -23425,3 +23425,12 @@ Stage Summary:
 - Skipped: #296 (head bd2c0b1e unchanged) — hub failure persists on gate-b, static saga residual.
 - Boundaries: #582 inside .syllabai/** + docs/plan; #585 inside apps/api/** + packages/db/** (migration code) + .syllabai/** + root worklog.md; zero *.java; no core/hub repo content; zero Neon/prod writes.
 - Notes: (1) mirror reset hit at sweep start: local 89962a5d → origin 820ca15d — SAME phantom signature, ~28th consecutive observation, source still unidentified, zero data loss; (2) deploy-flag anomaly on fetch: main carries an empty-commit retrigger for a Vercel registration-drop on #584 (same class as #575/#581 windows) — standing out-of-band Vercel item remains with the operator; (3) tail re-read pre-write: 99 still max → 100; (4) zero force-push, zero auth failures, boundaries held.
+
+## R0-AUTO-101 receipt — 2026-11-01T09:30 sweep (Job 438940)
+
+- Merged PR #587 (T-MG-INK-6 run-002 — the pointerdown law: InkLayer.tsx text/math draft-editor survival under real-payload churn, new ink-layer-pointerdown harness + 366-line test suite, apps/hub dep +1 with bun.lock in sync; head 40f5ec07, CI verify+hub 2/2 first-hand; 6 files +739/−6) — merge sha 2c54f6e3; new main tip CI 2/2 GREEN with the hub check landing on the THIRD bounded re-check (~5min, slow-queue pattern same class as the 10-31T04:00 window) — disclosed, no failure at any point.
+- Implementation follows its spec-of-record: run-001 landed by R0-AUTO-100 (PR #582, merge 178b18a1) — correct sequencing, same lane, same task ID band.
+- Escalation watch (carried): #568 + #583 duplicate-task collision STILL unresolved — operator ruling absent again this sweep (both PRs zero new comments/reviews); neither merged, watching.
+- Skipped: #296 (head bd2c0b1e unchanged) — hub failure persists on gate-b, static saga residual.
+- Boundaries: #587 files inside apps/hub/** + .syllabai/** + root lockfile (bun.lock in sync with the package.json +1); zero *.java; no core/hub repo content; no Neon/prod/db contact.
+- Notes: (1) mirror reset hit at sweep start: local 89962a5d → origin b5b99cb0 — SAME phantom signature, ~30th consecutive observation, source still unidentified, zero data loss; (2) lane progress on fetch: #586 T-SIDEBAR-FEEL-1 run-012 landed by a concurrent sweep; (3) tail re-read pre-write: 100 still max → 101; (4) zero force-push, zero auth failures, boundaries held.
