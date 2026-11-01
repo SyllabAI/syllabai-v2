@@ -12,7 +12,11 @@ import type { SpecTree } from "@/lib/spec-tree";
 export type SidebarVariant = "hub" | "notes" | "questions" | "flashcards";
 
 export interface SidebarData {
-  course: { slug: string; subject: string; label?: string; level: string; code: string };
+  /** `curriculumCode` is the ADR-030 tutor gate — the SAME registry field
+   * the dashboard's band-1 card and the /tutor page key on. Present = the
+   * course's scoped tutor is live (run-013 R1/G2: the tutor rides the
+   * persistent chrome); absent = no tutor row anywhere. */
+  course: { slug: string; subject: string; label?: string; level: string; code: string; curriculumCode?: string };
   tree: SpecTree;
   /** sub-topic code → per-resource counts */
   counts: Record<string, { notes: number; questions: number; flashcards: number }>;
@@ -34,6 +38,20 @@ export interface SidebarData {
   hasCorpusPapers?: boolean;
   /** Seneca harvest bundles registered + flagged for this course (T-SENECA-001 Task 43) */
   seneca?: { total: number };
+  /** run-013 R1 (sidebar content audit): the persistent chrome's data gates
+   * ride the SAME server-side loaders the dashboard bands key on — one law
+   * per tool, computed in the course layout so SSR and the client render
+   * identical rows (ADR-021 hydration safety). */
+  /** official session-boundary bundle covers this course (T-GRADE-1 — the
+   * dashboard Track card keys on the same getGradeBoundariesSummary) */
+  hasGradeBoundaries?: boolean;
+  /** committed guided-import.json for this course (the guided-index law —
+   * the dashboard Learn card keys on the same loadGuidedIndex) */
+  hasGuidedLessons?: boolean;
+  /** Underground Mathematics flagged + committed for this course (the
+   * lib/ugm.ts absent=OFF law — absent flag/key/slug degrades to OFF, and
+   * the dashboard Learn card keys on the same getUgmBundle) */
+  hasUgm?: boolean;
 }
 
 const CourseDataContext = createContext<SidebarData | null>(null);

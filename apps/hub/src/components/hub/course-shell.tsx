@@ -3,7 +3,8 @@
 /**
  * CourseShell — the persistent per-course chrome (SME model, research §4):
  *
- *   - ONE course sidebar (Course / Revision / Exam Practice groups with a
+ *   - ONE course sidebar (Course / Learn / Practise / Track & improve
+ *     groups — run-013 C2 mirrors the dashboard's band taxonomy — with a
  *     "Hide menu" collapse) on every course surface — hub, indexes, details;
  *   - NO topic tree in the desktop sidebar: the numbered tree lives in the
  *     resource panel (see resource-panel.tsx) which resource DETAIL pages
@@ -29,13 +30,18 @@ import {
   Compass,
   FileQuestion,
   Files,
+  GraduationCap,
   LayoutDashboard,
+  Lightbulb,
+  ListTree,
+  Map,
   Menu,
   PanelLeftClose,
   PanelLeftOpen,
   ScrollText,
   Sparkles,
   Target,
+  TrendingUp,
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -61,7 +67,10 @@ export type { SidebarData, SidebarVariant } from "@/components/hub/course-data-c
 const SIDEBAR_RAIL_PX = 44;
 
 type NavItem = {
-  href: string;
+  /** run-013 ghost law (audit C1+C3): disabled rows carry NO href — a ghost
+   * is not a link (the old `href: "#"` rendered nowhere but lied in the
+   * data). Enabled rows always carry one — the NavRow renderer guards it. */
+  href?: string;
   label: string;
   icon: typeof BookOpen;
   disabled?: boolean;
@@ -84,6 +93,11 @@ const SIDEBAR_RESIZE_STEP = 16;
 
 const clampSidebarWidth = (n: number) =>
   Math.min(SIDEBAR_MAX_W, Math.max(SIDEBAR_MIN_W, n));
+
+/** run-013: NavItem.href is optional (ghost rows carry none) — a missing
+ * href can never prefix-match, so a ghost row can never pill. */
+const pathActive = (href: string | undefined, pathname: string) =>
+  href !== undefined && pathname.startsWith(href);
 
 function persistSidebarWidth(w: number) {
   try {
@@ -163,11 +177,11 @@ function NavRow({
       {item.badge}
     </span>
   );
-  if (item.disabled) {
+  if (item.disabled || !item.href) {
     return (
       <span
         aria-disabled
-        title="Not part of the pilot corpus yet"
+        title="On the roadmap"
         className={cn(
           "flex cursor-not-allowed items-center rounded-xl text-sm text-muted-foreground",
           collapsed ? "size-9 justify-center" : "gap-2.5 px-2 py-2",
@@ -311,7 +325,7 @@ function CourseNav({
               const active = item.disabled
                 ? false
                 : (item.exact ??
-                  (pathname.startsWith(item.href) && !exactSiblings));
+                  (pathActive(item.href, pathname) && !exactSiblings));
               return (
                 <li key={item.label}>
                   <NavRow item={item} active={active} onNavigate={onNavigate} collapsed={collapsed} />
@@ -326,7 +340,7 @@ function CourseNav({
                       {item.children.map((child) => {
                         const childActive = child.disabled
                           ? false
-                          : (child.exact ?? pathname.startsWith(child.href));
+                          : (child.exact ?? pathActive(child.href, pathname));
                         return (
                           <NavRow
                             key={child.label}
@@ -651,29 +665,60 @@ export function CourseShell({
     {
       label: "Course",
       items: [
+        // run-013 R1/G2 (sidebar content audit): the dashboard's band-1
+        // flagship — the tutor — finally rides the persistent chrome. The
+        // gate is the ADR-030 law itself (the registry curriculumCode, the
+        // SAME field the band card and the /tutor page key on); a course
+        // without a validated serving corpus shows NO row here — the honest
+        // "not yet connected" state stays on the dashboard card. The row
+        // never pills: /tutor sits outside /courses/*, which is correct —
+        // it is a session surface, not a course route.
+        ...(data.course.curriculumCode
+          ? [{ href: `/tutor?course=${data.course.slug}`, label: "Course Tutor", icon: GraduationCap }]
+          : []),
         { href: base, label: "Course Resources", icon: LayoutDashboard, exact: pathname === base },
-        { href: `${base}/strengths`, label: "Strengths & Weaknesses", icon: Compass, exact: pathname === `${base}/strengths` },
+        // run-013 R1/G1 (audit HIGH): the corpus spine — prerendered for ALL
+        // 109 courses (ADR-021 allCourseParams) — was chrome-less on desktop;
+        // its only persistent entry was a small exam-code pill in the page
+        // header, which on a phone was the sole route into the most
+        // subject-specific tool the platform has.
+        { href: `${base}/specification`, label: "Specification", icon: ListTree },
       ],
     },
     {
-      label: "Revision",
+      // run-013 C2: the dashboard's Learn band taxonomy (T-COURSE-BANDS-1) —
+      // the group stops being "Revision" and mirrors the band that actually
+      // holds these tools.
+      label: "Learn",
       items: [
         { href: `${base}/revision-notes`, label: "Revision Notes", icon: BookOpen },
-        // T-MIG-140 — the books option in the persistent course chrome (the
-        // band-133k landing card was the only entry; the sidebar/drawer nav
-        // — the thing every course surface shows — had none, which is the
-        // operator's "no option in course page"). Same committed-registry
-        // gate as the card (courseHasBookArchive): a disabled row with the
-        // roadmap badge until the course's books/<specKey>/ archive home
-        // lands; the shelf behind the link stays the live T-C20 gate.
-        {
-          href: `${base}/books`,
-          label: "Student Book",
-          icon: BookMarked,
-          disabled: !courseHasBookArchive(data.course.slug),
-          badge: courseHasBookArchive(data.course.slug) ? undefined : "roadmap",
-        },
+        // run-013 C1 (sidebar content audit): ONE ghost law per class —
+        // data-conditional tools are ABSENT-WHEN-ABSENT (the law Seneca has
+        // obeyed since T-SENECA-001), never disabled placeholders. T-MIG-140's
+        // disabled+roadmap row is superseded: the chrome no longer advertises
+        // a tool this course cannot open; the honest roadmap state stays on
+        // the dashboard's Learn-band card. Same committed-registry gate as
+        // the card (courseHasBookArchive); the shelf behind the link stays
+        // the live T-C20 gate.
+        ...(courseHasBookArchive(data.course.slug)
+          ? [{ href: `${base}/books`, label: "Student Book", icon: BookMarked }]
+          : []),
         { href: `${base}/flashcards`, label: "Flashcards", icon: CircleHelp },
+        // run-013 R1/G4 (audit MEDIUM): guided lessons — the committed
+        // guided-import.json gate (the SAME loadGuidedIndex the Learn-band
+        // card keys on). Absent-when-absent (the Seneca law) means this row
+        // self-updates as the corpus rollout progresses — coverage 1/109
+        // today, and the chrome never shows a placeholder for the other 108.
+        ...(data.hasGuidedLessons
+          ? [{ href: `${base}/guided-lessons`, label: "Guided lessons", icon: Lightbulb }]
+          : []),
+        // run-013 R1/G5 (audit MEDIUM-LOW): Underground Mathematics — the
+        // SAME absent=OFF law as lib/ugm.ts (flag + committed bundle or
+        // nothing, errors degrade to OFF); the SAME getUgmBundle the
+        // Learn-band card keys on. 10 maths courses today.
+        ...(data.hasUgm
+          ? [{ href: `${base}/ugm`, label: "Underground Mathematics", icon: Map }]
+          : []),
         // T-SENECA-001 Task 43: harvested Seneca course content — the row
         // only renders for courses with a registered Seneca bundle under the
         // live flag (courses without a mapping show nothing, never a
@@ -684,7 +729,8 @@ export function CourseShell({
       ],
     },
     {
-      label: "Exam Practice",
+      // run-013 C2: the dashboard's Practise band name, verbatim.
+      label: "Practise",
       items: [
         {
           href: `${base}/exam-questions`,
@@ -697,9 +743,40 @@ export function CourseShell({
             { href: `${base}/exam-questions/saved`, label: "Saved questions", icon: Bookmark, exact: pathname.endsWith("/saved") },
           ],
         },
-        { href: `${base}/past-papers`, label: "Past Papers", icon: ScrollText, disabled: !data.hasPastPapers && !data.hasCorpusPapers, badge: data.hasPastPapers || data.hasCorpusPapers ? undefined : "roadmap" },
+        // run-013 C1: same class law. The OFFICIAL-PLANE-ONLY gate below is
+        // unchanged (official parsed plane OR corpus PDF archive — never the
+        // SME bank's sourcePaper citations); only the missing-data
+        // presentation changes: disabled+roadmap → absent. The dashboard
+        // keeps the honest roadmap card.
+        ...(data.hasPastPapers || data.hasCorpusPapers
+          ? [{ href: `${base}/past-papers`, label: "Past Papers", icon: ScrollText }]
+          : []),
         { href: `${base}/practice-papers`, label: "Practice Papers", icon: Files },
-        { href: "#", label: "Target Test", icon: Target, disabled: true, badge: "roadmap" },
+        // run-013 C1+C3: the OTHER class — platform roadmap items render as
+        // ghost rows (disabled + roadmap badge, NO href: the old "#" was an
+        // inert-but-sloppy real anchor, and a disabled row is not a link).
+        // Target Test keeps the one chrome ghost it already had; the
+        // dashboard-only roadmap cards (Mock Exams, Mistakes Log, Strength
+        // Battle) stay dashboard-only — the chrome is curated navigation and
+        // this lane adds no new ghost rows.
+        { label: "Target Test", icon: Target, disabled: true, badge: "roadmap" },
+      ],
+    },
+    {
+      // run-013 C2 (audit C2): the dashboard's Track & improve band — the
+      // sidebar taxonomy was left behind by the band reorg ("Strengths &
+      // Weaknesses" is a Track tool that sat under "Course"; Grade
+      // Boundaries had no group to live in). Both rows move here so the two
+      // information architectures agree about the same tools.
+      label: "Track & improve",
+      items: [
+        { href: `${base}/strengths`, label: "Strengths & Weaknesses", icon: Compass, exact: pathname === `${base}/strengths` },
+        // run-013 R1/G3: official boundaries live for 106/109 courses — the
+        // same getGradeBoundariesSummary the Track card keys on;
+        // absent-when-absent.
+        ...(data.hasGradeBoundaries
+          ? [{ href: `${base}/grade-boundaries`, label: "Grade Boundaries", icon: TrendingUp }]
+          : []),
       ],
     },
   ];
