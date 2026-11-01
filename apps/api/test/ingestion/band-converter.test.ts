@@ -156,9 +156,9 @@ const msDraft = (): GlmMarkSchemeDraft => ({
       marksCellSource: null,
       confidence: 0.85,
       bands: [
-        { level: 1, marksMin: 0, marksMax: 2, descriptor: "Level 1 (0-2): Isolated comments.", guidance: null },
-        { level: 2, marksMin: 3, marksMax: 4, descriptor: "Level 2 (3-4): Accurate analysis.", guidance: "Accept accurate supply/diagram-based reasoning." },
-        { level: 3, marksMin: 5, marksMax: 6, descriptor: "Level 3 (5-6): Balanced evaluation.", guidance: null },
+        { level: 1, marksMin: 0, marksMax: 2, descriptor: "Level 1 (0-2): Isolated comments.", guidance: null, axis: null },
+        { level: 2, marksMin: 3, marksMax: 4, descriptor: "Level 2 (3-4): Accurate analysis.", guidance: "Accept accurate supply/diagram-based reasoning.", axis: null },
+        { level: 3, marksMin: 5, marksMax: 6, descriptor: "Level 3 (5-6): Balanced evaluation.", guidance: null, axis: null },
       ],
     },
   ],
@@ -197,12 +197,12 @@ describe("ADR-040 §5.3 mapper — band entries map VERBATIM", () => {
 
   test("a levels row with an unknown level or range refuses loudly (never a guess)", () => {
     const broken = msDraft();
-    broken.entries[1]!.bands[1] = { level: null, marksMin: 3, marksMax: 4, descriptor: "d", guidance: null };
+    broken.entries[1]!.bands[1] = { level: null, marksMin: 3, marksMax: 4, descriptor: "d", guidance: null, axis: null };
     expect(() => toPastPaperDraft(qpDraft(), broken)).toThrow(
       /carries a level band with an unknown level or mark range \(level=null, marks 3-4\)/,
     );
     const broken2 = msDraft();
-    broken2.entries[1]!.bands[1] = { level: 2, marksMin: null, marksMax: 4, descriptor: "d", guidance: null };
+    broken2.entries[1]!.bands[1] = { level: 2, marksMin: null, marksMax: 4, descriptor: "d", guidance: null, axis: null };
     expect(() => toPastPaperDraft(qpDraft(), broken2)).toThrow(
       /marks \?-4\) — bands materialize only with the printed ordinal and printed range/,
     );
@@ -210,7 +210,7 @@ describe("ADR-040 §5.3 mapper — band entries map VERBATIM", () => {
 
   test("a levels row with no descriptor refuses loudly (bands materialize verbatim only)", () => {
     const broken = msDraft();
-    broken.entries[1]!.bands[0] = { level: 1, marksMin: 0, marksMax: 2, descriptor: null, guidance: null };
+    broken.entries[1]!.bands[0] = { level: 1, marksMin: 0, marksMax: 2, descriptor: null, guidance: null, axis: null };
     expect(() => toPastPaperDraft(qpDraft(), broken)).toThrow(
       /level 1 carries no descriptor — bands materialize verbatim only/,
     );
@@ -354,5 +354,69 @@ describe("ADR-040 §5.3 store — LEVELS schemes birth SUGGESTED with verbatim b
       /band grid 7-z targets part "z" but the paper draft carries no such part under question 7/,
     );
     expect(captured["insert into mark_schemes"]).toHaveLength(0);
+  });
+});
+
+// ── r2 axis extension (9609 corpus, ruling 7 of the r2 mirror) ──────────────
+
+describe("ADR-040 §5.3 store — the r2 axis extension (multi-axis levels grids)", () => {
+  /** The CIE 9609 P2 8-mark shape: ONE printed grid, TWO per-axis ladders
+   *  (Knowledge 4 + Analysis 4). The converter passes the staged axis keys
+   *  through; the birth splits each axis into its own LEVELS scheme on the
+   *  SAME part, version_label `ref#aN`. */
+  const twoAxisDraft = (): PastPaperDraft => {
+    const draft = bandsOnlyDraft();
+    draft.markScheme!.bands = [
+      { questionRef: "7-b", levelIndex: 1, marksMin: 1, marksMax: 2, descriptor: "K: one point.", guidance: null, axisKey: "a1", confidence: 0.9 },
+      { questionRef: "7-b", levelIndex: 2, marksMin: 3, marksMax: 4, descriptor: "K: two points.", guidance: null, axisKey: "a1", confidence: 0.9 },
+      { questionRef: "7-b", levelIndex: 1, marksMin: 1, marksMax: 2, descriptor: "A: limited analysis.", guidance: null, axisKey: "a2", confidence: 0.9 },
+      { questionRef: "7-b", levelIndex: 2, marksMin: 3, marksMax: 4, descriptor: "A: developed analysis.", guidance: null, axisKey: "a2", confidence: 0.9 },
+    ];
+    return draft;
+  };
+
+  test("a two-axis grid births TWO LEVELS schemes on the SAME part with #axis labels", async () => {
+    const { sql, captured, PART_B_ID } = captureSql();
+    const summary = await ingestPastPaperDraft(sql, twoAxisDraft(), null);
+    expect(captured["insert into mark_schemes"]).toHaveLength(2);
+    const labels = captured["insert into mark_schemes"]!.map((s) => s.params[2]).sort();
+    expect(labels).toEqual(["7-b#a1", "7-b#a2"]);
+    // both schemes bind the SAME printed part (the grid marks ONE part)
+    for (const s of captured["insert into mark_schemes"]!) {
+      expect(s.params[7]).toBe(PART_B_ID);
+      expect(s.text).toContain("'LEVELS'");
+    }
+    // four verbatim band rows total (two per axis ladder)
+    expect(captured["insert into mark_bands"]).toHaveLength(4);
+    expect(summary.markBands).toBe(4);
+  });
+
+  test("a mixed axisless/axis-keyed ref refuses loudly — ambiguous grid identity", async () => {
+    const { sql, captured } = captureSql();
+    const draft = twoAxisDraft();
+    draft.markScheme!.bands.push({
+      questionRef: "7-b", levelIndex: 1, marksMin: 1, marksMax: 4,
+      descriptor: "axisless row.", guidance: null, axisKey: null, confidence: 0.9,
+    });
+    expect(ingestPastPaperDraft(sql, draft, null)).rejects.toThrow(
+      /mixes axisless and axis-keyed bands/,
+    );
+    expect(captured["insert into mark_schemes"]).toHaveLength(0);
+  });
+
+  test("the converter maps a staged axis band to the draft axisKey verbatim", () => {
+    const ms = msDraft();
+    ms.entries = [
+      {
+        ...ms.entries[1]!,
+        label: "7(b)",
+        bands: [
+          { level: 1, marksMin: 1, marksMax: 2, descriptor: "K: one point.", guidance: null, axis: "a1" },
+        ],
+      },
+    ];
+    const draft = toPastPaperDraft(qpDraft(), ms);
+    expect(draft.markScheme!.bands).toHaveLength(1);
+    expect(draft.markScheme!.bands[0]!.axisKey).toBe("a1");
   });
 });

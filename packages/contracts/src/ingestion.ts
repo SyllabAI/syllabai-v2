@@ -294,6 +294,13 @@ export type GlmIcTable = z.infer<typeof glmIcTableSchema>;
  * trimmed/paraphrased — the R4 "descriptors verbatim" check pins the mapper
  * stores them untouched). Wire law: additive field with .default([]) —
  * pre-ADR-040 parser drafts (no `bands` key) bind byte-identically.
+ *
+ * `axis` (r2 axis extension, 9609 corpus): the printed per-axis identity of
+ * a MULTI-AXIS levels grid ("AO1", "AO3", "Knowledge", … — the staged
+ * parser's per-axis column key, positional a1..a4). null = single-axis
+ * grid. The converter passes it through as the draft band's `axisKey`; the
+ * birth splits each axis into its own LEVELS scheme (see
+ * pastPaperMarkBandDraftSchema).
  */
 export const glmMarkBandSchema = z.object({
   level: javaJsonInt.nullable().default(null),
@@ -301,6 +308,7 @@ export const glmMarkBandSchema = z.object({
   marksMax: javaJsonInt.nullable().default(null),
   descriptor: z.string().nullable().default(null),
   guidance: z.string().nullable().default(null),
+  axis: z.string().nullable().default(null),
 });
 export type GlmMarkBand = z.infer<typeof glmMarkBandSchema>;
 
