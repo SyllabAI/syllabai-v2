@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_ZgGMNrRGBKvYxxFf",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "51556a88a18e61723ff93837ccefedde9c825f326e36d156f9c2e3cf445cb935",
+    "pinnedRef": "aa6485187429e0911b4a47a8a468e256bb41ce32"
+  },
+  "packageId": "igcse-physics::rn_ZgGMNrRGBKvYxxFf",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L1::Q1",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L1",
+      "stem": "A motorbike accelerates uniformly from 4.0 m/s to 14 m/s over 90 m. Which equation fits this question directly?",
+      "misconceptionClass": "equation selection",
+      "options": [
+        {
+          "key": "B",
+          "text": "v² = u² + 2as, because no time is given or wanted",
+          "correct": true,
+          "explanation": "Two speeds and a distance are known and time is absent: exactly the squared relationship's territory.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "a = Δv / t, because acceleration is mentioned",
+          "correct": false,
+          "explanation": "That relationship needs a time value, and none appears in the question.",
+          "misconception": "keyword-triggered selection"
+        },
+        {
+          "key": "C",
+          "text": "distance = speed × time, using the average of the speeds",
+          "correct": false,
+          "explanation": "Without a time, the product form cannot even be attempted; the squared equation needs no time.",
+          "misconception": "formula reflex"
+        },
+        {
+          "key": "D",
+          "text": "None; the question is unanswerable without a time",
+          "correct": false,
+          "explanation": "Answerable precisely because v² = u² + 2as was built for the time-free case.",
+          "misconception": "missing-time panic"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L1::Q2",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L1",
+      "stem": "In v² = u² + 2as, what does the symbol s stand for and in what unit?",
+      "misconceptionClass": "symbol mapping",
+      "options": [
+        {
+          "key": "C",
+          "text": "The distance moved, in metres",
+          "correct": true,
+          "explanation": "s is the displacement-like distance travelled during the acceleration, quoted in m.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "The speed, in m/s",
+          "correct": false,
+          "explanation": "Speeds are u and v; s belongs to the distance, not the pace.",
+          "misconception": "symbol confusion"
+        },
+        {
+          "key": "B",
+          "text": "The time taken, in seconds",
+          "correct": false,
+          "explanation": "Time is the one quantity this equation deliberately excludes.",
+          "misconception": "symbol confusion"
+        },
+        {
+          "key": "D",
+          "text": "The acceleration, in m/s²",
+          "correct": false,
+          "explanation": "Acceleration is a; s is the ground covered while it acts.",
+          "misconception": "symbol confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L1::Q3",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L1",
+      "stem": "A car starts from rest and reaches 20 m/s with acceleration 2.5 m/s². What does 'from rest' change inside the equation?",
+      "misconceptionClass": "rest substitution",
+      "options": [
+        {
+          "key": "A",
+          "text": "It sets u = 0, so the u² term vanishes",
+          "correct": true,
+          "explanation": "Rest means zero initial speed; its square is zero and the equation shortens to v² = 2as.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It sets v = 0, removing the final speed",
+          "correct": false,
+          "explanation": "The 20 m/s is the final speed; rest is the starting condition.",
+          "misconception": "end-condition swap"
+        },
+        {
+          "key": "C",
+          "text": "It sets a = 0 because nothing is moving initially",
+          "correct": false,
+          "explanation": "The acceleration is given as 2.5 m/s²; rest describes the speed, not the rate of change.",
+          "misconception": "rest-equals-no-a"
+        },
+        {
+          "key": "D",
+          "text": "It sets s = 0 because the car has gone nowhere yet",
+          "correct": false,
+          "explanation": "s is the distance covered DURING the acceleration; it is the unknown here, not zero.",
+          "misconception": "initial-state overwrite"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L1::Q4",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L1",
+      "stem": "Why does the cover-and-read triangle trick fail on v² = u² + 2as?",
+      "misconceptionClass": "triangle-limit reasoning",
+      "options": [
+        {
+          "key": "D",
+          "text": "It contains squares and a three-term sum, which no single multiply/divide triangle can encode",
+          "correct": true,
+          "explanation": "Triangles store one quantity over two that multiply or divide; squares and additions break that layout.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Because four quantities exceed the triangle's three corners",
+          "correct": false,
+          "explanation": "The obstacle is the equation's structure (squares, sum), not merely the count of symbols.",
+          "misconception": "count-based myth"
+        },
+        {
+          "key": "B",
+          "text": "Because triangles only work when time is involved",
+          "correct": false,
+          "explanation": "The a = Δv/t triangle works happily without needing a time in the answer; structure is the issue.",
+          "misconception": "time myth"
+        },
+        {
+          "key": "C",
+          "text": "Because examiners forbid triangles for this equation specifically",
+          "correct": false,
+          "explanation": "No ban exists; the triangle is simply unable to represent this relationship.",
+          "misconception": "ban myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L1::Q5",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L1",
+      "stem": "Which listing correctly pairs every symbol of v² = u² + 2as with its unit?",
+      "misconceptionClass": "unit pairing",
+      "options": [
+        {
+          "key": "C",
+          "text": "s in m, u and v in m/s, a in m/s²",
+          "correct": true,
+          "explanation": "Distance in metres, both speeds in metres per second, acceleration in metres per second squared.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "s in m/s, u and v in m, a in m/s",
+          "correct": false,
+          "explanation": "Every pairing is shifted; the squares would then be dimensionally inconsistent.",
+          "misconception": "unit scramble"
+        },
+        {
+          "key": "B",
+          "text": "s in s, u and v in m/s², a in m",
+          "correct": false,
+          "explanation": "That assigns the distance to seconds and the acceleration to metres; all three are wrong.",
+          "misconception": "unit scramble"
+        },
+        {
+          "key": "D",
+          "text": "s in m², u and v in (m/s)², a in m/s",
+          "correct": false,
+          "explanation": "Squaring happens to the speeds INSIDE the equation; the quantities themselves keep their base units.",
+          "misconception": "pre-squared units"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L1::Q6",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L1",
+      "stem": "State the full relationship for uniform acceleration in symbols, saying what each symbol represents.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "v² = u² + 2as, where v is the final speed, u the initial speed, a the uniform acceleration and s the distance moved.",
+      "keywords": [
+        "v² = u² + 2as",
+        "final speed",
+        "initial speed",
+        "distance moved"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L1::Q7",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L1",
+      "stem": "Recall the meaning of the phrase 'uniform acceleration' as used with this equation.",
+      "misconceptionClass": "terminology recall",
+      "kind": "recall",
+      "modelAnswer": "Uniform acceleration is constant acceleration: the velocity changes by the same amount every second, which is the condition that makes the equation valid.",
+      "keywords": [
+        "constant",
+        "same amount",
+        "every second",
+        "valid"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L1::Q8",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L1",
+      "stem": "Explain why this equation is the right tool when a question gives two speeds and a distance but never mentions time.",
+      "misconceptionClass": "tool-fit explain",
+      "kind": "explain-why",
+      "modelAnswer": "The equation was assembled precisely so that time cancels out: it connects the two speeds, the acceleration and the distance moved with no t anywhere. Given exactly those quantities, every symbol except one is known, and the equation solves for the remaining one directly.",
+      "keywords": [
+        "time",
+        "two speeds",
+        "acceleration",
+        "distance moved"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L1::Q9",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L1",
+      "stem": "A train accelerates uniformly from 12 m/s to 30 m/s over a distance of 378 m. Calculate its acceleration.",
+      "misconceptionClass": "solve-for-a arithmetic",
+      "kind": "application",
+      "modelAnswer": "Rearrange: a = (v² − u²) / (2s) = (900 − 144) / (2 × 378) = 756 / 756 = 1.0 m/s².",
+      "keywords": [
+        "900",
+        "144",
+        "756",
+        "1.0 m/s²"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L2::Q1",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L2",
+      "stem": "Which rearrangement of v² = u² + 2as correctly isolates the distance moved?",
+      "misconceptionClass": "rearrangement form",
+      "options": [
+        {
+          "key": "A",
+          "text": "s = (v² − u²) / (2a)",
+          "correct": true,
+          "explanation": "Subtract u² from both sides, then divide both sides by 2a: exactly this form.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "s = (u² − v²) / (2a)",
+          "correct": false,
+          "explanation": "The subtraction order is flipped, which reverses the numerator's sign.",
+          "misconception": "subtraction-order flip"
+        },
+        {
+          "key": "C",
+          "text": "s = (v² − u²) × 2a",
+          "correct": false,
+          "explanation": "The 2a must be divided out, not multiplied in again.",
+          "misconception": "operation swap"
+        },
+        {
+          "key": "D",
+          "text": "s = v² − u² − 2a",
+          "correct": false,
+          "explanation": "Subtracting the bare 2a mixes a term that was multiplied with s.",
+          "misconception": "operation invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L2::Q2",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L2",
+      "stem": "A car accelerates from rest at 2.5 m/s² until it reaches 16 m/s. What distance does the acceleration phase cover?",
+      "misconceptionClass": "worked-case arithmetic",
+      "options": [
+        {
+          "key": "C",
+          "text": "51.2 m, from 256 / 5",
+          "correct": true,
+          "explanation": "s = (16² − 0²)/(2 × 2.5) = 256/5 = 51.2 m, quoted as 51 m to 2 s.f.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "3.2 m, from 16 ÷ (2 × 2.5)",
+          "correct": false,
+          "explanation": "Forgetting to square the final speed loses the whole point of the equation.",
+          "misconception": "square forgotten"
+        },
+        {
+          "key": "B",
+          "text": "64 m, from 16² ÷ (2 × 2)",
+          "correct": false,
+          "explanation": "The acceleration is 2.5, not 2; the denominator is 5.",
+          "misconception": "value slip"
+        },
+        {
+          "key": "D",
+          "text": "256 m, quoting v² as the distance",
+          "correct": false,
+          "explanation": "256 is v² in m²/s²; the division by 2a is still owed before it becomes metres.",
+          "misconception": "square-as-answer"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L2::Q3",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L2",
+      "stem": "When rearranging any physics equation safely, which pair of rules governs every step?",
+      "misconceptionClass": "algebra law recall",
+      "options": [
+        {
+          "key": "B",
+          "text": "Do the same thing to both sides, and undo each operation with its opposite",
+          "correct": true,
+          "explanation": "These two rules generate every legitimate rearrangement, triangle or no triangle.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Move everything to the left and hope the units agree",
+          "correct": false,
+          "explanation": "Hope is not a method; the both-sides rule is what keeps the equation true.",
+          "misconception": "non-method"
+        },
+        {
+          "key": "C",
+          "text": "Square both sides first, whatever the equation",
+          "correct": false,
+          "explanation": "Squaring is one inverse among several, applied only when a square must be undone.",
+          "misconception": "ritual squaring"
+        },
+        {
+          "key": "D",
+          "text": "Only rearrange equations that have a triangle",
+          "correct": false,
+          "explanation": "Algebra works on every equation; triangles are the optional shortcut, not the licence.",
+          "misconception": "triangle dependency"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L2::Q4",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L2",
+      "stem": "A cyclist slows uniformly from 12 m/s to 4.0 m/s over 40 m. Which substitution finds the acceleration?",
+      "misconceptionClass": "deceleration substitution",
+      "options": [
+        {
+          "key": "D",
+          "text": "a = (4.0² − 12²) / (2 × 40), which comes out negative",
+          "correct": true,
+          "explanation": "With v smaller than u the numerator is negative, and the negative acceleration is the slowing-down evidence.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "a = (12² − 4.0²) / (2 × 40), always quoted positive",
+          "correct": false,
+          "explanation": "Reversing the subtraction manufactures a positive value and hides the deceleration.",
+          "misconception": "sign laundering"
+        },
+        {
+          "key": "B",
+          "text": "a = (12 − 4.0) / 40",
+          "correct": false,
+          "explanation": "That divides a bare velocity difference by a distance; the squares are required.",
+          "misconception": "wrong equation"
+        },
+        {
+          "key": "C",
+          "text": "a = (4.0² + 12²) / (2 × 40)",
+          "correct": false,
+          "explanation": "The relationship subtracts the squares; adding them belongs to no rearrangement here.",
+          "misconception": "operation swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L2::Q5",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L2",
+      "stem": "Why does showing the worked rearrangement earn credit even when the final number is wrong?",
+      "misconceptionClass": "method-mark reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The rearrangement demonstrates the physics; marks are awarded for it separately from the arithmetic",
+          "correct": true,
+          "explanation": "Method marks reward the correct equation and substitution line even if a later slip spoils the value.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A wrong number with working always scores full marks",
+          "correct": false,
+          "explanation": "Working earns the method marks; the answer mark still needs the correct value.",
+          "misconception": "full-credit myth"
+        },
+        {
+          "key": "C",
+          "text": "Examiners cannot read arithmetic, only algebra",
+          "correct": false,
+          "explanation": "Arithmetic is read too; the separate credit is about the physics content of the steps.",
+          "misconception": "mythical rule"
+        },
+        {
+          "key": "D",
+          "text": "Working replaces the need for units",
+          "correct": false,
+          "explanation": "Units remain required on the final answer whatever the working shows.",
+          "misconception": "unit exemption myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L2::Q6",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L2",
+      "stem": "State the two algebra moves that take v² = u² + 2as to s = (v² − u²) / (2a), in order.",
+      "misconceptionClass": "sequence recall",
+      "kind": "recall",
+      "modelAnswer": "First subtract u² from both sides, leaving v² − u² = 2as; then divide both sides by 2a.",
+      "keywords": [
+        "subtract u²",
+        "both sides",
+        "divide",
+        "2a"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L2::Q7",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L2",
+      "stem": "Recall the inverse operation that undoes squaring when rearranging an equation.",
+      "misconceptionClass": "inverse recall",
+      "kind": "recall",
+      "modelAnswer": "Square-rooting undoes squaring: if a quantity was squared, take the square root of both sides to recover it.",
+      "keywords": [
+        "square root",
+        "undo",
+        "squaring",
+        "both sides"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L2::Q8",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L2",
+      "stem": "Explain why the subtraction order v² − u² must not be flipped when solving for a deceleration.",
+      "misconceptionClass": "sign-order explain",
+      "kind": "explain-why",
+      "modelAnswer": "The equation defines v² − u² as twice the acceleration times the distance, so the order carries the sign of a. For a slowing object v sits below u, the numerator comes out negative, and that negative is the deceleration. Flipping the order would silently convert every deceleration into an equally-sized acceleration.",
+      "keywords": [
+        "order",
+        "sign",
+        "negative",
+        "deceleration"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZgGMNrRGBKvYxxFf::L2::Q9",
+      "moduleId": "rn_ZgGMNrRGBKvYxxFf::L2",
+      "stem": "A Van accelerates uniformly from rest at 3.0 m/s² and covers 96 m before reaching its cruise speed. Calculate that cruise speed.",
+      "misconceptionClass": "solve-for-v arithmetic",
+      "kind": "application",
+      "modelAnswer": "v² = u² + 2as = 0 + 2 × 3.0 × 96 = 576, so v = √576 = 24 m/s.",
+      "keywords": [
+        "576",
+        "square root",
+        "24 m/s",
+        "from rest"
+      ],
+      "options": []
+    }
+  ]
+}

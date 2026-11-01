@@ -1973,6 +1973,72 @@ const FEEDS = {
       ) && !!a.path.split("/").pop();
     },
   },
+  "physics-wave1-v19": {
+    manifest: "hub-import-manifest-v19.json",
+    manifest_version: 19,
+    // NEW-SUBJECT stage-B wave-1 (runbook §1 lifecycle; B4 bucket W1 = the 1-1 remainder;
+    // B6 continue-global — the programme manifest series continues at v19). Feed-gated
+    // course pack + tranche-scale census constants; every chemistry feed keeps its exact
+    // prior semantics.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 6, "sme-question-package": 6 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-1 chain — import the igcse-physics-19 wave-1 tranche (6 notes: rn_k9wr3prcgSBg5vfw 'Speed' / rn_pfndTqR6DTJGZ8xQ 'Core Practical: Investigating Motion' / rn_CpJZQWzbvMcM8fw3 'Acceleration' / rn_5hfYYFrc2XjMJCrq 'Velocity-Time Graphs' / rn_GxNWbSMqkTN4zgZB 'Area under a Velocity-Time Graph' / rn_ZgGMNrRGBKvYxxFf 'Calculating Uniform Acceleration'; 12 lessons / 108 checks; B4 bucket W1 of record — the 1-1 remainder). Declared hub landing = ADDITIVE: 12 new files (6 lessons + 6 packages) + the runner-owned guided-import.json index, into content/igcse-physics-19/ — zero chemistry bytes touched, zero stage-A bytes re-issued. Operator ignition trace 1a196b9c429c5ae5 ('ignite wave-1'), execution trace 1a197b1687dc5cd9.",
+    promo: {
+      // promotion commit of record = namespace-complete commit C of resources PR #271
+      // (commit C rides resources main via that merge); trace = the EXECUTION trace of
+      // record (== the v19 manifest's operator_trace; the ignition trace rides the directive)
+      commit: "e1d89fd2dbb3e0a699c4f1d266410226e2b91b60",
+      tree: "43051a33853eabd34f2d0f8f47da7e953ceadcaf",
+      parent: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      trace: "1a197b1687dc5cd9",
+    },
+    integration_branch: null, // ancestry of record — resources PR #271 merges before this hub run
+    artifact_pin: "aa6485187429e0911b4a47a8a468e256bb41ce32", // commit A — the source-0.6 wave-1 generation (both channels pin here)
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 5 of 6 lessons carry module-mapped figures (16 total); 1-1-7 is figureless (figures key absent — the 22/112 chemistry precedent)
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave1-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave1-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave1-survivors/hub-import-manifest-v19.json",
+      int3: "/home/z/my-project/scripts/physics-wave1-survivors/INT-3-transform-record-physics-wave1.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261101-physics-wave1.json`,
+    identity: {
+      notes: 6,
+      lessons: 12,
+      checks: 108,
+      keyPoints: 52,
+      distractors: 180,
+      glossaryTerms: 25,
+      figures: 16,
+      figures_module_mapped: 16,
+      figures_note_level: 0,
+      workedExamples_populated: 5,
+      workedExamples_null: 1,
+      authored_chars_conserved: 85861,
+    },
+    artifact_count: 12,
+    note_count: 6,
+    wave_count: 1,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v19 manifest paths are already integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
 };
 
 
