@@ -1,0 +1,54 @@
+{
+  "format": "physics-stagea-live-spotcheck/1.0",
+  "generated_at_utc": "2026-11-01T09:21:51Z",
+  "target_url": "https://syllabai-hub-v2.vercel.app/courses/igcse-physics-19/guided-lessons/rn_RpyMnS5nqWSRWXXG",
+  "title_rendered": "Guided lesson: Distance-Time Graphs",
+  "law_checks": {
+    "lessons_x4_your_answer": {
+      "observed": 8,
+      "expected": 8,
+      "result": "GREEN"
+    },
+    "authored_stems_on_surface": {
+      "probe": [
+        "flat and horizontal",
+        "straight line on the same distance-time axes",
+        "8 km"
+      ],
+      "hits": "3/3 present",
+      "result": "GREEN"
+    },
+    "law_2_1b": {
+      "check": "learner-surface 'from the revision note' occurrence count (the of-record live marker per R3-STAGEB9 spotcheck receipt)",
+      "observed": 0,
+      "expected": 0,
+      "result": "GREEN",
+      "note": "the full 1,010-note-8-gram battery is the AUTHORING-time A0 gate (38/38 at resources PR #266); the served page legitimately renders authored paraphrase surfaces (primer/keyPoints/depth layers) and the in-page note-reference data, so an 8-gram sweep of the whole page is NOT the live law of record"
+    },
+    "no_import_pending_card": {
+      "observed": true,
+      "result": "GREEN"
+    },
+    "written_textarea_present": {
+      "observed": true,
+      "result": "GREEN"
+    }
+  },
+  "dom_flow_walk": {
+    "tool": "agent-browser (headless), viewport 1440x900, zero-DB surface \u2014 progress state is client-side only",
+    "screenshots_dir": "download/physics-stagea/dom-walk/ (13 PNGs of record)",
+    "verdict_laws_confirmed": [
+      "MCQ wrong answer -> role=status 'Not quite \u2014 the answer is B.' + correct-option explanation verbatim + 'Misconception flagged: direction misread' + options LOCKED (one-shot, no silent regrade)",
+      "MCQ correct answer -> role=status 'Great job!' + explanation verbatim (proven on L1::Q2, L2::Q1, L2::Q2)",
+      "written empty submit -> Submit answer button DISABLED (blocked, never a silent grade)",
+      "written 0-keyword ('banana') -> 'Not quite.' + Model answer VERBATIM + locked (L1::Q6)",
+      "written keyword-hit ('speed' family) -> 'Great job!' + Model answer verbatim (L1::Q7, L2::Q6)",
+      "NUM arithmetic renders verbatim: '8 km = 8000 m and 6 min = 360 s, so 8000 / 360 = 22.2 m/s.' (L2::Q2 correct verdict; distractor family 1.3/22.2/133/8000 m/s = the NUM-gated misread/partial-conversion set)"
+    ],
+    "disclosures": [
+      "screenshots 03/04 captured the same locked verdict state (the correct-option radio was disabled at 04 \u2014 one-shot law had already consumed the attempt); the walk evidence is complete across the 13 captures",
+      "walk path: lesson-set landing -> L1 depth Medium -> layered reveal -> Q1 wrong verdict -> Q2 correct -> Q6 MISS -> Q7 GREAT -> lesson list -> L2 -> Q1/Q2 correct (NUM) -> Q6 GREAT; MCQ one-shot law prevents a post-wrong-attempt correct submission on the same question by design"
+    ]
+  },
+  "boundaries": "read-only hub GETs + anonymous DOM walk; zero DB; zero Vercel API writes; no writes to the learner surface"
+}
