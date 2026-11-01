@@ -766,3 +766,16 @@ Work Log:
 Stage Summary:
 - Branch of record: t-teachme-1/run-003 (base post-#585 origin/main); receipt .syllabai/receipts/T-TEACHME-001/run-003.json; PR body carries the gates table + disclosures.
 - Open: teacher workbench ratification queue (own band — this task's fence forbids teacher pages); DB apply of 0020/0021 + 4CH1 canon rows (operator, Neon branch) else live create refuses COURSE_NOT_ELIGIBLE fail-closed; run-004 operator-gated (Voice/attachments/XP); vague-explanation re-probe retunes config.ts ONLY.
+
+---
+
+Task ID: T-GRADE-005 (run-001) — MathsGenie style parity on the live page (operator trace 1a194934c518f8e1: "Still it is not in the style of MathsGenie. Did you check them out visually?")
+
+Work Log:
+- Visual diff of record: MG's live chemistry/edexcel predicted-grade-calculator screenshotted (headless) against ours — four style deltas + one semantics gap receipted (pills w/ check dot; "↑ N marks to 1" rail caption + graded meter endpoints; Average = per-grade MEAN boundary row via averageBoundariesAcrossSeries; linear table Max column dropped to MG's ten-column fit; graph on MG's green→red grade ramp with ringed dots).
+- Gates: tsc 0 / eslint 0 / calc tests 21/21 (+3 new) / build prerendered (two OOM kills at 137 disclosed as sandbox-env) / LOCAL VISUAL PROOF on the standalone build (127.0.0.1:3111): igcse-chemistry-19 "↑ 26 marks to 1", endpoints "U · 0"/"1 · 26", slider-touched January-2020 "U · 6"/"1 · 43" (6+37=43 assert-by-render); ial-chemistry-17 aggregate "↑ 240 UMS to E", "0 / 600 UMS".
+- Integrity: a stale next-server kept serving build5 from memory across a restart — caught by served-chunk-vs-disk-tree hash match (the pin for future visual gates); bundle.v1.json byte-identical at 533671bf1070ff93; zero boundary values, zero registry/DB/API bytes.
+
+Stage Summary:
+- The hub grade calculator now speaks MG's visual language on the live corpus, with the mean-row Average matching MG's own semantics; receipt .syllabai/receipts/T-GRADE/T-GRADE-005-RUN001-MG-STYLE-PARITY.json; lane t-gradeb-5/mg-style, PR of record carries the gates table.
+- Discipline: fetch-first; fail-closed; append-only worklogs (byte-exact prefix assert); tokens via env only; zero force-push, zero auth failures, boundaries held.

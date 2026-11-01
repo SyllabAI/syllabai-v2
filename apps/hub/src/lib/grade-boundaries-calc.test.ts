@@ -1,5 +1,6 @@
 import { describe, expect, it } from "bun:test";
 import {
+  averageBoundariesAcrossSeries,
   gradeForMark,
   isRegionalVariant,
   marksToNextGrade,
@@ -60,6 +61,53 @@ describe("modalGradeAcrossSeries (MathsGenie Average mode)", () => {
     ];
     // 157 is an 8 in both -> modal 8, unambiguous; 161 is a 9 in both
     expect(modalGradeAcrossSeries(s, LADDER, 161).grade).toBe("9");
+  });
+});
+
+describe("averageBoundariesAcrossSeries (MathsGenie's actual Average row)", () => {
+  it("means each grade's boundary across sessions and rounds to the mark", () => {
+    const s = [
+      { session: "June 2026", boundaries: CH1_STD },
+      { session: "June 2022", boundaries: { ...CH1_STD, "9": 140, "8": 117 } },
+    ];
+    const row = averageBoundariesAcrossSeries(s, LADDER);
+    // grade 9: (150 + 140) / 2 = 145; grade 8: (130 + 117) / 2 = 123.5 -> 124
+    expect(row?.["9"]).toBe(145);
+    expect(row?.["8"]).toBe(124);
+    expect(row?.["1"]).toBe(31);
+    // the averaged row grades like any other row
+    expect(gradeForMark(row!, LADDER, 145)).toBe("9");
+    expect(marksToNextGrade(row!, LADDER, 0)).toEqual({ grade: "1", marks: 31 });
+    // 145 is the averaged row's top boundary — nothing left to reach
+    expect(marksToNextGrade(row!, LADDER, 146)).toBe(null);
+  });
+
+  it("skips sessions without the grade and stays null when unseen", () => {
+    const foundation = {
+      "9": null, "8": null, "7": null, "6": null,
+      "5": 148, "4": 125, "3": 90, "2": 56, "1": 22, "U": 0,
+    };
+    const row = averageBoundariesAcrossSeries(
+      [
+        { session: "A", boundaries: foundation },
+        { session: "B", boundaries: { ...foundation, "5": 142 } },
+      ],
+      LADDER,
+    );
+    // grade 5: (148 + 142) / 2 = 145; grades 9-6 never published -> null
+    expect(row?.["5"]).toBe(145);
+    expect(row?.["9"]).toBe(null);
+    expect(row?.["1"]).toBe(22);
+  });
+
+  it("returns null for no sessions or an all-null ladder", () => {
+    expect(averageBoundariesAcrossSeries([], LADDER)).toBe(null);
+    expect(
+      averageBoundariesAcrossSeries(
+        [{ session: "A", boundaries: { "9": null, "U": null } }],
+        LADDER,
+      ),
+    ).toBe(null);
   });
 });
 
