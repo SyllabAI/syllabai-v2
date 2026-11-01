@@ -1033,11 +1033,29 @@ export class SmartMarkService {
       }
     }
 
+    // OD-1 MA-10 (multi-axis R4 consumption law, r0): a part with TWO OR
+    // MORE VALIDATED part-bound LEVELS siblings is a multi-axis printed
+    // grid — the per-axis dispatch leg is not wired yet, so a single-scheme
+    // dispatch here would range-check an 8/12-mark essay against ONE axis's
+    // bands. Refuse honestly (append-only row, nothing marked, no state
+    // change) until PR-B wires the per-axis leg; single-axis parts are
+    // unaffected (exactly one part-bound LEVELS sibling).
+    const levelSiblingsByPart = new Map<string, number>();
+    for (const r of validatedRows) {
+      if ((r.scheme_kind ?? "POINTS") !== "LEVELS" || r.question_part_id == null) continue;
+      const pid = String(r.question_part_id);
+      levelSiblingsByPart.set(pid, (levelSiblingsByPart.get(pid) ?? 0) + 1);
+    }
+
     // group the attempt's answers per resolved scheme; a part with no
     // resolvable scheme refuses honestly (V34 — the newest scheme stamps it)
     const groups = new Map<string, { scheme: { id: string; validation_state: string; scheme_kind: string | null }; answers: AnswerPartRow[] }>();
     const results = new Map<string, SmartMarkResultRow>();
     for (const answer of answers) {
+      if ((levelSiblingsByPart.get(String(answer.question_part_id)) ?? 0) >= 2) {
+        results.set(answer.id, await this.refuseMultiAxisDispatch(answer, versionId, tx));
+        continue;
+      }
       const scheme = byPart.get(String(answer.question_part_id)) ?? unbound;
       if (scheme === null) {
         results.set(answer.id, await this.refuseUnvalidatedScheme(answer, versionId, tx));
@@ -1322,6 +1340,43 @@ export class SmartMarkService {
       validation_passed: false,
       breakdown: [],
       failure_reason: "SCHEME_NOT_VALIDATED",
+    };
+  }
+
+  /** OD-1 MA-10 — the multi-axis dispatch refusal: the honest append-only row
+   *  stamped with the newest scheme of the version (the V34 law), failure
+   *  reason MULTI_AXIS_DISPATCH_NOT_WIRED; nothing is marked, no state
+   *  changes, no evidence. Lifted by PR-B's per-axis dispatch leg. */
+  private async refuseMultiAxisDispatch(
+    answer: AnswerPartRow,
+    questionVersionId: string,
+    tx?: SqlFn,
+  ): Promise<SmartMarkResultRow> {
+    const db = tx ?? this.sql;
+    const refusedRows = (await db`
+      select id, validation_state from mark_schemes
+      where question_version_id = ${questionVersionId} order by created_at desc
+    `) as unknown as Array<{ id: string; validation_state: string }>;
+    if (refusedRows.length === 0) throw new NotFoundError("mark scheme", questionVersionId);
+    const refused = refusedRows[0]!;
+    const resultId = this.clock.newId();
+    await db`
+      insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
+        marks_awarded, confidence, validation_passed, breakdown, failure_reason,
+        mark_scheme_id, scheme_validation_state, raw_output, created_at)
+      values (${resultId}, ${answer.id}, ${PIPELINE_VERSION}, ${null}, ${0}, ${null}, ${false},
+        ${JSON.stringify([])}, ${"MULTI_AXIS_DISPATCH_NOT_WIRED"}, ${refused.id},
+        ${refused.validation_state}, ${null}, ${this.clock.now().toISOString()})
+    `;
+    return {
+      id: resultId,
+      answer_id: answer.id,
+      model_id: null,
+      marks_awarded: 0,
+      confidence: null,
+      validation_passed: false,
+      breakdown: [],
+      failure_reason: "MULTI_AXIS_DISPATCH_NOT_WIRED",
     };
   }
 

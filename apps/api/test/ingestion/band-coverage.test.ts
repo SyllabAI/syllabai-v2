@@ -133,3 +133,84 @@ describe("bandCoverageViolations — ADR-040 §2.1 the coverage law", () => {
     ]);
   });
 });
+
+// ── OD-1 multi-axis R4 consumption law (r0): the SET is the R4 unit ─────────
+
+import { multiAxisSetCoverageViolations, type MultiAxisSetMember } from "../../src/services/ingestion/band-coverage";
+
+const axis = (versionLabel: string, bands: BandCoverageBand[]): MultiAxisSetMember => ({ versionLabel, bands });
+
+describe("multiAxisSetCoverageViolations — OD-1 MA-1..MA-5 the set law", () => {
+  test("a clean two-axis 8-mark grid (tops 4+4) → no violations", () => {
+    const set = [
+      axis("2-c#a1", [band(1, 1, 1), band(2, 2, 2), band(3, 3, 3), band(4, 4, 4)]),
+      axis("2-c#a2", [band(1, 1, 1), band(2, 2, 2), band(3, 3, 3), band(4, 4, 4)]),
+    ];
+    expect(multiAxisSetCoverageViolations(set, 8)).toEqual([]);
+  });
+
+  test("printed zero-mark cells are not bands: excluded from the chain, bottom ordinal only", () => {
+    const set = [
+      axis("1-c#a1", [band(1, 0, 0, "No creditable content"), band(2, 1, 2), band(3, 3, 4)]),
+      axis("1-c#a2", [band(1, 1, 2), band(2, 3, 4)]),
+    ];
+    expect(multiAxisSetCoverageViolations(set, 8)).toEqual([]);
+    // a zero cell above the bottom is named
+    const bad = [
+      axis("1-c#a1", [band(1, 1, 2), band(2, 0, 0, "No creditable content"), band(3, 3, 4)]),
+      axis("1-c#a2", [band(1, 1, 2), band(2, 3, 4)]),
+    ];
+    expect(multiAxisSetCoverageViolations(bad, 8)).toContainEqual(
+      'axis "1-c#a1" zero-mark cell sits at level 2, not the bottom ordinal (OD-1 MA-3)',
+    );
+  });
+
+  test("the print-true 4,4,2,1 Knowledge column (1-b-ii / 2-c parks of record) is named, never repaired", () => {
+    const set = [
+      // the verbatim printed column: 1, 2, 4, 4 — gap at 3, duplicated 4
+      axis("1-b-ii#a1", [band(1, 1, 1), band(2, 2, 2), band(3, 4, 4), band(4, 4, 4)]),
+      axis("1-b-ii#a2", [band(1, 1, 1), band(2, 2, 2), band(3, 3, 3), band(4, 4, 4)]),
+    ];
+    const violations = multiAxisSetCoverageViolations(set, 8);
+    expect(violations).toContainEqual(
+      'axis "1-b-ii#a1" mark ranges are not contiguous (gap): level 2 ends at 2 but level 3 starts at 4 (expected 3) (OD-1 MA-4)',
+    );
+    expect(violations).toContainEqual(
+      'axis "1-b-ii#a1" mark ranges are not contiguous (overlap): level 3 ends at 4 but level 4 starts at 4 (expected 5) (OD-1 MA-4)',
+    );
+  });
+
+  test("MA-5 closure: axis tops must sum to the part's marks, exactly", () => {
+    const set = [
+      axis("3-c#a1", [band(1, 1, 1), band(2, 2, 2)]),
+      axis("3-c#a2", [band(1, 1, 1), band(2, 2, 2)]),
+    ];
+    expect(multiAxisSetCoverageViolations(set, 12)).toContainEqual(
+      "the axis tops sum to 4 but the awarded range reaches 12 — the set must close on the part's marks (OD-1 MA-5)",
+    );
+    // unknown part marks → the closure is skipped, never fabricated
+    expect(multiAxisSetCoverageViolations(set, null)).toEqual([]);
+  });
+
+  test("MA-1 identity: singleton, mixed bases, and duplicate axes are named", () => {
+    expect(multiAxisSetCoverageViolations([axis("2-c#a1", [band(1, 1, 2)])], 2)).toEqual([
+      "the axis set has 1 member(s) — a multi-axis printed grid has at least two axis columns (OD-1 MA-1)",
+    ]);
+    const mixed = multiAxisSetCoverageViolations(
+      [
+        axis("2-c#a1", [band(1, 1, 2), band(2, 3, 4)]),
+        axis("2-d#a2", [band(1, 1, 2), band(2, 3, 4)]),
+      ],
+      8,
+    );
+    expect(mixed).toContainEqual('the axis set mixes base refs "2-c" and "2-d" (OD-1 MA-1)');
+    const dup = multiAxisSetCoverageViolations(
+      [
+        axis("2-c#a1", [band(1, 1, 2), band(2, 3, 4)]),
+        axis("2-c#a1", [band(1, 1, 2), band(2, 3, 4)]),
+      ],
+      8,
+    );
+    expect(dup).toContainEqual('duplicate axis label "a1" in the set (OD-1 MA-1)');
+  });
+});
