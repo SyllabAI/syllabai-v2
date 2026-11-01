@@ -1,0 +1,140 @@
+# T-TEACHME-001 — migrations 0020/0021 apply runner + the 4CH1 canon-row
+# gate census/repair (the operator fire order "apply 0020/0021 + 4CH1 canon
+# rows on a Neon branch", IM chat 97a19c8c, 2026-11-01 — the dispatch-record
+# open item #2 of T-TEACHME-001).
+#
+# Executed behind the t-teach-011-apply-0008 guard protocol of record:
+#   job 1 (cow-apply): a disposable Neon COW branch off production (in-line
+#     read_write endpoint, NEON_API_KEY = the CI key of record), branch-local
+#     owner password reset (PRODUCTION ROLES NEVER TOUCHED), then the FROZEN
+#     driver scripts/t-teachme-1-db-apply.ts applies 0020 → 0021 as RAW SQL
+#     (one transaction per file, lock_timeout=5s, NO drizzle bookkeeping,
+#     flyway_schema_history untouched), post-verifies every constraint/index/
+#     trigger, PROVES the ADR-040 D1 append-only trigger bites (inside a
+#     rolled-back transaction), censuses the 4CH1 G1–G3 canon/corpus state,
+#     repairs ONLY proven-missing per-point descriptions (of-record sources:
+#     canonicalKG subtopic labels + bundle paper applicability; branch-write
+#     only; per-row guarded; provenance lineage untouched) and runs the EXACT
+#     G1/G2/G3 gate probes of the live store — receipt artifact always —
+#     then DROP the COW + 404-verify, even on failure (if: always(), the
+#     T-MIG-035 discipline).
+#   NO production job: the fire order scopes this apply to a BRANCH. The prod
+#   apply of 0020/0021 (+ any canon repair the receipt proves needed) awaits
+#   the operator reading the receipt artifact — same two-step discipline the
+#   0008 runner used (COW proof first, prod write only after green + review).
+#
+# OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
+# dispatched (the dispatch = the operator's fire order per the 093/133b law).
+# Secrets of record: NEON_API_KEY (exists). Vars of record: NEON_PROJECT_ID,
+# NEON_PARENT_BRANCH_ID (exist).
+# The receipt is scrub-asserted by the driver (no URIs/tokens; host only).
+
+name: t-teachme-1-db-apply-0020-0021
+
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "Operator note for this apply run"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-teachme-1-db-apply-0020-0021
+  cancel-in-progress: false
+
+jobs:
+  cow-apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="t-teachme-1-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          HOST=""
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched; 423-aware)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          PW=""
+          for i in $(seq 1 20); do
+            CODE=$(curl -s -o /tmp/tm-reset.json -w "%{http_code}" \
+              -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            if [ "$CODE" = "200" ]; then
+              PW=$(jq -r '.role.password' /tmp/tm-reset.json)
+              break
+            fi
+            if [ "$CODE" = "423" ]; then sleep 5; continue; fi
+            echo "unexpected reset status ${CODE}"; exit 1
+          done
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Preflight (no DDL — referenced tables, teach targets absent, 4CH1 census)
+        run: |
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/tm-cow.uri
+          chmod 600 /tmp/tm-cow.uri
+          bun scripts/t-teachme-1-db-apply.ts --db file:/tmp/tm-cow.uri --mode preflight --receipt cow-preflight.json
+      - name: Apply 0020 → 0021 + post-verify + append-only probe + 4CH1 canon gates (frozen driver)
+        run: |
+          bun scripts/t-teachme-1-db-apply.ts --db file:/tmp/tm-cow.uri --mode apply --receipt cow-apply-receipt.json
+      - name: Upload the receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tteachme1-cow-receipts
+          path: |
+            cow-preflight.json
+            cow-apply-receipt.json
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }

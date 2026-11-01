@@ -263,8 +263,8 @@ from `teach_sessions.flags` + coverage rows — no new telemetry stack.
 | Run | Scope | State |
 |---|---|---|
 | run-000 | rulings + ADR-040 + this plan | **DONE** (2026-11-01; ADR-040 in the master pack) |
-| run-001 | contracts + migration (+ DB apply when operator supplies DATABASE_URL, T-SENECA-001 precedent) | **THIS PR** (`t-teachme-1/run-001`) — receipt `.syllabai/receipts/T-TEACHME-001/run-001.json` |
-| run-002 | API lane: lifecycle, pinned prompts v1, fixture replay, ceilings, fail-closed | NEXT — the D4 constants land as `apps/api/src/teach-me/config.ts` (one config object, ruling Q5) |
-| run-003 | hub lane: wizard, player, review card, history, flags gate, honest roadmap state | spec §§2, 10 |
+| run-001 | contracts + migration (+ DB apply when operator supplies DATABASE_URL, T-SENECA-001 precedent) | **DONE** — MERGED via PR #580 @ b8871ca; receipt `.syllabai/receipts/T-TEACHME-001/run-001.json` |
+| run-002 | API lane: lifecycle, pinned prompts v1, fixture replay, ceilings, fail-closed | **DONE** — MERGED via PR #585 @ bef52be; the D4 constants of record are `apps/api/src/teach-me/config.ts` (one config object, ruling Q5) |
+| run-003 | hub lane: wizard, player, review card, history, flags gate, honest roadmap state | **THIS PR** (`t-teachme-1/run-003`) — the flags.json flip + receipt `.syllabai/receipts/T-TEACHME-001/run-003.json` |
 | run-004 | operator-gated: Voice spike, attachments, XP/streak loop (original grants none) | deferred |
 | re-probe | vague-explanation gating + fully-wrong review (needs Pro or second account) | gates Q5 constants only |
