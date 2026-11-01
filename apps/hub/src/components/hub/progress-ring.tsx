@@ -7,20 +7,29 @@
  * rows (lib/progress-server.ts — the projection-of-events law); the
  * browser-local SIMULATED overlay remains the signed-out fallback.
  */
-import { subtopicNotesRing, useCourseProgress, type Course } from "@/lib/progress";
+import {
+  subtopicFlashcardsRing,
+  subtopicNotesRing,
+  subtopicQuestionsRing,
+  useCourseProgress,
+  type Course,
+} from "@/lib/progress";
 import { formatPercent, roundPercent } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 /**
- * Which denominator the ring covers. "all" (the default, every existing
- * caller) = the combined notes+questions+flashcards engagement coverage.
- * "notes" = reads ÷ available notes ONLY — the revision-notes select page's
- * ring of record (operator trace 1a195fd0b0947695: "the rings show progress
- * of revision notes only, not exam questions and not flashcards. Both of
- * their select pages will handle their progress rings" — each select page
- * owns its denominator; the sidebar and the other select pages keep "all").
+ * Which denominator the ring covers. "all" (the default) = the combined
+ * notes+questions+flashcards engagement coverage — the SIDEBAR's posture.
+ * Each select page owns its own dimension instead (operator trace
+ * 1a195fd0b0947695: "the rings show progress of revision notes only, not
+ * exam questions and not flashcards. Both of their select pages will handle
+ * their progress rings", extended by trace 1a1982281a3d7a65 to the other two
+ * select pages' own ring semantics):
+ * - "notes"      = reads ÷ available notes ONLY — revision-notes select page
+ * - "questions"  = answered parts ÷ available questions ONLY — exam-questions select page
+ * - "flashcards" = rated cards ÷ available cards ONLY — flashcards select page
  */
-export type ProgressRingDimension = "all" | "notes";
+export type ProgressRingDimension = "all" | "notes" | "questions" | "flashcards";
 
 export function ProgressRing({
   course,
@@ -42,8 +51,8 @@ export function ProgressRing({
    * (the projection-of-events law, never a local counter); null/undefined
    * falls back to the SIMULATED overlay posture (signed-out demo). */
   projectionPercent?: number | null;
-  /** "notes" swaps the denominator to the notes-only ring of the
-   * revision-notes select page (see ProgressRingDimension). The server
+  /** "notes" / "questions" / "flashcards" swap the denominator to that
+   * select page's own content type (see ProgressRingDimension). The server
    * projection branch above is dimension-agnostic by contract: a caller
    * that passes a projection also passes the matching dimension's number. */
   dimension?: ProgressRingDimension;
@@ -57,6 +66,10 @@ export function ProgressRing({
     percent = projectionPercent;
   } else if (subtopic && dimension === "notes") {
     percent = roundPercent(subtopicNotesRing(progress, subtopic, counts).percent);
+  } else if (subtopic && dimension === "questions") {
+    percent = roundPercent(subtopicQuestionsRing(progress, subtopic, counts).percent);
+  } else if (subtopic && dimension === "flashcards") {
+    percent = roundPercent(subtopicFlashcardsRing(progress, subtopic, counts).percent);
   } else if (subtopic) {
     const k = counts;
     const total = k.notes + k.questions + k.flashcards;

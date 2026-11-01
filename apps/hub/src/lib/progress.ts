@@ -404,3 +404,50 @@ export function subtopicNotesRing(p: CourseProgress, subtopicCode: string, count
   const done = Math.min(notes, counts.notes);
   return { done, total: counts.notes, percent: Math.round((done / counts.notes) * 100) };
 }
+
+/**
+ * Questions-ONLY ring for one sub-topic: engaged question parts ÷ available
+ * questions — never notes, never flashcards. The exam-questions select
+ * page's ring of record (operator trace 1a1982281a3d7a65: "the
+ * exam-questions and flashcards select pages' own ring semantics" — each
+ * select page owns its own denominator; the combined subtopicRing stays the
+ * sidebar's engagement coverage). The numerator is the same questions-plane
+ * engagement the combined ring counts: self-scored parts (recordSelfScore)
+ * + answered MCQs (recordMcqAnswer), keyed per question and capped at the
+ * available questions (a multi-part question engaging several planes still
+ * fills the ring once past its count — the same Math.min posture the
+ * combined ring has always taken). A sub-topic with no questions reports
+ * total 0 (rendered as an empty ring, "not started", never a fake 100%) —
+ * the same honesty law as subtopicRing.
+ */
+export function subtopicQuestionsRing(
+  p: CourseProgress,
+  subtopicCode: string,
+  counts: { questions: number },
+): Ring {
+  if (counts.questions === 0) return { done: 0, total: 0, percent: 0 };
+  const questions =
+    Object.values(p.selfScores).filter((v) => v.subtopic === subtopicCode).length +
+    Object.values(p.mcqAnswers).filter((v) => v.subtopic === subtopicCode).length;
+  const done = Math.min(questions, counts.questions);
+  return { done, total: counts.questions, percent: Math.round((done / counts.questions) * 100) };
+}
+
+/**
+ * Flashcards-ONLY ring for one sub-topic: rated cards ÷ available cards —
+ * never notes, never questions. The flashcards select page's ring of record
+ * (operator trace 1a1982281a3d7a65, the same per-page law): each deck card's
+ * ring counts rateFlashcard engagement against that deck's cards alone. A
+ * sub-topic with no cards reports total 0 (rendered as an empty ring, "not
+ * started", never a fake 100%) — the same honesty law as subtopicRing.
+ */
+export function subtopicFlashcardsRing(
+  p: CourseProgress,
+  subtopicCode: string,
+  counts: { flashcards: number },
+): Ring {
+  if (counts.flashcards === 0) return { done: 0, total: 0, percent: 0 };
+  const cards = Object.values(p.flashcards).filter((v) => v.subtopic === subtopicCode).length;
+  const done = Math.min(cards, counts.flashcards);
+  return { done, total: counts.flashcards, percent: Math.round((done / counts.flashcards) * 100) };
+}
