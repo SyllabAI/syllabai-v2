@@ -1877,7 +1877,7 @@
        "questionPart": null
       },
       "problemMd": "A student connects a 6 V power supply to a 3 Ω resistor. The resistor is left connected to the power supply for 1 minute.\n\nHow much power is dissipated by the resistor?",
-      "solutionMd": "**Final answer:** **The correct answer is ****B**** because:**\n\n- The equations needed for this question are: *V* = *IR *and* P* = *IV*\n- Rearranging *V = IR *gives $I=\\frac{V}{R}$.\n- Substituting into the other equation gives: $P=\\frac{V}{R}\\timesV,\\mathrm{so}P=\\frac{V^{2}}{R}$\n- The answer, is, therefore: $P=\\frac{6^{2}}{3}=12W$\n\n**A** is incorrect as the voltage has been divided by the resistance. This gives the current, but the wrong unit has been given.\n\n**C **is incorrect as the total energy dissipated by the resistor in a minute has been given. The question asks for power, not energy.\n\n**D is **incorrect as the voltage has incorrectly been multiplied by the resistance. This does not give anything useful.",
+      "solutionMd": "**Final answer:** **The correct answer is ****B**** because:**\n\n- The equations needed for this question are: *V* = *IR *and* P* = *IV*\n- Rearranging *V = IR *gives $I=\\frac{V}{R}$.\n- Substituting into the other equation gives: $P=\\frac{V}{R}\\times V,\\mathrm{so}P=\\frac{V^{2}}{R}$\n- The answer, is, therefore: $P=\\frac{6^{2}}{3}=12W$\n\n**A** is incorrect as the voltage has been divided by the resistance. This gives the current, but the wrong unit has been given.\n\n**C **is incorrect as the total energy dissipated by the resistor in a minute has been given. The question asks for power, not energy.\n\n**D is **incorrect as the voltage has incorrectly been multiplied by the resistance. This does not give anything useful.",
       "smeSpecPointIds": [
        "spcpt_KF8WxYWpkFCCDn4g",
        "spcpt_878qtvvZqxcH33wN"
@@ -2635,7 +2635,7 @@
        "questionPart": null
       },
       "problemMd": "**Extended tier only**\n\nA transformer is used to raise the voltage of electricity produced at a power station before it is transmitted in power lines.\n\nThe power station generates electricity at a voltage of 25 kV and a current of 4000 A. The step-up transformer increases the voltage to 400 kV.\n\nAssume that the transformer is 100% efficient.\n\nWhat current flows in the power lines?",
-      "solutionMd": "**Final answer:** **The correct answer is ****B**** because:**\n\n- Electrical power is given by $P=VI$\n- For an ideal transformer (100% efficient): power into a transformer = power out of a transformer\n- Therefore, the relationship between the voltage and current in a transformer is: $I_{p}V_{p}=I_{s}V_{s}$\n- The primary voltage is $V_{p}=25\\mathrm{kV}=25000V$, the primary current is $I_{p}=4000A$ and the secondary voltage is $V_{s}=400\\mathrm{kV}=400000V$\n- Substituting these values gives: $4000\\times25000=400000\\timesI_{s}$\n- Rearranging the equation gives: $I_{s}=\\frac{4000\\times25000}{400000}=250A$\n\nWhen doing calculations always write the formula out in full. Substitute the numbers in and write out each stage of rearranging the equation. This makes it much less likely that you’ll make mistakes.",
+      "solutionMd": "**Final answer:** **The correct answer is ****B**** because:**\n\n- Electrical power is given by $P=VI$\n- For an ideal transformer (100% efficient): power into a transformer = power out of a transformer\n- Therefore, the relationship between the voltage and current in a transformer is: $I_{p}V_{p}=I_{s}V_{s}$\n- The primary voltage is $V_{p}=25\\mathrm{kV}=25000V$, the primary current is $I_{p}=4000A$ and the secondary voltage is $V_{s}=400\\mathrm{kV}=400000V$\n- Substituting these values gives: $4000\\times25000=400000\\times I_{s}$\n- Rearranging the equation gives: $I_{s}=\\frac{4000\\times25000}{400000}=250A$\n\nWhen doing calculations always write the formula out in full. Substitute the numbers in and write out each stage of rearranging the equation. This makes it much less likely that you’ll make mistakes.",
       "smeSpecPointIds": [
        "spcpt_KdM4v8bC43vwFK3p"
       ]
@@ -3969,7 +3969,7 @@
        "questionPart": null
       },
       "problemMd": "**Extended tier only**\n\nA car slows down as it approaches a traffic light. The car was traveling at 13.5 m/s and it takes 22 s to come to a stop.\n\nThe mass of the car is 950 kg.\n\nCalculate the force required to stop the car.",
-      "solutionMd": "**Final answer:** **The correct answer is**** B**** because:**\n\n- Using the acceleration equation,  $a=\\frac{\\Deltav}{t}$\n\n  - $a=\\frac{0-13.5}{22}=-0.61m/s^{2}$\n- Using Newton's second law,  $F=ma$\n\n  - $F=950\\times-0.61=-579.5N$\n- The force required to stop the car is −580 N\n\n  - This is 580 N in the direction opposing the motion of the car",
+      "solutionMd": "**Final answer:** **The correct answer is**** B**** because:**\n\n- Using the acceleration equation,  $a=\\frac{\\Delta v}{t}$\n\n  - $a=\\frac{0-13.5}{22}=-0.61m/s^{2}$\n- Using Newton's second law,  $F=ma$\n\n  - $F=950\\times-0.61=-579.5N$\n- The force required to stop the car is −580 N\n\n  - This is 580 N in the direction opposing the motion of the car",
       "smeSpecPointIds": [
        "spcpt_MR7CvXNrBks6nHzq",
        "spcpt_57Dsjdsx3MbJcn8V"
@@ -4455,7 +4455,7 @@
        "questionPart": null
       },
       "problemMd": "The diagram shows a uniform beam which is balanced on a pivot at its centre. A force $F$ is applied at a distance $x$ to the left of the pivot. A second force $2F$ is applied to the right of the pivot to keep the beam in equilibrium.\n\n![A horizontal beam balanced on a pivot with a downward force F at distance x to the left of the pivot.](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-igcse-science-co-ordinated-sciences-double-award-23-physics/motion-forces-and-energy/effects-of-forces/assets/002-a-horizontal-beam-balanced-on-a-pivot-with-a-dow.png)\n\nWhat is the distance of the second force from the pivot?",
-      "solutionMd": "**Final answer:** **The correct answer is A**\n\n- For a beam to be balanced (in equilibrium), the total clockwise moment must equal the total anticlockwise moment\n- The moment of a force is calculated using the equation:\n\n$\\text{moment}=\\text{force}\\times\\text{perpendicular distance from pivot}$\n\n- There is an anticlockwise moment due to the force $F$ at a distance $x$ to the left of the pivot\n\n$\\mathrm{anticlockwise} \\mathrm{moment}=F\\timesx$\n\n- Therefore, to balance the beam, there must be a clockwise moment due to the second force $2F$ at a distance $d$ to the right of the pivot\n\n$\\mathrm{clockwise} \\mathrm{moment}=2F\\timesd$\n\n- Set these expressions equal to each other:\n\n$2F\\timesd=F\\timesx$\n\n- Rearrange the equation to make $d$ the subject and cancel the $F$ terms:\n\n$d=\\frac{F\\timesx}{2F}$\n\n$d=\\frac{x}{2}$\n\n- This is option** A**",
+      "solutionMd": "**Final answer:** **The correct answer is A**\n\n- For a beam to be balanced (in equilibrium), the total clockwise moment must equal the total anticlockwise moment\n- The moment of a force is calculated using the equation:\n\n$\\text{moment}=\\text{force}\\times\\text{perpendicular distance from pivot}$\n\n- There is an anticlockwise moment due to the force $F$ at a distance $x$ to the left of the pivot\n\n$\\mathrm{anticlockwise} \\mathrm{moment}=F\\times x$\n\n- Therefore, to balance the beam, there must be a clockwise moment due to the second force $2F$ at a distance $d$ to the right of the pivot\n\n$\\mathrm{clockwise} \\mathrm{moment}=2F\\times d$\n\n- Set these expressions equal to each other:\n\n$2F\\times d=F\\times x$\n\n- Rearrange the equation to make $d$ the subject and cancel the $F$ terms:\n\n$d=\\frac{F\\times x}{2F}$\n\n$d=\\frac{x}{2}$\n\n- This is option** A**",
       "smeSpecPointIds": [
        "spcpt_QpjhK2XGSbPPJxD5",
        "spcpt_gw5hJPXmFP36mnZY"
@@ -5606,7 +5606,7 @@
        "questionPart": null
       },
       "problemMd": "A fork lift truck lifts a heavy box onto a shelf.\n\n![q3-medium-mcq-1-7-work-energy-power-cie-igcse-physics](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-igcse-science-co-ordinated-sciences-double-award-23-physics/motion-forces-and-energy/energy-work-and-power/assets/001-q3-medium-mcq-1-7-work-energy-power-cie-igcse-ph.png)\n\nWhich action requires the greatest power output from the fork lift truck.",
-      "solutionMd": "**Final answer:** **The correct answer is ****B**** because:**\n\n- $power=\\frac{work done}{timetaken}$\n- And\n- $work done=force\\timesdistance$\n- Therefore, lifting the box the furthest vertical distance in the smallest time requires the greatest power.\n\n**A** is incorrect as the time taken is longer.\n\n**C** is incorrect as the distance is less.\n\n**D** is incorrect as the distance is less.",
+      "solutionMd": "**Final answer:** **The correct answer is ****B**** because:**\n\n- $power=\\frac{work done}{timetaken}$\n- And\n- $work done=force\\times distance$\n- Therefore, lifting the box the furthest vertical distance in the smallest time requires the greatest power.\n\n**A** is incorrect as the time taken is longer.\n\n**C** is incorrect as the distance is less.\n\n**D** is incorrect as the distance is less.",
       "smeSpecPointIds": [
        "spcpt_sBqPd8FfY4FKdmsz"
       ]
@@ -6136,7 +6136,7 @@
        "questionPart": null
       },
       "problemMd": "**Extended tier only**\n\nA large truck of mass 5000 kg is travelling at 5.0 m/s. A motorbike has a mass of 200 kg. Both the truck and the motorbike have the same kinetic energy.\n\nWhat is the speed of the motorbike?",
-      "solutionMd": "**Final answer:** **The correct answer is ****A**** because: **\n\n- The equation: kinetic energy = ½ x mass x velocity<sup>2</sup> applies here:\n\n  - $E_{ktruck}=\\frac{1}{2}\\times5000\\times5.0^{2}=62500J$\n  - $E_{kmotorbike}=62500J\\mathrm{so}62500=\\frac{1}{2}\\times200\\timesv^{2}$\n  - $v^{2}=\\frac{62500}{0.5\\times200}\\mathrm{so}v^{2}=625$\n  - $v=\\sqrt{625}=25m/s$",
+      "solutionMd": "**Final answer:** **The correct answer is ****A**** because: **\n\n- The equation: kinetic energy = ½ x mass x velocity<sup>2</sup> applies here:\n\n  - $E_{ktruck}=\\frac{1}{2}\\times5000\\times5.0^{2}=62500J$\n  - $E_{kmotorbike}=62500J\\mathrm{so}62500=\\frac{1}{2}\\times200\\times v^{2}$\n  - $v^{2}=\\frac{62500}{0.5\\times200}\\mathrm{so}v^{2}=625$\n  - $v=\\sqrt{625}=25m/s$",
       "smeSpecPointIds": [
        "spcpt_QP6vmVdwGWPkpNkv"
       ]
@@ -7974,7 +7974,7 @@
        "questionPart": null
       },
       "problemMd": "A teacher wants to measure the density of a wooden cylinder.\n\nShe measures the radius, height and mass of the cylinder.\n\nWhich of the measurements that she has taken are required to calculate the density of the cylinder?",
-      "solutionMd": "**Final answer:** **The correct answer is ****A**** because:**\n\n- ** **$density=\\frac{mass}{volume}$\n- $density=\\frac{mass}{π\\timesr^{2}\\timesh}$\n- To calculate the volume of a cylinder, you need to know the radius. Therefore, the three measurements required are radius, height and mass\n\n**B** is incorrect as this would only allow the teacher to calculate the volume.\n\n**C** is incorrect as this combination would allow nothing useful to be calculated.\n\n**D** is incorrect as this would only give the mass, the volume is also required to calculate the density.",
+      "solutionMd": "**Final answer:** **The correct answer is ****A**** because:**\n\n- ** **$density=\\frac{mass}{volume}$\n- $density=\\frac{mass}{π\\times r^{2}\\times h}$\n- To calculate the volume of a cylinder, you need to know the radius. Therefore, the three measurements required are radius, height and mass\n\n**B** is incorrect as this would only allow the teacher to calculate the volume.\n\n**C** is incorrect as this combination would allow nothing useful to be calculated.\n\n**D** is incorrect as this would only give the mass, the volume is also required to calculate the density.",
       "smeSpecPointIds": [
        "spcpt_ydwXHsTbQ9w7DQVX"
       ]
@@ -8059,22 +8059,22 @@
        {
         "label": "A",
         "isCorrect": false,
-        "textMd": "$m\\timesx\\timesy\\timesz$"
+        "textMd": "$m\\times x\\times y\\times z$"
        },
        {
         "label": "B",
         "isCorrect": false,
-        "textMd": "$x\\timesz\\timesy$"
+        "textMd": "$x\\times z\\times y$"
        },
        {
         "label": "C",
         "isCorrect": false,
-        "textMd": "$\\frac{x\\timesy\\timesz}{m}$"
+        "textMd": "$\\frac{x\\times y\\times z}{m}$"
        },
        {
         "label": "D",
         "isCorrect": true,
-        "textMd": "$\\frac{m}{x\\timesy\\timesz}$"
+        "textMd": "$\\frac{m}{x\\times y\\times z}$"
        }
       ],
       "sourcePaper": {
@@ -8084,7 +8084,7 @@
        "questionPart": null
       },
       "problemMd": "A block is shown in the diagram. It has a mass of* m*.\n\n![q10-hard-mcq-1-3--mass-and-weight-cie-igcse-physics](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-igcse-science-co-ordinated-sciences-double-award-23-physics/motion-forces-and-energy/mass-weight-and-density/assets/007-q10-hard-mcq-1-3-mass-and-weight-cie-igcse-physi.png)\n\nWhich expression, below, could be used to calculate the density of the block?",
-      "solutionMd": "**Final answer:** **The correct answer is ****D**** because **\n\n- $density=\\frac{mass}{volume}$\n- Volume = $x\\timesy\\timesz$",
+      "solutionMd": "**Final answer:** **The correct answer is ****D**** because **\n\n- $density=\\frac{mass}{volume}$\n- Volume = $x\\times y\\times z$",
       "smeSpecPointIds": [
        "spcpt_ydwXHsTbQ9w7DQVX"
       ]
@@ -11913,7 +11913,7 @@
        "questionPart": null
       },
       "problemMd": "The radius of Jupiter's orbit is 778 × 10<sup>6 </sup>km. What is the time taken for light from the Sun to reach the surface of Jupiter?\n\nThe speed of light is 3 × 10<sup>8</sup> m/s.",
-      "solutionMd": "**Final answer:** **The answer is ****B**** because:**\n\n- The time is calculated by:\n\n  - $speed=\\frac{distance}{time}\\Rightarrowtime=\\frac{distance}{speed}$\n- The speed is the speed of light = 3 × 10<sup>8</sup> m/s\n- Converting the distance into metres (m) gives:\n\n  - 1 km = 1000 m\n  - 778 × 10<sup>6</sup> km = (778 × 10<sup>6</sup>) × 10<sup>3</sup> m = 778 × 10<sup>9</sup> m\n- Substituting these values into the time equation gives:\n\n  - $timetaken=\\frac{778\\times10^{9}}{3\\times10^{8}}=2593=2600s$\n\n**A** is incorrect as the distance has not been converted from km into m\n\n**B** is incorrect as the time has been calculated as  $\\frac{speed}{distance}$ instead of $\\frac{distance}{time}$ and the distance has not been converted into m\n\n**D** is incorrect as the time has been calculated as $\\frac{speed}{distance}$ instead of $\\frac{distance}{time}$\n\nFor the time to be in s, the distance must be in m and the speed in m/s. Make sure to look out for unit conversions, as units on both sides of the equations must be equal",
+      "solutionMd": "**Final answer:** **The answer is ****B**** because:**\n\n- The time is calculated by:\n\n  - $speed=\\frac{distance}{time}\\Rightarrow time=\\frac{distance}{speed}$\n- The speed is the speed of light = 3 × 10<sup>8</sup> m/s\n- Converting the distance into metres (m) gives:\n\n  - 1 km = 1000 m\n  - 778 × 10<sup>6</sup> km = (778 × 10<sup>6</sup>) × 10<sup>3</sup> m = 778 × 10<sup>9</sup> m\n- Substituting these values into the time equation gives:\n\n  - $timetaken=\\frac{778\\times10^{9}}{3\\times10^{8}}=2593=2600s$\n\n**A** is incorrect as the distance has not been converted from km into m\n\n**B** is incorrect as the time has been calculated as  $\\frac{speed}{distance}$ instead of $\\frac{distance}{time}$ and the distance has not been converted into m\n\n**D** is incorrect as the time has been calculated as $\\frac{speed}{distance}$ instead of $\\frac{distance}{time}$\n\nFor the time to be in s, the distance must be in m and the speed in m/s. Make sure to look out for unit conversions, as units on both sides of the equations must be equal",
       "smeSpecPointIds": [
        "spcpt_NPNgn3jH5vBqpTvV"
       ]

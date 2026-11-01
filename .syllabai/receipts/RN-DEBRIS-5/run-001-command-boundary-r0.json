@@ -1,0 +1,53 @@
+{
+ "lane": "RN-DEBRIS-5",
+ "run": "run-001-command-boundary-r0",
+ "orderTrace": "1a196b967b16baa9",
+ "orderText": "Proceed with the command-boundary lane for the \\timesr family",
+ "date": "2026-11-01",
+ "repo": "SyllabAI/syllabai-v2",
+ "baseAtOpen": "c5d59fa5",
+ "scope": "apps/hub/content/** — 118 files touched of 1,053 scanned",
+ "provenance": "RN-DEBRIS-4 disclosed residual #1 (worklog RESIDUALS: 'glued-into-command defects (\\timesr class) are a possible future command-boundary lane — 31 ride along defect-paired in the 34 files'); fetch-first confirmed no command-boundary block existed at open",
+ "defectClass": "the old converter fused the next token into LaTeX command names (maximal-munch tokenization): \\timesr (=\\times r), \\Deltap, \\leqx, \\sumfx, \\Rightarrowtotalpower, \\rightarrowalcohol — every hit a hard KaTeX render failure (Undefined control sequence); invisible to RN-DEBRIS-3/4 censuses by construction (the run lives inside the \\-command token their census masks)",
+ "law": "zero-invention: longest-known-prefix decomposition (KaTeX probe, maximal-munch extraction), fix = insert exactly ONE boundary space, suffix bytes verbatim; per-segment all-or-nothing parse gate; argument-taking commands banned (brace-loss = different defect class; census held zero such prefixes)",
+ "census": {
+  "files": 1053,
+  "strings": 2004718,
+  "dollarSegments": 358907,
+  "uniqueSegments": 96610,
+  "renderPass": 90591,
+  "renderFail": 6019,
+  "glueFixable": 2238,
+  "glueBlocked": 4,
+  "noGlue": 3777,
+  "occurrenceSites": 6046,
+  "occurrenceFiles": 118,
+  "distinctDecompositions": 411,
+  "distinctPrefixes": 26,
+  "ambiguousPrefixFlags": 165,
+  "nonPrefixShapedAmbiguities": 0
+ },
+ "apply": {
+  "occurrenceReplacements": 6048,
+  "boundaryInsertions": 2807,
+  "filesChanged": 118,
+  "censusInvisibleApplied": 2,
+  "backtickProtectedTouched": 0,
+  "method": "to_raw byte surgery, per-file per-seg occurrence-count ledger gate, JSON round-trip per written file"
+ },
+ "gates": {
+  "seedCrossCheck": "31/31 of-record RN-DEBRIS-4 introduced strings re-found and healed",
+  "katexPairGuard": "118 files: spans 160,704 -> 160,704; render failures 3,125 -> 887; healed 2,238; introduced 0; manifest byte-invariant violations 0",
+  "idempotence": "post-apply census glueFixable 2238 -> 0 (pass 90,591 -> 92,826 = healed minus 3 dedup-converged segments; glueBlocked 4, noGlue 3,777 unchanged)",
+  "corpusGate": "PASSED byte-identical to frozen baseline (code spans 0 / dollar 0 / textwrap 4 / multiline 0 / baretext 5 / dangling 0)"
+ },
+ "guardHardening": "first apply attempt serialized JS-replacement double-backslashes ('\\\\times r') that still PARSE (KaTeX reads \\\\ as line break + italic letters) — caught pre-commit by the artifact byte-alignment assert; worktree restored, chain re-run; char-multiset (spaces-only) invariant now enforced in the decomposer AND the independent guard — parse-only guards alone are insufficient",
+ "failClosed": [
+  "4 glue-blocked segments kept (each carries a SEPARATE pre-existing defect: double-superscript / fill-in underscores / combining overline; boundary fix alone cannot make them parse)",
+  "3,777 non-glue failure classes untouched (prose/currency false pairs + structural)",
+  "181 outside-span glue-shaped regex hits in 15 files (prose + backtick contexts; backticks protected of record)",
+  "125 distinct suffix joined-runs surfaced by the boundary fix (totalpower, lengthofcube, specificheatcapacity, parallelsides ...) are RN-DEBRIS-4's joined-debris class — out of this lane's scope per the operator order, disclosed as the natural next census input"
+ ],
+ "artifacts": ".syllabai/lane-artifacts/RN-DEBRIS-5/",
+ "status": "APPLIED — awaiting PR/CI/merge/prod"
+}

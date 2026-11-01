@@ -195,7 +195,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Assuming Alina’s claim is true, John calculates the following cumulative probabilities:\n\n| $x$ | 51 | 52 | 53 | 54 | 55 |\n|---|---|---|---|---|---|\n| $P(X\\leqx)$ | 0.04230 | 0.06379 | 0.09298 | 0.13109 | 0.17890 |\n\nIn John’s survey, 55 people say that they will support Alina.\n\n(i) Calculate $P(X=55)$.\n\n(ii) State whether John should compare the value of $P(X\\leq55)$ or  $P(X=55)$ with his significance level of 10%.\n\n(iii) In the context of this question, write a conclusion for John’s test.",
+      "problemMd": "Assuming Alina’s claim is true, John calculates the following cumulative probabilities:\n\n| $x$ | 51 | 52 | 53 | 54 | 55 |\n|---|---|---|---|---|---|\n| $P(X\\leq x)$ | 0.04230 | 0.06379 | 0.09298 | 0.13109 | 0.17890 |\n\nIn John’s survey, 55 people say that they will support Alina.\n\n(i) Calculate $P(X=55)$.\n\n(ii) State whether John should compare the value of $P(X\\leq55)$ or  $P(X=55)$ with his significance level of 10%.\n\n(iii) In the context of this question, write a conclusion for John’s test.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/hypothesis-testing/hypothesis-testing-binomial-and-poisson-distributions/assets/083-img.png)",
       "smeSpecPointIds": [
        "spcpt_mPVJHc5CKHN5mQyS"
@@ -350,7 +350,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Alex finds that 21 out of the 25 ladybirds in his sample are seven-spot ladybirds.\n\n(i) The $p$-value for the observed test statistic is 0.03205. Write this in the form  $P(X\\geqa)=b.$ .\n\n(ii) Alex has not yet calculated the critical value for his hypothesis test.  Explain why he does not need to do this to come to a conclusion for his test.",
+      "problemMd": "Alex finds that 21 out of the 25 ladybirds in his sample are seven-spot ladybirds.\n\n(i) The $p$-value for the observed test statistic is 0.03205. Write this in the form  $P(X\\geq a)=b.$ .\n\n(ii) Alex has not yet calculated the critical value for his hypothesis test.  Explain why he does not need to do this to come to a conclusion for his test.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/hypothesis-testing/hypothesis-testing-binomial-and-poisson-distributions/assets/077-img.png)",
       "smeSpecPointIds": [
        "spcpt_SXgS5mjTMgfKTPsD",
@@ -3246,7 +3246,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Carl decides to use the rejection regions $̅X<27\\mathrm{and}̅X>29$. Carl takes a random sample of 40 crosswords and records the times, $X$ minutes, it takes him to complete each one. The results are summarised as follows.\n\n$n=40\\sumx=1103\\sumx^{2}=30870$\n\nCalculate unbiased estimates for the mean and variance of $X$.",
+      "problemMd": "Carl decides to use the rejection regions $̅X<27\\mathrm{and}̅X>29$. Carl takes a random sample of 40 crosswords and records the times, $X$ minutes, it takes him to complete each one. The results are summarised as follows.\n\n$n=40\\sum x=1103\\sum x^{2}=30870$\n\nCalculate unbiased estimates for the mean and variance of $X$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/hypothesis-testing/hypothesis-testing-normal-distribution/assets/055-img.png)",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6"
@@ -3661,7 +3661,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "A conker is a seed from a horse chestnut tree.  The masses of conkers are known to be normally distributed with mean $μ$ grams.  Camilla’s teacher claims that the mean mass is 14.5 g but Camilla believes that this is too low.  To test her belief, Camilla takes a random sample of 100 conkers and measures their masses, $M$.  The results are summarised as follows.\n\n$n=100\\summ=1490\\summ^{2}=22498$\n\nCalculate unbiased estimates for the population mean and variance.",
+      "problemMd": "A conker is a seed from a horse chestnut tree.  The masses of conkers are known to be normally distributed with mean $μ$ grams.  Camilla’s teacher claims that the mean mass is 14.5 g but Camilla believes that this is too low.  To test her belief, Camilla takes a random sample of 100 conkers and measures their masses, $M$.  The results are summarised as follows.\n\n$n=100\\sum m=1490\\sum m^{2}=22498$\n\nCalculate unbiased estimates for the population mean and variance.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/hypothesis-testing/hypothesis-testing-normal-distribution/assets/070-img.png)",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6"
@@ -3843,7 +3843,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The population mean of the random variable  $X \\text{tilde} N ( mu , 5 ^{2} )$ is being tested using a null hypothesis  $H_{0}:μ=p$ against the alternative hypothesis  $H_{1}:μ\\neqp.$ A random sample of 16 observations is taken from the population and the sample mean is calculated as $\\overline{x}=s.$ There is insufficient evidence to reject the null hypothesis using a 5% level of significance.\n\nWhen $p=30$ find the range of values for $s$.",
+      "problemMd": "The population mean of the random variable  $X \\text{tilde} N ( mu , 5 ^{2} )$ is being tested using a null hypothesis  $H_{0}:μ=p$ against the alternative hypothesis  $H_{1}:μ\\neq p.$ A random sample of 16 observations is taken from the population and the sample mean is calculated as $\\overline{x}=s.$ There is insufficient evidence to reject the null hypothesis using a 5% level of significance.\n\nWhen $p=30$ find the range of values for $s$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/hypothesis-testing/hypothesis-testing-normal-distribution/assets/001-img.png)",
       "smeSpecPointIds": [
        "spcpt_SXgS5mjTMgfKTPsD",
@@ -4563,7 +4563,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The spinner is spun 50 times and it is decided to reject the null hypothesis if there are less than 7 or more than 18 successes.\n\n(i) The critical regions for this test are given as  $X\\leqa$  and  $X\\geqb$.  Write down the values of $a$ and $b$.\n\n(ii) State the set of values for which a Type II error could occur.",
+      "problemMd": "The spinner is spun 50 times and it is decided to reject the null hypothesis if there are less than 7 or more than 18 successes.\n\n(i) The critical regions for this test are given as  $X\\leq a$  and  $X\\geq b$.  Write down the values of $a$ and $b$.\n\n(ii) State the set of values for which a Type II error could occur.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/hypothesis-testing/hypothesis-testing/assets/071-img.png)",
       "smeSpecPointIds": [
        "spcpt_SXgS5mjTMgfKTPsD",
@@ -5721,7 +5721,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The table below shows the cumulative probabilities for different values that $X \\text{tilde} B ( 10 , 0.5 )$ can take:\n\n| $x$ | $P(X\\leqx)$ |\n|---|---|\n| 0 | 0.000977 |\n| 1 | 0.010742 |\n| 2 | 0.054688 |\n| 3 | 0.171875 |\n| 4 | 0.376953 |\n| 5 | 0.623047 |\n\nKieran collects coins and suspects that one of them is biased.  To test his suspicion Kieran flips the coin 10 times and records the number of times, $T$, that it lands on tails.\n\nStating your hypotheses clearly, find the critical regions for the test using a 10% level of significance.",
+      "problemMd": "The table below shows the cumulative probabilities for different values that $X \\text{tilde} B ( 10 , 0.5 )$ can take:\n\n| $x$ | $P(X\\leq x)$ |\n|---|---|\n| 0 | 0.000977 |\n| 1 | 0.010742 |\n| 2 | 0.054688 |\n| 3 | 0.171875 |\n| 4 | 0.376953 |\n| 5 | 0.623047 |\n\nKieran collects coins and suspects that one of them is biased.  To test his suspicion Kieran flips the coin 10 times and records the number of times, $T$, that it lands on tails.\n\nStating your hypotheses clearly, find the critical regions for the test using a 10% level of significance.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/hypothesis-testing/hypothesis-testing/assets/001-img.png)",
       "smeSpecPointIds": [
        "spcpt_SXgS5mjTMgfKTPsD",
@@ -7339,7 +7339,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The diagram below shows the probability density function, $f ( x )$, of a random variable $X$. $f(x)=k$ when $0\\leqx\\leqa$, otherwise $f(x)=0$.\n\n![hq4](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/073-hq4.png)\n\nWrite down an expression for $k$ in terms of $a$.",
+      "problemMd": "The diagram below shows the probability density function, $f ( x )$, of a random variable $X$. $f(x)=k$ when $0\\leq x\\leq a$, otherwise $f(x)=0$.\n\n![hq4](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/073-hq4.png)\n\nWrite down an expression for $k$ in terms of $a$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/074-img.png)",
       "smeSpecPointIds": [
        "spcpt_tQpsd6ts3DXRzHSR"
@@ -7522,7 +7522,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The diagram below shows the probability density function, $f ( t )$, of a random variable $T$.\n\n![hq7](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/064-hq7.png)\n\nFor $a\\leqt\\leqb,f(t)=\\frac{3}{32}(10t-t^{2}-21)$, elsewhere $f(t)=0$.\n\nFind the values of $a\\mathrm{and}b$.",
+      "problemMd": "The diagram below shows the probability density function, $f ( t )$, of a random variable $T$.\n\n![hq7](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/064-hq7.png)\n\nFor $a\\leq t\\leq b,f(t)=\\frac{3}{32}(10t-t^{2}-21)$, elsewhere $f(t)=0$.\n\nFind the values of $a\\mathrm{and}b$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/065-img.png)",
       "smeSpecPointIds": []
      },
@@ -7562,7 +7562,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Find $P(-2\\leqT\\leq5)$.",
+      "problemMd": "Find $P(-2\\leq T\\leq5)$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/067-img.png)",
       "smeSpecPointIds": []
      },
@@ -7581,7 +7581,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Given that $P(4\\leqT\\leq6)=\\frac{11}{16}$, find $P(T\\geq6)$.",
+      "problemMd": "Given that $P(4\\leq T\\leq6)=\\frac{11}{16}$, find $P(T\\geq6)$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/068-img.png)",
       "smeSpecPointIds": []
      }
@@ -7745,7 +7745,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "A computer takes $T$ seconds to start up. The random variable, $T$, can be modelled by the probability distribution, $f ( t )$, shown below.\n\n![vhq](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/021-vhq.png)\n\nFor $a\\leqt\\leqb,f(t)=\\frac{1}{8π}\\sqrt{(12t-t^{2}-20)}$, elsewhere $f(t)=0$.\n\nFind the values of $a\\mathrm{and}b$.",
+      "problemMd": "A computer takes $T$ seconds to start up. The random variable, $T$, can be modelled by the probability distribution, $f ( t )$, shown below.\n\n![vhq](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/021-vhq.png)\n\nFor $a\\leq t\\leq b,f(t)=\\frac{1}{8π}\\sqrt{(12t-t^{2}-20)}$, elsewhere $f(t)=0$.\n\nFind the values of $a\\mathrm{and}b$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/022-img.png)",
       "smeSpecPointIds": []
      },
@@ -7804,7 +7804,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Given that $P(4\\leqT\\leq8)=\\sqrt{\\frac{3}{2π}}+\\frac{1}{3}$, find the exact value of $P(T>8)$.",
+      "problemMd": "Given that $P(4\\leq T\\leq8)=\\sqrt{\\frac{3}{2π}}+\\frac{1}{3}$, find the exact value of $P(T>8)$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/025-img.png)",
       "smeSpecPointIds": []
      }
@@ -8495,7 +8495,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "If $X$ and $Y$ are two independent random variables, then:\n\n$E(X\\pmY)=E(X)\\pmE(Y)\\mathrm{and}Var(X\\pmY)=Var(X)+Var(Y)$\n\nThe random variable $S$ has a mean of 10 and a variance of 5 and the random variable $T$ has a mean of 15 and a variance of 7.\n\nFind the mean and variance of:\n\n(i) $S+T$\n\n(ii) $S-T$",
+      "problemMd": "If $X$ and $Y$ are two independent random variables, then:\n\n$E(X\\pm Y)=E(X)\\pm E(Y)\\mathrm{and}Var(X\\pm Y)=Var(X)+Var(Y)$\n\nThe random variable $S$ has a mean of 10 and a variance of 5 and the random variable $T$ has a mean of 15 and a variance of 7.\n\nFind the mean and variance of:\n\n(i) $S+T$\n\n(ii) $S-T$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/linear-combinations-of-random-variables/assets/025-img.png)",
       "smeSpecPointIds": [
        "spcpt_ZMNyvHd7JK6WfHTm"
@@ -10711,7 +10711,7 @@
        "questionPart": null
       },
       "problemMd": "The table below shows the data from a sample of 50 observations of a variable $x$.\n\n(i) Calculate unbiased estimates for the mean and the variance.\n\n(ii) State, with a reason, whether a Poisson distribution could be used to model the population’s data.\n\n| $x$ | 0 | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|---|\n| **Frequency** | 3 | 5 | 17 | 15 | 10 |",
-      "solutionMd": "(i)\n\nFind the sum of the values and the sum of their squares, using the frequencies\n\n$\\sum f x = 0 \\times 3 + 1 \\times 5 + 2 \\times 17 + 3 \\times 15 + 4 \\times 10 = 124$\n\n$\\sum f x^{2} = 0^{2} \\times 3 + 1^{2} \\times 5 + 2^{2} \\times 17 + 3^{2} \\times 15 + 4^{2} \\times 10 = 368$\n\n**[B1]**\n\nThe unbiased estimate of the mean is the sample mean, $\\overline{x} = \\frac{\\sumfx}{n}$\n\n$\\overline{x} = \\frac{124}{50}$\n\n$\\overline{x} = 2 . 48$\n\n**[B1]**\n\nUse the formula for the unbiased estimate of the variance, `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum fx^{2} - \\dfrac{\\left(\\sum fx\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{49}\\left(368 - \\dfrac{124^{2}}{50}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{216}{175} = 1 . 234285 \\dots$\n\n**Final answer:** $s^{2} = 1 . 23$** (3 s.f.)**\n\n**[A1]**\n\n(ii)\n\nA Poisson distribution has its mean equal to its variance, so compare the two estimates\n\n$\\overline{x} = 2 . 48$* is not close to *$s^{2} = 1 . 23$\n\n**Final answer:** **A Poisson distribution could not be used, because the mean and the variance are not approximately equal**\n\n**[B1]**\n\n> **[mark-scheme]**\n> **B1**: $\\sum f x = 124$ and $\\sum f x^{2} = 368$, seen or implied.\n> \n> **B1**: Mean = 2.48.\n> \n> **M1**: Correct use of an unbiased variance formula, `\\dfrac{1}{49}\\left(368 - \\dfrac{124^{2}}{50}\\right)` or `\\dfrac{50}{49}\\left(\\dfrac{368}{50} - 2.48^{2}\\right)`. The biased variance (1.21) scores M0 A0.\n> \n> **A1**: Variance = 1.23, or answers which round to 1.23. Accept $\\frac{216}{175}$.\n> \n> **B1**: \"Not suitable\", with a reason comparing the mean and variance (for example, 2.48 and 1.23 are not close). Both the verdict and the reason are needed.",
+      "solutionMd": "(i)\n\nFind the sum of the values and the sum of their squares, using the frequencies\n\n$\\sum f x = 0 \\times 3 + 1 \\times 5 + 2 \\times 17 + 3 \\times 15 + 4 \\times 10 = 124$\n\n$\\sum f x^{2} = 0^{2} \\times 3 + 1^{2} \\times 5 + 2^{2} \\times 17 + 3^{2} \\times 15 + 4^{2} \\times 10 = 368$\n\n**[B1]**\n\nThe unbiased estimate of the mean is the sample mean, $\\overline{x} = \\frac{\\sum fx}{n}$\n\n$\\overline{x} = \\frac{124}{50}$\n\n$\\overline{x} = 2 . 48$\n\n**[B1]**\n\nUse the formula for the unbiased estimate of the variance, `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum fx^{2} - \\dfrac{\\left(\\sum fx\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{49}\\left(368 - \\dfrac{124^{2}}{50}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{216}{175} = 1 . 234285 \\dots$\n\n**Final answer:** $s^{2} = 1 . 23$** (3 s.f.)**\n\n**[A1]**\n\n(ii)\n\nA Poisson distribution has its mean equal to its variance, so compare the two estimates\n\n$\\overline{x} = 2 . 48$* is not close to *$s^{2} = 1 . 23$\n\n**Final answer:** **A Poisson distribution could not be used, because the mean and the variance are not approximately equal**\n\n**[B1]**\n\n> **[mark-scheme]**\n> **B1**: $\\sum f x = 124$ and $\\sum f x^{2} = 368$, seen or implied.\n> \n> **B1**: Mean = 2.48.\n> \n> **M1**: Correct use of an unbiased variance formula, `\\dfrac{1}{49}\\left(368 - \\dfrac{124^{2}}{50}\\right)` or `\\dfrac{50}{49}\\left(\\dfrac{368}{50} - 2.48^{2}\\right)`. The biased variance (1.21) scores M0 A0.\n> \n> **A1**: Variance = 1.23, or answers which round to 1.23. Accept $\\frac{216}{175}$.\n> \n> **B1**: \"Not suitable\", with a reason comparing the mean and variance (for example, 2.48 and 1.23 are not close). Both the verdict and the reason are needed.",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6",
        "spcpt_CbcjyRyGd65mXstM"
@@ -10733,7 +10733,7 @@
        "questionPart": null
       },
       "problemMd": "The table below shows the data from a sample of 100 observations of a variable $y$.\n\n(i) Calculate unbiased estimates for the mean and the variance.\n\n(ii) State, with a reason, whether a Poisson distribution could be used to model the population’s data.\n\n| $y$ | 0 | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|---|\n| **Frequency** | 15 | 19 | 25 | 21 | 12 | 8 |",
-      "solutionMd": "(i)\n\nFind the sum of the values and the sum of their squares, using the frequencies\n\n$\\sum f y = 0 \\times 15 + 1 \\times 19 + 2 \\times 25 + 3 \\times 21 + 4 \\times 12 + 5 \\times 8 = 220$\n\n$\\sum f y^{2} = 0^{2} \\times 15 + 1^{2} \\times 19 + 2^{2} \\times 25 + 3^{2} \\times 21 + 4^{2} \\times 12 + 5^{2} \\times 8 = 700$\n\n**[B1]**\n\nThe unbiased estimate of the mean is the sample mean, $\\overline{y} = \\frac{\\sumfy}{n}$\n\n$\\overline{y} = \\frac{220}{100}$\n\n$\\overline{y} = 2 . 2$\n\n**[B1]**\n\nUse the formula for the unbiased estimate of the variance, `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum fy^{2} - \\dfrac{\\left(\\sum fy\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{99}\\left(700 - \\dfrac{220^{2}}{100}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{24}{11} = 2 . 181818 \\dots$\n\n**Final answer:** $s^{2} = 2 . 18$** (3 s.f.)**\n\n**[A1]**\n\n(ii)\n\nA Poisson distribution has its mean equal to its variance, so compare the two estimates\n\n$\\overline{y} = 2 . 2$* is close to *$s^{2} = 2 . 18$\n\n**Final answer:** **A Poisson distribution could be used, because the mean and the variance are approximately equal**\n\n**[B1]**\n\n> **[mark-scheme]**\n> **B1**: $\\sum f y = 220$ and $\\sum f y^{2} = 700$, seen or implied.\n> \n> **B1**: Mean = 2.2.\n> \n> **M1**: Correct use of an unbiased variance formula, `\\dfrac{1}{99}\\left(700 - \\dfrac{220^{2}}{100}\\right)` or `\\dfrac{100}{99}\\left(\\dfrac{700}{100} - 2.2^{2}\\right)`. The biased variance (2.16) scores M0 A0.\n> \n> **A1**: Variance = 2.18, or answers which round to 2.18. Accept $\\frac{24}{11}$.\n> \n> **B1**: \"Suitable\", with a reason comparing the mean and variance (for example, 2.2 and 2.18 are close). Both the verdict and the reason are needed.",
+      "solutionMd": "(i)\n\nFind the sum of the values and the sum of their squares, using the frequencies\n\n$\\sum f y = 0 \\times 15 + 1 \\times 19 + 2 \\times 25 + 3 \\times 21 + 4 \\times 12 + 5 \\times 8 = 220$\n\n$\\sum f y^{2} = 0^{2} \\times 15 + 1^{2} \\times 19 + 2^{2} \\times 25 + 3^{2} \\times 21 + 4^{2} \\times 12 + 5^{2} \\times 8 = 700$\n\n**[B1]**\n\nThe unbiased estimate of the mean is the sample mean, $\\overline{y} = \\frac{\\sum fy}{n}$\n\n$\\overline{y} = \\frac{220}{100}$\n\n$\\overline{y} = 2 . 2$\n\n**[B1]**\n\nUse the formula for the unbiased estimate of the variance, `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum fy^{2} - \\dfrac{\\left(\\sum fy\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{99}\\left(700 - \\dfrac{220^{2}}{100}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{24}{11} = 2 . 181818 \\dots$\n\n**Final answer:** $s^{2} = 2 . 18$** (3 s.f.)**\n\n**[A1]**\n\n(ii)\n\nA Poisson distribution has its mean equal to its variance, so compare the two estimates\n\n$\\overline{y} = 2 . 2$* is close to *$s^{2} = 2 . 18$\n\n**Final answer:** **A Poisson distribution could be used, because the mean and the variance are approximately equal**\n\n**[B1]**\n\n> **[mark-scheme]**\n> **B1**: $\\sum f y = 220$ and $\\sum f y^{2} = 700$, seen or implied.\n> \n> **B1**: Mean = 2.2.\n> \n> **M1**: Correct use of an unbiased variance formula, `\\dfrac{1}{99}\\left(700 - \\dfrac{220^{2}}{100}\\right)` or `\\dfrac{100}{99}\\left(\\dfrac{700}{100} - 2.2^{2}\\right)`. The biased variance (2.16) scores M0 A0.\n> \n> **A1**: Variance = 2.18, or answers which round to 2.18. Accept $\\frac{24}{11}$.\n> \n> **B1**: \"Suitable\", with a reason comparing the mean and variance (for example, 2.2 and 2.18 are close). Both the verdict and the reason are needed.",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6",
        "spcpt_CbcjyRyGd65mXstM"
@@ -10764,7 +10764,7 @@
        "questionPart": null
       },
       "problemMd": "Jim records the number of birds that fly past his window during each of 120 randomly chosen 10-minute periods. The results are summarised in the table.\n\n| **Number of birds** | **Frequency** |\n|---|---|\n| 0 | 43 |\n| 1 | 44 |\n| 2 | 22 |\n| 3 | 8 |\n| 4 | 3 |\n| 5 or more | 0 |\n\nCalculate unbiased estimates of the population mean and variance of the number of birds that fly past Jim's window in a 10-minute period.",
-      "solutionMd": "Find the sum of the values and the sum of their squares, using the frequencies\n\n$\\sum f x = 0 \\times 43 + 1 \\times 44 + 2 \\times 22 + 3 \\times 8 + 4 \\times 3 = 124$\n\n$\\sum f x^{2} = 0^{2} \\times 43 + 1^{2} \\times 44 + 2^{2} \\times 22 + 3^{2} \\times 8 + 4^{2} \\times 3 = 252$\n\n**[B1]**\n\nThe unbiased estimate of the population mean is the sample mean, $\\overline{x} = \\frac{\\sumfx}{n}$\n\n$\\overline{x} = \\frac{124}{120} = \\frac{31}{30} = 1 . 0333 \\dots$\n\n**Final answer:** $\\overline{x} = 1 . 03$** (3 s.f.)**\n\n**[B1]**\n\nUse the formula for the unbiased estimate of the population variance, `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum fx^{2} - \\dfrac{\\left(\\sum fx\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{119}\\left(252 - \\dfrac{124^{2}}{120}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{1858}{1785} = 1 . 040896 \\dots$\n\n**Final answer:** $s^{2} = 1 . 04$** (3 s.f.)**\n\n**[A1]**\n\n> **[mark-scheme]**\n> **B1**: $\\sum f x = 124$ and $\\sum f x^{2} = 252$, seen or implied.\n> \n> **B1**: Mean = 1.03, or answers which round to 1.03. Accept $\\frac{31}{30}$.\n> \n> **M1**: Correct use of an unbiased variance formula, `\\dfrac{1}{119}\\left(252 - \\dfrac{124^{2}}{120}\\right)` or `\\dfrac{120}{119}\\left(\\dfrac{252}{120} - \\left(\\dfrac{31}{30}\\right)^{2}\\right)`. The biased variance (1.03) scores M0 A0.\n> \n> **A1**: Variance = 1.04, or answers which round to 1.04. Accept $\\frac{1858}{1785}$.",
+      "solutionMd": "Find the sum of the values and the sum of their squares, using the frequencies\n\n$\\sum f x = 0 \\times 43 + 1 \\times 44 + 2 \\times 22 + 3 \\times 8 + 4 \\times 3 = 124$\n\n$\\sum f x^{2} = 0^{2} \\times 43 + 1^{2} \\times 44 + 2^{2} \\times 22 + 3^{2} \\times 8 + 4^{2} \\times 3 = 252$\n\n**[B1]**\n\nThe unbiased estimate of the population mean is the sample mean, $\\overline{x} = \\frac{\\sum fx}{n}$\n\n$\\overline{x} = \\frac{124}{120} = \\frac{31}{30} = 1 . 0333 \\dots$\n\n**Final answer:** $\\overline{x} = 1 . 03$** (3 s.f.)**\n\n**[B1]**\n\nUse the formula for the unbiased estimate of the population variance, `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum fx^{2} - \\dfrac{\\left(\\sum fx\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{119}\\left(252 - \\dfrac{124^{2}}{120}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{1858}{1785} = 1 . 040896 \\dots$\n\n**Final answer:** $s^{2} = 1 . 04$** (3 s.f.)**\n\n**[A1]**\n\n> **[mark-scheme]**\n> **B1**: $\\sum f x = 124$ and $\\sum f x^{2} = 252$, seen or implied.\n> \n> **B1**: Mean = 1.03, or answers which round to 1.03. Accept $\\frac{31}{30}$.\n> \n> **M1**: Correct use of an unbiased variance formula, `\\dfrac{1}{119}\\left(252 - \\dfrac{124^{2}}{120}\\right)` or `\\dfrac{120}{119}\\left(\\dfrac{252}{120} - \\left(\\dfrac{31}{30}\\right)^{2}\\right)`. The biased variance (1.03) scores M0 A0.\n> \n> **A1**: Variance = 1.04, or answers which round to 1.04. Accept $\\frac{1858}{1785}$.",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6",
        "spcpt_CbcjyRyGd65mXstM"
@@ -11089,7 +11089,7 @@
        "questionPart": null
       },
       "problemMd": "The numbers of detentions issued per school day by Ms Ottway, a teacher, over a period of 150 days are summarised in the table.\n\n| **Number of detentions** | **Number of days** |\n|---|---|\n| 0 | 51 |\n| 1 | 54 |\n| 2 | 36 |\n| 3 | 6 |\n| 4 | 3 |\n| 5 or more | 0 |\n\nCalculate unbiased estimates of the population mean and variance of the number of detentions issued per day, and explain how these estimates suggest that a Poisson distribution is an appropriate model.",
-      "solutionMd": "Find the sum of the values and the sum of their squares, using the numbers of days as frequencies\n\n$\\sum f x = 0 \\times 51 + 1 \\times 54 + 2 \\times 36 + 3 \\times 6 + 4 \\times 3 = 156$\n\n$\\sum f x^{2} = 0^{2} \\times 51 + 1^{2} \\times 54 + 2^{2} \\times 36 + 3^{2} \\times 6 + 4^{2} \\times 3 = 300$\n\n**[B1]**\n\nThe unbiased estimate of the population mean is the sample mean, $\\overline{x} = \\frac{\\sumfx}{n}$\n\n$\\overline{x} = \\frac{156}{150}$\n\n$\\overline{x} = 1 . 04$\n\n**[B1]**\n\nUse the formula for the unbiased estimate of the population variance, `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum fx^{2} - \\dfrac{\\left(\\sum fx\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{149}\\left(300 - \\dfrac{156^{2}}{150}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{3444}{3725} = 0 . 924563 \\dots$\n\n**Final answer:** $s^{2} = 0 . 925$** (3 s.f.)**\n\n**[A1]**\n\nA Poisson distribution has its mean equal to its variance, so compare the two estimates\n\n$\\overline{x} = 1 . 04$* and *$s^{2} = 0 . 925$\n\n**Final answer:** **The estimates of the mean and the variance are approximately equal, so a Poisson distribution is an appropriate model**\n\n**[B1]**\n\n> **[mark-scheme]**\n> **B1**: $\\sum f x = 156$ and $\\sum f x^{2} = 300$, seen or implied.\n> \n> **B1**: Mean = 1.04. Accept $\\frac{26}{25}$.\n> \n> **M1**: Correct use of an unbiased variance formula, `\\dfrac{1}{149}\\left(300 - \\dfrac{156^{2}}{150}\\right)` or `\\dfrac{150}{149}\\left(\\dfrac{300}{150} - 1.04^{2}\\right)`. The biased variance (0.918) scores M0 A0.\n> \n> **A1**: Variance = 0.925, or answers which round to 0.925. Accept $\\frac{3444}{3725}$.\n> \n> **B1**: The mean and variance are approximately equal (or \"close\"), with both values seen. Stating Poisson conditions (independently, singly) without comparing the estimates does not score.",
+      "solutionMd": "Find the sum of the values and the sum of their squares, using the numbers of days as frequencies\n\n$\\sum f x = 0 \\times 51 + 1 \\times 54 + 2 \\times 36 + 3 \\times 6 + 4 \\times 3 = 156$\n\n$\\sum f x^{2} = 0^{2} \\times 51 + 1^{2} \\times 54 + 2^{2} \\times 36 + 3^{2} \\times 6 + 4^{2} \\times 3 = 300$\n\n**[B1]**\n\nThe unbiased estimate of the population mean is the sample mean, $\\overline{x} = \\frac{\\sum fx}{n}$\n\n$\\overline{x} = \\frac{156}{150}$\n\n$\\overline{x} = 1 . 04$\n\n**[B1]**\n\nUse the formula for the unbiased estimate of the population variance, `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum fx^{2} - \\dfrac{\\left(\\sum fx\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{149}\\left(300 - \\dfrac{156^{2}}{150}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{3444}{3725} = 0 . 924563 \\dots$\n\n**Final answer:** $s^{2} = 0 . 925$** (3 s.f.)**\n\n**[A1]**\n\nA Poisson distribution has its mean equal to its variance, so compare the two estimates\n\n$\\overline{x} = 1 . 04$* and *$s^{2} = 0 . 925$\n\n**Final answer:** **The estimates of the mean and the variance are approximately equal, so a Poisson distribution is an appropriate model**\n\n**[B1]**\n\n> **[mark-scheme]**\n> **B1**: $\\sum f x = 156$ and $\\sum f x^{2} = 300$, seen or implied.\n> \n> **B1**: Mean = 1.04. Accept $\\frac{26}{25}$.\n> \n> **M1**: Correct use of an unbiased variance formula, `\\dfrac{1}{149}\\left(300 - \\dfrac{156^{2}}{150}\\right)` or `\\dfrac{150}{149}\\left(\\dfrac{300}{150} - 1.04^{2}\\right)`. The biased variance (0.918) scores M0 A0.\n> \n> **A1**: Variance = 0.925, or answers which round to 0.925. Accept $\\frac{3444}{3725}$.\n> \n> **B1**: The mean and variance are approximately equal (or \"close\"), with both values seen. Stating Poisson conditions (independently, singly) without comparing the estimates does not score.",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6",
        "spcpt_CbcjyRyGd65mXstM"
@@ -11934,7 +11934,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "(i) Calculate $P(26\\leqX\\leq28)$\n\n(ii) Explain why $P(26\\leqX\\leq28)\\approxP(25.5<Y<28.5)$\n\n(iii) Calculate $P(25.5<Y<28.5)$",
+      "problemMd": "(i) Calculate $P(26\\leq X\\leq28)$\n\n(ii) Explain why $P(26\\leq X\\leq28)\\approx P(25.5<Y<28.5)$\n\n(iii) Calculate $P(25.5<Y<28.5)$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/working-with-distributions/assets/009-img.png)",
       "smeSpecPointIds": [
        "spcpt_F5rFq42MxcZZYVvp"
@@ -12454,7 +12454,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Using the normal approximation, find:\n\n(i) $P(60\\leqS<80)$\n\n(ii) $P(S\\leq85)$",
+      "problemMd": "Using the normal approximation, find:\n\n(i) $P(60\\leq S<80)$\n\n(ii) $P(S\\leq85)$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/working-with-distributions/assets/060-img.png)",
       "smeSpecPointIds": [
        "spcpt_H5hw3Xwrd5q3tMVf"
@@ -12475,7 +12475,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Using the normal approximation, find the largest integer value of $s$ such that $P(S\\leqs)<0.1$",
+      "problemMd": "Using the normal approximation, find the largest integer value of $s$ such that $P(S\\leq s)<0.1$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/working-with-distributions/assets/061-img.png)",
       "smeSpecPointIds": [
        "spcpt_H5hw3Xwrd5q3tMVf"
@@ -14285,7 +14285,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Junaid, a teaching assistant at a university, takes a sample of his students’ essays and records the number of spelling mistakes, $x$, each essay contains. The results are summarised as follows.\n\n$n=50\\sumx=5173\\sumx^{2}=560024$\n\nUse the formula below to calculate an unbiased estimate for the population mean number of spelling mistakes in a student’s essay.\n\n$̅x=\\frac{\\sumx}{n}$",
+      "problemMd": "Junaid, a teaching assistant at a university, takes a sample of his students’ essays and records the number of spelling mistakes, $x$, each essay contains. The results are summarised as follows.\n\n$n=50\\sum x=5173\\sum x^{2}=560024$\n\nUse the formula below to calculate an unbiased estimate for the population mean number of spelling mistakes in a student’s essay.\n\n$̅x=\\frac{\\sumx}{n}$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-sampling-and-estimation/sampling-and-estimation/assets/028-img.png)",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6"
@@ -14306,7 +14306,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Use the formula below to calculate an unbiased estimate for the population variance of the number of spelling mistakes in a student’s essay.\n\n$s^{2}=\\frac{1}{n-1}(\\sumx^{2}-\\frac{(\\sumx)^{2}}{n})$",
+      "problemMd": "Use the formula below to calculate an unbiased estimate for the population variance of the number of spelling mistakes in a student’s essay.\n\n$s^{2}=\\frac{1}{n-1}(\\sum x^{2}-\\frac{(\\sum x)^{2}}{n})$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-sampling-and-estimation/sampling-and-estimation/assets/029-img.png)",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6"
@@ -14357,7 +14357,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Use the formula below to calculate an unbiased estimate for the population variance.\n\n$s^{2}=\\frac{1}{n-1}(\\sumx^{2}-\\frac{(\\sumx)^{2}}{n})$",
+      "problemMd": "Use the formula below to calculate an unbiased estimate for the population variance.\n\n$s^{2}=\\frac{1}{n-1}(\\sum x^{2}-\\frac{(\\sum x)^{2}}{n})$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-sampling-and-estimation/sampling-and-estimation/assets/027-img.png)",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6"
@@ -14644,7 +14644,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The formula for the end-points of the 99% confidence interval for the probability of success, $p$ is given by:\n\n$p_{s}\\pmz\\times\\sqrt{\\frac{p_{s}(1-p_{s})}{n}}whereP(-z<Z<z)=0.99$\n\nCalculate an approximate 99% confidence interval for the probability of success in a trial, $p$.",
+      "problemMd": "The formula for the end-points of the 99% confidence interval for the probability of success, $p$ is given by:\n\n$p_{s}\\pm z\\times\\sqrt{\\frac{p_{s}(1-p_{s})}{n}}whereP(-z<Z<z)=0.99$\n\nCalculate an approximate 99% confidence interval for the probability of success in a trial, $p$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-sampling-and-estimation/sampling-and-estimation/assets/033-img.png)",
       "smeSpecPointIds": [
        "spcpt_WrdZ9XXxJsS2Jrd3"
@@ -14675,7 +14675,7 @@
        "questionPart": null
       },
       "problemMd": "The times, $T$ seconds, of a random sample of 8 TV adverts on *Channel π* are as follows.\n\n| 35 | 61 | 42 | 40 | 37 | 35 | 53 | 49 |\n|---|---|---|---|---|---|---|---|\n\nCalculate unbiased estimates of the population mean and variance of $T$.",
-      "solutionMd": "Find the sum of the times and the sum of their squares\n\n$\\sum t = 35 + 61 + 42 + 40 + 37 + 35 + 53 + 49 = 352$\n\n$\\sum t^{2} = 35^{2} + 61^{2} + 42^{2} + 40^{2} + 37^{2} + 35^{2} + 53^{2} + 49^{2} = 16  114$\n\nTo find an unbiased estimate of the population mean, use $\\overline{t} = \\frac{\\sumt}{n}$ with $n = 8$\n\n$\\overline{t} = \\frac{352}{8}$\n\n$\\overline{t} = 44$\n\n**[B1]**\n\nTo find an unbiased estimate of the population variance, use `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum t^{2} - \\dfrac{\\left(\\sum t\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{7}\\left(16\\,114 - \\dfrac{352^{2}}{8}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{626}{7} = 89 . 428 \\dots$\n\n**Final answer:** $s^{2} = 89 . 4$** (3 s.f.)**\n\n**[A1]**\n\n> **[mark-scheme]**\n> **B1**: Unbiased estimate of the mean = 44.\n> \n> **M1**: Correct substitution into either form of the unbiased variance formula. This mark can be implied by a correct answer. Use of the biased variance, dividing by 8 instead of 7 (giving 78.25), scores M0 A0.\n> \n> **A1**: Unbiased estimate of the variance = 89.4, or answers which round to 89.4. Accept $\\frac{626}{7}$.",
+      "solutionMd": "Find the sum of the times and the sum of their squares\n\n$\\sum t = 35 + 61 + 42 + 40 + 37 + 35 + 53 + 49 = 352$\n\n$\\sum t^{2} = 35^{2} + 61^{2} + 42^{2} + 40^{2} + 37^{2} + 35^{2} + 53^{2} + 49^{2} = 16  114$\n\nTo find an unbiased estimate of the population mean, use $\\overline{t} = \\frac{\\sum t}{n}$ with $n = 8$\n\n$\\overline{t} = \\frac{352}{8}$\n\n$\\overline{t} = 44$\n\n**[B1]**\n\nTo find an unbiased estimate of the population variance, use `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum t^{2} - \\dfrac{\\left(\\sum t\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{7}\\left(16\\,114 - \\dfrac{352^{2}}{8}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{626}{7} = 89 . 428 \\dots$\n\n**Final answer:** $s^{2} = 89 . 4$** (3 s.f.)**\n\n**[A1]**\n\n> **[mark-scheme]**\n> **B1**: Unbiased estimate of the mean = 44.\n> \n> **M1**: Correct substitution into either form of the unbiased variance formula. This mark can be implied by a correct answer. Use of the biased variance, dividing by 8 instead of 7 (giving 78.25), scores M0 A0.\n> \n> **A1**: Unbiased estimate of the variance = 89.4, or answers which round to 89.4. Accept $\\frac{626}{7}$.",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6"
       ]
@@ -14730,7 +14730,7 @@
        "questionPart": null
       },
       "problemMd": "The masses, $m$ grams, of a random sample of 80 potatoes from a farm are summarised as follows.\n\n$n = 80$\n\n$\\sum m = 17  764$\n\n$\\sum m^{2} = 4  103  225$\n\nCalculate unbiased estimates of the population mean and variance of the masses of potatoes from the farm.",
-      "solutionMd": "To find an unbiased estimate of the population mean, use $\\overline{m} = \\frac{\\summ}{n}$\n\n$\\overline{m} = \\frac{17764}{80}$\n\n$\\overline{m} = 222 . 05$\n\n**[B1]**\n\nTo find an unbiased estimate of the population variance, use `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum m^{2} - \\dfrac{\\left(\\sum m\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{79}\\left(4\\,103\\,225 - \\dfrac{17\\,764^{2}}{80}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{158728.8}{79} = 2009 . 22 \\dots$\n\n**Final answer:** $s^{2} = 2010$** (3 s.f.)**\n\n**[A1]**\n\n> **[mark-scheme]**\n> **B1**: Unbiased estimate of the mean = 222.05. Accept 222.\n> \n> **M1**: Correct substitution into either form of the unbiased variance formula. This mark can be implied by a correct answer. Use of the biased variance, dividing by 80 instead of 79 (giving 1984), scores M0 A0.\n> \n> **A1**: Unbiased estimate of the variance = 2010, or answers which round to 2010. Accept 2009.2 or $\\frac{158728.8}{79}$.",
+      "solutionMd": "To find an unbiased estimate of the population mean, use $\\overline{m} = \\frac{\\sum m}{n}$\n\n$\\overline{m} = \\frac{17764}{80}$\n\n$\\overline{m} = 222 . 05$\n\n**[B1]**\n\nTo find an unbiased estimate of the population variance, use `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum m^{2} - \\dfrac{\\left(\\sum m\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{79}\\left(4\\,103\\,225 - \\dfrac{17\\,764^{2}}{80}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{158728.8}{79} = 2009 . 22 \\dots$\n\n**Final answer:** $s^{2} = 2010$** (3 s.f.)**\n\n**[A1]**\n\n> **[mark-scheme]**\n> **B1**: Unbiased estimate of the mean = 222.05. Accept 222.\n> \n> **M1**: Correct substitution into either form of the unbiased variance formula. This mark can be implied by a correct answer. Use of the biased variance, dividing by 80 instead of 79 (giving 1984), scores M0 A0.\n> \n> **A1**: Unbiased estimate of the variance = 2010, or answers which round to 2010. Accept 2009.2 or $\\frac{158728.8}{79}$.",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6"
       ]
@@ -14980,7 +14980,7 @@
        "questionPart": null
       },
       "problemMd": "Sasha, an inspector, takes a random sample of 40 chocolate brownies sold by ChocoCakes and records the mass, $m$ grams, of each one. The results are summarised as follows.\n\n$n = 40$\n\n$\\sum m = 3404$\n\n$\\sum m^{2} = 297  409$\n\nCalculate an unbiased estimate of the population mean mass of a brownie, and show that an unbiased estimate of the population variance is 198, correct to 3 significant figures.",
-      "solutionMd": "To find an unbiased estimate of the population mean, use $\\overline{m} = \\frac{\\summ}{n}$\n\n$\\overline{m} = \\frac{3404}{40}$\n\n$\\overline{m} = 85 . 1$\n\n**[B1]**\n\nTo find an unbiased estimate of the population variance, use `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum m^{2} - \\dfrac{\\left(\\sum m\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{39}\\left(297\\,409 - \\dfrac{3404^{2}}{40}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{7728.6}{39} = 198 . 169 \\dots$\n\n**Final answer:** $s^{2} = 198$** (3 s.f.)**\n\n**[A1]**\n\n> **[mark-scheme]**\n> **B1**: Unbiased estimate of the mean = 85.1.\n> \n> **M1**: Correct substitution into either form of the unbiased variance formula. Use of the biased variance, dividing by 40 instead of 39 (giving 193), scores M0 A0.\n> \n> **A1**: 198 correctly obtained, with the unrounded value (198.17 or better) seen before rounding. The answer is given in the question, so the working must be shown.",
+      "solutionMd": "To find an unbiased estimate of the population mean, use $\\overline{m} = \\frac{\\sum m}{n}$\n\n$\\overline{m} = \\frac{3404}{40}$\n\n$\\overline{m} = 85 . 1$\n\n**[B1]**\n\nTo find an unbiased estimate of the population variance, use `s^{2} = \\dfrac{1}{n - 1}\\left(\\sum m^{2} - \\dfrac{\\left(\\sum m\\right)^{2}}{n}\\right)`\n\n`s^{2} = \\dfrac{1}{39}\\left(297\\,409 - \\dfrac{3404^{2}}{40}\\right)`\n\n**[M1]**\n\n$s^{2} = \\frac{7728.6}{39} = 198 . 169 \\dots$\n\n**Final answer:** $s^{2} = 198$** (3 s.f.)**\n\n**[A1]**\n\n> **[mark-scheme]**\n> **B1**: Unbiased estimate of the mean = 85.1.\n> \n> **M1**: Correct substitution into either form of the unbiased variance formula. Use of the biased variance, dividing by 40 instead of 39 (giving 193), scores M0 A0.\n> \n> **A1**: 198 correctly obtained, with the unrounded value (198.17 or better) seen before rounding. The answer is given in the question, so the working must be shown.",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6"
       ]
@@ -15211,7 +15211,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Jim, a pigeon researcher, records the speeds, $S$ kilometres per hour, of pigeons as they fly past a particular spot. Jim takes a random sample of 60 pigeons and the results are summarised as follows.\n\n$n=60\\sums=6309\\sums^{2}=688312$\n\nCalculate a 97% confidence interval for the population mean speed, giving the end-points correct to 1 decimal place.",
+      "problemMd": "Jim, a pigeon researcher, records the speeds, $S$ kilometres per hour, of pigeons as they fly past a particular spot. Jim takes a random sample of 60 pigeons and the results are summarised as follows.\n\n$n=60\\sum s=6309\\sum s^{2}=688312$\n\nCalculate a 97% confidence interval for the population mean speed, giving the end-points correct to 1 decimal place.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-sampling-and-estimation/sampling-and-estimation/assets/035-img.png)",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6",
@@ -15968,7 +15968,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "El Cumpleanyos is a business specialising in birthday party goods. Takato collects a random sample of 30 birthday candles from El Cumpleanyos and records how long each one stays lit, $T$ minutes. The results are summarised as follows.\n\n$n=30\\sumt=827\\sumt^{2}=25374$\n\nKenta takes a different random sample of 50 birthday candles and calculates unbiased estimates for the mean and variance of $T$, shown below.\n\n$̅t=28.1\\mathrm{and}s_{t}^{2}=105.7$\n\n(i) By combining the two samples into one sample of size 80, calculate unbiased estimates for the mean and variance of $T$.\n\n(ii) Using the mean and variance in part (a)(i), calculate a 92% confidence interval for the population mean time that the candles stay lit.",
+      "problemMd": "El Cumpleanyos is a business specialising in birthday party goods. Takato collects a random sample of 30 birthday candles from El Cumpleanyos and records how long each one stays lit, $T$ minutes. The results are summarised as follows.\n\n$n=30\\sum t=827\\sum t^{2}=25374$\n\nKenta takes a different random sample of 50 birthday candles and calculates unbiased estimates for the mean and variance of $T$, shown below.\n\n$̅t=28.1\\mathrm{and}s_{t}^{2}=105.7$\n\n(i) By combining the two samples into one sample of size 80, calculate unbiased estimates for the mean and variance of $T$.\n\n(ii) Using the mean and variance in part (a)(i), calculate a 92% confidence interval for the population mean time that the candles stay lit.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-sampling-and-estimation/sampling-and-estimation/assets/001-img.png)",
       "smeSpecPointIds": [
        "spcpt_fRD8dzP7gVHcXjn6",
