@@ -36,12 +36,12 @@ import {
   BookOpen,
   CalendarCheck,
   ChevronRight,
-  CircleHelp,
   CloudCheck,
   FileQuestion,
   GraduationCap,
   Plus,
   RotateCcw,
+  SquareStack,
   X,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -356,7 +356,7 @@ function SubjectCard({
             />
             <ResourceRow
               href={`${base}/flashcards`}
-              icon={CircleHelp}
+              icon={SquareStack}
               label="Flashcards"
               value={rowValue(counts.cards, "card")}
               percent={percents.cards}

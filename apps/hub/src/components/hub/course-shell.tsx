@@ -26,7 +26,6 @@ import {
   BookOpen,
   Bookmark,
   ChevronDown,
-  CircleHelp,
   Compass,
   FileQuestion,
   Files,
@@ -40,6 +39,7 @@ import {
   PanelLeftOpen,
   ScrollText,
   Sparkles,
+  SquareStack,
   Target,
   TrendingUp,
   X,
@@ -703,7 +703,9 @@ export function CourseShell({
         ...(courseHasBookArchive(data.course.slug)
           ? [{ href: `${base}/books`, label: "Student Book", icon: BookMarked }]
           : []),
-        { href: `${base}/flashcards`, label: "Flashcards", icon: CircleHelp },
+        // run-014 (audit F2): SquareStack — the old CircleHelp glyph read as
+        // "Help"; same glyph as the header dropdown's Flashcards row.
+        { href: `${base}/flashcards`, label: "Flashcards", icon: SquareStack },
         // run-013 R1/G4 (audit MEDIUM): guided lessons — the committed
         // guided-import.json gate (the SAME loadGuidedIndex the Learn-band
         // card keys on). Absent-when-absent (the Seneca law) means this row
