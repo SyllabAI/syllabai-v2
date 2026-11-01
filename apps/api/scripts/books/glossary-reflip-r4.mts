@@ -154,7 +154,7 @@ async function main() {
       const n = flipped.count ?? 0;
       if (n !== EXPECTED_TERMS) throw new Error(`rowcount ${n} != ${EXPECTED_TERMS} — abort (rollback the tx / re-derive)`);
       const c1 = await census(sql);
-      if (c1.glossary.SUGGESTED !== 0 || c1.glossary.VALIDATED !== EXPECTED_TERMS) {
+      if ((c1.glossary.SUGGESTED ?? 0) !== 0 || c1.glossary.VALIDATED !== EXPECTED_TERMS) {
         throw new Error(`post-census ${JSON.stringify(c1.glossary)} != {SUGGESTED:0,VALIDATED:112} — abort`);
       }
       console.log(`[reflip-r4] COMMIT: ${n} terms flipped VALIDATED; post-census ${JSON.stringify(c1.glossary)}`);
