@@ -54,6 +54,12 @@
  *     version-unbound shape; both-kinds refuses per printed grid ref; grids
  *     matching no question refuse (never a silent drop). The version's
  *     remaining parts keep the point scheme unchanged.
+ *   - r2 axis extension (9609 corpus, ruling 7 of the r2 mirror): a band
+ *     row may carry axisKey — the printed per-axis column of a multi-axis
+ *     levels grid. Each axis is its own LEVELS scheme bound to the SAME
+ *     part, version_label `ref#axisKey`; single-axis grids keep the bare
+ *     ref (wave-1 byte-identical). Mixed axisless/axis-keyed bands under
+ *     one ref refuse loudly.
  */
 import type { SqlFn } from "../identity/users";
 import { ConflictException } from "../identity/errors";
@@ -135,30 +141,59 @@ function pointsForQuestion(
  * under the version's number; ref === number is the question-granular
  * (version-unbound) shape, ref "N-x" is the part-bound shape (the wave-1
  * Edexcel reality: 437/437 staged grids are part-granular).
+ *
+ * r2 axis extension (9609 corpus, ruling 7 of the r2 mirror): a band row
+ * may carry `axisKey` — the printed per-axis column of a MULTI-AXIS grid
+ * (CIE 9609 P2/P3 levels tables). Each axis is its own printed ladder, so
+ * each axis groups SEPARATELY (the per-axis cells cannot tile the
+ * single-axis 0..marks range) and births its own LEVELS scheme bound to
+ * the SAME part, version_label suffixed `ref#axisKey` (uq_mark_scheme
+ * UNIQUE(question_version_id, version_label) forces the split). A ref
+ * carrying BOTH axisless and axis-keyed bands is an ambiguous grid
+ * identity — refuse loudly, never guess.
  */
 export interface BandGridGroup<T> {
   ref: string;
+  axisKey: string | null;
   bands: T[];
   granular: "question" | "part";
 }
 
-export function bandGridsForVersion<T extends { questionRef: string | null }>(
+export function bandGridsForVersion<
+  T extends { questionRef: string | null; axisKey?: string | null },
+>(
   bands: T[],
   questionNumber: string,
 ): Array<BandGridGroup<T>> {
   const prefix = `${questionNumber}-`;
   const byRef = new Map<string, T[]>();
+  const refAxes = new Map<string, Set<string | null>>();
   for (const b of bands) {
     if (b.questionRef === null) continue; // unref'd bands bind nothing — orphaned below
     if (b.questionRef !== questionNumber && !b.questionRef.startsWith(prefix)) continue;
-    const list = byRef.get(b.questionRef);
+    const axis = b.axisKey ?? null;
+    const axes = refAxes.get(b.questionRef);
+    if (axes) axes.add(axis);
+    else refAxes.set(b.questionRef, new Set([axis]));
+    const key = axis === null ? b.questionRef : `${b.questionRef}#${axis}`;
+    const list = byRef.get(key);
     if (list) list.push(b);
-    else byRef.set(b.questionRef, [b]);
+    else byRef.set(key, [b]);
   }
-  return [...byRef.entries()].map(([ref, bs]) => ({
-    ref,
+  for (const [ref, axes] of refAxes) {
+    // null coexisting with axis keys is the ambiguous grid identity; several
+    // distinct axis keys under one ref IS the multi-axis grid (ruling 7)
+    if (axes.has(null) && axes.size > 1) {
+      throw new ConflictException(
+        `band grid ${ref} mixes axisless and axis-keyed bands (${[...axes].join(", ")}) — a printed grid is either single-axis or per-axis, never both (r2 axis extension, ruling 7); correct the draft`,
+      );
+    }
+  }
+  return [...byRef.entries()].map(([key, bs]) => ({
+    ref: bs[0]!.questionRef!,
+    axisKey: bs[0]!.axisKey ?? null,
     bands: bs,
-    granular: ref === questionNumber ? ("question" as const) : ("part" as const),
+    granular: bs[0]!.questionRef === questionNumber ? ("question" as const) : ("part" as const),
   }));
 }
 
@@ -657,6 +692,13 @@ export async function ingestPastPaperDraft(
           }
           gridPartId = String(partRows[0].id);
         }
+        // r2 axis extension: each printed axis ladder is its own LEVELS
+        // scheme on the SAME part; the single-axis label stays the bare ref
+        // (the wave-1 shape, byte-identical), the per-axis label is
+        // `ref#axisKey` (uq_mark_scheme forces distinct labels per version)
+        const versionLabel = grid.axisKey === null
+          ? bound(grid.ref, 20)
+          : bound(`${grid.ref}#${grid.axisKey}`, 20);
         await sql`
           insert into mark_schemes (
             id, question_version_id, version_label, source_document_id,
@@ -665,7 +707,7 @@ export async function ingestPastPaperDraft(
           ) values (
             ${schemeId}::uuid,
             ${versionId}::uuid,
-            ${bound(grid.ref, 20)},
+            ${versionLabel},
             ${scheme.sourceDocumentId},
             'SUGGESTED',
             ${draft.extractionMethod},

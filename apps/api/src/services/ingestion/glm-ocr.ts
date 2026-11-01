@@ -29,7 +29,10 @@
  *     range, descriptor, guidance; unknown level/range/descriptor refuses
  *     loudly — never a guess) and never fall through to the whole-entry
  *     point; a question carrying BOTH kinds for one ref is refused at
- *     ingestion (the kind is the scheme's — ADR-040 §2.2);
+ *     ingestion (the kind is the scheme's — ADR-040 §2.2). The printed
+ *     per-axis column key rides as the band's `axis` (r2 axis extension,
+ *     9609 multi-axis grids) — the birth splits each axis into its own
+ *     LEVELS scheme;
  *   - part refs: MS labels "13(b)(i)" → refs "13-b-i" (mechanical
  *     re-formatting of the printed structure);
  *   - command words are NOT guessed from stems;
@@ -188,6 +191,7 @@ export function toPastPaperDraft(
           marksMax: band.marksMax,
           descriptor: band.descriptor,
           guidance: band.guidance,
+          axisKey: band.axis ?? null,
           confidence: entry.confidence,
         });
       }
@@ -363,7 +367,7 @@ export interface GlmPairResult {
  * the SUBTREE is malformed — a JSON null subtree passes z.unknown and
  * reaches here, exactly like Jackson).
  */
-function validateBundle(pair: GlmPairRequestTyped): void {
+export function validateBundle(pair: GlmPairRequestTyped): void {
   for (const [name, value] of [
     ["qpCanonical", pair.qpCanonical],
     ["msCanonical", pair.msCanonical],
@@ -412,7 +416,7 @@ interface BridgeRecordRow {
 }
 
 /** rerun spine lookup: findByQpDocumentIdAndMsDocumentId (uq_glm_ocr_bridge_pair) */
-async function findBridgeRecordByPair(
+export async function findBridgeRecordByPair(
   sql: SqlFn,
   qpDocumentId: string,
   msDocumentId: string,
