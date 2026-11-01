@@ -11,7 +11,6 @@ import {
   Files,
   GraduationCap,
   Lightbulb,
-  ListTree,
   NotebookPen,
   ScrollText,
   Sparkles,
@@ -507,13 +506,11 @@ export default async function CourseHubPage({
             <Badge variant="outline" className="font-mono text-[10px]">
               {fmtCount(stats.specPoints)} spec points
             </Badge>
-            <Link
-              href={`/courses/${meta.slug}/specification`}
-              className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted"
-            >
-              <ListTree className="size-4" aria-hidden />
-              Specification tree
-            </Link>
+            {/* T-COURSE-SPECPILL-1 (operator trace 1a1955167e89eb11): the
+                standalone "Specification tree" button moved into the hero's
+                exam-code pill (every course page carries it) — this card
+                keeps the honest spec-points count and the knowledge-graph
+                deep link. */}
             <Link
               href={`/knowledge-graph?course=${meta.slug}`}
               className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted"

@@ -77,7 +77,7 @@ export default async function PastPaperPage({
                 ({boardOf(meta)} {meta.level} {meta.subject}): Past Paper
               </span>
             </h1>
-            <ExamCodePill code={meta.code} />
+            <ExamCodePill code={meta.code} href={`/courses/${meta.slug}/specification`} />
           </div>
           <p className="text-sm text-muted-foreground">
             {paper.questions.length} questions · {paper.totalMarks} marks ·{" "}
