@@ -13,8 +13,12 @@ task:
     (session_id) candidates_open_idx re-scope, ADR-040 D1 append-only bite probe UPDATE/DELETE blocked inside
     ROLLBACK, 4CH1 canon census 182/182 described + 0 missing (repair needed: NONE — honest zero), G1/G2/G3
     ALL GREEN — verdict APPLIED_GATES_GREEN, receipt .syllabai/receipts/T-TEACHME-001/cow-apply-receipt-r1.json;
-    COW dropped + 404-verified, zero residue) — the PROD apply of 0020/0021 (+ canon, census-proven complete)
-    awaits the operator reading the receipt (T-SENECA-001 two-step discipline)'
+    COW dropped + 404-verified, zero residue); PROD apply of 0020/0021 EXECUTED 2026-11-01 after operator
+    receipt review ('run the same driver against production', chat 97a19c8c): main_pooler
+    ep-ancient-cake-a52e4kfd-pooler, verdict APPLIED_GATES_GREEN (26 stmts COMMIT, prod census identical to
+    the branch proof — 182/0 undescribed, 112 note rows, 6627 anchors — repair needed NONE, independent
+    read-back 6/6 tables + 7/7 FKs + trigger present + receipted (session_id) index shape + 0 rows), receipt
+    .syllabai/receipts/T-TEACHME-001/prod-apply-receipt-r1.json — the Teach-Me lane DDL is LIVE on production'
   priority: P1
   band: T-TEACHME (student learn-by-teaching lane)
   wave: teachme-phase-A
