@@ -39,6 +39,13 @@ const ZERO = { notes: 0, questions: 0, flashcards: 0 };
  * UX audit 2026-10-02 #20: `?q=<partId>` search deep links resolve to the
  * question set and redirect there (unresolvable q renders the index);
  * legacy `?spec=` links jump to the set that anchors the spec point.
+ *
+ * Ring semantics of record (operator traces 1a195fd0b0947695 +
+ * 1a1982281a3d7a65): this select page's rows carry the QUESTIONS-ONLY ring
+ * — answered parts ÷ available questions, never notes, never flashcards —
+ * each select page owns its own denominator (the revision-notes page counts
+ * reads, the flashcards page rates cards; the combined engagement ring
+ * stays the sidebar's posture).
  */
 export default async function ExamQuestionsIndexPage({
   params,
@@ -213,6 +220,7 @@ export default async function ExamQuestionsIndexPage({
                       subtopic={sub.code}
                       counts={countsK}
                       size={18}
+                      dimension="questions"
                     />
                     {label}
                     <span className="min-w-0 flex-1 truncate text-sm font-medium group-hover/link:text-primary">
