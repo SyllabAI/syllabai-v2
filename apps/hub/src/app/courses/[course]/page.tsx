@@ -18,7 +18,6 @@ import {
   Target,
   TrendingUp,
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { teachMeEnabledForCourse } from "@/components/hub/teach-me/gate";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { boardOf, listCourses, loadHubCourse, pilotCourseSlug } from "@/lib/courses";
@@ -514,40 +513,13 @@ export default async function CourseHubPage({
 
   const resourcesPane = !hub.viaProvider && stats.notes + stats.questions === 0 ? null : (
     <>
-      {/* specification card (SME: spec download; SyllabAI: parsed spec deep-link) */}
-      <Card>
-        <CardContent className="flex flex-wrap items-center gap-4 p-4">
-          <div className="flex items-center gap-3">
-            <span className="flex size-9 items-center justify-center rounded-lg bg-primary/10">
-              <GraduationCap className="size-4.5 text-primary" aria-hidden />
-            </span>
-            <div>
-              <p className="text-sm font-semibold">Specification {meta.code}</p>
-              <p className="text-xs text-muted-foreground">
-                {officialTree
-                  ? "Parsed specification points — the canonical tree powering this hub"
-                  : "Corpus spec points (SME-native anchors) — the navigation tree powering this hub; official-code mapping is pending upstream"}
-              </p>
-            </div>
-          </div>
-          <div className="ml-auto flex flex-wrap items-center gap-2">
-            <Badge variant="outline" className="font-mono text-[10px]">
-              {fmtCount(stats.specPoints)} spec points
-            </Badge>
-            {/* T-COURSE-SPECPILL-1 (operator trace 1a1955167e89eb11): the
-                standalone "Specification tree" button moved into the hero's
-                exam-code pill (every course page carries it) — this card
-                keeps the honest spec-points count and the knowledge-graph
-                deep link. */}
-            <Link
-              href={`/knowledge-graph?course=${meta.slug}`}
-              className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted"
-            >
-              View parsed spec <ArrowRight className="size-4" aria-hidden />
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
+      {/* T-COURSE-SPECCARD-1 (operator order, trace 1a197b0988536331): the
+          specification card ("Specification {code}" / parsed-spec-points
+          subtitle) is RETIRED — its "View parsed spec" knowledge-graph deep
+          link moved into the Strengths & Weaknesses pane below (the
+          operator's "for now" placement). The spec-points count and the
+          official-tree provenance stay of record in the page description
+          and the spec surfaces themselves. */}
 
       {/* the resource bands as MG tile rows */}
       {bands.map((band) => (
@@ -707,6 +679,19 @@ export default async function CourseHubPage({
           resources={resourcesPane}
           strengths={
             <>
+              {/* T-COURSE-SPECCARD-1 (operator order, trace 1a197b0988536331):
+                  the "View parsed spec" link moved HERE, inside the
+                  Strengths & Weaknesses pane ("for now" — the operator's
+                  provisional placement), when the Resources-pane spec card
+                  retired. Same destination, same house link voice. */}
+              <div className="mb-4 flex justify-end">
+                <Link
+                  href={`/knowledge-graph?course=${meta.slug}`}
+                  className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted"
+                >
+                  View parsed spec <ArrowRight className="size-4" aria-hidden />
+                </Link>
+              </div>
               <StrengthsPanel course={meta.slug} />
               {/* the strengths route page's provenance disclosure, kept
                   verbatim so the inline pane and the deep-linked page tell
