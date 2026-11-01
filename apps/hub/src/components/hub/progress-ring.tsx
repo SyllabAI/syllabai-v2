@@ -7,9 +7,20 @@
  * rows (lib/progress-server.ts — the projection-of-events law); the
  * browser-local SIMULATED overlay remains the signed-out fallback.
  */
-import { useCourseProgress, type Course } from "@/lib/progress";
+import { subtopicNotesRing, useCourseProgress, type Course } from "@/lib/progress";
 import { formatPercent, roundPercent } from "@/lib/format";
 import { cn } from "@/lib/utils";
+
+/**
+ * Which denominator the ring covers. "all" (the default, every existing
+ * caller) = the combined notes+questions+flashcards engagement coverage.
+ * "notes" = reads ÷ available notes ONLY — the revision-notes select page's
+ * ring of record (operator trace 1a195fd0b0947695: "the rings show progress
+ * of revision notes only, not exam questions and not flashcards. Both of
+ * their select pages will handle their progress rings" — each select page
+ * owns its denominator; the sidebar and the other select pages keep "all").
+ */
+export type ProgressRingDimension = "all" | "notes";
 
 export function ProgressRing({
   course,
@@ -18,6 +29,7 @@ export function ProgressRing({
   size = 18,
   className,
   projectionPercent,
+  dimension = "all",
 }: {
   course: Course;
   /** sub-topic code the ring is computed for */
@@ -30,6 +42,11 @@ export function ProgressRing({
    * (the projection-of-events law, never a local counter); null/undefined
    * falls back to the SIMULATED overlay posture (signed-out demo). */
   projectionPercent?: number | null;
+  /** "notes" swaps the denominator to the notes-only ring of the
+   * revision-notes select page (see ProgressRingDimension). The server
+   * projection branch above is dimension-agnostic by contract: a caller
+   * that passes a projection also passes the matching dimension's number. */
+  dimension?: ProgressRingDimension;
 }) {
   const progress = useCourseProgress(course);
   const radius = (size - 3) / 2;
@@ -38,6 +55,8 @@ export function ProgressRing({
   let percent = 0;
   if (projectionPercent !== undefined && projectionPercent !== null) {
     percent = projectionPercent;
+  } else if (subtopic && dimension === "notes") {
+    percent = roundPercent(subtopicNotesRing(progress, subtopic, counts).percent);
   } else if (subtopic) {
     const k = counts;
     const total = k.notes + k.questions + k.flashcards;

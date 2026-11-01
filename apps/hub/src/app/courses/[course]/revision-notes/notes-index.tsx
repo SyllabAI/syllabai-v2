@@ -16,15 +16,23 @@
  * titles, forcing the matching rows open) and, when this course's learner
  * overlay holds a read, a Resume button (play glyph + "Resume {note title}",
  * truncating at 13rem like the example) pointing at the most recently read
- * note (max notesRead.at — markNoteRead stamps it on every note visit).
+ * note (max notesRead.at — the stamp on each completed read, see the scroll
+ * law below).
  *
  * Ticks of record: the MathsGenie done-tick marks FULLY READ notes — a green
  * filled check circle when read, the faint outline circle when not
- * (role="img" aria-label Read/Unread names both states). It replaces the old
- * read dot on nested and loose note rows, and replaces the ProgressRing on
+ * (role="img" aria-label Read/Unread names both states). "Read" is the
+ * scroll law of record (operator trace 1a195fd0b0947695): a note becomes
+ * read only when its END (the note page's footnote strip) scrolls into
+ * view — opening the page alone never checks it. It replaces the old read
+ * dot on nested and loose note rows, and replaces the ProgressRing on
  * SINGLE-note sub-topic rows (a one-note row's ring is binary anyway; the
- * tick is the note-level truth). Multi-note rows keep the ProgressRing —
- * partial progress across notes+questions+flashcards stays meaningful there
+ * tick is the note-level truth). Multi-note rows keep the ProgressRing in
+ * the NOTES-ONLY dimension (operator trace 1a195fd0b0947695: "the rings
+ * show progress of revision notes only, not exam questions and not
+ * flashcards. Both of their select pages will handle their progress rings"
+ * — this page's rings count reads ÷ available notes and nothing else; the
+ * exam-questions and flashcards select pages own their own denominators)
  * — with per-note ticks inside the expanded list.
  *
  * Guided lessons stay first-class (operator law, trace 1a1810c1ef1cb521):
@@ -115,8 +123,9 @@ export function NotesIndex({
 
   // MathsGenie toolbar: the search query is a transient filter; Resume points
   // at the most recently read note of THIS course (max notesRead.at — the
-  // markNoteRead stamp on every note visit). Nothing read yet → no button
-  // (the example's empty:hidden wrappers).
+  // markNoteRead stamp on each completed read, i.e. the note most recently
+  // scrolled through to its end). Nothing read yet → no button (the
+  // example's empty:hidden wrappers).
   const [query, setQuery] = useState("");
   const q = query.trim().toLowerCase();
   const searching = q.length > 0;
@@ -243,16 +252,16 @@ export function NotesIndex({
                       {sub.label}
                     </span>
                   ) : null;
-                  // the left slot: multi-note rows keep the ProgressRing
-                  // (partial progress across notes+questions+flashcards is
-                  // meaningful); a single-note row's ring is binary, so the
-                  // note-level tick takes its place (the MathsGenie anatomy —
-                  // one truth per row)
+                  // the left slot: multi-note rows keep the ProgressRing in the
+                  // NOTES-ONLY dimension (reads ÷ available notes — never
+                  // questions or flashcards, operator trace 1a195fd0b0947695);
+                  // a single-note row's ring is binary, so the note-level tick
+                  // takes its place (the MathsGenie anatomy — one truth per row)
                   const leftSlot =
                     subNotes.length === 1 ? (
                       <ReadTick read={Boolean(progress.notesRead[subNotes[0].noteId])} />
                     ) : (
-                      <ProgressRing course={course} subtopic={sub.code} counts={countsK} size={18} />
+                      <ProgressRing course={course} subtopic={sub.code} counts={countsK} size={18} dimension="notes" />
                     );
                   const rowLink = (
                     <>
