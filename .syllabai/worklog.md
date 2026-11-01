@@ -23502,3 +23502,12 @@ worklog(r0): T-UGM-0606-1 run-002 (operator commission trace 1a1955c294758a5d "M
 - Escalation watch (carried): #568 + #583 duplicate-task collision STILL unresolved — operator ruling absent again this sweep; neither merged, watching.
 - Boundaries: #596 diff inside apps/hub/** + .syllabai/** + root worklog.md; zero *.java; no core/hub repo content; no Neon/prod/db writes in the diff (the sweep made zero DB contact); intake push FF only; receipt commit .syllabai/** only.
 - Notes: (1) second 405 of the sweep was self-inflicted — bookkeeping commits between PR scans re-dirty the next head-of-list PR; mitigation is the established one (protocol re-check + intake resolver, zero guessing); (2) tail re-read pre-write: 102 still max → 103; (3) two merges this run (fae8c587, f909b2e1), both verified green post-merge; (4) zero force-push, zero auth failures, boundaries held.
+
+## R0-AUTO-104 receipt — 2026-11-01T14:00 sweep (Job 438940)
+
+- Zero merges this sweep (3 open PRs, all gate-b/refused).
+- ESCALATION (new): T-TEACHME-001 run-003 event-drop saga — #593 + twin #597 (same task, same brief, twin declared in #597's registration note as the documented remedy for #593's `pull_request`→CI events never registering across 3 head SHAs + a close-reopen, the #575/#581/#584/#585 class) — BOTH PRs' shared head c3cab5c3 has ZERO registered check-runs (check-runs total_count=0, combined status pending/0 contexts, first-hand ×2) — the twin did NOT cure registration. Neither PR merged (gate-b: CI must be all-success; absent ≠ success). Operator input requested: whether to re-trigger again (close-reopen / fresh empty head) or rule on the lane.
+- Skipped: #296 (head bd2c0b1e unchanged) — hub failure persists on gate-b, static saga residual (carried since R0-AUTO-101).
+- Escalation watch (carried): #568 + #583 duplicate-task collision STILL unresolved — operator ruling absent again this sweep; neither merged, watching.
+- Boundaries: zero diffs merged this sweep; mirror fetch-first clean (LOCAL==REMOTE==b2e8fb4e at sweep start); receipt commit .syllabai/** only; zero *.java; no core/hub repo content; no Neon/prod/db contact.
+- Notes: (1) gates-green-first satisfied — main tip b2e8fb4e (receipt-103) CI verify+hub 2/2 GREEN first-hand before this push; (2) tail re-read pre-write: 103 still max → 104; (3) the escalation ledger now carries three open items: #593/#597 event-drop twin (new), #568+#583 duplicate collision (carried), #296 hub-red saga (carried); (4) zero force-push, zero auth failures, boundaries held.
