@@ -73,6 +73,7 @@ import {
   marksToNextGrade,
   primaryRow,
   rawToUms,
+  sortSessionsNewestFirst,
   usableOptionalPairs,
   type AggregationUnit,
   type BoundaryRow,
@@ -133,7 +134,9 @@ export function GradeBoundariesWorkspace({
     !!calc.cashIn &&
     !!calc.required?.length;
 
-  // group rows per session (a session can carry standard + R-variant rows)
+  // group rows per session (a session can carry standard + R-variant rows);
+  // T-GRADE-006: the list reads newest→oldest like MathsGenie's page — the
+  // graph re-sorts chronologically on its own time axis below.
   const sessions = useMemo(() => {
     const by = new Map<string, GradeBoundariesSeries[]>();
     for (const s of entry.series) {
@@ -141,12 +144,14 @@ export function GradeBoundariesWorkspace({
       arr.push(s);
       by.set(s.session, arr);
     }
-    return [...by.entries()].map(([session, rows]) => ({
-      session,
-      year: rows[0]?.year ?? 0,
-      rows,
-      primary: primaryRow(rows),
-    }));
+    return sortSessionsNewestFirst(
+      [...by.entries()].map(([session, rows]) => ({
+        session,
+        year: rows[0]?.year ?? 0,
+        rows,
+        primary: primaryRow(rows),
+      })),
+    );
   }, [entry]);
 
   const [view, setView] = useState<"table" | "graph">("table");
@@ -417,8 +422,7 @@ export function GradeBoundariesWorkspace({
   );
   const graphMax =
     graphMode === "cashin"
-      ? (cashInRowOf(sessions[sessions.length - 1]?.primary
-           ?? entry.series[0])?.maxMark ?? 0)
+      ? (cashInRowOf(sessions[0]?.primary ?? entry.series[0])?.maxMark ?? 0)
       : graphMode === "route" && routeCombo
         ? (sessions[0]?.primary.routes ?? []).find(
             (r) => r.combination === routeCombo,
@@ -975,7 +979,7 @@ export function GradeBoundariesWorkspace({
                   <p className="font-display text-sm font-semibold">
                     Cash-in — the overall qualification (UMS)
                   </p>
-                  {entry.series.slice(0, 4).map((s) => (
+                  {sortSessionsNewestFirst(entry.series).slice(0, 4).map((s) => (
                     <div key={s.session} className="space-y-2">
                       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                         {s.session}
@@ -1032,7 +1036,7 @@ export function GradeBoundariesWorkspace({
                   <p className="font-display text-sm font-semibold">
                     Unit boundaries (raw / UMS)
                   </p>
-                  {entry.series.slice(0, 4).map((s) => (
+                  {sortSessionsNewestFirst(entry.series).slice(0, 4).map((s) => (
                     <div key={s.session} className="space-y-2">
                       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                         {s.session}
@@ -1125,7 +1129,7 @@ export function GradeBoundariesWorkspace({
                   <p className="font-display text-sm font-semibold">
                     Component thresholds (minimum raw marks)
                   </p>
-                  {entry.series.slice(0, 4).map((s) => (
+                  {sortSessionsNewestFirst(entry.series).slice(0, 4).map((s) => (
                     <div key={s.session} className="space-y-2">
                       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                         {s.session}
@@ -1191,7 +1195,7 @@ export function GradeBoundariesWorkspace({
                   <p className="font-display text-sm font-semibold">
                     Syllabus thresholds by route (weighted marks)
                   </p>
-                  {entry.series.slice(0, 4).map((s) => (
+                  {sortSessionsNewestFirst(entry.series).slice(0, 4).map((s) => (
                     <div key={s.session} className="space-y-2">
                       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                         {s.session}

@@ -286,3 +286,17 @@ export function gradeFromAggregation(
   }
   return { grade, aStarRuleApplied };
 }
+
+/**
+ * Session lists read newest→oldest (MathsGenie lists the most recent
+ * session first). Within a year the month names sort November > June >
+ * January alphabetically, which is also the chronological order. Returns
+ * a new array; the input is untouched.
+ */
+export function sortSessionsNewestFirst<
+  T extends { year: number; session: string },
+>(sessions: readonly T[]): T[] {
+  return [...sessions].sort(
+    (a, b) => b.year - a.year || b.session.localeCompare(a.session),
+  );
+}
