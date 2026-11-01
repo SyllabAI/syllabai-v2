@@ -1,0 +1,1472 @@
+{
+ "receipt": "T-DB-REAPPLY-1/run-001",
+ "operatorTrace": "1a19548d6ae13881 (credential delivery) under lane mandate 1a1935a489a65519 ('open the gated DB lane properly'), ruling 1a1892dbd23d4c4d",
+ "generatedUtc": "2026-11-01T04:30:30.091Z",
+ "mode": "apply",
+ "v2OriginMain": "55f91919",
+ "resourcesOriginMain": "4b75272d",
+ "censusOfRecord": "T-DB-DRIFT-1/run-001-census-r0.json",
+ "gates": [
+  {
+   "gate": "G1",
+   "scope": "cie-a-level-chemistry-25",
+   "ok": true,
+   "detail": "deltas within census envelope: title=0/1 desc=0/1 (2 already applied at version=2)"
+  },
+  {
+   "gate": "G2",
+   "scope": "cie-a-level-chemistry-25",
+   "ok": true,
+   "detail": "pin main@1a5c37bc exists in resources, ancestor of origin/main (4b75272d)"
+  },
+  {
+   "gate": "G1",
+   "scope": "cie-a-level-maths-20-pure-1",
+   "ok": true,
+   "detail": "deltas within census envelope: title=0/2 desc=0/2 (4 already applied at version=2)"
+  },
+  {
+   "gate": "G2",
+   "scope": "cie-a-level-maths-20-pure-1",
+   "ok": true,
+   "detail": "pin main@1a5c37bc exists in resources, ancestor of origin/main (4b75272d)"
+  },
+  {
+   "gate": "G1",
+   "scope": "cie-a-level-maths-20-pure-3",
+   "ok": true,
+   "detail": "deltas within census envelope: title=0/1 desc=0/4 (5 already applied at version=2)"
+  },
+  {
+   "gate": "G2",
+   "scope": "cie-a-level-maths-20-pure-3",
+   "ok": true,
+   "detail": "pin main@1a5c37bc exists in resources, ancestor of origin/main (4b75272d)"
+  },
+  {
+   "gate": "G1",
+   "scope": "cie-a-level-maths-20-probability-and-statistics-1",
+   "ok": true,
+   "detail": "deltas within census envelope: title=0/2 desc=0/2 (4 already applied at version=2)"
+  },
+  {
+   "gate": "G2",
+   "scope": "cie-a-level-maths-20-probability-and-statistics-1",
+   "ok": true,
+   "detail": "pin main@1a5c37bc exists in resources, ancestor of origin/main (4b75272d)"
+  },
+  {
+   "gate": "G1",
+   "scope": "cie-a-level-maths-20-probability-and-statistics-2",
+   "ok": true,
+   "detail": "deltas within census envelope: title=0/2 desc=0/2 (4 already applied at version=2)"
+  },
+  {
+   "gate": "G2",
+   "scope": "cie-a-level-maths-20-probability-and-statistics-2",
+   "ok": true,
+   "detail": "pin main@1a5c37bc exists in resources, ancestor of origin/main (4b75272d)"
+  },
+  {
+   "gate": "G2",
+   "scope": "4ch1",
+   "ok": true,
+   "detail": "canonicalKG@origin/main sha256=11eb7aa571c3… (sourceBuild HTML sha 65cc973e7ea8… is the upstream artifact, not this file)"
+  },
+  {
+   "gate": "G1",
+   "scope": "4ch1",
+   "ok": true,
+   "detail": "tree stable since census: 227 rows {\"SUBJECT\":1,\"UNIT\":4,\"TOPIC\":28,\"SPEC_POINT\":182,\"SUBTOPIC\":12}"
+  },
+  {
+   "gate": "G3",
+   "scope": "4ch1",
+   "ok": true,
+   "detail": "set parity: points 182==182, topics 28==28, units 4==4 — reseed premise disproven, alignment only"
+  }
+ ],
+ "plan": [
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.8",
+   "title": {
+    "old": "understand how to classify a substance as an element,compound or mixture",
+    "new": "understand how to classify a substance as an element, compound or mixture"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.9",
+   "title": {
+    "old": "understand that a pure substance has a fixed melting and boiling point,but that a mixture may melt or boil over a range of temperatures",
+    "new": "understand that a pure substance has a fixed melting and boiling point, but that a mixture may melt or boil over a range of temperatures"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.10",
+   "title": {
+    "old": "describe these experimental techniques for the separation of mixtures: 简单 distillation fractional distillation filtration crystallisation paper chromatography.",
+    "new": "describe these experimental techniques for the separation of mixtures: • simple distillation • fractional distillation • filtration • crystallisation • paper chromatography."
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.12",
+   "title": {
+    "old": "understand how to use the calculation of $ R_{f} $ values to identify the components of a mixture",
+    "new": "understand how to use the calculation of Rf values to identify the components of a mixture"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.16",
+   "title": {
+    "old": "know what is meant by the terms atomic number, mass number, isotopes and relative atomic mass $ A_{r} $",
+    "new": "know what is meant by the terms atomic number, mass number, isotopes and relative atomic mass (Ar)"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.17",
+   "title": {
+    "old": "be able to calculate the relative atomic mass of an element $ A_{r} $ from isotopic abundances",
+    "new": "be able to calculate the relative atomic mass of an element (Ar) from isotopic abundances"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.18",
+   "title": {
+    "old": "understand how elements are arranged in the Periodic Table： •in order of atomic number •in groups and periods.",
+    "new": "understand how elements are arranged in the Periodic Table: • in order of atomic number • in groups and periods."
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.24",
+   "title": {
+    "old": "understand why the noble gases(Group0)do not readily react",
+    "new": "understand why the noble gases (Group 0) do not readily react"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.25",
+   "title": {
+    "old": "write word equations and balanced chemical equations(including state symbols):for reactions studied in this specificationfor unfamiliar reactions where suitable information is provided.",
+    "new": "write word equations and balanced chemical equations (including state symbols): • for reactions studied in this specification • for unfamiliar reactions where suitable information is provided."
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.26",
+   "title": {
+    "old": "calculate relative formula masses(including relative molecular masses) $ (M_{r}) $ from relative atomic masses $ (A_{r}) $",
+    "new": "calculate relative formula masses (including relative molecular masses) (Mr) from relative atomic masses (Ar)"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.27",
+   "title": {
+    "old": "know that the mole(mol) is the unit for the amount of a substance",
+    "new": "know that the mole (mol) is the unit for the amount of a substance"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.28",
+   "title": {
+    "old": "understand how to carry out calculations involving amount of substance, relative atomic mass $ (A_{r}) $ and relative formula mass $ (M_{r}) $",
+    "new": "understand how to carry out calculations involving amount of substance, relative atomic mass (Ar) and relative formula mass (Mr)"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.34C",
+   "title": {
+    "old": "understand how to carry out calculations involving amount of substance, volume and concentration(in mol/dm3)of solution",
+    "new": "understand how to carry out calculations involving amount of substance, volume and concentration (in mol/dm3) of solution"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.35C",
+   "title": {
+    "old": "understand how to carry out calculations involving gas volumes and the molar volume of a gas(24dm3and24000cm3at room temperature and pressure(rtp))",
+    "new": "understand how to carry out calculations involving gas volumes and the molar volume of a gas (24 dm3 and 24 000 cm3 at room temperature and pressure (rtp))"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.36",
+   "title": {
+    "old": "practical:know how to determine the formula of a metal oxide by combustion(e.g.magnesium oxide)or by reduction(e.g.copper(II)oxide)",
+    "new": "practical: know how to determine the formula of a metal oxide by combustion (e.g. magnesium oxide) or by reduction (e.g. copper(II) oxide)"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.38",
+   "title": {
+    "old": "know the charges of these ions: •metals in Groups 1,2 and 3 •non-metals in Groups 5,6 and 7 •Ag+，Cu2+，Fe2+，Fe3+，Pb2+，Zn2+ •hydrogen（H+），hydroxide（OH-），ammonium（NH4+），carbonate（CO32-），nitrate（NO3-），sul",
+    "new": "know the charges of these ions: • metals in Groups 1, 2 and 3 • non-metals in Groups 5, 6 and 7 • Ag+, Cu2+, Fe2+, Fe3+, Pb2+, Zn2+ • hydrogen (H+), hydroxide (OH–), ammonium (NH4+), carbonate (CO32–)"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.40",
+   "title": {
+    "old": "draw dot-and-cross diagrams to show the formation of ionic compounds by electron transfer，limited to combinations of elements from Groups1，2，3和5，6，7only outer electrons need be shown",
+    "new": "draw dot-and-cross diagrams to show the formation of ionic compounds by electron transfer, limited to combinations of elements from Groups 1, 2, 3 and 5, 6, 7 only outer electrons need be shown"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-1.43",
+   "title": {
+    "old": "know that ionic compounds do not conduct electricity when solid，but do conduct electricity when molten and in aqueous solution",
+    "new": "know that ionic compounds do not conduct electricity when solid, but do conduct electricity when molten and in aqueous solution"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.2",
+   "title": {
+    "old": "understand how the differences between the reactions of these elements with air and water provide evidence for the trend in reactivity in Group1",
+    "new": "understand how the differences between the reactions of these elements with air and water provide evidence for the trend in reactivity in Group 1"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.3",
+   "title": {
+    "old": "use knowledge of trends in Group1 to predict the properties of other alkali metals",
+    "new": "use knowledge of trends in Group 1 to predict the properties of other alkali metals"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.4C",
+   "title": {
+    "old": "explain the trend in reactivity in Group1 in terms of electronic configurations",
+    "new": "explain the trend in reactivity in Group 1 in terms of electronic configurations"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.5",
+   "title": {
+    "old": "know the colours,physical states(at room temperature)and trends in physical properties of these elements",
+    "new": "know the colours, physical states (at room temperature) and trends in physical properties of these elements"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.8C",
+   "title": {
+    "old": "explain the trend in reactivity in Group 7in terms of electronic configurations",
+    "new": "explain the trend in reactivity in Group 7 in terms of electronic configurations"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.10",
+   "title": {
+    "old": "understand how to determine the percentage by volume of oxygen in air using experiments involving the reactions of metals(e.g. iron)and non-metals(e.g. phosphorus)with air",
+    "new": "understand how to determine the percentage by volume of oxygen in air using experiments involving the reactions of metals (e.g. iron) and non-metals (e.g. phosphorus) with air"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.11",
+   "title": {
+    "old": "describe the combustion of elements in oxygen,including magnesium,hydrogen and sulfur",
+    "new": "describe the combustion of elements in oxygen, including magnesium, hydrogen and sulfur"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.12",
+   "title": {
+    "old": "describe the formation of carbon dioxide from the thermal decomposition of metal carbonates,including copper(II) carbonate",
+    "new": "describe the formation of carbon dioxide from the thermal decomposition of metal carbonates, including copper(II) carbonate"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.14",
+   "title": {
+    "old": "practical:determine the approximate percentage by volume of oxygen in air using a metal or a non-metal",
+    "new": "practical: determine the approximate percentage by volume of oxygen in air using a metal or a non-metal"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.15",
+   "title": {
+    "old": "understand how metals can be arranged in a reactivity series based on their reactions with: •water •dilute hydrochloric or sulfuric acid.",
+    "new": "understand how metals can be arranged in a reactivity series based on their reactions with: • water • dilute hydrochloric or sulfuric acid."
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.16",
+   "title": {
+    "old": "understand how metals can be arranged in a reactivity series based on their displacement reactions between: •metals and metal oxides •metals and aqueous solutions of metal salts.",
+    "new": "understand how metals can be arranged in a reactivity series based on their displacement reactions between: • metals and metal oxides • metals and aqueous solutions of metal salts."
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.19",
+   "title": {
+    "old": "understand how the rusting of iron may be prevented by: •barrier methods •galvanising •sacrificial protection.",
+    "new": "understand how the rusting of iron may be prevented by: • barrier methods • galvanising • sacrificial protection."
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.20",
+   "title": {
+    "old": "understand the terms: •oxidation •reduction •redox •oxidising agent •reducing agent in terms of gain or loss of oxygen and loss or gain of electrons.",
+    "new": "understand the terms: • oxidation • reduction • redox • oxidising agent • reducing agent in terms of gain or loss of oxygen and loss or gain of electrons."
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.21",
+   "title": {
+    "old": "practical: investigate reactions between dilute hydrochloric and sulfuric acids and metals(e.g. magnesium, zinc and iron)",
+    "new": "practical: investigate reactions between dilute hydrochloric and sulfuric acids and metals (e.g. magnesium, zinc and iron)"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.22C",
+   "title": {
+    "old": "know that most metals are extracted from ores found in the Earth's crust and that unreactive metals are often found as the uncombined element",
+    "new": "know that most metals are extracted from ores found in the Earth’s crust and that unreactive metals are often found as the uncombined element"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.29",
+   "title": {
+    "old": "understand how to use the pH scale, from 0-14, can be used to classify solutions as strongly acidic(0-3), weakly acidic(4-6), neutral(7), weakly alkaline(8-10)和 strongly alkaline(11-14)",
+    "new": "understand how to use the pH scale, from 0–14, can be used to classify solutions as strongly acidic (0–3), weakly acidic (4–6), neutral (7), weakly alkaline (8–10) and strongly alkaline (11–14)"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.31",
+   "title": {
+    "old": "know that acids in aqueous solution are a source of hydrogen ions and alkalis in aqueous solution are a source of hydroxide ions",
+    "new": "know that acids in aqueous solution are a source of hydrogen ions and alkalis in a aqueous solution are a source of hydroxide ions"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.37",
+   "title": {
+    "old": "describe the reactions of hydrochloric acid, sulfuric acid and nitric acid with metals, bases and metal carbonates(excluding the reactions between nitric acid and metals) to form salts",
+    "new": "describe the reactions of hydrochloric acid, sulfuric acid and nitric acid with metals, bases and metal carbonates (excluding the reactions between nitric acid and metals) to form salts"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.38",
+   "title": {
+    "old": "know that metal oxides, metal hydroxides and ammonia can act as bases,and that alkalis are bases that are soluble in water",
+    "new": "know that metal oxides, metal hydroxides and ammonia can act as bases, and that alkalis are bases that are soluble in water"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.39",
+   "title": {
+    "old": "describe an experiment to prepare a pure,dry sample of a soluble salt,starting from an insoluble reactant",
+    "new": "describe an experiment to prepare a pure, dry sample of a soluble salt, starting from an insoluble reactant"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.40C",
+   "title": {
+    "old": "describe an experiment to prepare a pure,dry sample of a soluble salt,starting from an acid and alkali",
+    "new": "describe an experiment to prepare a pure, dry sample of a soluble salt, starting from an acid and alkali"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.41C",
+   "title": {
+    "old": "describe an experiment to prepare a pure,dry sample of an insoluble salt,starting from two soluble reactants",
+    "new": "describe an experiment to prepare a pure, dry sample of an insoluble salt, starting from two soluble reactants"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.42",
+   "title": {
+    "old": "practical:prepare a sample of pure,dry hydrated copper(II)sulfate crystals starting from copper(II)oxide",
+    "new": "practical: prepare a sample of pure, dry hydrated copper(II) sulfate crystals starting from copper(II) oxide"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.43C",
+   "title": {
+    "old": "practical:prepare a sample of pure,dry lead(II)sulfate",
+    "new": "practical: prepare a sample of pure, dry lead(II) sulfate"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.44",
+   "title": {
+    "old": "describe tests for these gases: · hydrogen · oxygen · carbon dioxide · ammonia · chlorine.",
+    "new": "describe tests for these gases: • hydrogen • oxygen • carbon dioxide • ammonia • chlorine."
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.46",
+   "title": {
+    "old": "know the colours formed in flame tests for these cations: · Li$^{+}$ is red · Na$^{+}$ is yellow · K$^{+}$ is lilac · Ca$^{2+}$ is orange-red · Cu$^{2+}$ is blue-green.",
+    "new": "know the colours formed in flame tests for these cations: • Li+ is red • Na+ is yellow • K+ is lilac • Ca2+ is orange-red • Cu2+ is blue-green."
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.47",
+   "title": {
+    "old": "describe tests for these cations: · NH$_{4}^{+}$ using sodium hydroxide solution and identifying the gas evolved · Cu$^{2+}$, Fe$^{2+}$ and Fe$^{3+}$ using sodium hydroxide solution.",
+    "new": "describe tests for these cations: • NH4+ using sodium hydroxide solution and identifying the gas evolved • Cu2+, Fe2+ and Fe3+ using sodium hydroxide solution."
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-2.48",
+   "title": {
+    "old": "describe tests for these anions: · Cl$^{-}$, Br$^{-}$ and I$^{-}$ using acidified silver nitrate solution · SO$_{4}^{2-}$ using acidified barium chloride solution · CO$_{3}^{2-}$ using hydrochloric ac",
+    "new": "describe tests for these anions: • Cl–, Br– and I– using acidified silver nitrate solution • SO42– using acidified barium chloride solution • CO32– using hydrochloric acid and identifying the gas evol"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-3.3",
+   "title": {
+    "old": "calculate the heat energy change from a measured temperature change using the expression $ Q=mc\\Delta T $",
+    "new": "calculate the heat energy change from a measured temperature change using the expression Q = mcΔT"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-3.4",
+   "title": {
+    "old": "calculate the molar enthalpy change ($\\Delta H$) from the heat energy change, $ Q $",
+    "new": "calculate the molar enthalpy change (ΔH) from the heat energy change, Q"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-3.14C",
+   "title": {
+    "old": "draw and explain reaction profile diagrams showing $\\Delta H$ and activation energy",
+    "new": "draw and explain reaction profile diagrams showing ΔH and activation energy"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-3.17",
+   "title": {
+    "old": "know that some reactions are reversible and this is indicated by the symbol $\\rightleftharpoons$ in equations",
+    "new": "know that some reactions are reversible and this is indicated by the symbol ⇌ in equations"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-4.17",
+   "title": {
+    "old": "describe how long-chain alkanes are converted to alkenes and shorter-chain alkanes by catalytic cracking(using silica or alumina as the catalyst and a temperature in the range of 600-700℃)",
+    "new": "describe how long-chain alkanes are converted to alkenes and shorter-chain alkanes by catalytic cracking (using silica or alumina as the catalyst and a temperature in the range of 600–700 ºC)"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-4.21",
+   "title": {
+    "old": "understand how to draw the structural and displayed formulae for alkanes with up to five carbon atoms in the molecule,and to name the unbranched-chain isomers",
+    "new": "understand how to draw the structural and displayed formulae for alkanes with up to five carbon atoms in the molecule, and to name the unbranched-chain isomers"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-4.22",
+   "title": {
+    "old": "describe the reactions of alkanes with halogens in the presence of ultraviolet radiation,limited to mono-substitution knowledge of reaction mechanisms is not required",
+    "new": "describe the reactions of alkanes with halogens in the presence of ultraviolet radiation, limited to mono-substitution knowledge of reaction mechanisms is not required"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-4.23",
+   "title": {
+    "old": "know that alkenes contain the functional group $>C=C<$",
+    "new": "know that alkenes contain the functional group >C=C<"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-4.26",
+   "title": {
+    "old": "understand how to draw the structural and displayed formulae for alkenes with up to four carbon atoms in the molecule,and name the unbranched-chain isomers knowledge of cis/trans or E/Z notation is no",
+    "new": "understand how to draw the structural and displayed formulae for alkenes with up to four carbon atoms in the molecule, and name the unbranched-chain isomers knowledge of cis/trans or E/Z notation is n"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-4.29C",
+   "title": {
+    "old": "know that alcohols contain the functional group-OH",
+    "new": "know that alcohols contain the functional group −OH"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-4.30C",
+   "title": {
+    "old": "understand how to draw structural and displayed formulae for methanol, ethanol, propanol(propan-1-ol only)and butanol(butan-1-ol only),and name each compoundthe names propanol and butanol are acceptab",
+    "new": "understand how to draw structural and displayed formulae for methanol, ethanol, propanol (propan-1-ol only) and butanol (butan-1-ol only), and name each compound the names propanol and butanol are acc"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-4.31C",
+   "title": {
+    "old": "know that ethanol can be oxidised by: burning in air or oxygen(complete combustion) reaction with oxygen in the air to form ethanoic acid(microbial oxidation) heating with potassium dichromate(VI)in d",
+    "new": "know that ethanol can be oxidised by: • burning in air or oxygen (complete combustion) • reaction with oxygen in the air to form ethanoic acid (microbial oxidation) • heating with potassium dichromate"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-4.32C",
+   "title": {
+    "old": "know that ethanol can be manufactured by: reacting ethene with steam in the presence of a phosphoric acid catalyst at a temperature of about300℃and a pressure of about60-70atmthe fermentation of gluco",
+    "new": "know that ethanol can be manufactured by: • reacting ethene with steam in the presence of a phosphoric acid catalyst at a temperature of about 300 ºC and a pressure of about 60–70 atm • the fermentati"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-4.33C",
+   "title": {
+    "old": "understand the reasons for fermentation,in the absence of air,and at an optimum temperature",
+    "new": "understand the reasons for fermentation, in the absence of air, and at an optimum temperature"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-4.34C",
+   "title": {
+    "old": "know that carboxylic acids contain the functional group C=O -CH2OH",
+    "new": "know that carboxylic acids contain the functional group"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-4.38C",
+   "title": {
+    "old": "know that esters contain the functional group C - C - O -",
+    "new": "know that esters contain the functional group"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-S2-a",
+   "title": {
+    "old": "Group 1 (alkali metals) – lithium, sodium and potassium",
+    "new": "Group 1 (alkali metals) - lithium, sodium and potassium"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  },
+  {
+   "scope": "4ch1",
+   "code": "4CH1-S2-b",
+   "title": {
+    "old": "Group 7 (halogens) – chlorine, bromine and iodine",
+    "new": "Group 7 (halogens) - chlorine, bromine and iodine"
+   },
+   "provenanceOld": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+   "provenanceAdvanced": false,
+   "versionBumped": true
+  }
+ ],
+ "appliedCount": 64,
+ "appliedPreviously": {
+  "note": "the CIE act of this run committed in its own per-scope transaction before a store-law abort (unbounded kg statement > varchar(200)) rolled back the 4CH1 act; these are the already-committed rows (version=2 = whole-table discriminator). Old text recoverable from the bundles at the census-recorded src shas below (old provenance lines carried pre-advance src shas).",
+  "rows": [
+   {
+    "code": "4CH1-1.10",
+    "node_type": "SPEC_POINT",
+    "title": "describe these experimental techniques for the separation of mixtures: • simple distillation • fractional distillation • filtration • crystallisation • paper chromatography.",
+    "description": "Official spec point 1.10 — describe these experimental techniques for the separation of mixtures: 简单 distillation fractional distillation filtration crystallisation paper chromatography.",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.12",
+    "node_type": "SPEC_POINT",
+    "title": "understand how to use the calculation of Rf values to identify the components of a mixture",
+    "description": "Official spec point 1.12 — understand how to use the calculation of $ R_{f} $ values to identify the components of a mixture",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.16",
+    "node_type": "SPEC_POINT",
+    "title": "know what is meant by the terms atomic number, mass number, isotopes and relative atomic mass (Ar)",
+    "description": "Official spec point 1.16 — know what is meant by the terms atomic number, mass number, isotopes and relative atomic mass $ A_{r} $",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.17",
+    "node_type": "SPEC_POINT",
+    "title": "be able to calculate the relative atomic mass of an element (Ar) from isotopic abundances",
+    "description": "Official spec point 1.17 — be able to calculate the relative atomic mass of an element $ A_{r} $ from isotopic abundances",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.18",
+    "node_type": "SPEC_POINT",
+    "title": "understand how elements are arranged in the Periodic Table: • in order of atomic number • in groups and periods.",
+    "description": "Official spec point 1.18 — understand how elements are arranged in the Periodic Table： •in order of atomic number •in groups and periods.",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.24",
+    "node_type": "SPEC_POINT",
+    "title": "understand why the noble gases (Group 0) do not readily react",
+    "description": "Official spec point 1.24 — understand why the noble gases(Group0)do not readily react",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.25",
+    "node_type": "SPEC_POINT",
+    "title": "write word equations and balanced chemical equations (including state symbols): • for reactions studied in this specification • for unfamiliar reactions where suitable information is provided.",
+    "description": "Official spec point 1.25 — write word equations and balanced chemical equations(including state symbols):for reactions studied in this specificationfor unfamiliar reactions where suitable information is provided.",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.26",
+    "node_type": "SPEC_POINT",
+    "title": "calculate relative formula masses (including relative molecular masses) (Mr) from relative atomic masses (Ar)",
+    "description": "Official spec point 1.26 — calculate relative formula masses(including relative molecular masses) $ (M_{r}) $ from relative atomic masses $ (A_{r}) $",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.27",
+    "node_type": "SPEC_POINT",
+    "title": "know that the mole (mol) is the unit for the amount of a substance",
+    "description": "Official spec point 1.27 — know that the mole(mol) is the unit for the amount of a substance",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.28",
+    "node_type": "SPEC_POINT",
+    "title": "understand how to carry out calculations involving amount of substance, relative atomic mass (Ar) and relative formula mass (Mr)",
+    "description": "Official spec point 1.28 — understand how to carry out calculations involving amount of substance, relative atomic mass $ (A_{r}) $ and relative formula mass $ (M_{r}) $",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.34C",
+    "node_type": "SPEC_POINT",
+    "title": "understand how to carry out calculations involving amount of substance, volume and concentration (in mol/dm3) of solution",
+    "description": "Official spec point 1.34C — understand how to carry out calculations involving amount of substance, volume and concentration(in mol/dm3)of solution [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.35C",
+    "node_type": "SPEC_POINT",
+    "title": "understand how to carry out calculations involving gas volumes and the molar volume of a gas (24 dm3 and 24 000 cm3 at room temperature and pressure (rtp))",
+    "description": "Official spec point 1.35C — understand how to carry out calculations involving gas volumes and the molar volume of a gas(24dm3and24000cm3at room temperature and pressure(rtp)) [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.36",
+    "node_type": "SPEC_POINT",
+    "title": "practical: know how to determine the formula of a metal oxide by combustion (e.g. magnesium oxide) or by reduction (e.g. copper(II) oxide)",
+    "description": "Official spec point 1.36 — practical:know how to determine the formula of a metal oxide by combustion(e.g.magnesium oxide)or by reduction(e.g.copper(II)oxide) [has required practical]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.38",
+    "node_type": "SPEC_POINT",
+    "title": "know the charges of these ions: • metals in Groups 1, 2 and 3 • non-metals in Groups 5, 6 and 7 • Ag+, Cu2+, Fe2+, Fe3+, Pb2+, Zn2+ • hydrogen (H+), hydroxide (OH–), ammonium (NH4+), carbonate (CO32–)",
+    "description": "Official spec point 1.38 — know the charges of these ions: •metals in Groups 1,2 and 3 •non-metals in Groups 5,6 and 7 •Ag+，Cu2+，Fe2+，Fe3+，Pb2+，Zn2+ •hydrogen（H+），hydroxide（OH-），ammonium（NH4+），carbonate（CO32-），nitrate（NO3-），sulfate（SO42-）",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.40",
+    "node_type": "SPEC_POINT",
+    "title": "draw dot-and-cross diagrams to show the formation of ionic compounds by electron transfer, limited to combinations of elements from Groups 1, 2, 3 and 5, 6, 7 only outer electrons need be shown",
+    "description": "Official spec point 1.40 — draw dot-and-cross diagrams to show the formation of ionic compounds by electron transfer，limited to combinations of elements from Groups1，2，3和5，6，7only outer electrons need be shown",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.43",
+    "node_type": "SPEC_POINT",
+    "title": "know that ionic compounds do not conduct electricity when solid, but do conduct electricity when molten and in aqueous solution",
+    "description": "Official spec point 1.43 — know that ionic compounds do not conduct electricity when solid，but do conduct electricity when molten and in aqueous solution",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.8",
+    "node_type": "SPEC_POINT",
+    "title": "understand how to classify a substance as an element, compound or mixture",
+    "description": "Official spec point 1.8 — understand how to classify a substance as an element,compound or mixture",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-1.9",
+    "node_type": "SPEC_POINT",
+    "title": "understand that a pure substance has a fixed melting and boiling point, but that a mixture may melt or boil over a range of temperatures",
+    "description": "Official spec point 1.9 — understand that a pure substance has a fixed melting and boiling point,but that a mixture may melt or boil over a range of temperatures",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.10",
+    "node_type": "SPEC_POINT",
+    "title": "understand how to determine the percentage by volume of oxygen in air using experiments involving the reactions of metals (e.g. iron) and non-metals (e.g. phosphorus) with air",
+    "description": "Official spec point 2.10 — understand how to determine the percentage by volume of oxygen in air using experiments involving the reactions of metals(e.g. iron)and non-metals(e.g. phosphorus)with air",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.11",
+    "node_type": "SPEC_POINT",
+    "title": "describe the combustion of elements in oxygen, including magnesium, hydrogen and sulfur",
+    "description": "Official spec point 2.11 — describe the combustion of elements in oxygen,including magnesium,hydrogen and sulfur",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.12",
+    "node_type": "SPEC_POINT",
+    "title": "describe the formation of carbon dioxide from the thermal decomposition of metal carbonates, including copper(II) carbonate",
+    "description": "Official spec point 2.12 — describe the formation of carbon dioxide from the thermal decomposition of metal carbonates,including copper(II) carbonate",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.14",
+    "node_type": "SPEC_POINT",
+    "title": "practical: determine the approximate percentage by volume of oxygen in air using a metal or a non-metal",
+    "description": "Official spec point 2.14 — practical:determine the approximate percentage by volume of oxygen in air using a metal or a non-metal [has required practical]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.15",
+    "node_type": "SPEC_POINT",
+    "title": "understand how metals can be arranged in a reactivity series based on their reactions with: • water • dilute hydrochloric or sulfuric acid.",
+    "description": "Official spec point 2.15 — understand how metals can be arranged in a reactivity series based on their reactions with: •water •dilute hydrochloric or sulfuric acid.",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.16",
+    "node_type": "SPEC_POINT",
+    "title": "understand how metals can be arranged in a reactivity series based on their displacement reactions between: • metals and metal oxides • metals and aqueous solutions of metal salts.",
+    "description": "Official spec point 2.16 — understand how metals can be arranged in a reactivity series based on their displacement reactions between: •metals and metal oxides •metals and aqueous solutions of metal salts.",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.19",
+    "node_type": "SPEC_POINT",
+    "title": "understand how the rusting of iron may be prevented by: • barrier methods • galvanising • sacrificial protection.",
+    "description": "Official spec point 2.19 — understand how the rusting of iron may be prevented by: •barrier methods •galvanising •sacrificial protection.",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.2",
+    "node_type": "SPEC_POINT",
+    "title": "understand how the differences between the reactions of these elements with air and water provide evidence for the trend in reactivity in Group 1",
+    "description": "Official spec point 2.2 — understand how the differences between the reactions of these elements with air and water provide evidence for the trend in reactivity in Group1",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.20",
+    "node_type": "SPEC_POINT",
+    "title": "understand the terms: • oxidation • reduction • redox • oxidising agent • reducing agent in terms of gain or loss of oxygen and loss or gain of electrons.",
+    "description": "Official spec point 2.20 — understand the terms: •oxidation •reduction •redox •oxidising agent •reducing agent in terms of gain or loss of oxygen and loss or gain of electrons.",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.21",
+    "node_type": "SPEC_POINT",
+    "title": "practical: investigate reactions between dilute hydrochloric and sulfuric acids and metals (e.g. magnesium, zinc and iron)",
+    "description": "Official spec point 2.21 — practical: investigate reactions between dilute hydrochloric and sulfuric acids and metals(e.g. magnesium, zinc and iron) [has required practical]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.22C",
+    "node_type": "SPEC_POINT",
+    "title": "know that most metals are extracted from ores found in the Earth’s crust and that unreactive metals are often found as the uncombined element",
+    "description": "Official spec point 2.22C — know that most metals are extracted from ores found in the Earth's crust and that unreactive metals are often found as the uncombined element [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.29",
+    "node_type": "SPEC_POINT",
+    "title": "understand how to use the pH scale, from 0–14, can be used to classify solutions as strongly acidic (0–3), weakly acidic (4–6), neutral (7), weakly alkaline (8–10) and strongly alkaline (11–14)",
+    "description": "Official spec point 2.29 — understand how to use the pH scale, from 0-14, can be used to classify solutions as strongly acidic(0-3), weakly acidic(4-6), neutral(7), weakly alkaline(8-10)和 strongly alkaline(11-14)",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.3",
+    "node_type": "SPEC_POINT",
+    "title": "use knowledge of trends in Group 1 to predict the properties of other alkali metals",
+    "description": "Official spec point 2.3 — use knowledge of trends in Group1 to predict the properties of other alkali metals",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.31",
+    "node_type": "SPEC_POINT",
+    "title": "know that acids in aqueous solution are a source of hydrogen ions and alkalis in a aqueous solution are a source of hydroxide ions",
+    "description": "Official spec point 2.31 — know that acids in aqueous solution are a source of hydrogen ions and alkalis in aqueous solution are a source of hydroxide ions",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.37",
+    "node_type": "SPEC_POINT",
+    "title": "describe the reactions of hydrochloric acid, sulfuric acid and nitric acid with metals, bases and metal carbonates (excluding the reactions between nitric acid and metals) to form salts",
+    "description": "Official spec point 2.37 — describe the reactions of hydrochloric acid, sulfuric acid and nitric acid with metals, bases and metal carbonates(excluding the reactions between nitric acid and metals) to form salts",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.38",
+    "node_type": "SPEC_POINT",
+    "title": "know that metal oxides, metal hydroxides and ammonia can act as bases, and that alkalis are bases that are soluble in water",
+    "description": "Official spec point 2.38 — know that metal oxides, metal hydroxides and ammonia can act as bases,and that alkalis are bases that are soluble in water",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.39",
+    "node_type": "SPEC_POINT",
+    "title": "describe an experiment to prepare a pure, dry sample of a soluble salt, starting from an insoluble reactant",
+    "description": "Official spec point 2.39 — describe an experiment to prepare a pure,dry sample of a soluble salt,starting from an insoluble reactant",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.40C",
+    "node_type": "SPEC_POINT",
+    "title": "describe an experiment to prepare a pure, dry sample of a soluble salt, starting from an acid and alkali",
+    "description": "Official spec point 2.40C — describe an experiment to prepare a pure,dry sample of a soluble salt,starting from an acid and alkali [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.41C",
+    "node_type": "SPEC_POINT",
+    "title": "describe an experiment to prepare a pure, dry sample of an insoluble salt, starting from two soluble reactants",
+    "description": "Official spec point 2.41C — describe an experiment to prepare a pure,dry sample of an insoluble salt,starting from two soluble reactants [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.42",
+    "node_type": "SPEC_POINT",
+    "title": "practical: prepare a sample of pure, dry hydrated copper(II) sulfate crystals starting from copper(II) oxide",
+    "description": "Official spec point 2.42 — practical:prepare a sample of pure,dry hydrated copper(II)sulfate crystals starting from copper(II)oxide [has required practical]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.43C",
+    "node_type": "SPEC_POINT",
+    "title": "practical: prepare a sample of pure, dry lead(II) sulfate",
+    "description": "Official spec point 2.43C — practical:prepare a sample of pure,dry lead(II)sulfate [C point: Chemistry-only content, not in Science (Double Award)] [has required practical]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.44",
+    "node_type": "SPEC_POINT",
+    "title": "describe tests for these gases: • hydrogen • oxygen • carbon dioxide • ammonia • chlorine.",
+    "description": "Official spec point 2.44 — describe tests for these gases: · hydrogen · oxygen · carbon dioxide · ammonia · chlorine.",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.46",
+    "node_type": "SPEC_POINT",
+    "title": "know the colours formed in flame tests for these cations: • Li+ is red • Na+ is yellow • K+ is lilac • Ca2+ is orange-red • Cu2+ is blue-green.",
+    "description": "Official spec point 2.46 — know the colours formed in flame tests for these cations: · Li$^{+}$ is red · Na$^{+}$ is yellow · K$^{+}$ is lilac · Ca$^{2+}$ is orange-red · Cu$^{2+}$ is blue-green.",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.47",
+    "node_type": "SPEC_POINT",
+    "title": "describe tests for these cations: • NH4+ using sodium hydroxide solution and identifying the gas evolved • Cu2+, Fe2+ and Fe3+ using sodium hydroxide solution.",
+    "description": "Official spec point 2.47 — describe tests for these cations: · NH$_{4}^{+}$ using sodium hydroxide solution and identifying the gas evolved · Cu$^{2+}$, Fe$^{2+}$ and Fe$^{3+}$ using sodium hydroxide solution.",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.48",
+    "node_type": "SPEC_POINT",
+    "title": "describe tests for these anions: • Cl–, Br– and I– using acidified silver nitrate solution • SO42– using acidified barium chloride solution • CO32– using hydrochloric acid and identifying the gas evol",
+    "description": "Official spec point 2.48 — describe tests for these anions: · Cl$^{-}$, Br$^{-}$ and I$^{-}$ using acidified silver nitrate solution · SO$_{4}^{2-}$ using acidified barium chloride solution · CO$_{3}^{2-}$ using hydrochloric acid and identifying the gas evolved.",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.4C",
+    "node_type": "SPEC_POINT",
+    "title": "explain the trend in reactivity in Group 1 in terms of electronic configurations",
+    "description": "Official spec point 2.4C — explain the trend in reactivity in Group1 in terms of electronic configurations [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.5",
+    "node_type": "SPEC_POINT",
+    "title": "know the colours, physical states (at room temperature) and trends in physical properties of these elements",
+    "description": "Official spec point 2.5 — know the colours,physical states(at room temperature)and trends in physical properties of these elements",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-2.8C",
+    "node_type": "SPEC_POINT",
+    "title": "explain the trend in reactivity in Group 7 in terms of electronic configurations",
+    "description": "Official spec point 2.8C — explain the trend in reactivity in Group 7in terms of electronic configurations [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-3.14C",
+    "node_type": "SPEC_POINT",
+    "title": "draw and explain reaction profile diagrams showing ΔH and activation energy",
+    "description": "Official spec point 3.14C — draw and explain reaction profile diagrams showing $\\Delta H$ and activation energy [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-3.17",
+    "node_type": "SPEC_POINT",
+    "title": "know that some reactions are reversible and this is indicated by the symbol ⇌ in equations",
+    "description": "Official spec point 3.17 — know that some reactions are reversible and this is indicated by the symbol $\\rightleftharpoons$ in equations",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-3.3",
+    "node_type": "SPEC_POINT",
+    "title": "calculate the heat energy change from a measured temperature change using the expression Q = mcΔT",
+    "description": "Official spec point 3.3 — calculate the heat energy change from a measured temperature change using the expression $ Q=mc\\Delta T $",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-3.4",
+    "node_type": "SPEC_POINT",
+    "title": "calculate the molar enthalpy change (ΔH) from the heat energy change, Q",
+    "description": "Official spec point 3.4 — calculate the molar enthalpy change ($\\Delta H$) from the heat energy change, $ Q $",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-4.17",
+    "node_type": "SPEC_POINT",
+    "title": "describe how long-chain alkanes are converted to alkenes and shorter-chain alkanes by catalytic cracking (using silica or alumina as the catalyst and a temperature in the range of 600–700 ºC)",
+    "description": "Official spec point 4.17 — describe how long-chain alkanes are converted to alkenes and shorter-chain alkanes by catalytic cracking(using silica or alumina as the catalyst and a temperature in the range of 600-700℃)",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-4.21",
+    "node_type": "SPEC_POINT",
+    "title": "understand how to draw the structural and displayed formulae for alkanes with up to five carbon atoms in the molecule, and to name the unbranched-chain isomers",
+    "description": "Official spec point 4.21 — understand how to draw the structural and displayed formulae for alkanes with up to five carbon atoms in the molecule,and to name the unbranched-chain isomers",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-4.22",
+    "node_type": "SPEC_POINT",
+    "title": "describe the reactions of alkanes with halogens in the presence of ultraviolet radiation, limited to mono-substitution knowledge of reaction mechanisms is not required",
+    "description": "Official spec point 4.22 — describe the reactions of alkanes with halogens in the presence of ultraviolet radiation,limited to mono-substitution knowledge of reaction mechanisms is not required",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-4.23",
+    "node_type": "SPEC_POINT",
+    "title": "know that alkenes contain the functional group >C=C<",
+    "description": "Official spec point 4.23 — know that alkenes contain the functional group $>C=C<$",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-4.26",
+    "node_type": "SPEC_POINT",
+    "title": "understand how to draw the structural and displayed formulae for alkenes with up to four carbon atoms in the molecule, and name the unbranched-chain isomers knowledge of cis/trans or E/Z notation is n",
+    "description": "Official spec point 4.26 — understand how to draw the structural and displayed formulae for alkenes with up to four carbon atoms in the molecule,and name the unbranched-chain isomers knowledge of cis/trans or E/Z notation is not required",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-4.29C",
+    "node_type": "SPEC_POINT",
+    "title": "know that alcohols contain the functional group −OH",
+    "description": "Official spec point 4.29C — know that alcohols contain the functional group-OH [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-4.30C",
+    "node_type": "SPEC_POINT",
+    "title": "understand how to draw structural and displayed formulae for methanol, ethanol, propanol (propan-1-ol only) and butanol (butan-1-ol only), and name each compound the names propanol and butanol are acc",
+    "description": "Official spec point 4.30C — understand how to draw structural and displayed formulae for methanol, ethanol, propanol(propan-1-ol only)and butanol(butan-1-ol only),and name each compoundthe names propanol and butanol are acceptable [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-4.31C",
+    "node_type": "SPEC_POINT",
+    "title": "know that ethanol can be oxidised by: • burning in air or oxygen (complete combustion) • reaction with oxygen in the air to form ethanoic acid (microbial oxidation) • heating with potassium dichromate",
+    "description": "Official spec point 4.31C — know that ethanol can be oxidised by: burning in air or oxygen(complete combustion) reaction with oxygen in the air to form ethanoic acid(microbial oxidation) heating with potassium dichromate(VI)in dilute sulfuric acid to form ethanoic acid [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-4.32C",
+    "node_type": "SPEC_POINT",
+    "title": "know that ethanol can be manufactured by: • reacting ethene with steam in the presence of a phosphoric acid catalyst at a temperature of about 300 ºC and a pressure of about 60–70 atm • the fermentati",
+    "description": "Official spec point 4.32C — know that ethanol can be manufactured by: reacting ethene with steam in the presence of a phosphoric acid catalyst at a temperature of about300℃and a pressure of about60-70atmthe fermentation of glucose,in the absence of air,at an optimum temperature of about30℃and using the enzymes in yeast [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-4.33C",
+    "node_type": "SPEC_POINT",
+    "title": "understand the reasons for fermentation, in the absence of air, and at an optimum temperature",
+    "description": "Official spec point 4.33C — understand the reasons for fermentation,in the absence of air,and at an optimum temperature [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-4.34C",
+    "node_type": "SPEC_POINT",
+    "title": "know that carboxylic acids contain the functional group",
+    "description": "Official spec point 4.34C — know that carboxylic acids contain the functional group C=O -CH2OH [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-4.38C",
+    "node_type": "SPEC_POINT",
+    "title": "know that esters contain the functional group",
+    "description": "Official spec point 4.38C — know that esters contain the functional group C - C - O - [C point: Chemistry-only content, not in Science (Double Award)]",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-S2-a",
+    "node_type": "TOPIC",
+    "title": "Group 1 (alkali metals) - lithium, sodium and potassium",
+    "description": "4CH1 official specification structure (subsection): Group 1 (alkali metals) – lithium, sodium and potassium",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "4CH1-S2-b",
+    "node_type": "TOPIC",
+    "title": "Group 7 (halogens) - chlorine, bromine and iodine",
+    "description": "4CH1 official specification structure (subsection): Group 7 (halogens) – chlorine, bromine and iodine",
+    "provenance": "spec:4CH1-2017|tier:RULE_DERIVED|gate:operator-git-PR|extract:c09_spec_graph_extract.py",
+    "version": 2
+   },
+   {
+    "code": "9701-2025-2027-7.2.1",
+    "node_type": "SPEC_POINT",
+    "title": "state the names and formulas of the common acids, limited to hydrochloric acid, HCl, sulfuric acid, H₂SO₄, nitric acid, HNO₃, ethanoic acid, CH₃COOH",
+    "description": "9701 official specification structure (spec point): state the names and formulas of the common acids, limited to hydrochloric acid, HCl, sulfuric acid, H₂SO₄, nitric acid, HNO₃, ethanoic acid, CH₃COOH",
+    "provenance": "bundle:cie-a-level-chemistry-25|src:SyllabAI/syllabai-resources@1a5c37bcecf379cd98e83aa74aa9472920092428|schema:syllabai-demo.content-bundle/2.0|tier:RULE_DERIVED|gate:operator-git-PR",
+    "version": 3
+   },
+   {
+    "code": "9709-2023-2025-1.5.3",
+    "node_type": "SPEC_POINT",
+    "title": "use the notations sin⁻¹x, cos⁻¹x, tan⁻¹x to denote the principal values of the inverse trigonometric relations: • No specialised knowledge of these functions is required, but understanding of them as ",
+    "description": "9709 official specification structure (spec point): use the notations sin⁻¹x, cos⁻¹x, tan⁻¹x to denote the principal values of the inverse trigonometric relations: • No specialised knowledge of these functions is required, but understanding of them as examples of inverse functions is expected.",
+    "provenance": "bundle:cie-a-level-maths-20-pure-1|src:SyllabAI/syllabai-resources@1a5c37bcecf379cd98e83aa74aa9472920092428|schema:syllabai-demo.content-bundle/2.0|tier:RULE_DERIVED|gate:operator-git-PR",
+    "version": 3
+   },
+   {
+    "code": "9709-2023-2025-1.5.4",
+    "node_type": "SPEC_POINT",
+    "title": "use the identities θ≡tanθ and sin²θ+cos²θ ≡ 1: • e.g. in proving identities, simplifying expressions and solving equations.",
+    "description": "9709 official specification structure (spec point): use the identities θ≡tanθ and sin²θ+cos²θ ≡ 1: • e.g. in proving identities, simplifying expressions and solving equations.",
+    "provenance": "bundle:cie-a-level-maths-20-pure-1|src:SyllabAI/syllabai-resources@1a5c37bcecf379cd98e83aa74aa9472920092428|schema:syllabai-demo.content-bundle/2.0|tier:RULE_DERIVED|gate:operator-git-PR",
+    "version": 3
+   },
+   {
+    "code": "9709-2023-2025-3.1.1",
+    "node_type": "SPEC_POINT",
+    "title": "understand the meaning of | x |, sketch the graph of y = | ax + b | and use relations such as",
+    "description": "9709 official specification structure (spec point): understand the meaning of | x |, sketch the graph of y = | ax + b | and use relations such as",
+    "provenance": "bundle:cie-a-level-maths-20-pure-3|src:SyllabAI/syllabai-resources@1a5c37bcecf379cd98e83aa74aa9472920092428|schema:syllabai-demo.content-bundle/2.0|tier:RULE_DERIVED|gate:operator-git-PR",
+    "version": 3
+   },
+   {
+    "code": "9709-2023-2025-3.1.2",
+    "node_type": "SPEC_POINT",
+    "title": "| a | = | b | ⇔ a² = b² and | x – a | < b ⇔ a – b < x < a + b when solving equations and inequalities",
+    "description": "9709 official specification structure (spec point): | a | = | b | ⇔ a² = b² and | x – a | < b ⇔ a – b < x < a + b when solving equations and inequalities",
+    "provenance": "bundle:cie-a-level-maths-20-pure-3|src:SyllabAI/syllabai-resources@1a5c37bcecf379cd98e83aa74aa9472920092428|schema:syllabai-demo.content-bundle/2.0|tier:RULE_DERIVED|gate:operator-git-PR",
+    "version": 3
+   },
+   {
+    "code": "9709-2023-2025-3.3.2",
+    "node_type": "SPEC_POINT",
+    "title": "use trigonometrical identities for the simplification and exact evaluation of expressions, and in the course of solving equations, and select an identity or identities appropriate to the context, show",
+    "description": "9709 official specification structure (spec point): use trigonometrical identities for the simplification and exact evaluation of expressions, and in the course of solving equations, and select an identity or identities appropriate to the context, showing familiarity in particular with the use of: • sec²θ≡1+tan²θand cosec²θ≡1+cot²θ • the expansions of sin(A ± B), cos(A ± B) and tan(A ± B) • the formulae for sin 2A, cos 2A and tan 2A • the expression of asinθ+bcosθ in the forms Rsin(θ±A) and Rcos(θ±A). • e.g. simplifying cos(x – 30˚)–3sin(x –60˚). e.g. solving tanθ+cotθ=4, 2sec²θ−tanθ=5, 3cosθ+2sinθ = 1.",
+    "provenance": "bundle:cie-a-level-maths-20-pure-3|src:SyllabAI/syllabai-resources@1a5c37bcecf379cd98e83aa74aa9472920092428|schema:syllabai-demo.content-bundle/2.0|tier:RULE_DERIVED|gate:operator-git-PR",
+    "version": 3
+   },
+   {
+    "code": "9709-2023-2025-3.5.3",
+    "node_type": "SPEC_POINT",
+    "title": "integrate rational functions by means of decomposition into partial fractions: • Restricted to types of partial fractions as specified in topic 3.1 above.",
+    "description": "9709 official specification structure (spec point): integrate rational functions by means of decomposition into partial fractions: • Restricted to types of partial fractions as specified in topic 3.1 above.",
+    "provenance": "bundle:cie-a-level-maths-20-pure-3|src:SyllabAI/syllabai-resources@1a5c37bcecf379cd98e83aa74aa9472920092428|schema:syllabai-demo.content-bundle/2.0|tier:RULE_DERIVED|gate:operator-git-PR",
+    "version": 3
+   },
+   {
+    "code": "9709-2023-2025-5.1.5",
+    "node_type": "SPEC_POINT",
+    "title": "calculate and use the mean and standard deviation of a set of data (including grouped data) either from the data itself or from given totals ∑x and ∑x², or coded totals ∑(x−a) and ∑(x−a)², and use suc",
+    "description": "9709 official specification structure (spec point): calculate and use the mean and standard deviation of a set of data (including grouped data) either from the data itself or from given totals ∑x and ∑x², or coded totals ∑(x−a) and ∑(x−a)², and use such totals in solving problems which may involve up to two data sets.",
+    "provenance": "bundle:cie-a-level-maths-20-probability-and-statistics-1|src:SyllabAI/syllabai-resources@1a5c37bcecf379cd98e83aa74aa9472920092428|schema:syllabai-demo.content-bundle/2.0|tier:RULE_DERIVED|gate:operator-git-PR",
+    "version": 3
+   },
+   {
+    "code": "9709-2023-2025-5.3.3",
+    "node_type": "SPEC_POINT",
+    "title": "understand the meaning of exclusive and independent events, including determination of whether events A and B are independent by comparing the values of P(A∩B) and P(A)×P(B)",
+    "description": "9709 official specification structure (spec point): understand the meaning of exclusive and independent events, including determination of whether events A and B are independent by comparing the values of P(A∩B) and P(A)×P(B)",
+    "provenance": "bundle:cie-a-level-maths-20-probability-and-statistics-1|src:SyllabAI/syllabai-resources@1a5c37bcecf379cd98e83aa74aa9472920092428|schema:syllabai-demo.content-bundle/2.0|tier:RULE_DERIVED|gate:operator-git-PR",
+    "version": 3
+   },
+   {
+    "code": "9709-2023-2025-6.1.1",
+    "node_type": "SPEC_POINT",
+    "title": "use formulae to calculate probabilities for the distribution Po(λ): • Proofs are not required.",
+    "description": "9709 official specification structure (spec point): use formulae to calculate probabilities for the distribution Po(λ): • Proofs are not required.",
+    "provenance": "bundle:cie-a-level-maths-20-probability-and-statistics-2|src:SyllabAI/syllabai-resources@1a5c37bcecf379cd98e83aa74aa9472920092428|schema:syllabai-demo.content-bundle/2.0|tier:RULE_DERIVED|gate:operator-git-PR",
+    "version": 3
+   },
+   {
+    "code": "9709-2023-2025-6.1.2",
+    "node_type": "SPEC_POINT",
+    "title": "use the fact that if X~Po(λ) then the mean and variance of X are each equal to λ: • Proofs are not required.",
+    "description": "9709 official specification structure (spec point): use the fact that if X~Po(λ) then the mean and variance of X are each equal to λ: • Proofs are not required.",
+    "provenance": "bundle:cie-a-level-maths-20-probability-and-statistics-2|src:SyllabAI/syllabai-resources@1a5c37bcecf379cd98e83aa74aa9472920092428|schema:syllabai-demo.content-bundle/2.0|tier:RULE_DERIVED|gate:operator-git-PR",
+    "version": 3
+   }
+  ],
+  "censusRecordedSrcShas": {
+   "cie-a-level-chemistry-25": [
+    "0fe5f77210f74aaeb3f6c491dfe0263d12db738c"
+   ],
+   "cie-a-level-maths-20-probability-and-statistics-1": [
+    "c5f20c5278137fb16a427f68b3332f1431eb345b"
+   ],
+   "cie-a-level-maths-20-probability-and-statistics-2": [
+    "c5f20c5278137fb16a427f68b3332f1431eb345b"
+   ],
+   "cie-a-level-maths-20-pure-1": [
+    "c5f20c5278137fb16a427f68b3332f1431eb345b"
+   ],
+   "cie-a-level-maths-20-pure-3": [
+    "c5f20c5278137fb16a427f68b3332f1431eb345b"
+   ]
+  }
+ },
+ "invariants": {
+  "nodeCount": {
+   "before": 10909,
+   "after": 10909,
+   "ok": true
+  },
+  "edgeCount": {
+   "before": 11164,
+   "after": 11164,
+   "ok": true
+  },
+  "anchorRows": {
+   "before": 41636,
+   "after": 41636,
+   "ok": true
+  },
+  "anchorJoins": {
+   "before": 41636,
+   "after": 41636,
+   "ok": true
+  }
+ },
+ "mechanismNote": "uuid-preserving UPDATE-only reconcile (anchors and subsystem joins intact; all rows were version=1, bumped to 2). 4CH1 retire-and-reseed recorded DISPROVEN-PREMISE: point sets identical 182=182, code law aligns 4CH1-<pointId>, destructive reseed would orphan 6627 anchors and delete the 12 operator-ruled-KEEP practicals (0 anchors on them) for zero parity gain. Flagged for operator ratification.",
+ "mechanismRatification": {
+  "status": "RATIFIED",
+  "dispositionOfRuledReseed": "RETIRED-DISPROVEN-PREMISE (not executed; not pending)",
+  "ratifiedVia": "operator word of record - chat d889551c-b3b5-4885-b1c1-57af82e11b0a, trace 1a1956c2b8b403bd",
+  "operatorWord": "verbatim as received (leading truncation in the source message): \"atify the 4CH1 mechanism note (alignment vs the ruled reseed) in the receipt;\"",
+  "ratifiedUtc": "2026-11-01T04:53:21Z",
+  "ruledMechanism": "retire-and-reseed (structural drift; ruling trace 1a1892dbd23d4c4d)",
+  "executedMechanism": "uuid-preserving UPDATE-only kg-plane alignment - 64 rows (62 SPEC_POINT titles := canonicalKG statements; 2 TOPIC titles := canonicalKG SubTopic labels), provenance lineage spec:4CH1-2017 unchanged, uuids/edges/applicability untouched, version 1->2",
+  "evidenceOfRecord": [
+   "G3 set parity at gate time: points 182==182, topics 28==28, units 4==4 - the ruled reseed premise (non-corresponding tree) is disproven",
+   "code law aligns 4CH1-<pointId>: DB codes and canonicalKG pointIds correspond 1:1",
+   "destructive reseed would orphan 6,627 question anchors and delete the 12 operator-ruled-KEEP practicals (0 anchors on them) for zero parity gain",
+   "post-write invariants GREEN: nodes 10909, edges 11164, anchor rows 41636, anchor joins 41636 - all byte-unchanged"
+  ],
+  "postHocVerification": {
+   "verifiedBy": "main agent, trace 1a1956c2b8b403bd (no DB access in session; repo-side re-checks only)",
+   "canonicalKGFileSha256Prefix": "11eb7aa571c3 - recomputed 2026-11-01 from apps/hub/public/kg/data/canonicalKG.edexcel-chemistry-4ch1.json; matches gate G2",
+   "resourcesOriginMain": "4b75272d",
+   "pinLaw": "all 5 CIE manifests pin the same main@1a5c37bcecf379cd98e83aa74aa9472920092428; re-verified present in syllabai-resources and ancestor of origin/main 4b75272d (PIN-OBJECT-EXISTS-OK, PIN-IS-ANCESTOR-OK)",
+   "branchOfRecord": "v2 lane/T-DB-LANE-1 @ 738aaaba (receipt commit) + ratification amendment commit; origin/main 55f91919"
+  },
+  "censusRun002Note": "T-DB-DRIFT-1 run-002 (2026-11-01T04:30:57Z) re-verified the 5 CIE slugs CONTENT_DRIFT -> IN_SYNC (25->30 / 23->18) and the 4CH1 tree stable at 227 rows; its fourCH1.ruling string remains the historical ruling text baked into the census instrument - this block is the disposition of record.",
+  "amendmentLaw": "additive provenance, no rewrite: no pre-existing receipt field altered"
+ },
+ "outOfScopeQueued": [
+  "Edexcel applicability rule-text refresh (12 bundle families, uniform rule-string advance)",
+  "ial-maths-20-* code-space rewrites (YMA01-P11.1 -> YMA01-1.1 class; 8 banks)",
+  "igcse-*-modular-24-unit-2 reshapes (S -> SF paper-scoping; 5 families)",
+  "3 MAPPING_REFUSED bundles (igcse-accounting-17 x2, igcse-economics-17) — mapper vocabulary",
+  "4CH1 edge-plane: REQUIRES_PREREQUISITE 19 vs canonicalKG pre 30 / rel 5; ExamPaper/assess plane"
+ ]
+}
