@@ -2184,3 +2184,128 @@ describe("the same-board re-serve plane (T-UGM-AS-PURE-1 r0 — the AS pure-2 bu
     for (const r of as2.resources) expect(served.has(r.ugmId)).toBe(true);
   });
 });
+
+describe("the cross-plane re-serve plane (T-UGM-0606-1 run-002 — the 0606 Additional Maths bundle, vehicle V1)", () => {
+  const X0606_PATH = join(
+    import.meta.dir,
+    "../../content/cie-igcse-further-maths-additional-maths-25/ugm-resources.json",
+  );
+  const x0606 = UgmLaneBundle.parse(
+    JSON.parse(readFileSync(X0606_PATH, "utf8")),
+  );
+  // the three CIE source bundles of record (first-of-record map below)
+  const srcP1 = UgmLaneBundle.parse(
+    JSON.parse(readFileSync(join(import.meta.dir, "../../content/cie-a-level-maths-20-pure-1/ugm-resources.json"), "utf8")),
+  );
+  const srcP2 = UgmLaneBundle.parse(
+    JSON.parse(readFileSync(join(import.meta.dir, "../../content/cie-a-level-maths-20-pure-2/ugm-resources.json"), "utf8")),
+  );
+  const srcP3 = UgmLaneBundle.parse(
+    JSON.parse(readFileSync(join(import.meta.dir, "../../content/cie-a-level-maths-20-pure-3/ugm-resources.json"), "utf8")),
+  );
+  // first-of-record map: pure-1 > pure-3 > pure-2 (the cross-bundle twin law)
+  const srcById = new Map<string, { course: string; bodyMd: string }>();
+  for (const [course, b] of [
+    ["cie-a-level-maths-20-pure-1", srcP1],
+    ["cie-a-level-maths-20-pure-3", srcP3],
+    ["cie-a-level-maths-20-pure-2", srcP2],
+  ] as const) {
+    for (const r of b.resources) {
+      if (!srcById.has(r.ugmId)) {
+        srcById.set(r.ugmId, { course, bodyMd: r.bodyMd });
+      }
+    }
+  }
+
+  test("parse succeeds under the reader schema (1.2 honest-gap law)", () => {
+    expect(x0606.schema).toBe("syllabai-demo.ugm-lane-resources/1.2");
+    expect(x0606.lane).toBe("cie-igcse-further-maths-additional-maths-25");
+    expect(x0606.reviewState.state).toBe("SUGGESTED");
+    expect(x0606.reviewState.note).toContain("Cross-plane re-serve");
+  });
+
+  test("spec-point index: 76 codes biject the 0606 curriculum spine minus the folded dup-code (spine verbatim law)", () => {
+    const cur = JSON.parse(
+      readFileSync(
+        join(import.meta.dir, "../../content/cie-igcse-further-maths-additional-maths-25/curriculum.json"),
+        "utf8",
+      ),
+    ) as { nodes: Array<{ family?: string; code?: string; title?: string }> };
+    const curCodes = cur.nodes
+      .filter((n) => n.family === "SPEC_POINT")
+      .map((n) => n.code as string)
+      .sort();
+    expect(curCodes).toHaveLength(77);
+    expect(x0606.specPoints).toHaveLength(76);
+    expect(x0606.specPoints.map((s) => s.code)).not.toContain("10.6.1a");
+    expect([...x0606.specPoints.map((s) => s.code)].sort()).toEqual(
+      curCodes.filter((c) => c !== "10.6.1a"),
+    );
+    for (const sp of x0606.specPoints) {
+      const node = cur.nodes.find((n) => n.code === sp.code);
+      expect(sp.officialText).toBe(node?.title);
+      expect(sp.resourceCount).toBe(sp.ugmIds.length);
+      if (sp.primaryPick !== null) expect(sp.ugmIds).toContain(sp.primaryPick);
+    }
+    // the folded dup-code rides its parent of record — never gap-implied
+    const parent = x0606.specPoints.find((s) => s.code === "10.6.1");
+    expect(parent?.ugmIds.length ?? 0).toBeGreaterThan(0);
+  });
+
+  test("the honest-gap law: exactly the 3 P&C codes ride null picks and zero rows, and they are never served", () => {
+    const gaps = x0606.specPoints.filter((s) => s.primaryPick === null);
+    expect(gaps.map((s) => s.code).sort()).toEqual(["11.3.1", "11.3.2", "11.3.3"]);
+    for (const g of gaps) {
+      expect(g.ugmIds).toEqual([]);
+      expect(g.resourceCount).toBe(0);
+    }
+    for (const r of x0606.resources) {
+      for (const sp of r.specPoints) {
+        expect(["11.3.1", "11.3.2", "11.3.3"]).not.toContain(sp.code);
+      }
+    }
+  });
+
+  test("the byte-true mirror law: every served body equals the source bundle named by its provenance", () => {
+    const byCourse = {
+      "cie-a-level-maths-20-pure-1": srcP1,
+      "cie-a-level-maths-20-pure-2": srcP2,
+      "cie-a-level-maths-20-pure-3": srcP3,
+    };
+    for (const r of x0606.resources) {
+      const srcBundle = byCourse[r.servedFromCourse as keyof typeof byCourse];
+      expect(srcBundle).toBeDefined();
+      const src = srcBundle.resources.find((x) => x.ugmId === r.ugmId);
+      expect(src).toBeDefined();
+      expect(src?.bodyMd).toBe(r.bodyMd);
+      expect(r.textOfRecordUnder).toBe(`${r.servedFromCourse}/ugm-resources.json`);
+      expect(r.nonOverlap).toBe(false);
+    }
+  });
+
+  test("the depth-grade language: guard notes ride exactly the 16 thin codes of record", () => {
+    const guarded = new Set(
+      x0606.resources
+        .flatMap((r) => r.specPoints)
+        .filter((s) => (s.note ?? "").startsWith("[SERVES_WITH_GUARD]"))
+        .map((s) => s.code),
+    );
+    expect(guarded.size).toBe(16);
+  });
+
+  test("the note language rides the run-001 matrix of record", () => {
+    for (const r of x0606.resources) {
+      for (const sp of r.specPoints) {
+        expect(sp.note ?? "").toMatch(/^\[(SERVES|SERVES_WITH_GUARD)\] <- CIE /);
+      }
+    }
+  });
+
+  test("the flag law: the 0606 plane is flagged for the surface", () => {
+    const flags = JSON.parse(
+      readFileSync(join(import.meta.dir, "../../content/flags.json"), "utf8"),
+    );
+    const courses = flags.flags.ugmLaneResources.courses;
+    expect(courses).toContain("cie-igcse-further-maths-additional-maths-25");
+  });
+});

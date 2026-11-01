@@ -13,20 +13,33 @@
     "ial-maths-20-pure-3",
     "ial-maths-20-pure-4",
     "cie-as-maths-20-pure-1",
-    "cie-as-maths-20-pure-2"
+    "cie-as-maths-20-pure-2",
+    "cie-igcse-further-maths-additional-maths-25"
    ],
    "crossBoard": {
-    "registry": "EDEXCEL_IAL_PURE_YMA01_2020",
-    "targetCourses": [
-     "ial-maths-20-pure-1",
-     "ial-maths-20-pure-2",
-     "ial-maths-20-pure-3",
-     "ial-maths-20-pure-4"
-    ],
-    "source": "CIE 9709 UGM corpus of record (628 captured bodies + 166 byref across cie-a-level-maths-20-pure-1/2/3) re-adjudicated per IAL spec point — the SAME captured substrate, zero recapture, zero new intake",
-    "feasibility": "T-UGM-XBOARD-IAL-1 run-001 VERDICT: FEASIBLE (conditional) — IAL spine YMA01 2020 = 77 spec points; served-eligible 75/77 (48 DIRECT + 9 DIRECT_THIN + 12 PARTIAL + 6 PARTIAL_VERY_THIN); hard gaps IAL P4 5.2 + 6.4 (differential equations — corpus zero, not fillable from UGM); fail-closed matrix validation V1/V2/V3 PASS; census of record in .syllabai/receipts/T-UGM-XBOARD-IAL-1/",
-    "law": "CIE_A_LEVEL_MATHS_2023_2025 does NOT migrate: IAL mirror rows live under EDEXCEL_IAL_PURE_YMA01_2020; every IAL row carries per-row source-CIE specPoint refs + depthGrade SERVES|SERVES_WITH_GUARD|INSUFFICIENT; INSUFFICIENT rows are disclosed, never served; year-skew (e.g. CIE P3 algebra bodies serving IAL P1/P2) keeps the source CIE specRef of record beside the IAL re-adjudication",
-    "status": "flagged-ahead (T-UGM-XBOARD-IAL-1 X0): the four IAL slugs are flagged inert until the mirror bundles commit — lib/ugm.ts absent=OFF law: flagged course with no committed bundle resolves null (honest empty; static params skip, course card omits, ugm routes 404); bundle lanes X1-X4 pending operator commission"
+    "EDEXCEL_IAL_PURE_YMA01_2020": {
+     "registry": "EDEXCEL_IAL_PURE_YMA01_2020",
+     "targetCourses": [
+      "ial-maths-20-pure-1",
+      "ial-maths-20-pure-2",
+      "ial-maths-20-pure-3",
+      "ial-maths-20-pure-4"
+     ],
+     "source": "CIE 9709 UGM corpus of record (628 captured bodies + 166 byref across cie-a-level-maths-20-pure-1/2/3) re-adjudicated per IAL spec point — the SAME captured substrate, zero recapture, zero new intake",
+     "feasibility": "T-UGM-XBOARD-IAL-1 run-001 VERDICT: FEASIBLE (conditional) — IAL spine YMA01 2020 = 77 spec points; served-eligible 75/77 (48 DIRECT + 9 DIRECT_THIN + 12 PARTIAL + 6 PARTIAL_VERY_THIN); hard gaps IAL P4 5.2 + 6.4 (differential equations — corpus zero, not fillable from UGM); fail-closed matrix validation V1/V2/V3 PASS; census of record in .syllabai/receipts/T-UGM-XBOARD-IAL-1/",
+     "law": "CIE_A_LEVEL_MATHS_2023_2025 does NOT migrate: IAL mirror rows live under EDEXCEL_IAL_PURE_YMA01_2020; every IAL row carries per-row source-CIE specPoint refs + depthGrade SERVES|SERVES_WITH_GUARD|INSUFFICIENT; INSUFFICIENT rows are disclosed, never served; year-skew (e.g. CIE P3 algebra bodies serving IAL P1/P2) keeps the source CIE specRef of record beside the IAL re-adjudication",
+     "status": "flagged-ahead (T-UGM-XBOARD-IAL-1 X0): the four IAL slugs are flagged inert until the mirror bundles commit — lib/ugm.ts absent=OFF law: flagged course with no committed bundle resolves null (honest empty; static params skip, course card omits, ugm routes 404); bundle lanes X1-X4 pending operator commission"
+    },
+    "CIE_IGCSE_ADDMATHS_0606_2025": {
+     "registry": "CIE_IGCSE_ADDMATHS_0606_2025",
+     "targetCourses": [
+      "cie-igcse-further-maths-additional-maths-25"
+     ],
+     "source": "CIE 9709 UGM corpus of record (663 aligned bodies across cie-a-level-maths-20-pure-1/2/3) re-adjudicated per 0606 spec point — the SAME captured substrate, zero recapture, zero new intake",
+     "feasibility": "T-UGM-0606-1 run-001 VERDICT of record: FEASIBLE (cross-plane re-serve with per-row adjudication) — 74/77 served (58 SERVES + 16 SERVES_WITH_GUARD, incl. 1 folded), 3 honest gaps (Permutations & combinations -> 9709 S1) disclosed at 3.9%%; matrix of record in .syllabai/receipts/T-UGM-0606-1/",
+     "law": "CIE_A_LEVEL_MATHS registry does NOT migrate: 0606 rows live under CIE_IGCSE_ADDMATHS_0606_2025; every row carries per-row source-CIE specPoint refs + depthGrade SERVES|SERVES_WITH_GUARD|INSUFFICIENT; INSUFFICIENT rows are disclosed, never served; the folded dup-code rides its parent — never gap-implied; year-skew (2020-capture corpus serving the 2025-2027 spine) keeps the source CIE specRef of record beside the re-adjudication",
+     "status": "live (T-UGM-0606-1 run-002 bundle committed in the same lane PR — no flagged-ahead phase needed; the 0606 course plane was already live on the hub)"
+    }
    },
    "sameBoardReServe": {
     "courses": [

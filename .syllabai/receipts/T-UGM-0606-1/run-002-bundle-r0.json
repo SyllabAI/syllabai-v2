@@ -1,0 +1,70 @@
+{
+ "schema": "syllabai-demo.lane-receipt/1.0",
+ "lane": "T-UGM-0606-1",
+ "run": "run-002",
+ "kind": "bundle",
+ "operatorTrace": "1a1955c294758a5d",
+ "generatedUtc": "2026-11-01T05:22:36Z",
+ "task": "run-002: materialize the V1 cross-plane re-serve bundle on the 0606 course plane per the run-001 feasibility matrix of record",
+ "run001OfRecord": {
+  "receipt": ".syllabai/receipts/T-UGM-0606-1/run-001-feasibility-r0.json (landed on main by the delegated adjudication lane; operatorTrace 1a19299d29df9705; delegation.subagent agent-15050e23 + desk verification)",
+  "verdict": "FEASIBLE (cross-plane re-serve with per-row adjudication) — 74/77 served (58 SERVES + 16 SERVES_WITH_GUARD, incl. 1 folded), 3 honest gaps (Permutations & combinations -> 9709 S1) disclosed at 3.9%; run-002 mirror build ready for operator commission",
+  "thisLaneConforms": true
+ },
+ "independentCrossCheck": "before discovering the of-record receipt at lane placement, this lane independently rebuilt the feasibility (curated 77-row matrix, same substrate law): agreement on 74/77 served-eligible, the same single hard-gap topic (T11 P&C 11.3.1-3), no-matrices-in-spine (moot gap), year-skew and depth-invert findings; DIVERGENCE on 3 codes graded SERVES here vs SERVES_WITH_GUARD of record (conservative GUARD bias of record prevails). The independent rebuild was discarded as a cross-check; the of-record receipt bytes were restored via git checkout BEFORE any commit — zero of-record bytes overwritten at any point.",
+ "files": [
+  {
+   "path": "apps/hub/content/cie-igcse-further-maths-additional-maths-25/ugm-resources.json",
+   "change": "new — the 0606 cross-plane re-serve bundle (446 byte-true resources, 76-code spec index per the fold law, 23 stations, coverage of record)"
+  },
+  {
+   "path": "apps/hub/content/flags.json",
+   "change": "flags.ugmLaneResources.courses += cie-igcse-further-maths-additional-maths-25; crossBoard restructured to a registry map (EDEXCEL_IAL_PURE_YMA01_2020 block verbatim) + new CIE_IGCSE_ADDMATHS_0606_2025 block citing the run-001 verdict of record"
+  },
+  {
+   "path": "apps/hub/src/lib/ugm.bundle.test.ts",
+   "change": "new describe block — the cross-plane re-serve plane law (parse/bijection-76/spine-verbatim/fold-law/honest-gap/byte-true/guard-count/note-language/pick-membership/flag)"
+  },
+  {
+   "path": ".syllabai/receipts/T-UGM-0606-1/run-002-bundle-r0.json",
+   "change": "new — this receipt"
+  },
+  {
+   "path": ".syllabai/worklog.md",
+   "change": "append-only T-UGM-0606-1 run-002 ledger entry"
+  },
+  {
+   "path": "worklog.md",
+   "change": "append-only T-UGM-0606-1 run-002 ledger entry (dual-ledger convention per the IAL X-lane precedent)"
+  }
+ ],
+ "census": {
+  "resources": 446,
+  "specIndex": 76,
+  "servedCodes": 73,
+  "guardCodes": 16,
+  "gapCodes": [
+   "11.3.1",
+   "11.3.2",
+   "11.3.3"
+  ],
+  "foldedCode": "10.6.1a",
+  "stations": 23,
+  "bySourceCourse": {
+   "cie-a-level-maths-20-pure-1": 323,
+   "cie-a-level-maths-20-pure-2": 60,
+   "cie-a-level-maths-20-pure-3": 63
+  },
+  "byteTrueCheck": "446/446 bodyMd identical to the source bundle of record (asserted at build)",
+  "nBoundResourcesFidelity": "all 39 servedBy (course, code) pairs match the aligned pools of record exactly (fail-closed assertion at build)"
+ },
+ "validations": [
+  "matrix-spine bijection 77 PASS",
+  "nBoundResources fidelity PASS",
+  "depthGrade census of record PASS (58/16/3)",
+  "fold law PASS (10.6.1a rides 10.6.1, parent pool non-empty)",
+  "byte-true mirror PASS",
+  "honest-gap shape PASS"
+ ],
+ "reviewState": "SUGGESTED (AGENT.md rule 2)"
+}
