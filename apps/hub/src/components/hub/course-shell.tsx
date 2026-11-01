@@ -801,22 +801,51 @@ export function CourseShell({
           }
           aria-label="Course navigation"
         >
-          {/* header: course label + collapse toggle / re-open toggle */}
+          {/* header: course label + collapse toggle / re-open toggle.
+              run-012: the hover-float carries the PIN control (MG's float is
+              literally data-slot="pinnable-rail", capture byte 2307648 — the
+              transient panel is where the uncollapse affordance lives).
+              Previously the float branched on `sidebarOpen` and rendered
+              "Hide menu", so the float had NO uncollapse control, and the
+              rail's "Show menu" was unreachable by mouse: entering the 44px
+              strip to reach it IS the hover intent that floats the panel and
+              unmounts the button (operator-reported catch-22, repro
+              16/16 — the click landed on the course label). In the float the
+              toggle is therefore "Show menu": pinning morphs fixed→sticky at
+              the SAME width — no collapse under the pointer, so no boundary
+              churn (and run-010's clientX>44 guard plus the hidden===false
+              gate both ignore any residual re-dispatch). */}
           <div className={cn("flex items-center py-3", sidebarOpen ? "justify-between px-4" : "justify-center")}>
             {sidebarOpen ? (
               <>
                 <span className="text-sm font-semibold tracking-tight">{data.course.label ?? data.course.subject}</span>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-8 gap-1.5 px-2 text-xs text-muted-foreground"
-                  onClick={() => {
-                    setHidden(true);
-                    setRailHover(false); // run-009: "Hide" closes NOW, not on pointer-leave
-                  }}
-                >
-                  <PanelLeftClose className="size-4" aria-hidden /> Hide menu
-                </Button>
+                {sidebarFloating ? (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-8 gap-1.5 px-2 text-xs text-muted-foreground"
+                    onClick={() => {
+                      setHidden(false);
+                      setRailHover(false); // pin open NOW — same width, sticky again
+                    }}
+                    aria-label="Show menu"
+                    title="Show menu"
+                  >
+                    <PanelLeftOpen className="size-4" aria-hidden /> Show menu
+                  </Button>
+                ) : (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-8 gap-1.5 px-2 text-xs text-muted-foreground"
+                    onClick={() => {
+                      setHidden(true);
+                      setRailHover(false); // run-009: "Hide" closes NOW, not on pointer-leave
+                    }}
+                  >
+                    <PanelLeftClose className="size-4" aria-hidden /> Hide menu
+                  </Button>
+                )}
               </>
             ) : (
               <Button
