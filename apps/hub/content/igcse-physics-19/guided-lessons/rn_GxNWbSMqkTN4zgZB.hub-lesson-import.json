@@ -1,0 +1,217 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_GxNWbSMqkTN4zgZB",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "39cadbeba8a9cca142b4e0db4e445f20477c855e30b5eec799070bf8a5129a84",
+    "pinnedRef": "aa6485187429e0911b4a47a8a468e256bb41ce32"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_GxNWbSMqkTN4zgZB",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Movement & Position",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-1-movement-and-position/1-1-6-area-under-a-velocity-time-graph",
+    "specAnchors": [
+      {
+        "code": "1.9",
+        "text": "determine the distance travelled from the area between a velocity−time graph and the time axis"
+      }
+    ],
+    "primer": {
+      "text": "A velocity-time graph hides a second answer beneath its line: the distance covered. This lesson shows why the enclosed area counts metres, gives the two area formulas you need, and then assembles a whole 160-second car journey out of five separate shapes.",
+      "prerequisiteSubtopic": "Movement & Position"
+    },
+    "modules": [
+      {
+        "id": "rn_GxNWbSMqkTN4zgZB::L1",
+        "title": "What the area under the line counts",
+        "sourceHeadings": [
+          "Area under a velocity-time graph",
+          "How to find the area under a velocity-time graph"
+        ],
+        "specRefs": [
+          "1.9"
+        ],
+        "opening": "Gradient reads one answer off this graph; area reads the other. Between the line and the time axis sits a region whose size is measured in metres, because it multiplies a velocity by a time. This lesson establishes the counting rule and the two area formulas that carry it.",
+        "keyPoints": [
+          "The area between a velocity-time line and the time axis represents the displacement, that is the distance travelled.",
+          "A triangular region appears when the object accelerates or decelerates, and its area is one half times the base times the height.",
+          "A rectangular region appears when the object moves at constant velocity, and its area is base times height.",
+          "The base of each shape is a time interval and the height is a velocity, so the unit of every area is metres."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Shade the space between the line and the horizontal axis. If that space is a rectangle, multiply velocity by time. If it is a triangle, halve the product.",
+            "analogy": "It is like earning money at a steady rate: rate times hours gives total earnings, and the 'total' here is the distance covered.",
+            "examPointer": "Quote the unit: an area read as (10 m/s) × (4 s) is 40 m. An answer of '40' with no unit forfeits the mark."
+          },
+          "medium": {
+            "restatement": "The rule works dimensionally: (m/s) × (s) = m, which is why area on this graph is a distance. Triangle versus rectangle is decided by the motion: changing velocity makes a triangle, steady velocity makes a rectangle.",
+            "analogy": "A rectangle is one steady wage; a triangle is a wage rising linearly from zero, whose total is exactly half the rectangle built on its final rate.",
+            "examPointer": "Displacement and distance are used interchangeably in this reading when the line stays at or above the axis; say 'distance travelled' in answers."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_GxNWbSMqkTN4zgZB::L1::Q1",
+          "rn_GxNWbSMqkTN4zgZB::L1::Q2",
+          "rn_GxNWbSMqkTN4zgZB::L1::Q3",
+          "rn_GxNWbSMqkTN4zgZB::L1::Q4",
+          "rn_GxNWbSMqkTN4zgZB::L1::Q5",
+          "rn_GxNWbSMqkTN4zgZB::L1::Q6",
+          "rn_GxNWbSMqkTN4zgZB::L1::Q7",
+          "rn_GxNWbSMqkTN4zgZB::L1::Q8",
+          "rn_GxNWbSMqkTN4zgZB::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_GxNWbSMqkTN4zgZB::L2",
+        "title": "Splitting the region and totalling the journey",
+        "sourceHeadings": [
+          "How to find distance from a velocity-time graph"
+        ],
+        "specRefs": [
+          "1.9"
+        ],
+        "opening": "Real journeys change pace more than once, so the region under the line comes in pieces. This lesson assembles the total distance by dividing the graph into enclosed rectangles and triangles, calculating each, and summing them — the exact routine the 160-second car journey demands.",
+        "keyPoints": [
+          "Constant acceleration keeps the line straight, so the whole region splits into enclosed rectangles and triangles.",
+          "Each enclosed section's area is the distance travelled during that section's own time interval.",
+          "The total distance is the sum of every individual area under the line.",
+          "The worked journey gives areas 350 m, 525 m, 75 m, 350 m and 875 m, summing to 2175 m.",
+          "A curved line can be estimated by dividing it into triangles and rectangles the same way."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Chop the space under the line into pieces the axis lines already mark. Work out each triangle and rectangle, then add all the areas together for the whole journey's distance.",
+            "analogy": "It is like adding up a shopping basket item by item: every shape is one cost, and the sum is the bill.",
+            "examPointer": "Label each enclosed area (1, 2, 3…) before calculating; labelled working is what earns method marks when one arithmetic slip lands."
+          },
+          "medium": {
+            "restatement": "Interval questions are slicing questions: the distance between two times is exactly the area standing on that slice of the base, however many shapes it takes.",
+            "analogy": "The total area behaves like a timeline of receipts: any window of time costs exactly what its slice of shapes adds up to.",
+            "examPointer": "If a slice cuts through a shape, split that shape rather than guessing: the note's areas 3 and 4 are exactly this case."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_GxNWbSMqkTN4zgZB::L2::Q1",
+          "rn_GxNWbSMqkTN4zgZB::L2::Q2",
+          "rn_GxNWbSMqkTN4zgZB::L2::Q3",
+          "rn_GxNWbSMqkTN4zgZB::L2::Q4",
+          "rn_GxNWbSMqkTN4zgZB::L2::Q5",
+          "rn_GxNWbSMqkTN4zgZB::L2::Q6",
+          "rn_GxNWbSMqkTN4zgZB::L2::Q7",
+          "rn_GxNWbSMqkTN4zgZB::L2::Q8",
+          "rn_GxNWbSMqkTN4zgZB::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03",
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "displacement",
+          "definition": "How far the object ends up from where it started; read from the enclosed area when the line stays above the axis.",
+          "firstLesson": 1
+        },
+        {
+          "term": "enclosed area",
+          "definition": "A region fully bounded by the velocity-time line, the time axis and interval boundaries; each one is a distance.",
+          "firstLesson": 2
+        },
+        {
+          "term": "base",
+          "definition": "The time-interval side of an enclosed shape, read along the horizontal axis.",
+          "firstLesson": 1
+        },
+        {
+          "term": "height",
+          "definition": "The velocity side of an enclosed shape, read from the vertical axis.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "The velocity-time graph shows a car journey lasting 160 seconds. Calculate the total distance travelled by the car.",
+        "steps": [
+          "Recall that the area under the line is the distance travelled, so the total area underneath must be found.",
+          "Identify the five enclosed areas under the line and label them 1 to 5.",
+          "Calculate each: area 1 = ½ × 40 × 17.5 = 350 m; area 2 = 30 × 17.5 = 525 m; area 3 = ½ × 20 × 7.5 = 75 m; area 4 = 20 × 17.5 = 350 m; area 5 = ½ × 70 × 25 = 875 m.",
+          "Sum the five areas: total distance = 350 + 525 + 75 + 350 + 875 = 2175 m."
+        ],
+        "finalAnswer": "2175 m"
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/0f339650b920-5-6-12-velocity-time-area-graph.png",
+        "alt": "Velocity-Time Area graph, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "How to find the area under a velocity-time graph",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The displacement, or distance travelled, is represented by the area beneath the graph",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/e4772be0849c-5-6-12-determining-distance-on-a-v-t-graph.png",
+        "alt": "Determining Distance on a V-T graph, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "How to find distance from a velocity-time graph",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Three enclosed areas (two triangles and one rectangle) under this velocity-time graph represent the total distance travelled in the total time",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b33ae2455a14-2-1-8-area-under-a-v-t-graph-question.png",
+        "alt": "Area Under a V-T graph question, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "How to find distance from a velocity-time graph",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/4f503377d914-2-1-8-area-under-a-v-t-graph-solution.png",
+        "alt": "Area Under a V-T graph solution, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "How to find distance from a velocity-time graph",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

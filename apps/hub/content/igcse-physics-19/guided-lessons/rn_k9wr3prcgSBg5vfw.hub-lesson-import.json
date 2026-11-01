@@ -1,0 +1,207 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_k9wr3prcgSBg5vfw",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "64d6daaa99454e62c7c96ae084a59ca49eab487c4a92e9b6acef53129185deae",
+    "pinnedRef": "aa6485187429e0911b4a47a8a468e256bb41ce32"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_k9wr3prcgSBg5vfw",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Movement & Position",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-1-movement-and-position/1-1-2-speed",
+    "specAnchors": [
+      {
+        "code": "1.4",
+        "text": "know and use the relationship between average speed, distance moved and time taken: distance moved average speed = time taken"
+      }
+    ],
+    "primer": {
+      "text": "Every journey has one number that sums it up: the average speed. You already met this relationship for steady motion; here it becomes the working tool for whole trips where the pace rises and falls. This lesson builds the equation, its units, and the triangle trick that rearranges it in seconds.",
+      "prerequisiteSubtopic": "Movement & Position"
+    },
+    "modules": [
+      {
+        "id": "rn_k9wr3prcgSBg5vfw::L1",
+        "title": "Average speed and the speed equation",
+        "sourceHeadings": [
+          "Calculating average speed",
+          "Average speed formula"
+        ],
+        "specRefs": [
+          "1.4"
+        ],
+        "opening": "A trip rarely keeps one pace from start to finish, so physicists summarise it with a single value: the distance covered in each second of the whole journey. This lesson fixes the relationship among distance moved, time taken and average speed, and shows why that summary counts as a scalar.",
+        "keyPoints": [
+          "Average speed is worked out from the whole trip: the full distance moved split by the full time taken.",
+          "Speed is a scalar quantity, so it states a magnitude only and never a direction.",
+          "Instantaneous pace can rise and fall during a journey, which is why the trip-wide average is the useful summary.",
+          "In standard units the relationship reads distance moved over time taken, giving metres per second (m/s)."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "To get an average speed, take the entire distance travelled and divide it by the entire time the trip lasted. The answer is a size only, never a direction.",
+            "analogy": "It is like sharing a long car trip equally across every hour of the drive: some hours were fast, some slow, but the share per hour is one fair value.",
+            "examPointer": "When a question names average speed, use the totals for the whole journey, not a value read from one short section of the trip."
+          },
+          "medium": {
+            "restatement": "The defining relationship is average speed = distance moved / time taken, and because both inputs are totals, uneven pacing inside the journey does not matter.",
+            "analogy": "Think of a shopping bill: the total cost divided by the number of items gives one average price, however much individual items differed.",
+            "examPointer": "Scalar versus vector is a favourite one-mark question: speed has no direction attached, so any answer that mentions direction belongs to velocity instead."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_k9wr3prcgSBg5vfw::L1::Q1",
+          "rn_k9wr3prcgSBg5vfw::L1::Q2",
+          "rn_k9wr3prcgSBg5vfw::L1::Q3",
+          "rn_k9wr3prcgSBg5vfw::L1::Q4",
+          "rn_k9wr3prcgSBg5vfw::L1::Q5",
+          "rn_k9wr3prcgSBg5vfw::L1::Q6",
+          "rn_k9wr3prcgSBg5vfw::L1::Q7",
+          "rn_k9wr3prcgSBg5vfw::L1::Q8",
+          "rn_k9wr3prcgSBg5vfw::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_k9wr3prcgSBg5vfw::L2",
+        "title": "Formula triangles and rearranging for distance and time",
+        "sourceHeadings": [
+          "Average speed formula triangle",
+          "How to use formula triangles"
+        ],
+        "specRefs": [
+          "1.4"
+        ],
+        "opening": "The same relationship answers three different questions: how fast, how far, how long. Formula triangles turn that rearrangement into a cover-and-read trick. This lesson trains the trick and then proves each rearranged form against the original equation.",
+        "keyPoints": [
+          "A formula triangle stores the relationship with the distance moved on top and speed and time taken sharing the base.",
+          "Covering the quantity you want leaves the layout of the other two: side by side means multiply, one above the other means divide.",
+          "Covering speed leaves distance over time; covering distance leaves speed and time side by side; covering time leaves distance over speed.",
+          "Keep the top-and-bottom order when reading a division: swapping numerator and denominator changes the answer."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Draw the triangle with distance on the top row and speed next to time on the bottom row. Hide one corner and the picture tells you the rearranged equation.",
+            "analogy": "It works like a menu with one dish hidden: the remaining layout still tells you exactly how the visible items combine.",
+            "examPointer": "Write the rearranged equation before substituting numbers; the layout alone earns no marks, the algebra does."
+          },
+          "medium": {
+            "restatement": "The triangle is a picture of s = d / t: covering s shows d above t, covering t shows d beside s (multiply), and covering d shows s beside t (multiply).",
+            "analogy": "Treat the triangle as a rearrangement machine: one horizontal cover turns a division into a multiplication plus the remaining quotient.",
+            "examPointer": "Triangles are a memory aid, not a proof. If an examiner asks how the equation was rearranged, show the algebra: multiply both sides by time, then divide by speed as needed."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_k9wr3prcgSBg5vfw::L2::Q1",
+          "rn_k9wr3prcgSBg5vfw::L2::Q2",
+          "rn_k9wr3prcgSBg5vfw::L2::Q3",
+          "rn_k9wr3prcgSBg5vfw::L2::Q4",
+          "rn_k9wr3prcgSBg5vfw::L2::Q5",
+          "rn_k9wr3prcgSBg5vfw::L2::Q6",
+          "rn_k9wr3prcgSBg5vfw::L2::Q7",
+          "rn_k9wr3prcgSBg5vfw::L2::Q8",
+          "rn_k9wr3prcgSBg5vfw::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "average speed",
+          "definition": "The single trip-wide value: the total distance moved divided by the total time taken.",
+          "firstLesson": 1
+        },
+        {
+          "term": "scalar",
+          "definition": "A quantity that carries a magnitude only, with no direction attached; speed is one.",
+          "firstLesson": 1
+        },
+        {
+          "term": "formula triangle",
+          "definition": "A cover-and-read memory aid: hiding one corner reveals whether the other two multiply or divide.",
+          "firstLesson": 2
+        },
+        {
+          "term": "metres per second",
+          "definition": "The standard unit of speed, written m/s, from metres divided by seconds.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "Planes cruise at a typical average speed of 250 m/s. Calculate the distance travelled by a plane holding this pace for 2 hours.",
+        "steps": [
+          "List the known quantities: average speed = 250 m/s; time taken = 2 hours.",
+          "Convert the time into standard units: 2 hours = 2 × 60 × 60 = 7200 s.",
+          "Rearrange the relationship for distance: distance moved = average speed × time taken.",
+          "Substitute: distance moved = 250 × 7200 = 1,800,000 m."
+        ],
+        "finalAnswer": "1,800,000 m (250 m/s held for 7200 s)"
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1d72fd2ee18a-5-6-2-person-vs-bee.png",
+        "alt": "Person vs Bee, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Average speed",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "A hiker might have an average speed of 2.0 m/s, whereas a particularly excited bumble bee can have average speeds of up to 4.5 m/s",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/e5f280dde57e-5-6-4-average-speed-triangle.png",
+        "alt": "Average Speed Triangle, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Average speed formula triangle",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Formula triangle for average speed, distance moved and time taken",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/cbbddd43d752-1-1-10-formula-triangle.png",
+        "alt": "Formula Triangle, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "How to use formula triangles",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "To use a formula triangle, simply cover up the quantity you wish calculate and the structure of the equation is revealed",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

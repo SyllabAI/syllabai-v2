@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_k9wr3prcgSBg5vfw",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "64d6daaa99454e62c7c96ae084a59ca49eab487c4a92e9b6acef53129185deae",
+    "pinnedRef": "aa6485187429e0911b4a47a8a468e256bb41ce32"
+  },
+  "packageId": "igcse-physics::rn_k9wr3prcgSBg5vfw",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L1::Q1",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L1",
+      "stem": "A jogger covers 1200 m of city streets in 480 s, having sped up and slowed down many times along the way. What average speed should be reported?",
+      "misconceptionClass": "segment-vs-total averaging",
+      "options": [
+        {
+          "key": "A",
+          "text": "1200 m divided by 480 s, the totals for the whole run",
+          "correct": true,
+          "explanation": "The trip-wide average uses the full distance and the full time, whatever the pacing in between.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The pace measured during the fastest street only",
+          "correct": false,
+          "explanation": "A single fastest segment describes one instant of the journey, not the trip-wide summary.",
+          "misconception": "instant-pace substitution"
+        },
+        {
+          "key": "C",
+          "text": "The mean of the fastest and slowest paces recorded",
+          "correct": false,
+          "explanation": "Averaging two extremes ignores how long each part of the journey lasted.",
+          "misconception": "extreme-pair averaging"
+        },
+        {
+          "key": "D",
+          "text": "480 s divided by 1200 m, to report seconds per metre",
+          "correct": false,
+          "explanation": "That inverts the relationship and yields s/m, not the m/s the quantity is defined with.",
+          "misconception": "reciprocal inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L1::Q2",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L1",
+      "stem": "Speed is classified as a scalar quantity. Which statement justifies that classification?",
+      "misconceptionClass": "scalar-vector confusion",
+      "options": [
+        {
+          "key": "B",
+          "text": "It has a magnitude but no direction attached",
+          "correct": true,
+          "explanation": "Scalars carry size only; direction is what would promote the quantity to a vector.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "It can be measured with a stopwatch and a tape measure",
+          "correct": false,
+          "explanation": "How a quantity is measured says nothing about whether direction belongs to it.",
+          "misconception": "measurement-tool reasoning"
+        },
+        {
+          "key": "C",
+          "text": "It always takes positive values on a journey",
+          "correct": false,
+          "explanation": "Sign is not the test; a directed quantity could still stay positive while remaining a vector.",
+          "misconception": "sign-equals-scalar"
+        },
+        {
+          "key": "D",
+          "text": "It changes when the object changes direction",
+          "correct": false,
+          "explanation": "A direction change leaves the pace itself untouched, which is exactly why speed ignores direction.",
+          "misconception": "direction-change conflation"
+        }
+      ]
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L1::Q3",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L1",
+      "stem": "A bus travels 300 m in 20 s, then crawls for 60 s before covering another 300 m in 20 s. Which value is its average speed across the whole trip?",
+      "misconceptionClass": "per-section averaging",
+      "options": [
+        {
+          "key": "C",
+          "text": "600 m over 100 s, which is 6.0 m/s",
+          "correct": true,
+          "explanation": "Total distance 600 m split by total time 100 s gives the trip-wide value of 6.0 m/s.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "15 m/s, the pace of the moving sections",
+          "correct": false,
+          "explanation": "15 m/s describes only the two fast sections and ignores the 60 s of crawling.",
+          "misconception": "moving-time-only averaging"
+        },
+        {
+          "key": "B",
+          "text": "7.5 m/s, the mean of 15 m/s and 0 m/s",
+          "correct": false,
+          "explanation": "Averaging the two pace readings without weighting by their durations is not the defined relationship.",
+          "misconception": "unweighted pace mean"
+        },
+        {
+          "key": "D",
+          "text": "5.0 m/s, because the crawl consumes most of the clock",
+          "correct": false,
+          "explanation": "No weighting rule sets the answer to 5.0 m/s; the totals give 6.0 m/s.",
+          "misconception": "guessed weighting"
+        }
+      ]
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L1::Q4",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L1",
+      "stem": "In standard units, distance moved is in metres and time taken is in seconds. What unit therefore attaches to average speed?",
+      "misconceptionClass": "unit derivation slip",
+      "options": [
+        {
+          "key": "D",
+          "text": "metres per second (m/s)",
+          "correct": true,
+          "explanation": "Metres divided by seconds leaves m/s, the standard unit for this quantity.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "seconds per metre (s/m)",
+          "correct": false,
+          "explanation": "That would follow from dividing time by distance, the reciprocal of the defined relationship.",
+          "misconception": "unit-order inversion"
+        },
+        {
+          "key": "B",
+          "text": "metres times seconds (m·s)",
+          "correct": false,
+          "explanation": "Multiplying the units corresponds to multiplying the quantities, but the relationship divides them.",
+          "misconception": "unit product confusion"
+        },
+        {
+          "key": "C",
+          "text": "metres per second squared (m/s²)",
+          "correct": false,
+          "explanation": "Per second squared belongs to the rate of change of velocity, a different quantity met later in this topic.",
+          "misconception": "quantity substitution"
+        }
+      ]
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L1::Q5",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L1",
+      "stem": "Two cyclists complete the same 40 km charity loop. One rides non-stop; the other stops for a long picnic and still finishes at the same clock time. What must be true?",
+      "misconceptionClass": "equal-time equal-average inference",
+      "options": [
+        {
+          "key": "B",
+          "text": "Their average speeds across the loop are equal",
+          "correct": true,
+          "explanation": "Same distance in the same total time forces the same trip-wide value, however different the pacing was.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "The picnicking cyclist travelled a shorter distance",
+          "correct": false,
+          "explanation": "The loop length is fixed at 40 km for both riders, so the distances match.",
+          "misconception": "distance-overwrite"
+        },
+        {
+          "key": "C",
+          "text": "The non-stop cyclist must have ridden more slowly overall",
+          "correct": false,
+          "explanation": "Nothing forces a slower ride; the shared finish time pins the shared average.",
+          "misconception": "rest-implies-faster confusion"
+        },
+        {
+          "key": "D",
+          "text": "Their instantaneous paces matched at every moment",
+          "correct": false,
+          "explanation": "Equal averages allow completely different pacing profiles; only the trip-wide summary is pinned.",
+          "misconception": "average-implies-instant equality"
+        }
+      ]
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L1::Q6",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L1",
+      "stem": "State, in words, how the average speed of a whole journey is calculated from its two totals.",
+      "misconceptionClass": "relationship recall",
+      "kind": "recall",
+      "modelAnswer": "The average speed is the total distance travelled divided by the total time the journey took.",
+      "keywords": [
+        "average speed",
+        "divided",
+        "total distance",
+        "total time"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L1::Q7",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L1",
+      "stem": "Recall why the trip-wide value, rather than a single instantaneous reading, is normally quoted for a car journey.",
+      "misconceptionClass": "purpose-of-average recall",
+      "kind": "recall",
+      "modelAnswer": "Because the pace of a real journey rises and falls, one instantaneous reading cannot represent it; the average sums the whole trip into a single fair value.",
+      "keywords": [
+        "rises and falls",
+        "instantaneous",
+        "whole journey",
+        "single value"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L1::Q8",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L1",
+      "stem": "Explain why two different hikers can finish the same trail in the same time while moving at different paces along the way.",
+      "misconceptionClass": "average-vs-profile confusion",
+      "kind": "explain-why",
+      "modelAnswer": "The average only fixes the ratio of total distance to total time. Two hikers with the same totals share that ratio, even if one strode fast in bursts and the other kept a slow steady rhythm, because the pacing profile is not part of the definition.",
+      "keywords": [
+        "total distance",
+        "total time",
+        "ratio",
+        "pacing"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L1::Q9",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L1",
+      "stem": "A delivery drone travels 4.5 km across a city in 15 minutes. Calculate its average speed in m/s.",
+      "misconceptionClass": "unit conversion arithmetic",
+      "kind": "application",
+      "modelAnswer": "Convert first: 4.5 km = 4500 m and 15 min = 900 s. The average speed is the distance moved divided by the time taken, so 4500 / 900 = 5.0 m/s.",
+      "keywords": [
+        "4500",
+        "900",
+        "5.0 m/s",
+        "convert"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L2::Q1",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L2",
+      "stem": "On the formula triangle for this relationship, which corner must be covered to reveal distance moved = average speed × time taken?",
+      "misconceptionClass": "triangle-cover error",
+      "options": [
+        {
+          "key": "C",
+          "text": "The distance corner, leaving speed beside time",
+          "correct": true,
+          "explanation": "With the distance corner hidden, the two base corners sit side by side, which reads as a product.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "The speed corner, leaving distance over time",
+          "correct": false,
+          "explanation": "Hiding speed reveals distance over time, which is the speed equation itself, not the distance form.",
+          "misconception": "corner-swap"
+        },
+        {
+          "key": "B",
+          "text": "The time corner, leaving distance over speed",
+          "correct": false,
+          "explanation": "Hiding time gives the time form of the relationship, distance divided by speed.",
+          "misconception": "corner-swap"
+        },
+        {
+          "key": "D",
+          "text": "Any corner, because every covering reveals the same equation",
+          "correct": false,
+          "explanation": "Each cover reveals a different rearrangement; the triangle has three distinct outputs.",
+          "misconception": "triangle invariance myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L2::Q2",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L2",
+      "stem": "A learner covers the time corner and reads the triangle as time = speed ÷ distance. What went wrong?",
+      "misconceptionClass": "numerator-denominator swap",
+      "options": [
+        {
+          "key": "A",
+          "text": "The quotient was read upside down; the layout gives distance ÷ speed",
+          "correct": true,
+          "explanation": "With time covered, distance sits above speed, so the correct reading is distance divided by speed.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Nothing; time = speed ÷ distance is a valid form",
+          "correct": false,
+          "explanation": "That form is dimensionally wrong; seconds cannot come from (m/s) ÷ m.",
+          "misconception": "no-error acceptance"
+        },
+        {
+          "key": "C",
+          "text": "The triangle should have been rotated first",
+          "correct": false,
+          "explanation": "Orientation is fixed by the stored relationship; rotation is not part of the method.",
+          "misconception": "ritual rotation"
+        },
+        {
+          "key": "D",
+          "text": "The learner should have covered two corners at once",
+          "correct": false,
+          "explanation": "Exactly one cover is made per rearrangement; covering two leaves nothing to read.",
+          "misconception": "multi-cover myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L2::Q3",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L2",
+      "stem": "Which rearranged form correctly solves the relationship for time taken?",
+      "misconceptionClass": "rearrangement slip",
+      "options": [
+        {
+          "key": "D",
+          "text": "time taken = distance moved ÷ average speed",
+          "correct": true,
+          "explanation": "Starting from s = d / t and multiplying both sides by t, then dividing by s, leaves t = d / s.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "time taken = average speed ÷ distance moved",
+          "correct": false,
+          "explanation": "That quotient has units (m/s)/m = 1/s, which cannot be a time.",
+          "misconception": "reciprocal inversion"
+        },
+        {
+          "key": "B",
+          "text": "time taken = distance moved × average speed",
+          "correct": false,
+          "explanation": "Multiplying gives m × m/s = m²/s, not seconds.",
+          "misconception": "operation swap"
+        },
+        {
+          "key": "C",
+          "text": "time taken = average speed − distance moved",
+          "correct": false,
+          "explanation": "Subtraction mixes incompatible units and is not any rearrangement of the relationship.",
+          "misconception": "operation invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L2::Q4",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L2",
+      "stem": "A plane holds a steady 250 m/s. Which rearrangement gives the distance it covers in a known time?",
+      "misconceptionClass": "form selection",
+      "options": [
+        {
+          "key": "B",
+          "text": "distance moved = average speed × time taken",
+          "correct": true,
+          "explanation": "With speed and time known, the product form returns the distance covered.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "distance moved = average speed ÷ time taken",
+          "correct": false,
+          "explanation": "Dividing speed by time gives m/s per s, an acceleration-like unit, not a distance.",
+          "misconception": "operation swap"
+        },
+        {
+          "key": "A",
+          "text": "distance moved = time taken ÷ average speed",
+          "correct": false,
+          "explanation": "That quotient yields seconds per metre, not metres.",
+          "misconception": "reciprocal inversion"
+        },
+        {
+          "key": "D",
+          "text": "distance moved = 250 m/s regardless of the time",
+          "correct": false,
+          "explanation": "The constant 250 m/s is a pace, not a distance; the flight time must enter the calculation.",
+          "misconception": "constant-as-answer"
+        }
+      ]
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L2::Q5",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L2",
+      "stem": "Why can the triangle method be unsafe for equations beyond this topic's simple three-quantity relationships?",
+      "misconceptionClass": "triangle overgeneralisation",
+      "options": [
+        {
+          "key": "A",
+          "text": "Triangles only encode one fixed multiply/divide layout, which not every equation has",
+          "correct": true,
+          "explanation": "Relationships with squares, sums or more terms cannot be captured by a single top-over-base picture.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Triangles stop working when the numbers get large",
+          "correct": false,
+          "explanation": "The size of the numbers is irrelevant; the structure of the equation is what matters.",
+          "misconception": "numeric-superstition"
+        },
+        {
+          "key": "C",
+          "text": "Examiners deduct marks whenever a triangle is drawn",
+          "correct": false,
+          "explanation": "Credit follows the algebra; the triangle itself is just an aid, neither rewarded nor penalised.",
+          "misconception": "marking myth"
+        },
+        {
+          "key": "D",
+          "text": "Triangles only work for quantities measured in metres",
+          "correct": false,
+          "explanation": "The method is unit-blind; it depends on the equation's structure, not its units.",
+          "misconception": "unit-bound myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L2::Q6",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L2",
+      "stem": "State the two readings a formula triangle supports when the base corners sit side by side.",
+      "misconceptionClass": "triangle reading recall",
+      "kind": "recall",
+      "modelAnswer": "Side-by-side corners read as a product: the covered quantity equals the product of the two visible ones.",
+      "keywords": [
+        "product",
+        "multiply",
+        "side by side",
+        "covered"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L2::Q7",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L2",
+      "stem": "Recall the rearranged form a triangle gives when the distance corner is covered in the average-speed relationship.",
+      "misconceptionClass": "form recall",
+      "kind": "recall",
+      "modelAnswer": "Covering distance leaves speed and time side by side, so distance moved = average speed × time taken.",
+      "keywords": [
+        "distance moved",
+        "average speed",
+        "time taken",
+        "multiply"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L2::Q8",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L2",
+      "stem": "Explain why keeping the top-and-bottom order matters when a triangle shows one quantity above another.",
+      "misconceptionClass": "order-significance explain",
+      "kind": "explain-why",
+      "modelAnswer": "The vertical layout encodes a division, and division is not symmetric: distance over speed gives a time in seconds, while speed over distance would give seconds per metre, a meaningless quantity here. Swapping the levels therefore changes both the number and the unit of the answer.",
+      "keywords": [
+        "division",
+        "order",
+        "unit",
+        "numerator"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_k9wr3prcgSBg5vfw::L2::Q9",
+      "moduleId": "rn_k9wr3prcgSBg5vfw::L2",
+      "stem": "A bird holds a cruising pace of 4.5 m/s for 40 s across a field. Use the product form to calculate the distance it covers.",
+      "misconceptionClass": "product-form arithmetic",
+      "kind": "application",
+      "modelAnswer": "Distance moved = average speed × time taken = 4.5 × 40 = 180 m.",
+      "keywords": [
+        "4.5",
+        "40",
+        "180 m",
+        "product"
+      ],
+      "options": []
+    }
+  ]
+}

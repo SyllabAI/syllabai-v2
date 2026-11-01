@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_GxNWbSMqkTN4zgZB",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "39cadbeba8a9cca142b4e0db4e445f20477c855e30b5eec799070bf8a5129a84",
+    "pinnedRef": "aa6485187429e0911b4a47a8a468e256bb41ce32"
+  },
+  "packageId": "igcse-physics::rn_GxNWbSMqkTN4zgZB",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L1::Q1",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L1",
+      "stem": "What does the area between a velocity-time line and the time axis represent?",
+      "misconceptionClass": "area meaning",
+      "options": [
+        {
+          "key": "B",
+          "text": "The distance travelled during that interval",
+          "correct": true,
+          "explanation": "Enclosed area multiplies velocity by time, which is exactly a distance.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "The acceleration gained",
+          "correct": false,
+          "explanation": "Acceleration is the gradient of the line, not the area beneath it.",
+          "misconception": "area-gradient swap"
+        },
+        {
+          "key": "C",
+          "text": "The average velocity",
+          "correct": false,
+          "explanation": "Average velocity would be a height, not an area; the area counts metres.",
+          "misconception": "height-area confusion"
+        },
+        {
+          "key": "D",
+          "text": "The time the journey lasted",
+          "correct": false,
+          "explanation": "Time is the base of the shape, already measured along the horizontal axis.",
+          "misconception": "axis-role confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L1::Q2",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L1",
+      "stem": "The region under a straight rising section is a triangle with base 8 s and height 12 m/s. What distance does it encode?",
+      "misconceptionClass": "triangle area arithmetic",
+      "options": [
+        {
+          "key": "C",
+          "text": "48 m, from one half of 8 × 12",
+          "correct": true,
+          "explanation": "Triangle area = ½ × base × height = ½ × 8 × 12 = 48 m.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "96 m, from 8 × 12",
+          "correct": false,
+          "explanation": "96 m is the full rectangle; the triangular half is wanted for a rising section.",
+          "misconception": "half forgotten"
+        },
+        {
+          "key": "B",
+          "text": "20 m, from 8 + 12",
+          "correct": false,
+          "explanation": "Areas multiply their sides; adding a time and a velocity has no meaning.",
+          "misconception": "operation swap"
+        },
+        {
+          "key": "D",
+          "text": "1.5 m, from 12 ÷ 8",
+          "correct": false,
+          "explanation": "That quotient would be an acceleration, not the distance the area encodes.",
+          "misconception": "gradient relic"
+        }
+      ]
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L1::Q3",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L1",
+      "stem": "A section of line sits perfectly flat at 9 m/s for 7 s. What shape is the enclosed region and what distance does it hold?",
+      "misconceptionClass": "rectangle case",
+      "options": [
+        {
+          "key": "A",
+          "text": "A rectangle holding 63 m, from 9 × 7",
+          "correct": true,
+          "explanation": "Constant velocity makes a rectangle: base 7 s times height 9 m/s = 63 m.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A triangle holding 31.5 m",
+          "correct": false,
+          "explanation": "Triangles belong to changing velocity; a flat section makes a rectangle.",
+          "misconception": "shape misassignment"
+        },
+        {
+          "key": "C",
+          "text": "A rectangle holding 16 m, from 9 + 7",
+          "correct": false,
+          "explanation": "The sides multiply; adding gives neither an area nor a distance.",
+          "misconception": "operation swap"
+        },
+        {
+          "key": "D",
+          "text": "No region exists under a flat line",
+          "correct": false,
+          "explanation": "A flat line above the axis encloses the largest rectangle of all: velocity times the whole interval.",
+          "misconception": "flat-equals-empty"
+        }
+      ]
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L1::Q4",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L1",
+      "stem": "Why does the area under this graph carry the unit metres rather than any other unit?",
+      "misconceptionClass": "unit derivation",
+      "options": [
+        {
+          "key": "D",
+          "text": "Because the sides multiply metres per second by seconds, and the seconds cancel",
+          "correct": true,
+          "explanation": "(m/s) × (s) leaves m: the unit arithmetic is the whole justification.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Because areas are always measured in metres",
+          "correct": false,
+          "explanation": "Area units follow the axes: on a distance-time graph the enclosed area would be m·s, not m.",
+          "misconception": "overgeneralised rule"
+        },
+        {
+          "key": "B",
+          "text": "Because the graph is drawn on squared paper",
+          "correct": false,
+          "explanation": "The paper is irrelevant; the unit comes from the quantities on the two axes.",
+          "misconception": "paper myth"
+        },
+        {
+          "key": "C",
+          "text": "Because velocity is defined as distance divided by area",
+          "correct": false,
+          "explanation": "Velocity is distance over time; the area rule follows from multiplying back by time.",
+          "misconception": "definition invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L1::Q5",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L1",
+      "stem": "An object decelerates in a straight line from 20 m/s to rest over 10 s. Which calculation gives the distance it covers while stopping?",
+      "misconceptionClass": "deceleration triangle",
+      "options": [
+        {
+          "key": "B",
+          "text": "½ × 10 × 20 = 100 m",
+          "correct": true,
+          "explanation": "A straight fall to rest is a triangle: base 10 s, height 20 m/s, area 100 m.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "10 × 20 = 200 m",
+          "correct": false,
+          "explanation": "200 m is the full rectangle; stopping in a straight line fills only half of it.",
+          "misconception": "half forgotten"
+        },
+        {
+          "key": "C",
+          "text": "20 ÷ 10 = 2 m",
+          "correct": false,
+          "explanation": "That quotient is the deceleration in m/s², not a distance.",
+          "misconception": "gradient relic"
+        },
+        {
+          "key": "D",
+          "text": "0 m, because the object ends at rest",
+          "correct": false,
+          "explanation": "Ending at rest says nothing about the ground covered; the triangle holds 100 m.",
+          "misconception": "final-state confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L1::Q6",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L1",
+      "stem": "State the two area formulas used to read distances from a velocity-time graph and say which motion each matches.",
+      "misconceptionClass": "formula recall",
+      "kind": "recall",
+      "modelAnswer": "Triangle: area = ½ × base × height, for changing velocity (accelerating or decelerating). Rectangle: area = base × height, for constant velocity.",
+      "keywords": [
+        "triangle",
+        "½ × base × height",
+        "rectangle",
+        "constant velocity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L1::Q7",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L1",
+      "stem": "Recall what the height and the base of an enclosed region correspond to on the graph's axes.",
+      "misconceptionClass": "axis mapping recall",
+      "kind": "recall",
+      "modelAnswer": "The height is a velocity read from the vertical axis and the base is a time interval read from the horizontal axis.",
+      "keywords": [
+        "velocity",
+        "vertical axis",
+        "time interval",
+        "horizontal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L1::Q8",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L1",
+      "stem": "Explain why a straight rising section encloses a triangle rather than a rectangle on a velocity-time graph.",
+      "misconceptionClass": "shape-origin explain",
+      "kind": "explain-why",
+      "modelAnswer": "A rising straight line starts low and ends high, so the region between it and the axis is a right triangle whose sloping top is the line itself. A rectangle would need the line to stay at one constant height, which is exactly the constant-velocity case instead.",
+      "keywords": [
+        "rising",
+        "triangle",
+        "constant height",
+        "rectangle"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L1::Q9",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L1",
+      "stem": "A scooter holds 6.0 m/s for 12 s, then rises in a straight line from 6.0 m/s to 14 m/s over 8.0 s. Calculate the distance covered in each section.",
+      "misconceptionClass": "two-shape application",
+      "kind": "application",
+      "modelAnswer": "Cruise: rectangle 6.0 × 12 = 72 m. Rise: triangle ½ × 8.0 × 14 = 56 m. The scooter covers 72 m then 56 m in the two sections.",
+      "keywords": [
+        "72 m",
+        "56 m",
+        "rectangle",
+        "triangle"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L2::Q1",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L2",
+      "stem": "A journey's velocity-time region divides into five enclosed sections. How is the total distance obtained?",
+      "misconceptionClass": "summation law",
+      "options": [
+        {
+          "key": "C",
+          "text": "Every area is calculated and the five results are added",
+          "correct": true,
+          "explanation": "Each area is a distance; the journey total is their sum.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Only the largest section's area matters",
+          "correct": false,
+          "explanation": "Every interval contributes its metres; dropping sections loses part of the journey.",
+          "misconception": "dominant-section myth"
+        },
+        {
+          "key": "B",
+          "text": "The five areas are averaged",
+          "correct": false,
+          "explanation": "A mean of areas has no physical meaning; distances accumulate by addition.",
+          "misconception": "averaging reflex"
+        },
+        {
+          "key": "D",
+          "text": "The areas are multiplied together",
+          "correct": false,
+          "explanation": "Multiplying metre-counts together would give m⁵, not a distance.",
+          "misconception": "operation invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L2::Q2",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L2",
+      "stem": "In the worked car journey, one region needs splitting into a triangle and a rectangle. What does that split tell you about the motion in that interval?",
+      "misconceptionClass": "split interpretation",
+      "options": [
+        {
+          "key": "A",
+          "text": "The velocity changed part-way through the interval, first rising then holding",
+          "correct": true,
+          "explanation": "A triangle plus rectangle side by side is the signature of a rise that then flattens within one interval.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The car reversed direction during the interval",
+          "correct": false,
+          "explanation": "Reversal would appear below the axis, not as an internal split of an above-axis region.",
+          "misconception": "reversal misread"
+        },
+        {
+          "key": "C",
+          "text": "The velocity stayed constant throughout",
+          "correct": false,
+          "explanation": "A single rectangle would cover that; the split exists because the profile bends.",
+          "misconception": "constancy misread"
+        },
+        {
+          "key": "D",
+          "text": "The graph was drawn inaccurately",
+          "correct": false,
+          "explanation": "The split is the lawful reading of a two-part profile, not a drawing fault.",
+          "misconception": "blame-the-graph"
+        }
+      ]
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L2::Q3",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L2",
+      "stem": "The worked journey's five areas are 350 m, 525 m, 75 m, 350 m and 875 m. Which arithmetic check confirms the total?",
+      "misconceptionClass": "total verification",
+      "options": [
+        {
+          "key": "B",
+          "text": "350 + 525 + 75 + 350 + 875 = 2175 m",
+          "correct": true,
+          "explanation": "The five areas sum to 2175 m, the journey's total distance.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "350 × 525 × 75 × 350 × 875",
+          "correct": false,
+          "explanation": "A product of five metre-values is dimensionally absurd for a distance.",
+          "misconception": "operation invention"
+        },
+        {
+          "key": "C",
+          "text": "(350 + 525 + 75) ÷ (350 + 875)",
+          "correct": false,
+          "explanation": "Ratio-form combinations of areas are not part of the summation rule.",
+          "misconception": "operation invention"
+        },
+        {
+          "key": "D",
+          "text": "875 − 350 − 525 − 75 − 350",
+          "correct": false,
+          "explanation": "Subtracting component distances from the largest gives no journey quantity.",
+          "misconception": "operation invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L2::Q4",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L2",
+      "stem": "The distance travelled between 70 s and 90 s of the worked journey is wanted. Which reading is correct?",
+      "misconceptionClass": "interval slicing",
+      "options": [
+        {
+          "key": "D",
+          "text": "The areas standing on the 70-90 s slice of the base, which are areas 3 and 4",
+          "correct": true,
+          "explanation": "An interval's distance is the area above its own slice of the time axis, here 75 + 350 = 425 m.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "The whole graph's area divided by eight",
+          "correct": false,
+          "explanation": "There is no rule tying an interval to a fixed fraction of the total; slice the base instead.",
+          "misconception": "proportion guess"
+        },
+        {
+          "key": "B",
+          "text": "The velocity values at 70 s and 90 s",
+          "correct": false,
+          "explanation": "Two heights are not a distance; the area between them over the interval is.",
+          "misconception": "heights-as-distance"
+        },
+        {
+          "key": "C",
+          "text": "The area of the largest single shape on the graph",
+          "correct": false,
+          "explanation": "The largest shape may sit anywhere on the timeline; interval questions slice, not cherry-pick.",
+          "misconception": "dominant-section myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L2::Q5",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L2",
+      "stem": "A velocity-time line curves gently instead of staying straight. How is the distance still estimated?",
+      "misconceptionClass": "curved-line strategy",
+      "options": [
+        {
+          "key": "A",
+          "text": "Divide the curved region into many triangles and rectangles and add them",
+          "correct": true,
+          "explanation": "The same shape arithmetic, applied in small pieces, estimates the area under a curve.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Curved lines carry no area, so distance cannot be found",
+          "correct": false,
+          "explanation": "The area exists under any line; only the exact formulas need the straightness.",
+          "misconception": "curve-exclusion myth"
+        },
+        {
+          "key": "C",
+          "text": "Read the final velocity and multiply by the total time",
+          "correct": false,
+          "explanation": "That rectangle uses only the endpoint and misses the shape of the whole profile.",
+          "misconception": "endpoint shortcut"
+        },
+        {
+          "key": "D",
+          "text": "Take the gradient of the curve and quote it",
+          "correct": false,
+          "explanation": "Gradient reads acceleration; the question asks for distance.",
+          "misconception": "quantity swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L2::Q6",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L2",
+      "stem": "State how each enclosed section's area is interpreted when a journey is split into pieces.",
+      "misconceptionClass": "interval meaning recall",
+      "kind": "recall",
+      "modelAnswer": "Each enclosed section's area is the distance travelled during that section's own interval of time.",
+      "keywords": [
+        "area",
+        "distance travelled",
+        "interval",
+        "own"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L2::Q7",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L2",
+      "stem": "Recall the five areas of the worked car journey in order and their total.",
+      "misconceptionClass": "worked-value recall",
+      "kind": "recall",
+      "modelAnswer": "The areas are 350 m, 525 m, 75 m, 350 m and 875 m, and their total distance is 2175 m.",
+      "keywords": [
+        "350",
+        "525",
+        "875",
+        "2175 m"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L2::Q8",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L2",
+      "stem": "Explain why labelling each enclosed area before calculating protects the final answer.",
+      "misconceptionClass": "method-mark reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Labelling turns one long calculation into five short, checkable ones: if the total looks wrong, each labelled area can be tested against its own base and height. Without labels, a single slip is buried in the sum and cannot be traced, which is exactly where method marks are lost.",
+      "keywords": [
+        "label",
+        "checkable",
+        "trace",
+        "method marks"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GxNWbSMqkTN4zgZB::L2::Q9",
+      "moduleId": "rn_GxNWbSMqkTN4zgZB::L2",
+      "stem": "A delivery van's graph shows a triangle (base 30 s, height 10 m/s), then a rectangle (base 40 s, height 10 m/s), then a triangle back to rest (base 50 s). Calculate the total distance of the delivery run.",
+      "misconceptionClass": "three-shape assembly",
+      "kind": "application",
+      "modelAnswer": "Triangle 1: ½ × 30 × 10 = 150 m. Rectangle: 40 × 10 = 400 m. Triangle 2: ½ × 50 × 10 = 250 m. Total distance = 150 + 400 + 250 = 800 m.",
+      "keywords": [
+        "150 m",
+        "400 m",
+        "250 m",
+        "800 m"
+      ],
+      "options": []
+    }
+  ]
+}
