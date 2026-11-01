@@ -3,7 +3,8 @@
 /**
  * CourseShell — the persistent per-course chrome (SME model, research §4):
  *
- *   - ONE course sidebar (Course / Revision / Exam Practice groups with a
+ *   - ONE course sidebar (Course / Learn / Practise / Track & improve
+ *     groups — run-013 C2 mirrors the dashboard's band taxonomy — with a
  *     "Hide menu" collapse) on every course surface — hub, indexes, details;
  *   - NO topic tree in the desktop sidebar: the numbered tree lives in the
  *     resource panel (see resource-panel.tsx) which resource DETAIL pages
@@ -682,17 +683,13 @@ export function CourseShell({
         // header, which on a phone was the sole route into the most
         // subject-specific tool the platform has.
         { href: `${base}/specification`, label: "Specification", icon: ListTree },
-        // run-013 R1/G3 (audit HIGH-ish): official grade boundaries live for
-        // 106/109 courses (single committed bundle) — the same
-        // getGradeBoundariesSummary the Track card keys on; absent-when-absent.
-        ...(data.hasGradeBoundaries
-          ? [{ href: `${base}/grade-boundaries`, label: "Grade Boundaries", icon: TrendingUp }]
-          : []),
-        { href: `${base}/strengths`, label: "Strengths & Weaknesses", icon: Compass, exact: pathname === `${base}/strengths` },
       ],
     },
     {
-      label: "Revision",
+      // run-013 C2: the dashboard's Learn band taxonomy (T-COURSE-BANDS-1) —
+      // the group stops being "Revision" and mirrors the band that actually
+      // holds these tools.
+      label: "Learn",
       items: [
         { href: `${base}/revision-notes`, label: "Revision Notes", icon: BookOpen },
         // run-013 C1 (sidebar content audit): ONE ghost law per class —
@@ -732,7 +729,8 @@ export function CourseShell({
       ],
     },
     {
-      label: "Exam Practice",
+      // run-013 C2: the dashboard's Practise band name, verbatim.
+      label: "Practise",
       items: [
         {
           href: `${base}/exam-questions`,
@@ -762,6 +760,23 @@ export function CourseShell({
         // Battle) stay dashboard-only — the chrome is curated navigation and
         // this lane adds no new ghost rows.
         { label: "Target Test", icon: Target, disabled: true, badge: "roadmap" },
+      ],
+    },
+    {
+      // run-013 C2 (audit C2): the dashboard's Track & improve band — the
+      // sidebar taxonomy was left behind by the band reorg ("Strengths &
+      // Weaknesses" is a Track tool that sat under "Course"; Grade
+      // Boundaries had no group to live in). Both rows move here so the two
+      // information architectures agree about the same tools.
+      label: "Track & improve",
+      items: [
+        { href: `${base}/strengths`, label: "Strengths & Weaknesses", icon: Compass, exact: pathname === `${base}/strengths` },
+        // run-013 R1/G3: official boundaries live for 106/109 courses — the
+        // same getGradeBoundariesSummary the Track card keys on;
+        // absent-when-absent.
+        ...(data.hasGradeBoundaries
+          ? [{ href: `${base}/grade-boundaries`, label: "Grade Boundaries", icon: TrendingUp }]
+          : []),
       ],
     },
   ];
