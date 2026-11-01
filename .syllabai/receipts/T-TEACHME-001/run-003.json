@@ -1,0 +1,64 @@
+{
+  "task": "T-TEACHME-001",
+  "run": "run-003",
+  "agent": "Super Z (zai-web session web-5e612468-7ecd-499d-8b14-7c05e8412405, chat 97a19c8c-d041-4ae2-9754-07fef634fc42)",
+  "date": "2026-11-01",
+  "branch": "t-teachme-1/run-003",
+  "base": "origin/main post-#585 (run-002 merged at bef52be)",
+  "operator_commission": {
+    "ruling": "merge and run-003 (operator IM, 2026-11-01)",
+    "carrier": "PR #580 (run-001) found already MERGED at b8871ca and PR #585 (run-002) found already MERGED at bef52be on first API read of this session — the run-003 commission proceeds from that verified base"
+  },
+  "scope": "hub lane (plan §10/§14 run-003): the /courses/[course]/teach-me SSG landing + honest roadmap state, the wizard → player → review → history client lane, client fns + the v2-native NARROW flip entry in lib/api.ts, the flags.json run-003 flip, 15 new hub pins",
+  "gates": {
+    "typecheck": "bun run typecheck (contracts/shared/db/api/hub) — 0 errors",
+    "tests": "bun test apps/hub/src/components/hub/teach-me/ apps/api packages — 3242 pass / 13 skip / 0 fail (3227 prior + 15 new: gate parse law, committed-flip parity, picker tree incl. orphan/numeric-order law, failure classes, word counter)",
+    "build": "bun run build:hub — green; /courses/igcse-chemistry-19/teach-me prerendered SSG; /courses/[course]/teach-me listed SSG-with-params",
+    "eslint": "clean on touched files (teach-me components, both course pages, lib/api.ts)",
+    "live_llm": "none — the hub lane touches no LLM seam; the run-002 fixture-replay law is untouched",
+    "rebaseline": "not applicable — zero db/ or golden-geometry changes in this lane"
+  },
+  "laws_landed": {
+    "gate": "flags.json 'teachMe' key, absent=OFF (file/key/slug/malformed all degrade to the honest roadmap state); bare {enabled,courses} shape — the exact pair the run-002 flags-parity test asserts against the API config mirror, so this flip ACTIVATES that test into a binding parity pin",
+    "picker": "spec-point picker walks the committed curriculum tree (TOPIC→SUBTOPIC→SPEC_POINT) in the dotted {subject}-{code} canon family the API's G1 gate validates; eligibility is NEVER fabricated hub-side — create() stays the fail-closed law (COURSE_NOT_ELIGIBLE surfaces honestly)",
+    "honesty": "verdict chips are live-response-only (the teach_messages plane carries no chip columns) — resumed sessions render the transcript without chips and SAY SO; review generation is polled to an honest still-generating state with a manual retry; the 40-word floor and every constant stay server-side (the composer's word counter is display-only)",
+    "d1": "the AI_SUGGESTED disclosure banner renders on every review card — nothing counts toward of-record mastery without workbench ratification (no hub path to the contrary exists)",
+    "routing": "/api/v1/learners/me/teach-me joins V2_SURFACE_PREFIXES as a v2-NATIVE narrow family (no core analogue to golden-verify; siblings keep their own rows; no startsWith over-capture — grep-verified)"
+  },
+  "disclosures": [
+    "OUT-OF-FENCE: apps/hub/src/app/courses/[course]/page.tsx — ONE additive Learn-band card keyed on the same flags gate, shipped as a SEPARATE commit per the T-MIG-010/T-SENECA-001/T-TEACH-012 + run-002 one-mount precedent (R0 ratification requested).",
+    "The teacher workbench ratification queue (plan §9) is NOT in this run — the task fence forbids existing teacher pages; the queue is its own additive panel task.",
+    "Voice renders as the honest disabled 'New' tile (run-004 spike); no 'describe your own topic' free-text path in v1 (create() is spec-point-grounded by contract).",
+    "Wave-0 content reality carried from run-002 unchanged: 4CH1 G1–G3 rows must exist in the serving DB or create refuses COURSE_NOT_ELIGIBLE fail-closed (by design).",
+    "The flags.json teachMe entry is deliberately bare (no surface/law metadata) — the parity test asserts deep equality with the API mirror; the human context lives in gate.ts + this receipt."
+  ],
+  "files": {
+    "added": [
+      "apps/hub/src/app/courses/[course]/teach-me/page.tsx",
+      "apps/hub/src/components/hub/teach-me/gate.ts",
+      "apps/hub/src/components/hub/teach-me/gate.test.ts",
+      "apps/hub/src/components/hub/teach-me/picker-data.ts",
+      "apps/hub/src/components/hub/teach-me/errors.ts",
+      "apps/hub/src/components/hub/teach-me/teach-me-laws.test.ts",
+      "apps/hub/src/components/hub/teach-me/teach-me-client.tsx",
+      "apps/hub/src/components/hub/teach-me/wizard.tsx",
+      "apps/hub/src/components/hub/teach-me/player.tsx",
+      "apps/hub/src/components/hub/teach-me/review.tsx",
+      "apps/hub/src/components/hub/teach-me/history.tsx"
+    ],
+    "modified": [
+      "apps/hub/src/lib/api.ts (contracts type import + NARROW v2 flip entry + 5 teach-me client fns + permalink payload types)",
+      "apps/hub/content/flags.json (the run-003 flip)",
+      "apps/hub/src/app/courses/[course]/page.tsx (OUT-OF-FENCE, separate commit: the Learn-band card)",
+      "docs/TEACH_ME_PLAN.md (run table states of record)",
+      ".syllabai/tasks/T-TEACHME-001.yaml (status + run-003 paragraph)",
+      "worklog.md + .syllabai/worklog.md (append-only entries)"
+    ]
+  },
+  "pending_inputs": [
+    "CI on this PR is the binding gate (verify + hub lanes); local results above are first-hand.",
+    "Operator: DB apply of 0020/0021 on a Neon BRANCH + the 4CH1 canon/corpus rows, else the live wizard fails COURSE_NOT_ELIGIBLE fail-closed.",
+    "Teacher workbench ratification queue: next band (forbidden inside this task's fence).",
+    "run-004 (operator-gated): Voice spike, attachments, XP/streak loop."
+  ]
+}
