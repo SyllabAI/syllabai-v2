@@ -722,3 +722,22 @@ Work Log:
 Stage Summary:
 - Branch of record: t-teachme-1/run-002 (base b8871ca); PR body carries the gates table + disclosures (token estimate, Wave-0 loader laws, chain-down 503 posture, D4 credit mapping).
 - Open: run-003 hub lane (wizard/player/review/history + flags.json flip — needs 4CH1 G1–G3 rows live first, else create refuses COURSE_NOT_ELIGIBLE fail-closed); vague-explanation re-probe (operator, Pro/second account) retunes teach-me/config.ts ONLY.
+
+## T-TEACHME-001 run-003 — the hub lane (wizard → player → review → history + the flags flip)
+Agent: main (Z.ai, zai-web session web-5e612468-7ecd-499d-8b14-7c05e8412405, chat 97a19c8c-d041-4ae2-9754-07fef634fc42)
+Task: operator ruling "merge and run-003" — PR #580 found merged (b8871ca), PR #585 (run-002) found merged (bef52be), run-003 (hub lane) built and dispatched
+
+Work Log:
+- Verified base first-hand: #580 merged_at 2026-10-31T19:27:54Z (merge commit b8871ca, run-001 commit d402eb3 preserved), #585 merged (bef52be) — run-002's receipt on main carries gates 3227 pass / rebaseline 93/875/126/94/165.
+- Recon of record: run-002 API surface (5 routes under /api/v1/learners/me/teach-me), contracts (packages/contracts/src/teach-me.ts zod-strict), flags-parity test (bare {enabled,courses} deep-equality vs the API config mirror), hub conventions (flags.json absent=OFF law via seneca-hub.ts, SSG static-params via allCourseParams, request()/ApiError message-verbatim law, api.v2-surface.test.ts NARROW-prefix governance).
+- Spec-point code family pinned: hub tree walks 4CH1-S1-a style nav codes, but the API canon gate (loadSpecPointCanon) matches knowledge_nodes SPEC_POINT codes in the dotted {subject}-{code} family (4CH1-2.3; curriculumCode 4CH1-2017 → toolkit prefix law) — picker-data.ts projects the committed curriculum in THAT family; eligibility stays server-side fail-closed.
+- teach-me hub module: gate.ts (parseTeachMeGate pure half + cached corpus-seam IO), picker-data.ts (tree projection, orphan bucket, numeric-aware spec order via the house bySpecPointOrder), errors.ts (status-classed honest failures carrying the server copy verbatim + display-only word counter), teach-me-client.tsx (create → player → poll → review → history/detail state machine), wizard.tsx (MG 4-step: ≤3 spec points → difficulty → length → mode with honest disabled Voice "New"), player.tsx (objectives auto-tick rail, transcript, expandable verdict chips, two-step end), review.tsx (strengths/tighten/verdicts/misconception candidates/exam anchors/prereqs/practice + AI_SUGGESTED banner), history.tsx (UTC-day groups).
+- Honest posture: resumed sessions render transcripts without chips (chips are live-response-only — teach_messages has no chip columns) and say so; review pending polls the permalink route to an honest still-generating state; constants stay server-side.
+- lib/api.ts: contracts types imported (never mirrored), NARROW v2-native flip entry for /api/v1/learners/me/teach-me, 5 client fns, TeachMeSessionDetail/TeachMeTranscriptRow payload types.
+- flags.json: the run-003 flip — bare "teachMe": {enabled: true, courses: ["igcse-chemistry-19"]} (activates the run-002 parity test into a binding pin).
+- Gates: typecheck 0 errors (5 packages); bun test 3242 pass / 13 skip / 0 fail (15 new hub pins); eslint clean on touched files; bun run build:hub green with /courses/igcse-chemistry-19/teach-me prerendered SSG.
+- Out-of-fence (separate commit): courses/[course]/page.tsx ONE additive Learn-band card keyed on the same gate per the one-mount precedent.
+
+Stage Summary:
+- Branch of record: t-teachme-1/run-003 (base post-#585 origin/main); receipt .syllabai/receipts/T-TEACHME-001/run-003.json; PR body carries the gates table + disclosures.
+- Open: teacher workbench ratification queue (own band — this task's fence forbids teacher pages); DB apply of 0020/0021 + 4CH1 canon rows (operator, Neon branch) else live create refuses COURSE_NOT_ELIGIBLE fail-closed; run-004 operator-gated (Voice/attachments/XP); vague-explanation re-probe retunes config.ts ONLY.

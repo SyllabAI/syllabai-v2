@@ -7,3 +7,10 @@
 - Verification: full hub production build green at the head; built SSG pages igcse-chemistry-19 + igcse-physics-19 inspected first-hand (hero Hub-tabs nav absent, trio present, default pane Resources, board line intact); root typecheck chain 5/5; hub suite 743 pass / 11 fail byte-identical to the clean-main signature (all 11 pre-existing env/UGM, not CI-gated).
 - Boundaries: #583 inside apps/hub/** (course-header.tsx, course-body-tabs.tsx, courses/[course]/page.tsx, courses/[course]/strengths/page.tsx); this receipt inside .syllabai/**; zero *.java; no core repo content; no Neon/prod/db contact.
 - Notes: (1) owning-session receipt, not an R0 sweep — R0-AUTO numbering untouched; (2) live-site flip rides the Vercel main deploy — the #575/#581/#584 registration-drop class stays on watch, empty-commit retrigger precedent stands; (3) zero force-push, zero auth failures, boundaries held.
+
+## T-TEACHME-001 run-003 receipt — 2026-11-01, operator ruling "merge and run-003"
+
+- Hub lane dispatched on branch t-teachme-1/run-003 (base post-#585 origin/main; #580 merged b8871ca, #585 merged bef52be verified first-hand via API before build): /courses/[course]/teach-me SSG landing (flagged courses prerender; honest "import pending" roadmap for the rest per plan §10), components/hub/teach-me/** (gate/picker-data/errors pure law modules + wizard/player/review/history/client), lib/api.ts (contracts types imported, NARROW v2-native flip, 5 client fns), flags.json teachMe flip (bare parity shape), 15 new hub pins.
+- Gates first-hand: typecheck 5/5 packages 0 errors; bun test 3242 pass / 13 skip / 0 fail (3227 prior + 15 new); eslint clean on touched files; build:hub green, /courses/igcse-chemistry-19/teach-me prerendered SSG.
+- Out-of-fence: courses/[course]/page.tsx ONE additive Learn-band card on the same flags gate — separate disclosed commit, R0 ratification requested (one-mount precedent).
+- Boundaries: inside apps/hub/** (teach-me module + api.ts + flags.json), docs/, .syllabai/**; zero api-lane/db/contracts contact; no Neon/prod/db contact; no live LLM.
