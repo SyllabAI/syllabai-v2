@@ -1,0 +1,58 @@
+{
+  "format": "guided-import-index/1.0",
+  "runner": "apps/hub/scripts/import_guided/run_import.mjs (hub-import-runner/1.0, FEED=physics-stagea-v18)",
+  "imported_at_utc": "2026-11-01T08:20:13Z",
+  "operator_trace": "1a1954284ff72101",
+  "upstream": {
+    "repo": "SyllabAI/syllabai-resources",
+    "namespace": "integration/",
+    "commit": "01a2fc348a42c7f139461dfcfeb020dad5717ac8",
+    "manifest": "hub-import-manifest-v18.json",
+    "manifest_sha256": "b7dd486a6bc4efad30f617b2b5943a20892fb89b565ec8c6551682b23bfa834d",
+    "manifest_version": 18,
+    "int0_pin": "7d493985c7729f30c2186e7e61a713ceacc96517",
+    "adapter": "guided-lesson-0.6--hub-lesson-import-1.5"
+  },
+  "target_schemas": [
+    "hub/lesson-import/1.5",
+    "sme-question-package/1.2"
+  ],
+  "counts": {
+    "notes": 1,
+    "lessons": 2,
+    "checks": 18,
+    "keyPoints": 9,
+    "distractors": 30,
+    "glossaryTerms": 6,
+    "figures": 9,
+    "figures_module_mapped": 9,
+    "figures_note_level": 0,
+    "workedExamples_populated": 1,
+    "workedExamples_null": 0,
+    "authored_chars_conserved": 13924
+  },
+  "conservation": {
+    "authored_stream_sha256": "42dea4b02c94947735ee0900ee1d433b4cbad1006edd1fb3104af7b5073dc2f4",
+    "authored_chars": 13924
+  },
+  "landing": {
+    "lessons_rel": "igcse-physics-19/guided-lessons",
+    "questions_rel": "igcse-physics-19/guided-questions",
+    "lesson_files": 1,
+    "question_files": 1,
+    "byte_exact": true,
+    "additive_only": true
+  },
+  "notes": [
+    {
+      "noteId": "rn_RpyMnS5nqWSRWXXG",
+      "wave": 0,
+      "lessonPath": "igcse-physics-19/guided-lessons/rn_RpyMnS5nqWSRWXXG.hub-lesson-import.json",
+      "packagePath": "igcse-physics-19/guided-questions/rn_RpyMnS5nqWSRWXXG.sme-question-package.json",
+      "lessonSha256": "4be97f7c9763ff88d74805982bb38cad6a517e6eb564f15e1968445fbb56584b",
+      "packageSha256": "11c39840eeb3ab694d9cddec36171e2c18f8b209cfebb94ebf4e29ae2992ee85",
+      "streamSha256": "42dea4b02c94947735ee0900ee1d433b4cbad1006edd1fb3104af7b5073dc2f4",
+      "streamChars": 13924
+    }
+  ]
+}
