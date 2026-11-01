@@ -269,9 +269,9 @@ try {
         const expectedFks = [
                 "teach_sessions_user_id_fkey",
                 "teach_objectives_session_id_fkey",
-                "teach_coverages_session_id_fkey",
-                "teach_coverages_objective_id_fkey",
-                "teach_candidates_session_id_fkey",
+                "teach_objective_coverages_session_id_fkey",
+                "teach_objective_coverages_objective_id_fkey",
+                "teach_misconception_candidates_session_id_fkey",
                 "teach_messages_session_id_fkey",
                 "teach_review_cards_session_id_fkey",
         ];
@@ -289,10 +289,12 @@ try {
                 checks[`checks_${t}`] = missing.length === 0;
                 if (missing.length > 0) fail(`post-verify: missing CHECKs on ${t}: ${missing.join(",")}`);
         }
+        // exact-name lookup — no LIKE wildcards ('_' is a single-char wildcard and
+        // 'teach_%' also matches the pre-existing teaching_toolkit_* FKs, run-1 finding)
         const fkRows = (
-                await sql`select conname from pg_constraint where contype = 'f' and conname like ${"teach_%"} order by conname`
+                await sql`select conname from pg_constraint where contype = 'f' and conname = any(${expectedFks}::text[]) order by conname`
         ).map((r) => String(r.conname));
-        checks.fks = expectedFks.every((c) => fkRows.includes(c));
+        checks.fks = fkRows.length === expectedFks.length;
         if (!checks.fks) fail(`post-verify: missing FKs; got ${fkRows.join(",")}`);
 
         const idxSessions = await indexDefs("teach_sessions");
