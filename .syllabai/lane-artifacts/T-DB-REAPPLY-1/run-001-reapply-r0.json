@@ -1438,6 +1438,30 @@
   }
  },
  "mechanismNote": "uuid-preserving UPDATE-only reconcile (anchors and subsystem joins intact; all rows were version=1, bumped to 2). 4CH1 retire-and-reseed recorded DISPROVEN-PREMISE: point sets identical 182=182, code law aligns 4CH1-<pointId>, destructive reseed would orphan 6627 anchors and delete the 12 operator-ruled-KEEP practicals (0 anchors on them) for zero parity gain. Flagged for operator ratification.",
+ "mechanismRatification": {
+  "status": "RATIFIED",
+  "dispositionOfRuledReseed": "RETIRED-DISPROVEN-PREMISE (not executed; not pending)",
+  "ratifiedVia": "operator word of record - chat d889551c-b3b5-4885-b1c1-57af82e11b0a, trace 1a1956c2b8b403bd",
+  "operatorWord": "verbatim as received (leading truncation in the source message): \"atify the 4CH1 mechanism note (alignment vs the ruled reseed) in the receipt;\"",
+  "ratifiedUtc": "2026-11-01T04:53:21Z",
+  "ruledMechanism": "retire-and-reseed (structural drift; ruling trace 1a1892dbd23d4c4d)",
+  "executedMechanism": "uuid-preserving UPDATE-only kg-plane alignment - 64 rows (62 SPEC_POINT titles := canonicalKG statements; 2 TOPIC titles := canonicalKG SubTopic labels), provenance lineage spec:4CH1-2017 unchanged, uuids/edges/applicability untouched, version 1->2",
+  "evidenceOfRecord": [
+   "G3 set parity at gate time: points 182==182, topics 28==28, units 4==4 - the ruled reseed premise (non-corresponding tree) is disproven",
+   "code law aligns 4CH1-<pointId>: DB codes and canonicalKG pointIds correspond 1:1",
+   "destructive reseed would orphan 6,627 question anchors and delete the 12 operator-ruled-KEEP practicals (0 anchors on them) for zero parity gain",
+   "post-write invariants GREEN: nodes 10909, edges 11164, anchor rows 41636, anchor joins 41636 - all byte-unchanged"
+  ],
+  "postHocVerification": {
+   "verifiedBy": "main agent, trace 1a1956c2b8b403bd (no DB access in session; repo-side re-checks only)",
+   "canonicalKGFileSha256Prefix": "11eb7aa571c3 - recomputed 2026-11-01 from apps/hub/public/kg/data/canonicalKG.edexcel-chemistry-4ch1.json; matches gate G2",
+   "resourcesOriginMain": "4b75272d",
+   "pinLaw": "all 5 CIE manifests pin the same main@1a5c37bcecf379cd98e83aa74aa9472920092428; re-verified present in syllabai-resources and ancestor of origin/main 4b75272d (PIN-OBJECT-EXISTS-OK, PIN-IS-ANCESTOR-OK)",
+   "branchOfRecord": "v2 lane/T-DB-LANE-1 @ 738aaaba (receipt commit) + ratification amendment commit; origin/main 55f91919"
+  },
+  "censusRun002Note": "T-DB-DRIFT-1 run-002 (2026-11-01T04:30:57Z) re-verified the 5 CIE slugs CONTENT_DRIFT -> IN_SYNC (25->30 / 23->18) and the 4CH1 tree stable at 227 rows; its fourCH1.ruling string remains the historical ruling text baked into the census instrument - this block is the disposition of record.",
+  "amendmentLaw": "additive provenance, no rewrite: no pre-existing receipt field altered"
+ },
  "outOfScopeQueued": [
   "Edexcel applicability rule-text refresh (12 bundle families, uniform rule-string advance)",
   "ial-maths-20-* code-space rewrites (YMA01-P11.1 -> YMA01-1.1 class; 8 banks)",

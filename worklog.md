@@ -722,3 +722,22 @@ Work Log:
 Stage Summary:
 - Branch of record: t-teachme-1/run-002 (base b8871ca); PR body carries the gates table + disclosures (token estimate, Wave-0 loader laws, chain-down 503 posture, D4 credit mapping).
 - Open: run-003 hub lane (wizard/player/review/history + flags.json flip — needs 4CH1 G1–G3 rows live first, else create refuses COURSE_NOT_ELIGIBLE fail-closed); vague-explanation re-probe (operator, Pro/second account) retunes teach-me/config.ts ONLY.
+
+---
+Task ID: T-DB-DRIFT-1 + T-DB-REAPPLY-1 (run-001) + operator ratification of the 4CH1 mechanism note
+Agent: main (Z.ai, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, chat d889551c-b3b5-4885-b1c1-57af82e11b0a; traces 1a1935a489a65519 lane mandate / 1a19548d6ae13881 credential delivery / 1a1956c2b8b403bd ratification + push of record)
+Task: the gated hub-DB write lane - read-only drift census + gated re-apply (5 CIE content-drift slugs + 4CH1), operator ratification of the 4CH1 mechanism note (alignment vs the ruled reseed), branch push of record.
+
+Work Log:
+- Census (T-DB-DRIFT-1 run-001, read-only, 2026-11-01T04:19Z): 67 bundle courses - 25 IN_SYNC / 23 CONTENT_DRIFT / 16 STRUCTURAL_DRIFT / 3 MAPPING_REFUSED; fourCH1 block of record: DB tree 227 nodes (SUBJECT 1 / UNIT 4 / TOPIC 28 / SPEC_POINT 182 / SUBTOPIC 12), canonicalKG 217 nodes, 6,627 question anchors.
+- Re-apply (T-DB-REAPPLY-1 run-001, mode=apply, 2026-11-01T04:30Z): gates fail-closed GREEN - G1 within-census-envelope per slug, G2 pin law main@1a5c37bc ancestor of resources origin/main 4b75272d (5/5 slugs, one advance), G3 UPDATE-only + full-row optimistic guards + 4CH1 set parity 182/28/4; one store-law abort on the 4CH1 act (unbounded kg statement > varchar(200)) -> retry under the store bound law; appliedCount 64 (62 SPEC_POINT + 2 TOPIC, all title-only); appliedPreviously block (75 rows at version>1, full old-row guards) carries the run's own abort/commit account; uuid-preserving, CIE provenance advanced to the pin, 4CH1 lineage spec:4CH1-2017 unchanged; invariants GREEN (nodes 10909, edges 11164, anchor rows 41636, anchor joins 41636 - byte-stable).
+- Verify (T-DB-DRIFT-1 run-002, read-only, 2026-11-01T04:30:57Z): 5 CIE slugs CONTENT_DRIFT -> IN_SYNC (IN_SYNC 25->30, CONTENT_DRIFT 23->18); 4CH1 tree stable 227.
+- RATIFICATION (trace 1a1956c2b8b403bd): operator word ratifies the 4CH1 mechanism note in the receipt of record - executed mechanism (uuid-preserving UPDATE-only kg-plane alignment) RATIFIED vs the ruled retire-and-reseed, disposition RETIRED-DISPROVEN-PREMISE (set parity 182==182 / 28==28 / 4==4; code law 4CH1-<pointId>; destructive reseed would orphan 6,627 anchors + delete the 12 operator-ruled-KEEP practicals for zero parity gain). Additive mechanismRatification block in run-001-reapply-r0.json; census receipts untouched; post-hoc re-verification GREEN (canonicalKG sha256 11eb7aa571c3... matches gate G2; pin law re-verified on resources origin/main 4b75272d).
+- Push of record: branch lane/T-DB-LANE-1 -> github.com/SyllabAI/syllabai-v2 (was blocked: no GitHub credential in sandbox); PR opened for operator merge word (hub-first convention).
+
+Stage Summary:
+- 4CH1 mechanism RATIFIED: alignment stands, reseed retired; DB serving plane now corresponds to the of-record import sources for the 5 CIE slugs and to canonicalKG for 4CH1.
+- Receipts of record: .syllabai/lane-artifacts/T-DB-REAPPLY-1/run-001-reapply-r0.json (+mechanismRatification), T-DB-DRIFT-1 run-001 census + run-002 verify.
+- Queued (outOfScopeQueued of record): Edexcel applicability rule-text refresh (12 bundle families); ial-maths-20-* code-space rewrites (8 banks); igcse-*-modular-24-unit-2 reshapes (5 families); 3 MAPPING_REFUSED bundles (mapper vocabulary); 4CH1 edge-plane (REQUIRES_PREREQUISITE 19 vs pre 30 / rel 5; ExamPaper/assess plane).
+- teach-me run-003 dependency ("needs 4CH1 G1-G3 rows live first") unblocked at the DB plane; verify its own loader gates at that lane's gate time.
+- Credential hygiene: ghp_ token delivered in-chat (trace 1a1956c2b8b403bd) is chat-exposed - rotate after merge; used only for the push + PR of record; receipts scrub-asserted.
