@@ -1,0 +1,285 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_RpyMnS5nqWSRWXXG",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "dcd79fe8b60f1708179c57fd71e03717f25ba6d212b16388edf16fa8fdc3ed42",
+    "pinnedRef": "7d493985c7729f30c2186e7e61a713ceacc96517"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_RpyMnS5nqWSRWXXG",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Movement & Position",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-1-movement-and-position/1-1-1-distance-time-graphs",
+    "specAnchors": [
+      {
+        "code": "1.3",
+        "text": "plot and explain distance−time graphs"
+      }
+    ],
+    "primer": {
+      "text": "From Speed you already know how to average distance over time for steady motion. This lesson turns that arithmetic into a picture: the distance-time graph, where the steepness of every straight line is a speed and every flat stretch is a rest. It is the first graph-reading skill the motion topic builds on.",
+      "prerequisiteSubtopic": "Movement & Position"
+    },
+    "modules": [
+      {
+        "id": "rn_RpyMnS5nqWSRWXXG::L1",
+        "title": "What a distance-time graph shows",
+        "sourceHeadings": [
+          "Distance-time graphs",
+          "Constant speed on a distance-time graph"
+        ],
+        "specRefs": [
+          "1.3"
+        ],
+        "opening": "A distance-time graph is a picture of a journey: how far the object sits from its starting point at every moment of the trip. This lesson trains the two readings that unlock every such graph — what the steepness tells you, and what a flat line tells you.",
+        "keyPoints": [
+          "A distance-time graph plots how far an object is from its starting point against time.",
+          "A straight line means constant speed; the steeper the line, the larger the speed.",
+          "A flat horizontal line means the object is stationary.",
+          "A curve means the speed is changing — steepening is speeding up, flattening is slowing down."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "On a distance-time graph the distance from the start runs up the side and time runs along the bottom. Straight lines are constant speeds, flat lines are rests, and curves are changing speeds.",
+            "analogy": "Think of the line as a hill-walk profile tipped on its side: the steeper the path climbs, the faster you are walking; where it levels out, you have stopped for a break.",
+            "examPointer": "Questions usually ask what a section of line shows — answer with the motion word (stationary, constant speed, speeding up, slowing down), not with a description of the line's shape."
+          },
+          "medium": {
+            "restatement": "Because the vertical axis is distance, the gradient at any point equals the speed there. A straight line has one gradient throughout, so straight means constant speed; a changing gradient means a changing speed.",
+            "analogy": "Treat each point of the line like a car's speedometer needle frozen at that instant: straight lines hold the same reading, curves swing it up or down.",
+            "examPointer": "Compare-the-two-lines questions are graded on gradient: the steeper line is the faster object, even if it ends lower — never rank speeds by final height."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_RpyMnS5nqWSRWXXG::L1::Q1",
+          "rn_RpyMnS5nqWSRWXXG::L1::Q2",
+          "rn_RpyMnS5nqWSRWXXG::L1::Q3",
+          "rn_RpyMnS5nqWSRWXXG::L1::Q4",
+          "rn_RpyMnS5nqWSRWXXG::L1::Q5",
+          "rn_RpyMnS5nqWSRWXXG::L1::Q6",
+          "rn_RpyMnS5nqWSRWXXG::L1::Q7",
+          "rn_RpyMnS5nqWSRWXXG::L1::Q8",
+          "rn_RpyMnS5nqWSRWXXG::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_RpyMnS5nqWSRWXXG::L2",
+        "title": "Changing speed and the gradient",
+        "sourceHeadings": [
+          "Changing speed on a distance-time graph",
+          "Calculating speed from a distance-time graph"
+        ],
+        "specRefs": [
+          "1.3"
+        ],
+        "opening": "When speed changes, the distance-time line stops being straight. This lesson turns the line's steepness into a number — the gradient — and uses it to calculate speeds from graph axes, including the unit conversions examiners expect.",
+        "keyPoints": [
+          "Speed is the gradient of a distance-time line: change in distance divided by change in time.",
+          "Convert axis units to metres and seconds before reading a gradient, giving a speed in m/s.",
+          "A large gradient triangle gives a more accurate gradient than a small one.",
+          "A line sloping back toward zero distance shows the object returning to its start.",
+          "A downward slope marks the direction of travel, not deceleration — speed is the gradient's magnitude."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The gradient of the line — how much the distance changes for each bit of time — is the speed. Draw a large triangle on the line, divide the distance change by the time change, and convert the units first.",
+            "analogy": "A gradient triangle is like a ladder leaned against the line: the taller and wider the ladder, the more reliable your read of how steep the hill really is.",
+            "examPointer": "Show the unit conversions explicitly — kilometres to metres and minutes to seconds — because the marks sit in the conversion as often as the division."
+          },
+          "medium": {
+            "restatement": "Gradient equals change in vertical over change in horizontal, so on distance-time axes it is distance change over time change in the axis units. Steepening curves mark acceleration; flattening curves mark deceleration; a falling line is a return journey whose speed is the magnitude of its gradient.",
+            "analogy": "Read a curve like a ramp into a car park: the entry steepens as you speed up, flattens as you brake, and the downward exit ramp still has a speed even though it heads back to the ground floor.",
+            "examPointer": "Large gradient triangles earn method marks; tiny triangles squeezed against the line lose accuracy and credit. Quote the final speed to 2 or 3 significant figures."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_RpyMnS5nqWSRWXXG::L2::Q1",
+          "rn_RpyMnS5nqWSRWXXG::L2::Q2",
+          "rn_RpyMnS5nqWSRWXXG::L2::Q3",
+          "rn_RpyMnS5nqWSRWXXG::L2::Q4",
+          "rn_RpyMnS5nqWSRWXXG::L2::Q5",
+          "rn_RpyMnS5nqWSRWXXG::L2::Q6",
+          "rn_RpyMnS5nqWSRWXXG::L2::Q7",
+          "rn_RpyMnS5nqWSRWXXG::L2::Q8",
+          "rn_RpyMnS5nqWSRWXXG::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04",
+          "fig-05",
+          "fig-06",
+          "fig-07",
+          "fig-08",
+          "fig-09"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "distance-time graph",
+          "definition": "A plot of how far an object is from its starting point against time taken.",
+          "firstLesson": 1
+        },
+        {
+          "term": "gradient",
+          "definition": "The steepness of a line, worked out as the change in the vertical axis divided by the change in the horizontal axis.",
+          "firstLesson": 1
+        },
+        {
+          "term": "stationary",
+          "definition": "Not moving at all — shown by a flat, horizontal line on a distance-time graph.",
+          "firstLesson": 1
+        },
+        {
+          "term": "constant speed",
+          "definition": "Speed that does not change, shown by a straight line on a distance-time graph.",
+          "firstLesson": 1
+        },
+        {
+          "term": "accelerating",
+          "definition": "Speeding up, shown on a distance-time graph by a line that steepens.",
+          "firstLesson": 2
+        },
+        {
+          "term": "decelerating",
+          "definition": "Slowing down, shown on a distance-time graph by a line that flattens.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A distance-time graph is drawn below for part of a train journey. The train is travelling at a constant speed. Calculate the speed of the train.",
+        "steps": [
+          "Draw a large gradient triangle on the graph and label the change in distance and the change in time using the units stated on each axis.",
+          "Convert to standard units: the distance travelled is 8 km = 8000 m, and the time taken is 6 mins = 360 s.",
+          "State that the gradient of a distance-time graph equals the speed: speed = gradient = change in distance / change in time.",
+          "Substitute the values: speed = 8000 / 360 = 22.2 m/s."
+        ],
+        "finalAnswer": "22.2 m/s (8000 m divided by 360 s = 22.2 m/s to 3 significant figures)"
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/aab04bb7d8dd-5-6-8-distance-time-graph-1.png",
+        "alt": "Distance -Time Graph 1, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Distance-time graphs",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "This graph shows a moving object moving further away from its origin",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/439c26ddd931-5-6-8-distance-time-graph-2.png",
+        "alt": "Distance -Time Graph 2, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Constant speed on a distance-time graph",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "This graph shows how the slope of a line is used to interpret the speed of moving objects. Both of these objects are moving with a constant speed, because the lines are straight.",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b355727c82b0-5-6-8-distance-time-graph-3.png",
+        "alt": "Distance -Time Graph 3, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Changing speed on a distance-time graph",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Changing speeds are represented by changing slopes. The red line represents an object slowing down and the green line represents an object speeding up.",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/df2e77a2f8d8-gradient-distance-time-graph-xy.png",
+        "alt": "gradient-distance-time-graph-xy",
+        "sourceHeading": "Calculating speed from a distance-time graph",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "The speed of an object can be found by calculating the gradient of a distance-time graph",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b45dedb00620-5-6-8-we-gradient-of-d-t-question-graph.png",
+        "alt": "WE Gradient of D-T question graph, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Calculating speed from a distance-time graph",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/730a2d3566a7-gradient-of-distance-time-graph-we1.png",
+        "alt": "gradient-of-distance-time-graph-we1",
+        "sourceHeading": "Calculating speed from a distance-time graph",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-07",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/aba917f4e7f3-5-6-8-we-ose-gets-carried-away-question-image.png",
+        "alt": "WE Ose gets carried away Question image, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Calculating speed from a distance-time graph",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-08",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/da1f6ff25688-5-6-8-we-ose-gets-carried-away-ans-a.png",
+        "alt": "WE Ose gets carried away Ans a, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Calculating speed from a distance-time graph",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-09",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/e77026a9ad29-5-6-8-we-ose-gets-carried-away-ans-c.png",
+        "alt": "WE Ose gets carried away Ans c, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Calculating speed from a distance-time graph",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}
