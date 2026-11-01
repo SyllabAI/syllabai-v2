@@ -1,0 +1,90 @@
+version: 1
+task:
+  id: T-GRADE-005
+  title: "Grade Boundaries wave 5 — MathsGenie style parity: the operator put MG's live predicted-grade-calculator next to ours and the calculator speaks MG's language again (pills, graded meter, mean-row Average, fitted table, hue-ramped graph)"
+  owner: "main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-GRADE (grade boundaries)
+  wave: gradeb-phase-C
+  deps: [T-GRADE-001, T-GRADE-002, T-GRADE-003, T-GRADE-004]
+  execution_record: >
+    Origin (operator word this trace): "Still it is not in the style of
+    MathsGenie. Did you check them out visually?" — the honest answer was
+    no: T-GRADE-3 run-001 proved VALUE parity (G2 MathsGenie parity 6/6
+    byte-identical boundaries) and run-002 cloned MG's saved page DOM, but
+    nobody had put the two LIVE pages side by side. This run opened MG's
+    live page (mathsgenie.co.uk/igcse/chemistry/edexcel/
+    predicted-grade-calculator) in a headless browser, screenshotted the
+    table view, the graph view and a selected-session state, and closed
+    four deltas plus one sub-semantic difference:
+    (1) SESSION PILLS — MG's active pill is a bordered background chip with
+    a leading check dot (white bg, 2px dark ring, dark check circle), NOT a
+    filled accent pill; inactive pills are borderless muted text. Restyled
+    pillCls on the --foreground/--background token pair (every theme
+    re-skins) with a lucide Check dot.
+    (2) GRADE RAIL + METER — MG's rail caption is the marks-to-next
+    affordance ("↑ 25 marks to 1") and the meter carries graded endpoints
+    ("U · 0" … "1 · 25" = next grade · its boundary), replacing our static
+    "Most likely grade"/"Predicted — X" captions and bare "0 / Max 180"
+    scale. The aggregate-ums rail follows the same shape ("↑ N UMS to G",
+    cash-in max as the denominator) and the A*-rule shortfall demoted to
+    the muted footnote line.
+    (3) AVERAGE SEMANTICS — MG's Average is a per-grade MEAN boundary row
+    (their "1 · 25" endpoint = the averaged grade-1 boundary), not a modal
+    grade. New pure helper averageBoundariesAcrossSeries (mean per grade
+    over sessions carrying that boundary, rounded half-up, null preserved
+    for never-published grades) now drives BOTH the linear average mode and
+    the aggregate average mode (mean of the eligible sessions' cash-in
+    boundaries; per-session raw→UMS conversions unchanged); the retired
+    modalGradeAcrossSeries stays exported with its tests as a calc-lib
+    utility.
+    (4) LINEAR TABLE — the Max column dropped (MG fits ten columns in the
+    max-w-3xl card; ours clipped at 1280px with "Max" cut mid-header);
+    papers labels + R badge + tier keep their column, grouping rowSpan and
+    the honest footnote are untouched.
+    (5) GRAPH — MG encodes the grade IN the color: a dark-green→red hue
+    ramp per ladder position with ringed dots (white fill, colored ring,
+    r=4). Replaces the five chart-token cycle that collided on a 9-grade
+    ladder.
+    Local proof: bunx tsc --noEmit 0 errors; eslint on the touched paths 0
+    problems; grade-boundaries-calc.test.ts 21/21 (18 prior + 3 new
+    averageBoundariesAcrossSeries tests: mean+round, null-skipping
+    tiers, empty/all-null guards); full bun test 778 ran = 12 fails ALL
+    pre-existing on clean main (T-UGM/XBOARD/dual-run/cla planes —
+    sandbox-env; stashed and reproduced) + 3 new passes; bun run build
+    prerendered (build7, NODE_OPTIONS cap — the 4GB sandbox OOM-killed two
+    builds mid-TypeScript, disclosed); LOCAL VISUAL PROOF: the standalone
+    build served on 127.0.0.1:3111 and screenshotted — igcse-chemistry-19
+    (Average pill + check, "↑ 26 marks to 1", endpoints U·0 … 1·26,
+    ten-column table, hue-ramped graph) and ial-chemistry-17 (aggregate
+    average: "↑ 240 UMS to E", 0/600 UMS). ChunkIdentity check: served
+    chunk hashes match the built tree (a stale next-server serving build5
+    from memory was caught by the chunk-match assert and killed — pin for
+    future visual gates: match the served chunk against the disk tree
+    before believing any screenshot).
+  doctrine: >
+    Same band doctrine as T-GRADE-001..004. THIS wave's law: MG parity is
+    now defined by the LIVE page, not a saved DOM — every presentation
+    delta must be re-derived from a fresh visual check, and every color
+    still rides the hub token ladder EXCEPT the graph's grade ramp, which
+    is data encoding (grade rank → hue) and deliberately theme-independent;
+    calculator semantics changed in exactly one place (Average = mean row)
+    and the change is test-pinned; zero boundary values, zero bundle bytes,
+    zero registry/DB/API planes touched.
+scope:
+  allowed:
+    - "apps/hub/src/components/hub/grade-boundaries/grade-boundaries-workspace.tsx (pills, rail, meter endpoints, table columns, graph ramp)"
+    - "apps/hub/src/lib/grade-boundaries-calc.ts (averageBoundariesAcrossSeries)"
+    - "apps/hub/src/lib/grade-boundaries-calc.test.ts (3 new tests)"
+    - ".syllabai/tasks/T-GRADE-005-mg-style-parity.yaml (this card)"
+    - ".syllabai/receipts/T-GRADE/T-GRADE-005-RUN001-MG-STYLE-PARITY.json (new)"
+    - ".syllabai/worklog.md (append only)"
+    - "worklog.md (append only)"
+  forbidden:
+    - "packages/contracts/** (no core DTO changes)"
+    - "packages/db/** (zero DDL)"
+    - "apps/api/** (no routes)"
+    - "apps/hub/content/grade-boundaries/bundle.v1.json (data plane frozen at 533671bf1070ff93)"
+    - "lib/courses.ts (registry untouched)"
+    - "any hardcoded color/radius/shadow outside the graph ramp"

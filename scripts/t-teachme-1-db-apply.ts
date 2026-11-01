@@ -343,7 +343,9 @@ try {
         (receipt.postverify as Record<string, unknown>).ddl = checks;
 
         // ── ADR-040 D1 append-only bite probe (inside a ROLLBACK-ed txn) ──────────
-        const rs = sql.reserve();
+        // reserve() is async (run-2 finding: a missing await left rs as a Promise
+        // and every rs.* call became "not a function")
+        const rs = await sql.reserve();
         try {
                 await rs.unsafe("BEGIN");
                 await rs.unsafe("SET LOCAL lock_timeout = '5s'");
