@@ -889,7 +889,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   );
 }
 
-interface InkCanvasProps {
+export interface InkCanvasProps {
   page: number;
   shapes: InkShape[];
   mode: InkToolMode;
@@ -950,8 +950,14 @@ function topmostFamilyHit<K extends "text" | "mtext">(
 /** One page's ink canvas — portaled into the pane's page holder. The
  * gesture router for every ink mode: freehand (pen), text placement, and
  * the T-MG-INK-2 instruments (line / ruler / protractor / compasses),
- * whose pure math lives in ./instruments. */
-function InkCanvas({
+ * whose pure math lives in ./instruments.
+ *
+ * Exported (component + props type) as the T-MG-INK-6 run-002 regression
+ * seam: the pointerdown law is test-pinned at THIS handler in jsdom
+ * (ink-layer-pointerdown.test.ts) — mounting the outer InkLayer would
+ * drag the observer/local-store planes into the seam for no law of
+ * theirs is under test here. Export-only: zero behaviour change. */
+export function InkCanvas({
   page,
   shapes,
   mode,
@@ -1075,6 +1081,19 @@ function InkCanvas({
       if (!canvas) return;
       if (mode === "text") {
         if (e.pointerType === "mouse" && e.button !== 0) return;
+        // T-MG-INK-6 run-002 (the pointerdown law): cancel the OPENING press
+        // BEFORE any setDraft. Per the Pointer Events spec's compatibility
+        // mapping, a canceled pointerdown suppresses the browser's compat
+        // mousedown — so the press-focus transfer this same gesture would
+        // fire cannot steal focus from the autoFocus'd draft textarea that
+        // mounts below, and the mount → spurious onBlur → empty-commit →
+        // unmount flash-close (the P1 defect of record, proven live
+        // 2026-11-01) is dead at the root. ONE law covers the create tap AND
+        // the run-003 re-edit tap (same branch, same race). The right-button
+        // guard already returned above, so context menus survive; the
+        // working tools (pen/erase/select/line/instruments) gain nothing —
+        // their branches stay preventDefault-free, pinned by the test seam.
+        e.preventDefault();
         const box = canvas.getBoundingClientRect();
         const cssBox = { cssW: box.width, cssH: box.height };
         const frac = normalizePoint(
@@ -1095,6 +1114,10 @@ function InkCanvas({
       }
       if (mode === "math") {
         if (e.pointerType === "mouse" && e.button !== 0) return;
+        // T-MG-INK-6 run-002: the pointerdown law, math twin — the same
+        // compat-mousedown suppression as the text branch above, covering
+        // both the create tap and the mtext re-edit tap.
+        e.preventDefault();
         const box = canvas.getBoundingClientRect();
         const cssBox = { cssW: box.width, cssH: box.height };
         const frac = normalizePoint(
