@@ -193,6 +193,17 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   const [color, setColor] = useState<InkColor>("black");
   const [widthIdx, setWidthIdx] = useState(1);
   const [holders, setHolders] = useState<HolderEntry[]>([]);
+  // T-MG-INK-7: the portal-root registry (page → the single wrapper div
+  // the portal hosts inside the holder). The pane's page lifecycle
+  // repaints a holder by EMPTYING it — renderPage's double-buffer swap
+  // (`holder.replaceChildren(canvas)`) and the off-radius sweep — which
+  // evicts the portal subtree, and React reconciliation never re-inserts
+  // content that non-React code removed. The holder observer's eviction
+  // law (below) re-attaches the REGISTERED subtree synchronously: the
+  // SAME canvas node, same bitmap, same listeners — no remount, no state
+  // change, nothing for React to disagree with (a keyed remount here
+  // would make React unmount the detached ghost and throw NotFoundError).
+  const inkRootsRef = useRef(new Map<number, HTMLElement>());
   // The instrument guides (T-MG-INK-2): session-local, one per instrument
   // per layer (each carries its own page — it renders only there).
   const [rulerGuide, setRulerGuide] = useState<RulerGuide | null>(null);
@@ -369,6 +380,21 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   }, [commit]);
 
   // Holder presence tracking (structure-only observer; no geometry).
+  // T-MG-INK-7 EVICTION LAW: the same observer also analyses each batch
+  // for external evictions — a batch that removed an ink root (the
+  // `data-ink-root` wrapper or the canvas itself) from a still-connected
+  // [data-page] target which carries NO ink canvas after the batch
+  // settles (final-state check: a same-batch remove+re-add passes) lost
+  // its portal subtree to a non-React `replaceChildren` (the pane's
+  // renderPage double-buffer swap, the off-radius sweep, a rotation
+  // refreeze). The heal re-attaches the registered subtree into the SAME
+  // holder synchronously — the exact nodes React already believes are
+  // rendered there, so React's model and the DOM agree again with ZERO
+  // remounts. Surgical: only the evicted holder is touched; every other
+  // page's canvas keeps node identity and in-flight gestures survive.
+  // Loop-safe: a healed holder carries its canvas (the check can never
+  // re-fire on it), the re-attach is an addition-only batch, and benign
+  // addition-only batches (the pane's text-layer rebuilds) never heal.
   useEffect(() => {
     if (!enabled || !hostRef.current) return;
     const host = hostRef.current;
@@ -385,8 +411,35 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
           : found,
       );
     };
+    const heal = (muts: MutationRecord[]) => {
+      const candidates = new Set<HTMLElement>();
+      for (const m of muts) {
+        for (const node of m.removedNodes) {
+          if (
+            node.nodeType === 1 &&
+            ((node as HTMLElement).hasAttribute?.("data-ink-root") ||
+              (node as HTMLElement).hasAttribute?.("data-ink-page")) &&
+            m.target instanceof HTMLElement &&
+            m.target.isConnected &&
+            m.target.hasAttribute("data-page")
+          ) {
+            candidates.add(m.target);
+          }
+        }
+      }
+      for (const holder of candidates) {
+        if (holder.querySelector("canvas[data-ink-page]")) continue;
+        const page = Number.parseInt(holder.dataset.page ?? "", 10);
+        if (!Number.isInteger(page) || page < 1) continue;
+        const ghost = inkRootsRef.current.get(page);
+        if (ghost && !ghost.isConnected) holder.appendChild(ghost);
+      }
+    };
     rescan();
-    const obs = new MutationObserver(rescan);
+    const obs = new MutationObserver((muts) => {
+      rescan();
+      heal(muts);
+    });
     obs.observe(host, { childList: true, subtree: true });
     return () => obs.disconnect();
   }, [enabled, hostRef, sync]);
@@ -814,12 +867,25 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
         </div>
       )}
 
-      {/* one canvas portal per mounted page holder */}
+      {/* one canvas portal per mounted page holder; the T-MG-INK-7
+          wrapper gives the portal ONE registered root — the eviction law
+          re-attaches this exact subtree if the pane's repaint empties the
+          holder (same nodes, no remount). display:contents keeps the
+          canvas's absolute positioning resolved against the holder. */}
       {enabled &&
         holders.map(({ page, el }) =>
           createPortal(
-            <InkCanvas
-              key={page}
+            <div
+              key={`ink-${page}`}
+              ref={(el2) => {
+                if (el2) inkRootsRef.current.set(page, el2);
+                else inkRootsRef.current.delete(page);
+              }}
+              data-ink-root={page}
+              className="contents"
+            >
+              <InkCanvas
+                key={page}
               page={page}
               shapes={snap.shapes.filter((s) => s.page === page)}
               mode={mode}
@@ -880,7 +946,8 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
                   )}
                 </>
               }
-            />,
+              />
+            </div>,
             el,
             `ink-${page}`,
           ),

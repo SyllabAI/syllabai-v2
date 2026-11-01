@@ -1,0 +1,54 @@
+version: 1
+task:
+  id: T-MG-INK-7
+  title: "MG parity follow-up #4 — the ink layer must survive the pane's page repaints (the holder self-heal law; every zoom refreeze / scroll re-paint currently EVICTS the React-portal ink canvases of the re-painted pages and nothing ever re-inserts them, so all annotation tools go dead on those pages and committed ink visually vanishes until reload)"
+  owner: "main agent (Z.ai, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)"
+  status: OPEN
+  priority: P1
+  band: T-MG-MARK-PARITY (interactive paper marking) — post-closure follow-up card #4, operator-ruled ("Proceed with T-MG-INK-7") after the owning session's second live defect audit of the shipped surface
+  wave: mg-parity-phase3-ink
+  deps: [T-MG-INK-1, T-MG-INK-2, T-MG-INK-3, T-MG-INK-4, T-MG-INK-6]
+  plan_of_record: "docs/MG-MARK-PARITY-PLAN.md §3.10 (added this run); inherits the shipped ink laws of T-MG-INK-1/2/3/4/6"
+  parent: T-MG-MARK-PARITY-1
+  id_note: >
+    Carded at 7 per the explicit naming in T-MG-INK-6's non_goals
+    ("a NAMED next-card candidate (T-MG-INK-7)"), which fixed the numeral
+    when defect B was split out of the pointerdown card. Never silently
+    bundled — this card is that split, discharged.
+  acceptance_pins:
+    - "(evidence pin) the defect of record is PROVEN three ways, 2026-11-01: (1) LIVE TRACER on production (4CH1/1C QP viewer, headless Chromium): a MutationObserver on the pane scroller recorded exactly four `ink-removed` records (pages 1, 3, 4, 2) — each canvas removed from its own still-connected [data-page] holder, ZERO `ink-added` records — after two Zoom-in clicks; the result state was inkPerPage=[0,0,0,0,1×24], unrevived by scroll, healed only by reload; (2) CODE PATH: pdf-pane.tsx renderPage (the double-buffer swap, `holder.replaceChildren(canvas)`) and the off-radius sweep (`…replaceChildren()`) are the ONLY writers that empty a holder — replaceChildren removes every child including the portal-hosted ink canvas; (3) the React consequence: a portal whose container children are removed externally stays 'rendered' in React's tree — reconciliation never re-inserts the nodes, and InkLayer's structure-only holder observer reads the batch as 'same holders, no change' (the dedupe keeps prev), so nothing heals it. Net user observable: after one zoom, the first pages' tools are ALL dead (no canvas to receive pointer events) and committed ink/mtext visually vanishes (the KaTeX overlay unmounts with the ink subtree)"
+    - "(self-heal law) InkLayer's holder-tracking observer is upgraded from structure-only rescan to rescan + EVICTION ANALYSIS of the same batch: if a batch removed an ink root (the `data-ink-root` wrapper or the canvas itself) from a target that is a still-connected [data-page] holder, AND that holder carries NO ink canvas after the batch settles (final-state check — a same-batch remove+re-add passes), the heal re-attaches the REGISTERED portal-root subtree (`inkRootsRef`, page → the single wrapper div the portal hosts) into the SAME holder synchronously. The portal content is wrapped in ONE stable root (`<div data-ink-root className='contents'>`) so the re-attach restores every node at once; display:contents keeps the canvas's absolute positioning resolved against the holder. NO remount, NO state change, NO React involvement — the exact nodes React already believes are rendered land back in the DOM, so React's model and the DOM agree again. One law covers every external evictor: the zoom refreeze swap, the off-radius sweep, rotation refreeze, and any future pane-side holder rewrite. DESIGN DISCLOSURE (measured in the seam): a re-key/remount heal was built first and REJECTED — unmounting a portal whose host content was externally wiped makes React removeChild a node that is no longer a child (jsdom DOMException NotFoundError; the same DOM contract in a browser), so the heal must be a non-React re-attach of the registered subtree"
+    - "(surgical pin) the heal is a non-React node re-attach: the healed page keeps its EXACT canvas node — same backing-store bitmap, same listeners, in-flight gesture state — and every non-evicted holder is untouched (node identity pinned by the test); no React commit participates in the heal at all"
+    - "(idempotence pin) no loop and no churn: after a heal, the holder carries its canvas (the final-state check can never re-fire on it); the re-attach is an addition-only batch for the healed holder; a benign addition-only batch (e.g. the pane's text-layer rebuild under the holder) heals nothing and moves nothing; a same-batch remove+re-add passes the final-state check untouched; the test pins node-identity stability across continued observation"
+    - "(zero-touch pin) pdf-pane.tsx is UNTOUCHED (the pane's double-buffer swap is correct pdf engineering — the ink layer is the guest on the holder and adapts); the only changed hub files are apps/hub/src/components/pastpapers/ink/InkLayer.tsx (+ new test files beside it); zero contracts/api/db bytes, container syllabai-ink/1 VERBATIM, fences EXACT; every shipped law of T-MG-INK-1/2/3/4/6 (pointerdown law included) byte-identical in behaviour"
+    - "(posture pin) the T-MG-INK-3/4/6 invariants hold verbatim: mock-mode exclusion, MS-pane exclusion (QP pane only), region-mark token+paperId gate (anonymous marking stays IMPOSSIBLE), past-papers-QP-only, sync gate preserved, local store zero-contact law untouched, honest-parse/tombstone/mtext/re-edit/painter/crop-raster laws untouched; no MathLive (the MG-INK-SDK-GATE verdict stands); katex unchanged"
+    - "(honesty pin) an open text/math draft at the moment of an eviction still dies (pre-existing: the detached textarea could not receive user input before this fix either); the heal restores the SURFACE, not a mid-gesture draft — disclosed, not regressed"
+  non_goals:
+    - "no pdf-pane.tsx changes of any kind (no custom events, no ink-aware swap — the fence discipline of INK-6 carries: the pane must not learn about the ink layer)"
+    - "no cursor/affordance work (the MG 'Add text'/'Add maths' floating labels are the separately named T-MG-INK-8 candidate on the operator's word)"
+    - "no draft-preservation mechanism (lifting draft state out of InkCanvas is a redesign, not a defect fix)"
+    - "no MathLive / virtual math keyboard / symbol palette; no schema, contract or API change of any kind"
+    - "no anonymous marking — the ledger, feedback panel, highlights, rollups stay learner-scoped verbatim"
+  execution_record: >
+    run-001 (2026-11-01, single-run: card + fix + tests + receipt). Operator
+    dispatch "Proceed with T-MG-INK-7" (this session), ruled after the
+    operator reported four live defects on the shipped surface ("sigma
+    button still not working / sometimes all the tools stop working / can't
+    see the mouse cursor / MG shows an 'Add Text' cursor affordance") and
+    ordered a first-hand check of the MG reference page (the 9PH0/01 URL).
+    The owning session's audit established: the T-MG-INK-6 pointerdown law
+    IS deployed and working on production (Σ and T editors open, hold
+    focus, commit and render KaTeX under trusted pointer sequences; the
+    served chunk carries the law — 4 preventDefault occurrences — so the
+    "sigma still broken" report is a stale-bundle experience, not a live
+    defect); defect B (THIS card) reproduced live again on the same
+    session; the cursor complaints root-cause to a missing MG-style
+    affordance (our per-tool cursors ARE set: text/crosshair; no
+    cursor:none anywhere) — carded separately as the T-MG-INK-8 candidate;
+    MG itself runs its math box on MathLive (a gate decision flagged to
+    the operator, not acted on). Root cause proven as in the evidence pin;
+    fix is the self-heal law in InkLayer.tsx (observer eviction analysis +
+    per-page portal epoch keys, ~+55 lines) with a deterministic jsdom
+    seam (full-InkLayer mount on a two-holder host; renderPage-swap and
+    sweep-shape evictions; surgical node-identity, idempotence and
+    addition-only pins). Estimate realized in this run.
