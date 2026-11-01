@@ -23683,3 +23683,7 @@ worklog(r0): T-UGM-0606-1 run-002 (operator commission trace 1a1955c294758a5d "M
 - Discipline: fetch-first, fail-closed, append-only worklog (byte-exact prefix assert), zero force-push; verdict is presentation-layer only — the data trust verdict of KG-AUDIT-1 stands.
 - Standing reminder of record: the shared PAT remains exposed in plaintext and must be revoked/rotated.
 - Anti-truncation asserts: pre-image 4,666,073 B / 23,675 lines; new = old + this section; byte delta == len(section); line delta == section newlines.
+## T-GRADE-8 run-001 — Algolia archive harvest: 23 courses +150 sessions (trace 1a1984c6a317ea2d)
+
+- Upstream syllabai-resources: harvest_pearson_index.py (Pearson's own Algolia DAM index — creds public in page hidden inputs) recovered 14 docs; parse 40 docs/1209 subjects/0 warnings; validator honestly-absence fix for cancelled-award linear docs; G1 0 / G2 8-8 EXACT / agg 0.
+- This repo: mechanical bundle import, sha256_16 f6e2a18c4f81636d; 23 courses +150 sessions (IAL +140, modular +10); 4CH1 unchanged at 13 (Jan 2021/Nov 2020 have no overall chemistry awards — honest).

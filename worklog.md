@@ -833,3 +833,11 @@ Stage Summary:
 - Plane of record: questions.json 6424eb5b -> d3df0fc8 (26 parts + the parallel debris union), official-papers.json f0945d29 -> 2c7b62c4 (3 parts), manifest 9bde63b4 -> 7fd0a856 (ref + note). Receipt .syllabai/receipts/T-OEQ-PHYS-FORMAT-1/run-008-serving-leg.json; payload .syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run008-serve-payload.json; resources leg = PR #274 (F131, LEDGER Wave 23, LANE-STATUS F131).
 - Standing: R2 (93 SME flattened parts) = next pre-registered wave; tick-table square residual filed; SME-corpus mirror lag beyond the 26 W2 parts remains queued of record.
 - Discipline: fetch-first; fail-closed (5 aborts across legs before any write, all fixed in the executor); zero DB/Neon/prod contact; no force on main.
+Task ID: T-GRADE-8 (run-001) — Algolia archive harvest (trace 1a1984c6a317ea2d).
+
+Work Log:
+- Widget reversed: DocListCtrl + hidden-input Algolia creds -> index qualifications-uk_LIVE_master-content; harvester scripts/harvest_pearson_index.py in resources; +14 verified docs; validator honest-absence fix; gates G1 0/G2 8-8/agg 0; bundle sha256_16 f6e2a18c4f81636d.
+- Import: 23 courses +150 sessions (IAL +140, modular +10); linear unchanged (cancelled-award docs carry component rows only).
+
+Stage Summary:
+- Archive coverage now reflects Pearson's serving reality; remaining 56 absences ledgered; discipline held.
