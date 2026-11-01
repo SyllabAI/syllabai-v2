@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, CircleHelp, FileQuestion, GraduationCap } from "lucide-react";
+import { ArrowLeft, ArrowRight, FileQuestion, GraduationCap, SquareStack } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { boardOf, loadHubCourse } from "@/lib/courses";
@@ -166,7 +166,7 @@ export default async function NoteReaderPage({
                   href={subtopicCode ? hub.hrefs.flashcards[subtopicCode] ?? `${base}/flashcards` : `${base}/flashcards`}
                   className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-colors hover:border-primary/40"
                 >
-                  <CircleHelp className="size-4 text-primary" aria-hidden />
+                  <SquareStack className="size-4 text-primary" aria-hidden />
                   <span className="text-[13px] font-medium">
                     Flashcards
                     {subtopic ? <span className="block text-xs font-normal text-muted-foreground">{subtopic.title}</span> : null}
