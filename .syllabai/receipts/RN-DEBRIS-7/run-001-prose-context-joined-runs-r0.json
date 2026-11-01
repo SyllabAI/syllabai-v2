@@ -1,0 +1,99 @@
+{
+ "lane": "RN-DEBRIS-7",
+ "run": "run-001",
+ "title": "the prose-context joined-runs lane (outside-span + dollar-prose scopes)",
+ "operatorOrder": {
+  "trace": "1a198344d97745b9",
+  "text": "Proceed with the next natural lane"
+ },
+ "baseMain": "7ff9ec52",
+ "fetchFirst": {
+  "worklogTip": "4,659,572 B at main 7ff9ec52 (tip of record: RN-DEBRIS-6 run-001 + R0-AUTO-107 receipt block)",
+  "duplicateCheck": "no worklog block for the order trace; RN-DEBRIS-3/4/5/6 found ALREADY CLOSED of record (traces 1a195542318c1f85 / 1a1961109cf6dd09 / 1a196b967b16baa9 / 1a1980fae52b2779)",
+  "resolution": "the next natural lane = the two prose contexts the prior lanes explicitly skipped: RN-DEBRIS-5 disclosed residual '181 outside-span glue-shaped regex hits in 15 files - prose = a different class' and RN-DEBRIS-6 skip 'prose-span 3,553'"
+ },
+ "method": {
+  "law": "jd4/rnd6 census+convert law, byte-verbatim by exact-string patches (generator asserts exactly one match per patch); law constants never retyped",
+  "dictionary": "236,896 tokens, sha16 db20ed6f4d8c8bac verified at load (byte-identical to the of-record /tmp/rnd6_dict.json)",
+  "newScopes": "ctxClass=outside-span (runs in plain text outside $...$ and backtick spans, offset-preserving masking, commands masked) + ctxClass=dollar-prose ($-segments carrying PROSE_SPAN markers, rn6-verbatim mechanics with dual-form JSON-escape anchoring)",
+  "idempotenceProbe": "ctxClass=dollar-plain re-classified for reconciliation only; any split-evidenced item there is a red flag (found 0)"
+ },
+ "census": {
+  "frame": {
+   "files": 1065,
+   "strings": 2007054,
+   "dollarSegmentsPlain": 358907,
+   "dollarSegmentsProse": 3553
+  },
+  "dollarPlainReconciliation": {
+   "realword": 54757,
+   "corpusword": 39539,
+   "unsegmentable": 446,
+   "no-phrase-evidence": 68,
+   "mixedcase": 177,
+   "allcaps": 46,
+   "suffixtoken": 7,
+   "blocklist": 2,
+   "split-evidenced": 0,
+   "verdict": "byte-identical to the RN-DEBRIS-6 post-apply census of record"
+  },
+  "candidates": {
+   "outside-span split-evidenced": 338,
+   "dollar-prose split-evidenced": 8
+  }
+ },
+ "guards": {
+  "stack": "additive, fail-closed, outside-span scope only (every keep is the conservative direction)",
+  "verdicts": {
+   "url-asset": 102,
+   "hyphen-twin": 53,
+   "non-lowercase": 29,
+   "named-keep": 29,
+   "weak-evidence": 40,
+   "fragment-twin": 18,
+   "inside-quote": 3,
+   "inflected-word": 4,
+   "marker-stem": 2,
+   "paren-continuation": 2,
+   "pass": 56
+  },
+  "namedKeepReasons": "27 distinct runs with reasons of record in rnd7_census.py KEEP_NAMED (spec fraction-garble lines, word fragments, standard solid forms, hyphen-lost literary quotes)",
+  "dollarProseScope": "fired under the unmodified rn6 law (no new guards); 4 unique segments, all phrase-attested x5"
+ },
+ "apply": {
+  "prose": {
+   "strings": 49,
+   "occurrenceSites": 50,
+   "files": 37,
+   "markRefusals": 0,
+   "rawCountZeroKeeps": 0,
+   "jsonParseFails": 0
+  },
+  "dollarProse": {
+   "segments": 4,
+   "occurrenceSites": 5,
+   "files": 3,
+   "markRefusals": 0,
+   "rawCountZeroKeeps": 0,
+   "jsonParseFails": 0
+  },
+  "uniqueFilesChanged": 39,
+  "mechanics": "raw-byte occurrence surgery; prose anchors try both JSON escape forms (ensure_ascii False/True); per-file json.loads gate before write; per-run MARK window filter (+-40 chars, refuse only newly-introduced speech markers)"
+ },
+ "gates": {
+  "jsonParse": "39/39 changed files parse",
+  "katexPairGuard": "segments old 2,469 / new 2,469 - net render incapacity delta 0 (pre-existing failure classes byte-identical); string-diff introduced 4 / healed 4 / defect-paired 4/4, unpaired 0 (the dollar-prose swaps were already non-rendering prose-in-$ segments)",
+  "idempotence": "post-apply census: outside-span guard/pass 56 -> 0 (key absent = zero), dollar-prose split-evidenced 8 -> 0, dollar-plain frame byte-identical (54,757/39,539/446/68/177/46/7/2, split-evidenced 0, segments 358,907), outside-span split-evidenced 338 -> 282 = exactly the guarded-out classes (no new candidates)",
+  "corpusGate": "PASSED byte-identical to the frozen baseline (code spans 0 / dollar 0 / textwrap 4 / multiline 0 / baretext 5 / dangling 0)",
+  "inTreeVerification": "glue forms 0 hits (solutionis used / coalmines / againstthe / playgroundequipment / ofthe three); fixed forms present (54/24/1766/263/1060 hits)"
+ },
+ "failClosedResiduals": {
+  "keptSplitEvidenced": "282 outside-span + 0 dollar-prose items, by guard class (see guards.verdicts)",
+  "weakEvidenceBar": "phrase attestation <3 of cap 5 keeps 40 items incl. true debris (usenth -> 'use nth', pc=1) - the fail-closed direction",
+  "hyphenLostFamily": "53 items kept (userdefined/longterm/thirdparty/enzymesubstrate/colourblind/...) - the correct repair is the hyphen, a different debris class, out of this lane",
+  "internalRecords": "receipt/lane-record strings embedded in ugm-resources content kept (typecheck/selftest/reexport) - not learner-facing prose",
+  "outsideSpanUntouched": "unsegmentable 15,278 / no-phrase-evidence 986 / mixedcase 204,797 / allcaps 2,511 / suffixtoken 254 runs kept by the law"
+ },
+ "artifacts": ".syllabai/lane-artifacts/RN-DEBRIS-7/ (slim census pre/post + census/convert-prose/convert-dollar/katex-pair scripts + generator + generator diffs + apply reports + changed-files ledger)",
+ "discipline": "fetch-first; fail-closed; zero-invention (every output token dictionary-evidenced AND phrase-attested x>=3 in clean context, every keep reason named); tokens via env only (never argv/URL/logs); FF push no force; race-guard rebase; CI bounded poll; receipts .syllabai-only; zero DB/Neon contact"
+}
