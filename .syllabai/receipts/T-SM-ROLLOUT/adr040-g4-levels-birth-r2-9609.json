@@ -1,0 +1,119 @@
+{
+  "lane": "T-SM-ROLLOUT",
+  "run": "adr040-g4-levels-birth-r2-9609",
+  "date": "2026-11-01",
+  "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+  "trace_id": "1a19595eb81dda19",
+  "operator_order": "\"Proceed\" (the G-4 mirror under rulings 1-7 + ruling 8, trace 1a180d5777eb8ab1) then \"merge PR #595\" (this trace) — the operator merge word for the axis seam, executing the birth on the merged seam of record",
+  "gate": "G-4 mirror of ADR-040 §5 — the CIE LEVELS birth for the 9609 registry row (cie-a-level-business-23, the G-7 fail-closed census blocker \"no LEVELS scheme in core for 9609\"): the staged G-3 corpus drafts birthed as scheme_kind='LEVELS' mark_schemes + verbatim mark_bands, SUGGESTED, under the ruled part-binding law (ruling A) and the ruled multi-axis consumption law (ruling 7)",
+
+  "seam_of_record": {
+    "pr": "SyllabAI/syllabai-v2#595 (branch t-sm-rollout/adr040-g4-r2-axis-seam, CI 2/2, merged cff67003 on the operator's word)",
+    "why_a_seam_change_was_required": "the shipped birth cannot express the ruled multi-axis representation: bandGridsForVersion groups by exact ref (all axes merge), uq_mark_band_level UNIQUE(mark_scheme_id, level_index) collides on merged ordinals, uq_mark_scheme UNIQUE(question_version_id, version_label) with version_label=ref hardcoded blocks per-axis schemes. The extension is ADDITIVE: single-axis grids keep the bare ref and the wave-1 grouping BYTE-IDENTICALLY",
+    "the_extension": "one LEVELS scheme per printed grid PER AXIS, bound to the SAME question_part (ruling-A resolvePartRef untouched); version_label = ref#axisKey for axis schemes, bare ref for single-axis; axisKey rides the draft band additively (null defaults — pre-r2 drafts bind byte-identically); a ref mixing axisless and axis-keyed bands refuses loudly",
+    "runner": "apps/api/scripts/g4r2-birth-9609.ts — untracked lane tooling (mirrors the r1 ceremony: validateBundle -> T-013 canonicals -> rerun spine -> toPastPaperDraft -> the DISCLOSED subject deviation -> ingestPastPaperDraft -> the bridge insert with the shipped ingestGlmOcrPair SQL verbatim), one sql.transaction per pair, dry+apply modes, no credentials",
+    "seam_faithfulness": "the REAL shipped seam code at merged main cff67003, exercised locally against prod; the sole disclosed deviation is the r0/r1 of-record one: t011.paper.subject='9609' so resolveSubject takes the FIND path to the seeded, KG-linked subject (id 6dd6fd1c-f612-46b0-84e5-bde70ae97df0) — the vanilla converter nulls subject, 'GEN' is unseeded and its find-or-create branch carries the known 500-class interpolation bug (r1 receipt findings[2], still unpatched, still of record)",
+    "identity_law": "documentId derivation (P-6 mirror) proven against the r1 of-record vector before any parse: derivedDocumentId('f59c113c…','textlayer-qp-adr040-g4-r0','1.0.0') == '052aa749-461a-55fd-ba99-89de1302a9b8'"
+  },
+
+  "state_found_read_only": {
+    "baselines": "mark_schemes 25,255 / LEVELS 431 / POINTS-kind 24,824 / mark_bands 1,257 / bridge_records 138 / documents 1,476 / exam_papers 279 / 9609 papers 0 / smart_mark_agreement_evaluations 12 — identical to the r1-exit tripwires (the estate untouched between lanes)",
+    "corpus": "G-3 of record (adr040-g3-cie9609-corpus-r0): 105 staged paper drafts / 295 entries / 2,895 band rows under glm-ms-drafts/9609/",
+    "surgical_note": "sandbox rollback #8 rebuilt the window (creds + clone @ 55f91919); all of-record artifacts re-read from the repo"
+  },
+
+  "fetch_of_record": {
+    "source": "SyllabAI/syllabai-pastpapers @ main (the repo of record; the manifests record the XtremePapers byte-parity provenance)",
+    "verification": "105 papers x (qp.pdf + ms.pdf) + manifest.yaml, ALL sha256-verified against the manifests, 0 mismatches",
+    "remapped_qp_list_rederived": "the G-3 of-record 13 re-derived MECHANICALLY (text-layer identity law: printed code+component+series+QUESTION PAPER on pages 1-2) and matched exactly: w24/s25/w25/m26/s26 P3 + m26-32; the w24 P3 text layer confirmed mojibake (font-remapped, unparseable)"
+  },
+
+  "rulings_executed": [
+    "1 (ruling A part-binding, PR #388): one LEVELS scheme per printed grid(-axis), part-granular refs bound to the exact question_part, fail-closed on absent parts — 0 unbound born",
+    "2 (verbatim law): descriptors/ranges byte-equal to the staged drafts of record (fingerprint keys embed the exact strings); no fabricated points; sub-level printed ordinals (2b/2a/1b/1a) rank-mapped to core ordinals 1..n per axis ladder, disclosed in each entry's levelLabelMap (bridge record ms_draft) — the printed ladder order is preserved, never guessed",
+    "3 (fail-closed oracle chain): pre-ingest per pair — grid binds a QP part with the SAME printed marks; per-axis reach (max cell marksMax == axis max); sum(axis max) == entry marks; single-axis ladders contiguous, bottom 0-or-1, top == entry marks; QP consecutive questions, all parts marked, cover total cross-checked — the transaction is what gets refused, never the data dirtied",
+    "4 (source & seam laws): corpus = the pastpapers repo of record; the mirror ran the real shipped seam at merged main; subject resolved via the FIND path to the seeded '9609'; known shipped bugs stay receipt findings, never lane patches",
+    "5 (identity & session laws): one paper row per sitting/variant (paper_code 9609/NN + printed session label); session = the QP cover printed series (May/June, October/November, February/March); documentId derivation proven pre-parse; the bound(sessionLabel,60) collision class cannot arise (printed labels, distinct per sitting+component)",
+    "6 (scope & flip law): birth provides rubric-scoring infrastructure for the existing SME Exam Questions band-style items ONLY; birth != row flip — cie-a-level-business-23 remains NOT_FLIPPED, still gated on R4 band validation + D5-beta QWK floors (packet empty)",
+    "7 (multi-axis consumption, the ruled G-3 F2 law): per-axis cells verbatim; the single-axis tiling chain does not govern axis-suffixed schemes; governing oracles = per-axis reach + sum(axis max) == entry marks (corpus 0 mismatches, re-verified per pair at birth)",
+    "8 (F-form exclusion, primary-source-verified this window): the 2023+ 3-mark AO-pair grids print NO level column — per-AO mark-allocation rows ('AO1 1 mark / AO2 2 marks' + '2 marks … / 1 mark … / 0 marks x2'), verified on s23-21 and s26-21 printed pages — LEVELS birth would fabricate ordinals; 75 F-form entries EXCLUDED and preserved in the drafts of record + bridge-record ms_draft warnings"
+  ],
+
+  "exclusions_of_record": {
+    "no_entry_papers": "33 of 105 (P1 2024+ tick-based — the correct negative per G-3 F4; incl. S20-32/33 + W21-33 which are G-3 parse-error papers carrying 0 staged grids) — nothing to birth; drafts of record unchanged",
+    "remapped_qp_papers": "13 papers / 25 12-mark grids — the QP text layer is font-remapped mojibake; the deterministic parse law refuses; grids remain staged for a future lane that rules an alternative part-structure source",
+    "f_form_entries": "75 (all 3-mark C-AO-matrix) — ruling 8",
+    "ncc_rows": "154 — 'zero marks is not a band' (ADR-040 §2.1; the DB itself: mark_bands_level_index_check >= 1); the printed NCC text is preserved verbatim in the staged drafts + bridge-record ms_draft; blank responses take the deterministic zero at serve",
+    "birth_scope": "59 papers / 195 entries / 1,224 verbatim band rows / 540 LEVELS schemes (492 axis-suffixed + 48 bare-ref single-axis, the R4-legal class)"
+  },
+
+  "births": {
+    "papers": 59,
+    "questions": 219,
+    "parts": 599,
+    "levels_schemes": 540,
+    "mark_bands": 1224,
+    "documents": 118,
+    "bridge_records": 59,
+    "reconciliation": "55 OK + 4 REVIEW_REQUIRED (printed-document total discrepancies, see findings)",
+    "ceremony": "one transaction per paper pair (all-or-nothing); 0 failed; the apply survived a window timeout mid-run and resumed idempotently via the rerun spine (uq pair lookup + checksum dedup): 48 duplicates + 11 birthed on the closing pass, all 59 present",
+    "per_paper": "tmp lane census; exam_papers rows carry the printed identity: title '9609 9609/NN <printed series>', board 'Cambridge International', paper_code '9609/NN', session_label the QP-cover printed series, provenance PAST_PAPER, all SUGGESTED"
+  },
+
+  "verification_post_birth": {
+    "tripwires": {
+      "mark_schemes": 25795,
+      "levels": 971,
+      "points": 24824,
+      "mark_bands": 2481,
+      "bridge_records": 197,
+      "documents": 1594,
+      "exam_papers": 338,
+      "evals": 12,
+      "expected": "25,795 / 971 / 24,824 / 2,481 / 197 / 1,594 / 338 / 12 — EXACT"
+    },
+    "points_byte_identical": "POINTS-kind scheme count 24,824 unchanged by the whole r2 birth: zero POINTS rows touched",
+    "fingerprint_closure": "staged 1,224 = birthed 1,224 (unique-key multiset equality over paper+session+version_label+range+descriptor); TRUE MISSING 0; EXTRAS 0 — the staged corpus of record is FULLY birthed",
+    "binding": "540/540 9609 LEVELS schemes bound to a question_part (0 unbound), all SUGGESTED — the ruling-A shape, whole-draft",
+    "version_label_law": "492 ref#axis + 48 bare-ref, all <= 20 chars (uq_mark_scheme satisfied)",
+    "reconciliation": "55 OK / 4 REVIEW_REQUIRED — the bridge records carry both printed totals verbatim"
+  },
+
+  "findings_of_record": [
+    "F1 — QUESTIONS.EXTERNAL_REF VARCHAR(80) FAIL-CLOSED CATCH: the first apply attempt refused every pair ('value too long') because the r1 questionId convention '{repo_path}#q{n}' exceeds 80 chars on CIE repo paths (85+3). The birth refused cleanly (transactions rolled back, nothing partial). Fix of record: the staged dir code is the paper identity — questionId '9609-S20-QP-21#q1' (<=17). No seam change needed; the pair builder is the lane's own tooling",
+    "F2 — THE SHIPPED GET_TEXT READING ORDER IS NOT THE PRINTED ORDER ON CIE: get_text('text') block order interleaves the bottom-right marks tokens with the FOLLOWING question's content; a visual-order rebuild (words bucketed by y, lines by y, words left-to-right) is the only lawful parse order. Also structural on the same QPs: the vertical 'DO NOT WRITE IN THIS MARGIN' column glues onto stems/marks at the page edges (word-level edge filter, x<45 / x>width-45), some 2024 footers carry corrupted glyph runs (footer band y>790 dropped), and the cover page false-starts Q1 via '1 hour 30 minutes' (page-1 exclusion)",
+    "F3 — CIE PRINTS SHAPES THE WAVE-1 GRAMMAR NEVER SAW: (a) marks-less GROUPING parts ('(a) … Calculate the:' with the marks on roman sub-items) — absorbed, never core parts, text preserved on the first sub-part, fail-closed if unconsumed; (b) SHARED CHOICE ANSWER SPACES (P3 Section B prints both essay stems then ONE dotted area closed by a single [20]) — the single printed token resolves both choice stems, disclosed per paper; (c) choice sections ('answer one question') — the parsed sum exceeds the cover total BY PRINTED DESIGN, disclosed, never a failure",
+    "F4 — PRINTED-DOCUMENT TOTAL DISCREPANCIES (4 papers): W21-31's MS cover prints 'Maximum Mark: 60' against its own QP cover's 100 (a one-off misprint — sibling variants print 100); all three W23 P3 MS covers print the STALE old-syllabus 100 against the 2023 syllabus QP cover's 60. The shipped reconciliation semantics carry both printed values verbatim, mark the 4 bridge records REVIEW_REQUIRED, never merge; the QP cover total governs paper identity and grid binding is per-part (unaffected)",
+    "F5 — THE MULTI-AXIS REPRESENTATION IS PER-AXIS SCHEMES (the PR #595 law): 195 grid entries birth 540 schemes (one per grid x live axis; 492 axis-suffixed version_labels 'ref#aN' + 48 bare-ref). CONSEQUENCE DISCLOSED: the R4 band-coverage chain (tiling to the part's marks) does NOT govern axis-suffixed schemes — validating them needs a future multi-axis R4 consumption ruling; they sit SUGGESTED (nothing serves until VALIDATED — the existing honest refusal). The 48 single-axis schemes ARE R4-legal under the shipped chain (single real axis, top == entry marks == part marks)",
+    "F6 — THE REVIEW-REQUIRED TRANCHE RIDES THE BIRTH: 13 of the 59 born papers carry the staged reviewRequired flag + parseNotes relayed into the bridge-record review findings (the G-3 review tranche, preserved verbatim); 3 more staged-reviewRequired papers (S20-32/33, W21-33) carry 0 staged grids and stay unbirnthed in the drafts of record"
+  ],
+
+  "unchanged": "POINTS-kind 24,824 (zero POINTS rows touched); evals 12; the other 15 census rows untouched (only cie-a-level-business-23 gains infrastructure; birth != flip); no serving behavior changed (everything SUGGESTED; band parts refuse honestly until VALIDATED); no repo code changed by the lane besides the reviewed+merged PR #595; all secrets env-only",
+
+  "artifacts": {
+    "committed": [
+      ".syllabai/receipts/T-SM-ROLLOUT/adr040-g4-levels-birth-r2-9609.json (this receipt)",
+      ".syllabai/receipts/T-SM-ROLLOUT/adr040-g4-levels-birth-r2-9609.parse.py (the deterministic pair builder: CIE visual-order QP grammar, the ruled staged->converted MS mapping, the fail-closed oracle chain; documentId derivation proven pre-parse)"
+    ],
+    "untracked_lane_tooling": "apps/api/scripts/g4r2-birth-9609.ts (the runner: bundle law, T-013+T-011+bridge ceremony, one transaction per pair, dry+apply) — disclosed here, never committed, contains no credentials",
+    "lane_side": "pair-*.json / birth-receipt.json / tripwires.json / per-paper census under the lane tmp (canonicals, converted drafts, oracle reports, birth results)"
+  },
+
+  "gates_now": {
+    "G-1": "CLOSED (unchanged)",
+    "G-2": "CLOSED (unchanged)",
+    "G-3": "CLOSED (unchanged — 0455 + 9609 corpora of record)",
+    "G-4": "CLOSED THIS RECEIPT — the CIE 9609 mirror: 540 LEVELS schemes / 1,224 verbatim band rows born SUGGESTED, part-bound, per-axis under ruling 7; the 431 Edexcel schemes stand beside them; total 971 LEVELS in core",
+    "G-5": "CLOSED for the single-axis estate; the 492 axis-suffixed 9609 schemes await a multi-axis R4 consumption ruling (F5) — nothing serves until VALIDATED either way",
+    "G-6": "CLOSED (unchanged — the deployed API serves from the core rows; no deploy needed for SUGGESTED substrate)",
+    "G-7": "CLOSED FAIL-CLOSED (unchanged posture): cie-a-level-business-23 blocker updates from 'no LEVELS scheme in core for 9609' to 'LEVELS schemes born (540), awaiting R4 band validation + D5-beta QWK floors'; the row STILL does not flip (birth != flip; packet empty)"
+  },
+
+  "cross_refs": [
+    "SyllabAI/syllabai-v2#595 (the axis seam, merged cff67003)",
+    "SyllabAI/syllabai-v2#276 (the rollout issue of record)",
+    "SyllabAI/syllabai-pastpapers#8 (the 9609 corpus extension)",
+    ".syllabai/receipts/T-SM-ROLLOUT/adr040-g3-cie9609-corpus-r0.json (the staged corpus + F2 ruling directive)",
+    ".syllabai/receipts/T-SM-ROLLOUT/adr040-g4-levels-birth-r1.json (the r1 ceremony this lane mirrors)"
+  ]
+}
