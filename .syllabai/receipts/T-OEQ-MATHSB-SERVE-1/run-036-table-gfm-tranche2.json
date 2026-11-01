@@ -1,0 +1,111 @@
+{
+ "lane": "T-OEQ-MATHSB-SERVE-1",
+ "run": "run-036-table-gfm-tranche2",
+ "title": "Mode-A table->GFM conversion wave, TRANCHE-2 of record: 77 table-crop parts across 46 paper-sessions converted to GFM markdown tables with KaTeX cells (55 real <table> renders), 68 asset drops (41 unique corpus crop paths, incl. 5 duplicate-ref drops), 2 assets-only orphan-crop cleanups, 9 crops KEPT with alt relabels (5 pictorial reclassifications incl. the census's missed 2025-11 6-b ages pie), 4 fail-closed stubs wired to real crops of record, 16 print-evidenced Mode-B equation restorations across 15 parts — plane 801474a740be6546 -> 6b6ba8799cf1c0f7; battery 14/14 GREEN, katex 609/609 @0.16.47 throwOnError, hub-engine render 77/77 (55 <table>)",
+ "operatorOrder": "Proceed with tranche-2 = 76 parts (the run-035 receipt residual '76 remaining convertible table-crop parts (94 - 18)')",
+ "operatorTrace": "1a195fd9e5b83465",
+ "date": "2026-11-01",
+ "agent": "main (Z.ai, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)",
+ "environmentRecoveryOfRecord": "fresh sandbox window #2: prior-session scripts/scratch recycled (the run-036 preparation window was lost); full state re-derived first-hand from GitHub of record — run-035 lane artifacts + receipt fetched from v2 main, plane re-verified sha 801474a740be6546 (3616329 bytes) at sparse-blobless clone 64fdb91c, hub deps bun install --frozen-lockfile (985 packages), corpus crop PNGs (103) fetched from the resources corpus of record with the auth header, QP pages rendered via pdftotext -layout from the upload/ official-4MB1-* PDF set; PAT read-only from .creds/syllabai.env (0600), never printed",
+ "scopeArithmeticOfRecord": {
+  "operatorOrder": "76 parts (per the run-035 receipt residual)",
+  "firstHandRecount": "77 parts touched",
+  "reconciliation": "the run-035 censusOfRecord double-slotted the already-GFM wage table: its 'convertible 94' subtracted alreadyGfm(1) from tableCropParts(99), but the census artifact shows offp_2025-06_01_23-a is NOT among the census 99 (its crop was already dropped pre-census) — true remaining convertible set after tranche-1's 18 = 99 - 18(t1) - 4(pictorial keep_words: spinner x2 / dice x2) = 77; the scope is DISCLOSED as exceeded by the 1 correction part, zero parts left behind; per-part treatment disclosed below",
+  "fifthPictorialKeep": "offp_2025-11_02_6-b: first-hand crop read (sheet-13 #1) shows the Q6 AGES pie chart (over 50/under 18/18 to 24/25 to 34/35 to 50), not a table — asset kept untouched; the part's genuine runners-time table (in its own run-on text, corroborated by the 6(c) crop + p15 page text) WAS converted to GFM"
+ },
+ "tranche2Execution": {
+  "partsTouched": 77,
+  "fieldWrites": 143,
+  "fieldWriteSplits": "75 problemMd rewrites (77 - 2 assets-only fixes) + 68 assets[] drops (66 unique paths; 5 parts carried duplicate refs of the same crop path: 2018-06 02r 2-b x2, 2020-01 02r 11-b x2, 2021-06 02 6-b x2, 2022-01 02 11-f x2, 2024-06 02 9-b x3)",
+  "gfmTables": 55,
+  "classes": {
+   "grouped-frequency/information tables": 25,
+   "table-of-values (curve plotting)": 22,
+   "formula-box -> KaTeX display": 3,
+   "reference-drops + stub wirings (no table of their own)": 8
+  },
+  "cropsKeptAltRelabelled": [
+   "2019-06 01 20 histogram-only crop (table was run-on text; histogram essential) alt table->histogram",
+   "2021-01 01 23 histogram-only crop, alt table->histogram",
+   "2020-06/2020-11 01r 12 table+pie crop KEPT, alt table->pie chart (tranche-1 2024-06 01r 19 precedent)",
+   "2025-06 01 18-a table+histogram crop KEPT, alt table->histogram",
+   "2025-11 02 6-b pie crop KEPT untouched (pictorial reclassification)",
+   "2025-11 02 6-c table+histogram crop KEPT, alt table->histogram and table"
+  ],
+  "stubWirings": [
+   "2019-06 01r 28-a + 28-b: 'Figure not shown' stubs replaced by the real histogram crop ref (asset_28_table.png of record)",
+   "2019-06 02r 7-b: stub replaced by the real grid crop (asset_7_7-b.png attached to the part but never wired)",
+   "2021-01 01r 27-b: stub replaced by the real diagram crop (asset_27_diagram.png attached but never wired)"
+  ],
+  "assetsOnlyFixes": [
+   "2019-06 02r 7-e: orphan table crop (attached, never referenced) removed; pmd untouched",
+   "2024-06 02r 5-b: orphan table crop removed; pmd untouched"
+  ],
+  "modeBRepairs": [
+   "2018-06 02r 2-a: 'y = x 2 - 3x - 1' -> $y = x^2 - 3x - 1$ and 'y = -x 2 - 2x + 4' -> $y = -x^2 - 2x + 4$ (p4 text; y(-4)=-4, y(-1)=5, y(1)=1 exact)",
+   "2018-06 02r 2-c: '2x 2 - x - 5 = 0' -> $2x^2 - x - 5 = 0$ (p4 text; curve-intersection derivation exact)",
+   "2019-06 02r 7-a: 'y= 5 — 5 x?' -> $y = 5 - x/2 - x^2$ (crop sheet-02 #5 + p20; 5/5 values exact)",
+   "2020-01 02r 11-a: 'y = - + - 6 5 2' + 'x³ 6 x 2 3x' -> $y = -x^3/6 + 6x^2/5 - 3x/2$ (p28 fraction stack; f(0.5)=-0.47, f(3)=1.8, f(5)=1.67 exact)",
+   "2021-01 02r 3-a: 'y = -2x3 + 6x + x²' -> $y = -2x^3 + 6x + 5/x^2$ (p8 '5 over x2'; 6/6 values exact)",
+   "2022-01 02r 8-b: 'y x x x' -> $y = x^2 - 3x/2 - 1$ (p24: A(0.75, -1.5625) EXACT + f(-3)=12.5, f(3)=3.5)",
+   "2022-01 02r 8-c: same printed equation restated -> $y = x^2 - 3x/2 - 1$",
+   "2022-06 02 10-c: 'V = 4x 3 - 60x 2 + 200x' -> $V = 4x^3 - 60x^2 + 200x$ (5/5 values exact)",
+   "2023-01 02 11-b: 'y x x' -> $y = 12/x + 9/x^2 + 1$ (p26: '(a) Show that the value of k is 12' + (b) fraction stack; 4/4 values exact)",
+   "2023-06 02r 9-b: lost equation -> $y = x^2 + 24/x - 25$ (p26 'y = x2 + [24/x] - 25'; 5/5 values exact)",
+   "2024-06 02 9-a: '1 2 1 y x x ≠ 0 4 x' -> $y = x^2/4 - 3 - 1/x, x ≠ 0$ (p24; 7/7 values exact)",
+   "2024-06 02 9-b: same equation in 'draw the graph' -> repaired",
+   "2024-06 02 9-c: '1 2 1 x 3 4 x' -> $x^2/4 - 3 = 1/x$ (rearrangement of the printed 9(a) equation)",
+   "2024-06 02 9-d: '1 2 1 x - 2 - <=0 4 x' -> $x^2/4 - 3 - 1/x <= 0$",
+   "2026-06 02r 12-a: 'y 5 x 2 2x2' -> $y = 5x^2 - 10 + 1/(2x^2)$ (p30; 6/6 values exact 2dp)"
+  ],
+  "answerFurnitureDrops": "stray 'minutes' answer-line units (2019-06 01r 28-a, 2021-01 01r 27-b 'minutes ( )', 2023-01 01r 26-a, 2025-06 01r 14), dotted '… , …' line (2022-06 02 4-b)",
+  "modeCLedger": [
+   "mangled inequalities/equations LEFT AS-IS (signs unresolvable from the text layer — no fabrication): 2020-01 02r 11-c, 2022-01 02 11-f, 2022-01 02r 8-e, 2025-06 02r 11-f",
+   "pre-existing wrong-file refs dropped with ledger note (alt said grid/graph, URL was the table crop): 2018-06 02r 2-b/2-c, 2020-01 02r 11-b/11-c/11-e, 2021-06 02 6-b, 2022-01 02 11-e/11-f, 2022-01 02r 8-c/8-e, 2023-01 02 11-c-i, 2023-01 02r 8-b, 2023-11 02 8-b, 2024-06 02 9-b/9-c, 2024-11 02 8-b, 2025-06 02r 11-f/11-g; the true grids were never cropped for 2018-06 02r 2-b/2-c, 2020-01 02r 11-b/11-c/11-e, 2021-06 02 6-b, 2022-01 02 11-e/11-f",
+   "histogram/grid serving gaps pre-existing (no crop, no stub): 2020-01 01r 21-a, 2020-06/2020-11 02r 7-b, 2022-06 01r 20-b, 2023-01 01r 26-a (distance histogram), 2026-06 01r 12, 2025-11 02 6-b; 2023-11 02 8-b stub kept (no grid crop)",
+   "run-on tables OUT of wave scope (mention-no-crop census class): 2023-11 02 8-a, 2022-06 02 4-a, all 31 census mention_no_crop entries",
+   "2025-11 02 6-b carries the Q6 ages pie crop as an unreferenced asset (pre-existing wiring; reclassified pictorial-keep, untouched)",
+   "2022-06 02 4-b GFM values sourced from the crop (sibling 4-a holds the run-on — census mention-no-crop class): value_carrier allowlist disclosed"
+  ]
+ },
+ "planeOfRecord": {
+  "before": "801474a740be6546",
+  "after": "6b6ba8799cf1c0f7",
+  "bytes": 3685915,
+  "path": "apps/hub/content/igcse-maths-b-16/official-papers.json"
+ },
+ "gates": {
+  "battery": "14/14 GREEN (run-035 13-gate clone + value_carrier; plane_pin 801474a740be6546, census_EXACT 66/1281/2443/6600 pre==post, marks_map_identical, PUA_FFFD_delta_clean, dollar_parity, changed_set_EXACT 143 fields, mirror_integrity 0 solutionMd/markPoints moves, serialization single-line roundtrip, scrub clean, old_form_discharge kill-fragments fail-closed BOTH ways incl. auto-killed dropped img lines, gfm_table_shape uniform columns, asset_integrity kept-assets untouched + drop_expect multiplicities exact, value_carrier every NEW table numeric token traced to the part's old text / sibling-family old text / disclosed allowlist, class_post_census no growth)",
+  "probeBeforeWork": "77/77 old texts byte-match census vs live plane; 68 drop paths present with expected multiplicities (caught and fixed one: 2022-01 02 11-f carried the crop ref twice)",
+  "katex": "609/609 NEW $-spans OK @ katex 0.16.47 throwOnError (hub version)",
+  "render": "77/77 projected fields through the ACTUAL hub pipeline engine (react-markdown + remark-gfm + remark-math + rehype-raw + rehype-sanitize + local rehypeKatexMhchem), 0 exceptions, 0 katex-error, 0 count drops, 55 real <table> rendered, per-line-exact img accounting (4 stub->real-crop wirings + 5 duplicate-ref drops verified), total .katex 609"
+ },
+ "evidenceForm": "13 labeled contact sheets (77 corpus crop PNGs of record) READ first-hand (sheet-01..13, t2_sheet_map.json); QP page texts pdftotext -layout for every part's census page (4 page-census misses resolved by stem scan: 2019-06 01r 28-a -> p22/23, 2024-06 02r 5-b -> p12, 2025-11 02 6-b -> p14/15, 2020-01 02r 11-e re-verified p28); per-equation arithmetic corroboration exact (16 Mode-B restorations); 2019-06 01R p22 text-layer CMap garbling disclosed — the of-record run-on (G2-gated at extraction, Sunday sum 75 exact) is the carrier for the Sunday table",
+ "raceGuard": "clone cut at origin/main 64fdb91c with the plane byte-verified 801474a740be6546 at the tip; fetch-first re-check before push; ff-only, no force",
+ "corpusRiderAccount": {
+  "accruedByTranche1PlusTranche2": "95 changed pids (18 from run-035 + 77 from run-036; run-035 riders unchanged since) vs the corpus of record (last maths-B back-sync run-034/#251 at plane 2021ec47) — ride the NEXT converter run per the standing law (NO solo converter trigger, NO solo resources PR); PNG deletions on that run = 17 (run-035) + 41 unique corpus paths (run-036); questions.md regen rides",
+  "standingLaw": "post-F122 rider population now = 95 pids; F122's synced-fields ledger + the battery guard the byte-no-op law"
+ },
+ "residualOpenOnCard": [
+  "corpus rider discharge on the next converter run (operator-gated, 95 pids / 178 field writes / 58 PNG deletions)",
+  "the 31 table-mentions-without-crop class census (out of this wave's scope)",
+  "grid-crop serving gaps for the parts whose printed grids were never cropped (2018-06 02r 2-b/2-c, 2020-01 02r 11-b/11-c/11-e, 2021-06 02 6-b, 2022-01 02 11-e/11-f) + histogram gaps (ledger above) — a future crop pass could fill them from the QP PDFs",
+  "mangled inequality/equation restorations needing page-image evidence (2020-01 02r 11-c, 2022-01 02 11-f, 2022-01 02r 8-e, 2025-06 02r 11-f) — Mode-C held",
+  "FLEET formula-sheet fence ruling (operator — run-027 fence STANDS)",
+  "PAT rotation standing order (GitHub …JU4 / Vercel vcp_…aoT3) — CRITICAL-OVERDUE, unchanged"
+ ],
+ "evidence": [
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-036/run036_fixes.py (+ _a/_b/_c/_d)",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-036/run036_apply.py",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-036/run036_katex_gate.mjs",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-036/run036_render_gate.mjs",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-036/run036_projection.json",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-036/t2_sheet_map.json",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-036/t2_asset_rows.json",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-036/t2_page_report.json",
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-036/evidence/ (sheet-01..13 + qp_pages/)",
+  ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-035-table-gfm-tranche1.json (predecessor; its censusOfRecord arithmetic corrected above)"
+ ],
+ "verdict": "TABLE-GFM-TRANCHE2-OF-RECORD-COMPLETE",
+ "bookkeeping": "plane edit (single-file serving-plane write behind the 14-gate fail-closed battery) + receipt + worklog + evidence in the same PR; zero corpus/DB bytes; verified at local==origin/main 64fdb91c before write; fetch-first race-guard push, ff-only, no force"
+}
