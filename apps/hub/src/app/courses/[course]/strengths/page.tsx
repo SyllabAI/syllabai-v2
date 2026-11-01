@@ -35,10 +35,13 @@ export default async function StrengthsPage({
           to a singular "Strength"; the hero description cited ADR-031. The
           H1 is the section name (the trail carries the course), the
           description speaks student, and the internals moved behind an
-          explicit disclosure. */}
+          explicit disclosure. The hero's Course Resources / Strengths &
+          Weaknesses tab pair is retired (operator request, chat trace
+          1a19368d4aa8384d) — the course root's body tab trio carries
+          Strengths & Weaknesses now, so this deep-linked page renders the
+          bare hero. */}
       <CourseHeader
         meta={meta}
-        activeTab="strengths"
         title="Strengths & Weaknesses"
         crumb="Strengths & Weaknesses"
         description="Your strengths per specification point — see what to practise next. Bars update as you practise and gently fade where skills decay. Sign in to see yours."
