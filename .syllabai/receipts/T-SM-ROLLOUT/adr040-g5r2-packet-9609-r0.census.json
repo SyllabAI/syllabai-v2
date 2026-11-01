@@ -1,0 +1,106 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "adr040-g5r2-packet-9609-r0",
+ "date": "2026-11-01",
+ "trace_id": "1a19613fc81ce721",
+ "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+ "operator_order": "\"start a real band-captures packet on 9609\" (trace 1a19613fc81ce721), on the merged #598 birth of record (b46d8a3c)",
+ "cohort_census": {
+  "born_r2": {
+   "schemes": 540,
+   "parts": 195,
+   "questions": 219,
+   "bands": 1224
+  },
+  "split": {
+   "bare_ref_single_axis": 48,
+   "axis_suffixed": 492
+  },
+  "scheme_rows_by_part_marks": {
+   "2": 15,
+   "3": 19,
+   "4": 2,
+   "8": 202,
+   "12": 302
+  },
+  "axis_sum_closure": {
+   "parts_with_multiple_schemes": 147,
+   "sum_axis_top_equals_part_marks": 147,
+   "mismatches": 0
+  }
+ },
+ "raw_material_census": {
+  "answers_on_cohort_parts": 0,
+  "attempts_on_cohort_parts": 0,
+  "learners_on_cohort_parts": 0,
+  "human_marks_on_cohort": 0,
+  "band_placements_anywhere": 0,
+  "smart_results_on_cohort": 0,
+  "band_qwk_evals": 0,
+  "global_context": {
+   "answers_all": 655,
+   "attempts_all": 248,
+   "answers_with_text": 627,
+   "human_marks_all": 287,
+   "note": "the 287 marks and all answers sit on point parts; band parts have zero organic traffic anywhere (wave-1 431 parts also 0) \u2014 the ADR rejected organic accumulation for exactly this"
+  }
+ },
+ "capture_surface_today": {
+  "law": "both capture lanes (validateBandPlacement and SmartMarkService.markAnswer) resolve the scheme at QUESTION level \u2014 newest version, newest created_at \u2014 so a part is capture-clean iff that resolution lands on its own scheme",
+  "clean_parts": 18,
+  "dirty_parts": 30,
+  "clean_by_marks": {
+   "12": 6,
+   "4": 1,
+   "3": 10,
+   "2": 1
+  },
+  "all_active": true,
+  "all_on_born_papers": true,
+  "papers": [
+   "9609 9609/11 May/June 2022",
+   "9609 9609/11 October/November 2021",
+   "9609 9609/12 May/June 2022",
+   "9609 9609/12 October/November 2021",
+   "9609 9609/13 May/June 2022",
+   "9609 9609/13 October/November 2021",
+   "9609 9609/21 May/June 2020",
+   "9609 9609/22 May/June 2022",
+   "9609 9609/23 October/November 2020"
+  ],
+  "subject_id": "6dd6fd1c-f612-46b0-84e5-bde70ae97df0",
+  "subject_code": "9609",
+  "geometry_note": "the 6 twelve-mark single-axis grids carry 4 levels / 3 internal edges each \u2014 the boundary-straddling surface; clean scheme ids in clean_scheme_ids"
+ },
+ "packet_definition_v0": {
+  "scope": "cycle-1 packet = the 18 capture-clean parts only (zero code change required end-to-end)",
+  "unit": "one packet row = ONE real learner answer (typed on the Hub by a real human in a teacher's class) + ONE teacher smart run (POST /answers/{id}/smart-mark) + ONE teacher band placement (POST /answers/{id}/human-mark with marksAwarded + bandPlacement{levelPlacement, awardedMarks}, awardedMarks == marksAwarded enforced)",
+  "target_rows": 40,
+  "floor_arithmetic": "n_pairs >= 25 scored; capture >= 80% of packet -> packet >= ceil(25/0.8) = 32; target 40 gives margin; scored >= 50% of packet; level_span >= 2 distinct teacher placements; boundary_straddling >= 10 (teacher mark within one mark of a band edge)",
+  "composition_monitor": "if the first 40 honest captures yield < 10 boundary-straddlers, the packet EXTENDS by declared receipt \u2014 never discovered post-hoc",
+  "eval_command": "POST /kappa/evaluate {\"subjectId\": \"6dd6fd1c-f612-46b0-84e5-bde70ae97df0\", \"metric\": \"BAND_QWK\"} (subject scope via exam_papers.subject_id; paper scope available per paper)",
+  "gate_after": "QWK >= 0.60 (F-161 carried) + D5-beta floors -> the band-kind calibration green for 9609; the registry row flip STILL requires the two-file flip law + the 492 multi-axis ruling (a partial row never flips)"
+ },
+ "clean_scheme_ids": [
+  "23acafd5-f063-4a16-a9eb-a77b9e7f074f",
+  "3579147c-1c62-483e-b87b-28b4d77529cf",
+  "3675344c-7eb8-4bc7-afaf-6ee1d98f8217",
+  "3c61b83c-97c4-4511-930a-ec25b88a5e71",
+  "3d3f51ac-6e31-4bc7-9bc1-3264f8ec1aba",
+  "5e6e4cc9-25a6-4be4-9322-6dc0ae75e09b",
+  "6169f2f1-3949-4256-9ea7-764ce17959c7",
+  "71bd6aad-6955-4aa4-b7a3-f0bb2d457272",
+  "80315341-ba54-40a0-aab6-5cdab723f42e",
+  "9297a482-ee60-424a-b9be-d84985b9870c",
+  "a7139016-b00c-420a-9ec0-b682fc905778",
+  "cf756f1c-3b01-4ab1-afac-d735e02f4c58",
+  "dd0d1042-39f6-4b7b-9c4b-33b727d5d0bd",
+  "e72e4207-1f10-4d54-9875-3730949dff39",
+  "f0692f91-5640-4ae7-bcdd-118ba3135c57",
+  "f3822aca-4c55-4c2a-b33e-26f59f33aa4a",
+  "f76c778a-f3c9-48a5-9cab-1682fce896e7",
+  "fdc02dc6-d0f8-4445-92ca-72b0412d4d6e"
+ ],
+ "preflight_snapshot": "/tmp/g5r2_preflight.json verdict CLEARED (48/48 clean on every shipped predicate; 43 zero-mark bottom bands and 2 contiguity breaks ALL inside the parked axis 492)",
+ "postflight_snapshot": "/tmp/g5r2_postflight.json verdict ALL GREEN"
+}
