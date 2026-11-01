@@ -173,6 +173,19 @@ export type PastPaperMarkPointDraft = z.infer<typeof pastPaperMarkPointDraftSche
  * (nullable). Wire law: additive field with null/[] defaults — pre-ADR-040
  * drafts (no `bands` key) bind byte-identically (ignoreUnknown strip on the
  * request side; the compactor transform mirrors the points null-law).
+ *
+ * ADR-040 §5.3 axis extension (r2, 9609 corpus): `axisKey` carries the
+ * printed per-axis identity of a MULTI-AXIS levels grid (CIE 9609 P2/P3
+ * print one levels table with per-AO/skill columns — each column is its
+ * own ladder and cannot tile the single-axis 0..marks range). null = the
+ * single-axis grid (the wave-1 Edexcel shape, unchanged). At birth each
+ * axis becomes its OWN scheme_kind='LEVELS' scheme bound to the SAME
+ * question part, version_label suffixed `ref#axisKey` (uq_mark_scheme
+ * UNIQUE(question_version_id, version_label) forces the split; the
+ * single-axis label stays the bare ref). Consuming axes is the ruled
+ * multi-axis law (adr040-g3-cie9609-corpus-r0 F2, ruling 7 of the r2
+ * mirror): per-axis cells verbatim, per-axis reach + sum(axis max) ==
+ * entry marks — the single-axis tiling chain does not govern them.
  */
 export const pastPaperMarkBandDraftSchema = z.object({
   questionRef: z.string().nullable().default(null),
@@ -181,6 +194,7 @@ export const pastPaperMarkBandDraftSchema = z.object({
   marksMax: javaJsonInt.default(0),
   descriptor: z.string().nullable().default(null),
   guidance: z.string().nullable().default(null),
+  axisKey: z.string().nullable().default(null),
   confidence: javaJsonDouble.default(0),
 });
 export type PastPaperMarkBandDraft = z.infer<typeof pastPaperMarkBandDraftSchema>;
