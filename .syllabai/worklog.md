@@ -23691,3 +23691,7 @@ worklog(r0): T-UGM-0606-1 run-002 (operator commission trace 1a1955c294758a5d "M
 - Gates: new pins 10/10 + notes-ring 7/7; hub tsc 0; root typecheck ×5 0; full suite 3257/0; eslint on touched files 0; build:hub green.
 - Deploy: the registration-drop class again — 7ff9ec52 (R0-AUTO-107 sweep receipt, PRE-merge) deployed 18:00:37Z while 8f5beef7 + #616 + #617 sat unregistered ~25 min; empty-commit retrigger 59b6b102 (820ca15d/5ec1c598 precedent) → batch 18:13:42Z ae75ce43 SUCCESS. LiveProof: alias flashcards page = 28 ProgressRing spans, deck-card CircleHelp gone (the 1 remaining lucide-circle-question-mark is the SIDEBAR nav icon, different component); exam-questions 28 rings; revision-notes toolbar + 27 rings intact.
 - Discipline: fetch-first (FETCH_HEAD removed immediately, twice), race-guard merge not rebase, no force anywhere, scrub-assert clean, receipt + worklog append only, boundaries held.
+## T-GRADE-8 run-001 — Algolia archive harvest: 23 courses +150 sessions (trace 1a1984c6a317ea2d)
+
+- Upstream syllabai-resources: harvest_pearson_index.py (Pearson's own Algolia DAM index — creds public in page hidden inputs) recovered 14 docs; parse 40 docs/1209 subjects/0 warnings; validator honestly-absence fix for cancelled-award linear docs; G1 0 / G2 8-8 EXACT / agg 0.
+- This repo: mechanical bundle import, sha256_16 f6e2a18c4f81636d; 23 courses +150 sessions (IAL +140, modular +10); 4CH1 unchanged at 13 (Jan 2021/Nov 2020 have no overall chemistry awards — honest).
