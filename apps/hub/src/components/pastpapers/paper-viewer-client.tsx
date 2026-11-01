@@ -78,7 +78,8 @@ export interface PaperViewerClientProps {
   mode: "view" | "mock";
   /** corpus provenance string for the honesty note */
   metaGeneratedAt: string;
-  /** spec exam code pill (e.g. 4CH1) — shown in the compact toolbar row */
+  /** spec exam code pill (e.g. 4CH1) — shown in the compact toolbar row;
+   *  T-COURSE-SPECPILL-2: it links to /courses/[course]/specification */
   examCode?: string;
   /** F-022 tranche 2: the deep-linked landing page from a citation drill-in
    *  (?page=N) — applied to the pane matching initialPageDoc */
@@ -714,7 +715,7 @@ export function PaperViewerClient({
           {paper.title}
           {paper.variantChip ? ` · ${paper.variantChip}` : ""} · {sessionLabelStr}
         </span>
-        {examCode && <ExamCodePill code={examCode} className="hidden py-1 text-[11px] sm:inline-flex" />}
+        {examCode && <ExamCodePill code={examCode} href={`/courses/${course}/specification`} className="hidden py-1 text-[11px] sm:inline-flex" />}
         <Badge
           variant="outline"
           className="hidden text-[10px] md:inline-flex"
