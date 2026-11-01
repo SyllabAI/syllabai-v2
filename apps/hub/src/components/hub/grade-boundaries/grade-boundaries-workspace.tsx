@@ -27,6 +27,21 @@
  * breadcrumb + title + exam-code band (description dropped — provenance
  * lives in the workspace footer).
  *
+ * T-GRADE-005 (operator put MG's live page and ours side by side): four
+ * style/behaviour deltas closed. (1) Session pills: the active pill is
+ * MG's bordered background chip with a leading check dot (--foreground
+ * ring), not a filled accent pill. (2) The grade rail caption is MG's
+ * "↑ N marks to grade G"; the meter carries MG's graded endpoints
+ * "G · mark … next · boundary" instead of a bare "0 / Max"; the
+ * aggregate-ums rail follows the same shape (A*-rule shortfall demoted to
+ * the muted footnote line). (3) Average mode is MG's actual semantics — a
+ * per-grade MEAN boundary row (averageBoundariesAcrossSeries) graded like
+ * any row, retiring the modal-grade reading (helper + tests kept). (4)
+ * The linear table drops its Max column (MG fits ten columns in the
+ * max-w-3xl card; ours clipped at 1280px) and the graph walks MG's
+ * dark-green→red per-grade hue ramp with ringed dots instead of cycling
+ * five chart tokens (which collide on a 9-grade ladder).
+ *
  * MathsGenie predicted-grade-calculator feature set, hub shell:
  *   - Table | Graph toggle (MG's view pair) over the same corpus;
  *   - session pills incl. "Average" (MG's modal-grade mode);
@@ -43,7 +58,7 @@
  *     corpus (bundle.v1.json) — provenance printed in the footer.
  */
 import { useMemo, useState } from "react";
-import { Info } from "lucide-react";
+import { Check, Info } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
@@ -51,11 +66,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import {
   aggregateUms,
+  averageBoundariesAcrossSeries,
   gradeForMark,
   gradeFromAggregation,
   isRegionalVariant,
   marksToNextGrade,
-  modalGradeAcrossSeries,
   primaryRow,
   rawToUms,
   usableOptionalPairs,
@@ -76,13 +91,19 @@ import {
   YAxis,
 } from "recharts";
 
-const CHART_VAR = [
-  "var(--chart-1)",
-  "var(--chart-2)",
-  "var(--chart-3)",
-  "var(--chart-4)",
-  "var(--chart-5)",
-];
+/**
+ * MG's graph encodes the grade IN the color: dark green at the top grade
+ * walking a hue ramp down to red at the bottom (their predicted-grade
+ * calculator trend chart). Interpolated per position in the ladder so any
+ * ladder length (9-1, A*-U, A*-G) gets an even ramp; data-encoding color,
+ * theme-independent by design.
+ */
+function gradeRampColor(i: number, n: number): string {
+  const t = n <= 1 ? 0 : i / (n - 1);
+  const h = Math.round(140 * (1 - t));
+  const l = Math.round(38 + 12 * t);
+  return `hsl(${h} 68% ${l}%)`;
+}
 
 function fmtGradeCell(v: number | null | undefined): string {
   return typeof v === "number" ? String(v) : "–";
@@ -156,21 +177,40 @@ export function GradeBoundariesWorkspace({
     };
   }, [canCalculate, calcRow, clampedMark, ladder]);
 
+  // T-GRADE-005 (operator visual check of MG's page): Average mode is
+  // MG's per-grade MEAN boundary row — the averaged row then grades like
+  // any other row, which is what produces their "U · 0 … 1 · 25" meter
+  // endpoints. (The earlier modal-grade reading is retired; the pure
+  // helper modalGradeAcrossSeries stays in the calc lib for its tests.)
   const average = useMemo(() => {
     if (!canCalculate || sessionPick !== "average") return null;
-    return modalGradeAcrossSeries(
-      sessions
-        .map((s) => ({
-          session: s.session,
-          boundaries: primaryRow(s.rows).boundaries,
-        }))
-        .filter((x): x is { session: string; boundaries: BoundaryRow } =>
-          !!x.boundaries,
-        ),
-      ladder,
-      clampedMark,
-    );
+    const withRows = sessions
+      .map((s) => ({
+        session: s.session,
+        boundaries: primaryRow(s.rows).boundaries,
+      }))
+      .filter((x): x is { session: string; boundaries: BoundaryRow } =>
+        !!x.boundaries,
+      );
+    const row = averageBoundariesAcrossSeries(withRows, ladder);
+    if (!row) return null;
+    return {
+      row,
+      sessionsCounted: withRows.length,
+      grade: gradeForMark(row, ladder, clampedMark),
+      next: marksToNextGrade(row, ladder, clampedMark),
+    };
   }, [canCalculate, sessionPick, sessions, ladder, clampedMark]);
+
+  // the grade this mark achieves in the ACTIVE context (averaged row or the
+  // picked session's primary row) plus its next-boundary gap — one shape so
+  // the rail, meter and endpoints render identically in both pill modes.
+  const currentGrade = sessionPick === "average"
+    ? (average?.grade ?? null)
+    : (achieved?.grade ?? null);
+  const currentNext = sessionPick === "average"
+    ? (average?.next ?? null)
+    : (achieved?.next ?? null);
 
   // ------------------------------------------------------------------
   // aggregate-ums calculator state (T-GRADE-2)
@@ -263,44 +303,34 @@ export function GradeBoundariesWorkspace({
     return { have: a2Ums, need: aStar.a2Min };
   }, [aggResult, aggGrade, calc]);
 
-  // Average mode for the aggregation: modal aggregate grade across the
-  // calculator-eligible sessions (same raw marks, per-session conversions)
+  // Average mode for the aggregation: MG's mean-row semantics on the
+  // cash-in UMS ladder — each grade's cash-in boundary averaged across the
+  // calculator-eligible sessions, the same unit marks' UMS total graded
+  // against that averaged row (per-session raw→UMS conversions still run
+  // per session through this memo's eligible-session cash-ins).
   const aggAverage = useMemo(() => {
     if (!isAgg || sessionPick !== "average" || !calc?.cashIn) return null;
     const eligible = aggSessions.filter((a) => a.eligible);
-    const perSeries = eligible.map((a) => {
-      const byCode = new Map(a.units.map((u) => [u.code, u] as const));
-      const req = (calc.required ?? [])
-        .map((c) => byCode.get(c))
-        .filter((u): u is AggregationUnit => !!u);
-      const p = a.pairs[0];
-      const pairUnits = (p ?? [])
-        .map((c) => byCode.get(c))
-        .filter((u): u is AggregationUnit => !!u);
-      const agg = aggregateUms({
-        units: [...req, ...pairUnits],
-        marks: unitMarks,
-      });
-      const { grade } = gradeFromAggregation(a.cashIn!, calc.aStar, agg);
-      return { session: a.session, grade };
-    });
-    const counts = new Map<string, number>();
-    for (const p of perSeries) {
-      if (p.grade === null) continue;
-      counts.set(p.grade, (counts.get(p.grade) ?? 0) + 1);
-    }
-    const order = activeAgg?.cashIn?.gradeLadder ?? ladder;
-    let best: string | null = null;
-    let bestCount = 0;
-    for (const grade of order) {
-      const c = counts.get(grade) ?? 0;
-      if (c > bestCount) {
-        best = grade;
-        bestCount = c;
-      }
-    }
-    return { grade: best, perSeries };
-  }, [isAgg, sessionPick, aggSessions, unitMarks, calc, activeAgg, ladder]);
+    if (!eligible.length) return null;
+    const cashInLadder =
+      eligible[0]?.cashIn?.gradeLadder ?? ladder;
+    const row = averageBoundariesAcrossSeries(
+      eligible.map((a) => ({
+        session: a.session,
+        boundaries: a.cashIn!.boundaries,
+      })),
+      cashInLadder,
+    );
+    if (!row) return null;
+    const total = aggResult?.totalUms ?? 0;
+    return {
+      row,
+      sessionsCounted: eligible.length,
+      maxMark: eligible[0]?.cashIn?.maxMark ?? null,
+      grade: gradeForMark(row, cashInLadder, total),
+      next: marksToNextGrade(row, cashInLadder, total),
+    };
+  }, [isAgg, sessionPick, aggSessions, calc, ladder, aggResult]);
 
   // ------------------------------------------------------------------
   // graph data — the trend that exists for THIS qualification kind:
@@ -419,11 +449,6 @@ export function GradeBoundariesWorkspace({
   // interaction (markTouched) instead of painting the lowest grade column
   // wall-to-wall on load.
   // ------------------------------------------------------------------
-  const agreeCount =
-    average?.perSeries.filter((p) => p.grade === average.grade).length ?? 0;
-  const aggAgreeCount =
-    aggAverage?.perSeries.filter((p) => p.grade === aggAverage.grade).length ??
-    0;
   // run-002: consecutive same-session runs of the corpus order — the shape
   // the parser emits (standard row before its R/regional sibling).
   const linearGroups: GradeBoundariesSeries[][] = [];
@@ -454,15 +479,26 @@ export function GradeBoundariesWorkspace({
           Math.max(0, (aggResult.totalUms / aggResult.maxUms) * 100),
         )
       : 0;
-  // MG's pill pair — active fill is the --accent-primary token pair (the
-  // same idiom the hub sidebar already borrows from MG/RD, run-004b).
+  // MG's pill pair (T-GRADE-005 re-check against the live page): the active
+  // pill is a bordered background chip with a leading check dot — NOT a
+  // filled accent pill; inactive pills are borderless muted text. The
+  // border/check ride --foreground/--background so every theme re-skins.
   const pillCls = (active: boolean) =>
     cn(
-      "inline-flex h-8 cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-xl border-2 border-transparent px-3 text-sm font-medium transition-colors",
+      "inline-flex h-8 cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-xl border-2 px-3 text-sm font-medium transition-colors",
       active
-        ? "bg-accent-primary text-accent-primary-foreground"
-        : "text-muted-foreground hover:bg-muted hover:text-foreground",
+        ? "border-foreground bg-background font-semibold text-foreground"
+        : "border-transparent text-muted-foreground hover:bg-muted hover:text-foreground",
     );
+  const pillCheck = (active: boolean) =>
+    active ? (
+      <span
+        aria-hidden
+        className="flex size-4 shrink-0 items-center justify-center rounded-full bg-foreground text-background"
+      >
+        <Check className="size-2.5" strokeWidth={3.5} />
+      </span>
+    ) : null;
   // MG's underline tab pair (their tabs-list underline variant): the
   // active trigger carries a 2px rounded accent bar over a hairline rail.
   const underlineList =
@@ -501,6 +537,7 @@ export function GradeBoundariesWorkspace({
               className={pillCls(sessionPick === "average")}
               onClick={() => setSessionPick("average")}
             >
+              {pillCheck(sessionPick === "average")}
               Average
             </button>
             {sessions.map((s) => (
@@ -511,6 +548,7 @@ export function GradeBoundariesWorkspace({
                 className={pillCls(sessionPick === s.session)}
                 onClick={() => setSessionPick(s.session)}
               >
+                {pillCheck(sessionPick === s.session)}
                 {s.session}
               </button>
             ))}
@@ -524,27 +562,16 @@ export function GradeBoundariesWorkspace({
               <div className="flex items-start gap-4 sm:gap-5">
                 <div className="flex w-36 shrink-0 flex-col items-center gap-2 border-r-2 pr-4 sm:w-40 sm:pr-5">
                   <span aria-live="polite" className={railBadge}>
-                    {sessionPick === "average"
-                      ? (average?.grade ?? "–")
-                      : (achieved?.grade ?? "–")}
+                    {currentGrade ?? "–"}
                   </span>
                   <span className="text-center text-sm font-medium text-muted-foreground">
-                    {sessionPick === "average"
-                      ? "Most likely grade"
-                      : `Predicted — ${sessionPick}`}
+                    {currentNext
+                      ? `↑ ${currentNext.marks} mark${currentNext.marks === 1 ? "" : "s"} to ${currentNext.grade}`
+                      : "Top of the ladder"}
                   </span>
                 </div>
                 <div className="min-w-0 flex-1 pt-1">
-                  <div className="flex items-baseline justify-between gap-x-4 text-sm">
-                    <span className="font-medium">
-                      {sessionPick === "average"
-                        ? `Modal across ${sessions.length} sessions`
-                        : achieved?.next
-                          ? `${achieved.next.marks} more mark${achieved.next.marks === 1 ? "" : "s"} to grade ${achieved.next.grade}`
-                          : clampedMark >= (calcRow?.maxMark ?? 0)
-                            ? "Top of the ladder"
-                            : "Boundary not published"}
-                    </span>
+                  <div className="flex items-baseline justify-end gap-x-4 text-sm">
                     <span className="tabular-nums text-muted-foreground">
                       {clampedMark} / {maxMark} marks
                     </span>
@@ -563,18 +590,22 @@ export function GradeBoundariesWorkspace({
                     />
                   </div>
                   <div className="mt-2 flex items-baseline justify-between gap-x-4 text-xs text-muted-foreground">
-                    <span>0</span>
-                    <span>Max {maxMark}</span>
+                    <span aria-hidden>
+                      {currentGrade ?? "–"} · {clampedMark}
+                    </span>
+                    <span className="tabular-nums">
+                      {currentNext
+                        ? `${currentNext.grade} · ${clampedMark + currentNext.marks}`
+                        : `Max ${maxMark}`}
+                    </span>
                   </div>
-                  {sessionPick === "average" &&
-                    average &&
-                    average.perSeries.length > 0 && (
-                      <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                        Grade {average.grade} in {agreeCount} of{" "}
-                        {average.perSeries.length} sessions — each
-                        session&apos;s grade is a column in the table below.
-                      </p>
-                    )}
+                  {sessionPick === "average" && average && (
+                    <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                      Each grade&apos;s boundary averaged across{" "}
+                      {average.sessionsCounted} sessions — every
+                      session&apos;s own row is in the table below.
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -609,24 +640,29 @@ export function GradeBoundariesWorkspace({
           {isAgg && (
             <div className="my-2 flex flex-col gap-5">
               {sessionPick === "average" ? (
-                aggAverage && aggAverage.perSeries.length > 0 ? (
+                aggAverage ? (
                   <div className="flex items-start gap-4 sm:gap-5">
                     <div className="flex w-36 shrink-0 flex-col items-center gap-2 border-r-2 pr-4 sm:w-40 sm:pr-5">
                       <span aria-live="polite" className={railBadge}>
                         {aggAverage.grade ?? "–"}
                       </span>
                       <span className="text-center text-sm font-medium text-muted-foreground">
-                        Most likely grade
+                        {aggAverage.next
+                          ? `↑ ${aggAverage.next.marks} UMS to ${aggAverage.next.grade}`
+                          : "Top of the ladder"}
                       </span>
                     </div>
                     <div className="min-w-0 flex-1 pt-1">
-                      <p className="text-sm font-medium">
-                        Modal across {aggAverage.perSeries.length} sessions —
-                        same unit marks
-                      </p>
+                      <div className="flex items-baseline justify-end gap-x-4 text-sm">
+                        <span className="tabular-nums text-muted-foreground">
+                          {aggResult?.totalUms ?? 0} /{" "}
+                          {aggAverage.maxMark ?? aggResult?.maxUms ?? 0} UMS
+                        </span>
+                      </div>
                       <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                        Grade {aggAverage.grade} in {aggAgreeCount} of{" "}
-                        {aggAverage.perSeries.length} sessions.
+                        Each grade&apos;s cash-in boundary averaged across{" "}
+                        {aggAverage.sessionsCounted} sessions — the same unit
+                        marks, each session&apos;s own raw→UMS conversion.
                       </p>
                     </div>
                   </div>
@@ -651,18 +687,13 @@ export function GradeBoundariesWorkspace({
                         {aggGrade?.grade ?? "–"}
                       </span>
                       <span className="text-center text-sm font-medium text-muted-foreground">
-                        Predicted — {sessionPick}
+                        {aggNext
+                          ? `↑ ${aggNext.marks} UMS to grade ${aggNext.grade}`
+                          : "Top of the ladder"}
                       </span>
                     </div>
                     <div className="min-w-0 flex-1 pt-1">
-                      <div className="flex items-baseline justify-between gap-x-4 text-sm">
-                        <span className="font-medium">
-                          {aggAStarGap
-                            ? `A2 aggregate ${aggAStarGap.have}/${aggAStarGap.need} — ${aggAStarGap.need - aggAStarGap.have} more A2 UMS for A*`
-                            : aggNext
-                              ? `${aggNext.marks} more UMS to grade ${aggNext.grade}`
-                              : "Top of the ladder"}
-                        </span>
+                      <div className="flex items-baseline justify-end gap-x-4 text-sm">
                         <span className="tabular-nums text-muted-foreground">
                           {aggResult?.totalUms ?? 0} / {aggResult?.maxUms ?? 0}{" "}
                           UMS
@@ -682,12 +713,22 @@ export function GradeBoundariesWorkspace({
                         />
                       </div>
                       <div className="mt-2 flex items-baseline justify-between gap-x-4 text-xs text-muted-foreground">
-                        <span>0</span>
-                        <span>
-                          {activeAgg.cashIn!.code} cash-in · max{" "}
-                          {aggResult?.maxUms ?? 0}
+                        <span aria-hidden>
+                          {aggGrade?.grade ?? "–"} · {aggResult?.totalUms ?? 0}
+                        </span>
+                        <span className="tabular-nums">
+                          {aggNext
+                            ? `${aggNext.grade} · ${(aggResult?.totalUms ?? 0) + aggNext.marks}`
+                            : `${activeAgg.cashIn!.code} cash-in · max ${aggResult?.maxUms ?? 0}`}
                         </span>
                       </div>
+                      {aggAStarGap && (
+                        <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                          A2 aggregate {aggAStarGap.have}/{aggAStarGap.need} —{" "}
+                          {aggAStarGap.need - aggAStarGap.have} more A2 UMS
+                          needed for the A* rule.
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -833,9 +874,6 @@ export function GradeBoundariesWorkspace({
                                 {g}
                               </th>
                             ))}
-                            <th scope="col" className={thCls}>
-                              Max
-                            </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -909,9 +947,6 @@ export function GradeBoundariesWorkspace({
                                       </td>
                                     );
                                   })}
-                                  <td className="px-3 py-3 text-center tabular-nums text-muted-foreground">
-                                    {s.maxMark ?? "—"}
-                                  </td>
                                 </tr>
                               );
                             }),
@@ -1265,19 +1300,28 @@ export function GradeBoundariesWorkspace({
                               fontSize: 12,
                             }}
                           />
-                          {graphGrades.map((g, i) => (
-                            <Line
-                              key={g}
-                              type="monotone"
-                              dataKey={g}
-                              name={`Grade ${g}`}
-                              stroke={CHART_VAR[i % CHART_VAR.length]}
-                              strokeWidth={2}
-                              dot={{ r: 2.5 }}
-                              activeDot={{ r: 4 }}
-                              connectNulls
-                            />
-                          ))}
+                          {graphGrades.map((g, i) => {
+                            const color = gradeRampColor(i, graphGrades.length);
+                            return (
+                              <Line
+                                key={g}
+                                type="monotone"
+                                dataKey={g}
+                                name={`Grade ${g}`}
+                                stroke={color}
+                                strokeWidth={2}
+                                dot={{
+                                  r: 4,
+                                  strokeWidth: 2,
+                                  stroke: color,
+                                  fill: "var(--background)",
+                                  fillOpacity: 1,
+                                }}
+                                activeDot={{ r: 6 }}
+                                connectNulls
+                              />
+                            );
+                          })}
                         </LineChart>
                       </ResponsiveContainer>
                     </div>

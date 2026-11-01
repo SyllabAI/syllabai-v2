@@ -66,6 +66,41 @@ export function modalGradeAcrossSeries(
 }
 
 /**
+ * MathsGenie's actual "Average" semantics (T-GRADE-005, operator visual
+ * check of their predicted-grade-calculator): the mean of each grade's
+ * published boundary across sessions, rounded to the nearest mark — the
+ * averaged row then grades like any other row (gradeForMark +
+ * marksToNextGrade), which is what produces their "1 · 25" style meter
+ * endpoints. A grade with no numeric boundary in any session stays null;
+ * sessions without that grade are skipped, never counted as zero.
+ */
+export function averageBoundariesAcrossSeries(
+  series: { session: string; boundaries: BoundaryRow }[],
+  ladder: string[],
+): BoundaryRow | null {
+  if (!series.length) return null;
+  const row: BoundaryRow = {};
+  let any = false;
+  for (const grade of ladder) {
+    let sum = 0;
+    let n = 0;
+    for (const s of series) {
+      const b = s.boundaries[grade];
+      if (typeof b !== "number") continue;
+      sum += b;
+      n += 1;
+    }
+    if (n > 0) {
+      row[grade] = Math.round(sum / n);
+      any = true;
+    } else {
+      row[grade] = null;
+    }
+  }
+  return any ? row : null;
+}
+
+/**
  * Marks still needed to reach the next grade up (null when at the top or
  * when the next boundary is unavailable).
  */
