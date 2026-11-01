@@ -6,8 +6,15 @@ task:
   owner: Super Z (zai-web session web-5e612468-7ecd-499d-8b14-7c05e8412405, chat 97a19c8c-d041-4ae2-9754-07fef634fc42,
     dispatch trace 1a19340982b7ffa9)
   status: 'IN_PROGRESS # commissioned ''accept all'' 2026-11-01 (rulings below); run-001 (contracts + migration)
-    MERGED via PR #580 @ b8871ca; run-002 (api lane) MERGED via PR #585 @ bef52be; run-003 (hub lane) THIS
-    BRANCH — PR of record; DB apply of 0020/0021 on a Neon BRANCH awaits the operator (T-SENECA-001 precedent)'
+    MERGED via PR #580 @ b8871ca; run-002 (api lane) MERGED via PR #585 @ bef52be; run-003 (hub lane) MERGED
+    via PR #593 @ 704daa8f (twin #597 closed unmerged); DB apply of 0020/0021 on a Neon BRANCH: BRANCH-PROOF
+    GREEN (2026-11-01, local fire of the dispatch runner — COW br-little-heart-a5mqe2y1 off production
+    br-muddy-bar-a5huwldd: 0020 18 stmts + 0021 8 stmts COMMIT, DDL post-verify exact incl. the receipted
+    (session_id) candidates_open_idx re-scope, ADR-040 D1 append-only bite probe UPDATE/DELETE blocked inside
+    ROLLBACK, 4CH1 canon census 182/182 described + 0 missing (repair needed: NONE — honest zero), G1/G2/G3
+    ALL GREEN — verdict APPLIED_GATES_GREEN, receipt .syllabai/receipts/T-TEACHME-001/cow-apply-receipt-r1.json;
+    COW dropped + 404-verified, zero residue) — the PROD apply of 0020/0021 (+ canon, census-proven complete)
+    awaits the operator reading the receipt (T-SENECA-001 two-step discipline)'
   priority: P1
   band: T-TEACHME (student learn-by-teaching lane)
   wave: teachme-phase-A
