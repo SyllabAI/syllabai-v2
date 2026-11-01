@@ -49,5 +49,21 @@
   "125 distinct suffix joined-runs surfaced by the boundary fix (totalpower, lengthofcube, specificheatcapacity, parallelsides ...) are RN-DEBRIS-4's joined-debris class — out of this lane's scope per the operator order, disclosed as the natural next census input"
  ],
  "artifacts": ".syllabai/lane-artifacts/RN-DEBRIS-5/",
- "status": "APPLIED — awaiting PR/CI/merge/prod"
+ "status": "LANDED + PROD-VERIFIED — PR #609 merged b0c82f0fda, CI 2/2, prod bake probe GREEN",
+ "landing": {
+  "pr": 609,
+  "mergeSha": "b0c82f0fda",
+  "mergedAt": "2026-11-01",
+  "ci": "2/2 check runs completed:success at head f9265e4c (bounded poll 4x75s)",
+  "branch": "lane/rn-debris-5-command-boundary (rebased over R0-AUTO-106 sweep 5528716e, worklog union theirs-verbatim-first, zero markers)",
+  "prodProbe": {
+   "deployment": "dpl_AhTunYcrzRpqGei5j7ArF5zadvsq (sha b0c82f0fd) READY",
+   "results": {
+    "cie-igcse-maths-25-extended/questions.json": "NEW P\\times R\\times T x3 live (incl. the census-invisible occurrence), OLD x0, residual-glue 0",
+    "cie-a-level-physics-25/notes.json": "NEW \\Delta E_{p}=mg\\Delta h x4 live, OLD x0, residual-glue 105 -> 0, bytes +106 = insertions",
+    "ial-maths-20-statistics-1/questions.json": "NEW \\sum x forms live, residual-glue 2 = exactly the 2 of-record fail-closed combining-overline segments"
+   },
+   "verdict": "GREEN — fixed corpus live on production, residuals = the disclosed fail-closed classes only"
+  }
+ }
 }
