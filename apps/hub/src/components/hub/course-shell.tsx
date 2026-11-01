@@ -66,7 +66,10 @@ export type { SidebarData, SidebarVariant } from "@/components/hub/course-data-c
 const SIDEBAR_RAIL_PX = 44;
 
 type NavItem = {
-  href: string;
+  /** run-013 ghost law (audit C1+C3): disabled rows carry NO href — a ghost
+   * is not a link (the old `href: "#"` rendered nowhere but lied in the
+   * data). Enabled rows always carry one — the NavRow renderer guards it. */
+  href?: string;
   label: string;
   icon: typeof BookOpen;
   disabled?: boolean;
@@ -89,6 +92,11 @@ const SIDEBAR_RESIZE_STEP = 16;
 
 const clampSidebarWidth = (n: number) =>
   Math.min(SIDEBAR_MAX_W, Math.max(SIDEBAR_MIN_W, n));
+
+/** run-013: NavItem.href is optional (ghost rows carry none) — a missing
+ * href can never prefix-match, so a ghost row can never pill. */
+const pathActive = (href: string | undefined, pathname: string) =>
+  href !== undefined && pathname.startsWith(href);
 
 function persistSidebarWidth(w: number) {
   try {
@@ -168,11 +176,11 @@ function NavRow({
       {item.badge}
     </span>
   );
-  if (item.disabled) {
+  if (item.disabled || !item.href) {
     return (
       <span
         aria-disabled
-        title="Not part of the pilot corpus yet"
+        title="On the roadmap"
         className={cn(
           "flex cursor-not-allowed items-center rounded-xl text-sm text-muted-foreground",
           collapsed ? "size-9 justify-center" : "gap-2.5 px-2 py-2",
@@ -316,7 +324,7 @@ function CourseNav({
               const active = item.disabled
                 ? false
                 : (item.exact ??
-                  (pathname.startsWith(item.href) && !exactSiblings));
+                  (pathActive(item.href, pathname) && !exactSiblings));
               return (
                 <li key={item.label}>
                   <NavRow item={item} active={active} onNavigate={onNavigate} collapsed={collapsed} />
@@ -331,7 +339,7 @@ function CourseNav({
                       {item.children.map((child) => {
                         const childActive = child.disabled
                           ? false
-                          : (child.exact ?? pathname.startsWith(child.href));
+                          : (child.exact ?? pathActive(child.href, pathname));
                         return (
                           <NavRow
                             key={child.label}
@@ -687,20 +695,17 @@ export function CourseShell({
       label: "Revision",
       items: [
         { href: `${base}/revision-notes`, label: "Revision Notes", icon: BookOpen },
-        // T-MIG-140 — the books option in the persistent course chrome (the
-        // band-133k landing card was the only entry; the sidebar/drawer nav
-        // — the thing every course surface shows — had none, which is the
-        // operator's "no option in course page"). Same committed-registry
-        // gate as the card (courseHasBookArchive): a disabled row with the
-        // roadmap badge until the course's books/<specKey>/ archive home
-        // lands; the shelf behind the link stays the live T-C20 gate.
-        {
-          href: `${base}/books`,
-          label: "Student Book",
-          icon: BookMarked,
-          disabled: !courseHasBookArchive(data.course.slug),
-          badge: courseHasBookArchive(data.course.slug) ? undefined : "roadmap",
-        },
+        // run-013 C1 (sidebar content audit): ONE ghost law per class —
+        // data-conditional tools are ABSENT-WHEN-ABSENT (the law Seneca has
+        // obeyed since T-SENECA-001), never disabled placeholders. T-MIG-140's
+        // disabled+roadmap row is superseded: the chrome no longer advertises
+        // a tool this course cannot open; the honest roadmap state stays on
+        // the dashboard's Learn-band card. Same committed-registry gate as
+        // the card (courseHasBookArchive); the shelf behind the link stays
+        // the live T-C20 gate.
+        ...(courseHasBookArchive(data.course.slug)
+          ? [{ href: `${base}/books`, label: "Student Book", icon: BookMarked }]
+          : []),
         { href: `${base}/flashcards`, label: "Flashcards", icon: CircleHelp },
         // run-013 R1/G4 (audit MEDIUM): guided lessons — the committed
         // guided-import.json gate (the SAME loadGuidedIndex the Learn-band
@@ -740,9 +745,23 @@ export function CourseShell({
             { href: `${base}/exam-questions/saved`, label: "Saved questions", icon: Bookmark, exact: pathname.endsWith("/saved") },
           ],
         },
-        { href: `${base}/past-papers`, label: "Past Papers", icon: ScrollText, disabled: !data.hasPastPapers && !data.hasCorpusPapers, badge: data.hasPastPapers || data.hasCorpusPapers ? undefined : "roadmap" },
+        // run-013 C1: same class law. The OFFICIAL-PLANE-ONLY gate below is
+        // unchanged (official parsed plane OR corpus PDF archive — never the
+        // SME bank's sourcePaper citations); only the missing-data
+        // presentation changes: disabled+roadmap → absent. The dashboard
+        // keeps the honest roadmap card.
+        ...(data.hasPastPapers || data.hasCorpusPapers
+          ? [{ href: `${base}/past-papers`, label: "Past Papers", icon: ScrollText }]
+          : []),
         { href: `${base}/practice-papers`, label: "Practice Papers", icon: Files },
-        { href: "#", label: "Target Test", icon: Target, disabled: true, badge: "roadmap" },
+        // run-013 C1+C3: the OTHER class — platform roadmap items render as
+        // ghost rows (disabled + roadmap badge, NO href: the old "#" was an
+        // inert-but-sloppy real anchor, and a disabled row is not a link).
+        // Target Test keeps the one chrome ghost it already had; the
+        // dashboard-only roadmap cards (Mock Exams, Mistakes Log, Strength
+        // Battle) stay dashboard-only — the chrome is curated navigation and
+        // this lane adds no new ghost rows.
+        { label: "Target Test", icon: Target, disabled: true, badge: "roadmap" },
       ],
     },
   ];
