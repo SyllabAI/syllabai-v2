@@ -817,3 +817,19 @@ Work Log:
 
 Stage Summary:
 - Grade Boundaries coverage gap closed to Pearson's serving reality; receipts in both repos; discipline held.
+
+## T-OEQ-PHYS-FORMAT-1 run-008 serving leg (F131) — the W2 table-format wave served (operator order "Start", trace 1a198298221e914d)
+Agent: main (Z.ai, zai-web session web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2)
+Task: discharge the F129 standing item — "the serving leg (corpus -> v2 plane re-export + manifest re-stamp)" — after first-hand reconciliation proved the W2 corpus leg already merged (resources #269/23dd0c9d + #274/594a5a97; census 146/0 corpus-side == the pre-registration).
+
+Work Log:
+- Census re-derived on both planes (sandbox recycled; census scripts rebuilt from the methodology of record): v2 151 blocks = 122 OK + 29 degenerate / 26 parts; resources 146 all-OK == the F129 post-gate expectation exactly; the 4 "missing counterpart" parts identified as the prose-box morphs; the audit's corrupt-header trio reconciled as the official flattened MCQ trio (per the F129 pre-registration).
+- Of-record exporter run (official_examq_export_hub.py --spec 4ph1) in recon mode (no census -> fail-closed DELTA listing) then GREEN with the disclosed trio: G-E1/E1b/E2/E3/E4/E5/E6/E7 all ok; surfaced the 2022-01 1(a) inline-image doubling -> corpus-first rider PR #274 (merged 594a5a97; sole occurrence corpus-wide; T1/G3 gates; questions.md echo dropped), re-export re-run GREEN at the new cut (1(a) = stem + ONE registry figure line).
+- SME consume (26 parts / 29 blocks) per the F129 transforms of record: word-multiset gate (<br>-aware), unique-match, corpus-identity (every new block verbatim in the corpus problem_md), post-census 146/0/0 == pre-registration, untouched leaves byte-identical; executor fail-closed twice before any write (blockquote furniture; census field scope) and fixed in the executor.
+- Manifest: importSource.ref stamped 8f6a6a80 -> 594a5a97 (G-E5-proven); note recomposed per the stamp convention (F131 paragraph prepended, F128-era lineage verbatim below) and rewritten in the compact-separators byte law (the exporter's indent=1 manifest output corrected at compose; the run-007-disclosed law re-discovered first-hand).
+- Eyes-on: 3 official parts + 3 SME samples read as the page-evidenced forms; shas pinned in the payload; sandbox display artifact ('![m' eaten in tool output) caught fail-closed and gated around with byte checks.
+
+Stage Summary:
+- Plane of record: questions.json 6424eb5b -> d3df0fc8 (26 parts + the parallel debris union), official-papers.json f0945d29 -> 2c7b62c4 (3 parts), manifest 9bde63b4 -> 7fd0a856 (ref + note). Receipt .syllabai/receipts/T-OEQ-PHYS-FORMAT-1/run-008-serving-leg.json; payload .syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run008-serve-payload.json; resources leg = PR #274 (F131, LEDGER Wave 23, LANE-STATUS F131).
+- Standing: R2 (93 SME flattened parts) = next pre-registered wave; tick-table square residual filed; SME-corpus mirror lag beyond the 26 W2 parts remains queued of record.
+- Discipline: fetch-first; fail-closed (5 aborts across legs before any write, all fixed in the executor); zero DB/Neon/prod contact; no force on main.
