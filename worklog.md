@@ -806,3 +806,14 @@ Work Log:
 Stage Summary:
 - Grade-boundaries lists now read newest→oldest like MathsGenie's page; receipt .syllabai/receipts/T-GRADE/T-GRADE-006-RUN001-SESSION-ORDER-DESC.json; lane t-gradeb-6/session-order-desc, PR of record.
 - Discipline: fetch-first; fail-closed; append-only worklogs (byte-exact prefix assert); zero force-push, zero auth failures, boundaries held.
+
+---
+
+Task ID: T-GRADE-7 (run-001) — Pearson -v1 slug harvest, 4CH1 +2 sessions (operator trace "Run it").
+
+Work Log:
+- Upstream syllabai-resources: fetch_pearson.py slug matrices extended with the -v1/-v2 family; +4 source PDFs (linear Jan 2023/Nov 2021, IAL Jan 2021/Nov 2020); re-parse 26 docs/991 subjects/0 warnings; G1 0 errors, G2 MG parity 6/6 EXACT; bundle sha256_16 7ba6951347f5c37e.
+- This repo: bundle.v1.json mechanically re-imported; 4CH1 13 sessions; 70 absences ledgered upstream (June 2020/21 cancelled).
+
+Stage Summary:
+- Grade Boundaries coverage gap closed to Pearson's serving reality; receipts in both repos; discipline held.
