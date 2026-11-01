@@ -19,6 +19,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { teachMeEnabledForCourse } from "@/components/hub/teach-me/gate";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { boardOf, listCourses, loadHubCourse, pilotCourseSlug } from "@/lib/courses";
 import { courseMetaDescription, courseTitle, fmtCount } from "@/lib/format";
@@ -174,6 +175,9 @@ export default async function CourseHubPage({
   // official corpus (resources GradeBoundaries lane, sha-proven) — a
   // course without data keeps the honest roadmap state.
   const gradeBoundaries = await getGradeBoundariesSummary(meta.slug);
+  // T-TEACHME-001 run-003 (⚠️ OUT-OF-FENCE — see the card comment): the
+  // flags.json render gate, the same read the /teach-me page serves under.
+  const teachMe = await teachMeEnabledForCourse(meta.slug);
 
   // Topics tab data (hub-coursepage-mg-layout): the canonical spec tree with
   // per-subtopic counts + canonical hrefs — the SAME joins the sidebar uses,
@@ -464,6 +468,30 @@ export default async function CourseHubPage({
             : undefined,
           ready: Boolean(guided),
           tint: "bg-chart-4/15",
+        },
+        {
+          // ⚠️ OUT-OF-FENCE COMMIT (T-TEACHME-001 run-003, R0 ratification
+          // requested): the task fence covers apps/hub/src/app/courses/[course]/
+          // teach-me/** + components/hub/teach-me/** + lib/api.ts (client fns);
+          // this page is NOT in it. The one additive Learn-band card below is
+          // the minimal app-level mount per the T-MIG-010/T-SENECA-001/
+          // T-TEACH-012/run-002 one-mount precedent — shipped as its own
+          // commit so R0 can ratify or lift it out at review. It keys on the
+          // flags.json "teachMe" gate (absent=OFF) via teachMeEnabledForCourse
+          // — the same read the /teach-me page of record serves under — and
+          // non-pilot courses keep the honest "import pending" roadmap card
+          // (plan §10), never a dead CTA.
+          icon: GraduationCap,
+          title: "Teach-Me",
+          desc: teachMe
+            ? "Teach the Pupil: pick spec points, explain them in your own words, and find the gaps before the exam does — objectives tick off as you cover them."
+            : "Learn by teaching — explain topics to the Pupil and find your gaps before the exam does. Rolling out course by course.",
+          tags: ["Study", "Practice", "Diagnose"] as FrameworkTag[],
+          href: teachMe ? `${base}/teach-me` : undefined,
+          ctaLabel: teachMe ? "Teach the Pupil" : undefined,
+          ready: teachMe,
+          notReadyLabel: "import pending",
+          tint: "bg-primary/10",
         },
       ],
     },

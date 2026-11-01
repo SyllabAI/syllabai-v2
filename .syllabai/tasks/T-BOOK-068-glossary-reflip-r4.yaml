@@ -2,7 +2,7 @@ schema: t-book-task/v1
 id: T-BOOK-068
 title: "Glossary re-flip r4 — 112 authored 4ch1 terms SUGGESTED → VALIDATED (NEON-DB-LOSS regression repair)"
 operator_order: "lesson-side reading progress, the 112-term glossary flip (trace 1a17cddee7d8a229)"
-status: BLOCKED_ON_PLATFORM_QUOTA  # credential hand landed 2026-10-28; the blocker MOVED — Neon MAIN refuses all new connections (quota exceeded); flip NOT attempted, zero writes executed
+status: DONE  # flip of record 2026-11-01 (trace 1a195f71a95e7ef1): 112 SUGGESTED→VALIDATED via the tracked vehicle; the 2026-10-28 quota refusal LIFTED (mechanism unverified — control plane DNS-walled); guards held: census exact, rowcount 112 passed, idempotence 0 rows; serve-proof 200/112 terms live
 tool: apps/api/scripts/books/glossary-reflip-r4.mts (TRACKED of record — vehicle-into-repo ruling honored 2026-10-28; session-side copy apps/api/scripts/session/ RETIRED to untracked scratch)
 vehicle_ruling: "operator order 'flipping the vehicle into the warehouse' (trace 1a17e7f85630ad0d, 2026-10-28): the flip car was lost to sandbox rollbacks TWICE session-side — the tracked copy makes it rollback-proof; executable body byte-identical to the session-of-record script (diff-verified), header rewritten as of-record provenance"
 root_cause_of_record: "r3 flipped 112/112 VALIDATED 2026-10-21T20:02Z; the NEON-DB-LOSS restore (Oct-21 dump predates the flip) regressed the rows to SUGGESTED — ingest upsert never resets validation_state, restore is the only self-consistent vector"
@@ -29,3 +29,10 @@ execution_attempt_r1_2026_10_28:
     - "operator raises the Neon plan/compute limit on the MAIN project (Neon console; api.neon.tech unreachable from this sandbox)"
     - "or wait for the monthly compute-hours reset, then re-run the recipe: --check → --commit → --idempotence (guards unchanged)"
 system_change_candidate: RESOLVED 2026-10-28 — operator ruled "flipping the vehicle into the warehouse"; tracked at apps/api/scripts/books/glossary-reflip-r4.mts (branch t-book-068/flip-car-tracked, PR of record; no package.json change — js-yaml per the tracked-script convention of books-ingest-rail.ts / books-u4-s34-spotcheck.ts)
+
+execution_attempt_r2_2026_11_01:
+  order: "credential re-hand + three-step + serve proof + ledger DONE (IM trace 1a195f71a95e7ef1)"
+  recipe_run: "--check GREEN → --commit (UPDATE applied; rowcount guard passed 112; post-census readback {VALIDATED:112}; pre-flagged cosmetic post-census guard defect fired post-write, disclosed) → --idempotence 0 rows → independent census {VALIDATED:112,total:112} → serve-proof 200/112 terms (shelf 200, document 200)"
+  blocker: "CLOSED — connections accepted throughout; lift mechanism unverified (api.neon.tech DNS-walled 7th consecutive)"
+  vehicle_bytes: "untouched (byte-protected of record); rider proposed for the post-census '?? 0' fix (branch+PR, follow-up)"
+  receipt: .syllabai/receipts/T-BOOK-068/reflip-r4-commit-r1.json

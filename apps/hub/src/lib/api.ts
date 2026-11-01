@@ -130,6 +130,19 @@ import type {
   ToolkitResourceSummaryView,
   ToolkitToolType,
 } from "./types";
+// T-TEACHME-001 run-003 — the teach-me wire types of record (zod-strict
+// contracts, fail-closed vocabulary), imported rather than mirrored so the
+// hub cannot drift from the wire the run-002 module serves.
+import type {
+  CreateSessionRequest,
+  CreateSessionResponse,
+  EndSessionResponse,
+  PostMessageRequest,
+  PostMessageResponse,
+  ReviewCard,
+  SessionHistoryItem,
+  TeachSession,
+} from "@syllabai/contracts";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "";
 /**
@@ -190,6 +203,16 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // NARROW like attempts: only this family flips — sibling /learners/me/*
   // surfaces stay core until their own capture+verify legs land.
   "/api/v1/learners/me/revision-notes",
+  // T-TEACHME-001 run-003 — the Teach-Me learner lane: v2-NATIVE family (no
+  // core analogue exists to golden-verify — the surface of record is the
+  // run-002 Hono module mounted at /api/v1/learners/me/teach-me/**, PR #585,
+  // gated by the 21-test behavioural fixture suite instead of core parity).
+  // NARROW form: the prefix covers exactly the teach-me family (create /
+  // message / end / history / permalink); sibling /api/v1/learners/me/*
+  // surfaces keep their own routing rows, and there is no startsWith
+  // over-capture — no sibling path shares the "teach-me" segment
+  // (grep-verified at the flip commit).
+  "/api/v1/learners/me/teach-me",
   // T-MIG-090 (r0 rider) — LLM chain-observability report: golden-verified of
   // record (run-005: the post-merge golden-verify leg 4/4 PASS at merged main
   // bd4eaeb vs the r4b wire truth golden-captures/t-mig-090/ legs 01-04 —
@@ -2248,6 +2271,63 @@ export const api = {
       method: "POST",
       body: JSON.stringify({ imageBase64, mimeType }),
     }),
+
+  // ── Teach-Me (T-TEACHME-001 run-003) — the learn-by-teaching lane ────────
+  // Contract types of record: packages/contracts/src/teach-me.ts (zod-strict,
+  // fail-closed). Typed error bodies ({error, message}) surface through
+  // request()'s message-verbatim law with the contract's learner-honest
+  // copy; the client components class by status, never by re-deriving codes.
+
+  teachMeCreateSession: (body: CreateSessionRequest) =>
+    request<CreateSessionResponse>("/api/v1/learners/me/teach-me/sessions", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+
+  teachMePostMessage: (sessionId: string, body: PostMessageRequest) =>
+    request<PostMessageResponse>(
+      `/api/v1/learners/me/teach-me/sessions/${encodeURIComponent(sessionId)}/message`,
+      { method: "POST", body: JSON.stringify(body) },
+    ),
+
+  teachMeEndSession: (sessionId: string) =>
+    request<EndSessionResponse>(
+      `/api/v1/learners/me/teach-me/sessions/${encodeURIComponent(sessionId)}/end`,
+      { method: "POST" },
+    ),
+
+  teachMeListSessions: (course: string) =>
+    request<{ items: SessionHistoryItem[] }>(
+      `/api/v1/learners/me/teach-me/sessions?course=${encodeURIComponent(course)}`,
+    ),
+
+  teachMeGetSession: (sessionId: string) =>
+    request<TeachMeSessionDetail>(
+      `/api/v1/learners/me/teach-me/sessions/${encodeURIComponent(sessionId)}`,
+    ),
+};
+
+/**
+ * GET /teach-me/sessions/:id — the permalink payload: a documented
+ * composition of existing contract types (plan §6 route 5; run-002 receipt
+ * disclosure), not a new schema. Transcript rows mirror the teach_messages
+ * plane of record (apps/api/src/teach-me/types.ts TeachMeMessageRow).
+ */
+export type TeachMeSessionDetail = {
+  session: TeachSession;
+  transcript: TeachMeTranscriptRow[];
+  review: ReviewCard | null;
+};
+
+export type TeachMeTranscriptRow = {
+  id: string;
+  sessionId: string;
+  /** student-turn ordinal; pupil rows carry the turn they reply to (opening = 0) */
+  seq: number;
+  role: "student" | "pupil";
+  kind: "opening" | "paraphrase_probe" | "clarify_nudge" | "confusion" | null;
+  text: string;
+  createdAt: string;
 };
 
 export type HandwritingTranscription = {

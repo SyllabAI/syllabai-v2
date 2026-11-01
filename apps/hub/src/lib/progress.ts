@@ -203,12 +203,23 @@ export function useAllCourseProgress(courses: string[]): Record<string, CoursePr
 
 // ── events ──────────────────────────────────────────────────────────────
 
+/**
+ * Record one note-read event. The CALLER owns the trigger law: on the note
+ * page the event fires when the note's END (the footnote strip) scrolls into
+ * view — never on mere page entry (operator trace 1a195fd0b0947695: "when a
+ * user opens a note and scrolls down of that note, then only the note will
+ * become checked"). First fire births the entry; later re-reads refresh the
+ * recency timestamp (keeping any helpful vote) so "Resume" and the activity
+ * trail point at the note most recently read through, not the stale
+ * first-completion. Refreshing `at` is honest exposure evidence: the
+ * learner-state consumers take Math.max(lastAt, at) and the ring/tick math
+ * is presence-based, so a re-completion changes recency, never counts.
+ */
 export function markNoteRead(course: string, noteId: string, subtopic: string | null) {
-  mutate(course, (p) =>
-    p.notesRead[noteId]
-      ? p
-      : { ...p, notesRead: { ...p.notesRead, [noteId]: { subtopic, at: Date.now() } } },
-  );
+  mutate(course, (p) => ({
+    ...p,
+    notesRead: { ...p.notesRead, [noteId]: { ...p.notesRead[noteId], subtopic, at: Date.now() } },
+  }));
 }
 
 export function rateNoteHelpful(course: string, noteId: string, helpful: "up" | "down") {
@@ -375,4 +386,21 @@ export function topicRing(
   let sum = 0;
   for (const c of active) sum += subtopicRing(p, c, countsBySubtopic.get(c)!).percent;
   return { done: 0, total: active.length, percent: Math.round(sum / active.length) };
+}
+
+/**
+ * Notes-ONLY ring for one sub-topic: reads ÷ available notes — never
+ * questions, never flashcards. The revision-notes select page's ring of
+ * record (operator trace 1a195fd0b0947695: "the rings show progress of
+ * revision notes only … both of their select pages will handle their
+ * progress rings" — each select page owns its own denominator; the combined
+ * subtopicRing stays the sidebar's engagement coverage). A sub-topic with no
+ * notes reports total 0 (rendered as an empty ring, "not started", never a
+ * fake 100%) — the same honesty law as subtopicRing.
+ */
+export function subtopicNotesRing(p: CourseProgress, subtopicCode: string, counts: { notes: number }): Ring {
+  if (counts.notes === 0) return { done: 0, total: 0, percent: 0 };
+  const notes = Object.values(p.notesRead).filter((v) => v.subtopic === subtopicCode).length;
+  const done = Math.min(notes, counts.notes);
+  return { done, total: counts.notes, percent: Math.round((done / counts.notes) * 100) };
 }
