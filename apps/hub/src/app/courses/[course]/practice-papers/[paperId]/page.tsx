@@ -54,7 +54,7 @@ export default async function PracticePaperPage({
                 ({boardOf(meta)} {meta.level} {meta.subject})
               </span>
             </h1>
-            <ExamCodePill code={meta.code} />
+            <ExamCodePill code={meta.code} href={`/courses/${meta.slug}/specification`} />
           </div>
           <p className="text-sm text-muted-foreground">
             {paper.items.length} questions · {paper.totalMarks} marks ·{" "}

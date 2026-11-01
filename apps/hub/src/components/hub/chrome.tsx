@@ -4,7 +4,7 @@
  * (research §4): breadcrumb + exam-code pill + bold qualification title.
  */
 import Link from "next/link";
-import { ChevronRight, Home } from "lucide-react";
+import { ChevronRight, Home, ListTree } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MathText } from "@/components/hub/math-text";
 
@@ -49,18 +49,44 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
   );
 }
 
-/** "Exam code: 4CH1" pill (SME anatomy, research §4). */
-export function ExamCodePill({ code, className }: { code: string; className?: string }) {
+/** "Exam code: 4CH1" pill (SME anatomy, research §4).
+ *
+ *  With `href` the pill IS the course's Specification link
+ *  (T-COURSE-SPECPILL-1, operator request via chat trace
+ *  1a1955167e89eb11): the spec card's standalone "Specification tree"
+ *  button moved into the identity affordance every course page already
+ *  carries, so the exam code doubles as the deep link — one less row of
+ *  chrome doing the same job. A real link (not a fake button): one tab
+ *  stop, labelled destination, house focus-visible voice. Without `href`
+ *  (the paper-viewer workspace pill) it stays presentational info-chrome.
+ */
+export function ExamCodePill({ code, href, className }: { code: string; href?: string; className?: string }) {
+  const pillClass = cn(
+    "inline-flex items-center gap-1.5 rounded-lg border bg-muted/50 px-3 py-1.5 text-[13px]",
+    className,
+  );
+  if (!href) {
+    return (
+      <span className={pillClass}>
+        <span className="font-semibold text-foreground">Exam code:</span>
+        <span className="font-mono text-muted-foreground">{code}</span>
+      </span>
+    );
+  }
   return (
-    <span
+    <Link
+      href={href}
+      title="Open the specification"
+      aria-label={`Exam code ${code} — open the specification`}
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-lg border bg-muted/50 px-3 py-1.5 text-[13px]",
-        className,
+        pillClass,
+        "transition-colors hover:border-ring hover:bg-muted focus-visible:outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
       )}
     >
       <span className="font-semibold text-foreground">Exam code:</span>
       <span className="font-mono text-muted-foreground">{code}</span>
-    </span>
+      <ListTree className="size-3.5 shrink-0 text-primary" aria-hidden />
+    </Link>
   );
 }
 

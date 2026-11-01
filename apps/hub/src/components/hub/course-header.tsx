@@ -53,7 +53,10 @@ export function CourseHeader({
           <h1 className="max-w-2xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
             {title}
           </h1>
-          <ExamCodePill code={meta.code} />
+          {/* T-COURSE-SPECPILL-1 (operator trace 1a1955167e89eb11): the exam
+              code doubles as the Specification link — the affordance moved
+              here from the spec card's standalone tree button. */}
+          <ExamCodePill code={meta.code} href={`/courses/${meta.slug}/specification`} />
         </div>
         {description && (
           <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-[15px]">

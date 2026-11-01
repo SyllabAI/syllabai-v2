@@ -72,7 +72,7 @@ export default async function QuestionSetPage({
                   ({boardOf(meta)} {meta.level} {meta.subject}): Exam Questions
                 </span>
               </h1>
-              <ExamCodePill code={meta.code} />
+              <ExamCodePill code={meta.code} href={`/courses/${meta.slug}/specification`} />
             </div>
             <p className="text-sm text-muted-foreground">
               {topic.questions.length} questions · {totalMarks} marks · {estTime}
