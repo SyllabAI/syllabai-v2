@@ -57,8 +57,10 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
  *  button moved into the identity affordance every course page already
  *  carries, so the exam code doubles as the deep link — one less row of
  *  chrome doing the same job. A real link (not a fake button): one tab
- *  stop, labelled destination, house focus-visible voice. Without `href`
- *  (the paper-viewer workspace pill) it stays presentational info-chrome.
+ *  stop, labelled destination, house focus-visible voice.
+ *  T-COURSE-SPECPILL-2: the paper-viewer workspace toolbar pill is live
+ *  too, so every rendered pill carries the href; the prop stays optional
+ *  as the escape hatch for surfaces that must not navigate.
  */
 export function ExamCodePill({ code, href, className }: { code: string; href?: string; className?: string }) {
   const pillClass = cn(
