@@ -23671,5 +23671,5 @@ worklog(r0): T-UGM-0606-1 run-002 (operator commission trace 1a1955c294758a5d "M
 ## T-GRADE-7 run-001 — Pearson -v1 slug harvest: 4CH1 +2 sessions (trace: operator "Run it")
 
 - Data fix upstream in SyllabAI/syllabai-resources (fetch_pearson.py slug matrix + 4 new source PDFs + re-parse + gates, all green); this repo takes the mechanical import of the rebuilt hub bundle.
-- 4CH1 now serves 13 sessions (+January 2023, +November 2021); IAL lanes +January 2021 +November 2020; bundle sha256_16 a62ba4ac193a00d0; honest absences unchanged and ledgered upstream (June 2020/2021 cancelled series have no Pearson boundaries document).
+- 4CH1 now serves 13 sessions (+January 2023, +November 2021); IAL lanes +January 2021 +November 2020; bundle sha256_16 7ba6951347f5c37e; honest absences unchanged and ledgered upstream (June 2020/2021 cancelled series have no Pearson boundaries document).
 - Discipline: source-only PDFs (%PDF-verified, soft-404 guard), zero value invention, G2 golden parity held.
