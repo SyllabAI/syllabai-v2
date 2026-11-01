@@ -1,19 +1,30 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, CircleHelp } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { boardOf, loadHubCourse } from "@/lib/courses";
 import { CourseHeader } from "@/components/hub/course-header";
 import { NumberedLabel } from "@/components/hub/chrome";
+import { ProgressRing } from "@/components/hub/progress-ring";
 import { DeckDueBadge } from "./deck-due-badge";
 import { allCourseParams } from "@/lib/static-params";
+import type { Course } from "@/lib/progress";
 
 
 /** Prerendered at build (ADR-021 perf pass, tranche 4.12) — see static-params.ts. */
 export async function generateStaticParams() {
   return allCourseParams();
 }
+/**
+ * Flashcards select page — per-subtopic recall decks. Ring semantics of
+ * record (operator traces 1a195fd0b0947695 + 1a1982281a3d7a65): each deck
+ * card carries the FLASHCARDS-ONLY ring — rated cards ÷ available cards,
+ * never notes, never questions — each select page owns its own denominator
+ * (the revision-notes page counts reads, the exam-questions page counts
+ * answered parts; the combined engagement ring stays the sidebar's
+ * posture). The DeckDueBadge keeps its scheduler-truth role beside it.
+ */
 export default async function FlashcardsIndexPage({
   params,
 }: {
@@ -34,6 +45,7 @@ export default async function FlashcardsIndexPage({
       }))
       .filter((d) => d.count > 0),
   );
+  const ZERO_COUNTS = { notes: 0, questions: 0, flashcards: 0 };
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
@@ -64,7 +76,13 @@ export default async function FlashcardsIndexPage({
             className="group min-w-0 rounded-lg border bg-card px-4 py-3 transition-colors hover:border-primary/40"
           >
             <div className="flex min-w-0 items-center gap-2">
-              <CircleHelp className="size-4 shrink-0 text-primary" aria-hidden />
+              <ProgressRing
+                course={meta.slug as Course}
+                subtopic={d.subtopic.code}
+                counts={hub.counts[d.subtopic.code] ?? ZERO_COUNTS}
+                size={18}
+                dimension="flashcards"
+              />
               <p className="min-w-0 flex-1 truncate text-sm font-semibold group-hover:text-primary">
                 {d.subtopic.title}
               </p>
