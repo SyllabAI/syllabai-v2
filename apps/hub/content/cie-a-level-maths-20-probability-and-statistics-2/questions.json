@@ -2632,7 +2632,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Kenzie uses a random sample of 6 small white butterflies and finds that the mean wingspan is 2.65 cm.  Kenzie starts off the hypothesis test as follows:\n\n$I f H_{0} i s t r u e t h e n W \\text{tilde} N ( 4.1 , 0.8 ^{2} )$\n\n$P(W<2.65)=P(Z<-1.8125)\\,=1-0.9651\\,=0.0349<0.05$\n\nIdentify and explain the two mistakes that Kenzie has made in his hypothesis test.",
+      "problemMd": "Kenzie uses a random sample of 6 small white butterflies and finds that the mean wingspan is 2.65 cm.  Kenzie starts off the hypothesis test as follows:\n\n$I f H_{0} is true then W \\text{tilde} N ( 4.1 , 0.8 ^{2} )$\n\n$P(W<2.65)=P(Z<-1.8125)\\,=1-0.9651\\,=0.0349<0.05$\n\nIdentify and explain the two mistakes that Kenzie has made in his hypothesis test.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/hypothesis-testing/hypothesis-testing-normal-distribution/assets/037-img.png)",
       "smeSpecPointIds": [
        "spcpt_mPVJHc5CKHN5mQyS",
@@ -6383,7 +6383,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "If $f ( x )$ is the probability density function for a random variable, $X$ which takes values in the interval $( a , b )$ then:\n\n$\\int_{a}^{b} f ( x ) d x = 1$\n\nUse integration to decide whether the following functions could represent probability distribution functions.\n\n(i) $f ( x ) = \\{ \\begin{gathered} 2 x 0 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 1 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\n(ii) $f ( x ) = \\{ \\begin{gathered} 1 \\frac{1}{3} x^{2} 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 4 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\n(iii) $f ( x ) = \\{ \\begin{gathered} \\frac{4}{27} ( x^{3} + 1 ) - 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 2 \\\\ 0 o t h e r w i s e \\end{gathered} )$",
+      "problemMd": "If $f ( x )$ is the probability density function for a random variable, $X$ which takes values in the interval $( a , b )$ then:\n\n$\\int_{a}^{b} f ( x ) d x = 1$\n\nUse integration to decide whether the following functions could represent probability distribution functions.\n\n(i) $f ( x ) = \\{ \\begin{gathered} 2 x 0 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 1 \\\\ 0 otherwise \\end{gathered} )$\n\n(ii) $f ( x ) = \\{ \\begin{gathered} 1 \\frac{1}{3} x^{2} 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 4 \\\\ 0 otherwise \\end{gathered} )$\n\n(iii) $f ( x ) = \\{ \\begin{gathered} \\frac{4}{27} ( x^{3} + 1 ) - 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 2 \\\\ 0 otherwise \\end{gathered} )$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/041-img.png)",
       "smeSpecPointIds": []
      }
@@ -6411,7 +6411,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The continuous random variable, $X$, has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} \\frac{1}{24} ( x^{3} + 2 ) 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 3 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\nThe value of $P(a<X<b)$ is equal to\n\n$\\int_{a}^{b} f ( x ) d x$\n\nFind $P(1<X<2)$.",
+      "problemMd": "The continuous random variable, $X$, has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} \\frac{1}{24} ( x^{3} + 2 ) 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 3 \\\\ 0 otherwise \\end{gathered} )$\n\nThe value of $P(a<X<b)$ is equal to\n\n$\\int_{a}^{b} f ( x ) d x$\n\nFind $P(1<X<2)$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/042-img.png)",
       "smeSpecPointIds": []
      },
@@ -6524,7 +6524,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Hence find the value of $k$ given that $f ( x )$ is a probability density function where\n\n$f ( x ) = \\{ \\begin{gathered} k ( x^{2} + 3 ) 3 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 9 \\\\ 0 o t h e r w i s e \\end{gathered} )$",
+      "problemMd": "Hence find the value of $k$ given that $f ( x )$ is a probability density function where\n\n$f ( x ) = \\{ \\begin{gathered} k ( x^{2} + 3 ) 3 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 9 \\\\ 0 otherwise \\end{gathered} )$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/027-img.png)",
       "smeSpecPointIds": []
      }
@@ -6552,7 +6552,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The continuous random variable $X$ has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} \\frac{3}{16} ( x^{2} - 1 ) 2 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 3 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\nFind $\\int \\frac{3}{16} x ( x^{2} - 1 ) d x$",
+      "problemMd": "The continuous random variable $X$ has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} \\frac{3}{16} ( x^{2} - 1 ) 2 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 3 \\\\ 0 otherwise \\end{gathered} )$\n\nFind $\\int \\frac{3}{16} x ( x^{2} - 1 ) d x$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/036-img.png)",
       "smeSpecPointIds": []
      },
@@ -6718,7 +6718,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The continuous uniform (rectangular) distribution over the interval $( a , b )$ has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} \\frac{1}{b - a} a < x < b \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\nThe random variable $X$ follows a rectangular distribution over the interval $( 2 , 18 )$.\n\nThe graph below shows the probability density function of $X$. Write down the values of $a,b\\mathrm{and}c$.\n\n![eq9](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/033-eq9.png)",
+      "problemMd": "The continuous uniform (rectangular) distribution over the interval $( a , b )$ has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} \\frac{1}{b - a} a < x < b \\\\ 0 otherwise \\end{gathered} )$\n\nThe random variable $X$ follows a rectangular distribution over the interval $( 2 , 18 )$.\n\nThe graph below shows the probability density function of $X$. Write down the values of $a,b\\mathrm{and}c$.\n\n![eq9](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/033-eq9.png)",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/034-img.png)",
       "smeSpecPointIds": []
      },
@@ -6793,7 +6793,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "State, with a reason, whether the following functions could represent probability distribution functions.\n\n(i) $f ( x ) = \\{ \\begin{gathered} 3 ( x^{5} - 2 x^{3} ) 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 2 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\n(ii) $f ( x ) = \\{ \\begin{gathered} \\frac{3}{8} ( x + 1 )^{2} - 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 1 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\n(iii) $f ( x ) = \\{ \\begin{gathered} \\frac{6}{x^{2}} - 3 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} - 2 \\\\ 0 o t h e r w i s e \\end{gathered} )$",
+      "problemMd": "State, with a reason, whether the following functions could represent probability distribution functions.\n\n(i) $f ( x ) = \\{ \\begin{gathered} 3 ( x^{5} - 2 x^{3} ) 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 2 \\\\ 0 otherwise \\end{gathered} )$\n\n(ii) $f ( x ) = \\{ \\begin{gathered} \\frac{3}{8} ( x + 1 )^{2} - 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 1 \\\\ 0 otherwise \\end{gathered} )$\n\n(iii) $f ( x ) = \\{ \\begin{gathered} \\frac{6}{x^{2}} - 3 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} - 2 \\\\ 0 otherwise \\end{gathered} )$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/097-img.png)",
       "smeSpecPointIds": []
      }
@@ -6821,7 +6821,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The continuous random variable, $X$, has probability density function\n\n$f ( x ) = \\{ \\begin{array}{l} k ( 3 x^{4} - 2 x ) 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 2 \\\\ 0 o t h e r w i s e \\end{array} )$\n\nShow that $k=\\frac{5}{78}$.",
+      "problemMd": "The continuous random variable, $X$, has probability density function\n\n$f ( x ) = \\{ \\begin{array}{l} k ( 3 x^{4} - 2 x ) 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 2 \\\\ 0 otherwise \\end{array} )$\n\nShow that $k=\\frac{5}{78}$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/095-img.png)",
       "smeSpecPointIds": []
      },
@@ -6868,7 +6868,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The continuous random variable $X$ has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} k ( 2 + \\sqrt{x} ) 4 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 9 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\nShow that $k=\\frac{3}{68}$.",
+      "problemMd": "The continuous random variable $X$ has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} k ( 2 + \\sqrt{x} ) 4 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 9 \\\\ 0 otherwise \\end{gathered} )$\n\nShow that $k=\\frac{3}{68}$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/098-img.png)",
       "smeSpecPointIds": []
      },
@@ -6934,7 +6934,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Find the mode of the continuous random variable, $X$, which has probability density function defined by:\n\n(i) $f ( x ) = \\{ \\begin{gathered} \\frac{2}{21} x 2 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 5 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\n(ii) $f ( x ) = \\{ \\begin{gathered} \\frac{1}{9} ( 4 - ( x + 1 )^{2} ) - 2 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 1 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\n(iii) $f ( x ) = \\{ \\begin{gathered} 1 \\frac{1}{2} \\sin ( x ) 0 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} \\pi \\\\ 0 o t h e r w i s e \\end{gathered} )$",
+      "problemMd": "Find the mode of the continuous random variable, $X$, which has probability density function defined by:\n\n(i) $f ( x ) = \\{ \\begin{gathered} \\frac{2}{21} x 2 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 5 \\\\ 0 otherwise \\end{gathered} )$\n\n(ii) $f ( x ) = \\{ \\begin{gathered} \\frac{1}{9} ( 4 - ( x + 1 )^{2} ) - 2 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 1 \\\\ 0 otherwise \\end{gathered} )$\n\n(iii) $f ( x ) = \\{ \\begin{gathered} 1 \\frac{1}{2} \\sin ( x ) 0 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} \\pi \\\\ 0 otherwise \\end{gathered} )$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/103-img.png)",
       "smeSpecPointIds": []
      }
@@ -6962,7 +6962,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The continuous random variable, $X$, has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} \\frac{5}{62} \\sqrt{x^{3}} 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 4 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\nFind an expression, in terms of $m$, for\n\n$\\int_{1}^{m} \\frac{5}{62} \\sqrt{x^{3} } d x$",
+      "problemMd": "The continuous random variable, $X$, has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} \\frac{5}{62} \\sqrt{x^{3}} 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 4 \\\\ 0 otherwise \\end{gathered} )$\n\nFind an expression, in terms of $m$, for\n\n$\\int_{1}^{m} \\frac{5}{62} \\sqrt{x^{3} } d x$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/101-img.png)",
       "smeSpecPointIds": []
      },
@@ -7009,7 +7009,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The continuous random variable $X$ follows a continuous uniform distribution over the interval $(3,28)$ so that its probability density function is\n\n$f ( x ) = \\{ \\begin{gathered} \\frac{1}{25} 3 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 28 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\nFind\n\n(i) $P(X<15)$\n\n(ii) $P(20<X<30)$\n\n(iii) $P(X=25)$",
+      "problemMd": "The continuous random variable $X$ follows a continuous uniform distribution over the interval $(3,28)$ so that its probability density function is\n\n$f ( x ) = \\{ \\begin{gathered} \\frac{1}{25} 3 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 28 \\\\ 0 otherwise \\end{gathered} )$\n\nFind\n\n(i) $P(X<15)$\n\n(ii) $P(20<X<30)$\n\n(iii) $P(X=25)$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/093-img.png)",
       "smeSpecPointIds": []
      },
@@ -7058,7 +7058,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "May calls her nephew Peter each day to check on him. May enjoys talking so much so that Peter has programmed his phone to disconnect from a call after 15 minutes. The length of a call, in minutes, between May and Peter is denoted by the continuous random variable $T$. It is modelled by the probability density function\n\n$f ( t ) = \\{ \\begin{gathered} \\frac{1}{1125} t^{2} 0 < t < 15 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\nFind the mean length of a call.",
+      "problemMd": "May calls her nephew Peter each day to check on him. May enjoys talking so much so that Peter has programmed his phone to disconnect from a call after 15 minutes. The length of a call, in minutes, between May and Peter is denoted by the continuous random variable $T$. It is modelled by the probability density function\n\n$f ( t ) = \\{ \\begin{gathered} \\frac{1}{1125} t^{2} 0 < t < 15 \\\\ 0 otherwise \\end{gathered} )$\n\nFind the mean length of a call.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/081-img.png)",
       "smeSpecPointIds": []
      },
@@ -7145,7 +7145,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The mass, in kilograms, of a wrestler in a local club is denoted by the continuous random variable $M$. It is modelled by the probability density function\n\n$f ( m ) = \\{ \\begin{gathered} k - \\frac{1}{9000} ( m - 80 ) ² 70 < m < 100 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\nShow that $k=\\frac{4}{90}$.",
+      "problemMd": "The mass, in kilograms, of a wrestler in a local club is denoted by the continuous random variable $M$. It is modelled by the probability density function\n\n$f ( m ) = \\{ \\begin{gathered} k - \\frac{1}{9000} ( m - 80 ) ² 70 < m < 100 \\\\ 0 otherwise \\end{gathered} )$\n\nShow that $k=\\frac{4}{90}$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/085-img.png)",
       "smeSpecPointIds": []
      },
@@ -7213,7 +7213,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "State, with a reason, whether the following functions could represent probability distribution functions.\n\n(i) $f ( x ) = \\{ \\begin{gathered} 1 \\frac{1}{3} ( x^{2} - 2 ) 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 2 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\n(ii) $f ( x ) = \\{ \\begin{gathered} \\frac{4}{x^{5} } x \\text{greater} \\text{or} \\text{equal} \\text{than} 1 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\n(iii) $f ( x ) = \\{ \\begin{gathered} \\frac{2}{x^{2}} - 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 2 \\\\ 0 o t h e r w i s e \\end{gathered} )$",
+      "problemMd": "State, with a reason, whether the following functions could represent probability distribution functions.\n\n(i) $f ( x ) = \\{ \\begin{gathered} 1 \\frac{1}{3} ( x^{2} - 2 ) 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 2 \\\\ 0 otherwise \\end{gathered} )$\n\n(ii) $f ( x ) = \\{ \\begin{gathered} \\frac{4}{x^{5} } x \\text{greater} \\text{or} \\text{equal} \\text{than} 1 \\\\ 0 otherwise \\end{gathered} )$\n\n(iii) $f ( x ) = \\{ \\begin{gathered} \\frac{2}{x^{2}} - 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 2 \\\\ 0 otherwise \\end{gathered} )$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/078-img.png)",
       "smeSpecPointIds": []
      }
@@ -7241,7 +7241,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The continuous random variable, $X$, has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} 1 \\frac{1}{4} x ( x - 1 ) ( x + 1 ) 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} k \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\nFind the exact value for $k$.",
+      "problemMd": "The continuous random variable, $X$, has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} 1 \\frac{1}{4} x ( x - 1 ) ( x + 1 ) 1 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} k \\\\ 0 otherwise \\end{gathered} )$\n\nFind the exact value for $k$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/057-img.png)",
       "smeSpecPointIds": []
      },
@@ -7290,7 +7290,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Harry is trying to draw specific lengths without measuring equipment. He draws a straight line and stops when he thinks it is 10 cm long. The actual length of Harry’s line, $L$ cm, can be modelled by the probability density function\n\n$f ( l ) = \\{ \\begin{gathered} \\frac{20}{421} ( l - 10.5 )^{4} 8 \\text{less} \\text{or} \\text{equal} \\text{than} l \\text{less} \\text{or} \\text{equal} \\text{than} 12 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\nEstimate the lower quartile of the lengths of Harry’s lines.",
+      "problemMd": "Harry is trying to draw specific lengths without measuring equipment. He draws a straight line and stops when he thinks it is 10 cm long. The actual length of Harry’s line, $L$ cm, can be modelled by the probability density function\n\n$f ( l ) = \\{ \\begin{gathered} \\frac{20}{421} ( l - 10.5 )^{4} 8 \\text{less} \\text{or} \\text{equal} \\text{than} l \\text{less} \\text{or} \\text{equal} \\text{than} 12 \\\\ 0 otherwise \\end{gathered} )$\n\nEstimate the lower quartile of the lengths of Harry’s lines.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/079-img.png)",
       "smeSpecPointIds": []
      },
@@ -7428,7 +7428,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Find the mode of the continuous random variable, $X$, which has probability density function defined by:\n\n(i) $f ( x ) = \\{ \\begin{gathered} \\frac{3}{140} ( 5 - 6 x - x^{2} ) - 4 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 0 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\n(ii) $f ( x ) = \\{ \\begin{gathered} \\frac{3}{34} ( 10 - ( x - 2 )^{2} ) 3 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 5 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\n(iii) $f ( x ) = \\{ \\begin{gathered} 1 \\frac{1}{2} ( \\sin ( x ) + \\cos ( x ) ) 0 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} \\frac{\\pi }{2} \\\\ 0 o t h e r w i s e \\end{gathered} )$",
+      "problemMd": "Find the mode of the continuous random variable, $X$, which has probability density function defined by:\n\n(i) $f ( x ) = \\{ \\begin{gathered} \\frac{3}{140} ( 5 - 6 x - x^{2} ) - 4 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 0 \\\\ 0 otherwise \\end{gathered} )$\n\n(ii) $f ( x ) = \\{ \\begin{gathered} \\frac{3}{34} ( 10 - ( x - 2 )^{2} ) 3 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} 5 \\\\ 0 otherwise \\end{gathered} )$\n\n(iii) $f ( x ) = \\{ \\begin{gathered} 1 \\frac{1}{2} ( \\sin ( x ) + \\cos ( x ) ) 0 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} \\frac{\\pi }{2} \\\\ 0 otherwise \\end{gathered} )$",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/063-img.png)",
       "smeSpecPointIds": []
      }
@@ -7919,7 +7919,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The random variable, $U$, follows a continuous uniform distribution on the interval `left square bracket a comma b right square bracket`. The probability density function $g$ is defined by:\n\n$g ( u ) = \\{ \\begin{gathered} k a \\text{less} \\text{or} \\text{equal} \\text{than} u \\text{less} \\text{or} \\text{equal} \\text{than} b \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\n(i) Write down an expression for $k$ in terms of $a\\mathrm{and}b$.\n\n(ii) Write down an expression for $E(U)$ in terms of $a\\mathrm{and}b$.\n\n(iii) Show that $Var(U)=\\frac{(b-a)²}{12}$.",
+      "problemMd": "The random variable, $U$, follows a continuous uniform distribution on the interval `left square bracket a comma b right square bracket`. The probability density function $g$ is defined by:\n\n$g ( u ) = \\{ \\begin{gathered} k a \\text{less} \\text{or} \\text{equal} \\text{than} u \\text{less} \\text{or} \\text{equal} \\text{than} b \\\\ 0 otherwise \\end{gathered} )$\n\n(i) Write down an expression for $k$ in terms of $a\\mathrm{and}b$.\n\n(ii) Write down an expression for $E(U)$ in terms of $a\\mathrm{and}b$.\n\n(iii) Show that $Var(U)=\\frac{(b-a)²}{12}$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/015-img.png)",
       "smeSpecPointIds": [
        "spcpt_tQpsd6ts3DXRzHSR"
@@ -7970,7 +7970,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "A meeting at a company lasts $T$ hours. The random variable $T$ can be modelled by the probability density function\n\n$f ( t ) = \\{ \\begin{gathered} \\frac{3}{4} t ( t - 2 )^{2} 0 \\text{less} \\text{or} \\text{equal} \\text{than} t \\text{less} \\text{or} \\text{equal} \\text{than} 2 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\nFind the mean time of a meeting and find the standard deviation of times.",
+      "problemMd": "A meeting at a company lasts $T$ hours. The random variable $T$ can be modelled by the probability density function\n\n$f ( t ) = \\{ \\begin{gathered} \\frac{3}{4} t ( t - 2 )^{2} 0 \\text{less} \\text{or} \\text{equal} \\text{than} t \\text{less} \\text{or} \\text{equal} \\text{than} 2 \\\\ 0 otherwise \\end{gathered} )$\n\nFind the mean time of a meeting and find the standard deviation of times.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/004-img.png)",
       "smeSpecPointIds": []
      },
@@ -8036,7 +8036,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "The continuous random variable $X$ has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} \\frac{k}{x^{3}} 2 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} a \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\nShow that $k=\\frac{8a²}{a^{2}-4}$.",
+      "problemMd": "The continuous random variable $X$ has probability density function\n\n$f ( x ) = \\{ \\begin{gathered} \\frac{k}{x^{3}} 2 \\text{less} \\text{or} \\text{equal} \\text{than} x \\text{less} \\text{or} \\text{equal} \\text{than} a \\\\ 0 otherwise \\end{gathered} )$\n\nShow that $k=\\frac{8a²}{a^{2}-4}$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/001-img.png)",
       "smeSpecPointIds": []
      },
@@ -8106,7 +8106,7 @@
        "questionNumber": null,
        "questionPart": null
       },
-      "problemMd": "Paul is travelling around France to try to find the perfect baguette. The random variable $C$ represents the cost, in euros, of a baguette. It can be modelled by the probability density function\n\n$f ( c ) = \\{ \\begin{gathered} \\frac{1}{36} ( 14 c - c^{2} - 40 ) 4 \\text{less} \\text{or} \\text{equal} \\text{than} c \\text{less} \\text{or} \\text{equal} \\text{than} 10 \\\\ 0 o t h e r w i s e \\end{gathered} )$\n\nSketch the graph of $y=f(c)$.",
+      "problemMd": "Paul is travelling around France to try to find the perfect baguette. The random variable $C$ represents the cost, in euros, of a baguette. It can be modelled by the probability density function\n\n$f ( c ) = \\{ \\begin{gathered} \\frac{1}{36} ( 14 c - c^{2} - 40 ) 4 \\text{less} \\text{or} \\text{equal} \\text{than} c \\text{less} \\text{or} \\text{equal} \\text{than} 10 \\\\ 0 otherwise \\end{gathered} )$\n\nSketch the graph of $y=f(c)$.",
       "solutionMd": "![](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/3b2ce8da700b80f51700fb34fc721c90d6654d6b/SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/statistical-distributions/continuous-random-variables/assets/012-img.png)",
       "smeSpecPointIds": []
      },

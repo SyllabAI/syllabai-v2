@@ -1,0 +1,41 @@
+{
+  "schema": "syllabai.receipt/1",
+  "task": "T-GRADE-004 (run-001)",
+  "title": "Grade Boundaries — variant-label re-import: the resources lane's parse fix fills the 2019/2020-era papersNote holes (data plane only)",
+  "generated": "2026-11-01T05:20:00Z",
+  "trace": "1a194934c518f8e1",
+  "agent": "Z.ai main agent (zai-web session web-19f335c2-abed-4ade-968a-305029b290e3)",
+  "plane": {
+    "resources_lane": "SyllabAI/syllabai-resources t-gradeb-1/pipeline — NOTE 7854805d (diagnosis) + T-GRADE-3 run-001 0f136e4c (parse fix, gated rebuild); lane PR #257",
+    "hub_branch": "t-gradeb-3/variant-label-import (cut fresh from main at d7b199d3; every prior grade lane t-gradeb-1/-2/-3 verified MERGED into it)",
+    "operator_order": "T-GRADE-3 — the fix run the 4CH1 note queued: fix the parse_pearson matcher, re-run the three gates under zero-value-movement assertions, rebuild the bundle, re-import to v2"
+  },
+  "root_cause": "Pearson changed the papers-note wording between layout generations: the 2019/2020-era linear docs print 'Papers 1C & 2C' / 'Papers 1B, 1C & 1P' and, for single-paper subjects (English Language B, Bangla, Global Citizenship, Islamic Studies, Sinhala, Tamil), singular 'Paper 01'; the 2022+ era prints 'Paper(s) 1C 2C' / 'Paper(s) 1B 1C 1P'. parse_pearson.py gated on the Paper(s) prefix only, so all three oldest docs dropped every label — the hub served papersNote null for 8 duplicate-session pairs on 4CH1 (June 2019 / January 2020 carried NO label at all).",
+  "the_fix": "parse_pearson.py accepts all three wordings and normalizes to the canonical 2022+ shape (ampersand + commas stripped, singular prefix stripped): 'Papers 1C & 2C' -> '1C 2C', 'Papers 1B, 1C & 1P' -> '1B 1C 1P' (verified equal to the January 2022 4SD0 canonical), 'Paper 01' -> '01' (verified equal to the 2022+ 4EB1 canonical).",
+  "regression_assert": {
+    "parsed_layer": "129 fills — January 2019: 20, June 2019: 74, January 2020: 35; every fill None -> document-sourced label; ZERO value rewrites; ZERO row reorders; every other field of every subject byte-identical (incl. the note's own 111 estimate corrected: it counted only multi-row variant groups — 20 single-row subjects had lost labels the same way)",
+    "bundle_layer": "133 series fills across 21 served slugs (chemistry-19 4, biology-19 4, physics-19 4, english-language-a-16 x3 slugs 18 each, english-literature-16 17, maths-a-18-foundation/higher 6 each, maths-b-16 6, science-double-award-17 x3 slugs 4 each, accounting-17 x2 slugs 2 each, economics-17 4, business-19 2, geography-19 2, history-17 2, ict-17 2, further-maths-19 4); all 227 (course, session) joins verified label-list-equal against the parsed layer; bundle diff contains ONLY generated + the fills",
+    "honest_remainders": "the two 4ES1 rows whose document subline reads 'Speaking Endorsement' (June 2019, January 2020 — not a paper combination; the 2022+ era numbers that paper 03) and the January 2020 singles whose document prints no note line at all (4AC1/4CM1/4HB1) stay papersNote null — the em-dash + footnote law stays alive for exactly the rows the source itself leaves unlabelled"
+  },
+  "gates": {
+    "resources_G1": "0 errors (24 Pearson + 119 CIE docs)",
+    "resources_G2": "MathsGenie golden parity 6/6 EXACT — values byte-identical (assert-proven)",
+    "resources_G3": "CIE coverage 30/31 (0264 honestly absent); 28 aggregate-ums courses 0 errors",
+    "hub_validator": "scripts/validate_gradeb_bundle.ts GREEN — schema pass, 105/106 served (21 linear-total, 28 aggregate-ums, 56 display-only), 1 roadmap",
+    "hub_tests": "bun test apps/hub: 26/26 pass (18 calc + 8 bundle — the committed-bundle regression anchors now load the NEW bundle through the strict loader schema)"
+  },
+  "data_plane": {
+    "file": "apps/hub/content/grade-boundaries/bundle.v1.json",
+    "sha256_16_before": "9c7bc67671dd31e9",
+    "sha256_16_after": "533671bf1070ff93",
+    "counts_before": { "served": 105, "roadmap": 1, "total": 106 },
+    "counts_after": { "served": 105, "roadmap": 1, "total": 106 },
+    "code_deltas": "ZERO — loader schema already carried papersNote (T-GRADE-002 run-002); workspace already renders the label, the R badge (isRegionalVariant) and the honest em-dash + footnote (T-GRADE-003 run-002)"
+  },
+  "hub_effect": "the 4CH1 June 2019 / January 2020 pairs now serve '1C 2C' / '1CR 2CR' — the rowSpan-grouped table renders the paper labels and the R badge instead of the em-dash; the footnote retires for every previously unlabelled variant group and now covers only the 4ES1 speaking rows; 20 further courses gain labels on the same rows that were silently unlabelled since the wave-1 import",
+  "scope_note": "T-GRADE-003's 'bundle.v1.json untouched (sha16 must stay 9c7bc67671dd31e9)' constraint was scoped to that presentation task; this task's entire purpose is the receipted data-plane transition, and its forbidden list keeps every code plane frozen",
+  "open_queue": [
+    "post-merge: confirm the deployment completes, then eyeball igcse-chemistry-19/grade-boundaries (June 2019 / January 2020 pairs show 1C 2C / 1CR 2CR + R badge) before closing the operator's thread",
+    "candidate follow-up: display the papersNote verbatim in the graph-tab tooltips (labels now exist on every linear row but the speaking rows)"
+  ]
+}

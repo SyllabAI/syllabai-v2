@@ -1,0 +1,68 @@
+{
+ "task": "RN-DEBRIS-3 run-001 — the letter-spaced re-join wave (the RN-DEBRIS-2 disclosed operator-gated follow-up)",
+ "date": "2026-11-01",
+ "operatorOrder": "IM trace 1a195542318c1f85: 'letter-spaced re-join wave. Fire it'",
+ "scope": "the aria letter-run debris family inside $...$ math segments of apps/hub/content/** (the census class of record); backtick 23a-speech false-positives and prose hits deliberately UNTOUCHED (protected classes, disclosed)",
+ "census": {
+  "method": "regex (?:\\b[a-z] ){3,}[a-z]\\b over all parsed-corpus string values, $-segment attribution (rn_debris2 census law, superseted with per-hit context)",
+  "preApply": {
+   "regexHits": 1063,
+   "dollar": 943,
+   "backtick": 51,
+   "prose": 69,
+   "filesScanned": 1049
+  },
+  "postApply": {
+   "dollarRegexHits": 246,
+   "distinctDollarSegments": 91
+  },
+  "censusDeltaDisclosure": "the RN-DEBRIS-2 census artifact counted 431 hits / 51 files with a coarser grouping; this run's superset census (per-hit context, current corpus) measured 1,063 hits / 1,049 files scanned / 588 distinct (file,segment) dollar pairs — the delta is a methodology disclosure, not corpus growth"
+ },
+ "method": {
+  "law": "zero-invention dictionary-gated collapse: (1) run == dictionary word -> single; (2) dictionary word at lev<=1 not extending/truncating the run -> typo-evidence join (starred, disclosed); (3) bottleneck DP over dictionary tokens (fewest tokens, then max min-token-prose-freq, then longest); titlecase-first when a printed capital starts the word (spaced 'Y o u n g' family included); fail-closed everywhere else",
+  "dictionary": "nltk words 236k + mechanical British -ise/-ised supplement (3,947) = 240,628; prose frequencies from >200-char string values for tie-breaks only (the prose corpus carries joined-debris artifacts, so frequency alone is NOT word evidence — the dictionary is)",
+  "guards": "function-argument guard (s i n c family), trailing-variable guard (w i t h y = with y), truncation-prefix refusal (i n t e r c e p + \\frac{t}), corpus-gate MARK post-filter (a conversion whose result NEWLY matches the gate's speech-grammar phrase list is refused), KaTeX render guard, idempotence"
+ },
+ "conversions": {
+  "segments": 468,
+  "occurrenceSites": 522,
+  "files": 26,
+  "logKinds": {
+   "vocab": 570,
+   "titlecase(back2)": 61,
+   "misspell-evidence": 4
+  },
+  "typoEvidenceJoins": [
+   "u n c e r t a i n i t y -> uncertainty",
+   "u n c e r t a i n i t y -> uncertainty",
+   "u n c e r t a i n i t y -> uncertainty",
+   "u n c e r t a i n i t y -> uncertainty"
+  ]
+ },
+ "failClosed": {
+  "segmentsKept": 120,
+  "classes": [
+   "variable-tail runs ('uncertainty in x', 'mean v', 'upper limit of l' — trailing variables cannot be produced, len-1 tokens banned)",
+   "truncation-by-subscript/frac runs ('relative abunc' + 'e_{isotope', 'intercep' + '\\frac{t}')",
+   "23a speech-grammar chains inside math ('a x d x', 'v s i n', '\\text{integral} \\text{sin} a x d x')",
+   "mixed runs ('x m a s s o f i s o t o p e' — 23a 'x' = times fused with word debris)",
+   "evidence-bar keeps ('r e c t' abbreviation freq<100, 'decayed' prose-freq<3)",
+   "E_{k a f t e r} spaced variants — the RN-DEBRIS-2 of-record join used the note's own clean occurrences; the remaining spaced variants need the per-page dict path (filed follow-up)"
+  ]
+ },
+ "gates": {
+  "jsonValidity": "26/26 modified files parse",
+  "idempotence": "re-census + re-convert over the applied tree: 0 conversions, 0 file changes (floor stable at 246 hits / 91 segments)",
+  "katexRender": "bun katex renderToString throwOnError:true over ALL $-segments of the 26 files: old 67,296 / new 67,295 segments; failures old 1,840 = new 1,840 (pre-existing classes, byte-identical); NEW failures introduced: 0",
+  "corpusGate": "bun scripts/verify_corpus_23a.ts at the applied tree: PASSED — span 0 / dollar 0 / textwrap 4 / multiline 0 / baretext 5 / dangling 0 (baseline byte-identical; the MARK post-filter held it a priori)",
+  "protectedClasses": "backtick 23a-speech census hits (51) and prose hits (69) untouched; \\text{stretchy}/\\text{tilde} markers byte-preserved inside converted segments",
+  "worklogIntegrity": "the of-record worklog was found TRUNCATED by 55f919191c (+6/-23,433) at lane open; restored of record first (PR #588, merge b21828df, byte-exact pre-image + verbatim receipt re-append) before this block was appended"
+ },
+ "residuals": [
+  "sub-4-letter census floor: 3-letter spaced words ('A r e a', 'C B I') are invisible to the of-record census regex — kept, disclosed",
+  "already-joined debris variants inside math ('speedoflight', 'changeinvelocity' joined forms) are OUT of the letter-spaced census class — a possible future joined-debris lane",
+  "the 120 fail-closed segments above (classes listed)",
+  "PAT rotation standing order (operator console)"
+ ],
+ "discipline": "fetch-first re-ground at open (worklog + receipts + census artifact); zero-invention (every output token dictionary-evidenced or titlecase-printed); fail-closed; tokens via env only; FF no force; race-guard rebase onto origin/main d7b199d3 (zero file overlap, verified); CI bounded poll"
+}

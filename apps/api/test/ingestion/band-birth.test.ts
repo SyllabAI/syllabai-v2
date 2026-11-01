@@ -66,3 +66,51 @@ describe("orphanBandRefs — printed band law never drops silently", () => {
     expect(orphanBandRefs([row("1-a"), row("2"), row("2-b")], ["1", "2"])).toEqual([]);
   });
 });
+
+// ── r2 axis extension (9609 corpus, ruling 7 of the r2 mirror) ──────────────
+
+describe("bandGridsForVersion — the r2 axis extension (multi-axis levels grids)", () => {
+  const arow = (questionRef: string | null, axisKey: string | null, tag?: string) => ({
+    questionRef,
+    axisKey,
+    tag,
+  });
+
+  test("each printed axis of a multi-axis grid is its OWN group on the same ref", () => {
+    const grids = bandGridsForVersion(
+      [
+        arow("2-b", "a1", "Knowledge ladder"),
+        arow("2-b", "a2", "Analysis ladder"),
+      ],
+      "2",
+    );
+    expect(grids).toHaveLength(2);
+    expect(grids.map((g) => g.axisKey).sort()).toEqual(["a1", "a2"]);
+    expect(grids.every((g) => g.ref === "2-b")).toBe(true);
+    expect(grids.every((g) => g.granular === "part")).toBe(true);
+    expect(grids.every((g) => g.bands.length === 1)).toBe(true);
+  });
+
+  test("axisless bands keep the wave-1 grouping byte-identically (bare ref, one group)", () => {
+    const grids = bandGridsForVersion([arow("3-d", null, "single-axis")], "3");
+    expect(grids).toHaveLength(1);
+    expect(grids[0]!.axisKey).toBeNull();
+    expect(grids[0]!.ref).toBe("3-d");
+  });
+
+  test("a ref mixing axisless and axis-keyed bands refuses loudly — ambiguous grid identity", () => {
+    expect(() =>
+      bandGridsForVersion([arow("2-b", null), arow("2-b", "a1")], "2"),
+    ).toThrow(/mixes axisless and axis-keyed bands/);
+  });
+
+  test("bands of other questions never leak into the axis grouping", () => {
+    const grids = bandGridsForVersion(
+      [arow("2-b", "a1"), arow("3-c", "a1"), arow("30-c", "a1")],
+      "3",
+    );
+    expect(grids).toHaveLength(1);
+    expect(grids[0]!.ref).toBe("3-c");
+    expect(grids[0]!.axisKey).toBe("a1");
+  });
+});
