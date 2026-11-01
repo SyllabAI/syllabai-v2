@@ -817,3 +817,14 @@ Work Log:
 
 Stage Summary:
 - Grade Boundaries coverage gap closed to Pearson's serving reality; receipts in both repos; discipline held.
+
+---
+
+Task ID: T-GRADE-8 (run-001) — Algolia archive harvest (trace 1a1984c6a317ea2d).
+
+Work Log:
+- Widget reversed: DocListCtrl + hidden-input Algolia creds -> index qualifications-uk_LIVE_master-content; harvester scripts/harvest_pearson_index.py in resources; +14 verified docs; validator honest-absence fix; gates G1 0/G2 8-8/agg 0; bundle sha256_16 f6e2a18c4f81636d.
+- Import: 23 courses +150 sessions (IAL +140, modular +10); linear unchanged (cancelled-award docs carry component rows only).
+
+Stage Summary:
+- Archive coverage now reflects Pearson's serving reality; remaining 56 absences ledgered; discipline held.

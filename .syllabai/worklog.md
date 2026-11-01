@@ -23673,3 +23673,8 @@ worklog(r0): T-UGM-0606-1 run-002 (operator commission trace 1a1955c294758a5d "M
 - Data fix upstream in SyllabAI/syllabai-resources (fetch_pearson.py slug matrix + 4 new source PDFs + re-parse + gates, all green); this repo takes the mechanical import of the rebuilt hub bundle.
 - 4CH1 now serves 13 sessions (+January 2023, +November 2021); IAL lanes +January 2021 +November 2020; bundle sha256_16 7ba6951347f5c37e; honest absences unchanged and ledgered upstream (June 2020/2021 cancelled series have no Pearson boundaries document).
 - Discipline: source-only PDFs (%PDF-verified, soft-404 guard), zero value invention, G2 golden parity held.
+
+## T-GRADE-8 run-001 — Algolia archive harvest: 23 courses +150 sessions (trace 1a1984c6a317ea2d)
+
+- Upstream syllabai-resources: harvest_pearson_index.py (Pearson's own Algolia DAM index — creds public in page hidden inputs) recovered 14 docs; parse 40 docs/1209 subjects/0 warnings; validator honestly-absence fix for cancelled-award linear docs; G1 0 / G2 8-8 EXACT / agg 0.
+- This repo: mechanical bundle import, sha256_16 f6e2a18c4f81636d; 23 courses +150 sessions (IAL +140, modular +10); 4CH1 unchanged at 13 (Jan 2021/Nov 2020 have no overall chemistry awards — honest).
