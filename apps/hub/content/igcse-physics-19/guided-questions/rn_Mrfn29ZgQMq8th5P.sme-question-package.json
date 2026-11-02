@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_Mrfn29ZgQMq8th5P",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "f55c0a87a2974834eed740ba93b54da4901d024ef12e31b90200b6f71209cbfc",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "packageId": "igcse-physics::rn_Mrfn29ZgQMq8th5P",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L1::Q1",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L1",
+      "stem": "Which pair names the two forces on any falling object?",
+      "misconceptionClass": "force-pair recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Thrust and drag",
+          "correct": false,
+          "explanation": "No engine acts on a freely falling body.",
+          "misconception": "catalogue mix-up"
+        },
+        {
+          "key": "B",
+          "text": "Weight and air resistance",
+          "correct": true,
+          "explanation": "The downward weight and the upward air resistance — the pair of record.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Tension and upthrust",
+          "correct": false,
+          "explanation": "Neither acts in free fall through air.",
+          "misconception": "catalogue mix-up"
+        },
+        {
+          "key": "D",
+          "text": "Reaction and weight",
+          "correct": false,
+          "explanation": "No surface touches the object, so no reaction acts.",
+          "misconception": "catalogue mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L1::Q2",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L1",
+      "stem": "As a falling object's speed increases, the air resistance on it:",
+      "misconceptionClass": "drag law",
+      "options": [
+        {
+          "key": "A",
+          "text": "Decreases, freeing the fall",
+          "correct": false,
+          "explanation": "The opposite: drag grows with speed.",
+          "misconception": "inversion"
+        },
+        {
+          "key": "B",
+          "text": "Stays constant, like the weight",
+          "correct": false,
+          "explanation": "Only the weight is constant; drag is speed-sensitive.",
+          "misconception": "constancy confusion"
+        },
+        {
+          "key": "C",
+          "text": "Falls to zero at high speed",
+          "correct": false,
+          "explanation": "Nothing zeroes the drag.",
+          "misconception": "zero myth"
+        },
+        {
+          "key": "D",
+          "text": "Increases",
+          "correct": true,
+          "explanation": "More speed means more collisions with air particles — more drag.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L1::Q3",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L1",
+      "stem": "During the whole fall, the object's weight:",
+      "misconceptionClass": "constancy recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Stays constant",
+          "correct": true,
+          "explanation": "W = m × g with both factors fixed: the weight never changes.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Grows with speed",
+          "correct": false,
+          "explanation": "That is the drag's habit, not the weight's.",
+          "misconception": "behaviour swap"
+        },
+        {
+          "key": "C",
+          "text": "Falls to zero at terminal velocity",
+          "correct": false,
+          "explanation": "The weight persists; the resultant is what zeroes.",
+          "misconception": "resultant confusion"
+        },
+        {
+          "key": "D",
+          "text": "Reverses direction",
+          "correct": false,
+          "explanation": "The weight points downward throughout.",
+          "misconception": "direction myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L1::Q4",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L1",
+      "stem": "Why does faster falling mean larger air resistance?",
+      "misconceptionClass": "collision reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The air thickens with altitude changes",
+          "correct": false,
+          "explanation": "Air density is not the mechanism of record.",
+          "misconception": "mechanism swap"
+        },
+        {
+          "key": "B",
+          "text": "The object's weight grows",
+          "correct": false,
+          "explanation": "Weight stays fixed.",
+          "misconception": "premise violation"
+        },
+        {
+          "key": "C",
+          "text": "More air particles are struck each second",
+          "correct": true,
+          "explanation": "Drag comes from collisions; speed raises the collision rate.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Gravity weakens with speed",
+          "correct": false,
+          "explanation": "Gravity is independent of the fall's speed.",
+          "misconception": "nonsense cause"
+        }
+      ]
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L1::Q5",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L1",
+      "stem": "At the instant a skydiver steps from the plane, before falling, the resultant force on them is:",
+      "misconceptionClass": "release instant",
+      "options": [
+        {
+          "key": "A",
+          "text": "Zero, because they are momentarily still",
+          "correct": false,
+          "explanation": "Stillness does not zero the forces; only weight acts and it is unopposed.",
+          "misconception": "stillness myth"
+        },
+        {
+          "key": "B",
+          "text": "Equal to the weight, directed downward",
+          "correct": true,
+          "explanation": "With no support and no drag yet, the weight is the whole resultant.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Equal to the drag, directed upward",
+          "correct": false,
+          "explanation": "The drag is essentially zero at that instant.",
+          "misconception": "drag misread"
+        },
+        {
+          "key": "D",
+          "text": "Upward, launching the dive",
+          "correct": false,
+          "explanation": "Nothing pushes the diver upward.",
+          "misconception": "direction error"
+        }
+      ]
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L1::Q6",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L1",
+      "stem": "Name the two forces acting on a falling object, with their directions.",
+      "misconceptionClass": "pair recall",
+      "kind": "recall",
+      "modelAnswer": "Weight, acting downward, and air resistance — a drag force — acting upward.",
+      "keywords": [
+        "weight",
+        "air resistance",
+        "downward",
+        "upward"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L1::Q7",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L1",
+      "stem": "State why the weight of the falling object does not change.",
+      "misconceptionClass": "constancy recall",
+      "kind": "recall",
+      "modelAnswer": "Because W = m × g and neither the mass nor the freefall acceleration changes during the fall.",
+      "keywords": [
+        "mass",
+        "freefall",
+        "changes",
+        "weight"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L1::Q8",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L1",
+      "stem": "Explain why air resistance grows as the object speeds up.",
+      "misconceptionClass": "collision reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The drag comes from collisions between the object and air particles. A faster object meets more particles every second, so the opposing force grows with the speed.",
+      "keywords": [
+        "collisions",
+        "particles",
+        "speed",
+        "grows"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L1::Q9",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L1",
+      "stem": "A 700 N skydiver feels 250 N of drag at one instant of the fall. Give the size and direction of the resultant force.",
+      "misconceptionClass": "resultant arithmetic",
+      "kind": "application",
+      "modelAnswer": "700 − 250 = 450 N, directed downward — the weight still outpaces the drag at that instant.",
+      "keywords": [
+        "450",
+        "downward",
+        "resultant",
+        "drag"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L2::Q1",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L2",
+      "stem": "Terminal velocity is reached at the instant when:",
+      "misconceptionClass": "balance condition",
+      "options": [
+        {
+          "key": "A",
+          "text": "The weight has worn away to nothing",
+          "correct": false,
+          "explanation": "The weight never fades; the drag rises to meet it.",
+          "misconception": "fading myth"
+        },
+        {
+          "key": "B",
+          "text": "The drag falls to zero",
+          "correct": false,
+          "explanation": "Zero drag is the release instant, not the balance.",
+          "misconception": "stage swap"
+        },
+        {
+          "key": "C",
+          "text": "The drag has grown to equal the weight",
+          "correct": true,
+          "explanation": "Equality of the two forces is the balance condition.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The object lands",
+          "correct": false,
+          "explanation": "The balance happens in mid-fall.",
+          "misconception": "stage swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L2::Q2",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L2",
+      "stem": "At terminal velocity, the object's acceleration is:",
+      "misconceptionClass": "balance consequence",
+      "options": [
+        {
+          "key": "A",
+          "text": "Zero",
+          "correct": true,
+          "explanation": "Zero resultant means no further acceleration.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "At its maximum",
+          "correct": false,
+          "explanation": "The maximum belongs to the release instant.",
+          "misconception": "stage swap"
+        },
+        {
+          "key": "C",
+          "text": "Negative and growing",
+          "correct": false,
+          "explanation": "Nothing grows at balance; everything is steady.",
+          "misconception": "growth myth"
+        },
+        {
+          "key": "D",
+          "text": "Equal to g",
+          "correct": false,
+          "explanation": "g applies only while the weight is unopposed.",
+          "misconception": "stage swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L2::Q3",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L2",
+      "stem": "How does the skydiver's acceleration behave across the whole fall?",
+      "misconceptionClass": "profile recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "It grows throughout",
+          "correct": false,
+          "explanation": "The resultant shrinks; so does the acceleration.",
+          "misconception": "inversion"
+        },
+        {
+          "key": "B",
+          "text": "It stays at g throughout",
+          "correct": false,
+          "explanation": "Only the first instant carries the full g.",
+          "misconception": "constancy confusion"
+        },
+        {
+          "key": "C",
+          "text": "It reverses halfway",
+          "correct": false,
+          "explanation": "Nothing reverses; it decays to zero.",
+          "misconception": "invented reversal"
+        },
+        {
+          "key": "D",
+          "text": "It is largest at release and decreases to zero",
+          "correct": true,
+          "explanation": "Weight-minus-drag shrinks as drag builds — the acceleration decays with it.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L2::Q4",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L2",
+      "stem": "Once terminal velocity is reached, the object's speed is:",
+      "misconceptionClass": "post-balance behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "Still rising slowly",
+          "correct": false,
+          "explanation": "A zero resultant leaves nothing to rise with.",
+          "misconception": "growth myth"
+        },
+        {
+          "key": "B",
+          "text": "Constant at its maximum for the fall",
+          "correct": true,
+          "explanation": "Terminal velocity is the steady fastest speed.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Falling back toward zero",
+          "correct": false,
+          "explanation": "The balance holds the speed steady.",
+          "misconception": "reversal myth"
+        },
+        {
+          "key": "D",
+          "text": "Oscillating around the balance point",
+          "correct": false,
+          "explanation": "No oscillation appears in the law of record.",
+          "misconception": "invented oscillation"
+        }
+      ]
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L2::Q5",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L2",
+      "stem": "A skydiver whose weight is 700 N has reached terminal velocity. The drag on them is:",
+      "misconceptionClass": "balance arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "700 N, upward",
+          "correct": true,
+          "explanation": "Balance means drag equals weight exactly.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Less than 700 N",
+          "correct": false,
+          "explanation": "Less would leave a resultant and further acceleration.",
+          "misconception": "imbalance reading"
+        },
+        {
+          "key": "C",
+          "text": "Zero",
+          "correct": false,
+          "explanation": "Zero drag was the start, not the balance.",
+          "misconception": "stage swap"
+        },
+        {
+          "key": "D",
+          "text": "1400 N",
+          "correct": false,
+          "explanation": "Nothing doubles the forces here.",
+          "misconception": "invented arithmetic"
+        }
+      ]
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L2::Q6",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L2",
+      "stem": "Define terminal velocity.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The fastest speed a falling object reaches, held constant once the drag has grown to balance the weight.",
+      "keywords": [
+        "fastest",
+        "constant",
+        "drag",
+        "balance"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L2::Q7",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L2",
+      "stem": "State the value of the resultant force at terminal velocity.",
+      "misconceptionClass": "resultant recall",
+      "kind": "recall",
+      "modelAnswer": "Zero — the upward and downward forces are balanced exactly.",
+      "keywords": [
+        "zero",
+        "balanced",
+        "resultant",
+        "forces"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L2::Q8",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L2",
+      "stem": "Explain, stage by stage, why the skydiver's acceleration falls from its initial maximum to zero.",
+      "misconceptionClass": "staged reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "At release only the weight acts, so the resultant — and the acceleration — is at maximum. As speed builds, the drag grows and the resultant (weight minus drag) shrinks, so the acceleration decreases. When the drag equals the weight the resultant reaches zero, and the speed stops changing: terminal velocity.",
+      "keywords": [
+        "maximum",
+        "decreases",
+        "drag",
+        "zero"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Mrfn29ZgQMq8th5P::L2::Q9",
+      "moduleId": "rn_Mrfn29ZgQMq8th5P::L2",
+      "stem": "Mid-fall, a 700 N skydiver feels 250 N of drag. Later, the drag has reached 700 N. Describe the motion in the later instant.",
+      "misconceptionClass": "balance application",
+      "kind": "application",
+      "modelAnswer": "With drag equal to the 700 N weight, the resultant is zero: acceleration has ended, and the pace holds steady at the terminal value.",
+      "keywords": [
+        "700",
+        "zero",
+        "terminal velocity",
+        "steady"
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_2R3NrjGfJJY29Hzv",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "5907a0545a77945df54c9a4fcbcc42c5b21bf23d1dcf4f1b4a0841781fa496fe",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_2R3NrjGfJJY29Hzv",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Forces, Movement & Changing Shape",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-2-forces-movement-and-changing-shape/1-2-5-weight",
+    "specAnchors": [
+      {
+        "code": "1.18",
+        "text": "know and use the relationship between weight, mass and gravitational field strength: weight = mass × gravitational field strength W = m × g"
+      }
+    ],
+    "primer": {
+      "text": "Bathroom scales conflate two very different quantities. Mass counts the matter in you and never changes location; weight is the gravitational force on that matter and changes from planet to planet. This note separates the pair and builds the one-equation bridge between them.",
+      "prerequisiteSubtopic": "Forces, Movement & Changing Shape"
+    },
+    "modules": [
+      {
+        "id": "rn_2R3NrjGfJJY29Hzv::L1",
+        "title": "Weight, mass and gravitational fields",
+        "sourceHeadings": [
+          "Weight",
+          "Weight and mass"
+        ],
+        "specRefs": [
+          "1.18"
+        ],
+        "opening": "Weight is the force an object with mass experiences inside a gravitational field — nothing more, nothing less. Mass counts matter and is a scalar; weight is a force and is a vector. This lesson pins the definitions and explains why planets, not objects, decide the weight reading.",
+        "keyPoints": [
+          "Weight is the force experienced by an object with mass when placed in a gravitational field.",
+          "Mass measures the amount of matter in an object; it is a scalar with magnitude only.",
+          "Weight is a force, and forces carry magnitude and direction, so weight is a vector.",
+          "Different planets have different gravitational field strengths; more massive planets pull more strongly.",
+          "An object's mass stays fixed from planet to planet, while its weight follows the local field."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Mass is how much matter you contain; weight is the pull a planet exerts on that matter.",
+            "analogy": "Mass is the amount of luggage you pack; weight is how heavily the local gravity drags on the bags — repack nothing, change worlds, feel the difference.",
+            "examPointer": "Call the force 'weight', never bare 'gravity' — examiners mark the loose word wrong."
+          },
+          "medium": {
+            "restatement": "The scalar/vector split settles the vocabulary: mass reports a magnitude only; weight reports a magnitude and points towards the attracting body's centre.",
+            "analogy": "Mass is printed on the box; weight is the arrow the planet draws on it, always pointing down-hill in the local field.",
+            "examPointer": "Comparing Earth and Moon questions want both halves: same mass, different g, therefore different weight."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_2R3NrjGfJJY29Hzv::L1::Q1",
+          "rn_2R3NrjGfJJY29Hzv::L1::Q2",
+          "rn_2R3NrjGfJJY29Hzv::L1::Q3",
+          "rn_2R3NrjGfJJY29Hzv::L1::Q4",
+          "rn_2R3NrjGfJJY29Hzv::L1::Q5",
+          "rn_2R3NrjGfJJY29Hzv::L1::Q6",
+          "rn_2R3NrjGfJJY29Hzv::L1::Q7",
+          "rn_2R3NrjGfJJY29Hzv::L1::Q8",
+          "rn_2R3NrjGfJJY29Hzv::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_2R3NrjGfJJY29Hzv::L2",
+        "title": "Calculating weight with W = m × g",
+        "sourceHeadings": [
+          "Gravitational field strength",
+          "Weight, mass and gravitational field strength"
+        ],
+        "specRefs": [
+          "1.18"
+        ],
+        "opening": "One line of arithmetic joins the three ideas: W = m × g. The gravitational field strength g does the planet's work — about 10 N/kg on Earth, about 2 N/kg on the Moon — and the same g doubles as the freefall acceleration. This lesson works the equation in both directions.",
+        "keyPoints": [
+          "The relationship is W = m × g: weight in newtons, mass in kilograms, gravitational field strength in newtons per kilogram.",
+          "Earth's gravitational field strength is 10 N/kg.",
+          "The same g describes the acceleration of freefall in a gravitational field, 10 m/s² on Earth.",
+          "Mass and weight are directly proportional: double one and the other doubles.",
+          "The Moon's field is about 2 N/kg, so the same mass weighs about five times less there."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Multiply the mass by the local field strength and you have the weight: W = m × g.",
+            "analogy": "g is an exchange rate between kilograms and newtons — Earth converts at 10, the Moon at 2.",
+            "examPointer": "g's value is given in exams; the skill is substituting it correctly, not memorising it."
+          },
+          "medium": {
+            "restatement": "The proportionality is the working law: weight tracks mass linearly for a fixed field, and tracks the field linearly for a fixed mass — the two moves every rearranged question uses.",
+            "analogy": "A radio volume knob with two sliders: slide the mass or slide the field, and the weight output moves in exact proportion.",
+            "examPointer": "Quote g's two faces when asked — 10 N/kg as a field strength, 10 m/s² as a freefall acceleration; they are one quantity seen two ways."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_2R3NrjGfJJY29Hzv::L2::Q1",
+          "rn_2R3NrjGfJJY29Hzv::L2::Q2",
+          "rn_2R3NrjGfJJY29Hzv::L2::Q3",
+          "rn_2R3NrjGfJJY29Hzv::L2::Q4",
+          "rn_2R3NrjGfJJY29Hzv::L2::Q5",
+          "rn_2R3NrjGfJJY29Hzv::L2::Q6",
+          "rn_2R3NrjGfJJY29Hzv::L2::Q7",
+          "rn_2R3NrjGfJJY29Hzv::L2::Q8",
+          "rn_2R3NrjGfJJY29Hzv::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "weight",
+          "definition": "The force experienced by an object with mass when placed in a gravitational field.",
+          "firstLesson": 1
+        },
+        {
+          "term": "mass",
+          "definition": "A measure of the amount of matter in an object; a scalar.",
+          "firstLesson": 1
+        },
+        {
+          "term": "gravitational field strength",
+          "definition": "The force per unit mass exerted by a gravitational field, in newtons per kilogram.",
+          "firstLesson": 2
+        },
+        {
+          "term": "freefall",
+          "definition": "Motion under gravity alone; its acceleration equals g.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Isabelle has a mass of 40 kg. Earth's gravitational field strength is 10 N/kg and the Moon's is 2 N/kg. Discuss the difference between her weight on Earth and on the Moon.",
+        "steps": [
+          "State the equation linking weight and mass: W = m × g.",
+          "List the known values: m = 40 kg, Earth g = 10 N/kg, Moon g = 2 N/kg.",
+          "Earth: W = 40 × 10 = 400 N.",
+          "Moon: W = 40 × 2 = 80 N.",
+          "Compare: Earth's larger field strength gives the larger weight — five times larger for the same mass."
+        ],
+        "finalAnswer": "Isabelle weighs 400 N on Earth and 80 N on the Moon; her mass is 40 kg in both places."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b86886e2f9de-5-1-4-weight-force.png",
+        "alt": "5-1-4-weight-force",
+        "sourceHeading": "Weight, mass and gravitational field strength",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Some of the phenomena associated with gravitational attraction and the weight force",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}
