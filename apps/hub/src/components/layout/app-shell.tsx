@@ -366,7 +366,16 @@ export function AppShell({
           <ThemeToggle variant="row" />
           <span className="text-[11px] text-muted-foreground">
             Every note, question and flashcard here is real, committed content traced to its
-            specification — and a resource that isn&apos;t ready yet is labelled, never faked.
+            specification — and a resource that isn&apos;t ready yet is labelled, never faked.{" "}
+            {/* F-1 (frontend-flow audit): the student-safe statement stays; the
+                full tier register (RULE_DERIVED / AI_SUGGESTED / DEMO_DERIVED /
+                SIMULATED) lives at /about/provenance, linked from its own room. */}
+            <Link
+              href="/about/provenance"
+              className="underline underline-offset-2 hover:text-foreground"
+            >
+              How each kind of content is checked
+            </Link>
           </span>
         </div>
         <p className="mt-2 text-xs text-muted-foreground">

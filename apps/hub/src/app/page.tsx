@@ -4,12 +4,10 @@ import {
   BookOpen,
   CircleHelp,
   FileQuestion,
-  FlaskConical,
   GraduationCap,
   LayoutDashboard,
   Network,
   ScrollText,
-  ShieldCheck,
   Sparkles,
   User,
   Zap,
@@ -18,9 +16,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getDataProvider } from "@/lib/data";
-import { bundlePinCensus, listCourses, pilotCourseSlug, shortPinRef } from "@/lib/courses";
+import { listCourses, pilotCourseSlug } from "@/lib/courses";
 import { publicConfig } from "@/lib/config";
-import { ProvenanceBadge } from "@/components/provenance";
 import { RoleHomeRedirect } from "@/components/auth/role-home-redirect";
 
 export default async function HubPage() {
@@ -30,32 +27,13 @@ export default async function HubPage() {
   const courses = await listCourses();
   const courseCount = courses.length;
   const courseLevels = [...new Set(courses.map((c) => c.level))].sort().join(" + ");
-  const [manifest, graph, notes, topics, pins] = await Promise.all([
+  const [manifest, graph, notes, topics] = await Promise.all([
     provider.manifest(),
     provider.conceptGraph(),
     provider.revisionNotes(),
     provider.examQuestionTopics(),
-    bundlePinCensus(),
   ]);
   const questionCount = topics.reduce((a, t) => a + t.questions.length, 0);
-
-  // importSource.ref is "branch@<40-hex>" — the 40-char hash cannot wrap and
-  // blew out the mobile viewport by +106px (UX audit P1-2). Display a short
-  // hash; the full ref stays in the manifest.
-  const importRef = shortPinRef(manifest.importSource.ref);
-
-  // Per-course pin census (T-DISPLAY-PINCENSUS-1): the bundle plane carries
-  // per-course pins, so the footer must never render one course's ref as a
-  // site-wide claim. The census is computed from the committed manifests —
-  // it can report a stale or split pin distribution, but never invent one.
-  const officialPinCount = pins.groups.filter((g) => g.isPin).length;
-  const pinLine = pins.groups
-    .map((g) =>
-      g.isPin
-        ? `${g.boards.join(" + ")} ${shortPinRef(g.ref)} ×${g.courses}`
-        : `local ${g.repos.join(" + ")} ×${g.courses}`,
-    )
-    .join(" · ");
 
   const surfaces = [
     {
@@ -94,12 +72,9 @@ export default async function HubPage() {
       title: "My Progress",
       desc: "Your measured mastery, review queue and attempt history — live from your SyllabAI account on the 4CH1 pilot.",
     },
-    {
-      href: "/experiments",
-      icon: FlaskConical,
-      title: "Experiments",
-      desc: "Isolated, deletable prototypes. Add yours in minutes — see docs/EXPERIMENTS.md.",
-    },
+    // F-2 (frontend-flow audit): the Experiments card marketed the internal
+    // sandbox on the product's first screen. The route stays URL-available
+    // for staff (C-4's /staff gating lands in Tier 2); it no longer advertises.
   ];
 
   return (
@@ -247,58 +222,11 @@ export default async function HubPage() {
         </div>
       </section>
 
-      {/* provenance panel */}
-      <section aria-label="Content provenance">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="flex items-center gap-2 text-base">
-              <ShieldCheck className="size-4 text-primary" aria-hidden />
-              What is real on this surface
-            </CardTitle>
-            <CardDescription className="break-all">
-              Pilot bundle: {manifest.importSource.repo}@{importRef} ·{" "}
-              {manifest.curriculum.board} {manifest.curriculum.level} {manifest.curriculum.subject}{" "}
-              ({manifest.curriculum.code}, {manifest.curriculum.syllabusVersion})
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2.5 text-sm">
-            <p className="text-xs leading-relaxed text-muted-foreground">
-              Exam data is pinned per course (no site-wide pin) — {pins.bundled} served courses
-              across {officialPinCount} official pin{officialPinCount === 1 ? "" : "s"}: {pinLine}
-              {pins.unpinned > 0
-                ? ` · ${pins.unpinned} bundled course${pins.unpinned === 1 ? "" : "s"} with no pin recorded`
-                : ""}
-            </p>
-            <div className="flex flex-wrap items-center gap-2">
-              <ProvenanceBadge tier="RULE_DERIVED" />
-              <span className="text-muted-foreground">
-                specification skeleton + prerequisites — operator-governed graph-as-code
-              </span>
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <ProvenanceBadge tier="AI_SUGGESTED" />
-              <span className="text-muted-foreground">
-                T-C11 concepts & semantic edges — shown with provenance, never silently promoted
-              </span>
-            </div>
-            <div className="flex-wrap items-center gap-2 sm:flex">
-              <ProvenanceBadge tier="DEMO_DERIVED" />
-              <span className="text-muted-foreground">
-                flashcards generated for the pilot corpus — disposable by design
-              </span>
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <ProvenanceBadge tier="SIMULATED" />
-              <span className="text-muted-foreground">
-                learner overlay — deterministic fiction, never a governed model
-              </span>
-            </div>
-            <p className="pt-1 text-xs text-muted-foreground">
-              {manifest.license}
-            </p>
-          </CardContent>
-        </Card>
-      </section>
+      {/* F-1 (frontend-flow audit): the provenance register moved to
+          /about/provenance — to a 16-year-old, "deterministic fiction" on
+          the homepage is not honesty, it is "this site admits its numbers
+          are made up". The student-safe statement lives in the global
+          footer and links there. */}
     </div>
   );
 }
