@@ -14,11 +14,13 @@
  * mathsgenie.co.uk revision-guides page as the example): a search input
  * ("Search topics or notes..." — client-side filter over sub-topic + note
  * titles, forcing the matching rows open) and, when this course's learner
- * overlay holds a read, a Resume button (play glyph + "Resume {note title}",
- * truncating at 13rem like the example) pointing at the most recently read
- * note (max notesRead.at — the stamp on each completed read, see the scroll
- * law below). Shared as SelectToolbar since the exam-questions and
- * flashcards select pages joined the treatment (trace 1a19acb6ec437e25).
+ * overlay holds engagement, a Resume button (play glyph + "Resume {note
+ * title}", truncating at 13rem like the example) pointing at the most
+ * recently ENGAGED note (max at across notesRead ∪ note-scroll memory) and
+ * stamping ?resume=1 so the reader restores the saved scroll position
+ * (trace 1a19b5cba7c16a81, lib/note-scroll). Shared as SelectToolbar since
+ * the exam-questions and flashcards select pages joined the treatment
+ * (trace 1a19acb6ec437e25).
  *
  * Ticks of record: the MathsGenie done-tick marks FULLY READ notes — a green
  * filled check circle when read, the faint outline circle when not
@@ -53,6 +55,7 @@ import { NumberedLabel } from "@/components/hub/chrome";
 import { SelectToolbar } from "@/components/hub/select-toolbar";
 import { ProgressRing } from "@/components/hub/progress-ring";
 import { useCourseProgress, type Course } from "@/lib/progress";
+import { pickResumeNoteId, useNoteScrolls } from "@/lib/note-scroll";
 import { looseAnchorCopy } from "@/lib/loose-copy";
 import { cn } from "@/lib/utils";
 import type { SpecTree } from "@/lib/spec-tree";
@@ -124,27 +127,25 @@ export function NotesIndex({
   const base = `/courses/${course}`;
 
   // MathsGenie toolbar: the search query is a transient filter; Resume points
-  // at the most recently read note of THIS course (max notesRead.at — the
-  // markNoteRead stamp on each completed read, i.e. the note most recently
-  // scrolled through to its end). Nothing read yet → no button (the
-  // example's empty:hidden wrappers).
+  // at the most recently ENGAGED note of THIS course — max `at` across the
+  // read stamps (notesRead.at, the markNoteRead stamp on each completed read)
+  // and the scroll memory (lib/note-scroll, trace 1a19b5cba7c16a81: "Resume
+  // could remember scroll position within a note"), so a note the learner is
+  // mid-way through outranks a finished read it never returned to. The href
+  // stamps ?resume=1: the note reader's scroll-memory island consumes the
+  // intent and restores the saved reading position (inside the resume band
+  // 2%–98%; a note read to its end opens fresh from the top). Nothing engaged
+  // yet → no button (the example's empty:hidden wrappers).
+  const noteScrolls = useNoteScrolls(course);
   const [query, setQuery] = useState("");
   const q = query.trim().toLowerCase();
   const searching = q.length > 0;
 
   const resumeNote = useMemo(() => {
-    const byId = new Map(notes.map((n) => [n.noteId, n]));
-    let best: NoteListItem | null = null;
-    let bestAt = -1;
-    for (const [noteId, v] of Object.entries(progress.notesRead)) {
-      const n = byId.get(noteId);
-      if (n && v.at > bestAt) {
-        bestAt = v.at;
-        best = n;
-      }
-    }
-    return best;
-  }, [notes, progress.notesRead]);
+    const known = new Set(notes.map((n) => n.noteId));
+    const id = pickResumeNoteId(progress.notesRead, noteScrolls, known);
+    return id ? (notes.find((n) => n.noteId === id) ?? null) : null;
+  }, [notes, progress.notesRead, noteScrolls]);
 
   // Topic groups of record: sub-topics with (matching) notes, corpus order,
   // per-topic totals. A sub-topic whose own title matches shows ALL its
@@ -194,7 +195,7 @@ export function NotesIndex({
         onQueryChange={setQuery}
         resume={
           resumeNote
-            ? { href: `${base}/revision-notes/${resumeNote.noteId}`, title: resumeNote.title }
+            ? { href: `${base}/revision-notes/${resumeNote.noteId}?resume=1`, title: resumeNote.title }
             : null
         }
       />

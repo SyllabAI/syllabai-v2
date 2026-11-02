@@ -11,6 +11,7 @@ import { Breadcrumbs } from "@/components/hub/chrome";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import { NoteCla } from "@/components/cla/note-cla";
 import { NoteFootnote } from "./note-footnote";
+import { NoteScrollMemory } from "./note-scroll-memory";
 import { NoteBookLinks } from "./note-book-link";
 import { pilotNoteParams } from "@/lib/static-params";
 
@@ -145,6 +146,13 @@ export default async function NoteReaderPage({
           <Markdown>{bodyMd}</Markdown>
 
           <NoteFootnote course={meta.slug} noteId={note.noteId} subtopic={subtopicCode} />
+
+          {/* note-scroll memory (trace 1a19b5cba7c16a81: "Resume could
+              remember scroll position within a note"): saves the reading
+              position while the learner scrolls and restores it when the
+              reader is entered through the revision-notes Resume button.
+              Renders nothing. */}
+          <NoteScrollMemory course={meta.slug} noteId={note.noteId} />
 
           {/* build on this topic (SME cross-links) */}
           <Card>
