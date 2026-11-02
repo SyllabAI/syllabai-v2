@@ -1,0 +1,264 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_zn4NVCRcTSNv8sRZ",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "6a304ffb877592b9c2277a9a66f0fa3aacfd042fc6647f6fa2d58be7d258fd57",
+    "pinnedRef": "0cea83a781024eccd40da9bd5025f43b9b1c0c75"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_zn4NVCRcTSNv8sRZ",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Moments",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-4-moments/1-4-2-the-principle-of-moments",
+    "specAnchors": [
+      {
+        "code": "1.32P",
+        "text": "use the principle of moments for a simple system of parallel forces acting in one plane"
+      },
+      {
+        "code": "1.33P",
+        "text": "understand how the upward forces on a light beam, supported at its ends, vary with the position of a heavy object placed on the beam"
+      }
+    ],
+    "primer": {
+      "text": "You already know from the Moments subtopic that a force can turn an object about a pivot, and that this turning effect — the moment — grows with both the force and its distance from the pivot. Here those ideas harden into a balancing law: equal turning effects on both sides hold an object still. The same law then explains how two end supports share the weight of a beam's load.",
+      "prerequisiteSubtopic": "Moments"
+    },
+    "modules": [
+      {
+        "id": "rn_zn4NVCRcTSNv8sRZ::L1",
+        "title": "The principle of moments",
+        "sourceHeadings": [
+          "Clockwise and anticlockwise moments",
+          "Using the principle of moments"
+        ],
+        "specRefs": [
+          "1.32P"
+        ],
+        "opening": "Sit a heavy child near the end of a see-saw and a light child far out, and the board can still hold level. The rule behind that trick is the principle of moments: turning effects on the two sides of a pivot must match. This lesson turns the rule into an equation and uses it to place forces and weights.",
+        "keyPoints": [
+          "For a balanced object, the clockwise moments about the pivot add to the same total as the anticlockwise moments.",
+          "Each moment comes from multiplying a force by its distance from the pivot, measured perpendicular to the force.",
+          "Only forces with a perpendicular line of action produce a moment; on a horizontal beam these act upwards or downwards.",
+          "With several forces, add the moments turning each way about one pivot and equate the two totals.",
+          "Check every distance shares one unit, and sort each force as clockwise or anticlockwise before adding the moments."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Balance means the clockwise turning total and the anticlockwise turning total about the pivot are equal.",
+            "analogy": "A see-saw is a tug-of-war in turns: each side pulls with force times distance, and level happens only on a draw.",
+            "examPointer": "Convert every distance to the same unit before multiplying — mixed metres and centimetres wreck the totals."
+          },
+          "medium": {
+            "restatement": "With several parallel forces, group the moments by turning direction about one pivot; the beam is balanced when the two group totals match.",
+            "analogy": "Think of two teams stacking coins along a balance board: only each team's total of coin weight times distance matters, never how they arrange their own stacks.",
+            "examPointer": "IGCSE items keep the rotation to a single plane — vertical or sideways — so sort every force into clockwise or anticlockwise before adding."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_zn4NVCRcTSNv8sRZ::L1::Q1",
+          "rn_zn4NVCRcTSNv8sRZ::L1::Q2",
+          "rn_zn4NVCRcTSNv8sRZ::L1::Q3",
+          "rn_zn4NVCRcTSNv8sRZ::L1::Q4",
+          "rn_zn4NVCRcTSNv8sRZ::L1::Q5",
+          "rn_zn4NVCRcTSNv8sRZ::L1::Q6",
+          "rn_zn4NVCRcTSNv8sRZ::L1::Q7",
+          "rn_zn4NVCRcTSNv8sRZ::L1::Q8",
+          "rn_zn4NVCRcTSNv8sRZ::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_zn4NVCRcTSNv8sRZ::L2",
+        "title": "Supporting a beam",
+        "sourceHeadings": [
+          "Supporting a beam"
+        ],
+        "specRefs": [
+          "1.33P"
+        ],
+        "opening": "Rest a plank across two supports and it holds; slide the load along and the supports quietly trade duties. One pushes harder while the other eases off, yet together they always match the load's weight. This lesson tracks that trade and asks what happens when one support walks away entirely.",
+        "keyPoints": [
+          "A light beam is modelled as having no mass, so its own weight never enters the calculation.",
+          "The end supports push upward, and together their forces balance the downward weight of any load on the beam.",
+          "Sliding the load from the left end towards the right makes the left support's force fall and the right support's force rise.",
+          "Remove the right support and the load's weight turns the beam clockwise about the left support.",
+          "The right support's upward force supplies the anticlockwise moment that cancels the load's clockwise moment about the left support."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A light beam's supports push upward, and their combined push equals the weight of the load.",
+            "analogy": "Two friends carrying a sofa on their shoulders: slide the sofa towards one friend and that one strains more while the other relaxes.",
+            "examPointer": "Name which support force grows and which shrinks — the trend, not just 'they change', earns the mark."
+          },
+          "medium": {
+            "restatement": "Each end support supplies a moment about the opposite support; the right support's upward force delivers the anticlockwise moment that cancels the load's clockwise one.",
+            "analogy": "It is a hidden see-saw: the left support acts as the pivot, the load pushes down beyond it, and the right support pushes up to hold everything level.",
+            "examPointer": "If a support is removed, state the rotation direction about the surviving support — clockwise here — and which moment disappears."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_zn4NVCRcTSNv8sRZ::L2::Q1",
+          "rn_zn4NVCRcTSNv8sRZ::L2::Q2",
+          "rn_zn4NVCRcTSNv8sRZ::L2::Q3",
+          "rn_zn4NVCRcTSNv8sRZ::L2::Q4",
+          "rn_zn4NVCRcTSNv8sRZ::L2::Q5",
+          "rn_zn4NVCRcTSNv8sRZ::L2::Q6",
+          "rn_zn4NVCRcTSNv8sRZ::L2::Q7",
+          "rn_zn4NVCRcTSNv8sRZ::L2::Q8",
+          "rn_zn4NVCRcTSNv8sRZ::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-04",
+          "fig-05",
+          "fig-06"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "principle of moments",
+          "definition": "A balancing law: when an object does not rotate, its clockwise and anticlockwise turning effects about the pivot add up to equal totals.",
+          "firstLesson": 1
+        },
+        {
+          "term": "moment",
+          "definition": "The turning effect of a force, found by multiplying the force by its perpendicular distance from the pivot.",
+          "firstLesson": 1
+        },
+        {
+          "term": "pivot",
+          "definition": "The fixed point about which a balanced body would turn.",
+          "firstLesson": 1
+        },
+        {
+          "term": "clockwise moment",
+          "definition": "A turning effect that would spin the object the way clock hands move.",
+          "firstLesson": 1
+        },
+        {
+          "term": "anticlockwise moment",
+          "definition": "A turning effect that would spin the object against the clock-hands direction.",
+          "firstLesson": 1
+        },
+        {
+          "term": "perpendicular",
+          "definition": "Meeting at right angles; the moment calculation needs the force at right angles to its measured distance.",
+          "firstLesson": 1
+        },
+        {
+          "term": "light beam",
+          "definition": "A beam modelled as massless, so only the loads placed on it carry weight.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A see-saw carries a 690 N parent at one end and a 140 N child at the other. The parent's seat is 0.3 m from the pivot. How far from the pivot should the child sit for balance?",
+        "steps": [
+          "List the known values: child's weight 140 N turning clockwise, parent's weight 690 N turning anticlockwise, parent's distance 0.3 m.",
+          "Balance law: total clockwise moment = total anticlockwise moment, each moment being force × distance from the pivot.",
+          "Clockwise moment of the child = 140 × d_child, with d_child the unknown seat distance.",
+          "Anticlockwise moment of the parent = 690 × 0.3, which evaluates to 207 N m.",
+          "Equate the moments: 140 × d_child = 207.",
+          "Rearrange: d_child = 207 ÷ 140 ≈ 1.5 m (2 s.f.)."
+        ],
+        "finalAnswer": "About 1.5 m from the pivot — that seat distance balances the see-saw."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/6428c8da4965-4-1-2-1-clockwise-or-anticlockwise-moment.png",
+        "alt": "Clockwise and anticlockwise moments",
+        "sourceHeading": "Clockwise and anticlockwise moments",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Imagine holding the beam about the pivot and applying just one of the forces. If the beam moves clockwise then the force applied is clockwise.",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/e6892554aa97-balanced-seesaw-1.png",
+        "alt": "balanced-seesaw-1",
+        "sourceHeading": "Using the principle of moments",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The clockwise and anticlockwise moments acting on a beam are balanced",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/41b2b375354a-5-4-2-principle-of-moments-worked-example-gcse.png",
+        "alt": "Principle of Moments Worked Example GCSE, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Using the principle of moments",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/937643933d3b-1-4-2-supporting-a-beam-1.png",
+        "alt": "Supporting a Beam (1), downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Supporting a beam",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "F1 and F2 upwards balance the weight of the beam downwards",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/adf13c9ec3b4-1-4-2-supporting-a-beam-2.png",
+        "alt": "Supporting a Beam (2), downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Supporting a beam",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "F1 decreases F2 increases keep the beam balanced",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/05c59a549ea9-1-4-2-supporting-a-beam-3.png",
+        "alt": "Supporting a Beam (3), downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Supporting a beam",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "When F2 is removed the beam will rotate by the clockwise moment",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

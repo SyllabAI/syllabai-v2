@@ -1,0 +1,236 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_pqp4mfpHzGVtrjTT",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "d92ab2de63bf2a4740299f9e4d0a51b7b901e60be4f167fb3115cc8b4209c18e",
+    "pinnedRef": "0cea83a781024eccd40da9bd5025f43b9b1c0c75"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_pqp4mfpHzGVtrjTT",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Momentum",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-3-momentum/1-3-1-momentum",
+    "specAnchors": [
+      {
+        "code": "1.25P",
+        "text": "know and use the relationship between momentum, mass and velocity: momentum = mass × velocity p = m × v"
+      },
+      {
+        "code": "1.27P",
+        "text": "use the conservation of momentum to calculate the mass, velocity or momentum of objects"
+      }
+    ],
+    "primer": {
+      "text": "Every moving object carries a stored 'quantity of motion' that grows with both its mass and its speed. That single idea explains why a small, fast ball can land as hard as a slow, heavy truck. This note names the quantity, builds its equation, and then follows it unchanged through every collision and explosion.",
+      "prerequisiteSubtopic": "Momentum"
+    },
+    "modules": [
+      {
+        "id": "rn_pqp4mfpHzGVtrjTT::L1",
+        "title": "Calculating momentum",
+        "sourceHeadings": [
+          "Calculating momentum",
+          "How does the momentum of a ball change after a collision?"
+        ],
+        "specRefs": [
+          "1.25P"
+        ],
+        "opening": "Picture a tennis ball flying at full speed and a heavy brick strolling along — which one is harder to stop? Physics answers with a single quantity that combines mass and velocity. In this lesson you give that quantity a name, a unit and an equation, and learn why its sign tracks direction.",
+        "keyPoints": [
+          "Momentum belongs to every moving object, and it is worked out by multiplying mass by velocity: p = m × v.",
+          "Momentum is measured in kilogram metres per second (kg m/s), mass in kilograms and velocity in metres per second.",
+          "A stationary object has zero velocity, so it carries no momentum at all.",
+          "Because velocity is a vector, momentum depends on travel direction and can be positive or negative.",
+          "With the usual sign choice, motion to the right counts as positive and motion to the left counts as negative.",
+          "A large momentum makes an object stubborn: hard to slow down or steer onto a new path."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Momentum is just mass multiplied by velocity — a signed number saying how much motion an object carries and which way it goes.",
+            "analogy": "Think of a shopping trolley: mass is how much you loaded, velocity is how fast you push it, and momentum is the product stamped on the receipt.",
+            "examPointer": "Write momentum's unit as kg m/s — exactly the mass unit times the velocity unit."
+          },
+          "medium": {
+            "restatement": "The vector side does the real work: velocity carries a direction, so momentum does too, which is why opposite journeys get opposite signs and can cancel.",
+            "analogy": "Picture momentum as money on a number line — rightward travel is credit, leftward travel is debt, and equal amounts wipe out.",
+            "examPointer": "Exams leave the positive direction to you; declare it once ('right is positive') and keep every velocity's sign consistent with it."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_pqp4mfpHzGVtrjTT::L1::Q1",
+          "rn_pqp4mfpHzGVtrjTT::L1::Q2",
+          "rn_pqp4mfpHzGVtrjTT::L1::Q3",
+          "rn_pqp4mfpHzGVtrjTT::L1::Q4",
+          "rn_pqp4mfpHzGVtrjTT::L1::Q5",
+          "rn_pqp4mfpHzGVtrjTT::L1::Q6",
+          "rn_pqp4mfpHzGVtrjTT::L1::Q7",
+          "rn_pqp4mfpHzGVtrjTT::L1::Q8",
+          "rn_pqp4mfpHzGVtrjTT::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_pqp4mfpHzGVtrjTT::L2",
+        "title": "Conservation of momentum",
+        "sourceHeadings": [
+          "Conservation of momentum",
+          "Conservation of momentum before and after a collision"
+        ],
+        "specRefs": [
+          "1.27P"
+        ],
+        "opening": "Roll one trolley into another and the momentum they share afterwards is exactly the momentum they had before. That bookkeeping rule — total in equals total out — lets you predict masses and velocities you never measured. This lesson turns the rule into equations you can solve.",
+        "keyPoints": [
+          "Conservation of momentum means the total before an interaction equals the total after it, provided no external forces act.",
+          "Collisions and explosions are the two interactions the rule covers.",
+          "In a two-object collision, the momentum before equals the momentum after, even though each object's own share changes.",
+          "After a rebound, the bounced-back object's velocity turns negative, so its term joins the total with a minus sign.",
+          "Because momentum is a vector, two objects moving oppositely at the same speed cancel, giving an overall momentum of zero.",
+          "A stationary object contributes nothing to the total because its momentum is zero."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Add up every object's momentum before a crash and again afterwards — the two totals match exactly.",
+            "analogy": "Momentum behaves like marbles swapped between jars: the jars can end up holding different amounts, but the table still holds every marble.",
+            "examPointer": "Questions usually ask for a speed — a size alone — so finish by dropping the sign once the algebra is done."
+          },
+          "medium": {
+            "restatement": "Signs carry the physics: anything that reverses direction contributes a negative term, so totals are added algebraically, never by size alone.",
+            "analogy": "Treat each momentum as a signed entry in a shared ledger — every collision reshuffles the balances while the ledger's grand total never moves.",
+            "examPointer": "Sketch the before-and-after picture with an arrow for every velocity; that is what keeps masses and directions straight in conservation questions."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_pqp4mfpHzGVtrjTT::L2::Q1",
+          "rn_pqp4mfpHzGVtrjTT::L2::Q2",
+          "rn_pqp4mfpHzGVtrjTT::L2::Q3",
+          "rn_pqp4mfpHzGVtrjTT::L2::Q4",
+          "rn_pqp4mfpHzGVtrjTT::L2::Q5",
+          "rn_pqp4mfpHzGVtrjTT::L2::Q6",
+          "rn_pqp4mfpHzGVtrjTT::L2::Q7",
+          "rn_pqp4mfpHzGVtrjTT::L2::Q8",
+          "rn_pqp4mfpHzGVtrjTT::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "momentum",
+          "definition": "A property of every moving object, equal to its mass multiplied by its velocity; a vector measured in kg m/s.",
+          "firstLesson": 1
+        },
+        {
+          "term": "velocity",
+          "definition": "An object's speed together with its direction of travel.",
+          "firstLesson": 1
+        },
+        {
+          "term": "vector",
+          "definition": "A quantity that carries both a size and a direction.",
+          "firstLesson": 1
+        },
+        {
+          "term": "conservation of momentum",
+          "definition": "The rule that, with no outside forces interfering, a system's total momentum before an interaction matches its total afterwards.",
+          "firstLesson": 2
+        },
+        {
+          "term": "collision",
+          "definition": "An interaction in which moving objects run into one another.",
+          "firstLesson": 2
+        },
+        {
+          "term": "explosion",
+          "definition": "An interaction in which a body splits into two or more parts that fly apart.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "The diagram shows a tennis ball and a brick, each labelled with its mass and velocity. Decide which object has the greater momentum, and justify your choice.",
+        "steps": [
+          "Read the values from the diagram: the tennis ball has mass 0.06 kg and velocity 75 m/s; the brick has mass 3 kg and velocity 1.5 m/s.",
+          "Tennis ball: p = m × v = 0.06 × 75 = 4.5 kg m/s.",
+          "Brick: p = m × v = 3 × 1.5 = 4.5 kg m/s.",
+          "Compare the two results: they are equal, so neither object wins — the brick's much larger mass is exactly offset by the ball's much larger speed.",
+          "At impact each delivers a comparable push — how large depends on how quickly each is brought to rest."
+        ],
+        "finalAnswer": "The two objects share the same momentum, 4.5 kg m/s: the ball's higher speed compensates for the brick's greater mass."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/8ec7303c1425-29016-3-1-1-3-negative-momentum.png",
+        "alt": "Diagram showing a 60 g ball bouncing off a wall, using p = mv to show momentum changes from +0.12 kg m/s at 2 m/s to −0.12 kg m/s when velocity reverses",
+        "sourceHeading": "How does the momentum of a ball change after a collision?",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The momentum of the tennis ball is positive as it approaches the wall and negative after the collision as it moves in the opposite direction",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/f0b7e9aadbcb-2-4-we-calculating-momentum.png",
+        "alt": "2-4-we-calculating-momentum",
+        "sourceHeading": "How does the momentum of a ball change after a collision?",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/9b2e16ebd717-conservation-of-momentum-igcse-and-gcse-physics-.png",
+        "alt": "conservation-of-momentum-igcse-and-gcse-physics-revision-notes",
+        "sourceHeading": "Conservation of momentum before and after a collision",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "The momentum of a system before and after a collision is always conserved",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/563cab0aee8e-38357-conservation-of-momentum-question-image-1.png",
+        "alt": "Diagram of a toy car colliding with a more massive van, showing their masses and velocities before and after collision to illustrate conservation of momentum",
+        "sourceHeading": "Conservation of momentum before and after a collision",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

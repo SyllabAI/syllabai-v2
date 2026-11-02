@@ -1,0 +1,746 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_8wqvPtsCCh3gdJN5",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "be5753c2919212ec2761ea9cc3fbe4fec64b00cae6133ae0deadd07615df1d28",
+    "pinnedRef": "0cea83a781024eccd40da9bd5025f43b9b1c0c75"
+  },
+  "packageId": "igcse-physics::rn_8wqvPtsCCh3gdJN5",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L1::Q1",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L1",
+      "stem": "Newton's third law of motion describes:",
+      "misconceptionClass": "law scope",
+      "options": [
+        {
+          "key": "A",
+          "text": "The motion of a single object under one named force",
+          "correct": false,
+          "explanation": "That is the territory of Newton's first and second laws.",
+          "misconception": "first-law scope"
+        },
+        {
+          "key": "B",
+          "text": "How energy transfers between two objects",
+          "correct": false,
+          "explanation": "Energy is not what the law describes — forces are.",
+          "misconception": "topic drift"
+        },
+        {
+          "key": "C",
+          "text": "The forces that arise when two different objects interact",
+          "correct": true,
+          "explanation": "Interactions between two different objects are exactly its subject matter.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Why objects keep moving when no force acts",
+          "correct": false,
+          "explanation": "Persistent motion with no force is Newton's first law instead.",
+          "misconception": "inertia conflation"
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L1::Q2",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L1",
+      "stem": "Two objects interact. Compared with the force the first exerts on the second, the force the second exerts on the first is:",
+      "misconceptionClass": "pair symmetry",
+      "options": [
+        {
+          "key": "A",
+          "text": "Equal in size and opposite in direction",
+          "correct": true,
+          "explanation": "That symmetry is precisely what the law guarantees.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Equal in size and in the same direction",
+          "correct": false,
+          "explanation": "The pair points opposite ways, never the same way.",
+          "misconception": "direction flip"
+        },
+        {
+          "key": "C",
+          "text": "Smaller, because it acts later",
+          "correct": false,
+          "explanation": "The pair appears together; neither force waits its turn.",
+          "misconception": "time-lag myth"
+        },
+        {
+          "key": "D",
+          "text": "Larger if the first object is heavier",
+          "correct": false,
+          "explanation": "The objects' masses never rescale the mutual forces.",
+          "misconception": "mass-weighting myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L1::Q3",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L1",
+      "stem": "During walking, the force that pushes you forwards is:",
+      "misconceptionClass": "agent of force",
+      "options": [
+        {
+          "key": "A",
+          "text": "The push of your foot on the ground",
+          "correct": false,
+          "explanation": "That push lands on the ground, not on you.",
+          "misconception": "pair swap"
+        },
+        {
+          "key": "B",
+          "text": "A forward drag from the air",
+          "correct": false,
+          "explanation": "Nothing in the scenario has the air driving you forwards.",
+          "misconception": "agent invention"
+        },
+        {
+          "key": "C",
+          "text": "The push of the ground on your foot",
+          "correct": true,
+          "explanation": "The ground's forward push on your foot is the partner of your backward push.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Gravity pulling you along the road",
+          "correct": false,
+          "explanation": "Weight points downwards; it has no forwards part on level ground.",
+          "misconception": "agent confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L1::Q4",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L1",
+      "stem": "Newton's first law differs from his third because the first concerns:",
+      "misconceptionClass": "law mapping",
+      "options": [
+        {
+          "key": "A",
+          "text": "Forces exchanged between two objects",
+          "correct": false,
+          "explanation": "Exchanged forces are the third law's territory.",
+          "misconception": "law swap"
+        },
+        {
+          "key": "B",
+          "text": "Forces acting on just one object",
+          "correct": true,
+          "explanation": "The first law tracks the balance of forces on a single body.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Only objects already moving uniformly",
+          "correct": false,
+          "explanation": "The first law covers resting objects too.",
+          "misconception": "half-truth"
+        },
+        {
+          "key": "D",
+          "text": "Forces that never balance",
+          "correct": false,
+          "explanation": "Forces on one body can certainly balance.",
+          "misconception": "imbalance myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L1::Q5",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L1",
+      "stem": "A foot pushes backwards on the ground. The ground's push on the foot acts on:",
+      "misconceptionClass": "object of force",
+      "options": [
+        {
+          "key": "A",
+          "text": "A different object: the foot",
+          "correct": true,
+          "explanation": "Third law pushes always land on the two different objects involved.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The ground itself, so the pushes could cancel",
+          "correct": false,
+          "explanation": "The ground feels the foot's push; the foot feels the ground's push.",
+          "misconception": "single-object slip"
+        },
+        {
+          "key": "C",
+          "text": "Only the whole Earth",
+          "correct": false,
+          "explanation": "The push acts on the foot itself, wherever it stands.",
+          "misconception": "scope error"
+        },
+        {
+          "key": "D",
+          "text": "Nothing, because the pushes cancel",
+          "correct": false,
+          "explanation": "Forces on different objects cannot cancel one another.",
+          "misconception": "cancellation myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L1::Q6",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L1",
+      "stem": "State Newton's third law of motion.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "When any two objects interact, each exerts on the other a force that is equal in size and opposite in direction.",
+      "keywords": [
+        "interact",
+        "equal",
+        "size",
+        "opposite",
+        "force"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L1::Q7",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L1",
+      "stem": "Which two objects interact to make walking possible, and what does each one do?",
+      "misconceptionClass": "walking pair recall",
+      "kind": "recall",
+      "modelAnswer": "The foot and the ground: your foot pushes backwards on the ground, and the ground pushes forwards on your foot with an equal force.",
+      "keywords": [
+        "foot",
+        "ground",
+        "pushes",
+        "forwards",
+        "equal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L1::Q8",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L1",
+      "stem": "Explain why pushing backwards on the ground moves you forwards.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Your foot pushes backwards on the ground, so by Newton's third law the ground pushes forwards on your foot with an equal, opposite force; that forward push is what drives you along.",
+      "keywords": [
+        "third law",
+        "ground",
+        "pushes",
+        "forwards",
+        "equal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L1::Q9",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L1",
+      "stem": "A swimmer pushes the water backwards. Describe the partner force and its effect on the swimmer.",
+      "misconceptionClass": "context transfer",
+      "kind": "application",
+      "modelAnswer": "The water pushes the swimmer forwards with an equal, opposite force, and that forward push drives the swimmer through the pool.",
+      "keywords": [
+        "water",
+        "swimmer",
+        "pushes",
+        "forwards",
+        "equal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L2::Q1",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L2",
+      "stem": "For two forces to qualify as a third law pair, they must act on:",
+      "misconceptionClass": "pair rule 1",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two different objects",
+          "correct": true,
+          "explanation": "One force of the pair lands on each of the two bodies.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The same object",
+          "correct": false,
+          "explanation": "Forces sharing one object describe balance instead.",
+          "misconception": "single-object slip"
+        },
+        {
+          "key": "C",
+          "text": "Objects with equal masses",
+          "correct": false,
+          "explanation": "The objects' masses play no role in pair membership.",
+          "misconception": "mass myth"
+        },
+        {
+          "key": "D",
+          "text": "Objects touching each other",
+          "correct": false,
+          "explanation": "Gravitational pairs act at a distance with no contact.",
+          "misconception": "contact myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L2::Q2",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L2",
+      "stem": "Besides being equal and opposite, the two forces of a third law pair must also be:",
+      "misconceptionClass": "pair rule 3",
+      "options": [
+        {
+          "key": "A",
+          "text": "Of different types",
+          "correct": false,
+          "explanation": "The rule demands matching types — two weights, two pushes.",
+          "misconception": "type flip"
+        },
+        {
+          "key": "B",
+          "text": "Both gravitational",
+          "correct": false,
+          "explanation": "Contact-type pairs are just as legitimate.",
+          "misconception": "over-specific"
+        },
+        {
+          "key": "C",
+          "text": "Perpendicular to each other",
+          "correct": false,
+          "explanation": "Opposite directions cannot be perpendicular.",
+          "misconception": "geometry myth"
+        },
+        {
+          "key": "D",
+          "text": "Of the same type",
+          "correct": true,
+          "explanation": "Same-type membership is the third recognition rule.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L2::Q3",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L2",
+      "stem": "A book rests on a table. Its weight and the table's upward push on it:",
+      "misconceptionClass": "balanced-pair confusion",
+      "options": [
+        {
+          "key": "A",
+          "text": "Form a third law pair because they are equal and opposite",
+          "correct": false,
+          "explanation": "Equal and opposite alone is not enough — both forces land on the book.",
+          "misconception": "balanced-pair confusion"
+        },
+        {
+          "key": "B",
+          "text": "Are equal and opposite but act on one object, so they are not a third law pair",
+          "correct": true,
+          "explanation": "Same object plus different types means balanced forces, not a pair.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Add to a downward resultant",
+          "correct": false,
+          "explanation": "The book is in equilibrium, so the resultant is zero.",
+          "misconception": "resultant myth"
+        },
+        {
+          "key": "D",
+          "text": "Act on the table and the Earth respectively",
+          "correct": false,
+          "explanation": "Both labelled forces act on the book itself.",
+          "misconception": "object mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L2::Q4",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L2",
+      "stem": "Which force is the true third law partner of the book's weight?",
+      "misconceptionClass": "partner identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "The table's push on the book",
+          "correct": false,
+          "explanation": "That push lands on the book and is a contact type — wrong on both counts.",
+          "misconception": "balanced-pair confusion"
+        },
+        {
+          "key": "B",
+          "text": "The book's push on the table",
+          "correct": false,
+          "explanation": "That is the partner of the table's push, not of the weight.",
+          "misconception": "type mismatch"
+        },
+        {
+          "key": "C",
+          "text": "The book's own gravitational pull on the Earth",
+          "correct": true,
+          "explanation": "Both are weight-type forces, equal and opposite, on two different objects.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The upward push of the surrounding air",
+          "correct": false,
+          "explanation": "Air plays no part in this gravitational pair.",
+          "misconception": "irrelevance"
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L2::Q5",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L2",
+      "stem": "Equal, opposite forces that both act on one object demonstrate:",
+      "misconceptionClass": "law mapping",
+      "options": [
+        {
+          "key": "A",
+          "text": "Newton's third law",
+          "correct": false,
+          "explanation": "The third law requires two different objects.",
+          "misconception": "pair misattribution"
+        },
+        {
+          "key": "B",
+          "text": "Newton's first law: the object is in equilibrium",
+          "correct": true,
+          "explanation": "Zero resultant force means steady motion or rest.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Newton's second law producing acceleration",
+          "correct": false,
+          "explanation": "Zero resultant gives zero acceleration, not a second law case.",
+          "misconception": "law swap"
+        },
+        {
+          "key": "D",
+          "text": "A third law pair living on one object",
+          "correct": false,
+          "explanation": "A pair cannot occupy a single object by definition.",
+          "misconception": "self-contradiction"
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L2::Q6",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L2",
+      "stem": "List the three checks that identify a third law pair.",
+      "misconceptionClass": "rule recall",
+      "kind": "recall",
+      "modelAnswer": "They act on different objects, they are equal in size and opposite in direction, and they are the same type of force.",
+      "keywords": [
+        "different objects",
+        "equal",
+        "opposite",
+        "same type"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L2::Q7",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L2",
+      "stem": "In the book-on-table example, Student A claims the diagram shows Newton's third law. Who is correct, and why?",
+      "misconceptionClass": "worked-example recall",
+      "kind": "recall",
+      "modelAnswer": "Student B is correct: the two forces act on the same object and are of different types, so the diagram shows balanced forces — Newton's first law — rather than a third law pair.",
+      "keywords": [
+        "Student B",
+        "same object",
+        "different types",
+        "balanced",
+        "first law"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L2::Q8",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L2",
+      "stem": "Explain why the weight and the table's push on a resting book are not a third law pair.",
+      "misconceptionClass": "equilibrium reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Both forces act on the same object — the book — and they are different types of force (weight vs contact push). A third law pair requires two different objects and a single force type.",
+      "keywords": [
+        "same object",
+        "different types",
+        "third law pair",
+        "two objects",
+        "force"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L2::Q9",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L2",
+      "stem": "A pupil argues: 'The Earth pulls you downwards, so the ground pushing you upwards is Newton's third law.' Give the true partner of your weight to correct them.",
+      "misconceptionClass": "misconception repair",
+      "kind": "application",
+      "modelAnswer": "The ground's upward push acts on you and is a contact force, so it cannot partner your weight. Your weight's genuine partner is the gravitational pull you exert on the Earth — the same type of force, equal and opposite, acting on a different object.",
+      "keywords": [
+        "gravitational",
+        "Earth",
+        "same type",
+        "different object",
+        "weight"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L3::Q1",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L3",
+      "stem": "Trolleys A and B collide. The force of A on B, compared with the force of B on A, is:",
+      "misconceptionClass": "pair symmetry",
+      "options": [
+        {
+          "key": "A",
+          "text": "Larger in size on the faster trolley",
+          "correct": false,
+          "explanation": "Impact speed does not rescale the mutual pair.",
+          "misconception": "speed myth"
+        },
+        {
+          "key": "B",
+          "text": "Smaller in size on the heavier trolley",
+          "correct": false,
+          "explanation": "Each trolley feels the same push size while they interact.",
+          "misconception": "mass-weighting myth"
+        },
+        {
+          "key": "C",
+          "text": "Zero, because the two pushes cancel",
+          "correct": false,
+          "explanation": "They act on different trolleys, so they cannot cancel.",
+          "misconception": "cancellation myth"
+        },
+        {
+          "key": "D",
+          "text": "Equal in size and opposite in direction",
+          "correct": true,
+          "explanation": "The interaction is a third law pair: equal and opposite.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L3::Q2",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L3",
+      "stem": "When two trolleys collide, one gains momentum and speeds up; the other usually:",
+      "misconceptionClass": "momentum change",
+      "options": [
+        {
+          "key": "A",
+          "text": "Slows down, losing momentum",
+          "correct": true,
+          "explanation": "Momentum generally passes across the interaction: one gains, the other loses.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Speeds up as well",
+          "correct": false,
+          "explanation": "The interaction generally slows the second trolley rather than speeding it up.",
+          "misconception": "same-direction myth"
+        },
+        {
+          "key": "C",
+          "text": "Keeps exactly the same momentum",
+          "correct": false,
+          "explanation": "The contact forces change both trolleys' momenta.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "D",
+          "text": "Stops dead, losing all its momentum",
+          "correct": false,
+          "explanation": "A collision changes momentum; it need not erase it.",
+          "misconception": "total-loss myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L3::Q3",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L3",
+      "stem": "The relationship between the two collision forces is written:",
+      "misconceptionClass": "symbol recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "F(B–A) = F(A–B)",
+          "correct": false,
+          "explanation": "The minus sign matters — the pushes point opposite ways.",
+          "misconception": "sign slip"
+        },
+        {
+          "key": "B",
+          "text": "F(B–A) = −F(A–B), but only when the masses are equal",
+          "correct": false,
+          "explanation": "The pair holds whatever masses the trolleys have.",
+          "misconception": "mass condition myth"
+        },
+        {
+          "key": "C",
+          "text": "F(B–A) = 0",
+          "correct": false,
+          "explanation": "The mutual forces exist exactly while the trolleys interact.",
+          "misconception": "cancellation myth"
+        },
+        {
+          "key": "D",
+          "text": "F(B–A) = −F(A–B)",
+          "correct": true,
+          "explanation": "Equal magnitude, opposite sign — the third law in symbols.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L3::Q4",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L3",
+      "stem": "Two trolleys of equal mass collide. During the impact their accelerations are:",
+      "misconceptionClass": "equal-mass acceleration",
+      "options": [
+        {
+          "key": "A",
+          "text": "Zero, because the forces cancel",
+          "correct": false,
+          "explanation": "The forces act on different trolleys and cannot cancel on either one.",
+          "misconception": "cancellation myth"
+        },
+        {
+          "key": "B",
+          "text": "Equal, because equal masses feel equal forces",
+          "correct": true,
+          "explanation": "With F = ma, equal force and equal mass give equal acceleration.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Different, because the trolleys move differently",
+          "correct": false,
+          "explanation": "A velocity difference is not an acceleration difference.",
+          "misconception": "motion myth"
+        },
+        {
+          "key": "D",
+          "text": "Whatever caused the collision decides",
+          "correct": false,
+          "explanation": "The force pair is symmetric; history does not enter F = ma.",
+          "misconception": "agency myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L3::Q5",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L3",
+      "stem": "A heavy trolley and a light trolley collide. During the impact:",
+      "misconceptionClass": "unequal-mass comparison",
+      "options": [
+        {
+          "key": "A",
+          "text": "The light trolley feels the larger force",
+          "correct": false,
+          "explanation": "The mutual forces are equal whatever the masses.",
+          "misconception": "force-mass coupling"
+        },
+        {
+          "key": "B",
+          "text": "Both feel equal forces and accelerate equally",
+          "correct": false,
+          "explanation": "Equal forces on unequal masses cannot give equal accelerations.",
+          "misconception": "acceleration equality myth"
+        },
+        {
+          "key": "C",
+          "text": "The forces are equal, but the light trolley accelerates more",
+          "correct": true,
+          "explanation": "Same force and smaller mass give the larger acceleration, from F = ma.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The heavy trolley feels no force at all",
+          "correct": false,
+          "explanation": "Both bodies feel the pair for as long as they touch.",
+          "misconception": "mass exemption"
+        }
+      ]
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L3::Q6",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L3",
+      "stem": "State what Newton's third law says about the forces when two trolleys collide.",
+      "misconceptionClass": "collision pair recall",
+      "kind": "recall",
+      "modelAnswer": "Each trolley exerts on the other a force equal in size and opposite in direction, so F(B–A) = −F(A–B).",
+      "keywords": [
+        "equal",
+        "opposite",
+        "force",
+        "trolley",
+        "collision"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L3::Q7",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L3",
+      "stem": "What decides each trolley's acceleration in a collision, and when are two accelerations equal?",
+      "misconceptionClass": "acceleration law recall",
+      "kind": "recall",
+      "modelAnswer": "F = ma sets it: acceleration depends on the force and on the trolley's mass, so equal masses give equal accelerations while unequal masses give unequal accelerations.",
+      "keywords": [
+        "F = ma",
+        "mass",
+        "acceleration",
+        "equal masses",
+        "unequal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L3::Q8",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L3",
+      "stem": "Explain why colliding trolleys feel equal forces yet can accelerate unequally.",
+      "misconceptionClass": "force-vs-acceleration reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The third law fixes the force pair as equal and opposite, but each acceleration comes from F = ma with that trolley's own mass, so the lighter trolley accelerates more.",
+      "keywords": [
+        "third law",
+        "equal",
+        "opposite",
+        "F = ma",
+        "mass"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8wqvPtsCCh3gdJN5::L3::Q9",
+      "moduleId": "rn_8wqvPtsCCh3gdJN5::L3",
+      "stem": "Trolley A (2 kg) collides with trolley B (1 kg). At one instant the force of A on B is 6 N. State the force of B on A, and calculate each trolley's acceleration at that instant.",
+      "misconceptionClass": "numeric transfer",
+      "kind": "application",
+      "modelAnswer": "By Newton's third law the force of B on A is 6 N in the opposite direction. Then a(A) = 6 ÷ 2 = 3 m/s² and a(B) = 6 ÷ 1 = 6 m/s² — the lighter trolley accelerates more.",
+      "keywords": [
+        "force",
+        "opposite",
+        "6",
+        "3",
+        "acceleration"
+      ],
+      "options": []
+    }
+  ]
+}

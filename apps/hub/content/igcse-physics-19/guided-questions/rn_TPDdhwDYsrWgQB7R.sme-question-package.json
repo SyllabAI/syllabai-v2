@@ -1,0 +1,259 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_TPDdhwDYsrWgQB7R",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "1d674627077b7e722642842d23e7b7e4de73864e22dd52d95c5276be71355af6",
+    "pinnedRef": "0cea83a781024eccd40da9bd5025f43b9b1c0c75"
+  },
+  "packageId": "igcse-physics::rn_TPDdhwDYsrWgQB7R",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_TPDdhwDYsrWgQB7R::L1::Q1",
+      "moduleId": "rn_TPDdhwDYsrWgQB7R::L1",
+      "stem": "The centre of gravity of a body is the point through which its:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Mass is measured",
+          "correct": false,
+          "explanation": "That describes mass, not weight.",
+          "misconception": "term swap"
+        },
+        {
+          "key": "B",
+          "text": "Volume is centred",
+          "correct": false,
+          "explanation": "Volume says nothing about where weight acts.",
+          "misconception": "geometry confusion"
+        },
+        {
+          "key": "C",
+          "text": "Weight is taken to act",
+          "correct": true,
+          "explanation": "This matches the definition of record.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Surface area is greatest",
+          "correct": false,
+          "explanation": "Surface area plays no part in the definition.",
+          "misconception": "irrelevance"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPDdhwDYsrWgQB7R::L1::Q2",
+      "moduleId": "rn_TPDdhwDYsrWgQB7R::L1",
+      "stem": "A uniform sphere has its centre of gravity located:",
+      "misconceptionClass": "symmetry recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "At its exact centre, the point of symmetry",
+          "correct": true,
+          "explanation": "Symmetry puts a uniform sphere's point at its exact centre.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "On its lower surface, closest to the ground",
+          "correct": false,
+          "explanation": "Gravity pulls through the body, not along its surface.",
+          "misconception": "surface myth"
+        },
+        {
+          "key": "C",
+          "text": "Halfway between its centre and its surface",
+          "correct": false,
+          "explanation": "Nothing offsets the point from the middle in a uniform sphere.",
+          "misconception": "offset guess"
+        },
+        {
+          "key": "D",
+          "text": "Nowhere — a sphere has no centre of gravity",
+          "correct": false,
+          "explanation": "Every body with weight has a centre of gravity.",
+          "misconception": "existence myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPDdhwDYsrWgQB7R::L1::Q3",
+      "moduleId": "rn_TPDdhwDYsrWgQB7R::L1",
+      "stem": "An irregular shape's centre of gravity can be located by:",
+      "misconceptionClass": "method recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Dividing its mass by its volume",
+          "correct": false,
+          "explanation": "Mass over volume gives density, not a location.",
+          "misconception": "density confusion"
+        },
+        {
+          "key": "B",
+          "text": "Balancing it on a fingertip",
+          "correct": false,
+          "explanation": "Fingertip balancing is unreliable and not the method of record.",
+          "misconception": "balance myth"
+        },
+        {
+          "key": "C",
+          "text": "Measuring its outside dimensions",
+          "correct": false,
+          "explanation": "Length and width do not locate the weight point.",
+          "misconception": "wrong tool"
+        },
+        {
+          "key": "D",
+          "text": "Suspending it from a pivot and using a plumb line",
+          "correct": true,
+          "explanation": "Suspension with a plumb line is the prescribed technique for irregular shapes.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_TPDdhwDYsrWgQB7R::L1::Q4",
+      "moduleId": "rn_TPDdhwDYsrWgQB7R::L1",
+      "stem": "In the suspension method, the centre of gravity is found where:",
+      "misconceptionClass": "method detail",
+      "options": [
+        {
+          "key": "A",
+          "text": "At the first pivot used",
+          "correct": false,
+          "explanation": "The pivot is only a hanging point, not the answer.",
+          "misconception": "pivot confusion"
+        },
+        {
+          "key": "B",
+          "text": "Where all three drawn lines cross",
+          "correct": true,
+          "explanation": "The three traced verticals meet at the centre of gravity.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "At the heaviest-looking corner",
+          "correct": false,
+          "explanation": "Appearance does not locate the point.",
+          "misconception": "intuition myth"
+        },
+        {
+          "key": "D",
+          "text": "Halfway along the plumb line",
+          "correct": false,
+          "explanation": "The plumb line only marks direction; it is not the answer itself.",
+          "misconception": "line confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPDdhwDYsrWgQB7R::L1::Q5",
+      "moduleId": "rn_TPDdhwDYsrWgQB7R::L1",
+      "stem": "Which statement about a centre of gravity is correct?",
+      "misconceptionClass": "property reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "It must always sit inside the material of the object",
+          "correct": false,
+          "explanation": "It is hypothetical, so it can sit outside the material.",
+          "misconception": "inside-only myth"
+        },
+        {
+          "key": "B",
+          "text": "It stays fixed however the body's posture changes",
+          "correct": false,
+          "explanation": "It shifts whenever the body's shape changes.",
+          "misconception": "fixed-point myth"
+        },
+        {
+          "key": "C",
+          "text": "It can fall outside the body and move when the shape changes",
+          "correct": true,
+          "explanation": "Correct — a hypothetical point may lie outside and travel as the shape alters.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Only symmetrical objects possess one",
+          "correct": false,
+          "explanation": "Every body with weight has one, regular or not.",
+          "misconception": "existence myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPDdhwDYsrWgQB7R::L1::Q6",
+      "moduleId": "rn_TPDdhwDYsrWgQB7R::L1",
+      "stem": "State what is meant by the centre of gravity of an object.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "It is the single point through which the object's whole weight acts.",
+      "keywords": [
+        "centre",
+        "gravity",
+        "point",
+        "weight",
+        "acts"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPDdhwDYsrWgQB7R::L1::Q7",
+      "moduleId": "rn_TPDdhwDYsrWgQB7R::L1",
+      "stem": "Describe how to find the centre of gravity of an irregular shape.",
+      "misconceptionClass": "procedure recall",
+      "kind": "recall",
+      "modelAnswer": "Suspend the shape from a pivot and mark the vertical direction with a plumb line hung beside it. Repeat from two further points; the centre of gravity lies where the drawn lines intersect.",
+      "keywords": [
+        "suspend",
+        "pivot",
+        "plumb",
+        "lines",
+        "vertical"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPDdhwDYsrWgQB7R::L1::Q8",
+      "moduleId": "rn_TPDdhwDYsrWgQB7R::L1",
+      "stem": "Explain why the weight arrow in a force diagram should start from the centre of gravity.",
+      "misconceptionClass": "diagram reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The weight is taken to act through the centre of gravity, so an arrow starting there shows exactly where the body's pull is applied. Starting it anywhere else would place the force at the wrong point.",
+      "keywords": [
+        "weight",
+        "centre",
+        "gravity",
+        "arrow",
+        "point"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPDdhwDYsrWgQB7R::L1::Q9",
+      "moduleId": "rn_TPDdhwDYsrWgQB7R::L1",
+      "stem": "A student suspends an irregular card from one pivot, draws a vertical line, then repeats the process from two more pivots. State how many lines are drawn and where the card's centre of gravity lies.",
+      "misconceptionClass": "procedure application",
+      "kind": "application",
+      "modelAnswer": "Three lines are drawn — the first plus two repeats — and the centre of gravity sits at the single point where all of them intersect.",
+      "keywords": [
+        "three",
+        "lines",
+        "intersect",
+        "pivot",
+        "suspension"
+      ],
+      "options": []
+    }
+  ]
+}

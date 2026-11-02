@@ -1,0 +1,499 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_pqp4mfpHzGVtrjTT",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "d92ab2de63bf2a4740299f9e4d0a51b7b901e60be4f167fb3115cc8b4209c18e",
+    "pinnedRef": "0cea83a781024eccd40da9bd5025f43b9b1c0c75"
+  },
+  "packageId": "igcse-physics::rn_pqp4mfpHzGVtrjTT",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L1::Q1",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L1",
+      "stem": "Multiplying a mass in kilograms by a velocity in metres per second gives momentum measured in:",
+      "misconceptionClass": "unit recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "newtons",
+          "correct": false,
+          "explanation": "Newtons measure force, not momentum.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "B",
+          "text": "kg m/s",
+          "correct": true,
+          "explanation": "The momentum unit is the mass unit times the velocity unit.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "kg m/s²",
+          "correct": false,
+          "explanation": "That squared unit belongs to acceleration.",
+          "misconception": "unit overshoot"
+        },
+        {
+          "key": "D",
+          "text": "kg/m/s",
+          "correct": false,
+          "explanation": "That divides the units instead of multiplying them.",
+          "misconception": "unit inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L1::Q2",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L1",
+      "stem": "A parked car has no momentum at all because its:",
+      "misconceptionClass": "zero-case reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "engine is switched off",
+          "correct": false,
+          "explanation": "The equation never mentions engines.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "B",
+          "text": "mass is zero",
+          "correct": false,
+          "explanation": "The car's mass is unchanged; mass alone never sets momentum.",
+          "misconception": "zero myth"
+        },
+        {
+          "key": "C",
+          "text": "velocity is zero, and p = m × v then gives zero",
+          "correct": true,
+          "explanation": "Anything multiplied by a zero velocity comes out at zero.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "parked objects are exempt from the momentum law",
+          "correct": false,
+          "explanation": "The law covers every object; parked ones simply score zero.",
+          "misconception": "exemption myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L1::Q3",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L1",
+      "stem": "Which of these does not change an object's momentum?",
+      "misconceptionClass": "change conditions",
+      "options": [
+        {
+          "key": "A",
+          "text": "Keeping the mass and velocity exactly as they were",
+          "correct": true,
+          "explanation": "With both factors fixed, the product m × v is fixed too.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Speeding the object up",
+          "correct": false,
+          "explanation": "A changed velocity changes the product m × v.",
+          "misconception": "velocity-change slip"
+        },
+        {
+          "key": "C",
+          "text": "Reversing the object's direction of travel",
+          "correct": false,
+          "explanation": "Direction is part of velocity, so the momentum changes.",
+          "misconception": "direction-change slip"
+        },
+        {
+          "key": "D",
+          "text": "Loading extra mass onto the object",
+          "correct": false,
+          "explanation": "A changed mass changes the product m × v.",
+          "misconception": "mass-change slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L1::Q4",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L1",
+      "stem": "A 60 g tennis ball rolls at 2 m/s towards a wall and bounces straight back at the same speed. Taking the approach direction as positive, its momentum after the bounce is:",
+      "misconceptionClass": "sign arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "+0.12 kg m/s",
+          "correct": false,
+          "explanation": "That is the approach momentum; the return trip flips the sign.",
+          "misconception": "sign slip"
+        },
+        {
+          "key": "B",
+          "text": "0 kg m/s",
+          "correct": false,
+          "explanation": "The ball still moves after the bounce, so its momentum is not zero.",
+          "misconception": "cancellation myth"
+        },
+        {
+          "key": "C",
+          "text": "+0.24 kg m/s",
+          "correct": false,
+          "explanation": "Nothing doubles: the speed is unchanged, only the direction reverses.",
+          "misconception": "doubling slip"
+        },
+        {
+          "key": "D",
+          "text": "−0.12 kg m/s",
+          "correct": true,
+          "explanation": "The size is 0.060 kg × 2 m/s = 0.12 kg m/s, and the reversed direction makes it negative.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L1::Q5",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L1",
+      "stem": "Two identical trolleys roll along the same line at the same speed, one heading right and one heading left. Their momenta are:",
+      "misconceptionClass": "vector comparison",
+      "options": [
+        {
+          "key": "A",
+          "text": "equal in size and in sign",
+          "correct": false,
+          "explanation": "Ignoring direction hides the sign difference.",
+          "misconception": "sign blindness"
+        },
+        {
+          "key": "B",
+          "text": "both zero, because the speeds match",
+          "correct": false,
+          "explanation": "Matching speeds do not cancel anything.",
+          "misconception": "cancellation myth"
+        },
+        {
+          "key": "C",
+          "text": "equal in size but opposite in sign",
+          "correct": true,
+          "explanation": "Same mass and speed give the same size; opposite travel gives opposite signs.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "impossible to compare",
+          "correct": false,
+          "explanation": "The equation compares momenta along one line without trouble.",
+          "misconception": "comparison myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L1::Q6",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L1",
+      "stem": "Write down the momentum equation and give the unit of each quantity in it.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "p = m × v, with momentum p in kilogram metres per second (kg m/s), mass m in kilograms and velocity v in metres per second.",
+      "keywords": [
+        "momentum",
+        "mass",
+        "velocity",
+        "kilogram",
+        "kg m/s"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L1::Q7",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L1",
+      "stem": "State two changes that will alter an object's momentum.",
+      "misconceptionClass": "condition recall",
+      "kind": "recall",
+      "modelAnswer": "Any change of velocity — speeding up, slowing down or turning — will do it, and so will a change of mass.",
+      "keywords": [
+        "velocity",
+        "mass",
+        "momentum",
+        "direction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L1::Q8",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L1",
+      "stem": "Explain why momentum is positive for one traveller and negative for another moving the opposite way along the same line.",
+      "misconceptionClass": "sign reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Momentum takes its direction from velocity, and velocity is a vector. Once one side of the line is chosen as positive, a traveller heading the other way scores a negative momentum of the same size.",
+      "keywords": [
+        "vector",
+        "direction",
+        "positive",
+        "negative"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L1::Q9",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L1",
+      "stem": "A trolley of mass 0.5 kg rolls at 4 m/s. Calculate its momentum, then give the momentum of an identical trolley moving at 4 m/s in the opposite direction.",
+      "misconceptionClass": "two-body comparison",
+      "kind": "application",
+      "modelAnswer": "p = m × v = 0.5 × 4 = 2 kg m/s. The second trolley has the same size momentum but the opposite sign, so −2 kg m/s.",
+      "keywords": [
+        "2",
+        "momentum",
+        "velocity",
+        "opposite"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L2::Q1",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L2",
+      "stem": "During a collision between two trolleys with no external forces acting, the total momentum of the system:",
+      "misconceptionClass": "principle recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "decreases, because each object slows",
+          "correct": false,
+          "explanation": "Speed lost by one object is gained by another; the total holds.",
+          "misconception": "slowing myth"
+        },
+        {
+          "key": "B",
+          "text": "increases while the objects interact",
+          "correct": false,
+          "explanation": "Nothing adds momentum when no external force acts.",
+          "misconception": "growth myth"
+        },
+        {
+          "key": "C",
+          "text": "stays fixed only for explosions",
+          "correct": false,
+          "explanation": "The rule covers collisions and explosions alike.",
+          "misconception": "scope flip"
+        },
+        {
+          "key": "D",
+          "text": "is the same before and after the collision",
+          "correct": true,
+          "explanation": "That equality is exactly what conservation states.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L2::Q2",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L2",
+      "stem": "Conservation of momentum applies to which interactions?",
+      "misconceptionClass": "scope recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both collisions and explosions",
+          "correct": true,
+          "explanation": "The principle is stated for both kinds of interaction.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Collisions only",
+          "correct": false,
+          "explanation": "Explosions are covered too.",
+          "misconception": "scope myth"
+        },
+        {
+          "key": "C",
+          "text": "Explosions only",
+          "correct": false,
+          "explanation": "Collisions are covered too.",
+          "misconception": "scope myth"
+        },
+        {
+          "key": "D",
+          "text": "Only interactions between identical masses",
+          "correct": false,
+          "explanation": "No such mass condition appears in the principle.",
+          "misconception": "identity myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L2::Q3",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L2",
+      "stem": "A 1 kg trolley rolls right at 3 m/s towards a 2 kg trolley at rest. Taking right as positive, the total momentum of the pair before they meet is:",
+      "misconceptionClass": "conservation arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "9 kg m/s",
+          "correct": false,
+          "explanation": "That multiplies the combined mass by the speed.",
+          "misconception": "whole-mass slip"
+        },
+        {
+          "key": "B",
+          "text": "6 kg m/s",
+          "correct": false,
+          "explanation": "That multiplies the resting trolley's mass by the speed, but a resting object contributes zero.",
+          "misconception": "rest-mass slip"
+        },
+        {
+          "key": "C",
+          "text": "3 kg m/s",
+          "correct": true,
+          "explanation": "Only the moving trolley counts: 1 × 3 = 3 kg m/s.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "0 kg m/s",
+          "correct": false,
+          "explanation": "The moving trolley does carry momentum, so the total is not zero.",
+          "misconception": "rest-only myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L2::Q4",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L2",
+      "stem": "Two trolleys collide; one rebounds afterwards and travels back the way it came. In the conservation equation, that trolley's momentum after the collision is:",
+      "misconceptionClass": "sign handling",
+      "options": [
+        {
+          "key": "A",
+          "text": "always zero, because it reversed",
+          "correct": false,
+          "explanation": "Reversal changes the sign, not the size, of the momentum.",
+          "misconception": "reversal myth"
+        },
+        {
+          "key": "B",
+          "text": "negative, because its velocity now points the other way",
+          "correct": true,
+          "explanation": "A reversed velocity enters the total with a minus sign.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "positive, because momentum cannot be negative",
+          "correct": false,
+          "explanation": "Momentum is a vector, so it can be negative.",
+          "misconception": "sign blindness"
+        },
+        {
+          "key": "D",
+          "text": "left out entirely once it rebounds",
+          "correct": false,
+          "explanation": "Rebounding objects stay in the system and in the equation.",
+          "misconception": "exclusion myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L2::Q5",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L2",
+      "stem": "Two skaters glide towards each other along one line at equal speeds. The overall momentum of the pair is:",
+      "misconceptionClass": "cancellation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "double either skater's momentum",
+          "correct": false,
+          "explanation": "Sizes add only when the directions agree.",
+          "misconception": "size addition"
+        },
+        {
+          "key": "B",
+          "text": "equal to one skater's momentum",
+          "correct": false,
+          "explanation": "The opposite signs remove half of the sum.",
+          "misconception": "half-and-half myth"
+        },
+        {
+          "key": "C",
+          "text": "undefined for opposite motions",
+          "correct": false,
+          "explanation": "Opposite motions are handled by the sign convention.",
+          "misconception": "undefined myth"
+        },
+        {
+          "key": "D",
+          "text": "zero, because the equal and opposite momenta cancel",
+          "correct": true,
+          "explanation": "Equal sizes with opposite signs sum to zero.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L2::Q6",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L2",
+      "stem": "State the principle of conservation of momentum.",
+      "misconceptionClass": "principle recall",
+      "kind": "recall",
+      "modelAnswer": "With no external forces acting, the total momentum before an interaction equals the total momentum after it.",
+      "keywords": [
+        "conservation",
+        "momentum",
+        "total",
+        "external",
+        "interaction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L2::Q7",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L2",
+      "stem": "Name the two kinds of interaction the conservation rule covers.",
+      "misconceptionClass": "scope recall",
+      "kind": "recall",
+      "modelAnswer": "Collisions, where objects run into each other, and explosions, where a body splits into parts that fly apart.",
+      "keywords": [
+        "collision",
+        "explosion",
+        "interaction",
+        "momentum"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L2::Q8",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L2",
+      "stem": "Explain why two objects moving in opposite directions at the same speed can have zero total momentum.",
+      "misconceptionClass": "cancellation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Momentum is a vector, so the two objects carry equal-sized momenta with opposite signs. The signs cancel in the sum, leaving a total of zero even though both objects are still moving.",
+      "keywords": [
+        "vector",
+        "opposite",
+        "cancel",
+        "zero",
+        "momentum"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pqp4mfpHzGVtrjTT::L2::Q9",
+      "moduleId": "rn_pqp4mfpHzGVtrjTT::L2",
+      "stem": "A toy car of mass 0.035 kg rolls at 0.8 m/s into a stationary toy van of mass 0.085 kg. Afterwards the car keeps moving at 0.1 m/s. Calculate the van's velocity, assuming momentum is conserved.",
+      "misconceptionClass": "conservation calculation",
+      "kind": "application",
+      "modelAnswer": "Before: the car has 0.035 × 0.8 = 0.028 kg m/s and the van adds nothing, so the total is 0.028 kg m/s. After: the car holds 0.035 × 0.1 = 0.0035 kg m/s, so the van's momentum is 0.028 − 0.0035 = 0.0245 kg m/s. Dividing by its 0.085 kg mass gives v = 0.0245 ÷ 0.085 ≈ 0.29 m/s in the car's original direction.",
+      "keywords": [
+        "0.29",
+        "0.028",
+        "0.0245",
+        "conservation",
+        "momentum"
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_8wqvPtsCCh3gdJN5",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "be5753c2919212ec2761ea9cc3fbe4fec64b00cae6133ae0deadd07615df1d28",
+    "pinnedRef": "0cea83a781024eccd40da9bd5025f43b9b1c0c75"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_8wqvPtsCCh3gdJN5",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Momentum",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-3-momentum/1-3-3-newtons-third-law",
+    "specAnchors": [
+      {
+        "code": "1.29P",
+        "text": "demonstrate an understanding of Newton’s third law"
+      }
+    ],
+    "primer": {
+      "text": "The Momentum lessons have already shown you what momentum is, how collisions conserve it, and how F = ma ties force to changing motion. One question remains: when two bodies interact, how do the forces they feel compare? Newton's third law answers with one symmetric statement about interacting objects, and this note also trains you to tell true third law pairs apart from merely balanced forces.",
+      "prerequisiteSubtopic": "Momentum"
+    },
+    "modules": [
+      {
+        "id": "rn_8wqvPtsCCh3gdJN5::L1",
+        "title": "What is Newton's third law?",
+        "sourceHeadings": [
+          "What is Newton's third law?",
+          "Newton's third law of motion applied to walking"
+        ],
+        "specRefs": [
+          "1.29P"
+        ],
+        "opening": "Every push or pull is one half of a deal: when object A acts on object B, object B acts back on A. Newton's third law states that the two forces are equal in size and opposite in direction. This lesson builds the statement, tests it on walking, and separates it from the laws describing single objects.",
+        "keyPoints": [
+          "Newton's third law describes the forces that appear when two different objects interact with each other.",
+          "Newton's first and second laws instead cover forces acting on just one object.",
+          "When any two objects interact, each exerts on the other a force equal in size and opposite in direction.",
+          "Walking works because your foot pushes backwards on the ground while the ground pushes forwards on your foot.",
+          "The two interacting objects here are the foot and the ground, pushing on each other with equal strength."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Push on something and it pushes back on you just as hard, the other way.",
+            "analogy": "It is like leaning on a wall: your lean is matched, newton for newton, by the wall pushing back on you.",
+            "examPointer": "Name both objects when describing a third law pair — 'A pushes B, B pushes A' earns the marking points."
+          },
+          "medium": {
+            "restatement": "The law pairs forces, not objects: each body feels one force of the pair, equal in size, opposite in direction.",
+            "analogy": "Picture a mirrored handshake: whatever force one hand delivers, the other hand delivers straight back, flipped.",
+            "examPointer": "The pair acts on two different objects — claiming both forces act on one object is the classic marking trap."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_8wqvPtsCCh3gdJN5::L1::Q1",
+          "rn_8wqvPtsCCh3gdJN5::L1::Q2",
+          "rn_8wqvPtsCCh3gdJN5::L1::Q3",
+          "rn_8wqvPtsCCh3gdJN5::L1::Q4",
+          "rn_8wqvPtsCCh3gdJN5::L1::Q5",
+          "rn_8wqvPtsCCh3gdJN5::L1::Q6",
+          "rn_8wqvPtsCCh3gdJN5::L1::Q7",
+          "rn_8wqvPtsCCh3gdJN5::L1::Q8",
+          "rn_8wqvPtsCCh3gdJN5::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_8wqvPtsCCh3gdJN5::L2",
+        "title": "Recognising Newton's third law",
+        "sourceHeadings": [
+          "Recognising Newton's third law"
+        ],
+        "specRefs": [
+          "1.29P"
+        ],
+        "opening": "Equal and opposite forces appear in two very different situations: balanced forces on one object, and third law pairs across two objects. Confusing them is one of the most common exam errors. This lesson gives you a three-part test, then works a full example with a book resting on a table.",
+        "keyPoints": [
+          "A third law pair acts on two different objects, one force on each body.",
+          "The pair's two forces are always equal in size and opposite in direction.",
+          "Both forces in the pair must be the same type, such as two weights or two contact pushes.",
+          "If naming a force proves difficult, describe it simply as a push or a pull.",
+          "A book resting on a table feels its weight and the table's contact push, and both act on the book alone.",
+          "Those two book forces are balanced, so they illustrate Newton's first law rather than the third."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Run the three checks: different objects, equal-and-opposite, and the same force type.",
+            "analogy": "Matching a third law pair is like pairing socks: same kind, equal size, opposite feet.",
+            "examPointer": "Always ask which two objects feel the forces — one body only means balanced forces, not a pair."
+          },
+          "medium": {
+            "restatement": "Balanced forces mimic a third law pair because both are equal and opposite; the object count and the force type separate them.",
+            "analogy": "Two bookends bracing one book versus two people leaning back-to-back: one body shares the forces, the other splits them.",
+            "examPointer": "The book-on-table diagram is Newton's first law in disguise — expect an exam question asking exactly that."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_8wqvPtsCCh3gdJN5::L2::Q1",
+          "rn_8wqvPtsCCh3gdJN5::L2::Q2",
+          "rn_8wqvPtsCCh3gdJN5::L2::Q3",
+          "rn_8wqvPtsCCh3gdJN5::L2::Q4",
+          "rn_8wqvPtsCCh3gdJN5::L2::Q5",
+          "rn_8wqvPtsCCh3gdJN5::L2::Q6",
+          "rn_8wqvPtsCCh3gdJN5::L2::Q7",
+          "rn_8wqvPtsCCh3gdJN5::L2::Q8",
+          "rn_8wqvPtsCCh3gdJN5::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_8wqvPtsCCh3gdJN5::L3",
+        "title": "Newton's third law in collisions",
+        "sourceHeadings": [
+          "Newton's third law in collisions",
+          "Newton's third law applied to a collision"
+        ],
+        "specRefs": [
+          "1.29P"
+        ],
+        "opening": "Collisions make Newton's third law vivid: during the crash, each trolley pushes the other with an equal, opposite force. Yet the two vehicles do not, in general, accelerate equally, because F = ma brings mass into the outcome. This lesson follows a collision from force pair to momentum change to acceleration.",
+        "keyPoints": [
+          "When two objects collide, each exerts on the other an equal force in the opposite direction.",
+          "In a collision one object generally gains momentum and speeds up while the other loses momentum and slows down.",
+          "For trolleys A and B the pair is written F(B–A) = −F(A–B): same size, opposite signs.",
+          "Equal forces do not ensure equal accelerations, because F = ma makes acceleration depend on mass as well.",
+          "Equal masses give equal accelerations; unequal masses give unequal accelerations."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "During any collision, each body pushes the other equally hard in the opposite direction.",
+            "analogy": "Two skaters shoving off each other feel the same shove, yet the lighter one flies away faster.",
+            "examPointer": "Equal forces never mean equal accelerations — the lighter body accelerates more."
+          },
+          "medium": {
+            "restatement": "The third law guarantees the force pair in every collision; F = ma then sets each body's own acceleration from its own mass.",
+            "analogy": "Same punch, two boxers: the force pair is symmetric, but how each mass responds to its copy of the force is not.",
+            "examPointer": "Pair 'equal and opposite forces' with 'unequal accelerations' and justify with F = ma — a favourite exam combination."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_8wqvPtsCCh3gdJN5::L3::Q1",
+          "rn_8wqvPtsCCh3gdJN5::L3::Q2",
+          "rn_8wqvPtsCCh3gdJN5::L3::Q3",
+          "rn_8wqvPtsCCh3gdJN5::L3::Q4",
+          "rn_8wqvPtsCCh3gdJN5::L3::Q5",
+          "rn_8wqvPtsCCh3gdJN5::L3::Q6",
+          "rn_8wqvPtsCCh3gdJN5::L3::Q7",
+          "rn_8wqvPtsCCh3gdJN5::L3::Q8",
+          "rn_8wqvPtsCCh3gdJN5::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-04",
+          "fig-05"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "Newton's third law",
+          "definition": "Interacting objects exert on each other forces that are equal in size and opposite in direction.",
+          "firstLesson": 1
+        },
+        {
+          "term": "free body force diagram",
+          "definition": "A diagram showing every force acting on one chosen object.",
+          "firstLesson": 2
+        },
+        {
+          "term": "third law pair",
+          "definition": "Two forces of the same type, equal in size and opposite in direction, acting on two different objects.",
+          "firstLesson": 2
+        },
+        {
+          "term": "balanced forces",
+          "definition": "Forces on a single object whose overall effect is zero, such as a book resting on a table.",
+          "firstLesson": 2
+        },
+        {
+          "term": "normal contact force",
+          "definition": "The perpendicular push that a surface exerts on an object resting on it.",
+          "firstLesson": 2
+        },
+        {
+          "term": "momentum",
+          "definition": "The quantity of motion carried by a moving object; in collisions one body gains it as the other loses it.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": {
+        "prompt": "A physics textbook rests on a table. Student A sketches the free-body diagram of the book, labelling the weight and the reaction force, and says it shows Newton's third law in action. Student B disagrees. Referring to the vector diagram, work out which student is right and why.",
+        "steps": [
+          "Identify the forces: the Earth pulls the book downwards (its weight) and the table pushes the book upwards (the normal contact force).",
+          "State the law: whenever two bodies interact, the mutual forces are equal in size and opposite in direction.",
+          "Test the diagram against the recognition rules: both arrows act on the book alone, and the forces are of different types, so the third law test fails.",
+          "Give the genuine pair: the Earth pulls the book down while the book pulls the Earth up — both are weight, equal and opposite, on two different objects.",
+          "Conclude: Student B is correct — the labelled arrows show balanced forces on a single object, which is Newton's first law territory."
+        ],
+        "finalAnswer": "Student B is correct: the two labelled forces act on one object and are of different types, so the diagram illustrates Newton's first law rather than the third."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/99c2ce9bb6da-5-7-4-newton-third-law-in-action.png",
+        "alt": "Newton Third law in action, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Newton's third law of motion applied to walking",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The foot pushes the ground backwards, and the ground pushes the foot forwards. Newton's third law explains the forces that enable people to walk",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/d0fbaac8522c-5-7-4-we-newton-third-law-question-image.png",
+        "alt": "WE Newton Third law Question image, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Recognising Newton's third law",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/6edf9ce8e48f-5-7-4-we-newton-third-law-answer-image.png",
+        "alt": "WE Newton Third law Answer image, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Recognising Newton's third law",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/7c521d8b3c4d-newton-e2-80-99s-third-law-of-motion.png",
+        "alt": "Newton’s-Third-Law-of-Motion, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Newton's third law applied to a collision",
+        "moduleIds": [
+          "L3"
+        ],
+        "caption": "The force of Trolley A on Trolley B is equal and opposite to the force of Trolley B on Trolley A",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a6903d2ad6cd-3-1-1-5-worked-example-newtons-third-law-pairs.png",
+        "alt": "Worked example - Newton's third law pairs, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Newton's third law applied to a collision",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}
