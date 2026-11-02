@@ -23745,3 +23745,12 @@ worklog(r0): T-UGM-0606-1 run-002 (operator commission trace 1a1955c294758a5d "M
 - Cursors re-confirmed on the live surface: pen = crosshair, text = text, ZERO cursor:none elements — the operator's invisible-cursor report remains the missing MG-style affordance (the T-MG-INK-8 candidate), not a cursor property; unchanged by this fix.
 - Session state restored (zoom out ×2, rotation back to 0°, pen tool re-selected); the test ink existed only in the ephemeral audit profile's local store.
 - Anti-truncation asserts: this section appended byte-exact; new = old + section.
+
+## T-UGM-OFFICIALTEXT-RESYNC-1 run-001 — the five-bundle officialText re-sync (the d7b199d repair pointer, trace 1a19adffd5f72cb9)
+
+- Law of record: spine verbatim (ugm.bundle.test.ts) — specPoint.officialText ≡ curriculum node title by code; d7b199d re-extracted the IAL X1-X4 + AS pure-1 titles without re-syncing the bundles, red locally-only 95/5 (no CI workflow runs the file).
+- Repair: 47/107 officialText fields re-synced across ial-maths-20-pure-1..4 + cie-as-maths-20-pure-1 (14/22, 11/19, 11/18, 9/18, 2/30); bundles <- curricula; serializer byte-fidelity proven (indent=1 round-trip byte-exact; structural asserts — only officialText values differ).
+- Validation: ugm.bundle.test.ts 100/100 post-repair; tsc -p apps/hub clean; all four hub prebuild validators PASS; ugm.render.test.ts 2/1 disclosed pre-existing at base (KaTeX corpus count, bodies untouched).
+- Receipt .syllabai/receipts/T-UGM-OFFICIALTEXT-RESYNC-1/run-001-r0.json; dual worklog law held (this section + root worklog.md, new = old + section asserted).
+- Upstream note: residual fused-word artifacts in a few curriculum titles of record ride the spine verbatim law as-is — upstream curriculum lane, not this repair.
+- Anti-truncation asserts: this section appended byte-exact; new = old + section.
