@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_K3p2R3ykwwvHV9dp",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "cbc8bcd2d0418428cef5c3e8bbb807c664f249a0d794f226cfe3c3d9e2814583",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "packageId": "igcse-physics::rn_K3p2R3ykwwvHV9dp",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L1::Q1",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L1",
+      "stem": "What does the resultant force describe?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The largest single force in the set",
+          "correct": false,
+          "explanation": "The resultant is not the maximum member; it is the combined effect of all of them.",
+          "misconception": "max-member confusion"
+        },
+        {
+          "key": "B",
+          "text": "The single force equivalent to all the forces acting together",
+          "correct": true,
+          "explanation": "It replaces the whole set with one net force.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "The average of the force magnitudes",
+          "correct": false,
+          "explanation": "Averaging ignores which way each force points.",
+          "misconception": "averaging error"
+        },
+        {
+          "key": "D",
+          "text": "The force of friction only",
+          "correct": false,
+          "explanation": "Friction is one contributor, not the summary.",
+          "misconception": "member-vs-sum confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L1::Q2",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L1",
+      "stem": "Two people push a crate from the same side with 30 N and 20 N. The resultant is:",
+      "misconceptionClass": "same-side addition",
+      "options": [
+        {
+          "key": "A",
+          "text": "10 N, because forces always subtract",
+          "correct": false,
+          "explanation": "Subtraction is for opposing directions only.",
+          "misconception": "rule flip"
+        },
+        {
+          "key": "B",
+          "text": "25 N, the mean of the two pushes",
+          "correct": false,
+          "explanation": "Averaging is not the combining law.",
+          "misconception": "averaging error"
+        },
+        {
+          "key": "C",
+          "text": "50 N in the pushes' shared direction",
+          "correct": true,
+          "explanation": "Same-direction forces add: 30 + 20 = 50 N.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Zero, because the crate may not move",
+          "correct": false,
+          "explanation": "Motion is irrelevant; 50 N of resultant is present regardless.",
+          "misconception": "static confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L1::Q3",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L1",
+      "stem": "Equal forces act in opposite directions on a bucket. The resultant is zero, and the forces are called:",
+      "misconceptionClass": "balanced vocabulary",
+      "options": [
+        {
+          "key": "A",
+          "text": "Unbalanced",
+          "correct": false,
+          "explanation": "Unbalanced is precisely the opposite case.",
+          "misconception": "term flip"
+        },
+        {
+          "key": "B",
+          "text": "Tension",
+          "correct": false,
+          "explanation": "Tension is a specific force, not this description.",
+          "misconception": "catalogue mix-up"
+        },
+        {
+          "key": "C",
+          "text": "Upthrust",
+          "correct": false,
+          "explanation": "Upthrust is a fluid's upward push.",
+          "misconception": "catalogue mix-up"
+        },
+        {
+          "key": "D",
+          "text": "Balanced",
+          "correct": true,
+          "explanation": "Equal opposing forces cancel: zero resultant, balanced pair.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L1::Q4",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L1",
+      "stem": "A trolley feels 10 N to the right and 4 N to the left. Its resultant is:",
+      "misconceptionClass": "opposing subtraction",
+      "options": [
+        {
+          "key": "A",
+          "text": "6 N to the right",
+          "correct": true,
+          "explanation": "10 − 4 = 6 N, and the winner's side is the right.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "14 N to the right",
+          "correct": false,
+          "explanation": "Opposing forces subtract rather than add.",
+          "misconception": "add-only error"
+        },
+        {
+          "key": "C",
+          "text": "6 N to the left",
+          "correct": false,
+          "explanation": "The larger force is the rightward one.",
+          "misconception": "direction flip"
+        },
+        {
+          "key": "D",
+          "text": "4 N to the right",
+          "correct": false,
+          "explanation": "That ignores the 10 N force's full size.",
+          "misconception": "arithmetic slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L1::Q5",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L1",
+      "stem": "Why must a resultant answer always name a direction?",
+      "misconceptionClass": "vector completeness",
+      "options": [
+        {
+          "key": "A",
+          "text": "Directions earn extra marks but carry no physics",
+          "correct": false,
+          "explanation": "The direction is physically essential, not decoration.",
+          "misconception": "marks myth"
+        },
+        {
+          "key": "B",
+          "text": "Because the magnitude changes if the direction is omitted",
+          "correct": false,
+          "explanation": "The magnitude is fixed by the arithmetic; it is the meaning that needs the direction.",
+          "misconception": "meaning confusion"
+        },
+        {
+          "key": "C",
+          "text": "Because examiners dislike bare numbers",
+          "correct": false,
+          "explanation": "The requirement is a law of the quantity, not a style rule.",
+          "misconception": "style myth"
+        },
+        {
+          "key": "D",
+          "text": "Because forces are vectors: magnitude alone is an incomplete description",
+          "correct": true,
+          "explanation": "The same 6 N left and 6 N right are different physical situations.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L1::Q6",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L1",
+      "stem": "State the two combining rules for forces that act along one line.",
+      "misconceptionClass": "rule recall",
+      "kind": "recall",
+      "modelAnswer": "Forces pointing the same way add together; forces pointing in opposite directions subtract, and the resultant points the way of the larger side.",
+      "keywords": [
+        "same direction",
+        "add",
+        "opposite",
+        "subtract"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L1::Q7",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L1",
+      "stem": "What is said about a set of forces that leaves no resultant on the body?",
+      "misconceptionClass": "vocabulary recall",
+      "kind": "recall",
+      "modelAnswer": "The forces are described as balanced: equal opposing effects that cancel completely.",
+      "keywords": [
+        "balanced",
+        "cancel",
+        "equal",
+        "opposing"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L1::Q8",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L1",
+      "stem": "Explain why the worked example's box ends up urged to the left.",
+      "misconceptionClass": "surplus reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The right-hand pushes total 4 + 8 = 12 N against a 14 N leftward force. Cancelling 12 of the 14 newtons leaves a 2 N surplus still pointing left, and that surplus is the resultant that urges the box leftwards.",
+      "keywords": [
+        "12",
+        "14",
+        "surplus",
+        "left"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L1::Q9",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L1",
+      "stem": "A drawer sticks: you pull with 40 N while friction resists with 15 N. Give the resultant, with its direction.",
+      "misconceptionClass": "everyday resultant",
+      "kind": "application",
+      "modelAnswer": "40 N − 15 N = 25 N, so the resultant force is 25 N in the pulling direction, and the drawer accelerates open.",
+      "keywords": [
+        "25",
+        "pulling direction",
+        "subtract",
+        "resultant"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L2::Q1",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L2",
+      "stem": "Friction is defined as the force that:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Speeds objects up on rough ground",
+          "correct": false,
+          "explanation": "Friction never assists motion; it opposes it.",
+          "misconception": "role inversion"
+        },
+        {
+          "key": "B",
+          "text": "Opposes the motion of an object",
+          "correct": true,
+          "explanation": "This is the definition of record.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Acts only when objects are at rest",
+          "correct": false,
+          "explanation": "Sliding surfaces experience it precisely while moving.",
+          "misconception": "rest-only myth"
+        },
+        {
+          "key": "D",
+          "text": "Pulls objects towards the Earth",
+          "correct": false,
+          "explanation": "That describes weight, a different catalogue entry.",
+          "misconception": "catalogue mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L2::Q2",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L2",
+      "stem": "A box slides to the left across a floor. The friction force on the box points:",
+      "misconceptionClass": "direction law",
+      "options": [
+        {
+          "key": "A",
+          "text": "To the left, along with the motion",
+          "correct": false,
+          "explanation": "Friction opposes, never accompanies, the sliding.",
+          "misconception": "direction flip"
+        },
+        {
+          "key": "B",
+          "text": "It depends on the box's colour",
+          "correct": false,
+          "explanation": "Nothing about the sliding law depends on appearance.",
+          "misconception": "irrelevance"
+        },
+        {
+          "key": "C",
+          "text": "To the right, against the sliding",
+          "correct": true,
+          "explanation": "Opposite to the motion means rightward here.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Downwards into the floor",
+          "correct": false,
+          "explanation": "The pressing contact is the reaction's job; friction lies along the surface.",
+          "misconception": "axis error"
+        }
+      ]
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L2::Q3",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L2",
+      "stem": "At the microscopic level, friction exists because:",
+      "misconceptionClass": "micro-cause recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Surfaces are perfectly smooth and repel",
+          "correct": false,
+          "explanation": "Perfect smoothness would remove the catching, not cause it.",
+          "misconception": "inversion"
+        },
+        {
+          "key": "B",
+          "text": "Both surfaces carry imperfections that push against each other",
+          "correct": true,
+          "explanation": "The imperfections catch — the cause of record.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Air pressure squeezes the surfaces together",
+          "correct": false,
+          "explanation": "Squeezing may press surfaces into contact, but the catching is the stated cause.",
+          "misconception": "cause swap"
+        },
+        {
+          "key": "D",
+          "text": "Magnetism in all materials",
+          "correct": false,
+          "explanation": "Magnetism is a separate catalogue entry.",
+          "misconception": "catalogue mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L2::Q4",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L2",
+      "stem": "Which statement about drag and air resistance is correct?",
+      "misconceptionClass": "family relation",
+      "options": [
+        {
+          "key": "A",
+          "text": "They are unrelated forces",
+          "correct": false,
+          "explanation": "Air resistance is a special case of drag.",
+          "misconception": "relation denial"
+        },
+        {
+          "key": "B",
+          "text": "Drag acts only in liquids",
+          "correct": false,
+          "explanation": "Gases are fluids too; drag covers both.",
+          "misconception": "medium restriction"
+        },
+        {
+          "key": "C",
+          "text": "Air resistance pushes objects forward",
+          "correct": false,
+          "explanation": "Like all friction, it opposes the motion.",
+          "misconception": "direction flip"
+        },
+        {
+          "key": "D",
+          "text": "Air resistance is the drag special case for motion through air",
+          "correct": true,
+          "explanation": "Drag covers fluids generally — liquids and gases; air resistance is its air case.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L2::Q5",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L2",
+      "stem": "A sledge slides down a snowy slope. The friction from the snow on the sledge acts:",
+      "misconceptionClass": "slope direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "Up the slope, against the sliding",
+          "correct": true,
+          "explanation": "Opposite to the motion means back up the slope.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Down the slope, helping the slide",
+          "correct": false,
+          "explanation": "Friction never helps the sliding.",
+          "misconception": "direction flip"
+        },
+        {
+          "key": "C",
+          "text": "Vertically upwards only",
+          "correct": false,
+          "explanation": "Friction lies along the contacting surfaces, here the slope's line.",
+          "misconception": "axis error"
+        },
+        {
+          "key": "D",
+          "text": "Sideways off the slope",
+          "correct": false,
+          "explanation": "Nothing turns the friction sideways here.",
+          "misconception": "axis error"
+        }
+      ]
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L2::Q6",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L2",
+      "stem": "Define friction.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Friction is the force that opposes the motion of an object, arising where surfaces rub against each other.",
+      "keywords": [
+        "friction",
+        "opposes",
+        "motion",
+        "surfaces"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L2::Q7",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L2",
+      "stem": "Name the frictional force on an object moving through air, and the general name for any fluid.",
+      "misconceptionClass": "family recall",
+      "kind": "recall",
+      "modelAnswer": "In air the force is air resistance; the general fluid case is called drag.",
+      "keywords": [
+        "air resistance",
+        "drag",
+        "fluid",
+        "frictional"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L2::Q8",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L2",
+      "stem": "Explain why the same crate is harder to drag across a rough carpet than a smooth floor.",
+      "misconceptionClass": "surface comparison",
+      "kind": "explain-why",
+      "modelAnswer": "The carpet's surface carries larger imperfections, so more catching occurs where the crate slides. More catching means a larger frictional force opposing the motion, which is why the same push moves the crate less easily on the carpet.",
+      "keywords": [
+        "imperfections",
+        "catching",
+        "frictional",
+        "larger"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_K3p2R3ykwwvHV9dp::L2::Q9",
+      "moduleId": "rn_K3p2R3ykwwvHV9dp::L2",
+      "stem": "A sledge is hauled along a frozen path with 60 N while snow friction opposes it with 15 N. Give the resultant and its direction.",
+      "misconceptionClass": "friction arithmetic",
+      "kind": "application",
+      "modelAnswer": "60 N − 15 N = 45 N, so the resultant is 45 N forwards along the path — the sledge speeds up in that direction.",
+      "keywords": [
+        "45",
+        "forwards",
+        "resultant",
+        "sledge"
+      ],
+      "options": []
+    }
+  ]
+}

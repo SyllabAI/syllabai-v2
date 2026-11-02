@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_ZCGJsYwy6S6FbbbW",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8f10cad43aa7f44741a70ebe5c03ef41a35c1340a2db2513b83b9ccdc0d13ed5",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "packageId": "igcse-physics::rn_ZCGJsYwy6S6FbbbW",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L1::Q1",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L1",
+      "stem": "The stopping distance of a vehicle is the sum of:",
+      "misconceptionClass": "sum-law recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Reaction time and braking force",
+          "correct": false,
+          "explanation": "Those are not distances.",
+          "misconception": "type confusion"
+        },
+        {
+          "key": "B",
+          "text": "Thinking distance and braking distance",
+          "correct": true,
+          "explanation": "This is the sum law of record.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Speed and mass",
+          "correct": false,
+          "explanation": "Those are factors, not the two distances.",
+          "misconception": "factor-distance confusion"
+        },
+        {
+          "key": "D",
+          "text": "Two braking distances",
+          "correct": false,
+          "explanation": "Only one braking leg exists.",
+          "misconception": "invented duplication"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L1::Q2",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L1",
+      "stem": "Thinking distance is the distance travelled while the driver:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Applies the brakes at maximum force",
+          "correct": false,
+          "explanation": "That is the braking leg.",
+          "misconception": "leg swap"
+        },
+        {
+          "key": "B",
+          "text": "Accelerates away from the hazard",
+          "correct": false,
+          "explanation": "No acceleration happens in an emergency stop.",
+          "misconception": "scene error"
+        },
+        {
+          "key": "C",
+          "text": "Changes gear",
+          "correct": false,
+          "explanation": "Gear changes play no part.",
+          "misconception": "irrelevance"
+        },
+        {
+          "key": "D",
+          "text": "Reacts to the emergency and prepares to stop",
+          "correct": true,
+          "explanation": "The reaction window is exactly what the thinking distance covers.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L1::Q3",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L1",
+      "stem": "The average human reaction time of record is:",
+      "misconceptionClass": "value recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.05 s",
+          "correct": false,
+          "explanation": "Far shorter than the quoted figure.",
+          "misconception": "value slip"
+        },
+        {
+          "key": "B",
+          "text": "1.0 s",
+          "correct": false,
+          "explanation": "Far longer than the quoted figure.",
+          "misconception": "value slip"
+        },
+        {
+          "key": "C",
+          "text": "0.25 s",
+          "correct": true,
+          "explanation": "About a quarter of a second.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "2.5 s",
+          "correct": false,
+          "explanation": "Ten times too long.",
+          "misconception": "value slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L1::Q4",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L1",
+      "stem": "Which condition lengthens a driver's reaction time?",
+      "misconceptionClass": "factor recognition",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tiredness, phone distraction, alcohol or drugs",
+          "correct": true,
+          "explanation": "All four raise the reaction time, stretching the thinking distance.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Fresh air and hydration",
+          "correct": false,
+          "explanation": "Those do not lengthen the reaction.",
+          "misconception": "opposite condition"
+        },
+        {
+          "key": "C",
+          "text": "A quieter engine",
+          "correct": false,
+          "explanation": "Engine noise is not the listed driver.",
+          "misconception": "irrelevance"
+        },
+        {
+          "key": "D",
+          "text": "Brighter headlights",
+          "correct": false,
+          "explanation": "Lighting is not a reaction-time factor of record.",
+          "misconception": "irrelevance"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L1::Q5",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L1",
+      "stem": "The braking distance is the distance covered:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "While the driver is reacting",
+          "correct": false,
+          "explanation": "That is the thinking leg.",
+          "misconception": "leg swap"
+        },
+        {
+          "key": "B",
+          "text": "Under the braking force, in metres",
+          "correct": true,
+          "explanation": "The braking leg's definition of record.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "After the vehicle has stopped",
+          "correct": false,
+          "explanation": "No distance is covered after stopping.",
+          "misconception": "scene error"
+        },
+        {
+          "key": "D",
+          "text": "During acceleration",
+          "correct": false,
+          "explanation": "An emergency stop decelerates.",
+          "misconception": "scene error"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L1::Q6",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L1",
+      "stem": "Define braking distance.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "It is the stretch of road consumed while the braking force acts on the vehicle, measured in metres.",
+      "keywords": [
+        "braking distance",
+        "road",
+        "braking force",
+        "metres"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L1::Q7",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L1",
+      "stem": "Define reaction time and quote its average value.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Reaction time is the interval between seeing a hazard and reacting to it; the human average is about 0.25 s.",
+      "keywords": [
+        "reaction time",
+        "seeing",
+        "reacting",
+        "0.25"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L1::Q8",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L1",
+      "stem": "Explain why a driver's thinking distance grows with speed even at a fixed reaction time.",
+      "misconceptionClass": "proportional reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Thinking distance is the speed multiplied by the reaction time. With the reaction time fixed, a faster vehicle covers more ground during that same pause, so the thinking distance rises in direct proportion to the speed.",
+      "keywords": [
+        "speed",
+        "reaction time",
+        "proportion",
+        "ground"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L1::Q9",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L1",
+      "stem": "At 20 m/s a vehicle stops in a total of 40 m, having covered 14 m during the driver's reaction. Calculate the braking distance.",
+      "misconceptionClass": "rearrangement arithmetic",
+      "kind": "application",
+      "modelAnswer": "Braking distance = stopping distance − thinking distance = 40 − 14 = 26 m.",
+      "keywords": [
+        "40",
+        "14",
+        "26",
+        "braking"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L2::Q1",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L2",
+      "stem": "Which factor list affects vehicle stopping distance?",
+      "misconceptionClass": "factor list",
+      "options": [
+        {
+          "key": "A",
+          "text": "Speed, mass, road condition, reaction time",
+          "correct": true,
+          "explanation": "The four of record.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Speed, colour, road condition",
+          "correct": false,
+          "explanation": "Colour is irrelevant.",
+          "misconception": "invented factor"
+        },
+        {
+          "key": "C",
+          "text": "Mass and reaction time only",
+          "correct": false,
+          "explanation": "Speed and road condition belong too.",
+          "misconception": "undercount"
+        },
+        {
+          "key": "D",
+          "text": "Engine size, tyre brand, music volume",
+          "correct": false,
+          "explanation": "None of those is on the list of record.",
+          "misconception": "invented factors"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L2::Q2",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L2",
+      "stem": "For a fixed braking force, increasing the vehicle's speed makes the stopping distance:",
+      "misconceptionClass": "speed law",
+      "options": [
+        {
+          "key": "A",
+          "text": "Shorter, because less stopping is needed",
+          "correct": false,
+          "explanation": "Faster travel means more stopping to do.",
+          "misconception": "inversion"
+        },
+        {
+          "key": "B",
+          "text": "Unchanged, since the brakes are the same",
+          "correct": false,
+          "explanation": "The brakes being unchanged does not freeze the distance.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "C",
+          "text": "Larger",
+          "correct": true,
+          "explanation": "The greater the speed, the larger the stopping distance.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Zero at high speed",
+          "correct": false,
+          "explanation": "No speed yields a free stop.",
+          "misconception": "nonsense"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L2::Q3",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L2",
+      "stem": "A fully laden lorry needs a longer stop than the same lorry empty, at the same speed, chiefly because:",
+      "misconceptionClass": "mass mechanism",
+      "options": [
+        {
+          "key": "A",
+          "text": "Its driver reacts more slowly when loaded",
+          "correct": false,
+          "explanation": "Loading does not touch the driver's reaction.",
+          "misconception": "leg swap"
+        },
+        {
+          "key": "B",
+          "text": "The greater mass travels further while stopping",
+          "correct": true,
+          "explanation": "Mass is a listed factor: more massive, more distance.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "The road becomes icier under load",
+          "correct": false,
+          "explanation": "Loading does not change the weather.",
+          "misconception": "nonsense cause"
+        },
+        {
+          "key": "D",
+          "text": "The brakes disappear at load",
+          "correct": false,
+          "explanation": "Nonsense; the brakes remain.",
+          "misconception": "nonsense cause"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L2::Q4",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L2",
+      "stem": "Which change stretches the braking distance rather than the thinking distance?",
+      "misconceptionClass": "leg assignment",
+      "options": [
+        {
+          "key": "A",
+          "text": "A longer phone call",
+          "correct": false,
+          "explanation": "That feeds the reaction leg.",
+          "misconception": "leg swap"
+        },
+        {
+          "key": "B",
+          "text": "An icy road",
+          "correct": true,
+          "explanation": "Grip loss feeds the braking leg.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Extra tiredness",
+          "correct": false,
+          "explanation": "That feeds the reaction leg.",
+          "misconception": "leg swap"
+        },
+        {
+          "key": "D",
+          "text": "Slower reaction after medication",
+          "correct": false,
+          "explanation": "Reaction again.",
+          "misconception": "leg swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L2::Q5",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L2",
+      "stem": "The table shows 20 mph stopping at 12 m and 60 mph at 73 m. The comparison proves that stopping distance grows:",
+      "misconceptionClass": "table inference",
+      "options": [
+        {
+          "key": "A",
+          "text": "In fixed steps of 12 m per 20 mph",
+          "correct": false,
+          "explanation": "The steps widen: 23, 36, 53, 73.",
+          "misconception": "linear myth"
+        },
+        {
+          "key": "B",
+          "text": "Not at all with speed",
+          "correct": false,
+          "explanation": "The table contradicts that outright.",
+          "misconception": "contradiction"
+        },
+        {
+          "key": "C",
+          "text": "Steeper than proportionally with speed — over sixfold for a threefold speed rise",
+          "correct": true,
+          "explanation": "60/20 is a threefold speed rise; 73/12 is a sixfold distance rise.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Exactly in proportion to speed",
+          "correct": false,
+          "explanation": "Sixfold for threefold is not exact proportion.",
+          "misconception": "proportion misread"
+        }
+      ]
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L2::Q6",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L2",
+      "stem": "List the four factors of record for vehicle stopping distance.",
+      "misconceptionClass": "factor recall",
+      "kind": "recall",
+      "modelAnswer": "Vehicle speed, vehicle mass, road condition and driver reaction time.",
+      "keywords": [
+        "speed",
+        "mass",
+        "road condition",
+        "reaction time"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L2::Q7",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L2",
+      "stem": "State what happens to the braking distance when speed increases at a fixed braking force.",
+      "misconceptionClass": "law recall",
+      "kind": "recall",
+      "modelAnswer": "It increases: the greater the speed, the greater the stopping distance.",
+      "keywords": [
+        "increases",
+        "speed",
+        "braking",
+        "stopping distance"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L2::Q8",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L2",
+      "stem": "Explain why icy roads lengthen a vehicle's stopping distance.",
+      "misconceptionClass": "grip reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Ice reduces the grip between tyres and road, so the brakes work less effectively. With the braking force less effective, the vehicle travels further while coming to a stop — the braking distance stretches.",
+      "keywords": [
+        "ice",
+        "grip",
+        "brakes",
+        "further"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZCGJsYwy6S6FbbbW::L2::Q9",
+      "moduleId": "rn_ZCGJsYwy6S6FbbbW::L2",
+      "stem": "A lorry's thinking distance is 15 m and its braking distance is 38 m. Calculate its stopping distance.",
+      "misconceptionClass": "sum arithmetic",
+      "kind": "application",
+      "modelAnswer": "Stopping distance = 15 + 38 = 53 m.",
+      "keywords": [
+        "15",
+        "38",
+        "53",
+        "stopping distance"
+      ],
+      "options": []
+    }
+  ]
+}
