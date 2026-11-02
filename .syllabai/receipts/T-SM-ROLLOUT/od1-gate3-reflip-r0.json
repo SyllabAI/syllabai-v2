@@ -1,0 +1,61 @@
+{
+ "probe": {
+  "email": "pf-gate3-probe-3a790b72@staging.syllabai.dev",
+  "user_id": "f61d6f19-0437-4888-87bb-a1b77f9480f6",
+  "roles": [
+   "STUDENT",
+   "TEACHER"
+  ]
+ },
+ "flip": {
+  "flipped": [
+   "babe29ef-3893-4aea-9d13-e11073d27730",
+   "4cbee5c6-6ca1-4cf3-9ee1-9c54d5e12642",
+   "b76a2cab-9d3e-4818-874d-92674f90a198",
+   "5f408468-1b65-4eee-b67d-7b8bedc28475"
+  ],
+  "unexpected": []
+ },
+ "note": "receipt rebuilt from DB truth after the Phase-D column-name crash; flips themselves were 4x HTTP 200 through the real seam (script log), audit rows below re-read first-hand",
+ "census_after": {
+  "VALIDATED": 492
+ },
+ "ma10_parts_after": 147,
+ "audit_rows": [
+  {
+   "scheme": "babe29ef-3893-4aea-9d13-e11073d27730",
+   "action": "VALIDATE",
+   "from": "SUGGESTED",
+   "to": "VALIDATED",
+   "actor": "pf-gate3-probe-3a790b72@staging.syllabai.dev",
+   "at": "2026-11-02 09:01:27.618000+00:00"
+  },
+  {
+   "scheme": "4cbee5c6-6ca1-4cf3-9ee1-9c54d5e12642",
+   "action": "VALIDATE",
+   "from": "SUGGESTED",
+   "to": "VALIDATED",
+   "actor": "pf-gate3-probe-3a790b72@staging.syllabai.dev",
+   "at": "2026-11-02 09:01:28.286000+00:00"
+  },
+  {
+   "scheme": "b76a2cab-9d3e-4818-874d-92674f90a198",
+   "action": "VALIDATE",
+   "from": "SUGGESTED",
+   "to": "VALIDATED",
+   "actor": "pf-gate3-probe-3a790b72@staging.syllabai.dev",
+   "at": "2026-11-02 09:01:28.919000+00:00"
+  },
+  {
+   "scheme": "5f408468-1b65-4eee-b67d-7b8bedc28475",
+   "action": "VALIDATE",
+   "from": "SUGGESTED",
+   "to": "VALIDATED",
+   "actor": "pf-gate3-probe-3a790b72@staging.syllabai.dev",
+   "at": "2026-11-02 09:01:29.530000+00:00"
+  }
+ ],
+ "smr_total_after": 368,
+ "smr_multi_axis_refusals_after": 0,
+ "phase": "COMPLETE"
+}

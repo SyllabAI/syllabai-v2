@@ -1,0 +1,36 @@
+{
+  "packet": "od1-gate1-seam-arm-r0",
+  "date": "2026-11-02",
+  "traces": ["1a19acce80b402f5 (gate 1 ignition)", "1a19b4b9892b6c9d (gate 2 order)", "1a19b6582110bbe5 (gate 3 order)", "1a19b8be372e8b0d (receipt PR + PR-B order)"],
+  "purpose": "Gate 1 of the OD-1 flip lane: redeploy the API carrier so the OD-1 multi-axis R4 consumption law (PR #611, merge fc793dfc) is ARMED in production before any flip touches the seam.",
+  "deployment_of_record": {
+    "id": "dpl_QGtNhEWx4ZMp7Gjo4by3XWk5mtwa",
+    "state": "READY",
+    "alias": "syllabai-v2.vercel.app",
+    "bake_source": "main @ 93959b9df10e9c58d04b27ba2a27b32f7baf8a65 (contains fc793dfc = PR #611)",
+    "recipe": "092/093/107/124 CLI-only bundle recipe: worktree-only shims (Bun.CryptoHasher->node:crypto, Bun.YAML.parse->js-yaml v4, 6 concept-graph YAMLs byte-verbatim inline, Hono->Vercel Node adapter) -> bun build --target=node --format=cjs -> 3,749,038-byte CJS api/index.js",
+    "yaml_sha256_pins": ["24fa91ac", "8a651dd9", "e53e5f87", "b1fea699", "a7b14cbd", "b3b75292"],
+    "artifact_byte_proof": "deployment /src/api/index.js uid 55dd7920b366e67c4c39aae743a99cf8198f120c == local bake sha1",
+    "bundle_audit": "14 law/intact needles green; zero Bun residue; LAW needles include multiAxisSetCoverageViolations, MULTI_AXIS_DISPATCH_NOT_WIRED, 'LEVELS multi-axis set band coverage invalid', assertBandCaptureWired",
+    "live_probes": { "/actuator/health": 200, "/api/v1/health": 401, "/": 404 },
+    "rollback_anchor": "dpl_BVPKU53dKcvqDWX5EhGjAH1JfZp5 (READY, re-aliasable)",
+    "disclosures": [
+      "deployment meta gitDirty:\"1\" / gitCommitSha:null (CLI skipped git provenance; byte-exact artifact proof + receipt carry provenance)",
+      "bundle 3.15->3.75 MB (merged waves + the OD-1 law)"
+    ]
+  },
+  "carrier_incident": {
+    "what": "a GitHub auto-deploy (dpl_BtJMouyQxZ9dzJVFeUonX6SzUA2r, commit 00836892e4, PR #628 hub-only) landed on the API carrier and took the apex alias; /actuator/health 404 from ~07:00 to ~07:36 UTC (the 6955 incident class)",
+    "response": [
+      "apex alias restored to dpl_QGtNhEWx4ZMp7Gjo4by3XWk5mtwa via POST aliases (oldDeploymentId: dpl_BtJMouyQxZ...); both prod aliases re-verified first-hand (200 UP, 401 law intact)",
+      "git integration disconnected from the carrier (DELETE /v9/projects/prj_FN5XQUMb/link; re-check 404) - the carrier is CLI-only by standing law"
+    ]
+  },
+  "post_arm_census": {
+    "axis_suffixed_part_bound_LEVELS": 492,
+    "validation_state": "492 SUGGESTED (pre gate 2)",
+    "sets": 147,
+    "ma1_ma5_clean": 145,
+    "ma4_defect_sets": ["1-b-ii (part 24169bfc-0cc5-48ca-b89b-9b972263e113)", "2-c (part db3536e3-6851-4a61-b644-7df9f5a13146)"]
+  }
+}
