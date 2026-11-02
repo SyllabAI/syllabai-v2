@@ -1,0 +1,23 @@
+{
+ "receipt": "NS-4PH1-BAKE-PROBE-20261102-physics-wave3",
+ "format": "bake-probe-receipt/0.1",
+ "generated_at_utc": "2026-11-02T16:34:38Z",
+ "operator_trace": "1a19c5cc34b70739",
+ "wave": "physics-wave3 (manifest v22)",
+ "hub_merge_of_record": "38775b98a91ab4446bb4c808b7322e2b1aa5e5c1 (PR #647; unions 75194801 + 68e55105 absorbed the #645 RN-DEBRIS-9 and T-BOOK-070 bands mid-CI)",
+ "resources_merge_of_record": "4fabe6f8d7dca64d2b972b8541b71ec3b951ec51 (PR #283; commit C 17f7e8b8; trace-bearing repin 377ef184395b676ce98c183a46fd72c584deb4fa = the promotion commit of record, tree byte-identical d4084d0c)",
+ "law": "the hub is git-linked (syllab-ai/syllabai-hub-v2) \u2014 the merge auto-bakes production (disclosed churn-only consequence); the probe polls the live pages until the new bake serves",
+ "probe": {
+  "target": "7/7 wave-3 note pages serving the expected 'Your answer' counts (occurrence-aware: 4 written checks x lessons = 8/8/12/8/8/8/4)",
+  "calibrations": {
+   "rn_RpyMnS5nqWSRWXXG": "igcse-physics-19 pilot \u2014 must stay x8",
+   "rn_2MpXPtNXvn8pQm3r": "igcse-chemistry-19 \u2014 must stay x8",
+   "rn_2z53qk2CdWrVVc7V": "igcse-chemistry-19 \u2014 must stay x8"
+  },
+  "result": "GREEN \u2014 Vercel status on the main tip flipped pending->success (~16:23Z) and the wave-3 pages served the exact expected counts on the next poll; bake gap ~60 min vs the ~10-15 min wave-2 gap, DISCLOSED: Vercel build-queue congestion behind the R0 conveyor (two builds pending concurrently; the tip build that aliased includes the merge-of-record as ancestor)"
+ },
+ "controls_during_bake": {
+  "pre-bake shells": "wave-3 noteIds served 91.7KB titled not-found shells (generateMetadata reads the notes face, so titles resolved while the served guided-import.json was the pre-merge 16-row index) \u2014 the listing-page occurrence census (wave-2 rows 6x vs wave-3 rows 2x, RSC blobs only) pinned the served build as pre-merge; no data-plane action taken, the bake was allowed to land",
+  "pilot during bake": "rn_RpyMnS5nqWSRWXXG served x8/252-253KB throughout \u2014 site and route grammar healthy"
+ }
+}

@@ -74,3 +74,41 @@ they carry no per-point spec key without the tagging sprint the plan
 deliberately deferred (PLAN §126). The audit counts SME-keyed items and
 discloses the class boundary; widening the key source is a later ADR, not a
 silent change.
+
+## Run-001 amendments (DB-truth, 2026-11-02 — the first live fire of the armed vehicle)
+
+The draft above was written DB-blind (armed without a pooler credential). First live fire
+against the bank surfaced four mechanical corrections; all are disclosed here and carry
+their rationale in the T-BOOK-069 run-001 receipt. The ADR remains PROPOSED; the lane
+executes under the standing operator order (trace `1a19b69d1fddc0b5`) + the credential
+hand in direct response to the stated unblock plan (trace `1a19d157d5ca8cc9`).
+
+1. **Keying v2 (supersedes decision 4's mechanism, not its intent).** The draft's SME
+   `external_ref` regex is subject-ambiguous: physics items (`sme-eq-1-1-movement-and-position-…`)
+   parse to the same numeric prefix as chemistry points (first live audit: "23/182 covered"
+   polluted by non-chemistry items across every band). The DB's keying of record is
+   `question_spec_points` (role PRIMARY, validation_state AI_VALIDATED, 41,636 rows) →
+   `knowledge_nodes.code`, where chemistry spec nodes are subject-true (`4CH1-1.1` …
+   `4CH1-4.50C`). The vehicle v2 keys through that graph; unit bands are code prefixes —
+   the cross-subject collision class is structurally impossible. Real density:
+   u1 51/60, u2 39/50, u3 18/22, u4 28/50 band points covered.
+2. **Per-unit audit scoping.** The draft's `--audit u<N>` never bound its unit argument
+   (every call audited the full 182-point spec). v2 scopes by band prefix.
+3. **Gate semantics.** Zero-item points print the honest blockers and the unit ships the
+   largest honest subset with the gap filed (decision 4's own thin-bank clause); the exit-1
+   hard-fail of the draft would have blocked the honest subset itself — contradiction removed.
+4. **Mechanics of record for the packs** (all zero-schema):
+   - strength packs are `strength-u<N>/` dirs, self-named in `pack.yaml`; the lint's
+     orphan-pack law moves from the pack to each block (per-item chapter binding);
+   - block ords occupy a **reserved high band (100+)** in each bound chapter's ord space —
+     `uq_book_blocks_identity (document, version, chapter_key, ord)` never collides with the
+     chapter pack's own 1..n;
+   - `pdfPageAnchor` is null on strength blocks (unit-level artifacts, no page of record);
+   - the bank's checkRef grammar carries optional `-pN` part suffixes — the lint grammar
+     of record widened;
+   - **serving**: `railBlocksForChapter` serves any VALIDATED row, so the decision-3
+     exclusion extends to the LESSON RAIL (blocks whose id prefix is `strength-u<N>/` are
+     excluded from chapter rails and chapter checks; they serve only through the
+     unit-scoped endpoint). Until that core change is merged AND deployed, the strength
+     blocks stay SUGGESTED (inert under every code version) — the S4 flip is the
+     operator's lever and fires only after the exclusion is live in production.

@@ -1,0 +1,15 @@
+{
+  "task": "T-BOOK-070",
+  "receipt": "media-s4-verified-r2",
+  "kind": "reconciliation — the S4 DB flip verified DONE of record in Neon (fired by a parallel session whose receipt never landed on main); supersedes the r1 'STILL PENDING' bullet 1",
+  "session": "zai-web web-c414c074-1cb4-4bd5-b111-546be3b49355, trace 1a19d157d5ca8cc9",
+  "date_utc": "2026-11-02",
+  "db_truth_first_hand": {
+    "census": "book_blocks 205 VALIDATED (version 2) incl. media-embed 28 — exactly the T-BOOK-070 file plane (178+27)",
+    "row_timestamps": "the 27 media rows created 2026-11-02T12:51:54Z, updated (flipped) 12:52:39Z — ~45s scripted ingest+flip cadence; the 178 originals untouched since 2026-10-27T04:37-04:39Z (the isolation law respected by the flip runner)",
+    "glossary": "112 VALIDATED unchanged",
+    "main_of_record": "no S4 flip receipt found on origin/main through c3b0e5b2 — the runner's receipt is unlanded; this receipt records the DB-truth reconciliation instead of re-flipping (zero unnecessary writes)"
+  },
+  "consequence": "the 'broader media embedding' half of the operator order is COMPLETE of record (file plane merged via #635, L3 plane flipped and serving); students see the widened cards",
+  "boundaries": ".syllabai/** only; read-only DB contact; fetch-first; no force-push"
+}

@@ -2,7 +2,7 @@ schema: t-book-task/v1
 id: T-BOOK-070
 title: "Media widen — Cognito video embeds across c02-c29 (ADR-BOOK-0002 curation protocol at scale)"
 operator_order: "Proceed with 4 intensity checks, broader media embedding (IM trace 1a19b69d1fddc0b5, 2026-11-02) — the 'broader media embedding' half"
-status: MERGED-AWAITING-S4-DB-FLIP  # merge of record: PR #635 (head 1f51f7ac, merge sha 9f4d8875, merged 2026-11-02T09:56:42Z; CI verify+hub 2/2 success on the merge sha AND on main tip ec42a894 — first-hand REST, receipt media-merged-r1.json); S4 ingest+flip to book_blocks (L3) still PENDING the Neon MAIN pooler credential re-hand (env-only law)
+status: SERVING-OF-RECORD  # S4 verified DONE in Neon first-hand (2026-11-02): 205 VALIDATED incl. 28 media-embed; rows created 12:51:54Z flipped 12:52:39Z by a parallel session whose receipt never landed — reconciliation receipt media-s4-verified-r2.json supersedes the r1 'STILL PENDING' bullet 1
 adr: docs/adr/ADR-BOOK-0002-media-embed-sources-manifest-video-pilot.md (ACCEPTED 2026-10-27, ops tx f32aea04)
 curation_of_record:
   protocol: "ADR-BOOK-0002 decision 6 — per-URL fetch-verify before any row lands; 3-probe per candidate (provider page 200, oembed 200, youtube-nocookie probe 200)"

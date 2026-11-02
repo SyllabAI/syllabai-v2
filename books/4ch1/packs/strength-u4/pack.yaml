@@ -1,0 +1,27 @@
+# S0 output of record - strength-u4 (T-BOOK-069 run-001; ADR-BOOK-0004 + the run-001 amendments)
+# unit-level L2 grouping: blocks bind PER ITEM to the chapter owning the item's spec
+# point (chapterKey per block); the unit identity rides the pack token + the block id
+# prefix. ords occupy the reserved 100+ band of each bound chapter (uq identity law).
+chapter: "strength-u4"
+title: "Unit 4 Strength Check — Organic chemistry"
+status: draft # S4 flip is the operator's lever — fires only after the rail-exclusion core lands AND deploys (ADR run-001 amendment 4)
+block_schema: "book.block/1"
+planned_blocks: 15
+check_density: "one bank item per block; checkRefs = the KG PRIMARY-keyed selection of record (density-audit v2 --select u4; agent-confirmed, duplicate stems pinned out)"
+note: "selection artifacts: .syllabai/lane-artifacts/T-BOOK-069/select-u4-r1.txt; pdfPageAnchor null (unit-level, no page of record); blocks serve only via the unit-scoped endpoint after the core exclusion + flip"
+blocks:
+  - {ord: 101, id: "strength-u4/b01", type: mcq-embed, file: "blocks/b01-mcq.json", binds: "u4:c22", spec: "4.2"}
+  - {ord: 102, id: "strength-u4/b02", type: mcq-embed, file: "blocks/b02-mcq.json", binds: "u4:c22", spec: "4.3"}
+  - {ord: 103, id: "strength-u4/b03", type: mcq-embed, file: "blocks/b03-mcq.json", binds: "u4:c22", spec: "4.4"}
+  - {ord: 104, id: "strength-u4/b04", type: mcq-embed, file: "blocks/b04-mcq.json", binds: "u4:c22", spec: "4.5"}
+  - {ord: 105, id: "strength-u4/b05", type: mcq-embed, file: "blocks/b05-mcq.json", binds: "u4:c22", spec: "4.6"}
+  - {ord: 101, id: "strength-u4/b06", type: mcq-embed, file: "blocks/b06-mcq.json", binds: "u4:c23", spec: "4.8"}
+  - {ord: 102, id: "strength-u4/b07", type: mcq-embed, file: "blocks/b07-mcq.json", binds: "u4:c23", spec: "4.9"}
+  - {ord: 103, id: "strength-u4/b08", type: mcq-embed, file: "blocks/b08-mcq.json", binds: "u4:c23", spec: "4.12"}
+  - {ord: 104, id: "strength-u4/b09", type: mcq-embed, file: "blocks/b09-mcq.json", binds: "u4:c23", spec: "4.14"}
+  - {ord: 105, id: "strength-u4/b10", type: mcq-embed, file: "blocks/b10-mcq.json", binds: "u4:c23", spec: "4.17"}
+  - {ord: 101, id: "strength-u4/b11", type: mcq-embed, file: "blocks/b11-mcq.json", binds: "u4:c24", spec: "4.21"}
+  - {ord: 102, id: "strength-u4/b12", type: mcq-embed, file: "blocks/b12-mcq.json", binds: "u4:c24", spec: "4.22"}
+  - {ord: 101, id: "strength-u4/b13", type: mcq-embed, file: "blocks/b13-mcq.json", binds: "u4:c25", spec: "4.26"}
+  - {ord: 102, id: "strength-u4/b14", type: mcq-embed, file: "blocks/b14-mcq.json", binds: "u4:c25", spec: "4.27"}
+  - {ord: 103, id: "strength-u4/b15", type: mcq-embed, file: "blocks/b15-mcq.json", binds: "u4:c25", spec: "4.28"}
