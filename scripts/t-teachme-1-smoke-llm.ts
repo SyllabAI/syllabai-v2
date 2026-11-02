@@ -24,7 +24,6 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
 import postgres from "postgres";
-import ZAI from "/home/z/my-project/node_modules/z-ai-web-dev-sdk";
 import { createSql } from "../apps/api/src/services/identity/users";
 import { createTeachMeService, TeachMeFailClosed, TeachMeNotFound } from "../apps/api/src/teach-me/service";
 import { createTeachMeStore } from "../apps/api/src/teach-me/sql";
@@ -88,6 +87,9 @@ async function realChain(): Promise<TeachMeChain> {
     chain = buildLlmChain(process.env);
     CHAIN_MODE = "REAL chain of record over REAL provider HTTP (buildLlmChain(process.env))";
   } else {
+    // bridge-mode ONLY: the z-ai SDK import is lazy (dynamic) so --real-providers
+    // runs never resolve it (the SDK lives in the agent sandbox, not in CI).
+    const { default: ZAI } = await import("/home/z/my-project/node_modules/z-ai-web-dev-sdk");
     const zai = await ZAI.create();
     const bridgeFetch: typeof fetch = async (_url, init) => {
       const body = JSON.parse(String(init?.body ?? "{}")) as { messages?: Array<{ role: string; content: string }> };
