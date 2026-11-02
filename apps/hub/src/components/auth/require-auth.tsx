@@ -11,24 +11,12 @@
  * already holds. Signed-out visitors get a friendly sign-in prompt that
  * preserves where they were heading.
  */
-import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { LogIn, Loader2, ShieldAlert, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIdentity } from "@/lib/identity";
-
-const noopSubscribe = () => () => {};
-
-/** Hydration flag without setState-in-effect: false on the server + first
- *  hydration render, true on every settled client render. */
-function useSettled(): boolean {
-  return useSyncExternalStore(
-    noopSubscribe,
-    () => true,
-    () => false,
-  );
-}
+import { useSettled } from "@/lib/use-settled";
 
 export function RequireAuth({
   children,

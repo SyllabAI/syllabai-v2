@@ -21,6 +21,7 @@ import { getDataProvider } from "@/lib/data";
 import { bundlePinCensus, listCourses, pilotCourseSlug, shortPinRef } from "@/lib/courses";
 import { publicConfig } from "@/lib/config";
 import { ProvenanceBadge } from "@/components/provenance";
+import { RoleHomeRedirect } from "@/components/auth/role-home-redirect";
 
 export default async function HubPage() {
   const provider = getDataProvider();
@@ -103,6 +104,11 @@ export default async function HubPage() {
 
   return (
     <div className="space-y-8">
+      {/* A-1 (frontend-flow audit): a signed-in user's session starts in the
+          product, not on the pitch — replace to the role home once identity
+          hydrates (client-side half; Tier 1's cookie session moves this
+          decision server-side before first paint). */}
+      <RoleHomeRedirect />
       {/* hero — SME student flow */}
       <section className="space-y-4">
         <div className="flex flex-wrap items-center gap-2">

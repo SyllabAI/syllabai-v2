@@ -51,6 +51,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { clearIdentity, useIdentity } from "@/lib/identity";
+import { roleHome } from "@/lib/role-home";
 import { isImmersiveRoute, isViewerRoute } from "@/lib/focus-routes";
 import { useLastOpened } from "@/lib/last-opened";
 import { cn } from "@/lib/utils";
@@ -147,7 +148,10 @@ export function AppShell({
       {!viewerRoute && (
       <header className="sticky top-0 z-40 border-b bg-background print:hidden">
         <div className="flex h-14 items-center gap-3 px-4 sm:px-6">
-          <Link href="/" className="flex items-center gap-2">
+          {/* C-5 (frontend-flow audit): the logo means "home". For a
+              signed-in user home is the role home — the marketing hero is
+              where they were just redirected away from. */}
+          <Link href={identity ? roleHome(identity) : "/"} className="flex items-center gap-2">
             <span className="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
               <Atom className="size-4" aria-hidden />
             </span>
@@ -271,17 +275,26 @@ export function AppShell({
                     {identity.email} · {identity.role === "teacher" ? "Teacher" : "Student"}
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  {/* B-1 (frontend-flow audit): the menu's primary item is
+                      the role home — "My dashboard" for students, the
+                      workspace for teachers. Teachers keep the student
+                      dashboard one honest click away, labelled for what it
+                      is (the demo-to-a-class use case). */}
                   <DropdownMenuItem asChild>
-                    <Link href="/dashboard" className="cursor-pointer">
-                      <LayoutDashboard className="size-4" aria-hidden />
-                      Dashboard
+                    <Link href={roleHome(identity)} className="cursor-pointer">
+                      {identity.role === "teacher" ? (
+                        <GraduationCap className="size-4" aria-hidden />
+                      ) : (
+                        <LayoutDashboard className="size-4" aria-hidden />
+                      )}
+                      {identity.role === "teacher" ? "Teacher workspace" : "My dashboard"}
                     </Link>
                   </DropdownMenuItem>
                   {identity.role === "teacher" && (
                     <DropdownMenuItem asChild>
-                      <Link href="/teacher" className="cursor-pointer">
-                        <GraduationCap className="size-4" aria-hidden />
-                        Teacher workspace
+                      <Link href="/dashboard" className="cursor-pointer">
+                        <LayoutDashboard className="size-4" aria-hidden />
+                        Preview student view
                       </Link>
                     </DropdownMenuItem>
                   )}
@@ -306,10 +319,21 @@ export function AppShell({
                 </Link>
               </Button>
             )}
-            <Button asChild size="sm" className="gap-1.5 px-2 sm:px-3" aria-label="Start studying">
-              <Link href="/dashboard">
+            {/* B-1 (frontend-flow audit): the persistent CTA resolves the
+                role home too — a teacher's header button opens the workspace,
+                never the student dashboard. Signed-out keeps the demo
+                target (B-2's split is Tier 1). */}
+            <Button
+              asChild
+              size="sm"
+              className="gap-1.5 px-2 sm:px-3"
+              aria-label={identity?.role === "teacher" ? "Open workspace" : "Start studying"}
+            >
+              <Link href={roleHome(identity)}>
                 <Zap className="size-3.5" aria-hidden />
-                <span className="hidden sm:inline">Start studying</span>
+                <span className="hidden sm:inline">
+                  {identity?.role === "teacher" ? "Open workspace" : "Start studying"}
+                </span>
               </Link>
             </Button>
           </div>
