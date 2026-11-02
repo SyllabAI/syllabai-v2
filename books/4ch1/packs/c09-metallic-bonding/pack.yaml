@@ -1,10 +1,12 @@
 # S0 output of record - c09-metallic-bonding
+# T-BOOK-070: b05 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 4 -> 5);
+# the S0 plan is binding — lint G1 checks planned == on-disk.
 chapter: "c09"
 chapter_key: "u1:c9"
 title: "Metallic bonding"
 status: published # S4 flip of record — T-BOOK-016 (operator dispatch trace 1a15f18fdca65e79); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 4
+planned_blocks: 5
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "chem_only chapter (3 pages): p107 intro, p108 lattice diagram + properties + check - compact pack by design"
 blocks:
@@ -12,3 +14,4 @@ blocks:
   - {ord: 2, id: "c09-metallic-bonding/b02", type: figure, file: "blocks/b02-figure-metallic-lattice.json", anchor: 108}
   - {ord: 3, id: "c09-metallic-bonding/b03", type: sort-match, file: "blocks/b03-sort-match-metal-properties.json", anchor: 108}
   - {ord: 4, id: "c09-metallic-bonding/b04", type: mcq-embed, file: "blocks/b04-mcq-check.json", anchor: 108}
+  - {ord: 5, id: "c09-metallic-bonding/b05", type: media-embed, file: "blocks/b05-media-embed.json", anchor: 108}

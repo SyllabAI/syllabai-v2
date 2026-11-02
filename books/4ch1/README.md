@@ -18,9 +18,14 @@
 
 | Phase | Packs | State |
 |---|---|---|
-| A (MVS) | c01–c10 (+ strength-u1) | planned — platform lanes T-BOOK-002..009, content T-BOOK-010; first demo gate c01–c05 |
-| B | c11–c21 (+ strength-u2) | planned — T-BOOK-011, sim-embeds ×2–3 |
-| C | c22–c29 (+ strength-u3/u4) | planned — T-BOOK-013, past-paper deep links on flip |
+| A (MVS) | c01–c10 (+ strength-u1) | published — S4 flips of record (T-BOOK-010 golive-r0 demo gate c01–c05, then the c06–c10 wave) |
+| B | c11–c21 (+ strength-u2) | published — S4 flips of record (T-BOOK-011/012 waves) |
+| C | c22–c29 (+ strength-u3/u4) | published — S4 flips of record (u1+u2+u3 131 VALIDATED, then the T-BOOK-020 u4 fire: 46/46, full book) |
+| Strength Checks | strength-u1..u4 | armed — T-BOOK-069: ADR-BOOK-0004 (PROPOSED) + the density-audit vehicle; blocks await the bank-density gate + pooler credential re-hand |
+| Media embeds | c01 + c02–c29 widen | c01 b08 pilot (T-BOOK-066) + 27/28 widened 2026-11-02 (T-BOOK-070; c17 honest-empty — no provider video); 205 blocks lint-green; L3 serve after the S4 flip |
+
+Estate census of record 2026-11-01: 29/29 packs published, 178/178 blocks VALIDATED
+(book_blocks), glossary 112/112 VALIDATED and serving.
 
 Chemistry-only chapters (Paper-2 route): c09, c10, c15, c21*, c26, c27, c28
 (*c21 flagged C in spec 3.19C+). Route flags live per-pack in `pack.yaml`.

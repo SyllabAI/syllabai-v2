@@ -1,10 +1,12 @@
 # S0 output of record - c11-alkali-metals (T-BOOK-011)
+# T-BOOK-070: b07 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 6 -> 7);
+# the S0 plan is binding — lint G1 checks planned == on-disk.
 chapter: "c11"
 chapter_key: "u2:c11"
 title: "The alkali metals"
 status: published # S4 flip of record — T-BOOK-011/012 r0 (operator dispatch trace 1a15f60b53d4e0d5); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 6
+planned_blocks: 7
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p132 intro+figure, p134 water reaction + observations callout, p136 summary table, p137 mcq"
 blocks:
@@ -14,3 +16,4 @@ blocks:
   - {ord: 4, id: "c11-alkali-metals/b04", type: callout, file: "blocks/b04-callout-observations-vocabulary.json", anchor: 134}
   - {ord: 5, id: "c11-alkali-metals/b05", type: table-fill, file: "blocks/b05-table-fill-group-1-summary.json", anchor: 136}
   - {ord: 6, id: "c11-alkali-metals/b06", type: mcq-embed, file: "blocks/b06-mcq-check.json", anchor: 137}
+  - {ord: 7, id: "c11-alkali-metals/b07", type: media-embed, file: "blocks/b07-media-embed.json", anchor: 137}

@@ -1,10 +1,12 @@
 # S0 output of record - c18-chemical-tests (T-BOOK-011)
+# T-BOOK-070: b08 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 7 -> 8);
+# the S0 plan is binding — lint G1 checks planned == on-disk.
 chapter: "c18"
 chapter_key: "u2:c18"
 title: "Chemical tests"
 status: published # S4 flip of record — T-BOOK-011/012 r0 (operator dispatch trace 1a15f60b53d4e0d5); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 7
+planned_blocks: 8
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p199 intro, p200 gas tests + cation tests tables, p201 water tests, p204 anion drag + nitric callout, p205 mcq"
 blocks:
@@ -15,3 +17,4 @@ blocks:
   - {ord: 5, id: "c18-chemical-tests/b05", type: drag-label, file: "blocks/b05-drag-label-anion-tests.json", anchor: 204}
   - {ord: 6, id: "c18-chemical-tests/b06", type: callout, file: "blocks/b06-callout-nitric-acid-first.json", anchor: 204}
   - {ord: 7, id: "c18-chemical-tests/b07", type: mcq-embed, file: "blocks/b07-mcq-check.json", anchor: 205}
+  - {ord: 8, id: "c18-chemical-tests/b08", type: media-embed, file: "blocks/b08-media-embed.json", anchor: 205}
