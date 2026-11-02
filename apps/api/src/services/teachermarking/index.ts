@@ -73,6 +73,7 @@ import {
   assembleGradedEvidenceEvent,
 } from "../selfmark";
 import {
+  BAND_MULTI_AXIS_PIPELINE_VERSION,
   BAND_PIPELINE_VERSION,
   BandMarkingPipeline,
   isBandDecisionV1,
@@ -83,12 +84,15 @@ import {
   SmartMarkService,
   toMarkingBand,
   toMarkingPoint,
+  trimViolations,
   type BandDecision,
+  type BandDecisionMultiAxisV1,
   type BandMarkingCandidateGenerator,
   type BandMarkingContext,
   type Decision,
   type MarkingCandidateGenerator,
   type MarkingContext,
+  type MultiAxisAxisDecisionV1,
   type SmartMarkResultRow,
 } from "../smartmark";
 
@@ -257,8 +261,10 @@ export interface HumanMarkView {
   createdAt: string;
   /** ADR-040 §5.5: present ONLY for band-part captures (the PartSmartMarkView
    *  bandDecision pattern — the key is absent on point-path marks, so every
-   *  pre-existing response body stays byte-identical). */
-  bandPlacement?: { levelPlacement: number; awardedMarks: number };
+   *  pre-existing response body stays byte-identical). OD-1 PR-B: the shape
+   *  is the capture union — single-axis {levelPlacement, awardedMarks} or
+   *  multi-axis {axes: [...]} (the stored capture, echoed). */
+  bandPlacement?: BandPlacementCaptureUnion;
 }
 
 /** TeacherViews.AnswerMarkingView — the queue read model row. */
@@ -542,9 +548,41 @@ interface BandHumanMarkRow {
  *  the pinned band_decision_v1 shape (snake fields, shape tag) the capture
  *  side writes and the pairing law reads. */
 interface StoredBandPlacement {
+  shape: "band_decision_v1";
   level_placement: number;
   awarded_marks: number;
+  descriptor_hits: Array<never>;
 }
+
+/** OD-1 PR-B — the multi-axis capture as stored on human_marks.band_placement:
+ *  one placement per printed axis column (the part's VALIDATED part-bound
+ *  LEVELS siblings, ref#axis), the pinned multi-axis shape. */
+interface StoredMultiAxisBandPlacement {
+  shape: "band_decision_v1_multi_axis";
+  total_awarded: number;
+  axes: Array<{
+    version_label: string;
+    axis: string;
+    mark_scheme_id: string;
+    level_placement: number;
+    awarded_marks: number;
+    descriptor_hits: Array<never>;
+  }>;
+}
+
+/** The band capture wire union (the contracts' binding mirrors): single-axis
+ *  parts keep the historical {levelPlacement, awardedMarks}; multi-axis
+ *  parts carry one placement per axis column. Which shape is REQUIRED is
+ *  the service's call (it knows the part's sibling count) — a wrong shape
+ *  is an honest 409, never a guess. */
+export interface BandPlacementCaptureSingle {
+  levelPlacement: number;
+  awardedMarks: number;
+}
+export interface BandPlacementCaptureAxes {
+  axes: Array<{ axis: string; levelPlacement: number; awardedMarks: number }>;
+}
+export type BandPlacementCaptureUnion = BandPlacementCaptureSingle | BandPlacementCaptureAxes;
 
 function isStoredBandPlacement(value: unknown): value is StoredBandPlacement {
   if (value === null || typeof value !== "object" || Array.isArray(value)) return false;
@@ -850,28 +888,33 @@ export class TeacherSmartMarkService {
     // then the version-level unbound scheme, then (never silently taken)
     // a different part's scheme; newest-first within each slot.
     const validatedRows = (await this.sql`
-      select id, validation_state, scheme_kind, question_part_id from mark_schemes
+      select id, validation_state, scheme_kind, question_part_id, version_label from mark_schemes
       where question_version_id = ${versionId} and validation_state = ${"VALIDATED"}
       order by case when question_part_id = ${answer.question_part_id} then 0
                     when question_part_id is null then 1 else 2 end,
                created_at desc
-    `) as unknown as Array<{ id: string; validation_state: string; scheme_kind: string | null; question_part_id: string | null }>;
+    `) as unknown as Array<{ id: string; validation_state: string; scheme_kind: string | null; question_part_id: string | null; version_label: string | null }>;
     if (validatedRows.length === 0) {
       return this.refuseUnvalidatedScheme(answer, versionId);
     }
-    // OD-1 MA-10 (multi-axis R4 consumption law, r0): TWO OR MORE VALIDATED
-    // part-bound LEVELS siblings on this answer's part = a multi-axis
-    // printed grid — the per-axis dispatch leg is not wired yet (PR-B); a
-    // single-scheme dispatch would range-check an 8/12-mark essay against
-    // ONE axis's bands. Honest refusal, append-only, nothing marked.
-    const levelSiblings = validatedRows.filter(
+    // OD-1 (multi-axis R4 consumption law, r1 — PR-B's per-axis dispatch
+    // leg): TWO OR MORE VALIDATED part-bound LEVELS siblings on this
+    // answer's part = a multi-axis printed grid — the SET is the R4 unit
+    // (MA-2). The leg dispatches each axis sibling separately (siblings
+    // paired by ref#axis, the printed column of record) and sums the
+    // per-axis sub-decisions at the part (the operator ruling of record,
+    // adr040-g5r2-packet-9609-r0); a single-scheme dispatch here would
+    // range-check an 8/12-mark essay against ONE axis's bands. The sibling
+    // list rides newest-first (the query's created_at order within the
+    // part slot) so the set row's scheme stamp is the newest sibling.
+    const axisSiblings = validatedRows.filter(
       (r) =>
         (r.scheme_kind ?? "POINTS") === "LEVELS" &&
         r.question_part_id != null &&
         String(r.question_part_id) === String(answer.question_part_id),
-    ).length;
-    if (levelSiblings >= 2) {
-      return this.refuseMultiAxisDispatch(answer, versionId);
+    );
+    if (axisSiblings.length >= 2) {
+      return this.markAnswerMultiAxisBand(attemptId, attempt, answer, axisSiblings);
     }
     const scheme = validatedRows[0]!;
     if ((scheme.scheme_kind ?? "POINTS") === "LEVELS") {
@@ -1108,28 +1151,192 @@ export class TeacherSmartMarkService {
     };
   }
 
-  /** OD-1 MA-10 — the multi-axis dispatch refusal: the honest append-only row
-   *  stamped with the newest scheme of the version (the V34 law), failure
-   *  reason MULTI_AXIS_DISPATCH_NOT_WIRED; nothing is marked, no state
-   *  changes, no evidence. Lifted by PR-B's per-axis dispatch leg. */
-  private async refuseMultiAxisDispatch(
+  /** OD-1 per-axis dispatch leg (PR-B, r1) — the multi-axis R4 consumption,
+   *  per-answer topology: the answer's part carries TWO OR MORE VALIDATED
+   *  part-bound LEVELS siblings (one printed grid, MA-2) — dispatch each
+   *  axis sibling separately (siblings paired by ref#axis, the printed
+   *  column of record) and sum the per-axis sub-decisions at the part (the
+   *  operator ruling of record, adr040-g5r2-packet-9609-r0). Laws carried
+   *  here (mirroring the SmartMarkService.set leg):
+   *   - MA-1 identity at dispatch: every sibling's version_label must be
+   *     '<base>#<axis>' with one shared base and distinct axis tokens — a
+   *     breach refuses the set honestly (MULTI_AXIS_IDENTITY_INVALID);
+   *   - the axis scope rides the prompt (axisNote) — the model marks THIS
+   *     column's levels alone;
+   *   - the set is consumed ATOMICALLY: accepted only when EVERY axis
+   *     accepted; any refusing axis → the honest refusal (nothing marked,
+   *     no state change, no evidence), sub-decisions recorded in the
+   *     breakdown for audit (refusing axes' raw output rides raw_output);
+   *   - ONE result row stamped with the NEWEST sibling (the V34 law),
+   *     pipeline 1.5.0; the accepted tail is the SHARED provisional-mark
+   *     law with METRIC_BAND_QWK (a set row can never release on point
+   *     evidence); Σ axis awards close on the part marks (MA-5);
+   *   - unwired seam / an axis with zero bands → the §5.2 posture
+   *     (NO_SCHEME_BANDS, append-only, no state change). */
+  private async markAnswerMultiAxisBand(
+    attemptId: string,
+    attempt: AttemptLockRow,
     answer: MarkingAnswerRow,
-    questionVersionId: string,
+    siblings: Array<{ id: string; validation_state: string; version_label: string | null }>,
   ): Promise<SmartMarkResultRow> {
-    const refusedRows = (await this.sql`
-      select id, validation_state from mark_schemes
-      where question_version_id = ${questionVersionId} order by created_at desc
-    `) as unknown as Array<{ id: string; validation_state: string }>;
-    if (refusedRows.length === 0) throw new NotFoundError("mark scheme", questionVersionId);
-    const refused = refusedRows[0]!;
+    if (this.bandPipeline === null) {
+      return this.refuseBandScheme(answer, siblings[0]!);
+    }
+    // MA-1 identity at dispatch: '<base>#<axis>' on EVERY sibling, one
+    // shared base, distinct axis tokens — then dispatch axis-ascending.
+    const parsed: Array<{ id: string; versionLabel: string; axis: string; base: string }> = [];
+    for (const sibling of siblings) {
+      const label = sibling.version_label;
+      const idx = label === null ? -1 : label.indexOf("#");
+      if (label === null || idx <= 0 || idx === label.length - 1) {
+        return this.refuseMultiAxisIdentity(answer, siblings[0]!.id);
+      }
+      parsed.push({ id: sibling.id, versionLabel: label, axis: label.slice(idx + 1), base: label.slice(0, idx) });
+    }
+    const bases = new Set(parsed.map((p) => p.base));
+    const axes = new Set(parsed.map((p) => p.axis));
+    if (bases.size !== 1 || axes.size !== parsed.length) {
+      return this.refuseMultiAxisIdentity(answer, siblings[0]!.id);
+    }
+    parsed.sort((a, b) => (a.versionLabel < b.versionLabel ? -1 : a.versionLabel > b.versionLabel ? 1 : 0));
+
+    // per-axis two-step reads (kind re-assert + guidance; the bands) — the
+    // same laws as the single-scheme band leg, per printed column
+    const axisData: Array<{ id: string; versionLabel: string; axis: string; bands: ReturnType<typeof toMarkingBand>[]; generalGuidance: string | null }> = [];
+    for (const axis of parsed) {
+      const schemeFullRows = (await this.sql`
+        select validation_state, scheme_kind, general_guidance from mark_schemes where id = ${axis.id}
+      `) as unknown as Array<{ validation_state: string; scheme_kind: string | null; general_guidance: string | null }>;
+      if (schemeFullRows.length === 0) throw new NotFoundError("mark scheme", axis.id);
+      const schemeFull = schemeFullRows[0]!;
+      if ((schemeFull.scheme_kind ?? "POINTS") !== "LEVELS") {
+        throw new ConflictError("mark scheme kind changed between dispatch and read -- refusing loudly");
+      }
+      const bandRows = (await this.sql`
+        select id, level_index, marks_min, marks_max, descriptor_md, guidance_md
+        from mark_bands where mark_scheme_id = ${axis.id} order by level_index
+      `) as unknown as Array<Record<string, unknown>>;
+      const bands = bandRows.map(toMarkingBand);
+      if (bands.length === 0) {
+        return this.refuseBandScheme(answer, siblings[0]!);
+      }
+      axisData.push({ id: axis.id, versionLabel: axis.versionLabel, axis: axis.axis, bands, generalGuidance: schemeFull.general_guidance });
+    }
+
+    // one context per axis (axis-ascending); partPrompt rides the per-answer
+    // row (the :626 select), axisNote scopes the printed column
+    const contexts: BandMarkingContext[] = axisData.map((axis) => ({
+      answer: {
+        id: answer.id,
+        attemptId,
+        questionPartId: answer.question_part_id,
+        answerText: answer.answer_text,
+        label: answer.label,
+        partMarks: answer.part_marks,
+      },
+      schemeId: axis.id,
+      schemeValidationState: "VALIDATED",
+      bands: axis.bands,
+      partPrompt: answer.prompt,
+      generalGuidance: axis.generalGuidance,
+      axisNote:
+        `This part's printed mark grid is MULTI-AXIS. The LEVEL DESCRIPTORS below are ONLY the ` +
+        `"${axis.axis}" axis column (scheme ${axis.versionLabel}); mark the response against this ` +
+        `column's levels alone — the part's other axis columns are marked separately and the ` +
+        `per-axis awards sum to the part's total of ${answer.part_marks} marks.`,
+    }));
+    const entries: BandDecision[] = [];
+    for (const context of contexts) {
+      entries.push(await this.bandPipeline.run(context));
+    }
+
+    // aggregate: per-axis sub-decisions summed at the part, the set accepted
+    // only when EVERY axis accepted (consumption-side MA-2)
+    const axisDecisions: MultiAxisAxisDecisionV1[] = entries.map((d, i) => ({
+      version_label: axisData[i]!.versionLabel,
+      axis: axisData[i]!.axis,
+      mark_scheme_id: axisData[i]!.id,
+      level_placement: d.breakdown.level_placement,
+      awarded_marks: d.breakdown.awarded_marks,
+      descriptor_hits: d.breakdown.descriptor_hits,
+      accepted: d.accepted,
+      failure_reason: d.failureReason,
+      ...(d.breakdown.blank === true ? { blank: true } : {}),
+    }));
+    const allAccepted = entries.every((d) => d.accepted);
+    const total = entries.reduce((s, d) => s + d.marksAwarded, 0);
+    const allBlank = entries.length > 0 && entries.every((d) => d.breakdown.blank === true);
+    const modelId = entries.map((d) => d.candidate?.modelId ?? null).find((m) => m !== null) ?? null;
+    const confidences = entries.map((d) => d.candidate?.confidence ?? null).filter((c): c is number => c !== null);
+    const confidence = confidences.length > 0 ? Math.min(...confidences) : null;
+    const refusing = entries
+      .map((d, i) => ({ d, axis: axisData[i]! }))
+      .filter((e) => !e.d.accepted);
+    const rawOutput = allAccepted
+      ? null
+      : JSON.stringify(
+          refusing.map((e) => ({
+            version_label: e.axis.versionLabel,
+            failure_reason: e.d.failureReason,
+            raw_output: e.d.candidate?.rawOutput ?? null,
+          })),
+        );
+    const breakdown: BandDecisionMultiAxisV1 = {
+      shape: "band_decision_v1_multi_axis",
+      total_awarded: allAccepted ? total : 0,
+      axes: axisDecisions,
+      ...(allBlank ? { blank: true } : {}),
+    };
+    const failureReason = allAccepted
+      ? null
+      : trimViolations([
+          `MULTI_AXIS_AXIS_REFUSED: ` +
+            refusing.map((e) => `${e.axis.versionLabel} ${e.d.failureReason ?? "refused"}`).join(" | "),
+        ]);
+
     const resultId = this.clock.newId();
     await this.sql`
       insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
         marks_awarded, confidence, validation_passed, breakdown, failure_reason,
         mark_scheme_id, scheme_validation_state, raw_output, created_at)
-      values (${resultId}, ${answer.id}, ${PIPELINE_VERSION}, ${null}, ${0}, ${null}, ${false},
-        ${JSON.stringify([])}, ${"MULTI_AXIS_DISPATCH_NOT_WIRED"}, ${refused.id},
-        ${refused.validation_state}, ${null}, ${this.clock.now().toISOString()})
+      values (${resultId}, ${answer.id}, ${BAND_MULTI_AXIS_PIPELINE_VERSION}, ${modelId},
+        ${allAccepted ? total : 0}, ${confidence}, ${allAccepted},
+        ${JSON.stringify(breakdown)}, ${failureReason}, ${siblings[0]!.id},
+        ${siblings[0]!.validation_state}, ${rawOutput}, ${this.clock.now().toISOString()})
+    `;
+    const resultRow: SmartMarkResultRow = {
+      id: resultId,
+      answer_id: answer.id,
+      model_id: modelId,
+      marks_awarded: allAccepted ? total : 0,
+      confidence,
+      validation_passed: allAccepted,
+      breakdown,
+      failure_reason: failureReason,
+    };
+    if (allAccepted) {
+      await this.applyProvisionalMark(attemptId, attempt, answer, total, METRIC_BAND_QWK);
+    }
+    return resultRow;
+  }
+
+  /** OD-1 MA-1 identity breach at dispatch (flip-guard data corrupted after
+   *  validation): the honest append-only set refusal stamped with the newest
+   *  sibling — nothing is marked, no state changes, no evidence. The stamp's
+   *  validation state is VALIDATED by construction (the dispatch only ever
+   *  sees the VALIDATED sibling set). */
+  private async refuseMultiAxisIdentity(
+    answer: MarkingAnswerRow,
+    newestSiblingId: string,
+  ): Promise<SmartMarkResultRow> {
+    const resultId = this.clock.newId();
+    await this.sql`
+      insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
+        marks_awarded, confidence, validation_passed, breakdown, failure_reason,
+        mark_scheme_id, scheme_validation_state, raw_output, created_at)
+      values (${resultId}, ${answer.id}, ${BAND_MULTI_AXIS_PIPELINE_VERSION}, ${null}, ${0}, ${null}, ${false},
+        ${JSON.stringify([])}, ${"MULTI_AXIS_IDENTITY_INVALID"}, ${newestSiblingId},
+        ${"VALIDATED"}, ${null}, ${this.clock.now().toISOString()})
     `;
     return {
       id: resultId,
@@ -1139,7 +1346,7 @@ export class TeacherSmartMarkService {
       confidence: null,
       validation_passed: false,
       breakdown: [],
-      failure_reason: "MULTI_AXIS_DISPATCH_NOT_WIRED",
+      failure_reason: "MULTI_AXIS_IDENTITY_INVALID",
     };
   }
 
@@ -1227,8 +1434,11 @@ export class TeacherMarkingService {
     perPointDecisions: Record<string, number> | null,
     comments: string | null,
     /** ADR-040 §5.5 — the band capture side (additive optional, every
-     *  pre-existing caller unchanged): present ONLY for band parts. */
-    bandPlacement: { levelPlacement: number; awardedMarks: number } | null = null,
+     *  pre-existing caller unchanged): present ONLY for band parts. OD-1
+     *  PR-B: the shape is the capture union — single-axis parts keep the
+     *  historical single placement; multi-axis parts carry one placement
+     *  per printed axis column ({axes: [...]}). */
+    bandPlacement: BandPlacementCaptureUnion | null = null,
   ): Promise<HumanMarkView> {
     // scope gate + serialization point FIRST (:95-98 analog) — the attempt
     // id resolves only INSIDE the marker's enrollment scope
@@ -1272,17 +1482,19 @@ export class TeacherMarkingService {
 
     // ADR-040 §5.5 — the band capture side: a band placement is validated
     // BEFORE any state write (a refused capture leaves the answer untouched),
-    // against the question's newest-version newest scheme's bound bands. The
-    // hard range law holds on the HUMAN side too as an honest data-entry law:
-    // out-of-range or unknown-level placements are a 409, NEVER a clamp, and
-    // the placement's within-band mark must equal marksAwarded (the row's
-    // grade of record — the learner model reads that column; band_placement
-    // is the calibration artifact, not a second score).
+    // against the PART-SCOPED scheme's bound bands (OD-2 — the part-bound
+    // sibling wins, then the version-level unbound scheme; never a different
+    // part's scheme). The hard range law holds on the HUMAN side too as an
+    // honest data-entry law: out-of-range or unknown-level placements are a
+    // 409, NEVER a clamp. Single-axis parts: the placement's within-band mark
+    // must equal marksAwarded. Multi-axis parts (OD-1 PR-B): the capture is
+    // PER-AXIS and the axis awards must SUM to marksAwarded (the row's grade
+    // of record — the learner model reads that column; band_placement is the
+    // calibration artifact, not a second score).
     let bandPlacementJson: string | null = null;
     if (bandPlacement !== null) {
-      await this.assertBandCaptureWired(answer);
       bandPlacementJson = JSON.stringify(
-        await this.validateBandPlacement(answer.question_id, bandPlacement, marksAwarded),
+        await this.resolveBandCapture(answer, bandPlacement, marksAwarded),
       );
     }
 
@@ -1337,63 +1549,75 @@ export class TeacherMarkingService {
     };
   }
 
-  /** OD-1 MA-10 — the multi-axis capture guard: a band placement against a
-   *  part whose printed grid is multi-axis (TWO OR MORE VALIDATED part-bound
-   *  LEVELS siblings on the question's newest version) is refused BEFORE any
-   *  state write — the single-placement band_decision_v1 shape cannot carry
-   *  per-axis placements (PR-B wires the per-axis capture + the OD-2
-   *  part-scoped resolution). A refused capture writes nothing. */
-  private async assertBandCaptureWired(answer: MarkingAnswerRow): Promise<void> {
+  /** OD-1 PR-B — the band capture resolution (the OD-2 part-scoped fix +
+   *  the per-axis capture lift, lifting the former MULTI_AXIS_CAPTURE_NOT_WIRED
+   *  refusal). The answer's part resolves its OWN scheme:
+   *   - the question's newest version;
+   *   - the part's VALIDATED part-bound LEVELS siblings (newest first);
+   *   - TWO OR MORE siblings = a multi-axis printed grid → the capture is
+   *     PER-AXIS: the placement must carry one {axis, levelPlacement,
+   *     awardedMarks} per sibling (the axis token pairs the printed column,
+   *     ref#axis), each placement validated against ITS axis's bound bands
+   *     (level in scope, inside the printed range — honest 409, never a
+   *     clamp), and the axis awards must sum to marksAwarded (the row's
+   *     grade of record — OD-1 MA-5 closure). The stored shape is the pinned
+   *     band_decision_v1_multi_axis;
+   *   - otherwise the OD-2 single-axis law: the part-bound sibling wins,
+   *     then the version-level unbound LEVELS scheme — never a DIFFERENT
+   *     part's scheme (the historical newest-scheme-anywhere read
+   *     range-checked captures against the wrong scheme's siblings).
+   *     Stored shape stays the pinned band_decision_v1.
+   *  A refused capture writes nothing (the throw precedes every state
+   *  write). */
+  private async resolveBandCapture(
+    answer: MarkingAnswerRow,
+    placement: BandPlacementCaptureUnion,
+    marksAwarded: number,
+  ): Promise<StoredBandPlacement | StoredMultiAxisBandPlacement> {
     const versionRows = (await this.sql`
       select id from question_versions where question_id = ${answer.question_id}
       order by version desc limit 1
     `) as unknown as Array<{ id: string }>;
-    if (versionRows.length === 0) return; // validateBandPlacement 404s honestly
-    const sibRows = (await this.sql`
-      select count(*)::int as n from mark_schemes
-      where question_version_id = ${versionRows[0]!.id}
+    if (versionRows.length === 0) {
+      throw new NotFoundError("question version", answer.question_id);
+    }
+    const versionId = versionRows[0]!.id;
+    const siblingRows = (await this.sql`
+      select id, version_label from mark_schemes
+      where question_version_id = ${versionId}
         and validation_state = ${"VALIDATED"} and scheme_kind = ${"LEVELS"}
         and question_part_id = ${answer.question_part_id}
-    `) as unknown as Array<{ n: number }>;
-    if (Number(sibRows[0]?.n ?? 0) >= 2) {
-      throw new ConflictError(
-        "MULTI_AXIS_CAPTURE_NOT_WIRED -- this part's printed grid is multi-axis; per-axis band capture awaits the consumption PR (OD-1 MA-10); refused, nothing written",
-      );
-    }
-  }
+      order by created_at desc
+    `) as unknown as Array<{ id: string; version_label: string | null }>;
 
-  /** ADR-040 §5.5 — the band capture's LEVELS validation: the question's
-   *  newest-version newest scheme must be LEVELS with bound bands (honest
-   *  409 otherwise — a placement against nothing is refused, never guessed);
-   *  the placement must reference a bound level; awardedMarks must sit
-   *  inside that band's printed range; the stored shape is the pinned
-   *  band_decision_v1 (snake fields, shape tag, empty descriptor_hits — the
-   *  teacher's rationale lives in comments, the smart side's transparency
-   *  array has no human-capture analog in cycle 1). */
-  private async validateBandPlacement(
-    questionId: string,
-    placement: { levelPlacement: number; awardedMarks: number },
-    marksAwarded: number,
-  ): Promise<{
-    shape: "band_decision_v1";
-    level_placement: number;
-    awarded_marks: number;
-    descriptor_hits: Array<never>;
-  }> {
-    const schemeRows = (await this.sql`
-      select ms.id, ms.scheme_kind from mark_schemes ms
-      join question_versions qv on qv.id = ms.question_version_id
-      where qv.question_id = ${questionId}
-      order by qv.version desc, ms.created_at desc
-      limit 1
-    `) as unknown as Array<{ id: string; scheme_kind: string | null }>;
-    const scheme = schemeRows[0];
-    if (!scheme || (scheme.scheme_kind ?? "POINTS") !== "LEVELS") {
+    if (siblingRows.length >= 2) {
+      return await this.resolveMultiAxisCapture(siblingRows, placement, marksAwarded);
+    }
+
+    // the OD-2 single-axis law: the part-bound sibling wins, else the
+    // version-level unbound LEVELS scheme — never a different part's scheme
+    let schemeId: string | null = siblingRows.length === 1 ? siblingRows[0]!.id : null;
+    if (schemeId === null) {
+      const unboundRows = (await this.sql`
+        select id from mark_schemes
+        where question_version_id = ${versionId}
+          and validation_state = ${"VALIDATED"} and scheme_kind = ${"LEVELS"}
+          and question_part_id is null
+        order by created_at desc limit 1
+      `) as unknown as Array<{ id: string }>;
+      schemeId = unboundRows.length > 0 ? unboundRows[0]!.id : null;
+    }
+    if (schemeId === null) {
       throw new ConflictError("band placement requires a LEVELS mark scheme with bound bands");
+    }
+    if ("axes" in placement) {
+      throw new ConflictError(
+        "SINGLE_AXIS_CAPTURE_SHAPE -- this part's printed grid is single-axis; band capture takes one {levelPlacement, awardedMarks} placement (OD-1 per-axis capture); refused, nothing written",
+      );
     }
     const bandRows = (await this.sql`
       select level_index, marks_min, marks_max from mark_bands
-      where mark_scheme_id = ${scheme.id} order by level_index
+      where mark_scheme_id = ${schemeId} order by level_index
     `) as unknown as Array<{ level_index: number; marks_min: number; marks_max: number }>;
     if (bandRows.length === 0) {
       throw new ConflictError("band placement requires a LEVELS mark scheme with bound bands");
@@ -1422,6 +1646,114 @@ export class TeacherMarkingService {
       level_placement: placement.levelPlacement,
       awarded_marks: placement.awardedMarks,
       descriptor_hits: [],
+    };
+  }
+
+  /** The per-axis capture branch (OD-1 PR-B): one placement per printed axis
+   *  column. MA-1 identity at capture ('<base>#<axis>' on every sibling, one
+   *  shared base, distinct tokens), exact token coverage (unknown, duplicate
+   *  and missing axes all refuse), per-axis band validation (level in scope,
+   *  inside the printed range), and the MA-5 closure — Σ axis awards = the
+   *  mark's marksAwarded. Placements store axis-ascending. */
+  private async resolveMultiAxisCapture(
+    siblings: Array<{ id: string; version_label: string | null }>,
+    placement: BandPlacementCaptureUnion,
+    marksAwarded: number,
+  ): Promise<StoredMultiAxisBandPlacement> {
+    if (!("axes" in placement)) {
+      const labels = siblings.map((s) => s.version_label ?? "(unlabeled)").join(", ");
+      throw new ConflictError(
+        "MULTI_AXIS_CAPTURE_AXES_REQUIRED -- this part's printed grid is multi-axis (" + labels +
+          "); band capture takes one placement per axis under bandPlacement.axes (OD-1 per-axis capture); refused, nothing written",
+      );
+    }
+    const parsed: Array<{ id: string; versionLabel: string; axis: string; base: string }> = [];
+    for (const sibling of siblings) {
+      const label = sibling.version_label;
+      const idx = label === null ? -1 : label.indexOf("#");
+      if (label === null || idx <= 0 || idx === label.length - 1) {
+        throw new ConflictError(
+          "MULTI_AXIS_IDENTITY_INVALID -- the part's axis siblings are not '<base>#<axis>' labels (OD-1 MA-1); refused, nothing written",
+        );
+      }
+      parsed.push({ id: sibling.id, versionLabel: label, axis: label.slice(idx + 1), base: label.slice(0, idx) });
+    }
+    const bases = new Set(parsed.map((p) => p.base));
+    const tokens = new Set(parsed.map((p) => p.axis));
+    if (bases.size !== 1 || tokens.size !== parsed.length) {
+      throw new ConflictError(
+        "MULTI_AXIS_IDENTITY_INVALID -- the part's axis siblings do not share one base ref or repeat an axis token (OD-1 MA-1); refused, nothing written",
+      );
+    }
+    const byAxis = new Map<string, { levelPlacement: number; awardedMarks: number }>();
+    for (const entry of placement.axes) {
+      if (byAxis.has(entry.axis)) {
+        throw new ConflictError(
+          "duplicate axis placement \"" + entry.axis + "\" — a multi-axis capture carries exactly one placement per axis (OD-1 per-axis capture)",
+        );
+      }
+      byAxis.set(entry.axis, { levelPlacement: entry.levelPlacement, awardedMarks: entry.awardedMarks });
+    }
+    for (const axis of parsed) {
+      if (!byAxis.has(axis.axis)) {
+        throw new ConflictError(
+          "axis \"" + axis.axis + "\" (" + axis.versionLabel + ") has no placement — a multi-axis capture carries one placement per axis (OD-1 per-axis capture)",
+        );
+      }
+    }
+    if (byAxis.size !== parsed.length) {
+      const known = new Set(parsed.map((p) => p.axis));
+      const unknown = [...byAxis.keys()].filter((a) => !known.has(a));
+      throw new ConflictError(
+        "unknown axis placement(s) " + unknown.map((a) => "\"" + a + "\"").join(", ") +
+          " — placements pair the part's VALIDATED axis siblings only (OD-1 per-axis capture)",
+      );
+    }
+    parsed.sort((a, b) => (a.versionLabel < b.versionLabel ? -1 : a.versionLabel > b.versionLabel ? 1 : 0));
+    let total = 0;
+    const storedAxes: StoredMultiAxisBandPlacement["axes"] = [];
+    for (const axis of parsed) {
+      const entry = byAxis.get(axis.axis)!;
+      const bandRows = (await this.sql`
+        select level_index, marks_min, marks_max from mark_bands
+        where mark_scheme_id = ${axis.id} order by level_index
+      `) as unknown as Array<{ level_index: number; marks_min: number; marks_max: number }>;
+      if (bandRows.length === 0) {
+        throw new ConflictError("band placement requires a LEVELS mark scheme with bound bands");
+      }
+      const placed = bandRows.find((b) => b.level_index === entry.levelPlacement);
+      if (placed === undefined) {
+        throw new ConflictError(
+          "axis \"" + axis.axis + "\" band placement level " + entry.levelPlacement +
+            " is not one of the bound levels " + bandRows.map((b) => b.level_index).join(", "),
+        );
+      }
+      if (entry.awardedMarks < placed.marks_min || entry.awardedMarks > placed.marks_max) {
+        throw new ConflictError(
+          "axis \"" + axis.axis + "\" awarded marks " + entry.awardedMarks +
+            " outside level " + placed.level_index + "'s printed range " + placed.marks_min + "–" + placed.marks_max,
+        );
+      }
+      total += entry.awardedMarks;
+      storedAxes.push({
+        version_label: axis.versionLabel,
+        axis: axis.axis,
+        mark_scheme_id: axis.id,
+        level_placement: entry.levelPlacement,
+        awarded_marks: entry.awardedMarks,
+        descriptor_hits: [],
+      });
+    }
+    if (total !== marksAwarded) {
+      throw new ConflictError(
+        "the axis awards sum to " + total + " but the mark's marksAwarded is " + marksAwarded +
+          " — per-axis awards must sum to the row's grade of record (OD-1 MA-5)",
+      );
+    }
+    return {
+      shape: "band_decision_v1_multi_axis",
+      total_awarded: total,
+      axes: storedAxes,
     };
   }
 
@@ -1652,10 +1984,17 @@ export class TeacherMarkingService {
    * non-null placement on BOTH sides pairs [smart, human] placements.
    * Skips are documented, never errors: no run → not captured (the capture
    * floor counts this); unvalidated / point-shaped / placement-less runs
-   * and malformed captures cannot pair. The band ranges ride ONE batched
-   * read over the distinct schemes (`= any(${ids}::uuid[])`) — no N+1 on
-   * mark_bands. The smart side's within-band mark rides the run row's
-   * marks_awarded (the band row's awarded mark of record).
+   * and malformed captures cannot pair. MULTI-AXIS shapes (OD-1 PR-B) skip
+   * honestly on BOTH sides — a multi-axis part carries one placement PER
+   * axis column, which is not ordinally pairable on a single level axis:
+   * the smart side's band_decision_v1_multi_axis breakdown and the human
+   * side's multi-axis capture both fail the single-placement shape guards
+   * below (captured-but-not-scored, the documented skip). A multi-axis κ
+   * lane is future law — never an invented pairing.
+   * The band ranges ride ONE batched read over the distinct schemes
+   * (`= any(${ids}::uuid[])`) — no N+1 on mark_bands. The smart side's
+   * within-band mark rides the run row's marks_awarded (the band row's
+   * awarded mark of record).
    */
   private async collectBandPacket(humanSample: BandHumanMarkRow[]): Promise<BandPacketStats> {
     const packetRows: BandHumanMarkRow[] = [];
