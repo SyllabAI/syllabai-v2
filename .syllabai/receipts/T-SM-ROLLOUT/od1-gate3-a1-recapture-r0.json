@@ -1,0 +1,98 @@
+{
+  "packet": "od1-gate3-a1-recapture-r0",
+  "trace": "1a19b6582110bbe5",
+  "date": "2026-11-02",
+  "law": "OD-1 multi-axis R4 consumption law r0 (MA-1..MA-12) — PR #611, merge fc793dfc; the SET (all LEVELS siblings of one question_part, one printed grid) is the R4 unit",
+  "operator_order": "repair the 2 a1-axis defect sets (re-capture, then re-flip -> 147/147)",
+  "diagnosis": {
+    "class": "published-source printing quirk, faithfully captured",
+    "detail": "In both printed CIE 9609 grids the Knowledge and Application '2a' rung cell prints marks 4 where the parallel Analysis '2a' cell prints 3, while both axes are capped '(4 marks)' and the part totals 8. The OD-1 capture (glm-ocr-qp-v1+glm-ocr-ms-v1, 2026-11-01) was faithful to the print; MA-4 contiguity (chain 1,2,4,4 has gap 2->4) refuses the set at flip. Fix = re-capture of the a1 axis against the printed grid's own internal evidence (parallel-axis rung, axis caps, part total); no clamp of live data, no descriptor invention.",
+    "verified_first_hand": [
+      "9609-S22-QP-21 ms.pdf PDF page 9 (footer 'Page 9 of 22') — grid for 1(b)(ii) read visually",
+      "9609-M22-QP-22 ms.pdf PDF page 20 (footer 'Page 20 of 24') — grid for 2(c) read visually"
+    ]
+  },
+  "sources": [
+    {
+      "paper": "9609/21 May/June 2022",
+      "exam_paper_id": "e0e75c95-94ef-4c57-b06f-3f7d983eda85",
+      "ms_document_id": "a8ca1573-f2c8-5e57-a95e-f1e0c4331848",
+      "source_uri": "SyllabAI/syllabai-pastpapers@main:past-papers/cambridge-international/ial/business/9609/past-papers/2022-06/9609-S22-QP-21/ms.pdf",
+      "pdf_sha256": "5879a40978f3d92965545f5940583f4a4ad59fddeb3ecef054adc466522039ed",
+      "grid_page": 9,
+      "question": "1(b)(ii) Analyse two benefits to Priya of producing a cash flow forecast. (8)"
+    },
+    {
+      "paper": "9609/22 February/March 2022",
+      "exam_paper_id": "971b0a9c-6224-4359-bc4d-183d255b35be",
+      "ms_document_id": "89aa42ce-3b05-5b4b-8507-d32d56500742",
+      "source_uri": "SyllabAI/syllabai-pastpapers@main:past-papers/cambridge-international/ial/business/9609/past-papers/2022-03/9609-M22-QP-22/ms.pdf",
+      "pdf_sha256": "000e6f4c2b59243a07c16da490fbe708065b290c577771743c728ae6cca2805a",
+      "grid_page": 20,
+      "question": "2(c) Analyse two possible disadvantages to BB of decreased staff morale and welfare. (8)"
+    }
+  ],
+  "printed_grids_verbatim": [
+    {
+      "ref": "1-b-ii",
+      "rows": [
+        {"level": "2b", "ka": "Shows understanding of two benefits in context", "ka_marks": 4, "analysis": "Developed analysis of two benefits in context", "analysis_marks": 4},
+        {"level": "2a", "ka": "Shows understanding of one benefit in context", "ka_marks_printed": 4, "ka_marks_resolved": 3, "analysis": "Developed analysis of one benefit in context", "analysis_marks": 3},
+        {"level": "1", "ka": "Shows knowledge of two benefits", "ka_marks": 2, "analysis": "Limited analysis of two benefits", "analysis_marks": 2},
+        {"level": null, "ka": "Shows knowledge of one benefit", "ka_marks": 1, "analysis": "Limited analysis of one benefit", "analysis_marks": 1},
+        {"level": "0", "ka": "No creditable content", "ka_marks": 0, "analysis": "No creditable content", "analysis_marks": 0}
+      ]
+    },
+    {
+      "ref": "2-c",
+      "rows": [
+        {"level": "2b", "ka": "Shows knowledge of two disadvantages of decreased morale and welfare in context", "ka_marks": 4, "analysis": "Developed analysis of two disadvantages of decreased staff morale and welfare in context", "analysis_marks": 4},
+        {"level": "2a", "ka": "Shows knowledge of one disadvantage of decreased morale and welfare in context", "ka_marks_printed": 4, "ka_marks_resolved": 3, "analysis": "Developed analysis of one disadvantage of decreased staff morale and welfare in context", "analysis_marks": 3},
+        {"level": "1b", "ka": "Shows knowledge of two disadvantages of decreased morale and welfare", "ka_marks": 2, "analysis": "Limited analysis of two disadvantages of decreased staff morale and welfare", "analysis_marks": 2},
+        {"level": "1a", "ka": "Shows knowledge of one disadvantage of decreased morale and welfare", "ka_marks": 1, "analysis": "Limited analysis of one disadvantage of decreased staff morale and welfare", "analysis_marks": 1},
+        {"level": "0", "ka": "No creditable content", "ka_marks": 0, "analysis": "No creditable content", "analysis_marks": 0}
+      ]
+    }
+  ],
+  "rescue_ruling_basis": "ka_marks_resolved=3 for the '2a' rung on the print's own internal evidence: (i) the parallel Analysis cell of the same rung prints 3; (ii) both axis columns are capped '(4 marks)'; (iii) the part marks column prints 8 = 4 + 4; (iv) a 4/4 pair on rungs 2a/2b would make the 2b descriptor unreachable-higher for identical marks. The 0 row ('No creditable content') stays out of birth per ADR-040 section 2.1 (zero marks is not a band); printed text preserved here verbatim.",
+  "repairs": [
+    {
+      "part_id": "24169bfc-0cc5-48ca-b89b-9b972263e113",
+      "part_label": "1-b-ii (b-ii), marks 8",
+      "scheme_id": "babe29ef-3893-4aea-9d13-e11073d27730",
+      "version_label": "1-b-ii#a1",
+      "axis_name_printed": "Knowledge and Application (4 marks)",
+      "rows": [
+        {"level_index": 3, "before": {"marks_min": 4, "marks_max": 4, "descriptor_md": "Shows understanding of benefits two in context"}, "after": {"marks_min": 3, "marks_max": 3, "descriptor_md": "Shows understanding of one benefit in context"}},
+        {"level_index": 4, "before": {"marks_min": 4, "marks_max": 4, "descriptor_md": "Shows understanding of benefit one in context"}, "after": {"marks_min": 4, "marks_max": 4, "descriptor_md": "Shows understanding of two benefits in context"}}
+      ],
+      "untouched_rows": [
+        {"level_index": 1, "marks_min": 1, "marks_max": 1, "descriptor_md": "Shows knowledge of one benefit"},
+        {"level_index": 2, "marks_min": 2, "marks_max": 2, "descriptor_md": "Shows knowledge of two benefits"}
+      ]
+    },
+    {
+      "part_id": "db3536e3-6851-4a61-b644-7df9f5a13146",
+      "part_label": "2-c (c), marks 8",
+      "scheme_id": "b76a2cab-9d3e-4818-874d-92674f90a198",
+      "version_label": "2-c#a1",
+      "axis_name_printed": "Knowledge and Application (4 marks)",
+      "rows": [
+        {"level_index": 3, "before": {"marks_min": 4, "marks_max": 4, "descriptor_md": "Shows knowledge of two disadvantages of decreased morale and welfare in context"}, "after": {"marks_min": 3, "marks_max": 3, "descriptor_md": "Shows knowledge of one disadvantage of decreased morale and welfare in context"}},
+        {"level_index": 4, "before": {"marks_min": 4, "marks_max": 4, "descriptor_md": "Shows knowledge of one disadvantage of decreased morale and welfare in context"}, "after": {"marks_min": 4, "marks_max": 4, "descriptor_md": "Shows knowledge of two disadvantages of decreased morale and welfare in context"}}
+      ],
+      "untouched_rows": [
+        {"level_index": 1, "marks_min": 1, "marks_max": 1, "descriptor_md": "Shows knowledge of one disadvantage of decreased morale and welfare"},
+        {"level_index": 2, "marks_min": 2, "marks_max": 2, "descriptor_md": "Shows knowledge of two disadvantages of decreased morale and welfare"}
+      ]
+    }
+  ],
+  "post_repair_shape": {
+    "both_sets": {
+      "a1_chain": "1-1, 2-2, 3-3, 4-4 (contiguous, ordinals ascend)",
+      "a2_chain": "1-1, 2-2, 3-3, 4-4 (data unchanged — the a2 capture was already clean; both siblings sit SUGGESTED because gate 2 refused the WHOLE set atomically)",
+      "ma5": "4 + 4 = 8 = part marks"
+    }
+  },
+  "disclosed_out_of_scope": "The S21 capture's a2 L1/L2 descriptors transpose the print's word order ('Limited analysis of benefit one/benefits two' vs printed 'Limited analysis of one benefit/two benefits'). Those rows are VALIDATED (gate 2 flip), law-clean (MA-3 non-blank; MA-4/MA-5 pass), and outside this order's a1 scope — recorded for a future verbatim pass, not edited here."
+}
