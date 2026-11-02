@@ -111,21 +111,32 @@ export function createTeachMeStore(sql: SqlFn): TeachMeStore {
     },
 
     async updateSession(id, patch) {
-      const sets: string[] = [];
-      const vals: unknown[] = [];
-      const push = (clause: string, value: unknown) => {
-        vals.push(value);
-        sets.push(clause.replace("?", `$${vals.length}`));
-      };
-      if (patch.status !== undefined) push("status = ?", patch.status);
-      if (patch.messageCount !== undefined) push("message_count = ?", patch.messageCount);
-      if (patch.llmCallCount !== undefined) push("llm_call_count = ?", patch.llmCallCount);
-      if (patch.tokensUsed !== undefined) push("tokens_used = ?", patch.tokensUsed);
-      if (patch.endedAt !== undefined) push("ended_at = ?", patch.endedAt);
-      if (patch.flags !== undefined) push("flags = ?::jsonb", JSON.stringify(patch.flags));
-      if (sets.length === 0) return;
-      const stmt = `UPDATE teach_sessions SET ${sets.join(", ")} WHERE id = $${vals.length + 1}`;
-      await sql([stmt] as unknown as TemplateStringsArray, ...vals, id);
+      // toQuery interleave law (services/identity/users.ts): the tagged-template
+      // adapter builds text = strings[0] + "$1" + strings[1] + "$2" + … —
+      // placeholders land BETWEEN string chunks. A statement string that already
+      // carries $n literals breaks on the real seam (pg 42601): toQuery appends
+      // $1..$n AFTER the single chunk, producing trailing duplicate refs.
+      // Found by the T-TEACHME-001 prod real-session smoke (r1 receipt,
+      // SMOKE_RED_SEAM_DEFECT) — latent since run-002: the behavioural suite's
+      // in-memory fakes never touch the seam. Chunks are therefore built so the
+      // placeholders fall between them, values in positional order.
+      const entries: Array<{ col: string; val: unknown; after?: string }> = [];
+      if (patch.status !== undefined) entries.push({ col: "status", val: patch.status });
+      if (patch.messageCount !== undefined) entries.push({ col: "message_count", val: patch.messageCount });
+      if (patch.llmCallCount !== undefined) entries.push({ col: "llm_call_count", val: patch.llmCallCount });
+      if (patch.tokensUsed !== undefined) entries.push({ col: "tokens_used", val: patch.tokensUsed });
+      if (patch.endedAt !== undefined) entries.push({ col: "ended_at", val: patch.endedAt });
+      if (patch.flags !== undefined) entries.push({ col: "flags", val: JSON.stringify(patch.flags), after: "::jsonb" });
+      if (entries.length === 0) return;
+      const strings: string[] = [`UPDATE teach_sessions SET ${entries[0]!.col} = `];
+      const vals: unknown[] = [entries[0]!.val];
+      for (let i = 1; i < entries.length; i++) {
+        strings.push(`${entries[i - 1]!.after ?? ""}, ${entries[i]!.col} = `);
+        vals.push(entries[i]!.val);
+      }
+      strings.push(`${entries[entries.length - 1]!.after ?? ""} WHERE id = `);
+      vals.push(id);
+      await sql(strings as unknown as TemplateStringsArray, ...vals);
     },
 
     async appendMessage(row) {
