@@ -1,0 +1,38 @@
+{
+  "task": "T-BOOK-070",
+  "receipt": "media-merged-r1",
+  "kind": "bookkeeping — post-merge verification first-hand + task yaml status bump",
+  "operator_order": "Proceed with 4 intensity checks, broader media embedding (IM trace 1a19b69d1fddc0b5, 2026-11-02)",
+  "session": "zai-web web-c414c074-1cb4-4bd5-b111-546be3b49355, trace 1a19cc6ba00a9a75",
+  "date_utc": "2026-11-02",
+  "merge_of_record": {
+    "pr": 635,
+    "branch": "t-book-070/media-widen",
+    "head": "1f51f7ac",
+    "merge_sha": "9f4d8875",
+    "merged_at_utc": "2026-11-02T09:56:42Z",
+    "ci_on_merge_sha": { "verify": "success", "hub": "success", "source": "check-runs API, first-hand this session" },
+    "main_tip_at_receipt": "ec42a894",
+    "ci_on_main_tip": { "verify": "success", "hub": "success", "source": "check-runs API, first-hand this session" }
+  },
+  "file_plane_census": {
+    "packs": 29,
+    "media_embed_blocks": 28,
+    "wiring": "block file + pack.yaml blocks-row agree 28/28",
+    "manifest_rows": 27,
+    "c17": "HONEST-EMPTY of record — both Cognito candidates (4.16-making-soluble-salts, 4.15-making-insoluble-salts) provider-200 with no video on the page (pilot verdict class, not a density decision); zero-invention law forbids padding",
+    "verdict": "the 'broader media embedding' half is FILE-PLANE COMPLETE"
+  },
+  "vehicle_reverification": {
+    "task": "T-BOOK-069",
+    "runtime": "bun 1.3.14",
+    "parse": "bun build --no-bundle apps/api/scripts/books-strength/density-audit.mts — OK",
+    "guard_probe": "DATABASE_URL absent -> exit 2, 'DATABASE_URL missing or not postgres:// — connect guard fired (env-only law; nothing read, nothing written)' — matches strength-armed-r0"
+  },
+  "task_yaml_bump": ".syllabai/tasks/T-BOOK-070-media-widen.yaml status PR-OPEN-CI-PENDING -> MERGED-AWAITING-S4-DB-FLIP (this commit)",
+  "pending_l3_plane": [
+    "media S4 ingest+flip: book_blocks 178->205 + pack flip + serve proof — ONE command on the Neon MAIN pooler re-hand (T-BOOK-068 pattern)",
+    "strength checks u1-u4: density-audit --audit (per-point gate) + --select u<N> -> author strength-u<N>/ from bank truth -> G1-G4 + S1/S2/S3 -> S4 flip — gated on the MAIN pooler re-hand AND the ADR-BOOK-0004 acceptance word (status PROPOSED)"
+  ],
+  "boundaries": ".syllabai/** only; zero code/schema/pack bytes; zero DB/prod contact; fetch-first; no force-push"
+}
