@@ -52,6 +52,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { clearIdentity, useIdentity } from "@/lib/identity";
 import { roleHome } from "@/lib/role-home";
+import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { isImmersiveRoute, isViewerRoute } from "@/lib/focus-routes";
 import { useLastOpened } from "@/lib/last-opened";
 import { cn } from "@/lib/utils";
@@ -109,6 +110,10 @@ export function AppShell({
   const pathname = usePathname();
   const identity = useIdentity();
   const lastOpened = useLastOpened();
+  // A-3 (frontend-flow audit): the header's sign-in links carry ?next so
+  // the login page returns the user to the surface they left — RequireAuth's
+  // prompt already did; now every entry point does.
+  const currentSearch = useCurrentSearch();
   // course pages manage their own horizontal rhythm (course shell + resource
   // panel); the graph surfaces are full-bleed (the visualizer canvas wants
   // the whole viewport); the tutor workspace is an immersive app surface
@@ -240,7 +245,7 @@ export function AppShell({
                 <>
                   <DropdownMenuSeparator className="sm:hidden" />
                   <DropdownMenuItem asChild className="cursor-pointer sm:hidden">
-                    <Link href="/login">
+                    <Link href={signInHref(pathname, currentSearch)}>
                       <LogIn className="size-4" aria-hidden />
                       <span className="flex-1">Sign in</span>
                     </Link>
@@ -313,7 +318,7 @@ export function AppShell({
                 className="gap-1.5 px-2 sm:px-3"
                 aria-label="Sign in"
               >
-                <Link href="/login">
+                <Link href={signInHref(pathname, currentSearch)}>
                   <LogIn className="size-3.5" aria-hidden />
                   <span className="hidden sm:inline">Sign in</span>
                 </Link>

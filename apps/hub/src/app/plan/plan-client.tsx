@@ -29,6 +29,7 @@
  */
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { CalendarCheck, CheckCircle2, Circle, Loader2, Pencil, Sparkles } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -36,6 +37,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { getToken } from "@/lib/api";
+import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { useMySubjects } from "@/lib/my-subjects";
 import {
   completionCopy,
@@ -65,6 +67,8 @@ function seasonChip(s: StudyPlanSeason): string {
 }
 
 export function PlanClient() {
+  const pathname = usePathname();
+  const currentSearch = useCurrentSearch();
   const payload = useStudyPlan();
   const defaults = useStudyPlanDefaults();
   const mySubjects = useMySubjects();
@@ -184,7 +188,7 @@ export function PlanClient() {
               from your subjects.
             </p>
             <Button asChild>
-              <Link href="/login">Sign in</Link>
+              <Link href={signInHref(pathname, currentSearch)}>Sign in</Link>
             </Button>
           </CardContent>
         </Card>
