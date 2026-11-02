@@ -867,3 +867,19 @@ Work Log:
 
 Stage Summary:
 - Plane of record: official-papers.json ed75097069090fc3 -> 23215b0c14c36910; GFM parts 73 -> 102; remaining table-crop parts = 11 figure crops + 1 FP, all adjudicated. Run-038 (printed figure crops: 19 census gap questions + 3 spinner diagrams + the 6-b stub) is the next wave of record.
+
+## T-OEQ-MATHSB-SERVE-1 run-038 — printed-figure wiring wave (continuation of "Proceed with tranche-3", trace 1a19ae19a0be0129)
+Agent: main (Z.ai, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+Task: census tranche-3 worklist (3) — the never-cropped histogram/grid figures + the run-037 spinner/stub ledger — first-hand crops from the official QP PDFs, corpus leg PR #278 (22 PNGs merged 656ad812), plane wiring this commit.
+
+Work Log:
+- Figure capture: 22 crops @2x from the upload/ official-4MB1 QPs (frame-filtered drawing-cluster locator + per-figure band verification; every crop visually read against its printed page). Corpus leg: resources PR #278 merged (656ad81207) — 22 PNGs under Official-ExamQuestion/igcse-maths-b-16/<series>/<code>/assets/.
+- 3rd prose-only FP of record: 2023-01_02r_11 — QP p.30 stem + p.31 answer lines re-read first-hand: 'A curve C and a straight line L are drawn on a grid' prints NO grid (hypothetical reference); excluded from the gap census (true gaps 29 -> 28 parts).
+- 02r_7 twin family decoded: p.16 = the MAIN incomplete Tuesday histogram (wired to 7-b + 7-c), p.19 = the printed SPARE copy (wired to 7-d) — both cropped per paper.
+- 2025-11_02_6-b: the 'Figure not shown in this reconstruction' stub REPLACED by the real printed histogram; axis run-on retired.
+- Wiring: 33 parts / 33 asset attachments / 12 axis run-ons retired (each was the figure's only text carrier; all KILL-gated) across 20 papers. Assets appended with full schema {kind, mention, page, review, shared, path, rawUrl}; mention vocabulary: histogram/spinner -> diagram, plotting grids -> grid.
+- Gates: battery 14/14 GREEN --write (census_EXACT 66/1281/2443/6600; asset_integrity with append-only add semantics; old_form_discharge incl. stub + run-on KILLs + rawUrl-in-pmd asserts; value_carrier 33/33); katex 124/124 @0.16.47 throwOnError; hub-engine render 33/33 (img accounting exact 0->1 per wired part, tables preserved 1->1 — the render-gate table heuristic corrected for wiring runs: LOSS is the failure, not non-increase).
+- Discipline: fetch-first race-guard before push; zero DB bytes; corpus leg = PR #278 only; no plane asset removals (0 drops).
+
+Stage Summary:
+- Plane of record: official-papers.json 23215b0c14c36910 -> 817674ccd6d33f37; census figure gaps: 28/28 wired (17 gap questions - 1 FP + spinners + stub); the never-cropped-figure class is EMPTY of record. Tranche-3 complete: worklists (1)+(2) run-037, (3) run-038. Remaining known debts: corpus rider backlog (run-035/036/037/038 PNG deletions + edits[] corpus files accrue for the next converter run), 2022-01_02_11-f equation soup (token-lane scope).
