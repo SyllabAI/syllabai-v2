@@ -2039,6 +2039,84 @@ const FEEDS = {
       ) && !!a.path.split("/").pop();
     },
   },
+  "physics-wave1-v20": {
+    manifest: "hub-import-manifest-v20.json",
+    manifest_version: 20,
+    // NEW-SUBJECT wave-1 CUMULATIVE corrective (resources PR #272, merge-of-record
+    // 52395098; runbook §1 + B6 continue-global at v20 — CUMULATIVE over the pack, the
+    // chemistry v8..v17 pattern). v19's tranche-scoped INT-3 (6 rows) made the
+    // runner-owned guided-import.json rebuild DROP the stage-A pilot rows from the
+    // physics index — caught by the LIVE SPOT-CHECK calibration leg (pilot 'Your
+    // answer' x0 vs x8 of record), invisible to the 32 gates (the index is runner-owned
+    // run metadata, outside the conserved-artifact gates). v20 re-pins all 14 pack
+    // artifacts byte-identical (2 pilot @ v18 shas + 12 wave-1 @ v19 shas): the hub
+    // re-run lands 14/14 identical-exists and re-issues the index with all 7 notes.
+    // ZERO authored bytes change.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 7, "sme-question-package": 7 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-1 CUMULATIVE corrective — re-import the igcse-physics-19 pack of record (7 notes: rn_RpyMnS5nqWSRWXXG 'Distance-Time Graphs' + rn_k9wr3prcgSBg5vfw 'Speed' / rn_pfndTqR6DTJGZ8xQ 'Core Practical: Investigating Motion' / rn_CpJZQWzbvMcM8fw3 'Acceleration' / rn_5hfYYFrc2XjMJCrq 'Velocity-Time Graphs' / rn_GxNWbSMqkTN4zgZB 'Area under a Velocity-Time Graph' / rn_ZgGMNrRGBKvYxxFf 'Calculating Uniform Acceleration'; 14 lessons / 126 checks cumulative = 70 MCQ + 28 recall + 14 explain-why + 14 application) and RE-ISSUE the runner-owned guided-import.json index with all 7 rows, restoring the stage-A pilot flow. Declared hub landing = 14/14 identical-exists + the index re-issue; zero chemistry bytes touched, zero authored bytes changed. Operator ignition trace 1a196b9c429c5ae5 ('ignite wave-1'), execution trace 1a197b1687dc5cd9.",
+    promo: {
+      // promotion commit of record = C20 of resources PR #272 (merge-of-record
+      // 523950984b1109aa0060315e693c5ff03fab2037); trace = the EXECUTION trace of record
+      // (== the v20 manifest's operator_trace; the ignition trace rides the directive)
+      commit: "b7e044e4418b12a8a731e05a6730ff99eaffac0c",
+      tree: "600e02c9cc8823fc232052f0f73ab8c88fdd3f01",
+      parent: "499a692fdaf26717f24dc720724eda39f6f4289f",
+      trace: "1a197b1687dc5cd9",
+    },
+    integration_branch: null, // ancestry of record — resources PR #272 merged before this hub run
+    artifact_pin: "aa6485187429e0911b4a47a8a468e256bb41ce32", // wave-1 commit A — the source-0.6 generation pin of record for the 6 wave-1 notes
+    artifact_pins_by_note: {
+      // the stage-A pilot keeps its own v18 source pin (commit A of the stage-A lane) —
+      // the pilot lessons/packages embed pinnedRef 7d493985; re-pinning it to the wave-1
+      // commit would falsify the pilot's provenance (G-D pinnedRef, of-record per-note law)
+      rn_RpyMnS5nqWSRWXXG: "7d493985c7729f30c2186e7e61a713ceacc96517",
+    },
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 25 cumulative figures (9 pilot + 16 wave-1), all module-mapped
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave1-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave1-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave1-survivors/hub-import-manifest-v20.json",
+      int3: "/home/z/my-project/scripts/physics-wave1-survivors/INT-3-transform-record-physics-wave1-v20.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261102-physics-wave1-v20.json`,
+    identity: {
+      notes: 7,
+      lessons: 14,
+      checks: 126,
+      keyPoints: 61,
+      distractors: 210,
+      glossaryTerms: 31,
+      figures: 25,
+      figures_module_mapped: 25,
+      figures_note_level: 0,
+      workedExamples_populated: 6,
+      workedExamples_null: 1,
+      authored_chars_conserved: 99785,
+    },
+    artifact_count: 14,
+    note_count: 7,
+    wave_count: 2,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v20 manifest paths are already integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
 };
 
 
