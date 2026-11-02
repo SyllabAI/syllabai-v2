@@ -1,0 +1,995 @@
+{
+ "lane": "T-OEQ-PHYS-FORMAT-1",
+ "run": "run-008-table-format",
+ "date": "2026-11-01",
+ "anchors": {
+  "v2_origin_main_at_recon": "b46d8a3 (run-007 7e5733b in history; plane of record sha unchanged f0945d29)",
+  "v2_branch_base_at_open": "64fdb91 (fetch-first caught a concurrent base move b46d8a3->64fdb91 mid-open: PRs #593/#599 teach-me + course-pill content, zero contact with igcse-physics-19; both plane shas re-verified identical at the new tip before the branch was cut)",
+  "resources_origin_main_at_open": "5a9d5f4 (integration/physics-stagea-20261101)",
+  "questions.json_sha256_before": "0b3b6685efb5394d37fe8e524a5f5558b3544fc4d96e9e8b62b05ba7279b59b9",
+  "official-papers.json_sha256_before": "f0945d296107ea49830b7a14d84e0eaf55c63550f3e52df152b2ee3bb5308fec"
+ },
+ "sme_bank": {
+  "total_parts": 1135,
+  "affected_parts": 29,
+  "ok_blocks_total": 119,
+  "ok_parts_total": 96,
+  "ok_blocks_in_clean_parts": 116,
+  "clean_ok_parts": 94,
+  "class_blocks": {
+   "1COL_DEGENERATE": 29,
+   "CORRUPT_HEADER": 3
+  },
+  "flattened_rows_total": 0,
+  "mathPipe_parts": 0,
+  "per_set": {
+   "1-2-forces-movement-and-changing-shape--exam-questions": {
+    "1COL_DEGENERATE": 1,
+    "affected_parts": 2,
+    "CORRUPT_HEADER": 1
+   },
+   "1-4-moments--exam-questions": {
+    "1COL_DEGENERATE": 3,
+    "affected_parts": 2
+   },
+   "2-2-components-in-series-and-parallel-circuits--exam-questions": {
+    "1COL_DEGENERATE": 1,
+    "affected_parts": 1
+   },
+   "2-3-electrical-power-and-mains-electricity--exam-questions": {
+    "1COL_DEGENERATE": 2,
+    "affected_parts": 2
+   },
+   "2-4-static-electricity--exam-questions": {
+    "1COL_DEGENERATE": 3,
+    "affected_parts": 3
+   },
+   "3-1-waves-and-the-electromagnetic-spectrum--exam-questions": {
+    "CORRUPT_HEADER": 1,
+    "affected_parts": 1
+   },
+   "3-2-reflection-and-refraction--exam-questions": {
+    "1COL_DEGENERATE": 1,
+    "affected_parts": 1
+   },
+   "3-3-sound--exam-questions": {
+    "1COL_DEGENERATE": 3,
+    "affected_parts": 1
+   },
+   "4-1-energy-stores-and-transfers--exam-questions": {
+    "1COL_DEGENERATE": 1,
+    "affected_parts": 1
+   },
+   "5-3-ideal-gases--exam-questions": {
+    "1COL_DEGENERATE": 2,
+    "affected_parts": 2
+   },
+   "6-2-electromagnetic-induction--exam-questions": {
+    "1COL_DEGENERATE": 1,
+    "affected_parts": 1
+   },
+   "7-2-radioactivity-uses-and-dangers--exam-questions": {
+    "CORRUPT_HEADER": 1,
+    "affected_parts": 1
+   },
+   "7-3-fission-and-fusion--exam-questions": {
+    "1COL_DEGENERATE": 3,
+    "affected_parts": 3
+   },
+   "8-2-stellar-evolution--exam-questions": {
+    "1COL_DEGENERATE": 5,
+    "affected_parts": 5
+   },
+   "8-3-cosmology--exam-questions": {
+    "1COL_DEGENERATE": 3,
+    "affected_parts": 3
+   }
+  },
+  "1COL_blocks": [
+   {
+    "set": "1-2-forces-movement-and-changing-shape--exam-questions",
+    "partId": "qstnprt_Ntxd8MKCTKWWSYdK",
+    "field": "problemMd",
+    "first": "| **stays the same         increases         decreases          downwards  upwards        "
+   },
+   {
+    "set": "1-4-moments--exam-questions",
+    "partId": "qstnprt_Tkhndjq33kyf3rS3",
+    "field": "problemMd",
+    "first": "| **a balancing     an accelerating     a turning** |"
+   },
+   {
+    "set": "1-4-moments--exam-questions",
+    "partId": "qstnprt_C4W6Sv3kFhgy3HjQ",
+    "field": "problemMd",
+    "first": "| **larger than      smaller than     equal to** |"
+   },
+   {
+    "set": "1-4-moments--exam-questions",
+    "partId": "qstnprt_C4W6Sv3kFhgy3HjQ",
+    "field": "problemMd",
+    "first": "| **lifting force      weight       further from       closer to** |"
+   },
+   {
+    "set": "2-2-components-in-series-and-parallel-circuits--exam-questions",
+    "partId": "qstnprt_nhDPW3VhQWzkKDgf",
+    "field": "problemMd",
+    "first": "| **larger than         smaller than         melts          falls off          starts     "
+   },
+   {
+    "set": "2-3-electrical-power-and-mains-electricity--exam-questions",
+    "partId": "qstnprt_tCzbVshDzwVC6jDt",
+    "field": "problemMd",
+    "first": "| 230 V                                                                                   "
+   },
+   {
+    "set": "2-3-electrical-power-and-mains-electricity--exam-questions",
+    "partId": "qstnprt_gJXSTr7BTvjDC9bq",
+    "field": "problemMd",
+    "first": "| WARNING<br><br>maximum allowable power<br><br>when cable fully extended - 2400 W, 240 V<"
+   },
+   {
+    "set": "2-4-static-electricity--exam-questions",
+    "partId": "qstnprt_PG9zCnZzzNpK7Fwc",
+    "field": "problemMd",
+    "first": "| **electrons       negative       neutral       neutrons       positive       protons    "
+   },
+   {
+    "set": "2-4-static-electricity--exam-questions",
+    "partId": "qstnprt_8PBqXPkmRgdhHMCV",
+    "field": "problemMd",
+    "first": "| **conductor      insulator      potential difference      current      charge      resis"
+   },
+   {
+    "set": "2-4-static-electricity--exam-questions",
+    "partId": "qstnprt_5DGHPHGkbxDxY7Gn",
+    "field": "problemMd",
+    "first": "| **This is how it works**<br><br>A lifting sheet is placed over the footprint.<br><br>The"
+   },
+   {
+    "set": "3-2-reflection-and-refraction--exam-questions",
+    "partId": "qstnprt_XmHQ2P2TVn7YQ8MR",
+    "field": "problemMd",
+    "first": "| less than         equal to         greater than |"
+   },
+   {
+    "set": "3-3-sound--exam-questions",
+    "partId": "qstnprt_YDVJY5BTZSR8nnjd",
+    "field": "problemMd",
+    "first": "| **a loudspeaker    a microphone    an oscilloscope    a screen ** |"
+   },
+   {
+    "set": "3-3-sound--exam-questions",
+    "partId": "qstnprt_YDVJY5BTZSR8nnjd",
+    "field": "problemMd",
+    "first": "| **the amplitude    half the amplitude    the frequency    half the frequency** |"
+   },
+   {
+    "set": "3-3-sound--exam-questions",
+    "partId": "qstnprt_YDVJY5BTZSR8nnjd",
+    "field": "problemMd",
+    "first": "| **louder    quieter     a higher pitch    a lower pitch** |"
+   },
+   {
+    "set": "4-1-energy-stores-and-transfers--exam-questions",
+    "partId": "qstnprt_HJ2JhhCjypv6Q6bp",
+    "field": "problemMd",
+    "first": "| chemical         heating         nuclear         mechanically<br><br>thermal         rad"
+   },
+   {
+    "set": "5-3-ideal-gases--exam-questions",
+    "partId": "qstnprt_KzKNv3KRmPXqHFRM",
+    "field": "problemMd",
+    "first": "| **WARNING**<br><br>Pressurised container<br><br>Do not expose to temperatures above 50°C"
+   },
+   {
+    "set": "5-3-ideal-gases--exam-questions",
+    "partId": "qstnprt_KXxGC7xXRRNNx2Yd",
+    "field": "problemMd",
+    "first": "| To measure the pressure in the balloon I will count how many times I push the pump. The "
+   },
+   {
+    "set": "6-2-electromagnetic-induction--exam-questions",
+    "partId": "qstnprt_WmXgbrnMRr2fVm53",
+    "field": "problemMd",
+    "first": "| efficiency is reduced<br><br>the national grid<br><br>a power station<br><br>heat loss i"
+   },
+   {
+    "set": "7-3-fission-and-fusion--exam-questions",
+    "partId": "qstnprt_YQ8P73HYRZgxfhr2",
+    "field": "problemMd",
+    "first": "| Sun         Moon         splitting<br><br>moderator         fusion         joining |"
+   },
+   {
+    "set": "7-3-fission-and-fusion--exam-questions",
+    "partId": "qstnprt_fQrTP3QXDHyYStg2",
+    "field": "problemMd",
+    "first": "| **shielding         fast         high**<br><br>**fuel rods         daughter         baby"
+   },
+   {
+    "set": "7-3-fission-and-fusion--exam-questions",
+    "partId": "qstnprt_WdtFYtwK94PM5zQr",
+    "field": "problemMd",
+    "first": "| **graphite         ionise         refract         magnesium**<br><br>**boron         slo"
+   },
+   {
+    "set": "8-2-stellar-evolution--exam-questions",
+    "partId": "qstnprt_v5G6z2MPDygXxKtP",
+    "field": "problemMd",
+    "first": "| **electron             supernova             giant             dwarf          momentum  "
+   },
+   {
+    "set": "8-2-stellar-evolution--exam-questions",
+    "partId": "qstnprt_qrNHTPPHqNctvcfF",
+    "field": "problemMd",
+    "first": "| *A star forms when enough dust and gas are pulled together. Masses smaller than a star m"
+   },
+   {
+    "set": "8-2-stellar-evolution--exam-questions",
+    "partId": "qstnprt_cmJDFHBKn7C9Rr5x",
+    "field": "problemMd",
+    "first": "| **black dwarf          nebula          fusion          white dwarf                      "
+   },
+   {
+    "set": "8-2-stellar-evolution--exam-questions",
+    "partId": "qstnprt_wB6TVwBHTm6d4fJc",
+    "field": "problemMd",
+    "first": "| **decay          balanced          fission          resultant forces          fusion    "
+   },
+   {
+    "set": "8-2-stellar-evolution--exam-questions",
+    "partId": "qstnprt_nfyVdG835XJF9wgK",
+    "field": "problemMd",
+    "first": "| **supergiants            white dwarfs          main sequence stars          giants** |"
+   },
+   {
+    "set": "8-3-cosmology--exam-questions",
+    "partId": "qstnprt_XtHcvHZRp3RsjJBR",
+    "field": "problemMd",
+    "first": "| **higher frequency       lower frequency       phase difference       wavelength       b"
+   },
+   {
+    "set": "8-3-cosmology--exam-questions",
+    "partId": "qstnprt_KV6qpKqzvJ3H3mXM",
+    "field": "problemMd",
+    "first": "| **stretch out     slower     expanding     moving towards     red**<br><br>**receding   "
+   },
+   {
+    "set": "8-3-cosmology--exam-questions",
+    "partId": "qstnprt_3fvGTjrNb4SMqq83",
+    "field": "problemMd",
+    "first": "| **explosion        faster        expand        Big Bang        heats        hot        B"
+   }
+  ],
+  "CORRUPT_blocks": [
+   {
+    "set": "1-2-forces-movement-and-changing-shape--exam-questions",
+    "partId": "qstnprt_dBYF72XhxKfCG3qM",
+    "field": "problemMd",
+    "header": "| ----------------------<br><br>in ------------ | ----------------------<br><br>in -------",
+    "cols": 2
+   },
+   {
+    "set": "3-1-waves-and-the-electromagnetic-spectrum--exam-questions",
+    "partId": "qstnprt_RnTnmqsKgsPg5bPV",
+    "field": "problemMd",
+    "header": "| longest wavelength $---------------\\rightarrow$shortest wavelength |   |   |",
+    "cols": 3
+   },
+   {
+    "set": "7-2-radioactivity-uses-and-dangers--exam-questions",
+    "partId": "qstnprt_dtqBs72bCBHhzmPW",
+    "field": "problemMd",
+    "header": "| least ionising $------------------------\\rightarrow$most ionising |   |   |",
+    "cols": 3
+   }
+  ]
+ },
+ "official": {
+  "flattened_real": [
+   {
+    "pid": "offp_2019-06_1p_6-b-i",
+    "set": "official-4ph1-1p-2019-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(20)+table-mention"
+    ],
+    "para": "The student extends the investigation by recording additional data for the lamp. This is her method. For each voltage\n- switch the current on for 45 seconds\n- record the current and colour of the lamp\n- calculate the power and the energy transferred by the lamp The table shows the student’s results. Voltage in V Current Power in W Energy in J Colour of lamp 0.0 0.00 0.0 0.0 off 2.0 0.40 0.8 36 red 4.0 0.90 3.6 orange 6.0 1.60 9.6 430 yellow 8.0 2.80 22.4 1000 white"
+   },
+   {
+    "pid": "offp_2019-06_1p_9-a",
+    "set": "official-4ph1-1p-2019-06",
+    "field": "solutionMd",
+    "reason": [
+     "semicolon-delimiter-debris"
+    ],
+    "para": "1 mark for each correct answer in the table;;;;;\nPart Function Suitable material\nabsorbs neutrons / regulates number\ncontrol rod boron\nof neutrons / controls rate of reaction\nmoderator slows neutrons / absorbs KE of neutrons graphite\nconcrete / lead / steel /\nshielding prevents irradiation of workers\nwater\nuranium(-235/238) /\nfuel Rod idea that it provides material for fission\nplutonium / U / Pu"
+   },
+   {
+    "pid": "offp_2020-01_1p_9-e-i",
+    "set": "official-4ph1-1p-2020-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(31)+table-mention"
+    ],
+    "para": "The table shows the teacher’s results for seven different absorbing materials. Count rate in counts per second Absorbing material Test 1 Test 2 Test 3 Mean plastic 248 230 226 235 copper 138 127 147 137 wood 226 231 224 227 aluminium 204 211 190 202 lead 96 102 92 97 glass 204 192 190 195 stone 205 200 205 203"
+   },
+   {
+    "pid": "offp_2020-06_1p_5-b-i",
+    "set": "official-4ph1-1p-2020-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(18)+table-mention"
+    ],
+    "para": "The student completes her investigation. The table shows her results. Voltage in V Current in mA 0.00 0 0.10 0 0.20 0 0.30 0 0.40 0 0.50 2 0.60 8 0.70 33 0.80 140"
+   },
+   {
+    "pid": "offp_2020-11_1p_5-b-i",
+    "set": "official-4ph1-1p-2020-11",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(18)+table-mention"
+    ],
+    "para": "The student completes her investigation. The table shows her results. Voltage in V Current in mA 0.00 0 0.10 0 0.20 0 0.30 0 0.40 0 0.50 2 0.60 8 0.70 33 0.80 140"
+   },
+   {
+    "pid": "offp_2021-06_1p_5-b-i",
+    "set": "official-4ph1-1p-2021-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(16)+table-mention"
+    ],
+    "para": "The table shows the results of the investigation. Voltage in V Current in mA 0.00 0.0 0.30 0.5 0.35 2.5 0.40 1.5 0.45 2.0 0.50 4.5 0.55 9.0 0.60 15.0"
+   },
+   {
+    "pid": "offp_2021-11_1p_4-a",
+    "set": "official-4ph1-1p-2021-11",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(15)+table-mention"
+    ],
+    "para": "Cobalt‑60 is a radioactive isotope of cobalt. The table gives the activity of a sample of cobalt‑60 over a period of 10 years. Time in years Activity 0 8000 2 6350 4 4900 6 3800 8 2900 10 2100"
+   },
+   {
+    "pid": "offp_2021-11_1p_5-c-i",
+    "set": "official-4ph1-1p-2021-11",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(6)+table-mention"
+    ],
+    "para": "The student measures the mass of the object using six different balances. The table shows the student’s results. Mass in g 18.96 19.01 19.05 18.98 19.34 19.04"
+   },
+   {
+    "pid": "offp_2022-01_1p_9-b-i",
+    "set": "official-4ph1-1p-2022-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(16)+table-mention"
+    ],
+    "para": "The student calculates the force each mass applies to the spring. The table shows the student’s results. Force in N Extension in cm 0.0 0.0 1.0 2.5 2.0 5.0 3.0 9.8 4.0 10.0 5.0 12.5 6.0 15.5 7.0 19.5"
+   },
+   {
+    "pid": "offp_2022-06_1p_4-a",
+    "set": "official-4ph1-1p-2022-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(18)+table-mention"
+    ],
+    "para": "The table gives data for some of the planets in the solar system. Gravitational field Orbital radius Orbital speed Planet strength at surface in km in km / s in N / kg Mercury 3.7 57.9 × 10⁶ 47.4 Venus 8.9 108.2 × 10⁶ 35.0 Jupiter 23.1 778.6 × 10⁶ 13.1 Saturn 9.0 1433.5 × 10⁶ 9.7 Uranus 8.7 2872.5 × 10⁶ 6.8 Neptune 12.7 4495.1 × 10⁶ 5.4"
+   },
+   {
+    "pid": "offp_2023-01_1p_4-b-i",
+    "set": "official-4ph1-1p-2023-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(32)+table-mention"
+    ],
+    "para": "The teacher places a piece of lead sheet between the radioactive source and a radiation detector. The teacher determines the corrected count rate from the radioactive source three times and calculates the mean. They repeat this process using different thicknesses of lead sheet. The table shows their results. Count rate Thickness of in Bq lead in mm trial 1 trial 2 trial 3 mean 0.0 480 504 469 484 2.0 374 337 357 356 4.0 247 239 229 238 6.0 141 154 148 8.0 110 104 131 115 10.0 88 91 85 88"
+   },
+   {
+    "pid": "offp_2023-06_1p_10-b-i",
+    "set": "official-4ph1-1p-2023-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(10)+table-mention"
+    ],
+    "para": "The table shows the student’s results. Distance travelled in cm Time taken in s 10 0.41 20 0.58 30 0.71 40 0.82 50 0.91"
+   },
+   {
+    "pid": "offp_2023-11_1p_2",
+    "set": "official-4ph1-1p-2023-11",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(8)+table-mention"
+    ],
+    "para": "The diagram shows four graphs, P, Q, R and S. Each graph shows a different relationship between current and time. Current Current 0 0 0 Time 0 Time Graph P Graph Q Current Current 0 0 0 Time 0 Time Graph R Graph S The table gives descriptions of the relationships between current and time shown by graphs P, Q, R and S. Complete the table by giving the correct graph for each description. Description Graph current directly proportional to time current increasing at a decreasing rate current has a linear relationship to time but is not directly proportional current decreasing at a decreasing rate"
+   },
+   {
+    "pid": "offp_2023-11_1p_7-b-i",
+    "set": "official-4ph1-1p-2023-11",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(12)+table-mention"
+    ],
+    "para": "A scientist determines how the percentage of carbon-14 remaining in a sample of wood changes with time. The table shows the scientist’s data. Percentage (%) of carbon-14 Age of sample remaining in years 30 9900 40 7500 50 5700 60 4200 70 2900"
+   },
+   {
+    "pid": "offp_2024-06_1p_10-c-i",
+    "set": "official-4ph1-1p-2024-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(6)+table-mention",
+     "numeric-run(10)+table-mention"
+    ],
+    "para": "The table shows the results of the investigation. Length (L) in cm Height (h) in cm 20 2 40 8 60 18 100 53 120 71"
+   },
+   {
+    "pid": "offp_2025-06_1p_10-c-i",
+    "set": "official-4ph1-1p-2025-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(14)+table-mention"
+    ],
+    "para": "The student investigates how the balance reading varies as they change the current in the metal rod. The table shows the student’s results. Current in A Balance reading in g 0.00 194.95 0.50 194.80 1.00 194.65 1.50 194.50 2.00 194.35 2.50 194.20 3.00 194.05"
+   },
+   {
+    "pid": "offp_2025-11_1p_6-b-ii",
+    "set": "official-4ph1-1p-2025-11",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(16)+table-mention"
+    ],
+    "para": "Table 2 shows the student’s results. Length of wire in field Force in mm in N 0 0.00 5 0.32 10 0.64 15 0.92 20 1.28 25 1.58 30 1.92 Table 2 Plot a graph of the results on the grid."
+   },
+   {
+    "pid": "offp_2026-06_1p_9-b-i",
+    "set": "official-4ph1-1p-2026-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(17)+table-mention"
+    ],
+    "para": "The student uses this method to investigate how the distance rolled along the ramp affects the final speed of the ball.\n- position the ball on the ramp and release the ball\n- measure the distance the ball rolls along the ramp\n- use the light gate to determine the final speed of the ball\n- determine the (final speed of ball)2 The student repeats the method using different distances along the ramp. Table 2 shows the student’s results. Distance rolled along ramp (Final speed of ball)2 in m in (m/s)2 0.00 0.00 0.10 0.44 0.20 0.86 0.30 1.31 0.40 1.75 0.50 2.19 Table 2"
+   },
+   {
+    "pid": "offp_2019-06_1pr_5-c-i",
+    "set": "official-4ph1-1pr-2019-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(23)+table-mention"
+    ],
+    "para": "The student uses his voltage and current measurements to calculate the resistance of this cylinder. He repeats this for other cylinders. The table shows some of his results. Cross-sectional Voltage in V Current in A Resistance in Ω area in cm2 4.5 4.56 0.049 91.2 6.2 4.56 0.059 77.3 9.1 4.56 0.068 67.1 13.9 4.56 0.085 53.6 18.1 4.56 0.094 48.5 24.6 4.56 0.107"
+   },
+   {
+    "pid": "offp_2020-01_1pr_10-b-ii",
+    "set": "official-4ph1-1pr-2020-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(10)+table-mention"
+    ],
+    "para": "The table shows the student’s results. sin(i) sin(r) 0.10 0.06 0.30 0.19 0.50 0.31 0.70 0.44 0.90 0.56 Plot a graph of the student’s results."
+   },
+   {
+    "pid": "offp_2020-01_1pr_8-b-i",
+    "set": "official-4ph1-1pr-2020-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(15)+table-mention"
+    ],
+    "para": "The table shows the scientist’s results for rocks made from different materials. Material Mass in g Volume in cm3 Density in g/cm3 coal 54 41 1.3 marble 44 18 2.4 quartz 54 20 2.7 fluorite 32 10 3.2 hematite 64 12 5.3"
+   },
+   {
+    "pid": "offp_2020-06_1pr_2-a",
+    "set": "official-4ph1-1pr-2020-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(9)+table-mention"
+    ],
+    "para": "Uranium-235 is an isotope of uranium that can undergo nuclear fission. The table gives some statements about this fission process. Add ticks (✓) to the table to show which statements are correct. Statement Correct (✓) uranium-235 loses a proton to become uranium-236 uranium-235 absorbs a neutron to become uranium-236 daughter cells are produced when uranium-236 splits the nuclear energy store of uranium-236 increases when it splits two or three neutrons are usually released when uranium-236 splits energy is transferred to the kinetic store of the fission products when uranium-236 splits"
+   },
+   {
+    "pid": "offp_2020-06_1pr_6-c",
+    "set": "official-4ph1-1pr-2020-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(8)+table-mention"
+    ],
+    "para": "The table gives the values of the densities for some liquids. Liquid Density in g/cm3 brine 1.23 glucose 1.44 olive oil 0.82 pure water 1.00 sodium hydroxide 1.25 sunflower oil 0.92 The student measures the mass of the sample of unknown liquid as 150 g and the volume as 163 cm³. Deduce the name of the unknown liquid."
+   },
+   {
+    "pid": "offp_2020-06_1pr_8-d-i",
+    "set": "official-4ph1-1pr-2020-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(20)+table-mention"
+    ],
+    "para": "The table shows the student’s results. Power supply voltage Joulemeter reading Motor efficiency (%) in V in J 3.0 99.4 5.0 3.5 25.5 19.6 4.0 16.5 30.3 5.0 13.5 37.0 6.0 12.6 39.7 8.0 12.8 39.1 10.0 12.7"
+   },
+   {
+    "pid": "offp_2022-01_1pr_10-b-i",
+    "set": "official-4ph1-1pr-2022-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(14)+table-mention"
+    ],
+    "para": "The student changes the distance between the light gates by varying the position of light gate B. The student measures the time taken for the steel ball to fall from light gate A to light gate B when the light gates are different distances apart. The table shows the student’s results. Distance between Time taken light gates in s in m 0.10 0.058 0.20 0.103 0.30 0.141 0.40 0.175 0.50 0.205 0.60 0.233 0.70 0.260"
+   },
+   {
+    "pid": "offp_2022-01_1pr_6-a-i",
+    "set": "official-4ph1-1pr-2022-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(7)+table-mention"
+    ],
+    "para": "Table 1 gives some information about four stars. Mass relative to Star Colour the Sun 61 Cygni A orange 0.7 Antares A red 12 Sirius B blue 1.0 Vega blue‑white 2.1 Table 1"
+   },
+   {
+    "pid": "offp_2022-06_1pr_6-b-ii",
+    "set": "official-4ph1-1pr-2022-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(14)+table-mention"
+    ],
+    "para": "A student varies the resistance of the variable resistor. The table shows the power of the loudspeakers for different resistance values of the variable resistor. Resistance of variable resistor in Ω Power of loudspeakers in W 0.0 0.000 2.5 0.100 5.0 0.113 7.5 0.108 10.0 0.100 12.5 0.092 15.0 0.084 Plot the student’s results on the grid."
+   },
+   {
+    "pid": "offp_2023-01_1pr_4-b-i",
+    "set": "official-4ph1-1pr-2023-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(14)+table-mention"
+    ],
+    "para": "The table gives the student’s results. Voltage in V Current in A 0.0 0.0 1.0 0.38 2.0 0.61 3.0 0.80 4.0 0.90 5.0 0.96 6.0 1.00"
+   },
+   {
+    "pid": "offp_2023-06_1pr_11-a",
+    "set": "official-4ph1-1pr-2023-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(12)+table-mention"
+    ],
+    "para": "The gravitational field strength of a planet decreases with increasing distance from the planet. The table shows the value of the gravitational field strength of Mars at different distances from the centre of Mars. Distance from centre of Mars in km Gravitational field strength in N / kg 4000 2.66 5000 1.70 6000 1.18 7000 0.87 8000 0.67 9000 0.53"
+   },
+   {
+    "pid": "offp_2023-06_1pr_7-b-i",
+    "set": "official-4ph1-1pr-2023-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(15)+table-mention"
+    ],
+    "para": "A student suggests an experiment to determine the type of radiation emitted by a different isotope of protactinium, protactinium‑231. This is the suggested method.\nStep 1 connect a suitable radiation detector to a radiation counter\nStep 2 place a source of protactinium‑231 at a fixed distance of 3 cm from the radiation detector\nStep 3 record the count of detected radiation for a time of one minute\nStep 4 place a sheet of paper between the source and detector\nStep 5 record the count of detected radiation for a time of one minute\nStep 6 repeat Steps 4 and 5 using a sheet of aluminium and then a sheet of lead instead of the sheet of paper The table shows the results of the investigation when it is done by a teacher. Material between source and detector Count no material 261 paper 14 aluminium 11 lead 13"
+   },
+   {
+    "pid": "offp_2024-06_1pr_5-b-i",
+    "set": "official-4ph1-1pr-2024-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(6)+table-mention"
+    ],
+    "para": "The table shows the student’s results for three of the rocks. Rock Mass in g Volume in cm3 A 15 6.3 B 13 6.1 C 16 7.5"
+   },
+   {
+    "pid": "offp_2024-06_1pr_8-c",
+    "set": "official-4ph1-1pr-2024-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(6)+table-mention"
+    ],
+    "para": "Technetium-99m is another radioactive isotope. Iodine-131 and technetium-99m are both used as medical tracers. Medical tracers use radiation detected outside the body to diagnose illnesses. The table gives information about some of the properties of iodine-131 and technetium-99m when they undergo radioactive decay. Type(s) of radiation Isotope Half-life emitted iodine-131 beta and gamma 8 days technetium-99m gamma 6 hours Explain why technetium-99m is likely to be safer than iodine-131 when used as a medical tracer."
+   },
+   {
+    "pid": "offp_2026-06_1pr_4-b-i",
+    "set": "official-4ph1-1pr-2026-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(6)+table-mention"
+    ],
+    "para": "A teacher demonstrates microwaves using a microwave transmitter and a microwave receiver. Diagram 2 shows the demonstration viewed from above. microwave microwave transmitter receiver direction of microwaves Diagram 2 The table gives some information about the microwaves produced by the transmitter. Speed of microwaves 3.0 × 108 m/s Frequency of microwaves 1.0 × 1010 Hz"
+   },
+   {
+    "pid": "offp_2026-06_1pr_5-c-iv",
+    "set": "official-4ph1-1pr-2026-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(12)+table-mention"
+    ],
+    "para": "The table shows the student’s results. Number of resistors Current in A 1 0.50 2 0.25 3 0.17 4 0.13 5 0.10 6 0.08 Describe the relationship between the number of resistors and the current in the circuit."
+   },
+   {
+    "pid": "offp_2019-06_2p_2-a-i",
+    "set": "official-4ph1-2p-2019-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(13)+table-mention"
+    ],
+    "para": "A student investigates a transformer. This is the student’s method.\n- use a primary coil with 10 turns\n- connect the primary coil to a constant maximum input voltage\n- measure the output voltage across the secondary coil\n- repeat using an increasing number of turns on the primary coil The table shows the student’s results. Number of turns Output voltage on primary coil in V 10 39.6 20 19.7 40 9.9 60 6.6 80 5.0 100 4.0"
+   },
+   {
+    "pid": "offp_2020-01_2p_5-b-ii",
+    "set": "official-4ph1-2p-2020-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(38)+table-mention"
+    ],
+    "para": "The table shows the student’s results. String Frequency in Hz length in cm Test 1 Test 2 Test 3 Mean 20 105 104 108 106 40 53 54 52 53 60 36 32 35 80 25 28 26 26 100 22 20 21 21 120 20 17 18 18 140 15 15 14 15 Calculate the mean frequency for a string length of 60 cm. mean frequency = Hz"
+   },
+   {
+    "pid": "offp_2020-01_2p_7-b-i",
+    "set": "official-4ph1-2p-2020-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(7)+table-mention"
+    ],
+    "para": "The table gives some information about the uranium glass plate. mass of plate 1.1 kg percentage (%) of plate made of uranium-238 (by mass) 4.5% mass of uranium‑238 atom 4.0 × 10–27 kg"
+   },
+   {
+    "pid": "offp_2021-01_2p_3-b-i",
+    "set": "official-4ph1-2p-2021-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(11)+table-mention"
+    ],
+    "para": "The table shows the student’s results. Distance Force applied in cm in N 15.0 10.0 30.0 5.6 45.0 60.0 2.6 75.0 2.2 90.0 1.8"
+   },
+   {
+    "pid": "offp_2021-06_2p_2-b",
+    "set": "official-4ph1-2p-2021-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(6)+table-mention"
+    ],
+    "para": "Student B hears the sound before and after the sound wave reflects from the wall. When student B hears the sound before reflection, he starts the stopwatch. When student B hears the sound after reflection, he stops the stopwatch. The students repeat this experiment five times. The table shows the students’ results. Time in s 0.50 0.62 0.52 0.58 0.55 Calculate the mean (average) time. Give your answer to 2 significant figures. mean time = s"
+   },
+   {
+    "pid": "offp_2021-11_2p_5-b-i",
+    "set": "official-4ph1-2p-2021-11",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(31)+table-mention"
+    ],
+    "para": "The table shows the student’s results. Position of mass Reading on newton Reading on newton hanger in cm meter A in N meter B in N 20 5.1 1.4 30 4.5 2.0 40 3.9 2.6 50 3.3 3.3 60 2.6 3.9 70 2.0 4.5 80 1.4 5.1 The graph shows the results for newton meter A. 6.0 4.0 Reading on newton meter in N 2.0 0.0 0 20 40 60 80 100 Position of mass hanger in cm"
+   },
+   {
+    "pid": "offp_2024-06_2p_4-b-i",
+    "set": "official-4ph1-2p-2024-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(18)+table-mention"
+    ],
+    "para": "A student has rods made from different materials. The student rubs each rod the same way with a cloth. The student measures the charge gained by each rod three times. The table shows the results. Charge in nanocoulombs (nC) Material 1 2 3 Mean glass +35 +38 +36 +36 ebonite –168 –170 –171 –170 polythene –61 –80 –59 acetate –20 –20 –18 –19"
+   },
+   {
+    "pid": "offp_2025-06_2p_7-a-i",
+    "set": "official-4ph1-2p-2025-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(6)+table-mention"
+    ],
+    "para": "The diagram shows a step‑down transformer. primary coil secondary coil 230 V output The table gives some data for the step‑down transformer. Input (primary) voltage 230 V Input (primary) current 1.3 A Output (secondary) current 4.0 A Number of turns on primary coil 1000 Number of turns on secondary coil 300"
+   },
+   {
+    "pid": "offp_2025-11_2p_2-a-i",
+    "set": "official-4ph1-2p-2025-11",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(12)+table-mention"
+    ],
+    "para": "The table shows gravitational field strengths at the surfaces of four different planets. The planets have the same mass but different diameters. Diameter Gravitational field in km strength in N/kg 13 000 9.8 18 000 5.1 21 000 3.8 24 000 2.9 Give a reason why a scatter graph is the correct way to display this data, rather than a bar chart."
+   },
+   {
+    "pid": "offp_2019-06_2pr_6-b-ii",
+    "set": "official-4ph1-2pr-2019-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(12)+table-mention"
+    ],
+    "para": "These are the student’s results. number of turns = 100, number of turns = 400, output voltage = 1.3 V output voltage = 5.0 V number of turns = 200, number of turns = 500, output voltage = 2.5 V output voltage = 6.3 V number of turns = 300, number of turns = 600, output voltage = 3.8 V output voltage = 7.5 V Draw a table of these results."
+   },
+   {
+    "pid": "offp_2019-06_2pr_6-d",
+    "set": "official-4ph1-2pr-2019-06",
+    "field": "solutionMd",
+    "reason": [
+     "numeric-run(23)+table-mention"
+    ],
+    "para": "pair of readings correctly read from the graph /\nresults table;\nsubstitution into correct transformer formula;\nrearrangement; allow if seen anywhere\nin calculation either in\nsymbols or numbers\nevaluation;\nN V in V\n100 1.3\n200 2.5\n300 3.8\ne.g. 400 5.0\nnumber of turns = 600, output voltage = 7.5 V 500 6.3\nV₁ / 7.5 = 1200 / 600 600 7.5\n(V₁ =) (1200 × 7.5) / 600\n(V₁ =) 15 (V) allow range of 15–16\n(V)"
+   },
+   {
+    "pid": "offp_2020-06_2pr_4-b-ii",
+    "set": "official-4ph1-2pr-2020-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(32)+table-mention"
+    ],
+    "para": "The table shows the student’s results. Temperature in °C Time Speed sensor 1 sensor 2 sensor 3 mean in ms in m/s 20.3 20.2 19.9 20.1 4.37 344 29.9 31.3 30.0 30.4 4.29 350 39.7 41.0 39.0 39.9 4.22 358 51.0 50.2 49.3 50.2 4.15 362 59.8 61.5 58.6 4.08 368 Calculate the mean temperature for the last row in the table. Give your answer to a suitable number of decimal places. mean temperature = °C"
+   },
+   {
+    "pid": "offp_2022-01_2pr_3-b-i",
+    "set": "official-4ph1-2pr-2022-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(32)+table-mention"
+    ],
+    "para": "The table shows the students’ results. Time in s Distance in m Trial 1 Trial 2 Trial 3 Mean 50 0.46 0.35 0.49 0.43 100 0.50 0.38 0.62 0.50 150 0.42 0.64 0.57 0.54 200 0.68 0.59 0.60 0.62 250 0.58 0.79 0.75 0.71 300 0.90 0.86 0.84"
+   },
+   {
+    "pid": "offp_2022-06_2pr_6-a-ii",
+    "set": "official-4ph1-2pr-2022-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(7)+table-mention"
+    ],
+    "para": "The table shows the student’s results for an angle of incidence of 40°. Angle of refraction 1 (°) Angle of refraction 2 (°) Angle of refraction 3 (°) 22 23 67 Calculate the mean value for the angle of refraction. mean angle = degrees"
+   },
+   {
+    "pid": "offp_2023-01_2pr_7-a",
+    "set": "official-4ph1-2pr-2023-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(9)+table-mention"
+    ],
+    "para": "A crumple zone is a safety feature in a car. It is a part of the car that is designed to collapse during a collision. A student investigates the effectiveness of crumple zones. The student rolls two model cars down a ramp. Each car comes to rest when it hits a large metal block. A data logger measures the mean force applied to the car during the collision with the block. The diagram shows the equipment used in the investigation. data logger metal ramp block 0.0 N Car 1 has a paper crumple zone at the front. Car 2 has no paper crumple zone. The table shows the student’s results. Mean force on car from block Velocity just before car hits block Car in N in m/s 1 2.5 3.0 2 4.9 3.0"
+   },
+   {
+    "pid": "offp_2023-06_2pr_6-b-ii",
+    "set": "official-4ph1-2pr-2023-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(33)+table-mention"
+    ],
+    "para": "The table shows the student’s results. Current at which the load falls in A Mass of load in g 1 2 3 Mean 100 0.28 0.31 0.31 0.30 200 0.60 0.57 0.57 0.58 300 0.91 0.90 0.86 0.89 400 1.19 1.23 1.27 1.23 500 1.45 1.57 1.48 1.50 600 1.79 1.84 1.87 Calculate the mean current when the mass of the load was 600 g. Give your answer to a suitable number of significant figures. mean current = A"
+   },
+   {
+    "pid": "offp_2023-06_2pr_7-a",
+    "set": "official-4ph1-2pr-2023-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(8)+table-mention"
+    ],
+    "para": "The table gives the frequencies of some different sound waves. Place ticks (✓) in the table to show which sound waves can be heard by humans. Frequency Sound wave Can be heard by humans in Hz A 10 B 30 C 500 D 2000 E 10 000 F 25 000"
+   },
+   {
+    "pid": "offp_2023-06_2pr_8-a-i",
+    "set": "official-4ph1-2pr-2023-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(8)+table-mention"
+    ],
+    "para": "The table gives some information about four stars. Mass Absolute Star Colour in solar masses magnitude A 0.7 orange +7.5 B 1.0 yellow +4.8 C 2.0 blue +1.4 D 17.1 blue –16.8"
+   },
+   {
+    "pid": "offp_2024-06_2pr_6-b-i",
+    "set": "official-4ph1-2pr-2024-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(12)+table-mention"
+    ],
+    "para": "The student varies the distance between the solar cell and the lamp and measures the output voltage of the solar cell at each distance. The student’s results are shown below. 5 cm, 0.45 V 14 cm, 0.06 V 8 cm, 0.18 V 17 cm, 0.04 V 11 cm, 0.10 V 20 cm, 0.03 V Draw a table showing the student’s results."
+   },
+   {
+    "pid": "offp_2024-06_2pr_7-b-i",
+    "set": "official-4ph1-2pr-2024-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(10)+table-mention"
+    ],
+    "para": "The students repeat their method five times. The table shows the students’ results. Time between starting and stopping timer in seconds test 1 test 2 test 3 test 4 test 5 mean 11.80 11.18 11.76 11.75 11.72"
+   },
+   {
+    "pid": "offp_2025-06_2pr_8-c",
+    "set": "official-4ph1-2pr-2025-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(12)+table-mention"
+    ],
+    "para": "A student changes the settings of the oscilloscope to alter the displayed wave in these two ways. • increase the amplitude of the wave • only display one time period of the wave on the screen The table shows some possible settings for the oscilloscope. Which row of the table gives the student’s new oscilloscope settings? x direction setting / y direction setting / seconds per square mV per square A 10 × 10⁻⁶ 5 B 10 × 10⁻⁶ 20 C 40 × 10⁻⁶ 5 D 40 × 10⁻⁶ 20"
+   },
+   {
+    "pid": "offp_2026-06_2pr_4-a",
+    "set": "official-4ph1-2pr-2026-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(8)+table-mention"
+    ],
+    "para": "The pool cue hits the ball and the contact time is measured by the electronic timer. After the ball is hit, the ball travels along a horizontal track. A student uses a stopclock to measure the time taken for the ball to travel 1.0 m along the track. The process is repeated to obtain three sets of results. The table shows the student’s results. Contact time Time for ball to travel 1.0 m in milliseconds in seconds 2.1 1.89 1.9 2.00 2.2 1.81 Suggest a reason for the variation in the results."
+   }
+  ],
+  "adjudicated_false_positives": [
+   {
+    "pid": "offp_2022-06_1p_11-b-i",
+    "set": "official-4ph1-1p-2022-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(10)+table-mention"
+    ],
+    "para": "The graph shows the student’s results. 2.00 1.50 Range 1.00 in m 0.50 0 0.4 0.8 1.2 1.6 2.0 Table height in m",
+    "verdict": "flattened figure / mark-scheme prose, NOT a table"
+   },
+   {
+    "pid": "offp_2021-01_1pr_5-a",
+    "set": "official-4ph1-1pr-2021-01",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(7)+table-mention"
+    ],
+    "para": "A student does an investigation to show how the velocity of a toy car changes when the car rolls down a ramp onto a table and hits a wooden block. The graph shows how the velocity of the toy car changes with time. Velocity in m/s 0 0.1 0.2 0.3 0.4 0.5 0.6 Time in seconds",
+    "verdict": "flattened figure / mark-scheme prose, NOT a table"
+   },
+   {
+    "pid": "offp_2019-06_2p_2-b-ii",
+    "set": "official-4ph1-2p-2019-06",
+    "field": "solutionMd",
+    "reason": [
+     "numeric-run(9)+table-mention"
+    ],
+    "para": "Substitution of values for Np, VP and Vs ; Allow any row of data\nfrom table or co-\nordinates for a point\non the line on the\ngraph\nEvaluation of Ns ; Accept answer in range\n57-60.\nAccept non-integer\nnumber of turns.\ne.g. 40 / Ns = (6.8/9.9) = 0.686….;\nNs = 40 /0.601.. = 58(.2….) ;",
+    "verdict": "flattened figure / mark-scheme prose, NOT a table"
+   },
+   {
+    "pid": "offp_2022-06_2p_1-b",
+    "set": "official-4ph1-2p-2022-06",
+    "field": "problemMd",
+    "reason": [
+     "numeric-run(8)+table-mention"
+    ],
+    "para": "The student measures the mean power output (in watts) for six different appliances. Diagram 1 shows their results. Toaster = 1068 W Kettle = 2025 W Laptop = 47 W Electric drill = 713 W Television = 59 W Hair dryer = 1511 W Diagram 1 Draw a results table for the student’s results.",
+    "verdict": "flattened figure / mark-scheme prose, NOT a table"
+   },
+   {
+    "pid": "offp_2023-06_2pr_6-b-v",
+    "set": "official-4ph1-2pr-2023-06",
+    "field": "solutionMd",
+    "reason": [
+     "numeric-run(8)+table-mention"
+    ],
+    "para": "any three from:\nMP1. indication that 1.0 kg is 1000 g; can be inferred from\nworking\ne.g. 2×500g = 1kg\nMP2. use of data from table to show that ratio e.g. 500g gives 1.50A\nsupports 3.0 A current value; and 1000g is double\n500g, 100g gives 0.30A\nand 1000g is 10 times\n100g\nMP3. (because) current is (directly) proportional to\nmass;\nMP4. idea that 1.0 kg is (far) beyond range of\ncollected data/graph;\nMP5. idea that pattern may not continue outside range\nof data collected/graph;",
+    "verdict": "flattened figure / mark-scheme prose, NOT a table"
+   }
+  ],
+  "per_paper": {
+   "official-4ph1-1p-2019-06": [
+    "offp_2019-06_1p_6-b-i",
+    "offp_2019-06_1p_9-a"
+   ],
+   "official-4ph1-1p-2020-01": [
+    "offp_2020-01_1p_9-e-i"
+   ],
+   "official-4ph1-1p-2020-06": [
+    "offp_2020-06_1p_5-b-i"
+   ],
+   "official-4ph1-1p-2020-11": [
+    "offp_2020-11_1p_5-b-i"
+   ],
+   "official-4ph1-1p-2021-06": [
+    "offp_2021-06_1p_5-b-i"
+   ],
+   "official-4ph1-1p-2021-11": [
+    "offp_2021-11_1p_4-a",
+    "offp_2021-11_1p_5-c-i"
+   ],
+   "official-4ph1-1p-2022-01": [
+    "offp_2022-01_1p_9-b-i"
+   ],
+   "official-4ph1-1p-2022-06": [
+    "offp_2022-06_1p_4-a"
+   ],
+   "official-4ph1-1p-2023-01": [
+    "offp_2023-01_1p_4-b-i"
+   ],
+   "official-4ph1-1p-2023-06": [
+    "offp_2023-06_1p_10-b-i"
+   ],
+   "official-4ph1-1p-2023-11": [
+    "offp_2023-11_1p_2",
+    "offp_2023-11_1p_7-b-i"
+   ],
+   "official-4ph1-1p-2024-06": [
+    "offp_2024-06_1p_10-c-i"
+   ],
+   "official-4ph1-1p-2025-06": [
+    "offp_2025-06_1p_10-c-i"
+   ],
+   "official-4ph1-1p-2025-11": [
+    "offp_2025-11_1p_6-b-ii"
+   ],
+   "official-4ph1-1p-2026-06": [
+    "offp_2026-06_1p_9-b-i"
+   ],
+   "official-4ph1-1pr-2019-06": [
+    "offp_2019-06_1pr_5-c-i"
+   ],
+   "official-4ph1-1pr-2020-01": [
+    "offp_2020-01_1pr_10-b-ii",
+    "offp_2020-01_1pr_8-b-i"
+   ],
+   "official-4ph1-1pr-2020-06": [
+    "offp_2020-06_1pr_2-a",
+    "offp_2020-06_1pr_6-c",
+    "offp_2020-06_1pr_8-d-i"
+   ],
+   "official-4ph1-1pr-2022-01": [
+    "offp_2022-01_1pr_10-b-i",
+    "offp_2022-01_1pr_6-a-i"
+   ],
+   "official-4ph1-1pr-2022-06": [
+    "offp_2022-06_1pr_6-b-ii"
+   ],
+   "official-4ph1-1pr-2023-01": [
+    "offp_2023-01_1pr_4-b-i"
+   ],
+   "official-4ph1-1pr-2023-06": [
+    "offp_2023-06_1pr_11-a",
+    "offp_2023-06_1pr_7-b-i"
+   ],
+   "official-4ph1-1pr-2024-06": [
+    "offp_2024-06_1pr_5-b-i",
+    "offp_2024-06_1pr_8-c"
+   ],
+   "official-4ph1-1pr-2026-06": [
+    "offp_2026-06_1pr_4-b-i",
+    "offp_2026-06_1pr_5-c-iv"
+   ],
+   "official-4ph1-2p-2019-06": [
+    "offp_2019-06_2p_2-a-i"
+   ],
+   "official-4ph1-2p-2020-01": [
+    "offp_2020-01_2p_5-b-ii",
+    "offp_2020-01_2p_7-b-i"
+   ],
+   "official-4ph1-2p-2021-01": [
+    "offp_2021-01_2p_3-b-i"
+   ],
+   "official-4ph1-2p-2021-06": [
+    "offp_2021-06_2p_2-b"
+   ],
+   "official-4ph1-2p-2021-11": [
+    "offp_2021-11_2p_5-b-i"
+   ],
+   "official-4ph1-2p-2024-06": [
+    "offp_2024-06_2p_4-b-i"
+   ],
+   "official-4ph1-2p-2025-06": [
+    "offp_2025-06_2p_7-a-i"
+   ],
+   "official-4ph1-2p-2025-11": [
+    "offp_2025-11_2p_2-a-i"
+   ],
+   "official-4ph1-2pr-2019-06": [
+    "offp_2019-06_2pr_6-b-ii",
+    "offp_2019-06_2pr_6-d"
+   ],
+   "official-4ph1-2pr-2020-06": [
+    "offp_2020-06_2pr_4-b-ii"
+   ],
+   "official-4ph1-2pr-2022-01": [
+    "offp_2022-01_2pr_3-b-i"
+   ],
+   "official-4ph1-2pr-2022-06": [
+    "offp_2022-06_2pr_6-a-ii"
+   ],
+   "official-4ph1-2pr-2023-01": [
+    "offp_2023-01_2pr_7-a"
+   ],
+   "official-4ph1-2pr-2023-06": [
+    "offp_2023-06_2pr_6-b-ii",
+    "offp_2023-06_2pr_7-a",
+    "offp_2023-06_2pr_8-a-i"
+   ],
+   "official-4ph1-2pr-2024-06": [
+    "offp_2024-06_2pr_6-b-i",
+    "offp_2024-06_2pr_7-b-i"
+   ],
+   "official-4ph1-2pr-2025-06": [
+    "offp_2025-06_2pr_8-c"
+   ],
+   "official-4ph1-2pr-2026-06": [
+    "offp_2026-06_2pr_4-a"
+   ]
+  },
+  "detector": "scripts/run008_official_flat.py (candidate net: table-mention + >=6 bare numeric tokens in one paragraph, or ';;;;;' debris; every candidate eyeball-adjudicated)"
+ },
+ "gmd_scan": {
+  "scanned_nonempty": true,
+  "table_or_mathpipe_hits": 0,
+  "detail": []
+ }
+}
