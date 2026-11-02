@@ -8,11 +8,7 @@
  * Pure over its arguments (a CanvasRenderingContext2D-shaped stub is
  * enough to test the geometry calls — no real canvas needed).
  */
-import { INK_COLORS, type InkShape } from "./ink";
-
-/** The text tool's font stack (the hub's UI stack; ink is UI chrome). */
-const TEXT_FONT_STACK =
-  'ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+import { INK_COLORS, INK_TEXT_FONT_STACK, INK_TEXT_WEIGHT, type InkShape } from "./ink";
 
 export interface PaintBox {
   cssW: number;
@@ -98,7 +94,9 @@ function paintStroke(
 function paintText(ctx: Ctx, box: PaintBox, s: Extract<InkShape, { kind: "text" }>): void {
   const px = s.sizeFrac * box.cssW;
   ctx.fillStyle = INK_COLORS[s.color];
-  ctx.font = `${px}px ${TEXT_FONT_STACK}`;
+  // T-MG-INK-9: MG's text font of record — Shantell Sans, weight 500
+  // (extracted from their shipped text canvas; see ./ink.ts).
+  ctx.font = `${INK_TEXT_WEIGHT} ${px}px ${INK_TEXT_FONT_STACK}`;
   ctx.textBaseline = "top";
   const lines = s.text.split("\n");
   for (let i = 0; i < lines.length; i++) {

@@ -80,3 +80,59 @@ toBeCloseTo `pt/595.276` at 6 dp, the name and dot rows. Live: draw a 100 css-px
 Medium stroke on both MG and our viewer at the same rendered page width and read
 back the stroke's pixel thickness — the two must agree within antialiasing tolerance
 (±1 px), since both are page-relative widths of the same pt value.
+
+## 5. T-MG-INK-9 — the text editor + the equation keyboard (corrections & additions)
+
+Two §1/§2 lines were EXTRACTION ERRORS, corrected against the live site
+(mathsgenie.co.uk paper viewer, 2026-11-02, DOM + computed styles read
+directly):
+
+- **§1 "Fonts: app sans … No handwriting webfont anywhere" was WRONG.**
+  MG's text editor is a borderless transparent textarea painting
+  "Shantell Sans" 16px weight 500 (line-height 1.35), and the COMMITTED
+  shape is canvas-painted in the same font (their `font-ink` canvas).
+  Correction shipped: Shantell Sans is OFL-1.1 → self-hosted latin
+  subset `public/fonts/ShantellSans-latin-500.woff2` (47 KB, licence
+  beside it), `INK_TEXT_FONT_STACK`/`INK_TEXT_WEIGHT`/`INK_TEXT_BASE_PX`
+  = 16 in ./ink.ts, the painter and the editors use it. Old text ink
+  re-skins to the new font live (the palette-value precedent — shapes
+  carry sizeFrac, not the family).
+- **§2 "crosshair/text/default tool cursors" needed the MATH correction:**
+  the TEXT tool arms MG's I-beam (`cursor: text` — confirmed live); the
+  MATH tool arms DEFAULT (their math-armed overlay computes `auto` — the
+  box, not a caret, is the affordance). Our map: text→text,
+  math→default, select→default, ruler/protractor→move, rest crosshair
+  (test-pinned).
+
+The text editor is now MG's posture exactly: borderless, transparent,
+auto-growing (48×44 initial box), **Enter = newline; commit on
+click-away or Escape** (tldraw's stop-editing: non-empty commits, empty
+cancels); the math draft keeps Enter=commit (the keyboard's ⏎ is the
+same path).
+
+### The equation keyboard (MG ships MathLive's virtual keyboard)
+
+Their math box carries a ⌨ toggle (`aria-label="Toggle Virtual
+Keyboard"`; keyboard NEVER auto-opens — mirrored). The keyboard itself
+is MathLive's `ML__keyboard`: **4 layers**, tab glyphs `123 · ∞≠∈ · abc
+· αβγ`, tab names (their data-tooltip) Numeric / Symbols / Roman
+Letters / Greek Letters; **136 keycaps** — numeric 30, symbols 33,
+letters 42, greek 31 — plus backspace/commit/shift chrome (SVG sprite,
+not keycaps). Every key's insertion template was extracted verbatim
+(`\frac{#@}{#?}`, `\sqrt{#0}`, `#@^2}`, `\int^{\infty}_{0}\!#?\,\mathrm{d}x`,
+the greek rows, the dual-label shift keys `<≤ >≥ ([ )] =≠ 9( 0) qQ…`).
+Census of record: `./math-keyboard.ts` (each key: label, our adapted
+insert, MG's verbatim `mg` template + `aria`), pinned by
+`math-keyboard.test.ts` (counts, spot-exact rows, brace balance, the
+insert/caret maths — MG's `#@` slot = replace the selection; `#?` = the
+caret's fill-next position).
+
+NO MathLive (the SDK gate stands: 575.5 KB gz + licence posture vs our
+47 KB font and a pure-data module). Our keyboard is OUR panel
+(./MathKeyboard.tsx) fed by the census: same layers, same tabs, same
+keys, same insertions; the shift tap applies to one key then clears
+(MathLive's behavior); the draft textarea keeps focus across taps (the
+panel swallows its pointerdowns — the onBlur commit cannot fire on a
+keyboard tap). The draft shows the LIVE KaTeX preview through the ONE
+render law (renderMathHtml) — editing agrees glyph-for-glyph with the
+committed overlay.

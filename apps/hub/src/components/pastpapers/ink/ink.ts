@@ -69,6 +69,23 @@ export type InkColor = keyof typeof INK_COLORS;
 export const INK_COLOR_KEYS = Object.keys(INK_COLORS) as InkColor[];
 
 /**
+ * The text-tool font of record — T-MG-INK-9: MG's shipped text font,
+ * EXTRACTED live (mathsgenie.co.uk paper viewer, 2026-11-02): their text
+ * editor textarea and the committed `font-ink` canvas both paint
+ * "Shantell Sans" at 16px weight 500 (the old spec's "app sans" line was
+ * an extraction error — corrected here). Shantell Sans is OFL-1.1;
+ * self-hosted latin subset at /fonts/ShantellSans-latin-500.woff2
+ * (47 KB, + OFL.txt beside it) per the MG-INK-SDK-GATE licence
+ * discipline. Stored text shapes carry sizeFrac — the font VALUE change
+ * re-skins old ink live (the palette precedent, disclosed).
+ */
+export const INK_TEXT_FONT_STACK =
+  '"Shantell Sans", "Shantell Sans Fallback", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+export const INK_TEXT_WEIGHT = 500;
+/** MG's default text size — their meta.pdfTextSize default `l` = 16 px. */
+export const INK_TEXT_BASE_PX = 16;
+
+/**
  * Pen sizes as fractions of the page width — T-MG-INK-8: MG's exact pen
  * model (their engine: stroke width in PDF page units at zoom 1 =
  * 0.75 × {s:.5, m:1, l:2, xl:4}, names Fine/Medium/Thick/Extra thick,
