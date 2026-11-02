@@ -40,6 +40,10 @@ on:
         options:
           - probe
           - smoke
+      user_suffix:
+        description: 'smoke-mode only: fresh smoke-user suffix (hex nibble; aa0d = next free — D4 7-day credit dedupe bites on reused users)'
+        required: false
+        default: 'd'
 
 permissions:
   contents: read
@@ -81,7 +85,8 @@ jobs:
             --real-providers \
             --db "$SMOKE_DB_URI" \
             --receipt prod-smoke-receipt-r10-realprovider-usvantage.json \
-            --run r10-realprovider-usvantage
+            --run r10-realprovider-usvantage \
+            --user-suffix "${{ inputs.user_suffix }}"
 
       - name: Upload artifacts of record
         if: always()
