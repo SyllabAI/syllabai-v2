@@ -841,3 +841,14 @@ Work Log:
 
 Stage Summary:
 - Archive coverage now reflects Pearson's serving reality; remaining 56 absences ledgered; discipline held.
+
+---
+
+Task ID: T-GRADE-9 (run-001) — era-guard + A* rule verification (trace 1a1984c6a317ea2d).
+
+Work Log:
+- Era-guard approved from the IAL analysis: aggregate-ums rows lacking every required-spec unit are foreign-era cash-ins and no longer serve; validator enforces as hard error. Bundle 043289a76bf38e85: maths-20 courses 19->18 sessions (January 2019 legacy suppressed); transitional June 2019 rows keep only composition-allowlist units.
+- A* calculator rule verified: data 12/12 consistent (A boundary == overallMin; a2Min == 90% A2 UMS max), engine gradeFromAggregation + honest label already live since T-GRADE-2; applies only when the cash-in prints no A* boundary.
+
+Stage Summary:
+- IAL serving is now spec-faithful; A* answers are rule-based and labeled; R-variant policy documented (standard row for calculators, both labeled rows for display).

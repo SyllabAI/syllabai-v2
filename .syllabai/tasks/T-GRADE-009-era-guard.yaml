@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "task": {
+    "id": "T-GRADE-009",
+    "title": "IAL era-guard + A* rule verification (trace 1a1984c6a317ea2d)",
+    "owner": "main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3)",
+    "status": "IN_REVIEW",
+    "band": "T-GRADE",
+    "deps": [
+      "T-GRADE-008"
+    ],
+    "execution_record": "Era-guard (approved): builder suppresses aggregate-ums rows with zero required-spec units (legacy YMA01 on 2018-spec maths pages); validator hard-error twin added; pure-1 19->18 sessions; gates G1 0 / G2 8-8 EXACT / G3 0. A* rule: bundle config verified 12/12 vs cash-in data; frontend engine (gradeFromAggregation) + honest label pre-existing since T-GRADE-2, precedence kept for printed A* boundaries. Bundle sha256_16 043289a76bf38e85."
+  }
+}

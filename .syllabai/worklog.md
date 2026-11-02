@@ -23745,3 +23745,8 @@ worklog(r0): T-UGM-0606-1 run-002 (operator commission trace 1a1955c294758a5d "M
 - Cursors re-confirmed on the live surface: pen = crosshair, text = text, ZERO cursor:none elements — the operator's invisible-cursor report remains the missing MG-style affordance (the T-MG-INK-8 candidate), not a cursor property; unchanged by this fix.
 - Session state restored (zoom out ×2, rotation back to 0°, pen tool re-selected); the test ink existed only in the ephemeral audit profile's local store.
 - Anti-truncation asserts: this section appended byte-exact; new = old + section.
+
+## T-GRADE-9 run-001 — era-guard + A* rule verification (trace 1a1984c6a317ea2d)
+
+- Upstream: builder era-guard (legacy-spec cash-in rows can no longer render on 2018-spec maths pages; 1 fully-legacy session per maths course suppressed) + validator hard-error twin. Gates green; bundle 043289a76bf38e85.
+- This repo: mechanical bundle import; pure-1 19->18 sessions. A* rule confirmed live end-to-end (config -> gradeFromAggregation -> UI label "A* via the A2-aggregate rule"); aStar config data-verified 12/12 vs cash-in rows.
