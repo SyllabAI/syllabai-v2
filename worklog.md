@@ -852,3 +852,18 @@ Work Log:
 
 Stage Summary:
 - IAL serving is now spec-faithful; A* answers are rule-based and labeled; R-variant policy documented (standard row for calculators, both labeled rows for display).
+## T-OEQ-MATHSB-SERVE-1 run-037 — Mode-A table->GFM tranche-3 (operator order "Proceed with tranche-3", trace 1a19ae19a0be0129)
+Agent: main (Z.ai, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+Task: census2 tranche-3 worklists (1)+(2) — the 15 remaining table-crop parts and the 25 data-inline mention parts -> GFM md tables with KaTeX cells; scope re-pinned to origin/main plane ed750970 (RN-DEBRIS-7 drift = 2 pids, disjoint from scope).
+
+Work Log:
+- Scope of record: 29 conversion fixes = 25 data-inline restructures + 4 crop-mention conversions (2020-06/2020-11 27-a twins, 2022-06_01r_23, 2024-11_01_7) with 4 asset drops / 4 unique corpus paths. Fixes are fail-closed span replacements over each part's own served text (ASCII anchors + fullmatch validator regexes carrying the –/−/≤/⩽ glyph variance; zero byte-typed unicode soup).
+- Print evidence: 34 QP page texts (pdftotext -layout) + 12 first-hand 150dpi band reads (bands A-L). Catches of record: 2022-06_01r_23 first probability cell is (1/2)y (soup lost the 1/2); 2023-11_01_14-a pen row = 0.25/0.10/3y+0.15/x/y; 2025-06_02r_8-a-i = 0.1/0.15/0.2/2x/2x+0.1/x; 2019-06_02r_4-a soup TRANSPOSED (print: healthcare $336, insurance $504; housing/entertainment/other items blank; 2016+2184=4200 exact); 2018-06_02r_9-a + 2019-06_02_1-a interval bounds restored from print ('<' left / '<=' right; 1-a bound '10' = the run's single disclosed VALUE_ALLOWLIST entry).
+- Print-literal keeps (fence): 2025-10_01_21-a 'mean ... 15.6 seconds' (sic — printed), 2019-06_02r_4-a 'four items' (sic — 7 printed rows) and 'ratios 4 : 3 : 2' (sic).
+- Spinner-diagram label soup killed (2019-06_01_16-a '6 2 5 3'; 27-a twins 'pink orange green blue yellow'); the 3 spinner diagrams are never-cropped figures -> run-038 ledger.
+- Adjudicated NO-ACTION ledger (the other 11 census crop parts): histogram/pie figure crops with honest run-035/036 alts kept; 2022-01_02r_3-b = furniture FP ('bricks on the table', diagram asset); 2025-11_02_6-c combined histogram+table crop kept whole (split deferred to run-038); 2025-11_02_6-b 'Figure not shown in this reconstruction' stub = hidden histogram gap -> run-038.
+- Gates: battery 14/14 GREEN --write (census_EXACT 66/1281/2443/6600; value_carrier 29/29 with the single disclosed allowlist entry; old_form_discharge KILL lists both ways; gfm_table_shape incl. blank-line block isolation; class_post_census zero growth); katex 118/118 @0.16.47 throwOnError; hub-engine render 29/29 (29 real <table>, img accounting exact, total .katex 118).
+- Discipline: fetch-first race-guard before push; zero corpus/DB bytes; riders 29 pids/33 writes/4 PNG deletions accrue for the next converter run.
+
+Stage Summary:
+- Plane of record: official-papers.json ed75097069090fc3 -> 23215b0c14c36910; GFM parts 73 -> 102; remaining table-crop parts = 11 figure crops + 1 FP, all adjudicated. Run-038 (printed figure crops: 19 census gap questions + 3 spinner diagrams + the 6-b stub) is the next wave of record.
