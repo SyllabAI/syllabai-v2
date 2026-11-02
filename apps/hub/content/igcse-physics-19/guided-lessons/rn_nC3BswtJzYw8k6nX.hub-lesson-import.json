@@ -1,0 +1,203 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_nC3BswtJzYw8k6nX",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "a457dde93c781d8757c83c068a96921d3998c1ad9c8fa9cc283000eda2823422",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_nC3BswtJzYw8k6nX",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Forces, Movement & Changing Shape",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-2-forces-movement-and-changing-shape/1-2-9-hookes-law",
+    "specAnchors": [
+      {
+        "code": "1.23",
+        "text": "know that the initial linear region of a force-extension graph is associated with Hooke’s law"
+      },
+      {
+        "code": "1.24",
+        "text": "describe elastic behaviour as the ability of a material to recover its original shape after the forces causing deformation have been removed"
+      }
+    ],
+    "primer": {
+      "text": "Stretch something gently and it obeys; stretch it too far and it betrays you. Hooke's law is the obedience — extension proportional to force up to a limit — and elastic behaviour is the full recovery afterwards. This note draws the graph, names the limit, and sorts materials by their recovery.",
+      "prerequisiteSubtopic": "Forces, Movement & Changing Shape"
+    },
+    "modules": [
+      {
+        "id": "rn_nC3BswtJzYw8k6nX::L1",
+        "title": "Hooke's law and the force-extension graph",
+        "sourceHeadings": [
+          "Hooke's law",
+          "The force-extension graph"
+        ],
+        "specRefs": [
+          "1.23"
+        ],
+        "opening": "Stretch something gently and it obeys; stretch it too far and it betrays you. Hooke's law is the obedience — extension tracking the applied force point-for-point until the limit of proportionality ends the agreement. This lesson draws the graph, names the limit, and shows where the straight region ends.",
+        "keyPoints": [
+          "Hooke's law: an elastic object's extension answers point-for-point to the applied force, until the limit of proportionality.",
+          "Directly proportional means doubling the force doubles the extension, and halving the force halves it.",
+          "The limit of proportionality is the point beyond which force and extension are no longer proportional.",
+          "On a force-extension graph the law is the initial straight-line (linear) region.",
+          "The limit's position varies from material to material."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Double the pull, double the stretch — until the limit, where the deal ends.",
+            "analogy": "A fair taxi meter: every extra newton buys the same extra stretch, until the meter's rules change at the limit.",
+            "examPointer": "Quote the law with its escape clause — 'up to the limit of proportionality' — or the statement is incomplete."
+          },
+          "medium": {
+            "restatement": "The graph's geometry is the law: the linear region's straightness is the proportionality, and the bend marks the limit; the limit is material-specific, not universal.",
+            "analogy": "A rubber ruler drawn on elastic: the printed centimetres obey while the elastic is fresh, then drift once it is overstretched.",
+            "examPointer": "Graph questions: identify the linear region, mark the limit, and state what changes there — three marks, three statements."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_nC3BswtJzYw8k6nX::L1::Q1",
+          "rn_nC3BswtJzYw8k6nX::L1::Q2",
+          "rn_nC3BswtJzYw8k6nX::L1::Q3",
+          "rn_nC3BswtJzYw8k6nX::L1::Q4",
+          "rn_nC3BswtJzYw8k6nX::L1::Q5",
+          "rn_nC3BswtJzYw8k6nX::L1::Q6",
+          "rn_nC3BswtJzYw8k6nX::L1::Q7",
+          "rn_nC3BswtJzYw8k6nX::L1::Q8",
+          "rn_nC3BswtJzYw8k6nX::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_nC3BswtJzYw8k6nX::L2",
+        "title": "Elastic behaviour and deformation",
+        "sourceHeadings": [
+          "Elastic behaviour"
+        ],
+        "specRefs": [
+          "1.24"
+        ],
+        "opening": "Deformation is any change of an object's original shape, and it comes in two kinds: elastic, where the shape recovers once the forces let go, and inelastic, where the change is permanent. The unloaded spring springs back; the moulded clay keeps its new form.",
+        "keyPoints": [
+          "Elastic behaviour: the material regains the shape it started with once the deforming forces are gone.",
+          "Deformation is a change in the object's original shape.",
+          "Elastic deformation is not permanent: the object returns to its original shape.",
+          "Inelastic deformation is permanent: the object keeps its new shape.",
+          "Rubber bands, fabrics and steel springs deform elastically; plastic, clay and glass deform inelastically."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Let go and the shape either comes back (elastic) or stays changed (inelastic).",
+            "analogy": "A hotel bed: the mattress recovers by morning (elastic); the dent in the chocolate bar does not (inelastic).",
+            "examPointer": "The definition of record centres on recovery after the forces are removed — quote it whole."
+          },
+          "medium": {
+            "restatement": "The classification is about the material's response, not the force's size — though the same material can cross from elastic to inelastic behaviour past its limit.",
+            "analogy": "A paperclip bends gently and springs back, bent harder and it keeps the kink: same clip, two regimes.",
+            "examPointer": "Examples earn marks: springs, rubber bands and fabrics for elastic; plastic, clay and glass for inelastic."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_nC3BswtJzYw8k6nX::L2::Q1",
+          "rn_nC3BswtJzYw8k6nX::L2::Q2",
+          "rn_nC3BswtJzYw8k6nX::L2::Q3",
+          "rn_nC3BswtJzYw8k6nX::L2::Q4",
+          "rn_nC3BswtJzYw8k6nX::L2::Q5",
+          "rn_nC3BswtJzYw8k6nX::L2::Q6",
+          "rn_nC3BswtJzYw8k6nX::L2::Q7",
+          "rn_nC3BswtJzYw8k6nX::L2::Q8",
+          "rn_nC3BswtJzYw8k6nX::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "Hooke's law",
+          "definition": "The law that extension is directly proportional to applied force, up to the limit of proportionality.",
+          "firstLesson": 1
+        },
+        {
+          "term": "limit of proportionality",
+          "definition": "The point beyond which force and extension stop being proportional.",
+          "firstLesson": 1
+        },
+        {
+          "term": "elastic behaviour",
+          "definition": "Recovering the original shape once the deforming forces are removed.",
+          "firstLesson": 2
+        },
+        {
+          "term": "inelastic deformation",
+          "definition": "A permanent shape change: the object does not recover after the forces are removed.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/789649a4b48c-6-1-2-load-extension-and-force.png",
+        "alt": "Load extension and force, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Hooke's law",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Hooke's Law states that a force applied to a spring will cause it to extend by an amount proportional to the force",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/5076263ac9bd-limit-of-proportionality-graph.png",
+        "alt": "limit-of-proportionality-graph",
+        "sourceHeading": "The force-extension graph",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Hooke's Law is associated with the linear region of a force-extension graph. Beyond the limit of proportionality, Hooke's law no longer applies",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/64b5e8cf833a-elastic-limit.png",
+        "alt": "Elastic-limit",
+        "sourceHeading": "Elastic behaviour of a spring",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "The spring on the right has undergone inelastic deformation, it's shape has been permanently deformed",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

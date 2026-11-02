@@ -1,0 +1,177 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_Mrfn29ZgQMq8th5P",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "f55c0a87a2974834eed740ba93b54da4901d024ef12e31b90200b6f71209cbfc",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_Mrfn29ZgQMq8th5P",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Forces, Movement & Changing Shape",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-2-forces-movement-and-changing-shape/1-2-7-terminal-velocity",
+    "specAnchors": [
+      {
+        "code": "1.21",
+        "text": "describe the forces acting on falling objects (and explain why falling objects reach a terminal velocity)"
+      }
+    ],
+    "primer": {
+      "text": "Nothing falls through air unopposed. Two forces run the story — the constant downward weight and the growing upward drag — and their race decides everything: the initial surge, the fading acceleration, and the steady final pace called terminal velocity.",
+      "prerequisiteSubtopic": "Forces, Movement & Changing Shape"
+    },
+    "modules": [
+      {
+        "id": "rn_Mrfn29ZgQMq8th5P::L1",
+        "title": "The two forces on a falling object",
+        "sourceHeadings": [
+          "Falling objects"
+        ],
+        "specRefs": [
+          "1.21"
+        ],
+        "opening": "Every falling object carries exactly two forces: its weight, downward, and air resistance, upward. The weight stays fixed for the whole fall; the drag grows with every gain in speed. Holding those two behaviours side by side is the key to everything that follows.",
+        "keyPoints": [
+          "A falling object experiences two forces: its weight and air resistance.",
+          "Air resistance increases as the object's speed increases, because faster motion means more collisions with air particles.",
+          "The weight of the object does not change during the fall.",
+          "The constancy follows from W = m × g: neither the mass nor the freefall acceleration changes.",
+          "At the moment of release the only force is the weight, so the initial acceleration is at its maximum."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Two forces run the fall: weight pulls down without ever changing, and air resistance pushes up and grows with speed.",
+            "analogy": "One fixed hand pressing down, one springy hand pushing up that stiffens the faster you move.",
+            "examPointer": "Name both forces with their directions — 'weight downward, air resistance upward' — for the full mark."
+          },
+          "medium": {
+            "restatement": "The asymmetry drives the whole story: a constant weight against a speed-sensitive drag, so the resultant (weight minus drag) shrinks as the fall proceeds.",
+            "analogy": "A fixed monthly bill against a usage charge that grows with activity: the gap between them narrows month by month.",
+            "examPointer": "If asked why W is constant, cite W = m × g with both factors fixed — a one-line proof scores both marks."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Mrfn29ZgQMq8th5P::L1::Q1",
+          "rn_Mrfn29ZgQMq8th5P::L1::Q2",
+          "rn_Mrfn29ZgQMq8th5P::L1::Q3",
+          "rn_Mrfn29ZgQMq8th5P::L1::Q4",
+          "rn_Mrfn29ZgQMq8th5P::L1::Q5",
+          "rn_Mrfn29ZgQMq8th5P::L1::Q6",
+          "rn_Mrfn29ZgQMq8th5P::L1::Q7",
+          "rn_Mrfn29ZgQMq8th5P::L1::Q8",
+          "rn_Mrfn29ZgQMq8th5P::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_Mrfn29ZgQMq8th5P::L2",
+        "title": "Reaching terminal velocity",
+        "sourceHeadings": [
+          "Reaching terminal velocity"
+        ],
+        "specRefs": [
+          "1.21"
+        ],
+        "opening": "The race between the fixed weight and the growing drag ends one way: a draw. When the drag has grown to match the weight, the resultant is zero, the acceleration stops, and the object settles at the fastest speed a fall can deliver — the terminal velocity.",
+        "keyPoints": [
+          "Terminal velocity is the fastest speed a falling object can reach.",
+          "It is reached when the upward drag has grown to equal the downward weight.",
+          "At that balance the resultant force is zero and the object no longer accelerates.",
+          "The acceleration is largest at the moment of release and decreases steadily as drag builds.",
+          "After the balance point the object falls at a constant, steady speed."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The fall speeds up, drag catches up with weight, the forces balance, and the speed freezes at its maximum: terminal velocity.",
+            "analogy": "A cyclist freewheeling downhill until wind resistance matches the slope's pull — the bike then holds one steady pace.",
+            "examPointer": "The chain of record is: drag grows → resultant shrinks → acceleration shrinks → zero resultant → constant velocity. Keep the order."
+          },
+          "medium": {
+            "restatement": "Terminal velocity is a balance condition, not a property of the object alone: change the fluid, the shape or the weight and a different terminal speed results.",
+            "analogy": "A river raft settles at a drift speed set by the water's resistance; reshape the raft and the river grants a different pace.",
+            "examPointer": "For the explain-why marks, tie each stage to the resultant: maximum at release, shrinking as drag builds, zero at balance."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Mrfn29ZgQMq8th5P::L2::Q1",
+          "rn_Mrfn29ZgQMq8th5P::L2::Q2",
+          "rn_Mrfn29ZgQMq8th5P::L2::Q3",
+          "rn_Mrfn29ZgQMq8th5P::L2::Q4",
+          "rn_Mrfn29ZgQMq8th5P::L2::Q5",
+          "rn_Mrfn29ZgQMq8th5P::L2::Q6",
+          "rn_Mrfn29ZgQMq8th5P::L2::Q7",
+          "rn_Mrfn29ZgQMq8th5P::L2::Q8",
+          "rn_Mrfn29ZgQMq8th5P::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "terminal velocity",
+          "definition": "The fastest speed a falling object reaches, held constant once drag balances weight.",
+          "firstLesson": 2
+        },
+        {
+          "term": "air resistance",
+          "definition": "The drag force that opposes motion through air.",
+          "firstLesson": 1
+        },
+        {
+          "term": "resultant force",
+          "definition": "The single force describing the combined effect of all forces on a body.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A small object falls from an aircraft. Complete the sentences with words from the list: friction, gravity, air pressure, accelerates, falls at a steady speed, slows down. (a) The weight of an object is the force of ____ which acts on it. (b) When something falls, initially it ____. (c) The faster it falls, the larger the force of ____ which acts on it. (d) Eventually it ____ when the force of friction equals the force of gravity acting on it.",
+        "steps": [
+          "(a) Weight is the force of gravity: the Earth's gravitational pull on the object.",
+          "(b) Initially it accelerates: the weight is unopposed, so the resultant is large and downward.",
+          "(c) The faster it falls, the larger the force of friction (air resistance) — more collisions with air particles each second.",
+          "(d) Eventually it falls at a steady speed: the air resistance has grown to balance the weight, the resultant is zero."
+        ],
+        "finalAnswer": "(a) gravity; (b) accelerates; (c) friction; (d) falls at a steady speed."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1241aad6cdac-5-6-14-debbie-the-skydiver.png",
+        "alt": "Debbie the skydiver, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Skydiver in freefall reaching terminal velocity",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "The skydiver initially accelerates downward due to the force of weight. The upward force of air resistance increases as they fall until eventually it equals the weight force and terminal velocity is reached",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

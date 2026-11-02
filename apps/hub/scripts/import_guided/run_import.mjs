@@ -2117,6 +2117,89 @@ const FEEDS = {
       ) && !!a.path.split("/").pop();
     },
   },
+  "physics-wave2-v21": {
+    manifest: "hub-import-manifest-v21.json",
+    manifest_version: 21,
+    // NEW-SUBJECT wave-2 (resources PR #279, merge-of-record 78dd3694; runbook §1 + B6
+    // continue-global at v21 — CUMULATIVE over the igcse-physics-19 pack, the chemistry
+    // v8..v17 pattern and the v20 corrective law). W2 of the frozen B4 partition: the 1-2
+    // subtopic, 9 notes. The INT-3 carries ALL 16 pack rows (the v19 index-regression
+    // lesson of record), so the runner-owned guided-import.json re-issue keeps the whole
+    // flow. The 14 prior-pack artifacts are re-pinned byte-identical (2 pilot @ v18 shas +
+    // 12 wave-1 @ v19 shas); the 18 wave-2 artifacts are FIRST issues @ the commit-A pin
+    // bfae9977. ZERO chemistry bytes touched, ZERO authored prior-pack bytes changed.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 16, "sme-question-package": 16 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-2 chain — import the igcse-physics-19 wave-2 tranche of record (9 notes: rn_nyV7C6zmyKXWJjKg 'Types of Forces' / rn_4zdmGRWTg5ksK44N 'Scalar & Vectors' / rn_K3p2R3ykwwvHV9dp 'Resultant Forces' / rn_gDy2qTkY26r5sMtd 'Unbalanced Forces' / rn_2R3NrjGfJJY29Hzv 'Weight' / rn_ZCGJsYwy6S6FbbbW 'Stopping Distance' / rn_Mrfn29ZgQMq8th5P 'Terminal Velocity' / rn_kN63sqWsc9QdHSVx 'Core Practical: Investigating Force & Extension' / rn_nC3BswtJzYw8k6nX 'Hooke's Law'; 18 lessons / 162 checks = 90 MCQ + 36 recall + 18 explain-why + 18 application) with the 14 prior-pack artifacts re-pinned byte-identical — CUMULATIVE pack 16 notes / 32 lessons / 288 checks, manifest v21. Declared hub landing = 18/18 written + 14/14 identical-exists + the runner-owned guided-import.json index re-issued with all 16 rows; zero chemistry bytes touched. Operator ignition trace 1a19b55d8ced0f5d ('Proceed with physics wave-2'), execution trace 1a19b55d8ced0f5d (single-window execution, disclosed).",
+    promo: {
+      // promotion commit of record = commit C of resources PR #279 (merge-of-record
+      // 78dd3694); trace = the EXECUTION trace of record (== the v21 manifest's
+      // operator_trace; the ignition trace rides the directive)
+      commit: "7b08a426930651bc6b61b21ebf897a77f61b3660",
+      tree: "fda77fc854e25ba62457991f7395fc44743b35cf",
+      parent: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      trace: "1a19b55d8ced0f5d",
+    },
+    integration_branch: null, // ancestry of record — resources PR #279 merged before this hub run
+    artifact_pin: "bfae9977809436fc2e5c20967bf2581f67a52bec", // wave-2 commit A — the source-0.6 generation pin of record for the 9 wave-2 notes
+    artifact_pins_by_note: {
+      // prior-pack provenance of record (G-D pinnedRef, per-note law): the stage-A pilot
+      // keeps its v18 source pin, the six wave-1 notes keep their v19 source pin —
+      // re-pinning them to the wave-2 commit would falsify their provenance
+      rn_RpyMnS5nqWSRWXXG: "7d493985c7729f30c2186e7e61a713ceacc96517",
+      rn_k9wr3prcgSBg5vfw: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_pfndTqR6DTJGZ8xQ: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_CpJZQWzbvMcM8fw3: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_5hfYYFrc2XjMJCrq: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_GxNWbSMqkTN4zgZB: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_ZgGMNrRGBKvYxxFf: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+    },
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 50 cumulative figures (9 pilot + 16 wave-1 + 25 wave-2), all module-mapped
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave2-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave2-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave2-survivors/hub-import-manifest-v21.json",
+      int3: "/home/z/my-project/scripts/physics-wave2-survivors/INT-3-transform-record-physics-wave2.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261102-physics-wave2-v21.json`,
+    identity: {
+      notes: 16,
+      lessons: 32,
+      checks: 288,
+      keyPoints: 152,
+      distractors: 480,
+      glossaryTerms: 68,
+      figures: 50,
+      figures_module_mapped: 50,
+      figures_note_level: 0,
+      workedExamples_populated: 12,
+      workedExamples_null: 4,
+      authored_chars_conserved: 196478,
+    },
+    artifact_count: 32,
+    note_count: 16,
+    wave_count: 3,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v21 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
+
 };
 
 

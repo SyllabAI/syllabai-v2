@@ -1,0 +1,214 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_4zdmGRWTg5ksK44N",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "7117dd9cd06c0bb92099e016064763d9538fc51f43c5ec3a8cc05dad11d2639a",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_4zdmGRWTg5ksK44N",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Forces, Movement & Changing Shape",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-2-forces-movement-and-changing-shape/1-2-2-scalar-and-vectors",
+    "specAnchors": [
+      {
+        "code": "1.13",
+        "text": "understand how vector quantities differ from scalar quantities"
+      },
+      {
+        "code": "1.14",
+        "text": "understand that force is a vector quantity"
+      }
+    ],
+    "primer": {
+      "text": "Every measured quantity in this course belongs to one of two families. One family reports only 'how much'; the other also reports 'which way'. This note defines the two families, sorts the familiar pairs — distance and displacement, speed and velocity — and then shows why force itself sits in the second family.",
+      "prerequisiteSubtopic": "Forces, Movement & Changing Shape"
+    },
+    "modules": [
+      {
+        "id": "rn_4zdmGRWTg5ksK44N::L1",
+        "title": "Scalars, vectors and their paired quantities",
+        "sourceHeadings": [
+          "Distance and displacement",
+          "Examples of scalars & vectors"
+        ],
+        "specRefs": [
+          "1.13"
+        ],
+        "opening": "A scalar reports a size and nothing else; a vector reports a size plus a direction. The distinction looks small until you meet the paired quantities: distance against displacement, and the route a walker actually takes against the straight line home. This lesson fixes the definitions and the standard pairings.",
+        "keyPoints": [
+          "A scalar carries a magnitude only, with no direction attached.",
+          "A vector carries both a magnitude and a direction.",
+          "Distance is the total length of the path travelled, regardless of direction, so it is a scalar.",
+          "Displacement is the straight-line separation of the finishing point from the starting point, including the direction, so it is a vector.",
+          "Mass, energy, volume, density, temperature and power are scalars; weight, force, acceleration and momentum are vectors."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Ask one question: does the quantity need a direction to be complete? If no, it is a scalar; if yes, it is a vector.",
+            "analogy": "A shopping receipt gives amounts only — that is scalar-style data. Directions to a hidden treasure need steps with headings — vector-style data.",
+            "examPointer": "Sort-the-list questions are common; memorise the two columns rather than re-deriving them in the exam."
+          },
+          "medium": {
+            "restatement": "Distance and displacement disagree whenever the path bends: the path length accumulates every turn, while the displacement records only the net straight-line outcome with its heading.",
+            "analogy": "The odometer adds up every bend of a mountain road (distance); the map's ruler ignores the bends and draws one arrow start-to-finish (displacement).",
+            "examPointer": "A full lap of a track gives a large distance but zero displacement — a favourite one-mark discriminator."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_4zdmGRWTg5ksK44N::L1::Q1",
+          "rn_4zdmGRWTg5ksK44N::L1::Q2",
+          "rn_4zdmGRWTg5ksK44N::L1::Q3",
+          "rn_4zdmGRWTg5ksK44N::L1::Q4",
+          "rn_4zdmGRWTg5ksK44N::L1::Q5",
+          "rn_4zdmGRWTg5ksK44N::L1::Q6",
+          "rn_4zdmGRWTg5ksK44N::L1::Q7",
+          "rn_4zdmGRWTg5ksK44N::L1::Q8",
+          "rn_4zdmGRWTg5ksK44N::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_4zdmGRWTg5ksK44N::L2",
+        "title": "Velocity and force as vectors",
+        "sourceHeadings": [
+          "Speed and velocity",
+          "Forces as vectors"
+        ],
+        "specRefs": [
+          "1.13",
+          "1.14"
+        ],
+        "opening": "The pairing idea now meets motion and force. Speed copies distance's magnitude-only habit; velocity inherits displacement's direction. Force behaves the same way, which is why force arrows are drawn with proportional lengths and stated headings. This lesson turns both statements into working rules.",
+        "keyPoints": [
+          "Speed measures the distance covered per unit time regardless of direction, so it is a scalar.",
+          "Velocity measures the displacement per unit time with the direction included, so it is a vector.",
+          "An object can keep a constant speed while its velocity changes, because the heading is turning.",
+          "Force is a vector: it has a magnitude and acts along a stated direction.",
+          "Force arrows are drawn with length proportional to magnitude, in the force's direction, and labelled with the force's name.",
+          "Directions that are neither horizontal nor vertical are described by an angle from the horizontal or the vertical."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Velocity is speed with a heading; force is a push or pull with a heading. Arrows show both facts at once.",
+            "analogy": "A delivery app pin shows distance only; the rider's arrow on the map shows where the van is heading — the vector view.",
+            "examPointer": "Any describe-the-force answer should carry a size in newtons and a direction — one without the other is incomplete."
+          },
+          "medium": {
+            "restatement": "Because velocity is displacement per time, a turning path changes the velocity even at fixed pace; because force is a vector, two equal-magnitude forces can cancel or combine depending on their directions.",
+            "analogy": "Two identical dogs pulling a post in opposite ways hold it still; the same two pulling the same way drag it off — magnitudes alone never tell the story.",
+            "examPointer": "For diagram marks: state the scale, keep lengths proportional (a 4 N arrow twice a 2 N arrow) and label every arrow."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_4zdmGRWTg5ksK44N::L2::Q1",
+          "rn_4zdmGRWTg5ksK44N::L2::Q2",
+          "rn_4zdmGRWTg5ksK44N::L2::Q3",
+          "rn_4zdmGRWTg5ksK44N::L2::Q4",
+          "rn_4zdmGRWTg5ksK44N::L2::Q5",
+          "rn_4zdmGRWTg5ksK44N::L2::Q6",
+          "rn_4zdmGRWTg5ksK44N::L2::Q7",
+          "rn_4zdmGRWTg5ksK44N::L2::Q8",
+          "rn_4zdmGRWTg5ksK44N::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "scalar",
+          "definition": "A quantity that carries a magnitude only, with no direction attached.",
+          "firstLesson": 1
+        },
+        {
+          "term": "vector",
+          "definition": "A quantity that carries both a magnitude and a direction.",
+          "firstLesson": 1
+        },
+        {
+          "term": "displacement",
+          "definition": "The straight-line separation of the finishing point from the starting point, including the direction.",
+          "firstLesson": 1
+        },
+        {
+          "term": "velocity",
+          "definition": "The displacement travelled per unit time, with the direction of travel included.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Suggest how a training officer should explain the difference between mass and weight to junior astronauts, using the definitions of scalars and vectors.",
+        "steps": [
+          "Recall the definitions: a scalar has magnitude only, a vector has magnitude and direction.",
+          "Mass has magnitude only, so it is a scalar — its value does not depend on location.",
+          "Weight is a force, so it has magnitude and direction, making it a vector — its value varies with location in space."
+        ],
+        "finalAnswer": "Mass is a scalar (magnitude only, location-independent); weight is a vector force (magnitude and direction, location-dependent)."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/7a527e21eb2f-1-1-3-displacement-v-distance-1.png",
+        "alt": "Displacement v distance",
+        "sourceHeading": "What is the difference between distance and displacement?",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Displacement is a vector quantity while distance is a scalar quantity",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a98ff19107aa-two-forces-on-an-object-1.png",
+        "alt": "two-forces-on-an-object-1",
+        "sourceHeading": "Two forces acting on an object",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "The length of the arrows are proportional to the magnitude of the forces, and show the direction that forces act in",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/8f00c0157949-5-1-3-force-at-angle.png",
+        "alt": "Force at Angle, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "A force acting at an angle",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "A force of magnitude 100 N directed 40° from the horizontal",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}
