@@ -1,0 +1,34 @@
+{
+ "lane": "T-OEQ-PHYS-FORMAT-1",
+ "run": "run-009-r2-serve",
+ "date": "2026-11-02",
+ "scope": "R2+M1 serving backsync riding resources PR #280: 4 field pins (R2-b ionisation header + 3 M1 math code-span lines); R2-a is a no-op on the plane (KaTeX matrix already present from the run-001/003 lineage; corpus adopts it verbatim via PR #280 amend commit 2)",
+ "law": "corpus := resources main verbatim; T1 serialization (indent=1, ensure_ascii=False, no trailing newline)",
+ "pin_count": 4,
+ "pins": [
+  {
+   "target": "qstnprt_dtqBs72bCBHhzmPW",
+   "field": "problemMd",
+   "before_sha256": "86e3b79c2bc733ae7c5e92d6e753fd7733df5a7a37ab1140d89a981871c7a85f",
+   "after_sha256": "5fb0cf8f88393b3bfd0d873ca76f7255d133992eea35a693ad126c1b8fa3cefd"
+  },
+  {
+   "target": "qstnprt_6KGc2JNpQkkr4fMC",
+   "field": "solutionMd",
+   "before_sha256": "5b6c81fab9cf748689c3aa9aff1a689f546e423a006e6b61db464c9f2c00e3c9",
+   "after_sha256": "c6c60f174f41b35edcf49be634b32acb7ba4f56c590628c3bd3c641ec33b389b"
+  },
+  {
+   "target": "qstnprt_6KGc2JNpQkkr4fMC",
+   "field": "solutionMd",
+   "before_sha256": "c6c60f174f41b35edcf49be634b32acb7ba4f56c590628c3bd3c641ec33b389b",
+   "after_sha256": "a49553233c830461f380c75d5d5da932e26ffdac524d01b6adc00d097cb29388"
+  },
+  {
+   "target": "qstnprt_M8YQX5F9BqRJwVJ3",
+   "field": "solutionMd",
+   "before_sha256": "5148b75299a8b43fa1e2e0a37d6171633291558d3e99c67e103aec980a137827",
+   "after_sha256": "4eafad0e64ca82069a05c842e5f79fe0812c8ce29ec1a23b5f8bac00cbe6bc93"
+  }
+ ]
+}
