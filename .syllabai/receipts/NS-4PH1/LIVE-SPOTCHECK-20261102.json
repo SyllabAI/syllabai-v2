@@ -1,0 +1,71 @@
+{
+  "format": "physics-wave1-live-spotcheck/1.0",
+  "generated_at_utc": "2026-11-02T06:35:00Z",
+  "target_urls": {
+    "restored_pilot": "https://syllabai-hub-v2.vercel.app/courses/igcse-physics-19/guided-lessons/rn_RpyMnS5nqWSRWXXG",
+    "wave1_light_walk": "https://syllabai-hub-v2.vercel.app/courses/igcse-physics-19/guided-lessons/rn_k9wr3prcgSBg5vfw"
+  },
+  "title_rendered": "Guided lesson: Distance-Time Graphs / Guided lesson: Speed",
+  "law_checks": {
+    "lessons_x4_your_answer_all_targets": {
+      "observed": "7/7 physics pages x8 (rn_RpyMnS5nqWSRWXXG 261,704B RESTORED + rn_k9wr3prcgSBg5vfw 242,627B + rn_pfndTqR6DTJGZ8xQ 241,097B + rn_CpJZQWzbvMcM8fw3 238,656B + rn_5hfYYFrc2XjMJCrq 248,292B + rn_GxNWbSMqkTN4zgZB 243,642B + rn_ZgGMNrRGBKvYxxFf 236,962B)",
+      "expected": "8 per page (lessons x 4)",
+      "result": "GREEN"
+    },
+    "authored_stems_on_surface": {
+      "probe_one_per_note": [
+        "rn_RpyMnS5nqWSRWXXG: 'section of the line is completely flat and'",
+        "rn_k9wr3prcgSBg5vfw: 'covers 1200 m of city streets in 480 s'",
+        "rn_pfndTqR6DTJGZ8xQ: 'speed of the falling object indi'",
+        "rn_CpJZQWzbvMcM8fw3: 'climbs from 3.0 m/s to 9.0 m/s over 12 s'",
+        "rn_5hfYYFrc2XjMJCrq: 'what does a flat horizontal section of the l'",
+        "rn_GxNWbSMqkTN4zgZB: 'area between a velocity-time line and the time axis repr'",
+        "rn_ZgGMNrRGBKvYxxFf: 'accelerates uniformly from 4.0 m/s to 14 m/s over 90 m'"
+      ],
+      "hits": "7/7 present",
+      "result": "GREEN"
+    },
+    "law_2_1b": {
+      "check": "learner-surface 'from the revision note' occurrence count (the of-record live marker)",
+      "observed": 0,
+      "expected": 0,
+      "result": "GREEN",
+      "note": "the full 8-gram battery is the AUTHORING-time A0 gate (38/38 at resources PR #266; wave-1 pipeline 21/21 at PR #272); the served page legitimately renders authored paraphrase surfaces, so a page-wide 8-gram sweep is NOT the live law of record"
+    },
+    "no_import_pending_card": {
+      "observed": "7/7 pages",
+      "result": "GREEN"
+    },
+    "written_textarea_present": {
+      "observed": "7/7 pages",
+      "result": "GREEN"
+    },
+    "calibrations_unchanged": {
+      "observed": "chemistry stage-A pilot rn_2MpXPtNXvn8pQm3r x8 + chemistry S-B10 rn_2z53qk2CdWrVVc7V x8 + revision-notes face 200",
+      "result": "GREEN"
+    },
+    "battery_summary": "10 GREEN / 0 FAIL (results file of record: scripts/wave1-spotcheck-results.json)"
+  },
+  "dom_flow_walk": {
+    "tool": "agent-browser (headless), viewport 1440x900, zero-DB surface — progress state is client-side only",
+    "screenshots_dir": "download/physics-wave1/dom-walk/ (13 PNGs of record)",
+    "walked_pages": "the RESTORED stage-A pilot (full 2-lesson walk — the page that was regressed) + the wave-1 note rn_k9wr3prcgSBg5vfw 'Speed' (L1::Q1 light walk)",
+    "verdict_laws_confirmed": [
+      "MCQ wrong answer -> role=status 'Not quite — the answer is B.' + correct-option explanation verbatim ('Distance from the start is not changing, so the object is not moving.') + 'Misconception flagged: slope-height conflation' + options LOCKED (submit + options disabled — one-shot, no silent regrade) [pilot L1::Q1]",
+      "MCQ correct answer -> role=status 'Great job!' + explanation verbatim [pilot L1::Q2 'On distance-time axes the gradient is the speed, and P's gradient is larger.', L1::Q3, L1::Q4, L1::Q5, L2::Q1, wave-1 Speed L1::Q1 'The trip-wide average uses the full distance and the full time, whatever the pacing in between.']",
+      "empty submit -> Submit answer button DISABLED (blocked, never a silent grade) [observed on the MCQ card with nothing selected; written cards identical law]",
+      "written 0-keyword ('banana') -> 'Not quite.' + Model answer VERBATIM ('The object is stationary (at rest, still) — its distance from the starting point is not changing, so it has stopped moving and its speed is zero.') + locked [pilot L1::Q6]",
+      "written keyword-hit ('The steepness (gradient) of the line is the speed') -> 'Great job!' + Model answer verbatim [pilot L1::Q7]",
+      "NUM arithmetic renders verbatim: '8 km = 8000 m and 6 min = 360 s, so 8000 / 360 = 22.2 m/s.' [pilot L2::Q2 — the exact stage-A of-record string]"
+    ],
+    "walk_path": "pilot lesson-set landing (01) -> L1 depth Medium (02) -> Q1 stem (03) -> Q1 wrong verdict (04) -> locked (05) -> Q2 correct (06) -> empty-submit blocked at Q3 (07) -> Q6 MISS + model answer (08) -> Q7 GREAT (09) -> L2 entry (10) -> L2::Q2 NUM arithmetic (11) -> wave-1 Speed landing (12) -> Speed L1::Q1 GREAT (13)",
+    "provenance_footer_of_record": "the served pages carry the pinned provenance footer: 'Guided content from the SME authoring corpus — note rn_…, pinned at <commit-A sha> · promoted SyllabAI/syllabai-resources <promo sha>' — observed rn_RpyMnS5nqWSRWXXG pinned at 7d493985c772 · promoted b7e044e4418b, and rn_k9wr3prcgSBg5vfw likewise"
+  },
+  "disclosures": [
+    "the walk tooling first filled the written textarea via a raw DOM value set — React's controlled input did not register it (submit stayed disabled, the fail-closed law holding under automation too); the law was then exercised with CDP-driven real keyboard input (agent-browser fill), which produced the expected verdicts",
+    "the pre-fix live baseline (pilot x0 at 91,781B) is captured in BAKE-PROBE-20261102.json — the regression was visible live for ~13h (merge d0a45996 2026-11-01 → corrective merge 854da85e 2026-11-02)",
+    "mid-flight race census: hub main 93959b9d -> 5af87bb9 (T-MG-INK-7 bookkeeping receipt, .syllabai/worklog.md only, zero overlap with the landing) — union-merged 2e65e361 into physics-wave1-hub-v20, import re-run GREEN 32/32 on the merged base before push",
+    "the v19 lane-side receipt was lost to a sandbox recycle before its bookkeeping PR landed; it is late-filed of record as HUB-IMPORT-RUN-20261101-physics-wave1.json with a late_filing disclosure block"
+  ],
+  "boundaries": "read-only hub GETs + anonymous DOM walk; zero DB; zero Vercel API writes; no writes to the learner surface"
+}
