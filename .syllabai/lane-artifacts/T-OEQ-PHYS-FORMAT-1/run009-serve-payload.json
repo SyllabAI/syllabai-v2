@@ -1,0 +1,131 @@
+{
+ "lane": "T-OEQ-PHYS-FORMAT-1",
+ "run": "run-009-r2-serve",
+ "date": "2026-11-02",
+ "scope": "R2+M1 serving backsync riding resources PR #280: 4 field pins (R2-b ionisation header + 3 M1 math code-span lines); R2-a is a no-op on the plane (KaTeX matrix already present from the run-001/003 lineage; corpus adopts it verbatim via PR #280 amend commit 2)",
+ "law": "corpus := resources main verbatim; T1 serialization (indent=1, ensure_ascii=False, no trailing newline)",
+ "pin_count": 4,
+ "pins": [
+  {
+   "target": "qstnprt_dtqBs72bCBHhzmPW",
+   "field": "problemMd",
+   "before_sha256": "86e3b79c2bc733ae7c5e92d6e753fd7733df5a7a37ab1140d89a981871c7a85f",
+   "after_sha256": "5fb0cf8f88393b3bfd0d873ca76f7255d133992eea35a693ad126c1b8fa3cefd"
+  },
+  {
+   "target": "qstnprt_6KGc2JNpQkkr4fMC",
+   "field": "solutionMd",
+   "before_sha256": "5b6c81fab9cf748689c3aa9aff1a689f546e423a006e6b61db464c9f2c00e3c9",
+   "after_sha256": "c6c60f174f41b35edcf49be634b32acb7ba4f56c590628c3bd3c641ec33b389b"
+  },
+  {
+   "target": "qstnprt_6KGc2JNpQkkr4fMC",
+   "field": "solutionMd",
+   "before_sha256": "c6c60f174f41b35edcf49be634b32acb7ba4f56c590628c3bd3c641ec33b389b",
+   "after_sha256": "a49553233c830461f380c75d5d5da932e26ffdac524d01b6adc00d097cb29388"
+  },
+  {
+   "target": "qstnprt_M8YQX5F9BqRJwVJ3",
+   "field": "solutionMd",
+   "before_sha256": "5148b75299a8b43fa1e2e0a37d6171633291558d3e99c67e103aec980a137827",
+   "after_sha256": "4eafad0e64ca82069a05c842e5f79fe0812c8ce29ec1a23b5f8bac00cbe6bc93"
+  }
+ ],
+ "m2": {
+  "date": "2026-11-02",
+  "status": "NO-OP on v2 questions.json — all 17 corrected corpus lines were already present on the plane (run-001..007 lineage); resources corpus synced to plane verbatim",
+  "scope": "M2-a nuclear-decay backtick pseudo-notation (4 lines, live MathML mmultiscripts evidence); M2-b pre_square/word-symbol nuclear junk (3 lines + 2 collateral); M2-c double-backslash / missing-space render-breakers (8 lines)",
+  "corpus_delivery": "resources PR #280 commit 3 (6cc90f9) — 7 topic.json + 2 questions.md; dossier m2-scan/m2-pins/m2-qmd-pins",
+  "residuals_disclosed": [
+   "qstnprt_ZTrm3d8Qwgth5z94: corpus/plane CONTENT mismatch (different question under same pid) — needs content reconciliation, notation deferred",
+   "qstnprt_NSMPgHFrX8cz4SVf L32: gathered-vs-matrix cosmetic divergence",
+   "qstnprt_cHf2Brk7zsDZsdHb: `equation` code span carried on both sides"
+  ],
+  "plane_field_verifications": [
+   {
+    "target": "qstnprt_4vfnyBdMN6xzcDJM",
+    "field": "problemMd",
+    "plane_before_sha256": "95e0c6afe5d6aacf753eef6ceae9e0dfa8d0a7b3fb15c7b8b252145db6108898",
+    "plane_after_sha256": "95e0c6afe5d6aacf753eef6ceae9e0dfa8d0a7b3fb15c7b8b252145db6108898",
+    "verdict": "no-op (line already correct on plane; corpus synced to it via resources PR #280 commit 3)"
+   },
+   {
+    "target": "qstnprt_QzWSVGGTRn5mWtdz",
+    "field": "problemMd",
+    "plane_before_sha256": "06e4e7211e3c24ab4ad88ebcf653de9daa422aa72db929b970d75993ce3416c1",
+    "plane_after_sha256": "06e4e7211e3c24ab4ad88ebcf653de9daa422aa72db929b970d75993ce3416c1",
+    "verdict": "no-op (line already correct on plane; corpus synced to it via resources PR #280 commit 3)"
+   },
+   {
+    "target": "qstnprt_xYdvSN5X58QNZbXC",
+    "field": "problemMd",
+    "plane_before_sha256": "d78011c1d2d7522f54b781062f19ffb3a8d524bbedacdadb009de24977d93660",
+    "plane_after_sha256": "d78011c1d2d7522f54b781062f19ffb3a8d524bbedacdadb009de24977d93660",
+    "verdict": "no-op (line already correct on plane; corpus synced to it via resources PR #280 commit 3)"
+   },
+   {
+    "target": "qstnprt_zmCwB2mCVKK6Fsx7",
+    "field": "problemMd",
+    "plane_before_sha256": "b219678eb932fc7d4ae0b5cc3ad5d66509f27e96038db30c944e7e29ca3b590d",
+    "plane_after_sha256": "b219678eb932fc7d4ae0b5cc3ad5d66509f27e96038db30c944e7e29ca3b590d",
+    "verdict": "no-op (line already correct on plane; corpus synced to it via resources PR #280 commit 3)"
+   },
+   {
+    "target": "qstnprt_zmCwB2mCVKK6Fsx7",
+    "field": "solutionMd",
+    "plane_before_sha256": "0dd2f1a9a21bb663f2d20d26dfd686b0c99c484b503534b0a22de3b48920f3d0",
+    "plane_after_sha256": "0dd2f1a9a21bb663f2d20d26dfd686b0c99c484b503534b0a22de3b48920f3d0",
+    "verdict": "no-op (line already correct on plane; corpus synced to it via resources PR #280 commit 3)"
+   },
+   {
+    "target": "qstnprt_KK5wsxWXhgZcnNFV",
+    "field": "problemMd",
+    "plane_before_sha256": "75387af15c87727c3a4d54e1a7d77149f46c10159780c30102664ab1f0fd39d4",
+    "plane_after_sha256": "75387af15c87727c3a4d54e1a7d77149f46c10159780c30102664ab1f0fd39d4",
+    "verdict": "no-op (line already correct on plane; corpus synced to it via resources PR #280 commit 3)"
+   },
+   {
+    "target": "qstnprt_mwJzfZ6r4rsjtsS8",
+    "field": "solutionMd",
+    "plane_before_sha256": "3d8b41a917b527ac774abe6fb30f1aac38397b1eb009b662da22674e6c6d4ee2",
+    "plane_after_sha256": "3d8b41a917b527ac774abe6fb30f1aac38397b1eb009b662da22674e6c6d4ee2",
+    "verdict": "no-op (line already correct on plane; corpus synced to it via resources PR #280 commit 3)"
+   },
+   {
+    "target": "qstnprt_cYtnGPmf9PDd7P8p",
+    "field": "solutionMd",
+    "plane_before_sha256": "d4720e98c2fc54ec24821310653a939e9907efd5de6b5ff68dbdeeefb1644557",
+    "plane_after_sha256": "d4720e98c2fc54ec24821310653a939e9907efd5de6b5ff68dbdeeefb1644557",
+    "verdict": "no-op (line already correct on plane; corpus synced to it via resources PR #280 commit 3)"
+   },
+   {
+    "target": "qstnprt_XgBcnrhxGY4rNQ5B",
+    "field": "solutionMd",
+    "plane_before_sha256": "276b151f8308a81859272bd6f445f879dd875d4c3e0ff98c29e15363112ff624",
+    "plane_after_sha256": "276b151f8308a81859272bd6f445f879dd875d4c3e0ff98c29e15363112ff624",
+    "verdict": "no-op (line already correct on plane; corpus synced to it via resources PR #280 commit 3)"
+   },
+   {
+    "target": "qstnprt_NSMPgHFrX8cz4SVf",
+    "field": "solutionMd",
+    "plane_before_sha256": "be88974415ecc31ede5ca9f3201a544d02378e0a029d8e0277263974c7249f19",
+    "plane_after_sha256": "be88974415ecc31ede5ca9f3201a544d02378e0a029d8e0277263974c7249f19",
+    "verdict": "no-op (line already correct on plane; corpus synced to it via resources PR #280 commit 3)"
+   },
+   {
+    "target": "qstnprt_5kbz6sYFk9twzTx7",
+    "field": "solutionMd",
+    "plane_before_sha256": "0f1286d7c4ceead7982125dbe74e05377f601519f1b656239a49ce66e937ebf7",
+    "plane_after_sha256": "0f1286d7c4ceead7982125dbe74e05377f601519f1b656239a49ce66e937ebf7",
+    "verdict": "no-op (line already correct on plane; corpus synced to it via resources PR #280 commit 3)"
+   },
+   {
+    "target": "qstnprt_VGn9kGtZX3jt4bty",
+    "field": "solutionMd",
+    "plane_before_sha256": "d9bff6ab9e1c42540a12406158ab3b54d00238316364b090327ec3de8b63b0f2",
+    "plane_after_sha256": "d9bff6ab9e1c42540a12406158ab3b54d00238316364b090327ec3de8b63b0f2",
+    "verdict": "no-op (line already correct on plane; corpus synced to it via resources PR #280 commit 3)"
+   }
+  ]
+ }
+}

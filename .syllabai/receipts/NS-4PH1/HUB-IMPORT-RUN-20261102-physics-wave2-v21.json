@@ -1,0 +1,267 @@
+{
+  "format": "hub-import-run-receipt/0.1",
+  "generated_at_utc": "2026-11-02T09:31:31Z",
+  "feed": "physics-wave2-v21",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "landing_law": "additive",
+  "generated_at_utc_note": "figures feed: declared revision of the 112 lesson artifacts (G-DELTA); additive-only law unchanged for everything else",
+  "operator_trace": "1a19b55d8ced0f5d",
+  "operator_directive": "run the new-subject wave-2 chain — import the igcse-physics-19 wave-2 tranche of record (9 notes: rn_nyV7C6zmyKXWJjKg 'Types of Forces' / rn_4zdmGRWTg5ksK44N 'Scalar & Vectors' / rn_K3p2R3ykwwvHV9dp 'Resultant Forces' / rn_gDy2qTkY26r5sMtd 'Unbalanced Forces' / rn_2R3NrjGfJJY29Hzv 'Weight' / rn_ZCGJsYwy6S6FbbbW 'Stopping Distance' / rn_Mrfn29ZgQMq8th5P 'Terminal Velocity' / rn_kN63sqWsc9QdHSVx 'Core Practical: Investigating Force & Extension' / rn_nC3BswtJzYw8k6nX 'Hooke's Law'; 18 lessons / 162 checks = 90 MCQ + 36 recall + 18 explain-why + 18 application) with the 14 prior-pack artifacts re-pinned byte-identical — CUMULATIVE pack 16 notes / 32 lessons / 288 checks, manifest v21. Declared hub landing = 18/18 written + 14/14 identical-exists + the runner-owned guided-import.json index re-issued with all 16 rows; zero chemistry bytes touched. Operator ignition trace 1a19b55d8ced0f5d ('Proceed with physics wave-2'), execution trace 1a19b55d8ced0f5d (single-window execution, disclosed).",
+  "runner": {
+    "path": "apps/hub/scripts/import_guided/run_import.mjs",
+    "id": "hub-import-runner/1.0",
+    "runtime": "node v24.22.2"
+  },
+  "feed_config": {
+    "manifest": "hub-import-manifest-v21.json",
+    "manifest_version": 21,
+    "promo": {
+      "commit": "7b08a426930651bc6b61b21ebf897a77f61b3660",
+      "tree": "fda77fc854e25ba62457991f7395fc44743b35cf",
+      "parent": "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      "trace": "1a19b55d8ced0f5d"
+    },
+    "promotion_pending": false,
+    "integration_branch": "(main ancestry)",
+    "artifact_pin": "bfae9977809436fc2e5c20967bf2581f67a52bec",
+    "figures_feed": true
+  },
+  "gates": {
+    "P0": "promotion commit preflight (tree/parent/message/ancestry or declared pending promotion)",
+    "GA": "manifest integrity (format/version/kinds/counts/conservation/adapter/trace + survivor byte-identity + schemas byte-anchored)",
+    "GB": "32/32 fetched raw @ pinned commit, sha256+bytes exact",
+    "GC": "ajv draft-07 ×32 vs both target schemas",
+    "GD": "X ×16 — derived-ID grammar, checkRefs↔questions bidirectional 1:1 (288 checks), pinned provenance, figure closure both ways (50 figures)",
+    "GE": "Φ — per-note stream anchors ×16 vs the feed's INT-3 record; wave subtotals ×3; grand stream vs manifest; legacy-anchor equality ×16 (figures carried no prose)",
+    "LAND": "byte-exact atomic landing (additive law) — additive-only, divergent overwrite aborts",
+    "GV": "cold re-read ×32; closing identity re-derived from disk; loader rel-shape probe; static-build pickup; idempotence 32/32; figure counts re-derived from disk"
+  },
+  "gate_results": [
+    {
+      "stage": "P0",
+      "name": "promotion commit resolves",
+      "ok": true,
+      "detail": "7b08a426930651bc6b61b21ebf897a77f61b3660"
+    },
+    {
+      "stage": "P0",
+      "name": "tree matches promotion receipt",
+      "ok": true,
+      "detail": "tree=fda77fc854e25ba62457991f7395fc44743b35cf"
+    },
+    {
+      "stage": "P0",
+      "name": "parent matches promotion receipt",
+      "ok": true,
+      "detail": "parent=bfae9977809436fc2e5c20967bf2581f67a52bec"
+    },
+    {
+      "stage": "P0",
+      "name": "message carries promotion trace",
+      "ok": true,
+      "detail": "guided(igcse-physics-19 physics-wave2): commit C — namespace-complete outputs: hub-import-"
+    },
+    {
+      "stage": "P0",
+      "name": "promotion commit remains main ancestor",
+      "ok": true,
+      "detail": "status=ahead behind_by=0"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest fetched @ promotion commit",
+      "ok": true,
+      "detail": "13754B"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest byte-identical to lane survivor",
+      "ok": true,
+      "detail": "remote b311b4b8329a vs survivor b311b4b8329a"
+    },
+    {
+      "stage": "G-A",
+      "name": "format hub-import-manifest/1.0",
+      "ok": true,
+      "detail": "hub-import-manifest/1.0"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest_version 21",
+      "ok": true,
+      "detail": "21"
+    },
+    {
+      "stage": "G-A",
+      "name": "32 artifacts listed",
+      "ok": true,
+      "detail": "32"
+    },
+    {
+      "stage": "G-A",
+      "name": "kinds 32/32 (feed census)",
+      "ok": true,
+      "detail": "{\"hub-lesson-import-1.5\":16,\"sme-question-package\":16}"
+    },
+    {
+      "stage": "G-A",
+      "name": "counts == closing identity",
+      "ok": true,
+      "detail": "{\"notes\":16,\"lessons\":32,\"checks\":288,\"keyPoints\":152,\"distractors\":480,\"glossaryTerms\":68,\"figures\":50,\"figures_module_mapped\":50,\"figures_note_level\":0,\"workedExamples_populated\":12,\"workedExamples_null\":4,\"authored_chars_conserved\":196478}"
+    },
+    {
+      "stage": "G-A",
+      "name": "conservation block present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "stage": "G-A",
+      "name": "adapter of record",
+      "ok": true,
+      "detail": "guided-lesson-0.6--hub-lesson-import-1.5"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest carries promotion operator trace",
+      "ok": true,
+      "detail": "1a19b55d8ced0f5d"
+    },
+    {
+      "stage": "G-A",
+      "name": "artifact paths conform to the feed's path-map families",
+      "ok": true,
+      "detail": "32 conform"
+    },
+    {
+      "stage": "G-A",
+      "name": "hub schema byte-identical to survivor",
+      "ok": true,
+      "detail": "12004B"
+    },
+    {
+      "stage": "G-A",
+      "name": "package schema byte-identical to survivor",
+      "ok": true,
+      "detail": "6078B"
+    },
+    {
+      "stage": "G-B",
+      "name": "32/32 artifacts fetched + sha256/bytes exact",
+      "ok": true,
+      "detail": "all exact"
+    },
+    {
+      "stage": "G-C",
+      "name": "ajv draft-07 ×32 (guided-lesson-0.6--hub-lesson-import-1.5 + sme-question-package/1.2)",
+      "ok": true,
+      "detail": "all pass"
+    },
+    {
+      "stage": "G-D",
+      "name": "X ×16: grammar + checkRefs↔questions + figure closure + provenance",
+      "ok": true,
+      "detail": "288 checks + 50 figures resolve"
+    },
+    {
+      "stage": "G-E",
+      "name": "per-note stream anchors ×16 (sha256 + chars)",
+      "ok": true,
+      "detail": "all conserved"
+    },
+    {
+      "stage": "G-E",
+      "name": "wave stream subtotals ×3 vs manifest",
+      "ok": true,
+      "detail": "all match"
+    },
+    {
+      "stage": "G-E",
+      "name": "grand stream vs manifest",
+      "ok": true,
+      "detail": "196478 chars e3c751318895"
+    },
+    {
+      "stage": "LAND",
+      "name": "32 artifacts landed byte-exact (additive law)",
+      "ok": true,
+      "detail": "18 written, 0 revised, 14 already identical"
+    },
+    {
+      "stage": "LAND",
+      "name": "guided-import.json index landed (runner-owned, re-issued)",
+      "ok": true,
+      "detail": "10596B"
+    },
+    {
+      "stage": "G-V",
+      "name": "cold re-read ×32 byte-identical vs manifest sha",
+      "ok": true,
+      "detail": "disk == fetched bytes"
+    },
+    {
+      "stage": "G-V",
+      "name": "closing identity re-derived from disk",
+      "ok": true,
+      "detail": "{\"notes\":16,\"lessons\":32,\"checks\":288,\"keyPoints\":152,\"distractors\":480,\"glossaryTerms\":68}"
+    },
+    {
+      "stage": "G-V",
+      "name": "figure counts re-derived from disk",
+      "ok": true,
+      "detail": "{\"figures\":50,\"moduleMapped\":50,\"noteLevel\":0,\"modulesWithFigures\":24}"
+    },
+    {
+      "stage": "G-V",
+      "name": "loader rel-shape probe (content/<rel>)",
+      "ok": true,
+      "detail": "igcse-physics-19/guided-lessons/rn_RpyMnS5nqWSRWXXG.hub-lesson-import.json , igcse-physics-19/guided-questions/rn_RpyMnS5nqWSRWXXG.sme-question-package.json , igcse-physics-19/guided-import.json"
+    },
+    {
+      "stage": "G-V",
+      "name": "static build copies content/ recursively (cpSync recursive in build_corpus_static.mjs)",
+      "ok": true,
+      "detail": "whole-tree copy — new guided-* subdirs publish with the next build"
+    },
+    {
+      "stage": "G-V",
+      "name": "idempotence re-landing 32/32 identical-exists",
+      "ok": true,
+      "detail": "32/32"
+    }
+  ],
+  "landing": {
+    "hub_tree": "/home/z/my-project/hub-lane/apps/hub",
+    "pack": "content/igcse-physics-19/",
+    "lessons_dir": "guided-lessons/ (16 files)",
+    "questions_dir": "guided-questions/ (16 files)",
+    "index": "guided-import.json (guided-import-index/1.0)",
+    "files_written": 18,
+    "files_revised": 0,
+    "files_already_identical": 14,
+    "bytes_landed": 458542
+  },
+  "counts_landed": {
+    "notes": 16,
+    "lessons": 32,
+    "checks": 288,
+    "keyPoints": 152,
+    "distractors": 480,
+    "glossaryTerms": 68
+  },
+  "figures_landed": {
+    "figures": 50,
+    "moduleMapped": 50,
+    "noteLevel": 0,
+    "modulesWithFigures": 24
+  },
+  "conservation_recomputed": {
+    "authored_chars": 196478,
+    "authored_stream_sha256": "e3c751318895ab5013bcb78f662bef6941f298c19c2a9e18b7ce7ac69a4dd78b"
+  },
+  "next_operator_gated": [
+    "commit the hub tree addition (runner + content/igcse-physics-19/guided-*) per standing convention — push auto-bakes the hub (git-linked law)",
+    "hub PR (atomic): FEED runner + TS optional fields + renderer figure cards + revised artifacts + re-issued guided-import.json; merges only after resources PR #207"
+  ],
+  "duration_ms": 4690
+}

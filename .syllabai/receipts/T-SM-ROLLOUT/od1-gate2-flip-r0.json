@@ -1,0 +1,34 @@
+{
+ "phase": "COMPLETE",
+ "ma10_parts_before": 51,
+ "probe": {
+  "email": "pf-gate2-probe-486cd6d2@staging.syllabai.dev",
+  "user_id": "3956ce20-6bfd-4fb8-9827-beb3af8dabe1",
+  "roles": [
+   "STUDENT",
+   "TEACHER"
+  ]
+ },
+ "flip": {
+  "flipped": 307,
+  "refused": 4,
+  "unexpected": []
+ },
+ "census_after": {
+  "SUGGESTED": 4,
+  "VALIDATED": 488
+ },
+ "ma10_parts_after": 145,
+ "smr_multi_axis_refusals_after": 0,
+ "smr_total_after": 368,
+ "refusal_labels": [
+  "1-b-ii#a1",
+  "1-b-ii#a2",
+  "2-c#a1",
+  "2-c#a2"
+ ],
+ "refusal_bodies_sample": [
+  "{\"status\":409,\"error\":\"conflict\",\"message\":\"LEVELS multi-axis set band coverage invalid \u2014 axis \\\"1-b-ii#a1\\\" mark ranges are not contiguous (gap): level 2 ends at 2 but level 3 starts at 4 (expected 3) (OD-1 MA-4); axis ",
+  "{\"status\":409,\"error\":\"conflict\",\"message\":\"LEVELS multi-axis set band coverage invalid \u2014 axis \\\"1-b-ii#a1\\\" mark ranges are not contiguous (gap): level 2 ends at 2 but level 3 starts at 4 (expected 3) (OD-1 MA-4); axis "
+ ]
+}

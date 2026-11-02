@@ -47,18 +47,45 @@
 /** The container schema id of record (run-001 native-ref container law). */
 export const INK_DOC_SCHEMA_ID = "syllabai-ink/1";
 
-/** The palette of record (the run-001 spike's native palette, verbatim). */
+/**
+ * The palette of record — T-MG-INK-8: the MathsGenie annotator's exact
+ * swatch colours (extracted from MG's production pen-colour menu swatches,
+ * 2026-11-02: rgb(29,29,29) rgb(224,49,49) rgb(68,101,233) rgb(9,146,104)
+ * rgb(174,62,201) rgb(225,105,25)) — the census target is visual parity
+ * with MG, so the hex VALUES were re-skinned (stored shapes carry the KEY;
+ * old ink re-skins to the new shade on next paint) and violet/orange were
+ * added as new keys (an OLD client drops violet/orange shapes at the
+ * honest-parse boundary — disclosed, never a throw).
+ */
 export const INK_COLORS = {
-  black: "#1a1a1a",
-  red: "#d13438",
-  blue: "#0f6cbd",
-  green: "#107c10",
+  black: "#1d1d1d",
+  red: "#e03131",
+  blue: "#4465e9",
+  green: "#099268",
+  violet: "#ae3ec9",
+  orange: "#e16919",
 } as const;
 export type InkColor = keyof typeof INK_COLORS;
 export const INK_COLOR_KEYS = Object.keys(INK_COLORS) as InkColor[];
 
-/** Pen sizes as fractions of the page width (fine / medium / broad). */
-export const INK_WIDTH_FRACS = [0.0022, 0.0038, 0.006] as const;
+/**
+ * Pen sizes as fractions of the page width — T-MG-INK-8: MG's exact pen
+ * model (their engine: stroke width in PDF page units at zoom 1 =
+ * 0.75 × {s:.5, m:1, l:2, xl:4}, names Fine/Medium/Thick/Extra thick,
+ * default Medium; toolbar dot previews 4/7/11/16 px). Page-relative
+ * fractions use the A4 QP page width (595.276 pt): 0.375/595.276 …
+ * 3.0/595.276 — the same "ink scales with the paper" law this module
+ * already ships. The prior fracs ([0.0022, 0.0038, 0.006]) were ~2× MG's
+ * at every step; old stored strokes keep their committed widthFrac (ink
+ * on paper does not shrink to the new default).
+ */
+export const INK_WIDTH_FRACS = [0.00063, 0.00126, 0.00252, 0.00504] as const;
+
+/** T-MG-INK-8: the MG thickness names, index-aligned with INK_WIDTH_FRACS. */
+export const INK_WIDTH_NAMES = ["Fine", "Medium", "Thick", "Extra thick"] as const;
+
+/** T-MG-INK-8: MG's toolbar dot-preview diameters (px), index-aligned. */
+export const INK_WIDTH_DOTS = [4, 7, 11, 16] as const;
 
 export interface InkStrokeShape {
   id: string;

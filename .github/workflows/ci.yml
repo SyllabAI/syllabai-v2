@@ -9,6 +9,14 @@ on:
     branches: [main]
   pull_request:
 
+# T-TURBO-CACHE run-001: id-token:write is required for the OIDC exchange in
+# vercel/setup-turborepo-remote-cache-action (short-lived remote-cache token,
+# revoked at job end). contents:read is the minimal checkout scope. Safe even
+# when the cache step is skipped (no TURBO_TEAM variable configured).
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -25,6 +33,18 @@ jobs:
       # first-class bun workspace package (root bun.lock + bunfig.toml).
       - name: Install workspace deps (root lockfile, all workspaces)
         run: bun install --frozen-lockfile
+
+      # T-TURBO-CACHE run-001: short-lived OIDC remote-cache token (no stored
+      # secret, auto-revoked at job end). Skips cleanly when the TURBO_TEAM
+      # repo variable is absent — turbo then falls back to the local cache
+      # and CI stays green either way. One-time enablement: Vercel team
+      # Settings → Build and Deployment → OIDC Policies for CLI Access, then
+      # `gh variable set TURBO_TEAM --body "<team-slug>"`.
+      - name: Turborepo remote cache token (OIDC, short-lived)
+        if: ${{ vars.TURBO_TEAM != '' }}
+        uses: vercel/setup-turborepo-remote-cache-action@v1.1.0
+        with:
+          team: ${{ vars.TURBO_TEAM }}
 
       - name: Typecheck
         run: bun run typecheck
@@ -66,6 +86,17 @@ jobs:
 
       - name: Install workspace deps (root lockfile, all workspaces)
         run: bun install --frozen-lockfile
+
+      # T-TURBO-CACHE run-001: same OIDC remote-cache token as the verify job
+      # (skipped when TURBO_TEAM is unset; local cache only in that case).
+      # build:hub is now turbo-orchestrated — cached when src/content/next
+      # config inputs are unchanged, with .next/** (standalone incl.) and
+      # public/corpus-index.json restored from cache instead of rebuilt.
+      - name: Turborepo remote cache token (OIDC, short-lived)
+        if: ${{ vars.TURBO_TEAM != '' }}
+        uses: vercel/setup-turborepo-remote-cache-action@v1.1.0
+        with:
+          team: ${{ vars.TURBO_TEAM }}
 
       - name: Build hub (corpus-verify prebuild + next build)
         run: bun run build:hub

@@ -169,6 +169,44 @@ export const bandPlacementCaptureSchema = z.object({
 });
 export type BandPlacementCapture = z.infer<typeof bandPlacementCaptureSchema>;
 
+/**
+ * OD-1 per-axis dispatch leg (PR-B) — the MULTI-AXIS band capture DTO: one
+ * placement PER printed axis column of a multi-axis part (the part's
+ * VALIDATED part-bound LEVELS siblings, version_label '<base>#<axis>').
+ * `axis` is the sibling's axis token (the label's suffix after '#').
+ * Binding truth: 2..6 axes (a multi-axis printed grid has at least two
+ * columns); the SERVICE adds the laws — every sibling covered exactly once,
+ * each placement inside its axis's bound levels/ranges, and the axis awards
+ * summing to marksAwarded (the row's grade of record — OD-1 MA-5 closure).
+ */
+export const multiAxisBandPlacementCaptureSchema = z.object({
+  axes: z
+    .array(
+      z.object({
+        axis: z.string().min(1).max(40),
+        levelPlacement: javaJsonInt.refine((v) => v >= 1, {
+          message: "levelPlacement must be greater than or equal to 1",
+        }),
+        awardedMarks: javaJsonInt.refine((v) => v >= 0 && v <= 99, {
+          message: "awardedMarks must be between 0 and 99",
+        }),
+      }),
+    )
+    .min(2)
+    .max(6),
+});
+export type MultiAxisBandPlacementCapture = z.infer<typeof multiAxisBandPlacementCaptureSchema>;
+
+/** The bandPlacement wire union: single-axis parts keep the historical shape;
+ *  multi-axis parts carry one placement per axis column. Which shape is
+ *  REQUIRED is the service's call (it knows the part's sibling count) — a
+ *  wrong shape is an honest 409, never a guess. */
+export const bandPlacementCaptureUnionSchema = z.union([
+  bandPlacementCaptureSchema,
+  multiAxisBandPlacementCaptureSchema,
+]);
+export type BandPlacementCaptureUnion = z.infer<typeof bandPlacementCaptureUnionSchema>;
+
 export const humanMarkRequestSchema = z.object({
   marksAwarded: javaJsonInt.refine((v) => v >= 0 && v <= 99, {
     message: "marksAwarded must be between 0 and 99",
@@ -182,8 +220,12 @@ export const humanMarkRequestSchema = z.object({
     }),
   comments: z.string().max(4000).nullable().default(null),
   /** ADR-040 §5.5: present ONLY for band-part captures (the PartSmartMarkView
-   *  bandDecision pattern — optional key, point-path bodies unchanged). */
-  bandPlacement: bandPlacementCaptureSchema.nullable().default(null),
+   *  bandDecision pattern — optional key, point-path bodies unchanged).
+   *  OD-1 PR-B: the shape is the capture union — single-axis parts keep the
+   *  historical {levelPlacement, awardedMarks}; multi-axis parts carry one
+   *  placement per printed axis column ({axes: [...]}) and the service
+   *  refuses the wrong shape honestly (409, never a guess). */
+  bandPlacement: bandPlacementCaptureUnionSchema.nullable().default(null),
 });
 export type HumanMarkRequest = z.infer<typeof humanMarkRequestSchema>;
 

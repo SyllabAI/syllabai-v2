@@ -6,18 +6,25 @@
     "packages/*"
   ],
   "scripts": {
-    "typecheck": "bun run --cwd packages/contracts typecheck && bun run --cwd packages/shared typecheck && bun run --cwd packages/db typecheck && bun run --cwd apps/api typecheck && bun run --cwd apps/hub typecheck",
+    "typecheck": "turbo run typecheck",
     "test": "bun test apps/api packages",
-    "build:api": "bun run --cwd apps/api build",
+    "build:api": "turbo run build --filter=@syllabai/api",
     "dev:api": "bun run --cwd apps/api dev",
     "dev:hub": "bun run --cwd apps/hub dev",
-    "build:hub": "bun run --cwd apps/hub build",
+    "build:hub": "turbo run build --filter=@syllabai/hub",
     "golden": "bun golden/runner.ts"
   },
   "engines": {
     "bun": ">=1.1"
   },
+  "devEngines": {
+    "packageManager": {
+      "name": "bun",
+      "version": "^1.3.14"
+    }
+  },
   "devDependencies": {
-    "bun-types": "^1.3.14"
+    "bun-types": "^1.3.14",
+    "turbo": "^2.11.10"
   }
 }

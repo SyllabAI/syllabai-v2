@@ -9,6 +9,9 @@ import { describe, expect, test } from "bun:test";
 import {
   INK_COLORS,
   INK_DOC_SCHEMA_ID,
+  INK_WIDTH_DOTS,
+  INK_WIDTH_FRACS,
+  INK_WIDTH_NAMES,
   clamp01,
   emptyDoc,
   makeShapeId,
@@ -131,13 +134,27 @@ describe("T-MG-INK-1 run-003 — the 409 re-apply law (run-002 revision doc)", (
 });
 
 describe("T-MG-INK-1 run-003 — grammar hygiene", () => {
-  test("palette of record is the run-001 spike palette, verbatim", () => {
+  test("palette of record is the MG parity palette (T-MG-INK-8, extracted verbatim)", () => {
     expect(INK_COLORS).toEqual({
-      black: "#1a1a1a",
-      red: "#d13438",
-      blue: "#0f6cbd",
-      green: "#107c10",
+      black: "#1d1d1d",
+      red: "#e03131",
+      blue: "#4465e9",
+      green: "#099268",
+      violet: "#ae3ec9",
+      orange: "#e16919",
     });
+  });
+
+  test("pen widths of record are MG's exact page-relative model (T-MG-INK-8)", () => {
+    // MG: 0.75 × {s:.5, m:1, l:2, xl:4} PDF pt over the A4 page width
+    // (595.276 pt) → 0.375 / 0.75 / 1.5 / 3.0 pt as page-width fractions.
+    const A4_PT = 595.276;
+    expect(INK_WIDTH_FRACS).toHaveLength(4);
+    [0.375, 0.75, 1.5, 3.0].forEach((pt, i) => {
+      expect(INK_WIDTH_FRACS[i]).toBeCloseTo(pt / A4_PT, 6);
+    });
+    expect(INK_WIDTH_NAMES).toEqual(["Fine", "Medium", "Thick", "Extra thick"]);
+    expect(INK_WIDTH_DOTS).toEqual([4, 7, 11, 16]);
   });
 
   test("shape ids are unique across calls", () => {

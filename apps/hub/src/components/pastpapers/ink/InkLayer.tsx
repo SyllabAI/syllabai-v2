@@ -99,7 +99,9 @@ import { cn } from "@/lib/utils";
 import {
   INK_COLORS,
   INK_COLOR_KEYS,
+  INK_WIDTH_DOTS,
   INK_WIDTH_FRACS,
+  INK_WIDTH_NAMES,
   clamp01,
   editMathShape,
   editTextShape,
@@ -146,6 +148,10 @@ import {
 import { ProtractorGuideView, RulerGuideView, holderRead } from "./InstrumentGuides";
 
 const TOKEN_KEY = "syllabai.token";
+
+/** T-MG-INK-8: the first-open affordance's once-flag (MG's pattern:
+ * their mg-first-region-hint-done, ours namespaced). */
+const HINT_KEY = "syllabai.ink-hint-done";
 
 /** T-MG-INK-4 — the tool modes of record. The MG census family closes:
  * pen / text / MATH (the Math text box) / SELECT / ERASE + the four
@@ -278,6 +284,41 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   // the local store.
   const [migration, setMigration] = useState<LocalInkMigration | null>(null);
   const migrationDismissed = useRef(false);
+
+  // T-MG-INK-8: the MG first-open affordance — the "Put your answer
+  // down" card (MG's exact copy and behavior: shown once until the
+  // learner arms a tool from it; clicking it arms TEXT on desktop, MG's
+  // keyboard default). MG anchors it to their parsed first answer
+  // region; we don't parse regions, so it floats above the ink toolbar
+  // (the disclosed difference).
+  const [hintOpen, setHintOpen] = useState(false);
+  useEffect(() => {
+    if (!enabled) return;
+    let done = "1";
+    try {
+      done = window.localStorage.getItem(HINT_KEY) ?? "";
+    } catch {
+      // private mode: the card just shows every open — honest default
+      done = "";
+    }
+    if (!done) setHintOpen(true);
+  }, [enabled]);
+  const dismissHint = useCallback(() => {
+    try {
+      window.localStorage.setItem(HINT_KEY, "1");
+    } catch {
+      // private mode: dismiss for this session only
+    }
+    setHintOpen(false);
+  }, []);
+  const armFromHint = useCallback(
+    (m: InkToolMode) => {
+      setMode(m);
+      dismissHint();
+    },
+    [dismissHint],
+  );
+
   useEffect(() => {
     if (!sync || !token || !sourceUrl) return;
     if (snap.status === "loading") return;
@@ -583,7 +624,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             variant={mode === "pen" ? "secondary" : "ghost"}
             className="size-8 px-0"
             aria-pressed={mode === "pen"}
-            aria-label="Pen tool"
+            aria-label="Draw"
             onClick={() => setMode("pen")}
           >
             <Pen className="size-4" aria-hidden />
@@ -593,7 +634,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             variant={mode === "text" ? "secondary" : "ghost"}
             className="size-8 px-0"
             aria-pressed={mode === "text"}
-            aria-label="Text box tool"
+            aria-label="Text"
             onClick={() => setMode("text")}
           >
             <Type className="size-4" aria-hidden />
@@ -605,7 +646,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             variant={mode === "math" ? "secondary" : "ghost"}
             className="size-8 px-0"
             aria-pressed={mode === "math"}
-            aria-label="Math text box tool"
+            aria-label="Math text box"
             onClick={() => setMode("math")}
           >
             <Sigma className="size-4" aria-hidden />
@@ -619,7 +660,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             variant={mode === "select" ? "secondary" : "ghost"}
             className="size-8 px-0"
             aria-pressed={mode === "select"}
-            aria-label="Select tool"
+            aria-label="Select"
             onClick={() => setMode("select")}
           >
             <MousePointer2 className="size-4" aria-hidden />
@@ -629,7 +670,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             variant={mode === "erase" ? "secondary" : "ghost"}
             className="size-8 px-0"
             aria-pressed={mode === "erase"}
-            aria-label="Erase tool"
+            aria-label="Erase"
             onClick={() => setMode("erase")}
           >
             <Eraser className="size-4" aria-hidden />
@@ -642,7 +683,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             variant={mode === "line" ? "secondary" : "ghost"}
             className="size-8 px-0"
             aria-pressed={mode === "line"}
-            aria-label="Straight line tool"
+            aria-label="Line"
             onClick={() => setMode("line")}
           >
             <Minus className="size-4" aria-hidden />
@@ -652,7 +693,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             variant={mode === "ruler" ? "secondary" : "ghost"}
             className="size-8 px-0"
             aria-pressed={mode === "ruler"}
-            aria-label="Ruler guide — draw along the edge"
+            aria-label="Ruler"
             onClick={() => setMode("ruler")}
           >
             <Ruler className="size-4" aria-hidden />
@@ -662,7 +703,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             variant={mode === "protractor" ? "secondary" : "ghost"}
             className="size-8 px-0"
             aria-pressed={mode === "protractor"}
-            aria-label="Protractor guide — draw along the rim"
+            aria-label="Protractor"
             onClick={() => setMode("protractor")}
           >
             <Gauge className="size-4" aria-hidden />
@@ -672,7 +713,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             variant={mode === "compasses" ? "secondary" : "ghost"}
             className="size-8 px-0"
             aria-pressed={mode === "compasses"}
-            aria-label="Compasses — drag from a pivot to draw a circle"
+            aria-label="Compasses"
             onClick={() => setMode("compasses")}
           >
             <Compass className="size-4" aria-hidden />
@@ -682,7 +723,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             <button
               key={c}
               type="button"
-              aria-label={`Pen colour: ${c}`}
+              aria-label={`Pen colour: ${c[0].toUpperCase()}${c.slice(1)}`}
               aria-pressed={color === c}
               onClick={() => setColor(c)}
               className={cn(
@@ -693,11 +734,14 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             />
           ))}
           <span className="mx-1 h-5 w-px bg-border" aria-hidden />
+          {/* T-MG-INK-8: MG's thickness row — their names (Fine/Medium/
+            * Thick/Extra thick) and their exact toolbar dot diameters
+            * (4/7/11/16 px), index-aligned with INK_WIDTH_FRACS. */}
           {INK_WIDTH_FRACS.map((w, i) => (
             <button
               key={w}
               type="button"
-              aria-label={`Pen thickness ${i + 1} of ${INK_WIDTH_FRACS.length}`}
+              aria-label={`Pen thickness: ${INK_WIDTH_NAMES[i]}`}
               aria-pressed={widthIdx === i}
               onClick={() => setWidthIdx(i)}
               className={cn(
@@ -708,7 +752,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
               <span
                 aria-hidden
                 className="rounded-full bg-foreground"
-                style={{ width: 3 + i * 3, height: 3 + i * 3 }}
+                style={{ width: INK_WIDTH_DOTS[i], height: INK_WIDTH_DOTS[i] }}
               />
             </button>
           ))}
@@ -717,7 +761,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             size="sm"
             variant="ghost"
             className="size-8 px-0"
-            aria-label="Undo stroke"
+            aria-label="Undo"
             disabled={pastRef.current.length === 0}
             onClick={undo}
           >
@@ -727,7 +771,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             size="sm"
             variant="ghost"
             className="size-8 px-0"
-            aria-label="Redo stroke"
+            aria-label="Redo"
             disabled={futureRef.current.length === 0}
             onClick={redo}
           >
@@ -737,7 +781,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             size="sm"
             variant="ghost"
             className="size-8 px-0"
-            aria-label="Clear all ink on this paper"
+            aria-label="Clear all"
             disabled={snap.shapes.length === 0}
             onClick={clearAll}
           >
@@ -860,6 +904,49 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
               aria-label="Dismiss — keep this ink on this device"
               disabled={migration.phase === "uploading"}
               onClick={dismissMigration}
+            >
+              <X className="size-3.5" aria-hidden />
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {/* T-MG-INK-8: the MG "Put your answer down" card — exact copy,
+          shown once (until armed/dismissed), only while the paper has
+          no ink yet; clicking the card arms TEXT (MG's keyboard default),
+          the ghost button arms the pen (MG's touch default), ✕ dismisses. */}
+      {enabled && hintOpen && snap.shapes.length === 0 && (
+        <div
+          aria-label="Put your answer down"
+          className="absolute bottom-14 right-2 z-40 w-72 rounded-lg border bg-background/95 p-3 text-xs shadow-md backdrop-blur"
+        >
+          <p className="font-semibold">Put your answer down</p>
+          <p className="mt-1 text-muted-foreground">
+            Click anywhere on the paper and type your working. It saves as you go.
+          </p>
+          <div className="mt-2 flex items-center gap-2">
+            <Button
+              size="sm"
+              variant="secondary"
+              className="h-7 px-2 text-xs"
+              onClick={() => armFromHint("text")}
+            >
+              <Type className="size-3" aria-hidden /> Type answers
+            </Button>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="h-7 px-2 text-xs"
+              onClick={() => armFromHint("pen")}
+            >
+              <Pen className="size-3" aria-hidden /> Write by hand
+            </Button>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="ml-auto size-7 px-0"
+              aria-label="Dismiss the writing hint"
+              onClick={dismissHint}
             >
               <X className="size-3.5" aria-hidden />
             </Button>
@@ -1634,7 +1721,7 @@ export function InkCanvas({
             }
             if (e.key === "Escape") setDraft(null);
           }}
-          className="absolute z-40 min-h-10 w-40 resize rounded border bg-background/95 p-1 text-xs shadow-md backdrop-blur"
+          className="absolute z-40 min-h-10 w-40 resize rounded border bg-background/95 p-1 text-sm shadow-md backdrop-blur"
           style={{ left: `${draft.x * 100}%`, top: `${draft.y * 100}%` }}
           placeholder="Type, then Enter"
         />
