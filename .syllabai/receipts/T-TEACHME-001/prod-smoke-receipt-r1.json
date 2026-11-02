@@ -1,0 +1,82 @@
+{
+  "task": "T-TEACHME-001",
+  "what": "prod smoke r1: createSession OK (session + 3 objectives + opening message through the real service+store+DDL) but DIRECT store.updateSession FAILED on the real seam — the toQuery interleave defect (sql.ts updateSession fakes a template array via sql([stmt], ...vals, id); toQuery then appends $1..$n AFTER the statement's own $n literals → pg 42601 syntax error). Latent since run-002: the behavioural suite uses in-memory fakes that never touch the seam. Probe session abandoned in place (status=abandoned, flags.smokeAbandonReason set) — evidence rows persist by design under the disabled smoke user.",
+  "run": "r1",
+  "mode": "seam-probe",
+  "pick_codes": [
+    "4CH1-1.1",
+    "4CH1-1.10",
+    "4CH1-1.11"
+  ],
+  "gates": {
+    "canon_rows": 3,
+    "note_corpus_rows": 4,
+    "registry": 0,
+    "anchors": 6,
+    "practice": 6
+  },
+  "session_id": "f2a0c2f1-ac68-42ca-aba4-e253d4fcdb09",
+  "seam_probe": {
+    "ok": false,
+    "error": "error: syntax error at or near \"$1\" (pg 42601)",
+    "pg_hint": "42601 syntax error at or near \"$1\""
+  },
+  "smoke_user": {
+    "id": "00000000-0000-0000-0000-00000000aa01",
+    "email": "smoke.tteachme001.r1@smoke.invalid",
+    "enabled": false
+  },
+  "transport": "createSql → NeonWsClient (@neondatabase/serverless 0.10.2) — the app's production transport",
+  "chain": {
+    "mode": "scripted-port-faithful",
+    "model": "scripted-smoke-v1",
+    "prompts_exercised": [
+      "teachme.objectives.v1"
+    ]
+  },
+  "assertions": [
+    {
+      "name": "pick.specCodes",
+      "pass": true,
+      "detail": "4CH1-1.1, 4CH1-1.10, 4CH1-1.11"
+    },
+    {
+      "name": "g1.canonDescribed",
+      "pass": true,
+      "detail": "3 rows, 0 undescribed"
+    },
+    {
+      "name": "g2.noteCorpus",
+      "pass": true,
+      "detail": "4 note rows"
+    },
+    {
+      "name": "create.sessionDto",
+      "pass": true,
+      "detail": "f2a0c2f1-ac68-42ca-aba4-e253d4fcdb09"
+    },
+    {
+      "name": "create.opening",
+      "pass": true,
+      "detail": "Okay — teach me about these, please! Whe"
+    },
+    {
+      "name": "create.dbRows",
+      "pass": true,
+      "detail": "session + 3 objectives in prod"
+    },
+    {
+      "name": "create.openingMessage",
+      "pass": true,
+      "detail": "seq=1"
+    },
+    {
+      "name": "seamProbe.expectation",
+      "pass": false,
+      "detail": "store.updateSession failed on the real seam: error: syntax error at or near \"$1\" (pg 42601)"
+    }
+  ],
+  "verdict": "SMOKE_RED_SEAM_DEFECT",
+  "elapsed_ms": 8130,
+  "target_host": "ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech"
+}
