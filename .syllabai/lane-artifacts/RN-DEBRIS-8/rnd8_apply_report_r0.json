@@ -1,0 +1,702 @@
+{
+ "convertedStrings": 49,
+ "occurrenceSites": 49,
+ "files": 38,
+ "markRefusals": [
+  {
+   "file": "igcse-english-literature-16/notes.json",
+   "run": "walkin",
+   "to": "walk-in",
+   "pos": 5824,
+   "why": "literary dialect quote (\"walkin' wavy\" = g-dropped walking); hyphen twin not occurrence-twin evidence — fail-closed keep"
+  },
+  {
+   "file": "igcse-geography-19/manifest.json",
+   "run": "reexport",
+   "to": "re-export",
+   "pos": 38,
+   "why": "internal-record manifest ledger note ($.note, PR/ADR/trace references) — not learner-facing prose"
+  },
+  {
+   "file": "igcse-maths-b-16/questions.json",
+   "run": "useof",
+   "to": "use-of",
+   "pos": 2599,
+   "why": "target form's only corpus attestation is a URL asset path (...use-of.webp) — url-asset trap; prose needs a space split (out of lane law)"
+  }
+ ],
+ "rawMisses": [],
+ "jsonParseFails": [],
+ "detail": {
+  "cie-a-level-biology-25/notes.json": {
+   "\n# Aerobic Respiration: Effect of Temperature & Substrate Concentration\n\n## Anaerobic Respiration: Effect of Temperature & Substrate Concent": {
+    "fixed": "\n# Aerobic Respiration: Effect of Temperature & Substrate Concentration\n\n## Anaerobic Respiration: Effect of Temperature & Substrate Concent",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "reenter",
+      "to": "re-enter",
+      "kind": "hyphen-twin-restore",
+      "pos": 6045
+     }
+    ]
+   },
+   "\n# Reasons for Maintaining Biodiversity\n\n## Ecosystem Resilience\n\n> **Spec point** — `spcpt_3bdbnwDch63ZYByJ`\n\n## Reasons for maintaining bi": {
+    "fixed": "\n# Reasons for Maintaining Biodiversity\n\n## Ecosystem Resilience\n\n> **Spec point** — `spcpt_3bdbnwDch63ZYByJ`\n\n## Reasons for maintaining bi",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "reenter",
+      "to": "re-enter",
+      "kind": "hyphen-twin-restore",
+      "pos": 4389
+     }
+    ]
+   }
+  },
+  "cie-a-level-business-23/notes.json": {
+   "\n# Capacity Utilisation & Outsourcing\n\n## Measuring capacity utilisation\n\n> **Spec point** — `spcpt_4PXfBg7Fp8PKcRHC`\n\n## Measuring capacity": {
+    "fixed": "\n# Capacity Utilisation & Outsourcing\n\n## Measuring capacity utilisation\n\n> **Spec point** — `spcpt_4PXfBg7Fp8PKcRHC`\n\n## Measuring capacity",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "undercapacity",
+      "to": "under-capacity",
+      "kind": "hyphen-twin-restore",
+      "pos": 1848
+     }
+    ]
+   }
+  },
+  "cie-a-level-computer-science-19/curriculum.json": {
+   "Hardware Candidates need to have access to a system with direct-access file capability on backing store and hardcopy facilities.": {
+    "fixed": "Hardware Candidates need to have access to a system with direct-access file capability on backing store and hard-copy facilities.",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "hardcopy",
+      "to": "hard-copy",
+      "kind": "hyphen-twin-restore",
+      "pos": 108
+     }
+    ]
+   }
+  },
+  "cie-a-level-computer-science-19/questions.json": {
+   "> **[mark-scheme]**\n> **One mark** per mark point (**Max 3**)\n> \n> MP1 A user-defined record data type is a composite data type\n> \n> MP2 It ": {
+    "fixed": "> **[mark-scheme]**\n> **One mark** per mark point (**Max 3**)\n> \n> MP1 A user-defined record data type is a composite data type\n> \n> MP2 It ",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "userdefined",
+      "to": "user-defined",
+      "kind": "hyphen-twin-restore",
+      "pos": 323
+     }
+    ]
+   }
+  },
+  "cie-a-level-economics-23/notes.json": {
+   "\n# The Performance of Firms in Oligopolies\n\n## Characteristics of Oligopoly\n\n> **Spec point** — `spcpt_xWCc2RcKcwYWnpq3`\n\n## Characteristics": {
+    "fixed": "\n# The Performance of Firms in Oligopolies\n\n## Characteristics of Oligopoly\n\n> **Spec point** — `spcpt_xWCc2RcKcwYWnpq3`\n\n## Characteristics",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "anticompetitive",
+      "to": "anti-competitive",
+      "kind": "hyphen-twin-restore",
+      "pos": 12452
+     }
+    ]
+   },
+   "\n# Types of Economic Systems\n\n## An introduction to economic systems\n\n> **Spec point** — `spcpt_PRBvFGHtQvSvbmSj`\n\n## An introduction to eco": {
+    "fixed": "\n# Types of Economic Systems\n\n## An introduction to economic systems\n\n> **Spec point** — `spcpt_PRBvFGHtQvSvbmSj`\n\n## An introduction to eco",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "underprovide",
+      "to": "under-provide",
+      "kind": "hyphen-twin-restore",
+      "pos": 8669
+     }
+    ]
+   }
+  },
+  "cie-a-level-maths-20-probability-and-statistics-2/questions.json": {
+   "A flatpack furniture company, Flat & Fabulous, has a testing facility where its products are put through a series of safety and quality chec": {
+    "fixed": "A flat-pack furniture company, Flat & Fabulous, has a testing facility where its products are put through a series of safety and quality che",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "flatpack",
+      "to": "flat-pack",
+      "kind": "hyphen-twin-restore",
+      "pos": 2
+     }
+    ]
+   }
+  },
+  "cie-as-business-23/notes.json": {
+   "\n# Capacity Utilisation & Outsourcing\n\n## Measuring capacity utilisation\n\n> **Spec point** — `spcpt_4PXfBg7Fp8PKcRHC`\n\n## Measuring capacity": {
+    "fixed": "\n# Capacity Utilisation & Outsourcing\n\n## Measuring capacity utilisation\n\n> **Spec point** — `spcpt_4PXfBg7Fp8PKcRHC`\n\n## Measuring capacity",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "undercapacity",
+      "to": "under-capacity",
+      "kind": "hyphen-twin-restore",
+      "pos": 1806
+     }
+    ]
+   }
+  },
+  "cie-as-business-23/questions.json": {
+   "> **[mark-scheme]**\n> **Level 4 (7-8 marks)**\n> \n> Good analysis of how a business might use the internet in two elements of the marketing m": {
+    "fixed": "> **[mark-scheme]**\n> **Level 4 (7-8 marks)**\n> \n> Good analysis of how a business might use the internet in two elements of the marketing m",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "thirdparty",
+      "to": "third-party",
+      "kind": "hyphen-twin-restore",
+      "pos": 955
+     }
+    ]
+   },
+   "> **[mark-scheme]**\n> **Level 4 (9-12 marks)**\n> \n> Effective evaluation of the view that traditional retail stores will not survive unless ": {
+    "fixed": "> **[mark-scheme]**\n> **Level 4 (9-12 marks)**\n> \n> Effective evaluation of the view that traditional retail stores will not survive unless ",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "costeffective",
+      "to": "cost-effective",
+      "kind": "hyphen-twin-restore",
+      "pos": 1331
+     }
+    ]
+   },
+   "> **[mark-scheme]**\n> | **Knowledge and Application (4 marks** | **Marks** | **Analysis and Evaluation (7 marks)** | **Marks** |\n> |---|---|": {
+    "fixed": "> **[mark-scheme]**\n> | **Knowledge and Application (4 marks** | **Marks** | **Analysis and Evaluation (7 marks)** | **Marks** |\n> |---|---|",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "longterm",
+      "to": "long-term",
+      "kind": "hyphen-twin-restore",
+      "pos": 2865
+     },
+     {
+      "run": "longterm",
+      "to": "long-term",
+      "kind": "hyphen-twin-restore",
+      "pos": 3018
+     }
+    ]
+   },
+   "> **[mark-scheme]**\n> | **Knowledge and Application **<br>**(4 marks)** | **Marks** | **Analysis and Evaluation **<br>**(7 marks)** | **Mark": {
+    "fixed": "> **[mark-scheme]**\n> | **Knowledge and Application **<br>**(4 marks)** | **Marks** | **Analysis and Evaluation **<br>**(7 marks)** | **Mark",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "instore",
+      "to": "in-store",
+      "kind": "hyphen-twin-restore",
+      "pos": 2839
+     }
+    ]
+   },
+   "> **[mark-scheme]**\n> | **Level** | **AO1 Knowledge and understanding **<br>**1 mark** | **AO2 Application **<br>**2 mark** | **AO3 Analysis": {
+    "fixed": "> **[mark-scheme]**\n> | **Level** | **AO1 Knowledge and understanding **<br>**1 mark** | **AO2 Application **<br>**2 mark** | **AO3 Analysis",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "shopfloor",
+      "to": "shop-floor",
+      "kind": "hyphen-twin-restore",
+      "pos": 1494
+     }
+    ]
+   }
+  },
+  "cie-as-environmental-management-20/questions.json": {
+   "> **[mark-scheme]**\n> The question requirements are to:\n> \n> - show an awareness of the importance of water security\n> - describe the strate": {
+    "fixed": "> **[mark-scheme]**\n> The question requirements are to:\n> \n> - show an awareness of the importance of water security\n> - describe the strate",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "droughtresistant",
+      "to": "drought-resistant",
+      "kind": "hyphen-twin-restore",
+      "pos": 3353
+     }
+    ]
+   },
+   "Fig. 1.1 shows the migration routes of three aquatic animals and the position of two midocean gyres. A gyre is a very large system of circul": {
+    "fixed": "Fig. 1.1 shows the migration routes of three aquatic animals and the position of two mid-ocean gyres. A gyre is a very large system of circu",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "midocean",
+      "to": "mid-ocean",
+      "kind": "hyphen-twin-restore",
+      "pos": 85
+     }
+    ]
+   }
+  },
+  "cie-igcse-biology-23/questions.json": {
+   "(i) Species can become endangered in the following ways:\n\nAny **four **from the following:\n\n- (Due to) habitat destruction / deforestation (": {
+    "fixed": "(i) Species can become endangered in the following ways:\n\nAny **four **from the following:\n\n- (Due to) habitat destruction / deforestation (",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "largescale",
+      "to": "large-scale",
+      "kind": "hyphen-twin-restore",
+      "pos": 930
+     }
+    ]
+   }
+  },
+  "cie-igcse-business-23/questions.json": {
+   "Multinational companies pay taxes on their profits** [K]** to the host government, which increases that government's income, allowing them t": {
+    "fixed": "Multinational companies pay taxes on their profits** [K]** to the host government, which increases that government's income, allowing them t",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "knowhow",
+      "to": "know-how",
+      "kind": "hyphen-twin-restore",
+      "pos": 1382
+     }
+    ]
+   },
+   "One advantage of SSE using internal recruitment for its new managers is that it will be cheaper than external recruitment **[K]**. SSE won't": {
+    "fixed": "One advantage of SSE using internal recruitment for its new managers is that it will be cheaper than external recruitment **[K]**. SSE won't",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "flowproduction",
+      "to": "flow-production",
+      "kind": "hyphen-twin-restore",
+      "pos": 2801
+     }
+    ]
+   }
+  },
+  "cie-igcse-business-25/questions.json": {
+   "Multinational companies pay taxes on their profits** [K]** to the host government, which increases that government's income, allowing them t": {
+    "fixed": "Multinational companies pay taxes on their profits** [K]** to the host government, which increases that government's income, allowing them t",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "knowhow",
+      "to": "know-how",
+      "kind": "hyphen-twin-restore",
+      "pos": 1382
+     }
+    ]
+   },
+   "One advantage of SSE using internal recruitment for its new managers is that it will be cheaper than external recruitment **[K]**. SSE won't": {
+    "fixed": "One advantage of SSE using internal recruitment for its new managers is that it will be cheaper than external recruitment **[K]**. SSE won't",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "flowproduction",
+      "to": "flow-production",
+      "kind": "hyphen-twin-restore",
+      "pos": 2801
+     }
+    ]
+   }
+  },
+  "cie-igcse-economics-20/flashcards.json": {
+   "Specialisation may create overdependency on other countries' resources, which can cause problems if conflicts arise.\n": {
+    "fixed": "Specialisation may create over-dependency on other countries' resources, which can cause problems if conflicts arise.\n",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "overdependency",
+      "to": "over-dependency",
+      "kind": "hyphen-twin-restore",
+      "pos": 26
+     }
+    ]
+   }
+  },
+  "cie-igcse-economics-25/notes.json": {
+   "\n# Understanding the Mixed Economic System\n\n## Characteristics of a mixed economic system\n\n> **Spec point** — `spcpt_jSWwFsRC5ZzZcN7k`\n\n## C": {
+    "fixed": "\n# Understanding the Mixed Economic System\n\n## Characteristics of a mixed economic system\n\n> **Spec point** — `spcpt_jSWwFsRC5ZzZcN7k`\n\n## C",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "underprovide",
+      "to": "under-provide",
+      "kind": "hyphen-twin-restore",
+      "pos": 4273
+     }
+    ]
+   }
+  },
+  "cie-igcse-english-language-25/questions.json": {
+   "Read Text A and Text B in the [insert](https://www.savemyexams.com/igcse/english-language/cie/past-papers/paper/ppr_5dxt8Qc7Ffdfxsc9/?pdf=ht": {
+    "fixed": "Read Text A and Text B in the [insert](https://www.savemyexams.com/igcse/english-language/cie/past-papers/paper/ppr_5dxt8Qc7Ffdfxsc9/?pdf=ht",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "bestselling",
+      "to": "best-selling",
+      "kind": "hyphen-twin-restore",
+      "pos": 784
+     }
+    ]
+   }
+  },
+  "cie-igcse-english-literature-21/notes.json": {
+   "\n# I'm the King of the Castle: Writer's Methods and Techniques\n\nSusan Hill uses a number of methods and techniques in I’m the King of the Ca": {
+    "fixed": "\n# I'm the King of the Castle: Writer's Methods and Techniques\n\nSusan Hill uses a number of methods and techniques in I’m the King of the Ca",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "midair",
+      "to": "mid-air",
+      "kind": "hyphen-twin-restore",
+      "pos": 14871
+     }
+    ]
+   }
+  },
+  "cie-igcse-geography-20/questions.json": {
+   "Levels marking\n\nNote: Urban area. Urban fringe/outer edges of city, such as housing on farmland is fine. If clearly rural = 0. \nNote: If no ": {
+    "fixed": "Levels marking\n\nNote: Urban area. Urban fringe/outer edges of city, such as housing on farmland is fine. If clearly rural = 0. \nNote: If no ",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "landuse",
+      "to": "land-use",
+      "kind": "hyphen-twin-restore",
+      "pos": 803
+     }
+    ]
+   }
+  },
+  "cie-igcse-geography-25/flashcards.json": {
+   "To **avoid overdependence on oil**.\n": {
+    "fixed": "To **avoid over-dependence on oil**.\n",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "overdependence",
+      "to": "over-dependence",
+      "kind": "hyphen-twin-restore",
+      "pos": 11
+     }
+    ]
+   }
+  },
+  "cie-igcse-geography-25/notes.json": {
+   "\n# Detailed Specific Example: Dubai, UAE\n\n## Specification link\n\nThis page covers section 9.2.6 of the [CIE IGCSE specification.](https://ww": {
+    "fixed": "\n# Detailed Specific Example: Dubai, UAE\n\n## Specification link\n\nThis page covers section 9.2.6 of the [CIE IGCSE specification.](https://ww",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "overdependence",
+      "to": "over-dependence",
+      "kind": "hyphen-twin-restore",
+      "pos": 1658
+     }
+    ]
+   }
+  },
+  "cie-igcse-geography-25/questions.json": {
+   "Birth rates may be higher in rural areas of Tanzania because there is less education about contraception **[1]  **as well as a lack of avail": {
+    "fixed": "Birth rates may be higher in rural areas of Tanzania because there is less education about contraception **[1]  **as well as a lack of avail",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "birthrate",
+      "to": "birth-rate",
+      "kind": "hyphen-twin-restore",
+      "pos": 222
+     }
+    ]
+   }
+  },
+  "cie-igcse-history-18/notes.json": {
+   "\n# Why Did Stalin Introduce Collectivisation?\n\n## How Significant was Collectivisation for the USSR? - Summary\n\nCollectivisation was a signi": {
+    "fixed": "\n# Why Did Stalin Introduce Collectivisation?\n\n## How Significant was Collectivisation for the USSR? - Summary\n\nCollectivisation was a signi",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "longstanding",
+      "to": "long-standing",
+      "kind": "hyphen-twin-restore",
+      "pos": 6591
+     }
+    ]
+   }
+  },
+  "cie-igcse-ict-21/questions.json": {
+   "Characteristics of a tablet computer include:\n\nAny **four **of the following:\n\n- Screens tend to be anti-glare **[1 mark]**\n- Uses touch scr": {
+    "fixed": "Characteristics of a tablet computer include:\n\nAny **four **of the following:\n\n- Screens tend to be anti-glare **[1 mark]**\n- Uses touch scr",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "onscreen",
+      "to": "on-screen",
+      "kind": "hyphen-twin-restore",
+      "pos": 373
+     }
+    ]
+   },
+   "Methods to prevent hackers from gaining knowledge of someone's password include:\n\nAny **four **of the following:\n\n- Use anti-spyware to prev": {
+    "fixed": "Methods to prevent hackers from gaining knowledge of someone's password include:\n\nAny **four **of the following:\n\n- Use anti-spyware to prev",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "dropdown",
+      "to": "drop-down",
+      "kind": "hyphen-twin-restore",
+      "pos": 553
+     }
+    ]
+   }
+  },
+  "cie-igcse-science-combined-science-23-biology/notes.json": {
+   "\n# Enzymes\n\n## What are enzymes?\n\n> **Spec point** — `spcpt_6KbHKNwyDVPqZCR7` · Describe enzymes as proteins that are\ninvolved in all metabo": {
+    "fixed": "\n# Enzymes\n\n## What are enzymes?\n\n> **Spec point** — `spcpt_6KbHKNwyDVPqZCR7` · Describe enzymes as proteins that are\ninvolved in all metabo",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "enzymesubstrate",
+      "to": "enzyme-substrate",
+      "kind": "hyphen-twin-restore",
+      "pos": 728
+     }
+    ]
+   }
+  },
+  "ial-biology-18/notes.json": {
+   "\n# Gene Locus\n\n## Gene Loci\n\n> **Spec point** — `3.9`\n\n## Gene Loci\n\n- Every **chromosome** consists of a long DNA molecule that contains se": {
+    "fixed": "\n# Gene Locus\n\n## Gene Loci\n\n> **Spec point** — `3.9`\n\n## Gene Loci\n\n- Every **chromosome** consists of a long DNA molecule that contains se",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "colourblind",
+      "to": "colour-blind",
+      "kind": "hyphen-twin-restore",
+      "pos": 3814
+     }
+    ]
+   }
+  },
+  "ial-physics-19/notes.json": {
+   "\n# Transmission & Reflection of Waves\n\n## Transmission & Reflection of Waves\n\n> **Spec point** — `55`\n\n## Transmission & Reflection of Waves": {
+    "fixed": "\n# Transmission & Reflection of Waves\n\n## Transmission & Reflection of Waves\n\n> **Spec point** — `55`\n\n## Transmission & Reflection of Waves",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "reemit",
+      "to": "re-emit",
+      "kind": "hyphen-twin-restore",
+      "pos": 2610
+     }
+    ]
+   }
+  },
+  "igcse-business-19/notes.json": {
+   "\n# Accounting Ratios\n\n## An introduction to ratio analysis\n\n> **Spec point** — `3.5.1` · Calculating and analysing accounting ratios\n\n## An ": {
+    "fixed": "\n# Accounting Ratios\n\n## An introduction to ratio analysis\n\n> **Spec point** — `3.5.1` · Calculating and analysing accounting ratios\n\n## An ",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "bestselling",
+      "to": "best-selling",
+      "kind": "hyphen-twin-restore",
+      "pos": 6002
+     }
+    ]
+   }
+  },
+  "igcse-chemistry-19/guided-questions/rn_2VnK66PqbvFKdKYt.sme-question-package.json": {
+   "generality overextended": {
+    "fixed": "generality over-extended",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "overextended",
+      "to": "over-extended",
+      "kind": "hyphen-twin-restore",
+      "pos": 11
+     }
+    ]
+   }
+  },
+  "igcse-chemistry-19/guided-questions/rn_T55t3HNsgyZcXZtN.sme-question-package.json": {
+   "molar volume overextended": {
+    "fixed": "molar volume over-extended",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "overextended",
+      "to": "over-extended",
+      "kind": "hyphen-twin-restore",
+      "pos": 13
+     }
+    ]
+   }
+  },
+  "igcse-chemistry-19/guided-questions/rn_TsfqyK9BYMtN2Bfd.sme-question-package.json": {
+   "A student draws the start line with ballpoint ink. What happens to the chromatogram?": {
+    "fixed": "A student draws the start line with ball-point ink. What happens to the chromatogram?",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "ballpoint",
+      "to": "ball-point",
+      "kind": "hyphen-twin-restore",
+      "pos": 36
+     }
+    ]
+   }
+  },
+  "igcse-chemistry-19/lessons/u2-c14-reactivity-series.json": {
+   "The chapter's model reaction is a fight over oxygen. Mix magnesium\npowder with copper(II) oxide and heat the mixture strongly, and the\nmagne": {
+    "fixed": "The chapter's model reaction is a fight over oxygen. Mix magnesium\npowder with copper(II) oxide and heat the mixture strongly, and the\nmagne",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "matchup",
+      "to": "match-up",
+      "kind": "hyphen-twin-restore",
+      "pos": 843
+     }
+    ]
+   }
+  },
+  "igcse-economics-17/curriculum.json": {
+   "Government intervention in the labour market: of a minimum wage and the increase of a minimum wage.: • reasons for minimum wage • advantages": {
+    "fixed": "Government intervention in the labour market: of a minimum wage and the increase of a minimum wage.: • reasons for minimum wage • advantages",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "onscreen",
+      "to": "on-screen",
+      "kind": "hyphen-twin-restore",
+      "pos": 763
+     }
+    ]
+   }
+  },
+  "igcse-english-literature-16/notes.json": {
+   "\n# Duncan Character Analysis\n\n## Duncan character analysis\n\nDuncan is the rightful King of Scotland, a noble and respected character who is ": {
+    "fixed": "\n# Duncan Character Analysis\n\n## Duncan character analysis\n\nDuncan is the rightful King of Scotland, a noble and respected character who is ",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "offstage",
+      "to": "off-stage",
+      "kind": "hyphen-twin-restore",
+      "pos": 6618
+     }
+    ]
+   },
+   "\n# How to Write a Grade 9 Poetry Comparison Essay\n\n## Poetry Anthology: How to write a grade 9 Poetry Anthology comparison essay\n\n> **Spec p": {
+    "fixed": "\n# How to Write a Grade 9 Poetry Comparison Essay\n\n## Poetry Anthology: How to write a grade 9 Poetry Anthology comparison essay\n\n> **Spec p",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "wornout",
+      "to": "worn-out",
+      "kind": "hyphen-twin-restore",
+      "pos": 8271
+     }
+    ]
+   }
+  },
+  "igcse-english-literature-16/questions.json": {
+   "### Model answer\n\nAchebe makes Igbo traditions central to the novel, presenting a rich, ordered culture whose customs give life meaning — an": {
+    "fixed": "### Model answer\n\nAchebe makes Igbo traditions central to the novel, presenting a rich, ordered culture whose customs give life meaning — an",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "palmoil",
+      "to": "palm-oil",
+      "kind": "hyphen-twin-restore",
+      "pos": 2310
+     }
+    ]
+   }
+  },
+  "igcse-geography-19/notes.json": {
+   "\n# Coastal Practical Skills\n\n## Aims of Coastal Fieldwork\n\n> **Spec point** — `4GE1-S9.128`\n\n## Aims of Coastal Fieldwork\n\n- To undertake a ": {
+    "fixed": "\n# Coastal Practical Skills\n\n## Aims of Coastal Fieldwork\n\n> **Spec point** — `4GE1-S9.128`\n\n## Aims of Coastal Fieldwork\n\n- To undertake a ",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "tapemeasure",
+      "to": "tape-measure",
+      "kind": "hyphen-twin-restore",
+      "pos": 6468
+     }
+    ]
+   }
+  },
+  "igcse-ict-17/curriculum.json": {
+   "Understand the benefits of using a client- server network: • control of user access rights • centralised administration • centralised backup": {
+    "fixed": "Understand the benefits of using a client- server network: • control of user access rights • centralised administration • centralised backup",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "hotdesk",
+      "to": "hot-desk",
+      "kind": "hyphen-twin-restore",
+      "pos": 212
+     }
+    ]
+   }
+  },
+  "igcse-ict-17/questions.json": {
+   "The concert venue uses an online booking system.\n\nGail uses different types of networks in her job.\n\n(ii)\n\nDefine the term ‘peer‑to‑peer’.\n\n": {
+    "fixed": "The concert venue uses an online booking system.\n\nGail uses different types of networks in her job.\n\n(ii)\n\nDefine the term ‘peer‑to‑peer’.\n\n",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "hotdesk",
+      "to": "hot-desk",
+      "kind": "hyphen-twin-restore",
+      "pos": 196
+     }
+    ]
+   }
+  },
+  "igcse-maths-a-18-foundation/questions.json": {
+   "> **[exam-tip]**\n> Your calculator can convert improper fractions to mixed numbers.\n> \n> You can check using the method outlined below.\n\n> *": {
+    "fixed": "> **[exam-tip]**\n> Your calculator can convert improper fractions to mixed numbers.\n> \n> You can check using the method outlined below.\n\n> *",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "timestable",
+      "to": "times-table",
+      "kind": "hyphen-twin-restore",
+      "pos": 201
+     }
+    ]
+   }
+  },
+  "igcse-maths-a-modular-24-foundation-unit-1/questions.json": {
+   "> **[exam-tip]**\n> Your calculator can convert improper fractions to mixed numbers.\n> \n> You can check using the method outlined below.\n\n> *": {
+    "fixed": "> **[exam-tip]**\n> Your calculator can convert improper fractions to mixed numbers.\n> \n> You can check using the method outlined below.\n\n> *",
+    "occurrences": 1,
+    "runs": [
+     {
+      "run": "timestable",
+      "to": "times-table",
+      "kind": "hyphen-twin-restore",
+      "pos": 201
+     }
+    ]
+   }
+  }
+ }
+}

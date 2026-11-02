@@ -1,0 +1,32 @@
+{
+ "purpose": "RN-DEBRIS-8 run-001 zero-drift grounding: the census environment (dict + law) reproduces the of-record RN-DEBRIS-7 census EXACTLY",
+ "dictRecovery": {
+  "recipe": "nltk words(en) lowercase-deduped alpha-only 234,375 + British -ise supplement variant B (ize/ized/izes/izing -> ise/ised/ises/ising, EXCLUDING derived forms whose stem is shorter than 3 chars) = 236,896 tokens",
+  "sha16": "db20ed6f4d8c8bac",
+  "ofRecordSha16": "db20ed6f4d8c8bac",
+  "byteIdentical": true,
+  "note": "the variant-B rule recovered (min-stem-3 exclusion, 11 forms: baise ecise frise gaise maise phises prise seising sised sises sising); the earlier y-stem hypothesis was WRONG (a -3/+3 counter signature that motivated the search); the recovered file ends the 'built in-session, never committed' debt from RN-DEBRIS-4/5/6"
+ },
+ "anchors": [
+  {
+   "tree": "7ff9ec52 (RN-DEBRIS-7 lane base, pre-apply)",
+   "verdict": "EXACT — all 37 class counters + itemsKept 207,985 reproduce the of-record pre slim byte-for-byte",
+   "deltas": {}
+  },
+  {
+   "tree": "7ff9ec52 + the 39 RN-DEBRIS-7 post-apply content files (reconstruction)",
+   "verdict": "post slim reproduced; residual confined to outside-span realword/corpusword (+7/+5 occurrences out of 12.6M — the y-rule dict delta, superseded by the byte-recovered dict), ALL firing classes exact: split-evidenced 282, hyphen-twin 53, full guard histogram, both dollar frames, itemsKept 207,921",
+   "deltas": {
+    "outside-span/corpusword": [
+     3852762,
+     3852767
+    ],
+    "outside-span/realword": [
+     8772206,
+     8772213
+    ]
+   }
+  }
+ ],
+ "tipItemSet": "the 53 hyphen-twin items at main 5f209324 are IDENTICAL (file/path/run/pos/split) to the of-record-tree enumeration — the concurrent content landings (#625 physics-wave1, #629 gradeb-9, run-037 OEQ tranche-3) did not touch the class"
+}
