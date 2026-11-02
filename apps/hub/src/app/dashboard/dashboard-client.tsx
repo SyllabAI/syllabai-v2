@@ -514,6 +514,39 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
     };
   }, [jumpBack, pilotInRoster, pilotBridge, core, bySlug]);
 
+  // D-2 (frontend-flow audit): ONE resume decision instead of two mutually
+  // exclusive look-alike blocks — this device's last-opened surface wins;
+  // only when the device has no history does the account's most recent
+  // measured topic fill the slot. Both sources collapse into one shape so
+  // the card below renders exactly once, with one heading and one
+  // provenance badge line for the source.
+  const resume = useMemo(() => {
+    if (jumpBack) {
+      return {
+        source: "device" as const,
+        resource: jumpBack.resource,
+        title: jumpBack.course.subject,
+        meta: jumpBack.course,
+        href:
+          jumpBack.resource === "hub"
+            ? `/courses/${jumpBack.course.slug}`
+            : `/courses/${jumpBack.course.slug}/${jumpBack.resource}`,
+        lastPractised: null as string | null,
+      };
+    }
+    if (coreJumpBack) {
+      return {
+        source: "account" as const,
+        resource: "exam-questions" as const,
+        title: coreJumpBack.title,
+        meta: coreJumpBack.meta,
+        href: coreJumpBack.href,
+        lastPractised: coreJumpBack.lastPractised as string | null,
+      };
+    }
+    return null;
+  }, [jumpBack, coreJumpBack]);
+
   return (
     <div className="space-y-8">
       {/* greeting (SME: "Hi, {name} 👋" — mock identity from the login
@@ -682,66 +715,39 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
         )}
       </section>
 
-      {/* ---- Jump back in (SME resume card, backed by real navigation) ---- */}
-      {jumpBack && (
+      {/* ---- Jump back in — ONE surface (SME resume card + the account
+          trail, D-2). Priority: this device wins; the account fills the
+          gap. The source badge explains why the card can differ between
+          the phone and the school lab instead of reading as a bug. ---- */}
+      {resume && (
         <section aria-label="Jump back in" className="space-y-2">
           <h2 className="flex items-center gap-2 text-lg font-semibold">
             <RotateCcw className="size-4 text-primary" aria-hidden />
             Jump back in
           </h2>
-          <Link
-            href={
-              jumpBack.resource === "hub"
-                ? `/courses/${jumpBack.course.slug}`
-                : `/courses/${jumpBack.course.slug}/${jumpBack.resource}`
-            }
-            className="group block focus-visible:outline-none"
-          >
+          <Link href={resume.href} className="group block focus-visible:outline-none">
             <Card className="transition-colors group-hover:border-primary/50">
               <CardContent className="flex flex-wrap items-center gap-x-3 gap-y-1 p-4">
                 <Badge variant="secondary" className="font-medium">
-                  {resourceLabel(jumpBack.resource)}
+                  {resourceLabel(resume.resource)}
                 </Badge>
-                <span className="text-sm font-semibold">{jumpBack.course.subject}</span>
+                <span className="text-sm font-semibold">{resume.title}</span>
                 <span className="text-sm text-muted-foreground">
-                  {boardOf(jumpBack.course)} · {jumpBack.course.level} · {jumpBack.course.code}
-                </span>
-                <ChevronRight className="ml-auto size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
-              </CardContent>
-            </Card>
-          </Link>
-        </section>
-      )}
-
-      {/* ---- Jump back in (cross-device, HUB-DASH-CORE P1-7) — the account's
-          most recent measured topic when this device has no history of its
-          own; provenance-labelled and silently absent otherwise ---- */}
-      {!jumpBack && coreJumpBack && (
-        <section aria-label="Jump back in" className="space-y-2">
-          <h2 className="flex items-center gap-2 text-lg font-semibold">
-            <RotateCcw className="size-4 text-primary" aria-hidden />
-            Jump back in
-          </h2>
-          <Link
-            href={coreJumpBack.href}
-            className="group block focus-visible:outline-none"
-          >
-            <Card className="transition-colors group-hover:border-primary/50">
-              <CardContent className="flex flex-wrap items-center gap-x-3 gap-y-1 p-4">
-                <Badge variant="secondary" className="font-medium">
-                  {resourceLabel("exam-questions")}
-                </Badge>
-                <span className="text-sm font-semibold">{coreJumpBack.title}</span>
-                <span className="text-sm text-muted-foreground">
-                  {boardOf(coreJumpBack.meta)} · {coreJumpBack.meta.level} · {coreJumpBack.meta.code}
+                  {boardOf(resume.meta)} · {resume.meta.level} · {resume.meta.code}
                 </span>
                 <Badge
                   variant="outline"
                   className="gap-1 px-1.5 py-0 text-[10px] font-medium text-primary"
-                  title="From your SyllabAI account — it follows you across devices"
+                  title={
+                    resume.source === "account"
+                      ? "From your SyllabAI account — it follows you across devices"
+                      : "From this device's recent activity"
+                  }
                 >
-                  <CloudCheck className="size-3" aria-hidden />
-                  from your account · last practised {coreJumpBack.lastPractised}
+                  {resume.source === "account" && <CloudCheck className="size-3" aria-hidden />}
+                  {resume.source === "account"
+                    ? `from your account · last practised ${resume.lastPractised}`
+                    : "from this device"}
                 </Badge>
                 <ChevronRight className="ml-auto size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
               </CardContent>
