@@ -1,0 +1,38 @@
+{
+  "task": "T-BOOK-070",
+  "receipt": "media-widen-r0",
+  "lane": "ADR-BOOK-0002 media-embed widen — Cognito video curation across c02-c29 (27/28 curated, c17 honest-empty)",
+  "operator_order": "Proceed with 4 intensity checks, broader media embedding (IM trace 1a19b69d1fddc0b5, 2026-11-02)",
+  "date_utc": "2026-11-02",
+  "agent": "Super Z (zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7)",
+  "baseline_of_record": "origin/main b7d928e7 (KG-AUDIT-2 receipt tip) at lane open; worktree branch t-book-070/media-widen",
+  "curation_protocol": "ADR-BOOK-0002 decision 6 verbatim: per-URL fetch-verify BEFORE a row lands — provider page HTTP 200, oembed 200, youtube-nocookie probe 200, spec-match into the hosting chapter's band",
+  "enumeration": "Cognito TOC fetched 2026-11-02 (HTTP 200, 93 notes parsed with titles); per-chapter ordered candidate lists (topic-matched, 1-4 candidates), first fetch-verified video wins; chapter spec bands = the packs' own specPointRefs unions (the QC'd in-repo join binding)",
+  "results": {
+    "curated": "27/28 chapters (c02-c16, c18-c29), one video each, 27/27 unique video ids",
+    "honest_empty": "c17 Salt preparations — both candidates (4.16-making-soluble-salts, 4.15-making-insoluble-salts) provider-200 with NO VIDEO on the page (pilot verdict class; NOT a density decision)",
+    "fallbacks_used": "c05 first choice 3.1-chemical-formulae no-video → 3.2-chemical-equations; c18 first choice 4.17-tests-for-cations no-video → 4.18-tests-for-anions",
+    "probes": "every curated row: provider 200 + oembed 200 + nocookie 200, recorded first-hand this session"
+  },
+  "artifacts": {
+    "manifest_rows": 27,
+    "blocks": 27,
+    "packs_bumped": 27,
+    "diff_scope": "55 files, all books/4ch1/** (27 new block files + 27 pack.yaml + media-sources.yaml)",
+    "block_shape": "byte-follows the c01 b08 T-BOOK-066 append of record (payload fields title/url/sourceId/youtubeId/licenseRef/attribution/blurb; version 1; ord=max+1; anchor=pack max anchor — monotonic; glossaryRefs [])",
+    "pack_yaml_shape": "T-BOOK-070 comment lines + planned_blocks N→N+1 + blocks row — the T-BOOK-066 diff shape"
+  },
+  "gates": {
+    "lint": "bun scripts/books/lint.mjs books/4ch1 <dev-manifest> apps/api/src/services/teacher/concept-graph/specification_points.yaml --book 4ch1 → 29 packs, 205 blocks, 0 finding(s), 0 warn(s), exit 0",
+    "G1_binding": "chapter keys resolve; specRefs ⊆ canonical subsections (canonical graph of record passed DIRECT); hosting_pack tokens name spine chapters; S0 plan == on-disk (205==205)",
+    "G4_licensing": "every sourceId resolves to a curated row with licensing_row.reviewed_date + fresh checked_date; payload url/youtubeId zero drift vs manifest"
+  },
+  "lint_inputs_disclosure": {
+    "spec_points": "canonical specification_points.yaml DIRECT (the lint's own expected shape)",
+    "manifest": "DEV manifest — slices rebuilt anchor-derived because book_chapters page ranges are DB truth and no pooler credential was in env this session; range check therefore tautological-on-existing-anchors and WEAKENED vs DB truth — DISCLOSED; the DB-truth rebuild + full re-lint re-runs at S4 flip time (T-BOOK-066 rebuild precedent); all binding checks relevant to the NEW artifacts are manifest-independent"
+  },
+  "pending_s4": "L3 ingest+flip (staging → books-ingest-rail → book_blocks rowcount 205 → pack flip → serve proof incl. a widened chapter render) blocked on the Neon MAIN pooler credential re-hand — the T-BOOK-068 one-command pattern; nothing fabricated meanwhile",
+  "density_guard": "≤2 media blocks per chapter (ADR-0002 pilot guard) respected at 1 everywhere — uniform, disclosed",
+  "boundaries": "zero code/schema/*.java; zero core/hub repo content; zero Neon/prod/db contact this session; fetch-first; no force-push",
+  "disciplines": "zero-invention (every row 3-probe verified; every blurb authored against the note's actual topic; every specRef a pre-existing member of the pack's union)"
+}

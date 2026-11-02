@@ -1,10 +1,12 @@
 # S0 output of record - c20-rates-reaction (T-BOOK-012)
+# T-BOOK-070: b08 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 7 -> 8);
+# the S0 plan is binding — lint G1 checks planned == on-disk.
 chapter: "c20"
 chapter_key: "u3:c20"
 title: "Rates of reaction"
 status: published # S4 flip of record — T-BOOK-011/012 r0 (operator dispatch trace 1a15f60b53d4e0d5); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 7
+planned_blocks: 8
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p236 intro, p237 graph figure + gradient stepper, p238 excess callout, p240 factor sort, p246 profile drag, p247 mcq"
 blocks:
@@ -15,3 +17,4 @@ blocks:
   - {ord: 5, id: "c20-rates-reaction/b05", type: sort-match, file: "blocks/b05-sort-match-factors.json", anchor: 240}
   - {ord: 6, id: "c20-rates-reaction/b06", type: drag-label, file: "blocks/b06-drag-label-profile.json", anchor: 246}
   - {ord: 7, id: "c20-rates-reaction/b07", type: mcq-embed, file: "blocks/b07-mcq-check.json", anchor: 247}
+  - {ord: 8, id: "c20-rates-reaction/b08", type: media-embed, file: "blocks/b08-media-embed.json", anchor: 247}

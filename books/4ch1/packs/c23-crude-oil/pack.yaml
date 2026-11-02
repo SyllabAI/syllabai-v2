@@ -1,10 +1,12 @@
 # S0 output of record - c23-crude-oil (T-BOOK-013; Phase C — S0–S4 complete, the fire of record)
+# T-BOOK-070: b09 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 8 -> 9);
+# the S0 plan is binding — lint G1 checks planned == on-disk.
 chapter: "c23"
 chapter_key: "u4:c23"
 title: "Crude oil"
 status: published # S4 flip of record — the u4 S3/S4 single-command fire (operator order "fire --commit (the full-book flip)"); DB book_blocks VALIDATED v2 of record
 block_schema: "book.block/1"
-planned_blocks: 8
+planned_blocks: 9
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p277 intro, p278 size trends table, p279 column drag, p280 combustion callout + builder, p281 environment sort, p283 cracking callout, p284 mcq"
 blocks:
@@ -16,3 +18,4 @@ blocks:
   - {ord: 6, id: "c23-crude-oil/b06", type: sort-match, file: "blocks/b06-sort-match-pollutants.json", anchor: 281}
   - {ord: 7, id: "c23-crude-oil/b07", type: callout, file: "blocks/b07-callout-cracking.json", anchor: 283}
   - {ord: 8, id: "c23-crude-oil/b08", type: mcq-embed, file: "blocks/b08-mcq-check.json", anchor: 284}
+  - {ord: 9, id: "c23-crude-oil/b09", type: media-embed, file: "blocks/b09-media-embed.json", anchor: 284}
