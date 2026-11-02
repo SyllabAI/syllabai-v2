@@ -1,0 +1,117 @@
+{
+  "format": "w4-live-spotcheck/1.0",
+  "wave": "PHYSICS-4PH1 wave-4 (B4 W4: 2-1 + 2-2 electricity)",
+  "operator_traces": {
+    "ignition": "1a19d7cf1cf1895d",
+    "execution": "1a19d7cf1cf1895d"
+  },
+  "generated_at_utc": "2026-11-02T20:58:55Z",
+  "base_url": "https://syllabai-hub-v2.vercel.app",
+  "route": "/courses/<course>/guided-lessons/<noteId> (occurrence-aware 'Your answer' census; calibration course slug per note)",
+  "verdict": "GREEN",
+  "wave4": {
+    "rn_NZ5D2Mx9SXQY98wy": {
+      "bytes": 252600,
+      "your_answer": 8,
+      "marker_hits": 0,
+      "stem_present": true,
+      "titled": true,
+      "expected_your_answer": 8,
+      "ok": true
+    },
+    "rn_BcxDP3RzXk3k7rwf": {
+      "bytes": 247353,
+      "your_answer": 8,
+      "marker_hits": 0,
+      "stem_present": true,
+      "titled": true,
+      "expected_your_answer": 8,
+      "ok": true
+    },
+    "rn_64pQyK4tm9P9rdKN": {
+      "bytes": 198091,
+      "your_answer": 4,
+      "marker_hits": 0,
+      "stem_present": true,
+      "titled": true,
+      "expected_your_answer": 4,
+      "ok": true
+    },
+    "rn_BFQBSmVz2xFZVsB6": {
+      "bytes": 245009,
+      "your_answer": 8,
+      "marker_hits": 0,
+      "stem_present": true,
+      "titled": true,
+      "expected_your_answer": 8,
+      "ok": true
+    },
+    "rn_ynsstfBQngnx2pgq": {
+      "bytes": 241752,
+      "your_answer": 8,
+      "marker_hits": 0,
+      "stem_present": true,
+      "titled": true,
+      "expected_your_answer": 8,
+      "ok": true
+    },
+    "rn_PyxMmTd6S9pMDTt6": {
+      "bytes": 237501,
+      "your_answer": 8,
+      "marker_hits": 0,
+      "stem_present": true,
+      "titled": true,
+      "expected_your_answer": 8,
+      "ok": true
+    },
+    "rn_WzQZfyNNFFFFghbF": {
+      "bytes": 295959,
+      "your_answer": 12,
+      "marker_hits": 0,
+      "stem_present": true,
+      "titled": true,
+      "expected_your_answer": 12,
+      "ok": true
+    },
+    "rn_gYqbXsJPfrqtg5yQ": {
+      "bytes": 243842,
+      "your_answer": 8,
+      "marker_hits": 0,
+      "stem_present": true,
+      "titled": true,
+      "expected_your_answer": 8,
+      "ok": true
+    }
+  },
+  "calibrations": {
+    "rn_RpyMnS5nqWSRWXXG": {
+      "bytes": 252414,
+      "your_answer": 8,
+      "marker_hits": 0,
+      "stem_present": null,
+      "titled": true,
+      "expected_your_answer": 8,
+      "ok": true
+    },
+    "rn_2MpXPtNXvn8pQm3r": {
+      "bytes": 245085,
+      "your_answer": 8,
+      "marker_hits": 0,
+      "stem_present": null,
+      "titled": true,
+      "expected_your_answer": 8,
+      "ok": true
+    },
+    "rn_2z53qk2CdWrVVc7V": {
+      "bytes": 242467,
+      "your_answer": 8,
+      "marker_hits": 0,
+      "stem_present": null,
+      "titled": true,
+      "expected_your_answer": 8,
+      "ok": true
+    }
+  },
+  "marker_violations": [],
+  "disclosure": "probe route correction of record: the first probes hit /revision-notes/<noteId> (the reader page — never carries check labels) and the chemistry calibrations under the physics slug (not-found shells) — both lane-tool bugs, fixed before the full sweep; bake-gap disclosure: hub merge b386dac1 -> listing-page census showed the 31-row index served while the wave-4 lesson pages still served 91.7K not-found shells for ~10 min (ISR propagation), then flipped to full serves; verdict GREEN requires per-note your_answer == 4 x lessons + bytes > 150000 + authored stem present + 2.1B marker 0 hits."
+}
