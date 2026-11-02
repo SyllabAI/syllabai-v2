@@ -1,14 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, BookOpen } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Sparkles } from "lucide-react";
 
 import type { BookChapter } from "@syllabai/contracts";
 
 import { loadHubCourse } from "@/lib/courses";
 import { relatedNotesForChapter } from "@/lib/books-notes";
-import { fetchBookRailBlocks } from "@/lib/books-rail";
 import { fetchChapterLesson } from "@/lib/books-lesson";
-import { RailWorkspace } from "@/components/books/rail/rail-workspace";
 import {
   fetchBookChapters,
   fetchBookShelf,
@@ -73,6 +71,17 @@ function PreconnectCorpus() {
  * unnumbered row at the end of each unit). ?part=questions deep links still
  * resolve through the unchanged pure mount law — the UI just no longer
  * advertises them.
+ *
+ * T-BOOK-071 law (ADR-BOOK-0005, operator directive of record trace
+ * 1a17cb69e4100d49 → this page): the interactive rail LEFT the viewer. This
+ * page is again the PURE page-true PDF mount — 133c/133e geometry,
+ * byte-for-byte, no two-pane shell, no rail fetch. Every interactive element
+ * (checks, widgets, media, glossary chips) lives INSIDE the Lesson flow
+ * (/lesson — ADR-BOOK-0003's inline law, now the SOLE interactive renderer).
+ * The Lesson affordance below is the hand-off: it renders only when the
+ * chapter's pack is student-visible (T-C20), and the page-true anchor law
+ * survives — lesson blocks' pdfPageAnchor deep links land here (?page=N),
+ * on the PDF page of record.
  */
 export default async function BookViewerPage({
   params,
@@ -189,17 +198,9 @@ export default async function BookViewerPage({
   // pilots) render none either, since no note can intersect.
   const relatedNotes = relatedNotesForChapter(target, hub.notes);
 
-  // T-BOOK-003 — the rail of record for this chapter. The ADR-BOOK-0001 §3
-  // serving law, verbatim: the rail serves a pack only when the parent book
-  // is VALIDATED AND the pack is VALIDATED — the api enforced both; here,
-  // null (rail unavailable) AND [] (no flipped pack) BOTH render the
-  // unchanged 133c page below, byte-for-byte. Only a non-empty VALIDATED
-  // stream mounts the two-pane shell.
-  const railBlocks = await fetchBookRailBlocks(docId, target.chapterKey);
-  const railOn = railBlocks != null && railBlocks.length > 0;
-
-  // T-BOOK-033 — the Lesson toggle ("one substrate, two renderers"). The
-  // link renders only when the chapter's pack is student-visible (T-C20:
+  // T-BOOK-071 — the Lesson affordance is the ONLY interactive hand-off from
+  // the viewer (the rail is retired from this page; ADR-BOOK-0005). The link
+  // renders only when the chapter's pack is student-visible (T-C20:
   // published) OR the operator is previewing (?preview=1 carries through —
   // a draft pack never appears for a plain reader visit). The href carries
   // the PACK's canonical chapterKey (r1 join law: the rail coordinate
@@ -231,8 +232,14 @@ export default async function BookViewerPage({
           {ordinal}/{chapters.length} · {target.title}
         </span>
         {lessonVisible && lessonHref && (
-          <Button asChild variant="ghost" size="sm" className="h-7 shrink-0 px-2">
+          <Button
+            asChild
+            variant="secondary"
+            size="sm"
+            className="h-7 shrink-0 gap-1.5 bg-primary/10 px-2.5 text-primary hover:bg-primary/20"
+          >
             <Link href={lessonHref} aria-label="Open this chapter as a Lesson">
+              <Sparkles className="h-3.5 w-3.5" aria-hidden />
               Lesson
             </Link>
           </Button>
@@ -291,35 +298,17 @@ export default async function BookViewerPage({
           )}
         </div>
       </div>
-      {railOn ? (
-        <RailWorkspace
-          documentId={docId}
-          chapterKey={target.chapterKey}
-          chapterTitle={target.title}
-          blocks={railBlocks!}
-          courseSlug={slug}
-          specCodes={target.specCodes.map((s) => s.officialCode)}
-          pane={{
-            url: corpusViewerUrl(panePath),
-            fallbackUrl: booksRawUrl(wholePdfPath),
-            downloadUrl: booksRawUrl(wholePdfPath),
-            label: `${book?.title ?? "Student book"} — ${target.title}`,
-            initialPage,
-          }}
+      <div className="min-h-0 flex-1">
+        <PdfPane
+          url={corpusViewerUrl(panePath)}
+          fallbackUrl={booksRawUrl(wholePdfPath)}
+          downloadUrl={booksRawUrl(wholePdfPath)}
+          label={`${book?.title ?? "Student book"} — ${target.title}`}
+          active
+          initialPage={initialPage}
+          className="h-full"
         />
-      ) : (
-        <div className="min-h-0 flex-1">
-          <PdfPane
-            url={corpusViewerUrl(panePath)}
-            fallbackUrl={booksRawUrl(wholePdfPath)}
-            downloadUrl={booksRawUrl(wholePdfPath)}
-            label={`${book?.title ?? "Student book"} — ${target.title}`}
-            active
-            initialPage={initialPage}
-            className="h-full"
-          />
-        </div>
-      )}
+      </div>
     </div>
   );
 }
