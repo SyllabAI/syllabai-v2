@@ -69,3 +69,10 @@ jobs:
 
       - name: Build hub (corpus-verify prebuild + next build)
         run: bun run build:hub
+
+      # T-KG-FIX-1 (F3): the KG corpus data contract as CI law — per-graph
+      # spanning-tree integrity plus registry <-> data <-> index parity and the
+      # orphan law over public/kg/data. Scoped to this one file on purpose:
+      # hub src/lib carries pre-existing UGM-lane baseline failures elsewhere.
+      - name: KG corpus integrity laws (T-KG-FIX-1)
+        run: bun test apps/hub/src/lib/kg-corpus.test.ts
