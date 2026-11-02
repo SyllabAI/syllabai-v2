@@ -434,10 +434,6 @@ export const loadHubCourse = cache(
   for (const t of questionTopics) {
     const s = subtopicOfQuestionSet(t, index);
     if (s) {
-      // first-write wins: the row's default target is the first set in corpus
-      // order (e.g. Multiple-Choice before Structured); the tree expander
-      // lists every set anchored to the sub-topic
-      hrefs.questions[s] ??= `${base}/exam-questions/${t.slug}`;
       (setsBySubtopic[s] ??= []).push(t.slug);
       (setListsBySubtopic[s] ??= []).push({
         slug: t.slug,
@@ -445,6 +441,20 @@ export const loadHubCourse = cache(
         count: t.questions.length,
       });
     }
+  }
+  // Row-link policy (SME selector audit, D3): the sidebar row shows the
+  // sub-topic's AGGREGATE question count, so the row's target must be a
+  // place that actually holds every counted question. Single-set rows
+  // deep-link straight to their set; multi-set rows land on the grouped
+  // bank view (?subtopic=) instead of silently opening only the first set
+  // in corpus order — first-write-wins hid ~8.3k questions fleet-wide
+  // behind rows whose count promised all of them. Deterministic in set
+  // count, not corpus order.
+  for (const [code, slugs] of Object.entries(setsBySubtopic)) {
+    hrefs.questions[code] =
+      slugs.length === 1
+        ? `${base}/exam-questions/${slugs[0]}`
+        : `${base}/exam-questions?subtopic=${encodeURIComponent(code)}`;
   }
   for (const n of notes) {
     const s = subtopicOfNote(n, index);

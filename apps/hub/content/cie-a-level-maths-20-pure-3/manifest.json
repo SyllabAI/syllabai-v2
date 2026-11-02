@@ -63,5 +63,21 @@
     "specPoints": 43
    }
   }
+ },
+ "tagBackfill": {
+  "schema": "syllabai.hub.tag-backfill/1.0",
+  "date": "2026-11-03",
+  "source": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "SME-ExamQuestion/cie-a-level-maths-20-pure-3",
+   "ref": "main@fb28c174adec"
+  },
+  "method": "part smeSpecPointIds → SME spec-point-index name → official SPEC_POINT title (exact, per part); else the part's SME subtopic slugs resolved to curriculum subtopics (per part); else set-level fallback via SME topic-name title join to a unique curriculum SUBTOPIC",
+  "sets": 3,
+  "questions": 91,
+  "partsExact": 0,
+  "partsPerPartSme": 0,
+  "partsSubtopicLevel": 167,
+  "residualSets": 18
  }
 }

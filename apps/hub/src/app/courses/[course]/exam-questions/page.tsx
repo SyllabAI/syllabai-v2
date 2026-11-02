@@ -20,12 +20,11 @@ function paperLabel(p: string): string {
  * of numbered topic sections (native <details>, no JS); each row is a
  * SUB-TOPIC — progress ring (the same primitives as the sidebar topic-tree:
  * ProgressRing over the real learner overlay) + corpus-native label + title
- * + a right-aligned question count — clicking through to the sub-topic's
- * canonical set (first set in corpus order, the same target the sidebar and
- * tree expander use). Sub-topics served by more than one set (MCQ vs
- * structured variants — 64 of 106 courses) expose a chevron that expands
- * every set with per-set counts, so nothing becomes unreachable; sets with
- * no sub-topic home (52 courses) stay listed under "Other sets".
+ * + a right-aligned question count — clicking through per the row-link law
+ * (SME selector audit D3): single-set rows open the set; multi-set rows land
+ * on the grouped ?subtopic= view that holds every counted question (the
+ * chevron still expands every set inline, so nothing becomes unreachable);
+ * sets with no sub-topic home stay listed under "Other sets".
  *
  * T-KG-17: `?paper=` scopes the bank to sets whose anchored spec points are
  * assessed in that paper — row and topic counts recompute per scope, and the
@@ -53,10 +52,10 @@ export default async function ExamQuestionsIndexPage({
   searchParams,
 }: {
   params: Promise<{ course: string }>;
-  searchParams: Promise<{ spec?: string; paper?: string; q?: string }>;
+  searchParams: Promise<{ spec?: string; paper?: string; q?: string; subtopic?: string }>;
 }) {
   const { course: slug } = await params;
-  const { spec, paper, q } = await searchParams;
+  const { spec, paper, q, subtopic: subtopicParam } = await searchParams;
   const hub = await loadHubCourse(slug);
   if (!hub) notFound();
   const { meta, stats } = hub;
@@ -106,17 +105,33 @@ export default async function ExamQuestionsIndexPage({
   const paperLabelOf = (p: string) => (p === COURSEWORK ? "Coursework" : paperLabel(p));
   const paperActive = paper ?? null;
 
-  // legacy deep links used ?spec=4CH1-1.1 — jump straight to the set that
-  // anchors that spec point when it has one canonical home
+  // legacy deep links used ?spec=4CH1-1.1 — jump to the sub-topic's home with
+  // the same row-link law as everywhere else: a single canonical set opens
+  // directly; several sets land on the grouped ?subtopic= view (never just
+  // the first in corpus order — the row-link policy, SME selector audit D3)
   const specSubtopic = spec ? hub.index.subtopicOfSpecPoint.get(spec) ?? null : null;
   const specSets = specSubtopic ? hub.setsBySubtopic[specSubtopic] ?? [] : [];
-  if (spec && specSets.length > 0) {
+  if (spec && specSets.length === 1) {
     redirect(`/courses/${meta.slug}/exam-questions/${specSets[0]}`);
+  }
+  if (spec && specSets.length > 1) {
+    redirect(
+      `/courses/${meta.slug}/exam-questions?subtopic=${encodeURIComponent(specSubtopic!)}`,
+    );
   }
   const base = `/courses/${meta.slug}`;
 
   const inScope = (setSlug: string) =>
     !paperActive || (setPapers.get(setSlug)?.has(paperActive) ?? false);
+
+  // Row-link-policy landing (SME selector audit, D3): multi-set sidebar and
+  // index rows point here with ?subtopic= — a scoped view that holds every
+  // question the row's aggregate count promised. Unknown codes degrade to
+  // the full index.
+  const scopedCode =
+    subtopicParam && hub.index.subtopicByCode.has(subtopicParam) ? subtopicParam : null;
+  const scopedSub = scopedCode ? hub.index.subtopicByCode.get(scopedCode)! : null;
+  const scopedTopic = scopedSub ? hub.index.topicByCode.get(scopedSub.topicCode) ?? null : null;
 
   // Sub-topic granularity of record: every set is listed under its canonical
   // sub-topic (subtopicOfQuestionSet — the same law that feeds the sidebar's
@@ -125,7 +140,7 @@ export default async function ExamQuestionsIndexPage({
   // (resourceCounts bumps t.questions.length to the canonical home), summed
   // over the in-scope sets so a paper filter rescales rows honestly.
   // Slim, serializable payload for the client listing (questionbank-index).
-  const rows: QbTopic[] = hub.index.tree.topics
+  const allRows: QbTopic[] = hub.index.tree.topics
     .map((topic) => {
       const subs = topic.subtopics
         .map((sub) => {
@@ -145,16 +160,25 @@ export default async function ExamQuestionsIndexPage({
       return { code: topic.code, number: topic.number, title: topic.title, subs };
     })
     .filter((g) => g.subs.length > 0);
+  // scoped landing: only the scoped sub-topic's row, under its own topic
+  const rows: QbTopic[] = scopedCode
+    ? allRows
+        .filter((t) => t.code === scopedTopic?.code)
+        .map((t) => ({ ...t, subs: t.subs.filter((s) => s.code === scopedCode) }))
+        .filter((t) => t.subs.length > 0)
+    : allRows;
 
   // sets whose canonical home resolved to nothing — never listed under any
   // sub-topic — keep the honest "Other sets" section
   const placed = new Set(
     Object.values(hub.setListsBySubtopic).flatMap((sets) => sets.map((s) => s.slug)),
   );
-  const unplaced: QbLooseSet[] = hub.questionTopics
-    .filter((t) => !placed.has(t.slug))
-    .filter((t) => inScope(t.slug))
-    .map((t) => ({ slug: t.slug, title: t.setName ? `${t.name} — ${t.setName}` : t.name, count: t.questions.length }));
+  const unplaced: QbLooseSet[] = scopedCode
+    ? []
+    : hub.questionTopics
+        .filter((t) => !placed.has(t.slug))
+        .filter((t) => inScope(t.slug))
+        .map((t) => ({ slug: t.slug, title: t.setName ? `${t.name} — ${t.setName}` : t.name, count: t.questions.length }));
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
@@ -207,6 +231,9 @@ export default async function ExamQuestionsIndexPage({
         rows={rows}
         unplaced={unplaced}
         paperLabel={paperActive ? paperLabelOf(paperActive) : null}
+        scoped={!!scopedCode}
+        scopedTopicTitle={scopedTopic?.title ?? null}
+        scopedTopicNumber={scopedTopic?.number ?? null}
       />
     </div>
   );

@@ -4625,7 +4625,15 @@
   "source": {
    "provider": "Save My Exams",
    "license": "operator-authorized; see repo LICENSE-DATA.md (SME attestation 2026-09-17)",
-   "pageUrl": null
+   "pageUrl": null,
+   "tagBackfill": {
+    "via": "per-part-sme-subtopic-slugs",
+    "home": "cie-igcse-religious-studies-2025-2027-TJ5:SUBJ5.5",
+    "partsExact": 1,
+    "partsPerPartSme": 0,
+    "partsSubtopicLevel": 0,
+    "date": "2026-11-03"
+   }
   },
   "schema": "syllabai.sme-exam-questions/1.1",
   "relatedNoteIds": [
@@ -4766,7 +4774,9 @@
       "marks": 7,
       "commandWord": null,
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "J5.5a"
+      ],
       "choices": null,
       "sourcePaper": {
        "date": "Nov 2022",

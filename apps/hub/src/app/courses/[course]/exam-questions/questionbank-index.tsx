@@ -25,6 +25,12 @@
  * multi-set expansion open so hits stay visible; "Other sets" filters by
  * set name; the empty state names the query. Search is a transient filter:
  * it never hides Resume.
+ *
+ * Row-link law (SME selector audit D3, 2026-11-03): a row's question count
+ * is the sub-topic's AGGREGATE, so the row's primary target must hold every
+ * counted question — single-set rows open the set, multi-set rows open the
+ * grouped ?subtopic= landing (the chevron keeps every set one click away
+ * inline). First-write-wins row targets hid ~8.3k questions fleet-wide.
  */
 import { useMemo, useState } from "react";
 import Link from "next/link";
@@ -74,6 +80,9 @@ export function QuestionbankIndex({
   rows,
   unplaced,
   paperLabel,
+  scoped = false,
+  scopedTopicTitle = null,
+  scopedTopicNumber = null,
 }: {
   course: Course;
   counts: Record<string, { notes: number; questions: number; flashcards: number }>;
@@ -81,6 +90,11 @@ export function QuestionbankIndex({
   unplaced: QbLooseSet[];
   /** label of the active paper scope (e.g. "Paper 1C") — null when unscoped */
   paperLabel: string | null;
+  /** row-link-policy landing (?subtopic=): only the scoped sub-topic's row
+   *  is listed, with a clear-scope link back to the full bank */
+  scoped?: boolean;
+  scopedTopicTitle?: string | null;
+  scopedTopicNumber?: number | null;
 }) {
   const progress = useCourseProgress(course);
   const base = `/courses/${course}`;
@@ -183,6 +197,22 @@ export function QuestionbankIndex({
         </Card>
       ) : (
         <div className="divide-y divide-border/60">
+          {scoped && (
+            <div className="flex flex-wrap items-center gap-2 py-3">
+              {scopedTopicNumber !== null && scopedTopicTitle && (
+                <span className="text-[15px] font-semibold">
+                  <NumberedLabel number={scopedTopicNumber} title={scopedTopicTitle} />
+                </span>
+              )}
+              <span className="text-xs text-muted-foreground">· sub-topic scope</span>
+              <Link
+                href={`${base}/exam-questions`}
+                className="ml-auto text-xs text-muted-foreground underline hover:text-foreground"
+              >
+                All topics
+              </Link>
+            </div>
+          )}
           {groups.map(({ topic, subs, total }) => (
             <details key={topic.code} open className="group/topic py-3">
               <summary className="flex cursor-pointer list-none items-center gap-2 [&::-webkit-details-marker]:hidden">
@@ -240,16 +270,19 @@ export function QuestionbankIndex({
                     );
                   }
                   // multi-set sub-topic (MCQ vs structured variants): the row
-                  // still navigates to the canonical set; the chevron expands
-                  // every set so nothing becomes unreachable (sidebar parity —
-                  // the tree expander lists the same per-set entries).
-                  // Searching forces the expansion open so matches stay visible.
+                  // shows the AGGREGATE count, so its primary link follows the
+                  // row-link policy (SME selector audit D3) — it lands on the
+                  // grouped ?subtopic= view that holds every counted question;
+                  // the chevron expands every set inline for the fast path
+                  // (sidebar parity — the tree expander lists the same per-set
+                  // entries). Searching forces the expansion open so matches
+                  // stay visible.
                   return (
                     <li key={sub.code}>
                       <details className="group/sub" open={searching}>
                         <summary className="flex cursor-pointer list-none items-center gap-2.5 rounded-lg px-2 py-2 transition-colors hover:bg-muted [&::-webkit-details-marker]:hidden">
                           <Link
-                            href={`${base}/exam-questions/${sub.sets[0].slug}`}
+                            href={`${base}/exam-questions?subtopic=${encodeURIComponent(sub.code)}`}
                             className="group/link flex min-w-0 flex-1 items-center gap-2.5"
                           >
                             {rowInner}
