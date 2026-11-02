@@ -1,0 +1,214 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_kN63sqWsc9QdHSVx",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "3fc7540a30d2dfbf0997c9732c3655eeef0c6c9e14155dfc7f160c097b9cd5da",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_kN63sqWsc9QdHSVx",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Forces, Movement & Changing Shape",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-2-forces-movement-and-changing-shape/1-2-8-core-practical-investigating-force-and-extension",
+    "specAnchors": [
+      {
+        "code": "1.22",
+        "text": "practical: investigate how extension varies with applied force for helical springs, metal wires and rubber bands"
+      }
+    ],
+    "primer": {
+      "text": "Core practical 2 asks one question — how does extension answer to applied force? — for three test materials: a spring, a metal wire and a rubber band. This note walks both apparatus set-ups, the measurement discipline, and the analysis that turns a results table into a proportionality verdict.",
+      "prerequisiteSubtopic": "Forces, Movement & Changing Shape"
+    },
+    "modules": [
+      {
+        "id": "rn_kN63sqWsc9QdHSVx::L1",
+        "title": "Springs and rubber bands: the method",
+        "sourceHeadings": [
+          "Experiment 1: investigating force and extension for springs and rubber bands"
+        ],
+        "specRefs": [
+          "1.22"
+        ],
+        "opening": "The spring investigation hangs loads from a clamped spring and reads the stretch against a ruler. The independent variable is the applied force, the dependent variable the extension, and the pointer — the fiducial marker — is what makes the ruler readings honest.",
+        "keyPoints": [
+          "The independent variable is the applied force; the dependent variable is the extension.",
+          "Each 100 g load contributes a force of 1.0 N, since 0.1 kg × 10 N/kg.",
+          "A pointer (fiducial marker) aligned with the ruler scale gives accurate length readings.",
+          "The full loading run is repeated three times on the spring so an average length can be taken at each load.",
+          "Extension is the difference between the average length under load and the original unloaded length."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Hang known loads, read the stretch each time, repeat three times, average, and subtract the unloaded length.",
+            "analogy": "Weighing the same parcel on three different days before trusting the figure — repetition buys the average.",
+            "examPointer": "Name the variables exactly: independent = force, dependent = extension."
+          },
+          "medium": {
+            "restatement": "The fiducial marker exists because the ruler's scale sits behind the wire's edge: aligning a fixed pointer with the scale removes the reading angle that would otherwise bias every length.",
+            "analogy": "A fixed needle on a compass rim: you read the needle against the dial, never eyeball the compass centre.",
+            "examPointer": "Safety and accuracy marks ride together: goggles for the snap risk, G-clamp for topple risk, eye-level reading for parallax."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kN63sqWsc9QdHSVx::L1::Q1",
+          "rn_kN63sqWsc9QdHSVx::L1::Q2",
+          "rn_kN63sqWsc9QdHSVx::L1::Q3",
+          "rn_kN63sqWsc9QdHSVx::L1::Q4",
+          "rn_kN63sqWsc9QdHSVx::L1::Q5",
+          "rn_kN63sqWsc9QdHSVx::L1::Q6",
+          "rn_kN63sqWsc9QdHSVx::L1::Q7",
+          "rn_kN63sqWsc9QdHSVx::L1::Q8",
+          "rn_kN63sqWsc9QdHSVx::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_kN63sqWsc9QdHSVx::L2",
+        "title": "Metal wires, analysis and accuracy",
+        "sourceHeadings": [
+          "Experiment 2: investigating force and extension for metal wires",
+          "Analysis of results"
+        ],
+        "specRefs": [
+          "1.22"
+        ],
+        "opening": "The metal wire is too stiff to read directly, so a tape marker rides on the wire past a reference point. Analysis then turns the table into a graph: force against extension, a line of best fit, and a straight line whose message is proportionality.",
+        "keyPoints": [
+          "The wire's extension is read from how far the tape marker moves past its reference point.",
+          "The applied force is each load's weight: mass in kg multiplied by g = 10 N/kg.",
+          "For the spring and band, extension = average length − original length; for the wire, extension = new marker reading − reference reading.",
+          "A straight line on the force-extension graph means the force is proportional to the extension.",
+          "Ruler readings are taken at eye level to avoid parallax error, and the spring is checked against its limit of proportionality."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Mark the wire with tape, note the reference reading, and each extension is the marker's move past that reference.",
+            "analogy": "A thumb sliding along a ruler's edge: the thumb is the tape, the starting notch the reference.",
+            "examPointer": "The wire's reading rule differs from the spring's — quote the right subtraction for the right material."
+          },
+          "medium": {
+            "restatement": "Two error classes guard the result: parallax (read at eye level) and premature reading (wait for full extension); the proportionality verdict is only safe inside the linear region, before the limit of proportionality.",
+            "analogy": "Reading a speedometer from the side gives a wrong number (parallax); snapping the photo before the needle settles gives another wrong number (patience).",
+            "examPointer": "Graph marks: axis labels with units, even scales, line of best fit — then the verdict sentence."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kN63sqWsc9QdHSVx::L2::Q1",
+          "rn_kN63sqWsc9QdHSVx::L2::Q2",
+          "rn_kN63sqWsc9QdHSVx::L2::Q3",
+          "rn_kN63sqWsc9QdHSVx::L2::Q4",
+          "rn_kN63sqWsc9QdHSVx::L2::Q5",
+          "rn_kN63sqWsc9QdHSVx::L2::Q6",
+          "rn_kN63sqWsc9QdHSVx::L2::Q7",
+          "rn_kN63sqWsc9QdHSVx::L2::Q8",
+          "rn_kN63sqWsc9QdHSVx::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "extension",
+          "definition": "The extra stretch of a sample under load: its length under load minus its unloaded original length.",
+          "firstLesson": 1
+        },
+        {
+          "term": "independent variable",
+          "definition": "The quantity the experimenter sets: here, the applied force.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dependent variable",
+          "definition": "The quantity measured in response: here, the extension.",
+          "firstLesson": 1
+        },
+        {
+          "term": "fiducial marker",
+          "definition": "A pointer used to read the ruler scale accurately.",
+          "firstLesson": 1
+        },
+        {
+          "term": "limit of proportionality",
+          "definition": "The point beyond which extension stops answering proportionally to force.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/2fa6c6a5d70c-equipment-for-force-and-extensio.png",
+        "alt": "equipment-for-force-and-extensio",
+        "sourceHeading": "Method",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Example set-up of the equipment used to investigate force and extension for a spring",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/fc11ccb7df6e-5-3-5-hookes-law-example-table.png",
+        "alt": "Hookes Law Example Table, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Example results table",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/339b272cb453-6-1-6-apparatus.png",
+        "alt": "Apparatus, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Method",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Example set-up of equipment to investigate the force and extension for a metal wire",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/fd189286d05e-1-2-8-metal-wire-results-table.png",
+        "alt": "Metal Wire Results Table, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Example results table",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

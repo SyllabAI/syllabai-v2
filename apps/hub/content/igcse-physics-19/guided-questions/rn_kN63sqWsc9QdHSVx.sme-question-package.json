@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_kN63sqWsc9QdHSVx",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "3fc7540a30d2dfbf0997c9732c3655eeef0c6c9e14155dfc7f160c097b9cd5da",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "packageId": "igcse-physics::rn_kN63sqWsc9QdHSVx",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L1::Q1",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L1",
+      "stem": "In the force-extension investigation, the independent variable is:",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "The extension",
+          "correct": false,
+          "explanation": "The extension is what responds; it is dependent.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "B",
+          "text": "The spring's material",
+          "correct": false,
+          "explanation": "Material is fixed within one run.",
+          "misconception": "confusion"
+        },
+        {
+          "key": "C",
+          "text": "The applied force",
+          "correct": true,
+          "explanation": "The force is what the experimenter sets — the independent variable.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The ruler's resolution",
+          "correct": false,
+          "explanation": "Resolution is an instrument property, not a variable.",
+          "misconception": "confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L1::Q2",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L1",
+      "stem": "The dependent variable of the investigation is:",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "The extension",
+          "correct": true,
+          "explanation": "The extension answers to the applied force.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The applied force",
+          "correct": false,
+          "explanation": "The force is set by the experimenter.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "C",
+          "text": "The room temperature",
+          "correct": false,
+          "explanation": "Not a variable of this practical.",
+          "misconception": "irrelevance"
+        },
+        {
+          "key": "D",
+          "text": "The number of repeats",
+          "correct": false,
+          "explanation": "Repeats are method, not the measured variable.",
+          "misconception": "confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L1::Q3",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L1",
+      "stem": "Each 100 g mass hung from the hanger applies a force of about:",
+      "misconceptionClass": "load arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.1 N",
+          "correct": false,
+          "explanation": "That forgets the ×10 conversion.",
+          "misconception": "conversion slip"
+        },
+        {
+          "key": "B",
+          "text": "1.0 N",
+          "correct": true,
+          "explanation": "0.1 kg × 10 N/kg = 1.0 N per mass.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "10 N",
+          "correct": false,
+          "explanation": "That treats 100 g as 1 kg.",
+          "misconception": "conversion slip"
+        },
+        {
+          "key": "D",
+          "text": "100 N",
+          "correct": false,
+          "explanation": "Two orders too large.",
+          "misconception": "conversion slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L1::Q4",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L1",
+      "stem": "The pointer (fiducial marker) is used to:",
+      "misconceptionClass": "equipment purpose",
+      "options": [
+        {
+          "key": "A",
+          "text": "Add force to the spring",
+          "correct": false,
+          "explanation": "The masses add the force.",
+          "misconception": "purpose swap"
+        },
+        {
+          "key": "B",
+          "text": "Hold the masses",
+          "correct": false,
+          "explanation": "The hanger holds them.",
+          "misconception": "purpose swap"
+        },
+        {
+          "key": "C",
+          "text": "Clamp the stand",
+          "correct": false,
+          "explanation": "The G-clamp does that.",
+          "misconception": "purpose swap"
+        },
+        {
+          "key": "D",
+          "text": "Read the extension from the ruler accurately",
+          "correct": true,
+          "explanation": "The marker's alignment with the scale is the accuracy device of record.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L1::Q5",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L1",
+      "stem": "The full run of adding masses is repeated three times so that:",
+      "misconceptionClass": "repeats rationale",
+      "options": [
+        {
+          "key": "A",
+          "text": "The spring stretches further each time",
+          "correct": false,
+          "explanation": "Repeats measure the same loads, not extra stretch.",
+          "misconception": "misread"
+        },
+        {
+          "key": "B",
+          "text": "Three different springs can be compared",
+          "correct": false,
+          "explanation": "One spring, three repeats.",
+          "misconception": "misread"
+        },
+        {
+          "key": "C",
+          "text": "An average length is calculated at each load",
+          "correct": true,
+          "explanation": "The averaging at each load is the repeats' purpose.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The masses can be checked for wear",
+          "correct": false,
+          "explanation": "Mass checking is not the rationale.",
+          "misconception": "invented rationale"
+        }
+      ]
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L1::Q6",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L1",
+      "stem": "State the aim of experiment 1.",
+      "misconceptionClass": "aim recall",
+      "kind": "recall",
+      "modelAnswer": "To investigate how the extension of a spring, and of a rubber band, varies with the applied force.",
+      "keywords": [
+        "extension",
+        "spring",
+        "rubber band",
+        "force"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L1::Q7",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L1",
+      "stem": "Name two safety precautions for the spring and rubber-band practical.",
+      "misconceptionClass": "safety recall",
+      "kind": "recall",
+      "modelAnswer": "Wear goggles in case the spring or band snaps, and secure the clamp stand with a G-clamp so it cannot topple.",
+      "keywords": [
+        "goggles",
+        "G-clamp",
+        "snap",
+        "secure"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L1::Q8",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L1",
+      "stem": "Explain why the extension, not the total length, is plotted against the applied force.",
+      "misconceptionClass": "analysis reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The original length already exists at zero force; only the extra stretch answers to the load. Plotting extension isolates the stretch the force causes, so the graph reveals the material's own behaviour rather than its fixed size.",
+      "keywords": [
+        "extension",
+        "original length",
+        "stretch",
+        "force"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L1::Q9",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L1",
+      "stem": "A spring's original length is 12.0 cm; with five masses attached its average length is 15.2 cm. Calculate the extension.",
+      "misconceptionClass": "extension arithmetic",
+      "kind": "application",
+      "modelAnswer": "Extension = 15.2 − 12.0 = 3.2 cm.",
+      "keywords": [
+        "15.2",
+        "12.0",
+        "3.2",
+        "extension"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L2::Q1",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L2",
+      "stem": "The metal wire's extension is read from:",
+      "misconceptionClass": "reading rule",
+      "options": [
+        {
+          "key": "A",
+          "text": "The wire's colour change",
+          "correct": false,
+          "explanation": "No colour mechanism exists here.",
+          "misconception": "invented mechanism"
+        },
+        {
+          "key": "B",
+          "text": "The tape marker's movement past the reference point",
+          "correct": true,
+          "explanation": "New marker reading minus reference reading — the wire's rule of record.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "The hanger's height",
+          "correct": false,
+          "explanation": "The hanger holds loads; it is not the reading device.",
+          "misconception": "device swap"
+        },
+        {
+          "key": "D",
+          "text": "The wire's temperature",
+          "correct": false,
+          "explanation": "Unmeasured and irrelevant to the reading.",
+          "misconception": "irrelevance"
+        }
+      ]
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L2::Q2",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L2",
+      "stem": "The force applied by each load is calculated as:",
+      "misconceptionClass": "force computation",
+      "options": [
+        {
+          "key": "A",
+          "text": "mass × length",
+          "correct": false,
+          "explanation": "No length enters the force law.",
+          "misconception": "invented formula"
+        },
+        {
+          "key": "B",
+          "text": "mass ÷ g",
+          "correct": false,
+          "explanation": "The relationship multiplies by g.",
+          "misconception": "operation flip"
+        },
+        {
+          "key": "C",
+          "text": "g × extension",
+          "correct": false,
+          "explanation": "Extension is the other axis entirely.",
+          "misconception": "axis confusion"
+        },
+        {
+          "key": "D",
+          "text": "mass × g, i.e. 0.1 kg × 10 N/kg per 100 g mass",
+          "correct": true,
+          "explanation": "The load's weight — the force of record.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L2::Q3",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L2",
+      "stem": "How is the extension of the spring or rubber band calculated?",
+      "misconceptionClass": "extension rule",
+      "options": [
+        {
+          "key": "A",
+          "text": "average length − original length",
+          "correct": true,
+          "explanation": "The subtraction of record for the spring and band.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "original length − average length",
+          "correct": false,
+          "explanation": "That reverses the subtraction and returns a negative.",
+          "misconception": "subtraction flip"
+        },
+        {
+          "key": "C",
+          "text": "average length × original length",
+          "correct": false,
+          "explanation": "Multiplying lengths is meaningless here.",
+          "misconception": "operation invention"
+        },
+        {
+          "key": "D",
+          "text": "average length alone",
+          "correct": false,
+          "explanation": "The original length must be removed.",
+          "misconception": "incomplete reading"
+        }
+      ]
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L2::Q4",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L2",
+      "stem": "A straight-line force-extension graph indicates that:",
+      "misconceptionClass": "graph verdict",
+      "options": [
+        {
+          "key": "A",
+          "text": "The material has snapped",
+          "correct": false,
+          "explanation": "A snapped sample gives no usable line.",
+          "misconception": "scene error"
+        },
+        {
+          "key": "B",
+          "text": "The force was applied too slowly",
+          "correct": false,
+          "explanation": "Application speed is not what the line shows.",
+          "misconception": "irrelevance"
+        },
+        {
+          "key": "C",
+          "text": "The force is proportional to the extension",
+          "correct": true,
+          "explanation": "Linearity is the proportionality verdict.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The masses were miscounted",
+          "correct": false,
+          "explanation": "The line is about the material, not the counting.",
+          "misconception": "irrelevance"
+        }
+      ]
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L2::Q5",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L2",
+      "stem": "Parallax error in the ruler readings is avoided by:",
+      "misconceptionClass": "error discipline",
+      "options": [
+        {
+          "key": "A",
+          "text": "Reading the ruler at eye level",
+          "correct": true,
+          "explanation": "Eye-level alignment removes the reading-angle bias of record.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Using a shorter ruler",
+          "correct": false,
+          "explanation": "Length of the ruler is irrelevant.",
+          "misconception": "irrelevance"
+        },
+        {
+          "key": "C",
+          "text": "Reading in a darkened room",
+          "correct": false,
+          "explanation": "Darkness worsens readings.",
+          "misconception": "nonsense"
+        },
+        {
+          "key": "D",
+          "text": "Guessing the halfway digit",
+          "correct": false,
+          "explanation": "Guessing is the error, not the cure.",
+          "misconception": "nonsense"
+        }
+      ]
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L2::Q6",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L2",
+      "stem": "State how the force applied by each 100 g load is calculated.",
+      "misconceptionClass": "computation recall",
+      "kind": "recall",
+      "modelAnswer": "Multiply the mass by g: 0.1 kg × 10 N/kg = 1.0 N per load.",
+      "keywords": [
+        "mass",
+        "10",
+        "1.0",
+        "force"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L2::Q7",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L2",
+      "stem": "State the wire's extension reading rule.",
+      "misconceptionClass": "rule recall",
+      "kind": "recall",
+      "modelAnswer": "Subtract the reference-point reading from the new tape-marker reading.",
+      "keywords": [
+        "reference point",
+        "tape marker",
+        "subtract",
+        "extension"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L2::Q8",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L2",
+      "stem": "Explain why each reading is taken only after the load has fully settled.",
+      "misconceptionClass": "patience reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The spring or wire keeps stretching briefly after the load lands. Reading too early records a length that is still changing — a random error — so the of-record discipline waits for the full extension before reading.",
+      "keywords": [
+        "settled",
+        "stretching",
+        "random error",
+        "waits"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kN63sqWsc9QdHSVx::L2::Q9",
+      "moduleId": "rn_kN63sqWsc9QdHSVx::L2",
+      "stem": "The tape marker reads 4.6 cm against a 1.0 cm reference point. Calculate the wire's extension.",
+      "misconceptionClass": "wire arithmetic",
+      "kind": "application",
+      "modelAnswer": "Extension = 4.6 − 1.0 = 3.6 cm.",
+      "keywords": [
+        "4.6",
+        "1.0",
+        "3.6",
+        "extension"
+      ],
+      "options": []
+    }
+  ]
+}

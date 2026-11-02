@@ -1,0 +1,187 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_ZCGJsYwy6S6FbbbW",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8f10cad43aa7f44741a70ebe5c03ef41a35c1340a2db2513b83b9ccdc0d13ed5",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_ZCGJsYwy6S6FbbbW",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Forces, Movement & Changing Shape",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-2-forces-movement-and-changing-shape/1-2-6-stopping-distance",
+    "specAnchors": [
+      {
+        "code": "1.19",
+        "text": "know that the stopping distance of a vehicle is made up of the sum of the thinking distance and the braking distance"
+      },
+      {
+        "code": "1.20",
+        "text": "describe the factors affecting vehicle stopping distance, including speed, mass, road condition and reaction time"
+      }
+    ],
+    "primer": {
+      "text": "An emergency stop happens in two acts: the driver's reaction, then the brakes' work. Each act consumes road, and their sum decides whether the vehicle stops in time. This note splits the total into its two distances, then lists the factors that stretch either half.",
+      "prerequisiteSubtopic": "Forces, Movement & Changing Shape"
+    },
+    "modules": [
+      {
+        "id": "rn_ZCGJsYwy6S6FbbbW::L1",
+        "title": "Thinking distance and braking distance",
+        "sourceHeadings": [
+          "Thinking distance",
+          "Braking distance"
+        ],
+        "specRefs": [
+          "1.19"
+        ],
+        "opening": "From hazard to halt, the car covers two distances for two reasons. First the driver reacts — the thinking distance; then the brakes bite — the braking distance. The stopping distance is their sum, and the highway data shows how steeply that sum climbs with speed.",
+        "keyPoints": [
+          "Stopping distance = thinking distance + braking distance.",
+          "Thinking distance is the distance travelled while the driver reacts to the hazard and prepares to stop.",
+          "The average human reaction time is about 0.25 s, and it lengthens with tiredness, distractions, alcohol or drugs.",
+          "Braking distance is the distance travelled under the braking force.",
+          "For a given braking force, the greater the speed, the greater the stopping distance."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "One part of the stop happens before the brakes even bite (thinking), the rest while they bite (braking); add them for the stopping distance.",
+            "analogy": "A relay race: the reaction leg and the braking leg. The race's length is the two legs added, never either alone.",
+            "examPointer": "Quote the formula in words first — 'stopping = thinking + braking' — then substitute numbers."
+          },
+          "medium": {
+            "restatement": "The thinking distance is speed × reaction time, so it scales with both; the braking distance grows even faster with speed, which is why the highway-code table's column more than triples from 20 to 60 mph.",
+            "analogy": "Thinking distance is how far a dropped ball falls during your blink; braking distance is how long the brakes need — both stretch when the pace rises.",
+            "examPointer": "A 'calculate the braking distance' question is a rearrangement: braking = stopping − thinking. Subtract in the right order."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ZCGJsYwy6S6FbbbW::L1::Q1",
+          "rn_ZCGJsYwy6S6FbbbW::L1::Q2",
+          "rn_ZCGJsYwy6S6FbbbW::L1::Q3",
+          "rn_ZCGJsYwy6S6FbbbW::L1::Q4",
+          "rn_ZCGJsYwy6S6FbbbW::L1::Q5",
+          "rn_ZCGJsYwy6S6FbbbW::L1::Q6",
+          "rn_ZCGJsYwy6S6FbbbW::L1::Q7",
+          "rn_ZCGJsYwy6S6FbbbW::L1::Q8",
+          "rn_ZCGJsYwy6S6FbbbW::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_ZCGJsYwy6S6FbbbW::L2",
+        "title": "Speed and the other stopping factors",
+        "sourceHeadings": [
+          "Calculating stopping distance",
+          "Factors affecting stopping distance"
+        ],
+        "specRefs": [
+          "1.20"
+        ],
+        "opening": "The sum law tells you how the stop is built; the factor list tells you when it balloons. Speed leads the list — the highway data puts the 60 mph stop at six times the 20 mph stop — and mass, road condition and reaction time complete it.",
+        "keyPoints": [
+          "Vehicle speed: greater speed means a greater braking distance, since the brakes must do more work.",
+          "Vehicle mass: the more massive the vehicle, the further it travels while stopping.",
+          "Road condition: wet or icy roads make the brakes less effective and lengthen the stop.",
+          "Driver reaction time: distraction, tiredness, medication, alcohol or drugs all stretch the thinking distance.",
+          "The Highway-Code table of record runs from 12 m at 20 mph to 73 m at 60 mph."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Four levers stretch the stop: go faster, carry more, lose grip, react slower.",
+            "analogy": "Filling a bath faster: wider tap (speed), deeper tub (mass), blocked drain (road), late start (reaction) — all four raise the flood line.",
+            "examPointer": "Factor questions want all four of record — listing two scores partially."
+          },
+          "medium": {
+            "restatement": "The four factors divide by leg: reaction time stretches the thinking distance; speed, mass and road condition stretch the braking distance — speed worst of all, as the table's steep climb shows.",
+            "analogy": "Two taps feed one pool: the reaction tap and the braking tap. Speed, mass and grip feed one; the phone in the driver's hand feeds the other.",
+            "examPointer": "When asked 'why is the stopping distance so much larger at 60 mph', cite the table values (12 m to 73 m) — evidence beats assertion."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ZCGJsYwy6S6FbbbW::L2::Q1",
+          "rn_ZCGJsYwy6S6FbbbW::L2::Q2",
+          "rn_ZCGJsYwy6S6FbbbW::L2::Q3",
+          "rn_ZCGJsYwy6S6FbbbW::L2::Q4",
+          "rn_ZCGJsYwy6S6FbbbW::L2::Q5",
+          "rn_ZCGJsYwy6S6FbbbW::L2::Q6",
+          "rn_ZCGJsYwy6S6FbbbW::L2::Q7",
+          "rn_ZCGJsYwy6S6FbbbW::L2::Q8",
+          "rn_ZCGJsYwy6S6FbbbW::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "stopping distance",
+          "definition": "The total distance a vehicle travels during an emergency stop: thinking distance plus braking distance.",
+          "firstLesson": 1
+        },
+        {
+          "term": "thinking distance",
+          "definition": "The distance travelled while the driver reacts to the hazard and prepares to stop.",
+          "firstLesson": 1
+        },
+        {
+          "term": "braking distance",
+          "definition": "The distance travelled under the braking force.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reaction time",
+          "definition": "The interval between seeing a hazard and reacting to it; about 0.25 s on average.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "At a speed of 20 m/s a vehicle's total stopping distance is 40 m, and it covers 14 m while the driver reacts. Calculate the braking distance.",
+        "steps": [
+          "Identify the variables: stopping distance = 40 m, thinking distance = 14 m.",
+          "Rearrange the sum law: braking distance = stopping distance − thinking distance.",
+          "Substitute: braking distance = 40 − 14 = 26 m."
+        ],
+        "finalAnswer": "The braking distance is 26 m."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/4eddffb9a5a3-5-8-2-highway-code.png",
+        "alt": "Highway Code, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The Effect of speed on stopping distance",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "A vehicle's stopping distance increases with speed. At a speed of 20 mph the stopping distance is 12 m, whereas at 60 mph the stopping distance is 73 m (reproduced from the UK Highway Code)",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

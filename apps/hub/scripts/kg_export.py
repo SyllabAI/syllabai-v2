@@ -15,6 +15,14 @@ strips. The curriculum corpus itself stays spine-verbatim byte-exact
 (importSource pin law) — normalization is presentation-only, and the
 evidence census lives in spec-text.ts.
 
+v1.6: the concept-web prerequisite tier (KG-AUDIT-2 F8). A snapshot may carry
+conceptWebPrerequisiteEdges ({prerequisite, dependent, basis} — concept codes)
+from the AI concept-web generation run (T-C11 web shape, AI_SUGGESTED,
+unvalidated). They project through the same concept-anchor resolution as the
+validated tier, stay OUT of prereqValidated (the renderer fork labels them
+INFERRED PROTOTYPE), and only in-order pairs ship (reversed web pairs are
+dropped, never demoted).
+
 v1.3: prerequisite/related edge projection. A committed per-course snapshot
 (content/<slug>/prerequisites.json — the operator-validated T-C11 settled
 store + concept anchors + the inferred-prototype curation) projects onto the
@@ -285,10 +293,56 @@ def load_prerequisites(slug: str, qual_code: str, seen_pid: dict) -> tuple[list,
                 if pair not in validated and pair not in demoted]
     related = mapped_pairs(snap.get("inferredPrototypeRel", []))
 
+    # ── concept-web tier (F8, KG-AUDIT-2) ──────────────────────────────────
+    # content/<slug>/prerequisites.json may carry conceptWebPrerequisiteEdges
+    # ({prerequisite, dependent, basis}) from the AI concept-web generation
+    # run (T-C11 web shape, AI_SUGGESTED, unvalidated). Same anchor resolution
+    # as the validated tier — but these pairs are NOT operator-validated: they
+    # stay OUT of prereqValidated (the renderer fork labels any pre edge
+    # outside that set INFERRED PROTOTYPE), validated/demoted/inferred/related
+    # pairs win over web duplicates, and only in-order pairs ship: a reversed
+    # web pair is dropped outright (conservative for unvalidated data — the
+    # validated tier keeps its suppress-or-demote governance).
+    inferred_set = set(inferred)
+    related_set = set(related)
+    web: dict[tuple[str, str], dict] = {}
+    web_skipped = {"unmappedEndpoint": 0, "unanchoredConcept": 0, "selfLoop": 0}
+    for e in snap.get("conceptWebPrerequisiteEdges", []):
+        dep_pids, dep_ok = resolve(e["dependent"])
+        pre_pids, pre_ok = resolve(e["prerequisite"])
+        if not dep_ok or not pre_ok:
+            web_skipped["unmappedEndpoint"] += 1
+            continue
+        if not dep_pids or not pre_pids:
+            web_skipped["unanchoredConcept"] += 1
+            continue
+        for d in dep_pids:
+            for p in pre_pids:
+                if d == p:
+                    web_skipped["selfLoop"] += 1
+                    continue
+                if (p, d) in validated or (p, d) in demoted \
+                        or (p, d) in inferred_set or (p, d) in related_set:
+                    continue          # a validated/inferred tier pair wins
+                web[(p, d)] = {"via": [e["prerequisite"], e["dependent"]]}
+    web_suppressed_mutual = 0
+    web_reversed_dropped = 0
+    for pair in list(web):
+        p, d = pair
+        if point_ord_key(p) < point_ord_key(d):
+            continue                  # in-order — ships
+        del web[pair]
+        if (d, p) in web:
+            web_suppressed_mutual += 1   # redundant with its in-order sibling
+        else:
+            web_reversed_dropped += 1    # wrong direction, unvalidated — dropped
+
     extra: list[list] = []
     for p, d in sorted(validated):
         extra.append(["p:" + p, "p:" + d, "pre"])
     for p, d in sorted(inferred):
+        extra.append(["p:" + p, "p:" + d, "pre"])
+    for p, d in sorted(web):
         extra.append(["p:" + p, "p:" + d, "pre"])
     for p, d in sorted(demoted):
         extra.append(["p:" + p, "p:" + d, "rel"])
@@ -306,16 +360,22 @@ def load_prerequisites(slug: str, qual_code: str, seen_pid: dict) -> tuple[list,
             "demotedReversed": len(demoted),
             "inferredPrototype": len(inferred),
             "relatedInferredPrototype": len(related),
+            "conceptWebInferred": len(web),
         },
         "reversedGovernance": {
             "rule": ("a projected pair that sorts against spec order is suppressed "
                      "when its in-order sibling is also projected (dual-anchor "
                      "cross-product), else demoted to the related tier — operator "
-                     "pass 1a0f589530363705, docs/TC11_ANCHOR_EVIDENCE_PASS.md"),
+                     "pass 1a0f589530363705, docs/TC11_ANCHOR_EVIDENCE_PASS.md; "
+                     "concept-web pairs (unvalidated) are dropped when reversed, "
+                     "never demoted"),
             "suppressedMutual": suppressed_mutual,
             "demotedPairs": [{"pair": "p:" + p + "|p:" + d, "via": meta["via"]}
                              for (p, d), meta in sorted(demoted.items())],
+            "webSuppressedMutual": web_suppressed_mutual,
+            "webReversedDropped": web_reversed_dropped,
         },
+        "conceptWebSkipped": web_skipped,
         "skipped": skipped,
         "skippedUnmappedAnchors": unmapped_anchors,
         "projection": ("concept endpoints resolve through the concept->spec-point "
@@ -575,14 +635,18 @@ def export_course(slug: str, registry: dict[str, dict]) -> dict:
             "curriculumCode": qual_code,
             "syllabusVersion": cur.get("syllabusVersion"),
             "source": f"content/{slug}/curriculum.json (curriculum truth, RULE_DERIVED)",
-            "exporter": ("scripts/kg_export.py v1.5 (prerequisite projection + "
-                         "reversed-pair governance + applicability passthrough + "
-                         "display-text normalization)"
+            "exporter": ("scripts/kg_export.py v1.6 (prerequisite projection + "
+                         "concept-web tier + reversed-pair governance + "
+                         "applicability passthrough + display-text normalization)"
                          if unit_layer else
-                         "scripts/kg_export.py v1.5 (prerequisite projection + "
-                         "reversed-pair governance + display-text normalization)"),
+                         "scripts/kg_export.py v1.6 (prerequisite projection + "
+                         "concept-web tier + reversed-pair governance + "
+                         "display-text normalization)"),
             "generatedUtc": dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "notes": ("v1.5: SpecificationPoint statement/label and points[].text "
+            "notes": ("v1.6: concept-web prerequisite tier — AI-projected, "
+                      "unvalidated, labelled INFERRED PROTOTYPE by the renderer "
+                      "(never in prereqValidated); in-order pairs only. "
+                      "v1.5: SpecificationPoint statement/label and points[].text "
                       "carry the evidenced presentation normalization (T-SPEC-AUDIT-1 "
                       "map, parity with the hub's normalizeSpecText — extraction PUA "
                       "glyphs mapped/stripped; corpus itself stays spine-verbatim). "

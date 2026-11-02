@@ -1,0 +1,195 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_gDy2qTkY26r5sMtd",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "2520c479b5d10ab5b41368b3bd9b79402e55aeb5e0241d64abbc9a3e730ba342",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_gDy2qTkY26r5sMtd",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Forces, Movement & Changing Shape",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-2-forces-movement-and-changing-shape/1-2-4-unbalanced-forces",
+    "specAnchors": [
+      {
+        "code": "1.17",
+        "text": "know and use the relationship between unbalanced force, mass and acceleration: force = mass × acceleration F = m × a"
+      }
+    ],
+    "primer": {
+      "text": "A book on a desk and a tug-of-war rope tell one story in two halves: sometimes the forces cancel, sometimes they leave a surplus. This note names the two cases, then turns the surplus into the most used equation in mechanics — force equals mass times acceleration.",
+      "prerequisiteSubtopic": "Forces, Movement & Changing Shape"
+    },
+    "modules": [
+      {
+        "id": "rn_gDy2qTkY26r5sMtd::L1",
+        "title": "Balanced and unbalanced forces",
+        "sourceHeadings": [
+          "Balanced forces",
+          "Unbalanced forces"
+        ],
+        "specRefs": [
+          "1.17"
+        ],
+        "opening": "Forces on one object combine along each line into a single resultant. When that resultant is zero the forces are balanced and nothing about the motion changes; when a surplus survives, the forces are unbalanced and the object must accelerate. This lesson fixes both words with the two standard scenes.",
+        "keyPoints": [
+          "Balanced forces cancel completely, so the resultant force on the body is zero.",
+          "A book on a desk shows the standard balance: its weight downward against the desk's upward push.",
+          "Unbalanced forces leave a resultant, and that resultant causes the object to accelerate.",
+          "The acceleration may show as speeding up, slowing down, or changing direction.",
+          "A tug-of-war with 80 N against 100 N leaves a 20 N resultant towards the stronger side."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Cancel completely — balanced, nothing changes. Leave a surplus — unbalanced, and the surplus accelerates the object.",
+            "analogy": "Two shopkeepers haggling over one till: equal pulls hold the till still; the stronger pull walks away with it.",
+            "examPointer": "'Balanced' questions want the phrase 'resultant force is zero' — not merely 'the forces are equal'."
+          },
+          "medium": {
+            "restatement": "Balance is a statement about the resultant, not about stillness: a balanced object keeps whatever velocity it had, while any non-zero resultant rewrites that velocity.",
+            "analogy": "A barge in steady current: matched tow ropes hold its heading; one extra metre of rope on a side swings it — velocity responds to the surplus, not to the pull.",
+            "examPointer": "Direction of the acceleration follows the resultant's direction — state both when a question asks for the motion."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_gDy2qTkY26r5sMtd::L1::Q1",
+          "rn_gDy2qTkY26r5sMtd::L1::Q2",
+          "rn_gDy2qTkY26r5sMtd::L1::Q3",
+          "rn_gDy2qTkY26r5sMtd::L1::Q4",
+          "rn_gDy2qTkY26r5sMtd::L1::Q5",
+          "rn_gDy2qTkY26r5sMtd::L1::Q6",
+          "rn_gDy2qTkY26r5sMtd::L1::Q7",
+          "rn_gDy2qTkY26r5sMtd::L1::Q8",
+          "rn_gDy2qTkY26r5sMtd::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_gDy2qTkY26r5sMtd::L2",
+        "title": "The relationship F = m × a",
+        "sourceHeadings": [
+          "Unbalanced Forces, Mass & Acceleration"
+        ],
+        "specRefs": [
+          "1.17"
+        ],
+        "opening": "One equation runs this whole note: the resultant force equals the mass times the acceleration. This lesson fixes the equation, its units, and the proportionality habits it rewards — doubling force doubles acceleration, doubling mass halves it — then applies all three in worked numbers.",
+        "keyPoints": [
+          "The relationship is force = mass × acceleration, written F = m × a, also known as Newton's second law.",
+          "F is the resultant force in newtons, m the mass in kilograms, a the acceleration in metres per second squared.",
+          "For a fixed mass, doubling the resultant force doubles the acceleration.",
+          "For a fixed force, doubling the mass halves the acceleration.",
+          "A negative F value records a force acting opposite to the motion — a decelerating force."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Push harder on the same mass and it speeds up faster; push the same on a heavier mass and it speeds up more slowly.",
+            "analogy": "Supermarket trolleys: an empty trolley leaps away at the same shove; the half-full one needs double the shove for the same getaway.",
+            "examPointer": "Always check the units before substituting: kilograms and metres per second squared feed newtons directly."
+          },
+          "medium": {
+            "restatement": "F = m × a is a proportionality law, not just a formula: a scales with F for fixed m and with 1/m for fixed F — the two habits behind most rearrangement questions.",
+            "analogy": "It behaves like a see-saw: force and mass at the ends, acceleration the tilt — load one end double and the tilt answers in kind.",
+            "examPointer": "When a question hands you a negative force, say why: the minus sign marks a force opposing the motion, exactly the crash-test deceleration case."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_gDy2qTkY26r5sMtd::L2::Q1",
+          "rn_gDy2qTkY26r5sMtd::L2::Q2",
+          "rn_gDy2qTkY26r5sMtd::L2::Q3",
+          "rn_gDy2qTkY26r5sMtd::L2::Q4",
+          "rn_gDy2qTkY26r5sMtd::L2::Q5",
+          "rn_gDy2qTkY26r5sMtd::L2::Q6",
+          "rn_gDy2qTkY26r5sMtd::L2::Q7",
+          "rn_gDy2qTkY26r5sMtd::L2::Q8",
+          "rn_gDy2qTkY26r5sMtd::L2::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "unbalanced",
+          "definition": "Describes forces whose combination leaves a non-zero resultant on the body.",
+          "firstLesson": 1
+        },
+        {
+          "term": "newton",
+          "definition": "The unit of force: 1 N accelerates 1 kg at 1 m/s².",
+          "firstLesson": 2
+        },
+        {
+          "term": "acceleration",
+          "definition": "The rate of change of velocity, in metres per second squared.",
+          "firstLesson": 2
+        },
+        {
+          "term": "Newton's second law",
+          "definition": "The law that the resultant force equals mass times acceleration, F = m × a.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A car of mass 900 kg accelerates from rest to 27 m/s in 3 s. Calculate (a) the acceleration and (b) the force producing it.",
+        "steps": [
+          "List the known quantities: initial velocity 0 m/s, final velocity 27 m/s, time 3 s, mass 900 kg.",
+          "The acceleration is the velocity change over time: a = (27 − 0)/3.",
+          "a = 27/3 = 9 m/s².",
+          "Newton's second law then gives F = m × a = 900 × 9."
+        ],
+        "finalAnswer": "a = 9 m/s² and F = 8100 N."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/eae3d18eb4c2-5-1-6-balanced-forces.png",
+        "alt": "Balanced Forces, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Balanced forces",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "A book resting on a table is an example of balanced forces",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b46dc8a21744-5-1-6-tug-o-war.png",
+        "alt": "Tug O War, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Unbalanced forces",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "A tug-of-war is an example of when forces can become unbalanced",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}
