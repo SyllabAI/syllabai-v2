@@ -298,6 +298,45 @@ describe("request bodies", () => {
     ).toBe(false);
   });
 
+  // OD-1 per-axis dispatch leg (PR-B): bandPlacement is the capture UNION —
+  // single-axis parts keep the historical {levelPlacement, awardedMarks};
+  // multi-axis parts carry one placement per printed axis column. Which
+  // shape a part REQUIRES is the service's call (409) — the binding accepts
+  // both shapes and polices the structural truth (2..6 axes, positive
+  // ordinals, 0..99 marks).
+  it("humanMarkRequestSchema: bandPlacement is the OD-1 capture union (single-axis + multi-axis axes)", () => {
+    // single-axis shape unchanged (byte-compatible binding)
+    expect(
+      humanMarkRequestSchema.safeParse({ marksAwarded: 3, bandPlacement: { levelPlacement: 2, awardedMarks: 3 } }).success,
+    ).toBe(true);
+    // multi-axis shape: one placement per axis column
+    expect(
+      humanMarkRequestSchema.safeParse({
+        marksAwarded: 5,
+        bandPlacement: { axes: [{ axis: "a1", levelPlacement: 2, awardedMarks: 2 }, { axis: "a2", levelPlacement: 3, awardedMarks: 3 }] },
+      }).success,
+    ).toBe(true);
+    // a printed grid has at least TWO axis columns — a one-axis array is a
+    // binding failure, not a silent single
+    expect(
+      humanMarkRequestSchema.safeParse({
+        marksAwarded: 2,
+        bandPlacement: { axes: [{ axis: "a1", levelPlacement: 2, awardedMarks: 2 }] },
+      }).success,
+    ).toBe(false);
+    // levelPlacement >= 1 and awardedMarks 0..99 hold per axis entry
+    expect(
+      humanMarkRequestSchema.safeParse({
+        marksAwarded: 2,
+        bandPlacement: { axes: [{ axis: "a1", levelPlacement: 0, awardedMarks: 1 }, { axis: "a2", levelPlacement: 2, awardedMarks: 1 }] },
+      }).success,
+    ).toBe(false);
+    // empty axes array is a binding failure
+    expect(
+      humanMarkRequestSchema.safeParse({ marksAwarded: 0, bandPlacement: { axes: [] } }).success,
+    ).toBe(false);
+  });
+
   // T-MIG-114 (the ppd message law of record): the 50-entry cap is a .refine()
   // — zod reports it with code "custom" (NOT too_big), so the route classifier
   // must map the custom issue to the jakarta-parity message. The schema shape

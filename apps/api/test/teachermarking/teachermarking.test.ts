@@ -192,7 +192,7 @@ function markAnswerRoutes(overrides: {
     },
     { match: /select id from question_versions/, rows: [{ id: "v1" }] },
     {
-      match: /select id, validation_state, scheme_kind, question_part_id from mark_schemes where question_version_id = \? and validation_state = \?/,
+      match: /select id, validation_state, scheme_kind, question_part_id, version_label from mark_schemes where question_version_id = \? and validation_state = \?/,
       rows: [{ id: SCHEME_ID, validation_state: "VALIDATED" }],
     },
     { match: /from mark_points/, rows: POINT_ROWS },
@@ -1207,7 +1207,7 @@ describe("TeacherSmartMarkService.markAnswer — the ADR-040 §5.4 band dispatch
   function bandRoutes(): Route[] {
     const routes = markAnswerRoutes();
     // the validated-scheme read now carries scheme_kind: LEVELS
-    const validated = routes.find((r) => String(r.match.source).includes("scheme_kind, question_part_id from mark_schemes"));
+    const validated = routes.find((r) => String(r.match.source).includes("question_part_id, version_label from mark_schemes"));
     if (validated) validated.rows = [LEVELS_ROW];
     // the band branch's two-step reads (kind re-assert + guidance; the bands)
     routes.push({ match: /select validation_state, scheme_kind, general_guidance from mark_schemes where id = \?$/, rows: [{ validation_state: "VALIDATED", scheme_kind: "LEVELS", general_guidance: "Marks are for linked statements." }] });
@@ -1250,25 +1250,92 @@ describe("TeacherSmartMarkService.markAnswer — the ADR-040 §5.4 band dispatch
     expect(publisher.calls.length).toBe(0);
   });
 
-  test("OD-1 MA-10: a multi-axis part (2+ VALIDATED part-bound LEVELS siblings) refuses honestly — nothing marked", async () => {
+  test("OD-1 per-axis dispatch: the set marks EACH axis and sums the sub-decisions at the part", async () => {
+    const SIBLING_A2 = "70000000-0000-0000-0000-00000000000b";
     const routes = bandRoutes();
-    const validated = routes.find((r) => String(r.match.source).includes("scheme_kind, question_part_id from mark_schemes"));
+    const validated = routes.find((r) => String(r.match.source).includes("question_part_id, version_label from mark_schemes"));
     if (validated) {
       validated.rows = [
-        { id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A },
-        { id: "70000000-0000-0000-0000-00000000000b", validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A },
+        { id: SIBLING_A2, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "1-b-ii#a2" },
+        { id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "1-b-ii#a1" },
+      ];
+    }
+    // per-axis two-step reads, dispatched by the bound scheme id
+    const guidance = routes.find((r) => String(r.match.source).includes("general_guidance from mark_schemes where id"));
+    if (guidance) guidance.rowsFor = (p) => [{ validation_state: "VALIDATED", scheme_kind: "LEVELS", general_guidance: `guidance ${String(p[0])}` }];
+    const bandsRoute = routes.find((r) => String(r.match.source).includes("from mark_bands"));
+    if (bandsRoute) {
+      bandsRoute.rows = [];
+      bandsRoute.rowsFor = (p) =>
+        String(p[0]) === SIBLING_A2
+          ? [
+              { id: "b1", level_index: 1, marks_min: 1, marks_max: 1, descriptor_md: "a2 L1", guidance_md: null },
+              { id: "b2", level_index: 2, marks_min: 2, marks_max: 2, descriptor_md: "a2 L2", guidance_md: null },
+              { id: "b3", level_index: 3, marks_min: 3, marks_max: 3, descriptor_md: "a2 L3", guidance_md: null },
+              { id: "b4", level_index: 4, marks_min: 4, marks_max: 4, descriptor_md: "a2 L4", guidance_md: null },
+            ]
+          : [
+              { id: "c1", level_index: 1, marks_min: 1, marks_max: 1, descriptor_md: "a1 L1", guidance_md: null },
+              { id: "c2", level_index: 2, marks_min: 2, marks_max: 2, descriptor_md: "a1 L2", guidance_md: null },
+              { id: "c3", level_index: 3, marks_min: 3, marks_max: 3, descriptor_md: "a1 L3", guidance_md: null },
+              { id: "c4", level_index: 4, marks_min: 4, marks_max: 4, descriptor_md: "a1 L4", guidance_md: null },
+            ];
+    }
+    const publisher = spyPublisher();
+    const sql = spySql(routes);
+    // per-axis run(): a1 → level 3 marks 3; a2 → level 4 marks 4
+    const module = buildTeacherMarkingModule(sql, okGenerator(), publisher, clock, {
+      proposeBand: async (ctx) => ({
+        modelId: "glm-4.6",
+        levelPlacement: ctx.schemeId === SCHEME_ID ? 3 : 4,
+        awardedMarks: ctx.schemeId === SCHEME_ID ? 3 : 4,
+        descriptorHits: [{ levelIndex: ctx.schemeId === SCHEME_ID ? 3 : 4, hit: true, rationale: "in context" }],
+        confidence: 0.9,
+        rawOutput: "raw",
+      }),
+      proposeBandsAll: async () => { throw new Error("batch topology must not run on the per-answer leg"); },
+    } as BandMarkingCandidateGenerator);
+    const row = await module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID);
+    expect(row.validation_passed).toBe(true);
+    expect(row.marks_awarded).toBe(7); // 3 (a1) + 4 (a2)
+    const breakdown = row.breakdown as { shape: string; total_awarded: number; axes: Array<{ version_label: string; awarded_marks: number; accepted: boolean }> };
+    expect(breakdown.shape).toBe("band_decision_v1_multi_axis");
+    expect(breakdown.total_awarded).toBe(7);
+    expect(breakdown.axes.map((a) => `${a.version_label}:${a.awarded_marks}`)).toEqual(["1-b-ii#a1:3", "1-b-ii#a2:4"]);
+    // the shared tail: state writes + κ gate + evidence claim
+    expect(sql.queries.some((q) => q.includes("update answers set"))).toBe(true);
+    expect(publisher.calls.length).toBe(1);
+  });
+
+  test("OD-1 per-axis dispatch: ONE refusing axis refuses the whole set honestly — nothing marked", async () => {
+    const SIBLING_A2 = "70000000-0000-0000-0000-00000000000b";
+    const routes = bandRoutes();
+    const validated = routes.find((r) => String(r.match.source).includes("question_part_id, version_label from mark_schemes"));
+    if (validated) {
+      validated.rows = [
+        { id: SIBLING_A2, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "1-b-ii#a2" },
+        { id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "1-b-ii#a1" },
       ];
     }
     const publisher = spyPublisher();
     const sql = spySql(routes);
-    // the refusal stamps the newest scheme of the version (the V34 law)
-    routes.push({ match: /select id, validation_state from mark_schemes where question_version_id = \? order by created_at desc/, rows: [{ id: SCHEME_ID, validation_state: "VALIDATED" }] });
-    const module = buildTeacherMarkingModule(sql, okGenerator(), publisher, clock, bandGenerator());
+    const module = buildTeacherMarkingModule(sql, okGenerator(), publisher, clock, {
+      proposeBand: async (ctx) => ({
+        modelId: "glm-4.6",
+        // the a2 sibling refuses structurally: no placement decided
+        levelPlacement: ctx.schemeId === SCHEME_ID ? 3 : null,
+        awardedMarks: ctx.schemeId === SCHEME_ID ? 3 : 0,
+        descriptorHits: [],
+        confidence: null,
+        rawOutput: "raw-a2",
+      }),
+      proposeBandsAll: async () => { throw new Error("batch topology must not run on the per-answer leg"); },
+    } as BandMarkingCandidateGenerator);
     const row = await module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID);
     expect(row.validation_passed).toBe(false);
     expect(row.marks_awarded).toBe(0);
-    expect(row.failure_reason).toBe("MULTI_AXIS_DISPATCH_NOT_WIRED");
-    expect(sql.queries.some((q) => q.includes("from mark_bands"))).toBe(false); // no axis dispatch ever ran
+    expect(row.failure_reason).toContain("MULTI_AXIS_AXIS_REFUSED");
+    expect(row.failure_reason).toContain("1-b-ii#a2");
     expect(sql.queries.some((q) => q.includes("update answers set"))).toBe(false);
     expect(publisher.calls.length).toBe(0);
   });
