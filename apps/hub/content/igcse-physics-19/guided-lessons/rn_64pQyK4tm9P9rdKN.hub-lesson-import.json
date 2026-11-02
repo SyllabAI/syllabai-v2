@@ -1,0 +1,148 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_64pQyK4tm9P9rdKN",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "c4f3c5b374e71882c10cc662342d4f91bd098df14a3b6154280d4128cf8152c7",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_64pQyK4tm9P9rdKN",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Current, Potential Difference & Resistance",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-1-current-potential-difference-and-resistance/2-1-3-resistance",
+    "specAnchors": [
+      {
+        "code": "2.13",
+        "text": "know and use the relationship between voltage, current and resistance: voltage = current × resistance V = I × R"
+      }
+    ],
+    "primer": {
+      "text": "Every component, even a plain copper wire, pushes back a little against the current trying to pass through it. That push-back is resistance. This note defines the ohm, shows how resistance throttles the current at a fixed voltage, and assembles the equation linking voltage, current and resistance that solves most simple circuits.",
+      "prerequisiteSubtopic": "Current, Potential Difference & Resistance"
+    },
+    "modules": [
+      {
+        "id": "rn_64pQyK4tm9P9rdKN::L1",
+        "title": "Calculating current, resistance & potential difference",
+        "sourceHeadings": [
+          "Calculating current, resistance & potential difference"
+        ],
+        "specRefs": [
+          "2.13"
+        ],
+        "opening": "Squeeze a garden hose and the flow drops; leave it open and the flow soars. Resistance does to charge exactly what your hand does to the water. This lesson defines the ohm, sets the see-saw between resistance and current, and assembles the equation V = I × R that ties all three quantities together.",
+        "keyPoints": [
+          "Resistance describes how strongly a component opposes the flow of current through it.",
+          "Resistance is measured in ohm units (Ω); one ohm lets one volt drive one amp through a component.",
+          "For a fixed voltage, a higher resistance means a smaller current, and a lower resistance means a larger one.",
+          "The three quantities are linked by V = I × R.",
+          "Copper wiring has a very low resistance, which is why it counts as a good conductor.",
+          "In exam circuits the wires, ammeters and cells are taken to have zero resistance."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Resistance is the brake on the current: more ohms means less flow for the same push.",
+            "analogy": "A narrow door in a busy corridor — the wider the door (lower resistance), the more people (current) get through.",
+            "examPointer": "Use Ω for ohms in your working, and keep V, A and Ω labelled in every substitution."
+          },
+          "medium": {
+            "restatement": "The equation is a see-saw: at fixed voltage, current and resistance move in opposite directions, because I = V ÷ R.",
+            "analogy": "A credit limit: the voltage is your budget, the resistance is the price of goods, and the current is how much you can buy.",
+            "examPointer": "Assume wires, ammeters and cells have zero resistance unless a question says otherwise — only the named components count."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_64pQyK4tm9P9rdKN::L1::Q1",
+          "rn_64pQyK4tm9P9rdKN::L1::Q2",
+          "rn_64pQyK4tm9P9rdKN::L1::Q3",
+          "rn_64pQyK4tm9P9rdKN::L1::Q4",
+          "rn_64pQyK4tm9P9rdKN::L1::Q5",
+          "rn_64pQyK4tm9P9rdKN::L1::Q6",
+          "rn_64pQyK4tm9P9rdKN::L1::Q7",
+          "rn_64pQyK4tm9P9rdKN::L1::Q8",
+          "rn_64pQyK4tm9P9rdKN::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "resistance",
+          "definition": "The opposition a component offers to the current trying to flow through it, measured in ohms.",
+          "firstLesson": 1
+        },
+        {
+          "term": "ohm",
+          "definition": "The unit of resistance — one volt driving one amp through the component.",
+          "firstLesson": 1
+        },
+        {
+          "term": "conductor",
+          "definition": "A material that lets charge flow through it easily.",
+          "firstLesson": 1
+        },
+        {
+          "term": "current",
+          "definition": "The rate at which electric charge streams through a component, measured in amperes.",
+          "firstLesson": 1
+        },
+        {
+          "term": "copper",
+          "definition": "The low-resistance metal usually chosen for connecting wires.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "Find the voltage across a 10 Ω resistor carrying a current of 0.3 A.",
+        "steps": [
+          "List the knowns: resistance R = 10 Ω and current I = 0.3 A.",
+          "State the linking equation: V = I × R.",
+          "Substitute: V = 0.3 × 10.",
+          "Work the product: 0.3 × 10 = 3."
+        ],
+        "finalAnswer": "The voltage across the resistor is 3 V."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/26010f42165d-2-1-3-resistance-current.png",
+        "alt": "Resistance & Current, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Comparing current and resistance",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "A greater resistance means there is a lower current and vice versa",
+        "binding": "sole-lesson"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/575e0ddc60ca-vir-triangle-3-e1630869703775.png",
+        "alt": "VIR triangle, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Voltage current resistance formula triangle",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Formula triangle for the voltage, current and resistance equation",
+        "binding": "sole-lesson"
+      }
+    ]
+  }
+}

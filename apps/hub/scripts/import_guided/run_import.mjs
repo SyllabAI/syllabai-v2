@@ -2296,8 +2296,117 @@ const FEEDS = {
       ) && !!a.path.split("/").pop();
     },
   },
+  "physics-wave4-v23": {
+    manifest: "hub-import-manifest-v23.json",
+    manifest_version: 23,
+    // NEW-SUBJECT wave-4 (resources PR #286, merge-of-record acd23dd30dda707775cd5f27346ee0a3958c0afe; runbook §1 + B6
+    // continue-global at v23 — CUMULATIVE over the igcse-physics-19 pack, the chemistry
+    // v8..v17 pattern, the physics v18..v22 pattern). W4 of the frozen B4 partition: the
+    // 2-1 current-potential-difference-and-resistance + 2-2 components-in-series-and-parallel-circuits
+    // subtopics, 8 notes. The INT-3 carries ALL 31 pack rows (the v19 index-regression
+    // lesson of record), so the runner-owned guided-import.json re-issue keeps the whole
+    // flow. The 46 prior-pack artifacts are re-pinned byte-identical (1 pilot @ v18 shas +
+    // 6 wave-1 @ v19 shas + 9 wave-2 @ v21 shas + 7 wave-3 @ v22 shas); the 16 wave-4
+    // artifacts are FIRST issues @ the commit-A pin 275f3b53. ZERO chemistry bytes
+    // touched, ZERO authored prior-pack bytes changed.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 31, "sme-question-package": 31 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-4 chain — import the igcse-physics-19 wave-4 tranche of record (8 notes: rn_NZ5D2Mx9SXQY98wy '2-1-1 Charge & Current' / rn_BcxDP3RzXk3k7rwf '2-1-2 Voltage & Energy' / rn_64pQyK4tm9P9rdKN '2-1-3 Resistance' / rn_BFQBSmVz2xFZVsB6 '2-2-1 Current in Series & Parallel' / rn_ynsstfBQngnx2pgq '2-2-2 Voltage in Series & Parallel' / rn_PyxMmTd6S9pMDTt6 '2-2-3 Resistors in Series' / rn_WzQZfyNNFFFFghbF '2-2-4 IV Graphs' / rn_gYqbXsJPfrqtg5yQ '2-2-5 Electrical Components'; 16 lessons / 144 checks = 80 MCQ + 32 recall + 16 explain-why + 16 application) with the 46 prior-pack artifacts re-pinned byte-identical — CUMULATIVE pack 31 notes / 62 lessons / 558 checks, manifest v23. Declared hub landing = 16/16 written + 46/46 identical-exists + the runner-owned guided-import.json index re-issued with all 31 rows; zero chemistry bytes touched. Operator ignition trace 1a19d7cf1cf1895d ('Ignite Wave-4'), execution trace 1a19d7cf1cf1895d (single-window execution, disclosed).",
+    promo: {
+      // promotion commit of record = the resources PR #286 merge-of-record (commit A 275f3b53 +
+      // commit C efda56fb; the merge commit message carries the execution trace verbatim)
+      commit: "acd23dd30dda707775cd5f27346ee0a3958c0afe",
+      tree: "8857edab7028a3778282d50572171871b1e7b700",
+      parent: "fb28c174adece12e96c8a6694293bf93b1cf1580",
+      trace: "1a19d7cf1cf1895d",
+    },
+    integration_branch: null, // ancestry of record — resources PR #286 merged before this hub run
+    artifact_pin: "275f3b535d78552d09e07f65fb9347e570eae68d", // wave-4 commit A — the source-0.6 generation pin of record for the 8 wave-4 notes
+    artifact_pins_by_note: {
+      // prior-pack provenance of record (G-D pinnedRef, per-note law): the stage-A pilot
+      // keeps its v18 source pin, the six wave-1 notes keep their v19 source pin, the nine
+      // wave-2 notes keep their v21 source pin, the seven wave-3 notes keep their v22
+      // source pin (their wave-3 commit A — the artifact-embedded pinnedRef of record;
+      // the trace-bearing repin is the PROMOTION commit, not the provenance pin) — re-pinning
+      // them to the wave-4 commit would falsify their provenance
+      rn_RpyMnS5nqWSRWXXG: "7d493985c7729f30c2186e7e61a713ceacc96517",
+      rn_k9wr3prcgSBg5vfw: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_pfndTqR6DTJGZ8xQ: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_CpJZQWzbvMcM8fw3: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_5hfYYFrc2XjMJCrq: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_GxNWbSMqkTN4zgZB: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_ZgGMNrRGBKvYxxFf: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_nyV7C6zmyKXWJjKg: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_4zdmGRWTg5ksK44N: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_K3p2R3ykwwvHV9dp: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_gDy2qTkY26r5sMtd: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_2R3NrjGfJJY29Hzv: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_ZCGJsYwy6S6FbbbW: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_Mrfn29ZgQMq8th5P: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_kN63sqWsc9QdHSVx: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_nC3BswtJzYw8k6nX: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_pqp4mfpHzGVtrjTT: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_NfCjFmPfmMQ8pQSw: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_8wqvPtsCCh3gdJN5: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_RQK2MW3zRPNNzwtc: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_jzQZQcPRQkJvdYwJ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_zn4NVCRcTSNv8sRZ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_TPDdhwDYsrWgQB7R: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_NZ5D2Mx9SXQY98wy: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_BcxDP3RzXk3k7rwf: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_64pQyK4tm9P9rdKN: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_BFQBSmVz2xFZVsB6: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_ynsstfBQngnx2pgq: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_PyxMmTd6S9pMDTt6: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_WzQZfyNNFFFFghbF: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_gYqbXsJPfrqtg5yQ: "275f3b535d78552d09e07f65fb9347e570eae68d",
+    },
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 110 cumulative figures (9 pilot + 16 wave-1 + 25 wave-2 + 25 wave-3 + 35 wave-4), all module-mapped
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave4-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave4-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave4-survivors/hub-import-manifest-v23.json",
+      int3: "/home/z/my-project/scripts/physics-wave4-survivors/INT-3-transform-record-physics-wave4.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261103-physics-wave4-v23.json`,
+    identity: {
+      notes: 31,
+      lessons: 62,
+      checks: 558,
+      keyPoints: 311,
+      distractors: 930,
+      glossaryTerms: 156,
+      figures: 110,
+      figures_module_mapped: 110,
+      figures_note_level: 0,
+      workedExamples_populated: 21,
+      workedExamples_null: 10,
+      authored_chars_conserved: 369954,
+    },
+    artifact_count: 62,
+    note_count: 31,
+    wave_count: 5,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v23 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
 };
-
 
 const FEED_ID = process.env.FEED || "fullcorpus-v2";
 const F = FEEDS[FEED_ID];

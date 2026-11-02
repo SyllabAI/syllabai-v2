@@ -1,0 +1,259 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_64pQyK4tm9P9rdKN",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "c4f3c5b374e71882c10cc662342d4f91bd098df14a3b6154280d4128cf8152c7",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "packageId": "igcse-physics::rn_64pQyK4tm9P9rdKN",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_64pQyK4tm9P9rdKN::L1::Q1",
+      "moduleId": "rn_64pQyK4tm9P9rdKN::L1",
+      "stem": "Resistance is measured in:",
+      "misconceptionClass": "unit recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "amperes",
+          "correct": false,
+          "explanation": "Amperes measure current.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "B",
+          "text": "volts",
+          "correct": false,
+          "explanation": "Volts measure voltage.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "C",
+          "text": "ohms",
+          "correct": true,
+          "explanation": "The ohm (Ω) is the unit of resistance.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "coulombs",
+          "correct": false,
+          "explanation": "Coulombs measure charge.",
+          "misconception": "unit slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_64pQyK4tm9P9rdKN::L1::Q2",
+      "moduleId": "rn_64pQyK4tm9P9rdKN::L1",
+      "stem": "A resistance of one ohm is equivalent to:",
+      "misconceptionClass": "unit recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "one volt producing one amp",
+          "correct": true,
+          "explanation": "A 1 V push that drives a 1 A flow means the component has 1 Ω.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "one amp producing one volt",
+          "correct": false,
+          "explanation": "The causality runs voltage first, current second.",
+          "misconception": "inversion slip"
+        },
+        {
+          "key": "C",
+          "text": "one joule per coulomb",
+          "correct": false,
+          "explanation": "That defines a volt, not an ohm.",
+          "misconception": "unit swap"
+        },
+        {
+          "key": "D",
+          "text": "one coulomb per second",
+          "correct": false,
+          "explanation": "That defines an ampere, not an ohm.",
+          "misconception": "unit swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_64pQyK4tm9P9rdKN::L1::Q3",
+      "moduleId": "rn_64pQyK4tm9P9rdKN::L1",
+      "stem": "For the same voltage, doubling a component's resistance makes the current through it:",
+      "misconceptionClass": "inverse reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "double",
+          "correct": false,
+          "explanation": "Current and resistance move oppositely at fixed voltage.",
+          "misconception": "proportional slip"
+        },
+        {
+          "key": "B",
+          "text": "halve",
+          "correct": true,
+          "explanation": "With V fixed, I = V ÷ R, so twice the resistance gives half the current.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "stay unchanged",
+          "correct": false,
+          "explanation": "The resistance sets the current, so changing it must change the flow.",
+          "misconception": "independence myth"
+        },
+        {
+          "key": "D",
+          "text": "fall to zero",
+          "correct": false,
+          "explanation": "Doubling is not blocking; some current still flows.",
+          "misconception": "extreme myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_64pQyK4tm9P9rdKN::L1::Q4",
+      "moduleId": "rn_64pQyK4tm9P9rdKN::L1",
+      "stem": "A current of 0.3 A flows through a 10 Ω resistor. The voltage across it is:",
+      "misconceptionClass": "voltage arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "30 V",
+          "correct": false,
+          "explanation": "That slips two decimal places: 0.3 × 10 = 3, not 30.",
+          "misconception": "place-value slip"
+        },
+        {
+          "key": "B",
+          "text": "3 V",
+          "correct": true,
+          "explanation": "V = I × R = 0.3 × 10 = 3 V.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "10.3 V",
+          "correct": false,
+          "explanation": "Adding the values is meaningless.",
+          "misconception": "addition slip"
+        },
+        {
+          "key": "D",
+          "text": "0.03 V",
+          "correct": false,
+          "explanation": "That divides current by resistance instead of multiplying.",
+          "misconception": "division slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_64pQyK4tm9P9rdKN::L1::Q5",
+      "moduleId": "rn_64pQyK4tm9P9rdKN::L1",
+      "stem": "Copper is used for connecting wires because it has:",
+      "misconceptionClass": "material reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "a very high resistance",
+          "correct": false,
+          "explanation": "High resistance would choke the very current the wires exist to carry.",
+          "misconception": "opposite slip"
+        },
+        {
+          "key": "B",
+          "text": "no charge inside it",
+          "correct": false,
+          "explanation": "Copper is full of movable charge — that is the point.",
+          "misconception": "charge myth"
+        },
+        {
+          "key": "C",
+          "text": "a very low resistance",
+          "correct": true,
+          "explanation": "A low-resistance metal lets current pass easily, so copper is a good conductor.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a resistance that grows as the current grows",
+          "correct": false,
+          "explanation": "That behaviour belongs to heating components like filaments, not copper wiring.",
+          "misconception": "variable myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_64pQyK4tm9P9rdKN::L1::Q6",
+      "moduleId": "rn_64pQyK4tm9P9rdKN::L1",
+      "stem": "Write down the equation linking voltage, current and resistance, naming the unit of each quantity.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "V = I × R, with voltage in volts, current in amperes and resistance in ohms.",
+      "keywords": [
+        "voltage",
+        "current",
+        "resistance",
+        "volt",
+        "ohm"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_64pQyK4tm9P9rdKN::L1::Q7",
+      "moduleId": "rn_64pQyK4tm9P9rdKN::L1",
+      "stem": "What happens to the current in a circuit if the resistance is increased while the voltage stays fixed?",
+      "misconceptionClass": "inverse reasoning recall",
+      "kind": "recall",
+      "modelAnswer": "The current falls, because a higher resistance opposes the flow more strongly at the same voltage.",
+      "keywords": [
+        "current",
+        "resistance",
+        "voltage",
+        "higher",
+        "opposes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_64pQyK4tm9P9rdKN::L1::Q8",
+      "moduleId": "rn_64pQyK4tm9P9rdKN::L1",
+      "stem": "Explain why a wire with a higher resistance carries a smaller current for the same voltage.",
+      "misconceptionClass": "opposition reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Resistance opposes the drift of charge, so at a fixed voltage a larger resistance leaves less current — the two effects balance through V = I × R.",
+      "keywords": [
+        "resistance",
+        "voltage",
+        "current",
+        "opposes",
+        "fixed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_64pQyK4tm9P9rdKN::L1::Q9",
+      "moduleId": "rn_64pQyK4tm9P9rdKN::L1",
+      "stem": "A lamp draws 0.5 A from a 6 V supply. Calculate its resistance.",
+      "misconceptionClass": "resistance calculation",
+      "kind": "application",
+      "modelAnswer": "R = V ÷ I = 6 V ÷ 0.5 A = 12 Ω.",
+      "keywords": [
+        "12",
+        "resistance",
+        "ohms",
+        "voltage",
+        "current"
+      ],
+      "options": []
+    }
+  ]
+}
