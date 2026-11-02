@@ -143,7 +143,12 @@ async function realChain(): Promise<TeachMeChain> {
 
 /* ---------------- Smoke user ---------------- */
 const SMOKE_USER_ID = `00000000-0000-0000-0000-00000000aa0${USER_SUFFIX}`;
-const SMOKE_EMAIL = `smoke.tteachme001.${RUN}@smoke.invalid`;
+// identity = (run, suffix): the email MUST carry the suffix too — uq_users_email
+// is UNIQUE on lower(email), so same-label-different-suffix reruns collide on
+// the email and the ON CONFLICT skip silently orphans the user_roles insert
+// (r10c FK failure). Read-back verifies BOTH id and email (r10 landed on
+// r6's row because the count-only read-back could not see the mismatch).
+const SMOKE_EMAIL = `smoke.tteachme001.${RUN}.u${USER_SUFFIX}@smoke.invalid`;
 async function ensureSmokeUser(sql: ReturnType<typeof createSql>): Promise<void> {
   await sql`
     INSERT INTO users (id, email, password_hash, display_name, enabled, created_at)
@@ -151,12 +156,14 @@ async function ensureSmokeUser(sql: ReturnType<typeof createSql>): Promise<void>
             '{smoke}no-login-placeholder-not-a-hash', '[SMOKE] T-TEACHME-001 prod real-LLM smoke',
             false, ${new Date().toISOString()}::timestamptz)
     ON CONFLICT DO NOTHING`;
+  const back = await sql`SELECT email FROM users WHERE id = ${SMOKE_USER_ID}::uuid`;
+  if (back.length !== 1 || String((back[0] as Record<string, unknown>).email).toLowerCase() !== SMOKE_EMAIL.toLowerCase()) {
+    throw new Error(`smoke user insert/read failed (id=${SMOKE_USER_ID} expected email=${SMOKE_EMAIL})`);
+  }
   const roles = await sql`SELECT 1 AS ok FROM roles WHERE name = 'STUDENT' LIMIT 1`;
   if (roles.length > 0) {
     await sql`INSERT INTO user_roles (user_id, role) VALUES (${SMOKE_USER_ID}::uuid, 'STUDENT') ON CONFLICT DO NOTHING`;
   }
-  const back = await sql`SELECT email FROM users WHERE id = ${SMOKE_USER_ID}::uuid`;
-  if (back.length !== 1) throw new Error("smoke user insert/read failed");
 }
 
 /* ---------------- Spec-point pick ---------------- */
