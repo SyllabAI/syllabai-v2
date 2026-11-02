@@ -30,7 +30,7 @@
  * persist client-side (no auth in the demo); resource counts come from
  * /api/course-stats (committed bundles).
  */
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   BookOpen,
@@ -45,10 +45,12 @@ import {
   X,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { ToastAction } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useMyCoursesSync, useMySubjects } from "@/lib/my-subjects";
+import { useToast } from "@/hooks/use-toast";
 import { useIdentity } from "@/lib/identity";
 import { useLastOpened, resourceLabel } from "@/lib/last-opened";
 import { useCourseProgress } from "@/lib/progress";
@@ -417,7 +419,7 @@ function SubjectCard({
 
 export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
   useMyCoursesSync(); // T-TEACH-001 — mirror the roster to core while signed in (write-through + reconcile)
-  const { slugs, has, add, remove } = useMySubjects();
+  const { slugs, has, add, remove, restore } = useMySubjects();
   const identity = useIdentity();
   const lastOpened = useLastOpened();
   const studyPlan = useStudyPlan(); // the Study plan rail (spec §5.3) — one server projection
@@ -430,6 +432,35 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
     for (const c of courses) m.set(c.slug, c);
     return m;
   }, [courses]);
+
+  const { toast } = useToast();
+
+  // D-7 (frontend-flow audit): removal was one tap — equal visual weight
+  // with the reading affordances — with no confirm and no undo, and it
+  // takes this device's progress keys for the course with it. The cheapest
+  // honest fix is the undoable kind: the card leaves at once, a 5-second
+  // toast owns the regret window, and Undo re-inserts the slug exactly
+  // where it was. (Signed in, the write-through mirror treats the
+  // remove/restore pair as two idempotent full-set PUTs — account sync
+  // stays consistent either way.)
+  const removeSubject = useCallback(
+    (slug: string) => {
+      const index = slugs.indexOf(slug);
+      const label = bySlug.get(slug)?.label ?? slug;
+      remove(slug);
+      toast({
+        title: `${label} removed`,
+        description: "Your progress for it on this device went with it.",
+        duration: 5000,
+        action: (
+          <ToastAction altText={`Undo removing ${label}`} onClick={() => restore(slug, index)}>
+            Undo
+          </ToastAction>
+        ),
+      });
+    },
+    [slugs, bySlug, remove, restore, toast],
+  );
 
   // valid roster = stored slugs that still exist in the registry
   const mySubjects = useMemo(
@@ -628,7 +659,7 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
                 meta={c}
                 stat={stats[c.slug]}
                 isLastViewed={lastOpened?.slug === c.slug}
-                onRemove={remove}
+                onRemove={removeSubject}
                 accountStats={c.slug === PILOT_COURSE_SLUG ? accountStats : null}
                 examTarget={
                   examTargets === null ? undefined : examTargets.get(c.slug) ?? null
