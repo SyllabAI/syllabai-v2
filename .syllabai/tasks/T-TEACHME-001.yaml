@@ -5,20 +5,48 @@ task:
     objectives, probe chat, verdict chips, review card, suggested practice; evidence class fixed by ADR-040'
   owner: Super Z (zai-web session web-5e612468-7ecd-499d-8b14-7c05e8412405, chat 97a19c8c-d041-4ae2-9754-07fef634fc42,
     dispatch trace 1a19340982b7ffa9)
-  status: 'IN_PROGRESS # commissioned ''accept all'' 2026-11-01 (rulings below); run-001 (contracts + migration)
-    MERGED via PR #580 @ b8871ca; run-002 (api lane) MERGED via PR #585 @ bef52be; run-003 (hub lane) MERGED
-    via PR #593 @ 704daa8f (twin #597 closed unmerged); DB apply of 0020/0021 on a Neon BRANCH: BRANCH-PROOF
-    GREEN (2026-11-01, local fire of the dispatch runner — COW br-little-heart-a5mqe2y1 off production
-    br-muddy-bar-a5huwldd: 0020 18 stmts + 0021 8 stmts COMMIT, DDL post-verify exact incl. the receipted
-    (session_id) candidates_open_idx re-scope, ADR-040 D1 append-only bite probe UPDATE/DELETE blocked inside
-    ROLLBACK, 4CH1 canon census 182/182 described + 0 missing (repair needed: NONE — honest zero), G1/G2/G3
-    ALL GREEN — verdict APPLIED_GATES_GREEN, receipt .syllabai/receipts/T-TEACHME-001/cow-apply-receipt-r1.json;
-    COW dropped + 404-verified, zero residue); PROD apply of 0020/0021 EXECUTED 2026-11-01 after operator
-    receipt review ('run the same driver against production', chat 97a19c8c): main_pooler
-    ep-ancient-cake-a52e4kfd-pooler, verdict APPLIED_GATES_GREEN (26 stmts COMMIT, prod census identical to
-    the branch proof — 182/0 undescribed, 112 note rows, 6627 anchors — repair needed NONE, independent
-    read-back 6/6 tables + 7/7 FKs + trigger present + receipted (session_id) index shape + 0 rows), receipt
-    .syllabai/receipts/T-TEACHME-001/prod-apply-receipt-r1.json — the Teach-Me lane DDL is LIVE on production'
+  status: 'IN_PROGRESS # commissioned ''accept all'' 2026-11-01 (rulings below); run-001 (contracts +
+    migration) MERGED via PR #580 @ b8871ca; run-002 (api lane) MERGED via PR #585 @ bef52be; run-003 (hub
+    lane) MERGED via PR #593 @ 704daa8f (twin #597 closed unmerged); DB apply of 0020/0021 on a Neon
+    BRANCH: BRANCH-PROOF GREEN (2026-11-01, local fire of the dispatch runner — COW
+    br-little-heart-a5mqe2y1 off production br-muddy-bar-a5huwldd: 0020 18 stmts + 0021 8 stmts COMMIT, DDL
+    post-verify exact incl. the receipted (session_id) candidates_open_idx re-scope, ADR-040 D1 append-only
+    bite probe UPDATE/DELETE blocked inside ROLLBACK, 4CH1 canon census 182/182 described + 0 missing
+    (repair needed: NONE — honest zero), G1/G2/G3 ALL GREEN — verdict APPLIED_GATES_GREEN, receipt
+    .syllabai/receipts/T-TEACHME-001/cow-apply-receipt-r1.json; COW dropped + 404-verified, zero residue);
+    PROD apply of 0020/0021 EXECUTED 2026-11-01 after operator receipt review (''run the same driver
+    against production'', chat 97a19c8c): main_pooler ep-ancient-cake-a52e4kfd-pooler, verdict
+    APPLIED_GATES_GREEN (26 stmts COMMIT, prod census identical to the branch proof — 182/0 undescribed,
+    112 note rows, 6627 anchors — repair needed NONE, independent read-back 6/6 tables + 7/7 FKs + trigger
+    present + receipted (session_id) index shape + 0 rows), receipt
+    .syllabai/receipts/T-TEACHME-001/prod-apply-receipt-r1.json — the Teach-Me lane DDL is LIVE on
+    production; PROD REAL-SESSION SMOKE EXECUTED 2026-11-02 (''proceed with real session smoke test'', chat
+    97a19c8c): harness scripts/t-teachme-1-smoke.ts drives the app''s own composition-root shape
+    (createTeachMeStore(createSql(<prod uri>)) + createTeachMeService — real NeonWsClient transport, real
+    service law D1-D4, real gates G1/G2, real grounding laws; the ONLY injected fake is the LLM chain port,
+    scripted port-faithful — sandbox holds no provider keys); r1 honest-red SMOKE_RED_SEAM_DEFECT:
+    createSession green through the real stack but DIRECT store.updateSession failed pg 42601 on the real
+    seam (sql.ts faked a template array; toQuery appends $1..$n after the statement''s own $n literals) —
+    latent since run-002 (in-memory test fakes never touch the seam); FIXED in 6bd8ac5e (chunks per the
+    toQuery interleave law; behavioural suite 21/21); r2/r3/r4 honest-reds were HARNESS-side
+    parse/assertion defects (unscoped canon parse vs the review grounding law, objectives-prompt marker,
+    llm_call_count semantics expectation), each receipted; r5 verdict SMOKE_GREEN (receipt
+    prod-smoke-receipt-r5.json, 37/37 assertions, 27.7s): session 16bcc599-0e53-47fe-b527-f9733bfcb76e on
+    pick 4CH1-1.1/1.10/1.11 — create → sub-floor nudge (no judge call, subFloorNudges=1) → 2 judged turns
+    (chips, extractive evidence, 3/3 objectives covered) → end → review card (3 verdicts + 2 REAL exam
+    anchors + 2 REAL practice resources echoed through the grounding laws) → misconception candidate
+    (AI_SUGGESTED, matchedMisconceptionId null) → permalink/history read-backs → typed negatives (NOT_OWNER
+    / NOT_FOUND / SESSION_NOT_ACTIVE, zero writes) → D1 bite probe at smoke time (coverages UPDATE/DELETE
+    blocked P0001 append-only; sessions mutable; messages/candidates/review-cards recorded app-law-only —
+    no DB trigger outside coverages, per the 0020 DDL of record) → quota 1/3; independent read-back 6/6
+    tables (1 session / 3 objectives / 7 messages / 3 coverages / 1 candidate / 1 review card, status
+    completed, ended_at set); llm_call_count semantics disclosed: the review call is ceiling-PRE-checked
+    but not counter-posted (counter ends at 3 for a full quick session — app semantics, not a smoke
+    failure); smoke evidence persists by design under disabled no-login users smoke.tteachme001.*
+    (@smoke.invalid): 2 abandoned seam-probe sessions (r1 x2: 21373f57…, f2a0c2f1…), 1 review_pending
+    session (r2: 201a487c… — the scripted-chain refusal fired between review_pending and card insert), 1
+    completed session with full evidence (r3: 76949793…), 1 completed session interrupted at the d1-probe
+    stage (r4: 013b2cb5…), 1 fully green completed session (r5: 16bcc599…)'
   priority: P1
   band: T-TEACHME (student learn-by-teaching lane)
   wave: teachme-phase-A

@@ -1,0 +1,166 @@
+{
+  "task": "T-TEACHME-001",
+  "what": "prod real-session smoke — FAILED (honest-red; see stage, context, assertions and error)",
+  "run": "r3",
+  "mode": "full",
+  "smoke_user": {
+    "id": "00000000-0000-0000-0000-00000000aa03",
+    "email": "smoke.tteachme001.r3@smoke.invalid"
+  },
+  "stage": "endSession",
+  "context": {
+    "transport": "createSql → NeonWsClient (@neondatabase/serverless 0.10.2), select 1 OK",
+    "g3.reviewInputs": {
+      "registry": 0,
+      "anchors": 6,
+      "practice": 6
+    },
+    "smoke_user": {
+      "id": "00000000-0000-0000-0000-00000000aa03",
+      "email": "smoke.tteachme001.r3@smoke.invalid",
+      "enabled": false
+    },
+    "updateSessionSeamProbe": "OK"
+  },
+  "assertions": [
+    {
+      "name": "pick.specCodes",
+      "pass": true,
+      "detail": "4CH1-1.1, 4CH1-1.10, 4CH1-1.11"
+    },
+    {
+      "name": "g1.canonDescribed",
+      "pass": true,
+      "detail": "3 rows, 0 undescribed"
+    },
+    {
+      "name": "g2.noteCorpus",
+      "pass": true,
+      "detail": "4 note rows"
+    },
+    {
+      "name": "create.sessionDto",
+      "pass": true,
+      "detail": "76949793-0f99-438a-848b-e46c3a15d774"
+    },
+    {
+      "name": "create.opening",
+      "pass": true,
+      "detail": "Okay — teach me about these, please! Whe"
+    },
+    {
+      "name": "create.dbRows",
+      "pass": true,
+      "detail": "session + 3 objectives in prod"
+    },
+    {
+      "name": "create.openingMessage",
+      "pass": true,
+      "detail": "seq=1"
+    },
+    {
+      "name": "seamProbe.ok",
+      "pass": true,
+      "detail": "updateSession works on the real seam (post-fix)"
+    },
+    {
+      "name": "nudge.chipNull",
+      "pass": true,
+      "detail": "no judge ran"
+    },
+    {
+      "name": "nudge.kind",
+      "pass": true,
+      "detail": "Can you unpack that a bit more for me? I"
+    },
+    {
+      "name": "nudge.noCounters",
+      "pass": true,
+      "detail": "mc=0 llm=1"
+    },
+    {
+      "name": "nudge.subFloorFlag",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "turn1.chip",
+      "pass": true,
+      "detail": "covered=1"
+    },
+    {
+      "name": "turn1.pupilKind",
+      "pass": true,
+      "detail": "paraphrase_probe"
+    },
+    {
+      "name": "turn1.counters",
+      "pass": true,
+      "detail": "mc=1 llm=2"
+    },
+    {
+      "name": "turn1.objectiveStatus",
+      "pass": true,
+      "detail": "objective 1 covered"
+    },
+    {
+      "name": "turn2.chip",
+      "pass": true,
+      "detail": "covered=2"
+    },
+    {
+      "name": "turn2.counters",
+      "pass": true,
+      "detail": "mc=2 llm=3"
+    },
+    {
+      "name": "turn2.allCovered",
+      "pass": true,
+      "detail": "3/3 covered"
+    },
+    {
+      "name": "coverage.rows",
+      "pass": true,
+      "detail": "3 rows"
+    },
+    {
+      "name": "coverage.extractive",
+      "pass": true,
+      "detail": "evidence quotes are extractive"
+    },
+    {
+      "name": "end.status",
+      "pass": true,
+      "detail": "completed"
+    },
+    {
+      "name": "end.reviewCard",
+      "pass": true,
+      "detail": "3 spec-point verdicts"
+    },
+    {
+      "name": "end.reviewCardRow",
+      "pass": true,
+      "detail": "teach_review_cards row present"
+    },
+    {
+      "name": "end.candidatesInserted",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "end.evidenceCredits",
+      "pass": true,
+      "detail": "3 credits"
+    },
+    {
+      "name": "end.ceilingLaw",
+      "pass": false,
+      "detail": "llm=3 tokens=9199"
+    }
+  ],
+  "error": "SMOKE_ASSERT_FAIL: end.ceilingLaw — llm=3 tokens=9199",
+  "verdict": "SMOKE_RED",
+  "elapsed_ms": 16488,
+  "target_host": "ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech"
+}

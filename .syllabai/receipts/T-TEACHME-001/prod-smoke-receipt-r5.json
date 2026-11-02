@@ -1,0 +1,249 @@
+{
+  "task": "T-TEACHME-001",
+  "what": "prod REAL-SESSION smoke: the full Teach-Me flow ran through the app's own service+store code path against production (create → sub-floor nudge → 2 judged turns → end → review card + misconception candidate → permalink/history read-backs → typed negatives → D1 bite probe). The ONLY injected fake is the LLM chain port (scripted, port-faithful — no provider keys in the sandbox; buildLlmChain() boots dormant on zero-key envs). Store SQL, service law D1–D4, gates G1/G2, grounding laws, prod DDL and the append-only triggers are all real.",
+  "run": "r5",
+  "mode": "full",
+  "app_commit": "fix(updateSession seam) — hash recorded by the bookkeeping commit",
+  "target_host": "ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech",
+  "transport": "createSql → NeonWsClient (@neondatabase/serverless 0.10.2) — the app's production transport",
+  "chain": {
+    "mode": "scripted-port-faithful",
+    "model": "scripted-smoke-v1",
+    "prompts_exercised": [
+      "teachme.objectives.v1",
+      "teachme.turn.v1",
+      "teachme.review.v1"
+    ]
+  },
+  "smoke_user": {
+    "id": "00000000-0000-0000-0000-00000000aa05",
+    "email": "smoke.tteachme001.r5@smoke.invalid",
+    "enabled": false,
+    "evidence_policy": "smoke evidence persists by design (append-only lane); user disabled, no-login password hash"
+  },
+  "pick_codes": [
+    "4CH1-1.1",
+    "4CH1-1.10",
+    "4CH1-1.11"
+  ],
+  "gates": {
+    "canon_rows": 3,
+    "undescribed": 0,
+    "note_corpus_rows": 4,
+    "registry": 0,
+    "anchors": 6,
+    "practice": 6
+  },
+  "flow": {
+    "session_id": "16bcc599-0e53-47fe-b527-f9733bfcb76e",
+    "message_count": 2,
+    "llm_call_count": 3,
+    "tokens_used": 9199,
+    "status": "completed",
+    "ended_at": "2026-11-02T06:15:38.000Z",
+    "coverage_rows": 3,
+    "candidates": 1,
+    "review_card": true,
+    "transcript_messages": 7
+  },
+  "assertions": [
+    {
+      "name": "pick.specCodes",
+      "pass": true,
+      "detail": "4CH1-1.1, 4CH1-1.10, 4CH1-1.11"
+    },
+    {
+      "name": "g1.canonDescribed",
+      "pass": true,
+      "detail": "3 rows, 0 undescribed"
+    },
+    {
+      "name": "g2.noteCorpus",
+      "pass": true,
+      "detail": "4 note rows"
+    },
+    {
+      "name": "create.sessionDto",
+      "pass": true,
+      "detail": "16bcc599-0e53-47fe-b527-f9733bfcb76e"
+    },
+    {
+      "name": "create.opening",
+      "pass": true,
+      "detail": "Okay — teach me about these, please! Whe"
+    },
+    {
+      "name": "create.dbRows",
+      "pass": true,
+      "detail": "session + 3 objectives in prod"
+    },
+    {
+      "name": "create.openingMessage",
+      "pass": true,
+      "detail": "seq=1"
+    },
+    {
+      "name": "seamProbe.ok",
+      "pass": true,
+      "detail": "updateSession works on the real seam (post-fix)"
+    },
+    {
+      "name": "nudge.chipNull",
+      "pass": true,
+      "detail": "no judge ran"
+    },
+    {
+      "name": "nudge.kind",
+      "pass": true,
+      "detail": "Can you unpack that a bit more for me? I"
+    },
+    {
+      "name": "nudge.noCounters",
+      "pass": true,
+      "detail": "mc=0 llm=1"
+    },
+    {
+      "name": "nudge.subFloorFlag",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "turn1.chip",
+      "pass": true,
+      "detail": "covered=1"
+    },
+    {
+      "name": "turn1.pupilKind",
+      "pass": true,
+      "detail": "paraphrase_probe"
+    },
+    {
+      "name": "turn1.counters",
+      "pass": true,
+      "detail": "mc=1 llm=2"
+    },
+    {
+      "name": "turn1.objectiveStatus",
+      "pass": true,
+      "detail": "objective 1 covered"
+    },
+    {
+      "name": "turn2.chip",
+      "pass": true,
+      "detail": "covered=2"
+    },
+    {
+      "name": "turn2.counters",
+      "pass": true,
+      "detail": "mc=2 llm=3"
+    },
+    {
+      "name": "turn2.allCovered",
+      "pass": true,
+      "detail": "3/3 covered"
+    },
+    {
+      "name": "coverage.rows",
+      "pass": true,
+      "detail": "3 rows"
+    },
+    {
+      "name": "coverage.extractive",
+      "pass": true,
+      "detail": "evidence quotes are extractive"
+    },
+    {
+      "name": "end.status",
+      "pass": true,
+      "detail": "completed"
+    },
+    {
+      "name": "end.reviewCard",
+      "pass": true,
+      "detail": "3 spec-point verdicts"
+    },
+    {
+      "name": "end.reviewCardRow",
+      "pass": true,
+      "detail": "teach_review_cards row present"
+    },
+    {
+      "name": "end.candidatesInserted",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "end.evidenceCredits",
+      "pass": true,
+      "detail": "3 credits"
+    },
+    {
+      "name": "end.ceilingLaw",
+      "pass": true,
+      "detail": "llm=3 tokens=9199"
+    },
+    {
+      "name": "end.endedAt",
+      "pass": true,
+      "detail": "2026-11-02T06:15:38.000Z"
+    },
+    {
+      "name": "end.candidateRow",
+      "pass": true,
+      "detail": "1 candidate row(s)"
+    },
+    {
+      "name": "permalink.transcript",
+      "pass": true,
+      "detail": "7 messages (opening + nudge pair + 2 judged turns)"
+    },
+    {
+      "name": "permalink.review",
+      "pass": true,
+      "detail": "review attached"
+    },
+    {
+      "name": "history.listed",
+      "pass": true,
+      "detail": "session in history"
+    },
+    {
+      "name": "neg.notOwner",
+      "pass": true,
+      "detail": "FailClosed:NOT_OWNER"
+    },
+    {
+      "name": "neg.notFound",
+      "pass": true,
+      "detail": "NotFound"
+    },
+    {
+      "name": "neg.sessionNotActive",
+      "pass": true,
+      "detail": "FailClosed:SESSION_NOT_ACTIVE"
+    },
+    {
+      "name": "neg.noWrites",
+      "pass": true,
+      "detail": "7 messages unchanged"
+    },
+    {
+      "name": "quota.today",
+      "pass": true,
+      "detail": "1 session(s) today for the smoke user"
+    }
+  ],
+  "d1_probe": {
+    "coverages_update": "blocked (P0001 append-only)",
+    "coverages_delete": "blocked (P0001 append-only)",
+    "sessions_update": "allowed (mutable by law)",
+    "messages_update": "allowed — app-law only: no DB trigger on this table; the service/store expose no UPDATE/DELETE path (D1 in code)",
+    "messages_delete": "allowed — app-law only: no DB trigger on this table; the service/store expose no UPDATE/DELETE path (D1 in code)",
+    "review_cards_update": "allowed — app-law only: no DB trigger on this table; the service/store expose no UPDATE/DELETE path (D1 in code)",
+    "candidates_delete": "allowed — app-law only: no DB trigger on this table; the service/store expose no UPDATE/DELETE path (D1 in code)"
+  },
+  "quota_sessions_today": 1,
+  "verdict": "SMOKE_GREEN",
+  "elapsed_ms": 27665,
+  "applied_at_utc": "2026-11-02T06:15:52.870Z"
+}

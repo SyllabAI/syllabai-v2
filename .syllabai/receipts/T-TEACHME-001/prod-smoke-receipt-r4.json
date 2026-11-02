@@ -1,0 +1,217 @@
+{
+  "task": "T-TEACHME-001",
+  "what": "prod real-session smoke — FAILED (honest-red; see stage, context, assertions and error)",
+  "run": "r4",
+  "mode": "full",
+  "smoke_user": {
+    "id": "00000000-0000-0000-0000-00000000aa04",
+    "email": "smoke.tteachme001.r4@smoke.invalid"
+  },
+  "stage": "d1-probe",
+  "context": {
+    "transport": "createSql → NeonWsClient (@neondatabase/serverless 0.10.2), select 1 OK",
+    "g3.reviewInputs": {
+      "registry": 0,
+      "anchors": 6,
+      "practice": 6
+    },
+    "smoke_user": {
+      "id": "00000000-0000-0000-0000-00000000aa04",
+      "email": "smoke.tteachme001.r4@smoke.invalid",
+      "enabled": false
+    },
+    "updateSessionSeamProbe": "OK",
+    "end.llmCallCountSemantics": "review call is ceiling-pre-checked but not counter-posted (app semantics, not a smoke failure)",
+    "negatives": {
+      "notOwner": "FailClosed:NOT_OWNER",
+      "notFound": "NotFound",
+      "sessionNotActive": "FailClosed:SESSION_NOT_ACTIVE"
+    }
+  },
+  "assertions": [
+    {
+      "name": "pick.specCodes",
+      "pass": true,
+      "detail": "4CH1-1.1, 4CH1-1.10, 4CH1-1.11"
+    },
+    {
+      "name": "g1.canonDescribed",
+      "pass": true,
+      "detail": "3 rows, 0 undescribed"
+    },
+    {
+      "name": "g2.noteCorpus",
+      "pass": true,
+      "detail": "4 note rows"
+    },
+    {
+      "name": "create.sessionDto",
+      "pass": true,
+      "detail": "013b2cb5-57a8-481d-b237-9d3b7930ad89"
+    },
+    {
+      "name": "create.opening",
+      "pass": true,
+      "detail": "Okay — teach me about these, please! Whe"
+    },
+    {
+      "name": "create.dbRows",
+      "pass": true,
+      "detail": "session + 3 objectives in prod"
+    },
+    {
+      "name": "create.openingMessage",
+      "pass": true,
+      "detail": "seq=1"
+    },
+    {
+      "name": "seamProbe.ok",
+      "pass": true,
+      "detail": "updateSession works on the real seam (post-fix)"
+    },
+    {
+      "name": "nudge.chipNull",
+      "pass": true,
+      "detail": "no judge ran"
+    },
+    {
+      "name": "nudge.kind",
+      "pass": true,
+      "detail": "Can you unpack that a bit more for me? I"
+    },
+    {
+      "name": "nudge.noCounters",
+      "pass": true,
+      "detail": "mc=0 llm=1"
+    },
+    {
+      "name": "nudge.subFloorFlag",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "turn1.chip",
+      "pass": true,
+      "detail": "covered=1"
+    },
+    {
+      "name": "turn1.pupilKind",
+      "pass": true,
+      "detail": "paraphrase_probe"
+    },
+    {
+      "name": "turn1.counters",
+      "pass": true,
+      "detail": "mc=1 llm=2"
+    },
+    {
+      "name": "turn1.objectiveStatus",
+      "pass": true,
+      "detail": "objective 1 covered"
+    },
+    {
+      "name": "turn2.chip",
+      "pass": true,
+      "detail": "covered=2"
+    },
+    {
+      "name": "turn2.counters",
+      "pass": true,
+      "detail": "mc=2 llm=3"
+    },
+    {
+      "name": "turn2.allCovered",
+      "pass": true,
+      "detail": "3/3 covered"
+    },
+    {
+      "name": "coverage.rows",
+      "pass": true,
+      "detail": "3 rows"
+    },
+    {
+      "name": "coverage.extractive",
+      "pass": true,
+      "detail": "evidence quotes are extractive"
+    },
+    {
+      "name": "end.status",
+      "pass": true,
+      "detail": "completed"
+    },
+    {
+      "name": "end.reviewCard",
+      "pass": true,
+      "detail": "3 spec-point verdicts"
+    },
+    {
+      "name": "end.reviewCardRow",
+      "pass": true,
+      "detail": "teach_review_cards row present"
+    },
+    {
+      "name": "end.candidatesInserted",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "end.evidenceCredits",
+      "pass": true,
+      "detail": "3 credits"
+    },
+    {
+      "name": "end.ceilingLaw",
+      "pass": true,
+      "detail": "llm=3 tokens=9199"
+    },
+    {
+      "name": "end.endedAt",
+      "pass": true,
+      "detail": "2026-11-02T06:13:15.000Z"
+    },
+    {
+      "name": "end.candidateRow",
+      "pass": true,
+      "detail": "1 candidate row(s)"
+    },
+    {
+      "name": "permalink.transcript",
+      "pass": true,
+      "detail": "7 messages (opening + nudge pair + 2 judged turns)"
+    },
+    {
+      "name": "permalink.review",
+      "pass": true,
+      "detail": "review attached"
+    },
+    {
+      "name": "history.listed",
+      "pass": true,
+      "detail": "session in history"
+    },
+    {
+      "name": "neg.notOwner",
+      "pass": true,
+      "detail": "FailClosed:NOT_OWNER"
+    },
+    {
+      "name": "neg.notFound",
+      "pass": true,
+      "detail": "NotFound"
+    },
+    {
+      "name": "neg.sessionNotActive",
+      "pass": true,
+      "detail": "FailClosed:SESSION_NOT_ACTIVE"
+    },
+    {
+      "name": "neg.noWrites",
+      "pass": true,
+      "detail": "7 messages unchanged"
+    }
+  ],
+  "error": "D1 probe: messages_update was ALLOWED (law violation)",
+  "verdict": "SMOKE_RED",
+  "elapsed_ms": 21883,
+  "target_host": "ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech"
+}
