@@ -1,0 +1,222 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_jzQZQcPRQkJvdYwJ",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "cfee3c32d9d2a96ae4b7e3feed31997716c92c5cb726d666ec860fb8c6a05590",
+    "pinnedRef": "0cea83a781024eccd40da9bd5025f43b9b1c0c75"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_jzQZQcPRQkJvdYwJ",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Moments",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-4-moments/1-4-1-moments",
+    "specAnchors": [
+      {
+        "code": "1.30P",
+        "text": "know and use the relationship between the moment of a force and its perpendicular distance from the pivot: moment = force × perpendicular distance from the pivot"
+      }
+    ],
+    "primer": {
+      "text": "Forces do more than push objects along in a straight line — they can also make them turn. A stiff door, a spanner and a playground see-saw all rotate about a fixed point when a force acts. This note names that turning effect, shows the clockwise and anticlockwise senses it can take, and builds the equation that measures it.",
+      "prerequisiteSubtopic": "Moments"
+    },
+    "modules": [
+      {
+        "id": "rn_jzQZQcPRQkJvdYwJ::L1",
+        "title": "The moment of a force",
+        "sourceHeadings": [
+          "Clockwise and anti-clockwise rotation",
+          "An object rotating clockwise about a pivot"
+        ],
+        "specRefs": [
+          "1.30P"
+        ],
+        "opening": "Push a see-saw and it swings; twist a tap and it turns — forces can spin things as well as shove them. The spinning action a force produces about a fixed turning point is called a moment. This lesson pins down that idea and the two senses of rotation it can take.",
+        "keyPoints": [
+          "A moment is the turning effect that a force gives about a pivot.",
+          "Everyday examples include see-saws, spanner handles, doors, cranes, screwdrivers, taps, wheelbarrows and scissors.",
+          "Forces can make an object rotate around a fixed pivot, turning either clockwise or anticlockwise.",
+          "A force applied to one side of a pivot makes the object rotate.",
+          "The direction of turning is judged against the way a clock's hands travel."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A moment is the turning effect a force has about a pivot; the spin it produces runs clockwise or anticlockwise.",
+            "analogy": "A playground roundabout: where you lean and push decides which way it sweeps around its central post.",
+            "examPointer": "When a question asks for the direction of turning, answer with the exact sense — clockwise or anticlockwise — not a bare 'it rotates'."
+          },
+          "medium": {
+            "restatement": "The pivot is the fixed point the object swings about; a force pushing on just one side of it sets the whole object rotating in one definite sense.",
+            "analogy": "Treat a clock face as the referee: a sweep from the 12 towards the 3 is clockwise, the reverse sweep anticlockwise.",
+            "examPointer": "Even before any calculation, label the sense of rotation on the diagram — examiners expect the clock comparison."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_jzQZQcPRQkJvdYwJ::L1::Q1",
+          "rn_jzQZQcPRQkJvdYwJ::L1::Q2",
+          "rn_jzQZQcPRQkJvdYwJ::L1::Q3",
+          "rn_jzQZQcPRQkJvdYwJ::L1::Q4",
+          "rn_jzQZQcPRQkJvdYwJ::L1::Q5",
+          "rn_jzQZQcPRQkJvdYwJ::L1::Q6",
+          "rn_jzQZQcPRQkJvdYwJ::L1::Q7",
+          "rn_jzQZQcPRQkJvdYwJ::L1::Q8",
+          "rn_jzQZQcPRQkJvdYwJ::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_jzQZQcPRQkJvdYwJ::L2",
+        "title": "Calculating moments with M = F × d",
+        "sourceHeadings": [
+          "The moment of a force exerted on a spanner",
+          "Forces required to open a door"
+        ],
+        "specRefs": [
+          "1.30P"
+        ],
+        "opening": "Sizing a turning effect takes one multiplication. The moment equals the force multiplied by its perpendicular distance from the pivot — the straight-across gap to that turning point — and it is measured in newton metres. Step back from the hinge and a lighter push opens the same door.",
+        "keyPoints": [
+          "The size of a moment is M = F × d: force times perpendicular distance from the pivot.",
+          "M is the moment in newton metres (N m), F the force in newtons (N), and d the perpendicular distance in metres (m).",
+          "The force should act perpendicular to the distance that separates it from the pivot — on a horizontal beam, up or down forces create moments.",
+          "Pushing farther from the pivot needs less force — pushing a door near the hinge is hard, at the handle it is easy.",
+          "Moments may be quoted in newton centimetres when the distance is in centimetres; convert distances to metres unless the question names a unit."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Multiply the force by its perpendicular distance from the pivot and you have the moment: M = F × d.",
+            "analogy": "A longer spanner arm is a force multiplier: the same hand grip swings a stiffer nut because the extra reach does part of the work.",
+            "examPointer": "Watch the units: force in newtons and distance in metres give a moment in newton metres (N m)."
+          },
+          "medium": {
+            "restatement": "M = F × d runs both ways: divide the moment by the distance to recover the force, or by the force to recover the distance.",
+            "analogy": "Reach is a discount on effort: every extra metre from the pivot buys the same turn for fewer newtons.",
+            "examPointer": "If the question gives centimetres and names no unit for the answer, convert the distance to metres before multiplying — newton metres is the default."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_jzQZQcPRQkJvdYwJ::L2::Q1",
+          "rn_jzQZQcPRQkJvdYwJ::L2::Q2",
+          "rn_jzQZQcPRQkJvdYwJ::L2::Q3",
+          "rn_jzQZQcPRQkJvdYwJ::L2::Q4",
+          "rn_jzQZQcPRQkJvdYwJ::L2::Q5",
+          "rn_jzQZQcPRQkJvdYwJ::L2::Q6",
+          "rn_jzQZQcPRQkJvdYwJ::L2::Q7",
+          "rn_jzQZQcPRQkJvdYwJ::L2::Q8",
+          "rn_jzQZQcPRQkJvdYwJ::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "moment",
+          "definition": "The turning effect that a force produces about a pivot.",
+          "firstLesson": 1
+        },
+        {
+          "term": "pivot",
+          "definition": "The fixed point about which an object rotates when a force turns it.",
+          "firstLesson": 1
+        },
+        {
+          "term": "clockwise",
+          "definition": "Turning the same way as the hands of a clock.",
+          "firstLesson": 1
+        },
+        {
+          "term": "anticlockwise",
+          "definition": "Turning the opposite way to the hands of a clock.",
+          "firstLesson": 1
+        },
+        {
+          "term": "newton metre",
+          "definition": "The unit of moment: one newton acting one metre from the pivot, written N m.",
+          "firstLesson": 2
+        },
+        {
+          "term": "perpendicular distance",
+          "definition": "The straight-across gap from the pivot to the force's line, the d in M = F × d.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/8deafe18b2cf-clockwiseanticlockwise.png",
+        "alt": "Clockwise and Anticlockwise, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Clockwise and anti-clockwise rotation",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Consider the hands of a clock when deciding if an object will rotate in a clockwise or anti-clockwise direction",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/bbbf4bf6bc7a-pivot-force.png",
+        "alt": "pivot-force, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "An object rotating clockwise about a pivot",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The force applied will cause the object to rotate clockwise about the pivot",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/6e66c3538e45-moment-of-force.png",
+        "alt": "moment-of-force, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The moment of a force exerted on a spanner",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "The moment depends on the force and perpendicular distance to the pivot",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/d4251427b273-2-4-door-momentts-example.png",
+        "alt": "2-4-door-momentts-example",
+        "sourceHeading": "Forces required to open a door",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "A greater force is required to push open a door next to the hinges than at the door handle",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

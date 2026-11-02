@@ -2200,6 +2200,102 @@ const FEEDS = {
     },
   },
 
+  "physics-wave3-v22": {
+    manifest: "hub-import-manifest-v22.json",
+    manifest_version: 22,
+    // NEW-SUBJECT wave-3 (resources PR #283, merge-of-record 4fabe6f8d7dca64d2b972b8541b71ec3b951ec51; runbook §1 + B6
+    // continue-global at v22 — CUMULATIVE over the igcse-physics-19 pack, the chemistry
+    // v8..v17 pattern, the physics v18..v21 pattern and the v20 corrective law). W3 of the
+    // frozen B4 partition: the 1-3 momentum + 1-4 moments subtopics, 7 notes. The INT-3
+    // carries ALL 23 pack rows (the v19 index-regression lesson of record), so the
+    // runner-owned guided-import.json re-issue keeps the whole flow. The 32 prior-pack
+    // artifacts are re-pinned byte-identical (1 pilot @ v18 shas + 6 wave-1 @ v19 shas +
+    // 9 wave-2 @ v21 shas); the 14 wave-3 artifacts are FIRST issues @ the commit-A pin
+    // 0cea83a7. ZERO chemistry bytes touched, ZERO authored prior-pack bytes changed.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 23, "sme-question-package": 23 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-3 chain — import the igcse-physics-19 wave-3 tranche of record (7 notes: rn_pqp4mfpHzGVtrjTT '1-3-1 Momentum' / rn_NfCjFmPfmMQ8pQSw '1-3-2 Forces & Momentum' / rn_8wqvPtsCCh3gdJN5 '1-3-3 Newton's Third Law' / rn_RQK2MW3zRPNNzwtc '1-3-4 Momentum & Safety Features' / rn_jzQZQcPRQkJvdYwJ '1-4-1 Moments' / rn_zn4NVCRcTSNv8sRZ '1-4-2 The Principle of Moments' / rn_TPDdhwDYsrWgQB7R '1-4-3 Centre of Gravity'; 14 lessons / 126 checks = 70 MCQ + 28 recall + 14 explain-why + 14 application) with the 32 prior-pack artifacts re-pinned byte-identical — CUMULATIVE pack 23 notes / 46 lessons / 414 checks, manifest v22. Declared hub landing = 14/14 written + 32/32 identical-exists + the runner-owned guided-import.json index re-issued with all 23 rows; zero chemistry bytes touched. Operator ignition trace 1a19c5cc34b70739 ('Proceed with wave-3'), execution trace 1a19c5cc34b70739 (single-window execution, disclosed).",
+    promo: {
+      // promotion commit of record = the TRACE-BEARING REPIN 377ef184 of commit C 17f7e8b8
+      // (tree byte-identical d4084d0c; resources PR #283 merge-of-record
+      // 4fabe6f8d7dca64d2b972b8541b71ec3b951ec51); the commit-C message omitted the
+      // execution trace — P0 fail-closed, remediated by the repin (zero content delta);
+      // trace = the EXECUTION trace of record (== the v22 manifest's
+      // operator_trace; the ignition trace rides the directive)
+      commit: "377ef184395b676ce98c183a46fd72c584deb4fa",
+      tree: "d4084d0c3cbcd885579175be7244bb7f8913f703",
+      parent: "4fabe6f8d7dca64d2b972b8541b71ec3b951ec51",
+      trace: "1a19c5cc34b70739",
+    },
+    integration_branch: null, // ancestry of record — resources PR #283 merged before this hub run
+    artifact_pin: "0cea83a781024eccd40da9bd5025f43b9b1c0c75", // wave-3 commit A — the source-0.6 generation pin of record for the 7 wave-3 notes
+    artifact_pins_by_note: {
+      // prior-pack provenance of record (G-D pinnedRef, per-note law): the stage-A pilot
+      // keeps its v18 source pin, the six wave-1 notes keep their v19 source pin, the nine
+      // wave-2 notes keep their v21 source pin — re-pinning them to the wave-3 commit
+      // would falsify their provenance
+      rn_RpyMnS5nqWSRWXXG: "7d493985c7729f30c2186e7e61a713ceacc96517",
+      rn_k9wr3prcgSBg5vfw: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_pfndTqR6DTJGZ8xQ: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_CpJZQWzbvMcM8fw3: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_5hfYYFrc2XjMJCrq: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_GxNWbSMqkTN4zgZB: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_ZgGMNrRGBKvYxxFf: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_nyV7C6zmyKXWJjKg: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_4zdmGRWTg5ksK44N: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_K3p2R3ykwwvHV9dp: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_gDy2qTkY26r5sMtd: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_2R3NrjGfJJY29Hzv: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_ZCGJsYwy6S6FbbbW: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_Mrfn29ZgQMq8th5P: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_kN63sqWsc9QdHSVx: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_nC3BswtJzYw8k6nX: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+    },
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 75 cumulative figures (9 pilot + 16 wave-1 + 25 wave-2 + 25 wave-3), all module-mapped
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave3-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave3-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave3-survivors/hub-import-manifest-v22.json",
+      int3: "/home/z/my-project/scripts/physics-wave3-survivors/INT-3-transform-record-physics-wave3.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261102-physics-wave3-v22.json`,
+    identity: {
+      notes: 23,
+      lessons: 46,
+      checks: 414,
+      keyPoints: 228,
+      distractors: 690,
+      glossaryTerms: 110,
+      figures: 75,
+      figures_module_mapped: 75,
+      figures_note_level: 0,
+      workedExamples_populated: 16,
+      workedExamples_null: 7,
+      authored_chars_conserved: 284650,
+    },
+    artifact_count: 46,
+    note_count: 23,
+    wave_count: 4,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v22 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
 };
 
 

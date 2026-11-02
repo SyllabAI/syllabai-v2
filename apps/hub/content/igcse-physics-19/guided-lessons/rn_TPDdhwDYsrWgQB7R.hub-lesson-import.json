@@ -1,0 +1,139 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_TPDdhwDYsrWgQB7R",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "1d674627077b7e722642842d23e7b7e4de73864e22dd52d95c5276be71355af6",
+    "pinnedRef": "0cea83a781024eccd40da9bd5025f43b9b1c0c75"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_TPDdhwDYsrWgQB7R",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Moments",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-4-moments/1-4-3-centre-of-gravity",
+    "specAnchors": [
+      {
+        "code": "1.31P",
+        "text": "know that the weight of a body acts through its centre of gravity"
+      }
+    ],
+    "primer": {
+      "text": "You have just met moments — the turning effects that forces produce about a pivot. Whether a force turns an object depends on where that force is applied, which raises a natural question: where on a body does its weight actually act? This note answers that with a single special point, the centre of gravity, and shows how to find it.",
+      "prerequisiteSubtopic": "Moments"
+    },
+    "modules": [
+      {
+        "id": "rn_TPDdhwDYsrWgQB7R::L1",
+        "title": "Centre of gravity",
+        "sourceHeadings": [
+          "Centre of gravity",
+          "Finding the centre of gravity of symmetrical objects"
+        ],
+        "specRefs": [
+          "1.31P"
+        ],
+        "opening": "Every object has one special point at which its weight can be treated as acting — the centre of gravity. Knowing that point tells you exactly where to start the weight arrow in any force diagram. This lesson defines the point, places it for symmetrical shapes, and works through the hanging method used for irregular ones.",
+        "keyPoints": [
+          "An object's centre of gravity is the single point through which its whole weight acts.",
+          "A symmetrical object with uniform density carries its centre of gravity at the point of symmetry — a sphere's sits at the exact centre.",
+          "An irregular object's centre of gravity is found by hanging the shape from a pivot.",
+          "A plumb line hung beside the pivot marks a vertical line that must pass through the centre of gravity.",
+          "Repeating the suspension from two further points, the centre of gravity appears where all the lines intersect.",
+          "Because the point is hypothetical it can lie outside the body, yet force diagrams must still show weight acting from it."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The whole weight of a body can be drawn as one arrow acting through a single point, the centre of gravity.",
+            "analogy": "A shopping bag swings from one spot on your hand however unevenly it is packed — the bag behaves as if all its weight pulled from that spot.",
+            "examPointer": "In any force diagram, start the weight arrow at the object's centre of gravity — examiners look for exactly that."
+          },
+          "medium": {
+            "restatement": "Symmetry locates the point for regular bodies — a uniform sphere's sits at its geometric centre — while irregular shapes need hanging, plumb lines and intersecting marks.",
+            "analogy": "Hang a picture frame from one nail and let it swing: it settles only when its heavy point hangs directly beneath the nail, which is the settling a plumb line records.",
+            "examPointer": "The point is hypothetical — it can fall outside the body and slides as posture changes, yet diagrams still anchor the weight there."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_TPDdhwDYsrWgQB7R::L1::Q1",
+          "rn_TPDdhwDYsrWgQB7R::L1::Q2",
+          "rn_TPDdhwDYsrWgQB7R::L1::Q3",
+          "rn_TPDdhwDYsrWgQB7R::L1::Q4",
+          "rn_TPDdhwDYsrWgQB7R::L1::Q5",
+          "rn_TPDdhwDYsrWgQB7R::L1::Q6",
+          "rn_TPDdhwDYsrWgQB7R::L1::Q7",
+          "rn_TPDdhwDYsrWgQB7R::L1::Q8",
+          "rn_TPDdhwDYsrWgQB7R::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "centre of gravity",
+          "definition": "The one point through which a body's whole weight is taken to act.",
+          "firstLesson": 1
+        },
+        {
+          "term": "symmetry",
+          "definition": "A matching of halves about a line or point; for an even-density body it fixes where the weight point sits.",
+          "firstLesson": 1
+        },
+        {
+          "term": "pivot",
+          "definition": "The point from which the shape is hung while it settles.",
+          "firstLesson": 1
+        },
+        {
+          "term": "plumb line",
+          "definition": "A weighted thread that hangs vertically, used to mark the true downward direction when locating the weight point.",
+          "firstLesson": 1
+        },
+        {
+          "term": "hypothetical point",
+          "definition": "An assumed location rather than a physical mark; it can sit outside the material of the body.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b0ed6f6a0501-4-1-1-1-point-of-symmetry.png",
+        "alt": "Point of symmetry",
+        "sourceHeading": "Finding the centre of gravity of symmetrical objects",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The centre of gravity of a regular shaped object can be found using symmetry",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/02a37472b755-1-5-4-irregualr-shaped-lamina-cie-igcse-23-rn.png",
+        "alt": "1-5-4-irregualr-shaped-lamina-cie-igcse-23-rn",
+        "sourceHeading": "Finding the centre of gravity of symmetrical objects",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}
