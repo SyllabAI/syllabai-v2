@@ -1,0 +1,56 @@
+{
+  "task": "RN-DEBRIS-9 run-001 — the letter-spaced floor close-out (the residual carried by RN-DEBRIS-3/4/6 and named first in the RN-DEBRIS-8 merge block's next-natural-lane candidates)",
+  "operatorOrder": "IM trace 1a19b7affc45a67d: 'proceed with the next natural lane' (the same order-word that fired RN-DEBRIS-6 and RN-DEBRIS-7)",
+  "fetchFirst": {
+    "laneBase": "origin/main 7dd3cd73 (the RN-DEBRIS-8 merge + prod-bake receipt commit)",
+    "noConcurrentSweep": "worklog re-read at open: the letter-spaced census line named open by RN-DEBRIS-8; RN-DEBRIS-4/6 receipts carry the same floor classes forward; no newer owner block exists",
+    "zeroDrift": "fresh census at the lane base reproduces the of-record floors EXACTLY: D1 dollar 246 hits / 120 (file,segment) pairs / 91 distinct segment texts, set-identical (intersection 120, kept-only 0, fresh-only 0) to the kept set derived from the of-record ls3 artifacts (588 pre pairs - 468 converted = 120); D1 backtick 51 protected class intact; D1 prose 68 vs of-record 69 - the single drop ('y x x x', igcse-maths-b-16/official-papers.json $[59].questions[7].parts[1].problemMd) was consumed by the of-record T-OEQ-MATHSB-SERVE-1 run-037/038 restructures (protected 23a/'x'-table class, no repair lost)"
+  },
+  "census": {
+    "walkingLaw": "of-record ls3 census law byte-verbatim: every string value of every JSON under apps/hub/content; attribution MATHSEG \\$[^$]+\\$|`[^`]+` per hit position",
+    "atBase": "1,065 files / 2,015,152 strings; D1 (of-record regex, >=4 lowercase singles) 365 hits = dollar 246 / prose 68 / backtick 51",
+    "newClasses": "D2 maximal case-aware runs L>=4 not all-lower (the 'A r e a' family, invisible to D1's [a-z]-only law) 497 = dollar 146 / prose 303 / backtick 48; D3 maximal runs L==3 (the sub-4-letter floor disclosed by RN-DEBRIS-3: 'C B I', 't h e') 3,265 = dollar 2,186 / prose 756 / backtick 323; L<=2 runs below both floors, invisible (disclosed)",
+    "ofRecord431": "the RN-DEBRIS-2 '51 files / 431 raw hits' figure is the coarse grouping the RN-DEBRIS-3 receipt already reconciled as a methodology delta, not corpus growth - restated here, not re-derived"
+  },
+  "zeroInvention": {
+    "law": "RN-DEBRIS-3 ls3 law byte-law preserved: (1) run == dictionary word; (2) dict word lev<=1 not extending/truncating (typo-evidence, starred); (3) bottleneck DP over dictionary tokens (fewest, then max min-token-prose-freq, then longest) with the junk-path floor (multi-token min-freq<100 keep); dict = the RESTORED dict of record (.syllabai/lane-artifacts/RN-DEBRIS-8/rnd6_dict.json, 236,896 tokens, sha16 db20ed6f4d8c8bac verified first-hand at lane open)",
+    "titlecaseGeneralized": "DP runs on lowercased letters; each token re-capitalized iff the run prints an uppercase letter at the token start (reproduces the ls3 titlecase(back1/2) family; 'Y o u n g M o d u l u s' -> 'Young Modulus' class)",
+    "newPaths": "prose all-caps acronyms fire only via the RN-DEBRIS-2 per-page path (joined form clean in the same file); dollar all-caps runs keep by law (intentional point-label spacing); E_{k a f t e r} family fires only with subscript-prefix context AND clean in-file attestation",
+    "guards": "FUNCS function-argument guard, trailing-variable guard (dollar); inside-quote guard, dialect-apostrophe guard, link-marker/url-asset guard (prose, the RN-DEBRIS-7/8 lessons); MARK speech-grammar post-filter (dollar segment-level of-record boolean law; prose string-level - a join must not newly trip the frozen gate classes); dollar whole-segment fail-closed (a segment converts iff EVERY maximal run L>=3 in it carries a final FIRE verdict)"
+  },
+  "adjudication": {
+    "mechanicalFires": 577,
+    "eyesOnRefusals": {
+      "acronymPerpage": "ALL 178 refused - the per-page attestation is NOT occurrence-twin evidence for all-caps letter notation: geometry vertex runs (A B C D x6, A B C x24, A C B x15, A C D x11, ...), biological sequences (A T T C C G A G T x2), codon-table cells (A A C x5, A C G x4, C U G x2, G A U/G A T), card-letter enumerations (P I C C A D I L L Y x2 - the 10 cards ARE the question), chemical groups (O O H); the RN-DEBRIS-2 'h h t t' precedent and the RN-DEBRIS-8 'walkin' lesson, applied at class level",
+      "variableAndFormulaRefusals": "82 dict-word + 4 dp fires refused with reasons: truncation-by-subscript ('A r e' x40 = Area_{triangle AOB} with the final a inside the subscript - the of-record RN-DEBRIS-3 refuse class; 'm a s' = mass_{isotope1}), exponent-base fragments ('A t e' = A T e^{...}, 'a b e' = a b e^{bx}), physics formulas ('n A v e' = I = n A v e), conjunction+variable ('a n d y' = and Y), frames/labels ('O x y' frame, 'h O X' vectors, 'R O x', 'm A B', 'n A B' set notation), lost-subscript formulas ('A l O' = Al2O3 x16, 'w a b' = K_w = K_a K_b), age-sequence variables ('a b b', 'b a b'), and the corrupt-brace spacecraf segment ('space craft'/'pace craft'/'Momentum after' - structural corruption a run join would launder)"
+    },
+    "fireFamilies": "function names (s i n x50, c o s x17, t a n, l o g - render-consistent with the siblings already using \\sin/\\tan), subscript labels sibling-attested in-file (V_{out}, F_{max}, K E_{new}/K E_{old}, \\lambda_{new}, T_{min}/T_{max}, E_{sec}, p_{sec}, V_{Pool}, A_{tri}, g_{Earth} : g_{Jupiter}, A_{Sun}, \\theta_{R-red}, \\%U_{Tot}, x_{new}, F_{gas}, F_{net}, \\rho_{oil}, V_{sub}, n_{max/min}, a_{max}, P_{tot}, v_{max}), printed formula labels (Arc length x16, Area, Mass = Density \\times Volume, 12 . 6 min), prose-in-math words (time/taken/speed/distance/average family), the vector-segment 'a n d', 'Anti-clockwise'",
+    "reAdjudicationOfKept120": "0 of the of-record kept-120 pairs converted in full - every segment retains >=1 fail-closed run under the restored dict: dict-gap inflections ('m o v e d' is NOT in the dict of record - kept, blocking 2 whole segments x 6 runs incl. the speed=distance/time formula), variable-tails, truncation-by-subscript, speech chains, the render-refused corrupt-brace class; 'decayed' IS in the restored dict (its segment still kept by siblings) and 'r e c t' is in the dict (its segment kept by siblings) - the evidence-bar keeps dissolve into whole-segment keeps, disclosed",
+    "eFamily": "E_{k a f t e r}: 10 runs (8 'k a f t e r' + 2 'k b e f o r e') stayed fail-closed - the strict per-page attestation path found no clean in-file 'k after'/'k before' join; the RN-DEBRIS-2 joins remain the only attested repairs of that class"
+  },
+  "apply": {
+    "converted": "179 dollar segments + 2 prose strings (181 unique conversion targets; 182+2 raw occurrences incl. multi-jpath repeats of identical segment texts) across 21 files, +86/-86 lines",
+    "proseFires": "'c o n t r i b u t i o n' -> 'contribution' x2 (cie-as-business-23 mark-scheme formula, escaped-dollar math prose-attributed per the of-record MATHSEG law) and 'K E_{m a x}' -> 'K E_{max}' (cie-a-level-physics-25 extract, label convention attested in the same string)",
+    "renderPrecondition": "NEW fail-closed precondition: segments whose OLD form already fails katex throwOnError are refused (6 occurrence-verdicts across 4 unique corrupt-brace segments in cie-as/cie-a-level-physics-25 V_{i}n/R_{2 = class}) - a run join must not launder broken braces into plausible text; caught by the KaTeX pair guard on the first apply (introduced 4 = healed 4, the pre-existing failure twins), fixed by refusal before the final apply",
+    "converterLawExtensions": "to_raw extended with the JSON control-char escapes (\\n \\r \\t) - this lane's fire set includes multi-line gathered segments the ls3 fire set never had (caught fail-closed by count gates, 0 silent losses); the segment adjudication floor aligned to the census class floor (maximal runs L>=3; L<=2 runs are the sub-floor class of record and do not block a segment - the ls3 partial-join precedent: the of-record tree already carries 'V_{out}' joined alongside 'V_{i} n')"
+  },
+  "gates": {
+    "jsonParse": "21/21 changed files parse (per-file fail-closed gate before write; 0 failures)",
+    "katexPair": "PASS - segments old 70,866 = new 70,866; render failures old 579 = new 579 (pre-existing classes byte-identical); NEW failures introduced 0; healed 0 (katex 0.16.22 throwOnError)",
+    "corpusGate": "PASS byte-identical to the frozen baseline - code spans 0 / dollar 0 / textwrap 4 / multiline 0 / baretext 5 / danglingRefs 0",
+    "idempotence": "post-apply census + re-adjudication + re-convert = 0 conversions, 0 file changes",
+    "remnants": "fired forms 0 in-tree (V_{o u t} residue = only the render-refused corrupt segments' occurrences; 't i m e ( t a k e n )' x2 = the disclosed 'moved' dict-gap keeps); refused classes byte-intact (A B C D 99, A T T C C G A G T 2, P I C C A D I L L Y 2, A l O 16, a b e^{bx} 4, n A v e 2, ...)",
+    "postFloor": "D1 340 (dollar 222 / prose 67 / backtick 51 protected intact), D2 460 (dollar 109 / prose 303 / backtick 48), D3 3,094 (dollar 2,016 / prose 755 / backtick 323); dollar D1 pairs 109 / distinct seg texts 87; D1 maximal dollar runs 202 = 202 pre (every D1-containing segment kept whole by the fail-closed law)"
+  },
+  "artifacts": ".syllabai/lane-artifacts/RN-DEBRIS-9/ (rnd9_census.py + rnd9_adjudicate.py + rnd9_convert.py + katex_precheck.ts + census pre/post slims + ledger slim + apply report with the full before/after conversion log + katex pre-existing-failure set + changed-files ledger + katex pair guard output + corpus gate output)",
+  "residuals": [
+    "the L<=2 sub-floor class is invisible to both census floors of record - the lost-subscript label family (V_{i n} x17, V_{i} n x5, R_{2 = brace breaks) needs a brace-aware repair lane, NOT run joins",
+    "the corrupt-brace structural class (4 unique render-refused segments + the spacecraf segment) - same brace-aware future lane",
+    "the dict-gap class: inflections outside the nltk alpha-only dict of record ('m o v e d' keeping 2 whole segments incl. the speed=distance/time formula) - a dict-supplement ruling is an operator decision",
+    "the E_{k a f t e r} spaced variants stay (no clean per-page attestation under the strict law)",
+    "backtick 23a-speech class (371 D1/D2/D3 runs) stays protected by law; the 'h h t t' genetics and vertex/codon notation classes stay as intentional content of record",
+    "the RN-DEBRIS-8 refusals (walkin / reexport / useof) unchanged; the useof space-split candidate still needs a url-asset-aware target-form gate",
+    "corpus back-sync curation + PAT rotation standing orders (operator)"
+  ],
+  "discipline": "fetch-first (zero-drift reconciliation exact at 7dd3cd73); fail-closed (three engine bring-up defects caught by gates BEFORE any commit - to_raw control-char escapes, L=2 floor alignment, render precondition - each fixed and the tree re-applied clean); zero-invention (every fired form dict-evidenced or sibling/print-attested; every refusal ledgered with a reason); tokens via env only (never argv/URL/logs); FF push no force; race-guard rebase; CI bounded poll; receipts .syllabai-only; zero DB/Neon contact"
+}
