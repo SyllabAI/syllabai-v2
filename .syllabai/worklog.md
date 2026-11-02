@@ -23774,6 +23774,18 @@ worklog(r0): T-UGM-0606-1 run-002 (operator commission trace 1a1955c294758a5d "M
 - Discipline: fetch-first (fresh clone after sandbox recycle; findings re-verified before pinning), fail-closed, backup-before-edits, token hygiene (GH_TOKEN env only, no secret re-stored to disk), zero force-push; tag+tarball are permanent and unconsumed by any restore.
 - Standing reminder of record: the shared PAT remains exposed in plaintext and must be revoked/rotated.
 - Anti-truncation asserts: pre-image 4,691,859 B / 23,761 lines; new = old + this section; byte delta == len(section); line delta == section newlines; anchors re-verified (T-MIG-SEED, T-COURSE-TABS-1, R0-AUTO-100, T-COURSE-SPECPILL-1, T-COURSE-SPECPILL-2, T-COURSE-SPECCARD-1, KG-AUDIT-1).
+
+## t-select-search-resume run-001 — the MathsGenie toolbar on ALL THREE select pages (operator order trace 1a19acb6ec437e25 "the same three-page treatment could get search/resume on exam-questions and flashcards")
+
+- PR #628 merged 00836892 (lane t-select-search-resume/run-001; main merged INTO the lane at eb95e76b when main moved mid-run, per the T-MG-INK-7 precedent; CI verify+hub 2/2 at head 074d63af).
+- What landed: the notes index's search/Resume bar (trace 1a1954cacb3d2ab5) extracted to the shared SelectToolbar; exam-questions (questionbank-index.tsx) and flashcards (flashcards-index.tsx) join via client listing splits over slim server payloads — server pages keep the ?q=/?spec= redirects, the paper-scope join and the corpus badge/prose; ring semantics untouched (traces 1a195fd0b0947695 + 1a1982281a3d7a65).
+- Resume of record per page, each resolved against what the page lists: notes = most recently READ note (max notesRead.at, the scroll-law stamp); exam-questions = the set holding the most recently scored part (max at across selfScores ∪ mcqAnswers → topicSlug, scope-aware); flashcards = the deck holding the most recently rated card (max at across progress.flashcards → subtopic). Nothing engaged → no button, all three.
+- Gates: hub tsc clean; eslint 0 new (pre-existing deck-player unused-disable disclosed); ring bun tests 17/17; local next build compile + prerender 4405/4405 green (standalone cp ENOSPC'd on the 9.9G sandbox disk — disclosed, disk-not-code; CI hub lane is the build of record, green).
+- Deploy of record: auto-deploy had not fired (production sat at 93959b9d); fired via the Vercel API redeploy lever → dpl_BtJMouyQxZ9dzJVFeUonX6SzUA2r READY + aliased at 00836892.
+- Live confirmation: toolbar + aria markers served on igcse-chemistry-19 and cie-a-level-maths-20-pure-1 exam-questions + flashcards; rings intact; anonymous surfaces correctly show NO Resume; revision-notes unaffected (toolbar + Read/Unread ticks live).
+- Boundaries: hub UI only; zero schema/contracts/api/db/identity bytes; scrub-assert 0 hits pre-flight; fetch-first, no force push; receipt + this section are .syllabai/** only.
+- Anti-truncation asserts: this section appended byte-exact; new = old + section.
+
 ## RN-DEBRIS-8 run-001 — the hyphen-lost compounds lane (operator order trace 1a19ac0790484275: "proceed with 53 hyphen-lost compounds" — the RN-DEBRIS-7 disclosed fail-closed residual)
 
 - FETCH-FIRST / ZERO-DUPLICATION: worklog re-read at open (4,687,134 B at main 5af87bb9, tip = T-MG-INK-7 post-deploy confirmation) — NO hyphen-lane block; the class is of record in the RN-DEBRIS-7 block ("hyphen-twin 53 … the correct repair is the HYPHEN, a different debris class, out of scope … the hyphen-lost family (53) is a separate debris class awaiting its own lane"). Re-checked mid-lane at 5f209324 after #625 (physics-wave1-hub-v20), #629 (t-gradeb-9 bundle-import), #630 (ns-4ph1 bookkeeping) and T-OEQ-MATHSB-SERVE-1 run-037 landed: 3 new blocks (T-GRADE-9, NS-4PH1 closure, T-KG-FIX-1), ZERO hyphen mentions, lane still open. Lane base 5f209324.
@@ -23787,4 +23799,3 @@ worklog(r0): T-UGM-0606-1 run-002 (operator commission trace 1a1955c294758a5d "M
 - FAIL-CLOSED residuals (disclosed): the 3 adjudicated refusals stay with reasons of record (useof's proper repair is a space split — a candidate for a future split-law lane with a url-asset-aware target-form gate); the Eric 'offstage' url-asset keep is the census law's fail-closed direction, unchanged; the letter-spaced re-join wave census (51 files / 431 raw hits) remains open of record.
 - Discipline: fetch-first; fail-closed; zero-invention (every repair form guard-attested AND context-adjudicated; refusals ledgered with reasons); tokens via env only (never argv/URL/logs); FF push no force; race-guard rebase; CI bounded poll; receipts .syllabai-only; zero DB/Neon contact.
 - Anti-truncation asserts: this section appended byte-exact; new = old + section.
-
