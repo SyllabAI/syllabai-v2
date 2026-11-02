@@ -90,7 +90,19 @@ task:
     46.3s 3 canon verdicts + REAL exam anchors (Edexcel January 2020 4CH1/1CR) + 0 candidates (correct) →
     llm=3 tokens=10644, credits 3x TEACH_SESSION/AI_SUGGESTED, typed negatives, D1 append-only bites,
     quota 1/3; the chain is now proven end-to-end over real provider traffic — r6-r8e smoke users aa06-aa0c
-    disabled no-login (final census: 7 abandoned, 1 review_pending, 5 completed sessions)'
+    disabled no-login (final census: 7 abandoned, 1 review_pending, 5 completed sessions); FAILOVER leg
+    EXECUTED 2026-11-03 (driver scripts/t-failover-probe.ts, receipt prod-failover-probe-r9-real-providers.json):
+    fresh key-probe of record re-confirmed the operator key census — groq 4x 403 Forbidden account-level,
+    gemini 8x 400 User-location-unsupported (caller-geo block; keys may serve from a supported region),
+    openrouter LIVE free tier usage $0; REAL-HTTP failover law proof 6/6 FAILOVER_GREEN — member-1 dead
+    key (sk-or-v1 + 64 zeros) took 401 → AUTHENTICATION_FAILURE classified at the adapter boundary, chain
+    fell through to member-2 live key and the caller saw ONE clean response (FAILOVER_OK, 2.8s, model
+    nvidia/nemotron-3-ultra-550b-a55b:free), dead member cooldownUntil = next UTC midnight exactly
+    (configuration-failure skip law, ADR-023 — dead keys cannot heal mid-deployment and cannot burn
+    retries), failed attempt counted against the daily budget (conservative spend law), live member
+    healthy requestsToday=1; with r9 the chain laws are ALL proven over real provider HTTP: failover +
+    health bookkeeping + failure classification (r9), full teach flow end-to-end (r8e), fence-tolerant
+    parse law (r7), judge grades real content (r6/r8b), shape-drift fail-closed (r8c)'
   priority: P1
   band: T-TEACHME (student learn-by-teaching lane)
   wave: teachme-phase-A

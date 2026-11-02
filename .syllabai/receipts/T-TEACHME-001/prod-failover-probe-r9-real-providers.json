@@ -1,0 +1,90 @@
+{
+  "task": "T-TEACHME-001",
+  "what": "chain FAILOVER law proof over REAL provider HTTP (no bridge, no fetchImpl override): member-1 = OpenRouter member with a syntactically valid but unauthorized key (64 zeros) -> 401 on first call; member-2 = OpenRouter member with the operator live key. FailoverLlmChain must classify the failure, record it, fall through, and hand the caller ONE clean response.",
+  "run": "r9-failover-real-providers",
+  "mode": "real-provider-failover-probe",
+  "driver": "scripts/t-failover-probe.ts",
+  "chain": {
+    "mode": "REAL chain of record adapters over REAL provider HTTP",
+    "members": [
+      {
+        "name": "openrouter-dead",
+        "key_source": "env-less synthetic (sk-or-v1- + 64 zeros)",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free"
+      },
+      {
+        "name": "openrouter-live",
+        "key_source": "SYLLABAI_OPENROUTER_API_KEY (env only, never embedded)",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free"
+      }
+    ],
+    "memberOpts": {
+      "failureThreshold": 3,
+      "cooldownSeconds": 60,
+      "dailyBudget": 1000,
+      "timeoutSeconds": 120
+    },
+    "substitution": "none — real provider HTTP"
+  },
+  "fresh_key_probe": {
+    "date": "2026-11-03",
+    "masked_results": [
+      {
+        "provider": "groq",
+        "keys": 4,
+        "verdict": "ALL DEAD — 403 Forbidden account-level (org blocked/unverified; even GET /models refused)"
+      },
+      {
+        "provider": "gemini",
+        "keys": 8,
+        "verdict": "ALL DEAD FROM THIS EGRESS — 400 User location is not supported for the API use (caller-geo block; keys may serve from a supported region)"
+      },
+      {
+        "provider": "openrouter",
+        "keys": 1,
+        "verdict": "VALID — free tier, usage $0, rate limit unrestricted"
+      }
+    ],
+    "note": "keys never printed in full; masked probe artifact at download/t-teachme-001-receipts/key-probe-2026-11-03.json"
+  },
+  "checks": [
+    {
+      "name": "reply.delivered",
+      "pass": true,
+      "detail": "text=\"FAILOVER_OK\" finish=stop 2809ms"
+    },
+    {
+      "name": "failover.happened",
+      "pass": true,
+      "detail": "served by \"openrouter-live\" (model=nvidia/nemotron-3-ultra-550b-a55b:free) — member 1 must NOT serve"
+    },
+    {
+      "name": "dead.authFailureClassified",
+      "pass": true,
+      "detail": "lastFailureClass=AUTHENTICATION_FAILURE msg=status 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    {
+      "name": "dead.skippedUntilDayRoll",
+      "pass": true,
+      "detail": "coolingDown=true cooldownUntil=2026-11-03T00:00:00.000Z expected=2026-11-03T00:00:00.000Z (AUTHENTICATION_FAILURE = configuration failure -> skip until UTC day rolls, ADR-023)"
+    },
+    {
+      "name": "live.healthy",
+      "pass": true,
+      "detail": "healthy=true requestsToday=1"
+    },
+    {
+      "name": "dead.attemptCounted",
+      "pass": true,
+      "detail": "requestsToday=1 (law: recordFailure counts the attempt against the daily budget — conservative spend protection)"
+    }
+  ],
+  "verdict": "FAILOVER_GREEN",
+  "assertions_passed": 6,
+  "assertions_total": 6,
+  "harness_reds_kept": [
+    "probe draft 1 asserted res.content/res.member (fields do not exist on LlmChainResponse — the shape is {text, model, providerName, finishReason}) and asserted failed calls do not count as spend (law counts attempts) — 3/6 honest-red, harness assumptions corrected against the law, not the code",
+    "probe draft 2 compared cooldownUntil <= today-23:59:59.999 while the lawful value is exactly next UTC midnight — off-by-a-millisecond-of-semantics, comparator corrected to equality with utcDay+24h"
+  ],
+  "applied_at_utc": "2026-11-02T18:16:43.946Z"
+}
