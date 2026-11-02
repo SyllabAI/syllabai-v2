@@ -883,3 +883,18 @@ Work Log:
 
 Stage Summary:
 - Plane of record: official-papers.json 23215b0c14c36910 -> 817674ccd6d33f37; census figure gaps: 28/28 wired (17 gap questions - 1 FP + spinners + stub); the never-cropped-figure class is EMPTY of record. Tranche-3 complete: worklists (1)+(2) run-037, (3) run-038. Remaining known debts: corpus rider backlog (run-035/036/037/038 PNG deletions + edits[] corpus files accrue for the next converter run), 2022-01_02_11-f equation soup (token-lane scope).
+
+## T-UGM-OFFICIALTEXT-RESYNC-1 run-001 — the five-bundle officialText re-sync (the d7b199d repair pointer; operator order "officialText re-sync repair lane", trace 1a19adffd5f72cb9)
+Agent: main (Z.ai, zai-web session web-6e44932a-9395-44ac-a2c0-2065fd87c4bf, chat 80480363-0470-4136-a682-25ff79c05704)
+Task: discharge the repair pointer left by T-UGM-0606-1 run-002 — d7b199d updated the IAL X1-X4 + AS pure-1 curricula titles without re-syncing the bundles' officialText; ugm.bundle.test.ts red locally-only at 95/5.
+
+Work Log:
+- Law of record re-derived first-hand (fail-closed): the failing assertion is the spine verbatim law — each specPoint.officialText must equal cur.nodes.find(n => n.code === sp.code)?.title ?? null. Fix direction: bundles <- curricula (curricula are the spine of record). All 107 specPoints across the five bundles resolve to live curriculum codes (zero null case).
+- Serializer fidelity established before any write: json.dumps(indent=1, ensure_ascii=False) + trailing newline round-trips a PASSING bundle byte-exactly — so the repair diff is exactly the officialText lines. Structural asserts in the executor: specPoint count/keys/order unchanged, every non-officialText field unchanged, every top-level section unchanged.
+- Repair executed: 47/107 officialText fields re-synced (X1 14/22, X2 11/19, X3 11/18, X4 9/18, AS pure-1 2/30). Classic stale-extraction defects cured: interleaved two-column mush, lost superscripts (sin^-1 -> sin⁻¹x), fused fraction bars (tan i / sin i + cos i -> tanθ ≡ sinθ/cosθ).
+- Validation chain: bun test ugm.bundle.test.ts 95/5 -> 100/100 (27,193 expect calls); bunx tsc --noEmit -p apps/hub exit 0; hub prebuild validators all PASS (verify_corpus_23a, verify_flashcard_sync_courses, validate_cie_bundles, validate_gradeb_bundle). Disclosure: ugm.render.test.ts 2/1 both at base and after repair — the KaTeX corpus count (126 > 93) is pre-existing and unrelated (resource bodies untouched); proven by stash rerun.
+- Upstream note disclosed: a few re-extracted curriculum titles of record still carry fused-word artifacts (e.g. X1 1.4 "Needtoknow…ndtouse"); the spine verbatim law copies them as-is — title quality is an upstream curriculum lane, not this repair.
+- Package: 5 bundles + receipt + dual worklogs; branch t-ugm-officialtext-resync-1/run-001; no flags change, no resource rows touched, zero DB/prod contact.
+
+Stage Summary:
+- T-UGM-OFFICIALTEXT-RESYNC-1 run-001: the five UGM bundles are spine-verbatim against the curricula of record again; the locally-red test file is green 100/100; CI hub prebuild chain verified locally. The UGM plane ledger: 10 course planes of record, officialText desync retired.
