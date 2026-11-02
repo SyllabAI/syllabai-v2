@@ -2,7 +2,7 @@ schema: t-book-task/v1
 id: T-BOOK-069
 title: "Unit Strength Checks u1-u4 — armed: ADR-BOOK-0004 (binding/gating/serving) + the bank-density audit vehicle of record"
 operator_order: "Proceed with 4 intensity checks, broader media embedding (IM trace 1a19b69d1fddc0b5, 2026-11-02) — the '4 checks' half (the plan's 4 unit Strength Check sets)"
-status: ARMED-AWAITING-ADR-WORD-AND-DB-HAND  # this commit arms the lane: ADR draft (PROPOSED) + read-only audit vehicle (guard-verified). The DB halves (density audit run, --select, block authoring from bank truth, S4 flip) need the operator's ADR-0004 acceptance word + the Neon MAIN pooler credential re-hand
+status: RUN-001-EXECUTED-AWAITING-S4-FLIP  # run-001 (2026-11-02, trace 1a19d157d5ca8cc9): vehicles v2 (#650, 6a9bf50b) + 4 packs / 60 bank-truth blocks (#651, c3b0e5b2) + scoped ingest COMMIT (60 SUGGESTED, 205 VALIDATED untouched) + F-BOOK-0006; receipt strength-run001-r1.json. The S4 flip stays operator-held: fires only after the rail-exclusion core (ADR run-001 amendment 4) lands AND deploys — the blocks are inert under every code version until then
 adr_draft: docs/adr/ADR-BOOK-0004-unit-strength-checks.md (PROPOSED — 6 decisions: per-item chapter binding, id-prefix identity, unit-scoped read-only serving, density gate, machine-proposed selection, 10-15 budget)
 vehicle: apps/api/scripts/books-strength/density-audit.mts (TRACKED, READ-ONLY — counts ACTIVE MCQ_SINGLE SME-keyed bank items per spec point across the unit band; --select u<N> emits the 10-15 candidate ids per-point-coverage-first)
 vehicle_verification: "TS parse OK (bun build --no-bundle); connect guard fires honestly without DATABASE_URL (exit 2, nothing read/written) — the reflip-r4 guard precedent, CONFIRMED of record this session"
