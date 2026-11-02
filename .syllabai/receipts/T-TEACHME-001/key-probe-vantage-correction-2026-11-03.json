@@ -1,0 +1,53 @@
+{
+  "task": "T-TEACHME-001",
+  "what": "EVIDENCE-INTEGRITY CORRECTION: the r9/8bd88bd6 key-probe attribution for groq ('403 Forbidden account-level — org blocked/unverified') is WRONG. The 403s are pre-authentication CALLER-VANTAGE blocks against this sandbox's egress, not account-level refusals. Groq key validity is INDETERMINATE from this vantage; the operator reports keys from the same account worked before from their own network.",
+  "date": "2026-11-03",
+  "evidence": [
+    {
+      "probe": "egress identity",
+      "result": "ipinfo.io: 8.212.10.159 — Hong Kong, AS45102 Alibaba (US) Technology Co., Ltd. — datacenter IP"
+    },
+    {
+      "probe": "api.groq.com /openai/v1/models with NO Authorization header",
+      "result": "HTTP 403 {\"error\":{\"message\":\"Forbidden\"}} — blocked before any key is read"
+    },
+    {
+      "probe": "same endpoint, garbage key (sk-style 64 zeros, gsk_ prefix)",
+      "result": "HTTP 403 — byte-identical body"
+    },
+    {
+      "probe": "same endpoint, operator key + browser User-Agent",
+      "result": "HTTP 403 — byte-identical body"
+    },
+    {
+      "probe": "response headers",
+      "result": "server: cloudflare, cf-ray: a54533c64e7b8b27-HKG — Cloudflare HK edge refuses the vantage pre-auth"
+    },
+    {
+      "probe": "gemini (unchanged)",
+      "result": "400 'User location is not supported for the API use.' — same caller-geo class: Google AI API does not serve from Hong Kong; the 8bd88bd6 'region-blocked' attribution was already correct"
+    },
+    {
+      "probe": "openrouter (unchanged)",
+      "result": "VALID — OpenRouter does not geo-block, hence the only provider servable from this sandbox"
+    }
+  ],
+  "law_of_block": "identical 403 regardless of key presence, validity, or UA => decision is made on caller IP/geo/ASN at the edge, pre-authentication => the key value was never evaluated and its validity CANNOT be determined from this sandbox",
+  "superseded": [
+    {
+      "receipt": "prod-failover-probe-r9-real-providers.json",
+      "field": "fresh_key_probe.groq verdict",
+      "was": "ALL DEAD — 403 Forbidden account-level (org blocked/unverified; even GET /models refused)",
+      "now": "ALL 403-FORBIDDEN-BY-VANTAGE — pre-auth caller-geo/ASN block (Alibaba HK datacenter IP); key validity indeterminate from this sandbox"
+    },
+    {
+      "commit": "11bcc8d2 / 8bd88bd6",
+      "field": "groq attribution in commit + task yaml",
+      "was": "org blocked/unverified; not a code problem",
+      "now": "caller-vantage blocked; not a code problem (that half stands)"
+    }
+  ],
+  "operator_verification_path": "from a network in a Groq-servable region (e.g. the operator's own machine, where these keys worked before): curl -sS -H 'Authorization: Bearer $SYLLABAI_GROQ_API_KEY' https://api.groq.com/openai/v1/models — 200 with a model list proves the key live; then deployment of the API in a Groq-servable region (e.g. US) activates the groq member with ZERO code change (env-key boot law, ADR-023 dormant-honest otherwise)",
+  "impact_on_chain_proof": "none — the chain of record is fully proven over real provider HTTP on the vantage-neutral provider (r8e SMOKE_GREEN_REAL_LLM full teach flow, r9 FAILOVER_GREEN failover/classification/budget laws); groq/gemini members remain dormant-and-honest until a servable vantage supplies valid keys",
+  "applied_at_utc": "2026-11-02T18:30:21.242Z"
+}

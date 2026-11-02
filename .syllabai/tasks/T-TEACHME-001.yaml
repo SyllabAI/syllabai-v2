@@ -102,7 +102,18 @@ task:
     retries), failed attempt counted against the daily budget (conservative spend law), live member
     healthy requestsToday=1; with r9 the chain laws are ALL proven over real provider HTTP: failover +
     health bookkeeping + failure classification (r9), full teach flow end-to-end (r8e), fence-tolerant
-    parse law (r7), judge grades real content (r6/r8b), shape-drift fail-closed (r8c)'
+    parse law (r7), judge grades real content (r6/r8b), shape-drift fail-closed (r8c); VANTAGE CORRECTION
+    2026-11-03 (receipt key-probe-vantage-correction-2026-11-03.json): the r9 groq attribution (account-level,
+    org blocked/unverified) is WRONG — pre-auth block proven: api.groq.com returns the byte-identical
+    403 Forbidden (cloudflare, cf-ray -HKG) for NO auth header, a garbage key, and the operator key alike,
+    and the sandbox egress is an Alibaba Cloud HONG KONG datacenter IP (8.212.10.159, AS45102) that Groq
+    edge-blocks before authentication — groq key validity is INDETERMINATE from this vantage, not
+    org-blocked (operator reports the same account served from their network before); the gemini
+    User-location-unsupported class is the same caller-geo story (HK unsupported by Google AI API) — the
+    8bd88bd6 region-block attribution there was correct; openrouter is vantage-neutral (no geo-block),
+    which is exactly why it is the one servable provider here and the r8e/r9 real-HTTP proofs stand
+    unaffected; verification path: curl from a servable network, then deploy the API in a Groq-servable
+    region (e.g. US) — the groq member activates by env-key with zero code change'
   priority: P1
   band: T-TEACHME (student learn-by-teaching lane)
   wave: teachme-phase-A
