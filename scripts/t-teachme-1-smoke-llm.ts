@@ -29,7 +29,7 @@ import { createSql } from "../apps/api/src/services/identity/users";
 import { createTeachMeService, TeachMeFailClosed, TeachMeNotFound } from "../apps/api/src/teach-me/service";
 import { createTeachMeStore } from "../apps/api/src/teach-me/sql";
 import type { TeachMeChain } from "../apps/api/src/teach-me/types";
-import { FailoverLlmChain } from "../apps/api/src/services/llmchain/index";
+import { buildLlmChain, FailoverLlmChain } from "../apps/api/src/services/llmchain/index";
 import { OpenAiCompatibleChainMember } from "../apps/api/src/services/llmchain/adapters";
 
 /* ---------------- CLI ---------------- */
@@ -42,8 +42,10 @@ const RECEIPT = arg("receipt") ?? "";
 const RUN = arg("run") ?? "r6-llm";
 const USER_SUFFIX = arg("user-suffix") ?? "6";
 const PICK_OVERRIDE = arg("pick");
+const hasFlag = (name: string) => process.argv.includes(`--${name}`);
+const REAL_PROVIDERS = hasFlag("real-providers");
 if (!DB || !RECEIPT) {
-  console.error("usage: t-teachme-1-smoke-llm.ts --db <uri> --receipt <file> [--run rN] [--user-suffix N] [--pick c1,c2,c3]");
+  console.error("usage: t-teachme-1-smoke-llm.ts --db <uri> --receipt <file> [--run rN] [--user-suffix N] [--pick c1,c2,c3] [--real-providers]");
   process.exit(64);
 }
 const T0 = Date.now();
@@ -66,37 +68,52 @@ function record(name: string, value: unknown): void {
   console.log(`  · ${name}: ${j && j.length > 300 ? j.slice(0, 300) + "…" : j}`);
 }
 
-/* ---------------- REAL chain (the one disclosed substitution) ---------------- */
+/* ---------------- REAL chain (bridge mode | --real-providers mode) ---------------- */
 interface LlmCallRecord {
   prompt: string; userChars: number; replyChars: number;
   model: string; provider: string; finish: string | null; latencyMs: number;
   reply: string;
 }
 const llmCalls: LlmCallRecord[] = [];
+let CHAIN_MODE = "";
+let MEMBER_HEALTH: Record<string, unknown> | null = null;
 
 async function realChain(): Promise<TeachMeChain> {
-  const zai = await ZAI.create();
-  const bridgeFetch: typeof fetch = async (_url, init) => {
-    const body = JSON.parse(String(init?.body ?? "{}")) as { messages?: Array<{ role: string; content: string }> };
-    const msgs = body.messages ?? [];
-    const r = await zai.chat.completions.create({
-      messages: msgs as never,
-      stream: false,
-      thinking: { type: "disabled" },
-    });
-    const content = r.choices?.[0]?.message?.content ?? "";
-    const model = (r as { model?: string }).model ?? "glm-zai-bridge";
-    return new Response(
-      JSON.stringify({ model, choices: [{ message: { content }, finish_reason: "stop" }] }),
-      { status: 200, headers: { "content-type": "application/json" } },
+  let chain: FailoverLlmChain;
+  if (REAL_PROVIDERS) {
+    // the REAL composition-root path: buildLlmChain(process.env) — the exact
+    // config projection + member construction of apps/api/src/index.ts:142,
+    // over REAL provider HTTP (no fetchImpl override). Keyless members boot
+    // dormant and honestly visible (ADR-023 zero-key law).
+    chain = buildLlmChain(process.env);
+    CHAIN_MODE = "REAL chain of record over REAL provider HTTP (buildLlmChain(process.env))";
+  } else {
+    const zai = await ZAI.create();
+    const bridgeFetch: typeof fetch = async (_url, init) => {
+      const body = JSON.parse(String(init?.body ?? "{}")) as { messages?: Array<{ role: string; content: string }> };
+      const msgs = body.messages ?? [];
+      const r = await zai.chat.completions.create({
+        messages: msgs as never,
+        stream: false,
+        thinking: { type: "disabled" },
+      });
+      const content = r.choices?.[0]?.message?.content ?? "";
+      const model = (r as { model?: string }).model ?? "glm-zai-bridge";
+      return new Response(
+        JSON.stringify({ model, choices: [{ message: { content }, finish_reason: "stop" }] }),
+        { status: 200, headers: { "content-type": "application/json" } },
+      );
+    };
+    const member = new OpenAiCompatibleChainMember(
+      "zai-bridge",
+      { apiKey: "bridge-local-no-provider-http", baseUrl: "http://zai-bridge.invalid/v1", model: "glm-zai-bridge" },
+      { failureThreshold: 3, cooldownSeconds: 60, dailyBudget: 1000, timeoutSeconds: 120, fetchImpl: bridgeFetch },
     );
-  };
-  const member = new OpenAiCompatibleChainMember(
-    "zai-bridge",
-    { apiKey: "bridge-local-no-provider-http", baseUrl: "http://zai-bridge.invalid/v1", model: "glm-zai-bridge" },
-    { failureThreshold: 3, cooldownSeconds: 60, dailyBudget: 1000, timeoutSeconds: 120, fetchImpl: bridgeFetch },
-  );
-  const chain = new FailoverLlmChain([member]);
+    chain = new FailoverLlmChain([member]);
+    CHAIN_MODE = "REAL chain code; member fetchImpl bridged to z-ai-web-dev-sdk (GLM) — no provider HTTP";
+  }
+  MEMBER_HEALTH = chain.memberHealth();
+  console.log(`  · members: ${JSON.stringify(MEMBER_HEALTH).slice(0, 400)}`);
   // call-recorder wrapper (harness-side; delegates to the REAL chain)
   const promptOf = (system: string): string =>
     system.startsWith("# Pinned prompt `") ? system.slice(17, system.indexOf("`", 17)) : system.slice(0, 40);
@@ -116,7 +133,7 @@ async function realChain(): Promise<TeachMeChain> {
         reply: res.text,
       };
       llmCalls.push(rec);
-      console.log(`  ⚡ llm ${rec.prompt} → ${res.model} (${rec.latencyMs}ms, ${res.text.length} chars)`);
+      console.log(`  ⚡ llm ${rec.prompt} → ${res.providerName}/${res.model} (${rec.latencyMs}ms, ${res.text.length} chars)`);
       return res;
     },
   };
@@ -196,7 +213,7 @@ async function d1Probe(uri: string, sessionId: string): Promise<Record<string, u
 function writeReceipt(receipt: Record<string, unknown>): void {
   const scrubbed = { ...receipt, target_host: targetHost };
   let body = JSON.stringify(scrubbed, null, 2);
-  for (const bad of ["postgres://", "postgresql://", "napi_", "ghp_", "vcp_"]) {
+  for (const bad of ["postgres://", "postgresql://", "napi_", "ghp_", "vcp_", "gsk_", "sk-or-v1", "AQ.Ab8RN6"]) {
     if (body.includes(bad)) throw new Error(`receipt scrub failure: contains ${bad}`);
   }
   mkdirSync(dirname(RECEIPT), { recursive: true });
@@ -220,12 +237,8 @@ try {
 
   step("real-chain-boot");
   const chain = await realChain();
-  assertOk("chain.available", chain.available(), "REAL FailoverLlmChain + OpenAiCompatibleChainMember (fetchImpl bridge → z-ai-web-dev-sdk GLM)");
-  record("chain_disclosure", {
-    mode: "REAL chain code of record (FailoverLlmChain + OpenAiCompatibleChainMember adapters law)",
-    substitution: "member fetchImpl bridged to z-ai-web-dev-sdk (GLM) — sandbox holds no Groq/Gemini/OpenRouter keys; no provider HTTP exercised",
-    deterministic_assertions: "law-conformance (not scripted verdicts)",
-  });
+  assertOk("chain.available", chain.available(), CHAIN_MODE);
+  record("chain_disclosure", { mode: CHAIN_MODE, member_health: MEMBER_HEALTH });
 
   const store = createTeachMeStore(sql);
   const service = createTeachMeService({ store, chain, clock: { now: () => new Date() }, idgen: { uuid: () => crypto.randomUUID() } });
@@ -274,11 +287,13 @@ try {
   step("judged-turn-1");
   const canonForText = canon.map((c) => `[${c.code}] ${c.title}`).join("; ");
   const turn1Text =
-    `Alright, here is how I understand it. ${canonForText}. ` +
-    `The way I'd put it in my own words: the particles are arranged one way in one state and differently in another, ` +
-    `adding energy makes them move more until the arrangement changes, and the strength of the forces between them ` +
-    `explains the properties the notes describe. That is the whole idea I'd teach you, and the example I'd use is ` +
-    `heating a pan of water and watching the state change happen at the surface first.`;
+    `Let me start with the first one. There are three states of matter. In a solid the particles are arranged ` +
+    `in a tight, regular pattern — they cannot swap places, they only vibrate on the spot, so a solid keeps its own shape. ` +
+    `In a liquid the particles are still close together but the arrangement is random and they can slide past each other, ` +
+    `which is why a liquid flows and takes the shape of its container. In a gas the particles are far apart, they move ` +
+    `quickly in all directions, and they have the most energy — that is why a gas spreads out to fill all the space it can. ` +
+    `Moving from solid to liquid to gas the particles gain energy: heating gives them the energy needed to break one ` +
+    `arrangement and form another, like ice melting into water and then boiling into steam.`;
   const t1 = await service.postMessage(SMOKE_USER_ID, sid, { text: turn1Text });
   assertOk("turn1.chip", t1.chip !== null && t1.chip.coveredObjectiveIds.length >= 1, `covered=${t1.chip?.coveredObjectiveIds.length}`);
   assertOk("turn1.pupilReply", t1.pupilMessage !== null && t1.pupilMessage.text.length > 0, `${t1.pupilMessage?.text.length ?? 0} chars — REAL pupil reply`);
@@ -305,7 +320,8 @@ try {
   assertOk("turn2.chip", t2.chip !== null, `covered=${t2.chip?.coveredObjectiveIds.length}`);
   assertOk("turn2.allCovered", t2.session.objectives.every((o: ObjDto) => o.status === "covered"), `${t2.session.objectives.filter((o: ObjDto) => o.status === "covered").length}/3 covered`);
   const coverageRows = await store.listCoverage(sid);
-  assertOk("coverage.rows", coverageRows.length === 3, `${coverageRows.length} rows`);
+  const distinctObj = new Set(coverageRows.map((r: { objectiveId: string }) => r.objectiveId)).size;
+  assertOk("coverage.rows", coverageRows.length >= 3 && distinctObj === 3, `${coverageRows.length} ledger rows across ${distinctObj} objectives (append-only ledger — a re-affirmed objective appends a lawful extra row)`);
   assertOk("coverage.extractive", coverageRows.every((r) => r.covered && (turn1Text.includes(r.evidenceQuote) || turn2Text.includes(r.evidenceQuote))), "evidence quotes extractive (REAL judge)");
   record("turn2.pupilReply", t2.pupilMessage?.text.slice(0, 220));
 
@@ -373,18 +389,21 @@ try {
   const quota = await store.countSessionsToday(SMOKE_USER_ID, (() => { const d = new Date(); d.setUTCHours(0, 0, 0, 0); return d; })());
   assertOk("quota.today", quota === 1, `${quota} session(s) today for the smoke user`);
 
+  const SMOKE_WHAT = REAL_PROVIDERS
+    ? "prod REAL-SESSION smoke — REAL-PROVIDER leg: the full Teach-Me flow (create → nudge → 2 judged turns → end → review) ran through the app's service+store code path against production with the REAL chain of record built by the composition-root constructor buildLlmChain(process.env) over REAL provider HTTP (no fetchImpl override; keyless members boot dormant and honestly per ADR-023). Assertions are law-conformance: the real provider model decided coverage verdicts and review content."
+    : "prod REAL-SESSION smoke — REAL-LLM leg: the full Teach-Me flow (create → nudge → 2 judged turns → end → review) ran through the app's service+store code path against production with the REAL chain of record (FailoverLlmChain + OpenAiCompatibleChainMember adapter law). One disclosed substitution: member fetchImpl bridged to z-ai-web-dev-sdk (GLM) — the sandbox holds no Groq/Gemini/OpenRouter keys, so no provider HTTP was exercised; the chain, adapter request/response law, health bookkeeping, service law D1–D4, grounding laws, prod DDL and append-only triggers are all real. Assertions are law-conformance: the real model decided coverage verdicts and review content.";
   writeReceipt({
     task: "T-TEACHME-001",
-    what: "prod REAL-SESSION smoke — REAL-LLM leg: the full Teach-Me flow (create → nudge → 2 judged turns → end → review) ran through the app's service+store code path against production with the REAL chain of record (FailoverLlmChain + OpenAiCompatibleChainMember adapter law). One disclosed substitution: member fetchImpl bridged to z-ai-web-dev-sdk (GLM) — the sandbox holds no Groq/Gemini/OpenRouter keys, so no provider HTTP was exercised; the chain, adapter request/response law, health bookkeeping, service law D1–D4, grounding laws, prod DDL and append-only triggers are all real. Assertions are law-conformance: the real model decided coverage verdicts and review content.",
+    what: SMOKE_WHAT,
     run: RUN,
     mode: "full-real-llm",
     target_host: targetHost,
     transport: "createSql → NeonWsClient (@neondatabase/serverless 0.10.2) — the app's production transport",
     chain: {
-      mode: "REAL (FailoverLlmChain + OpenAiCompatibleChainMember)",
-      substitution: "fetchImpl bridge → z-ai-web-dev-sdk (GLM); no provider HTTP (no provider keys in sandbox)",
-      bridge_member_name: "zai-bridge",
-      calls: llmCalls.map((c) => ({ prompt: c.prompt, model: c.model, latencyMs: c.latencyMs, replyChars: c.replyChars, userChars: c.userChars, finish: c.finish })),
+      mode: CHAIN_MODE,
+      member_health: MEMBER_HEALTH,
+      substitution: REAL_PROVIDERS ? "none — real provider HTTP" : "member fetchImpl bridged to z-ai-web-dev-sdk (GLM); no provider HTTP",
+      calls: llmCalls.map((c) => ({ prompt: c.prompt, provider: c.provider, model: c.model, latencyMs: c.latencyMs, replyChars: c.replyChars, userChars: c.userChars, finish: c.finish })),
       prompts_exercised: ["teachme.objectives.v1", "teachme.turn.v1", "teachme.review.v1"],
     },
     smoke_user: { id: SMOKE_USER_ID, email: SMOKE_EMAIL, enabled: false, evidence_policy: "smoke evidence persists by design (append-only lane); user disabled, no-login password hash" },

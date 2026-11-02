@@ -65,7 +65,32 @@ task:
     January 2018 4CH0/1C, 0 misconception candidates — correct, nothing was taught wrong) → counters llm=3
     tokens=10045, credits 3x TEACH_SESSION/AI_SUGGESTED, typed negatives, D1 append-only bites, quota 1/3;
     r6/r7 smoke users aa06/aa07 disabled no-login (final smoke census: 3 abandoned, 1 review_pending,
-    4 completed sessions)'
+    4 completed sessions); REAL-PROVIDER leg EXECUTED 2026-11-02 (operator supplied provider keys):
+    key-probe of record through the REAL adapters over REAL HTTP — groq: ALL 4 keys 403 Forbidden
+    account-level (even GET /models — the keys'' org is blocked/unverified; not a code problem), gemini:
+    region-blocked ''User location is not supported for the API use.'' or free-tier-not-available-needs-billing
+    per project (none servable from this sandbox), openrouter: LIVE (yml default
+    nvidia/nemotron-3-super-120b-a12b:free is retired → lawful layer-1 env override SYLLABAI_LLM_OPENROUTER_MODEL,
+    free successor verified); r8 honest-red (receipt prod-smoke-receipt-r8-real-providers.json, session
+    dca84f8d… abandoned+labeled): nemotron-3.5-super-vl:free returned EMPTY turn-2 content (reasoning-channel
+    budget — the adapter law and turn-parse both correct, model unsuitable); r8b honest-red (92c5a070…
+    abandoned+labeled): nemotron-3-ultra judge REFUSED turn-1 coverage 0/1 with a textbook in-character
+    clarify demand (''you''ve listed the three topics, but I still don''t know what the three states actually
+    are…'') — correct grading of too-implicit canned text, canned content then rewritten to actually teach the
+    three states; r8c honest-red (bb581463… abandoned+labeled): turn-1 covered ✓ but the judge re-marked an
+    already-covered objective with covered=true + null quote in turn-2 — LLM_SHAPE_DRIFT fail-closed EXACTLY
+    per the pinned turn prompt (every covered row needs an extractive quote) — app law bites on real drift;
+    r8d honest-red (c6f969ae… abandoned+labeled): full flow green through 3/3 covered with extractive quotes
+    but the harness coverage.rows===3 assertion was mis-calibrated (the append-only ledger lawfully holds 4
+    rows when the judge re-affirms an objective) — fixed to a distinct-objectives assertion; r8e verdict
+    SMOKE_GREEN_REAL_LLM over REAL provider HTTP (receipt prod-smoke-receipt-r8e-real-providers.json, 34/34
+    assertions, 127.6s, session ce65cab0-4563-4631-a184-fc500c456054 on pick 4CH1-1.1/1.10/1.11, model
+    nvidia/nemotron-3-ultra-550b-a55b:free via openrouter, groq+gemini dormant-and-honest in member health):
+    objectives 5.9s canon-grounded → turn-1 27.0s covered+extractive → turn-2 21.4s 3/3 covered → review
+    46.3s 3 canon verdicts + REAL exam anchors (Edexcel January 2020 4CH1/1CR) + 0 candidates (correct) →
+    llm=3 tokens=10644, credits 3x TEACH_SESSION/AI_SUGGESTED, typed negatives, D1 append-only bites,
+    quota 1/3; the chain is now proven end-to-end over real provider traffic — r6-r8e smoke users aa06-aa0c
+    disabled no-login (final census: 7 abandoned, 1 review_pending, 5 completed sessions)'
   priority: P1
   band: T-TEACHME (student learn-by-teaching lane)
   wave: teachme-phase-A

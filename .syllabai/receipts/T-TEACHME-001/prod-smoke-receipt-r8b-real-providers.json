@@ -1,0 +1,165 @@
+{
+  "task": "T-TEACHME-001",
+  "what": "prod real-LLM smoke — FAILED (honest-red; see stage, llm calls, context, assertions and error)",
+  "run": "r8b-real-providers",
+  "mode": "full-real-llm",
+  "stage": "judged-turn-1",
+  "chain": {
+    "mode": "REAL (bridged)",
+    "calls": [
+      {
+        "prompt": "teachme.objectives.v1",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "latencyMs": 5765,
+        "replyChars": 493,
+        "reply": "{\"objectives\": [{\"text\": \"Explain the three states of matter in terms of how their particles are arranged, how they move, and how much energy they have\", \"specPointIds\": [\"4CH1-1.1\"]}, {\"text\": \"Describe how to carry out simple distillation, fractional distillation, filtration, crystallisation and paper chromatography to separate mixtures\", \"specPointIds\": [\"4CH1-1.10\"]}, {\"text\": \"Walk me through how a chromatogram shows what substances are in a mixture\", \"specPointIds\": [\"4CH1-1.11\"]}]}"
+      },
+      {
+        "prompt": "teachme.turn.v1",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "latencyMs": 19223,
+        "replyChars": 736,
+        "reply": "{\n  \"verdict\": { \"label\": \"Okay\", \"feedbackLine\": \"Student restated the objective headings and gave a vague, generic paraphrase for states of matter without describing the three states concretely.\" },\n  \"coverage\": [\n    { \"objectiveOrdinal\": 1, \"covered\": false, \"evidenceQuote\": null },\n    { \"objectiveOrdinal\": 2, \"covered\": false, \"evidenceQuote\": null },\n    { \"objectiveOrdinal\": 3, \"covered\": false, \"evidenceQuote\": null }\n  ],\n  \"contradictionDetected\": false,\n  \"pupilMessage\": \"So what I've got now is… you've listed the three topics, but I still don't know what the three states actually are or how their particles behave differently. Can we start with just one — like, what does a solid look like at the particle level?\"\n}"
+      }
+    ]
+  },
+  "context": {
+    "transport": "createSql → NeonWsClient (@neondatabase/serverless 0.10.2), select 1 OK",
+    "chain_disclosure": {
+      "mode": "REAL chain of record over REAL provider HTTP (buildLlmChain(process.env))",
+      "member_health": {
+        "groq": {
+          "configured": false,
+          "consecutiveFailures": 0,
+          "cooldownUntil": null,
+          "coolingDown": false,
+          "dailyBudget": 1000,
+          "effectiveModel": "openai/gpt-oss-120b",
+          "enabled": true,
+          "healthy": false,
+          "lastErrorAt": null,
+          "lastErrorMessage": null,
+          "lastFailureClass": null,
+          "remainingLocalBudget": 1000,
+          "requestsToday": 0
+        },
+        "gemini": {
+          "configured": false,
+          "consecutiveFailures": 0,
+          "cooldownUntil": null,
+          "coolingDown": false,
+          "dailyBudget": 1000,
+          "effectiveModel": "gemini-3.6-flash",
+          "enabled": true,
+          "healthy": false,
+          "lastErrorAt": null,
+          "lastErrorMessage": null,
+          "lastFailureClass": null,
+          "remainingLocalBudget": 1000,
+          "requestsToday": 0
+        },
+        "openrouter": {
+          "configured": true,
+          "consecutiveFailures": 0,
+          "cooldownUntil": null,
+          "coolingDown": false,
+          "dailyBudget": 1000,
+          "effectiveModel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+          "enabled": true,
+          "healthy": true,
+          "lastErrorAt": null,
+          "lastErrorMessage": null,
+          "lastFailureClass": null,
+          "remainingLocalBudget": 1000,
+          "requestsToday": 0
+        }
+      }
+    },
+    "g3.reviewInputs": {
+      "registry": 0,
+      "anchors": 6,
+      "practice": 6
+    },
+    "smoke_user": {
+      "id": "00000000-0000-0000-0000-00000000aa09",
+      "email": "smoke.tteachme001.r8b-real-providers@smoke.invalid",
+      "enabled": false
+    }
+  },
+  "assertions": [
+    {
+      "name": "pick.specCodes",
+      "pass": true,
+      "detail": "4CH1-1.1, 4CH1-1.10, 4CH1-1.11"
+    },
+    {
+      "name": "chain.available",
+      "pass": true,
+      "detail": "REAL chain of record over REAL provider HTTP (buildLlmChain(process.env))"
+    },
+    {
+      "name": "g1.canonDescribed",
+      "pass": true,
+      "detail": "3 rows, 0 undescribed"
+    },
+    {
+      "name": "g2.noteCorpus",
+      "pass": true,
+      "detail": "4 note rows"
+    },
+    {
+      "name": "create.sessionDto",
+      "pass": true,
+      "detail": "92c5a070-cc0a-4501-a5d3-5555a9cee5c8"
+    },
+    {
+      "name": "create.objectivesGrounded",
+      "pass": true,
+      "detail": "all objective specPointIds ∈ pick (REAL model grounded to canon)"
+    },
+    {
+      "name": "create.opening",
+      "pass": true,
+      "detail": "Okay — teach me about these, please! Whe"
+    },
+    {
+      "name": "create.openingMessage",
+      "pass": true,
+      "detail": "seq=1"
+    },
+    {
+      "name": "seamProbe.ok",
+      "pass": true,
+      "detail": "updateSession works on the real seam"
+    },
+    {
+      "name": "nudge.chipNull",
+      "pass": true,
+      "detail": "no judge ran"
+    },
+    {
+      "name": "nudge.kind",
+      "pass": true,
+      "detail": "Can you unpack that a bit more for me? I"
+    },
+    {
+      "name": "nudge.noCounters",
+      "pass": true,
+      "detail": "mc=0 llm=1"
+    },
+    {
+      "name": "nudge.subFloorFlag",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "turn1.chip",
+      "pass": false,
+      "detail": "covered=0"
+    }
+  ],
+  "error": "SMOKE_ASSERT_FAIL: turn1.chip — covered=0",
+  "verdict": "SMOKE_RED_REAL_LLM",
+  "elapsed_ms": 35048,
+  "target_host": "ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech"
+}
