@@ -11,9 +11,9 @@
  * browsing surface (operator decision, trace 1a0e8568eb6bb545).
  *
  * The entry points that arrive WITHOUT a course (top-nav, home card, stale
- * citations) never silently render the pilot's graph — with 49 published
- * graphs that read as "every course shows chemistry" (operator report,
- * trace 1a0f88ea8a493bad). They land on an honest picker instead, and an
+ * citations) never silently render the pilot's graph — with a hundred-plus
+ * published graphs (106 at the T-KG-FIX-1 pin) that read as "every course
+ * shows chemistry" (operator report, trace 1a0f88ea8a493bad). They land on an honest picker instead, and an
  * unknown slug says so instead of falling back. The picker is the ENTRY state
  * only; the graph view itself stays switcher-free per the operator decision.
  *
@@ -72,8 +72,14 @@ export function KnowledgeGraphClient({ courses }: { courses: CourseLite[] }) {
   // UX audit 2026-10-02 #20: search results emit /knowledge-graph?course=X&node=Y
   // deep links — the node param used to be dropped silently at this boundary.
   const requestedNode = searchParams.get("node");
+  // F2 (KG-AUDIT-1): the entry requires hasGraph, not just a registry match.
+  // A registry course whose data file is missing lands on the honest picker
+  // (fail-closed) instead of the graph view's error overlay. Registry-data
+  // parity is exact today (106 = 106), so this changes the failure mode only.
   const course =
-    requested && courses.some((c) => c.slug === requested) ? requested : null;
+    requested && courses.some((c) => c.slug === requested && c.hasGraph)
+      ? requested
+      : null;
   if (!course) {
     return <CourseGraphLanding courses={courses} requested={requested} />;
   }
@@ -126,8 +132,9 @@ function CourseGraphLanding({
           <Alert className="mt-4">
             <AlertTitle>No graph for &ldquo;{requested}&rdquo;</AlertTitle>
             <AlertDescription>
-              That course is not in the registry (check for a typo) — pick one of
-              the published graphs below.
+              That course has no published graph — unknown slug, or a registry
+              course whose data file is missing (check for a typo) — pick one
+              of the published graphs below.
             </AlertDescription>
           </Alert>
         )}
@@ -186,8 +193,8 @@ function KnowledgeGraphCourse({
   const shellRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLIFrameElement>(null);
 
-  // the course arrives pre-validated by the entry (registry match) — the
-  // invalid-or-missing case never reaches this component
+  // the course arrives pre-validated by the entry (registry match + published
+  // data-file probe) — the invalid-or-missing case never reaches this component
   const activeCourse = course;
 
   // learner state (KG phases 1 + 2): the CORE model when the course is the
@@ -198,6 +205,10 @@ function KnowledgeGraphCourse({
   // History sheet, `source` keeps the provenance honest.
   const { overlay: learner, drawer, source } = useLearnerState(activeCourse);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  // F1 (KG-AUDIT-1): the drawer opens programmatically from the chip below,
+  // so Radix has no opener of record — without this ref the drawer drops
+  // focus on BODY when closed. The drawer restores it via onCloseAutoFocus.
+  const stateChipRef = useRef<HTMLButtonElement | null>(null);
 
   // ALWAYS post once resolved — including the bridge-error case (empty
   // entries): the renderer's embedded sample map must never resurface, and
@@ -211,7 +222,9 @@ function KnowledgeGraphCourse({
         overlay: learner.entries, // {} on bridge error — honest emptiness
         provenance: learner.bridgeError ? "unavailable" : source,
       },
-      "*",
+      // F5 (KG-AUDIT-1): bind to our own origin — the renderer iframe is
+      // same-origin by construction, so this never blocks the real handshake.
+      window.location.origin,
     );
   }, [activeCourse, learner, source]);
 
@@ -225,7 +238,7 @@ function KnowledgeGraphCourse({
       if (node) {
         frameRef.current?.contentWindow?.postMessage(
           { type: "syllabai-kg:focus-node", course: activeCourse, node },
-          "*",
+          window.location.origin,
         );
       }
     }
@@ -250,6 +263,9 @@ function KnowledgeGraphCourse({
   // makes it re-post its status.
   useEffect(() => {
     const onMessage = (ev: MessageEvent) => {
+      // F5 (KG-AUDIT-1): only our own same-origin renderer fork may drive the
+      // handshake — anything else (another window, an extension) is ignored.
+      if (ev.origin !== window.location.origin) return;
       const d = ev.data as { type?: string; counts?: KgCounts; message?: string };
       if (d?.type === "syllabai-kg:ready" && d.counts) {
         setCounts(d.counts);
@@ -263,7 +279,7 @@ function KnowledgeGraphCourse({
     // ask a possibly-already-finished loader to re-post its status
     frameRef.current?.contentWindow?.postMessage(
       { type: "syllabai-kg:host-ready" },
-      "*",
+      window.location.origin,
     );
     return () => window.removeEventListener("message", onMessage);
   }, []);
@@ -271,7 +287,7 @@ function KnowledgeGraphCourse({
   const onFrameLoad = useCallback(() => {
     frameRef.current?.contentWindow?.postMessage(
       { type: "syllabai-kg:host-ready" },
-      "*",
+      window.location.origin,
     );
   }, []);
 
@@ -321,6 +337,7 @@ function KnowledgeGraphCourse({
             phase-1 legend popover folded into the drawer, one derivation) */}
         {learner && !learner.bridgeError && learner.stats.total > 0 && (
           <Button
+            ref={stateChipRef}
             variant="outline"
             size="sm"
             className="h-8 gap-1.5 px-2 font-mono text-[10px] text-muted-foreground"
@@ -380,6 +397,7 @@ function KnowledgeGraphCourse({
       <LearnerStateDrawer
         open={drawerOpen}
         onOpenChange={setDrawerOpen}
+        returnFocusRef={stateChipRef}
         courseLabel={current?.label ?? "this course"}
         course={activeCourse}
         drawer={drawer}

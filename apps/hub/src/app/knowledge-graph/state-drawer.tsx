@@ -21,6 +21,7 @@
  * the course corpus + seeded sim learner actually carry (active / watching);
  * courses without a corpus render no card rather than an empty promise.
  */
+import type { RefObject } from "react";
 import Link from "next/link";
 import {
   BookOpen,
@@ -708,6 +709,7 @@ export function LearnerStateDrawer({
   course,
   drawer,
   source = "simulated",
+  returnFocusRef,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -718,11 +720,27 @@ export function LearnerStateDrawer({
   /** core = the pilot's real learner model from the backend; simulated = the
    *  browser-local demo overlay. Only the provenance labels change. */
   source?: "core" | "simulated";
+  /** F1 (KG-AUDIT-1): element to refocus when the sheet closes (the opener
+   *  chip). The drawer opens programmatically, so Radix has no trigger of
+   *  record and would drop focus on BODY after Escape / outside-close. */
+  returnFocusRef?: RefObject<HTMLElement | null>;
 }) {
   const live = source === "core";
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="right" className="flex w-full flex-col gap-0 p-0 sm:max-w-xl">
+      <SheetContent
+        side="right"
+        className="flex w-full flex-col gap-0 p-0 sm:max-w-xl"
+        onCloseAutoFocus={(e) => {
+          // F1 (KG-AUDIT-1): restore focus to the opener chip on EVERY close
+          // path (Escape, overlay click, close button). preventDefault stops
+          // Radix's default body-drop; only fire when an opener exists.
+          if (returnFocusRef?.current) {
+            e.preventDefault();
+            returnFocusRef.current.focus();
+          }
+        }}
+      >
         <SheetHeader className="space-y-1 border-b px-4 py-4">
           <div className="flex items-center gap-2">
             <Gauge className="size-4 shrink-0 text-primary" aria-hidden />
