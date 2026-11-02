@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_nyV7C6zmyKXWJjKg",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "190d7edae6f11eb8ced78ef199f2eb93e1cea425f947191ec139accc033a98ee",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "packageId": "igcse-physics::rn_nyV7C6zmyKXWJjKg",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L1::Q1",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L1",
+      "stem": "A football rests on horizontal grass. Which force does the grass exert on the ball, and how is it directed?",
+      "misconceptionClass": "surface-force misattribution",
+      "options": [
+        {
+          "key": "A",
+          "text": "A downward gravitational pull towards the centre of the Earth",
+          "correct": false,
+          "explanation": "That pull is the Earth's weight force on the ball; the grass's own push points the other way.",
+          "misconception": "field-force misattribution"
+        },
+        {
+          "key": "B",
+          "text": "A horizontal thrust force along the ground",
+          "correct": false,
+          "explanation": "Thrust is an engine-produced force; nothing in this scene supplies one.",
+          "misconception": "force-name substitution"
+        },
+        {
+          "key": "C",
+          "text": "A backward frictional force opposing motion",
+          "correct": false,
+          "explanation": "The ball is stationary, so nothing is sliding and no opposing frictional force is generated.",
+          "misconception": "motion-free friction error"
+        },
+        {
+          "key": "D",
+          "text": "An upward push at right angles to the surface",
+          "correct": true,
+          "explanation": "A resting surface exerts a reaction force perpendicular to itself, here vertically upwards.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L1::Q2",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L1",
+      "stem": "A pebble sinks through a lake and steadily loses speed. Which interaction between pebble and water slows it?",
+      "misconceptionClass": "force-type identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tension in the water pulling the pebble back",
+          "correct": false,
+          "explanation": "Tension needs a stretched rope or spring; a liquid cannot pull along a line like that.",
+          "misconception": "tension misplacement"
+        },
+        {
+          "key": "B",
+          "text": "Drag from the water flowing against its surface",
+          "correct": true,
+          "explanation": "Drag is the frictional action of a fluid; the water particles colliding with the pebble slow it down.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Upthrust alone, acting sideways",
+          "correct": false,
+          "explanation": "Upthrust acts vertically upward and does not by itself oppose the motion through the water.",
+          "misconception": "upthrust role error"
+        },
+        {
+          "key": "D",
+          "text": "Electrostatic attraction to the lake bed",
+          "correct": false,
+          "explanation": "No charged bodies are involved; the slowing needs a frictional mechanism.",
+          "misconception": "mechanism invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L1::Q3",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L1",
+      "stem": "Two charged rods are brought close and each pushes the other away. What does this reveal about their charges?",
+      "misconceptionClass": "attract-repel rule flip",
+      "options": [
+        {
+          "key": "A",
+          "text": "They carry the same kind of charge, which repels",
+          "correct": true,
+          "explanation": "Like charges experience a repulsive push, so mutual pushing away signals like kinds.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They carry opposite charges, which repel",
+          "correct": false,
+          "explanation": "Opposite charges attract; repulsion is the like-charge behaviour.",
+          "misconception": "attract-repel inversion"
+        },
+        {
+          "key": "C",
+          "text": "One rod is uncharged and merely inert",
+          "correct": false,
+          "explanation": "An uncharged rod would not supply a mutual push; both are active here.",
+          "misconception": "neutral-rod guess"
+        },
+        {
+          "key": "D",
+          "text": "The charges have drained away",
+          "correct": false,
+          "explanation": "Drained charges would leave no force at all, not a push.",
+          "misconception": "charge-loss confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L1::Q4",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L1",
+      "stem": "The north poles of two magnets are brought towards each other. Each magnet experiences:",
+      "misconceptionClass": "pole-rule slip",
+      "options": [
+        {
+          "key": "A",
+          "text": "An attractive pull, because north seeks south",
+          "correct": false,
+          "explanation": "That rule pairs opposite poles; two north poles do not attract.",
+          "misconception": "pole-pair mismatch"
+        },
+        {
+          "key": "B",
+          "text": "No force, because the poles are identical",
+          "correct": false,
+          "explanation": "Identical poles repel strongly; identical does not mean neutral.",
+          "misconception": "like-equals-neutral error"
+        },
+        {
+          "key": "C",
+          "text": "A repulsive push, because like poles repel",
+          "correct": true,
+          "explanation": "The magnetic rule mirrors the electrostatic one: like kinds repel.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "A force that alternates with distance",
+          "correct": false,
+          "explanation": "The force weakens with distance but keeps its repulsive direction here.",
+          "misconception": "distance-law invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L1::Q5",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L1",
+      "stem": "Two children pull opposite ends of a rope towards themselves. Which force acts along the rope, and what does it do to each child?",
+      "misconceptionClass": "tension direction error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Upthrust, lifting both children's hands",
+          "correct": false,
+          "explanation": "Upthrust belongs to fluids; no fluid acts here.",
+          "misconception": "catalogue mix-up"
+        },
+        {
+          "key": "B",
+          "text": "Tension, pulling back on each child's hands",
+          "correct": true,
+          "explanation": "Pulling the rope's ends apart puts the rope under tension, which pulls inward on each holder.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Drag, because the rope moves through air",
+          "correct": false,
+          "explanation": "The rope need not move at all for tension to exist; drag is irrelevant here.",
+          "misconception": "motion precondition error"
+        },
+        {
+          "key": "D",
+          "text": "Reaction from the ground, transmitted up the rope",
+          "correct": false,
+          "explanation": "The ground's reaction acts on feet, not along the rope's length.",
+          "misconception": "transmission invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L1::Q6",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L1",
+      "stem": "State, in your own words, what a force is.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "A force is a push or a pull that arises from the interaction between two objects.",
+      "keywords": [
+        "force",
+        "push",
+        "pull",
+        "interaction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L1::Q7",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L1",
+      "stem": "Name the upward push a liquid exerts on a submerged object.",
+      "misconceptionClass": "catalogue recall",
+      "kind": "recall",
+      "modelAnswer": "Upthrust — the upward-acting push the fluid exerts on anything fully or partly submerged in it.",
+      "keywords": [
+        "upthrust",
+        "upward",
+        "fluid",
+        "submerged"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L1::Q8",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L1",
+      "stem": "Explain why a heavy boat floating on a lake stays at the surface instead of sinking.",
+      "misconceptionClass": "balance reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The water pushes up on the hull with a force called upthrust. Where the boat floats, that upward push equals the boat's weight, so the two cancel and no resultant force remains to pull the boat under.",
+      "keywords": [
+        "upthrust",
+        "weight",
+        "cancel",
+        "surface"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L1::Q9",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L1",
+      "stem": "A ball is pushed underwater and released. Name the force that makes it shoot upward and state its direction.",
+      "misconceptionClass": "force identification",
+      "kind": "application",
+      "modelAnswer": "Upthrust acts on the ball: the surrounding water exerts an upward-acting push, so the ball accelerates towards the surface.",
+      "keywords": [
+        "upthrust",
+        "upward",
+        "water",
+        "surface"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L2::Q1",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L2",
+      "stem": "A comet far from any solid body bends its path as it passes the Sun. Which effect of force does this show?",
+      "misconceptionClass": "effect-class slip",
+      "options": [
+        {
+          "key": "A",
+          "text": "A change of shape of the comet",
+          "correct": false,
+          "explanation": "Nothing compresses or stretches the comet here; its route, not its form, changes.",
+          "misconception": "effect substitution"
+        },
+        {
+          "key": "B",
+          "text": "A change of direction of travel",
+          "correct": true,
+          "explanation": "A sideways gravitational pull turns the path without any contact at all.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "A change of the Sun's shape",
+          "correct": false,
+          "explanation": "The question asks about the comet, and the Sun's form is untouched.",
+          "misconception": "target swap"
+        },
+        {
+          "key": "D",
+          "text": "No effect, because nothing touched the comet",
+          "correct": false,
+          "explanation": "Forces act at a distance too; contact is not required for an effect.",
+          "misconception": "contact-only misconception"
+        }
+      ]
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L2::Q2",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L2",
+      "stem": "A cyclist squeezes the brakes and slows down. Which force produces the change, and which effect is it?",
+      "misconceptionClass": "force-effect pairing",
+      "options": [
+        {
+          "key": "A",
+          "text": "Friction; a change of speed",
+          "correct": true,
+          "explanation": "Braking friction opposes the motion and reduces the speed — a change of speed.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Thrust; a change of speed",
+          "correct": false,
+          "explanation": "Thrust would speed the bicycle up; braking is the opposing action.",
+          "misconception": "force-name flip"
+        },
+        {
+          "key": "C",
+          "text": "Tension; a change of direction",
+          "correct": false,
+          "explanation": "No rope acts here, and the route is straight — the speed changes.",
+          "misconception": "double mismatch"
+        },
+        {
+          "key": "D",
+          "text": "Reaction; a change of shape",
+          "correct": false,
+          "explanation": "The wheel-surface reaction supports the rider; it is not the slowing mechanism.",
+          "misconception": "catalogue mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L2::Q3",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L2",
+      "stem": "A spring is squeezed from both ends until it is shorter. Which force effect has been demonstrated?",
+      "misconceptionClass": "shape-change recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Change of direction",
+          "correct": false,
+          "explanation": "The spring is not rerouted; its form changed.",
+          "misconception": "effect substitution"
+        },
+        {
+          "key": "B",
+          "text": "Change of speed",
+          "correct": false,
+          "explanation": "The spring ends at rest; no speeding up is involved.",
+          "misconception": "effect substitution"
+        },
+        {
+          "key": "C",
+          "text": "Change of shape",
+          "correct": true,
+          "explanation": "Opposing pushes at the ends deform the spring — the shape effect.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "No effect, because the spring stayed in place",
+          "correct": false,
+          "explanation": "Staying in place says nothing about deformation; the shape clearly changed.",
+          "misconception": "motion-equals-effect error"
+        }
+      ]
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L2::Q4",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L2",
+      "stem": "An engine's thrust and the surrounding drag act on a plane in level flight, with the thrust larger. The plane will:",
+      "misconceptionClass": "net-effect inference",
+      "options": [
+        {
+          "key": "A",
+          "text": "Slow down, because drag always wins",
+          "correct": false,
+          "explanation": "Drag only wins when it is larger; here the thrust exceeds it.",
+          "misconception": "absolute-drag error"
+        },
+        {
+          "key": "B",
+          "text": "Hold a steady speed, because the forces are horizontal",
+          "correct": false,
+          "explanation": "Horizontal but unequal forces leave a resultant along the motion.",
+          "misconception": "balance misread"
+        },
+        {
+          "key": "C",
+          "text": "Speed up, because the resultant acts along the motion",
+          "correct": true,
+          "explanation": "With thrust ahead of drag, the surplus force changes the speed upward.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Change shape, because engines deform aircraft",
+          "correct": false,
+          "explanation": "Nothing here deforms the airframe; the motion's pace is what changes.",
+          "misconception": "effect substitution"
+        }
+      ]
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L2::Q5",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L2",
+      "stem": "Which list names exactly the three effects a force can have on a body?",
+      "misconceptionClass": "effects-triad gap",
+      "options": [
+        {
+          "key": "A",
+          "text": "Speed, direction, shape",
+          "correct": true,
+          "explanation": "These are the three effects of record: a force can change how fast, which way, or what form.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Speed, mass, temperature",
+          "correct": false,
+          "explanation": "Mass and temperature are not listed force effects.",
+          "misconception": "invented additions"
+        },
+        {
+          "key": "C",
+          "text": "Direction, colour, shape",
+          "correct": false,
+          "explanation": "Colour is not a mechanical effect of force.",
+          "misconception": "invented additions"
+        },
+        {
+          "key": "D",
+          "text": "Shape, weight, speed",
+          "correct": false,
+          "explanation": "Weight is itself a force, not an effect a force produces.",
+          "misconception": "category confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L2::Q6",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L2",
+      "stem": "List the three effects a force can have on a body.",
+      "misconceptionClass": "triad recall",
+      "kind": "recall",
+      "modelAnswer": "A force can change the body's speed, its direction of travel, or its shape.",
+      "keywords": [
+        "speed",
+        "direction",
+        "shape",
+        "force"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L2::Q7",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L2",
+      "stem": "Name the force that speeds a vehicle up and the one that slows it under braking.",
+      "misconceptionClass": "catalogue recall",
+      "kind": "recall",
+      "modelAnswer": "Thrust from the engine speeds the vehicle up; braking friction slows it down.",
+      "keywords": [
+        "thrust",
+        "friction",
+        "engine",
+        "braking"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L2::Q8",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L2",
+      "stem": "Explain why a comet's path bends even though nothing ever touches it.",
+      "misconceptionClass": "action-at-a-distance reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The Sun's gravitational pull is a force that acts across empty space. A force needs no contact: acting partly sideways to the comet's motion, that pull turns the travel direction, which is the direction effect.",
+      "keywords": [
+        "gravitational",
+        "pull",
+        "direction",
+        "contact"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nyV7C6zmyKXWJjKg::L2::Q9",
+      "moduleId": "rn_nyV7C6zmyKXWJjKg::L2",
+      "stem": "A tennis ball strikes a racket: at the instant of contact it squashes, then it departs on a new heading at a lower pace. Identify the force effects in order.",
+      "misconceptionClass": "applied triad",
+      "kind": "application",
+      "modelAnswer": "During contact the ball's shape changes; leaving the strings its direction of travel is altered; and the reduced departure pace is the speed effect — all three force effects in one strike.",
+      "keywords": [
+        "shape",
+        "direction",
+        "speed",
+        "contact"
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_K3p2R3ykwwvHV9dp",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "cbc8bcd2d0418428cef5c3e8bbb807c664f249a0d794f226cfe3c3d9e2814583",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_K3p2R3ykwwvHV9dp",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Forces, Movement & Changing Shape",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-2-forces-movement-and-changing-shape/1-2-3-resultant-forces",
+    "specAnchors": [
+      {
+        "code": "1.15",
+        "text": "calculate the resultant force of forces that act along a line"
+      },
+      {
+        "code": "1.16",
+        "text": "know that friction is a force that opposes motion"
+      }
+    ],
+    "primer": {
+      "text": "Several forces can grip one object at once, yet the object responds to a single net effect. This note names that net effect, builds the along-a-line arithmetic that computes it, and then meets the everyday force that quietly opposes every slide: friction.",
+      "prerequisiteSubtopic": "Forces, Movement & Changing Shape"
+    },
+    "modules": [
+      {
+        "id": "rn_K3p2R3ykwwvHV9dp::L1",
+        "title": "Combining forces along a line",
+        "sourceHeadings": [
+          "What is a resultant force?",
+          "Adding forces to find the resultant force"
+        ],
+        "specRefs": [
+          "1.15"
+        ],
+        "opening": "One object, several forces, one outcome: the resultant force is the single force that sums up all of them. Along a straight line the arithmetic is two rules — same direction adds, opposite directions subtract — and the answer must always carry a direction of its own.",
+        "keyPoints": [
+          "The resultant force is the single force that describes the combined action of all the forces on a body.",
+          "Forces along the same line add when they point the same way and subtract when they oppose.",
+          "Equal opposing forces leave no resultant: the forces are then described as balanced.",
+          "The resultant fixes both the size of the net force and the direction of the resulting motion.",
+          "A complete resultant answer states the magnitude in newtons and the direction in words."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Add the pushes that agree, subtract the ones that fight, and report what is left with its direction.",
+            "analogy": "A tug-of-war ledger: one side's total against the other's, and the winner's surplus is the resultant.",
+            "examPointer": "Every resultant answer needs the direction word — 'to the left', 'upwards' — or the mark is lost."
+          },
+          "medium": {
+            "restatement": "Choose a positive direction along the line, give each force its sign, and sum: the result's sign and size are the resultant's direction and magnitude.",
+            "analogy": "It is a bank balance along a line: deposits and withdrawals in one column, and the closing balance tells you which way you are ahead.",
+            "examPointer": "The worked-example pattern of record: total one side, total the other, subtract the smaller from the larger, then state the side that won."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_K3p2R3ykwwvHV9dp::L1::Q1",
+          "rn_K3p2R3ykwwvHV9dp::L1::Q2",
+          "rn_K3p2R3ykwwvHV9dp::L1::Q3",
+          "rn_K3p2R3ykwwvHV9dp::L1::Q4",
+          "rn_K3p2R3ykwwvHV9dp::L1::Q5",
+          "rn_K3p2R3ykwwvHV9dp::L1::Q6",
+          "rn_K3p2R3ykwwvHV9dp::L1::Q7",
+          "rn_K3p2R3ykwwvHV9dp::L1::Q8",
+          "rn_K3p2R3ykwwvHV9dp::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_K3p2R3ykwwvHV9dp::L2",
+        "title": "Friction: the force that opposes motion",
+        "sourceHeadings": [
+          "Friction"
+        ],
+        "specRefs": [
+          "1.16"
+        ],
+        "opening": "Whenever two surfaces slide, or try to slide, across one another, a force appears that fights the sliding. That force is friction, it always points against the motion, and its microscopic cause is the catching of surface imperfections. This lesson fixes the definition, the direction law, and the fluid family — drag and air resistance — with everyday scenes.",
+        "keyPoints": [
+          "Friction is the force that opposes the motion of an object.",
+          "Frictional forces act in the opposite direction to the object's motion.",
+          "Friction arises where two surfaces rub, because their imperfections catch against each other.",
+          "Drag is the frictional force on objects moving through a fluid, and air resistance is its air-specific case."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Rub two things together and each fights the other's sliding: that fighting force is friction, always backwards relative to the motion.",
+            "analogy": "Grippy soles on a polished floor: every step forward, the floor's grip pushes back — that backward push is the friction at work.",
+            "examPointer": "State the direction too: 'friction opposes the motion' scores; 'friction acts backwards' needs the motion named."
+          },
+          "medium": {
+            "restatement": "Friction's microscopic story is interlocking surface imperfections; its macroscopic law is simple — always opposite to the relative sliding, never assisting it.",
+            "analogy": "Two jeaned legs rubbing: the fabric weave catches weave, and the rougher the weave, the stronger the catch.",
+            "examPointer": "Link the family when asked: drag in liquids and gases, air resistance in air — both are friction's fluid cases."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_K3p2R3ykwwvHV9dp::L2::Q1",
+          "rn_K3p2R3ykwwvHV9dp::L2::Q2",
+          "rn_K3p2R3ykwwvHV9dp::L2::Q3",
+          "rn_K3p2R3ykwwvHV9dp::L2::Q4",
+          "rn_K3p2R3ykwwvHV9dp::L2::Q5",
+          "rn_K3p2R3ykwwvHV9dp::L2::Q6",
+          "rn_K3p2R3ykwwvHV9dp::L2::Q7",
+          "rn_K3p2R3ykwwvHV9dp::L2::Q8",
+          "rn_K3p2R3ykwwvHV9dp::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "resultant force",
+          "definition": "The single force that describes the combined action of all the forces acting on a body.",
+          "firstLesson": 1
+        },
+        {
+          "term": "balanced",
+          "definition": "Describes forces that cancel completely, leaving zero resultant.",
+          "firstLesson": 1
+        },
+        {
+          "term": "friction",
+          "definition": "The force that opposes the motion of an object where surfaces rub.",
+          "firstLesson": 2
+        },
+        {
+          "term": "drag",
+          "definition": "The frictional force that opposes motion through a fluid.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Forces of 4 N and 8 N act to the right on a box, and 14 N acts to the left. Calculate the magnitude and direction of the resultant force.",
+        "steps": [
+          "Add up all of the forces directed to the right: 4 N + 8 N = 12 N.",
+          "Subtract the right-hand total from the leftward force: 14 N − 12 N = 2 N.",
+          "The leftward force is the larger, so the resultant points to the left."
+        ],
+        "finalAnswer": "The resultant force is 2 N to the left."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/9dbb543ed268-5-1-6-adding-forces.png",
+        "alt": "Adding Forces, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Adding forces to find the resultant force",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Diagram showing the resultant forces on three different objects",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/33ee5bf3800f-5-1-6-resultant-vector-example.png",
+        "alt": "Resultant Vector Example, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Adding forces to find the resultant force",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/67ab3080e76a-friction.png",
+        "alt": "Friction, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Friction acting between the surface of a sledge and the surface of the snow",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Friction is a force which opposes an objects motion, acting in the opposite direction to the motion of the object",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

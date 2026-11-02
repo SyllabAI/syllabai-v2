@@ -1,0 +1,73 @@
+{
+ "schema": "syllabai-demo.lane-receipt/1.0",
+ "lane": "T-UGM-OFFICIALTEXT-RESYNC-1",
+ "run": "run-001",
+ "kind": "repair",
+ "operatorTrace": "1a19adffd5f72cb9",
+ "generatedUtc": "2026-11-02T06:19:05Z",
+ "task": "re-sync the five stale bundles' officialText to the curricula titles of record (the d7b199d repair pointer from T-UGM-0606-1 run-002)",
+ "lawOfRecord": {
+  "statement": "spine verbatim law (apps/hub/src/lib/ugm.bundle.test.ts): each specPoint.officialText must equal cur.nodes.find(n => n.code === sp.code)?.title ?? null",
+  "defect": "d7b199d updated the IAL X1-X4 + AS pure-1 curriculum titles of record (re-extracted text) without re-syncing the bundles' officialText; bundles carried stale two-column PDF-extraction mush (interleaved columns, lost superscripts), red locally-only at 95/5 (no CI workflow runs ugm.bundle.test.ts)",
+  "fixDirection": "bundles <- curricula (curricula are the spine of record)"
+ },
+ "files": [
+  {
+   "path": "apps/hub/content/ial-maths-20-pure-1/ugm-resources.json",
+   "change": "14 of 22 specPoint officialText fields re-synced to curriculum.json titles of record; serializer fidelity indent=1 ensure_ascii=False round-trip byte-exact — diff is exactly the officialText lines"
+  },
+  {
+   "path": "apps/hub/content/ial-maths-20-pure-2/ugm-resources.json",
+   "change": "11 of 19 specPoint officialText fields re-synced to curriculum.json titles of record; serializer fidelity indent=1 ensure_ascii=False round-trip byte-exact — diff is exactly the officialText lines"
+  },
+  {
+   "path": "apps/hub/content/ial-maths-20-pure-3/ugm-resources.json",
+   "change": "11 of 18 specPoint officialText fields re-synced to curriculum.json titles of record; serializer fidelity indent=1 ensure_ascii=False round-trip byte-exact — diff is exactly the officialText lines"
+  },
+  {
+   "path": "apps/hub/content/ial-maths-20-pure-4/ugm-resources.json",
+   "change": "9 of 18 specPoint officialText fields re-synced to curriculum.json titles of record; serializer fidelity indent=1 ensure_ascii=False round-trip byte-exact — diff is exactly the officialText lines"
+  },
+  {
+   "path": "apps/hub/content/cie-as-maths-20-pure-1/ugm-resources.json",
+   "change": "2 of 30 specPoint officialText fields re-synced to curriculum.json titles of record; serializer fidelity indent=1 ensure_ascii=False round-trip byte-exact — diff is exactly the officialText lines"
+  },
+  {
+   "path": ".syllabai/receipts/T-UGM-OFFICIALTEXT-RESYNC-1/run-001-r0.json",
+   "change": "new — this receipt"
+  },
+  {
+   "path": ".syllabai/worklog.md",
+   "change": "run-001 lane entry appended (new = old + section)"
+  },
+  {
+   "path": "worklog.md",
+   "change": "run-001 lane entry appended (dual worklog convention)"
+  }
+ ],
+ "census": {
+  "officialTextFieldsResynced": 47,
+  "bundles": 5,
+  "perBundle": {
+   "ial-maths-20-pure-1": "14/22",
+   "ial-maths-20-pure-2": "11/19",
+   "ial-maths-20-pure-3": "11/18",
+   "ial-maths-20-pure-4": "9/18",
+   "cie-as-maths-20-pure-1": "2/30"
+  },
+  "resourceRowsTouched": 0,
+  "specPointCountDelta": 0
+ },
+ "validations": [
+  "bun test apps/hub/src/lib/ugm.bundle.test.ts: 95 pass/5 fail at base -> 100 pass/0 fail after repair",
+  "bunx tsc --noEmit -p apps/hub exit 0",
+  "hub prebuild validators all PASS: verify_corpus_23a.ts, verify_flashcard_sync_courses.ts, validate_cie_bundles.ts, validate_gradeb_bundle.ts",
+  "byte-fidelity PASS: json.dumps(indent=1, ensure_ascii=False)+'\\n' round-trip byte-exact on a passing bundle; structural asserts — only officialText values differ, all keys/order/top-level sections identical",
+  "disclosed pre-existing (NOT this lane): ugm.render.test.ts 2/1 at base AND after repair — KaTeX corpus display-math count 126 > 93, identical with the repair stashed; resource bodies untouched by this lane"
+ ],
+ "disclosures": [
+  "upstream curriculum-quality note: a few re-extracted curriculum titles of record still carry fused-word extraction artifacts (e.g. ial-maths-20-pure-1 1.4 'Needtoknow…ndtouse'); the spine verbatim law copies them as-is — fixing the titles themselves is an upstream curriculum lane, out of scope here",
+  "no flags.json change (course set unchanged); no task yaml exists for this lane (repair pointer of record is the T-UGM-0606-1 run-002 PR body + worklog)"
+ ],
+ "reviewState": "SUGGESTED (AGENT.md rule 2)"
+}

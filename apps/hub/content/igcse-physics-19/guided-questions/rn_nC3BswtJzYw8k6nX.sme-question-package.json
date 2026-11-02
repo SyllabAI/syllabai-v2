@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_nC3BswtJzYw8k6nX",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "a457dde93c781d8757c83c068a96921d3998c1ad9c8fa9cc283000eda2823422",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "packageId": "igcse-physics::rn_nC3BswtJzYw8k6nX",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L1::Q1",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L1",
+      "stem": "Hooke's law says that stretching an elastic object gives an extension which is:",
+      "misconceptionClass": "law recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Inversely proportional to the force",
+          "correct": false,
+          "explanation": "The proportionality is direct, not inverse.",
+          "misconception": "proportion flip"
+        },
+        {
+          "key": "B",
+          "text": "Proportional to the applied force, but only as far as the limit of proportionality",
+          "correct": true,
+          "explanation": "The law of record, escape clause included.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Equal to the force in newtons",
+          "correct": false,
+          "explanation": "Extension is a length, not a force.",
+          "misconception": "unit confusion"
+        },
+        {
+          "key": "D",
+          "text": "Unrelated to the force applied",
+          "correct": false,
+          "explanation": "The whole law is the relationship.",
+          "misconception": "denial"
+        }
+      ]
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L1::Q2",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L1",
+      "stem": "On a force-extension graph, Hooke's law corresponds to:",
+      "misconceptionClass": "graph reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "The final curved region",
+          "correct": false,
+          "explanation": "The curve is past the limit.",
+          "misconception": "region swap"
+        },
+        {
+          "key": "B",
+          "text": "The area under the line",
+          "correct": false,
+          "explanation": "The area is not the law's home.",
+          "misconception": "region confusion"
+        },
+        {
+          "key": "C",
+          "text": "The vertical axis alone",
+          "correct": false,
+          "explanation": "The law lives in the line's shape, not an axis.",
+          "misconception": "nonsense"
+        },
+        {
+          "key": "D",
+          "text": "The initial straight-line region",
+          "correct": true,
+          "explanation": "Linearity is the law's signature.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L1::Q3",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L1",
+      "stem": "A spring stretches 4 cm under a 2 N load. Assuming Hooke's law holds, a 4 N load stretches it:",
+      "misconceptionClass": "proportion arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "8 cm",
+          "correct": true,
+          "explanation": "Doubling the force doubles the extension.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "2 cm",
+          "correct": false,
+          "explanation": "That halves instead of doubles.",
+          "misconception": "proportion flip"
+        },
+        {
+          "key": "C",
+          "text": "4 cm",
+          "correct": false,
+          "explanation": "The extension must answer the doubled force.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "D",
+          "text": "16 cm",
+          "correct": false,
+          "explanation": "That squares the factor.",
+          "misconception": "overshoot"
+        }
+      ]
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L1::Q4",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L1",
+      "stem": "Beyond the limit of proportionality, the force-extension graph:",
+      "misconceptionClass": "post-limit behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "Becomes perfectly vertical",
+          "correct": false,
+          "explanation": "No such geometry appears.",
+          "misconception": "invented geometry"
+        },
+        {
+          "key": "B",
+          "text": "Returns to the origin",
+          "correct": false,
+          "explanation": "The graph does not rewind itself.",
+          "misconception": "nonsense"
+        },
+        {
+          "key": "C",
+          "text": "Curves away from the straight line",
+          "correct": true,
+          "explanation": "The proportionality fails and the line bends.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Stays straight forever",
+          "correct": false,
+          "explanation": "That denies the limit entirely.",
+          "misconception": "limit denial"
+        }
+      ]
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L1::Q5",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L1",
+      "stem": "'Directly proportional' means that doubling the force:",
+      "misconceptionClass": "phrase test",
+      "options": [
+        {
+          "key": "A",
+          "text": "Halves the extension",
+          "correct": false,
+          "explanation": "That is inverse proportion.",
+          "misconception": "phrase flip"
+        },
+        {
+          "key": "B",
+          "text": "Doubles the extension",
+          "correct": true,
+          "explanation": "The direct-proportion habit.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Leaves the extension fixed",
+          "correct": false,
+          "explanation": "Proportionality never freezes the response.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "D",
+          "text": "Squares the extension",
+          "correct": false,
+          "explanation": "No squaring appears.",
+          "misconception": "overshoot"
+        }
+      ]
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L1::Q6",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L1",
+      "stem": "State Hooke's law.",
+      "misconceptionClass": "law recall",
+      "kind": "recall",
+      "modelAnswer": "An elastic object's extension answers point-for-point to the force applied — double the pull, double the stretch — and the agreement holds only up to the limit of proportionality.",
+      "keywords": [
+        "extension",
+        "proportional",
+        "force",
+        "limit of proportionality"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L1::Q7",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L1",
+      "stem": "What does the initial straight region of a force-extension graph indicate?",
+      "misconceptionClass": "graph recall",
+      "kind": "recall",
+      "modelAnswer": "That force and extension are proportional there — the linear region associated with Hooke's law.",
+      "keywords": [
+        "linear",
+        "proportional",
+        "graph",
+        "region"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L1::Q8",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L1",
+      "stem": "Explain why the graph bends beyond the limit of proportionality.",
+      "misconceptionClass": "limit reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Past the limit the material no longer follows the proportional rule: each extra newton no longer buys the same extra stretch. The plotted points therefore leave the straight line and curve.",
+      "keywords": [
+        "limit",
+        "proportional",
+        "stretch",
+        "curve"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L1::Q9",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L1",
+      "stem": "A spring stretches 4 cm under a 2 N load. What extension does a 6 N load produce, assuming the law still holds?",
+      "misconceptionClass": "triple arithmetic",
+      "kind": "application",
+      "modelAnswer": "Extension is proportional to force: 6 N is three times 2 N, so the extension is 3 × 4 = 12 cm.",
+      "keywords": [
+        "12",
+        "three times",
+        "proportional",
+        "extension"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L2::Q1",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L2",
+      "stem": "Elastic behaviour means the material can:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Resist all deformation",
+          "correct": false,
+          "explanation": "Deformation happens; the point is the recovery.",
+          "misconception": "resistance confusion"
+        },
+        {
+          "key": "B",
+          "text": "Deform faster than other materials",
+          "correct": false,
+          "explanation": "Speed is not the criterion.",
+          "misconception": "invented criterion"
+        },
+        {
+          "key": "C",
+          "text": "Recover the shape it started with once the deforming forces are gone",
+          "correct": true,
+          "explanation": "The definition of record.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Gain shape permanently under load",
+          "correct": false,
+          "explanation": "That is inelastic behaviour.",
+          "misconception": "kind swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L2::Q2",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L2",
+      "stem": "Deformation is best described as:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "A change in the object's original shape",
+          "correct": true,
+          "explanation": "The neutral definition of record.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A loss of the object's mass",
+          "correct": false,
+          "explanation": "Mass is untouched by shape changes.",
+          "misconception": "nonsense"
+        },
+        {
+          "key": "C",
+          "text": "A rise in the object's temperature",
+          "correct": false,
+          "explanation": "Heating is not deformation.",
+          "misconception": "nonsense"
+        },
+        {
+          "key": "D",
+          "text": "A change of the object's colour",
+          "correct": false,
+          "explanation": "Colour is not shape.",
+          "misconception": "nonsense"
+        }
+      ]
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L2::Q3",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L2",
+      "stem": "Which case shows inelastic deformation?",
+      "misconceptionClass": "kind discrimination",
+      "options": [
+        {
+          "key": "A",
+          "text": "A rubber band snapping back after release",
+          "correct": false,
+          "explanation": "Recovery is elastic behaviour.",
+          "misconception": "kind swap"
+        },
+        {
+          "key": "B",
+          "text": "A steel spring returning to length",
+          "correct": false,
+          "explanation": "Recovery again.",
+          "misconception": "kind swap"
+        },
+        {
+          "key": "C",
+          "text": "A fabric crease smoothing out",
+          "correct": false,
+          "explanation": "The recovery makes it elastic.",
+          "misconception": "kind swap"
+        },
+        {
+          "key": "D",
+          "text": "A spring left permanently stretched",
+          "correct": true,
+          "explanation": "The kept shape is the inelastic signature.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L2::Q4",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L2",
+      "stem": "Which material pair deforms elastically?",
+      "misconceptionClass": "material sort",
+      "options": [
+        {
+          "key": "A",
+          "text": "Clay and glass",
+          "correct": false,
+          "explanation": "Both are inelastic examples of record.",
+          "misconception": "sort flip"
+        },
+        {
+          "key": "B",
+          "text": "Rubber band and steel spring",
+          "correct": true,
+          "explanation": "Both recover — the elastic examples of record.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Plastic and clay",
+          "correct": false,
+          "explanation": "Both inelastic.",
+          "misconception": "sort flip"
+        },
+        {
+          "key": "D",
+          "text": "Glass and fabric",
+          "correct": false,
+          "explanation": "Glass is inelastic.",
+          "misconception": "sort flip"
+        }
+      ]
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L2::Q5",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L2",
+      "stem": "Moulding clay keeps its new form after the hands stop. The deformation is:",
+      "misconceptionClass": "everyday classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Inelastic — the shape change is permanent",
+          "correct": true,
+          "explanation": "Kept shape means inelastic.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Elastic — the clay will recover overnight",
+          "correct": false,
+          "explanation": "Clay does not recover.",
+          "misconception": "kind swap"
+        },
+        {
+          "key": "C",
+          "text": "Neither kind",
+          "correct": false,
+          "explanation": "Every deformation is one of the two kinds.",
+          "misconception": "exclusion myth"
+        },
+        {
+          "key": "D",
+          "text": "Reversible with heat alone",
+          "correct": false,
+          "explanation": "The classification does not depend on a rescue process.",
+          "misconception": "rescue myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L2::Q6",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L2",
+      "stem": "Define elastic behaviour.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "It is the material's capacity to return to the shape it started with once the forces causing the deformation are taken away.",
+      "keywords": [
+        "material",
+        "return",
+        "shape",
+        "deformation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L2::Q7",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L2",
+      "stem": "Define deformation and name its two kinds.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "A change of the object's original shape; it is elastic when the shape recovers and inelastic when the change is permanent.",
+      "keywords": [
+        "deformation",
+        "elastic",
+        "inelastic",
+        "permanent"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L2::Q8",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L2",
+      "stem": "Explain why a steel spring is classed as elastic while modelling clay is not.",
+      "misconceptionClass": "material reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The unloaded spring returns to its starting length, so its shape change was not permanent — elastic behaviour. Clay keeps the moulded form after the hands stop, a permanent change, so it is inelastic.",
+      "keywords": [
+        "spring",
+        "returns",
+        "clay",
+        "permanent"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nC3BswtJzYw8k6nX::L2::Q9",
+      "moduleId": "rn_nC3BswtJzYw8k6nX::L2",
+      "stem": "A spring is stretched 5 cm; the load is removed but the spring stays 5 cm longer. Classify the deformation and name a material that would have recovered.",
+      "misconceptionClass": "applied classification",
+      "kind": "application",
+      "modelAnswer": "The 5 cm remains, so the deformation is inelastic; a rubber band — or a fresh steel spring within its limit — would have recovered its original shape.",
+      "keywords": [
+        "inelastic",
+        "permanent",
+        "rubber band",
+        "recover"
+      ],
+      "options": []
+    }
+  ]
+}
