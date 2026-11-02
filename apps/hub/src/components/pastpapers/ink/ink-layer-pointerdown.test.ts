@@ -26,10 +26,16 @@
  *   (c) the draft editor MOUNTS with the correct aria-label (create) /
  *       prefilled value (re-edit) and stays mounted through the gesture
  *       tail (mousedown → pointerup → click), focused;
- *   (d) the shipped commit law is untouched: Enter (no shift) commits,
- *       Escape discards, blur commits/cancels, empty commits cancel,
- *       the re-edit path lands onCommitTextEdit/onCommitMathEdit with
- *       the SAME id.
+ *   (d) the commit laws of record: TEXT (T-MG-INK-9, MG's posture) —
+ *       Enter is a NEWLINE, the edit commits on click-away (blur) or
+ *       Escape (stop-editing: non-empty commits, empty cancels); MATH —
+ *       Enter commits, Escape discards, blur commits/cancels (with the
+ *       editor-chrome guard), empty commits cancel, the re-edit path
+ *       lands onCommitTextEdit/onCommitMathEdit with the SAME id, and
+ *       both commit at MG's 16 css px default (INK_TEXT_BASE_PX);
+ *   (e) the T-MG-INK-9 surface: the cursor map (MG's extracted postures),
+ *       the ⌨ toggle (MG's verbatim "Toggle Virtual Keyboard" label)
+ *       and the census keyboard portal (closed on create, MG's posture).
  *
  * IMPORT-ORDER LAW: the harness MUST be the first import — it installs
  * the jsdom globals (incl. the oninput gate) BEFORE react-dom evaluates
@@ -172,7 +178,7 @@ describe("T-MG-INK-6 run-002 — the pointerdown law (the InkCanvas handler seam
 
   test("(a) the re-edit tap (existing text box) calls preventDefault and opens PREFILLED", async () => {
     const { canvas, container } = await mountInkCanvas({ mode: "text", shapes: [TEXT_SHAPE] });
-    // text bounds law: anchor (100,75), 2 chars × 0.6 × 14px = 16.8 wide —
+    // text bounds law: anchor (100,75), 2 chars × 0.6 × 16px = 19.2 wide —
     // (106,82) lands inside; topmost-of-family wins over the empty canvas.
     const press = pressPointerDown(canvas, { clientX: 106, clientY: 82 });
     await dispatchOn(canvas, press.ev);
@@ -236,7 +242,7 @@ describe("T-MG-INK-6 run-002 — the pointerdown law (the InkCanvas handler seam
     expect(doc.activeElement, "autoFocus must survive the opening gesture").toBe(ta);
   });
 
-  test("(d) Enter on a filled create draft commits the text shape (shipped semantics)", async () => {
+  test("(d) Enter is a NEWLINE in the text draft (MG's law) — commit stays blur/click-away", async () => {
     const { canvas, container, commits } = await mountInkCanvas({ mode: "text" });
     const press = pressPointerDown(canvas, { clientX: 106, clientY: 82 });
     await dispatchOn(canvas, press.ev);
@@ -247,11 +253,18 @@ describe("T-MG-INK-6 run-002 — the pointerdown law (the InkCanvas handler seam
     await act(async () => {
       pressKey(ta, "Enter");
     });
+    // Enter commits NOTHING under the MG posture (tldraw text: Enter
+    // inserts the line break; the edit commits on click-away/Escape).
+    expect(commits.text.mock.calls.length).toBe(0);
+    expect(queryDraft(container, "New text annotation")).not.toBeNull();
+    await act(async () => {
+      blurEditor(ta);
+    });
     expect(commits.text.mock.calls.length).toBe(1);
     expect(commits.text.mock.calls[0][0]).toEqual({
       page: 1,
       color: "red",
-      sizeFrac: 14 / PAGE_W,
+      sizeFrac: 16 / PAGE_W,
       x: 106 / PAGE_W,
       y: 82 / PAGE_H,
       text: "hello",
@@ -275,7 +288,7 @@ describe("T-MG-INK-6 run-002 — the pointerdown law (the InkCanvas handler seam
     expect(commits.math.mock.calls[0][0]).toEqual({
       page: 1,
       color: "red",
-      sizeFrac: 14 / PAGE_W,
+      sizeFrac: 16 / PAGE_W,
       x: 106 / PAGE_W,
       y: 82 / PAGE_H,
       tex: "v^2",
@@ -283,20 +296,33 @@ describe("T-MG-INK-6 run-002 — the pointerdown law (the InkCanvas handler seam
     expect(queryDraft(container, "New math annotation")).toBeNull();
   });
 
-  test("(d) Escape discards the draft — no commit, editor unmounts", async () => {
-    const { canvas, container, commits } = await mountInkCanvas({ mode: "text" });
-    const press = pressPointerDown(canvas, { clientX: 106, clientY: 82 });
-    await dispatchOn(canvas, press.ev);
-    const ta = queryDraft(container, "New text annotation")!;
-    await act(async () => {
-      typeIn(ta, "hello");
-    });
-    await act(async () => {
-      pressKey(ta, "Escape");
-    });
-    expect(commits.text.mock.calls.length).toBe(0);
-    expect(commits.textEdit.mock.calls.length).toBe(0);
-    expect(queryDraft(container, "New text annotation")).toBeNull();
+  test("(d) Escape on a FILLED text draft commits it (MG's stop-editing); empty Escape cancels", async () => {
+    {
+      const { canvas, container, commits } = await mountInkCanvas({ mode: "text" });
+      const press = pressPointerDown(canvas, { clientX: 106, clientY: 82 });
+      await dispatchOn(canvas, press.ev);
+      const ta = queryDraft(container, "New text annotation")!;
+      await act(async () => {
+        typeIn(ta, "hello");
+      });
+      await act(async () => {
+        pressKey(ta, "Escape");
+      });
+      expect(commits.text.mock.calls.length).toBe(1);
+      expect(commits.text.mock.calls[0][0].text).toBe("hello");
+      expect(queryDraft(container, "New text annotation")).toBeNull();
+    }
+    {
+      const { canvas, container, commits } = await mountInkCanvas({ mode: "text" });
+      const press = pressPointerDown(canvas, { clientX: 106, clientY: 82 });
+      await dispatchOn(canvas, press.ev);
+      const ta = queryDraft(container, "New text annotation")!;
+      await act(async () => {
+        pressKey(ta, "Escape");
+      });
+      expect(commits.text.mock.calls.length).toBe(0);
+      expect(queryDraft(container, "New text annotation")).toBeNull();
+    }
   });
 
   test("(d) the re-edit commit law: same-id in-place replacement via onCommitTextEdit", async () => {
@@ -308,7 +334,7 @@ describe("T-MG-INK-6 run-002 — the pointerdown law (the InkCanvas handler seam
       typeIn(ta, "changed");
     });
     await act(async () => {
-      pressKey(ta, "Enter");
+      blurEditor(ta);
     });
     expect(commits.textEdit.mock.calls.length).toBe(1);
     expect(commits.textEdit.mock.calls[0][0]).toBe("t1");
@@ -326,7 +352,7 @@ describe("T-MG-INK-6 run-002 — the pointerdown law (the InkCanvas handler seam
       typeIn(ta, "");
     });
     await act(async () => {
-      pressKey(ta, "Enter");
+      blurEditor(ta);
     });
     expect(commits.textEdit.mock.calls.length).toBe(0);
     expect(commits.text.mock.calls.length).toBe(0);
@@ -362,5 +388,55 @@ describe("T-MG-INK-6 run-002 — the pointerdown law (the InkCanvas handler seam
       expect(commits.text.mock.calls.length).toBe(0);
       expect(queryDraft(container, "New text annotation")).toBeNull();
     }
+  });
+
+  test("(e) the cursor map — MG's extracted postures per tool", async () => {
+    const cases: Array<[InkCanvasProps["mode"], string]> = [
+      ["pen", "crosshair"],
+      ["text", "text"],
+      ["math", "default"],
+      ["select", "default"],
+      ["erase", "crosshair"],
+      ["line", "crosshair"],
+      ["ruler", "move"],
+      ["protractor", "move"],
+    ];
+    for (const [mode, cursor] of cases) {
+      const { canvas } = await mountInkCanvas({ mode });
+      expect(canvas.style.cursor, `mode=${mode}`).toBe(cursor);
+    }
+  });
+
+  test("(e) the ⌨ toggle (MG's verbatim label) portals the census keyboard — closed on create", async () => {
+    const host = doc.createElement("div");
+    doc.body.appendChild(host);
+    const { canvas, container } = await mountInkCanvas({ mode: "math", keyboardHost: host });
+    const press = pressPointerDown(canvas, { clientX: 106, clientY: 82 });
+    await dispatchOn(canvas, press.ev);
+    // MG's posture: the math box carries the toggle; the keyboard never
+    // auto-opens on create.
+    expect(host.querySelector('[aria-label="Math keyboard"]')).toBeNull();
+    const toggle = container.querySelector('[aria-label="Toggle Virtual Keyboard"]');
+    expect(toggle).not.toBeNull();
+    await act(async () => {
+      toggle!.dispatchEvent(jsdomMouseEvent("click", { bubbles: true }));
+    });
+    const kb = host.querySelector('[aria-label="Math keyboard"]');
+    expect(kb).not.toBeNull();
+    // MG's four layers, MG's tab names
+    const tabs = [...host.querySelectorAll("button[aria-pressed]")]
+      .map((b) => b.getAttribute("aria-label"))
+      .filter((n) => ["Numeric", "Symbols", "Roman Letters", "Greek Letters"].includes(n ?? ""));
+    expect(tabs).toEqual(["Numeric", "Symbols", "Roman Letters", "Greek Letters"]);
+    // tapping the ÷ key inserts the fraction at the caret (numerator slot)
+    const ta = queryDraft(container, "New math annotation")!;
+    const divide = host.querySelector('button[aria-label="÷"]')!;
+    expect(divide).not.toBeNull();
+    await act(async () => {
+      divide.dispatchEvent(jsdomMouseEvent("click", { bubbles: true }));
+    });
+    expect(ta.value).toBe("\\frac{}{}");
+    expect(ta.selectionStart).toBe(6);
+    host.remove();
   });
 });

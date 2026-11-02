@@ -81,6 +81,7 @@ import {
   Compass,
   Eraser,
   Gauge,
+  Keyboard,
   Loader2,
   Minus,
   MousePointer2,
@@ -99,6 +100,9 @@ import { cn } from "@/lib/utils";
 import {
   INK_COLORS,
   INK_COLOR_KEYS,
+  INK_TEXT_BASE_PX,
+  INK_TEXT_FONT_STACK,
+  INK_TEXT_WEIGHT,
   INK_WIDTH_DOTS,
   INK_WIDTH_FRACS,
   INK_WIDTH_NAMES,
@@ -123,7 +127,14 @@ import {
 import { createInkLocal, inkLocalClear, inkLocalLoad } from "./ink-local-store";
 import { createInkSync, type InkSyncSnapshot } from "./ink-sync";
 import { registerLiveInk, unregisterLiveInk } from "./live-ink";
-import { MathTextOverlay } from "./MathTextOverlay";
+import { MathKeyboard } from "./MathKeyboard";
+import { MathTextOverlay, renderMathHtml } from "./MathTextOverlay";
+import {
+  backspaceValue,
+  insertIntoValue,
+  keyInsertion,
+  type KeyInsertion,
+} from "./math-keyboard";
 import { paintShapes, sizeBackingStore } from "./paint";
 import {
   applyProtractorSnap,
@@ -210,6 +221,11 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   // change, nothing for React to disagree with (a keyed remount here
   // would make React unmount the detached ghost and throw NotFoundError).
   const inkRootsRef = useRef(new Map<number, HTMLElement>());
+  // T-MG-INK-9: the math keyboard's portal host — a pane-level bottom
+  // strip (the keyboard is pane-wide, MG's virtual-keyboard posture; a
+  // page holder must not contain it). pointer-events:none — the panel
+  // re-enables itself; the empty strip never blocks the pane.
+  const [kbHost, setKbHost] = useState<HTMLElement | null>(null);
   // The instrument guides (T-MG-INK-2): session-local, one per instrument
   // per layer (each carries its own page — it renders only there).
   const [rulerGuide, setRulerGuide] = useState<RulerGuide | null>(null);
@@ -954,6 +970,17 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
         </div>
       )}
 
+      {/* T-MG-INK-9: the math keyboard portal host (pane-wide bottom
+          strip; the MathKeyboard portals in here while a math draft is
+          editing with the keyboard toggled open). */}
+      {enabled && (
+        <div
+          ref={setKbHost}
+          data-ink-kb-host
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-50"
+        />
+      )}
+
       {/* one canvas portal per mounted page holder; the T-MG-INK-7
           wrapper gives the portal ONE registered root — the eviction law
           re-attaches this exact subtree if the pane's repaint empties the
@@ -985,6 +1012,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
               onCommitMathEdit={commitMathEdit}
               onCommitErase={commitErase}
               onCommitMove={commitMove}
+              keyboardHost={kbHost}
               ruler={rulerGuide?.page === page ? rulerGuide : null}
               protractor={protractorGuide?.page === page ? protractorGuide : null}
               onGuideDown={guideDown}
@@ -1077,6 +1105,9 @@ export interface InkCanvasProps {
   onGuideCreate?: (tool: "ruler" | "protractor", page: number, frac: { x: number; y: number }) => void;
   /** The guide chrome rendered as the canvas's sibling inside the holder. */
   guideSlot?: React.ReactNode;
+  /** T-MG-INK-9: the pane-level math-keyboard portal host (rendered by
+   * InkLayer; the keyboard is pane-wide, never inside a page holder). */
+  keyboardHost?: HTMLElement | null;
 }
 
 type DragKind = "freehand" | "line" | "ruler" | "protractor" | "compasses" | "guide" | "erase" | "move";
@@ -1131,6 +1162,7 @@ export function InkCanvas({
   onGuideRotate,
   onGuideCreate,
   guideSlot,
+  keyboardHost,
 }: InkCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const boxRef = useRef<{ cssW: number; cssH: number }>({ cssW: 0, cssH: 0 });
@@ -1146,6 +1178,15 @@ export function InkCanvas({
   const [sweepDeg, setSweepDeg] = useState<number | null>(null);
   // ── T-MG-INK-4 state: math draft, erase sweep, select/move ──
   const [mathDraft, setMathDraft] = useState<{ x: number; y: number; value: string; editId?: string } | null>(null);
+  const mathRef = useRef<HTMLTextAreaElement | null>(null);
+  // T-MG-INK-9: the equation keyboard — closed on create (MG's posture:
+  // their math box carries the ⌨ toggle; the keyboard never auto-opens),
+  // pane-wide via the keyboardHost portal.
+  const [kbOpen, setKbOpen] = useState(false);
+  // The keyboard's caret restore: the value is React-controlled, so the
+  // selection is re-applied right after the commit renders (the rAF
+  // race is dead by construction).
+  const pendingCaretRef = useRef<number | null>(null);
   const [erasePreview, setErasePreview] = useState<Set<string> | null>(null);
   const [movePreview, setMovePreview] = useState<InkShape | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -1587,8 +1628,9 @@ export function InkCanvas({
       onCommitText({
         page,
         color,
-        // the editor edits at 14 css px — commit that relative size
-        sizeFrac: clamp01(14 / cssW),
+        // T-MG-INK-9: the editor edits at MG's 16 css px default — commit
+        // that relative size (WYSIWYG-honest at the reference width).
+        sizeFrac: clamp01(INK_TEXT_BASE_PX / cssW),
         x: draft.x,
         y: draft.y,
         text: value,
@@ -1606,6 +1648,7 @@ export function InkCanvas({
     if (mathDraft.editId) {
       if (value) onCommitMathEdit(mathDraft.editId, value);
       setMathDraft(null);
+      setKbOpen(false);
       return;
     }
     const { cssW } = boxRef.current;
@@ -1613,14 +1656,75 @@ export function InkCanvas({
       onCommitMath({
         page,
         color,
-        sizeFrac: clamp01(14 / cssW),
+        sizeFrac: clamp01(INK_TEXT_BASE_PX / cssW),
         x: mathDraft.x,
         y: mathDraft.y,
         tex: value,
       });
     }
     setMathDraft(null);
+    setKbOpen(false);
   }, [mathDraft, onCommitMathEdit, color, onCommitMath, page]);
+
+  // ── T-MG-INK-9: the equation keyboard's insert/backspace paths ──
+  // The keyboard taps the DRAFT's selection (the textarea keeps focus —
+  // the panel swallows its pointerdowns), the pure module owns the
+  // maths, and the caret re-applies right after React commits the new
+  // value (pendingCaretRef + the effect below).
+  const kbInsert = useCallback(
+    (ins: KeyInsertion) => {
+      const ta = mathRef.current;
+      if (!ta || !mathDraft) return;
+      const start = ta.selectionStart ?? ta.value.length;
+      const end = ta.selectionEnd ?? start;
+      const res = insertIntoValue(ta.value, start, end, ins);
+      pendingCaretRef.current = res.caret;
+      setMathDraft({ ...mathDraft, value: res.value });
+    },
+    [mathDraft],
+  );
+
+  const kbBackspace = useCallback(() => {
+    const ta = mathRef.current;
+    if (!ta || !mathDraft) return;
+    const start = ta.selectionStart ?? ta.value.length;
+    const end = ta.selectionEnd ?? start;
+    const res = backspaceValue(ta.value, start, end);
+    pendingCaretRef.current = res.caret;
+    setMathDraft({ ...mathDraft, value: res.value });
+  }, [mathDraft]);
+
+  // The caret/selection restore after a keyboard edit (and the keyboard
+  // taps themselves never blur the draft — the panel's pointerdown law).
+  useEffect(() => {
+    if (pendingCaretRef.current === null) return;
+    const ta = mathRef.current;
+    if (!ta) return;
+    const caret = Math.min(pendingCaretRef.current, ta.value.length);
+    ta.focus();
+    ta.setSelectionRange(caret, caret);
+    pendingCaretRef.current = null;
+  }, [mathDraft]);
+
+  // T-MG-INK-9: the text font is a self-hosted webfont — the canvas
+  // repaints once it is really loaded (a first paint before the load
+  // would raster the fallback and stick until the next repaint).
+  useEffect(() => {
+    const fonts = (document as Document & { fonts?: { load: (f: string) => Promise<unknown> } }).fonts;
+    if (!fonts) return;
+    let alive = true;
+    void fonts
+      .load(`${INK_TEXT_WEIGHT} 16px "Shantell Sans"`)
+      .then(() => {
+        if (alive) repaint();
+      })
+      .catch(() => {
+        /* the fallback stack paints; nothing to do */
+      });
+    return () => {
+      alive = false;
+    };
+  }, [repaint]);
 
   // The select affordance's ✕ — the tombstone law via the erase path.
   const eraseSelected = useCallback(() => {
@@ -1630,10 +1734,16 @@ export function InkCanvas({
     setSelBox(null);
   }, [selectedId, onCommitErase]);
 
+  // T-MG-INK-9: the cursor map, MG's extracted postures — the TEXT tool
+  // arms the page with MG's I-beam (their pdf-draw-overlay--armed parent
+  // computes cursor:text, live 2026-11-02); the MATH tool arms DEFAULT
+  // (their math-armed overlay computes auto — the box, not a caret, is
+  // the affordance); select default, ruler/protractor move, the rest
+  // crosshair.
   const toolCursor =
-    mode === "text" || mode === "math"
+    mode === "text"
       ? "text"
-      : mode === "select"
+      : mode === "math" || mode === "select"
         ? "default"
         : mode === "ruler" || mode === "protractor"
           ? "move"
@@ -1712,39 +1822,106 @@ export function InkCanvas({
           autoFocus
           aria-label={draft.editId ? "Edit text annotation" : "New text annotation"}
           value={draft.value}
-          onChange={(e) => setDraft({ ...draft, value: e.target.value })}
+          onChange={(e) => {
+            setDraft({ ...draft, value: e.target.value });
+            // MG's editor auto-grows with the typing (borderless,
+            // transparent — the paper IS the editor chrome).
+            const el = e.target as HTMLTextAreaElement;
+            el.style.width = "";
+            el.style.height = "auto";
+            el.style.width = `${Math.max(48, el.scrollWidth + 2)}px`;
+            el.style.height = `${Math.max(44, el.scrollHeight)}px`;
+          }}
           onBlur={commitDraft}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault();
-              commitDraft();
-            }
-            if (e.key === "Escape") setDraft(null);
+            // MG's posture (tldraw text): Enter is a NEWLINE; the edit
+            // commits on click-away (blur) or Escape.
+            if (e.key === "Escape") commitDraft();
           }}
-          className="absolute z-40 min-h-10 w-40 resize rounded border bg-background/95 p-1 text-sm shadow-md backdrop-blur"
-          style={{ left: `${draft.x * 100}%`, top: `${draft.y * 100}%` }}
-          placeholder="Type, then Enter"
+          className="absolute z-40 min-h-[44px] resize-none overflow-hidden rounded border-transparent bg-transparent p-0 leading-[1.35] shadow-none outline-none"
+          style={{
+            left: `${draft.x * 100}%`,
+            top: `${draft.y * 100}%`,
+            width: 48,
+            height: 44,
+            fontFamily: INK_TEXT_FONT_STACK,
+            fontWeight: INK_TEXT_WEIGHT,
+            fontSize: INK_TEXT_BASE_PX,
+            color: INK_COLORS[color],
+          }}
         />
       )}
       {mathDraft && (
-        <textarea
-          autoFocus
-          aria-label={mathDraft.editId ? "Edit math annotation" : "New math annotation"}
-          value={mathDraft.value}
-          onChange={(e) => setMathDraft({ ...mathDraft, value: e.target.value })}
-          onBlur={commitMathDraft}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault();
-              commitMathDraft();
-            }
-            if (e.key === "Escape") setMathDraft(null);
-          }}
-          className="absolute z-40 min-h-10 w-44 resize rounded border bg-background/95 p-1 font-mono text-xs shadow-md backdrop-blur"
+        <div
+          data-ink-editor="math"
+          className="absolute z-40 w-60 rounded-lg border bg-background/95 p-1.5 shadow-md backdrop-blur"
           style={{ left: `${mathDraft.x * 100}%`, top: `${mathDraft.y * 100}%` }}
-          placeholder="LaTeX, then Enter"
-        />
+        >
+          {/* the live KaTeX preview — the SAME render law as the
+              committed overlay, so editing agrees glyph-for-glyph */}
+          <div
+            aria-hidden
+            data-math-draft-preview
+            className="pointer-events-none flex min-h-7 items-center overflow-x-auto text-base"
+            style={{ color: INK_COLORS[color] }}
+            {...(renderMathHtml(mathDraft.value)
+              ? { dangerouslySetInnerHTML: { __html: renderMathHtml(mathDraft.value)! } }
+              : {})}
+          />
+          <div className="mt-1 flex items-start gap-1">
+            <textarea
+              ref={mathRef}
+              autoFocus
+              rows={1}
+              aria-label={mathDraft.editId ? "Edit math annotation" : "New math annotation"}
+              value={mathDraft.value}
+              onChange={(e) => setMathDraft({ ...mathDraft, value: e.target.value })}
+              onBlur={(e) => {
+                // T-MG-INK-9: the ⌨ toggle and the box chrome are INSIDE
+                // the editor — focusing them must not commit the draft
+                // (MG's field posture). A blur to anywhere outside the
+                // editor box is the click-away commit.
+                const box = e.currentTarget.closest("[data-ink-editor]");
+                if (box && box.contains(e.relatedTarget as Node | null)) return;
+                commitMathDraft();
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  commitMathDraft();
+                }
+                if (e.key === "Escape") setMathDraft(null);
+              }}
+              className="min-h-7 w-full resize-none bg-transparent p-0 font-mono text-xs outline-none"
+              placeholder="LaTeX"
+            />
+            <button
+              type="button"
+              aria-label="Toggle Virtual Keyboard"
+              aria-pressed={kbOpen}
+              onClick={() => setKbOpen((o) => !o)}
+              className={cn(
+                "flex size-7 shrink-0 items-center justify-center rounded-md border",
+                kbOpen ? "bg-secondary" : "hover:bg-secondary/60",
+              )}
+            >
+              <Keyboard className="size-4" aria-hidden />
+            </button>
+          </div>
+        </div>
       )}
+      {mathDraft &&
+        kbOpen &&
+        keyboardHost &&
+        createPortal(
+          <MathKeyboard
+            onInsert={kbInsert}
+            onBackspace={kbBackspace}
+            onCommit={commitMathDraft}
+            onClose={() => setKbOpen(false)}
+          />,
+          keyboardHost,
+        )}
     </>
   );
 }

@@ -7,6 +7,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
+import { INK_TEXT_FONT_STACK } from "./ink";
 import { paintShapes, type PaintBox } from "./paint";
 import type { InkShape } from "./ink";
 
@@ -99,5 +100,14 @@ describe("T-MG-INK-4 run-002 — the painter hardening pin", () => {
     expect(ctx.ops).not.toContain("clear");
     expect(ctx.ops).toContain("stroke");
     expect(ctx.ops).not.toContain("text:"); // mtext is not the sync painter's kind — run-003 composites it in produce-crop (the foreignObject raster)
+  });
+
+  test("T-MG-INK-9: the text font law — MG's Shantell Sans, weight 500, at the committed size", () => {
+    const ctx = recorder();
+    const cssW = 400;
+    paintShapes(ctx as unknown as CanvasRenderingContext2D, { cssW, cssH: 300 }, [
+      { id: "t9", kind: "text", page: 1, color: "black", sizeFrac: 16 / cssW, x: 0.1, y: 0.1, text: "hi" },
+    ]);
+    expect(ctx.font).toBe(`500 16px ${INK_TEXT_FONT_STACK}`);
   });
 });
