@@ -1,13 +1,10 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ChevronDown, FileQuestion, Filter } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Filter } from "lucide-react";
 import { boardOf, getCourseBundle, loadHubCourse } from "@/lib/courses";
 import { getDataProvider } from "@/lib/data";
 import { CourseHeader } from "@/components/hub/course-header";
-import { NumberedLabel } from "@/components/hub/chrome";
-import { AddToTestLink } from "@/components/teacher/add-to-test-link";
-import { ProgressRing } from "@/components/hub/progress-ring";
+import { QuestionbankIndex, type QbLooseSet, type QbTopic } from "./questionbank-index";
 import type { Course } from "@/lib/progress";
 
 export const dynamic = "force-dynamic";
@@ -16,8 +13,6 @@ export const dynamic = "force-dynamic";
 function paperLabel(p: string): string {
   return p.length <= 4 ? `Paper ${p}` : p;
 }
-
-const ZERO = { notes: 0, questions: 0, flashcards: 0 };
 
 /**
  * Questionbank index (trace 1a19342adcb572ed — the RevisionDojo-pattern
@@ -39,6 +34,19 @@ const ZERO = { notes: 0, questions: 0, flashcards: 0 };
  * UX audit 2026-10-02 #20: `?q=<partId>` search deep links resolve to the
  * question set and redirect there (unresolvable q renders the index);
  * legacy `?spec=` links jump to the set that anchors the spec point.
+ *
+ * Ring semantics of record (operator traces 1a195fd0b0947695 +
+ * 1a1982281a3d7a65): this select page's rows carry the QUESTIONS-ONLY ring
+ * — answered parts ÷ available questions, never notes, never flashcards —
+ * each select page owns its own denominator (the revision-notes page counts
+ * reads, the flashcards page rates cards; the combined engagement ring
+ * stays the sidebar's posture).
+ *
+ * The listing itself renders in questionbank-index.tsx (client) since trace
+ * 1a19acb6ec437e25: it joined the revision-notes index's MathsGenie toolbar
+ * treatment — search left, Resume (the most recently scored set) right —
+ * which needs the learner overlay; the server page keeps the redirect and
+ * paper-scope laws and hands the client a slim, serializable row payload.
  */
 export default async function ExamQuestionsIndexPage({
   params,
@@ -116,15 +124,25 @@ export default async function ExamQuestionsIndexPage({
   // here always agree with the sidebar. Counts are whole-set question counts
   // (resourceCounts bumps t.questions.length to the canonical home), summed
   // over the in-scope sets so a paper filter rescales rows honestly.
-  const rows = hub.index.tree.topics
+  // Slim, serializable payload for the client listing (questionbank-index).
+  const rows: QbTopic[] = hub.index.tree.topics
     .map((topic) => {
       const subs = topic.subtopics
         .map((sub) => {
           const sets = (hub.setListsBySubtopic[sub.code] ?? []).filter((s) => inScope(s.slug));
-          return { sub, sets, count: sets.reduce((a, s) => a + s.count, 0) };
+          // the same whole-set count sum the old inline render used — a
+          // sub-topic whose in-scope sets hold zero questions stays dropped
+          const count = sets.reduce((a, s) => a + s.count, 0);
+          return {
+            code: sub.code,
+            label: sub.code.endsWith("-gen") ? null : sub.label || null,
+            title: sub.title,
+            sets,
+            count,
+          };
         })
         .filter((r) => r.count > 0);
-      return { topic, subs, total: subs.reduce((a, r) => a + r.count, 0) };
+      return { code: topic.code, number: topic.number, title: topic.title, subs };
     })
     .filter((g) => g.subs.length > 0);
 
@@ -133,9 +151,10 @@ export default async function ExamQuestionsIndexPage({
   const placed = new Set(
     Object.values(hub.setListsBySubtopic).flatMap((sets) => sets.map((s) => s.slug)),
   );
-  const unplaced = hub.questionTopics
+  const unplaced: QbLooseSet[] = hub.questionTopics
     .filter((t) => !placed.has(t.slug))
-    .filter((t) => inScope(t.slug));
+    .filter((t) => inScope(t.slug))
+    .map((t) => ({ slug: t.slug, title: t.setName ? `${t.name} — ${t.setName}` : t.name, count: t.questions.length }));
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
@@ -178,150 +197,17 @@ export default async function ExamQuestionsIndexPage({
         </div>
       )}
 
-      <div className="mt-6 divide-y divide-border/60">
-        {rows.map(({ topic, subs, total }) => (
-          <details key={topic.code} open className="group/topic py-3">
-            <summary className="flex cursor-pointer list-none items-center gap-2 [&::-webkit-details-marker]:hidden">
-              <h2 className="text-[15px] font-semibold">
-                <NumberedLabel number={topic.number} title={topic.title} />
-              </h2>
-              <span className="text-xs text-muted-foreground">
-                ·{" "}
-                {total} question{total === 1 ? "" : "s"}
-              </span>
-              <span className="ml-auto flex items-center gap-2">
-                <AddToTestLink courseSlug={meta.slug} codes={topic.subtopics.map((s) => s.code)} />
-                <ChevronDown
-                  className="size-4 shrink-0 text-muted-foreground transition-transform group-open/topic:rotate-180"
-                  aria-hidden
-                />
-              </span>
-            </summary>
-            <ul className="mt-1.5 space-y-0.5">
-              {subs.map(({ sub, sets, count }) => {
-                const countsK = hub.counts[sub.code] ?? ZERO;
-                const gen = sub.code.endsWith("-gen");
-                const label = !gen && sub.label ? (
-                  <span className="w-6 shrink-0 text-xs tabular-nums text-muted-foreground">
-                    {sub.label}
-                  </span>
-                ) : null;
-                const rowInner = (
-                  <>
-                    <ProgressRing
-                      course={meta.slug as Course}
-                      subtopic={sub.code}
-                      counts={countsK}
-                      size={18}
-                    />
-                    {label}
-                    <span className="min-w-0 flex-1 truncate text-sm font-medium group-hover/link:text-primary">
-                      {sub.title}
-                    </span>
-                    <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
-                      {count} question{count === 1 ? "" : "s"}
-                    </span>
-                  </>
-                );
-                if (sets.length === 1) {
-                  return (
-                    <li key={sub.code}>
-                      <Link
-                        href={`${base}/exam-questions/${sets[0].slug}`}
-                        className="group/link flex items-center gap-2.5 rounded-lg px-2 py-2 transition-colors hover:bg-muted"
-                      >
-                        {rowInner}
-                      </Link>
-                    </li>
-                  );
-                }
-                // multi-set sub-topic (MCQ vs structured variants): the row
-                // still navigates to the canonical set; the chevron expands
-                // every set so nothing becomes unreachable (sidebar parity —
-                // the tree expander lists the same per-set entries)
-                return (
-                  <li key={sub.code}>
-                    <details className="group/sub">
-                      <summary className="flex cursor-pointer list-none items-center gap-2.5 rounded-lg px-2 py-2 transition-colors hover:bg-muted [&::-webkit-details-marker]:hidden">
-                        <Link
-                          href={`${base}/exam-questions/${sets[0].slug}`}
-                          className="group/link flex min-w-0 flex-1 items-center gap-2.5"
-                        >
-                          {rowInner}
-                        </Link>
-                        <ChevronDown
-                          className="size-3.5 shrink-0 text-muted-foreground transition-transform group-open/sub:rotate-180"
-                          aria-hidden
-                        />
-                      </summary>
-                      <ul className="ml-9 mt-0.5 space-y-0.5 border-l pl-2">
-                        {sets.map((s) => (
-                          <li key={s.slug}>
-                            <Link
-                              href={`${base}/exam-questions/${s.slug}`}
-                              className="flex items-center justify-between gap-2 rounded-md px-2 py-1.5 text-[13px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                            >
-                              <span className="min-w-0 truncate">{s.title}</span>
-                              <span className="shrink-0 tabular-nums">
-                                {s.count} question{s.count === 1 ? "" : "s"}
-                              </span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </details>
-                  </li>
-                );
-              })}
-            </ul>
-          </details>
-        ))}
-
-        {unplaced.length > 0 && (
-          <section aria-label="Other sets" className="py-3">
-            <h2 className="text-[15px] font-semibold">Other sets</h2>
-            <ul className="mt-1.5 space-y-0.5">
-              {unplaced.map((set) => (
-                <li key={set.slug}>
-                  <Link
-                    href={`${base}/exam-questions/${set.slug}`}
-                    className="group flex items-center gap-2.5 rounded-lg px-2 py-2 transition-colors hover:bg-muted"
-                  >
-                    <FileQuestion className="size-4 shrink-0 text-primary" aria-hidden />
-                    <span className="min-w-0 flex-1 truncate text-sm font-medium group-hover:text-primary">
-                      {set.name}
-                      {set.setName ? ` — ${set.setName}` : ""}
-                    </span>
-                    <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
-                      {set.questions.length} question{set.questions.length === 1 ? "" : "s"}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-      </div>
-
-      {rows.length === 0 && unplaced.length === 0 && (
-        <Card className="mt-6">
-          <CardContent className="p-6 text-sm text-muted-foreground">
-            {paperActive ? (
-              <>
-                No imported question sets are anchored to spec points assessed in{" "}
-                <span className="font-medium text-foreground">{paperLabelOf(paperActive)}</span> yet
-                — the corpus currently covers other papers for this course.{" "}
-                <Link href={`${base}/exam-questions`} className="underline hover:text-foreground">
-                  Clear the paper scope
-                </Link>
-                .
-              </>
-            ) : (
-              "No question sets imported for this course yet."
-            )}
-          </CardContent>
-        </Card>
-      )}
+      {/* MathsGenie toolbar + listing + Other sets + empty states — client
+          (questionbank-index) over the slim payload above. When a paper
+          scope empties the bank, the scoped empty card renders client-side
+          with the same copy (paperLabel carries the active label). */}
+      <QuestionbankIndex
+        course={meta.slug as Course}
+        counts={hub.counts}
+        rows={rows}
+        unplaced={unplaced}
+        paperLabel={paperActive ? paperLabelOf(paperActive) : null}
+      />
     </div>
   );
 }

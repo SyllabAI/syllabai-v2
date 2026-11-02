@@ -1,0 +1,266 @@
+{
+ "lane": "T-OEQ-PHYS-FORMAT-1",
+ "run": "run-008-serving-leg",
+ "wave": "F131",
+ "data_cut": "main@594a5a97502c6e4940cef15ffcd63f1d9787fd71",
+ "shas": {
+  "questions.json": {
+   "before": "6424eb5b6e455f2721b8d87ae23042dd286f8d5d4c625f8fe332b91792e494fa",
+   "after": "d3df0fc8a6373d13668b943eebf07cbc0db41d9f664c33320df4a1e97563d381"
+  },
+  "official-papers.json": {
+   "before": "f0945d296107ea49830b7a14d84e0eaf55c63550f3e52df152b2ee3bb5308fec",
+   "after": "2c7b62c47693c815a5bca6194d6818b0b4f5a0114b381c9434d0fc7b18acfdfc"
+  },
+  "manifest.json": {
+   "before": "9bde63b4e8b600755b060def85dd53c24e05c676cedcb21d3bb0f676285b6f3b",
+   "after": "7fd0a85693036ba32c66691c7d6d3432bc4d2729e2bba6cf36ed452ddff6c639"
+  }
+ },
+ "exporter": {
+  "script": "official_examq_export_hub.py --spec 4ph1",
+  "expected_deltas": {
+   "new": {},
+   "gone": {},
+   "changed": {
+    "official-4ph1-1p-2022-01": [
+     "offp_2022-01_1p_1-a"
+    ],
+    "official-4ph1-1p-2024-06": [
+     "offp_2024-06_1p_2-a"
+    ],
+    "official-4ph1-2p-2021-11": [
+     "offp_2021-11_2p_1-b"
+    ]
+   }
+  },
+  "gate_log": [
+   "G-E5 ok: 55/55 staging topics content-identical to main@594a5a97502c6e4940cef15ffcd63f1d9787fd71",
+   "G-E3 ok: 55 slices / 4,970 marks",
+   "G-E2 ok",
+   "G-E1 ok: 3 deltas match the disclosed wave census exactly",
+   "G-E1b ok: identity fields byte-equal on all 55 official sets",
+   "G-E6 ok: labels (841/1,398/0/15)",
+   "G-E4 ok: questions.json byte-identical passthrough (2,058,136 B, 24 SME sets)",
+   "G-E7 ok: 421 group stems accounted for (421 restored, 0 splice, 0 cuts)"
+  ]
+ },
+ "sme_consume": {
+  "transforms_of_record": "resources scripts/oeq_phys_run008w2/oeq_phys_run008w2_transforms.json (F129)",
+  "parts": 26,
+  "blocks": 29,
+  "morphs": {
+   "bank-1line": 17,
+   "bank-2line": 5,
+   "bank-4line": 1,
+   "prose-box": 5,
+   "label-2tok": 1,
+   "multi-block": 2
+  },
+  "gates": [
+   "G-A block-count parity",
+   "G-B unique-match",
+   "G-C word-multiset (<br>-aware)",
+   "G-D corpus identity (every new block verbatim in the corpus problem_md)",
+   "G-E' post-census 146/0/0",
+   "G-F untouched bytes",
+   "G-G PUA/C0"
+  ],
+  "report": {
+   "entries": [
+    {
+     "pid": "qstnprt_3fvGTjrNb4SMqq83",
+     "morph": "bank-1line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_5DGHPHGkbxDxY7Gn",
+     "morph": "prose-box",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_8PBqXPkmRgdhHMCV",
+     "morph": "bank-1line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_C4W6Sv3kFhgy3HjQ",
+     "morph": "bank-1line-x2",
+     "old": 2,
+     "new": 2,
+     "replaced": 2
+    },
+    {
+     "pid": "qstnprt_HJ2JhhCjypv6Q6bp",
+     "morph": "bank-2line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_KV6qpKqzvJ3H3mXM",
+     "morph": "bank-2line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_KXxGC7xXRRNNx2Yd",
+     "morph": "prose-box",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_KzKNv3KRmPXqHFRM",
+     "morph": "prose-box",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_Ntxd8MKCTKWWSYdK",
+     "morph": "bank-1line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_PG9zCnZzzNpK7Fwc",
+     "morph": "bank-1line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_Tkhndjq33kyf3rS3",
+     "morph": "bank-1line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_WdtFYtwK94PM5zQr",
+     "morph": "bank-2line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_WmXgbrnMRr2fVm53",
+     "morph": "bank-4line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_XmHQ2P2TVn7YQ8MR",
+     "morph": "bank-1line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_XtHcvHZRp3RsjJBR",
+     "morph": "bank-1line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_YDVJY5BTZSR8nnjd",
+     "morph": "bank-1line-x3-drift",
+     "old": 3,
+     "new": 3,
+     "replaced": 3
+    },
+    {
+     "pid": "qstnprt_YQ8P73HYRZgxfhr2",
+     "morph": "bank-2line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_cmJDFHBKn7C9Rr5x",
+     "morph": "bank-1line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_fQrTP3QXDHyYStg2",
+     "morph": "bank-2line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_gJXSTr7BTvjDC9bq",
+     "morph": "prose-box",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_nfyVdG835XJF9wgK",
+     "morph": "bank-1line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_nhDPW3VhQWzkKDgf",
+     "morph": "bank-1line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_qrNHTPPHqNctvcfF",
+     "morph": "prose-box",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_tCzbVshDzwVC6jDt",
+     "morph": "label-2tok",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_v5G6z2MPDygXxKtP",
+     "morph": "bank-1line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    },
+    {
+     "pid": "qstnprt_wB6TVwBHTm6d4fJc",
+     "morph": "bank-1line",
+     "old": 1,
+     "new": 1,
+     "replaced": 1
+    }
+   ],
+   "aborts": []
+  }
+ },
+ "post_census": {
+  "MULTI_COL_OK": 146,
+  "1COL_DEGENERATE": 0,
+  "math_pipe": 0
+ },
+ "rebase": {
+  "branch_base_moved_to": "9954fffd",
+  "resolution": "union; gates re-run"
+ }
+}

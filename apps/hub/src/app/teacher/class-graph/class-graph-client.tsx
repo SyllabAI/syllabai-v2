@@ -28,11 +28,11 @@ import {
   BookOpen,
   Check,
   ChevronDown,
-  CircleHelp,
   FileQuestion,
   Loader2,
   Network,
   ShieldAlert,
+  SquareStack,
   Target,
   TriangleAlert,
 } from "lucide-react";
@@ -472,7 +472,7 @@ function SubtopicRow({
                     href={`/courses/${courseSlug}/flashcards`}
                     className="flex items-center gap-1.5 text-primary underline-offset-2 hover:underline"
                   >
-                    <CircleHelp className="size-3.5" aria-hidden /> Flashcards
+                    <SquareStack className="size-3.5" aria-hidden /> Flashcards
                   </Link>
                 </li>
               </ul>

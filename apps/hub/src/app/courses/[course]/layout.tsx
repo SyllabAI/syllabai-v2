@@ -5,6 +5,9 @@ import { courseMetaDescription, courseTitle } from "@/lib/format";
 import { hasPastPapers } from "@/lib/past-papers";
 import { courseHasCorpusPapers } from "@/lib/pastpapers-corpus";
 import { getSenecaForCourse } from "@/lib/seneca-hub";
+import { getGradeBoundariesSummary } from "@/lib/grade-boundaries";
+import { loadGuidedIndex } from "@/lib/guided-lessons";
+import { getUgmBundle } from "@/lib/ugm";
 import { CourseShell, type SidebarData } from "@/components/hub/course-shell";
 import { LastOpenedTracker } from "@/components/hub/last-opened-tracker";
 
@@ -70,7 +73,18 @@ export default async function CourseLayout({
   const hub = await loadHubCourse(slug);
   if (!hub) notFound();
 
-  const seneca = await getSenecaForCourse(slug);
+  // run-013 R1 (sidebar content audit): the chrome's conditional rows key on
+  // the SAME server loaders the dashboard bands key on — one law per tool,
+  // computed once here (React cache dedupes the page's own calls into these
+  // same reads) so SSR and the client render identical rows — the ADR-021
+  // hydration contract. Committed-content reads only; nothing session-scoped,
+  // so static prerender is unaffected.
+  const [seneca, gradeBoundaries, guided, ugm] = await Promise.all([
+    getSenecaForCourse(slug),
+    getGradeBoundariesSummary(slug),
+    loadGuidedIndex(slug),
+    getUgmBundle(slug),
+  ]);
 
   const data: SidebarData = {
     course: {
@@ -79,6 +93,9 @@ export default async function CourseLayout({
       label: hub.meta.label,
       level: hub.meta.level,
       code: hub.meta.code,
+      // ADR-030 tutor gate — the registry field the band-1 card and the
+      // /tutor page both key on (run-013 R1/G2: Course Tutor rides the chrome)
+      curriculumCode: hub.meta.curriculumCode,
     },
     tree: hub.index.tree,
     counts: hub.counts,
@@ -94,6 +111,10 @@ export default async function CourseLayout({
     hasPastPapers: hasPastPapers(hub.officialPaperTopics),
     hasCorpusPapers: courseHasCorpusPapers(slug),
     seneca: seneca ? { total: seneca.total } : undefined,
+    // run-013 R1: G3/G4/G5 chrome gates — same law, same loader, as the band cards
+    hasGradeBoundaries: gradeBoundaries !== null,
+    hasGuidedLessons: guided !== null,
+    hasUgm: ugm !== null,
   };
 
   return (

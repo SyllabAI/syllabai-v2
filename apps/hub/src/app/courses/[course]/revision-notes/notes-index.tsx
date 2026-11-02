@@ -14,17 +14,28 @@
  * mathsgenie.co.uk revision-guides page as the example): a search input
  * ("Search topics or notes..." — client-side filter over sub-topic + note
  * titles, forcing the matching rows open) and, when this course's learner
- * overlay holds a read, a Resume button (play glyph + "Resume {note title}",
- * truncating at 13rem like the example) pointing at the most recently read
- * note (max notesRead.at — markNoteRead stamps it on every note visit).
+ * overlay holds engagement, a Resume button (play glyph + "Resume {note
+ * title}", truncating at 13rem like the example) pointing at the most
+ * recently ENGAGED note (max at across notesRead ∪ note-scroll memory) and
+ * stamping ?resume=1 so the reader restores the saved scroll position
+ * (trace 1a19b5cba7c16a81, lib/note-scroll). Shared as SelectToolbar since
+ * the exam-questions and flashcards select pages joined the treatment
+ * (trace 1a19acb6ec437e25).
  *
  * Ticks of record: the MathsGenie done-tick marks FULLY READ notes — a green
  * filled check circle when read, the faint outline circle when not
- * (role="img" aria-label Read/Unread names both states). It replaces the old
- * read dot on nested and loose note rows, and replaces the ProgressRing on
+ * (role="img" aria-label Read/Unread names both states). "Read" is the
+ * scroll law of record (operator trace 1a195fd0b0947695): a note becomes
+ * read only when its END (the note page's footnote strip) scrolls into
+ * view — opening the page alone never checks it. It replaces the old read
+ * dot on nested and loose note rows, and replaces the ProgressRing on
  * SINGLE-note sub-topic rows (a one-note row's ring is binary anyway; the
- * tick is the note-level truth). Multi-note rows keep the ProgressRing —
- * partial progress across notes+questions+flashcards stays meaningful there
+ * tick is the note-level truth). Multi-note rows keep the ProgressRing in
+ * the NOTES-ONLY dimension (operator trace 1a195fd0b0947695: "the rings
+ * show progress of revision notes only, not exam questions and not
+ * flashcards. Both of their select pages will handle their progress rings"
+ * — this page's rings count reads ÷ available notes and nothing else; the
+ * exam-questions and flashcards select pages own their own denominators)
  * — with per-note ticks inside the expanded list.
  *
  * Guided lessons stay first-class (operator law, trace 1a1810c1ef1cb521):
@@ -38,11 +49,13 @@
  */
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ChevronDown, FileText, GraduationCap, Play, Search, X } from "lucide-react";
+import { ChevronDown, FileText, GraduationCap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { NumberedLabel } from "@/components/hub/chrome";
+import { SelectToolbar } from "@/components/hub/select-toolbar";
 import { ProgressRing } from "@/components/hub/progress-ring";
 import { useCourseProgress, type Course } from "@/lib/progress";
+import { pickResumeNoteId, useNoteScrolls } from "@/lib/note-scroll";
 import { looseAnchorCopy } from "@/lib/loose-copy";
 import { cn } from "@/lib/utils";
 import type { SpecTree } from "@/lib/spec-tree";
@@ -114,26 +127,25 @@ export function NotesIndex({
   const base = `/courses/${course}`;
 
   // MathsGenie toolbar: the search query is a transient filter; Resume points
-  // at the most recently read note of THIS course (max notesRead.at — the
-  // markNoteRead stamp on every note visit). Nothing read yet → no button
-  // (the example's empty:hidden wrappers).
+  // at the most recently ENGAGED note of THIS course — max `at` across the
+  // read stamps (notesRead.at, the markNoteRead stamp on each completed read)
+  // and the scroll memory (lib/note-scroll, trace 1a19b5cba7c16a81: "Resume
+  // could remember scroll position within a note"), so a note the learner is
+  // mid-way through outranks a finished read it never returned to. The href
+  // stamps ?resume=1: the note reader's scroll-memory island consumes the
+  // intent and restores the saved reading position (inside the resume band
+  // 2%–98%; a note read to its end opens fresh from the top). Nothing engaged
+  // yet → no button (the example's empty:hidden wrappers).
+  const noteScrolls = useNoteScrolls(course);
   const [query, setQuery] = useState("");
   const q = query.trim().toLowerCase();
   const searching = q.length > 0;
 
   const resumeNote = useMemo(() => {
-    const byId = new Map(notes.map((n) => [n.noteId, n]));
-    let best: NoteListItem | null = null;
-    let bestAt = -1;
-    for (const [noteId, v] of Object.entries(progress.notesRead)) {
-      const n = byId.get(noteId);
-      if (n && v.at > bestAt) {
-        bestAt = v.at;
-        best = n;
-      }
-    }
-    return best;
-  }, [notes, progress.notesRead]);
+    const known = new Set(notes.map((n) => n.noteId));
+    const id = pickResumeNoteId(progress.notesRead, noteScrolls, known);
+    return id ? (notes.find((n) => n.noteId === id) ?? null) : null;
+  }, [notes, progress.notesRead, noteScrolls]);
 
   // Topic groups of record: sub-topics with (matching) notes, corpus order,
   // per-topic totals. A sub-topic whose own title matches shows ALL its
@@ -176,39 +188,17 @@ export function NotesIndex({
       {/* MathsGenie-pattern toolbar (trace 1a1954cacb3d2ab5): search left,
           Resume right — the Resume button renders only once this course's
           learner overlay holds a read note. */}
-      <div className="mb-5 flex flex-wrap items-center gap-2 rounded-lg border bg-card px-3 py-2.5">
-        <label className="flex min-w-0 flex-1 basis-56 items-center gap-2">
-          <Search className="size-4 shrink-0 text-muted-foreground" aria-hidden />
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search topics or notes..."
-            aria-label="Search revision notes"
-            className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
-          />
-          {query && (
-            <button
-              type="button"
-              onClick={() => setQuery("")}
-              aria-label="Clear search"
-              className="shrink-0 rounded p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              <X className="size-3.5" aria-hidden />
-            </button>
-          )}
-        </label>
-        {resumeNote && (
-          <Link
-            href={`${base}/revision-notes/${resumeNote.noteId}`}
-            aria-label={`Resume ${resumeNote.title}`}
-            className="inline-flex items-center gap-2 rounded-lg border px-3.5 py-1.5 text-sm font-medium transition-colors hover:bg-muted"
-          >
-            <Play className="size-4 shrink-0 fill-current text-primary opacity-60" aria-hidden />
-            <span className="max-w-[13rem] truncate">Resume {resumeNote.title}</span>
-          </Link>
-        )}
-      </div>
+      <SelectToolbar
+        searchLabel="Search revision notes"
+        searchPlaceholder="Search topics or notes..."
+        query={query}
+        onQueryChange={setQuery}
+        resume={
+          resumeNote
+            ? { href: `${base}/revision-notes/${resumeNote.noteId}?resume=1`, title: resumeNote.title }
+            : null
+        }
+      />
 
       {nothingAtAll && searching ? (
         <Card>
@@ -243,16 +233,16 @@ export function NotesIndex({
                       {sub.label}
                     </span>
                   ) : null;
-                  // the left slot: multi-note rows keep the ProgressRing
-                  // (partial progress across notes+questions+flashcards is
-                  // meaningful); a single-note row's ring is binary, so the
-                  // note-level tick takes its place (the MathsGenie anatomy —
-                  // one truth per row)
+                  // the left slot: multi-note rows keep the ProgressRing in the
+                  // NOTES-ONLY dimension (reads ÷ available notes — never
+                  // questions or flashcards, operator trace 1a195fd0b0947695);
+                  // a single-note row's ring is binary, so the note-level tick
+                  // takes its place (the MathsGenie anatomy — one truth per row)
                   const leftSlot =
                     subNotes.length === 1 ? (
                       <ReadTick read={Boolean(progress.notesRead[subNotes[0].noteId])} />
                     ) : (
-                      <ProgressRing course={course} subtopic={sub.code} counts={countsK} size={18} />
+                      <ProgressRing course={course} subtopic={sub.code} counts={countsK} size={18} dimension="notes" />
                     );
                   const rowLink = (
                     <>

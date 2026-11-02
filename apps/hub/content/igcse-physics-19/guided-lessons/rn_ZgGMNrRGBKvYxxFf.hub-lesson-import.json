@@ -1,0 +1,166 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_ZgGMNrRGBKvYxxFf",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "51556a88a18e61723ff93837ccefedde9c825f326e36d156f9c2e3cf445cb935",
+    "pinnedRef": "aa6485187429e0911b4a47a8a468e256bb41ce32"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_ZgGMNrRGBKvYxxFf",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Movement & Position",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-1-movement-and-position/1-1-7-calculating-uniform-acceleration",
+    "specAnchors": [
+      {
+        "code": "1.10",
+        "text": "use the relationship between final speed, initial speed, acceleration and distance moved: (final speed)2 = (initial speed)2 + (2 × acceleration × distance moved) v2 = u2 + (2 × a × s)"
+      }
+    ],
+    "primer": {
+      "text": "One equation of this topic refuses the formula triangle: v² = u² + 2as links four quantities and leaves time out entirely. This lesson states the relationship for uniform acceleration, maps every symbol to its unit, and then practises the plain-algebra rearranging that replaces the triangle.",
+      "prerequisiteSubtopic": "Movement & Position"
+    },
+    "modules": [
+      {
+        "id": "rn_ZgGMNrRGBKvYxxFf::L1",
+        "title": "The v² = u² + 2as relationship",
+        "sourceHeadings": [
+          "Calculating uniform acceleration"
+        ],
+        "specRefs": [
+          "1.10"
+        ],
+        "opening": "Some journeys never tell you their duration — only the speeds at the ends and the acceleration between them. For those, the squared relationship steps in: it connects initial speed, final speed, acceleration and distance moved without ever mentioning time. This lesson pins the equation and the meaning of every letter in it.",
+        "keyPoints": [
+          "Uniform acceleration means constant acceleration: the velocity changes by the same amount every second.",
+          "The relationship for uniform acceleration is v² = u² + 2as; each symbol carries a meaning: v the final speed, u the initial speed, a the acceleration and s the distance moved.",
+          "The symbols carry s = distance moved in metres, u and v = initial and final speed in m/s, and a = acceleration in m/s².",
+          "This equation is the tool when the time taken is not known and is not asked for; it is also the one relationship no cover-and-read triangle can encode."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Square the finishing speed; it equals the square of the starting speed plus two times the acceleration times the distance covered. Use it whenever time never enters the question.",
+            "analogy": "It is a four-piece jigsaw: name any three pieces (two speeds, the acceleration, or the distance) and the equation hands you the fourth.",
+            "examPointer": "Start every answer by listing the known quantities with their symbols; a labelled list earns credit and points straight at the right equation."
+          },
+          "medium": {
+            "restatement": "The squares are the price of excluding time: v² = u² + 2as is the time-free combination of the velocity-change relationship with the distance covered under constant acceleration.",
+            "analogy": "Where a = Δv/t needs a clock, this equation is the shortcut that survives with only the speedometer and the odometer.",
+            "examPointer": "Watch 'from rest': it pins u = 0 and quietly removes one term from the squares before any arithmetic starts."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ZgGMNrRGBKvYxxFf::L1::Q1",
+          "rn_ZgGMNrRGBKvYxxFf::L1::Q2",
+          "rn_ZgGMNrRGBKvYxxFf::L1::Q3",
+          "rn_ZgGMNrRGBKvYxxFf::L1::Q4",
+          "rn_ZgGMNrRGBKvYxxFf::L1::Q5",
+          "rn_ZgGMNrRGBKvYxxFf::L1::Q6",
+          "rn_ZgGMNrRGBKvYxxFf::L1::Q7",
+          "rn_ZgGMNrRGBKvYxxFf::L1::Q8",
+          "rn_ZgGMNrRGBKvYxxFf::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_ZgGMNrRGBKvYxxFf::L2",
+        "title": "Rearranging without a triangle",
+        "sourceHeadings": [
+          "Calculating uniform acceleration"
+        ],
+        "specRefs": [
+          "1.10"
+        ],
+        "opening": "With the triangle unavailable, rearranging falls back on two universal algebra rules: treat both sides identically, and undo operations in reverse. This lesson applies them to isolate s, then runs the full worked car calculation — from rest, at 2.5 m/s², up to 16 m/s — and reads the distance off the end.",
+        "keyPoints": [
+          "Anything done to the equation must be done to both sides, and each operation is undone by its opposite.",
+          "To isolate s: subtract u² from both sides, then divide both sides by 2a, giving s = (v² − u²) / (2a).",
+          "Squaring is undone by square-rooting, multiplication by division, subtraction by addition.",
+          "Showing the rearrangement earns method marks; the worked case gives s = (16² − 0²) / (2 × 2.5) = 256 / 5 = 51.2 m, quoted as 51 m to two significant figures.",
+          "Solving for the acceleration works the same when an object uniformly slows: a = (v² − u²) / (2s) comes out negative, and that negative is the deceleration."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "To find the distance, first peel the u² off with subtraction, then peel the 2a off with division. What remains on the other side is the answer: v² minus u², all over 2a.",
+            "analogy": "Undoing an equation is like unwrapping a parcel: remove the outermost layer (the division by 2a) last, and the same cut must go through every layer at once.",
+            "examPointer": "Write the rearranged line (s = (v² − u²)/(2a)) before substituting numbers; that single line is usually a method mark."
+          },
+          "medium": {
+            "restatement": "The rearrangement order mirrors the equation's construction: 2as was added to u², so subtract u² first; s is multiplied by 2a, so divide last. Each inverse lands on both sides simultaneously.",
+            "analogy": "Algebraic undressing follows the reverse of dressing: last on, first off, applied everywhere at once.",
+            "examPointer": "Keep the subtraction order v² − u²; flipping it to u² − v² flips the sign of the whole numerator and, with it, the physics."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ZgGMNrRGBKvYxxFf::L2::Q1",
+          "rn_ZgGMNrRGBKvYxxFf::L2::Q2",
+          "rn_ZgGMNrRGBKvYxxFf::L2::Q3",
+          "rn_ZgGMNrRGBKvYxxFf::L2::Q4",
+          "rn_ZgGMNrRGBKvYxxFf::L2::Q5",
+          "rn_ZgGMNrRGBKvYxxFf::L2::Q6",
+          "rn_ZgGMNrRGBKvYxxFf::L2::Q7",
+          "rn_ZgGMNrRGBKvYxxFf::L2::Q8",
+          "rn_ZgGMNrRGBKvYxxFf::L2::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "uniform acceleration",
+          "definition": "Constant acceleration: the velocity changes by the same amount every second.",
+          "firstLesson": 1
+        },
+        {
+          "term": "v² = u² + 2as",
+          "definition": "The time-free relationship linking final speed, initial speed, acceleration and distance moved under uniform acceleration.",
+          "firstLesson": 1
+        },
+        {
+          "term": "from rest",
+          "definition": "Starting with zero speed; it fixes u = 0 and removes the u² term from the equation.",
+          "firstLesson": 2
+        },
+        {
+          "term": "rearrangement",
+          "definition": "Rewriting an equation with a different subject by applying the same operation to both sides.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A car accelerates steadily from rest at a rate of 2.5 m/s² up to a speed of 16 m/s. Calculate how far the car moves during this period of acceleration.",
+        "steps": [
+          "List the known quantities: initial speed u = 0 m/s because the car starts from rest; final speed v = 16 m/s; acceleration a = 2.5 m/s².",
+          "The phrase 'accelerates steadily' means uniform acceleration, so v² = u² + 2as applies.",
+          "Rearrange for distance: subtract u² from both sides, then divide by 2a, giving s = (v² − u²) / (2a).",
+          "Substitute: s = (16² − 0²) / (2 × 2.5) = 256 / 5 = 51.2 m, which rounds to 51 m (2 s.f.)."
+        ],
+        "finalAnswer": "51.2 m, i.e. 51 m to two significant figures"
+      }
+    }
+  }
+}

@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_pfndTqR6DTJGZ8xQ",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "85e8d3d1fb828e52ba2011846d42826beb9e23a4db202058060075dca2da0e5f",
+    "pinnedRef": "aa6485187429e0911b4a47a8a468e256bb41ce32"
+  },
+  "packageId": "igcse-physics::rn_pfndTqR6DTJGZ8xQ",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L1::Q1",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L1",
+      "stem": "Why does this practical determine the speed of the falling object indirectly rather than measuring speed directly?",
+      "misconceptionClass": "direct-vs-derived measurement",
+      "options": [
+        {
+          "key": "A",
+          "text": "School apparatus cannot read speed straight off, so distance and time are measured and divided",
+          "correct": true,
+          "explanation": "There is no direct-reading speed instrument in the equipment list; the derived route via distance and time is the whole design.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Direct measurement would break the paper cone",
+          "correct": false,
+          "explanation": "The cone survives the fall on a cushioned landing; the limitation is instrumental, not fragility.",
+          "misconception": "fragility confusion"
+        },
+        {
+          "key": "C",
+          "text": "Speed is only defined for objects moving in straight lines",
+          "correct": false,
+          "explanation": "Speed is defined for any motion; the indirect method exists because of measurement difficulty.",
+          "misconception": "definition myth"
+        },
+        {
+          "key": "D",
+          "text": "The stopwatch can only record distances, not speeds",
+          "correct": false,
+          "explanation": "A stopwatch records time; it is the absence of a direct speed reader that forces the two-step design.",
+          "misconception": "instrument-role confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L1::Q2",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L1",
+      "stem": "In this investigation, which pair correctly names the independent and dependent variables?",
+      "misconceptionClass": "variable-role swap",
+      "options": [
+        {
+          "key": "C",
+          "text": "Independent: drop distance; dependent: time taken",
+          "correct": true,
+          "explanation": "The experimenter sets each height (independent) and the clock reading that results is the dependent variable.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Independent: time taken; dependent: drop distance",
+          "correct": false,
+          "explanation": "That swaps the roles; the height is chosen first and the fall time follows from it.",
+          "misconception": "role inversion"
+        },
+        {
+          "key": "B",
+          "text": "Independent: object choice; dependent: drop distance",
+          "correct": false,
+          "explanation": "The object is held the same as a control variable; it is not what the plan systematically varies.",
+          "misconception": "control-as-independent"
+        },
+        {
+          "key": "D",
+          "text": "Independent: stopwatch resolution; dependent: height",
+          "correct": false,
+          "explanation": "Resolution is a fixed property of the instrument, not a variable in the plan.",
+          "misconception": "instrument-property confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L1::Q3",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L1",
+      "stem": "Which control variable keeps the height-to-height comparison fair?",
+      "misconceptionClass": "control identification",
+      "options": [
+        {
+          "key": "B",
+          "text": "Reusing the same object, such as the one paper cone, for every drop",
+          "correct": true,
+          "explanation": "Holding the object fixed isolates the effect of the changing drop distance.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Timing each drop with a different observer",
+          "correct": false,
+          "explanation": "Changing observers adds human variation; it is not the stated control.",
+          "misconception": "observer roulette"
+        },
+        {
+          "key": "C",
+          "text": "Increasing the drop height by equal steps",
+          "correct": false,
+          "explanation": "The regular 0.2 m stepping is the planned pattern of the independent variable, not a control.",
+          "misconception": "design-step conflation"
+        },
+        {
+          "key": "D",
+          "text": "Using a fresh cone and a fresh ball for each height",
+          "correct": false,
+          "explanation": "Swapping objects would introduce exactly the variation the control is there to remove.",
+          "misconception": "control violation"
+        }
+      ]
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L1::Q4",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L1",
+      "stem": "The metre rule resolves to 1 mm. Why does that resolution suit the way heights are used in this practical?",
+      "misconceptionClass": "resolution suitability",
+      "options": [
+        {
+          "key": "D",
+          "text": "A 1 mm step is far smaller than the metre-scale heights being set",
+          "correct": true,
+          "explanation": "Heights of 1.0-1.8 m swamp the millimetre resolution, so the setting error stays negligible.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Millimetres are the standard unit for measuring time",
+          "correct": false,
+          "explanation": "Millimetres measure length only; the timing resolution belongs to the stopwatch.",
+          "misconception": "unit mixing"
+        },
+        {
+          "key": "B",
+          "text": "The rule must resolve the cone's diameter to work",
+          "correct": false,
+          "explanation": "The cone's size never enters the measurement plan; only the drop height and fall time do.",
+          "misconception": "irrelevant-precision"
+        },
+        {
+          "key": "C",
+          "text": "A finer resolution would change the dependent variable",
+          "correct": false,
+          "explanation": "Resolution affects measurement quality, not which quantity is the dependent variable.",
+          "misconception": "role-resolution confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L1::Q5",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L1",
+      "stem": "A tape measure and a stop clock are on the equipment list. Which derived quantity do they jointly enable?",
+      "misconceptionClass": "purpose pairing",
+      "options": [
+        {
+          "key": "B",
+          "text": "The average speed of the fall, from distance divided by time",
+          "correct": true,
+          "explanation": "The two instruments supply exactly the two measured inputs the speed relationship needs.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "The weight of the falling object",
+          "correct": false,
+          "explanation": "Neither instrument measures force; a balance would be needed for weight.",
+          "misconception": "quantity mismatch"
+        },
+        {
+          "key": "C",
+          "text": "The object's acceleration at the moment of release",
+          "correct": false,
+          "explanation": "A single distance-time pair gives an average only; acceleration needs the graph work of later notes.",
+          "misconception": "quantity overshoot"
+        },
+        {
+          "key": "D",
+          "text": "The air resistance acting on the cone",
+          "correct": false,
+          "explanation": "Air resistance is never measured in this practical; the design targets the object's average speed.",
+          "misconception": "quantity invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L1::Q6",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L1",
+      "stem": "State the independent variable and the dependent variable of this core practical.",
+      "misconceptionClass": "variable recall",
+      "kind": "recall",
+      "modelAnswer": "The independent variable is the drop distance; the dependent variable is the time taken for the object to fall that distance.",
+      "keywords": [
+        "drop distance",
+        "time taken",
+        "independent",
+        "dependent"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L1::Q7",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L1",
+      "stem": "Recall the resolution of each measuring instrument used in this investigation.",
+      "misconceptionClass": "instrument recall",
+      "kind": "recall",
+      "modelAnswer": "The tape measure or metre rule resolves to 1 mm, and the stop clock resolves to 0.01 s.",
+      "keywords": [
+        "1 mm",
+        "0.01 s",
+        "rule",
+        "stop clock"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L1::Q8",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L1",
+      "stem": "Explain why the same object must be dropped at every height in this investigation.",
+      "misconceptionClass": "fairness explain",
+      "kind": "explain-why",
+      "modelAnswer": "Reusing one object keeps its size, shape and mass fixed, so any change in fall time across the heights can be attributed to the change in drop distance alone. Swapping objects would mix a second changing factor into the comparison and wreck the fair test.",
+      "keywords": [
+        "same object",
+        "fair",
+        "drop distance",
+        "comparison"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L1::Q9",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L1",
+      "stem": "A class wants to test a toy car rolling down a ramp instead of dropping a cone. State one electronic alternative mentioned for timing fast motion and say why it helps.",
+      "misconceptionClass": "method transfer",
+      "kind": "application",
+      "modelAnswer": "Light gates (or an electronic data logger with a trapdoor arrangement) can time the run automatically; they start and stop the clock as the object passes the sensors, removing the human reaction time that plagues hand-held stopwatches.",
+      "keywords": [
+        "light gates",
+        "automatic",
+        "reaction time",
+        "sensors"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L2::Q1",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L2",
+      "stem": "Each height is timed three times. What is done with the three readings before any speed is calculated?",
+      "misconceptionClass": "repeat handling",
+      "options": [
+        {
+          "key": "C",
+          "text": "Their mean is calculated and used as the fall time",
+          "correct": true,
+          "explanation": "The plan averages the repeats so one wild reading cannot dominate the derived speed.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "The fastest of the three is kept",
+          "correct": false,
+          "explanation": "Cherry-picking the fastest reading biases every derived speed downward in time.",
+          "misconception": "best-of cherry-pick"
+        },
+        {
+          "key": "B",
+          "text": "The slowest is discarded and the other two ignored",
+          "correct": false,
+          "explanation": "No reading is discarded by rule; all three enter the mean.",
+          "misconception": "discard myth"
+        },
+        {
+          "key": "D",
+          "text": "All three speeds are calculated and summed",
+          "correct": false,
+          "explanation": "The averaging happens on the times, and a sum of speeds has no physical meaning here.",
+          "misconception": "wrong-stage averaging"
+        }
+      ]
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L2::Q2",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L2",
+      "stem": "The heights used run from 1.0 m to 1.8 m. What pattern do they follow?",
+      "misconceptionClass": "design pattern recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Equal 0.2 m steps: 1.0, 1.2, 1.4, 1.6, 1.8 m",
+          "correct": true,
+          "explanation": "The plan raises the drop distance in five regular 0.2 m increments.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Doubling steps: 1.0, 2.0, 4.0 m and so on",
+          "correct": false,
+          "explanation": "Doubling would outrun the laboratory ceiling; the plan uses fixed 0.2 m increments.",
+          "misconception": "pattern invention"
+        },
+        {
+          "key": "C",
+          "text": "Random heights chosen to catch the object off guard",
+          "correct": false,
+          "explanation": "Nothing is random; the height sequence is fixed in advance by the method.",
+          "misconception": "randomness myth"
+        },
+        {
+          "key": "D",
+          "text": "A single height repeated many times",
+          "correct": false,
+          "explanation": "Repeats happen within each height; the plan also moves the height itself.",
+          "misconception": "repeat-vs-vary confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L2::Q3",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L2",
+      "stem": "Reading the metre rule at eye level is specified. Which error does this instruction suppress?",
+      "misconceptionClass": "parallax",
+      "options": [
+        {
+          "key": "D",
+          "text": "Parallax error from viewing the scale at an angle",
+          "correct": true,
+          "explanation": "Eye-level alignment stops the apparent shift of the scale mark that off-axis viewing causes.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Human reaction time in the timing",
+          "correct": false,
+          "explanation": "Reaction time is a stopwatch problem; eye level addresses the rule reading.",
+          "misconception": "error cross-matching"
+        },
+        {
+          "key": "B",
+          "text": "Drafts pushing the falling object sideways",
+          "correct": false,
+          "explanation": "Drafts are handled by choosing a still room, not by how the rule is read.",
+          "misconception": "error cross-matching"
+        },
+        {
+          "key": "C",
+          "text": "Zero error in the stopwatch mechanism",
+          "correct": false,
+          "explanation": "A clock's zero error is an instrument fault, unrelated to viewing angle.",
+          "misconception": "error cross-matching"
+        }
+      ]
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L2::Q4",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L2",
+      "stem": "Why do larger drop distances reduce the impact of human reaction time on the result?",
+      "misconceptionClass": "fractional-error reasoning",
+      "options": [
+        {
+          "key": "B",
+          "text": "The fixed reaction overhead becomes a smaller fraction of a longer fall time",
+          "correct": true,
+          "explanation": "The ~0.25 s lag is roughly constant, so its relative weight shrinks as the timed interval grows.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Reaction time shrinks as the object falls further",
+          "correct": false,
+          "explanation": "The human lag is fixed by physiology; only its share of the total changes.",
+          "misconception": "lag-shrinking myth"
+        },
+        {
+          "key": "C",
+          "text": "Longer falls make the object easier to see",
+          "correct": false,
+          "explanation": "Visibility is not the mechanism; the arithmetic of a fixed overhead over a longer interval is.",
+          "misconception": "visibility myth"
+        },
+        {
+          "key": "D",
+          "text": "Larger heights eliminate the need to average repeats",
+          "correct": false,
+          "explanation": "Repeats remain essential; larger heights only weaken one particular systematic error.",
+          "misconception": "repeat obsolescence"
+        }
+      ]
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L2::Q5",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L2",
+      "stem": "Which arrangement removes the reaction-time error almost completely for a falling ball bearing?",
+      "misconceptionClass": "fix identification",
+      "options": [
+        {
+          "key": "C",
+          "text": "An electronic data logger triggered by a trapdoor as the ball lands",
+          "correct": true,
+          "explanation": "Electronic timing starts and stops itself, so the human lag never enters the measurement.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "A longer tape measure with finer graduations",
+          "correct": false,
+          "explanation": "Finer length marks do nothing about the timing error; the clock is the problem.",
+          "misconception": "instrument mismatch"
+        },
+        {
+          "key": "B",
+          "text": "Dropping the ball from a greater height only",
+          "correct": false,
+          "explanation": "Greater height reduces the error's share; the trapdoor and logger remove it.",
+          "misconception": "mitigation-vs-elimination"
+        },
+        {
+          "key": "D",
+          "text": "Timing the drop several more times by hand",
+          "correct": false,
+          "explanation": "More hand repeats average down random scatter, not the systematic reaction-time lag.",
+          "misconception": "repeat-vs-systematic confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L2::Q6",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L2",
+      "stem": "State how the average speed at one height is obtained from the recorded measurements.",
+      "misconceptionClass": "analysis recall",
+      "kind": "recall",
+      "modelAnswer": "Divide the drop distance by the mean of the three measured fall times at that height.",
+      "keywords": [
+        "divide",
+        "drop distance",
+        "mean",
+        "fall times"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L2::Q7",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L2",
+      "stem": "Recall the two room conditions the method asks you to control while the object falls.",
+      "misconceptionClass": "condition recall",
+      "kind": "recall",
+      "modelAnswer": "The fall needs still air around the object, and a cushioned landing such as a mat should wait below it.",
+      "keywords": [
+        "still air",
+        "cushioned",
+        "mat",
+        "below"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L2::Q8",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L2",
+      "stem": "Explain why the reaction-time error in this practical is classed as systematic rather than random.",
+      "misconceptionClass": "error-class reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The human lag always lengthens the recorded time: it delays the start and the stop in the same direction every trial. A consistent shift in one direction is the signature of a systematic error, whereas random errors scatter both ways around the true value.",
+      "keywords": [
+        "same direction",
+        "consistent",
+        "systematic",
+        "scatter"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_pfndTqR6DTJGZ8xQ::L2::Q9",
+      "moduleId": "rn_pfndTqR6DTJGZ8xQ::L2",
+      "stem": "A cone falls 1.4 m in a mean time of 2.0 s. Calculate its average speed and then state the time the same fall would need if the drop distance were doubled to 2.8 m at the same average speed.",
+      "misconceptionClass": "proportional reasoning",
+      "kind": "application",
+      "modelAnswer": "Average speed = 1.4 / 2.0 = 0.70 m/s. At the same speed, 2.8 m takes 2.8 / 0.70 = 4.0 s.",
+      "keywords": [
+        "0.70 m/s",
+        "2.8",
+        "4.0 s",
+        "divide"
+      ],
+      "options": []
+    }
+  ]
+}

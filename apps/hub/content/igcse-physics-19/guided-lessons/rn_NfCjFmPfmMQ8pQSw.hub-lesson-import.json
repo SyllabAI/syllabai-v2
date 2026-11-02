@@ -1,0 +1,203 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_NfCjFmPfmMQ8pQSw",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "963ee6adaac60f2cf676a14ae1de69308de2dfbd6182e98ab4e99fad818d40bd",
+    "pinnedRef": "0cea83a781024eccd40da9bd5025f43b9b1c0c75"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_NfCjFmPfmMQ8pQSw",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Momentum",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-3-momentum/1-3-2-forces-and-momentum",
+    "specAnchors": [
+      {
+        "code": "1.28P",
+        "text": "use the relationship between force, change in momentum and time taken: force = change in momentum time taken ( mv − mu ) F = t"
+      }
+    ],
+    "primer": {
+      "text": "From the Momentum subtopic you already know how to compute momentum as mass multiplied by velocity, and from earlier in Forces & Motion you know that a resultant force changes an object's velocity. This note joins the two ideas: a resultant force acting on a moving object changes that object's momentum, and how quickly the change happens decides how large the force must be.",
+      "prerequisiteSubtopic": "Momentum"
+    },
+    "modules": [
+      {
+        "id": "rn_NfCjFmPfmMQ8pQSw::L1",
+        "title": "Forces & momentum",
+        "sourceHeadings": [
+          "Forces & momentum"
+        ],
+        "specRefs": [
+          "1.28P"
+        ],
+        "opening": "Push a moving trolley and it speeds up; drag your feet on it and it slows down. Either way its momentum changes, and this lesson turns that observation into the syllabus equation: force equals change in momentum divided by time. You will also learn the symbol-by-symbol anatomy of F = (mv − mu)/t and the sign rule that keeps rebound questions honest.",
+        "keyPoints": [
+          "A resultant force on a moving object changes its velocity — speeding it up or slowing it down — and so changes the object's momentum.",
+          "Combining F = ma with p = mv gives F = (mv − mu)/t: force equals change in momentum divided by the time taken.",
+          "In the equation, m is mass in kilograms, u the initial velocity, v the final velocity and t the time in seconds.",
+          "A momentum change is quoted in kg m/s, and the force that causes it in newtons (N).",
+          "Choose one direction as positive before substituting: motion the opposite way enters the equation as a negative value."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A force that speeds an object up or slows it down is changing its momentum, and the force equals that momentum change divided by the time taken.",
+            "analogy": "Momentum is the cargo of motion in a trolley; a force is the hand loading or unloading it, and time is how long the hand gets to work.",
+            "examPointer": "When a question names the relationship, write F = (mv − mu)/t in full — marks sit in the formula as well as in the final number."
+          },
+          "medium": {
+            "restatement": "The equation is a double substitution: p = mv turned into before-and-after values (mu and mv), then fed into F = ma with a = (v − u)/t.",
+            "analogy": "Treat momentum like a bank balance: mu is the opening balance, mv the closing balance, and force the payment rate moving money between them during time t.",
+            "examPointer": "Sign discipline earns the marks: fix the initial direction as positive and carry every minus through mv − mu before you divide."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NfCjFmPfmMQ8pQSw::L1::Q1",
+          "rn_NfCjFmPfmMQ8pQSw::L1::Q2",
+          "rn_NfCjFmPfmMQ8pQSw::L1::Q3",
+          "rn_NfCjFmPfmMQ8pQSw::L1::Q4",
+          "rn_NfCjFmPfmMQ8pQSw::L1::Q5",
+          "rn_NfCjFmPfmMQ8pQSw::L1::Q6",
+          "rn_NfCjFmPfmMQ8pQSw::L1::Q7",
+          "rn_NfCjFmPfmMQ8pQSw::L1::Q8",
+          "rn_NfCjFmPfmMQ8pQSw::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_NfCjFmPfmMQ8pQSw::L2",
+        "title": "Rate of change in momentum",
+        "sourceHeadings": [
+          "Rate of change in momentum"
+        ],
+        "specRefs": [
+          "1.28P"
+        ],
+        "opening": "A change of momentum can arrive gently or with a bang, and the only difference is time. Divide the same change by a long contact time and the force is tame; divide it by a blink and the force is brutal. This lesson reads the equation as a rate, then follows two worked collisions — a ball on a racket and a car on a wall.",
+        "keyPoints": [
+          "Force is the momentum change per second — the rate at which a body's momentum changes.",
+          "Squeezing a momentum change into a shorter time makes the force bigger.",
+          "Force and contact time are inversely proportional: doubling the time halves the force, and halving the time doubles it.",
+          "The same 0.5 kg m/s momentum change delivers 0.25 N over 2.0 s but 5.0 N over just 0.1 s.",
+          "A car rebounding from a wall carries a negative final velocity, so the calculated force comes out negative — opposite to its initial motion."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The same momentum change divided by a shorter time gives a bigger force — force and time pull in opposite directions.",
+            "analogy": "Catch an egg with stiff arms and it stops instantly and splats; let your hands drift back and the longer stop softens the force.",
+            "examPointer": "When a question doubles or halves the contact time at fixed momentum change, answer with the inverse move: halve or double the force."
+          },
+          "medium": {
+            "restatement": "Force as a rate means how much momentum changes each second, not how much changes in total.",
+            "analogy": "A fixed momentum change is a fixed journey; contact time is the pace you travel it, and rushing the journey spikes the force.",
+            "examPointer": "Airbags, seatbelts and crumple zones are this law in disguise: they stretch the contact time to cut the peak force."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NfCjFmPfmMQ8pQSw::L2::Q1",
+          "rn_NfCjFmPfmMQ8pQSw::L2::Q2",
+          "rn_NfCjFmPfmMQ8pQSw::L2::Q3",
+          "rn_NfCjFmPfmMQ8pQSw::L2::Q4",
+          "rn_NfCjFmPfmMQ8pQSw::L2::Q5",
+          "rn_NfCjFmPfmMQ8pQSw::L2::Q6",
+          "rn_NfCjFmPfmMQ8pQSw::L2::Q7",
+          "rn_NfCjFmPfmMQ8pQSw::L2::Q8",
+          "rn_NfCjFmPfmMQ8pQSw::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "momentum",
+          "definition": "The quantity a moving object carries because of its motion: mass multiplied by velocity, with units of kg m/s.",
+          "firstLesson": 1
+        },
+        {
+          "term": "change in momentum",
+          "definition": "Final momentum minus initial momentum (mv − mu); the quantity that a force acting over a time alters.",
+          "firstLesson": 1
+        },
+        {
+          "term": "resultant force",
+          "definition": "The single overall force on an object; it appears in both F = ma and the momentum equation.",
+          "firstLesson": 1
+        },
+        {
+          "term": "rate of change",
+          "definition": "How much a quantity changes per unit time; force is the momentum change per second.",
+          "firstLesson": 2
+        },
+        {
+          "term": "inversely proportional",
+          "definition": "Paired so that multiplying one quantity by a factor divides the other by the same factor.",
+          "firstLesson": 2
+        },
+        {
+          "term": "contact time",
+          "definition": "The duration for which a striking object and the surface it strikes stay in touch.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A 1500 kg car runs into a wall while moving at 15 m/s and bounces straight back at 5 m/s; the impact lasts 3 s. Calculate the average force on the car and state which way it acts.",
+        "steps": [
+          "Take the initial direction as positive, so the rebound velocity is v = −5 m/s, and list the knowns: m = 1500 kg, u = 15 m/s, t = 3 s.",
+          "Write the relationship: F = (mv − mu)/t, the momentum change divided by the contact time.",
+          "Momentum after: mv = 1500 × (−5) = −7500 kg m/s; momentum before: mu = 1500 × 15 = 22500 kg m/s.",
+          "Momentum change: Δp = −7500 − 22500 = −30000 kg m/s.",
+          "Divide by the contact time: F = −30000 / 3 = −10000 N."
+        ],
+        "finalAnswer": "F = −10000 N — a 10000 N force acting opposite to the car's original direction of travel."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/24e861bc36fa-2-4-we-different-contact-times.png",
+        "alt": "2-4-we-different-contact-times",
+        "sourceHeading": "Rate of change in momentum",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/8301b0d519ef-2-4-we-solution-diagram.png",
+        "alt": "2-4-we-solution-diagram",
+        "sourceHeading": "Rate of change in momentum",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

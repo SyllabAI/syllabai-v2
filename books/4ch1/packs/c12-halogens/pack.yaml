@@ -1,10 +1,12 @@
 # S0 output of record - c12-halogens (T-BOOK-011)
+# T-BOOK-070: b07 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 6 -> 7);
+# the S0 plan is binding — lint G1 checks planned == on-disk.
 chapter: "c12"
 chapter_key: "u2:c12"
 title: "The halogens"
 status: published # S4 flip of record — T-BOOK-011/012 r0 (operator dispatch trace 1a15f60b53d4e0d5); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 6
+planned_blocks: 7
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p139 intro+states table, p141 displacement, p142 redox reminder/equation, p143 mcq"
 blocks:
@@ -14,3 +16,4 @@ blocks:
   - {ord: 4, id: "c12-halogens/b04", type: eq-builder, file: "blocks/b04-eq-builder-displacement-ionic.json", anchor: 142}
   - {ord: 5, id: "c12-halogens/b05", type: callout, file: "blocks/b05-callout-reactivity-trend-explained.json", anchor: 143}
   - {ord: 6, id: "c12-halogens/b06", type: mcq-embed, file: "blocks/b06-mcq-check.json", anchor: 143}
+  - {ord: 7, id: "c12-halogens/b07", type: media-embed, file: "blocks/b07-media-embed.json", anchor: 143}

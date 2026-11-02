@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, CircleHelp, FileQuestion, GraduationCap } from "lucide-react";
+import { ArrowLeft, ArrowRight, FileQuestion, GraduationCap, SquareStack } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { boardOf, loadHubCourse } from "@/lib/courses";
@@ -11,6 +11,7 @@ import { Breadcrumbs } from "@/components/hub/chrome";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import { NoteCla } from "@/components/cla/note-cla";
 import { NoteFootnote } from "./note-footnote";
+import { NoteScrollMemory } from "./note-scroll-memory";
 import { NoteBookLinks } from "./note-book-link";
 import { pilotNoteParams } from "@/lib/static-params";
 
@@ -146,6 +147,13 @@ export default async function NoteReaderPage({
 
           <NoteFootnote course={meta.slug} noteId={note.noteId} subtopic={subtopicCode} />
 
+          {/* note-scroll memory (trace 1a19b5cba7c16a81: "Resume could
+              remember scroll position within a note"): saves the reading
+              position while the learner scrolls and restores it when the
+              reader is entered through the revision-notes Resume button.
+              Renders nothing. */}
+          <NoteScrollMemory course={meta.slug} noteId={note.noteId} />
+
           {/* build on this topic (SME cross-links) */}
           <Card>
             <CardContent className="p-4">
@@ -166,7 +174,7 @@ export default async function NoteReaderPage({
                   href={subtopicCode ? hub.hrefs.flashcards[subtopicCode] ?? `${base}/flashcards` : `${base}/flashcards`}
                   className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-colors hover:border-primary/40"
                 >
-                  <CircleHelp className="size-4 text-primary" aria-hidden />
+                  <SquareStack className="size-4 text-primary" aria-hidden />
                   <span className="text-[13px] font-medium">
                     Flashcards
                     {subtopic ? <span className="block text-xs font-normal text-muted-foreground">{subtopic.title}</span> : null}

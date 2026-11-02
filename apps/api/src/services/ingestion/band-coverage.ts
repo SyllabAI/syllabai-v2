@@ -153,3 +153,167 @@ export function bandCoverageViolations(
 
   return violations;
 }
+
+/** The multi-axis set projection — one member per axis-suffixed sibling
+ *  scheme of a part-bound LEVELS scheme-set (OD-1 MA-1). */
+export interface MultiAxisSetMember {
+  /** mark_schemes.version_label — '<base>#<axis>', the printed column of record. */
+  versionLabel: string;
+  /** ALL printed rows of that axis, including zero-mark cells (kept verbatim). */
+  bands: BandCoverageBand[];
+}
+
+/**
+ * ADR-040 §2.1 as amended by the OD-1 multi-axis R4 consumption law (r0,
+ * operator ruling trace 1a19701a448fd715; PR-A receipt
+ * adr040-od1-pra-multi-axis-r4): for a part-bound LEVELS scheme-set born
+ * from ONE printed multi-axis grid (version_label '<base>#<axis>'), the SET
+ * is the R4 unit (MA-2) and the coverage law reads:
+ *   - MA-1 identity: at least two members; every label is exactly
+ *     '<base>#<axis>'; one shared base; distinct axis labels;
+ *   - MA-3 per-axis rows: the single-scheme per-row basics and the ordinal
+ *     set 1..n hold over ALL printed rows; a zero-mark cell
+ *     (marks_min = marks_max = 0) is allowed only at the bottom ordinal and
+ *     is NOT a band — it is excluded from the chain and kept verbatim;
+ *   - MA-4 per-axis chain: over the member's non-zero rows — contiguous
+ *     (max+1=min), ordinal ascends with marks, bottom 0/1;
+ *   - MA-5 cross-axis closure: the members' chain tops sum to the part's
+ *     marks, exactly — the multi-axis replacement for the single-scheme
+ *     tiling predicate (an axis sibling does NOT tile the part alone).
+ * Violations refuse the flip of EVERY sibling in the set (the set flips
+ * atomically or not at all — MA-2). The verbatim law is untouched: no row
+ * is edited, clamped, or synthesized to satisfy this gate.
+ */
+export function multiAxisSetCoverageViolations(
+  members: MultiAxisSetMember[],
+  partMarks: number | null,
+): string[] {
+  const violations: string[] = [];
+  if (members.length < 2) {
+    return [
+      `the axis set has ${members.length} member(s) — a multi-axis printed grid has at least two axis columns (OD-1 MA-1)`,
+    ];
+  }
+
+  // MA-1 identity: '<base>#<axis>' shape, one shared base, distinct axes
+  let base: string | null = null;
+  const axes = new Set<string>();
+  for (const member of members) {
+    const parts = member.versionLabel.split("#");
+    if (parts.length !== 2 || parts[0]!.trim() === "" || parts[1]!.trim() === "") {
+      violations.push(
+        `axis label "${member.versionLabel}" is not <base>#<axis> (OD-1 MA-1)`,
+      );
+      continue;
+    }
+    if (base === null) {
+      base = parts[0]!;
+    } else if (base !== parts[0]!) {
+      violations.push(
+        `the axis set mixes base refs "${base}" and "${parts[0]}" (OD-1 MA-1)`,
+      );
+    }
+    if (axes.has(parts[1]!)) {
+      violations.push(`duplicate axis label "${parts[1]}" in the set (OD-1 MA-1)`);
+    }
+    axes.add(parts[1]!);
+  }
+
+  // per-member rows and chain
+  let topSum = 0;
+  for (const member of members) {
+    const label = member.versionLabel;
+    if (member.bands.length === 0) {
+      violations.push(
+        `axis "${label}" carries no bands — a LEVELS scheme with zero bands marks nothing (OD-1 MA-3)`,
+      );
+      continue;
+    }
+    for (const band of member.bands) {
+      if (!Number.isInteger(band.levelIndex) || band.levelIndex < 1) {
+        violations.push(
+          `axis "${label}" level index ${band.levelIndex} is not a positive integer (OD-1 MA-3)`,
+        );
+      }
+      if (!Number.isInteger(band.marksMin) || band.marksMin < 0) {
+        violations.push(
+          `axis "${label}" level ${band.levelIndex} marks_min ${band.marksMin} is negative (OD-1 MA-3)`,
+        );
+      }
+      if (!Number.isInteger(band.marksMax) || band.marksMax < band.marksMin) {
+        violations.push(
+          `axis "${label}" level ${band.levelIndex} range ${band.marksMin}-${band.marksMax} is inverted (OD-1 MA-3)`,
+        );
+      }
+      if (band.descriptor == null || band.descriptor.trim() === "") {
+        violations.push(
+          `axis "${label}" level ${band.levelIndex} descriptor is missing or blank — descriptors are verbatim-as-printed (OD-1 MA-3)`,
+        );
+      }
+    }
+    const indices = member.bands.map((b) => b.levelIndex).sort((a, b) => a - b);
+    const expected = Array.from({ length: member.bands.length }, (_, i) => i + 1);
+    const ordinalsClean = indices.every((v, i) => v === expected[i]);
+    if (!ordinalsClean) {
+      violations.push(
+        `axis "${label}" level indices are [${indices.join(", ")}] — expected exactly 1..${member.bands.length} with no gaps or duplicates (OD-1 MA-3)`,
+      );
+    }
+    // zero-mark cells: verbatim rows, not bands; bottom ordinal only
+    const bottomOrdinal = Math.min(...indices);
+    for (const band of member.bands) {
+      if (band.marksMin === 0 && band.marksMax === 0 && band.levelIndex !== bottomOrdinal) {
+        violations.push(
+          `axis "${label}" zero-mark cell sits at level ${band.levelIndex}, not the bottom ordinal (OD-1 MA-3)`,
+        );
+      }
+    }
+    const chain = member.bands.filter((b) => !(b.marksMin === 0 && b.marksMax === 0));
+    if (chain.length === 0) {
+      violations.push(
+        `axis "${label}" has no band rows above its zero cell — zero marks itself is not a band (OD-1 MA-3)`,
+      );
+      continue;
+    }
+    chain.sort((a, b) => a.marksMin - b.marksMin || a.marksMax - b.marksMax);
+    const byIndex = [...chain].sort((a, b) => a.levelIndex - b.levelIndex);
+    if (!chain.every((b, i) => b.levelIndex === byIndex[i]?.levelIndex) && ordinalsClean) {
+      violations.push(
+        `axis "${label}" level_index order does not ascend with the mark ranges — the ordinal (1 = lowest) must follow the marks (OD-1 MA-4)`,
+      );
+    }
+    for (let i = 0; i < chain.length - 1; i++) {
+      const current = chain[i]!;
+      const next = chain[i + 1]!;
+      if (current.marksMax + 1 !== next.marksMin) {
+        const kind = next.marksMin <= current.marksMax ? "overlap" : "gap";
+        violations.push(
+          `axis "${label}" mark ranges are not contiguous (${kind}): level ${current.levelIndex} ends at ${current.marksMax} but level ${next.levelIndex} starts at ${next.marksMin} (expected ${current.marksMax + 1}) (OD-1 MA-4)`,
+        );
+      }
+    }
+    const bottom = chain[0]!;
+    if (Number.isInteger(bottom.marksMin) && bottom.marksMin !== 0 && bottom.marksMin !== 1) {
+      violations.push(
+        `axis "${label}" the lowest band starts at ${bottom.marksMin} — the bottom band must start at 0 or 1 (OD-1 MA-4)`,
+      );
+    }
+    for (const band of chain) {
+      if (band.marksMax === 0) {
+        violations.push(
+          `axis "${label}" level ${band.levelIndex} awards no marks (range ${band.marksMin}-${band.marksMax}) — zero marks is not a band (OD-1 MA-3)`,
+        );
+      }
+    }
+    topSum += chain[chain.length - 1]!.marksMax;
+  }
+
+  // MA-5 cross-axis closure (the multi-axis tiling law)
+  if (partMarks != null && partMarks > 0 && topSum !== partMarks) {
+    violations.push(
+      `the axis tops sum to ${topSum} but the awarded range reaches ${partMarks} — the set must close on the part's marks (OD-1 MA-5)`,
+    );
+  }
+
+  return violations;
+}

@@ -1,10 +1,12 @@
 # S0 output of record - c25-alkenes (T-BOOK-013; Phase C — S0–S4 complete, the fire of record)
+# T-BOOK-070: b06 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 5 -> 6);
+# the S0 plan is binding — lint G1 checks planned == on-disk.
 chapter: "c25"
 chapter_key: "u4:c25"
 title: "Alkenes"
 status: published # S4 flip of record — the u4 S3/S4 single-command fire (operator order "fire --commit (the full-book flip)"); DB book_blocks VALIDATED v2 of record
 block_schema: "book.block/1"
-planned_blocks: 5
+planned_blocks: 6
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p291 intro, p292 alkane-vs-alkene sort, p293 bromine-water callout + addition builder, p294 mcq"
 blocks:
@@ -13,3 +15,4 @@ blocks:
   - {ord: 3, id: "c25-alkenes/b03", type: callout, file: "blocks/b03-callout-bromine-water-test.json", anchor: 293}
   - {ord: 4, id: "c25-alkenes/b04", type: eq-builder, file: "blocks/b04-eq-builder-ethene-bromine.json", anchor: 293}
   - {ord: 5, id: "c25-alkenes/b05", type: mcq-embed, file: "blocks/b05-mcq-check.json", anchor: 294}
+  - {ord: 6, id: "c25-alkenes/b06", type: media-embed, file: "blocks/b06-media-embed.json", anchor: 294}

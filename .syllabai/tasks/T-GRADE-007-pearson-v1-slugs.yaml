@@ -1,0 +1,20 @@
+version: 1
+task:
+  id: T-GRADE-007
+  title: "Pearson -v1 slug harvest — close the missing-sessions gap (operator: Run it)"
+  owner: "main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3)"
+  status: IN_REVIEW
+  band: T-GRADE (grade boundaries)
+  deps: [T-GRADE-006]
+  execution_record: >
+    Diagnosis (prior turn): 4CH1 served 11 sessions because Pearson serves the
+    historical session docs under names the slug matrix missed — every probe
+    returned their soft-404 HTML page at HTTP 200, which the %PDF guard rejects.
+    Search-index evidence gave the true Jan 2023 name (`2301-intgcse-9-1-
+    subject-grade-boundaries-v1.pdf`). Fix: extend FAMILY_SLUGS with the -v1/-v2
+    family per lane + new-era -v1 names; re-probe recovered 4 documents; parse
+    26 docs/991 subjects/0 warnings; G1/G2/G3 green (G2 6/6 EXACT); bundle
+    sha256_16 7ba6951347f5c37e. 70 sessions stay honestly absent (fetch-missing.json):
+    June 2020/2021 cancelled (no document exists), October guesses, removed docs.
+    Scope: resources (fetcher + raw + parsed + bundle) and this repo (bundle
+    import) — no hub code, no calculator, no display logic touched.

@@ -1,0 +1,200 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_RQK2MW3zRPNNzwtc",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "ccdb1c682ea7f661c30f8e676588781c54ab9b0101208491d65b325aa9190a5d",
+    "pinnedRef": "0cea83a781024eccd40da9bd5025f43b9b1c0c75"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_RQK2MW3zRPNNzwtc",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Momentum",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-3-momentum/1-3-4-momentum-and-safety-features",
+    "specAnchors": [
+      {
+        "code": "1.26P",
+        "text": "use the idea of momentum to explain safety features"
+      }
+    ],
+    "primer": {
+      "text": "You already know that every moving object carries momentum, and that a force acting over a time changes it. This lesson puts that idea to work: seat belts, airbags, crumple zones and crash mats all manipulate one quantity — the time a collision lasts — to cut the forces a body feels.",
+      "prerequisiteSubtopic": "Momentum"
+    },
+    "modules": [
+      {
+        "id": "rn_RQK2MW3zRPNNzwtc::L1",
+        "title": "Safety features in vehicles",
+        "sourceHeadings": [
+          "Safety features in vehicles",
+          "Safety features on a car"
+        ],
+        "specRefs": [
+          "1.26P"
+        ],
+        "opening": "When a car stops abruptly, its passengers keep moving — and the faster that momentum is brought to zero, the harder the hit. Every safety device in a vehicle works the same trick: stretching out the stopping time so the force shrinks. This lesson follows that idea through seat belts, airbags and crumple zones.",
+        "keyPoints": [
+          "Force equals the rate of change of momentum, so lengthening the collision time lowers the force the impact delivers.",
+          "Contact time is how long the person stays in touch with whatever they have hit.",
+          "Crumple zones, seat belts and airbags absorb impact energy by changing shape, stretching the duration of the force.",
+          "A stretched seat belt gives the passenger's momentum longer to fall to zero, cutting the force felt.",
+          "Airbags cushion passengers thrown forwards, and crumple zones crush deliberately at the front and rear to extend the stopping time.",
+          "A heavy, fast vehicle carries huge momentum, so only an extended contact time can keep its impact force down."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Longer collision time means smaller force: that one trade is what every vehicle safety feature makes.",
+            "analogy": "Catching a ball by drawing your hands back as it arrives — the same catch spread over more time stings far less.",
+            "examPointer": "Feature questions want the chain spelled out: contact time up, so force down, so injury risk down."
+          },
+          "medium": {
+            "restatement": "Because force is the rate of change of momentum, the same momentum change spread over a longer interval arrives as a gentler force — the shared design goal of crumple zones, belts and airbags.",
+            "analogy": "Picture the momentum change as a fixed volume of water and the contact time as the pipe's width: a wider pipe delivers the same water with a gentler push.",
+            "examPointer": "Name the feature, state that it increases the contact time, then give the reduced force on the passenger — all three steps earn the marks."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_RQK2MW3zRPNNzwtc::L1::Q1",
+          "rn_RQK2MW3zRPNNzwtc::L1::Q2",
+          "rn_RQK2MW3zRPNNzwtc::L1::Q3",
+          "rn_RQK2MW3zRPNNzwtc::L1::Q4",
+          "rn_RQK2MW3zRPNNzwtc::L1::Q5",
+          "rn_RQK2MW3zRPNNzwtc::L1::Q6",
+          "rn_RQK2MW3zRPNNzwtc::L1::Q7",
+          "rn_RQK2MW3zRPNNzwtc::L1::Q8",
+          "rn_RQK2MW3zRPNNzwtc::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_RQK2MW3zRPNNzwtc::L2",
+        "title": "Crash mats",
+        "sourceHeadings": [
+          "Crash mats",
+          "Climber using a crash mat"
+        ],
+        "specRefs": [
+          "1.26P"
+        ],
+        "opening": "Drop a ball on concrete and it stops in an instant; drop it on a cushion and the stop takes longer, so it feels gentler. Crash mats, playground floors and mats for light landings all apply that principle to falling bodies. This lesson shows how a soft surface buys a falling body extra contact time.",
+        "keyPoints": [
+          "Gymnasium crash mats are thick and soft to soak up the shock a landing body delivers.",
+          "A soft landing keeps the body touching the mat for longer than a hard floor would.",
+          "The extended contact time lowers the rate of momentum change, so the landing force and the injury risk both shrink.",
+          "Playground cushioning works identically, lengthening the time a falling child spends in touch with the ground.",
+          "Lighter children can manage with thinner mats, and low falls need less cushioning than high ones.",
+          "Safety features lessen the chance of serious harm but cannot rule out injury altogether."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A soft mat stretches the landing out, and a longer landing means a smaller force.",
+            "analogy": "Jumping into water instead of onto paving — the water gives way, so the same stop takes longer and hurts less.",
+            "examPointer": "Match the mat to the fall: heavier bodies and bigger drops call for thicker cushioning."
+          },
+          "medium": {
+            "restatement": "The mat cannot change how much momentum the falling body must lose — only how long losing it takes; force is that momentum change divided by the time, so more time means less force.",
+            "analogy": "Think of it as a payment plan: the same debt of momentum settled over more instalments takes smaller bites out of you.",
+            "examPointer": "Justify mat thickness with both factors — the faller's mass and the speed at touchdown — not with one alone."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_RQK2MW3zRPNNzwtc::L2::Q1",
+          "rn_RQK2MW3zRPNNzwtc::L2::Q2",
+          "rn_RQK2MW3zRPNNzwtc::L2::Q3",
+          "rn_RQK2MW3zRPNNzwtc::L2::Q4",
+          "rn_RQK2MW3zRPNNzwtc::L2::Q5",
+          "rn_RQK2MW3zRPNNzwtc::L2::Q6",
+          "rn_RQK2MW3zRPNNzwtc::L2::Q7",
+          "rn_RQK2MW3zRPNNzwtc::L2::Q8",
+          "rn_RQK2MW3zRPNNzwtc::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "contact time",
+          "definition": "How long a person or body stays in touch with whatever it strikes; stretching it out softens the force.",
+          "firstLesson": 1
+        },
+        {
+          "term": "seat belt",
+          "definition": "A vehicle restraint that holds the passenger to the seat and stretches a little to draw out the stopping time.",
+          "firstLesson": 1
+        },
+        {
+          "term": "airbag",
+          "definition": "A soft cushion deployed at the front of a car that catches a passenger flung forwards in a crash.",
+          "firstLesson": 1
+        },
+        {
+          "term": "crumple zone",
+          "definition": "A region at the front or rear of a vehicle built to crumple on purpose, extending the time the car takes to stop.",
+          "firstLesson": 1
+        },
+        {
+          "term": "momentum",
+          "definition": "The quantity mass × velocity carried by a moving object; force equals how quickly it changes.",
+          "firstLesson": 1
+        },
+        {
+          "term": "crash mat",
+          "definition": "A thick, soft mat that soaks up the shock of a landing and lengthens the contact time.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/26c59d079b37-car-safety-features.png",
+        "alt": "Car Safety Features, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Safety features on a car",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The seat belt, airbag and crumple zones help reduce the risk of injury on a passenger",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/5b03a5e007f8-5-9-5-bouldering-mat-safety.png",
+        "alt": "5-9-5-bouldering-mat-safety",
+        "sourceHeading": "Climber using a crash mat",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "A bouldering mat is a type of crash mat used to reduce the chance of injury in falls whilst climbing",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

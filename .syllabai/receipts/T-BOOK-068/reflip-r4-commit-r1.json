@@ -1,0 +1,51 @@
+{
+  "task": "T-BOOK-068",
+  "receipt": "glossary-reflip-r4-commit-r1",
+  "date_utc": "2026-11-01T07:14Z-07:27Z (span; step timestamps not individually captured)",
+  "trace": "1a195f71a95e7ef1",
+  "session": "web-c414c074 / chat 08b3170a",
+  "operator_order": "credential re-hand + run the three-step + prove serve + flip the ledger to DONE (IM trace 1a195f71a95e7ef1)",
+  "vehicle": "apps/api/scripts/books/glossary-reflip-r4.mts — TRACKED of record, bytes UNTOUCHED (byte-protected; header provenance prose intentionally left as-is)",
+  "worktree": "clean detached /home/z/my-project/repos/v2-main (fresh; base b46d8a3c, re-attached to 64fdb91c pre-commit per fetch-first; the stale sandbox tree repos/syllabai-v2 left UNTOUCHED — its 3,040 mixed-dirty tracked files are reset debris)",
+  "check_r1": {
+    "authored_layer": "112 terms / 0 V-law problems (V1 kebab slug, V3 ms accepts+avoids non-empty, V4 >=40 chars + no duplicate slugs)",
+    "census": "glossary={\"SUGGESTED\":112} blocks={\"VALIDATED\":178} total=178 — the b6b5dec4 world intact",
+    "serve_proof_in_check": "VALIDATED count for students today: 0",
+    "verdict": "CHECK GREEN — the regressed world is present, ready for --commit"
+  },
+  "commit_r1": {
+    "pre_census": "{\"SUGGESTED\":112} (guard-held exact)",
+    "update": "single-statement UPDATE book_glossary_terms SET validation_state='VALIDATED' WHERE validation_state='SUGGESTED' AND subject_code='4ch1' AND slug = ANY(authored 112)",
+    "rowcount_guard": "PASSED (the rowcount!=112 abort did not fire — failure was strictly the post-census comparison)",
+    "post_census_readback": "{\"VALIDATED\":112}",
+    "guard_defect_disclosure": "the post-census guard compares c1.glossary.SUGGESTED !== 0 WITHOUT the '?? 0' used at the pre-flip check — after a successful flip the SUGGESTED GROUP-BY key vanishes, so undefined !== 0 fired AFTER the committed UPDATE: exit 1 with 'abort' wording while the data state is CORRECT and proven (cosmetic, post-write). Vehicle bytes intentionally NOT edited pre-run (byte-protected of record); rider proposed: ((c1.glossary.SUGGESTED ?? 0) !== 0), branch+PR, not self-merge"
+  },
+  "idempotence_r1": { "census": "{\"VALIDATED\":112}", "re_flip_rows": 0, "exit": 0 },
+  "independent_census": "scratch read-only verifier (not the vehicle): {byState:[{validation_state:VALIDATED,n:112}], total:112}",
+  "serve_proof_production": {
+    "api_of_record": "https://syllabai-v2.vercel.app",
+    "GET /api/v1/content/books/glossary?subject=4ch1": "200 — 112 terms served (first slug avogadro-constant)",
+    "GET /api/v1/content/books?courseId=igcse-chemistry-19": "200",
+    "GET /api/v1/content/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d": "200"
+  },
+  "blocker_closure": {
+    "prior_of_record": "reflip-r4-check-r1 (2026-10-28): Neon proxy refused ALL connections, 'Your account or project has exceeded the quota'",
+    "this_run": "connections ACCEPTED throughout (check, commit, idempotence, independent census all reached MAIN)",
+    "lift_mechanism": "UNVERIFIED of record — api.neon.tech DNS-walled 7th consecutive of-record; operator console upgrade vs storage relief (ADR-038 class) not distinguishable from the sandbox",
+    "w1": "untouched — zero W1 contact this run"
+  },
+  "sandbox_incidents": [
+    "mid-turn recycle emptied the session env between commands: the FIRST --check attempt died on the vehicle's OWN connect guard (missing DATABASE_URL — guard behavior CONFIRMED of-record), and the interim GitHub 401 'Bad credentials' reading was env-loss, NOT token revocation (PAT re-verified live: login SyllabAI)",
+    "one `git worktree add` was consumed by the same recycle (re-created cleanly; zero repo mutations resulted from the loss)"
+  ],
+  "credentials": "env-only injection, atomic per-command re-export, never persisted or echoed; rotation list pending (ghp_/vcp_/napi_/npg_x2 chat-transited again this hand)",
+  "no_writes_beyond_flip": true,
+  "ledger": {
+    "T-BOOK-068": "status -> DONE (this receipt + yaml execution_attempt_r2)",
+    "T-BOOK-067": "ledger lag fixed IN_REVIEW -> DONE (merged of record 2026-10-28: PR #409, merge commit 28e99920; receipt .syllabai/receipts/T-BOOK-067/merge-of-record.json)"
+  },
+  "followups": [
+    "rider PR (branch+PR, not self-merge): vehicle --commit post-census guard '?? 0' fix for future re-runs",
+    "resume candidates per NEON-PAUSE-001 post-resume plan: media-embed 1,330 / Phase-D 3,012 / parity census vs NEON-DB-LOSS acceptance gate / nightly pg_dump backup law"
+  ]
+}

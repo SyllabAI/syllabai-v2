@@ -3158,12 +3158,16 @@ function kgApplicabilityChips(a){
 (async function(){
   const slug=new URLSearchParams(location.search).get('course');
   if(!slug) return;
-  const post=(t,p)=>{try{parent.postMessage(Object.assign({type:t},p||{}),'*')}catch(e){}};
+  // F5 (KG-AUDIT-1): bind to our own origin — the loader is only ever hosted
+  // same-origin by the hub page, so this never blocks the real handshake.
+  const post=(t,p)=>{try{parent.postMessage(Object.assign({type:t},p||{}),location.origin)}catch(e){}};
   // status memory for the host handshake: if the loader finishes before the
   // host attaches its listener (warm cache), the host's host-ready ping makes
   // us re-post the final status
   let done=null;
   window.addEventListener('message',ev=>{
+    // F5 (KG-AUDIT-1): only accept host commands from our own origin.
+    if(ev.origin!==location.origin)return;
     if(ev&&ev.data&&ev.data.type==='syllabai-kg:host-ready'&&done) post(done.type,done.payload);
     else if(ev&&ev.data&&ev.data.type==='syllabai-kg:focus-node'&&ev.data.course===slug&&ev.data.node){
       // syllabai-kg:focus-node (host -> renderer, UX audit 2026-10-02 #20):

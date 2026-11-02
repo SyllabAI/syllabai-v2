@@ -30,7 +30,11 @@
  */
 import type { SqlFn } from "../identity/users";
 import { ConflictException, NotFoundException } from "../identity/errors";
-import { bandCoverageViolations } from "../ingestion/band-coverage";
+import {
+  bandCoverageViolations,
+  multiAxisSetCoverageViolations,
+  type MultiAxisSetMember,
+} from "../ingestion/band-coverage";
 
 /** The driver-agnostic sql seam + the transaction (per-module declared). */
 export type TxSqlFn = SqlFn & {
@@ -795,7 +799,7 @@ export class ContentReviewWriteService {
    */
   private async assertBandsTileForFlip(tx: SqlFn, schemeId: string, versionId: string): Promise<void> {
     const kindRows: Row[] = await tx`
-      select scheme_kind, question_part_id from mark_schemes where id = ${schemeId}::uuid`;
+      select scheme_kind, question_part_id, version_label from mark_schemes where id = ${schemeId}::uuid`;
     const kind = kindRows[0] == null ? "POINTS" : String(kindRows[0].scheme_kind ?? "POINTS");
     if (kind !== "LEVELS") return;
     const bandRows: Row[] = await tx`
@@ -823,6 +827,51 @@ export class ContentReviewWriteService {
           : marks.length > 1
             ? marks.reduce((a, b) => a + b, 0)
             : null;
+    }
+    // OD-1 MA-2 (multi-axis R4 consumption law, r0): an axis-suffixed
+    // part-bound sibling ('<base>#<axis>' in version_label) does not tile the
+    // part alone — the SET of the part's LEVELS siblings is the R4 unit. The
+    // branch runs the set law (identity, per-axis rows/chain, cross-axis
+    // closure) over ALL the part's LEVELS siblings; any violation refuses the
+    // flip of this (and, by the runner's set discipline, every) sibling.
+    // Bare-ref schemes and version-level schemes keep the single-scheme law
+    // byte-identically below.
+    const versionLabel = kindRows[0] == null ? "" : String(kindRows[0]!.version_label ?? "");
+    if (boundPartId !== null && versionLabel.includes("#")) {
+      const setRows: Row[] = await tx`
+        select ms.id as scheme_id, ms.version_label, mb.level_index, mb.marks_min,
+               mb.marks_max, mb.descriptor_md
+        from mark_schemes ms
+        left join mark_bands mb on mb.mark_scheme_id = ms.id
+        where ms.scheme_kind = 'LEVELS' and ms.question_part_id = ${boundPartId}::uuid
+        order by ms.version_label, mb.level_index`;
+      const byScheme = new Map<string, MultiAxisSetMember>();
+      for (const r of setRows) {
+        const sid = String(r.scheme_id);
+        let member = byScheme.get(sid);
+        if (member === undefined) {
+          member = { versionLabel: String(r.version_label ?? ""), bands: [] };
+          byScheme.set(sid, member);
+        }
+        if (r.level_index != null) {
+          member.bands.push({
+            levelIndex: Number(r.level_index),
+            marksMin: Number(r.marks_min),
+            marksMax: Number(r.marks_max),
+            descriptor: r.descriptor_md == null ? null : String(r.descriptor_md),
+          });
+        }
+      }
+      const setViolations = multiAxisSetCoverageViolations(
+        [...byScheme.values()],
+        partMarks != null && partMarks > 0 ? partMarks : null,
+      );
+      if (setViolations.length > 0) {
+        throw new ConflictException(
+          `LEVELS multi-axis set band coverage invalid — ${setViolations.join("; ")}`,
+        );
+      }
+      return;
     }
     const violations = bandCoverageViolations(
       bandRows.map((r) => ({

@@ -65,7 +65,13 @@ import fs from "node:fs";
 import path from "node:path";
 
 const require = createRequire(import.meta.url);
-const Ajv = require("/home/z/my-project/syllabai-v2/node_modules/ajv");
+// ajv resolution: relative to this runner first (portable across checkouts),
+// then the of-record legacy anchor (v2-era workspace node_modules).
+const Ajv = (() => {
+  try { return require(require.resolve("ajv")); } catch {}
+  try { return require("/home/z/my-project/scripts/ajvkit/node_modules/ajv"); } catch {} // stage-lane ajv kit (untracked)
+  return require("/home/z/my-project/syllabai-v2/node_modules/ajv"); // legacy of-record anchor
+})();
 
 // ── lane workspace anchors (of-record run locations) ────────────────────────
 const REPO = "SyllabAI/syllabai-resources";
@@ -1903,6 +1909,393 @@ const FEEDS = {
     },
     targetSchemas: ["hub/lesson-import/1.4", "sme-question-package/1.1"],
   },
+  "physics-stagea-v18": {
+    manifest: "hub-import-manifest-v18.json",
+    manifest_version: 18,
+    // NEW-SUBJECT stage-A (runbook B3 pilot-first; B6 continue-global — the programme
+    // manifest series v1..v17 continues at v18). Feed-gated course pack + tranche-scale
+    // census constants; every chemistry feed keeps its exact prior semantics.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 1, "sme-question-package": 1 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject stage-A chain — import the igcse-physics-19 bootstrap pilot tranche (1 note rn_RpyMnS5nqWSRWXXG 'Distance-Time Graphs' / 2 lessons / 18 checks; runbook B3: the pilot stays out of the wave buckets; operator ignition trace 1a192830222371a5 'open the new subject's wave-1 contract. The new subject 4ph1 physics.', execution trace 1a1954284ff72101 'ignite stage-A execution'). Declared hub landing = ADDITIVE: 2 new files (1 lesson + 1 package) + the runner-owned guided-import.json index, into content/igcse-physics-19/ — zero chemistry bytes touched",
+    promo: {
+      // promotion commit of record = namespace-complete commit C of resources PR #266
+      // (merge-of-record 5a9d5f46 — commit C is on resources main via that merge)
+      commit: "01a2fc348a42c7f139461dfcfeb020dad5717ac8",
+      tree: "e5e002cb260cd4ad0aea7fabe5c672d863e258fe",
+      parent: "256b8f3c96f011a893af7c115b973f6cec38da65",
+      trace: "1a1954284ff72101",
+    },
+    integration_branch: null, // ancestry of record — resources PR #266 merged before this hub run
+    artifact_pin: "7d493985c7729f30c2186e7e61a713ceacc96517", // commit A — the source-0.6 pilot generation (both channels pin here; the first sme-question-package of the new subject)
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // the pilot lesson carries 9 module-mapped figures (closure at G-D + disk re-derive at G-V)
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-stagea-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-stagea-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-stagea-survivors/hub-import-manifest-v18.json",
+      int3: "/home/z/my-project/scripts/physics-stagea-survivors/INT-3-transform-record-physics-stagea.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261101-physics-stagea.json`,
+    identity: {
+      notes: 1,
+      lessons: 2,
+      checks: 18,
+      keyPoints: 9,
+      distractors: 30,
+      glossaryTerms: 6,
+      figures: 9,
+      figures_module_mapped: 9,
+      figures_note_level: 0,
+      workedExamples_populated: 1,
+      workedExamples_null: 0,
+      authored_chars_conserved: 13924,
+    },
+    artifact_count: 2,
+    note_count: 1,
+    wave_count: 1,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v18 manifest paths are already integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
+  "physics-wave1-v19": {
+    manifest: "hub-import-manifest-v19.json",
+    manifest_version: 19,
+    // NEW-SUBJECT stage-B wave-1 (runbook §1 lifecycle; B4 bucket W1 = the 1-1 remainder;
+    // B6 continue-global — the programme manifest series continues at v19). Feed-gated
+    // course pack + tranche-scale census constants; every chemistry feed keeps its exact
+    // prior semantics.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 6, "sme-question-package": 6 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-1 chain — import the igcse-physics-19 wave-1 tranche (6 notes: rn_k9wr3prcgSBg5vfw 'Speed' / rn_pfndTqR6DTJGZ8xQ 'Core Practical: Investigating Motion' / rn_CpJZQWzbvMcM8fw3 'Acceleration' / rn_5hfYYFrc2XjMJCrq 'Velocity-Time Graphs' / rn_GxNWbSMqkTN4zgZB 'Area under a Velocity-Time Graph' / rn_ZgGMNrRGBKvYxxFf 'Calculating Uniform Acceleration'; 12 lessons / 108 checks; B4 bucket W1 of record — the 1-1 remainder). Declared hub landing = ADDITIVE: 12 new files (6 lessons + 6 packages) + the runner-owned guided-import.json index, into content/igcse-physics-19/ — zero chemistry bytes touched, zero stage-A bytes re-issued. Operator ignition trace 1a196b9c429c5ae5 ('ignite wave-1'), execution trace 1a197b1687dc5cd9.",
+    promo: {
+      // promotion commit of record = namespace-complete commit C of resources PR #271
+      // (commit C rides resources main via that merge); trace = the EXECUTION trace of
+      // record (== the v19 manifest's operator_trace; the ignition trace rides the directive)
+      commit: "e1d89fd2dbb3e0a699c4f1d266410226e2b91b60",
+      tree: "43051a33853eabd34f2d0f8f47da7e953ceadcaf",
+      parent: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      trace: "1a197b1687dc5cd9",
+    },
+    integration_branch: null, // ancestry of record — resources PR #271 merges before this hub run
+    artifact_pin: "aa6485187429e0911b4a47a8a468e256bb41ce32", // commit A — the source-0.6 wave-1 generation (both channels pin here)
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 5 of 6 lessons carry module-mapped figures (16 total); 1-1-7 is figureless (figures key absent — the 22/112 chemistry precedent)
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave1-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave1-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave1-survivors/hub-import-manifest-v19.json",
+      int3: "/home/z/my-project/scripts/physics-wave1-survivors/INT-3-transform-record-physics-wave1.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261101-physics-wave1.json`,
+    identity: {
+      notes: 6,
+      lessons: 12,
+      checks: 108,
+      keyPoints: 52,
+      distractors: 180,
+      glossaryTerms: 25,
+      figures: 16,
+      figures_module_mapped: 16,
+      figures_note_level: 0,
+      workedExamples_populated: 5,
+      workedExamples_null: 1,
+      authored_chars_conserved: 85861,
+    },
+    artifact_count: 12,
+    note_count: 6,
+    wave_count: 1,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v19 manifest paths are already integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
+  "physics-wave1-v20": {
+    manifest: "hub-import-manifest-v20.json",
+    manifest_version: 20,
+    // NEW-SUBJECT wave-1 CUMULATIVE corrective (resources PR #272, merge-of-record
+    // 52395098; runbook §1 + B6 continue-global at v20 — CUMULATIVE over the pack, the
+    // chemistry v8..v17 pattern). v19's tranche-scoped INT-3 (6 rows) made the
+    // runner-owned guided-import.json rebuild DROP the stage-A pilot rows from the
+    // physics index — caught by the LIVE SPOT-CHECK calibration leg (pilot 'Your
+    // answer' x0 vs x8 of record), invisible to the 32 gates (the index is runner-owned
+    // run metadata, outside the conserved-artifact gates). v20 re-pins all 14 pack
+    // artifacts byte-identical (2 pilot @ v18 shas + 12 wave-1 @ v19 shas): the hub
+    // re-run lands 14/14 identical-exists and re-issues the index with all 7 notes.
+    // ZERO authored bytes change.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 7, "sme-question-package": 7 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-1 CUMULATIVE corrective — re-import the igcse-physics-19 pack of record (7 notes: rn_RpyMnS5nqWSRWXXG 'Distance-Time Graphs' + rn_k9wr3prcgSBg5vfw 'Speed' / rn_pfndTqR6DTJGZ8xQ 'Core Practical: Investigating Motion' / rn_CpJZQWzbvMcM8fw3 'Acceleration' / rn_5hfYYFrc2XjMJCrq 'Velocity-Time Graphs' / rn_GxNWbSMqkTN4zgZB 'Area under a Velocity-Time Graph' / rn_ZgGMNrRGBKvYxxFf 'Calculating Uniform Acceleration'; 14 lessons / 126 checks cumulative = 70 MCQ + 28 recall + 14 explain-why + 14 application) and RE-ISSUE the runner-owned guided-import.json index with all 7 rows, restoring the stage-A pilot flow. Declared hub landing = 14/14 identical-exists + the index re-issue; zero chemistry bytes touched, zero authored bytes changed. Operator ignition trace 1a196b9c429c5ae5 ('ignite wave-1'), execution trace 1a197b1687dc5cd9.",
+    promo: {
+      // promotion commit of record = C20 of resources PR #272 (merge-of-record
+      // 523950984b1109aa0060315e693c5ff03fab2037); trace = the EXECUTION trace of record
+      // (== the v20 manifest's operator_trace; the ignition trace rides the directive)
+      commit: "b7e044e4418b12a8a731e05a6730ff99eaffac0c",
+      tree: "600e02c9cc8823fc232052f0f73ab8c88fdd3f01",
+      parent: "499a692fdaf26717f24dc720724eda39f6f4289f",
+      trace: "1a197b1687dc5cd9",
+    },
+    integration_branch: null, // ancestry of record — resources PR #272 merged before this hub run
+    artifact_pin: "aa6485187429e0911b4a47a8a468e256bb41ce32", // wave-1 commit A — the source-0.6 generation pin of record for the 6 wave-1 notes
+    artifact_pins_by_note: {
+      // the stage-A pilot keeps its own v18 source pin (commit A of the stage-A lane) —
+      // the pilot lessons/packages embed pinnedRef 7d493985; re-pinning it to the wave-1
+      // commit would falsify the pilot's provenance (G-D pinnedRef, of-record per-note law)
+      rn_RpyMnS5nqWSRWXXG: "7d493985c7729f30c2186e7e61a713ceacc96517",
+    },
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 25 cumulative figures (9 pilot + 16 wave-1), all module-mapped
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave1-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave1-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave1-survivors/hub-import-manifest-v20.json",
+      int3: "/home/z/my-project/scripts/physics-wave1-survivors/INT-3-transform-record-physics-wave1-v20.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261102-physics-wave1-v20.json`,
+    identity: {
+      notes: 7,
+      lessons: 14,
+      checks: 126,
+      keyPoints: 61,
+      distractors: 210,
+      glossaryTerms: 31,
+      figures: 25,
+      figures_module_mapped: 25,
+      figures_note_level: 0,
+      workedExamples_populated: 6,
+      workedExamples_null: 1,
+      authored_chars_conserved: 99785,
+    },
+    artifact_count: 14,
+    note_count: 7,
+    wave_count: 2,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v20 manifest paths are already integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
+  "physics-wave2-v21": {
+    manifest: "hub-import-manifest-v21.json",
+    manifest_version: 21,
+    // NEW-SUBJECT wave-2 (resources PR #279, merge-of-record 78dd3694; runbook §1 + B6
+    // continue-global at v21 — CUMULATIVE over the igcse-physics-19 pack, the chemistry
+    // v8..v17 pattern and the v20 corrective law). W2 of the frozen B4 partition: the 1-2
+    // subtopic, 9 notes. The INT-3 carries ALL 16 pack rows (the v19 index-regression
+    // lesson of record), so the runner-owned guided-import.json re-issue keeps the whole
+    // flow. The 14 prior-pack artifacts are re-pinned byte-identical (2 pilot @ v18 shas +
+    // 12 wave-1 @ v19 shas); the 18 wave-2 artifacts are FIRST issues @ the commit-A pin
+    // bfae9977. ZERO chemistry bytes touched, ZERO authored prior-pack bytes changed.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 16, "sme-question-package": 16 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-2 chain — import the igcse-physics-19 wave-2 tranche of record (9 notes: rn_nyV7C6zmyKXWJjKg 'Types of Forces' / rn_4zdmGRWTg5ksK44N 'Scalar & Vectors' / rn_K3p2R3ykwwvHV9dp 'Resultant Forces' / rn_gDy2qTkY26r5sMtd 'Unbalanced Forces' / rn_2R3NrjGfJJY29Hzv 'Weight' / rn_ZCGJsYwy6S6FbbbW 'Stopping Distance' / rn_Mrfn29ZgQMq8th5P 'Terminal Velocity' / rn_kN63sqWsc9QdHSVx 'Core Practical: Investigating Force & Extension' / rn_nC3BswtJzYw8k6nX 'Hooke's Law'; 18 lessons / 162 checks = 90 MCQ + 36 recall + 18 explain-why + 18 application) with the 14 prior-pack artifacts re-pinned byte-identical — CUMULATIVE pack 16 notes / 32 lessons / 288 checks, manifest v21. Declared hub landing = 18/18 written + 14/14 identical-exists + the runner-owned guided-import.json index re-issued with all 16 rows; zero chemistry bytes touched. Operator ignition trace 1a19b55d8ced0f5d ('Proceed with physics wave-2'), execution trace 1a19b55d8ced0f5d (single-window execution, disclosed).",
+    promo: {
+      // promotion commit of record = commit C of resources PR #279 (merge-of-record
+      // 78dd3694); trace = the EXECUTION trace of record (== the v21 manifest's
+      // operator_trace; the ignition trace rides the directive)
+      commit: "7b08a426930651bc6b61b21ebf897a77f61b3660",
+      tree: "fda77fc854e25ba62457991f7395fc44743b35cf",
+      parent: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      trace: "1a19b55d8ced0f5d",
+    },
+    integration_branch: null, // ancestry of record — resources PR #279 merged before this hub run
+    artifact_pin: "bfae9977809436fc2e5c20967bf2581f67a52bec", // wave-2 commit A — the source-0.6 generation pin of record for the 9 wave-2 notes
+    artifact_pins_by_note: {
+      // prior-pack provenance of record (G-D pinnedRef, per-note law): the stage-A pilot
+      // keeps its v18 source pin, the six wave-1 notes keep their v19 source pin —
+      // re-pinning them to the wave-2 commit would falsify their provenance
+      rn_RpyMnS5nqWSRWXXG: "7d493985c7729f30c2186e7e61a713ceacc96517",
+      rn_k9wr3prcgSBg5vfw: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_pfndTqR6DTJGZ8xQ: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_CpJZQWzbvMcM8fw3: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_5hfYYFrc2XjMJCrq: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_GxNWbSMqkTN4zgZB: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_ZgGMNrRGBKvYxxFf: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+    },
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 50 cumulative figures (9 pilot + 16 wave-1 + 25 wave-2), all module-mapped
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave2-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave2-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave2-survivors/hub-import-manifest-v21.json",
+      int3: "/home/z/my-project/scripts/physics-wave2-survivors/INT-3-transform-record-physics-wave2.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261102-physics-wave2-v21.json`,
+    identity: {
+      notes: 16,
+      lessons: 32,
+      checks: 288,
+      keyPoints: 152,
+      distractors: 480,
+      glossaryTerms: 68,
+      figures: 50,
+      figures_module_mapped: 50,
+      figures_note_level: 0,
+      workedExamples_populated: 12,
+      workedExamples_null: 4,
+      authored_chars_conserved: 196478,
+    },
+    artifact_count: 32,
+    note_count: 16,
+    wave_count: 3,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v21 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
+
+  "physics-wave3-v22": {
+    manifest: "hub-import-manifest-v22.json",
+    manifest_version: 22,
+    // NEW-SUBJECT wave-3 (resources PR #283, merge-of-record 4fabe6f8d7dca64d2b972b8541b71ec3b951ec51; runbook §1 + B6
+    // continue-global at v22 — CUMULATIVE over the igcse-physics-19 pack, the chemistry
+    // v8..v17 pattern, the physics v18..v21 pattern and the v20 corrective law). W3 of the
+    // frozen B4 partition: the 1-3 momentum + 1-4 moments subtopics, 7 notes. The INT-3
+    // carries ALL 23 pack rows (the v19 index-regression lesson of record), so the
+    // runner-owned guided-import.json re-issue keeps the whole flow. The 32 prior-pack
+    // artifacts are re-pinned byte-identical (1 pilot @ v18 shas + 6 wave-1 @ v19 shas +
+    // 9 wave-2 @ v21 shas); the 14 wave-3 artifacts are FIRST issues @ the commit-A pin
+    // 0cea83a7. ZERO chemistry bytes touched, ZERO authored prior-pack bytes changed.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 23, "sme-question-package": 23 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-3 chain — import the igcse-physics-19 wave-3 tranche of record (7 notes: rn_pqp4mfpHzGVtrjTT '1-3-1 Momentum' / rn_NfCjFmPfmMQ8pQSw '1-3-2 Forces & Momentum' / rn_8wqvPtsCCh3gdJN5 '1-3-3 Newton's Third Law' / rn_RQK2MW3zRPNNzwtc '1-3-4 Momentum & Safety Features' / rn_jzQZQcPRQkJvdYwJ '1-4-1 Moments' / rn_zn4NVCRcTSNv8sRZ '1-4-2 The Principle of Moments' / rn_TPDdhwDYsrWgQB7R '1-4-3 Centre of Gravity'; 14 lessons / 126 checks = 70 MCQ + 28 recall + 14 explain-why + 14 application) with the 32 prior-pack artifacts re-pinned byte-identical — CUMULATIVE pack 23 notes / 46 lessons / 414 checks, manifest v22. Declared hub landing = 14/14 written + 32/32 identical-exists + the runner-owned guided-import.json index re-issued with all 23 rows; zero chemistry bytes touched. Operator ignition trace 1a19c5cc34b70739 ('Proceed with wave-3'), execution trace 1a19c5cc34b70739 (single-window execution, disclosed).",
+    promo: {
+      // promotion commit of record = the TRACE-BEARING REPIN 377ef184 of commit C 17f7e8b8
+      // (tree byte-identical d4084d0c; resources PR #283 merge-of-record
+      // 4fabe6f8d7dca64d2b972b8541b71ec3b951ec51); the commit-C message omitted the
+      // execution trace — P0 fail-closed, remediated by the repin (zero content delta);
+      // trace = the EXECUTION trace of record (== the v22 manifest's
+      // operator_trace; the ignition trace rides the directive)
+      commit: "377ef184395b676ce98c183a46fd72c584deb4fa",
+      tree: "d4084d0c3cbcd885579175be7244bb7f8913f703",
+      parent: "4fabe6f8d7dca64d2b972b8541b71ec3b951ec51",
+      trace: "1a19c5cc34b70739",
+    },
+    integration_branch: null, // ancestry of record — resources PR #283 merged before this hub run
+    artifact_pin: "0cea83a781024eccd40da9bd5025f43b9b1c0c75", // wave-3 commit A — the source-0.6 generation pin of record for the 7 wave-3 notes
+    artifact_pins_by_note: {
+      // prior-pack provenance of record (G-D pinnedRef, per-note law): the stage-A pilot
+      // keeps its v18 source pin, the six wave-1 notes keep their v19 source pin, the nine
+      // wave-2 notes keep their v21 source pin — re-pinning them to the wave-3 commit
+      // would falsify their provenance
+      rn_RpyMnS5nqWSRWXXG: "7d493985c7729f30c2186e7e61a713ceacc96517",
+      rn_k9wr3prcgSBg5vfw: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_pfndTqR6DTJGZ8xQ: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_CpJZQWzbvMcM8fw3: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_5hfYYFrc2XjMJCrq: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_GxNWbSMqkTN4zgZB: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_ZgGMNrRGBKvYxxFf: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_nyV7C6zmyKXWJjKg: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_4zdmGRWTg5ksK44N: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_K3p2R3ykwwvHV9dp: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_gDy2qTkY26r5sMtd: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_2R3NrjGfJJY29Hzv: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_ZCGJsYwy6S6FbbbW: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_Mrfn29ZgQMq8th5P: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_kN63sqWsc9QdHSVx: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_nC3BswtJzYw8k6nX: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+    },
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 75 cumulative figures (9 pilot + 16 wave-1 + 25 wave-2 + 25 wave-3), all module-mapped
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave3-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave3-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave3-survivors/hub-import-manifest-v22.json",
+      int3: "/home/z/my-project/scripts/physics-wave3-survivors/INT-3-transform-record-physics-wave3.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261102-physics-wave3-v22.json`,
+    identity: {
+      notes: 23,
+      lessons: 46,
+      checks: 414,
+      keyPoints: 228,
+      distractors: 690,
+      glossaryTerms: 110,
+      figures: 75,
+      figures_module_mapped: 75,
+      figures_note_level: 0,
+      workedExamples_populated: 16,
+      workedExamples_null: 7,
+      authored_chars_conserved: 284650,
+    },
+    artifact_count: 46,
+    note_count: 23,
+    wave_count: 4,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v22 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
 };
 
 
@@ -1913,14 +2306,20 @@ if (!F) {
   process.exit(2);
 }
 
-// ── hub landing zone (inside the igcse-chemistry-19 pack) ───────────────────
-const PACK = path.join(HUB, "content/igcse-chemistry-19");
+// ── hub landing zone (feed-gated; default igcse-chemistry-19) ───────────────────
+const COURSE = F.course_id || "igcse-chemistry-19";
+const PACK = path.join(HUB, "content", COURSE);
 const LAND_LESSONS = path.join(PACK, "guided-lessons");
 const LAND_QUESTIONS = path.join(PACK, "guided-questions");
 const LAND_INDEX = path.join(PACK, "guided-import.json");
-const REL_LESSONS = "igcse-chemistry-19/guided-lessons"; // loadContentJson rel shapes
-const REL_QUESTIONS = "igcse-chemistry-19/guided-questions";
-const REL_INDEX = "igcse-chemistry-19/guided-import.json";
+const REL_LESSONS = `${COURSE}/guided-lessons`; // loadContentJson rel shapes
+const REL_QUESTIONS = `${COURSE}/guided-questions`;
+const REL_INDEX = `${COURSE}/guided-import.json`;
+const ARTIFACTS = F.artifact_count ?? 224;
+const NOTES = F.note_count ?? 112;
+const WAVES = F.wave_count ?? 10;
+const ID_PREFIX = F.id_prefix || "igcse-chemistry";
+const MAN_MIN_BYTES = F.manifest_min_bytes ?? 10000;
 
 const OPERATOR_TRACE = process.env.OPERATOR_TRACE || F.promo.trace;
 
@@ -2065,13 +2464,13 @@ async function main() {
 
   // ── G-A manifest: fetch @ pin, byte-identical to survivor, structurally sane
   const manBuf = await fetchRaw(`SME-GuidedLessons/integration/${F.manifest}`);
-  check("G-A", "manifest fetched @ promotion commit", manBuf.length > 10000, `${manBuf.length}B`);
+  check("G-A", "manifest fetched @ promotion commit", manBuf.length > MAN_MIN_BYTES, `${manBuf.length}B`);
   const survMan = fs.readFileSync(F.survivors.manifest);
   check("G-A", "manifest byte-identical to lane survivor", manBuf.equals(survMan), `remote ${sha256(manBuf).slice(0, 12)} vs survivor ${sha256(survMan).slice(0, 12)}`);
   const man = JSON.parse(manBuf.toString("utf8"));
   check("G-A", `format hub-import-manifest/1.0`, man.format === "hub-import-manifest/1.0", man.format);
   check("G-A", `manifest_version ${F.manifest_version}`, man.manifest_version === F.manifest_version, String(man.manifest_version));
-  check("G-A", "224 artifacts listed", Array.isArray(man.artifacts) && man.artifacts.length === 224, String(man.artifacts && man.artifacts.length));
+  check("G-A", `${ARTIFACTS} artifacts listed`, Array.isArray(man.artifacts) && man.artifacts.length === ARTIFACTS, String(man.artifacts && man.artifacts.length));
   const kinds = {};
   for (const a of man.artifacts) kinds[a.kind] = (kinds[a.kind] || 0) + 1;
   if (F.lessonKinds) {
@@ -2081,6 +2480,14 @@ async function main() {
       kinds["sme-question-package"] === 112 &&
       Object.keys(F.lessonKinds).reduce((a, k) => a + kinds[k], 0) === 112;
     check("G-A", "kinds 112/112 (generation-union: 110x1.3 + 2x1.4 + 112 packages)", kindsOk, JSON.stringify(kinds));
+  } else if (F.kinds) {
+    // feed-declared generation census (new-subject tranche scale)
+    const kindSum = Object.values(kinds).reduce((a, n) => a + n, 0);
+    const kindsOk =
+      Object.entries(F.kinds).every(([k, n]) => kinds[k] === n) &&
+      kindSum === ARTIFACTS &&
+      Object.keys(kinds).length === Object.keys(F.kinds).length;
+    check("G-A", `kinds ${ARTIFACTS}/${ARTIFACTS} (feed census)`, kindsOk, JSON.stringify(kinds));
   } else {
     check("G-A", "kinds 112/112", kinds[F.lesson_kind] === 112 && kinds["sme-question-package"] === 112, JSON.stringify(kinds));
   }
@@ -2089,7 +2496,7 @@ async function main() {
   check("G-A", "adapter of record", man.load_scope && man.load_scope.adapter === F.adapter, man.load_scope && man.load_scope.adapter);
   check("G-A", "manifest carries promotion operator trace", man.operator_trace === F.promo.trace, man.operator_trace);
   const mapBad = man.artifacts.filter((a) => !F.pathFamily(a));
-  check("G-A", "artifact paths conform to the feed's path-map families", mapBad.length === 0, mapBad.length ? mapBad.slice(0, 2).map((a) => a.path).join(",") : "224 conform");
+  check("G-A", "artifact paths conform to the feed's path-map families", mapBad.length === 0, mapBad.length ? mapBad.slice(0, 2).map((a) => a.path).join(",") : `${ARTIFACTS} conform`);
 
   // ── schemas @ the same commit, byte-anchored to survivors ──────────────────
   const hubSchemaBuf = await fetchRaw(F.schemas.hubRemote);
@@ -2112,7 +2519,7 @@ async function main() {
     }
   });
   const badFetch = fetched.filter((f) => !f.ok);
-  check("G-B", "224/224 artifacts fetched + sha256/bytes exact", badFetch.length === 0, badFetch.length ? badFetch.slice(0, 3).map((b) => `${b.noteId}:${b.why}`).join(" | ") : "all exact");
+  check("G-B", `${ARTIFACTS}/${ARTIFACTS} artifacts fetched + sha256/bytes exact`, badFetch.length === 0, badFetch.length ? badFetch.slice(0, 3).map((b) => `${b.noteId}:${b.why}`).join(" | ") : "all exact");
 
   // parse the green set (abort before schema/cross-ref/stream stages on any failure so far)
   if (FAILS.length) {
@@ -2134,11 +2541,11 @@ async function main() {
       if (schemaFails <= 3) check("G-C", `schema ${p.noteId}`, false, ajv.errorsText((vHub.errors || vPkg.errors)).slice(0, 200));
     }
   }
-  check("G-C", `ajv draft-07 ×224 (${F.adapter} + sme-question-package/1.0)`, schemaFails === 0, schemaFails ? `${schemaFails} failures` : "all pass");
+  check("G-C", `ajv draft-07 ×${ARTIFACTS} (${F.adapter} + ${F.package_schema || "sme-question-package/1.0"})`, schemaFails === 0, schemaFails ? `${schemaFails} failures` : "all pass");
 
   // ── G-D cross-refs: derived-ID grammar + checkRefs ↔ questions 1:1 ─────────
   const idOk = (id, noteId, l, k) =>
-    id === `igcse-chemistry::${noteId}` || // lesson/package id
+    id === `${ID_PREFIX}::${noteId}` || // lesson/package id
     (l != null && k == null && id === `${noteId}::L${l}`) ||
     (l != null && k != null && id === `${noteId}::L${l}::Q${k}`);
   let xFails = 0;
@@ -2150,8 +2557,8 @@ async function main() {
     if (p.kind === "sme-question-package") continue; // evaluate once per note
     const H0 = hub.obj, P0 = pkg.obj;
     const errs = [];
-    if (H0.lesson.id !== `igcse-chemistry::${p.noteId}`) errs.push("lesson id grammar");
-    if (P0.packageId !== `igcse-chemistry::${p.noteId}`) errs.push("packageId grammar");
+    if (H0.lesson.id !== `${ID_PREFIX}::${p.noteId}`) errs.push("lesson id grammar");
+    if (P0.packageId !== `${ID_PREFIX}::${p.noteId}`) errs.push("packageId grammar");
     if (!H0.source || H0.source.noteId !== p.noteId || P0.source.noteId !== p.noteId) errs.push("source.noteId");
     // provenance pins: the lesson channel pins to the feed's source generation; the question
     // packages stay pinned to their own generation (v2 feed: both = INT-0; figures feed:
@@ -2218,7 +2625,7 @@ async function main() {
     }
     if (errs.length) { xFails++; perNoteX[p.noteId] = errs.slice(0, 3).join(","); }
   }
-  check("G-D", F.figures_feed ? "X ×112: grammar + checkRefs↔questions + figure closure + provenance" : "X ×112: grammar + checkRefs↔questions bidirectional + provenance", xFails === 0, xFails ? `${xFails} notes failing: ` + Object.entries(perNoteX).slice(0, 3).map(([k, v]) => `${k}:${v}`).join(" | ") : F.figures_feed ? "1,195 checks + 200 figures resolve" : "1,195 checks resolve 1:1");
+  check("G-D", F.figures_feed ? `X ×${NOTES}: grammar + checkRefs↔questions + figure closure + provenance` : `X ×${NOTES}: grammar + checkRefs↔questions bidirectional + provenance`, xFails === 0, xFails ? `${xFails} notes failing: ` + Object.entries(perNoteX).slice(0, 3).map(([k, v]) => `${k}:${v}`).join(" | ") : F.figures_feed ? `${man.counts.checks} checks + ${man.counts.figures || 0} figures resolve` : `${man.counts.checks} checks resolve 1:1`);
 
   // ── G-E stream conservation (Φ) — per-note anchors + wave + grand ──────────
   const int3 = JSON.parse(fs.readFileSync(F.survivors.int3, "utf8"));
@@ -2253,7 +2660,7 @@ async function main() {
     // artifact-level anchor too
     if (hubP.sha256 !== anchor.hubSha256 || pkgP.sha256 !== anchor.pkgSha256) { phiFails++; check("G-E", `artifact sha anchors ${anchor.noteId}`, false, "hub/pkg sha vs feed INT-3 record"); }
   }
-  check("G-E", "per-note stream anchors ×112 (sha256 + chars)", phiFails === 0, phiFails ? `${phiFails} failures` : "all conserved");
+  check("G-E", `per-note stream anchors ×${NOTES} (sha256 + chars)`, phiFails === 0, phiFails ? `${phiFails} failures` : "all conserved");
   if (int3Legacy) check("G-E", "figures carried NO authored prose — stream == legacy INT-3 anchors ×112", legacyFails === 0, legacyFails ? `${legacyFails} drift` : "all equal");
   const waveOut = {};
   let waveFails = 0;
@@ -2261,7 +2668,7 @@ async function main() {
     waveOut[w] = h.digest("hex");
     if (man.conservation.wave_stream_sha256[w] !== waveOut[w]) waveFails++;
   }
-  check("G-E", "wave stream subtotals ×10 vs manifest", waveFails === 0 && Object.keys(waveOut).length === 10, waveFails ? `${waveFails} drift` : "all match");
+  check("G-E", `wave stream subtotals ×${WAVES} vs manifest`, waveFails === 0 && Object.keys(waveOut).length === WAVES, waveFails ? `${waveFails} drift` : "all match");
   const grandShaHex = grand.digest("hex"); // computed ONCE — single-finalization law (pilot INT-4 precedent)
   check("G-E", "grand stream vs manifest", grandChars === man.counts.authored_chars_conserved && grandShaHex === man.conservation.authored_stream_sha256, `${grandChars} chars ${grandShaHex.slice(0, 12)}`);
 
@@ -2294,7 +2701,7 @@ async function main() {
     else if (res === "revised") revised++;
     else noop++;
   }
-  check("LAND", `224 artifacts landed byte-exact (${F.landing} law)`, written + noop + revised === 224, `${written} written, ${revised} revised, ${noop} already identical`);
+  check("LAND", `${ARTIFACTS} artifacts landed byte-exact (${F.landing} law)`, written + noop + revised === ARTIFACTS, `${written} written, ${revised} revised, ${noop} already identical`);
   if (F.landing === "revision" && preDisk) {
     if (F.pilotDelta) {
       // v7 checks_feed: declared revision of exactly the pilot files (2 lessons + 2 packages)
@@ -2336,8 +2743,8 @@ async function main() {
     landing: {
       lessons_rel: REL_LESSONS,
       questions_rel: REL_QUESTIONS,
-      lesson_files: 112,
-      question_files: 112,
+      lesson_files: NOTES,
+      question_files: NOTES,
       byte_exact: true,
       additive_only: F.landing === "additive",
     },
@@ -2365,7 +2772,7 @@ async function main() {
     const buf = fs.readFileSync(dest);
     if (!buf.equals(p.buf)) { diskFails++; if (diskFails <= 3) check("G-V", `disk byte-identity ${p.noteId}`, false, dest); }
   }
-  check("G-V", "cold re-read ×224 byte-identical vs manifest sha", diskFails === 0, diskFails ? `${diskFails} drift` : "disk == fetched bytes");
+  check("G-V", `cold re-read ×${ARTIFACTS} byte-identical vs manifest sha`, diskFails === 0, diskFails ? `${diskFails} drift` : "disk == fetched bytes");
 
   // closing identity re-derived FROM DISK (not from the manifest)
   const disk = { notes: 0, lessons: 0, checks: 0, keyPoints: 0, distractors: 0, glossaryTerms: 0 };
@@ -2430,7 +2837,7 @@ async function main() {
     if (r2 === "identical-exists") idemOk++;
     else if (r2 === "revised") landLog.pop(); // revision-mode second pass rewrites identical bytes — treat as drift
   }
-  check("G-V", "idempotence re-landing 224/224 identical-exists", idemOk === 224, `${idemOk}/224`);
+  check("G-V", `idempotence re-landing ${ARTIFACTS}/${ARTIFACTS} identical-exists`, idemOk === ARTIFACTS, `${idemOk}/${ARTIFACTS}`);
 
   // ── receipt of record (lane side) ───────────────────────────────────────────
   const receipt = {
@@ -2457,20 +2864,20 @@ async function main() {
     gates: {
       P0: "promotion commit preflight (tree/parent/message/ancestry or declared pending promotion)",
       GA: "manifest integrity (format/version/kinds/counts/conservation/adapter/trace + survivor byte-identity + schemas byte-anchored)",
-      GB: "224/224 fetched raw @ pinned commit, sha256+bytes exact",
-      GC: "ajv draft-07 ×224 vs both target schemas",
-      GD: "X ×112 — derived-ID grammar, checkRefs↔questions bidirectional 1:1 (1,195 checks), pinned provenance" + (F.figures_feed ? ", figure closure both ways (200 figures)" : ""),
-      GE: "Φ — per-note stream anchors ×112 vs the feed's INT-3 record; wave subtotals ×10; grand stream vs manifest" + (F.figures_feed ? "; legacy-anchor equality ×112 (figures carried no prose)" : ""),
-      ...(F.figures_feed ? { GDELTA: "declared revision: exactly the 112 lesson files carry new bytes; question packages byte-identical ×112" } : {}),
-      LAND: `byte-exact atomic landing (${F.landing} law)` + (F.figures_feed ? " — 112 lesson files revised" : " — additive-only, divergent overwrite aborts"),
-      GV: "cold re-read ×224; closing identity re-derived from disk; loader rel-shape probe; static-build pickup; idempotence 224/224" + (F.figures_feed ? "; figure counts re-derived from disk" : ""),
+      GB: `${ARTIFACTS}/${ARTIFACTS} fetched raw @ pinned commit, sha256+bytes exact`,
+      GC: `ajv draft-07 ×${ARTIFACTS} vs both target schemas`,
+      GD: `X ×${NOTES} — derived-ID grammar, checkRefs↔questions bidirectional 1:1 (${man.counts.checks} checks), pinned provenance` + (F.figures_feed ? `, figure closure both ways (${man.counts.figures || 0} figures)` : ""),
+      GE: `Φ — per-note stream anchors ×${NOTES} vs the feed's INT-3 record; wave subtotals ×${WAVES}; grand stream vs manifest` + (F.figures_feed ? `; legacy-anchor equality ×${NOTES} (figures carried no prose)` : ""),
+      ...(F.landing === "revision" ? { GDELTA: `declared revision: exactly the ${NOTES} lesson files carry new bytes; question packages byte-identical ×${NOTES}` } : {}),
+      LAND: `byte-exact atomic landing (${F.landing} law)` + (F.landing === "revision" ? ` — ${revised} lesson files revised` : " — additive-only, divergent overwrite aborts"),
+      GV: `cold re-read ×${ARTIFACTS}; closing identity re-derived from disk; loader rel-shape probe; static-build pickup; idempotence ${ARTIFACTS}/${ARTIFACTS}` + (F.figures_feed ? "; figure counts re-derived from disk" : ""),
     },
     gate_results: CHECKS,
     landing: {
       hub_tree: HUB,
-      pack: "content/igcse-chemistry-19/",
-      lessons_dir: "guided-lessons/ (112 files)",
-      questions_dir: "guided-questions/ (112 files)",
+      pack: `content/${COURSE}/`,
+      lessons_dir: `guided-lessons/ (${NOTES} files)`,
+      questions_dir: `guided-questions/ (${NOTES} files)`,
       index: "guided-import.json (guided-import-index/1.0)",
       files_written: written,
       files_revised: revised,
@@ -2482,7 +2889,7 @@ async function main() {
     ...(F.figures_feed ? { figures_landed: diskFigs } : {}),
     conservation_recomputed: { authored_chars: grandChars, authored_stream_sha256: grandShaHex },
     next_operator_gated: [
-      "commit the hub tree addition (runner + content/igcse-chemistry-19/guided-*) per standing convention — push auto-bakes the hub (git-linked law)",
+      `commit the hub tree addition (runner + content/${COURSE}/guided-*) per standing convention — push auto-bakes the hub (git-linked law)`,
       ...(F.figures_feed ? ["hub PR (atomic): FEED runner + TS optional fields + renderer figure cards + revised artifacts + re-issued guided-import.json; merges only after resources PR #207"] : ["surface the guided lessons on a hub route via loadContentJson(REL_LESSONS/...) + guided-import.json index"]),
     ],
     duration_ms: Date.now() - t0,
@@ -2492,7 +2899,7 @@ async function main() {
   const hardFails = FAILS.length;
   console.log(`\nRESULT: ${hardFails === 0 ? "GREEN — LANDED" : "FAIL-CLOSED"}`);
   console.log(`  checks: ${CHECKS.filter((c) => c.ok).length}/${CHECKS.length} pass, ${hardFails} hard failures`);
-  console.log(`  landed: ${written} written + ${revised} revised + ${noop} identical-existing (224 artifacts, ${(receipt.landing.bytes_landed / 1024).toFixed(0)} KiB) into ${path.relative(process.cwd(), PACK) || PACK}`);
+  console.log(`  landed: ${written} written + ${revised} revised + ${noop} identical-existing (${ARTIFACTS} artifacts, ${(receipt.landing.bytes_landed / 1024).toFixed(0)} KiB) into ${path.relative(process.cwd(), PACK) || PACK}`);
   console.log(`  identity from disk: ${JSON.stringify(disk)}`);
   if (F.figures_feed) console.log(`  figures from disk: ${JSON.stringify(diskFigs)}`);
   console.log(`  stream conserved: ${grandChars} chars, sha ${grandShaHex.slice(0, 16)}…`);

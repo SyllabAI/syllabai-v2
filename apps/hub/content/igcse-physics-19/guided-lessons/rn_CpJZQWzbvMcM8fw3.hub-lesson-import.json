@@ -1,0 +1,193 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_CpJZQWzbvMcM8fw3",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "ce35a1614d44eaff618819ca3ed4d17d5774d22323caa574e6d94855c3196ef3",
+    "pinnedRef": "aa6485187429e0911b4a47a8a468e256bb41ce32"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_CpJZQWzbvMcM8fw3",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Movement & Position",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-1-movement-and-position/1-1-4-acceleration",
+    "specAnchors": [
+      {
+        "code": "1.6",
+        "text": "know and use the relationship between acceleration, change in velocity and time taken: change in velocity accelerati on = time taken ( v − u ) a = t"
+      }
+    ],
+    "primer": {
+      "text": "Speed tells you how fast something moves; acceleration tells you how fast that speed itself is changing. This lesson defines the rate of change of velocity, builds the equation from initial and final velocity, and shows why slowing down deserves its own negative sign rather than a different word alone.",
+      "prerequisiteSubtopic": "Movement & Position"
+    },
+    "modules": [
+      {
+        "id": "rn_CpJZQWzbvMcM8fw3::L1",
+        "title": "Acceleration as the rate of change of velocity",
+        "sourceHeadings": [
+          "Rate of change in velocity"
+        ],
+        "specRefs": [
+          "1.6"
+        ],
+        "opening": "Everyday speech calls any gain of pace acceleration; physics makes the idea precise by dividing the change in velocity by the time it took. This lesson assembles that equation piece by piece and settles the unit in which every answer must be quoted.",
+        "keyPoints": [
+          "Acceleration is defined as the rate of change in velocity: how much the velocity changes each second.",
+          "The change in velocity is the gap between final and initial velocity, written Δv = v − u.",
+          "The relationship reads a = Δv / t, with acceleration in metres per second squared (m/s²).",
+          "A change of one metre per second every second is one metre per second squared."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Take the velocity at the end, subtract the velocity at the start, and divide by how long the change lasted. That quotient is the acceleration.",
+            "analogy": "It is like comparing two weigh-ins at a gym: the change (final minus initial) divided by the weeks between them gives a rate of change per week.",
+            "examPointer": "Always subtract initial from final, never the other way: getting Δv backwards flips the sign of the whole answer."
+          },
+          "medium": {
+            "restatement": "The definition a = (v − u)/t is a rate: its unit m/s² is read as 'metres per second, changed each second'.",
+            "analogy": "A pay rise per month works the same way: (new salary − old salary) divided by the months taken is a monthly rate of change.",
+            "examPointer": "Unit questions are one-mark gifts if you know the story: m/s² means the velocity in m/s changes by that amount every second."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_CpJZQWzbvMcM8fw3::L1::Q1",
+          "rn_CpJZQWzbvMcM8fw3::L1::Q2",
+          "rn_CpJZQWzbvMcM8fw3::L1::Q3",
+          "rn_CpJZQWzbvMcM8fw3::L1::Q4",
+          "rn_CpJZQWzbvMcM8fw3::L1::Q5",
+          "rn_CpJZQWzbvMcM8fw3::L1::Q6",
+          "rn_CpJZQWzbvMcM8fw3::L1::Q7",
+          "rn_CpJZQWzbvMcM8fw3::L1::Q8",
+          "rn_CpJZQWzbvMcM8fw3::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_CpJZQWzbvMcM8fw3::L2",
+        "title": "Slowing down, the triangle, and the sign of the answer",
+        "sourceHeadings": [
+          "Speeding up and slowing down",
+          "Examples of acceleration and deceleration"
+        ],
+        "specRefs": [
+          "1.6"
+        ],
+        "opening": "The same relationship must now work in both directions of motion: rockets gaining speed and brakes shedding it. This lesson reads the sign of the answer, walks the formula triangle for the two rearrangements, and finishes with the bullet-train calculation done properly, sign included.",
+        "keyPoints": [
+          "A positive acceleration accompanies speeding up; a negative acceleration accompanies slowing down.",
+          "Deceleration is the everyday name for a negative acceleration when the velocity is decreasing.",
+          "Covering a in the triangle leaves Δv over t; covering Δv leaves a beside t (multiply); covering t leaves Δv over a.",
+          "The bullet-train case: Δv = 42 − 50 = −8 m/s over 30 s gives a = −0.27 m/s², and the minus sign is the slowing-down evidence."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Work out the change in velocity with its sign, divide by the time, and read the sign of the answer: plus means gaining speed, minus means losing it.",
+            "analogy": "A bank balance going up or down: the sign of the monthly change tells you which way the money (the velocity) is heading.",
+            "examPointer": "When a question asks how the answer shows slowing, point at the negative sign and say what it means; the magnitude alone earns only part of the mark."
+          },
+          "medium": {
+            "restatement": "The triangle rearranges a = Δv/t into Δv = a × t and t = Δv/a. In every form the sign of Δv travels through, so a deceleration keeps its minus in all three arrangements.",
+            "analogy": "The sign behaves like a passenger on the triangle: whichever corner you cover, it rides along unchanged.",
+            "examPointer": "Quoting a deceleration as −0.27 m/s² is safest. If you strip the sign and call it 0.27 m/s² deceleration, say so in words — a bare positive number with no words reads as speeding up."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_CpJZQWzbvMcM8fw3::L2::Q1",
+          "rn_CpJZQWzbvMcM8fw3::L2::Q2",
+          "rn_CpJZQWzbvMcM8fw3::L2::Q3",
+          "rn_CpJZQWzbvMcM8fw3::L2::Q4",
+          "rn_CpJZQWzbvMcM8fw3::L2::Q5",
+          "rn_CpJZQWzbvMcM8fw3::L2::Q6",
+          "rn_CpJZQWzbvMcM8fw3::L2::Q7",
+          "rn_CpJZQWzbvMcM8fw3::L2::Q8",
+          "rn_CpJZQWzbvMcM8fw3::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "acceleration",
+          "definition": "The rate of change of velocity: how much the velocity changes each second, in m/s².",
+          "firstLesson": 1
+        },
+        {
+          "term": "deceleration",
+          "definition": "The everyday name for a negative acceleration, when velocity is decreasing.",
+          "firstLesson": 2
+        },
+        {
+          "term": "Δv (change in velocity)",
+          "definition": "Final velocity minus initial velocity, v − u; the numerator of the acceleration relationship.",
+          "firstLesson": 1
+        },
+        {
+          "term": "m/s²",
+          "definition": "The unit of acceleration: a velocity change in metres per second happening every second.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A Japanese bullet train decelerates at a constant rate in a straight line. The velocity of the train decreases from 50 m/s to 42 m/s in 30 seconds. Calculate (a) the change in velocity and (b) the deceleration, explaining how the answer shows the train is slowing down.",
+        "steps": [
+          "List the known quantities: initial velocity u = 50 m/s; final velocity v = 42 m/s; time taken t = 30 s.",
+          "For part (a) use Δv = v − u: Δv = 42 − 50 = −8 m/s.",
+          "For part (b) use a = Δv / t: a = −8 / 30 = −0.27 m/s².",
+          "Interpret: the answer is negative, which indicates the train is slowing down."
+        ],
+        "finalAnswer": "(a) Δv = −8 m/s; (b) a = −0.27 m/s², negative so the train is slowing down"
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a253f3b4a9cb-5-6-10-acceleration-formula-triangle.png",
+        "alt": "Acceleration Formula Triangle, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Formula triangle for acceleration, change in velocity and time",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "To use an equation triangle, simply cover up the value you wish to calculate and the structure of the equation will be revealed",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3f79363e3830-5-6-10-acceleration-examples.png",
+        "alt": "Acceleration Examples, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Examples of acceleration and deceleration",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "A rocket speeding up (accelerating) and a car slowing down (decelerating)",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

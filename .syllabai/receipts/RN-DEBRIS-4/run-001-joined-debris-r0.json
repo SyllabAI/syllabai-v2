@@ -1,0 +1,45 @@
+{
+ "task": "RN-DEBRIS-4 run-001 — the joined-debris lane for the already-joined variants (the RN-DEBRIS-3 disclosed residual #2)",
+ "date": "2026-11-01",
+ "operatorOrder": "IM trace 1a1961109cf6dd09: 'joined-debris lane for the already-joined variants'",
+ "fetchFirst": "worklog tail re-read at open (tip caf624f4 receipt(R0-AUTO-105), 23,537 lines, 1,306 blocks): NO joined-debris block exists — the RN-DEBRIS-3 residual names this exact lane ('already-joined debris variants inside math (speedoflight, changeinvelocity joined forms) — a possible future joined-debris lane'); RN-DEBRIS-3 receipt + lane artifacts (ls3_census.py, ls3_convert.py, ls3_katex_guard.ts) fetched and REUSED of record (zero-duplication: MARK post-filter regex, DP tuple law, to_raw byte surgery, katex guard law all inherited)",
+ "scope": "glued letter runs [A-Za-z]{5,} inside $...$ segments of apps/hub/content/** (1,050 content JSONs); protected classes untouched exactly as RN-DEBRIS-3: backtick 23a-speech segments, prose hits",
+ "census": {
+  "method": "maximal glued runs after LaTeX command masking (\\[A-Za-z]+), classified by the final law below; v1 census (dictionary-only) measured 31,539 convertible = false-positive flood (real-word dict-misses: gathered 24,078 = LaTeX \\begin{gathered} args, allowed/slanted/units/minutes, names logan/anand/willis) — killed by three fail-closed layers BEFORE any apply",
+  "law": "(0) CORPUS-WORD GATE: glued run occurring >=3x as a standalone token in clean context (dollar interiors masked before the 32.1M-token stream; sentence punctuation + string boundaries carry sentinel tokens) is a word of the corpus -> keep; (1) run.lower() in dictionary -> real word -> keep; (2) blocklist (arc function family + adjudicated dict-miss real noun 'payout') / ALL-CAPS / mixed-case -> keep; (3) bottleneck DP over dictionary tokens len>=2 (fewest tokens -> max min-token-prose-freq -> longest — the of-record tuple law mirrored); (4) junk floor min token prose-freq >= 100; (5) bare-suffix token ban (ed/er/es/est/ing/ly); (6) PHRASE EVIDENCE: the exact spaced token sequence occurs >=1x in the sentinel-guarded clean-context stream — cross-sentence adjacency ('allow. Ed') can never attest a phrase (the RN-DEBRIS-2 'clean occurrences' mechanism, zero-invention)",
+  "dictionary": "REBUILT of record: nltk words(en) 235,886 + en-basic 850, lowercase-deduped 234,377 + mechanical British -ise/-ised supplement 2,532 = 236,909 tokens; the of-record RN-DEBRIS-3 byte-set (240,628) is not recoverable (built in-session /tmp/ls3_dict.json, never committed) — the rebuild is SMALLER, i.e. fail-closed direction (any token missing here is kept, never invented); the delta surfaced as the v1 flood and is neutralized by gates 0/5/6, not by dict size",
+  "dollarSegments": 358299,
+  "proseSpanFilter": "3,553 $...$ spans skipped as protected prose: currency-dollar false pairs ('$5m revenue ... per dollar') — spans containing markdown ** or en-dash are prose, not math; without this filter joined-census prose words (againstthe, productivityin, coalmines) would have been misattributed as dollar hits (a weakness invisible to the letter-spaced census, disclosed and closed here)",
+  "classes": {"split-evidenced": 532, "realword": 53607, "corpusword": 39535, "unsegmentable": 443, "no-phrase-evidence": 68, "mixedcase": 174, "suffixtoken": 7, "allcaps": 46, "blocklist": 2},
+  "notable": "every one of the 158 distinct split-evidenced runs reviewed by hand with context before apply; no-phrase-evidence keeps include true debris (wastedpower, slidingsine, speedoflightinglass) held by the exact-phrase gate, and names (samarth, altamash, businesstoday) held by the corpus-word gate"
+ },
+ "conversions": {
+  "segments": 320,
+  "occurrenceSites": 385,
+  "files": 34,
+  "titlecaseSplits": 55,
+  "subscriptSplits": 3,
+  "examples": ["speedoflight -> speed of light ($time = \\frac{distance}{speed of light}$)", "changeinvelocity -> change in velocity ($time=\\frac{change in velocity}{acceleration}$)", "speedoflightinair/material/vacuum -> speed of light in air/material/vacuum", "Notprime -> not prime, Changeintotal -> Change in total (titlecase law)", "A_{quartersphere} -> A_{quarter sphere}, \\mathrm{gradient}_{parallelline} -> _{parallel line} (subscript, the RN-DEBRIS-3 A_{quarter circle} precedent)", "turnsinprimarycoil/turnsinsecondarycoil -> turns in primary/secondary coil", "youngmodulus -> young modulus, refractiveindex -> refractive index, carbondioxide -> carbon dioxide, workdone -> work done"],
+  "perRunLaw": "PER-RUN fail-closed (disclosed delta from ls3's per-segment all-or-nothing): mixed segments are the norm in the joined class ($SectionsAandBare20minutes=\\frac{20}{60}=\\frac{1}{3}ofanhour$ converts ofanhour only, AandBare stays held) — each split stands on its own dictionary + phrase evidence; maximal-run splicing guarantees no cross-mangling between overlapping names (massof vs massofbusanddriver)"
+ },
+ "failClosed": {
+  "classes": ["corpus-word gate keeps (62,332 v2-era runs incl. 24,078 \\begin{gathered}/pmatrix LaTeX args rescued by gate 0)", "no-phrase-evidence debris kept (wastedpower, slidingsine, speedoflightinglass, stressonthewideportion, energyofphotonsat, ...)", "unsegmentable 443 (E_{kafter}-class: len-1-token ban auto-protects the RN-DEBRIS-2 of-record join family)", "bare-suffix keeps (7)", "all-caps 46 / mixed-case 174 (acronym + code-style protection)", "blocklist: payout (\\text{expected} \\text{payout} is the real noun), arc function family"],
+  "markRefusals": 0,
+  "rawCountZeroKeeps": 0
+ },
+ "gates": {
+  "jsonValidity": "34/34 modified files parse",
+  "idempotence": "post-apply census over the applied tree: split-evidenced = 0 (class absent; realword 53,607 -> 54,607 = exactly the split outputs reclassifying as real words) — artifact jd4_census_post_apply_idempotence_r0.json",
+  "katexRender": "of-record ls3_katex_guard law over ALL $-segments of the 34 files: old 49,503 / new 49,503 segments; failures old 2,339 = new 2,339; string-diff introduced 31 / healed 31 — DEFECT-PAIRED 31/31, unpaired 0 (jd4_katex_pair.ts + jd4_katex_pair_r0.json): every introduced string is the direct conversion output of a healed pre-image whose residual defect (\\timesr, \\Deltam, \\Rightarrowtotalpower — runs GLUED INTO LaTeX command names, outside this lane's masking by construction, invisible to RN-DEBRIS-3 likewise) still fails exactly as before; net render incapacity delta = 0",
+  "corpusGate": "bun apps/hub/scripts/verify_corpus_23a.ts at the applied tree: PASSED — code spans 0 / dollar 0 / \\text{} 4 / multiline 0 / baretext 5 / dangling 0 — baseline byte-identical to the frozen record",
+  "worklogIntegrity": "race-guard: origin/main moved d5f5c1e8 -> 34d6bfab (PR #603) mid-lane; branch jd4/run-001 rebased with zero file overlap check before push"
+ },
+ "residuals": [
+  "glued-into-command defects (\\timesr, \\Deltam, \\DeltaSA, \\Rightarrowtotalpower) are OUTSIDE the [A-Za-z]{5,} run class (masked as commands) — a possible future command-boundary lane; 31 such pre-existing failures ride along defect-paired in the 34 files",
+  "the 68 no-phrase-evidence debris runs kept (exact phrase not attested in clean context — e.g. speedoflightinglass, wastedpower, slidingsine)",
+  "letter-spaced floor classes carried from RN-DEBRIS-3 (120 fail-closed segments, sub-4-letter census floor, E_{k a f t e r} spaced variants needing the per-page dict path)",
+  "backtick 23a-speech + prose glued debris untouched (protected classes of record)",
+  "corpus back-sync curation + PAT rotation standing orders (operator)"
+ ],
+ "discipline": "fetch-first; fail-closed; zero-invention (every output token dictionary-evidenced AND phrase-attested in clean context); tokens via env only (never argv/URL/logs); FF push no force; race-guard rebase; CI bounded poll; receipts .syllabai-only; zero DB/Neon contact"
+}

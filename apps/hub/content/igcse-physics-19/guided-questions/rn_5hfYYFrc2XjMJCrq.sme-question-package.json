@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_5hfYYFrc2XjMJCrq",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "34c83f3935d3dda40ec50b503508498b518ce0d83212a26527ee9bce73bf8347",
+    "pinnedRef": "aa6485187429e0911b4a47a8a468e256bb41ce32"
+  },
+  "packageId": "igcse-physics::rn_5hfYYFrc2XjMJCrq",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L1::Q1",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L1",
+      "stem": "On a velocity-time graph, what does a flat horizontal section of the line show?",
+      "misconceptionClass": "flat-line meaning",
+      "options": [
+        {
+          "key": "B",
+          "text": "Zero acceleration, so the velocity holds a steady value",
+          "correct": true,
+          "explanation": "No tilt means no change of velocity per second: cruising at one constant velocity.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "The object has stopped moving altogether",
+          "correct": false,
+          "explanation": "Stopped would mean the velocity line sits ON the time axis at zero, not merely flat above it.",
+          "misconception": "flat-equals-stationary"
+        },
+        {
+          "key": "C",
+          "text": "The acceleration is at its largest",
+          "correct": false,
+          "explanation": "Largest acceleration belongs to the steepest slope; a flat line has no slope at all.",
+          "misconception": "flat-steep inversion"
+        },
+        {
+          "key": "D",
+          "text": "The object is decelerating gently",
+          "correct": false,
+          "explanation": "Deceleration needs a downward tilt; a level line has none.",
+          "misconception": "flat-tilted conflation"
+        }
+      ]
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L1::Q2",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L1",
+      "stem": "Two straight sections appear on a velocity-time graph: one shallow, one steep, both rising. What do they share and how do they differ?",
+      "misconceptionClass": "slope-magnitude comparison",
+      "options": [
+        {
+          "key": "D",
+          "text": "Both show constant acceleration; the steeper one has the larger acceleration",
+          "correct": true,
+          "explanation": "Any straight section is constant acceleration, and steepness ranks the acceleration's size.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Both show the same acceleration because both rise",
+          "correct": false,
+          "explanation": "Rising fixes the sign, not the size; steepness sets how large the acceleration is.",
+          "misconception": "sign-equals-size"
+        },
+        {
+          "key": "B",
+          "text": "The shallow one shows deceleration because it changes slowly",
+          "correct": false,
+          "explanation": "A gentle rise is a small positive acceleration, not a negative one.",
+          "misconception": "gentle-equals-negative"
+        },
+        {
+          "key": "C",
+          "text": "Neither shows constant acceleration unless the line is flat",
+          "correct": false,
+          "explanation": "Constancy of acceleration is exactly what a straight section means.",
+          "misconception": "constancy misread"
+        }
+      ]
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L1::Q3",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L1",
+      "stem": "A line on a velocity-time graph tilts steadily downward. What is happening to the object?",
+      "misconceptionClass": "negative-gradient meaning",
+      "options": [
+        {
+          "key": "C",
+          "text": "Its velocity is decreasing, so it is decelerating",
+          "correct": true,
+          "explanation": "A negative gradient reads directly as decreasing velocity.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "It is moving backwards along its path",
+          "correct": false,
+          "explanation": "Backwards travel would need the velocity itself to go negative, which a downward tilt alone does not show.",
+          "misconception": "tilt-equals-reverse"
+        },
+        {
+          "key": "B",
+          "text": "It is accelerating, because all motion counts as acceleration",
+          "correct": false,
+          "explanation": "Losing speed is deceleration; the sign of the gradient settles which.",
+          "misconception": "any-change-equals-acceleration"
+        },
+        {
+          "key": "D",
+          "text": "Its velocity is unchanged; only its distance changes",
+          "correct": false,
+          "explanation": "On this graph the vertical axis IS the velocity, so a tilt is a velocity change.",
+          "misconception": "axis blindness"
+        }
+      ]
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L1::Q4",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L1",
+      "stem": "Which quantity belongs on the vertical axis of a velocity-time graph?",
+      "misconceptionClass": "axis assignment",
+      "options": [
+        {
+          "key": "A",
+          "text": "Velocity, in metres per second",
+          "correct": true,
+          "explanation": "The graph is named for its axes: velocity up, time along.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Distance travelled, in metres",
+          "correct": false,
+          "explanation": "Distance on the vertical axis makes it a distance-time graph, the sibling graph from earlier in this section.",
+          "misconception": "graph-family swap"
+        },
+        {
+          "key": "C",
+          "text": "Acceleration, in m/s²",
+          "correct": false,
+          "explanation": "Acceleration is read FROM the gradient here; it is not the plotted quantity.",
+          "misconception": "derived-equals-plotted"
+        },
+        {
+          "key": "D",
+          "text": "Time, in seconds",
+          "correct": false,
+          "explanation": "Time always runs along the horizontal axis on these motion graphs.",
+          "misconception": "axis flip"
+        }
+      ]
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L1::Q5",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L1",
+      "stem": "A graph shows a straight rising section followed by a flat section. How should the two sections be described?",
+      "misconceptionClass": "section sequencing",
+      "options": [
+        {
+          "key": "B",
+          "text": "Constant acceleration first, then constant velocity",
+          "correct": true,
+          "explanation": "The rising straight is steady acceleration; the flat continuation is steady velocity.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Increasing acceleration first, then acceleration",
+          "correct": false,
+          "explanation": "A straight rise has one fixed acceleration; only a curve steepens.",
+          "misconception": "straight-equals-increasing"
+        },
+        {
+          "key": "C",
+          "text": "Constant velocity first, then deceleration",
+          "correct": false,
+          "explanation": "That reverses both sections; the flat stretch comes second in this graph.",
+          "misconception": "section-order swap"
+        },
+        {
+          "key": "D",
+          "text": "Deceleration first, then rest",
+          "correct": false,
+          "explanation": "A rising tilt and a flat line above the axis are neither deceleration nor rest.",
+          "misconception": "double misread"
+        }
+      ]
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L1::Q6",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L1",
+      "stem": "State what a straight sloping line on a velocity-time graph tells you about the acceleration.",
+      "misconceptionClass": "constancy recall",
+      "kind": "recall",
+      "modelAnswer": "A straight sloping line means the acceleration is constant: the velocity changes by the same amount every second along that section.",
+      "keywords": [
+        "constant acceleration",
+        "straight",
+        "same amount",
+        "every second"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L1::Q7",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L1",
+      "stem": "Recall what the steepness of the slope on a velocity-time graph represents.",
+      "misconceptionClass": "steepness recall",
+      "kind": "recall",
+      "modelAnswer": "The steepness (slope) represents the magnitude of the acceleration: a steep slope is a large acceleration and a gentle slope is a small one.",
+      "keywords": [
+        "magnitude",
+        "acceleration",
+        "steep",
+        "gentle"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L1::Q8",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L1",
+      "stem": "Explain why a flat line and a line sitting on the time axis describe two different physical situations on a velocity-time graph.",
+      "misconceptionClass": "flat-vs-zero distinction",
+      "kind": "explain-why",
+      "modelAnswer": "A flat line above the axis fixes the velocity at some non-zero steady value: the object cruises. A line lying on the time axis fixes the velocity at zero: the object is at rest. The height of the flat stretch is the velocity itself, so height, not flatness, separates cruising from stopping.",
+      "keywords": [
+        "flat",
+        "time axis",
+        "velocity",
+        "rest"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L1::Q9",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L1",
+      "stem": "A velocity-time graph shows an object held at 15 m/s for 8 s, then rising in a straight line to 25 m/s over the next 10 s. Describe both sections and state which section has the larger acceleration.",
+      "misconceptionClass": "two-section reading",
+      "kind": "application",
+      "modelAnswer": "The first section is constant velocity (zero acceleration) at 15 m/s for 8 s; the second is a straight rise, a constant acceleration of (25 − 15) / 10 = 1.0 m/s². The second section has the larger acceleration, since the first has none.",
+      "keywords": [
+        "constant velocity",
+        "1.0 m/s²",
+        "zero acceleration",
+        "straight rise"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L2::Q1",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L2",
+      "stem": "Which reading must be taken from the vertical axis when extracting acceleration from a velocity-time gradient?",
+      "misconceptionClass": "axis-reading order",
+      "options": [
+        {
+          "key": "C",
+          "text": "The change in velocity across the chosen section",
+          "correct": true,
+          "explanation": "Δy is the velocity change; it is the numerator of the gradient and of a = Δv/t.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "The velocity at the start of the whole graph",
+          "correct": false,
+          "explanation": "The starting velocity of the graph is irrelevant; only the change across the section enters.",
+          "misconception": "absolute-vs-change"
+        },
+        {
+          "key": "B",
+          "text": "The highest velocity anywhere on the plot",
+          "correct": false,
+          "explanation": "A peak value is not the section's change; the triangle fixes which two heights matter.",
+          "misconception": "peak confusion"
+        },
+        {
+          "key": "D",
+          "text": "The area beneath the line",
+          "correct": false,
+          "explanation": "Area belongs to the distance reading of the next lesson, not to the gradient.",
+          "misconception": "area-gradient swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L2::Q2",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L2",
+      "stem": "A straight section carries the velocity from 8 m/s up to 20 m/s across 6 s. What acceleration does the gradient give?",
+      "misconceptionClass": "gradient arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "2.0 m/s², from (20 − 8) ÷ 6",
+          "correct": true,
+          "explanation": "Δv = 12 m/s over Δt = 6 s gives a gradient of 2.0 m/s².",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "3.3 m/s², from 20 ÷ 6",
+          "correct": false,
+          "explanation": "Dividing the final velocity by the time ignores the 8 m/s the object already had.",
+          "misconception": "initial dropped"
+        },
+        {
+          "key": "C",
+          "text": "0.50 m/s², from 6 ÷ 12",
+          "correct": false,
+          "explanation": "That inverts the quotient; the velocity change divides by the time.",
+          "misconception": "reciprocal inversion"
+        },
+        {
+          "key": "D",
+          "text": "12 m/s², quoting the velocity change as the rate",
+          "correct": false,
+          "explanation": "12 m/s is Δv; the division by 6 s is what makes it a rate.",
+          "misconception": "delta-v as rate"
+        }
+      ]
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L2::Q3",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L2",
+      "stem": "Why do examiners prefer a large gradient triangle drawn on the graph?",
+      "misconceptionClass": "technique reasoning",
+      "options": [
+        {
+          "key": "B",
+          "text": "A larger triangle spreads the readings across more gridlines, so each read value is more reliable",
+          "correct": true,
+          "explanation": "Bigger rises and runs mean the same half-square-line reading error is a smaller fraction of each value.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Large triangles make the gradient come out positive",
+          "correct": false,
+          "explanation": "The sign comes from the tilt, not the triangle's size.",
+          "misconception": "sign myth"
+        },
+        {
+          "key": "C",
+          "text": "Small triangles are banned by the mark scheme",
+          "correct": false,
+          "explanation": "Nothing is banned; small triangles just lose precision and credit for the drawn construction.",
+          "misconception": "ban myth"
+        },
+        {
+          "key": "D",
+          "text": "A large triangle removes the need to state units",
+          "correct": false,
+          "explanation": "Units are always required on the final acceleration, whatever the triangle's size.",
+          "misconception": "unit exemption myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L2::Q4",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L2",
+      "stem": "On the cyclist's training graph, the section between 5 s and 10 s rises by 5 m/s. What acceleration does that section carry?",
+      "misconceptionClass": "worked-value extraction",
+      "options": [
+        {
+          "key": "D",
+          "text": "1 m/s², from 5 m/s over 5 s",
+          "correct": true,
+          "explanation": "Δv = 5 m/s and Δt = 10 − 5 = 5 s, so a = 5/5 = 1 m/s².",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "5 m/s², from 5 ÷ 1",
+          "correct": false,
+          "explanation": "The 5 in the denominator must be the 5-second interval, not a bare 1.",
+          "misconception": "denominator slip"
+        },
+        {
+          "key": "B",
+          "text": "0.5 m/s², from 5 ÷ 10",
+          "correct": false,
+          "explanation": "Dividing by the absolute timestamp 10 s forgets that the section starts at 5 s.",
+          "misconception": "absolute-time division"
+        },
+        {
+          "key": "C",
+          "text": "2 m/s², from 10 ÷ 5",
+          "correct": false,
+          "explanation": "That divides the timestamps rather than the changes; the quotient must be Δv over Δt.",
+          "misconception": "timestamp ratio"
+        }
+      ]
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L2::Q5",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L2",
+      "stem": "A gradient triangle is drawn on a downward-sloping section. The velocity falls 6 m/s across 3 s. What should be concluded?",
+      "misconceptionClass": "signed gradient",
+      "options": [
+        {
+          "key": "A",
+          "text": "The gradient is −2 m/s²: a deceleration of 2 m/s²",
+          "correct": true,
+          "explanation": "The fall of 6 m/s across 3 s gives a signed gradient of −2 m/s², read as decelerating at 2 m/s².",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The gradient is +2 m/s² because the triangle is drawn upward",
+          "correct": false,
+          "explanation": "The construction is drawn for measurement; the sign comes from the falling velocity.",
+          "misconception": "construction-sign confusion"
+        },
+        {
+          "key": "C",
+          "text": "The gradient is −18 m/s², multiplying 6 by 3",
+          "correct": false,
+          "explanation": "Gradient divides the changes; multiplication has no place in the reading.",
+          "misconception": "operation swap"
+        },
+        {
+          "key": "D",
+          "text": "No acceleration can be found from a falling line",
+          "correct": false,
+          "explanation": "Falling lines carry perfectly good negative gradients; the method is unchanged.",
+          "misconception": "sign exclusion myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L2::Q6",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L2",
+      "stem": "State the relationship between a velocity-time gradient and acceleration in symbols.",
+      "misconceptionClass": "gradient equation recall",
+      "kind": "recall",
+      "modelAnswer": "Acceleration = gradient = Δy / Δx, where Δy is the change in velocity and Δx is the change in time across the straight section.",
+      "keywords": [
+        "gradient",
+        "Δy / Δx",
+        "change in velocity",
+        "change in time"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L2::Q7",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L2",
+      "stem": "Recall the two practical instructions for drawing a gradient triangle on an exam graph.",
+      "misconceptionClass": "technique recall",
+      "kind": "recall",
+      "modelAnswer": "Draw it as large as the section allows, and take both the velocity change and the time change directly from the axis scales with their units.",
+      "keywords": [
+        "large",
+        "axis scales",
+        "units",
+        "section"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L2::Q8",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L2",
+      "stem": "Explain why one single gradient value can describe a whole straight section of a velocity-time graph.",
+      "misconceptionClass": "constancy justification",
+      "kind": "explain-why",
+      "modelAnswer": "Along a straight line the gradient is the same at every point, and on this graph that gradient IS the acceleration. A straight section therefore has one unchanging acceleration, so one triangle anywhere on the section returns the value that holds for the entire interval.",
+      "keywords": [
+        "gradient",
+        "same",
+        "every point",
+        "straight"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5hfYYFrc2XjMJCrq::L2::Q9",
+      "moduleId": "rn_5hfYYFrc2XjMJCrq::L2",
+      "stem": "A tram's velocity falls from 18 m/s to 6 m/s in a straight section lasting 4.0 s. Use the gradient to calculate the acceleration and state the motion word for it.",
+      "misconceptionClass": "signed gradient application",
+      "kind": "application",
+      "modelAnswer": "Δv = 6 − 18 = −12 m/s over Δt = 4.0 s, so the gradient is −3.0 m/s²; the negative value is a deceleration.",
+      "keywords": [
+        "−12 m/s",
+        "−3.0 m/s²",
+        "deceleration",
+        "gradient"
+      ],
+      "options": []
+    }
+  ]
+}

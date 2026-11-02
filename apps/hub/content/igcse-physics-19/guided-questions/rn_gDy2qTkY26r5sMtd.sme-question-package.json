@@ -1,0 +1,494 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_gDy2qTkY26r5sMtd",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "2520c479b5d10ab5b41368b3bd9b79402e55aeb5e0241d64abbc9a3e730ba342",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "packageId": "igcse-physics::rn_gDy2qTkY26r5sMtd",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L1::Q1",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L1",
+      "stem": "A book's weight is 12 N downward and the desk pushes up with 12 N. The resultant force on the book is:",
+      "misconceptionClass": "balance reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "24 N downward",
+          "correct": false,
+          "explanation": "The forces oppose; they do not stack.",
+          "misconception": "add-only error"
+        },
+        {
+          "key": "B",
+          "text": "12 N upward",
+          "correct": false,
+          "explanation": "That is one force alone, not the combination.",
+          "misconception": "member-vs-sum confusion"
+        },
+        {
+          "key": "C",
+          "text": "Zero — the forces are balanced",
+          "correct": true,
+          "explanation": "Equal opposites cancel to a zero resultant.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Impossible to say without the mass",
+          "correct": false,
+          "explanation": "The two values already decide the resultant.",
+          "misconception": "data myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L1::Q2",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L1",
+      "stem": "In a tug-of-war, person A pulls 80 N left and person B pulls 100 N right. The rope's resultant is:",
+      "misconceptionClass": "tug arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "180 N to the right",
+          "correct": false,
+          "explanation": "Opposing pulls subtract rather than add.",
+          "misconception": "add-only error"
+        },
+        {
+          "key": "B",
+          "text": "20 N to the right",
+          "correct": true,
+          "explanation": "100 − 80 = 20 N, on the stronger side.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "20 N to the left",
+          "correct": false,
+          "explanation": "The leftward pull is the weaker one.",
+          "misconception": "direction flip"
+        },
+        {
+          "key": "D",
+          "text": "90 N, the average",
+          "correct": false,
+          "explanation": "Averaging is not the combining law.",
+          "misconception": "averaging error"
+        }
+      ]
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L1::Q3",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L1",
+      "stem": "An unbalanced resultant force must cause the object to:",
+      "misconceptionClass": "consequence recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Stay exactly where it is",
+          "correct": false,
+          "explanation": "That is the balanced case.",
+          "misconception": "case flip"
+        },
+        {
+          "key": "B",
+          "text": "Move at constant velocity",
+          "correct": false,
+          "explanation": "Constant velocity needs zero resultant.",
+          "misconception": "case flip"
+        },
+        {
+          "key": "C",
+          "text": "Gain mass",
+          "correct": false,
+          "explanation": "Mass is untouched by forces.",
+          "misconception": "invented effect"
+        },
+        {
+          "key": "D",
+          "text": "Accelerate — its velocity changes",
+          "correct": true,
+          "explanation": "A non-zero resultant always changes the velocity: speed, direction, or both.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L1::Q4",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L1",
+      "stem": "Which pair of forces is balanced?",
+      "misconceptionClass": "pair discrimination",
+      "options": [
+        {
+          "key": "A",
+          "text": "7 N left and 7 N right",
+          "correct": true,
+          "explanation": "Equal opposites cancel exactly.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "7 N left and 9 N right",
+          "correct": false,
+          "explanation": "A 2 N surplus survives.",
+          "misconception": "imbalance missed"
+        },
+        {
+          "key": "C",
+          "text": "7 N left and 7 N up",
+          "correct": false,
+          "explanation": "Those are not along one line and do not cancel.",
+          "misconception": "axis mixing"
+        },
+        {
+          "key": "D",
+          "text": "5 N up and 3 N up",
+          "correct": false,
+          "explanation": "Same-direction forces add to 8 N.",
+          "misconception": "direction misread"
+        }
+      ]
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L1::Q5",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L1",
+      "stem": "A crate already sliding at 4 m/s experiences balanced forces. Its motion becomes:",
+      "misconceptionClass": "balanced-motion law",
+      "options": [
+        {
+          "key": "A",
+          "text": "A stop, because balanced means stationary",
+          "correct": false,
+          "explanation": "Balanced does not mean stationary; it means no change.",
+          "misconception": "stillness myth"
+        },
+        {
+          "key": "B",
+          "text": "A steady 4 m/s in a straight line",
+          "correct": true,
+          "explanation": "Zero resultant leaves the existing velocity untouched.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "A gradual speed-up",
+          "correct": false,
+          "explanation": "Speeding up needs a resultant along the motion.",
+          "misconception": "case flip"
+        },
+        {
+          "key": "D",
+          "text": "A widening circle",
+          "correct": false,
+          "explanation": "Turning needs a sideways resultant.",
+          "misconception": "case flip"
+        }
+      ]
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L1::Q6",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L1",
+      "stem": "State what 'balanced forces' means for the resultant force.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The forces cancel completely, so the resultant force on the body is zero.",
+      "keywords": [
+        "cancel",
+        "zero",
+        "resultant",
+        "forces"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L1::Q7",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L1",
+      "stem": "Name the two forces that balance for a book resting on a desk.",
+      "misconceptionClass": "scene recall",
+      "kind": "recall",
+      "modelAnswer": "The book's weight acting downward and the desk's upward push on it.",
+      "keywords": [
+        "weight",
+        "desk",
+        "upward",
+        "push"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L1::Q8",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L1",
+      "stem": "Explain why the tug-of-war rope accelerates towards person B when A pulls 80 N and B pulls 100 N.",
+      "misconceptionClass": "surplus reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The two pulls do not cancel: subtracting 80 N from 100 N leaves a 20 N resultant pointing towards B. Any unbalanced force accelerates the body in the resultant's own direction, so the rope gains velocity towards B.",
+      "keywords": [
+        "20",
+        "unbalanced",
+        "accelerate",
+        "resultant"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L1::Q9",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L1",
+      "stem": "Two horizontal pushes act on a crate: 25 N to the right and 10 N to the left. State the resultant and the effect on the crate's motion.",
+      "misconceptionClass": "resultant application",
+      "kind": "application",
+      "modelAnswer": "25 N − 10 N = 15 N to the right; the crate accelerates in that direction, its velocity changing accordingly.",
+      "keywords": [
+        "15",
+        "right",
+        "accelerate",
+        "resultant"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L2::Q1",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L2",
+      "stem": "In F = m × a, the resultant force is measured in:",
+      "misconceptionClass": "unit recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kilograms",
+          "correct": false,
+          "explanation": "Kilograms measure the mass.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "B",
+          "text": "Newtons",
+          "correct": true,
+          "explanation": "Force's unit is the newton (N).",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Metres per second",
+          "correct": false,
+          "explanation": "That is a velocity unit.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "D",
+          "text": "Metres per second squared",
+          "correct": false,
+          "explanation": "That is the acceleration's unit.",
+          "misconception": "unit slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L2::Q2",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L2",
+      "stem": "A 4 kg trolley is pushed by a 12 N resultant force. Its acceleration is:",
+      "misconceptionClass": "direct substitution",
+      "options": [
+        {
+          "key": "A",
+          "text": "3 m/s²",
+          "correct": true,
+          "explanation": "a = F/m = 12/4 = 3 m/s².",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "48 m/s²",
+          "correct": false,
+          "explanation": "That multiplies instead of dividing.",
+          "misconception": "operation flip"
+        },
+        {
+          "key": "C",
+          "text": "0.33 m/s²",
+          "correct": false,
+          "explanation": "That divides the wrong way.",
+          "misconception": "reciprocal slip"
+        },
+        {
+          "key": "D",
+          "text": "16 m/s²",
+          "correct": false,
+          "explanation": "That adds the two values.",
+          "misconception": "addition slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L2::Q3",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L2",
+      "stem": "The same resultant force acts on a trolley whose mass is then doubled. The new acceleration is:",
+      "misconceptionClass": "inverse proportionality",
+      "options": [
+        {
+          "key": "A",
+          "text": "Unchanged",
+          "correct": false,
+          "explanation": "Mass sits in the denominator; it cannot leave a unchanged.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "B",
+          "text": "Doubled",
+          "correct": false,
+          "explanation": "That is the force habit, not the mass habit.",
+          "misconception": "proportion flip"
+        },
+        {
+          "key": "C",
+          "text": "Zero",
+          "correct": false,
+          "explanation": "A non-zero force on any mass gives non-zero acceleration.",
+          "misconception": "zero myth"
+        },
+        {
+          "key": "D",
+          "text": "Halved",
+          "correct": true,
+          "explanation": "Doubling m halves a for the same F.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L2::Q4",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L2",
+      "stem": "A crash calculation returns F = −14000 N for a passenger. The minus sign records that:",
+      "misconceptionClass": "sign reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "The force is a mistake",
+          "correct": false,
+          "explanation": "The sign is meaningful, not erroneous.",
+          "misconception": "error myth"
+        },
+        {
+          "key": "B",
+          "text": "The passenger's mass is negative",
+          "correct": false,
+          "explanation": "Masses never enter with a minus here.",
+          "misconception": "nonsense reading"
+        },
+        {
+          "key": "C",
+          "text": "The force acts opposite to the passenger's motion",
+          "correct": true,
+          "explanation": "The decelerating force opposes the travel — that is what the minus encodes.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The answer should be squared",
+          "correct": false,
+          "explanation": "Squaring has no place in the law.",
+          "misconception": "invented step"
+        }
+      ]
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L2::Q5",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L2",
+      "stem": "A 1200 kg car accelerates from rest to 18 m/s in 6 s. The resultant force is:",
+      "misconceptionClass": "two-step calculation",
+      "options": [
+        {
+          "key": "A",
+          "text": "3600 N",
+          "correct": true,
+          "explanation": "a = 18/6 = 3 m/s², then F = 1200 × 3 = 3600 N.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "200 N",
+          "correct": false,
+          "explanation": "That divides mass by time — not the law.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "21600 N",
+          "correct": false,
+          "explanation": "That multiplies mass by the final velocity.",
+          "misconception": "equation slip"
+        },
+        {
+          "key": "D",
+          "text": "7200 N",
+          "correct": false,
+          "explanation": "That double-counts the time.",
+          "misconception": "arithmetic slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L2::Q6",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L2",
+      "stem": "Write the equation linking unbalanced force, mass and acceleration, with the unit of each quantity.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "F = m × a: force in newtons, mass in kilograms, acceleration in metres per second squared.",
+      "keywords": [
+        "force",
+        "mass",
+        "acceleration",
+        "newtons"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L2::Q7",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L2",
+      "stem": "Under which famous name is F = m × a also known?",
+      "misconceptionClass": "attribution recall",
+      "kind": "recall",
+      "modelAnswer": "Newton's second law of motion.",
+      "keywords": [
+        "second law",
+        "newton",
+        "motion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L2::Q8",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L2",
+      "stem": "Explain why the decelerating force on a crash-test passenger carries a minus sign.",
+      "misconceptionClass": "sign reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The force points opposite to the passenger's motion. The minus sign records that opposing direction — which is exactly why the force slows the passenger to a halt instead of speeding them up.",
+      "keywords": [
+        "opposite",
+        "direction",
+        "minus",
+        "slow"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gDy2qTkY26r5sMtd::L2::Q9",
+      "moduleId": "rn_gDy2qTkY26r5sMtd::L2",
+      "stem": "A 70 kg passenger travelling at 20 m/s is brought to rest in 0.1 s. Calculate the deceleration and the force on the passenger.",
+      "misconceptionClass": "crash arithmetic",
+      "kind": "application",
+      "modelAnswer": "a = (0 − 20)/0.1 = −200 m/s², and F = 70 × (−200) = −14000 N — the minus showing the force opposes the motion.",
+      "keywords": [
+        "200",
+        "14000",
+        "0.1",
+        "opposes"
+      ],
+      "options": []
+    }
+  ]
+}

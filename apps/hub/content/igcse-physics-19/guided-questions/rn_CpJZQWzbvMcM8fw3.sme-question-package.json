@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_CpJZQWzbvMcM8fw3",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "ce35a1614d44eaff618819ca3ed4d17d5774d22323caa574e6d94855c3196ef3",
+    "pinnedRef": "aa6485187429e0911b4a47a8a468e256bb41ce32"
+  },
+  "packageId": "igcse-physics::rn_CpJZQWzbvMcM8fw3",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L1::Q1",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L1",
+      "stem": "A cyclist's velocity climbs from 3.0 m/s to 9.0 m/s over 12 s. What is the cyclist's average acceleration?",
+      "misconceptionClass": "delta-v arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.50 m/s², from (9.0 − 3.0) ÷ 12",
+          "correct": true,
+          "explanation": "Δv = 9.0 − 3.0 = 6.0 m/s, and 6.0 ÷ 12 = 0.50 m/s².",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0.75 m/s², from 9.0 ÷ 12",
+          "correct": false,
+          "explanation": "Dividing the final velocity by the time skips the subtraction of the initial velocity.",
+          "misconception": "initial-velocity dropped"
+        },
+        {
+          "key": "C",
+          "text": "2.0 m/s², from 12 ÷ 6.0",
+          "correct": false,
+          "explanation": "That inverts the quotient; the change in velocity divides by the time, not vice versa.",
+          "misconception": "reciprocal inversion"
+        },
+        {
+          "key": "D",
+          "text": "6.0 m/s², quoting the change in velocity as the answer",
+          "correct": false,
+          "explanation": "6.0 m/s is Δv itself; the time division to get the rate is still missing.",
+          "misconception": "delta-v as final answer"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L1::Q2",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L1",
+      "stem": "Which expression correctly states the change in velocity used in the acceleration relationship?",
+      "misconceptionClass": "delta-v ordering",
+      "options": [
+        {
+          "key": "B",
+          "text": "Δv = v − u, final minus initial",
+          "correct": true,
+          "explanation": "The definition subtracts the starting velocity from the ending velocity.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Δv = u − v, initial minus final",
+          "correct": false,
+          "explanation": "That reverses the sign, turning every speeding-up answer negative.",
+          "misconception": "order inversion"
+        },
+        {
+          "key": "C",
+          "text": "Δv = v + u, the two velocities added",
+          "correct": false,
+          "explanation": "Adding mixes the two values instead of measuring the gap between them.",
+          "misconception": "operation swap"
+        },
+        {
+          "key": "D",
+          "text": "Δv = v × u, the two velocities multiplied",
+          "correct": false,
+          "explanation": "A product has units (m/s)² and cannot be a change in velocity.",
+          "misconception": "operation invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L1::Q3",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L1",
+      "stem": "The unit of acceleration is metres per second squared. What does 'per second squared' actually describe?",
+      "misconceptionClass": "unit meaning",
+      "options": [
+        {
+          "key": "D",
+          "text": "The velocity, in m/s, changes by that amount every second",
+          "correct": true,
+          "explanation": "m/s² is (m/s) per s: a velocity change of so-many metres per second during each second.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "The distance covered doubles every second",
+          "correct": false,
+          "explanation": "That describes a doubling pattern of distance, not the velocity-rate meaning of the unit.",
+          "misconception": "doubling myth"
+        },
+        {
+          "key": "B",
+          "text": "The time is measured in squared seconds",
+          "correct": false,
+          "explanation": "Time stays in ordinary seconds; the squaring appears when the m/s change is divided by seconds.",
+          "misconception": "squared-time myth"
+        },
+        {
+          "key": "C",
+          "text": "The velocity is squared before dividing",
+          "correct": false,
+          "explanation": "Nothing is squared in a = Δv/t; the unit's square is bookkeeping from (m/s)/s.",
+          "misconception": "square-first myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L1::Q4",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L1",
+      "stem": "A train's velocity falls steadily from 50 m/s to 42 m/s. Before any division, what is the value and sign of its change in velocity?",
+      "misconceptionClass": "signed delta-v",
+      "options": [
+        {
+          "key": "C",
+          "text": "−8 m/s, because 42 − 50 = −8",
+          "correct": true,
+          "explanation": "Final minus initial gives 42 − 50 = −8 m/s, and the minus sign is the slowing-down signature.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "+8 m/s, because magnitudes are always positive",
+          "correct": false,
+          "explanation": "Refusing the sign discards exactly the information that the train is slowing.",
+          "misconception": "magnitude-only habit"
+        },
+        {
+          "key": "B",
+          "text": "−92 m/s, because 42 and 50 must combine",
+          "correct": false,
+          "explanation": "The values are subtracted, not added; 42 − 50 = −8 m/s.",
+          "misconception": "operation swap"
+        },
+        {
+          "key": "D",
+          "text": "0 m/s, because the train is still moving",
+          "correct": false,
+          "explanation": "Motion continuing does not mean velocity unchanged; it fell by 8 m/s.",
+          "misconception": "motion-equals-constant-v"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L1::Q5",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L1",
+      "stem": "Which everyday phrase matches the physics meaning of negative acceleration?",
+      "misconceptionClass": "sign-language mapping",
+      "options": [
+        {
+          "key": "B",
+          "text": "Slowing down, also called decelerating",
+          "correct": true,
+          "explanation": "A negative acceleration says the velocity is decreasing, which is exactly slowing down.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Reversing direction while keeping the same pace",
+          "correct": false,
+          "explanation": "A direction flip at constant speed is a velocity change, but the phrase here targets a shrinking speed.",
+          "misconception": "direction-flip conflation"
+        },
+        {
+          "key": "C",
+          "text": "Moving backwards along the road",
+          "correct": false,
+          "explanation": "Backwards motion is about the direction of velocity, not its rate of change.",
+          "misconception": "direction conflation"
+        },
+        {
+          "key": "D",
+          "text": "Holding a perfectly steady velocity",
+          "correct": false,
+          "explanation": "Steady velocity means zero acceleration, not negative acceleration.",
+          "misconception": "zero-vs-negative"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L1::Q6",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L1",
+      "stem": "State the defining relationship for average acceleration in symbols and name each symbol.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "a = Δv / t, where a is the acceleration, Δv = v − u is the change in velocity from initial u to final v, and t is the time taken.",
+      "keywords": [
+        "a = Δv / t",
+        "change in velocity",
+        "initial",
+        "time taken"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L1::Q7",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L1",
+      "stem": "Recall the unit of acceleration and read it aloud in words.",
+      "misconceptionClass": "unit recall",
+      "kind": "recall",
+      "modelAnswer": "The unit is metres per second squared, m/s², meaning the velocity in metres per second changes by that amount each second.",
+      "keywords": [
+        "metres per second squared",
+        "m/s²",
+        "each second",
+        "velocity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L1::Q8",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L1",
+      "stem": "Explain why the word 'rate' belongs in the definition of acceleration.",
+      "misconceptionClass": "rate-concept explain",
+      "kind": "explain-why",
+      "modelAnswer": "Acceleration compares a change against the duration over which it happens, so it is a per-second quantity, not a single amount. Two objects could share the same velocity change of 6 m/s yet differ wildly: one taking 2 s accelerates three times faster than one taking 6 s. Only the division by time captures that difference.",
+      "keywords": [
+        "rate",
+        "per second",
+        "duration",
+        "change"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L1::Q9",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L1",
+      "stem": "A shuttle's velocity rises from 0 m/s to 96 m/s in 8.0 s during launch. Calculate its average acceleration.",
+      "misconceptionClass": "from-rest arithmetic",
+      "kind": "application",
+      "modelAnswer": "Δv = 96 − 0 = 96 m/s, so a = 96 / 8.0 = 12 m/s².",
+      "keywords": [
+        "96",
+        "8.0",
+        "12 m/s²",
+        "from rest"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L2::Q1",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L2",
+      "stem": "A braking train goes from 50 m/s to 42 m/s in 30 s. What average acceleration should be quoted?",
+      "misconceptionClass": "deceleration sign",
+      "options": [
+        {
+          "key": "A",
+          "text": "−0.27 m/s²",
+          "correct": true,
+          "explanation": "Δv = 42 − 50 = −8 m/s and −8 ÷ 30 = −0.27 m/s²; the minus sign flags the slowing.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "+0.27 m/s²",
+          "correct": false,
+          "explanation": "Dropping the minus sign turns a deceleration into a speeding-up statement.",
+          "misconception": "sign dropped"
+        },
+        {
+          "key": "C",
+          "text": "−1.7 m/s², from 50 ÷ 30",
+          "correct": false,
+          "explanation": "Dividing the initial velocity by the time skips the change calculation entirely.",
+          "misconception": "delta-v skipped"
+        },
+        {
+          "key": "D",
+          "text": "−0.36 m/s², from 8 ÷ 22",
+          "correct": false,
+          "explanation": "The wrong denominator (42 − 50 used against 30 mistakenly altered) is not the relationship; Δv/30 is.",
+          "misconception": "denominator invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L2::Q2",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L2",
+      "stem": "On the formula triangle for this relationship, covering the change in velocity reveals which arrangement?",
+      "misconceptionClass": "triangle rearrangement",
+      "options": [
+        {
+          "key": "C",
+          "text": "Δv = a × t, acceleration beside time",
+          "correct": true,
+          "explanation": "With the Δv corner hidden, the remaining corners sit side by side and read as a product.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "Δv = t ÷ a, time over acceleration",
+          "correct": false,
+          "explanation": "That quotient would give seconds per (m/s²), not a velocity in m/s.",
+          "misconception": "reading inversion"
+        },
+        {
+          "key": "B",
+          "text": "Δv = a ÷ t",
+          "correct": false,
+          "explanation": "Dividing by time again would double-count the rate structure of the original equation.",
+          "misconception": "operation confusion"
+        },
+        {
+          "key": "D",
+          "text": "Δv = v + u",
+          "correct": false,
+          "explanation": "The sum of velocities is not a rearrangement of the acceleration relationship.",
+          "misconception": "cross-equation mixing"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L2::Q3",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L2",
+      "stem": "A car sheds speed steadily from 30 m/s to rest in 12 s. Which statement about its acceleration is correct?",
+      "misconceptionClass": "rest-as-final-velocity",
+      "options": [
+        {
+          "key": "B",
+          "text": "It is −2.5 m/s², since Δv = 0 − 30 and 12 s divides it",
+          "correct": true,
+          "explanation": "Rest means final velocity 0, so Δv = −30 m/s and −30 ÷ 12 = −2.5 m/s².",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "It is 0 m/s², because the car ends at rest",
+          "correct": false,
+          "explanation": "Ending at rest is the outcome of a large negative acceleration, not a zero one.",
+          "misconception": "rest-equals-zero-a"
+        },
+        {
+          "key": "C",
+          "text": "It is +2.5 m/s² because magnitudes are quoted positive",
+          "correct": false,
+          "explanation": "Bare positivity loses the slowing-down information; keep the sign or say 'deceleration'.",
+          "misconception": "sign dropped"
+        },
+        {
+          "key": "D",
+          "text": "It is −30 m/s², quoting the velocity change as the rate",
+          "correct": false,
+          "explanation": "−30 m/s is Δv; the division by 12 s is still owed before calling it an acceleration.",
+          "misconception": "delta-v as rate"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L2::Q4",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L2",
+      "stem": "A rocket gains velocity at a steady +8.0 m/s². How much does its velocity change during 5.0 s?",
+      "misconceptionClass": "triangle product use",
+      "options": [
+        {
+          "key": "D",
+          "text": "+40 m/s, from 8.0 × 5.0",
+          "correct": true,
+          "explanation": "The product form Δv = a × t gives 8.0 × 5.0 = +40 m/s, sign included.",
+          "misconception": null
+        },
+        {
+          "key": "A",
+          "text": "+1.6 m/s, from 8.0 ÷ 5.0",
+          "correct": false,
+          "explanation": "That quotient is the time-side rearrangement misapplied; the product is wanted here.",
+          "misconception": "operation swap"
+        },
+        {
+          "key": "B",
+          "text": "+13 m/s, from 8.0 + 5.0",
+          "correct": false,
+          "explanation": "Adding the bare numbers multiplies units wrongly; m/s² times s is wanted.",
+          "misconception": "operation invention"
+        },
+        {
+          "key": "C",
+          "text": "+8.0 m/s, unchanged because the rate is constant",
+          "correct": false,
+          "explanation": "A constant rate still accumulates over time; 5.0 s of it changes the velocity by 40 m/s.",
+          "misconception": "rate-vs-amount"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L2::Q5",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L2",
+      "stem": "Why is it better exam practice to write a deceleration with its negative sign rather than as a bare positive value?",
+      "misconceptionClass": "sign-communication",
+      "options": [
+        {
+          "key": "A",
+          "text": "The sign carries the physical claim that the velocity is decreasing",
+          "correct": true,
+          "explanation": "A negative acceleration states the direction of the change; a bare magnitude leaves that claim unstated.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Negative numbers are always larger in physics equations",
+          "correct": false,
+          "explanation": "Sign is not about size; it encodes the direction of the change.",
+          "misconception": "sign-size myth"
+        },
+        {
+          "key": "C",
+          "text": "Markers deduct a fixed mark for any positive acceleration",
+          "correct": false,
+          "explanation": "Positive accelerations are perfectly lawful; the issue is only whether the sign matches the motion described.",
+          "misconception": "marking myth"
+        },
+        {
+          "key": "D",
+          "text": "The negative sign converts the unit to m/s²",
+          "correct": false,
+          "explanation": "The unit is m/s² with or without the sign; sign and unit are separate features.",
+          "misconception": "sign-unit confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L2::Q6",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L2",
+      "stem": "State what the everyday term 'deceleration' corresponds to in the language of acceleration.",
+      "misconceptionClass": "terminology recall",
+      "kind": "recall",
+      "modelAnswer": "Deceleration is a negative acceleration: the velocity is decreasing, so the change in velocity per second is negative.",
+      "keywords": [
+        "negative acceleration",
+        "velocity",
+        "decreasing",
+        "per second"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L2::Q7",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L2",
+      "stem": "Recall the two rearranged forms of a = Δv / t that the formula triangle provides besides the definition itself.",
+      "misconceptionClass": "rearrangement recall",
+      "kind": "recall",
+      "modelAnswer": "The triangle also gives Δv = a × t and t = Δv / a.",
+      "keywords": [
+        "Δv = a × t",
+        "t = Δv / a",
+        "triangle",
+        "rearranged"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L2::Q8",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L2",
+      "stem": "Explain how the sign of the calculated acceleration tells you whether the object was speeding up or slowing down, using the bullet-train values as your example.",
+      "misconceptionClass": "sign-meaning explain",
+      "kind": "explain-why",
+      "modelAnswer": "The train's Δv = 42 − 50 = −8 m/s already carries the minus that says the velocity fell; dividing by 30 s preserves it, giving a = −0.27 m/s². Because the sign survives the division, a negative answer can only mean the final velocity sat below the initial one — the train was slowing down.",
+      "keywords": [
+        "sign",
+        "negative",
+        "velocity fell",
+        "slowing down"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpJZQWzbvMcM8fw3::L2::Q9",
+      "moduleId": "rn_CpJZQWzbvMcM8fw3::L2",
+      "stem": "A lift decelerates steadily from 6.0 m/s to 1.0 m/s in 2.5 s. Calculate its average acceleration and state what the sign shows.",
+      "misconceptionClass": "mixed-sign arithmetic",
+      "kind": "application",
+      "modelAnswer": "Δv = 1.0 − 6.0 = −5.0 m/s, so a = −5.0 / 2.5 = −2.0 m/s². The negative sign shows the lift is slowing down.",
+      "keywords": [
+        "−5.0 m/s",
+        "−2.0 m/s²",
+        "slowing down",
+        "sign"
+      ],
+      "options": []
+    }
+  ]
+}

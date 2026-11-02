@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "task": {
+    "id": "T-GRADE-008",
+    "title": "Pearson Algolia archive widget harvest \u2014 23 courses +150 sessions (trace 1a1984c6a317ea2d)",
+    "owner": "main agent (Z.ai, zai-web session web-19f335c2-abed-4ade-968a-305029b290e3)",
+    "status": "IN_REVIEW",
+    "band": "T-GRADE",
+    "deps": [
+      "T-GRADE-007"
+    ],
+    "execution_record": "The archive widget is AngularJS DocListCtrl over Algolia index qualifications-uk_LIVE_master-content (public search-only creds in page hidden inputs). harvest_pearson_index.py: paginate dam:Asset grade-boundaries hits, classify filename->(family,session), intersect fetch-missing.json, download via fetch_pearson verified helpers. +14 docs (linear Jan 2021 + Nov 2020, ial x11, modular Nov 2025). Parse 40/1209/0w. Validator: whole-doc no-overall demoted to honest absence (cancelled awards verified in source); partial asymmetry stays error. G1 0, G2 8/8 EXACT, agg 0. Bundle f6e2a18c4f81636d \u2014 23 courses +150 sessions; linear gains 0 served sessions (no overall awards). 56 absences remain ledgered."
+  }
+}

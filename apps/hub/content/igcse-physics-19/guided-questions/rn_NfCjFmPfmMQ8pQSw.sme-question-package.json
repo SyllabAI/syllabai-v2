@@ -1,0 +1,501 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_NfCjFmPfmMQ8pQSw",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "963ee6adaac60f2cf676a14ae1de69308de2dfbd6182e98ab4e99fad818d40bd",
+    "pinnedRef": "0cea83a781024eccd40da9bd5025f43b9b1c0c75"
+  },
+  "packageId": "igcse-physics::rn_NfCjFmPfmMQ8pQSw",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L1::Q1",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L1",
+      "stem": "For a moving object, a resultant force produces:",
+      "misconceptionClass": "force effect recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "A change in the object's mass",
+          "correct": false,
+          "explanation": "Forces change motion, not the amount of matter present.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "B",
+          "text": "A change in momentum",
+          "correct": true,
+          "explanation": "Accelerating or decelerating a moving object is precisely a momentum change.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Nothing unless a collision takes place",
+          "correct": false,
+          "explanation": "Any resultant force on a moving object changes its momentum, collision or not.",
+          "misconception": "collision-only myth"
+        },
+        {
+          "key": "D",
+          "text": "A change of direction only, never of speed",
+          "correct": false,
+          "explanation": "A force can change speed as well as direction.",
+          "misconception": "direction-only myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L1::Q2",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L1",
+      "stem": "Combining F = ma with momentum p = mv over a contact time t gives:",
+      "misconceptionClass": "equation assembly",
+      "options": [
+        {
+          "key": "A",
+          "text": "F = (mv + mu)/t",
+          "correct": false,
+          "explanation": "The momentum terms subtract, because Δp is final minus initial.",
+          "misconception": "sign slip"
+        },
+        {
+          "key": "B",
+          "text": "F = mv − mu",
+          "correct": false,
+          "explanation": "That is the numerator alone; the division by time has been dropped.",
+          "misconception": "time dropped"
+        },
+        {
+          "key": "C",
+          "text": "F = (mv − mu)/t",
+          "correct": true,
+          "explanation": "Substituting a = (v − u)/t into F = ma and multiplying by m lands exactly here.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "F = (mv − mu) × t",
+          "correct": false,
+          "explanation": "The contact time divides the change; multiplying is the inverse operation.",
+          "misconception": "division flip"
+        }
+      ]
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L1::Q3",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L1",
+      "stem": "In the force equation, the change in momentum is measured in:",
+      "misconceptionClass": "unit recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "kg m/s",
+          "correct": true,
+          "explanation": "Momentum change is mass × velocity change, so its unit is kg m/s.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "N",
+          "correct": false,
+          "explanation": "Newtons measure the force itself, not the momentum change inside it.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "C",
+          "text": "m/s",
+          "correct": false,
+          "explanation": "m/s belongs to each velocity, not to mass × velocity.",
+          "misconception": "velocity unit"
+        },
+        {
+          "key": "D",
+          "text": "kg",
+          "correct": false,
+          "explanation": "Kilograms measure mass alone.",
+          "misconception": "symbol unit bleed"
+        }
+      ]
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L1::Q4",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L1",
+      "stem": "In the force equation F = (mv − mu)/t, the letter u stands for:",
+      "misconceptionClass": "symbol recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The final velocity",
+          "correct": false,
+          "explanation": "u and v are swapped: u comes first in time.",
+          "misconception": "letter swap"
+        },
+        {
+          "key": "B",
+          "text": "The acceleration",
+          "correct": false,
+          "explanation": "Acceleration is a, from F = ma.",
+          "misconception": "equation bleed"
+        },
+        {
+          "key": "C",
+          "text": "The change in momentum",
+          "correct": false,
+          "explanation": "The momentum change is the whole numerator mv − mu, not one letter.",
+          "misconception": "symbol conflation"
+        },
+        {
+          "key": "D",
+          "text": "The initial velocity",
+          "correct": true,
+          "explanation": "u is the initial velocity; v is the final one.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L1::Q5",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L1",
+      "stem": "A ball bounces straight back along its original path. Taking the outward direction as positive, its return velocity is entered as:",
+      "misconceptionClass": "sign convention",
+      "options": [
+        {
+          "key": "A",
+          "text": "Positive",
+          "correct": false,
+          "explanation": "Only motion along the chosen positive direction counts positive; the return leg runs the other way.",
+          "misconception": "sign habit"
+        },
+        {
+          "key": "B",
+          "text": "Negative",
+          "correct": true,
+          "explanation": "The return motion is opposite to the chosen positive direction, so its velocity enters as negative.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Zero",
+          "correct": false,
+          "explanation": "A rebounding ball is still moving fast; zero would mean instant rest.",
+          "misconception": "rebound null myth"
+        },
+        {
+          "key": "D",
+          "text": "Unsigned until a direction is declared",
+          "correct": false,
+          "explanation": "A direction has been declared here, and velocity always carries a sign in this equation.",
+          "misconception": "sign deferral"
+        }
+      ]
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L1::Q6",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L1",
+      "stem": "State the equation that links force with the momentum change and the time, and give the unit of that momentum change.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "F = (mv − mu)/t, with the force in newtons and the numerator mv − mu — the momentum change — in kg m/s.",
+      "keywords": [
+        "force",
+        "momentum",
+        "newtons",
+        "time",
+        "equation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L1::Q7",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L1",
+      "stem": "Why must one direction be chosen as positive before velocities are substituted into the force equation?",
+      "misconceptionClass": "sign-convention recall",
+      "kind": "recall",
+      "modelAnswer": "Velocity is a vector, so motion in the reverse direction must be substituted as a negative value; without that sign convention the momentum change, and hence the force, comes out wrong.",
+      "keywords": [
+        "direction",
+        "positive",
+        "negative",
+        "velocity",
+        "vector"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L1::Q8",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L1",
+      "stem": "Explain why a resultant force on a moving object changes its momentum.",
+      "misconceptionClass": "causal chain",
+      "kind": "explain-why",
+      "modelAnswer": "A resultant force changes the object's velocity — speeding it up or slowing it down. Since momentum is mass multiplied by velocity, any velocity change must also change the momentum.",
+      "keywords": [
+        "force",
+        "velocity",
+        "momentum",
+        "mass"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L1::Q9",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L1",
+      "stem": "A 2 kg ball rolling at 6 m/s is brought to rest in 0.5 s. Taking its initial direction as positive, calculate the force on the ball.",
+      "misconceptionClass": "sign-carrying substitution",
+      "kind": "application",
+      "modelAnswer": "mv = 2 × 0 = 0 and mu = 2 × 6 = 12 kg m/s, so Δp = 0 − 12 = −12 kg m/s. F = Δp/t = −12 / 0.5 = −24 N: the force acts opposite to the ball's motion.",
+      "keywords": [
+        "momentum",
+        "force",
+        "opposite",
+        "24"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L2::Q1",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L2",
+      "stem": "If the contact time of a collision doubles while the momentum change stays fixed, the force:",
+      "misconceptionClass": "inverse proportionality",
+      "options": [
+        {
+          "key": "A",
+          "text": "It doubles as well",
+          "correct": false,
+          "explanation": "The proportion is inverse, not direct.",
+          "misconception": "proportion flip"
+        },
+        {
+          "key": "B",
+          "text": "It stays exactly the same",
+          "correct": false,
+          "explanation": "The force depends on the time through the division.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "C",
+          "text": "It quadruples",
+          "correct": false,
+          "explanation": "Nothing in the equation squares the time.",
+          "misconception": "square overshoot"
+        },
+        {
+          "key": "D",
+          "text": "It halves",
+          "correct": true,
+          "explanation": "A fixed momentum change divided by twice the time gives half the force.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L2::Q2",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L2",
+      "stem": "Calling force the rate of change of momentum means the force equals the:",
+      "misconceptionClass": "rate definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "Momentum change multiplied by the time taken",
+          "correct": false,
+          "explanation": "The time divides the change; multiplying is the inverse operation.",
+          "misconception": "operation flip"
+        },
+        {
+          "key": "B",
+          "text": "Momentum change on its own, time ignored",
+          "correct": false,
+          "explanation": "A rate always carries a per-time element.",
+          "misconception": "time dropped"
+        },
+        {
+          "key": "C",
+          "text": "Momentum change divided by the time taken",
+          "correct": true,
+          "explanation": "Force is how much momentum changes per second of contact.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Velocity change divided by the object's mass",
+          "correct": false,
+          "explanation": "That mixes unrelated quantities; mass multiplies, it does not divide here.",
+          "misconception": "quantity swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L2::Q3",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L2",
+      "stem": "A racket changes a ball's momentum by 0.5 kg m/s during a 0.1 s hit. The force on the ball is:",
+      "misconceptionClass": "contact-time substitution",
+      "options": [
+        {
+          "key": "A",
+          "text": "5.0 N",
+          "correct": true,
+          "explanation": "F = 0.5 / 0.1 = 5.0 N.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0.05 N",
+          "correct": false,
+          "explanation": "That multiplies 0.5 by 0.1 instead of dividing.",
+          "misconception": "multiply slip"
+        },
+        {
+          "key": "C",
+          "text": "0.25 N",
+          "correct": false,
+          "explanation": "That is the force for a 2.0 s contact, not this 0.1 s hit.",
+          "misconception": "cross-hit value"
+        },
+        {
+          "key": "D",
+          "text": "0.2 N",
+          "correct": false,
+          "explanation": "That flips the division and computes 0.1 / 0.5.",
+          "misconception": "division flip"
+        }
+      ]
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L2::Q4",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L2",
+      "stem": "A 1000 kg car hits a wall at 10 m/s and rebounds along its original path at 2 m/s after 2 s of contact. Taking the initial direction as positive, the average force on the car is:",
+      "misconceptionClass": "rebound substitution",
+      "options": [
+        {
+          "key": "A",
+          "text": "−4000 N",
+          "correct": false,
+          "explanation": "It treats the rebound as +2 m/s, giving (2000 − 10000)/2.",
+          "misconception": "rebound sign slip"
+        },
+        {
+          "key": "B",
+          "text": "−6000 N",
+          "correct": true,
+          "explanation": "F = ((1000 × −2) − (1000 × 10))/2 = (−2000 − 10000)/2 = −6000 N.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "+6000 N",
+          "correct": false,
+          "explanation": "Same size but the minus sign was dropped; the force opposes the initial motion.",
+          "misconception": "sign drop"
+        },
+        {
+          "key": "D",
+          "text": "5000 N",
+          "correct": false,
+          "explanation": "That divides only the initial momentum (10000 / 2), losing the final-momentum term.",
+          "misconception": "term dropped"
+        }
+      ]
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L2::Q5",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L2",
+      "stem": "The exam phrase 'inversely proportional' means that when the time for a momentum change shrinks by a factor of 4, the force:",
+      "misconceptionClass": "exam-hint recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "decreases by a factor of 4",
+          "correct": false,
+          "explanation": "The two quantities move in opposite directions.",
+          "misconception": "proportion flip"
+        },
+        {
+          "key": "B",
+          "text": "stays the same",
+          "correct": false,
+          "explanation": "A proportional link always responds to the change.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "C",
+          "text": "increases by a factor of 16",
+          "correct": false,
+          "explanation": "Nothing squares the factor here.",
+          "misconception": "square overshoot"
+        },
+        {
+          "key": "D",
+          "text": "increases by a factor of 4",
+          "correct": true,
+          "explanation": "Divide the time by 4 and the force multiplies by 4.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L2::Q6",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L2",
+      "stem": "Define force as a rate of change.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Force is the momentum change per second: the change in momentum divided by the time over which it happens.",
+      "keywords": [
+        "force",
+        "rate",
+        "momentum",
+        "time",
+        "change"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L2::Q7",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L2",
+      "stem": "State what happens to the force when the time over which a momentum change happens gets shorter.",
+      "misconceptionClass": "proportionality recall",
+      "kind": "recall",
+      "modelAnswer": "The force gets bigger: with the momentum change fixed, a shorter time means dividing by less, and the two quantities are inversely proportional.",
+      "keywords": [
+        "force",
+        "shorter",
+        "time",
+        "bigger",
+        "inversely"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L2::Q8",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L2",
+      "stem": "Explain why an identical momentum change can produce very different forces in two hits.",
+      "misconceptionClass": "rate reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "F = Δp/t with the momentum change fixed: dividing by a smaller time gives a larger value. Force and time are inversely proportional, so the shorter contact delivers the bigger force.",
+      "keywords": [
+        "momentum",
+        "time",
+        "force",
+        "inversely",
+        "proportional"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_NfCjFmPfmMQ8pQSw::L2::Q9",
+      "moduleId": "rn_NfCjFmPfmMQ8pQSw::L2",
+      "stem": "A 0.5 kg ball strikes a wall at 8 m/s and rebounds along its original path at 2 m/s, touching the wall for 0.25 s. Taking the initial direction as positive, calculate the force on the ball.",
+      "misconceptionClass": "sign-carrying substitution",
+      "kind": "application",
+      "modelAnswer": "mv = 0.5 × (−2) = −1 kg m/s and mu = 0.5 × 8 = 4 kg m/s, so Δp = −1 − 4 = −5 kg m/s. F = Δp/t = −5 / 0.25 = −20 N: a 20 N force acting opposite to the ball's initial motion.",
+      "keywords": [
+        "momentum",
+        "force",
+        "opposite",
+        "negative",
+        "20"
+      ],
+      "options": []
+    }
+  ]
+}

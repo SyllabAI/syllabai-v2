@@ -1,0 +1,83 @@
+{
+ "lane": "T-OEQ-PHYS-FORMAT-1",
+ "run": "run-008-serving-leg",
+ "title": "the F131 W2 serving leg - the F129 R1+R3 corpus wave (resources #269 + the #274 field-semantics fix) served end-to-end: the of-record exporter re-export at data cut main@594a5a97 (the 3 restored official MCQ parts, G-E1-census-exact) + the manifest re-stamp (8f6a6a80 -> 594a5a97, F131 paragraph prepended, lineage verbatim) + the 26-part / 29-block SME consume per the F129 transforms of record",
+ "operatorOrder": "Start (discharging the F129 standing item: 'the serving leg (corpus -> v2 plane re-export + manifest re-stamp) remains for the operator's next orders')",
+ "operatorTrace": "1a198298221e914d",
+ "date": "2026-11-02",
+ "resourcesLeg": {
+  "pr": "#274 (merged 594a5a97)",
+  "what": "the 2022-01 4PH1-1P 1(a) inline-image field-semantics fix the exporter surfaced (sole occurrence corpus-wide; the corpus problem_md kept an inline image line - the re-export doubled the figure) + LANE-STATUS F131 / LEDGER Wave 23 / receipt"
+ },
+ "planeOfRecord": {
+  "files": {
+   "questions.json": {
+    "before": "6424eb5b6e455f2721b8d87ae23042dd286f8d5d4c625f8fe332b91792e494fa",
+    "after": "d3df0fc8a6373d13668b943eebf07cbc0db41d9f664c33320df4a1e97563d381"
+   },
+   "official-papers.json": {
+    "before": "f0945d296107ea49830b7a14d84e0eaf55c63550f3e52df152b2ee3bb5308fec",
+    "after": "2c7b62c47693c815a5bca6194d6818b0b4f5a0114b381c9434d0fc7b18acfdfc"
+   },
+   "manifest.json": {
+    "before": "9bde63b4e8b600755b060def85dd53c24e05c676cedcb21d3bb0f676285b6f3b",
+    "after": "7fd0a85693036ba32c66691c7d6d3432bc4d2729e2bba6cf36ed452ddff6c639"
+   }
+  },
+  "diff": "questions.json: 26 parts' problemMd only (29 block replacements; every other leaf byte-equal); official-papers.json: 3 parts (offp_2022-01_1p_1-a, offp_2024-06_1p_2-a, offp_2021-11_2p_1-b), exporter-emitted; manifest: importSource.ref + note only"
+ },
+ "censusOfRecord": {
+  "sme_pre": {
+   "blocks": 151,
+   "MULTI_COL_OK": 122,
+   "1COL_DEGENERATE": 29,
+   "parts_1col": 26
+  },
+  "sme_post": {
+   "MULTI_COL_OK": 146,
+   "1COL_DEGENERATE": 0,
+   "math_pipe_conflicts": 0
+  },
+  "official_pre": {
+   "pipe_blocks": 0,
+   "flattened_table_parts": 3
+  },
+  "official_post": {
+   "MULTI_COL_OK_blocks": 2,
+   "1COL_DEGENERATE_blocks": 0
+  },
+  "equality": "post-census == the F129 pre-registration post_gate_expectation EXACTLY (146/0/0; official 2/0)"
+ },
+ "gates": {
+  "G1_census": "OK - SME 29 degenerate blocks -> 0; 146 MULTI_COL_OK (== pre-registration); official 0 -> 2 pipe blocks",
+  "G2_exporter_laws": "OK - G-E1 (3 deltas == disclosed census), G-E1b identity 55/55, G-E2 sums, G-E3 55 slices / 4,970 marks, G-E4 SME passthrough byte-identical pre-consume, G-E5 55/55 at the cut, G-E6 labels, G-E7 421 group stems",
+  "G3_pua_control": "OK - zero PUA / U+FFFD / C0 in every written value (both legs)",
+  "G4_word_multiset": "OK - every replaced block word-multiset-equal to its of-record replacement (<br>-aware, marker-stripped); 5 prose-box blockquotes gated on content words with '>' furniture stripped",
+  "G5_corpus_identity": "OK - every new SME block verbatim in the current corpus problem_md of its part (consuming the transforms == consuming the corpus)",
+  "G6_serialization_byte_law": "OK - questions/official json.dumps(indent=1, ensure_ascii=False) no trailing newline (G-E4-proven passthrough base); manifest COMPACT separators single-line no trailing newline (the run-007-disclosed byte law - the exporter's indent=1 manifest output corrected at the compose step)",
+  "G7_zero_touch": "OK - 26/1135 SME parts touched (problemMd-block lines only), 3/2254 official parts touched (exporter-emitted), every other leaf byte-identical",
+  "G8_no_new_math": "OK - replacements carry zero dollar-signs (word banks / blockquotes / GFM tables of plain + bold text); math-pipe conflicts 0"
+ },
+ "eyesOn": "6 served values read first-hand: the 3 official parts (2021-11 2P 1(b) + 2024-06 1P 2(a) printed tables restored as GFM with letter-only choices; 2022-01 1P 1(a) = stem + ONE registry figure line, doubling eliminated, asset present, choices letter-only) + 3 SME samples (qstnprt_YDVJY5BTZSR8nnjd three 4-col banks; qstnprt_HJ2JhhCj 2x4 bank with the <br> row structure; qstnprt_5DGHPHGkbxDxY7Gn 'This is how it works' blockquote box in flow after the diagram) - all read as the F129 page-evidenced forms; the class is homogeneous under G-A..G-G",
+ "disclosures": [
+  "the exporter stages the manifest note as its per-wave hardcode (F119-era constant) - the compose step re-stamps the note per the stamp convention (F131 paragraph prepended, the F128-era lineage preserved verbatim below) and rewrites the manifest in the compact-separators byte law; the exporter itself is untouched",
+  "the hub renders bank tables' first row as th (bold) - the F129 renderer-constraint disclosure inherits verbatim (cosmetic, accepted)",
+  "a display-pipeline artifact in the operator sandbox eats the '![m'-byte-sequence in tool outputs - caught fail-closed mid-wave (the first rider draft synthesized a mangled string from displayed text; the unique-match assert refused it); every image-literal gate was re-verified with mangle-proof boolean/byte checks",
+  "no hub render-engine run in this sandbox (the 24 new SME tables are structurally identical to the 122 already-serving GFM tables via the same remark-gfm path; the official 2 tables are the exporter's own emission class served since F103)",
+  "rebased on origin/main mid-wave (other lanes merged; the branch base moved d0a45996 -> 9954fffd): their igcse-physics-19/questions.json delta (the glue-space debris fixes on 5 parts outside the W2 26) unions byte-clean with this wave's 26-part consume; worklog resolved as union; all gates re-run on the rebased bytes; shas re-pinned",
+  "rebased on origin/main mid-wave (other lanes merged; the branch base moved d0a45996 -> 9954fffd): their igcse-physics-19/questions.json delta (the glue-space debris fixes on 5 parts outside the W2 26) unions byte-clean with this wave's 26-part consume; worklog resolved as union; all gates re-run on the rebased bytes; shas re-pinned"
+ ],
+ "standingDebt": [
+  "R2 (93 SME flattened parts + the official flattened census) - the next pre-registered wave, unchanged",
+  "the tick-table square backtick residual (qstnprt_qq3VPGgCZtyWTqzV rows 2-4, corpus == plane) - filed, not executed",
+  "the textdebris/t-SME-13-class mirror lag between the SME corpus and questions.json (the corpus moved past the v2 build pin aa0b4de1 on other lanes) - consumed only for the 26 W2 parts here; a general re-consume remains queued of record"
+ ],
+ "discipline": "fetch-first (both repos re-cloned blob:none; resources advanced 499a692f -> 594a5a97 mid-wave via the rider PR and the export re-run at the new cut); read-only census + reconciliation before any write; the of-record exporter run fail-closed in recon mode first (no --expected-deltas), then GREEN with the disclosed census; the SME executor fail-closed twice before any write (blockquote-furniture tokenizer; census field scope); zero DB/Neon/prod contact; receipt + worklog + evidence in the same PR; no force on main",
+ "evidence": {
+  "executor": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run008-serve-payload.json (shas + exporter gate log + the 26-entry consume report + post-census)",
+  "transforms_of_record": "resources scripts/oeq_phys_run008w2/oeq_phys_run008w2_transforms.json (landed with #269)",
+  "page_evidence": "resources scripts/oeq_phys_run008w2/csheet-01..07.png (the F129 eyes-on contact sheets, 13 live SME pages / 52 box crops) - the serve changes nothing they attested",
+  "sandbox_mirrors": "scripts/table_census_w2.py + table_census_w2_result.json + reconcile_w2.py + f131_rider.py + f131_sme_consume.py + f131_sme_consume_report.json + f131_manifest_note.py"
+ },
+ "verdict": "RUN-008 SERVING LEG CLOSED: the W2 corpus wave is served - students now see the 26 word-bank/prose-box parts and the 3 official MCQ parts exactly as the F129 page-evidenced forms; both planes reconcile at census 146/0 (SME) and 2/0 (official) with the exporter of record a byte-level no-op against the served official bytes modulo the disclosed trio; R2 stands as the next wave"
+}

@@ -1,0 +1,49 @@
+{
+  "task": "T-BOOK-069",
+  "receipt": "strength-run001-r1",
+  "lane": "Unit Strength Checks u1-u4 — run-001 EXECUTED end-to-end: vehicles v2 → density audit → machine selection + agent confirmation → 4 packs / 60 blocks authored → PRs merged → scoped ingest → census of record",
+  "operator_order": "Proceed with 4 intensity checks, broader media embedding (IM trace 1a19b69d1fddc0b5, 2026-11-02)",
+  "authorization_disclosure": "executed under the standing operator order + the Neon MAIN pooler credential hand (trace 1a19d157d5ca8cc9) given in direct response to the stated unblock plan ('density audit → selection → author the 4 strength-check packs'); ADR-BOOK-0004 remains PROPOSED — recorded here, not silently accepted; the operator may override",
+  "session": "zai-web web-c414c074-1cb4-4bd5-b111-546be3b49355, trace 1a19d157d5ca8cc9",
+  "date_utc": "2026-11-02",
+  "prs": [
+    { "pr": 650, "title": "strength lane vehicles run-001 (density-audit v2 + lint strength branch + ADR amendments + authoring vehicle)", "head": "d26dc5da", "merge_sha": "6a9bf50b", "ci": "verify+hub 2/2 success first-hand" },
+    { "pr": 651, "title": "the 4 unit Strength Checks — 4 packs / 60 bank-truth mcq-embed blocks + F-BOOK-0006", "head": "38467eb6", "merge_sha": "c3b0e5b2 (main tip of record at ingest)", "ci": "verify+hub 2/2 success first-hand" }
+  ],
+  "vehicle_v2_corrections": [
+    "keying: draft's SME external_ref regex was subject-ambiguous (physics items polluted chemistry bands; first fire '23/182 covered' incl. non-chemistry) — v2 keys question_spec_points (PRIMARY, AI_VALIDATED, 41,636 rows) → knowledge_nodes.code, subject-true 4CH1-<unit>.<point>",
+    "scoping: --audit u<N> never bound its unit argument (every call ran the full 182-point spec) — v2 scopes by band prefix",
+    "gate semantics: zero-item points print honestly; the unit ships the largest honest subset (the draft's exit-1 contradicted its own thin-bank clause)",
+    "mechanics of record: strength packs = unit-level L2 groupings (lint orphan-pack law moves pack→block, per-item chapter binding); reserved 100+ ord band per bound chapter (uq identity collision-free); pdfPageAnchor null; checkRef grammar widened for the bank's -pN part suffixes"
+  ],
+  "density_of_record": { "u1": "51/60 band points, 129 items", "u2": "39/50, 103 items", "u3": "18/22, 34 items", "u4": "28/50, 82 items" },
+  "selection_and_confirmation": {
+    "selector": "density-audit v2 --select u<N> — 15 items per unit, per-point coverage first (ADR decision 5)",
+    "agent_pass": "all 60 stems read first-hand — genuine Edexcel IGCSE Chemistry, point-matched",
+    "pins_disclosed": [
+      "u1: 1-3-atomic-structure-q1-p1 (1.19) duplicate stem of the 1.15 pick → 1.24's official past-paper item (4CH1-1C 2019-06 q4)",
+      "u2: the 2.4C item dropped — cross-boundary code (canonical S2-a, bound chapter c12 owns S2-b; the lint's own avoid-law) → 2.20's displacement item (sme-eq-2-4-reactivity-series-q6-p1)",
+      "u3: Haber q0 (3.20C) duplicate stem of the 3.19C pick → 3.22C's gasification item (q8-p1)",
+      "u4: 4.8's q15-p1 duplicate stem of the 4.21 pick → the SAME point's q3-p1 (fractional distillation; point coverage unchanged)"
+    ],
+    "artifacts": ".syllabai/lane-artifacts/T-BOOK-069/{audit,select}-u{1..4}-r1.txt"
+  },
+  "gates": {
+    "lint": "bun scripts/books/lint.mjs books/4ch1 <DB-truth manifest, 29 slices from book_chapters> specification_points.yaml --book 4ch1 → 33 packs, 265 blocks, 0 finding(s), 0 warn(s), exit 0 (the STRONG form — no DEV-manifest weakening)",
+    "bank_probe": "60/60 checkRefs resolve ACTIVE MCQ_SINGLE first-hand (the ingest law's own query)",
+    "duplicate_stems": "0 cross-ref duplicates (the bank's same-ref row multiplicity is pre-existing, disclosed)"
+  },
+  "honest_gaps": "F-BOOK-0006 filed in books/4ch1/qa/findings.jsonl: zero-item points u1 9, u2 11, u3 4, u4 22 + pin-uncovered 1.19/3.20C/2.4C — never padded (ADR decision 4)",
+  "db_plane": {
+    "ingest": "SCOPED staging (4 strength packs + FULL glossary + meta; the isolation law — the 205 live VALIDATED rows never re-upserted) → books-ingest-rail COMMIT: 60 blocks SUGGESTED + 112 glossary terms (state-preserving), zero skips, manifest rebuilt from book_chapters DB truth",
+    "census_after": "book_blocks 205 VALIDATED (unchanged) + 60 SUGGESTED = 265; strength ords 101-106; glossary 112 VALIDATED unchanged",
+    "inertness_proof": "rail serve emulation (VALIDATED-only, the railBlocksForChapter law): u1:c1=8, u2:c12=7, u3:c19=7, u4:c22=7 — byte-unchanged; the SUGGESTED strength rows serve under NO code version"
+  },
+  "pending": [
+    "core lane (ADR-0004 decision 3 + run-001 amendment 4): railBlocksForChapter/railChecksForChapter strength-prefix exclusion + the unit-scoped read-only endpoint GET /v1/content/books/:docId/strength-checks?unit=uN + hub unit-check surface — branch+PR, next window",
+    "prod deploy of the exclusion-bearing core — CLI-only carrier by standing law (no Vercel credential in env this session)",
+    "the S4 flip (60 rows SUGGESTED→VALIDATED v1→2, the u4-pipeline flip-packs pattern) — the operator's lever, ONE command, fires only after the exclusion is live in production",
+    "serve proof via the unit endpoint after the flip"
+  ],
+  "boundaries": "PRs carry books/4ch1/packs/strength-u*/** + vehicles + ADR + F-BOOK-0006; this bookkeeping commit = task yaml bump + 2 receipts + lane artifacts + worklog (.syllabai/** only); DB writes limited to the scoped ingest of record; zero prod contact; fetch-first; no force-push"
+}

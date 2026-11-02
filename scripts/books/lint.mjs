@@ -169,14 +169,30 @@ for (const packEnt of packDirs) {
   const pack = yaml.load(readFileSync(packYamlPath, "utf8"));
   const chapter = pack.chapter;
 
+  // T-BOOK-069 run-001 — strength packs (ADR-BOOK-0004): unit-level L2
+  // groupings. The pack dir is `strength-u<N>/`; its blocks bind PER ITEM to
+  // the chapter owning the item's spec point (chapterKey per block), and the
+  // unit identity rides the pack/dir + block id prefix (`strength-u1/b03`).
+  // The spine check therefore moves from the pack to each block below; ord
+  // monotonicity is per (pack, chapterKey) group — strength blocks occupy a
+  // reserved high band (100+) in each bound chapter's ord space so the
+  // uq_book_blocks_identity (document, version, chapter, ord) never collides
+  // with the chapter pack's own 1..n.
+  const strengthPack = /^strength-u([1-4])$/.exec(packName);
+
   // ── G1 binding ──
-  if (!spineKeys.has(chapter)) {
+  if (strengthPack) {
+    if (chapter !== packName) {
+      fail(packName, null, "G1", `strength pack chapter ${chapter} must self-name the pack token ${packName}`);
+      continue;
+    }
+  } else if (!spineKeys.has(chapter)) {
     fail(packName, null, "G1", `chapter ${chapter} not in the spine (orphan pack law)`);
     continue;
   }
-  const ck = chapterKeyOf(chapter);
-  const range = rangeByChapter.get(ck);
-  if (range == null) fail(packName, null, "G1", `no manifest range for ${ck}`);
+  const ck = strengthPack ? null : chapterKeyOf(chapter);
+  const range = strengthPack ? null : rangeByChapter.get(ck);
+  if (!strengthPack && range == null) fail(packName, null, "G1", `no manifest range for ${ck}`);
 
   const files = walkBlocks(packDir).sort();
   if (files.length === 0) {
@@ -186,6 +202,9 @@ for (const packEnt of packDirs) {
 
   let lastOrd = 0;
   let lastAnchor = 0;
+  const strengthLastOrdByChapter = new Map();
+  // chapterKey → chapter token ("u1:c1" → "c01") for the strength per-block binding
+  const keyToChapter = new Map([...spineKeys].map((c) => [chapterKeyOf(c), c]));
   for (const f of files) {
     const rel = f.replace(packDir + "/", "");
     let authored;
@@ -198,10 +217,35 @@ for (const packEnt of packDirs) {
     blockCount += 1;
 
     // chapter_key binding (authored files carry chapterKey; ingest adds the rest)
-    if (authored.chapterKey !== ck) {
+    if (strengthPack) {
+      const bChapter = keyToChapter.get(authored.chapterKey);
+      if (bChapter == null) {
+        fail(packName, rel, "G1", `chapterKey ${authored.chapterKey} is not a spine chapter key`);
+      } else {
+        const unitNum = strengthPack[1];
+        if (!authored.chapterKey.startsWith(`u${unitNum}:`)) {
+          fail(packName, rel, "G1", `strength block binds ${authored.chapterKey} outside its own unit u${unitNum}`);
+        }
+        // per-item chapter binding: the bound chapter's canonical subsection
+        // must own every specPointRef (the same law chapter packs run)
+        for (const code of authored.specPointRefs ?? []) {
+          const sub = subsectionByCode.get(code);
+          if (sub == null) fail(packName, rel, "G1", `spec code ${code} not in the canonical graph`);
+          else if (sub !== CHAPTER_SUBSECTION[bChapter]) {
+            fail(packName, rel, "G1", `spec code ${code} lives in ${sub}, bound chapter ${bChapter} owns ${CHAPTER_SUBSECTION[bChapter]}`);
+          }
+        }
+      }
+      // ord: reserved high band, monotonic per (pack, chapterKey) group
+      const prev = strengthLastOrdByChapter.get(authored.chapterKey) ?? 100;
+      if (!(authored.ord > prev)) {
+        fail(packName, rel, "G1", `strength ord ${authored.ord} must ascend past ${prev} within ${authored.chapterKey} (reserved 100+ band)`);
+      }
+      strengthLastOrdByChapter.set(authored.chapterKey, authored.ord ?? prev);
+    } else if (authored.chapterKey !== ck) {
       fail(packName, rel, "G1", `chapterKey ${authored.chapterKey} ≠ spine-derived ${ck}`);
     }
-    if (authored.ord !== lastOrd + 1) {
+    if (!strengthPack && authored.ord !== lastOrd + 1) {
       fail(packName, rel, "G1", `ord must be monotonic 1..n (got ${authored.ord}, expected ${lastOrd + 1})`);
     }
     lastOrd = Math.max(lastOrd, authored.ord ?? lastOrd);
@@ -217,6 +261,9 @@ for (const packEnt of packDirs) {
     }
 
     for (const code of authored.specPointRefs ?? []) {
+      // strength packs run the per-block subsection law in their own branch
+      // below (the bound chapter's canonical subsection, not the pack's)
+      if (strengthPack) break;
       const sub = subsectionByCode.get(code);
       if (sub == null) fail(packName, rel, "G1", `spec code ${code} not in the canonical graph`);
       else if (sub !== CHAPTER_SUBSECTION[chapter]) {
@@ -224,7 +271,10 @@ for (const packEnt of packDirs) {
       }
     }
     for (const ref of authored.checkRefs ?? []) {
-      if (!/^sme-eq-[a-z0-9-]+-q\d+$/.test(ref)) {
+      // T-BOOK-069 run-001: the bank's real grammar carries optional -pN part
+      // suffixes (sme-eq-…-q10-p1) — the strength lane selects them; the
+      // grammar of record widened accordingly.
+      if (!/^sme-eq-[a-z0-9-]+-q\d+(-p\d+)?$/.test(ref)) {
         fail(packName, rel, "G1", `checkRef ${ref} off the bank external-ref grammar`);
       }
     }

@@ -1,0 +1,62 @@
+{
+  "format": "hub-import-run-receipt/0.1",
+  "late_filing": {
+    "disclosure": "the original lane-side receipt (download/integration/HUB-IMPORT-RUN-20261101-physics-wave1.json, cited by NS-4PH1-PHYSICS-WAVE1-V20-PROMOTION-20261101.json) was destroyed by a sandbox recycle before the bookkeeping PR could land it; this record reconstructs the run of record from the evidence that DID land: the hub merge commit 22ea8c93 (PR #613 body of record), the resources PR #271 merge 499a692f, and the v20 corrective receipt's v19_run_of_record block. The v19 gate results are cited from the merge commit of record, not re-executed; v20 supersedes v19 and re-pins every v19 artifact byte-identical (sha-gated), so no separate v19 re-verification run was owed.",
+    "filed_by_trace": "1a19ac00f9405e25",
+    "filed_at_utc": "2026-11-02"
+  },
+  "generated_at_utc": "2026-11-01T08:20:13Z",
+  "generated_at_utc_note": "the of-record run window of the v19 import (same runner law as stage-A: receipt generated at run time, not at filing time)",
+  "feed": "physics-wave1-v19",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "landing_law": "additive",
+  "operator_trace": "1a197b1687dc5cd9",
+  "operator_directive": "run the new-subject wave-1 chain — import the igcse-physics-19 wave-1 tranche (6 notes: rn_k9wr3prcgSBg5vfw 'Speed' / rn_pfndTqR6DTJGZ8xQ 'Core Practical: Investigating Motion' / rn_CpJZQWzbvMcM8fw3 'Acceleration' / rn_5hfYYFrc2XjMJCrq 'Velocity-Time Graphs' / rn_GxNWbSMqkTN4zgZB 'Area under a Velocity-Time Graph' / rn_ZgGMNrRGBKvYxxFf 'Calculating Uniform Acceleration'; 12 lessons / 108 checks; B4 bucket W1 of record — the 1-1 remainder). Operator ignition trace 1a196b9c429c5ae5 ('ignite wave-1'), execution trace 1a197b1687dc5cd9.",
+  "runner": {
+    "path": "apps/hub/scripts/import_guided/run_import.mjs",
+    "id": "hub-import-runner/1.0",
+    "runtime": "node v24.22.1"
+  },
+  "feed_config": {
+    "manifest": "hub-import-manifest-v19.json",
+    "manifest_version": 19,
+    "promo": {
+      "commit": "e1d89fd2dbb3e0a699c4f1d266410226e2b91b60",
+      "tree": "43051a33853eabd34f2d0f8f47da7e953ceadcaf",
+      "parent": "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      "trace": "1a197b1687dc5cd9"
+    },
+    "promotion_pending": false,
+    "integration_branch": "(main ancestry)",
+    "artifact_pin": "aa6485187429e0911b4a47a8a468e256bb41ce32",
+    "figures_feed": true,
+    "checks_feed": true
+  },
+  "gates": {
+    "P0": "promotion commit preflight (tree/parent/message/ancestry)",
+    "GA": "manifest integrity (format/version/kinds/counts/conservation/adapter/trace + survivor byte-identity + schemas byte-anchored)",
+    "GB": "12/12 fetched raw @ pinned commit, sha256+bytes exact",
+    "GC": "ajv draft-07 ×12 vs both target schemas",
+    "GD": "derived-ID grammar, checkRefs↔questions bidirectional 1:1 (108 checks), pinned provenance, figure closure both ways (16 figures)",
+    "GE": "per-note stream anchors ×6 vs the feed's INT-3 record; wave subtotals ×1; grand stream vs manifest (85,861 chars)",
+    "LAND": "byte-exact atomic landing (additive law) — additive-only, divergent overwrite aborts",
+    "GV": "cold re-read ×12; closing identity re-derived from disk; idempotence 12/12"
+  },
+  "gate_results_summary": {
+    "total": 32,
+    "pass": 32,
+    "hard_failures": 0,
+    "source_of_record": "hub merge commit 22ea8c93 'FEED physics-wave1-v19 import GREEN 32/32, 0 hard failures @ resources merge-of-record 499a692f (promo commit C e1d89fd2, main ancestor)' (PR #613, merge d0a45996); CI 2/2 success at d0a45996 (check-runs API, verified 2026-11-02)"
+  },
+  "landing": {
+    "pack": "content/igcse-physics-19/",
+    "declared": "12 new files (6 lessons + 6 packages) + the runner-owned guided-import.json index",
+    "note": "the 12 artifact files landed byte-correct and remain byte-identical through v20; the index rebuild carried the v19 DEFECT (tranche-scoped INT-3, 6 rows) — the stage-A pilot rows were dropped from the index, regressing the pilot page to 'Your answer' x0 while invisible to the 32 gates (runner-owned run metadata, outside the conserved-artifact gates); caught by the LIVE SPOT-CHECK calibration leg and corrected of record by v20 (hub-import-manifest-v20.json, 7-row cumulative INT-3)"
+  },
+  "post_run_history": [
+    "2026-11-01: LIVE SPOT-CHECK calibration leg caught the pilot regression (x0 vs x8 of record)",
+    "2026-11-01T17:31Z: v20 corrective authored (resources branch integration/physics-wave1-v20-20261101, C20 b7e044e4, promotion receipt 21/21)",
+    "2026-11-02: resources PR #272 merged (merge-of-record 52395098) → hub FEED physics-wave1-v20 import GREEN 32/32 (14/14 identical-exists, 7-row index restored) → PR #625 merged 854da85e → pilot flow live-restored (261,704B, 'Your answer' x8)"
+  ],
+  "boundaries": "read-only hub GETs + GitHub contents API at the pinned commit; token one-shot via env credential helper, never echoed; zero DB; zero Vercel API writes"
+}

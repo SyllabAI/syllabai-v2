@@ -1,0 +1,499 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_zn4NVCRcTSNv8sRZ",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "6a304ffb877592b9c2277a9a66f0fa3aacfd042fc6647f6fa2d58be7d258fd57",
+    "pinnedRef": "0cea83a781024eccd40da9bd5025f43b9b1c0c75"
+  },
+  "packageId": "igcse-physics::rn_zn4NVCRcTSNv8sRZ",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L1::Q1",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L1",
+      "stem": "On a see-saw, a 690 N rider sits 0.3 m from the pivot. The moment about the pivot is:",
+      "misconceptionClass": "direct substitution",
+      "options": [
+        {
+          "key": "A",
+          "text": "207 N m",
+          "correct": true,
+          "explanation": "690 × 0.3 gives 207, so the moment is 207 N m.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "2300 N m",
+          "correct": false,
+          "explanation": "That divides 690 by 0.3 rather than multiplying.",
+          "misconception": "operation flip"
+        },
+        {
+          "key": "C",
+          "text": "690.3 N m",
+          "correct": false,
+          "explanation": "That adds the force to the distance instead of multiplying.",
+          "misconception": "addition slip"
+        },
+        {
+          "key": "D",
+          "text": "2070 N m",
+          "correct": false,
+          "explanation": "That treats 0.3 as 3, shifting the decimal place.",
+          "misconception": "place-value slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L1::Q2",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L1",
+      "stem": "A ruler balances on a pivot with weights on both sides. The principle of moments says the ruler stays balanced when:",
+      "misconceptionClass": "principle recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The clockwise moments total more than the anticlockwise moments",
+          "correct": false,
+          "explanation": "A surplus of turning one way would start the ruler rotating.",
+          "misconception": "one-sided balance"
+        },
+        {
+          "key": "B",
+          "text": "Its total clockwise moment equals its total anticlockwise moment",
+          "correct": true,
+          "explanation": "That equality is the balancing law of record.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "The forces on both sides are equal",
+          "correct": false,
+          "explanation": "Balance compares moments, not forces — a small force far out can hold a big force near in.",
+          "misconception": "force-equality swap"
+        },
+        {
+          "key": "D",
+          "text": "The ruler's weight falls to zero",
+          "correct": false,
+          "explanation": "Nothing removes the weight; balance is about the two moment totals.",
+          "misconception": "zero myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L1::Q3",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L1",
+      "stem": "Which calculation gives the moment of a force about a pivot?",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "force ÷ distance from the pivot",
+          "correct": false,
+          "explanation": "Dividing shrinks the value; moments multiply the pair.",
+          "misconception": "operation flip"
+        },
+        {
+          "key": "B",
+          "text": "force × the beam's total length",
+          "correct": false,
+          "explanation": "The lever arm runs to the pivot, not along the whole beam.",
+          "misconception": "wrong lever arm"
+        },
+        {
+          "key": "C",
+          "text": "mass × distance from the pivot",
+          "correct": false,
+          "explanation": "Moments are built from forces; mass only enters through weight.",
+          "misconception": "mass-for-force swap"
+        },
+        {
+          "key": "D",
+          "text": "force × perpendicular distance from the pivot",
+          "correct": true,
+          "explanation": "Force times perpendicular distance from the pivot defines the moment.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L1::Q4",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L1",
+      "stem": "A beam carries anticlockwise moments F1 × d1 and F3 × d3 about a pivot, plus one clockwise moment F2 × d2. Balance requires:",
+      "misconceptionClass": "multi-force balance",
+      "options": [
+        {
+          "key": "A",
+          "text": "F2 × d2 = F1 × d1 − F3 × d3",
+          "correct": false,
+          "explanation": "Moments turning the same way add; nothing on a side is subtracted.",
+          "misconception": "subtraction slip"
+        },
+        {
+          "key": "B",
+          "text": "F2 × d2 = F1 × d1 + F3 × d3",
+          "correct": true,
+          "explanation": "The single clockwise moment must equal the two anticlockwise moments added.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "F2 × d2 = (F1 + F3) × (d1 + d3)",
+          "correct": false,
+          "explanation": "Each moment pairs one force with its own distance; forces and distances never cross-combine.",
+          "misconception": "cross-multiply slip"
+        },
+        {
+          "key": "D",
+          "text": "F2 + d2 = F1 + d1 + F3 + d3",
+          "correct": false,
+          "explanation": "Adding forces to distances mixes incompatible quantities.",
+          "misconception": "term swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L1::Q5",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L1",
+      "stem": "The moment of a force is quoted in:",
+      "misconceptionClass": "unit recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "newtons (N)",
+          "correct": false,
+          "explanation": "Newtons measure force alone; a moment also carries a distance.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "B",
+          "text": "newtons per metre (N/m)",
+          "correct": false,
+          "explanation": "That inverts the ratio — the distance multiplies rather than divides.",
+          "misconception": "unit inversion"
+        },
+        {
+          "key": "C",
+          "text": "joules (J)",
+          "correct": false,
+          "explanation": "Joules measure energy; moments are quoted in N m even though the base units match.",
+          "misconception": "energy unit swap"
+        },
+        {
+          "key": "D",
+          "text": "newton metres (N m)",
+          "correct": true,
+          "explanation": "Force in newtons times distance in metres gives the newton metre.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L1::Q6",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L1",
+      "stem": "State the principle of moments for a balanced object.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "When an object is balanced, the sum of its clockwise moments about the pivot equals the sum of its anticlockwise moments about that pivot.",
+      "keywords": [
+        "balanced",
+        "clockwise",
+        "anticlockwise",
+        "moments"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L1::Q7",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L1",
+      "stem": "Write the equation for the moment of a force about a pivot.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "moment = force × perpendicular distance from the pivot, with the force acting at right angles to that distance.",
+      "keywords": [
+        "moment",
+        "force",
+        "distance",
+        "pivot"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L1::Q8",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L1",
+      "stem": "On a horizontal beam, explain why only upward or downward forces create a moment about a pivot on the beam.",
+      "misconceptionClass": "perpendicularity reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A moment arises only when the force acts at right angles to the measured distance from the pivot. Vertical forces meet a horizontal lever arm at 90°, so they turn the beam; a force along the beam has no lever arm and turns nothing.",
+      "keywords": [
+        "perpendicular",
+        "force",
+        "distance",
+        "pivot",
+        "horizontal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L1::Q9",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L1",
+      "stem": "A 690 N parent sits 0.3 m from the pivot of a see-saw, with a 140 N child on the other side. Calculate the child's distance from the pivot for balance.",
+      "misconceptionClass": "see-saw calculation",
+      "kind": "application",
+      "modelAnswer": "The parent's anticlockwise moment is 690 × 0.3, which evaluates to 207 N m. Balance needs the child's clockwise moment to match: 140 × d = 207, so d = 207 ÷ 140 ≈ 1.5 m (2 s.f.).",
+      "keywords": [
+        "207",
+        "1.5",
+        "moment",
+        "balance"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L2::Q1",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L2",
+      "stem": "In beam questions, what does treating the beam as \"light\" allow?",
+      "misconceptionClass": "model recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Its own weight is ignored because it is modelled as massless",
+          "correct": true,
+          "explanation": "With no mass in the model, only the load's weight acts downward.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Its weight doubles the load's weight",
+          "correct": false,
+          "explanation": "The model removes the beam's weight; it never adds to the load.",
+          "misconception": "weight doubling myth"
+        },
+        {
+          "key": "C",
+          "text": "Its length can be ignored",
+          "correct": false,
+          "explanation": "Length still sets the lever arms that the moments need.",
+          "misconception": "wrong simplification"
+        },
+        {
+          "key": "D",
+          "text": "The supports can be dropped from the picture",
+          "correct": false,
+          "explanation": "The supports still hold the beam up; only the beam's weight disappears.",
+          "misconception": "overreach"
+        }
+      ]
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L2::Q2",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L2",
+      "stem": "A heavy crate sits on a light beam supported at both ends. The crate is slid from the left end towards the right end. The support forces:",
+      "misconceptionClass": "trend recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Left support force rises; right support force falls",
+          "correct": false,
+          "explanation": "That reverses the actual trend: the support the crate approaches gains.",
+          "misconception": "direction flip"
+        },
+        {
+          "key": "B",
+          "text": "Both forces rise steadily",
+          "correct": false,
+          "explanation": "Their sum stays fixed at the crate's weight, so they cannot both rise.",
+          "misconception": "sum myth"
+        },
+        {
+          "key": "C",
+          "text": "Both forces stay equal wherever the crate sits",
+          "correct": false,
+          "explanation": "Equal shares occur only when the crate is centred.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "D",
+          "text": "Left support force falls; right support force rises",
+          "correct": true,
+          "explanation": "The support the crate approaches carries more of the weight.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L2::Q3",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L2",
+      "stem": "A 60 N load rests on a light beam supported at both ends. The left support pushes up with 38 N. The right support's force is:",
+      "misconceptionClass": "support arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "22 N",
+          "correct": true,
+          "explanation": "The two upward forces must total 60 N: 60 − 38 = 22 N.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0 N",
+          "correct": false,
+          "explanation": "That would leave most of the load's weight unbalanced.",
+          "misconception": "zero myth"
+        },
+        {
+          "key": "C",
+          "text": "98 N",
+          "correct": false,
+          "explanation": "That adds the two support forces instead of subtracting.",
+          "misconception": "addition slip"
+        },
+        {
+          "key": "D",
+          "text": "60 N",
+          "correct": false,
+          "explanation": "That is the whole load, but the left support already carries 38 N of it.",
+          "misconception": "whole-load myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L2::Q4",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L2",
+      "stem": "The right-hand support of a loaded beam is suddenly removed. The beam immediately:",
+      "misconceptionClass": "removed-support reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Stays exactly where it is",
+          "correct": false,
+          "explanation": "Without the right support, nothing counters the load's turning effect.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "B",
+          "text": "Balances on the load alone",
+          "correct": false,
+          "explanation": "A load sitting mid-beam cannot support itself; it needs an upward force at the end.",
+          "misconception": "self-balance myth"
+        },
+        {
+          "key": "C",
+          "text": "Pivots anticlockwise about the left-hand support",
+          "correct": false,
+          "explanation": "The load sits beyond that support, so the turn is clockwise, not anticlockwise.",
+          "misconception": "direction flip"
+        },
+        {
+          "key": "D",
+          "text": "Pivots clockwise about the left-hand support",
+          "correct": true,
+          "explanation": "The load's weight produces a clockwise moment about the surviving support.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L2::Q5",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L2",
+      "stem": "A 50 N load sits directly above the left-hand support of a light beam supported at both ends. The right support's upward force is effectively:",
+      "misconceptionClass": "limit case",
+      "options": [
+        {
+          "key": "A",
+          "text": "25 N",
+          "correct": false,
+          "explanation": "Equal halves apply only at the centre; this load sits at the far left.",
+          "misconception": "half-share reflex"
+        },
+        {
+          "key": "B",
+          "text": "100 N",
+          "correct": false,
+          "explanation": "Nothing doubles here; the supports only share the 50 N between them.",
+          "misconception": "invented arithmetic"
+        },
+        {
+          "key": "C",
+          "text": "0 N",
+          "correct": true,
+          "explanation": "The whole weight passes through the left support, so the right one carries none of the load.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "50 N",
+          "correct": false,
+          "explanation": "That assigns the entire load to the far support, reversing the trend.",
+          "misconception": "direction flip"
+        }
+      ]
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L2::Q6",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L2",
+      "stem": "What is a light beam?",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "A beam modelled as having no mass of its own, so the supports only have to balance whatever load sits on it.",
+      "keywords": [
+        "light",
+        "mass",
+        "beam",
+        "load"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L2::Q7",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L2",
+      "stem": "Describe how the two support forces change as a load moves from the left end of the beam towards the right end.",
+      "misconceptionClass": "trend recall",
+      "kind": "recall",
+      "modelAnswer": "The left support's force decreases while the right support's force increases, keeping the total equal to the load's weight.",
+      "keywords": [
+        "decreases",
+        "increases",
+        "left",
+        "right",
+        "weight"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L2::Q8",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L2",
+      "stem": "Explain why the right-hand support's upward force is needed for a loaded beam to remain balanced.",
+      "misconceptionClass": "moment reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Without that upward force, the load's weight would create a clockwise moment about the left-hand support and tip the beam. The right support's force supplies an anticlockwise moment about the same point, cancelling the load's moment.",
+      "keywords": [
+        "clockwise",
+        "anticlockwise",
+        "moment",
+        "support",
+        "balance"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zn4NVCRcTSNv8sRZ::L2::Q9",
+      "moduleId": "rn_zn4NVCRcTSNv8sRZ::L2",
+      "stem": "A light beam supported at both ends carries a 48 N load. Calculate the upward force at each support while the load sits exactly in the middle, and state how the two forces change if the load is then slid towards the right-hand end.",
+      "misconceptionClass": "share-and-trend calculation",
+      "kind": "application",
+      "modelAnswer": "Centred, the supports share the weight equally: 48 ÷ 2 = 24 N each. Slid right, the left support's force decreases and the right support's force increases.",
+      "keywords": [
+        "24",
+        "48",
+        "decreases",
+        "increases",
+        "share"
+      ],
+      "options": []
+    }
+  ]
+}

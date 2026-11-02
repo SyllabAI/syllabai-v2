@@ -92,7 +92,13 @@ Return one object for EVERY listed part.
 }
 
 function appendBandLevels(sb: string, context: BandMarkingContext): string {
-  let out = sb + "\nLEVEL DESCRIPTORS:\n";
+  let out = sb;
+  // OD-1 PR-B: the per-axis scope note rides BEFORE the levels list — the
+  // model must read the column scope before seeing this column's bands
+  if (context.axisNote != null && context.axisNote.trim() !== "") {
+    out += `\nAXIS SCOPE:\n${context.axisNote}\n`;
+  }
+  out += "\nLEVEL DESCRIPTORS:\n";
   for (const band of context.bands) {
     out += `- level=${band.levelIndex} marks=${band.marksMin}..${band.marksMax}\n`;
     out += `  descriptor: ${band.descriptorMd}\n`;

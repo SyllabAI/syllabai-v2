@@ -1,0 +1,31 @@
+{
+  "format": "physics-wave1-bake-probe/1.0",
+  "generated_at_utc": "2026-11-02T06:35:00Z",
+  "merge_of_record": "854da85e59b5da624a75889b8d0deaca1527b1ca",
+  "pr": "SyllabAI/syllabai-v2#625",
+  "resources_merge_of_record": "523950984b1109aa0060315e693c5ff03fab2037 (SyllabAI/syllabai-resources PR #272, C20 b7e044e4)",
+  "target_url": "https://syllabai-hub-v2.vercel.app/courses/igcse-physics-19/guided-lessons/rn_RpyMnS5nqWSRWXXG",
+  "method": "live URL poll (alias switches on READY per the git-linked B8 law); the production URL is the probe of record",
+  "pre_fix_baseline_of_record": {
+    "at_utc": "2026-11-02 (pre-correction probe window, before PR #625)",
+    "pilot_rn_RpyMnS5nqWSRWXXG": "HTTP 200, 91,781B shell, 'Your answer' x0 — REGRESSED (the v19 index defect)",
+    "wave1_rn_k9wr3prcgSBg5vfw": "HTTP 200, 242,627B, 'Your answer' x8 — UNCHANGED",
+    "chemistry_calibrations": "rn_2MpXPtNXvn8pQm3r x8, rn_2z53qk2CdWrVVc7V x8 — UNCHANGED",
+    "b21_marker": "0 everywhere"
+  },
+  "attempts": "19 x 45-50s polls post-merge: attempts 1-18 returned the pre-bake 91,781B shell with 'Your answer' x0; attempt 19 (~16 min post-merge) returned the full 261,704B lesson surface with 'Your answer' x8 — the v18 stage-A bake precedent (~12 min) and this bake bound the probe window",
+  "result": "GREEN",
+  "counts": {
+    "your_answer_occurrences": 8,
+    "law": "lessons x 4 = 2 x 4 = 8 EXACT (restored from x0)",
+    "page_bytes": 261704,
+    "pre_fix_page_bytes": 91781
+  },
+  "calibrations": {
+    "igcse-chemistry-19/guided-lessons/rn_2MpXPtNXvn8pQm3r (chemistry stage-A pilot, must stay unchanged)": "HTTP 200, 'Your answer' x8 — UNCHANGED",
+    "igcse-chemistry-19/guided-lessons/rn_2z53qk2CdWrVVc7V (chemistry S-B10, must stay unchanged)": "HTTP 200, 'Your answer' x8 — UNCHANGED",
+    "igcse-physics-19/revision-notes face": "HTTP 200, 314,090B — UNCHANGED",
+    "igcse-physics-19 wave-1 pages (6)": "all HTTP 200, 'Your answer' x8 each — UNCHANGED through the corrective (the v20 landing was 14/14 identical-exists + the index)"
+  },
+  "boundaries": "read-only hub GETs; zero DB; zero Vercel API writes; no writes to the learner surface"
+}

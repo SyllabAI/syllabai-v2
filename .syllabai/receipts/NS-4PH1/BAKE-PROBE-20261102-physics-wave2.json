@@ -1,0 +1,21 @@
+{
+  "receipt": "NS-4PH1-BAKE-PROBE-20261102-physics-wave2",
+  "format": "bake-probe-receipt/0.1",
+  "generated_at_utc": "2026-11-02T10:08:14Z",
+  "operator_trace": "1a19b55d8ced0f5d",
+  "wave": "physics-wave2 (manifest v21)",
+  "hub_merge_of_record": "acd0224b729c165ec1cfedb5ff4ec39ab017618e (PR #638)",
+  "resources_merge_of_record": "78dd36946a774106a8b43d9c6347dba969998f66 (PR #279)",
+  "law": "the hub is git-linked \u2014 the merge auto-bakes production (disclosed churn-only consequence); the probe polls the live pages until the new bake serves",
+  "probe": {
+    "target": "9/9 wave-2 note pages serving 'Your answer' x8 (occurrence-aware count)",
+    "calibrations": {
+      "rn_RpyMnS5nqWSRWXXG": "igcse-physics-19 pilot \u2014 must stay x8",
+      "rn_2MpXPtNXvn8pQm3r": "igcse-chemistry-19 \u2014 must stay x8",
+      "rn_2z53qk2CdWrVVc7V": "igcse-chemistry-19 \u2014 must stay x8"
+    },
+    "result": "GREEN on poll 1 of the verdict sweep (the bake was already live; the earlier detached probe's buffered log lagged the live state, disclosed \u2014 the unbuffered re-run is the probe of record)",
+    "first_observed_x8": "rn_nyV7C6zmyKXWJjKg direct probe: 200, 262,801B, 'Your answer' x8 (mid-probe confirmation)"
+  },
+  "verdict": "GREEN \u2014 production bake carries the wave-2 pack; calibrations unchanged x8"
+}

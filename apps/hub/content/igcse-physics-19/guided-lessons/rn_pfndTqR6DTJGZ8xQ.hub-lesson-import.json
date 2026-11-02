@@ -1,0 +1,191 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_pfndTqR6DTJGZ8xQ",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "85e8d3d1fb828e52ba2011846d42826beb9e23a4db202058060075dca2da0e5f",
+    "pinnedRef": "aa6485187429e0911b4a47a8a468e256bb41ce32"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_pfndTqR6DTJGZ8xQ",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Movement & Position",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-1-movement-and-position/1-1-3-core-practical-investigating-motion",
+    "specAnchors": [
+      {
+        "code": "1.5",
+        "text": "practical: investigate the motion of everyday objects such as toy cars or tennis balls"
+      }
+    ],
+    "primer": {
+      "text": "Measuring the pace of a falling cone directly is close to impossible by eye, so this core practical goes the long way round: fix a drop height, time the fall, and divide. This lesson sets up the apparatus, the variables and the method, then teaches how to judge and improve the timings you collect.",
+      "prerequisiteSubtopic": "Movement & Position"
+    },
+    "modules": [
+      {
+        "id": "rn_pfndTqR6DTJGZ8xQ::L1",
+        "title": "Aim, variables and apparatus",
+        "sourceHeadings": [
+          "Aim of the experiment",
+          "Equipment"
+        ],
+        "specRefs": [
+          "1.5"
+        ],
+        "opening": "A good investigation is planned before anything falls. This lesson names what is being investigated, fixes which quantities change and which are held still, and lists the instruments that will do the measuring, down to the resolution each one offers.",
+        "keyPoints": [
+          "The aim is to investigate the motion of everyday objects, such as a paper cone or a tennis ball, by determining their speed of fall.",
+          "Because speed is hard to measure directly, the practical measures distance moved and time taken and derives the speed from them.",
+          "The independent variable is the drop distance and the dependent variable is the time taken; the same object is reused so the comparison is fair.",
+          "A stopwatch times the fall and a tape measure or metre rule sets the height; the rule resolves to 1 mm and the clock to 0.01 s."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "You drop the same object from several measured heights and time each fall. The height you choose is the thing you change; the fall time is the thing you measure.",
+            "analogy": "It is like timing friends over different sprint distances: the track length is yours to set, the stopwatch reading is what you collect.",
+            "examPointer": "Variable questions want the nouns named: state the independent, dependent and one control variable explicitly rather than describing the plan in prose."
+          },
+          "medium": {
+            "restatement": "Speed cannot be read off directly with school equipment, so the design converts the problem: measured distance divided by measured time yields the average speed of each drop.",
+            "analogy": "It is the same trick as finding a car's pace between two mileposts: you never see the speed itself, only the two quantities that define it.",
+            "examPointer": "Resolution questions expect the instrument and its smallest step: a metre rule reads to 1 mm and a stop clock to 0.01 s. Quote both when asked about precision."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_pfndTqR6DTJGZ8xQ::L1::Q1",
+          "rn_pfndTqR6DTJGZ8xQ::L1::Q2",
+          "rn_pfndTqR6DTJGZ8xQ::L1::Q3",
+          "rn_pfndTqR6DTJGZ8xQ::L1::Q4",
+          "rn_pfndTqR6DTJGZ8xQ::L1::Q5",
+          "rn_pfndTqR6DTJGZ8xQ::L1::Q6",
+          "rn_pfndTqR6DTJGZ8xQ::L1::Q7",
+          "rn_pfndTqR6DTJGZ8xQ::L1::Q8",
+          "rn_pfndTqR6DTJGZ8xQ::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_pfndTqR6DTJGZ8xQ::L2",
+        "title": "Running the drop and judging the data",
+        "sourceHeadings": [
+          "Method",
+          "Evaluating the experiment"
+        ],
+        "specRefs": [
+          "1.5"
+        ],
+        "opening": "With the plan fixed, the practical becomes a rhythm: measure a height, time the fall three times, average, then step the height up and do it again. This lesson walks that rhythm, shows how each average speed is calculated, and names the errors that would quietly corrupt the results.",
+        "keyPoints": [
+          "Each height is timed three times and the mean of the repeats is carried forward into the calculation.",
+          "Heights run 1.0 m, 1.2 m, 1.4 m, 1.6 m and 1.8 m, each 0.2 m above the last.",
+          "The average speed at each height is the distance divided by the mean fall time.",
+          "Eye-level reading avoids parallax; the roughly 0.25 s human reaction time is the dominant systematic error, reduced by larger distances or removed with light gates or a data logger.",
+          "A mat or soft landing below the object keeps the falling mass safe."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Drop the object from 1.0 m and time it; repeat three times and average. Move up in 0.2 m steps to 1.8 m. Divide each distance by its mean time to get each average speed.",
+            "analogy": "It is like tasting the same recipe several times before judging it: one timing is an anecdote, the mean of three is evidence.",
+            "examPointer": "Method questions want ordered steps with quantities: state the repeat count and the averaging step, not just 'time it and record'."
+          },
+          "medium": {
+            "restatement": "The dominant systematic error is human reaction time, about 0.25 s at each end of the timing, so roughly half a second per timed drop. Longer falls make that fixed overhead a smaller fraction, and automatic timing removes it.",
+            "analogy": "Reaction time is a fixed tax on every stopwatch reading: the bigger the purchase (a longer fall), the smaller the tax's share.",
+            "examPointer": "Evaluation questions reward paired structure: name the error, then name the specific fix (bigger distances, light gates, trapdoor data logger) and the residual improvement it buys."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_pfndTqR6DTJGZ8xQ::L2::Q1",
+          "rn_pfndTqR6DTJGZ8xQ::L2::Q2",
+          "rn_pfndTqR6DTJGZ8xQ::L2::Q3",
+          "rn_pfndTqR6DTJGZ8xQ::L2::Q4",
+          "rn_pfndTqR6DTJGZ8xQ::L2::Q5",
+          "rn_pfndTqR6DTJGZ8xQ::L2::Q6",
+          "rn_pfndTqR6DTJGZ8xQ::L2::Q7",
+          "rn_pfndTqR6DTJGZ8xQ::L2::Q8",
+          "rn_pfndTqR6DTJGZ8xQ::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "independent variable",
+          "definition": "The quantity the experimenter deliberately changes across the trials; here, the drop distance.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dependent variable",
+          "definition": "The quantity measured as the outcome of each trial; here, the time taken to fall.",
+          "firstLesson": 1
+        },
+        {
+          "term": "parallax error",
+          "definition": "A reading error caused by viewing a scale at an angle; avoided by reading at eye level.",
+          "firstLesson": 2
+        },
+        {
+          "term": "reaction time",
+          "definition": "The human delay, about 0.25 s, between observing an event and acting on it; the dominant systematic error in hand timing.",
+          "firstLesson": 2
+        },
+        {
+          "term": "light gates",
+          "definition": "Electronic sensors that start and stop a timer automatically as an object passes, removing human reaction time.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/e701e7acb3bc-1-1-3-investigating-motion.png",
+        "alt": "Investigating Motion, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Method",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Investigating the motion of a falling paper cone",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/972d0ba24456-1-1-3-investigating-motion-results-table.png",
+        "alt": "Investigating Motion Results Table, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Example results table",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "A results table should include spaces for all the measurements taken and space to perform any necessary calculations, such as averages",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

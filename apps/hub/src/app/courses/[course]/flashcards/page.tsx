@@ -1,12 +1,8 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, CircleHelp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import { boardOf, loadHubCourse } from "@/lib/courses";
 import { CourseHeader } from "@/components/hub/course-header";
-import { NumberedLabel } from "@/components/hub/chrome";
-import { DeckDueBadge } from "./deck-due-badge";
+import { FlashcardsIndex, type DeckCard } from "./flashcards-index";
 import { allCourseParams } from "@/lib/static-params";
 
 
@@ -14,6 +10,21 @@ import { allCourseParams } from "@/lib/static-params";
 export async function generateStaticParams() {
   return allCourseParams();
 }
+/**
+ * Flashcards select page — per-subtopic recall decks. Ring semantics of
+ * record (operator traces 1a195fd0b0947695 + 1a1982281a3d7a65): each deck
+ * card carries the FLASHCARDS-ONLY ring — rated cards ÷ available cards,
+ * never notes, never questions — each select page owns its own denominator
+ * (the revision-notes page counts reads, the exam-questions page counts
+ * answered parts; the combined engagement ring stays the sidebar's
+ * posture). The DeckDueBadge keeps its scheduler-truth role beside it.
+ *
+ * The grid renders in flashcards-index.tsx (client) since trace
+ * 1a19acb6ec437e25: it joined the revision-notes index's MathsGenie toolbar
+ * treatment — search left, Resume (the deck whose card was rated most
+ * recently) right — which needs the learner overlay; the server page keeps
+ * the corpus badge/prose and hands the client a slim deck payload.
+ */
 export default async function FlashcardsIndexPage({
   params,
 }: {
@@ -23,13 +34,15 @@ export default async function FlashcardsIndexPage({
   const hub = await loadHubCourse(slug);
   if (!hub) notFound();
   const { meta, stats } = hub;
-  const base = `/courses/${meta.slug}`;
 
-  const decks = hub.index.tree.topics.flatMap((t) =>
+  // Slim, serializable payload for the client grid (flashcards-index).
+  const decks: DeckCard[] = hub.index.tree.topics.flatMap((t) =>
     t.subtopics
       .map((s) => ({
-        subtopic: s,
-        topic: t,
+        code: s.code,
+        title: s.title,
+        topicNumber: t.number,
+        topicTitle: t.title,
         count: hub.cardsBySubtopic[s.code]?.length ?? 0,
       }))
       .filter((d) => d.count > 0),
@@ -56,48 +69,10 @@ export default async function FlashcardsIndexPage({
         </p>
       </div>
 
-      <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-        {decks.map((d) => (
-          <Link
-            key={d.subtopic.code}
-            href={`${base}/flashcards/${d.subtopic.code}`}
-            className="group min-w-0 rounded-lg border bg-card px-4 py-3 transition-colors hover:border-primary/40"
-          >
-            <div className="flex min-w-0 items-center gap-2">
-              <CircleHelp className="size-4 shrink-0 text-primary" aria-hidden />
-              <p className="min-w-0 flex-1 truncate text-sm font-semibold group-hover:text-primary">
-                {d.subtopic.title}
-              </p>
-              <DeckDueBadge course={meta.slug} subtopicCode={d.subtopic.code} />
-              <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
-            </div>
-            <p className="mt-1 truncate text-xs text-muted-foreground">
-              <NumberedLabel number={d.topic.number} title={d.topic.title} /> · {d.count} card
-              {d.count === 1 ? "" : "s"}
-            </p>
-          </Link>
-        ))}
-      </div>
-
-      {decks.length === 0 && (
-        <Card className="mt-6">
-          <CardContent className="p-6 text-sm text-muted-foreground">
-            <p>No flashcard decks imported for this course yet.</p>
-            {/* UX audit 2026-10-02 #18: the empty state was a dead end —
-                one sentence, no next action. Point at the course's question
-                bank (same sub-topic tree, fully populated for bundled courses). */}
-            <p className="mt-2">
-              <Link
-                href={`/courses/${meta.slug}/exam-questions`}
-                className="inline-flex items-center gap-1 text-primary underline-offset-2 hover:underline"
-              >
-                Work exam questions for this course instead
-                <ArrowRight className="size-3.5" aria-hidden />
-              </Link>
-            </p>
-          </CardContent>
-        </Card>
-      )}
+      {/* MathsGenie toolbar + deck grid + empty states — client
+          (flashcards-index) over the slim payload above. The no-decks card
+          keeps the UX-audit next action (point at the question bank). */}
+      <FlashcardsIndex course={meta.slug} counts={hub.counts} decks={decks} />
     </div>
   );
 }

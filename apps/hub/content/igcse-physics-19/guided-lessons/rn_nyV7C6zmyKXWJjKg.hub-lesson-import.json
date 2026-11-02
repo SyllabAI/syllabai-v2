@@ -1,0 +1,257 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_nyV7C6zmyKXWJjKg",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "190d7edae6f11eb8ced78ef199f2eb93e1cea425f947191ec139accc033a98ee",
+    "pinnedRef": "bfae9977809436fc2e5c20967bf2581f67a52bec"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_nyV7C6zmyKXWJjKg",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Forces, Movement & Changing Shape",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-2-forces-movement-and-changing-shape/1-2-1-types-of-forces",
+    "specAnchors": [
+      {
+        "code": "1.11",
+        "text": "describe the effects of forces between bodies such as changes in speed, shape or direction"
+      },
+      {
+        "code": "1.12",
+        "text": "identify different types of force such as gravitational or electrostatic"
+      }
+    ],
+    "primer": {
+      "text": "You already know that objects push and pull on one another. This note gathers those pushes and pulls into a single catalogue of named forces and then asks what any of them can actually do to the body it acts on. Two lessons follow: the catalogue of force types, then the effects a force can produce.",
+      "prerequisiteSubtopic": "Forces, Movement & Changing Shape"
+    },
+    "modules": [
+      {
+        "id": "rn_nyV7C6zmyKXWJjKg::L1",
+        "title": "Naming the forces between interacting objects",
+        "sourceHeadings": [
+          "Types of forces",
+          "What are the different types of forces?"
+        ],
+        "specRefs": [
+          "1.12"
+        ],
+        "opening": "Whenever two objects interact, each one can push or pull the other, and physics gives that push or pull the name force. This lesson walks through the catalogue of everyday forces: weight, reaction, friction, drag, thrust, upthrust, electrostatic, magnetic and tension. For each entry, the key question is where the force comes from and which way it points.",
+        "keyPoints": [
+          "A force is a push or a pull that arises whenever two objects interact.",
+          "A surface pushes back on anything resting on it; this reaction force acts at right angles to the surface.",
+          "Friction opposes the sliding of two surfaces, and drag is the same opposing action inside a fluid such as air or water.",
+          "Thrust is an engine-produced force that speeds an object up, while upthrust is the upward push a fluid exerts on a submerged body.",
+          "Charges and magnetic poles follow one pattern: like kinds repel, opposite kinds attract.",
+          "Tension acts along a rope or spring when its two ends are pulled apart."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Objects interact by pushing or pulling, and each named force on the list is one of those pushes or pulls. Resting surfaces push straight back; rubbing surfaces drag backwards.",
+            "analogy": "Think of the catalogue like a class register: every force you will meet in this course has a name on it, and each name comes with the same two facts — what causes it and which way it acts.",
+            "examPointer": "Naming questions are free marks if the definitions are exact: say 'reaction force acts perpendicular to the surface', not just 'the surface pushes'."
+          },
+          "medium": {
+            "restatement": "Every entry in the catalogue is an interaction between two bodies: gravitational and electrostatic act at a distance, while reaction, friction, drag, thrust, upthrust and tension need contact or a medium.",
+            "analogy": "Sort the register into two boxes — 'needs to touch' and 'acts across space'. Weight and electrostatic fall in the second box; everything the surface or fluid does falls in the first.",
+            "examPointer": "Examiners penalise loose names: the gravitational force on an object is its weight (never bare 'gravity'), and air resistance is the air-specific case of drag."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_nyV7C6zmyKXWJjKg::L1::Q1",
+          "rn_nyV7C6zmyKXWJjKg::L1::Q2",
+          "rn_nyV7C6zmyKXWJjKg::L1::Q3",
+          "rn_nyV7C6zmyKXWJjKg::L1::Q4",
+          "rn_nyV7C6zmyKXWJjKg::L1::Q5",
+          "rn_nyV7C6zmyKXWJjKg::L1::Q6",
+          "rn_nyV7C6zmyKXWJjKg::L1::Q7",
+          "rn_nyV7C6zmyKXWJjKg::L1::Q8",
+          "rn_nyV7C6zmyKXWJjKg::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03",
+          "fig-04",
+          "fig-05",
+          "fig-06"
+        ]
+      },
+      {
+        "id": "rn_nyV7C6zmyKXWJjKg::L2",
+        "title": "What a force can change: speed, direction, shape",
+        "sourceHeadings": [
+          "Effects of forces"
+        ],
+        "specRefs": [
+          "1.11"
+        ],
+        "opening": "The catalogue answers 'which force?', but not 'so what?'. This lesson closes that gap: whatever its name, a force acting on a body can change how fast it moves, which way it moves, or what shape it is. One diagram, three effects — and every mechanics question in this course hangs off one of them.",
+        "keyPoints": [
+          "A force acting on a body can change that body's speed, its direction of travel, or its shape.",
+          "Thrust from an engine speeds a vehicle up, while braking friction slows it down.",
+          "A sideways gravitational pull, such as the Sun's on a comet, bends the direction of travel without contact.",
+          "Opposing pushes on the ends of a spring squash it — a change of shape.",
+          "Which effect appears depends on the type of force acting and how it is applied."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Every force on the catalogue list can do one or more of three jobs: make the body faster or slower, turn it, or deform it.",
+            "analogy": "Three dials on a control panel: pace, heading, form. Any force turns at least one dial.",
+            "examPointer": "When a question asks 'state the effect', answer with one of the three exact nouns: speed, direction, shape."
+          },
+          "medium": {
+            "restatement": "The effect of a force is not fixed by the force's name alone: the same catalogue entry can act along the motion (speed change), across it (direction change) or against the body's form (shape change).",
+            "analogy": "One hand on a rolling ball can pat it forwards (faster), nudge its side (turning) or squeeze it (flattening) — the hand's role selects the dial.",
+            "examPointer": "Two-mark questions often want the pair 'effect + force name'; 'friction, which changes the speed' scores both, 'friction' alone scores one."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_nyV7C6zmyKXWJjKg::L2::Q1",
+          "rn_nyV7C6zmyKXWJjKg::L2::Q2",
+          "rn_nyV7C6zmyKXWJjKg::L2::Q3",
+          "rn_nyV7C6zmyKXWJjKg::L2::Q4",
+          "rn_nyV7C6zmyKXWJjKg::L2::Q5",
+          "rn_nyV7C6zmyKXWJjKg::L2::Q6",
+          "rn_nyV7C6zmyKXWJjKg::L2::Q7",
+          "rn_nyV7C6zmyKXWJjKg::L2::Q8",
+          "rn_nyV7C6zmyKXWJjKg::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-07"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "force",
+          "definition": "A push or a pull that arises from the interaction between two objects.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reaction force",
+          "definition": "The perpendicular push a surface exerts on an object resting on it.",
+          "firstLesson": 1
+        },
+        {
+          "term": "upthrust",
+          "definition": "The upward-acting push a fluid exerts on a fully or partly submerged object.",
+          "firstLesson": 1
+        },
+        {
+          "term": "drag",
+          "definition": "The frictional force a fluid exerts against an object moving through it.",
+          "firstLesson": 1
+        },
+        {
+          "term": "tension",
+          "definition": "The pulling force transmitted along a rope or spring when its ends are pulled apart.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b9366f9e3eff-reaction-force-football-on-grass.png",
+        "alt": "reaction-force-football-on-grass",
+        "sourceHeading": "Reaction force acting on a football",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The push force exerted on an object by a surface is called the reaction force",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/54c4f99b6ce6-5-6-15-debbie-opens-parachute.png",
+        "alt": "Debbie opens parachute",
+        "sourceHeading": "Air resistance acting on a skydiver",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "A skydiver uses air resistance to reduce their speed so that they can land safely",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/092be9c9fabc-3-3-3-upthrust.png",
+        "alt": "Upthrust",
+        "sourceHeading": "Upthrust acting on a boat",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The water pushes up on the boat, this is the force of upthrust",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/d2e7480303ea-opposites-attract.webp",
+        "alt": "opposites-attract",
+        "sourceHeading": "Electrostatic forces acting on charged particles",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Like charges experience a repulsive push force and opposite charges experience an attractive pull force",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/16d5e77e872b-7-1-1-the-law-of-magnetism.png",
+        "alt": "The Law of Magnetism",
+        "sourceHeading": "Magnetic forces acting on magnets",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Opposite poles experience an attractive pull force, and like poles experience a repulsive push force",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/50b825c4dee7-tension-tug-of-war.png",
+        "alt": "tension-tug-of-war",
+        "sourceHeading": "Tension force in a rope",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Two people exert a pull force on the rope from each end, creating tension in the rope",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-07",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/0e0120cac00d-what-forces-do.png",
+        "alt": "what-forces-do, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The effects of different forces on objects",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Forces can change the speed or direction of motion of an object, or even change its shape",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

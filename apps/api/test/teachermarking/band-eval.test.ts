@@ -438,7 +438,7 @@ const BAND_MARKING_ROUTES: Route[] = [
   },
   { match: /select id from question_versions/, rows: [{ id: VERSION_ID }] },
   {
-    match: /select id, validation_state, scheme_kind, question_part_id from mark_schemes where question_version_id = \? and validation_state = \?/,
+    match: /select id, validation_state, scheme_kind, question_part_id, version_label from mark_schemes where question_version_id = \? and validation_state = \?/,
     rows: [{ id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS" }],
   },
   {
@@ -506,7 +506,7 @@ describe("the κ gate is metric-kind-hard (SmartMarkService.markAttempt)", () =>
     const pointRoutes: Route[] = [
       ...BAND_MARKING_ROUTES.filter((r) => !r.match.source.includes("mark_schemes")),
       {
-        match: /select id, validation_state, scheme_kind, question_part_id from mark_schemes where question_version_id = \? and validation_state = \?/,
+        match: /select id, validation_state, scheme_kind, question_part_id, version_label from mark_schemes where question_version_id = \? and validation_state = \?/,
         rows: [{ id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "POINTS" }],
       },
       {
@@ -543,8 +543,14 @@ describe("the κ gate is metric-kind-hard (SmartMarkService.markAttempt)", () =>
 const BA_ID = "e5000000-0000-4000-8000-000000000001";
 
 function captureRoutes(overrides: {
-  schemes?: Array<Record<string, unknown>>;
+  /** the answer's part's VALIDATED part-bound LEVELS siblings (default: one
+   *  single-axis sibling; 2+ rows with '<base>#<axis>' labels = multi-axis) */
+  siblings?: Array<Record<string, unknown>>;
+  /** the version-level unbound LEVELS scheme fallback (default: none) */
+  unbound?: Array<Record<string, unknown>>;
   bands?: Array<Record<string, unknown>>;
+  /** OD-1 PR-B: per-axis bands, dispatched by the bound scheme id */
+  bandsByScheme?: (schemeId: string) => Array<Record<string, unknown>>;
 } = {}): Route[] {
   return [
     {
@@ -561,20 +567,37 @@ function captureRoutes(overrides: {
       rowsFor: (params) => (String(params[0]) === BA_ID ? [{
         id: BA_ID, attempt_id: ATTEMPT_ID, answer_text: "essay", marks_awarded: null,
         marking_state: "PENDING", question_part_id: PART_A, label: "(a)", prompt: "Explain.",
-        part_marks: 4, learner_id: LEARNER_ID, attempt_created_at: T1, evidence_emitted: false,
+        part_marks: 8, learner_id: LEARNER_ID, attempt_created_at: T1, evidence_emitted: false,
         question_id: QUESTION_ID, external_ref: "q1", exam_paper_id: PAPER_ID, question_marks: 5,
       }] : []),
     },
     {
-      match: /select ms\.id, ms\.scheme_kind from mark_schemes ms/,
-      rows: overrides.schemes ?? [{ id: SCHEME_ID, scheme_kind: "LEVELS" }],
+      // the capture resolves the question's newest version
+      match: /select id from question_versions where question_id = \? order by version desc limit 1/,
+      rows: [{ id: VERSION_ID }],
+    },
+    {
+      // OD-1 PR-B — the part-scoped sibling resolution (OD-2): the answer's
+      // part's VALIDATED part-bound LEVELS siblings, newest first
+      match: /select id, version_label from mark_schemes/,
+      rows: overrides.siblings ?? [{ id: SCHEME_ID, version_label: null }],
+    },
+    {
+      // the OD-2 single-axis fallback: the version-level unbound LEVELS scheme
+      match: /question_part_id is null order by created_at desc limit 1/,
+      rows: overrides.unbound ?? [],
     },
     {
       match: /select level_index, marks_min, marks_max from mark_bands/,
-      rows: overrides.bands ?? [
-        { level_index: 1, marks_min: 1, marks_max: 2 },
-        { level_index: 2, marks_min: 3, marks_max: 4 },
-      ],
+      rows: overrides.bandsByScheme
+        ? []
+        : (overrides.bands ?? [
+            { level_index: 1, marks_min: 1, marks_max: 2 },
+            { level_index: 2, marks_min: 3, marks_max: 4 },
+          ]),
+      rowsFor: overrides.bandsByScheme
+        ? (params) => overrides.bandsByScheme!(String(params[0]))
+        : undefined,
     },
     { match: /update answers set/, rows: [] },
     { match: /update attempts set marking_state/, rows: [] },
@@ -615,7 +638,8 @@ describe("recordHumanMark — the band capture side (ADR-040 §5.5)", () => {
   });
 
   test("a non-LEVELS scheme refuses the capture BEFORE any state write", async () => {
-    const { module, sql } = build(captureRoutes({ schemes: [{ id: SCHEME_ID, scheme_kind: "POINTS" }] }));
+    // no LEVELS sibling bound to the part, no unbound LEVELS scheme either
+    const { module, sql } = build(captureRoutes({ siblings: [] }));
     await expect(
       module.marking.recordHumanMark(BA_ID, MARKER_ID, 3, null, null, BAND_CAPTURE),
     ).rejects.toThrow("band placement requires a LEVELS mark scheme with bound bands");
@@ -624,7 +648,7 @@ describe("recordHumanMark — the band capture side (ADR-040 §5.5)", () => {
   });
 
   test("no scheme at all refuses the same honest way", async () => {
-    const { module } = build(captureRoutes({ schemes: [] }));
+    const { module } = build(captureRoutes({ siblings: [] }));
     await expect(
       module.marking.recordHumanMark(BA_ID, MARKER_ID, 3, null, null, BAND_CAPTURE),
     ).rejects.toThrow("band placement requires a LEVELS mark scheme with bound bands");
@@ -657,6 +681,134 @@ describe("recordHumanMark — the band capture side (ADR-040 §5.5)", () => {
     await expect(
       module.marking.recordHumanMark(BA_ID, MARKER_ID, 2, null, null, BAND_CAPTURE),
     ).rejects.toThrow("band placement awardedMarks 3 must equal the mark's marksAwarded 2");
+  });
+
+  test("OD-2 part-scoped resolution: the capture validates against the PART-BOUND sibling, never another part's newest scheme", async () => {
+    // the part's own sibling carries DIFFERENT ranges from any other scheme
+    // the version might hold — the resolution reads the part's sibling only
+    const { module, sql } = build(
+      captureRoutes({
+        siblings: [{ id: SCHEME_ID, version_label: null }],
+        bands: [
+          { level_index: 1, marks_min: 1, marks_max: 2 },
+          { level_index: 2, marks_min: 3, marks_max: 4 },
+        ],
+      }),
+    );
+    const view = await module.marking.recordHumanMark(
+      BA_ID, MARKER_ID, 3, null, null, BAND_CAPTURE,
+    );
+    expect(view.bandPlacement).toEqual(BAND_CAPTURE);
+    // the sibling read is PART-SCOPED (question_part_id = the answer's part)
+    expect(sql.queries.some((q) => q.includes("question_part_id = ?") && q.includes("version_label"))).toBe(true);
+  });
+
+  test("OD-1 per-axis capture: a multi-axis part REQUIRES the axes shape (single-shape capture 409s before any write)", async () => {
+    const SIBLING_A2 = "70000000-0000-4000-8000-000000000002";
+    const { module, sql } = build(
+      captureRoutes({
+        siblings: [
+          { id: SIBLING_A2, version_label: "1-b-ii#a2" },
+          { id: SCHEME_ID, version_label: "1-b-ii#a1" },
+        ],
+      }),
+    );
+    await expect(
+      module.marking.recordHumanMark(BA_ID, MARKER_ID, 3, null, null, BAND_CAPTURE),
+    ).rejects.toThrow("MULTI_AXIS_CAPTURE_AXES_REQUIRED");
+    // nothing written: no state change, no human mark
+    expect(sql.queries.some((q) => q.includes("update answers set"))).toBe(false);
+    expect(sql.queries.some((q) => q.includes("insert into human_marks"))).toBe(false);
+  });
+
+  test("OD-1 per-axis capture: the happy path stores the pinned multi-axis shape and sums to marksAwarded", async () => {
+    const SIBLING_A2 = "70000000-0000-4000-8000-000000000002";
+    const chain = (p: string) =>
+      [1, 2, 3, 4].map((m, i) => ({ level_index: i + 1, marks_min: m, marks_max: m, _axis: p }));
+    const { module, sql } = build(
+      captureRoutes({
+        siblings: [
+          { id: SIBLING_A2, version_label: "1-b-ii#a2" },
+          { id: SCHEME_ID, version_label: "1-b-ii#a1" },
+        ],
+        bandsByScheme: (schemeId) => (schemeId === SCHEME_ID ? chain("a1") : chain("a2")),
+      }),
+    );
+    const view = await module.marking.recordHumanMark(
+      BA_ID,
+      MARKER_ID,
+      5,
+      null,
+      "both axes in context",
+      { axes: [
+        { axis: "a1", levelPlacement: 2, awardedMarks: 2 },
+        { axis: "a2", levelPlacement: 3, awardedMarks: 3 },
+      ] },
+    );
+    expect(view.bandPlacement).toEqual({
+      axes: [
+        { axis: "a1", levelPlacement: 2, awardedMarks: 2 },
+        { axis: "a2", levelPlacement: 3, awardedMarks: 3 },
+      ],
+    });
+    const idx = sql.queries.findIndex((q) => q.includes("insert into human_marks"));
+    expect(idx).toBeGreaterThan(0);
+    expect(sql.paramsLog[idx]![7]).toBe(
+      JSON.stringify({
+        shape: "band_decision_v1_multi_axis",
+        total_awarded: 5,
+        axes: [
+          { version_label: "1-b-ii#a1", axis: "a1", mark_scheme_id: SCHEME_ID, level_placement: 2, awarded_marks: 2, descriptor_hits: [] },
+          { version_label: "1-b-ii#a2", axis: "a2", mark_scheme_id: SIBLING_A2, level_placement: 3, awarded_marks: 3, descriptor_hits: [] },
+        ],
+      }),
+    );
+  });
+
+  test("OD-1 per-axis capture: the axis awards must SUM to marksAwarded (MA-5 closure on the human side)", async () => {
+    const SIBLING_A2 = "70000000-0000-4000-8000-000000000002";
+    const chain = [1, 2, 3, 4].map((m, i) => ({ level_index: i + 1, marks_min: m, marks_max: m }));
+    const { module } = build(
+      captureRoutes({
+        siblings: [
+          { id: SIBLING_A2, version_label: "1-b-ii#a2" },
+          { id: SCHEME_ID, version_label: "1-b-ii#a1" },
+        ],
+        bandsByScheme: () => chain,
+      }),
+    );
+    await expect(
+      module.marking.recordHumanMark(
+        BA_ID, MARKER_ID, 4, null, null,
+        { axes: [
+          { axis: "a1", levelPlacement: 2, awardedMarks: 2 },
+          { axis: "a2", levelPlacement: 3, awardedMarks: 3 },
+        ] },
+      ),
+    ).rejects.toThrow("the axis awards sum to 5 but the mark's marksAwarded is 4");
+  });
+
+  test("OD-1 per-axis capture: an unknown axis token refuses (placements pair the VALIDATED siblings only)", async () => {
+    const SIBLING_A2 = "70000000-0000-4000-8000-000000000002";
+    const chain = [1, 2, 3, 4].map((m, i) => ({ level_index: i + 1, marks_min: m, marks_max: m }));
+    const { module } = build(
+      captureRoutes({
+        siblings: [
+          { id: SIBLING_A2, version_label: "1-b-ii#a2" },
+          { id: SCHEME_ID, version_label: "1-b-ii#a1" },
+        ],
+        bandsByScheme: () => chain,
+      }),
+    );
+    await expect(
+      module.marking.recordHumanMark(
+        BA_ID, MARKER_ID, 5, null, null,
+        { axes: [
+          { axis: "a1", levelPlacement: 2, awardedMarks: 2 },
+          { axis: "a9", levelPlacement: 3, awardedMarks: 3 },
+        ] },
+      ),
+    ).rejects.toThrow("has no placement");
   });
 });
 

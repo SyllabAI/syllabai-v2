@@ -1,0 +1,645 @@
+{
+ "lane": "RN-DEBRIS-5 run-001 — command-boundary lane for the \\timesr family",
+ "orderTrace": "1a196b967b16baa9",
+ "collection": {
+  "files": 1053,
+  "strings": 2004718,
+  "dollarSegments": 358907,
+  "uniqueSegments": 96610,
+  "proseSpanSkipped": 3553,
+  "backtickSkipped": 57927,
+  "outsideSpanGlueHitsAtCensus": 185,
+  "outsideSpanFiles": 17
+ },
+ "renderCensus": {
+  "pass": 90591,
+  "fail": 6019,
+  "glueFixable": 2238,
+  "glueBlocked": 4,
+  "noGlue": 3777
+ },
+ "occurrenceSites": {
+  "sites": 6046,
+  "files": 118
+ },
+ "seedCrossCheck": "31/31 of-record RN-DEBRIS-4 introduced strings re-found",
+ "distinctDecompositions": 411,
+ "ambiguousPrefixFlags": 165,
+ "nonPrefixShapedAmbiguities": 0,
+ "boundaryInsertions": 2807,
+ "prefixTokenTable": [
+  [
+   "\\times",
+   852
+  ],
+  [
+   "\\Delta",
+   742
+  ],
+  [
+   "\\leq",
+   442
+  ],
+  [
+   "\\Rightarrow",
+   182
+  ],
+  [
+   "\\sum",
+   106
+  ],
+  [
+   "\\cap",
+   96
+  ],
+  [
+   "\\propto",
+   80
+  ],
+  [
+   "\\cup",
+   68
+  ],
+  [
+   "\\rightarrow",
+   54
+  ],
+  [
+   "\\geq",
+   41
+  ],
+  [
+   "\\div",
+   39
+  ],
+  [
+   "\\therefore",
+   27
+  ],
+  [
+   "\\pm",
+   20
+  ],
+  [
+   "\\approx",
+   17
+  ],
+  [
+   "\\neq",
+   9
+  ],
+  [
+   "\\equiv",
+   9
+  ],
+  [
+   "\\in",
+   7
+  ],
+  [
+   "\\subset",
+   4
+  ],
+  [
+   "\\downarrow",
+   2
+  ],
+  [
+   "\\rightleftharpoons",
+   2
+  ],
+  [
+   "\\Leftrightarrow",
+   2
+  ],
+  [
+   "\\notin",
+   2
+  ],
+  [
+   "\\uparrow",
+   1
+  ],
+  [
+   "\\circ",
+   1
+  ],
+  [
+   "\\subseteq",
+   1
+  ],
+  [
+   "\\ast",
+   1
+  ]
+ ],
+ "wordGlueTable": [
+  [
+   "\\times + 'height'",
+   17
+  ],
+  [
+   "\\sum + 'fx'",
+   10
+  ],
+  [
+   "\\times + 'base'",
+   8
+  ],
+  [
+   "\\times + 'distance'",
+   6
+  ],
+  [
+   "\\times + 'time'",
+   6
+  ],
+  [
+   "\\Delta + 'mg'",
+   5
+  ],
+  [
+   "\\Delta + 'GPE'",
+   4
+  ],
+  [
+   "\\Delta + 'KE'",
+   4
+  ],
+  [
+   "\\sum + 'xf'",
+   4
+  ],
+  [
+   "\\times + 'KE'",
+   3
+  ],
+  [
+   "\\Delta + 'mc'",
+   3
+  ],
+  [
+   "\\times + 'volume'",
+   3
+  ],
+  [
+   "\\times + 'displacement'",
+   3
+  ],
+  [
+   "\\Delta + 'lα'",
+   3
+  ],
+  [
+   "\\sum + 'xy'",
+   3
+  ],
+  [
+   "\\times + 'mass'",
+   3
+  ],
+  [
+   "\\times + 'wavelength'",
+   3
+  ],
+  [
+   "\\times + 'AE'",
+   3
+  ],
+  [
+   "\\equiv + 'ax'",
+   3
+  ],
+  [
+   "\\times + 'PB'",
+   3
+  ],
+  [
+   "\\times + 'velocity'",
+   2
+  ],
+  [
+   "\\Delta + 'lαl'",
+   2
+  ],
+  [
+   "\\Rightarrow + 'ma'",
+   2
+  ],
+  [
+   "\\Delta + 'SA'",
+   2
+  ],
+  [
+   "\\times + 'IQR'",
+   2
+  ],
+  [
+   "\\pm + 'WD'",
+   2
+  ],
+  [
+   "\\times + 'ax'",
+   2
+  ],
+  [
+   "\\times + 'width'",
+   2
+  ],
+  [
+   "\\times + 'pO'",
+   2
+  ],
+  [
+   "\\times + 'Pa'",
+   2
+  ],
+  [
+   "\\times + 'pI'",
+   2
+  ],
+  [
+   "\\times + 'orbitalradius'",
+   2
+  ],
+  [
+   "\\times + 'AC'",
+   2
+  ],
+  [
+   "\\times + 'PQ'",
+   2
+  ],
+  [
+   "\\Delta + 'ABC'",
+   2
+  ],
+  [
+   "\\times + 'TQ'",
+   2
+  ],
+  [
+   "\\times + 'TS'",
+   2
+  ],
+  [
+   "\\times + 'PD'",
+   2
+  ],
+  [
+   "\\times + 'PC'",
+   2
+  ],
+  [
+   "\\Delta + 'hg'",
+   1
+  ],
+  [
+   "\\propto + 'mv'",
+   1
+  ],
+  [
+   "\\propto + 'rηv'",
+   1
+  ],
+  [
+   "\\Delta + 'Mv'",
+   1
+  ],
+  [
+   "\\times + 'Time'",
+   1
+  ],
+  [
+   "\\sum + 'parallelsides'",
+   1
+  ],
+  [
+   "\\times + 'numberofatoms'",
+   1
+  ],
+  [
+   "\\times + 'lengthofcube'",
+   1
+  ],
+  [
+   "\\times + 'speedofmolecule'",
+   1
+  ],
+  [
+   "\\Rightarrow + 'mu'",
+   1
+  ],
+  [
+   "\\times + 'xyz'",
+   1
+  ],
+  [
+   "\\Rightarrow + 'Fz'",
+   1
+  ],
+  [
+   "\\times + 'Hz'",
+   1
+  ],
+  [
+   "\\Rightarrow + 'KE'",
+   1
+  ],
+  [
+   "\\Rightarrow + 'totalpower'",
+   1
+  ],
+  [
+   "\\propto + 'finalKE'",
+   1
+  ],
+  [
+   "\\sum + 'hm'",
+   1
+  ],
+  [
+   "\\sum + 'dv'",
+   1
+  ],
+  [
+   "\\sum + 'Hn'",
+   1
+  ],
+  [
+   "\\sum + 'dh'",
+   1
+  ],
+  [
+   "\\sum + 'ht'",
+   1
+  ],
+  [
+   "\\sum + 'xp'",
+   1
+  ],
+  [
+   "\\times + 'numberofbeetlescaughtinsecondsample'",
+   1
+  ],
+  [
+   "\\times + 'nu'",
+   1
+  ],
+  [
+   "\\times + 'ln'",
+   1
+  ],
+  [
+   "\\times + 'cos'",
+   1
+  ],
+  [
+   "\\times + 'timeperiod'",
+   1
+  ],
+  [
+   "\\propto + 'distance'",
+   1
+  ],
+  [
+   "\\times + 'speedoflight'",
+   1
+  ],
+  [
+   "\\Delta + 'readingonthebalance'",
+   1
+  ],
+  [
+   "\\Delta + 'volumeofliquid'",
+   1
+  ],
+  [
+   "\\times + 'Areaofbase'",
+   1
+  ],
+  [
+   "\\times + 'Perpendicularheight'",
+   1
+  ],
+  [
+   "\\cap + 'Iʹ'",
+   1
+  ],
+  [
+   "\\cap + 'Dʹ'",
+   1
+  ],
+  [
+   "\\times + 'bh'",
+   1
+  ],
+  [
+   "\\Delta + 'LPM'",
+   1
+  ],
+  [
+   "\\div + 'PQ'",
+   1
+  ],
+  [
+   "\\times + 'perpendiculardis'",
+   1
+  ],
+  [
+   "\\Rightarrow + 'Mg'",
+   1
+  ],
+  [
+   "\\Rightarrow + 'time'",
+   1
+  ],
+  [
+   "\\times + 'perpendiculardistancefromthepivot'",
+   1
+  ],
+  [
+   "\\times + 'averagemassofonepassenger'",
+   1
+  ],
+  [
+   "\\times + 'energyinput'",
+   1
+  ],
+  [
+   "\\times + 'gravity'",
+   1
+  ],
+  [
+   "\\times + 'area'",
+   1
+  ],
+  [
+   "\\times + 'length'",
+   1
+  ],
+  [
+   "\\times + 'specificheatcapacity'",
+   1
+  ],
+  [
+   "\\times + 'temperaturechange'",
+   1
+  ],
+  [
+   "\\Delta + 'Tt'",
+   1
+  ],
+  [
+   "\\times + 'nλ'",
+   1
+  ],
+  [
+   "\\Rightarrow + 'distance'",
+   1
+  ],
+  [
+   "\\Delta + 'distancefromEarth'",
+   1
+  ],
+  [
+   "\\times + 'pN'",
+   1
+  ],
+  [
+   "\\rightarrow + 'glucose'",
+   1
+  ],
+  [
+   "\\rightarrow + 'carbondioxide'",
+   1
+  ],
+  [
+   "\\rightarrow + 'lacticacid'",
+   1
+  ],
+  [
+   "\\rightarrow + 'alcohol'",
+   1
+  ],
+  [
+   "\\cap + 'Bʹ'",
+   1
+  ],
+  [
+   "\\cup + 'Bʹ'",
+   1
+  ],
+  [
+   "\\neq + 'kπ'",
+   1
+  ],
+  [
+   "\\times + 'CE'",
+   1
+  ],
+  [
+   "\\times + 'PG'",
+   1
+  ],
+  [
+   "\\times + 'FE'",
+   1
+  ],
+  [
+   "\\times + 'BC'",
+   1
+  ],
+  [
+   "\\times + 'CD'",
+   1
+  ],
+  [
+   "\\times + 'EC'",
+   1
+  ],
+  [
+   "\\times + 'FB'",
+   1
+  ],
+  [
+   "\\times + 'FD'",
+   1
+  ],
+  [
+   "\\times + 'AY'",
+   1
+  ],
+  [
+   "\\times + 'DY'",
+   1
+  ],
+  [
+   "\\times + 'PA'",
+   1
+  ],
+  [
+   "\\times + 'RT'",
+   1
+  ],
+  [
+   "\\times + 'PR'",
+   1
+  ],
+  [
+   "\\times + 'OB'",
+   1
+  ],
+  [
+   "\\pm + 'halftherange'",
+   1
+  ],
+  [
+   "\\times + 'thickness'",
+   1
+  ],
+  [
+   "\\times + 'gradient'",
+   1
+  ],
+  [
+   "\\Delta + 'hE'",
+   1
+  ],
+  [
+   "\\Delta + 'ht'",
+   1
+  ],
+  [
+   "\\leq + 'mx'",
+   1
+  ],
+  [
+   "\\geq + 'mx'",
+   1
+  ],
+  [
+   "\\geq + 'kx'",
+   1
+  ],
+  [
+   "\\sum + 'fy'",
+   1
+  ],
+  [
+   "\\rightarrow + 'sedimentation'",
+   1
+  ],
+  [
+   "\\rightarrow + 'chlorination'",
+   1
+  ]
+ ],
+ "blockedSegments": [
+  "$\\DeltaT=2.1068\\times10^{-4}^{\\circ}C$",
+  "$P(A\\capB)=____\\timesP(B)$",
+  "$̅x=\\frac{\\sumx}{n}$",
+  "$̅x\\pmz\\times\\frac{σ}{\\sqrt{n}}whereP(-z<Z<z)=0.95$"
+ ],
+ "blockedReasons": "each carries a SEPARATE pre-existing defect (double-superscript / fill-in underscores / combining overline); boundary fix alone cannot make them parse — kept per-segment fail-closed"
+}

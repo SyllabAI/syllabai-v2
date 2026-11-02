@@ -1,0 +1,33 @@
+{
+  "task_id": "R0-OPERATOR-RULINGS",
+  "kind": "arbitration/ruling5",
+  "authority": "OPERATOR of record, IM trace 1a1984556c02f509, 2026-11-02 — received verbatim as: 'close it as superseded, along with disposing of comments and recording receipts'",
+  "agent": "Super Z (zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7)",
+  "timestamp": "2026-11-01T18:31:37Z",
+  "baseline_of_record": "main 00cdcda5cb1f88aec0c978c4fad5ec972e5451af at action time; PR #296 head bd2c0b1e (frozen through R0-AUTO-101..107 carry streak); last sweep contact R0-AUTO-107 (2026-11-01T01:30, '#296 carried')",
+  "rulings": [
+    {
+      "id": "R5-296",
+      "register_item": "PR #296 (head bd2c0b1e) — 'static saga residual', hub gate-b red, carried/skipped every sweep since R0-AUTO-101, sole open PR",
+      "ruling": "CLOSED AS SUPERSEDED (relanded-by) — disposition comment posted, PR closed, closed state verified first-hand",
+      "effects": [
+        "T-PR-TRIAGE-1 (2026-10-29) verdict '#296 closed relanded-by' is now EXECUTED on the PR object",
+        "the escalation ledger's last carried item retires: #593/#597 resolved (R0-AUTO-105, #593 merged 704daa8f, twin #597 closed unmerged); #568/#583 resolved (T-COURSE-TABS-1, #583 merged d0e28478 on operator merge word, #568 duplicate-closed); #296 resolved by this ruling",
+        "gate-b law intact — no waiver-merge (considered and rejected): a frozen stale head can never satisfy 'CI must be all-success'",
+        "any still-unique content of #296 re-proposes as a fresh PR on a current head (the disclosed clean-main 7-failure hub signature noted in the disposition)",
+        "the merge-desk open-PR queue is empty; sweeps report zero open PRs going forward"
+      ],
+      "evidence": [
+        "head bd2c0b1e unchanged across R0-AUTO-101..107 skips (first-hand ls-remote + API at closure time)",
+        "hub red from the healed pin-red era; clean-main stash-runs reproduce the standing 7-failure signature (5 UGM spec-point bijection + 1 UGM katex + 1 cla-thread isolation) — CD-A-hub run-001, T-COURSE-SPECPILL-2, T-COURSE-SPECCARD-1 receipts",
+        "T-PR-TRIAGE-1 run-001 (2026-10-29): '#296 closed relanded-by' verdict of record"
+      ]
+    }
+  ],
+  "actions": [
+    "disposition comment posted: https://github.com/SyllabAI/syllabai-v2/pull/296#issuecomment-6562082185 (id 6562082185)",
+    "PR state -> closed (closed_at 2026-11-01T18:29:04Z); closed state re-verified first-hand via GET /pulls/296",
+    "bookkeeping commit on main via Git Data API (FF, force:false): receipt + worklog ruling5 block (.syllabai/** only)"
+  ],
+  "disciplines": "fetch-first; receipts of record after verified action; bookkeeping-only .syllabai/**; FF ref update with force:false, no force-push; token env-only, never echoed"
+}

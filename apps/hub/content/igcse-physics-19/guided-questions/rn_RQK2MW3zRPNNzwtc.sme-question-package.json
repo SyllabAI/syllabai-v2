@@ -1,0 +1,502 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_RQK2MW3zRPNNzwtc",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "ccdb1c682ea7f661c30f8e676588781c54ab9b0101208491d65b325aa9190a5d",
+    "pinnedRef": "0cea83a781024eccd40da9bd5025f43b9b1c0c75"
+  },
+  "packageId": "igcse-physics::rn_RQK2MW3zRPNNzwtc",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L1::Q1",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L1",
+      "stem": "For a colliding passenger, the force felt is smaller when:",
+      "misconceptionClass": "contact-time direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "The collision is over in a shorter instant",
+          "correct": false,
+          "explanation": "A shorter contact time would raise the force, not lower it.",
+          "misconception": "inverse myth"
+        },
+        {
+          "key": "B",
+          "text": "The passenger carries more momentum into the crash",
+          "correct": false,
+          "explanation": "More momentum means a bigger change to unload, which raises the force.",
+          "misconception": "effect reversal"
+        },
+        {
+          "key": "C",
+          "text": "The collision time is stretched out",
+          "correct": true,
+          "explanation": "Force is the rate of momentum change, so spreading it over more time lowers the force.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The vehicle is made heavier",
+          "correct": false,
+          "explanation": "Extra mass enlarges the momentum; it does nothing to soften the impact.",
+          "misconception": "mass confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L1::Q2",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L1",
+      "stem": "A seat belt protects its wearer mainly by:",
+      "misconceptionClass": "feature function",
+      "options": [
+        {
+          "key": "A",
+          "text": "Holding the passenger perfectly rigid so no stretch occurs",
+          "correct": false,
+          "explanation": "A rigid hold would remove the stretch that lengthens the stopping time.",
+          "misconception": "rigid-stop myth"
+        },
+        {
+          "key": "B",
+          "text": "Stretching a little, so the wearer's momentum takes longer to fall to zero",
+          "correct": true,
+          "explanation": "The slight stretch extends the contact time and cuts the peak force.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Increasing the wearer's forward momentum",
+          "correct": false,
+          "explanation": "The belt changes how quickly momentum is lost, not how much there is.",
+          "misconception": "effect reversal"
+        },
+        {
+          "key": "D",
+          "text": "Keeping the passenger loose so the interior absorbs the hit",
+          "correct": false,
+          "explanation": "Loose passengers strike the interior; the belt's job is to hold them and stretch gently.",
+          "misconception": "freedom myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L1::Q3",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L1",
+      "stem": "Crumple zones protect the people inside a car by:",
+      "misconceptionClass": "feature function",
+      "options": [
+        {
+          "key": "A",
+          "text": "Making the car bounce back off the obstacle",
+          "correct": false,
+          "explanation": "The zones deform; they do not make the car rebound.",
+          "misconception": "bounce myth"
+        },
+        {
+          "key": "B",
+          "text": "Keeping the bodywork undamaged in a crash",
+          "correct": false,
+          "explanation": "The zones are meant to deform — some damage is designed in.",
+          "misconception": "no-damage myth"
+        },
+        {
+          "key": "C",
+          "text": "Cutting the car's speed before contact happens",
+          "correct": false,
+          "explanation": "They act during the collision itself, not on the approach.",
+          "misconception": "timing confusion"
+        },
+        {
+          "key": "D",
+          "text": "Crushing in a planned way, which extends how long the car takes to stop",
+          "correct": true,
+          "explanation": "The controlled crush lengthens the stop and lowers the force on the passengers.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L1::Q4",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L1",
+      "stem": "Vehicle safety features absorb impact energy chiefly by:",
+      "misconceptionClass": "energy mechanism",
+      "options": [
+        {
+          "key": "A",
+          "text": "Changing shape",
+          "correct": true,
+          "explanation": "Deforming structures soak up the crash energy as they give way.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Adding mass to the vehicle",
+          "correct": false,
+          "explanation": "Extra mass would enlarge the momentum instead of absorbing energy.",
+          "misconception": "mass myth"
+        },
+        {
+          "key": "C",
+          "text": "Reducing the car's speed before the impact",
+          "correct": false,
+          "explanation": "These features work inside the collision, not before it.",
+          "misconception": "timing confusion"
+        },
+        {
+          "key": "D",
+          "text": "Heating up the passenger compartment",
+          "correct": false,
+          "explanation": "Heat plays no designed role in the protection.",
+          "misconception": "irrelevance"
+        }
+      ]
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L1::Q5",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L1",
+      "stem": "A truck striking a wall at speed needs a very long contact time because:",
+      "misconceptionClass": "mass-velocity factor",
+      "options": [
+        {
+          "key": "A",
+          "text": "Trucks are built with softer crumple zones than cars",
+          "correct": false,
+          "explanation": "Material softness is not the reason; the size of the momentum is.",
+          "misconception": "vehicle-type myth"
+        },
+        {
+          "key": "B",
+          "text": "Its large mass and high speed together give it enormous momentum",
+          "correct": true,
+          "explanation": "A huge momentum change must be spread over a long time to keep the force down.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Its momentum stays small even at high speed",
+          "correct": false,
+          "explanation": "A massive, fast truck carries an enormous momentum.",
+          "misconception": "momentum underestimate"
+        },
+        {
+          "key": "D",
+          "text": "The wall decides how hard to push back",
+          "correct": false,
+          "explanation": "The impact force follows from the truck's momentum change and the contact time alone.",
+          "misconception": "force-pair myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L1::Q6",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L1",
+      "stem": "State what is meant by contact time.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "It is the duration for which the person stays in touch with whatever they have struck — a soft, giving contact makes it longer.",
+      "keywords": [
+        "contact",
+        "time",
+        "duration",
+        "touch"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L1::Q7",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L1",
+      "stem": "Name the three main safety features built into a vehicle.",
+      "misconceptionClass": "feature recall",
+      "kind": "recall",
+      "modelAnswer": "Seat belts, airbags and crumple zones — all absorb crash energy by deforming and all stretch the time over which the force acts.",
+      "keywords": [
+        "seat belts",
+        "airbags",
+        "crumple zones",
+        "energy"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L1::Q8",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L1",
+      "stem": "Explain why crumple zones leave a car looking more damaged than expected, even after a small collision.",
+      "misconceptionClass": "design reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Crumple zones at the front and rear are built to deform on purpose; the deliberate crumpling extends the vehicle's stopping time, so the passengers feel a smaller force — the visible damage is the price of that gentler stop.",
+      "keywords": [
+        "crumple",
+        "crush",
+        "time",
+        "force",
+        "passengers"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L1::Q9",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L1",
+      "stem": "A designer must choose between a rigid metal dashboard and a padded, deformable one. Use the idea of momentum to argue for the padded design.",
+      "misconceptionClass": "design application",
+      "kind": "application",
+      "modelAnswer": "The padded surface lengthens the contact time when a passenger is thrown forward, so the same momentum change spreads over a longer interval; with force as the rate of change of momentum, the padded dash delivers a smaller force and a lower injury risk.",
+      "keywords": [
+        "contact",
+        "time",
+        "momentum",
+        "force",
+        "padded"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L2::Q1",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L2",
+      "stem": "A crash mat protects a falling gymnast chiefly by:",
+      "misconceptionClass": "contact-time direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "Reducing the gymnast's momentum to nothing instantly",
+          "correct": false,
+          "explanation": "An instant stop would mean a huge force — the opposite of protection.",
+          "misconception": "instant-stop myth"
+        },
+        {
+          "key": "B",
+          "text": "Making the gymnast lighter in mid-air",
+          "correct": false,
+          "explanation": "The mat acts on landing; it cannot change the gymnast's mass.",
+          "misconception": "absurd mechanism"
+        },
+        {
+          "key": "C",
+          "text": "Lowering the gymnast's speed before touchdown",
+          "correct": false,
+          "explanation": "The mat waits below; it works during contact, not during the descent.",
+          "misconception": "pre-contact myth"
+        },
+        {
+          "key": "D",
+          "text": "Extending the time the gymnast spends in contact with the mat",
+          "correct": true,
+          "explanation": "A longer contact time slows the rate of momentum change, so the force drops.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L2::Q2",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L2",
+      "stem": "Why can a child manage with a thinner mat than an adult?",
+      "misconceptionClass": "mass factor",
+      "options": [
+        {
+          "key": "A",
+          "text": "A smaller mass brings less momentum, so less cushioning time is needed",
+          "correct": true,
+          "explanation": "With less momentum to unload, a thinner mat still keeps the force low.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Children's bones are more flexible than adults'",
+          "correct": false,
+          "explanation": "The reasoning is about momentum, not biology.",
+          "misconception": "biology myth"
+        },
+        {
+          "key": "C",
+          "text": "Thin mats work only for light users",
+          "correct": false,
+          "explanation": "Mats work for everyone; thickness must match the momentum involved.",
+          "misconception": "exclusivity myth"
+        },
+        {
+          "key": "D",
+          "text": "Children always fall from lower heights",
+          "correct": false,
+          "explanation": "Height is a separate factor; the thinner mat here follows from mass.",
+          "misconception": "factor conflation"
+        }
+      ]
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L2::Q3",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L2",
+      "stem": "A playground's cushioned surface protects falling children by:",
+      "misconceptionClass": "surface mechanism",
+      "options": [
+        {
+          "key": "A",
+          "text": "Stopping children from ever reaching the ground",
+          "correct": false,
+          "explanation": "Children still land; the surface changes how the landing unfolds.",
+          "misconception": "prevention myth"
+        },
+        {
+          "key": "B",
+          "text": "Lengthening their contact time with the ground",
+          "correct": true,
+          "explanation": "More contact time spreads the momentum change and shrinks the force.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Reducing the children's weight",
+          "correct": false,
+          "explanation": "Weight is unchanged; the surface changes the timing of the stop.",
+          "misconception": "weight confusion"
+        },
+        {
+          "key": "D",
+          "text": "Absorbing the children's momentum entirely",
+          "correct": false,
+          "explanation": "The momentum still falls to zero — just across a longer interval.",
+          "misconception": "zero myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L2::Q4",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L2",
+      "stem": "Which landing calls for the thickest crash mat?",
+      "misconceptionClass": "matching severity",
+      "options": [
+        {
+          "key": "A",
+          "text": "A small child hopping off the final step",
+          "correct": false,
+          "explanation": "Low mass and low speed make this a gentle landing.",
+          "misconception": "severity misread"
+        },
+        {
+          "key": "B",
+          "text": "A slow sideways slip from standing height",
+          "correct": false,
+          "explanation": "A low-velocity fall carries little momentum.",
+          "misconception": "severity misread"
+        },
+        {
+          "key": "C",
+          "text": "A heavy adult dropping from a great height",
+          "correct": true,
+          "explanation": "Large mass and high speed mean the biggest momentum change, needing the longest contact time.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "A light gymnast landing from a low beam",
+          "correct": false,
+          "explanation": "A light body and a small drop add up to a low-impact landing.",
+          "misconception": "impact misjudged"
+        }
+      ]
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L2::Q5",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L2",
+      "stem": "Thick mats are laid beneath bouldering walls because falls from the wall:",
+      "misconceptionClass": "purpose recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Carry enough momentum to need a long contact time on landing",
+          "correct": true,
+          "explanation": "A bouldering fall arrives with real speed, so a long, soft stop keeps the force safe.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Arrive more slowly than an ordinary stumble",
+          "correct": false,
+          "explanation": "Bouldering falls are quick — which is exactly why the mat is thick.",
+          "misconception": "speed misread"
+        },
+        {
+          "key": "C",
+          "text": "Gain no speed on the way down",
+          "correct": false,
+          "explanation": "Gravity accelerates the descent, which is part of why the stop is severe.",
+          "misconception": "descent confusion"
+        },
+        {
+          "key": "D",
+          "text": "Need to be brought to rest as quickly as possible",
+          "correct": false,
+          "explanation": "Fast stops give big forces; the mat deliberately draws the stop out.",
+          "misconception": "speed myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L2::Q6",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L2",
+      "stem": "Why are gymnasium crash mats thick and soft?",
+      "misconceptionClass": "property recall",
+      "kind": "recall",
+      "modelAnswer": "So they can soak up the shock a landing body delivers and keep that body in touch with the mat for longer.",
+      "keywords": [
+        "thick",
+        "soft",
+        "shock",
+        "landing",
+        "contact"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L2::Q7",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L2",
+      "stem": "Name one place besides a gymnasium that cushions falls, and state how its surface helps.",
+      "misconceptionClass": "transfer recall",
+      "kind": "recall",
+      "modelAnswer": "Playgrounds use cushioned surfaces; the soft ground lengthens the child's contact time with the ground, so the impact force is smaller.",
+      "keywords": [
+        "playground",
+        "cushioned",
+        "contact",
+        "force",
+        "ground"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L2::Q8",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L2",
+      "stem": "Explain why a soft crash mat makes a landing safer than a hard floor.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The mat stretches out the contact time, so the body's momentum changes over a longer interval; the rate of momentum change is smaller, so the peak landing force and the chance of injury both fall.",
+      "keywords": [
+        "contact",
+        "time",
+        "momentum",
+        "force",
+        "injury"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_RQK2MW3zRPNNzwtc::L2::Q9",
+      "moduleId": "rn_RQK2MW3zRPNNzwtc::L2",
+      "stem": "A 50 kg climber topples from a bouldering wall and lands at 4 m/s. A thick mat brings them to rest in 0.2 s; a bare floor would stop them in 0.02 s. Calculate the climber's momentum at landing and the average stopping force for each surface, then compare the two.",
+      "misconceptionClass": "momentum arithmetic",
+      "kind": "application",
+      "modelAnswer": "Momentum at landing is 50 × 4 = 200 kg·m/s. On the mat, F = 200 ÷ 0.2 = 1000 N; on the bare floor, F = 200 ÷ 0.02 = 10000 N. The mat's longer contact time makes its force ten times smaller.",
+      "keywords": [
+        "momentum",
+        "200",
+        "1000",
+        "10000",
+        "force",
+        "contact"
+      ],
+      "options": []
+    }
+  ]
+}

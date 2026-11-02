@@ -1,17 +1,26 @@
 "use client";
 
 /**
- * Note-page client island: (1) fires the read event so the sidebar rings
- * react like SME's (research §8), and — when the course is the 4CH1 pilot
- * and the learner is signed in — ALSO reports the view to syllabai-core
- * (revision-notes progress feeds the backend's learner model), and (2)
- * renders the "Was this revision note helpful?" micro-feedback footer
+ * Note-page client island: (1) fires the note-read event — trigger law of
+ * record (operator trace 1a195fd0b0947695: "when a user opens a note and
+ * scrolls down of that note, then only the note will become checked, not
+ * just entering the note page"): the event fires when THIS strip — the
+ * note's END — scrolls into view, so a note becomes read only by scrolling
+ * down through it, never by merely opening the page. (A note short enough
+ * to fit the viewport shows its end on entry — the whole note IS on screen,
+ * which is honestly "seen"; the long-note entry case the operator called
+ * out keeps its ring/tick until the learner actually scrolls through.) The
+ * sidebar rings react like SME's (research §8), and — when the course is
+ * the 4CH1 pilot and the learner is signed in — the SAME event reports the
+ * view to syllabai-core (revision-notes progress feeds the backend's
+ * learner model; core never counts a view the local overlay doesn't). (2)
+ * Renders the "Was this revision note helpful?" micro-feedback footer
  * (research §5.4). The helpful rating always lands on the local overlay;
  * tranche 4.9 additionally mirrors it to the learner's core account as
  * append-only self-report evidence (lib/note-vote-bridge — pilot + signed
  * in + reachable only, every negative degrades silently, never mastery).
  */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { markNoteRead, rateNoteHelpful, useCourseProgress, type Course } from "@/lib/progress";
@@ -36,23 +45,57 @@ export function NoteFootnote({
   // either way — the footer never blocks on the answer)
   const [voteSync, setVoteSync] = useState<null | "account" | "local-signed-out" | "local-unreachable">(null);
 
+  // the read-law sentinel: this strip IS the note's end (it renders after
+  // the whole Markdown body — page.tsx) — visible ⇒ every line was scrolled
+  // past, which is exactly the operator's "opens a note AND scrolls down"
+  const rootRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    markNoteRead(course, noteId, subtopic);
-    // 4CH1 bridge: the same view becomes real evidence on the learner's core
-    // account. Fire-and-forget with the pilot check — a note read must never
-    // block rendering, and non-pilot courses stay local-only by design.
+    // one read event per mount; the observer owns the trigger
+    let fired = false;
     let cancelled = false;
-    fetchPilotInfo(course).then((pilot) => {
-      if (cancelled || !pilot) return;
-      api
-        .markRevisionNoteViewed(noteId)
-        .then(() => coreEvidenceChanged())
-        .catch(() => {
-          /* view stays local — honest, silent, non-blocking */
-        });
-    });
+
+    const fire = () => {
+      if (fired || cancelled) return;
+      fired = true;
+      markNoteRead(course, noteId, subtopic);
+      // 4CH1 bridge: the SAME read becomes real evidence on the learner's
+      // core account — gated on the identical trigger so core never counts
+      // a view the local overlay doesn't (one event, two sinks).
+      // Fire-and-forget with the pilot check — a note read must never
+      // block rendering, and non-pilot courses stay local-only by design.
+      fetchPilotInfo(course).then((pilot) => {
+        if (cancelled || !pilot) return;
+        api
+          .markRevisionNoteViewed(noteId)
+          .then(() => coreEvidenceChanged())
+          .catch(() => {
+            /* view stays local — honest, silent, non-blocking */
+          });
+      });
+    };
+
+    // Read law: fire when the note's end becomes visible (threshold 0.25 of
+    // this ~60px strip ≈ 15px on screen — deliberate visibility, not a
+    // 1-px flicker). Browsers without IntersectionObserver keep the old
+    // whole-page posture (fire on mount) rather than losing reads entirely.
+    if (typeof IntersectionObserver === "undefined") {
+      fire();
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) fire();
+      },
+      { threshold: 0.25 },
+    );
+    if (rootRef.current) io.observe(rootRef.current);
     return () => {
       cancelled = true;
+      io.disconnect();
     };
   }, [course, noteId, subtopic]);
 
@@ -70,7 +113,10 @@ export function NoteFootnote({
   };
 
   return (
-    <div className="flex flex-wrap items-center gap-3 rounded-lg border bg-muted/30 px-4 py-3">
+    <div
+      ref={rootRef}
+      className="flex flex-wrap items-center gap-3 rounded-lg border bg-muted/30 px-4 py-3"
+    >
       <p className="text-sm font-medium">Was this revision note helpful?</p>
       <div className="flex gap-2">
         <Button

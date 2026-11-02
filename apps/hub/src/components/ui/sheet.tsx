@@ -57,6 +57,11 @@ function SheetContent({
       <SheetOverlay />
       <SheetPrimitive.Content
         data-slot="sheet-content"
+        // F7 (KG-AUDIT-1, hub-wide): the content renders role=dialog with an
+        // active focus-trap but never announced aria-modal, so screen-reader
+        // users were not told the background is inert. Every Sheet here is
+        // modal by construction (Radix modal default), so state it.
+        aria-modal="true"
         // audit 2026-10-30 (question-player motion review): the drawer curve —
         // iOS-like cubic-bezier(0.32,0.72,0,1) — with a 400ms open (was 500ms
         // ease-in-out); the close stays 300ms. Deliberate open, snappier

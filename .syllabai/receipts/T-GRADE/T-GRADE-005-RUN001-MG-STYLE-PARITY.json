@@ -1,0 +1,44 @@
+{
+  "schema": "syllabai.receipt/1",
+  "task": "T-GRADE-005 (run-001)",
+  "title": "Grade Boundaries — MathsGenie style parity: pills, graded meter endpoints, mean-row Average, fitted table, hue-ramped graph",
+  "generated": "2026-11-01T08:20:00Z",
+  "trace": "1a194934c518f8e1",
+  "agent": "Z.ai main agent (zai-web session web-19f335c2-abed-4ade-968a-305029b290e3)",
+  "plane": "hub-ui",
+  "origin": "Operator word this trace: \"Still it is not in the style of MathsGenie. Did you check them out visually?\" — T-GRADE-3 proved value parity (G2 6/6 byte-identical) and T-GRADE-003 run-002 cloned MG's saved page DOM, but no run had ever compared the two LIVE pages. This run did: MG's live predicted-grade-calculator (IGCSE Chemistry Edexcel) screenshotted in table view, graph view and a selected-session state.",
+  "deltas": [
+    "pills: active = bordered background chip (--foreground ring, --background fill) with a leading check dot (lucide Check in a filled circle); inactive = borderless muted — replaces the filled accent pill",
+    "grade rail: caption is MG's marks-to-next affordance ('↑ 26 marks to 1' on the live corpus; '↑ N UMS to G' on the aggregate rail); static 'Most likely grade'/'Predicted — X' captions retired",
+    "meter: graded endpoints 'G · mark … next · boundary' (e.g. 'U · 0 … 1 · 26' linear; 'U · 0 … E · 240' aggregate cash-in) replace the bare '0 / Max' scale; the A*-rule shortfall demoted to the muted footnote line",
+    "Average semantics: MG's per-grade MEAN boundary row (averageBoundariesAcrossSeries — mean per grade over sessions carrying it, rounded half-up, null preserved for never-published grades) drives both the linear and the aggregate average mode (mean of eligible sessions' cash-in boundaries; per-session raw→UMS conversions unchanged); modalGradeAcrossSeries retired from the component but kept as a tested calc-lib utility",
+    "linear table: Max column dropped — MG fits ten columns in the max-w-3xl card, ours clipped at 1280px; papers labels + R badge + tier column, grouping rowSpan and the honest footnote untouched",
+    "graph: MG's dark-green→red per-grade hue ramp (gradeRampColor, interpolated per ladder position) with ringed dots (white fill, colored ring, r=4) replaces the 5-token cycle that collided on 9-grade ladders"
+  ],
+  "gates": {
+    "tsc": "bunx tsc --noEmit — 0 errors",
+    "eslint": "bunx eslint on touched paths — 0 problems",
+    "bun_test": "grade-boundaries-calc.test.ts 21/21 (18 prior + 3 new: mean+round, null-skipping tiers, empty/all-null guards); full suite 778 ran, 12 fails ALL reproduced on clean main via git stash (T-UGM render/XBOARD/dual-run/cla planes — sandbox-env, not this lane's delta) + 3 new passes",
+    "build": "bun run build prerendered (build7; two earlier builds OOM-killed at 137 in the sandbox's 4GB — NODE_OPTIONS cap + killing side processes cleared it; disclosed as environmental)",
+    "visual": "standalone build served on 127.0.0.1:3111, screenshotted: igcse-chemistry-19 Average (bordered+check pill, '↑ 26 marks to 1', endpoints 'U · 0'/'1 · 26', ten-column table, hue-ramped graph) and a slider-touched January-2020 state ('↑ 37 marks to 1', 'U · 6'/'1 · 43' — 6+37=43 = the session's grade-1 boundary, assert-by-render); ial-chemistry-17 aggregate average ('↑ 240 UMS to E', '0 / 600 UMS')"
+  },
+  "integrity": {
+    "served_chunk_pin": "a stale next-server survived one restart and kept serving build5 from memory — caught because the served chunk hash didn't match the built tree; killed by pid (its renamed process 'next-server' defeats pkill -f); future visual gates must chunk-match before believing a screenshot",
+    "data_plane": "bundle.v1.json byte-identical to T-GRADE-004's 533671bf1070ff93 — zero boundary values moved",
+    "append_only": "both worklogs appended with byte-exact prefix assertion (new.startswith(old))"
+  },
+  "scope_files": [
+    "apps/hub/src/components/hub/grade-boundaries/grade-boundaries-workspace.tsx",
+    "apps/hub/src/lib/grade-boundaries-calc.ts",
+    "apps/hub/src/lib/grade-boundaries-calc.test.ts",
+    ".syllabai/tasks/T-GRADE-005-mg-style-parity.yaml",
+    ".syllabai/receipts/T-GRADE/T-GRADE-005-RUN001-MG-STYLE-PARITY.json",
+    ".syllabai/worklog.md",
+    "worklog.md"
+  ],
+  "honest_remainders": [
+    "MG's per-paper mark inputs (subjects with per-paper breakdowns) have no SyllabAI counterpart yet — every served qualification here grades on totals, exactly as the boards publish",
+    "MG's Average pill for linear subjects averages THEIR session list; ours averages all 11 corpus sessions — same method, different session window",
+    "the page hero band remains the hub-wide course-page idiom (breadcrumb + title + exam-code chip) — MG's thinner header is a shared-shell change outside this task's fence"
+  ]
+}

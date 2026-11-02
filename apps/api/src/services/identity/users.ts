@@ -138,8 +138,11 @@ class PostgresJsClient implements RawSqlClient {
   }
 }
 
-/** Tagged template → {text with $n placeholders, values}. */
-function toQuery(strings: TemplateStringsArray, params: unknown[]): { text: string; values: unknown[] } {
+/** Tagged template → {text with $n placeholders, values}.
+ *  Exported for the OD-1 PR-A flip runner's per-set reconnect handles
+ *  (F-C standing law: chunk or reconnect per scheme) — same translation
+ *  the createSql seam uses, so lane tooling cannot drift from it. */
+export function toQuery(strings: TemplateStringsArray, params: unknown[]): { text: string; values: unknown[] } {
   let text = strings[0] ?? "";
   const values: unknown[] = [];
   for (let i = 0; i < params.length; i++) {

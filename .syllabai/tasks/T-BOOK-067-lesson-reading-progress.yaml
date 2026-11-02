@@ -2,12 +2,13 @@ schema: t-book-task/v1
 id: T-BOOK-067
 title: "Lesson-side reading progress — the Lesson reuses the rail's ONE chapter_progress row (no fork)"
 operator_order: "lesson-side reading progress, the 112-term glossary flip (trace 1a17cddee7d8a229)"
-status: IN_REVIEW
+status: DONE  # merged of record 2026-10-28 (PR #409, merge 28e99920; receipt .syllabai/receipts/T-BOOK-067/merge-of-record.json); ledger lag fixed 2026-11-01 (trace 1a195f71a95e7ef1) — live on the api-of-record
 branch: t-book-067/lesson-reading-progress
 head: 7355159d
 base: 03d16e31
 pr_of_record: https://github.com/SyllabAI/syllabai-v2/pull/409  # opened 2026-10-28 (trace 1a17e7169e166db5); head e378b23a = 7355159d + bookkeeping; NOT self-merged (integrator lane)
 push: PUSHED  # PAT handed 2026-10-28 (env-only, never persisted); branch on origin; merge on operator order
+merge: MERGED of record — PR #409, merge commit 28e99920 (2026-10-28, operator order 'merge #409 and flipping the vehicle into the warehouse'); receipt .syllabai/receipts/T-BOOK-067/merge-of-record.json
 
 scope:
   allowed:

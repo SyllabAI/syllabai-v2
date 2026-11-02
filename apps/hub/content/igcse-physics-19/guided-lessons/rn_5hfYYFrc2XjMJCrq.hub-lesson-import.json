@@ -1,0 +1,234 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_5hfYYFrc2XjMJCrq",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "34c83f3935d3dda40ec50b503508498b518ce0d83212a26527ee9bce73bf8347",
+    "pinnedRef": "aa6485187429e0911b4a47a8a468e256bb41ce32"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_5hfYYFrc2XjMJCrq",
+    "topicTitle": "1. Forces & Motion",
+    "subtopicTitle": "Movement & Position",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/1-forces-and-motion/1-1-movement-and-position/1-1-5-velocity-time-graphs",
+    "specAnchors": [
+      {
+        "code": "1.7",
+        "text": "plot and explain velocity−time graphs"
+      },
+      {
+        "code": "1.8",
+        "text": "determine acceleration from the gradient of a velocity−time graph"
+      }
+    ],
+    "primer": {
+      "text": "The distance-time graph answered 'how far by when'; the velocity-time graph answers the sharper question of how the pace itself evolved. This lesson teaches the graph's vocabulary of slopes and flats, then extracts a number from the picture by measuring its gradient.",
+      "prerequisiteSubtopic": "Movement & Position"
+    },
+    "modules": [
+      {
+        "id": "rn_5hfYYFrc2XjMJCrq::L1",
+        "title": "Reading slopes and flats on a velocity-time graph",
+        "sourceHeadings": [
+          "Velocity-time graphs",
+          "Acceleration on a velocity-time graph"
+        ],
+        "specRefs": [
+          "1.7"
+        ],
+        "opening": "On this graph the story is told entirely by the line's direction and steepness: rising means gaining speed, falling means losing it, and a flat stretch means cruising unchanged. This lesson builds the full reading vocabulary before any numbers are taken from the plot.",
+        "keyPoints": [
+          "A velocity-time graph plots the object's velocity against time, so the vertical axis carries m/s and the horizontal axis carries seconds.",
+          "A straight sloping line means the acceleration is constant for that whole stretch.",
+          "The steepness of the slope carries the size of the acceleration: steep means fast-changing, gentle means gradual.",
+          "A positive gradient shows the velocity increasing; a negative gradient shows it decreasing.",
+          "A flat horizontal line means zero acceleration, which is motion at a steady velocity."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Look at which way the line tilts: up means the object gains speed, down means it loses speed, and level means the speed holds steady. How steep the tilt is tells you how quickly the speed changes.",
+            "analogy": "Picture a hiking trail map where height is the speed: climbing stretches gain speed, descending stretches lose it, and the flat plateaus cruise.",
+            "examPointer": "Describe sections with the motion word first (accelerating, decelerating, constant velocity), then justify it from the slope's tilt."
+          },
+          "medium": {
+            "restatement": "Because the vertical axis is velocity, the gradient of the line is the acceleration. A single straight section therefore has one constant acceleration across it, and only a bend between sections changes the acceleration's value.",
+            "analogy": "The line behaves like a car's accelerator pedal held at one setting: the slope is the pedal pressure, and a new section is a new pedal setting.",
+            "examPointer": "Two-line comparison questions are decided by steepness alone: the steeper line carries the larger acceleration even if it sits lower on the graph."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_5hfYYFrc2XjMJCrq::L1::Q1",
+          "rn_5hfYYFrc2XjMJCrq::L1::Q2",
+          "rn_5hfYYFrc2XjMJCrq::L1::Q3",
+          "rn_5hfYYFrc2XjMJCrq::L1::Q4",
+          "rn_5hfYYFrc2XjMJCrq::L1::Q5",
+          "rn_5hfYYFrc2XjMJCrq::L1::Q6",
+          "rn_5hfYYFrc2XjMJCrq::L1::Q7",
+          "rn_5hfYYFrc2XjMJCrq::L1::Q8",
+          "rn_5hfYYFrc2XjMJCrq::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_5hfYYFrc2XjMJCrq::L2",
+        "title": "Acceleration from the gradient",
+        "sourceHeadings": [
+          "Gradient of a velocity-time graph",
+          "How to find acceleration on a velocity-time graph"
+        ],
+        "specRefs": [
+          "1.8"
+        ],
+        "opening": "The picture now becomes a calculator. Because the vertical axis is velocity, the gradient of any straight section is numerically the acceleration, and a large, clearly-drawn gradient triangle turns the reading into a mark-earning calculation. This lesson drills that extraction on the cyclist's training graph.",
+        "keyPoints": [
+          "The acceleration equals the gradient of the velocity-time line: acceleration = gradient = Δy / Δx.",
+          "Δy is the change in velocity read off the vertical axis; Δx is the matching change in time from the horizontal axis.",
+          "Draw the gradient triangle as large as the section allows, and take both changes straight from the axis scales with their units.",
+          "The worked reading for the cyclist between 5 s and 10 s: Δv = 5 m/s over Δt = 5 s, giving a = 1 m/s²."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Pick the straight section, draw a big right-triangle under it, then divide how much the velocity rose by how long the rise took. That quotient is the acceleration.",
+            "analogy": "It is exactly like reading a road's steepness sign: rise over run, except the rise is a speed and the run is a time.",
+            "examPointer": "Examiners award credit for a large gradient triangle drawn ON the graph; a tiny triangle squeezed between gridlines invites reading error."
+          },
+          "medium": {
+            "restatement": "Gradient extraction is the graphical twin of a = Δv/t: Δy plays Δv, Δx plays t. The section's straightness is what makes one number describe the whole interval.",
+            "analogy": "A single gradient number summarises the section the way one average summarises a whole trip: lawful precisely because the line is straight.",
+            "examPointer": "State the unit with the answer: a gradient read as (5 m/s)/(5 s) is 1 m/s², never a bare 1."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_5hfYYFrc2XjMJCrq::L2::Q1",
+          "rn_5hfYYFrc2XjMJCrq::L2::Q2",
+          "rn_5hfYYFrc2XjMJCrq::L2::Q3",
+          "rn_5hfYYFrc2XjMJCrq::L2::Q4",
+          "rn_5hfYYFrc2XjMJCrq::L2::Q5",
+          "rn_5hfYYFrc2XjMJCrq::L2::Q6",
+          "rn_5hfYYFrc2XjMJCrq::L2::Q7",
+          "rn_5hfYYFrc2XjMJCrq::L2::Q8",
+          "rn_5hfYYFrc2XjMJCrq::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04",
+          "fig-05"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "velocity-time graph",
+          "definition": "A plot of velocity (vertical, m/s) against time (horizontal, s) for a moving object.",
+          "firstLesson": 1
+        },
+        {
+          "term": "constant velocity",
+          "definition": "Motion with unchanging velocity, shown by a flat horizontal line and meaning zero acceleration.",
+          "firstLesson": 1
+        },
+        {
+          "term": "gradient",
+          "definition": "The steepness of a line, Δy/Δx; on a velocity-time graph it equals the acceleration.",
+          "firstLesson": 2
+        },
+        {
+          "term": "gradient triangle",
+          "definition": "A large right-triangle drawn on a straight section so its rise and run can be read from the axis scales.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A cyclist trains along a flat, straight road. The velocity-time graph shows five sections A to E. (a) In which section is the cyclist's acceleration the largest? (b) Calculate the cyclist's acceleration between 5 and 10 seconds.",
+        "steps": [
+          "Recall that the slope of a velocity-time graph gives the magnitude of the acceleration, so only the sloping sections (B and D) are accelerating; A, C and E are flat, i.e. constant velocity.",
+          "Compare the slopes of B and D: section D is the steeper of the two, so the largest acceleration is in section D.",
+          "For the 5 s to 10 s interval, draw a large gradient triangle and read the changes from the axes: Δv = 5 m/s and Δt = 5 s.",
+          "Calculate a = Δv / Δt = 5 / 5 = 1 m/s²."
+        ],
+        "finalAnswer": "(a) section D; (b) a = 1 m/s² between 5 s and 10 s"
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/c97d6c5afe35-5-6-11-velocity-time-graph.png",
+        "alt": "Velocity-Time Graph, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Velocity-time graphs",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Increasing and decreasing velocity represented on a velocity-time graph",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/bb0bc2d33c47-velocity-time-graphs.png",
+        "alt": "velocity-time-graphs, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Constant acceleration and constant velocity on a velocity-time graph",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Flat horizontal lines on a velocity-time graph show periods of constant velocity, and sloping straight line show periods of acceleration",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/84cde087ba0e-velocity-time-gradient.png",
+        "alt": "velocity-time-gradient",
+        "sourceHeading": "How to find acceleration on a velocity-time graph",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "How to find the gradient of a velocity-time graph",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/56b7b4134499-1-1-5-we-v-t-graph-question-image.png",
+        "alt": "WE V-T graph Question image, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "How to find acceleration on a velocity-time graph",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/43aa2be50f7e-velocity-time-graph-we.png",
+        "alt": "velocity-time-graph-we",
+        "sourceHeading": "How to find acceleration on a velocity-time graph",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

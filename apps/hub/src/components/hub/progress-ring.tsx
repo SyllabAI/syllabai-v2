@@ -7,9 +7,29 @@
  * rows (lib/progress-server.ts — the projection-of-events law); the
  * browser-local SIMULATED overlay remains the signed-out fallback.
  */
-import { useCourseProgress, type Course } from "@/lib/progress";
+import {
+  subtopicFlashcardsRing,
+  subtopicNotesRing,
+  subtopicQuestionsRing,
+  useCourseProgress,
+  type Course,
+} from "@/lib/progress";
 import { formatPercent, roundPercent } from "@/lib/format";
 import { cn } from "@/lib/utils";
+
+/**
+ * Which denominator the ring covers. "all" (the default) = the combined
+ * notes+questions+flashcards engagement coverage — the SIDEBAR's posture.
+ * Each select page owns its own dimension instead (operator trace
+ * 1a195fd0b0947695: "the rings show progress of revision notes only, not
+ * exam questions and not flashcards. Both of their select pages will handle
+ * their progress rings", extended by trace 1a1982281a3d7a65 to the other two
+ * select pages' own ring semantics):
+ * - "notes"      = reads ÷ available notes ONLY — revision-notes select page
+ * - "questions"  = answered parts ÷ available questions ONLY — exam-questions select page
+ * - "flashcards" = rated cards ÷ available cards ONLY — flashcards select page
+ */
+export type ProgressRingDimension = "all" | "notes" | "questions" | "flashcards";
 
 export function ProgressRing({
   course,
@@ -18,6 +38,7 @@ export function ProgressRing({
   size = 18,
   className,
   projectionPercent,
+  dimension = "all",
 }: {
   course: Course;
   /** sub-topic code the ring is computed for */
@@ -30,6 +51,11 @@ export function ProgressRing({
    * (the projection-of-events law, never a local counter); null/undefined
    * falls back to the SIMULATED overlay posture (signed-out demo). */
   projectionPercent?: number | null;
+  /** "notes" / "questions" / "flashcards" swap the denominator to that
+   * select page's own content type (see ProgressRingDimension). The server
+   * projection branch above is dimension-agnostic by contract: a caller
+   * that passes a projection also passes the matching dimension's number. */
+  dimension?: ProgressRingDimension;
 }) {
   const progress = useCourseProgress(course);
   const radius = (size - 3) / 2;
@@ -38,6 +64,12 @@ export function ProgressRing({
   let percent = 0;
   if (projectionPercent !== undefined && projectionPercent !== null) {
     percent = projectionPercent;
+  } else if (subtopic && dimension === "notes") {
+    percent = roundPercent(subtopicNotesRing(progress, subtopic, counts).percent);
+  } else if (subtopic && dimension === "questions") {
+    percent = roundPercent(subtopicQuestionsRing(progress, subtopic, counts).percent);
+  } else if (subtopic && dimension === "flashcards") {
+    percent = roundPercent(subtopicFlashcardsRing(progress, subtopic, counts).percent);
   } else if (subtopic) {
     const k = counts;
     const total = k.notes + k.questions + k.flashcards;

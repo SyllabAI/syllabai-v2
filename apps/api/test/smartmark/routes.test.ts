@@ -42,7 +42,7 @@ const ATTEMPT_UPDATE = /update attempts set marking_state = \? , marks_awarded =
 const TOPICS = /select node_id from question_topics where question_id = \?/;
 const FLIP = /update attempts set evidence_emitted = true where id = \? and evidence_emitted = false/;
 const VERSION = /select id from question_versions where question_id = \? order by version desc/;
-const VALIDATED_SCHEME = /select id, validation_state, scheme_kind, question_part_id from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
+const VALIDATED_SCHEME = /select id, validation_state, scheme_kind, question_part_id, version_label from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
 // ruling A (trace 1a1776dff15bb991): the shared tail's fresh attempt reads
 const ATTEMPT_TOTAL_READ = /select coalesce\(sum\(marks_awarded\), 0\) as total from answers where attempt_id = \?/;
 const PENDING_READ = /select 1 from answers where attempt_id = \? and marking_state = \? limit 1/;

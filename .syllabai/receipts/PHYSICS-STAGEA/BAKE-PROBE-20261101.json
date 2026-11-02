@@ -1,0 +1,20 @@
+{
+  "format": "physics-stagea-bake-probe/1.0",
+  "generated_at_utc": "2026-11-01T09:21:51Z",
+  "merge_of_record": "611dcd60617da5567dfaba7cee655f135df5442f",
+  "pr": "SyllabAI/syllabai-v2#606",
+  "target_url": "https://syllabai-hub-v2.vercel.app/courses/igcse-physics-19/guided-lessons/rn_RpyMnS5nqWSRWXXG",
+  "method": "live URL poll (alias switches on READY per the git-linked B8 law); GitHub Vercel check remained pending past the 7-min poll window \u2014 the production URL is the probe of record",
+  "attempts": "16 x 30s polls: attempts 1-16 returned the pre-bake 90,846B shell with 'Your answer' x0; first full 261,471B lesson surface observed on the follow-up probe (09:0x UTC window, ~12 min post-merge)",
+  "result": "GREEN",
+  "counts": {
+    "your_answer_occurrences": 8,
+    "law": "lessons x 4 = 2 x 4 = 8 EXACT",
+    "page_bytes": 261471
+  },
+  "calibrations": {
+    "igcse-chemistry-19/guided-lessons/rn_2MpXPtNXvn8pQm3r (chemistry stage-A pilot, must stay unchanged)": "HTTP 200, 'Your answer' x8 \u2014 UNCHANGED",
+    "igcse-chemistry-19/guided-lessons/rn_2z53qk2CdWrVVc7V (chemistry S-B10, must stay unchanged)": "HTTP 200, 'Your answer' x8 \u2014 UNCHANGED",
+    "igcse-physics-19/revision-notes face": "HTTP 200, rn_RpyMnS5nqWSRWXXG note link present \u2014 UNCHANGED (and now carries the guided-lessons surface)"
+  }
+}

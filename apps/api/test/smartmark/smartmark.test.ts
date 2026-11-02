@@ -18,6 +18,7 @@ import {
   type MarkingContext,
   type MarkingCandidate,
   type MarkingCandidateGenerator,
+  type BandMarkingCandidateGenerator,
   type GradedEvidencePublisher,
 } from "../../src/services/smartmark";
 import { fakeSql, FIXED_CLOCK, gradedEvidenceRoutes, type Route } from "../assessment/helpers";
@@ -159,7 +160,7 @@ const ATTEMPT_READ = /select a\.id, a\.learner_id, a\.question_id, a\.marking_st
 const QUESTIONS_MATCH = /select id, question_type, marks from questions where id = \?/;
 const ANSWERS_MATCH = /select ans\.id, ans\.question_part_id, ans\.answer_text, ans\.marks_awarded, ans\.marking_state, qp\.label, qp\.marks from answers ans join question_parts qp on qp\.id = ans\.question_part_id where ans\.attempt_id = \? order by ans\.question_part_id/;
 const VERSION_MATCH = /select id from question_versions where question_id = \? order by version desc/;
-const VALIDATED_SCHEME = /select id, validation_state, scheme_kind, question_part_id from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
+const VALIDATED_SCHEME = /select id, validation_state, scheme_kind, question_part_id, version_label from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
 // ruling A (trace 1a1776dff15bb991): the shared tail's fresh attempt reads
 const ATTEMPT_TOTAL_READ = /select coalesce\(sum\(marks_awarded\), 0\) as total from answers where attempt_id = \?/;
 const PENDING_READ = /select 1 from answers where attempt_id = \? and marking_state = \? limit 1/;
@@ -320,6 +321,169 @@ describe("SmartMarkService.markAttempt — the ONE engine", () => {
     const row = results.get(ANSWER_A)!;
     expect(row.validation_passed).toBe(true);
     expect(row.failure_reason).toBeNull();
+  });
+
+  test("OD-1 per-axis dispatch: a multi-axis part marks EACH axis and sums the sub-decisions at the part", async () => {
+    const SIBLING_A2 = "70000000-0000-0000-0000-00000000000b";
+    const axisRows = [
+      { id: SIBLING_A2, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "1-b-ii#a2" },
+      { id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "1-b-ii#a1" },
+    ];
+    const answer = answerRow({ marks: 8 });
+    const routes = markRoutes({ validatedSchemes: axisRows, newestScheme: axisRows, answers: [answer] });
+    // the per-axis two-step reads (kind re-assert + guidance; the bands),
+    // dispatched by the bound scheme id
+    routes.push({
+      match: /select validation_state, scheme_kind, general_guidance from mark_schemes where id = \?/,
+      rows: [],
+      rowsFor: (p) => [{ validation_state: "VALIDATED", scheme_kind: "LEVELS", general_guidance: `guidance for ${String(p[0])}` }],
+    });
+    const chain = (marks: number[]) => marks.map((m, i) => ({ id: `b${i}`, level_index: i + 1, marks_min: m, marks_max: m, descriptor_md: `level ${i + 1} descriptor`, guidance_md: null }));
+    routes.push({
+      match: /from mark_bands where mark_scheme_id = \? order by level_index/,
+      rows: [],
+      rowsFor: (p) => (String(p[0]) === SIBLING_A2 ? chain([1, 2, 3, 4]) : chain([1, 2, 3, 4])),
+    });
+    routes.push({ match: /select id, prompt from question_parts where question_version_id = \?/, rows: [{ id: PART_A, prompt: "Analyse two benefits..." }] });
+    const sql = fakeSql(routes);
+    // the band generator sees BOTH axis contexts (axis-ascending); the a1
+    // sibling is SCHEME_ID (newest-first row order: a2 arrives first, but
+    // the dispatch sorts axis-ascending — a1 = SCHEME_ID first)
+    const bandGen: BandMarkingCandidateGenerator = {
+      proposeBand: async () => { throw new Error("single-call topology must not run for sets"); },
+      proposeBandsAll: async (ctxs) =>
+        ctxs.map((c) => ({
+          modelId: "glm-4.6",
+          levelPlacement: c.schemeId === SCHEME_ID ? 3 : 4,
+          awardedMarks: c.schemeId === SCHEME_ID ? 3 : 4,
+          descriptorHits: [{ levelIndex: c.schemeId === SCHEME_ID ? 3 : 4, hit: true, rationale: "in context" }],
+          confidence: 0.9,
+          rawOutput: "raw",
+        })),
+    };
+    const pub = claimingPublisher();
+    const results = await new SmartMarkService(sql, okGenerator, pub, FIXED_CLOCK, bandGen).markAttempt(ATTEMPT_ID);
+    const row = results.get(ANSWER_A)!;
+    expect(row.validation_passed).toBe(true);
+    expect(row.marks_awarded).toBe(7); // 3 (a1) + 4 (a2) — summed at the part
+    expect(row.failure_reason).toBeNull();
+    const breakdown = row.breakdown as { shape: string; total_awarded: number; axes: Array<{ version_label: string; axis: string; awarded_marks: number; accepted: boolean }> };
+    expect(breakdown.shape).toBe("band_decision_v1_multi_axis");
+    expect(breakdown.total_awarded).toBe(7);
+    expect(breakdown.axes.map((a) => `${a.version_label}:${a.awarded_marks}:${a.accepted}`)).toEqual(["1-b-ii#a1:3:true", "1-b-ii#a2:4:true"]);
+    // the shared tail: state writes + the ONE total recompute; κ gate
+    // fail-closed → no evidence
+    expect(sql.queries.filter((q) => RESULT_INSERT.test(q)).length).toBe(1); // ONE set row
+    expect(sql.queries.some((q) => ANSWER_SMART_UPDATE.test(q))).toBe(true);
+    expect(sql.queries.some((q) => ATTEMPT_TOTAL_UPDATE.test(q))).toBe(true);
+    expect(pub.count).toBe(0);
+  });
+
+  test("OD-1 per-axis dispatch: ONE refusing axis refuses the whole set honestly — nothing marked", async () => {
+    const SIBLING_A2 = "70000000-0000-0000-0000-00000000000b";
+    const axisRows = [
+      { id: SIBLING_A2, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "1-b-ii#a2" },
+      { id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "1-b-ii#a1" },
+    ];
+    const routes = markRoutes({ validatedSchemes: axisRows, newestScheme: axisRows, answers: [answerRow({ marks: 8 })] });
+    routes.push({ match: /select validation_state, scheme_kind, general_guidance from mark_schemes where id = \?/, rows: [{ validation_state: "VALIDATED", scheme_kind: "LEVELS", general_guidance: null }] });
+    const chain = [1, 2, 3, 4].map((m, i) => ({ id: `b${i}`, level_index: i + 1, marks_min: m, marks_max: m, descriptor_md: `level ${i + 1}`, guidance_md: null }));
+    routes.push({ match: /from mark_bands where mark_scheme_id = \? order by level_index/, rows: chain });
+    routes.push({ match: /select id, prompt from question_parts where question_version_id = \?/, rows: [] });
+    const sql = fakeSql(routes);
+    const bandGen: BandMarkingCandidateGenerator = {
+      proposeBand: async () => { throw new Error("single-call topology must not run for sets"); },
+      proposeBandsAll: async (ctxs) =>
+        ctxs.map((c) => ({
+          modelId: "glm-4.6",
+          // the a2 sibling refuses structurally: no placement decided (the
+          // a1 axis still earns its in-range 3 — the set still refuses)
+          levelPlacement: c.schemeId === SCHEME_ID ? 3 : null,
+          awardedMarks: c.schemeId === SCHEME_ID ? 3 : 0,
+          descriptorHits: [],
+          confidence: null,
+          rawOutput: "raw-a2",
+        })),
+    };
+    const pub = claimingPublisher();
+    const results = await new SmartMarkService(sql, okGenerator, pub, FIXED_CLOCK, bandGen).markAttempt(ATTEMPT_ID);
+    const row = results.get(ANSWER_A)!;
+    expect(row.validation_passed).toBe(false);
+    expect(row.marks_awarded).toBe(0);
+    expect(row.failure_reason).toContain("MULTI_AXIS_AXIS_REFUSED");
+    expect(row.failure_reason).toContain("1-b-ii#a2");
+    const breakdown = row.breakdown as { shape: string; total_awarded: number; axes: Array<{ axis: string; accepted: boolean; failure_reason: string | null }> };
+    expect(breakdown.shape).toBe("band_decision_v1_multi_axis");
+    expect(breakdown.total_awarded).toBe(0);
+    expect(breakdown.axes.find((a) => a.axis === "a1")!.accepted).toBe(true); // the accepting axis still recorded
+    expect(breakdown.axes.find((a) => a.axis === "a2")!.accepted).toBe(false);
+    // nothing marked: no state change, no evidence
+    expect(sql.queries.some((q) => ANSWER_SMART_UPDATE.test(q))).toBe(false);
+    expect(sql.queries.some((q) => ATTEMPT_TOTAL_UPDATE.test(q))).toBe(false);
+    expect(pub.count).toBe(0);
+  });
+
+  test("OD-1 per-axis dispatch: a blank answer deterministically zeroes EVERY axis — accepted 0, no LLM call", async () => {
+    const SIBLING_A2 = "70000000-0000-0000-0000-00000000000b";
+    const axisRows = [
+      { id: SIBLING_A2, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "1-b-ii#a2" },
+      { id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "1-b-ii#a1" },
+    ];
+    const routes = markRoutes({ validatedSchemes: axisRows, newestScheme: axisRows, answers: [answerRow({ marks: 8, answer_text: "   " })] });
+    // the axis contexts are built BEFORE the pipeline's blank short-circuit,
+    // so the per-axis reads run; the generator itself must never be reached
+    routes.push({ match: /select validation_state, scheme_kind, general_guidance from mark_schemes where id = \?/, rows: [{ validation_state: "VALIDATED", scheme_kind: "LEVELS", general_guidance: null }] });
+    const blankChain = [1, 2, 3, 4].map((m, i) => ({ id: `b${i}`, level_index: i + 1, marks_min: m, marks_max: m, descriptor_md: `level ${i + 1}`, guidance_md: null }));
+    routes.push({ match: /from mark_bands where mark_scheme_id = \? order by level_index/, rows: blankChain });
+    routes.push({ match: /select id, prompt from question_parts where question_version_id = \?/, rows: [] });
+    const sql = fakeSql(routes);
+    const bandGen: BandMarkingCandidateGenerator = {
+      proposeBand: async () => { throw new Error("must not call"); },
+      proposeBandsAll: async () => { throw new Error("must not call"); },
+    };
+    const results = await new SmartMarkService(sql, okGenerator, claimingPublisher(), FIXED_CLOCK, bandGen).markAttempt(ATTEMPT_ID);
+    const row = results.get(ANSWER_A)!;
+    expect(row.validation_passed).toBe(true);
+    expect(row.marks_awarded).toBe(0);
+    const breakdown = row.breakdown as { shape: string; blank?: boolean; axes: Array<{ blank?: boolean }> };
+    expect(breakdown.shape).toBe("band_decision_v1_multi_axis");
+    expect(breakdown.blank).toBe(true);
+    expect(breakdown.axes.every((a) => a.blank === true)).toBe(true);
+  });
+
+  test("OD-1 per-axis dispatch: unwired band seam → the §5.2 NO_SCHEME_BANDS posture for the whole set", async () => {
+    const SIBLING_A2 = "70000000-0000-0000-0000-00000000000b";
+    const axisRows = [
+      { id: SIBLING_A2, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "1-b-ii#a2" },
+      { id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "1-b-ii#a1" },
+    ];
+    const sql = fakeSql(markRoutes({ validatedSchemes: axisRows, newestScheme: axisRows }));
+    const results = await new SmartMarkService(sql, okGenerator, claimingPublisher(), FIXED_CLOCK).markAttempt(ATTEMPT_ID);
+    const row = results.get(ANSWER_A)!;
+    expect(row.validation_passed).toBe(false);
+    expect(row.marks_awarded).toBe(0);
+    expect(row.failure_reason).toBe("NO_SCHEME_BANDS");
+    expect(sql.queries.some((q) => RESULT_INSERT.test(q))).toBe(true);
+    expect(sql.queries.some((q) => ANSWER_SMART_UPDATE.test(q))).toBe(false);
+  });
+
+  test("OD-1 MA-1 identity at dispatch: a sibling label without the '<base>#<axis>' shape refuses the set", async () => {
+    const SIBLING_A2 = "70000000-0000-0000-0000-00000000000b";
+    const axisRows = [
+      { id: SIBLING_A2, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "unpaired-label" },
+      { id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A, version_label: "1-b-ii#a1" },
+    ];
+    const sql = fakeSql(markRoutes({ validatedSchemes: axisRows, newestScheme: axisRows }));
+    const bandGen: BandMarkingCandidateGenerator = {
+      proposeBand: async () => { throw new Error("must not call"); },
+      proposeBandsAll: async () => { throw new Error("must not call"); },
+    };
+    const results = await new SmartMarkService(sql, okGenerator, claimingPublisher(), FIXED_CLOCK, bandGen).markAttempt(ATTEMPT_ID);
+    const row = results.get(ANSWER_A)!;
+    expect(row.validation_passed).toBe(false);
+    expect(row.marks_awarded).toBe(0);
+    expect(row.failure_reason).toBe("MULTI_AXIS_IDENTITY_INVALID");
+    expect(sql.queries.some((q) => ANSWER_SMART_UPDATE.test(q))).toBe(false);
   });
 
   test("κ gate fail-closed: no evaluations → authoritative false → NO evidence even when complete", async () => {

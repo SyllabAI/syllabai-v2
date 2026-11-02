@@ -766,3 +766,164 @@ Work Log:
 Stage Summary:
 - Branch of record: t-teachme-1/run-003 (base post-#585 origin/main); receipt .syllabai/receipts/T-TEACHME-001/run-003.json; PR body carries the gates table + disclosures.
 - Open: teacher workbench ratification queue (own band — this task's fence forbids teacher pages); DB apply of 0020/0021 + 4CH1 canon rows (operator, Neon branch) else live create refuses COURSE_NOT_ELIGIBLE fail-closed; run-004 operator-gated (Voice/attachments/XP); vague-explanation re-probe retunes config.ts ONLY.
+
+---
+
+Task ID: T-GRADE-005 (run-001) — MathsGenie style parity on the live page (operator trace 1a194934c518f8e1: "Still it is not in the style of MathsGenie. Did you check them out visually?")
+
+Work Log:
+- Visual diff of record: MG's live chemistry/edexcel predicted-grade-calculator screenshotted (headless) against ours — four style deltas + one semantics gap receipted (pills w/ check dot; "↑ N marks to 1" rail caption + graded meter endpoints; Average = per-grade MEAN boundary row via averageBoundariesAcrossSeries; linear table Max column dropped to MG's ten-column fit; graph on MG's green→red grade ramp with ringed dots).
+- Gates: tsc 0 / eslint 0 / calc tests 21/21 (+3 new) / build prerendered (two OOM kills at 137 disclosed as sandbox-env) / LOCAL VISUAL PROOF on the standalone build (127.0.0.1:3111): igcse-chemistry-19 "↑ 26 marks to 1", endpoints "U · 0"/"1 · 26", slider-touched January-2020 "U · 6"/"1 · 43" (6+37=43 assert-by-render); ial-chemistry-17 aggregate "↑ 240 UMS to E", "0 / 600 UMS".
+- Integrity: a stale next-server kept serving build5 from memory across a restart — caught by served-chunk-vs-disk-tree hash match (the pin for future visual gates); bundle.v1.json byte-identical at 533671bf1070ff93; zero boundary values, zero registry/DB/API bytes.
+
+Stage Summary:
+- The hub grade calculator now speaks MG's visual language on the live corpus, with the mean-row Average matching MG's own semantics; receipt .syllabai/receipts/T-GRADE/T-GRADE-005-RUN001-MG-STYLE-PARITY.json; lane t-gradeb-5/mg-style, PR of record carries the gates table.
+- Discipline: fetch-first; fail-closed; append-only worklogs (byte-exact prefix assert); tokens via env only; zero force-push, zero auth failures, boundaries held.
+
+## T-OEQ-MATHSB-SERVE-1 run-036 — Mode-A table->GFM tranche-2 (77 parts, 46 paper-sessions)
+Agent: main (Z.ai, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83, operator trace 1a195fd9e5b83465)
+Task: operator order "Proceed with tranche-2 = 76 parts" — the Mode-A table-crop -> GFM conversion wave, tranche-2
+
+Work Log:
+- Fresh sandbox #2: prior-session prep lost to the recycle; state re-derived first-hand from GitHub of record (run-035 artifacts + receipt fetched from v2 main; plane re-verified 801474a740be6546 at clone 64fdb91c; bun install 985 pkgs; 103 corpus crop PNGs re-fetched with auth; QP pages via pdftotext -layout from upload/).
+- Scope arithmetic corrected first-hand: the run-035 receipt's "76 (94-18)" double-slotted the already-GFM wage table (offp_2025-06_01_23-a is NOT among the census 99) — true remaining convertible set = 99 - 18(t1) - 4(keep_words pictorial) = 77; scope EXCEEDED by the disclosed 1-correction part, zero left behind. A FIFTH pictorial-keep found by first-hand crop read: 2025-11 02 6-b's "table" crop is the Q6 AGES pie chart (asset kept; its genuine runners-time run-on table converted with 6(c)-crop + p15 evidence).
+- 77 parts converted across 46 paper-sessions: 55 GFM tables with KaTeX cells + print-faithful blanks; 68 asset drops (41 unique corpus paths; 5 duplicate-ref drops caught by the extended probe incl. 2024-06 02 9-b x3); 2 assets-only orphan-crop cleanups (2019-06 02r 7-e, 2024-06 02r 5-b); 9 crops KEPT with alt relabels (table+pie / table+histogram mixed crops, tranche-1 pie precedent); 4 fail-closed stubs wired to real crops of record (2019-06 01r 28-a/28-b histogram, 2019-06 02r 7-b grid, 2021-01 01r 27-b diagram); 16 print-evidenced Mode-B equation restorations across 15 parts (every one arithmetic-exact on the printed table values, e.g. 2022-01 02r 8-b pinned by the printed A(0.75, -1.5625); 2024-06 02 9-a y = x^2/4 - 3 - 1/x exact on 7/7); answer-line furniture drops (stray 'minutes' x4, dotted line x1); axis run-ons dropped ONLY where visible in a kept image, kept where the histogram is not served.
+- Mode-C ledger (no fabrication): 4 mangled inequality/equation fragments LEFT AS-IS (2020-01 02r 11-c, 2022-01 02 11-f, 2022-01 02r 8-e, 2025-06 02r 11-f); 16 pre-existing wrong-file refs (grid/graph alt -> table-crop URL) dropped with notes; run-on tables of the mention-no-crop class (31) untouched; 2019-06 01R p22 CMap garbling disclosed (of-record run-on + sum-75 carries the Sunday table).
+- Evidence: 13 labeled contact sheets (77 crops) READ first-hand + per-part pdftotext page texts + per-equation arithmetic corroboration; page-census misses resolved by stem scan (28-a -> p22/23, 5-b -> p12, 6-b -> p14/15).
+- Gates: battery 14/14 GREEN (run-035 13-gate clone + value_carrier token-tracing gate; probe-before-work caught one drop multiplicity); katex 609/609 @0.16.47 throwOnError; hub-engine render 77/77 with 55 real <table> and per-line-exact img accounting (gate upgraded for stub-wirings + duplicate drops).
+
+Stage Summary:
+- Plane of record 801474a740be6546 -> 6b6ba8799cf1c0f7 (3,685,915 bytes). Receipt .syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-036-table-gfm-tranche2.json; artifacts .syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-036/ (fixes a-d + apply + both gates + projection + sheet map + 13 evidence sheets + qp_pages). Branch of record: t-oeq-mathsb-tablegfm-1/run-036 (base 64fdb91c). Corpus riders accrue: 95 pids / 178 field writes / 58 PNG deletions ride the NEXT converter run (standing law, no solo converter trigger). Residuals on card: mention-no-crop class census; grid/histogram serving gaps; 4 Mode-C equation fragments; FLEET formula-sheet fence ruling; PAT rotation standing order (CRITICAL-OVERDUE).
+
+---
+
+Task ID: T-GRADE-006 (run-001) — session lists newest→oldest (operator trace 1a194934c518f8e1: "Our grade boundaries is sorted in the reverse order. Older to newer. SHouldnt it be reverse?")
+
+Work Log:
+- Order fix at one point: sortSessionsNewestFirst (calc lib, tested) drives the sessions useMemo (pills, sub-tables, selectors) and the four entry.series.slice sub-tables — previously oldest-first everywhere, MG lists newest first; graph time axis deliberately stays chronological; graphMax re-pointed at sessions[0] (still the newest).
+- Gates: eslint 0 on touched files; calc tests 24/24 (+3 new); tsc noise in untouched files disclosed as re-clone artifacts (sandbox recycled between turns — repo re-cloned blob:none, lane re-cut from origin/main 7ce912ad); build deferred to CI hub lane.
+
+Stage Summary:
+- Grade-boundaries lists now read newest→oldest like MathsGenie's page; receipt .syllabai/receipts/T-GRADE/T-GRADE-006-RUN001-SESSION-ORDER-DESC.json; lane t-gradeb-6/session-order-desc, PR of record.
+- Discipline: fetch-first; fail-closed; append-only worklogs (byte-exact prefix assert); zero force-push, zero auth failures, boundaries held.
+
+---
+
+Task ID: T-GRADE-7 (run-001) — Pearson -v1 slug harvest, 4CH1 +2 sessions (operator trace "Run it").
+
+Work Log:
+- Upstream syllabai-resources: fetch_pearson.py slug matrices extended with the -v1/-v2 family; +4 source PDFs (linear Jan 2023/Nov 2021, IAL Jan 2021/Nov 2020); re-parse 26 docs/991 subjects/0 warnings; G1 0 errors, G2 MG parity 6/6 EXACT; bundle sha256_16 7ba6951347f5c37e.
+- This repo: bundle.v1.json mechanically re-imported; 4CH1 13 sessions; 70 absences ledgered upstream (June 2020/21 cancelled).
+
+Stage Summary:
+- Grade Boundaries coverage gap closed to Pearson's serving reality; receipts in both repos; discipline held.
+
+## T-OEQ-PHYS-FORMAT-1 run-008 serving leg (F131) — the W2 table-format wave served (operator order "Start", trace 1a198298221e914d)
+Agent: main (Z.ai, zai-web session web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2)
+Task: discharge the F129 standing item — "the serving leg (corpus -> v2 plane re-export + manifest re-stamp)" — after first-hand reconciliation proved the W2 corpus leg already merged (resources #269/23dd0c9d + #274/594a5a97; census 146/0 corpus-side == the pre-registration).
+
+Work Log:
+- Census re-derived on both planes (sandbox recycled; census scripts rebuilt from the methodology of record): v2 151 blocks = 122 OK + 29 degenerate / 26 parts; resources 146 all-OK == the F129 post-gate expectation exactly; the 4 "missing counterpart" parts identified as the prose-box morphs; the audit's corrupt-header trio reconciled as the official flattened MCQ trio (per the F129 pre-registration).
+- Of-record exporter run (official_examq_export_hub.py --spec 4ph1) in recon mode (no census -> fail-closed DELTA listing) then GREEN with the disclosed trio: G-E1/E1b/E2/E3/E4/E5/E6/E7 all ok; surfaced the 2022-01 1(a) inline-image doubling -> corpus-first rider PR #274 (merged 594a5a97; sole occurrence corpus-wide; T1/G3 gates; questions.md echo dropped), re-export re-run GREEN at the new cut (1(a) = stem + ONE registry figure line).
+- SME consume (26 parts / 29 blocks) per the F129 transforms of record: word-multiset gate (<br>-aware), unique-match, corpus-identity (every new block verbatim in the corpus problem_md), post-census 146/0/0 == pre-registration, untouched leaves byte-identical; executor fail-closed twice before any write (blockquote furniture; census field scope) and fixed in the executor.
+- Manifest: importSource.ref stamped 8f6a6a80 -> 594a5a97 (G-E5-proven); note recomposed per the stamp convention (F131 paragraph prepended, F128-era lineage verbatim below) and rewritten in the compact-separators byte law (the exporter's indent=1 manifest output corrected at compose; the run-007-disclosed law re-discovered first-hand).
+- Eyes-on: 3 official parts + 3 SME samples read as the page-evidenced forms; shas pinned in the payload; sandbox display artifact ('![m' eaten in tool output) caught fail-closed and gated around with byte checks.
+
+Stage Summary:
+- Plane of record: questions.json 6424eb5b -> d3df0fc8 (26 parts + the parallel debris union), official-papers.json f0945d29 -> 2c7b62c4 (3 parts), manifest 9bde63b4 -> 7fd0a856 (ref + note). Receipt .syllabai/receipts/T-OEQ-PHYS-FORMAT-1/run-008-serving-leg.json; payload .syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run008-serve-payload.json; resources leg = PR #274 (F131, LEDGER Wave 23, LANE-STATUS F131).
+- Standing: R2 (93 SME flattened parts) = next pre-registered wave; tick-table square residual filed; SME-corpus mirror lag beyond the 26 W2 parts remains queued of record.
+- Discipline: fetch-first; fail-closed (5 aborts across legs before any write, all fixed in the executor); zero DB/Neon/prod contact; no force on main.
+Task ID: T-GRADE-8 (run-001) — Algolia archive harvest (trace 1a1984c6a317ea2d).
+
+Work Log:
+- Widget reversed: DocListCtrl + hidden-input Algolia creds -> index qualifications-uk_LIVE_master-content; harvester scripts/harvest_pearson_index.py in resources; +14 verified docs; validator honest-absence fix; gates G1 0/G2 8-8/agg 0; bundle sha256_16 f6e2a18c4f81636d.
+- Import: 23 courses +150 sessions (IAL +140, modular +10); linear unchanged (cancelled-award docs carry component rows only).
+
+Stage Summary:
+- Archive coverage now reflects Pearson's serving reality; remaining 56 absences ledgered; discipline held.
+
+---
+
+Task ID: T-GRADE-9 (run-001) — era-guard + A* rule verification (trace 1a1984c6a317ea2d).
+
+Work Log:
+- Era-guard approved from the IAL analysis: aggregate-ums rows lacking every required-spec unit are foreign-era cash-ins and no longer serve; validator enforces as hard error. Bundle 043289a76bf38e85: maths-20 courses 19->18 sessions (January 2019 legacy suppressed); transitional June 2019 rows keep only composition-allowlist units.
+- A* calculator rule verified: data 12/12 consistent (A boundary == overallMin; a2Min == 90% A2 UMS max), engine gradeFromAggregation + honest label already live since T-GRADE-2; applies only when the cash-in prints no A* boundary.
+
+Stage Summary:
+- IAL serving is now spec-faithful; A* answers are rule-based and labeled; R-variant policy documented (standard row for calculators, both labeled rows for display).
+## T-OEQ-MATHSB-SERVE-1 run-037 — Mode-A table->GFM tranche-3 (operator order "Proceed with tranche-3", trace 1a19ae19a0be0129)
+Agent: main (Z.ai, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+Task: census2 tranche-3 worklists (1)+(2) — the 15 remaining table-crop parts and the 25 data-inline mention parts -> GFM md tables with KaTeX cells; scope re-pinned to origin/main plane ed750970 (RN-DEBRIS-7 drift = 2 pids, disjoint from scope).
+
+Work Log:
+- Scope of record: 29 conversion fixes = 25 data-inline restructures + 4 crop-mention conversions (2020-06/2020-11 27-a twins, 2022-06_01r_23, 2024-11_01_7) with 4 asset drops / 4 unique corpus paths. Fixes are fail-closed span replacements over each part's own served text (ASCII anchors + fullmatch validator regexes carrying the –/−/≤/⩽ glyph variance; zero byte-typed unicode soup).
+- Print evidence: 34 QP page texts (pdftotext -layout) + 12 first-hand 150dpi band reads (bands A-L). Catches of record: 2022-06_01r_23 first probability cell is (1/2)y (soup lost the 1/2); 2023-11_01_14-a pen row = 0.25/0.10/3y+0.15/x/y; 2025-06_02r_8-a-i = 0.1/0.15/0.2/2x/2x+0.1/x; 2019-06_02r_4-a soup TRANSPOSED (print: healthcare $336, insurance $504; housing/entertainment/other items blank; 2016+2184=4200 exact); 2018-06_02r_9-a + 2019-06_02_1-a interval bounds restored from print ('<' left / '<=' right; 1-a bound '10' = the run's single disclosed VALUE_ALLOWLIST entry).
+- Print-literal keeps (fence): 2025-10_01_21-a 'mean ... 15.6 seconds' (sic — printed), 2019-06_02r_4-a 'four items' (sic — 7 printed rows) and 'ratios 4 : 3 : 2' (sic).
+- Spinner-diagram label soup killed (2019-06_01_16-a '6 2 5 3'; 27-a twins 'pink orange green blue yellow'); the 3 spinner diagrams are never-cropped figures -> run-038 ledger.
+- Adjudicated NO-ACTION ledger (the other 11 census crop parts): histogram/pie figure crops with honest run-035/036 alts kept; 2022-01_02r_3-b = furniture FP ('bricks on the table', diagram asset); 2025-11_02_6-c combined histogram+table crop kept whole (split deferred to run-038); 2025-11_02_6-b 'Figure not shown in this reconstruction' stub = hidden histogram gap -> run-038.
+- Gates: battery 14/14 GREEN --write (census_EXACT 66/1281/2443/6600; value_carrier 29/29 with the single disclosed allowlist entry; old_form_discharge KILL lists both ways; gfm_table_shape incl. blank-line block isolation; class_post_census zero growth); katex 118/118 @0.16.47 throwOnError; hub-engine render 29/29 (29 real <table>, img accounting exact, total .katex 118).
+- Discipline: fetch-first race-guard before push; zero corpus/DB bytes; riders 29 pids/33 writes/4 PNG deletions accrue for the next converter run.
+
+Stage Summary:
+- Plane of record: official-papers.json ed75097069090fc3 -> 23215b0c14c36910; GFM parts 73 -> 102; remaining table-crop parts = 11 figure crops + 1 FP, all adjudicated. Run-038 (printed figure crops: 19 census gap questions + 3 spinner diagrams + the 6-b stub) is the next wave of record.
+
+## T-OEQ-MATHSB-SERVE-1 run-038 — printed-figure wiring wave (continuation of "Proceed with tranche-3", trace 1a19ae19a0be0129)
+Agent: main (Z.ai, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+Task: census tranche-3 worklist (3) — the never-cropped histogram/grid figures + the run-037 spinner/stub ledger — first-hand crops from the official QP PDFs, corpus leg PR #278 (22 PNGs merged 656ad812), plane wiring this commit.
+
+Work Log:
+- Figure capture: 22 crops @2x from the upload/ official-4MB1 QPs (frame-filtered drawing-cluster locator + per-figure band verification; every crop visually read against its printed page). Corpus leg: resources PR #278 merged (656ad81207) — 22 PNGs under Official-ExamQuestion/igcse-maths-b-16/<series>/<code>/assets/.
+- 3rd prose-only FP of record: 2023-01_02r_11 — QP p.30 stem + p.31 answer lines re-read first-hand: 'A curve C and a straight line L are drawn on a grid' prints NO grid (hypothetical reference); excluded from the gap census (true gaps 29 -> 28 parts).
+- 02r_7 twin family decoded: p.16 = the MAIN incomplete Tuesday histogram (wired to 7-b + 7-c), p.19 = the printed SPARE copy (wired to 7-d) — both cropped per paper.
+- 2025-11_02_6-b: the 'Figure not shown in this reconstruction' stub REPLACED by the real printed histogram; axis run-on retired.
+- Wiring: 33 parts / 33 asset attachments / 12 axis run-ons retired (each was the figure's only text carrier; all KILL-gated) across 20 papers. Assets appended with full schema {kind, mention, page, review, shared, path, rawUrl}; mention vocabulary: histogram/spinner -> diagram, plotting grids -> grid.
+- Gates: battery 14/14 GREEN --write (census_EXACT 66/1281/2443/6600; asset_integrity with append-only add semantics; old_form_discharge incl. stub + run-on KILLs + rawUrl-in-pmd asserts; value_carrier 33/33); katex 124/124 @0.16.47 throwOnError; hub-engine render 33/33 (img accounting exact 0->1 per wired part, tables preserved 1->1 — the render-gate table heuristic corrected for wiring runs: LOSS is the failure, not non-increase).
+- Discipline: fetch-first race-guard before push; zero DB bytes; corpus leg = PR #278 only; no plane asset removals (0 drops).
+
+Stage Summary:
+- Plane of record: official-papers.json 23215b0c14c36910 -> 817674ccd6d33f37; census figure gaps: 28/28 wired (17 gap questions - 1 FP + spinners + stub); the never-cropped-figure class is EMPTY of record. Tranche-3 complete: worklists (1)+(2) run-037, (3) run-038. Remaining known debts: corpus rider backlog (run-035/036/037/038 PNG deletions + edits[] corpus files accrue for the next converter run), 2022-01_02_11-f equation soup (token-lane scope).
+
+## T-UGM-OFFICIALTEXT-RESYNC-1 run-001 — the five-bundle officialText re-sync (the d7b199d repair pointer; operator order "officialText re-sync repair lane", trace 1a19adffd5f72cb9)
+Agent: main (Z.ai, zai-web session web-6e44932a-9395-44ac-a2c0-2065fd87c4bf, chat 80480363-0470-4136-a682-25ff79c05704)
+Task: discharge the repair pointer left by T-UGM-0606-1 run-002 — d7b199d updated the IAL X1-X4 + AS pure-1 curricula titles without re-syncing the bundles' officialText; ugm.bundle.test.ts red locally-only at 95/5.
+
+Work Log:
+- Law of record re-derived first-hand (fail-closed): the failing assertion is the spine verbatim law — each specPoint.officialText must equal cur.nodes.find(n => n.code === sp.code)?.title ?? null. Fix direction: bundles <- curricula (curricula are the spine of record). All 107 specPoints across the five bundles resolve to live curriculum codes (zero null case).
+- Serializer fidelity established before any write: json.dumps(indent=1, ensure_ascii=False) + trailing newline round-trips a PASSING bundle byte-exactly — so the repair diff is exactly the officialText lines. Structural asserts in the executor: specPoint count/keys/order unchanged, every non-officialText field unchanged, every top-level section unchanged.
+- Repair executed: 47/107 officialText fields re-synced (X1 14/22, X2 11/19, X3 11/18, X4 9/18, AS pure-1 2/30). Classic stale-extraction defects cured: interleaved two-column mush, lost superscripts (sin^-1 -> sin⁻¹x), fused fraction bars (tan i / sin i + cos i -> tanθ ≡ sinθ/cosθ).
+- Validation chain: bun test ugm.bundle.test.ts 95/5 -> 100/100 (27,193 expect calls); bunx tsc --noEmit -p apps/hub exit 0; hub prebuild validators all PASS (verify_corpus_23a, verify_flashcard_sync_courses, validate_cie_bundles, validate_gradeb_bundle). Disclosure: ugm.render.test.ts 2/1 both at base and after repair — the KaTeX corpus count (126 > 93) is pre-existing and unrelated (resource bodies untouched); proven by stash rerun.
+- Upstream note disclosed: a few re-extracted curriculum titles of record still carry fused-word artifacts (e.g. X1 1.4 "Needtoknow…ndtouse"); the spine verbatim law copies them as-is — title quality is an upstream curriculum lane, not this repair.
+- Package: 5 bundles + receipt + dual worklogs; branch t-ugm-officialtext-resync-1/run-001; no flags change, no resource rows touched, zero DB/prod contact.
+
+Stage Summary:
+- T-UGM-OFFICIALTEXT-RESYNC-1 run-001: the five UGM bundles are spine-verbatim against the curricula of record again; the locally-red test file is green 100/100; CI hub prebuild chain verified locally. The UGM plane ledger: 10 course planes of record, officialText desync retired.
+
+## T-OEQ-MATHSB-SERVE-1 run-039 — corpus rider discharge (the F126 next-converter-run law; operator go "Okay, proceed working" on the lane)
+Agent: main (Z.ai, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+Task: the corpus rider backlog of the table->GFM + printed-figure era (runs 035/036/037/038 + RN-DEBRIS-7) — corpus := plane-of-record 817674ccd6d33f37, derived from the 5-commit plane history, with the full gate stack; tranche-3 worklists are complete so the discharge itself is the next converter run (the run-034/F126 rule).
+
+Work Log:
+- Sandbox restore of record: recycled window rolled back to an older snapshot — state re-established first-hand from origin/main (v2 + a fresh sparse-blobless resources clone at 656ad81); the 7 plane states (2021ec47 baseline through live 817674cc) re-extracted from v2 git, every sha16 matching the of-record chain.
+- Rider derivation: plane-history diff with per-commit attribution — 236 field writes / 136 pids / 64 sets; reconciliation byte-exact vs every accrual line of record (run-035 18p/35w; run-036 77p/143w, union 95p/178w as filed; run-037 29p/33w; run-038 33p/66w; RN-DEBRIS-7 2p/2w); field split problemMd 134 + assets 102, ZERO solutionMd/markPoints deltas.
+- Corpus leg (resources PR #281, merged b37c373ac196…): 134 problem_md := served GFM text (28 ledger re-points byte-exact to projection.old pre-write + 106 G-E7 joins incl. the F-W15-1 frozen form) + 102 assets[] rebuilt to emission-exactness — including run-038's 33 attachments whose PR #278 PNGs had existed UNWIRED since 656ad81 (topic.json wiring was plane-side-only until now; an exporter run at the corpus tip would have emitted 0 of them); per-part ADR-039 edits[] + edit_status corrected + value_trace stamps; questions.md x64 regen AFTER regen-from-old byte-proof 64/64 (zero staleness); ledger/pins 2,684 -> 2,790 (B2 equality; counts 959/1078/753; CANARIES overlap 0); 54 PNGs deleted (52 rider drops + 2 pre-existing debris) under a census that UNIONs assets[] with TEXT references — the F114-frozen inline-URL class (4 accrual rows) survives on disk; an assets-only census would have 404'd live figures (near-miss disclosed; census law recorded); LEDGER F130 + AGENTS Task 35 + exporter-disclosure JSON filed; validation-report.json NOT regenerated (F114/C57 lesson).
+- Gates (on the exact pushed tree 6e684432, re-proven at the merge cut b37c373ac196…): battery B1-B7 ALL PASS 2,790/2,790 (B4 PUA 0, B5 sums clean, B6 27/27, B7 negative control); exporter run of record x3: census {changed:{},gone:{},new:{}} 0 delta pids; G-E5 66/66; G-E3 66/20/1281/2443/6600; G-E2; G-E1 BYTE-LEVEL NO-OP; G-E1b 66/66; G-E7 2,790/2,790 IN-RUN; G-E6 (1594/129/720); G-E4 passthrough byte-identical (2,920,322 B); determinism x2 byte-identical (3 stages, 1 unique sha); staged official-papers.json sha256 817674ccd6d33f37 == the served plane BYTE-EXACT (3,701,183 B); resources CI official-export-gates + corpus-gates BOTH SUCCESS (check-runs API first-hand).
+- v2 leg: manifest re-stamp (officialSpine.resourcesSha 6162cc77… -> b37c373ac196…; importSource.ref main@b541dda8… -> main@b37c373ac196…; run-039 landing note prepended, run-030 lineage kept verbatim below) + receipt + this worklog + lane artifacts; plane bytes ZERO (the byte-exact proof IS the no-op receipt); branch t-oeq-mathsb/run-039 cut at origin/main 5aa4026d (race-guard: origin advanced 5ce9c6ae -> 5aa4026d mid-run, T-KG-F8-1 receipt lane, zero path overlap); zero DB bytes.
+
+Stage Summary:
+- The maths-B corpus rider class is EMPTY of record: the corpus rides the plane at 817674cc with 2,790 G-E7-guarded fields; the F126 rider law cycle is closed for the GFM era. Receipt .syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-039-corpus-rider-discharge.json; artifacts .syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-039/. Remaining known debts: 2022-01_02_11-f equation soup (token-lane scope), FLEET formula-sheet fence ruling (operator), PAT rotation standing order (CRITICAL-OVERDUE, unchanged).
+
+## T-VERCEL-TURBO-413 run-001 — turbo remote cache adoption: 413 artifact fix + build-env hashing (operator order "Adopt Turborepo remote cache", trace 1a19d4f70c016ff9)
+Agent: main (Z.ai, zai-web session web-561901d7-498c-4c6f-aad2-00aeb4727ae6)
+Task: hub Vercel builds run turbo but every build is a remote-cache MISS. First-hand build-log evidence (dpl_F4FafLaeidsf687YwEhcCz6Dvsr3, 1089s): `• Remote caching enabled` is present, yet `WARNING failed to contact remote cache: 413 Request Entity Too Large` — the hub#build cache artifact exceeds the remote-cache upload limit, so the cache never populates. Control group: 4 consecutive builds (5346d33/6a9bf50/e073e30/c0c22e8) at the IDENTICAL turbo hash 08b559a35720e2a0 all missed at 901–1112s; 3 builds at hash 5ccd7fafc19367e3 all missed. With hub inputs unchanged, the second same-hash build must replay in minutes — it cannot because the artifact upload 413s.
+
+Work Log:
+- Root cause of the 413: hub#build outputs glob `.next/**` includes `.next/standalone/**`, and the build script's `cp -r public .next/standalone/apps/hub/` embeds the ~268MB `public/` tree (plus its dependency-tree copy) INSIDE the cached outputs — a >1GB single-artifact upload that Vercel's remote cache rejects. Vercel deploys from `.next` directly and never consumes standalone (standalone exists for the self-host/Docker/Render lane).
+- Fix (this commit): turbo.json @syllabai/hub#build outputs += `!.next/standalone/**` (after the existing `!.next/cache/**` negation). Standalone continues to be produced on full builds; only the cache tree excludes it. Local standalone after a cache hit: `bunx turbo run build --filter=@syllabai/hub --force`.
+- Latent correctness fix, same commit: `env` declaration added to hub#build for NEXT_PUBLIC_API_BASE_URL, NEXT_PUBLIC_API_V2_BASE_URL, HUB_DATA_MODE — NEXT_PUBLIC_* are inlined at build time; undeclared, a future cache hit would replay bundles/prerender baked with stale env values. CRON_SECRET intentionally left undeclared (runtime-only).
+- Vercel-side forensics (PAT-scoped API, read-only; zero project settings mutated, zero deploys triggered): project syllabai-hub-v2 (prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl) = git SyllabAI/syllabai-v2@main, rootDirectory apps/hub, framework nextjs, monorepoManager=turbo auto-detected (no buildCommand override — `turbo run build` is Vercel's detection, not a setting). Deployment retention: 444 hub deployments in the API window (oldest 2026-10-26, newest 2026-11-02): 357 READY / 82 CANCELED / 5 ERROR; READY durations median 407s, p90 960s, max 1936s. Arithmetic (est.): 617GB / ~444 retained deployments ≈ 1.4GB/deployment — the 617GB/10GB is REAL retention, not the orphaned-storage accounting bug. Prune (DELETE /v13/deployments) is irreversible and filed to the operator for an explicit go.
+- Vercel's own build cache ("Restored build cache from previous deployment", 1.18GB upload, 28.9s) is separate and already working — it covers .next/cache (compile), not the prerender of ~4,405 pages. The remote-cache hit is what removes the prerender.
+
+Stage Summary:
+- T-VERCEL-TURBO-413 run-001: the 413 class is the reason turbo remote cache was enabled-but-unusable; this is the smallest diff that makes the artifact uploadable. Verification receipt (next same-hash production build): build log must contain `cache hit, replaying logs` and NO `failed to contact remote cache` warning; expected duration drop from ~900–1100s toward minutes. Deployment volume (a prod deploy per push; git.deploymentEnabled main=true) and retention pruning are separate operator decisions.
+
