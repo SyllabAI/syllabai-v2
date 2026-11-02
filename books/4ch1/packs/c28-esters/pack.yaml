@@ -1,10 +1,12 @@
 # S0 output of record - c28-esters (T-BOOK-013; Phase C — S0–S4 complete, the fire of record)
+# T-BOOK-070: b06 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 5 -> 6);
+# the S0 plan is binding — lint G1 checks planned == on-disk.
 chapter: "c28"
 chapter_key: "u4:c28"
 title: "Esters (chemistry only)"
 status: published # S4 flip of record — the u4 S3/S4 single-command fire (operator order "fire --commit (the full-book flip)"); DB book_blocks VALIDATED v2 of record
 block_schema: "book.block/1"
-planned_blocks: 5
+planned_blocks: 6
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p306 intro, p307 esterification builder + condensation callout, p308 uses sort, p309 mcq"
 blocks:
@@ -13,3 +15,4 @@ blocks:
   - {ord: 3, id: "c28-esters/b03", type: callout, file: "blocks/b03-callout-condensation.json", anchor: 307}
   - {ord: 4, id: "c28-esters/b04", type: sort-match, file: "blocks/b04-sort-match-ester-uses.json", anchor: 308}
   - {ord: 5, id: "c28-esters/b05", type: mcq-embed, file: "blocks/b05-mcq-check.json", anchor: 309}
+  - {ord: 6, id: "c28-esters/b06", type: media-embed, file: "blocks/b06-media-embed.json", anchor: 309}

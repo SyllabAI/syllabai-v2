@@ -1,10 +1,12 @@
 # S0 output of record - c27-carboxylic-acids (T-BOOK-013; Phase C — S0–S4 complete, the fire of record)
+# T-BOOK-070: b06 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 5 -> 6);
+# the S0 plan is binding — lint G1 checks planned == on-disk.
 chapter: "c27"
 chapter_key: "u4:c27"
 title: "Carboxylic acids (chemistry only)"
 status: published # S4 flip of record — the u4 S3/S4 single-command fire (operator order "fire --commit (the full-book flip)"); DB book_blocks VALIDATED v2 of record
 block_schema: "book.block/1"
-planned_blocks: 5
+planned_blocks: 6
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p302 intro, p303 members table, p304 weak-acid callout + ionisation builder, p305 mcq"
 blocks:
@@ -13,3 +15,4 @@ blocks:
   - {ord: 3, id: "c27-carboxylic-acids/b03", type: callout, file: "blocks/b03-callout-weak-acid.json", anchor: 304}
   - {ord: 4, id: "c27-carboxylic-acids/b04", type: eq-builder, file: "blocks/b04-eq-builder-weak-ionisation.json", anchor: 304}
   - {ord: 5, id: "c27-carboxylic-acids/b05", type: mcq-embed, file: "blocks/b05-mcq-check.json", anchor: 305}
+  - {ord: 6, id: "c27-carboxylic-acids/b06", type: media-embed, file: "blocks/b06-media-embed.json", anchor: 305}

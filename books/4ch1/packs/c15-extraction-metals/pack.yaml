@@ -1,10 +1,12 @@
 # S0 output of record - c15-extraction-metals (T-BOOK-011)
+# T-BOOK-070: b07 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 6 -> 7);
+# the S0 plan is binding — lint G1 checks planned == on-disk.
 chapter: "c15"
 chapter_key: "u2:c15"
 title: "Extraction and uses of metals (chemistry only)"
 status: published # S4 flip of record — T-BOOK-011/012 r0 (operator dispatch trace 1a15f60b53d4e0d5); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 6
+planned_blocks: 7
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p169 ores intro, p170 below-carbon reduction, p171 above-carbon + cryolite callout, p172 alloys sort, p173 steels table, p174 mcq"
 blocks:
@@ -14,3 +16,4 @@ blocks:
   - {ord: 4, id: "c15-extraction-metals/b04", type: sort-match, file: "blocks/b04-sort-match-metal-uses.json", anchor: 172}
   - {ord: 5, id: "c15-extraction-metals/b05", type: table-fill, file: "blocks/b05-table-fill-steels.json", anchor: 173}
   - {ord: 6, id: "c15-extraction-metals/b06", type: mcq-embed, file: "blocks/b06-mcq-check.json", anchor: 174}
+  - {ord: 7, id: "c15-extraction-metals/b07", type: media-embed, file: "blocks/b07-media-embed.json", anchor: 174}
