@@ -1,0 +1,503 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_gYqbXsJPfrqtg5yQ",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "1f9a8fb76b5aa8f882c7337a9d462084b59c91f6de723a518dcbd5efa2353356",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "packageId": "igcse-physics::rn_gYqbXsJPfrqtg5yQ",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L1::Q1",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L1",
+      "stem": "As a thermistor warms up, its resistance:",
+      "misconceptionClass": "thermistor behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "increases",
+          "correct": false,
+          "explanation": "Heat lowers the thermistor's resistance, not raises it.",
+          "misconception": "inverse slip"
+        },
+        {
+          "key": "B",
+          "text": "decreases",
+          "correct": true,
+          "explanation": "Hot conditions give a thermistor its low resistance.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "stays constant",
+          "correct": false,
+          "explanation": "Responding to temperature is the thermistor's whole job.",
+          "misconception": "fixed myth"
+        },
+        {
+          "key": "D",
+          "text": "fluctuates randomly",
+          "correct": false,
+          "explanation": "The response is smooth and repeatable.",
+          "misconception": "noise myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L1::Q2",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L1",
+      "stem": "In dark conditions, an LDR's resistance is:",
+      "misconceptionClass": "LDR behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "low",
+          "correct": false,
+          "explanation": "Low resistance belongs to bright light.",
+          "misconception": "inverse slip"
+        },
+        {
+          "key": "B",
+          "text": "high",
+          "correct": true,
+          "explanation": "Darkness sends the LDR's resistance up.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "zero",
+          "correct": false,
+          "explanation": "The resistance rises in the dark but never reaches zero.",
+          "misconception": "extreme myth"
+        },
+        {
+          "key": "D",
+          "text": "the same as in bright light",
+          "correct": false,
+          "explanation": "Responding to light is the LDR's whole job.",
+          "misconception": "independence myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L1::Q3",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L1",
+      "stem": "Which component responds to light intensity?",
+      "misconceptionClass": "component identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "a thermistor",
+          "correct": false,
+          "explanation": "The thermistor watches temperature.",
+          "misconception": "component swap"
+        },
+        {
+          "key": "B",
+          "text": "a fixed resistor",
+          "correct": false,
+          "explanation": "A fixed resistor ignores its surroundings by design.",
+          "misconception": "fixed myth"
+        },
+        {
+          "key": "C",
+          "text": "an LDR",
+          "correct": true,
+          "explanation": "The light-dependent resistor tracks the light intensity on it.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a diode",
+          "correct": false,
+          "explanation": "The diode's job is direction control, not sensing.",
+          "misconception": "component swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L1::Q4",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L1",
+      "stem": "Brighter light shining on an LDR, at a fixed voltage, makes the current through it:",
+      "misconceptionClass": "circuit consequence",
+      "options": [
+        {
+          "key": "A",
+          "text": "smaller",
+          "correct": false,
+          "explanation": "Brighter light lowers the resistance, which raises the current.",
+          "misconception": "inverse slip"
+        },
+        {
+          "key": "B",
+          "text": "larger, because the resistance has dropped",
+          "correct": true,
+          "explanation": "Less opposition at the same push means more flow.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "unchanged",
+          "correct": false,
+          "explanation": "The LDR's changing resistance must move the current.",
+          "misconception": "independence myth"
+        },
+        {
+          "key": "D",
+          "text": "zero",
+          "correct": false,
+          "explanation": "More light never blocks the current.",
+          "misconception": "extreme myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L1::Q5",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L1",
+      "stem": "The resistance-temperature graph of a thermistor is:",
+      "misconceptionClass": "graph reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "a horizontal line",
+          "correct": false,
+          "explanation": "A horizontal line would mean unchanging resistance.",
+          "misconception": "constant myth"
+        },
+        {
+          "key": "B",
+          "text": "a rising straight line",
+          "correct": false,
+          "explanation": "Resistance falls with temperature, so nothing rises.",
+          "misconception": "direction myth"
+        },
+        {
+          "key": "C",
+          "text": "a falling curve",
+          "correct": true,
+          "explanation": "The graph dives as temperature climbs — the inverse-style curve.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a vertical line",
+          "correct": false,
+          "explanation": "A vertical line would mean the temperature reading is impossible.",
+          "misconception": "nonsense"
+        }
+      ]
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L1::Q6",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L1",
+      "stem": "State how a thermistor's resistance changes between cold and hot conditions.",
+      "misconceptionClass": "thermistor recall",
+      "kind": "recall",
+      "modelAnswer": "It is high when cold and low when hot — raising the temperature lowers the resistance.",
+      "keywords": [
+        "thermistor",
+        "resistance",
+        "cold",
+        "hot",
+        "temperature"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L1::Q7",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L1",
+      "stem": "State how an LDR's resistance responds to bright and dark conditions.",
+      "misconceptionClass": "LDR recall",
+      "kind": "recall",
+      "modelAnswer": "High in the dark and low in bright light — more illumination means less resistance.",
+      "keywords": [
+        "LDR",
+        "resistance",
+        "dark",
+        "bright",
+        "light"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L1::Q8",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L1",
+      "stem": "Explain why an LDR suits an automatic night light.",
+      "misconceptionClass": "sensor reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "When darkness falls the LDR's resistance rises sharply, so the circuit can sense the change and switch the lamp on; in daylight the low resistance reverses the behaviour.",
+      "keywords": [
+        "LDR",
+        "resistance",
+        "darkness",
+        "circuit",
+        "lamp"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L1::Q9",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L1",
+      "stem": "A thermistor sits in a fridge sensor circuit at a fixed voltage. When the fridge cools, what happens to the thermistor's resistance and to the current through it?",
+      "misconceptionClass": "sensor application",
+      "kind": "application",
+      "modelAnswer": "Cooling raises the thermistor's resistance, so the current through it falls.",
+      "keywords": [
+        "resistance",
+        "current",
+        "falls",
+        "cooling",
+        "thermistor"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L2::Q1",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L2",
+      "stem": "Lamps and LEDs can indicate the presence of:",
+      "misconceptionClass": "indicator function",
+      "options": [
+        {
+          "key": "A",
+          "text": "resistance",
+          "correct": false,
+          "explanation": "Components do not glow in proportion to resistance.",
+          "misconception": "quantity slip"
+        },
+        {
+          "key": "B",
+          "text": "voltage only",
+          "correct": false,
+          "explanation": "The glow tracks the current flowing, not the voltage alone.",
+          "misconception": "quantity slip"
+        },
+        {
+          "key": "C",
+          "text": "a current in the circuit",
+          "correct": true,
+          "explanation": "Both light up exactly when current flows through them.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "charge stored in the cell",
+          "correct": false,
+          "explanation": "The indicator reads the circuit's flow, not the cell's reserve.",
+          "misconception": "storage myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L2::Q2",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L2",
+      "stem": "A light-emitting diode (LED) is which component type?",
+      "misconceptionClass": "component classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "thermistor",
+          "correct": false,
+          "explanation": "Thermistors sense temperature; LEDs emit light.",
+          "misconception": "component swap"
+        },
+        {
+          "key": "B",
+          "text": "ammeter",
+          "correct": false,
+          "explanation": "Meters measure; LEDs indicate and emit.",
+          "misconception": "component swap"
+        },
+        {
+          "key": "C",
+          "text": "capacitor",
+          "correct": false,
+          "explanation": "Capacitors store charge — a different family entirely.",
+          "misconception": "component swap"
+        },
+        {
+          "key": "D",
+          "text": "diode",
+          "correct": true,
+          "explanation": "LED stands for light-emitting diode.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L2::Q3",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L2",
+      "stem": "An LED fails to light when:",
+      "misconceptionClass": "direction reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the current is perfectly steady",
+          "correct": false,
+          "explanation": "Steady current lights an LED as well as any.",
+          "misconception": "nonsense"
+        },
+        {
+          "key": "B",
+          "text": "it is wired in the reverse direction",
+          "correct": true,
+          "explanation": "Reversed, the diode blocks and the LED stays dark.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the circuit uses copper wires",
+          "correct": false,
+          "explanation": "Copper wiring is the normal, conducting choice.",
+          "misconception": "material myth"
+        },
+        {
+          "key": "D",
+          "text": "the voltage is too smooth",
+          "correct": false,
+          "explanation": "Smoothness of supply has no bearing on the LED's glow.",
+          "misconception": "nonsense"
+        }
+      ]
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L2::Q4",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L2",
+      "stem": "On a circuit symbol, two arrows pointing away from the component mean it is:",
+      "misconceptionClass": "symbol reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "light-dependent",
+          "correct": false,
+          "explanation": "Arrows towards a symbol mean light-dependent.",
+          "misconception": "arrow swap"
+        },
+        {
+          "key": "B",
+          "text": "light-emitting",
+          "correct": true,
+          "explanation": "Arrows radiating away mean the component emits light.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "temperature-dependent",
+          "correct": false,
+          "explanation": "Temperature sensing has its own symbol conventions.",
+          "misconception": "property swap"
+        },
+        {
+          "key": "D",
+          "text": "a meter",
+          "correct": false,
+          "explanation": "Meters are drawn in circles without emission arrows.",
+          "misconception": "meter myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L2::Q5",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L2",
+      "stem": "Which pair both glow to show a current is flowing?",
+      "misconceptionClass": "indicator pairing",
+      "options": [
+        {
+          "key": "A",
+          "text": "a lamp and an LED",
+          "correct": true,
+          "explanation": "Both illuminate when current passes, so both serve as indicators.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "an ammeter and a voltmeter",
+          "correct": false,
+          "explanation": "Meters read quantities; they do not glow as indicators.",
+          "misconception": "meter pair"
+        },
+        {
+          "key": "C",
+          "text": "an LDR and a thermistor",
+          "correct": false,
+          "explanation": "Sensors respond to the world; they do not announce current by glowing.",
+          "misconception": "sensor pair"
+        },
+        {
+          "key": "D",
+          "text": "a cell and a switch",
+          "correct": false,
+          "explanation": "Neither the supply nor the switch glows with the current.",
+          "misconception": "supply pair"
+        }
+      ]
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L2::Q6",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L2",
+      "stem": "Name two components that light up to show a current is present.",
+      "misconceptionClass": "indicator recall",
+      "kind": "recall",
+      "modelAnswer": "Lamps and light-emitting diodes (LEDs) both illuminate when current flows.",
+      "keywords": [
+        "lamps",
+        "LEDs",
+        "current",
+        "illuminate",
+        "flow"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L2::Q7",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L2",
+      "stem": "Which way must an LED face to light up, and why?",
+      "misconceptionClass": "direction recall",
+      "kind": "recall",
+      "modelAnswer": "In the forward direction — an LED is a diode, so current passes one way only.",
+      "keywords": [
+        "forward",
+        "LED",
+        "diode",
+        "current",
+        "direction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L2::Q8",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L2",
+      "stem": "Explain why an LED makes a reliable indicator of current direction as well as presence.",
+      "misconceptionClass": "indicator reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The LED lights only when current flows through it the permitted way, so a lit LED certifies both that a current exists and that it runs the right way round.",
+      "keywords": [
+        "LED",
+        "current",
+        "direction",
+        "flow",
+        "light"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gYqbXsJPfrqtg5yQ::L2::Q9",
+      "moduleId": "rn_gYqbXsJPfrqtg5yQ::L2",
+      "stem": "A student builds a circuit with an LED that stays dark. The battery and resistor are fine. Suggest the likely fault and the fix.",
+      "misconceptionClass": "fault finding",
+      "kind": "application",
+      "modelAnswer": "The LED is probably reversed — being a diode it conducts one way only, so turning it around in the circuit should let the current flow and the LED glow.",
+      "keywords": [
+        "LED",
+        "reversed",
+        "diode",
+        "circuit",
+        "current"
+      ],
+      "options": []
+    }
+  ]
+}

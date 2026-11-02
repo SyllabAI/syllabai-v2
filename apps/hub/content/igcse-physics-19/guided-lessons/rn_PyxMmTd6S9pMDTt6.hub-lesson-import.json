@@ -1,0 +1,205 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_PyxMmTd6S9pMDTt6",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "d15226a24f3ecbb60576f759988aacdcfef80931ddfa35d8a8207ac95e999413",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_PyxMmTd6S9pMDTt6",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Components in Series & Parallel Circuits",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-2-components-in-series-and-parallel-circuits/2-2-3-resistors-in-series",
+    "specAnchors": [
+      {
+        "code": "2.19",
+        "text": "calculate the currents, voltages and resistances of two resistive components connected in a series circuit"
+      }
+    ],
+    "primer": {
+      "text": "String resistors together in a row and their opposition to current simply adds up. This note states the series rule for resistance, shows why the supply voltage divides across the chain, and then summarises the full contrast between series and parallel behaviour so that any simple circuit can be solved step by step.",
+      "prerequisiteSubtopic": "Components in Series & Parallel Circuits"
+    },
+    "modules": [
+      {
+        "id": "rn_PyxMmTd6S9pMDTt6::L1",
+        "title": "Resistors in series",
+        "sourceHeadings": [
+          "Resistors in series"
+        ],
+        "specRefs": [
+          "2.19"
+        ],
+        "opening": "Charge pushing through series resistors must run the whole obstacle course, so the oppositions stack. Add the resistances for the total, share the supply voltage across the chain, and one common current threads every component. This lesson turns that picture into three solvable equations.",
+        "keyPoints": [
+          "Resistors in series add: the total resistance equals the sum of the individual resistances.",
+          "For two resistors the rule reads R = R1 + R2.",
+          "Each extra series resistor adds more opposition for the charge to push through.",
+          "The supply voltage divides so that the individual voltages sum to the total.",
+          "In series the current is common to every component, so one equation chain solves the circuit."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Total resistance in series is plain addition: R1 plus R2 (plus any more) is the lot.",
+            "analogy": "Toll booths in a row: the total toll is just the sum of every booth's charge.",
+            "examPointer": "Write the full equation R = R1 + R2 before substituting — the marks sit in the statement of the law."
+          },
+          "medium": {
+            "restatement": "One current, shared voltage: find the loop current from the total resistance, then read any component's voltage with V = I × R.",
+            "analogy": "One highway with several tolls: the same traffic (current) passes each booth, and each collects its own share of the total fare (voltage).",
+            "examPointer": "Check your answer closes: the component voltages you compute must sum back to the supply voltage."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_PyxMmTd6S9pMDTt6::L1::Q1",
+          "rn_PyxMmTd6S9pMDTt6::L1::Q2",
+          "rn_PyxMmTd6S9pMDTt6::L1::Q3",
+          "rn_PyxMmTd6S9pMDTt6::L1::Q4",
+          "rn_PyxMmTd6S9pMDTt6::L1::Q5",
+          "rn_PyxMmTd6S9pMDTt6::L1::Q6",
+          "rn_PyxMmTd6S9pMDTt6::L1::Q7",
+          "rn_PyxMmTd6S9pMDTt6::L1::Q8",
+          "rn_PyxMmTd6S9pMDTt6::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_PyxMmTd6S9pMDTt6::L2",
+        "title": "Summary of series and parallel circuits",
+        "sourceHeadings": [
+          "Summary of series and parallel circuits"
+        ],
+        "specRefs": [
+          "2.19"
+        ],
+        "opening": "Two arrangements, six rules — learn them as a matched set and every simple circuit question becomes bookkeeping. Series keeps one current and adds resistances; parallel splits the current, repeats the voltage, and lands at a total resistance smaller than any branch.",
+        "keyPoints": [
+          "Series circuit: current identical everywhere, voltage shared, resistances added.",
+          "Parallel: current splits between branches, voltage identical across branches.",
+          "Parallel total resistance lands below the smallest single branch resistance.",
+          "A series loop breaks entirely when any component fails.",
+          "Series chains need fewer connections than parallel arrays.",
+          "Choosing the arrangement means weighing control, wiring effort and failure behaviour."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Series: one current, shared voltage, added resistance. Parallel: split current, repeated voltage, shrunken resistance.",
+            "analogy": "A single-lane road with tolls versus a multi-lane motorway: one queue versus many, and more lanes move more cars with less total delay.",
+            "examPointer": "Memorise the six rules as a table; most two-mark questions are just one rule quoted back."
+          },
+          "medium": {
+            "restatement": "The rules interlock: one current in series is why the voltages must share, and the split current in parallel is why each branch keeps the full voltage.",
+            "analogy": "Two ways to organise a queue at a fair: one line feeding all rides (series) or one ticket booth per ride (parallel).",
+            "examPointer": "When a question mixes both arrangements, solve the series part and the parallel part separately, then join them at the junction."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_PyxMmTd6S9pMDTt6::L2::Q1",
+          "rn_PyxMmTd6S9pMDTt6::L2::Q2",
+          "rn_PyxMmTd6S9pMDTt6::L2::Q3",
+          "rn_PyxMmTd6S9pMDTt6::L2::Q4",
+          "rn_PyxMmTd6S9pMDTt6::L2::Q5",
+          "rn_PyxMmTd6S9pMDTt6::L2::Q6",
+          "rn_PyxMmTd6S9pMDTt6::L2::Q7",
+          "rn_PyxMmTd6S9pMDTt6::L2::Q8",
+          "rn_PyxMmTd6S9pMDTt6::L2::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "total resistance",
+          "definition": "The single resistance that could replace a whole arrangement — the sum of the parts in series.",
+          "firstLesson": 1
+        },
+        {
+          "term": "series circuit",
+          "definition": "A single-loop circuit whose components share the supply voltage and one common current.",
+          "firstLesson": 1
+        },
+        {
+          "term": "parallel circuit",
+          "definition": "A branch circuit whose components each take the full voltage while the current splits between them.",
+          "firstLesson": 2
+        },
+        {
+          "term": "ohm",
+          "definition": "The unit of resistance — one volt driving one amp through the component.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "Three resistors sit in series and the combined resistance is 60 Ω. Two of them are 30 Ω and 10 Ω. Find the third resistance.",
+        "steps": [
+          "Write the series law: R = R1 + R2 + R3.",
+          "Substitute the knowns: 60 = 30 + R2 + 10.",
+          "Collect the known terms: 30 + 10 = 40.",
+          "Rearrange: R2 = 60 − 40 = 20."
+        ],
+        "finalAnswer": "The unknown resistor is 20 Ω."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3aedd078ebf8-combined-resistance.png",
+        "alt": "combined-resistance",
+        "sourceHeading": "Resistors in series",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Three resistors connected in series. The total voltage is the sum of the individual voltages, and the total resistance is the sum of the three individual resistances",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/6ace15c22546-we-resistors-in-series-question-image.png",
+        "alt": "6ace15c22546-we-resistors-in-series-question-image",
+        "sourceHeading": "Resistors in series",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/e52a458da067-10-2-1-we-series-circuit-question-image.png",
+        "alt": "WE Series Circuit Question image, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Resistors in series",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

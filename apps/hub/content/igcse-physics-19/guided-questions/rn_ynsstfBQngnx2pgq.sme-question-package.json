@@ -1,0 +1,503 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_ynsstfBQngnx2pgq",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "15a4fb4ae1b52d20c392baccc564a81c592506cd02cce1f6b001513b0c864ea8",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "packageId": "igcse-physics::rn_ynsstfBQngnx2pgq",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L1::Q1",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L1",
+      "stem": "In a series circuit, the supply voltage is:",
+      "misconceptionClass": "series behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "shared between the components",
+          "correct": true,
+          "explanation": "The loop divides the supply voltage among everything in it.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the same across each component",
+          "correct": false,
+          "explanation": "That is parallel behaviour; series shares the voltage out.",
+          "misconception": "parallel carryover"
+        },
+        {
+          "key": "C",
+          "text": "multiplied by the number of components",
+          "correct": false,
+          "explanation": "The supply is fixed; the components divide it, not multiply it.",
+          "misconception": "growth myth"
+        },
+        {
+          "key": "D",
+          "text": "zero across every component",
+          "correct": false,
+          "explanation": "Each component takes its own share of the supply.",
+          "misconception": "zero myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L1::Q2",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L1",
+      "stem": "Two identical lamps in series across a 12 V battery take:",
+      "misconceptionClass": "equal-share arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "12 V each",
+          "correct": false,
+          "explanation": "Only in parallel would each see the full supply voltage.",
+          "misconception": "full-voltage myth"
+        },
+        {
+          "key": "B",
+          "text": "6 V each",
+          "correct": true,
+          "explanation": "Identical components split the 12 V supply equally: 12 ÷ 2 = 6 V.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "24 V each",
+          "correct": false,
+          "explanation": "Nothing can give out more voltage than the supply holds.",
+          "misconception": "doubling myth"
+        },
+        {
+          "key": "D",
+          "text": "3 V each",
+          "correct": false,
+          "explanation": "That would be quartering the supply, not halving it.",
+          "misconception": "quarter myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L1::Q3",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L1",
+      "stem": "Two different resistors sit in series across a supply. The larger resistance takes:",
+      "misconceptionClass": "share reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the smaller share of the voltage",
+          "correct": false,
+          "explanation": "The shares follow the resistances, not the reverse.",
+          "misconception": "inverse slip"
+        },
+        {
+          "key": "B",
+          "text": "zero voltage",
+          "correct": false,
+          "explanation": "Every series component takes some share of the supply.",
+          "misconception": "zero myth"
+        },
+        {
+          "key": "C",
+          "text": "the same share as the other resistor",
+          "correct": false,
+          "explanation": "Different resistances break the equal-share case.",
+          "misconception": "equality myth"
+        },
+        {
+          "key": "D",
+          "text": "the larger share of the voltage",
+          "correct": true,
+          "explanation": "In series, more resistance claims more of the supply voltage.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L1::Q4",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L1",
+      "stem": "In a parallel circuit, the voltage across each branch is:",
+      "misconceptionClass": "parallel behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "equal to the supply voltage",
+          "correct": true,
+          "explanation": "Each branch connects straight across the supply, so it takes the full voltage.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "half the supply voltage",
+          "correct": false,
+          "explanation": "Halving belongs to two identical series components, not parallel branches.",
+          "misconception": "series carryover"
+        },
+        {
+          "key": "C",
+          "text": "shared out between the branches",
+          "correct": false,
+          "explanation": "Parallel branches do not divide the voltage; each gets all of it.",
+          "misconception": "share myth"
+        },
+        {
+          "key": "D",
+          "text": "zero across the inner branches",
+          "correct": false,
+          "explanation": "Every branch sees the supply voltage, wherever it sits.",
+          "misconception": "zero myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L1::Q5",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L1",
+      "stem": "Two lamps are wired in parallel across a 6 V supply. The voltage across each lamp is:",
+      "misconceptionClass": "parallel arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "3 V",
+          "correct": false,
+          "explanation": "Parallel lamps do not halve the supply.",
+          "misconception": "halving carryover"
+        },
+        {
+          "key": "B",
+          "text": "6 V",
+          "correct": true,
+          "explanation": "Both lamps take the full 6 V across them.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "12 V",
+          "correct": false,
+          "explanation": "The supply cannot deliver more than it holds.",
+          "misconception": "doubling myth"
+        },
+        {
+          "key": "D",
+          "text": "0 V",
+          "correct": false,
+          "explanation": "A connected branch always sees the supply voltage.",
+          "misconception": "zero myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L1::Q6",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L1",
+      "stem": "State how the supply voltage is divided in a series circuit, and what each branch gets in a parallel circuit.",
+      "misconceptionClass": "division recall",
+      "kind": "recall",
+      "modelAnswer": "In series the supply voltage is shared among the components; in parallel every branch receives the full supply voltage.",
+      "keywords": [
+        "series",
+        "parallel",
+        "voltage",
+        "shared",
+        "branch"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L1::Q7",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L1",
+      "stem": "Two resistors of different size sit in series. Which one takes the larger voltage share?",
+      "misconceptionClass": "share recall",
+      "kind": "recall",
+      "modelAnswer": "The resistor with the larger resistance takes the larger share of the supply voltage.",
+      "keywords": [
+        "resistance",
+        "larger",
+        "voltage",
+        "resistor",
+        "share"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L1::Q8",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L1",
+      "stem": "Explain why two identical lamps in series each take exactly half the battery's voltage.",
+      "misconceptionClass": "equal-share reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Identical lamps have equal resistance, so the shared voltage divides equally between them — each receives half of the supply voltage.",
+      "keywords": [
+        "identical",
+        "resistance",
+        "half",
+        "voltage",
+        "equal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L1::Q9",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L1",
+      "stem": "A 9 V battery drives two different resistors in series. The first resistor takes 3.6 V. Find the voltage across the second resistor.",
+      "misconceptionClass": "share calculation",
+      "kind": "application",
+      "modelAnswer": "The shares must sum to the supply: 9 − 3.6 = 5.4 V across the second resistor.",
+      "keywords": [
+        "5.4",
+        "9",
+        "series",
+        "voltage",
+        "shared"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L2::Q1",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L2",
+      "stem": "One advantage of connecting lamps in series is:",
+      "misconceptionClass": "series advantage",
+      "options": [
+        {
+          "key": "A",
+          "text": "each lamp can be switched separately",
+          "correct": false,
+          "explanation": "Separate switching is the parallel advantage; series couples everything to one switch.",
+          "misconception": "parallel advantage"
+        },
+        {
+          "key": "B",
+          "text": "a broken lamp does not affect the others",
+          "correct": false,
+          "explanation": "In series one break stops the whole loop.",
+          "misconception": "parallel advantage"
+        },
+        {
+          "key": "C",
+          "text": "fewer wires are needed",
+          "correct": true,
+          "explanation": "A single loop needs less wiring than a branch array.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "each lamp gets the full voltage",
+          "correct": false,
+          "explanation": "Series lamps share the supply voltage between them.",
+          "misconception": "parallel behaviour"
+        }
+      ]
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L2::Q2",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L2",
+      "stem": "A disadvantage of series lighting is that:",
+      "misconceptionClass": "series disadvantage",
+      "options": [
+        {
+          "key": "A",
+          "text": "one failed lamp stops all of them working",
+          "correct": true,
+          "explanation": "The single loop is broken by any failed component.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the lamps cannot share the voltage",
+          "correct": false,
+          "explanation": "Sharing the voltage is exactly what series lamps do.",
+          "misconception": "invented myth"
+        },
+        {
+          "key": "C",
+          "text": "too many switches are needed",
+          "correct": false,
+          "explanation": "Series needs just one switch for everything.",
+          "misconception": "opposite myth"
+        },
+        {
+          "key": "D",
+          "text": "the current splits unfairly between lamps",
+          "correct": false,
+          "explanation": "Series current never splits at all — it is one loop.",
+          "misconception": "parallel behaviour"
+        }
+      ]
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L2::Q3",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L2",
+      "stem": "Domestic lighting is wired in parallel mainly because:",
+      "misconceptionClass": "application reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "parallel circuits need fewer wires",
+          "correct": false,
+          "explanation": "Parallel needs more wiring; that is its accepted cost.",
+          "misconception": "series advantage"
+        },
+        {
+          "key": "B",
+          "text": "parallel lamps take zero current",
+          "correct": false,
+          "explanation": "Lamps take current whenever they are lit.",
+          "misconception": "zero myth"
+        },
+        {
+          "key": "C",
+          "text": "a single switch controls every room",
+          "correct": false,
+          "explanation": "Homes want the opposite: per-room control.",
+          "misconception": "series behaviour"
+        },
+        {
+          "key": "D",
+          "text": "each light can be controlled and one failure leaves the rest lit",
+          "correct": true,
+          "explanation": "Independent switching plus failure isolation is exactly why homes choose parallel.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L2::Q4",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L2",
+      "stem": "If one branch of a parallel circuit breaks:",
+      "misconceptionClass": "failure reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "all branches stop",
+          "correct": false,
+          "explanation": "That is the series failure mode.",
+          "misconception": "series carryover"
+        },
+        {
+          "key": "B",
+          "text": "the other branches keep working",
+          "correct": true,
+          "explanation": "Each branch is independent across the supply, so the rest stay lit.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the supply voltage doubles",
+          "correct": false,
+          "explanation": "The supply voltage stays at its set value.",
+          "misconception": "growth myth"
+        },
+        {
+          "key": "D",
+          "text": "the junctions disappear",
+          "correct": false,
+          "explanation": "The topology of the circuit does not change when a branch fails.",
+          "misconception": "nonsense myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L2::Q5",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L2",
+      "stem": "A disadvantage of parallel circuits compared with series is:",
+      "misconceptionClass": "parallel disadvantage",
+      "options": [
+        {
+          "key": "A",
+          "text": "components cannot be controlled individually",
+          "correct": false,
+          "explanation": "Individual control is the parallel advantage.",
+          "misconception": "series property"
+        },
+        {
+          "key": "B",
+          "text": "more wiring and connections are required",
+          "correct": true,
+          "explanation": "Branching costs extra wires, which makes setup more complicated.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "branches receive different voltages",
+          "correct": false,
+          "explanation": "All parallel branches receive the same, full supply voltage.",
+          "misconception": "false myth"
+        },
+        {
+          "key": "D",
+          "text": "one break stops everything",
+          "correct": false,
+          "explanation": "Parallel branches survive each other's failures.",
+          "misconception": "series behaviour"
+        }
+      ]
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L2::Q6",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L2",
+      "stem": "Give one advantage and one disadvantage of a series lighting circuit.",
+      "misconceptionClass": "trade-off recall",
+      "kind": "recall",
+      "modelAnswer": "Advantage: a single switch and fewer wires control the whole loop. Disadvantage: if one lamp fails, every lamp goes out.",
+      "keywords": [
+        "switch",
+        "wires",
+        "loop",
+        "lamp",
+        "break"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L2::Q7",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L2",
+      "stem": "Name the circuit type used for domestic lighting and one reason why.",
+      "misconceptionClass": "application recall",
+      "kind": "recall",
+      "modelAnswer": "Parallel — every lamp can be switched on its own, and one failed lamp leaves the rest working.",
+      "keywords": [
+        "parallel",
+        "switched",
+        "independently",
+        "lamp",
+        "rest"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L2::Q8",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L2",
+      "stem": "Explain why a broken lamp in a parallel string does not darken the room's other lamps.",
+      "misconceptionClass": "failure reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Each lamp sits on its own branch connected straight across the supply, so the remaining branches still receive the full supply voltage and keep working.",
+      "keywords": [
+        "branch",
+        "supply",
+        "voltage",
+        "parallel",
+        "working"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ynsstfBQngnx2pgq::L2::Q9",
+      "moduleId": "rn_ynsstfBQngnx2pgq::L2",
+      "stem": "A classroom wants lamps that can each be switched separately and stay lit if one fails. Which arrangement should be chosen, and why?",
+      "misconceptionClass": "design reasoning",
+      "kind": "application",
+      "modelAnswer": "Wire the lamps in parallel: each branch takes its own switch for individual control, and a failed branch leaves the others working.",
+      "keywords": [
+        "parallel",
+        "switch",
+        "branch",
+        "individual",
+        "supply"
+      ],
+      "options": []
+    }
+  ]
+}

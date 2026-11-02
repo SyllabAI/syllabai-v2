@@ -1,0 +1,503 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_BFQBSmVz2xFZVsB6",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "76e3dc8434a611e575853a10b2a817af8a50ae1f27f5cf6ecbe4fdeaa5d1c28d",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "packageId": "igcse-physics::rn_BFQBSmVz2xFZVsB6",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L1::Q1",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L1",
+      "stem": "In a series circuit, the current at any point:",
+      "misconceptionClass": "series behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "is the same everywhere in the loop",
+          "correct": true,
+          "explanation": "One path means the flow is identical at all points.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "halves at each component it passes",
+          "correct": false,
+          "explanation": "Nothing consumes the current; it is not used up by components.",
+          "misconception": "consumption myth"
+        },
+        {
+          "key": "C",
+          "text": "is largest nearest the cell",
+          "correct": false,
+          "explanation": "Position around the loop does not change a series current.",
+          "misconception": "decay myth"
+        },
+        {
+          "key": "D",
+          "text": "depends on where the ammeter sits",
+          "correct": false,
+          "explanation": "Every ammeter in the loop reads the same value.",
+          "misconception": "meter myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L1::Q2",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L1",
+      "stem": "Increasing the voltage of the power source in a series circuit:",
+      "misconceptionClass": "voltage effect",
+      "options": [
+        {
+          "key": "A",
+          "text": "leaves the current unchanged",
+          "correct": false,
+          "explanation": "The voltage is one of the two dials that set the current.",
+          "misconception": "independence myth"
+        },
+        {
+          "key": "B",
+          "text": "reduces the current",
+          "correct": false,
+          "explanation": "A stronger push moves more charge, not less.",
+          "misconception": "opposite slip"
+        },
+        {
+          "key": "C",
+          "text": "drives more current around the loop",
+          "correct": true,
+          "explanation": "A larger supply voltage drives a larger series current.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "increases the resistance",
+          "correct": false,
+          "explanation": "Resistance belongs to the components; the supply voltage does not change it.",
+          "misconception": "conflation"
+        }
+      ]
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L1::Q3",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L1",
+      "stem": "Adding more components to a series circuit:",
+      "misconceptionClass": "component effect",
+      "options": [
+        {
+          "key": "A",
+          "text": "raises total resistance and lowers the current",
+          "correct": true,
+          "explanation": "More series components add more opposition, so the flow drops.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "raises total resistance and raises the current",
+          "correct": false,
+          "explanation": "The extra resistance chokes the flow instead of boosting it.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "C",
+          "text": "lowers the total resistance",
+          "correct": false,
+          "explanation": "Series resistances add; they never shrink the total.",
+          "misconception": "parallel confusion"
+        },
+        {
+          "key": "D",
+          "text": "has no effect on the current",
+          "correct": false,
+          "explanation": "The component count is exactly what throttles a series current.",
+          "misconception": "independence myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L1::Q4",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L1",
+      "stem": "A series circuit contains one cell and two identical lamps. If a third identical lamp is added in series, the current:",
+      "misconceptionClass": "before-and-after reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "stays the same",
+          "correct": false,
+          "explanation": "The extra lamp adds resistance, so the flow must drop.",
+          "misconception": "independence myth"
+        },
+        {
+          "key": "B",
+          "text": "increases",
+          "correct": false,
+          "explanation": "More components in series means less current, not more.",
+          "misconception": "growth myth"
+        },
+        {
+          "key": "C",
+          "text": "drops because the loop's total resistance has grown",
+          "correct": true,
+          "explanation": "Three lamps oppose the charge more than two, so the loop carries a smaller current.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "reverses direction",
+          "correct": false,
+          "explanation": "The direction of flow is set by the cell, not the lamp count.",
+          "misconception": "direction myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L1::Q5",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L1",
+      "stem": "Electrons in a series loop:",
+      "misconceptionClass": "carrier behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "get used up by the first component",
+          "correct": false,
+          "explanation": "Charge is never consumed; electrons keep circulating.",
+          "misconception": "consumption myth"
+        },
+        {
+          "key": "B",
+          "text": "follow a single path through every component",
+          "correct": true,
+          "explanation": "A series loop offers one road and every electron takes it.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "choose the easier branch",
+          "correct": false,
+          "explanation": "There are no branches in a series loop to choose between.",
+          "misconception": "topology myth"
+        },
+        {
+          "key": "D",
+          "text": "pile up inside the components",
+          "correct": false,
+          "explanation": "Charge cannot accumulate; what flows in must flow out.",
+          "misconception": "accumulation myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L1::Q6",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L1",
+      "stem": "State two factors that set the size of the current in a series circuit.",
+      "misconceptionClass": "factor recall",
+      "kind": "recall",
+      "modelAnswer": "The voltage of the power source and the number and type of the other components, which fix the total resistance.",
+      "keywords": [
+        "voltage",
+        "components",
+        "resistance",
+        "source",
+        "current"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L1::Q7",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L1",
+      "stem": "What can you say about the current reading at different points of a series loop?",
+      "misconceptionClass": "series behaviour recall",
+      "kind": "recall",
+      "modelAnswer": "Every ammeter in the loop reads the same value, because there is only one path for the charge.",
+      "keywords": [
+        "same",
+        "ammeter",
+        "series",
+        "loop",
+        "path"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L1::Q8",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L1",
+      "stem": "Explain why adding components in series reduces the current even though the voltage is unchanged.",
+      "misconceptionClass": "resistance reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Each extra component adds its own resistance, so the loop's total resistance grows; with the supply voltage fixed, a larger resistance drives a smaller current.",
+      "keywords": [
+        "resistance",
+        "current",
+        "voltage",
+        "components",
+        "total"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L1::Q9",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L1",
+      "stem": "A series circuit has a 6 V cell and a total resistance of 12 Ω. Calculate the current, then predict the new current if the total resistance doubles to 24 Ω.",
+      "misconceptionClass": "before-and-after calculation",
+      "kind": "application",
+      "modelAnswer": "I = V ÷ R = 6 V ÷ 12 Ω = 0.5 A. Doubling the total resistance to 24 Ω halves the current to 0.25 A.",
+      "keywords": [
+        "0.5",
+        "0.25",
+        "current",
+        "resistance",
+        "halves"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L2::Q1",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L2",
+      "stem": "At a junction in a parallel circuit, the current:",
+      "misconceptionClass": "junction behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "always splits into equal branches",
+          "correct": false,
+          "explanation": "Equal splitting needs identical branch resistances; otherwise shares differ.",
+          "misconception": "equal-split myth"
+        },
+        {
+          "key": "B",
+          "text": "is conserved: what flows in equals what flows out",
+          "correct": true,
+          "explanation": "Charge conservation makes the inflow and outflow match exactly.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "partly disappears into the branches",
+          "correct": false,
+          "explanation": "Charge never vanishes; every arriving electron leaves along a branch.",
+          "misconception": "loss myth"
+        },
+        {
+          "key": "D",
+          "text": "doubles as it enters the branches",
+          "correct": false,
+          "explanation": "The branch currents sum back to the original, never beyond it.",
+          "misconception": "growth myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L2::Q2",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L2",
+      "stem": "The current in each branch of a parallel circuit is equal only when:",
+      "misconceptionClass": "condition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the branches carry identical resistance",
+          "correct": true,
+          "explanation": "Matching resistances share the current equally.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the branches have different lengths",
+          "correct": false,
+          "explanation": "Length alone does not equalise the currents.",
+          "misconception": "geometry myth"
+        },
+        {
+          "key": "C",
+          "text": "the supply voltage is very large",
+          "correct": false,
+          "explanation": "Voltage size cannot force equal branch currents.",
+          "misconception": "voltage myth"
+        },
+        {
+          "key": "D",
+          "text": "there are exactly two branches",
+          "correct": false,
+          "explanation": "The branch count is irrelevant to whether the shares match.",
+          "misconception": "count myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L2::Q3",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L2",
+      "stem": "A junction admits 10 A and one branch carries 6 A. The other branch carries:",
+      "misconceptionClass": "junction arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "16 A",
+          "correct": false,
+          "explanation": "Branches add to the total, so none can exceed it here.",
+          "misconception": "addition slip"
+        },
+        {
+          "key": "B",
+          "text": "60 A",
+          "correct": false,
+          "explanation": "Multiplying the two currents is meaningless.",
+          "misconception": "multiply slip"
+        },
+        {
+          "key": "C",
+          "text": "4 A",
+          "correct": true,
+          "explanation": "10 − 6 = 4 A must flow in the remaining branch.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "10 A",
+          "correct": false,
+          "explanation": "The 6 A branch already accounts for part of the total.",
+          "misconception": "repeat slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L2::Q4",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L2",
+      "stem": "Current is conserved at a junction because:",
+      "misconceptionClass": "conservation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "charge cannot be created or destroyed",
+          "correct": true,
+          "explanation": "The arriving charge has nowhere to go but out along the branches.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "voltage cannot change at a junction",
+          "correct": false,
+          "explanation": "Voltage is the wrong quantity for this rule; the conservation is of charge.",
+          "misconception": "quantity slip"
+        },
+        {
+          "key": "C",
+          "text": "resistance is zero at a junction",
+          "correct": false,
+          "explanation": "The rule holds whatever the resistances around it.",
+          "misconception": "resistance myth"
+        },
+        {
+          "key": "D",
+          "text": "electrons repel each other",
+          "correct": false,
+          "explanation": "Repulsion is not the bookkeeping rule; charge conservation is.",
+          "misconception": "force myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L2::Q5",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L2",
+      "stem": "In a parallel circuit, the current at different points around the circuit:",
+      "misconceptionClass": "parallel behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "is identical everywhere, as in a series loop",
+          "correct": false,
+          "explanation": "Parallel branches split the flow, so readings differ by position.",
+          "misconception": "series carryover"
+        },
+        {
+          "key": "B",
+          "text": "takes different values in different branches but the branch sums match the total",
+          "correct": true,
+          "explanation": "Branch currents differ, but they always add back to the junction total.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "is zero inside every branch",
+          "correct": false,
+          "explanation": "The branches each carry part of the total current.",
+          "misconception": "zero myth"
+        },
+        {
+          "key": "D",
+          "text": "alternates direction between branches",
+          "correct": false,
+          "explanation": "Every branch carries the current in the same net direction around the loop.",
+          "misconception": "alternation myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L2::Q6",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L2",
+      "stem": "Define a junction and a branch in a parallel circuit.",
+      "misconceptionClass": "topology recall",
+      "kind": "recall",
+      "modelAnswer": "A junction is a point where two or more wires meet so the current can split; a branch is the stretch of circuit between two junctions.",
+      "keywords": [
+        "junction",
+        "branch",
+        "wires",
+        "split",
+        "current"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L2::Q7",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L2",
+      "stem": "State the rule for the currents at a circuit junction.",
+      "misconceptionClass": "conservation recall",
+      "kind": "recall",
+      "modelAnswer": "The total current flowing into the junction equals the total current flowing out along the branches.",
+      "keywords": [
+        "current",
+        "junction",
+        "total",
+        "branches",
+        "equals"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L2::Q8",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L2",
+      "stem": "Explain why current is conserved at a junction.",
+      "misconceptionClass": "conservation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Current is the flow of charge, and charge cannot be created or destroyed; electrons reaching a junction must therefore leave along the branches, so the sums balance.",
+      "keywords": [
+        "charge",
+        "conserved",
+        "electrons",
+        "junction",
+        "branches"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BFQBSmVz2xFZVsB6::L2::Q9",
+      "moduleId": "rn_BFQBSmVz2xFZVsB6::L2",
+      "stem": "A parallel circuit draws 9 A from the battery. One branch carries 4 A and a second carries 3 A. Find the third branch's current.",
+      "misconceptionClass": "junction calculation",
+      "kind": "application",
+      "modelAnswer": "The branches must total 9 A, so the third branch carries 9 − 4 − 3 = 2 A.",
+      "keywords": [
+        "2",
+        "9",
+        "branch",
+        "current",
+        "total"
+      ],
+      "options": []
+    }
+  ]
+}
