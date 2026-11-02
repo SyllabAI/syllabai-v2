@@ -1,0 +1,100 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "receipt": "od1-redeploy-fire-r0",
+ "run": "run-002",
+ "phase": "COMPLETE",
+ "order_traces": {
+  "order": "1a19c61d45f182b9",
+  "resume": "1a19ccfd8f7a0155",
+  "receipt": "1a19d0edc86e2fa5"
+ },
+ "source": {
+  "commit": "173816add9b4d9b3f420e198bc53e496a7bbe481",
+  "includes": [
+   "#641 PR-B per-axis dispatch (merge 11f58d48444d)",
+   "#642 OD-1 receipts (merge c06508d5f292)"
+  ],
+  "apps_api_delta_since_deployed_source": 0,
+  "note": "main advanced post-deploy (#647 hub content + R0-AUTO-110 bookkeeping) with ZERO apps/api changes \u2014 deployed API bundle remains current-of-main"
+ },
+ "bake": {
+  "recipe": "092/093/107/124 of record (od1_bake.py)",
+  "shims": "worktree-only (upstream untouched; worktree restored pristine post-build)",
+  "asset_pins": "6/6 concept-graph YAML sha256 pins OK (24fa91ac/8a651dd9/e53e5f87/b3b7529222/b1fea699/a7b14cbd)",
+  "bytes": 3752332,
+  "sha1": "2fd94eac68e47e3e65411d80b2eafbe0d23cc844",
+  "sha256": "1ae68fd0c65b8ac8f4c23c4b1ce823278f8eff975206c11c46e76d2e3186861a",
+  "reproducible": "byte-identical to the run-001 11-02T15:24Z bake",
+  "audit": {
+   "MULTI_AXIS_DISPATCH_NOT_WIRED": 0,
+   "law_needles": {
+    "multiAxisSetCoverageViolations": 2,
+    "LEVELS multi-axis set band coverage invalid": 1,
+    "assertBandsTileForFlip": 3,
+    "markAttemptMultiAxisBands": 2,
+    "isBandDecisionMultiAxisV1": 2,
+    "printed mark grid is MULTI-AXIS": 2,
+    "per-axis awards sum to the part": 2,
+    "NO_SCHEME_BANDS": 6
+   },
+   "bun_residue": {
+    "Bun.CryptoHasher": 0,
+    "Bun.YAML": 0,
+    "Bun.serve": 0,
+    "import.meta.dir": 0
+   }
+  }
+ },
+ "local_gate": {
+  "instrument": "od1_localgate.py (T-MIG-093 localgate_bundle.py of record)",
+  "result": "8/8 ALL PASS",
+  "shapes": [
+   "health 200 UP",
+   "login-malformed 400",
+   "register 201",
+   "tutor-create 201",
+   "tutor-list-nonempty (L06 law) 200",
+   "tutor-latest 200",
+   "tutor-delete 204",
+   "tutor-list-after-delete 200"
+  ],
+  "secret_hygiene": "production DSN staged via .env.localgate (never printed); local-only 44-byte JWT key; production value untouched"
+ },
+ "fire": {
+  "instrument": "pf_fire.py (rebuilt run-002)",
+  "preview_leg": "STRUCTURALLY UNAVAILABLE \u2014 all 12 project env vars Production-scoped (pf_diag_preview.py /v10 env census); preview lambdas FUNCTION_INVOCATION_FAILED on every route; local gate covers the staging role; prod-direct per the CLI-only recipe",
+  "deployment": "dpl_3SssVu5FJHduFrvBqu4TCa84AMdZ",
+  "ready": "READY (11s)",
+  "alias": "syllabai-v2.vercel.app",
+  "uid_equality": {
+   "proof": "/v7/deployments/{id}/files -> src/api/index.js uid == audited bundle sha1 (content-addressed upload)",
+   "api_index_js_uid": "2fd94eac68e47e3e65411d80b2eafbe0d23cc844",
+   "verdict": "MATCH \u2014 deployed artifact IS the audited bundle"
+  },
+  "post_probes": {
+   "/actuator/health": "200 {\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"}",
+   "/api/v1/health": "401",
+   "/": "404",
+   "verdict": "3/3 PASS on the alias post-flip"
+  }
+ },
+ "history": {
+  "pre_lift_prod": "dpl_QGtNhEWx4ZMp7Gjo4by3XWk5mtwa (11-02T06:04Z, api/index.js uid 55dd7920, 93959b9-era)",
+  "run001_intermediate": [
+   "dpl_2iVTsNMVXzj5dhgLN3fEVwgD4FkP (13:35Z, uid d265d70b)",
+   "dpl_DoV2VzPyDwmkahmhFqbaCTvjRxmY (13:44Z, uid d265d70b)"
+  ],
+  "run001_fired": "dpl_D2vxMx7FPpL48Y4Abb5WGjECnhjx (15:27Z, uid 2fd94eac) \u2014 production serving the PR-B build since 11-02T15:27Z",
+  "run002_this": "dpl_3SssVu5FJHduFrvBqu4TCa84AMdZ (16:27Z, uid 2fd94eac) \u2014 re-deploys the identical audited artifact with full verification"
+ },
+ "rollback": {
+  "anchors": [
+   "dpl_QGtNhEWx4ZMp7Gjo4by3XWk5mtwa",
+   "dpl_BVPKU53dKcvqDWX5EhGjAH1JfZp5"
+  ],
+  "lever": "npx vercel rollback <url> or dashboard Instant Rollback"
+ },
+ "hygiene_notes": [
+  ".env.localgate rides the stage dir into deployment src tree (accepted condition of the 092 recipe; NOT in the lambda out tree); future-run improvement: keep it outside the deploy dir"
+ ]
+}
