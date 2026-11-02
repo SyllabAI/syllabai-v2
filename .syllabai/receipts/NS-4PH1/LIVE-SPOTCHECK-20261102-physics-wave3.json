@@ -1,0 +1,100 @@
+{
+ "receipt": "NS-4PH1-LIVE-SPOTCHECK-20261102-physics-wave3",
+ "format": "live-spotcheck-receipt/0.1",
+ "generated_at_utc": "2026-11-02T16:34:38Z",
+ "operator_trace": "1a19c5cc34b70739",
+ "wave": "physics-wave3 (manifest v22)",
+ "surface": "https://syllabai-hub-v2.vercel.app/courses/igcse-physics-19/guided-lessons/<noteId>",
+ "bake_probe": "GREEN (see BAKE-PROBE-20261102-physics-wave3.json)",
+ "occurrence_aware_counts": {
+  "rn_pqp4mfpHzGVtrjTT": {
+   "your_answer": 8,
+   "expected": 8,
+   "bytes": 255267,
+   "authored_stem_present": true,
+   "ok": true
+  },
+  "rn_NfCjFmPfmMQ8pQSw": {
+   "your_answer": 8,
+   "expected": 8,
+   "bytes": 246521,
+   "authored_stem_present": true,
+   "ok": true
+  },
+  "rn_8wqvPtsCCh3gdJN5": {
+   "your_answer": 12,
+   "expected": 12,
+   "bytes": 302108,
+   "authored_stem_present": true,
+   "ok": true
+  },
+  "rn_RQK2MW3zRPNNzwtc": {
+   "your_answer": 8,
+   "expected": 8,
+   "bytes": 250425,
+   "authored_stem_present": true,
+   "ok": true
+  },
+  "rn_jzQZQcPRQkJvdYwJ": {
+   "your_answer": 8,
+   "expected": 8,
+   "bytes": 250310,
+   "authored_stem_present": true,
+   "ok": true
+  },
+  "rn_zn4NVCRcTSNv8sRZ": {
+   "your_answer": 8,
+   "expected": 8,
+   "bytes": 258554,
+   "authored_stem_present": true,
+   "ok": true
+  },
+  "rn_TPDdhwDYsrWgQB7R": {
+   "your_answer": 4,
+   "expected": 4,
+   "bytes": 199444,
+   "authored_stem_present": true,
+   "ok": true
+  }
+ },
+ "calibrations_unchanged": {
+  "rn_RpyMnS5nqWSRWXXG": {
+   "course": "igcse-physics-19",
+   "your_answer": 8,
+   "ok": true
+  },
+  "rn_2MpXPtNXvn8pQm3r": {
+   "course": "igcse-chemistry-19",
+   "your_answer": 8,
+   "ok": true
+  },
+  "rn_2z53qk2CdWrVVc7V": {
+   "course": "igcse-chemistry-19",
+   "your_answer": 8,
+   "ok": true
+  }
+ },
+ "calibration_sweep_disclosure": "the FIRST full sweep read x0 on the two chemistry calibrations: (a) a lane-tool bug \u2014 the calibration URL builder dropped the noteId suffix and probed the course listing page (fixed in the lane script); (b) edge-cache reads during the alias flip. Direct re-probes at the correct URLs returned x8/x8 (259,392B 'Alcohols' / 242,467B 'Carboxylic Acids') and the fixed re-run reproduced x8/x8 \u2014 calibrations UNCHANGED of record",
+ "two_one_b_law": {
+  "marker": "from the revision note",
+  "hits_all_probed_pages": 0,
+  "verdict": "0 hits \u2014 the learner-surface law held"
+ },
+ "authored_stems": "7/7 wave-3 notes carry >=1 authored stem on the live page (first MCQ stem of record per note; prefixes recorded in the stems block of the raw sweep download/integration/w3-spotcheck-raw.json)",
+ "dom_walk": {
+  "tool": "agent-browser 0.41.1, 1440x900, anonymous",
+  "artifacts": "download/physics-wave3/dom-walk/ (11 PNGs)",
+  "laws_exercised": [
+   "confidence gate: Continue DISABLED until a rating is chosen; rating locks on choose (02/03 PNGs)",
+   "depth-layer flow: Continue reveals layers to 'Continue to the checks' (04 PNG)",
+   "MCQ empty: Submit answer DISABLED before any choice (checks view)",
+   "MCQ wrong -> 'Not quite \u2014 the answer is B.' + explanation + 'Misconception flagged: unit slip' + radios LOCKED (05/06 PNGs)",
+   "MCQ correct -> 'Great job!' + explanation (07 PNG)",
+   "written empty -> Submit answer [disabled] \u2014 the fail-closed empty-submit law (08 PNG)",
+   "written 0-keyword 'banana' -> 'Not quite.' + Model answer VERBATIM + textbox locked (09 PNG)",
+   "written keyword-hit -> 'Great job!' (10 PNG)",
+   "provenance footer on-page: 'pinned at 0cea83a7810... (wave-3 commit A) \u00b7 promoted SyllabAI/syllabai-resources 377ef184395b... (the trace-bearing repin = the promotion commit of record)' (11 PNG)"
+  ]
+ },
+ "verdict": "GREEN"
+}
