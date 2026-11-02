@@ -1,0 +1,27 @@
+{
+  "task": "T-BOOK-069",
+  "receipt": "strength-armed-r0",
+  "lane": "Unit Strength Checks u1-u4 ARMED — ADR-BOOK-0004 draft (PROPOSED) + the bank-density audit vehicle of record",
+  "operator_order": "Proceed with 4 intensity checks, broader media embedding (IM trace 1a19b69d1fddc0b5, 2026-11-02)",
+  "date_utc": "2026-11-02",
+  "agent": "Super Z (zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7)",
+  "baseline_of_record": "origin/main b7d928e7 at lane open; worktree branch t-book-069/strength-checks-armed",
+  "why_armed_not_fired": "the plan gates Strength Checks on the per-point bank-density SQL (PLAN §126) and the bank law requires checkRefs resolving in the LIVE bank (ACTIVE MCQ_SINGLE, external_ref of record) — both L3 truths; no pooler credential in env this session (env-only law; chat-carried values are not persisted by design), so authoring blocks with invented refs would violate the bank law + zero-invention law. T-BOOK-020 precedent: ARM the capability, fire on the operator's word + credential hand.",
+  "artifacts": {
+    "adr": "docs/adr/ADR-BOOK-0004-unit-strength-checks.md — PROPOSED, 6 decisions: (1) per-item chapter binding (spine/join laws intact, zero schema change), (2) unit identity via block id prefix strength-u<N>/, (3) unit-scoped read-only core query + chapter-checks EXCLUSION, (4) density gate = this vehicle, (5) machine-proposed selection + agent confirmation, (6) 10-15 budget",
+    "vehicle": "apps/api/scripts/books-strength/density-audit.mts — READ-ONLY; --audit (per-point density across unit bands, SME-keyed external_ref, the railChecks serving posture verbatim: ACTIVE + MCQ_SINGLE + paper-serving LEFT JOIN) + --select u<N> (10-15 candidate ids, per-point coverage first, round-robin)"
+  },
+  "vehicle_verification": "bun build --no-bundle parse OK; connect guard fires honestly without DATABASE_URL (exit 2, nothing read/written) — the reflip-r4 guard precedent CONFIRMED of record this session; chapter→subsection table REUSED from scripts/books/lint.mjs (the binding of record incl. the F-BOOK-0004 c10 fix), never redeclared",
+  "execution_recipe": [
+    "DATABASE_URL=<Neon MAIN pooler> bun apps/api/scripts/books-strength/density-audit.mts --audit",
+    "DATABASE_URL=... bun apps/api/scripts/books-strength/density-audit.mts --audit u<N>  # exit 1 on zero-item points (the gate)",
+    "DATABASE_URL=... bun apps/api/scripts/books-strength/density-audit.mts --select u<N>",
+    "author strength-u<N>/ (pack.yaml + mcq-embed blocks, checkRefs = selected ids, per-item chapter binding) → G1-G4 → S1/S2/S3 adversarial → S4 flip (books-u4-s34 pipeline pattern, staging scoped to strength packs) → serve proof"
+  ],
+  "after_adr_word": "core: unit-scoped read-only endpoint + chapter-checks exclusion (branch+PR); hub: unit-check surface riding the existing player (branch+PR)",
+  "disclosures": [
+    "past-paper-tagged items OUT of the v1 count of record (no per-point spec key without the deferred tagging sprint) — ADR-0004 consequence, not a silent scope cut",
+    "a thin-bank unit ships as the largest honest subset with the gap filed in qa/findings.jsonl — never padded (honest-empty law)"
+  ],
+  "boundaries": "this commit = ADR + vehicle + task yaml + receipt + worklog; zero DB contact; zero prod contact; zero schema; fetch-first; no force-push"
+}

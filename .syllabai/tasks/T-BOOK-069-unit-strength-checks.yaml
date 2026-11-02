@@ -1,0 +1,29 @@
+schema: t-book-task/v1
+id: T-BOOK-069
+title: "Unit Strength Checks u1-u4 — armed: ADR-BOOK-0004 (binding/gating/serving) + the bank-density audit vehicle of record"
+operator_order: "Proceed with 4 intensity checks, broader media embedding (IM trace 1a19b69d1fddc0b5, 2026-11-02) — the '4 checks' half (the plan's 4 unit Strength Check sets)"
+status: ARMED-AWAITING-ADR-WORD-AND-DB-HAND  # this commit arms the lane: ADR draft (PROPOSED) + read-only audit vehicle (guard-verified). The DB halves (density audit run, --select, block authoring from bank truth, S4 flip) need the operator's ADR-0004 acceptance word + the Neon MAIN pooler credential re-hand
+adr_draft: docs/adr/ADR-BOOK-0004-unit-strength-checks.md (PROPOSED — 6 decisions: per-item chapter binding, id-prefix identity, unit-scoped read-only serving, density gate, machine-proposed selection, 10-15 budget)
+vehicle: apps/api/scripts/books-strength/density-audit.mts (TRACKED, READ-ONLY — counts ACTIVE MCQ_SINGLE SME-keyed bank items per spec point across the unit band; --select u<N> emits the 10-15 candidate ids per-point-coverage-first)
+vehicle_verification: "TS parse OK (bun build --no-bundle); connect guard fires honestly without DATABASE_URL (exit 2, nothing read/written) — the reflip-r4 guard precedent, CONFIRMED of record this session"
+why_armed_not_fired: |
+  The plan gates Strength Checks on the per-point bank-density SQL (§126) and the bank law
+  requires checkRefs that resolve in the LIVE bank (ACTIVE MCQ_SINGLE, external_ref of record) —
+  both are L3 (Neon) truths. The sandbox env carries no pooler credential this session (wiped
+  between sessions per the env-only law; the summary-carried values are masked by design), so
+  authoring blocks with invented refs would violate the bank law and the zero-invention law.
+  The honest move is the T-BOOK-020 precedent: ARM the capability (ADR + vehicle of record),
+  fire on the operator's word + credential hand.
+execution_recipe: |
+  DATABASE_URL=<Neon MAIN pooler> bun apps/api/scripts/books-strength/density-audit.mts --audit          # per-point density, all 4 units
+  DATABASE_URL=<Neon MAIN pooler> bun apps/api/scripts/books-strength/density-audit.mts --audit u<N>     # per-unit gate (exit 1 on zero-item points)
+  DATABASE_URL=<Neon MAIN pooler> bun apps/api/scripts/books-strength/density-audit.mts --select u<N>    # the 10-15 candidate ids
+  # then: author strength-u<N>/pack.yaml + mcq-embed blocks (checkRefs = the selected ids, per-item
+  # chapter binding per ADR-0004 decision 1) → G1-G4 lint → S1/S2/S3 adversarial passes → S4 flip
+  # via the books-u4-s34 pipeline pattern (staging scoped to strength packs) → serve proof
+after_adr_word: "core: the unit-scoped read-only endpoint (ADR-0004 decision 3) + the chapter-checks exclusion filter; hub: the unit-check surface riding the existing player — branch+PR each"
+disclosures:
+  past_paper_items: "OUT of the v1 count of record (no per-point spec key without the deferred tagging sprint) — ADR-0004 consequence, not a silent scope cut"
+  chapter_binding: "strength blocks bind to the item's OWN chapter (spine/join laws intact); unit identity rides the block id prefix (no schema change)"
+boundaries: "this commit = docs/adr/ADR-BOOK-0004*.md + apps/api/scripts/books-strength/** + this yaml + receipt + worklog; zero DB contact; zero prod contact; fetch-first; no force"
+receipt: .syllabai/receipts/T-BOOK-069/strength-armed-r0.json
