@@ -1,0 +1,35 @@
+{
+  "task": "RN-DEBRIS-8 run-001 — the hyphen-lost compounds lane (the RN-DEBRIS-7 disclosed fail-closed residual: 'the hyphen-lost family (53) is a separate debris class awaiting its own lane')",
+  "operatorOrder": "IM trace 1a19ac0790484275: 'proceed with 53 hyphen-lost compounds'",
+  "fetchFirst": "worklog re-read at open (4,687,134 B at main 5af87bb9, tip = T-MG-INK-7 post-deploy confirmation) — NO hyphen-lane block; the 53-item class is of record in the RN-DEBRIS-7 run-001 block (hyphen-twin guard, kept fail-closed); re-checked at 5f209324 after #625/#629/#630/run-037 landed mid-lane: 3 new blocks (T-GRADE-9, NS-4PH1 closure, T-KG-FIX-1), zero hyphen mentions, lane still open; no concurrent sweep claimed it",
+  "grounding": {
+    "method": "zero-drift: census law + converter generated from the of-record RN-DEBRIS-7 lane artifacts; census script byte-verbatim; converter by exact-string patches (6 patches, each asserted exactly one match)",
+    "dictOfRecord": {
+      "recovery": "the of-record /tmp/rnd6_dict.json (in-session file, never committed — the RN-DEBRIS-4/5/6 debt) was RECOVERED BYTE-EXACT this lane: recipe = nltk words(en) lowercase-deduped alpha-only 234,375 + British -ise supplement variant B 2,521 (one-for-one ize/ized/izes/izing -> ise/ised/ises/ising EXCLUDING stems shorter than 3 chars: baise ecise frise gaise maise phises prise seising sised sises sising) = 236,896 tokens, sha16 db20ed6f4d8c8bac VERIFIED; the y-stem hypothesis (11 nonce forms) was tested first and REJECTED on a -3/+3 counter signature",
+      "censusEquivalence": "with the recovered dict the byte-verbatim census at 7ff9ec52 reproduces the of-record pre slim EXACTLY — all 37 class counters + itemsKept 207,985; a post-apply reconstruction (7ff9ec52 + the 39 RN-DEBRIS-7 files) reproduces the post slim (282/53/guards/dollar frames/itemsKept 207,921); evidence: rnd8_census_equivalence_r0.json"
+    }
+  },
+  "census": "lane census at main 5f209324 (byte-verbatim rnd7_census.py + recovered dict): 1,065 files / 2,015,020 strings; $-segments plain 359,025 (+118 vs the RN-DEBRIS-7 frame — the concurrent #625/#629/run-037 content), prose-marker 3,553; outside-span split-evidenced 282 with guard histogram UNCHANGED (url-asset 102 / hyphen-twin 53 / non-lowercase 29 / named-keep 29 / weak-evidence 40 / fragment-twin 18 / inside-quote 3 / inflected-word 4 / marker-stem 2 / paren-continuation 2 / pass 0); the 53 hyphen-twin items are IDENTICAL (file/path/run/pos/split) to the of-record-tree enumeration — 41 distinct (run -> hyphen form) pairs",
+  "zeroInvention": "every repair form '-'.join(split) is corpus-attested BY THE GUARD'S OWN LAW (hyphen_freq membership >= 1); the lane additionally recorded per-form attestation counts + example contexts for all 41 forms (rnd8_hyphen_attestation_r0.json — all 41 attested, e.g. user-defined x3, enzyme-substrate x3, long-term x3)",
+  "adjudication": "eyes-on pass over all 53 item contexts (of record in the apply report): 50 fire; 3 REFUSED fail-closed — 'walkin' (literary dialect quote \"walkin' wavy\" = g-dropped 'walking'; the apostrophe after the run proves the form; the 'walk-in' attestation is not occurrence-twin evidence — firing would corrupt the quote), 'reexport' (internal-record manifest ledger note $.note with PR/ADR/trace references — not learner-facing prose, the RN-DEBRIS-7 internal-record class), 'useof' (target form's ONLY corpus attestation is a URL asset path ...uploads202310use-of.webp — the url-asset trap; the prose occurrence 'for k or useof gradient' needs a space split, out of this lane's law); note: snowwhite is in the named-keep 29, not the hyphen-twin 53 (its hyphen form is unattested; the RN-DEBRIS-7 block's example prose conflated the two classes); literary restorations that DID fire include Kipling's 'worn-out tools' and Achebe's 'palm-oil with which words are eaten' (the hyphen restores the quotations)",
+  "apply": "per-run fail-closed raw-byte occurrence surgery (of-record rn7 mechanics byte-verbatim): 49 strings / 49 occurrence sites / 38 files; MARK window refusals 0; raw-count-zero keeps 0; JSON-parse fail-closed 0; +48/-48 diff lines (one compact-JSON file carries two sites on one line)",
+  "gates": {
+    "jsonParse": "38/38 files parse (in-converter gate + standalone re-walk)",
+    "katexPairGuard": "of-record rnd7 law over ALL $-segments of the 38 changed files: segments old 4,943 = new 4,943; render failures old 859 = new 859 (pre-existing out-of-scope classes byte-identical); string-diff introduced 0 / healed 0 — net render incapacity delta 0",
+    "corpusGate": "PASSED byte-identical to the frozen baseline (code spans 0 / dollar 0 / textwrap 4 / multiline 0 / baretext 5 / danglingRefs 0)",
+    "idempotence": "post-apply census: outside-span split-evidenced 282 -> 232 = exactly the guarded keeps (102+29+3+29+40+18+3+4+2+2+3-refusals); hyphen-twin 53 -> 3 (the adjudicated refusals); guard/pass 0 (no new candidates); dollar-plain frame unchanged (segments 359,025 / realword 54,773); itemsKept 207,921 -> 207,871 (-50)",
+    "inTree": "fired runs 0 maximal-form remnants (7 raw substring hits adjudicated: 6 are longer words — hotdesking/underprovided x3/matchups/colourblindness; 1 is the of-record url-asset KEEP 'Eric, who is offstage' whose window carries a link marker — guard-fired before hyphen-twin, untouched by law); hyphen forms present (168 occurrences); the 3 refused strings intact"
+  },
+  "artifacts": {
+    "lane": ".syllabai/lane-artifacts/RN-DEBRIS-8/ (dict of record rnd6_dict.json byte-recovered + builder rnd8_dict_of_record.py + converter rnd8_convert_hyphen.py + patch generator rnd8_generate_converter.py + census pre/post slims + equivalence evidence + attestation evidence + apply report + changed-files ledger + katex pair output)",
+    "discipline": "census script not duplicated (byte-identical to the RN-DEBRIS-7 artifact)"
+  },
+  "residuals": [
+    "the 3 adjudicated refusals stay as-is (walkin / reexport / useof) with reasons of record; useof's proper repair is a space split ('use of gradient') — a candidate for a future split-law lane with a url-asset-aware target-form gate",
+    "the Eric 'offstage' url-asset keep is the census law's fail-closed direction (window carries a link marker), unchanged",
+    "letter-spaced re-join wave census (51 files / 431 raw hits) remains open of record"
+  ],
+  "discipline": "fetch-first; fail-closed; zero-invention (every repair form guard-attested + context-adjudicated; refusals ledgered with reasons); tokens via env only (never argv/URL/logs); FF push no force; race-guard rebase; CI bounded poll; receipts .syllabai-only; zero DB/Neon contact",
+  "laneBase": "main 5f209324 at census/apply time",
+  "appliedTree": "working tree of wt-main at 5f209324 + 38 content files"
+}
