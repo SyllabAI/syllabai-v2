@@ -1,0 +1,45 @@
+{
+  "task": "T-TEACHME-001",
+  "what": "r10-series honest-red trail for the REAL-PROVIDER US-VANTAGE leg — three reds, each isolating one law; every one a REAL law biting real drift (two harness calibration defects, two model-compliance findings), all fixed or documented before the r10d green.",
+  "context": {
+    "vantage": "GitHub Actions ubuntu runner — San Antonio, US (Azure AS8075); sandbox vantage (Alibaba HK) is edge-blocked by Groq pre-auth and location-refused by Gemini — receipt key-probe-vantage-correction-2026-11-03.json",
+    "key_census": "ALL 13 operator keys VALID from the US vantage (5 groq incl. g5new, 8 gemini, 1 openrouter) — masked artifact key-probe-2026-11-03.json",
+    "receipt_note": "successive dispatches shared one artifact filename, so only the final (green) receipt survives verbatim as prod-smoke-receipt-r10d-realprovider-usvantage.json; the reds below are reconstructed from run logs + artifact reads (primary evidence: the workflow run logs, permanent)"
+  },
+  "reds": [
+    {
+      "run": "r10 (41502798915, groq head = yml default openai/gpt-oss-120b)",
+      "verdict": "SMOKE_RED_REAL_LLM",
+      "stage": "endSession",
+      "score": "32/33",
+      "finding": "end.evidenceCredits failed: credit for 4CH1-1.1 was credited=false",
+      "root_cause": "D4 7-day repeat-credit dedupe LAWFULLY bit: the driver defaults --user-suffix to 6 and the workflow passed none, so the run landed on r6's pre-existing user aa06, which covered 1.1 <7d ago (r6 was the honest-red that covered only 1 of 3) — the count-only read-back could not detect the identity mismatch",
+      "also_proven": "production composition LIVE: groq/gpt-oss-120b served objectives 1.1s + turn-1 2.4s + turn-2 4.6s (3/3 covered, extractive); groq review attempt failed and the chain FAILOVER-fired to openrouter nemotron mid-endSession (65.9s) — session completed",
+      "fix": "workflow gains user_suffix input (a56b225a)"
+    },
+    {
+      "run": "r10b (41503822177, fresh user aa0d, groq head = openai/gpt-oss-120b)",
+      "verdict": "SMOKE_RED_REAL_LLM",
+      "stage": "judged-turn-2",
+      "finding": "service threw 'evidenceQuote was not extractive from the student's messages' — the REAL judge paraphrased instead of quoting verbatim",
+      "root_cause": "MODEL-COMPLIANCE finding: gpt-oss-120b (reasoning) violates the pinned extractive-quote law on the long five-technique student text; the grounding law fail-closed EXACTLY per the pinned turn prompt (r8c class)",
+      "fix": "none possible in harness — groq head model must be extractive-compliant; groq_model workflow input added (9d0266b7) + probe now lists the live catalog (llama-3.3-70b-versatile CONFIRMED absent from this key generation's catalog: allam-2-7b, orpheus-tts, prompt-guard, gpt-oss-120b/20b/safeguard-20b, qwen3.8-27b, whisper)"
+    },
+    {
+      "run": "r10c (41504480461, fresh user aa0e, groq head = qwen/qwen3.8-27b)",
+      "verdict": "harness failure (pre-smoke)",
+      "finding": "user_roles FK violation creating the smoke user",
+      "root_cause": "HARNESS identity defect: uq_users_email is UNIQUE on lower(email); the email carried the run label but not the suffix, so same-label-different-suffix reruns collided (ON CONFLICT skip → orphaned roles insert)",
+      "fix": "driver identity law: email = (run + suffix), read-back verifies id AND email, roles insert moved after read-back (4d8559cf)",
+      "retry_with_suffix_f": "41504892117 — identity fix verified, then qwen/qwen3.8-27b ALSO paraphrased the turn-2 quote → same extractive fail-closed (second model-compliance data point: no current-catalog groq model except gpt-oss-20b tested compliant)"
+    }
+  ],
+  "green": {
+    "run": "r10d (41505221823, fresh user aa00, groq head = openai/gpt-oss-20b)",
+    "receipt": "prod-smoke-receipt-r10d-realprovider-usvantage.json",
+    "verdict": "SMOKE_GREEN_REAL_LLM 34/34",
+    "session": "9e712cf9-6e4f-4a01-b032-c1ac38c7d529"
+  },
+  "verdict": "SMOKE_RED_REAL_LLM (series record — superseded by r10d green)",
+  "applied_at_utc": "2026-11-02T18:59:59.546Z"
+}

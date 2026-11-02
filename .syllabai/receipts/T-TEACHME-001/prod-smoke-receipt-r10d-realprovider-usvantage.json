@@ -1,0 +1,336 @@
+{
+  "task": "T-TEACHME-001",
+  "what": "prod REAL-SESSION smoke — REAL-PROVIDER leg: the full Teach-Me flow (create → nudge → 2 judged turns → end → review) ran through the app's service+store code path against production with the REAL chain of record built by the composition-root constructor buildLlmChain(process.env) over REAL provider HTTP (no fetchImpl override; keyless members boot dormant and honestly per ADR-023). Assertions are law-conformance: the real provider model decided coverage verdicts and review content.",
+  "run": "r10-realprovider-usvantage",
+  "mode": "full-real-llm",
+  "target_host": "ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech",
+  "transport": "createSql → NeonWsClient (@neondatabase/serverless 0.10.2) — the app's production transport",
+  "chain": {
+    "mode": "REAL chain of record over REAL provider HTTP (buildLlmChain(process.env))",
+    "member_health": {
+      "groq": {
+        "configured": true,
+        "consecutiveFailures": 0,
+        "cooldownUntil": null,
+        "coolingDown": false,
+        "dailyBudget": 1000,
+        "effectiveModel": "openai/gpt-oss-20b",
+        "enabled": true,
+        "healthy": true,
+        "lastErrorAt": null,
+        "lastErrorMessage": null,
+        "lastFailureClass": null,
+        "remainingLocalBudget": 1000,
+        "requestsToday": 0
+      },
+      "gemini": {
+        "configured": true,
+        "consecutiveFailures": 0,
+        "cooldownUntil": null,
+        "coolingDown": false,
+        "dailyBudget": 1000,
+        "effectiveModel": "gemini-3.6-flash",
+        "enabled": true,
+        "healthy": true,
+        "lastErrorAt": null,
+        "lastErrorMessage": null,
+        "lastFailureClass": null,
+        "remainingLocalBudget": 1000,
+        "requestsToday": 0
+      },
+      "openrouter": {
+        "configured": true,
+        "consecutiveFailures": 0,
+        "cooldownUntil": null,
+        "coolingDown": false,
+        "dailyBudget": 1000,
+        "effectiveModel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "enabled": true,
+        "healthy": true,
+        "lastErrorAt": null,
+        "lastErrorMessage": null,
+        "lastFailureClass": null,
+        "remainingLocalBudget": 1000,
+        "requestsToday": 0
+      }
+    },
+    "substitution": "none — real provider HTTP",
+    "calls": [
+      {
+        "prompt": "teachme.objectives.v1",
+        "provider": "groq",
+        "model": "openai/gpt-oss-20b",
+        "latencyMs": 717,
+        "replyChars": 518,
+        "userChars": 1047,
+        "finish": "stop"
+      },
+      {
+        "prompt": "teachme.turn.v1",
+        "provider": "groq",
+        "model": "openai/gpt-oss-20b",
+        "latencyMs": 2903,
+        "replyChars": 1503,
+        "userChars": 2423,
+        "finish": "stop"
+      },
+      {
+        "prompt": "teachme.turn.v1",
+        "provider": "groq",
+        "model": "openai/gpt-oss-20b",
+        "latencyMs": 3862,
+        "replyChars": 1774,
+        "userChars": 4234,
+        "finish": "stop"
+      },
+      {
+        "prompt": "teachme.review.v1",
+        "provider": "openrouter",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "latencyMs": 89662,
+        "replyChars": 5875,
+        "userChars": 8226,
+        "finish": "stop"
+      }
+    ],
+    "prompts_exercised": [
+      "teachme.objectives.v1",
+      "teachme.turn.v1",
+      "teachme.review.v1"
+    ]
+  },
+  "smoke_user": {
+    "id": "00000000-0000-0000-0000-00000000aa00",
+    "email": "smoke.tteachme001.r10-realprovider-usvantage.u0@smoke.invalid",
+    "enabled": false,
+    "evidence_policy": "smoke evidence persists by design (append-only lane); user disabled, no-login password hash"
+  },
+  "pick_codes": [
+    "4CH1-1.1",
+    "4CH1-1.10",
+    "4CH1-1.11"
+  ],
+  "gates": {
+    "canon_rows": 3,
+    "undescribed": 0,
+    "note_corpus_rows": 4,
+    "registry": 0,
+    "anchors": 6,
+    "practice": 6
+  },
+  "flow": {
+    "session_id": "9e712cf9-6e4f-4a01-b032-c1ac38c7d529",
+    "message_count": 2,
+    "llm_call_count": 3,
+    "tokens_used": 10403,
+    "status": "completed",
+    "ended_at": "2026-11-02T18:57:05.000Z",
+    "coverage_rows": 3,
+    "misconception_candidates": 0,
+    "review_card": true,
+    "transcript_messages": 7
+  },
+  "llm_replies": [
+    {
+      "prompt": "teachme.objectives.v1",
+      "reply": "{\"objectives\":[{\"text\":\"Explain the three states of matter by describing how the particles are arranged, how they move, and the energy they possess.\", \"specPointIds\":[\"4CH1-1.1\"]},{\"text\":\"Describe the experimental techniques for separating mixtures, including simple distillation, fractional distillation, filtration, crystallisation, and paper chromatography.\", \"specPointIds\":[\"4CH1-1.10\"]},{\"text\":\"Explain how a chromatogram reveals information about the components in a mixture.\", \"specPointIds\":[\"4CH1-1.11\"]}]}"
+    },
+    {
+      "prompt": "teachme.turn.v1",
+      "reply": "{\"verdict\":{\"label\":\"Good\",\"feedbackLine\":\"You described the arrangement, movement, and energy of particles in solids, liquids, and gases.\"},\"coverage\":[{\"objectiveOrdinal\":1,\"covered\":true,\"evidenceQuote\":\"There are three states of matter. In a solid the particles are arranged in a tight, regular pattern — they cannot swap places, they only vibrate on the spot, so a solid keeps its own shape. In a liquid the particles are still close together but the arrangement is random and they can slide past each other, which is why a liquid flows and takes the shape of its container. In a gas the particles are far apart, they move quickly in all directions, and they have the most energy — that is why a gas spreads out to fill all the space it can. Moving from solid to liquid to gas the particles gain energy: heating gives them the energy needed to break one arrangement and form another, like ice melting into water and then boiling into steam.\"},{\"objectiveOrdinal\":2,\"covered\":false,\"evidenceQuote\":null},{\"objectiveOrdinal\":3,\"covered\":false,\"evidenceQuote\":null}],\"contradictionDetected\":false,\"pupilMessage\":\"So what I've got now is that solids keep their shape because the particles are tightl"
+    },
+    {
+      "prompt": "teachme.turn.v1",
+      "reply": "{\"verdict\":{\"label\":\"Good\",\"feedbackLine\":\"You explained how filtration, simple distillation, fractional distillation, crystallisation, and paper chromatography separate mixtures.\"},\"coverage\":[{\"objectiveOrdinal\":1,\"covered\":false,\"evidenceQuote\":null},{\"objectiveOrdinal\":2,\"covered\":true,\"evidenceQuote\":\"filtration for an insoluble solid caught in a liquid — the solid stays on the paper as residue and the liquid passes through as filtrate. Simple distillation for getting the solvent back out of a solution — I'd evaporate it and condense the vapour on a cold surface, so saltwater gives me pure water and leaves the salt behind. Fractional distillation when two liquids are mixed — they separate because their boiling points differ, and the fractionating column lets the lower-boiling liquid escape first, like splitting ethanol from water. Crystallisation is how I'd keep the dissolved solid: warm the solution so the solvent evaporates slowly, it saturates, and ordered crystals drop out. And paper chromatography splits dissolved dyes:\"},{\"objectiveOrdinal\":3,\"covered\":true,\"evidenceQuote\":\"Reading the chromatogram, every spot is one substance, so the number of spots tells you how many t"
+    },
+    {
+      "prompt": "teachme.review.v1",
+      "reply": "{\n  \"strengths\": [\n    {\n      \"quote\": \"There are three states of matter. In a solid the particles are arranged in a tight, regular pattern — they cannot swap places, they only vibrate on the spot, so a solid keeps its own shape. In a liquid the particles are still close together but the arrangement is random and they can slide past each other, which is why a liquid flows and takes the shape of its container. In a gas the particles are far apart, they move quickly in all directions, and they have the most energy — that is why a gas spreads out to fill all the space it can. Moving from solid to liquid to gas the particles gain energy: heating gives them the energy needed to break one arrangement and form another, like ice melting into water and then boiling into steam.\",\n      \"messageSeq\": 4\n    },\n    {\n      \"quote\": \"filtration for an insoluble solid caught in a liquid — the solid stays on the paper as residue and the liquid passes through as filtrate. Simple distillation for getting the solvent back out of a solution — I'd evaporate it and condense the vapour on a cold surface, so saltwater gives me pure water and leaves the salt behind. Fractional distillation when two liquid"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "pick.specCodes",
+      "pass": true,
+      "detail": "4CH1-1.1, 4CH1-1.10, 4CH1-1.11"
+    },
+    {
+      "name": "chain.available",
+      "pass": true,
+      "detail": "REAL chain of record over REAL provider HTTP (buildLlmChain(process.env))"
+    },
+    {
+      "name": "g1.canonDescribed",
+      "pass": true,
+      "detail": "3 rows, 0 undescribed"
+    },
+    {
+      "name": "g2.noteCorpus",
+      "pass": true,
+      "detail": "4 note rows"
+    },
+    {
+      "name": "create.sessionDto",
+      "pass": true,
+      "detail": "9e712cf9-6e4f-4a01-b032-c1ac38c7d529"
+    },
+    {
+      "name": "create.objectivesGrounded",
+      "pass": true,
+      "detail": "all objective specPointIds ∈ pick (REAL model grounded to canon)"
+    },
+    {
+      "name": "create.opening",
+      "pass": true,
+      "detail": "Okay — teach me about these, please! Whe"
+    },
+    {
+      "name": "create.openingMessage",
+      "pass": true,
+      "detail": "seq=1"
+    },
+    {
+      "name": "seamProbe.ok",
+      "pass": true,
+      "detail": "updateSession works on the real seam"
+    },
+    {
+      "name": "nudge.chipNull",
+      "pass": true,
+      "detail": "no judge ran"
+    },
+    {
+      "name": "nudge.kind",
+      "pass": true,
+      "detail": "Can you unpack that a bit more for me? I"
+    },
+    {
+      "name": "nudge.noCounters",
+      "pass": true,
+      "detail": "mc=0 llm=1"
+    },
+    {
+      "name": "nudge.subFloorFlag",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "turn1.chip",
+      "pass": true,
+      "detail": "covered=1"
+    },
+    {
+      "name": "turn1.pupilReply",
+      "pass": true,
+      "detail": "386 chars — REAL pupil reply"
+    },
+    {
+      "name": "turn1.extractive",
+      "pass": true,
+      "detail": "1 covered, evidence quotes extractive (grounding law, REAL model)"
+    },
+    {
+      "name": "turn2.chip",
+      "pass": true,
+      "detail": "covered=2"
+    },
+    {
+      "name": "turn2.allCovered",
+      "pass": true,
+      "detail": "3/3 covered"
+    },
+    {
+      "name": "coverage.rows",
+      "pass": true,
+      "detail": "3 ledger rows across 3 objectives (append-only ledger — a re-affirmed objective appends a lawful extra row)"
+    },
+    {
+      "name": "coverage.extractive",
+      "pass": true,
+      "detail": "evidence quotes extractive (REAL judge)"
+    },
+    {
+      "name": "end.status",
+      "pass": true,
+      "detail": "completed"
+    },
+    {
+      "name": "end.reviewCard",
+      "pass": true,
+      "detail": "3 spec-point verdicts (REAL review, canon-grounded)"
+    },
+    {
+      "name": "end.reviewCardRow",
+      "pass": true,
+      "detail": "teach_review_cards row present"
+    },
+    {
+      "name": "end.evidenceCredits",
+      "pass": true,
+      "detail": "3 credits"
+    },
+    {
+      "name": "end.ceilingLaw",
+      "pass": true,
+      "detail": "llm=3 tokens=10403"
+    },
+    {
+      "name": "end.endedAt",
+      "pass": true,
+      "detail": "2026-11-02T18:57:05.000Z"
+    },
+    {
+      "name": "permalink.transcript",
+      "pass": true,
+      "detail": "7 messages"
+    },
+    {
+      "name": "permalink.review",
+      "pass": true,
+      "detail": "review attached"
+    },
+    {
+      "name": "history.listed",
+      "pass": true,
+      "detail": "session in history"
+    },
+    {
+      "name": "neg.notOwner",
+      "pass": true,
+      "detail": "FailClosed:NOT_OWNER"
+    },
+    {
+      "name": "neg.notFound",
+      "pass": true,
+      "detail": "NotFound"
+    },
+    {
+      "name": "neg.sessionNotActive",
+      "pass": true,
+      "detail": "FailClosed:SESSION_NOT_ACTIVE"
+    },
+    {
+      "name": "neg.noWrites",
+      "pass": true,
+      "detail": "7 messages unchanged"
+    },
+    {
+      "name": "quota.today",
+      "pass": true,
+      "detail": "1 session(s) today for the smoke user"
+    }
+  ],
+  "d1_probe": {
+    "coverages_update": "blocked (P0001 append-only)",
+    "coverages_delete": "blocked (P0001 append-only)",
+    "sessions_update": "allowed (mutable by law)",
+    "messages_update": "allowed — app-law only (no DB trigger; no UPDATE/DELETE path in store code)",
+    "messages_delete": "allowed — app-law only (no DB trigger; no UPDATE/DELETE path in store code)",
+    "review_cards_update": "allowed — app-law only (no DB trigger; no UPDATE/DELETE path in store code)",
+    "candidates_delete": "allowed — app-law only (no DB trigger; no UPDATE/DELETE path in store code)"
+  },
+  "quota_sessions_today": 1,
+  "verdict": "SMOKE_GREEN_REAL_LLM",
+  "elapsed_ms": 98654,
+  "applied_at_utc": "2026-11-02T18:58:36.332Z"
+}
