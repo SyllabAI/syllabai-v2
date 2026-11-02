@@ -38,11 +38,9 @@ import {
   Database,
   GraduationCap,
   Plus,
-  ShieldCheck,
   Users,
   X,
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -80,15 +78,6 @@ interface CourseStat {
   questions: number;
   flashcards: number;
 }
-
-const ROADMAP = [
-  { title: "Announcements", phase: "Phase 2" },
-  { title: "At-Risk students (evidence-first)", phase: "Phase 3" },
-  { title: "Reports & exports", phase: "Phase 3" },
-  { title: "Roster & settings", phase: "Phase 3" },
-  { title: "Teacher AI Assistant", phase: "Phase 3" },
-  { title: "Data Assistant (structured analytics)", phase: "Phase 3" },
-] as const;
 
 function rowValue(value: number | undefined, unit: string) {
   if (value === undefined) return <Skeleton className="h-3 w-10" />;
@@ -480,63 +469,16 @@ export function TeacherClient({ courses }: { courses: TeacherCourseLite[] }) {
         )}
       </section>
 
-      {/* remaining roadmap — compact (carried from the old overview) */}
-      <section aria-labelledby="teacher-roadmap">
-        <h2 id="teacher-roadmap" className="text-sm font-semibold">
-          Still on the teacher roadmap
-        </h2>
-        <ul className="mt-3 flex flex-wrap gap-1.5">
-          {ROADMAP.map((item) => (
-            <li
-              key={item.title}
-              className="flex items-center gap-1.5 rounded-full border bg-card px-3 py-1 text-xs text-muted-foreground"
-            >
-              {item.title}
-              <Badge variant="outline" className="h-4 px-1 text-[9px] font-normal">
-                {item.phase}
-              </Badge>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-4 flex items-start gap-2 rounded-md border border-dashed bg-muted/40 p-3 text-xs leading-relaxed text-muted-foreground">
+      {/* E-2 (frontend-flow audit): the delivery roadmap rendered inside
+          the product — "Phase 3" badges are operator language with no
+          classroom audience, and the footnote cited repo docs. The plan
+          text lives in the repo (docs/TEACHER_MODE_PLAN.md); the one line
+          a teacher may need here is the data one below. */}
+      <section aria-label="About the data">
+        <div className="flex items-start gap-2 rounded-md border border-dashed bg-muted/40 p-3 text-xs leading-relaxed text-muted-foreground">
           <Database className="mt-0.5 size-3.5 shrink-0" aria-hidden />
-          <span>
-            Every class card carries its provenance: <strong>Live · core</strong> cards are
-            database-backed rosters managed on the{" "}
-            <Link href="/teacher/classes" className="font-medium text-foreground underline underline-offset-2">
-              Classes
-            </Link>{" "}
-            surface; <strong>This browser</strong> cards are local containers (the student roster
-            works the same way). Marking review and class intelligence read live backend data (core
-            RBAC on every call).{" "}
-            {!identity && (
-              <>
-                Sign in from{" "}
-                <Link href="/login" className="font-medium underline underline-offset-2">
-                  /login
-                </Link>{" "}
-                as a teacher for the full experience.{" "}
-              </>
-            )}
-            Full plan in{" "}
-            {/* operator 2026-10-01 (trace 1a0f58b27d0572ed) "remaining
-                outbound-link removals" — the GitHub hop is gone
-                (HUB-OUTBOUND-FINAL): the doc path stays as plain text,
-                label kept, hop dropped, same treatment as
-                HUB-NOTES-SOURCE. */}
-            <span className="font-medium text-foreground">docs/TEACHER_MODE_PLAN.md</span>
-            .
-          </span>
+          <span>Marking and insights read your school&apos;s live data.</span>
         </div>
-        {identity && identity.role !== "teacher" && (
-          <p className="mt-3 flex items-center gap-1.5 text-xs text-muted-foreground">
-            <ShieldCheck className="size-3.5" aria-hidden />
-            You are signed in as a <strong>{identity.role}</strong> — this is the teacher mode.{" "}
-            <Link href="/login" className="font-medium underline underline-offset-2">
-              Switch role
-            </Link>
-          </p>
-        )}
       </section>
 
       {/* ---- Add / edit class — name → board → subject multi-select ---- */}
