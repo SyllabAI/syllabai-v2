@@ -17,7 +17,8 @@
  * overlay holds a read, a Resume button (play glyph + "Resume {note title}",
  * truncating at 13rem like the example) pointing at the most recently read
  * note (max notesRead.at — the stamp on each completed read, see the scroll
- * law below).
+ * law below). Shared as SelectToolbar since the exam-questions and
+ * flashcards select pages joined the treatment (trace 1a19acb6ec437e25).
  *
  * Ticks of record: the MathsGenie done-tick marks FULLY READ notes — a green
  * filled check circle when read, the faint outline circle when not
@@ -46,9 +47,10 @@
  */
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ChevronDown, FileText, GraduationCap, Play, Search, X } from "lucide-react";
+import { ChevronDown, FileText, GraduationCap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { NumberedLabel } from "@/components/hub/chrome";
+import { SelectToolbar } from "@/components/hub/select-toolbar";
 import { ProgressRing } from "@/components/hub/progress-ring";
 import { useCourseProgress, type Course } from "@/lib/progress";
 import { looseAnchorCopy } from "@/lib/loose-copy";
@@ -185,39 +187,17 @@ export function NotesIndex({
       {/* MathsGenie-pattern toolbar (trace 1a1954cacb3d2ab5): search left,
           Resume right — the Resume button renders only once this course's
           learner overlay holds a read note. */}
-      <div className="mb-5 flex flex-wrap items-center gap-2 rounded-lg border bg-card px-3 py-2.5">
-        <label className="flex min-w-0 flex-1 basis-56 items-center gap-2">
-          <Search className="size-4 shrink-0 text-muted-foreground" aria-hidden />
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search topics or notes..."
-            aria-label="Search revision notes"
-            className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
-          />
-          {query && (
-            <button
-              type="button"
-              onClick={() => setQuery("")}
-              aria-label="Clear search"
-              className="shrink-0 rounded p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              <X className="size-3.5" aria-hidden />
-            </button>
-          )}
-        </label>
-        {resumeNote && (
-          <Link
-            href={`${base}/revision-notes/${resumeNote.noteId}`}
-            aria-label={`Resume ${resumeNote.title}`}
-            className="inline-flex items-center gap-2 rounded-lg border px-3.5 py-1.5 text-sm font-medium transition-colors hover:bg-muted"
-          >
-            <Play className="size-4 shrink-0 fill-current text-primary opacity-60" aria-hidden />
-            <span className="max-w-[13rem] truncate">Resume {resumeNote.title}</span>
-          </Link>
-        )}
-      </div>
+      <SelectToolbar
+        searchLabel="Search revision notes"
+        searchPlaceholder="Search topics or notes..."
+        query={query}
+        onQueryChange={setQuery}
+        resume={
+          resumeNote
+            ? { href: `${base}/revision-notes/${resumeNote.noteId}`, title: resumeNote.title }
+            : null
+        }
+      />
 
       {nothingAtAll && searching ? (
         <Card>
