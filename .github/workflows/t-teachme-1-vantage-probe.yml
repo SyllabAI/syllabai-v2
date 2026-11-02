@@ -44,6 +44,10 @@ on:
         description: 'smoke-mode only: fresh smoke-user suffix (hex nibble; aa0d = next free — D4 7-day credit dedupe bites on reused users)'
         required: false
         default: 'd'
+      groq_model:
+        description: 'smoke-mode only: optional SYLLABAI_LLM_GROQ_MODEL override (empty = yml default openai/gpt-oss-120b)'
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -73,6 +77,7 @@ jobs:
         if: inputs.mode == 'smoke'
         env:
           SYLLABAI_GROQ_API_KEY: ${{ secrets.SYLLABAI_GROQ_API_KEY }}
+          GROQ_MODEL_INPUT: ${{ inputs.groq_model }}
           SYLLABAI_GEMINI_API_KEY: ${{ secrets.SYLLABAI_GEMINI_API_KEY }}
           SYLLABAI_OPENROUTER_API_KEY: ${{ secrets.SYLLABAI_OPENROUTER_API_KEY }}
           SMOKE_DB_URI: ${{ secrets.SMOKE_DB_URI }}
@@ -80,6 +85,7 @@ jobs:
           set -eu
           if [ -z "$SMOKE_DB_URI" ]; then echo "SMOKE_DB_URI secret not set — abort"; exit 1; fi
           if [ -z "$SYLLABAI_OPENROUTER_API_KEY" ]; then echo "SYLLABAI_OPENROUTER_API_KEY secret not set — abort"; exit 1; fi
+          if [ -n "${GROQ_MODEL_INPUT:-}" ]; then export SYLLABAI_LLM_GROQ_MODEL="$GROQ_MODEL_INPUT"; echo "groq model override: $GROQ_MODEL_INPUT"; fi
           bun install
           bun run scripts/t-teachme-1-smoke-llm.ts \
             --real-providers \

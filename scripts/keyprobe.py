@@ -62,13 +62,16 @@ def short_reason(status: int, body: str) -> str:
 def probe_groq(key: str):
     status, body = fetch_json(GROQ_MODELS_URL, {"Authorization": f"Bearer {key}"})
     n = 0
+    ids: list = []
     if status == 200:
         try:
-            n = len(json.loads(body).get("data", []))
+            data = json.loads(body).get("data", [])
+            n = len(data)
+            ids = sorted(m.get("id", "") for m in data)
         except Exception:
             pass
     return {"provider": "groq", "key_mask": mask(key), "status": status,
-            "valid": status == 200,
+            "valid": status == 200, "models": ids,
             "detail": f"{n} models" if status == 200 else short_reason(status, body)}
 
 
@@ -134,6 +137,8 @@ def main():
         r["label"] = label or "?"
         results["groq"].append(r)
         print(f"groq       {r['label']:>8}  {r['key_mask']}  ->  {'VALID' if r['valid'] else 'DEAD '}  {r['detail']}")
+        if r["valid"] and r.get("models"):
+            print(f"           catalog: {', '.join(r['models'])}")
 
     for label, key in parse_pairs(os.environ.get("PROBE_GEMINI_KEYS", "")):
         r = probe_gemini(key)
