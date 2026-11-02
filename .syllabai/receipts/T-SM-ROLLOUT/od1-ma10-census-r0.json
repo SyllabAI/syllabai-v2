@@ -1,0 +1,37 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "receipt": "od1-ma10-census-r0",
+ "run": "run-002",
+ "phase": "COMPLETE",
+ "instrument": "ma10_census.py (read-only, readonly session, DSN via .creds/neon.env never printed)",
+ "surface": {
+  "axis_suffixed_part_bound_LEVELS_schemes": {
+   "VALIDATED": 492,
+   "expect": "492 all VALIDATED",
+   "verdict": "OK"
+  },
+  "distinct_multi_axis_parts": {
+   "value": 147,
+   "expect": 147,
+   "verdict": "OK"
+  }
+ },
+ "failure_ledger": {
+  "MULTI_AXIS_DISPATCH_NOT_WIRED": 0,
+  "other": {
+   "None": 244,
+   "NO_SCHEME_POINTS": 117,
+   "VALIDATION_FAILED: duplicate allocation for mark point a": 2,
+   "VALIDATION_FAILED: duplicate allocation for mark point b": 2,
+   "VALIDATION_FAILED: duplicate allocation for mark point c": 1,
+   "UNPARSEABLE_OUTPUT": 2
+  },
+  "verdict": "0 MA-10 refusals ever recorded; refusal string deleted from the deployed uid-verified artifact \u2014 cannot recur"
+ },
+ "r4_traffic": {
+  "answers_on_multi_axis_parts": 0,
+  "attempts_total": 248,
+  "verdict": "no live R4 consumption traffic on multi-axis parts yet \u2014 first real consumption observable when a learner answer lands on a multi-axis part (per PR-B the per-axis decisions sum at part level)"
+ },
+ "verdict": "MA-10 lift CONFIRMED at three layers: ARTIFACT (MULTI_AXIS_DISPATCH_NOT_WIRED x0 in the uid-equality-verified deployed bundle), DATA (492/492 multi-axis band rows VALIDATED across 147 parts), LEDGER (0 refusal entries). Runtime E2E deferred until multi-axis answer traffic exists."
+}
