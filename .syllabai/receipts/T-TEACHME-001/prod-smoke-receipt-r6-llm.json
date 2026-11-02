@@ -1,0 +1,155 @@
+{
+  "task": "T-TEACHME-001",
+  "what": "prod real-LLM smoke — FAILED (honest-red; see stage, llm calls, context, assertions and error)",
+  "run": "r6-llm",
+  "mode": "full-real-llm",
+  "stage": "judged-turn-2",
+  "chain": {
+    "mode": "REAL (bridged)",
+    "calls": [
+      {
+        "prompt": "teachme.objectives.v1",
+        "model": "glm-4-plus",
+        "latencyMs": 1797,
+        "replyChars": 515,
+        "reply": "```json\n{\"objectives\": [{\"text\": \"Explain the three states of matter in terms of the arrangement, movement and energy of the particles.\", \"specPointIds\": [\"4CH1-1.1\"]}, {\"text\": \"Describe the experimental techniques for the separation of mixtures: simple distillation, fractional distillation, filtration, crystallisation, and paper chromatography.\", \"specPointIds\": [\"4CH1-1.10\"]}, {\"text\": \"Explain how a chromatogram provides information about the composition of a mixture.\", \"specPointIds\": [\"4CH1-1.11\"]}]}\n```"
+      },
+      {
+        "prompt": "teachme.turn.v1",
+        "model": "glm-4-plus",
+        "latencyMs": 3349,
+        "replyChars": 947,
+        "reply": "```json\n{\n  \"verdict\": { \"label\": \"Good\", \"feedbackLine\": \"You've explained the particle arrangement, movement, and energy in the three states of matter.\" },\n  \"coverage\": [\n    { \"objectiveOrdinal\": 1, \"covered\": true, \"evidenceQuote\": \"the particles are arranged one way in one state and differently in another, adding energy makes them move more until the arrangement changes, and the strength of the forces between them explains the properties the notes describe\" },\n    { \"objectiveOrdinal\": 2, \"covered\": false, \"evidenceQuote\": null },\n    { \"objectiveOrdinal\": 3, \"covered\": false, \"evidenceQuote\": null }\n  ],\n  \"contradictionDetected\": false,\n  \"pupilMessage\": \"So what I've got now is that the arrangement of particles changes with energy, and the forces between them affect properties. What happens to the particles when a solid turns into a liquid — do they just move farther apart or do the forces between them actually break?\"\n}\n```"
+      },
+      {
+        "prompt": "teachme.turn.v1",
+        "model": "glm-4-plus",
+        "latencyMs": 15844,
+        "replyChars": 920,
+        "reply": "```json\n{\n  \"verdict\": { \"label\": \"Okay\", \"feedbackLine\": \"Explains the three states of matter in terms of particle arrangement, movement, and energy.\" },\n  \"coverage\": [\n    { \"objectiveOrdinal\": 1, \"covered\": true, \"evidenceQuote\": \"I'd explain the differences in arrangement and movement between the states, how energy input drives the change from one state to another, and why the forces involved account for the properties we observe.\" },\n    { \"objectiveOrdinal\": 2, \"covered\": false, \"evidenceQuote\": null },\n    { \"objectiveOrdinal\": 3, \"covered\": false, \"evidenceQuote\": null }\n  ],\n  \"contradictionDetected\": false,\n  \"pupilMessage\": \"So what I've got now is that the arrangement of particles changes with energy, and the forces between them affect properties. What happens to the particles when a solid turns into a liquid — do they just move farther apart or do the forces between them actually break?\"\n}\n```"
+      }
+    ]
+  },
+  "context": {
+    "transport": "createSql → NeonWsClient (@neondatabase/serverless 0.10.2), select 1 OK",
+    "chain_disclosure": {
+      "mode": "REAL chain code of record (FailoverLlmChain + OpenAiCompatibleChainMember adapters law)",
+      "substitution": "member fetchImpl bridged to z-ai-web-dev-sdk (GLM) — sandbox holds no Groq/Gemini/OpenRouter keys; no provider HTTP exercised",
+      "deterministic_assertions": "law-conformance (not scripted verdicts)"
+    },
+    "g3.reviewInputs": {
+      "registry": 0,
+      "anchors": 6,
+      "practice": 6
+    },
+    "smoke_user": {
+      "id": "00000000-0000-0000-0000-00000000aa06",
+      "email": "smoke.tteachme001.r6-llm@smoke.invalid",
+      "enabled": false
+    },
+    "turn1.verdicts": [
+      {
+        "objective": "b483c2c5-62cc-4d09-9c07-c82c3ea340df",
+        "covered": true,
+        "quote": "the particles are arranged one way in one state and differen"
+      }
+    ],
+    "turn1.pupilReply": "So what I've got now is that the arrangement of particles changes with energy, and the forces between them affect properties. What happens to the particles when a solid turns into a liquid — do they just move farther apa"
+  },
+  "assertions": [
+    {
+      "name": "pick.specCodes",
+      "pass": true,
+      "detail": "4CH1-1.1, 4CH1-1.10, 4CH1-1.11"
+    },
+    {
+      "name": "chain.available",
+      "pass": true,
+      "detail": "REAL FailoverLlmChain + OpenAiCompatibleChainMember (fetchImpl bridge → z-ai-web-dev-sdk GLM)"
+    },
+    {
+      "name": "g1.canonDescribed",
+      "pass": true,
+      "detail": "3 rows, 0 undescribed"
+    },
+    {
+      "name": "g2.noteCorpus",
+      "pass": true,
+      "detail": "4 note rows"
+    },
+    {
+      "name": "create.sessionDto",
+      "pass": true,
+      "detail": "d007d578-d170-4210-8da5-b72135ff4e21"
+    },
+    {
+      "name": "create.objectivesGrounded",
+      "pass": true,
+      "detail": "all objective specPointIds ∈ pick (REAL model grounded to canon)"
+    },
+    {
+      "name": "create.opening",
+      "pass": true,
+      "detail": "Okay — teach me about these, please! Whe"
+    },
+    {
+      "name": "create.openingMessage",
+      "pass": true,
+      "detail": "seq=1"
+    },
+    {
+      "name": "seamProbe.ok",
+      "pass": true,
+      "detail": "updateSession works on the real seam"
+    },
+    {
+      "name": "nudge.chipNull",
+      "pass": true,
+      "detail": "no judge ran"
+    },
+    {
+      "name": "nudge.kind",
+      "pass": true,
+      "detail": "Can you unpack that a bit more for me? I"
+    },
+    {
+      "name": "nudge.noCounters",
+      "pass": true,
+      "detail": "mc=0 llm=1"
+    },
+    {
+      "name": "nudge.subFloorFlag",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "name": "turn1.chip",
+      "pass": true,
+      "detail": "covered=1"
+    },
+    {
+      "name": "turn1.pupilReply",
+      "pass": true,
+      "detail": "268 chars — REAL pupil reply"
+    },
+    {
+      "name": "turn1.extractive",
+      "pass": true,
+      "detail": "1 covered, evidence quotes extractive (grounding law, REAL model)"
+    },
+    {
+      "name": "turn2.chip",
+      "pass": true,
+      "detail": "covered=1"
+    },
+    {
+      "name": "turn2.allCovered",
+      "pass": false,
+      "detail": "1/3 covered"
+    }
+  ],
+  "error": "SMOKE_ASSERT_FAIL: turn2.allCovered — 1/3 covered",
+  "verdict": "SMOKE_RED_REAL_LLM",
+  "elapsed_ms": 34198,
+  "target_host": "ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech"
+}

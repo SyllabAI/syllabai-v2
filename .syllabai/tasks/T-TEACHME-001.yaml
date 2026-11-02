@@ -46,7 +46,26 @@ task:
     (@smoke.invalid): 2 abandoned seam-probe sessions (r1 x2: 21373f57…, f2a0c2f1…), 1 review_pending
     session (r2: 201a487c… — the scripted-chain refusal fired between review_pending and card insert), 1
     completed session with full evidence (r3: 76949793…), 1 completed session interrupted at the d1-probe
-    stage (r4: 013b2cb5…), 1 fully green completed session (r5: 16bcc599…)'
+    stage (r4: 013b2cb5…), 1 fully green completed session (r5: 16bcc599…); REAL-LLM leg EXECUTED 2026-11-02
+    (operator asked ''isn''t llm connected? doesn''t tutor or smart work work?''): the ONE chain of record
+    FailoverLlmChain (groq → gemini → openrouter adapters law) is built once at apps/api/src/index.ts:142 and
+    injected into tutor, smartmark, teach-me, cla, answer-input, teaching-toolkit and the drill method-credit
+    seam; zero-key boots are fail-closed dormant per ADR-023 — the sandbox holds no provider keys, so driver
+    scripts/t-teachme-1-smoke-llm.ts ran the REAL chain code with ONE disclosed substitution: the member
+    fetchImpl bridged to z-ai-web-dev-sdk (glm-4-plus), no provider HTTP exercised, assertions
+    law-conformance not scripted outcomes; r6 honest-red SMOKE_RED_REAL_LLM (receipt
+    prod-smoke-receipt-r6-llm.json, session d007d578… abandoned in place, flags.smokeAbandonReason set) —
+    the REAL judge CORRECTLY refused turn-2 coverage (1/3) because the canned student text never taught
+    1.10/1.11 (the scripted r5 chain had rubber-stamped coverage by construction — direct evidence the judge
+    grades real content); r7 verdict SMOKE_GREEN_REAL_LLM (receipt prod-smoke-receipt-r7-llm.json, 34/34
+    assertions, 52.8s, session 040906cb-3232-4598-bb12-82be9ef4236d on pick 4CH1-1.1/1.10/1.11): REAL
+    objectives call (canon-grounded; fenced JSON tolerated by the first-{-to-last-} parse law) → REAL judge
+    turns (3/3 covered, extractive evidence quotes) → REAL in-character pupil replies (states-of-matter →
+    simple-distillation probe) → REAL review (3 canon verdicts, REAL exam anchors echoed e.g. Edexcel
+    January 2018 4CH0/1C, 0 misconception candidates — correct, nothing was taught wrong) → counters llm=3
+    tokens=10045, credits 3x TEACH_SESSION/AI_SUGGESTED, typed negatives, D1 append-only bites, quota 1/3;
+    r6/r7 smoke users aa06/aa07 disabled no-login (final smoke census: 3 abandoned, 1 review_pending,
+    4 completed sessions)'
   priority: P1
   band: T-TEACHME (student learn-by-teaching lane)
   wave: teachme-phase-A
