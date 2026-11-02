@@ -23734,3 +23734,14 @@ worklog(r0): T-UGM-0606-1 run-002 (operator commission trace 1a1955c294758a5d "M
 - Main tip 3f66445b (T-MG-INK-7 run-001, #621 merged off-sweep) — CI verify+hub 2/2 GREEN first-hand this sweep (gates-green-first satisfied for this push).
 - Boundaries: zero diffs merged this sweep; receipt commit .syllabai/** only; zero *.java; no core/hub repo content; no Neon/prod/db contact.
 - Notes: (1) ledger after this sweep: #600 zero-CI escalation (promoted) + #568/#583 collision ruling (carried); #296 retires; (2) tail re-read pre-write: 107 still max → 108; (3) zero force-push, zero auth failures, boundaries held.
+
+## T-MG-INK-7 — post-deploy live confirmation (operator word "Run it")
+
+- Deploy verified first: the served ink chunk (the 78 KB chunk carrying `pp-inkLayer`) contains the law's marker `data-ink-root` — the #621 build (merge 444bebeb) is LIVE on production.
+- The exact defect sequence, on the 4CH1/1C QP production viewer (headless Chromium, no token → LOCAL store, zero server contact): baseline 28 pages × 1 ink canvas; committed ink on page 1 = one pen stroke (pixel readback 5,282 px) + one mtext (KaTeX "x^2", 1 .katex node).
+- Zoom in ×2 — the repro that killed pages 1-4 pre-fix: the removal tracer recorded 8 evictions → 8 re-attachments (balanced); inkPerPage = [1×28], EVERY page kept its canvas (pre-fix: [0,0,0,0,1×24]); the KaTeX annotation survived; the stroke repainted at the new scale (vector repaint, 11,215 px at the higher raster).
+- Tools alive post-zoom: a further pen stroke commits and paints (11,215 → 13,405 px). Driver note: the synthetic test driver needed a setPointerCapture no-op patch (synthetic pointerIds have no active pointer → NotFoundError); trusted input never takes that path — a test-harness artifact, not a product behaviour.
+- Sweep + rotation: a 9,000 px scroll down/back and a 90° rotate/rotate-back each re-rasterize in-radius pages — 3 + 4 more eviction→heal pairs; final tally 25 removed / 25 added, inkPerPage [1×28] at every checkpoint, annotation intact throughout.
+- Cursors re-confirmed on the live surface: pen = crosshair, text = text, ZERO cursor:none elements — the operator's invisible-cursor report remains the missing MG-style affordance (the T-MG-INK-8 candidate), not a cursor property; unchanged by this fix.
+- Session state restored (zoom out ×2, rotation back to 0°, pen tool re-selected); the test ink existed only in the ephemeral audit profile's local store.
+- Anti-truncation asserts: this section appended byte-exact; new = old + section.
