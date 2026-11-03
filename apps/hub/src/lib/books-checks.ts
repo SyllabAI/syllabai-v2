@@ -111,6 +111,29 @@ export function submitChapterCheck(input: {
   );
 }
 
+/** T-BOOK-069 — submit one UNIT strength-check attempt (the unit lane: the
+ *  proxy forwards ?unit=uN; auth-gated upstream, 401 ⇒ null = honest
+ *  "signed out", the flow stays local). */
+export function submitStrengthCheck(input: {
+  documentId: string;
+  unit: string;
+  blockId: string;
+  questionId: string;
+  chosenOptionId: string;
+  responseTimeMs: number;
+}): Promise<RailCheckSubmitResult | null> {
+  return postJson(
+    `/api/books/checks/submit?documentId=${encodeURIComponent(input.documentId)}&unit=${encodeURIComponent(input.unit)}`,
+    {
+      blockId: input.blockId,
+      questionId: input.questionId,
+      chosenOptionId: input.chosenOptionId,
+      responseTimeMs: input.responseTimeMs,
+    },
+    (raw) => checkResultMirror.parse(raw),
+  );
+}
+
 // ── T-BOOK-007: the glossary layer ───────────────────────────────────────────
 
 /** The book's glossary terms (slugs optional — omit for the whole shelf). */

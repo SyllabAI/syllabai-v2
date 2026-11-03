@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookOpen, ClipboardList, FileText } from "lucide-react";
+import { BookOpen, ClipboardList, FileText, ListChecks } from "lucide-react";
 
 import type { BookChapter, BookShelfEntry } from "@syllabai/contracts";
 
@@ -16,6 +16,7 @@ import {
 } from "@/lib/books";
 import { booksRawUrl } from "@/lib/pastpapers-shared";
 import { fetchLessonShelfEntries, normalizedChapterKey } from "@/lib/books-lesson";
+import { strengthCheckCount } from "@/lib/books-strength";
 import { CourseHeader } from "@/components/hub/course-header";
 import { CorpusPdfLink } from "@/components/pastpapers/corpus-pdf-link";
 import { Badge } from "@/components/ui/badge";
@@ -134,6 +135,18 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
     (chapters ?? [])
       .map((c) => normalizedChapterKey(c.chapterKey))
       .filter((k): k is string => k != null && lessonChapters.has(k)),
+  );
+
+  // T-BOOK-069 — the unit Strength Check shelf affordance: the row exists
+  // ONLY when the unit's strength check serves >0 VALIDATED items (the api's
+  // double gate upstream; the operator's S4 flip is the lever — a pre-flip
+  // unit renders no row, the honest not-published state). One light fetch
+  // per unit that actually has chapters.
+  const unitIndexes = [...new Set((chapters ?? []).map((c) => c.unitIndex).filter((u): u is number => u != null))];
+  const strengthCounts = new Map<number, number>(
+    await Promise.all(
+      unitIndexes.map(async (u) => [u, await strengthCheckCount(book.documentId, `u${u}`)] as const),
+    ),
   );
 
   return (
@@ -271,6 +284,26 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
                     </div>
                   </li>
                 )}
+                {(() => {
+                  const unitStrength = strengthCounts.get(rows[0]?.unitIndex ?? -1) ?? 0;
+                  if (unitStrength <= 0) return null;
+                  return (
+                    <li className="flex items-center gap-2 px-3 py-2">
+                      <ListChecks className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
+                      <div className="min-w-0 flex-1">
+                        <Link
+                          href={`/courses/${slug}/books/${book.documentId}/strength?unit=u${rows[0]?.unitIndex}`}
+                          className="text-sm font-medium underline-offset-2 hover:underline"
+                        >
+                          Strength check
+                        </Link>
+                      </div>
+                      <Badge variant="secondary" className="shrink-0 font-medium">
+                        {unitStrength} question{unitStrength === 1 ? "" : "s"}
+                      </Badge>
+                    </li>
+                  );
+                })()}
               </ul>
             </section>
             );
