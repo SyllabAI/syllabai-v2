@@ -13,11 +13,11 @@
  *   - the header CTA and the identity menu's primary item point here
  *   - the proxy's student-off-/teacher bounce lands here (A-2)
  *
- * Signed-out callers resolve to the anonymous dashboard demo on purpose:
- * Tier 0 keeps the demo where it is (B-2's /dashboard-vs-/courses split is
- * Tier 1 — it needs the cookie session). The logo branches explicitly on
- * identity instead of calling this helper, because a visitor's home is the
- * marketing hero, not the demo.
+ * Signed-out callers resolve to /dashboard — the student home. Since B-2
+ * the proxy converts an anonymous hit there into /login?next=/dashboard,
+ * so the resolver's answer survives sign-in instead of serving a demo.
+ * The logo branches explicitly on identity instead of calling this helper,
+ * because a visitor's home is the marketing hero, not the dashboard.
  */
 import type { Identity } from "@/lib/identity";
 

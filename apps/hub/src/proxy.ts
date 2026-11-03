@@ -17,17 +17,22 @@
  *     RequireAuth mounts. RequireAuth stays as defense-in-depth and
  *     loading UX — its own doc comment already says it is "never
  *     authorization".
- *   - Teachers keep the explicit "Preview student view" path into
- *     /dashboard (shipped in Tier 0's identity menu), and the signed-out
- *     /dashboard demo keeps working (B-2's /dashboard-vs-/courses split
- *     is its own later decision — see SPEC reviewable decision 2).
+ *   - B-2: /dashboard requires a session. The product's home URL stops
+ *     doubling as the anonymous demo — public browsing lives at /courses
+ *     (the login page's "Browse without an account" link points there),
+ *     and a signed-out hit on /dashboard gets the same ?next sign-in
+ *     redirect as every other gated surface, so a bookmarked dashboard
+ *     survives sign-in. Students get their dashboard; teachers keep the
+ *     explicit "Preview student view" path (Tier 0's identity menu).
  *   - /login is deliberately NOT redirected for signed-in users: the
  *     login page's "Signed in as …" panel (hub UI audit P3-7) and
  *     account switching both need /login to stay reachable.
  *
- * Matcher discipline: exactly four prefixes, nothing else. The hub serves
+ * Matcher discipline: exactly five prefixes, nothing else. The hub serves
  * ~4.4k statically prerendered content pages; widening the matcher puts
- * every one of them behind a cookie check for zero benefit.
+ * every one of them behind a cookie check for zero benefit. (B-3 will
+ * consolidate the gate classes into one policy module — this file gains
+ * the /dashboard decision first, as its own reviewable change.)
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { roleHome } from "@/lib/role-home";
@@ -40,6 +45,10 @@ import {
 
 function isTeacher(pathname: string): boolean {
   return pathname === "/teacher" || pathname.startsWith("/teacher/");
+}
+
+function isDashboard(pathname: string): boolean {
+  return pathname === "/dashboard" || pathname.startsWith("/dashboard/");
 }
 
 /** Same-origin paths only: starts with a single "/" and never "//" or "\".
@@ -91,9 +100,9 @@ export default async function proxy(request: NextRequest) {
   const session = token ? await verifySessionToken(token) : null;
 
   if (token && !session) {
-    // invalid cookie: the teacher workspace gets the sign-in redirect,
-    // everything else just proceeds as signed-out with the cookie cleared
-    if (isTeacher(pathname)) {
+    // invalid cookie: gated surfaces get the sign-in redirect, everything
+    // else just proceeds as signed-out with the cookie cleared
+    if (isTeacher(pathname) || isDashboard(pathname)) {
       return scrubCookie(signInRedirect(request, here));
     }
     return scrubCookie(NextResponse.next());
@@ -113,9 +122,15 @@ export default async function proxy(request: NextRequest) {
     }
   }
 
+  // B-2: the dashboard is an account surface. Any signed-in role passes —
+  // students own it, teachers are the explicit "Preview student view".
+  if (isDashboard(pathname) && !session) {
+    return signInRedirect(request, here);
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/", "/login", "/teacher", "/teacher/:path*"],
+  matcher: ["/", "/login", "/dashboard", "/teacher", "/teacher/:path*"],
 };

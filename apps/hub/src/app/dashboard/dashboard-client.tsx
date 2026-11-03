@@ -4,7 +4,8 @@
  * Dashboard — the student's SME-style home (Task 21 + 21-b fidelity pass,
  * matched against the real savemyexams.com /members/ reference page):
  *
- *   1. Greeting header ("Hi {name} 👋" — mock identity from /login when present)
+ *   1. Greeting header ("Hi {name} 👋" — server-rendered from the routing
+ *        session; B-2 made /dashboard an account surface)
  *   2. My courses — one card per added subject:
  *        eyebrow "Edexcel · {level}" · subject name · Last viewed badge ·
  *        "Continue revising" · per-resource rows with corpus counts AND
@@ -27,8 +28,14 @@
  *
  * The dashboard lists ONLY the learner's own subjects (no full-registry
  * catalogue — discovery lives in the overlay). The roster + last-opened
- * persist client-side (no auth in the demo); resource counts come from
- * /api/course-stats (committed bundles).
+ * stay device-local by design (the account syncs a mirror); resource
+ * counts come from /api/course-stats (committed bundles).
+ *
+ * B-2: this surface requires a session — the proxy redirects anonymous
+ * requests to /login?next=…, so the identity-dependent copy branches the
+ * demo needed ("Hi there", the device-only storage line) are gone; the
+ * greeting renders from the session and the disclosure states the
+ * account-truth unconditionally.
  */
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
@@ -417,7 +424,14 @@ function SubjectCard({
   );
 }
 
-export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
+export function DashboardClient({
+  courses,
+  name,
+}: {
+  courses: CourseMeta[];
+  /** the routing session's display name — server-rendered (B-2) */
+  name: string;
+}) {
   useMyCoursesSync(); // T-TEACH-001 — mirror the roster to core while signed in (write-through + reconcile)
   const { slugs, has, add, remove, restore } = useMySubjects();
   const identity = useIdentity();
@@ -580,25 +594,23 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
 
   return (
     <div className="space-y-8">
-      {/* greeting (SME: "Hi, {name} 👋" — mock identity from the login
-          page when present, otherwise the original generic greeting) */}
+      {/* greeting (SME: "Hi, {name} 👋") — the name rides the routing
+          session and renders on the server (B-2): no more "Hi there" frame
+          before localStorage hydrates */}
       <header className="space-y-1.5">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Hi {identity?.name ?? "there"} 👋
+          Hi {name} 👋
         </h1>
         <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
           Welcome to your SyllabAI dashboard — your launchpad for stress-free, spec-anchored
           study. Add the courses you are taking, then revise each one from notes, exam questions
           and flashcards mapped to its syllabus.{" "}
           {/* HUB-DASH-CORE P0-2 (operator trace 1a0ec29c8c8cfb71): the progress
-              sentence tells the truth per session state — the old static line
-              claimed device-only storage to learners whose account trail
-              follows them across devices (the exact split-brain the account
-              strip's tooltip already contradicted). Mirrors the identity
-              store's reactivity: login/logout rewrites it in place. */}
-          {identity
-            ? "Your measured progress follows your account across devices — self-marked answers and reading history stay on this device."
-            : "Your progress is saved on this device."}
+              sentence tells the account truth unconditionally — B-2 removed the
+              signed-out branch along with the demo itself, so the old
+              "saved on this device" posture no longer has an audience here. */}
+          Your measured progress follows your account across devices — self-marked answers and
+          reading history stay on this device.
         </p>
       </header>
 
@@ -739,7 +751,10 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
                 Structured by experienced teachers, tailored to your courses.
               </p>
               <Button asChild size="sm">
-                <Link href={signedIn ? "/plan" : "/login"}>Create Study Plan</Link>
+                {/* B-2: this surface is session-gated, so the demo-era
+                    /login fallback is unreachable — the CTA always opens
+                    the builder. */}
+                <Link href="/plan">Create Study Plan</Link>
               </Button>
             </CardContent>
           </Card>
