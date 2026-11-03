@@ -1,0 +1,732 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_vctGRbxP4NVz34JT",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "a477390de756bd8585ebf26a30e86638ff1a4a707bf26212654f8a4410e61b88",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "packageId": "igcse-physics::rn_vctGRbxP4NVz34JT",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L1::Q1",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L1",
+      "stem": "Efficiency is defined as the ratio of:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "useful energy output to total energy output",
+          "correct": true,
+          "explanation": "This is the stated definition of efficiency.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "total energy input to useful energy output",
+          "correct": false,
+          "explanation": "This is the reciprocal of the efficiency ratio.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "useful energy output to total energy input only",
+          "correct": false,
+          "explanation": "The definition uses total output, which equals total input — but the stated ratio is to output.",
+          "misconception": "method detail"
+        },
+        {
+          "key": "D",
+          "text": "wasted energy output to total energy output",
+          "correct": false,
+          "explanation": "That scores the WASTE, not the efficiency.",
+          "misconception": "inverted relation"
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L1::Q2",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L1",
+      "stem": "A motor receives 300 J and wastes 85 J. Its useful energy output is:",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "385 J",
+          "correct": false,
+          "explanation": "Adding the waste back inflates the total beyond the input.",
+          "misconception": "conservation error"
+        },
+        {
+          "key": "B",
+          "text": "215 J",
+          "correct": true,
+          "explanation": "Useful output = 300 - 85 = 215 J.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "85 J",
+          "correct": false,
+          "explanation": "That is the wasted share.",
+          "misconception": "useful-wasted swap"
+        },
+        {
+          "key": "D",
+          "text": "300 J",
+          "correct": false,
+          "explanation": "That is the total output, not the useful share.",
+          "misconception": "quantity swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L1::Q3",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L1",
+      "stem": "The same motor’s efficiency is:",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "about 35%",
+          "correct": false,
+          "explanation": "This halves the useful share incorrectly.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "B",
+          "text": "about 100%",
+          "correct": false,
+          "explanation": "No real motor converts every joule usefully.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "C",
+          "text": "about 72%",
+          "correct": true,
+          "explanation": "215 / 300 × 100 = 71.7, about 72%.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "about 28%",
+          "correct": false,
+          "explanation": "That is the wasted share’s percentage, not the efficiency.",
+          "misconception": "useful-wasted swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L1::Q4",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L1",
+      "stem": "Why can the useful output of a device never exceed its total output?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because wasted energy always doubles",
+          "correct": false,
+          "explanation": "Nothing doubles here.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "B",
+          "text": "because measurements have errors",
+          "correct": false,
+          "explanation": "The limit is a law, not an instrument artefact.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "C",
+          "text": "because motors overheat above 100%",
+          "correct": false,
+          "explanation": "Overheating is a symptom, not the law.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "D",
+          "text": "because useful output can never exceed total output, which equals the input by conservation",
+          "correct": true,
+          "explanation": "The useful share is part of a conserved total.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L1::Q5",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L1",
+      "stem": "A heater transfers all of its output energy into room heating. What does that make its efficiency?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "all of its output energy is useful, i.e. ends up heating the room",
+          "correct": true,
+          "explanation": "For a heater, the intended output is heat, so an all-heat output is fully useful.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "it wastes no energy as sound only",
+          "correct": false,
+          "explanation": "The claim is about ALL output, not one pathway.",
+          "misconception": "method detail"
+        },
+        {
+          "key": "C",
+          "text": "it needs no input energy",
+          "correct": false,
+          "explanation": "Input is still required; only the split changes.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "D",
+          "text": "it produces energy from nothing",
+          "correct": false,
+          "explanation": "Nothing produces energy from nothing.",
+          "misconception": "conservation error"
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L1::Q6",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L1",
+      "stem": "State the equation for efficiency as a percentage.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Efficiency is the useful output divided by the total output, multiplied by 100.",
+      "keywords": [
+        "useful",
+        "total",
+        "100"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L1::Q7",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L1",
+      "stem": "State the relationship between total energy input and total energy output, and the law behind it.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "What leaves the device equals what arrives at it, because of the principle of conservation of energy.",
+      "keywords": [
+        "input",
+        "output",
+        "conservation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L1::Q8",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L1",
+      "stem": "Explain why efficiency can also be written as a ratio between 0 and 1, and state what a ratio of 0.4 means.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The × 100% only rescales the fraction; dividing useful output by total output is a ratio by construction, so 0.4 means 40% of the output energy is useful and 60% is wasted.",
+      "keywords": [
+        "ratio",
+        "0.4",
+        "40",
+        "wasted"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L1::Q9",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L1",
+      "stem": "A different motor receives 500 J each second and wastes 150 J. Calculate its useful output and its efficiency.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Useful output = 500 - 150 = 350 J; efficiency = 350 / 500 × 100 = 70%.",
+      "keywords": [
+        "350",
+        "500",
+        "70",
+        "150"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L2::Q1",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L2",
+      "stem": "What does the width of each arrow in a Sankey diagram represent?",
+      "misconceptionClass": "reading the diagram",
+      "options": [
+        {
+          "key": "A",
+          "text": "the direction of the energy transfer",
+          "correct": false,
+          "explanation": "Direction is shown by the arrow shape, not width.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "B",
+          "text": "the amount of energy being transferred",
+          "correct": true,
+          "explanation": "Widths are proportional to the energy transferred.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the speed of the energy transfer",
+          "correct": false,
+          "explanation": "Sankeys show amounts, not rates of flow speed.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "D",
+          "text": "the temperature of the device",
+          "correct": false,
+          "explanation": "Temperature appears nowhere in a Sankey.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L2::Q2",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L2",
+      "stem": "Which part of a Sankey diagram represents the useful energy output?",
+      "misconceptionClass": "reading the diagram",
+      "options": [
+        {
+          "key": "A",
+          "text": "the caption under the diagram",
+          "correct": false,
+          "explanation": "Labels describe; arrows carry the energy.",
+          "misconception": "method detail"
+        },
+        {
+          "key": "B",
+          "text": "the flat left-hand end",
+          "correct": false,
+          "explanation": "That is the energy input.",
+          "misconception": "part swap"
+        },
+        {
+          "key": "C",
+          "text": "the straight arrow pointing to the right",
+          "correct": true,
+          "explanation": "The straight arrow is the desired, useful output.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the arrows bending away",
+          "correct": false,
+          "explanation": "Those are the wasted energy.",
+          "misconception": "part swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L2::Q3",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L2",
+      "stem": "What does the flat left-hand end of a Sankey diagram represent?",
+      "misconceptionClass": "reading the diagram",
+      "options": [
+        {
+          "key": "A",
+          "text": "the useful output",
+          "correct": false,
+          "explanation": "The useful output is the straight arrow on the right.",
+          "misconception": "part swap"
+        },
+        {
+          "key": "B",
+          "text": "the efficiency of the system",
+          "correct": false,
+          "explanation": "Efficiency is a ratio of widths, not one arrow.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "C",
+          "text": "the wasted energy leaving",
+          "correct": false,
+          "explanation": "Waste bends away at the split, not at the flat end.",
+          "misconception": "part swap"
+        },
+        {
+          "key": "D",
+          "text": "the energy transferred into the system",
+          "correct": true,
+          "explanation": "The flat end is the input side of the diagram.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L2::Q4",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L2",
+      "stem": "On a Sankey diagram, which conservation equation do the arrow widths always satisfy?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "what arrives = useful share + wasted share",
+          "correct": true,
+          "explanation": "The input splits exactly into useful and waste.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "what arrives = useful share - wasted share",
+          "correct": false,
+          "explanation": "Waste adds, not subtracts.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "C",
+          "text": "useful energy out = wasted energy",
+          "correct": false,
+          "explanation": "The split need not be equal.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "D",
+          "text": "total energy in = 2 × useful energy out",
+          "correct": false,
+          "explanation": "No such doubling rule exists.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L2::Q5",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L2",
+      "stem": "A Sankey’s input arrow is 10 mm wide, the useful arrow is 7 mm and the waste arrow is 3 mm. Which reading is correct?",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "the diagram violates conservation",
+          "correct": false,
+          "explanation": "The widths recombine exactly: 7 + 3 = 10.",
+          "misconception": "conservation error"
+        },
+        {
+          "key": "B",
+          "text": "the device is 70% efficient",
+          "correct": true,
+          "explanation": "Widths are proportional to energy, so 7 / 10 = 70% useful.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the device is 30% efficient",
+          "correct": false,
+          "explanation": "That is the waste share, not the efficiency.",
+          "misconception": "useful-wasted swap"
+        },
+        {
+          "key": "D",
+          "text": "the device is 37% efficient",
+          "correct": false,
+          "explanation": "Adding widths is meaningless here.",
+          "misconception": "arithmetic slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L2::Q6",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L2",
+      "stem": "State what the arrows that bend away from a Sankey diagram represent.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The wasted energy.",
+      "keywords": [
+        "wasted",
+        "energy",
+        "bend"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L2::Q7",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L2",
+      "stem": "State the two equations a Sankey diagram satisfies at its splitting point.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Input equals output, and the input splits into the useful share plus the wasted share.",
+      "keywords": [
+        "in",
+        "out",
+        "useful",
+        "wasted"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L2::Q8",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L2",
+      "stem": "Explain how a Sankey diagram shows efficiency without any numbers being written on it.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because arrow widths are proportional to energy, the useful arrow’s share of the total width IS the efficiency: a wide straight arrow against a thin waste arrow shows a high efficiency, and the comparison works visually because conservation guarantees the widths always recombine to the input width.",
+      "keywords": [
+        "width",
+        "proportional",
+        "useful",
+        "efficiency"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L2::Q9",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L2",
+      "stem": "A Sankey’s input arrow is 8 mm wide and its waste arrow is 2 mm. State the useful energy share as a percentage and describe what the useful arrow’s width must be.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The useful share is 75%, and the useful arrow must be 6 mm wide, because widths are proportional and 8 - 2 = 6 mm must close the balance.",
+      "keywords": [
+        "75",
+        "6",
+        "8",
+        "wasted"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L3::Q1",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L3",
+      "stem": "A modern efficient bulb and an old filament bulb draw the same input. On their Sankey diagrams, the efficient bulb has:",
+      "misconceptionClass": "reading the diagram",
+      "options": [
+        {
+          "key": "A",
+          "text": "no waste arrow at all",
+          "correct": false,
+          "explanation": "Real bulbs still waste some energy.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "B",
+          "text": "a wider waste arrow",
+          "correct": false,
+          "explanation": "Efficient means LESS waste.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "a narrower waste arrow and a wider useful arrow",
+          "correct": true,
+          "explanation": "Higher efficiency shifts width from the waste arrow to the useful arrow.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a smaller input arrow",
+          "correct": false,
+          "explanation": "Both draw the same input.",
+          "misconception": "part swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L3::Q2",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L3",
+      "stem": "A Sankey shows 500 J entering and 120 J leaving usefully. The wasted energy is:",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "120 J",
+          "correct": false,
+          "explanation": "That is the useful output.",
+          "misconception": "useful-wasted swap"
+        },
+        {
+          "key": "B",
+          "text": "500 J",
+          "correct": false,
+          "explanation": "That is the total input.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "C",
+          "text": "620 J",
+          "correct": false,
+          "explanation": "Adding violates conservation; waste is what the input leaves behind.",
+          "misconception": "conservation error"
+        },
+        {
+          "key": "D",
+          "text": "380 J",
+          "correct": true,
+          "explanation": "Wasted = 500 - 120 = 380 J.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L3::Q3",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L3",
+      "stem": "The same lifting motor’s efficiency is:",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "24%",
+          "correct": true,
+          "explanation": "120 / 500 × 100 = 24%.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "about 42%",
+          "correct": false,
+          "explanation": "This halves the useful share incorrectly.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "C",
+          "text": "about 100%",
+          "correct": false,
+          "explanation": "A motor losing 380 J of 500 J is far from perfect.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "about 76%",
+          "correct": false,
+          "explanation": "That is the waste percentage (380/500), not the efficiency.",
+          "misconception": "useful-wasted swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L3::Q4",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L3",
+      "stem": "For an old filament bulb, most of the input arrow’s width:",
+      "misconceptionClass": "reading the diagram",
+      "options": [
+        {
+          "key": "A",
+          "text": "continues straight as useful light",
+          "correct": false,
+          "explanation": "Filament bulbs waste most energy as heat.",
+          "misconception": "useful-wasted swap"
+        },
+        {
+          "key": "B",
+          "text": "bends away as heat because the bulb wastes most of its energy",
+          "correct": true,
+          "explanation": "The filament bulb’s waste arrow dominates its Sankey.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "is stored in the glass",
+          "correct": false,
+          "explanation": "Glass is not an energy store in this model.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "D",
+          "text": "returns to the mains",
+          "correct": false,
+          "explanation": "Energy does not flow back up the supply.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L3::Q5",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L3",
+      "stem": "Which calculation chain converts a Sankey into the device’s efficiency?",
+      "misconceptionClass": "method detail",
+      "options": [
+        {
+          "key": "A",
+          "text": "efficiency = input / useful × 100",
+          "correct": false,
+          "explanation": "That is the reciprocal, which exceeds 100%.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "B",
+          "text": "wasted = input + useful, then efficiency = wasted / input",
+          "correct": false,
+          "explanation": "Both steps are wrong: waste subtracts, and efficiency divides useful by total.",
+          "misconception": "method error"
+        },
+        {
+          "key": "C",
+          "text": "wasted = input − useful, then efficiency = useful / input × 100",
+          "correct": true,
+          "explanation": "Subtract for the waste share, then divide useful by the total input.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "efficiency = wasted / useful × 100",
+          "correct": false,
+          "explanation": "That ratios the two wrong quantities.",
+          "misconception": "method error"
+        }
+      ]
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L3::Q6",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L3",
+      "stem": "State which arrow grows wider when a bulb becomes more efficient at the same input.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The straight useful-output arrow grows wider and the downward wasted-heat arrow shrinks.",
+      "keywords": [
+        "useful",
+        "wider",
+        "wasted",
+        "shrinks"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L3::Q7",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L3",
+      "stem": "In the lifting-motor Sankey, state the useful output and the total input.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The useful output is 120 J and the total input is 500 J.",
+      "keywords": [
+        "120",
+        "500",
+        "useful"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L3::Q8",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L3",
+      "stem": "Explain why the filament bulb’s Sankey and the efficient bulb’s Sankey can both satisfy conservation while looking so different.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Conservation only fixes the TOTAL width: input = useful + waste. The two bulbs split the same total differently — the efficient bulb gives the straight arrow most of the width, the filament bulb gives the waste arrow most — so both diagrams close their balance while telling opposite efficiency stories.",
+      "keywords": [
+        "total",
+        "split",
+        "useful",
+        "waste",
+        "conservation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vctGRbxP4NVz34JT::L3::Q9",
+      "moduleId": "rn_vctGRbxP4NVz34JT::L3",
+      "stem": "A second motor’s Sankey shows 800 J in and its waste arrow represents 560 J. Calculate the useful output and the efficiency.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Useful = 800 − 560 = 240 J; efficiency = 240 / 800 × 100 = 30%.",
+      "keywords": [
+        "240",
+        "800",
+        "560",
+        "30"
+      ],
+      "options": []
+    }
+  ]
+}
