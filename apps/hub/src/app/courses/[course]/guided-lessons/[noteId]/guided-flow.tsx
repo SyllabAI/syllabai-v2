@@ -42,11 +42,14 @@
  * restores it and must not re-prompt (the gate radio locks once written;
  * completed modules reopen as a re-walk with the rating locked).
  *
- * PERSISTENCE: browser-local only (hub progress law — no accounts; and the
- * integration channel's zero-DB law), localStorage keyed per lesson id,
- * refresh-safe. Progress never writes to canonical content.
+ * PERSISTENCE: the SIGNED-IN ACCOUNT (T-AUDIT-TIER1) — the `guided-flow`
+ * document in user_documents (map lessonId → FlowState), hydrated +
+ * written through by lib/account-docs.ts. Never browser storage, so a
+ * half-walked lesson resumes on any device the learner signs in from.
+ * Progress never writes to canonical content.
  */
 import { useMemo, useState, useSyncExternalStore } from "react";
+import { readDoc, subscribeDocs, writeDoc } from "@/lib/account-docs";
 import {
   ArrowRight,
   BookOpenCheck,
@@ -114,7 +117,7 @@ interface Props {
   flashcardsHref: string;
 }
 
-const STORAGE_PREFIX = "syllabai.guided-flow.v1.";
+const DOC_KEY = "guided-flow";
 
 const RATING_LABEL: Record<Rating, string> = {
   low: "Low",
@@ -135,12 +138,13 @@ function freshState(): FlowState {
 /** The server snapshot: SSR/prerender always renders the fresh gate. */
 const SERVER_STATE = freshState();
 
-/** Restore from localStorage; client-only, tolerant of bad records. */
+/** Restore from the account doc map; client-only, tolerant of bad records. */
 function loadState(lessonId: string): FlowState {
   try {
-    const raw = window.localStorage.getItem(STORAGE_PREFIX + lessonId);
+    const map = readDoc<Record<string, unknown>>(DOC_KEY);
+    const raw = map?.[lessonId];
     if (!raw) return freshState();
-    const parsed = JSON.parse(raw) as FlowState;
+    const parsed = raw as FlowState;
     if (parsed?.v !== 1) return freshState();
     return parsed;
   } catch {
@@ -152,6 +156,8 @@ interface FlowStore {
   subscribe: (fn: () => void) => () => void;
   get: () => FlowState;
   set: (updater: (s: FlowState) => FlowState) => void;
+  /** re-derive from the account doc map (server hydration / sign-out) */
+  reset: () => void;
 }
 
 /**
@@ -181,17 +187,33 @@ function getFlowStore(lessonId: string): FlowStore {
       const next = updater(current);
       if (next === current) return;
       current = next;
-      try {
-        window.localStorage.setItem(STORAGE_PREFIX + lessonId, JSON.stringify(current));
-      } catch {
-        // storage unavailable — the flow still works, it just won't resume
-      }
+      // whole-map write-through: read → set this lesson → write the map
+      // (lib/account-docs.ts owns the debounce + the account PUT)
+      const map = { ...(readDoc<Record<string, unknown>>(DOC_KEY) ?? {}) };
+      map[lessonId] = current;
+      writeDoc(DOC_KEY, map);
+      listeners.forEach((fn) => fn());
+    },
+    reset() {
+      const next = loadState(lessonId);
+      if (next === current) return;
+      current = next;
       listeners.forEach((fn) => fn());
     },
   };
   flowStores.set(lessonId, store);
   return store;
 }
+
+// account-docs → store bridge: server hydration (or a sign-out reset) lands
+// a NEW guided-flow map → every live lesson store re-derives onto it (the
+// listeners survive; mounted components re-render onto the hydrated state).
+// The store's own writes echo back with the SAME map reference already
+// stored — the strict inequality on the lesson state absorbs those.
+subscribeDocs((key) => {
+  if (key !== DOC_KEY) return;
+  for (const store of flowStores.values()) store.reset();
+});
 
 type Stage =
   | { kind: "gate" }

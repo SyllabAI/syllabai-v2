@@ -2109,3 +2109,26 @@ export const teachReviewCards = pgTable("teach_review_cards", {
                 name: "teach_review_cards_session_id_fkey"
         }),
 ]);
+
+// T-AUDIT-TIER1 — the account-backed workspace document plane. One row per
+// (user, doc key): the hub's client workspace stores (progress overlay,
+// mock results, last-opened, deck sessions, guided-flow state, teacher
+// coverage/tests/reviews/drafts/classes, tutor/assistant/CLA thread
+// transcripts) persist HERE instead of browser localStorage, so every
+// surface follows the signed-in account across devices and nothing
+// learner/teacher-shaped lives only in a browser profile.
+// Doc keys are app-pinned (packages/contracts workspaceDocKeySchema);
+// values are opaque JSONB documents the contracts cap at 512 KB.
+export const userDocuments = pgTable("user_documents", {
+        userId: uuid("user_id").notNull(),
+        docKey: varchar("doc_key", { length: 100 }).notNull(),
+        value: jsonb().notNull(),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        primaryKey({ columns: [table.userId, table.docKey], name: "user_documents_pk" }),
+        foreignKey({
+                columns: [table.userId],
+                foreignColumns: [users.id],
+                name: "user_documents_user_id_fkey",
+        }).onDelete("cascade"),
+]);

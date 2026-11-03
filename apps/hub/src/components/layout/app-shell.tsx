@@ -51,6 +51,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { clearIdentity, useIdentity } from "@/lib/identity";
+import { useAccountDocsSync } from "@/lib/account-docs";
 import { isImmersiveRoute, isViewerRoute } from "@/lib/focus-routes";
 import { useLastOpened } from "@/lib/last-opened";
 import { cn } from "@/lib/utils";
@@ -107,6 +108,12 @@ export function AppShell({
 }) {
   const pathname = usePathname();
   const identity = useIdentity();
+  // T-AUDIT-TIER1: the account-document hydration surface — mounts ONCE
+  // here (the global shell) and hydrates the whole workspace doc set on
+  // identity acquisition (progress, mock results, last-opened, deck
+  // sessions, guided-flow, teacher stores, thread transcripts). Every
+  // account-backed store reads through lib/account-docs.ts memory.
+  useAccountDocsSync();
   const lastOpened = useLastOpened();
   // course pages manage their own horizontal rhythm (course shell + resource
   // panel); the graph surfaces are full-bleed (the visualizer canvas wants

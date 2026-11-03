@@ -8,18 +8,17 @@
  * one pass, so the drawer and the renderer can never disagree). Two tabs:
  *
  *   - My state: stored → effective mastery per touched spec point
- *     (Ebbinghaus decay, demo parameters), the decay-derived review queue
- *     with deep links into mapped revision notes, the misconception watch
- *     (phase 3 — sim learner states over the course corpus, SIMULATED),
- *     exposure-only points and the awaiting-marks count.
+ *     (Ebbinghaus decay, disclosed parameters), the decay-derived review
+ *     queue with deep links into mapped revision notes, the misconception
+ *     watch (measured sources only — the seeded sim learner is RETIRED,
+ *     T-AUDIT-TIER1), exposure-only points and the awaiting-marks count.
  *   - History: the recorded evidence stream — facts only (what was answered,
  *     how it was marked, when), mirroring the web workbench's honesty rules:
  *     typed drafts without a self-score show "awaiting marks", never a guess.
  *
- * Everything is browser-local progress evidence — SIMULATED by design, and
- * labelled so on the sheet itself. The misconception card shows only what
- * the course corpus + seeded sim learner actually carry (active / watching);
- * courses without a corpus render no card rather than an empty promise.
+ * The non-core path is the learner's own ACCOUNT-BACKED self-report evidence
+ * (the progress documents — real, persisted to the account, T-AUDIT-TIER1)
+ * and labelled ACCOUNT on the sheet itself.
  */
 import type { RefObject } from "react";
 import Link from "next/link";
@@ -164,7 +163,7 @@ function MisconceptionWatchCard({ watch, live = false }: { watch: MisconceptionW
           {active.length} active · {watching.length} watching
         </Badge>
         <Badge variant="outline" className="ml-auto text-[10px] text-muted-foreground">
-          {live ? "CORE_MEASURED" : "SIMULATED"}
+          {live ? "CORE_MEASURED" : "ACCOUNT"}
         </Badge>
       </header>
       <div className="px-3 py-2">
@@ -211,7 +210,7 @@ function MisconceptionWatchCard({ watch, live = false }: { watch: MisconceptionW
           <span>
             {live
               ? "Probabilities from the backend's misconception model over your real attempt evidence — likelihoods update as you practise."
-              : `${watch.disclaimer ?? "Simulated demo learner state over the course misconception corpus."} The patterns themselves are SME / mark-scheme-documented; the active / watching state is a deterministic demo overlay, not measured evidence.`}
+              : "The patterns themselves are SME / mark-scheme-documented; likelihoods only ever come from a measured misconception model — none exists on this course yet, so the watch stays empty rather than invented."}
           </span>
         </p>
       </footer>
@@ -264,7 +263,7 @@ export function StateTab({
       </div>
 
       {/* topic mastery — the core path's measured topics (core's evidence
-          granularity for attempts). Absent on the simulated path. */}
+          granularity for attempts). Absent on the account path. */}
       {live && drawer.topicStates && drawer.topicStates.length > 0 && (
         <section className="rounded-lg border">
           <header className="flex flex-wrap items-center gap-2 border-b px-3 py-2">
@@ -553,7 +552,7 @@ export function StateTab({
           review when it decays below its threshold). Bands mirror the graph: low &lt;55 ·
           developing 55–69 · good 70–79 · strong ≥80.
           {live ? " Decay and review scheduling are computed on the backend from your real attempts."
-                : " Demo model — simulated parameters."}
+                : " Decays run over your account's own self-report evidence; the parameters are the disclosed model above, not measured facts."}
         </span>
       </p>
     </div>
@@ -708,7 +707,7 @@ export function LearnerStateDrawer({
   courseLabel,
   course,
   drawer,
-  source = "simulated",
+  source = "account",
   returnFocusRef,
 }: {
   open: boolean;
@@ -717,9 +716,10 @@ export function LearnerStateDrawer({
   /** course slug — deep-links the tranche-4.6 flashcard queue into decks */
   course?: string;
   drawer: LearnerDrawerState | null;
-  /** core = the pilot's real learner model from the backend; simulated = the
-   *  browser-local demo overlay. Only the provenance labels change. */
-  source?: "core" | "simulated";
+  /** core = the server-measured learner model; account = the learner's own
+   *  self-report progress document (real, account-persisted). Only the
+   *  provenance labels change. */
+  source?: "core" | "account";
   /** F1 (KG-AUDIT-1): element to refocus when the sheet closes (the opener
    *  chip). The drawer opens programmatically, so Radix has no trigger of
    *  record and would drop focus on BODY after Escape / outside-close. */
@@ -745,12 +745,12 @@ export function LearnerStateDrawer({
           <div className="flex items-center gap-2">
             <Gauge className="size-4 shrink-0 text-primary" aria-hidden />
             <SheetTitle className="text-base">My learning state</SheetTitle>
-            <ProvenanceBadge tier={live ? "CORE_MEASURED" : "SIMULATED"} />
+            <ProvenanceBadge tier={live ? "CORE_MEASURED" : "ACCOUNT"} />
           </div>
           <SheetDescription className="text-xs">
             {live
               ? `Derived live from your SyllabAI account — real attempt evidence, Ebbinghaus decay and review scheduling computed on the backend for ${courseLabel}.`
-              : `Derived live from this browser's progress on ${courseLabel} — simulated, browser-local evidence. It never writes to course data.`}
+              : `Derived live from your account's progress on ${courseLabel} — your own self-report evidence, persisted with your account. It never writes to course data.`}
           </SheetDescription>
         </SheetHeader>
 

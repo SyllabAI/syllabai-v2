@@ -10,27 +10,27 @@
  * browser-locally, so the same ranking is derived client-side from the demo's
  * own evidence chain (KG phases 1-3):
  *
- *   progress store (lib/progress.ts — SIMULATED, browser-local)
+ *   progress document (lib/progress.ts — the ACCOUNT-backed self-report
+ *     document, T-AUDIT-TIER1)
  *     × content bridge (api/kg-learner-bridge — codes only, no content)
  *     × learner overlay (lib/learner-state.ts buildOverlay — measured
- *       mastery, review-due flags, misconception watch)
+ *       mastery, review-due flags)
  *     × forgetting-decay model (lib/forgetting.ts — effective mastery)
  *
  * Action tiers — HUB-DASH-CORE re-ranking (operator trace 1a0ec29c8c8cfb71).
- * On the LOCAL path the learner's own measured evidence always outranks the
- * seeded sim learner's guesses: remediation-before-review-before-retry
- * becomes review before retry before practice before SIMULATED misconception
- * watch before coverage:
+ * On the LOCAL path every row derives from the learner's own evidence:
  *
  *   0 REVIEW_TOPIC (DUE_REVIEW) — points whose Ebbinghaus-decayed effective
  *     mastery crossed their review threshold
  *   1 RETRY_PROBLEM_QUESTION (PROBLEM_QUESTION) — a marked attempt under 50%
  *   2 PRACTISE_QUESTIONS (LOW_MASTERY) — measured but below the low band
- *   3 REMEDIATE_MISCONCEPTION (MISCONCEPTION_SUSPECTED) — active sim states
- *     from the course misconception corpus (KG phase 3), SIMULATED — demoted
- *     below measured evidence because a deterministic demo overlay must not
- *     outrank what the learner actually did
  *   4 UNCOVERED_NOTE (UNCOVERED_TOPIC) — a note the learner never opened
+ *
+ * (Tier 3 — the SIMULATED misconception watch over the seeded demo learner —
+ * is RETIRED with T-AUDIT-TIER1: fabricated "misconceptions" must never
+ * surface as the learner's own. When the core read model is live, misconception
+ * rows come from core's evidence-gated BDT states via coreActionsToDashboard
+ * and keep core's own rank order.)
  *
  * When the core read model is live (lib/dashboard-core.ts), the pilot course's
  * rows come from core's T-033 recommendations instead (coreActionsToDashboard)
@@ -39,9 +39,8 @@
  * their priority is core's call, not this module's.
  *
  * Honesty rules inherited from the web card: every reason line is derived
- * from the learner's own measured evidence (never invented), misconception
- * states are labelled SIMULATED, and a course without a bridge (import
- * pending) simply contributes no actions. This is RECOMMENDATION output —
+ * from the learner's own measured evidence (never invented), and a course
+ * without a bridge (import pending) simply contributes no actions. This is RECOMMENDATION output —
  * deliberately distinct from measured-fact panels (My State drawer).
  */
 import {
@@ -194,14 +193,6 @@ function bestNoteFor(
   return best;
 }
 
-/** Bare spec-point codes a misconception maps onto (spine-filtered). */
-function misPoints(bridge: LearnerBridge, points: string[]): string[] {
-  const set = new Set(bridge.pointIds);
-  return points
-    .map((raw) => normalizeCode(raw, bridge.codePrefix))
-    .filter((id) => set.has(id));
-}
-
 /**
  * Most recent question-player deep link whose question touches any of
  * `pointIds` — from the learner's own recorded topic slugs. Falls back to
@@ -344,39 +335,6 @@ function deriveCourseActions(input: NbaCourseInput, now: number): DashboardActio
       cta: "Practise",
       score: weakest.mastery as number,
     });
-  }
-
-  // ── tier 3 — misconception watch (KG phase 3 — SIMULATED, DEMOTED) ──
-  // HUB-DASH-CORE (P1-6, operator trace 1a0ec29c8c8cfb71): the sim learner's
-  // states are a deterministic demo overlay, not the learner's evidence —
-  // they used to outrank review/retry/practise rows derived from the marks
-  // the learner actually recorded. On the LOCAL path they now rank below all
-  // measured tiers. When the core model is live, misconception rows come
-  // from core's evidence-gated BDT states via coreActionsToDashboard and
-  // core owns their priority (this branch isn't consulted for the pilot).
-  for (const m of bridge.misconceptions) {
-    if (!m.active) continue;
-    const pts = misPoints(bridge, m.points);
-    if (pts.length === 0) continue;
-    const noteId = bestNoteFor(bridge, noteMap, pts);
-    const pct = Math.round(m.probability * 100);
-    actions.push({
-      ...base,
-      key: `${slug}:mis:${m.id}`,
-      tier: 3,
-      actionType: "REMEDIATE_MISCONCEPTION",
-      reasonCode: "MISCONCEPTION_SUSPECTED",
-      title: m.title,
-      detail:
-        `SIMULATED likelihood ${pct}% · ${plural(m.evidenceCount, "evidence signal")} · ` +
-        `mapped to ${plural(pts.length, "spec point")}`,
-      href: noteId
-        ? `/courses/${slug}/revision-notes/${noteId}`
-        : `/knowledge-graph?course=${slug}`,
-      cta: noteId ? "Review note" : "Open graph",
-      score: m.probability,
-    });
-    if (actions.filter((a) => a.tier === 3).length >= 2) break;
   }
 
   // ── tier 4 — coverage: a note the learner never opened ───────────────

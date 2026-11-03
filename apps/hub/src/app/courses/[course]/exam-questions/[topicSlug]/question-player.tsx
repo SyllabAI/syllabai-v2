@@ -13,11 +13,11 @@
  *     artwork at all, an honest notice points to the past paper while the
  *     attested answer key still marks instantly;
  *   - structured parts get the SME typed-answer workspace ("Your answer"),
- *     autosaved to the local SIMULATED overlay, plus AI "Mark my answer"
+ *     autosaved to the account progress document, plus AI "Mark my answer"
  *     against the mark scheme (server-side provider, AI_SUGGESTED, explicit
  *     apply);
  *   - structured questions: "How did you do?" self-score box (score / marks)
- *     → SIMULATED overlay → sidebar rings react;
+ *     → account progress document → sidebar rings react;
  *   - "View answer" → full-screen mark-scheme modal (topic pill, question
  *     restated with Show more, AND-joined marking points with [N mark] tags,
  *     your typed answers shown alongside for comparison);
@@ -1013,7 +1013,7 @@ function TypedAnswerWorkspace({
                 coreLive ? "border-success/30 text-success" : "text-muted-foreground",
               )}
             >
-              {coreLive ? "live draft" : "simulated"}
+              {coreLive ? "live draft" : "account draft"}
             </Badge>
             {text.length > 0 && (
               <span

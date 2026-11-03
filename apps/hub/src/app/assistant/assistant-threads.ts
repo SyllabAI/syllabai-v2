@@ -14,9 +14,10 @@ import { useSyncExternalStore } from "react";
  * surface here, and editing the tutor surface stays out of this task's blast
  * radius entirely.
  *
- * Phase-1 posture (plan §3 deviation 1): threads are device-local. The §22
- * server pane is a follow-up parity decision; the rail is shaped so it can
- * be added later exactly the way the tutor's was.
+ * Persistence (T-AUDIT-TIER1): the transcript is ACCOUNT-BACKED — the
+ * `assistant-threads` document in user_documents (hydrated + written
+ * through by lib/account-docs.ts), never browser storage, so history
+ * follows the account across devices.
  */
 
 import type { TutorCitation } from "@/lib/contracts";
@@ -62,11 +63,12 @@ export interface AssistantThread {
   seq?: number;
 }
 
-const KEY = "syllabai.assistant.threads.v1";
-const ACTIVE_KEY = "syllabai.assistant.activeThread.v1";
+import { readDoc, subscribeDocs, writeDoc } from "@/lib/account-docs";
+
+const KEY = "assistant-threads";
 const EVENT = "syllabai:assistant-threads-changed";
 
-/** storage guards — keep localStorage bounded (tutor parity) */
+/** storage guards — keep the account document bounded (tutor parity) */
 const MAX_THREADS = 40;
 const MAX_MESSAGES_PER_THREAD = 200;
 
@@ -84,9 +86,9 @@ let seqCounter = 0;
 function load(): StoredState {
   if (typeof window === "undefined") return { threads: [], activeId: null };
   try {
-    const raw = window.localStorage.getItem(KEY);
+    const raw = readDoc<unknown>(KEY);
     if (!raw) return { threads: [], activeId: null };
-    const parsed = JSON.parse(raw) as StoredState;
+    const parsed = raw as StoredState;
     if (!Array.isArray(parsed.threads)) return { threads: [], activeId: null };
     const threads = parsed.threads
       .filter((t) => t && typeof t.id === "string" && Array.isArray(t.messages))
@@ -109,12 +111,9 @@ let persistTimer: ReturnType<typeof setTimeout> | null = null;
 
 function persist() {
   if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(KEY, JSON.stringify(state));
-    window.localStorage.setItem(ACTIVE_KEY, state.activeId ?? "");
-  } catch {
-    // quota exceeded / private mode — the session still works in memory
-  }
+  // whole-document write-through (lib/account-docs.ts owns the debounce
+  // and the account PUT; a failed PUT keeps memory and re-arms)
+  writeDoc(KEY, state);
 }
 
 /** Trailing-edge throttle: disk writes wait (tutor parity). */
@@ -127,14 +126,19 @@ function emit() {
   for (const l of listeners) l();
 }
 
-if (typeof window !== "undefined") {
-  window.addEventListener("storage", (e) => {
-    if (e.key === KEY || e.key === ACTIVE_KEY) {
-      state = load();
-      for (const l of listeners) l();
-    }
-  });
-}
+// account-docs → store bridge: server hydration (or a sign-out reset)
+// lands a NEW transcript → re-derive. The store's own writes echo back with
+// the SAME document reference already stored — the strict inequality on the
+// derived snapshot absorbs those (no loop, no re-render).
+subscribeDocs((key) => {
+  if (key !== KEY || typeof window === "undefined") return;
+  const next = load();
+  if (next.threads !== state.threads || next.activeId !== state.activeId) {
+    state = next;
+    snap = notifySnapshot();
+    for (const l of listeners) l();
+  }
+});
 
 function notifySnapshot() {
   return { threads: state.threads, activeId: state.activeId };

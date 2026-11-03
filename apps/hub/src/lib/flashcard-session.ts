@@ -15,25 +15,27 @@
  *   - DC-8 the RESUME: deck run position (and the filter that shaped it)
  *     survives a full reload — the SyllabAI analogue of SME's server-side
  *     resume (research pass 5, screenshot 198: position and bucket counts
- *     survive reload). Deliberately DEVICE-scoped browser-local state,
- *     matching the honesty chip's account/device disclosure — SME persists
- *     server-side per account; a per-account resume needs a core surface
- *     and is future work, not silently approximated here.
+ *     survive reload). ACCOUNT-BACKED since T-AUDIT-TIER1 (the
+ *     `deck-sessions` document, hydrated + written through by
+ *     lib/account-docs.ts) — SME persists resume per account; now so does
+ *     SyllabAI, on every device the learner signs in from.
  *
  * Honesty pins (inherited from the flashcard evidence class):
  *   - this store is NEVER engagement evidence: resume position does not
  *     feed rings, mastery, or the review queue (lib/progress.ts stays the
- *     overlay of record — a resumed card is not a done card);
+ *     progress document of record — a resumed card is not a done card);
  *   - a saved run is restored only when it still covers EXACTLY the deck's
  *     cards (set-equality): a corpus change discards the stale session and
  *     the deck starts fresh — a saved run must never silently hide or
  *     phantom a card;
- *   - every negative (no save / corrupt save / private mode) degrades to a
- *     fresh run — the player never blocks, never spins, never invents.
+ *   - every negative (no save / corrupt save) degrades to a fresh run —
+ *     the player never blocks, never spins, never invents.
  */
 
 /** The card-state buckets a filter can select. "not-viewed" = the card has
  *  no rating trail anywhere (SME's default fourth row of Table 2). */
+import { readDoc, writeDoc } from "./account-docs";
+
 export type FlashcardCardState = "not-viewed" | "still-learning" | "know";
 
 /** The player filter (DC-11). All-true + null cardTypes = unfiltered. */
@@ -135,7 +137,7 @@ export function filterCardIds(
   });
 }
 
-// ── DC-8: the device-scoped resume ───────────────────────────────────────
+// ── DC-8: the account-backed resume (T-AUDIT-TIER1) ───────────────────────
 
 /** One saved deck session. `order` is the FULL run order (pre-filter);
  *  `pos` indexes the FILTERED run at save time; `filter` null = unfiltered.
@@ -151,7 +153,46 @@ export interface DeckSessionState {
 }
 
 export const deckSessionKey = (course: string, subtopicCode: string): string =>
-  `syllabai-hub:deck-position:${course}:${subtopicCode}`;
+  `${course}:${subtopicCode}`;
+
+/** The account document (contracts allow-list) — one map of deck sessions.
+ *  SME persists resume per account; now SyllabAI does too (the honesty
+ *  chip's "device-scoped" disclosure is retired with this band). */
+const DOC_KEY = "deck-sessions";
+/** LRU cap — a learner realistically works a handful of decks at once. */
+const MAX_SESSIONS = 60;
+
+type DeckSessionMap = Record<string, DeckSessionState>;
+
+function parseMap(raw: unknown): DeckSessionMap {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
+  const out: DeckSessionMap = {};
+  for (const [k, v] of Object.entries(raw as Record<string, unknown>)) {
+    const parsed = parseState(v);
+    if (parsed) out[k] = parsed;
+  }
+  return out;
+}
+
+function parseState(raw: unknown): DeckSessionState | null {
+  if (!raw || typeof raw !== "object") return null;
+  const parsed = raw as Record<string, unknown>;
+  if (parsed.v !== 1) return null;
+  if (!Array.isArray(parsed.order) || !parsed.order.every((x) => typeof x === "string")) return null;
+  if (typeof parsed.pos !== "number" || !Number.isInteger(parsed.pos) || parsed.pos < 0) return null;
+  const filter = normalizeFilter(parsed.filter);
+  if (parsed.filter != null && filter === null) return null; // corrupt filter → discard the session
+  if (typeof parsed.at !== "number" || !Number.isFinite(parsed.at)) return null;
+  return { v: 1, order: parsed.order as string[], pos: parsed.pos, filter, at: parsed.at };
+}
+
+function readMap(): DeckSessionMap {
+  return parseMap(readDoc<unknown>(DOC_KEY));
+}
+
+function writeMap(map: DeckSessionMap) {
+  writeDoc(DOC_KEY, map);
+}
 
 /** A saved run may only restore when it covers EXACTLY this deck's cards:
  *  same size, no duplicates, every id present. Anything else (corpus wave,
@@ -166,28 +207,15 @@ export function validateSessionAgainstDeck(s: DeckSessionState, deckIds: Readonl
 
 export function loadDeckSession(course: string, subtopicCode: string): DeckSessionState | null {
   if (typeof window === "undefined") return null;
-  try {
-    const raw = window.localStorage.getItem(deckSessionKey(course, subtopicCode));
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as Record<string, unknown>;
-    if (parsed.v !== 1) return null;
-    if (!Array.isArray(parsed.order) || !parsed.order.every((x) => typeof x === "string")) return null;
-    if (typeof parsed.pos !== "number" || !Number.isInteger(parsed.pos) || parsed.pos < 0) return null;
-    const filter = normalizeFilter(parsed.filter);
-    if (parsed.filter != null && filter === null) return null; // corrupt filter → discard the session
-    if (typeof parsed.at !== "number" || !Number.isFinite(parsed.at)) return null;
-    return { v: 1, order: parsed.order as string[], pos: parsed.pos, filter, at: parsed.at };
-  } catch {
-    return null;
-  }
+  return readMap()[deckSessionKey(course, subtopicCode)] ?? null;
 }
 
 export function saveDeckSession(course: string, subtopicCode: string, s: DeckSessionState): void {
   if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(deckSessionKey(course, subtopicCode), JSON.stringify(s));
-  } catch {
-    // storage full / private mode — the session stays in-memory for this
-    // visit; the resume simply won't survive a reload (honest degrade)
-  }
+  const map = readMap();
+  map[deckSessionKey(course, subtopicCode)] = s;
+  // LRU cap: evict the stalest sessions when the map outgrows the bound
+  const entries = Object.entries(map).sort((a, b) => a[1].at - b[1].at);
+  const trimmed = entries.slice(Math.max(0, entries.length - MAX_SESSIONS));
+  writeMap(Object.fromEntries(trimmed));
 }

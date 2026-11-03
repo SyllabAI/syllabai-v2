@@ -5,7 +5,7 @@
  * The projection-of-events law, hub side: the ring percent derives from the
  * server payload (the event→projection rollup), never from a local counter;
  * a missing fact (no entry / empty denominator) returns null and the caller
- * falls back to the SIMULATED overlay posture (the of-record signed-out
+ * falls back to the account progress document posture (the of-record signed-out
  * behaviour). The payload shape mirrors the api's GET
  * /api/v1/learners/me/progress wire contract — the same `today` block the
  * plan projection and the dashboard card read (acceptance (c) hub-side).

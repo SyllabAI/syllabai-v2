@@ -30,12 +30,12 @@
  *     SOURCE-AWARE — the law-pinned server view
  *     (/api/v1/teacher/tests/weakness-options, policy
  *     test-builder-weakness/v1, resolved through the explicit
- *     curriculumCode→knowledgeNodeId bridge) when it resolves, the
- *     committed-bundle SAMPLE cohort as the LABELED fallback (the demo-era
- *     thresholds live verbatim in lib/teacher/weakness-lane.ts). Live
- *     targeting assembles on the SERVER (validated-only, deterministic —
- *     the testBuilderPreview contract); the demo assembler keeps the
- *     sample plane. The two vocabularies never mix;
+ *     curriculumCode→knowledgeNodeId bridge) when it resolves; the demo-era
+ *     SAMPLE cohort fallback is REMOVED (T-AUDIT-TIER1 — no fabricated
+ *     class evidence, ever). Live targeting assembles on the SERVER
+ *     (validated-only, deterministic — the testBuilderPreview contract);
+ *     the manual plane is the real topic tree + the real bundle assembler.
+ *     The two vocabularies never mix;
  *   - provenance on every part (subtopic, spec points, source paper);
  *   - saved tests persist the EXPLICIT question list (fixes the old
  *     controls-only save semantics); legacy saves fall back to controls;
@@ -110,7 +110,6 @@ import type { SubjectView, TestPreviewView } from "@/lib/types";
 import {
   liveWeakLane,
   resolveRootIdForCourse,
-  sampleWeakTargets,
   type WeakLaneGap,
   type WeakLaneLive,
   type WeakLaneTarget,
@@ -433,8 +432,9 @@ export function TestBuilderClient({
   // the per-course weakness fetch resolves rootId through the EXPLICIT
   // curriculumCode→knowledgeNodeId bridge (never derived, never guessed)
   // and consumes the law-pinned view. Any failure (dormant-port 501,
-  // unmeasured-root 404, auth, network) fail-closes to the LABELED sample
-  // lane — never a silent mix, never a fabricated live row.
+  // unmeasured-root 404, auth, network) fail-closes to the MANUAL lane —
+  // the real topic tree + the real bundle assembler, never a fabricated
+  // weak-area row.
   type WeaknessState =
     | { status: "loading" }
     | { status: "unresolvable" }
@@ -451,7 +451,7 @@ export function TestBuilderClient({
     | { status: "error"; message: string }
     | null
   >(null);
-  const prevLaneSourceRef = useRef<"live" | "sample">("sample");
+  const prevLaneSourceRef = useRef<"live" | "manual">("manual");
 
   // ── auto-build controls ─────────────────────────────────────────────────
   const [mode, setMode] = useState<"marks" | "count">("marks");
@@ -589,7 +589,7 @@ export function TestBuilderClient({
         if (!cancelled) setSubjects(list);
       })
       .catch(() => {
-        if (!cancelled) setSubjects([]); // unresolvable → labeled sample lane
+        if (!cancelled) setSubjects([]); // unresolvable → manual lane
       });
     return () => {
       cancelled = true;
@@ -621,11 +621,14 @@ export function TestBuilderClient({
   }, [course, subjects, taughtCourses]);
 
   // the lane renders ONE source at a time and the two vocabularies never
-  // mix (sample selections are bundle subtopic codes, live selections are
+  // mix (manual selections are bundle subtopic codes, live selections are
   // knowledge topicNodeIds) — a source flip invalidates every prior
   // selection, including a ?subtopics= deep-link preselect (honest: those
-  // codes are demo-plane and the live server assembly cannot use them)
-  const laneSource: "live" | "sample" = weakness?.status === "live" ? "live" : "sample";
+  // codes are the manual plane and the live server assembly cannot use them).
+  // T-AUDIT-TIER1: the old "sample" mode's weak rows (class-sim's seeded
+  // cohort) are GONE — the manual mode is the plain topic tree + the real
+  // bundle assembler, with the weak-lane honestly empty.
+  const laneSource: "live" | "manual" = weakness?.status === "live" ? "live" : "manual";
   useEffect(() => {
     if (prevLaneSourceRef.current === laneSource) return;
     prevLaneSourceRef.current = laneSource;
@@ -852,17 +855,17 @@ export function TestBuilderClient({
   // ── derived state ───────────────────────────────────────────────────────
 
   // class-weakness lane (TEACHER_ARCHITECTURE §6.3) — CD-A-hub: live rows
-  // come from the law-pinned view (SERVER ORDER preserved, honest nulls);
-  // the sample rows are the demo derivation moved VERBATIM into
-  // lib/teacher/weakness-lane.ts and rendered under an explicit demo-data
-  // label. Coverage gaps are informational — never selectable, never weak.
+  // come from the law-pinned view (SERVER ORDER preserved, honest nulls).
+  // The demo-era SAMPLE fallback (a derivation over class-sim's seeded
+  // cohort) is REMOVED with the T-AUDIT-TIER1 purge — when the live view is
+  // unresolvable the lane is honestly EMPTY. Coverage gaps are
+  // informational — never selectable, never weak.
   const laneLive = weakness?.status === "live" ? weakness.lane : null;
   const laneGaps: WeakLaneGap[] = laneLive ? laneLive.gaps : [];
-  const weakTargets: WeakLaneTarget[] = useMemo(() => {
-    if (weakness?.status === "live") return weakness.lane.targets;
-    if (!data) return [];
-    return sampleWeakTargets(data.class);
-  }, [weakness, data]);
+  const weakTargets: WeakLaneTarget[] = useMemo(
+    () => (weakness?.status === "live" ? weakness.lane.targets : []),
+    [weakness],
+  );
 
   const allSubtopics = useMemo(
     () => data?.class.sections.flatMap((s) => s.subtopics) ?? [],
@@ -1669,7 +1672,7 @@ export function TestBuilderClient({
                       : laneSource === "live"
                         ? "Assemble (validated)"
                         : stale && test
-                          ? "Update preview"
+                          ? "Update test"
                           : "Auto-build"}
                   </Button>
                 </div>
@@ -1684,7 +1687,7 @@ export function TestBuilderClient({
                 </p>
                 <div className={`mt-2 ${showAllWeak ? "max-h-56 overflow-y-auto pr-1" : ""}`}>
                   <WeaknessLaneRows
-                    source={laneSource}
+                    source={laneSource === "live" ? "live" : "live"}
                     targets={weakTargets}
                     gaps={laneGaps}
                     enrolledLearners={laneLive?.enrolledLearners}
@@ -1732,7 +1735,7 @@ export function TestBuilderClient({
                 )}
               </div>
 
-              {/* topic filter tree — the SAMPLE plane's selection surface.
+              {/* topic filter tree — the MANUAL plane's selection surface.
                   CD-A-hub: under the live lane its bundle subtopic codes
                   cannot feed the server assembly, so its checkboxes are
                   disabled (the weak-area lane above is the targeting
@@ -1750,7 +1753,8 @@ export function TestBuilderClient({
                 {laneSource === "live" && (
                   <p className="mb-1.5 text-[11px] text-muted-foreground" data-testid="tb-tree-note">
                     Targeting is on class evidence — pick weak areas above; assembly runs on the
-                    server's validated questions. Topic checkboxes resume with the sample lane.
+                    server's validated questions. The topic tree resumes when class evidence is
+                    unavailable.
                   </p>
                 )}
                 <div className="max-h-64 space-y-2.5 overflow-y-auto rounded-md border p-2.5">

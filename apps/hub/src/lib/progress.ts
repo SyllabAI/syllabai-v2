@@ -1,19 +1,21 @@
 "use client";
 
 import { useCallback, useSyncExternalStore } from "react";
+import { readDoc, subscribeDocs, writeDoc } from "./account-docs";
 
 /**
- * Progress overlay — the demo's honest stand-in for SaveMyExams accounts.
+ * Progress overlay — the account-backed learner workspace (T-AUDIT-TIER1).
  *
  * Research finding (§8): SME progress = per-sub-topic rings + marks, and
- * writing it needs an account. This demo has no accounts, so ALL progress is
- * a browser-local overlay, namespaced per course, and labelled SIMULATED
- * wherever it is shown. It never writes to canonical content or the learner
- * overlay JSON — refresh-safe via localStorage only. (Tranche 4.4 exception:
- * on the pilot course, when signed in, flashcard ratings ALSO mirror to the
+ * writing it needs an account. Every event below persists to the SIGNED-IN
+ * ACCOUNT (the per-course document `progress:<course>` in user_documents,
+ * hydrated + written through by lib/account-docs.ts) — never to browser
+ * storage, so the rings follow the learner across devices and nothing
+ * learner-shaped lives only in a browser profile. (Tranche 4.4 exception
+ * remains: on the pilot course, flashcard ratings ALSO mirror to the
  * learner's core account as append-only self-report evidence — lib/
- * flashcard-bridge.ts. The local overlay remains the source of truth for
- * this store's rings; the mirror never mutates it.)
+ * flashcard-bridge.ts. The account document remains the source of truth
+ * for this store's rings; the mirror never mutates it.)
  *
  * Three primitives, mirroring the research:
  *   - note-read      (notes ring)
@@ -75,42 +77,50 @@ export const emptyProgress = (): CourseProgress => ({
  *  lib/flashcard-review.ts (the scheduler that reads it). */
 export const TRAIL_CAP = 10;
 
-const keyFor = (course: string) => `syllabai-hub:progress:${course}`;
-const isBrowser = typeof window !== "undefined";
+/** The account document key for one course (contracts allow-list arm
+ *  /^progress:[a-z0-9][a-z0-9-]{0,79}$/). */
+const keyFor = (course: string) => `progress:${course}`;
 
 // module-level cache so every hook instance sees the same object graph
 const cache = new Map<string, CourseProgress>();
 const listeners = new Map<string, Set<() => void>>();
 
+function parseDoc(raw: unknown): CourseProgress {
+  if (!raw || typeof raw !== "object") return emptyProgress();
+  return { ...emptyProgress(), ...(raw as Partial<CourseProgress>) };
+}
+
 function load(course: string): CourseProgress {
   if (cache.has(course)) return cache.get(course)!;
-  let data = emptyProgress();
-  if (isBrowser) {
-    try {
-      const raw = window.localStorage.getItem(keyFor(course));
-      if (raw) {
-        const parsed = JSON.parse(raw) as Partial<CourseProgress>;
-        data = { ...emptyProgress(), ...parsed };
-      }
-    } catch {
-      // corrupted state → reset (progress is disposable overlay by design)
-    }
-  }
+  const data = parseDoc(readDoc(keyFor(course)));
   cache.set(course, data);
   return data;
 }
 
 function persist(course: string, next: CourseProgress) {
   cache.set(course, next);
-  if (isBrowser) {
-    try {
-      window.localStorage.setItem(keyFor(course), JSON.stringify(next));
-    } catch {
-      // storage full / private mode — overlay stays in-memory for the session
-    }
-  }
+  // whole-document write-through (lib/account-docs.ts): memory updates
+  // synchronously, the account PUT is debounced; a failed PUT keeps memory
+  // and re-arms — the UI never waits on the network.
+  writeDoc(keyFor(course), next);
   listeners.get(course)?.forEach((fn) => fn());
 }
+
+// account-docs → store bridge: server hydration (or a sign-out reset)
+// lands a NEW value under a progress key → re-derive the course document
+// and notify subscribers. The store's own writes echo back with the SAME
+// object reference persist() already cached — those are skipped (a new
+// object per echo would break useSyncExternalStore's referential law).
+subscribeDocs((key) => {
+  if (!key.startsWith("progress:")) return;
+  const course = key.slice("progress:".length);
+  const raw = readDoc<unknown>(key);
+  const cur = cache.get(course);
+  if (raw === undefined && !cur) return;
+  if (cur && raw === cur) return; // our own write-through echo
+  cache.set(course, parseDoc(raw));
+  listeners.get(course)?.forEach((fn) => fn());
+});
 
 function mutate(course: string, fn: (p: CourseProgress) => CourseProgress) {
   persist(course, fn(load(course)));
@@ -283,9 +293,9 @@ export function rateFlashcard(
   const at = Date.now();
   mutate(course, (p) => {
     const prev = p.flashcards[cardId];
-    // tranche 4.6: append to the bounded trail (newest last) — the local
-    // overlay stays the COMPLETE per-device trail the scheduler reads;
-    // the core mirror (flashcard-bridge) remains the account-side record
+    // tranche 4.6: append to the bounded trail (newest last) — the account
+    // document stays the COMPLETE trail the scheduler reads; the core mirror
+    // (flashcard-bridge) remains the learner-model evidence record
     const trail = [
       ...(prev?.trail ?? []),
       { rating, at },

@@ -5,7 +5,7 @@
  * indicator that appears on every sidebar tree row (research §8). DC-7:
  * signed-in learners read the server projection of the persisted event
  * rows (lib/progress-server.ts — the projection-of-events law); the
- * browser-local SIMULATED overlay remains the signed-out fallback.
+ * account-backed progress document remains the fallback.
  */
 import {
   subtopicFlashcardsRing,
@@ -49,7 +49,7 @@ export function ProgressRing({
   /** DC-7: the server projection's percent for this node on the active
    * tree's dimension — present (including 0) WINS over the local overlay
    * (the projection-of-events law, never a local counter); null/undefined
-   * falls back to the SIMULATED overlay posture (signed-out demo). */
+   * falls back to the account progress document posture. */
   projectionPercent?: number | null;
   /** "notes" / "questions" / "flashcards" swap the denominator to that
    * select page's own content type (see ProgressRingDimension). The server

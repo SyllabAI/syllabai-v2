@@ -3,9 +3,9 @@
 /**
  * Flashcard review scheduling — the Ebbinghaus queue over the rating trail
  * (ADR-029 tranche 4.6). The consumer the ratings evidence class was built
- * for: every Still learning / Know rating lands in the browser-local overlay
- * (lib/progress.ts), and this module turns that trail into a "due for
- * review" schedule.
+ * for: every Still learning / Know rating lands in the account-backed
+ * progress document (lib/progress.ts), and this module turns that trail
+ * into a "due for review" schedule.
  *
  * The model — expanding spacing on binary self-report, the classic Ebbinghaus
  * ladder with plainly-commented demo parameters:

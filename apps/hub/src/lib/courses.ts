@@ -21,7 +21,6 @@ import {
   ExamQuestionTopic,
   Flashcard,
   RevisionNote,
-  SimLearnerState,
 } from "@/lib/contracts";
 import type {
   ConceptGraph as ConceptGraphT,
@@ -30,7 +29,6 @@ import type {
   ExamQuestionTopic as ExamQuestionTopicT,
   Flashcard as FlashcardT,
   RevisionNote as RevisionNoteT,
-  SimLearnerState as SimLearnerStateT,
 } from "@/lib/contracts";
 import { loadContentJson, hasContentFile } from "@/lib/corpus";
 import { buildDeckSections, type FlashcardDeckSection } from "@/lib/flashcard-decks";
@@ -114,7 +112,6 @@ export interface CourseBundle {
    *  "Interactive" button per paper row), never the topic tree/bank. */
   officialPaperTopics: ExamQuestionTopicT[];
   flashcards: FlashcardT[];
-  simLearner: SimLearnerStateT;
 }
 
 /**
@@ -312,7 +309,6 @@ export async function getCourseBundle(slug: string): Promise<CourseBundle | null
       ? (z.array(ExamQuestionTopic).parse(officialPapers) as ExamQuestionTopicT[])
       : [],
     flashcards: z.array(Flashcard).parse(flashcards) as FlashcardT[],
-    simLearner: SimLearnerState.parse(learner) as SimLearnerStateT,
   };
   bundleCache.set(slug, result);
   return result;

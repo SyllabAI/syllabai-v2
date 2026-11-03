@@ -4,9 +4,10 @@
  * Practice — part-level practice player over the real question corpus.
  *
  * Telemetry mirrors the production attempt shape (confidence 1..5,
- * selfDoubtFlag, timed) so a later CoreApiProvider can POST the same intent
- * to /api/v1/attempts/structured. In mock mode, marks feed the SIMULATED
- * learner overlay (session state only) — never canonical learner state.
+ * selfDoubtFlag, timed). Marks self-assess against the mark scheme and feed
+ * the ACCOUNT-BACKED progress document (T-AUDIT-TIER1 — the same store the
+ * rings and review scheduler read). Never browser storage; never canonical
+ * learner state.
  */
 import { useMemo, useState } from "react";
 import Link from "next/link";
@@ -21,7 +22,7 @@ import { Atom, CheckCircle2, ChevronRight } from "lucide-react";
 import type { ExamQuestionTopic } from "@/lib/contracts";
 import { Markdown } from "@/components/markdown";
 import { PartProblem } from "@/components/part-problem";
-import { SpecChip, SimulatedBanner } from "@/components/provenance";
+import { AccountBanner, SpecChip } from "@/components/provenance";
 
 interface Props {
   topics: ExamQuestionTopic[];
@@ -103,16 +104,15 @@ export function PracticeClient({ topics }: Props) {
         </h1>
         <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
           Real exam-question parts with production-shaped attempt telemetry (confidence,
-          self-doubt). Marks self-assess against the mark scheme — the SIMULATED overlay updates
-          from that, exactly as the governed pipeline would from server-marked evidence.
+          self-doubt). Marks self-assess against the mark scheme — your account&apos;s progress
+          document updates from that and follows you across devices.
         </p>
       </div>
 
-      <SimulatedBanner>
-        Attempt results update a <strong>SIMULATED</strong> mastery overlay in this browser session.
-        No canonical learner state is touched; with <span className="font-mono">core-api</span> mode
-        the same payload shape targets <span className="font-mono">/api/v1/attempts/structured</span>.
-      </SimulatedBanner>
+      <AccountBanner>
+        Attempt results update your <strong>account</strong> progress document (self-assessed
+        marks). No canonical learner state is touched.
+      </AccountBanner>
 
       <div className="grid gap-4 lg:grid-cols-[1fr_280px]">
         <Card>
@@ -227,7 +227,7 @@ export function PracticeClient({ topics }: Props) {
 
         <Card className="h-fit">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">Session overlay (SIMULATED)</CardTitle>
+            <CardTitle className="text-sm">Session progress (account)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 text-sm">
             <p className="text-2xl font-bold tabular-nums">

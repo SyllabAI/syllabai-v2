@@ -4,20 +4,17 @@
  * the CD-A adapter wake-up put on GET /api/v1/teacher/tests/weakness-options
  * (policy "test-builder-weakness/v1").
  *
- * Two sources, ONE honest lane:
+ * ONE source, ONE honest lane (T-AUDIT-TIER1):
  *   live   — WeaknessOptionsView (server class evidence). Server ORDER is
  *            law (meanMastery asc, nulls last → active-misconception
  *            learners desc → code); this layer NEVER re-sorts. meanMastery
  *            null means unmeasured and stays null (the honesty law of the
  *            wire — no client-side fabrication of a number). Reasons are
  *            the three frozen literals; no client-side re-derivation.
- *   sample — the demo-era derivation over the committed course bundle's
- *            SAMPLE cohort (class-sim), moved here VERBATIM from the
- *            client (band weak/critical → LOW_MEAN_MASTERY; misconception
- *            probability >= 0.3 → ACTIVE_MISCONCEPTION_PRESENT; sort by
- *            meanMastery asc). It stays as the labeled fallback for
- *            courses where the live view is unresolvable or unavailable —
- *            never silently mixed with live rows.
+ *   The demo-era SAMPLE fallback (a derivation over class-sim's seeded
+ *   cohort) is REMOVED with the browser-persistence purge: when the live
+ *   view is unresolvable or unavailable the lane is honestly EMPTY —
+ *   never a fabricated cohort row.
  *
  * slug→rootId resolution (the CD-A disclosure gap): the ONLY bridge of
  * record is the hub course registry's explicit `curriculumCode`
@@ -27,7 +24,6 @@
  * and the lane falls back — fail-closed, never guessed, never fuzzy-matched.
  */
 
-import type { ClassOverview } from "./class-sim";
 import type { SubjectView, WeaknessOptionsView } from "@/lib/types";
 
 /** The three frozen reason literals (frozen TestBuilderService.java:212-218,
@@ -41,7 +37,7 @@ export const WEAKNESS_REASON_LABELS: Record<string, string> = {
 };
 
 /** One selectable weak-area row, source-tagged. `key` doubles as the row
- *  identity and the selection token (sample: the bundle subtopic code the
+ *  identity and the selection token (the bundle subtopic code was the
  *  hub assembler consumes; live: the knowledge topicNodeId the server
  *  preview consumes — the two vocabularies never mix because a lane renders
  *  exactly one source at a time). */
@@ -50,20 +46,21 @@ export interface WeakLaneTarget {
   code: string;
   title: string;
   reasons: string[];
-  /** live: null = unmeasured (honest); sample: always a number. */
+  /** null = unmeasured (the honest wire law). */
   meanMastery: number | null;
-  /** live only (wire masteryBand, nullable); sample null. */
+  /** wire masteryBand, nullable. */
   masteryBand: string | null;
   /** live: learners with an active misconception on the topic;
-   *  sample: the SAMPLE misconception inventory size (different semantic —
+   *  the learners-with-active-misconception count (never an inventory size —
    *  the unit is carried so the UI never calls inventory "learners"). */
   misconceptionCount: number;
-  misconceptionUnit: "learners" | "tracked";
+  /** live rows count LEARNERS (the wire semantic, never an inventory). */
+  misconceptionUnit: "learners";
   /** live: servableQuestions (validated, assembly-eligible);
-   *  sample: validated question count in the bundle. */
+   *  validated question count on the wire. */
   questionCount: number;
   /** live only: prerequisite codes blocking the topic (evidence for
-   *  BLOCKED_BY_WEAK_PREREQUISITE); sample []. */
+   *  BLOCKED_BY_WEAK_PREREQUISITE). */
   blockedBy: string[];
 }
 
@@ -139,40 +136,4 @@ export function liveWeakLane(view: WeaknessOptionsView): WeakLaneLive {
     learnersWithEvidence: view.learnersWithEvidence,
     rootId: view.rootId,
   };
-}
-
-/**
- * The SAMPLE lane — the demo-era client derivation moved VERBATIM from
- * test-builder-client.tsx (the CD-A disclosure's "demo-era client-side
- * SAMPLE thresholds"). Thresholds are the demo's, not the wire's: band
- * weak/critical → LOW_MEAN_MASTERY, misconception probability >= 0.3 →
- * ACTIVE_MISCONCEPTION_PRESENT, ordered by meanMastery ascending. The UI
- * must label this source as demo data — it is cohort simulation, not class
- * evidence.
- */
-export function sampleWeakTargets(cls: ClassOverview): WeakLaneTarget[] {
-  const out: WeakLaneTarget[] = [];
-  for (const section of cls.sections) {
-    for (const sub of section.subtopics) {
-      const reasons: string[] = [];
-      if (sub.band === "weak" || sub.band === "critical") reasons.push("LOW_MEAN_MASTERY");
-      if (sub.misconceptions.some((m) => m.probability >= 0.3))
-        reasons.push("ACTIVE_MISCONCEPTION_PRESENT");
-      if (reasons.length > 0) {
-        out.push({
-          key: sub.code,
-          code: sub.code,
-          title: sub.title,
-          reasons,
-          meanMastery: sub.meanMastery,
-          masteryBand: null,
-          misconceptionCount: sub.misconceptions.length,
-          misconceptionUnit: "tracked",
-          questionCount: sub.questionCount,
-          blockedBy: [],
-        });
-      }
-    }
-  }
-  return out.sort((a, b) => (a.meanMastery ?? 0) - (b.meanMastery ?? 0));
 }

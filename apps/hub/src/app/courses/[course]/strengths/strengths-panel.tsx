@@ -4,7 +4,7 @@
  * F-184 — the decay-driven strength surface (Kognity dossier v1.1 Deep Dive
  * D §8.3 law 3 + §8.5 row 3; prereg docs/F184-DECAY-STRENGTH-BUILD-PLAN.md).
  *
- * REPLACES the engagement-coupled overlay panel (the localStorage SIMULATED
+ * REPLACES the engagement-coupled overlay panel (the retired localStorage SIMULATED
  * posture whose "% engaged" fill was the named anti-pattern of opening law
  * S3): this tab now renders ONE truth — the server's strength projection
  * over the learner's drill evidence lane (GET /drill/strengths, read-only).

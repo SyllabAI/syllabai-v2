@@ -11,7 +11,7 @@
  * event rows (ai_mark_events / attempts / revision_note_viewed — see
  * apps/api/src/services/learner/progress-rollup.ts). For signed-out
  * visitors (or any fetch failure) this hook returns null and the callers
- * fall back to the browser-local SIMULATED overlay, whose labels remain
+ * fall back to the account-backed progress document, whose labels remain
  * the of-record demo posture — the fallback is a disclosed posture, never
  * a silent second truth.
  *
@@ -95,7 +95,7 @@ export function useCourseProjection(
     if (!courseSlug) return;
     if (cache.has(courseSlug)) return; // the derivation above already serves it
     if (typeof window === "undefined") return;
-    if (!getToken()) return; // signed out: the SIMULATED overlay posture of record
+    if (!getToken()) return; // signed out: the account progress document posture of record
     let cancelled = false;
     void (async () => {
       try {

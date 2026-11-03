@@ -15,7 +15,6 @@ import {
   WEAKNESS_REASON_LABELS,
   liveWeakLane,
   resolveRootIdForCourse,
-  sampleWeakTargets,
 } from "./weakness-lane";
 import type { ClassOverview } from "./class-sim";
 import type { SubjectView, WeaknessOptionsView } from "@/lib/types";
@@ -200,91 +199,5 @@ describe("liveWeakLane", () => {
       "BLOCKED_BY_WEAK_PREREQUISITE",
       "LOW_MEAN_MASTERY",
     ]);
-  });
-});
-
-// ── sampleWeakTargets — the demo derivation, VERBATIM ──────────────────────
-
-function sampleSub(overrides: Partial<ClassOverview["sections"][number]["subtopics"][number]>) {
-  return {
-    code: "SUB",
-    label: "Sub",
-    title: "A subtopic",
-    sectionCode: "S1",
-    sectionTitle: "Section one",
-    setSlugs: [],
-    meanMastery: 0.5,
-    proficientPct: 0,
-    developingPct: 0,
-    strugglingPct: 0,
-    band: "developing" as const,
-    misconceptions: [],
-    hasSimEvidence: false,
-    anchorMean: null,
-    questionCount: 3,
-    totalMarks: 12,
-    ...overrides,
-  };
-}
-
-describe("sampleWeakTargets (the labeled demo fallback)", () => {
-  const cls = {
-    sections: [
-      {
-        code: "S1",
-        title: "Section one",
-        subtopics: [
-          // weak band + 1 misconception over threshold → both reasons
-          sampleSub({
-            code: "A",
-            title: "Weak + misconceptions",
-            band: "weak",
-            meanMastery: 0.35,
-            misconceptions: [{ code: "M1", title: "m", probability: 0.4, evidenceCount: 3 }],
-          }),
-          // critical band, no misconceptions → LOW_MEAN_MASTERY only
-          sampleSub({ code: "B", title: "Critical", band: "critical", meanMastery: 0.2 }),
-          // developing band but a >= 0.3 probability misconception → ACTIVE only
-          sampleSub({
-            code: "C",
-            title: "Misconception only",
-            band: "developing",
-            meanMastery: 0.6,
-            misconceptions: [{ code: "M2", title: "m", probability: 0.3, evidenceCount: 1 }],
-          }),
-          // healthy → absent
-          sampleSub({ code: "D", title: "Fine", band: "good", meanMastery: 0.8 }),
-          // sub-threshold misconception (demo threshold is >= 0.3, 0.29 stays out)
-          sampleSub({
-            code: "E",
-            title: "Below threshold",
-            band: "developing",
-            meanMastery: 0.55,
-            misconceptions: [{ code: "M3", title: "m", probability: 0.29, evidenceCount: 1 }],
-          }),
-        ],
-      },
-    ],
-  } as unknown as ClassOverview;
-
-  test("thresholds verbatim: weak/critical band → LOW_MEAN_MASTERY; misconception probability >= 0.3 → ACTIVE_MISCONCEPTION_PRESENT; healthy + sub-threshold absent", () => {
-    const targets = sampleWeakTargets(cls);
-    expect(targets.map((t) => t.code)).toEqual(["B", "A", "C"]);
-    const byCode = new Map(targets.map((t) => [t.code, t]));
-    expect(byCode.get("A")!.reasons).toEqual(["LOW_MEAN_MASTERY", "ACTIVE_MISCONCEPTION_PRESENT"]);
-    expect(byCode.get("B")!.reasons).toEqual(["LOW_MEAN_MASTERY"]);
-    expect(byCode.get("C")!.reasons).toEqual(["ACTIVE_MISCONCEPTION_PRESENT"]);
-  });
-
-  test("ordering verbatim: meanMastery ascending; selection token = bundle subtopic code; sample semantics tagged (masteryBand null, unit tracked, blockedBy empty)", () => {
-    const targets = sampleWeakTargets(cls);
-    expect(targets.map((t) => t.meanMastery)).toEqual([0.2, 0.35, 0.6]);
-    const a = targets.find((t) => t.code === "A")!;
-    expect(a.key).toBe("A");
-    expect(a.masteryBand).toBeNull();
-    expect(a.misconceptionUnit).toBe("tracked");
-    expect(a.misconceptionCount).toBe(1);
-    expect(a.blockedBy).toEqual([]);
-    expect(a.questionCount).toBe(3);
   });
 });

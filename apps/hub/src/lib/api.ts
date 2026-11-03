@@ -142,6 +142,8 @@ import type {
   ReviewCard,
   SessionHistoryItem,
   TeachSession,
+  WorkspaceDoc,
+  WorkspaceDocList,
 } from "@syllabai/contracts";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "";
@@ -865,6 +867,14 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // /content/books paths (shelf + per-book chapters); /content/documents
   // and /content/question-assets keep their own rows.
   "/api/v1/content/books",
+  // T-AUDIT-TIER1 (r0) — the workspace-document plane: the account-backed
+  // persistence envelope over `user_documents` (v2-native, no core analogue
+  // to golden-verify — the teach-me precedent: gated by the behavioural
+  // fixture suite, test/workspace-docs). NARROW form: the prefix is exactly
+  // the /api/v1/me/documents family (list / get / put / delete);
+  // startsWith capture is safe — no sibling /api/v1/me/** path exists on
+  // either side (grep-verified at the flip commit).
+  "/api/v1/me/documents",
 ];
 
 /**
@@ -1776,6 +1786,25 @@ export const api = {
     request<MyCoursesView>("/api/v1/learners/me/courses", {
       method: "PUT",
       body: JSON.stringify({ slugs }),
+    }),
+
+  // ── workspace documents (T-AUDIT-TIER1) — the account-backed persistence
+  // envelope for the hub's client workspace stores (progress overlay, mock
+  // results, last-opened, deck sessions, guided-flow, teacher
+  // coverage/tests/reviews/drafts/classes, tutor/assistant/CLA transcripts).
+  // lib/account-docs.ts is the ONLY caller; keys ride the contracts
+  // workspaceDocKeySchema allow-list (an unknown key is a server 400).
+  workspaceDocs: () => request<WorkspaceDocList>("/api/v1/me/documents"),
+
+  putWorkspaceDoc: (key: string, value: unknown) =>
+    request<WorkspaceDoc>(`/api/v1/me/documents/${encodeURIComponent(key)}`, {
+      method: "PUT",
+      body: JSON.stringify({ value }),
+    }),
+
+  deleteWorkspaceDoc: (key: string) =>
+    request<void>(`/api/v1/me/documents/${encodeURIComponent(key)}`, {
+      method: "DELETE",
     }),
 
   // Attempt history (Review Hub minimal slice) — read-only view over the

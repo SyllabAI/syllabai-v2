@@ -25,15 +25,15 @@ import { loadContentJson, loadContentMapJson, loadKgDataJson } from "@/lib/corpu
  *                           only reference points the renderer actually has)
  *                           + the curriculum code used as the "4CH1-" style
  *                           prefix on some bundles' specPointCodes
- *   - concept-graph.json  → KG phase 3: MISCONCEPTION nodes (SME/mark-scheme
+ *   - concept-graph.json  → KG phase 3 join: MISCONCEPTION nodes (SME/mark-scheme
  *                           provenance) joined to spec points via their
  *                           MISCONCEPTION_OF / WRONG_ANSWER_PATTERN edges into
- *                           CONCEPT nodes (which carry the specPoints)
- *   - learner-sim.json    → the seeded demo learner's misconception states
- *                           (probability / active / evidenceCount) — SIMULATED,
- *                           deterministic; only courses carrying BOTH a corpus
- *                           and sim states produce entries, everything else
- *                           gets an honest empty list
+ *                           CONCEPT nodes (which carry the specPoints) — the
+ *                           MISCONCEPTION WATCH list itself is RETIRED with
+ *                           T-AUDIT-TIER1: the seeded demo learner
+ *                           (learner-sim.json) never served again, so
+ *                           `misconceptions` is ALWAYS the honest empty list
+ *                           until a measured misconception source exists
  *
  * Codes only — no question text, note bodies or answers cross this boundary.
  * Responses are cached in-process; the bundles are immutable between deploys.
@@ -94,8 +94,10 @@ interface LearnerBridgePayload {
   /** note id → display title (same notes.json read as noteCodes) —
    *  lets surfaces link "the note covering this point" by name. */
   noteTitles: Record<string, string>;
+  /** ALWAYS [] — the seeded sim learner is retired (T-AUDIT-TIER1); the
+   *  shape stays for the future measured misconception source. */
   misconceptions: BridgeMisconception[];
-  /** sim-learner disclaimer for drawer labelling — null when no states exist */
+  /** always null with the sim learner retired (drawer labelling seam) */
   misconceptionDisclaimer: string | null;
   /** HUB-DASH-CORE (P1, operator trace 1a0ec29c8c8cfb71): additive join —
    *  full sub-topic code ("4CH1-S1-a") → the first exam-questions topic
@@ -249,79 +251,12 @@ export async function GET(request: Request) {
     }
   }
 
-  // ── misconceptions (KG phase 3) — corpus content × sim-learner state ──
-  interface GraphNode {
-    code?: string;
-    family?: string;
-    title?: string;
-    aliases?: string[];
-    summary?: string | null;
-    specPoints?: string[];
-  }
-  interface GraphEdge {
-    source?: string;
-    target?: string;
-    relation?: string;
-  }
-  interface SimState {
-    misconceptionNodeId?: string;
-    probability?: number;
-    active?: boolean;
-    evidenceCount?: number;
-  }
-  interface SimLearner {
-    disclaimer?: string;
-    misconceptionStates?: SimState[];
-  }
-  const graph = await safeReadContent<{ nodes?: GraphNode[]; edges?: GraphEdge[] }>(
-    `${slug}/concept-graph.json`,
-  );
-  const sim = await safeReadContent<SimLearner>(
-    `${slug}/learner-sim.json`,
-  );
-  const misNodes = new Map<string, GraphNode>();
-  const conceptPoints = new Map<string, string[]>();
-  for (const node of graph?.nodes ?? []) {
-    if (!node.code) continue;
-    if (node.family === "MISCONCEPTION") misNodes.set(node.code, node);
-    else if (node.family === "CONCEPT") conceptPoints.set(node.code, node.specPoints ?? []);
-  }
-  // MISCONCEPTION_OF / WRONG_ANSWER_PATTERN edges into concepts that carry
-  // spec points — the corpus's own mapping, nothing inferred here
-  const pointsByMis = new Map<string, Set<string>>();
-  for (const edge of graph?.edges ?? []) {
-    if (!edge.source || !misNodes.has(edge.source)) continue;
-    if (edge.relation !== "MISCONCEPTION_OF" && edge.relation !== "WRONG_ANSWER_PATTERN") continue;
-    const pts = edge.target ? conceptPoints.get(edge.target) : undefined;
-    if (!pts?.length) continue;
-    const set = pointsByMis.get(edge.source) ?? new Set<string>();
-    pts.forEach((p) => set.add(p));
-    pointsByMis.set(edge.source, set);
-  }
+  // ── misconceptions (KG phase 3) — RETIRED with the sim learner ──
+  // T-AUDIT-TIER1: learner-sim.json (the seeded demo learner's fabricated
+  // misconception states) is no longer read and never reaches the wire.
+  // `misconceptions` is the honest empty list; the concept-graph join
+  // plumbing above this band stays available for a future MEASURED source.
   const misconceptions: BridgeMisconception[] = [];
-  for (const state of sim?.misconceptionStates ?? []) {
-    const id = state.misconceptionNodeId ?? "";
-    const node = misNodes.get(id);
-    const points = [...(pointsByMis.get(id) ?? [])];
-    if (!node || !node.title || points.length === 0) continue;
-    const rawLabel = node.aliases?.[0] ?? node.title;
-    misconceptions.push({
-      id,
-      title: node.title,
-      label: rawLabel.length > 64 ? `${rawLabel.slice(0, 63)}\u2026` : rawLabel,
-      summary: node.summary ?? null,
-      points,
-      probability: Math.min(1, Math.max(0, state.probability ?? 0)),
-      active: state.active ?? false,
-      evidenceCount: Math.max(0, state.evidenceCount ?? 0),
-    });
-  }
-  misconceptions.sort(
-    (a, b) =>
-      Number(b.active) - Number(a.active) ||
-      b.probability - a.probability ||
-      a.id.localeCompare(b.id),
-  );
 
   const payload: LearnerBridgePayload = {
     course: slug,
@@ -335,7 +270,7 @@ export async function GET(request: Request) {
     pointTexts,
     noteTitles,
     misconceptions,
-    misconceptionDisclaimer: misconceptions.length ? (sim?.disclaimer ?? null) : null,
+    misconceptionDisclaimer: null,
   };
 
   // HUB-DASH-CORE (P1, operator trace 1a0ec29c8c8cfb71): publish the

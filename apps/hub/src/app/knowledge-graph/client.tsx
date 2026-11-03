@@ -21,7 +21,7 @@
  * the counts chip shows the live data path. Learner state is pushed IN over
  * postMessage (syllabai-kg:learner) — always, once resolved, so the renderer's
  * embedded sample map can never resurface; the payload carries a provenance
- * flag so the renderer's legend/peek text stays honest (measured vs simulated
+ * flag so the renderer's legend/peek text stays honest (measured vs account
  * vs unavailable).
  */
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -199,7 +199,7 @@ function KnowledgeGraphCourse({
 
   // learner state (KG phases 1 + 2): the CORE model when the course is the
   // pilot and the learner is signed in (real attempts, real decay, real
-  // review queue — ADR-029 tranche 4), else the simulated browser-local
+  // review queue — ADR-029 tranche 4), else the account-backed self-report
   // derivation. `overlay` is pushed into the renderer's dormant
   // learner-state engine over postMessage, `drawer` feeds the My State /
   // History sheet, `source` keeps the provenance honest.

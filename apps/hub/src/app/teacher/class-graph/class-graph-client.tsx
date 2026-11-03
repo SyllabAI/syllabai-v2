@@ -172,8 +172,8 @@ export function ClassGraphClient({
           </Badge>
         )}
         <span className="ml-auto text-[11px] text-muted-foreground">
-          SAMPLE cohort — simulated evidence generated deterministically for the demo; real
-          analytics need accounts + server-side attempts
+          Topology + your coverage only — no cohort evidence is invented here; real class
+          analytics live in the Classes lane
         </span>
       </div>
 
@@ -197,7 +197,10 @@ export function ClassGraphClient({
               <CardContent className="p-4">
                 <p className="text-xs text-muted-foreground">Class mean mastery</p>
                 <p className="mt-1 text-2xl font-semibold tabular-nums">
-                  {(data.class.classMean * 100).toFixed(0)}%
+                  {data.class.classMean === null ? "—" : `${(data.class.classMean * 100).toFixed(0)}%`}
+                </p>
+                <p className="text-[10px] text-muted-foreground">
+                  no cohort evidence — real analytics need server-side attempts
                 </p>
               </CardContent>
             </Card>
@@ -231,15 +234,15 @@ export function ClassGraphClient({
             </Card>
             <Card className="py-0">
               <CardContent className="p-4">
-                <p className="text-xs text-muted-foreground">Sim-anchored areas</p>
+                <p className="text-xs text-muted-foreground">Cohort evidence</p>
                 <p className="mt-1 text-2xl font-semibold tabular-nums">
-                  {data.class.anchoredSubtopics}
+                  0
                   <span className="text-sm font-normal text-muted-foreground">
                     /{subtopicList.length}
                   </span>
                 </p>
                 <p className="text-[10px] text-muted-foreground">
-                  rest is seeded SAMPLE evidence
+                  none measured — no learner evidence is fabricated in this lens
                 </p>
               </CardContent>
             </Card>
@@ -357,16 +360,20 @@ function SubtopicRow({
           </span>
         </span>
         <span className="w-12 shrink-0 text-right text-xs font-medium tabular-nums">
-          {(sub.meanMastery * 100).toFixed(0)}%
+          {sub.meanMastery === null ? "—" : `${(sub.meanMastery * 100).toFixed(0)}%`}
         </span>
 
         <span
           className={cn(
             "shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-medium",
-            isTaught ? BAND_CLASS[sub.band] : "border-border bg-background text-muted-foreground",
+            !isTaught
+              ? "border-border bg-background text-muted-foreground"
+              : sub.band
+                ? BAND_CLASS[sub.band]
+                : "border-border bg-muted text-muted-foreground",
           )}
         >
-          {BAND_LABEL[sub.band]}
+          {sub.band ? BAND_LABEL[sub.band] : "not measured"}
         </span>
 
         {sub.misconceptions.length > 0 && (
@@ -420,9 +427,7 @@ function SubtopicRow({
                 <span className={isTaught ? "font-medium text-foreground" : ""}>
                   {isTaught ? "TAUGHT" : "NOT_TAUGHT"}
                 </span>
-                {sub.hasSimEvidence
-                  ? " · anchored to the /learner corpus sim"
-                  : " · seeded SAMPLE evidence"}
+                · no cohort evidence (real analytics need server-side attempts)
               </p>
             </div>
 

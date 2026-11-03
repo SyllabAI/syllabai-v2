@@ -9,18 +9,18 @@
  *        eyebrow "Edexcel · {level}" · subject name · Last viewed badge ·
  *        "Continue revising" · per-resource rows with corpus counts AND
  *        live progress % (SME ProgressBarGroup parity) computed from the
- *        browser-local activity overlay (notes read, questions attempted,
- *        flashcards rated) — real activity, honestly 0% before you start.
+ *        ACCOUNT-BACKED progress documents (notes read, questions attempted,
+ *        flashcards rated — T-AUDIT-TIER1) — real activity, honestly 0%
+ *        before you start, following the account across devices.
  *        On the pilot card, signed-in learners also get an ACCOUNT strip
  *        (course-stats contract, ADR-029 tranche 4.11): full-trail coverage
  *        from the core account — attempts volume + distinct questions /
- *        notes / cards — shown as its own honest element BESIDE the device
- *        rows, never replacing them (self-marked answers and pre-account
- *        activity are device-local by design; core counts can only be a
- *        subset of what this device shows).
+ *        notes / cards — shown as its own honest element beside the
+ *        self-report rows (core counts measure the marked-attempt trail;
+ *        self-report covers the rest).
  *   3. Next best actions — ranked advice from the learner's own evidence
- *        (lib/next-best-actions.ts): misconception watch, review-due topics,
- *        problem-question retries, low-mastery practice, note coverage
+ *        (lib/next-best-actions.ts): review-due topics, problem-question
+ *        retries, low-mastery practice, note coverage
  *   4. "Got another course?" slot card (SME's trailing grid cell) — opens
  *        the cascading board → level → subject add-course overlay
  *   5. "Jump back in" — resume card from the last-opened store
@@ -533,13 +533,13 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
               strip's tooltip already contradicted). Mirrors the identity
               store's reactivity: login/logout rewrites it in place. */}
           {identity
-            ? "Your measured progress follows your account across devices — self-marked answers and reading history stay on this device."
-            : "Your progress is saved on this device."}
+            ? "Everything you do follows your account across devices — measured progress and self-marked work alike."
+            : "Sign in to keep your progress on your account — nothing is stored in this browser."}
         </p>
       </header>
 
       {/* ---- Review due (HUB-DASH-CORE P1-5): the retention loop's headline.
-          Account queue when the pilot's core path is live, the device's
+          Account queue when the pilot's core path is live, the account-backed
           Ebbinghaus derivation otherwise; renders nothing when nothing is due ---- */}
       <ReviewDueStrip courses={mySubjects} />
 

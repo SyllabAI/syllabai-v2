@@ -16,10 +16,12 @@
  *   - local path — everything else (signed out, other courses, core down):
  *     ranked learning advice derived from the learner's own browser-local
  *     evidence (marks, mastery, the forgetting-decay schedule and the
- *     SIMULATED misconception watch) via lib/next-best-actions.ts.
+ *     the retired SIMULATED misconception watch is gone — T-AUDIT-TIER1)
+ *     via lib/next-best-actions.ts.
  *
  * The UI never invents or rewords the evidence — reason lines carry the
- * derived numbers verbatim, misconception states keep their SIMULATED label
+ * derived numbers verbatim; the misconception watch renders only measured
+ * sources (the seeded sim learner is retired — T-AUDIT-TIER1)
  * (and, since P1-6, the local path ranks them below the learner's own
  * measured evidence), and the footer names the provenance of every row.
  */

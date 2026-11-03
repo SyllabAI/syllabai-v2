@@ -16,7 +16,7 @@
  *          mark tally the student enters themselves — either whole-paper or
  *          per-question rows (structure lazily auto-detected from the MS
  *          text on this device, honestly labelled, manual fallback). The
- *          result is saved to the local SIMULATED overlay (lib/mock-results.ts)
+ *          result is saved to the account-backed mock record (lib/mock-results.ts)
  *          and never any canonical store.
  */
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";

@@ -29,6 +29,10 @@ export function ProvenanceBadge({ tier }: { tier: string | null | undefined }) {
     HUMAN_VALIDATED: "border-success/30 bg-success/10 text-success",
     DEMO_DERIVED: "border-cat/30 bg-cat/10 text-cat",
     SIMULATED: "border-sim/30 bg-sim/10 text-sim",
+    /** the learner's own self-reported evidence, persisted to the ACCOUNT
+     *  (progress documents in user_documents — T-AUDIT-TIER1); real, but
+     *  distinct from the server-measured CORE_MEASURED model */
+    ACCOUNT: "border-success/30 bg-success/10 text-success",
     /** measured facts read live from the learner's syllabai-core account */
     CORE_MEASURED: "border-success/30 bg-success/10 text-success",
   };
@@ -48,12 +52,14 @@ export function SpecChip({ code }: { code: string }) {
   );
 }
 
-/** Persistent banner for simulated (non-governed) surfaces. */
-export function SimulatedBanner({ children }: { children: React.ReactNode }) {
+/** Persistent banner for account-persisted (non-canonical) surfaces — the
+ *  honest successor of the retired SIMULATED banner (T-AUDIT-TIER1: the
+ *  data is real, self-reported, and follows the account). */
+export function AccountBanner({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mb-4 flex items-start gap-2 rounded-md border border-sim/30 bg-sim/10 px-3 py-2 text-xs text-sim">
-      <Badge variant="outline" className="shrink-0 border-sim/40 text-[10px] text-sim">
-        SIMULATED
+    <div className="mb-4 flex items-start gap-2 rounded-md border border-success/30 bg-success/10 px-3 py-2 text-xs text-success">
+      <Badge variant="outline" className="shrink-0 border-success/40 text-[10px] text-success">
+        ACCOUNT
       </Badge>
       <p className="leading-relaxed">{children}</p>
     </div>

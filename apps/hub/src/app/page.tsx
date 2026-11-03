@@ -79,7 +79,7 @@ export default async function HubPage() {
       href: "/practice",
       icon: Zap,
       title: "Practice",
-      desc: "Part-level practice player with confidence/self-doubt telemetry feeding the SIMULATED overlay.",
+      desc: "Part-level practice player with confidence/self-doubt telemetry feeding your account's progress document.",
     },
     {
       href: "/tutor",
@@ -282,7 +282,7 @@ export default async function HubPage() {
               </span>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <ProvenanceBadge tier="SIMULATED" />
+              <ProvenanceBadge tier="ACCOUNT" />
               <span className="text-muted-foreground">
                 learner overlay — deterministic fiction, never a governed model
               </span>

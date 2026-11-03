@@ -88,7 +88,8 @@ export interface PointState {
   dueAt: number;
   /** revision notes mapped to this point (deep-linkable) */
   noteIds: string[];
-  /** active simulated misconception label — display only, never mastery */
+  /** active misconception label — display only, never mastery (measured
+   *  sources only; the seeded sim learner is retired, T-AUDIT-TIER1) */
   misconception: string | null;
   /** topic-derived mastery: the topic/unit whose skill down-propagated to this
    *  point (operator decision, trace 1a0ea567a157e70d) — null = direct point
@@ -455,9 +456,10 @@ export interface LearnerStateBundle {
   overlay: LearnerOverlayState | null;
   /** phase-2 drawer model — null while the bridge loads or failed */
   drawer: LearnerDrawerState | null;
-  /** where the model came from — core (real learner account) or simulated
-   *  (browser-local overlay, the demo default). Honest labels ride on it. */
-  source: "core" | "simulated";
+  /** where the model came from — core (the server-measured learner model)
+   *  or account (the learner's own self-report progress document — real,
+   *  account-persisted, T-AUDIT-TIER1). Honest labels ride on it. */
+  source: "core" | "account";
 }
 
 // ── core-backed model (ADR-029 tranche 4: the 4CH1 bridge) ──────────────
@@ -479,9 +481,9 @@ function coreBand(band: string | null | undefined): MasteryBand | null {
  * The pilot's REAL learner model, read from the learner's core account:
  * GET /state (skills + misconceptions + review queue), GET /knowledge-graph
  * (per-node codes → the spine join), GET /attempts (history events). When it
- * resolves, it REPLACES the simulated derivation — same overlay contract, same
+ * resolves, it REPLACES the account derivation — same overlay contract, same
  * drawer shapes, honest CORE provenance. Any negative (not the pilot, signed
- * out, backend down) falls back to the simulated path without a word of
+ * out, backend down) falls back to the account path without a word of
  * complaint.
  */
 function useCoreLearnerModel(course: string): CoreModelData | "off" | "loading" | null {
@@ -509,7 +511,7 @@ function useCoreLearnerModel(course: string): CoreModelData | "off" | "loading" 
           api.learnerAttempts(50),
         ]);
       } catch {
-        return "off"; // core unreachable — simulated path takes over silently
+        return "off"; // core unreachable — account path takes over silently
       }
 
       const now = Date.now();
@@ -872,7 +874,7 @@ function useCoreLearnerModel(course: string): CoreModelData | "off" | "loading" 
 /**
  * Live learner state for one course: the CORE model when the course is the
  * pilot and the learner is signed in (real attempts, real decay, real review
- * queue), else the simulated browser-local derivation. Both feed the same
+ * queue), else the account-backed self-report derivation. Both feed the same
  * overlay contract and drawer shapes — the graph paint and the drawer can
  * never disagree, and the source label keeps the honesty rule.
  */
@@ -936,7 +938,7 @@ export function useLearnerState(course: string): LearnerStateBundle {
       return {
         overlay: { entries: {}, stats: emptyStats, bridgeError: true },
         drawer: null,
-        source: "simulated" as const,
+        source: "account" as const,
       };
     }
     if (!bridge) return null;
@@ -944,7 +946,7 @@ export function useLearnerState(course: string): LearnerStateBundle {
     return {
       overlay: { entries: model.entries, stats: model.stats, bridgeError: false },
       drawer: buildDrawerState(progress, bridge, model, titles, now, course),
-      source: "simulated" as const,
+      source: "account" as const,
     };
   }, [progress, bridge, titles, failed, course]);
 
@@ -968,7 +970,7 @@ export function useLearnerState(course: string): LearnerStateBundle {
       ? { ...simResult, drawer: { ...simResult.drawer, cardReviews } }
       : simResult;
   }
-  return { overlay: null, drawer: null, source: "simulated" };
+  return { overlay: null, drawer: null, source: "account" };
 }
 
 // ── shared formatters ───────────────────────────────────────────────────

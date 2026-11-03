@@ -82,7 +82,7 @@ export default function ExperimentsPage() {
             without touching your UI.
           </p>
           <p>
-            3. Keep writes confined to the SIMULATED overlay; never mutate canonical semantics.
+            3. Keep writes confined to the workspace documents; never mutate canonical semantics.
           </p>
           <p>4. Delete it when the question is answered. Document the finding in the page footer.</p>
         </CardContent>

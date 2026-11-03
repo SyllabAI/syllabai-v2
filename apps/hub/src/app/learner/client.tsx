@@ -140,7 +140,7 @@ function Header({ live, courseCode }: { live: boolean; courseCode: string | null
       <h1 className="flex flex-wrap items-center gap-2 text-2xl font-bold tracking-tight">
         <User className="size-5 text-primary" aria-hidden />
         My Progress
-        <ProvenanceBadge tier={live ? "CORE_MEASURED" : "SIMULATED"} />
+        <ProvenanceBadge tier={live ? "CORE_MEASURED" : "ACCOUNT"} />
         <Badge variant="outline" className="font-mono text-[10px]">
           {courseCode ?? "4CH1"} · pilot
         </Badge>
@@ -148,7 +148,7 @@ function Header({ live, courseCode }: { live: boolean; courseCode: string | null
       <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
         {live
           ? "Measured live from your SyllabAI account — real attempts, Smart Mark evidence, Ebbinghaus decay and review scheduling computed on the backend. The same model paints the Knowledge Graph."
-          : "Derived from this browser's practice on the pilot course — a simulated, browser-local overlay that never writes to course data. Sign in on a bridge-eligible course to switch to the measured model."}
+          : "Derived from your account's progress on the pilot course — your own self-report evidence, persisted with your account. Sign in on a bridge-eligible course to switch to the measured model."}
       </p>
     </div>
   );

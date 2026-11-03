@@ -690,12 +690,12 @@ export function AssignmentsClient({
               </div>
 
               <fieldset className="space-y-1.5">
-                <legend className="text-xs font-medium">Target subtopics (from the class evidence)</legend>
+                <legend className="text-xs font-medium">Target subtopics (from the course topology)</legend>
                 <div className="max-h-72 space-y-1 overflow-y-auto rounded-md border p-2">
                   {loading && <p className="p-2 text-xs text-muted-foreground">Loading course…</p>}
                   {allSubtopics
                     .slice()
-                    .sort((a, b) => a.meanMastery - b.meanMastery)
+                    .sort((a, b) => (a.meanMastery ?? 1) - (b.meanMastery ?? 1))
                     .map((s) => (
                       <label
                         key={s.code}
@@ -715,7 +715,8 @@ export function AssignmentsClient({
                         <span className="font-mono text-[10px] text-muted-foreground">{s.code}</span>
                         <span className="min-w-0 flex-1 truncate">{s.title}</span>
                         <span className="tabular-nums text-muted-foreground">
-                          {(s.meanMastery * 100).toFixed(0)}% · {s.questionCount}q
+                          {s.meanMastery === null ? "not measured" : `${(s.meanMastery * 100).toFixed(0)}%`} ·{" "}
+                          {s.questionCount}q
                         </span>
                       </label>
                     ))}

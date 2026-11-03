@@ -12,7 +12,7 @@
  * recommendation output (the NextBestActionsCard's never-mixed law is
  * preserved — this card never ranks, never advises; it counts).
  *
- * Signed-out / fetch-failure → renders nothing (the SIMULATED overlay has
+ * Signed-out / fetch-failure → renders nothing (the account document has
  * no dashboard presence of record; the fallback posture is a
  * non-display here by design). One card per enrolled course — the hook
  * sits in a per-course COMPONENT (never in a loop; the rules-of-hooks law).

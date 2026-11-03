@@ -53,6 +53,7 @@ import { buildPaperRegionsRouters } from "./routes/paper-regions";
 import { buildPaperAwardsRouters } from "./routes/paper-awards";
 import { buildPaperMarkingRouters } from "./routes/paper-marking";
 import { buildLearnerPdfDrawingsRouters } from "./routes/learner/pdf-drawings"; // T-MG-INK-1 (r0) — the annotation-ink persistence plane (v2-native, additive; the T-SENECA-001 one-import-line precedent)
+import { buildWorkspaceDocsRouters } from "./routes/workspace-docs"; // T-AUDIT-TIER1 (r0) — the account-backed workspace document plane (v2-native, additive; the same one-import-line precedent)
 import { buildTestBuilderRouters } from "./routes/testbuilder";
 import { buildAnswerInputRouters } from "./routes/answer-input";
 import { buildTeacherMarkingRouters } from "./routes/teachermarking";
@@ -106,6 +107,7 @@ const paperRegions = buildPaperRegionsRouters();
 const paperAwards = buildPaperAwardsRouters();
 const paperMarking = buildPaperMarkingRouters();
 const learnerPdfDrawings = buildLearnerPdfDrawingsRouters();
+const workspaceDocs = buildWorkspaceDocsRouters(); // T-AUDIT-TIER1
 const testbuilder = buildTestBuilderRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
@@ -475,6 +477,17 @@ app.route("/api/v1/paper-marks", paperMarking.paperMarkingRoute);
 // app-level wiring per the T-MIG-010/020/021/030/031/032 disclosed-commit
 // precedent.
 app.route("/api/v1/learner/pdf-drawings", learnerPdfDrawings.pdfDrawingsRoute);
+
+// Workspace-document router (T-AUDIT-TIER1). V2-NATIVE surface (pdf-drawings
+// posture): the generic authenticated envelope over `user_documents` 0022
+// that carries the hub's client workspace stores (progress overlay, mock
+// results, last-opened, deck sessions, guided-flow, teacher
+// coverage/tests/reviews/drafts/classes, tutor/assistant/CLA transcripts)
+// into the account — the browser-persistence purge band. Keys are
+// app-pinned (contracts workspaceDocKeySchema); the owner rides the JWT
+// context; the router owns its 401 shell internally, so the /api/v1/*
+// fallback below stays the 404-after-auth path for NO router claimed.
+app.route("/api/v1/me/documents", workspaceDocs.workspaceDocsRoute);
 
 // Test-builder + answer-input routers (T-MIG-034 — Wave 3). Path parity with
 // the frozen core: TestBuilderController under /api/v1/teacher/tests (the

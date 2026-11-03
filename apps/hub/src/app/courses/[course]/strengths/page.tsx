@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 /**
  * F-184 — the decay-driven strength surface (Kognity dossier v1.1 Deep Dive
  * D §8.3 law 3 + §8.5 row 3; prereg docs/F184-DECAY-STRENGTH-BUILD-PLAN.md).
- * REPLACES the SIMULATED overlay prototype: the tab now renders the v2 API's
+ * REPLACES the retired SIMULATED overlay prototype: the tab now renders the v2 API's
  * read-only strength projection — per-spec-point bars driven by learner state
  * + computed decay (ADR-031: computed, never persisted), the bar honestly
  * falling as skills decay and doubling as the practice-now queue at decaying

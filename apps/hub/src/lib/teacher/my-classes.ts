@@ -7,13 +7,14 @@
  * then select subjects. Then inside there, all the tools and course
  * resources will exist.").
  *
- * A class is a browser-local container: { id, name, subjectSlugs[],
- * createdAt } — the exact demo-truth class the student's subject roster is
- * (lib/my-subjects.ts, same useSyncExternalStore pattern, same honesty):
- * no auth in the demo, so the roster persists in localStorage under a
- * versioned key and the UI copy says so. The LIVE core class entity
+ * A class is an ACCOUNT-backed container: { id, name, subjectSlugs[],
+ * createdAt } — the `teacher-classes` document in user_documents
+ * (T-AUDIT-TIER1; hydrated + written through by lib/account-docs.ts; same
+ * useSyncExternalStore pattern as lib/my-subjects.ts). Nothing
+ * teacher-shaped is written to the browser anymore: the workspace follows
+ * the teacher's account across devices. The LIVE core class entity
  * (RBAC rosters, /teacher/classes) is a different, database-backed concept
- * — the two never blur: the local class workspace links to the live roster
+ * — the two never blur: the class workspace links to the live roster
  * surface, it never impersonates it.
  *
  * Slugs are validated against the course registry at read time by the
@@ -21,8 +22,9 @@
  * my-subjects.
  */
 import { useCallback, useSyncExternalStore } from "react";
+import { readDoc, subscribeDocs, writeDoc } from "@/lib/account-docs";
 
-export const KEY = "syllabai-hub:teacher-classes.v1";
+export const KEY = "teacher-classes";
 export const MY_CLASSES_EVENT = "syllabai-hub:teacher-classes-changed";
 
 export interface TeacherClass {
@@ -38,9 +40,9 @@ const EMPTY: TeacherClass[] = [];
 
 function readClasses(): TeacherClass[] {
   try {
-    const raw = window.localStorage.getItem(KEY);
+    const raw = readDoc<unknown>(KEY);
     if (!raw) return EMPTY;
-    const parsed: unknown = JSON.parse(raw);
+    const parsed: unknown = raw;
     if (!Array.isArray(parsed)) return EMPTY;
     return parsed
       .filter(
@@ -78,11 +80,7 @@ function getServerSnapshot(): TeacherClass[] {
 }
 
 function writeClasses(classes: TeacherClass[]) {
-  try {
-    window.localStorage.setItem(KEY, JSON.stringify(classes));
-  } catch {
-    // storage full / private mode — the roster just won't persist
-  }
+  writeDoc(KEY, classes);
   window.dispatchEvent(new CustomEvent(MY_CLASSES_EVENT));
 }
 
@@ -166,3 +164,13 @@ export function useMyClasses(): MyClasses {
 
   return { classes, has, get, add, update, remove };
 }
+
+// account-docs → store bridge: server hydration (or a sign-out reset) lands
+// a NEW value → re-notify so consumers re-derive. The store's own writes
+// echo back with the SAME reference already stored — the snapshot identity
+// comparison in getSnapshot absorbs those (no loop, no re-render).
+subscribeDocs((key) => {
+  if (key === KEY && typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent(MY_CLASSES_EVENT));
+  }
+});

@@ -1,47 +1,31 @@
 /**
  * T-TEACH-008 — Test Builder access-scoping pins (operator ruling trace
  * 1a1609dc31d0b735): the taught filter, the landing-course law and the
- * per-course draft store with its legacy-v1 migration. The localStorage
- * surface is stubbed per test (the module reads `window.localStorage`
- * directly — same pattern family as the other hub lib pins).
+ * per-course draft store — now ACCOUNT-BACKED (T-AUDIT-TIER1: the
+ * `test-builder-drafts` document through lib/account-docs.ts; the
+ * localStorage surface is gone). The doc memory is seeded/cleared per test
+ * via the module's test seam (same pattern family as the other hub lib
+ * pins; no fetch, no network).
  */
 import { afterEach, describe, expect, test } from "bun:test";
 import {
-  LEGACY_DRAFT_KEY,
-  draftKeyFor,
+  DRAFTS_DOC_KEY,
   filterTaughtCourses,
   readBuilderDraft,
   resolveInitialCourse,
   writeBuilderDraft,
 } from "./test-builder-access";
+import {
+  __resetAccountDocsForTests,
+  __seedAccountDocsForTests,
+} from "@/lib/account-docs";
 import type { SwitchableCourse } from "./types";
 
-// ── a minimal localStorage stub (per-test isolation) ───────────────────────
-
-class MemStorage {
-  private m = new Map<string, string>();
-  getItem(k: string): string | null {
-    return this.m.has(k) ? this.m.get(k)! : null;
-  }
-  setItem(k: string, v: string): void {
-    this.m.set(k, String(v));
-  }
-  removeItem(k: string): void {
-    this.m.delete(k);
-  }
-}
-
-function installStorage(): MemStorage {
-  const stub = new MemStorage();
-  (globalThis as { window?: unknown }).window = { localStorage: stub };
-  return stub;
-}
-
 afterEach(() => {
-  (globalThis as { window?: unknown }).window = undefined;
+  __resetAccountDocsForTests();
 });
 
-// ── fixtures ───────────────────────────────────────────────────────────────
+// ── fixtures ───────────────────────────────────────────────────────────
 
 const COURSES: SwitchableCourse[] = [
   { slug: "igcse-chemistry-19", label: "Chemistry", code: "4CH1", level: "IGCSE" },
@@ -50,7 +34,7 @@ const COURSES: SwitchableCourse[] = [
   { slug: "ial-maths-18", label: "Mathematics", code: "WMA1", level: "IAL" },
 ];
 
-// ── the taught filter ──────────────────────────────────────────────────────
+// ── the taught filter ──────────────────────────────────────────────────
 
 describe("filterTaughtCourses (T-TEACH-008)", () => {
   test("intersection only — registry courses the teacher's classes vote for", () => {
@@ -75,7 +59,7 @@ describe("filterTaughtCourses (T-TEACH-008)", () => {
   });
 });
 
-// ── the landing-course law ─────────────────────────────────────────────────
+// ── the landing-course law ─────────────────────────────────────────────
 
 describe("resolveInitialCourse (T-TEACH-008)", () => {
   const taught = filterTaughtCourses(COURSES, new Set(["igcse-physics-19", "ial-maths-18"]));
@@ -95,17 +79,10 @@ describe("resolveInitialCourse (T-TEACH-008)", () => {
   });
 });
 
-// ── the per-course draft store ─────────────────────────────────────────────
+// ── the per-course draft store (account-backed) ────────────────────────
 
-describe("per-course draft store (T-TEACH-008)", () => {
-  test("keys are per-course", () => {
-    expect(draftKeyFor("igcse-chemistry-19")).toBe(
-      "syllabai.testBuilderDraft.v2.igcse-chemistry-19",
-    );
-  });
-
+describe("per-course draft store (T-TEACH-008 + T-AUDIT-TIER1)", () => {
   test("write→read roundtrip is course-scoped; clearing one course leaves the other", () => {
-    const store = installStorage();
     const a = { v: 1, course: "igcse-chemistry-19", testName: "Mole test" };
     const b = { v: 1, course: "ial-maths-18", testName: "Series test" };
     writeBuilderDraft("igcse-chemistry-19", a);
@@ -117,52 +94,42 @@ describe("per-course draft store (T-TEACH-008)", () => {
     writeBuilderDraft("igcse-chemistry-19", null);
     expect(readBuilderDraft("igcse-chemistry-19")).toBeNull();
     expect((readBuilderDraft("ial-maths-18") as typeof b).testName).toBe("Series test");
-    expect(store.getItem(draftKeyFor("igcse-chemistry-19"))).toBeNull();
+  });
+
+  test("the whole draft map lives under the ONE account doc key", () => {
+    writeBuilderDraft("igcse-chemistry-19", { v: 1, course: "igcse-chemistry-19" });
+    writeBuilderDraft("ial-maths-18", { v: 1, course: "ial-maths-18" });
+    // the doc carries the whole map — one PUT per burst, not per key
+    const seeded = readBuilderDraft("igcse-chemistry-19");
+    expect(seeded).not.toBeNull();
+    expect(Object.keys(readBuilderDraft("ial-maths-18") ?? {}).length).toBeGreaterThanOrEqual(0);
+    expect(DRAFTS_DOC_KEY).toBe("test-builder-drafts");
   });
 
   test("a draft stored under another course's key is invisible (identity law v+course)", () => {
-    installStorage();
     writeBuilderDraft("igcse-chemistry-19", { v: 1, course: "igcse-chemistry-19", x: 1 });
-    // the v2 key for physics holds a chemistry-course payload → refused
+    // the physics slot holds a chemistry-course payload → refused
     writeBuilderDraft("igcse-physics-19", { v: 1, course: "igcse-chemistry-19", x: 1 });
     expect(readBuilderDraft("igcse-physics-19")).toBeNull();
     expect(readBuilderDraft("igcse-chemistry-19")).not.toBeNull();
   });
 
-  test("legacy-v1 migration: adopting draft is copied to v2 and the single slot vacated", () => {
-    const store = installStorage();
-    const legacy = { v: 1, course: "igcse-chemistry-19", testName: "pre-separation work" };
-    store.setItem(LEGACY_DRAFT_KEY, JSON.stringify(legacy));
-
-    const d = readBuilderDraft("igcse-chemistry-19") as typeof legacy;
-    expect(d.testName).toBe("pre-separation work");
-    // adopted into the per-course key…
-    expect(JSON.parse(store.getItem(draftKeyFor("igcse-chemistry-19"))!)).toEqual(legacy);
-    // …and the single slot is vacated (one-time migration)
-    expect(store.getItem(LEGACY_DRAFT_KEY)).toBeNull();
+  test("a server-hydrated doc feeds the draft store (the seed seam)", () => {
+    __seedAccountDocsForTests({
+      [DRAFTS_DOC_KEY]: {
+        "ial-maths-18": { v: 1, course: "ial-maths-18", testName: "from the account" },
+      },
+    });
+    const d = readBuilderDraft("ial-maths-18") as { testName?: string };
+    expect(d.testName).toBe("from the account");
+    expect(readBuilderDraft("igcse-chemistry-19")).toBeNull();
   });
 
-  test("legacy-v1 draft of ANOTHER course is left untouched for its own visit", () => {
-    const store = installStorage();
-    const legacy = { v: 1, course: "ial-maths-18", testName: "maths work" };
-    store.setItem(LEGACY_DRAFT_KEY, JSON.stringify(legacy));
-
+  test("corrupt map shapes degrade to no draft (never throw)", () => {
+    __seedAccountDocsForTests({ [DRAFTS_DOC_KEY]: "not-an-object" });
     expect(readBuilderDraft("igcse-chemistry-19")).toBeNull();
-    // untouched: chemistry's visit must not consume maths's draft
-    expect(store.getItem(LEGACY_DRAFT_KEY)).toEqual(JSON.stringify(legacy));
-    expect(store.getItem(draftKeyFor("ial-maths-18"))).toBeNull();
-
-    // maths's own visit adopts it
-    const d = readBuilderDraft("ial-maths-18") as typeof legacy;
-    expect(d.testName).toBe("maths work");
-    expect(store.getItem(LEGACY_DRAFT_KEY)).toBeNull();
-  });
-
-  test("corrupt payloads degrade to no draft (never throw)", () => {
-    const store = installStorage();
-    store.setItem(draftKeyFor("igcse-chemistry-19"), "{not json");
-    expect(readBuilderDraft("igcse-chemistry-19")).toBeNull();
-    store.setItem(LEGACY_DRAFT_KEY, "{also not json");
+    __seedAccountDocsForTests({ [DRAFTS_DOC_KEY]: { "igcse-chemistry-19": { v: 2, course: "igcse-chemistry-19" } } });
+    // v!==1 → the identity law refuses the payload
     expect(readBuilderDraft("igcse-chemistry-19")).toBeNull();
   });
 });

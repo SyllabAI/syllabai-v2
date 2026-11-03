@@ -1,32 +1,40 @@
 "use client";
 
 /**
- * Teacher-side client stores (TEACHER-2) — versioned localStorage, same
- * pattern family as my-subjects.ts / identity.ts.
+ * Teacher-side client stores (TEACHER-2) — ACCOUNT-BACKED since T-AUDIT-TIER1
+ * (the teaching-coverage / saved-tests / content-reviews documents in
+ * user_documents, hydrated + written through by lib/account-docs.ts; same
+ * pattern family as the other account stores). Nothing teacher-shaped is
+ * written to the browser anymore: the workspace follows the teacher's
+ * account across devices.
  *
- *   syllabai.teachingCoverage.v1 — per-course teaching-coverage overlay
+ *   teaching-coverage — per-course teaching-coverage overlay
  *     { [courseSlug]: string[] } (taught subtopic codes). TEACHER_ARCHITECTURE
  *     §13.4: coverage is a TEACHER-side overlay, semantically separate from
  *     learner mastery — NOT_TAUGHT means "no coverage recorded", never "weak".
  *
- *   syllabai.savedTests.v1 — Test Builder saves (SME reference: reuse/edit):
+ *   saved-tests — Test Builder saves (SME reference: reuse/edit):
  *     { id, name, course, subtopics, targetMarks, maxQuestions, createdAt }
+ *
+ *   content-reviews — teacher verdicts on AI-authored content (Phase 2
+ *     validation queue): { resourceId, verdict, comment, ... }
  */
 
 import { useCallback, useSyncExternalStore } from "react";
+import { readDoc, subscribeDocs, writeDoc } from "@/lib/account-docs";
 
 // ── teaching coverage ─────────────────────────────────────────────────────
 
-const COVERAGE_KEY = "syllabai.teachingCoverage.v1";
+const COVERAGE_KEY = "teaching-coverage";
 const COVERAGE_EVENT = "syllabai:teaching-coverage-changed";
 
 type CoverageMap = Record<string, string[]>;
 
 function readCoverage(): CoverageMap {
   try {
-    const raw = window.localStorage.getItem(COVERAGE_KEY);
+    const raw = readDoc<unknown>(COVERAGE_KEY);
     if (!raw) return {};
-    const parsed = JSON.parse(raw) as CoverageMap;
+    const parsed = raw as CoverageMap;
     if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
     const out: CoverageMap = {};
     for (const [k, v] of Object.entries(parsed)) {
@@ -62,13 +70,10 @@ function coverageFor(course: string): string[] {
 }
 
 function writeCoverage(map: CoverageMap) {
-  try {
-    window.localStorage.setItem(COVERAGE_KEY, JSON.stringify(map));
-  } catch {
-    // private mode — coverage just won't persist
-  }
+  writeDoc(COVERAGE_KEY, map);
   window.dispatchEvent(new CustomEvent(COVERAGE_EVENT));
 }
+
 
 export function useTeachingCoverage(course: string) {
   const subscribe = useCallback(
@@ -118,15 +123,15 @@ export interface SavedTest {
   createdAt: string;
 }
 
-const TESTS_KEY = "syllabai.savedTests.v1";
+const TESTS_KEY = "saved-tests";
 const TESTS_EVENT = "syllabai:saved-tests-changed";
 const TESTS_EMPTY: SavedTest[] = [];
 
 function readTests(): SavedTest[] {
   try {
-    const raw = window.localStorage.getItem(TESTS_KEY);
+    const raw = readDoc<unknown>(TESTS_KEY);
     if (!raw) return TESTS_EMPTY;
-    const parsed = JSON.parse(raw) as SavedTest[];
+    const parsed = raw as SavedTest[];
     if (!Array.isArray(parsed)) return TESTS_EMPTY;
     return parsed.filter(
       (t) => t && typeof t.id === "string" && Array.isArray(t.subtopics),
@@ -147,11 +152,7 @@ function testsSnapshotGet(): SavedTest[] {
 }
 
 function writeTests(tests: SavedTest[]) {
-  try {
-    window.localStorage.setItem(TESTS_KEY, JSON.stringify(tests));
-  } catch {
-    // ignore
-  }
+  writeDoc(TESTS_KEY, tests);
   window.dispatchEvent(new CustomEvent(TESTS_EVENT));
 }
 
@@ -207,15 +208,15 @@ export interface ContentReview {
   createdAt: string;
 }
 
-const REVIEWS_KEY = "syllabai.contentReviews.v1";
+const REVIEWS_KEY = "content-reviews";
 const REVIEWS_EVENT = "syllabai:content-reviews-changed";
 const REVIEWS_EMPTY: ContentReview[] = [];
 
 function readReviews(): ContentReview[] {
   try {
-    const raw = window.localStorage.getItem(REVIEWS_KEY);
+    const raw = readDoc<unknown>(REVIEWS_KEY);
     if (!raw) return REVIEWS_EMPTY;
-    const parsed = JSON.parse(raw) as ContentReview[];
+    const parsed = raw as ContentReview[];
     if (!Array.isArray(parsed)) return REVIEWS_EMPTY;
     return parsed.filter(
       (r) =>
@@ -242,11 +243,7 @@ function reviewsSnapshotGet(): ContentReview[] {
 }
 
 function writeReviews(list: ContentReview[]) {
-  try {
-    window.localStorage.setItem(REVIEWS_KEY, JSON.stringify(list));
-  } catch {
-    // ignore
-  }
+  writeDoc(REVIEWS_KEY, list);
   window.dispatchEvent(new CustomEvent(REVIEWS_EVENT));
 }
 
@@ -280,3 +277,13 @@ export function useContentReviews() {
 
   return { reviews, add, remove };
 }
+
+// account-docs → store bridge: server hydration (or a sign-out reset) lands
+// a NEW value → re-notify so every consumer re-derives. The stores' own
+// writes echo back with the SAME reference already stored — the snapshot
+// comparison in each *SnapshotGet absorbs those (no loop, no re-render).
+subscribeDocs((key) => {
+  if (key === COVERAGE_KEY) window.dispatchEvent(new CustomEvent(COVERAGE_EVENT));
+  if (key === TESTS_KEY) window.dispatchEvent(new CustomEvent(TESTS_EVENT));
+  if (key === REVIEWS_KEY) window.dispatchEvent(new CustomEvent(REVIEWS_EVENT));
+});

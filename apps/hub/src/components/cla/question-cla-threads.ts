@@ -16,11 +16,12 @@ import { useSyncExternalStore } from "react";
  * (plan §2), so overlay and store stay decoupled and the other surfaces stay
  * out of the blast radius entirely.
  *
- * Posture (plan §3 deviation 1): threads are device-local. The operator's
- * ruling of record (trace 1a15a73da1a77c05) makes DB-backed, cross-device
- * history the end-state; `sessionId` is the seam where the tutor's §22-style
- * sync tier slots in (null = local-only thread). The sync tier is a filed,
- * sequenced follow-up — this store is shaped so it lands without migration.
+ * Posture (T-AUDIT-TIER1): threads are ACCOUNT-BACKED — the
+ * `cla-question-threads` document in user_documents (hydrated + written
+ * through by lib/account-docs.ts), never browser storage, so per-question
+ * history follows the account across devices. The device-local era ended
+ * with the browser-persistence purge; `sessionId` stays the seam where a
+ * §22-style server session tier can slot in (null = no server session).
  *
  * One write path — commitQuestionClaMessages(questionId, update, meta) —
  * accepts the SAME payload the player historically forwarded to React state
@@ -61,10 +62,11 @@ export type QuestionClaMessagesUpdate =
   | QuestionClaStoredMessage[]
   | ((prev: QuestionClaStoredMessage[]) => QuestionClaStoredMessage[]);
 
-const KEY = "syllabai.claThreads.v1";
-const ACTIVE_KEY = "syllabai.claThreads.activeByQuestion.v1";
+import { readDoc, subscribeDocs, writeDoc } from "@/lib/account-docs";
 
-/** storage guards — keep localStorage bounded (family parity; heavier
+const KEY = "cla-question-threads";
+
+/** storage guards — keep the account document bounded (family parity; heavier
  *  messages: the CLA answer view carries citations + tools, hence 100) */
 const MAX_THREADS = 40;
 const MAX_MESSAGES_PER_THREAD = 100;
@@ -107,9 +109,9 @@ function load(): StoredState {
 
 function loadFromStorage(): StoredState {
   try {
-    const raw = window.localStorage.getItem(KEY);
+    const raw = readDoc<unknown>(KEY);
     if (!raw) return { threads: [], activeByQuestion: {} };
-    const parsed = JSON.parse(raw) as StoredState;
+    const parsed = raw as StoredState;
     if (!Array.isArray(parsed.threads)) return { threads: [], activeByQuestion: {} };
     const threads = parsed.threads
       .filter(
@@ -141,12 +143,9 @@ let persistTimer: ReturnType<typeof setTimeout> | null = null;
 
 function persist() {
   if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(KEY, JSON.stringify(state));
-    window.localStorage.setItem(ACTIVE_KEY, JSON.stringify(state.activeByQuestion));
-  } catch {
-    // quota exceeded / private mode — the session still works in memory
-  }
+  // whole-document write-through (lib/account-docs.ts owns the debounce
+  // and the account PUT; a failed PUT keeps memory and re-arms)
+  writeDoc(KEY, state);
 }
 
 /** Trailing-edge throttle: disk writes wait (family parity). */
@@ -159,14 +158,19 @@ function emit() {
   for (const l of listeners) l();
 }
 
-if (typeof window !== "undefined") {
-  window.addEventListener("storage", (e) => {
-    if (e.key === KEY || e.key === ACTIVE_KEY) {
-      state = load();
-      for (const l of listeners) l();
-    }
-  });
-}
+// account-docs → store bridge: server hydration (or a sign-out reset)
+// lands a NEW transcript → re-derive. The store's own writes echo back with
+// the SAME document reference already stored — the strict inequality on the
+// derived snapshot absorbs those (no loop, no re-render).
+subscribeDocs((key) => {
+  if (key !== KEY || typeof window === "undefined") return;
+  const next = load();
+  if (next.threads !== state.threads || next.activeByQuestion !== state.activeByQuestion) {
+    state = next;
+    snap = { threads: state.threads, activeByQuestion: state.activeByQuestion };
+    for (const l of listeners) l();
+  }
+});
 
 let snap = { threads: state.threads, activeByQuestion: state.activeByQuestion };
 

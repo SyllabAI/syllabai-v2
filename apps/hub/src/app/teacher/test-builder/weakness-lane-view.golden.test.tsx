@@ -4,9 +4,8 @@
  * (react-dom/server, no browser, no DB — the zero-DB-contact discipline
  * holds) against a fixture parsed through the CANONICAL
  * weaknessOptionsViewSchema, so the goldens capture the real wire, never a
- * loose shape. The sample-lane capture renders the lib's verbatim demo
- * mapping (no wire schema exists for the demo lane — it is labeled demo
- * data precisely because it never went through a schema).
+ * (The demo-era sample-lane captures are REMOVED with the T-AUDIT-TIER1
+ * purge — the sample lane no longer exists; the lane is live-only.)
  *
  * Pinned render laws (see weakness-lane-view.tsx header): source disclosure
  * always rendered; honest unmeasured mastery; evidence vocabulary (learners
@@ -16,7 +15,7 @@
 import { describe, expect, test } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import { weaknessOptionsViewSchema } from "@syllabai/contracts";
-import { liveWeakLane, sampleWeakTargets } from "@/lib/teacher/weakness-lane";
+import { liveWeakLane } from "@/lib/teacher/weakness-lane";
 import { WeaknessLaneRows } from "./weakness-lane-view";
 
 const ROOT = "ea000000-0000-4000-8000-000000000001";
@@ -173,70 +172,5 @@ describe("WeaknessLaneRows — live (schema-parsed wire fixture)", () => {
     );
     expect(html).toContain("No measured evidence yet — class practice builds it");
     expect(html).not.toContain("No topics currently below the weak line");
-  });
-});
-
-describe("WeaknessLaneRows — sample (the labeled demo fallback)", () => {
-  const cls = {
-    sections: [
-      {
-        code: "S1",
-        title: "Section one",
-        subtopics: [
-          {
-            code: "1.1.1",
-            label: "1.1.1",
-            title: "Solids, liquids and gases",
-            sectionCode: "S1",
-            sectionTitle: "Section one",
-            setSlugs: [],
-            meanMastery: 0.35,
-            proficientPct: 0,
-            developingPct: 0,
-            strugglingPct: 0,
-            band: "weak" as const,
-            misconceptions: [{ code: "M1", title: "m", probability: 0.4, evidenceCount: 3 }],
-            hasSimEvidence: false,
-            anchorMean: null,
-            questionCount: 7,
-            totalMarks: 28,
-          },
-        ],
-      },
-    ],
-  };
-  const targets = sampleWeakTargets(cls as never);
-
-  test("the demo lane is LABELED as demo data (the disclosure the demo-era UI never rendered)", () => {
-    const html = renderToStaticMarkup(
-      <WeaknessLaneRows
-        source="sample"
-        targets={targets}
-        gaps={[]}
-        selected={new Set()}
-        onToggle={() => {}}
-        cap={6}
-        showAll={false}
-      />,
-    );
-    expect(html).toContain("Sample cohort (demo data — not this class&#x27;s evidence)");
-    expect(html).not.toContain("Class evidence");
-  });
-
-  test("sample rows keep the demo vocabulary: mean mastery percentage + tracked misconceptions", () => {
-    const html = renderToStaticMarkup(
-      <WeaknessLaneRows
-        source="sample"
-        targets={targets}
-        gaps={[]}
-        selected={new Set()}
-        onToggle={() => {}}
-        cap={6}
-        showAll={false}
-      />,
-    );
-    expect(html).toContain("mean mastery 35%");
-    expect(html).toContain("1 misconception tracked");
-    expect(html).not.toContain("learners with active misconceptions");
   });
 });

@@ -19,7 +19,7 @@
  * Renders nothing while counts are unresolved and nothing when nothing is
  * due — an empty strip is not news. The CTA lands where the underlying queue
  * actually lives: /learner (My State tab) when the account contributed,
- * the course's knowledge graph (same drawer, simulated path) otherwise.
+ * the course's knowledge graph (same drawer, account path) otherwise.
  */
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
@@ -121,14 +121,14 @@ export function ReviewDueStrip({ courses }: { courses: CourseMeta[] }) {
 
   // the CTA lands where the due queue actually lives: the account's queue on
   // /learner when the account contributed due points, the contributing
-  // course's graph drawer (simulated path) when the evidence is device-side
+  // course's graph drawer (account path) when the evidence is self-report-side
   const anyAccount = dues.some((d) => d.source === "account" && d.count > 0);
   const firstDue = dues.find((d) => d.count > 0);
   const href =
     anyAccount
       ? "/learner" // My State tab renders the account's review queue
       : firstDue
-        ? `/knowledge-graph?course=${firstDue.slug}` // the same drawer, simulated path
+        ? `/knowledge-graph?course=${firstDue.slug}` // the same drawer, account path
         : "/learner";
 
   return (

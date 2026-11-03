@@ -7,15 +7,14 @@
  *
  * Render laws pinned by weakness-lane-view.golden.test.tsx:
  *   SOURCE DISCLOSURE: the lane always names its source — "Class evidence ·
- *     M of E learners with evidence" (live) or "Sample cohort (demo data…)"
- *     (sample). The demo-era lane rendered SAMPLE aggregates with no label;
- *     that is the dishonesty this tranche retires.
+ *     M of E learners with evidence". (The demo-era SAMPLE lane — rendered
+ *     aggregates over class-sim's seeded cohort — is REMOVED with the
+ *     T-AUDIT-TIER1 purge; the lane is live-only now, honestly empty when
+ *     the server view is unavailable.)
  *   HONEST NULL: an unmeasured live row renders "mastery unmeasured" and
  *     NEVER a fabricated percentage (the wire's null stays null).
- *   EVIDENCE VOCABULARY: live misconception counts are LEARNERS ("N learners
- *     with active misconceptions"); the sample inventory is TRACKED
- *     misconceptions ("N misconceptions tracked") — the two semantics are
- *     never conflated.
+ *   EVIDENCE VOCABULARY: misconception counts are LEARNERS ("N learners
+ *     with active misconceptions").
  *   BLOCKED-BY EVIDENCE: BLOCKED_BY_WEAK_PREREQUISITE rows name the blocking
  *     prerequisite codes.
  *   COVERAGE GAPS ARE NEVER WEAK: gap rows render without a checkbox —
@@ -45,10 +44,10 @@ export function WeaknessLaneRows({
   cap,
   showAll,
 }: {
-  source: "live" | "sample";
+  source: "live";
   targets: WeakLaneTarget[];
   gaps: WeakLaneGap[];
-  /** live context (ignored for sample) */
+  /** live context */
   enrolledLearners?: number;
   learnersWithEvidence?: number;
   selected: ReadonlySet<string>;
@@ -63,17 +62,13 @@ export function WeaknessLaneRows({
         className="mb-1.5 text-[11px] font-medium text-muted-foreground"
         data-testid="weak-lane-source"
       >
-        {source === "live"
-          ? `Class evidence · ${learnersWithEvidence ?? 0} of ${enrolledLearners ?? 0} learners with evidence`
-          : "Sample cohort (demo data — not this class's evidence)"}
+        {`Class evidence · ${learnersWithEvidence ?? 0} of ${enrolledLearners ?? 0} learners with evidence`}
       </p>
       {targets.length === 0 && (
         <p className="py-1 text-xs text-muted-foreground" data-testid="weak-lane-empty">
-          {source === "live"
-            ? learnersWithEvidence === 0
-              ? "No measured evidence yet — class practice builds it"
-              : "No topics currently below the weak line"
-            : "No weak areas flagged in the sample cohort"}
+          {learnersWithEvidence === 0
+            ? "No measured evidence yet — class practice builds it"
+            : "No topics currently below the weak line"}
         </p>
       )}
       <div className="space-y-1">
@@ -101,9 +96,7 @@ export function WeaknessLaneRows({
                   : `mean mastery ${(w.meanMastery * 100).toFixed(0)}%`}{" "}
                 ·{" "}
                 {w.misconceptionCount > 0
-                  ? w.misconceptionUnit === "learners"
-                    ? `${w.misconceptionCount} learner${w.misconceptionCount === 1 ? "" : "s"} with active misconceptions · `
-                    : `${w.misconceptionCount} misconception${w.misconceptionCount === 1 ? "" : "s"} tracked · `
+                  ? `${w.misconceptionCount} learner${w.misconceptionCount === 1 ? "" : "s"} with active misconceptions · `
                   : ""}
                 {w.questionCount} validated question{w.questionCount === 1 ? "" : "s"}
               </span>

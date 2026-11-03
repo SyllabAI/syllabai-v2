@@ -150,8 +150,8 @@ describe("session validation", () => {
     expect(validateSessionAgainstDeck(session([]), new Set())).toBe(true); // degenerate empty deck
   });
 
-  test("key namespacing keeps decks and courses apart", () => {
-    expect(deckSessionKey("igcse-chemistry-19", "4CH1-S1-e")).toBe("syllabai-hub:deck-position:igcse-chemistry-19:4CH1-S1-e");
+  test("key namespacing keeps decks and courses apart (the deck-sessions doc's inner key; T-AUDIT-TIER1 account doc)", () => {
+    expect(deckSessionKey("igcse-chemistry-19", "4CH1-S1-e")).toBe("igcse-chemistry-19:4CH1-S1-e");
     expect(deckSessionKey("igcse-chemistry-19", "4CH1-2:SUB_")).not.toBe(deckSessionKey("igcse-chemistry-19", "4CH1-2"));
   });
 });

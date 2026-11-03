@@ -2,7 +2,8 @@
 
 /**
  * MockResultsStrip — recent mock results for THIS course, from the local
- * SIMULATED overlay (localStorage only — never canonical learner state).
+ * The student's own mock record (account-persisted — T-AUDIT-TIER1; never
+ * browser storage, never canonical learner state).
  * Rendered client-side after mount so SSR markup stays deterministic.
  */
 import { useEffect, useState } from "react";
@@ -79,7 +80,7 @@ export function MockResultsStrip({ course }: { course: string }) {
         ))}
       </ul>
       <p className="mt-1 text-[10px] text-muted-foreground">
-        Mock grading is self-marked against the official mark scheme — a SIMULATED record, not
+        Mock grading is self-marked against the official mark scheme — your own record, not
         canonical learner state.
       </p>
     </section>

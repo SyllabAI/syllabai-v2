@@ -170,7 +170,7 @@ export function CoveragePanel({ course }: { course: string }) {
           <div className="flex flex-wrap items-center gap-2">
             <ListChecks className="size-4 text-primary" aria-hidden />
             <h2 className="text-base font-semibold">Coverage across the course</h2>
-            <ProvenanceBadge tier={live ? "CORE_MEASURED" : "SIMULATED"} />
+            <ProvenanceBadge tier={live ? "CORE_MEASURED" : "ACCOUNT"} />
           </div>
           <CoverageBar proven={proven} seen={seen} total={total} className="h-3" />
           <div className="space-y-1">
@@ -189,7 +189,7 @@ export function CoveragePanel({ course }: { course: string }) {
             <p className="text-xs text-muted-foreground">
               {live
                 ? "Live account evidence — marked attempts recorded on your account."
-                : "This browser's local progress — the same demo lane the knowledge graph reads."}
+                : "Your account's self-report progress — the same evidence lane the knowledge graph reads."}
               {awaiting > 0 &&
                 ` ${awaiting} typed ${awaiting === 1 ? "answer" : "answers"} await self-marking and will count once marked.`}
             </p>

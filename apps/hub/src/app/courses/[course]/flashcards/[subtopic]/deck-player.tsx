@@ -2,11 +2,11 @@
 
 /**
  * Flashcard deck player — flip card, Still learning / Know rating, deck
- * progress, shuffle + restart. Ratings always persist to the browser-local
- * SIMULATED overlay (rings, queue); on the pilot course, when signed in,
- * they additionally record to the learner's core account as append-only
- * self-report evidence (tranche 4.4 — lib/flashcard-bridge, never mastery,
- * degrades silently).
+ * progress, shuffle + restart. Ratings persist to the ACCOUNT-backed
+ * progress document (T-AUDIT-TIER1 — the rings and review queue read it);
+ * on the pilot course they ALSO record to the learner's core account as
+ * append-only self-report evidence (tranche 4.4 — lib/flashcard-bridge,
+ * never mastery, degrades silently).
  *
  * RATING-CONTROL CITATION, CORRECTED (research pass 5, figure 7): SME's
  * rating controls are ALWAYS visible — including on the card front — as a
@@ -22,7 +22,8 @@
  * Tranche 4.6: the deck is also where the Ebbinghaus review queue is worked
  * — cards whose rating trail says they are due again carry a badge, and
  * "Review due first" lifts them (stalest due first) to the front of the run.
- * T-C57: the queue is the UNION of this browser's trail and the account's
+ * T-C57: the queue is the UNION of the account document's trail and the
+ * core account's
  * core review-schedule feed (pilot + signed in — lib/flashcard-unified.ts),
  * so a card rated from another device can come due here too. Still timing
  * only — self-report never touches mastery.
@@ -33,12 +34,12 @@
  * deck-internal scope family (card type; SME's per-lesson family has no
  * corpus equivalent — every SyllabAI deck is one sub-topic by construction)
  * and a "Re-run mistakes only" preset (the highest-value default per
- * DC-11's own note). The run position is RESUMED: the device-scoped session
- * state (lib/flashcard-session) survives a reload — the SyllabAI analogue
- * of SME's server-side resume, scoped to THIS DEVICE on purpose, matching
- * the honesty chip's account/device disclosure. Filters persist with the
- * position. The session store is never engagement evidence: a resumed card
- * is not a done card (rings/queue read the overlay, as ever).
+ * DC-11's own note). The run position is RESUMED: the account-backed
+ * session state (lib/flashcard-session) survives a reload AND follows the
+ * account across devices — SME's server-side resume parity. Filters persist
+ * with the deck session position. The session store is never engagement
+ * evidence: a resumed card is not a done card (rings/queue read the
+ * progress document, as ever).
  *
  * Filter semantics (snapshot, not live): the filter re-queries the deck
  * when the learner acts on the run's structure (filter change, shuffle,

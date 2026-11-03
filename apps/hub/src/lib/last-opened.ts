@@ -5,16 +5,19 @@
  * Task 21-b: "Jump back in" on the dashboard + "Last viewed" badge on
  * course cards).
  *
- * Like the subjects roster, the demo has no auth, so this persists in
- * localStorage under a versioned key. It records REAL navigation only
- * (the tracker mounts on course routes), never simulated progress.
+ * Like the subjects roster, this is ACCOUNT-BACKED (T-AUDIT-TIER1): the
+ * `last-opened` document in user_documents, hydrated + written through by
+ * lib/account-docs.ts — never browser storage, so "Jump back in" follows
+ * the student across devices. It records REAL navigation only (the tracker
+ * mounts on course routes), never simulated progress.
  *
  * Implementation mirrors my-subjects.ts: useSyncExternalStore keeps all
  * hook instances reactive without setState-in-effect cascades.
  */
 import { useSyncExternalStore } from "react";
+import { readDoc, subscribeDocs, writeDoc } from "./account-docs";
 
-const KEY = "syllabai.lastOpened.v1";
+const KEY = "last-opened";
 const EVENT = "syllabai:last-opened-changed";
 
 export type ResourceKind =
@@ -46,9 +49,9 @@ const EMPTY: LastOpened | null = null;
 
 function readEntry(): LastOpened | null {
   try {
-    const raw = window.localStorage.getItem(KEY);
+    const raw = readDoc<unknown>(KEY);
     if (!raw) return EMPTY;
-    const parsed: unknown = JSON.parse(raw);
+    const parsed: unknown = raw;
     if (
       parsed &&
       typeof parsed === "object" &&
@@ -82,13 +85,19 @@ function getServerSnapshot(): LastOpened | null {
 }
 
 function write(entry: LastOpened) {
-  try {
-    window.localStorage.setItem(KEY, JSON.stringify(entry));
-  } catch {
-    // storage full / private mode — last-opened just won't persist
-  }
+  writeDoc(KEY, entry);
   window.dispatchEvent(new CustomEvent(EVENT));
 }
+
+// account-docs → store bridge: server hydration (or a sign-out reset)
+// lands a NEW value → re-notify so every consumer re-derives. The store's
+// own writes echo back with the SAME object reference write() already
+// stored — the snapshot identity check in getSnapshot absorbs those.
+subscribeDocs((key) => {
+  if (key === KEY && typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent(EVENT));
+  }
+});
 
 /** Record a real course-surface visit. Client-side only (tracker calls this from an effect). */
 export function recordLastOpened(slug: string, resource: ResourceKind) {

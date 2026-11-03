@@ -325,6 +325,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/attempts",
       "/api/v1/learners/me/attempts",
       "/api/v1/learners/me/revision-notes", // Wave S3: T-MIG-082 golden-verified (run-002/003, r3a)
+      "/api/v1/learners/me/teach-me", // T-TEACHME-001 run-003: v2-NATIVE family (no core analogue — the feasibility path (iii) of record), NARROW prefix covers exactly the teach-me family
       "/api/v1/admin/llm/chain-health", // T-MIG-090: golden-verified (run-005, r0 rider) — NARROWEST: the prefix IS the single endpoint
       "/api/v1/tutor/sessions", // T-MIG-092: golden-verified (run-003 14/14, r0 rider) — NARROW: the sessions tree ONLY, ask/stream stay core
       "/api/v1/learners/me/agenda", // T-MIG-096: golden-verified (run-001 16/18, r0 rider) — per-exact-subpath rows, NEVER the bare /learners/me
@@ -376,6 +377,12 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/answer-input", // T-MIG-121: the B6 band's answer-input SUBTREE row (the GLM seam — the run-001 keyless law battery byte-parity GREEN both planes; the operator ruling (b) GRANTED of record 08557d3 'good enough, switch it over'; the keyed live-prove waived ZERO-KEY; the GLM seam dependency disclosed-accepted; the ink-pad emitters :194/:246 flip)
       "/api/v1/tutor/bank", // T-MIG-130: the tutor BANK bands (T-MIG-128/129 out-of-fence mounts; the chat relay's deterministic pre-ask probes) — NARROW family form: /bank/questions + /bank/paper ONLY (pinned in the 130 line test); zero-LLM/zero-vector, silent fall-through to the grounded ask on every non-resolving verdict (operator trace 1a140a3f4c796e11 'wire the hub chat')
       "/api/v1/content/books", // T-MIG-133 band 133j: the books READ family flips for CLIENT-side joins (the note reader's student-book back-link) — v2-ONLY band (the core never served books); server reads stay coreBaseUrl-direct (lib/books.ts); live-verified 200s with populated specCodes (session 1a156004911ee41d)
+      // T-AUDIT-TIER1 (r0): the workspace-document plane — v2-NATIVE additive
+      // family (no frozen-core counterpart, the DC-6 threads precedent), so
+      // the row needs NO capture/verify band; gated by the behavioural
+      // fixture suite (test/workspace-docs). NARROW: the exact
+      // /api/v1/me/documents family; no sibling /api/v1/me/** exists.
+      "/api/v1/me/documents",
     ]);
   });
   test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {

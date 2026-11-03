@@ -16,24 +16,33 @@
  *    T-TEACH-005/006). Fail-closed: a class-fetch error yields the empty
  *    set (no classes known → nothing offered), never the full registry.
  *
- * 2. THE PER-COURSE DRAFT — the builder draft moves from the single-slot
- *    `syllabai.testBuilderDraft.v1` to one key per course
- *    (`syllabai.testBuilderDraft.v2.<slug>`), so every class keeps its own
- *    work-in-progress across course switches. The legacy v1 draft is
- *    migrated on first read: if its recorded course matches the requested
- *    slug it is adopted into the v2 key and the single slot is vacated; a
- *    legacy draft belonging to a DIFFERENT course is left untouched for
- *    that course's own first visit. Saved tests needed no migration —
- *    stores.ts has stamped every save with its course since day one.
+ * 2. THE PER-COURSE DRAFT — every course keeps its own work-in-progress
+ *    draft inside the `test-builder-drafts` account document (map
+ *    courseSlug → draft; T-AUDIT-TIER1 — hydrated + written through by
+ *    lib/account-docs.ts), so every class keeps its own WIP across course
+ *    switches AND across devices. The localStorage era (the single-slot v1
+ *    key and the per-course v2 keys) is retired with the browser-persistence
+ *    purge: no legacy migration — device-bound drafts died with the device
+ *    layer. Saved tests needed no migration — stores.ts has stamped every
+ *    save with its course since day one.
  */
 
+import { readDoc, writeDoc } from "@/lib/account-docs";
 import type { SwitchableCourse } from "@/lib/teacher/types";
 
-/** The single-slot draft of the pre-separation era (read-only after this band). */
-export const LEGACY_DRAFT_KEY = "syllabai.testBuilderDraft.v1";
+/** The account document (contracts allow-list): map courseSlug → draft. */
+export const DRAFTS_DOC_KEY = "test-builder-drafts";
 
-export function draftKeyFor(slug: string): string {
-  return `syllabai.testBuilderDraft.v2.${slug}`;
+type DraftMap = Record<string, object>;
+
+function readDraftMap(): DraftMap {
+  const raw = readDoc<unknown>(DRAFTS_DOC_KEY);
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
+  return raw as DraftMap;
+}
+
+function writeDraftMap(map: DraftMap) {
+  writeDoc(DRAFTS_DOC_KEY, map);
 }
 
 /** The wire-invariant slice every stored draft carries (the full builder
@@ -61,17 +70,7 @@ function parseDraft(raw: unknown, slug: string): object | null {
  */
 export function readBuilderDraft(slug: string): object | null {
   try {
-    const raw = window.localStorage.getItem(draftKeyFor(slug));
-    if (raw) {
-      return parseDraft(JSON.parse(raw), slug);
-    }
-    const legacy = window.localStorage.getItem(LEGACY_DRAFT_KEY);
-    if (!legacy) return null;
-    const d = parseDraft(JSON.parse(legacy), slug);
-    if (!d) return null; // belongs to another course — leave it for that visit
-    window.localStorage.setItem(draftKeyFor(slug), JSON.stringify(d));
-    window.localStorage.removeItem(LEGACY_DRAFT_KEY);
-    return d;
+    return parseDraft(readDraftMap()[slug], slug);
   } catch {
     return null;
   }
@@ -82,15 +81,10 @@ export function readBuilderDraft(slug: string): object | null {
  * "committed to Your tests" and "nothing to resume" path.
  */
 export function writeBuilderDraft(slug: string, draft: object | null): void {
-  try {
-    if (draft === null) {
-      window.localStorage.removeItem(draftKeyFor(slug));
-    } else {
-      window.localStorage.setItem(draftKeyFor(slug), JSON.stringify(draft));
-    }
-  } catch {
-    // private mode / quota — the draft just won't persist
-  }
+  const map = readDraftMap();
+  if (draft === null) delete map[slug];
+  else map[slug] = draft;
+  writeDraftMap(map);
 }
 
 /**

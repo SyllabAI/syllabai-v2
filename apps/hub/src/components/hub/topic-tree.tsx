@@ -79,7 +79,7 @@ export function TopicTree({
   // projection's two dimensions by variant (notes tree → notes dimension,
   // questions tree → questions dimension; the flashcards variant stays the
   // overlay fact, disclosed residual §5 of the prereg). null = signed out
-  // / fetch failed → the SIMULATED overlay fallback (the of-record posture).
+  // / fetch failed → the account progress document fallback (the of-record posture).
   const projection = useCourseProjection(data.course.slug);
   const dimension: ProgressDimension | null =
     variant === "notes" ? "notes" : variant === "questions" ? "questions" : null;
