@@ -213,15 +213,173 @@ export function subtopicOfNote(
   return null;
 }
 
+// ── corpus-bridge ladders (D0 backfill) ─────────────────────────────────
+//
+// The spec blast (2026-10 audit, 81 SME courses / 2,012 sets / 34,940q) showed
+// 450 sets carrying no machine-derivable home under the two production paths
+// (topicSlug + spec anchors): 6,565 questions invisible to the spec-tree
+// selector. Every one of those sets still carries corpus-side facts — the
+// notes the corpus links it to, SME's own numbering, its set/section titles —
+// and the curriculum map carries the corresponding sub-topic titles and x.y
+// codes. The ladders below join those facts deterministically; nothing is
+// guessed, every rung is corpus-derived verbatim, and first hit wins:
+//
+//   L3 notes-bridge   set.relatedNoteIds → note's anchored sub-topic
+//   L4 notes-bridge   set.topicSlug via the note-slug bridge (a note with the
+//                     same slug that itself anchors a sub-topic)
+//   L5 numbering      topicSlug "1-2-…" → sub-topic code SUB1.2 (unique)
+//   L6 numbering      set name "1.2 …" → sub-topic code SUB1.2 (unique)
+//   L7 title join     set name ↔ sub-topic title, normalized, unique
+//   L8 section join   SME section ↔ topic title tokens (exact token-set
+//                     equality, else strictly-unique max overlap) → that
+//                     topic's first sub-topic row (corpus order)
+//   L8b section join  SME section ↔ sub-topic title token-set EXACT equality,
+//                     unique only — overlap scoring mis-homes here
+//                     ("Compression" → "Manage files effectively"), so an
+//                     inexact section names no sub-topic (a map gap)
+//
+// The residual after all ladders (33 sets / 393q, 9 unplaced classes + 1
+// placeholder-grade map re-import) is NOT forced — those are genuine map gaps
+// queued as ADR-039 disclosed edits
+// (docs/audits/2026-11-04-sme-selector-d0-backfill.md).
+
+/** Lowercase alphanumeric tokens; the conjunction "and" is folded away so
+ *  "Forces & Equilibrium" matches the map's "Forces and equilibrium". */
+function tokensOf(s: string | null | undefined): Set<string> {
+  const out = new Set<string>();
+  for (const t of (s ?? "").toLowerCase().match(/[a-z0-9]+/g) ?? []) {
+    if (t !== "and") out.add(t);
+  }
+  return out;
+}
+
+function normTitle(s: string | null | undefined): string {
+  return (s ?? "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+function setEquals(a: Set<string>, b: Set<string>): boolean {
+  if (a.size !== b.size) return false;
+  for (const t of a) if (!b.has(t)) return false;
+  return true;
+}
+
+function overlap(a: Set<string>, b: Set<string>): number {
+  let n = 0;
+  for (const t of a) if (b.has(t)) n += 1;
+  return n;
+}
+
+/** SME topic slugs number their sub-topic: "1-2-isotopes" → "1.2". */
+const SLUG_NUMBERING = /^(\d+)-(\d+)-/;
+/** SME set names lead with the same numbering: "1.2 Economic sectors". */
+const NAME_NUMBERING = /^(\d+)\.(\d+)(?:\.\d+)?\b/;
+/** Corpus-native sub-topic codes end in SUB<x>.<y> ("…T1:SUB1.2"). */
+const SUB_NUMBERING = /:SUB(\d+\.\d+)$/;
+
+const numberingCache = new WeakMap<SpecTreeIndex, Map<string, string[]>>();
+
+/** "x.y" → sub-topic codes carrying that numbering, corpus-wide. */
+function numberingIndex(index: SpecTreeIndex): Map<string, string[]> {
+  const cached = numberingCache.get(index);
+  if (cached) return cached;
+  const m = new Map<string, string[]>();
+  for (const code of index.subtopicByCode.keys()) {
+    const hit = SUB_NUMBERING.exec(code);
+    if (!hit) continue;
+    const list = m.get(hit[1]) ?? [];
+    list.push(code);
+    m.set(hit[1], list);
+  }
+  numberingCache.set(index, m);
+  return m;
+}
+
+const titleIndexCache = new WeakMap<SpecTreeIndex, Map<string, string[]>>();
+
+/** Normalized sub-topic title → codes (the synthetic -gen rows excluded). */
+function subtopicTitleIndex(index: SpecTreeIndex): Map<string, string[]> {
+  const cached = titleIndexCache.get(index);
+  if (cached) return cached;
+  const m = new Map<string, string[]>();
+  for (const [code, sub] of index.subtopicByCode) {
+    if (code.endsWith("-gen")) continue;
+    const key = normTitle(sub.title);
+    const list = m.get(key) ?? [];
+    list.push(code);
+    m.set(key, list);
+  }
+  titleIndexCache.set(index, m);
+  return m;
+}
+
+const noteHomeCache = new WeakMap<RevisionNote[], Map<string, string | null>>();
+
+/** noteId → anchored sub-topic, memoized per notes array. */
+function noteHomes(notes: RevisionNote[], index: SpecTreeIndex): Map<string, string | null> {
+  const cached = noteHomeCache.get(notes);
+  if (cached) return cached;
+  const m = new Map<string, string | null>();
+  for (const n of notes) m.set(n.noteId, subtopicOfNote(n, index));
+  noteHomeCache.set(notes, m);
+  return m;
+}
+
+/** SME section ("2. Atoms, Elements & Compounds") → the topic it names
+ *  (landing on that topic's first sub-topic row), or — when the section
+ *  names a sub-topic verbatim — that sub-topic. The section's number prefix
+ *  ("2.") does not align across the map import and SME's site, so joins run
+ *  on title tokens only. */
+function homeOfSection(section: string, index: SpecTreeIndex): string | null {
+  const sec = tokensOf(section);
+  if (sec.size === 0) return null;
+
+  // topic-level: exact token-set equality first, else strictly-unique max overlap
+  const exact: string[] = [];
+  const scored: { code: string; ov: number }[] = [];
+  for (const t of index.tree.topics) {
+    const tt = tokensOf(t.title);
+    if (setEquals(tt, sec)) exact.push(t.code);
+    const ov = overlap(tt, sec);
+    if (ov > 0) scored.push({ code: t.code, ov });
+  }
+  let bestTopic: string | null = null;
+  if (exact.length === 1) {
+    bestTopic = exact[0];
+  } else if (exact.length === 0 && scored.length > 0) {
+    const max = Math.max(...scored.map((s) => s.ov));
+    const top = scored.filter((s) => s.ov === max);
+    if (top.length === 1) bestTopic = top[0].code;
+  }
+  if (bestTopic) {
+    const topic = index.tree.topics.find((t) => t.code === bestTopic);
+    const first = topic?.subtopics[0];
+    if (first) return first.code;
+  }
+
+  // sub-topic-level: exact token-set equality, unique only. Overlap scoring
+  // MIS-HOMES here ("Compression" → "Manage files effectively"), so it is
+  // deliberately not attempted: inexact section ⇒ no home (map gap).
+  const exactSubs: string[] = [];
+  for (const [code, sub] of index.subtopicByCode) {
+    if (code.endsWith("-gen")) continue;
+    if (setEquals(tokensOf(sub.title), sec)) exactSubs.push(code);
+  }
+  return exactSubs.length === 1 ? exactSubs[0] : null;
+}
+
 /**
  * Subtopic with the most anchored questions — the set's canonical home.
- * Importer/backfill-resolved subtopicCode wins (mirrors Flashcard), then
- * corpus-native placement (topicSlug); spec-anchor tally is the fallback.
- * A stale subtopicCode (map drift) fails the subtopicByCode lookup and
- * falls through to the legacy derivation — never a wrong home. */
+ * Priority: importer/backfill-resolved subtopicCode (mirrors Flashcard; a
+ * stale code fails the subtopicByCode lookup and falls through — never a
+ * wrong home), then corpus-native placement (topicSlug), then the
+ * spec-anchor tally; the corpus-bridge ladders (see the block above) then
+ * resolve the unanchored SME sets. Pass the course's notes to enable the
+ * notes-bridge rungs (L3/L4).
+ */
 export function subtopicOfQuestionSet(
   topic: ExamQuestionTopic,
   index: SpecTreeIndex,
+  notes?: RevisionNote[],
 ): string | null {
   if (topic.subtopicCode && index.subtopicByCode.has(topic.subtopicCode)) {
     return topic.subtopicCode;
@@ -240,15 +398,51 @@ export function subtopicOfQuestionSet(
     }
     for (const s of codes) tally.set(s, (tally.get(s) ?? 0) + 1);
   }
-  let best: string | null = null;
-  let bestN = 0;
-  for (const [s, n] of tally) {
-    if (n > bestN) {
-      best = s;
-      bestN = n;
+  if (tally.size > 0) {
+    let best: string | null = null;
+    let bestN = 0;
+    for (const [s, n] of tally) {
+      if (n > bestN) {
+        best = s;
+        bestN = n;
+      }
+    }
+    return best;
+  }
+
+  // L3 — the corpus's own declared linkage: the notes this topic page lists
+  for (const id of topic.relatedNoteIds ?? []) {
+    if (!notes) break;
+    const s = noteHomes(notes, index).get(id);
+    if (s) return s;
+  }
+  // L4 — the same SME topic slug on a note that anchors a sub-topic
+  if (notes && topic.topicSlug) {
+    const s = noteSlugBridge(notes, index).get(topic.topicSlug);
+    if (s) return s;
+  }
+  // L5/L6 — SME's own numbering ("1-2-isotopes", "1.2 Economic sectors")
+  if (topic.topicSlug) {
+    const m = SLUG_NUMBERING.exec(topic.topicSlug);
+    if (m) {
+      const cands = numberingIndex(index).get(`${m[1]}.${m[2]}`);
+      if (cands?.length === 1) return cands[0];
     }
   }
-  return best;
+  const nm = NAME_NUMBERING.exec(topic.name);
+  if (nm) {
+    const cands = numberingIndex(index).get(`${nm[1]}.${nm[2]}`);
+    if (cands?.length === 1) return cands[0];
+  }
+  // L7 — the set names its sub-topic verbatim (normalized, unique)
+  const byTitle = subtopicTitleIndex(index).get(normTitle(topic.name));
+  if (byTitle?.length === 1) return byTitle[0];
+  // L8/L8b — the SME section string against the map's titles
+  if (topic.section) {
+    const s = homeOfSection(topic.section, index);
+    if (s) return s;
+  }
+  return null;
 }
 
 /**
@@ -326,7 +520,7 @@ export function resourceCounts(
     if (s) bump(s, "notes");
   }
   for (const t of topics) {
-    const s = subtopicOfQuestionSet(t, index);
+    const s = subtopicOfQuestionSet(t, index, notes);
     if (s) bump(s, "questions", t.questions.length);
   }
   for (const f of flashcards) {

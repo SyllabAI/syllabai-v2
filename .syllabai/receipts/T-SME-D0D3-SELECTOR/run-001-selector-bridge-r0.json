@@ -1,0 +1,37 @@
+{
+  "task": "T-SME-D0D3-SELECTOR",
+  "receipt": "run-001-selector-bridge-r0",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "recorded_at_utc": "2026-11-04",
+  "law": "ADR-039: the pipeline improves; the provenance discloses. Product-side only — zero content surgery, zero DB writes.",
+  "operator_order": "wire the notes-bridge + numbering backfill into subtopicOfQuestionSet (with the D3 row-link fix), and queue the 10 map-gaps as ADR-039 disclosed edits",
+  "upstream_composition": {
+    "base": "origin/main 74099915 (ff from stale 4008e6ce; ~1,128 commits, 878 content files, SME estate 2,012→2,574 sets)",
+    "d0_tag_backfill_found": "data-side subtopicCode stamps (125 SME sets) + opt-in -gen rows (generalTopicsOfQuestionTopics) ALREADY SHIPPED upstream — ladders slot after the stamp path and only fire where the backfill did not stamp",
+    "d3_row_link_found": "grouped-bank-view policy ALREADY SHIPPED upstream (?subtopic=<code> for multi-set rows, deterministic in set count) — the in-lane default-open-expander draft was DROPPED in favour of the shipped law; topic-tree.tsx left untouched"
+  },
+  "wiring": {
+    "d0": "src/lib/spec-tree.ts — subtopicOfQuestionSet(topic, index, notes?) corpus-bridge ladders after stamp/topicSlug/spec-tally: L3 relatedNoteIds / L4 noteSlugBridge / L5 topicSlug numbering / L6 name numbering / L7 title join / L8 section↔topic token join (exact else strictly-unique max-overlap → first sub-topic row) / L8b section↔sub-topic EXACT token-set equality unique-only; token 'and' folded; section number prefix stripped; memoized WeakMap per index; uniqueness mandatory, ties fail closed",
+    "d0_call_sites": "courses.ts hub aggregation + resourceCounts + teacher assemble / validation-queue / question-bank ×2 / class-sim / test-assembly all pass bundle.notes — one product-wide law",
+    "d3": "no new code — the shipped grouped-view policy stands; disclosed here per the operator order"
+  },
+  "numbers_of_record": {
+    "corpus": "90 SME courses / 2,574 sets / 43,232q @ origin/main 74099915",
+    "pre_ladder_unanchored": "319 sets / 4,993q (no stamp, no topicSlug, no spec anchors)",
+    "backfilled": "272 sets / 4,202q (L3 117/2,016 · L4 39/127 · L8 87/1,137 · L8b 29/922; L5/L6/L7 live but 0 — upstream stamps absorbed the easy cases)",
+    "residual": "47 sets / 791q = 1.83% of SME q (audit-snapshot baseline was 450 / 6,565 = 18.8% on the then-smaller corpus)"
+  },
+  "adr039_register": "apps/hub/docs/audits/2026-11-04-sme-selector-d0-backfill.md §3 — 10 map-gaps: maths component lanes A-Level+AS 22/619 · non-spec toolkit/skills/synoptic 8/99 · CS-23 missing T7/T9 3/12 · EL-25 placeholder-grade map re-import · EL-20 paper topics 1/4 · lit-21 text units 5/26 · geo-25 2027 Climate Change 1/15 · ICT-21 skill areas 3/9 · RS-23 strand selector 2/4 · combined-science title divergence 2/3; adjacent corpus note: CS-19 duplicate slug 'algorithms' ×2",
+  "gates": {
+    "parity": "bun run apps/hub/scripts/verify_sme_d0_parity.ts — PASS: per-set home equality 2,574/2,574 vs the python derivation of record; placed 2,527/42,441; residual 47/791; every home in-tree; gate CAUGHT two mirror defects (python unordered-set tie-breaks — TS is production truth; CS-19 duplicate slug needs per-occurrence expectation rows)",
+    "typecheck": "bun x tsc --noEmit (apps/hub): 0 lane errors; one PRE-EXISTING upstream-local jsdom harness resolution error reproduces on the clean base",
+    "eslint": "0 errors on all touched files",
+    "build": "GREEN stepwise on the new base — node scripts/build_corpus_static.mjs (1,437 entries) + bunx next build exit 0 + standalone assembly exit 0 (single-command run exceeds the sandbox 10-min ceiling; every step exits 0)"
+  },
+  "scope": "apps/hub/src/lib/spec-tree.ts + courses.ts (notes pass only) + teacher routes/lib call sites + scripts/verify_sme_d0_parity.ts + docs/audits/2026-11-04-sme-selector-d0-backfill.md + this receipt; zero content/*.json contact, zero DB, zero LLM",
+  "next_safe_actions": [
+    "deploy preview + spot-check a backfilled course (igcse-maths-25-extended Number row; a-level chemistry-25 numbering; business-23 notes-bridge) on the questions tree",
+    "queue the §3 register items as data-side lanes (map re-imports / sidecars) under ADR-039",
+    "T-OEQ-MATHSB-SERVE tranche-3 regression remains parked (59 approved, unexecuted)"
+  ]
+}

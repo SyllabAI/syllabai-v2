@@ -55,7 +55,7 @@ export async function POST(request: Request) {
   const wanted = new Set(subtopics);
   const setSlugs = new Set<string>();
   for (const t of bundle.questionTopics) {
-    const code = subtopicOfQuestionSet(t, index);
+    const code = subtopicOfQuestionSet(t, index, bundle.notes);
     if (code && wanted.has(code)) setSlugs.add(t.slug);
   }
   if (setSlugs.size === 0) {
