@@ -430,7 +430,8 @@ export class BooksReadRepository {
         )
         group by qv.question_id
       )
-      select q.id as question_id, lv.stem as stem, q.marks as marks,
+      select q.id as question_id, q.external_ref as external_ref,
+             lv.stem as stem, q.marks as marks,
              lv.command_word as command_word,
              (select coalesce(json_agg(o order by o.ordering), '[]'::json) from (
                 select id, label, option_text, ordering
@@ -444,15 +445,28 @@ export class BooksReadRepository {
       left join exam_papers ep on ep.id = q.exam_paper_id
       where q.active
         and q.question_type = 'MCQ_SINGLE'
-        and (q.exam_paper_id is null or ep.validation_state not in ('REJECTED', 'FLAGGED'))`) as unknown as Array<{
+        and (q.exam_paper_id is null or ep.validation_state not in ('REJECTED', 'FLAGGED'))
+      order by q.id asc`) as unknown as Array<{
       question_id: string;
+      external_ref: string | null;
       stem: string;
       marks: number;
       command_word: string | null;
       options: Array<{ id: string; label: string; option_text: string }>;
     }>;
+    // T-BOOK-069 run-002 repair (disclosed): the resolution map keys on BOTH
+    // the question id AND the bank's external_ref. The authored checkRef
+    // grammar of record is the bank's SME external_ref key ('sme-eq-…', the
+    // chapter packs AND the strength packs share it — ADR-BOOK-0004 decision
+    // 5 / run-001 amendment 4), while questions.id is a uuid — keying only by
+    // q.id left EVERY sme-keyed ref unresolved (honest question:null masked
+    // it; first-hand proof in the run-002 receipt). order by q.id keeps the
+    // last-wins overwrite deterministic for duplicate refs.
     const byRef = new Map<string, (typeof rows)[number]>();
-    for (const r of rows) byRef.set(r.question_id, r);
+    for (const r of rows) {
+      byRef.set(r.question_id, r);
+      if (r.external_ref != null) byRef.set(r.external_ref, r);
+    }
 
     // resolve per-block on the FIRST ref that resolves (one check = one
     // question in the pilot; extra refs are fallbacks, never a quiz)
