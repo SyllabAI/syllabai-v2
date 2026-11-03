@@ -53,6 +53,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { clearIdentity, useIdentity } from "@/lib/identity";
 import { useLastOpenedSync } from "@/lib/last-opened";
 import { useMockResultsSync } from "@/lib/mock-results";
+import { useTeacherStoresSync } from "@/lib/teacher/stores";
 import { isImmersiveRoute, isViewerRoute } from "@/lib/focus-routes";
 import { useLastOpened } from "@/lib/last-opened";
 import { cn } from "@/lib/utils";
@@ -116,6 +117,10 @@ export function AppShell({
   // everywhere the learner navigates, exactly like the identity store.
   useLastOpenedSync();
   useMockResultsSync();
+  // T-TIER1 run-002 — the teacher stores (saved tests / coverage / verdicts)
+  // mirror the account while a TEACHER is signed in; the hook is a no-op for
+  // students and signed-out sessions (the surface is teacher-owned).
+  useTeacherStoresSync();
   // course pages manage their own horizontal rhythm (course shell + resource
   // panel); the graph surfaces are full-bleed (the visualizer canvas wants
   // the whole viewport); the tutor workspace is an immersive app surface
