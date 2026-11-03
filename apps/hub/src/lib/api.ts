@@ -31,6 +31,7 @@
  *   and risks account suspension.
  */
 import { cachedGet, invalidateContentCache, singleFlight } from "./api-cache";
+import { unmirrorRoutingSession } from "./session-cookie";
 import type {
   AgendaView,
   CourseExamTargetView,
@@ -1021,6 +1022,12 @@ export function setSession(auth: AuthResponse) {
 export function clearSession() {
   window.localStorage.removeItem(TOKEN_KEY);
   window.localStorage.removeItem(USER_KEY);
+  // A-2: the signed routing cookie (lib/session.ts) mirrors this session
+  // for the server (proxy.ts). Clearing is fire-and-forget — clearSession
+  // stays synchronous, and this path also covers the 401 session-expired
+  // flow above, where the safe state is simply "signed out everywhere,
+  // best effort" (the cookie also expires on its own).
+  void unmirrorRoutingSession();
 }
 
 export function currentUser(): { id: string; email: string; displayName: string; roles: string[] } | null {
