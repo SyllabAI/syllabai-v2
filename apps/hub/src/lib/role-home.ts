@@ -5,11 +5,13 @@
  * Every persistent entry point resolves through this helper so the student
  * dashboard can never be a teacher's accidental landing:
  *
- *   - the `/` marketing hero redirects signed-in identities here (the
- *     client-side half of A-1 — components/auth/role-home-redirect.tsx;
- *     the server-side half is Tier 1's cookie session + middleware, A-2)
+ *   - the `/` marketing hero redirects signed-in identities here
+ *     SERVER-side via the routing-session guard (src/proxy.ts, A-2 —
+ *     Tier 0's client-side role-home-redirect was removed once the proxy
+ *     could win that race)
  *   - the header logo goes here for signed-in users, "/" for visitors (C-5)
  *   - the header CTA and the identity menu's primary item point here
+ *   - the proxy's student-off-/teacher bounce lands here (A-2)
  *
  * Signed-out callers resolve to the anonymous dashboard demo on purpose:
  * Tier 0 keeps the demo where it is (B-2's /dashboard-vs-/courses split is

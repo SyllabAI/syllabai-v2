@@ -18,7 +18,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { getDataProvider } from "@/lib/data";
 import { listCourses, pilotCourseSlug } from "@/lib/courses";
 import { publicConfig } from "@/lib/config";
-import { RoleHomeRedirect } from "@/components/auth/role-home-redirect";
 
 export default async function HubPage() {
   const provider = getDataProvider();
@@ -79,11 +78,10 @@ export default async function HubPage() {
 
   return (
     <div className="space-y-8">
-      {/* A-1 (frontend-flow audit): a signed-in user's session starts in the
-          product, not on the pitch — replace to the role home once identity
-          hydrates (client-side half; Tier 1's cookie session moves this
-          decision server-side before first paint). */}
-      <RoleHomeRedirect />
+      {/* A-1's server half lives in src/proxy.ts since A-2 (Tier 1): a
+          signed-in identity opening / is redirected to the role home
+          before first paint. Tier 0's client-side role-home-redirect was
+          removed in the same series — it lost every race to the proxy. */}
       {/* hero — SME student flow */}
       <section className="space-y-4">
         <div className="flex flex-wrap items-center gap-2">
