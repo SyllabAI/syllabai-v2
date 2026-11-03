@@ -1077,4 +1077,5 @@ Work Log:
 - SECURITY: no key/URI/token value placed in any workflow, script, receipt, or this worklog; the COW discipline (prod roles untouched, drop+404 even on failure) preserved verbatim from the precedents.
 
 Stage Summary:
+- PUSH + PR OF RECORD: branch pushed to origin/sib/ingest-4ch1-r0 @ 6b580fb (rotated PAT of record, in-process credential helper — no token on any command line or in any output); PR #702 opened (base main): https://github.com/SyllabAI/syllabai-v2/pull/702. Note: the workflows become UI-dispatchable once the PR lands on main; until then dispatch via API against the branch ref, or merge first.
 - "use github actions" executed to the last pre-dispatch line: both gate runners INERT-dispatchable on the branch, CI path simulated green end-to-end minus DB. Remaining (operator): stage the 2 per-run secrets, dispatch t-sib-ingest-001-apply (probe word of choice; cow-only for receipt review or cow+prod to land), then t-sib-embed-backfill (after apply-prod green — mechanically census-guarded).
