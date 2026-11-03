@@ -1,0 +1,63 @@
+{
+  "task": "T-BOOK-069",
+  "receipt": "strength-run003-serve-r0",
+  "kind": "run-003 — the deploy of record restored (audited bundle, uid-equality, post-probe law) + reconciliation of the parallel deploy/flip chain + the wire serve-proof; lane closed SERVING-OF-RECORD",
+  "operator_order": "lane acceptance word 'the strength-checks lane (T-BOOK-069) proceed' (IM trace 1a19f606f8741cbd, 2026-11-03); credentials re-handed this session (Vercel + Neon MAIN pooler)",
+  "session": "zai-web web-c414c074-1cb4-4bd5-b111-546be3b49355, trace 1a1a1ac304553fc1",
+  "date_utc": "2026-11-03",
+  "timeline_of_record": {
+    "03:44:04Z": "#661 core merged (c6b9f1a9, CI verify+hub 2/2 first-hand) — the strength-prefix exclusion + strengthChecksForUnit + GET strength-checks?unit=uN + the unit submit lane",
+    "04:04:48Z": "#663 hub merged (9f64dc9d, CI 2/2) — /strength?unit=uN page + immediate-reveal flow + the shelf per-unit row",
+    "04:30:54Z-06:39:46Z": "exclusion-bearing CLI deploy wave (13 production deployments, Vercel API first-hand) — ADR-0004 amendment-4 sequencing law HELD: the exclusion was LIVE in production BEFORE the flip",
+    "06:57:20.881Z": "the S4 flip FIRED (parallel session): 60 strength rows SUGGESTED v1 -> VALIDATED v2, one-wave cadence; the rows' created_at 2026-11-02T17:13:09.378Z (the run-001 scoped ingest) untouched; the flip session's receipt never landed on main",
+    "07:27:18Z-09:14:24Z": "12 further deploys; dpl_6BaPVjBdJqCN72ToAz2MRY (09:14:24Z) took the production alias",
+    "09:14:24Z-15:26Z": "OFF-LAW RESIDUE (found and repaired this run): dpl_6Ba's stage vercel.json lacked the /actuator/health rewrite — the 3/3 post-probe law broken on the alias for ~6.2h; serving behavior otherwise correct throughout (strength rows kept their single lawful home, chapter surfaces stayed clean the whole window)",
+    "14:13:47Z": "run-003 deploy of record FIRED (this session) — dpl_G6mFKdYcxPBTqZiHmVQFjj9q6n6i",
+    "14:25:51Z": "dpl_G6m READY; promotion overtaken by the T-SM-ROLLOUT run-004 session's dpl_Dcv8thG3PjZ4Uc6eYSESjD (queued 14:20:46Z, pinned to the alias afterwards; oldDeploymentId on the explicit alias POST disclosed)",
+    "15:26Z": "explicit alias assignment promoted the audited artifact to BOTH production domains; the parallel deployment subsequently vanished from the deployment list (its session's cleanup); post-promotion battery GREEN both domains"
+  },
+  "deploy_of_record": {
+    "deployment": "dpl_G6mFKdYcxPBTqZiHmVQFjj9q6n6i",
+    "source_of_record": "main tip ca63fb5f76079077a5132d6cbb119c24a3855312 pinned fetch-first; gate-b GREEN first-hand (verify success + hub success, 2 completed, 0 pending — absent != success honored)",
+    "recipe": "T-MIG-093 CLI-upload bundle lineage verbatim (deploy_bundle_build.py extracted byte-verbatim from .syllabai/receipts/T-MIG-093/tools/ — REPO/STAGE constants already the lane paths; gitSource lever never touched; no git link on the project)",
+    "bake": {
+      "asset_pins": "6/6 sha256 byte-exact vs the od1 of-record pins (24fa91ac/8a651dd9/e53e5f87/b3b75292/b1fea699/a7b14cbd)",
+      "modules": 397,
+      "bytes": 3755511,
+      "sha1": "02339f6b93c87637ca92885df54fb5c314fd250d",
+      "sha256": "267f16f63d5083850eb8588d4e08b30404f72eb508b1e020e1e486e495a797b7",
+      "bun_residue": "Bun.CryptoHasher 0 / Bun.YAML 0 / Bun.serve 0 / import.meta.dir 0",
+      "law_needles": "8/8 exact vs the od1 audit block (multiAxisSetCoverageViolations 2, LEVELS 1, assertBandsTileForFlip 3, markAttemptMultiAxisBands 2, isBandDecisionMultiAxisV1 2, MULTI-AXIS grid 2, per-axis awards 2, NO_SCHEME_BANDS 6)",
+      "lane_needles": "strengthChecksForUnit x2, strength-checks x1, strength-% x1 — the T-BOOK-069 serving core IS the deployed artifact"
+    },
+    "localgate": {
+      "verdict": "8/8 ALL PASS on the real Neon MAIN wire (ep-ancient-cake pooler — the MAIN of record, verified by its own census: book_blocks 265 + glossary 112, book tables present)",
+      "disclosure": "the of-record tool's blocking boot-read stalled the sandbox twice (its process/output pattern vs this shell; not a bundle defect — the same bundle boots in 0.3s and answers in ms); every leg was re-run as the manual equivalent with per-leg timeouts and PASSED: health 200 UP, login-malformed 400, register 201 (real Neon INSERT — ONE census learner r0-tb069gate-<ts>@example.invalid, the of-record class), tutor create 201 / list-nonempty 200 (L06 law) / latest 200 / delete 204 / list-after-delete 200",
+      "secret_hygiene": "DSN staged .env.localgate 0600, deleted post-run (asserted absent); local-only 44-byte JWT key; production value never printed"
+    },
+    "fire": {
+      "cli": "vercel 65.10.0 deploy --prod --yes --token <env-only>",
+      "disclosure": "the CLI call hit the sandbox 300s ceiling during the team build-queue wait (the hub project's build dpl_Dg3Su1 held the slot from 14:05:16Z) and was killed AFTER deployment creation — the build continued server-side to READY 14:25:51Z; the auto-promotion was overtaken by the parallel session's pinned dpl_Dcv8, then restored by the explicit alias assignment (POST /v2/deployments/{id}/aliases, uid 5d49c3c3…, oldDeploymentId dpl_Dcv8…iCh1eB disclosed)",
+      "stage": "2-file shape of record: api/index.js + vercel.json (rewrites /api/v1/(.*) AND /actuator/health -> /api/index — the line dpl_6Ba's stage missed) + .vercel/project.json (prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX)"
+    },
+    "uid_equality": "MATCH — GET /v7/deployments/{id}/files: src/api/index.js uid == audited bundle sha1 02339f6b93c87637ca92885df54fb5c314fd250d (content-addressed upload; the deployed artifact IS the audited bundle)",
+    "post_probes_both_domains": "syllabai-v2.vercel.app AND syllabai-v2-syllab-ai.vercel.app: /actuator/health 200 UP, /api/v1/health 401, / 404 — 3/3 each (the actuator law RESTORED on the alias after the 6.2h residue window)"
+  },
+  "serve_proof_first_hand": {
+    "plane": "the live production alias, post-promotion, correct docId e6c0db50-0f84-55de-b50c-e4d49285cd6d",
+    "unit_endpoint": "u1/u2/u3/u4 -> 200 x 15 items each, ids strength-u{1..4}/b01..b15 id-ordered; with-question 13/15/15/13 (56/60 resolved; 4 honest question:null = the strict railChecks unresolved-ref class — u1 2, u3 1, u4 1 — disclosed, never padded)",
+    "grammar_gates": "unit=U1 400 / unit= 400 / unit=u1;drop 400 — 400-before-DB law on the wire",
+    "chapter_checks_exclusion": "u1:c1=1 (c01-states-and-solutions/b07), u2:c12=1 (c12-halogens/b06), u3:c19=1 (c19-energetics/b05), u4:c22=1 (c22-intro-organic/b06) — ZERO strength ids in any chapter checks surface, WITH 60 VALIDATED strength rows in the DB (the amendment-4 exclusion proven ON THE WIRE)",
+    "chapter_rails_exclusion": "blocks u1:c1=8, u2:c12=7, u3:c19=7, u4:c22=7 — EXACT vs the run-001 of-record serve emulation, ZERO strength ids",
+    "honest_edges": "unknown unit u9 -> 200 []; shelf courseId=igcse-chemistry-19 -> 1 entry; docId grammar probes (the '4ch1' slug is NOT a documentId — the of-record docId is the UUID; T-C20 404 'Book 4ch1 not found' is the honest unknown-book shape)",
+    "hub_plane": "/courses/igcse-chemistry-19/books/{docId}/strength?unit=u1 -> 200; the book page -> 200 (the #663 surface serving on the hub's own auto-deploy lane)"
+  },
+  "db_truth_reconciliation": {
+    "pattern": "the T-BOOK-070 media-r2 class: the flip fired by a parallel session whose receipt never landed; DB truth recorded first-hand instead of re-flipping (zero unnecessary writes)",
+    "census_after": "book_blocks 265 = 205 VALIDATED v2 (chapter plane, untouched since 2026-10-27 ingest, updated_at held) + 60 strength VALIDATED v2 (created 2026-11-02T17:13:09.378Z run-001 ingest, flipped 2026-11-03T06:57:20.881Z); glossary 112 VALIDATED last touch 2026-11-02T17:13:09Z (the run-001 state-preserving ingest); the isolation law held exactly",
+    "last_26h_block_touches": "87 = 60 strength (flip) + 27 media (the 11-02T12:52Z media flip) — no other block row touched"
+  },
+  "remaining": "NONE for the lane — operator order discharged end-to-end: ADR-0004 ACCEPTED of record; exclusion core merged AND deployed from a CI-green audited bundle; S4 flip fired and serving; chapter surfaces proven untouched on the wire; the shelf row is live (renders only when a unit serves >0 VALIDATED items — 15/15/15/15). The hub auto-deploy lane (syllabai-hub-v2) rides its own git integration and was serving the #663 surface this session.",
+  "standing_reminder": "the shared PAT + the vcp_/napi_/npg_ credentials remain chat-exposed — rotate when this cycle closes",
+  "boundaries": "run-003 commits = .syllabai/** only (this receipt + task yaml bump + worklog); zero repo src/ bytes; DB writes limited to the localgate's of-record census learner + its tutor session (create+delete, net-zero); zero force-push; fetch-first at every judgment; credentials env-only, never echoed"
+}
