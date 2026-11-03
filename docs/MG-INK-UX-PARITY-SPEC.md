@@ -136,3 +136,44 @@ panel swallows its pointerdowns — the onBlur commit cannot fire on a
 keyboard tap). The draft shows the LIVE KaTeX preview through the ONE
 render law (renderMathHtml) — editing agrees glyph-for-glyph with the
 committed overlay.
+
+## 6. T-MG-INK-10 — the armed-tool hover chips (the "hover text", extracted live)
+
+The operator's report (2026-11-03): "The hover text? It is not there."
+Ground truth, extracted from MG's live paper viewer (DOM + real trusted
+hovers, two independent reads per chip):
+
+- **The Text tool, armed:** a cursor-following chip reads **"Add text"**
+  — `<span class="font-ink absolute top-0 whitespace-nowrap left-0
+  font-medium" style="color: rgb(159, 168, 178); opacity: 0.6;">`,
+  24px, left edge AT the cursor x, vertically centred on the cursor
+  (their measured rect: cursor 700/300 → chip box 700,284 @ 107×32).
+- **The Math tool, armed:** the chip reads **"Add maths"** —
+  `<span class="font-ink absolute top-0 whitespace-nowrap left-3.5
+  -translate-y-1/2 text-lg leading-none" style="color: rgb(159, 168,
+  178); opacity: 0.6;">`, 18px, left edge +14px right of the cursor,
+  vertically centred (cursor 700/300 → box 714,291 @ 98×18).
+- **Both** paint in `font-ink` = "Shantell Sans" (the same handwriting
+  stack the committed ink uses), pointer-events none, decorative.
+- **Behavior:** the chip follows the cursor over the page; it hides
+  while the placement editor is open; it stays hidden after the first
+  placement opens one; it RETURNS when the tool is re-armed (proven:
+  re-arm → chip back at the cursor). The working tools (pen, shapes,
+  instruments) show NO chip — ink appears immediately.
+- **There are NO toolbar tooltips on MG at all:** a real 0.9s hover on
+  the Text button yields no title attribute, no aria-describedby, and
+  no tooltip node anywhere (the bottom-anchored float probe too). The
+  chip IS the hover text — so we ship the chip and no tooltip layer.
+- Our posture before this card: the chips were absent entirely (proven
+  on production: Text and Math armed, cursor over the paper, zero
+  "Add text"/"Add maths" nodes in the DOM).
+
+Our implementation mirrors the census: ./ink.ts holds the constants
+(INK_CHIP_*), the InkCanvas tracks the cursor while an editor tool is
+armed and no editor is open, and the chip renders with MG's exact
+values. The per-arm spend law is keyed by an arm epoch (armSeq, bumped
+by every explicit arming) — no reset effects, the stale-seq chip is
+simply not the current arming. One disclosed refinement: re-clicking
+the already-armed tool counts as a re-arm (the chip returns) — MG's
+behavior on that exact gesture was not probed; the law above (re-arm
+after tool change) is proven.
