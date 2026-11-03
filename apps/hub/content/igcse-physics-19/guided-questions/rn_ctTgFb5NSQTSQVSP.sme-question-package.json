@@ -1,0 +1,259 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_ctTgFb5NSQTSQVSP",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "3a22ec30400d6f0fa58eed3b15d39d3f5b6b4ed9ecfaa6f69ebc8d38cca61e54",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "packageId": "igcse-physics::rn_ctTgFb5NSQTSQVSP",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_ctTgFb5NSQTSQVSP::L1::Q1",
+      "moduleId": "rn_ctTgFb5NSQTSQVSP::L1",
+      "stem": "The Doppler effect is the apparent change in:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the speed of the wave",
+          "correct": false,
+          "explanation": "Wave speed stays fixed by the medium.",
+          "misconception": "speed change myth"
+        },
+        {
+          "key": "B",
+          "text": "observed wavelength and frequency from a moving source",
+          "correct": true,
+          "explanation": "Both observed quantities shift when the source moves relative to the observer.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the amplitude only",
+          "correct": false,
+          "explanation": "The effect concerns wavelength and frequency, not size of swing.",
+          "misconception": "quantity confusion"
+        },
+        {
+          "key": "D",
+          "text": "the source frequency itself",
+          "correct": false,
+          "explanation": "The source emits unchanged; the shift is observed.",
+          "misconception": "source change myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_ctTgFb5NSQTSQVSP::L1::Q2",
+      "moduleId": "rn_ctTgFb5NSQTSQVSP::L1",
+      "stem": "A stationary siren emits wavefronts that spread:",
+      "misconceptionClass": "stationary picture",
+      "options": [
+        {
+          "key": "A",
+          "text": "crowded ahead and stretched behind",
+          "correct": false,
+          "explanation": "That pattern needs a moving source.",
+          "misconception": "scenario confusion"
+        },
+        {
+          "key": "B",
+          "text": "only forwards",
+          "correct": false,
+          "explanation": "Sirens emit in all directions.",
+          "misconception": "direction narrowing"
+        },
+        {
+          "key": "C",
+          "text": "symmetrically in all directions",
+          "correct": true,
+          "explanation": "With no motion, every direction is equivalent.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "in straight lines only",
+          "correct": false,
+          "explanation": "The wavefronts spread as expanding rings.",
+          "misconception": "shape myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_ctTgFb5NSQTSQVSP::L1::Q3",
+      "moduleId": "rn_ctTgFb5NSQTSQVSP::L1",
+      "stem": "An observer stands in front of an approaching siren. Compared with the emitted wave, the observer receives:",
+      "misconceptionClass": "approach case",
+      "options": [
+        {
+          "key": "A",
+          "text": "a longer wavelength and a lower frequency",
+          "correct": false,
+          "explanation": "That is what an observer behind hears.",
+          "misconception": "direction reversal"
+        },
+        {
+          "key": "B",
+          "text": "an unchanged wavelength",
+          "correct": false,
+          "explanation": "The whole point of the effect is the apparent shift.",
+          "misconception": "invariant assumption"
+        },
+        {
+          "key": "C",
+          "text": "a shorter wavelength and a lower frequency",
+          "correct": false,
+          "explanation": "The pairing violates the fixed wave speed.",
+          "misconception": "pairing error"
+        },
+        {
+          "key": "D",
+          "text": "a shorter wavelength and a higher frequency",
+          "correct": true,
+          "explanation": "Wavefronts bunch up ahead of the motion.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_ctTgFb5NSQTSQVSP::L1::Q4",
+      "moduleId": "rn_ctTgFb5NSQTSQVSP::L1",
+      "stem": "After a police car passes and drives away, the observed pitch an observer hears:",
+      "misconceptionClass": "recession case",
+      "options": [
+        {
+          "key": "A",
+          "text": "drops, because the wavefronts stretch behind the car",
+          "correct": true,
+          "explanation": "Receding sources give longer apparent wavelengths and lower frequencies.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "rises, because the car gains distance",
+          "correct": false,
+          "explanation": "Distance alone does not raise pitch; the stretching pattern lowers it.",
+          "misconception": "direction reversal"
+        },
+        {
+          "key": "C",
+          "text": "stays the same as when it approached",
+          "correct": false,
+          "explanation": "Approach and recession give opposite shifts.",
+          "misconception": "invariant assumption"
+        },
+        {
+          "key": "D",
+          "text": "drops to silence immediately",
+          "correct": false,
+          "explanation": "The sound continues, just at lower pitch.",
+          "misconception": "exaggeration error"
+        }
+      ]
+    },
+    {
+      "id": "rn_ctTgFb5NSQTSQVSP::L1::Q5",
+      "moduleId": "rn_ctTgFb5NSQTSQVSP::L1",
+      "stem": "Light from a galaxy appears redder than emitted. This shows the galaxy is:",
+      "misconceptionClass": "light application",
+      "options": [
+        {
+          "key": "A",
+          "text": "moving towards the Earth",
+          "correct": false,
+          "explanation": "Approach would shift light bluer, not redder.",
+          "misconception": "direction reversal"
+        },
+        {
+          "key": "B",
+          "text": "stationary relative to the Earth",
+          "correct": false,
+          "explanation": "A stationary source shows no shift.",
+          "misconception": "invariant assumption"
+        },
+        {
+          "key": "C",
+          "text": "moving away from the Earth",
+          "correct": true,
+          "explanation": "Redder light means longer apparent wavelength, the recession signature.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "emitting at a lower frequency by nature",
+          "correct": false,
+          "explanation": "The effect is apparent, caused by motion, not a changed emitter.",
+          "misconception": "source change myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_ctTgFb5NSQTSQVSP::L1::Q6",
+      "moduleId": "rn_ctTgFb5NSQTSQVSP::L1",
+      "stem": "State what happens to the observed wavelength of a wave from a source moving towards you.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The observed wavelength appears shorter, because the wavefronts bunch together ahead of the moving source.",
+      "keywords": [
+        "wavelength",
+        "shorter",
+        "bunch",
+        "approaching",
+        "wavefronts"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ctTgFb5NSQTSQVSP::L1::Q7",
+      "moduleId": "rn_ctTgFb5NSQTSQVSP::L1",
+      "stem": "State the everyday example of the Doppler effect heard in traffic.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "A siren or engine drops from high pitch to low pitch as the vehicle passes and recedes.",
+      "keywords": [
+        "siren",
+        "pitch",
+        "high",
+        "low",
+        "passes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ctTgFb5NSQTSQVSP::L1::Q8",
+      "moduleId": "rn_ctTgFb5NSQTSQVSP::L1",
+      "stem": "Explain why the wave speed does not change in the Doppler effect even though the observed frequency does.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Wave speed is fixed by the properties of the medium, not by the source motion, so the only way the pattern can change is in its spacing and arrival rate, which is why wavelength and frequency shift together and oppositely.",
+      "keywords": [
+        "medium",
+        "speed",
+        "fixed",
+        "spacing",
+        "frequency"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ctTgFb5NSQTSQVSP::L1::Q9",
+      "moduleId": "rn_ctTgFb5NSQTSQVSP::L1",
+      "stem": "An ambulance drives past a pedestrian at constant speed with its siren on. Describe and explain how the pitch heard changes from before the ambulance reaches the pedestrian to after it has passed.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Before it passes, the ambulance approaches so wavefronts bunch and the pitch sounds high; after it passes, the ambulance recedes so wavefronts stretch and the pitch drops, even though the siren emits at one constant frequency throughout.",
+      "keywords": [
+        "approaches",
+        "high",
+        "recedes",
+        "low",
+        "constant"
+      ],
+      "options": []
+    }
+  ]
+}

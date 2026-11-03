@@ -1,0 +1,144 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_MfKYy7mHFkx7zF9x",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "a7ca7032911228b586c2fc7163e92780b05f15f90b8934a7faf7b719cbbe1577",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_MfKYy7mHFkx7zF9x",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Reflection & Refraction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-2-reflection-and-refraction/3-2-5-core-practical-investigating-snells-law",
+    "specAnchors": [
+      {
+        "code": "3.19",
+        "text": "Core practical 5: investigate the refractive index of glass, using a glass block"
+      }
+    ],
+    "primer": {
+      "text": "Core practical 5 asks you to measure the refractive index of a glass block for yourself. You will trace a ray box beam through the block at several incidence angles, record the matching refraction angles and turn the pairs into a straight-line graph. Along the way you will name variables, choose sensible equipment and judge where errors creep in — the full experimental toolkit in one investigation.",
+      "prerequisiteSubtopic": "Reflection & Refraction"
+    },
+    "modules": [
+      {
+        "id": "rn_MfKYy7mHFkx7zF9x::L1",
+        "title": "Core Practical: Investigating Snell's law",
+        "sourceHeadings": [
+          "Method",
+          "Analysis of results"
+        ],
+        "specRefs": [
+          "3.19"
+        ],
+        "opening": "The apparatus is simple: a ray box, a protractor and a perspex block on paper. Trace the beam at one incidence angle after another, join the entry and exit points, and measure the refraction angle each time. Plotting the sine of one against the sine of the other gives a straight line, and the gradient of that line is the refractive index you set out to find.",
+        "keyPoints": [
+          "The experiment investigates the refractive index of glass using a glass block.",
+          "The independent variable is the angle of incidence; the dependent variable is the angle of refraction.",
+          "Control variables include the same perspex block, the beam width and the light frequency.",
+          "Equipment: a ray box provides the beam, a protractor measures both angles, and plotting sin i against sin r gives a straight line whose gradient is the refractive index.",
+          "Systematic errors come from wrongly drawn perpendicular lines; random errors come from imprecise marking and the protractor resolution."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Shine the beam into the block at different angles, trace each path, measure both angles and read the refractive index off the gradient of the sine graph.",
+            "analogy": "Fingerprinting glass: every material leaves its own straight-line signature when you plot sine against sine.",
+            "examPointer": "Questions often ask only for the aim — \"investigate the refractive index of glass using a glass block\" — word it exactly."
+          },
+          "medium": {
+            "restatement": "Changing the incidence angle while holding the block, beam and light fixed isolates how the refraction angle responds; the sine-sine plot linearises Snell's law so its gradient equals the index.",
+            "analogy": "A fair race: one runner varies, everything else — track, shoes, wind — stays identical, so the result means something.",
+            "examPointer": "Name all three variable roles in method questions; forgetting the control variables is the most common lost mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_MfKYy7mHFkx7zF9x::L1::Q1",
+          "rn_MfKYy7mHFkx7zF9x::L1::Q2",
+          "rn_MfKYy7mHFkx7zF9x::L1::Q3",
+          "rn_MfKYy7mHFkx7zF9x::L1::Q4",
+          "rn_MfKYy7mHFkx7zF9x::L1::Q5",
+          "rn_MfKYy7mHFkx7zF9x::L1::Q6",
+          "rn_MfKYy7mHFkx7zF9x::L1::Q7",
+          "rn_MfKYy7mHFkx7zF9x::L1::Q8",
+          "rn_MfKYy7mHFkx7zF9x::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "independent variable",
+          "definition": "The quantity deliberately changed by the experimenter; here, the angle of incidence.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dependent variable",
+          "definition": "The quantity measured as the outcome; here, the angle of refraction.",
+          "firstLesson": 1
+        },
+        {
+          "term": "control variable",
+          "definition": "A quantity kept constant so it cannot skew the comparison.",
+          "firstLesson": 1
+        },
+        {
+          "term": "resolution",
+          "definition": "The smallest change an instrument can reliably display, such as 1° on a protractor.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b0d946dad67f-snells-law-experiment-diagram.png",
+        "alt": "snells-law-experiment-diagram",
+        "sourceHeading": "Diagram of equipment set up",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Apparatus set-up to investigate Snell's Law",
+        "binding": "sole-lesson"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b341dc6a6285-3-2-5-snells-law-results.png",
+        "alt": "Snells Law Results, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "A diagram showing how to measure the angles of incidence and refraction",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "sole-lesson"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/bef5875a67ba-3-2-5-snells-law-graph.png",
+        "alt": "Snells Law Graph, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "A graph of the results of snell's law experiment",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "sole-lesson"
+      }
+    ]
+  }
+}

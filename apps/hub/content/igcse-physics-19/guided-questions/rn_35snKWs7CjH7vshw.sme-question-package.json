@@ -1,0 +1,497 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_35snKWs7CjH7vshw",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "a02dc95d3b9bc0d5b97da9f24e0215d695528ffba7822ddeee20509fe91e1261",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "packageId": "igcse-physics::rn_35snKWs7CjH7vshw",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_35snKWs7CjH7vshw::L1::Q1",
+      "moduleId": "rn_35snKWs7CjH7vshw::L1",
+      "stem": "Reflection happens when a wave arrives at a boundary and:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "passes into the new medium and bends",
+          "correct": false,
+          "explanation": "That describes refraction.",
+          "misconception": "concept swap"
+        },
+        {
+          "key": "B",
+          "text": "stays in the original medium, bouncing back",
+          "correct": true,
+          "explanation": "Reflected waves do not cross into the second medium.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "stops entirely",
+          "correct": false,
+          "explanation": "The wave continues, redirected.",
+          "misconception": "absorption myth"
+        },
+        {
+          "key": "D",
+          "text": "splits into colours",
+          "correct": false,
+          "explanation": "Dispersion is a separate effect.",
+          "misconception": "concept swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L1::Q2",
+      "moduleId": "rn_35snKWs7CjH7vshw::L1",
+      "stem": "The law of reflection states that:",
+      "misconceptionClass": "law recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "angle of incidence = angle of refraction",
+          "correct": false,
+          "explanation": "That confuses reflection with refraction.",
+          "misconception": "concept swap"
+        },
+        {
+          "key": "B",
+          "text": "angle of incidence is twice the angle of reflection",
+          "correct": false,
+          "explanation": "No doubling exists in the law.",
+          "misconception": "doubling error"
+        },
+        {
+          "key": "C",
+          "text": "angle of incidence = angle of reflection",
+          "correct": true,
+          "explanation": "That equality is the law, both angles from the normal.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the angles add to ninety degrees",
+          "correct": false,
+          "explanation": "No fixed sum is part of the law.",
+          "misconception": "sum invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L1::Q3",
+      "moduleId": "rn_35snKWs7CjH7vshw::L1",
+      "stem": "Angles of incidence and reflection are measured between the ray and:",
+      "misconceptionClass": "convention recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the boundary surface itself",
+          "correct": false,
+          "explanation": "Measuring from the surface is the classic error.",
+          "misconception": "reference error"
+        },
+        {
+          "key": "B",
+          "text": "the incident ray",
+          "correct": false,
+          "explanation": "The incident ray cannot measure its own angle.",
+          "misconception": "reference error"
+        },
+        {
+          "key": "C",
+          "text": "the wavefront lines",
+          "correct": false,
+          "explanation": "Wavefronts are drawing aids, not angle references.",
+          "misconception": "reference error"
+        },
+        {
+          "key": "D",
+          "text": "the normal",
+          "correct": true,
+          "explanation": "The normal is the reference line for all such angles.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L1::Q4",
+      "moduleId": "rn_35snKWs7CjH7vshw::L1",
+      "stem": "A ray strikes a plane mirror at 35 degrees from the normal. It leaves at:",
+      "misconceptionClass": "law application",
+      "options": [
+        {
+          "key": "A",
+          "text": "35 degrees from the normal on the other side",
+          "correct": true,
+          "explanation": "The reflection angle equals the incidence angle.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "55 degrees from the normal",
+          "correct": false,
+          "explanation": "That subtracts from ninety unnecessarily.",
+          "misconception": "complement confusion"
+        },
+        {
+          "key": "C",
+          "text": "70 degrees from the normal",
+          "correct": false,
+          "explanation": "No doubling applies.",
+          "misconception": "doubling error"
+        },
+        {
+          "key": "D",
+          "text": "35 degrees measured from the mirror surface",
+          "correct": false,
+          "explanation": "Angles are quoted from the normal, not the surface.",
+          "misconception": "reference error"
+        }
+      ]
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L1::Q5",
+      "moduleId": "rn_35snKWs7CjH7vshw::L1",
+      "stem": "Which waves can be reflected?",
+      "misconceptionClass": "scope law",
+      "options": [
+        {
+          "key": "A",
+          "text": "light only",
+          "correct": false,
+          "explanation": "Sound and water waves reflect too.",
+          "misconception": "scope narrowing"
+        },
+        {
+          "key": "B",
+          "text": "transverse waves only",
+          "correct": false,
+          "explanation": "Longitudinal waves reflect as echoes.",
+          "misconception": "scope narrowing"
+        },
+        {
+          "key": "C",
+          "text": "all waves, transverse and longitudinal",
+          "correct": true,
+          "explanation": "Reflection is universal across the wave families.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "none, it is a light-only effect",
+          "correct": false,
+          "explanation": "The spec statement is explicitly about all waves.",
+          "misconception": "scope denial"
+        }
+      ]
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L1::Q6",
+      "moduleId": "rn_35snKWs7CjH7vshw::L1",
+      "stem": "State the law of reflection in words.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The incidence angle equals the reflection angle, both measured from the normal.",
+      "keywords": [
+        "angle of incidence",
+        "angle of reflection",
+        "equal",
+        "normal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L1::Q7",
+      "moduleId": "rn_35snKWs7CjH7vshw::L1",
+      "stem": "State what the normal is.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The normal is the construction line at right angles (ninety degrees) to the boundary from which angles are measured.",
+      "keywords": [
+        "normal",
+        "right angles",
+        "ninety",
+        "boundary"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L1::Q8",
+      "moduleId": "rn_35snKWs7CjH7vshw::L1",
+      "stem": "Explain why measuring reflection angles from the mirror surface instead of the normal gives the wrong comparison.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The law compares angles defined from the normal, so measuring from the surface gives each angle as its complement to ninety degrees; two unequal incidence and reflection angles could then appear equal, hiding the true geometry.",
+      "keywords": [
+        "normal",
+        "complement",
+        "ninety",
+        "wrong",
+        "surface"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L1::Q9",
+      "moduleId": "rn_35snKWs7CjH7vshw::L1",
+      "stem": "A tree stands by a calm lake and its image appears below it in the water. Name the effect and state the equality that governs each ray involved.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The image is produced by reflection at the water surface; every ray obeys the law of reflection, leaving at an angle from the normal equal to the angle at which it arrived.",
+      "keywords": [
+        "reflection",
+        "water",
+        "angle of incidence",
+        "angle of reflection",
+        "equal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L2::Q1",
+      "moduleId": "rn_35snKWs7CjH7vshw::L2",
+      "stem": "On a ray diagram, the arrow of the incident ray points:",
+      "misconceptionClass": "diagram convention",
+      "options": [
+        {
+          "key": "A",
+          "text": "away from the boundary",
+          "correct": false,
+          "explanation": "That is the reflected ray convention.",
+          "misconception": "arrow swap"
+        },
+        {
+          "key": "B",
+          "text": "towards the boundary",
+          "correct": true,
+          "explanation": "Incident rays travel into the boundary.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "along the boundary",
+          "correct": false,
+          "explanation": "No convention points rays along the surface here.",
+          "misconception": "convention invention"
+        },
+        {
+          "key": "D",
+          "text": "both ways",
+          "correct": false,
+          "explanation": "Each ray carries one direction arrow.",
+          "misconception": "convention confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L2::Q2",
+      "moduleId": "rn_35snKWs7CjH7vshw::L2",
+      "stem": "Light passes from air into glass. The refracted ray bends:",
+      "misconceptionClass": "bend direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "away from the normal",
+          "correct": false,
+          "explanation": "That is the glass-to-air direction.",
+          "misconception": "bend inversion"
+        },
+        {
+          "key": "B",
+          "text": "not at all",
+          "correct": false,
+          "explanation": "No bending happens only along the normal.",
+          "misconception": "condition confusion"
+        },
+        {
+          "key": "C",
+          "text": "back on itself",
+          "correct": false,
+          "explanation": "That would be reflection, not refraction.",
+          "misconception": "concept swap"
+        },
+        {
+          "key": "D",
+          "text": "towards the normal",
+          "correct": true,
+          "explanation": "Into the denser medium the ray bends towards the normal.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L2::Q3",
+      "moduleId": "rn_35snKWs7CjH7vshw::L2",
+      "stem": "Light leaves the glass block back into air. The emerging ray bends:",
+      "misconceptionClass": "bend direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "away from the normal",
+          "correct": true,
+          "explanation": "Into the less dense medium the ray bends away from the normal.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "towards the normal",
+          "correct": false,
+          "explanation": "That is the air-to-glass direction.",
+          "misconception": "bend inversion"
+        },
+        {
+          "key": "C",
+          "text": "along the boundary",
+          "correct": false,
+          "explanation": "That special case is not the general exit behaviour.",
+          "misconception": "condition confusion"
+        },
+        {
+          "key": "D",
+          "text": "in a circle",
+          "correct": false,
+          "explanation": "Rays bend linearly at flat boundaries.",
+          "misconception": "shape invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L2::Q4",
+      "moduleId": "rn_35snKWs7CjH7vshw::L2",
+      "stem": "During refraction, which properties change?",
+      "misconceptionClass": "property tracking",
+      "options": [
+        {
+          "key": "A",
+          "text": "frequency and speed, but not wavelength",
+          "correct": false,
+          "explanation": "Frequency is the survivor; wavelength follows speed.",
+          "misconception": "property swap"
+        },
+        {
+          "key": "B",
+          "text": "all three",
+          "correct": false,
+          "explanation": "Frequency never changes on refraction.",
+          "misconception": "overgeneralisation"
+        },
+        {
+          "key": "C",
+          "text": "speed and wavelength, but not frequency",
+          "correct": true,
+          "explanation": "The medium changes the speed and the wavelength rescales with it.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "none of them",
+          "correct": false,
+          "explanation": "A speed change is the cause of the bending.",
+          "misconception": "invariant assumption"
+        }
+      ]
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L2::Q5",
+      "moduleId": "rn_35snKWs7CjH7vshw::L2",
+      "stem": "A ray hits a boundary exactly along the normal. It:",
+      "misconceptionClass": "special case",
+      "options": [
+        {
+          "key": "A",
+          "text": "bends towards the normal",
+          "correct": false,
+          "explanation": "It is already on the normal; there is nothing to bend towards.",
+          "misconception": "condition confusion"
+        },
+        {
+          "key": "B",
+          "text": "reflects completely",
+          "correct": false,
+          "explanation": "Partial reflection may occur, but the listed behaviour is straight-through transmission.",
+          "misconception": "concept swap"
+        },
+        {
+          "key": "C",
+          "text": "stops at the boundary",
+          "correct": false,
+          "explanation": "The wave continues into the new medium.",
+          "misconception": "absorption myth"
+        },
+        {
+          "key": "D",
+          "text": "passes straight through without bending",
+          "correct": true,
+          "explanation": "Along the normal there is no direction change on refraction.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L2::Q6",
+      "moduleId": "rn_35snKWs7CjH7vshw::L2",
+      "stem": "State the bending rule for light entering a denser medium.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "It bends towards the normal.",
+      "keywords": [
+        "towards",
+        "normal",
+        "denser"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L2::Q7",
+      "moduleId": "rn_35snKWs7CjH7vshw::L2",
+      "stem": "State what happens to the frequency of light during refraction.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The frequency does not change.",
+      "keywords": [
+        "frequency",
+        "does not change",
+        "change"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L2::Q8",
+      "moduleId": "rn_35snKWs7CjH7vshw::L2",
+      "stem": "Explain why a pencil standing in a glass of water looks bent at the surface.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Light from the underwater part leaves the water and bends away from the normal into the air, so the rays reaching your eye come from a shifted apparent direction and the pencil appears bent at the boundary.",
+      "keywords": [
+        "leaves",
+        "away",
+        "normal",
+        "apparent",
+        "bent"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_35snKWs7CjH7vshw::L2::Q9",
+      "moduleId": "rn_35snKWs7CjH7vshw::L2",
+      "stem": "A ray diagram must show a beam travelling air-to-glass-to-air through a rectangular block. Sketch description: state the bend at each boundary and the arrow directions.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "At the air-to-glass face the ray bends towards the normal as it enters; at the glass-to-air face it bends away from the normal as it leaves; the incident arrow points at the first boundary and the emerging arrow points away from the block on the far side.",
+      "keywords": [
+        "towards",
+        "away",
+        "normal",
+        "enter",
+        "leave"
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_GVDsPK5gmYw5wqvG",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "386100404b6ba709ab4a81fac77cf511d7bd65c617652b0a84ca1f995bdfc855",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_GVDsPK5gmYw5wqvG",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Waves & The Electromagnetic Spectrum",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-1-waves-and-the-electromagnetic-spectrum/3-1-5-electromagnetic-em-waves",
+    "specAnchors": [
+      {
+        "code": "3.10",
+        "text": "know that light is part of a continuous electromagnetic spectrum that includes radio, microwave, infrared, visible, ultraviolet, x-ray and gamma ray radiations and that all these waves travel at the same speed in free space"
+      },
+      {
+        "code": "3.11",
+        "text": "know the order of the electromagnetic spectrum in terms of decreasing wavelength and increasing frequency, including the colours of the visible spectrum"
+      }
+    ],
+    "primer": {
+      "text": "Light is the slice of a much larger family that your eye happens to catch. The electromagnetic spectrum runs from radio waves with kilometre-scale wavelengths to gamma rays from atomic nuclei, and every member shares one speed through empty space. This lesson fixes the order of that spectrum and the colours inside the visible band.",
+      "prerequisiteSubtopic": "Waves & The Electromagnetic Spectrum"
+    },
+    "modules": [
+      {
+        "id": "rn_GVDsPK5gmYw5wqvG::L1",
+        "title": "Properties of EM waves",
+        "sourceHeadings": [
+          "Properties of EM waves"
+        ],
+        "specRefs": [
+          "3.10"
+        ],
+        "opening": "The electromagnetic spectrum is continuous: radio, microwave, infrared, visible, ultraviolet, x-ray and gamma ray, with no gaps between the bands. Every member is a transverse wave, every one crosses empty space, and every one travels at exactly the same speed in that vacuum. Light is simply the band our retinas respond to.",
+        "keyPoints": [
+          "The EM spectrum contains radio, microwave, infrared, visible, ultraviolet, x-ray and gamma ray radiations.",
+          "All EM waves travel through free space, meaning a vacuum.",
+          "All EM waves travel at the same speed in free space.",
+          "All EM waves are transverse.",
+          "Light is one continuous part of this spectrum."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The EM family spans many radiations, yet they all wiggle crosswise, cross a vacuum and match each other for speed while doing it.",
+            "analogy": "One family of cars with different colours and sizes but an identical top speed on the same empty motorway.",
+            "examPointer": "The three shared properties (transverse, cross vacuum, same speed in free space) are a standard three-mark list; learn them as a set."
+          },
+          "medium": {
+            "restatement": "Continuity matters: the bands are human labels on one spectrum, so the boundary between ultraviolet and x-ray is a convention of dose and detection, not a physical cliff.",
+            "analogy": "The rainbow bands in a rainbow blend into each other; naming seven colours does not cut the light into separate stripes.",
+            "examPointer": "If asked why light needs no medium, answer that EM waves are transverse oscillations of fields, not vibrations of particles."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_GVDsPK5gmYw5wqvG::L1::Q1",
+          "rn_GVDsPK5gmYw5wqvG::L1::Q2",
+          "rn_GVDsPK5gmYw5wqvG::L1::Q3",
+          "rn_GVDsPK5gmYw5wqvG::L1::Q4",
+          "rn_GVDsPK5gmYw5wqvG::L1::Q5",
+          "rn_GVDsPK5gmYw5wqvG::L1::Q6",
+          "rn_GVDsPK5gmYw5wqvG::L1::Q7",
+          "rn_GVDsPK5gmYw5wqvG::L1::Q8",
+          "rn_GVDsPK5gmYw5wqvG::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_GVDsPK5gmYw5wqvG::L2",
+        "title": "The EM spectrum & visible light",
+        "sourceHeadings": [
+          "The EM spectrum",
+          "Visible Spectrum"
+        ],
+        "specRefs": [
+          "3.11"
+        ],
+        "opening": "Order the spectrum by wavelength and frequency move in opposition: radio waves carry the longest wavelength and lowest frequency, gamma rays the shortest and highest. Inside the visible band the same law runs across the colours, red swinging longest and violet shortest. Wavelength and frequency are inversely proportional across the whole family.",
+        "keyPoints": [
+          "Radio waves have the longest wavelength and the lowest frequency of the spectrum.",
+          "Gamma rays have the shortest wavelength and the highest frequency.",
+          "Wavelength and frequency are inversely proportional across the EM spectrum.",
+          "In the visible band, red has the longest wavelength and violet the shortest.",
+          "Each colour of visible light corresponds to a narrow band of wavelength and frequency."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Going down the spectrum from radio to gamma, wavelength shrinks while frequency climbs; within visible light, red is the long slow end and violet the short fast end.",
+            "analogy": "A piano keyboard: bass notes (radio) rumble with long slow waves, top notes (gamma) shrill with short fast ones.",
+            "examPointer": "Learn one spectrum mnemonic and one colour-order phrase; examiners accept any that keep the order right."
+          },
+          "medium": {
+            "restatement": "The inverse law follows from the fixed wave speed: since v = f x lambda with v constant in free space, a larger lambda forces a smaller f, so the spectrum can be ordered by either quantity and the two orders always disagree.",
+            "analogy": "A see-saw: as one side (wavelength) rises, the other (frequency) must fall, because the plank length (speed) never changes.",
+            "examPointer": "Link the inverse law to v = f x lambda explicitly; that chain of reasoning is what extended questions reward."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_GVDsPK5gmYw5wqvG::L2::Q1",
+          "rn_GVDsPK5gmYw5wqvG::L2::Q2",
+          "rn_GVDsPK5gmYw5wqvG::L2::Q3",
+          "rn_GVDsPK5gmYw5wqvG::L2::Q4",
+          "rn_GVDsPK5gmYw5wqvG::L2::Q5",
+          "rn_GVDsPK5gmYw5wqvG::L2::Q6",
+          "rn_GVDsPK5gmYw5wqvG::L2::Q7",
+          "rn_GVDsPK5gmYw5wqvG::L2::Q8",
+          "rn_GVDsPK5gmYw5wqvG::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "electromagnetic spectrum",
+          "definition": "The continuous family of transverse waves from radio to gamma rays, all travelling at the same speed in free space.",
+          "firstLesson": 1
+        },
+        {
+          "term": "free space",
+          "definition": "A vacuum, the empty-space condition in which all EM waves travel at the same speed.",
+          "firstLesson": 1
+        },
+        {
+          "term": "visible spectrum",
+          "definition": "The narrow band of the EM spectrum the human eye detects, from red to violet.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b6d08bc418f0-7-1-4-2-em-spectrum-diagram.png",
+        "alt": "EM spectrum diagram, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "The types of radiation in the EM spectrum from longest to shortest wavelength",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Visible light is just one small part of a much bigger spectrum: The electromagnetic spectrum",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/5aa6926f28af-wavelength-of-spectrum.png",
+        "alt": "Wavelength of spectrum, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The colours of the visible spectrum",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "The colours of the visible spectrum: red has the longest wavelength; violet has the shortest",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/82391c30748c-colours-of-the-spectrum.png",
+        "alt": "Colours of the spectrum, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The colours of the visible spectrum",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

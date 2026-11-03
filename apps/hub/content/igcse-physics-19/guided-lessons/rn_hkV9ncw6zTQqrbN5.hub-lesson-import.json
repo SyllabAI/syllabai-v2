@@ -1,0 +1,234 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_hkV9ncw6zTQqrbN5",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "097e71cfa17c0d05db915a3a8e49b488a3081f08444f6a4d7a5df4ec70abe4bf",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_hkV9ncw6zTQqrbN5",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Waves & The Electromagnetic Spectrum",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-1-waves-and-the-electromagnetic-spectrum/3-1-3-the-wave-equation",
+    "specAnchors": [
+      {
+        "code": "3.5",
+        "text": "know and use the relationship between the speed, frequency and wavelength of a wave: wave speed = frequency × wavelength"
+      },
+      {
+        "code": "3.6",
+        "text": "use the relationship between frequency and time period: frequency = 1 / time period"
+      },
+      {
+        "code": "3.7",
+        "text": "use the above relationships in different contexts including sound waves and electromagnetic waves"
+      }
+    ],
+    "primer": {
+      "text": "You can already define wave speed, frequency and wavelength, and you know every wave obeys the same rhythm. One small equation now ties those three together, and a second links frequency with the time period. With them you can work wave questions for ripples, sound and light alike, which is exactly what this lesson trains.",
+      "prerequisiteSubtopic": "Waves & The Electromagnetic Spectrum"
+    },
+    "modules": [
+      {
+        "id": "rn_hkV9ncw6zTQqrbN5::L1",
+        "title": "The wave speed equation",
+        "sourceHeadings": [
+          "The wave equation",
+          "Formula triangle for the wave speed equation"
+        ],
+        "specRefs": [
+          "3.5"
+        ],
+        "opening": "Every wave, from a stadium ripple to a gamma ray, obeys one speed law: wave speed equals frequency multiplied by wavelength. In symbols, v = f x lambda, with v in metres per second, f in hertz and lambda in metres. A formula triangle makes rearranging it a covering exercise rather than algebra.",
+        "keyPoints": [
+          "All waves obey the wave speed equation v = f x lambda.",
+          "v is the wave speed in metres per second.",
+          "f is the frequency in hertz and lambda the wavelength in metres.",
+          "A formula triangle covers the quantity you want to find and reads off the arrangement of the other two."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The speed of a wave is its frequency times its wavelength, so fast waves are either repeating quickly or stretching far per cycle.",
+            "analogy": "Steps per second times stride length gives walking speed; frequency is the steps and wavelength is the stride.",
+            "examPointer": "Write the equation first, then substitute: the equation line itself usually scores a mark."
+          },
+          "medium": {
+            "restatement": "Because v = f x lambda holds for every wave, changing the medium changes speed and wavelength together while the source keeps the frequency fixed, a consistency examiners like to probe.",
+            "analogy": "Marching soldiers entering mud: the pace (frequency) stays set by the drummer while the stride (wavelength) shortens and the column slows.",
+            "examPointer": "Keep unit discipline: hertz times metres gives metres per second; mismatched units are the classic lost mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_hkV9ncw6zTQqrbN5::L1::Q1",
+          "rn_hkV9ncw6zTQqrbN5::L1::Q2",
+          "rn_hkV9ncw6zTQqrbN5::L1::Q3",
+          "rn_hkV9ncw6zTQqrbN5::L1::Q4",
+          "rn_hkV9ncw6zTQqrbN5::L1::Q5",
+          "rn_hkV9ncw6zTQqrbN5::L1::Q6",
+          "rn_hkV9ncw6zTQqrbN5::L1::Q7",
+          "rn_hkV9ncw6zTQqrbN5::L1::Q8",
+          "rn_hkV9ncw6zTQqrbN5::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_hkV9ncw6zTQqrbN5::L2",
+        "title": "Frequency & time period",
+        "sourceHeadings": [
+          "Frequency & time period"
+        ],
+        "specRefs": [
+          "3.6"
+        ],
+        "opening": "Frequency and time period are two views of one rhythm, and the equation f = 1 / T converts between them. Divide one second by the period and you have the count of waves per second; turn the frequency upside down and you have the seconds per wave. The worked example puts the sums to work on light itself.",
+        "keyPoints": [
+          "The relationship is frequency = 1 / time period, written f = 1 / T.",
+          "f is measured in hertz and T in seconds.",
+          "Turning the period upside down gives the frequency, and the reverse rearrangement gives T = 1 / f.",
+          "A wave repeating every 0.02 s has frequency 50 Hz by the relationship."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Frequency and period are reciprocals: more waves per second means fewer seconds per wave.",
+            "analogy": "A bakery that finishes one loaf every 0.5 minutes makes 2 loaves per minute; the rate and the per-item time are inverses.",
+            "examPointer": "Quote f = 1 / T before substituting; the stated relationship is usually worth a mark on its own."
+          },
+          "medium": {
+            "restatement": "The reciprocal law lets exam questions hop between the time picture and the count picture: a short period means a high frequency, which for a fixed wave speed means a short wavelength through v = f x lambda.",
+            "analogy": "Heart monitors show both beats per minute and the gap between beats; the two numbers carry the same information flipped.",
+            "examPointer": "Keep periods in seconds, not milliseconds, before substituting; unit slips here are the most common error."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_hkV9ncw6zTQqrbN5::L2::Q1",
+          "rn_hkV9ncw6zTQqrbN5::L2::Q2",
+          "rn_hkV9ncw6zTQqrbN5::L2::Q3",
+          "rn_hkV9ncw6zTQqrbN5::L2::Q4",
+          "rn_hkV9ncw6zTQqrbN5::L2::Q5",
+          "rn_hkV9ncw6zTQqrbN5::L2::Q6",
+          "rn_hkV9ncw6zTQqrbN5::L2::Q7",
+          "rn_hkV9ncw6zTQqrbN5::L2::Q8",
+          "rn_hkV9ncw6zTQqrbN5::L2::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_hkV9ncw6zTQqrbN5::L3",
+        "title": "Using the relationships in different contexts",
+        "sourceHeadings": [
+          "Calculations in different contexts"
+        ],
+        "specRefs": [
+          "3.7"
+        ],
+        "opening": "The two relationships are not tied to any one wave type: sound in air, ripples on water and light in space all answer to v = f x lambda and f = 1 / T. Exam questions simply dress the same algebra in different contexts, so the skill is spotting which quantity each sentence hands you and converting units first.",
+        "keyPoints": [
+          "The wave equation applies to every type of wave, including sound and electromagnetic waves.",
+          "Frequency given in kHz must be converted to hertz before substitution.",
+          "Wavelengths given in centimetres can be worked in centimetres per second if units are kept consistent.",
+          "Use lambda for wavelength and state word equations if symbols are forgotten."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Whichever wave a question describes, the same two equations answer it; only the numbers and units change.",
+            "analogy": "One recipe bakes a cake, cookies or a loaf: same method, different ingredients.",
+            "examPointer": "Convert kHz to Hz before any substitution; 1 kHz = 1000 Hz is quoted in the notes as the slip to avoid."
+          },
+          "medium": {
+            "restatement": "Context questions chain the two relationships: a period gives a frequency through the reciprocal law, and that frequency with a speed gives a wavelength, or the reverse chain recovers a speed from a count and a length.",
+            "analogy": "Two gears in a gearbox: turning either one eventually turns the other, whichever the question hands you first.",
+            "examPointer": "State the units in the final answer; a bare number for a speed loses the unit mark even when the arithmetic is right."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_hkV9ncw6zTQqrbN5::L3::Q1",
+          "rn_hkV9ncw6zTQqrbN5::L3::Q2",
+          "rn_hkV9ncw6zTQqrbN5::L3::Q3",
+          "rn_hkV9ncw6zTQqrbN5::L3::Q4",
+          "rn_hkV9ncw6zTQqrbN5::L3::Q5",
+          "rn_hkV9ncw6zTQqrbN5::L3::Q6",
+          "rn_hkV9ncw6zTQqrbN5::L3::Q7",
+          "rn_hkV9ncw6zTQqrbN5::L3::Q8",
+          "rn_hkV9ncw6zTQqrbN5::L3::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "wave speed",
+          "definition": "The distance a wave pattern travels each second, measured in metres per second.",
+          "firstLesson": 1
+        },
+        {
+          "term": "formula triangle",
+          "definition": "A covering trick for rearranging a three-quantity equation of the form a = b x c.",
+          "firstLesson": 1
+        },
+        {
+          "term": "kHz",
+          "definition": "Kilohertz; one kilohertz is one thousand hertz.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": {
+        "prompt": "Visible light has a frequency of about 6 x 10^14 Hz. How long does it take for one complete cycle of visible light to enter our eyes?",
+        "steps": [
+          "List the known value: frequency f = 6 x 10^14 Hz.",
+          "Time and frequency are linked through the period, so state T = 1 / f.",
+          "Substitute and calculate: T = 1 / (6 x 10^14) = 1.67 x 10^-15 s (to 2 decimal places)."
+        ],
+        "finalAnswer": "One complete cycle of visible light takes about 1.67 x 10^-15 s."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1a84f60cfeef-wave-speed-triangle-2.png",
+        "alt": "Wave speed triangle (2), IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Formula triangle for the wave speed equation",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "A formula triangle can be used to help rearrange the wave speed equation",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

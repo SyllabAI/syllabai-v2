@@ -1,0 +1,235 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_35snKWs7CjH7vshw",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "a02dc95d3b9bc0d5b97da9f24e0215d695528ffba7822ddeee20509fe91e1261",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_35snKWs7CjH7vshw",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Reflection & Refraction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-2-reflection-and-refraction/3-2-2-reflection-and-refraction",
+    "specAnchors": [
+      {
+        "code": "3.15",
+        "text": "use the law of reflection (the angle of incidence equals the angle of reflection)"
+      },
+      {
+        "code": "3.16",
+        "text": "draw ray diagrams to illustrate reflection and refraction"
+      },
+      {
+        "code": "3.9",
+        "text": "explain that all waves can be reflected and refracted"
+      }
+    ],
+    "primer": {
+      "text": "Reflection and refraction are the two doors every wave meets at a boundary: one turns it back, the other bends it onward. You can already name both behaviours for light and sound; this lesson adds the measuring law for reflection and the drawing rules that turn those laws into full-mark ray diagrams.",
+      "prerequisiteSubtopic": "Reflection & Refraction"
+    },
+    "modules": [
+      {
+        "id": "rn_35snKWs7CjH7vshw::L1",
+        "title": "Reflection & the law of reflection",
+        "sourceHeadings": [
+          "An example of reflection",
+          "The law of reflection"
+        ],
+        "specRefs": [
+          "3.9",
+          "3.15"
+        ],
+        "opening": "Reflection happens when a wave meets the boundary between two media and stays in the one it came from, like a tree mirrored in still water. The law that governs it is symmetrical: the angle of incidence equals the angle of reflection, both measured from the normal, the line at right angles to the boundary.",
+        "keyPoints": [
+          "All waves, transverse or longitudinal, can be reflected and refracted.",
+          "Reflection keeps the wave in its original medium at the boundary.",
+          "The law of reflection states that the angle of incidence equals the angle of reflection.",
+          "Both angles are measured between the ray and the normal.",
+          "The normal is the line at ninety degrees to the boundary surface."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "At a reflecting boundary the wave bounces back into its own medium, and the angle it arrived at, measured from the normal, equals the angle it leaves at.",
+            "analogy": "A ball thrown at a wall straight-on comes straight back; thrown at a slant it leaves at the same slant, mirrored.",
+            "examPointer": "Always draw and label the normal first; angles measured from the boundary itself score zero."
+          },
+          "medium": {
+            "restatement": "The equality of the two angles is the reversible symmetry of the path: send a ray along the reflected direction and it retraces the incident one, which is why mirror layouts in periscopes and reflectors work in both directions.",
+            "analogy": "A corridor with one mirrored wall: walk any route in and the mirror sends you out along the exact mirror twin of your path.",
+            "examPointer": "For the mark, quote i = r in words as well as symbols, and name both angles from the normal."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_35snKWs7CjH7vshw::L1::Q1",
+          "rn_35snKWs7CjH7vshw::L1::Q2",
+          "rn_35snKWs7CjH7vshw::L1::Q3",
+          "rn_35snKWs7CjH7vshw::L1::Q4",
+          "rn_35snKWs7CjH7vshw::L1::Q5",
+          "rn_35snKWs7CjH7vshw::L1::Q6",
+          "rn_35snKWs7CjH7vshw::L1::Q7",
+          "rn_35snKWs7CjH7vshw::L1::Q8",
+          "rn_35snKWs7CjH7vshw::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-03",
+          "fig-04"
+        ]
+      },
+      {
+        "id": "rn_35snKWs7CjH7vshw::L2",
+        "title": "Ray diagrams & refraction",
+        "sourceHeadings": [
+          "An example of refraction",
+          "Ray diagrams"
+        ],
+        "specRefs": [
+          "3.16"
+        ],
+        "opening": "Ray diagrams reduce waves to arrowed lines, incident arrows pointing at the boundary and reflected arrows pointing away. Refraction adds a bend whose direction follows optical density: into a denser medium the ray bends towards the normal, out of one it bends away, and along the normal it does not bend at all.",
+        "keyPoints": [
+          "An incident ray is drawn with its arrow pointing towards the boundary.",
+          "A reflected ray is drawn with its arrow pointing away from the boundary.",
+          "Entering a denser medium, light bends towards the normal.",
+          "Leaving a denser medium, light bends away from the normal.",
+          "Speed and wavelength change during refraction but frequency does not."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Ray diagrams use straight arrowed lines: into denser media the bend is towards the normal, out of them it is away, and frequency never changes even though speed and wavelength do.",
+            "analogy": "A trolley rolling from pavement onto mud veers towards the normal as its wheels slow on the near side.",
+            "examPointer": "Remember the paired phrase: enters towards, leaves away; arrows on every ray are compulsory."
+          },
+          "medium": {
+            "restatement": "The bend is the geometry of a speed change: the wavefront edge that arrives first slows first, rotating the front, which also explains why the frequency survives unchanged while wavelength rescales with speed.",
+            "analogy": "A car pair turning as one wheel hits gravel before the other: the axle pivots without the engine changing its rhythm.",
+            "examPointer": "The unchanged-frequency argument via colour is the classic explanation mark: light does not change colour on refracting."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_35snKWs7CjH7vshw::L2::Q1",
+          "rn_35snKWs7CjH7vshw::L2::Q2",
+          "rn_35snKWs7CjH7vshw::L2::Q3",
+          "rn_35snKWs7CjH7vshw::L2::Q4",
+          "rn_35snKWs7CjH7vshw::L2::Q5",
+          "rn_35snKWs7CjH7vshw::L2::Q6",
+          "rn_35snKWs7CjH7vshw::L2::Q7",
+          "rn_35snKWs7CjH7vshw::L2::Q8",
+          "rn_35snKWs7CjH7vshw::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "medium",
+          "definition": "A material that transmits light; more than one is called media.",
+          "firstLesson": 1
+        },
+        {
+          "term": "normal",
+          "definition": "The construction line at right angles to a boundary from which angles are measured.",
+          "firstLesson": 2
+        },
+        {
+          "term": "angle of incidence",
+          "definition": "The angle between the incoming ray and the normal.",
+          "firstLesson": 2
+        },
+        {
+          "term": "angle of reflection",
+          "definition": "The angle between the outgoing reflected ray and the normal.",
+          "firstLesson": 2
+        },
+        {
+          "term": "optical density",
+          "definition": "A measure of how much a material slows light passing through it.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/4136653b322f-3-2-2-reflection-on-water.png",
+        "alt": "Reflection on Water, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "An example of reflection",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "An identical image of the tree is seen in the water due to reflection",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/cc72ec490872-4-1-8-refraction-direction-change.png",
+        "alt": "Refraction direction change, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "An example of refraction",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Waves can change direction when moving between materials with different optical densities",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b3859e1040ef-6-3-5-light-reflection.png",
+        "alt": "Light Reflection, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "An example of reflection in a plane mirror",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Ray diagram of the reflection of a wave in a mirror",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/9943dedc692e-5-1-1-reflection.png",
+        "alt": "Reflection, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "A diagram showing the law of reflection",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The angle of incidence and angle of reflection are equal in the law of reflection",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/49872d27fdf1-6-2-4-refraction-of-light.png",
+        "alt": "Refraction of Light, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "A diagram of a ray refracted into and out of a glass block",
+        "moduleIds": [],
+        "caption": "How to construct a ray diagram showing the refraction of light as it passes through a rectangular block",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}
