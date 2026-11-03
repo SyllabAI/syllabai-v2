@@ -1,29 +1,21 @@
 "use client";
 
 /**
- * MockResultsStrip — recent mock results for THIS course, from the local
- * SIMULATED overlay (localStorage only — never canonical learner state).
- * Rendered client-side after mount so SSR markup stays deterministic.
+ * MockResultsStrip — recent mock results for THIS course, from the
+ * account-backed self-marked tally store (lib/mock-results.ts, T-TIER1):
+ * signed in the tallies live on the learner's account (learner_mock_results)
+ * and mirror here; signed out they stay this-browser-only (the footer says
+ * which posture is live). Rendered client-side after mount so SSR markup
+ * stays deterministic.
  */
-import { useEffect, useState } from "react";
 import { Trash2, Timer } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { clearMockResults, formatSpent, loadMockResults, type MockResult } from "@/lib/mock-results";
+import { useIdentity } from "@/lib/identity";
+import { clearMockResults, formatSpent, useMockResults, type MockResult } from "@/lib/mock-results";
 
 export function MockResultsStrip({ course }: { course: string }) {
-  const [results, setResults] = useState<MockResult[] | null>(null);
-
-  useEffect(() => {
-    // deferred one microtask: hydration-safe localStorage read
-    // (react-hooks/set-state-in-effect; same pattern as the builder draft hydrate)
-    let alive = true;
-    void Promise.resolve().then(() => {
-      if (alive) setResults(loadMockResults(course));
-    });
-    return () => {
-      alive = false;
-    };
-  }, [course]);
+  const results = useMockResults(course);
+  const identity = useIdentity();
 
   if (results === null || results.length === 0) return null;
 
@@ -37,15 +29,14 @@ export function MockResultsStrip({ course }: { course: string }) {
       <div className="flex items-center gap-2">
         <Timer className="size-4 text-primary" aria-hidden />
         <h2 className="text-sm font-semibold">Your recent mocks</h2>
-        <span className="text-[11px] text-muted-foreground">saved in this browser only</span>
+        <span className="text-[11px] text-muted-foreground">
+          {identity ? "saved to your account" : "saved in this browser only"}
+        </span>
         <Button
           size="sm"
           variant="ghost"
           className="ml-auto h-7 gap-1 px-2 text-[11px] text-muted-foreground"
-          onClick={() => {
-            clearMockResults(course);
-            setResults([]);
-          }}
+          onClick={() => clearMockResults(course)}
         >
           <Trash2 className="size-3" aria-hidden />
           Clear
@@ -79,8 +70,8 @@ export function MockResultsStrip({ course }: { course: string }) {
         ))}
       </ul>
       <p className="mt-1 text-[10px] text-muted-foreground">
-        Mock grading is self-marked against the official mark scheme — a SIMULATED record, not
-        canonical learner state.
+        Mock grading is self-marked against the official mark scheme — your own tally, not a
+        canonical marked result.
       </p>
     </section>
   );

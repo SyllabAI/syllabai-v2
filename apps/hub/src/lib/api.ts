@@ -137,10 +137,15 @@ import type {
   CreateSessionRequest,
   CreateSessionResponse,
   EndSessionResponse,
+  LastOpenedEnvelope,
+  LastOpenedView,
+  MockResultsView,
   PostMessageRequest,
   PostMessageResponse,
+  PutMockResultsRequest,
   ReviewCard,
   SessionHistoryItem,
+  SetLastOpenedRequest,
   TeachSession,
 } from "@syllabai/contracts";
 
@@ -1777,6 +1782,39 @@ export const api = {
       method: "PUT",
       body: JSON.stringify({ slugs }),
     }),
+
+  // ── T-TIER1 — the account-backed last-opened pointer + mock results ──
+  // Frontend deep-audit Tier 1 (operator order 2026-11-03): the two hub
+  // stores that lived in ONE browser only now mirror the account (the
+  // T-TEACH-001 cache law). These client methods are the only callers —
+  // the sync layers own the reconcile (lib/last-opened.ts,
+  // lib/mock-results.ts).
+
+  // GET → { lastOpened: LastOpenedView | null } — the account's
+  // most-recent course surface; null = the account never opened one.
+  lastOpened: () => request<LastOpenedEnvelope>("/api/v1/learners/me/last-opened"),
+
+  // PUT — idempotent upsert: the newest navigation replaces the pointer.
+  setLastOpened: (body: SetLastOpenedRequest) =>
+    request<LastOpenedView>("/api/v1/learners/me/last-opened", {
+      method: "PUT",
+      body: JSON.stringify(body),
+    }),
+
+  // GET — every course's self-marked mock tallies (newest finished first,
+  // capped 20 per course server-side — the hub's own MAX_PER_COURSE).
+  mockResults: () => request<MockResultsView>("/api/v1/learners/me/mock-results"),
+
+  // PUT /{courseSlug} — the FULL desired set for that ONE course
+  // (idempotent replace; an empty array clears the course).
+  setMockResults: (courseSlug: string, body: PutMockResultsRequest) =>
+    request<MockResultsView>(
+      `/api/v1/learners/me/mock-results/${encodeURIComponent(courseSlug)}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(body),
+      },
+    ),
 
   // Attempt history (Review Hub minimal slice) — read-only view over the
   // learner's own attempts/answers evidence rows. Default limit 50 (max 100).
