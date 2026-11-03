@@ -1,0 +1,122 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "receipt": "od1-live-ma-probe-r0",
+ "run": "run-001",
+ "phase": "COMPLETE-WITH-STRUCTURAL-BLOCKER",
+ "order_traces": {
+  "order": "1a19f6877e9c76a1",
+  "resume": "1a19fdc8a83d6e49",
+  "resume_word": "\"Proceed\""
+ },
+ "probe_goal": "create a real learner answer on a multi-axis part in production; observe R4 live consumption (per-axis band decisions summed at the part, PR-B #641); confirm no MULTI_AXIS_DISPATCH_NOT_WIRED, failure_reason=None; census answers_on_multi_axis_parts >= 1",
+ "production_incident_of_record": {
+  "discovered": "2026-11-03T06:03Z \u2014 every route FUNCTION_INVOCATION_FAILED (health included) at probe start",
+  "alias_served": "project-default -> newest production deployment (system-managed; domain-pin PATCH silently no-ops, deploymentUid=None)",
+  "root_cause": "a parallel fleet lane repeatedly deployed broken bundles: their bake reads the concept-graph YAMLs at MODULE LOAD via readFileSync against ABSOLUTE BUILD-MACHINE paths (/home/z/my-project/work/v2work/... then /home/z/my-project/repos/syllabai-v2/...) \u2014 the path does not exist in the lambda, so the module boot throws ENOENT and every invocation 500s. Boot-tested byte-for-byte on bundles 5bdf43e0 (dpl_DMJCX), 44f4ffdc (dpl_7sKy): both ENOENT. This is exactly the failure the of-record bake recipe (od1_bake.py) prevents: 6 YAML pins byte-verbatim inlined + import.meta.dir shims.",
+  "broken_deployments_fingerprinted": {
+   "dpl_DMJCXpxC6rZTv3NaKz3kE5SdP7Bd 05:33Z": "5bdf43e0 (2.4MB esbuild CJS, work/v2work path)",
+   "dpl_CZxULZxTAxQfgMV3HhufaXtksuNZ 05:42Z": "75c879d2 (same lane shape)",
+   "dpl_FeW8KVXLx6fTG2hMbqYSiXk3x44j 05:57Z": "2070ebcf (same lane shape)",
+   "dpl_APiMpoPxXBceKziuFejYMQNv4bZM 06:09Z": "44f4ffdc (3.9MB, repos/syllabai-v2 path, env fallback removed)",
+   "dpl_7sKyMTBNwigGQnyfQp2pmsbfHqfk 06:14Z": "44f4ffdc (same bundle)",
+   "dpl_2vKZvGRefZThKFWqcpRCDDyimWcG 06:16Z": "1a9a69fa (same lane shape)",
+   "dpl_8wspb2Wmj1MXBSAvweGDYgxqUnQm 06:22Z": "f557f902 (QUEUED at receipt time \u2014 pending re-break risk)"
+  },
+  "remediation_of_record": {
+   "law": "restore the audited bytes; no server-side re-bundle (a re-bundle breaks the uid-of-record)",
+   "path": "audited bundle downloaded FROM the of-record deployment dpl_3SssVu5FJHduFrvBqu4TCa84AMdZ (content-addressed = audited by construction), 5/5 files sha1 == uid re-proof, then hand-built Build-Output-API output (functions/api/index.func with index.js = the audited bytes, launcherType Nodejs, nodejs24.x, maxDuration 300; config.json routes = the of-record vercel.json rewrites law: /api/v1/(.*) and /actuator/health -> /api/index afterFiles) deployed via vercel deploy --prebuilt --prod (CLI 65.10.0)",
+   "restored_deployments": [
+    "dpl_ELgRFZA23FchLi9YPfRrKTK88Eyw 06:10Z (index.func/index.js uid 2fd94eac \u2014 audited bytes verbatim)",
+    "dpl_6upXSMYUKWooUQ82DnuZscGkcXkL 06:16Z (same uid \u2014 serving at probe time; health 200 UP)"
+   ],
+   "post_probes": {
+    "/actuator/health": "200 {\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"}",
+    "/api/v1/health": "401",
+    "/": "404"
+   },
+   "rollback_anchors_still_valid": [
+    "dpl_QGtNhEWx4ZMp7Gjo4by3XWk5mtwa",
+    "dpl_BVPKU53dKcvqDWX5EhGjAH1JfZp5"
+   ]
+  },
+  "coordination_demand": "the parallel lane MUST adopt the of-record bake law (od1_bake.py: YAML pins inlined byte-verbatim, no absolute build-path reads) or gate its deploys on a boot probe; as filed it re-breaks production every ~2-15 minutes on each of its merges"
+ },
+ "probe_of_record": {
+  "candidate_part": {
+   "part_id": "09e1b776-4fd5-4b22-a204-62998ca4108f",
+   "question_id": "2066bee4-11e2-487b-be2b-6bbad7ae3103",
+   "version_id": "b61de1f1-b6f2-4df9-b899-d62c63aa96d3",
+   "version_no": 1,
+   "version_state": "SUGGESTED",
+   "marks": 8,
+   "axes": [
+    {
+     "scheme_id": "7f35811e-bc39-4935-8306-290dce5fdaa5",
+     "label": "2-b-ii#a1",
+     "bands": 4
+    },
+    {
+     "scheme_id": "2cb79486-23c7-475c-a9a6-0c99e73c39e1",
+     "label": "2-b-ii#a2",
+     "bands": 4
+    }
+   ]
+  },
+  "steps": [
+   {
+    "step": "register learner (STUDENT) on production",
+    "result": "201 Created"
+   },
+   {
+    "step": "login",
+    "result": "200 accessToken issued (real JWT)"
+   },
+   {
+    "step": "POST /api/v1/attempts/structured {questionId 2066bee4, partAnswers [{partId 09e1b776, answerText 490 chars}], responseTimeMs 45000}",
+    "result": "404 {\"error\":\"not_found\",\"message\":\"structured question 2066bee4-11e2-487b-be2b-6bbad7ae3103 not found\"}",
+    "law": "submitStructured step-3 serving boundary: newest question_version.validation_state != VALIDATED -> fail-closed 404"
+   },
+   {
+    "step": "smart-mark",
+    "result": "not run \u2014 no attempt was created (refusal upstream of marking)"
+   }
+  ],
+  "db_post_state": {
+   "attempts_created_by_probe": 0,
+   "answers_on_multi_axis_parts": 0,
+   "failure_ledger_unchanged": {
+    "(null)": 249,
+    "NO_SCHEME_POINTS": 117,
+    "VALIDATION_FAILED: duplicate allocation for mark point a": 2,
+    "VALIDATION_FAILED: duplicate allocation for mark point b": 2,
+    "VALIDATION_FAILED: duplicate allocation for mark point c": 1,
+    "UNPARSEABLE_OUTPUT": 2
+   },
+   "MULTI_AXIS_DISPATCH_NOT_WIRED": 0
+  }
+ },
+ "structural_finding": {
+  "headline": "live R4 multi-axis consumption is UNREACHABLE through the sanctioned learner surface: 0 of the 147 multi-axis parts can receive an answer",
+  "cause": "all 147 multi-axis parts (>=2 VALIDATED part-bound LEVELS siblings on the NEWEST question version) sit on question versions whose validation_state is SUGGESTED (606 SUGGESTED vs 24,785 VALIDATED corpus-wide) \u2014 the ADR-040 G-lanes birthed these questions as single-version SUGGESTED with the LEVELS schemes already VALIDATED, and the VERSION state never walked the review lifecycle",
+  "ablation": "147/147 newest-version-bound; 147 STRUCTURED+active; 0 with newest version VALIDATED; 0 paper-bound-and-servable",
+  "code_law": [
+   "assessment/submit.ts submitStructured step 3 (VALIDATED only, fail-closed)",
+   "assessment/submit.ts assertPaperAllowsServing (V20: exam_paper_id != null AND paper not REJECTED/FLAGGED)",
+   "insert into answers has exactly ONE site in apps/api/src: submit.ts"
+  ],
+  "levers_checked_and_closed": [
+   "POST /api/v1/auth/bootstrap-admin -> GET /bootstrap-status {\"available\":false} (window closed/consumed)",
+   "TEACHER self-registration requires SYLLABAI_TEACHER_JOIN_CODE (value not exfiltratable; gate CLOSED default)",
+   "direct DB write: against the operating law (production writes ride product surfaces only)"
+  ],
+  "unblock_lever_for_operator": "walk the chosen (or all 147) question versions through the corpus's own review law \u2014 POST /api/v1/teacher/content/question-versions/:id/validate (TEACHER/ADMIN, transactional, audit-recorded) \u2014 then re-fire this probe unchanged; every other piece (VALIDATED LEVELS siblings, R4 per-axis dispatch, entitlement ordinal-1 free, DC-3 envelope) is already in place and byte-current on main"
+ },
+ "census_after": {
+  "answers_on_multi_axis_parts": 0,
+  "multi_axis_parts_newest_version": 147,
+  "axis_suffixed_partbound_LEVELS_schemes": 492,
+  "attempts_total": 249
+ },
+ "probe_transcript_file": "scripts/ma_probe_transcript.json (operator sandbox; key fields verbatim above)",
+ "anti_truncation": "this receipt was written in one Write; every numeric field cross-checked against live queries at 2026-11-03T06:29Z"
+}
