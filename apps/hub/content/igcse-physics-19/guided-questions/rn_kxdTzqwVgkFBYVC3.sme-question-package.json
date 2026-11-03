@@ -1,0 +1,974 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_kxdTzqwVgkFBYVC3",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "26b8b037ea503ce888f5da63b22758cfd1ac9baf41b8d93ff971a52027b77f04",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "packageId": "igcse-physics::rn_kxdTzqwVgkFBYVC3",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L1::Q1",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L1",
+      "stem": "Which process carries heating energy through solids?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "conduction",
+          "correct": true,
+          "explanation": "Conduction is the main heating transfer route in solids.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "radiation",
+          "correct": false,
+          "explanation": "Radiation passes through, but conduction dominates in solids.",
+          "misconception": "process mix-up"
+        },
+        {
+          "key": "C",
+          "text": "evaporation",
+          "correct": false,
+          "explanation": "Evaporation is a change of state, not the solid heating route.",
+          "misconception": "process mix-up"
+        },
+        {
+          "key": "D",
+          "text": "convection",
+          "correct": false,
+          "explanation": "Convection needs a fluid; it cannot happen in solids.",
+          "misconception": "process mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L1::Q2",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L1",
+      "stem": "Which group of materials conducts heat best?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "gases",
+          "correct": false,
+          "explanation": "Gases are extremely poor conductors.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "B",
+          "text": "metals",
+          "correct": true,
+          "explanation": "Metals are extremely good thermal conductors.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "liquids",
+          "correct": false,
+          "explanation": "Liquids are poor conductors.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "D",
+          "text": "non-metal solids",
+          "correct": false,
+          "explanation": "Non-metals are poor conductors.",
+          "misconception": "inverted relation"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L1::Q3",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L1",
+      "stem": "What makes a material a good insulator?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "is always a metal",
+          "correct": false,
+          "explanation": "Metals are the best conductors, not insulators.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "B",
+          "text": "transfers energy by heating quickly",
+          "correct": false,
+          "explanation": "That describes a conductor.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "does not transfer energy by heating",
+          "correct": true,
+          "explanation": "Insulators stop the conduction route.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "contains free electrons",
+          "correct": false,
+          "explanation": "Free electrons belong to metals and speed conduction.",
+          "misconception": "concept mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L1::Q4",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L1",
+      "stem": "Why is trapped air such a good insulator?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "air reflects heat like a mirror",
+          "correct": false,
+          "explanation": "Reflection is the shiny-surface behaviour for radiation.",
+          "misconception": "process mix-up"
+        },
+        {
+          "key": "B",
+          "text": "air has no particles at all",
+          "correct": false,
+          "explanation": "Air is full of particles; they are just far apart.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "C",
+          "text": "air absorbs the heat permanently",
+          "correct": false,
+          "explanation": "Nothing absorbs and destroys energy.",
+          "misconception": "dissipation myth"
+        },
+        {
+          "key": "D",
+          "text": "air is a gas, so it conducts very slowly, and when trapped it cannot move to form convection currents",
+          "correct": true,
+          "explanation": "Both halves make trapped air special.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L1::Q5",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L1",
+      "stem": "Why does conduction pull energy from bare feet faster through tiles than through a rug?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "the tiles conduct energy from the feet faster than the rug does",
+          "correct": true,
+          "explanation": "Better conduction pulls heat from the feet faster, so tiles feel colder.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the rug heats the feet by radiation",
+          "correct": false,
+          "explanation": "The rug insulates; it does not actively heat.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "C",
+          "text": "the rug generates thermal energy",
+          "correct": false,
+          "explanation": "The rug has no energy source.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "the tiles are colder than the rug",
+          "correct": false,
+          "explanation": "Both sit at room temperature.",
+          "misconception": "concept mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L1::Q6",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L1",
+      "stem": "State what poor conductors are called.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Poor conductors are called insulators — materials that do not transfer energy by heating.",
+      "keywords": [
+        "insulators",
+        "poor",
+        "conductors",
+        "heating"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L1::Q7",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L1",
+      "stem": "State what happens to the atoms of a substance when it is heated.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Heated atoms vibrate harder, knock into their neighbours and hand energy along from atom to atom.",
+      "keywords": [
+        "vibrate",
+        "knock",
+        "energy"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L1::Q8",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L1",
+      "stem": "Explain why a woolly hat keeps a head warm even though wool itself is not a heat source.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Wool traps air in small pockets. The air is a gas, so it conducts heat away from the head very slowly, and because the air is trapped it cannot circulate to carry energy off by convection either — so the head loses energy to the surroundings much more slowly.",
+      "keywords": [
+        "trapped",
+        "air",
+        "conduction",
+        "convection",
+        "slowly"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L1::Q9",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L1",
+      "stem": "A saucepan has a metal body and a plastic handle. Explain the choice of material for each part.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The body is metal because conduction must transfer energy from the hob to the food quickly; the handle is plastic because conduction into the hand must be slow, and plastics are poor conductors — good insulators.",
+      "keywords": [
+        "metal",
+        "conductor",
+        "plastic",
+        "insulator"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L2::Q1",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L2",
+      "stem": "When one end of a metal rod is heated, how does energy reach the far end?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the hot atoms travel along the rod",
+          "correct": false,
+          "explanation": "Atoms stay in place; only energy travels.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "B",
+          "text": "atoms vibrate more and pass energy on through collisions, helped by delocalised electrons",
+          "correct": true,
+          "explanation": "Both mechanisms carry the energy.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the rod melts gradually from the hot end",
+          "correct": false,
+          "explanation": "Melting is a change of state, not conduction.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "D",
+          "text": "infra-red light carries the energy inside the rod",
+          "correct": false,
+          "explanation": "Radiation is not the internal route here.",
+          "misconception": "process mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L2::Q2",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L2",
+      "stem": "What special particles do metals contain that non-metals lack, speeding conduction?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "protons",
+          "correct": false,
+          "explanation": "Protons are bound in nuclei in every solid.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "B",
+          "text": "neutrons",
+          "correct": false,
+          "explanation": "Neutrons stay in nuclei everywhere.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "C",
+          "text": "delocalised electrons",
+          "correct": true,
+          "explanation": "Metals’ free electrons collide with atoms and speed the transfer.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "extra neutrons in the lattice",
+          "correct": false,
+          "explanation": "The lattice is atoms, not free neutrons.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L2::Q3",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L2",
+      "stem": "Why does the lattice alone conduct more slowly than a metal’s full mechanism?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "non-metals have no atoms",
+          "correct": false,
+          "explanation": "Non-metals have atoms; they lack free electrons.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "B",
+          "text": "metals are always hotter",
+          "correct": false,
+          "explanation": "Temperature is the condition, not the mechanism.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "C",
+          "text": "lattice atoms cannot vibrate",
+          "correct": false,
+          "explanation": "Vibration is exactly what they do.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "collision-to-collision transfer through the lattice is slower than the extra electron collisions",
+          "correct": true,
+          "explanation": "Electrons add a faster parallel route.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L2::Q4",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L2",
+      "stem": "A metal spoon in hot soup becomes too hot to hold while a wooden spoon does not. The key difference is:",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "metal’s delocalised electrons conduct the soup’s energy up the handle quickly",
+          "correct": true,
+          "explanation": "Fast conduction is the metal’s behaviour.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "wood absorbs the soup",
+          "correct": false,
+          "explanation": "Absorption of liquid is not the thermal point here.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "C",
+          "text": "metal has a lower melting point",
+          "correct": false,
+          "explanation": "Nothing melts in this scenario.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "D",
+          "text": "the wooden spoon is hollow",
+          "correct": false,
+          "explanation": "Wood is solid; the difference is the material, not a hole.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L2::Q5",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L2",
+      "stem": "Which row correctly orders conduction speed through the same shape of bar?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "all three conduct equally",
+          "correct": false,
+          "explanation": "The material decides the rate.",
+          "misconception": "false equivalence"
+        },
+        {
+          "key": "B",
+          "text": "copper bar > plastic bar > air gap",
+          "correct": true,
+          "explanation": "Metal, then non-metal solid, then gas — fastest to slowest.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "air gap > copper bar > plastic bar",
+          "correct": false,
+          "explanation": "Air is the worst conductor of the three.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "D",
+          "text": "plastic bar > copper bar > air gap",
+          "correct": false,
+          "explanation": "Metal beats plastic.",
+          "misconception": "inverted relation"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L2::Q6",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L2",
+      "stem": "State what the delocalised electrons in a metal do to help thermal conduction.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "They crash into the metal’s atoms, handing the vibrations along through the material, which moves heat faster.",
+      "keywords": [
+        "collide",
+        "atoms",
+        "vibrations",
+        "transfer"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L2::Q7",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L2",
+      "stem": "State what happens to the spacing of particles in a material that is very dense, and its effect on conduction.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Denser materials pack their particles nearer together, so the collision chain passes energy along more easily.",
+      "keywords": [
+        "nearer",
+        "energy",
+        "easily"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L2::Q8",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L2",
+      "stem": "Explain why a metal chain feels colder than a rope left overnight in the same cold shed.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Both sit at the shed’s temperature, but the metal’s delocalised electrons conduct energy from your warm hand into the chain far faster than the rope’s non-metal lattice does, so the chain drains heat from the hand quickly and feels colder.",
+      "keywords": [
+        "conduct",
+        "faster",
+        "electrons",
+        "hand"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L2::Q9",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L2",
+      "stem": "A soldering iron tip is copper but its handle is wood-effect plastic. Use conduction to explain both choices.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The copper tip must deliver heat to the joint quickly, and copper’s delocalised electrons make it an excellent conductor; the plastic handle must not conduct that heat to the grip, and being a poor conductor it insulates the user’s hand.",
+      "keywords": [
+        "copper",
+        "conduct",
+        "plastic",
+        "insulate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L3::Q1",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L3",
+      "stem": "In which states of matter can convection occur?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "metals only",
+          "correct": false,
+          "explanation": "Metals are solids; they conduct instead.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "B",
+          "text": "solids, liquids and gases",
+          "correct": false,
+          "explanation": "Solids cannot flow, so no convection.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "C",
+          "text": "liquids and gases only",
+          "correct": true,
+          "explanation": "Convection needs a fluid; solids are excluded.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "gases only",
+          "correct": false,
+          "explanation": "Liquids convect too — boiling water is the classic case.",
+          "misconception": "concept mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L3::Q2",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L3",
+      "stem": "Why does heated fluid rise?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the burner blows it upward",
+          "correct": false,
+          "explanation": "The current forms even with gentle heating.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "B",
+          "text": "hot particles shrink",
+          "correct": false,
+          "explanation": "Particles move APART when heated.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "it weighs less because heating destroys particles",
+          "correct": false,
+          "explanation": "Particles are conserved; heating only spreads them.",
+          "misconception": "dissipation myth"
+        },
+        {
+          "key": "D",
+          "text": "heating makes the fluid expand, so it becomes less dense than the surrounding fluid",
+          "correct": true,
+          "explanation": "Lower density floats above higher density.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L3::Q3",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L3",
+      "stem": "What completes a convection current after the hot fluid rises?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the hot fluid cools, contracts, becomes denser and sinks back down",
+          "correct": true,
+          "explanation": "The sinking return leg closes the loop.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the fluid evaporates at the top",
+          "correct": false,
+          "explanation": "Evaporation is not part of the current cycle.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "C",
+          "text": "the fluid turns solid at the top",
+          "correct": false,
+          "explanation": "Nothing freezes in a convection current demonstration.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "the fluid stays at the top forever",
+          "correct": false,
+          "explanation": "It cools at the top and returns.",
+          "misconception": "mechanism myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L3::Q4",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L3",
+      "stem": "A radiator warms a room mainly through which transfer process — conduction, convection or radiation?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "conduction through the air, because air conducts well",
+          "correct": false,
+          "explanation": "Air conducts very poorly.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "B",
+          "text": "convection: warm air rises from the radiator, cools and circulates",
+          "correct": true,
+          "explanation": "The room-wide circulation is a convection current.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "radiation alone, in every direction",
+          "correct": false,
+          "explanation": "Radiation contributes, but the room-wide warming is convective.",
+          "misconception": "process mix-up"
+        },
+        {
+          "key": "D",
+          "text": "condensation on the walls",
+          "correct": false,
+          "explanation": "Condensation is a change of state, not the warming route.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L3::Q5",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L3",
+      "stem": "Why does a sea breeze blow from the sea towards the land on a hot day? Answer using convection.",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "the wind is caused by waves pushing air",
+          "correct": false,
+          "explanation": "Waves are a result of wind, not its cause.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "B",
+          "text": "cold air rises from the sea",
+          "correct": false,
+          "explanation": "Cold air sinks.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "the land heats the air above it, which rises, and cooler air from the sea moves in to replace it",
+          "correct": true,
+          "explanation": "The land-side updraught pulls the sea breeze ashore.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the sea heats the air above it, which rises towards the land",
+          "correct": false,
+          "explanation": "Water heats slowly; the land is the hot side.",
+          "misconception": "inverted relation"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L3::Q6",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L3",
+      "stem": "State what happens to the density of a fluid when it is heated, and the immediate effect.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Heated fluid expands, becoming less dense than the surroundings, so it rises.",
+      "keywords": [
+        "expands",
+        "less",
+        "dense",
+        "rises"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L3::Q7",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L3",
+      "stem": "State why convection cannot happen in a solid.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Convection needs the fluid itself to flow; solids cannot flow, so convection cannot occur in them.",
+      "keywords": [
+        "flow",
+        "fluid",
+        "solid"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L3::Q8",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L3",
+      "stem": "Explain why a room warms better if the heater is placed near the floor rather than near the ceiling.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Warm air rises, so a floor-level heater starts its convection current through the whole room’s height: warm air climbs, cools against the ceiling and walls, and sinks back to be reheated. A ceiling-level heater warms only the top layer, which is already above the cooler air and so barely circulates.",
+      "keywords": [
+        "rises",
+        "current",
+        "circulate",
+        "floor",
+        "cools"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L3::Q9",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L3",
+      "stem": "A pan of water is heated gently at one side and a crystal of potassium permanganate sits above the flame. Describe what the purple trail shows.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The purple trail rises with the warmed water above the flame, spreads across the surface, cools, sinks at the far side and returns along the bottom to the flame — tracing the closed loop of the convection current.",
+      "keywords": [
+        "rises",
+        "cools",
+        "sinks",
+        "current"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L4::Q1",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L4",
+      "stem": "What does every object do, whatever its temperature?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "convects",
+          "correct": false,
+          "explanation": "Convection needs a fluid; not every object is fluid.",
+          "misconception": "process mix-up"
+        },
+        {
+          "key": "B",
+          "text": "conducts energy to its surroundings",
+          "correct": false,
+          "explanation": "Conduction needs contact; radiation needs nothing.",
+          "misconception": "process mix-up"
+        },
+        {
+          "key": "C",
+          "text": "absorbs radiation only",
+          "correct": false,
+          "explanation": "Every object also EMITS.",
+          "misconception": "part swap"
+        },
+        {
+          "key": "D",
+          "text": "emits infrared radiation",
+          "correct": true,
+          "explanation": "All bodies emit infrared all the time.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L4::Q2",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L4",
+      "stem": "How does temperature affect the radiation an object emits?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the hotter the object, the more infrared it radiates in a given time",
+          "correct": true,
+          "explanation": "Emission rate rises with temperature.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "temperature has no effect on emission",
+          "correct": false,
+          "explanation": "Temperature is the driver of emission rate.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "only very hot objects emit any radiation",
+          "correct": false,
+          "explanation": "All bodies emit, however cool.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "hotter objects emit less",
+          "correct": false,
+          "explanation": "It is the other way round.",
+          "misconception": "inverted relation"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L4::Q3",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L4",
+      "stem": "Which surface is the best absorber AND emitter of thermal radiation?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "white",
+          "correct": false,
+          "explanation": "White is a poor absorber and emitter.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "B",
+          "text": "matte black",
+          "correct": true,
+          "explanation": "Black surfaces are the best at emitting and absorbing.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "all surfaces are equal",
+          "correct": false,
+          "explanation": "The surface quality decides.",
+          "misconception": "false equivalence"
+        },
+        {
+          "key": "D",
+          "text": "shiny silver",
+          "correct": false,
+          "explanation": "Shiny is the worst at both — it reflects.",
+          "misconception": "inverted relation"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L4::Q4",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L4",
+      "stem": "A thermos flask keeps drinks hot partly by coating surfaces with shiny metal. Why does that work?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "shiny surfaces stop convection inside the liquid",
+          "correct": false,
+          "explanation": "The coating addresses radiation, not the fluid’s convection.",
+          "misconception": "process mix-up"
+        },
+        {
+          "key": "B",
+          "text": "shiny metal conducts the heat away faster",
+          "correct": false,
+          "explanation": "The flask wants to STOP transfer, not speed it.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "shiny surfaces are very poor emitters and reflect radiation back, reducing radiated loss",
+          "correct": true,
+          "explanation": "Poor emission plus reflection keeps the radiation in.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the shininess adds thermal energy",
+          "correct": false,
+          "explanation": "Nothing adds energy.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L4::Q5",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L4",
+      "stem": "For a mug of hot coffee standing on a table, which loss route does NOT need any material between the coffee and its surroundings?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "evaporation of the coffee",
+          "correct": false,
+          "explanation": "Evaporation needs the liquid itself to leave.",
+          "misconception": "route mix-up"
+        },
+        {
+          "key": "B",
+          "text": "conduction through the mug wall",
+          "correct": false,
+          "explanation": "The mug wall is the material.",
+          "misconception": "route mix-up"
+        },
+        {
+          "key": "C",
+          "text": "convection of air above the mug",
+          "correct": false,
+          "explanation": "The air is the material.",
+          "misconception": "route mix-up"
+        },
+        {
+          "key": "D",
+          "text": "radiation from the coffee’s surface and the mug’s outside",
+          "correct": true,
+          "explanation": "Radiation crosses even a vacuum.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L4::Q6",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L4",
+      "stem": "State how emission and absorption depend on the colour of a surface.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Black surfaces are the best emitters and absorbers; shiny surfaces are the worst at both, reflecting radiation instead.",
+      "keywords": [
+        "black",
+        "best",
+        "shiny",
+        "worst"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L4::Q7",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L4",
+      "stem": "State the three routes by which a hot mug of coffee loses energy to the surroundings.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Radiation from its surfaces, conduction through the mug walls, and convection of the warm air above it.",
+      "keywords": [
+        "radiation",
+        "conduction",
+        "convection"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L4::Q8",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L4",
+      "stem": "Explain why painting a car’s radiator fins matte black helps it cool the engine.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Matte black surfaces are the best emitters of thermal radiation, so the fins radiate the engine’s energy away at the fastest rate the surface allows; being good absorbers too does no harm, because the fins are hotter than their surroundings and the net flow is outward.",
+      "keywords": [
+        "black",
+        "emitter",
+        "radiate",
+        "fastest"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxdTzqwVgkFBYVC3::L4::Q9",
+      "moduleId": "rn_kxdTzqwVgkFBYVC3::L4",
+      "stem": "Two identical mugs of coffee stand on a table, one matte black and one shiny steel. State which cools faster and name the route that differs most between them.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The matte black mug cools faster: it is the better emitter, so the radiation route — the one that needs no medium — carries energy away from it more quickly than from the shiny mug, which reflects and poorly emits.",
+      "keywords": [
+        "black",
+        "cools",
+        "faster",
+        "radiation",
+        "emitter"
+      ],
+      "options": []
+    }
+  ]
+}

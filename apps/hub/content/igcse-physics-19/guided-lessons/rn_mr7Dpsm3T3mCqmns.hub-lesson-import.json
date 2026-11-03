@@ -1,0 +1,129 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_mr7Dpsm3T3mCqmns",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "34a7acd55cd2fa55d4c354ac1efd21ea92b29867d4b8e0d59864a4e43c762e37",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_mr7Dpsm3T3mCqmns",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Sound",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-3-sound/3-3-2-sound--oscilloscopes",
+    "specAnchors": [
+      {
+        "code": "3.26P",
+        "text": "understand how an oscilloscope and microphone can be used to display a sound wave"
+      }
+    ],
+    "primer": {
+      "text": "Before the oscilloscope can time a wave for you, you have to be able to read it. This lesson builds that skill: what the microphone contributes, why a longitudinal wave gets drawn like a transverse one, and how amplitude and frequency each show up on the screen.",
+      "prerequisiteSubtopic": "Sound"
+    },
+    "modules": [
+      {
+        "id": "rn_mr7Dpsm3T3mCqmns::L1",
+        "title": "Displaying sound on an oscilloscope",
+        "sourceHeadings": [
+          "An oscilloscope is used to display sound as a waveform",
+          "An explanation of the sound waveform as displayed on an oscilloscope"
+        ],
+        "specRefs": [
+          "3.26P"
+        ],
+        "opening": "An oscilloscope draws a picture of a rapidly changing signal against time. Feed it a microphone and a sound wave becomes a living trace: the horizontal axis is the time base, the height of the trace tracks the amplitude, and the number of complete cycles on screen tells you the frequency.",
+        "keyPoints": [
+          "An oscilloscope displays rapidly changing signals such as a sound wave or an alternating current.",
+          "A microphone detects the sound wave and converts it into an electrical signal for the screen.",
+          "On the screen the sound wave — longitudinal in air — is drawn with the peak-and-trough look of a transverse wave.",
+          "The time base — the horizontal axis — is where the wave’s time period is read off.",
+          "The trace height from the centre is related to amplitude, and more complete waves on screen means higher frequency."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The microphone turns sound into a voltage, the oscilloscope plots that voltage against time, and the resulting wavy line can be read for amplitude through its height and frequency through how many cycles fit on the screen.",
+            "analogy": "A heart monitor for sound: each peak is one squeeze of the source, spread out along a time ruler.",
+            "examPointer": "Say the direction trick explicitly: the sound is longitudinal in air but is DRAWN like a transverse wave because the screen plots voltage against time."
+          },
+          "medium": {
+            "restatement": "The microphone’s voltage rises and falls as the sound’s pressure rises and falls; plotted against time, the cycles sit side by side, so one cycle’s width is the period and the peak height from the centre line is the amplitude.",
+            "analogy": "A seismograph needle: the paper carries time horizontally while the needle swings with the push, drawing a transverse-looking picture of a shaking world.",
+            "examPointer": "Comparisons of traces only hold while the time base is fixed — state the fixed-scale condition when comparing two notes."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_mr7Dpsm3T3mCqmns::L1::Q1",
+          "rn_mr7Dpsm3T3mCqmns::L1::Q2",
+          "rn_mr7Dpsm3T3mCqmns::L1::Q3",
+          "rn_mr7Dpsm3T3mCqmns::L1::Q4",
+          "rn_mr7Dpsm3T3mCqmns::L1::Q5",
+          "rn_mr7Dpsm3T3mCqmns::L1::Q6",
+          "rn_mr7Dpsm3T3mCqmns::L1::Q7",
+          "rn_mr7Dpsm3T3mCqmns::L1::Q8",
+          "rn_mr7Dpsm3T3mCqmns::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "oscilloscope",
+          "definition": "An instrument that displays a rapidly changing electrical signal as a trace against time.",
+          "firstLesson": 1
+        },
+        {
+          "term": "time base",
+          "definition": "The horizontal axis setting of an oscilloscope, which measures time and is used to read the time period.",
+          "firstLesson": 1
+        },
+        {
+          "term": "waveform",
+          "definition": "The shape of a wave as drawn by the oscilloscope, carrying amplitude and frequency information.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/8fb52b7b5439-1-3-7-oscilloscope.png",
+        "alt": "Oscilloscope, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "An oscilloscope is used to display sound as a waveform",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Oscilloscopes have lots of dials and buttons, but their main purpose is to display and measure changing signals like sound waves and alternating current. The horizontal axis represents time, so the two waveforms on the screen have different time periods"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1802af4e594c-3-3-2-sound-wave-in-an-oscilloscopes.png",
+        "alt": "Sound Wave in an Oscilloscopes, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "An explanation of the sound waveform as displayed on an oscilloscope",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "A sound wave is displayed as though it were a transverse wave on the screen of the oscilloscope. The time base can be used to measure a full time period of the wave cycle"
+      }
+    ]
+  }
+}

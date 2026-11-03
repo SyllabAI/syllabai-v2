@@ -1,0 +1,134 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_mf22KJj8JXw3DRHn",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "4db013de9b4362e4e502a7396ecd68240bf42f11bbbb86567f42e9fe75af7132",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_mf22KJj8JXw3DRHn",
+    "topicTitle": "4. Energy Resources and Energy Transfers",
+    "subtopicTitle": "Energy Stores & Transfers",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/4-energy-resources-and-energy-transfers/4-1-energy-stores-and-transfers/4-1-6-reducing-energy-loss",
+    "specAnchors": [
+      {
+        "code": "4.10",
+        "text": "explain ways of reducing unwanted energy transfer, such as insulation"
+      }
+    ],
+    "primer": {
+      "text": "Most wasted energy escapes by heating, so cutting waste means cutting conduction and convection. This note assembles the toolkit — low-conductivity insulators, immobilised fluids, thickness — and applies it where houses need it: fibreglass in the loft and insulation in the cavity walls.",
+      "prerequisiteSubtopic": "Energy Stores & Transfers"
+    },
+    "modules": [
+      {
+        "id": "rn_mf22KJj8JXw3DRHn::L1",
+        "title": "Reducing unwanted energy transfers",
+        "sourceHeadings": [
+          "Reducing energy loss",
+          "Cavity insulation"
+        ],
+        "specRefs": [
+          "4.10"
+        ],
+        "opening": "Wasted energy mostly leaves by heating, so the fight against waste is a fight against conduction and convection. Low-conductivity materials block the first, preventing fluid movement blocks the second, and insulation — loft fibreglass, cavity wall fill — applies both ideas where a house loses most.",
+        "keyPoints": [
+          "Energy dissipated to the surroundings is the main source of wasted energy transfers.",
+          "Conduction is reduced by using materials with low thermal conductivity — insulators.",
+          "Convection is reduced by preventing the fluid that forms the currents from moving.",
+          "An insulator’s effectiveness depends on its thermal conductivity (lower is better), its density (more dense conducts more) and its thickness (thicker insulates better).",
+          "Loft insulation (fibreglass) and cavity wall insulation lower a house’s rate of cooling."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Stop conduction with poor conductors, stop convection by immobilising the fluid, and buy thickness: insulation is those three rules applied to lofts and wall cavities.",
+            "analogy": "Dressing for snow: a thick coat of low-conductivity fabric with still air trapped inside is a wearable insulation panel.",
+            "examPointer": "The three effectiveness factors — conductivity, density, thickness — with their directions (lower, lower, higher) are the examinable list."
+          },
+          "medium": {
+            "restatement": "Houses lose energy fastest where large warm surfaces meet moving cold air; fibreglass lofts trap still air above, and cavity wall fill turns the gap between two wall layers into a low-conductivity barrier.",
+            "analogy": "Two doors against the draught: the loft lid closes the top exit, the cavity fill plugs the wall’s hollow middle.",
+            "examPointer": "Link insulation to money and emissions when asked why: less wasted energy means lower bills and fewer greenhouse gases from the saved heating."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_mf22KJj8JXw3DRHn::L1::Q1",
+          "rn_mf22KJj8JXw3DRHn::L1::Q2",
+          "rn_mf22KJj8JXw3DRHn::L1::Q3",
+          "rn_mf22KJj8JXw3DRHn::L1::Q4",
+          "rn_mf22KJj8JXw3DRHn::L1::Q5",
+          "rn_mf22KJj8JXw3DRHn::L1::Q6",
+          "rn_mf22KJj8JXw3DRHn::L1::Q7",
+          "rn_mf22KJj8JXw3DRHn::L1::Q8",
+          "rn_mf22KJj8JXw3DRHn::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "insulator",
+          "definition": "A material with low thermal conductivity that reduces energy transfer by conduction.",
+          "firstLesson": 1
+        },
+        {
+          "term": "cavity wall insulation",
+          "definition": "Insulating material filling the gap between a house’s external wall layers.",
+          "firstLesson": 1
+        },
+        {
+          "term": "fibreglass",
+          "definition": "A reinforced plastic of woven material and glass fibres; trapped air between the fibres makes it a good insulator.",
+          "firstLesson": 1
+        },
+        {
+          "term": "rate of cooling",
+          "definition": "How quickly a object transfers energy to its surroundings; insulation lowers it.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/4bd04834177f-insulated-cup-new.png",
+        "alt": "insulated-cup-new",
+        "sourceHeading": "Reducing energy loss",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Insulated mugs are used to maintain the temperature of hot or cold drinks"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/11b86251c3e2-1-1-13-cavity-wall-insulation.png",
+        "alt": "11b86251c3e2-1-1-13-cavity-wall-insulation",
+        "sourceHeading": "Cavity insulation",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Less energy is transferred by conduction and convection if the cavity is insulated"
+      }
+    ]
+  }
+}

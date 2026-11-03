@@ -1,0 +1,268 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_g66ndvxcyxsTpKPn",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "e522bd85ca5866fb68be35516df5bf3019b8ea84f13bb2c719702868e0229dcc",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_g66ndvxcyxsTpKPn",
+    "topicTitle": "4. Energy Resources and Energy Transfers",
+    "subtopicTitle": "Energy Stores & Transfers",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/4-energy-resources-and-energy-transfers/4-1-energy-stores-and-transfers/4-1-2-conservation-of-energy",
+    "specAnchors": [
+      {
+        "code": "4.3",
+        "text": "use the principle of conservation of energy"
+      }
+    ],
+    "primer": {
+      "text": "Energy is the strictest accountant in physics: nothing created, nothing destroyed, everything transferred. This note states the principle, then walks it through a bat-and-ball strike, a boiling kettle and a trampoline cycle — watching useful and wasted branches close every account.",
+      "prerequisiteSubtopic": "Energy Stores & Transfers"
+    },
+    "modules": [
+      {
+        "id": "rn_g66ndvxcyxsTpKPn::L1",
+        "title": "The principle of conservation of energy",
+        "sourceHeadings": [
+          "What is the principle of conservation of energy?",
+          "Examples of the principle of conservation of energy"
+        ],
+        "specRefs": [
+          "4.3"
+        ],
+        "opening": "One law underpins every energy account in physics: energy cannot be created or destroyed, only transferred between stores. A closed system keeps a constant total; whatever one system gains, another loses; and energy that spreads to the surroundings is never lost — merely no longer useful.",
+        "keyPoints": [
+          "Energy is never created nor destroyed — it only moves between stores.",
+          "The total energy of a closed system remains constant.",
+          "Whatever one system gains, another system loses by the same amount.",
+          "Energy spreads out into the surroundings by heating and radiation — dissipated, and usually wasted.",
+          "Dissipated transfers are usually not useful, so the energy is described as wasted."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The books always balance: no transfer creates or destroys energy, closed systems keep their total, and the only place energy seems to vanish is into useless, dissipated spreading to the surroundings.",
+            "analogy": "A sealed bag of marbles: you can pour them between pockets forever, but the bag’s count never changes.",
+            "examPointer": "Use the exact statement in explain questions: cannot be created or destroyed, only transferred from one store to another."
+          },
+          "medium": {
+            "restatement": "Every gain is matched by an equal loss somewhere else; dissipation by heating and radiation spreads energy thinly through the surroundings, which is why it stops being useful without ever stopping to exist.",
+            "analogy": "A cup of tea cooling in a big cold room: the tea’s loss is the room’s gain, spread so thinly that no one can make a useful engine from it.",
+            "examPointer": "Wasted does not mean destroyed — say dissipated to the surroundings to keep the conservation law intact in your wording."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_g66ndvxcyxsTpKPn::L1::Q1",
+          "rn_g66ndvxcyxsTpKPn::L1::Q2",
+          "rn_g66ndvxcyxsTpKPn::L1::Q3",
+          "rn_g66ndvxcyxsTpKPn::L1::Q4",
+          "rn_g66ndvxcyxsTpKPn::L1::Q5",
+          "rn_g66ndvxcyxsTpKPn::L1::Q6",
+          "rn_g66ndvxcyxsTpKPn::L1::Q7",
+          "rn_g66ndvxcyxsTpKPn::L1::Q8",
+          "rn_g66ndvxcyxsTpKPn::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_g66ndvxcyxsTpKPn::L2",
+        "title": "Conservation in the bat-and-ball and kettle examples",
+        "sourceHeadings": [
+          "Example 1: a bat hitting a ball",
+          "Example 2: Boiling Water in a Kettle"
+        ],
+        "specRefs": [
+          "4.3"
+        ],
+        "opening": "Two everyday scenes carry the law through every store and pathway. A bat strikes a ball: kinetic energy splits into the ball’s motion, wasted thermal bumps and dissipated sound and heat. A kettle boils: electrical energy lands in the element, flows into the water, and leaks wastefully into the plastic and the air.",
+        "keyPoints": [
+          "The moving bat holds energy in its kinetic store.",
+          "Some of the bat’s kinetic energy transfers usefully to the ball’s kinetic store.",
+          "Some transfers mechanically to the ball’s thermal store on impact, and some dissipates by heating to the bat, ball and surroundings — both wasted.",
+          "In the kettle, energy is transferred electrically from the mains to the element’s thermal store.",
+          "The element transfers energy by heating to the water (useful) and to the plastic kettle body and surroundings (wasted)."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Bat-and-ball: kinetic store splits into useful kinetic of the ball plus wasted thermal and radiated sound. Kettle: electrical input lands in the element, flows by heating into the water, and the plastic and air take the wasted share.",
+            "analogy": "A fruit tree shaken by a shake-and-catch harvester: some fruit lands in the basket (useful), some bruises on the ground (wasted) — but no fruit is created or destroyed.",
+            "examPointer": "Name the pathway at each link: mechanically on impact, electrically from the mains, by heating into the water."
+          },
+          "medium": {
+            "restatement": "Both examples close the same loop: the input store empties, useful and wasted branches fill, and the surroundings receive the dissipated remainder — every joule accounted for.",
+            "analogy": "Splitting a pizza: the slices go to guests (useful), crumbs to the floor (wasted), but the pizza’s total never changes.",
+            "examPointer": "Questions often ask for ONE wasted transfer — the plastic kettle body and the sound of the strike are the classic answers."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_g66ndvxcyxsTpKPn::L2::Q1",
+          "rn_g66ndvxcyxsTpKPn::L2::Q2",
+          "rn_g66ndvxcyxsTpKPn::L2::Q3",
+          "rn_g66ndvxcyxsTpKPn::L2::Q4",
+          "rn_g66ndvxcyxsTpKPn::L2::Q5",
+          "rn_g66ndvxcyxsTpKPn::L2::Q6",
+          "rn_g66ndvxcyxsTpKPn::L2::Q7",
+          "rn_g66ndvxcyxsTpKPn::L2::Q8",
+          "rn_g66ndvxcyxsTpKPn::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_g66ndvxcyxsTpKPn::L3",
+        "title": "Conservation on the trampoline",
+        "sourceHeadings": [
+          "Example 3: Trampoline"
+        ],
+        "specRefs": [
+          "4.3"
+        ],
+        "opening": "A trampoline bounces the conservation law through four stores in one motion: gravitational store empties into kinetic on the way down, kinetic fills the elastic store as the canvas stretches, and the sequence reverses on the way up — shrinking a little each bounce as heating and sound take their share.",
+        "keyPoints": [
+          "Falling: the jumper’s gravitational store transfers to the kinetic store.",
+          "At the canvas: kinetic transfers to the elastic store as the canvas stretches.",
+          "Rebounding: the elastic store returns energy to kinetic, then to gravitational as the jumper rises.",
+          "Each cycle transfers some energy to thermal stores and to sound, so the bounces shrink.",
+          "The jumper must supply fresh energy mechanically to keep bouncing at the same height."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The trampoline cycle is gravitational → kinetic → elastic → kinetic → gravitational, with thermal and sound skimming a little off every pass — the shrinking bounce is conservation made visible.",
+            "analogy": "Water sloshing between four buckets through a leaky pipe: the water shuttles forever, but a few drops spill on every trip.",
+            "examPointer": "Order the stores correctly for the phase asked: descending is gravitational to kinetic; stretched canvas is elastic."
+          },
+          "medium": {
+            "restatement": "At every exchange some energy takes the heating or sound exit, so the maximum height falls unless the jumper’s muscles do mechanical work to refill the account.",
+            "analogy": "A payment where every transfer charges a small fee: the balance still exists but the useful balance shrinks each round trip.",
+            "examPointer": "If asked why the jumper keeps bouncing lower, name BOTH wasted routes: heating of the canvas and body, and sound."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_g66ndvxcyxsTpKPn::L3::Q1",
+          "rn_g66ndvxcyxsTpKPn::L3::Q2",
+          "rn_g66ndvxcyxsTpKPn::L3::Q3",
+          "rn_g66ndvxcyxsTpKPn::L3::Q4",
+          "rn_g66ndvxcyxsTpKPn::L3::Q5",
+          "rn_g66ndvxcyxsTpKPn::L3::Q6",
+          "rn_g66ndvxcyxsTpKPn::L3::Q7",
+          "rn_g66ndvxcyxsTpKPn::L3::Q8",
+          "rn_g66ndvxcyxsTpKPn::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "conservation of energy",
+          "definition": "The principle that energy cannot be created or destroyed, only transferred from one store to another.",
+          "firstLesson": 1
+        },
+        {
+          "term": "closed system",
+          "definition": "A system that exchanges no energy with its surroundings, so its total energy stays constant.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dissipated",
+          "definition": "Spread out to the surroundings, usually by heating and radiation, so the energy is no longer useful.",
+          "firstLesson": 1
+        },
+        {
+          "term": "wasted energy",
+          "definition": "Energy transferred to stores that do not serve the intended purpose.",
+          "firstLesson": 2
+        },
+        {
+          "term": "elastic store",
+          "definition": "The energy store of stretched, squashed or bent objects.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b1cf23a93531-bat-and-ball-energy-flow-diagram-new.png",
+        "alt": "bat-and-ball-energy-flow-diagram-new",
+        "sourceHeading": "Example 1: a bat hitting a ball",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3fce7a33ab6b-bat-and-ball-energy-transfer.png",
+        "alt": "bat-and-ball-energy-transfer",
+        "sourceHeading": "Example 1: a bat hitting a ball",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The principle of conservation of energy applied to a bat hitting a ball"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/f29f45f90037-boiling-kettle-store-igcse-and-gcse-physics-revi.png",
+        "alt": "boiling-kettle-store-igcse-and-gcse-physics-revision-notes",
+        "sourceHeading": "Example 2: Boiling Water in a Kettle",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The principle of conservation of energy applied to a kettle boiling water"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/416fd6e6c676-conservation-of-energy-trampoline-new.png",
+        "alt": "conservation-of-energy-trampoline-new",
+        "sourceHeading": "Example 3: Trampoline",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "The principle of conservation of energy applied to a person jumping on a trampoline"
+      }
+    ]
+  }
+}

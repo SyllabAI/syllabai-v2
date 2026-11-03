@@ -1,0 +1,496 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_SCPfx5yXVvZQSpgw",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "5115dff7853f472e4927bac5143de93778741c87545ebcc3b96b57c0f17848f5",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "packageId": "igcse-physics::rn_SCPfx5yXVvZQSpgw",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L1::Q1",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L1",
+      "stem": "Which instrument measures the distance travelled by the sound in experiment 1?",
+      "misconceptionClass": "equipment purpose",
+      "options": [
+        {
+          "key": "A",
+          "text": "a trundle wheel",
+          "correct": true,
+          "explanation": "The trundle wheel rolls out distances such as the 100 m gap.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "an oscilloscope",
+          "correct": false,
+          "explanation": "The oscilloscope belongs to the electronic method of experiment 2.",
+          "misconception": "instrument swap"
+        },
+        {
+          "key": "C",
+          "text": "a wooden block",
+          "correct": false,
+          "explanation": "Blocks make the bang; they measure nothing.",
+          "misconception": "instrument swap"
+        },
+        {
+          "key": "D",
+          "text": "a stopwatch",
+          "correct": false,
+          "explanation": "A stopwatch measures time, not distance.",
+          "misconception": "instrument swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L1::Q2",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L1",
+      "stem": "Why does the timer start the stopwatch when the blocks are seen to clash, not when they are heard?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because the bang is too quiet to hear",
+          "correct": false,
+          "explanation": "The bang is the very signal being timed.",
+          "misconception": "misreading the method"
+        },
+        {
+          "key": "B",
+          "text": "because light travels much faster than sound, so the sight of the bang is effectively instant",
+          "correct": true,
+          "explanation": "Light reaches the timer in a negligible time compared with the sound delay.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "because sound cannot travel more than 100 m",
+          "correct": false,
+          "explanation": "Sound travels any distance; it simply takes time.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "because the stopwatch only responds to light",
+          "correct": false,
+          "explanation": "Stopwatches respond to fingers, not light.",
+          "misconception": "mechanism myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L1::Q3",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L1",
+      "stem": "Why is the timing repeated several times and an average taken?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "to calibrate the stopwatch against the trundle wheel",
+          "correct": false,
+          "explanation": "No calibration between instruments happens here.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "B",
+          "text": "to make the bang louder",
+          "correct": false,
+          "explanation": "Averaging cannot change loudness.",
+          "misconception": "purpose mix-up"
+        },
+        {
+          "key": "C",
+          "text": "to reduce the effect of random human reaction-time errors",
+          "correct": true,
+          "explanation": "Reaction time varies trial to trial; averaging smooths those random errors.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "to increase the distance the sound travels",
+          "correct": false,
+          "explanation": "Distance is fixed by the measurement, not the repeats.",
+          "misconception": "purpose mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L1::Q4",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L1",
+      "stem": "The experiment is repeated at 120 m, 140 m, 160 m and 180 m. What does plotting distance against average time allow?",
+      "misconceptionClass": "analysis reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the area under the line gives the speed of sound",
+          "correct": false,
+          "explanation": "Area has no meaning for a distance-time plot here.",
+          "misconception": "graph skill error"
+        },
+        {
+          "key": "B",
+          "text": "the intercept gives the speed of sound",
+          "correct": false,
+          "explanation": "The intercept is the zero-distance point, not a speed.",
+          "misconception": "graph skill error"
+        },
+        {
+          "key": "C",
+          "text": "the spread of times to be ignored",
+          "correct": false,
+          "explanation": "Plotting does not remove scatter; it exposes it.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "D",
+          "text": "the gradient of the line gives the speed of sound",
+          "correct": true,
+          "explanation": "Speed is distance over time, which is exactly the gradient of a distance-time graph.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L1::Q5",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L1",
+      "stem": "A group measures 180 m between the two points and records an average time of 0.53 s. What speed of sound does this give?",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "about 340 m/s",
+          "correct": true,
+          "explanation": "180 / 0.53 is about 340 m/s, matching the accepted value.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "about 95 m/s",
+          "correct": false,
+          "explanation": "0.53 / 180 would mix up numerator and denominator.",
+          "misconception": "inverted ratio"
+        },
+        {
+          "key": "C",
+          "text": "about 940 m/s",
+          "correct": false,
+          "explanation": "This is nearly three times too large for air.",
+          "misconception": "magnitude error"
+        },
+        {
+          "key": "D",
+          "text": "about 53 m/s",
+          "correct": false,
+          "explanation": "This drops the factor of ten and the division.",
+          "misconception": "arithmetic slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L1::Q6",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L1",
+      "stem": "State the independent and dependent variables of experiment 1.",
+      "misconceptionClass": "variable identification",
+      "kind": "recall",
+      "modelAnswer": "The independent variable is the distance between the two points and the dependent variable is the time taken for the sound to travel that distance.",
+      "keywords": [
+        "distance",
+        "independent",
+        "time",
+        "dependent"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L1::Q7",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L1",
+      "stem": "State the equation used in the analysis of the results.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Average speed = distance moved divided by time taken.",
+      "keywords": [
+        "speed",
+        "distance",
+        "time"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L1::Q8",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L1",
+      "stem": "Explain why the stopwatch method gives a less accurate value than the oscilloscope method.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A human timer must react to seeing and hearing events, and that reaction time is comparable with the travel time of the sound, so the recorded time carries a large random error; the oscilloscope method times the wave electronically, which removes the human reaction delay.",
+      "keywords": [
+        "reaction",
+        "error",
+        "human",
+        "oscilloscope",
+        "electronic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L1::Q9",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L1",
+      "stem": "A student suggests timing the bang over a gap of only 2 m with the stopwatch method. Explain whether this is sensible.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "It is not sensible: at about 340 m/s the sound crosses 2 m in roughly 0.006 s, far shorter than any human reaction time, so the stopwatch reading would be almost entirely reaction error; a larger distance makes the travel time comparable with but greater than the reaction uncertainty.",
+      "keywords": [
+        "2 m",
+        "0.006",
+        "reaction",
+        "short",
+        "distance"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L2::Q1",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L2",
+      "stem": "In the oscilloscope method, what triggers the oscilloscope?",
+      "misconceptionClass": "method detail",
+      "options": [
+        {
+          "key": "A",
+          "text": "the second microphone detecting the bang",
+          "correct": false,
+          "explanation": "The scope triggers on the FIRST microphone.",
+          "misconception": "method detail swap"
+        },
+        {
+          "key": "B",
+          "text": "the first microphone detecting the bang",
+          "correct": true,
+          "explanation": "The scope is set to trigger when the first microphone receives the bang.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the wooden blocks directly",
+          "correct": false,
+          "explanation": "Blocks make sound; they are not connected to the scope.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "D",
+          "text": "the tape measure",
+          "correct": false,
+          "explanation": "The tape measure only fixes the separation.",
+          "misconception": "instrument swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L2::Q2",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L2",
+      "stem": "What does the horizontal separation of the two pulses on the screen represent?",
+      "misconceptionClass": "reading the trace",
+      "options": [
+        {
+          "key": "A",
+          "text": "the frequency of the bang",
+          "correct": false,
+          "explanation": "A single bang is a pulse, not a repeated wave.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "B",
+          "text": "the distance between the microphones",
+          "correct": false,
+          "explanation": "Distance is measured externally with the tape measure.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "C",
+          "text": "the time for the sound to travel from one microphone to the other",
+          "correct": true,
+          "explanation": "The trace offset is the travel time across the gap.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the amplitude of the bang",
+          "correct": false,
+          "explanation": "Amplitude is the vertical height of the trace.",
+          "misconception": "quantity swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L2::Q3",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L2",
+      "stem": "Which control variable is specific to the oscilloscope method?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "banging the blocks harder each time",
+          "correct": false,
+          "explanation": "That changes conditions rather than controlling them.",
+          "misconception": "control myth"
+        },
+        {
+          "key": "B",
+          "text": "moving the microphones closer each trial",
+          "correct": false,
+          "explanation": "That changes the independent variable.",
+          "misconception": "variable mix-up"
+        },
+        {
+          "key": "C",
+          "text": "using a different oscilloscope each trial",
+          "correct": false,
+          "explanation": "Equipment is kept the same, not varied.",
+          "misconception": "control myth"
+        },
+        {
+          "key": "D",
+          "text": "using the same pair of microphones for every trial",
+          "correct": true,
+          "explanation": "The method declares the same set of microphones as a control variable.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L2::Q4",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L2",
+      "stem": "Why is a tape measure used rather than the trundle wheel in the oscilloscope method?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the separation is small, about 2 m, so a tape measure gives the finer resolution needed",
+          "correct": true,
+          "explanation": "A 2 m gap needs fine measurement; the tape resolution suits it.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a trundle wheel cannot measure any distance",
+          "correct": false,
+          "explanation": "A trundle wheel measures distance; it is just coarse for 2 m.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "C",
+          "text": "the trundle wheel only works outdoors",
+          "correct": false,
+          "explanation": "Nothing restricts the trundle wheel to outdoors.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "D",
+          "text": "the tape measure times the pulse as well",
+          "correct": false,
+          "explanation": "The tape measures distance only.",
+          "misconception": "instrument swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L2::Q5",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L2",
+      "stem": "Which verdict fairly compares the stopwatch timing with the oscilloscope timing?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "both methods are equally accurate",
+          "correct": false,
+          "explanation": "The electronic method removes the dominant error source.",
+          "misconception": "false equivalence"
+        },
+        {
+          "key": "B",
+          "text": "the oscilloscope method is better because electronic timing removes human reaction time",
+          "correct": true,
+          "explanation": "Reaction time is the manual method’s weakness and the electronic method removes it.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the stopwatch method is better because it uses no electricity",
+          "correct": false,
+          "explanation": "Power source is irrelevant to accuracy here.",
+          "misconception": "irrelevant criterion"
+        },
+        {
+          "key": "D",
+          "text": "neither method can measure the speed of sound",
+          "correct": false,
+          "explanation": "Both are standard measurements with a known result near 340 m/s.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L2::Q6",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L2",
+      "stem": "State the independent and dependent variables shared by the two speed-of-sound experiments.",
+      "misconceptionClass": "variable identification",
+      "kind": "recall",
+      "modelAnswer": "The independent variable is the distance the sound travels and the dependent variable is the time the sound takes to travel that distance.",
+      "keywords": [
+        "distance",
+        "independent",
+        "time",
+        "dependent"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L2::Q7",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L2",
+      "stem": "State the two quantities the oscilloscope method needs before a speed can be computed.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The microphone separation (measured with the tape) and the pulse delay read from the screen.",
+      "keywords": [
+        "separation",
+        "delay",
+        "oscilloscope"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L2::Q8",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L2",
+      "stem": "Explain why the microphone separation is kept small in the oscilloscope method.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A short, precisely measured separation keeps the experiment compact on a bench and lets the oscilloscope display both pulses on one screen with a clear, readable offset, while the electronic timing keeps the error small despite the short travel time.",
+      "keywords": [
+        "short",
+        "separation",
+        "screen",
+        "offset",
+        "electronic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SCPfx5yXVvZQSpgw::L2::Q9",
+      "moduleId": "rn_SCPfx5yXVvZQSpgw::L2",
+      "stem": "The microphones are 2.0 m apart and the second pulse arrives 5.9 ms after the first. Calculate the speed of sound and compare it with the accepted value.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Speed = 2.0 / 0.0059 = about 339 m/s, which is within about 1% of the accepted 340 m/s, so the result supports the accepted value.",
+      "keywords": [
+        "339",
+        "340",
+        "0.0059",
+        "2.0"
+      ],
+      "options": []
+    }
+  ]
+}

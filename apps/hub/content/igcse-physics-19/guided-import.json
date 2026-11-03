@@ -1,16 +1,16 @@
 {
   "format": "guided-import-index/1.0",
-  "runner": "apps/hub/scripts/import_guided/run_import.mjs (hub-import-runner/1.0, FEED=physics-wave6-v25)",
-  "imported_at_utc": "2026-11-03T12:15:01Z",
-  "operator_trace": "1a1a01c1321c30b5",
+  "runner": "apps/hub/scripts/import_guided/run_import.mjs (hub-import-runner/1.0, FEED=physics-wave7-v26)",
+  "imported_at_utc": "2026-11-03T18:06:39Z",
+  "operator_trace": "1a1a1b6d5b658cb5",
   "upstream": {
     "repo": "SyllabAI/syllabai-resources",
     "namespace": "integration/",
-    "commit": "79b437615ac21097f59631f6bc41176e97ed8a08",
-    "manifest": "hub-import-manifest-v25.json",
-    "manifest_sha256": "7084c062bf1dae01e6dc2f1bfeb211d0b537a8d74620c662bce76e419e5c37a7",
-    "manifest_version": 25,
-    "int0_pin": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+    "commit": "a2b6386ac78f590448f3fb1989ef0146885c12b6",
+    "manifest": "hub-import-manifest-v26.json",
+    "manifest_sha256": "be6e0ff675b1cbfa18ab0d16544adde8c62f2db8311a1961e8bccecec0a281b4",
+    "manifest_version": 26,
+    "int0_pin": "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
     "adapter": "guided-lesson-0.6--hub-lesson-import-1.5"
   },
   "target_schemas": [
@@ -18,28 +18,28 @@
     "sme-question-package/1.2"
   ],
   "counts": {
-    "notes": 53,
-    "lessons": 105,
-    "checks": 945,
-    "keyPoints": 518,
-    "distractors": 1575,
-    "glossaryTerms": 239,
-    "figures": 168,
-    "figures_module_mapped": 163,
+    "notes": 63,
+    "lessons": 127,
+    "checks": 1143,
+    "keyPoints": 627,
+    "distractors": 1905,
+    "glossaryTerms": 279,
+    "figures": 202,
+    "figures_module_mapped": 197,
     "figures_note_level": 5,
-    "workedExamples_populated": 27,
-    "workedExamples_null": 26,
-    "authored_chars_conserved": 590554
+    "workedExamples_populated": 28,
+    "workedExamples_null": 35,
+    "authored_chars_conserved": 715840
   },
   "conservation": {
-    "authored_stream_sha256": "7a4ae27696b8420c112a9b9950e8c5c0ada29cde470d8371c952ef2df9f5a28d",
-    "authored_chars": 590554
+    "authored_stream_sha256": "af7da83abe4d41fae036b593eb7ffed204677e180c4c80c1e6f8aac272a3f73e",
+    "authored_chars": 715840
   },
   "landing": {
     "lessons_rel": "igcse-physics-19/guided-lessons",
     "questions_rel": "igcse-physics-19/guided-questions",
-    "lesson_files": 53,
-    "question_files": 53,
+    "lesson_files": 63,
+    "question_files": 63,
     "byte_exact": true,
     "additive_only": true
   },
@@ -573,6 +573,106 @@
       "packageSha256": "9313be1c37e431f3829cb1f7f28b5f11b49049e7fa1587d3e01292fc97838356",
       "streamSha256": "4633b8653668aa9468dcb000709dd17d01d95973a6ad9e4d4a63ff93018b6015",
       "streamChars": 18225
+    },
+    {
+      "noteId": "rn_SCPfx5yXVvZQSpgw",
+      "wave": 7,
+      "lessonPath": "igcse-physics-19/guided-lessons/rn_SCPfx5yXVvZQSpgw.hub-lesson-import.json",
+      "packagePath": "igcse-physics-19/guided-questions/rn_SCPfx5yXVvZQSpgw.sme-question-package.json",
+      "lessonSha256": "e80167787e22cea4dfe78a6bb3920ad948481bff0dc0f047c8e5c16e5ef8d82c",
+      "packageSha256": "fcddb379b9c484ef57f7473d2c62a129b9af0d97092d33ff5cdf47baa03ea749",
+      "streamSha256": "f9601e548cd715c7f84010f23899112a188a8bdd542f22d901c5e20868d9a393",
+      "streamChars": 12241
+    },
+    {
+      "noteId": "rn_mr7Dpsm3T3mCqmns",
+      "wave": 7,
+      "lessonPath": "igcse-physics-19/guided-lessons/rn_mr7Dpsm3T3mCqmns.hub-lesson-import.json",
+      "packagePath": "igcse-physics-19/guided-questions/rn_mr7Dpsm3T3mCqmns.sme-question-package.json",
+      "lessonSha256": "152c8f3c047928632812072f0bdd5015abf02fc986ee3d0fc98ece2dbb3018b6",
+      "packageSha256": "d5f31b398e86b4cb43b3c2c22b379d12d17fe9a6f5b4d07e3bdc51dec0022033",
+      "streamSha256": "3c55e20bdf43707602c6f235e48e6c3a58630b6b0a08e60a6586efa42d93c441",
+      "streamChars": 6443
+    },
+    {
+      "noteId": "rn_P8xWkdTw6SrvWYJx",
+      "wave": 7,
+      "lessonPath": "igcse-physics-19/guided-lessons/rn_P8xWkdTw6SrvWYJx.hub-lesson-import.json",
+      "packagePath": "igcse-physics-19/guided-questions/rn_P8xWkdTw6SrvWYJx.sme-question-package.json",
+      "lessonSha256": "ab7a6e283c670dabd8ace8cf2d7c367deb128f5f0a5f0efc137efb0100d87729",
+      "packageSha256": "6fa3011d3d5bd4a3a61914ed276f1bab4883b1dfdcc4e0a7f2035d734c6489b3",
+      "streamSha256": "89b546d15b4bfd86c14cc738a0cc87c8c52d7db73f7e3a13ca7e6a0cd2f6c179",
+      "streamChars": 5786
+    },
+    {
+      "noteId": "rn_kTvJN82ZMcTrCypr",
+      "wave": 7,
+      "lessonPath": "igcse-physics-19/guided-lessons/rn_kTvJN82ZMcTrCypr.hub-lesson-import.json",
+      "packagePath": "igcse-physics-19/guided-questions/rn_kTvJN82ZMcTrCypr.sme-question-package.json",
+      "lessonSha256": "4bce588d791ca2bebff1b28e911b3a8f5e867cd6834d4f27ea942502cb639f43",
+      "packageSha256": "26dc4794135bd5ff3280352849efe65ccc7bcfe805ddbfcf086503494561cde6",
+      "streamSha256": "7106dab26427119a3abdd9cbe068c635964eb3084118442557da50556d7858b8",
+      "streamChars": 11194
+    },
+    {
+      "noteId": "rn_7Mn6fNZ3mz6pYFkg",
+      "wave": 7,
+      "lessonPath": "igcse-physics-19/guided-lessons/rn_7Mn6fNZ3mz6pYFkg.hub-lesson-import.json",
+      "packagePath": "igcse-physics-19/guided-questions/rn_7Mn6fNZ3mz6pYFkg.sme-question-package.json",
+      "lessonSha256": "4a26b8ca14a2f42afa0c25b83f3210b39a52cfc23b2a5459f85ecc749602ad6b",
+      "packageSha256": "d2adfea642c2aa3478629b53d30bfa59546bf434c6f3c9cda58127de25cfff4b",
+      "streamSha256": "bb36e0ec538776fcfe48bc20927640577c914aa6442c58666e7813ac0412f3e8",
+      "streamChars": 11321
+    },
+    {
+      "noteId": "rn_g66ndvxcyxsTpKPn",
+      "wave": 7,
+      "lessonPath": "igcse-physics-19/guided-lessons/rn_g66ndvxcyxsTpKPn.hub-lesson-import.json",
+      "packagePath": "igcse-physics-19/guided-questions/rn_g66ndvxcyxsTpKPn.sme-question-package.json",
+      "lessonSha256": "83974240b2d2c6c2e4913198656f763a9995628e5d140dc9f6f527162fe7d594",
+      "packageSha256": "fc63c2545738a624601a53ff8b216acad6fc5a03520c9c8667a573410bd3f76a",
+      "streamSha256": "feb12a1548997c52247603ed1aef485889dc10cafa79ad221d4234a994c93bb6",
+      "streamChars": 17178
+    },
+    {
+      "noteId": "rn_vctGRbxP4NVz34JT",
+      "wave": 7,
+      "lessonPath": "igcse-physics-19/guided-lessons/rn_vctGRbxP4NVz34JT.hub-lesson-import.json",
+      "packagePath": "igcse-physics-19/guided-questions/rn_vctGRbxP4NVz34JT.sme-question-package.json",
+      "lessonSha256": "befee64dc4a8d9ec3b96a47b3680dc44f35dbd9497f5c59933a74b9113a0149e",
+      "packageSha256": "40f50f1fdfef74ad219f97f8b685ec26c8a83b8baf1da12e38960fe300c126dc",
+      "streamSha256": "fdbe37b2ad315a288d48dae5999386a0b152fda18566706550acb85f1d401a41",
+      "streamChars": 16347
+    },
+    {
+      "noteId": "rn_kxdTzqwVgkFBYVC3",
+      "wave": 7,
+      "lessonPath": "igcse-physics-19/guided-lessons/rn_kxdTzqwVgkFBYVC3.hub-lesson-import.json",
+      "packagePath": "igcse-physics-19/guided-questions/rn_kxdTzqwVgkFBYVC3.sme-question-package.json",
+      "lessonSha256": "c389072fba21e17760251de8eb7102e1c6ace027d1637cb275210954230c19af",
+      "packageSha256": "6c897026a0ba5ea98ad1552438d491d400c13eee311d9b6c184ec8c3e8c3fcc6",
+      "streamSha256": "09bf1661fea33152a0c9500d83d2ffc1123d9b399bc063c3bd7bc7f7c2cd456f",
+      "streamChars": 22052
+    },
+    {
+      "noteId": "rn_6wZc5RHQn4qftvc8",
+      "wave": 7,
+      "lessonPath": "igcse-physics-19/guided-lessons/rn_6wZc5RHQn4qftvc8.hub-lesson-import.json",
+      "packagePath": "igcse-physics-19/guided-questions/rn_6wZc5RHQn4qftvc8.sme-question-package.json",
+      "lessonSha256": "bb78b3f22b7283246edcb8bc509acd34079611e2d08f25a5c9f17064780d01a0",
+      "packageSha256": "78eff598e46de69cc25338e785f9d1746ae40b00414dfb701e46bfd2ca047297",
+      "streamSha256": "255d1c70c525038288904528a298b7738878f1f8fe146fcecc7db499500c51fa",
+      "streamChars": 16658
+    },
+    {
+      "noteId": "rn_mf22KJj8JXw3DRHn",
+      "wave": 7,
+      "lessonPath": "igcse-physics-19/guided-lessons/rn_mf22KJj8JXw3DRHn.hub-lesson-import.json",
+      "packagePath": "igcse-physics-19/guided-questions/rn_mf22KJj8JXw3DRHn.sme-question-package.json",
+      "lessonSha256": "a668f41eb580f3ee8769878cf081ee0ae18165d1ea9e88096107b1144b902414",
+      "packageSha256": "82d31620466e3daaf20fac0e8b1b0a1f5c738eb49285ff78037275864b2a2952",
+      "streamSha256": "40ef6c241f5d58bf1944536ba0679c22d402df9ef4f022348b2286d7fcbec4a8",
+      "streamChars": 6066
     }
   ]
 }

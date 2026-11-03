@@ -1,0 +1,186 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_7Mn6fNZ3mz6pYFkg",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8963ff7eb755dab447eb6dde408cb79dde7f163ca91a0ad8d6017072517e8f06",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_7Mn6fNZ3mz6pYFkg",
+    "topicTitle": "4. Energy Resources and Energy Transfers",
+    "subtopicTitle": "Energy Stores & Transfers",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/4-energy-resources-and-energy-transfers/4-1-energy-stores-and-transfers/4-1-1-energy-stores-and-transfers",
+    "specAnchors": [
+      {
+        "code": "4.2",
+        "text": "describe energy transfers involving energy stores: • energy stores: chemical, kinetic, gravitational, elastic, thermal, magnetic, electrostatic, nuclear • energy transfers: mechanically, electrically, by heating, by radiation (light and sound)"
+      }
+    ],
+    "primer": {
+      "text": "Every energy argument in this course runs on one model: eight stores that hold energy and four pathways that move it. This note fixes the vocabulary — system, equilibrium, stores, pathways — so that later calculations always have somewhere precise to put the joules.",
+      "prerequisiteSubtopic": "Energy Stores & Transfers"
+    },
+    "modules": [
+      {
+        "id": "rn_7Mn6fNZ3mz6pYFkg::L1",
+        "title": "Systems and energy stores",
+        "sourceHeadings": [
+          "Systems in physics",
+          "Energy stores"
+        ],
+        "specRefs": [
+          "4.2"
+        ],
+        "opening": "Physics borrows a bookkeeping idea to keep energy arguments tidy: define a system — an object or group of objects — and then only energy crossing its boundary matters. Inside the accounts, eight named stores hold the energy while anything changing moves it between them.",
+        "keyPoints": [
+          "A system means an object or a group of objects chosen for study.",
+          "Defining the system narrows the physics to what is relevant for the situation being observed.",
+          "A system in equilibrium transfers nothing; any change to the system moves energy between stores.",
+          "There are eight energy stores: kinetic, gravitational, elastic, magnetic, electrostatic, chemical, nuclear and thermal.",
+          "Moving objects fill the kinetic store; lifted objects fill the gravitational store; hotter objects fill the thermal store."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A system is any object or group of objects; changes to it transfer energy between the eight named stores, and an unchanged system in equilibrium transfers nothing.",
+            "analogy": "A ledger with eight named accounts: nothing is spent or created, money simply moves between accounts whenever something happens to the system.",
+            "examPointer": "Learn the eight stores as a fixed list — classification questions expect the exact names, not paraphrases."
+          },
+          "medium": {
+            "restatement": "The system boundary decides which energy transfers are counted: an apple on a table transfers energy only once the table is removed, and the accounting then runs from the gravitational store into the kinetic store as it falls.",
+            "analogy": "Choosing a fence around a farm: only animals crossing the fence are counted, and the fence you draw changes the whole story.",
+            "examPointer": "State the system explicitly in long answers: the same falling apple is a different story if the Earth is inside or outside the system."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_7Mn6fNZ3mz6pYFkg::L1::Q1",
+          "rn_7Mn6fNZ3mz6pYFkg::L1::Q2",
+          "rn_7Mn6fNZ3mz6pYFkg::L1::Q3",
+          "rn_7Mn6fNZ3mz6pYFkg::L1::Q4",
+          "rn_7Mn6fNZ3mz6pYFkg::L1::Q5",
+          "rn_7Mn6fNZ3mz6pYFkg::L1::Q6",
+          "rn_7Mn6fNZ3mz6pYFkg::L1::Q7",
+          "rn_7Mn6fNZ3mz6pYFkg::L1::Q8",
+          "rn_7Mn6fNZ3mz6pYFkg::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_7Mn6fNZ3mz6pYFkg::L2",
+        "title": "Energy transfer pathways",
+        "sourceHeadings": [
+          "Energy transfers",
+          "Table of energy transfer pathways"
+        ],
+        "specRefs": [
+          "4.2"
+        ],
+        "opening": "Stores hold energy; pathways move it. The model names exactly four: mechanical work, electrical work, heating and radiation (light and sound). Any everyday transfer you can describe — a kettle, a falling apple, sunlight on a wall — reduces to these four crossings between stores.",
+        "keyPoints": [
+          "Energy is transferred between stores by four pathways: mechanically, electrically, by heating and by radiation.",
+          "Mechanical work involves a force acting through a distance.",
+          "Electrical work transfers energy through moving charge in a circuit.",
+          "Heating covers particle-to-particle transfer such as conduction, and radiation (light and sound) transfers energy without a material medium."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Four pathways carry energy between the eight stores: mechanical, electrical, heating, and radiation (light and sound); every device description is a pathway joining two stores.",
+            "analogy": "Four roads between eight towns: the stores are the towns and every journey of energy takes one of the four roads.",
+            "examPointer": "When a question says describe the transfer, name BOTH the stores and the pathway: store → pathway → store."
+          },
+          "medium": {
+            "restatement": "The pathway table separates how the energy crosses the boundary: force-through-distance is mechanical, charge-in-a-circuit is electrical, particle collisions are heating, and waves leaving the object are radiation.",
+            "analogy": "Payment methods for the same money: cash, card, transfer and bitcoin all move the same pounds between the same accounts.",
+            "examPointer": "Light and sound both count as radiation pathways — exam answers often forget sound is included."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_7Mn6fNZ3mz6pYFkg::L2::Q1",
+          "rn_7Mn6fNZ3mz6pYFkg::L2::Q2",
+          "rn_7Mn6fNZ3mz6pYFkg::L2::Q3",
+          "rn_7Mn6fNZ3mz6pYFkg::L2::Q4",
+          "rn_7Mn6fNZ3mz6pYFkg::L2::Q5",
+          "rn_7Mn6fNZ3mz6pYFkg::L2::Q6",
+          "rn_7Mn6fNZ3mz6pYFkg::L2::Q7",
+          "rn_7Mn6fNZ3mz6pYFkg::L2::Q8",
+          "rn_7Mn6fNZ3mz6pYFkg::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "system",
+          "definition": "An object or group of objects chosen as the focus of an energy description.",
+          "firstLesson": 1
+        },
+        {
+          "term": "equilibrium",
+          "definition": "The state of a system in which nothing changes, so no energy is transferred.",
+          "firstLesson": 1
+        },
+        {
+          "term": "energy store",
+          "definition": "One of the eight named places energy can be held: kinetic, gravitational, elastic, magnetic, electrostatic, chemical, nuclear or thermal.",
+          "firstLesson": 1
+        },
+        {
+          "term": "transfer pathway",
+          "definition": "One of the four ways energy moves between stores: mechanically, electrically, by heating, by radiation.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/beaf216e9b0a-apple-table-system.png",
+        "alt": "apple-table-system",
+        "sourceHeading": "Systems in physics",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b4384975fb40-1-thermal-energy-transfer-new.png",
+        "alt": "1--thermal-energy-transfer--new",
+        "sourceHeading": "Table of energy transfer pathways",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Energy is transferred by heating from the hot coffee to the mug to the cold hands"
+      }
+    ]
+  }
+}

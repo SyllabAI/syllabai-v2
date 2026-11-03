@@ -1,0 +1,265 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_vctGRbxP4NVz34JT",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "a477390de756bd8585ebf26a30e86638ff1a4a707bf26212654f8a4410e61b88",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_vctGRbxP4NVz34JT",
+    "topicTitle": "4. Energy Resources and Energy Transfers",
+    "subtopicTitle": "Energy Stores & Transfers",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/4-energy-resources-and-energy-transfers/4-1-energy-stores-and-transfers/4-1-3-efficiency",
+    "specAnchors": [
+      {
+        "code": "4.4",
+        "text": "know and use the relationship between efficiency, useful energy output and total energy output: efficiency = useful energy output ×100% total energy output"
+      },
+      {
+        "code": "4.5",
+        "text": "describe a variety of everyday and scientific devices and situations, explaining the transfer of the input energy in terms of the above relationship, including their representation by Sankey diagrams"
+      }
+    ],
+    "primer": {
+      "text": "Efficiency turns the conservation law into a score: of all the energy leaving a device, how much served the purpose? This note fixes the equation, works a fan motor from 300 J to 72%, and teaches Sankey diagrams — the arrow picture where widths are joules and efficiency is visible at a glance.",
+      "prerequisiteSubtopic": "Energy Stores & Transfers"
+    },
+    "modules": [
+      {
+        "id": "rn_vctGRbxP4NVz34JT::L1",
+        "title": "Efficiency and the efficiency equation",
+        "sourceHeadings": [
+          "What is efficiency in an energy transfer?",
+          "The equation for efficiency"
+        ],
+        "specRefs": [
+          "4.4"
+        ],
+        "opening": "Efficiency scores an energy transfer: what fraction of the output actually serves the purpose? It is the useful share of the output expressed as a percentage — and conservation of energy pins the total output to the total input, with the wasted share filling the gap.",
+        "keyPoints": [
+          "Efficiency scores how much of a transfer is wasted.",
+          "Efficiency = (useful output) ÷ (total output) × 100%.",
+          "High efficiency means most of the transferred energy is useful; low efficiency means most is wasted.",
+          "By conservation of energy, what leaves equals what arrives.",
+          "The output splits into the useful share plus the wasted share."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Efficiency is a percentage score: useful output over total output, where the total equals the input by conservation and the wasted share fills whatever the useful share leaves.",
+            "analogy": "A goalkeeper’s save percentage: saves (useful) divided by all shots faced (total output) — the rest conceded (wasted).",
+            "examPointer": "Write the equation with × 100% for a percentage, or without it for a ratio between 0 and 1 — match the form the question asks for."
+          },
+          "medium": {
+            "restatement": "The arithmetic chain is fixed: total output = total input (conservation), useful output = total output − wasted, then divide useful by total and scale by 100 for the percentage.",
+            "analogy": "A pay slip: gross pay (input) arrives, tax and pension (wasted) are deducted, and take-home (useful) divided by gross is the efficiency.",
+            "examPointer": "Efficiency above 100% is impossible — that claim is a favourite true-or-false check and conservation is the reason."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vctGRbxP4NVz34JT::L1::Q1",
+          "rn_vctGRbxP4NVz34JT::L1::Q2",
+          "rn_vctGRbxP4NVz34JT::L1::Q3",
+          "rn_vctGRbxP4NVz34JT::L1::Q4",
+          "rn_vctGRbxP4NVz34JT::L1::Q5",
+          "rn_vctGRbxP4NVz34JT::L1::Q6",
+          "rn_vctGRbxP4NVz34JT::L1::Q7",
+          "rn_vctGRbxP4NVz34JT::L1::Q8",
+          "rn_vctGRbxP4NVz34JT::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_vctGRbxP4NVz34JT::L2",
+        "title": "Sankey diagrams",
+        "sourceHeadings": [
+          "What are Sankey diagrams?",
+          "Example of a Sankey diagram"
+        ],
+        "specRefs": [
+          "4.5"
+        ],
+        "opening": "A Sankey diagram draws an energy transfer as arrows whose widths are proportional to the energy they carry: one flat input arrow entering, the useful output running straight on, and the wasted output bending away. Because energy is conserved, the widths always recombine to the input width.",
+        "keyPoints": [
+          "A Sankey diagram draws an energy transfer as splitting arrows.",
+          "The flat left-hand end is the energy arriving at the system.",
+          "The straight arrow to the right represents the useful energy output.",
+          "The arrows bending away represent the wasted energy.",
+          "Arrow width is proportional to the energy transferred, and total energy in equals total energy out."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Read a Sankey left to right: input width in, straight arrow = useful output, bent arrows = wasted output, and the widths always sum back to the input because energy is conserved.",
+            "analogy": "A river delta: the main channel carries the useful flow onward while side channels bleed away — wider channels mean more water, or here, more joules.",
+            "examPointer": "Widths are PROPORTIONAL, not equal — exam questions test whether you read the arrow widths as energy amounts."
+          },
+          "medium": {
+            "restatement": "The three parts of the diagram map exactly onto the three quantities of the efficiency equation: input, useful output and wasted output; conservation is the reason the widths close the balance.",
+            "analogy": "Splitting a pizza on a plate: the whole pizza arrives (input), the slices guests take are useful, the crumbs on the table are wasted — and nothing left the plate unseen.",
+            "examPointer": "Learn the two splitting-point equations: total in = total out, and total in = useful out + wasted out."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vctGRbxP4NVz34JT::L2::Q1",
+          "rn_vctGRbxP4NVz34JT::L2::Q2",
+          "rn_vctGRbxP4NVz34JT::L2::Q3",
+          "rn_vctGRbxP4NVz34JT::L2::Q4",
+          "rn_vctGRbxP4NVz34JT::L2::Q5",
+          "rn_vctGRbxP4NVz34JT::L2::Q6",
+          "rn_vctGRbxP4NVz34JT::L2::Q7",
+          "rn_vctGRbxP4NVz34JT::L2::Q8",
+          "rn_vctGRbxP4NVz34JT::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_vctGRbxP4NVz34JT::L3",
+        "title": "Sankey diagrams of light bulbs and the lifting motor",
+        "sourceHeadings": [
+          "Sankey diagram of light bulbs"
+        ],
+        "specRefs": [
+          "4.5"
+        ],
+        "opening": "Two bulbs drawing the same input make the efficiency lesson visible: the modern bulb keeps its straight arrow wide while the filament bulb bleeds most of its width into heat. The lifting-motor diagram then shows the arithmetic every Sankey can be reduced to: waste = input − useful.",
+        "keyPoints": [
+          "A Sankey for a modern efficient bulb looks very different from an old filament bulb’s.",
+          "A more efficient bulb has less wasted energy, shown by a smaller downward heat arrow.",
+          "The of-record motor Sankey shows 500 J in and 120 J out usefully.",
+          "Wasted = total in minus useful out: the motor’s Sankey reads 500 J in and 120 J out usefully, so 380 J is wasted by subtraction.",
+          "The motor’s efficiency is 120 / 500 × 100 = 24%."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Same input, different split: the efficient bulb’s Sankey keeps most width in the straight useful arrow, the filament bulb’s bends most of it away as heat; the motor example turns the widths into 380 J wasted and 24% efficient.",
+            "analogy": "Two funnels of the same mouth: the good one pours almost everything into the bottle, the leaky one dribbles most of it down the outside.",
+            "examPointer": "The Sankey arithmetic move: wasted = total energy in − useful energy out (500 − 120 = 380 J in the of-record example)."
+          },
+          "medium": {
+            "restatement": "Sankey questions end in one of two calculations: read the widths as joules and subtract for waste, or divide useful by total for the percentage; both rest on the widths being proportional.",
+            "analogy": "Reading a stained-glass window: the pane widths tell the story without a single number, but a ruler converts them to data when asked.",
+            "examPointer": "Efficiency from a Sankey = useful width ÷ input width × 100; quote the widths in your working."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vctGRbxP4NVz34JT::L3::Q1",
+          "rn_vctGRbxP4NVz34JT::L3::Q2",
+          "rn_vctGRbxP4NVz34JT::L3::Q3",
+          "rn_vctGRbxP4NVz34JT::L3::Q4",
+          "rn_vctGRbxP4NVz34JT::L3::Q5",
+          "rn_vctGRbxP4NVz34JT::L3::Q6",
+          "rn_vctGRbxP4NVz34JT::L3::Q7",
+          "rn_vctGRbxP4NVz34JT::L3::Q8",
+          "rn_vctGRbxP4NVz34JT::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "efficiency",
+          "definition": "The ratio of the useful energy output from a system to its total energy output, usually as a percentage.",
+          "firstLesson": 1
+        },
+        {
+          "term": "useful energy output",
+          "definition": "The share of the output energy that serves the intended purpose.",
+          "firstLesson": 1
+        },
+        {
+          "term": "wasted energy",
+          "definition": "The share of the output energy that does not serve the intended purpose.",
+          "firstLesson": 1
+        },
+        {
+          "term": "Sankey diagram",
+          "definition": "A diagram of an energy transfer whose arrow widths are proportional to the energy transferred.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "The blades of a fan are turned by an electric motor. In one second, 300 J of energy is transferred electrically from the mains supply and 85 J is wasted due to friction and sound. Calculate the efficiency of the motor.",
+        "steps": [
+          "List the known quantities: total energy input = 300 J and total wasted energy = 85 J.",
+          "State the equation: efficiency = useful energy output / total energy output × 100%.",
+          "By conservation of energy, total energy output = total energy input = 300 J.",
+          "Useful energy output = total energy output - wasted energy = 300 - 85 = 215 J.",
+          "Substitute: efficiency = 215 / 300 × 100% = 72%."
+        ],
+        "finalAnswer": "The efficiency of the motor is 72% (215 J of every 300 J is useful)."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/97d1ceb3c755-8-1-2-sankey-diagram-demonstration-sl-physics-rn.png",
+        "alt": "8-1-2-sankey-diagram-demonstration_sl-physics-rn",
+        "sourceHeading": "Example of a Sankey diagram",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Total energy in, wasted energy and useful energy out shown on a Sankey diagram"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/4ed1d0700af2-cie-igcse-1-7-4-phy-rn-sankey-comparison-new.png",
+        "alt": "cie-igcse-1-7-4-phy-rn-sankey-comparison-new",
+        "sourceHeading": "Sankey diagram of light bulbs",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Sankey diagram for modern vs. old filament light bulb"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/462fe2156d21-3-1-3-we-sankey-question-image.png",
+        "alt": "WE Sankey Question image, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Sankey diagram of light bulbs",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

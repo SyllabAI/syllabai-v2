@@ -1,0 +1,300 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_6wZc5RHQn4qftvc8",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "a6ef18deb713517712a5256a96cb3f1db45365d8f5d576fa8e9dc8b0f32a7fe5",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_6wZc5RHQn4qftvc8",
+    "topicTitle": "4. Energy Resources and Energy Transfers",
+    "subtopicTitle": "Energy Stores & Transfers",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/4-energy-resources-and-energy-transfers/4-1-energy-stores-and-transfers/4-1-5-core-practical-investigating-thermal-energy",
+    "specAnchors": [
+      {
+        "code": "4.9",
+        "text": "practical: investigate thermal energy transfer by conduction, convection and radiation"
+      }
+    ],
+    "primer": {
+      "text": "Three experiments, three transfer routes. Metal strips and dropping ball bearings rank conductors; a purple dye trail films a convection current in water; four differently painted flasks turn surface finish into cooling curves. Together they put conduction, convection and radiation on the bench.",
+      "prerequisiteSubtopic": "Energy Stores & Transfers"
+    },
+    "modules": [
+      {
+        "id": "rn_6wZc5RHQn4qftvc8::L1",
+        "title": "Experiment 1: conduction in four metals",
+        "sourceHeadings": [
+          "Experiment 1: investigating conduction",
+          "Aim of the experiment"
+        ],
+        "specRefs": [
+          "4.9"
+        ],
+        "opening": "Four metal strips meet at a heated centre, each carrying a ball bearing stuck on with wax at the same distance out. The wax lets go in conduction-speed order: the first bearing to drop hangs on the best conductor, and the falling order ranks copper, aluminium, brass and iron.",
+        "keyPoints": [
+          "The aim is to rank four different metals by how quickly they conduct heat along their length.",
+          "The independent variable is the type of metal; the dependent variable is the rate of conduction.",
+          "Control variables include the size and thickness of the strips, the amount of wax and identical ball bearings.",
+          "Ball bearings are attached with wax; when conducted heat melts the wax, the bearing drops, and the drop time is recorded.",
+          "The first bearing to fall marks the best thermal conductor; the observed order is copper, then aluminium, then brass, then iron."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Heat the shared centre of four metal strips, time how long each strip’s wax takes to release its ball bearing, and read the conductivity ranking straight off the falling order.",
+            "analogy": "Four runners handed a relay baton at the same instant: the finishing order is the conducting order.",
+            "examPointer": "Controls earn marks: equal strip size and thickness, equal wax, identical bearings — otherwise the comparison is unfair."
+          },
+          "medium": {
+            "restatement": "Better conductors push heat along their length sooner, so their wax reaches melting temperature first; repetition and averaging steady the timing.",
+            "analogy": "A row of candle wicks of different materials lit from a shared flame: some carry the flame to their far end before the others.",
+            "examPointer": "Quote the expected order if asked: copper (fastest) > aluminium > brass > iron (slowest)."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6wZc5RHQn4qftvc8::L1::Q1",
+          "rn_6wZc5RHQn4qftvc8::L1::Q2",
+          "rn_6wZc5RHQn4qftvc8::L1::Q3",
+          "rn_6wZc5RHQn4qftvc8::L1::Q4",
+          "rn_6wZc5RHQn4qftvc8::L1::Q5",
+          "rn_6wZc5RHQn4qftvc8::L1::Q6",
+          "rn_6wZc5RHQn4qftvc8::L1::Q7",
+          "rn_6wZc5RHQn4qftvc8::L1::Q8",
+          "rn_6wZc5RHQn4qftvc8::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_6wZc5RHQn4qftvc8::L2",
+        "title": "Experiment 2: convection in water",
+        "sourceHeadings": [
+          "Experiment 2: investigating convection",
+          "Method"
+        ],
+        "specRefs": [
+          "4.9"
+        ],
+        "opening": "A crystal of potassium permanganate drops into water and bleeds purple. Warm the water gently right below it and the purple trail becomes a movie of the convection current: rising above the flame, spreading, cooling, sinking and circling back — in cold water and warm water alike, at different speeds.",
+        "keyPoints": [
+          "The aim is to investigate the rate of convection using potassium permanganate crystals in two temperatures of water.",
+          "The independent variable is the temperature of the water; the dependent variable is the rate of convection.",
+          "Controls include the amount of water, the size of the Bunsen flame and the size of the crystal.",
+          "The crystal is dropped carefully into the centre of the beaker of water and the beaker is heated gently below it.",
+          "The purple trail traces the convection current, and the trail’s speed shows the rate of convection in each water temperature."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The dye rides the current: warm water rises above the flame carrying the purple trail, cools, sinks at the edges and returns, and the loop runs faster in warmer water.",
+            "analogy": "Ink dropped into a lazy river bend: the ink is passive, the flow draws the picture, and the flow’s speed is the story.",
+            "examPointer": "The crystal is the MARKER, not the mover — say the water’s motion carries it, or you lose the mechanism mark."
+          },
+          "medium": {
+            "restatement": "Controls keep the current’s shape comparable: same water volume, same flame, same crystal size — so the only real difference is the water’s starting temperature and hence the convection rate.",
+            "analogy": "Two identical go-kart tracks with different starting speeds: the tracks must match before you compare the laps.",
+            "examPointer": "Careful handling earns marks: forceps for the crystal, gentle heating, not-too-full beaker — quote them as method points."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6wZc5RHQn4qftvc8::L2::Q1",
+          "rn_6wZc5RHQn4qftvc8::L2::Q2",
+          "rn_6wZc5RHQn4qftvc8::L2::Q3",
+          "rn_6wZc5RHQn4qftvc8::L2::Q4",
+          "rn_6wZc5RHQn4qftvc8::L2::Q5",
+          "rn_6wZc5RHQn4qftvc8::L2::Q6",
+          "rn_6wZc5RHQn4qftvc8::L2::Q7",
+          "rn_6wZc5RHQn4qftvc8::L2::Q8",
+          "rn_6wZc5RHQn4qftvc8::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04"
+        ]
+      },
+      {
+        "id": "rn_6wZc5RHQn4qftvc8::L3",
+        "title": "Experiment 3: radiation from different surfaces",
+        "sourceHeadings": [
+          "Experiment 3: investigating radiation",
+          "Evaluating the experiments"
+        ],
+        "specRefs": [
+          "4.9"
+        ],
+        "opening": "Four identical flasks — black, dull grey, white and silver — filled with the same hot water at the same starting temperature, then timed with thermometers. The black flask cools fastest, the silver slowest, and the temperature-time curves put the emit-and-absorb law of surfaces on the page.",
+        "keyPoints": [
+          "The aim is to test how a surface’s nature sets how much infrared it absorbs and radiates.",
+          "The independent variable is the colour of the flask; the dependent variable is the temperature of the water.",
+          "Controls keep the flasks identical apart from their finish, with equal hot water, one shared starting temperature and one shared timing interval.",
+          "Temperatures are recorded at regular intervals, for example every 30 seconds for 10 minutes.",
+          "The black flask cools fastest and the silver flask slowest, matching the emit-and-absorb ranking of surfaces."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Same water, same start, four finishes: the cooling curves order themselves black first, then grey, then white, then silver last — the emission ranking drawn in temperature.",
+            "analogy": "Four identical mugs of tea in winter, one painted black, one wrapped in foil: the paint job decides who cools first.",
+            "examPointer": "Quote the control set — identical flasks except colour, same volumes, same start temperature, same intervals — before quoting the ranking."
+          },
+          "medium": {
+            "restatement": "The cooling rate is the emission rate made visible: steeper early drop for black, flattest for silver; the evaluation adds heatproof mats, thermometer resolution of 1 °C and repeat runs.",
+            "analogy": "Four runners of the same fitness on different shoes: the shoes — like the surfaces — set who crosses the line first.",
+            "examPointer": "Safety and evaluation: hot water scalds, mats protect the bench, and repeats average out reading scatter at ±1 °C resolution."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6wZc5RHQn4qftvc8::L3::Q1",
+          "rn_6wZc5RHQn4qftvc8::L3::Q2",
+          "rn_6wZc5RHQn4qftvc8::L3::Q3",
+          "rn_6wZc5RHQn4qftvc8::L3::Q4",
+          "rn_6wZc5RHQn4qftvc8::L3::Q5",
+          "rn_6wZc5RHQn4qftvc8::L3::Q6",
+          "rn_6wZc5RHQn4qftvc8::L3::Q7",
+          "rn_6wZc5RHQn4qftvc8::L3::Q8",
+          "rn_6wZc5RHQn4qftvc8::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-05",
+          "fig-06",
+          "fig-07"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "conduction ring",
+          "definition": "The apparatus holding four metal strips meeting at a heated centre, used to rank thermal conductors.",
+          "firstLesson": 1
+        },
+        {
+          "term": "potassium permanganate",
+          "definition": "The purple crystal whose dissolving trail makes the convection current visible.",
+          "firstLesson": 2
+        },
+        {
+          "term": "thermal conductivity",
+          "definition": "How well a material conducts heat; high conductivity heats up faster along its length.",
+          "firstLesson": 1
+        },
+        {
+          "term": "resolution",
+          "definition": "The smallest change an instrument can record, such as 0.01 s on the stopwatch or 1 °C on the thermometer.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/2ba03e5b97bb-conduction-experiment-1.png",
+        "alt": "Conduction experiment, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Experiment 1: investigating conduction",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The above apparatus consists of 4 different metal strips of equal width and length arranged around an insulated circle"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/efa5d7dccdb4-1-1-13-high-low-thermal-conductivity.png",
+        "alt": "High & Low Thermal Conductivity, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Experiment 1: investigating conduction",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Examples of materials with high and low thermal conductivity"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a44d885889f6-4-1-5-convection-apparatus.png",
+        "alt": "Convection Apparatus, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Experiment 2: investigating convection",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Apparatus used to investigate potassium permanganate crystals undergoing convection in water"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/ca3749af0726-4-1-5-potassium-convection-results.png",
+        "alt": "Potassium Convection Results, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Experiment 2: investigating convection",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/d82e755bec25-6-2-5-beakers-infrared-experiment.png",
+        "alt": "Beakers Infrared Experiment, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Experiment 3: investigating radiation",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Different coloured beakers for investigating infrared radiation apparatus"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/4065cd223797-6-2-5-required-practical-infrared-results-table.png",
+        "alt": "Required Practical Infrared Results Table, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Experiment 3: investigating radiation",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-07",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1e3e896d0f36-thermal-radiation-practical-graph.png",
+        "alt": "thermal-radiation-practical-graph",
+        "sourceHeading": "Experiment 3: investigating radiation",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Example graph of the expected results for the different coloured beakers"
+      }
+    ]
+  }
+}
