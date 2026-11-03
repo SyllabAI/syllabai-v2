@@ -33,6 +33,7 @@ import type {
   SimLearnerState as SimLearnerStateT,
 } from "@/lib/contracts";
 import { loadContentJson, hasContentFile } from "@/lib/corpus";
+import { buildDeckSections, type FlashcardDeckSection } from "@/lib/flashcard-decks";
 import { boardOf } from "./board";
 
 const CourseRegistry = z.object({
@@ -345,6 +346,12 @@ export interface HubCourse {
   setListsBySubtopic: Record<string, { slug: string; title: string; count: number }[]>;
   /** sub-topic code → flashcards */
   cardsBySubtopic: Record<string, string[]>;
+  /** SME-native deck index — sections → decks, corpus (SME) order. The
+   *  flashcards plane's own organization (trace 1a19f6776ca5a619): one row
+   *  per real SME deck, every card reachable. */
+  deckSections: FlashcardDeckSection[];
+  /** deckSlug → card ids, corpus (SME) order — what a deck page serves */
+  cardsByDeck: Record<string, string[]>;
   notes: RevisionNoteT[];
   questionTopics: ExamQuestionTopicT[];
   /** official past papers — Past Papers interactive view only (never the
@@ -410,6 +417,8 @@ export const loadHubCourse = cache(
       notesBySubtopic: {},
       setListsBySubtopic: {},
       cardsBySubtopic: {},
+      deckSections: [],
+      cardsByDeck: {},
       notes: [],
       questionTopics: [],
       officialPaperTopics: [],
@@ -478,6 +487,11 @@ export const loadHubCourse = cache(
       if (!hrefs.flashcards[s]) hrefs.flashcards[s] = `${base}/flashcards/${s}`;
     }
   }
+  // the flashcards plane's OWN organization (trace 1a19f6776ca5a619): the
+  // SME-native deck index — select page rows and deck pages resolve through
+  // THIS, not through the spec tree; the sidebar's spec-keyed hrefs above
+  // stay alive through the deck route's legacy-subtopic branch
+  const { sections: deckSections, cardsByDeck } = buildDeckSections(flashcards, questionTopics);
 
   return {
     meta,
@@ -491,6 +505,8 @@ export const loadHubCourse = cache(
     notesBySubtopic,
     setListsBySubtopic,
     cardsBySubtopic,
+    deckSections,
+    cardsByDeck,
     notes,
     questionTopics,
     officialPaperTopics,
