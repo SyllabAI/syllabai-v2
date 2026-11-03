@@ -1,0 +1,208 @@
+{
+ "schema": "syllabai.hub.placement-backfill/1.0",
+ "generatedUtc": "2026-11-03T03:49:39+00:00",
+ "script": "scripts/sme_d0_backfill.py",
+ "basis": "SME section/topic-slug joins against this course's committed curriculum map; no content surgery, set-level placement only",
+ "placements": [
+  {
+   "slug": "1-1-the-water-cycle-and-drainage-basin-system--exam-questions",
+   "subtopicCode": "igcse-geography-T1:SUB1.1",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "1-2-river-processes-and-landforms--exam-questions",
+   "subtopicCode": "igcse-geography-T1:SUB1.2",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "1-3-management-of-river-environments--exam-questions",
+   "subtopicCode": "igcse-geography-T1:SUB1.3",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "2-1-coastal-processes-and-landforms--exam-questions",
+   "subtopicCode": "igcse-geography-T2-gen",
+   "level": "topic",
+   "join": "J2 section",
+   "confidence": "medium",
+   "source": "fresh"
+  },
+  {
+   "slug": "2-2-ecosystems-of-the-coastline--exam-questions",
+   "subtopicCode": "igcse-geography-T2:SUB2.2",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "2-3-management-of-coasts--exam-questions",
+   "subtopicCode": "igcse-geography-T2:SUB2.3",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "3-1-anatomy-of-natural-hazards--exam-questions",
+   "subtopicCode": "igcse-geography-T3:SUB3.1",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "3-2-impact-of-natural-hazards--exam-questions",
+   "subtopicCode": "igcse-geography-T3:SUB3.2",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "3-3-earthquake-management--exam-questions",
+   "subtopicCode": "igcse-geography-T3:SUB3.3",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "4-1-economic-sectors--exam-questions",
+   "subtopicCode": "igcse-geography-T4:SUB4.1",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "4-2-impacts-of-economic-sectors-on-resources--exam-questions",
+   "subtopicCode": "igcse-geography-T4:SUB4.2",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "4-3-energy---production-security-and-management--exam-questions",
+   "subtopicCode": "igcse-geography-T4:SUB4.3",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "5-1-the-worlds-biomes--exam-questions",
+   "subtopicCode": "igcse-geography-T5:SUB5.1",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "5-2-characteristics-of-rural-environments--exam-questions",
+   "subtopicCode": "igcse-geography-T5:SUB5.2",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "5-3-management-of-rural-environments--exam-questions",
+   "subtopicCode": "igcse-geography-T5:SUB5.3",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "6-1-the-rise-and-characteristics-of-urbanisation--exam-questions",
+   "subtopicCode": "igcse-geography-T6:SUB6.1",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "6-2-challenges-to-urban-environments--exam-questions",
+   "subtopicCode": "igcse-geography-T6:SUB6.2",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "6-3-management-of-urban-environments--exam-questions",
+   "subtopicCode": "igcse-geography-T6:SUB6.3",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "7-2-impacts-on-fragile-environments--exam-questions",
+   "subtopicCode": "igcse-geography-T7:SUB7.2",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "7-3-responses-on-fragile-environments--exam-questions",
+   "subtopicCode": "igcse-geography-T7:SUB7.3",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "8-1-the-globalised-world--exam-questions",
+   "subtopicCode": "igcse-geography-T8:SUB8.1",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "8-2-impacts-of-globalisation--exam-questions",
+   "subtopicCode": "igcse-geography-T8:SUB8.2",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "8-3-responses-to-globalisation--exam-questions",
+   "subtopicCode": "igcse-geography-T8:SUB8.3",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "9-2-consequences-of-uneven-development--exam-questions",
+   "subtopicCode": "igcse-geography-T9:SUB9.2",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "9-3-management-of-uneven-development--exam-questions",
+   "subtopicCode": "igcse-geography-T9:SUB9.3",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  }
+ ]
+}

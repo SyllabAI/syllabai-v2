@@ -1,0 +1,24 @@
+{
+ "schema": "syllabai.hub.placement-backfill/1.0",
+ "generatedUtc": "2026-11-03T03:34:16+00:00",
+ "script": "scripts/sme_d0_backfill.py",
+ "basis": "SME section/topic-slug joins against this course's committed curriculum map; no content surgery, set-level placement only",
+ "placements": [
+  {
+   "slug": "section-a-directed-writing--november-2023-050021-section-a",
+   "subtopicCode": "cie-igcse-english-language-2024-2026-TS3-gen",
+   "level": "topic",
+   "join": "section join (J2)",
+   "confidence": "medium",
+   "source": "plan"
+  },
+  {
+   "slug": "section-b-composition--november-2023-050021-section-b",
+   "subtopicCode": "cie-igcse-english-language-2024-2026-TS3-gen",
+   "level": "topic",
+   "join": "section join (J2)",
+   "confidence": "medium",
+   "source": "plan"
+  }
+ ]
+}

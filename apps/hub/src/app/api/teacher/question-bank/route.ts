@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getCourseBundle } from "@/lib/courses";
-import { buildSpecTreeIndex, subtopicOfQuestionSet } from "@/lib/spec-tree";
+import { buildSpecTreeIndex, generalTopicsOfQuestionTopics, subtopicOfQuestionSet } from "@/lib/spec-tree";
 import { toAssembledQuestion } from "@/lib/teacher/test-assembly";
 
 /**
@@ -38,7 +38,10 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "no bundle for course" }, { status: 404 });
   }
 
-  const index = buildSpecTreeIndex(bundle.curriculum);
+  const index = buildSpecTreeIndex(bundle.curriculum, {
+    // keep teacher placement identical to the student hub (D0 gen rows)
+    generalTopics: generalTopicsOfQuestionTopics(bundle.questionTopics),
+  });
   const meta = {
     slug: bundle.meta.slug,
     label: bundle.meta.label,

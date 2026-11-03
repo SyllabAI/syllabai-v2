@@ -1,0 +1,48 @@
+{
+ "schema": "syllabai.hub.placement-backfill/1.0",
+ "generatedUtc": "2026-11-03T03:34:16+00:00",
+ "script": "scripts/sme_d0_backfill.py",
+ "basis": "SME section/topic-slug joins against this course's committed curriculum map; no content surgery, set-level placement only",
+ "placements": [
+  {
+   "slug": "2-2-demand--paper-1",
+   "subtopicCode": "cie-igcse-economics-2027-2029-T2:SUB2.2",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "3-2-households--paper-1",
+   "subtopicCode": "cie-igcse-economics-2027-2029-T3:SUB3.2",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "4-7-inflation--paper-1",
+   "subtopicCode": "cie-igcse-economics-2027-2029-T4:SUB4.7",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "5-2-poverty--paper-1",
+   "subtopicCode": "cie-igcse-economics-2027-2029-T5:SUB5.2",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  },
+  {
+   "slug": "5-3-population--paper-1",
+   "subtopicCode": "cie-igcse-economics-2027-2029-T5:SUB5.3",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  }
+ ]
+}
