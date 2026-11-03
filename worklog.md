@@ -957,3 +957,36 @@ Work Log:
 
 Stage Summary:
 - t-note-scroll-resume run-002: VERDICT — the order is already satisfied in production. Resume remembers scroll position within a note, first-hand verified end-to-end against https://syllabai-hub-v2.vercel.app on 2026-11-03: render → intent stamp → restore-exact → band refusal → save persistence. No defect found, no remainder disclosed, no code change required. Receipt .syllabai/receipts/t-note-scroll-resume/run-002-live-verification.json.
+
+---
+
+## 2026-11-03 — run-012 wave-C serving leg: the L4 mapping-repair served (T-OEQ-PHYS-FORMAT-1)
+
+- The run-012 reconciliation's last population is repaired ON THE PLANE: for the
+  22 cross-id fields / 20 parts / 17 questions / 10 topics, questions.json now
+  serves the corpus of record's own per-part content (direction plane := corpus
+  verbatim, the reverse of L1 — justified per RULE-1 L4: the plane carries the
+  corruption; asset hrefs hotlinked at data cut resources main@79b437615ac2 per
+  the exporter's own hotlink() semantics).
+- Mechanism of record (resources PR #293 dossier): since T-CONSUME-EDX-2
+  (c2388bca, 2026-10-21) the bank carried the LAST part's md content under
+  earlier parts' ids (18 solution_md across 17 questions + both md fields on the
+  2 middle parts of 3-part questions); born clean at the seed, still clean after
+  EDX-1; the standing importer is field-faithful — the corruption site is the
+  EDX-2 post-build stack (DISC-6 filed for the platform lane).
+- Gates: T1 serialization (indent=1, ensure_ascii=False, no trailing newline);
+  G1 deep-diff = exactly the 22 pinned fields (22 insertions / 22 deletions,
+  zero other movement, question/metadata keys untouched); G2 char safety (no
+  C0/PUA/FFFD, no new LRM); G3 $-parity even on all 22; G4 debris-free; G5
+  post-serve cross-part copy census = 0; G6 metadata integrity (marks/order/
+  type/spec/choices/sourcePaper untouched on all 20 parts).
+- L6 drift-delta vs resources main: raw drift 750 -> 732 fields / 565 -> 554
+  parts; NON-BENIGN 22 -> 0 (18 served fields raw-equal, 4 asset-bearing
+  canon-equal per L3). The corpus<->plane reconciliation is COMPLETE.
+- Learner impact: the 7-1 Po-210 grid question (qstn_hXjpCk7PMZPn2xst, with the
+  run-011-m3-repaired isotope notation) and the 5-3 molecules/sentences question
+  (qstn_x3gPVCnBWZZS5Dd4) serve again for the first time since 2026-10-21, and
+  the 15 solution-collapsed questions serve their true per-part solutions again.
+- Receipt: .syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run012-wavec-serve-payload.json
+  (22 pins with before/after sha256, gates, mechanism, data cut). Dossier of
+  record: resources scripts/oeq_phys_run012/wave-c/ (PR #293).
