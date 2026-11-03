@@ -1,0 +1,27 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "receipt": "od1-ma10-live-probe-r0",
+ "run": "run-001",
+ "phase": "COMPLETE-BLOCKED-BY-CONTENT-STATE",
+ "order_trace": "1a19f6877e9c76a1",
+ "design": "LIVE A/B against production (ma10_live_probe.py): CONTROL = 4CH0/1C Jan 2016 part 149ee01b (1-mark POINTS, question version VALIDATED); TREATMENT = 9609/21 MJ2022 part 24169bfc (the #642 Gate-3-recaptured 2-axis 8-mark multi-axis set 1-b-ii#a1/#a2, schemes VALIDATED, question version SUGGESTED). One probe learner of record (od1-maprobe-1793676778@example.invalid).",
+ "control": {
+  "structured_submit": "201 (attempt e52d6bb3-ea6e-4633-9fb8-ad3faf1acebf, marksPossible 5, PENDING)",
+  "smart_mark": "200 in 2s \u2014 schemeValidationState VALIDATED; parts marked by the live LLM chain (modelId openai/gpt-oss-20b), failureReason null, authoritative TRUE (kappa-cleared 4CH0 paper), validationPassed true",
+  "db": "5 answers SMART_MARKED; smart_mark_results 5 rows failure_reason ALL NULL; ai_mark_events stamped",
+  "verdict": "the live R4 endpoint chain (register -> structured submit -> smart-mark -> LLM mark -> settle) WORKS in production"
+ },
+ "treatment": {
+  "structured_submit": "404 {\"error\":\"not_found\",\"message\":\"structured question 5b1af362-7f26-4e9d-85dd-3d955779f88a not found\"} \u2014 the write-path serving boundary (VALIDATED-only, fail-closed, submit.ts step 3) refused BEFORE any row was written",
+  "db": "zero attempts, zero answers on the multi-axis part (verified)",
+  "verdict": "live multi-axis R4 consumption is BLOCKED BY CONTENT STATE, not by code"
+ },
+ "root_cause": {
+  "census": "ALL 147 multi-axis parts sit on SUGGESTED question versions (0 on VALIDATED); per family: 4CH 837 versions ALL VALIDATED, 9609 219 versions ALL SUGGESTED, other 387 SUGGESTED / 27 VALIDATED / 2 REJECTED",
+  "consequence": "the ENTIRE LEVELS bands surface (single-axis markAttemptBands AND the multi-axis per-axis leg) has ZERO possible live traffic until a question version validates \u2014 4CH carries only unbound POINTS schemes (746), so no band row has ever consumed a live answer in production",
+  "code_state": "PR-B per-axis dispatch is DEPLOYED (dpl_3SssVu5F, uid-verified bundle 2fd94eac, MULTI_AXIS_DISPATCH_NOT_WIRED x0) and the engine is proven live end-to-end on the POINTS lane by the control"
+ },
+ "lever_of_record": "POST /content/question-versions/:id/validate on the 9609 question versions (the content validation seam) \u2014 OPERATOR-GATED under D1/D2 (R2 clean-up audit + kappa per-paper eval before serving; 9609 has no kappa eval of record). NO flip executed: outside probe authority.",
+ "net_rows": "one probe learner + one control attempt (5 answers, 5 result rows, ai_mark_events) \u2014 the capture-run probe-learner pattern of record",
+ "next": "on operator order to validate the 9609 versions, the IDENTICAL ma10_live_probe.py re-runs end-to-end unmodified: the multi-axis set then consumes via the per-axis dispatch (per-axis sub-decisions summed at the part, adr040-g5r2-packet-9609-r0)"
+}
