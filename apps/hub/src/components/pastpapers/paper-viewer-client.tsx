@@ -16,8 +16,10 @@
  *          mark tally the student enters themselves — either whole-paper or
  *          per-question rows (structure lazily auto-detected from the MS
  *          text on this device, honestly labelled, manual fallback). The
- *          result is saved to the local SIMULATED overlay (lib/mock-results.ts)
- *          and never any canonical store.
+ *          result is saved to the account-backed self-marked tally store
+ *          (lib/mock-results.ts, T-TIER1: the learner's account while
+ *          signed in, this browser otherwise) and never any canonical
+ *          marking plane.
  */
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import Link from "next/link";

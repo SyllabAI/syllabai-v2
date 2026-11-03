@@ -86,6 +86,29 @@ export const INK_TEXT_WEIGHT = 500;
 export const INK_TEXT_BASE_PX = 16;
 
 /**
+ * The armed-tool hover chips — T-MG-INK-10: MG's cursor affordance,
+ * EXTRACTED live (mathsgenie.co.uk paper viewer, 2026-11-03): while the
+ * Text tool is armed, a cursor-following chip reads "Add text" (24px,
+ * weight 500) and the Math tool's reads "Add maths" (18px, weight 400,
+ * left edge +14px right of the cursor, line-height 1); both paint in
+ * the handwriting stack at rgb(159,168,178) @ 0.6, vertically centred
+ * on the cursor (their -translate-y-1/2). Behavior: it follows the
+ * cursor over the page, hides while the placement editor is open, stays
+ * hidden once a placement has opened one, and returns when the tool is
+ * re-armed (per-arm law). The working tools get NO chip — ink shows
+ * immediately — and MG ships NO toolbar tooltips at all (no title, no
+ * tooltip node after a real hover): the chip IS the hover text.
+ * Decorative: aria-hidden, pointer-events none.
+ */
+export const INK_CHIP_COLOR = "rgb(159, 168, 178)";
+export const INK_CHIP_OPACITY = 0.6;
+export const INK_CHIP_TEXT_LABEL = "Add text";
+export const INK_CHIP_MATH_LABEL = "Add maths";
+export const INK_CHIP_TEXT_PX = 24;
+export const INK_CHIP_MATH_PX = 18;
+export const INK_CHIP_MATH_OFFSET_PX = 14;
+
+/**
  * Pen sizes as fractions of the page width — T-MG-INK-8: MG's exact pen
  * model (their engine: stroke width in PDF page units at zoom 1 =
  * 0.75 × {s:.5, m:1, l:2, xl:4}, names Fine/Medium/Thick/Extra thick,

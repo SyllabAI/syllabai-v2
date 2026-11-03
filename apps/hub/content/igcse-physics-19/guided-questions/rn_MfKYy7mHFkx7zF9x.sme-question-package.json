@@ -1,0 +1,255 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_MfKYy7mHFkx7zF9x",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "a7ca7032911228b586c2fc7163e92780b05f15f90b8934a7faf7b719cbbe1577",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "packageId": "igcse-physics::rn_MfKYy7mHFkx7zF9x",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_MfKYy7mHFkx7zF9x::L1::Q1",
+      "moduleId": "rn_MfKYy7mHFkx7zF9x::L1",
+      "stem": "In this investigation the angle of incidence is the:",
+      "misconceptionClass": "variables recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "control variable",
+          "correct": false,
+          "explanation": "The incidence angle is deliberately changed, not held constant.",
+          "misconception": "role swap"
+        },
+        {
+          "key": "B",
+          "text": "dependent variable",
+          "correct": false,
+          "explanation": "The refraction angle is the measured outcome; the incidence angle is set first.",
+          "misconception": "role swap"
+        },
+        {
+          "key": "C",
+          "text": "independent variable",
+          "correct": true,
+          "explanation": "The experimenter chooses each incidence angle, making it the independent variable.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "resolution of the protractor",
+          "correct": false,
+          "explanation": "Resolution is an instrument property, not an experimental variable.",
+          "misconception": "category slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_MfKYy7mHFkx7zF9x::L1::Q2",
+      "moduleId": "rn_MfKYy7mHFkx7zF9x::L1",
+      "stem": "A graph of sin i against sin r is plotted. The refractive index of the block is:",
+      "misconceptionClass": "analysis recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the gradient of the line",
+          "correct": true,
+          "explanation": "Snell's law makes sin i / sin r constant, so the straight line's gradient equals n.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the y-intercept",
+          "correct": false,
+          "explanation": "The line passes through the origin; the intercept carries no information.",
+          "misconception": "feature swap"
+        },
+        {
+          "key": "C",
+          "text": "the area under the line",
+          "correct": false,
+          "explanation": "Area has no meaning in this plot.",
+          "misconception": "feature invention"
+        },
+        {
+          "key": "D",
+          "text": "the number of data points",
+          "correct": false,
+          "explanation": "More points improve reliability, but never give the index.",
+          "misconception": "method confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_MfKYy7mHFkx7zF9x::L1::Q3",
+      "moduleId": "rn_MfKYy7mHFkx7zF9x::L1",
+      "stem": "Which list gives control variables for this experiment?",
+      "misconceptionClass": "method design",
+      "options": [
+        {
+          "key": "A",
+          "text": "the block used, the beam width and the light frequency",
+          "correct": true,
+          "explanation": "These are held constant so only the incidence angle changes.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the incidence angle, the refraction angle and the block used",
+          "correct": false,
+          "explanation": "The two angles are the variables being studied, not controls.",
+          "misconception": "role swap"
+        },
+        {
+          "key": "C",
+          "text": "the protractor cost, the room colour and the time of day",
+          "correct": false,
+          "explanation": "These are irrelevant to the physics of refraction.",
+          "misconception": "irrelevant invention"
+        },
+        {
+          "key": "D",
+          "text": "the beam width only",
+          "correct": false,
+          "explanation": "True but incomplete — the block and light frequency are controlled too.",
+          "misconception": "understatement"
+        }
+      ]
+    },
+    {
+      "id": "rn_MfKYy7mHFkx7zF9x::L1::Q4",
+      "moduleId": "rn_MfKYy7mHFkx7zF9x::L1",
+      "stem": "Which piece of equipment provides the narrow beam of light?",
+      "misconceptionClass": "equipment purpose",
+      "options": [
+        {
+          "key": "A",
+          "text": "measure the angles to 1°",
+          "correct": false,
+          "explanation": "That is the protractor's job.",
+          "misconception": "equipment swap"
+        },
+        {
+          "key": "B",
+          "text": "provide a narrow beam of light that refracts in the block",
+          "correct": true,
+          "explanation": "The ray box emits the narrow beam the experiment traces.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "draw the outline of the block",
+          "correct": false,
+          "explanation": "The outline is drawn by pencil around the block.",
+          "misconception": "equipment swap"
+        },
+        {
+          "key": "D",
+          "text": "plot the graph of sin i against sin r",
+          "correct": false,
+          "explanation": "Graphs are plotted afterwards from the results table.",
+          "misconception": "stage confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_MfKYy7mHFkx7zF9x::L1::Q5",
+      "moduleId": "rn_MfKYy7mHFkx7zF9x::L1",
+      "stem": "Drawing the 90° perpendicular lines incorrectly would introduce:",
+      "misconceptionClass": "error analysis",
+      "options": [
+        {
+          "key": "A",
+          "text": "a random error reduced by repeating trials",
+          "correct": false,
+          "explanation": "A wrongly drawn line biases every reading the same way — that is systematic.",
+          "misconception": "error-type swap"
+        },
+        {
+          "key": "B",
+          "text": "a systematic error; use a set square to draw them",
+          "correct": true,
+          "explanation": "The note names the misplaced perpendicular as a systematic error fixed with a set square.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "no measurable effect on the results",
+          "correct": false,
+          "explanation": "Angles measured from a wrong normal are all shifted.",
+          "misconception": "minimisation"
+        },
+        {
+          "key": "D",
+          "text": "a safety hazard rather than an error",
+          "correct": false,
+          "explanation": "It affects accuracy, not safety.",
+          "misconception": "category slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_MfKYy7mHFkx7zF9x::L1::Q6",
+      "moduleId": "rn_MfKYy7mHFkx7zF9x::L1",
+      "stem": "Name three items of equipment used in this investigation and give one purpose.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Ray box (provides the narrow light beam), protractor (measures the incidence and refraction angles) and perspex block (refracts the beam) — any three items with a purpose.",
+      "keywords": [
+        "ray",
+        "box",
+        "protractor",
+        "perspex"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MfKYy7mHFkx7zF9x::L1::Q7",
+      "moduleId": "rn_MfKYy7mHFkx7zF9x::L1",
+      "stem": "State one safety rule for this experiment and the reason behind it.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Avoid looking directly into the ray box light, because the beam can damage the eyes.",
+      "keywords": [
+        "light",
+        "directly",
+        "eyes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MfKYy7mHFkx7zF9x::L1::Q8",
+      "moduleId": "rn_MfKYy7mHFkx7zF9x::L1",
+      "stem": "Explain why sin i is plotted against sin r rather than plotting the raw angles i against r.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Snell's law keeps sin i / sin r constant at n, so the sine graph is a straight line through the origin whose gradient gives the refractive index, while plotting the raw angles would produce a curve that is hard to read a value from.",
+      "keywords": [
+        "straight",
+        "line",
+        "gradient",
+        "refractive",
+        "index"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MfKYy7mHFkx7zF9x::L1::Q9",
+      "moduleId": "rn_MfKYy7mHFkx7zF9x::L1",
+      "stem": "One trial records an incidence angle of 30° and a refraction angle of 20°. Estimate the refractive index of the block and comment on the value.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "sin 30° / sin 20° = 0.500 / 0.342 = 1.46, which is about 1.5 — the expected refractive index for a perspex or glass block.",
+      "keywords": [
+        "0.500",
+        "0.342",
+        "1.46",
+        "perspex"
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_ws8NtMW3QwCs73Gh",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "c48dac58035ac121615e3d6eac4f345b45afc20a504ea345d5f707e75b74271f",
+    "pinnedRef": "502107a3fcacad2340d0ac5e66b5ad93ef32800c"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_ws8NtMW3QwCs73Gh",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Static Electricity",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-4-static-electricity/2-4-2-core-practical-investigating-charging-by-friction",
+    "specAnchors": [
+      {
+        "code": "2.23P",
+        "text": "Core practical 3: investigate how insulating materials can be charged by friction (physics only)"
+      }
+    ],
+    "primer": {
+      "text": "This core practical hangs a rubbed polythene rod from a cradle and brings other rubbed rods close — never touching — to watch attraction and repulsion do the talking. Rod material is the variable under test; rubbing time, cloth and rod length are controlled. The analysis sorts polythene and acetate onto opposite charge signs.",
+      "prerequisiteSubtopic": "Static Electricity"
+    },
+    "modules": [
+      {
+        "id": "rn_ws8NtMW3QwCs73Gh::L1",
+        "title": "Apparatus, variables & method",
+        "sourceHeadings": [
+          "Method"
+        ],
+        "specRefs": [
+          "2.23P"
+        ],
+        "opening": "The set-up is deliberately delicate: a polythene rod hangs from a cradle on nylon string so the smallest electrostatic nudge can swing it. Each test rod is rubbed with its own cloth and brought close without contact — any touch would drain the charge and end the experiment.",
+        "keyPoints": [
+          "The experiment tests how friction charges rods of different insulating materials.",
+          "The rod material is the independent variable; the charge gained is the dependent one.",
+          "Rubbing time, cloth type and rod length are the controlled variables.",
+          "A polythene rod hangs from a cradle on nylon string so it can swing freely.",
+          "Test rods are brought near, never touched, or the charge would leak away."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Rub a rod with a cloth, hang another rod on a string, and watch whether they push apart or pull together.",
+            "analogy": "Two magnets on strings: hold one still, bring the other near, and the swing tells you the sign.",
+            "examPointer": "Name the variables precisely — independent (rod material), dependent (charge), controls (time, cloth, length)."
+          },
+          "medium": {
+            "restatement": "The cradle isolates the hanging rod from hand contact, and the no-touch rule protects the transferred charge from leaking to earth through fingers.",
+            "analogy": "A held-back detective at a crime scene: observing from a distance keeps the evidence intact.",
+            "examPointer": "Apparatus questions expect the full suspension kit: cradle, nylon string, wooden stand."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ws8NtMW3QwCs73Gh::L1::Q1",
+          "rn_ws8NtMW3QwCs73Gh::L1::Q2",
+          "rn_ws8NtMW3QwCs73Gh::L1::Q3",
+          "rn_ws8NtMW3QwCs73Gh::L1::Q4",
+          "rn_ws8NtMW3QwCs73Gh::L1::Q5",
+          "rn_ws8NtMW3QwCs73Gh::L1::Q6",
+          "rn_ws8NtMW3QwCs73Gh::L1::Q7",
+          "rn_ws8NtMW3QwCs73Gh::L1::Q8",
+          "rn_ws8NtMW3QwCs73Gh::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_ws8NtMW3QwCs73Gh::L2",
+        "title": "Analysis: polythene vs acetate & evaluating",
+        "sourceHeadings": [
+          "Analysis of Results",
+          "Evaluating the Experiment"
+        ],
+        "specRefs": [
+          "2.23P"
+        ],
+        "opening": "The result table writes itself: a rubbed polythene rod gains electrons from its cloth and charges negatively, while an rubbed acetate rod loses them and charges positively. The hanging rod's response sorts every test rod — rotating away means like charge, swinging in means opposite. Careful evaluation then covers draughts, misread swings and a numerical upgrade.",
+        "keyPoints": [
+          "Rubbing transfers electrons from one insulator onto the other.",
+          "A rubbed polythene rod gains electrons and charges negatively.",
+          "A rubbed acetate rod loses electrons and charges positively.",
+          "Repulsion by the hanging rod means like charges; attraction means opposite ones.",
+          "Small deflections can be misread; more rubbing transfers more charge and a clearer swing.",
+          "A numerical variant counts paper circles picked up, giving graphable data."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Polythene goes negative, acetate goes positive; same-sign rods push apart, opposite-sign rods pull together.",
+            "analogy": "Two people wearing matching football shirts push away from each other's fans; rivals mix freely.",
+            "examPointer": "Answer in electron language: gained electrons = negative, lost electrons = positive."
+          },
+          "medium": {
+            "restatement": "The observed swing is a force comparison, so its direction is trustworthy but its size is qualitative — which is why the paper-circle variant adds numbers.",
+            "analogy": "Reading a compass versus a protractor: direction is reliable, magnitude needs an instrument.",
+            "examPointer": "Evaluation marks sit in two places: shielding from draughts/vibrations, and the numerical dependent variable."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ws8NtMW3QwCs73Gh::L2::Q1",
+          "rn_ws8NtMW3QwCs73Gh::L2::Q2",
+          "rn_ws8NtMW3QwCs73Gh::L2::Q3",
+          "rn_ws8NtMW3QwCs73Gh::L2::Q4",
+          "rn_ws8NtMW3QwCs73Gh::L2::Q5",
+          "rn_ws8NtMW3QwCs73Gh::L2::Q6",
+          "rn_ws8NtMW3QwCs73Gh::L2::Q7",
+          "rn_ws8NtMW3QwCs73Gh::L2::Q8",
+          "rn_ws8NtMW3QwCs73Gh::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "independent variable",
+          "definition": "The quantity the experimenter changes — here, the rod material.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dependent variable",
+          "definition": "The quantity measured — here, the charge gained by the rod.",
+          "firstLesson": 1
+        },
+        {
+          "term": "cradle",
+          "definition": "The suspension loop that lets the hanging rod swing freely.",
+          "firstLesson": 1
+        },
+        {
+          "term": "discharge",
+          "definition": "The loss of stored charge through contact with another object.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a9c6e1ade26e-2-4-2-static-core-practical-apparatus.png",
+        "alt": "Static Core Practical Apparatus, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Method",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Apparatus for investigating charging by friction",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/0cadd61ad972-2-4-2-static-observations.png",
+        "alt": "Static Observations, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Analysis of Results",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Electrons are transferred to the polythene rod whilst they move from the acetate rod",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

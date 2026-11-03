@@ -1,0 +1,748 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_kxw7Ms4Pr7dQJykY",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "693e0994d983fc81a0a6c6682dec35fe841b30322e4749d26c4f7e8eb09b3f55",
+    "pinnedRef": "502107a3fcacad2340d0ac5e66b5ad93ef32800c"
+  },
+  "packageId": "igcse-physics::rn_kxw7Ms4Pr7dQJykY",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L1::Q1",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L1",
+      "stem": "The smallest potential difference named as a serious hazard is around:",
+      "misconceptionClass": "value recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "1 V",
+          "correct": false,
+          "explanation": "One volt is harmless.",
+          "misconception": "value slip"
+        },
+        {
+          "key": "B",
+          "text": "12 V",
+          "correct": false,
+          "explanation": "Twelve volts, as from a car battery, is not the quoted hazard level.",
+          "misconception": "value slip"
+        },
+        {
+          "key": "C",
+          "text": "50 V",
+          "correct": true,
+          "explanation": "Even 50 V can pose a serious hazard to a person.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "230 V",
+          "correct": false,
+          "explanation": "Mains voltage is dangerous, but the quoted hazard threshold is far lower.",
+          "misconception": "anchor slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L1::Q2",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L1",
+      "stem": "Leaving a long cable tightly coiled while in use is dangerous because:",
+      "misconceptionClass": "hazard reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the trapped current overheats the wire",
+          "correct": true,
+          "explanation": "A coiled run cannot shed heat, so the cable overheats and the insulation can melt.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "coils store static charge",
+          "correct": false,
+          "explanation": "Static is not the mechanism here.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "C",
+          "text": "the insulation thickens",
+          "correct": false,
+          "explanation": "Insulation does not thicken in a coil.",
+          "misconception": "invented effect"
+        },
+        {
+          "key": "D",
+          "text": "the current doubles in a coil",
+          "correct": false,
+          "explanation": "The current is set by the appliance, not the coiling.",
+          "misconception": "quantity myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L1::Q3",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L1",
+      "stem": "Moisture reaching live wires can:",
+      "misconceptionClass": "hazard recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "improve the insulation",
+          "correct": false,
+          "explanation": "Water does the opposite — it conducts.",
+          "misconception": "inversion myth"
+        },
+        {
+          "key": "B",
+          "text": "cool the cable down",
+          "correct": false,
+          "explanation": "Cooling is not the risk mechanism.",
+          "misconception": "irrelevant effect"
+        },
+        {
+          "key": "C",
+          "text": "increase the fuse rating",
+          "correct": false,
+          "explanation": "Nothing about moisture changes a fuse.",
+          "misconception": "irrelevant effect"
+        },
+        {
+          "key": "D",
+          "text": "conduct electricity and start a fire or deliver a shock",
+          "correct": true,
+          "explanation": "Damp provides a conducting path for a short circuit or an electrocution.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L1::Q4",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L1",
+      "stem": "The conducting core of a mains cable is usually:",
+      "misconceptionClass": "material recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "rubber",
+          "correct": false,
+          "explanation": "Rubber is the insulating jacket, not the core.",
+          "misconception": "layer swap"
+        },
+        {
+          "key": "B",
+          "text": "copper or another metal",
+          "correct": true,
+          "explanation": "Metals conduct, so they form the core.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "plastic",
+          "correct": false,
+          "explanation": "Plastic is an insulator.",
+          "misconception": "layer swap"
+        },
+        {
+          "key": "D",
+          "text": "glass",
+          "correct": false,
+          "explanation": "Glass is an insulator.",
+          "misconception": "material myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L1::Q5",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L1",
+      "stem": "Which pair of materials both serve as cable insulation?",
+      "misconceptionClass": "material recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "rubber and plastic",
+          "correct": true,
+          "explanation": "Both are insulators and both sheath wires.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "copper and steel",
+          "correct": false,
+          "explanation": "Both are conductors.",
+          "misconception": "category slip"
+        },
+        {
+          "key": "C",
+          "text": "silver and aluminium",
+          "correct": false,
+          "explanation": "Both are conductors.",
+          "misconception": "category slip"
+        },
+        {
+          "key": "D",
+          "text": "brass and copper",
+          "correct": false,
+          "explanation": "Both are conductors.",
+          "misconception": "category slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L1::Q6",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L1",
+      "stem": "Name the four safety features built into domestic appliances.",
+      "misconceptionClass": "feature recall",
+      "kind": "recall",
+      "modelAnswer": "Double insulation, earthing, fuses and circuit breakers.",
+      "keywords": [
+        "double",
+        "insulation",
+        "earthing",
+        "fuses",
+        "circuit",
+        "breakers"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L1::Q7",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L1",
+      "stem": "State two common electrical hazards in the home.",
+      "misconceptionClass": "hazard recall",
+      "kind": "recall",
+      "modelAnswer": "Any two of: damaged insulation exposing live wires, overheating cables, and damp conditions letting moisture conduct.",
+      "keywords": [
+        "damaged",
+        "insulation",
+        "damp",
+        "moisture",
+        "overheating"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L1::Q8",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L1",
+      "stem": "Explain why overheating cables can lead to electrocution as well as fire.",
+      "misconceptionClass": "hazard reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The heat can melt the insulation, exposing the live conductors inside, so a person who then touches the cable risks a shock on top of the fire danger.",
+      "keywords": [
+        "heat",
+        "melt",
+        "insulation",
+        "live",
+        "shock"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L1::Q9",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L1",
+      "stem": "A kettle's cable insulation is cracked near the plug. Name the hazard and the feature that should interrupt a resulting fault.",
+      "misconceptionClass": "hazard-to-protection",
+      "kind": "application",
+      "modelAnswer": "The hazard is damaged insulation exposing live conductors; the fuse in the plug (with the earthing of any metal parts) should melt or trip and cut the supply before a shock is delivered.",
+      "keywords": [
+        "damaged",
+        "insulation",
+        "fuse",
+        "earthing",
+        "shock"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L2::Q1",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L2",
+      "stem": "A plastic-cased drill with no exposed metal is:",
+      "misconceptionClass": "classification recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "earthed",
+          "correct": false,
+          "explanation": "It needs no earth connection.",
+          "misconception": "feature slip"
+        },
+        {
+          "key": "B",
+          "text": "unprotected",
+          "correct": false,
+          "explanation": "The plastic case is itself a protection.",
+          "misconception": "protection myth"
+        },
+        {
+          "key": "C",
+          "text": "fused at 13 A",
+          "correct": false,
+          "explanation": "The fuse value is unrelated to the casing.",
+          "misconception": "irrelevant detail"
+        },
+        {
+          "key": "D",
+          "text": "double insulated",
+          "correct": true,
+          "explanation": "Insulated wires plus a non-metallic case are the two layers.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L2::Q2",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L2",
+      "stem": "The two insulation layers of a double insulated appliance are:",
+      "misconceptionClass": "structure recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a fuse and a breaker",
+          "correct": false,
+          "explanation": "Those are cut-off devices, not insulation layers.",
+          "misconception": "category slip"
+        },
+        {
+          "key": "B",
+          "text": "the wire insulation and the non-metallic case",
+          "correct": true,
+          "explanation": "That pair forms the two layers.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "live and neutral",
+          "correct": false,
+          "explanation": "Those are supply conductors.",
+          "misconception": "conductor confusion"
+        },
+        {
+          "key": "D",
+          "text": "rubber and copper",
+          "correct": false,
+          "explanation": "Copper conducts — it is the core, not an insulator.",
+          "misconception": "material slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L2::Q3",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L2",
+      "stem": "If a live wire touches an unearthed metal case, the case:",
+      "misconceptionClass": "fault reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "melts",
+          "correct": false,
+          "explanation": "Metal cases do not melt at fault currents.",
+          "misconception": "effect myth"
+        },
+        {
+          "key": "B",
+          "text": "charges positively only",
+          "correct": false,
+          "explanation": "The case becomes live regardless of sign.",
+          "misconception": "polarity myth"
+        },
+        {
+          "key": "C",
+          "text": "becomes electrified and shocks anyone touching it",
+          "correct": true,
+          "explanation": "The live contact makes the whole case a shock hazard.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "shuts the mains off",
+          "correct": false,
+          "explanation": "Without an earth path the fault current stays small, so nothing trips.",
+          "misconception": "protection myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L2::Q4",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L2",
+      "stem": "The earth wire provides a path to earth that is:",
+      "misconceptionClass": "property recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "low resistance",
+          "correct": true,
+          "explanation": "A low-resistance path lets the fault surge flow freely.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "high resistance",
+          "correct": false,
+          "explanation": "High resistance would block the surge.",
+          "misconception": "property inversion"
+        },
+        {
+          "key": "C",
+          "text": "fused",
+          "correct": false,
+          "explanation": "The fuse sits in the live wire.",
+          "misconception": "placement slip"
+        },
+        {
+          "key": "D",
+          "text": "insulated from the case",
+          "correct": false,
+          "explanation": "The earth wire is bonded to the case.",
+          "misconception": "wiring myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L2::Q5",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L2",
+      "stem": "After the fault surge reaches earth, the fuse:",
+      "misconceptionClass": "sequence recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "resets itself",
+          "correct": false,
+          "explanation": "Fuses never reset; breakers do.",
+          "misconception": "device confusion"
+        },
+        {
+          "key": "B",
+          "text": "stores the charge",
+          "correct": false,
+          "explanation": "Fuses store nothing.",
+          "misconception": "function myth"
+        },
+        {
+          "key": "C",
+          "text": "raises the current",
+          "correct": false,
+          "explanation": "The fuse limits nothing until it melts.",
+          "misconception": "function myth"
+        },
+        {
+          "key": "D",
+          "text": "melts and cuts the supply",
+          "correct": true,
+          "explanation": "The surge through the live wire melts the fuse and isolates the appliance.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L2::Q6",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L2",
+      "stem": "Why does a double insulated appliance not need an earth wire?",
+      "misconceptionClass": "design reasoning",
+      "kind": "recall",
+      "modelAnswer": "Its non-metallic case is itself the second insulating layer, so there is no exposed metal that could ever become live.",
+      "keywords": [
+        "case",
+        "insulating",
+        "layer",
+        "metal",
+        "earth"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L2::Q7",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L2",
+      "stem": "Describe what the earth wire does during a fault.",
+      "misconceptionClass": "sequence recall",
+      "kind": "recall",
+      "modelAnswer": "It carries a surge of fault current safely to earth while the enlarged live-wire current melts the fuse and cuts the supply.",
+      "keywords": [
+        "surge",
+        "current",
+        "earth",
+        "fuse",
+        "supply"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L2::Q8",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L2",
+      "stem": "Explain why the earth wire makes the fuse act during a fault.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The low-resistance earth path lets a very large current flow through live wire and fuse together, and that surge is what melts the fuse.",
+      "keywords": [
+        "earth",
+        "current",
+        "fuse",
+        "surge",
+        "melts"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L2::Q9",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L2",
+      "stem": "A washing machine with a metal case has its live wire chafe through onto the case. Explain the sequence that keeps the next user safe.",
+      "misconceptionClass": "fault sequence",
+      "kind": "application",
+      "modelAnswer": "The case is earthed, so the fault current surges down the earth wire; the same surge through the live wire melts the fuse, and the machine is dead before anyone touches it.",
+      "keywords": [
+        "earth",
+        "fault",
+        "surge",
+        "fuse",
+        "melt"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L3::Q1",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L3",
+      "stem": "A circuit breaker trips by means of:",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a melting wire",
+          "correct": false,
+          "explanation": "That is the fuse's mechanism.",
+          "misconception": "device confusion"
+        },
+        {
+          "key": "B",
+          "text": "a heating coil",
+          "correct": false,
+          "explanation": "Breakers do not rely on heating.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "C",
+          "text": "an electromagnet switch",
+          "correct": true,
+          "explanation": "The electromagnet pulls the switch open above the set current.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a spring-driven clock",
+          "correct": false,
+          "explanation": "No timing mechanism is involved.",
+          "misconception": "mechanism myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L3::Q2",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L3",
+      "stem": "Compared with a fuse, a circuit breaker:",
+      "misconceptionClass": "comparison reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "works faster and can be reset",
+          "correct": true,
+          "explanation": "Those are the two advantages named for breakers.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "blows once and must be replaced",
+          "correct": false,
+          "explanation": "That describes a fuse.",
+          "misconception": "device confusion"
+        },
+        {
+          "key": "C",
+          "text": "carries no current",
+          "correct": false,
+          "explanation": "It carries the full household current until it trips.",
+          "misconception": "function myth"
+        },
+        {
+          "key": "D",
+          "text": "only works outdoors",
+          "correct": false,
+          "explanation": "Placement is irrelevant to its operation.",
+          "misconception": "context myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L3::Q3",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L3",
+      "stem": "The thin wire inside a fuse is held in:",
+      "misconceptionClass": "structure recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a ceramic magnet",
+          "correct": false,
+          "explanation": "No magnet is inside a fuse.",
+          "misconception": "device confusion"
+        },
+        {
+          "key": "B",
+          "text": "a glass cylinder",
+          "correct": true,
+          "explanation": "The fuse is a glass cylinder containing the thin wire.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a plastic drum",
+          "correct": false,
+          "explanation": "That is not the fuse's construction.",
+          "misconception": "structure myth"
+        },
+        {
+          "key": "D",
+          "text": "an iron ring",
+          "correct": false,
+          "explanation": "No iron ring is involved.",
+          "misconception": "structure myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L3::Q4",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L3",
+      "stem": "Household 'fuse boxes' actually contain:",
+      "misconceptionClass": "terminology recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "cartridge fuses only",
+          "correct": false,
+          "explanation": "Modern consumer units hold breakers.",
+          "misconception": "naming trap"
+        },
+        {
+          "key": "B",
+          "text": "wire fuses only",
+          "correct": false,
+          "explanation": "The name is misleading.",
+          "misconception": "naming trap"
+        },
+        {
+          "key": "C",
+          "text": "earth rods",
+          "correct": false,
+          "explanation": "Earth rods are outside, not in the box.",
+          "misconception": "placement slip"
+        },
+        {
+          "key": "D",
+          "text": "circuit breakers",
+          "correct": true,
+          "explanation": "The misleadingly named 'fuse box' holds resettable breakers.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L3::Q5",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L3",
+      "stem": "A breaker resets after tripping because:",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it rewinds a spring",
+          "correct": false,
+          "explanation": "Resetting is a switch action, not a wind-up.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "B",
+          "text": "nothing in it melts",
+          "correct": true,
+          "explanation": "Since no part melts, the switch simply closes again.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the electromagnet reverses",
+          "correct": false,
+          "explanation": "Reversal is not part of resetting.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "D",
+          "text": "the wire re-solders itself",
+          "correct": false,
+          "explanation": "That describes nothing real in a breaker.",
+          "misconception": "invented mechanism"
+        }
+      ]
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L3::Q6",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L3",
+      "stem": "State the advantage a circuit breaker has over a fuse.",
+      "misconceptionClass": "comparison recall",
+      "kind": "recall",
+      "modelAnswer": "It does not melt, so it can be reset and reused, and it trips much faster.",
+      "keywords": [
+        "reset",
+        "melt",
+        "faster",
+        "breaker",
+        "reused"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L3::Q7",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L3",
+      "stem": "What must both fuses and circuit breakers respond to?",
+      "misconceptionClass": "function recall",
+      "kind": "recall",
+      "modelAnswer": "A current larger than the safe value — the result of a fault or a surge.",
+      "keywords": [
+        "current",
+        "fault",
+        "surge",
+        "respond",
+        "safe"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L3::Q8",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L3",
+      "stem": "Explain why circuit breakers are fitted to the whole house rather than fuses.",
+      "misconceptionClass": "design reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "They react faster to overloads and reset once the fault is cleared, so homes recover quickly and stay protected; fuses would need replacing after every single fault.",
+      "keywords": [
+        "react",
+        "faster",
+        "reset",
+        "protected",
+        "fault"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kxw7Ms4Pr7dQJykY::L3::Q9",
+      "moduleId": "rn_kxw7Ms4Pr7dQJykY::L3",
+      "stem": "A surge exceeds a breaker's set current. Describe what happens and why the lights can be restored quickly afterwards.",
+      "misconceptionClass": "fault sequence",
+      "kind": "application",
+      "modelAnswer": "The electromagnet switch trips and breaks the circuit at once; because nothing inside melted, resetting the breaker restores the supply immediately.",
+      "keywords": [
+        "breaker",
+        "trips",
+        "circuit",
+        "reset",
+        "supply"
+      ],
+      "options": []
+    }
+  ]
+}

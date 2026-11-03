@@ -2109,3 +2109,58 @@ export const teachReviewCards = pgTable("teach_review_cards", {
                 name: "teach_review_cards_session_id_fkey"
         }),
 ]);
+
+// ============================================================================
+// T-TIER1 run-001 — the account-backed "last opened" pointer + mock-exam
+// results (frontend deep-audit Tier 1, operator order 2026-11-03). Two
+// ADDITIVE tables behind the hub stores that until now lived in ONE browser
+// only (localStorage "syllabai.lastOpened.v1" / "syllabai.mockResults.v1");
+// the T-TEACH-001 cache law moves them onto the account. FK cascade follows
+// the 0019 personal-state precedent (learner_pdf_drawings) — these rows are
+// the learner's own ephemeral state, not records of account (0020's NO
+// ACTION law was for AI-session records). Vocabularies are text + CHECK per
+// the v2-native migration law (no new pg enums).
+// ============================================================================
+export const learnerLastOpened = pgTable("learner_last_opened", {
+        userId: uuid("user_id").primaryKey().notNull(),
+        courseSlug: text("course_slug").notNull(),
+        resource: text("resource").notNull(),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        foreignKey({
+                columns: [table.userId],
+                foreignColumns: [users.id],
+                name: "learner_last_opened_user_id_fkey"
+        }).onDelete("cascade"),
+        check("learner_last_opened_course_slug_check", sql`course_slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`),
+        check("learner_last_opened_resource_check", sql`(resource)::text = ANY (ARRAY[('hub'::character varying)::text, ('revision-notes'::character varying)::text, ('exam-questions'::character varying)::text, ('flashcards'::character varying)::text, ('strengths'::character varying)::text, ('past-papers'::character varying)::text, ('practice-papers'::character varying)::text])`),
+]);
+
+export const learnerMockResults = pgTable("learner_mock_results", {
+        id: uuid().primaryKey().notNull(),
+        userId: uuid("user_id").notNull(),
+        courseSlug: text("course_slug").notNull(),
+        clientId: text("client_id").notNull(),
+        ref: text().notNull(),
+        title: text().notNull(),
+        sessionId: text("session_id").notNull(),
+        finishedAt: timestamp("finished_at", { withTimezone: true, mode: 'string' }).notNull(),
+        durationMin: integer("duration_min").notNull(),
+        timeUsedSec: integer("time_used_sec").notNull(),
+        marks: integer().notNull(),
+        total: integer().notNull(),
+        ended: text().notNull(),
+        questions: jsonb(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        index("learner_mock_results_user_course_idx").using("btree", table.userId.asc().nullsLast().op("uuid_ops"), table.courseSlug.asc().nullsLast().op("text_ops")),
+        foreignKey({
+                columns: [table.userId],
+                foreignColumns: [users.id],
+                name: "learner_mock_results_user_id_fkey"
+        }).onDelete("cascade"),
+        check("learner_mock_results_course_slug_check", sql`course_slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`),
+        check("learner_mock_results_ended_check", sql`(ended)::text = ANY (ARRAY[('time-up'::character varying)::text, ('self'::character varying)::text, ('exited'::character varying)::text])`),
+        check("learner_mock_results_marks_check", sql`marks >= 0 AND total >= 0 AND duration_min >= 0 AND time_used_sec >= 0`),
+        check("learner_mock_results_questions_check", sql`questions IS NULL OR jsonb_typeof(questions) = 'array'`),
+]);

@@ -1,0 +1,736 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_HhjktGSR32fxhHPW",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "68fb873dcb7d932370f7b3f92387904b1708debd6ce6f216de6242f7850a085c",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "packageId": "igcse-physics::rn_HhjktGSR32fxhHPW",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L1::Q1",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L1",
+      "stem": "Total internal reflection can only happen when light travels:",
+      "misconceptionClass": "condition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "from a denser material towards a less dense one",
+          "correct": true,
+          "explanation": "The denser-to-less-dense direction is one of the two required conditions.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "from a less dense material towards a denser one",
+          "correct": false,
+          "explanation": "In that direction the ray refracts towards the normal and some light always crosses.",
+          "misconception": "direction swap"
+        },
+        {
+          "key": "C",
+          "text": "along the boundary between two materials",
+          "correct": false,
+          "explanation": "The ray travels inside the first material and strikes the boundary, not along it.",
+          "misconception": "geometry confusion"
+        },
+        {
+          "key": "D",
+          "text": "through a vacuum",
+          "correct": false,
+          "explanation": "A vacuum offers no boundary to reflect at.",
+          "misconception": "context invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L1::Q2",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L1",
+      "stem": "For total internal reflection the incidence angle must be:",
+      "misconceptionClass": "condition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "equal to the critical angle",
+          "correct": false,
+          "explanation": "At the critical angle the ray still refracts along the boundary.",
+          "misconception": "threshold confusion"
+        },
+        {
+          "key": "B",
+          "text": "less than the critical angle",
+          "correct": false,
+          "explanation": "Below the threshold the ray escapes by refraction.",
+          "misconception": "trend inversion"
+        },
+        {
+          "key": "C",
+          "text": "greater than the critical angle",
+          "correct": true,
+          "explanation": "Beyond the critical angle nothing is transmitted — reflection is total.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "exactly 90°",
+          "correct": false,
+          "explanation": "A 90° incidence angle grazes the boundary and never enters the second material.",
+          "misconception": "angle confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L1::Q3",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L1",
+      "stem": "An endoscope carries light into a patient's body through optical fibres, which guide it by:",
+      "misconceptionClass": "application recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "total internal reflection at every bounce",
+          "correct": true,
+          "explanation": "Each strike on the fibre's edge is beyond the critical angle, so light stays trapped inside.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "electrical conduction along copper wires",
+          "correct": false,
+          "explanation": "Fibres guide light, not electricity.",
+          "misconception": "mechanism swap"
+        },
+        {
+          "key": "C",
+          "text": "sound echoes returning to the source",
+          "correct": false,
+          "explanation": "Endoscopes are optical, not acoustic.",
+          "misconception": "subject swap"
+        },
+        {
+          "key": "D",
+          "text": "chemical reactions inside the glass",
+          "correct": false,
+          "explanation": "Nothing reacts; the glass only guides the light.",
+          "misconception": "mechanism invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L1::Q4",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L1",
+      "stem": "A periscope is built from two right-angled prisms. The prisms turn the light by:",
+      "misconceptionClass": "application recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "absorbing and re-emitting it downwards",
+          "correct": false,
+          "explanation": "The light is not absorbed; it reflects without losing its path.",
+          "misconception": "mechanism invention"
+        },
+        {
+          "key": "B",
+          "text": "total internal reflection at each prism's back face",
+          "correct": true,
+          "explanation": "Light totally internally reflects in both prisms, turning it through right angles.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "splitting it into colours at each face",
+          "correct": false,
+          "explanation": "Dispersion would blur the image; the prism reflects, not splits.",
+          "misconception": "effect confusion"
+        },
+        {
+          "key": "D",
+          "text": "lensing it through a curved surface",
+          "correct": false,
+          "explanation": "Right-angled prisms have flat faces; no lensing happens.",
+          "misconception": "equipment confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L1::Q5",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L1",
+      "stem": "Beyond the critical angle, the light that would have refracted is:",
+      "misconceptionClass": "outcome recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "absorbed by the boundary",
+          "correct": false,
+          "explanation": "No energy is absorbed; reflection is total.",
+          "misconception": "outcome invention"
+        },
+        {
+          "key": "B",
+          "text": "transmitted with reduced brightness",
+          "correct": false,
+          "explanation": "Transmission drops to zero, not to a dimmer ray.",
+          "misconception": "partial myth"
+        },
+        {
+          "key": "C",
+          "text": "totally internally reflected",
+          "correct": true,
+          "explanation": "Past the threshold the boundary reflects everything, obeying the reflection law.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "split into a spectrum",
+          "correct": false,
+          "explanation": "Dispersion is a refraction effect; here refraction has stopped.",
+          "misconception": "effect swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L1::Q6",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L1",
+      "stem": "Name the two conditions required for total internal reflection.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The incidence angle must be greater than the critical angle, and the material the light starts in must be denser than the material beyond the boundary.",
+      "keywords": [
+        "incidence",
+        "critical",
+        "angle",
+        "denser"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L1::Q7",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L1",
+      "stem": "List three uses of total internal reflection named in this lesson.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Communications along optical fibres, endoscopes and periscopes — also acceptable: decorative lamps, binoculars, telescopes, cameras and safety reflectors.",
+      "keywords": [
+        "communications",
+        "endoscopes",
+        "periscopes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L1::Q8",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L1",
+      "stem": "Explain why light can travel along an optical fibre even when the fibre curves.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Each time the ray reaches the fibre's edge it strikes beyond the critical angle, so it totally internally reflects back into the glass; repeating at every bounce keeps the light trapped inside the fibre along the whole curved path.",
+      "keywords": [
+        "critical",
+        "angle",
+        "reflects",
+        "trapped"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L1::Q9",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L1",
+      "stem": "A bicycle reflector returns headlight glow to the driver behind it. Explain the role of prismatic total internal reflection.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Light from the headlights enters the reflector's prisms, strikes their faces beyond the critical angle and totally internally reflects, so the light is turned back towards the driver instead of scattering away.",
+      "keywords": [
+        "prisms",
+        "critical",
+        "reflects",
+        "driver"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L2::Q1",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L2",
+      "stem": "At the critical angle the refracted ray travels:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "along the boundary at exactly 90° to the normal",
+          "correct": true,
+          "explanation": "That skim-along-the-boundary ray is the definition of the critical angle.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "back along the incident path",
+          "correct": false,
+          "explanation": "Retro-reflection is not what defines the critical angle.",
+          "misconception": "path confusion"
+        },
+        {
+          "key": "C",
+          "text": "into the second material at 45° to the normal",
+          "correct": false,
+          "explanation": "45° is just an ordinary refraction angle, not the defining one.",
+          "misconception": "value invention"
+        },
+        {
+          "key": "D",
+          "text": "nowhere — the light stops moving",
+          "correct": false,
+          "explanation": "Light never stops; it refracts or reflects.",
+          "misconception": "outcome invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L2::Q2",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L2",
+      "stem": "Increasing the incidence angle from small values makes the refraction angle:",
+      "misconceptionClass": "trend reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "shrink towards zero",
+          "correct": false,
+          "explanation": "Both angles grow together towards the critical threshold.",
+          "misconception": "trend inversion"
+        },
+        {
+          "key": "B",
+          "text": "grow towards 90°",
+          "correct": true,
+          "explanation": "The refraction angle climbs until it lies along the boundary at 90°.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "stay fixed at its starting value",
+          "correct": false,
+          "explanation": "Refraction responds to every change in incidence.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "D",
+          "text": "reverse to the other side of the normal",
+          "correct": false,
+          "explanation": "The refracted ray stays on the far side of the normal until reflection replaces it.",
+          "misconception": "geometry confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L2::Q3",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L2",
+      "stem": "Just past the critical angle the boundary behaves like a:",
+      "misconceptionClass": "outcome recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "perfect absorber",
+          "correct": false,
+          "explanation": "Nothing is absorbed — reflection is total.",
+          "misconception": "outcome invention"
+        },
+        {
+          "key": "B",
+          "text": "lens that focuses the ray",
+          "correct": false,
+          "explanation": "No focusing happens at a flat boundary.",
+          "misconception": "equipment confusion"
+        },
+        {
+          "key": "C",
+          "text": "mirror",
+          "correct": true,
+          "explanation": "Beyond the critical angle the boundary reflects the ray completely, like a mirror.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "prism that splits the ray into colours",
+          "correct": false,
+          "explanation": "Splitting needs refraction; past the critical angle refraction has stopped.",
+          "misconception": "effect swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L2::Q4",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L2",
+      "stem": "A ray inside glass heads towards air and meets the boundary exactly at the critical angle. The angle of refraction is:",
+      "misconceptionClass": "definition application",
+      "options": [
+        {
+          "key": "A",
+          "text": "25°",
+          "correct": false,
+          "explanation": "25° is an ordinary refraction angle, not the boundary-skimming one.",
+          "misconception": "value invention"
+        },
+        {
+          "key": "B",
+          "text": "45°",
+          "correct": false,
+          "explanation": "The defining angle is 90°, not 45°.",
+          "misconception": "value invention"
+        },
+        {
+          "key": "C",
+          "text": "60°",
+          "correct": false,
+          "explanation": "Refraction angles stop growing at 90°, and the critical angle is where they arrive there.",
+          "misconception": "value invention"
+        },
+        {
+          "key": "D",
+          "text": "90°",
+          "correct": true,
+          "explanation": "At the critical angle the refracted ray skims along the boundary at exactly 90° to the normal.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L2::Q5",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L2",
+      "stem": "A glass-liquid boundary first shows total internal reflection when the incidence angle inside the glass reaches 65°. At an incidence angle of 70° the ray:",
+      "misconceptionClass": "threshold application",
+      "options": [
+        {
+          "key": "A",
+          "text": "refracts into the liquid away from the normal",
+          "correct": false,
+          "explanation": "Refraction has already stopped — 70° is beyond the 65° threshold.",
+          "misconception": "threshold confusion"
+        },
+        {
+          "key": "B",
+          "text": "totally internally reflects inside the glass",
+          "correct": true,
+          "explanation": "Any incidence angle beyond the 65° critical angle reflects totally.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "travels along the boundary",
+          "correct": false,
+          "explanation": "That happens exactly at 65°, not at 70°.",
+          "misconception": "threshold confusion"
+        },
+        {
+          "key": "D",
+          "text": "bends back towards the normal",
+          "correct": false,
+          "explanation": "The reflected ray obeys the reflection law, matching the 70° incidence angle.",
+          "misconception": "geometry confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L2::Q6",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L2",
+      "stem": "Define the critical angle.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The incidence angle at which the angle of refraction is exactly 90°, so the refracted ray skims along the boundary.",
+      "keywords": [
+        "incidence",
+        "refraction",
+        "90",
+        "boundary"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L2::Q7",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L2",
+      "stem": "State what happens to a ray whose incidence angle is exactly the critical angle, and to one whose angle is just beyond it.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "At the critical angle the ray refracts along the boundary at 90°; just beyond it the ray is totally internally reflected inside the denser material.",
+      "keywords": [
+        "refracts",
+        "boundary",
+        "reflected",
+        "denser"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L2::Q8",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L2",
+      "stem": "Explain why total internal reflection can never occur for a ray travelling from air into glass.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The ray would be going from a less dense material to a denser one, so refraction bends the ray towards the normal and some light always crosses the boundary; the denser-to-less-dense condition for total internal reflection is never met.",
+      "keywords": [
+        "denser",
+        "less",
+        "refraction",
+        "normal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L2::Q9",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L2",
+      "stem": "A glass-liquid boundary shows its first total internal reflection when the incidence angle inside the glass is 65°. State the critical angle for the boundary and the angle the reflected ray makes with the normal.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "First total internal reflection means the lowest angle at which it occurs, so the critical angle is 65°, and the reflected ray leaves at 65° on the other side of the normal.",
+      "keywords": [
+        "65",
+        "critical",
+        "reflected",
+        "normal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L3::Q1",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L3",
+      "stem": "The relationship between the critical angle c and the refractive index n is:",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "sin c = 1 / n",
+          "correct": true,
+          "explanation": "The critical angle's sine is the reciprocal of the refractive index.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "sin c = n",
+          "correct": false,
+          "explanation": "That would make sin c exceed 1 for every material — impossible.",
+          "misconception": "reciprocal slip"
+        },
+        {
+          "key": "C",
+          "text": "c = 1 / n",
+          "correct": false,
+          "explanation": "The reciprocal applies to the sine of the angle, not the angle itself.",
+          "misconception": "sin dropped"
+        },
+        {
+          "key": "D",
+          "text": "n = sin c",
+          "correct": false,
+          "explanation": "Same inversion error on the other side.",
+          "misconception": "reciprocal slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L3::Q2",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L3",
+      "stem": "For a material of refractive index 2.0, sin c equals:",
+      "misconceptionClass": "equation arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.2",
+          "correct": false,
+          "explanation": "That is 1 divided by 5, not by 2.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "B",
+          "text": "0.5",
+          "correct": true,
+          "explanation": "sin c = 1 / n = 1 / 2.0 = 0.5.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "2.0",
+          "correct": false,
+          "explanation": "A sine can never exceed 1.",
+          "misconception": "reciprocal slip"
+        },
+        {
+          "key": "D",
+          "text": "1.0",
+          "correct": false,
+          "explanation": "sin c = 1 only for n = 1, the vacuum itself.",
+          "misconception": "boundary confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L3::Q3",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L3",
+      "stem": "As a material's refractive index gets larger, its critical angle:",
+      "misconceptionClass": "trend reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "gets smaller",
+          "correct": true,
+          "explanation": "sin c = 1 / n shrinks as n grows, so c shrinks too.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "gets larger",
+          "correct": false,
+          "explanation": "The reciprocal law runs the opposite way.",
+          "misconception": "trend inversion"
+        },
+        {
+          "key": "C",
+          "text": "stays the same",
+          "correct": false,
+          "explanation": "The two quantities are tightly linked, not independent.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "D",
+          "text": "becomes undefined",
+          "correct": false,
+          "explanation": "The equation stays defined for every n above 1.",
+          "misconception": "outcome invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L3::Q4",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L3",
+      "stem": "Rearranging sin c = 1 / n gives the refractive index as:",
+      "misconceptionClass": "rearrangement recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "n = sin c",
+          "correct": false,
+          "explanation": "That drops the reciprocal entirely.",
+          "misconception": "reciprocal slip"
+        },
+        {
+          "key": "B",
+          "text": "n = 1 - sin c",
+          "correct": false,
+          "explanation": "Subtracting is not the inverse of dividing.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "n = 1 / sin c",
+          "correct": true,
+          "explanation": "Invert both sides: n = 1 / sin c.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "n = 1 / c",
+          "correct": false,
+          "explanation": "The reciprocal applies to sin c, not to the angle c.",
+          "misconception": "sin dropped"
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L3::Q5",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L3",
+      "stem": "Diamond sparkles more than opal mainly because diamond's:",
+      "misconceptionClass": "comparison reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "critical angle is larger",
+          "correct": false,
+          "explanation": "The higher index gives a smaller, not larger, critical angle.",
+          "misconception": "trend inversion"
+        },
+        {
+          "key": "B",
+          "text": "refractive index is smaller",
+          "correct": false,
+          "explanation": "Diamond's index is the larger one, about 2.4 against opal's 1.5.",
+          "misconception": "fact inversion"
+        },
+        {
+          "key": "C",
+          "text": "surface is rougher",
+          "correct": false,
+          "explanation": "The sparkle comes from internal reflection, not surface texture.",
+          "misconception": "mechanism invention"
+        },
+        {
+          "key": "D",
+          "text": "critical angle is smaller, so total internal reflection happens over a wider range of angles",
+          "correct": true,
+          "explanation": "With c about 25° against opal's 42°, rays reflect totally across 25°-90°, bouncing more and sparkling more.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L3::Q6",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L3",
+      "stem": "State the equation linking the critical angle to the refractive index.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "sin c = 1 / n, where c is the critical angle and n is the refractive index.",
+      "keywords": [
+        "sin",
+        "critical",
+        "angle",
+        "refractive"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L3::Q7",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L3",
+      "stem": "For diamond, refractive index 2.4, state sin c and the critical angle.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "sin c = 1 / 2.4 = 0.417, so c = sin⁻¹(0.417) = 24.6°, which rounds to 25°.",
+      "keywords": [
+        "2.4",
+        "0.417",
+        "24.6",
+        "25"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L3::Q8",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L3",
+      "stem": "Explain why a ray of light inside a diamond is more likely to be totally internally reflected than one inside glass.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Diamond's refractive index is higher, so by sin c = 1 / n its critical angle is smaller; incidence angles exceed that smaller critical angle over a wider range, so total internal reflection happens more often inside the diamond.",
+      "keywords": [
+        "higher",
+        "critical",
+        "smaller",
+        "wider"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HhjktGSR32fxhHPW::L3::Q9",
+      "moduleId": "rn_HhjktGSR32fxhHPW::L3",
+      "stem": "Opal has refractive index about 1.5 and diamond about 2.4. Calculate both critical angles and explain which stone appears to sparkle more.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "For opal sin c = 1 / 1.5 = 0.667, so c = 41.8°, about 42°; for diamond sin c = 1 / 2.4 = 0.417, so c = 24.6°, about 25°. Diamond's smaller critical angle means total internal reflection occurs across the wider 25° to 90° range, so more light bounces inside and diamond sparkles more.",
+      "keywords": [
+        "0.667",
+        "42",
+        "0.417",
+        "25",
+        "diamond",
+        "sparkles"
+      ],
+      "options": []
+    }
+  ]
+}

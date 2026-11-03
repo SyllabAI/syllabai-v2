@@ -1,0 +1,258 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_TPSJT83Gh8nMCcVV",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "38111481a5067b59d77b49ae8f9317b10ba45292c92ae4336ead16f77c4f2f8f",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_TPSJT83Gh8nMCcVV",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Waves & The Electromagnetic Spectrum",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-1-waves-and-the-electromagnetic-spectrum/3-1-2-describing-wave-motion",
+    "specAnchors": [
+      {
+        "code": "3.3",
+        "text": "know the definitions of amplitude, wavefront, frequency, wavelength and period of a wave"
+      }
+    ],
+    "primer": {
+      "text": "Waves only make sense once you can measure them. This lesson fixes the five measuring words of wave motion in place: the wavefront you draw from above, the amplitude of a swing, the wavelength between matching points, the frequency of passes per second and the period of a single pass. Every later wave calculation leans on these.",
+      "prerequisiteSubtopic": "Waves & The Electromagnetic Spectrum"
+    },
+    "modules": [
+      {
+        "id": "rn_TPSJT83Gh8nMCcVV::L1",
+        "title": "Wavefronts",
+        "sourceHeadings": [
+          "Wavefront",
+          "Wavefronts as viewed from above"
+        ],
+        "specRefs": [
+          "3.3"
+        ],
+        "opening": "Seen from above, a moving wave can be drawn as a set of parallel lines, each standing for one wave: the wavefronts. Their spacing does real work in diagrams, because crowded lines mean a short wavelength and widely spaced lines mean a long one. The arrow showing travel direction is called a ray.",
+        "keyPoints": [
+          "Each wavefront line represents a single wave drawn as if viewed from above.",
+          "The arrow showing the direction a wave moves is called a ray.",
+          "The gap between neighbouring wavefronts represents the wavelength.",
+          "Close-spaced wavefronts show a short wavelength; far-spaced ones show a long wavelength."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Wavefronts are the top-down picture of a wave: one line per wave, with the spacing between the lines standing in for the wavelength.",
+            "analogy": "Aerial photo of ocean swells: each bright crest line is a wavefront, and bunched lines mean choppy short waves.",
+            "examPointer": "Diagram questions often want the ray arrow as well as the wavefront lines, so always add the direction arrow."
+          },
+          "medium": {
+            "restatement": "The wavefront picture trades the up-down profile for a map view: what you lose in shape detail you gain in being able to show refraction and direction changes cleanly.",
+            "analogy": "A contour map replaces a mountain photograph with lines whose spacing tells you the steepness at a glance.",
+            "examPointer": "When wavefronts bend at a boundary, the spacing change tells you the speed change; quote that link in refraction questions."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_TPSJT83Gh8nMCcVV::L1::Q1",
+          "rn_TPSJT83Gh8nMCcVV::L1::Q2",
+          "rn_TPSJT83Gh8nMCcVV::L1::Q3",
+          "rn_TPSJT83Gh8nMCcVV::L1::Q4",
+          "rn_TPSJT83Gh8nMCcVV::L1::Q5",
+          "rn_TPSJT83Gh8nMCcVV::L1::Q6",
+          "rn_TPSJT83Gh8nMCcVV::L1::Q7",
+          "rn_TPSJT83Gh8nMCcVV::L1::Q8",
+          "rn_TPSJT83Gh8nMCcVV::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_TPSJT83Gh8nMCcVV::L2",
+        "title": "Amplitude & wavelength",
+        "sourceHeadings": [
+          "Amplitude",
+          "Using a graph to determine wavelength and amplitude"
+        ],
+        "specRefs": [
+          "3.3"
+        ],
+        "opening": "Two lengths describe the shape of a wave on paper. Amplitude measures the size of the swing: the rise from the undisturbed level to a peak, or the drop to a trough. Wavelength measures the repeat distance: from any chosen point on the wave to the matching point on the next wave.",
+        "keyPoints": [
+          "Amplitude is the distance from the undisturbed position to a peak or a trough.",
+          "Amplitude carries the symbol A and is measured in metres.",
+          "Wavelength is the distance from one point on a wave to the same point on the next wave.",
+          "Wavelength carries the symbol lambda and is measured in metres.",
+          "On a displacement-distance graph, wavelength is read between matching points along the horizontal axis."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Amplitude says how far the wave swings from its resting level, and wavelength says how far along the wave you must go before the shape repeats.",
+            "analogy": "A fairground swing: amplitude is how high it flies, wavelength is how many metres between one swing and the next rider at the same height.",
+            "examPointer": "Read amplitude from the rest line, never from trough to peak; the rest line is the reference examiners mark against."
+          },
+          "medium": {
+            "restatement": "Amplitude tracks the energy carried by the oscillation while wavelength tracks the spatial repeat unit; the two are independent measurements you read from different directions on a graph.",
+            "analogy": "On a mountain trail profile, amplitude is the height of each hump above the valley floor and wavelength is the distance from one summit to the next.",
+            "examPointer": "Wavelength can be measured between any corresponding points, not only peak-to-peak; state that when a diagram lacks clear peaks."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_TPSJT83Gh8nMCcVV::L2::Q1",
+          "rn_TPSJT83Gh8nMCcVV::L2::Q2",
+          "rn_TPSJT83Gh8nMCcVV::L2::Q3",
+          "rn_TPSJT83Gh8nMCcVV::L2::Q4",
+          "rn_TPSJT83Gh8nMCcVV::L2::Q5",
+          "rn_TPSJT83Gh8nMCcVV::L2::Q6",
+          "rn_TPSJT83Gh8nMCcVV::L2::Q7",
+          "rn_TPSJT83Gh8nMCcVV::L2::Q8",
+          "rn_TPSJT83Gh8nMCcVV::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_TPSJT83Gh8nMCcVV::L3",
+        "title": "Frequency & time period",
+        "sourceHeadings": [
+          "Frequency",
+          "Using a graph to determine time period"
+        ],
+        "specRefs": [
+          "3.3"
+        ],
+        "opening": "The last pair of measuring words is about time. Frequency counts how many waves pass a point each second and is measured in hertz. The time period is the partner measurement: how long one single wave takes to pass the same point. On a displacement-time graph the period is read along the time axis.",
+        "keyPoints": [
+          "Frequency is the number of waves passing a point each second.",
+          "Frequency carries the symbol f and is measured in hertz.",
+          "One hertz means one wave per second, so 5 Hz means five waves per second.",
+          "The time period is the time taken for a single wave to pass a point.",
+          "Period carries the symbol T and is measured in seconds."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Frequency counts waves arriving per second, and the time period measures how long one wave takes to arrive; they describe the same rhythm from opposite ends.",
+            "analogy": "Buses passing a stop: frequency is buses per minute, the period is the minutes between one bus and the next.",
+            "examPointer": "Units earn marks: frequency in hertz, period in seconds. Mixing them up is a common lost mark."
+          },
+          "medium": {
+            "restatement": "On a displacement-time graph the horizontal axis is time, so the period is the horizontal repeat distance, while amplitude and wavelength stay vertical and spatial reads from other graphs.",
+            "analogy": "Heartbeat traces on a monitor: the spacing between beats on the time axis is the period, and the beats-per-minute rate is the frequency.",
+            "examPointer": "Check the horizontal axis label before reading a graph: distance gives wavelength, time gives period."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_TPSJT83Gh8nMCcVV::L3::Q1",
+          "rn_TPSJT83Gh8nMCcVV::L3::Q2",
+          "rn_TPSJT83Gh8nMCcVV::L3::Q3",
+          "rn_TPSJT83Gh8nMCcVV::L3::Q4",
+          "rn_TPSJT83Gh8nMCcVV::L3::Q5",
+          "rn_TPSJT83Gh8nMCcVV::L3::Q6",
+          "rn_TPSJT83Gh8nMCcVV::L3::Q7",
+          "rn_TPSJT83Gh8nMCcVV::L3::Q8",
+          "rn_TPSJT83Gh8nMCcVV::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "wavefront",
+          "definition": "A line drawn to represent one wave, viewed from above; the spacing of the lines shows the wavelength.",
+          "firstLesson": 1
+        },
+        {
+          "term": "amplitude",
+          "definition": "The distance from the undisturbed position to a peak or a trough of a wave.",
+          "firstLesson": 1
+        },
+        {
+          "term": "wavelength",
+          "definition": "The distance from one point on a wave to the matching point on the next wave.",
+          "firstLesson": 2
+        },
+        {
+          "term": "frequency",
+          "definition": "The number of waves passing a point each second, measured in hertz.",
+          "firstLesson": 3
+        },
+        {
+          "term": "time period",
+          "definition": "The time a single wave takes to pass a point, measured in seconds.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b05ceea28a38-series-of-wavefronts.png",
+        "alt": "series-of-wavefronts, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Wavefronts as viewed from above",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Diagram showing a wave moving to the right, drawn as a series of wavefronts",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/738128443e56-7-1-1-2-amplitude-and-wavelength.png",
+        "alt": "Amplitude and wavelength, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Using a graph to determine wavelength and amplitude",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Diagram showing the amplitude and wavelength of a wave",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1b9229bd4e1b-7-1-1-2-displacement-time-wave.png",
+        "alt": "Displacement time wave, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Using a graph to determine time period",
+        "moduleIds": [
+          "L3"
+        ],
+        "caption": "Diagram showing the time period of a wave",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

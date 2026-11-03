@@ -1,0 +1,129 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_dx62W8M2b3RpDWjM",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "c6b1bb85a7dce8691c47d6df57d70b0727c7819669bc6eaacc16ce9e40ef8f54",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_dx62W8M2b3RpDWjM",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Waves & The Electromagnetic Spectrum",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-1-waves-and-the-electromagnetic-spectrum/3-1-7-dangers-of-em-waves",
+    "specAnchors": [
+      {
+        "code": "3.13",
+        "text": "explain the detrimental effects of excessive exposure of the human body to electromagnetic waves, including: • microwaves: internal heating of body tissue"
+      }
+    ],
+    "primer": {
+      "text": "The same spectrum that carries phone calls and photographs can damage the body that receives them. Frequency is the lever: beyond the visible band the energy of each wave grows large enough to ionise atoms, and the hazards climb with it. This lesson matches each band to its danger and to the simple measures that cut the risk.",
+      "prerequisiteSubtopic": "Waves & The Electromagnetic Spectrum"
+    },
+    "modules": [
+      {
+        "id": "rn_dx62W8M2b3RpDWjM::L1",
+        "title": "Dangers of EM waves & protective measures",
+        "sourceHeadings": [
+          "Dangers and uses of each part of the EM spectrum",
+          "Protective measures against the risks of over-exposure"
+        ],
+        "specRefs": [
+          "3.13"
+        ],
+        "opening": "Over-exposure harms by band: microwaves heat tissue inside the body, infrared burns the skin, ultraviolet damages surface cells and can blind, and gamma with x-rays can trigger cancer and mutation. Against these, engineers and clinicians build simple barriers: metal oven walls, gloves, sunglasses and sunscreen, minimal doses and badge-monitored exposure.",
+        "keyPoints": [
+          "Microwaves can cause internal heating of body tissue.",
+          "Infrared can burn the skin.",
+          "Ultraviolet can damage surface cells and cause blindness.",
+          "Gamma rays and x-rays can kill cells, causing cancer and mutation.",
+          "Protective measures include metal oven walls, protective gloves, sunglasses, sunscreen, minimal doses and radiation badges."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Each hazardous band has a named harm and a simple counter: heating against microwaves, burns against infrared, cell damage against ultraviolet, cancer risk against gamma and x-ray.",
+            "analogy": "Sun etiquette scaled up: shade, clothing and cream are the same logic engineers apply to every band.",
+            "examPointer": "Learn the band-to-harm list verbatim; matching the wrong harm to a band loses the mark even if the protection is right."
+          },
+          "medium": {
+            "restatement": "The danger climbs with frequency because photon energy does: past visible, radiation ionises atoms, so the short-wavelength bands break molecular bonds in cells while the long bands merely heat them.",
+            "analogy": "A hierarchy of tools: a hairdryer warms you, a UV lamp burns, an x-ray machine cuts at the molecular level.",
+            "examPointer": "When asked to explain the trend, say energy increases with frequency and ionisation begins beyond visible; that chain earns the reasoning mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_dx62W8M2b3RpDWjM::L1::Q1",
+          "rn_dx62W8M2b3RpDWjM::L1::Q2",
+          "rn_dx62W8M2b3RpDWjM::L1::Q3",
+          "rn_dx62W8M2b3RpDWjM::L1::Q4",
+          "rn_dx62W8M2b3RpDWjM::L1::Q5",
+          "rn_dx62W8M2b3RpDWjM::L1::Q6",
+          "rn_dx62W8M2b3RpDWjM::L1::Q7",
+          "rn_dx62W8M2b3RpDWjM::L1::Q8",
+          "rn_dx62W8M2b3RpDWjM::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "ionise",
+          "definition": "To remove electrons from atoms, producing charged particles; ionising radiation can damage living cells.",
+          "firstLesson": 1
+        },
+        {
+          "term": "radiation badge",
+          "definition": "A badge worn by radiation workers that records the dose of radiation received.",
+          "firstLesson": 1
+        },
+        {
+          "term": "over-exposure",
+          "definition": "Exposure to radiation beyond the safe dose — the shared cause of every harm on this lesson's list.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a4e81604ee22-em-uses-and-dangers-summary.png",
+        "alt": "EM uses and dangers summary, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Dangers and uses of each part of the EM spectrum",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Uses and dangers of the electromagnetic spectrum",
+        "binding": "sole-lesson"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/784cdb105674-radiation-badge.png",
+        "alt": "radiation-badge, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Radiation badges",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Radiation badges are used by people working closely with radiation to monitor exposure",
+        "binding": "sole-lesson"
+      }
+    ]
+  }
+}

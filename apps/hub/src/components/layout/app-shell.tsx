@@ -53,6 +53,8 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { clearIdentity, useIdentity } from "@/lib/identity";
 import { roleHome } from "@/lib/role-home";
 import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
+import { useLastOpenedSync } from "@/lib/last-opened";
+import { useMockResultsSync } from "@/lib/mock-results";
 import { isImmersiveRoute, isViewerRoute } from "@/lib/focus-routes";
 import { useLastOpened } from "@/lib/last-opened";
 import { cn } from "@/lib/utils";
@@ -114,6 +116,12 @@ export function AppShell({
   // the login page returns the user to the surface they left — RequireAuth's
   // prompt already did; now every entry point does.
   const currentSearch = useCurrentSearch();
+  // T-TIER1 — the account-backed mirrors mount in the GLOBAL chrome (not the
+  // dashboard): the last-opened tracker fires on course routes and the mock
+  // player writes from past-papers, so the write-through listeners must live
+  // everywhere the learner navigates, exactly like the identity store.
+  useLastOpenedSync();
+  useMockResultsSync();
   // course pages manage their own horizontal rhythm (course shell + resource
   // panel); the graph surfaces are full-bleed (the visualizer canvas wants
   // the whole viewport); the tutor workspace is an immersive app surface
