@@ -1004,3 +1004,18 @@ Work Log:
 
 Stage Summary:
 - t-select-search-resume run-002: VERDICT — both select pages exercise exactly per the law of record: each owns its own engagement plane (EQ: scored parts; FC: rated cards), resolves the target against what IT lists, offers the jump only while the target is listed (scoped honesty verified both ways), and lands on the named set/deck. No defect found, no remainder disclosed, no code change required. Receipt .syllabai/receipts/t-select-search-resume/run-002-live-verification.json. With t-note-scroll-resume run-002, all three select pages' Resume targets are now first-hand verified in production on 2026-11-03.
+
+---
+Task ID: T-SIB-INGEST-001 run-001 (operator order trace 1a1a2a0f13661c75: "start ingesting" + "Go with your recommendations")
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+Base commit: 73af204 (fetched-first clone; branch sib/ingest-4ch1-r0; NO push — gate C open)
+
+Work Log:
+- RULINGS LOCKED (operator-approved recs): kind RESEARCH_EVIDENCE via migration 0023; VALIDATED at ingest citing ASSESSMENT_R3_SILVER as the validation evidence of record; all 95 artifacts ingested with GAP family serving-unreachable (NULL-vector rows — the arm's `embedding is not null` law); scope law untouched (vector-arm throws on null scope; subject branch = subjects.curriculum_version_id, 4CH1-2017).
+- MIGRATION 0023 (0023_sib-research-evidence-kind.sql + snapshot + journal idx23): widens ck_documents_kind + ck_document_chunks_kind with RESEARCH_EVIDENCE (varchar(20) fits); archive_tc27 snapshot table deliberately NOT widened.
+- DRY RECEIPT CLEAN (scripts/sib_dryrun_receipt.py -> .syllabai/receipts/T-SIB-INGEST-001/run-001-dry-receipt.json): source = syllabai-resources@main CHEMISTRY_4CH1/chunks 95 files raw-fetched, sha256 pins x95; 95 docs / 1,593 chunks; G1 parse 1,593/1,593; G2 content_sha256==sha256(text) 1,593/1,593; GAP = 8 artifacts / 136 chunks held; serving-backfill census 1,457; temporal current 1,593 / legacy 0. Discrepancy of record: manifest's "1,404" line predates RUN-017..022 tranches (+189 = 1,593) — fetched truth pinned.
+- CREDENTIALS: 8 operator Gemini keys staged repo-external 0600, never echoed/committed; CHAT-TRANSIT EXPOSED — rotate after use. Sandbox live probe: 5x 400 LOCATION_BLOCKED (133d region law reconfirmed), 3x 403 project-unbilled (001/002/666next). Backfill (t-mig-133d-backfill-exec.ts, gemini-embedding-001 768-dim) must run from supported egress.
+- APPLY SCRIPT (sib-ingest.ts mirroring books-ingest law: dry+apply, ONE transaction, COW-proof probe, receipt) authored on the NEXT run — apply + backfill + push/PR await operator gates A/B/C.
+
+Stage Summary:
+- T-SIB-INGEST-001 run-001 committed locally (0e0c11f): rulings locked, migration authored, dry receipt CLEAN. Zero prod contact, zero credential exposure. Gates: A = 093/133b write order or task-owned branch DSN; B = billed key + supported egress for the 1,457-row backfill; C = valid repo token (staged one 401s) for push + PR.
