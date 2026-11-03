@@ -990,3 +990,17 @@ Stage Summary:
 - Receipt: .syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run012-wavec-serve-payload.json
   (22 pins with before/after sha256, gates, mechanism, data cut). Dossier of
   record: resources scripts/oeq_phys_run012/wave-c/ (PR #293).
+
+## t-select-search-resume run-002 — live verification of record: the exam-questions + flashcards Resume targets (operator order trace 1a1a1c45fcbce721)
+Agent: main (Z.ai, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5, chat dd7e60e9-8ed0-4bd3-bbac-74ba824dc977)
+Task: the operator ordered the same first-hand exercise t-note-scroll-resume run-002 gave the notes leg, now for the exam-questions and flashcards Resume targets of the PR #628 three-page toolbar law (run-001, commit da60c126, trace 1a19acb6ec437e25). Bookkeeping-only: ZERO code bytes.
+
+Work Log:
+- Sandbox-recycle recovery first: the window rolled back to the pre-session snapshot (HEAD ca7ef93d, origin/main ref stale, questionbank-index/flashcards-index absent on disk) — state re-established first-hand from origin (fetch-first, FETCH_HEAD removed, ff to main fa8059d7 T-KG-PRE-3 run-001, scrub-assert 0/0/0, bun install).
+- Code laws re-read at fa8059d7 and confirmed unchanged: EQ resume = max `at` across selfScores ∪ mcqAnswers → topicSlug, resolved against rows ∪ Other sets under the current paper scope, href `${base}/exam-questions/${slug}`; FC resume = max `at` across progress.flashcards → subtopic resolved against listed decks, href `${base}/flashcards/${code}`.
+- Headless-browser E2E on production (igcse-chemistry-19, engagement seeded into syllabai-hub:progress:igcse-chemistry-19, removed after): EQ — empty posture renders no button; seeded scored part (1-3 Atomic Structure) → Resume 'Atomic Structure' → click lands on the set page (h1 confirms); scoped landing ?subtopic=4CH1-S1-b (target canonically 4CH1-S1-c) → NO Resume (out-of-scope honesty); ?subtopic=4CH1-S1-c → Resume renders. FC — seeded rating (deck 1-2) → Resume 'Elements, Compounds & Mixtures' → click lands on the deck (h1 confirms); a newer rating on deck 1-3 flips the target (max-at join holds).
+- Probe disclosure: the first scoping probes used TOPIC codes (4CH1-S2/S3) — unknown codes degrade to the full index per the documented page.tsx law, so they rendered Resume legitimately; re-run with sub-topic codes produced the discriminating both-ways result. Not a defect.
+- Evidence: .syllabai/lane-artifacts/t-select-search-resume/run-002/ (EQ + FC landing screenshots).
+
+Stage Summary:
+- t-select-search-resume run-002: VERDICT — both select pages exercise exactly per the law of record: each owns its own engagement plane (EQ: scored parts; FC: rated cards), resolves the target against what IT lists, offers the jump only while the target is listed (scoped honesty verified both ways), and lands on the named set/deck. No defect found, no remainder disclosed, no code change required. Receipt .syllabai/receipts/t-select-search-resume/run-002-live-verification.json. With t-note-scroll-resume run-002, all three select pages' Resume targets are now first-hand verified in production on 2026-11-03.
