@@ -800,6 +800,57 @@ describe("POST /api/v1/content/books/:documentId/checks/submit (T-BOOK-008)", ()
   });
 });
 
+describe("POST /:documentId/checks/submit — the unit lane (T-BOOK-069)", () => {
+  const body = (chosen: string) => ({
+    blockId: STRENGTH_CHECK_BLOCK.blockId,
+    questionId: CHECK_QUESTION_ID,
+    chosenOptionId: chosen,
+    responseTimeMs: 4200,
+  });
+
+  test("200 — a strength-check submit rides ?unit=uN (the gate is grammar, the law is question/option)", async () => {
+    const res = await router(fakeApp(), STUDENT).request(
+      `/api/v1/content/books/${PILOT_DOC}/checks/submit?unit=u1`,
+      { method: "POST", body: JSON.stringify(body(CHECK_CORRECT_OPTION_ID)) },
+    );
+    expect(res.status).toBe(200);
+    const parsed = railCheckSubmitResultSchema.parse(await res.json());
+    expect(parsed.correct).toBe(true);
+    expect(parsed.marksAwarded).toBe(1);
+  });
+
+  test("401 — the unit lane stays auth-gated (an attempt is a learner signal)", async () => {
+    const res = await router(fakeApp(), null).request(
+      `/api/v1/content/books/${PILOT_DOC}/checks/submit?unit=u1`,
+      { method: "POST", body: JSON.stringify(body(CHECK_CORRECT_OPTION_ID)) },
+    );
+    expect(res.status).toBe(401);
+  });
+
+  test("400 — both chapter and unit is a refusal (exactly one scope)", async () => {
+    const res = await router(fakeApp(), STUDENT).request(
+      `/api/v1/content/books/${PILOT_DOC}/checks/submit?chapter=u1:c1&unit=u1`,
+      { method: "POST", body: JSON.stringify(body(CHECK_CORRECT_OPTION_ID)) },
+    );
+    expect(res.status).toBe(400);
+    const parsed = (await res.json()) as Record<string, unknown>;
+    expect(parsed.error).toBe("validation_failed");
+    expect(parsed.message).toBe("provide either chapter or unit, not both");
+  });
+
+  test("400 — neither chapter nor unit, and a malformed unit, are refusals", async () => {
+    for (const q of ["", "?unit=garbage"]) {
+      const res = await router(fakeApp(), STUDENT).request(
+        `/api/v1/content/books/${PILOT_DOC}/checks/submit${q}`,
+        { method: "POST", body: JSON.stringify(body(CHECK_CORRECT_OPTION_ID)) },
+      );
+      expect(res.status).toBe(400);
+      const parsed = (await res.json()) as Record<string, unknown>;
+      expect(parsed.error).toBe("validation_failed");
+    }
+  });
+});
+
 describe("GET /api/v1/content/books/glossary (T-BOOK-007)", () => {
   test("200 — VALIDATED terms round-trip the strict glossary shape", async () => {
     const res = await router(fakeApp()).request(

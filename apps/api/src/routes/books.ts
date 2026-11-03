@@ -192,8 +192,26 @@ export function createBooksRouter(app: BooksReadApp): Hono {
     })
     // POST /:documentId/checks/submit — T-BOOK-008: the attempt of record
     // (provenance='BOOK_CHECK'; AUTH-gated — an attempt is a learner signal).
+    // T-BOOK-069: the gate is the chapter key OR the unit grammar — a unit
+    // strength check is not a chapter (ADR-BOOK-0004 decision 1), and the
+    // strength surface's submits ride ?unit=uN. Exactly one of the two is
+    // required; the service law itself keys on question/option, never the
+    // scope key, so the widening is a gate grammar only (no law change).
     .post("/:documentId/checks/submit", async (c) => {
-      const gate = chapterKeyOr400(c);
+      const chapterRaw = c.req.query("chapter");
+      const unitRaw = c.req.query("unit");
+      let gate: { ok: true } | { ok: false; response: Response };
+      if (unitRaw != null && unitRaw.trim() !== "") {
+        if (chapterRaw != null && chapterRaw.trim() !== "") {
+          return c.json(
+            apiError(400, "validation_failed", "provide either chapter or unit, not both"),
+            400,
+          );
+        }
+        gate = unitParamOr400(c);
+      } else {
+        gate = chapterKeyOr400(c);
+      }
       if (!gate.ok) return gate.response;
       const auth = getAuth(c)!;
       const body = await readJsonBody(c);
