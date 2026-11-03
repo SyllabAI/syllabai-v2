@@ -34,6 +34,8 @@
  *     Approach target.
  */
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   BookOpen,
   Bookmark,
@@ -58,6 +60,7 @@ import {
 } from "@/components/cla/question-cla-threads";
 // DC-6 phase 3: the sync tier — mirrors the committed transcript (best-effort)
 import { scheduleQuestionClaSync } from "@/components/cla/question-cla-sync";
+import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -518,6 +521,10 @@ export function QuestionPlayer({
 // ── bridge status banner — one honest line, never a blocker ──────────────
 
 function BridgeBanner({ status }: { status: AttemptBridgeStatus }) {
+  // A-3 (frontend-flow audit): sign-in from the banner returns to this
+  // player (path + ?topic query intact) instead of the dashboard.
+  const pathname = usePathname();
+  const currentSearch = useCurrentSearch();
   if (status.kind === "ready") {
     const skipped = status.data.skipped.length;
     return (
@@ -542,9 +549,12 @@ function BridgeBanner({ status }: { status: AttemptBridgeStatus }) {
     return (
       <div className="rounded-lg border bg-muted/30 px-4 py-2.5 text-[13px] leading-relaxed text-muted-foreground">
         Practice works locally right now.{" "}
-        <a href="/login" className="font-medium text-primary underline-offset-2 hover:underline">
+        <Link
+          href={signInHref(pathname, currentSearch)}
+          className="font-medium text-primary underline-offset-2 hover:underline"
+        >
           Sign in
-        </a>{" "}
+        </Link>{" "}
         to record answers to your real SyllabAI learner model (the pilot subject is
         connected to the backend — Smart Mark, mastery and history).
       </div>

@@ -31,6 +31,7 @@
  *   and risks account suspension.
  */
 import { cachedGet, invalidateContentCache, singleFlight } from "./api-cache";
+import { unmirrorRoutingSession } from "./session-cookie";
 import type {
   AgendaView,
   CourseExamTargetView,
@@ -134,6 +135,7 @@ import type {
 // contracts, fail-closed vocabulary), imported rather than mirrored so the
 // hub cannot drift from the wire the run-002 module serves.
 import type {
+  ContentReviewsView,
   CreateSessionRequest,
   CreateSessionResponse,
   EndSessionResponse,
@@ -142,11 +144,16 @@ import type {
   MockResultsView,
   PostMessageRequest,
   PostMessageResponse,
+  PutContentReviewsRequest,
   PutMockResultsRequest,
+  PutSavedTestsRequest,
+  PutTeachingCoverageRequest,
   ReviewCard,
+  SavedTestsView,
   SessionHistoryItem,
   SetLastOpenedRequest,
   TeachSession,
+  TeachingCoverageView,
 } from "@syllabai/contracts";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "";
@@ -1026,6 +1033,12 @@ export function setSession(auth: AuthResponse) {
 export function clearSession() {
   window.localStorage.removeItem(TOKEN_KEY);
   window.localStorage.removeItem(USER_KEY);
+  // A-2: the signed routing cookie (lib/session.ts) mirrors this session
+  // for the server (proxy.ts). Clearing is fire-and-forget — clearSession
+  // stays synchronous, and this path also covers the 401 session-expired
+  // flow above, where the safe state is simply "signed out everywhere,
+  // best effort" (the cookie also expires on its own).
+  void unmirrorRoutingSession();
 }
 
 export function currentUser(): { id: string; email: string; displayName: string; roles: string[] } | null {
@@ -1815,6 +1828,52 @@ export const api = {
         body: JSON.stringify(body),
       },
     ),
+
+  // ── T-TIER1 run-002 — the account-backed teacher stores ──────────────
+  // Frontend deep-audit Tier 2 (operator order 2026-11-03): the three
+  // teacher stores that lived in ONE browser only (savedTests /
+  // teachingCoverage / contentReviews) now mirror the teacher's account
+  // (the T-TEACH-001 cache law, run-001 learner-me precedent). These
+  // client methods are the only callers — the sync layer owns the
+  // reconcile (lib/teacher/stores.ts, gated on the teacher identity).
+
+  // GET — the account's Test Builder library (newest first, cap 30 — the
+  // hub's own bound).
+  savedTests: () => request<SavedTestsView>("/api/v1/teachers/me/saved-tests"),
+
+  // PUT — the FULL desired library (idempotent replace; an empty array
+  // clears it). The store's opaque `id` round-trips verbatim (the merge key).
+  setSavedTests: (body: PutSavedTestsRequest) =>
+    request<SavedTestsView>("/api/v1/teachers/me/saved-tests", {
+      method: "PUT",
+      body: JSON.stringify(body),
+    }),
+
+  // GET — every course's taught-codes overlay (course-slug order).
+  teachingCoverage: () => request<TeachingCoverageView>("/api/v1/teachers/me/teaching-coverage"),
+
+  // PUT /{courseSlug} — the FULL code set for that ONE course (idempotent
+  // upsert; an empty array deletes the row — the honest clear).
+  setTeachingCoverage: (courseSlug: string, body: PutTeachingCoverageRequest) =>
+    request<TeachingCoverageView>(
+      `/api/v1/teachers/me/teaching-coverage/${encodeURIComponent(courseSlug)}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(body),
+      },
+    ),
+
+  // GET — the account's AI-content validation verdicts (newest first, one
+  // per resource, cap 200 — the hub's own bound).
+  contentReviews: () => request<ContentReviewsView>("/api/v1/teachers/me/content-reviews"),
+
+  // PUT — the FULL desired verdict set (idempotent replace; an empty array
+  // clears the ledger; one verdict per resource is server law).
+  setContentReviews: (body: PutContentReviewsRequest) =>
+    request<ContentReviewsView>("/api/v1/teachers/me/content-reviews", {
+      method: "PUT",
+      body: JSON.stringify(body),
+    }),
 
   // Attempt history (Review Hub minimal slice) — read-only view over the
   // learner's own attempts/answers evidence rows. Default limit 50 (max 100).

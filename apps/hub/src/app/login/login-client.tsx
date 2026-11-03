@@ -39,6 +39,7 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { api, setSession, wakeBackend } from "@/lib/api";
 import { announceSessionChange, useIdentity, type Role } from "@/lib/identity";
+import { mirrorRoutingSession } from "@/lib/session-cookie";
 
 const ROLE_STORY: Record<
   Role,
@@ -127,6 +128,11 @@ export function LoginClient() {
             );
       setSession(auth);
       announceSessionChange();
+      // A-2: mirror the session into the signed routing cookie and AWAIT it
+      // — router.push must not race the proxy (a missing cookie here would
+      // bounce a fresh teacher back to /login). Failure surfaces through
+      // this block's existing error banner; retry is the fix.
+      await mirrorRoutingSession(auth.user);
       const isTeacher = auth.user.roles.some((r) => r === "TEACHER" || r === "ADMIN");
       router.push(nextDestination(search, isTeacher));
     } catch (e) {
@@ -365,8 +371,11 @@ export function LoginClient() {
 
         <p className="mt-4 text-sm text-muted-foreground">
           Just exploring?{" "}
+          {/* B-2: public browsing lives at /courses — the dashboard is an
+              account surface now, and this link used to advertise the
+              anonymous demo that made /dashboard ambiguous. */}
           <Link
-            href="/dashboard"
+            href="/courses"
             className="inline-block whitespace-nowrap font-medium text-foreground underline underline-offset-2"
           >
             Browse without an account →

@@ -24,11 +24,13 @@
  */
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Activity, ChevronRight, RefreshCw, TrendingDown } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getToken } from "@/lib/api";
+import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { fetchStrengths, type StrengthResponse } from "@/lib/drill";
 import { formatPercent, formatRelative, roundPercent } from "@/lib/format";
 import { cn } from "@/lib/utils";
@@ -51,6 +53,8 @@ function strengthPercent(strength: number): string {
 }
 
 export function StrengthsPanel({ course }: { course: string }) {
+  const pathname = usePathname();
+  const currentSearch = useCurrentSearch();
   const signedIn = useMemo(() => getToken() !== null, []);
   const [data, setData] = useState<StrengthResponse | null>(null);
   const [failed, setFailed] = useState(false);
@@ -80,7 +84,9 @@ export function StrengthsPanel({ course }: { course: string }) {
             see where you stand per topic and what to practise next.
           </p>
           <Button asChild>
-            <Link href="/login">Sign in to see your strengths</Link>
+            <Link href={signInHref(pathname, currentSearch)}>
+              Sign in to see your strengths
+            </Link>
           </Button>
         </CardContent>
       </Card>

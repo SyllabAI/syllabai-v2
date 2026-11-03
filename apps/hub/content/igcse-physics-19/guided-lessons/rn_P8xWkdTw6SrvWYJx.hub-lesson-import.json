@@ -1,0 +1,128 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_P8xWkdTw6SrvWYJx",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "834703226ee88e4182dc67f96d9d9a3a4096139dca6d90eb70b21dd26bc5fe95",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_P8xWkdTw6SrvWYJx",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Sound",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-3-sound/3-3-3-core-practical-using-an-oscilloscope",
+    "specAnchors": [
+      {
+        "code": "3.27P",
+        "text": "practical: investigate the frequency of a sound wave using an oscilloscope"
+      }
+    ],
+    "primer": {
+      "text": "This core practical turns the oscilloscope from a display into a measuring instrument. A tuning fork supplies a pure note, the time base supplies the ruler, and one counted cycle plus f = 1/T supplies the frequency — repeated across forks to map period against frequency.",
+      "prerequisiteSubtopic": "Sound"
+    },
+    "modules": [
+      {
+        "id": "rn_P8xWkdTw6SrvWYJx::L1",
+        "title": "Finding frequency from the time base",
+        "sourceHeadings": [
+          "A diagram of the oscilloscope and tuning fork set up",
+          "An example results table of the oscilloscope display"
+        ],
+        "specRefs": [
+          "3.27P"
+        ],
+        "opening": "A tuning fork hands you a sound of pure, known-shape frequency. Display it on an oscilloscope, count the divisions spanned by one complete cycle, convert with the time-base scale to get the time period, and the frequency follows from f = 1/T — then repeat for forks of different frequency.",
+        "keyPoints": [
+          "The independent variable is the frequency of the tuning fork used and the dependent variable is the measured time period.",
+          "The microphone detects the fork’s note and the oscilloscope displays the wave electronically.",
+          "The time base is adjusted until multiple complete waves fit on the screen.",
+          "One complete cycle is measured in divisions and converted to seconds with the time-base scale.",
+          "Frequency is calculated from f = 1/T and the measurement is repeated for a variety of forks."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Strike a tuning fork, hold it near the microphone, freeze the trace, read the width of one cycle in divisions, convert divisions to milliseconds with the time base, and invert to get the frequency.",
+            "analogy": "Reading the wave off the screen is like timing one lap from a photo-finish: count the start and finish lines, apply the scale, and one lap gives the rate.",
+            "examPointer": "State f = 1/T and keep the units honest: divisions × ms per division gives T in ms; convert to seconds before inverting."
+          },
+          "medium": {
+            "restatement": "Divisions are the scope’s ruler: counted divisions multiplied by the ms-per-division setting give the period in milliseconds, and inverting after converting to seconds gives the frequency; each fork repeats the reading to build its period-frequency pair.",
+            "analogy": "Reading a map: count centimetres on the page, multiply by the scale, and the real distance appears — here the scale is the time base.",
+            "examPointer": "Watch the unit chain: divisions → ms → s → 1/T in Hz; slipping a factor of 1000 is the classic error."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_P8xWkdTw6SrvWYJx::L1::Q1",
+          "rn_P8xWkdTw6SrvWYJx::L1::Q2",
+          "rn_P8xWkdTw6SrvWYJx::L1::Q3",
+          "rn_P8xWkdTw6SrvWYJx::L1::Q4",
+          "rn_P8xWkdTw6SrvWYJx::L1::Q5",
+          "rn_P8xWkdTw6SrvWYJx::L1::Q6",
+          "rn_P8xWkdTw6SrvWYJx::L1::Q7",
+          "rn_P8xWkdTw6SrvWYJx::L1::Q8",
+          "rn_P8xWkdTw6SrvWYJx::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "tuning fork",
+          "definition": "A metal fork that vibrates at one fixed pure frequency when struck.",
+          "firstLesson": 1
+        },
+        {
+          "term": "division",
+          "definition": "One grid square on the oscilloscope screen, used with the time-base scale to count a cycle’s width.",
+          "firstLesson": 1
+        },
+        {
+          "term": "pure frequency",
+          "definition": "A sound made of a single frequency, with no mixture of overtones.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/620b63b88285-3-3-3-oscilloscopes-and-frequency-apparatus.png",
+        "alt": "Oscilloscopes and Frequency Apparatus, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "A diagram of the oscilloscope and tuning fork set up",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Measuring the frequency of a sound wave using an oscilloscope"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/c142614b177e-3-3-3-oscilloscope-frequency-results-table.png",
+        "alt": "Oscilloscope & Frequency Results Table, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "An example results table of the oscilloscope display",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

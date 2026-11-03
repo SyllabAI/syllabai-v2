@@ -1,0 +1,357 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_kxdTzqwVgkFBYVC3",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "26b8b037ea503ce888f5da63b22758cfd1ac9baf41b8d93ff971a52027b77f04",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_kxdTzqwVgkFBYVC3",
+    "topicTitle": "4. Energy Resources and Energy Transfers",
+    "subtopicTitle": "Energy Stores & Transfers",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/4-energy-resources-and-energy-transfers/4-1-energy-stores-and-transfers/4-1-4-conduction-convection-and-radiation",
+    "specAnchors": [
+      {
+        "code": "4.6",
+        "text": "describe how thermal energy transfer may take place by conduction, convection and radiation"
+      },
+      {
+        "code": "4.7",
+        "text": "explain the role of convection in everyday phenomena"
+      },
+      {
+        "code": "4.8",
+        "text": "explain how emission and absorption of radiation are related to surface and temperature"
+      }
+    ],
+    "primer": {
+      "text": "Heating moves energy three ways: through solids by colliding particles (conduction, turbocharged in metals by delocalised electrons), through fluids by density-driven currents (convection), and through nothing at all by infrared waves (radiation). The surface and the state of matter decide which route wins.",
+      "prerequisiteSubtopic": "Energy Stores & Transfers"
+    },
+    "modules": [
+      {
+        "id": "rn_kxdTzqwVgkFBYVC3::L1",
+        "title": "Conduction, conductors and insulators",
+        "sourceHeadings": [
+          "Conduction, conductors and insulators",
+          "Example of a conductor and an insulator"
+        ],
+        "specRefs": [
+          "4.6"
+        ],
+        "opening": "Conduction is the main route by which heating moves energy through solids. Metals conduct superbly; non-metals, liquids and gases barely conduct at all — and the poor conductors earn a name of their own, insulators, which is exactly what you want under your feet on a cold bathroom floor.",
+        "keyPoints": [
+          "Conduction moves heating energy through solids by particle jostling.",
+          "Metals are extremely good thermal conductors.",
+          "Non-metals conduct poorly, and liquids and gases barely conduct at all.",
+          "Poor conductors are called insulators, and they prevent energy transfer by conduction.",
+          "Materials containing pockets of trapped air are especially good insulators because air is a gas and cannot form convection currents when trapped."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Solids conduct by particle collisions; metals do it best, gases barely at all, and trapped air is the reason fluffy materials insulate so well.",
+            "analogy": "A queue passing buckets hand to hand: a tight queue (solid) passes fast, a scattered crowd (gas) barely passes at all.",
+            "examPointer": "Name the mechanism in answers: heated particles vibrate harder and knock into neighbours, handing energy along."
+          },
+          "medium": {
+            "restatement": "The conductor-insulator split is a spectrum: metals at the top, non-metal solids far below, liquids lower still and gases lowest — which is why materials that trap air are the designers’ favourite insulators.",
+            "analogy": "Rumour spreading in an office (tight desks, fast) versus a city park (people far apart, slow): closeness sets the transfer rate.",
+            "examPointer": "Trapped-air answers need BOTH halves: air is a poor conductor AND it is trapped so it cannot move to form a convection current."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kxdTzqwVgkFBYVC3::L1::Q1",
+          "rn_kxdTzqwVgkFBYVC3::L1::Q2",
+          "rn_kxdTzqwVgkFBYVC3::L1::Q3",
+          "rn_kxdTzqwVgkFBYVC3::L1::Q4",
+          "rn_kxdTzqwVgkFBYVC3::L1::Q5",
+          "rn_kxdTzqwVgkFBYVC3::L1::Q6",
+          "rn_kxdTzqwVgkFBYVC3::L1::Q7",
+          "rn_kxdTzqwVgkFBYVC3::L1::Q8",
+          "rn_kxdTzqwVgkFBYVC3::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_kxdTzqwVgkFBYVC3::L2",
+        "title": "How conduction works, and why metals win",
+        "sourceHeadings": [
+          "Conduction in solids",
+          "Conduction in metals"
+        ],
+        "specRefs": [
+          "4.6"
+        ],
+        "opening": "Heat one end of a solid and its atoms vibrate harder, jostling their neighbours and passing energy along atom by atom. Metals add a second delivery service: their delocalised electrons roam freely and collide with atoms, carrying the vibrations — and the heat — far faster than the lattice alone could.",
+        "keyPoints": [
+          "Heating makes a substance’s atoms vibrate harder and knock into their neighbours.",
+          "Each collision passes energy from atom to atom through the material.",
+          "Metals contain delocalised electrons that can move through the lattice.",
+          "The delocalised electrons collide with atoms and help transfer the vibrations through the metal.",
+          "This extra transfer mechanism is why metals conduct heat better than non-metals."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Two mechanisms: the lattice passes vibrations by collision, and in metals the free electrons ferry energy between atoms, which is the metals’ winning edge.",
+            "analogy": "Passing a message down a line of people by shoulder taps, while in a metal some runners also sprint along the queue carrying copies.",
+            "examPointer": "The phrase that scores: delocalised electrons collide with atoms, transferring the vibrations through the material faster."
+          },
+          "medium": {
+            "restatement": "Particle picture: heating raises the vibration amplitude of lattice atoms; collisions propagate it; electron collisions add a fast parallel channel unique to metals.",
+            "analogy": "A crowded standing wave at a concert: the push of neighbour on neighbour spreads the sway, and the stewards moving through the crowd spread it faster still.",
+            "examPointer": "Do not say electrons carry heat like a fluid — say they collide with atoms and transfer energy, which is the model’s actual claim."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kxdTzqwVgkFBYVC3::L2::Q1",
+          "rn_kxdTzqwVgkFBYVC3::L2::Q2",
+          "rn_kxdTzqwVgkFBYVC3::L2::Q3",
+          "rn_kxdTzqwVgkFBYVC3::L2::Q4",
+          "rn_kxdTzqwVgkFBYVC3::L2::Q5",
+          "rn_kxdTzqwVgkFBYVC3::L2::Q6",
+          "rn_kxdTzqwVgkFBYVC3::L2::Q7",
+          "rn_kxdTzqwVgkFBYVC3::L2::Q8",
+          "rn_kxdTzqwVgkFBYVC3::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_kxdTzqwVgkFBYVC3::L3",
+        "title": "Convection and convection currents",
+        "sourceHeadings": [
+          "Convection",
+          "Convection currents"
+        ],
+        "specRefs": [
+          "4.7"
+        ],
+        "opening": "Fluids — liquids and gases — carry heat by moving themselves: convection. Warm fluid expands, becomes less dense than its surroundings, and rises; cooler fluid sinks into its place; the cycle draws a convection current. Solids are excluded — nothing flows — which is why the mechanism belongs to fluids alone.",
+        "keyPoints": [
+          "Convection moves thermal energy through fluids — liquids and gases — by bulk flow of the fluid itself.",
+          "Convection cannot occur in solids.",
+          "When a fluid is heated, its particles push apart and the fluid expands.",
+          "The hot fluid is less dense than its surroundings, so it rises.",
+          "Cooler fluid moves in to take its place; the hot fluid cools, contracts and sinks, forming a convection current."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Heat a fluid, it expands and floats upward; cool fluid replaces it and the loop repeats — a convection current that shuttles energy through the fluid bulk.",
+            "analogy": "A warm-air balloon: heated air lifts the basket because expansion made it lighter per cubic metre than the air around it.",
+            "examPointer": "Convection answers need the density chain: heated → expands → less dense → rises; and the replacement step: cooler fluid sinks in to take its place."
+          },
+          "medium": {
+            "restatement": "The current is a closed loop driven by density differences: rise above the heat source, lose energy to the surroundings at the top, contract, sink, and return to be heated again.",
+            "analogy": "An escalator pair in a shopping centre: one side carries warm air up, the other returns the cooled flow down, and the loop never stops while the heater works.",
+            "examPointer": "Everyday phenomena to quote: sea breezes, radiators warming a room, boiling water’s rolling motion."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kxdTzqwVgkFBYVC3::L3::Q1",
+          "rn_kxdTzqwVgkFBYVC3::L3::Q2",
+          "rn_kxdTzqwVgkFBYVC3::L3::Q3",
+          "rn_kxdTzqwVgkFBYVC3::L3::Q4",
+          "rn_kxdTzqwVgkFBYVC3::L3::Q5",
+          "rn_kxdTzqwVgkFBYVC3::L3::Q6",
+          "rn_kxdTzqwVgkFBYVC3::L3::Q7",
+          "rn_kxdTzqwVgkFBYVC3::L3::Q8",
+          "rn_kxdTzqwVgkFBYVC3::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-04"
+        ]
+      },
+      {
+        "id": "rn_kxdTzqwVgkFBYVC3::L4",
+        "title": "Thermal radiation and the mug of coffee",
+        "sourceHeadings": [
+          "Thermal radiation",
+          "Conduction, convection and radiation in a mug of coffee"
+        ],
+        "specRefs": [
+          "4.8"
+        ],
+        "opening": "Every object, whatever its temperature, emits infrared radiation — no particles, no medium, just waves. Hotter objects radiate more per second, and the surface decides how well: black surfaces are the best emitters and absorbers, shiny surfaces the worst. A cooling mug of coffee runs all three transfer routes at once.",
+        "keyPoints": [
+          "All bodies emit infrared radiation, whatever their temperature.",
+          "A hotter object radiates more infrared in a given time.",
+          "Black objects are the best emitters and absorbers of thermal radiation; shiny objects are the worst.",
+          "Shiny surfaces reflect radiation, which is why they absorb so poorly.",
+          "A hot mug of coffee loses energy by radiation from its surfaces, by conduction through the mug walls, and by convection of the warm air above it."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Radiation is the no-medium route: every object emits infrared, hotter means more, and the surface’s colour and finish set the emit-absorb score, black best and shiny worst.",
+            "analogy": "A spotlight that every object shines all the time, turned up by temperature; the surface is the lampshade, black glass letting everything through, polished metal bouncing it back.",
+            "examPointer": "The mug-of-coffee question wants all three routes named with their surfaces: radiation from the surface, conduction through the walls, convection above the drink."
+          },
+          "medium": {
+            "restatement": "Emission and absorption are two sides of the same surface quality: good absorbers are good emitters (black, dull), poor absorbers are poor emitters (white, shiny — shiny reflects instead).",
+            "analogy": "A good listener is usually a good talker: surfaces that take radiation in easily also give it out easily; the mirror-finish ones do neither.",
+            "examPointer": "Sort the four surfaces in order when asked: black > dull/dark > white > shiny, for BOTH absorbing and emitting."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kxdTzqwVgkFBYVC3::L4::Q1",
+          "rn_kxdTzqwVgkFBYVC3::L4::Q2",
+          "rn_kxdTzqwVgkFBYVC3::L4::Q3",
+          "rn_kxdTzqwVgkFBYVC3::L4::Q4",
+          "rn_kxdTzqwVgkFBYVC3::L4::Q5",
+          "rn_kxdTzqwVgkFBYVC3::L4::Q6",
+          "rn_kxdTzqwVgkFBYVC3::L4::Q7",
+          "rn_kxdTzqwVgkFBYVC3::L4::Q8",
+          "rn_kxdTzqwVgkFBYVC3::L4::Q9"
+        ],
+        "figureIds": [
+          "fig-05",
+          "fig-06"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "conduction",
+          "definition": "Energy transfer by heating through particle collisions, the main route in solids.",
+          "firstLesson": 1
+        },
+        {
+          "term": "insulator",
+          "definition": "A poor conductor that does not transfer energy by heating well; trapped-air materials are the classic case.",
+          "firstLesson": 1
+        },
+        {
+          "term": "delocalised electrons",
+          "definition": "Free electrons in metals that collide with atoms and speed up thermal conduction.",
+          "firstLesson": 2
+        },
+        {
+          "term": "convection current",
+          "definition": "The closed loop of a heated fluid: hot fluid rises, cools, contracts and sinks back.",
+          "firstLesson": 3
+        },
+        {
+          "term": "thermal radiation",
+          "definition": "Infrared emission that every object gives out, needing no medium; black surfaces emit and absorb best.",
+          "firstLesson": 4
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b39fa4a43b5b-2-3-1-demo-thermal-conduction-feet-on-rug-with-n.png",
+        "alt": "2-3-1-demo-thermal-conduction-feet-on-rug-with-note-cie-igcse-23-rn",
+        "sourceHeading": "Example of a conductor and an insulator",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Energy is transferred by heating from the hotter foot to the cooler tiles by conduction"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/4a7706c2586c-conduction.png",
+        "alt": "Conduction, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Conduction in solids",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Conduction: the atoms in a solid vibrate and bump into each other"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a961a8c52061-2-4-1-free-electrons-conductor.png",
+        "alt": "Free Electrons Conductor, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Conduction in metals",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Delocalised electrons in metals speed up thermal conduction in metals"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/d909d34023ee-convection.png",
+        "alt": "Convection, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Convection currents",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "A convection current caused by heating from the fire"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/2d8206f042bd-leslie-cube.png",
+        "alt": "Leslie-cube, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Thermal radiation",
+        "moduleIds": [
+          "L4"
+        ],
+        "binding": "heading-unique",
+        "caption": "The infrared radiation emitted from a hot object can be detected using a special camera"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/ebb5941ca479-heat-loss-downloadable-igcse-and-gcse-physics-re.png",
+        "alt": "Heat loss, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Conduction, convection and radiation in a mug of coffee",
+        "moduleIds": [
+          "L4"
+        ],
+        "binding": "heading-unique",
+        "caption": "Energy is transferred by conduction, convection and radiation in a mug of hot coffee"
+      }
+    ]
+  }
+}

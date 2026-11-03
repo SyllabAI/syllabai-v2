@@ -2136,6 +2136,83 @@ export const learnerLastOpened = pgTable("learner_last_opened", {
         check("learner_last_opened_resource_check", sql`(resource)::text = ANY (ARRAY[('hub'::character varying)::text, ('revision-notes'::character varying)::text, ('exam-questions'::character varying)::text, ('flashcards'::character varying)::text, ('strengths'::character varying)::text, ('past-papers'::character varying)::text, ('practice-papers'::character varying)::text])`),
 ]);
 
+// ============================================================================
+// T-TIER1 run-002 — the account-backed teacher stores (frontend deep-audit
+// Tier 2, operator order 2026-11-03: "things that are localStorage-only,
+// make them saved to account"). Three ADDITIVE tables behind the hub stores
+// that until now lived in ONE browser only (localStorage
+// "syllabai.savedTests.v1" / "syllabai.teachingCoverage.v1" /
+// "syllabai.contentReviews.v1"); the T-TEACH-001 cache law moves them onto
+// the teacher's account. Same FK-cascade personal-state class as run-001's
+// 0022 tables (0019 precedent). Vocabularies are text + CHECK per the
+// v2-native migration law (no new pg enums).
+// ============================================================================
+export const teacherSavedTests = pgTable("teacher_saved_tests", {
+        id: uuid().primaryKey().notNull(),
+        userId: uuid("user_id").notNull(),
+        clientId: text("client_id").notNull(),
+        name: text().notNull(),
+        courseSlug: text("course_slug").notNull(),
+        courseCode: text("course_code").notNull(),
+        subtopics: jsonb().notNull(),
+        targetMarks: integer("target_marks"),
+        maxQuestions: integer("max_questions"),
+        questionIds: jsonb("question_ids"),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        index("teacher_saved_tests_user_idx").using("btree", table.userId.asc().nullsLast().op("uuid_ops")),
+        foreignKey({
+                columns: [table.userId],
+                foreignColumns: [users.id],
+                name: "teacher_saved_tests_user_id_fkey"
+        }).onDelete("cascade"),
+        check("teacher_saved_tests_course_slug_check", sql`course_slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`),
+        check("teacher_saved_tests_subtopics_check", sql`jsonb_typeof(subtopics) = 'array'`),
+        check("teacher_saved_tests_question_ids_check", sql`question_ids IS NULL OR jsonb_typeof(question_ids) = 'array'`),
+        check("teacher_saved_tests_bounds_check", sql`(target_marks IS NULL OR target_marks >= 0) AND (max_questions IS NULL OR max_questions >= 0)`),
+]);
+
+export const teacherTeachingCoverage = pgTable("teacher_teaching_coverage", {
+        id: uuid().primaryKey().notNull(),
+        userId: uuid("user_id").notNull(),
+        courseSlug: text("course_slug").notNull(),
+        codes: jsonb().notNull(),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        uniqueIndex("teacher_teaching_coverage_user_course_idx").using("btree", table.userId.asc().nullsLast().op("uuid_ops"), table.courseSlug.asc().nullsLast().op("text_ops")),
+        foreignKey({
+                columns: [table.userId],
+                foreignColumns: [users.id],
+                name: "teacher_teaching_coverage_user_id_fkey"
+        }).onDelete("cascade"),
+        check("teacher_teaching_coverage_course_slug_check", sql`course_slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`),
+        check("teacher_teaching_coverage_codes_check", sql`jsonb_typeof(codes) = 'array'`),
+]);
+
+export const teacherContentReviews = pgTable("teacher_content_reviews", {
+        id: uuid().primaryKey().notNull(),
+        userId: uuid("user_id").notNull(),
+        resourceId: text("resource_id").notNull(),
+        courseSlug: text("course_slug").notNull(),
+        courseCode: text("course_code").notNull(),
+        kind: text().notNull(),
+        verdict: text().notNull(),
+        comment: text().notNull(),
+        reviewer: text().notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        index("teacher_content_reviews_user_idx").using("btree", table.userId.asc().nullsLast().op("uuid_ops")),
+        uniqueIndex("teacher_content_reviews_user_resource_idx").using("btree", table.userId.asc().nullsLast().op("uuid_ops"), table.resourceId.asc().nullsLast().op("text_ops")),
+        foreignKey({
+                columns: [table.userId],
+                foreignColumns: [users.id],
+                name: "teacher_content_reviews_user_id_fkey"
+        }).onDelete("cascade"),
+        check("teacher_content_reviews_course_slug_check", sql`course_slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`),
+        check("teacher_content_reviews_kind_check", sql`(kind)::text = ANY (ARRAY[('solution'::character varying)::text, ('note'::character varying)::text, ('flashcard'::character varying)::text])`),
+        check("teacher_content_reviews_verdict_check", sql`(verdict)::text = ANY (ARRAY[('approved'::character varying)::text, ('edited'::character varying)::text, ('rejected'::character varying)::text])`),
+]);
+
 export const learnerMockResults = pgTable("learner_mock_results", {
         id: uuid().primaryKey().notNull(),
         userId: uuid("user_id").notNull(),

@@ -172,27 +172,9 @@ export function PlanClient() {
     setMode("view");
   };
 
-  // ── signed out: the disclosed CTA posture ────────────────────────────────
-  if (!signedIn) {
-    return (
-      <main className="mx-auto w-full max-w-3xl px-4 py-10">
-        <Card>
-          <CardContent className="flex flex-col items-start gap-3 p-6">
-            <h1 className="text-xl font-semibold">Your Study Plan</h1>
-            <p className="text-sm text-muted-foreground">
-              Structured by experienced teachers, tailored to your courses. Sign in to build a plan
-              from your subjects.
-            </p>
-            <Button asChild>
-              <Link href="/login">Sign in</Link>
-            </Button>
-          </CardContent>
-        </Card>
-      </main>
-    );
-  }
-
   // ── the weekly page (the generation result of record) ────────────────────
+  // (B-3: the signed-out CTA posture block was deleted — the proxy gates
+  // this surface and the page's RequireAuth carries the fallback prompt.)
   if (effectiveMode === "view" && payload) {
     const { week } = payload;
     return (

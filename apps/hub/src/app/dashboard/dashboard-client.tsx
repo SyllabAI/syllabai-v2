@@ -4,7 +4,8 @@
  * Dashboard — the student's SME-style home (Task 21 + 21-b fidelity pass,
  * matched against the real savemyexams.com /members/ reference page):
  *
- *   1. Greeting header ("Hi {name} 👋" — mock identity from /login when present)
+ *   1. Greeting header ("Hi {name} 👋" — server-rendered from the routing
+ *        session; B-2 made /dashboard an account surface)
  *   2. My courses — one card per added subject:
  *        eyebrow "Edexcel · {level}" · subject name · Last viewed badge ·
  *        "Continue revising" · per-resource rows with corpus counts AND
@@ -25,12 +26,23 @@
  *        the cascading board → level → subject add-course overlay
  *   5. "Jump back in" — resume card from the last-opened store
  *
+ * Vertical rhythm (D-1): the page leads with the act-now row (reviews due
+ * + set work), then Jump back in, then My subjects; the ambient rest
+ * (attribution, advice, plan) follows — the resume card no longer sits
+ * below two viewports of peers.
+ *
  * The dashboard lists ONLY the learner's own subjects (no full-registry
  * catalogue — discovery lives in the overlay). The roster + last-opened
- * persist client-side (no auth in the demo); resource counts come from
- * /api/course-stats (committed bundles).
+ * stay device-local by design (the account syncs a mirror); resource
+ * counts come from /api/course-stats (committed bundles).
+ *
+ * B-2: this surface requires a session — the proxy redirects anonymous
+ * requests to /login?next=…, so the identity-dependent copy branches the
+ * demo needed ("Hi there", the device-only storage line) are gone; the
+ * greeting renders from the session and the disclosure states the
+ * account-truth unconditionally.
  */
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   BookOpen,
@@ -39,16 +51,19 @@ import {
   CloudCheck,
   FileQuestion,
   GraduationCap,
+  Info,
   Plus,
   RotateCcw,
   SquareStack,
   X,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { ToastAction } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useMyCoursesSync, useMySubjects } from "@/lib/my-subjects";
+import { useToast } from "@/hooks/use-toast";
 import { useIdentity } from "@/lib/identity";
 import { useLastOpened, resourceLabel } from "@/lib/last-opened";
 import { useCourseProgress } from "@/lib/progress";
@@ -57,7 +72,6 @@ import { useCourseProgress } from "@/lib/progress";
 import { formatPercent } from "@/lib/format";
 import { api, getToken } from "@/lib/api";
 import { railTodayCopy, useStudyPlan } from "@/lib/study-plan-client";
-import { fetchPilotInfo, PILOT_COURSE_SLUG } from "@/lib/attempt-bridge";
 import { boardOf, hasExamSeriesCalendar } from "@/lib/board";
 import { useDashboardCore } from "@/lib/dashboard-core";
 import { fetchBridge, type LearnerBridge } from "@/lib/learner-state";
@@ -114,14 +128,16 @@ function plural(n: number, unit: string): string {
 }
 
 /**
- * Pilot account coverage (course-stats contract, ADR-029 tranche 4.11):
- * the learner's FULL-trail aggregates from their core account. Additive by
- * design — every negative (signed out, roster without the pilot, core
- * behind the contract or down) degrades to null without a word and the
- * card keeps its device rows. Re-reads when new core evidence lands
- * (attempt / rating / vote events fire `syllabai:core-evidence`).
+ * Account coverage (course-stats contract, ADR-029 tranche 4.11): the
+ * learner's FULL-trail aggregates from their core account — per-LEARNER,
+ * not per-course, so D-4 drops the pilot-join probe that used to gate the
+ * fetch and D-3 renders the result ONCE at the My subjects section level
+ * instead of as a second, disagreeing number on one pilot card. Every
+ * negative (signed out, core behind the contract or down) degrades to null
+ * without a word. Re-reads when new core evidence lands (attempt / rating /
+ * vote events fire `syllabai:core-evidence`).
  */
-function usePilotAccountStats(enabled: boolean): CourseStatsView | null {
+function useAccountStats(enabled: boolean): CourseStatsView | null {
   const [stats, setStats] = useState<CourseStatsView | null>(null);
 
   useEffect(() => {
@@ -129,17 +145,12 @@ function usePilotAccountStats(enabled: boolean): CourseStatsView | null {
     let cancelled = false;
     const load = () => {
       if (!getToken()) return; // signed out — no account trail to show
-      fetchPilotInfo(PILOT_COURSE_SLUG)
-        .then((pilot) => {
-          if (!pilot || cancelled) return; // not the pilot — nothing to say
-          return api
-            .learnerCourseStats()
-            .then((s) => {
-              if (!cancelled) setStats(s);
-            })
-            .catch(() => {}); // core behind the contract or down — silent
+      api
+        .learnerCourseStats()
+        .then((s) => {
+          if (!cancelled) setStats(s);
         })
-        .catch(() => {});
+        .catch(() => {}); // core behind the contract or down — silent
     };
     load();
     window.addEventListener("syllabai:core-evidence", load);
@@ -236,17 +247,12 @@ function SubjectCard({
   stat,
   isLastViewed,
   onRemove,
-  accountStats,
   examTarget,
 }: {
   meta: CourseMeta;
   stat: CourseStat | undefined;
   isLastViewed: boolean;
   onRemove: (slug: string) => void;
-  /** pilot-only account coverage (course-stats contract) — null = not
-   *  signed in / not the pilot / core unreachable; the card is identical
-   *  to every other card in that case */
-  accountStats?: CourseStatsView | null;
   /** T-C79: the declared exam target with its derived countdown —
    *  undefined = unavailable (signed out / core behind the contract; no
    *  surface at all), null = nothing declared (the honest picker state) */
@@ -337,9 +343,23 @@ function SubjectCard({
           <ChevronRight className="size-3.5" aria-hidden />
         </Link>
 
-        {/* per-resource rows: corpus counts + live progress % (SME parity) */}
+        {/* per-resource rows: corpus counts + live progress % (SME parity).
+            D-3: ONE number, one definition — these rows are this device's
+            activity against the course's corpus totals, said once on the
+            line above (hover the info icon for the fine print); the
+            account-level trail lives at the My subjects section level. */}
         {counts && percents ? (
-          <ul className="mt-1 space-y-0.5 border-t pt-1">
+          <>
+            <p className="mt-1 flex items-center gap-1 border-t pt-2 text-[11px] font-medium text-muted-foreground">
+              Progress on this device
+              <span
+                className="cursor-help"
+                title="Notes read, questions attempted and flashcards rated on this device. Your account trail — the line under My subjects — follows you across devices."
+              >
+                <Info className="size-3" aria-hidden />
+              </span>
+            </p>
+            <ul className="space-y-0.5 pt-0.5">
             <ResourceRow
               href={`${base}/revision-notes`}
               icon={BookOpen}
@@ -361,7 +381,8 @@ function SubjectCard({
               value={rowValue(counts.cards, "card")}
               percent={percents.cards}
             />
-          </ul>
+            </ul>
+          </>
         ) : (
           <div className="mt-1 space-y-2 border-t pt-3">
             <div className="flex items-center gap-2">
@@ -384,42 +405,23 @@ function SubjectCard({
           </div>
         )}
 
-        {/* ACCOUNT strip (course-stats contract, tranche 4.11) — the pilot
-            card's second truth: what the learner's SyllabAI account holds,
-            full trail, cross-device. Deliberately BESIDE the device rows,
-            never instead of them: self-marked answers and pre-account
-            activity are device-local, so the account counts can only be a
-            subset of what this device shows — replacing the rows would
-            erase real progress. */}
-        {accountStats && (
-          <p
-            className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-0.5 border-t pt-2 text-[11px] text-muted-foreground"
-            title="Counted from your SyllabAI account — it follows you across devices. The progress bars above track this device's activity, including self-marked answers that stay local."
-          >
-            <Badge
-              variant="outline"
-              className="gap-1 px-1.5 py-0 text-[10px] font-medium text-primary"
-            >
-              <CloudCheck className="size-3" aria-hidden /> Live
-            </Badge>
-            <span className="tabular-nums">
-              {plural(accountStats.attempts, "attempt")} ·{" "}
-              {plural(accountStats.distinctQuestions, "question")} ·{" "}
-              {plural(accountStats.notesViewed, "note")} ·{" "}
-              {plural(accountStats.flashcardsRated, "card")} on your account
-            </span>
-          </p>
-        )}
       </CardContent>
     </Card>
   );
 }
 
-export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
+export function DashboardClient({
+  courses,
+  name,
+}: {
+  courses: CourseMeta[];
+  /** the routing session's display name — server-rendered (B-2) */
+  name: string;
+}) {
   useMyCoursesSync(); // T-TEACH-001 — mirror the roster to core while signed in (write-through + reconcile)
   // T-TIER1: the last-opened + mock-results mirrors mount in the app shell
   // (their writes happen on course routes / past-papers, not just here).
-  const { slugs, has, add, remove } = useMySubjects();
+  const { slugs, has, add, remove, restore } = useMySubjects();
   const identity = useIdentity();
   const lastOpened = useLastOpened();
   const studyPlan = useStudyPlan(); // the Study plan rail (spec §5.3) — one server projection
@@ -432,6 +434,35 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
     for (const c of courses) m.set(c.slug, c);
     return m;
   }, [courses]);
+
+  const { toast } = useToast();
+
+  // D-7 (frontend-flow audit): removal was one tap — equal visual weight
+  // with the reading affordances — with no confirm and no undo, and it
+  // takes this device's progress keys for the course with it. The cheapest
+  // honest fix is the undoable kind: the card leaves at once, a 5-second
+  // toast owns the regret window, and Undo re-inserts the slug exactly
+  // where it was. (Signed in, the write-through mirror treats the
+  // remove/restore pair as two idempotent full-set PUTs — account sync
+  // stays consistent either way.)
+  const removeSubject = useCallback(
+    (slug: string) => {
+      const index = slugs.indexOf(slug);
+      const label = bySlug.get(slug)?.label ?? slug;
+      remove(slug);
+      toast({
+        title: `${label} removed`,
+        description: "Your progress for it on this device went with it.",
+        duration: 5000,
+        action: (
+          <ToastAction altText={`Undo removing ${label}`} onClick={() => restore(slug, index)}>
+            Undo
+          </ToastAction>
+        ),
+      });
+    },
+    [slugs, bySlug, remove, restore, toast],
+  );
 
   // valid roster = stored slugs that still exist in the registry
   const mySubjects = useMemo(
@@ -466,10 +497,11 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
     [lastOpened, bySlug],
   );
 
-  // pilot card only — the account strip needs the pilot's core join AND the
-  // learner's roster to actually hold the course
-  const pilotInRoster = mySubjects.some((c) => c.slug === PILOT_COURSE_SLUG);
-  const accountStats = usePilotAccountStats(pilotInRoster);
+  // D-3/D-4: the account trail is per-learner — fetched once for the
+  // signed-in dashboard and rendered once at the My subjects section level
+  // below; the pilot was never an API boundary, only a component-tree
+  // special case.
+  const accountStats = useAccountStats(signedIn);
 
   // T-C79: the learner's declared exam targets keyed by course slug —
   // undefined per card = unavailable (signed out / core behind the V62
@@ -479,71 +511,157 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
   // P1-7 — cross-device jump back in (HUB-DASH-CORE, trace 1a0ec29c8c8cfb71):
   // when THIS device has no navigation history, the account's most recent
   // measured topic takes the slot — the account trail is real evidence of
-  // where the learner left off, even from another device. Silently absent
-  // when signed out, non-pilot roster, core down, or no measured evidence.
+  // where the learner left off, even from another device. D-4: the bridge
+  // joins the RESOLVED course (the selection law's winner — pilot-first,
+  // then the roster), never a hard-coded slug. Silently absent when the
+  // device has history, the resolved course left the roster, core is down,
+  // or no measured evidence exists.
   const core = useDashboardCore();
-  const [pilotBridge, setPilotBridge] = useState<LearnerBridge | null>(null);
+  const coreCourse = core.kind === "ready" ? core.model.course : null;
+  const coreCourseInRoster = coreCourse != null && mySubjects.some((c) => c.slug === coreCourse);
+  const [coreBridge, setCoreBridge] = useState<LearnerBridge | null>(null);
   useEffect(() => {
-    if (core.kind !== "ready") return;
+    if (coreCourse == null || !coreCourseInRoster) return;
     let cancelled = false;
-    fetchBridge(PILOT_COURSE_SLUG).then((bridge) => {
-      if (!cancelled) setPilotBridge(bridge);
+    fetchBridge(coreCourse).then((bridge) => {
+      if (!cancelled) setCoreBridge(bridge);
     });
     return () => {
       cancelled = true;
     };
-  }, [core]);
+  }, [coreCourse, coreCourseInRoster]);
 
   const coreJumpBack = useMemo(() => {
-    if (jumpBack || !pilotInRoster || !pilotBridge || core.kind !== "ready") return null;
+    if (jumpBack || !coreCourseInRoster || !coreBridge || core.kind !== "ready") return null;
     const top = [...core.model.state.skillStates]
       .filter((s) => s.attempts > 0 && s.lastPracticedAt)
       .sort((a, b) => Date.parse(b.lastPracticedAt) - Date.parse(a.lastPracticedAt))[0];
     if (!top) return null;
-    const meta = bySlug.get(PILOT_COURSE_SLUG) as CourseMeta | undefined;
+    const meta = bySlug.get(coreCourse as string) as CourseMeta | undefined;
     if (!meta) return null;
     const node = core.model.kg?.nodes.find((n) => n.id === top.nodeId) ?? null;
     // node code → the hub's own question set for that sub-topic (the bridge's
     // additive join); the exam-questions index is the honest fallback
-    const setSlug = subtopicSetFor(node?.code, pilotBridge);
+    const setSlug = subtopicSetFor(node?.code, coreBridge);
     return {
       title: top.nodeName ?? node?.title ?? "Your most recent topic",
       href: setSlug
-        ? `/courses/${PILOT_COURSE_SLUG}/exam-questions/${setSlug}`
-        : `/courses/${PILOT_COURSE_SLUG}/exam-questions`,
+        ? `/courses/${coreCourse}/exam-questions/${setSlug}`
+        : `/courses/${coreCourse}/exam-questions`,
       lastPractised: daysAgo(Date.now(), Date.parse(top.lastPracticedAt)),
       meta,
     };
-  }, [jumpBack, pilotInRoster, pilotBridge, core, bySlug]);
+  }, [jumpBack, coreCourse, coreCourseInRoster, coreBridge, core, bySlug]);
+
+  // D-2 (frontend-flow audit): ONE resume decision instead of two mutually
+  // exclusive look-alike blocks — this device's last-opened surface wins;
+  // only when the device has no history does the account's most recent
+  // measured topic fill the slot. Both sources collapse into one shape so
+  // the card below renders exactly once, with one heading and one
+  // provenance badge line for the source.
+  const resume = useMemo(() => {
+    if (jumpBack) {
+      return {
+        source: "device" as const,
+        resource: jumpBack.resource,
+        title: jumpBack.course.subject,
+        meta: jumpBack.course,
+        href:
+          jumpBack.resource === "hub"
+            ? `/courses/${jumpBack.course.slug}`
+            : `/courses/${jumpBack.course.slug}/${jumpBack.resource}`,
+        lastPractised: null as string | null,
+      };
+    }
+    if (coreJumpBack) {
+      return {
+        source: "account" as const,
+        resource: "exam-questions" as const,
+        title: coreJumpBack.title,
+        meta: coreJumpBack.meta,
+        href: coreJumpBack.href,
+        lastPractised: coreJumpBack.lastPractised as string | null,
+      };
+    }
+    return null;
+  }, [jumpBack, coreJumpBack]);
 
   return (
     <div className="space-y-8">
-      {/* greeting (SME: "Hi, {name} 👋" — mock identity from the login
-          page when present, otherwise the original generic greeting) */}
+      {/* greeting (SME: "Hi, {name} 👋") — the name rides the routing
+          session and renders on the server (B-2): no more "Hi there" frame
+          before localStorage hydrates */}
       <header className="space-y-1.5">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Hi {identity?.name ?? "there"} 👋
+          Hi {name} 👋
         </h1>
         <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
           Welcome to your SyllabAI dashboard — your launchpad for stress-free, spec-anchored
           study. Add the courses you are taking, then revise each one from notes, exam questions
           and flashcards mapped to its syllabus.{" "}
           {/* HUB-DASH-CORE P0-2 (operator trace 1a0ec29c8c8cfb71): the progress
-              sentence tells the truth per session state — the old static line
-              claimed device-only storage to learners whose account trail
-              follows them across devices (the exact split-brain the account
-              strip's tooltip already contradicted). Mirrors the identity
-              store's reactivity: login/logout rewrites it in place. */}
-          {identity
-            ? "Your measured progress follows your account across devices — self-marked answers and reading history stay on this device."
-            : "Your progress is saved on this device."}
+              sentence tells the account truth unconditionally — B-2 removed the
+              signed-out branch along with the demo itself, so the old
+              "saved on this device" posture no longer has an audience here. */}
+          Your measured progress follows your account across devices — self-marked answers and
+          reading history stay on this device.
         </p>
       </header>
 
-      {/* ---- Review due (HUB-DASH-CORE P1-5): the retention loop's headline.
-          Account queue when the pilot's core path is live, the device's
-          Ebbinghaus derivation otherwise; renders nothing when nothing is due ---- */}
-      <ReviewDueStrip courses={mySubjects} />
+      {/* ---- Act now (D-1): the dashboard's first row answers "what should
+          I do now?" — the retention loop's headline (HUB-DASH-CORE P1-5:
+          account queue when the resolved course's core path is live, the
+          device's Ebbinghaus derivation otherwise) beside the server-composed
+          set-work facts (T-C78 agenda). One row, one card each; either may
+          render nothing when it has no news. ---- */}
+      <section aria-label="Act now">
+        <div className="grid gap-3 lg:grid-cols-2">
+          <ReviewDueStrip courses={mySubjects} />
+          <SetWorkCard />
+        </div>
+      </section>
+
+      {/* ---- Jump back in (D-1: the returning student's highest-frequency
+          action leaves the page bottom) — ONE surface (SME resume card +
+          the account trail, D-2). Priority: this device wins; the account
+          fills the gap. The source badge explains why the card can differ
+          between the phone and the school lab instead of reading as a bug. ---- */}
+      {resume && (
+        <section aria-label="Jump back in" className="space-y-2">
+          <h2 className="flex items-center gap-2 text-lg font-semibold">
+            <RotateCcw className="size-4 text-primary" aria-hidden />
+            Jump back in
+          </h2>
+          <Link href={resume.href} className="group block focus-visible:outline-none">
+            <Card className="transition-colors group-hover:border-primary/50">
+              <CardContent className="flex flex-wrap items-center gap-x-3 gap-y-1 p-4">
+                <Badge variant="secondary" className="font-medium">
+                  {resourceLabel(resume.resource)}
+                </Badge>
+                <span className="text-sm font-semibold">{resume.title}</span>
+                <span className="text-sm text-muted-foreground">
+                  {boardOf(resume.meta)} · {resume.meta.level} · {resume.meta.code}
+                </span>
+                <Badge
+                  variant="outline"
+                  className="gap-1 px-1.5 py-0 text-[10px] font-medium text-primary"
+                  title={
+                    resume.source === "account"
+                      ? "From your SyllabAI account — it follows you across devices"
+                      : "From this device's recent activity"
+                  }
+                >
+                  {resume.source === "account" && <CloudCheck className="size-3" aria-hidden />}
+                  {resume.source === "account"
+                    ? `from your account · last practised ${resume.lastPractised}`
+                    : "from this device"}
+                </Badge>
+                <ChevronRight className="ml-auto size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
+              </CardContent>
+            </Card>
+          </Link>
+        </section>
+      )}
 
       {/* ---- My courses ---- */}
       <section aria-label="My subjects" className="space-y-3">
@@ -561,6 +679,30 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
             Add course
           </Button>
         </div>
+
+        {/* D-3/D-4: the account trail is ONE section-level line — the
+            per-learner coverage the course-stats contract returns — instead
+            of a second, disagreeing number duplicated onto one pilot card.
+            The fine print rides the title hover. */}
+        {accountStats && (
+          <p
+            className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs text-muted-foreground"
+            title="Counted from your SyllabAI account — it follows you across devices. The progress bars on each card track this device, including self-marked answers that stay local."
+          >
+            <Badge
+              variant="outline"
+              className="gap-1 px-1.5 py-0 text-[10px] font-medium text-primary"
+            >
+              <CloudCheck className="size-3" aria-hidden /> Live
+            </Badge>
+            <span className="tabular-nums">
+              {plural(accountStats.attempts, "attempt")} ·{" "}
+              {plural(accountStats.distinctQuestions, "question")} ·{" "}
+              {plural(accountStats.notesViewed, "note")} ·{" "}
+              {plural(accountStats.flashcardsRated, "card")} on your account
+            </span>
+          </p>
+        )}
 
         {mySubjects.length === 0 ? (
           <Card className="border-dashed">
@@ -597,8 +739,7 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
                 meta={c}
                 stat={stats[c.slug]}
                 isLastViewed={lastOpened?.slug === c.slug}
-                onRemove={remove}
-                accountStats={c.slug === PILOT_COURSE_SLUG ? accountStats : null}
+                onRemove={removeSubject}
                 examTarget={
                   examTargets === null ? undefined : examTargets.get(c.slug) ?? null
                 }
@@ -622,15 +763,6 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
             </button>
           </div>
         )}
-      </section>
-
-      {/* ---- Set work (T-C78, Spec §22 agenda): the server-composed
-          "what is due" facts — teacher-set assignments with the learner's
-          own hand-in trail, due-soonest first. The agenda's other blocks
-          live where they belong: reviews headline in the strip above,
-          advice in the NBA card below. Signed out, it renders nothing. ---- */}
-      <section aria-label="Set work">
-        <SetWorkCard />
       </section>
 
       {/* ---- DC-7 progress attribution (measured facts — the SAME projection
@@ -677,80 +809,15 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
                 Structured by experienced teachers, tailored to your courses.
               </p>
               <Button asChild size="sm">
-                <Link href={signedIn ? "/plan" : "/login"}>Create Study Plan</Link>
+                {/* B-2: this surface is session-gated, so the demo-era
+                    /login fallback is unreachable — the CTA always opens
+                    the builder. */}
+                <Link href="/plan">Create Study Plan</Link>
               </Button>
             </CardContent>
           </Card>
         )}
       </section>
-
-      {/* ---- Jump back in (SME resume card, backed by real navigation) ---- */}
-      {jumpBack && (
-        <section aria-label="Jump back in" className="space-y-2">
-          <h2 className="flex items-center gap-2 text-lg font-semibold">
-            <RotateCcw className="size-4 text-primary" aria-hidden />
-            Jump back in
-          </h2>
-          <Link
-            href={
-              jumpBack.resource === "hub"
-                ? `/courses/${jumpBack.course.slug}`
-                : `/courses/${jumpBack.course.slug}/${jumpBack.resource}`
-            }
-            className="group block focus-visible:outline-none"
-          >
-            <Card className="transition-colors group-hover:border-primary/50">
-              <CardContent className="flex flex-wrap items-center gap-x-3 gap-y-1 p-4">
-                <Badge variant="secondary" className="font-medium">
-                  {resourceLabel(jumpBack.resource)}
-                </Badge>
-                <span className="text-sm font-semibold">{jumpBack.course.subject}</span>
-                <span className="text-sm text-muted-foreground">
-                  {boardOf(jumpBack.course)} · {jumpBack.course.level} · {jumpBack.course.code}
-                </span>
-                <ChevronRight className="ml-auto size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
-              </CardContent>
-            </Card>
-          </Link>
-        </section>
-      )}
-
-      {/* ---- Jump back in (cross-device, HUB-DASH-CORE P1-7) — the account's
-          most recent measured topic when this device has no history of its
-          own; provenance-labelled and silently absent otherwise ---- */}
-      {!jumpBack && coreJumpBack && (
-        <section aria-label="Jump back in" className="space-y-2">
-          <h2 className="flex items-center gap-2 text-lg font-semibold">
-            <RotateCcw className="size-4 text-primary" aria-hidden />
-            Jump back in
-          </h2>
-          <Link
-            href={coreJumpBack.href}
-            className="group block focus-visible:outline-none"
-          >
-            <Card className="transition-colors group-hover:border-primary/50">
-              <CardContent className="flex flex-wrap items-center gap-x-3 gap-y-1 p-4">
-                <Badge variant="secondary" className="font-medium">
-                  {resourceLabel("exam-questions")}
-                </Badge>
-                <span className="text-sm font-semibold">{coreJumpBack.title}</span>
-                <span className="text-sm text-muted-foreground">
-                  {boardOf(coreJumpBack.meta)} · {coreJumpBack.meta.level} · {coreJumpBack.meta.code}
-                </span>
-                <Badge
-                  variant="outline"
-                  className="gap-1 px-1.5 py-0 text-[10px] font-medium text-primary"
-                  title="From your SyllabAI account — it follows you across devices"
-                >
-                  <CloudCheck className="size-3" aria-hidden />
-                  from your account · last practised {coreJumpBack.lastPractised}
-                </Badge>
-                <ChevronRight className="ml-auto size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
-              </CardContent>
-            </Card>
-          </Link>
-        </section>
-      )}
 
       {/* ---- Add course — cascading board → level → subject overlay ---- */}
       <AddCourseOverlay

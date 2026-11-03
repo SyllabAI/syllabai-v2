@@ -2,33 +2,27 @@
 
 /**
  * RequireAuth — client-side route gate for session-bound surfaces
- * (promotion ADR-029: /tutor, /assistant, /learner and the /teacher
- * workspace are core-backed and need a signed-in learner).
+ * (promotion ADR-029: /tutor, /assistant, /learner, /plan, the drill and
+ * the battle, and the /teacher workspace are core-backed and need a
+ * signed-in learner).
  *
- * This is a UX affordance, never authorization: the core service enforces
- * authentication + RBAC server-side on every call (the JWT travels with
- * each request); nothing protected is rendered from data the browser
- * already holds. Signed-out visitors get a friendly sign-in prompt that
- * preserves where they were heading.
+ * B-3: the gate of record is the proxy (src/proxy.ts + lib/route-gate.ts)
+ * — an anonymous visitor is redirected to /login?next=… before this
+ * component ever mounts. RequireAuth stays client-side as defense-in-depth,
+ * the settle-after-hydration loader, and the session-expired fallback (a
+ * 401 clears the identity mid-flight and the prompt reappears without a
+ * reload). It is a UX affordance, never authorization: the core service
+ * enforces authentication + RBAC server-side on every call (the JWT
+ * travels with each request); nothing protected is rendered from data the
+ * browser already holds. Signed-out visitors get a friendly sign-in prompt
+ * that preserves where they were heading.
  */
-import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { LogIn, Loader2, ShieldAlert, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIdentity } from "@/lib/identity";
-
-const noopSubscribe = () => () => {};
-
-/** Hydration flag without setState-in-effect: false on the server + first
- *  hydration render, true on every settled client render. */
-function useSettled(): boolean {
-  return useSyncExternalStore(
-    noopSubscribe,
-    () => true,
-    () => false,
-  );
-}
+import { useSettled } from "@/lib/use-settled";
 
 export function RequireAuth({
   children,

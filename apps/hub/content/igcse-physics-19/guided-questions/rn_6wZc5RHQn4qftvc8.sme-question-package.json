@@ -1,0 +1,734 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_6wZc5RHQn4qftvc8",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "a6ef18deb713517712a5256a96cb3f1db45365d8f5d576fa8e9dc8b0f32a7fe5",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "packageId": "igcse-physics::rn_6wZc5RHQn4qftvc8",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L1::Q1",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L1",
+      "stem": "What is the independent variable in experiment 1?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "the type of metal strip",
+          "correct": true,
+          "explanation": "Four different metals provide the input.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the amount of wax",
+          "correct": false,
+          "explanation": "Wax amount is a control variable.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "C",
+          "text": "the flame size",
+          "correct": false,
+          "explanation": "The flame is kept gentle and consistent — a control.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "D",
+          "text": "the time taken for the bearing to drop",
+          "correct": false,
+          "explanation": "That is the dependent variable.",
+          "misconception": "variable swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L1::Q2",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L1",
+      "stem": "What makes each ball bearing fall?",
+      "misconceptionClass": "method detail",
+      "options": [
+        {
+          "key": "A",
+          "text": "the bearing is pushed by expanding metal",
+          "correct": false,
+          "explanation": "The release is the WAX melting, not a push.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "B",
+          "text": "conducted heat melts the wax holding it",
+          "correct": true,
+          "explanation": "The wax releases when conduction warms it to melting.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the bearing slides off the tilted strip",
+          "correct": false,
+          "explanation": "The strips are horizontal; nothing slides until release.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "D",
+          "text": "the bearing evaporates the wax",
+          "correct": false,
+          "explanation": "Bearing cannot evaporate anything.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L1::Q3",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L1",
+      "stem": "The first ball bearing to fall is on the strip that is:",
+      "misconceptionClass": "reading the results",
+      "options": [
+        {
+          "key": "A",
+          "text": "the one farthest from the flame",
+          "correct": false,
+          "explanation": "All strips meet at the same heated centre.",
+          "misconception": "method detail"
+        },
+        {
+          "key": "B",
+          "text": "the worst thermal conductor, because it holds heat longest",
+          "correct": false,
+          "explanation": "Holding heat is not conducting it.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "the best thermal conductor, because heat reached the wax fastest",
+          "correct": true,
+          "explanation": "Fast conduction melts the wax first.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the heaviest metal",
+          "correct": false,
+          "explanation": "Density is not the tested variable.",
+          "misconception": "concept mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L1::Q4",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L1",
+      "stem": "Which control variable list matches the method?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "flame size, room temperature, time of day",
+          "correct": false,
+          "explanation": "The declared controls are the strip/wax/bearing set.",
+          "misconception": "method detail"
+        },
+        {
+          "key": "B",
+          "text": "type of metal, wax amount, time",
+          "correct": false,
+          "explanation": "Metal type is the independent variable and time the measurement.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "C",
+          "text": "no controls are needed",
+          "correct": false,
+          "explanation": "A fair test needs the declared controls.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "D",
+          "text": "strip size and thickness, amount of wax, identical ball bearings",
+          "correct": true,
+          "explanation": "These are the declared controls.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L1::Q5",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L1",
+      "stem": "The copper bearing falls at 45 s and the iron bearing at 210 s. What does the comparison show?",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "copper conducted the heat to its wax faster than iron",
+          "correct": true,
+          "explanation": "45 s is far less than 210 s, so copper’s wax melted first.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "iron is the better conductor because its time is bigger",
+          "correct": false,
+          "explanation": "A longer time means SLOWER conduction.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "copper’s wax was thinner",
+          "correct": false,
+          "explanation": "Wax amount is controlled, so that cannot explain it.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "D",
+          "text": "the result is impossible",
+          "correct": false,
+          "explanation": "Copper is the known best conductor of the four.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L1::Q6",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L1",
+      "stem": "State the dependent variable of experiment 1.",
+      "misconceptionClass": "variable identification",
+      "kind": "recall",
+      "modelAnswer": "The rate of conduction, measured by the time taken for each ball bearing to drop.",
+      "keywords": [
+        "rate",
+        "conduction",
+        "time",
+        "drop"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L1::Q7",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L1",
+      "stem": "State the expected conductivity order of the four metals from the results.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Copper first (best conductor), then aluminium, then brass, then iron last.",
+      "keywords": [
+        "copper",
+        "aluminium",
+        "brass",
+        "iron"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L1::Q8",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L1",
+      "stem": "Explain why the ball bearings must be attached at an equal distance from the centre on every strip.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The comparison is only fair if the heat must travel the same distance before melting each blob of wax: a nearer bearing would drop sooner regardless of the metal, so equal distances keep the metal type as the only thing being tested.",
+      "keywords": [
+        "equal",
+        "distance",
+        "fair",
+        "metal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L1::Q9",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L1",
+      "stem": "A student repeats the experiment with a silver strip added. Predict where silver falls in the falling order relative to copper, and justify the prediction.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Silver conducts slightly better than copper, so its bearing would be expected to fall first, marginally ahead of copper; the ranking logic is that better conductors melt their wax sooner.",
+      "keywords": [
+        "silver",
+        "first",
+        "copper",
+        "conductor"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L2::Q1",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L2",
+      "stem": "What is the role of the potassium permanganate crystal in experiment 2?",
+      "misconceptionClass": "method detail",
+      "options": [
+        {
+          "key": "A",
+          "text": "it heats the water",
+          "correct": false,
+          "explanation": "The Bunsen flame heats the water.",
+          "misconception": "role swap"
+        },
+        {
+          "key": "B",
+          "text": "it is a visible marker whose trail shows the convection current",
+          "correct": true,
+          "explanation": "The purple trail traces the water’s motion.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "it reacts to warm the water chemically",
+          "correct": false,
+          "explanation": "No chemistry drives the current.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "D",
+          "text": "it colours the flame",
+          "correct": false,
+          "explanation": "The crystal colours the WATER, not the flame.",
+          "misconception": "role swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L2::Q2",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L2",
+      "stem": "What is the independent variable in experiment 2?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "the size of the crystal",
+          "correct": false,
+          "explanation": "Crystal size is controlled.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "B",
+          "text": "the beaker volume",
+          "correct": false,
+          "explanation": "Water amount is controlled.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "C",
+          "text": "the temperature of the water",
+          "correct": true,
+          "explanation": "Two starting temperatures of water are compared.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the rate of convection",
+          "correct": false,
+          "explanation": "That is the dependent variable.",
+          "misconception": "variable swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L2::Q3",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L2",
+      "stem": "Where should the crystal be dropped, and why?",
+      "misconceptionClass": "method detail",
+      "options": [
+        {
+          "key": "A",
+          "text": "on the bottom of the beaker before adding water",
+          "correct": false,
+          "explanation": "The crystal drops into the water by forceps.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "B",
+          "text": "in the flame directly",
+          "correct": false,
+          "explanation": "The crystal goes into the WATER.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "C",
+          "text": "at the edge, so it dissolves faster",
+          "correct": false,
+          "explanation": "The edge is not the observation point.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "D",
+          "text": "in the centre of the beaker, carefully, so the trail forms cleanly above the heating point",
+          "correct": true,
+          "explanation": "The centre placement puts the current where it can be seen.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L2::Q4",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L2",
+      "stem": "The purple trail above the flame moves upward fastest. Why does it rise?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the warmed water has expanded and become less dense, so it rises carrying the dye",
+          "correct": true,
+          "explanation": "The density chain is the mechanism.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the flame blows the water upwards",
+          "correct": false,
+          "explanation": "A gentle flame below the beaker does not blow the water.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "C",
+          "text": "the crystal dissolves only upwards",
+          "correct": false,
+          "explanation": "Dissolution is not directional.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "the dye is lighter than water and floats",
+          "correct": false,
+          "explanation": "The trail follows the WATER’s motion.",
+          "misconception": "mechanism myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L2::Q5",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L2",
+      "stem": "The convection current is faster in the warm-water beaker. What does that comparison demonstrate?",
+      "misconceptionClass": "reading the results",
+      "options": [
+        {
+          "key": "A",
+          "text": "the flame was bigger in the warm beaker",
+          "correct": false,
+          "explanation": "Flame size is controlled.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "B",
+          "text": "warmer water convects faster, so the rate of convection rises with temperature",
+          "correct": true,
+          "explanation": "That is the experiment’s conclusion.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the dye dissolves faster in warm water",
+          "correct": false,
+          "explanation": "Dissolution rate is not the measured quantity.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "D",
+          "text": "cold water cannot convect at all",
+          "correct": false,
+          "explanation": "It convects more slowly, not never.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L2::Q6",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L2",
+      "stem": "State the dependent variable of experiment 2.",
+      "misconceptionClass": "variable identification",
+      "kind": "recall",
+      "modelAnswer": "The rate of convection, observed through the speed of the purple convection current.",
+      "keywords": [
+        "rate",
+        "convection",
+        "current"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L2::Q7",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L2",
+      "stem": "State three control variables of experiment 2.",
+      "misconceptionClass": "variable identification",
+      "kind": "recall",
+      "modelAnswer": "The amount of water in the beaker, the size of the Bunsen flame and the size of the potassium permanganate crystal.",
+      "keywords": [
+        "water",
+        "flame",
+        "crystal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L2::Q8",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L2",
+      "stem": "Explain why the beaker must not be filled to the brim.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A convection current needs room to complete its loop: water must rise above the heating point, cross the surface and sink at the sides. A brim-full beaker spills when the water moves and leaves no free surface for the return leg, spoiling both the observation and the safety of the set-up.",
+      "keywords": [
+        "loop",
+        "rise",
+        "surface",
+        "spill",
+        "safety"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L2::Q9",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L2",
+      "stem": "The purple trail takes 12 s to complete one loop in warm water and 30 s in cold water. Compare the convection rates and state what the experiment demonstrates.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The warm-water loop completes in 12 s against 30 s in cold water, so convection is about two and a half times faster there; the experiment demonstrates that the rate of convection increases with the water’s temperature.",
+      "keywords": [
+        "12",
+        "30",
+        "faster",
+        "temperature"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L3::Q1",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L3",
+      "stem": "What is the independent variable in experiment 3?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "the amount of water",
+          "correct": false,
+          "explanation": "Water amount is controlled.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "B",
+          "text": "the temperature of the water",
+          "correct": false,
+          "explanation": "Temperature is the dependent variable.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "C",
+          "text": "the colour of the flask",
+          "correct": true,
+          "explanation": "Four colours provide the input.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the time interval",
+          "correct": false,
+          "explanation": "Intervals are controlled.",
+          "misconception": "variable swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L3::Q2",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L3",
+      "stem": "Which flask’s water cools fastest?",
+      "misconceptionClass": "reading the results",
+      "options": [
+        {
+          "key": "A",
+          "text": "the white flask, because white reflects light",
+          "correct": false,
+          "explanation": "White is a poor but not the poorest emitter.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "B",
+          "text": "all cool at the same rate",
+          "correct": false,
+          "explanation": "The surface finish decides the rate.",
+          "misconception": "false equivalence"
+        },
+        {
+          "key": "C",
+          "text": "the silver flask, because shiny surfaces reflect heat inwards",
+          "correct": false,
+          "explanation": "Reflecting inward is not the behaviour here; shiny emits poorly, so it cools SLOWEST.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "D",
+          "text": "the black flask, because black surfaces are the best emitters",
+          "correct": true,
+          "explanation": "Best emission means fastest radiative cooling.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L3::Q3",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L3",
+      "stem": "Which set of control variables matches the method?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "flasks identical apart from their colour, equal hot water, one shared starting temperature, shared timing intervals",
+          "correct": true,
+          "explanation": "These are the declared controls.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "different flask sizes so each colour is visible",
+          "correct": false,
+          "explanation": "Flasks must be identical except colour.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "C",
+          "text": "different water depths per colour",
+          "correct": false,
+          "explanation": "Water amounts must match.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "D",
+          "text": "no controls are needed",
+          "correct": false,
+          "explanation": "The fair test depends on the controls.",
+          "misconception": "method myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L3::Q4",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L3",
+      "stem": "After 10 minutes the black flask reads 52 °C and the silver flask reads 61 °C, both from 80 °C. Which statement is correct?",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "the black flask gained energy",
+          "correct": false,
+          "explanation": "Both cooled; neither gained.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "B",
+          "text": "the black flask lost 28 °C and the silver 19 °C, so black radiated more",
+          "correct": true,
+          "explanation": "80-52 = 28 and 80-61 = 19; the bigger drop is the bigger emitter.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the silver flask lost more because it ended hotter",
+          "correct": false,
+          "explanation": "Ending hotter means it LOST less.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "D",
+          "text": "both lost the same because they started the same",
+          "correct": false,
+          "explanation": "Same start does not mean same loss.",
+          "misconception": "false equivalence"
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L3::Q5",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L3",
+      "stem": "Why does the flask experiment investigate RADIATION rather than conduction or convection?",
+      "misconceptionClass": "method detail",
+      "options": [
+        {
+          "key": "A",
+          "text": "because thermometers measure radiation directly",
+          "correct": false,
+          "explanation": "Thermometers measure temperature.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "B",
+          "text": "because water only loses energy by radiation",
+          "correct": false,
+          "explanation": "Water loses energy by all three routes; the design isolates the surface effect.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "C",
+          "text": "because the flasks are identical except for their surface finish, so the surface’s radiating behaviour is the tested factor",
+          "correct": true,
+          "explanation": "Isolating the surface isolates the radiative route.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "because convection cannot happen in water",
+          "correct": false,
+          "explanation": "Water convects freely.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L3::Q6",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L3",
+      "stem": "State the dependent variable of experiment 3.",
+      "misconceptionClass": "variable identification",
+      "kind": "recall",
+      "modelAnswer": "The temperature of the water in each flask, recorded over time.",
+      "keywords": [
+        "temperature",
+        "water",
+        "time"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L3::Q7",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L3",
+      "stem": "State the resolution of the thermometers used in experiment 3.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The thermometers read to 1 °C, so temperatures are recorded to the nearest degree.",
+      "keywords": [
+        "1 °C",
+        "nearest",
+        "degree"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L3::Q8",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L3",
+      "stem": "Explain why all four flasks must start at the same temperature.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The hotter an object, the faster it radiates, so a flask starting warmer would cool faster for that reason alone. Equal starting temperatures make the surface finish — not the initial energy content — the only thing setting each cooling rate.",
+      "keywords": [
+        "hotter",
+        "faster",
+        "radiates",
+        "equal",
+        "start"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6wZc5RHQn4qftvc8::L3::Q9",
+      "moduleId": "rn_6wZc5RHQn4qftvc8::L3",
+      "stem": "A silver-coated emergency blanket wraps a runner after a race. Explain whether wrapping the SHINY side inward is the right choice.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Yes: the shiny surface is a very poor emitter, so turned inward it radiates the runner’s body heat away at the slowest rate, and its reflectivity bounces radiation back toward the body — exactly the behaviour wanted to retain warmth.",
+      "keywords": [
+        "shiny",
+        "poor",
+        "emitter",
+        "reflect",
+        "warmth"
+      ],
+      "options": []
+    }
+  ]
+}
