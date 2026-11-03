@@ -35,6 +35,35 @@ import { railCheckSubmitRequestSchema } from "@syllabai/contracts";
  *  keys, so a malformed key is a 400 before any DB round trip. */
 const CHAPTER_KEY_RE = /^u\d+:c\d+$/;
 
+/** T-BOOK-069 / ADR-BOOK-0004: the unit request grammar ("u<unit>") for the
+ *  strength-checks endpoint — same 400-before-DB posture as chapterKey. */
+const UNIT_RE = /^u\d+$/;
+
+function unitParamOr400(c: { req: { query(name: string): string | undefined } }):
+  | { ok: true; unit: string }
+  | { ok: false; response: Response } {
+  const raw = c.req.query("unit");
+  if (raw == null || raw.trim() === "") {
+    return {
+      ok: false,
+      response: Response.json(
+        apiError(400, "validation_failed", "missing required parameter: unit"),
+        { status: 400 },
+      ),
+    };
+  }
+  if (!UNIT_RE.test(raw.trim())) {
+    return {
+      ok: false,
+      response: Response.json(
+        apiError(400, "validation_failed", "malformed parameter: unit (expected u<unit>)"),
+        { status: 400 },
+      ),
+    };
+  }
+  return { ok: true, unit: raw.trim() };
+}
+
 function chapterKeyOr400(c: { req: { query(name: string): string | undefined } }):
   | { ok: true; chapterKey: string }
   | { ok: false; response: Response } {
@@ -135,6 +164,21 @@ export function createBooksRouter(app: BooksReadApp): Hono {
       if (!gate.ok) return gate.response;
       const documentId = c.req.param("documentId");
       const checks = await app.railChecksForChapter(documentId, gate.chapterKey);
+      if (checks == null) throw new NotFoundException("Book", documentId);
+      return c.json(checks);
+    })
+    // GET /:documentId/strength-checks?unit=uN — T-BOOK-069 / ADR-BOOK-0004
+    // decision 3: the unit Strength Check of record — every VALIDATED block
+    // whose id prefix is `strength-u<N>/` resolved through the SAME railChecks
+    // law verbatim. Public-read posture (corpus content, the double gate at
+    // the service) + T-C20 (unknown/unvalidated book ⇒ the same 404) + the
+    // honest [] pre-flip. The chapter surfaces EXCLUDE the strength prefix
+    // (amendment 4): this endpoint is the strength rows' ONLY home.
+    .get("/:documentId/strength-checks", async (c) => {
+      const gate = unitParamOr400(c);
+      if (!gate.ok) return gate.response;
+      const documentId = c.req.param("documentId");
+      const checks = await app.strengthChecksForUnit(documentId, gate.unit);
       if (checks == null) throw new NotFoundException("Book", documentId);
       return c.json(checks);
     })
