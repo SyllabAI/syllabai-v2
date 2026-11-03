@@ -1,0 +1,264 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_97j6FkgNn87V4vGC",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "7487c6a2cc20739a09c2a493c9bb1a734ab68422ede4799911cc0b26bffc2ae7",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_97j6FkgNn87V4vGC",
+    "topicTitle": "5. Solids, Liquids and Gases",
+    "subtopicTitle": "Density & Pressure",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/5-solids-liquids-and-gases/5-1-density-and-pressure/5-1-2-core-practical-determining-density",
+    "specAnchors": [
+      {
+        "code": "5.4",
+        "text": "practical: investigate density using direct measurements of mass and volume"
+      }
+    ],
+    "primer": {
+      "text": "Three objects, three techniques, one equation. These lessons walk the core practical: regular shapes from their dimensions, irregular shapes from displaced water, liquids from a mass difference — with the error discipline that earns the evaluation marks.",
+      "prerequisiteSubtopic": "Density & Pressure"
+    },
+    "modules": [
+      {
+        "id": "rn_97j6FkgNn87V4vGC::L1",
+        "title": "Regular objects: dimensions and mass",
+        "sourceHeadings": [
+          "Experiment 1: measuring the density of regularly shaped objects",
+          "Equipment needed to determine the density of regularly shaped objects"
+        ],
+        "specRefs": [
+          "5.4"
+        ],
+        "opening": "A regular shape surrenders its volume to a ruler or calipers. Weigh the object, measure its dimensions, rebuild the volume with the shape's formula, then divide — and repeat every reading so an average can steady the result.",
+        "keyPoints": [
+          "The experiment determines the densities of regular objects from measurements of their dimensions.",
+          "The object is weighed on a digital balance, its dimensions taken with ruler, vernier calipers or micrometer, and repeats averaged.",
+          "The choice of length instrument follows the object's size — ruler for larger objects, calipers and micrometer for smaller ones.",
+          "The shape's volume formula then feeds the density equation."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Weigh, measure, rebuild, divide: the four-beat rhythm of every density practical. A big block surrenders to a ruler; a small one needs the finer jaws of calipers or a micrometer.",
+            "analogy": "Tailoring: the tape (ruler) fits the coat, the fine ruler (calipers) fits the cuff — pick the instrument whose resolution matches the job.",
+            "examPointer": "Name the repeats and the average explicitly — 'each measurement is repeated and averaged' — that sentence carries method marks."
+          },
+          "medium": {
+            "restatement": "Experiment 1's discipline is instrument matching and repetition: the balance fixes the mass once, but lengths are read to the instrument's resolution, chosen by object size, and every reading is repeated so averages suppress random error. The reconstructed volume then divides the mass under the density equation.",
+            "analogy": "A survey crew: one instrument per scale of feature, and every measurement logged twice because single readings lie.",
+            "examPointer": "In write-ups, pair each instrument with its purpose — balance for mass, ruler/calipers/micrometer for dimensions — and close with the repeat-and-average sentence."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_97j6FkgNn87V4vGC::L1::Q1",
+          "rn_97j6FkgNn87V4vGC::L1::Q2",
+          "rn_97j6FkgNn87V4vGC::L1::Q3",
+          "rn_97j6FkgNn87V4vGC::L1::Q4",
+          "rn_97j6FkgNn87V4vGC::L1::Q5",
+          "rn_97j6FkgNn87V4vGC::L1::Q6",
+          "rn_97j6FkgNn87V4vGC::L1::Q7",
+          "rn_97j6FkgNn87V4vGC::L1::Q8",
+          "rn_97j6FkgNn87V4vGC::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_97j6FkgNn87V4vGC::L2",
+        "title": "Irregular objects: the displacement technique",
+        "sourceHeadings": [
+          "Experiment 2: measuring the density of irregularly shaped objects",
+          "Equipment needed to determine the density of irregularly shaped objects"
+        ],
+        "specRefs": [
+          "5.4"
+        ],
+        "opening": "An irregular object hides its volume from any ruler. The eureka can solves that: submerged, the object pushes out its own volume of water, and the displaced water read in a measuring cylinder becomes the volume the equation needs.",
+        "keyPoints": [
+          "The experiment finds the densities of irregular objects through a displacement technique.",
+          "The eureka can overflows until the water settles; the object then displaces its own volume into the measuring cylinder below the spout.",
+          "The volume of displaced water equals the volume of the object.",
+          "The object is lowered in gently — dropping splashes water and corrupts the volume reading."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Fill the can until it just stops overflowing, empty the cylinder, then lower the odd-shaped treasure in. Whatever spills through the spout is exactly the treasure's volume — read it, average repeats, divide the mass by it.",
+            "analogy": "Climbing into a full bathtub: the slop over the sides is your own volume, measured where it lands.",
+            "examPointer": "State the displacement equality explicitly — displaced volume equals object volume — and warn against splashing."
+          },
+          "medium": {
+            "restatement": "Displacement converts an unmeasurable shape into a readable liquid volume: the can's spout delivers exactly the submerged object's volume into the cylinder, since displaced volume equals object volume. Gentle lowering protects the reading from splash losses, and repeats with averaging finish the discipline before the density equation divides.",
+            "analogy": "A slot machine paying out in water: whatever you feed it, it returns the object's volume in a readable column — unless you jolt the machine and spill extra.",
+            "examPointer": "In the write-up, the displaced volume step is where marks live: name the eureka can, the cylinder below the spout, and the gentle lowering."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_97j6FkgNn87V4vGC::L2::Q1",
+          "rn_97j6FkgNn87V4vGC::L2::Q2",
+          "rn_97j6FkgNn87V4vGC::L2::Q3",
+          "rn_97j6FkgNn87V4vGC::L2::Q4",
+          "rn_97j6FkgNn87V4vGC::L2::Q5",
+          "rn_97j6FkgNn87V4vGC::L2::Q6",
+          "rn_97j6FkgNn87V4vGC::L2::Q7",
+          "rn_97j6FkgNn87V4vGC::L2::Q8",
+          "rn_97j6FkgNn87V4vGC::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_97j6FkgNn87V4vGC::L3",
+        "title": "Liquids and the evaluation discipline",
+        "sourceHeadings": [
+          "Experiment 3: measuring the density of liquids",
+          "Equipment needed to determine the density of liquid"
+        ],
+        "specRefs": [
+          "5.4"
+        ],
+        "opening": "A liquid's volume reads directly off the cylinder, but its mass needs subtraction: weigh the empty cylinder, add liquid, weigh again, and the difference is the liquid's mass. Zeroing the balance and steady handling carry the evaluation marks.",
+        "keyPoints": [
+          "The liquid experiment finds the liquid's mass by subtracting the empty cylinder's mass from the filled reading.",
+          "The volume is read from the cylinder's scale when the liquid is added.",
+          "The balance is zeroed with the empty cylinder aboard before liquid is added — a systematic-error guard.",
+          "Repeats and averages limit random error, and glassware plus electrical balance demand careful handling."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Weigh the empty cylinder, pour to a chosen volume, weigh again; the difference is purely the liquid. Set the balance to zero first or the cylinder's own mass sneaks into every reading.",
+            "analogy": "Packing a suitcase on a scale: weigh the case, pack, weigh again — the contents' weight is the difference, never the total.",
+            "examPointer": "For evaluation marks, name the zeroing as a systematic-error fix and the repeats as a random-error fix — the two error families are examined separately."
+          },
+          "medium": {
+            "restatement": "Experiment 3's mass is a difference: filled-cylinder reading minus empty-cylinder reading, with the balance zeroed aboard the empty cylinder so the liquid's mass alone survives. Volume comes from the cylinder's scale; repeats average the random scatter of pouring and reading, while the zeroing kills the systematic offset that repeats cannot touch.",
+            "analogy": "A checkout scale: the cashier tares the scales with the container first — the tare is the zeroing, the filled reading is the sale.",
+            "examPointer": "Write the subtraction sentence — mass of liquid equals mass of cylinder with liquid minus mass of cylinder — and attribute each error fix to its family."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_97j6FkgNn87V4vGC::L3::Q1",
+          "rn_97j6FkgNn87V4vGC::L3::Q2",
+          "rn_97j6FkgNn87V4vGC::L3::Q3",
+          "rn_97j6FkgNn87V4vGC::L3::Q4",
+          "rn_97j6FkgNn87V4vGC::L3::Q5",
+          "rn_97j6FkgNn87V4vGC::L3::Q6",
+          "rn_97j6FkgNn87V4vGC::L3::Q7",
+          "rn_97j6FkgNn87V4vGC::L3::Q8",
+          "rn_97j6FkgNn87V4vGC::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "eureka can",
+          "definition": "A displacement can with a spout, used to collect the water displaced by a submerged object.",
+          "firstLesson": 2
+        },
+        {
+          "term": "displacement",
+          "definition": "The pushing-out of water by a submerged object, whose volume equals the object's own volume.",
+          "firstLesson": 2
+        },
+        {
+          "term": "resolution",
+          "definition": "The smallest change an instrument can reliably show, such as 0.01 g on the digital balance.",
+          "firstLesson": 1
+        },
+        {
+          "term": "systematic error",
+          "definition": "A constant offset in readings that repeats cannot remove, fixed by zeroing or recalibration.",
+          "firstLesson": 3
+        },
+        {
+          "term": "random error",
+          "definition": "Scatter in readings in either direction, reduced by repeating measurements and averaging.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3f2ce8b8c265-3-1-3-required-practical-regular-objects.png",
+        "alt": "Required Practical Regular Objects, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Equipment needed to determine the density of regularly shaped objects",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/7e1879ead614-3-1-3-determining-density-table-1-1.png",
+        "alt": "Determining Density Table 1, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "An example results table to determine the density of regularly shaped objects",
+        "moduleIds": [],
+        "binding": "heading-unique",
+        "caption": "A suitable results table must contain space for multiple readings to reduce random error and make the results more accurate"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a27f93d30b8b-eureka-can.png",
+        "alt": "Eureka-can, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Equipment needed to determine the density of irregularly shaped objects",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Apparatus for measuring the density of irregular objects"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1d3c23021bc9-density-liquid.png",
+        "alt": "density-liquid, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Equipment needed to determine the density of liquid",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Apparatus for determining the density of a liquid"
+      }
+    ]
+  }
+}

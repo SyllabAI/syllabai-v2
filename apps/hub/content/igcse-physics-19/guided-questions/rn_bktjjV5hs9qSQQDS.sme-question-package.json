@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_bktjjV5hs9qSQQDS",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "6441e912b76d293066af448f105add52e4349c57b729dd295f1ec7cfd9dee21a",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "packageId": "igcse-physics::rn_bktjjV5hs9qSQQDS",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L1::Q1",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L1",
+      "stem": "Which statement defines power?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the rate at which energy is transferred or work is done",
+          "correct": true,
+          "explanation": "Power divides the transfer by the time it takes.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the total energy a machine can store",
+          "correct": false,
+          "explanation": "Capacity is a store size, not a rate.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "C",
+          "text": "the force a machine can exert",
+          "correct": false,
+          "explanation": "Force is a different quantity again.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "D",
+          "text": "the time a machine takes to warm up",
+          "correct": false,
+          "explanation": "Warm-up time is unrelated to the definition.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L1::Q2",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L1",
+      "stem": "Two cars do the same work to reach the same speed. The more powerful car is the one that",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "keeps a higher steady speed afterwards",
+          "correct": false,
+          "explanation": "Top speed afterwards does not define the power rating.",
+          "misconception": "context slip"
+        },
+        {
+          "key": "B",
+          "text": "transfers that energy in the shorter time",
+          "correct": true,
+          "explanation": "Same energy, less time — a higher rate.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "transfers more energy in total",
+          "correct": false,
+          "explanation": "The work done is stated to be the same.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "D",
+          "text": "has the bigger engine bay",
+          "correct": false,
+          "explanation": "Geometry transfers nothing.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L1::Q3",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L1",
+      "stem": "Two motors lift identical weights through identical heights, but motor A is more powerful. What differs?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "motor A does more work overall",
+          "correct": false,
+          "explanation": "Same weight and height means same work.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "B",
+          "text": "motor A transfers no energy while lifting",
+          "correct": false,
+          "explanation": "Every lift transfers energy; only the rate differs.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "C",
+          "text": "motor A completes the lift in less time",
+          "correct": true,
+          "explanation": "Equal work at a higher rate means a faster lift.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "motor A lifts the weight higher",
+          "correct": false,
+          "explanation": "The heights are stated identical.",
+          "misconception": "quantity swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L1::Q4",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L1",
+      "stem": "An appliance is labelled 10 kW. What does the label tell you?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "it stores 10 000 joules inside its casing",
+          "correct": false,
+          "explanation": "The rating is a rate, not a capacity.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "B",
+          "text": "it costs ten thousand pounds to run",
+          "correct": false,
+          "explanation": "Cost is not printed on the rating.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "C",
+          "text": "it transfers 10 000 joules in its whole lifetime",
+          "correct": false,
+          "explanation": "The rate applies every second, not once.",
+          "misconception": "over-narrow reading"
+        },
+        {
+          "key": "D",
+          "text": "it transfers 10 000 joules of energy every second it runs",
+          "correct": true,
+          "explanation": "Kilowatt ratings are per-second transfer rates.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L1::Q5",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L1",
+      "stem": "Which list ranks appliance power ratings from smallest to largest?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "torch, light bulb, electric oven, train",
+          "correct": true,
+          "explanation": "About 1 W, then 100 W, then 10 kW, then 1 MW.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "train, oven, bulb, torch",
+          "correct": false,
+          "explanation": "That is largest to smallest.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "oven, torch, train, bulb",
+          "correct": false,
+          "explanation": "The order mixes the scale up.",
+          "misconception": "ordering slip"
+        },
+        {
+          "key": "D",
+          "text": "bulb, train, torch, oven",
+          "correct": false,
+          "explanation": "The order mixes the scale up.",
+          "misconception": "ordering slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L1::Q6",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L1",
+      "stem": "State what power means in terms of work done.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Power is the work done per unit time — equivalently, the rate of doing work or of transferring energy.",
+      "keywords": [
+        "power",
+        "work",
+        "rate",
+        "energy"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L1::Q7",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L1",
+      "stem": "State what a power rating on an appliance shows.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "The rating shows the amount of energy the appliance transfers per unit time, measured in watts.",
+      "keywords": [
+        "energy",
+        "transferred",
+        "time",
+        "watts"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L1::Q8",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L1",
+      "stem": "Explain why two cars that do the same work can still be described as having different powers.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Power depends on time as well as on the amount of energy transferred. If both cars do the same work but one completes the transfer sooner, its energy-per-second rate is higher, so that car is the more powerful even though the total transfer is identical.",
+      "keywords": [
+        "power",
+        "energy",
+        "time",
+        "work"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L1::Q9",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L1",
+      "stem": "A train of power 1 MW runs for 20 s at full output. Calculate the energy it transfers.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Energy transferred = power × time = 1 000 000 × 20 = 20 000 000 J, so the train transfers 20 MJ in 20 seconds.",
+      "keywords": [
+        "energy",
+        "power",
+        "time",
+        "20 000 000"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L2::Q1",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L2",
+      "stem": "Which equation correctly calculates power?",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "P = W ÷ d",
+          "correct": false,
+          "explanation": "Distance belongs to the work done equation.",
+          "misconception": "equation tangle"
+        },
+        {
+          "key": "B",
+          "text": "P = W ÷ t",
+          "correct": true,
+          "explanation": "Power is work done divided by time taken.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "P = W × t",
+          "correct": false,
+          "explanation": "That is the rearrangement for work done, not power.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "D",
+          "text": "P = t ÷ W",
+          "correct": false,
+          "explanation": "That inverts the relationship.",
+          "misconception": "inversion slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L2::Q2",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L2",
+      "stem": "A motor does 600 J of work in 20 s. What is its power?",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "3 W",
+          "correct": false,
+          "explanation": "No step produces this value.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "B",
+          "text": "0.03 W",
+          "correct": false,
+          "explanation": "That divides the wrong way round.",
+          "misconception": "inversion slip"
+        },
+        {
+          "key": "C",
+          "text": "30 W",
+          "correct": true,
+          "explanation": "600 ÷ 20 = 30, so 30 watts.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "12 000 W",
+          "correct": false,
+          "explanation": "That multiplies instead of dividing.",
+          "misconception": "operation slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L2::Q3",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L2",
+      "stem": "Which rearrangement finds the work done from a power and a time?",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "W = P ÷ t",
+          "correct": false,
+          "explanation": "That divides the rate again — the wrong direction.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "B",
+          "text": "W = t ÷ P",
+          "correct": false,
+          "explanation": "That inverts both quantities.",
+          "misconception": "inversion slip"
+        },
+        {
+          "key": "C",
+          "text": "W = P + t",
+          "correct": false,
+          "explanation": "Adding unlike quantities is meaningless here.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "W = P × t",
+          "correct": true,
+          "explanation": "Multiply the rate by the seconds to recover the joules.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L2::Q4",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L2",
+      "stem": "Which unit triple of joules and seconds feeds the power equation correctly?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "joules, seconds, watts",
+          "correct": true,
+          "explanation": "Joules per second are exactly watts.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "newtons, metres, watts",
+          "correct": false,
+          "explanation": "Newtons times metres give joules, not a division pair.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "C",
+          "text": "joules, minutes, watts",
+          "correct": false,
+          "explanation": "Minutes must be converted to seconds first.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "D",
+          "text": "watts, seconds, joules",
+          "correct": false,
+          "explanation": "That lists the outputs as inputs.",
+          "misconception": "role swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L2::Q5",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L2",
+      "stem": "An iron transfers 600 000 J in 5 minutes. Its power is",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "200 W",
+          "correct": false,
+          "explanation": "That slips a factor of ten.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "B",
+          "text": "2000 W",
+          "correct": true,
+          "explanation": "600 000 ÷ 300 s = 2000 watts.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "120 000 W",
+          "correct": false,
+          "explanation": "That divides by 5, forgetting the unit conversion.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "D",
+          "text": "3000 W",
+          "correct": false,
+          "explanation": "No step produces this value.",
+          "misconception": "arithmetic slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L2::Q6",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L2",
+      "stem": "State the power equation in symbols and name each quantity with its unit.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "P = W ÷ t, where P is power in watts, W is the work done in joules and t is the time taken in seconds.",
+      "keywords": [
+        "power",
+        "work",
+        "time",
+        "watts"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L2::Q7",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L2",
+      "stem": "State the unit of power and express one kilowatt in watts.",
+      "misconceptionClass": "variable identification",
+      "kind": "recall",
+      "modelAnswer": "Power is measured in watts, and one kilowatt equals 1000 watts.",
+      "keywords": [
+        "watts",
+        "kilowatt",
+        "1000",
+        "power"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L2::Q8",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L2",
+      "stem": "Explain why the time must be converted into seconds before using P = W ÷ t.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The watt is defined as one joule transferred per second, so the equation only produces watts when the time enters in seconds. Substituting minutes overstates the time by sixty, and the computed power falls by the same factor.",
+      "keywords": [
+        "time",
+        "seconds",
+        "watts",
+        "equation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_bktjjV5hs9qSQQDS::L2::Q9",
+      "moduleId": "rn_bktjjV5hs9qSQQDS::L2",
+      "stem": "An electric oven of power 10 kW runs for 2 minutes. Calculate the energy it transfers.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Convert first: 10 kW = 10 000 W and 2 minutes = 120 s. Energy transferred = P × t = 10 000 × 120 = 1 200 000 J, so the oven transfers 1.2 MJ.",
+      "keywords": [
+        "energy",
+        "10 000",
+        "120",
+        "1 200 000"
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,735 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_xdVXyYb6CH5MyXws",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "10db46a22673eb2f23953f3bd3b8a1abfa7ab4a6a6f58fefa428c7fe280d58a7",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "packageId": "igcse-physics::rn_xdVXyYb6CH5MyXws",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L1::Q1",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L1",
+      "stem": "Which gas from burning fossil fuels contributes to global warming?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "carbon dioxide",
+          "correct": true,
+          "explanation": "Fossil combustion releases CO2, a greenhouse gas.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "oxygen",
+          "correct": false,
+          "explanation": "Oxygen supports combustion; it is not the emitted problem gas.",
+          "misconception": "gas swap"
+        },
+        {
+          "key": "C",
+          "text": "nitrogen",
+          "correct": false,
+          "explanation": "Nitrogen dominates air but is not the warming culprit here.",
+          "misconception": "gas swap"
+        },
+        {
+          "key": "D",
+          "text": "hydrogen",
+          "correct": false,
+          "explanation": "Hydrogen is not a fossil combustion product.",
+          "misconception": "gas swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L1::Q2",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L1",
+      "stem": "Which disadvantage belongs to nuclear power rather than to fossil fuels?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "runs out of fuel within a year",
+          "correct": false,
+          "explanation": "Both are non-renewable but neither runs out that fast.",
+          "misconception": "over-claim"
+        },
+        {
+          "key": "B",
+          "text": "radioactive waste that must be stored safely for thousands of years",
+          "correct": true,
+          "explanation": "The long-lived waste legacy is uniquely nuclear.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "produces carbon dioxide during generation",
+          "correct": false,
+          "explanation": "Nuclear generation emits no greenhouse gases.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "D",
+          "text": "reliant on the weather",
+          "correct": false,
+          "explanation": "Both are reliable; neither is weather-dependent.",
+          "misconception": "category swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L1::Q3",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L1",
+      "stem": "A country needs a power station that responds quickly to sudden demand. Which resource fits best?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "either would do equally",
+          "correct": false,
+          "explanation": "Their response speeds differ sharply.",
+          "misconception": "false-equality"
+        },
+        {
+          "key": "B",
+          "text": "neither can respond to demand at all",
+          "correct": false,
+          "explanation": "Fossil generation is specifically quick-responding.",
+          "misconception": "over-claim"
+        },
+        {
+          "key": "C",
+          "text": "fossil fuels",
+          "correct": true,
+          "explanation": "Fossil plants can be turned up quickly to meet demand spikes.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "nuclear",
+          "correct": false,
+          "explanation": "Nuclear stations cannot be switched on or off quickly.",
+          "misconception": "resource swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L1::Q4",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L1",
+      "stem": "Which statement pairs a resource with a correct advantage?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "fossil fuels — they never run out",
+          "correct": false,
+          "explanation": "Fossil fuels are non-renewable and will run out.",
+          "misconception": "over-claim"
+        },
+        {
+          "key": "B",
+          "text": "nuclear — it responds instantly to demand changes",
+          "correct": false,
+          "explanation": "Nuclear is slow to throttle.",
+          "misconception": "inversion slip"
+        },
+        {
+          "key": "C",
+          "text": "fossil fuels — they produce no emissions",
+          "correct": false,
+          "explanation": "Combustion emits carbon dioxide and sulphur dioxide.",
+          "misconception": "over-claim"
+        },
+        {
+          "key": "D",
+          "text": "nuclear — large energy from small amounts of fuel",
+          "correct": true,
+          "explanation": "Energy density is a headline nuclear advantage.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L1::Q5",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L1",
+      "stem": "Why do nuclear power stations cost so much to establish?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "they take many years to build and are expensive to build and maintain",
+          "correct": true,
+          "explanation": "Capital cost and build time are the stated disadvantages.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "their fuel is the most expensive per joule",
+          "correct": false,
+          "explanation": "Nuclear's small fuel amounts are an advantage, not a cost.",
+          "misconception": "inversion slip"
+        },
+        {
+          "key": "C",
+          "text": "they must be rebuilt every few years",
+          "correct": false,
+          "explanation": "The opposite — the build itself is the long part.",
+          "misconception": "invented mechanism"
+        },
+        {
+          "key": "D",
+          "text": "they cannot produce large amounts of energy",
+          "correct": false,
+          "explanation": "Large, consistent output is their strength.",
+          "misconception": "inversion slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L1::Q6",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L1",
+      "stem": "Name the two greenhouse-related emissions problems caused by burning fossil fuels.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "Burning fossil fuels releases carbon dioxide, which contributes to global warming, and sulphur dioxide, which causes acid rain.",
+      "keywords": [
+        "carbon",
+        "dioxide",
+        "sulphur",
+        "acid"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L1::Q7",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L1",
+      "stem": "State one advantage and one disadvantage of nuclear power.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "An advantage: no greenhouse gases are produced during electricity generation. A disadvantage: radioactive waste is produced that must be safely disposed of for thousands of years.",
+      "keywords": [
+        "greenhouse",
+        "radioactive",
+        "waste",
+        "disposal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L1::Q8",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L1",
+      "stem": "Explain why a country cannot rely on nuclear stations alone to follow a daily demand curve.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Nuclear stations throttle slowly, so they cannot follow sudden changes in demand. A demand curve with morning and evening peaks needs resources that respond quickly, which is why quick-responding fossil generation complements steady nuclear output.",
+      "keywords": [
+        "demand",
+        "quickly",
+        "respond",
+        "nuclear"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L1::Q9",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L1",
+      "stem": "A town replaces its coal station with a nuclear one. State one improvement and one new concern the townspeople should expect.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The improvement: electricity generation no longer releases carbon dioxide or sulphur dioxide. The new concern: radioactive waste is now produced locally and must be transported and disposed of safely for thousands of years.",
+      "keywords": [
+        "carbon",
+        "dioxide",
+        "radioactive",
+        "waste"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L2::Q1",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L2",
+      "stem": "Why can biofuels be described as carbon neutral?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "they contain no carbon at all",
+          "correct": false,
+          "explanation": "Biofuels are carbon-based fuels.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "B",
+          "text": "the carbon dioxide released on burning was absorbed as the crop grew",
+          "correct": true,
+          "explanation": "Growth and combustion cancel across the cycle.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "they release no carbon dioxide at any point",
+          "correct": false,
+          "explanation": "Combustion still releases CO2 at the point of use.",
+          "misconception": "over-claim"
+        },
+        {
+          "key": "D",
+          "text": "they absorb carbon dioxide while being burned",
+          "correct": false,
+          "explanation": "Burning emits; growing absorbs.",
+          "misconception": "direction slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L2::Q2",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L2",
+      "stem": "Which disadvantage is specific to wind power among the renewables?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "it floods large valleys when built",
+          "correct": false,
+          "explanation": "That is the hydroelectric disadvantage.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "B",
+          "text": "it works only in estuaries",
+          "correct": false,
+          "explanation": "Estuaries are the tidal constraint.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "C",
+          "text": "it only generates when the wind blows at sufficient speed",
+          "correct": true,
+          "explanation": "Unreliability is wind's defining weakness.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "its fuel is expensive to buy each year",
+          "correct": false,
+          "explanation": "Wind has no fuel costs once built.",
+          "misconception": "inversion slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L2::Q3",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L2",
+      "stem": "What do biofuel crops and food crops compete for?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "electricity Grid connections",
+          "correct": false,
+          "explanation": "Competition is agricultural, not electrical.",
+          "misconception": "context slip"
+        },
+        {
+          "key": "B",
+          "text": "wind speeds",
+          "correct": false,
+          "explanation": "Weather is irrelevant to cropping.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "C",
+          "text": "radioactive waste storage",
+          "correct": false,
+          "explanation": "Nothing nuclear is involved.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "land and resources",
+          "correct": true,
+          "explanation": "Growing fuel displaces growing food.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L2::Q4",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L2",
+      "stem": "Which pair lists one advantage and one disadvantage of wind power?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "renewable and no operating emissions; unreliable without sufficient wind",
+          "correct": true,
+          "explanation": "The classic wind trade-off.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "cheap to build; reliable at all times",
+          "correct": false,
+          "explanation": "Both halves are wrong: build cost is high, output is weather-bound.",
+          "misconception": "inversion slip"
+        },
+        {
+          "key": "C",
+          "text": "reliable at all times; heavy fuel costs",
+          "correct": false,
+          "explanation": "Wind is neither always-on nor fuel-fed.",
+          "misconception": "inversion slip"
+        },
+        {
+          "key": "D",
+          "text": "no noise at all; unlimited suitable sites",
+          "correct": false,
+          "explanation": "Noise pollution and siting limits are both cited.",
+          "misconception": "over-claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L2::Q5",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L2",
+      "stem": "Clearing forest to plant biofuel crops creates which additional problem?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "wind speeds drop over the fields",
+          "correct": false,
+          "explanation": "Weather is unaffected by cropping.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "B",
+          "text": "stored carbon is released and habitats are destroyed",
+          "correct": true,
+          "explanation": "Deforestation undoes the carbon balance and removes ecosystems.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the crops absorb too much carbon dioxide",
+          "correct": false,
+          "explanation": "Extra absorption would be a benefit, not a problem.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "D",
+          "text": "the fuel becomes radioactive",
+          "correct": false,
+          "explanation": "Nothing radioactive is involved.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L2::Q6",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L2",
+      "stem": "State the reliability weakness of wind generation.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "Wind power is unreliable: it generates only while the wind blows hard enough.",
+      "keywords": [
+        "unreliable",
+        "wind",
+        "generates",
+        "blows"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L2::Q7",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L2",
+      "stem": "State two running-cost advantages of wind power once the turbines are built.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "Once built, a wind farm charges nothing for fuel and little to keep it running.",
+      "keywords": [
+        "fuel",
+        "built",
+        "running",
+        "wind"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L2::Q8",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L2",
+      "stem": "Explain why growing biofuel crops on cleared forest land can still increase atmospheric carbon dioxide overall.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Clearing the forest releases the carbon stored in the trees and destroys the habitat, while the new crops need years to absorb comparable amounts. Combustion of the harvested fuel then releases carbon dioxide at the point of use, so the balance can stay in the atmosphere's disfavour.",
+      "keywords": [
+        "carbon",
+        "dioxide",
+        "forest",
+        "combustion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L2::Q9",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L2",
+      "stem": "A windy region plans a wind farm near a village. State one benefit and one local objection the planners should expect.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The benefit: renewable electricity with no greenhouse gases or pollution during operation and no fuel costs. The objection: visual pollution of the landscape and noise pollution from the turbines.",
+      "keywords": [
+        "renewable",
+        "greenhouse",
+        "visual",
+        "noise"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L3::Q1",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L3",
+      "stem": "Which renewable resource is the most predictable in its output timing?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "solar power",
+          "correct": false,
+          "explanation": "Sunshine hours vary day to day.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "B",
+          "text": "biofuels",
+          "correct": false,
+          "explanation": "Biofuel supply follows harvests, not a daily timetable.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "C",
+          "text": "tidal power",
+          "correct": true,
+          "explanation": "Tides follow regular, predictable cycles.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "wind power",
+          "correct": false,
+          "explanation": "Wind is the classic unreliable resource.",
+          "misconception": "resource swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L3::Q2",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L3",
+      "stem": "What is the main environmental cost of building a hydroelectric reservoir?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "releasing sulphur dioxide during generation",
+          "correct": false,
+          "explanation": "Hydroelectric generation emits nothing.",
+          "misconception": "gas swap"
+        },
+        {
+          "key": "B",
+          "text": "producing radioactive waste",
+          "correct": false,
+          "explanation": "Nothing nuclear is involved.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "C",
+          "text": "noise pollution across the estuary",
+          "correct": false,
+          "explanation": "Noise belongs to wind criticisms.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "D",
+          "text": "flooding large areas, destroying habitats and displacing wildlife",
+          "correct": true,
+          "explanation": "The valley pays for the dispatchability.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L3::Q3",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L3",
+      "stem": "Why are there few suitable locations for tidal barrages?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "they need estuaries with the right tidal conditions",
+          "correct": true,
+          "explanation": "Estuaries are the scarce siting requirement.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "they need hot, dry deserts",
+          "correct": false,
+          "explanation": "That suits nothing in these notes.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "C",
+          "text": "they need high mountain valleys",
+          "correct": false,
+          "explanation": "Valleys are the hydroelectric terrain.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "D",
+          "text": "they need constant strong sunshine",
+          "correct": false,
+          "explanation": "Sunshine is the solar constraint.",
+          "misconception": "resource swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L3::Q4",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L3",
+      "stem": "Why do solar installations need many cells?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "each cell needs its own fuel supply",
+          "correct": false,
+          "explanation": "Sunlight is free.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "B",
+          "text": "each cell produces only a small amount of electricity",
+          "correct": true,
+          "explanation": "Scaling up means multiplying panels.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "each cell lasts only a few days",
+          "correct": false,
+          "explanation": "Lifespan is not the constraint cited.",
+          "misconception": "invented mechanism"
+        },
+        {
+          "key": "D",
+          "text": "cells only work in pairs",
+          "correct": false,
+          "explanation": "No such rule exists.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L3::Q5",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L3",
+      "stem": "Which statement about hydroelectric and solar power together is correct?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "both need estuaries to function",
+          "correct": false,
+          "explanation": "Neither needs an estuary.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "B",
+          "text": "both produce large fuel bills",
+          "correct": false,
+          "explanation": "Neither has fuel costs.",
+          "misconception": "over-claim"
+        },
+        {
+          "key": "C",
+          "text": "both produce no greenhouse gases during operation, but only hydroelectric responds quickly to demand",
+          "correct": true,
+          "explanation": "Solar output follows sunshine; hydro throttles.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "both are unreliable because both depend on weather",
+          "correct": false,
+          "explanation": "Hydroelectric is reliable; stored water answers on demand.",
+          "misconception": "over-generalisation"
+        }
+      ]
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L3::Q6",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L3",
+      "stem": "State the reliability advantage that hydroelectric and tidal power share.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "Both are reliable: hydroelectric responds quickly to changes in demand, and tidal output follows the very predictable tide cycle.",
+      "keywords": [
+        "reliable",
+        "hydroelectric",
+        "tidal",
+        "demand"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L3::Q7",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L3",
+      "stem": "State the weather condition that limits solar generation.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "Solar cells only generate electricity while the Sun is shining.",
+      "keywords": [
+        "sun",
+        "shining",
+        "generate",
+        "solar"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L3::Q8",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L3",
+      "stem": "Explain why a remote mountain hut with no mains connection is a good fit for solar cells.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Solar cells need no Grid connection, no fuel deliveries and no turbine hall — just sunlight on panels. Where the mains never reaches, the cells' operating simplicity outweighs their sunshine dependence for small, daytime needs.",
+      "keywords": [
+        "solar",
+        "mains",
+        "fuel",
+        "remote"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xdVXyYb6CH5MyXws::L3::Q9",
+      "moduleId": "rn_xdVXyYb6CH5MyXws::L3",
+      "stem": "An island community chooses tidal power over wind. State one reason supporting the choice and one cost they accept.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Supporting reason: tides are very predictable, so generation follows a reliable schedule with no greenhouse gases or fuel costs. The cost accepted: few suitable estuary locations exist, and the barrage can harm aquatic life and disrupt shipping.",
+      "keywords": [
+        "tide",
+        "predictable",
+        "estuary",
+        "aquatic"
+      ],
+      "options": []
+    }
+  ]
+}
