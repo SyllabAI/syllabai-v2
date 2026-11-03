@@ -26,6 +26,11 @@
  *        the cascading board → level → subject add-course overlay
  *   5. "Jump back in" — resume card from the last-opened store
  *
+ * Vertical rhythm (D-1): the page leads with the act-now row (reviews due
+ * + set work), then Jump back in, then My subjects; the ambient rest
+ * (attribution, advice, plan) follows — the resume card no longer sits
+ * below two viewports of peers.
+ *
  * The dashboard lists ONLY the learner's own subjects (no full-registry
  * catalogue — discovery lives in the overlay). The roster + last-opened
  * stay device-local by design (the account syncs a mirror); resource
@@ -614,10 +619,60 @@ export function DashboardClient({
         </p>
       </header>
 
-      {/* ---- Review due (HUB-DASH-CORE P1-5): the retention loop's headline.
-          Account queue when the pilot's core path is live, the device's
-          Ebbinghaus derivation otherwise; renders nothing when nothing is due ---- */}
-      <ReviewDueStrip courses={mySubjects} />
+      {/* ---- Act now (D-1): the dashboard's first row answers "what should
+          I do now?" — the retention loop's headline (HUB-DASH-CORE P1-5:
+          account queue when the resolved course's core path is live, the
+          device's Ebbinghaus derivation otherwise) beside the server-composed
+          set-work facts (T-C78 agenda). One row, one card each; either may
+          render nothing when it has no news. ---- */}
+      <section aria-label="Act now">
+        <div className="grid gap-3 lg:grid-cols-2">
+          <ReviewDueStrip courses={mySubjects} />
+          <SetWorkCard />
+        </div>
+      </section>
+
+      {/* ---- Jump back in (D-1: the returning student's highest-frequency
+          action leaves the page bottom) — ONE surface (SME resume card +
+          the account trail, D-2). Priority: this device wins; the account
+          fills the gap. The source badge explains why the card can differ
+          between the phone and the school lab instead of reading as a bug. ---- */}
+      {resume && (
+        <section aria-label="Jump back in" className="space-y-2">
+          <h2 className="flex items-center gap-2 text-lg font-semibold">
+            <RotateCcw className="size-4 text-primary" aria-hidden />
+            Jump back in
+          </h2>
+          <Link href={resume.href} className="group block focus-visible:outline-none">
+            <Card className="transition-colors group-hover:border-primary/50">
+              <CardContent className="flex flex-wrap items-center gap-x-3 gap-y-1 p-4">
+                <Badge variant="secondary" className="font-medium">
+                  {resourceLabel(resume.resource)}
+                </Badge>
+                <span className="text-sm font-semibold">{resume.title}</span>
+                <span className="text-sm text-muted-foreground">
+                  {boardOf(resume.meta)} · {resume.meta.level} · {resume.meta.code}
+                </span>
+                <Badge
+                  variant="outline"
+                  className="gap-1 px-1.5 py-0 text-[10px] font-medium text-primary"
+                  title={
+                    resume.source === "account"
+                      ? "From your SyllabAI account — it follows you across devices"
+                      : "From this device's recent activity"
+                  }
+                >
+                  {resume.source === "account" && <CloudCheck className="size-3" aria-hidden />}
+                  {resume.source === "account"
+                    ? `from your account · last practised ${resume.lastPractised}`
+                    : "from this device"}
+                </Badge>
+                <ChevronRight className="ml-auto size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
+              </CardContent>
+            </Card>
+          </Link>
+        </section>
+      )}
 
       {/* ---- My courses ---- */}
       <section aria-label="My subjects" className="space-y-3">
@@ -698,15 +753,6 @@ export function DashboardClient({
         )}
       </section>
 
-      {/* ---- Set work (T-C78, Spec §22 agenda): the server-composed
-          "what is due" facts — teacher-set assignments with the learner's
-          own hand-in trail, due-soonest first. The agenda's other blocks
-          live where they belong: reviews headline in the strip above,
-          advice in the NBA card below. Signed out, it renders nothing. ---- */}
-      <section aria-label="Set work">
-        <SetWorkCard />
-      </section>
-
       {/* ---- DC-7 progress attribution (measured facts — the SAME projection
           the trees' rings read; never advice, never a local counter; renders
           nothing signed out) ---- */}
@@ -760,47 +806,6 @@ export function DashboardClient({
           </Card>
         )}
       </section>
-
-      {/* ---- Jump back in — ONE surface (SME resume card + the account
-          trail, D-2). Priority: this device wins; the account fills the
-          gap. The source badge explains why the card can differ between
-          the phone and the school lab instead of reading as a bug. ---- */}
-      {resume && (
-        <section aria-label="Jump back in" className="space-y-2">
-          <h2 className="flex items-center gap-2 text-lg font-semibold">
-            <RotateCcw className="size-4 text-primary" aria-hidden />
-            Jump back in
-          </h2>
-          <Link href={resume.href} className="group block focus-visible:outline-none">
-            <Card className="transition-colors group-hover:border-primary/50">
-              <CardContent className="flex flex-wrap items-center gap-x-3 gap-y-1 p-4">
-                <Badge variant="secondary" className="font-medium">
-                  {resourceLabel(resume.resource)}
-                </Badge>
-                <span className="text-sm font-semibold">{resume.title}</span>
-                <span className="text-sm text-muted-foreground">
-                  {boardOf(resume.meta)} · {resume.meta.level} · {resume.meta.code}
-                </span>
-                <Badge
-                  variant="outline"
-                  className="gap-1 px-1.5 py-0 text-[10px] font-medium text-primary"
-                  title={
-                    resume.source === "account"
-                      ? "From your SyllabAI account — it follows you across devices"
-                      : "From this device's recent activity"
-                  }
-                >
-                  {resume.source === "account" && <CloudCheck className="size-3" aria-hidden />}
-                  {resume.source === "account"
-                    ? `from your account · last practised ${resume.lastPractised}`
-                    : "from this device"}
-                </Badge>
-                <ChevronRight className="ml-auto size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
-              </CardContent>
-            </Card>
-          </Link>
-        </section>
-      )}
 
       {/* ---- Add course — cascading board → level → subject overlay ---- */}
       <AddCourseOverlay
