@@ -1,0 +1,751 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_HKZzkTMztGJvqXCd",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "56f00c9677c65de3b05c8e619402265e9bfa624377724f2eedf5784e1a3be181",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "packageId": "igcse-physics::rn_HKZzkTMztGJvqXCd",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L1::Q1",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L1",
+      "stem": "In a transverse wave, the vibrations are oriented:",
+      "misconceptionClass": "wave-type definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "along the direction of travel",
+          "correct": false,
+          "explanation": "That describes a longitudinal wave instead.",
+          "misconception": "family swap"
+        },
+        {
+          "key": "B",
+          "text": "at right angles to the direction of travel",
+          "correct": true,
+          "explanation": "Transverse vibrations are perpendicular to the direction of energy transfer.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "in every direction at once",
+          "correct": false,
+          "explanation": "The vibration follows one line, fixed by the wave type.",
+          "misconception": "scatter model"
+        },
+        {
+          "key": "D",
+          "text": "opposite to the direction of travel",
+          "correct": false,
+          "explanation": "Vibration is not backwards along the path; it is across it.",
+          "misconception": "direction slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L1::Q2",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L1",
+      "stem": "The highest point of a transverse wave is called:",
+      "misconceptionClass": "anatomy recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the trough",
+          "correct": false,
+          "explanation": "The trough is the lowest point, not the highest.",
+          "misconception": "label swap"
+        },
+        {
+          "key": "B",
+          "text": "the compression",
+          "correct": false,
+          "explanation": "Compressions belong to longitudinal waves.",
+          "misconception": "family swap"
+        },
+        {
+          "key": "C",
+          "text": "the peak or crest",
+          "correct": true,
+          "explanation": "Peak and crest both name the point above the resting level.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the wavefront",
+          "correct": false,
+          "explanation": "A wavefront is a line drawn to represent one wave from above.",
+          "misconception": "term confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L1::Q3",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L1",
+      "stem": "Which of these is a transverse wave?",
+      "misconceptionClass": "example sorting",
+      "options": [
+        {
+          "key": "A",
+          "text": "a sound wave in air",
+          "correct": false,
+          "explanation": "Sound is longitudinal: air particles oscillate along the travel direction.",
+          "misconception": "family swap"
+        },
+        {
+          "key": "B",
+          "text": "a P-wave inside the Earth",
+          "correct": false,
+          "explanation": "P-waves are the longitudinal seismic type.",
+          "misconception": "seismic mix-up"
+        },
+        {
+          "key": "C",
+          "text": "a pulse squeezed along a spring",
+          "correct": false,
+          "explanation": "Push-pull pulses along a spring are longitudinal.",
+          "misconception": "family swap"
+        },
+        {
+          "key": "D",
+          "text": "a ripple moving over a pond",
+          "correct": true,
+          "explanation": "Water-surface ripples are a standard transverse example.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L1::Q4",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L1",
+      "stem": "A transverse wave passes along a rope. What happens to the rope itself?",
+      "misconceptionClass": "medium behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "each piece oscillates and returns to its rest position",
+          "correct": true,
+          "explanation": "The rope vibrates about a fixed point while energy passes through.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "it travels with the wave to the far end",
+          "correct": false,
+          "explanation": "The medium oscillates about fixed points; only the energy travels onward.",
+          "misconception": "matter carriage myth"
+        },
+        {
+          "key": "C",
+          "text": "it is stretched permanently longer",
+          "correct": false,
+          "explanation": "No permanent stretch is involved in passing a wave.",
+          "misconception": "permanent change myth"
+        },
+        {
+          "key": "D",
+          "text": "it stays completely still",
+          "correct": false,
+          "explanation": "The rope is the thing that vibrates.",
+          "misconception": "medium inactivity myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L1::Q5",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L1",
+      "stem": "Electromagnetic waves are transverse waves that can travel:",
+      "misconceptionClass": "vacuum property",
+      "options": [
+        {
+          "key": "A",
+          "text": "only through solids",
+          "correct": false,
+          "explanation": "Mechanical transverse waves face that restriction; EM waves do not.",
+          "misconception": "mechanical restriction carry-over"
+        },
+        {
+          "key": "B",
+          "text": "only through liquids and gases",
+          "correct": false,
+          "explanation": "That mix blocks some mechanical waves, and EM are not limited to it.",
+          "misconception": "restriction invention"
+        },
+        {
+          "key": "C",
+          "text": "through a vacuum as well as through matter",
+          "correct": true,
+          "explanation": "Light and radio cross empty space, unlike longitudinal waves.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "nowhere without particles",
+          "correct": false,
+          "explanation": "EM waves need no medium at all.",
+          "misconception": "medium requirement myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L1::Q6",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L1",
+      "stem": "State what a peak and a trough are on a transverse wave.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The peak (crest) is the highest point above the undisturbed rest position; the trough is the lowest point below it.",
+      "keywords": [
+        "peak",
+        "crest",
+        "highest",
+        "trough",
+        "lowest",
+        "rest"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L1::Q7",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L1",
+      "stem": "List three transverse wave examples.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Any three of: water ripples, vibrations in a guitar string, S-waves, electromagnetic waves such as light or radio.",
+      "keywords": [
+        "water",
+        "ripples",
+        "guitar",
+        "string",
+        "S-waves",
+        "electromagnetic",
+        "light"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L1::Q8",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L1",
+      "stem": "Explain why shaking a rope up and down produces a transverse pulse.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Your hand drives the rope vertically while the pulse runs horizontally along it, so the vibration sits at right angles to the travel direction, which is exactly the transverse geometry.",
+      "keywords": [
+        "vertical",
+        "horizontal",
+        "right angles",
+        "perpendicular",
+        "travel"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L1::Q9",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L1",
+      "stem": "A radio wave crosses empty space between a satellite and the ground. Use wave-family knowledge to explain how this is possible.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Radio waves are transverse electromagnetic waves, and electromagnetic waves need no material medium, so they travel through the vacuum of space where a longitudinal wave could not.",
+      "keywords": [
+        "electromagnetic",
+        "transverse",
+        "vacuum",
+        "medium",
+        "space"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L2::Q1",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L2",
+      "stem": "In a longitudinal wave the vibrations are oriented:",
+      "misconceptionClass": "wave-type definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "at right angles to the direction of travel",
+          "correct": false,
+          "explanation": "Right-angle vibration defines the transverse family.",
+          "misconception": "family swap"
+        },
+        {
+          "key": "B",
+          "text": "parallel to the direction of travel",
+          "correct": true,
+          "explanation": "Longitudinal vibrations run along the direction of energy transfer.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "in shrinking circles",
+          "correct": false,
+          "explanation": "Vibration is along a line, not a spiral.",
+          "misconception": "geometry invention"
+        },
+        {
+          "key": "D",
+          "text": "at 45 degrees to the direction of travel",
+          "correct": false,
+          "explanation": "The geometry is strictly along the path.",
+          "misconception": "angle invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L2::Q2",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L2",
+      "stem": "A region of a longitudinal wave where particles are bunched closest together is called:",
+      "misconceptionClass": "anatomy recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a rarefaction",
+          "correct": false,
+          "explanation": "A rarefaction is the spread-out region, the opposite of bunched.",
+          "misconception": "label swap"
+        },
+        {
+          "key": "B",
+          "text": "a crest",
+          "correct": false,
+          "explanation": "Crests belong to transverse waves.",
+          "misconception": "family swap"
+        },
+        {
+          "key": "C",
+          "text": "a wavefront",
+          "correct": false,
+          "explanation": "A wavefront is a drawing convention, not a particle region.",
+          "misconception": "term confusion"
+        },
+        {
+          "key": "D",
+          "text": "a compression",
+          "correct": true,
+          "explanation": "Compressions are where the medium is squeezed closest.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L2::Q3",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L2",
+      "stem": "Which wave cannot travel through a vacuum?",
+      "misconceptionClass": "vacuum property",
+      "options": [
+        {
+          "key": "A",
+          "text": "sound from an explosion",
+          "correct": true,
+          "explanation": "Sound is longitudinal and needs particles to compress, so a vacuum blocks it.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "light from a distant star",
+          "correct": false,
+          "explanation": "Light is electromagnetic and crosses empty space freely.",
+          "misconception": "family swap"
+        },
+        {
+          "key": "C",
+          "text": "radio waves from a transmitter",
+          "correct": false,
+          "explanation": "Radio is electromagnetic, so a vacuum is no barrier.",
+          "misconception": "family swap"
+        },
+        {
+          "key": "D",
+          "text": "none of them can",
+          "correct": false,
+          "explanation": "Electromagnetic waves manage perfectly well in a vacuum.",
+          "misconception": "overgeneralisation"
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L2::Q4",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L2",
+      "stem": "Sound travels from a drum to your ear through air. What does the air do?",
+      "misconceptionClass": "medium behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "air particles travel from the drum all the way to your ear",
+          "correct": false,
+          "explanation": "Particles oscillate locally; nothing more than energy crosses the room.",
+          "misconception": "matter carriage myth"
+        },
+        {
+          "key": "B",
+          "text": "air particles spin on the spot",
+          "correct": false,
+          "explanation": "The motion is a linear back-and-forth shuffle.",
+          "misconception": "motion invention"
+        },
+        {
+          "key": "C",
+          "text": "air particles vibrate back and forth about their own positions",
+          "correct": true,
+          "explanation": "The push-pull oscillation passes energy along without transporting particles.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the air stays untouched",
+          "correct": false,
+          "explanation": "The air is the medium doing the vibrating.",
+          "misconception": "medium inactivity myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L2::Q5",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L2",
+      "stem": "Where the particles of a longitudinal wave are most spread apart, the region is:",
+      "misconceptionClass": "anatomy recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a compression",
+          "correct": false,
+          "explanation": "Compressions are the crowded zones.",
+          "misconception": "label swap"
+        },
+        {
+          "key": "B",
+          "text": "a rarefaction",
+          "correct": true,
+          "explanation": "Rarefactions are the stretched-out zones between compressions.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a trough",
+          "correct": false,
+          "explanation": "Troughs are transverse features.",
+          "misconception": "family swap"
+        },
+        {
+          "key": "D",
+          "text": "the rest position",
+          "correct": false,
+          "explanation": "Rest position describes an undisturbed level, not a wave region of this kind.",
+          "misconception": "term confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L2::Q6",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L2",
+      "stem": "State the two alternating regions that make up a longitudinal wave.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Compressions, where particles are pushed close together, alternating with rarefactions, where particles are spread further apart.",
+      "keywords": [
+        "compressions",
+        "rarefactions",
+        "together",
+        "apart",
+        "particles"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L2::Q7",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L2",
+      "stem": "Give three examples of longitudinal waves.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Any three of: sound waves, P-waves, and pressure waves set up by repeated pushes in a liquid or gas.",
+      "keywords": [
+        "sound",
+        "P-waves",
+        "pressure",
+        "liquid",
+        "gas"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L2::Q8",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L2",
+      "stem": "Explain why a longitudinal wave cannot carry energy through empty space.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The wave works by squeezing and stretching the material it passes through, so with no particles present in a vacuum there is nothing to compress and the pattern cannot propagate.",
+      "keywords": [
+        "compress",
+        "particles",
+        "vacuum",
+        "squeezing",
+        "propagate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L2::Q9",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L2",
+      "stem": "A spring lies on a bench and you repeatedly push and pull one end along its length. Describe what a viewer at the far end observes.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "They observe compressions and rarefactions travelling towards them along the spring; each coil merely shuffles along the spring axis, showing energy transfer without the coils themselves being carried to them.",
+      "keywords": [
+        "compressions",
+        "rarefactions",
+        "travel",
+        "energy",
+        "coils"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L3::Q1",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L3",
+      "stem": "Which row correctly pairs a transverse wave with its structure?",
+      "misconceptionClass": "structure pairing",
+      "options": [
+        {
+          "key": "A",
+          "text": "transverse - compressions and rarefactions",
+          "correct": false,
+          "explanation": "That structure belongs to longitudinal waves.",
+          "misconception": "label swap"
+        },
+        {
+          "key": "B",
+          "text": "longitudinal - peaks and troughs",
+          "correct": false,
+          "explanation": "Longitudinal waves have no peaks; they have density zones.",
+          "misconception": "label swap"
+        },
+        {
+          "key": "C",
+          "text": "both families show identical structure",
+          "correct": false,
+          "explanation": "The structures are the clearest contrast between the families.",
+          "misconception": "false equivalence"
+        },
+        {
+          "key": "D",
+          "text": "transverse - peaks and troughs",
+          "correct": true,
+          "explanation": "Peaks and troughs are the anatomy of transverse waves.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L3::Q2",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L3",
+      "stem": "What does any wave transfer from source to receiver?",
+      "misconceptionClass": "transfer law",
+      "options": [
+        {
+          "key": "A",
+          "text": "energy and information, but not matter",
+          "correct": true,
+          "explanation": "That is the transfer law for all waves.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "matter and energy together",
+          "correct": false,
+          "explanation": "The medium stays put; nothing material makes the trip.",
+          "misconception": "matter carriage myth"
+        },
+        {
+          "key": "C",
+          "text": "matter only",
+          "correct": false,
+          "explanation": "If only matter moved, nothing would oscillate in place.",
+          "misconception": "matter carriage myth"
+        },
+        {
+          "key": "D",
+          "text": "neither energy nor information",
+          "correct": false,
+          "explanation": "Carrying energy is the defining job of a wave.",
+          "misconception": "function denial"
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L3::Q3",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L3",
+      "stem": "A toy duck floats in a bath as ripples pass underneath. The duck:",
+      "misconceptionClass": "evidence interpretation",
+      "options": [
+        {
+          "key": "A",
+          "text": "drifts along with each ripple across the bath",
+          "correct": false,
+          "explanation": "The duck oscillates in place; it does not surf the wave.",
+          "misconception": "matter carriage myth"
+        },
+        {
+          "key": "B",
+          "text": "sinks as the wave arrives",
+          "correct": false,
+          "explanation": "Nothing in the wave pushes the duck under.",
+          "misconception": "effect invention"
+        },
+        {
+          "key": "C",
+          "text": "bobs up and down while staying in place",
+          "correct": true,
+          "explanation": "Local oscillation with no net travel is the evidence that energy, not matter, moves.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "is lifted out of the water",
+          "correct": false,
+          "explanation": "The passing wave only bobs it about its floating level.",
+          "misconception": "exaggeration error"
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L3::Q4",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L3",
+      "stem": "Sound and light both reach you from a fireworks display: light as a transverse wave, sound as a longitudinal one. Which claim is correct for both?",
+      "misconceptionClass": "family comparison",
+      "options": [
+        {
+          "key": "A",
+          "text": "both are longitudinal",
+          "correct": false,
+          "explanation": "Light is transverse; only sound is longitudinal here.",
+          "misconception": "family swap"
+        },
+        {
+          "key": "B",
+          "text": "both transfer energy without transferring matter",
+          "correct": true,
+          "explanation": "All waves obey this transfer law whatever their family.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "both need air to travel",
+          "correct": false,
+          "explanation": "Light crosses vacuum; sound does not.",
+          "misconception": "medium requirement myth"
+        },
+        {
+          "key": "D",
+          "text": "neither carries information",
+          "correct": false,
+          "explanation": "Waves carry information as well as energy.",
+          "misconception": "function denial"
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L3::Q5",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L3",
+      "stem": "Waves on a water surface are transverse. A floating ball moves:",
+      "misconceptionClass": "evidence interpretation",
+      "options": [
+        {
+          "key": "A",
+          "text": "mainly horizontally, racing ahead of the ripples",
+          "correct": false,
+          "explanation": "Nothing in the wave carries the ball forward.",
+          "misconception": "matter carriage myth"
+        },
+        {
+          "key": "B",
+          "text": "in circles of ever-growing size",
+          "correct": false,
+          "explanation": "The oscillation stays small and local.",
+          "misconception": "exaggeration error"
+        },
+        {
+          "key": "C",
+          "text": "not at all",
+          "correct": false,
+          "explanation": "The ball visibly bobs; that is the point of the demonstration.",
+          "misconception": "medium inactivity myth"
+        },
+        {
+          "key": "D",
+          "text": "mainly up and down as the ripples pass",
+          "correct": true,
+          "explanation": "The ball oscillates about its place, mirroring the perpendicular vibration of the surface.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L3::Q6",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L3",
+      "stem": "State two differences between transverse and longitudinal waves.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Transverse vibrations are perpendicular to travel with peaks and troughs; longitudinal vibrations are parallel to travel with compressions and rarefactions.",
+      "keywords": [
+        "perpendicular",
+        "parallel",
+        "peaks",
+        "troughs",
+        "compressions",
+        "rarefactions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L3::Q7",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L3",
+      "stem": "State what is meant by the statement that waves transfer energy without transferring matter.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The oscillation passes energy and any encoded information from source to receiver while each particle of the medium only vibrates about its own fixed position.",
+      "keywords": [
+        "energy",
+        "information",
+        "vibrates",
+        "position",
+        "medium"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L3::Q8",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L3",
+      "stem": "Explain how the floating-duck observation supports the wave transfer law: energy and information move, matter does not.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The duck gains energy, shown by its bobbing, yet it does not travel across the surface with the wave, so what crossed the water was energy and information and not the material of the medium.",
+      "keywords": [
+        "energy",
+        "bobbing",
+        "travel",
+        "matter",
+        "medium"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HKZzkTMztGJvqXCd::L3::Q9",
+      "moduleId": "rn_HKZzkTMztGJvqXCd::L3",
+      "stem": "An earthquake produces both P-waves and S-waves at the same time. Using wave families, predict which type arrives first at a distant station given that longitudinal waves run fastest in solids.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The P-waves arrive first, because they are the longitudinal type and longitudinal waves travel fastest through solid rock, while the transverse S-waves run slower and arrive later.",
+      "keywords": [
+        "P-waves",
+        "longitudinal",
+        "fastest",
+        "solid",
+        "S-waves"
+      ],
+      "options": []
+    }
+  ]
+}

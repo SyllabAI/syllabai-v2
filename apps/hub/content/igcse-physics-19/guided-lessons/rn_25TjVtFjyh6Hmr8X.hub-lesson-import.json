@@ -1,0 +1,185 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_25TjVtFjyh6Hmr8X",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "b1ee4396e8d11b16418e1fba7582a03e06d5319c8963603b42ed2b8b6a260355",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_25TjVtFjyh6Hmr8X",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Reflection & Refraction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-2-reflection-and-refraction/3-2-1-light-and-sound-waves",
+    "specAnchors": [
+      {
+        "code": "3.14",
+        "text": "know that light waves are transverse waves and that they can be reflected and refracted"
+      },
+      {
+        "code": "3.23",
+        "text": "know that sound waves are longitudinal waves which can be reflected and refracted"
+      }
+    ],
+    "primer": {
+      "text": "The wave families from earlier now earn their places in optics: light is the transverse wave you see by, sound the longitudinal wave you hear by. Both can bounce off surfaces and bend between media, and each is drawn with its own diagram style. This lesson pairs the two and shows how each is represented.",
+      "prerequisiteSubtopic": "Reflection & Refraction"
+    },
+    "modules": [
+      {
+        "id": "rn_25TjVtFjyh6Hmr8X::L1",
+        "title": "Light waves",
+        "sourceHeadings": [
+          "Light",
+          "Representing a transverse wave"
+        ],
+        "specRefs": [
+          "3.14"
+        ],
+        "opening": "Light belongs to the electromagnetic spectrum, so it is a transverse wave: its fields vibrate across the direction of travel, the way a drawn wave on a rope does. Two things light famously does at surfaces and boundaries are reflection and refraction, both of which get their own diagrams later in this topic.",
+        "keyPoints": [
+          "Light waves are transverse waves.",
+          "Light can be reflected.",
+          "Light can be refracted.",
+          "A transverse wave is drawn as a wavy line with peaks and troughs."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Light is a transverse electromagnetic wave, which is why it is drawn with the peak-and-trough style and why it bounces and bends at boundaries.",
+            "analogy": "Light behaves like the rope wave: shake across the path, travel along it.",
+            "examPointer": "When asked for the wave type of light, answer transverse and be ready to add electromagnetic for the second mark."
+          },
+          "medium": {
+            "restatement": "Being transverse and electromagnetic lets light cross vacuum and still reflect and refract at boundaries, since those behaviours depend on wavefronts meeting media changes rather than on the medium carrying the wave.",
+            "analogy": "A courier who needs no road (vacuum) but still turns at every junction (boundary).",
+            "examPointer": "Link questions: light is transverse because it is EM; it crosses vacuum for the same reason."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_25TjVtFjyh6Hmr8X::L1::Q1",
+          "rn_25TjVtFjyh6Hmr8X::L1::Q2",
+          "rn_25TjVtFjyh6Hmr8X::L1::Q3",
+          "rn_25TjVtFjyh6Hmr8X::L1::Q4",
+          "rn_25TjVtFjyh6Hmr8X::L1::Q5",
+          "rn_25TjVtFjyh6Hmr8X::L1::Q6",
+          "rn_25TjVtFjyh6Hmr8X::L1::Q7",
+          "rn_25TjVtFjyh6Hmr8X::L1::Q8",
+          "rn_25TjVtFjyh6Hmr8X::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_25TjVtFjyh6Hmr8X::L2",
+        "title": "Sound waves",
+        "sourceHeadings": [
+          "Sound",
+          "Representing a longitudinal wave"
+        ],
+        "specRefs": [
+          "3.23"
+        ],
+        "opening": "Sound is the longitudinal partner: air particles shuffle along the travel direction, forming compressions and rarefactions that are drawn as lines packed close together and spread apart. Like light, sound can reflect, heard as an echo, and refract between media, though it always needs a material to travel in.",
+        "keyPoints": [
+          "Sound waves are longitudinal waves.",
+          "Sound can be reflected; the reflection of a sound wave is called an echo.",
+          "Sound can be refracted.",
+          "Longitudinal waves are drawn as lines along the travel direction, with close lines showing compressions and spread lines showing rarefactions."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Sound is a longitudinal wave, drawn as lines that bunch and spread along the direction of travel, and its reflection arrives at your ears as an echo.",
+            "analogy": "A slinky pushed lengthways: squeezed zones and stretched zones chasing each other down the coils.",
+            "examPointer": "Name the echo explicitly when a question mentions reflected sound; the vocabulary is the mark."
+          },
+          "medium": {
+            "restatement": "Because sound is mechanical and longitudinal, it shares reflection and refraction with light yet differs in needing particles, so the same boundary diagrams apply with the medium, not vacuum, doing the carrying.",
+            "analogy": "Light and sound are two couriers through a building: same turns taken, but one needs corridors with air and one does not.",
+            "examPointer": "Contrast questions love the vacuum difference: sound dies in space, light does not; quote the particle requirement."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_25TjVtFjyh6Hmr8X::L2::Q1",
+          "rn_25TjVtFjyh6Hmr8X::L2::Q2",
+          "rn_25TjVtFjyh6Hmr8X::L2::Q3",
+          "rn_25TjVtFjyh6Hmr8X::L2::Q4",
+          "rn_25TjVtFjyh6Hmr8X::L2::Q5",
+          "rn_25TjVtFjyh6Hmr8X::L2::Q6",
+          "rn_25TjVtFjyh6Hmr8X::L2::Q7",
+          "rn_25TjVtFjyh6Hmr8X::L2::Q8",
+          "rn_25TjVtFjyh6Hmr8X::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "echo",
+          "definition": "The reflection of a sound wave heard after the original sound.",
+          "firstLesson": 2
+        },
+        {
+          "term": "compression lines",
+          "definition": "The closely spaced lines drawn to represent compressed regions of a longitudinal wave.",
+          "firstLesson": 2
+        },
+        {
+          "term": "rarefaction",
+          "definition": "The spread-out region of a longitudinal wave between two compressions.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/8f8f4c2bd999-7-1-2-1-transverse-wave-diagram-e1631727269728.png",
+        "alt": "Transverse wave diagram, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Representing a transverse wave",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Light waves are transverse: the particles vibrate in a perpendicular direction to the energy transfer",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/bda0eb324083-7-1-2-1-longitudinal-wave-diagram.png",
+        "alt": "Longitudinal wave diagram, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Representing a longitudinal wave",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Longitudinal waves are represented as sets of lines with rarefactions and compressions",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

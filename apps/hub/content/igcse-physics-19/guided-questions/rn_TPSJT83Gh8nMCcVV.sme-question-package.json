@@ -1,0 +1,741 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_TPSJT83Gh8nMCcVV",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "38111481a5067b59d77b49ae8f9317b10ba45292c92ae4336ead16f77c4f2f8f",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "packageId": "igcse-physics::rn_TPSJT83Gh8nMCcVV",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L1::Q1",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L1",
+      "stem": "A wavefront is best described as:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the highest point of a wave",
+          "correct": false,
+          "explanation": "That is the peak, a profile feature rather than a map-view line.",
+          "misconception": "term confusion"
+        },
+        {
+          "key": "B",
+          "text": "a line representing one wave, drawn as if viewed from above",
+          "correct": true,
+          "explanation": "Wavefront lines are the top-down representation of successive waves.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the time for one oscillation",
+          "correct": false,
+          "explanation": "That is the time period.",
+          "misconception": "term confusion"
+        },
+        {
+          "key": "D",
+          "text": "the number of waves per second",
+          "correct": false,
+          "explanation": "That is the frequency.",
+          "misconception": "term confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L1::Q2",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L1",
+      "stem": "On a wavefront diagram, the arrow showing where the wave is heading is called:",
+      "misconceptionClass": "diagram vocabulary",
+      "options": [
+        {
+          "key": "A",
+          "text": "the normal",
+          "correct": false,
+          "explanation": "The normal is the construction line at right angles to a boundary.",
+          "misconception": "term confusion"
+        },
+        {
+          "key": "B",
+          "text": "the crest",
+          "correct": false,
+          "explanation": "A crest is a profile peak, not an arrow.",
+          "misconception": "term confusion"
+        },
+        {
+          "key": "C",
+          "text": "the ray",
+          "correct": true,
+          "explanation": "The direction arrow of a wave is called a ray.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the trough line",
+          "correct": false,
+          "explanation": "Troughs are profile features, not direction markers.",
+          "misconception": "term confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L1::Q3",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L1",
+      "stem": "Wavefront lines drawn close together indicate:",
+      "misconceptionClass": "spacing reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "a long wavelength",
+          "correct": false,
+          "explanation": "Long wavelengths give widely spaced lines.",
+          "misconception": "reading inversion"
+        },
+        {
+          "key": "B",
+          "text": "a large amplitude",
+          "correct": false,
+          "explanation": "Spacing shows wavelength, not the size of the swing.",
+          "misconception": "quantity confusion"
+        },
+        {
+          "key": "C",
+          "text": "a high period",
+          "correct": false,
+          "explanation": "Spacing is a spatial measure, not a time measure.",
+          "misconception": "quantity confusion"
+        },
+        {
+          "key": "D",
+          "text": "a short wavelength",
+          "correct": true,
+          "explanation": "Bunched wavefronts mean the matching points of successive waves are near each other.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L1::Q4",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L1",
+      "stem": "Two wavefront diagrams show the same kind of wave. In the first, the lines are twice as far apart as in the second. The first wave has:",
+      "misconceptionClass": "comparison reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "twice the wavelength",
+          "correct": true,
+          "explanation": "Wider spacing between matching points means a proportionally longer wavelength.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "half the wavelength",
+          "correct": false,
+          "explanation": "That would follow from narrower spacing, not wider.",
+          "misconception": "reading inversion"
+        },
+        {
+          "key": "C",
+          "text": "the same wavelength",
+          "correct": false,
+          "explanation": "The spacing is what encodes the wavelength.",
+          "misconception": "invariant assumption"
+        },
+        {
+          "key": "D",
+          "text": "impossible to compare without amplitudes",
+          "correct": false,
+          "explanation": "Amplitude is a separate measurement from spacing.",
+          "misconception": "quantity confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L1::Q5",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L1",
+      "stem": "Which statement about wavefront diagrams is true?",
+      "misconceptionClass": "representation law",
+      "options": [
+        {
+          "key": "A",
+          "text": "each line stands for one full oscillation in time",
+          "correct": false,
+          "explanation": "The diagram maps space, not time.",
+          "misconception": "axis confusion"
+        },
+        {
+          "key": "B",
+          "text": "the lines show the medium moving upwards",
+          "correct": false,
+          "explanation": "Wavefronts map the wave, not a vertical motion of the material.",
+          "misconception": "representation confusion"
+        },
+        {
+          "key": "C",
+          "text": "each line stands for a whole single wave",
+          "correct": true,
+          "explanation": "One wavefront represents one wave in the top-down picture.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the lines must always be evenly curved",
+          "correct": false,
+          "explanation": "Wavefronts can be straight or curved depending on the source.",
+          "misconception": "shape assumption"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L1::Q6",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L1",
+      "stem": "State what the space between two neighbouring wavefronts represents.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "It represents the wavelength, the distance between matching points of successive waves.",
+      "keywords": [
+        "wavelength",
+        "distance",
+        "successive",
+        "waves"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L1::Q7",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L1",
+      "stem": "Name the line drawn at right angles to a boundary that angles are measured from in reflection diagrams.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "That construction line is called the normal.",
+      "keywords": [
+        "normal",
+        "right angles",
+        "boundary"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L1::Q8",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L1",
+      "stem": "Explain why crowded wavefront lines are read as a short wavelength.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Each line marks the same point of the next wave, so when the lines sit close together the distance between matching points of successive waves is small, and that distance is the wavelength.",
+      "keywords": [
+        "matching",
+        "points",
+        "distance",
+        "small",
+        "wavelength"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L1::Q9",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L1",
+      "stem": "A pond sketch shows straight parallel wavefront lines with an arrow pointing north. State what the arrow and the line spacing each tell you.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The arrow (the ray) gives the direction of travel, northwards, and the spacing between the wavefront lines gives the wavelength of the ripples.",
+      "keywords": [
+        "ray",
+        "direction",
+        "travel",
+        "spacing",
+        "wavelength"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L2::Q1",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L2",
+      "stem": "Amplitude is measured from:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "peak to trough",
+          "correct": false,
+          "explanation": "Peak-to-trough spans double the amplitude.",
+          "misconception": "doubling error"
+        },
+        {
+          "key": "B",
+          "text": "the undisturbed position to a peak or trough",
+          "correct": true,
+          "explanation": "Amplitude is the swing size relative to the resting level.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "one peak to the next peak",
+          "correct": false,
+          "explanation": "That distance is the wavelength.",
+          "misconception": "quantity confusion"
+        },
+        {
+          "key": "D",
+          "text": "the source to the observer",
+          "correct": false,
+          "explanation": "That describes travel distance, not wave anatomy.",
+          "misconception": "quantity confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L2::Q2",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L2",
+      "stem": "The symbol and unit of wavelength are:",
+      "misconceptionClass": "symbol recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "A, metres",
+          "correct": false,
+          "explanation": "A is the symbol for amplitude.",
+          "misconception": "symbol swap"
+        },
+        {
+          "key": "B",
+          "text": "f, hertz",
+          "correct": false,
+          "explanation": "f is frequency, measured in hertz.",
+          "misconception": "symbol swap"
+        },
+        {
+          "key": "C",
+          "text": "T, seconds",
+          "correct": false,
+          "explanation": "T is the time period.",
+          "misconception": "symbol swap"
+        },
+        {
+          "key": "D",
+          "text": "lambda, metres",
+          "correct": true,
+          "explanation": "Wavelength uses the Greek letter lambda and is measured in metres.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L2::Q3",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L2",
+      "stem": "On a displacement-distance graph, the wavelength is read:",
+      "misconceptionClass": "graph reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "along the horizontal axis between matching points",
+          "correct": true,
+          "explanation": "Wavelength is a distance, so it is read horizontally between corresponding points.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "vertically from the rest line to a peak",
+          "correct": false,
+          "explanation": "That vertical reading gives the amplitude.",
+          "misconception": "axis confusion"
+        },
+        {
+          "key": "C",
+          "text": "along the horizontal axis between a peak and the next trough",
+          "correct": false,
+          "explanation": "That span is half a wavelength.",
+          "misconception": "halving error"
+        },
+        {
+          "key": "D",
+          "text": "it cannot be read from a graph",
+          "correct": false,
+          "explanation": "Graphs are precisely where these values are read in exams.",
+          "misconception": "capability denial"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L2::Q4",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L2",
+      "stem": "A wave on a graph rises 4 cm above the rest line and dips 4 cm below it. The amplitude is:",
+      "misconceptionClass": "value reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "8 cm",
+          "correct": false,
+          "explanation": "That is the peak-to-trough span, twice the amplitude.",
+          "misconception": "doubling error"
+        },
+        {
+          "key": "B",
+          "text": "2 cm",
+          "correct": false,
+          "explanation": "No halving is involved; the swing is 4 cm each way.",
+          "misconception": "halving error"
+        },
+        {
+          "key": "C",
+          "text": "4 cm",
+          "correct": true,
+          "explanation": "Amplitude runs from the undisturbed level to one extreme, so 4 cm.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "16 cm",
+          "correct": false,
+          "explanation": "Nothing in the graph multiplies the reading fourfold.",
+          "misconception": "arithmetic invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L2::Q5",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L2",
+      "stem": "A longer wavelength on the same style of graph appears as:",
+      "misconceptionClass": "graph reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "taller peaks",
+          "correct": false,
+          "explanation": "Peak height sets amplitude, not wavelength.",
+          "misconception": "quantity confusion"
+        },
+        {
+          "key": "B",
+          "text": "repeats spaced further apart horizontally",
+          "correct": true,
+          "explanation": "Longer wavelength means the pattern repeats over a greater distance.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a flatter rest line",
+          "correct": false,
+          "explanation": "The rest line is a reference, unchanged by wavelength.",
+          "misconception": "confusion"
+        },
+        {
+          "key": "D",
+          "text": "more repeats in the same horizontal span",
+          "correct": false,
+          "explanation": "That is a shorter wavelength.",
+          "misconception": "reading inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L2::Q6",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L2",
+      "stem": "State the definition of amplitude.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Amplitude is the height from the undisturbed resting level out to a peak or to a trough of a wave.",
+      "keywords": [
+        "height",
+        "undisturbed",
+        "peak",
+        "trough"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L2::Q7",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L2",
+      "stem": "State the definition of wavelength.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Wavelength is the distance from one crest to the next crest, or from one trough to the next trough.",
+      "keywords": [
+        "distance",
+        "crest",
+        "next",
+        "trough"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L2::Q8",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L2",
+      "stem": "Explain why peak-to-trough height is not the amplitude.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Amplitude is defined from the undisturbed rest level to one extreme, and the peak-to-trough span crosses from one extreme to the other, covering that distance twice.",
+      "keywords": [
+        "undisturbed",
+        "extreme",
+        "twice",
+        "rest",
+        "definition"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L2::Q9",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L2",
+      "stem": "A displacement-distance graph shows successive peaks 0.5 m apart on the horizontal axis. State the wavelength, and give the amplitude if the peaks stand 3 cm above the rest line.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The wavelength is 0.5 m, read between matching points horizontally, and the amplitude is 3 cm, read vertically from the undisturbed level to a peak.",
+      "keywords": [
+        "wavelength",
+        "0.5",
+        "amplitude",
+        "3",
+        "matching"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L3::Q1",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L3",
+      "stem": "Frequency is defined as:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the time for one wave to pass",
+          "correct": false,
+          "explanation": "That is the time period.",
+          "misconception": "term swap"
+        },
+        {
+          "key": "B",
+          "text": "the distance between two peaks",
+          "correct": false,
+          "explanation": "That is the wavelength.",
+          "misconception": "term swap"
+        },
+        {
+          "key": "C",
+          "text": "the height of one wave",
+          "correct": false,
+          "explanation": "That is the amplitude.",
+          "misconception": "term swap"
+        },
+        {
+          "key": "D",
+          "text": "the number of waves passing a point each second",
+          "correct": true,
+          "explanation": "That count per second is what hertz measures.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L3::Q2",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L3",
+      "stem": "The unit of frequency is:",
+      "misconceptionClass": "unit recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the hertz, meaning per second",
+          "correct": true,
+          "explanation": "Hertz counts waves per second.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the metre",
+          "correct": false,
+          "explanation": "Metres measure wavelength and amplitude.",
+          "misconception": "unit swap"
+        },
+        {
+          "key": "C",
+          "text": "the second",
+          "correct": false,
+          "explanation": "Seconds measure the time period.",
+          "misconception": "unit swap"
+        },
+        {
+          "key": "D",
+          "text": "the newton",
+          "correct": false,
+          "explanation": "Newtons measure force, not wave counts.",
+          "misconception": "unit invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L3::Q3",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L3",
+      "stem": "A wave has frequency 5 Hz. In one second, the number of complete waves passing a point is:",
+      "misconceptionClass": "unit application",
+      "options": [
+        {
+          "key": "A",
+          "text": "1",
+          "correct": false,
+          "explanation": "That would be a frequency of 1 Hz.",
+          "misconception": "unit misread"
+        },
+        {
+          "key": "B",
+          "text": "25",
+          "correct": false,
+          "explanation": "Nothing squares the count here.",
+          "misconception": "arithmetic invention"
+        },
+        {
+          "key": "C",
+          "text": "5",
+          "correct": true,
+          "explanation": "Five hertz means exactly five waves per second.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "0.2",
+          "correct": false,
+          "explanation": "That is the period of a 5 Hz wave, not the count.",
+          "misconception": "reciprocal confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L3::Q4",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L3",
+      "stem": "The time period of a wave is:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the number of waves per second",
+          "correct": false,
+          "explanation": "That is the frequency.",
+          "misconception": "term swap"
+        },
+        {
+          "key": "B",
+          "text": "the time taken for one complete wave to pass a point",
+          "correct": true,
+          "explanation": "That single-wave duration is the period.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the distance a wave covers in one second",
+          "correct": false,
+          "explanation": "That is the wave speed.",
+          "misconception": "term swap"
+        },
+        {
+          "key": "D",
+          "text": "the time for the wave to cross the whole medium",
+          "correct": false,
+          "explanation": "The period is a single-wave measure, not a journey time.",
+          "misconception": "scope error"
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L3::Q5",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L3",
+      "stem": "On a displacement-time graph, the period is read:",
+      "misconceptionClass": "graph reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "vertically from rest line to peak",
+          "correct": false,
+          "explanation": "That gives the amplitude.",
+          "misconception": "axis confusion"
+        },
+        {
+          "key": "B",
+          "text": "along the time axis from the first wave to the fiftieth",
+          "correct": false,
+          "explanation": "That span covers many periods, not one.",
+          "misconception": "scope error"
+        },
+        {
+          "key": "C",
+          "text": "from the graph it cannot be read",
+          "correct": false,
+          "explanation": "A time-axis graph is exactly the tool for reading periods.",
+          "misconception": "capability denial"
+        },
+        {
+          "key": "D",
+          "text": "along the time axis between matching points of successive waves",
+          "correct": true,
+          "explanation": "With time on the horizontal axis, the repeat spacing gives the period.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L3::Q6",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L3",
+      "stem": "State what is meant by the time period of a wave, with its unit.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The time period is how long one complete cycle of the wave takes, measured in seconds.",
+      "keywords": [
+        "time",
+        "period",
+        "cycle",
+        "seconds"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L3::Q7",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L3",
+      "stem": "State what a frequency of 10 Hz means.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Ten complete waves pass a given point every second.",
+      "keywords": [
+        "ten",
+        "10",
+        "waves",
+        "second",
+        "point"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L3::Q8",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L3",
+      "stem": "Explain why frequency and time period describe the same rhythm in opposite ways.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Frequency counts how often a wave arrives per second while the period times one arrival, so a faster rhythm means more waves per second and a shorter time for each, making the two measures opposite views of one repetition rate.",
+      "keywords": [
+        "arrive",
+        "per second",
+        "shorter",
+        "rhythm",
+        "rate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TPSJT83Gh8nMCcVV::L3::Q9",
+      "moduleId": "rn_TPSJT83Gh8nMCcVV::L3",
+      "stem": "A displacement-time graph shows successive crests 0.02 s apart on the time axis. State the period of the wave, and what that makes the frequency.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The period is 0.02 s, read between matching points on the time axis; a wave that repeats every 0.02 s arrives 50 times per second, so the frequency is 50 Hz.",
+      "keywords": [
+        "period",
+        "0.02",
+        "50",
+        "frequency",
+        "hertz"
+      ],
+      "options": []
+    }
+  ]
+}

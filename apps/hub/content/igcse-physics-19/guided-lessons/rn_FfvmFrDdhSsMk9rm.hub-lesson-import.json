@@ -1,0 +1,111 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_FfvmFrDdhSsMk9rm",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "5e492b92c8e65bd80d6d71ebdde660e589000d50f9e7568e896b45ae9fb8983b",
+    "pinnedRef": "502107a3fcacad2340d0ac5e66b5ad93ef32800c"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_FfvmFrDdhSsMk9rm",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Electrical Power & Mains Electricity",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-3-electrical-power-and-mains-electricity/2-3-2-calculating-energy-transfers",
+    "specAnchors": [
+      {
+        "code": "2.5",
+        "text": "use the relationship between energy transferred, current, voltage and time: energy transferred = current × voltage × time"
+      }
+    ],
+    "primer": {
+      "text": "When charge is driven around a circuit, the battery is doing work — and work done is energy transferred. This note assembles the three quantities that set the size of that transfer, the current, the voltage and the time in seconds, into the single equation E = I × V × t, and shows it is just power multiplied by time.",
+      "prerequisiteSubtopic": "Electrical Power & Mains Electricity"
+    },
+    "modules": [
+      {
+        "id": "rn_FfvmFrDdhSsMk9rm::L1",
+        "title": "Calculating energy transfers",
+        "sourceHeadings": [
+          "Calculating energy transfers"
+        ],
+        "specRefs": [
+          "2.5"
+        ],
+        "opening": "Charge flowing through a component is the battery doing work on it, and the energy handed over depends on three things: how hard the charge is pushed (voltage), how much flow there is (current) and how long the flow lasts (time). Multiply the three and you have the energy transferred in joules.",
+        "keyPoints": [
+          "Work done by the moving charge equals the energy transferred in the circuit.",
+          "Energy transferred depends on the current, the voltage and the time the component runs.",
+          "The equation of record is E = I × V × t, with energy in joules.",
+          "It is E = P × t with the power written as P = I × V.",
+          "Time must enter the equation in seconds, never minutes.",
+          "The energy the battery supplies equals the total transferred to every component."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Energy transferred equals current × voltage × time; the longer a device runs, the more energy it moves.",
+            "analogy": "Filling a paddling pool: the flow rate (current), the pressure (voltage) and the filling time together set the water collected.",
+            "examPointer": "Convert minutes to seconds before substituting — this single slip loses the most marks here."
+          },
+          "medium": {
+            "restatement": "Because P = I × V, the same law can be read as E = P × t; the two forms are one relationship seen two ways.",
+            "analogy": "A taxi fare: the rate per mile (power) times the miles driven (time at speed) gives the total paid (energy).",
+            "examPointer": "'Work done' and 'energy transferred' are interchangeable in mark schemes — use either name confidently."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_FfvmFrDdhSsMk9rm::L1::Q1",
+          "rn_FfvmFrDdhSsMk9rm::L1::Q2",
+          "rn_FfvmFrDdhSsMk9rm::L1::Q3",
+          "rn_FfvmFrDdhSsMk9rm::L1::Q4",
+          "rn_FfvmFrDdhSsMk9rm::L1::Q5",
+          "rn_FfvmFrDdhSsMk9rm::L1::Q6",
+          "rn_FfvmFrDdhSsMk9rm::L1::Q7",
+          "rn_FfvmFrDdhSsMk9rm::L1::Q8",
+          "rn_FfvmFrDdhSsMk9rm::L1::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "energy transferred",
+          "definition": "The energy handed over by the moving charge, equal to the work done, in joules.",
+          "firstLesson": 1
+        },
+        {
+          "term": "work done",
+          "definition": "Another name for energy transferred when charge flows around a circuit.",
+          "firstLesson": 1
+        },
+        {
+          "term": "joule",
+          "definition": "The SI unit of energy.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "Calculate the energy transferred in 1 minute when a current of 0.7 A passes through a potential difference of 4 V.",
+        "steps": [
+          "List the knowns: time t = 1 minute = 60 s, current I = 0.7 A, potential difference V = 4 V.",
+          "State the linking equation: E = I × V × t.",
+          "Substitute: E = 0.7 × 4 × 60.",
+          "Work the product: E = 168 J."
+        ],
+        "finalAnswer": "The energy transferred is 168 J."
+      }
+    }
+  }
+}

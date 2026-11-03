@@ -1,0 +1,59 @@
+{
+ "lane": "T-SM-UNBLOCK-1",
+ "receipt": "unblock-init-r0",
+ "run": "run-001",
+ "phase": "INITIATED-AWAITING-OPERATOR-KEY-TURN",
+ "order_traces": {
+  "order": "1a1a0ee2b42f4d95",
+  "order_word": "\"Initiate a project to address the unblocking lever\"",
+  "lever_source": "od1-live-ma-probe-r0.json (probe order trace 1a19f6877e9c76a1)"
+ },
+ "adr_of_record": "docs/ADR-041-MULTI_AXIS_SERVING_UNBLOCK.md (PROPOSED; ACCEPTED on merge; Stage-1 fire operator-held)",
+ "vehicle_of_record": "apps/api/scripts/smart-mark/promote-multi-axis-versions.mts",
+ "vehicle_proofs": {
+  "parse": "bun build --no-bundle OK",
+  "usage_guard": "exit 2, no args",
+  "connect_guard": "exit 2 without DATABASE_URL (nothing read, nothing written)",
+  "bearer_guard": "exit 2 with short --bearer (nothing sent) \u2014 the operator's key turn is mechanically required",
+  "dry_run": "exit 0, zero HTTP, scope plumbing proven",
+  "ids_all_refused": "--ids all deliberately unsupported (exit 2)"
+ },
+ "census_of_record": {
+  "mode": "vehicle --census, live, READ-ONLY",
+  "multi_axis_parts": 147,
+  "axis_schemes": 492,
+  "versions_touched": 101,
+  "drift_check": "OK vs od1-ma10-census-r0.json (147 parts / 492 axes)",
+  "versions_state": "all 101 SUGGESTED",
+  "papers_state": "all SUGGESTED \u2014 V20 (REJECTED/FLAGGED-only) passes",
+  "manifest_file": ".syllabai/receipts/T-SM-UNBLOCK-1/promotion-manifest-r0.json"
+ },
+ "stage_1": {
+  "law": "ONE chosen version first (minimal blast radius), then re-fire the OD-1 probe UNCHANGED",
+  "version_id": "b61de1f1-b6f2-4df9-b899-d62c63aa96d3",
+  "question_id": "2066bee4-11e2-487b-be2b-6bbad7ae3103",
+  "paper_id": "1298dbf7-4e85-4c64-9ad3-ce266c2b663d",
+  "paper_state": "SUGGESTED",
+  "part_id": "09e1b776-4fd5-4b22-a204-62998ca4108f",
+  "part_label": "b-ii",
+  "marks": 8,
+  "axes": [
+   "2-b-ii#a1 (4 bands)",
+   "2-b-ii#a2 (4 bands)"
+  ],
+  "effect": "one UPDATE + one recordAudit(VALIDATE) row, written by the product surface; submitStructured step 3 then serves the part"
+ },
+ "stage_2": "remaining 100 versions / 146 parts / 490 axes \u2014 explicit operator word only, after Stage 1 proves end-to-end",
+ "key_turn_options": [
+  "RECOMMENDED: operator hands an existing TEACHER/ADMIN bearer for the fire window (26 TEACHER / 1 ADMIN exist; DB-proven 2026-11-03) \u2014 zero production change",
+  "one-time SYLLABAI_TEACHER_JOIN_CODE turn (Vercel env, Production) -> dedicated TEACHER self-registration via the sanctioned register route -> fire -> code removed; both turns receipted",
+  "any other lever only on explicit operator instruction amending ADR-041"
+ ],
+ "closed_levers_confirmed": {
+  "bootstrap_admin": "permanently closed \u2014 adminCount==1 (claimable() requires 0); DB-proven 2026-11-03",
+  "teacher_join_code": "gate CLOSED by default law (SYLLABAI_TEACHER_JOIN_CODE unset -> \"\")",
+  "direct_db_write": "against the operating law \u2014 production writes ride product surfaces only; the vehicle has NO DB-write mode by construction"
+ },
+ "boundaries": "zero production writes this run; zero apps/api src changes; DB access strictly read-only; no merge without the operator's explicit merge word",
+ "anti_truncation": "census manifest committed verbatim as produced by the vehicle; this receipt states the proofs as executed"
+}

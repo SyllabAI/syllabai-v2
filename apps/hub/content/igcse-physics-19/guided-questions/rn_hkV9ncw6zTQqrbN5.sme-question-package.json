@@ -1,0 +1,741 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_hkV9ncw6zTQqrbN5",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "097e71cfa17c0d05db915a3a8e49b488a3081f08444f6a4d7a5df4ec70abe4bf",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "packageId": "igcse-physics::rn_hkV9ncw6zTQqrbN5",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L1::Q1",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L1",
+      "stem": "The wave speed equation in symbols is:",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "v = f / lambda",
+          "correct": false,
+          "explanation": "Dividing would give the wrong dimensions; the law multiplies.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "B",
+          "text": "v = f x lambda",
+          "correct": true,
+          "explanation": "Wave speed equals frequency multiplied by wavelength.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "v = lambda / f",
+          "correct": false,
+          "explanation": "That would divide a length by a count per second.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "D",
+          "text": "f = v x lambda",
+          "correct": false,
+          "explanation": "Rearranged wrongly: frequency is v divided by lambda.",
+          "misconception": "rearrangement slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L1::Q2",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L1",
+      "stem": "In v = f x lambda, the quantity v stands for:",
+      "misconceptionClass": "symbol recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "volume in cubic metres",
+          "correct": false,
+          "explanation": "Volume has no role in the wave equation.",
+          "misconception": "symbol confusion"
+        },
+        {
+          "key": "B",
+          "text": "voltage in volts",
+          "correct": false,
+          "explanation": "Voltage belongs to electricity, not this law.",
+          "misconception": "subject confusion"
+        },
+        {
+          "key": "C",
+          "text": "wave speed in metres per second",
+          "correct": true,
+          "explanation": "v carries the speed in m/s.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "frequency in hertz",
+          "correct": false,
+          "explanation": "Frequency is the f term.",
+          "misconception": "symbol swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L1::Q3",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L1",
+      "stem": "A wave has frequency 2 Hz and wavelength 0.5 m. Its speed is:",
+      "misconceptionClass": "equation application",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.25 m/s",
+          "correct": false,
+          "explanation": "That comes from multiplying 0.5 by 0.5; the frequency is 2.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "B",
+          "text": "2.5 m/s",
+          "correct": false,
+          "explanation": "Adding instead of multiplying is not the law.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "4 m/s",
+          "correct": false,
+          "explanation": "That divides by the wavelength instead of multiplying.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "D",
+          "text": "1 m/s",
+          "correct": true,
+          "explanation": "v = 2 x 0.5 = 1 m/s.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L1::Q4",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L1",
+      "stem": "Rearranging v = f x lambda to find the wavelength gives:",
+      "misconceptionClass": "rearrangement",
+      "options": [
+        {
+          "key": "A",
+          "text": "lambda = v / f",
+          "correct": true,
+          "explanation": "Dividing speed by frequency leaves the wavelength.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "lambda = f / v",
+          "correct": false,
+          "explanation": "That inverts the rearrangement.",
+          "misconception": "rearrangement slip"
+        },
+        {
+          "key": "C",
+          "text": "lambda = v x f",
+          "correct": false,
+          "explanation": "Multiplying both quantities gives speed squared units.",
+          "misconception": "rearrangement slip"
+        },
+        {
+          "key": "D",
+          "text": "lambda = v + f",
+          "correct": false,
+          "explanation": "The law multiplies, so the inverse divides.",
+          "misconception": "operation slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L1::Q5",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L1",
+      "stem": "A sound wave has speed 300 m/s and frequency 500 Hz. Its wavelength is:",
+      "misconceptionClass": "equation application",
+      "options": [
+        {
+          "key": "A",
+          "text": "150000 m",
+          "correct": false,
+          "explanation": "That multiplies instead of dividing; a wavelength of 150 km is not physical here.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "B",
+          "text": "800 m",
+          "correct": false,
+          "explanation": "Adding speed and frequency has no meaning in this law.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "0.6 m",
+          "correct": true,
+          "explanation": "lambda = 300 / 500 = 0.6 m.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "1.7 m",
+          "correct": false,
+          "explanation": "That divides frequency by speed, the inverted ratio.",
+          "misconception": "rearrangement slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L1::Q6",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L1",
+      "stem": "State the wave speed equation in words and in symbols.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Wave speed = frequency x wavelength, written v = f x lambda.",
+      "keywords": [
+        "wave speed",
+        "frequency",
+        "wavelength",
+        "written",
+        "lambda"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L1::Q7",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L1",
+      "stem": "State the units of v, f and lambda in the wave speed equation.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "v is in metres per second, f in hertz and lambda in metres.",
+      "keywords": [
+        "metres per second",
+        "hertz",
+        "metres"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L1::Q8",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L1",
+      "stem": "Explain how the formula triangle is used to find frequency from speed and wavelength.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Covering f in the triangle leaves v over lambda, so frequency is the wave speed divided by the wavelength, which is the rearrangement of v = f x lambda for f.",
+      "keywords": [
+        "cover",
+        "speed",
+        "divided",
+        "wavelength",
+        "rearrangement"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L1::Q9",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L1",
+      "stem": "A water ripple travels at 0.4 m/s with wavelength 0.1 m. Calculate its frequency, showing the equation you use.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "f = v / lambda = 0.4 / 0.1 = 4 Hz, using the wave speed equation rearranged for frequency.",
+      "keywords": [
+        "frequency",
+        "0.4",
+        "0.1",
+        "4",
+        "hertz"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L2::Q1",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L2",
+      "stem": "The equation linking frequency and time period is:",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "f = T",
+          "correct": false,
+          "explanation": "They are reciprocal, not equal.",
+          "misconception": "reciprocal confusion"
+        },
+        {
+          "key": "B",
+          "text": "f = 1 / T",
+          "correct": true,
+          "explanation": "Frequency is the reciprocal of the period.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "f = 1 / T squared",
+          "correct": false,
+          "explanation": "No squaring appears in the relationship.",
+          "misconception": "operation invention"
+        },
+        {
+          "key": "D",
+          "text": "f = T / 1",
+          "correct": false,
+          "explanation": "That just restates the period as frequency.",
+          "misconception": "reciprocal confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L2::Q2",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L2",
+      "stem": "A wave has time period 0.5 s. Its frequency is:",
+      "misconceptionClass": "reciprocal application",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.5 Hz",
+          "correct": false,
+          "explanation": "That restates the period as a frequency.",
+          "misconception": "reciprocal confusion"
+        },
+        {
+          "key": "B",
+          "text": "5 Hz",
+          "correct": false,
+          "explanation": "No factor of ten is involved.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "C",
+          "text": "1.5 Hz",
+          "correct": false,
+          "explanation": "Nothing adds one here.",
+          "misconception": "arithmetic invention"
+        },
+        {
+          "key": "D",
+          "text": "2 Hz",
+          "correct": true,
+          "explanation": "f = 1 / 0.5 = 2 Hz.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L2::Q3",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L2",
+      "stem": "A wave repeats every 0.02 s. Its frequency is:",
+      "misconceptionClass": "reciprocal application",
+      "options": [
+        {
+          "key": "A",
+          "text": "50 Hz",
+          "correct": true,
+          "explanation": "f = 1 / 0.02 = 50 Hz.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0.02 Hz",
+          "correct": false,
+          "explanation": "That is the period quoted as a frequency.",
+          "misconception": "reciprocal confusion"
+        },
+        {
+          "key": "C",
+          "text": "20 Hz",
+          "correct": false,
+          "explanation": "That drops a zero in the division.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "D",
+          "text": "200 Hz",
+          "correct": false,
+          "explanation": "That inserts an extra factor of ten.",
+          "misconception": "arithmetic slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L2::Q4",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L2",
+      "stem": "Rearranging f = 1 / T for the period gives:",
+      "misconceptionClass": "rearrangement",
+      "options": [
+        {
+          "key": "A",
+          "text": "T = f",
+          "correct": false,
+          "explanation": "Period and frequency are not equal.",
+          "misconception": "reciprocal confusion"
+        },
+        {
+          "key": "B",
+          "text": "T = 1 - f",
+          "correct": false,
+          "explanation": "The relationship is division, not subtraction.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "T = 1 / f",
+          "correct": true,
+          "explanation": "The reciprocal swaps sides symmetrically.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "T = f / 1",
+          "correct": false,
+          "explanation": "That restates frequency as the period.",
+          "misconception": "reciprocal confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L2::Q5",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L2",
+      "stem": "A signal has frequency 200 Hz. Its time period is:",
+      "misconceptionClass": "reciprocal application",
+      "options": [
+        {
+          "key": "A",
+          "text": "200 s",
+          "correct": false,
+          "explanation": "That restates the frequency as a period in seconds.",
+          "misconception": "reciprocal confusion"
+        },
+        {
+          "key": "B",
+          "text": "0.005 s",
+          "correct": true,
+          "explanation": "T = 1 / 200 = 0.005 s.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "0.2 s",
+          "correct": false,
+          "explanation": "That would follow from a frequency of 5 Hz.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "D",
+          "text": "20 s",
+          "correct": false,
+          "explanation": "No scaling by ten applies.",
+          "misconception": "arithmetic slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L2::Q6",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L2",
+      "stem": "State in words how frequency and the time period are related.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Frequency equals one divided by the time period.",
+      "keywords": [
+        "frequency",
+        "one",
+        "divided",
+        "time period"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L2::Q7",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L2",
+      "stem": "State the unit of time period and the unit of frequency.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Time period is measured in seconds and frequency in hertz.",
+      "keywords": [
+        "seconds",
+        "hertz",
+        "measured"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L2::Q8",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L2",
+      "stem": "Explain why a wave with a shorter time period has a higher frequency.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Frequency counts the waves arriving each second by dividing one second by the time each wave takes, so shrinking the per-wave time raises the per-second count.",
+      "keywords": [
+        "one second",
+        "divide",
+        "shorter",
+        "count",
+        "higher"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L2::Q9",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L2",
+      "stem": "A vibrating toy completes 200 vibrations per second. Calculate the time period of one vibration.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "T = 1 / f = 1 / 200 = 0.005 s, using the reciprocal relationship rearranged for the period.",
+      "keywords": [
+        "time period",
+        "1",
+        "200",
+        "0.005",
+        "seconds"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L3::Q1",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L3",
+      "stem": "The wave speed equation can be applied to:",
+      "misconceptionClass": "scope law",
+      "options": [
+        {
+          "key": "A",
+          "text": "sound waves only",
+          "correct": false,
+          "explanation": "The law is not restricted to mechanical waves.",
+          "misconception": "scope narrowing"
+        },
+        {
+          "key": "B",
+          "text": "light waves only",
+          "correct": false,
+          "explanation": "The law is not restricted to electromagnetic waves.",
+          "misconception": "scope narrowing"
+        },
+        {
+          "key": "C",
+          "text": "water ripples only",
+          "correct": false,
+          "explanation": "Any single-wave-type reading is too narrow.",
+          "misconception": "scope narrowing"
+        },
+        {
+          "key": "D",
+          "text": "all waves, including sound and electromagnetic waves",
+          "correct": true,
+          "explanation": "The relationship is universal across wave types.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L3::Q2",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L3",
+      "stem": "A frequency of 200 kHz expressed in hertz is:",
+      "misconceptionClass": "unit conversion",
+      "options": [
+        {
+          "key": "A",
+          "text": "200000 Hz",
+          "correct": true,
+          "explanation": "1 kHz = 1000 Hz, so 200 kHz = 200000 Hz.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "200 Hz",
+          "correct": false,
+          "explanation": "That drops the kilo- prefix conversion.",
+          "misconception": "conversion slip"
+        },
+        {
+          "key": "C",
+          "text": "2000000 Hz",
+          "correct": false,
+          "explanation": "That multiplies by an extra thousand.",
+          "misconception": "conversion slip"
+        },
+        {
+          "key": "D",
+          "text": "0.2 Hz",
+          "correct": false,
+          "explanation": "That divides instead of multiplying.",
+          "misconception": "conversion inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L3::Q3",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L3",
+      "stem": "A radio station broadcasts at 200 kHz with wavelength 1500 m. The wave speed is:",
+      "misconceptionClass": "chained application",
+      "options": [
+        {
+          "key": "A",
+          "text": "300000 m/s",
+          "correct": false,
+          "explanation": "That drops two zeros from the product.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "B",
+          "text": "0.13 m/s",
+          "correct": false,
+          "explanation": "That divides the frequency by the wavelength.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "3 x 10^8 m/s",
+          "correct": true,
+          "explanation": "v = 200000 x 1500 = 300000000 = 3 x 10^8 m/s.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "3 x 10^6 m/s",
+          "correct": false,
+          "explanation": "That loses a factor of a hundred.",
+          "misconception": "arithmetic slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L3::Q4",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L3",
+      "stem": "A sound wave moves at 330 m/s with time period 0.0001 s. Its frequency is:",
+      "misconceptionClass": "chained application",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.0001 Hz",
+          "correct": false,
+          "explanation": "That quotes the period as the frequency.",
+          "misconception": "reciprocal confusion"
+        },
+        {
+          "key": "B",
+          "text": "10000 Hz",
+          "correct": true,
+          "explanation": "f = 1 / 0.0001 = 10000 Hz = 1 x 10^4 Hz.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "1000 Hz",
+          "correct": false,
+          "explanation": "That drops a zero in the division.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "D",
+          "text": "330 Hz",
+          "correct": false,
+          "explanation": "The speed does not set the frequency on its own.",
+          "misconception": "quantity confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L3::Q5",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L3",
+      "stem": "That same sound wave (330 m/s, frequency 10000 Hz) has wavelength:",
+      "misconceptionClass": "chained application",
+      "options": [
+        {
+          "key": "A",
+          "text": "3.3 m",
+          "correct": false,
+          "explanation": "That divides by 100 instead of 10000.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "B",
+          "text": "33 m",
+          "correct": false,
+          "explanation": "That is off by three orders of magnitude.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "C",
+          "text": "3300000 m",
+          "correct": false,
+          "explanation": "That multiplies instead of dividing.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "D",
+          "text": "0.033 m",
+          "correct": true,
+          "explanation": "lambda = 330 / 10000 = 0.033 m.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L3::Q6",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L3",
+      "stem": "State the conversion between kilohertz and hertz.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "1 kHz = 1000 Hz.",
+      "keywords": [
+        "1",
+        "kHz",
+        "1000",
+        "Hz"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L3::Q7",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L3",
+      "stem": "State the two equations a wave-context calculation may need.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "v = f x lambda and f = 1 / T, with T = 1 / f as the reverse form.",
+      "keywords": [
+        "v",
+        "f",
+        "lambda",
+        "T",
+        "reverse"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L3::Q8",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L3",
+      "stem": "Explain why units are converted before substituting into the wave equation.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The equation only balances when speed is in metres per second, frequency in hertz and wavelength in metres, so mixed units like kHz or centimetres would produce answers that are wrong by factors of a thousand or a hundred.",
+      "keywords": [
+        "units",
+        "balance",
+        "metres",
+        "hertz",
+        "factor"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hkV9ncw6zTQqrbN5::L3::Q9",
+      "moduleId": "rn_hkV9ncw6zTQqrbN5::L3",
+      "stem": "A hammer strikes steel rail every 2.0 ms. Given the vibration wave travels the rail at 6000 m/s, calculate the wavelength along the rail.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Period 2.0 ms = 0.002 s gives f = 1 / 0.002 = 500 Hz; then lambda = v / f = 6000 / 500 = 12 m.",
+      "keywords": [
+        "frequency",
+        "500",
+        "wavelength",
+        "6000",
+        "12"
+      ],
+      "options": []
+    }
+  ]
+}

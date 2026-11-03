@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getCourseBundle } from "@/lib/courses";
-import { buildSpecTreeIndex, subtopicOfQuestionSet } from "@/lib/spec-tree";
+import { buildSpecTreeIndex, generalTopicsOfQuestionTopics, subtopicOfQuestionSet } from "@/lib/spec-tree";
 
 /**
  * GET /api/teacher/validation-queue?slug=<course>
@@ -58,7 +58,10 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "no bundle for course" }, { status: 404 });
   }
 
-  const index = buildSpecTreeIndex(bundle.curriculum);
+  const index = buildSpecTreeIndex(bundle.curriculum, {
+    // keep teacher placement identical to the student hub (D0 gen rows)
+    generalTopics: generalTopicsOfQuestionTopics(bundle.questionTopics),
+  });
 
   // round-robin across question sets so the queue spans subtopics, not just
   // the first set — deterministic (corpus order), no randomness

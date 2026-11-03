@@ -81,11 +81,15 @@ import type {
   FlashcardRatingTrailView,
   FlashcardRatingView,
   FlashcardReviewScheduleView,
+  LastOpenedView,
   LearnerAssignmentView,
+  MockResultsView,
   MyCoursesView,
   NextBestActionsView,
   NoteVoteView,
+  PutMockResultsRequest,
   ReviewView,
+  SetLastOpenedRequest,
   SetMyCoursesRequest,
   SetTargetRequest,
 } from "@syllabai/contracts";
@@ -991,6 +995,165 @@ export async function setMyCourses(
   return myCourses(deps, learnerId);
 }
 
+// ── T-TIER1 — the account-backed last-opened pointer + mock results ───────
+//
+// Frontend deep-audit Tier 1 (operator order 2026-11-03: "things that are
+// localStorage-only, make them saved to account"). Two v2-native additive
+// surfaces following the T-TEACH-001 write-through law: the hub's local
+// stores stay the UI cache; signed in, every local write mirrors here and
+// the server wins on reconcile. Tables: learner_last_opened (one row per
+// account, 0022) + learner_mock_results (per-course full-set replace, 0022).
+
+/**
+ * GET /api/v1/learners/me/last-opened — the account's most-recent course
+ * surface pointer, or null when this account never opened one (the honest
+ * empty — never a fabricated default). One row per account (PK user_id).
+ */
+export async function lastOpened(
+  deps: FlashcardRatingRecordDeps,
+  learnerId: string,
+): Promise<LastOpenedView | null> {
+  const rows = (await deps.sql`
+    select course_slug, resource, updated_at
+    from learner_last_opened
+    where user_id = ${learnerId}`) as unknown as Array<{
+    course_slug: string;
+    resource: string;
+    updated_at: string | Date;
+  }>;
+  const row = rows[0];
+  if (!row) return null;
+  return {
+    courseSlug: row.course_slug,
+    resource: row.resource as LastOpenedView["resource"],
+    updatedAt: toInstant(row.updated_at),
+  };
+}
+
+/**
+ * PUT /api/v1/learners/me/last-opened — idempotent upsert: the newest
+ * navigation REPLACES the pointer (one row per account; the upsert keeps
+ * the write self-healing on retry). The slug law is the target-series
+ * kebab-case law (400 bad_request verbatim), identical to my-courses.
+ */
+export async function setLastOpened(
+  deps: FlashcardRatingRecordDeps,
+  learnerId: string,
+  request: SetLastOpenedRequest,
+): Promise<LastOpenedView> {
+  if (!isValidCourseSlug(request.courseSlug)) {
+    throw new BadRequestError("course slug must be a kebab-case registry key");
+  }
+  const now = deps.clock.now().toISOString();
+  await deps.sql`
+    insert into learner_last_opened (user_id, course_slug, resource, updated_at)
+    values (${learnerId}, ${request.courseSlug}, ${request.resource}, ${now})
+    on conflict (user_id) do update
+      set course_slug = excluded.course_slug,
+          resource = excluded.resource,
+          updated_at = excluded.updated_at`;
+  const view = await lastOpened(deps, learnerId);
+  if (!view) throw new ConflictError("last-opened write did not persist");
+  return view;
+}
+
+/** The per-course bound of record (the hub's own MAX_PER_COURSE). */
+const MOCK_RESULTS_CAP = 20;
+
+interface MockResultRow {
+  client_id: string;
+  ref: string;
+  title: string;
+  session_id: string;
+  finished_at: string | Date;
+  duration_min: number;
+  time_used_sec: number;
+  marks: number;
+  total: number;
+  ended: string;
+  questions: unknown;
+}
+
+const toMockResultView = (r: MockResultRow) => ({
+  clientId: r.client_id,
+  ref: r.ref,
+  title: r.title,
+  sessionId: r.session_id,
+  finishedAt: toInstant(r.finished_at),
+  durationMin: r.duration_min,
+  timeUsedSec: r.time_used_sec,
+  marks: r.marks,
+  total: r.total,
+  ended: r.ended as "time-up" | "self" | "exited",
+  questions: (r.questions as MockResultsView["results"][number]["questions"]) ?? undefined,
+});
+
+/**
+ * GET /api/v1/learners/me/mock-results — every course's self-marked mock
+ * tallies, newest finished first, capped at 20 per course server-side (the
+ * same bound the hub's store enforces locally — the cap is a law, not a
+ * UI choice, so cache and account can never disagree about the shape).
+ */
+export async function mockResults(
+  deps: FlashcardRatingRecordDeps,
+  learnerId: string,
+): Promise<MockResultsView> {
+  const rows = (await deps.sql`
+    select client_id, ref, title, session_id, finished_at, duration_min,
+           time_used_sec, marks, total, ended, questions, course_slug,
+           row_number() over (
+             partition by course_slug
+             order by finished_at desc, created_at desc
+           ) as rn
+    from learner_mock_results
+    where user_id = ${learnerId}`) as unknown as Array<MockResultRow & { course_slug: string; rn: string | number }>;
+  const results = rows
+    .filter((r) => Number(r.rn) <= MOCK_RESULTS_CAP)
+    .sort((a, b) => {
+      if (a.finished_at !== b.finished_at) {
+        return new Date(b.finished_at).getTime() - new Date(a.finished_at).getTime();
+      }
+      return a.client_id < b.client_id ? -1 : a.client_id > b.client_id ? 1 : 0;
+    })
+    .map(toMockResultView);
+  return { results };
+}
+
+/**
+ * PUT /api/v1/learners/me/mock-results/{courseSlug} — the FULL desired set
+ * for that ONE course, idempotent replace (the course's rows are deleted,
+ * the posted set inserted; an empty array clears the course — the same
+ * full-set write-through posture as my-courses, so a retried PUT and a
+ * reconcile can never double-insert). Statements are deliberately plain
+ * (no tx seam): the replace is idempotent against the desired set.
+ */
+export async function setMockResults(
+  deps: FlashcardRatingRecordDeps,
+  learnerId: string,
+  courseSlug: string,
+  request: PutMockResultsRequest,
+): Promise<MockResultsView> {
+  if (!isValidCourseSlug(courseSlug)) {
+    throw new BadRequestError("course slug must be a kebab-case registry key");
+  }
+  await deps.sql`
+    delete from learner_mock_results
+    where user_id = ${learnerId} and course_slug = ${courseSlug}`;
+  const now = deps.clock.now().toISOString();
+  for (const r of request.results) {
+    await deps.sql`
+      insert into learner_mock_results
+        (id, user_id, course_slug, client_id, ref, title, session_id,
+         finished_at, duration_min, time_used_sec, marks, total, ended,
+         questions, created_at)
+      values (${deps.clock.newId()}, ${learnerId}, ${courseSlug}, ${r.clientId},
+              ${r.ref}, ${r.title}, ${r.sessionId}, ${r.finishedAt},
+              ${r.durationMin}, ${r.timeUsedSec}, ${r.marks}, ${r.total},
+              ${r.ended}, ${r.questions ? JSON.stringify(r.questions) : null}, ${now})`;
+  }
+  return mockResults(deps, learnerId);
+}
+
 // ── learner assignments (V49/V51) ───────────────────────────────────────────
 
 const toAssignmentView = (a: AssignmentRow) => ({
@@ -1291,6 +1454,14 @@ export interface LearnerMeModule {
   clearTargetSeries: (learnerId: string, courseSlug: string) => Promise<void>;
   myCourses: (learnerId: string) => Promise<MyCoursesView>;
   setMyCourses: (learnerId: string, request: SetMyCoursesRequest) => Promise<MyCoursesView>;
+  lastOpened: (learnerId: string) => Promise<LastOpenedView | null>;
+  setLastOpened: (learnerId: string, request: SetLastOpenedRequest) => Promise<LastOpenedView>;
+  mockResults: (learnerId: string) => Promise<MockResultsView>;
+  setMockResults: (
+    learnerId: string,
+    courseSlug: string,
+    request: PutMockResultsRequest,
+  ) => Promise<MockResultsView>;
   examTargetsFor: (learnerId: string) => Promise<CourseExamTargetView[]>;
   learnerAssignments: (learnerId: string) => Promise<LearnerAssignmentView[]>;
   submitAssignment: (
@@ -1351,6 +1522,11 @@ export function buildLearnerMeModule(
     clearTargetSeries: (learnerId, courseSlug) => clearTargetSeries(deps, learnerId, courseSlug),
     myCourses: (learnerId) => myCourses(deps, learnerId),
     setMyCourses: (learnerId, request) => setMyCourses(deps, learnerId, request),
+    lastOpened: (learnerId) => lastOpened(deps, learnerId),
+    setLastOpened: (learnerId, request) => setLastOpened(deps, learnerId, request),
+    mockResults: (learnerId) => mockResults(deps, learnerId),
+    setMockResults: (learnerId, courseSlug, request) =>
+      setMockResults(deps, learnerId, courseSlug, request),
     examTargetsFor: (learnerId) => examTargetsFor(deps, learnerId),
     learnerAssignments: (learnerId) => learnerAssignments(deps, learnerId),
     submitAssignment: (learnerId, assignmentId, request) =>

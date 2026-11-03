@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | PROPOSED — awaiting the operator's acceptance word (drafted under the widen order, IM trace `1a19b69d1fddc0b5`, 2026-11-02) |
+| **Status** | ACCEPTED — operator acceptance word of record, IM trace `1a19f606f8741cbd`, 2026-11-03: *"the strength-checks lane (T-BOOK-069) proceed"* (drafted under the widen order, IM trace `1a19b69d1fddc0b5`, 2026-11-02) |
 | **Date** | 2026-11-02 |
 | **Lane** | T-BOOK-069 |
 | **Supersedes** | nothing |
@@ -79,9 +79,11 @@ silent change.
 
 The draft above was written DB-blind (armed without a pooler credential). First live fire
 against the bank surfaced four mechanical corrections; all are disclosed here and carry
-their rationale in the T-BOOK-069 run-001 receipt. The ADR remains PROPOSED; the lane
-executes under the standing operator order (trace `1a19b69d1fddc0b5`) + the credential
-hand in direct response to the stated unblock plan (trace `1a19d157d5ca8cc9`).
+their rationale in the T-BOOK-069 run-001 receipt. (Acceptance note: the ADR was PROPOSED
+through run-001 — the lane then executed under the standing operator order, trace
+`1a19b69d1fddc0b5`, plus the credential hand, trace `1a19d157d5ca8cc9`; the operator's
+acceptance word for the lane, trace `1a19f606f8741cbd`, 2026-11-03, is recorded in the
+status header above.)
 
 1. **Keying v2 (supersedes decision 4's mechanism, not its intent).** The draft's SME
    `external_ref` regex is subject-ambiguous: physics items (`sme-eq-1-1-movement-and-position-…`)

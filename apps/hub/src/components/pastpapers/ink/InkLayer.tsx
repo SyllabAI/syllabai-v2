@@ -100,6 +100,13 @@ import { cn } from "@/lib/utils";
 import {
   INK_COLORS,
   INK_COLOR_KEYS,
+  INK_CHIP_COLOR,
+  INK_CHIP_MATH_LABEL,
+  INK_CHIP_MATH_OFFSET_PX,
+  INK_CHIP_MATH_PX,
+  INK_CHIP_OPACITY,
+  INK_CHIP_TEXT_LABEL,
+  INK_CHIP_TEXT_PX,
   INK_TEXT_BASE_PX,
   INK_TEXT_FONT_STACK,
   INK_TEXT_WEIGHT,
@@ -207,6 +214,14 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   const [token, setToken] = useState<string | null>(null);
   const [enabled, setEnabled] = useState(false);
   const [mode, setMode] = useState<InkToolMode>("pen");
+  // T-MG-INK-10: the arm epoch — every explicit arming (toolbar click,
+  // hint-card arm) bumps it; the hover chips key their per-arm spend on
+  // it (a placement spends the chip until the next arming).
+  const [armSeq, setArmSeq] = useState(0);
+  const armTool = useCallback((m: InkToolMode) => {
+    setMode(m);
+    setArmSeq((s) => s + 1);
+  }, []);
   const [color, setColor] = useState<InkColor>("black");
   const [widthIdx, setWidthIdx] = useState(1);
   const [holders, setHolders] = useState<HolderEntry[]>([]);
@@ -329,10 +344,10 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   }, []);
   const armFromHint = useCallback(
     (m: InkToolMode) => {
-      setMode(m);
+      armTool(m);
       dismissHint();
     },
-    [dismissHint],
+    [dismissHint, armTool],
   );
 
   useEffect(() => {
@@ -641,7 +656,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             className="size-8 px-0"
             aria-pressed={mode === "pen"}
             aria-label="Draw"
-            onClick={() => setMode("pen")}
+            onClick={() => armTool("pen")}
           >
             <Pen className="size-4" aria-hidden />
           </Button>
@@ -651,7 +666,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             className="size-8 px-0"
             aria-pressed={mode === "text"}
             aria-label="Text"
-            onClick={() => setMode("text")}
+            onClick={() => armTool("text")}
           >
             <Type className="size-4" aria-hidden />
           </Button>
@@ -663,7 +678,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             className="size-8 px-0"
             aria-pressed={mode === "math"}
             aria-label="Math text box"
-            onClick={() => setMode("math")}
+            onClick={() => armTool("math")}
           >
             <Sigma className="size-4" aria-hidden />
           </Button>
@@ -677,7 +692,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             className="size-8 px-0"
             aria-pressed={mode === "select"}
             aria-label="Select"
-            onClick={() => setMode("select")}
+            onClick={() => armTool("select")}
           >
             <MousePointer2 className="size-4" aria-hidden />
           </Button>
@@ -687,7 +702,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             className="size-8 px-0"
             aria-pressed={mode === "erase"}
             aria-label="Erase"
-            onClick={() => setMode("erase")}
+            onClick={() => armTool("erase")}
           >
             <Eraser className="size-4" aria-hidden />
           </Button>
@@ -700,7 +715,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             className="size-8 px-0"
             aria-pressed={mode === "line"}
             aria-label="Line"
-            onClick={() => setMode("line")}
+            onClick={() => armTool("line")}
           >
             <Minus className="size-4" aria-hidden />
           </Button>
@@ -710,7 +725,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             className="size-8 px-0"
             aria-pressed={mode === "ruler"}
             aria-label="Ruler"
-            onClick={() => setMode("ruler")}
+            onClick={() => armTool("ruler")}
           >
             <Ruler className="size-4" aria-hidden />
           </Button>
@@ -720,7 +735,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             className="size-8 px-0"
             aria-pressed={mode === "protractor"}
             aria-label="Protractor"
-            onClick={() => setMode("protractor")}
+            onClick={() => armTool("protractor")}
           >
             <Gauge className="size-4" aria-hidden />
           </Button>
@@ -730,7 +745,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             className="size-8 px-0"
             aria-pressed={mode === "compasses"}
             aria-label="Compasses"
-            onClick={() => setMode("compasses")}
+            onClick={() => armTool("compasses")}
           >
             <Compass className="size-4" aria-hidden />
           </Button>
@@ -1019,6 +1034,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
               onGuideMove={guideMove}
               onGuideRotate={guideRotate}
               onGuideCreate={guideCreate}
+              armSeq={armSeq}
               guideSlot={
                 <>
                   {rulerGuide?.page === page && (
@@ -1108,6 +1124,9 @@ export interface InkCanvasProps {
   /** T-MG-INK-9: the pane-level math-keyboard portal host (rendered by
    * InkLayer; the keyboard is pane-wide, never inside a page holder). */
   keyboardHost?: HTMLElement | null;
+  /** T-MG-INK-10: the arm epoch — bumped by every explicit tool arming;
+   * the hover chip's position and per-arm spend are keyed by it. */
+  armSeq?: number;
 }
 
 type DragKind = "freehand" | "line" | "ruler" | "protractor" | "compasses" | "guide" | "erase" | "move";
@@ -1163,6 +1182,7 @@ export function InkCanvas({
   onGuideCreate,
   guideSlot,
   keyboardHost,
+  armSeq = 0,
 }: InkCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const boxRef = useRef<{ cssW: number; cssH: number }>({ cssW: 0, cssH: 0 });
@@ -1187,6 +1207,15 @@ export function InkCanvas({
   // selection is re-applied right after the commit renders (the rAF
   // race is dead by construction).
   const pendingCaretRef = useRef<number | null>(null);
+  // ── T-MG-INK-10: MG's armed-tool hover chips ──
+  // The cursor position in css px (page-local) while an editor tool is
+  // armed, and the per-arm spend law: the first placement that opens an
+  // editor spends the chip until the tool is (re)armed. Both are keyed
+  // by the arm epoch (armSeq, bumped by every explicit arming) — a
+  // stale-seq chip/spent is simply not the current arming, so no reset
+  // effect is needed.
+  const [chip, setChip] = useState<{ seq: number; x: number; y: number } | null>(null);
+  const [spentSeq, setSpentSeq] = useState<number | null>(null);
   const [erasePreview, setErasePreview] = useState<Set<string> | null>(null);
   const [movePreview, setMovePreview] = useState<InkShape | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -1300,6 +1329,8 @@ export function InkCanvas({
         // EXISTING text box (topmost of the family) opens it for editing;
         // an empty-canvas tap creates a new one (the MG parity posture).
         const target = topmostFamilyHit("text", displayShapes, { x: frac[0], y: frac[1] }, cssBox, ERASE_TOL_CSS_PX);
+        // T-MG-INK-10: opening an editor spends the chip for this arming.
+        setSpentSeq(armSeq);
         setDraft(
           target
             ? { x: target.x, y: target.y, value: target.text, editId: target.id }
@@ -1324,6 +1355,8 @@ export function InkCanvas({
         // read the erase/select gestures use), topmost of the family.
         measureMtexts();
         const target = topmostFamilyHit("mtext", displayShapes, { x: frac[0], y: frac[1] }, cssBox, ERASE_TOL_CSS_PX, readMeasured);
+        // T-MG-INK-10: the math twin of the chip-spend law.
+        setSpentSeq(armSeq);
         setMathDraft(
           target
             ? { x: target.x, y: target.y, value: target.tex, editId: target.id }
@@ -1425,15 +1458,22 @@ export function InkCanvas({
       lastPxRef.current = [e.clientX, e.clientY];
       scheduleLive();
     },
-    [mode, ruler, protractor, onGuideDown, onGuideCreate, scheduleLive, displayShapes, readMeasured, measureMtexts],
+    [mode, armSeq, ruler, protractor, onGuideDown, onGuideCreate, scheduleLive, displayShapes, readMeasured, measureMtexts],
   );
 
   const onPointerMove = useCallback(
     (e: React.PointerEvent<HTMLCanvasElement>) => {
-      const kind = dragKindRef.current;
-      if (!kind) return;
       const canvas = canvasRef.current;
       if (!canvas) return;
+      const kind = dragKindRef.current;
+      // T-MG-INK-10: while an editor tool is armed and no editor is
+      // open, the hover chip follows the cursor (MG's affordance).
+      // Position-only tracking — drags are untouched below.
+      if (!kind && (mode === "text" || mode === "math") && !draft && !mathDraft) {
+        const box = canvas.getBoundingClientRect();
+        setChip({ seq: armSeq, x: e.clientX - box.left, y: e.clientY - box.top });
+      }
+      if (!kind) return;
       const last = lastPxRef.current;
       if (kind === "freehand" && last && !shouldAppendPoint(last, [e.clientX, e.clientY], 1.2)) return;
       const box = canvas.getBoundingClientRect();
@@ -1523,7 +1563,7 @@ export function InkCanvas({
         scheduleLive();
       }
     },
-    [ruler, protractor, onGuideMove, scheduleLive, displayShapes, readMeasured],
+    [mode, draft, mathDraft, armSeq, ruler, protractor, onGuideMove, scheduleLive, displayShapes, readMeasured],
   );
 
   const endStroke = useCallback(() => {
@@ -1764,6 +1804,7 @@ export function InkCanvas({
         onPointerLeave={(e) => {
           // pen lifted off the canvas mid-stroke (mouse edge) → end cleanly
           if ((activeRef.current || dragKindRef.current) && e.pointerType === "mouse") endStroke();
+          setChip(null);
         }}
       />
       {sweepDeg !== null && protractor && (
@@ -1781,6 +1822,33 @@ export function InkCanvas({
         </div>
       )}
       {guideSlot}
+      {/* T-MG-INK-10: MG's armed-tool hover chips — "Add text"/"Add maths"
+          follow the cursor in the handwriting stack (MG's live extraction:
+          rgb(159,168,178) @ 0.6, vertically centred on the cursor; maths
+          +14px and 18px, text 24px weight 500). Hidden while an editor is
+          open, spent once a placement opened one, back on re-arm. The
+          working tools get no chip and there are no toolbar tooltips —
+          the chip IS the hover text (MG's law). Decorative. */}
+      {chip && chip.seq === armSeq && spentSeq !== armSeq && !draft && !mathDraft && (mode === "text" || mode === "math") && (
+        <span
+          aria-hidden="true"
+          data-ink-add-chip={mode}
+          className="pointer-events-none absolute z-40 whitespace-nowrap"
+          style={{
+            left: chip.x + (mode === "math" ? INK_CHIP_MATH_OFFSET_PX : 0),
+            top: chip.y,
+            transform: "translateY(-50%)",
+            fontFamily: INK_TEXT_FONT_STACK,
+            fontWeight: mode === "text" ? INK_TEXT_WEIGHT : 400,
+            fontSize: mode === "text" ? INK_CHIP_TEXT_PX : INK_CHIP_MATH_PX,
+            lineHeight: mode === "math" ? 1 : undefined,
+            color: INK_CHIP_COLOR,
+            opacity: INK_CHIP_OPACITY,
+          }}
+        >
+          {mode === "text" ? INK_CHIP_TEXT_LABEL : INK_CHIP_MATH_LABEL}
+        </span>
+      )}
       {/* T-MG-INK-4: the mtext overlays — DOM chrome (pointer-events:
         * none) in the InstrumentGuides family; the canvas keeps the
         * gesture; erase/select read these boxes via [data-mtext-id]. */}

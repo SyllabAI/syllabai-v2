@@ -927,3 +927,80 @@ Work Log:
 Stage Summary:
 - T-VERCEL-TURBO-413 run-001: the 413 class is the reason turbo remote cache was enabled-but-unusable; this is the smallest diff that makes the artifact uploadable. Verification receipt (next same-hash production build): build log must contain `cache hit, replaying logs` and NO `failed to contact remote cache` warning; expected duration drop from ~900–1100s toward minutes. Deployment volume (a prod deploy per push; git.deploymentEnabled main=true) and retention pruning are separate operator decisions.
 
+
+## T-VERCEL-TURBO-413 run-002 — remote cache verdict: Vercel hard-caps artifacts at 100MB; hub .next can never fit (trace 1a19d67dcbb2178d)
+Agent: main (Z.ai, zai-web session web-561901d7-498c-4c6f-aad2-00aeb4727ae6)
+Task: verify the run-001 fix end-to-end on Vercel (operator order: merge PR #652 + prune old deployments) and produce the cache-hit receipt.
+
+Work Log:
+- PR #652 merged (merge commit 06a7d78, CI hub+verify SUCCESS); auto-deploy dpl_Grv5mcnxwwHn4eYWKJgyP84X9ZAf built at the new turbo hash 5bbdcfb99c251a42 (outputs+env changes are hash inputs), READY 968s.
+- Build log: `413` GONE (run-001 fix effective — the standalone-embedded public/ copy is out of the artifact), but upload now fails with `400 Bad Request` on PUT https://vercel.com/api/v8/artifacts/5bbdcfb99c251a42?teamId=….
+- Empirical probe (PAT-scoped, first-hand): PUT /api/v8/artifacts — 8MB → 202; 64MB → 202; 128MB → 400 `{"code":"size_limit_exceeded","message":"File size limit exceeded (100 MB)"}`. HEAD of the real task artifact hash → 404 (never uploaded, consistent with both failures). Vercel remote cache = hard 100MB per artifact; turbo packages one artifact per task.
+- Sizing: hub deployable .next (minus .next/cache, minus .next/standalone) + corpus-index ≈ several hundred MB raw (4,405 prerendered pages + chunks); compressed still ≫ 100MB. No honest subset of outputs works: excluding static/chunks breaks cache-hit deploys (missing client chunks); excluding prerendered HTML breaks the pages (they ARE the deployment). VERDICT: turbo remote cache cannot cache @syllabai/hub#build on Vercel-hosted cache until build outputs shrink under 100MB compressed.
+- Deployment prune executed (operator order, DELETE /v13/deployments): 434 deleted (240 round-1 + 194 round-2, 0 final failures; Vercel now-rm rate limiter required a 10-min backoff mid-run), 445 → 11 deployments (newest 10 READY + the live merge build; all CANCELED/ERROR gone). Est. storage reclaimed ≈ 434 × ~1.4GB/deployment ≈ 610GB — consistent with the 617GB/10GB dashboard reading (real retention, not an accounting bug).
+- Probe artifacts deleted (202-cleanup); zero project settings mutated; zero env vars written to Vercel.
+
+Stage Summary:
+- run-001 was necessary (413 → the artifact shrank; env-hash correctness landed) but is not sufficient: the 100MB Vercel cap is the binding constraint. Paths of record for the operator: (1) ISR / on-demand rendering for the bulk content routes (generateStaticParams currently force-prerenders ~4,405 pages/build) — shrinks outputs under the cap, cuts builds to minutes, shrinks deployment storage per deploy; changes serving semantics → needs golden-master QA gates, recommended as the next designed lane, not a drive-by; (2) self-hosted turbo remote cache (no 100MB cap; adds a service — tension with the $0-infra law); (3) stay on Vercel-native build cache (.next/cache restore, already working) and accept per-build prerender. Vercel-native cache upload [1.15 GB] + restore verified healthy in both builds. PAT rotation standing order remains CRITICAL-OVERDUE (both the GitHub PAT and the Vercel token used this lane).
+
+
+## t-note-scroll-resume run-002 — live verification of record: Resume remembers scroll position within a note (operator order trace 1a1a0018ceed66dd)
+Agent: main (Z.ai, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5, chat dd7e60e9-8ed0-4bd3-bbac-74ba824dc977)
+Task: the operator restated the requirement as a statement ("Resume remembers scroll position within a note", no 'could'). The law already landed — run-001 (trace 1a19b5cba7c16a81) = PR #633 merged af3b36a9, auto-deploy dpl_B1h9hac1QZbPoe5vtfofvrxHhYpt READY — so this order was read as a verification order: prove first-hand that current production serves it, fix anything broken, disclose honestly.
+
+Work Log:
+- Integrity first: git log af3b36a9..main over the three resume-flow files (notes-index.tsx, revision-notes/[noteId]/, select-toolbar.tsx) is EMPTY — nothing since the merge of record touched the law; main of the day 31f9cdd119d7; lib/note-scroll.ts unchanged since 1e032e49.
+- Local gates re-run on main (fresh sandbox, bun install): note-scroll.test.ts 10/10; progress-notes-ring + progress-select-rings 17/17.
+- Live chunk verification (https://syllabai-hub-v2.vercel.app, today's build): notes-index page 19 client chunks referenced, exactly 1 carries each of 'resume=1' (intent stamp), 'syllabai-hub:note-scroll' (store namespace), 'pickResumeNoteId' (target law); reader-page chunks carry the store namespace + save/restore island markers.
+- Headless-browser E2E on production, course igcse-chemistry-19, note rn_2VnK66PqbvFKdKYt ("The Three States of Matter"): (1) seed {frac:0.45,at:now} → Resume renders "Resume The Three States of Matter", href stamps ?resume=1 (scroll store alone suffices — the disclosed run-001 posture); (2) click → reader URL already stripped of ?resume=1 (intent consumed, refresh/shared links stay honest); (3) restored scroll fraction 0.455 vs saved 0.45 — restored exactly through the settle re-assertion (screenshot .syllabai/lane-artifacts/t-note-scroll-resume/run-002/resume-restore-45pct.png); (4) NEGATIVE law: seed frac 0.995 (read to end) → opens fresh scrollTop 0 — the [2%,98%] resume band holds live; (5) SAVE leg: live scroll to 62% → after the 400ms throttle the store reads {frac:0.6201757737867788, at:1793686603793}.
+- Probe cleanup: seeded localStorage keys removed; anonymous surfaces untouched; zero code bytes (repo diff = .syllabai/** + this worklog section only).
+
+Stage Summary:
+- t-note-scroll-resume run-002: VERDICT — the order is already satisfied in production. Resume remembers scroll position within a note, first-hand verified end-to-end against https://syllabai-hub-v2.vercel.app on 2026-11-03: render → intent stamp → restore-exact → band refusal → save persistence. No defect found, no remainder disclosed, no code change required. Receipt .syllabai/receipts/t-note-scroll-resume/run-002-live-verification.json.
+
+---
+
+## 2026-11-03 — run-012 wave-C serving leg: the L4 mapping-repair served (T-OEQ-PHYS-FORMAT-1)
+
+- The run-012 reconciliation's last population is repaired ON THE PLANE: for the
+  22 cross-id fields / 20 parts / 17 questions / 10 topics, questions.json now
+  serves the corpus of record's own per-part content (direction plane := corpus
+  verbatim, the reverse of L1 — justified per RULE-1 L4: the plane carries the
+  corruption; asset hrefs hotlinked at data cut resources main@79b437615ac2 per
+  the exporter's own hotlink() semantics).
+- Mechanism of record (resources PR #293 dossier): since T-CONSUME-EDX-2
+  (c2388bca, 2026-10-21) the bank carried the LAST part's md content under
+  earlier parts' ids (18 solution_md across 17 questions + both md fields on the
+  2 middle parts of 3-part questions); born clean at the seed, still clean after
+  EDX-1; the standing importer is field-faithful — the corruption site is the
+  EDX-2 post-build stack (DISC-6 filed for the platform lane).
+- Gates: T1 serialization (indent=1, ensure_ascii=False, no trailing newline);
+  G1 deep-diff = exactly the 22 pinned fields (22 insertions / 22 deletions,
+  zero other movement, question/metadata keys untouched); G2 char safety (no
+  C0/PUA/FFFD, no new LRM); G3 $-parity even on all 22; G4 debris-free; G5
+  post-serve cross-part copy census = 0; G6 metadata integrity (marks/order/
+  type/spec/choices/sourcePaper untouched on all 20 parts).
+- L6 drift-delta vs resources main: raw drift 750 -> 732 fields / 565 -> 554
+  parts; NON-BENIGN 22 -> 0 (18 served fields raw-equal, 4 asset-bearing
+  canon-equal per L3). The corpus<->plane reconciliation is COMPLETE.
+- Learner impact: the 7-1 Po-210 grid question (qstn_hXjpCk7PMZPn2xst, with the
+  run-011-m3-repaired isotope notation) and the 5-3 molecules/sentences question
+  (qstn_x3gPVCnBWZZS5Dd4) serve again for the first time since 2026-10-21, and
+  the 15 solution-collapsed questions serve their true per-part solutions again.
+- Receipt: .syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run012-wavec-serve-payload.json
+  (22 pins with before/after sha256, gates, mechanism, data cut). Dossier of
+  record: resources scripts/oeq_phys_run012/wave-c/ (PR #293).
+
+## t-select-search-resume run-002 — live verification of record: the exam-questions + flashcards Resume targets (operator order trace 1a1a1c45fcbce721)
+Agent: main (Z.ai, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5, chat dd7e60e9-8ed0-4bd3-bbac-74ba824dc977)
+Task: the operator ordered the same first-hand exercise t-note-scroll-resume run-002 gave the notes leg, now for the exam-questions and flashcards Resume targets of the PR #628 three-page toolbar law (run-001, commit da60c126, trace 1a19acb6ec437e25). Bookkeeping-only: ZERO code bytes.
+
+Work Log:
+- Sandbox-recycle recovery first: the window rolled back to the pre-session snapshot (HEAD ca7ef93d, origin/main ref stale, questionbank-index/flashcards-index absent on disk) — state re-established first-hand from origin (fetch-first, FETCH_HEAD removed, ff to main fa8059d7 T-KG-PRE-3 run-001, scrub-assert 0/0/0, bun install).
+- Code laws re-read at fa8059d7 and confirmed unchanged: EQ resume = max `at` across selfScores ∪ mcqAnswers → topicSlug, resolved against rows ∪ Other sets under the current paper scope, href `${base}/exam-questions/${slug}`; FC resume = max `at` across progress.flashcards → subtopic resolved against listed decks, href `${base}/flashcards/${code}`.
+- Headless-browser E2E on production (igcse-chemistry-19, engagement seeded into syllabai-hub:progress:igcse-chemistry-19, removed after): EQ — empty posture renders no button; seeded scored part (1-3 Atomic Structure) → Resume 'Atomic Structure' → click lands on the set page (h1 confirms); scoped landing ?subtopic=4CH1-S1-b (target canonically 4CH1-S1-c) → NO Resume (out-of-scope honesty); ?subtopic=4CH1-S1-c → Resume renders. FC — seeded rating (deck 1-2) → Resume 'Elements, Compounds & Mixtures' → click lands on the deck (h1 confirms); a newer rating on deck 1-3 flips the target (max-at join holds).
+- Probe disclosure: the first scoping probes used TOPIC codes (4CH1-S2/S3) — unknown codes degrade to the full index per the documented page.tsx law, so they rendered Resume legitimately; re-run with sub-topic codes produced the discriminating both-ways result. Not a defect.
+- Evidence: .syllabai/lane-artifacts/t-select-search-resume/run-002/ (EQ + FC landing screenshots).
+
+Stage Summary:
+- t-select-search-resume run-002: VERDICT — both select pages exercise exactly per the law of record: each owns its own engagement plane (EQ: scored parts; FC: rated cards), resolves the target against what IT lists, offers the jump only while the target is listed (scoped honesty verified both ways), and lands on the named set/deck. No defect found, no remainder disclosed, no code change required. Receipt .syllabai/receipts/t-select-search-resume/run-002-live-verification.json. With t-note-scroll-resume run-002, all three select pages' Resume targets are now first-hand verified in production on 2026-11-03.

@@ -1,0 +1,69 @@
+{
+  "task": "T-BOOK-069",
+  "receipt": "strength-run002-core-r0",
+  "kind": "run-002 merge of record — ADR-BOOK-0004 ACCEPTED + the strength serving core + the hub unit-check surface (chain steps 1 and 4 of the run-001 remainder)",
+  "operator_order": "lane acceptance word 'the strength-checks lane (T-BOOK-069) proceed' (IM trace 1a19f606f8741cbd, 2026-11-03) — recorded as the ADR-BOOK-0004 acceptance word of record",
+  "session": "zai-web web-c414c074-1cb4-4bd5-b111-546be3b49355, trace 1a19f606f8741cbd",
+  "date_utc": "2026-11-03",
+  "adr_of_record": {
+    "file": "docs/adr/ADR-BOOK-0004-unit-strength-checks.md",
+    "status": "ACCEPTED (was PROPOSED through run-001)",
+    "blessing": "the operator's lane acceptance word, trace 1a19f606f8741cbd",
+    "note_in_amendments_preamble": "the PROPOSED-through-run-001 posture disclosed verbatim"
+  },
+  "core_pr": {
+    "pr": 661,
+    "branch": "t-book-072-strength-serving",
+    "head": "687f6877",
+    "merge_sha": "c6b9f1a9",
+    "merged_at_utc": "2026-11-03",
+    "ci_on_head": { "verify": "success", "hub": "success", "source": "check-runs API first-hand; gate-b honored (all completed AND success AND >=1 present)" },
+    "change_set": [
+      "services/books.ts: railBlocksForChapter excludes the strength id prefix (parameterized not like 'strength-%') — chapter rails AND chapter checks stay chapter-scoped (ADR decision 3 + amendment 4)",
+      "services/books.ts: NEW strengthChecksForUnit — VALIDATED strength-u<N>/ rows gathered ACROSS per-item chapter bindings, id-ordered (authored b01..bNN), resolved through the EXISTING railChecks law verbatim via the extracted shared resolveChecksForBlocks (REUSE-not-redeclare)",
+      "routes/books.ts: NEW GET /:documentId/strength-checks?unit=uN — public-read corpus family, T-C20 404, honest [] pre-flip, unit grammar ^u\\d+$ 400-before-DB (unitParamOr400)",
+      "routes/books.ts: the submit gate now accepts chapter OR unit (exactly one; 400 on both/neither) — gate grammar only",
+      "tests: 11 new (7 strength route/law + 4 unit-lane submit); the books file is 49/49"
+    ]
+  },
+  "hub_pr": {
+    "pr": 663,
+    "branch": "t-book-072-strength-hub",
+    "head": "8665bbec",
+    "merge_sha": "9f64dc9d",
+    "merged_at_utc": "2026-11-03",
+    "ci_on_head": { "verify": "success", "hub": "success", "source": "check-runs API first-hand" },
+    "change_set": [
+      "NEW /courses/[course]/books/[docId]/strength?unit=uN — the unit check page (honest states: T-C20 404; not-published-yet card on []; the flow otherwise)",
+      "NEW strength-check-flow.tsx — immediate-reveal flow; honest question:null cards; honest score card; signed-out local-play disclosure",
+      "lib/books-strength.ts — server-only strict-mirror fetch (honest-null law)",
+      "the unit submit lane end-to-end: api chapter-OR-unit gate; hub submit proxy forwards ?unit=; client submitStrengthCheck",
+      "the shelf per-unit 'Strength check' row — renders ONLY when the unit serves >0 VALIDATED items (strengthCheckCount per unit; the S4 flip is the row's lever)"
+    ]
+  },
+  "main_red_repair": {
+    "disclosed": true,
+    "what": "main's verify ran red from ~2026-11-02T19:07Z (six consecutive runs) BEFORE this branch existed: the evening consume/serving waves raised the fleet's servable census without advancing the cie-phase4-roster.test.ts exact pins",
+    "repair": "#661 commit 2 (687f6877) re-pins from the shim's own admission law (loadRoster/buildSmePackage), run first-hand on main@0e788d62",
+    "numbers": {
+      "sums": "questions 9,916 -> 13,310; parts 11,904 -> 15,281; pkgParts 16,674 -> 21,274",
+      "exclusions": "unmapped 16,193 -> 12,674; dupOrder 19 -> 81; crossSetRefCollision 1,118 -> 1,181",
+      "per_bank_pins": "asChem25 328/561/740 -> 712/754/1260; asPhys25 395/555/796 -> 531/688/1025; asBus23 54/73/73 -> 147/200/200; asCs19 77/138/138 -> 169/256/256; asPure1 48/94/94 -> 118/209/209; asMech 104/212/212 -> 128/244/244; asPs1 57/117/117 -> 83/169/169",
+      "zero_servable": "pure-2 + english-language-25 departed; english-language-20 remains the sole honest zero",
+      "identity": "27,246 - 13,310 == 12,674 + 81 + 1,181 == 13,936",
+      "raw": "UNCHANGED 27,246/43,996 — growth is admission, not content"
+    },
+    "verdict": "NOT a loosening — the census grew; every pin exact; physics-23/bio25/asBio25 pins verified already-current"
+  },
+  "verification_first_hand": {
+    "api_typecheck": "tsc --noEmit clean",
+    "api_tests": "full suite 3,274 tests 0 fail (after the re-pin; the pre-existing single failure eliminated by the repair)",
+    "hub_typecheck_lint": "clean; build compiles successfully (sandbox static-gen timeout environmental; CI full build green 2/2 twice)"
+  },
+  "remaining_chain": [
+    "(1) prod deploy of the exclusion-bearing core — CLI-only per standing law; needs the Vercel credential re-handed (the od1 recipe: bake -> localgate -> fire -> uid-equality probe)",
+    "(2) the S4 flip — 60 strength rows SUGGESTED -> VALIDATED, scoped ingest discipline (the 205 VALIDATED chapter rows + glossary never re-upserted); needs the Neon MAIN pooler re-handed; the flip is the operator's lever and fires only after (1) is live",
+    "(3) serve proof — chapter rails byte-unchanged with 60 VALIDATED rows in DB (the exclusion first-hand) + a unit's strength-checks serving 15"
+  ],
+  "standing_reminder": "the shared PAT remains chat-exposed (re-supplied this session) — rotate when this cycle closes"
+}

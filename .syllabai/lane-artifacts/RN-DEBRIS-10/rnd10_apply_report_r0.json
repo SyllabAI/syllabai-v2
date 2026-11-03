@@ -1,0 +1,179 @@
+{
+ "convertedStrings": 29,
+ "occurrenceSites": 29,
+ "classBreakdown": {
+  "dollar": 39,
+  "prose": 5,
+  "url": 0
+ },
+ "files": 4,
+ "ledgerRefusals": [
+  {
+   "file": "apps/hub/content/ial-maths-20-pure-3/curriculum.json",
+   "tok": "useof",
+   "cls": "prose",
+   "pos": 28,
+   "why": "interleaved-runs structural corruption (English run 'Knowledge and use of …' zipped with formula runs 'sec²…⁄θ2=1+tan…' / 'cosec 2⁄θ=1+cot θ.'); a token split cannot repair the interleave and would half-repair a structurally corrupted title — same structural family as RN-DEBRIS-9's disclosed residuals (brace-aware repair lane, NOT token laws)"
+  },
+  {
+   "file": "apps/hub/content/ial-maths-20-pure-3/ugm-resources.json",
+   "tok": "useof",
+   "cls": "prose",
+   "pos": 28,
+   "why": "interleaved-runs structural corruption (English run 'Knowledge and use of …' zipped with formula runs 'sec²…⁄θ2=1+tan…' / 'cosec 2⁄θ=1+cot θ.'); a token split cannot repair the interleave and would half-repair a structurally corrupted title — same structural family as RN-DEBRIS-9's disclosed residuals (brace-aware repair lane, NOT token laws)"
+  },
+  {
+   "file": "apps/hub/spines/ial-maths-20-pure-3.json",
+   "tok": "useof",
+   "cls": "prose",
+   "pos": 28,
+   "why": "interleaved-runs structural corruption (English run 'Knowledge and use of …' zipped with formula runs 'sec²…⁄θ2=1+tan…' / 'cosec 2⁄θ=1+cot θ.'); a token split cannot repair the interleave and would half-repair a structurally corrupted title — same structural family as RN-DEBRIS-9's disclosed residuals (brace-aware repair lane, NOT token laws)"
+  }
+ ],
+ "guardRefusals": [],
+ "rawMisses": [],
+ "jsonParseFails": [],
+ "detail": {
+  "apps/hub/content/cie-a-level-physics-25/questions.json": {
+   "\"**Extract:**\\n\\nStudents in a laboratory have created the following set-up shown in Fig 1.1. Parallel rays of monochromatic light from two ": {
+    "tok": "dsin",
+    "sites": 1,
+    "rawReplacements": 1,
+    "head": "**Extract:**\n\nStudents in a laboratory have created the following set-up shown in Fig 1.1. Parallel rays of monochromatic light from two adj",
+    "fixedHead": "**Extract:**\n\nStudents in a laboratory have created the following set-up shown in Fig 1.1. Parallel rays of monochromatic light from two adj"
+   },
+   "\"**Extract:**\\n\\nThe monochromatic light in the set-up in part (a) has a wavelength of 499 nm.\\nUse Figure 1.1 and the condition for constru": {
+    "tok": "dsin",
+    "sites": 1,
+    "rawReplacements": 1,
+    "head": "**Extract:**\n\nThe monochromatic light in the set-up in part (a) has a wavelength of 499 nm.\nUse Figure 1.1 and the condition for constructiv",
+    "fixedHead": "**Extract:**\n\nThe monochromatic light in the set-up in part (a) has a wavelength of 499 nm.\nUse Figure 1.1 and the condition for constructiv"
+   },
+   "\"**Final answer:** **The correct answer is ****A**** because:**\\n\\n- The diffraction grating equation is given by\\n\\n  - $dsin\\u03b8=n\\u03bb": {
+    "tok": "dsin",
+    "sites": 2,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The correct answer is ****A**** because:**\n\n- The diffraction grating equation is given by\n\n  - $dsinθ=nλ$\n- Where:\n\n  -",
+    "fixedHead": "**Final answer:** **The correct answer is ****A**** because:**\n\n- The diffraction grating equation is given by\n\n  - $d sinθ=nλ$\n- Where:\n\n  "
+   },
+   "\"**Final answer:** **The correct answer is ****B**** because:**\\n\\n- The diffraction grating equation is given by\\n\\n  - $dsin\\u03b8=n\\u03bb": {
+    "tok": "dsin",
+    "sites": 1,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The correct answer is ****B**** because:**\n\n- The diffraction grating equation is given by\n\n  - $dsinθ=nλ$\n- For *n *= 1",
+    "fixedHead": "**Final answer:** **The correct answer is ****B**** because:**\n\n- The diffraction grating equation is given by\n\n  - $d sinθ=nλ$\n- For *n *= "
+   },
+   "\"**Final answer:** **The correct answer is ****C**** because:**\\n\\n- The diffraction grating equation is given by\\n\\n  - $dsin\\u03b8=n\\u03bb": {
+    "tok": "dsin",
+    "sites": 1,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The correct answer is ****C**** because:**\n\n- The diffraction grating equation is given by\n\n  - $dsinθ=nλ$\n- When *n* = ",
+    "fixedHead": "**Final answer:** **The correct answer is ****C**** because:**\n\n- The diffraction grating equation is given by\n\n  - $d sinθ=nλ$\n- When *n* ="
+   },
+   "\"**Final answer:** **The correct answer is ****C**** because:**\\n\\n- The diffraction grating equation is given by\\n\\n  - $dsin\\u03b8_{n}=n\\u": {
+    "tok": "dsin",
+    "sites": 3,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The correct answer is ****C**** because:**\n\n- The diffraction grating equation is given by\n\n  - $dsinθ_{n}=nλ_{n}$\n- Whe",
+    "fixedHead": "**Final answer:** **The correct answer is ****C**** because:**\n\n- The diffraction grating equation is given by\n\n  - $d sinθ_{n}=nλ_{n}$\n- Wh"
+   },
+   "\"**Final answer:** **The correct answer is ****D**** because:**\\n\\n- The known quantities are\\n\\n  - Distance between the slits, *d* = 0.02 ": {
+    "tok": "dsin",
+    "sites": 1,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The correct answer is ****D**** because:**\n\n- The known quantities are\n\n  - Distance between the slits, *d* = 0.02 × 10<",
+    "fixedHead": "**Final answer:** **The correct answer is ****D**** because:**\n\n- The known quantities are\n\n  - Distance between the slits, *d* = 0.02 × 10<"
+   },
+   "\"**Final answer:** **The correct answer is ****D**** because:**\\n\\n- The known quantity is\\n\\n  - The angle between the central and second-o": {
+    "tok": "dsin",
+    "sites": 2,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The correct answer is ****D**** because:**\n\n- The known quantity is\n\n  - The angle between the central and second-order ",
+    "fixedHead": "**Final answer:** **The correct answer is ****D**** because:**\n\n- The known quantity is\n\n  - The angle between the central and second-order "
+   }
+  },
+  "apps/hub/content/cie-as-physics-25/questions.json": {
+   "\"**Extract:**\\n\\nParallel rays of monochromatic light from two adjacent slits A and B of wavelength \\u03bb are incident normally on a diffra": {
+    "tok": "dsin",
+    "sites": 1,
+    "rawReplacements": 1,
+    "head": "**Extract:**\n\nParallel rays of monochromatic light from two adjacent slits A and B of wavelength λ are incident normally on a diffraction gr",
+    "fixedHead": "**Extract:**\n\nParallel rays of monochromatic light from two adjacent slits A and B of wavelength λ are incident normally on a diffraction gr"
+   },
+   "\"**Extract:**\\n\\nStudents in a laboratory have created the following set-up shown in Fig 1.1. Parallel rays of monochromatic light from two ": {
+    "tok": "dsin",
+    "sites": 1,
+    "rawReplacements": 1,
+    "head": "**Extract:**\n\nStudents in a laboratory have created the following set-up shown in Fig 1.1. Parallel rays of monochromatic light from two adj",
+    "fixedHead": "**Extract:**\n\nStudents in a laboratory have created the following set-up shown in Fig 1.1. Parallel rays of monochromatic light from two adj"
+   },
+   "\"**Final answer:** **The correct answer is ****A**** because:**\\n\\n- The diffraction grating equation is given by\\n\\n  - $dsin\\u03b8=n\\u03bb": {
+    "tok": "dsin",
+    "sites": 2,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The correct answer is ****A**** because:**\n\n- The diffraction grating equation is given by\n\n  - $dsinθ=nλ$\n- Where:\n\n  -",
+    "fixedHead": "**Final answer:** **The correct answer is ****A**** because:**\n\n- The diffraction grating equation is given by\n\n  - $d sinθ=nλ$\n- Where:\n\n  "
+   },
+   "\"**Final answer:** **The correct answer is ****B**** because:**\\n\\n- The diffraction grating equation is given by\\n\\n  - $dsin\\u03b8=n\\u03bb": {
+    "tok": "dsin",
+    "sites": 1,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The correct answer is ****B**** because:**\n\n- The diffraction grating equation is given by\n\n  - $dsinθ=nλ$\n- For *n *= 1",
+    "fixedHead": "**Final answer:** **The correct answer is ****B**** because:**\n\n- The diffraction grating equation is given by\n\n  - $d sinθ=nλ$\n- For *n *= "
+   },
+   "\"**Final answer:** **The correct answer is ****C**** because:**\\n\\n- The diffraction grating equation is given by\\n\\n  - $dsin\\u03b8=n\\u03bb": {
+    "tok": "dsin",
+    "sites": 1,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The correct answer is ****C**** because:**\n\n- The diffraction grating equation is given by\n\n  - $dsinθ=nλ$\n- When *n* = ",
+    "fixedHead": "**Final answer:** **The correct answer is ****C**** because:**\n\n- The diffraction grating equation is given by\n\n  - $d sinθ=nλ$\n- When *n* ="
+   },
+   "\"**Final answer:** **The correct answer is ****C**** because:**\\n\\n- The diffraction grating equation is given by\\n\\n  - $dsin\\u03b8_{n}=n\\u": {
+    "tok": "dsin",
+    "sites": 3,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The correct answer is ****C**** because:**\n\n- The diffraction grating equation is given by\n\n  - $dsinθ_{n}=nλ_{n}$\n- Whe",
+    "fixedHead": "**Final answer:** **The correct answer is ****C**** because:**\n\n- The diffraction grating equation is given by\n\n  - $d sinθ_{n}=nλ_{n}$\n- Wh"
+   },
+   "\"**Final answer:** **The correct answer is ****D**** because:**\\n\\n- The known quantities are\\n\\n  - Distance between the slits, *d* = 0.02 ": {
+    "tok": "dsin",
+    "sites": 1,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The correct answer is ****D**** because:**\n\n- The known quantities are\n\n  - Distance between the slits, *d* = 0.02 × 10<",
+    "fixedHead": "**Final answer:** **The correct answer is ****D**** because:**\n\n- The known quantities are\n\n  - Distance between the slits, *d* = 0.02 × 10<"
+   },
+   "\"**Final answer:** **The correct answer is ****D**** because:**\\n\\n- The known quantity is\\n\\n  - The angle between the central and second-o": {
+    "tok": "dsin",
+    "sites": 2,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The correct answer is ****D**** because:**\n\n- The known quantity is\n\n  - The angle between the central and second-order ",
+    "fixedHead": "**Final answer:** **The correct answer is ****D**** because:**\n\n- The known quantity is\n\n  - The angle between the central and second-order "
+   }
+  },
+  "apps/hub/content/ial-physics-19/questions.json": {
+   "\"**Final answer:** **The correct answer is ****C**** because:**\\n\\n- The equation $n\\u03bb=dsin\\u03b8$ is used to calculate wavelength in th": {
+    "tok": "dsin",
+    "sites": 1,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The correct answer is ****C**** because:**\n\n- The equation $nλ=dsinθ$ is used to calculate wavelength in this context\n\n-",
+    "fixedHead": "**Final answer:** **The correct answer is ****C**** because:**\n\n- The equation $nλ=d sinθ$ is used to calculate wavelength in this context\n\n"
+   },
+   "\"**Final answer:** **The only correct answer is ****B**** because:**\\n\\n- Increasing the anode potential increases the velocity and therefor": {
+    "tok": "dsin",
+    "sites": 1,
+    "rawReplacements": 1,
+    "head": "**Final answer:** **The only correct answer is ****B**** because:**\n\n- Increasing the anode potential increases the velocity and therefore m",
+    "fixedHead": "**Final answer:** **The only correct answer is ****B**** because:**\n\n- Increasing the anode potential increases the velocity and therefore m"
+   }
+  },
+  "apps/hub/content/igcse-maths-b-16/questions.json": {
+   "\"**P1** (1 mark) Find OB by adding OA and a multiple of AB\\n- Note: OB =\\n- Note: 7+3\\u03bc  oe eg  7  +  3\\u03bc  eg  7  +  \\u2212 3\\u03bc ": {
+    "tok": "useof",
+    "sites": 1,
+    "rawReplacements": 1,
+    "head": "**P1** (1 mark) Find OB by adding OA and a multiple of AB\n- Note: OB =\n- Note: 7+3μ  oe eg  7  +  3μ  eg  7  +  − 3μ  or\n- Note: x + 8   −5μ",
+    "fixedHead": "**P1** (1 mark) Find OB by adding OA and a multiple of AB\n- Note: OB =\n- Note: 7+3μ  oe eg  7  +  3μ  eg  7  +  − 3μ  or\n- Note: x + 8   −5μ"
+   }
+  }
+ }
+}

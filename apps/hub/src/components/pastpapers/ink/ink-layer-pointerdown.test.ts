@@ -36,6 +36,12 @@
  *   (e) the T-MG-INK-9 surface: the cursor map (MG's extracted postures),
  *       the ⌨ toggle (MG's verbatim "Toggle Virtual Keyboard" label)
  *       and the census keyboard portal (closed on create, MG's posture).
+ *   (f) T-MG-INK-10: MG's armed-tool hover chips — "Add text"/"Add maths"
+ *       follow the cursor in the handwriting stack at MG's exact posture
+ *       (rgb(159,168,178) @ 0.6, vertically centred; maths +14px/18px,
+ *       text 24px/500); the working tools show none; the editor-open
+ *       gate and the per-arm spend law (a placement spends the chip
+ *       until the tool is re-armed) pin MG's behavior.
  *
  * IMPORT-ORDER LAW: the harness MUST be the first import — it installs
  * the jsdom globals (incl. the oninput gate) BEFORE react-dom evaluates
@@ -438,5 +444,163 @@ describe("T-MG-INK-6 run-002 — the pointerdown law (the InkCanvas handler seam
     expect(ta.value).toBe("\\frac{}{}");
     expect(ta.selectionStart).toBe(6);
     host.remove();
+  });
+});
+
+// ── T-MG-INK-10: the armed-tool hover chips (MG's cursor affordance) ──
+
+describe("T-MG-INK-10 run-001 — the armed-tool hover chips (MG's hover text)", () => {
+  /** A mount that can RE-RENDER in place — the per-arm law needs a mode
+   * change on the SAME instance (a remount resets state trivially). */
+  async function mountChips(overrides: Partial<InkCanvasProps> = {}) {
+    const commits = {
+      stroke: mock((_page: number, _points: Array<[number, number]>) => {}),
+      text: mock((_shape: Omit<InkTextShape, "id" | "kind">) => {}),
+      math: mock((_shape: Omit<InkMathShape, "id" | "kind">) => {}),
+      textEdit: mock((_id: string, _text: string) => {}),
+      mathEdit: mock((_id: string, _tex: string) => {}),
+      erase: mock((_ids: string[]) => {}),
+      move: mock((_shape: InkShape) => {}),
+    };
+    const container = doc.createElement("div");
+    doc.body.appendChild(container);
+    const root = createRoot(container);
+    const base: InkCanvasProps = {
+      page: 1,
+      shapes: [],
+      mode: "pen",
+      color: "red" as InkColor,
+      widthFrac: 0.0038,
+      onCommitStroke: commits.stroke,
+      onCommitText: commits.text,
+      onCommitMath: commits.math,
+      onCommitTextEdit: commits.textEdit,
+      onCommitMathEdit: commits.mathEdit,
+      onCommitErase: commits.erase,
+      onCommitMove: commits.move,
+      ...overrides,
+    };
+    const render = async (over: Partial<InkCanvasProps> = {}) => {
+      await act(async () => {
+        root.render(React.createElement(InkCanvas, { ...base, ...over }));
+      });
+    };
+    await render();
+    const canvas = container.querySelector("canvas")!;
+    lastUnmount = async () => {
+      await act(async () => {
+        root.unmount();
+      });
+      container.remove();
+      lastUnmount = null;
+    };
+    return { commits, canvas, container, render };
+  }
+
+  const move = (canvas: Element, x: number, y: number) =>
+    dispatchOn(canvas, jsdomMouseEvent("pointermove", { bubbles: true, clientX: x, clientY: y }));
+
+  test("(f) text posture: 'Add text' follows the cursor at MG's exact style", async () => {
+    const { canvas, container } = await mountChips({ mode: "text" });
+    expect(container.querySelector("[data-ink-add-chip]"), "no chip before any pointer move").toBeNull();
+    await move(canvas, 200, 150);
+    const chip = container.querySelector<HTMLElement>('[data-ink-add-chip="text"]');
+    expect(chip).not.toBeNull();
+    expect(chip!.textContent).toBe("Add text");
+    expect(chip!.getAttribute("aria-hidden")).toBe("true");
+    const s = chip!.style;
+    expect(s.left).toBe("200px");
+    expect(s.top).toBe("150px");
+    expect(s.transform).toBe("translateY(-50%)");
+    expect(s.fontSize).toBe("24px");
+    expect(s.fontWeight).toBe("500");
+    expect(s.color).toBe("rgb(159, 168, 178)");
+    expect(s.opacity).toBe("0.6");
+    // pointer-events and whitespace ride the tailwind classes (jsdom
+    // computes no class styles):
+    expect(chip!.className).toContain("pointer-events-none");
+    expect(chip!.className).toContain("whitespace-nowrap");
+    expect(chip!.className).toContain("z-40");
+    expect(s.fontFamily).toContain("Shantell Sans");
+  });
+
+  test("(f) math posture: 'Add maths', 18px weight 400 leading-none, +14px offset", async () => {
+    const { canvas, container } = await mountChips({ mode: "math" });
+    await move(canvas, 200, 150);
+    const chip = container.querySelector<HTMLElement>('[data-ink-add-chip="math"]');
+    expect(chip).not.toBeNull();
+    expect(chip!.textContent).toBe("Add maths");
+    const s = chip!.style;
+    expect(s.left).toBe("214px");
+    expect(s.top).toBe("150px");
+    expect(s.transform).toBe("translateY(-50%)");
+    expect(s.fontSize).toBe("18px");
+    expect(s.fontWeight).toBe("400");
+    expect(s.lineHeight).toBe("1");
+    expect(s.color).toBe("rgb(159, 168, 178)");
+    expect(s.opacity).toBe("0.6");
+  });
+
+  test("(f) the working tools never show a chip", async () => {
+    for (const mode of ["pen", "erase", "select", "line", "ruler", "protractor", "compasses"] as const) {
+      const { canvas, container } = await mountChips({ mode });
+      await move(canvas, 200, 150);
+      expect(container.querySelector("[data-ink-add-chip]"), `mode=${mode}`).toBeNull();
+    }
+  });
+
+  test("(f) the editor-open gate: the chip unmounts while the draft editor is up", async () => {
+    const { canvas, container } = await mountChips({ mode: "text" });
+    await move(canvas, 200, 150);
+    expect(container.querySelector('[data-ink-add-chip="text"]')).not.toBeNull();
+    const press = pressPointerDown(canvas, { clientX: 200, clientY: 150 });
+    await dispatchOn(canvas, press.ev);
+    expect(queryDraft(container, "New text annotation")).not.toBeNull();
+    expect(container.querySelector("[data-ink-add-chip]"), "editor open → no chip").toBeNull();
+    // the pointer moves under the open editor (click-away gestures) — no chip
+    await move(canvas, 260, 180);
+    expect(container.querySelector("[data-ink-add-chip]")).toBeNull();
+  });
+
+  test("(f) the per-arm spend law: a placement spends the chip until the tool is re-armed", async () => {
+    const { canvas, container, commits, render } = await mountChips({ mode: "text" });
+    await move(canvas, 200, 150);
+    expect(container.querySelector('[data-ink-add-chip="text"]')).not.toBeNull();
+    // place + commit (Escape on a filled draft commits — MG's stop-editing)
+    const press = pressPointerDown(canvas, { clientX: 200, clientY: 150 });
+    await dispatchOn(canvas, press.ev);
+    const ta = queryDraft(container, "New text annotation")!;
+    await act(async () => {
+      typeIn(ta, "kept");
+    });
+    await act(async () => {
+      pressKey(ta, "Escape");
+    });
+    expect(commits.text.mock.calls.length).toBe(1);
+    await move(canvas, 260, 180);
+    expect(container.querySelector("[data-ink-add-chip]"), "spent for this arming").toBeNull();
+    // a mere mode change with the SAME epoch is NOT a re-arm — the chip
+    // stays spent (the spend is keyed by the arm epoch, not the tool):
+    await render({ mode: "math" });
+    await move(canvas, 260, 180);
+    expect(container.querySelector("[data-ink-add-chip]"), "same epoch → still spent").toBeNull();
+    // re-arm as math on the SAME instance (epoch bump) → the chip returns
+    await render({ mode: "math", armSeq: 2 });
+    await move(canvas, 260, 180);
+    const chip = container.querySelector<HTMLElement>('[data-ink-add-chip="math"]');
+    expect(chip).not.toBeNull();
+    expect(chip!.textContent).toBe("Add maths");
+  });
+
+  test("(f) leaving the page hides the chip; re-entering shows it again (unspent arming)", async () => {
+    const { canvas, container } = await mountChips({ mode: "text" });
+    await move(canvas, 200, 150);
+    expect(container.querySelector('[data-ink-add-chip="text"]')).not.toBeNull();
+    // React synthesizes onPointerLeave from a bubbling pointerout with a
+    // null relatedTarget (jsdom has no native leave synthesis).
+    await dispatchOn(canvas, jsdomMouseEvent("pointerout", { bubbles: true }));
+    expect(container.querySelector("[data-ink-add-chip]"), "pointer left the page").toBeNull();
+    await move(canvas, 210, 160);
+    expect(container.querySelector('[data-ink-add-chip="text"]')).not.toBeNull();
   });
 });

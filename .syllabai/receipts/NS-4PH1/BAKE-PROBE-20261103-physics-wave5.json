@@ -1,0 +1,17 @@
+{
+  "format": "w5-bake-probe/1.0",
+  "wave": "PHYSICS-4PH1 wave-5",
+  "operator_traces": {
+    "ignition": "1a19f5a4a25fe011",
+    "execution": "1a19f5a4a25fe011"
+  },
+  "chain": {
+    "resources_pr": 289,
+    "resources_merge": "909d3116e2077d3e951cfc8fdc66affffc089843",
+    "hub_pr": 666,
+    "hub_merge": "594e65410b738f863940e0673ffc8be8f3217588"
+  },
+  "bake": "git-linked Vercel auto-bake; the wave-5 lesson pages served the 91.7K titled not-found shells (your_answer=0 \u2014 the wave-3/wave-4 pre-bake signature) for roughly 28 minutes after the hub merge (bake-queue congestion, the wave-3 precedent of ~50 min; the first probe window of 15 min expired and a second 40-min window caught the flip), then the pages flipped to full serves (first three probes: rn_PZZFkywYbmP9bwyh 8/235K, rn_FfvmFrDdhSsMk9rm 4/183K, rn_kxw7Ms4Pr7dQJykY 12/284K \u2014 all three exactly the expected 4-written-x-lessons counts).",
+  "controls": "calibrations rn_RpyMnS5nqWSRWXXG (physics pilot), rn_2MpXPtNXvn8pQm3r, rn_2z53qk2CdWrVVc7V (chemistry) served ya=8 on their own course slugs THROUGHOUT the queue window (mid-bake vs site-wrong discriminator); no data-plane action taken, the bake was allowed to land",
+  "verdict": "GREEN"
+}

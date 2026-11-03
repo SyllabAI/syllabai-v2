@@ -1,0 +1,19 @@
+{
+ "lane": "T-OEQ-PHYS-FORMAT-1",
+ "run": "run-012-wave-d serving leg",
+ "date": "2026-11-03",
+ "ruling": "R1+R2 as recommended (trace 1a1a2138d7f42e51)",
+ "data_cut_corpus": "resources main 5027ee19",
+ "data_cut_plane": "v2 main f9300a76",
+ "bank_asset_pin": "1a5c37bcecf379cd98e83aa74aa9472920092428",
+ "writes": 5,
+ "gates": "T1 per-bank serialization; G1 deep-diff == the 5 pinned fields; G2 char safety; G3 $-parity; G4 debris/23a; G5 census guard CLEAN per touched bank + full-corpus 39->34 (0 in touched banks); G6 metadata integrity",
+ "guard_receipts": {
+  "igcse-physics-modular-24-unit-2": "/home/z/my-project/repos/syllabai-v2/.syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run012-waved-guard-igcse-physics-modular-24-unit-2.json",
+  "igcse-science-double-award-17-physics": "/home/z/my-project/repos/syllabai-v2/.syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run012-waved-guard-igcse-science-double-award-17-physics.json",
+  "ial-maths-20-decision-1": "/home/z/my-project/repos/syllabai-v2/.syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run012-waved-guard-ial-maths-20-decision-1.json"
+ },
+ "full_guard_receipt": "/home/z/my-project/repos/syllabai-v2/.syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run012-waved-guard-full.json",
+ "serve_table": "resources scripts/oeq_phys_run012/wave-d/serve-table.json",
+ "remediation": "v2 apps/hub/scripts/import_corpus/clean_segment_grafts.py (P2 discharge) + .syllabai/receipts/T-CONSUME-EDX-2/DISC-6-remediation.md"
+}

@@ -1,0 +1,17 @@
+{
+ "format": "w6-bake-probe/1.0",
+ "wave": "PHYSICS-4PH1 wave-6 (B4 W6: 3-1 waves-and-the-EM-spectrum + 3-2 reflection-and-refraction)",
+ "operator_traces": {
+  "ignition": "1a1a01c1321c30b5",
+  "execution": "1a1a01c1321c30b5"
+ },
+ "chain": {
+  "resources_pr": 292,
+  "resources_merge": "79b437615ac21097f59631f6bc41176e97ed8a08",
+  "hub_pr": 676,
+  "hub_merge": "7094a500c78db5fe03402ff3c79ce30b86e73547"
+ },
+ "bake": "git-linked Vercel auto-bake; the wave-6 lesson pages served the ~92.7K titled not-found shells (your_answer=0 — the wave-3/wave-4/wave-5 pre-bake signature) for roughly 20 minutes after the hub merge 7094a500 (2026-11-03T12:29:31Z; the first probe window was already serving shells; the flip was caught by the 12:51:11Z probe — a lighter queue than wave-5's ~28 min), then the pages flipped to full serves (13/13 exact expected counts; bytes 193,158..311,989).",
+ "controls": "calibrations rn_RpyMnS5nqWSRWXXG (physics pilot), rn_2MpXPtNXvn8pQm3r, rn_2z53qk2CdWrVVc7V (chemistry) served ya=8 on their own course slugs THROUGHOUT the queue window (mid-bake vs site-wrong discriminator); no data-plane action taken; the bake was allowed to land.",
+ "verdict": "GREEN"
+}

@@ -419,6 +419,8 @@ function SubjectCard({
 
 export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
   useMyCoursesSync(); // T-TEACH-001 — mirror the roster to core while signed in (write-through + reconcile)
+  // T-TIER1: the last-opened + mock-results mirrors mount in the app shell
+  // (their writes happen on course routes / past-papers, not just here).
   const { slugs, has, add, remove, restore } = useMySubjects();
   const identity = useIdentity();
   const lastOpened = useLastOpened();

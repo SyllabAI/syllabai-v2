@@ -1,0 +1,272 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_NhRw6hdrVD4vmNJw",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "89b9bfd3e153cdf6ee7edd452c13fb74785055d784aa66ddeaf2ce75a5319411",
+    "pinnedRef": "502107a3fcacad2340d0ac5e66b5ad93ef32800c"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_NhRw6hdrVD4vmNJw",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Static Electricity",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-4-static-electricity/2-4-3-electric-charge",
+    "specAnchors": [
+      {
+        "code": "2.24P",
+        "text": "explain how positive and negative electrostatic charges are produced on materials by the loss and gain of electrons (physics only)"
+      },
+      {
+        "code": "2.25P",
+        "text": "know that there are forces of attraction between unlike charges and forces of repulsion between like charges (physics only)"
+      },
+      {
+        "code": "2.26P",
+        "text": "explain electrostatic phenomena in terms of the movement of electrons (physics only)"
+      }
+    ],
+    "primer": {
+      "text": "Charge is a particle property: protons positive, electrons negative, neutrons nothing. Balance them and an atom is neutral; unbalance them by moving electrons only, and objects charge up. This note covers the forces that unbalanced charges exert on each other, how friction produces them, and why every electrostatic phenomenon is an electron story.",
+      "prerequisiteSubtopic": "Static Electricity"
+    },
+    "modules": [
+      {
+        "id": "rn_NhRw6hdrVD4vmNJw::L1",
+        "title": "Charges, atoms & forces between them",
+        "sourceHeadings": [
+          "Electric forces between charges"
+        ],
+        "specRefs": [
+          "2.25P"
+        ],
+        "opening": "A neutral atom carries equal numbers of electrons and protons, so its charges cancel to zero. Tip that balance by moving electrons and the object charges up — and charged objects exert forces on each other without touching: unlike charges attract, like charges repel, and the force grows as they close in.",
+        "keyPoints": [
+          "Particles carry positive, negative or neutral charge: protons positive, electrons negative, neutrons neutral.",
+          "A neutral atom holds equal numbers of electrons and protons, so the charges cancel.",
+          "An object charges negatively by gaining electrons and positively by losing them.",
+          "Unlike charges attract; like charges repel.",
+          "The force between charges strengthens as they come closer.",
+          "Attraction and repulsion act without contact — non-contact forces."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Opposite charges pull together, matching charges push apart, and neither needs a touch to act.",
+            "analogy": "Two magnets on a table: north-to-south snaps together, north-to-north shoves apart, from clear across the desk.",
+            "examPointer": "'Opposites attract' is the saying examiners want — but name the charges, not just the slogan."
+          },
+          "medium": {
+            "restatement": "The force is non-contact and distance-dependent, weakening rapidly as the charged objects separate.",
+            "analogy": "A smell from the kitchen: strongest up close, fading with distance, no contact needed.",
+            "examPointer": "Use the summary table pattern: positive-positive repel, positive-negative attract, and so on."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NhRw6hdrVD4vmNJw::L1::Q1",
+          "rn_NhRw6hdrVD4vmNJw::L1::Q2",
+          "rn_NhRw6hdrVD4vmNJw::L1::Q3",
+          "rn_NhRw6hdrVD4vmNJw::L1::Q4",
+          "rn_NhRw6hdrVD4vmNJw::L1::Q5",
+          "rn_NhRw6hdrVD4vmNJw::L1::Q6",
+          "rn_NhRw6hdrVD4vmNJw::L1::Q7",
+          "rn_NhRw6hdrVD4vmNJw::L1::Q8",
+          "rn_NhRw6hdrVD4vmNJw::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_NhRw6hdrVD4vmNJw::L2",
+        "title": "Production of static by friction",
+        "sourceHeadings": [
+          "Production of static"
+        ],
+        "specRefs": [
+          "2.24P"
+        ],
+        "opening": "Rub two insulators together and charge appears on both — not from nowhere, but by moving electrons from one surface onto the other. The charges stay put because the materials have no free carriers, and the two objects end up with equal and opposite signs: one negative, the other equally positive.",
+        "keyPoints": [
+          "Static electricity is charge accumulated on an insulator, able to attract objects or spark.",
+          "Rubbing two insulators together charges them by friction.",
+          "The charge stays put on insulators because it cannot flow away at once.",
+          "Only electrons move: one material gains them, the other loses them.",
+          "A polythene rod rubbed with a cloth gains electrons and charges negative; the cloth is left equally positive."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Rubbing moves electrons between two insulators; the gainer turns negative, the loser positive.",
+            "analogy": "Passing bricks between two wheelbarrows: one loads up, the other lightens — nothing else changes.",
+            "examPointer": "Always answer in electrons: they are the only particle that moves."
+          },
+          "medium": {
+            "restatement": "The equality matters: the negative surplus on one surface matches the positive shortfall on the other, so charge is conserved overall.",
+            "analogy": "A seesaw: one side down by exactly as much as the other side is up.",
+            "examPointer": "If asked how a positive charge appears, say electrons LEFT — never that protons arrived."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NhRw6hdrVD4vmNJw::L2::Q1",
+          "rn_NhRw6hdrVD4vmNJw::L2::Q2",
+          "rn_NhRw6hdrVD4vmNJw::L2::Q3",
+          "rn_NhRw6hdrVD4vmNJw::L2::Q4",
+          "rn_NhRw6hdrVD4vmNJw::L2::Q5",
+          "rn_NhRw6hdrVD4vmNJw::L2::Q6",
+          "rn_NhRw6hdrVD4vmNJw::L2::Q7",
+          "rn_NhRw6hdrVD4vmNJw::L2::Q8",
+          "rn_NhRw6hdrVD4vmNJw::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_NhRw6hdrVD4vmNJw::L3",
+        "title": "Movement of electrons explains phenomena",
+        "sourceHeadings": [
+          "Movement of electrons"
+        ],
+        "specRefs": [
+          "2.26P"
+        ],
+        "opening": "Every electrostatic observation reduces to one storyline: electrons moved. Start neutral, transfer electrons by friction, and the receiver goes negative while the giver goes positive. Even a charged object's pull on neutral things is an electron story — opposite charge is drawn to the surface nearest the charge.",
+        "keyPoints": [
+          "Everyday objects start electrically neutral, with charge evenly spread.",
+          "Friction transfers electrons: the receiver turns negative, the giver positive.",
+          "A charged object attracts neutral ones by pulling opposite charge to their surface.",
+          "Rubbing an acetate rod sends its electrons to the cloth, leaving rod positive, cloth negative.",
+          "Once separated, rod and cloth attract each other."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Charged things attract neutrals by rearranging the neutrals' own charges across their surface.",
+            "analogy": "A comb through hair lifting paper bits — the comb's charge re-dresses each paper's surface charge.",
+            "examPointer": "Phenomena questions want the electron direction: to the rod, from the rod, or to the surface."
+          },
+          "medium": {
+            "restatement": "The induced surface charge explains why attraction works on neutrals: the unlike charge sits closer than the like charge, so attraction wins.",
+            "analogy": "A magnet near iron filings: the filings polarise and the nearest poles pull hardest.",
+            "examPointer": "For the acetate-cloth pair, name both directions: electrons rod-to-cloth, so rod positive and cloth negative."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NhRw6hdrVD4vmNJw::L3::Q1",
+          "rn_NhRw6hdrVD4vmNJw::L3::Q2",
+          "rn_NhRw6hdrVD4vmNJw::L3::Q3",
+          "rn_NhRw6hdrVD4vmNJw::L3::Q4",
+          "rn_NhRw6hdrVD4vmNJw::L3::Q5",
+          "rn_NhRw6hdrVD4vmNJw::L3::Q6",
+          "rn_NhRw6hdrVD4vmNJw::L3::Q7",
+          "rn_NhRw6hdrVD4vmNJw::L3::Q8",
+          "rn_NhRw6hdrVD4vmNJw::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "neutral",
+          "definition": "Having equal positive and negative charge, adding to zero.",
+          "firstLesson": 1
+        },
+        {
+          "term": "non-contact force",
+          "definition": "A force acting between objects that are not touching.",
+          "firstLesson": 1
+        },
+        {
+          "term": "charging by friction",
+          "definition": "Producing electrostatic charge on two insulators by rubbing them together.",
+          "firstLesson": 2
+        },
+        {
+          "term": "induced charge",
+          "definition": "Opposite charge drawn to a neutral object's surface by a nearby charged object.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/c6b34b2d01e0-11-1-2-nucleus-and-electrons-e1632120061207.png",
+        "alt": "Nucleus and electrons, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Electric forces between charges",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The number of negative electrons in an atom balances the number of positive protons",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/0620928981cf-opposites-attract.png",
+        "alt": "opposites-attract, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Electric forces between charges",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Opposite charges attract, like charges repel",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/ca01bc48c3f5-charging-by-friction-v-1.png",
+        "alt": "charging-by-friction, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Production of static",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "A polythene rod may be given a charge by rubbing it with a cloth",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/2a7d8f2e094a-2-4-2-static-charge-transfer.png",
+        "alt": "2a7d8f2e094a-2-4-2-static-charge-transfer",
+        "sourceHeading": "Movement of electrons",
+        "moduleIds": [
+          "L3"
+        ],
+        "caption": "Electrons are transferred from the rod to the cloth as they are rubbed together. This leaves the cloth negatively charged and the rod positively charged",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

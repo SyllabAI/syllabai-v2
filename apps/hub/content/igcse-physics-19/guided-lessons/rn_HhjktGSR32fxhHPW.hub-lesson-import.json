@@ -1,0 +1,316 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_HhjktGSR32fxhHPW",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "68fb873dcb7d932370f7b3f92387904b1708debd6ce6f216de6242f7850a085c",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_HhjktGSR32fxhHPW",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Reflection & Refraction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-2-reflection-and-refraction/3-2-6-total-internal-reflection",
+    "specAnchors": [
+      {
+        "code": "3.20",
+        "text": "describe the role of total internal reflection in transmitting information along optical fibres and in prisms"
+      },
+      {
+        "code": "3.21",
+        "text": "explain the meaning of critical angle c"
+      },
+      {
+        "code": "3.22",
+        "text": "know and use the relationship between critical angle and refractive index: sin c = 1 / n"
+      }
+    ],
+    "primer": {
+      "text": "A light ray crossing from glass into air usually refracts away from the normal — but push the incidence angle far enough and the ray never leaves at all: every bit of the light turns back inside the denser material. That sharp switch is total internal reflection, it has a threshold called the critical angle, and one small equation links that angle to the refractive index. Fibres, prisms and sparkling gemstones all run on it.",
+      "prerequisiteSubtopic": "Reflection & Refraction"
+    },
+    "modules": [
+      {
+        "id": "rn_HhjktGSR32fxhHPW::L1",
+        "title": "Total internal reflection",
+        "sourceHeadings": [
+          "Total internal reflection",
+          "Light travelling in an optical fibre"
+        ],
+        "specRefs": [
+          "3.20"
+        ],
+        "opening": "Shine light from glass towards air at a shallow angle and it escapes, bent away from the normal. Increase the incidence angle and a threshold arrives: past it, nothing escapes — the whole ray snaps back inside the glass. Optical fibres ride that effect bounce after bounce to carry phone calls and see inside patients, while prisms use it in periscopes, binoculars and the reflectors that guard bicycles at night.",
+        "keyPoints": [
+          "Total internal reflection happens when light travels from a denser material towards a less dense one and the incidence angle exceeds the critical angle.",
+          "Both conditions must hold: the incidence angle is greater than the critical angle and the first material is denser than the second.",
+          "Optical fibres guide light by repeated total internal reflection, used for communications, endoscopes and decorative lamps.",
+          "Prisms reflect light internally in periscopes, binoculars, telescopes and cameras.",
+          "Safety reflectors for bicycles and cars, and posts marking road edges, also use prismatic reflection."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Past the critical angle, light going from a denser to a less dense material stops escaping and reflects completely inside the first material.",
+            "analogy": "A ball thrown at a net too softly passes through, but hit hard enough at the right angle it bounces straight back — except here the switch is exact, not gradual.",
+            "examPointer": "Write the full name \"total internal reflection\" when asked for the phenomenon — \"internal reflection\" alone can drop the mark."
+          },
+          "medium": {
+            "restatement": "Two conditions together: the ray starts in the denser material and strikes beyond the critical angle; then none of the light is transmitted and the boundary behaves as a perfect mirror.",
+            "analogy": "A silent doorman: up to the threshold some light always slips through the boundary, past it the door shuts and everyone is turned back.",
+            "examPointer": "Application questions want the object named first (a right-angled prism) and then the device (a periscope) — give both."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_HhjktGSR32fxhHPW::L1::Q1",
+          "rn_HhjktGSR32fxhHPW::L1::Q2",
+          "rn_HhjktGSR32fxhHPW::L1::Q3",
+          "rn_HhjktGSR32fxhHPW::L1::Q4",
+          "rn_HhjktGSR32fxhHPW::L1::Q5",
+          "rn_HhjktGSR32fxhHPW::L1::Q6",
+          "rn_HhjktGSR32fxhHPW::L1::Q7",
+          "rn_HhjktGSR32fxhHPW::L1::Q8",
+          "rn_HhjktGSR32fxhHPW::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_HhjktGSR32fxhHPW::L2",
+        "title": "The critical angle",
+        "sourceHeadings": [
+          "Critical angle",
+          "Changing the angle of incidence to obtain the critical angle"
+        ],
+        "specRefs": [
+          "3.21"
+        ],
+        "opening": "Raise the incidence angle step by step and the refracted ray walks away from the normal, closer and closer to the boundary itself. At one exact angle the refraction lies flat along the surface at 90° — that incidence angle is the critical angle. One degree more and the escaping ray is gone, replaced by a reflected one of equal strength.",
+        "keyPoints": [
+          "Raising the incidence angle raises the refraction angle towards 90°.",
+          "At the critical angle the refracted ray skims exactly along the boundary at 90°.",
+          "Beyond the critical angle the refracted ray is replaced by a totally internally reflected one.",
+          "The switch from refraction to total internal reflection happens only going from a denser to a less dense material."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The critical angle is the incidence angle at which the refracted ray travels exactly along the boundary at 90° to the normal.",
+            "analogy": "A ramp that finally levels out: raise the entry angle and the exit ray flattens until, at the critical angle, it skims the floor.",
+            "examPointer": "Definitions earn marks word-for-word: incidence angle in, refraction at 90° along the boundary."
+          },
+          "medium": {
+            "restatement": "As incidence grows the refraction angle grows too, until it reaches 90°; that incidence value is the critical angle, and past it the boundary reflects totally instead of transmitting.",
+            "analogy": "A door that swings shut: the escaping ray narrows to a slit along the frame, then vanishes altogether.",
+            "examPointer": "Sketch the three-ray diagram (below, at, beyond the critical angle) — it earns explanation marks fast."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_HhjktGSR32fxhHPW::L2::Q1",
+          "rn_HhjktGSR32fxhHPW::L2::Q2",
+          "rn_HhjktGSR32fxhHPW::L2::Q3",
+          "rn_HhjktGSR32fxhHPW::L2::Q4",
+          "rn_HhjktGSR32fxhHPW::L2::Q5",
+          "rn_HhjktGSR32fxhHPW::L2::Q6",
+          "rn_HhjktGSR32fxhHPW::L2::Q7",
+          "rn_HhjktGSR32fxhHPW::L2::Q8",
+          "rn_HhjktGSR32fxhHPW::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-06",
+          "fig-07",
+          "fig-08"
+        ]
+      },
+      {
+        "id": "rn_HhjktGSR32fxhHPW::L3",
+        "title": "Calculating the critical angle",
+        "sourceHeadings": [
+          "Calculating critical angle"
+        ],
+        "specRefs": [
+          "3.22"
+        ],
+        "opening": "The critical angle is not a new measurement to memorise — it comes free with the refractive index. One line of algebra, sin c = 1 / n, converts a material's index into the angle beyond which light cannot escape. High-index materials pay twice: light slows more inside them, and their small critical angles trap rays over a much wider range, which is exactly why diamond glitters so fiercely.",
+        "keyPoints": [
+          "The critical angle and the refractive index are linked by sin c = 1 / n.",
+          "Rearranged, the refractive index is n = 1 / sin c.",
+          "A larger refractive index means a smaller critical angle.",
+          "Light inside a high-refractive-index material is more likely to be totally internally reflected."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Divide 1 by the refractive index to get sin c, then apply the inverse sine to get the critical angle itself.",
+            "analogy": "One dial, two scales: the index and the critical angle are the same fact read in different units.",
+            "examPointer": "Show the substitution — sin c = 1 / n with the numbers — before reaching for the inverse sine button."
+          },
+          "medium": {
+            "restatement": "Because sin c = 1 / n, a larger index shrinks the critical angle, so rays inside a dense material exceed it over a wider range of directions and reflect totally more often.",
+            "analogy": "A low doorway: the taller the material's optical density, the easier any ray bumps its head and gets turned back.",
+            "examPointer": "Comparison questions want both angles calculated, then the trend named: bigger index, smaller c, more sparkle."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_HhjktGSR32fxhHPW::L3::Q1",
+          "rn_HhjktGSR32fxhHPW::L3::Q2",
+          "rn_HhjktGSR32fxhHPW::L3::Q3",
+          "rn_HhjktGSR32fxhHPW::L3::Q4",
+          "rn_HhjktGSR32fxhHPW::L3::Q5",
+          "rn_HhjktGSR32fxhHPW::L3::Q6",
+          "rn_HhjktGSR32fxhHPW::L3::Q7",
+          "rn_HhjktGSR32fxhHPW::L3::Q8",
+          "rn_HhjktGSR32fxhHPW::L3::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "total internal reflection",
+          "definition": "The complete reflection of a light ray inside the denser material when the incidence angle exceeds the critical angle.",
+          "firstLesson": 1
+        },
+        {
+          "term": "optical fibre",
+          "definition": "A thin glass strand that guides light by repeated total internal reflection.",
+          "firstLesson": 1
+        },
+        {
+          "term": "prism",
+          "definition": "A shaped glass block that reflects light internally, as in a periscope.",
+          "firstLesson": 1
+        },
+        {
+          "term": "critical angle",
+          "definition": "The incidence angle at which the refracted ray skims along the boundary at exactly 90°.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A glass cube is held in contact with a liquid and a light ray is directed at a vertical face of the cube. The angle of incidence at the vertical face is 39° and the angle of refraction is 25°. The light ray is totally internally reflected for the first time at X on the glass-liquid boundary. Calculate the critical angle for the glass-liquid boundary.",
+        "steps": [
+          "At the boundary where reflection first happens, the ray must be striking at the critical angle.",
+          "Inside the liquid the ray travels at 25° from the normal, so the angle between the boundary and the ray is 90° - 25° = 65°.",
+          "By the reflection law the incidence angle at that boundary equals the reflection angle, so the critical angle is 65°.",
+          "\"First\" total internal reflection confirms this is the lowest angle at which it occurs."
+        ],
+        "finalAnswer": "The critical angle for the glass-liquid boundary is 65°."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/dbd1af9eed69-5-1-2-total-internal-reflection.png",
+        "alt": "Total Internal Reflection, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The angles of refraction, critical and total internal reflection",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The critical angle is different for different materials. Refraction occurs when the angle of incidence is less than the critical angle, and total internal reflection occurs when it is greater",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/bdd1ace6c050-optical-fibres.png",
+        "alt": "Optical fibres, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Light travelling in an optical fibre",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Optical fibres utilise total internal reflection for communications",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a7896c6bffc8-endoscope.png",
+        "alt": "Endoscope, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Structure of an endoscope",
+        "moduleIds": [],
+        "caption": "Endoscopes utilise total internal reflection to see inside a patient's body",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/2321313de058-3-2-6-periscope-1.png",
+        "alt": "Periscope, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Reflection of light in a periscope",
+        "moduleIds": [],
+        "caption": "When light travels through a periscope, it totally internally reflects through prisms causing the light to reflect at right angles",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b89c566b6594-3-2-6-tir-prisms.png",
+        "alt": "TIR Prisms, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Reflection of light by right-angled prisms",
+        "moduleIds": [],
+        "caption": "Single and double reflection through right-angled prisms",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/91551ecee04e-total-internal-reflection.png",
+        "alt": "Total internal reflection, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Changing the angle of incidence to obtain the critical angle",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "As the angle of incidence increases it will eventually surplus the critical angle and lead to total internal reflection of the light",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-07",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/c36546abaa85-total-internal-reflection-worked-example-1.png",
+        "alt": "Total Internal Reflection Worked Example (1), downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Changing the angle of incidence to obtain the critical angle",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-08",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/eb6a333a035a-total-internal-reflection-worked-example-2.png",
+        "alt": "Total Internal Reflection Worked Example (2), downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Changing the angle of incidence to obtain the critical angle",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

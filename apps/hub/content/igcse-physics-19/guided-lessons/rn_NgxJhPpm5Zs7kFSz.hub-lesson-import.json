@@ -1,0 +1,180 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_NgxJhPpm5Zs7kFSz",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8f680af9bad64803ce9ecf761a6aa96dd4d646befbe04a7b8746018a2429da28",
+    "pinnedRef": "502107a3fcacad2340d0ac5e66b5ad93ef32800c"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_NgxJhPpm5Zs7kFSz",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Electrical Power & Mains Electricity",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-3-electrical-power-and-mains-electricity/2-3-5-ac-and-dc",
+    "specAnchors": [
+      {
+        "code": "2.6",
+        "text": "know the difference between mains electricity being alternating current (a.c.) and direct current (d.c.) being supplied by a cell or battery"
+      }
+    ],
+    "primer": {
+      "text": "Two kinds of current power the world: the steady one-way flow from a battery, and the back-and-forth flow from the mains. This note defines direct and alternating current, contrasts their terminals, and pins down the UK mains figures — alternating current at 50 Hz and about 230 V — alongside the oscilloscope traces that tell them apart.",
+      "prerequisiteSubtopic": "Electrical Power & Mains Electricity"
+    },
+    "modules": [
+      {
+        "id": "rn_NgxJhPpm5Zs7kFSz::L1",
+        "title": "Direct current from cells & batteries",
+        "sourceHeadings": [
+          "Direct current"
+        ],
+        "specRefs": [
+          "2.6"
+        ],
+        "opening": "A battery pushes charge the same way all the time: its positive and negative terminals never swap, so the current flows steadily one way around the circuit. That is direct current, and every cell or battery you have wired into a circuit produces it.",
+        "keyPoints": [
+          "Direct current flows steadily one way round the circuit, positive to negative.",
+          "A d.c. supply keeps fixed positive and negative terminals.",
+          "Cells and batteries are the everyday sources of direct current."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Direct current goes one way only, from the positive terminal to the negative.",
+            "analogy": "A one-way escalator: everyone moves in the same direction, all the time.",
+            "examPointer": "All the circuits you have built so far are d.c. — the calculations you know already apply unchanged."
+          },
+          "medium": {
+            "restatement": "The fixed polarity of the terminals is what fixes the direction: the current follows the potential difference, and that never reverses.",
+            "analogy": "A river bed that only ever slopes one way — the water has no choice of direction.",
+            "examPointer": "If asked for a source, say cells or batteries, not 'the plug'."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NgxJhPpm5Zs7kFSz::L1::Q1",
+          "rn_NgxJhPpm5Zs7kFSz::L1::Q2",
+          "rn_NgxJhPpm5Zs7kFSz::L1::Q3",
+          "rn_NgxJhPpm5Zs7kFSz::L1::Q4",
+          "rn_NgxJhPpm5Zs7kFSz::L1::Q5",
+          "rn_NgxJhPpm5Zs7kFSz::L1::Q6",
+          "rn_NgxJhPpm5Zs7kFSz::L1::Q7",
+          "rn_NgxJhPpm5Zs7kFSz::L1::Q8",
+          "rn_NgxJhPpm5Zs7kFSz::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_NgxJhPpm5Zs7kFSz::L2",
+        "title": "Alternating current & the UK mains",
+        "sourceHeadings": [
+          "Alternating current",
+          "Comparing alternating current & direct current"
+        ],
+        "specRefs": [
+          "2.6"
+        ],
+        "opening": "The mains behaves differently: its two terminals keep trading polarity, so the current sweeps back and forth instead of holding one direction. That is alternating current. The frequency counts the sweeps each second — 50 of them in UK sockets — and the voltage sits near 230 V.",
+        "keyPoints": [
+          "Alternating current changes direction continuously, moving back and forth.",
+          "An a.c. supply has two identical terminals whose polarity keeps swapping.",
+          "The frequency counts the back-and-forth direction changes each second.",
+          "UK mains delivers alternating current at 50 Hz and about 230 V.",
+          "Generators at power stations produce the mains alternating current."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Alternating current keeps reversing direction; UK mains does this 50 times a second at about 230 V.",
+            "analogy": "A pendulum versus a one-way slide: the pendulum sweeps both ways, the slide only down.",
+            "examPointer": "Learn the two mains numbers as a pair — 50 Hz and 230 V — questions rarely ask for one without the other."
+          },
+          "medium": {
+            "restatement": "Because the terminals swap polarity continuously, neither is 'the positive one'; each is positive half the time and negative the other half.",
+            "analogy": "Two children on a see-saw taking turns being 'up' — neither holds the title for long.",
+            "examPointer": "Sketch the two oscilloscope traces: a flat line for d.c., an oscillating wave for a.c."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NgxJhPpm5Zs7kFSz::L2::Q1",
+          "rn_NgxJhPpm5Zs7kFSz::L2::Q2",
+          "rn_NgxJhPpm5Zs7kFSz::L2::Q3",
+          "rn_NgxJhPpm5Zs7kFSz::L2::Q4",
+          "rn_NgxJhPpm5Zs7kFSz::L2::Q5",
+          "rn_NgxJhPpm5Zs7kFSz::L2::Q6",
+          "rn_NgxJhPpm5Zs7kFSz::L2::Q7",
+          "rn_NgxJhPpm5Zs7kFSz::L2::Q8",
+          "rn_NgxJhPpm5Zs7kFSz::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "direct current",
+          "definition": "A steady current flowing one way only, produced by cells and batteries.",
+          "firstLesson": 1
+        },
+        {
+          "term": "alternating current",
+          "definition": "A current that continuously changes direction, produced by generators and carried by the mains.",
+          "firstLesson": 2
+        },
+        {
+          "term": "frequency",
+          "definition": "The number of back-and-forth direction changes per second, in hertz; UK mains is 50 Hz.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/106fc663151b-9-1-2-1-voltmeter-in-a-circuit.png",
+        "alt": "Voltmeter in a circuit, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Direct current",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Circuits powered by cells or batteries use a d.c. supply",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/f32a21394813-ac-dc.png",
+        "alt": "ac-&-dc, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Alternating current",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Two graphs showing the variation of current with time for alternating current and direct current",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

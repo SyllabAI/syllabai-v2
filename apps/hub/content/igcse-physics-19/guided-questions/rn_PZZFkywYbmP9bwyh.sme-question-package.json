@@ -1,0 +1,504 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_PZZFkywYbmP9bwyh",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "13856f0774d8a83250592907afa742e87b76b346cbe588875a357033279ccf9d",
+    "pinnedRef": "502107a3fcacad2340d0ac5e66b5ad93ef32800c"
+  },
+  "packageId": "igcse-physics::rn_PZZFkywYbmP9bwyh",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L1::Q1",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L1",
+      "stem": "Power is defined as the rate of:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "charge flow per minute",
+          "correct": false,
+          "explanation": "Charge flow per second would be current, not power.",
+          "misconception": "quantity slip"
+        },
+        {
+          "key": "B",
+          "text": "energy transfer per second",
+          "correct": true,
+          "explanation": "Power counts the energy moved in every second of operation.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "voltage supplied per hour",
+          "correct": false,
+          "explanation": "Voltage is not counted over time; this mixes the two ideas.",
+          "misconception": "unit confusion"
+        },
+        {
+          "key": "D",
+          "text": "current drawn per joule",
+          "correct": false,
+          "explanation": "That inverts the relationship between energy and current.",
+          "misconception": "inversion slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L1::Q2",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L1",
+      "stem": "One watt is the same as:",
+      "misconceptionClass": "unit recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "one joule per coulomb",
+          "correct": false,
+          "explanation": "That defines a volt.",
+          "misconception": "unit swap"
+        },
+        {
+          "key": "B",
+          "text": "one coulomb per second",
+          "correct": false,
+          "explanation": "That defines an ampere.",
+          "misconception": "unit swap"
+        },
+        {
+          "key": "C",
+          "text": "one newton per metre",
+          "correct": false,
+          "explanation": "Neither quantity appears in the power relationship.",
+          "misconception": "unit invention"
+        },
+        {
+          "key": "D",
+          "text": "one joule per second",
+          "correct": true,
+          "explanation": "The watt is exactly one joule of energy moved every second.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L1::Q3",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L1",
+      "stem": "A 4 A motor runs at 48 W. The potential difference across it is:",
+      "misconceptionClass": "power arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "192 V",
+          "correct": false,
+          "explanation": "That multiplies instead of dividing: 48 × 4 is meaningless here.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "B",
+          "text": "0.083 V",
+          "correct": false,
+          "explanation": "That divides the current by the power — the wrong way round.",
+          "misconception": "inversion slip"
+        },
+        {
+          "key": "C",
+          "text": "12 V",
+          "correct": true,
+          "explanation": "V = P ÷ I = 48 ÷ 4 = 12 V.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "52 V",
+          "correct": false,
+          "explanation": "Adding the two quantities carries no physical meaning.",
+          "misconception": "addition slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L1::Q4",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L1",
+      "stem": "In the equation P = I × V, the quantity I stands for:",
+      "misconceptionClass": "symbol recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "current, measured in amperes",
+          "correct": true,
+          "explanation": "I is the symbol for current in this relationship.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "insulation, measured in layers",
+          "correct": false,
+          "explanation": "Insulation is a safety feature, not part of this equation.",
+          "misconception": "context slip"
+        },
+        {
+          "key": "C",
+          "text": "intensity, measured in watts",
+          "correct": false,
+          "explanation": "Intensity does not enter this equation.",
+          "misconception": "symbol confusion"
+        },
+        {
+          "key": "D",
+          "text": "impedance, measured in ohms",
+          "correct": false,
+          "explanation": "Ohms belong to resistance, a different relationship.",
+          "misconception": "unit confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L1::Q5",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L1",
+      "stem": "Doubling both the current through and the voltage across a device multiplies its power by:",
+      "misconceptionClass": "proportional reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "two, because only one factor counts",
+          "correct": false,
+          "explanation": "Both factors enter the product, so both changes count.",
+          "misconception": "single-factor myth"
+        },
+        {
+          "key": "B",
+          "text": "four, because both factors double",
+          "correct": true,
+          "explanation": "P = I × V, and 2 × 2 multiplies the power by four.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "no change, because the effects cancel",
+          "correct": false,
+          "explanation": "The two changes reinforce rather than cancel.",
+          "misconception": "cancellation myth"
+        },
+        {
+          "key": "D",
+          "text": "eight, because three quantities multiply",
+          "correct": false,
+          "explanation": "Only two quantities multiply in P = I × V.",
+          "misconception": "factor miscount"
+        }
+      ]
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L1::Q6",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L1",
+      "stem": "State the equation linking power, current and voltage, naming the unit of each quantity.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "P = I × V, with power in watts, current in amperes and voltage in volts.",
+      "keywords": [
+        "power",
+        "current",
+        "voltage",
+        "watt",
+        "ampere",
+        "volt"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L1::Q7",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L1",
+      "stem": "What does one watt equal in energy terms?",
+      "misconceptionClass": "unit recall",
+      "kind": "recall",
+      "modelAnswer": "One watt is one joule of energy transferred every second.",
+      "keywords": [
+        "joule",
+        "watt",
+        "second",
+        "energy",
+        "transferred"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L1::Q8",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L1",
+      "stem": "Explain why the formula triangle is a dependable way to rearrange P = I × V.",
+      "misconceptionClass": "rearrangement reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Covering the quantity you want leaves the other two touching, which gives the exact product or quotient — V = P ÷ I or I = P ÷ V — so no algebra step can go wrong.",
+      "keywords": [
+        "formula",
+        "triangle",
+        "rearrange",
+        "quotient",
+        "product"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L1::Q9",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L1",
+      "stem": "An oven draws 10 A from a 230 V supply. Calculate its power.",
+      "misconceptionClass": "power calculation",
+      "kind": "application",
+      "modelAnswer": "P = I × V = 10 A × 230 V = 2300 W, i.e. 2.3 kW.",
+      "keywords": [
+        "2300",
+        "power",
+        "watts",
+        "current",
+        "voltage"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L2::Q1",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L2",
+      "stem": "A fuse protects an appliance by:",
+      "misconceptionClass": "safety device recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "storing the surplus charge",
+          "correct": false,
+          "explanation": "Fuses store nothing; they interrupt the circuit.",
+          "misconception": "function myth"
+        },
+        {
+          "key": "B",
+          "text": "lowering the voltage at the socket",
+          "correct": false,
+          "explanation": "Fuses do not regulate voltage.",
+          "misconception": "function myth"
+        },
+        {
+          "key": "C",
+          "text": "melting its wire and breaking the circuit when the current is too large",
+          "correct": true,
+          "explanation": "The melted wire opens the circuit and stops the excess flow.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "cooling the wires with a heat sink",
+          "correct": false,
+          "explanation": "Cooling is not how a fuse acts.",
+          "misconception": "function myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L2::Q2",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L2",
+      "stem": "The standard household fuse ratings are:",
+      "misconceptionClass": "value recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "3 A, 5 A and 13 A",
+          "correct": true,
+          "explanation": "Those are the three ratings met in domestic plugs.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "1 A, 2 A and 3 A",
+          "correct": false,
+          "explanation": "Those are far below domestic plug ratings.",
+          "misconception": "value slip"
+        },
+        {
+          "key": "C",
+          "text": "10 A, 20 A and 30 A",
+          "correct": false,
+          "explanation": "Those exceed the domestic plug standards.",
+          "misconception": "value slip"
+        },
+        {
+          "key": "D",
+          "text": "5 A, 10 A and 15 A",
+          "correct": false,
+          "explanation": "A plausible-looking but incorrect set.",
+          "misconception": "value slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L2::Q3",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L2",
+      "stem": "An appliance needs 4 A from a 230 V mains. Its power is:",
+      "misconceptionClass": "power arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "57.5 W",
+          "correct": false,
+          "explanation": "That divides the voltage by the current — the wrong way round.",
+          "misconception": "inversion slip"
+        },
+        {
+          "key": "B",
+          "text": "234 W",
+          "correct": false,
+          "explanation": "Adding the two quantities is meaningless.",
+          "misconception": "addition slip"
+        },
+        {
+          "key": "C",
+          "text": "1840 W",
+          "correct": false,
+          "explanation": "That doubles the correct answer for no reason.",
+          "misconception": "factor slip"
+        },
+        {
+          "key": "D",
+          "text": "920 W",
+          "correct": true,
+          "explanation": "P = I × V = 4 × 230 = 920 W.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L2::Q4",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L2",
+      "stem": "A fuse rated below the appliance's normal current will:",
+      "misconceptionClass": "rating reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "never blow at all",
+          "correct": false,
+          "explanation": "An underrating blows sooner, not later.",
+          "misconception": "inversion myth"
+        },
+        {
+          "key": "B",
+          "text": "blow as soon as the appliance runs normally",
+          "correct": true,
+          "explanation": "The working current alone exceeds the rating, so it melts immediately.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "raise the appliance's power",
+          "correct": false,
+          "explanation": "The fuse cannot change the appliance's power.",
+          "misconception": "influence myth"
+        },
+        {
+          "key": "D",
+          "text": "make the current smaller",
+          "correct": false,
+          "explanation": "The rating does not throttle the current before melting.",
+          "misconception": "function myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L2::Q5",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L2",
+      "stem": "The fuse chosen for an appliance should be:",
+      "misconceptionClass": "selection rule",
+      "options": [
+        {
+          "key": "A",
+          "text": "the largest available",
+          "correct": false,
+          "explanation": "An oversized fuse reacts far too late to protect anything.",
+          "misconception": "oversize myth"
+        },
+        {
+          "key": "B",
+          "text": "exactly equal to the current it needs",
+          "correct": false,
+          "explanation": "A rating equal to the working current blows during normal running.",
+          "misconception": "exact-match slip"
+        },
+        {
+          "key": "C",
+          "text": "the next size up from the current it needs",
+          "correct": true,
+          "explanation": "One size up survives normal running yet still trips on a surge.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the smallest that exists",
+          "correct": false,
+          "explanation": "That would blow at once, like an underrating.",
+          "misconception": "undersize myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L2::Q6",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L2",
+      "stem": "State the equation used to find the current an appliance draws from its power and the mains voltage.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "I = P ÷ V — the current equals the power divided by the voltage.",
+      "keywords": [
+        "current",
+        "power",
+        "voltage",
+        "divided",
+        "equation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L2::Q7",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L2",
+      "stem": "Why must the fuse rating sit above the appliance's normal current?",
+      "misconceptionClass": "rating reasoning",
+      "kind": "recall",
+      "modelAnswer": "A rating at or below the working current would melt during ordinary operation, so the fuse must sit just above it — the next standard size up.",
+      "keywords": [
+        "rating",
+        "current",
+        "melt",
+        "operation",
+        "size"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L2::Q8",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L2",
+      "stem": "Explain why a 13 A fuse is a poor choice for a lamp that needs 0.2 A.",
+      "misconceptionClass": "selection reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The gap is enormous: the fuse would tolerate roughly thirteen amperes before melting, far beyond what the lamp survives, so a fault would wreck the lamp long before the fuse reacted.",
+      "keywords": [
+        "fuse",
+        "tolerate",
+        "melt",
+        "fault",
+        "reacted"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PZZFkywYbmP9bwyh::L2::Q9",
+      "moduleId": "rn_PZZFkywYbmP9bwyh::L2",
+      "stem": "An appliance draws 3.1 A. Which standard fuse fits, and why?",
+      "misconceptionClass": "fuse selection",
+      "kind": "application",
+      "modelAnswer": "The 5 A fuse: a 3 A fuse would blow the moment the appliance switched on, while 13 A would allow ten extra amperes to flow before it blew — so the next size up, 5 A, is the correct choice.",
+      "keywords": [
+        "fuse",
+        "size",
+        "blow",
+        "appliance",
+        "rating"
+      ],
+      "options": []
+    }
+  ]
+}

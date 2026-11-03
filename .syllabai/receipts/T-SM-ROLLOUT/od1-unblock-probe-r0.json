@@ -1,0 +1,46 @@
+{
+  "lane": "T-SM-ROLLOUT",
+  "receipt": "od1-unblock-probe-r0",
+  "run": "run-003",
+  "phase": "FILED-CENSUS-BLOCKED-NO-SECRET-OF-RECORD",
+  "order_traces": {
+    "order": "IM 1a1a0ef49646baa9 — 'Deploy the switched-off physical probes, and then have F8 pilot the startup of the new lane. cie-a-level-chemistry-25'",
+    "probe_of_record": "od1-live-ma-probe-r0 (run-001, PR #671, merged 30a5ce5)",
+    "unblock_lever_of_record": "od1-live-ma-probe-r0 structural_finding.unblock_lever_for_operator: walk the 147 newest-version-bound question versions through the corpus's own review law — POST /api/v1/teacher/content/question-versions/:id/validate (TEACHER/ADMIN, transactional, audit-recorded) — then re-fire the probe unchanged"
+  },
+  "deliverable_of_record": {
+    "script": "scripts/od1_unblock_probe.ts (NEW this run)",
+    "modes": {
+      "census-only": "preflight + read-only census + receipt; zero writes, zero API auth — asserts the pre-state of record (492 axis-suffixed part-bound LEVELS VALIDATED schemes, 147 multi-axis parts, all newest-version-bound, every bound newest version SUGGESTED)",
+      "full": "census + probe-user provisioning (gate-② pattern) + the 147 version flips via the product seam (one HTTPS request per version, fail-closed) + re-fire of the probe of record UNCHANGED (register learner -> login -> POST /api/v1/attempts/structured -> POST smart-mark) + R4 consumption truth (DB) + post-act probe-user disable"
+    },
+    "write_law_disclosure": [
+      "version flips ride the PRODUCT SEAM only (validate endpoint; the seam writes validation_state + a content_review_audit row per flip)",
+      "the ONLY direct DB writes are the two provisioning-surface acts of the gate-② precedent: user_roles TEACHER grant for the teacher-probe user, and users.enabled=false to disable both probe users post-act",
+      "everything else read-only; PII law: pf-*-@staging.syllabai.dev identities of record, passwords generated per-run, never printed, never persisted"
+    ],
+    "anti_truncation": "receipt written once at the end of the run; every numeric field read back from live state immediately before the write"
+  },
+  "execution_truth": {
+    "what_ran_from_the_operator_sandbox_2026_11_03": {
+      "GET /api/v1/health": "401 — the unauth law holds; the /api/v1 serving boundary is UP on the production deployment",
+      "GET /actuator/health": "404 NOT_FOUND (hkg1) — the same incident-class divergence already recorded in the run-001 preflight (the serving deployment's edge routing does not map /actuator/**); recorded, NOT a blocker for the /api/v1 seams this lane uses",
+      "GET /": "404 — matches the run-001 remediation post-probe state"
+    },
+    "what_could_not_run_and_why": {
+      "blocker": "the production DATABASE_URL (the script's declared secret of record) is not resident in the recycled operator sandbox",
+      "evidence": "the sandbox .env of record carries a file:/ dev placeholder whose target does not exist; no Vercel credential is present in the environment; the run-001 session's secret did not survive the recycle",
+      "consequence": "phase-0 fail-closed DB connect cannot pass; census-only and full modes are UNFIRED; zero production writes were performed this run"
+    },
+    "production_writes_this_run": 0
+  },
+  "resume_law": [
+    "1. from a context holding the secret of record: DATABASE_URL=... bun scripts/od1_unblock_probe.ts --mode census-only --receipt od1-unblock-receipt-census-only.json",
+    "2. if the census asserts hold (492 / 147 / newest-all-SUGGESTED), dispatch --mode full — the script then walks the flips through the product seam, re-fires the probe of record unchanged, verifies R4 per-axis consumption, disables the probe users, and writes the receipt",
+    "3. any assert drift aborts fail-closed BEFORE the next phase — that is the design, not a fault"
+  ],
+  "verdict": "the unblock script of record is filed and resumable; the switched-off physical probes go live the moment the secret of record is supplied — one command, fail-closed end to end",
+  "boundaries": "scripts/** + .syllabai/** only; zero src/ bytes; zero production writes",
+  "standing_reminder": "the PAT baked into legacy scripts remains exposed and MUST be revoked/rotated",
+  "anti_truncation": "this receipt was written in one Write; the API observations above were read live at 2026-11-03 and recorded verbatim"
+}
