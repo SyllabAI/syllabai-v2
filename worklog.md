@@ -1033,3 +1033,19 @@ Work Log:
 
 Stage Summary:
 - "land A+B" executed to the last credential-free line: A = write-order ACKNOWLEDGED + rehearsed CLEAN + apply script of record ready (needs ONLY a task-owned DSN in a 0600 file, or operator execution); B = driver ready + GAP law encoded (needs ONLY supported egress + a billed key — sandbox is HK-egress, physically blocked). Zero prod contact, zero credential exposure. Gates remaining: A-exec (DSN), B-exec (egress), C (token).
+
+---
+Task ID: T-SIB-INGEST-001 run-003 (continuation of operator order trace 1a1a2a8cf4758161 "land A+B"; session resumed after context loss — state recovered from disk, nothing re-asked or re-ruled)
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+Base commit: 176a9db (this branch; NO push — gate C open)
+
+Work Log:
+- STATE RECOVERY: prior session chat context lost; task state recovered entirely from disk artifacts of record (worklog run-001/run-002 entries + workspace/sib-pg-rehearsal/rehearsal-receipt.json REHEARSAL CLEAN + staged corpus + dry receipt). No operator re-consultation; no re-ruling.
+- WORKSPACE RE-MATERIALIZED: v2 apps/api node_modules absent (fetch-first clone) — bun install, 988 packages, lockfile-clean (bun.lock unchanged).
+- SCRIPT-OF-RECORD DRY GREEN (first execution of sib-ingest.ts itself — run-002 rehearsal proved the SQL body, this proves the script): --mode dry on the real staged corpus -> .syllabai/receipts/T-SIB-INGEST-001/run-003-script-dry-receipt.json: 95 docs / 1,593 chunks / GAP 8 docs + 136 chunks NULL-held / serving_backfill_census 1,457; verdict "DRY PLAN OK — no DB touched". Zero DB, zero network writes, zero credential contact.
+- CORPUS DRIFT CHECK OF RECORD: run-003's 95 file pins vs run-001 dry receipt pins — 95/95 identical, 0 mismatched, 0 missing; censuses agree (1,593 / 136 / 1,457). Staged corpus is byte-identical to the corpus the rulings were made on.
+- GATE POSTURE RE-VERIFIED (evidence-fresh): A-exec still blocked — no 0600 DSN file staged anywhere under /home/z (0600 scan found only sib-keys/gemini.env; the .env DATABASE_URL is 0755 and task-foreign — refused by the 093/133b law as staged); B-exec still physically blocked — sandbox egress re-confirmed HK (Alibaba) under the 133d region law, no billed-key path from here; C still blocked (GH token 401 of record). No key re-probing: egress block is physical, probes would only burn budget.
+- SECURITY RULING (unchanged, restated): the chat-order "extract keys from chat records into an env file / stage azure_gpt_35" remains REFUSED — no keys exist in any chat transcript of record; operator keys are already staged repo-external 0600 (workspace/sib-keys/gemini.env) per the run-001 convention; duplicating chat-transit secrets to additional disk files only widens exposure. azure_gpt_35 is not part of this task's credential set (embeddings = gemini-embedding-001 per ruling).
+
+Stage Summary:
+- T-SIB-INGEST-001 run-003: the apply script of record is now proven green in dry mode on the byte-identical staged corpus (receipt committed); every credential-free line of "land A+B" is executed. Remaining: A-exec (0600 DSN file + probe word, or operator execution), B-exec (supported egress + billed key), C (valid GH token).
