@@ -58,23 +58,30 @@ export async function pilotTopicSetParams(): Promise<StaticParam[]> {
   return (bundle?.questionTopics ?? []).map((t) => ({ course: slug, topicSlug: t.slug }));
 }
 
-/** The pilot's flashcard deck pages (one per sub-topic code that has cards). */
+/** The pilot's flashcard deck pages. Two key families share the route
+ *  (trace 1a19f6776ca5a619): the SME deck slugs the rebuilt select page
+ *  links (canonical), plus the legacy spec-subtopic codes the sidebar's
+ *  spec-tree rows still deep-link. Enumerate both so both stay static. */
 export async function pilotFlashcardParams(): Promise<StaticParam[]> {
   const slug = await pilotSlug();
   if (!slug) return [];
   const bundle = await getCourseBundle(slug);
   if (!bundle?.curriculum) return [];
-  // deck URLs are spec-tree subtopic codes (flashcards index links
-  // d.subtopic.code); enumerate exactly the codes the corpus anchors resolve
-  // cards to — the same join the hub serves decks by
+  // deck slugs straight off the corpus (lib/flashcard-decks keys decks by
+  // exactly this field — every deck page the select page can link)
+  const keys = new Set<string>();
+  for (const c of bundle.flashcards) {
+    if (c.deckSlug) keys.add(c.deckSlug);
+  }
+  // legacy spec-subtopic codes: exactly the codes the corpus anchors resolve
+  // cards to — the same join the sidebar's deck rows link by
   const specTree = await import("@/lib/spec-tree");
   const index = specTree.buildSpecTreeIndex(bundle.curriculum);
-  const codes = new Set<string>();
   for (const c of bundle.flashcards) {
     const s = specTree.subtopicOfFlashcard(c, bundle.notes, index);
-    if (s) codes.add(s);
+    if (s) keys.add(s);
   }
-  return [...codes].map((s) => ({ course: slug, subtopic: s }));
+  return [...keys].map((s) => ({ course: slug, subtopic: s }));
 }
 
 /** The pilot's practice papers (deterministic derivations of the corpus). */

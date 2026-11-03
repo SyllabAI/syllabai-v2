@@ -11,22 +11,27 @@
  * cards, never notes, never questions). The DeckDueBadge keeps its
  * scheduler-truth role beside each row's count.
  *
- * Listing anatomy of record (this update): the RevisionDojo pattern the
- * revision-notes and exam-questions listings carry — numbered topic sections
- * (native <details open>) whose rows are the sub-topic DECKS, one deck per
- * sub-topic, each row ProgressRing + corpus-native label (-gen never
- * rendered) + title + right-aligned card count. No expansion tier: decks
+ * Listing anatomy of record (this update, trace 1a19f6776ca5a619): the
+ * RevisionDojo pattern the revision-notes and exam-questions listings carry
+ * — numbered SECTIONS (native <details open>) whose rows are the real SME
+ * DECKS from the corpus's own organization (lib/flashcard-decks: sections
+ * and decks in SME order, titles = SME's own names), each row
+ * ProgressRing + title + right-aligned card count. No expansion tier: decks
  * have no sub-decks, so every row is a single link (the chevron lives on the
- * topic header only).
+ * section header only). The old spec-subtopic label column is gone — the
+ * deck title IS the corpus-native label.
  *
  * Resume of record: the deck holding the most recently RATED card (max
- * `at` across progress.flashcards — rateFlashcard stamps every rating),
- * shown only while that deck is listed on THIS page; nothing rated yet →
- * no button, exactly the notes-index law.
+ * `at` across progress.flashcards — rateFlashcard stamps every rating with
+ * the deck key its page passed), shown only while that deck is listed on
+ * THIS page; nothing rated yet → no button, exactly the notes-index law.
+ * Pre-rebuild ratings carry legacy spec-subtopic anchors — they resolve to
+ * no listed deck, so Resume re-appears on the next rating (honest, and the
+ * deck keys it points at are the ones the deck pages now stamp).
  *
  * Search law: identical to the notes/questionbank indexes at group level —
- * a topic whose own title matches shows ALL its decks; otherwise only the
- * decks whose titles match (topic totals recompute over the shown decks);
+ * a section whose own title matches shows ALL its decks; otherwise only the
+ * decks whose titles match (section totals recompute over the shown decks);
  * the empty state names the query. Search is a transient filter: it never
  * hides Resume.
  */
@@ -41,10 +46,10 @@ import { DeckDueBadge } from "./deck-due-badge";
 import { useCourseProgress, type Course } from "@/lib/progress";
 
 export interface DeckCard {
+  /** the SME deck slug — the deck route key and progress/deck-session key */
   code: string;
+  /** the deck's display title (SME's own name, or slug-derived) */
   title: string;
-  /** corpus-native label — null for generated (-gen) rows, never rendered */
-  label: string | null;
   count: number;
 }
 
@@ -88,10 +93,10 @@ export function FlashcardsIndex({
     return topics.flatMap((t) => t.decks).find((d) => d.code === code) ?? null;
   }, [topics, progress.flashcards]);
 
-  // Topic groups of record: topics with (matching) decks, corpus order,
-  // per-topic totals. A topic whose own title matches shows ALL its decks;
-  // otherwise only the decks whose titles match. Recomputed on query and
-  // server payload changes, never on learner-progress re-renders.
+  // Section groups of record: sections with (matching) decks, corpus (SME)
+  // order, per-section totals. A section whose own title matches shows ALL
+  // its decks; otherwise only the decks whose titles match. Recomputed on
+  // query and server payload changes, never on learner-progress re-renders.
   const groups = useMemo(
     () =>
       topics
@@ -134,7 +139,7 @@ export function FlashcardsIndex({
           overlay holds a card rating. */}
       <SelectToolbar
         searchLabel="Search flashcard decks"
-        searchPlaceholder="Search topics or decks..."
+        searchPlaceholder="Search sections or decks..."
         query={query}
         onQueryChange={setQuery}
         resume={resumeDeck ? { href: `${base}/flashcards/${resumeDeck.code}`, title: resumeDeck.title } : null}
@@ -178,11 +183,6 @@ export function FlashcardsIndex({
                         size={18}
                         dimension="flashcards"
                       />
-                      {d.label && (
-                        <span className="w-6 shrink-0 text-xs tabular-nums text-muted-foreground">
-                          {d.label}
-                        </span>
-                      )}
                       <span className="min-w-0 flex-1 truncate text-sm font-medium group-hover/link:text-primary">
                         {d.title}
                       </span>
