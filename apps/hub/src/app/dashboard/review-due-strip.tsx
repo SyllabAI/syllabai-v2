@@ -31,7 +31,6 @@ import { fetchBridge, buildOverlay, type LearnerBridge } from "@/lib/learner-sta
 import { useAllCourseProgress } from "@/lib/progress";
 import { useDashboardCore } from "@/lib/dashboard-core";
 import { useNow } from "@/lib/use-now";
-import { PILOT_COURSE_SLUG } from "@/lib/attempt-bridge";
 import type { CourseMeta } from "@/lib/courses";
 
 function plural(n: number, word: string): string {
