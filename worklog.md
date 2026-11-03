@@ -1004,3 +1004,17 @@ Work Log:
 
 Stage Summary:
 - t-select-search-resume run-002: VERDICT — both select pages exercise exactly per the law of record: each owns its own engagement plane (EQ: scored parts; FC: rated cards), resolves the target against what IT lists, offers the jump only while the target is listed (scoped honesty verified both ways), and lands on the named set/deck. No defect found, no remainder disclosed, no code change required. Receipt .syllabai/receipts/t-select-search-resume/run-002-live-verification.json. With t-note-scroll-resume run-002, all three select pages' Resume targets are now first-hand verified in production on 2026-11-03.
+
+## t-book-073 run-001 close-out — c17 media-embed pushed, PR #705 merged (main 3b7dd7f4); playback re-verified on production (operator order trace 1a1a20d3cc3c4e65, continued on PAT re-knock trace 1a1a2ea36d3287a9)
+Agent: main (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7)
+Task: land the r0-prepared c17 video close-out (branch was local-only at 95d4c33a, blocked in the prior session on a presumed-dead PAT) and re-verify the lesson-page playback law first-hand.
+
+Work Log:
+- fetch-first: origin/main 5853e431 -> 59dbd8ad since the r0 pin; the 3 touched files have ZERO overlap with the intervening RN-DEBRIS-11 run-002 repairs — branch rebased clean (95d4c33a -> db9d08b2), re-pinned, diff re-reviewed (manifest row cog-4-12-reactions-of-acids + b07 block + planned_blocks 6->7, byte-identical intent).
+- PAT forensics: the r0 "PAT is DEAD: 401" verdict was an empty-env artifact (shell exports do not persist across tool calls; the 401 battery had fired against an EMPTY credential). Same command-injection re-test: HTTP 200 login SyllabAI on /user + /rate_limit. Superseded of record in receipt r1.
+- Land: push -> PR #705 -> gate-b watched to completion (hub success + verify success, absent != success honored) -> merged as 3b7dd7f4; the 28/29 -> 29/29 packs video coverage closes of-record.
+- Production re-probe (headless browser, syllabai-hub-v2.vercel.app): c16 lesson renders the media-embed iframe youtube-nocookie.com/embed/Yrf3Z_TQu_k?rel=0 at 708x398 with Watch-on-YouTube + Cognito attribution — videos PLAY from the lesson page; c17 lesson (h1 'Salt preparations') still honest-empty (no iframe) until the DB ingest; new video vcxlISVJ6Os re-probed direct (oembed 200 author Cognito, nocookie embed 200 / 135,998 B).
+- Open item (single): the operator-keyed ingest DATABASE_URL=... bun apps/api/scripts/books-ingest-rail.ts books/4ch1 <manifest> — the ep-ancient-cake MAIN pooler DSN was not resident this session (env-injection law); the c17 Watch card serves on its completion, then the c17 lesson re-probe flips.
+
+Stage Summary:
+- t-book-073 run-001: CLOSED at the git/CI/merge plane and VERIFIED at the playback plane; 29/29 packs now have a curated video of-record on main (3b7dd7f4). Remaining: the c17 b07 DB ingest + post-ingest production re-probe, operator-keyed. Receipts .syllabai/receipts/T-BOOK-073/{c17-media-embed-r0,c17-media-embed-r1}.json; PR #705; merge 3b7dd7f4. Credential rotation reminder stands (ghp_/vcp_/napi_/npg_ x2 chat-exposed).

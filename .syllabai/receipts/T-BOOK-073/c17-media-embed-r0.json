@@ -1,0 +1,62 @@
+{
+  "task": "T-BOOK-073",
+  "run": "run-001",
+  "receipt": "c17-media-embed-r0",
+  "lane": "books/4ch1 media lane — c17 close-out (the last video gap)",
+  "operator_order": "trace 1a1a20d3cc3c4e65 — 'hunt a curated video for c17 to close that out. And also check if video can be played from the lesson page'",
+  "date_utc": "2026-11-04",
+  "agent": "operator sandbox session (trace 1a1a28e9d73c60c1)",
+  "baseline_of_record": {
+    "fetch_first": "origin/main re-pinned at session start",
+    "pin": "5853e431 (T-KG-PRE-5 #691 tip; advanced past f9300a76 with parallel T-KG/T-TIER1/NS-4PH1 work)",
+    "local_recovery": "dangling worktree symlink apps/api/node_modules found TRACKED of record (blob 56d1db70) — restored via git checkout after a diagnostic rm; tree byte-clean before authoring"
+  },
+  "pending_verification_closed": "T-BOOK-069 strength-prefix serving exclusion PR — RESOLVED on origin/main: 2be219ea (run-002, ADR-BOOK-0004 ACCEPTED, chapter exclusion + unit-scoped strength-checks endpoint) merged via PR #661 (c6b9f1a9, t-book-072-strength-serving); receipt ae1d674d confirms 'chapter rails 8/7/7/7 byte-exact zero strength leak'",
+  "hunt": {
+    "protocol": "Cognito provider of record (28/28 existing rows are provider=cognito; a non-Cognito video would be a curation-policy change, out of scope)",
+    "candidates_checked": [
+      "Kmytmi8dT-c 'GCSE Chemistry - Making Salts' — REJECTED: oembed author_name='Mr Wells', not the Cognito channel",
+      "FuseSchool/Freesciencelessons/Malmesbury salts videos — REJECTED: wrong provider class",
+      "vcxlISVJ6Os 'GCSE Chemistry - Neutralisation Reactions | Reactions of Acids (2027/28 exams)' — ACCEPTED: oembed author_name='Cognito'; Cognito's own iedexcel note page 4.12-reactions-of-acids embeds youtube-nocookie/vcxlISVJ6Os?rel=0 as its video of record; video carries the 'Making Soluble Salts (Practical)' chapter (corroborated by two independent search snippets)"
+    ],
+    "channel_census": "Cognito @CognitoEdu uploads + 3 YouTube query sweeps: NO dedicated Cognito 'Making Soluble/Insoluble Salts' video exists — the salts practical lives inside vcxlISVJ6Os; Cognito iedexcel notes 4.15/4.16 (making insoluble/soluble salts) are TEXT-ONLY pages (browser-verified: zero video iframes), so note 4.12's embed is the only provider-curated video for the salt-preparation area"
+  },
+  "curation_protocol": {
+    "provider_page_of_record": "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/Q05rQm1DVWs/4.12-reactions-of-acids -> HTTP 200 (browser title 'GCSE Chemistry (IGCSE Edexcel) – Reactions of acids')",
+    "provider_embed_of_record": "page DOM iframe src = youtube-nocookie.com/embed/vcxlISVJ6Os?rel=0&enablejsapi=1 (matches ADR-BOOK-0002 decision-3 embed law exactly)",
+    "oembed": "HTTP 200 — title 'GCSE Chemistry - Neutralisation Reactions | Reactions of Acids (2027/28 exams)', author_name 'Cognito'",
+    "youtube_nocookie_probe": "HTTP 200, 135,714 bytes player HTML",
+    "spec_match": "video content maps to 2.37 (reactions of HCl/H2SO4/HNO3 with metals, bases, metal carbonates) + 2.39 (experiment to prepare a pure, dry sample of a soluble salt from an insoluble reactant) — both in the c17 canonical subsection 4CH1-S2-g (canonical graph of record, specification_points.yaml DIRECT)"
+  },
+  "changes": {
+    "manifest": "books/4ch1/meta/media-sources.yaml — row cog-4-12-reactions-of-acids inserted in spine order (after cog-4-11/c16, before cog-4-18/c18): kind video, youtube_id vcxlISVJ6Os, specRefs [2.37, 2.39], hosting_pack u2-c17-salt-preparations, checked_date 2026-11-04, recheck_days 90, status curated; ledger stays append-only in the no-rewrite sense (28 -> 29 rows)",
+    "pack_block": "books/4ch1/packs/c17-salt-preparations/blocks/b07-media-embed.json — ord 7, anchor 196 (monotonic after b06@196), chapterKey u2:c17, specPointRefs [2.37, 2.39], payload mirrors the row verbatim (url/youtubeId/sourceId/licenseRef), blurb student-facing, zero G3 banned phrases",
+    "pack_plan": "c17 pack.yaml planned_blocks 6 -> 7 + T-BOOK-073 precedent comment (the S0-plan-is-binding law; lint G1 checks planned == on-disk)"
+  },
+  "gates": {
+    "lint": "bun scripts/books/lint.mjs books/4ch1 <dev-manifest> apps/api/src/services/teacher/concept-graph/specification_points.yaml --book 4ch1 -> 33 packs, 266 blocks, 0 finding(s), 0 warn(s), exit 0",
+    "lint_inputs_disclosure": "DEV manifest anchor-derived (generator + output live session-side at /home/z/my-project/scripts/t-book-073-dev-manifest.py + lint-inputs/dev-manifest.json; documentId e6c0db50-0f84-55de-b50c-e4d49285cd6d the 4ch1 documentId of record per T-BOOK-066/068 receipts) — T-BOOK-070 precedent verbatim: book_chapters page ranges are DB truth and no pooler credential was resident this session; range check tautological-on-existing-anchors and WEAKENED vs DB truth (DISCLOSED); all binding checks relevant to the NEW artifacts are manifest-independent",
+    "typecheck": "bun run typecheck — 5/5 successful (CI verify parity)",
+    "packages_tests": "bun test packages — 565 pass / 0 fail / 1397 expect()",
+    "ingest_shape": "bun apps/api/scripts/books-ingest-rail.ts books/4ch1 <dev-manifest> --dry-run -> 266 blocks across 29 chapters, u2:c17 #7 media-embed p.196 refs=2.37,2.39 rides the shape (exit 0)"
+  },
+  "lesson_page_playback": {
+    "verdict": "VERIFIED first-hand on production — videos PLAY from the lesson page",
+    "surface": "https://syllabai-hub-v2.vercel.app (the hub of record; syllabai-v2.vercel.app serves 404 on every route incl. '/' — stale alias, not the app of record)",
+    "probe_1": "c17 lesson (chapter=u2:c17) — serves live, h1 'Salt preparations', 6 blocks, ZERO video cards = the honest-empty state of record (README: 'c17 honest-empty — no provider video') — the exact gap this run closes",
+    "probe_2": "c16 lesson (chapter=u2:c16) — media-embed card renders: iframe src youtube-nocookie.com/embed/Yrf3Z_TQu_k?rel=0, client size 708x398 (visible), iframe title = the video title, 'Watch' card label, 'Watch on YouTube' link, attribution 'Video © Cognito (cognito.org) — embedded via YouTube', licensing line 'media-sources.yaml#cog-4-11-acids-bases-the-ph-scale (public-embed; reviewed 20…'",
+    "chain": "lesson-interactive.tsx <BlockRenderer> -> block-renderer.tsx case 'media-embed' -> MediaEmbedBlock -> youtube-nocookie iframe (static wiring re-verified at the 5853e431 pin)",
+    "c17_note": "the c17 card itself serves once the scoped ingest lands b07 in DB book_blocks post-merge (the ingest shape is proven; DB write is operator-keyed by law)"
+  },
+  "blockers": {
+    "auth": "the re-supplied classic PAT (ghp_G7n2…, 40 chars) is DEAD: api.github.com /user, /rate_limit, /pulls all 401 'Bad credentials' (both 'token' and 'Bearer' styles); git push --dry-run -> 'Invalid username or token' — git READS succeed only because the repo is PUBLIC (anonymous)",
+    "consequence": "branch push + PR + CI watch (gate-b) + merge + the main-direct bookkeeping push are all BLOCKED on a fresh repo-scoped PAT",
+    "prepared": "local branch t-book-073/c17-media-embed @ 95d4c33a (3 files, 44 insertions); this receipt file is ready for the .syllabai main-direct commit"
+  },
+  "pending": [
+    "fresh PAT -> git push origin t-book-073/c17-media-embed + open PR (base main) + gate-b watch (ci.yml verify+hub, absent != success) + merge",
+    "main-direct bookkeeping: this receipt + worklog append",
+    "scoped ingest of c17 b07 into DB book_blocks (DATABASE_URL=... bun apps/api/scripts/books-ingest-rail.ts books/4ch1 <manifest>) — the operator-keyed DB leg, then the production c17 lesson re-probe shows the Watch card",
+    "credential rotation reminder stands (ghp_/vcp_/napi_/npg_ x2 all chat-exposed)"
+  ]
+}
