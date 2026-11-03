@@ -1,0 +1,97 @@
+{
+ "lane": "RN-DEBRIS-11",
+ "run": "run-001",
+ "title": "the brace-aware repair lane — OPEN (census pre-registered fail-closed, zero corpus bytes)",
+ "operatorOrder": {
+  "trace": "1a1a0f19025edd15",
+  "order": "open the brace-aware repair lane for ial-maths-20-pure-3 (and the RN-DEBRIS-9 residuals)"
+ },
+ "preState": {
+  "tip": "30a5ce5901dde475d1eb3564e8d6ec8294442aeb",
+  "laneBaseFreshClone": true,
+  "filesWalked": 1538,
+  "stringsScanned": 3324601,
+  "dollarSegmentOccurrences": 372533,
+  "dollarSegmentUnique": 103931,
+  "jsonParseSkips": 0,
+  "priorLanesOfRecord": "RN-DEBRIS-9 run-001 (PR #645, merge 173816ad) disclosed residuals; RN-DEBRIS-10 run-001 (PR #657, merge 31f9cdd1) ledgerRefusals x3"
+ },
+ "census": {
+  "A_frac_debris": {
+   "adjacentHits": 198,
+   "vulgarFractionKeeps": 58,
+   "nonVulgarGroups": 87,
+   "legitTextKeeps": 5,
+   "interleavedGroups": 82,
+   "distinctCorruptedSpecTexts": 31,
+   "ofRecordTitleFreshPresence": "3/3 EXACT (curriculum.json, ugm-resources.json, spines/ial-maths-20-pure-3.json)"
+  },
+  "B_subfloor": {
+   "hits": 98,
+   "grounding_V_in_spaced": {
+    "ofRecord": 17,
+    "fresh": 17,
+    "match": true
+   },
+   "grounding_V_i_n_corrupt": {
+    "ofRecord": 5,
+    "fresh": 5,
+    "match": true
+   }
+  },
+  "C_katex_sweep": {
+   "katex": "0.16.22 throwOnError output:html (family law; bodies dollar-stripped)",
+   "failureUnique": 5741,
+   "failureOccurrences": 11235,
+   "classes": {
+    "other": 5527,
+    "brace-structural": 204,
+    "missing-arg": 5,
+    "undef-cmd": 5
+   },
+   "ofRecordCorruptBrace": "4 uniques / 6 occurrences — ALL present and failing in the fresh sweep (2x V_{o u t} \\frac sigs, R_{2 =, \\lambda_{m a x}) — grounding EXACT",
+   "spacecrafSegment": "present, renders-OK-but-structurally-corrupt (letter-spaced English inside math + m_{s}pacecraft brace-break) — caught by fixed-string grounding, not by render failure"
+  }
+ },
+ "adjudication": {
+  "R1_interleaved_runs": "31 distinct corrupted spec texts / 82 string-groups across 9 IAL maths/further-maths courses x (curriculum.json + ugm-resources.json + spines/<course>.json) planes (.nodes[].title + .specPoints[].officialText) — the of-record ial-maths-20-pure-3 title + 30 census-discovered siblings; every group eyeball-adjudicated; 5 legit-text keeps (pi-fraction x3, c/v x2) zero overlap",
+  "R2a_corrupt_brace_of_record": "4 uniques / 6 occurrences (RN-DEBRIS-9 render-refused set) — fresh-failing EXACT",
+  "R2b_V_in_spaced": "V_{i n} x17 (dollar) — of-record grounding EXACT — join law: -> V_{in} (dict word + in-file joined twins V_{out} / <sub>in</sub>)",
+  "R2c_spacecraf": "ial-physics-19 $[43].questions[0].parts[3].solutionMd — re-zipper + label-join candidate (of-record corrupt-brace refused set)",
+  "R3a_subfloor_siblings": "95 FIRE-candidates / 3 keeps (b m x2, e l x1 — no attestation, E_{k a f t e r} keep-family) — each fire gated on in-file/corpus joined-twin attestation at apply; backtick-class occurrences KEEP (protected 23a)",
+  "R3b_paren_brace_swap": "26 uniques / 28 occurrences, 4 physics files — the ( ... 10^{N )} }-swap signature",
+  "R3c_gathered_amp": "9 uniques / 41 occurrences, 10 maths files — the \\begin{gathered} &-inside-group signature"
+ },
+ "repairLaws_preRegistered": [
+  "zero-invention: every repair attested (official-spec wording fetched+archived for R1 un-zippers; dict word or in-file/corpus joined twin for label joins; value-byte-preservation for math group surgery)",
+  "whole-string surgical units; raw-byte anchoring dual JSON-escape forms (family converter law); per-site re-assert guards (lowercase/embedded-word/url-asset/MARK-window)",
+  "KaTeX heal gate (inverted vs RN-DEBRIS-9): a repaired failing segment MUST render clean after repair; 0 new failures anywhere else; render-equivalence for already-rendering pairs",
+  "byte accounting: every repaired string's corrupted bytes accounted for in the reconstruction; per-file JSON-parse fail-closed before write",
+  "idempotence: post-apply census + re-adjudication + re-convert = 0 conversions",
+  "scope: exactly the adjudicated files; .nodes[].title/.specPoints[].officialText/questions/notes/flashcards strings only; zero code files; backtick segments never touched (23a protected)"
+ ],
+ "stays": [
+  "legit vulgar fractions (digit⁄digit x58 A-hits + the per-item legit keeps)",
+  "_{b m} x2 / _{e l} x1 (no attestation — E_{k a f t e r} keep-family)",
+  "backtick-protected 23a class (incl. `V_{o u t} = V_{i n} ...` backtick forms + S_{x x} backtick)",
+  "dict-gap 'm o v e d' (operator decision of record)",
+  "E_{k a f t e r} variants (of-record stays)",
+  "RN-DEBRIS-8 refusals walkin / reexport (unchanged)",
+  "'A l O' Al2O3-truncation refuse family (of-record, distinct from _{A l} label joins)",
+  "pseudo-span classes: currency \\$ / <tex> / set-notation / dangling-$ artifacts",
+  "undef-cmd classes: &divide; &equals; &Delta; &Sigma; \\pmb \\sumx combining-overline \\mathrm{\\left} \\text{%...} pmatrix-missing-end etc.",
+  "sinθ/sin θ mixed style (RN-DEBRIS-10 ruling — out of lane law)"
+ ],
+ "zeroCorpusBytesAtOpen": true,
+ "artifacts": {
+  "rn11_census.py": "d63c1d3d08705dd8ac1a97dfff248d28047dce193ff067b95093e8e7652ca81e",
+  "rn11_katex_sweep.cjs": "8b5af39400121e4426892cb7b8f2038065801cc058cfc0a0f89d53a358facdd5",
+  "rn11_adjudicate.py": "c74618c23f8a4bee2fa4c53803a31959ef379f7c8fdc22335a29a2c188cfeebb",
+  "rn11_census_a_b.json": "88b567acfa5b0dbfa3d8666e3ff07d73aebeb8c321bfa4f992bc4f392ab2624c",
+  "rn11_census_c_slim.json": "6edaa1730d92b9361908648afa6bb9f486d495adc6b9d82c571d0e554b6532fc",
+  "rn11_adjudication.json": "4206aafd3abcbde907bab29e0e9d6a326c58eb967c7ac53675d169a005b3196a"
+ },
+ "regeneration": "rn11_census.py (classes A+B+segment dump) + rn11_katex_sweep.cjs (class C, needs katex@0.16.22) + rn11_adjudicate.py; the 56MB segment dump is /tmp-resident and regenerable from the census script at this tip",
+ "next": "run-002 = the apply run on operator order: per-class repair with the pre-registered laws, five gates, receipt + worklog + PR (content files ride a PR, not a direct push)",
+ "discipline": "fetch-first; fail-closed; zero-invention; tokens env-only; bookkeeping-only .syllabai/** at open; FF push no force"
+}
