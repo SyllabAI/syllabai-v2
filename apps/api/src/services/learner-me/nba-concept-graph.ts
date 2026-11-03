@@ -193,10 +193,35 @@ export function conceptDependencyGraphOf(
 // ── the loader (builds the singleton; fails boot on any violation) ──────────
 
 function loadSnapshotYaml(file: string, expectedSha256: string): Record<string, unknown> {
-  const resource = join(import.meta.dir, "concept-graph", file);
-  const text = readFileSync(resource, "utf8");
-  requireHash(text, expectedSha256, file);
-  return Bun.YAML.parse(text) as Record<string, unknown>;
+  // Asset-base candidate chain (deployment law, r12): the snapshot is a static
+  // packaged resource, but WHERE it lives depends on the runtime — the bun
+  // source tree (dev/tests), or a bundled Node lambda (Vercel), where the
+  // bundler literalizes import.meta.dir to the build machine's path. Try, in
+  // order: the deployment-provided dir, the source tree, and the two cwd
+  // layouts a Node lambda produces. First candidate whose file reads AND
+  // passes the sha256 pin wins — a wrong-but-existing file can never pass
+  // the pin, so the hash is still the load gate (fail-closed boot parity).
+  // (NOTE: __dirname cannot be used here — bundlers literalize it to the
+  // build machine's path exactly like import.meta.dir.)
+  const bases = [
+    process.env.SYLLABAI_CONCEPT_GRAPH_DIR,
+    join(import.meta.dir, "concept-graph"),
+    join(process.cwd(), "api", "concept-graph"),
+    join(process.cwd(), "concept-graph"),
+  ].filter((b): b is string => typeof b === "string" && b.length > 0);
+  let lastErr: unknown = null;
+  for (const base of bases) {
+    try {
+      const text = readFileSync(join(base, file), "utf8");
+      requireHash(text, expectedSha256, file);
+      return Bun.YAML.parse(text) as Record<string, unknown>;
+    } catch (e) {
+      lastErr = e;
+    }
+  }
+  throw new Error(
+    `concept graph snapshot: ${file} not loadable from any candidate dir (${bases.join(", ")}) — last error: ${lastErr instanceof Error ? lastErr.message : String(lastErr)}`,
+  );
 }
 
 /**

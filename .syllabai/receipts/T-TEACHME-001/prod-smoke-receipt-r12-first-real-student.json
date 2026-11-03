@@ -1,0 +1,358 @@
+{
+  "task": "T-TEACHME-001",
+  "what": "FIRST REAL STUDENT SESSION THROUGH THE DEPLOYED API — full Teach-Me flow over real HTTPS (register → JWT → create → nudge → 2 judged turns → end/review → permalink → history → typed negatives → quota) against the production runtime: Vercel lambda + JWT middleware + THE ONE CHAIN OF RECORD (groq gpt-oss-20b head since the vercel-activation leg) + prod DB.",
+  "run": "r12-first-real-student",
+  "mode": "deployed-api-http",
+  "target": {
+    "base": "https://syllabai-v2.vercel.app",
+    "platform": "vercel-lambda",
+    "actuator": {
+      "groups": [
+        "liveness",
+        "readiness"
+      ],
+      "status": "UP"
+    }
+  },
+  "students": {
+    "a": {
+      "id": "e245e9b4-3345-4e54-b07e-3b08b3938152",
+      "email": "s***@smoke.invalid"
+    },
+    "b": {
+      "id": "47dc4c2c-7b31-47a2-9b64-cc790d0fa7f7",
+      "email": "s***@smoke.invalid"
+    },
+    "evidence_policy": "real registered accounts (throwaway password not of record; identities persist in prod per the append-only lane)"
+  },
+  "pick_codes": [
+    "4CH1-1.1",
+    "4CH1-1.10",
+    "4CH1-1.11"
+  ],
+  "latencies_ms": {
+    "createMs": 1499,
+    "turn1Ms": 1949,
+    "turn2Ms": 3489,
+    "endMs": 15390
+  },
+  "observations": {
+    "student_a": {
+      "id": "e245e9b4-3345-4e54-b07e-3b08b3938152",
+      "email": "s***@smoke.invalid"
+    },
+    "student_b": {
+      "id": "47dc4c2c-7b31-47a2-9b64-cc790d0fa7f7",
+      "email": "s***@smoke.invalid"
+    },
+    "create": {
+      "objectives": [
+        {
+          "id": "4c3a256d-8a1a-4844-82e7-5b532bcb1d65",
+          "ordinal": 1,
+          "text": "Explain how the arrangement, movement, and energy of particles differ among solids, liquids, and gases.",
+          "specPointIds": [
+            "4CH1-1.1"
+          ],
+          "status": "not_started"
+        },
+        {
+          "id": "b4995735-efc6-4293-9ac9-a687e6e9d886",
+          "ordinal": 2,
+          "text": "Describe how simple distillation, fractional distillation, filtration, crystallisation, and paper chromatography separate mixtures.",
+          "specPointIds": [
+            "4CH1-1.10"
+          ],
+          "status": "not_started"
+        },
+        {
+          "id": "3c349d08-5df1-4399-b81e-c0c5fefce2c5",
+          "ordinal": 3,
+          "text": "Explain how a chromatogram reveals the components present in a mixture.",
+          "specPointIds": [
+            "4CH1-1.11"
+          ],
+          "status": "not_started"
+        }
+      ],
+      "opening": {
+        "kind": "opening",
+        "text": "Okay — teach me about these, please! Where do you want to start?"
+      },
+      "llmCallCount": 1
+    },
+    "nudge.pupilReply": "Can you unpack that a bit more for me? I don't think I've got it yet.",
+    "turn1.pupilReply": "So what I've got now is that solids have tightly packed particles that only vibrate, liquids have particles that can slide past each other, and gases have particles that move fast and spread out. What happens to the part",
+    "turn1.chip": {
+      "messageSeq": 1,
+      "verdict": "Okay",
+      "feedbackLine": "You described how particle arrangement, movement, and energy differ in solids, liquids, and gases.",
+      "coveredObjectiveIds": [
+        "4c3a256d-8a1a-4844-82e7-5b532bcb1d65"
+      ],
+      "contradictionDetected": false,
+      "wordFloorPassed": true,
+      "overlapScore": 0,
+      "flaggedPastedNotes": false
+    },
+    "turn2.pupilReply": "So what I've got now is that filtration removes solids from liquids, simple distillation separates a solvent from a solute, fractional distillation separates liquids with different boiling points, crystallisation lets a ",
+    "end.attempts": [
+      {
+        "status": 200,
+        "body": "completed",
+        "ms": 15390
+      }
+    ],
+    "end.review": {
+      "keys": [
+        "sessionId",
+        "strengths",
+        "improvements",
+        "specPointVerdicts",
+        "misconceptionNotes",
+        "examAnchors",
+        "prereqWarnings",
+        "suggestedPractice",
+        "generatedAt"
+      ],
+      "verdictCount": 3,
+      "sample": "{\"sessionId\":\"c785943e-48b0-425f-afe1-f37f5018b9e2\",\"strengths\":[{\"quote\":\"In a solid the particles are arranged in a tight, regular pattern — they cannot swap places, they only vibrate on the spot, so a solid keeps its own shape.\",\"messageSeq\":4},{\"quote\":\"Simple distillation for getting the solvent back out of a solution — I'd evaporate it and condense the vapour on a cold surface, so saltwater gives me pure water and leaves the salt behind.\",\"messageSeq\":6},{\"quote\":\"Fractional distillation when two liquids are mixed — they separate because their boiling points differ, and the fractionating"
+    },
+    "permalink": {
+      "messageCount": 7,
+      "status": "completed",
+      "tokens": 9702
+    },
+    "permalink.messages": [
+      {
+        "seq": 1,
+        "role": "pupil",
+        "kind": "opening",
+        "chars": 64
+      },
+      {
+        "seq": 2,
+        "role": "student",
+        "kind": null,
+        "chars": 36
+      },
+      {
+        "seq": 3,
+        "role": "pupil",
+        "kind": "clarify_nudge",
+        "chars": 69
+      },
+      {
+        "seq": 4,
+        "role": "student",
+        "kind": null,
+        "chars": 771
+      },
+      {
+        "seq": 5,
+        "role": "pupil",
+        "kind": "paraphrase_probe",
+        "chars": 270
+      },
+      {
+        "seq": 6,
+        "role": "student",
+        "kind": null,
+        "chars": 1386
+      },
+      {
+        "seq": 7,
+        "role": "pupil",
+        "kind": "paraphrase_probe",
+        "chars": 387
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "name": "platform.actuatorUp",
+      "pass": true,
+      "detail": "HTTP 200 {\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"}"
+    },
+    {
+      "name": "neg.unauthenticated",
+      "pass": true,
+      "detail": "HTTP 401 {\"timestamp\":\"2026-11-03T06:33:23.818Z\",\"status\":401,\"error\":\"Unauthorized\",\"pat"
+    },
+    {
+      "name": "auth.registerStudent",
+      "pass": true,
+      "detail": "student A id=e245e9b4-3345-4e54-b07e-3b08b3938152 (real account, real JWT)"
+    },
+    {
+      "name": "create.http200",
+      "pass": true,
+      "detail": "HTTP 200 session=c785943e-48b0-425f-afe1-f37f5018b9e2"
+    },
+    {
+      "name": "create.objectives3",
+      "pass": true,
+      "detail": "3 objectives, 1499ms"
+    },
+    {
+      "name": "create.objectivesGrounded",
+      "pass": true,
+      "detail": "all objective specPointIds ∈ pick (REAL model grounded to canon)"
+    },
+    {
+      "name": "create.opening",
+      "pass": true,
+      "detail": "Okay — teach me about these, please! Where do you want to st"
+    },
+    {
+      "name": "create.statusActive",
+      "pass": true,
+      "detail": "active"
+    },
+    {
+      "name": "nudge.chipNull",
+      "pass": true,
+      "detail": "no judge ran"
+    },
+    {
+      "name": "nudge.kind",
+      "pass": true,
+      "detail": "Can you unpack that a bit more for me? I"
+    },
+    {
+      "name": "nudge.noCounters",
+      "pass": true,
+      "detail": "mc=0 llm=1"
+    },
+    {
+      "name": "turn1.chip",
+      "pass": true,
+      "detail": "covered=1 1949ms"
+    },
+    {
+      "name": "turn1.pupilReply",
+      "pass": true,
+      "detail": "270 chars — REAL pupil reply"
+    },
+    {
+      "name": "turn2.chip",
+      "pass": true,
+      "detail": "covered=2 3489ms"
+    },
+    {
+      "name": "turn2.allCovered",
+      "pass": true,
+      "detail": "3/3 covered"
+    },
+    {
+      "name": "end.status",
+      "pass": true,
+      "detail": "final=completed attempts=[{\"status\":200,\"body\":\"completed\",\"ms\":15390}]"
+    },
+    {
+      "name": "end.reviewCard",
+      "pass": true,
+      "detail": "review card attached"
+    },
+    {
+      "name": "end.reviewVerdicts3",
+      "pass": true,
+      "detail": "3 spec-point verdicts (REAL review, canon-grounded)"
+    },
+    {
+      "name": "permalink.transcript",
+      "pass": true,
+      "detail": "7 messages (r10d observed 7)"
+    },
+    {
+      "name": "permalink.review",
+      "pass": true,
+      "detail": "review attached to permalink"
+    },
+    {
+      "name": "history.listed",
+      "pass": true,
+      "detail": "HTTP 200, 1 in history, session listed"
+    },
+    {
+      "name": "quota.today",
+      "pass": true,
+      "detail": "1 session(s) today for the smoke student (quota 3/day)"
+    },
+    {
+      "name": "neg.notOwner",
+      "pass": true,
+      "detail": "HTTP 403 NOT_OWNER"
+    },
+    {
+      "name": "neg.notFound",
+      "pass": true,
+      "detail": "HTTP 404"
+    },
+    {
+      "name": "neg.sessionNotActive",
+      "pass": true,
+      "detail": "HTTP 409 SESSION_NOT_ACTIVE"
+    },
+    {
+      "name": "neg.noWrites",
+      "pass": true,
+      "detail": "7 messages unchanged (fail-closed negatives wrote nothing)"
+    }
+  ],
+  "verdict": "SMOKE_GREEN_DEPLOYED_API",
+  "counts": {
+    "pass": 26,
+    "total": 26
+  },
+  "elapsed_ms": 26119,
+  "applied_at_utc": "2026-11-03T06:33:49.522Z",
+  "trial_history_honest_reds": [
+    {
+      "trial": "r12 attempt 1 (pre-fix bundle)",
+      "at_utc": "2026-11-03T03:52-03:56Z",
+      "result": "SMOKE_RED 12/25 — every judged path 500'd (internal_error ~300ms). ROOT CAUSE: the deployed 2026-11-02T16:27Z bundle predates the 6bd8ac5e updateSession seam fix AND carries the build-machine-literalized import.meta.dir; create (no UPDATE) worked, nudge/end (updateSession) 500'd — the r1 SMOKE_RED_SEAM_DEFECT signature, live again on the deployed runtime.",
+      "lesson": "the deployed bundle was stale vs HEAD — deployment of record must be built from HEAD"
+    },
+    {
+      "trial": "deploy arc",
+      "at_utc": "2026-11-03T04:10-06:27Z",
+      "result": "6 deploy iterations through the team build queue (hub builds hogging the single builder; Hobby plan = no deep rollback, 402). Defects found and fixed on the way: (1) missing catch-all rewrites -> NOT_FOUND; (2) bun bundles literalize import.meta.dir AND __dirname to the build machine -> ENOENT on the lambda at module load (nba-concept-graph eager singleton); (3) hono/vercel handle() computes a Web Response but never writes it to res -> request HANG (Vercel launcher warns 'write the response through res'). Fixes: Node-adapter entry writing through res; loader candidate chain (env > source tree > cwd layouts) with the sha256 pin still gating every load.",
+      "lesson": "lambda runtime = Node not bun; asset paths must be runtime-resolvable; adapters must write through res"
+    },
+    {
+      "trial": "r12 attempt 2 (fixed bundle, full flow)",
+      "at_utc": "2026-11-03T06:1xZ",
+      "result": "SMOKE_RED 19/25 — everything green through end; the REVIEW call returned 409 LLM_SHAPE_DRIFT after 26.1s (openrouter nemotron-3-ultra thinking channel overflowed the 4000-token budget -> shape-invalid reply -> the r8c shape-drift law fail-closed EXACTLY as designed; session honestly stuck review_pending, idempotent end never regenerates). Also driver defects: history/permalink shape mis-parse (items/transcript keys).",
+      "lesson": "review on a reasoning fallback model is a nondeterministic lottery at maxTokens=4000 (r8 law: thinking channel burns budget first); recommendation of record: raise review maxTokens or pin a non-reasoning fallback model — operator decision"
+    },
+    {
+      "trial": "r12 GREEN (this receipt)",
+      "at_utc": "2026-11-03T06:33Z",
+      "result": "SMOKE_GREEN_DEPLOYED_API 26/26 on a fresh identity (identity law = (run, suffix)); review completed in 15.4s this roll.",
+      "lesson": "the deployed production runtime serves the full real student flow end-to-end"
+    }
+  ],
+  "deployment_of_record": {
+    "platform": "vercel",
+    "team": "team_ULL54qkhzKBmnKrpO6BD4mYX (syllab-ai)",
+    "project": "syllabai-v2 prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ",
+    "deployment": "dpl_2vKZvGRefZThKFWqcpRCDDyimWcG (url syllabai-v2-h3y1act72-syllab-ai.vercel.app, aliased to syllabai-v2.vercel.app)",
+    "bundle": "bun build apps/api/src/vercel-entry.ts --target=node --format=cjs (398 modules, 2.4MB, CJS) + vercel-node-shim.ts (Bun.CryptoHasher/Bun.YAML -> node:crypto + yaml pkg) + Node-adapter handler (writes through res) + concept-graph yamls shipped in the func dir + candidate-chain loader (env > source tree > cwd)",
+    "env_of_record": [
+      "DATABASE_URL",
+      "SYLLABAI_JWT_SECRET",
+      "SYLLABAI_LLM_GROQ_API_KEY",
+      "SYLLABAI_LLM_GEMINI_API_KEY",
+      "SYLLABAI_LLM_OPENROUTER_API_KEY",
+      "SYLLABAI_LLM_GROQ_MODEL=openai/gpt-oss-20b",
+      "SYLLABAI_LLM_OPENROUTER_MODEL=nvidia/nemotron-3-ultra-550b-a55b:free",
+      "SYLLABAI_CONCEPT_GRAPH_DIR=/var/task/api/concept-graph",
+      "+ CORS/warehouse/cron/join-code of record"
+    ],
+    "known_limitations": [
+      "drill bank reads apps/hub/content (267MB) via a build-machine-literalized path — drill routes are NOT servable from the lambda until hub-content gets a serving decision (object storage / function-include / container)",
+      "tutor spec-boost teacher snapshot: same class of asset path (lazy; not exercised by teach-me)"
+    ]
+  }
+}

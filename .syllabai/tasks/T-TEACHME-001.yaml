@@ -156,7 +156,34 @@ task:
     r10d-proven one; verification path: operator-minted 300s JWT (HS256 by key length per JwtService,
     sub/uid/ver bound to the enabled ADMIN row 8f9839ee…, SYLLABAI_JWT_SECRET decrypted via PAT
     Sensitive-Env-Access; token and secret in-process only, never stored); ACTIVATION COMPLETE —
-    no further env work pending'
+    no further env work pending; R12 — FIRST REAL STUDENT SESSION THROUGH THE DEPLOYED API, GREEN
+    2026-11-03 (receipt prod-smoke-receipt-r12-first-real-student.json, SMOKE_GREEN_DEPLOYED_API 26/26):
+    register real student -> JWT -> create (REAL groq openai/gpt-oss-20b head, 3 objectives
+    canon-grounded 1.5s) -> sub-floor nudge (chip null, clarify_nudge, mc=0 llm=1) -> 2 REAL judged
+    turns (extractive evidence, 3/3 covered) -> end review completed 15.4s (3 spec-point verdicts,
+    canon-grounded) -> permalink 7 messages + review -> history + quota 1/3 -> typed negatives
+    NOT_OWNER 403 / NOT_FOUND 404 / SESSION_NOT_ACTIVE 409 / zero writes — the FULL flow over real
+    HTTPS through the Vercel Node lambda + JWT middleware + THE ONE CHAIN OF RECORD + prod DB. Honest
+    reds on the way (3 distinct production-runtime findings, all fail-closed laws biting correctly):
+    (1) the deployed 2026-11-02T16:27Z bundle was STALE vs HEAD — predates the 6bd8ac5e updateSession
+    seam fix, so nudge/end 500''d (pg 42601 signature, the r1 SMOKE_RED_SEAM_DEFECT live on the
+    deployed runtime) while create worked — deployment of record must be built from HEAD; (2) bun
+    bundles literalize import.meta.dir AND __dirname to the build machine''s path -> the eager
+    NBA_CONCEPT_GRAPH loader ENOENT''d on the lambda -> loadSnapshotYaml now walks a candidate chain
+    (SYLLABAI_CONCEPT_GRAPH_DIR env > source tree > cwd layouts) with the sha256 pin still gating
+    every load (20/20 concept-graph + spec-boost tests green, typecheck clean); (3) hono/vercel
+    handle() computes a Web Response but never writes it to res -> requests HANG (Vercel launcher:
+    ''write the response through res'') -> vercel-entry.ts now carries an explicit Node adapter
+    (Node req -> Web Request -> app.fetch -> writeHead/end) + vercel-node-shim.ts (Bun.CryptoHasher/
+    Bun.YAML -> node:crypto + yaml pkg); deployment of record dpl_2vKZvGRefZThKFWqcpRCDDyimWcG
+    (bundle recipe in apps/api/src/vercel-entry.ts, SYLLABAI_CONCEPT_GRAPH_DIR=/var/task/api/
+    concept-graph, maxDuration 300). Attempt-2 honest red: review 409 LLM_SHAPE_DRIFT at 26.1s
+    (nemotron-3-ultra thinking channel overflowed maxTokens 4000 -> r8c shape-drift law fail-closed,
+    session honestly stuck review_pending) — review on a reasoning fallback is a nondeterministic
+    lottery; recommendation of record: raise the review maxTokens or pin a non-reasoning fallback
+    (operator decision). Known limitation: drill bank + tutor spec-boost read hub/content via
+    build-machine-literalized paths — NOT servable from the lambda until hub-content gets a serving
+    decision (lazy paths; not exercised by teach-me)'
   priority: P1
   band: T-TEACHME (student learn-by-teaching lane)
   wave: teachme-phase-A
