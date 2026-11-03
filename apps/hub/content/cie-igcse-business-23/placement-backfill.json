@@ -1,0 +1,16 @@
+{
+ "schema": "syllabai.hub.placement-backfill/1.0",
+ "generatedUtc": "2026-11-03T03:34:16+00:00",
+ "script": "scripts/sme_d0_backfill.py",
+ "basis": "SME section/topic-slug joins against this course's committed curriculum map; no content surgery, set-level placement only",
+ "placements": [
+  {
+   "slug": "1-4-types-of-businesses--exam-questions",
+   "subtopicCode": "cie-igcse-business-2023-2025-T1:SUB1.4",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  }
+ ]
+}

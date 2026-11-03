@@ -369,7 +369,7 @@ export interface HubCourse {
  */
 export const loadHubCourse = cache(
   async function loadHubCourse(slug: string): Promise<HubCourse | null> {
-  const { buildSpecTreeIndex, resourceCounts, subtopicOfNote, subtopicOfQuestionSet, subtopicOfFlashcard } =
+  const { buildSpecTreeIndex, generalTopicsOfQuestionTopics, resourceCounts, subtopicOfNote, subtopicOfQuestionSet, subtopicOfFlashcard } =
     await import("@/lib/spec-tree");
 
   const meta = await getCourseMeta(slug);
@@ -418,7 +418,11 @@ export const loadHubCourse = cache(
     };
   }
 
-  const index = buildSpecTreeIndex(curriculum);
+  const index = buildSpecTreeIndex(curriculum, {
+    // D0 backfill: topics holding topic-level-placed sets need their
+    // "General requirements" row to exist so those placements resolve
+    generalTopics: generalTopicsOfQuestionTopics(questionTopics),
+  });
   const countsMap = resourceCounts(notes, questionTopics, flashcards, index);
   const counts: HubCourse["counts"] = {};
   for (const [code, v] of countsMap) counts[code] = v;

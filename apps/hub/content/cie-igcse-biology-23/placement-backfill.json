@@ -1,0 +1,16 @@
+{
+ "schema": "syllabai.hub.placement-backfill/1.0",
+ "generatedUtc": "2026-11-03T03:49:39+00:00",
+ "script": "scripts/sme_d0_backfill.py",
+ "basis": "SME section/topic-slug joins against this course's committed curriculum map; no content surgery, set-level placement only",
+ "placements": [
+  {
+   "slug": "7-1-human-diet-and-digestion--alternative-to-practical-questions",
+   "subtopicCode": "cie-igcse-biology-2023-2025-T7:SUB7.1",
+   "level": "subtopic",
+   "join": "J1 slug-number",
+   "confidence": "high",
+   "source": "fresh"
+  }
+ ]
+}

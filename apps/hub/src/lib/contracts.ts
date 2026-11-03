@@ -243,6 +243,17 @@ export const ExamQuestionTopic = z.object({
   topicSlug: z.string().optional(),
   sectionSlug: z.string().optional(),
   section: z.string(),
+  /**
+   * Resolved navigation sub-topic code (mirrors Flashcard.subtopicCode).
+   * Written only by the D0 tag-backfill for sets the corpus left unanchored
+   * (no usable topicSlug hit and no part spec anchors): the value is derived
+   * from the course's own map — SME section/topic-slug joins — never guessed.
+   * A "-gen" suffix means topic-level confidence only (the synthetic
+   * "General requirements" row of that topic). The corpus's own anchoring
+   * always supersedes: a stale code fails the subtopicByCode lookup and the
+   * placement reconcile drops stamps once the set self-anchors.
+   */
+  subtopicCode: z.string().nullable().optional(),
   curriculum: CurriculumIdentity,
   source: z.object({
     provider: z.string(),
