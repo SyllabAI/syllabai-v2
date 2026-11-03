@@ -330,8 +330,12 @@ def project(src_slug: str, dst_slug: str) -> None:
         "byEdgeType": {"hier": et.get("hier", 0), "pre": et.get("pre", 0)},
     }
 
-    # Phase E3 — index sync (P5 law)
-    index = load_json(DATA / "index.json")
+    # Phase E3 — index sync (P5 law). The served serialization is preserved
+    # byte-format-for-byte (compact single-line vs indented): a registry
+    # sync must stay a 4-line-class diff, never a whole-file reformat.
+    index_raw = (DATA / "index.json").read_text()
+    index = json.loads(index_raw)
+    index_compact = not index_raw.rstrip().startswith("\n") and "\n" not in index_raw.rstrip("\n")
     row = next((r for r in index.get("courses", []) if r.get("slug") == dst_slug), None)
     if row is None:
         fail(f"{dst_slug}: not registered in index.json (P1 no-orphans)")
@@ -350,15 +354,30 @@ def project(src_slug: str, dst_slug: str) -> None:
         if e[0] not in node_ids or e[1] not in node_ids:
             fail(f"pre endpoint missing from spine: {e}")
 
+    # Served-spine serialization preserved byte-format-for-byte (compact
+    # single-line vs indented): the export is a pre-edge append + meta edit,
+    # never a whole-file reformat.
+    spine_raw = spine_path(dst_slug).read_text()
+    spine_compact = "\n" not in spine_raw.rstrip("\n")
     pre_out = prereq_path(dst_slug)
     pre_out.parent.mkdir(parents=True, exist_ok=True)
     pre_out.write_text(json.dumps(snap, indent=2, ensure_ascii=False) + "\n")
-    spine_path(dst_slug).write_text(
-        json.dumps(new_spine, indent=2, ensure_ascii=False) + "\n"
-    )
-    (DATA / "index.json").write_text(
-        json.dumps(index, indent=2, ensure_ascii=False) + "\n"
-    )
+    if spine_compact:
+        spine_path(dst_slug).write_text(
+            json.dumps(new_spine, separators=(",", ":"), ensure_ascii=False)
+        )
+    else:
+        spine_path(dst_slug).write_text(
+            json.dumps(new_spine, indent=2, ensure_ascii=False) + "\n"
+        )
+    if index_compact:
+        (DATA / "index.json").write_text(
+            json.dumps(index, separators=(",", ":"), ensure_ascii=False)
+        )
+    else:
+        (DATA / "index.json").write_text(
+            json.dumps(index, indent=2, ensure_ascii=False) + "\n"
+        )
     print(
         f"OK project {src_slug} -> {dst_slug}: concepts {len(kept_anchors)}/"
         f"{len(anchors_all)} kept, web {len(kept_edges)}/{len(web_all)} kept, "
