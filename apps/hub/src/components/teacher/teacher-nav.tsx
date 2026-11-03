@@ -126,10 +126,10 @@ export function TeacherNav() {
       </div>
       {identity && identity.role !== "teacher" && (
         <p className="text-xs text-muted-foreground">
-          You are signed in as a <strong>{identity.role}</strong> — these surfaces are the teacher
-          mode.{" "}
+          You are signed in as a <strong>{identity.role}</strong> — these surfaces are
+          teacher-only.{" "}
           <Link href="/login" className="underline underline-offset-2">
-            Switch role
+            Sign in with a teacher account
           </Link>
         </p>
       )}
