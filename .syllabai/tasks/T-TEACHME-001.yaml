@@ -137,7 +137,26 @@ task:
     SYLLABAI_LLM_GROQ_MODEL=openai/gpt-oss-20b (the yml default gpt-oss-120b is NOT extractive-compliant
     for the judge profile), heavy review calls ride the failover law to openrouter — set
     SYLLABAI_GROQ_API_KEY + SYLLABAI_GEMINI_API_KEY + SYLLABAI_OPENROUTER_API_KEY in the deployed env,
-    verify GET /api/v1/admin/llm/chain-health shows all three configured+healthy'
+    verify GET /api/v1/admin/llm/chain-health shows all three configured+healthy; VERCEL ACTIVATION
+    leg GREEN 2026-11-03 (operator question ''have to set in vercel?'' + vcp PAT provided, receipt
+    prod-activation-vercel-2026-11-03.json): ANSWER — the three LLM key envs were ALREADY on the API
+    project (Vercel team syllab-ai, project syllabai-v2 prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ) since
+    2026-10-07T19:58Z with values inside the r10d 13/13-validated census set (groq gsk_4YrW…uXUA,
+    gemini AQ.Ab8RN6K…02sA, openrouter sk-or-v1-2…aef2, masked of record) — deployed prod API
+    https://syllabai-v2.vercel.app was already /actuator/health UP with chainAvailable:true; what was
+    MISSING was the r10d model pins: before-state chain-health showed groq
+    effectiveModel=openai/gpt-oss-120b (the r10b-proven quote-paraphraser) and openrouter
+    nemotron-3-super-120b-a12b:free (never grading-proven); fixes: SYLLABAI_LLM_GROQ_MODEL=
+    openai/gpt-oss-20b + SYLLABAI_LLM_OPENROUTER_MODEL=nvidia/nemotron-3-ultra-550b-a55b:free
+    (plain, target [production], 2026-11-03T03:22Z, v10 env API upsert), then production redeployed
+    from the READY deployment (dpl_3SssVu5FJHduFrvBqu4TCa84AMdZ → dpl_9Aziax4Lm79NrzNpLmfYAtrLhjqj,
+    gitSourceless redeploy API, READY); after-state chain-health: chainAvailable true, groq
+    openai/gpt-oss-20b healthy, gemini gemini-3.6-flash healthy, openrouter
+    nvidia/nemotron-3-ultra-550b-a55b:free healthy — deployed composition now IDENTICAL to the
+    r10d-proven one; verification path: operator-minted 300s JWT (HS256 by key length per JwtService,
+    sub/uid/ver bound to the enabled ADMIN row 8f9839ee…, SYLLABAI_JWT_SECRET decrypted via PAT
+    Sensitive-Env-Access; token and secret in-process only, never stored); ACTIVATION COMPLETE —
+    no further env work pending'
   priority: P1
   band: T-TEACHME (student learn-by-teaching lane)
   wave: teachme-phase-A

@@ -1,0 +1,62 @@
+{
+  "task": "T-TEACHME-001",
+  "what": "VERCEL ACTIVATION leg — answer to the operator's question 'have to set in vercel?': audit the deployed API project's env of record against the r10d deployment recommendation, apply what was missing, redeploy production, and verify chain-health on the LIVE deployed API (not an in-process chain).",
+  "run": "vercel-activation-2026-11-03",
+  "verdict": "ACTIVATION_GREEN",
+  "applied_at_utc": "2026-11-03T03:30:00Z",
+  "answer_of_record": {
+    "keys": "NO new key envs were needed — SYLLABAI_LLM_GROQ_API_KEY / SYLLABAI_LLM_GEMINI_API_KEY / SYLLABAI_LLM_OPENROUTER_API_KEY already existed on the API project since 2026-10-07T19:58Z, values inside the r10d 13/13-VALIDATED census set (groq gsk_4YrW…uXUA, gemini AQ.Ab8RN6K…02sA, openrouter sk-or-v1-2…aef2, masked). The running production deployment (built 2026-11-02T16:27Z) therefore already had them baked in — chainAvailable was ALREADY true before this leg.",
+    "pins": "WHAT WAS missing: the two r10d model pins. Before-state chain-health showed groq effectiveModel=openai/gpt-oss-120b (r10b-proven evidenceQuote PARAPHRASER — would have shipped a non-extractive-compliant judge) and openrouter nvidia/nemotron-3-super-120b-a12b:free (never grading-proven). Both were missing because the env carried keys only — the workflow's model overrides never left the runner."
+  },
+  "target": {
+    "platform": "vercel",
+    "team": "team_ULL54qkhzKBmnKrpO6BD4mYX (syllab-ai)",
+    "project": "syllabai-v2 prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ (the API; framework=null, gitSourceless CLI-deploy lineage)",
+    "prod_alias": "https://syllabai-v2.vercel.app",
+    "hub_note": "syllabai-hub-v2 needs NO LLM env — the ONE chain of record lives in the API; the hub reaches it via NEXT_PUBLIC_API_V2_BASE_URL=https://syllabai-v2.vercel.app"
+  },
+  "env_changes": [
+    {
+      "key": "SYLLABAI_LLM_GROQ_MODEL",
+      "value": "openai/gpt-oss-20b",
+      "type": "plain",
+      "target": ["production"],
+      "http": 201,
+      "at_utc": "2026-11-03T03:22Z"
+    },
+    {
+      "key": "SYLLABAI_LLM_OPENROUTER_MODEL",
+      "value": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "type": "plain",
+      "target": ["production"],
+      "http": 201,
+      "at_utc": "2026-11-03T03:22Z"
+    }
+  ],
+  "redeploy": {
+    "method": "gitSourceless redeploy (POST /v13/deployments {deploymentId}) — same uploaded build, fresh env snapshot",
+    "from": "dpl_3SssVu5FJHduFrvBqu4TCa84AMdZ (production READY 2026-11-02T16:27Z)",
+    "to": "dpl_9Aziax4Lm79NrzNpLmfYAtrLhjqj (url syllabai-v2-21aeks7o0-syllab-ai.vercel.app)",
+    "readyState": "READY"
+  },
+  "verification": {
+    "endpoint": "GET https://syllabai-v2.vercel.app/api/v1/admin/llm/chain-health",
+    "auth": "operator-minted 300s JWT — alg selected by secret key length (HS256, 44 bytes) per JwtService wire parity; claims sub/jti/uid/ver bound to the enabled ADMIN row of record (8f9839ee…, token_version 1); secret fetched via the operator PAT's Sensitive Environment Access (decrypt=true); TOKEN AND SECRET IN-PROCESS ONLY — never printed, logged or stored",
+    "before": {
+      "chainAvailable": true,
+      "groq": { "configured": true, "healthy": true, "effectiveModel": "openai/gpt-oss-120b" },
+      "gemini": { "configured": true, "healthy": true, "effectiveModel": "gemini-3.6-flash" },
+      "openrouter": { "configured": true, "healthy": true, "effectiveModel": "nvidia/nemotron-3-super-120b-a12b:free" }
+    },
+    "after": {
+      "chainAvailable": true,
+      "groq": { "configured": true, "healthy": true, "effectiveModel": "openai/gpt-oss-20b" },
+      "gemini": { "configured": true, "healthy": true, "effectiveModel": "gemini-3.6-flash" },
+      "openrouter": { "configured": true, "healthy": true, "effectiveModel": "nvidia/nemotron-3-ultra-550b-a55b:free" }
+    },
+    "actuator_health": { "groups": ["liveness", "readiness"], "status": "UP" }
+  },
+  "composition_of_record": "deployed chain now byte-identical to the r10d-proven FULL production composition (receipt prod-smoke-receipt-r10d-realprovider-usvantage.json, SMOKE_GREEN_REAL_LLM 34/34, GH-Actions San Antonio US vantage, key census 13/13 VALID): groq openai/gpt-oss-20b head → gemini gemini-3.6-flash → openrouter nvidia/nemotron-3-ultra-550b-a55b:free",
+  "chain_laws_status": "ALL chain laws proven over REAL provider HTTP and now LIVE in production: failover+classification+config-failure cooldown (r9), full teach flow 34/34 (r10d), fence-tolerant JSON (r7), judge grades real content (r6/r8b), shape-drift fail-closed (r8c)",
+  "no_secrets_in_receipt": "scrub-checked: no gsk_/sk-or-v1-/AQ.Ab8RN6/vcp_/napi_/ghp_/postgres material — key values appear masked only"
+}
