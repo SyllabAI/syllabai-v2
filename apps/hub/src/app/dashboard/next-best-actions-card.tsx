@@ -149,7 +149,7 @@ export function NextBestActionsCard({ courses }: { courses: CourseMeta[] }) {
   const [bridges, setBridges] = useState<Record<string, LearnerBridge | null>>({});
   const now = useNow();
   const core = useDashboardCore();
-  const [pilotBridge, setPilotBridge] = useState<LearnerBridge | null>(null);
+  const [coreBridge, setCoreBridge] = useState<LearnerBridge | null>(null);
 
   useEffect(() => {
     if (!slugsKey) return;
@@ -164,42 +164,47 @@ export function NextBestActionsCard({ courses }: { courses: CourseMeta[] }) {
     };
   }, [slugsKey]);
 
-  // the pilot's bridge deep-links core rows into the hub's own question sets
-  // (additive join — null bridge degrades rows to the exam-questions index)
-  const coreReady =
-    core.kind === "ready" && courses.some((c) => c.slug === PILOT_COURSE_SLUG);
+  // D-4: the core read model carries its own course (the selection law's
+  // winner — pilot-first, then the roster); the account rows and their
+  // bridge join key on THAT course, never a hard-coded pilot slug. The
+  // bridge deep-links core rows into the hub's own question sets (additive
+  // join — null bridge degrades rows to the exam-questions index).
+  const coreCourse = core.kind === "ready" ? core.model.course : null;
+  const coreCourseInRoster = coreCourse != null && courses.some((c) => c.slug === coreCourse);
   useEffect(() => {
-    if (!coreReady) return;
+    if (coreCourse == null || !coreCourseInRoster) return;
     let cancelled = false;
-    fetchBridge(PILOT_COURSE_SLUG).then((bridge) => {
-      if (!cancelled) setPilotBridge(bridge);
+    fetchBridge(coreCourse).then((bridge) => {
+      if (!cancelled) setCoreBridge(bridge);
     });
     return () => {
       cancelled = true;
     };
-  }, [coreReady]);
+  }, [coreCourse, coreCourseInRoster]);
 
   const coreView =
-    coreReady && core.kind === "ready" ? core.model.recommendations : null;
+    coreCourseInRoster && core.kind === "ready" ? core.model.recommendations : null;
   const coreActions = useMemo(() => {
-    if (!coreView || coreView.actions.length === 0) return [];
-    const meta = courses.find((c) => c.slug === PILOT_COURSE_SLUG) as CourseMeta;
+    if (!coreView || coreView.actions.length === 0 || coreCourse == null) return [];
+    const meta = courses.find((c) => c.slug === coreCourse) as CourseMeta;
     return coreActionsToDashboard(coreView, {
       course: meta.slug,
       courseLabel: meta.subject,
       courseLevel: meta.level,
-      bridge: pilotBridge,
+      bridge: coreBridge,
     });
-  }, [coreView, courses, pilotBridge]);
+  }, [coreView, coreCourse, courses, coreBridge]);
 
-  // the account's read model REPLACES the local derivation for the pilot
+  // the account's read model REPLACES the local derivation for the resolved
   // course only (replace-not-merge, per course — the same ruling as the KG
   // drawer's core path); other courses keep their device-derived rows
-  const coreReplacedPilot = coreActions.length > 0;
+  const coreReplacedResolved = coreActions.length > 0;
   const localCourses = useMemo(
     () =>
-      coreReplacedPilot ? courses.filter((c) => c.slug !== PILOT_COURSE_SLUG) : courses,
-    [courses, coreReplacedPilot],
+      coreReplacedResolved && coreCourse != null
+        ? courses.filter((c) => c.slug !== coreCourse)
+        : courses,
+    [courses, coreReplacedResolved, coreCourse],
   );
 
   const inputs = useMemo(
@@ -217,6 +222,11 @@ export function NextBestActionsCard({ courses }: { courses: CourseMeta[] }) {
 
   const pending =
     courses.some((c) => bridges[c.slug] === undefined) ||
+    // hold device rows while the account read is unresolved when the pilot
+    // is in the roster — today the only live core join, so it is the one
+    // course whose rows could flash locally and then swap to the account's.
+    // When a second course joins core, widen this to any core-joined
+    // roster course (the selection law already resolves pilot-first).
     (courses.some((c) => c.slug === PILOT_COURSE_SLUG) && core.kind === "loading");
   const actions = useMemo(() => {
     // core rows first (the account's evidence outranks the device overlay —
@@ -236,9 +246,14 @@ export function NextBestActionsCard({ courses }: { courses: CourseMeta[] }) {
     courses.every((c) => bridges[c.slug] === null) &&
     !(core.kind === "ready" && core.model.recommendations);
 
-  const provenance = coreReplacedPilot
+  const resolvedSubject =
+    coreCourse != null
+      ? (courses.find((c) => c.slug === coreCourse)?.subject ?? coreCourse)
+      : null;
+
+  const provenance = coreReplacedResolved
     ? localCourses.length > 0
-      ? "advice from your account's learner model (pilot subject) — other courses ranked from this device's evidence"
+      ? `advice from your account's learner model (${resolvedSubject}) — other courses ranked from this device's evidence`
       : "advice from your account's learner model — the same read model the workbench consumes"
     : "deterministic rule baseline";
 

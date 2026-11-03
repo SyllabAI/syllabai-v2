@@ -13,20 +13,18 @@
  * examiner's MS of record renders verbatim with the Smart Mark method-credit
  * verdicts on structured parts).
  *
- * Posture: signed-out visitors get the sign-in CTA (the drill is an
- * identity-bearing surface — draws and evidence key to the learner); any
- * fetch failure renders the honest empty state, never a fabricated draw.
+ * Posture: the drill is an identity-bearing surface — draws and evidence
+ * key to the learner — so the proxy gates it (B-3) and the page wraps the
+ * client in RequireAuth as the fallback; any fetch failure renders the
+ * honest empty state, never a fabricated draw.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Atom, CheckCircle2, ChevronRight, RefreshCw, XCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { Switch } from "@/components/ui/switch";
 import { AnswerTextarea, answerPlaceholder } from "@/components/answer-textarea";
 import { Markdown } from "@/components/markdown";
@@ -65,8 +63,6 @@ interface SessionLogEntry {
 }
 
 export function DrillClient({ course }: { course: string }) {
-  const pathname = usePathname();
-  const currentSearch = useCurrentSearch();
   const signedIn = useMemo(() => getToken() !== null, []);
 
   const [addresses, setAddresses] = useState<DrillAddressesResponse | null>(null);
@@ -206,25 +202,6 @@ export function DrillClient({ course }: { course: string }) {
     deepLinkDrawn.current = true;
     void beginDraw(code); // eslint-disable-line react-hooks/exhaustive-deps -- fires once per mount (ref-guarded)
   }, [addresses, draw, submitting]);
-
-  if (!signedIn) {
-    return (
-      <div className="space-y-4">
-        <DrillHeading />
-        <Card>
-          <CardContent className="space-y-3 pt-4">
-            <p className="text-sm text-muted-foreground">
-              The spec-point drill is an identity-bearing surface: your draws and attempt evidence key to
-              your learner account. Sign in to drill.
-            </p>
-            <Button asChild>
-              <Link href={signInHref(pathname, currentSearch)}>Sign in to drill</Link>
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
 
   if (loadingAddresses) {
     return (

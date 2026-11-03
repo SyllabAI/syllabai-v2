@@ -371,8 +371,11 @@ export function LoginClient() {
 
         <p className="mt-4 text-sm text-muted-foreground">
           Just exploring?{" "}
+          {/* B-2: public browsing lives at /courses — the dashboard is an
+              account surface now, and this link used to advertise the
+              anonymous demo that made /dashboard ambiguous. */}
           <Link
-            href="/dashboard"
+            href="/courses"
             className="inline-block whitespace-nowrap font-medium text-foreground underline underline-offset-2"
           >
             Browse without an account →
