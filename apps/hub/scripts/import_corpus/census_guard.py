@@ -204,8 +204,9 @@ def main(argv: list[str]) -> int:
           f"{receipt['questions_scanned']} questions, {receipt['md_fields_scanned']} md fields, "
           f"{len(findings)} finding(s)")
     for f in findings[:40]:
+        shared = ", ".join(f"{s['pid']}(#{s['order']})" for s in f.get("shared_with", []))
         print(f"  [{f['class']}] {f['course_file']} {f['question_id']} {f['kind']} "
-              f"holder={f['holder_pid']}(#{f['holder_order']}) source={f['source_pid']}(#{f['source_order']})")
+              f"holder={f['holder_pid']}(#{f['holder_order']}) shared_with=[{shared}]")
     if receipt["errors"]:
         for e in receipt["errors"]:
             print(f"  [error] {e['file']}: {e['error']}")
