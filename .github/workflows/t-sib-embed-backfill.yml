@@ -1,0 +1,218 @@
+# T-SIB-INGEST-001 — the SIB 4CH1 embeddings BACKFILL runner (Gate B-exec).
+#
+# Driver of record: scripts/sib-ingest/backfill-4ch1.sh over the FROZEN
+# executor (scripts/t-mig-133d-backfill-exec.ts, gemini-embedding-001
+# 768-dim). GAP family EXCLUDED by enumeration law (scripts/sib-ingest/
+# sib-row-ids.ts) — the executor is never pointed at GAP rows; the final
+# census asserts gap_embedded == 0 (LAW VIOLATION check built into the
+# driver) and the 87-row census guard refuses to run unless the corpus
+# apply (t-sib-ingest-001-apply, prod-apply) has landed first.
+#
+# REGION LAW (133d run-001, reconfirmed 2026-11-03): the Gemini embedding
+# API is IP-region-gated — this runs HERE (GitHub Actions egress), never
+# from the HK-egress sandbox (400 LOCATION_BLOCKED / FAILED_PRECONDITION).
+#
+#   job 1 (cow-proof, mode != prod-only): COW branch off production +
+#     BRANCH-LOCAL owner password reset (production roles never touched),
+#     migration 0023 as RAW SQL (0007 disclosure law) + the FULL corpus
+#     apply onto the COW, then ONE pilot document backfilled via the frozen
+#     executor; asserts pilot embedded && gap_embedded == 0; receipt
+#     artifacts ALWAYS; DROP the COW + 404-verify even on failure
+#     (the T-MIG-035 discipline).
+#   job 2 (prod-backfill, needs job 1 green): the driver of record against
+#     the production DSN + the billed Gemini key (resume-safe — re-dispatch
+#     continues after a partial run; already-embedded rows are skipped).
+#
+# OPERATOR GATE: workflow_dispatch ONLY — the dispatch = the operator's fire
+# order per the 093/133b law. Secrets of record: NEON_API_KEY (exists).
+# Per-run secrets, staged by the operator and hygiene-deleted after:
+# SIB_GEMINI_KEY (the BILLED key of the operator ring — never echoed, never
+# logged) + SIB_PROD_DATABASE_URL. The probe word is a dispatch INPUT
+# (operator-chosen single token, used by the COW corpus-apply leg).
+
+name: t-sib-embed-backfill
+
+on:
+  workflow_dispatch:
+    inputs:
+      probe-word:
+        description: "COW-proof probe word (operator-chosen single token; used by the COW corpus-apply leg)"
+        required: false
+        default: "sib-cow-proof"
+      mode:
+        description: "cow+prod (default, the full guard protocol) | prod-only (the COW proof already of record — saves embedding budget)"
+        required: false
+        default: "cow+prod"
+      note:
+        description: "Operator note for this backfill run"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-sib-embed-backfill
+  cancel-in-progress: false
+
+jobs:
+  cow-proof:
+    if: ${{ inputs.mode != 'prod-only' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Rebuild the corpus stage of record (fetch + pin-verify, fail-closed)
+        run: bash scripts/sib-ingest/fetch-stage.sh /tmp/sib-stage
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="t-sib-backfill-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          HOST=""
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched; 423-aware)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          PW=""
+          for i in $(seq 1 20); do
+            CODE=$(curl -s -o /tmp/sib-reset.json -w "%{http_code}" \
+              -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            if [ "$CODE" = "200" ]; then
+              PW=$(jq -r '.role.password' /tmp/sib-reset.json)
+              break
+            fi
+            if [ "$CODE" = "423" ]; then sleep 5; continue; fi
+            echo "unexpected reset status ${CODE}"; exit 1
+          done
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Migration 0023 + full corpus APPLY onto the COW
+        run: |
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/sib-cow.uri
+          chmod 600 /tmp/sib-cow.uri
+          bun scripts/sib-ingest/apply-0023.ts --db file:/tmp/sib-cow.uri --receipt cow-0023-receipt.json
+          bun apps/api/scripts/sib-ingest.ts --mode apply --stage /tmp/sib-stage \
+            --db file:/tmp/sib-cow.uri --probe-word "${{ inputs.probe-word }}" \
+            --receipt cow-apply-receipt.json
+      - name: Pilot backfill via the FROZEN executor (one non-GAP document)
+        env:
+          SYLLABAI_EMBEDDING_GEMINI_API_KEY: ${{ secrets.SIB_GEMINI_KEY }}
+          BACKFILL_RESULT_PATH: cow-pilot-result.json
+        run: |
+          set -euo pipefail
+          [ -n "$SYLLABAI_EMBEDDING_GEMINI_API_KEY" ] || { echo "SIB_GEMINI_KEY not staged — abort"; exit 2; }
+          PILOT=$(DB_URI="$(cat /tmp/sib-cow.uri)" bun -e "
+            import postgres from 'postgres';
+            const sql = postgres(process.env.DB_URI, { max: 1, prepare: false });
+            const r = await sql\`select d.id from documents d
+              where d.document_id like 'SIB-4CH1-%' and d.document_id not like 'SIB-4CH1-GAP-%'
+              order by d.document_id limit 1\`;
+            console.log(r[0].id); await sql.end();")
+          echo "pilot document row: ${PILOT}"
+          bun scripts/t-mig-133d-backfill-exec.ts "$(cat /tmp/sib-cow.uri)" "$PILOT"
+      - name: COW census asserts (pilot embedded; GAP law intact)
+        run: |
+          DB_URI="$(cat /tmp/sib-cow.uri)" bun -e "
+            import postgres from 'postgres';
+            const sql = postgres(process.env.DB_URI, { max: 1, prepare: false });
+            const r = await sql\`select
+              (select count(*)::int from documents where document_id like 'SIB-4CH1-%') docs,
+              (select count(*)::int from document_chunks c join documents d on d.id = c.document_row_id
+                 where d.document_id like 'SIB-4CH1-%' and c.embedding is not null) embedded,
+              (select count(*)::int from document_chunks c join documents d on d.id = c.document_row_id
+                 where d.document_id like 'SIB-4CH1-GAP-%' and c.embedding is not null) gap_embedded\`;
+            console.log('docs=', r[0].docs, 'embedded=', r[0].embedded, 'gap_embedded=', r[0].gap_embedded);
+            if (Number(r[0].docs) !== 95) { console.error('census FAIL: docs != 95'); process.exit(1); }
+            if (Number(r[0].embedded) < 1) { console.error('pilot embed FAIL'); process.exit(1); }
+            if (Number(r[0].gap_embedded) !== 0) { console.error('GAP LAW VIOLATION'); process.exit(1); }
+            await sql.end();"
+      - name: Upload the receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tsib001-cow-backfill-proof
+          path: |
+            cow-0023-receipt.json
+            cow-apply-receipt.json
+            cow-pilot-result.json
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }
+
+  prod-backfill:
+    needs: cow-proof
+    if: ${{ !failure() && !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Backfill the 1,457 serving chunks (driver of record, resume-safe)
+        env:
+          SYLLABAI_EMBEDDING_GEMINI_API_KEY: ${{ secrets.SIB_GEMINI_KEY }}
+          SIB_PROD_DATABASE_URL: ${{ secrets.SIB_PROD_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          [ -n "$SYLLABAI_EMBEDDING_GEMINI_API_KEY" ] || { echo "SIB_GEMINI_KEY not staged — abort"; exit 2; }
+          [ -n "$SIB_PROD_DATABASE_URL" ] || { echo "SIB_PROD_DATABASE_URL not staged — abort"; exit 2; }
+          printf '%s' "$SIB_PROD_DATABASE_URL" > /tmp/sib-prod.uri
+          chmod 600 /tmp/sib-prod.uri
+          bash scripts/sib-ingest/backfill-4ch1.sh /tmp/sib-prod.uri /tmp/sib-backfill | tee backfill-run.log
+      - name: Upload the backfill evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tsib001-prod-backfill
+          path: |
+            backfill-run.log
+            backfill-last-result.json
+          if-no-files-found: ignore

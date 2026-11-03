@@ -1061,3 +1061,20 @@ Work Log:
 
 Stage Summary:
 - Staged keyring verified current against the operator's fresh supply; zero secret values moved, printed, or committed; gates A-exec/B-exec/C unchanged.
+
+---
+Task ID: T-SIB-INGEST-001 run-004 (operator order trace 1a1a2d4e0294d969: "use github actions")
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+Base commit: 42ff25d (this branch; pushed + PR of record this run — gate C OPEN via the rotated PAT of record)
+
+Work Log:
+- GATE-C REALITY CORRECTION: the PAT of record (gh_api.py, "the rotated PAT") is LIVE — repo GET 200 (the run-002 "staged one 401s" posture is stale). No token value entered chat context (platform-redacted on read); used only inside processes.
+- ACTIONS RUNNERS AUTHORED — both workflow_dispatch-ONLY, INERT until dispatched (the dispatch = the operator's fire order per the 093/133b law):
+  - .github/workflows/t-sib-ingest-001-apply.yml (Gate A-exec): job cow-apply = stage-of-record rebuild (scripts/sib-ingest/fetch-stage.sh: fetch from syllabai-resources@main + sha256 pin-verify vs the COMMITTED run-001 dry receipt, fail-closed) -> script-of-record DRY on the runner -> Neon COW branch + branch-local owner password reset (prod roles never touched; 423-aware) -> migration 0023 as RAW SQL per the 0007 disclosure law (scripts/sib-ingest/apply-0023.ts: one tx, lock/statement timeouts, idempotent-safe, postverify inside the tx, scrubbed receipt) -> sib-ingest.ts --mode apply (one transaction, COW-proof probe word input, postverify) -> receipts ALWAYS -> DROP COW + 404-verify; job prod-apply (needs cow-apply green, mode=cow+prod) = same frozen path against the per-run-staged SIB_PROD_DATABASE_URL.
+  - .github/workflows/t-sib-embed-backfill.yml (Gate B-exec): job cow-proof = COW + 0023 + full corpus apply + ONE pilot doc backfilled via the FROZEN executor + census asserts (docs=95, pilot embedded, gap_embedded=0); job prod-backfill = driver of record backfill-4ch1.sh (87-row census guard, resume-safe, GAP excluded by enumeration law, gap_embedded=0 law) from Actions egress under the 133d REGION LAW. Modes mirror t-mig-133d (cow+prod default | prod-only).
+- CI-PATH SIMULATION GREEN (sandbox, zero DB): fetch-stage.sh -> 95/95 pins verified LIVE from the source of record (corpus still drift-free right now); sib-ingest.ts --mode dry on the rebuilt stage -> 95 docs / 1,593 chunks / GAP 136 / census 1,457 — exact match of record. Both YAMLs parse; apply-0023.ts transpile-clean.
+- SECRETS OF RECORD (operator, per-run, hygiene-deleted after): SIB_PROD_DATABASE_URL + SIB_GEMINI_KEY (the BILLED key of the staged ring). Probe word = dispatch input (not a credential). NEON_API_KEY / NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID already of record.
+- SECURITY: no key/URI/token value placed in any workflow, script, receipt, or this worklog; the COW discipline (prod roles untouched, drop+404 even on failure) preserved verbatim from the precedents.
+
+Stage Summary:
+- "use github actions" executed to the last pre-dispatch line: both gate runners INERT-dispatchable on the branch, CI path simulated green end-to-end minus DB. Remaining (operator): stage the 2 per-run secrets, dispatch t-sib-ingest-001-apply (probe word of choice; cow-only for receipt review or cow+prod to land), then t-sib-embed-backfill (after apply-prod green — mechanically census-guarded).

@@ -1,0 +1,192 @@
+# T-SIB-INGEST-001 — the SIB 4CH1 corpus APPLY runner (Gate A-exec).
+#
+# Operator order of record: "land A+B" (trace 1a1a2a8cf4758161) + "use github
+# actions" (trace 1a1a2d4e0294d969). This runner puts Gate A behind the house
+# guard protocol (t-mig-133d / t-teachme-1 / t-teach-011 precedents):
+#
+#   job 1 (cow-apply): rebuild the corpus stage of record from the source repo
+#     (syllabai-resources@main — 95 files, sha256-verified against the
+#     COMMITTED run-001 dry receipt pins, fail-closed drift abort), run the
+#     apply script of record DRY on the runner, create a disposable Neon COW
+#     branch off production (in-line read_write endpoint, NEON_API_KEY = the
+#     CI key of record), reset the BRANCH-LOCAL owner password (production
+#     roles never touched), apply migration 0023 as RAW SQL (0007 disclosure
+#     law — NO drizzle bookkeeping), run sib-ingest.ts --mode apply (ONE
+#     transaction, COW-proof probe word, postverify inside), receipt
+#     artifacts ALWAYS, then DROP the COW + 404-verify even on failure
+#     (the T-MIG-035 discipline).
+#   job 2 (prod-apply, needs job 1 green, mode=cow+prod): the same frozen
+#     path against the production DSN the operator stages per-run.
+#
+# OPERATOR GATE: workflow_dispatch ONLY — the dispatch = the operator's fire
+# order per the 093/133b law. Secrets of record: NEON_API_KEY (exists).
+# Per-run secret, staged by the operator and hygiene-deleted after:
+# SIB_PROD_DATABASE_URL. The probe word is a dispatch INPUT (operator-chosen;
+# not a credential — it is the COW-proof word the apply round-trips through a
+# scratch table before commit; single token, no quotes/spaces).
+#
+# Receipts are scrubbed by construction: the drivers record the DB host only,
+# never URIs or tokens.
+
+name: t-sib-ingest-001-apply
+
+on:
+  workflow_dispatch:
+    inputs:
+      probe-word:
+        description: "COW-proof probe word (operator-chosen single token; round-tripped through a scratch table before commit)"
+        required: true
+      mode:
+        description: "cow+prod (default — full landing) | cow-only (COW proof first; prod only after the operator reviews the receipt)"
+        required: false
+        default: "cow+prod"
+      note:
+        description: "Operator note for this apply run"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-sib-ingest-001-apply
+  cancel-in-progress: false
+
+jobs:
+  cow-apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Rebuild the corpus stage of record (fetch + pin-verify, fail-closed)
+        run: bash scripts/sib-ingest/fetch-stage.sh /tmp/sib-stage
+      - name: Apply script of record — DRY on the runner
+        run: bun apps/api/scripts/sib-ingest.ts --mode dry --stage /tmp/sib-stage --receipt cow-dry-receipt.json
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="t-sib-ingest-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          HOST=""
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched; 423-aware)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          PW=""
+          for i in $(seq 1 20); do
+            CODE=$(curl -s -o /tmp/sib-reset.json -w "%{http_code}" \
+              -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            if [ "$CODE" = "200" ]; then
+              PW=$(jq -r '.role.password' /tmp/sib-reset.json)
+              break
+            fi
+            if [ "$CODE" = "423" ]; then sleep 5; continue; fi
+            echo "unexpected reset status ${CODE}"; exit 1
+          done
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Migration 0023 as RAW SQL (0007 disclosure law)
+        run: |
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/sib-cow.uri
+          chmod 600 /tmp/sib-cow.uri
+          bun scripts/sib-ingest/apply-0023.ts --db file:/tmp/sib-cow.uri --receipt cow-0023-receipt.json
+      - name: APPLY the SIB corpus (one transaction, COW-proof probe, postverify)
+        run: |
+          bun apps/api/scripts/sib-ingest.ts --mode apply --stage /tmp/sib-stage \
+            --db file:/tmp/sib-cow.uri --probe-word "${{ inputs.probe-word }}" \
+            --receipt cow-apply-receipt.json
+      - name: Upload the receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tsib001-cow-receipts
+          path: |
+            cow-dry-receipt.json
+            cow-0023-receipt.json
+            cow-apply-receipt.json
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }
+
+  prod-apply:
+    needs: cow-apply
+    if: ${{ inputs.mode == 'cow+prod' && !failure() && !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Rebuild the corpus stage of record (fetch + pin-verify, fail-closed)
+        run: bash scripts/sib-ingest/fetch-stage.sh /tmp/sib-stage
+      - name: Apply script of record — DRY on the runner
+        run: bun apps/api/scripts/sib-ingest.ts --mode dry --stage /tmp/sib-stage --receipt prod-dry-receipt.json
+      - name: Migration 0023 as RAW SQL + APPLY against production
+        env:
+          SIB_PROD_DATABASE_URL: ${{ secrets.SIB_PROD_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          [ -n "$SIB_PROD_DATABASE_URL" ] || { echo "SIB_PROD_DATABASE_URL not staged — abort"; exit 2; }
+          printf '%s' "$SIB_PROD_DATABASE_URL" > /tmp/sib-prod.uri
+          chmod 600 /tmp/sib-prod.uri
+          bun scripts/sib-ingest/apply-0023.ts --db file:/tmp/sib-prod.uri --receipt prod-0023-receipt.json
+          bun apps/api/scripts/sib-ingest.ts --mode apply --stage /tmp/sib-stage \
+            --db file:/tmp/sib-prod.uri --probe-word "${{ inputs.probe-word }}" \
+            --receipt prod-apply-receipt.json
+      - name: Upload the receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tsib001-prod-receipts
+          path: |
+            prod-dry-receipt.json
+            prod-0023-receipt.json
+            prod-apply-receipt.json
+          if-no-files-found: ignore
