@@ -1,0 +1,315 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_sb9rpDPgVq9JChng",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "4121b8956a24b46c7b15d26a3bae1606d6ea903d873bd6651974aca4a163e500",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_sb9rpDPgVq9JChng",
+    "topicTitle": "4. Energy Resources and Energy Transfers",
+    "subtopicTitle": "Work, Power & Energy Resources",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/4-energy-resources-and-energy-transfers/4-2-work-power-and-energy-resources/4-2-6-energy-resources",
+    "specAnchors": [
+      {
+        "code": "4.18P",
+        "text": "describe the energy transfers involved in generating electricity using: • wind • water • geothermal resources • solar heating systems • solar cells • fossil fuels • nuclear power"
+      }
+    ],
+    "primer": {
+      "text": "Electricity has to come from somewhere. These lessons tour the resources that feed the Grid — wind, water, geothermal, solar, fossil and nuclear — and trace the transfer chain that turns each one into generated electricity.",
+      "prerequisiteSubtopic": "Work, Power & Energy Resources"
+    },
+    "modules": [
+      {
+        "id": "rn_sb9rpDPgVq9JChng::L1",
+        "title": "Resources, renewables and the generation chain",
+        "sourceHeadings": [
+          "Renewable and non-renewable energy resources",
+          "Generating electricity from energy resources"
+        ],
+        "specRefs": [
+          "4.18P"
+        ],
+        "opening": "Energy resources are the large stores society draws on to generate electricity and to heat buildings. They split into renewables, which the world replaces as fast as we use them, and non-renewables, which run down — yet nearly all of them generate electricity through the same turbine-and-generator chain.",
+        "keyPoints": [
+          "An energy resource is a large store used to generate electricity or to heat homes and businesses.",
+          "A renewable resource is replenished at least as fast as it is used, so it will not run out.",
+          "Renewables include solar, wind, hydroelectricity, geothermal, wave and tidal; non-renewables are fossil fuels and nuclear fuel.",
+          "Generation is shared machinery: a turning turbine drives a generator, and only the way the turbine turns differs.",
+          "Solar cells are the exception — they generate electricity without any turbine."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Picture one machine room: a spinning shaft, a generator bolted to it, wires leaving. Wind, water and steam all just take turns spinning the shaft. Only solar cells skip the room entirely, making electricity directly from light.",
+            "analogy": "A bicycle dynamo: pedal (any resource) turns the wheel (turbine), the wheel spins the dynamo (generator), the lamp lights. Change the rider, not the lamp.",
+            "examPointer": "Name both lists precisely when asked — wind, hydro, wave, tidal, geothermal and the two solar technologies are the renewables; coal, oil, gas and nuclear fuel are not."
+          },
+          "medium": {
+            "restatement": "The renewable/non-renewable boundary is a rate statement: a resource is renewable when nature restores it faster than consumption draws it down. Downstream of the resource, generation converges — turbine to generator to Grid — with solar cells the sole turbine-free route and reliable national supply resting on a mix of resources.",
+            "analogy": "One kitchen, many taps: the plumbing (turbine-generator) never changes, only which reservoir (resource) feeds it; one recipe (solar cells) needs no plumbing at all.",
+            "examPointer": "For generation questions, open with the shared chain — turbine turns, generator turns, electricity generated — then state what is special about the named resource."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_sb9rpDPgVq9JChng::L1::Q1",
+          "rn_sb9rpDPgVq9JChng::L1::Q2",
+          "rn_sb9rpDPgVq9JChng::L1::Q3",
+          "rn_sb9rpDPgVq9JChng::L1::Q4",
+          "rn_sb9rpDPgVq9JChng::L1::Q5",
+          "rn_sb9rpDPgVq9JChng::L1::Q6",
+          "rn_sb9rpDPgVq9JChng::L1::Q7",
+          "rn_sb9rpDPgVq9JChng::L1::Q8",
+          "rn_sb9rpDPgVq9JChng::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_sb9rpDPgVq9JChng::L2",
+        "title": "Wind and water generation",
+        "sourceHeadings": [
+          "Wind",
+          "Water: hydroelectric"
+        ],
+        "specRefs": [
+          "4.18P"
+        ],
+        "opening": "Wind and stored water both end up spinning the same machinery, but they bank their energy differently: wind carries its energy as motion, while a dammed reservoir holds it in height and releases it on demand.",
+        "keyPoints": [
+          "Wind turns turbines directly, and the turbines turn generators to generate electricity.",
+          "The energy chain for wind runs from the wind's kinetic store through the turbine's to the generator's.",
+          "Hydroelectric schemes hold water at height in a dam and release it to turn the turbines.",
+          "The energy chain for hydroelectric power starts in the water's gravitational potential store."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A wind farm borrows the moving air's motion; a hydroelectric dam cashes in height. Both hand the spin to a generator, but only the dam can choose the moment — open the sluice when the Grid asks.",
+            "analogy": "A wind farm is paid on delivery; a dam is a savings account — deposit the water, withdraw the spin exactly when needed.",
+            "examPointer": "When tracing transfers for either resource, name each store in order — wind: kinetic to kinetic to kinetic; hydroelectric: gravitational to kinetic to kinetic to kinetic."
+          },
+          "medium": {
+            "restatement": "Wind generation transfers energy from the kinetic store of the moving air into the turbine and then the generator, all kinetic. Hydroelectric generation instead opens with a gravitational potential store: released water gains kinetic energy as it falls, then drives turbine and generator through the same mechanical chain.",
+            "analogy": "Spending a wage as it arrives (wind) versus drawing on a savings account (dam): the shopping (generation) is identical, the opening balance differs.",
+            "examPointer": "Do not give hydroelectric water a thermal store — nothing is heated; the fall converts height energy into motion energy."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_sb9rpDPgVq9JChng::L2::Q1",
+          "rn_sb9rpDPgVq9JChng::L2::Q2",
+          "rn_sb9rpDPgVq9JChng::L2::Q3",
+          "rn_sb9rpDPgVq9JChng::L2::Q4",
+          "rn_sb9rpDPgVq9JChng::L2::Q5",
+          "rn_sb9rpDPgVq9JChng::L2::Q6",
+          "rn_sb9rpDPgVq9JChng::L2::Q7",
+          "rn_sb9rpDPgVq9JChng::L2::Q8",
+          "rn_sb9rpDPgVq9JChng::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04"
+        ]
+      },
+      {
+        "id": "rn_sb9rpDPgVq9JChng::L3",
+        "title": "Geothermal and solar",
+        "sourceHeadings": [
+          "Geothermal resources",
+          "Solar cells"
+        ],
+        "specRefs": [
+          "4.18P"
+        ],
+        "opening": "Underground heat and overhead light are the quiet resources: hot rocks boil water into steam for the turbines, while solar cells skip the spinning entirely and turn sunlight straight into electricity.",
+        "keyPoints": [
+          "Geothermal plants pump water down to hot rocks and bring back steam that turns turbines.",
+          "The geothermal chain runs from the thermal store of the rocks through the water's thermal store to the kinetic stores of turbine and generator.",
+          "Solar cells convert sunlight directly into electricity with no turbine at any stage.",
+          "Solar heating panels are the related but separate technology that warms household water instead of generating."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "One resource borrows a furnace already running beneath our feet; the other harvests the light itself. Hot rocks make steam for the old spinning route; cells make electricity the direct way.",
+            "analogy": "Geothermal is a central-heating boiler wired to the Grid; solar cells are the leaf on the tree — no machinery between light and electricity.",
+            "examPointer": "Keep the two solar technologies apart in answers: cells generate electricity, panels heat water — mixing them is a classic lost mark."
+          },
+          "medium": {
+            "restatement": "Geothermal generation opens in the thermal store of underground hot rocks, which heat pumped water into steam whose kinetic store then drives turbine and generator. Solar cells instead convert the Sun's energy directly into electricity, the only named resource with no turbine stage, while solar heating panels deliver warmth to water rather than generation.",
+            "analogy": "A kitchen with two appliances: a kettle (geothermal — heat makes steam that spins) and a solar-powered calculator (cells — light becomes electricity with nothing spinning).",
+            "examPointer": "Trace the geothermal chain store by store — rocks (thermal), water (thermal), turbine (kinetic), generator (kinetic) — and state the cells' no-turbine exception explicitly."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_sb9rpDPgVq9JChng::L3::Q1",
+          "rn_sb9rpDPgVq9JChng::L3::Q2",
+          "rn_sb9rpDPgVq9JChng::L3::Q3",
+          "rn_sb9rpDPgVq9JChng::L3::Q4",
+          "rn_sb9rpDPgVq9JChng::L3::Q5",
+          "rn_sb9rpDPgVq9JChng::L3::Q6",
+          "rn_sb9rpDPgVq9JChng::L3::Q7",
+          "rn_sb9rpDPgVq9JChng::L3::Q8",
+          "rn_sb9rpDPgVq9JChng::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-07",
+          "fig-09"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "energy resource",
+          "definition": "A large store of energy that can be used to generate electricity or to heat homes and businesses.",
+          "firstLesson": 1
+        },
+        {
+          "term": "turbine",
+          "definition": "A wheel driven by wind, water or steam whose spinning turns a generator.",
+          "firstLesson": 1
+        },
+        {
+          "term": "generator",
+          "definition": "The machine driven by a turbine that converts the spinning motion into electrical energy.",
+          "firstLesson": 1
+        },
+        {
+          "term": "renewable",
+          "definition": "Describes an energy resource replenished at least as fast as it is consumed, so it will not run out.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/eae79e2c0367-1-8-2-fossil-fuels-cie-igcse-23-rn.png",
+        "alt": "1-8-2-fossil-fuels-cie-igcse-23-rn",
+        "sourceHeading": "Renewable and non-renewable energy resources",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Coal, oil, and natural gas are examples of fossil fuels. These are energy resources in limited supply, meaning they will eventually run out"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a7c005c3a228-33302-httpscdn-savemyexams-comuploads202407elect.png",
+        "alt": "electricity-generation-new",
+        "sourceHeading": "Generating electricity from energy resources",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The energy transfers involved in the production of electricity from fossil fuels"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/2a8855784b7c-38954-httpscdn-savemyexams-comuploads2022061-8-w.png",
+        "alt": "1-8-wind-farms_edexcel-al-physics-rn",
+        "sourceHeading": "Wind",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Wind turns the turbines directly, which turn generators, which generate electricity"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/24190b60bdf2-20563-httpscdn-savemyexams-comuploads2022081-8-3.png",
+        "alt": "1-8-3-hydroelectric-dam-cie-igcse-23-rn",
+        "sourceHeading": "Water: hydroelectric",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "A hydroelectric dam transfers energy from the gravitational potential energy store of the water to its kinetic energy store mechanically to turn a turbine"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/e8929bf93ef4-35726-httpscdn-savemyexams-comuploads2023031-8-3.png",
+        "alt": "1-8-3-a-tidal-barrage-produces-elelctricity-using-tides-cie-igcse-rn-colour-1",
+        "sourceHeading": "Water: tidal",
+        "moduleIds": [],
+        "binding": "heading-unique",
+        "caption": "Tidal power uses water stored at a height, which when released, flows over a turbine causing it to turn"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/6d1f5d2bb1b0-22550-httpscdn-savemyexams-comuploads2022081-8-3.png",
+        "alt": "1-8-3-tidal-power-cie-igcse-23-rn",
+        "sourceHeading": "Water: wave",
+        "moduleIds": [],
+        "binding": "heading-unique",
+        "caption": "Wave power uses the motion of the waves to turn turbines directly, the turbines turn generators which generate electricity"
+      },
+      {
+        "id": "fig-07",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/781d931b2aef-13220-httpscdn-savemyexams-comuploads2022081-8-4.png",
+        "alt": "1-8-4-geothermal-energy-cie-igcse-23-rn",
+        "sourceHeading": "Geothermal resources",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Cold water is heated by the rocks and returned as hot water or steam which can be used to turn turbines to generate electricity"
+      },
+      {
+        "id": "fig-08",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/d27e66035acb-49508-httpscdn-savemyexams-comuploads2022081-8-1.png",
+        "alt": "1-8-1-solar-panel-cie-igcse-23-rn",
+        "sourceHeading": "Solar heating systems",
+        "moduleIds": [],
+        "binding": "heading-unique",
+        "caption": "Solar heating panels use energy from the sun to heat water for use in homes and businesses"
+      },
+      {
+        "id": "fig-09",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b85dbb3f6060-5851-httpscdn-savemyexams-comuploads2022081-8-1-.png",
+        "alt": "1-8-1-solar-cells-cie-igcse-23-rn",
+        "sourceHeading": "Solar cells",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Solar cells use energy from the sun to generate electricity directly"
+      }
+    ]
+  }
+}

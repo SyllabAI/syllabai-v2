@@ -1,0 +1,255 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_vR82ncPDnnyGQ94P",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "ee0f62468ba0092cdbf97ef92c92cca1caa46d7f516049692d05500ab0bb25ce",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "packageId": "igcse-physics::rn_vR82ncPDnnyGQ94P",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_vR82ncPDnnyGQ94P::L1::Q1",
+      "moduleId": "rn_vR82ncPDnnyGQ94P::L1",
+      "stem": "Which two inputs set the size of an object's kinetic store?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "mass and speed",
+          "correct": true,
+          "explanation": "The equation multiplies mass by the square of speed.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "mass and height",
+          "correct": false,
+          "explanation": "Height prices the gravitational store.",
+          "misconception": "store swap"
+        },
+        {
+          "key": "C",
+          "text": "force and distance",
+          "correct": false,
+          "explanation": "Those price work done.",
+          "misconception": "equation tangle"
+        },
+        {
+          "key": "D",
+          "text": "power and time",
+          "correct": false,
+          "explanation": "Those price energy transferred per second of doing.",
+          "misconception": "equation tangle"
+        }
+      ]
+    },
+    {
+      "id": "rn_vR82ncPDnnyGQ94P::L1::Q2",
+      "moduleId": "rn_vR82ncPDnnyGQ94P::L1",
+      "stem": "Which equation gives kinetic energy?",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "KE = ½ × m × v",
+          "correct": false,
+          "explanation": "The speed must be squared.",
+          "misconception": "squaring slip"
+        },
+        {
+          "key": "B",
+          "text": "KE = ½ × m × v²",
+          "correct": true,
+          "explanation": "Half mass times speed squared.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "KE = m × g × h",
+          "correct": false,
+          "explanation": "That is gravitational potential energy.",
+          "misconception": "equation tangle"
+        },
+        {
+          "key": "D",
+          "text": "KE = m × v",
+          "correct": false,
+          "explanation": "That misses both the half and the square.",
+          "misconception": "equation tangle"
+        }
+      ]
+    },
+    {
+      "id": "rn_vR82ncPDnnyGQ94P::L1::Q3",
+      "moduleId": "rn_vR82ncPDnnyGQ94P::L1",
+      "stem": "A car's speed doubles while its mass stays the same. What happens to its kinetic energy?",
+      "misconceptionClass": "proportional reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it stays the same",
+          "correct": false,
+          "explanation": "Speed changed, so the store changed.",
+          "misconception": "no-transfer slip"
+        },
+        {
+          "key": "B",
+          "text": "it halves",
+          "correct": false,
+          "explanation": "Nothing about speeding up empties the store.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "it quadruples, because speed is squared",
+          "correct": true,
+          "explanation": "The squared input scales four-fold per doubling.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "it doubles",
+          "correct": false,
+          "explanation": "Doubling would only hold if speed entered linearly.",
+          "misconception": "linearity slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_vR82ncPDnnyGQ94P::L1::Q4",
+      "moduleId": "rn_vR82ncPDnnyGQ94P::L1",
+      "stem": "Which unit pair of kilograms and metres per second feeds the KE equation correctly?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "mass in grams, speed in kilometres per hour",
+          "correct": false,
+          "explanation": "Both inputs need converting first.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "B",
+          "text": "mass in newtons, speed in metres per second",
+          "correct": false,
+          "explanation": "Mass is not a force.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "C",
+          "text": "mass in kilograms, speed in seconds",
+          "correct": false,
+          "explanation": "Speed is not a time.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "D",
+          "text": "mass in kilograms, speed in metres per second",
+          "correct": true,
+          "explanation": "That combination evaluates to joules.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_vR82ncPDnnyGQ94P::L1::Q5",
+      "moduleId": "rn_vR82ncPDnnyGQ94P::L1",
+      "stem": "A 1000 kg car and a 2000 kg car move at the same speed. How do their kinetic stores compare?",
+      "misconceptionClass": "proportional reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the heavier car holds twice the energy",
+          "correct": true,
+          "explanation": "Mass enters linearly, so doubling mass doubles the store.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the lighter car holds more energy",
+          "correct": false,
+          "explanation": "At equal speed the heavier mass always stores more.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "they hold equal energy",
+          "correct": false,
+          "explanation": "Equal speed does not equalise different masses.",
+          "misconception": "false-equality"
+        },
+        {
+          "key": "D",
+          "text": "neither holds energy without accelerating",
+          "correct": false,
+          "explanation": "Motion alone fills the store; acceleration is irrelevant.",
+          "misconception": "condition slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_vR82ncPDnnyGQ94P::L1::Q6",
+      "moduleId": "rn_vR82ncPDnnyGQ94P::L1",
+      "stem": "State what kind of object holds energy in a kinetic store.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Any object in motion holds energy in its kinetic store, sized by its mass and speed.",
+      "keywords": [
+        "motion",
+        "mass",
+        "speed",
+        "energy"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vR82ncPDnnyGQ94P::L1::Q7",
+      "moduleId": "rn_vR82ncPDnnyGQ94P::L1",
+      "stem": "State the kinetic energy equation in words.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "Kinetic energy equals one half multiplied by mass multiplied by speed squared.",
+      "keywords": [
+        "kinetic",
+        "energy",
+        "mass",
+        "speed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vR82ncPDnnyGQ94P::L1::Q8",
+      "moduleId": "rn_vR82ncPDnnyGQ94P::L1",
+      "stem": "Explain why forgetting to square the speed badly underestimates a moving object's kinetic energy.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The equation multiplies mass by the square of speed, so the speed contributes twice over. Using the bare speed once collapses the squared term, and for speeds above one metre per second the computed energy falls far below the true value held in the store.",
+      "keywords": [
+        "square",
+        "speed",
+        "energy",
+        "equation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vR82ncPDnnyGQ94P::L1::Q9",
+      "moduleId": "rn_vR82ncPDnnyGQ94P::L1",
+      "stem": "Calculate the kinetic energy of a 60 kg runner moving at 8 m/s.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "KE = ½ × m × v² = 0.5 × 60 × 8² = 0.5 × 60 × 64 = 1920 J.",
+      "keywords": [
+        "kinetic",
+        "energy",
+        "1920",
+        "speed"
+      ],
+      "options": []
+    }
+  ]
+}

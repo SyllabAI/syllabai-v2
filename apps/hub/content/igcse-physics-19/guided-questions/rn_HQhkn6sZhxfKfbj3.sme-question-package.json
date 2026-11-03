@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_HQhkn6sZhxfKfbj3",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "e383ccd90ec1f287512771d995b84636f31706d2bc6bc41c6f4e6ac353f5b304",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "packageId": "igcse-physics::rn_HQhkn6sZhxfKfbj3",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L1::Q1",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L1",
+      "stem": "Which set names fluids?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "liquids and gases",
+          "correct": true,
+          "explanation": "Both flow, so both are fluids.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "solids and liquids",
+          "correct": false,
+          "explanation": "Solids are not fluids.",
+          "misconception": "state swap"
+        },
+        {
+          "key": "C",
+          "text": "gases and solids",
+          "correct": false,
+          "explanation": "Solids are not fluids.",
+          "misconception": "state swap"
+        },
+        {
+          "key": "D",
+          "text": "liquids only",
+          "correct": false,
+          "explanation": "Gases are fluids too.",
+          "misconception": "over-narrow reading"
+        }
+      ]
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L1::Q2",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L1",
+      "stem": "An object sits stationary in water. How does the water's pressure act on it?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "mostly sideways, ignoring top and bottom",
+          "correct": false,
+          "explanation": "The squeeze is even, not lateral.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "B",
+          "text": "evenly over its whole surface and in all directions",
+          "correct": true,
+          "explanation": "A fluid at rest squeezes without favourites.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "only from above, following gravity",
+          "correct": false,
+          "explanation": "Gravity drives the pressure but not its direction of action.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "D",
+          "text": "only on the bottom face",
+          "correct": false,
+          "explanation": "Every face is squeezed.",
+          "misconception": "over-narrow reading"
+        }
+      ]
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L1::Q3",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L1",
+      "stem": "The force a fluid's pressure exerts on an immersed surface acts",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "along the object's weight direction only",
+          "correct": false,
+          "explanation": "Weight and fluid force are different pushes.",
+          "misconception": "force swap"
+        },
+        {
+          "key": "B",
+          "text": "in the direction the object is moving",
+          "correct": false,
+          "explanation": "The object is at rest in this scenario.",
+          "misconception": "context slip"
+        },
+        {
+          "key": "C",
+          "text": "at right angles to that surface",
+          "correct": true,
+          "explanation": "Normal forces only — 90 degrees, always.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "parallel to the surface",
+          "correct": false,
+          "explanation": "Parallel pushes slide nothing here.",
+          "misconception": "direction slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L1::Q4",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L1",
+      "stem": "Which everyday observation shows fluid pressure acting in all directions?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "ice floats high in a glass",
+          "correct": false,
+          "explanation": "Floating shows density, not omnidirectionality.",
+          "misconception": "phenomenon swap"
+        },
+        {
+          "key": "B",
+          "text": "a kettle whistles when boiling",
+          "correct": false,
+          "explanation": "The whistle is steam escaping, not the squeeze.",
+          "misconception": "phenomenon swap"
+        },
+        {
+          "key": "C",
+          "text": "a spoon gets hot in soup",
+          "correct": false,
+          "explanation": "That is heating, not pressure.",
+          "misconception": "phenomenon swap"
+        },
+        {
+          "key": "D",
+          "text": "a bubble blown underwater is spherical",
+          "correct": true,
+          "explanation": "Even pressure from all sides rounds the bubble.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L1::Q5",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L1",
+      "stem": "What does the fluid pressure CREATE against an immersed surface?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "forces",
+          "correct": true,
+          "explanation": "Pressure delivers forces against surfaces.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "heat",
+          "correct": false,
+          "explanation": "Heating is not the pressure's product here.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "C",
+          "text": "light",
+          "correct": false,
+          "explanation": "Nothing optical is involved.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "mass",
+          "correct": false,
+          "explanation": "Mass is untouched by pressure.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L1::Q6",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L1",
+      "stem": "State what the word fluid covers.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "A fluid means a liquid or a gas — both flow and both exert pressure.",
+      "keywords": [
+        "fluid",
+        "liquid",
+        "gas",
+        "flow"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L1::Q7",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L1",
+      "stem": "State the direction law for the forces a fluid's pressure exerts on a surface.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The forces act at right angles — 90 degrees — to the surface.",
+      "keywords": [
+        "forces",
+        "right angles",
+        "90",
+        "surface"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L1::Q8",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L1",
+      "stem": "Explain why a submerged submarine's hull feels a squeeze from below as well as above.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A fluid at rest carries pressure to every point it touches, acting equally in all directions. The hull's underside faces fluid just as its top does, so the water pushes upward on the keel exactly as it pushes downward and sideways elsewhere — the squeeze has no favoured direction.",
+      "keywords": [
+        "pressure",
+        "directions",
+        "hull",
+        "fluid"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L1::Q9",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L1",
+      "stem": "A toy ball is held still at the bottom of a pool. Describe the water's pushes on the ball's surface.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The water presses evenly over the ball's entire surface and in all directions, with every push arriving at right angles to the skin where it lands.",
+      "keywords": [
+        "water",
+        "evenly",
+        "directions",
+        "right angles"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L2::Q1",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L2",
+      "stem": "What happens to the pressure on an object as it sits deeper in a fluid?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "it depends only on the object's mass",
+          "correct": false,
+          "explanation": "The object's mass never enters the equation.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "B",
+          "text": "it increases, because the fluid column above it grows",
+          "correct": true,
+          "explanation": "More overlying fluid presses harder.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "it decreases, because the fluid thins with depth",
+          "correct": false,
+          "explanation": "Liquids barely compress; the column grows.",
+          "misconception": "inversion slip"
+        },
+        {
+          "key": "D",
+          "text": "it stays the same at all depths",
+          "correct": false,
+          "explanation": "Depth is exactly what the equation multiplies.",
+          "misconception": "no-transfer slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L2::Q2",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L2",
+      "stem": "Which equation gives the pressure difference in a fluid?",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "p = m ÷ V",
+          "correct": false,
+          "explanation": "That is density.",
+          "misconception": "equation tangle"
+        },
+        {
+          "key": "B",
+          "text": "p = h ÷ ρ × g",
+          "correct": false,
+          "explanation": "The depth multiplies; it does not divide.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "p = h × ρ × g",
+          "correct": true,
+          "explanation": "Depth times density times field strength.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "p = F ÷ A",
+          "correct": false,
+          "explanation": "That is the solid-contact pressure equation.",
+          "misconception": "equation tangle"
+        }
+      ]
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L2::Q3",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L2",
+      "stem": "Which unit triple feeds p = h × ρ × g so the answer is in pascals?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "centimetres, grams per cm cubed, newtons per kilogram",
+          "correct": false,
+          "explanation": "Mixed units corrupt the pascals.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "B",
+          "text": "metres, kilograms, newtons",
+          "correct": false,
+          "explanation": "Density needs its per-volume unit.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "C",
+          "text": "kilometres, tonnes, seconds",
+          "correct": false,
+          "explanation": "None of these fit.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "D",
+          "text": "metres, kilograms per metre cubed, newtons per kilogram",
+          "correct": true,
+          "explanation": "The SI triple evaluates exactly to pascals.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L2::Q4",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L2",
+      "stem": "A swimmer descends from the surface to 3 m in a pool. The pressure difference she feels depends on",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "the water's density, g, and the 3 m depth",
+          "correct": true,
+          "explanation": "Those are exactly the equation's inputs.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "her body mass alone",
+          "correct": false,
+          "explanation": "Her mass is absent from the equation.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "C",
+          "text": "the pool's surface area",
+          "correct": false,
+          "explanation": "Area never enters this equation.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "D",
+          "text": "the pool's water temperature only",
+          "correct": false,
+          "explanation": "Temperature is not an input here.",
+          "misconception": "variable swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L2::Q5",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L2",
+      "stem": "Water of density 1000 kg/m³ sits 2 m deep in a tank (g = 10 N/kg). The pressure difference from surface to base is",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "2000 Pa",
+          "correct": false,
+          "explanation": "That drops a factor of ten.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "B",
+          "text": "20 000 Pa",
+          "correct": true,
+          "explanation": "2 × 1000 × 10 = 20 000 pascals.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "200 Pa",
+          "correct": false,
+          "explanation": "That slips two factors of ten.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "D",
+          "text": "5000 Pa",
+          "correct": false,
+          "explanation": "That divides somewhere along the way.",
+          "misconception": "operation slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L2::Q6",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L2",
+      "stem": "State the pressure-difference equation in symbols and name each quantity.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "p = h × ρ × g, where p is the pressure difference in pascals, h the depth in metres, ρ the fluid's density in kilograms per metre cubed and g the gravitational field strength in newtons per kilogram.",
+      "keywords": [
+        "pressure",
+        "depth",
+        "density",
+        "field strength"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L2::Q7",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L2",
+      "stem": "State how the pressure on an immersed object changes as it moves deeper.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "The pressure rises as the object sits deeper, because the fluid column above it grows taller.",
+      "keywords": [
+        "pressure",
+        "deeper",
+        "column",
+        "rises"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L2::Q8",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L2",
+      "stem": "Explain why the pressure difference depends on the fluid's density.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The overlying column's weight creates the pressure at depth, and weight scales with mass per volume. A denser fluid packs more mass into the same column, so its weight — and the pressure it delivers — is larger for the same depth.",
+      "keywords": [
+        "density",
+        "column",
+        "weight",
+        "pressure"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_HQhkn6sZhxfKfbj3::L2::Q9",
+      "moduleId": "rn_HQhkn6sZhxfKfbj3::L2",
+      "stem": "A diver measures a pressure difference of 20 kPa in fresh water (ρ = 1000 kg/m³, g = 9.8 N/kg). Calculate the depth, and state the rearrangement used.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Rearranged, h = p ÷ (ρ × g) = 20 000 ÷ (1000 × 9.8) ≈ 2.0 m, so the diver sits about two metres deep.",
+      "keywords": [
+        "20 000",
+        "rearranged",
+        "2.0",
+        "depth"
+      ],
+      "options": []
+    }
+  ]
+}

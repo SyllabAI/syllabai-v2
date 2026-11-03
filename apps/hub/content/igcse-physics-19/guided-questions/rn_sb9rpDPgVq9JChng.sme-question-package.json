@@ -1,0 +1,735 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_sb9rpDPgVq9JChng",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "4121b8956a24b46c7b15d26a3bae1606d6ea903d873bd6651974aca4a163e500",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "packageId": "igcse-physics::rn_sb9rpDPgVq9JChng",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L1::Q1",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L1",
+      "stem": "Which list contains only renewable energy resources?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "wind, hydroelectricity, geothermal, tidal",
+          "correct": true,
+          "explanation": "All four are replenished as fast as they are used.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "coal, oil, natural gas",
+          "correct": false,
+          "explanation": "All three are fossil fuels — non-renewable.",
+          "misconception": "category slip"
+        },
+        {
+          "key": "C",
+          "text": "nuclear fuel, wind, natural gas",
+          "correct": false,
+          "explanation": "Nuclear fuel and gas are non-renewable.",
+          "misconception": "category slip"
+        },
+        {
+          "key": "D",
+          "text": "solar cells, coal, wave",
+          "correct": false,
+          "explanation": "Coal is non-renewable.",
+          "misconception": "category slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L1::Q2",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L1",
+      "stem": "What makes an energy resource renewable?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "it never needs a generator",
+          "correct": false,
+          "explanation": "Most renewables still drive turbines.",
+          "misconception": "criterion swap"
+        },
+        {
+          "key": "B",
+          "text": "it is replenished at least as fast as it is used up",
+          "correct": true,
+          "explanation": "The rate of replacement matches or beats the rate of consumption.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "it produces no carbon dioxide at all",
+          "correct": false,
+          "explanation": "Renewability is about replacement rate, not emissions.",
+          "misconception": "criterion swap"
+        },
+        {
+          "key": "D",
+          "text": "it can be used in any country",
+          "correct": false,
+          "explanation": "Geography does not define renewability.",
+          "misconception": "criterion swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L1::Q3",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L1",
+      "stem": "Which part is common to generating electricity from wind, water and fossil fuels?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "a dam holding water at height",
+          "correct": false,
+          "explanation": "Only hydroelectric and tidal use dams.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "B",
+          "text": "sunlight focused on panels",
+          "correct": false,
+          "explanation": "Only solar resources use sunlight.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "C",
+          "text": "a turbine that turns a generator",
+          "correct": true,
+          "explanation": "Every turbine route shares that machinery.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "burning fuel in a furnace",
+          "correct": false,
+          "explanation": "Wind and water burn nothing.",
+          "misconception": "resource swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L1::Q4",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L1",
+      "stem": "How do solar cells differ from every other resource on the list?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "they can never be used on a large scale",
+          "correct": false,
+          "explanation": "Scale is not the difference named in the notes.",
+          "misconception": "over-claim"
+        },
+        {
+          "key": "B",
+          "text": "they store electricity for later use",
+          "correct": false,
+          "explanation": "Cells generate; they do not store.",
+          "misconception": "function swap"
+        },
+        {
+          "key": "C",
+          "text": "they heat water in pipes for households",
+          "correct": false,
+          "explanation": "That is solar heating systems, the other solar technology.",
+          "misconception": "technology swap"
+        },
+        {
+          "key": "D",
+          "text": "they generate electricity without turning a turbine",
+          "correct": true,
+          "explanation": "Light is converted directly, no spinning shaft involved.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L1::Q5",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L1",
+      "stem": "Why does reliable national electricity supply need a range of different resources?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "each resource produces at different times, so a mix covers the gaps",
+          "correct": true,
+          "explanation": "Some resources only generate when wind, sun or tide cooperate.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a single resource would wear out the generators",
+          "correct": false,
+          "explanation": "Generators are shared machinery, not the constraint.",
+          "misconception": "invented mechanism"
+        },
+        {
+          "key": "C",
+          "text": "electricity from different resources is different",
+          "correct": false,
+          "explanation": "Electricity on the Grid is the same whatever made it.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "the law requires at least three resources",
+          "correct": false,
+          "explanation": "No such rule is part of the physics.",
+          "misconception": "invented mechanism"
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L1::Q6",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L1",
+      "stem": "State the definition of a renewable energy resource.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "A renewable resource is an energy source that nature replenishes at least as quickly as we consume it, so it will not run out.",
+      "keywords": [
+        "renewable",
+        "replenished",
+        "quickly",
+        "run out"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L1::Q7",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L1",
+      "stem": "Name the two non-renewable energy resources named in these lessons.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "The non-renewable resources are the fossil fuels — coal, oil and natural gas — and nuclear fuel.",
+      "keywords": [
+        "fossil",
+        "nuclear",
+        "non-renewable",
+        "resources"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L1::Q8",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L1",
+      "stem": "Explain why solar heating panels cannot serve the National Grid's generating stations.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Solar heating panels are a heating technology: sunlight warms water in pipes inside the panel for households to use. No turbine or generator is involved, so no electricity is generated — that is the job of solar cells, which convert light directly.",
+      "keywords": [
+        "solar",
+        "heating",
+        "water",
+        "electricity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L1::Q9",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L1",
+      "stem": "A tidal barrage releases stored water that turns a turbine and then a generator. Trace the energy transfers from the stored water to the generator.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Energy passes from the raised water's gravitational potential store, into the moving water's kinetic store, then into the turbine's and finally the generator's kinetic store as electricity is generated.",
+      "keywords": [
+        "gravitational",
+        "kinetic",
+        "turbine",
+        "generator"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L2::Q1",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L2",
+      "stem": "What turns the turbines in a wind farm?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "an electric motor driving the blades",
+          "correct": false,
+          "explanation": "The flow runs the other way — generation, not consumption.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "B",
+          "text": "the moving air itself",
+          "correct": true,
+          "explanation": "Wind strikes the blades and turns them directly.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "steam from a boiler",
+          "correct": false,
+          "explanation": "Steam belongs to fossil, nuclear and geothermal routes.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "D",
+          "text": "falling water from a dam",
+          "correct": false,
+          "explanation": "That is the hydroelectric route.",
+          "misconception": "resource swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L2::Q2",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L2",
+      "stem": "Where does the energy chain begin in a hydroelectric station?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "the thermal store of heated rocks",
+          "correct": false,
+          "explanation": "That is geothermal.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "B",
+          "text": "the nuclear store of the Sun",
+          "correct": false,
+          "explanation": "That opens the solar chains.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "C",
+          "text": "the gravitational potential store of the dammed water",
+          "correct": true,
+          "explanation": "Height is the opening deposit.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the kinetic store of the wind",
+          "correct": false,
+          "explanation": "That is the wind chain's start.",
+          "misconception": "resource swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L2::Q3",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L2",
+      "stem": "Which sequence correctly traces the wind generation chain?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravitational store, kinetic store, thermal store",
+          "correct": false,
+          "explanation": "No height and no heating appear in the wind chain.",
+          "misconception": "chain corruption"
+        },
+        {
+          "key": "B",
+          "text": "nuclear store, thermal store, kinetic store",
+          "correct": false,
+          "explanation": "That resembles solar heating or fossil chains.",
+          "misconception": "chain corruption"
+        },
+        {
+          "key": "C",
+          "text": "thermal store, kinetic store, thermal store",
+          "correct": false,
+          "explanation": "The wind chain contains no thermal link.",
+          "misconception": "chain corruption"
+        },
+        {
+          "key": "D",
+          "text": "kinetic store of the wind, kinetic store of the turbine, kinetic store of the generator",
+          "correct": true,
+          "explanation": "Motion hands motion to motion along the chain.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L2::Q4",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L2",
+      "stem": "What advantage does a hydroelectric dam have over a wind farm in matching supply to demand?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the dam releases its stored water whenever the Grid needs it",
+          "correct": true,
+          "explanation": "Stored height is dispatchable; the wind blows when it blows.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the dam's turbines spin without any energy transfer",
+          "correct": false,
+          "explanation": "Every spin is powered by falling water.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "C",
+          "text": "the wind farm can store its wind for later",
+          "correct": false,
+          "explanation": "Moving air cannot be banked.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "the dam needs no generator",
+          "correct": false,
+          "explanation": "Both routes end in a generator.",
+          "misconception": "machinery slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L2::Q5",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L2",
+      "stem": "In a hydroelectric dam, what happens to the water's energy as it falls towards the turbines?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "its kinetic store fills the gravitational store",
+          "correct": false,
+          "explanation": "That is the filling direction of the dam, not the release.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "B",
+          "text": "its gravitational potential store empties into its kinetic store",
+          "correct": true,
+          "explanation": "Height converts to motion on the way down.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "its kinetic store empties into its thermal store",
+          "correct": false,
+          "explanation": "The fall is not a heating process.",
+          "misconception": "chain corruption"
+        },
+        {
+          "key": "D",
+          "text": "its stores stay unchanged until it hits the blades",
+          "correct": false,
+          "explanation": "The fall itself transfers energy.",
+          "misconception": "no-transfer slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L2::Q6",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L2",
+      "stem": "State which store the energy chain starts from for wind generation.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "The chain starts in the kinetic store of the moving wind, before passing to the turbine and the generator.",
+      "keywords": [
+        "kinetic",
+        "store",
+        "wind",
+        "chain"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L2::Q7",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L2",
+      "stem": "State where hydroelectric schemes store their water before it is released.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "The water is stored at height, usually behind a dam, until it is released to turn the turbines.",
+      "keywords": [
+        "water",
+        "height",
+        "dam",
+        "released"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L2::Q8",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L2",
+      "stem": "Explain why the hydroelectric energy chain contains one more store than the wind chain.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Hydroelectric generation opens in the gravitational potential store of the raised water, which empties into the water's kinetic store as it falls; only then do the turbine and generator kinetic stores follow. Wind skips that opening conversion because the moving air already carries kinetic energy straight to the blades.",
+      "keywords": [
+        "gravitational",
+        "kinetic",
+        "store",
+        "chain"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L2::Q9",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L2",
+      "stem": "A tidal barrage is another water-based scheme. Describe how its generation chain parallels the hydroelectric one.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The barrage holds water at height at high and low tide, releases it to turn turbines directly, and those turbines turn a generator — so the chain again opens in the raised water's gravitational potential store and proceeds through kinetic stores of water, turbine and generator.",
+      "keywords": [
+        "tide",
+        "water",
+        "turbine",
+        "generator"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L3::Q1",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L3",
+      "stem": "What heats the water in a geothermal power station?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "sunlight focused on mirrors",
+          "correct": false,
+          "explanation": "No such stage appears in these notes.",
+          "misconception": "invented mechanism"
+        },
+        {
+          "key": "B",
+          "text": "the turbine's own motion",
+          "correct": false,
+          "explanation": "The turbine is downstream of the steam.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "C",
+          "text": "hot rocks underground",
+          "correct": true,
+          "explanation": "The rocks' thermal store does the heating.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "burning natural gas",
+          "correct": false,
+          "explanation": "Gas is a separate fossil route.",
+          "misconception": "resource swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L3::Q2",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L3",
+      "stem": "Which store does the geothermal energy chain start from?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "the kinetic store of the wind",
+          "correct": false,
+          "explanation": "That is the wind chain.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "B",
+          "text": "the gravitational store of dammed water",
+          "correct": false,
+          "explanation": "That is hydroelectric.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "C",
+          "text": "the nuclear store of the Sun",
+          "correct": false,
+          "explanation": "That opens the solar chains.",
+          "misconception": "resource swap"
+        },
+        {
+          "key": "D",
+          "text": "the thermal store of the hot rocks",
+          "correct": true,
+          "explanation": "Heat in the rocks is the opening deposit.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L3::Q3",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L3",
+      "stem": "What is special about solar cells among the resources in these lessons?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "they generate electricity without a turbine",
+          "correct": true,
+          "explanation": "Light converts directly; nothing spins.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "they need the hottest water of any resource",
+          "correct": false,
+          "explanation": "No water is involved in a cell.",
+          "misconception": "technology swap"
+        },
+        {
+          "key": "C",
+          "text": "they are the only renewable resource",
+          "correct": false,
+          "explanation": "Wind, water and geothermal are renewable too.",
+          "misconception": "over-claim"
+        },
+        {
+          "key": "D",
+          "text": "they store sunlight for winter use",
+          "correct": false,
+          "explanation": "Cells convert; they do not store.",
+          "misconception": "function swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L3::Q4",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L3",
+      "stem": "Which statement about solar heating panels is correct?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "they cool houses in summer",
+          "correct": false,
+          "explanation": "Cooling is not in these notes.",
+          "misconception": "invented mechanism"
+        },
+        {
+          "key": "B",
+          "text": "they warm water in pipes for households to use",
+          "correct": true,
+          "explanation": "Heating, not generation, is their job.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "they spin small turbines on rooftops",
+          "correct": false,
+          "explanation": "No turbine exists in a heating panel.",
+          "misconception": "invented mechanism"
+        },
+        {
+          "key": "D",
+          "text": "they generate electricity for the National Grid",
+          "correct": false,
+          "explanation": "Generation is the solar cells' role.",
+          "misconception": "technology swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L3::Q5",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L3",
+      "stem": "In which order does energy pass through stores in a geothermal station?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "rocks kinetic, water thermal, turbine thermal",
+          "correct": false,
+          "explanation": "The rocks' store is thermal, and the turbine's is kinetic.",
+          "misconception": "chain corruption"
+        },
+        {
+          "key": "B",
+          "text": "rocks thermal, water kinetic, turbine thermal",
+          "correct": false,
+          "explanation": "The steam's store at the turbine is kinetic.",
+          "misconception": "chain corruption"
+        },
+        {
+          "key": "C",
+          "text": "rocks thermal, water thermal, turbine kinetic, generator kinetic",
+          "correct": true,
+          "explanation": "Heat boils water; steam spins the machinery.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "water thermal, rocks thermal, generator kinetic",
+          "correct": false,
+          "explanation": "The rocks heat the water, not the reverse.",
+          "misconception": "direction slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L3::Q6",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L3",
+      "stem": "State what turns the turbines in a geothermal power station.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "Steam, produced when cold water is heated by the underground hot rocks, turns the turbines.",
+      "keywords": [
+        "steam",
+        "water",
+        "rocks",
+        "turbines"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L3::Q7",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L3",
+      "stem": "State what solar cells use as their energy input.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "Solar cells use energy from the Sun, in the form of sunlight, to generate electricity directly.",
+      "keywords": [
+        "sun",
+        "sunlight",
+        "energy",
+        "electricity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L3::Q8",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L3",
+      "stem": "Explain why the geothermal chain passes through two thermal stores before reaching a kinetic one.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The energy begins as heat in the underground rocks and is transferred by heating into the pumped water, turning it to steam. Only once the steam flows at speed does its kinetic store drive the turbine, so two thermal stores precede the kinetic ones.",
+      "keywords": [
+        "thermal",
+        "store",
+        "water",
+        "turbine"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sb9rpDPgVq9JChng::L3::Q9",
+      "moduleId": "rn_sb9rpDPgVq9JChng::L3",
+      "stem": "A school uses solar cells on its roof and a geothermal borehole in its grounds. State one difference in how the two deliver energy to the school.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The solar cells generate electricity directly from sunlight with no moving machinery, while the geothermal route heats water into steam that must spin a turbine and generator before electricity appears.",
+      "keywords": [
+        "solar",
+        "directly",
+        "turbine",
+        "geothermal"
+      ],
+      "options": []
+    }
+  ]
+}

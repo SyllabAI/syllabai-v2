@@ -1,0 +1,123 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_vR82ncPDnnyGQ94P",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "ee0f62468ba0092cdbf97ef92c92cca1caa46d7f516049692d05500ab0bb25ce",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_vR82ncPDnnyGQ94P",
+    "topicTitle": "4. Energy Resources and Energy Transfers",
+    "subtopicTitle": "Work, Power & Energy Resources",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/4-energy-resources-and-energy-transfers/4-2-work-power-and-energy-resources/4-2-3-kinetic-energy",
+    "specAnchors": [
+      {
+        "code": "4.14",
+        "text": "know and use the relationship: kinetic energy = 1 2 × mass × speed 2 KE = 1 × m × v 2 2"
+      }
+    ],
+    "primer": {
+      "text": "Motion is the other place energy hides. One lesson prices it: the kinetic store of any moving object, set by its mass and by the square of its speed, with a worked calculation that keeps the squaring and the rounding honest.",
+      "prerequisiteSubtopic": "Work, Power & Energy Resources"
+    },
+    "modules": [
+      {
+        "id": "rn_vR82ncPDnnyGQ94P::L1",
+        "title": "The kinetic store and the KE equation",
+        "sourceHeadings": [
+          "Kinetic energy"
+        ],
+        "specRefs": [
+          "4.14"
+        ],
+        "opening": "Anything moving holds energy in its kinetic store. The store's size depends on two inputs — the object's mass and its speed — but the speed input is squared, which makes fast objects dramatically richer in energy than slow ones of the same mass.",
+        "keyPoints": [
+          "Kinetic energy is the energy a moving object carries, set by its mass and its speed.",
+          "Every moving object carries energy in its kinetic store, whatever it is doing.",
+          "KE = ½ × m × v², with mass in kilograms and speed in metres per second.",
+          "The speed input is squared, so doubling the speed quadruples the energy in the kinetic store."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Mass and pace set the holding: double the cargo and the store doubles, but double the pace and it quadruples. The squaring is what makes road-speed choices matter so much.",
+            "analogy": "A warehouse whose contents grow with the cargo mass but with the square of the conveyor's pace — hurry the belt and the stockpile explodes four-fold per doubling.",
+            "examPointer": "Square the speed before multiplying, and quote the energy in joules; the classic error is using the bare speed once."
+          },
+          "medium": {
+            "restatement": "The kinetic store is priced by KE = ½mv²: mass enters linearly in kilograms, speed enters squared in metres per second. Because of the square, equal speed doublings quadruple the stored energy, while equal mass doublings only double it.",
+            "analogy": "Insurance premiums that grow with the square of engine speed: modest pace increases buy disproportionately large energy bills.",
+            "examPointer": "In comparisons, change one input at a time and state the proportionality — 'speed doubled, so the store quadrupled' — to collect the reasoning mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vR82ncPDnnyGQ94P::L1::Q1",
+          "rn_vR82ncPDnnyGQ94P::L1::Q2",
+          "rn_vR82ncPDnnyGQ94P::L1::Q3",
+          "rn_vR82ncPDnnyGQ94P::L1::Q4",
+          "rn_vR82ncPDnnyGQ94P::L1::Q5",
+          "rn_vR82ncPDnnyGQ94P::L1::Q6",
+          "rn_vR82ncPDnnyGQ94P::L1::Q7",
+          "rn_vR82ncPDnnyGQ94P::L1::Q8",
+          "rn_vR82ncPDnnyGQ94P::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "kinetic energy",
+          "definition": "The energy an object has as a result of its mass and speed.",
+          "firstLesson": 1
+        },
+        {
+          "term": "kinetic store",
+          "definition": "The energy store of a moving object; its size grows with mass and with the square of speed.",
+          "firstLesson": 1
+        },
+        {
+          "term": "significant figures",
+          "definition": "The rounded form used to quote a calculated answer to a stated precision.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "Calculate the kinetic energy stored in a vehicle of mass 1200 kg moving at a speed of 27 m/s.",
+        "steps": [
+          "List the known quantities: mass m = 1200 kg and speed v = 27 m/s.",
+          "Square the speed: 27 × 27 = 729.",
+          "Substitute into KE = ½ × m × v²: KE = 0.5 × 1200 × 729 = 437 400 J.",
+          "Round the final answer to 2 significant figures: KE = 440 000 J."
+        ],
+        "finalAnswer": "The kinetic store of the vehicle holds about 440 000 J."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/e3e185dc8f20-1-1-3-kinetic-energy-car.png",
+        "alt": "Kinetic Energy Car, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Kinetic energy",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}
