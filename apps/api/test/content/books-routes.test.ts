@@ -17,7 +17,12 @@ import { Hono } from "hono";
 import { z } from "zod";
 
 import { createBooksRouter } from "../../src/routes/books";
-import { booksRowMappers, railRowMappers } from "../../src/services/books";
+import {
+  booksRowMappers,
+  railRowMappers,
+  isStrengthBlockId,
+  strengthPackPrefixOf,
+} from "../../src/services/books";
 import type { BooksReadApp } from "../../src/services/books";
 import { toErrorResponse, apiError } from "../../src/services/identity/errors";
 import type { AuthContext } from "../../src/middleware/auth";
@@ -72,6 +77,34 @@ const RAIL_BLOCK: BookBlock = {
 const CHECK_QUESTION_ID = "0b7f6a2c-1111-4222-8333-444455556666";
 const CHECK_CORRECT_OPTION_ID = "0b7f6a2c-aaaa-4bbb-8ccc-ddddeeeeffff";
 const CHECK_WRONG_OPTION_ID = "0b7f6a2c-9999-4888-8777-666655554444";
+
+/** T-BOOK-069 fixture — a unit Strength Check block as SERVED by
+ *  /strength-checks (the ADR-BOOK-0004 shape: strength-pack id, per-item
+ *  chapter binding is NOT on the wire; pdfPageAnchor is null by the
+ *  amendment-4 mechanics; no correctness). */
+const STRENGTH_CHECK_BLOCK: RailCheckBlock = {
+  blockId: "strength-u1/b01",
+  checkRefs: ["sme-eq-4ch1-1-14-q1"],
+  question: {
+    questionId: CHECK_QUESTION_ID,
+    stem: "An atom of element Z has an atomic number of 11. What is the electronic configuration of Z?",
+    marks: 1,
+    commandWord: null,
+    options: [
+      { id: CHECK_CORRECT_OPTION_ID, label: "A", text: "2,8,1" },
+      { id: CHECK_WRONG_OPTION_ID, label: "B", text: "2,8,8,1" },
+    ],
+  },
+};
+
+/** T-BOOK-069 fixture — the honest question:null block (an unresolved ref
+ *  serves the anchor card, never a fabricated question — the same law as
+ *  the chapter checks). */
+const STRENGTH_UNRESOLVED_BLOCK: RailCheckBlock = {
+  blockId: "strength-u1/b02",
+  checkRefs: ["sme-eq-4ch1-1-15-q1"],
+  question: null,
+};
 
 /** T-BOOK-008 fixture — the SERVED check shape: NO correctness on the wire. */
 const CHECK_BLOCK: RailCheckBlock = {
@@ -197,6 +230,11 @@ function fakeApp(overrides: Partial<BooksReadApp> = {}): BooksReadApp {
       if (documentId !== PILOT_DOC) return null;
       if (chapterKey !== "u1:c1") return [];
       return [CHECK_BLOCK];
+    },
+    strengthChecksForUnit: async (documentId, unit) => {
+      if (documentId !== PILOT_DOC) return null;
+      if (unit === "u1") return [STRENGTH_CHECK_BLOCK, STRENGTH_UNRESOLVED_BLOCK];
+      return []; // any other unit: the honest pre-flip state
     },
     submitRailCheck: async (userId, input) => {
       if (input.questionId !== CHECK_QUESTION_ID) {
@@ -788,5 +826,68 @@ describe("GET /api/v1/content/books/glossary (T-BOOK-007)", () => {
     const body = (await res.json()) as Record<string, unknown>;
     expect(body.error).toBe("validation_failed");
     expect(body.message).toBe("missing required parameter: subject");
+  });
+});
+
+describe("GET /api/v1/content/books/:documentId/strength-checks (T-BOOK-069, ADR-BOOK-0004)", () => {
+  test("200 — the unit's strength blocks through the strict contract round-trip", async () => {
+    const res = await router(fakeApp()).request(
+      `/api/v1/content/books/${PILOT_DOC}/strength-checks?unit=u1`,
+    );
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    const parsed = z.array(railCheckBlockSchema).parse(body);
+    expect(parsed).toEqual([STRENGTH_CHECK_BLOCK, STRENGTH_UNRESOLVED_BLOCK]);
+  });
+
+  test("200 [] — honest pre-flip state for a unit with no VALIDATED strength rows", async () => {
+    const res = await router(fakeApp()).request(
+      `/api/v1/content/books/${PILOT_DOC}/strength-checks?unit=u2`,
+    );
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual([]);
+  });
+
+  test("404 — unknown/unvalidated book is the SAME answer (T-C20)", async () => {
+    const res = await router(fakeApp()).request(
+      `/api/v1/content/books/${UNKNOWN_DOC}/strength-checks?unit=u1`,
+    );
+    expect(res.status).toBe(404);
+  });
+
+  test("400 — unit absent (validation_failed, 400-before-DB posture)", async () => {
+    const res = await router(fakeApp()).request(
+      `/api/v1/content/books/${PILOT_DOC}/strength-checks`,
+    );
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as Record<string, unknown>;
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("missing required parameter: unit");
+  });
+
+  test("400 — malformed unit grammar (expected u<unit>)", async () => {
+    for (const bad of ["unit1", "U1", "u", "1", "u1:c1"]) {
+      const res = await router(fakeApp()).request(
+        `/api/v1/content/books/${PILOT_DOC}/strength-checks?unit=${encodeURIComponent(bad)}`,
+      );
+      expect(res.status).toBe(400);
+      const body = (await res.json()) as Record<string, unknown>;
+      expect(body.error).toBe("validation_failed");
+      expect(body.message).toBe("malformed parameter: unit (expected u<unit>)");
+    }
+  });
+});
+
+describe("strength id law (T-BOOK-069 pure helpers, ADR-BOOK-0004 identity/exclusion)", () => {
+  test("isStrengthBlockId — the exclusion law's pure form", () => {
+    expect(isStrengthBlockId("strength-u1/b01")).toBe(true);
+    expect(isStrengthBlockId("strength-u4/b15")).toBe(true);
+    expect(isStrengthBlockId("c01-states-and-solutions/b01")).toBe(false);
+    expect(isStrengthBlockId("c01-states-and-solutions/b08")).toBe(false);
+  });
+
+  test("strengthPackPrefixOf — the unit query's prefix grammar", () => {
+    expect(strengthPackPrefixOf("u1")).toBe("strength-u1/");
+    expect(strengthPackPrefixOf("u4")).toBe("strength-u4/");
   });
 });

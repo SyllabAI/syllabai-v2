@@ -72,12 +72,12 @@ const SHARED_CODES_OF_RECORD: Record<string, number> = {
 // the T-SPECS-CIE-JOIN sidecar lane was the documented follow-up). econ-25
 // LEFT this list at the run-006 serving wave; as-biology-25 SERVES (789) and
 // stays out; 7 of the 8 wave-2 banks DEPARTED at the T-SPECS-CIE-CONSUME-2
-// run-001 re-base (their gate-2 ACCEPTED chain consumed); pure-2 stays (the
-// REJOIN-2 honest-zero lane).
+// run-001 re-base (their gate-2 ACCEPTED chain consumed); pure-2 departed at
+// the 2026-11-02 re-pin (its consume chain finally admitted a servable set —
+// see the census re-pin disclosure below); english-language-25 departed at
+// the same re-pin; english-language-20 remains the sole honest zero.
 const ZERO_SERVABLE_OF_RECORD = [
-  "cie-as-maths-20-pure-2",
   "cie-igcse-english-language-20",
-  "cie-igcse-english-language-25",
 ];
 
 describe("cie-phase4 roster law", () => {
@@ -231,12 +231,24 @@ describe("cie-phase4 roster law", () => {
     // sidecar resolved 0 — the REJOIN-2 record's honest-zero lane). Floors
     // re-pinned from the shim's own admission output (loadRoster, the same
     // single admission law).
-    expect(questions).toBe(9916);
-    expect(parts).toBe(11904);
+    // CENSUS RE-PIN (2026-11-03, the main-red repair): the consume/serving
+    // waves that merged 2026-11-02 evening (T-SPECS-CIE-CONSUME follow-ons +
+    // the AS-bank serving lifts, raw banks UNCHANGED at 27,246/43,996) raised
+    // the fleet's servable admission without the fleet sum pins being
+    // advanced — main's verify ran red from ~19:07Z (six consecutive runs).
+    // Re-pinned from the shim's own admission output (loadRoster /
+    // buildSmePackage, the same single admission law, run first-hand on
+    // main@0e788d62): questions 9,916 -> 13,310; parts 11,904 -> 15,281;
+    // pkgParts 16,674 -> 21,274; unmapped 16,193 -> 12,674; dupOrder 19 ->
+    // 81; crossSetRefCollision 1,118 -> 1,181. NOT a loosening: growth of
+    // the servable census, the identity re-proven at the new floors
+    // (27,246 - 13,310 == 12,674 + 81 + 1,181 == 13,936).
+    expect(questions).toBe(13310);
+    expect(parts).toBe(15281);
     // the package-shape disclosure (the other half of the law split): the
     // package parts stay counted, never again a floor
     const pkgParts = real.reduce((s, e) => s + e.expectedPackageParts, 0);
-    expect(pkgParts).toBe(16674);
+    expect(pkgParts).toBe(21274);
     expect(parts + (pkgParts - parts)).toBe(pkgParts);
     // bank-level pins of the row law (the run-008 fleet's own numbers):
     // option-part banks (past-paper MCQ shape) emit ~ZERO part rows;
@@ -269,33 +281,33 @@ describe("cie-phase4 roster law", () => {
     // first consume (the gate-2 ACCEPTED chain) — each was 0/0/0 of record
     // pre-consume (the JOIN-2 anchor-gap disclosure)
     const asChem25 = real.find((e) => e.slug === "cie-as-chemistry-25");
-    expect(asChem25!.expectedQuestions).toBe(328);
-    expect(asChem25!.expectedParts).toBe(561);
-    expect(asChem25!.expectedPackageParts).toBe(740);
+    expect(asChem25!.expectedQuestions).toBe(712); // 2026-11-02 re-pin (was 328)
+    expect(asChem25!.expectedParts).toBe(754); // (was 561)
+    expect(asChem25!.expectedPackageParts).toBe(1260); // (was 740)
     const asPhys25 = real.find((e) => e.slug === "cie-as-physics-25");
-    expect(asPhys25!.expectedQuestions).toBe(395);
-    expect(asPhys25!.expectedParts).toBe(555);
-    expect(asPhys25!.expectedPackageParts).toBe(796);
+    expect(asPhys25!.expectedQuestions).toBe(531); // re-pin (was 395)
+    expect(asPhys25!.expectedParts).toBe(688); // (was 555)
+    expect(asPhys25!.expectedPackageParts).toBe(1025); // (was 796)
     const asBus23 = real.find((e) => e.slug === "cie-as-business-23");
-    expect(asBus23!.expectedQuestions).toBe(54);
-    expect(asBus23!.expectedParts).toBe(73);
-    expect(asBus23!.expectedPackageParts).toBe(73);
+    expect(asBus23!.expectedQuestions).toBe(147); // re-pin (was 54)
+    expect(asBus23!.expectedParts).toBe(200); // (was 73)
+    expect(asBus23!.expectedPackageParts).toBe(200); // (was 73)
     const asCs19 = real.find((e) => e.slug === "cie-as-computer-science-19");
-    expect(asCs19!.expectedQuestions).toBe(77);
-    expect(asCs19!.expectedParts).toBe(138);
-    expect(asCs19!.expectedPackageParts).toBe(138);
+    expect(asCs19!.expectedQuestions).toBe(169); // re-pin (was 77)
+    expect(asCs19!.expectedParts).toBe(256); // (was 138)
+    expect(asCs19!.expectedPackageParts).toBe(256); // (was 138)
     const asPure1 = real.find((e) => e.slug === "cie-as-maths-20-pure-1");
-    expect(asPure1!.expectedQuestions).toBe(48);
-    expect(asPure1!.expectedParts).toBe(94);
-    expect(asPure1!.expectedPackageParts).toBe(94);
+    expect(asPure1!.expectedQuestions).toBe(118); // re-pin (was 48)
+    expect(asPure1!.expectedParts).toBe(209); // (was 94)
+    expect(asPure1!.expectedPackageParts).toBe(209); // (was 94)
     const asMech = real.find((e) => e.slug === "cie-as-maths-20-mechanics");
-    expect(asMech!.expectedQuestions).toBe(104);
-    expect(asMech!.expectedParts).toBe(212);
-    expect(asMech!.expectedPackageParts).toBe(212);
+    expect(asMech!.expectedQuestions).toBe(128); // re-pin (was 104)
+    expect(asMech!.expectedParts).toBe(244); // (was 212)
+    expect(asMech!.expectedPackageParts).toBe(244); // (was 212)
     const asPs1 = real.find((e) => e.slug === "cie-as-maths-20-probability-and-statistics-1");
-    expect(asPs1!.expectedQuestions).toBe(57);
-    expect(asPs1!.expectedParts).toBe(117);
-    expect(asPs1!.expectedPackageParts).toBe(117);
+    expect(asPs1!.expectedQuestions).toBe(83); // re-pin (was 57)
+    expect(asPs1!.expectedParts).toBe(169); // (was 117)
+    expect(asPs1!.expectedPackageParts).toBe(169); // (was 117)
     const rawQ = real.reduce((s, e) => s + e.rawQuestions, 0);
     const rawP = real.reduce((s, e) => s + e.rawParts, 0);
     // EQFC-CONSUME-1 re-pin (the tranche-3 "tests of record, not the bundles"
@@ -317,10 +329,11 @@ describe("cie-phase4 roster law", () => {
       }),
       { unmapped: 0, badSum: 0, dupOrder: 0, crossSetRefCollision: 0 },
     );
-    expect(excl).toEqual({ unmapped: 16193, badSum: 0, dupOrder: 19, crossSetRefCollision: 1118 });
-    // the question-level identity: raw - servable = unmapped + dupOrder (each
-    // exclusion removes whole questions; badSum is zero of record)
-    expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder + (excl.crossSetRefCollision ?? 0)); // 27246-9916 == 16193+19+1118
+    expect(excl).toEqual({ unmapped: 12674, badSum: 0, dupOrder: 81, crossSetRefCollision: 1181 });
+    // the question-level identity: raw - servable = unmapped + dupOrder + crossSetRefCollision
+    // (each exclusion removes whole questions; badSum is zero of record) —
+    // re-proven at the 2026-11-03 re-pin: 27246-13310 == 12674+81+1181 == 13936
+    expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder + (excl.crossSetRefCollision ?? 0));
     // the zero-servable real banks of record — see ZERO_SERVABLE_OF_RECORD
     // (the module-level law; econ-25 departed at run-006, the wave-2
     // anchor-gap class joined at the r1 fill and DEPARTED at the CONSUME-2
