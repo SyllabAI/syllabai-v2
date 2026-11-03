@@ -139,3 +139,134 @@ export const setMyCoursesRequestSchema = z.object({
     .max(100),
 });
 export type SetMyCoursesRequest = z.infer<typeof setMyCoursesRequestSchema>;
+
+// ── T-TIER1 — the account-backed "last opened" pointer (v2-native, additive) ─
+//
+// Tier-1 of the frontend deep-audit (operator order, 2026-11-03): "things
+// that are localStorage-only, make them saved to account". The hub's
+// last-opened store (apps/hub/src/lib/last-opened.ts, key
+// "syllabai.lastOpened.v1") records the student's most recent course
+// surface — the "Jump back in" card and the Study-tools href fallback both
+// read it — and until now it lived in ONE browser only. The migration
+// follows the T-TEACH-001 law verbatim: the localStorage record stays the
+// UI cache; signed in, every local write mirrors here and the server wins
+// on reconcile.
+//
+// Law:
+//  - GET  /api/v1/learners/me/last-opened → LastOpenedView | {lastOpened:
+//         null} — the account's pointer, null when this account never
+//         opened a course (the honest empty, never a fabricated default).
+//  - PUT  /api/v1/learners/me/last-opened ← SetLastOpenedRequest —
+//         idempotent upsert (one row per account, PK user_id): the newest
+//         navigation REPLACES the pointer. Course slug uses the SAME
+//         kebab-case law as my-courses; `resource` is the hub's
+//         ResourceKind union (the recorded surface kind, validated against
+//         the closed set — an unknown kind is validation_failed, never a
+//         silent string pass-through).
+//  - Registry membership is validated at READ time by the hub (the
+//    my-courses law) — the API does not own the content registry.
+export const LAST_OPENED_RESOURCES = [
+  "hub",
+  "revision-notes",
+  "exam-questions",
+  "flashcards",
+  "strengths",
+  "past-papers",
+  "practice-papers",
+] as const;
+
+export const lastOpenedResourceSchema = z.enum(LAST_OPENED_RESOURCES);
+export type LastOpenedResource = z.infer<typeof lastOpenedResourceSchema>;
+
+export const lastOpenedViewSchema = z.object({
+  courseSlug: z.string(),
+  resource: lastOpenedResourceSchema,
+  updatedAt: z.string(),
+});
+export type LastOpenedView = z.infer<typeof lastOpenedViewSchema>;
+
+/** GET /api/v1/learners/me/last-opened — null = the account has no pointer yet. */
+export const lastOpenedEnvelopeSchema = z.object({
+  lastOpened: lastOpenedViewSchema.nullable(),
+});
+export type LastOpenedEnvelope = z.infer<typeof lastOpenedEnvelopeSchema>;
+
+export const setLastOpenedRequestSchema = z.object({
+  courseSlug: z
+    .string()
+    .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'must match "^[a-z0-9]+(-[a-z0-9]+)*$"'),
+  resource: lastOpenedResourceSchema,
+});
+export type SetLastOpenedRequest = z.infer<typeof setLastOpenedRequestSchema>;
+
+// ── T-TIER1 — the account-backed mock-exam results (v2-native, additive) ────
+//
+// The hub's mock-results store (apps/hub/src/lib/mock-results.ts, key
+// "syllabai.mockResults.v1") keeps a student's SELF-MARKED mock-exam
+// tallies — graded against the official mark scheme in the past-papers
+// player — and until now they lived in ONE browser only (the store's own
+// header called it a "local SIMULATED overlay (demo discipline)"). Tier-1
+// moves them to the account with the SAME law as my-courses: localStorage
+// stays the UI cache; signed in, the per-course full set mirrors here and
+// the server wins on reconcile.
+//
+// Law:
+//  - GET  /api/v1/learners/me/mock-results → MockResultsView — every
+//         course's tally (newest finished first), capped at
+//         MOCK_RESULTS_PER_COURSE (20, the hub's own MAX_PER_COURSE) per
+//         course server-side.
+//  - PUT  /api/v1/learners/me/mock-results/{courseSlug} ←
+//         PutMockResultsRequest — the FULL desired set for that ONE course
+//         (idempotent replace: the course's rows are deleted, the posted
+//         set inserted; an empty array clears the course — no separate
+//         DELETE surface). Course slug in the path uses the SAME kebab-case
+//         law as my-courses. `clientId` is the hub's own composite record
+//         id ("{course}:{sessionId}:{dir}:{startedAt}") — a bounded opaque
+//         string the hub keys its dedupe on; the server treats it as
+//         opaque and round-trips it verbatim.
+//  - Self-marked honesty is preserved on the wire: nothing here claims
+//    canonical marking — these are the student's own tallies.
+export const MOCK_RESULTS_PER_COURSE = 20;
+export const MOCK_RESULT_MAX_QUESTIONS = 100;
+
+export const mockResultEndedSchema = z.enum(["time-up", "self", "exited"]);
+export type MockResultEnded = z.infer<typeof mockResultEndedSchema>;
+
+export const mockResultQuestionSchema = z.object({
+  label: z.string(),
+  marks: z.number(),
+  max: z.number().nullable(),
+});
+export type MockResultQuestion = z.infer<typeof mockResultQuestionSchema>;
+
+export const mockResultSchema = z.object({
+  /** the hub's opaque composite record id — round-tripped verbatim */
+  clientId: z.string().min(1).max(200),
+  /** official paper reference, e.g. "4CH1/1C" */
+  ref: z.string().min(1).max(80),
+  title: z.string().min(1).max(300),
+  /** exam session label, e.g. "2024-summer" (NOT a uuid — a session label) */
+  sessionId: z.string().min(1).max(80),
+  /** ISO instant when the mock finished */
+  finishedAt: z.string(),
+  /** duration the mock was set to (minutes) */
+  durationMin: z.number().int().min(0),
+  /** seconds actually used */
+  timeUsedSec: z.number().int().min(0),
+  marks: z.number().int().min(0),
+  total: z.number().int().min(0),
+  ended: mockResultEndedSchema,
+  /** optional per-question tally (additive field — older records lack it) */
+  questions: z.array(mockResultQuestionSchema).max(MOCK_RESULT_MAX_QUESTIONS).optional(),
+});
+export type MockResult = z.infer<typeof mockResultSchema>;
+
+export const mockResultsViewSchema = z.object({
+  results: z.array(mockResultSchema),
+});
+export type MockResultsView = z.infer<typeof mockResultsViewSchema>;
+
+export const putMockResultsRequestSchema = z.object({
+  results: z.array(mockResultSchema).max(MOCK_RESULTS_PER_COURSE),
+});
+export type PutMockResultsRequest = z.infer<typeof putMockResultsRequestSchema>;

@@ -315,23 +315,34 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // the second session ever to reach review) on top of the run-001 baseline
   // -> 93/875/126/94/165 (measured: rebaseline.ts verify PASS, 0 drifts, on
   // the union end-state).
-  test("93/875/126/94/165 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // T-TIER1 run-001 (0022_learner-last-opened-mock-results, the frontend
+  // deep-audit Tier 1): the account-backed last-opened pointer + mock
+  // results add 2 tables, 19 columns, 1 index, 2 fks, 6 checks —
+  // learner_last_opened (4 cols, one row per account, the "Jump back in"
+  // pointer) and learner_mock_results (15 cols, the self-marked tally
+  // plane, per-course full-set replace; the clientId round-trips verbatim)
+  // on top of the T-TEACHME run-002 baseline
+  // -> 95/894/127/96/171 (measured: rebaseline.ts verify PASS, 0 drifts, on
+  // the union end-state).
+  test("95/894/127/96/171 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 93/93");
-    expect(v.inventory).toContain("columns 875");
-    expect(v.inventory).toContain("indexes 126");
-    expect(v.inventory).toContain("fks 94");
-    expect(v.inventory).toContain("checks 165");
+    expect(v.inventory).toContain("tables 95/95");
+    expect(v.inventory).toContain("columns 894");
+    expect(v.inventory).toContain("indexes 127");
+    expect(v.inventory).toContain("fks 96");
+    expect(v.inventory).toContain("checks 171");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(93);
+    expect(run.size).toBe(95);
     expect(run.has("public.teach_sessions")).toBe(true); // T-TEACHME-001 — the learn-by-teaching lane
     expect(run.has("public.teach_messages")).toBe(true); // T-TEACHME-001 run-002 — the transcript plane
     expect(run.has("public.teach_review_cards")).toBe(true); // T-TEACHME-001 run-002 — the ReviewCard of record
+    expect(run.has("public.learner_last_opened")).toBe(true); // T-TIER1 — the account-backed "Jump back in" pointer
+    expect(run.has("public.learner_mock_results")).toBe(true); // T-TIER1 — the self-marked mock tally plane
     expect(run.has("public.mark_bands")).toBe(true); // ADR-040 — the levels analog of mark_points
     expect(run.has("public.mark_point_rects")).toBe(true); // T-MG-MP-RECT-1 — the geometry plane on the definition join
     expect(run.has("public.mark_awards")).toBe(true); // T-MG-AWARDS-1 — the award plane (per-award ledger, the DC-7 claim)

@@ -51,6 +51,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { clearIdentity, useIdentity } from "@/lib/identity";
+import { useLastOpenedSync } from "@/lib/last-opened";
+import { useMockResultsSync } from "@/lib/mock-results";
 import { isImmersiveRoute, isViewerRoute } from "@/lib/focus-routes";
 import { useLastOpened } from "@/lib/last-opened";
 import { cn } from "@/lib/utils";
@@ -108,6 +110,12 @@ export function AppShell({
   const pathname = usePathname();
   const identity = useIdentity();
   const lastOpened = useLastOpened();
+  // T-TIER1 — the account-backed mirrors mount in the GLOBAL chrome (not the
+  // dashboard): the last-opened tracker fires on course routes and the mock
+  // player writes from past-papers, so the write-through listeners must live
+  // everywhere the learner navigates, exactly like the identity store.
+  useLastOpenedSync();
+  useMockResultsSync();
   // course pages manage their own horizontal rhythm (course shell + resource
   // panel); the graph surfaces are full-bleed (the visualizer canvas wants
   // the whole viewport); the tutor workspace is an immersive app surface

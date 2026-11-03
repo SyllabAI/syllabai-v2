@@ -109,3 +109,114 @@ describe("assignmentSubmissionRequestSchema", () => {
     expect(assignmentSubmissionRequestSchema.safeParse({ questionsCompleted: 1, score: -1 }).success).toBe(false);
   });
 });
+
+// ── T-TIER1 — the account-backed last-opened pointer + mock results ────────
+
+import {
+  LAST_OPENED_RESOURCES,
+  MOCK_RESULTS_PER_COURSE,
+  lastOpenedEnvelopeSchema,
+  lastOpenedViewSchema,
+  mockResultSchema,
+  mockResultsViewSchema,
+  putMockResultsRequestSchema,
+  setLastOpenedRequestSchema,
+} from "./learner-me";
+
+const VALID_MOCK = {
+  clientId: "igcse-chemistry-19:2024-summer:1:1729000000000",
+  ref: "4CH1/1C",
+  title: "Chemistry Paper 1C",
+  sessionId: "2024-summer",
+  finishedAt: "2026-11-01T10:00:00Z",
+  durationMin: 60,
+  timeUsedSec: 3210,
+  marks: 42,
+  total: 80,
+  ended: "time-up" as const,
+};
+
+describe("T-TIER1 lastOpened schemas", () => {
+  it("pins the closed resource set (the hub's ResourceKind union)", () => {
+    expect(LAST_OPENED_RESOURCES).toEqual([
+      "hub",
+      "revision-notes",
+      "exam-questions",
+      "flashcards",
+      "strengths",
+      "past-papers",
+      "practice-papers",
+    ]);
+  });
+
+  it("accepts a valid pointer view and envelope (null = the honest empty)", () => {
+    const view = lastOpenedViewSchema.parse({
+      courseSlug: "igcse-chemistry-19",
+      resource: "exam-questions",
+      updatedAt: "2026-11-02T09:15:00.000Z",
+    });
+    expect(view.resource).toBe("exam-questions");
+    expect(lastOpenedEnvelopeSchema.parse({ lastOpened: null }).lastOpened).toBeNull();
+    expect(
+      lastOpenedEnvelopeSchema.parse({
+        lastOpened: { courseSlug: "s", resource: "hub", updatedAt: "2026-11-02T09:15:00.000Z" },
+      }).lastOpened,
+    ).not.toBeNull();
+  });
+
+  it("accepts the kebab-case PUT body; rejects an unknown resource and a bad slug", () => {
+    expect(
+      setLastOpenedRequestSchema.parse({ courseSlug: "igcse-chemistry-19", resource: "flashcards" })
+        .resource,
+    ).toBe("flashcards");
+    expect(
+      setLastOpenedRequestSchema.safeParse({ courseSlug: "igcse-chemistry-19", resource: "secret" })
+        .success,
+    ).toBe(false);
+    expect(
+      setLastOpenedRequestSchema.safeParse({ courseSlug: "Chm_Target", resource: "hub" }).success,
+    ).toBe(false);
+  });
+});
+
+describe("T-TIER1 mockResults schemas", () => {
+  it("pins the per-course cap of record (the hub's MAX_PER_COURSE)", () => {
+    expect(MOCK_RESULTS_PER_COURSE).toBe(20);
+  });
+
+  it("accepts a valid tally with an optional per-question list", () => {
+    expect(mockResultSchema.parse(VALID_MOCK).ref).toBe("4CH1/1C");
+    expect(
+      mockResultSchema.parse({ ...VALID_MOCK, questions: [{ label: "1", marks: 4, max: 5 }] })
+        .questions,
+    ).toEqual([{ label: "1", marks: 4, max: 5 }]);
+    expect(mockResultSchema.parse(VALID_MOCK).questions).toBeUndefined();
+  });
+
+  it("rejects an unknown ended state and non-integer counters", () => {
+    expect(mockResultSchema.safeParse({ ...VALID_MOCK, ended: "exploded" }).success).toBe(false);
+    expect(mockResultSchema.safeParse({ ...VALID_MOCK, marks: 4.5 }).success).toBe(false);
+    expect(mockResultSchema.safeParse({ ...VALID_MOCK, marks: -1 }).success).toBe(false);
+  });
+
+  it("rejects an oversized clientId/ref/title and a too-long questions list", () => {
+    expect(mockResultSchema.safeParse({ ...VALID_MOCK, clientId: "" }).success).toBe(false);
+    expect(mockResultSchema.safeParse({ ...VALID_MOCK, ref: "x".repeat(81) }).success).toBe(false);
+    expect(
+      mockResultSchema.safeParse({
+        ...VALID_MOCK,
+        questions: Array.from({ length: 101 }, () => ({ label: "1", marks: 1, max: 1 })),
+      }).success,
+    ).toBe(false);
+  });
+
+  it("the view + PUT envelope round-trip; the PUT rejects more than the cap", () => {
+    expect(mockResultsViewSchema.parse({ results: [VALID_MOCK] }).results).toHaveLength(1);
+    expect(putMockResultsRequestSchema.parse({ results: [VALID_MOCK] }).results).toHaveLength(1);
+    expect(
+      putMockResultsRequestSchema.safeParse({
+        results: Array.from({ length: MOCK_RESULTS_PER_COURSE + 1 }, () => VALID_MOCK),
+      }).success,
+    ).toBe(false);
+  });
+});
