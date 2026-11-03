@@ -1,29 +1,43 @@
 "use client";
 
 /**
- * The flashcards deck grid — the client half of the flashcards select page
- * (page.tsx keeps the corpus badge/prose and the deck computation). Carries
+ * The flashcards topic listing — the client half of the flashcards select
+ * page (page.tsx keeps the corpus posture and the deck computation). Carries
  * the shared MathsGenie toolbar (trace 1a19acb6ec437e25: "the same
  * three-page treatment could get search/resume on exam-questions and
  * flashcards" — the exact treatment the revision-notes index carries) and
  * the FLASHCARDS-ONLY rings (traces 1a195fd0b0947695 + 1a1982281a3d7a65 —
  * this select page owns its own denominator: rated cards ÷ available
  * cards, never notes, never questions). The DeckDueBadge keeps its
- * scheduler-truth role beside each ring.
+ * scheduler-truth role beside each row's count.
+ *
+ * Listing anatomy of record (this update, trace 1a19f6776ca5a619): the
+ * RevisionDojo pattern the revision-notes and exam-questions listings carry
+ * — numbered SECTIONS (native <details open>) whose rows are the real SME
+ * DECKS from the corpus's own organization (lib/flashcard-decks: sections
+ * and decks in SME order, titles = SME's own names), each row
+ * ProgressRing + title + right-aligned card count. No expansion tier: decks
+ * have no sub-decks, so every row is a single link (the chevron lives on the
+ * section header only). The old spec-subtopic label column is gone — the
+ * deck title IS the corpus-native label.
  *
  * Resume of record: the deck holding the most recently RATED card (max
- * `at` across progress.flashcards — rateFlashcard stamps every rating),
- * shown only while that deck is listed on THIS page; nothing rated yet →
- * no button, exactly the notes-index law.
+ * `at` across progress.flashcards — rateFlashcard stamps every rating with
+ * the deck key its page passed), shown only while that deck is listed on
+ * THIS page; nothing rated yet → no button, exactly the notes-index law.
+ * Pre-rebuild ratings carry legacy spec-subtopic anchors — they resolve to
+ * no listed deck, so Resume re-appears on the next rating (honest, and the
+ * deck keys it points at are the ones the deck pages now stamp).
  *
- * Search law: identical to the notes index — a deck matches when its
- * sub-topic title OR its parent topic title matches (the grid card shows
- * both); the empty state names the query. Search is a transient filter:
- * it never hides Resume.
+ * Search law: identical to the notes/questionbank indexes at group level —
+ * a section whose own title matches shows ALL its decks; otherwise only the
+ * decks whose titles match (section totals recompute over the shown decks);
+ * the empty state names the query. Search is a transient filter: it never
+ * hides Resume.
  */
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { NumberedLabel } from "@/components/hub/chrome";
 import { SelectToolbar } from "@/components/hub/select-toolbar";
@@ -32,11 +46,18 @@ import { DeckDueBadge } from "./deck-due-badge";
 import { useCourseProgress, type Course } from "@/lib/progress";
 
 export interface DeckCard {
+  /** the SME deck slug — the deck route key and progress/deck-session key */
   code: string;
+  /** the deck's display title (SME's own name, or slug-derived) */
   title: string;
-  topicNumber: number;
-  topicTitle: string;
   count: number;
+}
+
+export interface FcTopic {
+  code: string;
+  number: number;
+  title: string;
+  decks: DeckCard[];
 }
 
 const ZERO_COUNTS = { notes: 0, questions: 0, flashcards: 0 };
@@ -44,11 +65,11 @@ const ZERO_COUNTS = { notes: 0, questions: 0, flashcards: 0 };
 export function FlashcardsIndex({
   course,
   counts,
-  decks,
+  topics,
 }: {
   course: Course;
   counts: Record<string, { notes: number; questions: number; flashcards: number }>;
-  decks: DeckCard[];
+  topics: FcTopic[];
 }) {
   const progress = useCourseProgress(course);
   const base = `/courses/${course}`;
@@ -69,22 +90,32 @@ export function FlashcardsIndex({
       }
     }
     if (!code) return null;
-    return decks.find((d) => d.code === code) ?? null;
-  }, [decks, progress.flashcards]);
+    return topics.flatMap((t) => t.decks).find((d) => d.code === code) ?? null;
+  }, [topics, progress.flashcards]);
 
-  const shown = useMemo(
+  // Section groups of record: sections with (matching) decks, corpus (SME)
+  // order, per-section totals. A section whose own title matches shows ALL
+  // its decks; otherwise only the decks whose titles match. Recomputed on
+  // query and server payload changes, never on learner-progress re-renders.
+  const groups = useMemo(
     () =>
-      decks.filter(
-        (d) => !searching || matchTitle(d.title, q) || matchTitle(d.topicTitle, q),
-      ),
-    [decks, searching, q],
+      topics
+        .map((t) => {
+          const decks =
+            !searching || matchTitle(t.title, q)
+              ? t.decks
+              : t.decks.filter((d) => matchTitle(d.title, q));
+          return { topic: t, decks, total: decks.reduce((a, d) => a + d.count, 0) };
+        })
+        .filter((g) => g.decks.length > 0),
+    [topics, searching, q],
   );
 
-  if (decks.length === 0) {
+  if (topics.length === 0) {
     // the honest empty course — keep the UX-audit next action (point at the
     // question bank); no toolbar (nothing to search, nothing to resume)
     return (
-      <Card className="mt-6">
+      <Card>
         <CardContent className="p-6 text-sm text-muted-foreground">
           <p>No flashcard decks imported for this course yet.</p>
           <p className="mt-2">
@@ -106,17 +137,15 @@ export function FlashcardsIndex({
       {/* MathsGenie-pattern toolbar (trace 1a19acb6ec437e25): search left,
           Resume right — Resume renders only once this course's learner
           overlay holds a card rating. */}
-      <div className="mt-4">
-        <SelectToolbar
-          searchLabel="Search flashcard decks"
-          searchPlaceholder="Search topics or decks..."
-          query={query}
-          onQueryChange={setQuery}
-          resume={resumeDeck ? { href: `${base}/flashcards/${resumeDeck.code}`, title: resumeDeck.title } : null}
-        />
-      </div>
+      <SelectToolbar
+        searchLabel="Search flashcard decks"
+        searchPlaceholder="Search sections or decks..."
+        query={query}
+        onQueryChange={setQuery}
+        resume={resumeDeck ? { href: `${base}/flashcards/${resumeDeck.code}`, title: resumeDeck.title } : null}
+      />
 
-      {shown.length === 0 ? (
+      {groups.length === 0 && searching ? (
         <Card>
           <CardContent className="p-6 text-sm text-muted-foreground">
             No decks match{" "}
@@ -124,32 +153,48 @@ export function FlashcardsIndex({
           </CardContent>
         </Card>
       ) : (
-        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {shown.map((d) => (
-            <Link
-              key={d.code}
-              href={`${base}/flashcards/${d.code}`}
-              className="group min-w-0 rounded-lg border bg-card px-4 py-3 transition-colors hover:border-primary/40"
-            >
-              <div className="flex min-w-0 items-center gap-2">
-                <ProgressRing
-                  course={course}
-                  subtopic={d.code}
-                  counts={counts[d.code] ?? ZERO_COUNTS}
-                  size={18}
-                  dimension="flashcards"
+        <div className="divide-y divide-border/60">
+          {groups.map(({ topic, decks, total }) => (
+            <details key={topic.code} open className="group/topic py-3">
+              <summary className="flex cursor-pointer list-none items-center gap-2 [&::-webkit-details-marker]:hidden">
+                <h2 className="text-[15px] font-semibold">
+                  <NumberedLabel number={topic.number} title={topic.title} />
+                </h2>
+                <span className="text-xs text-muted-foreground">
+                  ·{" "}
+                  {total} card{total === 1 ? "" : "s"}
+                </span>
+                <ChevronDown
+                  className="ml-auto size-4 shrink-0 text-muted-foreground transition-transform group-open/topic:rotate-180"
+                  aria-hidden
                 />
-                <p className="min-w-0 flex-1 truncate text-sm font-semibold group-hover:text-primary">
-                  {d.title}
-                </p>
-                <DeckDueBadge course={course} subtopicCode={d.code} />
-                <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
-              </div>
-              <p className="mt-1 truncate text-xs text-muted-foreground">
-                <NumberedLabel number={d.topicNumber} title={d.topicTitle} /> · {d.count} card
-                {d.count === 1 ? "" : "s"}
-              </p>
-            </Link>
+              </summary>
+              <ul className="mt-1.5 space-y-0.5">
+                {decks.map((d) => (
+                  <li key={d.code}>
+                    <Link
+                      href={`${base}/flashcards/${d.code}`}
+                      className="group/link flex items-center gap-2.5 rounded-lg px-2 py-2 transition-colors hover:bg-muted"
+                    >
+                      <ProgressRing
+                        course={course}
+                        subtopic={d.code}
+                        counts={counts[d.code] ?? ZERO_COUNTS}
+                        size={18}
+                        dimension="flashcards"
+                      />
+                      <span className="min-w-0 flex-1 truncate text-sm font-medium group-hover/link:text-primary">
+                        {d.title}
+                      </span>
+                      <DeckDueBadge course={course} subtopicCode={d.code} />
+                      <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
+                        {d.count} card{d.count === 1 ? "" : "s"}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </details>
           ))}
         </div>
       )}

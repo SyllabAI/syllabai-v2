@@ -1,6 +1,6 @@
 import type { CourseBundle } from "../courses";
 import type { ExamQuestionTopic } from "../contracts";
-import { buildSpecTreeIndex, subtopicOfQuestionSet } from "../spec-tree";
+import { buildSpecTreeIndex, generalTopicsOfQuestionTopics, subtopicOfQuestionSet } from "../spec-tree";
 
 type QuestionPartT = ExamQuestionTopic["questions"][number]["parts"][number];
 
@@ -88,7 +88,10 @@ export function assembleTest(
   setSlugs: Set<string>,
   opts: { targetMarks?: number | null; maxQuestions?: number | null },
 ): AssembledTest {
-  const index = buildSpecTreeIndex(bundle.curriculum);
+  const index = buildSpecTreeIndex(bundle.curriculum, {
+    // keep teacher placement identical to the student hub (D0 gen rows)
+    generalTopics: generalTopicsOfQuestionTopics(bundle.questionTopics),
+  });
 
   const pool: PoolEntry[] = bundle.questionTopics
     .filter((set) => setSlugs.has(set.slug))

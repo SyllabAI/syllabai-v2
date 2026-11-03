@@ -37,5 +37,21 @@
   "spine": "spines/cie-a-level-maths-20-mechanics.json",
   "resourcesSha": "9cf6037e31c1ac8eb88a0cb6f545438689728a1d",
   "attachmentMap": "content-maps/cie-a-level-maths-20-mechanics.json"
+ },
+ "tagBackfill": {
+  "schema": "syllabai.hub.tag-backfill/1.0",
+  "date": "2026-11-03",
+  "source": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "SME-ExamQuestion/cie-a-level-maths-20-mechanics",
+   "ref": "main@fb28c174adec"
+  },
+  "method": "part smeSpecPointIds → SME spec-point-index name → official SPEC_POINT title (exact, per part); else the part's SME subtopic slugs resolved to curriculum subtopics (per part); else set-level fallback via SME topic-name title join to a unique curriculum SUBTOPIC",
+  "sets": 1,
+  "questions": 24,
+  "partsExact": 0,
+  "partsPerPartSme": 0,
+  "partsSubtopicLevel": 32,
+  "residualSets": 3
  }
 }

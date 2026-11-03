@@ -1,0 +1,249 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_gYqbXsJPfrqtg5yQ",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "1f9a8fb76b5aa8f882c7337a9d462084b59c91f6de723a518dcbd5efa2353356",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_gYqbXsJPfrqtg5yQ",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Components in Series & Parallel Circuits",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-2-components-in-series-and-parallel-circuits/2-2-5-electrical-components",
+    "specAnchors": [
+      {
+        "code": "2.11",
+        "text": "describe the qualitative variation of resistance of light-dependent resistors (LDRs) with illumination and thermistors with temperature"
+      },
+      {
+        "code": "2.12",
+        "text": "know that lamps and LEDs can be used to indicate the presence of a current in a circuit"
+      }
+    ],
+    "primer": {
+      "text": "Some resistors respond to the world around them: warmth thins a thermistor's resistance, brightness thins an LDR's. Others simply announce that a current is flowing. This note covers thermistors and light-dependent resistors as sensors, then lamps and LEDs as the circuit's built-in current indicators.",
+      "prerequisiteSubtopic": "Components in Series & Parallel Circuits"
+    },
+    "modules": [
+      {
+        "id": "rn_gYqbXsJPfrqtg5yQ::L1",
+        "title": "Thermistors & LDRs",
+        "sourceHeadings": [
+          "Thermistors",
+          "Light-dependent resistors (LDRs)"
+        ],
+        "specRefs": [
+          "2.11"
+        ],
+        "opening": "Two components turn the physical world into resistance readings. The thermistor watches the temperature; the LDR watches the light. Both follow the same pattern — more of their condition means less resistance — and both plot it as a falling curve. This lesson maps each sensor's behaviour and its graph.",
+        "keyPoints": [
+          "A thermistor's resistance depends on its temperature.",
+          "Thermistors read high in the cold and low in the heat.",
+          "Warming a thermistor lowers its resistance; cooling it raises the resistance.",
+          "An LDR's resistance depends on the light intensity falling on it.",
+          "LDRs read high in darkness and low in bright light.",
+          "Both devices plot resistance against their condition as a falling curve."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Thermistor: hot means low resistance, cold means high. LDR: bright means low resistance, dark means high.",
+            "analogy": "Two lazy guards: the more activity around them (heat or light), the less they block the way.",
+            "examPointer": "Anchor each answer with the pair — condition and resistance — e.g. 'hot thermistor, low resistance'."
+          },
+          "medium": {
+            "restatement": "The resistance-to-condition graph falls for both sensors, which is why they excel at threshold circuits: crossing a temperature or light level swings the resistance sharply.",
+            "analogy": "Automatic streetlights: darkness raises the LDR's resistance until the sensing circuit flips the lamp on.",
+            "examPointer": "The graphs show an inverse-style curve — quote 'high in cold/dark, low in hot/bright' and the graph shape together."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_gYqbXsJPfrqtg5yQ::L1::Q1",
+          "rn_gYqbXsJPfrqtg5yQ::L1::Q2",
+          "rn_gYqbXsJPfrqtg5yQ::L1::Q3",
+          "rn_gYqbXsJPfrqtg5yQ::L1::Q4",
+          "rn_gYqbXsJPfrqtg5yQ::L1::Q5",
+          "rn_gYqbXsJPfrqtg5yQ::L1::Q6",
+          "rn_gYqbXsJPfrqtg5yQ::L1::Q7",
+          "rn_gYqbXsJPfrqtg5yQ::L1::Q8",
+          "rn_gYqbXsJPfrqtg5yQ::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03",
+          "fig-04",
+          "fig-05"
+        ]
+      },
+      {
+        "id": "rn_gYqbXsJPfrqtg5yQ::L2",
+        "title": "Lamps & LEDs",
+        "sourceHeadings": [
+          "Lamps & LEDs",
+          "Light-emitting diodes (LEDs)"
+        ],
+        "specRefs": [
+          "2.12"
+        ],
+        "opening": "A circuit can report on itself. Fit a lamp or an LED where you want to watch, and its glow certifies that current is flowing — and for an LED, which way. This lesson covers the two indicators and the one-way rule that makes the LED so telling.",
+        "keyPoints": [
+          "Lamps and LEDs light up when a current flows through them.",
+          "That makes both useful as indicators of a current's presence in a circuit.",
+          "An LED is a diode, so it passes current in one direction only.",
+          "An LED lights only when placed the correct way round in the circuit."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "If it glows, current is flowing — that is the whole trick behind lamps and LEDs as indicators.",
+            "analogy": "A pilot light on a stove: the glow is the proof that the gas (current) is actually on.",
+            "examPointer": "Answer indicator questions with the pair: component lights up, therefore current present."
+          },
+          "medium": {
+            "restatement": "The LED doubles as a direction probe: being a diode, it lights only when wired the conducting way, so darkness after a rebuild points to reversal.",
+            "analogy": "A one-way turnstile with a bell: you hear it (see the glow) only when people pass the permitted way.",
+            "examPointer": "Two arrows away from a symbol mean light-emitting; two arrows towards it mean light-dependent. Learn the arrow rule."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_gYqbXsJPfrqtg5yQ::L2::Q1",
+          "rn_gYqbXsJPfrqtg5yQ::L2::Q2",
+          "rn_gYqbXsJPfrqtg5yQ::L2::Q3",
+          "rn_gYqbXsJPfrqtg5yQ::L2::Q4",
+          "rn_gYqbXsJPfrqtg5yQ::L2::Q5",
+          "rn_gYqbXsJPfrqtg5yQ::L2::Q6",
+          "rn_gYqbXsJPfrqtg5yQ::L2::Q7",
+          "rn_gYqbXsJPfrqtg5yQ::L2::Q8",
+          "rn_gYqbXsJPfrqtg5yQ::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-06"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "thermistor",
+          "definition": "A temperature-sensing resistor — high resistance in the cold, low in the heat.",
+          "firstLesson": 1
+        },
+        {
+          "term": "light-dependent resistor",
+          "definition": "A light-sensing resistor — high resistance in darkness, low in bright light.",
+          "firstLesson": 1
+        },
+        {
+          "term": "light intensity",
+          "definition": "How much light falls on a surface — the condition an LDR responds to.",
+          "firstLesson": 1
+        },
+        {
+          "term": "illumination",
+          "definition": "The brightness landing on the LDR; more illumination means less resistance.",
+          "firstLesson": 1
+        },
+        {
+          "term": "light-emitting diode",
+          "definition": "A diode that glows when current passes the permitted direction.",
+          "firstLesson": 2
+        },
+        {
+          "term": "diode",
+          "definition": "A component that conducts in one direction only.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/d581a5f19895-thermistor.png",
+        "alt": "Thermistor, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Thermistors",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The resistance of a thermistor depends on its temperature",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/fa45225c39d1-thermistor-graph.png",
+        "alt": "thermistor-graph",
+        "sourceHeading": "Thermistors",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The graph of resistance against temperature for a thermistor shows a curve indicating these quantities are inversely proportional to each other",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a1053b665910-2-1-8-ldr-light-intensity.png",
+        "alt": "LDR & Light Intensity, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Light-dependent resistors (LDRs)",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The resistance of an LDR depends on the intensity of light on it",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/cafe9e6fd198-ldr-resistance-light-intensity.png",
+        "alt": "ldr-resistance-light-intensity",
+        "sourceHeading": "Light-dependent resistors (LDRs)",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The graph of light intensity against temperature for an LDR shows a curve indicating these quantities are inversely proportional to each other",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b4adde2d0f0f-12111-new-4-3-1-circuit-symbols-cie-igcse-23-rn-.png",
+        "alt": "new-4-3-1-circuit-symbols-cie-igcse-23-rn",
+        "sourceHeading": "Light-dependent resistors (LDRs)",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/7201e22403cd-24-2-led-circuit-symbol.png",
+        "alt": "7201e22403cd-24-2-led-circuit-symbol",
+        "sourceHeading": "Light-emitting diodes (LEDs)",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "LEDs can be used to indicate the presence of a current as they illuminate when current flows through them. The same is true for lamps",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

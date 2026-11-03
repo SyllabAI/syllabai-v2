@@ -1,0 +1,32 @@
+{
+ "schema": "syllabai.hub.placement-backfill/1.0",
+ "generatedUtc": "2026-11-03T03:34:16+00:00",
+ "script": "scripts/sme_d0_backfill.py",
+ "basis": "SME section/topic-slug joins against this course's committed curriculum map; no content surgery, set-level placement only",
+ "placements": [
+  {
+   "slug": "drugs-in-medicine--multiple-choice-questions",
+   "subtopicCode": "cie-igcse-science-co-ordinated-sciences-double-award-2025-2027-TB14-gen",
+   "level": "topic",
+   "join": "section join (J2)",
+   "confidence": "medium",
+   "source": "plan"
+  },
+  {
+   "slug": "human-impact-biodiversity-pollution-and-conservation--multiple-choice-questions",
+   "subtopicCode": "cie-igcse-science-co-ordinated-sciences-double-award-2025-2027-TB19-gen",
+   "level": "topic",
+   "join": "section join (J2)",
+   "confidence": "medium",
+   "source": "plan"
+  },
+  {
+   "slug": "variation-and-natural-selection--multiple-choice-questions",
+   "subtopicCode": "cie-igcse-science-co-ordinated-sciences-double-award-2025-2027-TB17-gen",
+   "level": "topic",
+   "join": "section join (J2)",
+   "confidence": "medium",
+   "source": "plan"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "schema": "syllabai.hub.placement-backfill/1.0",
+ "generatedUtc": "2026-11-03T03:49:39+00:00",
+ "script": "scripts/sme_d0_backfill.py",
+ "basis": "SME section/topic-slug joins against this course's committed curriculum map; no content surgery, set-level placement only",
+ "placements": [
+  {
+   "slug": "double-entry-book-keeping-with-ledger-accounts--structured-questions",
+   "subtopicCode": "cie-igcse-accounting-2023-2025-T2-gen",
+   "level": "topic",
+   "join": "J2 section",
+   "confidence": "medium",
+   "source": "fresh"
+  },
+  {
+   "slug": "the-cash-and-petty-cash-books--structured-questions",
+   "subtopicCode": "cie-igcse-accounting-2023-2025-T2-gen",
+   "level": "topic",
+   "join": "J2 section",
+   "confidence": "medium",
+   "source": "fresh"
+  },
+  {
+   "slug": "accounting-principles-and-policies--structured-questions",
+   "subtopicCode": "cie-igcse-accounting-2023-2025-T7-gen",
+   "level": "topic",
+   "join": "section join (J2)",
+   "confidence": "medium",
+   "source": "plan"
+  }
+ ]
+}

@@ -1,0 +1,258 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_FfvmFrDdhSsMk9rm",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "5e492b92c8e65bd80d6d71ebdde660e589000d50f9e7568e896b45ae9fb8983b",
+    "pinnedRef": "502107a3fcacad2340d0ac5e66b5ad93ef32800c"
+  },
+  "packageId": "igcse-physics::rn_FfvmFrDdhSsMk9rm",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_FfvmFrDdhSsMk9rm::L1::Q1",
+      "moduleId": "rn_FfvmFrDdhSsMk9rm::L1",
+      "stem": "Charge flowing through a resistor transfers energy that makes the resistor:",
+      "misconceptionClass": "heating recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "magnetic",
+          "correct": false,
+          "explanation": "The transfer warms the resistor; magnetism is not part of this relationship.",
+          "misconception": "effect confusion"
+        },
+        {
+          "key": "B",
+          "text": "hot",
+          "correct": true,
+          "explanation": "The transferred energy heats the resistor as the charge is pushed through.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "positively charged",
+          "correct": false,
+          "explanation": "Energy transfer does not leave the resistor charged.",
+          "misconception": "quantity confusion"
+        },
+        {
+          "key": "D",
+          "text": "cooler than the room",
+          "correct": false,
+          "explanation": "The transfer raises, not lowers, the temperature.",
+          "misconception": "direction slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_FfvmFrDdhSsMk9rm::L1::Q2",
+      "moduleId": "rn_FfvmFrDdhSsMk9rm::L1",
+      "stem": "Energy transferred by electrical work equals:",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "current ÷ voltage × time",
+          "correct": false,
+          "explanation": "The current multiplies the voltage; dividing has no meaning here.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "B",
+          "text": "voltage ÷ current × time",
+          "correct": false,
+          "explanation": "That is not any relationship of record.",
+          "misconception": "invented relationship"
+        },
+        {
+          "key": "C",
+          "text": "current × voltage ÷ time",
+          "correct": false,
+          "explanation": "Time multiplies in — longer running transfers more energy.",
+          "misconception": "time misplacement"
+        },
+        {
+          "key": "D",
+          "text": "current × voltage × time",
+          "correct": true,
+          "explanation": "E = I × V × t is the relationship of record.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_FfvmFrDdhSsMk9rm::L1::Q3",
+      "moduleId": "rn_FfvmFrDdhSsMk9rm::L1",
+      "stem": "A 0.7 A appliance on 4 V runs for one minute. The energy transferred is:",
+      "misconceptionClass": "energy arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "168 J",
+          "correct": true,
+          "explanation": "E = 0.7 × 4 × 60 = 168 J, with the minute converted to 60 s.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "2.8 J",
+          "correct": false,
+          "explanation": "That is only 0.7 × 4 — the time was dropped.",
+          "misconception": "omission slip"
+        },
+        {
+          "key": "C",
+          "text": "240 J",
+          "correct": false,
+          "explanation": "That is 4 × 60 — the current was dropped.",
+          "misconception": "omission slip"
+        },
+        {
+          "key": "D",
+          "text": "16.8 J",
+          "correct": false,
+          "explanation": "That used 6 s instead of 60 s.",
+          "misconception": "conversion slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_FfvmFrDdhSsMk9rm::L1::Q4",
+      "moduleId": "rn_FfvmFrDdhSsMk9rm::L1",
+      "stem": "Before substituting into E = I × V × t, any time given in minutes must be:",
+      "misconceptionClass": "unit discipline",
+      "options": [
+        {
+          "key": "A",
+          "text": "left in minutes",
+          "correct": false,
+          "explanation": "Leaving minutes overstates nothing consistently — it breaks the joule arithmetic.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "B",
+          "text": "converted into hours",
+          "correct": false,
+          "explanation": "Hours move further from the SI unit, not closer.",
+          "misconception": "wrong conversion"
+        },
+        {
+          "key": "C",
+          "text": "converted into seconds",
+          "correct": true,
+          "explanation": "The joule arithmetic only works with time in seconds.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "halved",
+          "correct": false,
+          "explanation": "Halving is not a unit conversion.",
+          "misconception": "invented rule"
+        }
+      ]
+    },
+    {
+      "id": "rn_FfvmFrDdhSsMk9rm::L1::Q5",
+      "moduleId": "rn_FfvmFrDdhSsMk9rm::L1",
+      "stem": "'Work done' and 'energy transferred' in circuits are:",
+      "misconceptionClass": "terminology recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "unrelated quantities",
+          "correct": false,
+          "explanation": "They name the same physical quantity.",
+          "misconception": "separation myth"
+        },
+        {
+          "key": "B",
+          "text": "two names for the same quantity",
+          "correct": true,
+          "explanation": "Work done by the charge is exactly the energy transferred.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "always different signs",
+          "correct": false,
+          "explanation": "No sign distinction exists in this usage.",
+          "misconception": "sign myth"
+        },
+        {
+          "key": "D",
+          "text": "different units",
+          "correct": false,
+          "explanation": "Both are measured in joules.",
+          "misconception": "unit myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_FfvmFrDdhSsMk9rm::L1::Q6",
+      "moduleId": "rn_FfvmFrDdhSsMk9rm::L1",
+      "stem": "State the equation linking energy transferred, current, voltage and time, naming the unit of energy.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "E = I × V × t, with energy in joules, current in amperes, voltage in volts and time in seconds.",
+      "keywords": [
+        "energy",
+        "current",
+        "voltage",
+        "time",
+        "joule"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_FfvmFrDdhSsMk9rm::L1::Q7",
+      "moduleId": "rn_FfvmFrDdhSsMk9rm::L1",
+      "stem": "How are E = I × V × t and E = P × t connected?",
+      "misconceptionClass": "equation connection",
+      "kind": "recall",
+      "modelAnswer": "The power in E = P × t is itself P = I × V, so substituting that into E = P × t gives E = I × V × t.",
+      "keywords": [
+        "power",
+        "substituting",
+        "equation",
+        "gives",
+        "connected"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_FfvmFrDdhSsMk9rm::L1::Q8",
+      "moduleId": "rn_FfvmFrDdhSsMk9rm::L1",
+      "stem": "Explain why the time in E = I × V × t must be in seconds.",
+      "misconceptionClass": "unit reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The watt is one joule per second, so only a time in seconds makes the energy come out in joules; a time left in minutes would understate the transfer by a factor of sixty.",
+      "keywords": [
+        "seconds",
+        "joules",
+        "minutes",
+        "time",
+        "watt"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_FfvmFrDdhSsMk9rm::L1::Q9",
+      "moduleId": "rn_FfvmFrDdhSsMk9rm::L1",
+      "stem": "A 2 A heater on 12 V runs for 30 s. Calculate the energy transferred.",
+      "misconceptionClass": "energy calculation",
+      "kind": "application",
+      "modelAnswer": "E = I × V × t = 2 × 12 × 30 = 720 J.",
+      "keywords": [
+        "720",
+        "energy",
+        "heater",
+        "transferred"
+      ],
+      "options": []
+    }
+  ]
+}

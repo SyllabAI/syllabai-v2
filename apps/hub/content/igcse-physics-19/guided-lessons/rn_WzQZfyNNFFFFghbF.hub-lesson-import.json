@@ -1,0 +1,317 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_WzQZfyNNFFFFghbF",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8c0c55647d3a22e189d77f2a9986991f75b3ccc0437435535cdd514fc9c40132",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_WzQZfyNNFFFFghbF",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Components in Series & Parallel Circuits",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-2-components-in-series-and-parallel-circuits/2-2-4-iv-graphs",
+    "specAnchors": [
+      {
+        "code": "2.10",
+        "text": "describe how current varies with voltage in wires, resistors, metal filament lamps and diodes, and how to investigate this experimentally"
+      },
+      {
+        "code": "2.9",
+        "text": "describe the qualitative effect of changing resistance on the current in a circuit"
+      }
+    ],
+    "primer": {
+      "text": "How a component responds to voltage is easiest to see as a graph. A straight line through the origin means steady, predictable behaviour; a curve means the component is changing underneath you. This note reads the IV graphs of wires, filament lamps and diodes, then shows the bench setup that measures them and the resistance dial that controls them.",
+      "prerequisiteSubtopic": "Components in Series & Parallel Circuits"
+    },
+    "modules": [
+      {
+        "id": "rn_WzQZfyNNFFFFghbF::L1",
+        "title": "IV graphs",
+        "sourceHeadings": [
+          "IV graphs",
+          "IV graph for a wire or a resistor"
+        ],
+        "specRefs": [
+          "2.10"
+        ],
+        "opening": "Plot the current through a component against the voltage across it and the shape of the line tells you everything. Straight through the origin: the resistance never budges. Curved away: something inside is changing. This lesson learns to read both shapes and names the components that produce them.",
+        "keyPoints": [
+          "An IV graph plots the current through a component against the voltage across it.",
+          "A straight line through the origin means the relationship is linear and the resistance stays constant.",
+          "A curved graph means the resistance changes as the current varies.",
+          "Wires and fixed resistors at steady temperature give linear, directly proportional graphs.",
+          "Filament lamps, diodes, LDRs and thermistors all produce non-linear graphs."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Straight-line graph: same resistance however hard you push. Curved graph: the resistance is drifting.",
+            "analogy": "A spring scale versus a stiffening hose: one reads the same every pull, the other fights back harder the more you open it.",
+            "examPointer": "The word 'origin' matters — a straight line that misses the origin is not the proportional case."
+          },
+          "medium": {
+            "restatement": "Direct proportionality means doubling one quantity doubles the other, which is exactly what a straight line through the origin encodes.",
+            "analogy": "A taxi meter with a fixed rate: twice the distance, twice the fare, forever on the same straight line.",
+            "examPointer": "At constant temperature is the exam qualifier for a fixed resistor's line — quote it when describing the linear case."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_WzQZfyNNFFFFghbF::L1::Q1",
+          "rn_WzQZfyNNFFFFghbF::L1::Q2",
+          "rn_WzQZfyNNFFFFghbF::L1::Q3",
+          "rn_WzQZfyNNFFFFghbF::L1::Q4",
+          "rn_WzQZfyNNFFFFghbF::L1::Q5",
+          "rn_WzQZfyNNFFFFghbF::L1::Q6",
+          "rn_WzQZfyNNFFFFghbF::L1::Q7",
+          "rn_WzQZfyNNFFFFghbF::L1::Q8",
+          "rn_WzQZfyNNFFFFghbF::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_WzQZfyNNFFFFghbF::L2",
+        "title": "IV graph for a filament bulb",
+        "sourceHeadings": [
+          "IV graph for a filament bulb",
+          "IV graph for a diode"
+        ],
+        "specRefs": [
+          "2.10"
+        ],
+        "opening": "Two stars of the non-linear world. The filament lamp heats itself as it works, and its own heat throttles it back. The diode is a one-way valve — generous forwards, immovable backwards. This lesson reads both graphs and the physics that shapes them.",
+        "keyPoints": [
+          "A filament lamp's graph bends over: the current grows more slowly than the voltage.",
+          "The rising current heats the filament, and hotter lattice atoms obstruct the electrons more.",
+          "So the lamp's resistance increases as the current grows.",
+          "A diode passes current in one direction only — the forward-bias direction.",
+          "In reverse bias a diode's resistance is extremely high and effectively no current flows.",
+          "On the diode's graph, forward bias shows a sharp rise on one side and reverse bias shows a flat zero region."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Lamp: the graph flattens as it warms, because heat adds resistance. Diode: current one way, blocked the other.",
+            "analogy": "The lamp is a runner tiring as they go; the diode is a turnstile that spins one way and locks the other.",
+            "examPointer": "Name the mechanism — hot filament, vibrating atoms — not just the curve, when asked to explain the lamp's graph."
+          },
+          "medium": {
+            "restatement": "The lamp's slowdown is negative feedback: more current heats the filament, and the heat raises the resistance that restrains the current.",
+            "analogy": "A self-regulating door that gets heavier the harder you push it — progress continues, but always a little less easily.",
+            "examPointer": "For non-linear graphs, resistance at a point is voltage divided by current at that point — the straight-line gradient shortcut does not apply."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_WzQZfyNNFFFFghbF::L2::Q1",
+          "rn_WzQZfyNNFFFFghbF::L2::Q2",
+          "rn_WzQZfyNNFFFFghbF::L2::Q3",
+          "rn_WzQZfyNNFFFFghbF::L2::Q4",
+          "rn_WzQZfyNNFFFFghbF::L2::Q5",
+          "rn_WzQZfyNNFFFFghbF::L2::Q6",
+          "rn_WzQZfyNNFFFFghbF::L2::Q7",
+          "rn_WzQZfyNNFFFFghbF::L2::Q8",
+          "rn_WzQZfyNNFFFFghbF::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04"
+        ]
+      },
+      {
+        "id": "rn_WzQZfyNNFFFFghbF::L3",
+        "title": "Investigating current and voltage",
+        "sourceHeadings": [
+          "Investigating the relationship between current and voltage",
+          "Resistance"
+        ],
+        "specRefs": [
+          "2.10",
+          "2.9"
+        ],
+        "opening": "Graphs do not draw themselves. Bench practice: adjust the current with a variable resistor, read the voltage off a voltmeter, and record the pairs. Step the current up, plot what you collected, and the component's IV curve appears. This lesson walks the setup and the resistance dial behind it.",
+        "keyPoints": [
+          "The investigation needs an ammeter, a voltmeter, a variable resistor, a power source and wires.",
+          "The variable resistor adjusts the current, which is the independent variable.",
+          "The voltmeter reads the voltage across the component — the dependent variable.",
+          "Recording current and voltage pairs while stepping the current up yields the component's IV graph.",
+          "A higher resistance in a circuit means a smaller current; a lower resistance means a larger one.",
+          "Fixed resistors keep one resistance; variable resistors change theirs by altering the wire length in circuit."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Set the current with the variable resistor, read the voltage, step, repeat — the pairs plot the graph.",
+            "analogy": "Tuning a radio dial (variable resistor), noting the volume (voltage) at each setting, then plotting the response.",
+            "examPointer": "Independent variable = what you set (current); dependent variable = what you measure (voltage). Get the labels right for the marks."
+          },
+          "medium": {
+            "restatement": "The variable resistor is the experiment's steering wheel: lengthening its wire raises resistance and eases the current down for the next reading.",
+            "analogy": "A dimmer slider on a lamp — slide it and the brightness steps smoothly through the range you want to record.",
+            "examPointer": "Quote the resistance-current see-saw (higher resistance, smaller current) for the qualitative-effect part of the question."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_WzQZfyNNFFFFghbF::L3::Q1",
+          "rn_WzQZfyNNFFFFghbF::L3::Q2",
+          "rn_WzQZfyNNFFFFghbF::L3::Q3",
+          "rn_WzQZfyNNFFFFghbF::L3::Q4",
+          "rn_WzQZfyNNFFFFghbF::L3::Q5",
+          "rn_WzQZfyNNFFFFghbF::L3::Q6",
+          "rn_WzQZfyNNFFFFghbF::L3::Q7",
+          "rn_WzQZfyNNFFFFghbF::L3::Q8",
+          "rn_WzQZfyNNFFFFghbF::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-05",
+          "fig-06"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "IV graph",
+          "definition": "A plot of the current through a component against the voltage across it.",
+          "firstLesson": 1
+        },
+        {
+          "term": "linear",
+          "definition": "Describing a straight-line relationship through the origin, where quantities grow in step.",
+          "firstLesson": 1
+        },
+        {
+          "term": "non-linear",
+          "definition": "Describing a curved relationship, where the resistance varies as the current changes.",
+          "firstLesson": 1
+        },
+        {
+          "term": "directly proportional",
+          "definition": "The pattern where doubling one quantity doubles the other, drawn as a straight line through the origin.",
+          "firstLesson": 1
+        },
+        {
+          "term": "filament lamp",
+          "definition": "A light source whose wire heats as it works, so its resistance rises with current.",
+          "firstLesson": 2
+        },
+        {
+          "term": "diode",
+          "definition": "A component that passes current in one direction only.",
+          "firstLesson": 2
+        },
+        {
+          "term": "forward bias",
+          "definition": "The diode direction that conducts, aligned with the symbol's arrowhead.",
+          "firstLesson": 2
+        },
+        {
+          "term": "reverse bias",
+          "definition": "The diode direction that blocks, where the resistance is extremely high and no current flows.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/6112c462d550-2-1-6-linear-non-linear-elements.png",
+        "alt": "Linear & Non-linear elements, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Linear and non-linear IV graphs",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Linear IV graphs are straight lines through the origin, indicating a constant resistance. Non-linear IV graphs are curved, indicating a variable resistance",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/babed6564ed4-2-1-6-ohms-law-graph.png",
+        "alt": "babed6564ed4-2-1-6-ohms-law-graph",
+        "sourceHeading": "IV graph for a wire or a resistor",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The current is directly proportional to the potential difference (voltage) as the graph is a straight line through the origin",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3c93e70b2b26-9-2-3-filament-lamp-iv-graph.png",
+        "alt": "Filament lamp IV graph, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "IV graph for a filament bulb",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "IV graph for a filament lamp",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/ad680122ff24-2-1-6-diode-i-v-graph.png",
+        "alt": "ad680122ff24-2-1-6-diode-i-v-graph",
+        "sourceHeading": "IV graph for a diode",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "IV graph for a semiconductor diode",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/879099b5b470-10-2-4-investigation-of-current-and-voltage.png",
+        "alt": "Investigation of Current and Voltage, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Investigating the relationship between current and voltage",
+        "moduleIds": [
+          "L3"
+        ],
+        "caption": "These circuits enable the investigation of current and voltage for a filament lamp or diode to be investigated",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1984fc789bab-2-1-5-fixed-variable-resistor.png",
+        "alt": "Fixed & Variable Resistor, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Resistance",
+        "moduleIds": [
+          "L3"
+        ],
+        "caption": "Fixed and variable resistor circuit symbols",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

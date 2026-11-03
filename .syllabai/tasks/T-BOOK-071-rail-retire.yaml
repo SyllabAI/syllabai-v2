@@ -1,0 +1,37 @@
+schema: t-book-task/v1
+id: T-BOOK-071
+title: "Rail retirement — the interactive rail leaves the book PDF viewer; the Lesson is the sole interactive surface (ADR-BOOK-0005)"
+operator_order: "remove the interactive rail from the book pdf, and add and seamlessly integrate them into the course lessons (IM trace 1a19d86ef41796f9, 2026-11-03 Dhaka; original order of record 1a17cb69e4100d49, implemented half-way by T-BOOK-026/ADR-BOOK-0003)"
+status: MERGED-SERVING  # PR #654 merge b0841919 (2026-11-02T18:41:40Z); presentation plane only — the serving law, DB rows and wire contracts are untouched, so the merged state IS the serving state
+adr: docs/adr/ADR-BOOK-0005-rail-retired-from-viewer-lesson-sole-interactive-surface.md (ACCEPTED 2026-11-03; supersedes ADR-BOOK-0003's "rail viewer stays unchanged as the page-true PDF companion" retention clause and the residual ADR-BOOK-0001 §5 two-pane posture)
+merge_of_record:
+  pr: 654
+  branch: t-book-071-rail-retire
+  head: 5baeb9f6
+  merge_sha: b0841919
+  merged_at_utc: "2026-11-02T18:41:40Z"
+  ci_on_head:
+    verify: success
+    hub: success
+    source: "check-runs API, first-hand this session (2/2 completed, conclusion success — absent != success honored)"
+  base: 97e15e50  # rebased over the sweep's #600 advance; zero path overlap verified pre-rebase
+change_set:
+  modified:
+    - "apps/hub/src/app/courses/[course]/books/[docId]/page.tsx — rail fetch + railOn gate + two-pane shell REMOVED; the page is again the pure 133c/133e page-true PDF mount; Lesson affordance promoted ghost -> visible highlighted chip (Sparkles; the only interactive hand-off; T-C20 visibility law unchanged)"
+    - "apps/hub/src/lib/books-progress.ts — provenance header updated for the retirement (the hook outlives the shell; lesson tracker remains the chapter_progress writer/reader)"
+  deleted_dead_with_shell:
+    - "apps/hub/src/components/books/rail/rail-workspace.tsx (270 lines — the two-pane shell)"
+    - "apps/hub/src/components/books/rail/tutor-card.tsx (126 lines — shell-only consumer)"
+  kept_substrate: "block-renderer.tsx + glossary-chips.tsx + check-shared.tsx + all 12 widgets — the lesson renders through them (lesson-interactive.tsx composition unchanged)"
+lesson_plane_of_record:
+  inline_blocks: "sections render authored blockIds + derived spec-fill via lesson-blocks-join (ADR-BOOK-0003 decision 1 join law unchanged); honest-extras section unchanged"
+  media: "youtube-nocookie iframe inline + 'Watch on YouTube' link (ADR-BOOK-0003 decision 2 unchanged)"
+  page_true_anchoring: "lesson pdfPageAnchor deep links still land on the viewer's PDF page of record (?chapter=&page=N) — the anchor law survives the retirement because the viewer stays the page-true mount"
+verification:
+  typecheck: "tsc --noEmit clean (apps/hub)"
+  lint: "eslint clean on the touched files"
+  tests: "books lane 78 pass / 0 fail — books-chem + lesson-blocks-join (36) and books-lesson-links + books-lesson + books-notes + books-progress + books-registry (42)"
+  build: "next build compiled successfully + TypeScript finished first-hand; CI's full build green 2/2 on the merge train"
+boundaries: "presentation plane only; zero DB contact this session; no wire rename (RailBlock / books-rail.ts keep their names — the header comments of record state the lesson is the sole interactive renderer); no core/hub repo content beyond this PR; zero *.java; fetch-first; no force"
+strength_lane_note: "no interaction with T-BOOK-069 — the strength-prefix serving exclusion (ADR-BOOK-0004 decision-3 amendment) remains REQUIRED in the lesson plane, which is now the ONLY railBlocksForChapter consumer; the 60 SUGGESTED strength rows stay inert under every current code version"
+receipt: .syllabai/receipts/T-BOOK-071/rail-retired-r0.json

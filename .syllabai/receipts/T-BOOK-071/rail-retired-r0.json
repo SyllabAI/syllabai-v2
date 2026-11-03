@@ -1,0 +1,50 @@
+{
+  "task": "T-BOOK-071",
+  "receipt": "rail-retired-r0",
+  "kind": "feature merge of record — the interactive rail retired from the book PDF viewer; the Lesson is the sole interactive surface",
+  "operator_order": "remove the interactive rail from the book pdf, and add and seamlessly integrate them into the course lessons (IM trace 1a19d86ef41796f9, 2026-11-03 Dhaka); original order of record trace 1a17cb69e4100d49",
+  "session": "zai-web web-c414c074-1cb4-4bd5-b111-546be3b49355, trace 1a19d86ef41796f9",
+  "date_utc": "2026-11-02T18:41:40Z",
+  "merge_of_record": {
+    "pr": 654,
+    "branch": "t-book-071-rail-retire",
+    "head": "5baeb9f6",
+    "merge_sha": "b0841919",
+    "merged_at_utc": "2026-11-02T18:41:40Z",
+    "rebased_over": "97e15e50 (sweep #600 advance; zero path overlap verified pre-rebase)",
+    "ci_on_head": {
+      "verify": "success",
+      "hub": "success",
+      "source": "check-runs API first-hand on the head SHA; gate-b law honored (all completed AND success AND >=1 present; absent != success)"
+    },
+    "merge_method": "merge commit (house precedent)"
+  },
+  "what_changed": {
+    "viewer_page": "apps/hub/src/app/courses/[course]/books/[docId]/page.tsx — the T-BOOK-003 rail fetch, the railOn gate and the RailWorkspace two-pane conditional are GONE; the page renders the pure 133c/133e PdfPane mount unconditionally; ?chapter= / ?page=N / ?part=questions / T-C20 404 laws byte-unchanged",
+    "lesson_affordance": "promoted from ghost text toggle to a visible highlighted chip (Sparkles + 'Lesson', variant=secondary) — with the rail gone it is the ONLY interactive hand-off; renders only when the pack is student-visible or under ?preview=1 (T-C20 law unchanged)",
+    "deleted_dead": ["apps/hub/src/components/books/rail/rail-workspace.tsx (270 ln)", "apps/hub/src/components/books/rail/tutor-card.tsx (126 ln)"],
+    "substrate_kept": "block-renderer + glossary-chips + check-shared + 12 widgets — lesson-interactive.tsx composes them; lib/books-rail.ts, books-checks.ts, the api routes and all wire contracts untouched",
+    "provenance": "lib/books-progress.ts header now states the shell retired pre-T-BOOK-071 and lives in git history",
+    "diff_stat": "5 files, +122/-442"
+  },
+  "adr_of_record": {
+    "file": "docs/adr/ADR-BOOK-0005-rail-retired-from-viewer-lesson-sole-interactive-surface.md",
+    "status": "ACCEPTED",
+    "supersedes": "ADR-BOOK-0003 retention clause ('The rail viewer stays unchanged as the page-true PDF companion — one substrate, two renderers, both fully interactive') + residual ADR-BOOK-0001 §5 two-pane posture",
+    "untouched": "ADR-BOOK-0003 decisions 1-2 (inline join law, media display law) — both unchanged and now load-bearing; ADR-BOOK-0001 §3 serving law unchanged; NO DB flip; NO wire rename"
+  },
+  "verification_first_hand": {
+    "typecheck": "tsc --noEmit clean",
+    "lint": "eslint clean on touched files",
+    "unit_tests": "78 pass / 0 fail across books-chem, lesson-blocks-join, books-lesson-links, books-lesson, books-notes, books-progress, books-registry",
+    "build": "next build compiled successfully + TypeScript finished in-sandbox (static page-gen cut by a sandbox timeout — environmental); CI full build green on the merge train",
+    "lesson_inline": "lesson-view renders LessonInteractive inside section flow (authored blockIds + derived fill + honest extras); media-embed renders the youtube-nocookie iframe inline"
+  },
+  "notes": [
+    "The operator's original directive (trace 1a17cb69e4100d49) was implemented half-way by T-BOOK-026: blocks went INTO lessons but the rail stayed beside the PDF. This lane finished the order; nothing was re-implemented on the lesson side because the ADR-BOOK-0003 integration was already of record.",
+    "No interaction with T-BOOK-069: the strength-prefix serving exclusion remains required in the lesson plane — now the ONLY railBlocksForChapter consumer; the 60 SUGGESTED strength rows stay inert.",
+    "Rail-side ask-the-tutor (tutor-card) retired with the shell; the lesson and the main tutor surface remain the ask lanes.",
+    "Disclosure: the first CI watcher script had an integer-parse bug (exit 1 after the gate was already green); the gate was re-verified with a clean check-runs query BEFORE merge (2/2 success)."
+  ],
+  "standing_reminder": "the shared PAT remains chat-exposed (re-supplied again this session) — rotate when this cycle closes"
+}

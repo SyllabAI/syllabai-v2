@@ -1,0 +1,251 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_NZ5D2Mx9SXQY98wy",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8ac25b12101d0e98bafbf82cc0e650a4286033eb0f165f8317618a0f7f66937a",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_NZ5D2Mx9SXQY98wy",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Current, Potential Difference & Resistance",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-1-current-potential-difference-and-resistance/2-1-1-charge-and-current",
+    "specAnchors": [
+      {
+        "code": "2.14",
+        "text": "know that current is the rate of flow of charge"
+      },
+      {
+        "code": "2.15",
+        "text": "know that electric current in solid metallic conductors is a flow of negatively charged electrons"
+      },
+      {
+        "code": "2.16",
+        "text": "know and use the relationship between charge, current and time: charge = current × time Q = I × t"
+      }
+    ],
+    "primer": {
+      "text": "Switch on a lamp and billions of tiny charges begin drifting through the copper — that drift is what we call electric current. This note defines current, counts it in amperes and coulombs, and then links the charge delivered to the current and the time with a compact equation. It also separates the conventional direction engineers use from the electron drift that actually carries the charge.",
+      "prerequisiteSubtopic": "Current, Potential Difference & Resistance"
+    },
+    "modules": [
+      {
+        "id": "rn_NZ5D2Mx9SXQY98wy::L1",
+        "title": "Current",
+        "sourceHeadings": [
+          "Current",
+          "Measuring current"
+        ],
+        "specRefs": [
+          "2.14"
+        ],
+        "opening": "Picture a garden hose: the water company does not care how fast one drop goes, only how much water passes the tap each second. Electric current is the same idea for charge. This lesson defines the ampere, follows the conventional direction around the loop, and meets the meter that reads it.",
+        "keyPoints": [
+          "Current is the rate at which electric charge flows through a component.",
+          "Current is measured in amperes (A): one ampere is one coulomb of charge per second.",
+          "Current flows around a complete circuit from the positive terminal of a cell to the negative one.",
+          "An ammeter reads the current and must sit in series with the component being measured."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Current counts how much charge squeezes past a point each second — more charge per second means a bigger current.",
+            "analogy": "Think of counting cars past a roundabout: current is the traffic count per second, not the speed of any single car.",
+            "examPointer": "Quote the unit as amperes (A); if a question says amps, keep the symbol A in your working."
+          },
+          "medium": {
+            "restatement": "The definition is a ratio — charge divided by time — so a 2 A reading means 2 coulombs arrive every single second.",
+            "analogy": "A turnstile tally: the charge is the crowd, the time is how long the gate stays open, and the current is the tally per second.",
+            "examPointer": "Exams expect conventional current (positive to negative); mention electron drift only when the question asks about charge carriers."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NZ5D2Mx9SXQY98wy::L1::Q1",
+          "rn_NZ5D2Mx9SXQY98wy::L1::Q2",
+          "rn_NZ5D2Mx9SXQY98wy::L1::Q3",
+          "rn_NZ5D2Mx9SXQY98wy::L1::Q4",
+          "rn_NZ5D2Mx9SXQY98wy::L1::Q5",
+          "rn_NZ5D2Mx9SXQY98wy::L1::Q6",
+          "rn_NZ5D2Mx9SXQY98wy::L1::Q7",
+          "rn_NZ5D2Mx9SXQY98wy::L1::Q8",
+          "rn_NZ5D2Mx9SXQY98wy::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_NZ5D2Mx9SXQY98wy::L2",
+        "title": "Charge",
+        "sourceHeadings": [
+          "Charge",
+          "Calculating electric charge"
+        ],
+        "specRefs": [
+          "2.15",
+          "2.16"
+        ],
+        "opening": "Inside the wires, the story gets specific: the movers are electrons, each carrying one negative packet of charge. This lesson names the carriers, then packages the whole picture into one equation — charge equals current multiplied by time — that turns meter readings into totals.",
+        "keyPoints": [
+          "In solid metal conductors the current is a flow of negatively charged electrons.",
+          "Wires are made of metal because it conducts electricity well.",
+          "Charge, current and time are linked by Q = I × t.",
+          "Charge is measured in coulombs (C), current in amperes (A) and time in seconds (s).",
+          "Electron flow runs from negative to positive — the reverse of conventional current."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Multiply how hard the charge flows (current) by how long it flows (time) and you have the total charge delivered.",
+            "analogy": "A water meter: flow rate times running time gives the total volume collected in the tank.",
+            "examPointer": "Keep units straight — coulombs for charge, amperes for current, seconds for time — before substituting anything."
+          },
+          "medium": {
+            "restatement": "The equation is a rate statement rearranged: since I = Q ÷ t, multiplying both sides by t gives Q = I × t.",
+            "analogy": "Earnings: current is your hourly wage, time is hours worked, and total charge is the pay packet at the end.",
+            "examPointer": "Convert minutes to seconds before substituting — examiners hide the unit conversion inside the question."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NZ5D2Mx9SXQY98wy::L2::Q1",
+          "rn_NZ5D2Mx9SXQY98wy::L2::Q2",
+          "rn_NZ5D2Mx9SXQY98wy::L2::Q3",
+          "rn_NZ5D2Mx9SXQY98wy::L2::Q4",
+          "rn_NZ5D2Mx9SXQY98wy::L2::Q5",
+          "rn_NZ5D2Mx9SXQY98wy::L2::Q6",
+          "rn_NZ5D2Mx9SXQY98wy::L2::Q7",
+          "rn_NZ5D2Mx9SXQY98wy::L2::Q8",
+          "rn_NZ5D2Mx9SXQY98wy::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04",
+          "fig-05"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "current",
+          "definition": "The rate at which electric charge streams through a component, measured in amperes.",
+          "firstLesson": 1
+        },
+        {
+          "term": "ampere",
+          "definition": "The unit of current: one coulomb of charge passing each second.",
+          "firstLesson": 1
+        },
+        {
+          "term": "charge",
+          "definition": "The fundamental electrical quantity whose flow constitutes a current, measured in coulombs.",
+          "firstLesson": 1
+        },
+        {
+          "term": "coulomb",
+          "definition": "The unit of charge — the packet delivered by a one-amp current in one second.",
+          "firstLesson": 1
+        },
+        {
+          "term": "conventional current",
+          "definition": "The agreed direction of current, from the positive terminal to the negative one.",
+          "firstLesson": 1
+        },
+        {
+          "term": "electron",
+          "definition": "The negatively charged particle whose drift through a metal carries the current.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A multiple-choice ask wants to know when an 8 A current will pass through a circuit. The options pair different charges with different times.",
+        "steps": [
+          "Rearrange Q = I × t to make the current the subject: I = Q ÷ t.",
+          "Test the pairing 4 C in 0.5 s: I = 4 ÷ 0.5 = 8 A — this one matches.",
+          "Test 8 C in 0.1 s: I = 8 ÷ 0.1 = 80 A, far larger than 8 A.",
+          "Test 1 C in 8 s: I = 1 ÷ 8 = 0.125 A, far smaller than 8 A.",
+          "The remaining option (8 J used by 1 C) describes 8 volts, not 8 amperes."
+        ],
+        "finalAnswer": "A charge of 4 C passing in 0.5 s produces the 8 A current, so that option is the answer."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3f6fa0dffa02-current-in-a-circuit.png",
+        "alt": "current-in-a-circuit",
+        "sourceHeading": "Current",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Charge flows from the positive terminal to the negative terminal",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/c6ecdbfb57ab-measuring-current.png",
+        "alt": "Measuring current, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Measuring current",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "An ammeter can be used to measure the current around a circuit",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3ed8a46542ef-electrons-and-current.png",
+        "alt": "electrons-and-current, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Charge",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "In metal wires, the current is a flow of negatively charged electrons. When a voltage is applied, electrons flow through the lattice of metal ions",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/d75bfa1a089e-flow-of-charge-in-a-circuit.png",
+        "alt": "flow-of-charge-in-a-circuit",
+        "sourceHeading": "Charge",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/5ba51ff45aef-current-charge-time-triangle.png",
+        "alt": "Current charge time triangle, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Calculating electric charge",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Formula triangle for the charge, current and time equation",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

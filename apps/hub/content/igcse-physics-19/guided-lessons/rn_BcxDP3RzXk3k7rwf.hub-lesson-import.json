@@ -1,0 +1,221 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_BcxDP3RzXk3k7rwf",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "51f0869980db8ebba20ff5dc9cdcf6254fc6b8708eb0c36846761632175bf37e",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_BcxDP3RzXk3k7rwf",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Current, Potential Difference & Resistance",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-1-current-potential-difference-and-resistance/2-1-2-voltage-and-energy",
+    "specAnchors": [
+      {
+        "code": "2.20",
+        "text": "know that: voltage is the energy transferred per unit charge passed; the volt is a joule per coulomb"
+      },
+      {
+        "code": "2.21",
+        "text": "know and use the relationship between energy transferred, charge and voltage: energy transferred = charge × voltage E = Q × V"
+      }
+    ],
+    "primer": {
+      "text": "Push a charge through a lamp and it hands over energy as it goes — the amount handed over by each coulomb is the voltage. This note defines the volt, follows the electrons as they gain energy inside the cell and spend it around the loop, and then builds the equation that turns charge and voltage into energy transferred.",
+      "prerequisiteSubtopic": "Current, Potential Difference & Resistance"
+    },
+    "modules": [
+      {
+        "id": "rn_BcxDP3RzXk3k7rwf::L1",
+        "title": "Voltage",
+        "sourceHeadings": [
+          "Voltage",
+          "Measuring voltage"
+        ],
+        "specRefs": [
+          "2.20"
+        ],
+        "opening": "Every coulomb leaving a cell carries an energy parcel, and the size of that parcel is what we call voltage. A 12 V cell hands each coulomb 12 joules to spend. This lesson pins the definition, watches electrons gain and spend that energy, and meets the meter that reads it.",
+        "keyPoints": [
+          "Voltage measures how much energy each coulomb of charge delivers between two points.",
+          "Voltage is measured in volts (V); one volt means one joule transferred by one coulomb.",
+          "Electrons gain energy as they pass through the cell and spend it around the circuit.",
+          "A voltmeter reads voltage and must be connected in parallel with the component.",
+          "Potential difference names the same quantity — a difference measured between two points."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Voltage is the energy price per coulomb: a 6 V supply gives every coulomb 6 joules to spend on the way round.",
+            "analogy": "Think of a fuel allowance per delivery van: the voltage is how much fuel each van (coulomb) is loaded with at the depot (cell).",
+            "examPointer": "Write the unit as volts (V) and remember the fundamental form: one volt is a joule per coulomb."
+          },
+          "medium": {
+            "restatement": "The energy story runs both ways — charge gains its parcel crossing the cell, then unloads it across the components it passes through.",
+            "analogy": "Riders buying a ticket at the station (the cell) and spending it on each ride (component) before returning for another.",
+            "examPointer": "Connect a voltmeter last when building a circuit, and always across the component — never in series."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_BcxDP3RzXk3k7rwf::L1::Q1",
+          "rn_BcxDP3RzXk3k7rwf::L1::Q2",
+          "rn_BcxDP3RzXk3k7rwf::L1::Q3",
+          "rn_BcxDP3RzXk3k7rwf::L1::Q4",
+          "rn_BcxDP3RzXk3k7rwf::L1::Q5",
+          "rn_BcxDP3RzXk3k7rwf::L1::Q6",
+          "rn_BcxDP3RzXk3k7rwf::L1::Q7",
+          "rn_BcxDP3RzXk3k7rwf::L1::Q8",
+          "rn_BcxDP3RzXk3k7rwf::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_BcxDP3RzXk3k7rwf::L2",
+        "title": "Calculating voltage",
+        "sourceHeadings": [
+          "Calculating voltage"
+        ],
+        "specRefs": [
+          "2.21"
+        ],
+        "opening": "One equation ties the energy story together: energy transferred equals charge moved times voltage. It answers the practical questions — how much energy does this lamp take, how much does that charge deliver. This lesson builds the equation, rearranges it both ways, and works a full example.",
+        "keyPoints": [
+          "Energy transferred equals charge moved multiplied by voltage — the equation E = Q × V computes the joules delivered.",
+          "Energy transferred is measured in joules (J), charge in coulombs (C) and voltage in volts (V).",
+          "Rearranged, voltage equals energy divided by charge, and charge equals energy divided by voltage.",
+          "A formula triangle with E on top and Q and V beneath generates all three rearrangements."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Multiply the charge that moved by the voltage it crossed and you have the energy it transferred.",
+            "analogy": "Bus fares: charge is the number of passengers, voltage is the fare each one pays, and energy is the total taken at the end.",
+            "examPointer": "State the equation before substituting — the marks are for E = Q × V, not just the number."
+          },
+          "medium": {
+            "restatement": "Every rearrangement keeps the units honest: joules ÷ coulombs gives volts, joules ÷ volts gives coulombs.",
+            "analogy": "A total bill: passengers × fare = total; you can always recover the fare by dividing the bill by the passenger count.",
+            "examPointer": "The triangle is a rearranging tool only — write the full equation in your answer or you may lose the mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_BcxDP3RzXk3k7rwf::L2::Q1",
+          "rn_BcxDP3RzXk3k7rwf::L2::Q2",
+          "rn_BcxDP3RzXk3k7rwf::L2::Q3",
+          "rn_BcxDP3RzXk3k7rwf::L2::Q4",
+          "rn_BcxDP3RzXk3k7rwf::L2::Q5",
+          "rn_BcxDP3RzXk3k7rwf::L2::Q6",
+          "rn_BcxDP3RzXk3k7rwf::L2::Q7",
+          "rn_BcxDP3RzXk3k7rwf::L2::Q8",
+          "rn_BcxDP3RzXk3k7rwf::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "voltage",
+          "definition": "The energy handed over by each coulomb of charge between two points, measured in volts.",
+          "firstLesson": 1
+        },
+        {
+          "term": "volt",
+          "definition": "The unit of voltage — one joule transferred per coulomb of charge.",
+          "firstLesson": 1
+        },
+        {
+          "term": "energy transferred",
+          "definition": "The total energy given to, or taken from, the charge as it moves — measured in joules.",
+          "firstLesson": 1
+        },
+        {
+          "term": "coulomb",
+          "definition": "The unit of charge — the packet delivered by a one-amp current in one second.",
+          "firstLesson": 1
+        },
+        {
+          "term": "voltmeter",
+          "definition": "The meter that reads voltage, connected in parallel across the component.",
+          "firstLesson": 1
+        },
+        {
+          "term": "potential difference",
+          "definition": "An alternative name for voltage, stressing that it compares two points in a circuit.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A lamp runs normally at 6 V. Find the energy transferred in the lamp when 4200 C of charge flows through it.",
+        "steps": [
+          "List the knowns: voltage V = 6 V and charge Q = 4200 C.",
+          "State the linking equation: E = Q × V.",
+          "Substitute: E = 4200 × 6.",
+          "Work the product: 4200 × 6 = 25 200."
+        ],
+        "finalAnswer": "25 200 J of energy is transferred in the lamp."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/0a116790cc6e-voltage-in-a-circuit.png",
+        "alt": "voltage-in-a-circuit",
+        "sourceHeading": "Voltage",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Electrons gain energy as they pass through a cell. As they flow through the light bulb, energy is transferred to the surroundings by heating and radiation",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/106fc663151b-9-1-2-1-voltmeter-in-a-circuit.png",
+        "alt": "Voltmeter in a circuit, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Measuring voltage",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Voltage can be measured by connecting a voltmeter in parallel between two points in a circuit",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/2f497f4d69e4-2-1-2-energy-charge-voltage-formula-triangle.png",
+        "alt": "Energy Charge Voltage Formula Triangle, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Calculating voltage",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Formula triangle for the energy transferred, voltage and charge equation",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

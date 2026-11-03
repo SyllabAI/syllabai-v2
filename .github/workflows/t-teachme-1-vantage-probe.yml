@@ -1,0 +1,105 @@
+# T-TEACHME-001 — provider VANTAGE probe + real-provider smoke leg from a
+# servable region (operator: "I think previously, we used github actions or
+# something for geo blocking issue", IM chat 97a19c8c, 2026-11-03).
+#
+# WHY THIS EXISTS (receipt key-probe-vantage-correction-2026-11-03.json):
+# the agent sandbox egresses from an Alibaba Cloud HONG KONG datacenter IP
+# that Groq edge-blocks PRE-AUTH (byte-identical 403 for no-key/garbage-key/
+# real-key — the key value is never evaluated) and Gemini location-refuses
+# ("User location is not supported"). Key validity is INDETERMINATE from
+# there. GitHub Actions runners egress from Azure US — a region both
+# providers serve — so this runner is the vantage of record.
+#
+#   mode=probe  key census ONLY: masked per-key verdicts against the real
+#     provider endpoints (scripts/keyprobe.py), results JSON as artifact.
+#     Zero LLM spend (GET /models class calls only).
+#   mode=smoke  the r10 leg: REAL chain of record in the PRODUCTION
+#     composition (groq -> gemini -> openrouter via buildLlmChain env-key
+#     boot law) through the FULL teach-session smoke against production DB
+#     (scripts/t-teachme-1-smoke-llm.ts --real-providers — the same driver
+#     that produced r8e, no fetchImpl override, ADR-023 dormant-honest for
+#     keyless members). Receipt artifact of record.
+#
+# OPERATOR GATE: workflow_dispatch ONLY — inert until dispatched.
+# Secrets of record (write-only, set via REST API, never in this file):
+#   PROBE_GROQ_KEYS, PROBE_GEMINI_KEYS, PROBE_OPENROUTER_KEY  (census)
+#   SYLLABAI_GROQ_API_KEY, SYLLABAI_GEMINI_API_KEY, SYLLABAI_OPENROUTER_API_KEY,
+#   SMOKE_DB_URI                                              (smoke leg)
+# Logs are key-safe by construction: the probe masks (first 8 + last 4);
+# the smoke driver receipt is scrub-asserted (no URIs/tokens; host only).
+name: t-teachme-1-vantage-probe
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'probe = masked key census (no LLM spend) | smoke = full real-provider teach-session leg'
+        required: true
+        default: 'probe'
+        type: choice
+        options:
+          - probe
+          - smoke
+      user_suffix:
+        description: 'smoke-mode only: fresh smoke-user suffix (hex nibble; aa0d = next free — D4 7-day credit dedupe bites on reused users)'
+        required: false
+        default: 'd'
+      groq_model:
+        description: 'smoke-mode only: optional SYLLABAI_LLM_GROQ_MODEL override (empty = yml default openai/gpt-oss-120b)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  vantage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SYLLABAI_LLM_OPENROUTER_MODEL: nvidia/nemotron-3-ultra-550b-a55b:free
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Key census from runner vantage (mode=probe)
+        if: inputs.mode == 'probe'
+        env:
+          PROBE_GROQ_KEYS: ${{ secrets.PROBE_GROQ_KEYS }}
+          PROBE_GEMINI_KEYS: ${{ secrets.PROBE_GEMINI_KEYS }}
+          PROBE_OPENROUTER_KEY: ${{ secrets.PROBE_OPENROUTER_KEY }}
+        run: python3 scripts/keyprobe.py
+
+      - name: Real-provider teach smoke, production composition (mode=smoke)
+        if: inputs.mode == 'smoke'
+        env:
+          SYLLABAI_GROQ_API_KEY: ${{ secrets.SYLLABAI_GROQ_API_KEY }}
+          GROQ_MODEL_INPUT: ${{ inputs.groq_model }}
+          SYLLABAI_GEMINI_API_KEY: ${{ secrets.SYLLABAI_GEMINI_API_KEY }}
+          SYLLABAI_OPENROUTER_API_KEY: ${{ secrets.SYLLABAI_OPENROUTER_API_KEY }}
+          SMOKE_DB_URI: ${{ secrets.SMOKE_DB_URI }}
+        run: |
+          set -eu
+          if [ -z "$SMOKE_DB_URI" ]; then echo "SMOKE_DB_URI secret not set — abort"; exit 1; fi
+          if [ -z "$SYLLABAI_OPENROUTER_API_KEY" ]; then echo "SYLLABAI_OPENROUTER_API_KEY secret not set — abort"; exit 1; fi
+          if [ -n "${GROQ_MODEL_INPUT:-}" ]; then export SYLLABAI_LLM_GROQ_MODEL="$GROQ_MODEL_INPUT"; echo "groq model override: $GROQ_MODEL_INPUT"; fi
+          bun install
+          bun run scripts/t-teachme-1-smoke-llm.ts \
+            --real-providers \
+            --db "$SMOKE_DB_URI" \
+            --receipt prod-smoke-receipt-r10-realprovider-usvantage.json \
+            --run r10-realprovider-usvantage \
+            --user-suffix "${{ inputs.user_suffix }}"
+
+      - name: Upload artifacts of record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t-teachme-1-vantage-${{ inputs.mode }}
+          path: |
+            probe-results.json
+            prod-smoke-receipt-r10-realprovider-usvantage.json
+          if-no-files-found: ignore

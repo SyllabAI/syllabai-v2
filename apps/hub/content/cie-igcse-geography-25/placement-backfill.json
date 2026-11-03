@@ -1,0 +1,24 @@
+{
+ "schema": "syllabai.hub.placement-backfill/1.0",
+ "generatedUtc": "2026-11-03T03:34:16+00:00",
+ "script": "scripts/sme_d0_backfill.py",
+ "basis": "SME section/topic-slug joins against this course's committed curriculum map; no content surgery, set-level placement only",
+ "placements": [
+  {
+   "slug": "sustainable-development--exam-questions",
+   "subtopicCode": "cie-igcse-geography-2025-2026-T3-gen",
+   "level": "topic",
+   "join": "J2 section",
+   "confidence": "medium",
+   "source": "fresh"
+  },
+  {
+   "slug": "uneven-development--exam-questions",
+   "subtopicCode": "cie-igcse-geography-2025-2026-T3-gen",
+   "level": "topic",
+   "join": "J2 section",
+   "confidence": "medium",
+   "source": "fresh"
+  }
+ ]
+}

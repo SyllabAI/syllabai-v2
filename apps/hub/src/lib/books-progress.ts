@@ -1,10 +1,12 @@
 "use client";
 
 /**
- * T-BOOK-067 — the chapter_progress client hook, shared by the rail shell
- * and the lesson tracker.
+ * T-BOOK-067 — the chapter_progress client hook, shared by the lesson
+ * tracker (and, pre-T-BOOK-071, the rail shell — retired from the viewer
+ * by ADR-BOOK-0005; the retired shell lives in git history).
  *
- * Extracted BYTE-EQUAL from rail-workspace.tsx's local hook block (same
+ * Extracted BYTE-EQUAL from the pre-T-BOOK-071 rail-workspace.tsx's local
+ * hook block (same
  * wire, same debounce, same silent-401 law): GET on mount (cache no-store;
  * any non-ok — 401 signed-out above all — silently skips persistence, the
  * surface stays fully usable), then debounced PUTs. The lesson is another

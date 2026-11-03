@@ -1,0 +1,222 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_ynsstfBQngnx2pgq",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "15a4fb4ae1b52d20c392baccc564a81c592506cd02cce1f6b001513b0c864ea8",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_ynsstfBQngnx2pgq",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Components in Series & Parallel Circuits",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-2-components-in-series-and-parallel-circuits/2-2-2-voltage-in-series-and-parallel",
+    "specAnchors": [
+      {
+        "code": "2.18",
+        "text": "know that the voltage across two components connected in parallel is the same"
+      },
+      {
+        "code": "2.7",
+        "text": "explain why a series or parallel circuit is more appropriate for particular applications, including domestic lighting"
+      }
+    ],
+    "primer": {
+      "text": "In a series loop the battery's voltage is divided among the components; in a parallel network every branch receives the full supply. This note works through both divisions, explains why identical series components split the voltage equally, and weighs which arrangement suits a real job better — including why homes wire their lighting in parallel.",
+      "prerequisiteSubtopic": "Components in Series & Parallel Circuits"
+    },
+    "modules": [
+      {
+        "id": "rn_ynsstfBQngnx2pgq::L1",
+        "title": "Voltage in series & parallel",
+        "sourceHeadings": [
+          "Voltage in series",
+          "Voltage in parallel"
+        ],
+        "specRefs": [
+          "2.18"
+        ],
+        "opening": "One battery, two very different sharing habits. In a single loop the components divide the voltage between them, with the greedier resistor taking the bigger share. In parallel, every branch is wired straight across the supply and takes the whole voltage. This lesson compares the two arrangements side by side.",
+        "keyPoints": [
+          "In a series loop the supply voltage is shared out among the components.",
+          "Two identical components in series take equal shares — half the supply voltage each.",
+          "With different resistances in series, the larger resistance takes the larger voltage share.",
+          "Every branch of a parallel circuit receives the full supply voltage.",
+          "Components wired in parallel therefore all see the same voltage across them."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Series shares the voltage out; parallel repeats the full voltage across each branch.",
+            "analogy": "Sharing one pizza in slices (series) versus everyone getting their own whole pizza (parallel).",
+            "examPointer": "Quote the parallel rule verbatim: components connected in parallel have the same voltage across them."
+          },
+          "medium": {
+            "restatement": "In series the voltage divide follows resistance — equal resistors split equally, unequal resistors split unequally.",
+            "analogy": "Tug-of-war prizes: the stronger puller (larger resistance) claims the larger share of the prize money (voltage).",
+            "examPointer": "Watch the assumption in questions: 'identical' components guarantee equal shares; different resistances do not."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ynsstfBQngnx2pgq::L1::Q1",
+          "rn_ynsstfBQngnx2pgq::L1::Q2",
+          "rn_ynsstfBQngnx2pgq::L1::Q3",
+          "rn_ynsstfBQngnx2pgq::L1::Q4",
+          "rn_ynsstfBQngnx2pgq::L1::Q5",
+          "rn_ynsstfBQngnx2pgq::L1::Q6",
+          "rn_ynsstfBQngnx2pgq::L1::Q7",
+          "rn_ynsstfBQngnx2pgq::L1::Q8",
+          "rn_ynsstfBQngnx2pgq::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_ynsstfBQngnx2pgq::L2",
+        "title": "Advantages & disadvantages",
+        "sourceHeadings": [
+          "Advantages and disadvantages of a series circuit",
+          "Advantages and disadvantages of parallel circuits"
+        ],
+        "specRefs": [
+          "2.7"
+        ],
+        "opening": "Which wiring wins in real life? A series loop is simple and cheap but all-or-nothing; a parallel array costs more wiring yet keeps working when one lamp fails and lets every lamp have its own switch. This lesson weighs the trade-offs and explains how homes choose.",
+        "keyPoints": [
+          "A single switch controls every component of a series circuit.",
+          "Series circuits need fewer wires, but one break stops the whole loop.",
+          "Components in series cannot be switched separately.",
+          "Each lamp in a parallel circuit can be switched on and off independently.",
+          "If one branch of a parallel circuit breaks, the remaining branches keep working.",
+          "Parallel wiring uses more connections and every branch receives the full supply voltage."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Series trades control and resilience for simplicity; parallel pays in wiring and buys control and resilience back.",
+            "analogy": "One string of old Christmas lights versus modern room lighting: pull one bulb and see which design survives.",
+            "examPointer": "Domestic lighting is the standard example: each light switched independently, each on the full mains voltage."
+          },
+          "medium": {
+            "restatement": "The engineering question is per-component control: series couples every component's fate; parallel isolates each branch's.",
+            "analogy": "A single fuse for the whole house versus a fuse box with one fuse per room — the second costs more and forgives more.",
+            "examPointer": "Quote both sides: parallel gives independent switching and failure isolation, at the cost of more wiring and full voltage on every branch."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ynsstfBQngnx2pgq::L2::Q1",
+          "rn_ynsstfBQngnx2pgq::L2::Q2",
+          "rn_ynsstfBQngnx2pgq::L2::Q3",
+          "rn_ynsstfBQngnx2pgq::L2::Q4",
+          "rn_ynsstfBQngnx2pgq::L2::Q5",
+          "rn_ynsstfBQngnx2pgq::L2::Q6",
+          "rn_ynsstfBQngnx2pgq::L2::Q7",
+          "rn_ynsstfBQngnx2pgq::L2::Q8",
+          "rn_ynsstfBQngnx2pgq::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "series circuit",
+          "definition": "A circuit with a single loop, in which the supply voltage divides among the components.",
+          "firstLesson": 1
+        },
+        {
+          "term": "parallel circuit",
+          "definition": "A circuit of branches connected across the supply, each receiving the full voltage.",
+          "firstLesson": 1
+        },
+        {
+          "term": "branch",
+          "definition": "One of the parallel paths across the supply, wired independently of the others.",
+          "firstLesson": 1
+        },
+        {
+          "term": "switch",
+          "definition": "A component that opens or closes a circuit path to control what it feeds.",
+          "firstLesson": 2
+        },
+        {
+          "term": "potential difference",
+          "definition": "The voltage measured between two points — full across each parallel branch, shared in series.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/aabd9300801d-2-2-1-series-circuit-example.png",
+        "alt": "aabd9300801d-2-2-1-series-circuit-example",
+        "sourceHeading": "Voltage in series",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Lamps connected in a series circuit share the potential difference from the battery",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/54af46094506-2-2-1-parallel-circuit-example.png",
+        "alt": "54af46094506-2-2-1-parallel-circuit-example",
+        "sourceHeading": "Voltage in parallel",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Lamps connected in a parallel circuit all have the same voltage across them",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/0a8f79c6d512-series-circuit.png",
+        "alt": "Series circuit, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Advantages and disadvantages of a series circuit",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "In a series circuit, only one switch is needed to control all of the lamps. This can be seen as an advantage or as a disadvantage",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/fcbce365f21e-parallel-circuit.png",
+        "alt": "Parallel circuit, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Advantages and disadvantages of parallel circuits",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "In a parallel circuit, the lamps are connected in parallel and can be switched on and off by their own switches",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

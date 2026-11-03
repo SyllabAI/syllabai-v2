@@ -33,6 +33,7 @@ import type {
   SimLearnerState as SimLearnerStateT,
 } from "@/lib/contracts";
 import { loadContentJson, hasContentFile } from "@/lib/corpus";
+import { buildDeckSections, type FlashcardDeckSection } from "@/lib/flashcard-decks";
 import { boardOf } from "./board";
 
 const CourseRegistry = z.object({
@@ -345,6 +346,12 @@ export interface HubCourse {
   setListsBySubtopic: Record<string, { slug: string; title: string; count: number }[]>;
   /** sub-topic code → flashcards */
   cardsBySubtopic: Record<string, string[]>;
+  /** SME-native deck index — sections → decks, corpus (SME) order. The
+   *  flashcards plane's own organization (trace 1a19f6776ca5a619): one row
+   *  per real SME deck, every card reachable. */
+  deckSections: FlashcardDeckSection[];
+  /** deckSlug → card ids, corpus (SME) order — what a deck page serves */
+  cardsByDeck: Record<string, string[]>;
   notes: RevisionNoteT[];
   questionTopics: ExamQuestionTopicT[];
   /** official past papers — Past Papers interactive view only (never the
@@ -369,7 +376,7 @@ export interface HubCourse {
  */
 export const loadHubCourse = cache(
   async function loadHubCourse(slug: string): Promise<HubCourse | null> {
-  const { buildSpecTreeIndex, resourceCounts, subtopicOfNote, subtopicOfQuestionSet, subtopicOfFlashcard } =
+  const { buildSpecTreeIndex, generalTopicsOfQuestionTopics, resourceCounts, subtopicOfNote, subtopicOfQuestionSet, subtopicOfFlashcard } =
     await import("@/lib/spec-tree");
 
   const meta = await getCourseMeta(slug);
@@ -410,6 +417,8 @@ export const loadHubCourse = cache(
       notesBySubtopic: {},
       setListsBySubtopic: {},
       cardsBySubtopic: {},
+      deckSections: [],
+      cardsByDeck: {},
       notes: [],
       questionTopics: [],
       officialPaperTopics: [],
@@ -418,7 +427,11 @@ export const loadHubCourse = cache(
     };
   }
 
-  const index = buildSpecTreeIndex(curriculum);
+  const index = buildSpecTreeIndex(curriculum, {
+    // D0 backfill: topics holding topic-level-placed sets need their
+    // "General requirements" row to exist so those placements resolve
+    generalTopics: generalTopicsOfQuestionTopics(questionTopics),
+  });
   const countsMap = resourceCounts(notes, questionTopics, flashcards, index);
   const counts: HubCourse["counts"] = {};
   for (const [code, v] of countsMap) counts[code] = v;
@@ -434,10 +447,6 @@ export const loadHubCourse = cache(
   for (const t of questionTopics) {
     const s = subtopicOfQuestionSet(t, index);
     if (s) {
-      // first-write wins: the row's default target is the first set in corpus
-      // order (e.g. Multiple-Choice before Structured); the tree expander
-      // lists every set anchored to the sub-topic
-      hrefs.questions[s] ??= `${base}/exam-questions/${t.slug}`;
       (setsBySubtopic[s] ??= []).push(t.slug);
       (setListsBySubtopic[s] ??= []).push({
         slug: t.slug,
@@ -445,6 +454,20 @@ export const loadHubCourse = cache(
         count: t.questions.length,
       });
     }
+  }
+  // Row-link policy (SME selector audit, D3): the sidebar row shows the
+  // sub-topic's AGGREGATE question count, so the row's target must be a
+  // place that actually holds every counted question. Single-set rows
+  // deep-link straight to their set; multi-set rows land on the grouped
+  // bank view (?subtopic=) instead of silently opening only the first set
+  // in corpus order — first-write-wins hid ~8.3k questions fleet-wide
+  // behind rows whose count promised all of them. Deterministic in set
+  // count, not corpus order.
+  for (const [code, slugs] of Object.entries(setsBySubtopic)) {
+    hrefs.questions[code] =
+      slugs.length === 1
+        ? `${base}/exam-questions/${slugs[0]}`
+        : `${base}/exam-questions?subtopic=${encodeURIComponent(code)}`;
   }
   for (const n of notes) {
     const s = subtopicOfNote(n, index);
@@ -464,6 +487,11 @@ export const loadHubCourse = cache(
       if (!hrefs.flashcards[s]) hrefs.flashcards[s] = `${base}/flashcards/${s}`;
     }
   }
+  // the flashcards plane's OWN organization (trace 1a19f6776ca5a619): the
+  // SME-native deck index — select page rows and deck pages resolve through
+  // THIS, not through the spec tree; the sidebar's spec-keyed hrefs above
+  // stay alive through the deck route's legacy-subtopic branch
+  const { sections: deckSections, cardsByDeck } = buildDeckSections(flashcards, questionTopics);
 
   return {
     meta,
@@ -477,6 +505,8 @@ export const loadHubCourse = cache(
     notesBySubtopic,
     setListsBySubtopic,
     cardsBySubtopic,
+    deckSections,
+    cardsByDeck,
     notes,
     questionTopics,
     officialPaperTopics,

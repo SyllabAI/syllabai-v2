@@ -37,5 +37,21 @@
   "spine": "spines/cie-as-chemistry-25.json",
   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
   "attachmentMap": "content-maps/cie-as-chemistry-25.json"
+ },
+ "tagBackfill": {
+  "schema": "syllabai.hub.tag-backfill/1.0",
+  "date": "2026-11-03",
+  "source": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "SME-ExamQuestion/cie-as-chemistry-25",
+   "ref": "main@fb28c174adec"
+  },
+  "method": "part smeSpecPointIds → SME spec-point-index name → official SPEC_POINT title (exact, per part); else the part's SME subtopic slugs resolved to curriculum subtopics (per part); else set-level fallback via SME topic-name title join to a unique curriculum SUBTOPIC",
+  "sets": 34,
+  "questions": 384,
+  "partsExact": 0,
+  "partsPerPartSme": 0,
+  "partsSubtopicLevel": 520,
+  "residualSets": 0
  }
 }

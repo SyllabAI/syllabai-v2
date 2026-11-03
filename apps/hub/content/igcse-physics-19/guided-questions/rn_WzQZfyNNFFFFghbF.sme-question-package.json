@@ -1,0 +1,748 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_WzQZfyNNFFFFghbF",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8c0c55647d3a22e189d77f2a9986991f75b3ccc0437435535cdd514fc9c40132",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "packageId": "igcse-physics::rn_WzQZfyNNFFFFghbF",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L1::Q1",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L1",
+      "stem": "An IV graph that is a straight line through the origin shows:",
+      "misconceptionClass": "graph reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "a resistance that grows with voltage",
+          "correct": false,
+          "explanation": "A growing resistance would bend the line, not keep it straight.",
+          "misconception": "lamp behaviour"
+        },
+        {
+          "key": "B",
+          "text": "a constant resistance",
+          "correct": true,
+          "explanation": "The straight proportional line is the signature of unchanging resistance.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a diode in reverse bias",
+          "correct": false,
+          "explanation": "Reverse bias shows a flat zero region, not a rising straight line.",
+          "misconception": "component slip"
+        },
+        {
+          "key": "D",
+          "text": "no current flowing",
+          "correct": false,
+          "explanation": "A rising line records current growing with voltage.",
+          "misconception": "zero myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L1::Q2",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L1",
+      "stem": "Which component gives a linear IV graph at constant temperature?",
+      "misconceptionClass": "component classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "a filament lamp",
+          "correct": false,
+          "explanation": "The lamp's graph bends as its filament heats.",
+          "misconception": "non-linear component"
+        },
+        {
+          "key": "B",
+          "text": "a diode",
+          "correct": false,
+          "explanation": "The diode's graph is strongly non-linear.",
+          "misconception": "non-linear component"
+        },
+        {
+          "key": "C",
+          "text": "a fixed resistor",
+          "correct": true,
+          "explanation": "At steady temperature a fixed resistor's straight line passes through the origin.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "an LDR",
+          "correct": false,
+          "explanation": "An LDR's resistance moves with the light level.",
+          "misconception": "non-linear component"
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L1::Q3",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L1",
+      "stem": "On a non-linear IV graph, the resistance:",
+      "misconceptionClass": "graph reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "is constant",
+          "correct": false,
+          "explanation": "Constancy is the straight-line signature, not the curved one.",
+          "misconception": "linear carryover"
+        },
+        {
+          "key": "B",
+          "text": "changes as the current changes",
+          "correct": true,
+          "explanation": "The curvature exists precisely because the resistance varies.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "is always zero",
+          "correct": false,
+          "explanation": "A zero resistance would be a vertical line, not a curve.",
+          "misconception": "zero myth"
+        },
+        {
+          "key": "D",
+          "text": "cannot be found at any point",
+          "correct": false,
+          "explanation": "Reading voltage and current at a point still gives the resistance there.",
+          "misconception": "impossibility myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L1::Q4",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L1",
+      "stem": "For a wire at steady temperature, doubling the voltage across it:",
+      "misconceptionClass": "proportionality",
+      "options": [
+        {
+          "key": "A",
+          "text": "doubles the current",
+          "correct": true,
+          "explanation": "Direct proportionality: twice the push, twice the flow.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "less than doubles the current",
+          "correct": false,
+          "explanation": "That falloff belongs to heating components like filament lamps.",
+          "misconception": "lamp behaviour"
+        },
+        {
+          "key": "C",
+          "text": "leaves the current unchanged",
+          "correct": false,
+          "explanation": "Voltage is what drives the current through the wire.",
+          "misconception": "independence myth"
+        },
+        {
+          "key": "D",
+          "text": "more than doubles the current",
+          "correct": false,
+          "explanation": "That acceleration belongs to a forward-biased diode, not a wire.",
+          "misconception": "diode behaviour"
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L1::Q5",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L1",
+      "stem": "Which statement about the resistance of a wire at constant temperature is true?",
+      "misconceptionClass": "constancy reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it rises with the current",
+          "correct": false,
+          "explanation": "Rising resistance with current is the filament's behaviour, not a cool wire's.",
+          "misconception": "lamp carryover"
+        },
+        {
+          "key": "B",
+          "text": "it falls as the voltage rises",
+          "correct": false,
+          "explanation": "Nothing in a steady-temperature wire lowers its resistance.",
+          "misconception": "inverse myth"
+        },
+        {
+          "key": "C",
+          "text": "it depends on the voltmeter used",
+          "correct": false,
+          "explanation": "The resistance belongs to the wire, not the meter.",
+          "misconception": "meter myth"
+        },
+        {
+          "key": "D",
+          "text": "it stays constant as the voltage varies",
+          "correct": true,
+          "explanation": "A steady-temperature wire keeps one resistance across the voltage range.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L1::Q6",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L1",
+      "stem": "What shape does the IV graph of a fixed resistor take, and what does the shape tell you?",
+      "misconceptionClass": "graph reading recall",
+      "kind": "recall",
+      "modelAnswer": "A straight line through the origin — the current is directly proportional to the voltage, so the resistance stays constant.",
+      "keywords": [
+        "straight",
+        "origin",
+        "proportional",
+        "resistance",
+        "constant"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L1::Q7",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L1",
+      "stem": "Name two components with non-linear IV graphs.",
+      "misconceptionClass": "component recall",
+      "kind": "recall",
+      "modelAnswer": "Filament lamps and diodes — thermistors and LDRs are non-linear too.",
+      "keywords": [
+        "filament",
+        "diodes",
+        "non-linear",
+        "thermistors",
+        "LDRs"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L1::Q8",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L1",
+      "stem": "Explain what an IV graph running straight through the origin tells you about how the current behaves.",
+      "misconceptionClass": "proportionality reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Current and voltage grow in step, so doubling one doubles the other — the current is directly proportional to the voltage and the resistance never changes.",
+      "keywords": [
+        "proportional",
+        "voltage",
+        "current",
+        "doubling",
+        "resistance"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L1::Q9",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L1",
+      "stem": "A fixed resistor's IV graph passes through (2 V, 0.4 A) as a straight line through the origin. Predict the current at 5 V, then the resistance.",
+      "misconceptionClass": "proportionality calculation",
+      "kind": "application",
+      "modelAnswer": "The line's steepness sets the ratio: current per volt = 0.4 ÷ 2 = 0.2 A per volt, so 5 V gives 5 × 0.2 = 1 A. The resistance is 2 ÷ 0.4 = 5 Ω.",
+      "keywords": [
+        "1",
+        "5",
+        "0.2",
+        "resistance",
+        "proportional"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L2::Q1",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L2",
+      "stem": "As the voltage across a filament lamp increases, the current:",
+      "misconceptionClass": "lamp behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "increases at a proportionally slower rate",
+          "correct": true,
+          "explanation": "The growing resistance bends the graph, so the current gains less and less.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "increases at a proportionally faster rate",
+          "correct": false,
+          "explanation": "The lamp's rising resistance restrains the current instead.",
+          "misconception": "faster myth"
+        },
+        {
+          "key": "C",
+          "text": "stays exactly proportional",
+          "correct": false,
+          "explanation": "Proportionality is the cool fixed resistor's behaviour.",
+          "misconception": "linear carryover"
+        },
+        {
+          "key": "D",
+          "text": "falls",
+          "correct": false,
+          "explanation": "The current still grows; only its rate slows.",
+          "misconception": "direction myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L2::Q2",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L2",
+      "stem": "The filament's resistance grows with current because:",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the filament's temperature rises and its atoms vibrate more",
+          "correct": true,
+          "explanation": "Hotter lattice atoms obstruct the drifting electrons, raising the resistance.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the filament loses mass",
+          "correct": false,
+          "explanation": "No mass leaves the wire in normal operation.",
+          "misconception": "mass myth"
+        },
+        {
+          "key": "C",
+          "text": "the voltage destroys resistance",
+          "correct": false,
+          "explanation": "The resistance rises rather than being destroyed.",
+          "misconception": "nonsense"
+        },
+        {
+          "key": "D",
+          "text": "electrons multiply inside the wire",
+          "correct": false,
+          "explanation": "Charge carriers are never manufactured by the current.",
+          "misconception": "creation myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L2::Q3",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L2",
+      "stem": "In reverse bias, a diode:",
+      "misconceptionClass": "diode behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "carries a large current",
+          "correct": false,
+          "explanation": "Large current belongs to forward bias.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "B",
+          "text": "melts open",
+          "correct": false,
+          "explanation": "Blocking is normal diode behaviour, not damage.",
+          "misconception": "destruction myth"
+        },
+        {
+          "key": "C",
+          "text": "behaves like a straight-line graph",
+          "correct": false,
+          "explanation": "The reverse side of a diode graph is a flat zero region.",
+          "misconception": "linear carryover"
+        },
+        {
+          "key": "D",
+          "text": "has a very high resistance and passes essentially no current",
+          "correct": true,
+          "explanation": "The reverse direction is the diode's blocked direction.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L2::Q4",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L2",
+      "stem": "A diode conducts:",
+      "misconceptionClass": "diode behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "in both directions equally",
+          "correct": false,
+          "explanation": "The whole point of a diode is its asymmetry.",
+          "misconception": "symmetry myth"
+        },
+        {
+          "key": "B",
+          "text": "in neither direction",
+          "correct": false,
+          "explanation": "Forward bias conducts freely.",
+          "misconception": "blocking myth"
+        },
+        {
+          "key": "C",
+          "text": "in one direction only",
+          "correct": true,
+          "explanation": "Forward bias passes current; reverse bias blocks it.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "only when the current alternates",
+          "correct": false,
+          "explanation": "Diode behaviour is about direction, not alternation.",
+          "misconception": "AC myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L2::Q5",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L2",
+      "stem": "Compared with a fixed resistor's graph, a filament lamp's graph:",
+      "misconceptionClass": "graph comparison",
+      "options": [
+        {
+          "key": "A",
+          "text": "is also perfectly straight",
+          "correct": false,
+          "explanation": "The lamp's heating makes its graph bend.",
+          "misconception": "linear carryover"
+        },
+        {
+          "key": "B",
+          "text": "bends as the resistance climbs with temperature",
+          "correct": true,
+          "explanation": "The curve records the growing resistance of the hot filament.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "has a negative slope",
+          "correct": false,
+          "explanation": "Current still grows with voltage; the slope stays positive.",
+          "misconception": "sign myth"
+        },
+        {
+          "key": "D",
+          "text": "never passes through the origin region at all",
+          "correct": false,
+          "explanation": "Both graphs start near zero and rise from there.",
+          "misconception": "nonsense"
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L2::Q6",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L2",
+      "stem": "Describe the shape of a filament lamp's IV graph and state what happens to its resistance.",
+      "misconceptionClass": "graph reading recall",
+      "kind": "recall",
+      "modelAnswer": "The graph curves so the current rises more slowly than the voltage; the lamp's resistance increases as the filament heats.",
+      "keywords": [
+        "curves",
+        "resistance",
+        "increases",
+        "filament",
+        "heats"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L2::Q7",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L2",
+      "stem": "What is forward bias for a diode?",
+      "misconceptionClass": "diode recall",
+      "kind": "recall",
+      "modelAnswer": "The direction in which the diode lets current flow — when the current lines up with the arrowhead of the symbol.",
+      "keywords": [
+        "forward",
+        "bias",
+        "diode",
+        "current",
+        "direction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L2::Q8",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L2",
+      "stem": "Explain why a diode passes no current in reverse bias.",
+      "misconceptionClass": "diode reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "In reverse bias the diode's resistance becomes extremely high, and a very large resistance chokes the current to effectively zero.",
+      "keywords": [
+        "reverse",
+        "bias",
+        "resistance",
+        "current",
+        "high"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L2::Q9",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L2",
+      "stem": "A diode is placed in a circuit backwards. State what the ammeter reads and what the IV graph shows on that side.",
+      "misconceptionClass": "diode application",
+      "kind": "application",
+      "modelAnswer": "The ammeter reads zero, and the graph lies flat along the axis on the reverse side, showing the very high reverse resistance.",
+      "keywords": [
+        "zero",
+        "reverse",
+        "graph",
+        "flat",
+        "ammeter"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L3::Q1",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L3",
+      "stem": "In the IV investigation, the independent variable is:",
+      "misconceptionClass": "experimental design",
+      "options": [
+        {
+          "key": "A",
+          "text": "the voltage",
+          "correct": false,
+          "explanation": "Voltage is the quantity read off — the dependent variable.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "B",
+          "text": "the current, adjusted with the variable resistor",
+          "correct": true,
+          "explanation": "The experimenter sets the current, making it independent.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the resistance of the ammeter",
+          "correct": false,
+          "explanation": "The ammeter's resistance is assumed negligible and fixed.",
+          "misconception": "meter myth"
+        },
+        {
+          "key": "D",
+          "text": "the wire length",
+          "correct": false,
+          "explanation": "Wire length is inside the variable resistor, not the measured variable.",
+          "misconception": "component myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L3::Q2",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L3",
+      "stem": "The instrument that varies the current in the investigation is the:",
+      "misconceptionClass": "equipment recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "ammeter",
+          "correct": false,
+          "explanation": "The ammeter measures the current; it does not set it.",
+          "misconception": "meter slip"
+        },
+        {
+          "key": "B",
+          "text": "voltmeter",
+          "correct": false,
+          "explanation": "The voltmeter measures the voltage across the component.",
+          "misconception": "meter slip"
+        },
+        {
+          "key": "C",
+          "text": "variable resistor",
+          "correct": true,
+          "explanation": "Adjusting the variable resistor steps the current through the circuit.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "power source",
+          "correct": false,
+          "explanation": "The source provides the push; the resistor does the adjusting.",
+          "misconception": "source slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L3::Q3",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L3",
+      "stem": "Increasing a circuit's resistance while the supply stays fixed makes the current:",
+      "misconceptionClass": "resistance effect",
+      "options": [
+        {
+          "key": "A",
+          "text": "smaller",
+          "correct": true,
+          "explanation": "More opposition at the same push means less flow.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "larger",
+          "correct": false,
+          "explanation": "That would need less resistance, not more.",
+          "misconception": "opposite slip"
+        },
+        {
+          "key": "C",
+          "text": "unchanged",
+          "correct": false,
+          "explanation": "Resistance is the dial that controls the current.",
+          "misconception": "independence myth"
+        },
+        {
+          "key": "D",
+          "text": "alternating",
+          "correct": false,
+          "explanation": "Direction of flow has nothing to do with the resistance size.",
+          "misconception": "AC myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L3::Q4",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L3",
+      "stem": "A variable resistor changes its resistance by:",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "heating itself up",
+          "correct": false,
+          "explanation": "Self-heating is the filament's story, not the variable resistor's control method.",
+          "misconception": "thermal myth"
+        },
+        {
+          "key": "B",
+          "text": "altering the length of wire in the circuit",
+          "correct": true,
+          "explanation": "Sliding the contact changes how much wire the current must traverse.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "adding more cells",
+          "correct": false,
+          "explanation": "Cells change the supply voltage, not the resistor.",
+          "misconception": "source myth"
+        },
+        {
+          "key": "D",
+          "text": "reversing its terminals",
+          "correct": false,
+          "explanation": "Direction does not set a resistor's value.",
+          "misconception": "direction myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L3::Q5",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L3",
+      "stem": "A longer variable-resistor wire gives:",
+      "misconceptionClass": "resistance reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "less resistance",
+          "correct": false,
+          "explanation": "More wire means more opposition, not less.",
+          "misconception": "inverse slip"
+        },
+        {
+          "key": "B",
+          "text": "the same resistance",
+          "correct": false,
+          "explanation": "The whole point of the slider is a changing resistance.",
+          "misconception": "independence myth"
+        },
+        {
+          "key": "C",
+          "text": "zero resistance",
+          "correct": false,
+          "explanation": "Wire never offers zero resistance in reality.",
+          "misconception": "extreme myth"
+        },
+        {
+          "key": "D",
+          "text": "more resistance",
+          "correct": true,
+          "explanation": "A longer wire carries more opposition for the charge to pass.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L3::Q6",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L3",
+      "stem": "List the equipment needed to investigate how current varies with voltage.",
+      "misconceptionClass": "equipment recall",
+      "kind": "recall",
+      "modelAnswer": "An ammeter, a voltmeter, a variable resistor, a power source and connecting wires.",
+      "keywords": [
+        "ammeter",
+        "voltmeter",
+        "variable",
+        "resistor",
+        "power",
+        "wires"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L3::Q7",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L3",
+      "stem": "State which quantity is the independent variable in the IV investigation and which instrument changes it.",
+      "misconceptionClass": "design recall",
+      "kind": "recall",
+      "modelAnswer": "The current is independent, and the variable resistor is used to change it.",
+      "keywords": [
+        "current",
+        "independent",
+        "variable",
+        "resistor",
+        "change"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L3::Q8",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L3",
+      "stem": "Explain why the voltmeter's readings form the dependent variable of the investigation.",
+      "misconceptionClass": "design reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The experimenter sets the current with the variable resistor and then reads off the voltage that results, so the voltage depends on the chosen current.",
+      "keywords": [
+        "voltage",
+        "dependent",
+        "current",
+        "variable",
+        "resistor"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_WzQZfyNNFFFFghbF::L3::Q9",
+      "moduleId": "rn_WzQZfyNNFFFFghbF::L3",
+      "stem": "An investigator steps the current up five times, recording the voltage each time. What can be plotted from the pairs, and which shape signals a constant resistance?",
+      "misconceptionClass": "design application",
+      "kind": "application",
+      "modelAnswer": "The recorded pairs plot an IV graph; a straight line through the origin signals a constant resistance.",
+      "keywords": [
+        "IV",
+        "graph",
+        "straight",
+        "origin",
+        "constant"
+      ],
+      "options": []
+    }
+  ]
+}

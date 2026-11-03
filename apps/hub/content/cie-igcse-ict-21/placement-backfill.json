@@ -1,0 +1,32 @@
+{
+ "schema": "syllabai.hub.placement-backfill/1.0",
+ "generatedUtc": "2026-11-03T03:34:16+00:00",
+ "script": "scripts/sme_d0_backfill.py",
+ "basis": "SME section/topic-slug joins against this course's committed curriculum map; no content surgery, set-level placement only",
+ "placements": [
+  {
+   "slug": "types-of-computer-and-emerging-technologies--exam-questions",
+   "subtopicCode": "cie-igcse-ict-2023-2025-T1-gen",
+   "level": "topic",
+   "join": "section join (J2)",
+   "confidence": "medium",
+   "source": "plan"
+  },
+  {
+   "slug": "css-in-the-presentation-layer--exam-questions",
+   "subtopicCode": "cie-igcse-ict-2023-2025-T21-gen",
+   "level": "topic",
+   "join": "section join (J2)",
+   "confidence": "medium",
+   "source": "plan"
+  },
+  {
+   "slug": "html-in-the-content-layer--exam-questions",
+   "subtopicCode": "cie-igcse-ict-2023-2025-T21-gen",
+   "level": "topic",
+   "join": "section join (J2)",
+   "confidence": "medium",
+   "source": "plan"
+  }
+ ]
+}

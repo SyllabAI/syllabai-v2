@@ -927,3 +927,19 @@ Work Log:
 Stage Summary:
 - T-VERCEL-TURBO-413 run-001: the 413 class is the reason turbo remote cache was enabled-but-unusable; this is the smallest diff that makes the artifact uploadable. Verification receipt (next same-hash production build): build log must contain `cache hit, replaying logs` and NO `failed to contact remote cache` warning; expected duration drop from ~900–1100s toward minutes. Deployment volume (a prod deploy per push; git.deploymentEnabled main=true) and retention pruning are separate operator decisions.
 
+
+## T-VERCEL-TURBO-413 run-002 — remote cache verdict: Vercel hard-caps artifacts at 100MB; hub .next can never fit (trace 1a19d67dcbb2178d)
+Agent: main (Z.ai, zai-web session web-561901d7-498c-4c6f-aad2-00aeb4727ae6)
+Task: verify the run-001 fix end-to-end on Vercel (operator order: merge PR #652 + prune old deployments) and produce the cache-hit receipt.
+
+Work Log:
+- PR #652 merged (merge commit 06a7d78, CI hub+verify SUCCESS); auto-deploy dpl_Grv5mcnxwwHn4eYWKJgyP84X9ZAf built at the new turbo hash 5bbdcfb99c251a42 (outputs+env changes are hash inputs), READY 968s.
+- Build log: `413` GONE (run-001 fix effective — the standalone-embedded public/ copy is out of the artifact), but upload now fails with `400 Bad Request` on PUT https://vercel.com/api/v8/artifacts/5bbdcfb99c251a42?teamId=….
+- Empirical probe (PAT-scoped, first-hand): PUT /api/v8/artifacts — 8MB → 202; 64MB → 202; 128MB → 400 `{"code":"size_limit_exceeded","message":"File size limit exceeded (100 MB)"}`. HEAD of the real task artifact hash → 404 (never uploaded, consistent with both failures). Vercel remote cache = hard 100MB per artifact; turbo packages one artifact per task.
+- Sizing: hub deployable .next (minus .next/cache, minus .next/standalone) + corpus-index ≈ several hundred MB raw (4,405 prerendered pages + chunks); compressed still ≫ 100MB. No honest subset of outputs works: excluding static/chunks breaks cache-hit deploys (missing client chunks); excluding prerendered HTML breaks the pages (they ARE the deployment). VERDICT: turbo remote cache cannot cache @syllabai/hub#build on Vercel-hosted cache until build outputs shrink under 100MB compressed.
+- Deployment prune executed (operator order, DELETE /v13/deployments): 434 deleted (240 round-1 + 194 round-2, 0 final failures; Vercel now-rm rate limiter required a 10-min backoff mid-run), 445 → 11 deployments (newest 10 READY + the live merge build; all CANCELED/ERROR gone). Est. storage reclaimed ≈ 434 × ~1.4GB/deployment ≈ 610GB — consistent with the 617GB/10GB dashboard reading (real retention, not an accounting bug).
+- Probe artifacts deleted (202-cleanup); zero project settings mutated; zero env vars written to Vercel.
+
+Stage Summary:
+- run-001 was necessary (413 → the artifact shrank; env-hash correctness landed) but is not sufficient: the 100MB Vercel cap is the binding constraint. Paths of record for the operator: (1) ISR / on-demand rendering for the bulk content routes (generateStaticParams currently force-prerenders ~4,405 pages/build) — shrinks outputs under the cap, cuts builds to minutes, shrinks deployment storage per deploy; changes serving semantics → needs golden-master QA gates, recommended as the next designed lane, not a drive-by; (2) self-hosted turbo remote cache (no 100MB cap; adds a service — tension with the $0-infra law); (3) stay on Vercel-native build cache (.next/cache restore, already working) and accept per-build prerender. Vercel-native cache upload [1.15 GB] + restore verified healthy in both builds. PAT rotation standing order remains CRITICAL-OVERDUE (both the GitHub PAT and the Vercel token used this lane).
+

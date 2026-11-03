@@ -37,5 +37,21 @@
   "resourcesSha": "08447ba9e706d0e503beb8243401b5dbfffe74df",
   "attachmentMap": "content-maps/igcse-geography-19.json"
  },
- "note": "4GE1 bundle re-export (adr040-g2-4ge1-reexport-r0, operator order trace 1a177aaf6b9e86c1 'pick up that re-export lane next'): the PR #386 fail-closed refusal (seed law mapBundleNodes: namespaced SPEC_POINT codes outside every pinned spec-code shape) is repaired at the identity level ONLY — the corpus statement regime IGCSE_GEOGRAPHY:S<n>.<mmm> (operator-validated T-SPEC-7/T-SPEC-10 page-context anchors, spec_point_map.json/spec_point_resolution.json of record in syllabai-resources) is re- namespaced to the Edexcel self-namespace law of record (4CH1-1.1 precedent, bundle-seed.ts lane-C leg 4): 4GE1-S<n>.<mmm>. dbCodes land verbatim; hub joins (spec-tree.ts) stay equality-based. Tree structure, node count (243), edges (242), and the 3 corpus-unreferenced SX topic-summary statements are retained verbatim. Content NOT re-derived from resources; importSource ref pin unchanged. Known defects of record NOT repaired here (display/mapping lanes): truncated SUBTOPIC titles and coarse anchor granularity of the corpus re-code."
+ "note": "4GE1 bundle re-export (adr040-g2-4ge1-reexport-r0, operator order trace 1a177aaf6b9e86c1 'pick up that re-export lane next'): the PR #386 fail-closed refusal (seed law mapBundleNodes: namespaced SPEC_POINT codes outside every pinned spec-code shape) is repaired at the identity level ONLY — the corpus statement regime IGCSE_GEOGRAPHY:S<n>.<mmm> (operator-validated T-SPEC-7/T-SPEC-10 page-context anchors, spec_point_map.json/spec_point_resolution.json of record in syllabai-resources) is re- namespaced to the Edexcel self-namespace law of record (4CH1-1.1 precedent, bundle-seed.ts lane-C leg 4): 4GE1-S<n>.<mmm>. dbCodes land verbatim; hub joins (spec-tree.ts) stay equality-based. Tree structure, node count (243), edges (242), and the 3 corpus-unreferenced SX topic-summary statements are retained verbatim. Content NOT re-derived from resources; importSource ref pin unchanged. Known defects of record NOT repaired here (display/mapping lanes): truncated SUBTOPIC titles and coarse anchor granularity of the corpus re-code.",
+ "tagBackfill": {
+  "schema": "syllabai.hub.tag-backfill/1.0",
+  "date": "2026-11-03",
+  "source": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "SME-ExamQuestion/igcse-geography-19",
+   "ref": "main@fb28c174adec"
+  },
+  "method": "part smeSpecPointIds → SME spec-point-index name → official SPEC_POINT title (exact, per part); else the part's SME subtopic slugs resolved to curriculum subtopics (per part); else set-level fallback via SME topic-name title join to a unique curriculum SUBTOPIC",
+  "sets": 2,
+  "questions": 62,
+  "partsExact": 0,
+  "partsPerPartSme": 0,
+  "partsSubtopicLevel": 2,
+  "residualSets": 37
+ }
 }

@@ -1468,3 +1468,19 @@ math-field.answer-mathfield:focus {
     color-mix(in srgb, var(--info) 13%, transparent) 100%
   );
 }
+
+/*
+ * T-MG-INK-9 — the ink text-tool font of record: MG's text boxes paint
+ * "Shantell Sans" (extracted live from mathsgenie.co.uk, 2026-11-02 —
+ * their text editor textarea and committed font-ink canvas). Self-hosted
+ * latin subset, SIL OFL 1.1 (licence beside the file). The canvas
+ * painter and the editors reference the family via ./ink.ts's
+ * INK_TEXT_FONT_STACK.
+ */
+@font-face {
+  font-family: "Shantell Sans";
+  src: url("/fonts/ShantellSans-latin-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}

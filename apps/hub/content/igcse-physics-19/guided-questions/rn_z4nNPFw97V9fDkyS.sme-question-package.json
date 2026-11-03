@@ -1,0 +1,259 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_z4nNPFw97V9fDkyS",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8751655c8601cff0070e99239623a314df25c9e370ff583df827bbf172712840",
+    "pinnedRef": "502107a3fcacad2340d0ac5e66b5ad93ef32800c"
+  },
+  "packageId": "igcse-physics::rn_z4nNPFw97V9fDkyS",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_z4nNPFw97V9fDkyS::L1::Q1",
+      "moduleId": "rn_z4nNPFw97V9fDkyS::L1",
+      "stem": "The temperature of a current-carrying resistor rises because:",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "protons flow through the metal",
+          "correct": false,
+          "explanation": "Protons stay fixed in the lattice; only electrons drift.",
+          "misconception": "particle confusion"
+        },
+        {
+          "key": "B",
+          "text": "moving electrons collide inside the wire",
+          "correct": true,
+          "explanation": "The drifting free electrons transfer energy in collisions, raising the temperature.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the resistor generates charge",
+          "correct": false,
+          "explanation": "Charge is never generated; it only flows.",
+          "misconception": "creation myth"
+        },
+        {
+          "key": "D",
+          "text": "the voltage cools the wire",
+          "correct": false,
+          "explanation": "The electrical transfer warms, not cools.",
+          "misconception": "direction slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_z4nNPFw97V9fDkyS::L1::Q2",
+      "moduleId": "rn_z4nNPFw97V9fDkyS::L1",
+      "stem": "Energy delivered to a resistor ends up:",
+      "misconceptionClass": "energy accounting",
+      "options": [
+        {
+          "key": "A",
+          "text": "stored as charge",
+          "correct": false,
+          "explanation": "The resistor does not store charge.",
+          "misconception": "storage myth"
+        },
+        {
+          "key": "B",
+          "text": "converted into light only",
+          "correct": false,
+          "explanation": "Only some components glow; the general outcome is heat.",
+          "misconception": "overgeneralisation"
+        },
+        {
+          "key": "C",
+          "text": "destroyed",
+          "correct": false,
+          "explanation": "Energy is conserved, never destroyed.",
+          "misconception": "conservation myth"
+        },
+        {
+          "key": "D",
+          "text": "partly dissipated to the surroundings as heat",
+          "correct": true,
+          "explanation": "Some of the transferred energy escapes to the surroundings by heating.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_z4nNPFw97V9fDkyS::L1::Q3",
+      "moduleId": "rn_z4nNPFw97V9fDkyS::L1",
+      "stem": "Which appliance is deliberately built around the heating effect?",
+      "misconceptionClass": "application recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "an electric toaster",
+          "correct": true,
+          "explanation": "Toasters, kettles, heaters, ovens and hobs all exploit the heating effect.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "an LED torch",
+          "correct": false,
+          "explanation": "An LED is built to avoid heating.",
+          "misconception": "contrast slip"
+        },
+        {
+          "key": "C",
+          "text": "a digital clock",
+          "correct": false,
+          "explanation": "A clock is an electronic, not a heating, device.",
+          "misconception": "contrast slip"
+        },
+        {
+          "key": "D",
+          "text": "a radio",
+          "correct": false,
+          "explanation": "A radio is an electronic device.",
+          "misconception": "contrast slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_z4nNPFw97V9fDkyS::L1::Q4",
+      "moduleId": "rn_z4nNPFw97V9fDkyS::L1",
+      "stem": "Current is best described as:",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a store of electrons",
+          "correct": false,
+          "explanation": "Current is a flow, not a store.",
+          "misconception": "state vs flow slip"
+        },
+        {
+          "key": "B",
+          "text": "a kind of force",
+          "correct": false,
+          "explanation": "Current is a flow of charge, not a force.",
+          "misconception": "quantity confusion"
+        },
+        {
+          "key": "C",
+          "text": "the rate of flow of charge",
+          "correct": true,
+          "explanation": "That is the definition the note relies on.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a unit of energy",
+          "correct": false,
+          "explanation": "Energy is measured in joules, current in amperes.",
+          "misconception": "unit confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_z4nNPFw97V9fDkyS::L1::Q5",
+      "moduleId": "rn_z4nNPFw97V9fDkyS::L1",
+      "stem": "A hob heating element warms a pan mainly by:",
+      "misconceptionClass": "application reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "friction with the pan base",
+          "correct": false,
+          "explanation": "The pan does not rub the element.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "B",
+          "text": "electrical transfer of energy in the element",
+          "correct": true,
+          "explanation": "The current in the resistive element transfers energy that then heats the pan.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "trapped sunlight",
+          "correct": false,
+          "explanation": "No light is involved.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "D",
+          "text": "static discharge",
+          "correct": false,
+          "explanation": "Static is unrelated to the mains element.",
+          "misconception": "mechanism myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_z4nNPFw97V9fDkyS::L1::Q6",
+      "moduleId": "rn_z4nNPFw97V9fDkyS::L1",
+      "stem": "Name three domestic appliances that use the heating effect.",
+      "misconceptionClass": "application recall",
+      "kind": "recall",
+      "modelAnswer": "Electric heaters, ovens, hobs, toasters and kettles — any three of these.",
+      "keywords": [
+        "heaters",
+        "ovens",
+        "hobs",
+        "toasters",
+        "kettles"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_z4nNPFw97V9fDkyS::L1::Q7",
+      "moduleId": "rn_z4nNPFw97V9fDkyS::L1",
+      "stem": "Why does a resistor's temperature rise when current flows?",
+      "misconceptionClass": "mechanism recall",
+      "kind": "recall",
+      "modelAnswer": "The free electrons drift through the lattice and collide, transferring energy to the wire, which warms up and dissipates some heat to the surroundings.",
+      "keywords": [
+        "electrons",
+        "collide",
+        "energy",
+        "temperature",
+        "warms"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_z4nNPFw97V9fDkyS::L1::Q8",
+      "moduleId": "rn_z4nNPFw97V9fDkyS::L1",
+      "stem": "Explain why the heating effect counts as useful in a kettle but wasteful in long cables.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "In a kettle the warmed element is the entire point of the device, while in a cable the heat only dissipates into the room, wasting energy and risking the insulation.",
+      "keywords": [
+        "heating",
+        "effect",
+        "wasting",
+        "dissipates",
+        "cables"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_z4nNPFw97V9fDkyS::L1::Q9",
+      "moduleId": "rn_z4nNPFw97V9fDkyS::L1",
+      "stem": "An electric hob warms a pan. Trace the energy pathway from the mains to the pan.",
+      "misconceptionClass": "energy pathway",
+      "kind": "application",
+      "modelAnswer": "Mains current flows through the resistive element; the electrical transfer raises the element's temperature; the hot element then heats the pan by contact.",
+      "keywords": [
+        "current",
+        "element",
+        "temperature",
+        "pan",
+        "transfer"
+      ],
+      "options": []
+    }
+  ]
+}

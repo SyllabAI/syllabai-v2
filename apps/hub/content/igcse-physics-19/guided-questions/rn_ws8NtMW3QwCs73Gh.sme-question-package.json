@@ -1,0 +1,503 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_ws8NtMW3QwCs73Gh",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "c48dac58035ac121615e3d6eac4f345b45afc20a504ea345d5f707e75b74271f",
+    "pinnedRef": "502107a3fcacad2340d0ac5e66b5ad93ef32800c"
+  },
+  "packageId": "igcse-physics::rn_ws8NtMW3QwCs73Gh",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L1::Q1",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L1",
+      "stem": "The independent variable is:",
+      "misconceptionClass": "variables recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the rubbing time",
+          "correct": false,
+          "explanation": "Rubbing time is controlled, not varied.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "B",
+          "text": "the cloth type",
+          "correct": false,
+          "explanation": "The cloth is kept the same on purpose.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "C",
+          "text": "the rod material",
+          "correct": true,
+          "explanation": "Different rod materials are what the experiment varies.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the deflection seen",
+          "correct": false,
+          "explanation": "Deflection is an observation, not the set variable.",
+          "misconception": "variable swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L1::Q2",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L1",
+      "stem": "The dependent variable is:",
+      "misconceptionClass": "variables recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the charge on the rod",
+          "correct": true,
+          "explanation": "The charge produced by rubbing is what the experiment measures.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the room temperature",
+          "correct": false,
+          "explanation": "Temperature is neither varied nor measured here.",
+          "misconception": "irrelevant quantity"
+        },
+        {
+          "key": "C",
+          "text": "the rod length",
+          "correct": false,
+          "explanation": "Rod length is controlled.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "D",
+          "text": "the string tension",
+          "correct": false,
+          "explanation": "String tension is not the measured quantity.",
+          "misconception": "irrelevant quantity"
+        }
+      ]
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L1::Q3",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L1",
+      "stem": "Why must the rods never touch during the test?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the rods would melt",
+          "correct": false,
+          "explanation": "Nothing in the procedure heats the rods.",
+          "misconception": "invented effect"
+        },
+        {
+          "key": "B",
+          "text": "the string would snap",
+          "correct": false,
+          "explanation": "The string never comes under such a load.",
+          "misconception": "invented effect"
+        },
+        {
+          "key": "C",
+          "text": "the charge would double",
+          "correct": false,
+          "explanation": "Contact does not create charge.",
+          "misconception": "conservation myth"
+        },
+        {
+          "key": "D",
+          "text": "contact would discharge them and the forces would vanish",
+          "correct": true,
+          "explanation": "Touching lets the charge flow away, removing the observed forces.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L1::Q4",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L1",
+      "stem": "The polythene rod is suspended so that it can:",
+      "misconceptionClass": "apparatus recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "heat up evenly",
+          "correct": false,
+          "explanation": "Heating plays no role.",
+          "misconception": "irrelevant effect"
+        },
+        {
+          "key": "B",
+          "text": "swing freely when a force acts",
+          "correct": true,
+          "explanation": "The cradle and nylon string let the rod respond to tiny electrostatic forces.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "touch the cradle",
+          "correct": false,
+          "explanation": "Contact with the cradle would discharge it.",
+          "misconception": "method slip"
+        },
+        {
+          "key": "D",
+          "text": "rub against the stand",
+          "correct": false,
+          "explanation": "The rod hangs clear of the stand.",
+          "misconception": "method slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L1::Q5",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L1",
+      "stem": "Which control keeps the charge transferred comparable between trials?",
+      "misconceptionClass": "variables reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "rubbing for the same time with the same cloth",
+          "correct": true,
+          "explanation": "Both time and cloth are held fixed so the trials compare fairly.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "using rods of different lengths",
+          "correct": false,
+          "explanation": "Length is a control — it must not vary.",
+          "misconception": "control slip"
+        },
+        {
+          "key": "C",
+          "text": "changing the cloth each trial",
+          "correct": false,
+          "explanation": "The cloth stays the same.",
+          "misconception": "control slip"
+        },
+        {
+          "key": "D",
+          "text": "rubbing faster each time",
+          "correct": false,
+          "explanation": "Varying the rubbing undermines the comparison.",
+          "misconception": "control slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L1::Q6",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L1",
+      "stem": "List the equipment used to suspend the test rod.",
+      "misconceptionClass": "apparatus recall",
+      "kind": "recall",
+      "modelAnswer": "A cradle hung by nylon string from a wooden stand.",
+      "keywords": [
+        "cradle",
+        "nylon",
+        "string",
+        "wooden",
+        "stand"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L1::Q7",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L1",
+      "stem": "State the aim of this core practical.",
+      "misconceptionClass": "aim recall",
+      "kind": "recall",
+      "modelAnswer": "The investigation asks how friction can charge insulating materials.",
+      "keywords": [
+        "investigation",
+        "friction",
+        "charge",
+        "insulating",
+        "materials"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L1::Q8",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L1",
+      "stem": "Explain why the ends of the rods must not be handled after rubbing.",
+      "misconceptionClass": "method reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Fingers would earth the rubbed ends, draining the charge just gathered and leaving no force to observe.",
+      "keywords": [
+        "ends",
+        "charge",
+        "draining",
+        "force",
+        "observe"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L1::Q9",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L1",
+      "stem": "A student rubs the acrylic rod for twice as long as the polythene one. Identify the variable ignored and the effect on the comparison.",
+      "misconceptionClass": "method evaluation",
+      "kind": "application",
+      "modelAnswer": "The controlled rubbing time was ignored; the extra charge on the acrylic would exaggerate its deflection and bias the comparison.",
+      "keywords": [
+        "rubbing",
+        "time",
+        "charge",
+        "deflection",
+        "bias"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L2::Q1",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L2",
+      "stem": "A polythene rod rubbed with a cloth becomes negative because:",
+      "misconceptionClass": "charge reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "protons transfer onto it from the cloth",
+          "correct": false,
+          "explanation": "Protons never leave nuclei.",
+          "misconception": "particle confusion"
+        },
+        {
+          "key": "B",
+          "text": "electrons transfer onto it from the cloth",
+          "correct": true,
+          "explanation": "The polythene gains the cloth's electrons and so turns negative.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "it loses electrons to the cloth",
+          "correct": false,
+          "explanation": "That would leave it positive — the acetate behaviour.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "D",
+          "text": "the cloth donates positive charge",
+          "correct": false,
+          "explanation": "Only electrons move; positive charge never travels.",
+          "misconception": "particle confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L2::Q2",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L2",
+      "stem": "An acetate rod rubbed with a cloth becomes positive because it:",
+      "misconceptionClass": "charge reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "gains electrons",
+          "correct": false,
+          "explanation": "Gaining electrons is the negative case.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "B",
+          "text": "gains protons",
+          "correct": false,
+          "explanation": "Protons stay fixed.",
+          "misconception": "particle confusion"
+        },
+        {
+          "key": "C",
+          "text": "loses electrons to the cloth",
+          "correct": true,
+          "explanation": "Losing negative charge leaves the acetate positive.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "keeps every electron",
+          "correct": false,
+          "explanation": "If it kept them all it would stay neutral.",
+          "misconception": "conservation myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L2::Q3",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L2",
+      "stem": "The hanging polythene rod rotates away from a test rod. The test rod is:",
+      "misconceptionClass": "analysis reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "uncharged",
+          "correct": false,
+          "explanation": "An uncharged rod would not repel.",
+          "misconception": "response slip"
+        },
+        {
+          "key": "B",
+          "text": "charged positive",
+          "correct": false,
+          "explanation": "Opposite signs attract.",
+          "misconception": "response slip"
+        },
+        {
+          "key": "C",
+          "text": "earthed",
+          "correct": false,
+          "explanation": "An earthed rod would not push the hanging one away.",
+          "misconception": "response slip"
+        },
+        {
+          "key": "D",
+          "text": "charged the same, negative",
+          "correct": true,
+          "explanation": "Like charges repel, so the test rod is also negative.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L2::Q4",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L2",
+      "stem": "Attraction to the hanging polythene rod shows the test rod's charge is:",
+      "misconceptionClass": "analysis reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "opposite to the rod's",
+          "correct": true,
+          "explanation": "Opposite charges attract.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "identical to the rod's",
+          "correct": false,
+          "explanation": "Like charges repel.",
+          "misconception": "response slip"
+        },
+        {
+          "key": "C",
+          "text": "zero",
+          "correct": false,
+          "explanation": "An uncharged rod produces no such direct electrostatic repulsion-or-attraction pair in this test.",
+          "misconception": "overcomplication"
+        },
+        {
+          "key": "D",
+          "text": "doubled",
+          "correct": false,
+          "explanation": "Charge is not created by proximity.",
+          "misconception": "nonsense option"
+        }
+      ]
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L2::Q5",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L2",
+      "stem": "The numerical improvement swaps the dependent variable for:",
+      "misconceptionClass": "evaluation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the rod's temperature rise",
+          "correct": false,
+          "explanation": "Temperature is irrelevant here.",
+          "misconception": "irrelevant quantity"
+        },
+        {
+          "key": "B",
+          "text": "the number of paper circles picked up",
+          "correct": true,
+          "explanation": "Counting circles turns the observation into data.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the string's angle only",
+          "correct": false,
+          "explanation": "Angle alone is not the recorded upgrade described.",
+          "misconception": "detail slip"
+        },
+        {
+          "key": "D",
+          "text": "the cloth's mass loss",
+          "correct": false,
+          "explanation": "Mass loss is not measurable at this scale.",
+          "misconception": "invented method"
+        }
+      ]
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L2::Q6",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L2",
+      "stem": "State what happens to electrons when two insulators are rubbed together.",
+      "misconceptionClass": "analysis recall",
+      "kind": "recall",
+      "modelAnswer": "Electrons transfer from one insulator onto the other, leaving one negative and the other positive.",
+      "keywords": [
+        "electrons",
+        "transfer",
+        "insulator",
+        "negative",
+        "positive"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L2::Q7",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L2",
+      "stem": "Give two evaluation points for this experiment.",
+      "misconceptionClass": "evaluation recall",
+      "kind": "recall",
+      "modelAnswer": "Shield the set-up from draughts and vibrations, and rub longer when deflections are too small to read confidently.",
+      "keywords": [
+        "draughts",
+        "vibrations",
+        "rub",
+        "deflections",
+        "longer"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L2::Q8",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L2",
+      "stem": "Explain why an object that loses electrons becomes positively charged.",
+      "misconceptionClass": "reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A neutral object scores zero; removing an electron subtracts a negative charge, and 0 − (−1) = +1, so the remainder is positive.",
+      "keywords": [
+        "neutral",
+        "electron",
+        "subtracts",
+        "negative",
+        "positive"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ws8NtMW3QwCs73Gh::L2::Q9",
+      "moduleId": "rn_ws8NtMW3QwCs73Gh::L2",
+      "stem": "In the paper-circle variant, rod X lifts eight circles and rod Y lifts three. Which rod charged more, and what improvement made the comparison possible?",
+      "misconceptionClass": "analysis application",
+      "kind": "application",
+      "modelAnswer": "Rod X charged more; turning a directional observation into counted circles gave numerical data that supports graphing and firmer conclusions.",
+      "keywords": [
+        "circles",
+        "charged",
+        "numerical",
+        "data",
+        "graph"
+      ],
+      "options": []
+    }
+  ]
+}

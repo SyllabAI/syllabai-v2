@@ -1,0 +1,503 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_PyxMmTd6S9pMDTt6",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "d15226a24f3ecbb60576f759988aacdcfef80931ddfa35d8a8207ac95e999413",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "packageId": "igcse-physics::rn_PyxMmTd6S9pMDTt6",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L1::Q1",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L1",
+      "stem": "Two resistors of 4 Ω and 6 Ω are in series. The total resistance is:",
+      "misconceptionClass": "series arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "24 Ω",
+          "correct": false,
+          "explanation": "That multiplies the resistances; series adds them.",
+          "misconception": "multiply slip"
+        },
+        {
+          "key": "B",
+          "text": "10 Ω",
+          "correct": true,
+          "explanation": "R = 4 + 6 = 10 Ω.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "2 Ω",
+          "correct": false,
+          "explanation": "That subtracts the smaller from the larger.",
+          "misconception": "subtraction slip"
+        },
+        {
+          "key": "D",
+          "text": "2.4 Ω",
+          "correct": false,
+          "explanation": "That is the parallel-pair value, not the series one.",
+          "misconception": "parallel slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L1::Q2",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L1",
+      "stem": "Adding a third resistor to an existing series chain:",
+      "misconceptionClass": "component effect",
+      "options": [
+        {
+          "key": "A",
+          "text": "lowers the total resistance",
+          "correct": false,
+          "explanation": "Series resistances only ever add up.",
+          "misconception": "parallel intuition"
+        },
+        {
+          "key": "B",
+          "text": "leaves the total resistance unchanged",
+          "correct": false,
+          "explanation": "The new resistor contributes its own share of opposition.",
+          "misconception": "independence myth"
+        },
+        {
+          "key": "C",
+          "text": "raises the total resistance",
+          "correct": true,
+          "explanation": "More series resistors means more total opposition.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "reverses the current",
+          "correct": false,
+          "explanation": "Direction comes from the supply and never depends on the resistor count.",
+          "misconception": "direction myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L1::Q3",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L1",
+      "stem": "Three resistors of 30 Ω, R and 10 Ω in series give 60 Ω total. R equals:",
+      "misconceptionClass": "rearrangement arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "100 Ω",
+          "correct": false,
+          "explanation": "That adds the total to the known resistors instead of subtracting them.",
+          "misconception": "addition slip"
+        },
+        {
+          "key": "B",
+          "text": "20 Ω",
+          "correct": true,
+          "explanation": "R = 60 − 30 − 10 = 20 Ω.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "40 Ω",
+          "correct": false,
+          "explanation": "That only subtracts the 30 Ω and forgets the 10 Ω.",
+          "misconception": "partial slip"
+        },
+        {
+          "key": "D",
+          "text": "80 Ω",
+          "correct": false,
+          "explanation": "That combines the values in the wrong direction entirely.",
+          "misconception": "operation slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L1::Q4",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L1",
+      "stem": "The voltages across resistors in a series chain:",
+      "misconceptionClass": "voltage behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "add up to the supply voltage",
+          "correct": true,
+          "explanation": "The individual shares always total the supply.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "are each equal to the supply voltage",
+          "correct": false,
+          "explanation": "That is the parallel branch behaviour.",
+          "misconception": "parallel carryover"
+        },
+        {
+          "key": "C",
+          "text": "always split equally",
+          "correct": false,
+          "explanation": "Equal splitting needs identical resistances.",
+          "misconception": "equality myth"
+        },
+        {
+          "key": "D",
+          "text": "multiply together to give the supply voltage",
+          "correct": false,
+          "explanation": "Voltage shares add; they never multiply.",
+          "misconception": "operation slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L1::Q5",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L1",
+      "stem": "A series circuit carries a current of 2 A. The current through each of its three resistors is:",
+      "misconceptionClass": "series behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "2 A divided by 3",
+          "correct": false,
+          "explanation": "The current is not rationed out among series components.",
+          "misconception": "rationing myth"
+        },
+        {
+          "key": "B",
+          "text": "2 A shared in some other proportion",
+          "correct": false,
+          "explanation": "Nothing is shared — the same current passes everywhere.",
+          "misconception": "share myth"
+        },
+        {
+          "key": "C",
+          "text": "6 A",
+          "correct": false,
+          "explanation": "Multiplying the loop current by the component count is meaningless.",
+          "misconception": "multiply slip"
+        },
+        {
+          "key": "D",
+          "text": "2 A through each",
+          "correct": true,
+          "explanation": "One loop means one current: every component carries the full 2 A.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L1::Q6",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L1",
+      "stem": "Write the equation for the total resistance of two resistors in series.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "R = R1 + R2 — the two individual resistances add up to the total.",
+      "keywords": [
+        "resistance",
+        "series",
+        "sum",
+        "resistors",
+        "total"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L1::Q7",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L1",
+      "stem": "State how the voltages across series components relate to the supply voltage.",
+      "misconceptionClass": "voltage recall",
+      "kind": "recall",
+      "modelAnswer": "They add up: the individual voltages sum to the total supplied by the source.",
+      "keywords": [
+        "voltages",
+        "sum",
+        "supply",
+        "add",
+        "total"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L1::Q8",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L1",
+      "stem": "Explain why adding a resistor in series reduces the circuit's current.",
+      "misconceptionClass": "opposition reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Series resistances add, so the loop's total resistance grows; with the supply voltage fixed, the larger opposition leaves a smaller current flowing.",
+      "keywords": [
+        "resistance",
+        "current",
+        "voltage",
+        "series",
+        "total"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L1::Q9",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L1",
+      "stem": "A 12 V supply drives a series pair of 4 Ω and 8 Ω resistors. Calculate the current, then the voltage across the 8 Ω resistor.",
+      "misconceptionClass": "circuit calculation",
+      "kind": "application",
+      "modelAnswer": "Total resistance = 4 + 8 = 12 Ω, so I = 12 ÷ 12 = 1 A. The 8 Ω resistor takes V = 1 × 8 = 8 V.",
+      "keywords": [
+        "1",
+        "8",
+        "12",
+        "current",
+        "voltage"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L2::Q1",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L2",
+      "stem": "Which statement about a parallel circuit is correct?",
+      "misconceptionClass": "parallel rules",
+      "options": [
+        {
+          "key": "A",
+          "text": "the current is the same in every branch",
+          "correct": false,
+          "explanation": "Branch currents split; only the voltage repeats across branches.",
+          "misconception": "series carryover"
+        },
+        {
+          "key": "B",
+          "text": "each branch receives the same voltage",
+          "correct": true,
+          "explanation": "Every branch sits across the supply and takes the full voltage.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the total resistance exceeds every branch's resistance",
+          "correct": false,
+          "explanation": "Parallel total resistance is smaller than any single branch.",
+          "misconception": "opposite slip"
+        },
+        {
+          "key": "D",
+          "text": "the branches share one single loop",
+          "correct": false,
+          "explanation": "Parallel means multiple loops by definition.",
+          "misconception": "topology myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L2::Q2",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L2",
+      "stem": "Which statement about a series circuit is correct?",
+      "misconceptionClass": "series rules",
+      "options": [
+        {
+          "key": "A",
+          "text": "the voltage is the same across every component",
+          "correct": false,
+          "explanation": "Series components share the voltage out.",
+          "misconception": "parallel carryover"
+        },
+        {
+          "key": "B",
+          "text": "the current splits between components",
+          "correct": false,
+          "explanation": "There is nowhere to split in a single loop.",
+          "misconception": "parallel carryover"
+        },
+        {
+          "key": "C",
+          "text": "their resistances add up to one total",
+          "correct": true,
+          "explanation": "Series oppositions simply add up.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "removing one component leaves the rest working",
+          "correct": false,
+          "explanation": "One break opens the whole series loop.",
+          "misconception": "parallel property"
+        }
+      ]
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L2::Q3",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L2",
+      "stem": "A 4 Ω and a 6 Ω resistor are connected in parallel. Their combined resistance is:",
+      "misconceptionClass": "parallel resistance",
+      "options": [
+        {
+          "key": "A",
+          "text": "greater than 6 Ω",
+          "correct": false,
+          "explanation": "Parallel never exceeds the largest branch.",
+          "misconception": "series carryover"
+        },
+        {
+          "key": "B",
+          "text": "exactly 10 Ω",
+          "correct": false,
+          "explanation": "10 Ω is the series answer; parallel lands lower.",
+          "misconception": "series sum"
+        },
+        {
+          "key": "C",
+          "text": "less than 4 Ω",
+          "correct": true,
+          "explanation": "Parallel total resistance is smaller than the smallest branch.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "exactly 24 Ω",
+          "correct": false,
+          "explanation": "Multiplying the resistances has no meaning here.",
+          "misconception": "multiply slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L2::Q4",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L2",
+      "stem": "Compared with a single-component circuit on the same supply voltage, a series loop with extra components carries:",
+      "misconceptionClass": "comparison reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "a larger current",
+          "correct": false,
+          "explanation": "More total resistance means less current, not more.",
+          "misconception": "opposite slip"
+        },
+        {
+          "key": "B",
+          "text": "a smaller current",
+          "correct": true,
+          "explanation": "The added resistances throttle the flow at the fixed supply voltage.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "an identical current",
+          "correct": false,
+          "explanation": "The extra opposition must change the flow.",
+          "misconception": "independence myth"
+        },
+        {
+          "key": "D",
+          "text": "no current at all",
+          "correct": false,
+          "explanation": "The loop still conducts; only its size changes.",
+          "misconception": "extreme myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L2::Q5",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L2",
+      "stem": "Which pairing matches the circuit laws?",
+      "misconceptionClass": "rule matching",
+      "options": [
+        {
+          "key": "A",
+          "text": "series — voltage the same everywhere",
+          "correct": false,
+          "explanation": "Series shares the voltage; parallel repeats it.",
+          "misconception": "rule swap"
+        },
+        {
+          "key": "B",
+          "text": "parallel — resistances add",
+          "correct": false,
+          "explanation": "Adding resistances is the series law.",
+          "misconception": "rule swap"
+        },
+        {
+          "key": "C",
+          "text": "series — resistances add; parallel — voltage the same across branches",
+          "correct": true,
+          "explanation": "Both halves state their arrangement's law correctly.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "series — current splits; parallel — current the same everywhere",
+          "correct": false,
+          "explanation": "Both halves are swapped.",
+          "misconception": "rule swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L2::Q6",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L2",
+      "stem": "State three rules for a series circuit concerning current, voltage and resistance.",
+      "misconceptionClass": "rules recall",
+      "kind": "recall",
+      "modelAnswer": "The current is the same at every point, the supply voltage is shared between the components, and every resistance adds into the total.",
+      "keywords": [
+        "current",
+        "voltage",
+        "resistance",
+        "shared",
+        "total"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L2::Q7",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L2",
+      "stem": "State three rules for a parallel circuit concerning current, voltage and resistance.",
+      "misconceptionClass": "rules recall",
+      "kind": "recall",
+      "modelAnswer": "The supply current splits between the branches, each branch receives the same voltage, and the total resistance is smaller than any single branch's.",
+      "keywords": [
+        "current",
+        "branches",
+        "voltage",
+        "resistance",
+        "smaller"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L2::Q8",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L2",
+      "stem": "Explain why the total resistance of two resistors in series exceeds either resistor alone.",
+      "misconceptionClass": "opposition reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The charge must push through both oppositions one after the other, so the two resistances add to a total larger than either individual value.",
+      "keywords": [
+        "resistance",
+        "resistors",
+        "series",
+        "charge",
+        "total"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PyxMmTd6S9pMDTt6::L2::Q9",
+      "moduleId": "rn_PyxMmTd6S9pMDTt6::L2",
+      "stem": "A 6 V cell drives a series pair of 2 Ω and 4 Ω resistors. Calculate the total resistance, the current, and the voltage across the 4 Ω resistor.",
+      "misconceptionClass": "circuit calculation",
+      "kind": "application",
+      "modelAnswer": "Total resistance = 2 + 4 = 6 Ω; I = 6 ÷ 6 = 1 A; the 4 Ω resistor takes 1 × 4 = 4 V.",
+      "keywords": [
+        "6",
+        "1",
+        "4",
+        "resistance",
+        "current"
+      ],
+      "options": []
+    }
+  ]
+}

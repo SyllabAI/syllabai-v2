@@ -550,7 +550,15 @@
   "source": {
    "provider": "Save My Exams",
    "license": "operator-authorized; see repo LICENSE-DATA.md (SME attestation 2026-09-17)",
-   "pageUrl": null
+   "pageUrl": null,
+   "tagBackfill": {
+    "via": "sme-topic-name",
+    "home": "cie-igcse-science-combined-science-2023-2024-TP1:SUBP1.5",
+    "partsExact": 0,
+    "partsPerPartSme": 0,
+    "partsSubtopicLevel": 1,
+    "date": "2026-11-03"
+   }
   },
   "schema": "syllabai.sme-exam-questions/1.1",
   "relatedNoteIds": [
@@ -574,7 +582,12 @@
       "marks": 1,
       "commandWord": null,
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P1.5.1",
+       "P1.5.2",
+       "P1.5.3",
+       "P1.5.4"
+      ],
       "choices": [
        {
         "label": "A",
@@ -842,7 +855,15 @@
   "source": {
    "provider": "Save My Exams",
    "license": "operator-authorized; see repo LICENSE-DATA.md (SME attestation 2026-09-17)",
-   "pageUrl": null
+   "pageUrl": null,
+   "tagBackfill": {
+    "via": "sme-topic-name-subset",
+    "home": "cie-igcse-science-combined-science-2023-2024-TP1:SUBP1.3",
+    "partsExact": 0,
+    "partsPerPartSme": 0,
+    "partsSubtopicLevel": 10,
+    "date": "2026-11-03"
+   }
   },
   "schema": "syllabai.sme-exam-questions/1.1",
   "relatedNoteIds": [
@@ -866,7 +887,11 @@
       "marks": 1,
       "commandWord": null,
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P1.3.1",
+       "P1.3.2",
+       "P1.3.3"
+      ],
       "choices": [
        {
         "label": "A",
@@ -917,7 +942,11 @@
       "marks": 2,
       "commandWord": "predict",
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P1.3.1",
+       "P1.3.2",
+       "P1.3.3"
+      ],
       "choices": null,
       "sourcePaper": {
        "date": "Specimen 2025",
@@ -938,7 +967,11 @@
       "marks": 4,
       "commandWord": "calculate",
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P1.3.1",
+       "P1.3.2",
+       "P1.3.3"
+      ],
       "choices": null,
       "sourcePaper": {
        "date": "Specimen 2025",
@@ -969,7 +1002,11 @@
       "marks": 4,
       "commandWord": "state",
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P1.3.1",
+       "P1.3.2",
+       "P1.3.3"
+      ],
       "choices": null,
       "sourcePaper": {
        "date": "Specimen",
@@ -990,7 +1027,11 @@
       "marks": 6,
       "commandWord": "state",
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P1.3.1",
+       "P1.3.2",
+       "P1.3.3"
+      ],
       "choices": null,
       "sourcePaper": {
        "date": "Specimen",
@@ -1011,7 +1052,11 @@
       "marks": 3,
       "commandWord": "calculate",
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P1.3.1",
+       "P1.3.2",
+       "P1.3.3"
+      ],
       "choices": null,
       "sourcePaper": {
        "date": "Specimen",
@@ -1041,7 +1086,11 @@
       "marks": 5,
       "commandWord": "draw",
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P1.3.1",
+       "P1.3.2",
+       "P1.3.3"
+      ],
       "choices": null,
       "sourcePaper": {
        "date": "Specimen 2025",
@@ -1062,7 +1111,11 @@
       "marks": 3,
       "commandWord": "calculate",
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P1.3.1",
+       "P1.3.2",
+       "P1.3.3"
+      ],
       "choices": null,
       "sourcePaper": {
        "date": "Specimen 2025",
@@ -1083,7 +1136,11 @@
       "marks": 2,
       "commandWord": "name",
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P1.3.1",
+       "P1.3.2",
+       "P1.3.3"
+      ],
       "choices": null,
       "sourcePaper": {
        "date": "Specimen 2025",
@@ -1104,7 +1161,11 @@
       "marks": 3,
       "commandWord": "calculate",
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P1.3.1",
+       "P1.3.2",
+       "P1.3.3"
+      ],
       "choices": null,
       "sourcePaper": {
        "date": "Specimen 2025",
@@ -1667,6 +1728,7 @@
   "topicSlug": "kinetic-particle-model-of-matter",
   "section": "2. Thermal Physics",
   "sectionSlug": "thermal-physics",
+  "subtopicCode": "cie-igcse-science-combined-science-2023-2024-TP3-gen",
   "curriculum": {
    "board": "Cambridge CIE",
    "level": "IGCSE",
@@ -1778,6 +1840,7 @@
   "topicSlug": "transfer-of-thermal-energy",
   "section": "2. Thermal Physics",
   "sectionSlug": "thermal-physics",
+  "subtopicCode": "cie-igcse-science-combined-science-2023-2024-TP3-gen",
   "curriculum": {
    "board": "Cambridge CIE",
    "level": "IGCSE",
@@ -1953,7 +2016,15 @@
   "source": {
    "provider": "Save My Exams",
    "license": "operator-authorized; see repo LICENSE-DATA.md (SME attestation 2026-09-17)",
-   "pageUrl": null
+   "pageUrl": null,
+   "tagBackfill": {
+    "via": "sme-topic-name",
+    "home": "cie-igcse-science-combined-science-2023-2024-TP4:SUBP4.3",
+    "partsExact": 0,
+    "partsPerPartSme": 0,
+    "partsSubtopicLevel": 1,
+    "date": "2026-11-03"
+   }
   },
   "schema": "syllabai.sme-exam-questions/1.1",
   "relatedNoteIds": [
@@ -1976,7 +2047,11 @@
       "marks": 2,
       "commandWord": "state",
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P4.3.1",
+       "P4.3.2",
+       "P4.3.3"
+      ],
       "choices": null,
       "sourcePaper": {
        "date": "Specimen 2025",
@@ -2182,7 +2257,15 @@
   "source": {
    "provider": "Save My Exams",
    "license": "operator-authorized; see repo LICENSE-DATA.md (SME attestation 2026-09-17)",
-   "pageUrl": null
+   "pageUrl": null,
+   "tagBackfill": {
+    "via": "sme-topic-name",
+    "home": "cie-igcse-science-combined-science-2023-2024-TP4:SUBP4.2",
+    "partsExact": 0,
+    "partsPerPartSme": 0,
+    "partsSubtopicLevel": 1,
+    "date": "2026-11-03"
+   }
   },
   "schema": "syllabai.sme-exam-questions/1.1",
   "relatedNoteIds": [
@@ -2208,7 +2291,16 @@
       "marks": 1,
       "commandWord": null,
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P4.2.1",
+       "P4.2.1a",
+       "P4.2.1b",
+       "P4.2.2",
+       "P4.2.2a",
+       "P4.2.3",
+       "P4.2.3a",
+       "P4.2.4"
+      ],
       "choices": [
        {
         "label": "A",
@@ -2265,7 +2357,15 @@
   "source": {
    "provider": "Save My Exams",
    "license": "operator-authorized; see repo LICENSE-DATA.md (SME attestation 2026-09-17)",
-   "pageUrl": null
+   "pageUrl": null,
+   "tagBackfill": {
+    "via": "sme-topic-name",
+    "home": "cie-igcse-science-combined-science-2023-2024-TP4:SUBP4.4",
+    "partsExact": 0,
+    "partsPerPartSme": 0,
+    "partsSubtopicLevel": 1,
+    "date": "2026-11-03"
+   }
   },
   "schema": "syllabai.sme-exam-questions/1.1",
   "relatedNoteIds": [
@@ -2289,7 +2389,11 @@
       "marks": 1,
       "commandWord": null,
       "specPointIds": [],
-      "specPointCodes": [],
+      "specPointCodes": [
+       "P4.4.1",
+       "P4.4.2",
+       "P4.4.3"
+      ],
       "choices": [
        {
         "label": "A",

@@ -1,0 +1,256 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_BFQBSmVz2xFZVsB6",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "76e3dc8434a611e575853a10b2a817af8a50ae1f27f5cf6ecbe4fdeaa5d1c28d",
+    "pinnedRef": "275f3b535d78552d09e07f65fb9347e570eae68d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_BFQBSmVz2xFZVsB6",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Components in Series & Parallel Circuits",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-2-components-in-series-and-parallel-circuits/2-2-1-current-in-series-and-parallel",
+    "specAnchors": [
+      {
+        "code": "2.17",
+        "text": "understand how the current in a series circuit depends on the applied voltage and the number and nature of other components"
+      },
+      {
+        "code": "2.8",
+        "text": "understand why current is conserved at a junction in a circuit"
+      }
+    ],
+    "primer": {
+      "text": "Wire two lamps one after another and they share a single loop; wire them side by side and the current gains choices. This note follows the current through both arrangements — unchanging along a series loop, splitting and recombining at the junctions of a parallel network — with charge conservation as the bookkeeping rule behind it all.",
+      "prerequisiteSubtopic": "Components in Series & Parallel Circuits"
+    },
+    "modules": [
+      {
+        "id": "rn_BFQBSmVz2xFZVsB6::L1",
+        "title": "Current in series circuits",
+        "sourceHeadings": [
+          "Current in series",
+          "Increasing the voltage and number of components in series"
+        ],
+        "specRefs": [
+          "2.17"
+        ],
+        "opening": "A series loop gives electrons exactly one road, so wherever you station a meter along it, the reading never changes. What does change the reading is the supply voltage and how many components share the loop. This lesson works both dials and reads the effect on the current.",
+        "keyPoints": [
+          "A series circuit offers a single loop, so electrons have only one path to follow.",
+          "The current is the same at every point of a series loop.",
+          "A larger supply voltage drives a larger current around a series circuit.",
+          "Adding components in series raises the total resistance and so lowers the current.",
+          "The current size depends on both the source voltage and the number and type of components."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "One loop, one current: every component in series carries exactly the same flow.",
+            "analogy": "A single-lane ring road — every car that passes one tollbooth must pass them all, so the counts match.",
+            "examPointer": "Quote 'same current at every point' when a question asks what an ammeter reads anywhere in a series loop."
+          },
+          "medium": {
+            "restatement": "The loop's current is set by a tug-of-war: the supply voltage pushes harder, each extra component drags harder.",
+            "analogy": "Pedal harder (more voltage) and the bike speeds up; add more hills (more components) and it slows again.",
+            "examPointer": "Compare before-and-after circuits carefully: which knob moved, the voltage or the component count, decides which way the current goes."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_BFQBSmVz2xFZVsB6::L1::Q1",
+          "rn_BFQBSmVz2xFZVsB6::L1::Q2",
+          "rn_BFQBSmVz2xFZVsB6::L1::Q3",
+          "rn_BFQBSmVz2xFZVsB6::L1::Q4",
+          "rn_BFQBSmVz2xFZVsB6::L1::Q5",
+          "rn_BFQBSmVz2xFZVsB6::L1::Q6",
+          "rn_BFQBSmVz2xFZVsB6::L1::Q7",
+          "rn_BFQBSmVz2xFZVsB6::L1::Q8",
+          "rn_BFQBSmVz2xFZVsB6::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_BFQBSmVz2xFZVsB6::L2",
+        "title": "Current in parallel circuits",
+        "sourceHeadings": [
+          "Current in parallel",
+          "Why is current conserved at a junction in a circuit?"
+        ],
+        "specRefs": [
+          "2.8"
+        ],
+        "opening": "Give the electrons a choice of roads and the flow divides: some take one branch, some take another, and everyone rejoins further on. The rule that keeps it all honest is simple — whatever arrives at a junction must leave it. This lesson counts the currents at a junction and explains why the books always balance.",
+        "keyPoints": [
+          "A parallel circuit gives electrons two or more loops to travel around.",
+          "Junctions are meeting points where the current splits into branches.",
+          "The branch currents add back up to the total current entering (and leaving) the junction.",
+          "Current is conserved at a junction because charge cannot be created or destroyed.",
+          "Branch currents share unequally unless the branches carry identical resistances."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "At a junction the current splits among the branches, and the pieces always add back to the original.",
+            "analogy": "A river forking around an island: the two channels together carry exactly what the main stream brought.",
+            "examPointer": "Use the in-equals-out rule at each junction; label every branch current before doing any arithmetic."
+          },
+          "medium": {
+            "restatement": "Conservation is exact bookkeeping: charge cannot pile up or vanish at a junction, so inflow equals outflow by necessity.",
+            "analogy": "A roundabout with equal entry and exit counts — cars neither materialise nor evaporate between junctions.",
+            "examPointer": "Branches split the current equally only when their resistances match; otherwise expect unequal shares."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_BFQBSmVz2xFZVsB6::L2::Q1",
+          "rn_BFQBSmVz2xFZVsB6::L2::Q2",
+          "rn_BFQBSmVz2xFZVsB6::L2::Q3",
+          "rn_BFQBSmVz2xFZVsB6::L2::Q4",
+          "rn_BFQBSmVz2xFZVsB6::L2::Q5",
+          "rn_BFQBSmVz2xFZVsB6::L2::Q6",
+          "rn_BFQBSmVz2xFZVsB6::L2::Q7",
+          "rn_BFQBSmVz2xFZVsB6::L2::Q8",
+          "rn_BFQBSmVz2xFZVsB6::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04",
+          "fig-05",
+          "fig-06"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "series circuit",
+          "definition": "A circuit with a single loop, so the same current passes through every component.",
+          "firstLesson": 1
+        },
+        {
+          "term": "parallel circuit",
+          "definition": "A circuit with two or more loops, letting the current split between branches.",
+          "firstLesson": 2
+        },
+        {
+          "term": "junction",
+          "definition": "A meeting point of wires where the current divides among branches.",
+          "firstLesson": 2
+        },
+        {
+          "term": "branch",
+          "definition": "A stretch of circuit lying between two junctions, carrying its own share of the current.",
+          "firstLesson": 2
+        },
+        {
+          "term": "conservation of charge",
+          "definition": "The principle that charge is neither created nor destroyed, so junction inflow equals outflow.",
+          "firstLesson": 2
+        },
+        {
+          "term": "electron flow",
+          "definition": "The drift of negative electrons through the wires, running opposite to conventional current.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "Ammeter A0 reads 10 A where the current leaves the battery; ammeter A1 sits in one branch and reads 6 A. Find the reading on ammeter A2 in the other branch.",
+        "steps": [
+          "At the junction the current splits but is conserved, so the branch currents must add back to the total.",
+          "Current into the junction: 10 A.",
+          "One branch takes 6 A, so the remaining branch carries 10 − 6.",
+          "10 − 6 = 4 A."
+        ],
+        "finalAnswer": "Ammeter A2 reads 4 A."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/dae9503466e7-10-1-2-1-current-in-a-series-circuit.png",
+        "alt": "Current in a series circuit, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Current in series",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The current is the same at each point in a series circuit",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/ac44b07389ec-2-2-1-current-in-series-circuits.png",
+        "alt": "Current in Series Circuits, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Increasing the voltage and number of components in series",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Current will increase if the voltage of the power supply increases and decreases if the number of components increases",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/05b08c07b4cb-21019-junctions-current-splitting.png",
+        "alt": "Diagram of circuit junctions showing currents I₁ and I₂ combining to I₁+I₂ and splitting from I₁+I₂ into I₁ and I₂, illustrating conservation of current.",
+        "sourceHeading": "Current in parallel",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Current splits at a junction into individual branches",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/cd6a67137986-10-1-5-we-current-conservation-question-image.png",
+        "alt": "WE Current Conservation Question image, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Why is current conserved at a junction in a circuit?",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/ebb017ddd3e0-10-1-5-we-current-conservation-solution-image.png",
+        "alt": "WE Current Conservation Solution image, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Why is current conserved at a junction in a circuit?",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/7ea6836a6421-9-1-1-1-flow-of-charge.png",
+        "alt": "Flow of charge, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Why is current conserved at a junction in a circuit?",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

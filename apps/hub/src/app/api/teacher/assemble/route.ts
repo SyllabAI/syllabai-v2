@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getCourseBundle } from "@/lib/courses";
-import { buildSpecTreeIndex, subtopicOfQuestionSet } from "@/lib/spec-tree";
+import { buildSpecTreeIndex, generalTopicsOfQuestionTopics, subtopicOfQuestionSet } from "@/lib/spec-tree";
 import { assembleTest } from "@/lib/teacher/test-assembly";
 
 /**
@@ -48,7 +48,10 @@ export async function POST(request: Request) {
   }
 
   // subtopic codes → anchored question-set slugs
-  const index = buildSpecTreeIndex(bundle.curriculum);
+  const index = buildSpecTreeIndex(bundle.curriculum, {
+    // keep teacher placement identical to the student hub (D0 gen rows)
+    generalTopics: generalTopicsOfQuestionTopics(bundle.questionTopics),
+  });
   const wanted = new Set(subtopics);
   const setSlugs = new Set<string>();
   for (const t of bundle.questionTopics) {

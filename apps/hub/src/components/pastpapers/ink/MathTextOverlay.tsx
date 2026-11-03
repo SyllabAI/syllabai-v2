@@ -35,6 +35,24 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import { INK_COLORS, type InkMathShape } from "./ink";
 
+/** The ONE KaTeX render law of record — every consumer (the committed
+ * overlay below, the crop raster's re-render, the T-MG-INK-9 draft
+ * preview) renders through this so editing and committing agree
+ * glyph-for-glyph. throwOnError:false — malformed tex renders the
+ * error-styled source honestly: never blank, never a throw. */
+export function renderMathHtml(tex: string): string | null {
+  try {
+    return katex.renderToString(tex, {
+      throwOnError: false,
+      displayMode: false,
+      output: "html",
+    });
+  } catch {
+    // unreachable with throwOnError:false — the honest guard anyway
+    return null;
+  }
+}
+
 export function MathTextOverlay({ shape }: { shape: InkMathShape }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [holderW, setHolderW] = useState(0);
@@ -52,18 +70,7 @@ export function MathTextOverlay({ shape }: { shape: InkMathShape }) {
     return () => ro.disconnect();
   }, []);
 
-  const html = useMemo(() => {
-    try {
-      return katex.renderToString(shape.tex, {
-        throwOnError: false,
-        displayMode: false,
-        output: "html",
-      });
-    } catch {
-      // unreachable with throwOnError:false — the honest guard anyway
-      return null;
-    }
-  }, [shape.tex]);
+  const html = useMemo(() => renderMathHtml(shape.tex), [shape.tex]);
 
   return (
     <div

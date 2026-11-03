@@ -1,19 +1,29 @@
 schema: t-book-task/v1
 id: T-BOOK-069
 title: "Unit Strength Checks u1-u4 — armed: ADR-BOOK-0004 (binding/gating/serving) + the bank-density audit vehicle of record"
-operator_order: "Proceed with 4 intensity checks, broader media embedding (IM trace 1a19b69d1fddc0b5, 2026-11-02) — the '4 checks' half (the plan's 4 unit Strength Check sets)"
-status: RUN-001-EXECUTED-AWAITING-S4-FLIP  # run-001 (2026-11-02, trace 1a19d157d5ca8cc9): vehicles v2 (#650, 6a9bf50b) + 4 packs / 60 bank-truth blocks (#651, c3b0e5b2) + scoped ingest COMMIT (60 SUGGESTED, 205 VALIDATED untouched) + F-BOOK-0006; receipt strength-run001-r1.json. The S4 flip stays operator-held: fires only after the rail-exclusion core (ADR run-001 amendment 4) lands AND deploys — the blocks are inert under every code version until then
-adr_draft: docs/adr/ADR-BOOK-0004-unit-strength-checks.md (PROPOSED — 6 decisions: per-item chapter binding, id-prefix identity, unit-scoped read-only serving, density gate, machine-proposed selection, 10-15 budget)
+operator_order: "Proceed with 4 intensity checks, broader media embedding (IM trace 1a19b69d1fddc0b5, 2026-11-02) — the '4 checks' half (the plan's 4 unit Strength Check sets); lane acceptance word 'the strength-checks lane (T-BOOK-069) proceed' (IM trace 1a19f606f8741cbd, 2026-11-03)"
+status: RUN-002-SERVING-CORE-MERGED-AWAITING-DEPLOY-AND-S4-FLIP  # run-002 (2026-11-03, trace 1a19f606f8741cbd): ADR-BOOK-0004 ACCEPTED (the operator's lane word pinned); serving core #661 (merge c6b9f1a9, CI 2/2) — chapter rail/checks exclusion + GET strength-checks?unit=uN + the unit submit lane; hub surface #663 (merge 9f64dc9d, CI 2/2) — /strength?unit=uN page + immediate-reveal flow + the shelf per-unit row; main-red repair rode #661 commit 2 (roster census re-pin, disclosed). REMAINING: (1) prod deploy of the exclusion-bearing core — CLI-only, needs the Vercel credential re-handed (the T-SM-ROLLOUT od1 recipe); (2) the S4 flip (60 rows v1→2, scoped) — needs the Neon MAIN pooler re-handed; (3) serve proof + receipt
+adr: docs/adr/ADR-BOOK-0004-unit-strength-checks.md (ACCEPTED 2026-11-03 — the operator's lane acceptance word trace 1a19f606f8741cbd is the blessing of record; 6 decisions + run-001 amendments)
+run_002:
+  core_pr:
+    pr: 661
+    branch: t-book-072-strength-serving
+    head: 687f6877
+    merge_sha: c6b9f1a9
+    ci: "verify+hub 2/2 success first-hand on the head SHA (gate-b: absent != success)"
+    change: "railBlocksForChapter excludes the strength prefix (parameterized not like 'strength-%') — chapter rails AND chapter checks stay chapter-scoped; NEW strengthChecksForUnit(documentId, unit) gathers VALIDATED strength-u<N>/ rows ACROSS per-item chapter bindings, id-ordered, resolved through the EXISTING railChecks law verbatim (shared resolveChecksForBlocks, REUSE-not-redeclare); NEW GET /v1/content/books/:docId/strength-checks?unit=uN (public-read, T-C20 404, honest [] pre-flip, unit grammar ^u\\d+$ 400-before-DB)"
+  hub_pr:
+    pr: 663
+    branch: t-book-072-strength-hub
+    head: 8665bbec
+    merge_sha: 9f64dc9d
+    ci: "verify+hub 2/2 success first-hand on the head SHA"
+    change: "NEW /courses/[course]/books/[docId]/strength?unit=uN (honest states: T-C20 404 / not-published-yet card / the flow); strength-check-flow.tsx (immediate reveal, honest question:null cards, honest score, signed-out local-play disclosure); the unit submit lane (api chapter-OR-unit gate — exactly one, 400 on both/neither; hub proxy forwards ?unit=; client submitStrengthCheck); the shelf per-unit 'Strength check' row renders ONLY when the unit serves >0 VALIDATED items"
+  main_red_repair:
+    disclosure: "main's verify ran red from ~2026-11-02T19:07Z (six consecutive runs) BEFORE this branch: the evening consume/serving waves raised the servable census without advancing the cie-phase4 roster pins. The repair (in #661 commit 2) re-pins from the shim's own admission law first-hand on main@0e788d62: sums 9,916/11,904/16,674 -> 13,310/15,281/21,274; exclusions 16,193/19/1,118 -> 12,674/81/1,181; 7 per-bank pins annotated 'was N'; ZERO_SERVABLE now english-language-20 only; identity re-proven 27,246-13,310 == 12,674+81+1,181 == 13,936. NOT a loosening — growth; raw banks unchanged at 27,246/43,996"
+  inertness: "with the 60 strength rows SUGGESTED, BOTH PRs are inert in production until the S4 flip — and the flip is operator-held, gated on the exclusion being LIVE (amendment 4's own law)"
 vehicle: apps/api/scripts/books-strength/density-audit.mts (TRACKED, READ-ONLY — counts ACTIVE MCQ_SINGLE SME-keyed bank items per spec point across the unit band; --select u<N> emits the 10-15 candidate ids per-point-coverage-first)
 vehicle_verification: "TS parse OK (bun build --no-bundle); connect guard fires honestly without DATABASE_URL (exit 2, nothing read/written) — the reflip-r4 guard precedent, CONFIRMED of record this session"
-why_armed_not_fired: |
-  The plan gates Strength Checks on the per-point bank-density SQL (§126) and the bank law
-  requires checkRefs that resolve in the LIVE bank (ACTIVE MCQ_SINGLE, external_ref of record) —
-  both are L3 (Neon) truths. The sandbox env carries no pooler credential this session (wiped
-  between sessions per the env-only law; the summary-carried values are masked by design), so
-  authoring blocks with invented refs would violate the bank law and the zero-invention law.
-  The honest move is the T-BOOK-020 precedent: ARM the capability (ADR + vehicle of record),
-  fire on the operator's word + credential hand.
 execution_recipe: |
   DATABASE_URL=<Neon MAIN pooler> bun apps/api/scripts/books-strength/density-audit.mts --audit          # per-point density, all 4 units
   DATABASE_URL=<Neon MAIN pooler> bun apps/api/scripts/books-strength/density-audit.mts --audit u<N>     # per-unit gate (exit 1 on zero-item points)
@@ -21,9 +31,9 @@ execution_recipe: |
   # then: author strength-u<N>/pack.yaml + mcq-embed blocks (checkRefs = the selected ids, per-item
   # chapter binding per ADR-0004 decision 1) → G1-G4 lint → S1/S2/S3 adversarial passes → S4 flip
   # via the books-u4-s34 pipeline pattern (staging scoped to strength packs) → serve proof
-after_adr_word: "core: the unit-scoped read-only endpoint (ADR-0004 decision 3) + the chapter-checks exclusion filter; hub: the unit-check surface riding the existing player — branch+PR each"
 disclosures:
   past_paper_items: "OUT of the v1 count of record (no per-point spec key without the deferred tagging sprint) — ADR-0004 consequence, not a silent scope cut"
   chapter_binding: "strength blocks bind to the item's OWN chapter (spine/join laws intact); unit identity rides the block id prefix (no schema change)"
-boundaries: "this commit = docs/adr/ADR-BOOK-0004*.md + apps/api/scripts/books-strength/** + this yaml + receipt + worklog; zero DB contact; zero prod contact; fetch-first; no force"
-receipt: .syllabai/receipts/T-BOOK-069/strength-armed-r0.json
+  submit_gate: "the api submit route now accepts chapter OR unit (exactly one) — gate grammar only; submitRailCheck keys on question/option and never used the scope key"
+boundaries: "run-002 commits = apps/api (services/routes/tests) + apps/hub (lib/page/flow/shelf/proxy) + ADR-0004 acceptance + this yaml + receipt + worklog; zero DB contact; zero prod contact; fetch-first; no force; credentials env-only"
+receipt: .syllabai/receipts/T-BOOK-069/strength-run002-core-r0.json
