@@ -49,7 +49,7 @@ import { act } from "react";
 import { createRoot } from "react-dom/client";
 
 import { InkLayer } from "./InkLayer";
-import { doc, jsdomMouseEvent } from "./ink-layer-pointerdown.harness";
+import { doc, jsdomMouseEvent, pressPointerDown } from "./ink-layer-pointerdown.harness";
 
 // ── mount harness ──
 
@@ -102,17 +102,16 @@ async function mountInkLayer() {
   const holder2 = container.querySelector('div[data-page="2"]')! as HTMLElement;
   expect(holder1, "holder 1 must render (React-managed pane topology)").not.toBeNull();
   expect(holder2, "holder 2 must render (React-managed pane topology)").not.toBeNull();
-  // enable the ink layer through the toolbar's own toggle (the shipped
-  // entry path — no prop cheating past the enabled gate)
+  // T-MG-INK-11: the gate is GONE (MG's law — the annotator toolbar is
+  // always visible). The canvases must be mounted the moment the layer
+  // renders: no launcher, no enabling click.
   const toggle = container.querySelector('button[aria-label="Draw on this paper (ink layer)"]');
-  expect(toggle, "the ink toggle must render (LOCAL posture: no token required to draw)").not.toBeNull();
-  await act(async () => {
-    toggle!.dispatchEvent(jsdomMouseEvent("click", { bubbles: true }));
-  });
+  expect(toggle, "no launcher may exist (the gate is dead)").toBeNull();
+  expect(container.querySelector('[role="toolbar"]'), "the toolbar renders ungated").not.toBeNull();
   const c1 = holder1.querySelector("canvas[data-ink-page]");
   const c2 = holder2.querySelector("canvas[data-ink-page]");
-  expect(c1, "holder 1 must carry its portal canvas after enabling").not.toBeNull();
-  expect(c2, "holder 2 must carry its portal canvas after enabling").not.toBeNull();
+  expect(c1, "holder 1 must carry its portal canvas immediately").not.toBeNull();
+  expect(c2, "holder 2 must carry its portal canvas immediately").not.toBeNull();
   lastUnmount = async () => {
     await act(async () => {
       root.unmount();
@@ -203,5 +202,99 @@ describe("T-MG-INK-7 run-001 — the holder self-heal law (the full-InkLayer obs
     holder1.replaceChildren(wrapper); // remove-then-re-add the SAME wrapper, one batch
     await flushObservation();
     expect(holder1.querySelector("canvas[data-ink-page]")).toBe(c1);
+  });
+});
+
+// ── T-MG-INK-11: MG's palette anatomy — ONE trigger per row, menus inside ──
+
+
+/** Radix menus open on the OPENING PRESS (pointerdown), not click —
+ * the same trusted-sequence law the placement editors ride. */
+async function openMenu(tb: HTMLElement, prefix: string) {
+  const trigger = [...tb.querySelectorAll("button")].find((b) =>
+    b.getAttribute("aria-label")?.startsWith(prefix),
+  )!;
+  expect(trigger, `a ${prefix} trigger must exist`).not.toBeNull();
+  await act(async () => {
+    const press = pressPointerDown(trigger);
+    trigger.dispatchEvent(press.ev);
+  });
+  return trigger;
+}
+
+describe("T-MG-INK-11 run-001 — the ungated toolbar + the palette menus (MG's shape)", () => {
+  test("(a) the toolbar renders ungated: 9 tool buttons, no launcher, no close", async () => {
+    const { container } = await mountInkLayer();
+    const tb = container.querySelector('[role="toolbar"]')!;
+    const labels = [...tb.querySelectorAll("button")].map((b) => b.getAttribute("aria-label"));
+    expect(labels).toContain("Draw");
+    expect(labels).toContain("Text");
+    expect(labels).toContain("Math text box");
+    expect(labels).toContain("Select");
+    expect(labels).toContain("Erase");
+    expect(labels).toContain("Line");
+    expect(labels).toContain("Ruler");
+    expect(labels).toContain("Protractor");
+    expect(labels).toContain("Compasses");
+    expect(labels, "no Close chrome (MG has none)").not.toContain("Close ink layer");
+    expect(container.querySelector('button[aria-label="Draw on this paper (ink layer)"]')).toBeNull();
+  });
+
+  test("(b) the colour row is ONE dynamic trigger + a 6-item menu (MG's anatomy)", async () => {
+    const { container } = await mountInkLayer();
+    const tb = container.querySelector('[role="toolbar"]')! as HTMLElement;
+    // exactly ONE trigger, labelled with the CURRENT colour
+    const triggers = [...tb.querySelectorAll("button")].filter((b) =>
+      b.getAttribute("aria-label")?.startsWith("Pen colour: "),
+    );
+    expect(triggers).toHaveLength(1);
+    expect(triggers[0].getAttribute("aria-label")).toBe("Pen colour: Black");
+    // the trigger dot carries the current colour (MG's swatch anatomy)
+    const dot = triggers[0].querySelector("span[aria-hidden]");
+    expect(dot).not.toBeNull();
+    expect(dot!.getAttribute("style")).toContain("rgb(29, 29, 29)");
+    // open it on the press (Radix's open gesture) → the six named colours
+    await openMenu(tb, "Pen colour: ");
+    const items = [...document.querySelectorAll("[role=menuitem]")].filter((el) =>
+      ["Black", "Red", "Blue", "Green", "Violet", "Orange"].includes(el.getAttribute("aria-label") ?? ""),
+    );
+    expect(items.map((el) => el.getAttribute("aria-label"))).toEqual([
+      "Black", "Red", "Blue", "Green", "Violet", "Orange",
+    ]);
+    // pick Red → the trigger label re-skins (MG's dynamic-label law)
+    await act(async () => {
+      items[1].dispatchEvent(jsdomMouseEvent("click", { bubbles: true }));
+    });
+    const tb2 = container.querySelector('[role="toolbar"]')! as HTMLElement;
+    const after = [...tb2.querySelectorAll("button")].find((b) =>
+      b.getAttribute("aria-label")?.startsWith("Pen colour: "),
+    );
+    expect(after!.getAttribute("aria-label")).toBe("Pen colour: Red");
+    expect(after!.querySelector("span[aria-hidden]")!.getAttribute("style")).toContain("rgb(224, 49, 49)");
+  });
+
+  test("(c) the thickness row is ONE dynamic trigger + a 4-item menu (MG's anatomy)", async () => {
+    const { container } = await mountInkLayer();
+    const tb = container.querySelector('[role="toolbar"]')! as HTMLElement;
+    const triggers = [...tb.querySelectorAll("button")].filter((b) =>
+      b.getAttribute("aria-label")?.startsWith("Pen thickness: "),
+    );
+    expect(triggers).toHaveLength(1);
+    expect(triggers[0].getAttribute("aria-label")).toBe("Pen thickness: Medium");
+    await openMenu(tb, "Pen thickness: ");
+    const items = [...document.querySelectorAll("[role=menuitem]")].filter((el) =>
+      ["Fine", "Medium", "Thick", "Extra thick"].includes(el.getAttribute("aria-label") ?? ""),
+    );
+    expect(items.map((el) => el.getAttribute("aria-label"))).toEqual([
+      "Fine", "Medium", "Thick", "Extra thick",
+    ]);
+    await act(async () => {
+      items[3].dispatchEvent(jsdomMouseEvent("click", { bubbles: true }));
+    });
+    const tb2 = container.querySelector('[role="toolbar"]')! as HTMLElement;
+    const after = [...tb2.querySelectorAll("button")].find((b) =>
+      b.getAttribute("aria-label")?.startsWith("Pen thickness: "),
+    );
+    expect(after!.getAttribute("aria-label")).toBe("Pen thickness: Extra thick");
   });
 });
