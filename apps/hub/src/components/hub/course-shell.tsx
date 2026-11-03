@@ -32,6 +32,7 @@ import {
   GraduationCap,
   LayoutDashboard,
   Lightbulb,
+  ListChecks,
   ListTree,
   Map,
   Menu,
@@ -772,6 +773,9 @@ export function CourseShell({
       // information architectures agree about the same tools.
       label: "Track & improve",
       items: [
+        // T-KG-COV-1: the coarse weekly question ("how far through the
+        // specification am I?") rides beside the per-point one it feeds.
+        { href: `${base}/coverage`, label: "Syllabus coverage", icon: ListChecks },
         { href: `${base}/strengths`, label: "Strengths & Weaknesses", icon: Compass, exact: pathname === `${base}/strengths` },
         // run-013 R1/G3: official boundaries live for 106/109 courses — the
         // same getGradeBoundariesSummary the Track card keys on;
