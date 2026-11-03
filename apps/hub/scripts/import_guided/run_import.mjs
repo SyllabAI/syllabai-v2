@@ -2530,6 +2530,148 @@ const FEEDS = {
       ) && !!a.path.split("/").pop();
     },
   },
+  "physics-wave6-v25": {
+    manifest: "hub-import-manifest-v25.json",
+    manifest_version: 25,
+    // NEW-SUBJECT wave-6 (resources PR #292, merge-of-record 79b437615ac21097f59631f6bc41176e97ed8a08; runbook §1 + B6
+    // continue-global at v25 — CUMULATIVE over the igcse-physics-19 pack, the chemistry
+    // v8..v17 pattern, the physics v18..v24 pattern). W6 of the frozen B4 partition: the
+    // 3-1 waves-and-the-electromagnetic-spectrum + 3-2 reflection-and-refraction
+    // subtopics, 13 notes. The INT-3 carries ALL 53 pack rows (the v19 index-regression
+    // lesson of record), so the runner-owned guided-import.json re-issue keeps the whole
+    // flow. The 80 prior-pack artifacts are re-pinned byte-identical (1 pilot @ v18 shas +
+    // 6 wave-1 @ v19 shas + 9 wave-2 @ v21 shas + 7 wave-3 @ v22 shas + 16 wave-4 @ v23
+    // shas + 18 wave-5 @ v24 shas); the 26 wave-6 artifacts are FIRST issues @ the
+    // commit-A pin dad406f1. ZERO chemistry bytes touched, ZERO authored prior-pack bytes
+    // changed. Race posture: resources main did not move during the wave (promo parent =
+    // the wave-open base d0f6ebbb, race-guard re-checked at merge; hub main re-checked at
+    // this patch + at push).
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 53, "sme-question-package": 53 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-6 chain — import the igcse-physics-19 wave-6 tranche of record (13 notes: rn_HKZzkTMztGJvqXCd '3-1-1 Transverse & Longitudinal Waves' / rn_TPSJT83Gh8nMCcVV '3-1-2 Describing Wave Motion' / rn_hkV9ncw6zTQqrbN5 '3-1-3 The Wave Equation' / rn_ctTgFb5NSQTSQVSP '3-1-4 The Doppler Effect' / rn_GVDsPK5gmYw5wqvG '3-1-5 Electromagnetic (EM) Waves' / rn_8K4rhNpfVqrR8pHF '3-1-6 Applications of EM Waves' / rn_dx62W8M2b3RpDWjM '3-1-7 Dangers of EM Waves' / rn_25TjVtFjyh6Hmr8X '3-2-1 Light & Sound Waves' / rn_35snKWs7CjH7vshw '3-2-2 Reflection & Refraction' / rn_N74nsXGBw66yzqSf '3-2-3 Core Practical: Investigating Refraction' / rn_J6rwHvcb9zhBpJCM '3-2-4 Snell's Law' / rn_MfKYy7mHFkx7zF9x '3-2-5 Core Practical: Investigating Snell's Law' / rn_HhjktGSR32fxhHPW '3-2-6 Total Internal Reflection'; 25 lessons / 225 checks = 125 MCQ + 50 recall + 25 explain-why + 25 application) with the 80 prior-pack artifacts re-pinned byte-identical — CUMULATIVE pack 53 notes / 105 lessons / 945 checks, manifest v25. Declared hub landing = 26/26 written + 80/80 identical-exists + the runner-owned guided-import.json index re-issued with all 53 rows; zero chemistry bytes touched. Operator ignition trace 1a1a01c1321c30b5 ('Wave-6'), execution trace 1a1a01c1321c30b5 (authoring window + continuation window after a sandbox recycle, disclosed).",
+    promo: {
+      // promotion commit of record = the resources PR #292 merge-of-record (commit A dad406f1 +
+      // commit C a38e1899; the merge commit message carries the execution trace verbatim;
+      // merge parents d0f6ebbb = the wave-open main, a38e1899 = the branch head)
+      commit: "79b437615ac21097f59631f6bc41176e97ed8a08",
+      tree: "55ac13a6a96a60faaee46c58deabe3627591c452",
+      parent: "d0f6ebbb02b246c86e44cf6421ccea6b5b0419a3",
+      trace: "1a1a01c1321c30b5",
+    },
+    integration_branch: null, // ancestry of record — resources PR #292 merged before this hub run
+    artifact_pin: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24", // wave-6 commit A — the source-0.6 generation pin of record for the 13 wave-6 notes
+    artifact_pins_by_note: {
+      // prior-pack provenance of record (G-D pinnedRef, per-note law): pilot v18 / wave-1
+      // v19 / wave-2 v21 / wave-3 v22 commit-A 0cea83a7 / wave-4 v23 commit-A 275f3b53 /
+      // wave-5 v24 commit-A 502107a3 — re-pinning them to the wave-6 commit would falsify
+      // their provenance
+
+      // prior-pack provenance of record (G-D pinnedRef, per-note law): the stage-A pilot
+      // keeps its v18 source pin, the six wave-1 notes keep their v19 source pin, the nine
+      // wave-2 notes keep their v21 source pin, the seven wave-3 notes keep their v22
+      // source pin, the eight wave-4 notes keep their v23 source pin (their wave-4 commit A
+      // — the artifact-embedded pinnedRef of record; the trace-bearing merge is the
+      // PROMOTION commit, not the provenance pin) — re-pinning them to the wave-5 commit
+      // would falsify their provenance
+      rn_RpyMnS5nqWSRWXXG: "7d493985c7729f30c2186e7e61a713ceacc96517",
+      rn_k9wr3prcgSBg5vfw: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_pfndTqR6DTJGZ8xQ: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_CpJZQWzbvMcM8fw3: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_5hfYYFrc2XjMJCrq: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_GxNWbSMqkTN4zgZB: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_ZgGMNrRGBKvYxxFf: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_nyV7C6zmyKXWJjKg: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_4zdmGRWTg5ksK44N: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_K3p2R3ykwwvHV9dp: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_gDy2qTkY26r5sMtd: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_2R3NrjGfJJY29Hzv: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_ZCGJsYwy6S6FbbbW: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_Mrfn29ZgQMq8th5P: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_kN63sqWsc9QdHSVx: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_nC3BswtJzYw8k6nX: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_pqp4mfpHzGVtrjTT: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_NfCjFmPfmMQ8pQSw: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_8wqvPtsCCh3gdJN5: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_RQK2MW3zRPNNzwtc: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_jzQZQcPRQkJvdYwJ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_zn4NVCRcTSNv8sRZ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_TPDdhwDYsrWgQB7R: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_NZ5D2Mx9SXQY98wy: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_BcxDP3RzXk3k7rwf: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_64pQyK4tm9P9rdKN: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_BFQBSmVz2xFZVsB6: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_ynsstfBQngnx2pgq: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_PyxMmTd6S9pMDTt6: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_WzQZfyNNFFFFghbF: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_gYqbXsJPfrqtg5yQ: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_PZZFkywYbmP9bwyh: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_FfvmFrDdhSsMk9rm: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_kxw7Ms4Pr7dQJykY: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_z4nNPFw97V9fDkyS: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_NgxJhPpm5Zs7kFSz: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_qG9dxcQrRJJVDQf7: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_ws8NtMW3QwCs73Gh: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_NhRw6hdrVD4vmNJw: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_W3QnDKVK9mMQ3Mhg: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_HKZzkTMztGJvqXCd: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_TPSJT83Gh8nMCcVV: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_hkV9ncw6zTQqrbN5: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_ctTgFb5NSQTSQVSP: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_GVDsPK5gmYw5wqvG: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_8K4rhNpfVqrR8pHF: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_dx62W8M2b3RpDWjM: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_25TjVtFjyh6Hmr8X: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_35snKWs7CjH7vshw: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_N74nsXGBw66yzqSf: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_J6rwHvcb9zhBpJCM: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_MfKYy7mHFkx7zF9x: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_HhjktGSR32fxhHPW: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+    },
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 168 cumulative figures (130 prior + 38 wave-6; 163 module-mapped + 5 note-level)
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave6-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave6-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave6-survivors/hub-import-manifest-v25.json",
+      int3: "/home/z/my-project/scripts/physics-wave6-survivors/INT-3-transform-record-physics-wave6.json",
+    },
+    receipt: "/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261103-physics-wave6-v25.json",
+    identity: {
+      notes: 53,
+      lessons: 105,
+      checks: 945,
+      keyPoints: 518,
+      distractors: 1575,
+      glossaryTerms: 239,
+      figures: 168,
+      figures_module_mapped: 163,
+      figures_note_level: 5,
+      workedExamples_populated: 27,
+      workedExamples_null: 26,
+      authored_chars_conserved: 590554,
+    },
+    artifact_count: 106,
+    note_count: 53,
+    wave_count: 7,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v25 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
 };
 
 const FEED_ID = process.env.FEED || "fullcorpus-v2";

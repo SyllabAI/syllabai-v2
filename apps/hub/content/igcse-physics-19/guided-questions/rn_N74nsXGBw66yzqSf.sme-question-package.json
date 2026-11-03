@@ -1,0 +1,500 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_N74nsXGBw66yzqSf",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "ec7bd1b1570a5e7c546540a1d1b4b4bbc15817e03cb49a9e7f7518d7764a8048",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "packageId": "igcse-physics::rn_N74nsXGBw66yzqSf",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L1::Q1",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L1",
+      "stem": "The independent variable in this core practical is:",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "the direction of refraction",
+          "correct": false,
+          "explanation": "That is the measured outcome, the dependent variable.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "B",
+          "text": "the shape of the block",
+          "correct": true,
+          "explanation": "Shape is deliberately changed between trials.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the beam width",
+          "correct": false,
+          "explanation": "Beam width is a control variable.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "D",
+          "text": "the light frequency",
+          "correct": false,
+          "explanation": "Frequency is controlled, not changed.",
+          "misconception": "variable swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L1::Q2",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L1",
+      "stem": "The dependent variable is:",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "the block material",
+          "correct": false,
+          "explanation": "The perspex material stays the same throughout.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "B",
+          "text": "the room lighting",
+          "correct": false,
+          "explanation": "That is an environmental condition, not the measured variable.",
+          "misconception": "variable invention"
+        },
+        {
+          "key": "C",
+          "text": "the direction of refraction",
+          "correct": true,
+          "explanation": "The experiment observes how rays redirect.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the number of blocks",
+          "correct": false,
+          "explanation": "Blocks are changed one at a time by shape, not counted.",
+          "misconception": "variable confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L1::Q3",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L1",
+      "stem": "Which is a control variable in this experiment?",
+      "misconceptionClass": "control identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "the block shape",
+          "correct": false,
+          "explanation": "That is the independent variable.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "B",
+          "text": "the direction of refraction",
+          "correct": false,
+          "explanation": "That is the dependent variable.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "C",
+          "text": "the paper colour",
+          "correct": false,
+          "explanation": "Paper is equipment, not a listed control.",
+          "misconception": "variable invention"
+        },
+        {
+          "key": "D",
+          "text": "the width of the light beam",
+          "correct": true,
+          "explanation": "Beam width is held fixed across trials.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L1::Q4",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L1",
+      "stem": "After marking where the ray enters and exits the block, the next geometric step is:",
+      "misconceptionClass": "method sequence",
+      "options": [
+        {
+          "key": "A",
+          "text": "draw dashed normals at right angles to the block outline at the marked points",
+          "correct": true,
+          "explanation": "Normals are needed before any angles can be compared.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "remove the paper",
+          "correct": false,
+          "explanation": "The paper carries the whole record.",
+          "misconception": "step confusion"
+        },
+        {
+          "key": "C",
+          "text": "switch off the ray box immediately",
+          "correct": false,
+          "explanation": "More rays are still to be traced.",
+          "misconception": "step confusion"
+        },
+        {
+          "key": "D",
+          "text": "measure the block mass",
+          "correct": false,
+          "explanation": "Mass plays no role in the ray geometry.",
+          "misconception": "step invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L1::Q5",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L1",
+      "stem": "The blocks are traced onto paper before the ray is fired because:",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "tracing makes the block refract more",
+          "correct": false,
+          "explanation": "Drawing cannot change the physics.",
+          "misconception": "effect invention"
+        },
+        {
+          "key": "B",
+          "text": "the paper must be coloured",
+          "correct": false,
+          "explanation": "Colour is irrelevant.",
+          "misconception": "reason invention"
+        },
+        {
+          "key": "C",
+          "text": "the outline preserves the block position so entry and exit points can be joined after removal",
+          "correct": true,
+          "explanation": "Removing the block needs a positional record to reconstruct the geometry.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the ray box requires an outline to work",
+          "correct": false,
+          "explanation": "The ray box operates independently.",
+          "misconception": "reason invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L1::Q6",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L1",
+      "stem": "State the independent and dependent variables of this experiment.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Independent: the shape of the block. Dependent: the direction of refraction.",
+      "keywords": [
+        "independent",
+        "shape",
+        "dependent",
+        "direction",
+        "refraction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L1::Q7",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L1",
+      "stem": "Name the equipment that provides the narrow light beam.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "A ray box provides the narrow beam.",
+      "keywords": [
+        "ray box",
+        "narrow",
+        "beam"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L1::Q8",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L1",
+      "stem": "Explain why the same frequency of light is used for every block.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Frequency is a control variable: changing it would alter the refraction comparison, so keeping it fixed means any differences in ray direction can be attributed to the block shape alone.",
+      "keywords": [
+        "control",
+        "frequency",
+        "fixed",
+        "shape",
+        "comparison"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L1::Q9",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L1",
+      "stem": "A student completes the rectangular block trial and now repeats with the semi-circular block. Describe the repetition steps in order.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Place the semi-circular block on fresh paper and draw around it, direct the ray box beam at its curved or flat face, mark the entry and exit points plus a point on the exit ray, draw the dashed normals, remove the block, join the points with straight lines, and repeat at another angle of incidence.",
+      "keywords": [
+        "draw around",
+        "beam",
+        "mark",
+        "normals",
+        "join"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L2::Q1",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L2",
+      "stem": "A wrongly drawn 90-degree normal line is classified as:",
+      "misconceptionClass": "error classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "a random error",
+          "correct": false,
+          "explanation": "Random errors scatter unpredictably; this one repeats.",
+          "misconception": "category swap"
+        },
+        {
+          "key": "B",
+          "text": "a systematic error",
+          "correct": true,
+          "explanation": "The bias repeats on every measurement in the same direction.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a safety hazard",
+          "correct": false,
+          "explanation": "It is a measurement issue, not a hazard.",
+          "misconception": "category swap"
+        },
+        {
+          "key": "D",
+          "text": "not an error at all",
+          "correct": false,
+          "explanation": "Wrong perpendiculars bias every angle measured from them.",
+          "misconception": "error denial"
+        }
+      ]
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L2::Q2",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L2",
+      "stem": "Which fix addresses the systematic error of this experiment?",
+      "misconceptionClass": "error remedy",
+      "options": [
+        {
+          "key": "A",
+          "text": "using a higher-resolution protractor",
+          "correct": false,
+          "explanation": "That reduces random reading scatter, not the systematic bias.",
+          "misconception": "remedy swap"
+        },
+        {
+          "key": "B",
+          "text": "wearing gloves",
+          "correct": false,
+          "explanation": "Gloves are a safety measure here, not a geometric fix.",
+          "misconception": "category confusion"
+        },
+        {
+          "key": "C",
+          "text": "repeating more trials only",
+          "correct": false,
+          "explanation": "Repetition averages random scatter; it cannot fix a biased construction.",
+          "misconception": "remedy swap"
+        },
+        {
+          "key": "D",
+          "text": "using a set square to draw the perpendicular lines",
+          "correct": true,
+          "explanation": "The set square makes the normals genuinely ninety degrees.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L2::Q3",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L2",
+      "stem": "The protractor resolution of one degree contributes:",
+      "misconceptionClass": "error classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "a random error in reading the angles",
+          "correct": true,
+          "explanation": "Instrument resolution scatters individual readings unpredictably.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a systematic error",
+          "correct": false,
+          "explanation": "Resolution limits precision rather than biasing one way.",
+          "misconception": "category swap"
+        },
+        {
+          "key": "C",
+          "text": "a safety risk",
+          "correct": false,
+          "explanation": "Protractors are harmless.",
+          "misconception": "category swap"
+        },
+        {
+          "key": "D",
+          "text": "a control failure",
+          "correct": false,
+          "explanation": "Resolution is a measurement limit, not a control issue.",
+          "misconception": "category confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L2::Q4",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L2",
+      "stem": "Why should a sharpened pencil mark the middle of the light beam?",
+      "misconceptionClass": "method precision",
+      "options": [
+        {
+          "key": "A",
+          "text": "to make the diagram prettier",
+          "correct": false,
+          "explanation": "The purpose is measurement quality.",
+          "misconception": "reason invention"
+        },
+        {
+          "key": "B",
+          "text": "to increase the beam width",
+          "correct": false,
+          "explanation": "Beam width is controlled, not enlarged.",
+          "misconception": "reason confusion"
+        },
+        {
+          "key": "C",
+          "text": "to reduce random error from inaccurately placed points",
+          "correct": true,
+          "explanation": "Beam-centre marking keeps the traced ray true to the actual path.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "to eliminate systematic error",
+          "correct": false,
+          "explanation": "This fix targets random placement scatter.",
+          "misconception": "category swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L2::Q5",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L2",
+      "stem": "Which safety measure matches the burn risk of the ray box?",
+      "misconceptionClass": "safety matching",
+      "options": [
+        {
+          "key": "A",
+          "text": "looking into the light to check it works",
+          "correct": false,
+          "explanation": "Looking into the beam is explicitly against the safety rules.",
+          "misconception": "safety inversion"
+        },
+        {
+          "key": "B",
+          "text": "adding water near the equipment",
+          "correct": false,
+          "explanation": "Liquids are kept away from the electrical equipment.",
+          "misconception": "safety inversion"
+        },
+        {
+          "key": "C",
+          "text": "standing in front of the ray box",
+          "correct": false,
+          "explanation": "You stand behind it, out of the beam.",
+          "misconception": "safety inversion"
+        },
+        {
+          "key": "D",
+          "text": "running any burn under cold water for at least five minutes",
+          "correct": true,
+          "explanation": "That is the stated response if the hot lamp surface burns skin.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L2::Q6",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L2",
+      "stem": "State the three safety considerations of this experiment.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The ray box can burn skin, so run burns under cold water for five minutes; never look into the light and stand behind the ray box; keep liquids well clear of any electrical equipment and of the paper.",
+      "keywords": [
+        "burn",
+        "cold water",
+        "look",
+        "behind",
+        "liquids"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L2::Q7",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L2",
+      "stem": "State how the traced paths are made comparable across angles.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Each path is labelled clearly, for example (1), (2), (3) or A, B, C, so the refraction angles for different incidence angles can be told apart.",
+      "keywords": [
+        "label",
+        "paths",
+        "angles",
+        "refraction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L2::Q8",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L2",
+      "stem": "Explain why repeating the procedure at several angles of incidence strengthens the investigation.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Multiple labelled paths show how the refraction direction responds as the incidence angle changes, turning a single observation into a pattern and letting random marking scatter be seen and averaged out.",
+      "keywords": [
+        "several",
+        "angles",
+        "pattern",
+        "scatter",
+        "average"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N74nsXGBw66yzqSf::L2::Q9",
+      "moduleId": "rn_N74nsXGBw66yzqSf::L2",
+      "stem": "A student notices every measured refraction angle is about two degrees too small. Classify the error, propose the most likely cause from this experiment and its fix.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The consistent one-way offset is a systematic error; the likely cause is the perpendicular lines being drawn slightly off ninety degrees, and the fix is drawing the normals with a set square.",
+      "keywords": [
+        "systematic",
+        "normals",
+        "ninety",
+        "set square",
+        "offset"
+      ],
+      "options": []
+    }
+  ]
+}

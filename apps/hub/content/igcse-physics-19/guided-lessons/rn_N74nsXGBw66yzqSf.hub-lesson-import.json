@@ -1,0 +1,188 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_N74nsXGBw66yzqSf",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "ec7bd1b1570a5e7c546540a1d1b4b4bbc15817e03cb49a9e7f7518d7764a8048",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_N74nsXGBw66yzqSf",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Reflection & Refraction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-2-reflection-and-refraction/3-2-3-core-practical-investigating-refraction",
+    "specAnchors": [
+      {
+        "code": "3.17",
+        "text": "Core practical 4: investigate the refraction of light, using rectangular blocks, semi-circular blocks and triangular prisms"
+      }
+    ],
+    "primer": {
+      "text": "Core practicals are examinable as procedures, not just ideas. This one sends a narrow light beam into perspex blocks of three shapes and records where the rays go, so that refraction can be measured rather than merely described. Method, variables, evaluation and safety are the four examiner touchpoints here.",
+      "prerequisiteSubtopic": "Reflection & Refraction"
+    },
+    "modules": [
+      {
+        "id": "rn_N74nsXGBw66yzqSf::L1",
+        "title": "Refraction core practical: variables & method",
+        "sourceHeadings": [
+          "Refraction experiment set up",
+          "Method"
+        ],
+        "specRefs": [
+          "3.17"
+        ],
+        "opening": "The experiment asks how light refracts through different block shapes. You change the shape of the block and observe the direction of refraction, keeping the beam width and the light frequency fixed. Tracing the beam with pencil marks and a drawn normal turns each pass into a measurable ray diagram.",
+        "keyPoints": [
+          "The independent variable is the shape of the block.",
+          "The dependent variable is the direction of refraction.",
+          "Control variables include the width of the light beam and the frequency of the light.",
+          "The method marks the ray on the paper, draws normals, and joins entry and exit points with straight lines.",
+          "Each perspex shape, rectangular, semi-circular and prism, is traced and repeated at different angles."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "You draw around each block, fire a narrow beam at its face, mark where the ray enters and leaves, then join the marks with straight lines to reveal the refracted path.",
+            "analogy": "Footprints in snow: mark where the traveller stepped in and out, then join the prints to recover the route.",
+            "examPointer": "Variable questions expect the exact pairing: shape changed, direction of refraction measured."
+          },
+          "medium": {
+            "restatement": "Drawing around the block before removing it is what makes the geometry recoverable: the outline plus the marked points reconstruct entry and exit normals, so the refraction at each face can be compared across shapes.",
+            "analogy": "Chalking around a fallen object at a scene: the outline preserves the exact position long after it is moved.",
+            "examPointer": "Method marks reward the sequence: outline, beam, marks, normal, join; quote them in that order."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_N74nsXGBw66yzqSf::L1::Q1",
+          "rn_N74nsXGBw66yzqSf::L1::Q2",
+          "rn_N74nsXGBw66yzqSf::L1::Q3",
+          "rn_N74nsXGBw66yzqSf::L1::Q4",
+          "rn_N74nsXGBw66yzqSf::L1::Q5",
+          "rn_N74nsXGBw66yzqSf::L1::Q6",
+          "rn_N74nsXGBw66yzqSf::L1::Q7",
+          "rn_N74nsXGBw66yzqSf::L1::Q8",
+          "rn_N74nsXGBw66yzqSf::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_N74nsXGBw66yzqSf::L2",
+        "title": "Refraction core practical: results, evaluation & safety",
+        "sourceHeadings": [
+          "Results",
+          "Evaluating the experiment"
+        ],
+        "specRefs": [
+          "3.17"
+        ],
+        "opening": "The traced rays build a multi-path diagram per block, each path labelled for a different incidence angle, and together they show how the refraction angle follows the incidence angle through every shape. Evaluation separates systematic slips, like wrongly drawn perpendiculars, from random marking errors, and safety rules protect eyes and skin from the ray box.",
+        "keyPoints": [
+          "Each block diagram carries several labelled ray paths for different incidence angles.",
+          "A systematic error arises if the ninety-degree normal lines are drawn wrongly.",
+          "Random errors arise from inaccurately marked beam points and protractor resolution.",
+          "A set square improves the perpendiculars; a sharpened pencil marks the beam centre.",
+          "Safety: never look into the light, stand behind the ray box, and keep liquids away from equipment."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Label the ray paths clearly, then judge the experiment: perpendicular-line slips are systematic, shaky point-marking and protractor limits are random, and the ray box needs eye and burn precautions.",
+            "analogy": "Marking a running track: paint the lanes straight (systematic care) and time runners precisely (random care).",
+            "examPointer": "Evaluation answers must sort errors into systematic versus random before suggesting fixes."
+          },
+          "medium": {
+            "restatement": "The error taxonomy maps to fixes: a set square removes the systematic perpendicular bias, while beam-centre marking and a higher-resolution protractor shrink the random scatter, and labelled paths let refraction angles be compared fairly across shapes.",
+            "analogy": "Calibrating scales: fix the zero first (systematic), then repeat and average the readings (random).",
+            "examPointer": "Safety marks are free marks: burns, eyes and liquids are the three listed hazards; quote all three."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_N74nsXGBw66yzqSf::L2::Q1",
+          "rn_N74nsXGBw66yzqSf::L2::Q2",
+          "rn_N74nsXGBw66yzqSf::L2::Q3",
+          "rn_N74nsXGBw66yzqSf::L2::Q4",
+          "rn_N74nsXGBw66yzqSf::L2::Q5",
+          "rn_N74nsXGBw66yzqSf::L2::Q6",
+          "rn_N74nsXGBw66yzqSf::L2::Q7",
+          "rn_N74nsXGBw66yzqSf::L2::Q8",
+          "rn_N74nsXGBw66yzqSf::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "ray box",
+          "definition": "A lamp arrangement that produces a narrow beam of light for optics experiments.",
+          "firstLesson": 1
+        },
+        {
+          "term": "independent variable",
+          "definition": "The quantity deliberately changed by the experimenter.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dependent variable",
+          "definition": "The quantity measured as the outcome of the experiment.",
+          "firstLesson": 1
+        },
+        {
+          "term": "systematic error",
+          "definition": "A repeatable bias in measurements, such as wrongly drawn perpendicular lines.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/05faa79947f4-okrwjklc-refraction-experiment-diagram.png",
+        "alt": "OKRWJklc_refraction-experiment-diagram",
+        "sourceHeading": "Refraction experiment set up",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Apparatus to investigate refraction",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/800500eabaae-3-2-3-light-refraction-results-2.png",
+        "alt": "3-2-3-light-refraction-results-2",
+        "sourceHeading": "Refraction experiment results with different media",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "Refraction of light through different shapes of perspex blocks",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

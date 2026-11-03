@@ -1,0 +1,256 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_dx62W8M2b3RpDWjM",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "c6b1bb85a7dce8691c47d6df57d70b0727c7819669bc6eaacc16ce9e40ef8f54",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "packageId": "igcse-physics::rn_dx62W8M2b3RpDWjM",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_dx62W8M2b3RpDWjM::L1::Q1",
+      "moduleId": "rn_dx62W8M2b3RpDWjM::L1",
+      "stem": "Excessive exposure to microwaves is dangerous because microwaves:",
+      "misconceptionClass": "harm matching",
+      "options": [
+        {
+          "key": "A",
+          "text": "burn only the skin surface",
+          "correct": false,
+          "explanation": "Surface burns are the infrared hazard.",
+          "misconception": "band swap"
+        },
+        {
+          "key": "B",
+          "text": "cause blindness",
+          "correct": false,
+          "explanation": "Blindness is the ultraviolet hazard.",
+          "misconception": "band swap"
+        },
+        {
+          "key": "C",
+          "text": "heat internal body tissue",
+          "correct": true,
+          "explanation": "Microwaves deposit energy as internal heating of tissue.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "cause cancer and mutation",
+          "correct": false,
+          "explanation": "That is the gamma and x-ray hazard.",
+          "misconception": "band swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_dx62W8M2b3RpDWjM::L1::Q2",
+      "moduleId": "rn_dx62W8M2b3RpDWjM::L1",
+      "stem": "Which radiation burns the skin?",
+      "misconceptionClass": "harm matching",
+      "options": [
+        {
+          "key": "A",
+          "text": "infrared",
+          "correct": true,
+          "explanation": "Infrared over-exposure burns the skin.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "radio waves",
+          "correct": false,
+          "explanation": "Radio is the low-energy communications band.",
+          "misconception": "band swap"
+        },
+        {
+          "key": "C",
+          "text": "x-rays",
+          "correct": false,
+          "explanation": "X-ray hazard is cell damage and cancer risk.",
+          "misconception": "band swap"
+        },
+        {
+          "key": "D",
+          "text": "microwaves",
+          "correct": false,
+          "explanation": "Microwaves heat tissue internally rather than browning skin.",
+          "misconception": "band swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_dx62W8M2b3RpDWjM::L1::Q3",
+      "moduleId": "rn_dx62W8M2b3RpDWjM::L1",
+      "stem": "Ultraviolet over-exposure can damage surface cells and also cause:",
+      "misconceptionClass": "harm matching",
+      "options": [
+        {
+          "key": "A",
+          "text": "internal heating of organs",
+          "correct": false,
+          "explanation": "Internal heating is the microwave hazard.",
+          "misconception": "band swap"
+        },
+        {
+          "key": "B",
+          "text": "blindness",
+          "correct": true,
+          "explanation": "Ultraviolet damages the eyes as well as skin cells.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "hair loss",
+          "correct": false,
+          "explanation": "That is not a listed ultraviolet effect.",
+          "misconception": "harm invention"
+        },
+        {
+          "key": "D",
+          "text": "food spoilage",
+          "correct": false,
+          "explanation": "That is irrelevant to the human-body harm list.",
+          "misconception": "context slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_dx62W8M2b3RpDWjM::L1::Q4",
+      "moduleId": "rn_dx62W8M2b3RpDWjM::L1",
+      "stem": "Gamma rays and x-rays are hazardous because they can:",
+      "misconceptionClass": "harm matching",
+      "options": [
+        {
+          "key": "A",
+          "text": "heat the skin gently",
+          "correct": false,
+          "explanation": "Gentle heating is a mild effect far below their real hazard.",
+          "misconception": "harm understatement"
+        },
+        {
+          "key": "B",
+          "text": "only harm equipment",
+          "correct": false,
+          "explanation": "The hazard list is about the human body.",
+          "misconception": "scope slip"
+        },
+        {
+          "key": "C",
+          "text": "cause sunburn only",
+          "correct": false,
+          "explanation": "Sunburn is the ultraviolet effect.",
+          "misconception": "band swap"
+        },
+        {
+          "key": "D",
+          "text": "kill cells, causing cancer and mutation",
+          "correct": true,
+          "explanation": "Cell death from these ionising radiations leads to cancer and mutation risks.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_dx62W8M2b3RpDWjM::L1::Q5",
+      "moduleId": "rn_dx62W8M2b3RpDWjM::L1",
+      "stem": "The harm from ultraviolet, gamma and x-ray exposure increases with frequency because:",
+      "misconceptionClass": "trend reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "higher-frequency waves travel faster",
+          "correct": false,
+          "explanation": "All EM waves share one speed in free space.",
+          "misconception": "speed myth"
+        },
+        {
+          "key": "B",
+          "text": "higher-frequency waves carry more energy and can ionise atoms",
+          "correct": true,
+          "explanation": "Energy rises with frequency, and ionisation begins beyond visible.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "higher-frequency waves are louder",
+          "correct": false,
+          "explanation": "Loudness is a sound property, irrelevant here.",
+          "misconception": "subject confusion"
+        },
+        {
+          "key": "D",
+          "text": "lower-frequency waves are blocked by air",
+          "correct": false,
+          "explanation": "The trend runs with frequency, not with air blocking.",
+          "misconception": "trend inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_dx62W8M2b3RpDWjM::L1::Q6",
+      "moduleId": "rn_dx62W8M2b3RpDWjM::L1",
+      "stem": "State the harm caused by excessive exposure to infrared radiation.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Infrared can burn the skin.",
+      "keywords": [
+        "infrared",
+        "burn",
+        "skin"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dx62W8M2b3RpDWjM::L1::Q7",
+      "moduleId": "rn_dx62W8M2b3RpDWjM::L1",
+      "stem": "State two protective measures against ultraviolet exposure.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Wear sunglasses that absorb ultraviolet, and apply sunscreen that absorbs ultraviolet before it damages the skin.",
+      "keywords": [
+        "sunglasses",
+        "sunscreen",
+        "absorb",
+        "ultraviolet"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dx62W8M2b3RpDWjM::L1::Q8",
+      "moduleId": "rn_dx62W8M2b3RpDWjM::L1",
+      "stem": "Explain why radiographers leave the room during x-ray imaging and wear radiation badges.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "X-rays are ionising, so repeated daily exposure would raise their cumulative dose and cancer risk; leaving the room avoids unnecessary exposure and the badge measures the dose they do receive so it can be checked and limited.",
+      "keywords": [
+        "ionising",
+        "dose",
+        "exposure",
+        "badge",
+        "cancer"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dx62W8M2b3RpDWjM::L1::Q9",
+      "moduleId": "rn_dx62W8M2b3RpDWjM::L1",
+      "stem": "A microwave oven protects its user with metal walls and a metal grid in the door. Explain how this works and name the harm it prevents.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The metal surfaces reflect and contain the microwaves so they cannot escape the cavity, preventing the internal heating of body tissue that excessive microwave exposure would cause.",
+      "keywords": [
+        "metal",
+        "reflect",
+        "contain",
+        "microwaves",
+        "tissue"
+      ],
+      "options": []
+    }
+  ]
+}
