@@ -35,6 +35,35 @@ import { railCheckSubmitRequestSchema } from "@syllabai/contracts";
  *  keys, so a malformed key is a 400 before any DB round trip. */
 const CHAPTER_KEY_RE = /^u\d+:c\d+$/;
 
+/** T-BOOK-069 / ADR-BOOK-0004: the unit request grammar ("u<unit>") for the
+ *  strength-checks endpoint — same 400-before-DB posture as chapterKey. */
+const UNIT_RE = /^u\d+$/;
+
+function unitParamOr400(c: { req: { query(name: string): string | undefined } }):
+  | { ok: true; unit: string }
+  | { ok: false; response: Response } {
+  const raw = c.req.query("unit");
+  if (raw == null || raw.trim() === "") {
+    return {
+      ok: false,
+      response: Response.json(
+        apiError(400, "validation_failed", "missing required parameter: unit"),
+        { status: 400 },
+      ),
+    };
+  }
+  if (!UNIT_RE.test(raw.trim())) {
+    return {
+      ok: false,
+      response: Response.json(
+        apiError(400, "validation_failed", "malformed parameter: unit (expected u<unit>)"),
+        { status: 400 },
+      ),
+    };
+  }
+  return { ok: true, unit: raw.trim() };
+}
+
 function chapterKeyOr400(c: { req: { query(name: string): string | undefined } }):
   | { ok: true; chapterKey: string }
   | { ok: false; response: Response } {
@@ -138,6 +167,21 @@ export function createBooksRouter(app: BooksReadApp): Hono {
       if (checks == null) throw new NotFoundException("Book", documentId);
       return c.json(checks);
     })
+    // GET /:documentId/strength-checks?unit=uN — T-BOOK-069 / ADR-BOOK-0004
+    // decision 3: the unit Strength Check of record — every VALIDATED block
+    // whose id prefix is `strength-u<N>/` resolved through the SAME railChecks
+    // law verbatim. Public-read posture (corpus content, the double gate at
+    // the service) + T-C20 (unknown/unvalidated book ⇒ the same 404) + the
+    // honest [] pre-flip. The chapter surfaces EXCLUDE the strength prefix
+    // (amendment 4): this endpoint is the strength rows' ONLY home.
+    .get("/:documentId/strength-checks", async (c) => {
+      const gate = unitParamOr400(c);
+      if (!gate.ok) return gate.response;
+      const documentId = c.req.param("documentId");
+      const checks = await app.strengthChecksForUnit(documentId, gate.unit);
+      if (checks == null) throw new NotFoundException("Book", documentId);
+      return c.json(checks);
+    })
     // POST /:documentId/checks/submit auth shell (the attempt is a learner
     // signal — same posture as the progress surface; GET /checks stays
     // public-read).
@@ -148,8 +192,26 @@ export function createBooksRouter(app: BooksReadApp): Hono {
     })
     // POST /:documentId/checks/submit — T-BOOK-008: the attempt of record
     // (provenance='BOOK_CHECK'; AUTH-gated — an attempt is a learner signal).
+    // T-BOOK-069: the gate is the chapter key OR the unit grammar — a unit
+    // strength check is not a chapter (ADR-BOOK-0004 decision 1), and the
+    // strength surface's submits ride ?unit=uN. Exactly one of the two is
+    // required; the service law itself keys on question/option, never the
+    // scope key, so the widening is a gate grammar only (no law change).
     .post("/:documentId/checks/submit", async (c) => {
-      const gate = chapterKeyOr400(c);
+      const chapterRaw = c.req.query("chapter");
+      const unitRaw = c.req.query("unit");
+      let gate: { ok: true } | { ok: false; response: Response };
+      if (unitRaw != null && unitRaw.trim() !== "") {
+        if (chapterRaw != null && chapterRaw.trim() !== "") {
+          return c.json(
+            apiError(400, "validation_failed", "provide either chapter or unit, not both"),
+            400,
+          );
+        }
+        gate = unitParamOr400(c);
+      } else {
+        gate = chapterKeyOr400(c);
+      }
       if (!gate.ok) return gate.response;
       const auth = getAuth(c)!;
       const body = await readJsonBody(c);

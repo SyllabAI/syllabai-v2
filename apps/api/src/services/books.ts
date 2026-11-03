@@ -64,6 +64,32 @@ import {
 import { createSql, type SqlFn } from "./identity/users";
 import { NotFoundException } from "./identity/errors";
 
+// ── T-BOOK-069 / ADR-BOOK-0004 — unit Strength Checks serving law ──────────
+// Strength-pack blocks (ids `strength-u<N>/b<NN>`, per-item chapter binding,
+// ords 100+) serve ONLY through the unit-scoped query below. ADR-BOOK-0004
+// decision 3 + run-001 amendment 4 (serving): chapter rails AND chapter
+// checks EXCLUDE the strength prefix — the chapter check stays chapter-
+// scoped (no dilution) and the unit check has exactly one home. The
+// exclusion is a query-law change disclosed in the ADR, not a data change.
+
+/** The LIKE pattern of the exclusion law — every strength block id starts
+ *  with the pack prefix `strength-` (PACK-SPEC §3 grammar, the ADR's
+ *  identity decision 2). Parameterized, never interpolated. */
+export const STRENGTH_BLOCK_LIKE = "strength-%";
+
+/** The unit query's id prefix (`strength-u1/` for unit=u1). The route gates
+ *  the unit grammar (^u\d+$) before this is ever built. */
+export function strengthPackPrefixOf(unit: string): string {
+  return `strength-${unit}/`;
+}
+
+/** The pure form of the exclusion law — true when the block id belongs to a
+ *  strength pack. Exported for the route-test wall; the SQL predicates above
+ *  are its executable form. */
+export function isStrengthBlockId(id: string): boolean {
+  return id.startsWith("strength-");
+}
+
 export interface BooksReadApp {
   /** VALIDATED TEXTBOOK documents bound to the course (latest version each). */
   shelfForCourse(courseId: string): Promise<BookShelfEntry[]>;
@@ -95,6 +121,13 @@ export interface BooksReadApp {
    *  null = unknown/unvalidated book (caller 404s); [] = no check blocks;
    *  a block whose refs resolve to nothing carries question:null honestly. */
   railChecksForChapter(documentId: string, chapterKey: string): Promise<RailCheckBlock[] | null>;
+  /** T-BOOK-069 / ADR-BOOK-0004 decision 3: the unit's VALIDATED strength-
+   *  pack blocks (id prefix `strength-u<N>/`) resolved through the SAME
+   *  railChecks law verbatim. null = unknown/unvalidated book (caller 404s);
+   *  [] = no VALIDATED strength rows yet (honest-empty — the pre-flip state).
+   *  Strength blocks NEVER serve here from chapter surfaces: the exclusion
+   *  law keeps this the unit check's only home. */
+  strengthChecksForUnit(documentId: string, unit: string): Promise<RailCheckBlock[] | null>;
   /** T-BOOK-008: the check submit — the MCQ submit law (rail-scoped) with
    *  provenance='BOOK_CHECK' (ATTEMPT_PROVENANCE_BOOK_CHECK); returns the
    *  reveal. Throws NotFound for unknown question/option (fail-closed). */
@@ -281,6 +314,7 @@ export class BooksReadRepository {
         and bb.doc_version = ${chapters[0]!.docVersion}
         and bb.chapter_key = ${chapterKey}
         and bb.validation_state = 'VALIDATED'
+        and bb.id not like ${STRENGTH_BLOCK_LIKE}
       order by bb.ord asc`) as unknown as RailBlockRow[];
     return rows.map(railRowMappers.toRailBlock);
   }
@@ -328,14 +362,10 @@ export class BooksReadRepository {
 
   /**
    * T-BOOK-008 — resolve the chapter's mcq-embed checkRefs against the BANK
-   * (ADR §7: checks come from the bank, never authored). Serving laws:
-   *   - only ACTIVE, MCQ_SINGLE questions resolve;
-   *   - the paper-block law rides the LEFT JOIN (a question pinned to a
-   *     REJECTED/FLAGGED exam paper does not serve — the assessment
-     *     submit law's assertPaperAllowsServing, verbatim posture);
-   *   - the CURRENT question_version carries stem/commandWord;
-   *   - an unresolved ref serves question:null honestly (the player's
-   *     anchor card) — never a fabricated question.
+   * (ADR §7: checks come from the bank, never authored). Strength blocks
+   * never reach here: railBlocksForChapter excludes the strength prefix
+   * (ADR-BOOK-0004 decision 3 + amendment 4), so the chapter check stays
+   * chapter-scoped. The unit-scoped sibling is strengthChecksForUnit below.
    */
   async railChecksForChapter(
     documentId: string,
@@ -343,6 +373,50 @@ export class BooksReadRepository {
   ): Promise<RailCheckBlock[] | null> {
     const blocks = await this.railBlocksForChapter(documentId, chapterKey);
     if (blocks == null) return null;
+    return this.resolveChecksForBlocks(blocks);
+  }
+
+  /**
+   * T-BOOK-069 / ADR-BOOK-0004 decision 3 — the unit Strength Check of
+   * record: every VALIDATED block whose id prefix is `strength-u<N>/`
+   * (decision 2's identity law), resolved through the EXISTING railChecks
+   * law VERBATIM (same bank query, same ACTIVE/MCQ_SINGLE/paper-serving
+   * filters, same current-version join, same honest question:null on an
+   * unresolved ref — REUSE-not-redeclare via resolveChecksForBlocks).
+   *
+   * Blocks are gathered ACROSS their per-item chapter bindings (decision 1:
+   * a unit is not a chapter) and ordered by id — the pack's authored b01..bNN
+   * sequence. null = unknown/unvalidated book (T-C20, the caller 404s);
+   * [] = the honest pre-flip state (no VALIDATED strength rows yet).
+   */
+  async strengthChecksForUnit(
+    documentId: string,
+    unit: string,
+  ): Promise<RailCheckBlock[] | null> {
+    const chapters = await this.chaptersForBook(documentId);
+    if (chapters.length === 0) return null; // unknown OR unvalidated → T-C20 404 upstream
+    const rows = (await this.sql`
+      select bb.id, bb.document_id, bb.doc_version, bb.chapter_key, bb.ord,
+             bb.type, bb.pdf_page_anchor, bb.content,
+             bb.check_refs, bb.glossary_refs, bb.spec_point_refs,
+             bb.validation_state, bb.version
+      from book_blocks bb
+      where bb.document_id = ${documentId}
+        and bb.doc_version = ${chapters[0]!.docVersion}
+        and bb.validation_state = 'VALIDATED'
+        and starts_with(bb.id, ${strengthPackPrefixOf(unit)})
+      order by bb.id asc`) as unknown as RailBlockRow[];
+    return this.resolveChecksForBlocks(rows.map(railRowMappers.toRailBlock));
+  }
+
+  /** T-BOOK-008/069 — the SHARED ref-resolution half of the railChecks law
+   *  (both railChecksForChapter and strengthChecksForUnit consume this —
+   *  REUSE-not-redeclare): the bank query (ACTIVE, MCQ_SINGLE, the
+   *  paper-serving LEFT JOIN, current question_version) + the per-block
+   *  first-ref resolution. Laws pinned in the railChecksForChapter docblock
+   *  and ADR-BOOK-0004 decision 3.
+   */
+  private async resolveChecksForBlocks(blocks: BookBlock[]): Promise<RailCheckBlock[]> {
     const mcq = blocks.filter((b) => b.type === "mcq-embed" && b.checkRefs.length > 0);
     if (mcq.length === 0) return [];
     const refs = [...new Set(mcq.flatMap((b) => b.checkRefs))];
@@ -356,7 +430,8 @@ export class BooksReadRepository {
         )
         group by qv.question_id
       )
-      select q.id as question_id, lv.stem as stem, q.marks as marks,
+      select q.id as question_id, q.external_ref as external_ref,
+             lv.stem as stem, q.marks as marks,
              lv.command_word as command_word,
              (select coalesce(json_agg(o order by o.ordering), '[]'::json) from (
                 select id, label, option_text, ordering
@@ -370,15 +445,41 @@ export class BooksReadRepository {
       left join exam_papers ep on ep.id = q.exam_paper_id
       where q.active
         and q.question_type = 'MCQ_SINGLE'
-        and (q.exam_paper_id is null or ep.validation_state not in ('REJECTED', 'FLAGGED'))`) as unknown as Array<{
+        and (q.exam_paper_id is null or ep.validation_state not in ('REJECTED', 'FLAGGED'))
+      order by q.id asc`) as unknown as Array<{
       question_id: string;
+      external_ref: string | null;
       stem: string;
       marks: number;
       command_word: string | null;
       options: Array<{ id: string; label: string; option_text: string }>;
     }>;
+    // T-BOOK-069 run-002 repair (disclosed): the resolution map keys on BOTH
+    // the question id AND the bank's external_ref. The authored checkRef
+    // grammar of record is the bank's SME external_ref key ('sme-eq-…', the
+    // chapter packs AND the strength packs share it — ADR-BOOK-0004 decision
+    // 5 / run-001 amendment 4), while questions.id is a uuid — keying only by
+    // q.id left EVERY sme-keyed ref unresolved (honest question:null masked
+    // it; first-hand proof in the run-002 receipt). order by q.id keeps the
+    // last-wins overwrite deterministic for duplicate refs.
+    // The contract guard: a bank row whose options/stem cannot satisfy the
+    // railCheckBlockSchema (empty option_text/label/stem — the paper-image
+    // option class, 6 of the 60 strength refs) is filtered BEFORE the map, so
+    // those blocks serve the honest question:null unavailable card instead of
+    // a 500 — the honest-subset law (ADR-BOOK-0004 decision 4's own clause);
+    // a well-formed duplicate of the same ref still resolves.
+    const servable = rows.filter(
+      (r) =>
+        r.stem != null &&
+        r.stem.trim().length > 0 &&
+        (r.options ?? []).length > 0 &&
+        r.options.every((o) => o.label != null && o.label.trim().length > 0 && o.option_text != null && o.option_text.trim().length > 0),
+    );
     const byRef = new Map<string, (typeof rows)[number]>();
-    for (const r of rows) byRef.set(r.question_id, r);
+    for (const r of servable) {
+      byRef.set(r.question_id, r);
+      if (r.external_ref != null) byRef.set(r.external_ref, r);
+    }
 
     // resolve per-block on the FIRST ref that resolves (one check = one
     // question in the pilot; extra refs are fallbacks, never a quiz)

@@ -1,0 +1,160 @@
+{
+ "lane": "RN-DEBRIS-10",
+ "run": "run-001",
+ "title": "the useof/dsin split-law lane",
+ "operatorOrder": {
+  "trace": "1a19d7d18e382b69",
+  "order": "check if merged, then proceed with useof/d s i n split-law lane"
+ },
+ "preState": {
+  "mergeCheck": "PR #631 (RN-DEBRIS-8 run-001) already MERGED of record: merged=true, head eba642e3, merge_commit 5ce9c6ae; post-merge receipt 7dd3cd73 (prod bake dpl_E2iGGZnsi82p8JbJvUBx41DLbvz6 READY, fired forms verified live) — re-verified first-hand this session via API + fresh clone at origin/main 06a7d78a after a full sandbox recycle",
+  "tip": "06a7d78a",
+  "filesWalked": 1470,
+  "census": {
+   "dsin": 43,
+   "useof": 4
+  },
+  "censusCls": {
+   "dsin": {
+    "dollar": 39,
+    "prose": 4,
+    "url": 0
+   },
+   "useof": {
+    "dollar": 0,
+    "prose": 4,
+    "url": 0
+   }
+  }
+ },
+ "law": {
+  "dsin": "dsin -> d sin (the d|sin fusion only; suffix preserved byte-verbatim; sin|θ attachment is mixed corpus style 127/96, out of lane law)",
+  "useof": "useof -> use of (single adjudicated clean-prose anchor igcse-maths-b-16 'The rearrangement for k or useof gradient must be')"
+ },
+ "zeroInvention": {
+  "d|sin boundary attestation": {
+   "d sin θ": {
+    "pre": 6,
+    "post": 6
+   },
+   "d sin(": {
+    "pre": 12,
+    "post": 12
+   },
+   "*d* sin": {
+    "pre": 16,
+    "post": 16
+   },
+   "d s i n": {
+    "pre": 8,
+    "post": 8
+   },
+   "d sinθ": {
+    "pre": 1,
+    "post": 44,
+    "note": "post 44 = the 1 pre-existing + all 43 fired dsin sites now read 'd sinθ' — exact"
+   },
+   "dsin (debris)": {
+    "pre": 43,
+    "post": 0
+   }
+  },
+  "sameFileTwinEvidence": "cie-a-level-physics-25/questions.json wrote 'd sin' x20 alongside its 20 'dsin' debris sites; cie-as-physics-25 x17 vs 21; the spaced form is the corpus standard (occurrence-twin evidence)",
+  "useof attestation": {
+   "use of (igcse-maths-b-16/questions.json alone)": {
+    "pre": 216,
+    "post": 217
+   },
+   "use of (apps/hub/content corpus)": {
+    "pre": 9319,
+    "post": 9320
+   },
+   "useof (debris, apps/hub/content)": {
+    "pre": 4,
+    "post": 2,
+    "note": "post 2 = the two refused copies in ial-maths-20-pure-3 {curriculum, ugm-resources}; the third refused copy lives in apps/hub/spines (counted separately below)"
+   },
+   "useof (debris, apps/hub/spines)": {
+    "pre": 1,
+    "post": 1
+   }
+  }
+ },
+ "adjudication": {
+  "fire": 44,
+  "fireBreakdown": {
+   "dollar": 39,
+   "prose": 5,
+   "url": 0
+  },
+  "refusalsFailClosed": [
+   {
+    "tok": "useof",
+    "sites": 3,
+    "string": "Kn sec² owledgeand⁄θ2=1+tan useof⁄θ2and cosec 2⁄θ=1+cot θ.",
+    "files": [
+     "apps/hub/content/ial-maths-20-pure-3/curriculum.json",
+     "apps/hub/content/ial-maths-20-pure-3/ugm-resources.json",
+     "apps/hub/spines/ial-maths-20-pure-3.json"
+    ],
+    "why": "interleaved-runs structural corruption (English run 'Knowledge and use of …' zipped with formula runs 'sec²…⁄θ2=1+tan…' / 'cosec 2⁄θ=1+cot θ.'); a token split cannot repair the interleave and would half-repair a structurally corrupted learner-facing title — same structural family as RN-DEBRIS-9's disclosed residuals (brace-aware repair lane, NOT token laws)"
+   }
+  ],
+  "urlAssetGuard": "re-asserted at splice time (the of-record RN-DEBRIS-8 trap); no url-class useof/dsin exists in the current tree — fires on nothing of record"
+ },
+ "apply": {
+  "convertedStrings": 29,
+  "occurrenceSites": 29,
+  "files": 4,
+  "changedFiles": [
+   "apps/hub/content/cie-a-level-physics-25/questions.json",
+   "apps/hub/content/cie-as-physics-25/questions.json",
+   "apps/hub/content/ial-physics-19/questions.json",
+   "apps/hub/content/igcse-maths-b-16/questions.json"
+  ],
+  "byteDelta": "+44 exact (one space per fired site: +20/+21/+2/+1)",
+  "guardRefusals": 0,
+  "rawMisses": 0,
+  "jsonParseFails": 0
+ },
+ "gates": {
+  "censusIdempotence": {
+   "dsin": [
+    43,
+    0
+   ],
+   "useof": [
+    4,
+    3
+   ],
+   "verdict": "dsin 43->0 drained; useof 4->3 (the 3 adjudicated keeps); post census re-parsed all 1,470 JSONs clean"
+  },
+  "katexPairRenderEquivalence": {
+   "files": 4,
+   "stringsCompared": 48,
+   "segmentPairs": 266,
+   "changedSegments": 37,
+   "oddTails": 0,
+   "renderDivergences": 0,
+   "verdict": "every changed $-segment renders byte-identical (output:'html') — math mode ignores inter-token whitespace, so the 39 dollar-span splits carry ZERO visual drift, proven per segment"
+  },
+  "markSpeechMarkerWindows": "0 introduced (per-site ±40-window check, converter-asserted, 0 guard refusals)",
+  "byteAccounting": "+44 exact vs census per-file counts (20/21/2/1)",
+  "scope": "git diff --stat = exactly the 4 content files; the 7 case-insensitive 'dsin' code hits (FlashcardsIndex x4, pdf.worker vextendsingle, servable.ts x2) untouched by construction"
+ },
+ "artifacts": [
+  ".syllabai/lane-artifacts/RN-DEBRIS-10/rnd10_probe.py",
+  ".syllabai/lane-artifacts/RN-DEBRIS-10/rnd10_probe.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-10/rnd10_census.py",
+  ".syllabai/lane-artifacts/RN-DEBRIS-10/rnd10_census_pre.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-10/rnd10_census_post.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-10/rnd10_convert_split.py",
+  ".syllabai/lane-artifacts/RN-DEBRIS-10/rnd10_apply_report_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-10/rnd10_changed_files_r0.txt",
+  ".syllabai/lane-artifacts/RN-DEBRIS-10/rnd10_katex_pair.mjs",
+  ".syllabai/lane-artifacts/RN-DEBRIS-10/rnd10_katex_pair_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-10/rnd10_attestation_r0.json"
+ ],
+ "discipline": "fetch-first (fresh clone at tip after sandbox recycle), fail-closed, zero-invention (every split form corpus-attested), worklog pure append, tokens env-only, FF push no force",
+ "next": "PR + CI bounded poll; merge + prod verification on operator order (the family rhythm)"
+}

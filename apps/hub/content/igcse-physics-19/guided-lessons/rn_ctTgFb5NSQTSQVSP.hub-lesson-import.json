@@ -1,0 +1,129 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_ctTgFb5NSQTSQVSP",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "3a22ec30400d6f0fa58eed3b15d39d3f5b6b4ed9ecfaa6f69ebc8d38cca61e54",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_ctTgFb5NSQTSQVSP",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Waves & The Electromagnetic Spectrum",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-1-waves-and-the-electromagnetic-spectrum/3-1-4-the-doppler-effect",
+    "specAnchors": [
+      {
+        "code": "3.8",
+        "text": "explain why there is a change in the observed frequency and wavelength of a wave when its source is moving relative to an observer, and that this is known as the Doppler effect"
+      }
+    ],
+    "primer": {
+      "text": "You already know that a wave carries a fixed frequency from its source and that speed depends on the medium. Put a moving source into that picture and the pattern bends: observers ahead and behind disagree about the pitch they hear. This lesson names that disagreement the Doppler effect and explains it with wavefronts.",
+      "prerequisiteSubtopic": "Waves & The Electromagnetic Spectrum"
+    },
+    "modules": [
+      {
+        "id": "rn_ctTgFb5NSQTSQVSP::L1",
+        "title": "The Doppler effect",
+        "sourceHeadings": [
+          "The Doppler effect",
+          "A stationary source of sound waves"
+        ],
+        "specRefs": [
+          "3.8"
+        ],
+        "opening": "A stationary siren pushes out wavefronts evenly in every direction, so everyone nearby hears the same pitch. Let the siren drive past and the picture skews: wavefronts pile up ahead of the motion and stretch out behind it. Observers therefore hear a higher pitch as it approaches and a lower pitch once it recedes, which is the Doppler effect.",
+        "keyPoints": [
+          "The Doppler effect is the apparent change in observed wavelength and frequency from a moving source.",
+          "A stationary source emits wavefronts that spread out symmetrically.",
+          "Ahead of a moving source, wavefronts bunch so the wavelength appears shorter and the frequency higher.",
+          "Behind a moving source, wavefronts stretch so the wavelength appears longer and the frequency lower.",
+          "The speed of the emitted waves stays constant; only the observed wavelength and frequency shift."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "When the source moves, each new wavefront starts from a spot slightly further along, so the rings crowd together in front and spread apart behind.",
+            "analogy": "A walking person dropping a pebble every second: for a walker ahead of them the pebbles arrive closer together, for someone behind, further apart.",
+            "examPointer": "The classic context is a siren passing you: say pitch falls as it passes, and tie it to wavelength stretching behind."
+          },
+          "medium": {
+            "restatement": "Because wave speed is fixed by the medium, a shorter apparent wavelength must pair with a higher apparent frequency; the effect is a redistribution of the same wavefronts, not a change at the source.",
+            "analogy": "A stamper moving across paper while stamping regularly: prints crowd in the direction of travel and spread behind, though the stamping rhythm never changed.",
+            "examPointer": "Quote the conservation: speed constant, so wavelength decrease means frequency increase; that pairing is the mark scheme line."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ctTgFb5NSQTSQVSP::L1::Q1",
+          "rn_ctTgFb5NSQTSQVSP::L1::Q2",
+          "rn_ctTgFb5NSQTSQVSP::L1::Q3",
+          "rn_ctTgFb5NSQTSQVSP::L1::Q4",
+          "rn_ctTgFb5NSQTSQVSP::L1::Q5",
+          "rn_ctTgFb5NSQTSQVSP::L1::Q6",
+          "rn_ctTgFb5NSQTSQVSP::L1::Q7",
+          "rn_ctTgFb5NSQTSQVSP::L1::Q8",
+          "rn_ctTgFb5NSQTSQVSP::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "Doppler effect",
+          "definition": "The apparent change in observed frequency and wavelength when a wave source moves relative to an observer.",
+          "firstLesson": 1
+        },
+        {
+          "term": "apparent",
+          "definition": "Describing a change that depends on where the observer stands, not on any real change at the source.",
+          "firstLesson": 1
+        },
+        {
+          "term": "wavefront",
+          "definition": "A line joining points that vibrate in step, drawn spreading from a wave source.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/9161f944f4ef-3-1-4-stationary-siren-doppler.png",
+        "alt": "Stationary Siren Doppler, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "A stationary source of sound waves",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "This stationary police car emits sound from the siren and the waves spread out symmetrically",
+        "binding": "sole-lesson"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/7225428ed80d-3-1-4-moving-siren-doppler.png",
+        "alt": "Moving Siren Doppler, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The Doppler effect is observed when the source of the sound waves is moving",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "To an observer in front of the moving car, the wavelength appears smaller because they squash together. To an observer behind the moving car, the waves appear to stretch out",
+        "binding": "sole-lesson"
+      }
+    ]
+  }
+}

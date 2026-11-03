@@ -1,0 +1,85 @@
+{
+  "lane": "T-SM-ROLLOUT",
+  "receipt": "od1-unblock-probe-r0",
+  "run": "run-004",
+  "order_traces": {
+    "order": "IM 1a1a0ef49646baa9 \u2014 'Deploy the switched-off physical probes\u2026' (run-003 filed census-blocked; the secret of record arrived in IM 1a1a1bb6bfb30bb1)",
+    "resume_law": "run-003 receipt: census-only first; if the census asserts hold, dispatch full \u2014 followed verbatim"
+  },
+  "phases": {
+    "r1_run_a_state": {
+      "distinct_versions_flipped_in_window": 101,
+      "flip_states": [
+        {
+          "validation_state": "VALIDATED",
+          "n": 101
+        }
+      ],
+      "multi_axis_parts_all_validated": 147,
+      "teacher_probe": "enabled, TEACHER granted",
+      "prior_probe_attempts": 0,
+      "answers_on_multi_axis_parts_pre": 0
+    },
+    "r2_learner_provisioned": {
+      "email_pattern": "pf-run003-learner-<hex>@staging.syllabai.dev",
+      "register": 201,
+      "login": 200
+    },
+    "r3_learner_submit": {
+      "question_id": "2066bee4-11e2-487b-be2b-6bbad7ae3103",
+      "parts": [
+        "e10c546a-e869-49fc-94b3-0cdeecf92a41",
+        "48a77ab8-5af7-427f-9fd1-5891587d45d7",
+        "468d8632-6bee-47e1-a6d2-cd55ca245b20",
+        "09e1b776-4fd5-4b22-a204-62998ca4108f",
+        "8e9bebc9-b0e7-40f3-b632-b64eb2bf36d7",
+        "e372488e-2368-40e4-ae9e-1e6e1c536b30"
+      ],
+      "of_record_part": "09e1b776-4fd5-4b22-a204-62998ca4108f",
+      "attempt_id": "cf069eba-95cd-47bb-b198-6800b69e8c72",
+      "status": 201
+    },
+    "r4_consumption": {
+      "answers_on_multi_axis_parts": "0 -> 1",
+      "smart_mark_status": 200,
+      "smart_mark_rows": [
+        {
+          "marks_awarded": 2,
+          "failure_reason": null,
+          "pipeline_version": "1.5.0",
+          "scheme_validation_state": "VALIDATED",
+          "breakdown_head": "{\"axes\": [{\"axis\": \"a1\", \"accepted\": true, \"awarded_marks\": 1, \"version_label\": \"2-b-ii#a1\", \"failure_reason\": null, \"mark_scheme_id\": \"7f35811e-bc39-4935-8306-290dce5fdaa5\", \"descriptor_hits\": [], \"level_placement\": 1}, {\"axis\": \"a2\", \"accepted\": true, \"awarded_marks\": 1, \"version_label\": \"2-b-ii#a"
+        },
+        {
+          "marks_awarded": 0,
+          "failure_reason": "SCHEME_NOT_VALIDATED",
+          "pipeline_version": "1.3.0",
+          "scheme_validation_state": "VALIDATED",
+          "breakdown_head": "[]"
+        },
+        {
+          "marks_awarded": 0,
+          "failure_reason": "SCHEME_NOT_VALIDATED",
+          "pipeline_version": "1.3.0",
+          "scheme_validation_state": "VALIDATED",
+          "breakdown_head": "[]"
+        }
+      ],
+      "multi_axis_breakdown_present": true,
+      "verdict": "a REAL learner answer now exists on a multi-axis part and the R4 per-axis leg consumed it (band_decision multi-axis breakdown present)"
+    },
+    "r5_probe_users_disabled": {
+      "disabled_rows": 4,
+      "verified_count": 4,
+      "all_disabled": true,
+      "post_disable_login_status": 401,
+      "note": "post-disable login refused (the enable law gates)"
+    },
+    "verdict": "the switched-off physical probes are DEPLOYED: 147 multi-axis grids serve, a real learner answer landed, smart-mark consumed it"
+  },
+  "write_law_disclosure": [
+    "run A (this run): 147 product-seam version flips + TEACHER grant (landed, disclosed)",
+    "completion: learner register (product seam), 1 structured attempt + answer + smart-mark rows (product seam), users.enabled=false x2 post-act",
+    "probe passwords generated per-run, never printed or persisted"
+  ]
+}

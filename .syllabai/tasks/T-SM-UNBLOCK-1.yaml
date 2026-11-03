@@ -1,0 +1,40 @@
+version: 1
+task:
+  id: T-SM-UNBLOCK-1
+  title: "Multi-axis serving unblock — walk the 147-part/101-version promotion through the corpus's own review surface (ADR-041); staged: one chosen version first, the rest on a separate operator word"
+  operator_order: "\"Initiate a project to address the unblocking lever\" (IM trace 1a1a0ee2b42f4d95, 2026-11-03) — the lever named by the OD-1 live probe receipt od1-live-ma-probe-r0.json (probe order trace 1a19f6877e9c76a1)"
+  status: INITIATED-AWAITING-OPERATOR-KEY-TURN  # run-001: ADR-041 drafted (PROPOSED, ACCEPTED on merge); vehicle shipped + guards proven; census live-fired read-only and drift-reconciled 147/492/101; manifest of record staged; ZERO production writes; fire is operator-held (bearer guard)
+  adr: docs/ADR-041-MULTI_AXIS_SERVING_UNBLOCK.md (PROPOSED 2026-11-03 — becomes ACCEPTED on merge; Stage-1 fire stays operator-held regardless)
+  structural_fact: "od1-live-ma-probe-r0 (runtime+code+DB triple-proven): 0/147 multi-axis parts reachable through the sanctioned learner surface — every multi-axis-bearing newest question version is SUGGESTED (606 SUGGESTED vs 24,785 VALIDATED corpus-wide) and submitStructured step 3 fails closed; re-proven read-only this run: 147 parts / 492 VALIDATED axis-suffixed LEVELS schemes over 101 SUGGESTED newest versions, every touched paper SUGGESTED (V20 blocks only REJECTED/FLAGGED), non-paper-bound questions pass V20 by early return"
+  vehicle: apps/api/scripts/smart-mark/promote-multi-axis-versions.mts
+  vehicle_law: |
+    census/plan = READ-ONLY DB introspection (sanctioned); fire = the ONLY write path and it
+    NEVER touches the DB — sequential POST /api/v1/teacher/content/question-versions/:id/validate
+    (the corpus's own review law: one transactional UPDATE + one recordAudit(VALIDATE) row per
+    version, written by the product surface). Guards proven this run: usage/connect/bearer exit 2
+    (nothing read or sent); --dry-run zero HTTP; --ids all deliberately refused (scope is the
+    operator's); census drift check fails loudly off 147/492.
+  run_001:
+    census_of_record:
+      multi_axis_parts: 147
+      axis_schemes: 492
+      versions_touched: 101
+      versions_state: "all SUGGESTED"
+      papers_state: "all SUGGESTED (V20 passes)"
+      drift_check: "OK vs od1-ma10-census-r0.json (147/492)"
+      manifest: .syllabai/receipts/T-SM-UNBLOCK-1/promotion-manifest-r0.json
+    stage_1_chosen_single:
+      version_id: b61de1f1-b6f2-4df9-b899-d62c63aa96d3
+      question_id: 2066bee4-11e2-487b-be2b-6bbad7ae3103
+      part_id: 09e1b776-4fd5-4b22-a204-62998ca4108f
+      part: "b-ii, 8 marks"
+      axes: ["2-b-ii#a1 (4 bands)", "2-b-ii#a2 (4 bands)"]
+      then: "re-fire the OD-1 probe UNCHANGED: register/login -> POST /api/v1/attempts/structured on part 09e1b776 -> R4 live consumption (per-axis band decisions summed at the part), failure_reason=None, no MULTI_AXIS_DISPATCH_NOT_WIRED, census answers_on_multi_axis_parts >= 1"
+    stage_2: "remaining 100 versions / 146 parts / 490 axes — only on an explicit operator word after Stage 1 proves end-to-end"
+    key_turn_options:
+      - "RECOMMENDED: operator hands an existing TEACHER/ADMIN bearer for the fire window (26 TEACHER / 1 ADMIN exist in production) — zero production change"
+      - "one-time SYLLABAI_TEACHER_JOIN_CODE turn (Vercel env, Production): lane self-registers a dedicated TEACHER via the sanctioned register route, fires, code removed after — both turns receipted"
+      - "any other lever only on explicit operator instruction amending ADR-041"
+    closed_levers_confirmed: "bootstrap-admin permanently closed (adminCount==1, DB-proven — the claimable() law can never re-open); direct DB write against the operating law (production writes ride product surfaces only)"
+  boundaries: "run-001 commits = vehicle script + ADR-041 + task yaml + receipts + worklog; ZERO production writes (vehicle fire unrun — guards proven); zero code changes to apps/api src; census/plan DB access strictly read-only; credentials env-only, never persisted; no merge of this lane's PR without the operator's explicit merge word"
+  receipt: .syllabai/receipts/T-SM-UNBLOCK-1/unblock-init-r0.json

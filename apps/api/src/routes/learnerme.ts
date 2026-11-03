@@ -52,6 +52,8 @@ import {
   setTargetRequestSchema,
   assignmentSubmissionRequestSchema,
   setMyCoursesRequestSchema,
+  setLastOpenedRequestSchema,
+  putMockResultsRequestSchema,
 } from "@syllabai/contracts";
 import { buildLearnerMeModule, type LearnerMeModule } from "../services/learner-me";
 import {
@@ -175,6 +177,15 @@ const SUBMISSION_DEFAULTS: Record<string, Record<string, string>> = {
 };
 const COURSES_DEFAULTS: Record<string, Record<string, string>> = {
   slugs: { absent: "must not be null" },
+};
+
+// T-TIER1 jakarta defaults — the same absent-field law as the schemas above.
+const LAST_OPENED_DEFAULTS: Record<string, Record<string, string>> = {
+  courseSlug: { absent: "must not be null" },
+  resource: { absent: "must not be null" },
+};
+const MOCK_RESULTS_DEFAULTS: Record<string, Record<string, string>> = {
+  results: { absent: "must not be null" },
 };
 
 /** The shared error mapping for every learner-me route (the frozen handler). */
@@ -404,6 +415,97 @@ export function createLearnerMeRouter(module: LearnerMeModule): Hono {
     }
     try {
       const view = await module.setMyCourses(auth.userId, parsed.data);
+      return c.json(view, 200);
+    } catch (e) {
+      const mapped = mapErrors(e, c);
+      if (mapped) return mapped;
+      throw e;
+    }
+  });
+
+  // GET /last-opened — T-TIER1 (v2-native, additive; operator order
+  // 2026-11-03 "things that are localStorage-only, make them saved to
+  // account"): the account's most-recent course-surface pointer behind the
+  // hub's last-opened store. NOT frozen-core parity — the frozen core never
+  // exposed this. Shape law: { lastOpened: LastOpenedView | null }.
+  r.get("/last-opened", async (c) => {
+    const auth = getAuth(c)!;
+    try {
+      const view = await module.lastOpened(auth.userId);
+      return c.json({ lastOpened: view }, 200);
+    } catch (e) {
+      const mapped = mapErrors(e, c);
+      if (mapped) return mapped;
+      throw e;
+    }
+  });
+
+  // PUT /last-opened — T-TIER1 (v2-native, additive): idempotent upsert of
+  // the newest navigation (one row per account, on-conflict replace). The
+  // slug law is the my-courses kebab-case law, re-validated in the service
+  // (400 bad_request verbatim); resource is the hub's closed ResourceKind
+  // set (unknown kind → validation_failed).
+  r.put("/last-opened", async (c) => {
+    const auth = getAuth(c)!;
+    const body = await readJsonBody(c);
+    if (body === null) return c.json(malformedBody(), 400);
+    const parsed = setLastOpenedRequestSchema.safeParse(body);
+    if (!parsed.success) {
+      const verdict = classifyBodyError(parsed.error, LAST_OPENED_DEFAULTS);
+      if (verdict.kind === "malformed") return c.json(malformedBody(), 400);
+      return c.json(apiError(400, "validation_failed", verdict.message), 400);
+    }
+    try {
+      const view = await module.setLastOpened(auth.userId, parsed.data);
+      return c.json(view, 200);
+    } catch (e) {
+      const mapped = mapErrors(e, c);
+      if (mapped) return mapped;
+      throw e;
+    }
+  });
+
+  // GET /mock-results — T-TIER1 (v2-native, additive): every course's
+  // self-marked mock tallies from the account (newest finished first,
+  // capped 20 per course server-side — the hub's own MAX_PER_COURSE, so
+  // cache and account can never disagree about the shape). Shape law:
+  // MockResultsView.
+  r.get("/mock-results", async (c) => {
+    const auth = getAuth(c)!;
+    try {
+      const view = await module.mockResults(auth.userId);
+      return c.json(view, 200);
+    } catch (e) {
+      const mapped = mapErrors(e, c);
+      if (mapped) return mapped;
+      throw e;
+    }
+  });
+
+  // PUT /mock-results/{courseSlug} — T-TIER1 (v2-native, additive): the
+  // FULL desired set for that ONE course, idempotent replace (the course's
+  // rows are deleted, the posted set inserted; an empty array clears the
+  // course — the same full-set write-through posture as PUT /courses, so a
+  // retried PUT and a reconcile can never double-insert). The path slug is
+  // re-validated in the service with the kebab-case law (400 bad_request
+  // verbatim). Records carry the hub's opaque clientId round-tripped
+  // verbatim (the hub's dedupe key); server row ids are the clock's.
+  r.put("/mock-results/:courseSlug", async (c) => {
+    const auth = getAuth(c)!;
+    const body = await readJsonBody(c);
+    if (body === null) return c.json(malformedBody(), 400);
+    const parsed = putMockResultsRequestSchema.safeParse(body);
+    if (!parsed.success) {
+      const verdict = classifyBodyError(parsed.error, MOCK_RESULTS_DEFAULTS);
+      if (verdict.kind === "malformed") return c.json(malformedBody(), 400);
+      return c.json(apiError(400, "validation_failed", verdict.message), 400);
+    }
+    try {
+      const view = await module.setMockResults(
+        auth.userId,
+        c.req.param("courseSlug"),
+        parsed.data,
+      );
       return c.json(view, 200);
     } catch (e) {
       const mapped = mapErrors(e, c);

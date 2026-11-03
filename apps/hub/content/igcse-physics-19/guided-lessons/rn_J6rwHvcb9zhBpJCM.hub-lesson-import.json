@@ -1,0 +1,131 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_J6rwHvcb9zhBpJCM",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "90e0844b4ad91efac104cc367bbfbe9a2ae1c9bd7040e9cbad7263064c6f1be4",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_J6rwHvcb9zhBpJCM",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Reflection & Refraction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-2-reflection-and-refraction/3-2-4-snells-law",
+    "specAnchors": [
+      {
+        "code": "3.18",
+        "text": "know and use the relationship between refractive index, angle of incidence and angle of refraction: n = sin i / sin r"
+      }
+    ],
+    "primer": {
+      "text": "Refraction bends a light ray when it crosses into a new material, and Snell's law turns that bending into a calculation. One ratio — the refractive index — ties the sine of the incidence angle to the sine of the refraction angle. Rearranged, it predicts how sharply a ray bends at any boundary. This lesson defines the ratio, works the equation both ways and explains why every material lands above 1.",
+      "prerequisiteSubtopic": "Reflection & Refraction"
+    },
+    "modules": [
+      {
+        "id": "rn_J6rwHvcb9zhBpJCM::L1",
+        "title": "Snell's law",
+        "sourceHeadings": [
+          "Snell's law",
+          "Refractive index"
+        ],
+        "specRefs": [
+          "3.18"
+        ],
+        "opening": "Draw any ray hitting a boundary and two angles matter: one on the way in, one on the way out. Snell's law says the sines of those angles keep a fixed ratio, and that ratio is the material's refractive index. Because it compares two speeds, the index is a bare number — always above 1, larger for optically denser materials, and it works for every boundary light can cross.",
+        "keyPoints": [
+          "Snell's law links the refractive index to the angles of incidence and refraction: n = sin i / sin r.",
+          "The refractive index compares the speed of light in a vacuum with the slower speed of light inside the material.",
+          "The refractive index is always larger than 1, differs between materials and has no units because it is a ratio.",
+          "More optically dense materials have higher refractive indices: about 2.4 for diamond and about 1.5 for glass."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Snell's law says dividing the sine of the incidence angle by the sine of the refraction angle gives the refractive index, a fixed number for the material.",
+            "analogy": "A shopping receipt: the ratio of two prices gives one fixed exchange rate, whatever amounts you trade.",
+            "examPointer": "Quote the equation as n = sin i / sin r and name n as the refractive index — that alone often earns the first mark."
+          },
+          "medium": {
+            "restatement": "The index compares the vacuum speed of light with the slower speed inside the material, so it is a ratio with no units, always greater than 1 and bigger for optically denser materials.",
+            "analogy": "A marathon runner versus a wader: the same crossing takes longer through the pond, and the delay factor is the index.",
+            "examPointer": "When a question asks why the index has no units, answer that it is one speed divided by another — a pure ratio."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_J6rwHvcb9zhBpJCM::L1::Q1",
+          "rn_J6rwHvcb9zhBpJCM::L1::Q2",
+          "rn_J6rwHvcb9zhBpJCM::L1::Q3",
+          "rn_J6rwHvcb9zhBpJCM::L1::Q4",
+          "rn_J6rwHvcb9zhBpJCM::L1::Q5",
+          "rn_J6rwHvcb9zhBpJCM::L1::Q6",
+          "rn_J6rwHvcb9zhBpJCM::L1::Q7",
+          "rn_J6rwHvcb9zhBpJCM::L1::Q8",
+          "rn_J6rwHvcb9zhBpJCM::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "refractive index",
+          "definition": "The ratio of the speed of light in a vacuum to the speed of light in a material; it has no units.",
+          "firstLesson": 1
+        },
+        {
+          "term": "angle of incidence",
+          "definition": "The angle between the incoming ray and the normal.",
+          "firstLesson": 1
+        },
+        {
+          "term": "angle of refraction",
+          "definition": "The angle between the refracted ray and the normal.",
+          "firstLesson": 1
+        },
+        {
+          "term": "optically dense",
+          "definition": "Describing a medium that slows light by a large factor, giving a high refractive index.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A ray of light enters a glass block of refractive index 1.53, making an angle of 15° with the normal before entering the block. Calculate the angle it makes with the normal after it enters the glass.",
+        "steps": [
+          "List the known quantities: refractive index n = 1.53 and angle of incidence i = 15°.",
+          "Write Snell's law: n = sin i / sin r.",
+          "Rearrange for the sine of the refraction angle: sin r = sin i / n.",
+          "Evaluate: sin 15° = 0.259, so sin r = 0.259 / 1.53 = 0.169 (3 d.p.).",
+          "Apply the inverse sine function: r = sin⁻¹(0.169) = 9.7°, which rounds to 10°."
+        ],
+        "finalAnswer": "The ray travels at about 10° to the normal inside the glass block."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/85c4b447a418-snell-triangle-2.png",
+        "alt": "Snell triangle (2), IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "A formula triangle can help rearrange the snell's law equation",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Snell's law formula triangle",
+        "binding": "sole-lesson"
+      }
+    ]
+  }
+}

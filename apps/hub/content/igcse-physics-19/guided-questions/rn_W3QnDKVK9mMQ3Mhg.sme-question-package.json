@@ -1,0 +1,503 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_W3QnDKVK9mMQ3Mhg",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "91590d9a0da550b6f48402509041d3a5d99107c868b5ad8ed2ccaacf8db1a00a",
+    "pinnedRef": "502107a3fcacad2340d0ac5e66b5ad93ef32800c"
+  },
+  "packageId": "igcse-physics::rn_W3QnDKVK9mMQ3Mhg",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L1::Q1",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L1",
+      "stem": "A photocopier's copying plate is charged:",
+      "misconceptionClass": "process recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "negatively throughout",
+          "correct": false,
+          "explanation": "The plate starts positive; the toner is the negative partner.",
+          "misconception": "polarity slip"
+        },
+        {
+          "key": "B",
+          "text": "positively before the image is projected",
+          "correct": true,
+          "explanation": "Projection then discharges the lit regions, leaving the text areas positive.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "not at all",
+          "correct": false,
+          "explanation": "The whole method rests on the plate's charge.",
+          "misconception": "precondition myth"
+        },
+        {
+          "key": "D",
+          "text": "only at the edges",
+          "correct": false,
+          "explanation": "Nothing special happens at the edges.",
+          "misconception": "invented detail"
+        }
+      ]
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L1::Q2",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L1",
+      "stem": "The toner powder carries:",
+      "misconceptionClass": "polarity recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "positive charge",
+          "correct": false,
+          "explanation": "Positive toner would be repelled by the positive text areas.",
+          "misconception": "polarity slip"
+        },
+        {
+          "key": "B",
+          "text": "no charge",
+          "correct": false,
+          "explanation": "Uncharged powder would land everywhere.",
+          "misconception": "polarity slip"
+        },
+        {
+          "key": "C",
+          "text": "alternating charge",
+          "correct": false,
+          "explanation": "The charge is fixed negative.",
+          "misconception": "polarity slip"
+        },
+        {
+          "key": "D",
+          "text": "negative charge, so it sticks to the dark areas",
+          "correct": true,
+          "explanation": "Negative toner adheres exactly where the positive charge survived.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L1::Q3",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L1",
+      "stem": "Freshly copied paper feels warm because:",
+      "misconceptionClass": "process recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "it was heated so the toner would stick",
+          "correct": true,
+          "explanation": "Heat-fixing is the final step of the copy process.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the lamp overheated",
+          "correct": false,
+          "explanation": "The lamp never touches the paper.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "C",
+          "text": "static repels inside it",
+          "correct": false,
+          "explanation": "Repulsion would not warm anything.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "D",
+          "text": "the drum spun fast",
+          "correct": false,
+          "explanation": "Spinning does not heat the paper.",
+          "misconception": "mechanism myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L1::Q4",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L1",
+      "stem": "Inkjet droplets are charged so they:",
+      "misconceptionClass": "process recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "evaporate quickly",
+          "correct": false,
+          "explanation": "Charging has nothing to do with evaporation.",
+          "misconception": "invented effect"
+        },
+        {
+          "key": "B",
+          "text": "repel the paper",
+          "correct": false,
+          "explanation": "They are guided TO the paper.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "C",
+          "text": "are guided to the correct spot on the page",
+          "correct": true,
+          "explanation": "The charge lets the printer steer each droplet's landing place.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "stay inside the cartridge",
+          "correct": false,
+          "explanation": "They are fired at the page.",
+          "misconception": "nonsense option"
+        }
+      ]
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L1::Q5",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L1",
+      "stem": "Charged insecticide droplets spread out because they:",
+      "misconceptionClass": "process reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "attract each other",
+          "correct": false,
+          "explanation": "Attraction would clump the spray.",
+          "misconception": "rule slip"
+        },
+        {
+          "key": "B",
+          "text": "repel each other, having the same charge",
+          "correct": true,
+          "explanation": "Like charges push the droplets apart into a fine mist.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "are neutral",
+          "correct": false,
+          "explanation": "Neutral droplets would not disperse this way.",
+          "misconception": "polarity myth"
+        },
+        {
+          "key": "D",
+          "text": "freeze in flight",
+          "correct": false,
+          "explanation": "No freezing occurs.",
+          "misconception": "invented effect"
+        }
+      ]
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L1::Q6",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L1",
+      "stem": "Name two devices that use electrostatic charge.",
+      "misconceptionClass": "application recall",
+      "kind": "recall",
+      "modelAnswer": "Photocopiers and inkjet printers — insecticide sprayers also qualify.",
+      "keywords": [
+        "photocopiers",
+        "inkjet",
+        "printers",
+        "electrostatic",
+        "devices"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L1::Q7",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L1",
+      "stem": "Why does an electrostatic sprayer cover a large area?",
+      "misconceptionClass": "process reasoning",
+      "kind": "recall",
+      "modelAnswer": "The like-charged droplets repel one another into a fine mist that also falls quickly toward the charged Earth.",
+      "keywords": [
+        "droplets",
+        "repel",
+        "mist",
+        "area",
+        "earth"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L1::Q8",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L1",
+      "stem": "Explain why the toner only sticks to the text regions of the plate.",
+      "misconceptionClass": "process reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The illuminated regions lost their charge, so only the dark text areas still hold positive charge that can attract the negatively charged powder.",
+      "keywords": [
+        "charge",
+        "dark",
+        "text",
+        "positive",
+        "attract"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L1::Q9",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L1",
+      "stem": "A car body is sprayed with positively charged paint droplets. Predict two effects of the charge.",
+      "misconceptionClass": "application",
+      "kind": "application",
+      "modelAnswer": "The droplets repel one another into an even mist, and they are attracted over to the earthed car body, coating it evenly with little waste.",
+      "keywords": [
+        "droplets",
+        "repel",
+        "mist",
+        "attracted",
+        "evenly"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L2::Q1",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L2",
+      "stem": "A spark forms when:",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "current flows steadily through metal",
+          "correct": false,
+          "explanation": "Steady flow in a conductor is not a spark.",
+          "misconception": "phenomenon slip"
+        },
+        {
+          "key": "B",
+          "text": "a wire warms gently",
+          "correct": false,
+          "explanation": "Gentle warming is not a spark.",
+          "misconception": "phenomenon slip"
+        },
+        {
+          "key": "C",
+          "text": "a large voltage drives current across an air gap",
+          "correct": true,
+          "explanation": "Enough charge and voltage force current through the air — the spark.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "charge flows to earth slowly",
+          "correct": false,
+          "explanation": "Slow earthing is precisely what prevents sparks.",
+          "misconception": "inversion slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L2::Q2",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L2",
+      "stem": "Fuel flowing through a pipe gains charge because of:",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the fuel's weight",
+          "correct": false,
+          "explanation": "Weight plays no role.",
+          "misconception": "irrelevant factor"
+        },
+        {
+          "key": "B",
+          "text": "the pipe's colour",
+          "correct": false,
+          "explanation": "Colour is irrelevant.",
+          "misconception": "irrelevant factor"
+        },
+        {
+          "key": "C",
+          "text": "magnetism in the pump",
+          "correct": false,
+          "explanation": "Magnetism is not the charging mechanism.",
+          "misconception": "irrelevant factor"
+        },
+        {
+          "key": "D",
+          "text": "friction between the fuel and the pipe",
+          "correct": true,
+          "explanation": "The rubbing of the liquid insulator on the pipe transfers charge to the fuel.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L2::Q3",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L2",
+      "stem": "The bonding line is made of:",
+      "misconceptionClass": "equipment recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "copper wire",
+          "correct": true,
+          "explanation": "The bonding line is a copper wire to Earth.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "rubber tubing",
+          "correct": false,
+          "explanation": "Rubber would insulate — the opposite of the goal.",
+          "misconception": "material slip"
+        },
+        {
+          "key": "C",
+          "text": "glass fibre",
+          "correct": false,
+          "explanation": "Glass is an insulator.",
+          "misconception": "material slip"
+        },
+        {
+          "key": "D",
+          "text": "plastic tape",
+          "correct": false,
+          "explanation": "Plastic is an insulator.",
+          "misconception": "material slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L2::Q4",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L2",
+      "stem": "The bonding line reduces the spark risk by:",
+      "misconceptionClass": "safety reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "cooling the fuel",
+          "correct": false,
+          "explanation": "No cooling is involved.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "B",
+          "text": "carrying charge safely to Earth",
+          "correct": true,
+          "explanation": "The wire gives the charge an easy path to Earth.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "slowing the pump",
+          "correct": false,
+          "explanation": "Pump speed is unaffected.",
+          "misconception": "mechanism myth"
+        },
+        {
+          "key": "D",
+          "text": "insulating the tank",
+          "correct": false,
+          "explanation": "Insulating would trap the charge.",
+          "misconception": "inversion slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L2::Q5",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L2",
+      "stem": "The danger from a spark near flammable fuel is:",
+      "misconceptionClass": "hazard recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "frost damage",
+          "correct": false,
+          "explanation": "Frost is unrelated.",
+          "misconception": "irrelevant hazard"
+        },
+        {
+          "key": "B",
+          "text": "battery drain",
+          "correct": false,
+          "explanation": "Batteries are not part of the hazard.",
+          "misconception": "irrelevant hazard"
+        },
+        {
+          "key": "C",
+          "text": "fire or explosion from a spark",
+          "correct": true,
+          "explanation": "A spark near flammable fuel can ignite it.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "paint peeling",
+          "correct": false,
+          "explanation": "Paint is not the risk.",
+          "misconception": "irrelevant hazard"
+        }
+      ]
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L2::Q6",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L2",
+      "stem": "State two everyday static dangers.",
+      "misconceptionClass": "hazard recall",
+      "kind": "recall",
+      "modelAnswer": "Electrocution, for example from lightning, and fire or explosion when a spark meets flammable gas or liquid.",
+      "keywords": [
+        "electrocution",
+        "lightning",
+        "fire",
+        "explosion",
+        "spark"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L2::Q7",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L2",
+      "stem": "What is a bonding line and what does it do?",
+      "misconceptionClass": "equipment recall",
+      "kind": "recall",
+      "modelAnswer": "A copper wire connecting the aircraft's tank to Earth; it carries the gathered charge away so sparks cannot form.",
+      "keywords": [
+        "copper",
+        "wire",
+        "earth",
+        "charge",
+        "sparks"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L2::Q8",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L2",
+      "stem": "Explain why the fuel can gather charge as it is pumped.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Fuel is a liquid insulator, so the rubbing against the pipe transfers and holds charge on it instead of letting it flow away.",
+      "keywords": [
+        "fuel",
+        "insulator",
+        "rubbing",
+        "pipe",
+        "charge"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_W3QnDKVK9mMQ3Mhg::L2::Q9",
+      "moduleId": "rn_W3QnDKVK9mMQ3Mhg::L2",
+      "stem": "During a plane refuel, describe how the bonding line keeps the operation spark-free.",
+      "misconceptionClass": "application",
+      "kind": "application",
+      "modelAnswer": "The copper bonding line connects tank and Earth, so friction-gained charge drains down it; with an easier path than a spark, dangerous discharge is avoided.",
+      "keywords": [
+        "bonding",
+        "line",
+        "earth",
+        "charge",
+        "spark"
+      ],
+      "options": []
+    }
+  ]
+}

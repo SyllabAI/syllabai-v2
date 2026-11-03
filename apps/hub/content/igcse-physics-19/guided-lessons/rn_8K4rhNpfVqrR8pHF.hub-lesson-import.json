@@ -1,0 +1,102 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_8K4rhNpfVqrR8pHF",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "98dccb92b6e2144a94207277b0c1b9302107e4afb33ab32a689bad10b51dbce7",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_8K4rhNpfVqrR8pHF",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Waves & The Electromagnetic Spectrum",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-1-waves-and-the-electromagnetic-spectrum/3-1-6-applications-of-em-waves",
+    "specAnchors": [
+      {
+        "code": "3.12",
+        "text": "explain some of the uses of electromagnetic radiations, including: • radio waves: broadcasting and communications"
+      }
+    ],
+    "primer": {
+      "text": "Every band of the electromagnetic spectrum you have ordered by wavelength also earns its keep somewhere: transmitters, ovens, cameras, hospitals. This lesson walks the bands from radio to gamma and attaches each one to its standard uses, the list examiners expect you to quote from memory.",
+      "prerequisiteSubtopic": "Waves & The Electromagnetic Spectrum"
+    },
+    "modules": [
+      {
+        "id": "rn_8K4rhNpfVqrR8pHF::L1",
+        "title": "Uses of EM waves",
+        "sourceHeadings": [
+          "Uses of EM waves",
+          "Radio waves & microwaves"
+        ],
+        "specRefs": [
+          "3.12"
+        ],
+        "opening": "Each radiation band is good at a different job, decided by how it interacts with matter. Radio and microwave carry communications, infrared warms and images in the dark, visible light feeds cameras and our eyes, ultraviolet makes lamps glow, x-rays peer through flesh to bone, and gamma rays sterilise what heat cannot reach.",
+        "keyPoints": [
+          "Radio waves are used for broadcasting and communications.",
+          "Microwaves are used for cooking and satellite transmissions.",
+          "Infrared is used in heaters, night-vision equipment and remote controllers.",
+          "Visible light is used in photography, and ultraviolet in fluorescent lamps.",
+          "X-rays observe internal structure including medical uses; gamma rays sterilise food and medical equipment."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Each band has a signature use: radio and microwave for communications and cooking, infrared for heat and night vision, visible for images, ultraviolet for fluorescence, x-ray for seeing inside, gamma for sterilising.",
+            "analogy": "A toolbox where each spanner fits a different nut: the bands are tools shaped by physics for particular jobs.",
+            "examPointer": "The uses table is the examinable list; quote one use per band and name the band exactly."
+          },
+          "medium": {
+            "restatement": "The uses follow from interactions: long-wave radiations carry signals around obstacles, mid-infrared couples to heat, higher-frequency bands penetrate matter or deposit energy in cells, which is why medicine splits between x-ray imaging and gamma killing.",
+            "analogy": "Keys cut for different locks: penetration, heating and fluorescence each unlock different applications.",
+            "examPointer": "Link a use to its reason when the question says explain: microwaves heat because water absorbs them; x-rays image because bone absorbs them."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_8K4rhNpfVqrR8pHF::L1::Q1",
+          "rn_8K4rhNpfVqrR8pHF::L1::Q2",
+          "rn_8K4rhNpfVqrR8pHF::L1::Q3",
+          "rn_8K4rhNpfVqrR8pHF::L1::Q4",
+          "rn_8K4rhNpfVqrR8pHF::L1::Q5",
+          "rn_8K4rhNpfVqrR8pHF::L1::Q6",
+          "rn_8K4rhNpfVqrR8pHF::L1::Q7",
+          "rn_8K4rhNpfVqrR8pHF::L1::Q8",
+          "rn_8K4rhNpfVqrR8pHF::L1::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "fluorescence",
+          "definition": "Absorbing ultraviolet light and re-emitting it as visible light, making a substance glow.",
+          "firstLesson": 1
+        },
+        {
+          "term": "sterilise",
+          "definition": "To kill bacteria and other microbes on equipment or food.",
+          "firstLesson": 1
+        },
+        {
+          "term": "spectrum bands",
+          "definition": "The named regions of the electromagnetic spectrum, from radio waves to gamma rays.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

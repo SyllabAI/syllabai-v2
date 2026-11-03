@@ -1,0 +1,502 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_GVDsPK5gmYw5wqvG",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "386100404b6ba709ab4a81fac77cf511d7bd65c617652b0a84ca1f995bdfc855",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "packageId": "igcse-physics::rn_GVDsPK5gmYw5wqvG",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L1::Q1",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L1",
+      "stem": "Which list gives the EM spectrum bands in the order taught?",
+      "misconceptionClass": "spectrum order",
+      "options": [
+        {
+          "key": "A",
+          "text": "radio, gamma, infrared, x-ray, microwave, ultraviolet, visible",
+          "correct": false,
+          "explanation": "That shuffles the bands out of wavelength order.",
+          "misconception": "order shuffle"
+        },
+        {
+          "key": "B",
+          "text": "gamma ray, x-ray, ultraviolet, visible, infrared, microwave, radio",
+          "correct": true,
+          "explanation": "The same seven bands, named from the shortest wavelength up.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "radio, visible, microwave, infrared, gamma ray, x-ray, ultraviolet",
+          "correct": false,
+          "explanation": "That shuffles the middle bands.",
+          "misconception": "order shuffle"
+        },
+        {
+          "key": "D",
+          "text": "microwave, radio, visible, infrared, x-ray, ultraviolet, gamma ray",
+          "correct": false,
+          "explanation": "Radio and microwave are swapped here.",
+          "misconception": "order shuffle"
+        }
+      ]
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L1::Q2",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L1",
+      "stem": "In free space, all electromagnetic waves:",
+      "misconceptionClass": "shared property",
+      "options": [
+        {
+          "key": "A",
+          "text": "travel at speeds set by their frequency",
+          "correct": false,
+          "explanation": "Frequency changes across the spectrum; the speed does not.",
+          "misconception": "speed-frequency myth"
+        },
+        {
+          "key": "B",
+          "text": "need a material medium",
+          "correct": false,
+          "explanation": "EM waves are precisely the waves that need no medium.",
+          "misconception": "medium myth"
+        },
+        {
+          "key": "C",
+          "text": "travel at the same speed",
+          "correct": true,
+          "explanation": "Identical speed in a vacuum is the defining shared property.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "are longitudinal",
+          "correct": false,
+          "explanation": "All EM waves are transverse.",
+          "misconception": "family swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L1::Q3",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L1",
+      "stem": "Which part of the EM spectrum does the human eye detect?",
+      "misconceptionClass": "visible band",
+      "options": [
+        {
+          "key": "A",
+          "text": "infrared and ultraviolet as well",
+          "correct": false,
+          "explanation": "Those neighbours sit outside human detection.",
+          "misconception": "range overestimate"
+        },
+        {
+          "key": "B",
+          "text": "radio waves",
+          "correct": false,
+          "explanation": "Radio is far below the visible band in frequency.",
+          "misconception": "band confusion"
+        },
+        {
+          "key": "C",
+          "text": "the whole spectrum",
+          "correct": false,
+          "explanation": "Most of the spectrum is invisible to us.",
+          "misconception": "range overestimate"
+        },
+        {
+          "key": "D",
+          "text": "the visible band only",
+          "correct": true,
+          "explanation": "Vision covers just the visible slice of the continuum.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L1::Q4",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L1",
+      "stem": "The statement that the EM spectrum is continuous means:",
+      "misconceptionClass": "continuity concept",
+      "options": [
+        {
+          "key": "A",
+          "text": "the bands blend without gaps into one spectrum",
+          "correct": true,
+          "explanation": "Continuity means no missing stretches between the named bands.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "all waves have the same wavelength",
+          "correct": false,
+          "explanation": "Wavelengths span an enormous range across the spectrum.",
+          "misconception": "property confusion"
+        },
+        {
+          "key": "C",
+          "text": "the waves never stop moving",
+          "correct": false,
+          "explanation": "Continuity describes the spectrum, not motion.",
+          "misconception": "word-literal error"
+        },
+        {
+          "key": "D",
+          "text": "each band is physically separated from the next",
+          "correct": false,
+          "explanation": "That is the opposite of continuity.",
+          "misconception": "inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L1::Q5",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L1",
+      "stem": "X-rays and radio waves both cross a vacuum. Compared with the radio waves, the x-rays travel:",
+      "misconceptionClass": "same-speed law",
+      "options": [
+        {
+          "key": "A",
+          "text": "faster, because their frequency is higher",
+          "correct": false,
+          "explanation": "Frequency does not change the vacuum speed.",
+          "misconception": "speed-frequency myth"
+        },
+        {
+          "key": "B",
+          "text": "slower, because their wavelength is shorter",
+          "correct": false,
+          "explanation": "Wavelength does not change the vacuum speed either.",
+          "misconception": "speed-wavelength myth"
+        },
+        {
+          "key": "C",
+          "text": "at the same speed",
+          "correct": true,
+          "explanation": "Free space gives every EM wave the same speed.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "at a speed that depends on the source",
+          "correct": false,
+          "explanation": "The shared free-space speed is source-independent.",
+          "misconception": "speed myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L1::Q6",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L1",
+      "stem": "State the three properties all EM waves share.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "They are all transverse, they all pass through free space (a vacuum), and they all move at one shared speed through that vacuum.",
+      "keywords": [
+        "transverse",
+        "vacuum",
+        "free space",
+        "shared speed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L1::Q7",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L1",
+      "stem": "Name the seven standard bands of the electromagnetic spectrum in order.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Gamma ray, x-ray, ultraviolet, visible, infrared, microwave and radio — the seven bands, shortest wavelength first.",
+      "keywords": [
+        "radio",
+        "microwave",
+        "infrared",
+        "visible",
+        "ultraviolet",
+        "x-ray",
+        "gamma"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L1::Q8",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L1",
+      "stem": "Explain why astronauts on the Moon can see the Earth even though space is a vacuum.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Light is an electromagnetic wave, and EM waves travel through free space without needing particles, so the vacuum between Moon and Earth carries the light perfectly well.",
+      "keywords": [
+        "electromagnetic",
+        "free space",
+        "vacuum",
+        "particles",
+        "travel"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L1::Q9",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L1",
+      "stem": "A detector finds an EM wave of wavelength 5 x 10^-7 m, inside the visible band, and another of wavelength 500 m. State which band the long-wave signal occupies and one shared property of the two signals.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The 500 m signal is a radio wave; both signals move at one shared speed through free space (and both are transverse), whatever their wavelengths.",
+      "keywords": [
+        "radio",
+        "shared speed",
+        "free space",
+        "transverse"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L2::Q1",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L2",
+      "stem": "Which radiation has the longest wavelength in the EM spectrum?",
+      "misconceptionClass": "spectrum ends",
+      "options": [
+        {
+          "key": "A",
+          "text": "gamma rays",
+          "correct": false,
+          "explanation": "Gamma is the short-wavelength end.",
+          "misconception": "end swap"
+        },
+        {
+          "key": "B",
+          "text": "radio waves",
+          "correct": true,
+          "explanation": "Radio sits at the long-wavelength, low-frequency end.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "ultraviolet",
+          "correct": false,
+          "explanation": "Ultraviolet sits just past visible, far from the long end.",
+          "misconception": "band confusion"
+        },
+        {
+          "key": "D",
+          "text": "microwaves",
+          "correct": false,
+          "explanation": "Microwaves are second from the long end.",
+          "misconception": "band confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L2::Q2",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L2",
+      "stem": "Across the EM spectrum, as wavelength decreases the frequency:",
+      "misconceptionClass": "inverse law",
+      "options": [
+        {
+          "key": "A",
+          "text": "decreases",
+          "correct": false,
+          "explanation": "That would break the fixed wave speed.",
+          "misconception": "direct proportionality myth"
+        },
+        {
+          "key": "B",
+          "text": "stays constant",
+          "correct": false,
+          "explanation": "Frequency spans a huge range across the spectrum.",
+          "misconception": "invariant assumption"
+        },
+        {
+          "key": "C",
+          "text": "doubles with every band",
+          "correct": false,
+          "explanation": "No fixed doubling rule exists between bands.",
+          "misconception": "pattern invention"
+        },
+        {
+          "key": "D",
+          "text": "increases",
+          "correct": true,
+          "explanation": "Wavelength and frequency are inversely proportional.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L2::Q3",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L2",
+      "stem": "Within the visible spectrum, the colour with the longest wavelength is:",
+      "misconceptionClass": "colour order",
+      "options": [
+        {
+          "key": "A",
+          "text": "red",
+          "correct": true,
+          "explanation": "Red is the long-wavelength, low-frequency end of the visible band.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "violet",
+          "correct": false,
+          "explanation": "Violet is the short-wavelength end.",
+          "misconception": "end swap"
+        },
+        {
+          "key": "C",
+          "text": "green",
+          "correct": false,
+          "explanation": "Green sits mid-band.",
+          "misconception": "band confusion"
+        },
+        {
+          "key": "D",
+          "text": "yellow",
+          "correct": false,
+          "explanation": "Yellow is between green and red, not the extreme.",
+          "misconception": "band confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L2::Q4",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L2",
+      "stem": "Gamma rays differ from radio waves by having:",
+      "misconceptionClass": "end comparison",
+      "options": [
+        {
+          "key": "A",
+          "text": "longer wavelength and lower frequency",
+          "correct": false,
+          "explanation": "That describes the radio end.",
+          "misconception": "end swap"
+        },
+        {
+          "key": "B",
+          "text": "a higher speed in free space",
+          "correct": false,
+          "explanation": "All EM waves share one free-space speed.",
+          "misconception": "speed myth"
+        },
+        {
+          "key": "C",
+          "text": "shorter wavelength and higher frequency",
+          "correct": true,
+          "explanation": "Gamma is the short-and-fast extreme of the spectrum.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a longitudinal geometry",
+          "correct": false,
+          "explanation": "All EM waves are transverse.",
+          "misconception": "family swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L2::Q5",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L2",
+      "stem": "An EM wave is found to have a higher frequency than violet light. Its wavelength compared with violet light is:",
+      "misconceptionClass": "inverse application",
+      "options": [
+        {
+          "key": "A",
+          "text": "longer, to keep the speed constant",
+          "correct": false,
+          "explanation": "Longer wavelength would lower the frequency.",
+          "misconception": "inverse confusion"
+        },
+        {
+          "key": "B",
+          "text": "the same",
+          "correct": false,
+          "explanation": "Frequency and wavelength cannot both match violet.",
+          "misconception": "invariant assumption"
+        },
+        {
+          "key": "C",
+          "text": "impossible to compare",
+          "correct": false,
+          "explanation": "The inverse law gives the comparison directly.",
+          "misconception": "capability denial"
+        },
+        {
+          "key": "D",
+          "text": "shorter, by the inverse relationship",
+          "correct": true,
+          "explanation": "Higher frequency forces shorter wavelength at fixed speed.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L2::Q6",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L2",
+      "stem": "State the colour with the shortest wavelength in the visible spectrum.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Violet sits at the short-wavelength, high-frequency end of the visible colours.",
+      "keywords": [
+        "violet",
+        "short-wavelength",
+        "frequency",
+        "visible"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L2::Q7",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L2",
+      "stem": "State how frequency changes as you move from radio waves to gamma rays.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Frequency increases from radio waves to gamma rays as wavelength decreases.",
+      "keywords": [
+        "increases",
+        "radio",
+        "gamma",
+        "wavelength",
+        "decreases"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L2::Q8",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L2",
+      "stem": "Explain, using the wave equation, why the gamma-ray end of the spectrum has the highest frequencies.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "All EM waves share one speed in free space through v = f x lambda, so the band with the shortest wavelength, gamma rays, must carry the highest frequency to keep the product constant.",
+      "keywords": [
+        "speed",
+        "constant",
+        "shortest",
+        "wavelength",
+        "highest"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_GVDsPK5gmYw5wqvG::L2::Q9",
+      "moduleId": "rn_GVDsPK5gmYw5wqvG::L2",
+      "stem": "A student lists visible colours from longest to shortest wavelength as violet, blue, green, yellow, orange, red. Correct the order and state the fixed property that makes only one order possible.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The correct order is red, orange, yellow, green, blue, violet; only one order is possible because wavelength and frequency are inversely proportional at the fixed free-space speed, so each colour occupies a unique wavelength band.",
+      "keywords": [
+        "red",
+        "violet",
+        "order",
+        "inverse",
+        "wavelength"
+      ],
+      "options": []
+    }
+  ]
+}

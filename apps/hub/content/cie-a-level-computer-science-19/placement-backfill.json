@@ -1,0 +1,16 @@
+{
+ "schema": "syllabai.hub.placement-backfill/1.0",
+ "generatedUtc": "2026-11-03T03:34:16+00:00",
+ "script": "scripts/sme_d0_backfill.py",
+ "basis": "SME section/topic-slug joins against this course's committed curriculum map; no content surgery, set-level placement only",
+ "placements": [
+  {
+   "slug": "algorithms--exam-questions",
+   "subtopicCode": "cie-a-level-computer-science-2024-2025-T9:SUB9.2",
+   "level": "subtopic",
+   "join": "title join (J3)",
+   "confidence": "high",
+   "source": "plan"
+  }
+ ]
+}

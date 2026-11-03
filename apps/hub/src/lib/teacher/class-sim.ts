@@ -1,5 +1,5 @@
 import type { CourseBundle } from "../courses";
-import { buildSpecTreeIndex, subtopicOfQuestionSet } from "../spec-tree";
+import { buildSpecTreeIndex, generalTopicsOfQuestionTopics, subtopicOfQuestionSet } from "../spec-tree";
 
 /**
  * Class evidence for the teacher lens (TEACHER-2) — deterministic SAMPLE
@@ -136,7 +136,10 @@ export function buildClassOverview(bundle: CourseBundle): ClassOverview {
   const cached = aggregateCache.get(slug);
   if (cached) return cached;
 
-  const index = buildSpecTreeIndex(bundle.curriculum);
+  const index = buildSpecTreeIndex(bundle.curriculum, {
+    // keep teacher placement identical to the student hub (D0 gen rows)
+    generalTopics: generalTopicsOfQuestionTopics(bundle.questionTopics),
+  });
 
   // question sets anchored per subtopic code (same mapping the hub uses)
   const setsBySubtopic = new Map<string, string[]>();

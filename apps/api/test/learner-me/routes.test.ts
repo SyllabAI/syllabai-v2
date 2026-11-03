@@ -661,6 +661,326 @@ describe("GET /assignments + POST /assignments/{id}/submissions — LearnerAssig
   });
 });
 
+// ── T-TIER1 — last-opened + mock results (v2-native, additive) ──────────────
+
+/**
+ * Frontend deep-audit Tier 1 (operator order 2026-11-03: "things that are
+ * localStorage-only, make them saved to account"). Pinned here: the authz
+ * shell on all four paths, the honest-null last-opened GET, the upsert PUT
+ * mechanics, the mock-results per-course cap (row_number rn filter), the
+ * full-set replace PUT (delete + insert, empty array clears), the
+ * kebab-case slug law (path + body), and the two-envelope body law.
+ */
+describe("GET/PUT /api/v1/learners/me/last-opened + GET /mock-results + PUT /mock-results/{slug} — T-TIER1", () => {
+  const LO_SELECT = /select course_slug, resource, updated_at from learner_last_opened where user_id = \?$/;
+  const LO_UPSERT = /insert into learner_last_opened/;
+  const MR_SELECT = /select client_id, ref, title, session_id, finished_at, duration_min/;
+  const MR_DELETE = /delete from learner_mock_results where user_id = \? and course_slug = \?$/;
+  const MR_INSERT = /insert into learner_mock_results/;
+
+  test("authz shell: anonymous on all four paths → the Boot 401 before any handler work", async () => {
+    const app = makeApp(anon, routesWith({}));
+    const get = await app.request("/api/v1/learners/me/last-opened");
+    expect(get.status).toBe(401);
+    const put = await app.request("/api/v1/learners/me/last-opened", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ courseSlug: "igcse-chemistry-19", resource: "hub" }),
+    });
+    expect(put.status).toBe(401);
+    const getMr = await app.request("/api/v1/learners/me/mock-results");
+    expect(getMr.status).toBe(401);
+    const putMr = await app.request("/api/v1/learners/me/mock-results/igcse-chemistry-19", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ results: [] }),
+    });
+    expect(putMr.status).toBe(401);
+  });
+
+  test("GET last-opened with no row → 200 {lastOpened: null} (the honest empty)", async () => {
+    const res = await makeApp(asStudent, [
+      ...routesWith({}),
+      { match: LO_SELECT, rows: [] },
+    ]).request("/api/v1/learners/me/last-opened");
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ lastOpened: null });
+  });
+
+  test("GET last-opened with a row → the view (updated_at → updatedAt instant)", async () => {
+    const res = await makeApp(asStudent, [
+      ...routesWith({}),
+      {
+        match: LO_SELECT,
+        rows: [{ course_slug: "igcse-chemistry-19", resource: "exam-questions", updated_at: "2026-11-02T09:15:00Z" }],
+      },
+    ]).request("/api/v1/learners/me/last-opened");
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({
+      lastOpened: {
+        courseSlug: "igcse-chemistry-19",
+        resource: "exam-questions",
+        updatedAt: "2026-11-02T09:15:00.000Z",
+      },
+    });
+  });
+
+  test("PUT last-opened happy path → upsert fires once, the re-read view comes back", async () => {
+    let upsertRan = false;
+    const res = await makeApp(asStudent, [
+      ...routesWith({}),
+      { match: LO_UPSERT, rows: [], rowsFor: () => { upsertRan = true; return []; } },
+      { match: LO_SELECT, rows: [{ course_slug: "igcse-chemistry-19", resource: "flashcards", updated_at: NOW_TEXT }] },
+    ]).request("/api/v1/learners/me/last-opened", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ courseSlug: "igcse-chemistry-19", resource: "flashcards" }),
+    });
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(upsertRan).toBe(true);
+    expect(body).toEqual({
+      courseSlug: "igcse-chemistry-19",
+      resource: "flashcards",
+      updatedAt: "2026-10-06T07:45:00.000Z", // the toInstant ms-precision law
+    });
+  });
+
+  test("PUT last-opened body law: missing fields → validation_failed (jakarta default); wrong type → malformed_body; bad slug → validation_failed; unknown resource → validation_failed", async () => {
+    const app = makeApp(asStudent, routesWith({}));
+    const missing = await app.request("/api/v1/learners/me/last-opened", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ courseSlug: "igcse-chemistry-19" }),
+    });
+    expect(missing.status).toBe(400);
+    expect((await missing.json()).message).toBe("resource: must not be null");
+
+    const wrongType = await app.request("/api/v1/learners/me/last-opened", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ courseSlug: { slug: "igcse-chemistry-19" }, resource: "hub" }),
+    });
+    expect(wrongType.status).toBe(400);
+    expect((await wrongType.json()).error).toBe("malformed_body");
+
+    const badSlug = await app.request("/api/v1/learners/me/last-opened", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ courseSlug: "Chm_Target", resource: "hub" }),
+    });
+    expect(badSlug.status).toBe(400);
+    expect((await badSlug.json()).message).toBe(
+      'courseSlug: must match "^[a-z0-9]+(-[a-z0-9]+)*$"',
+    );
+
+    const badResource = await app.request("/api/v1/learners/me/last-opened", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ courseSlug: "igcse-chemistry-19", resource: "secret-surface" }),
+    });
+    expect(badResource.status).toBe(400);
+    expect((await badResource.json()).error).toBe("validation_failed");
+  });
+
+  test("GET mock-results empty → 200 {results: []}", async () => {
+    const res = await makeApp(asStudent, [
+      ...routesWith({}),
+      { match: MR_SELECT, rows: [] },
+    ]).request("/api/v1/learners/me/mock-results");
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ results: [] });
+  });
+
+  test("GET mock-results → rows map to the wire; the per-course rn cap filters (20 of record); newest-finished order", async () => {
+    const res = await makeApp(asStudent, [
+      ...routesWith({}),
+      {
+        match: MR_SELECT,
+        rows: [
+          {
+            client_id: "igcse-chemistry-19:2024-summer:1:1729000000000",
+            ref: "4CH1/1C",
+            title: "Chemistry Paper 1C",
+            session_id: "2024-summer",
+            finished_at: "2026-11-01T10:00:00Z",
+            duration_min: 60,
+            time_used_sec: 3210,
+            marks: 42,
+            total: 80,
+            ended: "time-up",
+            questions: [{ label: "1", marks: 4, max: 5 }],
+            rn: 1,
+          },
+          {
+            client_id: "igcse-chemistry-19:2023-summer:2:1720000000000",
+            ref: "4CH1/2C",
+            title: "Chemistry Paper 2C",
+            session_id: "2023-summer",
+            finished_at: "2026-10-20T10:00:00Z",
+            duration_min: 70,
+            time_used_sec: 2400,
+            marks: 55,
+            total: 80,
+            ended: "self",
+            questions: null,
+            rn: 2,
+          },
+          {
+            client_id: "igcse-chemistry-19:old:1:1",
+            ref: "4CH1/1C",
+            title: "oldest, past the cap",
+            session_id: "old",
+            finished_at: "2026-01-01T10:00:00Z",
+            duration_min: 60,
+            time_used_sec: 100,
+            marks: 1,
+            total: 80,
+            ended: "exited",
+            questions: null,
+            rn: 21,
+          },
+        ],
+      },
+    ]).request("/api/v1/learners/me/mock-results");
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body.results.map((r: { clientId: string }) => r.clientId)).toEqual([
+      "igcse-chemistry-19:2024-summer:1:1729000000000",
+      "igcse-chemistry-19:2023-summer:2:1720000000000",
+    ]);
+    expect(body.results[0].finishedAt).toBe("2026-11-01T10:00:00.000Z");
+    expect(body.results[0].questions).toEqual([{ label: "1", marks: 4, max: 5 }]);
+    expect(body.results[1].questions).toBeUndefined(); // null column → the additive field is absent
+  });
+
+  test("PUT mock-results happy path → the course's rows are replaced (delete fires, per-row inserts), final view returned", async () => {
+    let deleteRan = false;
+    let inserts = 0;
+    const res = await makeApp(asStudent, [
+      ...routesWith({}),
+      { match: MR_DELETE, rows: [], rowsFor: () => { deleteRan = true; return []; } },
+      { match: MR_INSERT, rows: [], rowsFor: () => { inserts += 1; return []; } },
+      {
+        match: MR_SELECT,
+        rows: [
+          {
+            client_id: "igcse-chemistry-19:2024-summer:1:1729000000000",
+            ref: "4CH1/1C",
+            title: "Chemistry Paper 1C",
+            session_id: "2024-summer",
+            finished_at: "2026-11-01T10:00:00Z",
+            duration_min: 60,
+            time_used_sec: 3210,
+            marks: 42,
+            total: 80,
+            ended: "time-up",
+            questions: null,
+            rn: 1,
+          },
+        ],
+      },
+    ]).request("/api/v1/learners/me/mock-results/igcse-chemistry-19", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        results: [
+          {
+            clientId: "igcse-chemistry-19:2024-summer:1:1729000000000",
+            ref: "4CH1/1C",
+            title: "Chemistry Paper 1C",
+            sessionId: "2024-summer",
+            finishedAt: "2026-11-01T10:00:00Z",
+            durationMin: 60,
+            timeUsedSec: 3210,
+            marks: 42,
+            total: 80,
+            ended: "time-up",
+          },
+        ],
+      }),
+    });
+    expect(res.status).toBe(200);
+    expect(deleteRan).toBe(true);
+    expect(inserts).toBe(1);
+    const body = await res.json();
+    expect(body.results).toHaveLength(1);
+    expect(body.results[0].clientId).toBe("igcse-chemistry-19:2024-summer:1:1729000000000");
+  });
+
+  test("PUT mock-results with an empty array clears the course (delete fires, zero inserts)", async () => {
+    let deleteRan = false;
+    let inserts = 0;
+    const res = await makeApp(asStudent, [
+      ...routesWith({}),
+      { match: MR_DELETE, rows: [], rowsFor: () => { deleteRan = true; return []; } },
+      { match: MR_INSERT, rows: [], rowsFor: () => { inserts += 1; return []; } },
+      { match: MR_SELECT, rows: [] },
+    ]).request("/api/v1/learners/me/mock-results/igcse-chemistry-19", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ results: [] }),
+    });
+    expect(res.status).toBe(200);
+    expect(deleteRan).toBe(true);
+    expect(inserts).toBe(0);
+    expect(await res.json()).toEqual({ results: [] });
+  });
+
+  test("PUT mock-results law: non-kebab path slug → 400 bad_request verbatim; missing results → validation_failed; non-array → malformed_body", async () => {
+    const badSlug = await makeApp(asStudent, routesWith({})).request(
+      "/api/v1/learners/me/mock-results/Chm_Target",
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ results: [] }),
+      },
+    );
+    expect(badSlug.status).toBe(400);
+    expect((await badSlug.json()).message).toBe("course slug must be a kebab-case registry key");
+
+    const app = makeApp(asStudent, routesWith({}));
+    const missing = await app.request("/api/v1/learners/me/mock-results/igcse-chemistry-19", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({}),
+    });
+    expect(missing.status).toBe(400);
+    expect((await missing.json()).message).toBe("results: must not be null");
+
+    const notArray = await app.request("/api/v1/learners/me/mock-results/igcse-chemistry-19", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ results: "nope" }),
+    });
+    expect(notArray.status).toBe(400);
+    expect((await notArray.json()).error).toBe("malformed_body");
+
+    const badRecord = await app.request("/api/v1/learners/me/mock-results/igcse-chemistry-19", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        results: [
+          {
+            clientId: "x",
+            ref: "4CH1/1C",
+            title: "t",
+            sessionId: "2024-summer",
+            finishedAt: "2026-11-01T10:00:00Z",
+            durationMin: 60,
+            timeUsedSec: 0,
+            marks: 1,
+            total: 80,
+            ended: "exploded",
+          },
+        ],
+      }),
+    });
+    expect(badRecord.status).toBe(400);
+    expect((await badRecord.json()).error).toBe("validation_failed");
+  });
+});
+
 // ── the honest-501 posture (the no-provider safety net, still mapped) ───────
 
 describe("the honest-501 posture", () => {

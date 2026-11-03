@@ -1,0 +1,2180 @@
+{
+ "lane": "RN-DEBRIS-11",
+ "run": "run-001",
+ "mode": "open-adjudication",
+ "tip": "30a5ce5901dde475d1eb3564e8d6ec8294442aeb",
+ "R1_interleaved_runs": {
+  "ofRecord": "RN-DEBRIS-10 ledgerRefusals — 1 string x 3 files (ial-maths-20-pure-3 node title / specPoints[5]) — fresh presence 3/3 EXACT",
+  "siblingGroups": 87,
+  "legitKeeps": [
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/curriculum.json",
+    "path": "$.nodes[23].title",
+    "hits": 1,
+    "hitsDetail": [
+     "⁄6"
+    ],
+    "len": 185,
+    "full": "Sine, cosine and tangent functions. Their graphs, symmetries and periodicity.: • Knowledge of graphs of curves with equations such as y = 3 sin x, y = sin x+π⁄6, y = sin 2x is expected.",
+    "verdict": "legit fraction π⁄6 in 'y = sin x+π⁄6' — reads clean"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/ugm-resources.json",
+    "path": "$.specPoints[16].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "⁄6"
+    ],
+    "len": 185,
+    "full": "Sine, cosine and tangent functions. Their graphs, symmetries and periodicity.: • Knowledge of graphs of curves with equations such as y = 3 sin x, y = sin x+π⁄6, y = sin 2x is expected.",
+    "verdict": "legit fraction π⁄6 — reads clean"
+   },
+   {
+    "file": "apps/hub/content/ial-physics-19/curriculum.json",
+    "path": "$.nodes[51].title",
+    "hits": 1,
+    "hitsDetail": [
+     "c⁄"
+    ],
+    "len": 122,
+    "full": "know and understand that at the interface between medium 1 and medium 2 n₁sin θ₁= n₂sin θ₂ where refractive index is n=c⁄v",
+    "verdict": "legit fraction c⁄v (n = c/v refractive index) — reads clean"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-1.json",
+    "path": "$.curriculum.nodes[23].title",
+    "hits": 1,
+    "hitsDetail": [
+     "⁄6"
+    ],
+    "len": 185,
+    "full": "Sine, cosine and tangent functions. Their graphs, symmetries and periodicity.: • Knowledge of graphs of curves with equations such as y = 3 sin x, y = sin x+π⁄6, y = sin 2x is expected.",
+    "verdict": "legit fraction π⁄6 — spine mirror"
+   },
+   {
+    "file": "apps/hub/spines/ial-physics-19.json",
+    "path": "$.curriculum.nodes[51].title",
+    "hits": 1,
+    "hitsDetail": [
+     "c⁄"
+    ],
+    "len": 122,
+    "full": "know and understand that at the interface between medium 1 and medium 2 n₁sin θ₁= n₂sin θ₂ where refractive index is n=c⁄v",
+    "verdict": "legit fraction c⁄v — spine mirror"
+   }
+  ],
+  "distinctCorruptedSpecTexts": 31,
+  "groups": [
+   {
+    "file": "apps/hub/content/ial-further-maths-18-further-pure-1/curriculum.json",
+    "path": "$.nodes[11].title",
+    "hits": 2,
+    "hitsDetail": [
+     "x⁄",
+     "e⁄"
+    ],
+    "len": 144,
+    "full": "Sum of roots and product of roots of a quadratic equation.: • For the equatio 2 roots are α and β, bnax +bx⁄a ,αβ= ac+c=0,whose⁄. then α + β = −",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-further-maths-18-further-pure-1/curriculum.json",
+    "path": "$.nodes[38].title",
+    "hits": 4,
+    "hitsDetail": [
+     "s⁄",
+     "d⁄",
+     "m⁄",
+     "n⁄"
+    ],
+    "len": 158,
+    "full": "Summation of simple finite series.: • S series such as ntudents⁄∑r,∑ₙshould⁄r2,∑ beabletosum⁄r(r2+2). n⁄r=1 r=1 r=1 The method of differences is not required.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-further-maths-18-further-pure-1/curriculum.json",
+    "path": "$.nodes[8].title",
+    "hits": 3,
+    "hitsDetail": [
+     "o⁄",
+     "f⁄",
+     "0⁄"
+    ],
+    "len": 346,
+    "full": "Finding conjugate complex roots and/or real roots of a quartic equation with real coefficients.: • For example, (i) f(x) = x⁴ − x³ − 5x² + 7x + 10 Given that x = 2 + i is a root of f(x) = 0, use algebra to find the three oth (ii) g(x) = x⁴ erroo⁄−x³ tsoff⁄+6x² (x)=0⁄+14x−20 Given g(1) = 0 and g(−2) = 0, use algebra to solve g(x) = 0 completely.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-mechanics-2/curriculum.json",
+    "path": "$.nodes[6].title",
+    "hits": 2,
+    "hitsDetail": [
+     "3⁄",
+     "t⁄"
+    ],
+    "len": 146,
+    "full": "Differentiation and integration of a vector with respect to time. tres of mass: • For 2exa 3⁄i+tmple,giventhat⁄2j,findr and r=t r at a given time.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/curriculum.json",
+    "path": "$.nodes[10].title",
+    "hits": 1,
+    "hitsDetail": [
+     "d⁄"
+    ],
+    "len": 216,
+    "full": "Represent linear and quadratic inequalities graphically.: • Represent ratic inequalities such as y > x + r and y > ax² linearandquad⁄+bx+cgraph ically. Shading and use of dotted and solid line convention is required.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/curriculum.json",
+    "path": "$.nodes[12].title",
+    "hits": 2,
+    "hitsDetail": [
+     "t⁄",
+     "f⁄"
+    ],
+    "len": 248,
+    "full": "Algebraic manipulation of polynomials, including expanding brackets and collecting like terms, factorisation.: • Students should be able to use bracke polynomials of degree n, n 3, e.g. x³ ts.Fact⁄+4x² orisationof⁄+3x.The notation f(x) may be used.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/curriculum.json",
+    "path": "$.nodes[13].title",
+    "hits": 2,
+    "hitsDetail": [
+     "k⁄",
+     "⁄e"
+    ],
+    "len": 373,
+    "full": "Graphs of functions; sketching curves defined by simple equations. Geometrical interpretation of algebraic solution of equations. Use of intersection points of graphs of functions to solve equations.: • Functions to include simple cubic functions and the reciprocal functions y = xk andy= k⁄wledgeofthx2 withx≠0.⁄etermasympt Kno ote is expected. Also, trigonometric graphs.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/curriculum.json",
+    "path": "$.nodes[17].title",
+    "hits": 1,
+    "hitsDetail": [
+     "h⁄"
+    ],
+    "len": 364,
+    "full": "Equation of a straight line, including the forms y − y₁ = m(x − x₁) and ax + by + c = 0.: • To include: (i) the equation of a line through two given points (ii) the equation of a line parallel (or perpendicular) to a given line through a given point. For example, the line perpendicular to the line 3x + 4y e point (2, 3) has equation y − 3 = 4=18throughth⁄3(x−2).",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/curriculum.json",
+    "path": "$.nodes[21].title",
+    "hits": 1,
+    "hitsDetail": [
+     "l⁄"
+    ],
+    "len": 125,
+    "full": "The sine and cosine rules, and the a e in the form 1reaofatriangl⁄2 absinC.: • Including the ambiguous case of the sine rule.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/curriculum.json",
+    "path": "$.nodes[23].title",
+    "hits": 1,
+    "hitsDetail": [
+     "⁄6"
+    ],
+    "len": 185,
+    "full": "Sine, cosine and tangent functions. Their graphs, symmetries and periodicity.: • Knowledge of graphs of curves with equations such as y = 3 sin x, y = sin x+π⁄6, y = sin 2x is expected.",
+    "verdict": "legit fraction π⁄6 in 'y = sin x+π⁄6' — reads clean"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/curriculum.json",
+    "path": "$.nodes[26].title",
+    "hits": 1,
+    "hitsDetail": [
+     "f⁄"
+    ],
+    "len": 365,
+    "full": "The derivative of f(x) as the gradient of the tangent to the graph of y = f(x) at a point; the gradient of the tangent as a limit; interpretation as a rate of change; second order derivatives.: • d For example, knowledge that change of y dxy is the rate of⁄the chain rule with respect to x. Knowledge of is not required. The notation f ′(x) and f ′′(x) may be used.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/curriculum.json",
+    "path": "$.nodes[27].title",
+    "hits": 1,
+    "hitsDetail": [
+     "n⁄"
+    ],
+    "len": 173,
+    "full": "Differentiation of xⁿ, and related sums, differences and constant multiples.: • The ability to differe s such as x²ntiateexpression⁄+5x−3isex (2x + 5)(x − 1) and pected. 3 x",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/curriculum.json",
+    "path": "$.nodes[32].title",
+    "hits": 2,
+    "hitsDetail": [
+     "x⁄",
+     "⁄x"
+    ],
+    "len": 348,
+    "full": "Integration of xⁿ and related sums, differences and constant multiples.: • (Excluding n = −1 and related sums, differences and multiples). For exam pressions such as ple,theabilit2⁄2andytointegrateex⁄isexpected. ¹x²−3x⁻1 (x+2)⁄x 2 Given f ′(x) and a point on the curve, students should be able to find an equation of the curve in the form y = f(x).",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/curriculum.json",
+    "path": "$.nodes[6].title",
+    "hits": 2,
+    "hitsDetail": [
+     "a⁄",
+     "e⁄"
+    ],
+    "len": 99,
+    "full": "The discriminant of a quadratic function.: • b² Needtoknowa⁄−4ac>0,b² ndtouse⁄−4ac=0andb² − 4ac < 0",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/ugm-resources.json",
+    "path": "$.specPoints[10].officialText",
+    "hits": 2,
+    "hitsDetail": [
+     "k⁄",
+     "⁄e"
+    ],
+    "len": 373,
+    "full": "Graphs of functions; sketching curves defined by simple equations. Geometrical interpretation of algebraic solution of equations. Use of intersection points of graphs of functions to solve equations.: • Functions to include simple cubic functions and the reciprocal functions y = xk andy= k⁄wledgeofthx2 withx≠0.⁄etermasympt Kno ote is expected. Also, trigonometric graphs.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/ugm-resources.json",
+    "path": "$.specPoints[12].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "h⁄"
+    ],
+    "len": 364,
+    "full": "Equation of a straight line, including the forms y − y₁ = m(x − x₁) and ax + by + c = 0.: • To include: (i) the equation of a line through two given points (ii) the equation of a line parallel (or perpendicular) to a given line through a given point. For example, the line perpendicular to the line 3x + 4y e point (2, 3) has equation y − 3 = 4=18throughth⁄3(x−2).",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/ugm-resources.json",
+    "path": "$.specPoints[14].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "l⁄"
+    ],
+    "len": 125,
+    "full": "The sine and cosine rules, and the a e in the form 1reaofatriangl⁄2 absinC.: • Including the ambiguous case of the sine rule.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/ugm-resources.json",
+    "path": "$.specPoints[16].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "⁄6"
+    ],
+    "len": 185,
+    "full": "Sine, cosine and tangent functions. Their graphs, symmetries and periodicity.: • Knowledge of graphs of curves with equations such as y = 3 sin x, y = sin x+π⁄6, y = sin 2x is expected.",
+    "verdict": "legit fraction π⁄6 — reads clean"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/ugm-resources.json",
+    "path": "$.specPoints[17].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "f⁄"
+    ],
+    "len": 365,
+    "full": "The derivative of f(x) as the gradient of the tangent to the graph of y = f(x) at a point; the gradient of the tangent as a limit; interpretation as a rate of change; second order derivatives.: • d For example, knowledge that change of y dxy is the rate of⁄the chain rule with respect to x. Knowledge of is not required. The notation f ′(x) and f ′′(x) may be used.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/ugm-resources.json",
+    "path": "$.specPoints[18].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "n⁄"
+    ],
+    "len": 173,
+    "full": "Differentiation of xⁿ, and related sums, differences and constant multiples.: • The ability to differe s such as x²ntiateexpression⁄+5x−3isex (2x + 5)(x − 1) and pected. 3 x",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/ugm-resources.json",
+    "path": "$.specPoints[21].officialText",
+    "hits": 2,
+    "hitsDetail": [
+     "x⁄",
+     "⁄x"
+    ],
+    "len": 348,
+    "full": "Integration of xⁿ and related sums, differences and constant multiples.: • (Excluding n = −1 and related sums, differences and multiples). For exam pressions such as ple,theabilit2⁄2andytointegrateex⁄isexpected. ¹x²−3x⁻1 (x+2)⁄x 2 Given f ′(x) and a point on the curve, students should be able to find an equation of the curve in the form y = f(x).",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/ugm-resources.json",
+    "path": "$.specPoints[3].officialText",
+    "hits": 2,
+    "hitsDetail": [
+     "a⁄",
+     "e⁄"
+    ],
+    "len": 99,
+    "full": "The discriminant of a quadratic function.: • b² Needtoknowa⁄−4ac>0,b² ndtouse⁄−4ac=0andb² − 4ac < 0",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/ugm-resources.json",
+    "path": "$.specPoints[7].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "d⁄"
+    ],
+    "len": 216,
+    "full": "Represent linear and quadratic inequalities graphically.: • Represent ratic inequalities such as y > x + r and y > ax² linearandquad⁄+bx+cgraph ically. Shading and use of dotted and solid line convention is required.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-1/ugm-resources.json",
+    "path": "$.specPoints[9].officialText",
+    "hits": 2,
+    "hitsDetail": [
+     "t⁄",
+     "f⁄"
+    ],
+    "len": 248,
+    "full": "Algebraic manipulation of polynomials, including expanding brackets and collecting like terms, factorisation.: • Students should be able to use bracke polynomials of degree n, n 3, e.g. x³ ts.Fact⁄+4x² orisationof⁄+3x.The notation f(x) may be used.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-2/curriculum.json",
+    "path": "$.nodes[11].title",
+    "hits": 3,
+    "hitsDetail": [
+     "a⁄",
+     "l⁄",
+     "e⁄"
+    ],
+    "len": 458,
+    "full": "Coordinate geometry of the circle using the eq form (x − a)² uationofa⁄e+of(yth−ebfo)l² circl⁄l=owri² einthe⁄nagnd including us circle properties: • (i) the angle in a semicircle is a right angle; (ii) the perpendicular from the centre to a chord bisects the chord; (iii) the perpendicularity of radius and tangent. • Students should be able to find the radius and the coordinates of the centre of the circle, given the equation of the circle and vice versa.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-2/curriculum.json",
+    "path": "$.nodes[23].title",
+    "hits": 1,
+    "hitsDetail": [
+     "i⁄"
+    ],
+    "len": 92,
+    "full": "The so ons of the form aˣ lutionofequati⁄=b.: • Students may use the change of base formula.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-2/curriculum.json",
+    "path": "$.nodes[34].title",
+    "hits": 1,
+    "hitsDetail": [
+     "n⁄"
+    ],
+    "len": 388,
+    "full": "Interpretation of the definite integral as the area under a curve.: • Students will be expected to be able to evaluate the area of a region bounded by a curve and given straight lines. For exam ite area bounded by the curve y = 6x − x² ple,findthefin⁄andtheliney = 2x. ∫xdy will not be required. Students will be expected to be able to evaluate the area of a region bounded by two curves.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-2/curriculum.json",
+    "path": "$.nodes[5].title",
+    "hits": 1,
+    "hitsDetail": [
+     "n⁄"
+    ],
+    "len": 159,
+    "full": "Disproof by counter example. bra and functions: • Di ter example – show that the statement “n² sproofbycoun⁄−n+1isaprime number for all values of n” is untrue.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-2/curriculum.json",
+    "path": "$.nodes[8].title",
+    "hits": 1,
+    "hitsDetail": [
+     "⁄a"
+    ],
+    "len": 525,
+    "full": "Simple algebraic division; use of the Factor Theorem and the Remainder Theorem. rdinate geometry in the (x, y) plane: • Only division by (ax + b) or (ax – b) will be req buired,e.g.⁄a, students should know that if f(x) = 0 when x = then (ax – b) is a factor of f(x). Students may be required to factorise cubic expressions such as x³ + 3x² − 4 and 6x³ + 11x² − x − 6. Students should be familiar with the terms ‘quotient’ and ‘remainder’ and be able to determine the remainder when the polynomial f(x) is divided by (ax + b).",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-2/ugm-resources.json",
+    "path": "$.specPoints[12].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "i⁄"
+    ],
+    "len": 92,
+    "full": "The so ons of the form aˣ lutionofequati⁄=b.: • Students may use the change of base formula.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-2/ugm-resources.json",
+    "path": "$.specPoints[17].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "n⁄"
+    ],
+    "len": 388,
+    "full": "Interpretation of the definite integral as the area under a curve.: • Students will be expected to be able to evaluate the area of a region bounded by a curve and given straight lines. For exam ite area bounded by the curve y = 6x − x² ple,findthefin⁄andtheliney = 2x. ∫xdy will not be required. Students will be expected to be able to evaluate the area of a region bounded by two curves.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-2/ugm-resources.json",
+    "path": "$.specPoints[2].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "n⁄"
+    ],
+    "len": 159,
+    "full": "Disproof by counter example. bra and functions: • Di ter example – show that the statement “n² sproofbycoun⁄−n+1isaprime number for all values of n” is untrue.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-2/ugm-resources.json",
+    "path": "$.specPoints[3].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "⁄a"
+    ],
+    "len": 525,
+    "full": "Simple algebraic division; use of the Factor Theorem and the Remainder Theorem. rdinate geometry in the (x, y) plane: • Only division by (ax + b) or (ax – b) will be req buired,e.g.⁄a, students should know that if f(x) = 0 when x = then (ax – b) is a factor of f(x). Students may be required to factorise cubic expressions such as x³ + 3x² − 4 and 6x³ + 11x² − x − 6. Students should be familiar with the terms ‘quotient’ and ‘remainder’ and be able to determine the remainder when the polynomial f(x) is divided by (ax + b).",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-2/ugm-resources.json",
+    "path": "$.specPoints[4].officialText",
+    "hits": 3,
+    "hitsDetail": [
+     "a⁄",
+     "l⁄",
+     "e⁄"
+    ],
+    "len": 458,
+    "full": "Coordinate geometry of the circle using the eq form (x − a)² uationofa⁄e+of(yth−ebfo)l² circl⁄l=owri² einthe⁄nagnd including us circle properties: • (i) the angle in a semicircle is a right angle; (ii) the perpendicular from the centre to a chord bisects the chord; (iii) the perpendicularity of radius and tangent. • Students should be able to find the radius and the coordinates of the centre of the circle, given the equation of the circle and vice versa.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/curriculum.json",
+    "path": "$.nodes[10].title",
+    "hits": 3,
+    "hitsDetail": [
+     "d⁄",
+     "f⁄",
+     "2⁄"
+    ],
+    "len": 58,
+    "full": "Kn sec² owledgeand⁄θ2=1+tan useof⁄θ2and cosec 2⁄θ=1+cot θ.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/curriculum.json",
+    "path": "$.nodes[11].title",
+    "hits": 2,
+    "hitsDetail": [
+     "o⁄",
+     "1⁄"
+    ],
+    "len": 494,
+    "full": "Knowledge and use of double angle formulae; use of formulae for sin (A ± B), cos (A ± B) and tan (A ± B) and of expressions for a cos θ + b sin θ in the equivalent forms of r cos (θ ± a) or r sin (θ ± a). onential and logarithms: • To inc n to half angles. Knowledge of the t (tan ludeapplicatio⁄2θ)formulaew ill not be required. Students should be 1⁄osolveequation able t s such as a cos θ + b sin θ = c in a given interval, and to prove identities such as cos x cos 2x + sin x sin 2x ≡ cos x.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/curriculum.json",
+    "path": "$.nodes[15].title",
+    "hits": 1,
+    "hitsDetail": [
+     "x⁄"
+    ],
+    "len": 147,
+    "full": "The function ln x and its gr as the inverse function of eˣaph;lnx⁄.: • Solution of equations of the form eᵃˣ⁺ᵇ = p and ln (ax + b) = q is expected.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/curriculum.json",
+    "path": "$.nodes[20].title",
+    "hits": 2,
+    "hitsDetail": [
+     "x⁄",
+     "s⁄"
+    ],
+    "len": 313,
+    "full": "Differentiation using the product rule, the quotient rule and the chain rule.: • Differentiation of cosecx, cotx and secx are required. Skill will be expected in the differentiation of functions generated from standard functions using products, quotients and comp eo3x⁄xsition,suchas⁄,cosx2andta 2x⁴ sin x, n² 2x.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/curriculum.json",
+    "path": "$.nodes[25].title",
+    "hits": 3,
+    "hitsDetail": [
+     "1⁄",
+     "1⁄",
+     "o⁄"
+    ],
+    "len": 144,
+    "full": "Integration of eᵏˣ1⁄, xn,sinkx,co s kx and their sums and differences.: • T n of standard functions such as sin3x, xoin1⁄, 2cludeintegratio⁄x e⁵",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/curriculum.json",
+    "path": "$.nodes[4].title",
+    "hits": 1,
+    "hitsDetail": [
+     "f⁄"
+    ],
+    "len": 382,
+    "full": "Definition of a function. Domain and range of functions. Composition of functions. Inverse functions and their graphs.: • The concept of a function as a one-one or many-one mapping from ℝ (or a subset of ℝ) to ℝ. The notation f : x and f(x) will be used. Students should know that fg w irst, then f ’. Students should know that if f⁻¹ illmean‘dogf⁄exists,then f⁻¹f(x) = ff⁻¹(x) = x.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/curriculum.json",
+    "path": "$.nodes[6].title",
+    "hits": 1,
+    "hitsDetail": [
+     "e⁄"
+    ],
+    "len": 353,
+    "full": "Combinations of the transformations y = f(x) as represented by y = af(x), y = f(x) + a, y = f(x + a), y = f(ax). onometry: • Students should be able to sketch the graph of, for example, y = 2f(3x), y = f(−x) + 1, given the graph of y = f(x) graph of, for example, y = 3 + sin 2x, y = − cos πor the⁄4 . x+ The graph of y = f(ax + b) will not be required.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/ugm-resources.json",
+    "path": "$.specPoints[11].officialText",
+    "hits": 2,
+    "hitsDetail": [
+     "x⁄",
+     "s⁄"
+    ],
+    "len": 313,
+    "full": "Differentiation using the product rule, the quotient rule and the chain rule.: • Differentiation of cosecx, cotx and secx are required. Skill will be expected in the differentiation of functions generated from standard functions using products, quotients and comp eo3x⁄xsition,suchas⁄,cosx2andta 2x⁴ sin x, n² 2x.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/ugm-resources.json",
+    "path": "$.specPoints[14].officialText",
+    "hits": 3,
+    "hitsDetail": [
+     "1⁄",
+     "1⁄",
+     "o⁄"
+    ],
+    "len": 144,
+    "full": "Integration of eᵏˣ1⁄, xn,sinkx,co s kx and their sums and differences.: • T n of standard functions such as sin3x, xoin1⁄, 2cludeintegratio⁄x e⁵",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/ugm-resources.json",
+    "path": "$.specPoints[1].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "f⁄"
+    ],
+    "len": 382,
+    "full": "Definition of a function. Domain and range of functions. Composition of functions. Inverse functions and their graphs.: • The concept of a function as a one-one or many-one mapping from ℝ (or a subset of ℝ) to ℝ. The notation f : x and f(x) will be used. Students should know that fg w irst, then f ’. Students should know that if f⁻¹ illmean‘dogf⁄exists,then f⁻¹f(x) = ff⁻¹(x) = x.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/ugm-resources.json",
+    "path": "$.specPoints[3].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "e⁄"
+    ],
+    "len": 353,
+    "full": "Combinations of the transformations y = f(x) as represented by y = af(x), y = f(x) + a, y = f(x + a), y = f(ax). onometry: • Students should be able to sketch the graph of, for example, y = 2f(3x), y = f(−x) + 1, given the graph of y = f(x) graph of, for example, y = 3 + sin 2x, y = − cos πor the⁄4 . x+ The graph of y = f(ax + b) will not be required.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/ugm-resources.json",
+    "path": "$.specPoints[5].officialText",
+    "hits": 3,
+    "hitsDetail": [
+     "d⁄",
+     "f⁄",
+     "2⁄"
+    ],
+    "len": 58,
+    "full": "Kn sec² owledgeand⁄θ2=1+tan useof⁄θ2and cosec 2⁄θ=1+cot θ.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/ugm-resources.json",
+    "path": "$.specPoints[6].officialText",
+    "hits": 2,
+    "hitsDetail": [
+     "o⁄",
+     "1⁄"
+    ],
+    "len": 494,
+    "full": "Knowledge and use of double angle formulae; use of formulae for sin (A ± B), cos (A ± B) and tan (A ± B) and of expressions for a cos θ + b sin θ in the equivalent forms of r cos (θ ± a) or r sin (θ ± a). onential and logarithms: • To inc n to half angles. Knowledge of the t (tan ludeapplicatio⁄2θ)formulaew ill not be required. Students should be 1⁄osolveequation able t s such as a cos θ + b sin θ = c in a given interval, and to prove identities such as cos x cos 2x + sin x sin 2x ≡ cos x.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-3/ugm-resources.json",
+    "path": "$.specPoints[8].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "x⁄"
+    ],
+    "len": 147,
+    "full": "The function ln x and its gr as the inverse function of eˣaph;lnx⁄.: • Solution of equations of the form eᵃˣ⁺ᵇ = p and ln (ax + b) = q is expected.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-4/curriculum.json",
+    "path": "$.nodes[12].title",
+    "hits": 1,
+    "hitsDetail": [
+     "o⁄"
+    ],
+    "len": 207,
+    "full": "Binomial Series for any rational n. erentiation: • For | x | < uld be able to obtain the expansion ab,studentssho⁄n,andtheexpa of (ax + b) nsion of rational functions by decomposition into partial fractions.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-4/curriculum.json",
+    "path": "$.nodes[20].title",
+    "hits": 2,
+    "hitsDetail": [
+     "o⁄",
+     "a⁄"
+    ],
+    "len": 431,
+    "full": "Simple cases of integration by substitution and integration by parts. Understand these methods as the reverse processes of the chain and product rules respectively.: • Students will be expected to use a substitution to find, e.g. ∫x x−2dx The substitution will be given in more complicated integrals. The integral ∫lnxdx is required. More than one application o y be required, for example, ∫x²eˣfintegratio⁄dx,∫eˣnbypartsma⁄sinxdx.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-4/curriculum.json",
+    "path": "$.nodes[6].title",
+    "hits": 1,
+    "hitsDetail": [
+     "s⁄"
+    ],
+    "len": 480,
+    "full": "Decompose rational functions into partial fractions (denominators not more complicated than repeated linear terms). rdinate geometry in the (x, y) plane: • Partial fractions to include denominators su (ax + b)(cx + d)(ex + f) and (ax + b)(cx + d)²chas⁄. The degree of the numerator may equal or exceed the degree of the denominator. Applications to integration, differentiation and series expansions. Quadratic factors in the denominator such as (x² + a), a > 0, are not required.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-4/ugm-resources.json",
+    "path": "$.specPoints[1].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "s⁄"
+    ],
+    "len": 480,
+    "full": "Decompose rational functions into partial fractions (denominators not more complicated than repeated linear terms). rdinate geometry in the (x, y) plane: • Partial fractions to include denominators su (ax + b)(cx + d)(ex + f) and (ax + b)(cx + d)²chas⁄. The degree of the numerator may equal or exceed the degree of the denominator. Applications to integration, differentiation and series expansions. Quadratic factors in the denominator such as (x² + a), a > 0, are not required.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-4/ugm-resources.json",
+    "path": "$.specPoints[3].officialText",
+    "hits": 1,
+    "hitsDetail": [
+     "o⁄"
+    ],
+    "len": 207,
+    "full": "Binomial Series for any rational n. erentiation: • For | x | < uld be able to obtain the expansion ab,studentssho⁄n,andtheexpa of (ax + b) nsion of rational functions by decomposition into partial fractions.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-pure-4/ugm-resources.json",
+    "path": "$.specPoints[7].officialText",
+    "hits": 2,
+    "hitsDetail": [
+     "o⁄",
+     "a⁄"
+    ],
+    "len": 431,
+    "full": "Simple cases of integration by substitution and integration by parts. Understand these methods as the reverse processes of the chain and product rules respectively.: • Students will be expected to use a substitution to find, e.g. ∫x x−2dx The substitution will be given in more complicated integrals. The integral ∫lnxdx is required. More than one application o y be required, for example, ∫x²eˣfintegratio⁄dx,∫eˣnbypartsma⁄sinxdx.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-statistics-1/curriculum.json",
+    "path": "$.nodes[25].title",
+    "hits": 1,
+    "hitsDetail": [
+     "⁄V"
+    ],
+    "len": 173,
+    "full": "Mean and variance of a discrete random variable.: • Use of E(X), E(X²) for calculating the variance of X. Knowledge and use of E(aX + b) = aE( Var(aX + b) = a² X)+b,⁄Var(X).",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/content/ial-physics-19/curriculum.json",
+    "path": "$.nodes[51].title",
+    "hits": 1,
+    "hitsDetail": [
+     "c⁄"
+    ],
+    "len": 122,
+    "full": "know and understand that at the interface between medium 1 and medium 2 n₁sin θ₁= n₂sin θ₂ where refractive index is n=c⁄v",
+    "verdict": "legit fraction c⁄v (n = c/v refractive index) — reads clean"
+   },
+   {
+    "file": "apps/hub/spines/ial-further-maths-18-further-pure-1.json",
+    "path": "$.curriculum.nodes[11].title",
+    "hits": 2,
+    "hitsDetail": [
+     "x⁄",
+     "e⁄"
+    ],
+    "len": 144,
+    "full": "Sum of roots and product of roots of a quadratic equation.: • For the equatio 2 roots are α and β, bnax +bx⁄a ,αβ= ac+c=0,whose⁄. then α + β = −",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-further-maths-18-further-pure-1.json",
+    "path": "$.curriculum.nodes[38].title",
+    "hits": 4,
+    "hitsDetail": [
+     "s⁄",
+     "d⁄",
+     "m⁄",
+     "n⁄"
+    ],
+    "len": 158,
+    "full": "Summation of simple finite series.: • S series such as ntudents⁄∑r,∑ₙshould⁄r2,∑ beabletosum⁄r(r2+2). n⁄r=1 r=1 r=1 The method of differences is not required.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-further-maths-18-further-pure-1.json",
+    "path": "$.curriculum.nodes[8].title",
+    "hits": 3,
+    "hitsDetail": [
+     "o⁄",
+     "f⁄",
+     "0⁄"
+    ],
+    "len": 346,
+    "full": "Finding conjugate complex roots and/or real roots of a quartic equation with real coefficients.: • For example, (i) f(x) = x⁴ − x³ − 5x² + 7x + 10 Given that x = 2 + i is a root of f(x) = 0, use algebra to find the three oth (ii) g(x) = x⁴ erroo⁄−x³ tsoff⁄+6x² (x)=0⁄+14x−20 Given g(1) = 0 and g(−2) = 0, use algebra to solve g(x) = 0 completely.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-mechanics-2.json",
+    "path": "$.curriculum.nodes[6].title",
+    "hits": 2,
+    "hitsDetail": [
+     "3⁄",
+     "t⁄"
+    ],
+    "len": 146,
+    "full": "Differentiation and integration of a vector with respect to time. tres of mass: • For 2exa 3⁄i+tmple,giventhat⁄2j,findr and r=t r at a given time.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-1.json",
+    "path": "$.curriculum.nodes[10].title",
+    "hits": 1,
+    "hitsDetail": [
+     "d⁄"
+    ],
+    "len": 216,
+    "full": "Represent linear and quadratic inequalities graphically.: • Represent ratic inequalities such as y > x + r and y > ax² linearandquad⁄+bx+cgraph ically. Shading and use of dotted and solid line convention is required.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-1.json",
+    "path": "$.curriculum.nodes[12].title",
+    "hits": 2,
+    "hitsDetail": [
+     "t⁄",
+     "f⁄"
+    ],
+    "len": 248,
+    "full": "Algebraic manipulation of polynomials, including expanding brackets and collecting like terms, factorisation.: • Students should be able to use bracke polynomials of degree n, n 3, e.g. x³ ts.Fact⁄+4x² orisationof⁄+3x.The notation f(x) may be used.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-1.json",
+    "path": "$.curriculum.nodes[13].title",
+    "hits": 2,
+    "hitsDetail": [
+     "k⁄",
+     "⁄e"
+    ],
+    "len": 373,
+    "full": "Graphs of functions; sketching curves defined by simple equations. Geometrical interpretation of algebraic solution of equations. Use of intersection points of graphs of functions to solve equations.: • Functions to include simple cubic functions and the reciprocal functions y = xk andy= k⁄wledgeofthx2 withx≠0.⁄etermasympt Kno ote is expected. Also, trigonometric graphs.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-1.json",
+    "path": "$.curriculum.nodes[17].title",
+    "hits": 1,
+    "hitsDetail": [
+     "h⁄"
+    ],
+    "len": 364,
+    "full": "Equation of a straight line, including the forms y − y₁ = m(x − x₁) and ax + by + c = 0.: • To include: (i) the equation of a line through two given points (ii) the equation of a line parallel (or perpendicular) to a given line through a given point. For example, the line perpendicular to the line 3x + 4y e point (2, 3) has equation y − 3 = 4=18throughth⁄3(x−2).",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-1.json",
+    "path": "$.curriculum.nodes[21].title",
+    "hits": 1,
+    "hitsDetail": [
+     "l⁄"
+    ],
+    "len": 125,
+    "full": "The sine and cosine rules, and the a e in the form 1reaofatriangl⁄2 absinC.: • Including the ambiguous case of the sine rule.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-1.json",
+    "path": "$.curriculum.nodes[23].title",
+    "hits": 1,
+    "hitsDetail": [
+     "⁄6"
+    ],
+    "len": 185,
+    "full": "Sine, cosine and tangent functions. Their graphs, symmetries and periodicity.: • Knowledge of graphs of curves with equations such as y = 3 sin x, y = sin x+π⁄6, y = sin 2x is expected.",
+    "verdict": "legit fraction π⁄6 — spine mirror"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-1.json",
+    "path": "$.curriculum.nodes[26].title",
+    "hits": 1,
+    "hitsDetail": [
+     "f⁄"
+    ],
+    "len": 360,
+    "full": "The derivative of f(x) as the gradient of the tangent to the graph of y = f(x) at a point; the gradient of the tangent as a limit; interpretation as a rate of change; second order derivatives.: • d For example, knowledge that change of y dxy istherateof⁄thechainrule with respect to x. Knowledge of is not required. The notation f ′(x) and f ′′(x) may be used.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-1.json",
+    "path": "$.curriculum.nodes[27].title",
+    "hits": 1,
+    "hitsDetail": [
+     "n⁄"
+    ],
+    "len": 173,
+    "full": "Differentiation of xⁿ, and related sums, differences and constant multiples.: • The ability to differe s such as x²ntiateexpression⁄+5x−3isex (2x + 5)(x − 1) and pected. 3 x",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-1.json",
+    "path": "$.curriculum.nodes[32].title",
+    "hits": 2,
+    "hitsDetail": [
+     "x⁄",
+     "⁄x"
+    ],
+    "len": 348,
+    "full": "Integration of xⁿ and related sums, differences and constant multiples.: • (Excluding n = −1 and related sums, differences and multiples). For exam pressions such as ple,theabilit2⁄2andytointegrateex⁄isexpected. ¹x²−3x⁻1 (x+2)⁄x 2 Given f ′(x) and a point on the curve, students should be able to find an equation of the curve in the form y = f(x).",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-1.json",
+    "path": "$.curriculum.nodes[6].title",
+    "hits": 2,
+    "hitsDetail": [
+     "a⁄",
+     "e⁄"
+    ],
+    "len": 99,
+    "full": "The discriminant of a quadratic function.: • b² Needtoknowa⁄−4ac>0,b² ndtouse⁄−4ac=0andb² − 4ac < 0",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-2.json",
+    "path": "$.curriculum.nodes[11].title",
+    "hits": 3,
+    "hitsDetail": [
+     "a⁄",
+     "l⁄",
+     "e⁄"
+    ],
+    "len": 458,
+    "full": "Coordinate geometry of the circle using the eq form (x − a)² uationofa⁄e+of(yth−ebfo)l² circl⁄l=owri² einthe⁄nagnd including us circle properties: • (i) the angle in a semicircle is a right angle; (ii) the perpendicular from the centre to a chord bisects the chord; (iii) the perpendicularity of radius and tangent. • Students should be able to find the radius and the coordinates of the centre of the circle, given the equation of the circle and vice versa.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-2.json",
+    "path": "$.curriculum.nodes[23].title",
+    "hits": 1,
+    "hitsDetail": [
+     "i⁄"
+    ],
+    "len": 92,
+    "full": "The so ons of the form aˣ lutionofequati⁄=b.: • Students may use the change of base formula.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-2.json",
+    "path": "$.curriculum.nodes[34].title",
+    "hits": 1,
+    "hitsDetail": [
+     "n⁄"
+    ],
+    "len": 388,
+    "full": "Interpretation of the definite integral as the area under a curve.: • Students will be expected to be able to evaluate the area of a region bounded by a curve and given straight lines. For exam ite area bounded by the curve y = 6x − x² ple,findthefin⁄andtheliney = 2x. ∫xdy will not be required. Students will be expected to be able to evaluate the area of a region bounded by two curves.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-2.json",
+    "path": "$.curriculum.nodes[5].title",
+    "hits": 1,
+    "hitsDetail": [
+     "n⁄"
+    ],
+    "len": 159,
+    "full": "Disproof by counter example. bra and functions: • Di ter example – show that the statement “n² sproofbycoun⁄−n+1isaprime number for all values of n” is untrue.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-2.json",
+    "path": "$.curriculum.nodes[8].title",
+    "hits": 1,
+    "hitsDetail": [
+     "⁄a"
+    ],
+    "len": 525,
+    "full": "Simple algebraic division; use of the Factor Theorem and the Remainder Theorem. rdinate geometry in the (x, y) plane: • Only division by (ax + b) or (ax – b) will be req buired,e.g.⁄a, students should know that if f(x) = 0 when x = then (ax – b) is a factor of f(x). Students may be required to factorise cubic expressions such as x³ + 3x² − 4 and 6x³ + 11x² − x − 6. Students should be familiar with the terms ‘quotient’ and ‘remainder’ and be able to determine the remainder when the polynomial f(x) is divided by (ax + b).",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-3.json",
+    "path": "$.curriculum.nodes[10].title",
+    "hits": 3,
+    "hitsDetail": [
+     "d⁄",
+     "f⁄",
+     "2⁄"
+    ],
+    "len": 58,
+    "full": "Kn sec² owledgeand⁄θ2=1+tan useof⁄θ2and cosec 2⁄θ=1+cot θ.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-3.json",
+    "path": "$.curriculum.nodes[11].title",
+    "hits": 2,
+    "hitsDetail": [
+     "o⁄",
+     "1⁄"
+    ],
+    "len": 494,
+    "full": "Knowledge and use of double angle formulae; use of formulae for sin (A ± B), cos (A ± B) and tan (A ± B) and of expressions for a cos θ + b sin θ in the equivalent forms of r cos (θ ± a) or r sin (θ ± a). onential and logarithms: • To inc n to half angles. Knowledge of the t (tan ludeapplicatio⁄2θ)formulaew ill not be required. Students should be 1⁄osolveequation able t s such as a cos θ + b sin θ = c in a given interval, and to prove identities such as cos x cos 2x + sin x sin 2x ≡ cos x.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-3.json",
+    "path": "$.curriculum.nodes[15].title",
+    "hits": 1,
+    "hitsDetail": [
+     "x⁄"
+    ],
+    "len": 147,
+    "full": "The function ln x and its gr as the inverse function of eˣaph;lnx⁄.: • Solution of equations of the form eᵃˣ⁺ᵇ = p and ln (ax + b) = q is expected.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-3.json",
+    "path": "$.curriculum.nodes[20].title",
+    "hits": 2,
+    "hitsDetail": [
+     "x⁄",
+     "s⁄"
+    ],
+    "len": 313,
+    "full": "Differentiation using the product rule, the quotient rule and the chain rule.: • Differentiation of cosecx, cotx and secx are required. Skill will be expected in the differentiation of functions generated from standard functions using products, quotients and comp eo3x⁄xsition,suchas⁄,cosx2andta 2x⁴ sin x, n² 2x.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-3.json",
+    "path": "$.curriculum.nodes[25].title",
+    "hits": 3,
+    "hitsDetail": [
+     "1⁄",
+     "1⁄",
+     "o⁄"
+    ],
+    "len": 144,
+    "full": "Integration of eᵏˣ1⁄, xn,sinkx,co s kx and their sums and differences.: • T n of standard functions such as sin3x, xoin1⁄, 2cludeintegratio⁄x e⁵",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-3.json",
+    "path": "$.curriculum.nodes[4].title",
+    "hits": 1,
+    "hitsDetail": [
+     "f⁄"
+    ],
+    "len": 382,
+    "full": "Definition of a function. Domain and range of functions. Composition of functions. Inverse functions and their graphs.: • The concept of a function as a one-one or many-one mapping from ℝ (or a subset of ℝ) to ℝ. The notation f : x and f(x) will be used. Students should know that fg w irst, then f ’. Students should know that if f⁻¹ illmean‘dogf⁄exists,then f⁻¹f(x) = ff⁻¹(x) = x.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-3.json",
+    "path": "$.curriculum.nodes[6].title",
+    "hits": 1,
+    "hitsDetail": [
+     "e⁄"
+    ],
+    "len": 352,
+    "full": "Combinations of the transformations y = f(x) as represented by y = af(x), y = f(x) + a, y = f(x + a), y = f(ax). onometry: • Students should be able to sketch the graph of, for example, y = 2f(3x), y = f(−x) + 1, given the graph of y = f(x) graph of, for example, y = 3 + sin 2x, y = − cos πorthe⁄4 . x+ The graph of y = f(ax + b) will not be required.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-4.json",
+    "path": "$.curriculum.nodes[12].title",
+    "hits": 1,
+    "hitsDetail": [
+     "o⁄"
+    ],
+    "len": 207,
+    "full": "Binomial Series for any rational n. erentiation: • For | x | < uld be able to obtain the expansion ab,studentssho⁄n,andtheexpa of (ax + b) nsion of rational functions by decomposition into partial fractions.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-4.json",
+    "path": "$.curriculum.nodes[20].title",
+    "hits": 2,
+    "hitsDetail": [
+     "o⁄",
+     "a⁄"
+    ],
+    "len": 431,
+    "full": "Simple cases of integration by substitution and integration by parts. Understand these methods as the reverse processes of the chain and product rules respectively.: • Students will be expected to use a substitution to find, e.g. ∫x x−2dx The substitution will be given in more complicated integrals. The integral ∫lnxdx is required. More than one application o y be required, for example, ∫x²eˣfintegratio⁄dx,∫eˣnbypartsma⁄sinxdx.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-pure-4.json",
+    "path": "$.curriculum.nodes[6].title",
+    "hits": 1,
+    "hitsDetail": [
+     "s⁄"
+    ],
+    "len": 480,
+    "full": "Decompose rational functions into partial fractions (denominators not more complicated than repeated linear terms). rdinate geometry in the (x, y) plane: • Partial fractions to include denominators su (ax + b)(cx + d)(ex + f) and (ax + b)(cx + d)²chas⁄. The degree of the numerator may equal or exceed the degree of the denominator. Applications to integration, differentiation and series expansions. Quadratic factors in the denominator such as (x² + a), a > 0, are not required.",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-maths-20-statistics-1.json",
+    "path": "$.curriculum.nodes[25].title",
+    "hits": 1,
+    "hitsDetail": [
+     "⁄V"
+    ],
+    "len": 173,
+    "full": "Mean and variance of a discrete random variable.: • Use of E(X), E(X²) for calculating the variance of X. Knowledge and use of E(aX + b) = aE( Var(aX + b) = a² X)+b,⁄Var(X).",
+    "verdict": "interleaved-runs candidate — un-zipper pending official-spec attestation (apply run)"
+   },
+   {
+    "file": "apps/hub/spines/ial-physics-19.json",
+    "path": "$.curriculum.nodes[51].title",
+    "hits": 1,
+    "hitsDetail": [
+     "c⁄"
+    ],
+    "len": 122,
+    "full": "know and understand that at the interface between medium 1 and medium 2 n₁sin θ₁= n₂sin θ₂ where refractive index is n=c⁄v",
+    "verdict": "legit fraction c⁄v — spine mirror"
+   }
+  ]
+ },
+ "R2_of_record": {
+  "R2a_corrupt_brace_of_record": {
+   "uniques": 4,
+   "occurrences": 6,
+   "freshPresence": "all 4 uniques present in the fresh failing set (2x V_{o u t} \\frac sigs = 4 occ; R_{2 = 1 occ; \\lambda_{m a x} 1 occ)",
+   "segs": [
+    "$V_{o u t} = ( \\frac{R_{1}{R_{1} + R_{2} } ) V_{i} n}$",
+    "$V_{o u t} = ( \\frac{R_{2 + R_{3} }{R_{1} + R_{2} + R_{3} } ) V_{i} n}$",
+    "$\\lambda_{m a x} = \\frac{( 6.63 \\times 10^{- 34} ) ( 3.0 \\times 10^{8 )}{( 80 \\times 10^{3} ) ( 1.6 \\times 10^{-19} } )}$",
+    "$R_{2 = ( \\frac{R_{1} \\times V_{i} n} }{V_{o u t} } ) - R_{1}$"
+   ]
+  },
+  "R2b_V_in_spaced": {
+   "total": 17,
+   "ofRecord": 17,
+   "match": true
+  },
+  "R2c_spacecraf": {
+   "file": "apps/hub/content/ial-physics-19/questions.json",
+   "path": "$[43].questions[0].parts[0].solutionMd",
+   "note": "render-OK (balanced braces) — structurally corrupt: letter-spaced English 'M o m e n t u m a f t e r' / 's p a c e c r a f t' / 'a s t e r o i d' inside math + m_{s}pacecraft brace-break; fresh presence verified in the segment dump"
+  }
+ },
+ "R3a_subfloor_siblings": {
+  "items": [
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/notes.json",
+    "path": "$[81].bodyMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/notes.json",
+    "path": "$[81].bodyMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[11].questions[2].parts[0].choices[1].textMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[11].questions[2].parts[0].choices[2].textMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[11].questions[2].parts[0].choices[3].textMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[11].questions[2].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[11].questions[32].parts[0].solutionMd",
+    "hit": "_{a v}",
+    "content": "a v",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — in-file joined twin F_{av} adjacent to F_{a v} (cie-a-level $[32] / cie-as $[22])"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[11].questions[32].parts[0].solutionMd",
+    "hit": "_{a v}",
+    "content": "a v",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — in-file joined twin F_{av} adjacent to F_{a v} (cie-a-level $[32] / cie-as $[22])"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[15].questions[8].parts[0].solutionMd",
+    "hit": "_{e m}",
+    "content": "e m",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — in-file joined twin A^{2}_{em} adjacent to A^{2}_{e m}"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[29].questions[4].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[29].questions[8].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[29].questions[8].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[29].questions[8].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[63].questions[2].parts[1].problemMd",
+    "hit": "_{I N}",
+    "content": "I N",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — in-file HTML twin <sub>IN</sub> adjacent to V_{I N}"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[71].questions[5].parts[1].solutionMd",
+    "hit": "_{b m}",
+    "content": "b m",
+    "cls": "dollar",
+    "verdict": "KEEP fail-closed — no dict word ('bm'), no in-file joined twin (mu_{b}/x_{b}/mu_{m} are single-letter labels) — E_{k a f t e r} keep-family"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[71].questions[5].parts[1].solutionMd",
+    "hit": "_{b m}",
+    "content": "b m",
+    "cls": "dollar",
+    "verdict": "KEEP fail-closed — no dict word ('bm'), no in-file joined twin (mu_{b}/x_{b}/mu_{m} are single-letter labels) — E_{k a f t e r} keep-family"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[81].questions[7].parts[1].solutionMd",
+    "hit": "_{B C}",
+    "content": "B C",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; in-file twin T_{BC}=2... — per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[83].questions[3].parts[2].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[83].questions[3].parts[2].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[83].questions[3].parts[2].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[83].questions[3].parts[2].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[83].questions[3].parts[3].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[83].questions[3].parts[3].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[83].questions[3].parts[3].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[83].questions[3].parts[3].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[88].questions[6].parts[2].solutionMd",
+    "hit": "_{p i}",
+    "content": "p i",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'pi' (label = pebble-initial); semantic consistent in-file (v_{b + p i})"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[88].questions[6].parts[2].solutionMd",
+    "hit": "_{p i}",
+    "content": "p i",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'pi' (label = pebble-initial); semantic consistent in-file (v_{b + p i})"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[105].questions[5].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "backtick",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "path": "$[105].questions[5].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "backtick",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/notes.json",
+    "path": "$[81].bodyMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/notes.json",
+    "path": "$[81].bodyMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[13].questions[7].parts[1].solutionMd",
+    "hit": "_{B C}",
+    "content": "B C",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; in-file twin T_{BC}=2... — per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[15].questions[3].parts[2].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[15].questions[3].parts[2].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[15].questions[3].parts[2].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[15].questions[3].parts[2].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[15].questions[3].parts[3].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[15].questions[3].parts[3].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[15].questions[3].parts[3].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[15].questions[3].parts[3].solutionMd",
+    "hit": "_{A l}",
+    "content": "A l",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — element symbol Al corpus-attested joined x1,724 (Al2O3 x56) — label join loses no bytes"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[22].questions[2].parts[0].choices[1].textMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[22].questions[2].parts[0].choices[2].textMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[22].questions[2].parts[0].choices[3].textMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[22].questions[2].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[22].questions[32].parts[0].solutionMd",
+    "hit": "_{a v}",
+    "content": "a v",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — in-file joined twin F_{av} adjacent to F_{a v} (cie-a-level $[32] / cie-as $[22])"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[22].questions[32].parts[0].solutionMd",
+    "hit": "_{a v}",
+    "content": "a v",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — in-file joined twin F_{av} adjacent to F_{a v} (cie-a-level $[32] / cie-as $[22])"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[25].questions[6].parts[2].solutionMd",
+    "hit": "_{p i}",
+    "content": "p i",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'pi' (label = pebble-initial); semantic consistent in-file (v_{b + p i})"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[25].questions[6].parts[2].solutionMd",
+    "hit": "_{p i}",
+    "content": "p i",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'pi' (label = pebble-initial); semantic consistent in-file (v_{b + p i})"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[30].questions[8].parts[0].solutionMd",
+    "hit": "_{e m}",
+    "content": "e m",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — in-file joined twin A^{2}_{em} adjacent to A^{2}_{e m}"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[56].questions[4].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[56].questions[8].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[56].questions[8].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[56].questions[8].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[59].questions[4].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "backtick",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[59].questions[5].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "backtick",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-as-physics-25/questions.json",
+    "path": "$[59].questions[5].parts[0].solutionMd",
+    "hit": "_{i n}",
+    "content": "i n",
+    "cls": "backtick",
+    "verdict": "FIRE-candidate — dict word 'in' + in-file joined twins (V_{out} joined everywhere; <sub>in</sub> HTML twins; F_{av} twin pattern) — of-record family (V_{i n} x17 grounding exact)"
+   },
+   {
+    "file": "apps/hub/content/cie-igcse-further-maths-additional-maths-25/questions.json",
+    "path": "$[9].questions[4].parts[0].solutionMd",
+    "hit": "_{C P}",
+    "content": "C P",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — in-file prose twin $CP$ (radius CP) adjacent to m_{C P}"
+   },
+   {
+    "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "path": "$[13].questions[15].parts[0].solutionMd",
+    "hit": "_{P R}",
+    "content": "P R",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "path": "$[16].questions[12].parts[1].solutionMd",
+    "hit": "_{P Q}",
+    "content": "P Q",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+    "path": "$[14].questions[15].parts[0].solutionMd",
+    "hit": "_{P R}",
+    "content": "P R",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+    "path": "$[16].questions[11].parts[1].solutionMd",
+    "hit": "_{P Q}",
+    "content": "P Q",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/cie-igcse-physics-23/questions.json",
+    "path": "$[33].questions[13].parts[0].solutionMd",
+    "hit": "_{A B}",
+    "content": "A B",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; in-file joined twins present (t_{AB}=1.32s pattern) — per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/cie-igcse-physics-23/questions.json",
+    "path": "$[33].questions[13].parts[0].solutionMd",
+    "hit": "_{A B}",
+    "content": "A B",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; in-file joined twins present (t_{AB}=1.32s pattern) — per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-statistics-1/flashcards.json",
+    "path": "$[18].front",
+    "hit": "_{x x}",
+    "content": "x x",
+    "cls": "backtick",
+    "verdict": "FIRE-candidate — statistics S_{xx} formula-booklet notation; backtick occurrences KEEP (protected 23a class); per-site check at apply"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-statistics-1/notes.json",
+    "path": "$[1].bodyMd",
+    "hit": "_{y y}",
+    "content": "y y",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — statistics S_{yy}; per-site check at apply"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-statistics-1/questions.json",
+    "path": "$[0].questions[5].parts[0].problemMd",
+    "hit": "_{x x}",
+    "content": "x x",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — statistics S_{xx} formula-booklet notation; backtick occurrences KEEP (protected 23a class); per-site check at apply"
+   },
+   {
+    "file": "apps/hub/content/ial-maths-20-statistics-1/questions.json",
+    "path": "$[0].questions[6].parts[0].problemMd",
+    "hit": "_{h h}",
+    "content": "h h",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — statistics S_{hh}; per-site check at apply"
+   },
+   {
+    "file": "apps/hub/content/ial-physics-19/questions.json",
+    "path": "$[9].questions[1].parts[1].solutionMd",
+    "hit": "_{A B}",
+    "content": "A B",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; in-file joined twins present (t_{AB}=1.32s pattern) — per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/ial-physics-19/questions.json",
+    "path": "$[10].questions[1].parts[1].solutionMd",
+    "hit": "_{e l}",
+    "content": "e l",
+    "cls": "dollar",
+    "verdict": "KEEP fail-closed — no dict word ('el'), no in-file joined twin — E_{k a f t e r} keep-family"
+   },
+   {
+    "file": "apps/hub/content/ial-physics-19/questions.json",
+    "path": "$[40].questions[5].parts[2].solutionMd",
+    "hit": "_{C X}",
+    "content": "C X",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label (V_{CX} potential at C due to X); per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/ial-physics-19/questions.json",
+    "path": "$[40].questions[5].parts[2].solutionMd",
+    "hit": "_{C Y}",
+    "content": "C Y",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/ial-physics-19/questions.json",
+    "path": "$[40].questions[5].parts[2].solutionMd",
+    "hit": "_{D X}",
+    "content": "D X",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/ial-physics-19/questions.json",
+    "path": "$[40].questions[5].parts[2].solutionMd",
+    "hit": "_{D Y}",
+    "content": "D Y",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/ial-physics-19/questions.json",
+    "path": "$[40].questions[5].parts[2].solutionMd",
+    "hit": "_{C D}",
+    "content": "C D",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "path": "$[28].questions[20].parts[1].solutionMd",
+    "hit": "_{A C}",
+    "content": "A C",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "path": "$[28].questions[24].parts[0].solutionMd",
+    "hit": "_{P R}",
+    "content": "P R",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "path": "$[34].questions[57].parts[0].solutionMd",
+    "hit": "_{B C}",
+    "content": "B C",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; in-file twin T_{BC}=2... — per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "path": "$[34].questions[59].parts[0].solutionMd",
+    "hit": "_{A B}",
+    "content": "A B",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; in-file joined twins present (t_{AB}=1.32s pattern) — per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "path": "$[34].questions[59].parts[0].solutionMd",
+    "hit": "_{C M}",
+    "content": "C M",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label (midpoint CM); per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "path": "$[40].questions[31].parts[0].solutionMd",
+    "hit": "_{S C}",
+    "content": "S C",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — sector label (area of semi-circle A_{SC}); per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "path": "$[40].questions[42].parts[0].solutionMd",
+    "hit": "_{S C}",
+    "content": "S C",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — sector label (area of semi-circle A_{SC}); per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "path": "$[40].questions[49].parts[0].solutionMd",
+    "hit": "_{S C}",
+    "content": "S C",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — sector label (area of semi-circle A_{SC}); per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "path": "$[44].questions[51].parts[0].solutionMd",
+    "hit": "_{P Q}",
+    "content": "P Q",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "path": "$[44].questions[51].parts[0].solutionMd",
+    "hit": "_{A B}",
+    "content": "A B",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; in-file joined twins present (t_{AB}=1.32s pattern) — per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "path": "$[44].questions[51].parts[0].solutionMd",
+    "hit": "_{P Q}",
+    "content": "P Q",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "path": "$[44].questions[51].parts[0].solutionMd",
+    "hit": "_{A B}",
+    "content": "A B",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; in-file joined twins present (t_{AB}=1.32s pattern) — per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+    "path": "$[9].questions[7].parts[0].solutionMd",
+    "hit": "_{P R}",
+    "content": "P R",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+    "path": "$[9].questions[26].parts[1].solutionMd",
+    "hit": "_{A C}",
+    "content": "A C",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+    "path": "$[11].questions[54].parts[0].solutionMd",
+    "hit": "_{B C}",
+    "content": "B C",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; in-file twin T_{BC}=2... — per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+    "path": "$[11].questions[56].parts[0].solutionMd",
+    "hit": "_{A B}",
+    "content": "A B",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; in-file joined twins present (t_{AB}=1.32s pattern) — per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+    "path": "$[11].questions[56].parts[0].solutionMd",
+    "hit": "_{C M}",
+    "content": "C M",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label (midpoint CM); per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+    "path": "$[22].questions[10].parts[0].solutionMd",
+    "hit": "_{S C}",
+    "content": "S C",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — sector label (area of semi-circle A_{SC}); per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+    "path": "$[22].questions[24].parts[0].solutionMd",
+    "hit": "_{S C}",
+    "content": "S C",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — sector label (area of semi-circle A_{SC}); per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+    "path": "$[22].questions[47].parts[0].solutionMd",
+    "hit": "_{S C}",
+    "content": "S C",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — sector label (area of semi-circle A_{SC}); per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+    "path": "$[23].questions[15].parts[0].solutionMd",
+    "hit": "_{P Q}",
+    "content": "P Q",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+    "path": "$[23].questions[15].parts[0].solutionMd",
+    "hit": "_{A B}",
+    "content": "A B",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; in-file joined twins present (t_{AB}=1.32s pattern) — per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+    "path": "$[23].questions[15].parts[0].solutionMd",
+    "hit": "_{P Q}",
+    "content": "P Q",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; per-site twin check at apply"
+   },
+   {
+    "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+    "path": "$[23].questions[15].parts[0].solutionMd",
+    "hit": "_{A B}",
+    "content": "A B",
+    "cls": "dollar",
+    "verdict": "FIRE-candidate — point-pair label; in-file joined twins present (t_{AB}=1.32s pattern) — per-site twin check at apply"
+   }
+  ],
+  "fireCandidates": 95,
+  "keeps": 3
+ },
+ "R3b_paren_brace_swap": {
+  "uniques": 26,
+  "occ": 28,
+  "items": [
+   {
+    "seg": "$P = \\frac{( 5.0 \\times 10^{4 ) \\times ( 6.6 \\times 10^{-27} } ) \\times ( 1.5 \\times 10^{7 )}{1 \\times 10^{-4} } }$",
+    "count": 2,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "apps/hub/content/cie-as-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$E = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{78900 \\times 10^{-6} } }$",
+    "count": 2,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "apps/hub/content/cie-as-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$g_{0} = \\frac{( 6.67 \\times 10^{- 11} ) \\times ( 5.97 \\times 10^{24 )}{( 6370 \\times 10^{3} )^{2}} = 9.8134 \\mathrm{N} kg^{-1} }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/notes.json"
+    ]
+   },
+   {
+    "seg": "$g ' = \\frac{( 6.67 \\times 10^{- 11} ) \\times ( 5.97 \\times 10^{24 )}{( 6378.85 \\times 10^{3} )^{2}} = 9.7862 \\mathrm{N} kg^{-1} }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/notes.json"
+    ]
+   },
+   {
+    "seg": "$ϕ = - \\frac{( 6.67 \\times 10^{- 11} ) \\times ( 3.5 \\times 10^{23 )}{4.2 \\times 10^{6} } = - 5.6 \\times 10^{6} \\mathrm{J} kg^{-1} }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/notes.json"
+    ]
+   },
+   {
+    "seg": "$M = \\frac{( 13.8 \\times 10^{3} )^{2} \\times ( 6.709 \\times 10^{8 )}{6.67 \\times 10^{-11} } }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\frac{1}{r} _{f} = \\frac{1}{r} _{i} - \\frac{( 1.591 \\times 10^{10 )}{( 6.67 \\times 10^{-11} } ) ( 5.97 \\times 10^{24} ) ( 1720 )}$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$r = \\frac{( 9.11 \\times 10^{- 31} ) \\times ( 3.0 \\times 10^{6 )}{( 3.2 \\times 10^{-3} } ) \\times ( 1.60 \\times 10^{- 19} )}$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\\\lambda = \\frac{h c}{E} = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{2.848 \\times 10^{-19} } }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$E = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{2.50 \\times 10^{-12} } }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$E_{p} = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{( 400 \\times 10^{-9} } )}$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$E = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{( 590 \\times 10^{-9} } )}$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{3.0 \\times 10^{-19} } }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\\\lambda = \\frac{h c}{\\Delta E} = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{( 9.53 \\times 10^{-19} } )}$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\\\lambda = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3 \\times 10^{8 )}{( 1.6 \\times 10^{-19} } ) \\times ( 75 \\times 10^{3} )}$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\\\lambda = \\frac{2 h c}{E} = \\frac{2 \\times ( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{1.64 \\times 10^{-13} } }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\\\lambda = \\frac{2 h c}{E} = \\frac{2 \\times ( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{3.0 \\times 10^{-10} } }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$N_{0} = \\frac{14 \\times ( 3.7 \\times 10^{7 )}{1.05 \\times 10^{-4} } }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$d = \\sqrt{ \\frac{2000 \\times ( 3.8 \\times 10^{26 )}{4 \\mathrm{\\pi } \\times ( 500 \\times 10^{-9} } )} }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$d = \\sqrt{ \\frac{( 4.8 \\times 10^{29 )}{4 \\pi \\times ( 2.6 \\times 10^{-9} } )} }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$r = \\sqrt{ \\frac{( 4.8 \\times 10^{29 )}{4 \\pi \\times ( 5.67 \\times 10^{-8} } ) \\times 6700^{4} } }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$r = \\sqrt{ \\frac{33 000 \\times ( 3.83 \\times 10^{26 )}{4 \\mathrm{\\pi } \\times ( 5.67 \\times 10^{-8} } ) \\times ( 7600 )^{4} } }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\lambda_{m a x} = \\frac{( 6.63 \\times 10^{- 34} ) ( 3.0 \\times 10^{8 )}{( 80 \\times 10^{3} ) ( 1.6 \\times 10^{-19} } )}$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/cie-a-level-physics-25/questions.json"
+    ]
+   },
+   {
+    "seg": "$E = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{350 \\times 10^{-9} } }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/ial-physics-19/questions.json"
+    ]
+   },
+   {
+    "seg": "$A = \\frac{( 2.65 \\times 10^{27 )}{( 5.67 \\times 10^{-8} } ) \\times ( 6101 )^{4} }$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/ial-physics-19/questions.json"
+    ]
+   },
+   {
+    "seg": "$T = \\sqrt[4]{ \\frac{L}{\\\\sigma 4 \\pi r^{2}} } = \\sqrt[4]{ \\frac{1600 \\times ( 3.83 \\times 10^{26 )}{( 5.67 \\times 10^{-8} } ) \\times 4 \\pi \\times ( 150 \\times ( 7.0 \\times 10^{8} ) )} } = 2872 \\mathrm{K}$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/ial-physics-19/questions.json"
+    ]
+   }
+  ]
+ },
+ "R3c_gathered_amp": {
+  "uniques": 9,
+  "occ": 41,
+  "items": [
+   {
+    "seg": "$\\begin{gathered} \\sqrt{12 & = \\sqrt{4} \\times 3} \\\\ = \\sqrt{4} \\times \\sqrt{3} \\\\ = 2 \\sqrt{3} \\end{gathered}$",
+    "count": 12,
+    "files": [
+     "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\begin{gathered} \\sqrt{8 & = \\sqrt{4} \\times 2} \\\\ = \\sqrt{4} \\times \\sqrt{2} \\\\ = 2 \\sqrt{2} \\end{gathered}$",
+    "count": 8,
+    "files": [
+     "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\begin{gathered} ( x - 3 )^{2 } - 17 & = 0 \\\\ + 17 & = + 17 \\\\ ( x - 3 )^{2 } & = 17 \\\\ \\sqrt{ & = \\sqrt{ } } \\\\ x - 3^{ } & = \\pm \\sqrt{17} \\end{gathered}$",
+    "count": 6,
+    "files": [
+     "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\begin{gathered} \\sqrt{1500 & = \\sqrt{(} \\text{parentheses} 2^{2} \\times 5^{2} )} \\times \\sqrt{( 3 \\times 5 )} \\\\ = 2 \\times 5 \\times \\sqrt{15} \\\\ = 10 \\sqrt{15} \\end{gathered}$",
+    "count": 4,
+    "files": [
+     "apps/hub/content/cie-igcse-maths-25-extended/flashcards.json",
+     "apps/hub/content/cie-igcse-maths-international-maths-23-extended/flashcards.json",
+     "apps/hub/content/igcse-maths-a-18-higher/flashcards.json",
+     "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/flashcards.json"
+    ]
+   },
+   {
+    "seg": "$\\begin{gathered} \\sqrt{18 & = \\sqrt{9} \\times 2} \\\\ = \\sqrt{9} \\times \\sqrt{2} \\\\ = 3 \\sqrt{2} \\end{gathered}$",
+    "count": 4,
+    "files": [
+     "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\begin{gathered} \\sqrt{18 & = \\sqrt{9} \\times 2} \\\\ = \\sqrt{9} \\times \\sqrt{2} \\\\ = 3 \\times \\sqrt{2} \\end{gathered}$",
+    "count": 2,
+    "files": [
+     "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\begin{gathered} \\sqrt{50 & = \\sqrt{25} \\times 2} \\\\ = \\sqrt{25} \\times \\sqrt{2} \\\\ = 5 \\sqrt{2} \\end{gathered}$",
+    "count": 2,
+    "files": [
+     "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\begin{gathered} Q S & = \\sqrt{80 \\\\ Q S & = \\sqrt{16} \\times 5} \\\\ Q S & = 4 \\sqrt{5} \\end{gathered}$",
+    "count": 2,
+    "files": [
+     "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json"
+    ]
+   },
+   {
+    "seg": "$\\begin{gathered} 3 \\sqrt{2 & = \\sqrt{25} - 8 m + m^{2}} \\\\ ( 3 \\sqrt{2} )^{2} & = 25 - 8 m + m^{2} \\\\ 18 = 25 - 8 m + m^{2} \\\\ 0 = m^{2} - 8 m + 7 \\end{gathered}$",
+    "count": 1,
+    "files": [
+     "apps/hub/content/igcse-further-maths-19/notes.json"
+    ]
+   }
+  ]
+ },
+ "stays": [
+  "legit vulgar fractions (digit⁄digit x58 A-hits + the per-item legit keeps)",
+  "_{b m} x2 / _{e l} x1 (no attestation — E_{k a f t e r} keep-family)",
+  "backtick-protected 23a class (incl. `V_{o u t} = V_{i n} ...` backtick forms + S_{x x} backtick)",
+  "dict-gap 'm o v e d' (operator decision of record)",
+  "E_{k a f t e r} variants (of-record stays)",
+  "RN-DEBRIS-8 refusals walkin / reexport (unchanged)",
+  "'A l O' Al2O3-truncation refuse family (of-record, distinct from _{A l} label joins)",
+  "pseudo-span classes: currency \\$ / <tex> / set-notation / dangling-$ artifacts",
+  "undef-cmd classes: &divide; &equals; &Delta; &Sigma; \\pmb \\sumx combining-overline \\mathrm{\\left} \\text{%...} pmatrix-missing-end etc.",
+  "sinθ/sin θ mixed style (RN-DEBRIS-10 ruling — out of lane law)"
+ ]
+}

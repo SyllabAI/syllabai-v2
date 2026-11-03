@@ -67,10 +67,31 @@ function byNodeOrder(a: CurriculumNode, b: CurriculumNode): number {
   return a.code.localeCompare(b.code);
 }
 
-export function buildSpecTreeIndex(curriculum: Curriculum): SpecTreeIndex {
+/**
+ * Topic codes needing a synthetic "-gen" row so topic-level placements render.
+ * The D0 tag-backfill stamps topic-level-confident sets with `<topicCode>-gen`
+ * (see ExamQuestionTopic.subtopicCode); without this scan those codes would
+ * not exist in the tree and the sets would fall out of navigation again.
+ */
+export function generalTopicsOfQuestionTopics(
+  topics: readonly { subtopicCode?: string | null }[],
+): string[] {
+  const out = new Set<string>();
+  for (const t of topics) {
+    const c = t.subtopicCode;
+    if (c && c.endsWith("-gen")) out.add(c.slice(0, -4));
+  }
+  return [...out];
+}
+
+export function buildSpecTreeIndex(
+  curriculum: Curriculum,
+  opts?: { generalTopics?: readonly string[] },
+): SpecTreeIndex {
   const nodes = curriculum.nodes;
   const subject = nodes.find((n) => n.family === "SUBJECT");
   const topics = nodes.filter((n) => n.family === "TOPIC").sort(byNodeOrder);
+  const generalTopics = new Set(opts?.generalTopics ?? []);
 
   const tree: SpecTree = {
     subjectCode: curriculum.code,
@@ -128,7 +149,11 @@ export function buildSpecTreeIndex(curriculum: Curriculum): SpecTreeIndex {
         orphanSpecs.push(n);
       }
     }
-    if (orphanSpecs.length > 0) {
+    // D0 backfill: a topic carrying topic-level-placed sets always gets its
+    // "General requirements" row — even with no orphan spec points — so the
+    // `<topicCode>-gen` placement codes resolve (opts-in per course; other
+    // courses' trees are unchanged from the pre-option builder)
+    if (orphanSpecs.length > 0 || generalTopics.has(topic.code)) {
       const codes = orphanSpecs.sort(byNodeOrder).map((n) => n.code);
       const general: SpecSubtopic = {
         code: `${topic.code}-gen`,
@@ -188,13 +213,19 @@ export function subtopicOfNote(
   return null;
 }
 
-/** Subtopic with the most anchored questions — the set's canonical home.
- *  Corpus-native placement (topicSlug) wins; spec-anchor tally is the
- *  fallback for the official-tree pilot. */
+/**
+ * Subtopic with the most anchored questions — the set's canonical home.
+ * Importer/backfill-resolved subtopicCode wins (mirrors Flashcard), then
+ * corpus-native placement (topicSlug); spec-anchor tally is the fallback.
+ * A stale subtopicCode (map drift) fails the subtopicByCode lookup and
+ * falls through to the legacy derivation — never a wrong home. */
 export function subtopicOfQuestionSet(
   topic: ExamQuestionTopic,
   index: SpecTreeIndex,
 ): string | null {
+  if (topic.subtopicCode && index.subtopicByCode.has(topic.subtopicCode)) {
+    return topic.subtopicCode;
+  }
   if (topic.topicSlug && index.subtopicByCode.has(topic.topicSlug)) {
     return topic.topicSlug;
   }

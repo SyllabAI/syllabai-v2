@@ -1,0 +1,257 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_J6rwHvcb9zhBpJCM",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "90e0844b4ad91efac104cc367bbfbe9a2ae1c9bd7040e9cbad7263064c6f1be4",
+    "pinnedRef": "dad406f1ecd8919cbcddd4c429b20f4f1aadae24"
+  },
+  "packageId": "igcse-physics::rn_J6rwHvcb9zhBpJCM",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_J6rwHvcb9zhBpJCM::L1::Q1",
+      "moduleId": "rn_J6rwHvcb9zhBpJCM::L1",
+      "stem": "In Snell's law the ratio n = sin i / sin r is called:",
+      "misconceptionClass": "symbol recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the refractive index of the material",
+          "correct": true,
+          "explanation": "n names the material's refractive index, the fixed ratio in Snell's law.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the speed of light in the material",
+          "correct": false,
+          "explanation": "The speed is one ingredient of the ratio, not the ratio itself.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "C",
+          "text": "the number of refractions per second",
+          "correct": false,
+          "explanation": "Refraction is not counted per second; n is a speed ratio.",
+          "misconception": "quantity invention"
+        },
+        {
+          "key": "D",
+          "text": "the angle between the ray and the normal",
+          "correct": false,
+          "explanation": "Those are i and r; n is not an angle.",
+          "misconception": "symbol swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_J6rwHvcb9zhBpJCM::L1::Q2",
+      "moduleId": "rn_J6rwHvcb9zhBpJCM::L1",
+      "stem": "Light passes from a vacuum into glass. Inside the glass the light travels:",
+      "misconceptionClass": "index meaning",
+      "options": [
+        {
+          "key": "A",
+          "text": "faster than it did in the vacuum",
+          "correct": false,
+          "explanation": "No material speeds light up beyond its vacuum speed.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "B",
+          "text": "at exactly the same speed",
+          "correct": false,
+          "explanation": "The glass slows the light; that is why its refractive index exceeds 1.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "C",
+          "text": "slower than it did in the vacuum",
+          "correct": true,
+          "explanation": "The refractive index compares the vacuum speed with the slower speed inside the material.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "in bursts whose average is unpredictable",
+          "correct": false,
+          "explanation": "The slowing is steady and predictable, not burst-like.",
+          "misconception": "mechanism invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_J6rwHvcb9zhBpJCM::L1::Q3",
+      "moduleId": "rn_J6rwHvcb9zhBpJCM::L1",
+      "stem": "A ray meets a glass block of refractive index 1.53 at 15° to the normal. Given sin 15° = 0.259, the value of sin r is:",
+      "misconceptionClass": "rearrangement arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.396",
+          "correct": false,
+          "explanation": "That multiplies instead of divides: 0.259 x 1.53.",
+          "misconception": "rearrangement inversion"
+        },
+        {
+          "key": "B",
+          "text": "0.169",
+          "correct": true,
+          "explanation": "sin r = sin i / n = 0.259 / 1.53 = 0.169 (3 d.p.).",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "5.91",
+          "correct": false,
+          "explanation": "That divides the other way round: 1.53 / 0.259.",
+          "misconception": "rearrangement inversion"
+        },
+        {
+          "key": "D",
+          "text": "1.789",
+          "correct": false,
+          "explanation": "That adds the two values instead of dividing.",
+          "misconception": "operation slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_J6rwHvcb9zhBpJCM::L1::Q4",
+      "moduleId": "rn_J6rwHvcb9zhBpJCM::L1",
+      "stem": "Which statement about refractive index is correct?",
+      "misconceptionClass": "property recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is always larger than 1 and has no units.",
+          "correct": true,
+          "explanation": "A vacuum speed divided by a smaller material speed is a unitless ratio above 1.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It is always smaller than 1.",
+          "correct": false,
+          "explanation": "Light never travels faster in a material than in a vacuum, so the ratio cannot fall below 1.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "C",
+          "text": "It is measured in degrees.",
+          "correct": false,
+          "explanation": "The angles are in degrees; the index is a unitless ratio.",
+          "misconception": "unit invention"
+        },
+        {
+          "key": "D",
+          "text": "It is identical for every transparent material.",
+          "correct": false,
+          "explanation": "The index differs between materials: about 1.5 for glass, about 2.4 for diamond.",
+          "misconception": "overgeneralisation"
+        }
+      ]
+    },
+    {
+      "id": "rn_J6rwHvcb9zhBpJCM::L1::Q5",
+      "moduleId": "rn_J6rwHvcb9zhBpJCM::L1",
+      "stem": "The angle of refraction is measured between the refracted ray and:",
+      "misconceptionClass": "geometry recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the boundary surface",
+          "correct": false,
+          "explanation": "Angles in refraction are measured from the normal, not the surface.",
+          "misconception": "surface-normal swap"
+        },
+        {
+          "key": "B",
+          "text": "the incident ray",
+          "correct": false,
+          "explanation": "The incident ray defines the incidence angle, not the refraction angle.",
+          "misconception": "ray confusion"
+        },
+        {
+          "key": "C",
+          "text": "the normal",
+          "correct": true,
+          "explanation": "Both i and r are measured from the normal at the boundary.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the ray box aperture",
+          "correct": false,
+          "explanation": "Equipment plays no role in defining the angles.",
+          "misconception": "context slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_J6rwHvcb9zhBpJCM::L1::Q6",
+      "moduleId": "rn_J6rwHvcb9zhBpJCM::L1",
+      "stem": "State Snell's law as an equation and say what each symbol represents.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "n = sin i / sin r, where n is the refractive index of the material, i is the angle of incidence and r is the angle of refraction.",
+      "keywords": [
+        "refractive",
+        "index",
+        "angle",
+        "incidence",
+        "refraction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_J6rwHvcb9zhBpJCM::L1::Q7",
+      "moduleId": "rn_J6rwHvcb9zhBpJCM::L1",
+      "stem": "State two refractive index values quoted in this lesson and the materials they belong to.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "About 2.4 for diamond and about 1.5 for glass.",
+      "keywords": [
+        "2.4",
+        "diamond",
+        "1.5",
+        "glass"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_J6rwHvcb9zhBpJCM::L1::Q8",
+      "moduleId": "rn_J6rwHvcb9zhBpJCM::L1",
+      "stem": "Explain why the refractive index of a material is always greater than 1.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Light travels fastest in a vacuum, so every material slows it down; the refractive index divides the vacuum speed by the slower material speed, and a bigger number divided by a smaller one always lands above 1.",
+      "keywords": [
+        "vacuum",
+        "speed",
+        "divides",
+        "slower",
+        "above"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_J6rwHvcb9zhBpJCM::L1::Q9",
+      "moduleId": "rn_J6rwHvcb9zhBpJCM::L1",
+      "stem": "A ray strikes a transparent block at 40° to the normal and refracts at 25° inside. Show that the block behaves like a typical glass, whose refractive index is about 1.5.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "n = sin i / sin r = sin 40° / sin 25° = 0.643 / 0.423 = 1.52, which rounds to about 1.5 — the typical refractive index of glass.",
+      "keywords": [
+        "0.643",
+        "0.423",
+        "1.52",
+        "glass"
+      ],
+      "options": []
+    }
+  ]
+}

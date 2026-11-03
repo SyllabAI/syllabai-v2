@@ -1,0 +1,4203 @@
+{
+ "lane": "RN-DEBRIS-11",
+ "run": "run-001",
+ "mode": "open-census-c-slim",
+ "tip": "30a5ce5901dde475d1eb3564e8d6ec8294442aeb",
+ "katexVersion": "0.16.22",
+ "meta": {
+  "occurrenceSegments": 372533,
+  "uniqueSegments": 103931,
+  "rendered": 103931
+ },
+ "failureUniqueCount": 5741,
+ "failureOccurrenceCount": 11235,
+ "classCounts": {
+  "other": 5527,
+  "brace-structural": 204,
+  "missing-arg": 5,
+  "undef-cmd": 5
+ },
+ "note": "slim of the full sweep: brace-structural + missing-arg + undef-cmd failures carried in full (the lane's classes); 'other' failures count-only (pre-existing classes of record, out of lane scope); the full sweep is regenerable from rn11_katex_sweep.cjs + the segment dump law at this tip",
+ "braceStructural": [
+  {
+   "seg": "$\\begin{gathered} \\sqrt{12 & = \\sqrt{4} \\times 3} \\\\ = \\sqrt{4} \\times \\sqrt{3} \\\\ = 2 \\sqrt{3} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 27: …ered} \\sqrt{12 &̲ = \\sqrt{4} \\ti…",
+   "count": 12,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[37].questions[2].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[37].questions[23].parts[1].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[37].questions[27].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$a\\pmb$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: a\\pmb",
+   "count": 9,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-core/notes.json",
+    "apps/hub/content/cie-igcse-maths-25-extended/notes.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-core/notes.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/notes.json",
+    "apps/hub/content/igcse-maths-a-18-foundation/notes.json",
+    "apps/hub/content/igcse-maths-a-18-higher/notes.json",
+    "apps/hub/content/igcse-maths-a-modular-24-foundation-unit-1/notes.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/notes.json",
+    "apps/hub/content/igcse-maths-b-16/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-core/notes.json",
+     "path": "$[74].bodyMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/notes.json",
+     "path": "$[105].bodyMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-core/notes.json",
+     "path": "$[73].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 0,
+   "closes": 0
+  },
+  {
+   "seg": "$\\begin{gathered} \\sqrt{8 & = \\sqrt{4} \\times 2} \\\\ = \\sqrt{4} \\times \\sqrt{2} \\\\ = 2 \\sqrt{2} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 26: …hered} \\sqrt{8 &̲ = \\sqrt{4} \\ti…",
+   "count": 8,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[37].questions[1].parts[1].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[37].questions[25].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[41].questions[2].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$\\begin{gathered} ( x - 3 )^{2 } - 17 & = 0 \\\\ + 17 & = + 17 \\\\ ( x - 3 )^{2 } & = 17 \\\\ \\sqrt{ & = \\sqrt{ } } \\\\ x - 3^{ } & = \\pm \\sqrt{17} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 96: …= 17 \\\\ \\sqrt{ &̲ = \\sqrt{ } } \\…",
+   "count": 6,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[27].questions[20].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[27].questions[20].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[27].questions[20].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 8,
+   "closes": 8
+  },
+  {
+   "seg": "$ 7 , 295}{\\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 9:  7 , 295}̲{\\",
+   "count": 4,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/notes.json",
+    "apps/hub/content/cie-igcse-business-23/notes.json",
+    "apps/hub/content/cie-igcse-business-25/notes.json",
+    "apps/hub/content/igcse-business-19/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/notes.json",
+     "path": "$[53].bodyMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-business-23/notes.json",
+     "path": "$[78].bodyMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-business-25/notes.json",
+     "path": "$[17].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$\\begin{array}{rcl} 2^{x & = \\frac{1}{8} \\\\ 2^{x} & = \\frac{1}{2^{3}} \\\\ 2^{x} & = 2^{-3} } \\\\ x = - 3 \\end{array}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 25: …ray}{rcl} 2^{x &̲ = \\frac{1}{8} …",
+   "count": 4,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-core/notes.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-core/notes.json",
+    "apps/hub/content/igcse-maths-a-18-foundation/notes.json",
+    "apps/hub/content/igcse-maths-a-modular-24-foundation-unit-1/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-core/notes.json",
+     "path": "$[0].bodyMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-core/notes.json",
+     "path": "$[0].bodyMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-foundation/notes.json",
+     "path": "$[3].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 12,
+   "closes": 12
+  },
+  {
+   "seg": "$\\begin{gathered} \\sqrt{1500 & = \\sqrt{(} \\text{parentheses} 2^{2} \\times 5^{2} )} \\times \\sqrt{( 3 \\times 5 )} \\\\ = 2 \\times 5 \\times \\sqrt{15} \\\\ = 10 \\sqrt{15} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 29: …ed} \\sqrt{1500 &̲ = \\sqrt{(} \\te…",
+   "count": 4,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/flashcards.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/flashcards.json",
+    "apps/hub/content/igcse-maths-a-18-higher/flashcards.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/flashcards.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/flashcards.json",
+     "path": "$[536].back"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/flashcards.json",
+     "path": "$[519].back"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/flashcards.json",
+     "path": "$[55].back"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 10,
+   "closes": 10
+  },
+  {
+   "seg": "$\\begin{gathered} ( 16 )^{- \\frac{3}{4} } \\times w^{- 6} \\times y^{15 & = ( \\sqrt[4]{16} )^{-3} } \\times \\frac{1}{w^{6 \\times y^{15}} \\\\ = 2^{-3} } \\times \\frac{1}{w^{6}} \\times y^{15} \\\\ = \\frac{1}{8} \\times \\frac{1}{w^{6}} \\times y^{15} \\\\ = \\frac{y^{15} }{8 w^{6} } \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 70: …} \\times y^{15 &̲ = ( \\sqrt[4]{1…",
+   "count": 4,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[3].questions[11].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[2].questions[10].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[18].questions[40].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 28,
+   "closes": 28
+  },
+  {
+   "seg": "$\\begin{gathered} \\sqrt{18 & = \\sqrt{9} \\times 2} \\\\ = \\sqrt{9} \\times \\sqrt{2} \\\\ = 3 \\sqrt{2} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 27: …ered} \\sqrt{18 &̲ = \\sqrt{9} \\ti…",
+   "count": 4,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[37].questions[25].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[41].questions[26].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[13].questions[13].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$\\frac{3}{4} &divide; \\frac{4}{7}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '&' at position 13: \\frac{3}{4} &̲divide; \\frac{4…",
+   "count": 4,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-foundation.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-foundation.json",
+     "path": "$.resources[132].content.topicNotes"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-foundation.json",
+     "path": "$.resources[132].content.topicNotes"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[175].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 4,
+   "closes": 4
+  },
+  {
+   "seg": "$ 124 , 653 } \n> \n> = 0.8482$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 12:  124 , 653 }̲ \n> \n> = 0.8482",
+   "count": 3,
+   "files": [
+    "apps/hub/content/cie-igcse-business-23/notes.json",
+    "apps/hub/content/cie-igcse-business-25/notes.json",
+    "apps/hub/content/igcse-business-19/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-business-23/notes.json",
+     "path": "$[79].bodyMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-business-25/notes.json",
+     "path": "$[18].bodyMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-business-19/notes.json",
+     "path": "$[36].bodyMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$a} </tex> , <tex>x_2 = \\frac{3}{$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 2: a}̲ </tex> , <tex>…",
+   "count": 3,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+     "path": "$.resources[488].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[225].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[200].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 2,
+   "closes": 2
+  },
+  {
+   "seg": "${a*b/3}(\\frac{1}{$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …*b/3}(\\frac{1}{",
+   "count": 3,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+     "path": "$.resources[488].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[225].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[200].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 3,
+   "closes": 2
+  },
+  {
+   "seg": "${(b+3*a)/2}(\\frac{1}{$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …a)/2}(\\frac{1}{",
+   "count": 3,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+     "path": "$.resources[488].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[225].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[200].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 3,
+   "closes": 2
+  },
+  {
+   "seg": "$a})+ $",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 2: a}̲)+ ",
+   "count": 3,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+     "path": "$.resources[488].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[225].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[200].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$b})^3 -$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 2: b}̲)^3 -",
+   "count": 3,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+     "path": "$.resources[488].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[225].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[200].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$b})^2 -3(\\frac{3}{$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 2: b}̲)^2 -3(\\frac{3}…",
+   "count": 3,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+     "path": "$.resources[488].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[225].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[200].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 2,
+   "closes": 2
+  },
+  {
+   "seg": "$a}} = $",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 2: a}̲} = ",
+   "count": 3,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+     "path": "$.resources[488].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[225].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[200].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 2
+  },
+  {
+   "seg": "$a})-$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 2: a}̲)-",
+   "count": 3,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+     "path": "$.resources[488].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[225].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[200].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$ansc1.\n<tex> x_2</tex>: <tex>\\frac{d^2y}{dx^2}|_{x=  \\frac{3}{$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …_{x=  \\frac{3}{",
+   "count": 3,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+     "path": "$.resources[488].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[225].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[200].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 5,
+   "closes": 3
+  },
+  {
+   "seg": "${2*a*b}(\\frac{3}{$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …*a*b}(\\frac{3}{",
+   "count": 3,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-cambridge-international-gcse-extended.json",
+     "path": "$.resources[488].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[225].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[200].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 3,
+   "closes": 2
+  },
+  {
+   "seg": "$rr}{$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 3: rr}̲{",
+   "count": 3,
+   "files": [
+    "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[204].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[204].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[204].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$̅x=\\frac{\\sumx}{n}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '̅' at position 1: ̲̅x=\\frac{\\sumx}{…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-a-level-maths-20-probability-and-statistics-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-maths-20-probability-and-statistics-2/questions.json",
+     "path": "$[8].questions[0].parts[0].problemMd"
+    },
+    {
+     "file": "apps/hub/content/cie-a-level-maths-20-probability-and-statistics-2/questions.json",
+     "path": "$[8].questions[1].parts[0].problemMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 2,
+   "closes": 2
+  },
+  {
+   "seg": "$̅X_{n}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '̅' at position 1: ̲̅X_{n}",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-a-level-maths-20-probability-and-statistics-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-maths-20-probability-and-statistics-2/questions.json",
+     "path": "$[8].questions[3].parts[0].problemMd"
+    },
+    {
+     "file": "apps/hub/content/cie-a-level-maths-20-probability-and-statistics-2/questions.json",
+     "path": "$[8].questions[3].parts[2].problemMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$̅X_{25}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '̅' at position 1: ̲̅X_{25}",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-a-level-maths-20-probability-and-statistics-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-maths-20-probability-and-statistics-2/questions.json",
+     "path": "$[8].questions[3].parts[0].problemMd"
+    },
+    {
+     "file": "apps/hub/content/cie-a-level-maths-20-probability-and-statistics-2/questions.json",
+     "path": "$[8].questions[3].parts[0].problemMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$f{Upper estimate $",
+   "err": "KaTeX parse error: Expected '}', got 'EOF' at end of input: …Upper estimate ",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-a-level-maths-20-pure-3/questions.json",
+    "apps/hub/content/cie-as-maths-20-pure-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-maths-20-pure-3/questions.json",
+     "path": "$[15].questions[39].parts[3].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-as-maths-20-pure-2/questions.json",
+     "path": "$[9].questions[39].parts[3].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 0
+  },
+  {
+   "seg": "$ years}** (2 s.f.)**\n\n**[A1]**\n\nThe smallest half-life gives the lower estimate\n\n$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 7:  years}̲** (2 s.f.)**\n\n…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-a-level-maths-20-pure-3/questions.json",
+    "apps/hub/content/cie-as-maths-20-pure-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-maths-20-pure-3/questions.json",
+     "path": "$[15].questions[39].parts[3].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-as-maths-20-pure-2/questions.json",
+     "path": "$[9].questions[39].parts[3].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$V_{o u t} = ( \\frac{R_{1}{R_{1} + R_{2} } ) V_{i} n}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …2} } ) V_{i} n}",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/notes.json",
+    "apps/hub/content/cie-as-physics-25/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/notes.json",
+     "path": "$[81].bodyMd"
+    },
+    {
+     "file": "apps/hub/content/cie-as-physics-25/notes.json",
+     "path": "$[81].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$V_{o u t} = ( \\frac{R_{2 + R_{3} }{R_{1} + R_{2} + R_{3} } ) V_{i} n}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …3} } ) V_{i} n}",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/notes.json",
+    "apps/hub/content/cie-as-physics-25/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/notes.json",
+     "path": "$[82].bodyMd"
+    },
+    {
+     "file": "apps/hub/content/cie-as-physics-25/notes.json",
+     "path": "$[82].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 9,
+   "closes": 9
+  },
+  {
+   "seg": "$P = \\frac{( 5.0 \\times 10^{4 ) \\times ( 6.6 \\times 10^{-27} } ) \\times ( 1.5 \\times 10^{7 )}{1 \\times 10^{-4} } }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …mes 10^{-4} } }",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "apps/hub/content/cie-as-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[10].questions[12].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-as-physics-25/questions.json",
+     "path": "$[18].questions[12].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$= \\frac{v}{u} = \\frac{1}{ \\sqrt{2} \\times \\frac{ \\sqrt{g} \\Delta h} }{ \\sqrt{g \\Delta h} }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at position 69: …t{g} \\Delta h} }̲{ \\sqrt{g \\Delt…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "apps/hub/content/cie-as-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[12].questions[23].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-as-physics-25/questions.json",
+     "path": "$[23].questions[23].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 9,
+   "closes": 9
+  },
+  {
+   "seg": "$E = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{78900 \\times 10^{-6} } }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …mes 10^{-6} } }",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json",
+    "apps/hub/content/cie-as-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[94].questions[6].parts[1].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-as-physics-25/questions.json",
+     "path": "$[38].questions[6].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$ 200 , 000}{\\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 11:  200 , 000}̲{\\",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-business-23/questions.json",
+    "apps/hub/content/cie-igcse-business-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-business-23/questions.json",
+     "path": "$[14].questions[5].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-business-25/questions.json",
+     "path": "$[14].questions[5].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$ 10 , 000}{\\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 10:  10 , 000}̲{\\",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-business-23/questions.json",
+    "apps/hub/content/cie-igcse-business-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-business-23/questions.json",
+     "path": "$[14].questions[18].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-business-25/questions.json",
+     "path": "$[14].questions[17].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$ 800 , 000} \\times 100\n\n= 50 \\%$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 11:  800 , 000}̲ \\times 100\n\n= …",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-business-23/questions.json",
+    "apps/hub/content/cie-igcse-business-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-business-23/questions.json",
+     "path": "$[21].questions[11].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-business-25/questions.json",
+     "path": "$[5].questions[15].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$ 800 , 000} \\times 100\n\n= 18.75 \\%$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 11:  800 , 000}̲ \\times 100\n\n= …",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-business-23/questions.json",
+    "apps/hub/content/cie-igcse-business-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-business-23/questions.json",
+     "path": "$[21].questions[11].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-business-25/questions.json",
+     "path": "$[5].questions[15].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$ 124 , 653} \n> \n> = 0.5284$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 11:  124 , 653}̲ \n> \n> = 0.5284",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-business-25/notes.json",
+    "apps/hub/content/igcse-business-19/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-business-25/notes.json",
+     "path": "$[18].bodyMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-business-19/notes.json",
+     "path": "$[36].bodyMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$\\text{^{3}}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '^' at position 7: \\text{^̲{3}}",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-core/flashcards.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-core/flashcards.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-core/flashcards.json",
+     "path": "$[317].back"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-core/flashcards.json",
+     "path": "$[318].back"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 2,
+   "closes": 2
+  },
+  {
+   "seg": "$ 0.0152 \\end{gathered}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '\\end' at position 9:  0.0152 \\̲e̲n̲d̲{gathered}",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-core/questions.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-core/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-core/questions.json",
+     "path": "$[33].questions[42].parts[0].problemMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-core/questions.json",
+     "path": "$[35].questions[38].parts[0].problemMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$\\begin{gathered} a^{2} \\div a^{6 & = a^{2} - 6} = a^{- 4} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 34: …^{2} \\div a^{6 &̲ = a^{2} - 6} =…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[3].questions[0].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[2].questions[0].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$\\begin{gathered} ( 3 p^{2} )^{5 & = 3^{5} \\times p^{2} \\times 5} \\\\ = 243 p^{10} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 33: …( 3 p^{2} )^{5 &̲ = 3^{5} \\times…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[3].questions[6].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[2].questions[7].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$\\begin{gathered} \\sqrt[3]{27 t^{27} & = ( 27 t^{27} )^{1} \\frac{1}{3}} = 27^{1 \\frac{1}{3}} \\times ( t^{27 )^{1} \\frac{1}{3}} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '&' at position 37: …t[3]{27 t^{27} &̲ = ( 27 t^{27} …",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[3].questions[10].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[2].questions[9].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 15,
+   "closes": 15
+  },
+  {
+   "seg": "$\\begin{gathered} \\sqrt{18 & = \\sqrt{9} \\times 2} \\\\ = \\sqrt{9} \\times \\sqrt{2} \\\\ = 3 \\times \\sqrt{2} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 27: …ered} \\sqrt{18 &̲ = \\sqrt{9} \\ti…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[37].questions[11].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[41].questions[9].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$\\begin{gathered} \\sqrt{50 & = \\sqrt{25} \\times 2} \\\\ = \\sqrt{25} \\times \\sqrt{2} \\\\ = 5 \\sqrt{2} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 27: …ered} \\sqrt{50 &̲ = \\sqrt{25} \\t…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[37].questions[15].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[41].questions[16].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$\\begin{gathered} C B D^{ & = \\cos ^{-1} } ( - 0.275893... ) \\\\ = 106.0152.... \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 26: …hered} C B D^{ &̲ = \\cos ^{-1} }…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[46].questions[24].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[47].questions[24].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 4,
+   "closes": 4
+  },
+  {
+   "seg": "$\\begin{gathered} B X C^{ & = \\cos ^{-1} } ( \\frac{1}{7} ) \\\\ = 81.7867... \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 26: …hered} B X C^{ &̲ = \\cos ^{-1} }…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[46].questions[25].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[47].questions[25].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$a\\pmb\\sqrt{3}$",
+   "err": "KaTeX parse error: Expected group as argument to '\\sqrt' at position 6: a\\pmb\\̲s̲q̲r̲t̲{3}",
+   "count": 2,
+   "files": [
+    "apps/hub/content/ial-maths-20-pure-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/ial-maths-20-pure-1/questions.json",
+     "path": "$[5].questions[13].parts[1].problemMd"
+    },
+    {
+     "file": "apps/hub/content/ial-maths-20-pure-1/questions.json",
+     "path": "$[5].questions[21].parts[1].problemMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$\\begin{gathered} 5 \\times 6 & = 30 \\\\ g^{- 2} \\times g^{- 3} & = g^{- 2 + - 3} = g^{- 5} \\\\ h^{3} \\times h^{7 & = h^{3} + 7} = h^{10} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 111: …3} \\times h^{7 &̲ = h^{3} + 7} =…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-foundation/questions.json",
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-foundation/questions.json",
+     "path": "$[1].questions[3].parts[1].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[18].questions[15].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 10,
+   "closes": 10
+  },
+  {
+   "seg": "$ 900 \\end{gathered}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '\\end' at position 6:  900 \\̲e̲n̲d̲{gathered}",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[4].questions[35].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+     "path": "$[15].questions[9].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$\\begin{gathered} ( 9 \\times 10^{- 4} ) \\times ( 3 \\times 10^{7 ) & = ( 9 \\times 3 ) \\times ( 10^{-4} } \\times 10^{7 ) \\\\ = 27 \\times ( 10^{-4} } \\times 10^{7} ) \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 66: …\\times 10^{7 ) &̲ = ( 9 \\times 3…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[7].questions[30].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json",
+     "path": "$[22].questions[33].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 8,
+   "closes": 8
+  },
+  {
+   "seg": "$\\frac{ \\sqrt[3]{81}{3} = \\frac{ \\sqrt[3]{3}^{4} } }{3}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at position 51: …rt[3]{3}^{4} } }̲{3}",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[7].questions[51].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+     "path": "$[17].questions[12].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$( 3^{4} ) ^{begin} \\text{display} \\text{style} 1 \\frac{third}{3} = 3^{begin} \\text{display} \\text{style} \\frac{4}\\frac{{3}}{3}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at position 114: …style} \\frac{4}\\̲f̲r̲a̲c̲{{3}}{3}",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[7].questions[51].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+     "path": "$[17].questions[12].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 13,
+   "closes": 13
+  },
+  {
+   "seg": "$\\begin{gathered} 480 \\times 10^{9 & = = 2^{5} + 9} \\times 3 \\times 5^{1 + 9} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 35: …0 \\times 10^{9 &̲ = = 2^{5} + 9}…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[8].questions[22].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json",
+     "path": "$[19].questions[16].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$\\begin{gathered} 98^{91 & = 98^{53} + 38} = 98^{53 \\times 98^{38} \\\\ 98^{91} & = 98^{64} + 27} = 98^{64 \\times 98^{27} \\\\ 98^{91} & = 98^{73} + 18} = 98^{73 \\times 98^{18} \\\\ 98^{91} & = 98^{88} + 3} = 98^{88} \\times 98^{3} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 25: …thered} 98^{91 &̲ = 98^{53} + 38…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[8].questions[51].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json",
+     "path": "$[19].questions[40].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 18,
+   "closes": 18
+  },
+  {
+   "seg": "$\\begin{gathered} 32 \\cancel{\\pi x^{ \\cancel{3} } & = 9 \\cancel{\\pi } \\cancel{x}^{2}} h \\\\ 32 x & = 9 h \\end{gathered}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '&' at position 50: …{ \\cancel{3} } &̲ = 9 \\cancel{\\p…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[10].questions[57].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json",
+     "path": "$[21].questions[40].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 8,
+   "closes": 8
+  },
+  {
+   "seg": "$\\begin{gathered} y^{18 \\div y^{6} & = y^{18} - 6} \\\\ = y^{12} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 35: …{18 \\div y^{6} &̲ = y^{18} - 6} …",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[18].questions[11].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+     "path": "$[3].questions[35].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$\\begin{gathered} a^{6 \\div a^{2} & = a^{6} - 2} \\\\ = a^{4} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 34: …^{6 \\div a^{2} &̲ = a^{6} - 2} \\…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[18].questions[12].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+     "path": "$[3].questions[38].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$\\begin{gathered} ( b^{5 )^{3} & = b^{5} \\times 3} \\\\ = b^{15} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 31: …} ( b^{5 )^{3} &̲ = b^{5} \\times…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[18].questions[13].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+     "path": "$[3].questions[41].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$\\begin{gathered} a^{5 \\times ( a^{3} )^{2} & = a^{5} \\times a^{3} \\times 2} \\\\ = a^{5} \\times a^{6} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 44: … ( a^{3} )^{2} &̲ = a^{5} \\times…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[18].questions[29].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+     "path": "$[3].questions[40].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 9,
+   "closes": 9
+  },
+  {
+   "seg": "$\\begin{gathered} a^{5 \\times a^{6} & = a^{5} + 6} \\\\ = a^{11} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 36: …5 \\times a^{6} &̲ = a^{5} + 6} \\…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[18].questions[29].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+     "path": "$[3].questions[40].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$( \\frac{64 x^{6}{25 y^{2}} )^{-1} \\frac{1}{2}}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …1} \\frac{1}{2}}",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[18].questions[34].parts[1].problemMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+     "path": "$[3].questions[6].parts[1].problemMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$( \\frac{9 t^{4 w^{9} }{18 t^{6} w^{10} } )^{-2} }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …{10} } )^{-2} }",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[18].questions[38].parts[0].problemMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+     "path": "$[3].questions[18].parts[0].problemMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$\\begin{gathered} ( 1 \\frac{1}{2} )^{- 2} \\times t^{4 \\times w^{2} & = ( 2^{-1} } )^{- 2} \\times t^{4} \\times w^{2} \\\\ = 2^{2} \\times t^{4} \\times w^{2} \\\\ = 4 t^{4} w^{2} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 67: …4 \\times w^{2} &̲ = ( 2^{-1} } )…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[18].questions[38].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+     "path": "$[3].questions[18].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 16,
+   "closes": 16
+  },
+  {
+   "seg": "$\\begin{array}{rcl} x = \\frac{2 \\pm \\sqrt{20}{2} \\\\ = \\frac{2 \\pm \\sqrt{4} \\times 5} }{2} \\\\ = \\frac{2 \\pm \\sqrt{4} \\sqrt{5} }{2} \\\\ = \\frac{2 \\pm 2 \\sqrt{5} }{2} \\end{array}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at position 85: …t{4} \\times 5} }̲{2} \\\\ = \\frac{…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[27].questions[35].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+     "path": "$[8].questions[32].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 16,
+   "closes": 16
+  },
+  {
+   "seg": "$\\begin{gathered} y = a x^{b \\\\ \\frac{d y}{d x} & = a b x^{b} - 1} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 48: …frac{d y}{d x} &̲ = a b x^{b} - …",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[29].questions[10].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json",
+     "path": "$[6].questions[50].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$\\begin{gathered} y & = 4 x^{ \\\\ \\frac{d y}{d x} & = ( 4 \\times 1 ) x^{1} - 1} = 4 \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 49: …frac{d y}{d x} &̲ = ( 4 \\times 1…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[29].questions[10].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json",
+     "path": "$[6].questions[50].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$\\begin{gathered} \\cancel{2 \\pi \\cancel{r} & = \\frac{ \\cancel{2} \\pi \\cancel{r} x}{360} + \\cancel{2} r} \\\\ \\pi & = \\frac{\\pi x}{360} + 1 \\end{gathered}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '&' at position 43: …\\pi \\cancel{r} &̲ = \\frac{ \\canc…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[44].questions[54].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json",
+     "path": "$[23].questions[24].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 11,
+   "closes": 11
+  },
+  {
+   "seg": "$\\begin{gathered} Q S & = \\sqrt{80 \\\\ Q S & = \\sqrt{16} \\times 5} \\\\ Q S & = 4 \\sqrt{5} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 42: …sqrt{80 \\\\ Q S &̲ = \\sqrt{16} \\t…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[45].questions[26].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json",
+     "path": "$[14].questions[24].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$\\begin{array}{rcl} 10^{2} & = Q P^{2} + ( 4 \\sqrt{5 )^{2} \\\\ 10^{2} - ( 4 \\sqrt{5} )^{2} & = Q P^{2} \\\\ \\sqrt{10}^{2} - ( 4 \\sqrt{5} )^{2}} & = Q P \\\\ \\sqrt{100 - 80} & = Q P \\\\ \\sqrt{20} & = Q P \\\\ 2 \\sqrt{5} & = Q P \\end{array}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 90: …\\sqrt{5} )^{2} &̲ = Q P^{2} \\\\ \\…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[45].questions[26].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json",
+     "path": "$[14].questions[24].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 18,
+   "closes": 18
+  },
+  {
+   "seg": "$\\frac{45}{100} &equals; \\frac{9}{20}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '&' at position 16: \\frac{45}{100} &̲equals; \\frac{9…",
+   "count": 2,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-foundation.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-foundation.json",
+     "path": "$.resources[16].content.topicNotes"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[25].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 4,
+   "closes": 4
+  },
+  {
+   "seg": "$\\frac{17}{20} &equals; \\frac{85}{100}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '&' at position 15: \\frac{17}{20} &̲equals; \\frac{8…",
+   "count": 2,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-foundation.json",
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-foundation.json",
+     "path": "$.resources[16].content.topicNotes"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[25].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 4,
+   "closes": 4
+  },
+  {
+   "seg": "$a}{x-$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 2: a}̲{x-",
+   "count": 2,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[189].title"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[189].content.questionTitleMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$a} \\le $",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 2: a}̲ \\le ",
+   "count": 2,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[191].title"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[191].content.questionTitleMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$I=\\frac{&Delta;Q}{&Delta;t}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '&' at position 9: I=\\frac{&̲Delta;Q}{&Delta…",
+   "count": 2,
+   "files": [
+    "apps/hub/public/seneca-bundles/physics-cambridge-international-a-level.json",
+    "apps/hub/public/seneca-bundles/physics-edexcel-a-level.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/physics-cambridge-international-a-level.json",
+     "path": "$.resources[15].content.topicNotes"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/physics-edexcel-a-level.json",
+     "path": "$.resources[10].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 2,
+   "closes": 2
+  },
+  {
+   "seg": "$oc1}{$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 4: oc1}̲{",
+   "count": 2,
+   "files": [
+    "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[205].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[205].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$oc2}{$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 4: oc2}̲{",
+   "count": 2,
+   "files": [
+    "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[205].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[205].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$oc3}{$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 4: oc3}̲{",
+   "count": 2,
+   "files": [
+    "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[205].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[205].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$oc4}{$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 4: oc4}̲{",
+   "count": 2,
+   "files": [
+    "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[205].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[205].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$oc5}{$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 4: oc5}̲{",
+   "count": 2,
+   "files": [
+    "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[205].content.markScheme"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[205].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$ 20 000}{4} = \\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 8:  20 000}̲{4} = \\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-accounting-21/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-accounting-21/notes.json",
+     "path": "$[9].bodyMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 220 000}{2} = \\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 9:  220 000}̲{2} = \\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-accounting-21/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-accounting-21/notes.json",
+     "path": "$[9].bodyMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 150 000}{5 000 hours} \\\\ = \\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 9:  150 000}̲{5 000 hours} \\…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-accounting-21/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-accounting-21/notes.json",
+     "path": "$[20].bodyMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 1.50} = 400 000$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 6:  1.50}̲ = 400 000",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-accounting-21/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-accounting-21/notes.json",
+     "path": "$[25].bodyMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$ 1 000 000}{\\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 11:  1 000 000}̲{\\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-accounting-21/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-accounting-21/notes.json",
+     "path": "$[25].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$ 80 000}{500 000} = \\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 8:  80 000}̲{500 000} = \\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-accounting-21/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-accounting-21/notes.json",
+     "path": "$[25].bodyMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 90 000 )}{3} = \\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 10:  90 000 )}̲{3} = \\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-accounting-21/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-accounting-21/notes.json",
+     "path": "$[31].bodyMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 30 000 )}{3} = \\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 10:  30 000 )}̲{3} = \\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-accounting-21/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-accounting-21/notes.json",
+     "path": "$[31].bodyMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 5.9 million}{1 , 052 , 300 shares} \n> \n> = \\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 13:  5.9 million}̲{1 , 052 , 300 …",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/notes.json",
+     "path": "$[52].bodyMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 13.66}{\\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 7:  13.66}̲{\\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/notes.json",
+     "path": "$[52].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$ 15 , 545 }{\\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 11:  15 , 545 }̲{\\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/notes.json",
+     "path": "$[53].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$ 30 , 000} \n> \n> = 6.67 \\text{years}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 10:  30 , 000}̲ \n> \n> = 6.67 \\…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/notes.json",
+     "path": "$[69].bodyMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 24}{\\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 4:  24}̲{\\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/notes.json",
+     "path": "$[106].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$ 5} \\times 100 \n> \n> = 20 \\% \\text{increase}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 3:  5}̲ \\times 100 \n> …",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/notes.json",
+     "path": "$[106].bodyMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 22.0 \\mathrm{m} } \\times 100 \n\n= 63.6 \\%$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 18: …2.0 \\mathrm{m} }̲ \\times 100 \n\n=…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/questions.json",
+     "path": "$[7].questions[12].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 30 \\mathrm{m} } \\times 100 \n\n= 13.27 \\%$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 16:  30 \\mathrm{m} }̲ \\times 100 \n\n=…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/questions.json",
+     "path": "$[7].questions[13].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 392 , 000}{\\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 11:  392 , 000}̲{\\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/questions.json",
+     "path": "$[7].questions[15].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$ 3 , 000} \\times 100\n\n= 17 \\%$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 9:  3 , 000}̲ \\times 100\n\n= …",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/questions.json",
+     "path": "$[7].questions[16].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$ 2 , 400} \\times 100\n\n= 24 \\%$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 9:  2 , 400}̲ \\times 100\n\n= …",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/questions.json",
+     "path": "$[7].questions[16].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$ 128 , 000}{40 , 000} = \\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 11:  128 , 000}̲{40 , 000} = \\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/questions.json",
+     "path": "$[8].questions[12].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 20 , 400 , 000}{\\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 16:  20 , 400 , 000}̲{\\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/questions.json",
+     "path": "$[22].questions[10].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$ 6 , 960 , 000}{\\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 15:  6 , 960 , 000}̲{\\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/questions.json",
+     "path": "$[22].questions[10].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$ 500 , 000} \\times 100 \n\n= 3 \\%$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 11:  500 , 000}̲ \\times 100 \n\n=…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-business-23/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-business-23/questions.json",
+     "path": "$[26].questions[12].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$̅X_{20}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '̅' at position 1: ̲̅X_{20}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-maths-20-probability-and-statistics-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-maths-20-probability-and-statistics-2/questions.json",
+     "path": "$[8].questions[3].parts[1].problemMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$̅X_{50}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '̅' at position 1: ̲̅X_{50}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-maths-20-probability-and-statistics-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-maths-20-probability-and-statistics-2/questions.json",
+     "path": "$[8].questions[3].parts[1].problemMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$p V = \\frac{1}{3} N m \\mathrm{\\left} < c^{2} \\mathrm{\\right} >$",
+   "err": "KaTeX parse error: Expected group as argument to '\\left' at position 36: …m \\mathrm{\\left}̲ < c^{2} \\mathr…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/flashcards.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/flashcards.json",
+     "path": "$[732].back"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$p = \\frac{1}{3} ρ \\mathrm{\\left} < c^{2} \\mathrm{\\right} >$",
+   "err": "KaTeX parse error: Expected group as argument to '\\left' at position 32: …ρ \\mathrm{\\left}̲ < c^{2} \\mathr…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/flashcards.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/flashcards.json",
+     "path": "$[733].back"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$\\mathrm{\\left} < c_{x}^{2} \\mathrm{\\right} > = \\frac{1}{3} \\mathrm{\\left} < c^{2} \\mathrm{\\right} >$",
+   "err": "KaTeX parse error: Expected group as argument to '\\left' at position 14: \\mathrm{\\left}̲ < c_{x}^{2} \\m…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/flashcards.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/flashcards.json",
+     "path": "$[735].back"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 9,
+   "closes": 9
+  },
+  {
+   "seg": "$E_{k} = \\frac{1}{2} m \\mathrm{\\left} < c^{2} \\mathrm{\\right} > = \\frac{3}{2} k T$",
+   "err": "KaTeX parse error: Expected group as argument to '\\left' at position 36: …m \\mathrm{\\left}̲ < c^{2} \\mathr…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/flashcards.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/flashcards.json",
+     "path": "$[739].back"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 8,
+   "closes": 8
+  },
+  {
+   "seg": "$g_{0} = \\frac{( 6.67 \\times 10^{- 11} ) \\times ( 5.97 \\times 10^{24 )}{( 6370 \\times 10^{3} )^{2}} = 9.8134 \\mathrm{N} kg^{-1} }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …rm{N} kg^{-1} }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/notes.json",
+     "path": "$[103].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 9,
+   "closes": 9
+  },
+  {
+   "seg": "$g ' = \\frac{( 6.67 \\times 10^{- 11} ) \\times ( 5.97 \\times 10^{24 )}{( 6378.85 \\times 10^{3} )^{2}} = 9.7862 \\mathrm{N} kg^{-1} }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …rm{N} kg^{-1} }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/notes.json",
+     "path": "$[103].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 8,
+   "closes": 8
+  },
+  {
+   "seg": "$ϕ = - \\frac{( 6.67 \\times 10^{- 11} ) \\times ( 3.5 \\times 10^{23 )}{4.2 \\times 10^{6} } = - 5.6 \\times 10^{6} \\mathrm{J} kg^{-1} }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …rm{J} kg^{-1} }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/notes.json",
+     "path": "$[104].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 8,
+   "closes": 8
+  },
+  {
+   "seg": "$< c^{2} > = \\frac{3 \\times ( 9.3 \\times 10^{5 ) }{4.5} = 6.2 \\times 10^{5} \\mathrm{m}^{2} \\mathrm{s}^{-2} }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …athrm{s}^{-2} }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/notes.json",
+     "path": "$[115].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 9,
+   "closes": 9
+  },
+  {
+   "seg": "$p = \\frac{ h f}{c} = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 5.6 \\times 10^{14 ) }{3.0 \\times 10^{8} } = 1.24 \\times 10^{-27} } \\mathrm{N} \\mathrm{s}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at position 130: …mes 10^{-27} } \\̲m̲a̲t̲h̲r̲m̲{N} \\mathrm{s}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/notes.json",
+     "path": "$[164].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 10,
+   "closes": 10
+  },
+  {
+   "seg": "$v = \\frac{c \\Delta f}{f} = \\frac{( 3.0 \\times 10^{8 ) \\times ( 2.3 \\times 10^{12} ) }{4.570 \\times 10^{14} } = 1.5 \\times 10^{6} \\mathrm{m} \\mathrm{s}^{-1} }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …athrm{s}^{-1} }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/notes.json",
+     "path": "$[198].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 11,
+   "closes": 11
+  },
+  {
+   "seg": "$M = \\frac{( 4.2 \\times 10^{7 )^{3} \\times 4 \\pi ^{2} }{( 6.67 \\times 10^{-11} } ) \\times ( 86400 )^{2}}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: … ( 86400 )^{2}}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[35].questions[3].parts[2].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$M = \\frac{( 13.8 \\times 10^{3} )^{2} \\times ( 6.709 \\times 10^{8 )}{6.67 \\times 10^{-11} } }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …es 10^{-11} } }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[35].questions[4].parts[2].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$M = - \\frac{( 3400 \\times 10^{3} ) \\times ( - 12.5 \\times 10^{6 ) }{6.67 \\times 10^{-11} } }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …es 10^{-11} } }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[37].questions[3].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$r = \\frac{1}{\\frac{1}{( 6100 \\times 10^{3} )} - \\frac{4.2 \\times 10^{6 }{( 6.67 \\times 10^{-11} } ) \\times ( 4.9 \\times 10^{24} )}}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at position 131: …imes 10^{24} )}}̲",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[37].questions[5].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 10,
+   "closes": 10
+  },
+  {
+   "seg": "$\\frac{1}{r} _{f} = \\frac{1}{r} _{i} - \\frac{( 1.591 \\times 10^{10 )}{( 6.67 \\times 10^{-11} } ) ( 5.97 \\times 10^{24} ) ( 1720 )}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …24} ) ( 1720 )}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[37].questions[7].parts[2].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 11,
+   "closes": 11
+  },
+  {
+   "seg": "$\\frac{p_{1} V_{1} }{T_{1} } = \\frac{( 1.42 \\times 10^{5 ) \\times ( 6.00 \\times 10^{4} )}{281} = 3.03 \\times 10^{7} }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …\\times 10^{7} }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[42].questions[4].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 10,
+   "closes": 10
+  },
+  {
+   "seg": "$\\frac{p_{2} V_{2} }{T_{2} } = \\frac{( 1.70 \\times 10^{5 ) \\times ( 6.00 \\times 10^{4} )}{336} = 3.03 \\times 10^{7} }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …\\times 10^{7} }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[42].questions[4].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 10,
+   "closes": 10
+  },
+  {
+   "seg": "$r = \\frac{( 9.11 \\times 10^{- 31} ) \\times ( 3.0 \\times 10^{6 )}{( 3.2 \\times 10^{-3} } ) \\times ( 1.60 \\times 10^{- 19} )}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …es 10^{- 19} )}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[59].questions[0].parts[3].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$\\\\lambda = \\frac{h c}{E} = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{2.848 \\times 10^{-19} } }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …es 10^{-19} } }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[64].questions[2].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$E = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{2.50 \\times 10^{-12} } }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …es 10^{-12} } }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[64].questions[3].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$E_{p} = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{( 400 \\times 10^{-9} } )}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …es 10^{-9} } )}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[64].questions[5].parts[2].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$E = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{( 590 \\times 10^{-9} } )}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …es 10^{-9} } )}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[66].questions[5].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$\\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{3.0 \\times 10^{-19} } }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …es 10^{-19} } }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[67].questions[0].parts[2].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$\\\\lambda = \\frac{h c}{\\Delta E} = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{( 9.53 \\times 10^{-19} } )}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …s 10^{-19} } )}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[67].questions[3].parts[2].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$\\\\lambda = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3 \\times 10^{8 )}{( 1.6 \\times 10^{-19} } ) \\times ( 75 \\times 10^{3} )}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …times 10^{3} )}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[71].questions[0].parts[3].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$\\\\lambda = \\frac{2 h c}{E} = \\frac{2 \\times ( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{1.64 \\times 10^{-13} } }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …es 10^{-13} } }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[72].questions[4].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$\\\\lambda = \\frac{2 h c}{E} = \\frac{2 \\times ( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{3.0 \\times 10^{-10} } }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …es 10^{-10} } }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[72].questions[5].parts[3].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$N_{0} = \\frac{14 \\times ( 3.7 \\times 10^{7 )}{1.05 \\times 10^{-4} } }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …mes 10^{-4} } }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[72].questions[7].parts[2].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$N_{0} = \\frac{8.4 \\times 10^{11}{e^{- ( 5.682 \\times 10^{-3} } ) \\times 360} }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …) \\times 360} }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[72].questions[8].parts[3].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$F = \\frac{3.879 \\times 10^{26 }{4 \\pi \\times ( 1.50 \\times 10^{11} )^{2}} = 1371.92 \\mathrm{W} \\mathrm{m}^{-2} }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …athrm{m}^{-2} }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[73].questions[6].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 8,
+   "closes": 8
+  },
+  {
+   "seg": "$\\lambda_{m a x} = \\frac{( 6.63 \\times 10^{- 34} ) ( 3.0 \\times 10^{8 )}{( 80 \\times 10^{3} ) ( 1.6 \\times 10^{-19} } )}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …s 10^{-19} } )}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[74].questions[6].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$ 30 m}{\\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 6:  30 m}̲{\\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-as-business-23/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-as-business-23/questions.json",
+     "path": "$[7].questions[22].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$ 675 }{\\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 6:  675 }̲{\\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-as-business-23/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-as-business-23/questions.json",
+     "path": "$[7].questions[27].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$ 8 200}{2} = \\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 7:  8 200}̲{2} = \\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-accounting-21/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-accounting-21/questions.json",
+     "path": "$[18].questions[7].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 46 000}{2} = \\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 8:  46 000}̲{2} = \\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-accounting-21/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-accounting-21/questions.json",
+     "path": "$[18].questions[13].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ 15 000}{2} = \\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 8:  15 000}̲{2} = \\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-accounting-21/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-accounting-21/questions.json",
+     "path": "$[19].questions[0].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$\\text{^{\\circ}}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '^' at position 7: \\text{^̲{\\circ}}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-further-maths-additional-maths-25/flashcards.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-further-maths-additional-maths-25/flashcards.json",
+     "path": "$[421].back"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 2,
+   "closes": 2
+  },
+  {
+   "seg": "$S = \\frac{\\pi \\sqrt{x^{6 + 900} }{x} = \\frac{\\pi ( x^{6} + 900 )^{1} \\frac{1}{2}} }{x}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at position 83: …} \\frac{1}{2}} }̲{x}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-further-maths-additional-maths-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-further-maths-additional-maths-25/questions.json",
+     "path": "$[7].questions[26].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 10,
+   "closes": 10
+  },
+  {
+   "seg": "$\\begin{gathered} 32 - 80 x + 80 x^{2} - 40 x^{3 } + 10 x^{4 - x^{5} & = - x^{5} + 10 x^{4} - 80 x + 32 \\\\ \\cancel{32 \\cancel{-} 80 x} + 80 x^{2} - 40 x^{3} } \\cancel{+ 10 x^{4} } \\cancel{- x^{5} } & = \\cancel{- x^{5} } \\cancel{+ 10 x^{4} } \\cancel{- 80} x \\cancel{+ 32} \\\\ 80 x^{2} - 40 x^{3} & = 0 \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 69: …0 x^{4 - x^{5} &̲ = - x^{5} + 10…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-further-maths-additional-maths-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-further-maths-additional-maths-25/questions.json",
+     "path": "$[12].questions[3].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 24,
+   "closes": 24
+  },
+  {
+   "seg": "$\\begin{array}{rcl} 3^{5 & = 3^{-x} } \\\\ - x & = 5 \\\\ x = - 5 \\end{array}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 25: …ray}{rcl} 3^{5 &̲ = 3^{-x} } \\\\ …",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[6].questions[11].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$\\begin{gathered} \\frac{1}{2^{x & = 2^{k}} x} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 32: … \\frac{1}{2^{x &̲ = 2^{k}} x} \\e…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[6].questions[12].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$p = \\frac{\\sqrt[3]{a^{2}}{b} }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …[3]{a^{2}}{b} }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[10].questions[15].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 4,
+   "closes": 4
+  },
+  {
+   "seg": "$\\begin{gathered} y & = 16 x^{0 \\\\ \\frac{d y}{d x} & = ( 16 \\times 0 ) x^{0} - 1} = 0 \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 51: …frac{d y}{d x} &̲ = ( 16 \\times …",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[14].questions[5].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$\\frac{30 \\times \\cancel{x}{x \\cancel{ }^{2}} y}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …ncel{ }^{2}} y}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-international-maths-23-core/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-core/questions.json",
+     "path": "$[7].questions[4].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$\\begin{gathered} \\frac{1}{3^{x & = 9^{k}} x} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 32: … \\frac{1}{3^{x &̲ = 9^{k}} x} \\e…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[6].questions[30].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$\\begin{gathered} \\frac{1}{3^{x & = ( 3^{2}} )^{k} x} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 32: … \\frac{1}{3^{x &̲ = ( 3^{2}} )^{…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[6].questions[30].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$\\frac{5 \\cancel{y ( y - 7 )}{ \\cancel{y} } + \\frac{7 y \\cancel{(} \\text{parentheses} y - 7 )} }{ \\cancel{y - 7} } = 2 y ( y - 7 )$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at position 95: …eses} y - 7 )} }̲{ \\cancel{y - 7…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[10].questions[7].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 9,
+   "closes": 9
+  },
+  {
+   "seg": "$\\text{% difference} = \\frac{10 - 9.9}{9.9} \\times 100 = 1.01 \\%$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …s 100 = 1.01 \\%",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-physics-23/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-physics-23/questions.json",
+     "path": "$[52].questions[17].parts[4].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 3,
+   "closes": 3
+  },
+  {
+   "seg": "$M^{k + 1} = ( \\begin{gathered} 2^{k + 1} & 0 \\\\ 1 - 2 \\times 2^{k & 1 \\end{gathered} ) = ( \\begin{gathered} 2^{k} + 1} & 0 \\\\ 1 - 2^{k + 1} & 1 \\end{gathered} )$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 67: … 2 \\times 2^{k &̲ 1 \\end{gathere…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/ial-further-maths-18-further-pure-1/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/ial-further-maths-18-further-pure-1/notes.json",
+     "path": "$[20].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 9,
+   "closes": 9
+  },
+  {
+   "seg": "$\\begin{gathered} M^{k + 1} & = ( \\begin{gathered} 2^{k \\times 2 + 0 & 2^{k} \\times 2 + 2 ( 2^{k} + 1} - 1 ) \\times 1 \\\\ 0 + 0 & 0 + 1 \\end{gathered} ) \\\\ = ( \\begin{gathered} 2^{k + 1} & 2 \\times 2^{k + 1} - 2 \\\\ 0 1 \\end{gathered} ) \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 69: …k \\times 2 + 0 &̲ 2^{k} \\times 2…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/ial-further-maths-18-further-pure-1/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/ial-further-maths-18-further-pure-1/notes.json",
+     "path": "$[20].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 12,
+   "closes": 12
+  },
+  {
+   "seg": "$a\\pmb\\sqrt{c}$",
+   "err": "KaTeX parse error: Expected group as argument to '\\sqrt' at position 6: a\\pmb\\̲s̲q̲r̲t̲{c}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/ial-maths-20-pure-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/ial-maths-20-pure-1/questions.json",
+     "path": "$[5].questions[29].parts[1].problemMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$E = \\frac{( 6.63 \\times 10^{- 34} ) \\times ( 3.00 \\times 10^{8 )}{350 \\times 10^{-9} } }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …mes 10^{-9} } }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/ial-physics-19/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/ial-physics-19/questions.json",
+     "path": "$[25].questions[4].parts[2].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$A = \\frac{( 2.65 \\times 10^{27 )}{( 5.67 \\times 10^{-8} } ) \\times ( 6101 )^{4} }$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: … ( 6101 )^{4} }",
+   "count": 1,
+   "files": [
+    "apps/hub/content/ial-physics-19/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/ial-physics-19/questions.json",
+     "path": "$[56].questions[0].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 5,
+   "closes": 5
+  },
+  {
+   "seg": "$T = \\sqrt[4]{ \\frac{L}{\\\\sigma 4 \\pi r^{2}} } = \\sqrt[4]{ \\frac{1600 \\times ( 3.83 \\times 10^{26 )}{( 5.67 \\times 10^{-8} } ) \\times 4 \\pi \\times ( 150 \\times ( 7.0 \\times 10^{8} ) )} } = 2872 \\mathrm{K}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at position 185: …es 10^{8} ) )} }̲ = 2872 \\mathrm…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/ial-physics-19/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/ial-physics-19/questions.json",
+     "path": "$[56].questions[1].parts[1].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 11,
+   "closes": 11
+  },
+  {
+   "seg": "$\\frac{1}{r} = \\frac{1}{6378 \\times 10^{3}} - \\frac{1.158 \\times 10^{11}{( 6.67 \\times 10^{-11} } ) \\times ( 5.972 \\times 10^{24} ) \\times 1862}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: … ) \\times 1862}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/ial-physics-19/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/ial-physics-19/questions.json",
+     "path": "$[58].questions[5].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 10,
+   "closes": 10
+  },
+  {
+   "seg": "$N = \\frac{( 1.01 \\times 10^{5 ) \\times 0.0241}{( 1.38 \\times 10^{-23} } ) \\times 293}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …} ) \\times 293}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/ial-physics-19/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/ial-physics-19/questions.json",
+     "path": "$[59].questions[1].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 4,
+   "closes": 4
+  },
+  {
+   "seg": "$}\\$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 1: }̲\\",
+   "count": 1,
+   "files": [
+    "apps/hub/content/igcse-business-19/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-business-19/questions.json",
+     "path": "$[0].questions[4].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$\\text{Market share} = \\frac{1,050,000}{25,000,000} \\times 100 = \\text{4.2%}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …0 = \\text{4.2%}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/igcse-business-19/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-business-19/questions.json",
+     "path": "$[7].questions[15].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 4,
+   "closes": 4
+  },
+  {
+   "seg": "$= \\text{84.21%}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: = \\text{84.21%}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/igcse-business-19/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-business-19/questions.json",
+     "path": "$[13].questions[30].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$\\begin{gathered} 8^{x & = 1 \\frac{1}{4} \\\\ ( 2^{3} )^{x} & = \\frac{1}{2^{2}} \\\\ 2^{3} x} & = 2^{- 2} \\\\ 3 x & = - 2 \\\\ x = - \\frac{2}{3} \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 23: …gathered} 8^{x &̲ = 1 \\frac{1}{4…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/igcse-further-maths-19/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-further-maths-19/notes.json",
+     "path": "$[43].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 14,
+   "closes": 14
+  },
+  {
+   "seg": "$( \\frac{54 x^{7}{2 x^{4} } )^{-1} \\frac{1}{3}}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …1} \\frac{1}{3}}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/igcse-further-maths-19/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-further-maths-19/notes.json",
+     "path": "$[43].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  },
+  {
+   "seg": "$\\begin{gathered} 3 \\sqrt{2 & = \\sqrt{25} - 8 m + m^{2}} \\\\ ( 3 \\sqrt{2} )^{2} & = 25 - 8 m + m^{2} \\\\ 18 = 25 - 8 m + m^{2} \\\\ 0 = m^{2} - 8 m + 7 \\end{gathered}$",
+   "err": "KaTeX parse error: Expected '}', got '&' at position 28: …red} 3 \\sqrt{2 &̲ = \\sqrt{25} - …",
+   "count": 1,
+   "files": [
+    "apps/hub/content/igcse-further-maths-19/notes.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-further-maths-19/notes.json",
+     "path": "$[55].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 10,
+   "closes": 10
+  },
+  {
+   "seg": "$\\begin{gathered} x = \\frac{2 \\pm \\sqrt{20}{2} \\\\ = \\frac{2 \\pm \\sqrt{4} \\times 5} }{2} \\\\ = \\frac{2 \\pm \\sqrt{4} \\sqrt{5} }{2} \\\\ = \\frac{2 \\pm 2 \\sqrt{5} }{2} \\end{gathered}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at position 83: …t{4} \\times 5} }̲{2} \\\\ = \\frac{…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[22].questions[47].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 15,
+   "closes": 15
+  },
+  {
+   "seg": "$H_{0 } = \\frac{c \\lambda_{1}{d ( \\lambda_{2} } - \\lambda_{1} )}$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: … \\lambda_{1} )}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/igcse-physics-modular-24-unit-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-physics-modular-24-unit-2/questions.json",
+     "path": "$[0].questions[13].parts[1].choices[1].textMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 6,
+   "closes": 6
+  },
+  {
+   "seg": "$\\LARGE r_s = 1 - \\frac {6 &Sigma; D^2}{n({n^2}-1)} $",
+   "err": "KaTeX parse error: Expected 'EOF', got '&' at position 27: …= 1 - \\frac {6 &̲Sigma; D^2}{n({…",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/biology-cambridge-international-a-level.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/biology-cambridge-international-a-level.json",
+     "path": "$.resources[215].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 3,
+   "closes": 3
+  },
+  {
+   "seg": "$pos}{$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 4: pos}̲{",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/biology-edexcel-a-a-level.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/biology-edexcel-a-a-level.json",
+     "path": "$.resources[857].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$t} = $",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 2: t}̲ = ",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/geography-cambridge-international-gcse-2027-exams.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/geography-cambridge-international-gcse-2027-exams.json",
+     "path": "$.resources[255].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$rate)^{$",
+   "err": "KaTeX parse error: Expected '}', got 'EOF' at end of input: rate)^{",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/geography-cambridge-international-gcse-2027-exams.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/geography-cambridge-international-gcse-2027-exams.json",
+     "path": "$.resources[255].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 0
+  },
+  {
+   "seg": "$. We can write this as {$",
+   "err": "KaTeX parse error: Expected '}', got 'EOF' at end of input: …write this as {",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[175].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 0
+  },
+  {
+   "seg": "$} What is the set notation for two inequalities? Let's consider the inequalities $",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 1: }̲ What is the se…",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[175].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$ We can write this in set notation as: {$",
+   "err": "KaTeX parse error: Expected '}', got 'EOF' at end of input: … notation as: {",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[175].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 0
+  },
+  {
+   "seg": "$} &#8899; {$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 1: }̲ &#8899; {",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[175].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$} What is the set notation for two inequalities? Let's consider the inequality $",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 1: }̲ What is the se…",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[175].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$ that are greater than or equal to 1 and less than or equal to 3. In set notation we can write this as {$",
+   "err": "KaTeX parse error: Expected '}', got 'EOF' at end of input: …write this as {",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[175].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 0
+  },
+  {
+   "seg": "$}. $",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 1: }̲. ",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[175].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$. We can write this in set notation as: {$",
+   "err": "KaTeX parse error: Expected '}', got 'EOF' at end of input: … notation as: {",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[175].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 0
+  },
+  {
+   "seg": "$} &#8745; {$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 1: }̲ &#8745; {",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[175].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$ {$",
+   "err": "KaTeX parse error: Expected '}', got 'EOF' at end of input:  {",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[176].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 0
+  },
+  {
+   "seg": "$} Where {$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 1: }̲ Where {",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[176].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$} means 'all values of $",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 1: }̲ means 'all val…",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[176].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$&#8484;+} What is the set of real numbers? The set of real numbers is written with the symbol &#8477;. If a number $",
+   "err": "KaTeX parse error: Expected 'EOF', got '&' at position 1: &̲#8484;+} What i…",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[177].content.topicNotes"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$\\text{Angle} = number of possible outcomes}}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 43: …ssible outcomes}̲}",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[314].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 3
+  },
+  {
+   "seg": "$.\n- The magnitude of a column vector + 16} = \\sqrt{25} = 5$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 42: …umn vector + 16}̲ = \\sqrt{25} = …",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[318].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$ where x is the horizontal component and y is the vertical component.\n- Vectors can also be written using bold letters (e.g. **a**) or with an arrow above two letters \\\\ -2 \\end{pmatrix}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '\\end' at position 174: … letters \\\\ -2 \\̲e̲n̲d̲{pmatrix}",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[319].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 1,
+   "closes": 1
+  },
+  {
+   "seg": "$\\begin{pmatrix} a \\\\ b \\end{pmatrix} - \\begin{pmatrix} c \\\\ d $",
+   "err": "KaTeX parse error: Expected & or \\\\ or \\cr or \\end at end of input: …matrix} c \\\\ d ",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[319].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 3,
+   "closes": 3
+  },
+  {
+   "seg": "$ is a horizontal line number of outcomes}}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 41: …ber of outcomes}̲}",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[322].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 2
+  },
+  {
+   "seg": "$x = \\frac{-b given by $",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …ac{-b given by ",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[323].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 0
+  },
+  {
+   "seg": "$, the range is {−1, \\sin(x)$",
+   "err": "KaTeX parse error: Expected '}', got 'EOF' at end of input: …is {−1, \\sin(x)",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[337].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 0
+  },
+  {
+   "seg": "$, cancel common factors carefully using the laws of indices.\n\n**Estimated Mean from Grouped Frequency Tables**\n- To estimate the mean from grouped data, use the midpoint of each class cm} = 10\\text{ mm}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 187: …f each class cm}̲ = 10\\text{ mm}",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[411].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$P(A) = \\frac{\\text{number of favourable outcomes}}{\\text{total number of possible events do not affect each other's outcomes, so $",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …s outcomes, so ",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[751].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 4,
+   "closes": 2
+  },
+  {
+   "seg": "$.\n- Congruent figures have exactly the same shape and size, meaning all corresponding sides and angles are equal.\n\n**Parallel Lines and Transversals**\n- When a transversal crosses two parallel lines, - y_1}{x_2 - x_1}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 206: …el lines, - y_1}̲{x_2 - x_1}",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[820].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 2
+  },
+  {
+   "seg": "$\\text{Energy} = \\text{Power} \\times \\text{Time}}$",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 48: …mes \\text{Time}}̲",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[843].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 3,
+   "closes": 4
+  },
+  {
+   "seg": "$P(\\text{event}) = \\frac{\\text{number of favourable outcomes}}{\\text{total exclusive events.\n\n**Ratio, Proportion & Rates of Change**\n- Ratio compares two or more quantities and can be simplified in the same way as fractions.\n- Direct proportion means that as one quantity increases, another increases at the same rate, expressed as $",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …, expressed as ",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[847].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 5,
+   "closes": 3
+  },
+  {
+   "seg": "$180° = \\pi \\text{ from degrees to radians, multiply by $",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …s, multiply by ",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[884].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 0
+  },
+  {
+   "seg": "$b`z)</tex> on both sides: <tex>v = \\frac{x}{$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …x>v = \\frac{x}{",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[188].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 2,
+   "closes": 1
+  },
+  {
+   "seg": "$b</tex>: <tex>y = \\frac{$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …<tex>y = \\frac{",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-igcse-higher.json",
+     "path": "$.resources[190].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 0
+  },
+  {
+   "seg": "$t2 = \\frac{$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: t2 = \\frac{",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[204].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 1,
+   "closes": 0
+  },
+  {
+   "seg": "$t2} = $",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 3: t2}̲ = ",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[204].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  },
+  {
+   "seg": "$prr \\times \\frac{1}{$",
+   "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …times \\frac{1}{",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[204].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 2,
+   "closes": 1
+  },
+  {
+   "seg": "$x} = $",
+   "err": "KaTeX parse error: Expected 'EOF', got '}' at position 2: x}̲ = ",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/science-double-award-biology-edexcel-igcse.json",
+     "path": "$.resources[532].content.markScheme"
+    }
+   ],
+   "braceUnbalanced": true,
+   "opens": 0,
+   "closes": 1
+  }
+ ],
+ "missingArg": [
+  {
+   "seg": "$______\n- $",
+   "err": "KaTeX parse error: Expected group after '_' at position 1: _̲_____\n- ",
+   "count": 8,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[896].content.quizSummary"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[896].content.quizSummary"
+    },
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[896].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 0,
+   "closes": 0
+  },
+  {
+   "seg": "$\n\n**[1]**\n\n> *Rearrange by taking the tenth root of both sides.*\n\n`| ( 1 + x / 100 ) ^ 10 | = (638.3)/(550) | | _ _ _ | 1 + x / 100 | = sqrt index 10 of (638.3)/(550) ) | |`\n\n**[1]**\n\n> *Solve the equation by subtracting 1 and multiplying by 100.*\n\n`table columnalign right center left columnspacing 0px end | x | = 100 ( sqrt index 10 of (638.3)/(550) ) - 1 ) | | _ _ _ | _ = 1.50004... | |`\n\n> *Round the final answer appropriately.*\n\n$",
+   "err": "KaTeX parse error: Expected group after '_' at position 113: …8.3)/(550) | | _̲ _ _ | 1 + x / …",
+   "count": 3,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+    "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+    "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-25-extended/questions.json",
+     "path": "$[36].questions[42].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-18-higher/questions.json",
+     "path": "$[0].questions[32].parts[0].solutionMd"
+    },
+    {
+     "file": "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/questions.json",
+     "path": "$[16].questions[22].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 0,
+   "closes": 0
+  },
+  {
+   "seg": "$million)\n\n2021 85 12 73\n\n2022 92 14 78\n\n2023 98 15 83\n\nLMN is considering expanding its operations to include international shipping services. This would require significant investment in new equipment and staff training. The company's management team is divided on whether this expansion is the right move.\n\nThe company currently employs 500 people across its 10 warehouses. LMN prides itself on its efficient operations and use of technology to track shipments and manage inventory.\n\nRecent economic challenges in Country X have led to increased fuel costs and a slight downturn in retail sales. However, there has been growth in e-commerce, which presents new opportunities for logistics providers.\n\nEmail from LMN's HR Director to the CEO\n\nTo: CEO\n\nFrom: HR Director\n\nDate: 15 September 2024\n\nSubject: Staff Training for Expansion\n\n__________________________________________________\n\nIf we decide to expand into international shipping, we will need to implement a comprehensive training programme for our staff. This will include:\n\n- New software systems training\n- International shipping regulations and customs procedures\n- Foreign language courses for key personnel\n\nInitial estimates suggest this training will cost approximately \\$",
+   "err": "KaTeX parse error: Expected group after '_' at position 837: …for Expansion\n\n_̲_______________…",
+   "count": 2,
+   "files": [
+    "apps/hub/content/cie-igcse-business-23/questions.json",
+    "apps/hub/content/cie-igcse-business-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-business-23/questions.json",
+     "path": "$[0].questions[11].parts[0].problemMd"
+    },
+    {
+     "file": "apps/hub/content/cie-igcse-business-25/questions.json",
+     "path": "$[24].questions[13].parts[0].problemMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 0,
+   "closes": 0
+  },
+  {
+   "seg": "$\n\n**[1]**\n\n> *Rearrange by taking the tenth root of both sides*\n\n`| ( 1 + x / 100 ) ^ 10 | = (638.3)/(550) | | _ _ _ | 1 + x / 100 | = sqrt index 10 of (638.3)/(550) ) | |`\n\n**[1]**\n\n> *Solve the equation by subtracting 1 and multiplying by 100*\n\n`table columnalign right center left columnspacing 0px end | x | = 100 ( sqrt index 10 of (638.3)/(550) ) - 1 ) | | _ _ _ | _ = 1.50004... | |`\n\n> *Round the final answer appropriately*\n\n$",
+   "err": "KaTeX parse error: Expected group after '_' at position 112: …8.3)/(550) | | _̲ _ _ | 1 + x / …",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-igcse-maths-international-maths-23-extended/questions.json",
+     "path": "$[40].questions[23].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 0,
+   "closes": 0
+  },
+  {
+   "seg": "$______\n\n**Practice Questions: 10 Consecutive Numbers (Set 2)**\n- $",
+   "err": "KaTeX parse error: Expected group after '_' at position 1: _̲_____\n\n**Practi…",
+   "count": 1,
+   "files": [
+    "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/public/seneca-bundles/maths-edexcel-a-level-pure-maths.json",
+     "path": "$.resources[896].content.quizSummary"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 0,
+   "closes": 0
+  }
+ ],
+ "undefCmd": [
+  {
+   "seg": "$ are perpendicular, and therefore so are the normals to the curves.\n\n…and intersect on the circle \\[x^2+y^2=(n-1)^2.\\]\n\nUsing our shorthand\n\n\\(A\\)\n\nand\n\n\\(P\\)\n\nfrom above and also defining\n\n\\(B=\\dfrac{n-1}{2}t\\)\n\n, we can write the equations of the two normals as\n\n\\[\\begin{align} x\\cos A + y\\sin A &= (n-1)\\cos B \\label{eq:n_t}\\\\ \\text{and}\\quad x\\cos (A+P) + y\\sin (A+P) &= (n-1)\\cos (B+P-\\pi) \\label{eq:n_t+pi} \\end{align}\\]\n\nThe form of the equation of the circle we are aiming for implies that we want to square these equations, but first let’s expand the \\((A+P)\\) expressions.\n\nUsing the compound angle identities we have\n\n\\[\\begin{align*} \\cos(A+P) &= \\cos A \\cos P - \\sin A \\sin P = - \\sin A \\sin P \\\\ \\sin(A+P) &= \\sin A \\cos P + \\cos A \\sin P = \\cos A \\sin P \\\\ \\cos(B+P-\\pi) &= \\cos B \\cos (P-\\pi) - \\sin B \\sin(P-\\pi) = \\sin B \\sin P \\end{align*}\\]\n\nWe have used the facts that \\(\\cos P = \\cos(P-\\pi)=0\\) and \\(\\sin(P-\\pi) = -\\sin P\\). Notice also that \\(\\sin P\\) is either \\(1\\) or \\(-1\\) depending on the value of \\(n\\).\n\nEquation\n\n\\(\\eqref{eq:n_t+pi}\\)\n\nthen becomes\n\n\\[\\begin{align*} -x\\sin A \\sin P + y\\cos A \\sin P &= (n-1)\\sin B \\sin P \\\\ \\implies\\quad -x\\sin A + y\\cos A &= (n-1)\\sin B \\end{align*}\\]\n\nSquaring this equation and equation\n\n\\(\\eqref{eq:n_t}\\)\n\nthen adding the results we get\n\n\\[\\begin{align*} x^2\\sin^2 A + y^2\\cos^2A-2xy\\sin A\\cos A &= (n-1)^2\\sin^2 B \\\\ \\text{and}\\quad x^2\\cos^2 A + y^2\\sin^2A+2xy\\sin A\\cos A &= (n-1)^2\\cos^2 B \\\\ \\implies\\quad x^2\\left(\\sin^2A+\\cos^2A\\right) + y^2\\left(\\cos^2A+\\sin^2A\\right) &= (n-1)^2\\left(\\sin^2B+\\cos^2B\\right) \\\\ \\implies\\quad x^2 + y^2 &= (n-1)^2 \\end{align*}\\]\n\nas required.\n\nThis applet illustrates what is described here. Use the sliders to vary $",
+   "err": "KaTeX parse error: Undefined control sequence: \\[ at position 99: … on the circle \\̲[̲x^2+y^2=(n-1)^2…",
+   "count": 5,
+   "files": [
+    "apps/hub/content/cie-a-level-maths-20-pure-2/ugm-resources.json",
+    "apps/hub/content/cie-a-level-maths-20-pure-3/ugm-resources.json",
+    "apps/hub/content/cie-as-maths-20-pure-2/ugm-resources.json",
+    "apps/hub/content/ial-maths-20-pure-3/ugm-resources.json",
+    "apps/hub/content/ial-maths-20-pure-4/ugm-resources.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-maths-20-pure-2/ugm-resources.json",
+     "path": "$.resources[130].bodyMd"
+    },
+    {
+     "file": "apps/hub/content/cie-a-level-maths-20-pure-3/ugm-resources.json",
+     "path": "$.resources[101].bodyMd"
+    },
+    {
+     "file": "apps/hub/content/cie-as-maths-20-pure-2/ugm-resources.json",
+     "path": "$.resources[130].bodyMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 16,
+   "closes": 16
+  },
+  {
+   "seg": "$\\quantity{60}{km/h}$",
+   "err": "KaTeX parse error: Undefined control sequence: \\quantity at position 1: \\̲q̲u̲a̲n̲t̲i̲t̲y̲{60}{km/h}",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-maths-20-pure-3/ugm-resources.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-maths-20-pure-3/ugm-resources.json",
+     "path": "$.coverage.nonOverlapByReference.rows[50].title"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 2,
+   "closes": 2
+  },
+  {
+   "seg": "$\\DeltaT=2.1068\\times10^{-4}^{\\circ}C$",
+   "err": "KaTeX parse error: Undefined control sequence: \\DeltaT at position 1: \\̲D̲e̲l̲t̲a̲T̲=2.1068\\times10…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/cie-a-level-physics-25/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/cie-a-level-physics-25/questions.json",
+     "path": "$[40].questions[9].parts[0].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 2,
+   "closes": 2
+  },
+  {
+   "seg": "$P(A\\capB)=____\\timesP(B)$",
+   "err": "KaTeX parse error: Undefined control sequence: \\capB at position 4: P(A\\̲c̲a̲p̲B̲)=____\\timesP(B…",
+   "count": 1,
+   "files": [
+    "apps/hub/content/ial-maths-20-statistics-1/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/ial-maths-20-statistics-1/questions.json",
+     "path": "$[4].questions[3].parts[0].problemMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 0,
+   "closes": 0
+  },
+  {
+   "seg": "$\\int_{0}^{0.2} \\text{g} ( x ) \\text{end \\text{text d} x \\approx 0.5324 text} ( 4 \\mathrm{s} . \\mathrm{f} . )$",
+   "err": "KaTeX parse error: Undefined control sequence: \\approx at position 57: …text{text d} x \\̲a̲p̲p̲r̲o̲x̲ ̲0.5324 text} ( …",
+   "count": 1,
+   "files": [
+    "apps/hub/content/igcse-further-maths-19/questions.json"
+   ],
+   "paths": [
+    {
+     "file": "apps/hub/content/igcse-further-maths-19/questions.json",
+     "path": "$[17].questions[3].parts[2].solutionMd"
+    }
+   ],
+   "braceUnbalanced": false,
+   "opens": 7,
+   "closes": 7
+  }
+ ]
+}
