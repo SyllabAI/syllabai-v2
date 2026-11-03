@@ -1,0 +1,205 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_PZZFkywYbmP9bwyh",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "13856f0774d8a83250592907afa742e87b76b346cbe588875a357033279ccf9d",
+    "pinnedRef": "502107a3fcacad2340d0ac5e66b5ad93ef32800c"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_PZZFkywYbmP9bwyh",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Electrical Power & Mains Electricity",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-3-electrical-power-and-mains-electricity/2-3-1-electrical-power-and-fuses",
+    "specAnchors": [
+      {
+        "code": "2.15",
+        "text": "know and use the relationship between power, current and voltage: power = current × voltage"
+      },
+      {
+        "code": "2.4",
+        "text": "and apply the relationship to the selection of appropriate fuses"
+      }
+    ],
+    "primer": {
+      "text": "Every mains appliance carries a power rating, and that rating governs both the current it draws and the fuse that guards it. This note builds the relationship between power, current and voltage, shows the formula-triangle shortcut for rearranging it, and then applies the same equation to choosing a safe fuse size from the standard ratings.",
+      "prerequisiteSubtopic": "Electrical Power & Mains Electricity"
+    },
+    "modules": [
+      {
+        "id": "rn_PZZFkywYbmP9bwyh::L1",
+        "title": "Electrical power",
+        "sourceHeadings": [
+          "Electrical power"
+        ],
+        "specRefs": [
+          "2.15"
+        ],
+        "opening": "Power measures how fast a device moves energy: the more joules it transfers each second, the more powerful it is. For an electrical device the power rises with both the voltage across it and the current through it. This lesson assembles the equation P = I × V, fixes the watt as a joule per second, and shows how the formula triangle hands you the two rearrangements.",
+        "keyPoints": [
+          "Power is the rate of energy transfer — the amount of energy a device moves each second.",
+          "A device's power grows with both the voltage across it and the current through it.",
+          "The equation of record is P = I × V, with power in watts, current in amperes and voltage in volts.",
+          "One watt means one joule of energy transferred per second.",
+          "A formula triangle gives the rearrangements V = P ÷ I and I = P ÷ V without any algebra."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Power is how quickly energy is moved; the equation P = I × V ties it to the current and the voltage.",
+            "analogy": "Think of a water wheel: the more water per second (current) and the bigger the drop (voltage), the faster it grinds.",
+            "examPointer": "Always write the unit of every quantity when substituting — W, A and V keep the answer in watts."
+          },
+          "medium": {
+            "restatement": "The watt is a derived unit: one joule per second, so the per-second view of power is built into the equation itself.",
+            "analogy": "A payslip: the voltage is the hourly rate, the current is the hours worked, and the power is the money earned per day.",
+            "examPointer": "The formula triangle hides the correct product or quotient — cover the unknown and read off the relationship."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_PZZFkywYbmP9bwyh::L1::Q1",
+          "rn_PZZFkywYbmP9bwyh::L1::Q2",
+          "rn_PZZFkywYbmP9bwyh::L1::Q3",
+          "rn_PZZFkywYbmP9bwyh::L1::Q4",
+          "rn_PZZFkywYbmP9bwyh::L1::Q5",
+          "rn_PZZFkywYbmP9bwyh::L1::Q6",
+          "rn_PZZFkywYbmP9bwyh::L1::Q7",
+          "rn_PZZFkywYbmP9bwyh::L1::Q8",
+          "rn_PZZFkywYbmP9bwyh::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_PZZFkywYbmP9bwyh::L2",
+        "title": "Selecting fuses",
+        "sourceHeadings": [
+          "Selecting fuses",
+          "Fuse sizes"
+        ],
+        "specRefs": [
+          "2.4"
+        ],
+        "opening": "A fuse is the sacrificial guard in an appliance: a thin wire that melts when the current outruns the safe value, breaking the circuit before damage spreads. Choosing one is a two-step habit — compute the current the appliance needs, then step one size up from the standard ratings.",
+        "keyPoints": [
+          "A fuse protects an appliance by melting its thin wire when the current grows too large.",
+          "Melting breaks the circuit, so the surge cannot damage the equipment or start a fire.",
+          "Household fuses come in standard ratings of 3 A, 5 A and 13 A.",
+          "The current an appliance needs is found from I = P ÷ V using its power and the mains voltage.",
+          "Always fit the next size up: a rating too low blows needlessly, one too high reacts too late."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A fuse melts when the current is too big, which breaks the circuit and stops the damage.",
+            "analogy": "Like a sacrificial link in a chain — it snaps first so the rest of the chain survives.",
+            "examPointer": "Fuse questions want two steps: find the current, then pick the next standard rating up."
+          },
+          "medium": {
+            "restatement": "The melting point of the wire is calibrated by its rating, so the fuse tolerates the working current but not a fault surge.",
+            "analogy": "A nightclub doorman with a strict cap: a slightly larger crowd than usual gets in, a surge does not.",
+            "examPointer": "State why the other two ratings fail — too low blows at switch-on, too high lets the surge through."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_PZZFkywYbmP9bwyh::L2::Q1",
+          "rn_PZZFkywYbmP9bwyh::L2::Q2",
+          "rn_PZZFkywYbmP9bwyh::L2::Q3",
+          "rn_PZZFkywYbmP9bwyh::L2::Q4",
+          "rn_PZZFkywYbmP9bwyh::L2::Q5",
+          "rn_PZZFkywYbmP9bwyh::L2::Q6",
+          "rn_PZZFkywYbmP9bwyh::L2::Q7",
+          "rn_PZZFkywYbmP9bwyh::L2::Q8",
+          "rn_PZZFkywYbmP9bwyh::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "power",
+          "definition": "The rate of energy transfer — the energy a device moves per second, measured in watts.",
+          "firstLesson": 1
+        },
+        {
+          "term": "watt",
+          "definition": "The unit of power: one joule of energy transferred each second.",
+          "firstLesson": 1
+        },
+        {
+          "term": "fuse",
+          "definition": "A safety device whose thin wire melts when the current is too large, breaking the circuit.",
+          "firstLesson": 2
+        },
+        {
+          "term": "rating",
+          "definition": "The current a fuse tolerates before melting; domestic plugs use 3 A, 5 A and 13 A.",
+          "firstLesson": 2
+        },
+        {
+          "term": "formula triangle",
+          "definition": "A memory aid that reproduces the rearrangements of a three-term relationship.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "Calculate the potential difference across a 48 W electric motor carrying a current of 4 A.",
+        "steps": [
+          "List the knowns: power P = 48 W and current I = 4 A.",
+          "State the linking equation: P = I × V.",
+          "Rearrange for voltage: V = P ÷ I.",
+          "Substitute: V = 48 ÷ 4 = 12 V."
+        ],
+        "finalAnswer": "The potential difference across the motor is 12 V."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/2c7dc7ab465a-piv-triangle-2.png",
+        "alt": "PIV triangle (2), IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Electrical power",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Power, current, voltage formula triangle",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/825aecace7da-fuse.png",
+        "alt": "Fuse, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Selecting fuses",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "The circuit symbol for a fuse - take care not to confuse this with a resistor",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

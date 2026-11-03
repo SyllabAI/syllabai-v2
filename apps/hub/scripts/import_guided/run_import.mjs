@@ -2406,6 +2406,130 @@ const FEEDS = {
       ) && !!a.path.split("/").pop();
     },
   },
+  "physics-wave5-v24": {
+    manifest: "hub-import-manifest-v24.json",
+    manifest_version: 24,
+    // NEW-SUBJECT wave-5 (resources PR #289, merge-of-record 909d3116e2077d3e951cfc8fdc66affffc089843; runbook §1 + B6
+    // continue-global at v24 — CUMULATIVE over the igcse-physics-19 pack, the chemistry
+    // v8..v17 pattern, the physics v18..v23 pattern). W5 of the frozen B4 partition: the
+    // 2-3 electrical-power-and-mains-electricity + 2-4 static-electricity
+    // subtopics, 9 notes. The INT-3 carries ALL 40 pack rows (the v19 index-regression
+    // lesson of record), so the runner-owned guided-import.json re-issue keeps the whole
+    // flow. The 62 prior-pack artifacts are re-pinned byte-identical (1 pilot @ v18 shas +
+    // 6 wave-1 @ v19 shas + 9 wave-2 @ v21 shas + 7 wave-3 @ v22 shas + 16 wave-4 @ v23
+    // shas); the 18 wave-5 artifacts are FIRST issues @ the commit-A pin 502107a3. ZERO
+    // chemistry bytes touched, ZERO authored prior-pack bytes changed. Mid-flight races
+    // disclosed: resources main moved b1ea377e -> 63c23d0a -> 8b7b2ea1 during lane setup
+    // (parallel T-OEQ-PHYS-FORMAT-1 lane, zero SME-GuidedLessons overlap per census); the
+    // promo parent is the drifted main 8b7b2ea1 via the disclosed union-merge 72b0e4b6.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 40, "sme-question-package": 40 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-5 chain — import the igcse-physics-19 wave-5 tranche of record (9 notes: rn_PZZFkywYbmP9bwyh '2-3-1 Electrical Power & Fuses' / rn_FfvmFrDdhSsMk9rm '2-3-2 Calculating Energy Transfers' / rn_kxw7Ms4Pr7dQJykY '2-3-3 Electrical Safety' / rn_z4nNPFw97V9fDkyS '2-3-4 Electricity & Heat' / rn_NgxJhPpm5Zs7kFSz '2-3-5 AC & DC' / rn_qG9dxcQrRJJVDQf7 '2-4-1 Conductors & Insulators' / rn_ws8NtMW3QwCs73Gh '2-4-2 Core Practical: Charging by Friction' / rn_NhRw6hdrVD4vmNJw '2-4-3 Electric Charge' / rn_W3QnDKVK9mMQ3Mhg '2-4-4 Uses & Dangers of Static Electricity'; 18 lessons / 162 checks = 90 MCQ + 36 recall + 18 explain-why + 18 application) with the 62 prior-pack artifacts re-pinned byte-identical — CUMULATIVE pack 40 notes / 80 lessons / 720 checks, manifest v24. Declared hub landing = 18/18 written + 62/62 identical-exists + the runner-owned guided-import.json index re-issued with all 40 rows; zero chemistry bytes touched. Operator ignition trace 1a19f5a4a25fe011 ('Proceed with wave-5'), execution trace 1a19f5a4a25fe011 (single-window execution, disclosed).",
+    promo: {
+      // promotion commit of record = the resources PR #289 merge-of-record (commit A 502107a3 +
+      // commit C dd3e4f08; the merge commit message carries the execution trace verbatim;
+      // merge parents 8b7b2ea1 = the drifted main, 72b0e4b6 = the disclosed union-merge lane head)
+      commit: "909d3116e2077d3e951cfc8fdc66affffc089843",
+      tree: "3375bab1f5d746baf3a21f0f0e95c370a2d8c8c4",
+      parent: "8b7b2ea1068a6936efa113db7efb87e64fe4b9b3",
+      trace: "1a19f5a4a25fe011",
+    },
+    integration_branch: null, // ancestry of record — resources PR #289 merged before this hub run
+    artifact_pin: "502107a3fcacad2340d0ac5e66b5ad93ef32800c", // wave-5 commit A — the source-0.6 generation pin of record for the 9 wave-5 notes
+    artifact_pins_by_note: {
+      // prior-pack provenance of record (G-D pinnedRef, per-note law): the stage-A pilot
+      // keeps its v18 source pin, the six wave-1 notes keep their v19 source pin, the nine
+      // wave-2 notes keep their v21 source pin, the seven wave-3 notes keep their v22
+      // source pin, the eight wave-4 notes keep their v23 source pin (their wave-4 commit A
+      // — the artifact-embedded pinnedRef of record; the trace-bearing merge is the
+      // PROMOTION commit, not the provenance pin) — re-pinning them to the wave-5 commit
+      // would falsify their provenance
+      rn_RpyMnS5nqWSRWXXG: "7d493985c7729f30c2186e7e61a713ceacc96517",
+      rn_k9wr3prcgSBg5vfw: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_pfndTqR6DTJGZ8xQ: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_CpJZQWzbvMcM8fw3: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_5hfYYFrc2XjMJCrq: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_GxNWbSMqkTN4zgZB: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_ZgGMNrRGBKvYxxFf: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_nyV7C6zmyKXWJjKg: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_4zdmGRWTg5ksK44N: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_K3p2R3ykwwvHV9dp: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_gDy2qTkY26r5sMtd: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_2R3NrjGfJJY29Hzv: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_ZCGJsYwy6S6FbbbW: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_Mrfn29ZgQMq8th5P: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_kN63sqWsc9QdHSVx: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_nC3BswtJzYw8k6nX: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_pqp4mfpHzGVtrjTT: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_NfCjFmPfmMQ8pQSw: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_8wqvPtsCCh3gdJN5: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_RQK2MW3zRPNNzwtc: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_jzQZQcPRQkJvdYwJ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_zn4NVCRcTSNv8sRZ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_TPDdhwDYsrWgQB7R: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_NZ5D2Mx9SXQY98wy: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_BcxDP3RzXk3k7rwf: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_64pQyK4tm9P9rdKN: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_BFQBSmVz2xFZVsB6: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_ynsstfBQngnx2pgq: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_PyxMmTd6S9pMDTt6: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_WzQZfyNNFFFFghbF: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_gYqbXsJPfrqtg5yQ: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_PZZFkywYbmP9bwyh: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_FfvmFrDdhSsMk9rm: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_kxw7Ms4Pr7dQJykY: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_z4nNPFw97V9fDkyS: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_NgxJhPpm5Zs7kFSz: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_qG9dxcQrRJJVDQf7: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_ws8NtMW3QwCs73Gh: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_NhRw6hdrVD4vmNJw: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_W3QnDKVK9mMQ3Mhg: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+    },
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 130 cumulative figures (9 pilot + 16 wave-1 + 25 wave-2 + 25 wave-3 + 35 wave-4 + 20 wave-5), all module-mapped
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave5-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave5-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave5-survivors/hub-import-manifest-v24.json",
+      int3: "/home/z/my-project/scripts/physics-wave5-survivors/INT-3-transform-record-physics-wave5.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261103-physics-wave5-v24.json`,
+    identity: {
+      notes: 40,
+      lessons: 80,
+      checks: 720,
+      keyPoints: 402,
+      distractors: 1200,
+      glossaryTerms: 190,
+      figures: 130,
+      figures_module_mapped: 130,
+      figures_note_level: 0,
+      workedExamples_populated: 23,
+      workedExamples_null: 17,
+      authored_chars_conserved: 453663,
+    },
+    artifact_count: 80,
+    note_count: 40,
+    wave_count: 6,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v24 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
 };
 
 const FEED_ID = process.env.FEED || "fullcorpus-v2";
