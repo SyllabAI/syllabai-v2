@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-kg_f8ma_generate.py — T-KG-PRE-6 (F8 rollout batch four) fresh-web startup tool.
+kg_f8ma_generate.py — F8 rollout fresh-web startup tool (batch four
+T-KG-PRE-6 / batch five T-KG-PRE-7).
 
 For a course whose served spine is a pure tree (0 pre edges), installs the
-F8 lane's AI_SUGGESTED concept web (authored in f8ma_lattice_0580e.py /
-f8ma_lattice_0580c.py / f8ma_lattice_9709p1.py) and exports the pre edges by
-the CALIBRATED law of record — the exact export rule of
-scripts/kg_f8al_project.py v1.0 (anchor cross-product, no self-loops, in-order
-pairs only, reversed dropped outright and counted), imported from that module
-rather than re-implemented so the law cannot drift.
+F8 lane's AI_SUGGESTED concept web (authored in f8ma_lattice_*.py) and
+exports the pre edges by the CALIBRATED law of record — the exact export
+rule of scripts/kg_f8al_project.py v1.0 (anchor cross-product, no self-loops,
+in-order pairs only, reversed dropped outright and counted), imported from
+that module rather than re-implemented so the law cannot drift.
 
 Fail-closed end to end: every input law (0-unmapped anchors, basis
 vocabulary, web pair hygiene, snapshot counts, tree law, endpoint law,
@@ -41,7 +41,15 @@ def fail(msg: str) -> None:
     sys.exit(2)
 
 
-def install_web(slug: str, concepts: dict, edges: list, lane_tag: str) -> None:
+def install_web(
+    slug: str,
+    concepts: dict,
+    edges: list,
+    lane_tag: str,
+    batch: str = "four",
+    task: str = "T-KG-PRE-6",
+    exporter_ver: str = "v1.0",
+) -> None:
     spine, point_ids, prefix = P.load_spine(slug)
     if any(e[2] == "pre" for e in spine["edges"]):
         fail(f"{slug}: already carries pre edges — startup-only")
@@ -86,7 +94,7 @@ def install_web(slug: str, concepts: dict, edges: list, lane_tag: str) -> None:
     # Phase D — snapshot (schema of record, T-KG-PRE-2 shape)
     snap = {
         "source": (
-            f"AI concept-web startup run (F8 rollout batch four; T-KG-PRE-6, "
+            f"AI concept-web startup run (F8 rollout batch {batch}; {task}, "
             f"lane {lane_tag}). The web is the AI_SUGGESTED, UNVALIDATED "
             f"concept lattice authored by the F8 lane for this syllabus, "
             f"every anchor machine-verified against the served spine's point "
@@ -137,7 +145,7 @@ def install_web(slug: str, concepts: dict, edges: list, lane_tag: str) -> None:
     m = new_spine["meta"]
     m["prerequisites"] = {
         "source": (
-            f"AI concept web (F8 rollout batch four, T-KG-PRE-6, lane "
+            f"AI concept web (F8 rollout batch {batch}, {task}, lane "
             f"{lane_tag}): AI_SUGGESTED — unvalidated, labelled INFERRED "
             f"PROTOTYPE by the renderer, never in prereqValidated."
         ),
@@ -146,7 +154,7 @@ def install_web(slug: str, concepts: dict, edges: list, lane_tag: str) -> None:
     }
     m["exporter"] = (
         "scripts/kg_export.py v1.6 web tier via scripts/kg_f8ma_generate.py "
-        f"v1.0 (fresh {lane_tag} web, anchor verification + reversed-pair "
+        f"{exporter_ver} (fresh {lane_tag} web, anchor verification + reversed-pair "
         "governance; law imported from scripts/kg_f8al_project.py)"
     )
     m["generatedUtc"] = now
@@ -229,6 +237,65 @@ def main() -> None:
         from f8ma_lattice_0580c import CONCEPTS, EDGES
 
         install_web(args.course, CONCEPTS, EDGES, "0580C")
+    elif args.course in ("cie-as-maths-20-pure-2", "cie-a-level-maths-20-pure-2"):
+        from f8ma_lattice_9709p2 import CONCEPTS, EDGES
+
+        install_web(
+            args.course, CONCEPTS, EDGES, "9709P2",
+            batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
+        )
+    elif args.course == "cie-a-level-maths-20-pure-3":
+        from f8ma_lattice_9709p3 import CONCEPTS, EDGES
+
+        install_web(
+            args.course, CONCEPTS, EDGES, "9709P3",
+            batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
+        )
+    elif args.course in ("cie-as-maths-20-mechanics", "cie-a-level-maths-20-mechanics"):
+        from f8ma_lattice_9709m import CONCEPTS, EDGES
+
+        install_web(
+            args.course, CONCEPTS, EDGES, "9709M",
+            batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
+        )
+    elif args.course in (
+        "cie-as-maths-20-probability-and-statistics-1",
+        "cie-a-level-maths-20-probability-and-statistics-1",
+    ):
+        from f8ma_lattice_9709s1 import CONCEPTS, EDGES
+
+        install_web(
+            args.course, CONCEPTS, EDGES, "9709S1",
+            batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
+        )
+    elif args.course == "cie-a-level-maths-20-probability-and-statistics-2":
+        from f8ma_lattice_9709s2 import CONCEPTS, EDGES
+
+        install_web(
+            args.course, CONCEPTS, EDGES, "9709S2",
+            batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
+        )
+    elif args.course == "cie-igcse-further-maths-additional-maths-25":
+        from f8ma_lattice_0606 import CONCEPTS, EDGES
+
+        install_web(
+            args.course, CONCEPTS, EDGES, "0606",
+            batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
+        )
+    elif args.course == "cie-igcse-maths-international-maths-23-core":
+        from f8ma_lattice_0607c import CONCEPTS, EDGES
+
+        install_web(
+            args.course, CONCEPTS, EDGES, "0607C",
+            batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
+        )
+    elif args.course == "cie-igcse-maths-international-maths-23-extended":
+        from f8ma_lattice_0607e import CONCEPTS, EDGES
+
+        install_web(
+            args.course, CONCEPTS, EDGES, "0607E",
+            batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
+        )
     else:
         fail(f"no lattice registered for {args.course}")
 
