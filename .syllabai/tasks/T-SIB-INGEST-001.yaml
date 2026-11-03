@@ -6,8 +6,12 @@ task:
     NULL-vector land + 133d-law backfill (GAP family held internal via NULL vectors), zero serving-code changes'
   owner: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b, chat 54c94863-9377-41e2-923e-dd45fe835c1a,
     operator order trace 1a1a2a0f13661c75 "start ingesting" + "Go with your recommendations")
-  status: 'RUN-001 IN_PROGRESS on THIS BRANCH — dry receipt CLEAN (95 docs / 1,593 chunks / sha 1,593:1,593);
-    migration 0023 authored; apply + backfill await operator gates (see needs)'
+  status: 'RUN-002 IN_PROGRESS on THIS BRANCH — run-001 dry CLEAN + migration 0023 authored; run-002 Gate-A
+    REHEARSAL CLEAN (PGlite disposable: 24 migrations, apply 95/1,593, serving-SQL 14/14 in-scope, foreign 0,
+    GAP unreachable) via PR-body receipt; apply script of record (sib-ingest.ts, 093/133b law: 0600 db file,
+    COW-proof probe, ONE transaction, postverify-in-transaction) + Gate-B driver (backfill-4ch1.sh +
+    sib-row-ids.ts, GAP excluded by enumeration law, resume-safe) LANDED; execution awaits: prod DSN (A-apply),
+    supported egress (B — sandbox is HK-egress, Gemini location-law 400s reconfirmed), repo token (C)'
   priority: P1
   band: T-SIB-INGEST (SubjectIntelligence -> tutor RAG consumption lane)
   wave: sib-consumption-A

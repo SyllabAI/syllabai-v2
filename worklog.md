@@ -1019,3 +1019,17 @@ Work Log:
 
 Stage Summary:
 - T-SIB-INGEST-001 run-001 committed locally (0e0c11f): rulings locked, migration authored, dry receipt CLEAN. Zero prod contact, zero credential exposure. Gates: A = 093/133b write order or task-owned branch DSN; B = billed key + supported egress for the 1,457-row backfill; C = valid repo token (staged one 401s) for push + PR.
+
+---
+Task ID: T-SIB-INGEST-001 run-002 (operator order trace 1a1a2a8cf4758161: "land A+B")
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+Base commit: 5e14dc0 (this branch; NO push — gate C open)
+
+Work Log:
+- GATE-A REHEARSAL CLEAN (disposable PGlite 0.2.17 + bundled pgvector, zero prod contact; receipt + rehearse-of-record.js in run-002-rehearsal/): ALL 24 migrations 0000..0023 apply (0023 widens both kind CHECKs — RESEARCH_EVIDENCE lands); mid-chain precondition of record found + documented (0013's warehouse seed requires the REAL 4MA1 subject 763dfe2d to pre-exist); apply transaction body: 95 documents + 1,593 chunks (VALIDATED, embed_rev=2, NULL vectors), postverify exact; the vector-arm serving SQL VERBATIM: 14/14 in-scope RESEARCH_EVIDENCE rows returned, foreign scope 0 rows, GAP rows provably never embedded (136 NULL-held). 14/14 asserts green.
+- APPLY SCRIPT OF RECORD LANDED (apps/api/scripts/sib-ingest.ts, mirrors books-ingest law): dry + apply modes; fail-closed corpus re-verification (G2 sha per chunk, abort-before-DB); V53-exact subject resolution (4CH1 x 4CH1-2017, refuse when != 1 row); 093/133b gates (0600 db file enforced, COW-proof probe word, idempotency abort, ONE transaction, postverify INSIDE the transaction); receipt out.
+- GATE-B DRIVER LANDED (scripts/sib-ingest/backfill-4ch1.sh + sib-row-ids.ts): enumerates 87 serving docs (GAP excluded BY ENUMERATION LAW — executor never pointed at GAP rows), resume-safe (already-embedded skip), continue-on-fail, final census asserts gap_embedded == 0, region law header (sandbox egress = HK, Gemini 400 LOCATION_BLOCKED reconfirmed live on all 5 candidate keys; 001/002/666next are project-unbilled 403s).
+- CREDENTIALS posture: 8 keys staged repo-external 0600 (chat-transit exposed — rotate after use); GH token still 401 — push/PR blocked (gate C).
+
+Stage Summary:
+- "land A+B" executed to the last credential-free line: A = write-order ACKNOWLEDGED + rehearsed CLEAN + apply script of record ready (needs ONLY a task-owned DSN in a 0600 file, or operator execution); B = driver ready + GAP law encoded (needs ONLY supported egress + a billed key — sandbox is HK-egress, physically blocked). Zero prod contact, zero credential exposure. Gates remaining: A-exec (DSN), B-exec (egress), C (token).
