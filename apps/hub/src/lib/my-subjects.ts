@@ -69,6 +69,9 @@ export interface MySubjects {
   has: (slug: string) => boolean;
   add: (slug: string) => void;
   remove: (slug: string) => void;
+  /** D-7 undo: re-insert a removed slug at its old position (the plain
+   *  `add` appends, which would silently reorder the roster). */
+  restore: (slug: string, index: number) => void;
   toggle: (slug: string) => void;
   clear: () => void;
 }
@@ -85,6 +88,12 @@ export function useMySubjects(): MySubjects {
     writeSlugs(readSlugs().filter((s) => s !== slug));
   }, []);
 
+  const restore = useCallback((slug: string, index: number) => {
+    const cur = readSlugs().filter((s) => s !== slug);
+    cur.splice(Math.min(Math.max(index, 0), cur.length), 0, slug);
+    writeSlugs(cur);
+  }, []);
+
   const toggle = useCallback((slug: string) => {
     const cur = readSlugs();
     writeSlugs(cur.includes(slug) ? cur.filter((s) => s !== slug) : [...cur, slug]);
@@ -94,7 +103,7 @@ export function useMySubjects(): MySubjects {
 
   const has = useCallback((slug: string) => slugs.includes(slug), [slugs]);
 
-  return { slugs, has, add, remove, toggle, clear };
+  return { slugs, has, add, remove, restore, toggle, clear };
 }
 
 // ── server sync (T-TEACH-001) — the account-backed roster ──────────────────

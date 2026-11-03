@@ -18,11 +18,13 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Bot, CheckCircle2, ChevronRight, Clock, RefreshCw, Swords, XCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Markdown } from "@/components/markdown";
+import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { PartProblem } from "@/components/part-problem";
 import { SpecChip } from "@/components/provenance";
 import { getToken } from "@/lib/api";
@@ -51,6 +53,8 @@ function topicGroupOf(code: string): string {
 type Phase = "picker" | "playing" | "settled";
 
 export function BattleClient({ course }: { course: string }) {
+  const pathname = usePathname();
+  const currentSearch = useCurrentSearch();
   const signedIn = useMemo(() => getToken() !== null, []);
 
   const [addresses, setAddresses] = useState<DrillAddressesResponse | null>(null);
@@ -203,7 +207,7 @@ export function BattleClient({ course }: { course: string }) {
               evidence key to your learner account. Sign in to battle.
             </p>
             <Button asChild>
-              <Link href="/login">Sign in to battle</Link>
+              <Link href={signInHref(pathname, currentSearch)}>Sign in to battle</Link>
             </Button>
           </CardContent>
         </Card>

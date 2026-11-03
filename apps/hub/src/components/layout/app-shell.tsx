@@ -51,6 +51,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { clearIdentity, useIdentity } from "@/lib/identity";
+import { roleHome } from "@/lib/role-home";
+import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { useLastOpenedSync } from "@/lib/last-opened";
 import { useMockResultsSync } from "@/lib/mock-results";
 import { isImmersiveRoute, isViewerRoute } from "@/lib/focus-routes";
@@ -110,6 +112,10 @@ export function AppShell({
   const pathname = usePathname();
   const identity = useIdentity();
   const lastOpened = useLastOpened();
+  // A-3 (frontend-flow audit): the header's sign-in links carry ?next so
+  // the login page returns the user to the surface they left — RequireAuth's
+  // prompt already did; now every entry point does.
+  const currentSearch = useCurrentSearch();
   // T-TIER1 — the account-backed mirrors mount in the GLOBAL chrome (not the
   // dashboard): the last-opened tracker fires on course routes and the mock
   // player writes from past-papers, so the write-through listeners must live
@@ -155,7 +161,10 @@ export function AppShell({
       {!viewerRoute && (
       <header className="sticky top-0 z-40 border-b bg-background print:hidden">
         <div className="flex h-14 items-center gap-3 px-4 sm:px-6">
-          <Link href="/" className="flex items-center gap-2">
+          {/* C-5 (frontend-flow audit): the logo means "home". For a
+              signed-in user home is the role home — the marketing hero is
+              where they were just redirected away from. */}
+          <Link href={identity ? roleHome(identity) : "/"} className="flex items-center gap-2">
             <span className="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
               <Atom className="size-4" aria-hidden />
             </span>
@@ -244,7 +253,7 @@ export function AppShell({
                 <>
                   <DropdownMenuSeparator className="sm:hidden" />
                   <DropdownMenuItem asChild className="cursor-pointer sm:hidden">
-                    <Link href="/login">
+                    <Link href={signInHref(pathname, currentSearch)}>
                       <LogIn className="size-4" aria-hidden />
                       <span className="flex-1">Sign in</span>
                     </Link>
@@ -279,17 +288,26 @@ export function AppShell({
                     {identity.email} · {identity.role === "teacher" ? "Teacher" : "Student"}
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  {/* B-1 (frontend-flow audit): the menu's primary item is
+                      the role home — "My dashboard" for students, the
+                      workspace for teachers. Teachers keep the student
+                      dashboard one honest click away, labelled for what it
+                      is (the demo-to-a-class use case). */}
                   <DropdownMenuItem asChild>
-                    <Link href="/dashboard" className="cursor-pointer">
-                      <LayoutDashboard className="size-4" aria-hidden />
-                      Dashboard
+                    <Link href={roleHome(identity)} className="cursor-pointer">
+                      {identity.role === "teacher" ? (
+                        <GraduationCap className="size-4" aria-hidden />
+                      ) : (
+                        <LayoutDashboard className="size-4" aria-hidden />
+                      )}
+                      {identity.role === "teacher" ? "Teacher workspace" : "My dashboard"}
                     </Link>
                   </DropdownMenuItem>
                   {identity.role === "teacher" && (
                     <DropdownMenuItem asChild>
-                      <Link href="/teacher" className="cursor-pointer">
-                        <GraduationCap className="size-4" aria-hidden />
-                        Teacher workspace
+                      <Link href="/dashboard" className="cursor-pointer">
+                        <LayoutDashboard className="size-4" aria-hidden />
+                        Preview student view
                       </Link>
                     </DropdownMenuItem>
                   )}
@@ -308,16 +326,27 @@ export function AppShell({
                 className="gap-1.5 px-2 sm:px-3"
                 aria-label="Sign in"
               >
-                <Link href="/login">
+                <Link href={signInHref(pathname, currentSearch)}>
                   <LogIn className="size-3.5" aria-hidden />
                   <span className="hidden sm:inline">Sign in</span>
                 </Link>
               </Button>
             )}
-            <Button asChild size="sm" className="gap-1.5 px-2 sm:px-3" aria-label="Start studying">
-              <Link href="/dashboard">
+            {/* B-1 (frontend-flow audit): the persistent CTA resolves the
+                role home too — a teacher's header button opens the workspace,
+                never the student dashboard. Signed-out keeps the demo
+                target (B-2's split is Tier 1). */}
+            <Button
+              asChild
+              size="sm"
+              className="gap-1.5 px-2 sm:px-3"
+              aria-label={identity?.role === "teacher" ? "Open workspace" : "Start studying"}
+            >
+              <Link href={roleHome(identity)}>
                 <Zap className="size-3.5" aria-hidden />
-                <span className="hidden sm:inline">Start studying</span>
+                <span className="hidden sm:inline">
+                  {identity?.role === "teacher" ? "Open workspace" : "Start studying"}
+                </span>
               </Link>
             </Button>
           </div>
@@ -345,7 +374,16 @@ export function AppShell({
           <ThemeToggle variant="row" />
           <span className="text-[11px] text-muted-foreground">
             Every note, question and flashcard here is real, committed content traced to its
-            specification — and a resource that isn&apos;t ready yet is labelled, never faked.
+            specification — and a resource that isn&apos;t ready yet is labelled, never faked.{" "}
+            {/* F-1 (frontend-flow audit): the student-safe statement stays; the
+                full tier register (RULE_DERIVED / AI_SUGGESTED / DEMO_DERIVED /
+                SIMULATED) lives at /about/provenance, linked from its own room. */}
+            <Link
+              href="/about/provenance"
+              className="underline underline-offset-2 hover:text-foreground"
+            >
+              How each kind of content is checked
+            </Link>
           </span>
         </div>
         <p className="mt-2 text-xs text-muted-foreground">

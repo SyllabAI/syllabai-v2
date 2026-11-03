@@ -19,12 +19,14 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Atom, CheckCircle2, ChevronRight, RefreshCw, XCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
+import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { Switch } from "@/components/ui/switch";
 import { AnswerTextarea, answerPlaceholder } from "@/components/answer-textarea";
 import { Markdown } from "@/components/markdown";
@@ -63,6 +65,8 @@ interface SessionLogEntry {
 }
 
 export function DrillClient({ course }: { course: string }) {
+  const pathname = usePathname();
+  const currentSearch = useCurrentSearch();
   const signedIn = useMemo(() => getToken() !== null, []);
 
   const [addresses, setAddresses] = useState<DrillAddressesResponse | null>(null);
@@ -214,7 +218,7 @@ export function DrillClient({ course }: { course: string }) {
               your learner account. Sign in to drill.
             </p>
             <Button asChild>
-              <Link href="/login">Sign in to drill</Link>
+              <Link href={signInHref(pathname, currentSearch)}>Sign in to drill</Link>
             </Button>
           </CardContent>
         </Card>

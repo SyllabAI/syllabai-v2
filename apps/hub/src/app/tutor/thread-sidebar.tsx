@@ -18,12 +18,14 @@
  */
 import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import { useIdentity } from "@/lib/identity";
+import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import type { TutorSessionSummary } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { radioNav } from "@/lib/radio-nav";
@@ -91,6 +93,8 @@ export function ThreadSidebar({
 }) {
   const { toast } = useToast();
   const identity = useIdentity();
+  const pathname = usePathname();
+  const currentSearch = useCurrentSearch();
   const [query, setQuery] = useState("");
   const [renamingId, setRenamingId] = useState<string | null>(null);
   const [renameDraft, setRenameDraft] = useState("");
@@ -396,7 +400,7 @@ export function ThreadSidebar({
           </div>
         ) : (
           <Link
-            href="/login"
+            href={signInHref(pathname, currentSearch)}
             className="flex items-center gap-2 rounded-md px-1 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
           >
             <span className="flex size-7 items-center justify-center rounded-full border">
