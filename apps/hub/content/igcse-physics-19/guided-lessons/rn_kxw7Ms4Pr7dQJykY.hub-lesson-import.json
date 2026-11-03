@@ -1,0 +1,265 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_kxw7Ms4Pr7dQJykY",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "693e0994d983fc81a0a6c6682dec35fe841b30322e4749d26c4f7e8eb09b3f55",
+    "pinnedRef": "502107a3fcacad2340d0ac5e66b5ad93ef32800c"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_kxw7Ms4Pr7dQJykY",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Electrical Power & Mains Electricity",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-3-electrical-power-and-mains-electricity/2-3-3-electrical-safety",
+    "specAnchors": [
+      {
+        "code": "2.2",
+        "text": "understand how the use of insulation, double insulation, earthing, fuses and circuit breakers protects the device or user in a range of domestic appliances"
+      }
+    ],
+    "primer": {
+      "text": "Mains electricity is powerful enough to kill, so domestic appliances carry a full set of protections. This note walks through the hazards — exposed conductors, overheating cables and damp — and then the defences: insulated and double-insulated casings, the earth wire, fuses and the resettable circuit breakers that guard modern homes.",
+      "prerequisiteSubtopic": "Electrical Power & Mains Electricity"
+    },
+    "modules": [
+      {
+        "id": "rn_kxw7Ms4Pr7dQJykY::L1",
+        "title": "Live hazards: damaged insulation, overheating & damp",
+        "sourceHeadings": [
+          "Electrical safety"
+        ],
+        "specRefs": [
+          "2.2"
+        ],
+        "opening": "Mains electricity does not need to be dramatic to be dangerous: even fifty volts can deliver a serious shock. The everyday hazards are few and predictable — broken insulation exposing live conductors, cables overheating under too much current, and moisture giving the current an unexpected path. Each has a matching defence later in this note.",
+        "keyPoints": [
+          "Mains electricity can kill: even a 50 V potential difference is a serious hazard.",
+          "Touching exposed conductors through damaged insulation can give a lethal shock.",
+          "Too much current in a thin or tightly coiled cable overheats it and can melt the insulation.",
+          "Damp conditions let moisture conduct, short-circuiting devices or electrocuting users.",
+          "Warning signs mark places where electrocution is a risk."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Broken cables, overheating and water are the three everyday ways mains electricity hurts people.",
+            "analogy": "A garden hose: split casing sprays you (exposed wire), kinking it overheats the pump (coiled cable), and puddles conduct (damp).",
+            "examPointer": "Learn the three hazards by name — damaged insulation, overheating of cables, damp conditions."
+          },
+          "medium": {
+            "restatement": "Each hazard ends the same way: current reaches a person or a flammable material through a path that was never designed for it.",
+            "analogy": "Three loose guards on a machine — any one slipping lets the accident through a different gap.",
+            "examPointer": "Link each hazard to a protection: insulation, correct current rating, and dry placement or RCD-style breakers."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kxw7Ms4Pr7dQJykY::L1::Q1",
+          "rn_kxw7Ms4Pr7dQJykY::L1::Q2",
+          "rn_kxw7Ms4Pr7dQJykY::L1::Q3",
+          "rn_kxw7Ms4Pr7dQJykY::L1::Q4",
+          "rn_kxw7Ms4Pr7dQJykY::L1::Q5",
+          "rn_kxw7Ms4Pr7dQJykY::L1::Q6",
+          "rn_kxw7Ms4Pr7dQJykY::L1::Q7",
+          "rn_kxw7Ms4Pr7dQJykY::L1::Q8",
+          "rn_kxw7Ms4Pr7dQJykY::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_kxw7Ms4Pr7dQJykY::L2",
+        "title": "Double insulation & earthing the metal case",
+        "sourceHeadings": [
+          "Insulation & double insulation",
+          "Earthing"
+        ],
+        "specRefs": [
+          "2.2"
+        ],
+        "opening": "Two different appliances need two different strategies. A plastic-cased device is protected twice over — insulated wires inside a non-metallic case — so it needs no earth connection. A metal-cased device instead relies on its earth wire: a ready-made escape route that turns any fault into a blown fuse rather than a live case.",
+        "keyPoints": [
+          "Wires carry an insulating jacket, such as rubber, over their metal cores.",
+          "A double insulated appliance has insulated wires plus a non-metallic case.",
+          "Double insulated appliances need no earth wire.",
+          "A metal case touched by a live wire would electrify the case and shock the user.",
+          "The earth wire provides a low-resistance path that carries a fault surge to earth.",
+          "That surge also runs through the live wire and melts the fuse, cutting the supply."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Plastic cases guard twice; metal cases rely on an earth wire that makes the fuse blow during a fault.",
+            "analogy": "Double insulation is a coat over a jumper; earthing is a lightning conductor bolted to the roof.",
+            "examPointer": "Say why plastic cases need no earth — there is no exposed metal to become live."
+          },
+          "medium": {
+            "restatement": "Earthing converts a latent hazard into a fast circuit failure: the fault current surges down the earth path, and the same surge in the live wire opens the fuse.",
+            "analogy": "A fire drill: the alarm (surge) rings through both the escape route (earth) and the control desk (fuse), shutting the building.",
+            "examPointer": "Sequence answers: case becomes live, surge flows to earth, fuse melts, supply cut."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kxw7Ms4Pr7dQJykY::L2::Q1",
+          "rn_kxw7Ms4Pr7dQJykY::L2::Q2",
+          "rn_kxw7Ms4Pr7dQJykY::L2::Q3",
+          "rn_kxw7Ms4Pr7dQJykY::L2::Q4",
+          "rn_kxw7Ms4Pr7dQJykY::L2::Q5",
+          "rn_kxw7Ms4Pr7dQJykY::L2::Q6",
+          "rn_kxw7Ms4Pr7dQJykY::L2::Q7",
+          "rn_kxw7Ms4Pr7dQJykY::L2::Q8",
+          "rn_kxw7Ms4Pr7dQJykY::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_kxw7Ms4Pr7dQJykY::L3",
+        "title": "Fuses & circuit breakers",
+        "sourceHeadings": [
+          "Fuses & circuit breakers"
+        ],
+        "specRefs": [
+          "2.2"
+        ],
+        "opening": "Both fuses and circuit breakers cut the supply when the current outruns the safe value, but they do it differently: a fuse sacrifices a thin wire once, while a circuit breaker trips an electromagnet switch and can be reset. That speed and reusability is why breakers now guard entire homes.",
+        "keyPoints": [
+          "Both fuses and circuit breakers cut the supply when the current grows too large.",
+          "A fuse is a glass cylinder holding a thin wire that melts once.",
+          "A circuit breaker is an automatic electromagnet switch that trips above a set current.",
+          "Breakers reset and act faster, so they protect homes better than fuses.",
+          "The household 'fuse box' actually holds circuit breakers."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A fuse melts once and is replaced; a breaker trips, resets, and works again.",
+            "analogy": "A fuse is a one-time crumple zone; a breaker is a rubber bumper that springs back.",
+            "examPointer": "Comparison questions want both differences: speed and reusability."
+          },
+          "medium": {
+            "restatement": "The breaker's electromagnet responds to the magnetic pull of a large current in milliseconds, long before heating could melt a fuse wire.",
+            "analogy": "A tripwire versus a security guard: the tripwire is spent after one event, the guard simply resets the door.",
+            "examPointer": "Do not confuse the roles: the fuse wire melts, the breaker's contacts separate mechanically."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kxw7Ms4Pr7dQJykY::L3::Q1",
+          "rn_kxw7Ms4Pr7dQJykY::L3::Q2",
+          "rn_kxw7Ms4Pr7dQJykY::L3::Q3",
+          "rn_kxw7Ms4Pr7dQJykY::L3::Q4",
+          "rn_kxw7Ms4Pr7dQJykY::L3::Q5",
+          "rn_kxw7Ms4Pr7dQJykY::L3::Q6",
+          "rn_kxw7Ms4Pr7dQJykY::L3::Q7",
+          "rn_kxw7Ms4Pr7dQJykY::L3::Q8",
+          "rn_kxw7Ms4Pr7dQJykY::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "double insulation",
+          "definition": "Two layers of protection: insulated wires plus a non-metallic case, removing the need for an earth.",
+          "firstLesson": 2
+        },
+        {
+          "term": "earthing",
+          "definition": "Connecting a metal case to earth so a fault surge flows safely away and blows the fuse.",
+          "firstLesson": 2
+        },
+        {
+          "term": "circuit breaker",
+          "definition": "An automatic electromagnet switch that trips on excessive current and can be reset.",
+          "firstLesson": 3
+        },
+        {
+          "term": "surge",
+          "definition": "A brief, large rise in current — the signature of a fault.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/5ea1876dde14-electrical-danger.png",
+        "alt": "Electrical danger, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Electrical safety",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "Signs, like the above, warn of the risk of electrocution",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a96fee7014b1-electrical-wire-insulated.png",
+        "alt": "Electrical Wire Insulated, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Insulation & double insulation",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "The conducting part of a wire is covered in an insulating material for safety",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/73ad7dd910d9-2-2-5-three-core-cables.png",
+        "alt": "Three Core Cables, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Earthing",
+        "moduleIds": [
+          "L2"
+        ],
+        "caption": "A diagram showing the three wires going to a mains powered appliance: live, neutral and earth",
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/0f188ba8242f-2-3-3-circuit-breaker.png",
+        "alt": "Circuit Breaker, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Fuses & circuit breakers",
+        "moduleIds": [
+          "L3"
+        ],
+        "caption": "The main circuit breaker can quickly shut off electricity to the whole house. The branch circuit breakers can shut off electricity to specific areas of the house",
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

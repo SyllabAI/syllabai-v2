@@ -1,0 +1,115 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_z4nNPFw97V9fDkyS",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8751655c8601cff0070e99239623a314df25c9e370ff583df827bbf172712840",
+    "pinnedRef": "502107a3fcacad2340d0ac5e66b5ad93ef32800c"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_z4nNPFw97V9fDkyS",
+    "topicTitle": "2. Electricity",
+    "subtopicTitle": "Electrical Power & Mains Electricity",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/2-electricity/2-3-electrical-power-and-mains-electricity/2-3-4-electricity-and-heat",
+    "specAnchors": [
+      {
+        "code": "2.3",
+        "text": "understand why a current in a resistor results in the electrical transfer of energy and an increase in temperature, and how this can be used in a variety of domestic contexts"
+      }
+    ],
+    "primer": {
+      "text": "Push a current through a resistor and the resistor warms up — the electrical transfer of energy shows itself as heat. Free electrons jostling through the wire collide and hand over energy, some of which escapes to the surroundings. Far from being a nuisance, that heating effect runs heaters, ovens, hobs, toasters and kettles.",
+      "prerequisiteSubtopic": "Electrical Power & Mains Electricity"
+    },
+    "modules": [
+      {
+        "id": "rn_z4nNPFw97V9fDkyS::L1",
+        "title": "The heating effect of a current",
+        "sourceHeadings": [
+          "Electricity & heat"
+        ],
+        "specRefs": [
+          "2.3"
+        ],
+        "opening": "Current is a stream of charge, and driving it through a resistor takes work. That work appears as heat: the drifting electrons collide inside the wire, the temperature climbs, and some energy dissipates into the room. Domestic appliances exploit the effect deliberately, turning a glowing element into a hob, a toaster or a kettle.",
+        "keyPoints": [
+          "A current through a resistor or wire transfers energy electrically and warms it.",
+          "Free electrons colliding inside the wire raise its temperature.",
+          "Some of that energy dissipates into the surroundings by heating.",
+          "Domestic appliances put the heating effect to work: heaters, ovens, hobs, toasters and kettles."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Current passing through a resistor makes it hot, because the moving electrons collide inside the wire.",
+            "analogy": "A crowded corridor: people (electrons) bumping into each other and the walls warms everyone up.",
+            "examPointer": "Name the mechanism — collisions of free electrons — whenever a question asks why a resistor heats."
+          },
+          "medium": {
+            "restatement": "The same transfer that heats a useful element also dissipates into the surroundings, so every design trades heat delivered against heat lost.",
+            "analogy": "A kettle versus a phone charger: one sells the heat, the other apologises for it.",
+            "examPointer": "Domestic-context questions expect named appliances, not just 'gets hot'."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_z4nNPFw97V9fDkyS::L1::Q1",
+          "rn_z4nNPFw97V9fDkyS::L1::Q2",
+          "rn_z4nNPFw97V9fDkyS::L1::Q3",
+          "rn_z4nNPFw97V9fDkyS::L1::Q4",
+          "rn_z4nNPFw97V9fDkyS::L1::Q5",
+          "rn_z4nNPFw97V9fDkyS::L1::Q6",
+          "rn_z4nNPFw97V9fDkyS::L1::Q7",
+          "rn_z4nNPFw97V9fDkyS::L1::Q8",
+          "rn_z4nNPFw97V9fDkyS::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "heating effect",
+          "definition": "The rise in temperature produced when a current transfers energy in a resistor.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dissipate",
+          "definition": "To spread energy out to the surroundings, often as unwanted heat.",
+          "firstLesson": 1
+        },
+        {
+          "term": "free electrons",
+          "definition": "The mobile electrons in a metal that drift and carry the current.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/8a43603c211e-heating-downloadable-as-and-a-level-physics-revi.png",
+        "alt": "8a43603c211e-heating-downloadable-as-and-a-level-physics-revi",
+        "sourceHeading": "Electricity & heat",
+        "moduleIds": [
+          "L1"
+        ],
+        "caption": "The heating effect of current can be used for many applications such as electric hobs",
+        "binding": "sole-lesson"
+      }
+    ]
+  }
+}
