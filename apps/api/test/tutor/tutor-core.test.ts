@@ -304,6 +304,44 @@ describe("citation resolution", () => {
     expect(citations[1]?.label).toBe("Mark scheme — pp6–8");
     expect(citations[1]?.deepLink).toBe(`/api/v1/content/documents/${ms.documentRowId}?page=6`);
   });
+
+  test("T-TUTOR-EXP-1 (001): NOTE/TEXTBOOK labels carry the document's own title; title-less degrades to the frozen label", () => {
+    const note = (title: string | null): EvidenceItem => ({
+      ...evidenceFromChunk({
+        documentRowId: "00000000-0000-0000-0000-0000000000cc",
+        documentId: "doc-note",
+        documentVersion: 1,
+        chunkId: "00000000-0000-0000-0000-0000000000dd",
+        chunkIndex: 0,
+        kind: "EXTERNAL_NOTES",
+        content: "the particulate nature of matter",
+        pageStart: 1,
+        pageEnd: null,
+        elementIds: null,
+        embeddingModel: "m",
+        cosine: 0.9,
+        sourceTitle: title,
+      }),
+      fusedScore: 0.1,
+    });
+    expect(resolveCitations([note("States of Matter")])[0]?.label).toBe(
+      "Revision notes — States of Matter — p1",
+    );
+    // the graceful null: no title → the pre-001 frozen label byte-for-byte
+    expect(resolveCitations([note(null)])[0]?.label).toBe("Revision notes — p1");
+    // blank/whitespace titles degrade too (never "Revision notes —  — p1")
+    expect(resolveCitations([note("   ")])[0]?.label).toBe("Revision notes — p1");
+
+    const book = {
+      ...note(null),
+      source: "TEXTBOOK" as const,
+      sourceTitle: "Edexcel International GCSE Chemistry",
+      pageStart: 12,
+    };
+    expect(resolveCitations([book])[0]?.label).toBe(
+      "Textbook — Edexcel International GCSE Chemistry — p12",
+    );
+  });
 });
 
 // ── refusal texts (frozen KaRagService :48-83, byte-verbatim) ───────────────
@@ -317,8 +355,8 @@ topic (e.g. "moles", "bonding", "equilibria") or ask your teacher to
 ingest the relevant material.`);
     expect(courseScopeRefusal("4CH1")).toContain('scoped to the course "4CH1"');
     expect(courseScopeRefusal("4CH1")).toContain("SyllabAI never answers across\ncourses");
-    // v15 (DC-1): the identity follows the bumped prompt
-    expect(promptIdentity()).toBe("tutor-grounded/v15");
+    // v16 (T-TUTOR-EXP-1): the improvised-quiz marks law follows the bumped prompt
+    expect(promptIdentity()).toBe("tutor-grounded/v16");
   });
 
   test("the v11 spec-is-a-map quiz law is in the system prompt", () => {
@@ -1095,6 +1133,7 @@ describe("ka-rag evidence hygiene — run-004 proposal #1 (context math-unwrap)"
       sourcePageStart: null,
       sourcePageEnd: null,
       bookCourseId: null,
+      sourceTitle: null,
       elementIds: [],
       topicIds: [],
       retrievalScore: 0.9,

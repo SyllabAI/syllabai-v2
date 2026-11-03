@@ -50,7 +50,10 @@ export function resolveCitations(evidence: ReadonlyArray<EvidenceItem>): Citatio
   return citations;
 }
 
-/** labelOf :45-59 — the exact per-source labels. */
+/** labelOf :45-59 — the exact per-source labels. T-TUTOR-EXP-1 (001): NOTE
+ *  and TEXTBOOK gain the document's own title when the evidence carries one
+ *  ("Revision notes — <title> — p1"); a title-less item degrades to the
+ *  frozen label byte-for-byte (graceful null, never a fabricated title). */
 function labelOf(item: EvidenceItem): string {
   switch (item.source) {
     case "MARK_SCHEME":
@@ -67,12 +70,19 @@ function labelOf(item: EvidenceItem): string {
     case "LEARNER_WORK":
       return "Your submitted answer";
     case "NOTE":
-      return "Revision notes" + pageSuffix(item);
+      return titledLabel("Revision notes", item.sourceTitle) + pageSuffix(item);
     case "TEXTBOOK":
-      return "Textbook" + pageSuffix(item);
+      return titledLabel("Textbook", item.sourceTitle) + pageSuffix(item);
     case "CARD":
       return "Question card";
   }
+}
+
+/** "Revision notes" → "Revision notes — States of Matter" when the serving
+ *  row carries a title; the em-dash separator matches pageSuffix's own. */
+function titledLabel(base: string, title: string | null): string {
+  const t = title == null ? "" : title.trim();
+  return t === "" ? base : `${base} — ${t}`;
 }
 
 /** pageSuffix :61-68 — " — pp6–8" for ranges, " — p6" for a single page. */

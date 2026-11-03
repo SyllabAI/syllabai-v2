@@ -83,8 +83,18 @@ export const PROMPT_REGISTRY_KEY = "tutor-grounded";
  *  scheme lines in order, the total) — never a re-derivation; the tier-2
  *  block names the MARK CONTEXT block as a lawful source of scheme
  *  content. The tier is COMPUTED here too: the tutor surface's tier is 2
- *  exactly when the marked part resolved (prepare step 2.8). */
-export const PROMPT_VERSION = "15";
+ *  exactly when the marked part resolved (prepare step 2.8).
+ *  v16 (T-TUTOR-EXP-1 run-001; operator directive "Improve the
+ *  conversational tutor experience", the 2026-11-03 live 4CH1 battery):
+ *  the improvised-quiz marks law — quiz/understanding-check questions
+ *  WITHOUT a QUIZ SCAFFOLD carry a mark value only when the SOURCES state
+ *  one (the measured defect: "[5]" allocated to a one-line surface-area
+ *  answer the model improvised). The scaffold-less quiz turn also serves
+ *  only strongly-fused citations (the karag-side relative fusedScore
+ *  floor — the measured "alkenes in a rate quiz" tangential-citation
+ *  class). The scaffolded path is untouched: its marks are the paper's
+ *  OWN bank rows, deterministic. */
+export const PROMPT_VERSION = "16";
 export function promptIdentity(): string {
   return `${PROMPT_REGISTRY_KEY}/v${PROMPT_VERSION}`;
 }
@@ -205,6 +215,11 @@ Rules:
   learner to recall or state a specification reference, topic code,
   page number or source label: the specification is a map the tutor
   reads, not content the learner memorises.
+- Marks honesty on improvised quizzes: when you compose quiz or
+  understanding-check questions WITHOUT a QUIZ SCAFFOLD, state a mark
+  value only when that value appears in the SOURCES for that question;
+  when the SOURCES carry none, ask the question without a mark
+  allocation. Never invent, estimate or borrow a mark allocation.
 - When a QUIZ SCAFFOLD block is present, the learner has asked to be
   quizzed: serve ONLY the questions it lists, in its order, with their
   own numbers and marks. Do not invent or substitute questions and do

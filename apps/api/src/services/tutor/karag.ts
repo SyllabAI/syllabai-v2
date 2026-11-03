@@ -81,7 +81,7 @@ import {
   type PaperPinResolver,
   paperPinLabel,
 } from "./paper-question";
-import { isQuizAsk, loadQuizScaffold, type QuizScaffold } from "./quiz-scaffold";
+import { isQuizAsk, loadQuizScaffold, quizCitationFloor, type QuizScaffold } from "./quiz-scaffold";
 import { loadMarkContext, type MarkContext } from "./mark-context";
 
 // ── budgets (:96-105) ───────────────────────────────────────────────────────
@@ -482,6 +482,12 @@ export async function prepare(
   //        evidence-limit behaviour byte-for-byte.
   const reranker = deps.reranker ?? noReranker;
   const reranked = reranker(enriched, fused);
+  // T-TUTOR-EXP-1 (005): on a quiz-shaped ask WITHOUT a deterministic
+  // scaffold, the fused filler keeps only strongly-fused citations (the
+  // relative floor in quiz-scaffold.ts — the tangential-chunk class).
+  // The scaffolded path is byte-identical to the pre-005 behaviour.
+  const quizFiltered =
+    quizScaffold == null && isQuizAsk(query) ? quizCitationFloor(reranked) : reranked;
   const contentPins: EvidenceItem[] = [];
   const cardPins: EvidenceItem[] = [];
   for (const item of pinned) {
@@ -516,7 +522,7 @@ export async function prepare(
       ? Math.min(TUTOR_PIN_FILLER_CAP, Math.max(0, limit - merged.length))
       : limit;
   let fillerAdmitted = 0;
-  for (const item of reranked) {
+  for (const item of quizFiltered) {
     if (fillerAdmitted >= fillerCap) break;
     if (admit(item)) fillerAdmitted += 1;
   }

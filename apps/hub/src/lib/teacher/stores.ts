@@ -11,9 +11,24 @@
  *
  *   syllabai.savedTests.v1 — Test Builder saves (SME reference: reuse/edit):
  *     { id, name, course, subtopics, targetMarks, maxQuestions, createdAt }
+ *
+ *   syllabai.contentReviews.v1 — content reviews (Phase 2 validation queue):
+ *     the teacher's verdicts on AI-authored content, one per resource.
+ *
+ * T-TIER1 run-002 (2026-11-03: "things that are localStorage-only, make
+ * them saved to account"): all three are now ACCOUNT-BACKED — the
+ * localStorage records stay the UI cache, and while signed in as a teacher
+ * they mirror the account (teacher_saved_tests / teacher_teaching_coverage /
+ * teacher_content_reviews, the run-001 learner-me tables' teacher edition).
+ * The sync layer at the bottom of this file follows the my-subjects.ts
+ * T-TEACH-001 write-through law with the mock-results conservative merge
+ * (a UNION never loses a record from either side). Signed out (or signed in
+ * as a student) the stores behave exactly as before — this-browser-only.
  */
 
-import { useCallback, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useSyncExternalStore } from "react";
+import { api } from "@/lib/api";
+import { readIdentitySnapshot, useIdentity } from "@/lib/identity";
 
 // ── teaching coverage ─────────────────────────────────────────────────────
 
@@ -186,13 +201,16 @@ export function useSavedTests() {
   return { tests, save, remove };
 }
 
-// ── content reviews (Phase 2 validation queue, demo-truth) ────────────────
+// ── content reviews (Phase 2 validation queue) ────────────────────────────
 //
 // syllabai.contentReviews.v1 — teacher verdicts on AI-authored content
 // (TEACHER_MODE_PLAN §4 ContentReview: resourceId, reviewer, verdict,
 // comment, createdAt). The pilot pipeline marks AI-authored model solutions
-// for teacher validation before they count; the queue demonstrates that step
-// on REAL corpus items, verdicts persist locally until the write path exists.
+// for teacher validation before they count; the queue works on REAL corpus
+// items. T-TIER1 run-002: the verdicts are saved to the teacher's ACCOUNT
+// (teacher_content_reviews, one per (account, resource)) — the localStorage
+// record stays the UI cache; the "persist locally until the write path
+// exists" posture is retired, this IS the write path.
 
 export type ReviewVerdict = "approved" | "edited" | "rejected";
 
@@ -279,4 +297,344 @@ export function useContentReviews() {
   }, []);
 
   return { reviews, add, remove };
+}
+
+// ── server sync (T-TIER1 run-002) — the account-backed teacher stores ───────
+// Operator order 2026-11-03 ("things that are localStorage-only, make them
+// saved to account"); the my-subjects.ts T-TEACH-001 write-through law with
+// the mock-results conservative merge:
+//
+// Law of record:
+//  - The localStorage records stay the UI truth (reactive, instant, work
+//    signed-out exactly as before).
+//  - The sync is gated on the TEACHER identity — a student (or signed-out)
+//    session never contacts /teachers/me (the surface is teacher-owned;
+//    the shell 403s students by law).
+//  - Signed in as a teacher, every LOCAL write mirrors to the account as a
+//    full-set PUT (debounced per tick; per-course for coverage); a failed
+//    PUT leaves the local record untouched (cache law) and re-arms.
+//  - On identity acquisition (mount / login / cross-tab session) the sync
+//    reconciles ONCE with a CONSERVATIVE UNION per store — a union never
+//    loses a record from either side (the mock-results merge law; these are
+//    sets/ledgers with no single "newest wins" answer):
+//      · saved tests — union by the opaque `id`, newest-createdAt first,
+//        capped 30 (both sides' bound);
+//      · coverage — per-course union of the taught-code SETS (sorted,
+//        deduped), capped 500 per course;
+//      · content reviews — union by resourceId, the NEWER createdAt wins a
+//        conflict (a verdict is a correction; tie → server), capped 200.
+//    Merged sets that differ from the server's re-mirror up; the local
+//    cache takes the merge down.
+//  - Remote-driven writes set applyingRemote so the mirror does not echo
+//    the set back to the account (one PUT per intent, never two).
+
+type SavedTestWire = Awaited<ReturnType<typeof api.savedTests>>["tests"][number];
+type ContentReviewWire = Awaited<ReturnType<typeof api.contentReviews>>["reviews"][number];
+
+/** Local SavedTest → the wire shape (the `id` round-trips verbatim). */
+function savedTestToWire(t: SavedTest) {
+  return {
+    id: t.id,
+    name: t.name,
+    courseSlug: t.course,
+    courseCode: t.courseCode,
+    subtopics: t.subtopics,
+    targetMarks: t.targetMarks,
+    maxQuestions: t.maxQuestions,
+    ...(t.questionIds ? { questionIds: t.questionIds } : {}),
+    createdAt: t.createdAt,
+  };
+}
+
+/** Wire row → the local store shape (absent nullable fields default null). */
+function savedTestFromWire(w: SavedTestWire): SavedTest {
+  return {
+    id: w.id,
+    name: w.name,
+    course: w.courseSlug,
+    courseCode: w.courseCode,
+    subtopics: w.subtopics,
+    targetMarks: w.targetMarks ?? null,
+    maxQuestions: w.maxQuestions ?? null,
+    ...(w.questionIds ? { questionIds: w.questionIds } : {}),
+    createdAt: w.createdAt,
+  };
+}
+
+/** Local ContentReview → the wire shape (courseId is the slug on the wire). */
+function reviewToWire(r: ContentReview) {
+  return {
+    resourceId: r.resourceId,
+    courseSlug: r.courseId,
+    courseCode: r.courseCode,
+    kind: r.kind,
+    verdict: r.verdict,
+    comment: r.comment,
+    reviewer: r.reviewer,
+    createdAt: r.createdAt,
+  };
+}
+
+/** Wire row → the local store shape. */
+function reviewFromWire(w: ContentReviewWire): ContentReview {
+  return {
+    resourceId: w.resourceId,
+    courseId: w.courseSlug,
+    courseCode: w.courseCode,
+    kind: w.kind,
+    verdict: w.verdict,
+    comment: w.comment,
+    reviewer: w.reviewer,
+    createdAt: w.createdAt,
+  };
+}
+
+const SAVED_TESTS_CAP = 30; // the hub's own bound; the server enforces the same
+const CONTENT_REVIEWS_CAP = 200;
+
+/** The saved-tests reconcile MERGE (pure; exported for the law tests): the
+ * UNION by the opaque `id`, newest-createdAt first (tie → id asc, the
+ * server's own deterministic order), capped 30. `diverged` says the merged
+ * set differs from the server's (re-mirror up); `localChanged` says the
+ * local cache must take the merge down. */
+export function mergeSavedTests(
+  server: SavedTest[],
+  local: SavedTest[],
+): { merged: SavedTest[]; diverged: boolean; localChanged: boolean } {
+  const byId = new Map<string, SavedTest>();
+  for (const t of server) byId.set(t.id, t);
+  for (const t of local) byId.set(t.id, t);
+  const merged = [...byId.values()]
+    .sort((a, b) => {
+      if (a.createdAt !== b.createdAt) {
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      }
+      return a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
+    })
+    .slice(0, SAVED_TESTS_CAP);
+  const sameSet = (list: SavedTest[]) =>
+    list.length === merged.length && list.every((t, i) => t.id === merged[i]?.id);
+  return { merged, diverged: !sameSet(server), localChanged: !sameSet(local) };
+}
+
+/** The coverage reconcile MERGE (pure; exported for the law tests): the
+ * per-course UNION of the taught-code sets (deduped, sorted — the store's
+ * own write order), capped 500 per course. `diverged` names the courses
+ * whose union differs from the server's; `localChanged` says the local map
+ * must take the merge down. */
+export function mergeCoverage(
+  server: Record<string, string[]>,
+  local: Record<string, string[]>,
+): { merged: Record<string, string[]>; diverged: string[]; localChanged: boolean } {
+  const norm = (codes: string[]) => [...new Set(codes)].sort();
+  const courses = new Set<string>([...Object.keys(server), ...Object.keys(local)]);
+  const merged: Record<string, string[]> = {};
+  const diverged: string[] = [];
+  let localChanged = false;
+  for (const course of courses) {
+    const serverCodes = norm(server[course] ?? []);
+    const localCodes = norm(local[course] ?? []);
+    const union = norm([...serverCodes, ...localCodes]).slice(0, 500);
+    merged[course] = union;
+    if (serverCodes.join("\u0000") !== union.join("\u0000")) diverged.push(course);
+    if (localCodes.join("\u0000") !== union.join("\u0000")) localChanged = true;
+  }
+  return { merged, diverged, localChanged };
+}
+
+/** The content-reviews reconcile MERGE (pure; exported for the law tests):
+ * the UNION by resourceId; a conflicting verdict resolves to the NEWER
+ * createdAt (a re-review is a correction — the hub's own "a re-review
+ * supersedes the previous one" law); a tie goes to the server
+ * (deterministic). Newest-first, capped 200. */
+export function mergeContentReviews(
+  server: ContentReview[],
+  local: ContentReview[],
+): { merged: ContentReview[]; diverged: boolean; localChanged: boolean } {
+  const byResource = new Map<string, ContentReview>();
+  for (const r of server) byResource.set(r.resourceId, r);
+  for (const r of local) {
+    const cur = byResource.get(r.resourceId);
+    if (!cur) {
+      byResource.set(r.resourceId, r);
+      continue;
+    }
+    // conflict: the newer verdict wins; a tie goes to the server
+    const serverAt = new Date(cur.createdAt).getTime();
+    const localAt = new Date(r.createdAt).getTime();
+    if (localAt > serverAt) byResource.set(r.resourceId, r);
+  }
+  const merged = [...byResource.values()]
+    .sort((a, b) => {
+      if (a.createdAt !== b.createdAt) {
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      }
+      return a.resourceId < b.resourceId ? -1 : a.resourceId > b.resourceId ? 1 : 0;
+    })
+    .slice(0, CONTENT_REVIEWS_CAP);
+  // the verdict CONTENT can differ at the same resourceId (a re-review
+  // supersedes) — the tuple, not the bare id, is the divergence unit
+  const fingerprint = (r: ContentReview) => `${r.resourceId}\u0000${r.verdict}\u0000${r.createdAt}`;
+  const sameSet = (list: ContentReview[]) =>
+    list.length === merged.length && list.every((r, i) => fingerprint(r) === fingerprint(merged[i]!));
+  return { merged, diverged: !sameSet(server), localChanged: !sameSet(local) };
+}
+
+// ── the one-call sync surface ────────────────────────────────────────────────
+
+const applyingRemote = { tests: false, coverage: false, reviews: false };
+const putScheduled = { tests: false, coverage: false, reviews: false };
+
+function putSavedTestsLocal(): void {
+  if (putScheduled.tests || applyingRemote.tests) return;
+  putScheduled.tests = true;
+  setTimeout(() => {
+    putScheduled.tests = false;
+    if (typeof window === "undefined") return;
+    if (!readIdentitySnapshot()) return; // signed out mid-flight — local-only mode
+    void api
+      .setSavedTests({ tests: readTests().slice(0, SAVED_TESTS_CAP).map(savedTestToWire) })
+      .catch(() => {
+        // silent cache law: local stays; the next write/reconcile re-mirrors
+      });
+  }, 0);
+}
+
+function putCoverageLocal(): void {
+  if (putScheduled.coverage || applyingRemote.coverage) return;
+  putScheduled.coverage = true;
+  setTimeout(() => {
+    putScheduled.coverage = false;
+    if (typeof window === "undefined") return;
+    if (!readIdentitySnapshot()) return;
+    const map = readCoverage();
+    // a change event names no course — arm every course present locally
+    // (bounded: the overlay's own per-course entries)
+    for (const [course, codes] of Object.entries(map)) {
+      void api.setTeachingCoverage(course, { codes: codes.slice(0, 500) }).catch(() => {
+        // silent cache law: local stays; re-armed on the next write/reconcile
+      });
+    }
+  }, 0);
+}
+
+function putContentReviewsLocal(): void {
+  if (putScheduled.reviews || applyingRemote.reviews) return;
+  putScheduled.reviews = true;
+  setTimeout(() => {
+    putScheduled.reviews = false;
+    if (typeof window === "undefined") return;
+    if (!readIdentitySnapshot()) return;
+    void api
+      .setContentReviews({
+        reviews: readReviews().slice(0, CONTENT_REVIEWS_CAP).map(reviewToWire),
+      })
+      .catch(() => {
+        // silent cache law: local stays; the next write/reconcile re-mirrors
+      });
+  }, 0);
+}
+
+function writeTestsRemote(map: Record<string, string[]>): void {
+  applyingRemote.coverage = true;
+  try {
+    window.localStorage.setItem(COVERAGE_KEY, JSON.stringify(map));
+  } catch {
+    // private mode — the merge just won't persist
+  }
+  window.dispatchEvent(new CustomEvent(COVERAGE_EVENT));
+  applyingRemote.coverage = false;
+}
+
+/**
+ * The one-call sync surface: mount ONCE (the app shell mounts it — the Test
+ * Builder, the coverage panel and the validation queue are spread across
+ * teacher routes), pass no arguments. While signed in AS A TEACHER it keeps
+ * the account stores and the local caches in step; signed out or signed in
+ * as a student it is a no-op (the stores behave exactly as before run-002).
+ */
+export function useTeacherStoresSync(): void {
+  const identity = useIdentity();
+
+  useEffect(() => {
+    if (!identity || identity.role !== "teacher") return; // teacher-owned surface
+
+    let cancelled = false;
+
+    const reconcile = async () => {
+      // the three reads are independent — one failure must not block the
+      // other stores' reconcile (each try is its own cache-law bubble)
+      try {
+        const view = await api.savedTests();
+        if (cancelled) return;
+        const serverTests = view.tests.map(savedTestFromWire);
+        const { merged, diverged, localChanged } = mergeSavedTests(serverTests, readTests());
+        if (localChanged) {
+          applyingRemote.tests = true;
+          try {
+            window.localStorage.setItem(TESTS_KEY, JSON.stringify(merged));
+          } catch {
+            // ignore — the mirror is best-effort
+          }
+          window.dispatchEvent(new CustomEvent(TESTS_EVENT));
+          applyingRemote.tests = false;
+        }
+        if (diverged) putSavedTestsLocal();
+      } catch {
+        // core unreachable — cache law: local library stays as-is
+      }
+
+      try {
+        const view = await api.teachingCoverage();
+        if (cancelled) return;
+        const serverMap: Record<string, string[]> = {};
+        for (const e of view.coverage) serverMap[e.courseSlug] = e.codes;
+        const { merged, diverged, localChanged } = mergeCoverage(serverMap, readCoverage());
+        if (localChanged) writeTestsRemote(merged);
+        if (diverged.length > 0) putCoverageLocal();
+      } catch {
+        // cache law: local overlay stays as-is
+      }
+
+      try {
+        const view = await api.contentReviews();
+        if (cancelled) return;
+        const serverReviews = view.reviews.map(reviewFromWire);
+        const { merged, diverged, localChanged } = mergeContentReviews(serverReviews, readReviews());
+        if (localChanged) {
+          applyingRemote.reviews = true;
+          try {
+            window.localStorage.setItem(REVIEWS_KEY, JSON.stringify(merged));
+          } catch {
+            // ignore — the mirror is best-effort
+          }
+          window.dispatchEvent(new CustomEvent(REVIEWS_EVENT));
+          applyingRemote.reviews = false;
+        }
+        if (diverged) putContentReviewsLocal();
+      } catch {
+        // cache law: local verdicts stay as-is
+      }
+    };
+    void reconcile();
+
+    const onTestsWrite = () => {
+      if (!applyingRemote.tests) putSavedTestsLocal();
+    };
+    const onCoverageWrite = () => {
+      if (!applyingRemote.coverage) putCoverageLocal();
+    };
+    const onReviewsWrite = () => {
+      if (!applyingRemote.reviews) putContentReviewsLocal();
+    };
+    window.addEventListener(TESTS_EVENT, onTestsWrite);
+    window.addEventListener(COVERAGE_EVENT, onCoverageWrite);
+    window.addEventListener(REVIEWS_EVENT, onReviewsWrite);
+    return () => {
+      cancelled = true;
+      window.removeEventListener(TESTS_EVENT, onTestsWrite);
+      window.removeEventListener(COVERAGE_EVENT, onCoverageWrite);
+      window.removeEventListener(REVIEWS_EVENT, onReviewsWrite);
+    };
+  }, [identity?.email]); // eslint-disable-line react-hooks/exhaustive-deps -- the identity OBJECT is referentially unstable per read; email is the stable key
 }

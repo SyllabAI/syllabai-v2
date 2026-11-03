@@ -74,6 +74,7 @@ import { buildBooksApp } from "./services/books";
 import { createBooksRouter } from "./routes/books";
 import { buildLlmAdminRouters } from "./routes/llmadmin";
 import { buildLearnerMeRouters } from "./routes/learnerme";
+import { buildTeacherMeRouters } from "./routes/teacherme";
 import { buildLearnerKgRouters } from "./routes/learnerkg";
 import { buildRevisionNotesRouters } from "./routes/revision-notes";
 import { buildKnowledgeRouters } from "./routes/knowledge";
@@ -109,6 +110,7 @@ const learnerPdfDrawings = buildLearnerPdfDrawingsRouters();
 const testbuilder = buildTestBuilderRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
+const teacherMe = buildTeacherMeRouters();
 const learnerKg = buildLearnerKgRouters();
 const learnerProgress = buildLearnerProgressRouters();
 const learnerStudyPlan = buildLearnerStudyPlanRouters();
@@ -540,6 +542,13 @@ app.route("/api/v1/teacher/marking", teachermarking.teacherRoute);
 // engine (nba-rules/v1.3) is LIVE as the agenda's default actions provider
 // (the tranche-1 501 posture remains the no-provider safety net).
 app.route("/api/v1/learners/me", learnerMe.learnerMeRoute);
+// Teacher-me router (T-TIER1 run-002 — v2-NATIVE additive, NO frozen-core
+// counterpart): the account-backed teacher stores (saved tests / teaching
+// coverage / content reviews) under /api/v1/teachers/me. The router owns
+// its authz internally (requireAuth + requireRole TEACHER/ADMIN — the
+// classroom.ts shell law); the /api/v1/* fallback below stays the
+// 404-after-auth path for NO router claimed.
+app.route("/api/v1/teachers/me", teacherMe.teacherMeRoute);
 // SME admin router (T-MIG-033 tranche-3 — Wave 3). Path parity with the
 // frozen core: SmeQuestionAdminController under /api/v1/admin/question-bank
 // (SecurityConfig.java:86 hasRole("ADMIN") + @PreAuthorize defense-in-depth;
