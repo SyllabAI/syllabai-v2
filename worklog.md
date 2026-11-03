@@ -1049,3 +1049,15 @@ Work Log:
 
 Stage Summary:
 - T-SIB-INGEST-001 run-003: the apply script of record is now proven green in dry mode on the byte-identical staged corpus (receipt committed); every credential-free line of "land A+B" is executed. Remaining: A-exec (0600 DSN file + probe word, or operator execution), B-exec (supported egress + billed key), C (valid GH token).
+
+---
+Task ID: T-SIB-INGEST-001 post-run-003 security note (operator keyring re-supply, trace 1a1a2bd75e3aa7bd)
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+
+Work Log:
+- Operator re-supplied the 8-key Gemini ring in chat (same labels of record). Verified by fingerprint comparison ONLY (sha256 prefixes; values never printed/committed): all 8 MATCH the staged keyring of record byte-for-byte — workspace/sib-keys/gemini.env (repo-external, 0600, dir 0700) is CURRENT; no re-staging performed. Comparison temp file (0600) shredded after use.
+- Gate posture UNCHANGED by this message: A-exec still needs the 0600 DSN + probe word; B-exec still physically egress-blocked (HK reconfirmed this session; keys already probed of record — 5x 400 LOCATION_BLOCKED, 3x 403 project-unbilled); C still token-401. No Gemini re-probe performed (egress block is physical; probes burn budget without new information).
+- Standing operator item re-escalated: the ring has now transited chat TWICE (run-001 staging + this re-supply). Rotation after use remains mandatory; rotation NOW is also safe — re-staging a rotated ring is a 2-minute fingerprint-verified operation.
+
+Stage Summary:
+- Staged keyring verified current against the operator's fresh supply; zero secret values moved, printed, or committed; gates A-exec/B-exec/C unchanged.
