@@ -462,8 +462,21 @@ export class BooksReadRepository {
     // q.id left EVERY sme-keyed ref unresolved (honest question:null masked
     // it; first-hand proof in the run-002 receipt). order by q.id keeps the
     // last-wins overwrite deterministic for duplicate refs.
+    // The contract guard: a bank row whose options/stem cannot satisfy the
+    // railCheckBlockSchema (empty option_text/label/stem — the paper-image
+    // option class, 6 of the 60 strength refs) is filtered BEFORE the map, so
+    // those blocks serve the honest question:null unavailable card instead of
+    // a 500 — the honest-subset law (ADR-BOOK-0004 decision 4's own clause);
+    // a well-formed duplicate of the same ref still resolves.
+    const servable = rows.filter(
+      (r) =>
+        r.stem != null &&
+        r.stem.trim().length > 0 &&
+        (r.options ?? []).length > 0 &&
+        r.options.every((o) => o.label != null && o.label.trim().length > 0 && o.option_text != null && o.option_text.trim().length > 0),
+    );
     const byRef = new Map<string, (typeof rows)[number]>();
-    for (const r of rows) {
+    for (const r of servable) {
       byRef.set(r.question_id, r);
       if (r.external_ref != null) byRef.set(r.external_ref, r);
     }
