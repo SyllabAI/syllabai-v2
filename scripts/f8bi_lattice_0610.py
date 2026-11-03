@@ -1,0 +1,282 @@
+"""0610 concept lattice — T-KG-PRE-5 (F8 rollout batch three, cie-igcse-biology-23).
+
+AI_SUGGESTED / UNVALIDATED concept web authored by the F8 lane from the 0610
+2023-2025 syllabus structure (21 sections, 388 spec points), anchored to the
+served spine's point ids. Anchors chosen only against the syllabus outcome
+texts; every anchor is verified against the spine before any byte is written
+(0-unmapped pass law, enforced in kg_f8bi_generate.py).
+
+Honesty: prereqValidated stays EMPTY; the renderer labels every exported pair
+INFERRED PROTOTYPE; the named gate remains the SME validation pass.
+"""
+
+DD = "DEFINITIONAL_DEPENDENCY"
+UWR = "USED_WITHOUT_RETEACHING"
+
+CONCEPTS = {
+    # -- 1 Characteristics and classification ---------------------------------
+    "0610-CON-LIVING-CHARACTERISTICS": ["1.1.1"],
+    "0610-CON-CLASSIFICATION-SPECIES": ["1.2.1", "1.2.2", "1.2.3", "1.2.4"],
+    "0610-CON-CLASSIFICATION-DNA": ["1.2.5", "1.2.6", "1.2.7"],
+    "0610-CON-KINGDOMS-GROUPS": ["1.3.1", "1.3.2", "1.3.3", "1.3.4", "1.3.5", "1.3.6"],
+    "0610-CON-VIRUS-FEATURES": ["1.3.7"],
+    # -- 2 Cells -----------------------------------------------------------------
+    "0610-CON-PLANT-ANIMAL-CELLS": ["2.1.1", "2.1.3", "2.1.4"],
+    "0610-CON-BACTERIAL-CELL": ["2.1.2"],
+    "0610-CON-CELL-DIVISION-NEW": ["2.1.5"],
+    "0610-CON-SPECIALISED-CELLS": ["2.1.6"],
+    "0610-CON-LEVELS-ORGANISATION": ["2.1.7"],
+    "0610-CON-MAGNIFICATION-CALC": ["2.2.1", "2.2.2", "2.2.3"],
+    # -- 3 Movement into and out of cells --------------------------------------------
+    "0610-CON-DIFFUSION": ["3.1.1", "3.1.2", "3.1.3", "3.1.4", "3.1.5"],
+    "0610-CON-WATER-SOLVENT": ["3.2.1"],
+    "0610-CON-OSMOSIS": ["3.2.2", "3.2.3", "3.2.4", "3.2.5"],
+    "0610-CON-TURGOR-PLASMOLYSIS": ["3.2.6", "3.2.7", "3.2.8", "3.2.9"],
+    "0610-CON-ACTIVE-TRANSPORT": ["3.3.1", "3.3.2", "3.3.3"],
+    # -- 4 Biological molecules ----------------------------------------------------------
+    "0610-CON-BIO-MOLECULES-ELEMENTS": ["4.1.1", "4.1.2"],
+    "0610-CON-FOOD-TESTS": ["4.1.3"],
+    "0610-CON-DNA-STRUCTURE-IGCSE": ["4.1.4"],
+    # -- 5 Enzymes ------------------------------------------------------------------------
+    "0610-CON-CATALYST-ENZYME": ["5.1.1", "5.1.2", "5.1.3"],
+    "0610-CON-ENZYME-ACTION-IGCSE": ["5.1.4", "5.1.6", "5.1.7"],
+    "0610-CON-ENZYME-TEMP-PH": ["5.1.5", "5.1.8", "5.1.9"],
+    # -- 6 Photosynthesis -------------------------------------------------------------------
+    "0610-CON-PHOTOSYNTHESIS-BASICS": ["6.1.1", "6.1.2", "6.1.3", "6.1.4", "6.1.10"],
+    "0610-CON-PHOTOSYNTHESIS-USES": ["6.1.5", "6.1.6"],
+    "0610-CON-PHOTOSYNTHESIS-EXPTS": ["6.1.7", "6.1.8", "6.1.9"],
+    "0610-CON-LIMITING-FACTORS-IGCSE": ["6.1.11"],
+    "0610-CON-LEAF-STRUCTURE": ["6.2.1", "6.2.2", "6.2.3"],
+    # -- 7 Human nutrition ----------------------------------------------------------------------
+    "0610-CON-BALANCED-DIET": ["7.1.1", "7.1.2", "7.1.3"],
+    "0610-CON-DIGESTIVE-SYSTEM": ["7.2.1", "7.2.2"],
+    "0610-CON-PHYSICAL-DIGESTION": ["7.3.1", "7.3.2", "7.3.3", "7.3.4", "7.3.5", "7.3.6", "7.3.7"],
+    "0610-CON-CHEMICAL-DIGESTION": ["7.4.1", "7.4.2", "7.4.3", "7.4.4", "7.4.5", "7.4.6", "7.4.7", "7.4.8"],
+    "0610-CON-ABSORPTION": ["7.5.1", "7.5.2", "7.5.3", "7.5.4", "7.5.5"],
+    # -- 8 Transport in plants --------------------------------------------------------------------
+    "0610-CON-XYLEM-PHLOEM": ["8.1.1", "8.1.2", "8.1.3"],
+    "0610-CON-ROOT-HAIRS-UPTAKE": ["8.2.1", "8.2.2", "8.2.3", "8.2.4"],
+    "0610-CON-TRANSPIRATION-IGCSE": ["8.3.1", "8.3.2", "8.3.3", "8.3.4", "8.3.5", "8.3.6", "8.3.7"],
+    "0610-CON-TRANSLOCATION-IGCSE": ["8.4.1", "8.4.2", "8.4.3"],
+    # -- 9 Transport in animals ---------------------------------------------------------------------
+    "0610-CON-CIRCULATION-IGCSE": ["9.1.1", "9.1.2", "9.1.3", "9.1.4"],
+    "0610-CON-HEART-IGCSE": ["9.2.1", "9.2.2", "9.2.3", "9.2.4", "9.2.7", "9.2.8", "9.2.9", "9.2.10", "9.2.11"],
+    "0610-CON-CHD": ["9.2.5", "9.2.6"],
+    "0610-CON-BLOOD-VESSELS-IGCSE": ["9.3.1", "9.3.2", "9.3.3", "9.3.4", "9.3.5", "9.3.6"],
+    "0610-CON-BLOOD-COMPONENTS": ["9.4.1", "9.4.2", "9.4.3", "9.4.4", "9.4.5", "9.4.6", "9.4.7"],
+    # -- 10 Diseases and immunity ----------------------------------------------------------------------
+    "0610-CON-PATHOGENS-IGCSE": ["10.1.1", "10.1.2", "10.1.3"],
+    "0610-CON-BODY-DEFENCES": ["10.1.4", "10.1.5"],
+    "0610-CON-ACTIVE-IMMUNITY-IGCSE": ["10.1.6", "10.1.7", "10.1.8", "10.1.9", "10.1.10"],
+    "0610-CON-VACCINATION-IGCSE": ["10.1.11", "10.1.12"],
+    "0610-CON-PASSIVE-IMMUNITY": ["10.1.13", "10.1.14", "10.1.15"],
+    "0610-CON-CHOLERA": ["10.1.16", "10.1.17"],
+    # -- 11 Gas exchange ----------------------------------------------------------------------------------
+    "0610-CON-GAS-EXCHANGE-SURFACES": ["11.1.1", "11.1.2"],
+    "0610-CON-INSPIRED-EXPIRED": ["11.1.3", "11.1.4", "11.1.9"],
+    "0610-CON-VENTILATION": ["11.1.6", "11.1.7", "11.1.8"],
+    "0610-CON-BREATHING-ACTIVITY": ["11.1.5", "11.1.10"],
+    "0610-CON-AIRWAY-PROTECTION": ["11.1.11"],
+    # -- 12 Respiration --------------------------------------------------------------------------------------
+    "0610-CON-ENERGY-USES": ["12.1.1", "12.1.2"],
+    "0610-CON-AEROBIC-RESPIRATION": ["12.2.1", "12.2.2", "12.2.3"],
+    "0610-CON-ANAEROBIC-RESPIRATION": ["12.3.1", "12.3.2", "12.3.3", "12.3.4", "12.3.5"],
+    "0610-CON-OXYGEN-DEBT": ["12.3.6", "12.3.7"],
+    # -- 13 Excretion -----------------------------------------------------------------------------------------
+    "0610-CON-EXCRETION-BASICS": ["13.1.1", "13.1.2"],
+    "0610-CON-KIDNEY-IGCSE": ["13.1.3", "13.1.4", "13.1.5"],
+    "0610-CON-LIVER-DEAMINATION": ["13.1.6", "13.1.7", "13.1.8", "13.1.9"],
+    # -- 14 Coordination and homeostasis -------------------------------------------------------------------------
+    "0610-CON-NEURONES-IGCSE": ["14.1.1", "14.1.2", "14.1.3", "14.1.4"],
+    "0610-CON-REFLEX-ARC": ["14.1.5", "14.1.6"],
+    "0610-CON-SYNAPSE-IGCSE": ["14.1.7", "14.1.8", "14.1.9", "14.1.10"],
+    "0610-CON-SENSE-ORGANS-EYE": ["14.2.1", "14.2.2", "14.2.3", "14.2.4", "14.2.5", "14.2.6", "14.2.7", "14.2.8", "14.2.9"],
+    "0610-CON-HORMONES": ["14.3.1", "14.3.2", "14.3.3", "14.3.4", "14.3.5", "14.3.6"],
+    "0610-CON-HOMEOSTASIS-IGCSE": ["14.4.1", "14.4.2", "14.4.3", "14.4.4", "14.4.5"],
+    "0610-CON-THERMOREGULATION": ["14.4.6", "14.4.7", "14.4.8"],
+    "0610-CON-TROPISMS": ["14.5.1", "14.5.2", "14.5.3", "14.5.4", "14.5.5"],
+    # -- 15 Drugs ----------------------------------------------------------------------------------------------------
+    "0610-CON-DRUGS-ANTIBIOTICS": ["15.1.1", "15.1.2", "15.1.3", "15.1.4", "15.1.5"],
+    # -- 16 Reproduction -----------------------------------------------------------------------------------------------
+    "0610-CON-ASEXUAL-REPRODUCTION": ["16.1.1", "16.1.2", "16.1.3"],
+    "0610-CON-SEXUAL-REPRODUCTION": ["16.2.1", "16.2.2", "16.2.3", "16.2.4"],
+    "0610-CON-FLOWERS-POLLINATION": ["16.3.1", "16.3.2", "16.3.3", "16.3.4", "16.3.5", "16.3.7", "16.3.9", "16.3.10", "16.3.11"],
+    "0610-CON-FERTILISATION-PLANTS": ["16.3.6", "16.3.12"],
+    "0610-CON-GERMINATION": ["16.3.8"],
+    "0610-CON-REPRODUCTIVE-SYSTEMS": ["16.4.1", "16.4.2"],
+    "0610-CON-GAMETES-FERTILISATION": ["16.4.3", "16.4.4", "16.4.5", "16.4.6"],
+    "0610-CON-FETUS-DEVELOPMENT": ["16.4.7", "16.4.8", "16.4.9", "16.4.10"],
+    "0610-CON-PUBERTY-MENSTRUAL": ["16.5.1", "16.5.2", "16.5.3", "16.5.4"],
+    "0610-CON-STI-HIV": ["16.6.1", "16.6.2", "16.6.3", "16.6.4", "16.6.5"],
+    # -- 17 Inheritance -----------------------------------------------------------------------------------------------------
+    "0610-CON-CHROMOSOMES-DNA-GENES": ["17.1.1", "17.1.2", "17.1.3"],
+    "0610-CON-PROTEIN-MAKING": ["17.1.5", "17.1.6", "17.1.7", "17.1.8", "17.1.9"],
+    "0610-CON-SEX-INHERITANCE": ["17.1.4"],
+    "0610-CON-HAPLOID-DIPLOID-IGCSE": ["17.1.10", "17.1.11", "17.1.12"],
+    "0610-CON-MITOSIS-IGCSE": ["17.2.1", "17.2.2", "17.2.3", "17.2.4"],
+    "0610-CON-MEIOSIS-IGCSE": ["17.3.1", "17.3.2"],
+    "0610-CON-INHERITANCE-TERMS": ["17.4.1", "17.4.2", "17.4.3", "17.4.4", "17.4.5", "17.4.6", "17.4.7", "17.4.8", "17.4.9"],
+    "0610-CON-MONOHYBRID-IGCSE": ["17.4.10", "17.4.11", "17.4.12", "17.4.13"],
+    "0610-CON-CODOMINANCE-SEXLINKED": ["17.4.14", "17.4.15", "17.4.16", "17.4.17", "17.4.18"],
+    # -- 18 Variation and selection -------------------------------------------------------------------------------------------
+    "0610-CON-VARIATION-IGCSE": ["18.1.1", "18.1.2", "18.1.3", "18.1.4", "18.1.5"],
+    "0610-CON-MUTATION-IGCSE": ["18.1.6", "18.1.7", "18.1.8", "18.1.9", "18.1.10"],
+    "0610-CON-ADAPTIVE-FEATURES": ["18.2.1", "18.2.2", "18.2.3"],
+    "0610-CON-NATURAL-SELECTION-IGCSE": ["18.3.1", "18.3.4", "18.3.5", "18.3.6"],
+    "0610-CON-SELECTIVE-BREEDING-IGCSE": ["18.3.2", "18.3.3"],
+    # -- 19 Organisms and their environment ---------------------------------------------------------------------------------------
+    "0610-CON-ENERGY-FLOW": ["19.1.1", "19.1.2"],
+    "0610-CON-FOOD-CHAINS-WEBS": ["19.2.1", "19.2.2", "19.2.3", "19.2.4", "19.2.5", "19.2.6", "19.2.7", "19.2.8", "19.2.9", "19.2.10"],
+    "0610-CON-ECOLOGICAL-PYRAMIDS": ["19.2.11", "19.2.12", "19.2.13", "19.2.14", "19.2.15", "19.2.16", "19.2.17", "19.2.18", "19.2.19"],
+    "0610-CON-CARBON-NITROGEN-CYCLES": ["19.3.1", "19.3.2", "19.3.3"],
+    "0610-CON-POPULATIONS": ["19.4.1", "19.4.2", "19.4.3", "19.4.4", "19.4.5", "19.4.6", "19.4.7"],
+    # -- 20 Human influences on ecosystems -------------------------------------------------------------------------------------------
+    "0610-CON-FOOD-PRODUCTION": ["20.1.1", "20.1.2", "20.1.3"],
+    "0610-CON-BIODIVERSITY-IGCSE": ["20.2.1", "20.2.2", "20.2.3", "20.2.4"],
+    "0610-CON-POLLUTION": ["20.3.1", "20.3.2", "20.3.3", "20.3.4"],
+    "0610-CON-SUSTAINABILITY-CONSERVATION": ["20.4.1", "20.4.2", "20.4.3", "20.4.4", "20.4.5", "20.4.6", "20.4.7", "20.4.8", "20.4.9"],
+    # -- 21 Biotechnology and genetic modification -------------------------------------------------------------------------------------
+    "0610-CON-BACTERIA-BIOTECH": ["21.1.1", "21.1.2"],
+    "0610-CON-FERMENTATION-USES": ["21.2.1", "21.2.2"],
+    "0610-CON-ENZYME-USES": ["21.2.3", "21.2.4", "21.2.5"],
+    "0610-CON-FERMENTERS": ["21.2.6", "21.2.7"],
+    "0610-CON-GM-IGCSE": ["21.3.1", "21.3.2", "21.3.3", "21.3.4"],
+}
+
+EDGES = [
+    # 1
+    ("0610-CON-CLASSIFICATION-SPECIES", "0610-CON-KINGDOMS-GROUPS", DD),
+    ("0610-CON-CLASSIFICATION-SPECIES", "0610-CON-CLASSIFICATION-DNA", UWR),
+    ("0610-CON-KINGDOMS-GROUPS", "0610-CON-VIRUS-FEATURES", UWR),
+    # 2
+    ("0610-CON-PLANT-ANIMAL-CELLS", "0610-CON-BACTERIAL-CELL", UWR),
+    ("0610-CON-PLANT-ANIMAL-CELLS", "0610-CON-SPECIALISED-CELLS", DD),
+    ("0610-CON-PLANT-ANIMAL-CELLS", "0610-CON-LEVELS-ORGANISATION", DD),
+    ("0610-CON-CELL-DIVISION-NEW", "0610-CON-SPECIALISED-CELLS", UWR),
+    # 3
+    ("0610-CON-DIFFUSION", "0610-CON-OSMOSIS", DD),
+    ("0610-CON-WATER-SOLVENT", "0610-CON-OSMOSIS", UWR),
+    ("0610-CON-DIFFUSION", "0610-CON-ACTIVE-TRANSPORT", UWR),
+    ("0610-CON-OSMOSIS", "0610-CON-TURGOR-PLASMOLYSIS", DD),
+    ("0610-CON-TURGOR-PLASMOLYSIS", "0610-CON-TRANSPIRATION-IGCSE", UWR),
+    ("0610-CON-ACTIVE-TRANSPORT", "0610-CON-ROOT-HAIRS-UPTAKE", UWR),
+    ("0610-CON-OSMOSIS", "0610-CON-CHOLERA", UWR),
+    # 4
+    ("0610-CON-BIO-MOLECULES-ELEMENTS", "0610-CON-FOOD-TESTS", UWR),
+    ("0610-CON-BIO-MOLECULES-ELEMENTS", "0610-CON-BALANCED-DIET", UWR),
+    ("0610-CON-BIO-MOLECULES-ELEMENTS", "0610-CON-CHEMICAL-DIGESTION", UWR),
+    ("0610-CON-BIO-MOLECULES-ELEMENTS", "0610-CON-LIVER-DEAMINATION", UWR),
+    ("0610-CON-DNA-STRUCTURE-IGCSE", "0610-CON-CHROMOSOMES-DNA-GENES", UWR),
+    ("0610-CON-DNA-STRUCTURE-IGCSE", "0610-CON-MUTATION-IGCSE", UWR),
+    # 5
+    ("0610-CON-CATALYST-ENZYME", "0610-CON-ENZYME-ACTION-IGCSE", DD),
+    ("0610-CON-ENZYME-ACTION-IGCSE", "0610-CON-ENZYME-TEMP-PH", DD),
+    ("0610-CON-ENZYME-ACTION-IGCSE", "0610-CON-ENZYME-USES", UWR),
+    ("0610-CON-ENZYME-TEMP-PH", "0610-CON-FERMENTERS", UWR),
+    # 6
+    ("0610-CON-PHOTOSYNTHESIS-BASICS", "0610-CON-PHOTOSYNTHESIS-USES", DD),
+    ("0610-CON-PHOTOSYNTHESIS-BASICS", "0610-CON-PHOTOSYNTHESIS-EXPTS", DD),
+    ("0610-CON-PHOTOSYNTHESIS-BASICS", "0610-CON-LIMITING-FACTORS-IGCSE", UWR),
+    ("0610-CON-PHOTOSYNTHESIS-EXPTS", "0610-CON-LIMITING-FACTORS-IGCSE", UWR),
+    ("0610-CON-PHOTOSYNTHESIS-BASICS", "0610-CON-LEAF-STRUCTURE", DD),
+    ("0610-CON-LEAF-STRUCTURE", "0610-CON-TRANSPIRATION-IGCSE", UWR),
+    ("0610-CON-PHOTOSYNTHESIS-BASICS", "0610-CON-FOOD-CHAINS-WEBS", UWR),
+    # 7
+    ("0610-CON-BALANCED-DIET", "0610-CON-DIGESTIVE-SYSTEM", UWR),
+    ("0610-CON-DIGESTIVE-SYSTEM", "0610-CON-PHYSICAL-DIGESTION", DD),
+    ("0610-CON-PHYSICAL-DIGESTION", "0610-CON-CHEMICAL-DIGESTION", UWR),
+    ("0610-CON-CHEMICAL-DIGESTION", "0610-CON-ABSORPTION", DD),
+    # 8
+    ("0610-CON-XYLEM-PHLOEM", "0610-CON-ROOT-HAIRS-UPTAKE", UWR),
+    ("0610-CON-XYLEM-PHLOEM", "0610-CON-TRANSLOCATION-IGCSE", DD),
+    ("0610-CON-ROOT-HAIRS-UPTAKE", "0610-CON-TRANSPIRATION-IGCSE", DD),
+    ("0610-CON-OSMOSIS", "0610-CON-TRANSPIRATION-IGCSE", UWR),
+    # 9
+    ("0610-CON-CIRCULATION-IGCSE", "0610-CON-HEART-IGCSE", DD),
+    ("0610-CON-CIRCULATION-IGCSE", "0610-CON-BLOOD-VESSELS-IGCSE", DD),
+    ("0610-CON-HEART-IGCSE", "0610-CON-BLOOD-VESSELS-IGCSE", UWR),
+    ("0610-CON-HEART-IGCSE", "0610-CON-CHD", DD),
+    ("0610-CON-BLOOD-VESSELS-IGCSE", "0610-CON-KIDNEY-IGCSE", UWR),
+    ("0610-CON-SPECIALISED-CELLS", "0610-CON-BLOOD-COMPONENTS", UWR),
+    # 10
+    ("0610-CON-PATHOGENS-IGCSE", "0610-CON-BODY-DEFENCES", UWR),
+    ("0610-CON-BLOOD-COMPONENTS", "0610-CON-BODY-DEFENCES", UWR),
+    ("0610-CON-BODY-DEFENCES", "0610-CON-ACTIVE-IMMUNITY-IGCSE", DD),
+    ("0610-CON-ACTIVE-IMMUNITY-IGCSE", "0610-CON-VACCINATION-IGCSE", DD),
+    ("0610-CON-ACTIVE-IMMUNITY-IGCSE", "0610-CON-PASSIVE-IMMUNITY", UWR),
+    ("0610-CON-PATHOGENS-IGCSE", "0610-CON-CHOLERA", UWR),
+    ("0610-CON-PATHOGENS-IGCSE", "0610-CON-STI-HIV", UWR),
+    ("0610-CON-SEXUAL-REPRODUCTION", "0610-CON-STI-HIV", UWR),
+    ("0610-CON-PASSIVE-IMMUNITY", "0610-CON-FETUS-DEVELOPMENT", UWR),
+    ("0610-CON-PATHOGENS-IGCSE", "0610-CON-AIRWAY-PROTECTION", UWR),
+    ("0610-CON-BACTERIAL-CELL", "0610-CON-DRUGS-ANTIBIOTICS", UWR),
+    ("0610-CON-DRUGS-ANTIBIOTICS", "0610-CON-NATURAL-SELECTION-IGCSE", UWR),
+    # 11
+    ("0610-CON-GAS-EXCHANGE-SURFACES", "0610-CON-VENTILATION", DD),
+    ("0610-CON-VENTILATION", "0610-CON-INSPIRED-EXPIRED", UWR),
+    ("0610-CON-INSPIRED-EXPIRED", "0610-CON-BREATHING-ACTIVITY", UWR),
+    ("0610-CON-GAS-EXCHANGE-SURFACES", "0610-CON-BREATHING-ACTIVITY", UWR),
+    ("0610-CON-GAS-EXCHANGE-SURFACES", "0610-CON-AEROBIC-RESPIRATION", UWR),
+    ("0610-CON-GAS-EXCHANGE-SURFACES", "0610-CON-AIRWAY-PROTECTION", DD),
+    ("0610-CON-SPECIALISED-CELLS", "0610-CON-AIRWAY-PROTECTION", UWR),
+    # 12
+    ("0610-CON-ENERGY-USES", "0610-CON-AEROBIC-RESPIRATION", DD),
+    ("0610-CON-AEROBIC-RESPIRATION", "0610-CON-ANAEROBIC-RESPIRATION", DD),
+    ("0610-CON-ANAEROBIC-RESPIRATION", "0610-CON-OXYGEN-DEBT", DD),
+    ("0610-CON-BREATHING-ACTIVITY", "0610-CON-OXYGEN-DEBT", UWR),
+    ("0610-CON-ANAEROBIC-RESPIRATION", "0610-CON-FERMENTATION-USES", DD),
+    # 13
+    ("0610-CON-EXCRETION-BASICS", "0610-CON-KIDNEY-IGCSE", DD),
+    ("0610-CON-EXCRETION-BASICS", "0610-CON-LIVER-DEAMINATION", UWR),
+    # 14
+    ("0610-CON-SPECIALISED-CELLS", "0610-CON-NEURONES-IGCSE", UWR),
+    ("0610-CON-NEURONES-IGCSE", "0610-CON-REFLEX-ARC", DD),
+    ("0610-CON-NEURONES-IGCSE", "0610-CON-SYNAPSE-IGCSE", DD),
+    ("0610-CON-REFLEX-ARC", "0610-CON-SYNAPSE-IGCSE", DD),
+    ("0610-CON-REFLEX-ARC", "0610-CON-SENSE-ORGANS-EYE", UWR),
+    ("0610-CON-HORMONES", "0610-CON-HOMEOSTASIS-IGCSE", DD),
+    ("0610-CON-HOMEOSTASIS-IGCSE", "0610-CON-THERMOREGULATION", DD),
+    ("0610-CON-HORMONES", "0610-CON-PUBERTY-MENSTRUAL", DD),
+    # 16
+    ("0610-CON-SEXUAL-REPRODUCTION", "0610-CON-FLOWERS-POLLINATION", UWR),
+    ("0610-CON-FLOWERS-POLLINATION", "0610-CON-FERTILISATION-PLANTS", DD),
+    ("0610-CON-SEXUAL-REPRODUCTION", "0610-CON-REPRODUCTIVE-SYSTEMS", DD),
+    ("0610-CON-REPRODUCTIVE-SYSTEMS", "0610-CON-GAMETES-FERTILISATION", DD),
+    ("0610-CON-GAMETES-FERTILISATION", "0610-CON-FETUS-DEVELOPMENT", DD),
+    ("0610-CON-ASEXUAL-REPRODUCTION", "0610-CON-MITOSIS-IGCSE", UWR),
+    # 17
+    ("0610-CON-CHROMOSOMES-DNA-GENES", "0610-CON-PROTEIN-MAKING", DD),
+    ("0610-CON-CHROMOSOMES-DNA-GENES", "0610-CON-INHERITANCE-TERMS", DD),
+    ("0610-CON-CHROMOSOMES-DNA-GENES", "0610-CON-HAPLOID-DIPLOID-IGCSE", DD),
+    ("0610-CON-CHROMOSOMES-DNA-GENES", "0610-CON-GM-IGCSE", UWR),
+    ("0610-CON-HAPLOID-DIPLOID-IGCSE", "0610-CON-MITOSIS-IGCSE", UWR),
+    ("0610-CON-HAPLOID-DIPLOID-IGCSE", "0610-CON-MEIOSIS-IGCSE", DD),
+    ("0610-CON-CELL-DIVISION-NEW", "0610-CON-MITOSIS-IGCSE", UWR),
+    ("0610-CON-MEIOSIS-IGCSE", "0610-CON-INHERITANCE-TERMS", UWR),
+    ("0610-CON-MEIOSIS-IGCSE", "0610-CON-VARIATION-IGCSE", UWR),
+    ("0610-CON-INHERITANCE-TERMS", "0610-CON-MONOHYBRID-IGCSE", DD),
+    ("0610-CON-MONOHYBRID-IGCSE", "0610-CON-CODOMINANCE-SEXLINKED", UWR),
+    # 18
+    ("0610-CON-VARIATION-IGCSE", "0610-CON-NATURAL-SELECTION-IGCSE", DD),
+    ("0610-CON-ADAPTIVE-FEATURES", "0610-CON-NATURAL-SELECTION-IGCSE", UWR),
+    ("0610-CON-MUTATION-IGCSE", "0610-CON-NATURAL-SELECTION-IGCSE", UWR),
+    ("0610-CON-NATURAL-SELECTION-IGCSE", "0610-CON-SELECTIVE-BREEDING-IGCSE", UWR),
+    ("0610-CON-SELECTIVE-BREEDING-IGCSE", "0610-CON-FOOD-PRODUCTION", UWR),
+    # 19
+    ("0610-CON-ENERGY-FLOW", "0610-CON-FOOD-CHAINS-WEBS", DD),
+    ("0610-CON-FOOD-CHAINS-WEBS", "0610-CON-ECOLOGICAL-PYRAMIDS", DD),
+    ("0610-CON-FOOD-CHAINS-WEBS", "0610-CON-CARBON-NITROGEN-CYCLES", UWR),
+    ("0610-CON-FOOD-CHAINS-WEBS", "0610-CON-POPULATIONS", UWR),
+    ("0610-CON-POPULATIONS", "0610-CON-POLLUTION", UWR),
+    ("0610-CON-POPULATIONS", "0610-CON-BIODIVERSITY-IGCSE", UWR),
+    # 20
+    ("0610-CON-BIODIVERSITY-IGCSE", "0610-CON-SUSTAINABILITY-CONSERVATION", DD),
+    ("0610-CON-POLLUTION", "0610-CON-SUSTAINABILITY-CONSERVATION", UWR),
+    ("0610-CON-FOOD-PRODUCTION", "0610-CON-POLLUTION", UWR),
+    ("0610-CON-FOOD-PRODUCTION", "0610-CON-BIODIVERSITY-IGCSE", UWR),
+    # 21
+    ("0610-CON-BACTERIA-BIOTECH", "0610-CON-FERMENTATION-USES", UWR),
+    ("0610-CON-BACTERIA-BIOTECH", "0610-CON-FERMENTERS", UWR),
+    ("0610-CON-BACTERIA-BIOTECH", "0610-CON-GM-IGCSE", UWR),
+    ("0610-CON-FERMENTATION-USES", "0610-CON-FERMENTERS", UWR),
+]

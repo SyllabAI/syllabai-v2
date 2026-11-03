@@ -171,7 +171,8 @@ def verify_export(slug: str) -> None:
     )
 
 
-def project(src_slug: str, dst_slug: str) -> None:
+def project(src_slug: str, dst_slug: str, tag: str = "T-KG-PRE-3",
+            src_tag: str = "T-KG-PRE-2") -> None:
     src_spine, src_ids, src_prefix = load_spine(src_slug)
     dst_spine, dst_ids, dst_prefix = load_spine(dst_slug)
     src_pre = load_json(prereq_path(src_slug))
@@ -253,9 +254,9 @@ def project(src_slug: str, dst_slug: str) -> None:
     # Phase E1 — the target prerequisites snapshot (schema of record)
     snap = {
         "source": (
-            f"AI concept-web projection run (F8 rollout; T-KG-PRE-3). The web is "
+            f"AI concept-web projection run (F8 rollout; {tag}). The web is "
             f"the AI_SUGGESTED, UNVALIDATED concept lattice first shipped for "
-            f"{src_slug} (T-KG-PRE-2), projected onto the {dst_slug} spine with "
+            f"{src_slug} ({src_tag}), projected onto the {dst_slug} spine with "
             f"every anchor re-verified against the target point set (0 unmapped "
             f"pass law) and both-endpoint edge survival. Bases mirror the "
             f"operator-validated store vocabulary. prereqValidated stays EMPTY — "
@@ -309,8 +310,8 @@ def project(src_slug: str, dst_slug: str) -> None:
     m = new_spine["meta"]
     m["prerequisites"] = {
         "source": (
-            f"AI concept-web projection (F8 rollout T-KG-PRE-3): the {src_slug} "
-            f"web (T-KG-PRE-2) projected onto this spine, anchors re-verified, "
+            f"AI concept-web projection (F8 rollout {tag}): the {src_slug} "
+            f"web ({src_tag}) projected onto this spine, anchors re-verified, "
             f"in-order pairs only; AI_SUGGESTED — unvalidated, labelled INFERRED "
             f"PROTOTYPE by the renderer, never in prereqValidated."
         ),
@@ -396,11 +397,13 @@ def main() -> None:
     p = sub.add_parser("project")
     p.add_argument("--from", dest="src", required=True)
     p.add_argument("--to", dest="dst", required=True)
+    p.add_argument("--tag", default="T-KG-PRE-3")
+    p.add_argument("--src-tag", default="T-KG-PRE-2")
     args = ap.parse_args()
     if args.cmd == "verify-export":
         verify_export(args.course)
     elif args.cmd == "project":
-        project(args.src, args.dst)
+        project(args.src, args.dst, args.tag, args.src_tag)
 
 
 if __name__ == "__main__":
