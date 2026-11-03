@@ -27,6 +27,7 @@
 import { parseFetchQuery } from "./fetch-parser";
 import { hygienicStem } from "./stem-hygiene";
 import type { SqlFn } from "./sql";
+import type { EvidenceItem } from "./evidence";
 
 /** The scaffold cap — the paper's opening questions, deterministic order. */
 export const QUIZ_SCAFFOLD_MAX_QUESTIONS = 5;
@@ -135,4 +136,42 @@ export async function loadQuizScaffold(
 
   if (scaffoldable.length === 0) return null;
   return { paperId: String(paperId), label: String(label ?? ""), questions: scaffoldable };
+}
+
+/**
+ * T-TUTOR-EXP-1 (005) — the scaffold-less quiz citation floor.
+ *
+ * The measured defect (2026-11-03 live 4CH1 battery): an improvised "quiz me
+ * on this" turn cited a tangential chunk (alkenes in a rate-of-reaction
+ * quiz). RRF ranks only RELATIVELY, so a weakly-related chunk still survives
+ * any top-k cap when the candidate pool is thin — the model then reads it as
+ * quiz-scope. On quiz-shaped asks WITHOUT a deterministic scaffold (no pin,
+ * or the pin carried no scaffoldable rows) the filler pool therefore keeps
+ * only STRONGLY fused citations: a document chunk stays when its fusedScore
+ * is at least QUIZ_FLOOR_RATIO of the best chunk's fusedScore in the same
+ * ask. Deterministic and scale-free (RRF's absolute magnitudes carry no
+ * meaning; the ratio does). KNOWLEDGE_NODE / LEARNER_WORK items pass
+ * through untouched — the intent anchors and the learner's own words are
+ * relevant by construction, not by fused rank. With a scaffold present the
+ * floor never fires: the paper's own bank questions lead and the law is the
+ * scaffold's.
+ */
+export const QUIZ_FLOOR_RATIO = 0.5;
+
+export function quizCitationFloor(
+  items: ReadonlyArray<EvidenceItem>,
+): EvidenceItem[] {
+  let best = 0;
+  for (const item of items) {
+    if (item.source === "KNOWLEDGE_NODE" || item.source === "LEARNER_WORK") continue;
+    if (item.fusedScore > best) best = item.fusedScore;
+  }
+  if (best <= 0) return [...items];
+  const floor = best * QUIZ_FLOOR_RATIO;
+  return items.filter(
+    (item) =>
+      item.source === "KNOWLEDGE_NODE" ||
+      item.source === "LEARNER_WORK" ||
+      item.fusedScore >= floor,
+  );
 }
