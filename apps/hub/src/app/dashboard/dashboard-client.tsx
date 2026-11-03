@@ -282,7 +282,7 @@ function SubjectCard({
     : null;
 
   return (
-    <Card className="relative h-full border-primary/25 transition-colors hover:border-primary/60">
+    <Card className="relative h-full border-primary/25 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm">
       <Button
         variant="ghost"
         size="icon"
@@ -621,6 +621,15 @@ export function DashboardClient({
         </div>
       </section>
 
+      {/* t-ui-polish run-001 — the MG/RD dashboard split: the working surfaces
+          (resume, subjects) own the main column; the advice layer (progress
+          attribution, next best actions, study plan) reads from a narrower
+          rail at xl. Below xl the single-column stack survives unchanged —
+          main's D-1 order (act now → jump back in → subjects → advice) is
+          exactly the below-xl order, so the split only re-plumbs xl+. */}
+      <div className="xl:grid xl:grid-cols-[minmax(0,1fr)_340px] xl:items-start xl:gap-8">
+        <div className="space-y-8">
+
       {/* ---- Jump back in (D-1: the returning student's highest-frequency
           action leaves the page bottom) — ONE surface (SME resume card +
           the account trail, D-2). Priority: this device wins; the account
@@ -732,7 +741,7 @@ export function DashboardClient({
             </CardContent>
           </Card>
         ) : (
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 2xl:grid-cols-3">
             {mySubjects.map((c) => (
               <SubjectCard
                 key={c.slug}
@@ -750,7 +759,7 @@ export function DashboardClient({
             <button
               type="button"
               onClick={() => setAddOpen(true)}
-              className="flex min-h-[10rem] flex-col items-start justify-center gap-2 rounded-xl border border-dashed border-muted-foreground/40 p-4 text-left transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="flex min-h-[10rem] flex-col items-start justify-center gap-2 rounded-2xl border border-dashed border-muted-foreground/40 p-4 text-left transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <p className="text-sm font-semibold">Got another course?</p>
               <p className="text-xs text-muted-foreground">
@@ -764,6 +773,13 @@ export function DashboardClient({
           </div>
         )}
       </section>
+
+        </div>
+
+        {/* t-ui-polish run-001 — the advice rail: the three read-model cards
+            that render nothing signed out. A complementary landmark so the
+            rail is skippable alongside the main landmark. */}
+        <aside aria-label="Advice and planning" className="space-y-8">
 
       {/* ---- DC-7 progress attribution (measured facts — the SAME projection
           the trees' rings read; never advice, never a local counter; renders
@@ -818,6 +834,9 @@ export function DashboardClient({
           </Card>
         )}
       </section>
+
+        </aside>
+      </div>
 
       {/* ---- Add course — cascading board → level → subject overlay ---- */}
       <AddCourseOverlay
