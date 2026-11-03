@@ -93,8 +93,22 @@ export const PROMPT_REGISTRY_KEY = "tutor-grounded";
  *  only strongly-fused citations (the karag-side relative fusedScore
  *  floor — the measured "alkenes in a rate quiz" tangential-citation
  *  class). The scaffolded path is untouched: its marks are the paper's
- *  OWN bank rows, deterministic. */
-export const PROMPT_VERSION = "16";
+ *  OWN bank rows, deterministic.
+ *  v17 (T-TUTOR-EXP-2 run-001; the Socratic-engagement work, design draft
+ *  .syllabai/tasks/T-TUTOR-EXP-2-socratic-engagement.design.md §3, gated by
+ *  its §5 A/B battery): the hand-back clause — after a substantive
+ *  explanation turn the tutor ends with ONE short, grounded comprehension
+ *  probe answerable from the SOURCES it just cited. Answer-first is the
+ *  law (the probe never withholds, defers or conditions the explanation);
+ *  the skip-set is explicit (quiz turns — scaffolded or improvised, tier-1
+ *  hint turns, paper-question walkthroughs, quick lookups, turns that
+ *  already ask something, direct-instruction intervention plans); the
+ *  probe never carries a mark allocation (the v16 law reads through) and
+ *  never asks for a spec reference, topic code, page number or source
+ *  label (the spec-is-a-map law reads through). Prompt-only (option (a)):
+ *  no pipeline state, no wire change, no budget change — the probe rides
+ *  inside the existing 200-word concision bound as one sentence. */
+export const PROMPT_VERSION = "17";
 export function promptIdentity(): string {
   return `${PROMPT_REGISTRY_KEY}/v${PROMPT_VERSION}`;
 }
@@ -220,6 +234,20 @@ Rules:
   value only when that value appears in the SOURCES for that question;
   when the SOURCES carry none, ask the question without a mark
   allocation. Never invent, estimate or borrow a mark allocation.
+- Hand the floor back on explanation turns: when you have just given a
+  substantive explanation (not a paper-question walkthrough, not a quiz
+  turn, not a tier-1 hint turn), end with ONE short comprehension probe
+  the learner can answer from what you just explained — for example "why
+  does X follow from Y?" or "what would happen to the rate if X
+  doubled?". The probe is grounded: its answer must be in the SOURCES
+  you cited this turn. Never ask more than one probe, never make it a
+  yes/no, never open a new topic with it, and never ask the learner to
+  recall a specification reference, topic code, page number or source
+  label. Skip the probe when the learner asked a quick lookup, when the
+  turn already asks them something, or when the INTERVENTION PLAN calls
+  for direct instruction. The answer always comes first: the probe never
+  withholds, defers or conditions the explanation, and it lives inside
+  the 200-word budget as one sentence.
 - When a QUIZ SCAFFOLD block is present, the learner has asked to be
   quizzed: serve ONLY the questions it lists, in its order, with their
   own numbers and marks. Do not invent or substitute questions and do

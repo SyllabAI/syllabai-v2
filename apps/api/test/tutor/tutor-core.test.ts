@@ -355,8 +355,8 @@ topic (e.g. "moles", "bonding", "equilibria") or ask your teacher to
 ingest the relevant material.`);
     expect(courseScopeRefusal("4CH1")).toContain('scoped to the course "4CH1"');
     expect(courseScopeRefusal("4CH1")).toContain("SyllabAI never answers across\ncourses");
-    // v16 (T-TUTOR-EXP-1): the improvised-quiz marks law follows the bumped prompt
-    expect(promptIdentity()).toBe("tutor-grounded/v16");
+    // v17 (T-TUTOR-EXP-2): the hand-back clause follows the bumped prompt
+    expect(promptIdentity()).toBe("tutor-grounded/v17");
   });
 
   test("the v11 spec-is-a-map quiz law is in the system prompt", () => {
@@ -366,6 +366,26 @@ ingest the relevant material.`);
     );
     expect(prompt).toContain("Never ask the\n  learner to recall or state a specification reference");
     expect(prompt).toContain("the specification is a map the tutor\n  reads, not content the learner memorises");
+  });
+
+  test("the v17 hand-back clause is in the system prompt (T-TUTOR-EXP-2)", () => {
+    const prompt = systemPrompt();
+    expect(prompt).toContain("Hand the floor back on explanation turns");
+    expect(prompt).toContain("end with ONE short comprehension probe");
+    expect(prompt).toContain("its answer must be in the SOURCES");
+    expect(prompt).toContain("never make it a\n  yes/no");
+    expect(prompt).toContain("Skip the probe when the learner asked a quick lookup");
+    expect(prompt).toContain("when the INTERVENTION PLAN calls\n  for direct instruction");
+    // answer-first is the law: the probe never withholds or conditions the answer
+    expect(prompt).toContain("The answer always comes first: the probe never");
+    expect(prompt).toContain("withholds, defers or conditions the explanation");
+    // the probe rides the EXISTING 200-word bound — no budget change
+    expect(prompt).toContain("it lives inside\n  the 200-word budget as one sentence");
+    expect(prompt).toContain("- Be concise: at most 200 words plus citations.");
+    // the skip-set: quiz turns, tier-1 hints, paper walkthroughs
+    expect(prompt).toContain("(not a paper-question walkthrough, not a quiz\n  turn, not a tier-1 hint turn)");
+    // the probe must not launder a spec-recall ask (the v11 law reads through)
+    expect(prompt).toContain("never ask the learner to\n  recall a specification reference, topic code, page number or source\n  label");
   });
 
   test("the v12 QUIZ SCAFFOLD serving rule is in the system prompt", () => {
