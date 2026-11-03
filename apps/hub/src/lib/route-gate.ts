@@ -62,13 +62,14 @@ export function gateForPath(pathname: string): GateClass | null {
 }
 
 /**
- * The proxy matcher, derived from the same rows — the list Next's proxy
- * compiles against and gateForPath() cannot drift apart. "/" and "/login"
- * are outside the policy: "/" redirects signed-in identities to their role
- * home (A-1) and /login stays reachable signed-in (P3-7 panel, account
- * switching). The ~4.4k statically prerendered corpus pages stay outside —
- * widening to them would put every content page behind a cookie check for
- * zero benefit.
+ * The policy's statement of the proxy matcher: the gated rows plus "/"
+ * and "/login". Next statically parses src/proxy.ts's config field, so
+ * the matcher there is a LITERAL copy of this list — route-gate.test.ts
+ * fails the day the two drift. "/" and "/login" sit outside the policy:
+ * "/" redirects signed-in identities to their role home (A-1) and /login
+ * stays reachable signed-in (P3-7 panel, account switching). The ~4.4k
+ * statically prerendered corpus pages stay outside — widening to them
+ * would put every content page behind a cookie check for zero benefit.
  */
 export const PROXY_MATCHER = [
   "/",

@@ -34,15 +34,16 @@
  *     login page's "Signed in as …" panel (hub UI audit P3-7) and
  *     account switching both need /login to stay reachable.
  *
- * Matcher discipline: the matcher is DERIVED from lib/route-gate.ts's
- * GATED_ROUTES (plus "/" and "/login"), so the enforced set and the policy
- * cannot drift. The hub serves ~4.4k statically prerendered content pages
- * and they stay outside the matcher — widening to them would put every
- * content page behind a cookie check for zero benefit.
+ * Matcher discipline: the literal below mirrors lib/route-gate.ts —
+ * the gated rows plus "/" and "/login" — and route-gate.test.ts fails the
+ * day the policy and this list drift. The hub serves ~4.4k statically
+ * prerendered content pages and they stay outside the matcher — widening
+ * to them would put every content page behind a cookie check for zero
+ * benefit.
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { roleHome } from "@/lib/role-home";
-import { gateForPath, PROXY_MATCHER } from "@/lib/route-gate";
+import { gateForPath } from "@/lib/route-gate";
 import {
   SESSION_COOKIE,
   sessionCookieOptions,
@@ -133,5 +134,28 @@ export default async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: PROXY_MATCHER,
+  // Next statically parses this field, so the matcher must be a literal
+  // here — an imported array is rejected at build time. The value mirrors
+  // lib/route-gate.ts's PROXY_MATCHER (the gated rows + "/" and "/login"),
+  // and src/lib/route-gate.test.ts fails the suite the day the two drift.
+  matcher: [
+    "/",
+    "/login",
+    "/dashboard",
+    "/dashboard/:path*",
+    "/tutor",
+    "/tutor/:path*",
+    "/assistant",
+    "/assistant/:path*",
+    "/learner",
+    "/learner/:path*",
+    "/plan",
+    "/plan/:path*",
+    "/practice/drill",
+    "/practice/drill/:path*",
+    "/practice/battle",
+    "/practice/battle/:path*",
+    "/teacher",
+    "/teacher/:path*",
+  ],
 };
