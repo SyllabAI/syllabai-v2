@@ -1,0 +1,267 @@
+{
+  "format": "hub-import-run-receipt/0.1",
+  "generated_at_utc": "2026-11-03T20:48:49Z",
+  "feed": "physics-wave8-v27",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "landing_law": "additive",
+  "generated_at_utc_note": "figures feed: declared revision of the 112 lesson artifacts (G-DELTA); additive-only law unchanged for everything else",
+  "operator_trace": "1a1a2ee639052b71",
+  "operator_directive": "run the new-subject wave-8 chain — import the igcse-physics-19 wave-8 tranche of record (11 notes: rn_r6HzX8DgQ84bGBMP 'Work Done' / rn_5VwtXpGcdNVHV2tm 'Gravitational Potential Energy' / rn_vR82ncPDnnyGQ94P 'Kinetic Energy' / rn_p3SDZQRDzPCYhztZ 'Work, GPE & KE' / rn_bktjjV5hs9qSQQDS 'Power' / rn_sb9rpDPgVq9JChng 'Energy Resources' / rn_xdVXyYb6CH5MyXws 'Comparing Energy Resources' / rn_9SWwrq7BZFhXQbsT 'Density' / rn_97j6FkgNn87V4vGC 'Core Practical: Determining Density' / rn_Rc5mD3yzSVWknJzx 'Pressure' / rn_HQhkn6sZhxfKfbj3 'Pressure in Liquids'; 26 lessons / 234 checks = 130 MCQ + 52 recall + 26 explain-why + 26 application) with the 126 prior-pack artifacts re-pinned byte-identical — CUMULATIVE pack 74 notes / 153 lessons / 1377 checks, manifest v27. Declared hub landing = 22/22 written + 126/126 identical-exists + the runner-owned guided-import.json index re-issued with all 74 rows; zero chemistry bytes touched. Operator ignition trace 1a1a2ee639052b71 ('Wave-8 proceed'), execution trace 1a1a2ee639052b71.",
+  "runner": {
+    "path": "apps/hub/scripts/import_guided/run_import.mjs",
+    "id": "hub-import-runner/1.0",
+    "runtime": "node v24.22.2"
+  },
+  "feed_config": {
+    "manifest": "hub-import-manifest-v27.json",
+    "manifest_version": 27,
+    "promo": {
+      "commit": "135269ca56a81d64b5436e2abbbf06e162fea382",
+      "tree": "f94e1d2f42e1e368e0622bc984b0d2e510aaf82c",
+      "parent": "6dc1a022e82f1b4df447e436de4d30019fb50964",
+      "trace": "1a1a2ee639052b71"
+    },
+    "promotion_pending": false,
+    "integration_branch": "(main ancestry)",
+    "artifact_pin": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+    "figures_feed": true
+  },
+  "gates": {
+    "P0": "promotion commit preflight (tree/parent/message/ancestry or declared pending promotion)",
+    "GA": "manifest integrity (format/version/kinds/counts/conservation/adapter/trace + survivor byte-identity + schemas byte-anchored)",
+    "GB": "148/148 fetched raw @ pinned commit, sha256+bytes exact",
+    "GC": "ajv draft-07 ×148 vs both target schemas",
+    "GD": "X ×74 — derived-ID grammar, checkRefs↔questions bidirectional 1:1 (1377 checks), pinned provenance, figure closure both ways (238 figures)",
+    "GE": "Φ — per-note stream anchors ×74 vs the feed's INT-3 record; wave subtotals ×9; grand stream vs manifest; legacy-anchor equality ×74 (figures carried no prose)",
+    "LAND": "byte-exact atomic landing (additive law) — additive-only, divergent overwrite aborts",
+    "GV": "cold re-read ×148; closing identity re-derived from disk; loader rel-shape probe; static-build pickup; idempotence 148/148; figure counts re-derived from disk"
+  },
+  "gate_results": [
+    {
+      "stage": "P0",
+      "name": "promotion commit resolves",
+      "ok": true,
+      "detail": "135269ca56a81d64b5436e2abbbf06e162fea382"
+    },
+    {
+      "stage": "P0",
+      "name": "tree matches promotion receipt",
+      "ok": true,
+      "detail": "tree=f94e1d2f42e1e368e0622bc984b0d2e510aaf82c"
+    },
+    {
+      "stage": "P0",
+      "name": "parent matches promotion receipt",
+      "ok": true,
+      "detail": "parent=6dc1a022e82f1b4df447e436de4d30019fb50964"
+    },
+    {
+      "stage": "P0",
+      "name": "message carries promotion trace",
+      "ok": true,
+      "detail": "PHYSICS-4PH1 wave-8 amendment (worked-example census 4/7 -> 8/3, value-derived; pipeline d"
+    },
+    {
+      "stage": "P0",
+      "name": "promotion commit remains main ancestor",
+      "ok": true,
+      "detail": "status=identical behind_by=0"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest fetched @ promotion commit",
+      "ok": true,
+      "detail": "49524B"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest byte-identical to lane survivor",
+      "ok": true,
+      "detail": "remote 0e62e2f9d6a5 vs survivor 0e62e2f9d6a5"
+    },
+    {
+      "stage": "G-A",
+      "name": "format hub-import-manifest/1.0",
+      "ok": true,
+      "detail": "hub-import-manifest/1.0"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest_version 27",
+      "ok": true,
+      "detail": "27"
+    },
+    {
+      "stage": "G-A",
+      "name": "148 artifacts listed",
+      "ok": true,
+      "detail": "148"
+    },
+    {
+      "stage": "G-A",
+      "name": "kinds 148/148 (feed census)",
+      "ok": true,
+      "detail": "{\"hub-lesson-import-1.5\":74,\"sme-question-package\":74}"
+    },
+    {
+      "stage": "G-A",
+      "name": "counts == closing identity",
+      "ok": true,
+      "detail": "{\"notes\":74,\"lessons\":153,\"checks\":1377,\"keyPoints\":736,\"distractors\":2295,\"glossaryTerms\":316,\"figures\":238,\"figures_module_mapped\":225,\"figures_note_level\":13,\"workedExamples_populated\":36,\"workedExamples_null\":38,\"authored_chars_conserved\":863014}"
+    },
+    {
+      "stage": "G-A",
+      "name": "conservation block present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "stage": "G-A",
+      "name": "adapter of record",
+      "ok": true,
+      "detail": "guided-lesson-0.6--hub-lesson-import-1.5"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest carries promotion operator trace",
+      "ok": true,
+      "detail": "1a1a2ee639052b71"
+    },
+    {
+      "stage": "G-A",
+      "name": "artifact paths conform to the feed's path-map families",
+      "ok": true,
+      "detail": "148 conform"
+    },
+    {
+      "stage": "G-A",
+      "name": "hub schema byte-identical to survivor",
+      "ok": true,
+      "detail": "12004B"
+    },
+    {
+      "stage": "G-A",
+      "name": "package schema byte-identical to survivor",
+      "ok": true,
+      "detail": "6078B"
+    },
+    {
+      "stage": "G-B",
+      "name": "148/148 artifacts fetched + sha256/bytes exact",
+      "ok": true,
+      "detail": "all exact"
+    },
+    {
+      "stage": "G-C",
+      "name": "ajv draft-07 ×148 (guided-lesson-0.6--hub-lesson-import-1.5 + sme-question-package/1.2)",
+      "ok": true,
+      "detail": "all pass"
+    },
+    {
+      "stage": "G-D",
+      "name": "X ×74: grammar + checkRefs↔questions + figure closure + provenance",
+      "ok": true,
+      "detail": "1377 checks + 238 figures resolve"
+    },
+    {
+      "stage": "G-E",
+      "name": "per-note stream anchors ×74 (sha256 + chars)",
+      "ok": true,
+      "detail": "all conserved"
+    },
+    {
+      "stage": "G-E",
+      "name": "wave stream subtotals ×9 vs manifest",
+      "ok": true,
+      "detail": "all match"
+    },
+    {
+      "stage": "G-E",
+      "name": "grand stream vs manifest",
+      "ok": true,
+      "detail": "863014 chars ec08e48c5c6c"
+    },
+    {
+      "stage": "LAND",
+      "name": "148 artifacts landed byte-exact (additive law)",
+      "ok": true,
+      "detail": "22 written, 0 revised, 126 already identical"
+    },
+    {
+      "stage": "LAND",
+      "name": "guided-import.json index landed (runner-owned, re-issued)",
+      "ok": true,
+      "detail": "43587B"
+    },
+    {
+      "stage": "G-V",
+      "name": "cold re-read ×148 byte-identical vs manifest sha",
+      "ok": true,
+      "detail": "disk == fetched bytes"
+    },
+    {
+      "stage": "G-V",
+      "name": "closing identity re-derived from disk",
+      "ok": true,
+      "detail": "{\"notes\":74,\"lessons\":153,\"checks\":1377,\"keyPoints\":736,\"distractors\":2295,\"glossaryTerms\":316}"
+    },
+    {
+      "stage": "G-V",
+      "name": "figure counts re-derived from disk",
+      "ok": true,
+      "detail": "{\"figures\":238,\"moduleMapped\":225,\"noteLevel\":13,\"modulesWithFigures\":128}"
+    },
+    {
+      "stage": "G-V",
+      "name": "loader rel-shape probe (content/<rel>)",
+      "ok": true,
+      "detail": "igcse-physics-19/guided-lessons/rn_RpyMnS5nqWSRWXXG.hub-lesson-import.json , igcse-physics-19/guided-questions/rn_RpyMnS5nqWSRWXXG.sme-question-package.json , igcse-physics-19/guided-import.json"
+    },
+    {
+      "stage": "G-V",
+      "name": "static build copies content/ recursively (cpSync recursive in build_corpus_static.mjs)",
+      "ok": true,
+      "detail": "whole-tree copy — new guided-* subdirs publish with the next build"
+    },
+    {
+      "stage": "G-V",
+      "name": "idempotence re-landing 148/148 identical-exists",
+      "ok": true,
+      "detail": "148/148"
+    }
+  ],
+  "landing": {
+    "hub_tree": "/home/z/my-project/hub-w8/apps/hub",
+    "pack": "content/igcse-physics-19/",
+    "lessons_dir": "guided-lessons/ (74 files)",
+    "questions_dir": "guided-questions/ (74 files)",
+    "index": "guided-import.json (guided-import-index/1.0)",
+    "files_written": 22,
+    "files_revised": 0,
+    "files_already_identical": 126,
+    "bytes_landed": 2109364
+  },
+  "counts_landed": {
+    "notes": 74,
+    "lessons": 153,
+    "checks": 1377,
+    "keyPoints": 736,
+    "distractors": 2295,
+    "glossaryTerms": 316
+  },
+  "figures_landed": {
+    "figures": 238,
+    "moduleMapped": 225,
+    "noteLevel": 13,
+    "modulesWithFigures": 128
+  },
+  "conservation_recomputed": {
+    "authored_chars": 863014,
+    "authored_stream_sha256": "ec08e48c5c6c0fec8314db1be3662cd9b6dea69eaac06eb2d6fdb9fd5e094707"
+  },
+  "next_operator_gated": [
+    "commit the hub tree addition (runner + content/igcse-physics-19/guided-*) per standing convention — push auto-bakes the hub (git-linked law)",
+    "hub PR (atomic): FEED runner + TS optional fields + renderer figure cards + revised artifacts + re-issued guided-import.json; merges only after resources PR #207"
+  ],
+  "duration_ms": 12381
+}
