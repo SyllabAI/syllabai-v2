@@ -29,7 +29,6 @@
  */
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { CalendarCheck, CheckCircle2, Circle, Loader2, Pencil, Sparkles } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -37,7 +36,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { getToken } from "@/lib/api";
-import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { useMySubjects } from "@/lib/my-subjects";
 import {
   completionCopy,
@@ -67,8 +65,6 @@ function seasonChip(s: StudyPlanSeason): string {
 }
 
 export function PlanClient() {
-  const pathname = usePathname();
-  const currentSearch = useCurrentSearch();
   const payload = useStudyPlan();
   const defaults = useStudyPlanDefaults();
   const mySubjects = useMySubjects();
@@ -176,27 +172,9 @@ export function PlanClient() {
     setMode("view");
   };
 
-  // ── signed out: the disclosed CTA posture ────────────────────────────────
-  if (!signedIn) {
-    return (
-      <main className="mx-auto w-full max-w-3xl px-4 py-10">
-        <Card>
-          <CardContent className="flex flex-col items-start gap-3 p-6">
-            <h1 className="text-xl font-semibold">Your Study Plan</h1>
-            <p className="text-sm text-muted-foreground">
-              Structured by experienced teachers, tailored to your courses. Sign in to build a plan
-              from your subjects.
-            </p>
-            <Button asChild>
-              <Link href={signInHref(pathname, currentSearch)}>Sign in</Link>
-            </Button>
-          </CardContent>
-        </Card>
-      </main>
-    );
-  }
-
   // ── the weekly page (the generation result of record) ────────────────────
+  // (B-3: the signed-out CTA posture block was deleted — the proxy gates
+  // this surface and the page's RequireAuth carries the fallback prompt.)
   if (effectiveMode === "view" && payload) {
     const { week } = payload;
     return (

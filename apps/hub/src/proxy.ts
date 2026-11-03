@@ -1,7 +1,8 @@
 /**
  * Route guard — the server-side half of the frontend-flow audit's A-2
- * (Tier 1 phase 1). Next 16's proxy convention (the successor of
- * middleware.ts; resolved at src/proxy.ts, Node runtime).
+ * (Tier 1 phase 1), extended by B-2 and consolidated by B-3. Next 16's
+ * proxy convention (the successor of middleware.ts; resolved at
+ * src/proxy.ts, Node runtime).
  *
  * The signed routing cookie (lib/session.ts) lets the server know who is
  * asking before first paint, so these decisions stop being
@@ -24,32 +25,30 @@
  *     redirect as every other gated surface, so a bookmarked dashboard
  *     survives sign-in. Students get their dashboard; teachers keep the
  *     explicit "Preview student view" path (Tier 0's identity menu).
+ *   - B-3: one policy for every gated surface (lib/route-gate.ts). A
+ *     signed-out request to any session-gated path gets the ONE signed-out
+ *     treatment — 307 to /login?next=<path+query> — instead of the eight
+ *     bespoke inline states the audit inventoried; /teacher additionally
+ *     requires the teacher role; everything ungated passes untouched.
  *   - /login is deliberately NOT redirected for signed-in users: the
  *     login page's "Signed in as …" panel (hub UI audit P3-7) and
  *     account switching both need /login to stay reachable.
  *
- * Matcher discipline: exactly five prefixes, nothing else. The hub serves
- * ~4.4k statically prerendered content pages; widening the matcher puts
- * every one of them behind a cookie check for zero benefit. (B-3 will
- * consolidate the gate classes into one policy module — this file gains
- * the /dashboard decision first, as its own reviewable change.)
+ * Matcher discipline: the matcher is DERIVED from lib/route-gate.ts's
+ * GATED_ROUTES (plus "/" and "/login"), so the enforced set and the policy
+ * cannot drift. The hub serves ~4.4k statically prerendered content pages
+ * and they stay outside the matcher — widening to them would put every
+ * content page behind a cookie check for zero benefit.
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { roleHome } from "@/lib/role-home";
+import { gateForPath, PROXY_MATCHER } from "@/lib/route-gate";
 import {
   SESSION_COOKIE,
   sessionCookieOptions,
   verifySessionToken,
   type SessionPayload,
 } from "@/lib/session";
-
-function isTeacher(pathname: string): boolean {
-  return pathname === "/teacher" || pathname.startsWith("/teacher/");
-}
-
-function isDashboard(pathname: string): boolean {
-  return pathname === "/dashboard" || pathname.startsWith("/dashboard/");
-}
 
 /** Same-origin paths only: starts with a single "/" and never "//" or "\".
  * Everything else (absolute URLs, protocol-relative tricks) is dropped and
@@ -98,11 +97,12 @@ export default async function proxy(request: NextRequest) {
   const here = `${pathname}${search}`;
   const token = request.cookies.get(SESSION_COOKIE)?.value;
   const session = token ? await verifySessionToken(token) : null;
+  const gate = gateForPath(pathname);
 
   if (token && !session) {
     // invalid cookie: gated surfaces get the sign-in redirect, everything
     // else just proceeds as signed-out with the cookie cleared
-    if (isTeacher(pathname) || isDashboard(pathname)) {
+    if (gate) {
       return scrubCookie(signInRedirect(request, here));
     }
     return scrubCookie(NextResponse.next());
@@ -114,7 +114,7 @@ export default async function proxy(request: NextRequest) {
     return roleHomeRedirect(request, session);
   }
 
-  if (isTeacher(pathname)) {
+  if (gate === "teacher") {
     if (!session) return signInRedirect(request, here);
     if (session.role !== "teacher") {
       // the audit's isolation line, now server-enforced
@@ -122,9 +122,10 @@ export default async function proxy(request: NextRequest) {
     }
   }
 
-  // B-2: the dashboard is an account surface. Any signed-in role passes —
-  // students own it, teachers are the explicit "Preview student view".
-  if (isDashboard(pathname) && !session) {
+  // B-2/B-3: every session-gated surface answers anonymous requests with
+  // the one sign-in redirect — the surface's own signed-out states were
+  // bespoke copies of this contract and are deleted client-side.
+  if (gate === "session" && !session) {
     return signInRedirect(request, here);
   }
 
@@ -132,5 +133,5 @@ export default async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/login", "/dashboard", "/teacher", "/teacher/:path*"],
+  matcher: PROXY_MATCHER,
 };

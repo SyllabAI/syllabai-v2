@@ -13,18 +13,17 @@
  * projection: your marks vs the seeded bot's coin, over-clock answers
  * disclosed, no leaderboard anywhere (ADR-036 posture).
  *
- * Posture: signed-out visitors get the sign-in CTA; any fetch failure renders
- * the honest empty state, never a fabricated battle.
+ * Posture: the battle is an identity-bearing surface — draws and attempt
+ * evidence key to the learner — so the proxy gates it (B-3) and the page
+ * wraps the client in RequireAuth as the fallback; any fetch failure
+ * renders the honest empty state, never a fabricated battle.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Bot, CheckCircle2, ChevronRight, Clock, RefreshCw, Swords, XCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Markdown } from "@/components/markdown";
-import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { PartProblem } from "@/components/part-problem";
 import { SpecChip } from "@/components/provenance";
 import { getToken } from "@/lib/api";
@@ -53,8 +52,6 @@ function topicGroupOf(code: string): string {
 type Phase = "picker" | "playing" | "settled";
 
 export function BattleClient({ course }: { course: string }) {
-  const pathname = usePathname();
-  const currentSearch = useCurrentSearch();
   const signedIn = useMemo(() => getToken() !== null, []);
 
   const [addresses, setAddresses] = useState<DrillAddressesResponse | null>(null);
@@ -195,25 +192,6 @@ export function BattleClient({ course }: { course: string }) {
     }
     return [...byTopic.entries()].sort((x, y) => Number(x[0]) - Number(y[0]) || x[0].localeCompare(y[0]));
   }, [addresses]);
-
-  if (!signedIn) {
-    return (
-      <div className="space-y-4">
-        <BattleHeading />
-        <Card>
-          <CardContent className="space-y-3 pt-4">
-            <p className="text-sm text-muted-foreground">
-              The Strength Battle is an identity-bearing surface: your battle draws and attempt
-              evidence key to your learner account. Sign in to battle.
-            </p>
-            <Button asChild>
-              <Link href={signInHref(pathname, currentSearch)}>Sign in to battle</Link>
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
 
   if (loadingAddresses) {
     return (

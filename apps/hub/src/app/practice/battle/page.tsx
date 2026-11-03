@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { RequireAuth } from "@/components/auth/require-auth";
 import { battleCourse } from "@/lib/battle-course";
 
 import { BattleClient } from "./client";
@@ -14,7 +15,15 @@ export const metadata: Metadata = { title: "Strength Battle" };
  * model-driven draw — battles inherit model-drawn sets. The pin itself is
  * the F-186 rollout law of record (lib/battle-course.ts) — the course-page
  * card keys its live-vs-roadmap state on the same list.
+ *
+ * B-3: the battle is an identity-bearing surface (draws and attempt
+ * evidence key to the learner), so it sits in the proxy's session gate —
+ * the client-side RequireAuth is the fallback, not the gate.
  */
 export default function BattlePage() {
-  return <BattleClient course={battleCourse()} />;
+  return (
+    <RequireAuth>
+      <BattleClient course={battleCourse()} />
+    </RequireAuth>
+  );
 }
