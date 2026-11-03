@@ -3,7 +3,7 @@ task:
   id: T-TUTOR-EXP-2
   title: "T-TUTOR-EXP-2 - the Socratic-engagement prompt work: the tutor hands the floor back. The 2026-11-03/04 live 4CH1 battery of record (the same one that measured the run-001 defect classes) reads as a complete one-shot explanation engine: every answer arrives as a finished, well-cited monologue, the conversation continues only when the LEARNER drives, and no turn ever checks whether the explanation landed. A tutoring loop is a dialogue, not a broadcast. This task takes the tutor from broadcast to dialogue: after a substantive explanation turn, the tutor ends with ONE short, grounded comprehension probe the learner can actually answer from the sources just cited — answer-first, never withholding, never interrogating. Run-000 (this card + the design draft) starts the work: the prompt-structure ground truth is mapped, the v17 draft clause is written, the guardrail set is derived from the frozen laws (disclosure tiers, marks honesty, the 200-word budget), and the eval battery that must pass before any v17 lands is specified."
   owner: "r0 (Super Z, zai-web session web-5e612468-7ecd-499d-8b14-7c05e8412405) - self-filed under the same operator directive as T-TUTOR-EXP-1 ('Improve the conversational tutor experience', 2026-11-03/04 chat, trace 1a1a290703d26805); designated the follow-up card in the run-001 review pass (run-001-review-pass.md §4)"
-  status: "STARTED # run-000: the card + the design draft (T-TUTOR-EXP-2-socratic-engagement.design.md) on branch t-tutor-exp/run-002 — zero functional bytes; the v17 clause is DRAFT, not merged; next run: the live A/B battery (v16 vs v17-draft) on the 4CH1 pilot course"
+  status: "STARTED # run-001: the design §5 A/B battery EXECUTED (receipt of record .syllabai/receipts/T-TUTOR-EXP-2/run-001.md) — VERDICT: GATE FAILS (explanation probe-rate 3/5 vs gate 5/5; an insufficiency-turn probe with a grounding violation on S11b; a verbatim probe repeat on S12; skip-set 5/5 clean). The v17 clause does NOT merge: run-002 revises it with R1 firing-consistency / R2 the insufficiency skip / R3 the probe no-repeat guard, then re-runs THIS battery unchanged"
   priority: P2
   wave: "post-migration experience band # the second conversational-tutor experience wave; depends on run-001's honesty laws being in place (the probe must never breach them)"
   deps: [T-TUTOR-EXP-1]
@@ -27,7 +27,7 @@ task:
       - "apps/hub/**, CLA modes, the QUIZ SCAFFOLD law, Teach-Me (out of family)"
       - "golden/** captured cases; Neon main writes; force-push; self-merge; credentials in any artifact"
   execution_record: >
-    run-000 (this PR): the ground truth of the current prompt (v16) mapped —
+    run-000: the ground truth of the current prompt (v16) mapped —
     the rules list has interactive mechanics for QUIZ SCAFFOLD and the
     improvised-quiz laws, a continuity opener for RECENT LEARNING
     EXPERIENCES, and the 200-word concision budget, but NO clause that ever
@@ -41,3 +41,19 @@ task:
     scored on probe-rate, probe-answerability, monologue regression,
     refusal regression and tier-leakage regression. No functional bytes
     land before the battery reads clean.
+    run-001: the battery EXECUTED (two layers — live prod arm A on
+    courseRef 4CH1-2017 with the real 4CH1/2C Jan-2022 pin, and the
+    controlled A/B harness over the real prompt assembly with the LLM seam
+    substituted by the sandbox model, disclosed: groq 403 from the sandbox
+    egress on the exact stored key, gemini geo-blocked, openrouter
+    reasoning-channel empty through the adapter, and the team's daily
+    api-deployment quota exhausted — the v17 preview was refused). The gate
+    FAILS: the skip-set holds 5/5 and the fired probes are grounded and
+    improve tier-1 discipline, but the clause under-fires on explanations
+    (3/5), probed once on an insufficiency turn whose answer had drifted
+    beyond the sources (S11b), and repeated a probe verbatim across turns
+    (S12 — a defect class the design did not enumerate). The battery also
+    surfaced two LIVE prod defects for the tutor lane: paper-pinned
+    walkthrough asks die after stream open 3/3, and one transient stream
+    error on the hint ask. Next: revise the clause (R1/R2/R3) or design
+    option (b) cadence, then re-run this battery unchanged.
