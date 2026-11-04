@@ -116,13 +116,14 @@ jobs:
         run: |
           set -euo pipefail
           cd packages/db
-          DATABASE_URL="$(cat /tmp/tg-cow.uri)" bun run db:pull --force
-          GREP_PATH=$(ls drizzle/schema.ts drizzle/src/schema/schema.ts 2>/dev/null | head -1)
-          [ -n "$GREP_PATH" ] || { echo "db:pull produced no schema file"; exit 1; }
+          rm -rf /tmp/tg-pull
+          DATABASE_URL="$(cat /tmp/tg-cow.uri)" bun run db:pull --out /tmp/tg-pull
+          GREP_PATH="/tmp/tg-pull/schema.ts"
+          [ -f "$GREP_PATH" ] || { echo "db:pull produced no schema file"; exit 1; }
           echo "pulled schema: $GREP_PATH"
           grep -q 'teach_objectives_ordinal_check' "$GREP_PATH" || { echo "ordinal check missing from pulled schema"; exit 1; }
           grep -Eq 'ordinal BETWEEN 1 AND 8|ordinal >= 1' "$GREP_PATH" || { echo "pulled schema does NOT read 1–8 — snapshot drift"; exit 1; }
-          echo "db:pull end-state matches schema.ts + 0025_snapshot.json (ordinal BETWEEN 1 AND 8)"
+          echo "db:pull end-state matches schema.ts + 0025_snapshot.json (ordinal 1–8)"
       - name: Upload the receipt artifacts
         if: always()
         uses: actions/upload-artifact@v4
