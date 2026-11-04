@@ -392,3 +392,153 @@ describe("sortSessionsNewestFirst (MathsGenie lists the newest session first)", 
     expect(out).toHaveLength(2);
   });
 });
+
+// ---------------------------------------------------------------------------
+// T-GRADE-10 — YFM01 selection-mode aggregation (rate-form A* + Rule 1).
+// Structure from the official IAL 2018 Mathematics Aggregation Rules &
+// Guidance (Rules 1-7 + worked Examples; AS/A2 designation: FP1 M1 S1 D1
+// are AS units, FP2 FP3 M2 M3 S2 S3 are A2 units). Fixtures keep the
+// suite's real shape (raw /75 -> UMS /100) with integer anchor pairs; each
+// test enters marks at the raw A anchors, so the UMS readouts are exact.
+// ---------------------------------------------------------------------------
+
+import {
+  bestAggregationSelection,
+  type SelectionRule,
+} from "./grade-boundaries-calc";
+
+const FMU = (code: string, rawA: number, umsA: number): AggregationUnit => ({
+  code,
+  title: code,
+  maxMark: 75,
+  boundaries: { A: rawA, B: rawA - 6, C: rawA - 12, D: rawA - 18,
+                E: rawA - 24, U: 0 },
+  ums: {
+    maxMark: 100,
+    boundaries: { A: umsA, B: umsA - 8, C: umsA - 16, D: umsA - 24,
+                  E: umsA - 32, U: 0 },
+  },
+});
+
+// UMS values from the official worked examples, at their raw anchors
+const U = (code: string, umsA: number): AggregationUnit =>
+  FMU(code, Math.round((umsA / 100) * 75), umsA);
+
+const FM_POOL_CODES = ["WFM01", "WFM02", "WFM03", "WME01", "WME02", "WME03",
+                       "WST01", "WST02", "WST03", "WDM11"];
+const FM_RULE: SelectionRule = {
+  pool: FM_POOL_CODES,
+  size: 6,
+  mustInclude: ["WFM01"],
+  atLeastOneOf: ["WFM02", "WFM03"],
+};
+const YFM01_CASHIN = {
+  boundaries: { A: 480, B: 420, C: 360, D: 300, E: 240, U: 0 },
+  gradeLadder: ["A", "B", "C", "D", "E", "U"],
+};
+const YFM01_ASTAR = {
+  overallMin: 480,
+  a2Rate: 0.9,
+  a2Units: ["WFM02", "WFM03", "WME02", "WME03", "WST02", "WST03"],
+};
+
+describe("gradeFromAggregation rate form (selection-mode A* rule)", () => {
+  it("applies 90% of the USED A2 units' ceiling (2-A2 combination: 180/200)", () => {
+    // FP1+FP2+M1+S1+D1+S2: A2 = FP2 + S2 only -> ceiling 200, need 180
+    const units = [U("WFM01", 90), U("WFM02", 96), U("WME01", 90),
+                   U("WST01", 90), U("WDM11", 90), U("WST02", 96)];
+    const marks = Object.fromEntries(units.map((u) => [u.code, u.boundaries.A ?? 0]));
+    const agg = aggregateUms({ units, marks });
+    const res = gradeFromAggregation(YFM01_CASHIN, YFM01_ASTAR, agg);
+    expect(res.grade).toBe("A*");
+    expect(res.aStarRuleApplied).toBe(true);
+  });
+
+  it("rejects A* when the used A2 UMS misses the rate threshold", () => {
+    // A2 = FP2 80 + M2 75 + S2 95 = 250 of 300 (need 270)
+    const units = [U("WFM01", 90), U("WFM02", 80), U("WME02", 75),
+                   U("WST01", 85), U("WST02", 95), U("WDM11", 90)];
+    const marks = Object.fromEntries(units.map((u) => [u.code, u.boundaries.A ?? 0]));
+    const agg = aggregateUms({ units, marks });
+    const res = gradeFromAggregation(YFM01_CASHIN, YFM01_ASTAR, agg);
+    expect(agg.totalUms).toBe(515);
+    expect(res.grade).toBe("A");
+    expect(res.aStarRuleApplied).toBe(false);
+  });
+
+  it("never applies A* when the combination carries no A2 ceiling", () => {
+    const agg = aggregateUms({ units: [U("WFM01", 90)], marks: { WFM01: 68 } });
+    const res = gradeFromAggregation(YFM01_CASHIN, YFM01_ASTAR, agg);
+    expect(res.aStarRuleApplied).toBe(false);
+  });
+});
+
+describe("bestAggregationSelection (Pearson Rule 1 over the FM pool)", () => {
+  it("Rule 1 Example 1 (FM half): maximises grade, then UMS, bank the rest", () => {
+    // Official Example-1 bank, FM-eligible units: FP1 90, FP2 80, M2 75,
+    // M3 60, S1 85, S2 95, D1 80 (7 units) — the best eligible six drop
+    // M3 (60): 505, grade A (A2 250/300 < 270, so no A*)
+    const units = [U("WFM01", 90), U("WFM02", 80), U("WME02", 75),
+                   U("WME03", 60), U("WST01", 85), U("WST02", 95),
+                   U("WDM11", 80)];
+    const marks = Object.fromEntries(units.map((u) => [u.code, u.boundaries.A ?? 0]));
+    const before = JSON.stringify([units, marks]);
+    const best = bestAggregationSelection(
+      units, marks, FM_RULE, YFM01_CASHIN, YFM01_ASTAR,
+    );
+    expect(JSON.stringify([units, marks])).toBe(before); // pure
+    expect(best).not.toBeNull();
+    expect(best!.grade).toBe("A");
+    expect(best!.aStarRuleApplied).toBe(false);
+    expect(best!.outcome.totalUms).toBe(505);
+    expect(best!.usedCodes).toEqual(
+      ["WDM11", "WFM01", "WFM02", "WME02", "WST01", "WST02"],
+    );
+    expect(best!.unusedCodes).toEqual(["WME03"]);
+  });
+
+  it("step (ii): among grade-tied combos it takes the greater UMS total", () => {
+    // Seven units, every eligible six grades A*; the best total (555)
+    // drops the weak WME01 result — exactly the guidance's "maximisation
+    // of the uniform mark totals" step
+    const units = [U("WFM01", 90), U("WFM02", 96), U("WME01", 40),
+                   U("WME02", 96), U("WST01", 90), U("WST02", 96),
+                   U("WDM11", 90)];
+    const marks = Object.fromEntries(units.map((u) => [u.code, u.boundaries.A ?? 0]));
+    const best = bestAggregationSelection(
+      units, marks, FM_RULE, YFM01_CASHIN, YFM01_ASTAR,
+    );
+    expect(best!.grade).toBe("A*");
+    expect(best!.aStarRuleApplied).toBe(true);
+    expect(best!.outcome.totalUms).toBe(558);
+    expect(best!.unusedCodes).toEqual(["WME01"]);
+  });
+
+  it("returns null when no eligible six exists (FP2/FP3 never examined)", () => {
+    // January 2019 shape: FP1 + applied units only — atLeastOneOf fails
+    const units = [U("WFM01", 90), U("WME01", 85), U("WST01", 85),
+                   U("WME02", 75), U("WST02", 95), U("WME03", 60)];
+    const marks = Object.fromEntries(units.map((u) => [u.code, u.boundaries.A ?? 0]));
+    const best = bestAggregationSelection(
+      units, marks, FM_RULE, YFM01_CASHIN, YFM01_ASTAR,
+    );
+    expect(best).toBeNull();
+  });
+
+  it("excludes units without a UMS table from every combination", () => {
+    const noUms: AggregationUnit = { ...U("WFM03", 90), ums: null };
+    const units = [U("WFM01", 90), U("WFM02", 96), noUms,
+                   U("WME02", 96), U("WST01", 90), U("WST02", 96),
+                   U("WDM11", 90)];
+    const marks = Object.fromEntries(
+      units.filter((u) => u.ums).map((u) => [u.code, u.boundaries.A ?? 0]),
+    );
+    const best = bestAggregationSelection(
+      units, marks, FM_RULE, YFM01_CASHIN, YFM01_ASTAR,
+    );
+    // WFM03 cannot convert, so the six are drawn from the remaining six
+    expect(best).not.toBeNull();
+    expect(best!.usedCodes).not.toContain("WFM03");
+    expect(best!.outcome.complete).toBe(true);
+  });
+});
