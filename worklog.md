@@ -1192,3 +1192,18 @@ Stage Summary:
 - lane 19 (T-UGM-0580-19) EXECUTED of record: experimental 79088f34 + 84408e97; resources PR #304 (enrichment T-UGM-MODE1-19 + corpus T-UGM-IMPORT-19, MANIFEST v19); T-UGM-HUB-CONSUME-19 filed as syllabai-v2 issue — awaits the #304 merge + operator order. Lane 20 = TE3 Coordinate geometry next per the decision; TE8/TE9 stay pre-ruled honest-empty (UGM-SCOPE-1).
 
 - Refile disclosure (same run, bookkeeping-only): PR #733's fresh-lane rebuild (970e8f71) carried the full run-003 worklog section but missed the three .syllabai filings (receipt t-resume-targets/run-003-live-verification.json + lane-artifacts exam/flashcards resume-flip PNGs); refiled byte-identical from the old lane head e61966cf (PR #726, closed unmerged after its event-drop). fetch-first, no force
+
+## T-BRAND-FAVICON-201 run-002 — hub favicon = flat brand-S mark (candidate A) replaces placeholder glyph (operator rejected run-001 design; scope narrowed to favicon-only; trace 1a1a76468524e201)
+Agent: main (Z.ai, zai-web session web-561901d7-498c-4c6f-aad2-00aeb4727ae6)
+Task: run-001's lucide-Atom favicon was rejected by the operator ("I dont like this favicon, try something else, that will also fit with the existing themes as well"). Round-2 delivered flat, theme-agnostic candidates A/B/C on a published proof sheet; the operator then narrowed scope to "For now just make the syllabai frontend icon ... the favicon — basically i want the tab in browser to show the same icon". Candidate A ships as the standing recommendation.
+
+Work Log:
+- Flat design law: one flat fill + white glyph so the mark is theme-agnostic across all four hub themes (SME #265bf6 default; quiet-green #2e6b4f; candy-shop #ff2d6e; chat-app-plum #7b44c7) — no gradients.
+- Candidate A geometry: Kodchasan-Bold "S" (the hub's display face) extracted as an outline (fontTools + uharfbuzz), cap-height 36 on the 64-grid, white fill on the #265bf6 rounded square (rx 14.4/64 — the same 22.5% corner law as run-001).
+- app/icon.svg <- candidate A mark; app/favicon.ico <- multi-size ICO assembled from exact resvg vector renders at 16/32/48/64/128/256 (PNG entries; replaces the single-size placeholder).
+- Favicon-only scope: apple-icon.png / public/logo.svg / header Atom swap deliberately deferred to T-BRAND-LOGO-201. No code, metadata or build-config changes.
+- Post-merge verification receipt: live /favicon.ico and /icon.svg sha256 must equal the staged brand/ship2 artifacts; the /icon.svg link hash in the HTML head must change (cache-bust).
+
+Stage Summary:
+- T-BRAND-FAVICON-201 run-002: browser tab shows the SyllabAI "S" on brand blue (SVG-favicon browsers via icon.svg; raster-only contexts via the ICO). Candidates B/C and the header-mark restyle remain parked under T-BRAND-LOGO-201.
+
