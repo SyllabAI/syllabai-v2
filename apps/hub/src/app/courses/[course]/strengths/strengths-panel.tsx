@@ -140,11 +140,13 @@ export function StrengthsPanel({ course }: { course: string }) {
           </CardHeader>
           <CardContent className="space-y-2">
             <p className="text-xs text-muted-foreground">{data.semantics.queue}</p>
+            {/* t-ui-polish run-005: the drill queue rows speak the house
+                card-hover voice (border-primary/60 + shadow-sm lift). */}
             {data.queue.map((q) => (
               <Link
                 key={q.code}
                 href={`/practice/drill?code=${encodeURIComponent(q.code)}`}
-                className="flex items-center gap-3 rounded-lg border p-3 transition-colors hover:border-primary/40"
+                className="flex items-center gap-3 rounded-lg border p-3 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
               >
                 <span className="font-mono text-sm font-medium">{q.code}</span>
                 <Badge variant="outline" className={cn("text-[10px]", BAND_CHIP[q.band])}>
