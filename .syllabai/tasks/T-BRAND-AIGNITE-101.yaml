@@ -1,0 +1,24 @@
+version: 1
+task:
+  id: T-BRAND-AIGNITE-101
+  title: "Buildathon compliance sticker (operator order trace 1a1a87d5ab125801): every participant of Ostad Presents YUNet AIgnite Buildathon 2026 must display the official 'Built For Ostad Presents YUNet AIgnite Buildathon 2026' sticker in the navbar or another prominent area near the top of the app — shipped as a slim announcement-bar strip directly above the navbar on every non-viewer route plus a prominent hero placement on the showcase landing (the judges' first screen)."
+  owner: "Z.ai main agent (zai-web session web-c414c074, chat 08b3170a, trace 1a1a87d5ab125801)"
+  status: RUN-001 SHIPPED # branch t-brand/aignite-sticker-r0; CI gates in the run-001 receipt; live verification of record there after merge
+  claimed_at: "2026-11-05"
+  priority: P1
+  wave: brand
+  deps: []
+  endpoints: []
+  service_status: not applicable (static asset + presentational markup only; zero new routes, zero providers, zero LLM)
+  scope:
+    allowed:
+    - apps/hub/public/aignite-2026-badge.png (NEW — the operator-provided official sticker, web-prepped: 808x240, outer margin transparent, artwork untouched)
+    - apps/hub/src/components/brand/aignite-badge.tsx (NEW — img component + src/alt constants + the removal checklist)
+    - apps/hub/src/components/layout/app-shell.tsx (additive strip block + import ONLY, inside the existing !viewerRoute guard)
+    - apps/hub/src/components/demo/showcase-landing.tsx (additive hero block + import + one min-h class compensating the strip)
+    - .syllabai/tasks/T-BRAND-AIGNITE-101.yaml; .syllabai/receipts/T-BRAND-AIGNITE-101/**; worklog.md (append-only)
+    forbidden:
+    - header internals (logo, nav rows, dropdowns, quick-nav, identity cluster, sticky/z-index law) — UNTOUCHED
+    - proxy.ts / route-gate.ts / session.ts / identity.ts / api.ts / login flow / RBAC — UNTOUCHED
+    - altering the official sticker artwork beyond web-prep (resize + outer-margin transparency only; no recolor, no crop of the badge body)
+    - rendering the sticker on the paper-viewer route (the s146 header-stands-down contract is preserved — the strip lives under the same !viewerRoute guard as the header)
