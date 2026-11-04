@@ -434,4 +434,3 @@ Stage Summary:
 - Fixture findings of record (self-caught, fixed in-band): (1) the localStorage stub needed the FULL Storage surface (length + key()) — the scan-based pools iterate keys and a get/set-only stub silently reads empty; (2) progress's cap initially said 1 thinking "one doc per course" — but the pool's entries are the SIX FAMILIES, so cap 1 evicted five families; cap 32 = the closed family set; (3) the disk-scan stores exposed that apply's write-back must ALSO remove dropped keys (the honest clear on pull-down).
 - Boundaries: apps/hub only (lib/account-docs-records.ts + the five store files + the two fixture files); zero contracts/db/api bytes; zero frozen-core surface; zero DB rows; no secrets in the diff.
 - Anti-truncation asserts: worklog appended append-only (new = old + this section incl. leading blank-line separator; byte delta == len(section); line delta == section newlines), asserted by the filing script before commit.
-"""
