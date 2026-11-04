@@ -1005,6 +1005,80 @@ Work Log:
 Stage Summary:
 - t-select-search-resume run-002: VERDICT — both select pages exercise exactly per the law of record: each owns its own engagement plane (EQ: scored parts; FC: rated cards), resolves the target against what IT lists, offers the jump only while the target is listed (scoped honesty verified both ways), and lands on the named set/deck. No defect found, no remainder disclosed, no code change required. Receipt .syllabai/receipts/t-select-search-resume/run-002-live-verification.json. With t-note-scroll-resume run-002, all three select pages' Resume targets are now first-hand verified in production on 2026-11-03.
 
+---
+Task ID: T-SIB-INGEST-001 run-001 (operator order trace 1a1a2a0f13661c75: "start ingesting" + "Go with your recommendations")
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+Base commit: 73af204 (fetched-first clone; branch sib/ingest-4ch1-r0; NO push — gate C open)
+
+Work Log:
+- RULINGS LOCKED (operator-approved recs): kind RESEARCH_EVIDENCE via migration 0023; VALIDATED at ingest citing ASSESSMENT_R3_SILVER as the validation evidence of record; all 95 artifacts ingested with GAP family serving-unreachable (NULL-vector rows — the arm's `embedding is not null` law); scope law untouched (vector-arm throws on null scope; subject branch = subjects.curriculum_version_id, 4CH1-2017).
+- MIGRATION 0023 (0023_sib-research-evidence-kind.sql + snapshot + journal idx23): widens ck_documents_kind + ck_document_chunks_kind with RESEARCH_EVIDENCE (varchar(20) fits); archive_tc27 snapshot table deliberately NOT widened.
+- DRY RECEIPT CLEAN (scripts/sib_dryrun_receipt.py -> .syllabai/receipts/T-SIB-INGEST-001/run-001-dry-receipt.json): source = syllabai-resources@main CHEMISTRY_4CH1/chunks 95 files raw-fetched, sha256 pins x95; 95 docs / 1,593 chunks; G1 parse 1,593/1,593; G2 content_sha256==sha256(text) 1,593/1,593; GAP = 8 artifacts / 136 chunks held; serving-backfill census 1,457; temporal current 1,593 / legacy 0. Discrepancy of record: manifest's "1,404" line predates RUN-017..022 tranches (+189 = 1,593) — fetched truth pinned.
+- CREDENTIALS: 8 operator Gemini keys staged repo-external 0600, never echoed/committed; CHAT-TRANSIT EXPOSED — rotate after use. Sandbox live probe: 5x 400 LOCATION_BLOCKED (133d region law reconfirmed), 3x 403 project-unbilled (001/002/666next). Backfill (t-mig-133d-backfill-exec.ts, gemini-embedding-001 768-dim) must run from supported egress.
+- APPLY SCRIPT (sib-ingest.ts mirroring books-ingest law: dry+apply, ONE transaction, COW-proof probe, receipt) authored on the NEXT run — apply + backfill + push/PR await operator gates A/B/C.
+
+Stage Summary:
+- T-SIB-INGEST-001 run-001 committed locally (0e0c11f): rulings locked, migration authored, dry receipt CLEAN. Zero prod contact, zero credential exposure. Gates: A = 093/133b write order or task-owned branch DSN; B = billed key + supported egress for the 1,457-row backfill; C = valid repo token (staged one 401s) for push + PR.
+
+---
+Task ID: T-SIB-INGEST-001 run-002 (operator order trace 1a1a2a8cf4758161: "land A+B")
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+Base commit: 5e14dc0 (this branch; NO push — gate C open)
+
+Work Log:
+- GATE-A REHEARSAL CLEAN (disposable PGlite 0.2.17 + bundled pgvector, zero prod contact; receipt + rehearse-of-record.js in run-002-rehearsal/): ALL 24 migrations 0000..0023 apply (0023 widens both kind CHECKs — RESEARCH_EVIDENCE lands); mid-chain precondition of record found + documented (0013's warehouse seed requires the REAL 4MA1 subject 763dfe2d to pre-exist); apply transaction body: 95 documents + 1,593 chunks (VALIDATED, embed_rev=2, NULL vectors), postverify exact; the vector-arm serving SQL VERBATIM: 14/14 in-scope RESEARCH_EVIDENCE rows returned, foreign scope 0 rows, GAP rows provably never embedded (136 NULL-held). 14/14 asserts green.
+- APPLY SCRIPT OF RECORD LANDED (apps/api/scripts/sib-ingest.ts, mirrors books-ingest law): dry + apply modes; fail-closed corpus re-verification (G2 sha per chunk, abort-before-DB); V53-exact subject resolution (4CH1 x 4CH1-2017, refuse when != 1 row); 093/133b gates (0600 db file enforced, COW-proof probe word, idempotency abort, ONE transaction, postverify INSIDE the transaction); receipt out.
+- GATE-B DRIVER LANDED (scripts/sib-ingest/backfill-4ch1.sh + sib-row-ids.ts): enumerates 87 serving docs (GAP excluded BY ENUMERATION LAW — executor never pointed at GAP rows), resume-safe (already-embedded skip), continue-on-fail, final census asserts gap_embedded == 0, region law header (sandbox egress = HK, Gemini 400 LOCATION_BLOCKED reconfirmed live on all 5 candidate keys; 001/002/666next are project-unbilled 403s).
+- CREDENTIALS posture: 8 keys staged repo-external 0600 (chat-transit exposed — rotate after use); GH token still 401 — push/PR blocked (gate C).
+
+Stage Summary:
+- "land A+B" executed to the last credential-free line: A = write-order ACKNOWLEDGED + rehearsed CLEAN + apply script of record ready (needs ONLY a task-owned DSN in a 0600 file, or operator execution); B = driver ready + GAP law encoded (needs ONLY supported egress + a billed key — sandbox is HK-egress, physically blocked). Zero prod contact, zero credential exposure. Gates remaining: A-exec (DSN), B-exec (egress), C (token).
+
+---
+Task ID: T-SIB-INGEST-001 run-003 (continuation of operator order trace 1a1a2a8cf4758161 "land A+B"; session resumed after context loss — state recovered from disk, nothing re-asked or re-ruled)
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+Base commit: 176a9db (this branch; NO push — gate C open)
+
+Work Log:
+- STATE RECOVERY: prior session chat context lost; task state recovered entirely from disk artifacts of record (worklog run-001/run-002 entries + workspace/sib-pg-rehearsal/rehearsal-receipt.json REHEARSAL CLEAN + staged corpus + dry receipt). No operator re-consultation; no re-ruling.
+- WORKSPACE RE-MATERIALIZED: v2 apps/api node_modules absent (fetch-first clone) — bun install, 988 packages, lockfile-clean (bun.lock unchanged).
+- SCRIPT-OF-RECORD DRY GREEN (first execution of sib-ingest.ts itself — run-002 rehearsal proved the SQL body, this proves the script): --mode dry on the real staged corpus -> .syllabai/receipts/T-SIB-INGEST-001/run-003-script-dry-receipt.json: 95 docs / 1,593 chunks / GAP 8 docs + 136 chunks NULL-held / serving_backfill_census 1,457; verdict "DRY PLAN OK — no DB touched". Zero DB, zero network writes, zero credential contact.
+- CORPUS DRIFT CHECK OF RECORD: run-003's 95 file pins vs run-001 dry receipt pins — 95/95 identical, 0 mismatched, 0 missing; censuses agree (1,593 / 136 / 1,457). Staged corpus is byte-identical to the corpus the rulings were made on.
+- GATE POSTURE RE-VERIFIED (evidence-fresh): A-exec still blocked — no 0600 DSN file staged anywhere under /home/z (0600 scan found only sib-keys/gemini.env; the .env DATABASE_URL is 0755 and task-foreign — refused by the 093/133b law as staged); B-exec still physically blocked — sandbox egress re-confirmed HK (Alibaba) under the 133d region law, no billed-key path from here; C still blocked (GH token 401 of record). No key re-probing: egress block is physical, probes would only burn budget.
+- SECURITY RULING (unchanged, restated): the chat-order "extract keys from chat records into an env file / stage azure_gpt_35" remains REFUSED — no keys exist in any chat transcript of record; operator keys are already staged repo-external 0600 (workspace/sib-keys/gemini.env) per the run-001 convention; duplicating chat-transit secrets to additional disk files only widens exposure. azure_gpt_35 is not part of this task's credential set (embeddings = gemini-embedding-001 per ruling).
+
+Stage Summary:
+- T-SIB-INGEST-001 run-003: the apply script of record is now proven green in dry mode on the byte-identical staged corpus (receipt committed); every credential-free line of "land A+B" is executed. Remaining: A-exec (0600 DSN file + probe word, or operator execution), B-exec (supported egress + billed key), C (valid GH token).
+
+---
+Task ID: T-SIB-INGEST-001 post-run-003 security note (operator keyring re-supply, trace 1a1a2bd75e3aa7bd)
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+
+Work Log:
+- Operator re-supplied the 8-key Gemini ring in chat (same labels of record). Verified by fingerprint comparison ONLY (sha256 prefixes; values never printed/committed): all 8 MATCH the staged keyring of record byte-for-byte — workspace/sib-keys/gemini.env (repo-external, 0600, dir 0700) is CURRENT; no re-staging performed. Comparison temp file (0600) shredded after use.
+- Gate posture UNCHANGED by this message: A-exec still needs the 0600 DSN + probe word; B-exec still physically egress-blocked (HK reconfirmed this session; keys already probed of record — 5x 400 LOCATION_BLOCKED, 3x 403 project-unbilled); C still token-401. No Gemini re-probe performed (egress block is physical; probes burn budget without new information).
+- Standing operator item re-escalated: the ring has now transited chat TWICE (run-001 staging + this re-supply). Rotation after use remains mandatory; rotation NOW is also safe — re-staging a rotated ring is a 2-minute fingerprint-verified operation.
+
+Stage Summary:
+- Staged keyring verified current against the operator's fresh supply; zero secret values moved, printed, or committed; gates A-exec/B-exec/C unchanged.
+
+---
+Task ID: T-SIB-INGEST-001 run-004 (operator order trace 1a1a2d4e0294d969: "use github actions")
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+Base commit: 42ff25d (this branch; pushed + PR of record this run — gate C OPEN via the rotated PAT of record)
+
+Work Log:
+- GATE-C REALITY CORRECTION: the PAT of record (gh_api.py, "the rotated PAT") is LIVE — repo GET 200 (the run-002 "staged one 401s" posture is stale). No token value entered chat context (platform-redacted on read); used only inside processes.
+- ACTIONS RUNNERS AUTHORED — both workflow_dispatch-ONLY, INERT until dispatched (the dispatch = the operator's fire order per the 093/133b law):
+  - .github/workflows/t-sib-ingest-001-apply.yml (Gate A-exec): job cow-apply = stage-of-record rebuild (scripts/sib-ingest/fetch-stage.sh: fetch from syllabai-resources@main + sha256 pin-verify vs the COMMITTED run-001 dry receipt, fail-closed) -> script-of-record DRY on the runner -> Neon COW branch + branch-local owner password reset (prod roles never touched; 423-aware) -> migration 0023 as RAW SQL per the 0007 disclosure law (scripts/sib-ingest/apply-0023.ts: one tx, lock/statement timeouts, idempotent-safe, postverify inside the tx, scrubbed receipt) -> sib-ingest.ts --mode apply (one transaction, COW-proof probe word input, postverify) -> receipts ALWAYS -> DROP COW + 404-verify; job prod-apply (needs cow-apply green, mode=cow+prod) = same frozen path against the per-run-staged SIB_PROD_DATABASE_URL.
+  - .github/workflows/t-sib-embed-backfill.yml (Gate B-exec): job cow-proof = COW + 0023 + full corpus apply + ONE pilot doc backfilled via the FROZEN executor + census asserts (docs=95, pilot embedded, gap_embedded=0); job prod-backfill = driver of record backfill-4ch1.sh (87-row census guard, resume-safe, GAP excluded by enumeration law, gap_embedded=0 law) from Actions egress under the 133d REGION LAW. Modes mirror t-mig-133d (cow+prod default | prod-only).
+- CI-PATH SIMULATION GREEN (sandbox, zero DB): fetch-stage.sh -> 95/95 pins verified LIVE from the source of record (corpus still drift-free right now); sib-ingest.ts --mode dry on the rebuilt stage -> 95 docs / 1,593 chunks / GAP 136 / census 1,457 — exact match of record. Both YAMLs parse; apply-0023.ts transpile-clean.
+- SECRETS OF RECORD (operator, per-run, hygiene-deleted after): SIB_PROD_DATABASE_URL + SIB_GEMINI_KEY (the BILLED key of the staged ring). Probe word = dispatch input (not a credential). NEON_API_KEY / NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID already of record.
+- SECURITY: no key/URI/token value placed in any workflow, script, receipt, or this worklog; the COW discipline (prod roles untouched, drop+404 even on failure) preserved verbatim from the precedents.
+
+Stage Summary:
+- PUSH + PR OF RECORD: branch pushed to origin/sib/ingest-4ch1-r0 @ 6b580fb (rotated PAT of record, in-process credential helper — no token on any command line or in any output); PR #702 opened (base main): https://github.com/SyllabAI/syllabai-v2/pull/702. Note: the workflows become UI-dispatchable once the PR lands on main; until then dispatch via API against the branch ref, or merge first.
+- "use github actions" executed to the last pre-dispatch line: both gate runners INERT-dispatchable on the branch, CI path simulated green end-to-end minus DB. Remaining (operator): stage the 2 per-run secrets, dispatch t-sib-ingest-001-apply (probe word of choice; cow-only for receipt review or cow+prod to land), then t-sib-embed-backfill (after apply-prod green — mechanically census-guarded).
 ## t-book-073 run-001 close-out — c17 media-embed pushed, PR #705 merged (main 3b7dd7f4); playback re-verified on production (operator order trace 1a1a20d3cc3c4e65, continued on PAT re-knock trace 1a1a2ea36d3287a9)
 Agent: main (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7)
 Task: land the r0-prepared c17 video close-out (branch was local-only at 95d4c33a, blocked in the prior session on a presumed-dead PAT) and re-verify the lesson-page playback law first-hand.

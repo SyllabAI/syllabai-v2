@@ -1,0 +1,89 @@
+{
+ "task": "T-SIB-INGEST-001 run-002 (rehearsal)",
+ "steps": [
+  {
+   "step": "migrations",
+   "applied": 24
+  },
+  {
+   "step": "apply",
+   "documents": 95,
+   "chunks": 1593,
+   "gap_chunks": 136,
+   "fake_embeds": 14
+  }
+ ],
+ "asserts": [
+  {
+   "name": "migration_count_24",
+   "pass": true,
+   "detail": "(24)"
+  },
+  {
+   "name": "migrations_applied",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "documents_kind_widened",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "chunks_kind_widened",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "subject_resolved",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "documents_95",
+   "pass": true,
+   "detail": "(95)"
+  },
+  {
+   "name": "chunks_1593",
+   "pass": true,
+   "detail": "(1593)"
+  },
+  {
+   "name": "gap_chunks_136",
+   "pass": true,
+   "detail": "(136)"
+  },
+  {
+   "name": "fake_embeds_14",
+   "pass": true,
+   "detail": "(14)"
+  },
+  {
+   "name": "db_counts",
+   "pass": true,
+   "detail": "d=95 c=1593 e=14"
+  },
+  {
+   "name": "in_scope_serving_rows",
+   "pass": true,
+   "detail": "(14)"
+  },
+  {
+   "name": "all_returned_are_research_evidence",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "foreign_scope_empty",
+   "pass": true,
+   "detail": "(0)"
+  },
+  {
+   "name": "gap_never_embedded",
+   "pass": true,
+   "detail": "(0)"
+  }
+ ],
+ "verdict": "REHEARSAL CLEAN — Gate A mechanics proven end-to-end"
+}
