@@ -18,6 +18,11 @@
  *   - Any query failure reds the receipt and exits 1 (diagnostic red, the
  *     workflow's later steps still run and upload the receipt).
  *
+ * run-002 adds Q5 — the FULL turn sequence (session_id, seq, role, text
+ * head, ev/refused/provider) of every session the reporting learner
+ * (b8f8afb5) opened in the last 3 days: settles whether the 15:30 refused
+ * ask ran mid-conversation (retrieval-query history blending) or cold.
+ *
  * CLI:
  *   bun scripts/t-tutor-diag-1-refused-turns.ts --db file:/tmp/uri.file \
  *     --receipt receipt.json        (or DATABASE_URL env instead of --db)
@@ -142,11 +147,35 @@ try {
                 ORDER BY t.created_at DESC
                 LIMIT 30`;
 
+        // 5 (run-002) — the reporting learner's FULL session shape: every
+        //     turn of every session they opened in the last 3 days. Reveals
+        //     whether the refused ask was mid-conversation (prior turns
+        //     blend into the retrieval query) or a cold single-turn ask.
+        receipt.q5_learner_sessions = await sql`
+                SELECT s.id                              AS session_id,
+                       s.created_at                      AS session_started,
+                       s.course_ref,
+                       t.seq,
+                       t.role,
+                       t.created_at                      AS turn_at,
+                       left(t.content, 160)              AS text_head,
+                       t.evidence_count,
+                       t.refused,
+                       COALESCE(t.answer_model, '(null)')    AS answer_model,
+                       COALESCE(t.answer_provider, '(null)') AS answer_provider
+                FROM tutor_sessions s
+                JOIN tutor_session_turns t ON t.session_id = s.id
+                WHERE s.learner_id::text LIKE 'b8f8afb5%'
+                  AND s.created_at >= now() - interval '3 days'
+                ORDER BY s.created_at, t.seq
+                LIMIT 80`;
+
         const counts = {
                 q1: (receipt.q1_evaporation_boiling as unknown[]).length,
                 q2: (receipt.q2_recent_refused as unknown[]).length,
                 q3: (receipt.q3_provider_stats as unknown[]).length,
                 q4: (receipt.q4_last_24h as unknown[]).length,
+                q5: (receipt.q5_learner_sessions as unknown[]).length,
         };
         receipt.row_counts = counts;
         receipt.ok = true;
