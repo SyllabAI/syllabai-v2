@@ -1068,7 +1068,7 @@ function TypedAnswerWorkspace({
           </Button>
         ) : (
           <span className="text-[11px] text-muted-foreground">
-            AI marking needs a provider key on the server — self-mark via “How did you do?” below.
+            AI marking is unavailable right now — use “How did you do?” below to mark your answer.
           </span>
         )}
         {aiAvailable === true && text.trim().length === 0 && (
