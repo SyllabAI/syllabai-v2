@@ -85,6 +85,11 @@ export {
 } from "./rrf";
 export { retrievalQuery, RETRIEVAL_WINDOW_TURNS, RETRIEVAL_QUERY_MAX_CHARS } from "./retrieval-query";
 export {
+  // T-TUTOR-PIVOT-1: the model-worded refusal truth
+  modelRefusalLikely,
+  CANONICAL_REFUSAL_STEMS,
+} from "./refusal-detect";
+export {
   // prompt identity + fences + the v10 assembly
   promptIdentity,
   PROMPT_REGISTRY_KEY,
