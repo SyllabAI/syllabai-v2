@@ -1,0 +1,146 @@
+"""Edexcel International GCSE Business 4BS1 concept lattice — T-KG-PRE-10
+(F8 rollout batch eight, the business family tranche 5, igcse-business-19).
+
+AI_SUGGESTED / UNVALIDATED concept web authored by the F8 lane from the
+4BS1 Business specification (5 sections, 59 spec points as served), anchored
+to the served spine's point ids. Every anchor is machine-verified against
+the spine before any byte is written (0-unmapped pass law, enforced in
+kg_f8ma_generate.py).
+
+The Edexcel 4BS1 spine (sections 1-5: business activity, people, finance,
+marketing, operations) is independent of the CIE IGCSE business spines —
+no shared ids, different structure. Every edge below was authored forward
+in the spine's served order (0-reversed authoring, the batch-five law).
+
+Honesty: prereqValidated stays EMPTY; the renderer labels every exported pair
+INFERRED PROTOTYPE; the named gate remains the SME validation pass.
+"""
+
+DD = "DEFINITIONAL_DEPENDENCY"
+UWR = "USED_WITHOUT_RETEACHING"
+
+CONCEPTS = {
+    # Section 1: Business activity and influences
+    "BSE-CON-OBJECTIVES": ["1.1.1"],
+    "BSE-CON-OBJECTIVES-CHANGE": ["1.1.2"],
+    "BSE-CON-OWNERSHIP": ["1.2.1"],
+    "BSE-CON-SIZE-LIABILITY": ["1.2.2"],
+    "BSE-CON-ORGANISATION-FORMS": ["1.2.3"],
+    "BSE-CON-SECTORS": ["1.3.1"],
+    "BSE-CON-LOCATION": ["1.4.1"],
+    "BSE-CON-GLOBALISATION": ["1.5.1"],
+    "BSE-CON-MULTINATIONALS": ["1.5.2"],
+    "BSE-CON-EXCHANGE-RATES": ["1.5.3", "1.5.4"],
+    "BSE-CON-GOVERNMENT-SPENDING": ["1.6.1"],
+    "BSE-CON-GOVERNMENT-BUSINESS": ["1.6.2"],
+    "BSE-CON-INTEREST-RATES": ["1.6.3"],
+    "BSE-CON-EXTERNAL-FACTORS": ["1.7.1"],
+    "BSE-CON-SUCCESS-MEASURES": ["1.8.1"],
+    "BSE-CON-BUSINESS-FAILURE": ["1.8.2"],
+    # Section 2: People in business
+    "BSE-CON-COMMUNICATION": ["2.1.1"],
+    "BSE-CON-COMMUNICATION-BARRIERS": ["2.1.2"],
+    "BSE-CON-EMPLOYMENT-TYPES": ["2.2.1"],
+    "BSE-CON-RECRUITMENT-DOCUMENTS": ["2.2.2"],
+    "BSE-CON-RECRUITMENT": ["2.2.3"],
+    "BSE-CON-EMPLOYMENT-LEGAL": ["2.2.4"],
+    "BSE-CON-TRAINING": ["2.3.1"],
+    "BSE-CON-MOTIVATION-IMPORTANCE": ["2.4.1"],
+    "BSE-CON-MOTIVATION-METHODS": ["2.4.2"],
+    "BSE-CON-ORG-CHARTS": ["2.5.1"],
+    "BSE-CON-ACCOUNTABILITY": ["2.5.2"],
+    "BSE-CON-FUNCTIONAL-AREAS": ["2.5.3"],
+    # Section 3: Finance
+    "BSE-CON-FINANCE-NEEDS": ["3.1.1"],
+    "BSE-CON-INTERNAL-FINANCE": ["3.1.2"],
+    "BSE-CON-EXTERNAL-FINANCE": ["3.1.3"],
+    "BSE-CON-CASH-IMPORTANCE": ["3.2.1"],
+    "BSE-CON-CASH-FLOW-FORECASTS": ["3.2.2"],
+    "BSE-CON-REVENUE-COSTS": ["3.3.1"],
+    "BSE-CON-BREAK-EVEN": ["3.3.2"],
+    "BSE-CON-BREAK-EVEN-INTERPRET": ["3.3.3"],
+    "BSE-CON-INCOME-STATEMENT": ["3.4.1"],
+    "BSE-CON-SOFP": ["3.4.2"],
+    "BSE-CON-ACCOUNTING-RATIOS": ["3.5.1"],
+    "BSE-CON-LIQUIDITY": ["3.5.2"],
+    "BSE-CON-FINANCIAL-DOCUMENTS": ["3.5.3"],
+    # Section 4: Marketing
+    "BSE-CON-MARKET-RESEARCH-PURPOSE": ["4.1.1"],
+    "BSE-CON-MARKET-RESEARCH-METHODS": ["4.1.2"],
+    "BSE-CON-RESEARCH-DATA": ["4.1.3"],
+    "BSE-CON-MARKETING-IMPORTANCE": ["4.2.1"],
+    "BSE-CON-MARKET-CHANGES": ["4.2.2"],
+    "BSE-CON-SEGMENTATION": ["4.2.3"],
+    "BSE-CON-PRODUCT": ["4.3.1"],
+    "BSE-CON-PRICE": ["4.3.2"],
+    "BSE-CON-PLACE": ["4.3.3"],
+    "BSE-CON-PROMOTION": ["4.3.4"],
+    # Section 5: Operations
+    "BSE-CON-ECONOMIES-SCALE": ["5.1.1"],
+    "BSE-CON-DISECONOMIES-SCALE": ["5.1.2"],
+    "BSE-CON-PRODUCTION-PROCESSES": ["5.2.1"],
+    "BSE-CON-LEAN": ["5.2.2"],
+    "BSE-CON-PRODUCTION-TECH": ["5.2.3"],
+    "BSE-CON-FACTORS-CHANGE": ["5.3.1"],
+    "BSE-CON-QUALITY": ["5.4.1"],
+}
+
+EDGES = [
+    # Business activity and influences
+    ("BSE-CON-OBJECTIVES", "BSE-CON-OBJECTIVES-CHANGE", DD),
+    ("BSE-CON-OWNERSHIP", "BSE-CON-SIZE-LIABILITY", DD),
+    ("BSE-CON-OWNERSHIP", "BSE-CON-ORGANISATION-FORMS", UWR),
+    ("BSE-CON-SECTORS", "BSE-CON-LOCATION", UWR),
+    ("BSE-CON-GLOBALISATION", "BSE-CON-MULTINATIONALS", DD),
+    ("BSE-CON-MULTINATIONALS", "BSE-CON-EXCHANGE-RATES", UWR),
+    ("BSE-CON-GOVERNMENT-SPENDING", "BSE-CON-GOVERNMENT-BUSINESS", UWR),
+    ("BSE-CON-GOVERNMENT-BUSINESS", "BSE-CON-INTEREST-RATES", UWR),
+    ("BSE-CON-INTEREST-RATES", "BSE-CON-EXTERNAL-FACTORS", UWR),
+    ("BSE-CON-OBJECTIVES", "BSE-CON-SUCCESS-MEASURES", UWR),
+    ("BSE-CON-SUCCESS-MEASURES", "BSE-CON-BUSINESS-FAILURE", UWR),
+    # People in business
+    ("BSE-CON-COMMUNICATION", "BSE-CON-COMMUNICATION-BARRIERS", DD),
+    ("BSE-CON-EMPLOYMENT-TYPES", "BSE-CON-RECRUITMENT-DOCUMENTS", UWR),
+    ("BSE-CON-RECRUITMENT-DOCUMENTS", "BSE-CON-RECRUITMENT", DD),
+    ("BSE-CON-RECRUITMENT", "BSE-CON-EMPLOYMENT-LEGAL", UWR),
+    ("BSE-CON-RECRUITMENT", "BSE-CON-TRAINING", UWR),
+    ("BSE-CON-MOTIVATION-IMPORTANCE", "BSE-CON-MOTIVATION-METHODS", DD),
+    ("BSE-CON-ORG-CHARTS", "BSE-CON-ACCOUNTABILITY", UWR),
+    ("BSE-CON-ORG-CHARTS", "BSE-CON-FUNCTIONAL-AREAS", UWR),
+    # Finance
+    ("BSE-CON-FINANCE-NEEDS", "BSE-CON-INTERNAL-FINANCE", DD),
+    ("BSE-CON-FINANCE-NEEDS", "BSE-CON-EXTERNAL-FINANCE", DD),
+    ("BSE-CON-BUSINESS-FAILURE", "BSE-CON-CASH-IMPORTANCE", UWR),
+    ("BSE-CON-FINANCE-NEEDS", "BSE-CON-CASH-IMPORTANCE", UWR),
+    ("BSE-CON-CASH-IMPORTANCE", "BSE-CON-CASH-FLOW-FORECASTS", DD),
+    ("BSE-CON-REVENUE-COSTS", "BSE-CON-BREAK-EVEN", DD),
+    ("BSE-CON-BREAK-EVEN", "BSE-CON-BREAK-EVEN-INTERPRET", DD),
+    ("BSE-CON-REVENUE-COSTS", "BSE-CON-INCOME-STATEMENT", DD),
+    ("BSE-CON-INCOME-STATEMENT", "BSE-CON-SOFP", UWR),
+    ("BSE-CON-INCOME-STATEMENT", "BSE-CON-ACCOUNTING-RATIOS", UWR),
+    ("BSE-CON-SOFP", "BSE-CON-ACCOUNTING-RATIOS", UWR),
+    ("BSE-CON-SOFP", "BSE-CON-LIQUIDITY", UWR),
+    ("BSE-CON-ACCOUNTING-RATIOS", "BSE-CON-FINANCIAL-DOCUMENTS", UWR),
+    ("BSE-CON-LIQUIDITY", "BSE-CON-FINANCIAL-DOCUMENTS", UWR),
+    # Marketing (served after finance on this spine: 4.1 research precedes
+    # 4.2 marketing's role, so the marketing-importance -> research edge is
+    # NOT authored — the RESEARCH-DATA -> MARKET-CHANGES bridge below carries
+    # the research/marketing connection forward instead)
+    ("BSE-CON-OBJECTIVES", "BSE-CON-MARKETING-IMPORTANCE", UWR),
+    ("BSE-CON-MARKET-RESEARCH-PURPOSE", "BSE-CON-MARKET-RESEARCH-METHODS", DD),
+    ("BSE-CON-MARKET-RESEARCH-METHODS", "BSE-CON-RESEARCH-DATA", DD),
+    ("BSE-CON-RESEARCH-DATA", "BSE-CON-MARKET-CHANGES", UWR),
+    ("BSE-CON-MARKET-CHANGES", "BSE-CON-SEGMENTATION", DD),
+    ("BSE-CON-SEGMENTATION", "BSE-CON-PRODUCT", UWR),
+    ("BSE-CON-RESEARCH-DATA", "BSE-CON-PRODUCT", UWR),
+    ("BSE-CON-RESEARCH-DATA", "BSE-CON-PRICE", UWR),
+    ("BSE-CON-RESEARCH-DATA", "BSE-CON-PLACE", UWR),
+    ("BSE-CON-RESEARCH-DATA", "BSE-CON-PROMOTION", UWR),
+    # Operations
+    ("BSE-CON-ECONOMIES-SCALE", "BSE-CON-DISECONOMIES-SCALE", UWR),
+    ("BSE-CON-SECTORS", "BSE-CON-FACTORS-CHANGE", UWR),
+    ("BSE-CON-PRODUCTION-PROCESSES", "BSE-CON-LEAN", UWR),
+    ("BSE-CON-PRODUCTION-PROCESSES", "BSE-CON-PRODUCTION-TECH", UWR),
+    ("BSE-CON-PRODUCTION-PROCESSES", "BSE-CON-QUALITY", UWR),
+    ("BSE-CON-LEAN", "BSE-CON-QUALITY", UWR),
+]

@@ -321,6 +321,25 @@ def main() -> None:
                 batch="seven", task="T-KG-PRE-9", exporter_ver="v1.3",
             )
             return
+        # T-KG-PRE-10 (batch eight, the business family tranche 5): CIE 9609
+        # AS/A Level, CIE 0450/2023 + 0264/2025, Edexcel 4BS1.
+        business = {
+            "cie-as-business-23": ("f8bu_lattice_9609as", "9609AS"),
+            "cie-a-level-business-23": ("f8bu_lattice_9609al", "9609AL"),
+            "cie-igcse-business-23": ("f8bu_lattice_0450x23", "0450x23"),
+            "cie-igcse-business-25": ("f8bu_lattice_0264x25", "0264x25"),
+            "igcse-business-19": ("f8bu_lattice_4bs1", "4BS1"),
+        }
+        if args.course in business:
+            mod, tag = business[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="eight", task="T-KG-PRE-10", exporter_ver="v1.3",
+            )
+            return
         # T-KG-PRE-8 (batch six, the maths family tranche 3) — the Edexcel
         # maths corpus: IAL units (YMA01/YFM01) and IGCSE (4MA1/4XMA1/4MB1/4PM1).
         edexcel = {
