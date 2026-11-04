@@ -1,0 +1,57 @@
+{
+ "lane": "RN-DEBRIS-11",
+ "run": "run-003",
+ "title": "the residue run — A (P1 5.2 declared-elision) + B ruling (seg-internal reinsertion) + C2/C5/C6 (twin-attested joins incl. the 23a backtick extension) — 25 repairs, 9 content files, 0 residue left",
+ "operatorOrder": {
+  "trace": "1a1a55d98046f799 'Proceed A -> B ruling -> C2/C5/C6 -> C3' + 'Go' (1a1a60e19096cb75)",
+  "queue": "the operator-ordered disposition of every run-002 refusal/keep, closing the lane's maths-text defect surface"
+ },
+ "apply": {
+  "fires": {"A": 3, "B": 6, "C2": 3, "C5": 1, "C6": 12, "total": 25},
+  "files": 9,
+  "lines": 11,
+  "per_step": {
+   "A": "the run-002 refused P1 5.2 text REPAIRED at all 3 sites (curriculum $.nodes[32].title + ugm-resources $.specPoints[21].officialText + spine $.curriculum.nodes[32].title) — the declared-elision reading",
+   "B": "the run-002 refused (x-3)^2 gathered seg REPAIRED x6 (2 solutionMd strings x3) under RULING B — seg-internal attested reinsertion, zero deletions, one '}' relocated",
+   "C2": "I_{b m}->I_{bm} x2 + \\Delta E_{e l}->\\Delta E_{el} x1 (dollar-scoped; twin re-count on the current tip)",
+   "C5": "backtick S_{x x}->S_{xx} x1 (same-card twin)",
+   "C6": "backtick V_{i n} x5 + V_{i n } x1 + V_{o u t} x6 -> V_{in}/V_{out} (R2b of-record grounding)"
+  }
+ },
+ "disclosures_of_record": {
+  "step_A_elision": "NEW R1 declaration class 'official-attested elisions' (mirror of the restorations class): the corrupted text's ONE unaccounted '2' = the '5.2' section-heading digit of the sha-verified spec PDF (71351e66...b408, byte-identical re-download) — the heading sits on the SAME pdftotext-layout line the zipper interleaved; the house style elides section numbers 30/30 of-record; official-only multiset = EMPTY (zero invention); the +1 U+2044 surplus precedented 19/30. run-002's refusal ('duplicated 2 unaccounted') is answered by this account; the alternate 'zip duplicated a byte' reading has no precedent in the 30 of-record pairs (all 30 balanced EXACTLY).",
+  "step_B_ruling": "RULING B (operator-authorized): the run-002 'content-loss class' refusal is unblocked by seg-internal attested reinsertion — row 4 is the square-root step of row 3; insertions '( x - 3 )^{2 }' and '17' are byte-verbatim from row 3 of the same seg; exactly one '}' relocates (the of-record closer-relocation law); multiset(repaired) == multiset(corrupted) + insertions EXACTLY; row-4 spacing forced by the corrupted's own bytes (zero-deletion law).",
+  "law_23a_extension": "run-001 law 23a ('backtick spans never entered') narrowed: a backtick span may be entered ONLY for a twin-gated label join whose joined form is of-record in the corpus; delimiters never moved; no structural edits inside backticks. Grounded per-span: C5 S_{xx} x28 incl. the same flashcard's back; C6 R2b of-record pair + corpus twins V_{in} x34 / V_{out} x58; the V_{o u t} joins keep the spans internally consistent (a half-joined span would be a NEW mixed-style defect).",
+  "census_pattern_gap": "run-002's V_IN census regex (V_\\{i n\\}) missed the 'V_{i n }' variant (space before the closing brace); the run-003 residue census scans spaced labels exhaustively inside backtick spans — the complete set found and dispositioned (o u t x6 / i n x5 / i n-trailing x1 / x x x1).",
+  "c3_resolution": "the run-002 ledger's 'un-adjudicated census-C remainder (notes-$[81] third potential-divider seg)' resolves to 2 hybrid potential-divider segs x2 sites (cie-a-level-physics-25 + cie-as-physics-25; notes $[81].bodyMd / questions $[29]+[56] solutionMd): partially-repaired labels mixed with un-repaired brace swaps, RENDER OK at katex 0.16.22 (cosmetic — why the failure-gated census never carried them). NOT repaired: no byte-identical of-record pair and no KaTeX failure gate; documented for the human-editor pass with the suggested reading (R2a-pair-1-mirroring brace surgery + label joins). The ledger's 'i n x5' entries = the SAME BYTES as backtick V_{i n} x5 (census double-count via two patterns) — resolved by C6; 'x x x1' resolved by C5."
+ },
+ "gates": {
+  "planTime": "A: flavor-normalized, slash/whitespace-stripped multiset(corrupted) == multiset(intended) + declared elision {2 x1} EXACT, missing = EMPTY; B: multiset EXACT + row-order for all non-'}' bytes + zero-deletion + insertions byte-verbatim in-seg + live KaTeX corrupted-FAIL/repaired-OK",
+  "apply": "per-form fire counts exact (25); span-scoped replacers (C2 dollar-only, C5/C6 backtick-only); dual JSON-escape raw-byte anchoring; per-file JSON-parse fail-closed; tree-delta == planned jpaths; single-line compact serialization preserved",
+  "idempotence": "re-plan on applied tree = 0 conversions, and again on merged main (ecb8fef8)",
+  "katexHeal": "full-corpus sweep 0.16.22 throwOnError: pre 5723u/11207occ == the run-002 pinned post-apply state (zero drift across the interim commits) -> post 5722u/11201occ = -1u/-6occ EXACTLY the B seg; 0 new failures; pre/post failure-set diff == {B corrupted} exactly",
+  "residue": "residue re-census all-zero at merged main (A 0, B 0, backtick V_{i n} 0, sub-floor {} both classes)",
+  "run2Integrity": "run-002 of-record repairs re-asserted present corpus-wide (decoded-walk; the lambda seg owned by R2a per the of-record exclusion); R1 30 corrupted texts absent",
+  "scope": "git diff = exactly the 9 planned files, 11 changed lines"
+ },
+ "delivery": {
+  "branch": "rn-debris-11/run-003",
+  "commit": "073d1241",
+  "pr": 737,
+  "ci": "census success + hub success; verify FAILURE = the PRE-EXISTING of-record main baseline (fail set byte-identical to base tip ddbc83a9: the same 2 'ruling A optionA identity laws' fails + 1 error class, none touching the 9 changed files; 3314 pass; the identical baseline under PR #736's merge of record) — disclosed, zero new failures of record",
+  "merge": "ecb8fef8 (merge commit; race-guard observed main advance ddbc83a9 -> 58dfe0bf (#736, geography lane, ZERO file overlap with the 9) before merge; PR #737 merged clean over it)",
+  "postMergeMain": "19/19 verify checks pass at ecb8fef8; re-plan 0; residue all-zero"
+ },
+ "specEvidence": {
+  "document": "Pearson Edexcel IAL Mathematics, Further Mathematics and Pure Mathematics — Specification — Issue 3 — April 2019",
+  "url": "https://qualifications.pearson.com/content/dam/pdf/International%20Advanced%20Level/Mathematics/2018/Specification-and-Sample-Assessment/international-a-level-maths-spec.pdf",
+  "sha256": "71351e66d8434cc8976fa41801b65d77bdcad56f902e45807bc635bca317b408 (byte-identical to rn11-spec-sha256.txt of record)",
+  "stepARegister": ".syllabai/lane-artifacts/RN-DEBRIS-11/run3_pairs.json (STEP_A.attestation)"
+ },
+ "artifacts": ".syllabai/lane-artifacts/RN-DEBRIS-11/ (run3_pairs.json = the frozen tables + declarations + C3 human-editor list; run3_convert.py; run3_sweep.py + run3_sweep_summary.json; run3_verify.py + run3_verify.json 19/19; census_residue.py; plan_run3.json; apply_report_run3.json); full sweep JSONs /tmp-resident, regenerable",
+ "laneStateAfter": {
+  "maths_text_defects": "ZERO known unconverted maths-text defects of the run-001 census families remain; the only documented remainder is the C3 hybrid-seg pair (cosmetic, render-OK) queued for the human-editor pass",
+  "next": "human-editor pass on the C3 list (2 segs x2 sites); no further mechanical runs queued"
+ },
+ "discipline": "fetch-first (twice: open + pre-merge race); fail-closed; zero-invention with declared-elision disclosure; tokens env-only, never argv/URL/logs; no force-push; bounded CI poll; merge-commit method per #703/#736 precedent"
+}
