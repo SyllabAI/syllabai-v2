@@ -1190,3 +1190,5 @@ Work Log:
 
 Stage Summary:
 - lane 19 (T-UGM-0580-19) EXECUTED of record: experimental 79088f34 + 84408e97; resources PR #304 (enrichment T-UGM-MODE1-19 + corpus T-UGM-IMPORT-19, MANIFEST v19); T-UGM-HUB-CONSUME-19 filed as syllabai-v2 issue — awaits the #304 merge + operator order. Lane 20 = TE3 Coordinate geometry next per the decision; TE8/TE9 stay pre-ruled honest-empty (UGM-SCOPE-1).
+
+- Refile disclosure (same run, bookkeeping-only): PR #733's fresh-lane rebuild (970e8f71) carried the full run-003 worklog section but missed the three .syllabai filings (receipt t-resume-targets/run-003-live-verification.json + lane-artifacts exam/flashcards resume-flip PNGs); refiled byte-identical from the old lane head e61966cf (PR #726, closed unmerged after its event-drop). fetch-first, no force
