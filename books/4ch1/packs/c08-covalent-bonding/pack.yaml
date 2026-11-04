@@ -1,12 +1,14 @@
 # S0 output of record - c08-covalent-bonding
 # T-BOOK-070: b07 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 6 -> 7);
 # the S0 plan is binding — lint G1 checks planned == on-disk.
+# T-BOOK-074: b08 media-embed appended — Cognito full-coverage extension (ADR-BOOK-0006; planned_blocks 7 -> 8; trace 1a1a4e45ca4e2325).
+
 chapter: "c08"
 chapter_key: "u1:c8"
 title: "Covalent bonding"
 status: published # S4 flip of record — T-BOOK-016 (operator dispatch trace 1a15f18fdca65e79); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 7
+planned_blocks: 10
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p94 intro, p95 accounting note, p96 check, p97 water diagrams, p103 carbon forms, p106 trends table"
 blocks:
@@ -17,3 +19,6 @@ blocks:
   - {ord: 5, id: "c08-covalent-bonding/b05", type: sort-match, file: "blocks/b05-sort-match-carbon-forms.json", anchor: 103}
   - {ord: 6, id: "c08-covalent-bonding/b06", type: table-fill, file: "blocks/b06-table-fill-molecular-trends.json", anchor: 106}
   - {ord: 7, id: "c08-covalent-bonding/b07", type: media-embed, file: "blocks/b07-media-embed.json", anchor: 106}
+  - {ord: 8, id: "c08-covalent-bonding/b08", type: media-embed, file: "blocks/b08-media-embed.json", anchor: 106}
+  - {ord: 9, id: "c08-covalent-bonding/b09", type: media-embed, file: "blocks/b09-media-embed.json", anchor: 106}
+  - {ord: 10, id: "c08-covalent-bonding/b10", type: media-embed, file: "blocks/b10-media-embed.json", anchor: 106}

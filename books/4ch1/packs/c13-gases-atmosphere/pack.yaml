@@ -1,12 +1,14 @@
 # S0 output of record - c13-gases-atmosphere (T-BOOK-011)
 # T-BOOK-070: b08 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 7 -> 8);
 # the S0 plan is binding — lint G1 checks planned == on-disk.
+# T-BOOK-074: b09 media-embed appended — Cognito full-coverage extension (ADR-BOOK-0006; planned_blocks 8 -> 9; trace 1a1a4e45ca4e2325).
+
 chapter: "c13"
 chapter_key: "u2:c13"
 title: "Gases in the atmosphere"
 status: published # S4 flip of record — T-BOOK-011/012 r0 (operator dispatch trace 1a15f60b53d4e0d5); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 8
+planned_blocks: 9
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p146 composition+figure, p147 copper practical callout, p148 rusting calc, p150 oxides+figure, p152 mcq"
 blocks:
@@ -18,3 +20,4 @@ blocks:
   - {ord: 6, id: "c13-gases-atmosphere/b06", type: figure, file: "blocks/b06-figure-magnesium-burning.json", anchor: 150}
   - {ord: 7, id: "c13-gases-atmosphere/b07", type: mcq-embed, file: "blocks/b07-mcq-check.json", anchor: 152}
   - {ord: 8, id: "c13-gases-atmosphere/b08", type: media-embed, file: "blocks/b08-media-embed.json", anchor: 152}
+  - {ord: 9, id: "c13-gases-atmosphere/b09", type: media-embed, file: "blocks/b09-media-embed.json", anchor: 152}
