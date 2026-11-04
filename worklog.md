@@ -1142,3 +1142,13 @@ Work Log:
 
 Stage Summary:
 - Both rollout PRs are OPEN with green CI and await the operator's merge word (parent plan Gate 5 carries): #722 (Lane C — the typed regrade channel gets its hub consumer; the MG value moment type→mark→read on the core lane) and #725 (Lane A — region marking discovers itself; the deep-link requirement is gone). Records on main 20fc832c (plan + cards + ADR-042/043). Lane E carded (engine-side, next), Lane D operator-held, Lane B scale-out recorded against the executed RECT-2 instrument.
+
+## T-OEQ-PHYS-FORMAT-1 run-013-m4 plane sync — the 2 radiation banks serve the repaired corpus (2026-11-04, traces 1a1a55a658b4e201 + 1a1a60ec9f8d140d)
+
+Work Log:
+- The F135 hand-off item 2 follow-up leg executed. Corpus first: resources PR #309 (merged ef5c93cc) — the run-011-m3-analog isotope/decay debris repair, 26 spans / 8 part-fields / 3 topic.json + 5 renders in igcse-physics-modular-24-unit-2 + igcse-science-double-award-17-physics; live-aria law (3 pages, 16 labels, sha-pinned, re-fetched + hash-verified byte-exact 2026-11-04); gates G0–G8 green, independently reproduced (census 26, G4a parity, G8 plane pre-identity 8/8).
+- Plane sync (this repo, PR #738, merged 205f604e): the 8 fields := canon(repaired corpus) through the wave-D serving canon (LRM strip + asset repin at bank pin 1a5c37bc + trim); compact T1 per bank (detected: indent=None, separators (',',':'), no trailing newline). B2 canon(new) == serve-table pins 8/8 (sha256+len, the of-record bridge); B3 plane pre-identity 8/8 (every replaced value was canon(corpus pre-repair) — the wave-D-written fields were debris-verbatim, exactly as P5 disclosed); B5 deep-diff == exactly the 8 leaves; B6 census guard CLEAN exit-0 per touched bank pre AND post (4 receipts + run013-m4-sync-payload.json committed); full-corpus census-guard green on the PR and on the merged main; served bytes re-fetched from live main == serve-table pins 8/8.
+- Posture note: the verify-check red is pre-existing main debt (bundle-seed.test.ts:1024 + cie-phase4-roster.test.ts:25, identical signature at 7ddaf8a1 and 45d59a00 — before this branch existed; documented on the PR).
+
+Stage Summary:
+- The P5 debris class is extinct on the plane: the Po/Pb/Bi-210 grids, the Pu-238 chain, the Th-232 decay and the vanadium-50 span render proper isotope/decay notation for the first time. The hand-off chain F133→F134→F135→F136 is fully discharged (census-guard CI + M4 corpus repair + plane sync + the #306 CI infra item); corpus↔plane reconciliation HOLDS @ resources ef5c93cc / v2 205f604e.
