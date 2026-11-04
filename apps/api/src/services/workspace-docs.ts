@@ -62,6 +62,7 @@ export class WorkspaceDocs {
       DO UPDATE SET value = EXCLUDED.value, updated_at = now()
       RETURNING doc_key AS key, value, updated_at AS "updatedAt"`;
     const r = rows[0];
+    if (!r) throw new Error("user_documents upsert returned no row");
     return { key: String(r.key), value: r.value, updatedAt: String(r.updatedAt) };
   }
 
