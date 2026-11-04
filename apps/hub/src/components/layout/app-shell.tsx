@@ -56,6 +56,7 @@ import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { useLastOpenedSync } from "@/lib/last-opened";
 import { useMockResultsSync } from "@/lib/mock-results";
 import { useTeacherStoresSync } from "@/lib/teacher/stores";
+import { useAccountDocsSync } from "@/lib/account-docs";
 import { isImmersiveRoute, isViewerRoute } from "@/lib/focus-routes";
 import { useLastOpened } from "@/lib/last-opened";
 import { cn } from "@/lib/utils";
@@ -138,6 +139,12 @@ export function AppShell({
   // mirror the account while a TEACHER is signed in; the hook is a no-op for
   // students and signed-out sessions (the surface is teacher-owned).
   useTeacherStoresSync();
+  // T-AUDIT-TIER1 run-003 — the account-document hydration surface: mounts
+  // ONCE here (the global shell) and hydrates the whole workspace doc set
+  // on identity acquisition (deck sessions, guided-flow, progress overlays,
+  // teacher classes, builder drafts, tutor/assistant/CLA transcripts); the
+  // thread stores read through lib/account-docs.ts memory via their bridge.
+  useAccountDocsSync();
   // course pages manage their own horizontal rhythm (course shell + resource
   // panel); the graph surfaces are full-bleed (the visualizer canvas wants
   // the whole viewport); the tutor workspace is an immersive app surface

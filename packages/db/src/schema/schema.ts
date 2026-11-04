@@ -2241,3 +2241,26 @@ export const learnerMockResults = pgTable("learner_mock_results", {
         check("learner_mock_results_marks_check", sql`marks >= 0 AND total >= 0 AND duration_min >= 0 AND time_used_sec >= 0`),
         check("learner_mock_results_questions_check", sql`questions IS NULL OR jsonb_typeof(questions) = 'array'`),
 ]);
+
+// T-AUDIT-TIER1 run-003 — the account-backed workspace document plane. One
+// row per (user, doc key): the hub's client workspace stores (deck sessions,
+// guided-flow state, progress overlays, teacher classes, test-builder
+// drafts, tutor/assistant/CLA thread transcripts) persist HERE in addition
+// to their reactive localStorage cache, so every surface follows the
+// signed-in account across devices and nothing learner/teacher-shaped lives
+// only in a browser profile.
+// Doc keys are app-pinned (packages/contracts workspaceDocKeySchema);
+// values are opaque JSONB documents the contracts cap at 512 KB.
+export const userDocuments = pgTable("user_documents", {
+	userId: uuid("user_id").notNull(),
+	docKey: varchar("doc_key", { length: 100 }).notNull(),
+	value: jsonb("value").notNull(),
+	updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+	primaryKey({ columns: [table.userId, table.docKey], name: "user_documents_pk" }),
+	foreignKey({
+		columns: [table.userId],
+		foreignColumns: [users.id],
+		name: "user_documents_user_id_fkey"
+	}).onDelete("cascade"),
+]);

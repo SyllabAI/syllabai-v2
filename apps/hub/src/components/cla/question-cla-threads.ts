@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { bridgeThreadStore, mirrorThreadState } from "@/lib/account-docs-bridge";
 
 /**
  * Question-CLA thread store — DC-6 phase 2a
@@ -63,6 +64,10 @@ export type QuestionClaMessagesUpdate =
 
 const KEY = "syllabai.claThreads.v1";
 const ACTIVE_KEY = "syllabai.claThreads.activeByQuestion.v1";
+// T-AUDIT-TIER1 run-003 — the account document this store mirrors into
+// (contracts workspaceDocKeySchema allow-list row; lib/account-docs.ts owns
+// the hydrate/write-through, the bridge below owns the union law).
+const DOC_KEY = "cla-question-threads";
 
 /** storage guards — keep localStorage bounded (family parity; heavier
  *  messages: the CLA answer view carries citations + tools, hence 100) */
@@ -147,6 +152,13 @@ function persist() {
   } catch {
     // quota exceeded / private mode — the session still works in memory
   }
+  // T-AUDIT-TIER1 run-003 — the account is the durable copy: after the
+  // device cache lands, mirror the whole document into the account plane
+  // (no-op before hydration and while a remote application is in flight —
+  // lib/account-docs-bridge.ts owns both gates; a failed PUT keeps memory
+  // and re-arms). The CLA pointer map rides the doc whole (the store's own
+  // shape — the bridge never re-derives it).
+  mirrorThreadState(DOC_KEY, { threads: state.threads, activeByQuestion: state.activeByQuestion });
 }
 
 /** Trailing-edge throttle: disk writes wait (family parity). */
@@ -474,3 +486,33 @@ export function insertQuestionClaThread(thread: QuestionClaThread, makeActive: b
   if (makeActive) activeByQuestion[thread.questionId] = thread.id;
   commit({ threads, activeByQuestion });
 }
+
+// ── account-docs bridge (T-AUDIT-TIER1 run-003) ──────────────────────
+// The family's registration law (the zero-imports decoupling law holds —
+// the bridge is a lib/ module): server hydration (or an account-switch
+// re-base) folds the conservative union back in through apply(); the
+// store's own writes mirror out through persist()'s tail; the echo guard
+// keeps one intent = one PUT.
+bridgeThreadStore<StoredState, QuestionClaThread>({
+  docKey: DOC_KEY,
+  localKey: KEY,
+  snapOf: () => state,
+  threadsOf: (s) => s.threads,
+  apply(threads) {
+    // hydration NEVER moves the active pointers (restore stays an explicit
+    // user act — the phase-3 law); a pointer whose thread the union dropped
+    // clears (stale pointers protect nothing — the family law)
+    const live = new Set(threads.map((t) => t.id));
+    const activeByQuestion: Record<string, string | null> = {};
+    for (const [qid, tid] of Object.entries(state.activeByQuestion)) {
+      activeByQuestion[qid] = tid != null && live.has(tid) ? tid : null;
+    }
+    state = { threads, activeByQuestion };
+    snap = { threads: state.threads, activeByQuestion: state.activeByQuestion };
+    persist(); // the device cache re-bases; the mirror tail no-ops under the bridge's echo guard
+    for (const l of listeners) l();
+  },
+  docOf: () => ({ threads: state.threads, activeByQuestion: state.activeByQuestion }),
+  maxThreads: MAX_THREADS,
+  maxMessages: MAX_MESSAGES_PER_THREAD,
+});

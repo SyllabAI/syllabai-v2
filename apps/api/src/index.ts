@@ -75,6 +75,7 @@ import { createBooksRouter } from "./routes/books";
 import { buildLlmAdminRouters } from "./routes/llmadmin";
 import { buildLearnerMeRouters } from "./routes/learnerme";
 import { buildTeacherMeRouters } from "./routes/teacherme";
+import { buildWorkspaceDocsRouters } from "./routes/workspace-docs"; // T-AUDIT-TIER1 run-003 (r0) — the account-backed workspace document plane (v2-native, additive; the same one-import-line precedent)
 import { buildLearnerKgRouters } from "./routes/learnerkg";
 import { buildRevisionNotesRouters } from "./routes/revision-notes";
 import { buildKnowledgeRouters } from "./routes/knowledge";
@@ -111,6 +112,7 @@ const testbuilder = buildTestBuilderRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const teacherMe = buildTeacherMeRouters();
+const workspaceDocs = buildWorkspaceDocsRouters(); // T-AUDIT-TIER1 run-003
 const learnerKg = buildLearnerKgRouters();
 const learnerProgress = buildLearnerProgressRouters();
 const learnerStudyPlan = buildLearnerStudyPlanRouters();
@@ -549,6 +551,18 @@ app.route("/api/v1/learners/me", learnerMe.learnerMeRoute);
 // classroom.ts shell law); the /api/v1/* fallback below stays the
 // 404-after-auth path for NO router claimed.
 app.route("/api/v1/teachers/me", teacherMe.teacherMeRoute);
+// Workspace-document router (T-AUDIT-TIER1 run-003). V2-NATIVE surface
+// (pdf-drawings posture): the generic authenticated envelope over
+// `user_documents` 0025 that carries the hub's client workspace stores
+// (deck sessions, guided-flow, progress overlays, teacher classes,
+// test-builder drafts, tutor/assistant/CLA thread transcripts) into the
+// account — the browser-persistence purge band, session thread stores
+// slice. Keys are app-pinned (contracts workspaceDocKeySchema — the five
+// dedicated-service sibling keys are REFUSED, no shadow copies); the owner
+// rides the JWT context; the router owns its 401 shell internally, so the
+// /api/v1/* fallback below stays the 404-after-auth path for NO router
+// claimed.
+app.route("/api/v1/me/documents", workspaceDocs.workspaceDocsRoute);
 // SME admin router (T-MIG-033 tranche-3 — Wave 3). Path parity with the
 // frozen core: SmeQuestionAdminController under /api/v1/admin/question-bank
 // (SecurityConfig.java:86 hasRole("ADMIN") + @PreAuthorize defense-in-depth;

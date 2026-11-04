@@ -325,6 +325,8 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/attempts",
       "/api/v1/learners/me/attempts",
       "/api/v1/learners/me/revision-notes", // Wave S3: T-MIG-082 golden-verified (run-002/003, r3a)
+      "/api/v1/learners/me/teach-me", // T-TEACHME-001 run-003: v2-NATIVE family (no core analogue — feasibility path (iii) of record), NARROW prefix covers exactly the teach-me family. (RIDER: this row existed in api.ts but was missing from this literal — pre-existing drift, repaired in the T-AUDIT-TIER1 run-003 band; hub unit tests are not a CI lane, so the drift survived.)
+      "/api/v1/me/documents", // T-AUDIT-TIER1 run-003 (r0): the workspace-document plane — v2-NATIVE additive family (no frozen-core counterpart, the DC-6 threads precedent), NO capture/verify band; NARROW: the exact /api/v1/me/documents family; no sibling /api/v1/me/** exists on either side
       "/api/v1/admin/llm/chain-health", // T-MIG-090: golden-verified (run-005, r0 rider) — NARROWEST: the prefix IS the single endpoint
       "/api/v1/tutor/sessions", // T-MIG-092: golden-verified (run-003 14/14, r0 rider) — NARROW: the sessions tree ONLY, ask/stream stay core
       "/api/v1/learners/me/agenda", // T-MIG-096: golden-verified (run-001 16/18, r0 rider) — per-exact-subpath rows, NEVER the bare /learners/me
@@ -775,6 +777,23 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     expect(v2SurfaceBase("/api/v1/learners/me/cla/threadsxyz", V2)).toBe(V2);
     // the bare cla family root stays core-routed (no row claims it)
     expect(v2SurfaceBase("/api/v1/learners/me/cla", V2)).toBeNull();
+  });
+
+  test("the T-AUDIT-TIER1 run-003 line: the workspace-document plane routes v2 (v2-native, no frozen counterpart)", () => {
+    // the account-backed persistence envelope rides ONE prefix row: the
+    // list/get/put/delete family all resolve v2
+    expect(v2SurfaceBase("/api/v1/me/documents", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/me/documents/tutor-threads", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/me/documents/progress:igcse-chemistry-19", V2)).toBe(V2);
+    // NARROW form: the prefix is exactly the /api/v1/me/documents family —
+    // startsWith over-capture is DOCUMENTED INERT (no sibling /api/v1/me/**
+    // path exists on either side — grep-verified at the flip commit) and the
+    // family shares NO segment with the /api/v1/learners/me/* rows ("me" is
+    // the segment after learners there, after v1 here)
+    expect(v2SurfaceBase("/api/v1/me/documentsx", V2)).toBe(V2);
+    // the dedicated-service keys are NOT hub-routed through this plane —
+    // each of those stores rides its own already-flipped family row
+    // (last-opened/mock-results stay their own wires)
   });
 
   test("the T-MIG-106 line: the tutor ask pair flips declared-justified (r4b, operator ruling (b) trace 1a11c4b762f6043d)", () => {

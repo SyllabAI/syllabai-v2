@@ -12245,6 +12245,66 @@
     }
    },
    "isRLSEnabled": false
+  },
+  "public.user_documents": {
+   "name": "user_documents",
+   "schema": "",
+   "columns": {
+    "user_id": {
+     "name": "user_id",
+     "type": "uuid",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "doc_key": {
+     "name": "doc_key",
+     "type": "varchar(100)",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "value": {
+     "name": "value",
+     "type": "jsonb",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "updated_at": {
+     "name": "updated_at",
+     "type": "timestamp with time zone",
+     "primaryKey": false,
+     "notNull": true,
+     "default": "now()"
+    }
+   },
+   "indexes": {},
+   "foreignKeys": {
+    "user_documents_user_id_fkey": {
+     "name": "user_documents_user_id_fkey",
+     "tableFrom": "user_documents",
+     "tableTo": "users",
+     "columnsFrom": [
+      "user_id"
+     ],
+     "columnsTo": [
+      "id"
+     ],
+     "onDelete": "cascade",
+     "onUpdate": "no action"
+    }
+   },
+   "compositePrimaryKeys": {
+    "user_documents_pk": {
+     "name": "user_documents_pk",
+     "columns": [
+      "user_id",
+      "doc_key"
+     ]
+    }
+   },
+   "uniqueConstraints": {},
+   "policies": {},
+   "checkConstraints": {},
+   "isRLSEnabled": false
   }
  },
  "enums": {},

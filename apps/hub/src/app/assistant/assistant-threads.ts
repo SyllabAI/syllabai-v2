@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { bridgeThreadStore, mirrorThreadState } from "@/lib/account-docs-bridge";
 
 /**
  * Assistant conversation store — DC-6 phase 1 (docs/DC6-ASSISTANT-HISTORY-PLAN.md).
@@ -65,6 +66,10 @@ export interface AssistantThread {
 const KEY = "syllabai.assistant.threads.v1";
 const ACTIVE_KEY = "syllabai.assistant.activeThread.v1";
 const EVENT = "syllabai:assistant-threads-changed";
+// T-AUDIT-TIER1 run-003 — the account document this store mirrors into
+// (contracts workspaceDocKeySchema allow-list row; lib/account-docs.ts owns
+// the hydrate/write-through, the bridge below owns the union law).
+const DOC_KEY = "assistant-threads";
 
 /** storage guards — keep localStorage bounded (tutor parity) */
 const MAX_THREADS = 40;
@@ -115,6 +120,12 @@ function persist() {
   } catch {
     // quota exceeded / private mode — the session still works in memory
   }
+  // T-AUDIT-TIER1 run-003 — the account is the durable copy: after the
+  // device cache lands, mirror the whole document into the account plane
+  // (no-op before hydration and while a remote application is in flight —
+  // lib/account-docs-bridge.ts owns both gates; a failed PUT keeps memory
+  // and re-arms).
+  mirrorThreadState(DOC_KEY, notifySnapshot());
 }
 
 /** Trailing-edge throttle: disk writes wait (tutor parity). */
@@ -418,3 +429,32 @@ function updateInPlace(id: string, patch: Partial<AssistantThread>) {
     threads: state.threads.map((t) => (t.id === id ? { ...t, ...patch } : t)),
   });
 }
+
+// ── account-docs bridge (T-AUDIT-TIER1 run-003) ──────────────────────
+// The tutor's registration law, copy-adapted (the zero-cross-surface
+// decoupling law holds — the bridge is a lib/ module, not a surface):
+// server hydration (or an account-switch re-base) folds the conservative
+// union back in through apply(); the store's own writes mirror out through
+// persist()'s tail; the echo guard keeps one intent = one PUT.
+bridgeThreadStore<StoredState, AssistantThread>({
+  docKey: DOC_KEY,
+  localKey: KEY,
+  snapOf: () => state,
+  threadsOf: (s) => s.threads,
+  apply(threads) {
+    // hydration NEVER moves the active pointer (restore stays an explicit
+    // user act — the phase-3b law); a pointer whose thread the union
+    // dropped re-pins to the newest survivor
+    const activeId =
+      state.activeId && threads.some((t) => t.id === state.activeId)
+        ? state.activeId
+        : (threads[0]?.id ?? null);
+    state = { threads, activeId };
+    snap = notifySnapshot();
+    persist(); // the device cache re-bases; the mirror tail no-ops under the bridge's echo guard
+    for (const l of listeners) l();
+  },
+  docOf: () => notifySnapshot(),
+  maxThreads: MAX_THREADS,
+  maxMessages: MAX_MESSAGES_PER_THREAD,
+});

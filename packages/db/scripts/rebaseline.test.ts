@@ -333,20 +333,26 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // one per (user, resource) — on top of the T-TIER1 run-001 baseline
   // -> 98/920/131/99/180 (measured: rebaseline.ts verify PASS, 0 drifts, on
   // the union end-state).
-  test("98/920/131/99/180 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // T-AUDIT-TIER1 run-003 (0025_user-documents): the account-backed
+  // workspace document plane adds user_documents (4 cols, 0 secondary
+  // indexes, 1 fk — the composite PK is not a snapshot index) on top of the
+  // teacher-stores baseline -> 99/924/131/100/180 (measured: rebaseline.ts
+  // verify PASS, 0 drifts, on the union end-state).
+  test("99/924/131/100/180 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 98/98");
-    expect(v.inventory).toContain("columns 920");
+    expect(v.inventory).toContain("tables 99/99");
+    expect(v.inventory).toContain("columns 924");
     expect(v.inventory).toContain("indexes 131");
-    expect(v.inventory).toContain("fks 99");
+    expect(v.inventory).toContain("fks 100");
     expect(v.inventory).toContain("checks 180");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(98);
+    expect(run.size).toBe(99);
+    expect(run.has("public.user_documents")).toBe(true); // T-AUDIT-TIER1 run-003 — the account-backed workspace document plane
     expect(run.has("public.teach_sessions")).toBe(true); // T-TEACHME-001 — the learn-by-teaching lane
     expect(run.has("public.teach_messages")).toBe(true); // T-TEACHME-001 run-002 — the transcript plane
     expect(run.has("public.teach_review_cards")).toBe(true); // T-TEACHME-001 run-002 — the ReviewCard of record

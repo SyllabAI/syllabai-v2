@@ -154,6 +154,10 @@ import type {
   SetLastOpenedRequest,
   TeachSession,
   TeachingCoverageView,
+  // T-AUDIT-TIER1 run-003 — the workspace-document wire shapes of record
+  // (the account-backed persistence envelope over user_documents)
+  WorkspaceDoc,
+  WorkspaceDocList,
 } from "@syllabai/contracts";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "";
@@ -225,6 +229,13 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // over-capture — no sibling path shares the "teach-me" segment
   // (grep-verified at the flip commit).
   "/api/v1/learners/me/teach-me",
+  // T-AUDIT-TIER1 run-003 (r0): the workspace-document plane — v2-NATIVE
+  // additive family (no frozen-core counterpart, the DC-6 threads
+  // precedent), so the row needs NO capture/verify band; gated by the
+  // behavioural fixture suite (test/workspace-docs). NARROW: the exact
+  // /api/v1/me/documents family; no sibling /api/v1/me/** exists on either
+  // side (grep-verified at the flip commit) — startsWith capture is safe.
+  "/api/v1/me/documents",
   // T-MIG-090 (r0 rider) — LLM chain-observability report: golden-verified of
   // record (run-005: the post-merge golden-verify leg 4/4 PASS at merged main
   // bd4eaeb vs the r4b wire truth golden-captures/t-mig-090/ legs 01-04 —
@@ -2402,6 +2413,25 @@ export const api = {
     request<TeachMeSessionDetail>(
       `/api/v1/learners/me/teach-me/sessions/${encodeURIComponent(sessionId)}`,
     ),
+
+  // ── workspace documents (T-AUDIT-TIER1 run-003) — the account-backed
+  // persistence envelope for the hub's client workspace stores (deck
+  // sessions, guided-flow, progress overlays, teacher classes, builder
+  // drafts, tutor/assistant/CLA thread transcripts).
+  // lib/account-docs.ts is the ONLY caller; keys ride the contracts
+  // workspaceDocKeySchema allow-list (an unknown key is a server 400).
+  workspaceDocs: () => request<WorkspaceDocList>("/api/v1/me/documents"),
+
+  putWorkspaceDoc: (key: string, value: unknown) =>
+    request<WorkspaceDoc>(`/api/v1/me/documents/${encodeURIComponent(key)}`, {
+      method: "PUT",
+      body: JSON.stringify({ value }),
+    }),
+
+  deleteWorkspaceDoc: (key: string) =>
+    request<void>(`/api/v1/me/documents/${encodeURIComponent(key)}`, {
+      method: "DELETE",
+    }),
 };
 
 /**
