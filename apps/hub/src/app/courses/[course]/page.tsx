@@ -528,7 +528,9 @@ export default async function CourseHubPage({
             <h2 className="text-lg font-bold tracking-tight">{band.title}</h2>
             <p className="text-sm text-muted-foreground">{band.tagline}</p>
           </div>
-          <div className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
+          {/* t-ui-polish run-004 — grid rhythm: gap-4, the law the
+              dashboard (run-001) and directory (run-003) grids share. */}
+          <div className="grid gap-4 sm:grid-cols-2">
             {band.items.map((r) => {
               const inner = (
                 <>
@@ -594,7 +596,8 @@ export default async function CourseHubPage({
       {/* SME's "Our revision framework" explainer */}
       <section aria-label="Our revision framework" className="space-y-3 pb-2">
         <h2 className="text-lg font-semibold">Our revision framework</h2>
-        <div className="grid gap-3 sm:grid-cols-3">
+        {/* t-ui-polish run-004 — same gap-4 rhythm law for the explainer trio. */}
+        <div className="grid gap-4 sm:grid-cols-3">
           {framework.map((f) => (
             <Card key={f.tag} className="bg-muted/40">
               <CardContent className="space-y-2 p-4">
