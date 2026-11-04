@@ -84,3 +84,21 @@ corpus classification:
 (resources). The 5 confirmed EDX-2-corrupted fields and the benign/out-of-scope
 groups are enumerated there — they are NOT allowlisted; they are handed to
 their owning lanes (wave-D candidate; fetch-bank lane for the maths-b groups).
+
+## CI wiring (platform-lane item 2, DISCHARGED 2026-11-04)
+
+The guard runs automatically as the `census-guard` workflow on every PR and
+every push to main that touches `apps/hub/content/**` or
+`apps/hub/scripts/import_corpus/**`. The known findings of record — the 22
+deduped signatures behind the 34 findings of
+`.syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run012-waved-guard-full.json`
+(2026-11-03, full-corpus 106 banks, RECONCILIATION HOLDS @ main) — are the
+committed allowlist `census_guard_allowlist.json` next to this file. A NEW
+sibling_copy / collapse_signature finding fails the job (fail-closed); an
+allowlist entry only ever matches its exact recorded
+(question_id, kind, value_sha256) triple, so a repaired finding's stale
+entry is inert. Baseline updates are PR-mediated: a legitimate new
+corpus-attested class lands its classification + allowlist entries in the
+same PR that introduces it, with the receipt pasted per the law above.
+The guard receipt is uploaded as the `census-guard-receipt` artifact on
+every run.
