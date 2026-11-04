@@ -71,6 +71,11 @@ import { useCourseProgress } from "@/lib/progress";
 // UX audit 2026-10-02 #17: the dashboard's sub-1%-decimal formatting is now
 // the shared contract (progress-ring and strengths-panel had rounded to 0%)
 import { formatPercent, percentLabel } from "@/lib/format";
+// Tier-3 follow-up 5: the trailing tile is the grid's terminator — its
+// span/shape adapt to the row it lands in (the parity law + its tests live
+// in lib/subject-grid.ts).
+import { addCourseTileClasses } from "@/lib/subject-grid";
+import { cn } from "@/lib/utils";
 import { api, getToken } from "@/lib/api";
 import { railTodayCopy, useStudyPlan } from "@/lib/study-plan-client";
 import { boardOf, hasExamSeriesCalendar } from "@/lib/board";
@@ -752,11 +757,17 @@ export function DashboardClient({
               />
             ))}
             {/* SME's trailing slot cell: "Got another course?" — opens the
-                cascading board → level → subject overlay */}
+                cascading board → level → subject overlay. The terminator
+                law (lib/subject-grid.ts): the tile completes its last row
+                at both bands — spanning rows render it as a slim ghost
+                bar, pairing rows keep the 10rem cell. */}
             <button
               type="button"
               onClick={() => setAddOpen(true)}
-              className="flex min-h-[10rem] flex-col items-start justify-center gap-2 rounded-2xl border border-dashed border-muted-foreground/40 p-4 text-left transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className={cn(
+                "flex flex-col items-start justify-center gap-2 rounded-2xl border border-dashed border-muted-foreground/40 p-4 text-left transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                addCourseTileClasses(mySubjects.length),
+              )}
             >
               <p className="text-sm font-semibold">Got another course?</p>
               <p className="text-xs text-muted-foreground">
