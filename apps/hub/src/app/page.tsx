@@ -16,8 +16,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getDataProvider } from "@/lib/data";
 import { listCourses, pilotCourseSlug } from "@/lib/courses";
+import { ShowcaseLanding } from "@/components/demo/showcase-landing";
+import { SHOWCASE_DEMO_ENABLED } from "@/lib/demo/showcase";
 
 export default async function HubPage() {
+  // T-DEMO-SHOWCASE-1 (temporary): while the showcase flag is on, the
+  // product's first screen is the demo landing — pick student or teacher
+  // and you're in as the demo account. Kill-switch + removal instructions
+  // live in lib/demo/showcase.ts. Flag off falls through to the regular
+  // landing below, byte-identical (the early return also skips the provider
+  // fetches, which the demo landing doesn't need).
+  if (SHOWCASE_DEMO_ENABLED) return <ShowcaseLanding />;
+
   const provider = getDataProvider();
   const pilotSlug = await pilotCourseSlug();
   const courses = await listCourses();
