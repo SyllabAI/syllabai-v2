@@ -154,3 +154,113 @@ describe("pollUntilTerminal — the regrade happy path (typed channel integratio
     });
   });
 });
+
+// ── T-MG-MARK-DELTA-1 (Lane E) — the forceFresh wire law + the mirror's
+// additive fields (attemptClass / workingRefLabel / cached receipt) ──────────
+
+describe("requestPartRegrade — T-MG-MARK-DELTA-1 forceFresh", () => {
+  test("forceFresh: true rides the body (the explicit 'mark again' affordance forces a fresh job)", async () => {
+    await withEnv(async () => {
+      let seen: { init: RequestInit } | null = null;
+      const res = await requestPartRegrade(
+        PART_ID,
+        "<p>same draft</p>",
+        TOKEN,
+        stubFetch((_url: unknown, init: RequestInit | undefined) => {
+          seen = { init: (init ?? {}) as RequestInit };
+          return Promise.resolve(jsonRes(202, { markId: MARK_ID, status: "queued" }));
+        }),
+        true,
+      );
+      expect(res).toEqual({ outcome: "accepted", markId: MARK_ID });
+      const s = seen as { init: RequestInit } | null;
+      expect(JSON.parse(String(s!.init.body))).toEqual({ answerHtml: "<p>same draft</p>", forceFresh: true });
+    });
+  });
+
+  test("default (no forceFresh arg) omits the field — the identical re-mark may short-circuit", async () => {
+    await withEnv(async () => {
+      let seen: { init: RequestInit } | null = null;
+      await requestPartRegrade(
+        PART_ID,
+        "<p>same draft</p>",
+        TOKEN,
+        stubFetch((_url: unknown, init: RequestInit | undefined) => {
+          seen = { init: (init ?? {}) as RequestInit };
+          return Promise.resolve(jsonRes(202, { markId: MARK_ID, status: "queued" }));
+        }),
+      );
+      const s = seen as { init: RequestInit } | null;
+      expect(JSON.parse(String(s!.init.body))).toEqual({ answerHtml: "<p>same draft</p>" });
+    });
+  });
+});
+
+describe("pollUntilTerminal — T-MG-MARK-DELTA-1 mirror fields (additive optional)", () => {
+  const baseSnapshot = {
+    markId: MARK_ID,
+    status: "succeeded",
+    queuedAt: "2026-11-04T10:00:00Z",
+    completedAt: "2026-11-04T10:00:05Z",
+    transcription: "the attempt",
+    feedback: {
+      attempt: "the attempt",
+      chatMessage: "Two points considered.",
+      pointsScored: ["P1: t — c"],
+      pointsNotScored: [],
+      thoughtProcess: "the attempt",
+      strategiesForImprovement: [],
+    },
+    awards: [
+      {
+        code: "P1",
+        awarded: true,
+        score: 1,
+        maxScore: 1,
+        ordinal: 0,
+        markPointId: "22222222-2222-4222-8222-222222222222",
+        page: 2,
+        attemptClass: "full",
+        workingRefLabel: "W2",
+      },
+    ],
+    receipt: { emitted: 1, suppressed: 0, workingBlocks: 0, cached: true },
+  };
+
+  test("a snapshot WITH the Lane E fields parses; the citation label, attempt class and cached receipt ride through", async () => {
+    await withEnv(async () => {
+      const loop = await pollUntilTerminal({
+        markId: MARK_ID,
+        token: TOKEN,
+        delay: async () => undefined,
+        poll: (async () => ({ outcome: "snapshot", snapshot: baseSnapshot })) as never,
+      });
+      expect(loop.status).toBe("succeeded");
+      if (loop.status !== "succeeded") return;
+      expect(loop.snapshot.awards?.[0]?.attemptClass).toBe("full");
+      expect(loop.snapshot.awards?.[0]?.workingRefLabel).toBe("W2");
+      expect(loop.snapshot.receipt?.cached).toBe(true);
+    });
+  });
+
+  test("a snapshot WITHOUT the Lane E fields still parses (backward compatibility — the additive law)", async () => {
+    await withEnv(async () => {
+      const bare = JSON.parse(JSON.stringify(baseSnapshot)) as Record<string, unknown>;
+      const awards = (bare.awards as Array<Record<string, unknown>>)[0]!;
+      delete awards.attemptClass;
+      delete awards.workingRefLabel;
+      delete (bare.receipt as Record<string, unknown>).cached;
+      const loop = await pollUntilTerminal({
+        markId: MARK_ID,
+        token: TOKEN,
+        delay: async () => undefined,
+        poll: (async () => ({ outcome: "snapshot", snapshot: bare })) as never,
+      });
+      expect(loop.status).toBe("succeeded");
+      if (loop.status !== "succeeded") return;
+      expect(loop.snapshot.awards?.[0]?.attemptClass).toBeUndefined();
+      expect(loop.snapshot.awards?.[0]?.workingRefLabel).toBeUndefined();
+      expect(loop.snapshot.receipt?.cached).toBeUndefined();
+    });
+  });
+});
