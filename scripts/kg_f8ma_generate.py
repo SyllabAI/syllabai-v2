@@ -297,6 +297,24 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-11 (batch nine, the economics family tranche 6): CIE 9708
+        # A Level, CIE 0455 both examination spines (2020 + 2025), Edexcel 4EC1.
+        economics = {
+            "cie-a-level-economics-23": ("f8ec_lattice_9708al", "9708AL"),
+            "cie-igcse-economics-20": ("f8ec_lattice_0455x20", "0455x20"),
+            "cie-igcse-economics-25": ("f8ec_lattice_0455x25", "0455x25"),
+            "igcse-economics-17": ("f8ec_lattice_4ec1", "4EC1"),
+        }
+        if args.course in economics:
+            mod, tag = economics[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="nine", task="T-KG-PRE-11", exporter_ver="v1.4",
+            )
+            return
         # T-KG-PRE-9 (batch seven, the accounting family tranche 4): CIE 9706
         # AS/A Level, CIE 0452 both examination spines, Edexcel 4AC1 papers.
         accounting = {
