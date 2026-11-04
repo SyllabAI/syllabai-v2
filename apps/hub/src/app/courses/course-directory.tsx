@@ -84,14 +84,17 @@ export function CourseDirectory({
 
   return (
     <div className="space-y-6">
-      <Input
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-        placeholder={`Search ${courses.length} courses by subject, exam code or board…`}
-        aria-label="Search courses"
-        className="max-w-md"
-      />
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by board">
+      {/* t-ui-polish run-003 — one toolbar row: search beside the board
+          chips at sm+ (they wrap as a stack below sm, exactly as before). */}
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+        <Input
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder={`Search ${courses.length} courses by subject, exam code or board…`}
+          aria-label="Search courses"
+          className="w-full sm:w-80"
+        />
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by board">
         <Button
           type="button"
           size="sm"
@@ -125,35 +128,39 @@ export function CourseDirectory({
             </Badge>
           </Button>
         ))}
+        </div>
       </div>
       {groups.map(([level, list]) => (
         <section key={level} aria-label={level}>
           <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-            {level} <span className="font-normal">· {list.length} course{list.length === 1 ? "" : "s"}</span>
+            {level} <span className="font-normal text-muted-foreground/60">· {list.length} course{list.length === 1 ? "" : "s"}</span>
           </h2>
-          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {/* t-ui-polish run-003 — the dashboard subjects grid recipe:
+              gap-4, MG-sized quiet targets. */}
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {list.map((c) => (
               <Link key={c.slug} href={`/courses/${c.slug}`} className="group min-w-0 focus-visible:outline-none">
                 <Card
                   className={
                     c.hasBundle
-                      ? "h-full border-primary/30 transition-colors group-hover:border-primary/60 group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
-                      : "h-full transition-colors group-hover:border-primary/40 group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
+                      ? "h-full border-primary/30 transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
+                      : "h-full transition-[border-color,box-shadow] group-hover:border-primary/40 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
                   }
                 >
-                  <CardContent className="flex items-start gap-3 p-4">
+                  <CardContent className="flex min-h-[7.5rem] items-start gap-3 p-5 sm:min-h-[8rem]">
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-semibold group-hover:text-primary">{c.label}</p>
                       {subtitles.get(c.slug) && (
                         <p className="mt-0.5 truncate text-xs text-muted-foreground">{subtitles.get(c.slug)}</p>
                       )}
                       <p className="mt-0.5 font-mono text-xs text-muted-foreground">
-                        {c.code ? c.code : <span className="not-italic">code pending</span>}
+                        {/* t-ui-polish run-003 — the board rides the mono meta
+                            line (the MG spec-code recipe); the badges carry
+                            only the honesty signals (archive size, corpus
+                            status), max two, no soup. */}
+                        {boardOf(c)} · {c.code ? c.code : <span className="not-italic">code pending</span>}
                       </p>
                       <div className="mt-2 flex flex-wrap gap-1.5">
-                        <Badge variant="secondary" className="text-[10.5px]">
-                          {boardOf(c)}
-                        </Badge>
                         {(archivePapers?.[c.slug] ?? 0) > 0 && (
                         <Badge
                           variant="secondary"
