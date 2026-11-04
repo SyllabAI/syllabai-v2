@@ -1,0 +1,115 @@
+{
+  "source": "AI concept-web startup run (F8 rollout batch six; T-KG-PRE-8, lane IALM2). The web is the AI_SUGGESTED, UNVALIDATED concept lattice authored by the F8 lane for this syllabus, every anchor machine-verified against the served spine's point ids (0 unmapped pass law) and exported in-order only by the calibrated law of scripts/kg_f8al_project.py. Bases mirror the operator-validated store vocabulary. prereqValidated stays EMPTY — the renderer labels every shipped pair INFERRED PROTOTYPE; the named gate before any of this is treated as truth remains the SME validation pass.",
+  "generatedUtc": "2026-11-04T01:31:13Z",
+  "curriculumCode": "YMA01",
+  "hubCourseSlug": "ial-maths-20-mechanics-2",
+  "conceptAnchors": {
+    "IAM2-CON-VERTICAL-MOTION": [
+      "1.1"
+    ],
+    "IAM2-CON-PROJECTILES": [
+      "1.2"
+    ],
+    "IAM2-CON-VARIABLE-ACCEL": [
+      "1.3"
+    ],
+    "IAM2-CON-VECTOR-CALCULUS": [
+      "1.4"
+    ],
+    "IAM2-CON-COM-DISCRETE": [
+      "2.1"
+    ],
+    "IAM2-CON-COM-FIGURES": [
+      "2.2"
+    ],
+    "IAM2-CON-LAMINA-EQUILIBRIUM": [
+      "2.3"
+    ],
+    "IAM2-CON-ENERGY": [
+      "3.1"
+    ],
+    "IAM2-CON-MOMENTUM-VECTOR": [
+      "4.1"
+    ],
+    "IAM2-CON-RESTITUTION": [
+      "4.2"
+    ],
+    "IAM2-CON-SUCCESSIVE-IMPACTS": [
+      "4.3"
+    ],
+    "IAM2-CON-MOMENTS": [
+      "5.1"
+    ],
+    "IAM2-CON-RIGID-EQUILIBRIUM": [
+      "5.2"
+    ]
+  },
+  "validatedPrerequisiteEdges": [],
+  "inferredPrototypePre": [],
+  "inferredPrototypeRel": [],
+  "conceptWebPrerequisiteEdges": [
+    {
+      "prerequisite": "IAM2-CON-VERTICAL-MOTION",
+      "dependent": "IAM2-CON-PROJECTILES",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAM2-CON-VERTICAL-MOTION",
+      "dependent": "IAM2-CON-VARIABLE-ACCEL",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAM2-CON-VARIABLE-ACCEL",
+      "dependent": "IAM2-CON-VECTOR-CALCULUS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAM2-CON-COM-DISCRETE",
+      "dependent": "IAM2-CON-COM-FIGURES",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAM2-CON-COM-FIGURES",
+      "dependent": "IAM2-CON-LAMINA-EQUILIBRIUM",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAM2-CON-PROJECTILES",
+      "dependent": "IAM2-CON-ENERGY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAM2-CON-VARIABLE-ACCEL",
+      "dependent": "IAM2-CON-ENERGY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAM2-CON-MOMENTUM-VECTOR",
+      "dependent": "IAM2-CON-RESTITUTION",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAM2-CON-RESTITUTION",
+      "dependent": "IAM2-CON-SUCCESSIVE-IMPACTS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAM2-CON-MOMENTS",
+      "dependent": "IAM2-CON-RIGID-EQUILIBRIUM",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    }
+  ],
+  "counts": {
+    "anchoredConcepts": 13,
+    "conceptWebEdges": 10,
+    "validatedEdges": 0,
+    "inferredPre": 0,
+    "inferredRel": 0
+  },
+  "exportCounts": {
+    "candidates": 10,
+    "selfLoops": 0,
+    "reversedDropped": 0,
+    "preExported": 10
+  }
+}
