@@ -1,0 +1,34 @@
+version: 1
+task:
+  id: T-MG-PLAYER-MARK-1
+  title: "Rollout Lane C — advisory per-part AI marking in the core player: the typed regrade channel (POST /api/v1/paper-marks/parts/:partId/regrade, shipped with zero hub callers) gets its hub consumer; core-live drafts get an instant AI read BEFORE any attempt is written"
+  owner: "main agent (Z.ai)"
+  status: OPEN
+  priority: P1
+  band: T-MG-MARK-PARITY (interactive paper marking) — rollout tranche per docs/MG-MARK-ROLLOUT-PLAN.md (ship-first lane)
+  wave: mg-rollout-2026-11
+  deps: [T-MG-CROPMARK-1, T-MG-FEEDBACK-1]
+  plan_of_record: "docs/MG-MARK-ROLLOUT-PLAN.md §3 Lane C; engine plan docs/MG-MARK-PARITY-PLAN.md §3.4 (unchanged)"
+  parent: T-MG-MARK-PARITY-1
+  ground_truth: >
+    Commissioning found the draft plan's "delete or repoint the 501 stub" premise
+    WRONG in one half: the stub (apps/hub/src/app/api/ai/mark/route.ts, ADR-029)
+    is the honest LEGACY-lane floor (SME corpus IDs do not map to core parts) and
+    stays byte-identical. The REAL gap sits on the CORE-live lane (CoreMarkingFlow):
+    it owns core question_parts UUIDs (join.structured parts) but the learner gets
+    no AI mark until real attempts are submitted. MG's live capture (2026-11-04,
+    docs/MG-MARK-ROLLOUT-PLAN.md §2) shows the value moment: type -> mark -> read,
+    nothing written to the account. The typed regrade channel was built for exactly
+    this and has no caller.
+  acceptance_pins:
+    - "(wire pin) apps/hub/src/lib/paper-marks.ts gains requestPartRegrade(partId, answerHtml, token, fetchImpl) — the mirror-law client of POST /api/v1/paper-marks/parts/:partId/regrade: 202 -> accepted {markId}; 400/404/422 envelopes -> rejected {message}; no token -> no_token; missing origin -> unconfigured; everything undefined -> failed. Polling reuses pollUntilTerminal verbatim (retry: 0 — a re-mark is a NEW job)."
+    - "(lane pin) the affordance lives ONLY on the core-live lane's draft phase (CoreMarkingFlow): per structured part (join.structured parts mapping hubPartId->corePartId, the SAME ids submitStructuredAttempt consumes) with a non-empty draft, one advisory run marks every part; the verdict renders through feedbackCopyModel (the five-field copy law + the failure-only strategies law — single-sourced from region-mark/paper-feedback). The authoritative Smart Mark flow, the attempt plane, and the legacy lane are byte-identical in behaviour."
+    - "(honesty pin) the affordance is labeled advisory — writes no attempt; parts whose plan() resolves no mark_points render the honest 422 no_mark_points class ('no mark scheme definitions for this part yet'); failed/timeout/lost poll outcomes render their honest classes (the poll loop's semantics, never a fabricated mark)."
+    - "(gate-1 pin) zero diffs on apps/api/src/services/paper-marking/prompt.ts, PROMPT_VERSION, packages/contracts/**, packages/db/** — the run is hub-only: lib/paper-marks.ts, question-player.tsx, one bun test beside the lib."
+  non_goals:
+    - "no legacy-lane changes of any kind (the stub stays; ADR-029 stands until the corpus bridge says otherwise)"
+    - "no attempts written, no Smart Mark changes, no mastery/review-plane writes"
+    - "no vision, no crop, no paper-viewer changes (that is Lane A), no contracts/api/db bytes"
+  execution_record: >
+    Commissioned 2026-11-04 with docs/MG-MARK-ROLLOUT-PLAN.md (records push).
+    run-001 branches as t-mg-player-mark-1/run-001.
