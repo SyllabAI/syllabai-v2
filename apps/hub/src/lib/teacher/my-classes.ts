@@ -21,9 +21,19 @@
  * my-subjects.
  */
 import { useCallback, useSyncExternalStore } from "react";
+import {
+  bridgeDocPool,
+  isAccountDocsHydrated,
+  mirrorDocPoolState,
+  stampOf,
+  unionByStamp,
+} from "@/lib/account-docs-records";
+import { readIdentitySnapshot } from "@/lib/identity";
 
 export const KEY = "syllabai-hub:teacher-classes.v1";
 export const MY_CLASSES_EVENT = "syllabai-hub:teacher-classes-changed";
+/** T-AUDIT-TIER1 run-004 — the account plane this roster mirrors into. */
+const DOC_KEY = "teacher-classes";
 
 export interface TeacherClass {
   id: string;
@@ -32,6 +42,11 @@ export interface TeacherClass {
   subjectSlugs: string[];
   /** ISO timestamp — set at creation, display-only */
   createdAt: string;
+  /** T-AUDIT-TIER1 run-004 — the reconcile stamp of record (ISO, stamped
+   *  on every mutation). Additive + optional: pre-band records load
+   *  unchanged (stamp 0 = oldest — they lose every merge until their
+   *  first post-band edit). */
+  updatedAt?: string;
 }
 
 const EMPTY: TeacherClass[] = [];
@@ -84,6 +99,10 @@ function writeClasses(classes: TeacherClass[]) {
     // storage full / private mode — the roster just won't persist
   }
   window.dispatchEvent(new CustomEvent(MY_CLASSES_EVENT));
+  // T-AUDIT-TIER1 run-004 — the account mirror (the run-003 store law:
+  // the persist tail drives the commit-up path; echo-guarded on the
+  // remote-apply path).
+  mirrorDocPoolState(DOC_KEY, classes);
 }
 
 function subscribe(onChange: () => void) {
@@ -135,6 +154,7 @@ export function useMyClasses(): MyClasses {
       name: trimmed,
       subjectSlugs: slugs,
       createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     };
     writeClasses([...readClasses(), cls]);
     return cls;
@@ -147,6 +167,7 @@ export function useMyClasses(): MyClasses {
     const next = [...cur];
     const merged: TeacherClass = {
       ...next[idx],
+      updatedAt: new Date().toISOString(),
       ...(patch.name !== undefined
         ? { name: patch.name.trim() || next[idx].name }
         : null),
@@ -166,3 +187,27 @@ export function useMyClasses(): MyClasses {
 
   return { classes, has, get, add, update, remove };
 }
+
+// ── T-AUDIT-TIER1 run-004 — the account mirror (bridge registration) ─────
+// The roster mirrors the account through the workspace-document plane
+// (lib/account-docs-records.ts): conservative union by id, the NEWER
+// updatedAt wins (pre-band records stamp 0 = oldest — they lose until
+// their first post-band edit), a tie keeps the server's record, creation
+// order preserved on pull-down (the store's ordering law rides in apply).
+const classesPoolOf = (classes: TeacherClass[]): Record<string, TeacherClass> =>
+  Object.fromEntries(classes.map((c) => [c.id, c]));
+
+bridgeDocPool<TeacherClass[], TeacherClass>({
+  localKey: KEY,
+  docKey: DOC_KEY,
+  cap: 40,
+  readState: () => readClasses(),
+  readPool: (classes) => classesPoolOf(classes),
+  apply: (pool) => {
+    writeClasses(Object.values(pool).sort((a, b) => a.createdAt.localeCompare(b.createdAt)));
+  },
+  merge: (local, server) => unionByStamp(local, server, "updatedAt"),
+  stamp: (pool) => stampOf(pool, "updatedAt"),
+  getAuthEmail: () => readIdentitySnapshot()?.email ?? null,
+  isHydrated: () => isAccountDocsHydrated(),
+});
