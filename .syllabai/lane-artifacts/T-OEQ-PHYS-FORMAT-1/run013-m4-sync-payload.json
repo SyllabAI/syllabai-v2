@@ -1,0 +1,90 @@
+{
+ "lane": "T-OEQ-PHYS-FORMAT-1",
+ "run": "run-013-m4 plane sync (the F135 hand-off item 2 follow-up leg)",
+ "date": "2026-11-04",
+ "operator_order": "zai-web trace 1a1a55a658b4e201 ('issue #306 triage, the two hand-offs')",
+ "corpus_of_record": "resources main ef5c93cc35c3ff84c1ad37959212e3aecd03761d (PR #309, run-013-m4 corpus repair)",
+ "data_cut_plane": "v2 main 7ddaf8a1",
+ "bank_asset_pin": "1a5c37bcecf379cd98e83aa74aa9472920092428",
+ "law": "plane := repaired corpus of record verbatim through the wave-D serving canon (LRM strip + asset repin at the bank pin + trim); compact serialization T1 per bank (indent=None, separators (',',':'), ensure_ascii=False, no trailing newline — detected, not assumed)",
+ "writes": 8,
+ "banks": 2,
+ "gates": "B1 corpus post-merge debris ZERO (3 topic.json); B2 canon(new corpus) sha256+len == serve-table.json pins of record 8/8; B3 plane pre-identity 8/8 (current plane value == canon(corpus pre-repair) byte-exact); B4 serialization round-trip detected per bank; B5 deep-diff == exactly the 8 pinned field leaves; B6 census guard CLEAN exit-0 per touched bank, pre AND post (receipts committed)",
+ "field_pins": [
+  {
+   "bank": "igcse-physics-modular-24-unit-2",
+   "qid": "qstn_StT48QqJHnmfWTDr",
+   "pid": "qstnprt_TQjyXfgvNtgD897N",
+   "kind": "problemMd",
+   "new_value_sha256": "e39e5f0dff6ac2011b158645f948ae03f4da53f8fe28d9087158ac7d053d6456",
+   "new_value_len": 388
+  },
+  {
+   "bank": "igcse-physics-modular-24-unit-2",
+   "qid": "qstn_StT48QqJHnmfWTDr",
+   "pid": "qstnprt_TQjyXfgvNtgD897N",
+   "kind": "solutionMd",
+   "new_value_sha256": "c61e420ff779737a7875a8f12592c558f1508665d91973741295c171fd5e813f",
+   "new_value_len": 1049
+  },
+  {
+   "bank": "igcse-science-double-award-17-physics",
+   "qid": "qstn_xn2yrxCb3dpSm8nC",
+   "pid": "qstnprt_pbDWXgkbWTG2v2kz",
+   "kind": "problemMd",
+   "new_value_sha256": "616abd579b775165534e8283cd53f1287c4eea1b4fd43020d9c46b9fce5ad8e1",
+   "new_value_len": 123
+  },
+  {
+   "bank": "igcse-science-double-award-17-physics",
+   "qid": "qstn_hsjC4VDmnFjQHBKt",
+   "pid": "qstnprt_4BVkBv5wjGxqbjqJ",
+   "kind": "problemMd",
+   "new_value_sha256": "b74b3a0e802385b114568d4e1f03acbc7924775e198c92bd9b2594014f77c06b",
+   "new_value_len": 344
+  },
+  {
+   "bank": "igcse-science-double-award-17-physics",
+   "qid": "qstn_j4MgKD5BjMHMxFzG",
+   "pid": "qstnprt_6z5wkKsZtQZhbvgH",
+   "kind": "problemMd",
+   "new_value_sha256": "95eb73be9f1b379ecbb3f83e438ceb2da5563bd0dd410403e2ff873397b75781",
+   "new_value_len": 389
+  },
+  {
+   "bank": "igcse-science-double-award-17-physics",
+   "qid": "qstn_j4MgKD5BjMHMxFzG",
+   "pid": "qstnprt_6z5wkKsZtQZhbvgH",
+   "kind": "solutionMd",
+   "new_value_sha256": "a5cf230493189d0ded8898eb59059ca8fc28a51a63acbddb333e58512704a9e3",
+   "new_value_len": 1054
+  },
+  {
+   "bank": "igcse-science-double-award-17-physics",
+   "qid": "qstn_wPY4QMq4xFJSmwCY",
+   "pid": "qstnprt_HQYwsMHntbwNZn5z",
+   "kind": "problemMd",
+   "new_value_sha256": "fedfcb7de78325f53450fc580089dc6f68c03b3828ea8ae243fc918f72c74a49",
+   "new_value_len": 254
+  },
+  {
+   "bank": "igcse-science-double-award-17-physics",
+   "qid": "qstn_w9yG9HFF2TDp3Pgm",
+   "pid": "qstnprt_S72YjzqC9QDX344Z",
+   "kind": "problemMd",
+   "new_value_sha256": "d916085cfe4b12b649d3a17cf435304309626277413a0a57d80deb2349b66511",
+   "new_value_len": 646
+  }
+ ],
+ "guard_receipts": {
+  "igcse-physics-modular-24-unit-2": [
+   "run013-m4-sync-guard-pre-igcse-physics-modular-24-unit-2.json",
+   "run013-m4-sync-guard-post-igcse-physics-modular-24-unit-2.json"
+  ],
+  "igcse-science-double-award-17-physics": [
+   "run013-m4-sync-guard-pre-igcse-science-double-award-17-physics.json",
+   "run013-m4-sync-guard-post-igcse-science-double-award-17-physics.json"
+  ]
+ },
+ "corpus_dossier": "syllabai-resources scripts/oeq_phys_run013m4/ (census.json, evidence.json, transforms.json, run-report.json, serve-table.json, repair_m4.py, ledger.json)"
+}
