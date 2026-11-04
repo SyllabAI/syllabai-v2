@@ -1,0 +1,27 @@
+version: 1
+task:
+  id: T-TEACH-REPORTS-1
+  title: "Teacher mode plan Phase 3 slice — /teacher/reports: the per-student and per-topic CSV exports plus the printable per-class summary, composed client-side over the EXISTING read-only class-intelligence surface (GET /api/v1/teacher/class/overview + /learners, TEACHER/ADMIN-gated). Zero new API bytes. Term grouping is NOT simulated: no term entity exists in core — exports stamp the evidence window (recentActivity.windowStart) and one generated-at instant per load."
+  owner: "operator-direct (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5) — claimed under the operator chat order 'Okay, proceed' (trace 1a1a7c9d0d12c755, executing the approved fix queue); the teacher-Phase-3 item is the only queue item left lane-less after the parallel lanes closed #706 (T-TUTOR-FIX-1), #713 (T-AUDIT-TIER1 runs 003-004) and the UX P1/P2 batch"
+  status: RUN-001 # branch t-teacher-reports-1/run-001; PR opened, NOT self-merged (the T-TUTOR-FIX-1 fence posture)
+  claimed_at: "2026-11-05"
+  priority: P2
+  wave: teacher-phase3
+  deps: [T-MIG-053, T-MIG-052]
+  endpoints:
+  - GET /api/v1/teacher/class/overview (consumed read-only)
+  - GET /api/v1/teacher/class/learners (consumed read-only)
+  service_status: none new — the page reads the two live aggregation views only
+  scope:
+    allowed:
+    - apps/hub/src/app/teacher/reports/page.tsx (NEW)
+    - apps/hub/src/app/teacher/reports/reports-client.tsx (NEW)
+    - apps/hub/src/lib/teacher/report-export.ts (NEW, pure CSV builders)
+    - apps/hub/src/lib/teacher/report-export.test.ts (NEW, bun pins)
+    - apps/hub/src/components/teacher/teacher-nav.tsx (ONE tab entry + its icon import)
+    - .syllabai/tasks/T-TEACH-REPORTS-1.yaml; .syllabai/receipts/T-TEACH-REPORTS-1/**; .syllabai/worklog.md (append-only)
+    forbidden:
+    - any apps/api byte; any contracts/db byte; any new endpoint or parameter
+    - inventing a term entity, a term picker, or fabricated aggregates (unmeasured exports EMPTY — never 0, never "N/A")
+    - a mastery re-tuning or any engine/CONFIG surface (the C6 posture: engineOf stays the frozen defaults)
+    - golden captures; env writes against prod; self-merge
