@@ -951,7 +951,10 @@ export function TutorChat({
                           type="button"
                           onClick={() => send(chip)}
                           disabled={busyHere}
-                          className="rounded-full border bg-background px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground disabled:opacity-50"
+                          // t-ui-polish run-006: follow-up chips speak the
+                          // house hover voice (border-primary/60), not the
+                          // legacy /40.
+                          className="rounded-full border bg-background px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground disabled:opacity-50"
                         >
                           {chip}
                         </button>
@@ -1111,7 +1114,8 @@ function Welcome({
             type="button"
             onClick={() => onPick(s.prompt)}
             title={s.prompt}
-            className="inline-flex items-center gap-1.5 rounded-full border bg-card px-3.5 py-1.5 text-xs text-muted-foreground shadow-sm transition-colors hover:border-primary/40 hover:text-foreground"
+            // t-ui-polish run-006: starter pills join the same house hover voice.
+            className="inline-flex items-center gap-1.5 rounded-full border bg-card px-3.5 py-1.5 text-xs text-muted-foreground shadow-sm transition-colors hover:border-primary/60 hover:text-foreground"
           >
             <s.icon className="size-3.5" aria-hidden />
             {s.label}

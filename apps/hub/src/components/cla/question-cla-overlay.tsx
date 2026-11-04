@@ -471,10 +471,13 @@ export function QuestionClaOverlay({
                   onClick={() => setTargetId(t.hubPartId)}
                   aria-pressed={target?.hubPartId === t.hubPartId}
                   className={cn(
+                    // t-ui-polish run-006: the overlay's toggle pills and
+                    // thread rows speak the house hover voice
+                    // (border-primary/60), not the legacy /40.
                     "rounded-full border px-2 py-0.5 text-[11px] font-medium leading-none transition-colors",
                     target?.hubPartId === t.hubPartId
                       ? "border-primary bg-primary text-primary-foreground"
-                      : "border-border text-muted-foreground hover:border-primary/40",
+                      : "border-border text-muted-foreground hover:border-primary/60",
                   )}
                 >
                   {t.label}
@@ -557,7 +560,7 @@ export function QuestionClaOverlay({
                   renamingId === t.id ? (
                     <div
                       key={t.id}
-                      className="flex items-center gap-1 rounded-lg border border-primary/40 bg-background p-1"
+                      className="flex items-center gap-1 rounded-lg border border-primary/60 bg-background p-1"
                     >
                       <Input
                         autoFocus
@@ -583,7 +586,7 @@ export function QuestionClaOverlay({
                   ) : (
                     <div
                       key={t.id}
-                      className="group/item flex items-center rounded-lg border bg-background/60 transition-colors hover:border-primary/40 hover:bg-primary/5"
+                      className="group/item flex items-center rounded-lg border bg-background/60 transition-colors hover:border-primary/60 hover:bg-primary/5"
                     >
                       <button
                         type="button"
@@ -757,7 +760,7 @@ export function QuestionClaOverlay({
                   "rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors",
                   freeMode === m
                     ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border text-muted-foreground hover:border-primary/40",
+                    : "border-border text-muted-foreground hover:border-primary/60",
                 )}
               >
                 {m === "EXPLAIN" ? "Explain" : "Hint"}

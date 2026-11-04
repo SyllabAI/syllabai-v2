@@ -379,10 +379,12 @@ export function AssistantClient({
                 aria-selected={kind === "SPEC_TOPIC"}
                 onClick={() => switchKind("SPEC_TOPIC")}
                 className={cn(
+                  // t-ui-polish run-006: the assistant's toggle pills speak the
+                  // house hover voice (border-primary/60), not the legacy /40.
                   "inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors",
                   kind === "SPEC_TOPIC"
                     ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border text-muted-foreground hover:border-primary/40",
+                    : "border-border text-muted-foreground hover:border-primary/60",
                 )}
               >
                 <Sparkles className="size-3" aria-hidden /> Topic
@@ -398,7 +400,7 @@ export function AssistantClient({
                   "inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
                   kind === "EXAM_QUESTION"
                     ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border text-muted-foreground hover:border-primary/40",
+                    : "border-border text-muted-foreground hover:border-primary/60",
                 )}
               >
                 <FileQuestion className="size-3" aria-hidden /> Question
@@ -528,7 +530,7 @@ export function AssistantClient({
                   "flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors",
                   mode === m.value
                     ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border text-muted-foreground hover:border-primary/40",
+                    : "border-border text-muted-foreground hover:border-primary/60",
                 )}
               >
                 {m.value === "HINT" && <Lightbulb className="size-3" aria-hidden />}

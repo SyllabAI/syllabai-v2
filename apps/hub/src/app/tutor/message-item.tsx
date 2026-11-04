@@ -148,7 +148,9 @@ export function MessageItem({
       <div className="group flex justify-end">
         <div className="flex max-w-[85%] flex-col items-end gap-1">
           {editing ? (
-            <div className="w-full min-w-64 space-y-2 rounded-lg border border-primary/40 bg-background p-2.5">
+            /* t-ui-polish run-006: the inline edit shell speaks the house
+               active voice (border-primary/60), not the legacy /40. */
+            <div className="w-full min-w-64 space-y-2 rounded-lg border border-primary/60 bg-background p-2.5">
               <Textarea
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
@@ -365,7 +367,7 @@ export function MessageItem({
                   <CitationPaperLink
                     key={c.index}
                     href={c.url}
-                    className={`${chipClass} transition-colors hover:border-primary/40`}
+                    className={`${chipClass} transition-colors hover:border-primary/60`}
                     title={c.label}
                   >
                     {chip}
