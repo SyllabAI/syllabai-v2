@@ -23,7 +23,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { Filter, GraduationCap, Layers, ListChecks, Lock } from "lucide-react";
+import {
+  BookOpen,
+  ChevronDown,
+  ClipboardList,
+  Filter,
+  GraduationCap,
+  Layers,
+  ListChecks,
+  Lock,
+  SquareStack,
+} from "lucide-react";
 import type { SpecApplicability } from "@/lib/contracts";
 import type { SpecStatementVM } from "@/lib/spec-statement";
 
@@ -34,6 +44,26 @@ export interface SpecPointVM {
    *  bundle string (null items = no structure, render `text` as-is). */
   statement: SpecStatementVM;
   applicability: SpecApplicability | null;
+  /** T-SPECLINK-1: resources joined from of-record anchors — id lists into
+   *  the legend (null = nothing anchored to this statement). */
+  res?: SpecPointResources | null;
+}
+
+/** T-SPECLINK-1 legend: entries resolved once at build; hrefs carry the
+ *  course prefix. */
+export interface SpecResourceLegend {
+  notes: { id: string; title: string; href: string }[];
+  sets: { slug: string; name: string; setName: string | null; count: number; href: string }[];
+  decks: { slug: string; title: string; count: number; href: string }[];
+}
+
+export interface SpecPointResources {
+  /** revision-note ids (legend.notes) */
+  n: string[];
+  /** exam-question set slugs (legend.sets) */
+  q: string[];
+  /** flashcard deck slugs (legend.decks) */
+  f: string[];
 }
 
 export interface SpecSubtopicVM {
@@ -57,6 +87,7 @@ interface Option {
 interface Props {
   topics: SpecTopicVM[];
   totalPoints: number;
+  legend?: SpecResourceLegend;
 }
 
 /** "1C" → "Paper 1C"; "4MA1/1F" passes through verbatim. */
@@ -93,10 +124,28 @@ function matches(app: SpecApplicability | null, paper: string, unit: string, tie
   return true;
 }
 
-export function SpecificationExplorer({ topics, totalPoints }: Props) {
+export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
   const [paper, setPaper] = useState(ALL);
   const [unit, setUnit] = useState(ALL);
   const [tier, setTier] = useState(ALL);
+  /** T-SPECLINK-1: the one spec point whose resource panel is open. */
+  const [openCode, setOpenCode] = useState<string | null>(null);
+
+  const noteById = useMemo(() => {
+    const m = new Map<string, SpecResourceLegend["notes"][number]>();
+    for (const x of legend?.notes ?? []) m.set(x.id, x);
+    return m;
+  }, [legend]);
+  const setBySlug = useMemo(() => {
+    const m = new Map<string, SpecResourceLegend["sets"][number]>();
+    for (const x of legend?.sets ?? []) m.set(x.slug, x);
+    return m;
+  }, [legend]);
+  const deckBySlug = useMemo(() => {
+    const m = new Map<string, SpecResourceLegend["decks"][number]>();
+    for (const x of legend?.decks ?? []) m.set(x.slug, x);
+    return m;
+  }, [legend]);
 
   const filterActive = paper !== ALL || unit !== ALL || tier !== ALL;
 
@@ -184,6 +233,94 @@ export function SpecificationExplorer({ topics, totalPoints }: Props) {
     </div>
   );
 
+  /** T-SPECLINK-1: the resource panel for one spec point (only rendered
+   *  when at least one of-record anchored resource exists). */
+  const resourceCount = (r: SpecPointResources) => r.n.length + r.q.length + r.f.length;
+
+  const renderResources = (p: SpecPointVM) => {
+    const r = p.res;
+    if (!r || resourceCount(r) === 0) return null;
+    const open = openCode === p.code;
+    const notes = r.n.map((id) => noteById.get(id)).filter(Boolean);
+    const sets = r.q.map((s) => setBySlug.get(s)).filter(Boolean);
+    const decks = r.f.map((d) => deckBySlug.get(d)).filter(Boolean);
+    return (
+      <div className="w-full">
+        <button
+          type="button"
+          onClick={() => setOpenCode(open ? null : p.code)}
+          aria-expanded={open}
+          className="inline-flex shrink-0 items-center gap-1 rounded-md border px-2 py-0.5 text-[11px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+        >
+          <BookOpen className="size-3" aria-hidden />
+          {resourceCount(r)} resource{resourceCount(r) === 1 ? "" : "s"}
+          <ChevronDown className={`size-3 transition-transform ${open ? "rotate-180" : ""}`} aria-hidden />
+        </button>
+        {open && (
+          <div className="mt-2 grid gap-3 rounded-md border bg-muted/30 p-3 text-sm sm:grid-cols-3">
+            <div>
+              <p className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
+                <BookOpen className="size-3.5" aria-hidden /> Revision notes
+              </p>
+              {notes.length === 0 ? (
+                <p className="text-xs text-muted-foreground">None yet</p>
+              ) : (
+                <ul className="space-y-1">
+                  {notes.map((x) => (
+                    <li key={x!.id}>
+                      <a href={x!.href} className="text-sm text-foreground underline-offset-2 hover:underline">
+                        {x!.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div>
+              <p className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
+                <ClipboardList className="size-3.5" aria-hidden /> Exam questions
+              </p>
+              {sets.length === 0 ? (
+                <p className="text-xs text-muted-foreground">None yet</p>
+              ) : (
+                <ul className="space-y-1">
+                  {sets.map((x) => (
+                    <li key={x!.slug}>
+                      <a href={x!.href} className="text-sm text-foreground underline-offset-2 hover:underline">
+                        {x!.name}
+                        {x!.setName ? <span className="text-muted-foreground"> · {x!.setName}</span> : null}
+                      </a>
+                      <span className="ml-1 text-xs text-muted-foreground">{x!.count} Q</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div>
+              <p className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
+                <SquareStack className="size-3.5" aria-hidden /> Flashcards
+              </p>
+              {decks.length === 0 ? (
+                <p className="text-xs text-muted-foreground">None yet</p>
+              ) : (
+                <ul className="space-y-1">
+                  {decks.map((x) => (
+                    <li key={x!.slug}>
+                      <a href={x!.href} className="text-sm text-foreground underline-offset-2 hover:underline">
+                        {x!.title}
+                      </a>
+                      <span className="ml-1 text-xs text-muted-foreground">{x!.count} cards</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div className="space-y-4">
       {chipsSeen === 0 ? (
@@ -263,47 +400,50 @@ export function SpecificationExplorer({ topics, totalPoints }: Props) {
                         return (
                           <li
                             key={p.code}
-                            className="flex flex-col gap-1 rounded-md px-2 py-1.5 hover:bg-muted/50 sm:flex-row sm:items-start sm:gap-3"
+                            className="flex flex-col gap-1 rounded-md px-2 py-1.5 hover:bg-muted/50"
                           >
-                            <Badge variant="outline" className="shrink-0 font-mono text-[10px]">
-                              {p.code}
-                            </Badge>
-                            {p.statement.items ? (
-                              <div className="min-w-0 flex-1 text-sm leading-relaxed">
-                                {p.statement.lead && <p>{p.statement.lead}</p>}
-                                <ul className="ml-4 mt-1 list-disc space-y-1 marker:text-muted-foreground/60">
-                                  {p.statement.items.map((lines, i) => (
-                                    <li key={i}>
-                                      {lines.map((line, j) =>
-                                        j === 0 ? (
-                                          <span key={j} className="block">{line}</span>
-                                        ) : (
-                                          <span key={j} className="mt-0.5 block pl-4">{line}</span>
-                                        ),
-                                      )}
-                                    </li>
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-3">
+                              <Badge variant="outline" className="shrink-0 font-mono text-[10px]">
+                                {p.code}
+                              </Badge>
+                              {p.statement.items ? (
+                                <div className="min-w-0 flex-1 text-sm leading-relaxed">
+                                  {p.statement.lead && <p>{p.statement.lead}</p>}
+                                  <ul className="ml-4 mt-1 list-disc space-y-1 marker:text-muted-foreground/60">
+                                    {p.statement.items.map((lines, i) => (
+                                      <li key={i}>
+                                        {lines.map((line, j) =>
+                                          j === 0 ? (
+                                            <span key={j} className="block">{line}</span>
+                                          ) : (
+                                            <span key={j} className="mt-0.5 block pl-4">{line}</span>
+                                          ),
+                                        )}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ) : (
+                                <span className="min-w-0 flex-1 text-sm leading-relaxed">{p.text}</span>
+                              )}
+                              {chips.length > 0 && (
+                                <span
+                                  className="flex shrink-0 flex-wrap gap-1"
+                                  title={p.applicability?.rule ?? undefined}
+                                >
+                                  {chips.map((c) => (
+                                    <Badge
+                                      key={c}
+                                      variant="secondary"
+                                      className="cursor-help text-[10px]"
+                                    >
+                                      {c}
+                                    </Badge>
                                   ))}
-                                </ul>
-                              </div>
-                            ) : (
-                              <span className="min-w-0 flex-1 text-sm leading-relaxed">{p.text}</span>
-                            )}
-                            {chips.length > 0 && (
-                              <span
-                                className="flex shrink-0 flex-wrap gap-1"
-                                title={p.applicability?.rule ?? undefined}
-                              >
-                                {chips.map((c) => (
-                                  <Badge
-                                    key={c}
-                                    variant="secondary"
-                                    className="cursor-help text-[10px]"
-                                  >
-                                    {c}
-                                  </Badge>
-                                ))}
-                              </span>
-                            )}
+                                </span>
+                              )}
+                            </div>
+                            {renderResources(p)}
                           </li>
                         );
                       })}
