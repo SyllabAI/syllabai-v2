@@ -256,7 +256,7 @@ export function TopicTree({
 
                   return (
                     <li key={sub.code}>
-                      {nestedItems.length > 1 && href ? (
+                      {nestedItems.length > 1 ? (
                         <>
                           <div
                             className={cn(
@@ -264,20 +264,31 @@ export function TopicTree({
                               isActive && "bg-primary/10",
                             )}
                           >
-                            <Link
-                              href={href}
-                              aria-current={isActive ? "true" : undefined}
-                              className={cn(
-                                // flex: the count span must sit beside the title,
-                                // not flow inline after it ("matter5 notes", P2-8)
-                                "flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-1.5 text-[13px] transition-colors",
-                                isActive
-                                  ? "font-medium text-primary"
-                                  : "text-foreground/75 hover:bg-muted hover:text-foreground",
-                              )}
-                            >
-                              {row}
-                            </Link>
+                            {href ? (
+                              <Link
+                                href={href}
+                                aria-current={isActive ? "true" : undefined}
+                                className={cn(
+                                  // flex: the count span must sit beside the title,
+                                  // not flow inline after it ("matter5 notes", P2-8)
+                                  "flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-1.5 text-[13px] transition-colors",
+                                  isActive
+                                    ? "font-medium text-primary"
+                                    : "text-foreground/75 hover:bg-muted hover:text-foreground",
+                                )}
+                              >
+                                {row}
+                              </Link>
+                            ) : (
+                              // D3: multi-set rows carry no default target — the
+                              // row counts EVERY set's questions, so silently
+                              // opening the first one mislinked it. Expand instead.
+                              <div
+                                className="flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-1.5 text-[13px] text-foreground/75"
+                              >
+                                {row}
+                              </div>
+                            )}
                             <button
                               type="button"
                               onClick={() => toggleSub(sub.code)}

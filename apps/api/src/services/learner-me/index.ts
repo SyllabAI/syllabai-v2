@@ -1185,6 +1185,22 @@ interface AssignmentLists {
  * target = members only — the membership rows are the authorization, no
  * membership row, no classroom work).
  */
+/**
+ * Teacher-onboarding probe fixtures (dashboard UX review 2026-11-04, item 3 —
+ * the source fix). Join-code probe rows ("probe late asprobe_1790628651",
+ * seeded with a bogus epoch-0 dueAt) are QA artefacts whose class_id is NULL
+ * — and the V49 visibility law makes NULL-class rows visible to EVERY
+ * enabled student, so the probe account's homework leaked into every live
+ * agenda and assignment list. The hub already filters these presentation-side
+ * (apps/hub set-work-card.tsx, same predicate); this filter stops the learner
+ * surfaces ISSUING them at all. A real assignment titled e.g. "Temperature
+ * probes" survives (no word-boundary slug; not at string start).
+ */
+const SYNTHETIC_SLUG = /asprobe_\d+/i;
+function isSyntheticTitle(title: string): boolean {
+  return SYNTHETIC_SLUG.test(title) || /^probe\s/i.test(title);
+}
+
 async function fetchAssignmentLists(
   deps: FlashcardRatingRecordDeps,
   learnerId: string,
@@ -1218,7 +1234,9 @@ async function fetchAssignmentLists(
       limit 1`) as unknown as Array<{ one: number }>;
     if (memberRows.length > 0) visible.push(a);
   }
-  return { mine, visible };
+  // Probe fixtures out at the source (see isSyntheticTitle above) — both the
+  // list endpoint and the agenda re-order inherit this filter.
+  return { mine, visible: visible.filter((a) => !isSyntheticTitle(a.title)) };
 }
 
 /**

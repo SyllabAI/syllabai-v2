@@ -1,0 +1,735 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_y9WPd7HxNXd6W7wx",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "00a2c97f68d0a97435e44369e84d6018daae4c5f111d3b53598a2532e0666a53",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "packageId": "igcse-physics::rn_y9WPd7HxNXd6W7wx",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L1::Q1",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L1",
+      "stem": "What is the aim of this field-mapping investigation?",
+      "misconceptionClass": "aim recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "to plot the field pattern for a bar magnet and between two bar magnets",
+          "correct": true,
+          "explanation": "Both regions — single magnet and the two-magnet gap — are the targets.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "to measure the strength of Earth's magnetic field",
+          "correct": false,
+          "explanation": "Earth's field is a nuisance here, not the measurement.",
+          "misconception": "aim swap"
+        },
+        {
+          "key": "C",
+          "text": "to find which magnet is strongest",
+          "correct": false,
+          "explanation": "No strength comparison is made — only the pattern is mapped.",
+          "misconception": "aim swap"
+        },
+        {
+          "key": "D",
+          "text": "to induce magnetism in the compass needle",
+          "correct": false,
+          "explanation": "The needle is the sensor, not the sample.",
+          "misconception": "role reversal"
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L1::Q2",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L1",
+      "stem": "Which instrument shows the direction of the field at a point?",
+      "misconceptionClass": "equipment recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a force meter",
+          "correct": false,
+          "explanation": "Forces are not measured — directions are plotted.",
+          "misconception": "equipment swap"
+        },
+        {
+          "key": "B",
+          "text": "a small plotting compass",
+          "correct": true,
+          "explanation": "Its needle aligns with the local field line.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a stopwatch",
+          "correct": false,
+          "explanation": "Nothing here is timed.",
+          "misconception": "equipment swap"
+        },
+        {
+          "key": "D",
+          "text": "a voltmeter",
+          "correct": false,
+          "explanation": "No electrical quantity is measured in this practical.",
+          "misconception": "equipment swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L1::Q3",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L1",
+      "stem": "Why must each compass arrow be drawn exactly where the compass sits?",
+      "misconceptionClass": "method design",
+      "options": [
+        {
+          "key": "A",
+          "text": "because the field changes while you watch",
+          "correct": false,
+          "explanation": "A static magnet's field is steady.",
+          "misconception": "impossible cause"
+        },
+        {
+          "key": "B",
+          "text": "to keep the paper flat",
+          "correct": false,
+          "explanation": "Drawing position has nothing to do with paper flatness.",
+          "misconception": "irrelevant cause"
+        },
+        {
+          "key": "C",
+          "text": "the arrow is the tangent to the field line at that point",
+          "correct": true,
+          "explanation": "Each reading samples one local direction of the field.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "so the compass does not demagnetise the magnets",
+          "correct": false,
+          "explanation": "The compass is far too weak to demagnetise the magnets.",
+          "misconception": "impossible cause"
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L1::Q4",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L1",
+      "stem": "A student maps with a large compass nearly as long as the magnet. Why is this poor design?",
+      "misconceptionClass": "design critique",
+      "options": [
+        {
+          "key": "A",
+          "text": "large compasses lose their magnetism quickly",
+          "correct": false,
+          "explanation": "Size does not change the needle's magnetisation.",
+          "misconception": "property invention"
+        },
+        {
+          "key": "B",
+          "text": "the needle would point at the ceiling",
+          "correct": false,
+          "explanation": "Nothing in the setup gives a vertical force.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "C",
+          "text": "large compasses only work near the poles",
+          "correct": false,
+          "explanation": "A compass works anywhere the field is strong enough.",
+          "misconception": "scope invention"
+        },
+        {
+          "key": "D",
+          "text": "a long needle averages the field over many points instead of sampling one",
+          "correct": true,
+          "explanation": "Direction-at-a-point needs a small sensor.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L1::Q5",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L1",
+      "stem": "Which list of kit is sufficient: bar magnets, plotting compass, paper, pencil?",
+      "misconceptionClass": "equipment recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "bar magnets, plotting compass, paper, pencil",
+          "correct": true,
+          "explanation": "These four cover source, sensor, canvas and record.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "iron filings, water bath, thermometer",
+          "correct": false,
+          "explanation": "That kit belongs to other practicals entirely.",
+          "misconception": "practical swap"
+        },
+        {
+          "key": "C",
+          "text": "ammeter, wires, power supply",
+          "correct": false,
+          "explanation": "No circuit is involved in this magnetic-field practical.",
+          "misconception": "practical swap"
+        },
+        {
+          "key": "D",
+          "text": "stopwatch and ticker tape",
+          "correct": false,
+          "explanation": "Nothing moves in a measurable time way here.",
+          "misconception": "equipment swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L1::Q6",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L1",
+      "stem": "State the two field patterns this practical is asked to plot.",
+      "misconceptionClass": "aim recall",
+      "kind": "recall",
+      "modelAnswer": "The field pattern for a single permanent bar magnet, and the field pattern in the region between two bar magnets.",
+      "keywords": [
+        "bar",
+        "magnet",
+        "between",
+        "pattern"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L1::Q7",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L1",
+      "stem": "State the role of the plotting compass in the method.",
+      "misconceptionClass": "equipment recall",
+      "kind": "recall",
+      "modelAnswer": "The compass needle aligns with the local field, so its direction marks the field line direction at that point.",
+      "keywords": [
+        "needle",
+        "aligns",
+        "field",
+        "direction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L1::Q8",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L1",
+      "stem": "Explain why the plotted arrows from many compass positions join into smooth curves.",
+      "misconceptionClass": "method reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Each arrow is the local field direction, and the field direction changes smoothly from point to point. Stepping the compass along the previous arrow keeps sampling the next tangent, so the chain of arrows traces the continuous curve that is the field line.",
+      "keywords": [
+        "direction",
+        "smoothly",
+        "tangent",
+        "curve"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L1::Q9",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L1",
+      "stem": "A student's map of a single bar magnet shows arrows pointing INTO the north pole. What has gone wrong and how is it fixed?",
+      "misconceptionClass": "error analysis",
+      "kind": "application",
+      "modelAnswer": "The arrows are reversed: field lines leave the north pole, so the needle's north end points away from it. The student drew the SOUTH end of the needle instead — replotting with the arrow along the needle's marked north end fixes the map.",
+      "keywords": [
+        "reversed",
+        "north",
+        "needle",
+        "replotting"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L2::Q1",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L2",
+      "stem": "What is done with the compass after marking its needle-end dots?",
+      "misconceptionClass": "method recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "it is turned around to point backwards",
+          "correct": false,
+          "explanation": "The needle aligns with the field by itself; no manual turning.",
+          "misconception": "procedure invention"
+        },
+        {
+          "key": "B",
+          "text": "it is moved so its tail sits on the far dot, then new dots are marked",
+          "correct": true,
+          "explanation": "The leapfrog step extends the dot-chain along one line.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "it is lifted away to check the reading again",
+          "correct": false,
+          "explanation": "Lifting it away loses the tangent continuation.",
+          "misconception": "procedure inversion"
+        },
+        {
+          "key": "D",
+          "text": "it is swapped for iron filings",
+          "correct": false,
+          "explanation": "Filings are a different mapping method entirely.",
+          "misconception": "method swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L2::Q2",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L2",
+      "stem": "Why start new dot-chains from several different points near the magnet?",
+      "misconceptionClass": "coverage reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because one reading is too quick to time",
+          "correct": false,
+          "explanation": "Nothing is timed in this practical.",
+          "misconception": "irrelevant reason"
+        },
+        {
+          "key": "B",
+          "text": "to make the magnet lose strength slowly",
+          "correct": false,
+          "explanation": "Mapping does not weaken the magnet.",
+          "misconception": "impossible reason"
+        },
+        {
+          "key": "C",
+          "text": "different starting points follow different field lines, filling in the pattern",
+          "correct": true,
+          "explanation": "One chain is one line; the pattern needs many.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "to check the compass battery",
+          "correct": false,
+          "explanation": "A plotting compass has no battery.",
+          "misconception": "absurd reason"
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L2::Q3",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L2",
+      "stem": "In which direction is the arrow drawn on a finished dot-chain?",
+      "misconceptionClass": "convention recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "into the north pole",
+          "correct": false,
+          "explanation": "That reverses the field-line convention.",
+          "misconception": "convention inversion"
+        },
+        {
+          "key": "B",
+          "text": "always towards the paper edge",
+          "correct": false,
+          "explanation": "Arrows follow the field, not the paper geometry.",
+          "misconception": "irrelevant rule"
+        },
+        {
+          "key": "C",
+          "text": "no arrow is drawn on field lines",
+          "correct": false,
+          "explanation": "Direction arrows are essential to the map.",
+          "misconception": "omission claim"
+        },
+        {
+          "key": "D",
+          "text": "away from the magnet's north pole, along the chain",
+          "correct": true,
+          "explanation": "Field-line arrows leave north poles.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L2::Q4",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L2",
+      "stem": "The dot-chain wobbles off the smooth curve after many leapfrog steps. What is the most likely cause?",
+      "misconceptionClass": "error analysis",
+      "options": [
+        {
+          "key": "A",
+          "text": "small misalignments of the compass accumulate step by step",
+          "correct": true,
+          "explanation": "Each step adds a little angle error to the chain.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the magnet reversed its poles during the mapping",
+          "correct": false,
+          "explanation": "Permanent magnets do not flip poles mid-practical.",
+          "misconception": "impossible cause"
+        },
+        {
+          "key": "C",
+          "text": "the pencil lines were too dark",
+          "correct": false,
+          "explanation": "Ink darkness cannot bend a field line.",
+          "misconception": "irrelevant cause"
+        },
+        {
+          "key": "D",
+          "text": "the compass needle lost its magnetism",
+          "correct": false,
+          "explanation": "A dead needle gives random readings, not a slow wobble.",
+          "misconception": "wrong diagnosis"
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L2::Q5",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L2",
+      "stem": "When mapping between two magnets with opposite poles facing, what should the central chains show?",
+      "misconceptionClass": "pattern prediction",
+      "options": [
+        {
+          "key": "A",
+          "text": "randomly crossing curves",
+          "correct": false,
+          "explanation": "Field lines never cross anywhere.",
+          "misconception": "crossing myth"
+        },
+        {
+          "key": "B",
+          "text": "straight, parallel, equally spaced lines across the gap",
+          "correct": true,
+          "explanation": "The central gap field is uniform.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "circles centred on the gap",
+          "correct": false,
+          "explanation": "Circles belong to current-carrying wires.",
+          "misconception": "pattern swap"
+        },
+        {
+          "key": "D",
+          "text": "lines that never enter the gap",
+          "correct": false,
+          "explanation": "The gap is exactly where the field lines run.",
+          "misconception": "empty-gap claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L2::Q6",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L2",
+      "stem": "State the leapfrog rule of the dot method.",
+      "misconceptionClass": "method recall",
+      "kind": "recall",
+      "modelAnswer": "Move the compass so its tail end sits on the last marked dot before marking the next pair of dots.",
+      "keywords": [
+        "compass",
+        "tail",
+        "dot",
+        "marking"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L2::Q7",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L2",
+      "stem": "State how a completed dot-chain is turned into a field line.",
+      "misconceptionClass": "method recall",
+      "kind": "recall",
+      "modelAnswer": "Join the dots with a smooth curve and add an arrowhead pointing away from the north pole.",
+      "keywords": [
+        "join",
+        "dots",
+        "curve",
+        "arrow"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L2::Q8",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L2",
+      "stem": "Explain why the leapfrogging keeps the chain on ONE field line instead of wandering onto a neighbour.",
+      "misconceptionClass": "method reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Placing the compass tail on the previous dot makes the next reading continue the direction recorded there, so each new dot is a small step along the same tangent. The chain therefore follows the smooth change of direction of one field line, rather than jumping to a neighbouring line where the field points elsewhere.",
+      "keywords": [
+        "tangent",
+        "direction",
+        "step",
+        "line"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L2::Q9",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L2",
+      "stem": "A class maps the two-magnet gap and their central chains are curved, not straight. Suggest the magnet fault that best explains it.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The most likely fault is that the facing poles are not opposite — one magnet is turned so like poles face, giving a neutral-point pattern instead of a uniform gap. Swapping one magnet round so opposite poles face should straighten the central chains into parallel, equally spaced lines.",
+      "keywords": [
+        "poles",
+        "opposite",
+        "uniform",
+        "straight"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L3::Q1",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L3",
+      "stem": "What does the crowding of lines near a pole tell you?",
+      "misconceptionClass": "density reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the magnet is warm there",
+          "correct": false,
+          "explanation": "Temperature plays no role in the map.",
+          "misconception": "irrelevant cause"
+        },
+        {
+          "key": "B",
+          "text": "the compass was moved too slowly",
+          "correct": false,
+          "explanation": "Mapping speed does not change the pattern.",
+          "misconception": "method confusion"
+        },
+        {
+          "key": "C",
+          "text": "the field is strongest there",
+          "correct": true,
+          "explanation": "Dense chains mean a strong field.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the field is weakest there",
+          "correct": false,
+          "explanation": "It is the opposite: spacing widens as the field weakens.",
+          "misconception": "density inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L3::Q2",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L3",
+      "stem": "Which feature of the two-magnet map is the evidence for a uniform field?",
+      "misconceptionClass": "evidence reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "curved lines at the paper edge",
+          "correct": false,
+          "explanation": "Edge curves are fringing and Earth-field effects.",
+          "misconception": "evidence swap"
+        },
+        {
+          "key": "B",
+          "text": "the number of magnets used",
+          "correct": false,
+          "explanation": "The pattern, not the count, is the evidence.",
+          "misconception": "evidence swap"
+        },
+        {
+          "key": "C",
+          "text": "arrows pointing both ways on one line",
+          "correct": false,
+          "explanation": "Each line carries one direction only.",
+          "misconception": "impossible feature"
+        },
+        {
+          "key": "D",
+          "text": "straight, parallel, equally spaced central lines",
+          "correct": true,
+          "explanation": "That drawing pattern is the uniform-field signature.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L3::Q3",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L3",
+      "stem": "Why do the outer chains of the single-magnet map bend slightly away from the ideal picture?",
+      "misconceptionClass": "error analysis",
+      "options": [
+        {
+          "key": "A",
+          "text": "Earth's magnetic field competes with the weak outer field of the magnet",
+          "correct": true,
+          "explanation": "Far from the poles the magnet's field is comparable to Earth's.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the pencil was blunt",
+          "correct": false,
+          "explanation": "Drawing quality cannot bend a compass needle.",
+          "misconception": "irrelevant cause"
+        },
+        {
+          "key": "C",
+          "text": "the magnet's field changes over minutes",
+          "correct": false,
+          "explanation": "A permanent magnet's field is steady during the practical.",
+          "misconception": "impossible cause"
+        },
+        {
+          "key": "D",
+          "text": "the compass needle is too light",
+          "correct": false,
+          "explanation": "Needle mass does not bend the alignment.",
+          "misconception": "wrong mechanism"
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L3::Q4",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L3",
+      "stem": "A student's central chains in the two-magnet gap are straight but NOT parallel, fanning out slightly. What does the fan shape indicate?",
+      "misconceptionClass": "pattern reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "the paper was moved during plotting",
+          "correct": false,
+          "explanation": "Moving paper shifts the whole map, not a selective fan.",
+          "misconception": "cause confusion"
+        },
+        {
+          "key": "B",
+          "text": "the field in that region is not uniform",
+          "correct": true,
+          "explanation": "Uniformity requires parallel lines, not just straight ones.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the field there is uniform but weak",
+          "correct": false,
+          "explanation": "Fanning means the direction varies — non-uniform.",
+          "misconception": "property confusion"
+        },
+        {
+          "key": "D",
+          "text": "the magnets are too strong",
+          "correct": false,
+          "explanation": "Strength changes spacing, not straightness.",
+          "misconception": "cause confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L3::Q5",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L3",
+      "stem": "Which improvement most reduces chain wobble?",
+      "misconceptionClass": "improvement recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "plotting faster",
+          "correct": false,
+          "explanation": "Speed adds carelessness, not accuracy.",
+          "misconception": "improvement inversion"
+        },
+        {
+          "key": "B",
+          "text": "using a thicker pencil",
+          "correct": false,
+          "explanation": "Line thickness is cosmetic here.",
+          "misconception": "irrelevant change"
+        },
+        {
+          "key": "C",
+          "text": "restarting chains from a fresh compass placement every few steps",
+          "correct": true,
+          "explanation": "Fresh starts stop angle errors accumulating.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "using a longer compass",
+          "correct": false,
+          "explanation": "Longer needles average over more field, worsening point sampling.",
+          "misconception": "improvement inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L3::Q6",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L3",
+      "stem": "State two features read from the single-magnet map.",
+      "misconceptionClass": "analysis recall",
+      "kind": "recall",
+      "modelAnswer": "Arrows leave the north pole and enter the south pole, and the lines crowd together near the poles where the field is strongest.",
+      "keywords": [
+        "arrows",
+        "north",
+        "crowd",
+        "strongest"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L3::Q7",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L3",
+      "stem": "State the drawing signature of the uniform field between opposite poles.",
+      "misconceptionClass": "analysis recall",
+      "kind": "recall",
+      "modelAnswer": "The central lines are straight, parallel and equally spaced.",
+      "keywords": [
+        "straight",
+        "parallel",
+        "equally",
+        "spaced"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L3::Q8",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L3",
+      "stem": "Explain why chains plotted far from the magnet are the least trustworthy part of the map.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Far from the poles the magnet's field is weak, so Earth's magnetic field is a comparable competitor: the needle aligns with the resultant of the two rather than with the magnet's field alone. The compass also responds to any nearby steel or magnets in the room, so weak-field chains bend for reasons that have nothing to do with the magnet being mapped.",
+      "keywords": [
+        "weak",
+        "earth",
+        "resultant",
+        "bend"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y9WPd7HxNXd6W7wx::L3::Q9",
+      "moduleId": "rn_y9WPd7HxNXd6W7wx::L3",
+      "stem": "Two students map the same magnet; one works on a steel desk, the other on a wooden bench. Their maps differ most in the outer chains. Explain which map to trust and why.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Trust the wooden-bench map. Steel is a magnetic material, so the desk both distorts the magnet's outer field and induces its own poles, dragging nearby chains. The wooden bench adds no magnetic interference, so its outer chains reflect the magnet's true field.",
+      "keywords": [
+        "steel",
+        "distorts",
+        "wooden",
+        "true"
+      ],
+      "options": []
+    }
+  ]
+}

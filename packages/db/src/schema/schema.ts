@@ -2027,7 +2027,9 @@ export const teachObjectives = pgTable("teach_objectives", {
                 foreignColumns: [teachSessions.id],
                 name: "teach_objectives_session_id_fkey"
         }),
-        check("teach_objectives_ordinal_check", sql`ordinal BETWEEN 1 AND 4`),
+        // T-TEACHGENIE-001 / 0025: ordinal relax 1–4 → 1–8 (In-Depth carries
+        // SIX objectives — MG "Objective 1/6" parity; ceiling 8 for headroom).
+        check("teach_objectives_ordinal_check", sql`ordinal BETWEEN 1 AND 8`),
         check("teach_objectives_status_check", sql`status IN ('not_started','covered','not_covered','flagged')`),
 ]);
 export const teachObjectiveCoverages = pgTable("teach_objective_coverages", {

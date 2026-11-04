@@ -470,24 +470,25 @@ export default async function CourseHubPage({
         },
         {
           // ⚠️ OUT-OF-FENCE COMMIT (T-TEACHME-001 run-003, R0 ratification
-          // requested): the task fence covers apps/hub/src/app/courses/[course]/
-          // teach-me/** + components/hub/teach-me/** + lib/api.ts (client fns);
-          // this page is NOT in it. The one additive Learn-band card below is
-          // the minimal app-level mount per the T-MIG-010/T-SENECA-001/
-          // T-TEACH-012/run-002 one-mount precedent — shipped as its own
-          // commit so R0 can ratify or lift it out at review. It keys on the
-          // flags.json "teachMe" gate (absent=OFF) via teachMeEnabledForCourse
-          // — the same read the /teach-me page of record serves under — and
-          // non-pilot courses keep the honest "import pending" roadmap card
-          // (plan §10), never a dead CTA.
+          // requested; reskinned by T-TEACHGENIE-001 2026-11-04): the task
+          // fence covers courses/[course]/teach-me/** (+ now teach-genie/**)
+          // + components/hub/teach-me/** (+ teach-genie/**) + lib/api.ts
+          // (client fns); this page is NOT in it. The one additive
+          // Learn-band card below is the minimal app-level mount per the
+          // T-MIG-010/T-SENECA-001/T-TEACH-012/run-002 one-mount precedent —
+          // shipped as its own commit so R0 can ratify or lift it out at
+          // review. It keys on the flags.json "teachMe" gate (absent=OFF)
+          // via teachMeEnabledForCourse — the same read the /teach-genie
+          // page of record serves under — and non-pilot courses keep the
+          // honest "import pending" roadmap card (plan §10), never a dead CTA.
           icon: GraduationCap,
-          title: "Teach-Me",
+          title: "Teach Genie",
           desc: teachMe
-            ? "Teach the Pupil: pick spec points, explain them in your own words, and find the gaps before the exam does — objectives tick off as you cover them."
-            : "Learn by teaching — explain topics to the Pupil and find your gaps before the exam does. Rolling out course by course.",
+            ? "Learn by teaching: pick spec points and teach Baby Genie in your own words — he keeps asking until it makes sense, objectives tick off, and a review lands at the end."
+            : "Learn by teaching — explain topics to Baby Genie and find your gaps before the exam does. Rolling out course by course.",
           tags: ["Study", "Practice", "Diagnose"] as FrameworkTag[],
-          href: teachMe ? `${base}/teach-me` : undefined,
-          ctaLabel: teachMe ? "Teach the Pupil" : undefined,
+          href: teachMe ? `${base}/teach-genie` : undefined,
+          ctaLabel: teachMe ? "Teach Baby Genie" : undefined,
           ready: teachMe,
           notReadyLabel: "import pending",
           tint: "bg-primary/10",
@@ -528,7 +529,9 @@ export default async function CourseHubPage({
             <h2 className="text-lg font-bold tracking-tight">{band.title}</h2>
             <p className="text-sm text-muted-foreground">{band.tagline}</p>
           </div>
-          <div className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
+          {/* t-ui-polish run-004 — grid rhythm: gap-4, the law the
+              dashboard (run-001) and directory (run-003) grids share. */}
+          <div className="grid gap-4 sm:grid-cols-2">
             {band.items.map((r) => {
               const inner = (
                 <>
@@ -594,7 +597,8 @@ export default async function CourseHubPage({
       {/* SME's "Our revision framework" explainer */}
       <section aria-label="Our revision framework" className="space-y-3 pb-2">
         <h2 className="text-lg font-semibold">Our revision framework</h2>
-        <div className="grid gap-3 sm:grid-cols-3">
+        {/* t-ui-polish run-004 — same gap-4 rhythm law for the explainer trio. */}
+        <div className="grid gap-4 sm:grid-cols-3">
           {framework.map((f) => (
             <Card key={f.tag} className="bg-muted/40">
               <CardContent className="space-y-2 p-4">

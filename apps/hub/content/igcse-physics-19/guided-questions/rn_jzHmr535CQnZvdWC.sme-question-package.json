@@ -1,0 +1,734 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_jzHmr535CQnZvdWC",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "53fb157583a55a1699957b433de71250b49eab8023ad3652a525f46a2f3127ee",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "packageId": "igcse-physics::rn_jzHmr535CQnZvdWC",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L1::Q1",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L1",
+      "stem": "Which parts make up the structure of a transformer?",
+      "misconceptionClass": "structure recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "primary coil, secondary coil and iron core",
+          "correct": true,
+          "explanation": "These three are the transformer's structure.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a single coil and a permanent magnet",
+          "correct": false,
+          "explanation": "Transformers need two coils and no permanent magnet.",
+          "misconception": "part swap"
+        },
+        {
+          "key": "C",
+          "text": "a split-ring commutator and brushes",
+          "correct": false,
+          "explanation": "Those belong to motors and dynamos.",
+          "misconception": "device swap"
+        },
+        {
+          "key": "D",
+          "text": "a battery and a plastic core",
+          "correct": false,
+          "explanation": "Neither belongs in a transformer's structure.",
+          "misconception": "part invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L1::Q2",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L1",
+      "stem": "Which coil of a transformer is connected to the input supply?",
+      "misconceptionClass": "naming recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "neither — the core carries the input",
+          "correct": false,
+          "explanation": "The core carries the field, not the input connection.",
+          "misconception": "role confusion"
+        },
+        {
+          "key": "B",
+          "text": "the primary coil",
+          "correct": true,
+          "explanation": "Primary takes the input; secondary gives the output.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the secondary coil",
+          "correct": false,
+          "explanation": "The secondary delivers the induced output.",
+          "misconception": "naming swap"
+        },
+        {
+          "key": "D",
+          "text": "both coils share the input equally",
+          "correct": false,
+          "explanation": "Input and output are separate windings.",
+          "misconception": "sharing myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L1::Q3",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L1",
+      "stem": "A transformer is supplied with steady direct voltage. The secondary output is:",
+      "misconceptionClass": "DC case",
+      "options": [
+        {
+          "key": "A",
+          "text": "an alternating voltage",
+          "correct": false,
+          "explanation": "A steady input gives no output at all.",
+          "misconception": "conversion myth"
+        },
+        {
+          "key": "B",
+          "text": "a larger direct voltage",
+          "correct": false,
+          "explanation": "Turns ratio cannot rescue a non-changing field.",
+          "misconception": "amplification myth"
+        },
+        {
+          "key": "C",
+          "text": "zero, because the core field is not changing",
+          "correct": true,
+          "explanation": "Induction needs a changing field through the secondary.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the same DC voltage, transformed",
+          "correct": false,
+          "explanation": "No change, no induction, no output.",
+          "misconception": "pass-through myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L1::Q4",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L1",
+      "stem": "What does a transformer change about its input?",
+      "misconceptionClass": "function recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the frequency of the supply",
+          "correct": false,
+          "explanation": "The output alternates at the same frequency as the input.",
+          "misconception": "frequency myth"
+        },
+        {
+          "key": "B",
+          "text": "AC into DC",
+          "correct": false,
+          "explanation": "Transformers pass alternating output; rectifiers make DC.",
+          "misconception": "conversion myth"
+        },
+        {
+          "key": "C",
+          "text": "the amount of energy created",
+          "correct": false,
+          "explanation": "Transformers transfer energy; they do not create it.",
+          "misconception": "energy myth"
+        },
+        {
+          "key": "D",
+          "text": "the size of the alternating voltage",
+          "correct": true,
+          "explanation": "The turns ratio sets the output voltage size.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L1::Q5",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L1",
+      "stem": "Why must the input to a transformer be alternating?",
+      "misconceptionClass": "requirement reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the secondary only induces while the core field keeps changing",
+          "correct": true,
+          "explanation": "A changing field is the induction trigger.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "direct current would melt the primary coil",
+          "correct": false,
+          "explanation": "Heating is not the reason transformers need AC.",
+          "misconception": "thermal myth"
+        },
+        {
+          "key": "C",
+          "text": "the iron core only carries alternating fields",
+          "correct": false,
+          "explanation": "The core carries any field; only CHANGE induces.",
+          "misconception": "core myth"
+        },
+        {
+          "key": "D",
+          "text": "the turns ratio only works for AC voltages",
+          "correct": false,
+          "explanation": "The ratio is geometry; the AC need is induction itself.",
+          "misconception": "ratio myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L1::Q6",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L1",
+      "stem": "State the three structural parts of a transformer.",
+      "misconceptionClass": "structure recall",
+      "kind": "recall",
+      "modelAnswer": "A primary coil, a secondary coil, and a shared iron core.",
+      "keywords": [
+        "primary",
+        "secondary",
+        "iron",
+        "core"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L1::Q7",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L1",
+      "stem": "State what kind of supply a transformer requires and why.",
+      "misconceptionClass": "requirement recall",
+      "kind": "recall",
+      "modelAnswer": "An alternating supply, because the secondary only has a voltage induced while the core's field is changing.",
+      "keywords": [
+        "alternating",
+        "changing",
+        "field",
+        "induced"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L1::Q8",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L1",
+      "stem": "Explain how the input voltage's change reaches the secondary coil.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The alternating current in the primary makes the core's magnetic field grow and shrink continuously. That changing field threads every turn of the secondary coil, and a changing field through a coil induces a voltage across it — so the primary's alternating behaviour is relayed to the secondary as an induced alternating output.",
+      "keywords": [
+        "alternating",
+        "field",
+        "secondary",
+        "induced"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L1::Q9",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L1",
+      "stem": "A student connects a battery to a transformer's primary and a meter to its secondary. State the meter reading at switch-on, after it settles, and at switch-off — and explain the pattern.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "At switch-on the field through the core changes for a moment, so the meter kicks briefly; while the battery holds steady the field stops changing and the meter reads zero; at switch-off the field collapses, giving a brief kick the other way. Only CHANGES in the core field induce — steady DC gives steady zero.",
+      "keywords": [
+        "kick",
+        "zero",
+        "changes",
+        "induce"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L2::Q1",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L2",
+      "stem": "A transformer has more turns on the secondary than on the primary. It is a:",
+      "misconceptionClass": "classification recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "transformer with equal input and output voltages",
+          "correct": false,
+          "explanation": "Equal voltages need equal turns.",
+          "misconception": "ratio confusion"
+        },
+        {
+          "key": "B",
+          "text": "step-up transformer",
+          "correct": true,
+          "explanation": "More secondary turns raise the output voltage.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "step-down transformer",
+          "correct": false,
+          "explanation": "Step-down needs fewer secondary turns.",
+          "misconception": "classification swap"
+        },
+        {
+          "key": "D",
+          "text": "dynamo",
+          "correct": false,
+          "explanation": "Dynamos rotate; transformers are static.",
+          "misconception": "device swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L2::Q2",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L2",
+      "stem": "What happens to the output voltage when the primary has 200 turns and the secondary has 50?",
+      "misconceptionClass": "ratio reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it equals the input voltage",
+          "correct": false,
+          "explanation": "Equal voltages need equal turns.",
+          "misconception": "equality myth"
+        },
+        {
+          "key": "B",
+          "text": "the output is zero",
+          "correct": false,
+          "explanation": "Fewer turns lower the voltage; they do not remove it.",
+          "misconception": "vanishing claim"
+        },
+        {
+          "key": "C",
+          "text": "it is stepped down to a quarter of the input",
+          "correct": true,
+          "explanation": "50/200 is a quarter — fewer output turns, lower voltage.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "it is stepped up fourfold",
+          "correct": false,
+          "explanation": "That reads the ratio backwards.",
+          "misconception": "ratio inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L2::Q3",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L2",
+      "stem": "Which quantity passes through a transformer unchanged?",
+      "misconceptionClass": "invariance recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the voltage size",
+          "correct": false,
+          "explanation": "Changing voltage size is the transformer's whole job.",
+          "misconception": "invariance swap"
+        },
+        {
+          "key": "B",
+          "text": "the number of turns",
+          "correct": false,
+          "explanation": "The two coils have different turns by design.",
+          "misconception": "invariance swap"
+        },
+        {
+          "key": "C",
+          "text": "the coil's resistance",
+          "correct": false,
+          "explanation": "Different windings have different resistances.",
+          "misconception": "invariance swap"
+        },
+        {
+          "key": "D",
+          "text": "the frequency of the alternating voltage",
+          "correct": true,
+          "explanation": "The core field alternates at the input frequency.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L2::Q4",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L2",
+      "stem": "A mains adapter must convert 230 V to a safe low voltage for a toy. Which transformer suits?",
+      "misconceptionClass": "selection reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "a step-down transformer with fewer secondary turns",
+          "correct": true,
+          "explanation": "Lowering the voltage needs fewer output turns.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a step-up transformer with more secondary turns",
+          "correct": false,
+          "explanation": "That would raise the already-high mains voltage.",
+          "misconception": "selection inversion"
+        },
+        {
+          "key": "C",
+          "text": "a generator",
+          "correct": false,
+          "explanation": "Generators make electricity from motion; adapters transform it.",
+          "misconception": "device swap"
+        },
+        {
+          "key": "D",
+          "text": "a transformer with equal turns on both coils",
+          "correct": false,
+          "explanation": "Equal turns leave the voltage unchanged at 230 V.",
+          "misconception": "ratio confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L2::Q5",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L2",
+      "stem": "The turns on a transformer's secondary are increased while the primary is untouched. The output voltage:",
+      "misconceptionClass": "factor reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "drops to zero",
+          "correct": false,
+          "explanation": "Adding turns never cancels the output.",
+          "misconception": "vanishing claim"
+        },
+        {
+          "key": "B",
+          "text": "increases in proportion to the added turns",
+          "correct": true,
+          "explanation": "Output scales with the secondary turn count.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "decreases",
+          "correct": false,
+          "explanation": "More secondary turns raise the output.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "D",
+          "text": "becomes direct current",
+          "correct": false,
+          "explanation": "The output stays alternating regardless of turns.",
+          "misconception": "conversion myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L2::Q6",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L2",
+      "stem": "State the turns relationship in a step-up transformer.",
+      "misconceptionClass": "classification recall",
+      "kind": "recall",
+      "modelAnswer": "A step-up transformer carries more turns on its secondary winding than on its primary.",
+      "keywords": [
+        "more",
+        "turns",
+        "secondary",
+        "primary"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L2::Q7",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L2",
+      "stem": "State what happens to the frequency of the voltage across a transformer.",
+      "misconceptionClass": "invariance recall",
+      "kind": "recall",
+      "modelAnswer": "The frequency is unchanged: the output alternates at the same rate as the input.",
+      "keywords": [
+        "frequency",
+        "unchanged",
+        "same",
+        "rate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L2::Q8",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L2",
+      "stem": "Explain why equal turns on both coils give an output equal to the input.",
+      "misconceptionClass": "ratio reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The changing core field induces the same voltage per turn in both windings, because both share the identical field. With equal numbers of turns, the same per-turn voltage is summed the same number of times on each side, so the output matches the input voltage — the turns ratio of one passes the size through unchanged.",
+      "keywords": [
+        "per",
+        "turn",
+        "equal",
+        "voltage"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L2::Q9",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L2",
+      "stem": "Two transformers run from the same 12 V AC supply: one steps up to 48 V, the other steps down to 3 V. Compare their turns ratios and classify each.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The 48 V unit has four times the primary turns on its secondary — a 4:1 secondary-to-primary ratio — so it is a step-up transformer. The 3 V unit has a quarter of the primary turns on its secondary — a 1:4 ratio — so it is a step-down transformer.",
+      "keywords": [
+        "ratio",
+        "step-up",
+        "step-down",
+        "turns"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L3::Q1",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L3",
+      "stem": "Why is electricity transmitted across the grid at very high voltage?",
+      "misconceptionClass": "transmission reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "high voltage is required by the transformers only",
+          "correct": false,
+          "explanation": "Transformers set the voltage; the REASON is the heat saving.",
+          "misconception": "purpose confusion"
+        },
+        {
+          "key": "B",
+          "text": "electricity travels faster at high voltage",
+          "correct": false,
+          "explanation": "Speed is not the reason; heating is.",
+          "misconception": "speed myth"
+        },
+        {
+          "key": "C",
+          "text": "the lower current then wastes less energy as heat in the cables",
+          "correct": true,
+          "explanation": "High voltage means low current for the same power.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "high voltage makes the cables stronger",
+          "correct": false,
+          "explanation": "Voltage does not change cable mechanics.",
+          "misconception": "mechanical myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L3::Q2",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L3",
+      "stem": "Which transformer sits at the power-station end of the grid?",
+      "misconceptionClass": "grid recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a step-down transformer",
+          "correct": false,
+          "explanation": "Step-down units sit at the consumer end.",
+          "misconception": "end swap"
+        },
+        {
+          "key": "B",
+          "text": "a dynamo",
+          "correct": false,
+          "explanation": "The generator makes the electricity; the transformer raises the voltage.",
+          "misconception": "device swap"
+        },
+        {
+          "key": "C",
+          "text": "no transformer — the generator outputs the grid voltage",
+          "correct": false,
+          "explanation": "Step-up transformers bridge generator and grid.",
+          "misconception": "absence myth"
+        },
+        {
+          "key": "D",
+          "text": "a step-up transformer",
+          "correct": true,
+          "explanation": "The voltage is raised before the long journey.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L3::Q3",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L3",
+      "stem": "What do step-down transformers do near consumers?",
+      "misconceptionClass": "grid recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "lower the transmission voltage to safe levels",
+          "correct": true,
+          "explanation": "Step-down units make the supply usable and safe.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "raise the voltage for the cables",
+          "correct": false,
+          "explanation": "That is the step-up role at the station.",
+          "misconception": "role swap"
+        },
+        {
+          "key": "C",
+          "text": "convert AC to DC for homes",
+          "correct": false,
+          "explanation": "Homes receive AC; rectification is separate.",
+          "misconception": "conversion myth"
+        },
+        {
+          "key": "D",
+          "text": "store energy for peak demand",
+          "correct": false,
+          "explanation": "Transformers transfer; they do not store.",
+          "misconception": "storage myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L3::Q4",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L3",
+      "stem": "For the same transmitted power, raising the transmission voltage tenfold makes the cable current:",
+      "misconceptionClass": "power reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "zero",
+          "correct": false,
+          "explanation": "Current falls but never to zero while power flows.",
+          "misconception": "vanishing claim"
+        },
+        {
+          "key": "B",
+          "text": "ten times smaller",
+          "correct": true,
+          "explanation": "Power = voltage × current, so current falls with rising voltage.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "ten times larger",
+          "correct": false,
+          "explanation": "That inverts the power relationship.",
+          "misconception": "relation inversion"
+        },
+        {
+          "key": "D",
+          "text": "unchanged",
+          "correct": false,
+          "explanation": "Current and voltage trade off at fixed power.",
+          "misconception": "no-change claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L3::Q5",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L3",
+      "stem": "Lower current in the transmission cables means:",
+      "misconceptionClass": "loss reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the same energy wasted",
+          "correct": false,
+          "explanation": "Current is what heats the cables.",
+          "misconception": "no-change claim"
+        },
+        {
+          "key": "B",
+          "text": "the cables carrying less power",
+          "correct": false,
+          "explanation": "The transmitted power is fixed; only the split changes.",
+          "misconception": "power confusion"
+        },
+        {
+          "key": "C",
+          "text": "less energy wasted heating the cables",
+          "correct": true,
+          "explanation": "Cable heating falls sharply as current falls.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "more energy wasted in the cables",
+          "correct": false,
+          "explanation": "The loss falls with the current.",
+          "misconception": "loss inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L3::Q6",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L3",
+      "stem": "State which transformer type raises the voltage for transmission.",
+      "misconceptionClass": "grid recall",
+      "kind": "recall",
+      "modelAnswer": "A step-up transformer raises the voltage at the power-station end of the grid.",
+      "keywords": [
+        "step-up",
+        "transformer",
+        "voltage"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L3::Q7",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L3",
+      "stem": "State why a lower cable current is wanted on the grid.",
+      "misconceptionClass": "loss recall",
+      "kind": "recall",
+      "modelAnswer": "A lower current wastes less energy as heat in the transmission cables.",
+      "keywords": [
+        "lower",
+        "current",
+        "heat",
+        "cables"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L3::Q8",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L3",
+      "stem": "Explain the full chain from step-up transformer to cooler cables.",
+      "misconceptionClass": "chain reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The step-up transformer raises the transmission voltage, so for the same transmitted power the current in the cables is lower. Cable heating is caused by the current, so the reduced current wastes less energy as heat — more of the generated power reaches the consumer end, where step-down transformers restore a safe voltage.",
+      "keywords": [
+        "voltage",
+        "current",
+        "heat",
+        "lower"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_jzHmr535CQnZvdWC::L3::Q9",
+      "moduleId": "rn_jzHmr535CQnZvdWC::L3",
+      "stem": "A grid link loses noticeable energy as cable heat. The operators raise the transmission voltage using stronger step-up transformers. Describe and explain the change in the link's losses.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The losses fall. With the transmitted power fixed, the higher voltage lets the same power flow at a lower current, and it is the current that heats the cables. The reduced current therefore wastes less energy as cable heat, so more of the generated energy arrives at the far end.",
+      "keywords": [
+        "higher",
+        "voltage",
+        "current",
+        "heat"
+      ],
+      "options": []
+    }
+  ]
+}

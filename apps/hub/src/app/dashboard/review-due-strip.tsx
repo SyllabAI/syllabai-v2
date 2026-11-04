@@ -151,7 +151,10 @@ export function ReviewDueStrip({ courses }: { courses: CourseMeta[] }) {
                     : "Counted from this device's marked attempts (Ebbinghaus decay model)"
                 }
               >
-                {d.subject} · {d.count} · {d.source === "account" ? "account" : "device"}
+                {/* UX review 2026-11-04: the "account"/"device" suffix was
+                    provenance vocabulary in a student's face — the tooltip
+                    owns it; the chip is just the fact. */}
+                {d.subject} · {d.count}
               </Badge>
             ))}
         </div>

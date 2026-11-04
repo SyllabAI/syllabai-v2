@@ -1,12 +1,14 @@
 # S0 output of record - c02-elements-compounds-mixtures
 # T-BOOK-070: b07 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 6 -> 7);
 # the S0 plan is binding — lint G1 checks planned == on-disk.
+# T-BOOK-074: b08 media-embed appended — Cognito full-coverage extension (ADR-BOOK-0006; planned_blocks 7 -> 8; trace 1a1a4e45ca4e2325).
+
 chapter: "c02"
 chapter_key: "u1:c2"
 title: "Elements, compounds and mixtures"
 status: published # S4 flip of record — golive-r0 (operator order, trace 1a15ecf114c3406d); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 7
+planned_blocks: 12
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 blocks:
   - {ord: 1, id: "c02-elements-compounds-mixtures/b01", type: prose, file: "blocks/b01-prose.json", anchor: 23}
@@ -16,3 +18,8 @@ blocks:
   - {ord: 5, id: "c02-elements-compounds-mixtures/b05", type: drag-label, file: "blocks/b05-drag-label.json", anchor: 29}
   - {ord: 6, id: "c02-elements-compounds-mixtures/b06", type: mcq-embed, file: "blocks/b06-mcq-embed.json", anchor: 30}
   - {ord: 7, id: "c02-elements-compounds-mixtures/b07", type: media-embed, file: "blocks/b07-media-embed.json", anchor: 30}
+  - {ord: 8, id: "c02-elements-compounds-mixtures/b08", type: media-embed, file: "blocks/b08-media-embed.json", anchor: 30}
+  - {ord: 9, id: "c02-elements-compounds-mixtures/b09", type: media-embed, file: "blocks/b09-media-embed.json", anchor: 30}
+  - {ord: 10, id: "c02-elements-compounds-mixtures/b10", type: media-embed, file: "blocks/b10-media-embed.json", anchor: 30}
+  - {ord: 11, id: "c02-elements-compounds-mixtures/b11", type: media-embed, file: "blocks/b11-media-embed.json", anchor: 30}
+  - {ord: 12, id: "c02-elements-compounds-mixtures/b12", type: media-embed, file: "blocks/b12-media-embed.json", anchor: 30}

@@ -85,6 +85,8 @@ import { scrollBehavior } from "@/lib/reduced-motion";
 import { radioNav, rovingTabIndex } from "@/lib/radio-nav";
 import { partDisplayLabel } from "@/lib/part-label";
 import { api, ApiError, aiAskErrorMessage } from "@/lib/api";
+import { pollUntilTerminal, requestPartRegrade, type MirroredPollSnapshot } from "@/lib/paper-marks";
+import { feedbackCopyModel } from "@/components/pastpapers/region-mark/paper-feedback";
 import type {
   SmartMarkAttemptView,
   SmartMarkFeedbackExplanation,
@@ -1694,6 +1696,16 @@ function markFlowError(e: unknown): string {
   );
 }
 
+/** T-MG-PLAYER-MARK-1 — the advisory draft mark's per-part state. The
+ * honest classes mirror the poll loop's own (loading | done | failed |
+ * lost | timeout); `done` carries the mirrored poll snapshot. */
+type AdvisoryMarkState =
+  | { kind: "loading" }
+  | { kind: "done"; snapshot: MirroredPollSnapshot }
+  | { kind: "failed"; message: string }
+  | { kind: "lost" }
+  | { kind: "timeout" };
+
 /**
  * The pilot's real practice loop for structured questions: submit every
  * typed answer as a REAL attempt on the learner's core account, then Smart
@@ -1727,6 +1739,71 @@ function CoreMarkingFlow({
   const [extras, setExtras] = useState<
     Record<string, SmartMarkFeedbackExplanation | SmartMarkImprovementPlan | "loading" | "error">
   >({});
+  // ── T-MG-PLAYER-MARK-1: the advisory draft mark (the typed regrade
+  // channel's hub consumer). MG-parity value moment (live capture
+  // 2026-11-04, rollout plan Lane C): type → mark → read, with NOTHING
+  // written to the attempt plane. Each structured part's draft rides
+  // POST /parts/:partId/regrade (partId = the bridge join's core part
+  // UUID — the same ids submitStructuredAttempt consumes) and polls via
+  // the shipped loop; the verdict renders through feedbackCopyModel (the
+  // five-field copy law + failure-only strategies, single-sourced with
+  // the paper panel). The authoritative Smart Mark flow is untouched.
+  const [advisory, setAdvisory] = useState<Record<string, AdvisoryMarkState>>({});
+  const advisoryRunning = Object.values(advisory).some((s) => s.kind === "loading");
+
+  const markDraftWithAi = async () => {
+    const token = window.localStorage.getItem("syllabai.token");
+    // dedupe by hub part id; only parts with a non-empty draft (the wire
+    // schema is min(1) — an empty draft is not an answer to mark)
+    const targets: Array<{ hubPartId: string; corePartId: string }> = [];
+    for (const sub of join.structured) {
+      for (const [hubPartId, corePartId] of Object.entries(sub.parts)) {
+        if (answerFor(hubPartId).trim().length > 0 && !targets.some((t) => t.hubPartId === hubPartId)) {
+          targets.push({ hubPartId, corePartId });
+        }
+      }
+    }
+    if (targets.length === 0) return;
+    const initial: Record<string, AdvisoryMarkState> = {};
+    for (const t of targets) initial[t.hubPartId] = { kind: "loading" };
+    setAdvisory(initial);
+    await Promise.all(
+      targets.map(async (t) => {
+        const req = await requestPartRegrade(t.corePartId, answerFor(t.hubPartId), token);
+        if (req.outcome !== "accepted") {
+          const message =
+            req.outcome === "rejected"
+              ? req.message
+              : req.outcome === "no_token"
+                ? "Sign in to use AI marking."
+                : req.outcome === "unconfigured"
+                  ? "AI marking is not configured on the server yet."
+                  : "AI marking is unavailable right now — submit and self-mark via the mark scheme instead.";
+          setAdvisory((prev) => ({ ...prev, [t.hubPartId]: { kind: "failed", message } }));
+          return;
+        }
+        const poll = await pollUntilTerminal({ markId: req.markId, token });
+        if (poll.status === "succeeded") {
+          setAdvisory((prev) => ({ ...prev, [t.hubPartId]: { kind: "done", snapshot: poll.snapshot } }));
+        } else if (poll.status === "failed") {
+          setAdvisory((prev) => ({
+            ...prev,
+            [t.hubPartId]: {
+              kind: "failed",
+              message: poll.snapshot?.error?.message ?? "The marking pipeline could not complete this mark.",
+            },
+          }));
+        } else if (poll.status === "lost") {
+          // the non-durable registry's honest restart path (ADR-043)
+          setAdvisory((prev) => ({ ...prev, [t.hubPartId]: { kind: "lost" } }));
+        } else {
+          // timeout | cancelled — retry: 0 (never a re-POST): the honest
+          // recovery is the learner's own re-mark
+          setAdvisory((prev) => ({ ...prev, [t.hubPartId]: { kind: "timeout" } }));
+        }
+      }),
+    );
+  };
 
   const structuredHubParts = question.parts.filter(
     (p) => p.questionType !== "multiple_choice",
@@ -1849,6 +1926,126 @@ function CoreMarkingFlow({
               ? "then Smart Mark marks every part against the mark scheme"
               : "type an answer above first"}
           </span>
+        </div>
+      )}
+
+      {/* T-MG-PLAYER-MARK-1: the advisory draft mark — an instant AI read on
+          the typed drafts via the typed regrade channel; writes no attempt
+          (the ledger write lands on the paper plane; Smart Mark below stays
+          the authoritative attempt-plane mark). Draft phase only: once real
+          attempts exist, Smart Mark is the source of truth. */}
+      {phase === "draft" && (
+        <div className="mt-2 space-y-2">
+          <div className="flex flex-wrap items-center gap-3">
+            <Button
+              size="sm"
+              variant="outline"
+              disabled={!hasAnyText || advisoryRunning}
+              onClick={markDraftWithAi}
+            >
+              {advisoryRunning ? (
+                <>
+                  <Loader2 className="size-3.5 animate-spin" aria-hidden /> Marking draft…
+                </>
+              ) : (
+                <>
+                  <Sparkles className="size-3.5 text-primary" aria-hidden /> Mark my draft with AI
+                </>
+              )}
+            </Button>
+            <span className="text-[11px] text-muted-foreground">
+              advisory — writes no attempt; marks each typed part against its mark scheme
+            </span>
+          </div>
+          {Object.entries(advisory).map(([hubPartId, state]) => {
+            const hub = structuredHubParts.find((p) => p.id === hubPartId);
+            const label = hub ? (partDisplayLabel(hub) ?? `Part ${hub.order + 1}`) : "Part";
+            if (state.kind === "loading") {
+              return (
+                <div key={hubPartId} className="flex items-center gap-2 rounded-lg border bg-background p-2 text-[13px]">
+                  <Loader2 className="size-3.5 animate-spin" aria-hidden />
+                  <span>{label} — marking…</span>
+                </div>
+              );
+            }
+            if (state.kind !== "done") {
+              const copy =
+                state.kind === "failed"
+                  ? state.message
+                  : state.kind === "lost"
+                    ? "the marking job was lost (server restart) — run “Mark my draft with AI” again"
+                    : "still running past the wait cap — run “Mark my draft with AI” again to refresh";
+              return (
+                <div key={hubPartId} className="rounded-lg border bg-background p-2 text-[13px]">
+                  <span className="font-medium">{label}</span>{" "}
+                  <span className="text-muted-foreground">{copy}</span>
+                </div>
+              );
+            }
+            const awards = state.snapshot.awards ?? [];
+            const score = awards.reduce((a, x) => a + x.score, 0);
+            const max = awards.reduce((a, x) => a + x.maxScore, 0);
+            const verdict = state.snapshot.feedback
+              ? feedbackCopyModel(state.snapshot.feedback, score, max)
+              : null;
+            return (
+              <div key={hubPartId} className="rounded-lg border bg-background p-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-[13px] font-medium">{label}</span>
+                  <Badge
+                    variant="outline"
+                    className={cn(
+                      "text-[11px]",
+                      score > 0 ? "border-success/40 text-success" : "text-destructive",
+                    )}
+                  >
+                    {score}/{max}
+                  </Badge>
+                  <Badge variant="secondary" className="text-[10px]">
+                    advisory · no attempt written
+                  </Badge>
+                </div>
+                {verdict && (
+                  <>
+                    {verdict.chatMessage && (
+                      <Markdown>{verdict.chatMessage}</Markdown>
+                    )}
+                    {verdict.scored.length > 0 && (
+                      <ul className="mt-1.5 list-disc space-y-0.5 pl-5 text-[12.5px]">
+                        {verdict.scored.map((p, i) => (
+                          <li key={i}>{p}</li>
+                        ))}
+                      </ul>
+                    )}
+                    {verdict.notScored.length > 0 && (
+                      <>
+                        <p className="mt-1.5 text-[12.5px] font-medium">Not scored</p>
+                        <ul className="list-disc space-y-0.5 pl-5 text-[12.5px]">
+                          {verdict.notScored.map((p, i) => (
+                            <li key={i}>{p}</li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                    {verdict.strategies && verdict.strategies.length > 0 && (
+                      <>
+                        <p className="mt-1.5 text-[12.5px] font-medium">How to improve</p>
+                        <ul className="list-disc space-y-0.5 pl-5 text-[12.5px]">
+                          {verdict.strategies.map((p, i) => (
+                            <li key={i}>{p}</li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                    {/* the transcription (thoughtProcess) rides the paper
+                        panel's collapsed section — the five-field FULL copy
+                        law lives there; the player card keeps the four
+                        learner-facing fields */}
+                  </>
+                )}
+              </div>
+            );
+          })}
         </div>
       )}
 

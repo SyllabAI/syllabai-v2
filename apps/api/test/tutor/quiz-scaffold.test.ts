@@ -14,11 +14,12 @@ import {
   QUIZ_STEM_BOUND,
   isQuizAsk,
   loadQuizScaffold,
+  quizCitationFloor,
 } from "../../src/services/tutor/quiz-scaffold";
 import { hygienicStem } from "../../src/services/tutor/stem-hygiene";
 import { prepare, karagAsk, type KaragDeps } from "../../src/services/tutor/karag";
 import { evidenceFromChunk, type EvidenceItem } from "../../src/services/tutor/evidence";
-import { userPrompt } from "../../src/services/tutor/prompt";
+import { systemPrompt, userPrompt } from "../../src/services/tutor/prompt";
 import type { SqlFn } from "../../src/services/tutor/sql";
 import type { Clock } from "../../src/services/tutor/session-store";
 
@@ -335,5 +336,96 @@ describe("run-015 — the QUIZ SCAFFOLD prompt block", () => {
       "TESTNONCE",
     );
     expect(prompt).not.toContain("QUIZ SCAFFOLD");
+  });
+});
+
+/* ── T-TUTOR-EXP-1 (005): the scaffold-less quiz citation floor ─────────── */
+
+describe("quizCitationFloor — the scaffold-less quiz turn keeps strongly-fused citations", () => {
+  const chunk = (id: string, fused: number): EvidenceItem => ({
+    ...evidenceFromChunk({
+      documentRowId: "row-" + id,
+      documentId: "doc-" + id,
+      documentVersion: 1,
+      chunkId: "chunk-" + id,
+      chunkIndex: 0,
+      kind: "NOTE",
+      content: "content " + id,
+      pageStart: 1,
+      pageEnd: null,
+      elementIds: null,
+      embeddingModel: "m",
+      cosine: 0.8,
+    }),
+    fusedScore: fused,
+  });
+  const nodeItem = (id: string): EvidenceItem => ({
+    source: "KNOWLEDGE_NODE",
+    content: "topic",
+    documentRowId: null,
+    documentId: null,
+    documentVersion: null,
+    chunkId: null,
+    chunkIndex: null,
+    nodeId: id,
+    nodeCode: "4CH1-T1",
+    nodeType: "TOPIC",
+    nodeTitle: "topic",
+    pageStart: null,
+    pageEnd: null,
+    specCodes: [],
+    sourcePageStart: null,
+    sourcePageEnd: null,
+    bookCourseId: null,
+    sourceTitle: null,
+    elementIds: [],
+    topicIds: [id],
+    retrievalScore: 1,
+    fusedScore: 0,
+    rerankScore: null,
+  });
+
+  test("tangential chunks below half the best chunk's fused score drop; anchors pass through", () => {
+    const best = chunk("best", 0.020);
+    const near = chunk("near", 0.012);
+    const tangential = chunk("tangential", 0.005); // < 0.5 × best
+    const anchor = nodeItem("node-1");
+    const kept = quizCitationFloor([anchor, best, near, tangential]);
+    expect(kept.some((i) => i.chunkId === "chunk-best")).toBe(true);
+    expect(kept.some((i) => i.chunkId === "chunk-near")).toBe(true);
+    expect(kept.some((i) => i.chunkId === "chunk-tangential")).toBe(false);
+    expect(kept.some((i) => i.nodeId === "node-1")).toBe(true);
+  });
+
+  test("the ratio is scale-free: only the RELATIVE fusion rank matters", () => {
+    const a = chunk("a", 0.9);
+    const b = chunk("b", 0.44); // dropped at best 0.9 (0.44 < 0.45)
+    expect(quizCitationFloor([a, b]).map((i) => i.chunkId)).toEqual(["chunk-a"]);
+  });
+
+  test("an all-anchor pool is a passthrough (best <= 0 → no floor)", () => {
+    const anchor = nodeItem("node-1");
+    expect(quizCitationFloor([anchor])).toEqual([anchor]);
+  });
+
+  test("the v16 marks-honesty law is in the system prompt", () => {
+    const prompt = systemPrompt();
+    expect(prompt).toContain(
+      "Marks honesty on improvised quizzes",
+    );
+    expect(prompt).toContain(
+      "state a mark\n  value only when that value appears in the SOURCES",
+    );
+    expect(prompt).toContain(
+      "Never invent, estimate or borrow a mark allocation.",
+    );
+  });
+
+  test("non-quiz asks are untouched by the floor at the pipeline seam (the karag guard)", () => {
+    // the floor is a pure function — the karag-side guard is
+    // `quizScaffold == null && isQuizAsk(query)`; pinned here so the
+    // condition cannot silently drift away from the scaffold law
+    expect(isQuizAsk("quiz me on this")).toBe(true);
+    expect(isQuizAsk("explain the rate of reaction")).toBe(false);
   });
 });

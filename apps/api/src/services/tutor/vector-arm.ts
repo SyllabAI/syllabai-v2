@@ -117,7 +117,8 @@ export function buildSqlVectorArm(
     if (rows == null) {
       const literal = `[${vector.join(",")}]`;
       rows = (await sql`
-    select c.id, c.document_row_id, d.doc_version, d.document_id, d.kind, c.chunk_index,
+    select c.id, c.document_row_id, d.doc_version, d.document_id, d.kind, d.title,
+           c.chunk_index,
            c.content, c.page_start, c.page_end, c.element_ids, c.spec_codes,
            c.embedding_model, 1 - (c.embedding <=> ${literal}::vector) as score
     from document_chunks c
@@ -171,6 +172,12 @@ export async function rowsToEvidence(
         elementIds: jsonbStringArray(r.element_ids),
         specCodes: jsonbStringArray(r.spec_codes),
         embeddingModel: String(r.embedding_model),
+        // T-TUTOR-EXP-1 (001): the document's own title for the citation
+        // label — null when the serving plane's projection does not carry
+        // one (the warehouse seam's row shape is title-less and stays
+        // honestly title-less until its own band widens it)
+        sourceTitle:
+          r.title == null || String(r.title).trim() === "" ? null : String(r.title),
         score: Number(r.score),
       }))
       .filter((hit) => hit.score >= MIN_COSINE);
@@ -212,6 +219,7 @@ export async function rowsToEvidence(
           embeddingModel: hit.embeddingModel,
           cosine: hit.score,
           specCodes: hit.specCodes,
+          sourceTitle: hit.sourceTitle,
         });
       }
       const chapters = registry.get(hit.documentId);
@@ -244,6 +252,7 @@ export async function rowsToEvidence(
           embeddingModel: hit.embeddingModel,
           cosine: hit.score,
           specCodes: hit.specCodes,
+          sourceTitle: hit.sourceTitle,
         });
       }
       // constant per-chapter offset (both ranges span the same page count
@@ -273,6 +282,7 @@ export async function rowsToEvidence(
         sourcePageStart: hit.pageStart,
         sourcePageEnd: hit.pageEnd,
         bookCourseId: coords.course_id,
+        sourceTitle: hit.sourceTitle,
       });
     });
 }

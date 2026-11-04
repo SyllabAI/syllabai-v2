@@ -1,0 +1,254 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_4cM2y5tCVYWZ9VMJ",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "744912f83a0e1d65fd7ec88f0268c63f78045073f24d1616a277e01e892acb73",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "packageId": "igcse-physics::rn_4cM2y5tCVYWZ9VMJ",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_4cM2y5tCVYWZ9VMJ::L1::Q1",
+      "moduleId": "rn_4cM2y5tCVYWZ9VMJ::L1",
+      "stem": "When does a charged particle feel a force in a magnetic field?",
+      "misconceptionClass": "condition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "when it moves across the field lines instead of running along them",
+          "correct": true,
+          "explanation": "Both conditions — motion and a cross-field component — are required.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "whenever it is inside the field, moving or not",
+          "correct": false,
+          "explanation": "A stationary charge feels no magnetic force.",
+          "misconception": "still-charge claim"
+        },
+        {
+          "key": "C",
+          "text": "only when it moves parallel to the field",
+          "correct": false,
+          "explanation": "Parallel motion is exactly the zero-force case.",
+          "misconception": "condition inversion"
+        },
+        {
+          "key": "D",
+          "text": "only when the field is switched off",
+          "correct": false,
+          "explanation": "The force exists because of the field, not its absence.",
+          "misconception": "nonsense condition"
+        }
+      ]
+    },
+    {
+      "id": "rn_4cM2y5tCVYWZ9VMJ::L1::Q2",
+      "moduleId": "rn_4cM2y5tCVYWZ9VMJ::L1",
+      "stem": "An electron travels along the magnetic field lines, never crossing them. What force does it feel?",
+      "misconceptionClass": "parallel case",
+      "options": [
+        {
+          "key": "A",
+          "text": "a force that slows the electron",
+          "correct": false,
+          "explanation": "The magnetic force never slows a charge to zero like this.",
+          "misconception": "speed-loss claim"
+        },
+        {
+          "key": "B",
+          "text": "zero",
+          "correct": true,
+          "explanation": "Motion parallel to the field produces no magnetic force.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "maximum force along the field",
+          "correct": false,
+          "explanation": "Force acts across the field, and parallel motion cancels it entirely.",
+          "misconception": "direction confusion"
+        },
+        {
+          "key": "D",
+          "text": "a sideways force into the page",
+          "correct": false,
+          "explanation": "No component across the field means no sideways push.",
+          "misconception": "deflection invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_4cM2y5tCVYWZ9VMJ::L1::Q3",
+      "moduleId": "rn_4cM2y5tCVYWZ9VMJ::L1",
+      "stem": "The force on a moving charge in a magnetic field is greatest when the motion is:",
+      "misconceptionClass": "geometry recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "at 45 degrees to the field lines",
+          "correct": false,
+          "explanation": "45 degrees gives a partial force, less than the perpendicular maximum.",
+          "misconception": "angle guess"
+        },
+        {
+          "key": "B",
+          "text": "opposite to the field direction",
+          "correct": false,
+          "explanation": "Anti-parallel is still parallel — zero force.",
+          "misconception": "parallel case misread"
+        },
+        {
+          "key": "C",
+          "text": "perpendicular to the field lines",
+          "correct": true,
+          "explanation": "Perpendicular motion gives the full cross-field interaction.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "parallel to the field lines",
+          "correct": false,
+          "explanation": "Parallel gives zero, the minimum not the maximum.",
+          "misconception": "geometry inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_4cM2y5tCVYWZ9VMJ::L1::Q4",
+      "moduleId": "rn_4cM2y5tCVYWZ9VMJ::L1",
+      "stem": "A proton and an electron enter the same field with the same velocity, both moving across the field lines. How do their deflections compare?",
+      "misconceptionClass": "charge-sign reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "they deflect the same way",
+          "correct": false,
+          "explanation": "Opposite charges feel opposite force directions.",
+          "misconception": "sign ignored"
+        },
+        {
+          "key": "B",
+          "text": "neither deflects",
+          "correct": false,
+          "explanation": "Cross-field motion gives both a force.",
+          "misconception": "no-force claim"
+        },
+        {
+          "key": "C",
+          "text": "only the proton deflects",
+          "correct": false,
+          "explanation": "Both charged particles feel the field's force.",
+          "misconception": "particle bias"
+        },
+        {
+          "key": "D",
+          "text": "they deflect towards opposite sides",
+          "correct": true,
+          "explanation": "The force direction follows the charge sign, so the two bend apart.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_4cM2y5tCVYWZ9VMJ::L1::Q5",
+      "moduleId": "rn_4cM2y5tCVYWZ9VMJ::L1",
+      "stem": "What does the magnetic force do to the SPEED of a deflected electron?",
+      "misconceptionClass": "force effect",
+      "options": [
+        {
+          "key": "A",
+          "text": "the speed stays the same; only the direction changes",
+          "correct": true,
+          "explanation": "The force acts at right angles to the motion, steering without speeding.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the speed increases as it bends",
+          "correct": false,
+          "explanation": "A perpendicular force cannot push the particle faster along its path.",
+          "misconception": "speed-up claim"
+        },
+        {
+          "key": "C",
+          "text": "the speed decreases to zero",
+          "correct": false,
+          "explanation": "Nothing in the magnetic interaction stops the particle.",
+          "misconception": "stopping claim"
+        },
+        {
+          "key": "D",
+          "text": "the speed first rises then falls",
+          "correct": false,
+          "explanation": "Speed is untouched throughout the deflection.",
+          "misconception": "oscillation guess"
+        }
+      ]
+    },
+    {
+      "id": "rn_4cM2y5tCVYWZ9VMJ::L1::Q6",
+      "moduleId": "rn_4cM2y5tCVYWZ9VMJ::L1",
+      "stem": "State the two conditions needed for a charged particle to experience a force in a magnetic field.",
+      "misconceptionClass": "condition recall",
+      "kind": "recall",
+      "modelAnswer": "The particle must be moving, and its motion must not be parallel to the magnetic field lines.",
+      "keywords": [
+        "moving",
+        "parallel",
+        "field"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4cM2y5tCVYWZ9VMJ::L1::Q7",
+      "moduleId": "rn_4cM2y5tCVYWZ9VMJ::L1",
+      "stem": "State the direction of the force on a moving charge relative to the field and the motion.",
+      "misconceptionClass": "geometry recall",
+      "kind": "recall",
+      "modelAnswer": "The force is at right angles to both the velocity and the magnetic field lines.",
+      "keywords": [
+        "right",
+        "angles",
+        "velocity",
+        "field"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4cM2y5tCVYWZ9VMJ::L1::Q8",
+      "moduleId": "rn_4cM2y5tCVYWZ9VMJ::L1",
+      "stem": "Explain why an electron moving exactly along a field line experiences no magnetic force.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The magnetic force on a charge depends on the component of its motion across the field lines. Motion exactly parallel to the field has no cross-field component, so the field cannot exert any sideways push; the electron simply continues undeflected along the line.",
+      "keywords": [
+        "component",
+        "parallel",
+        "field",
+        "undeflected"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4cM2y5tCVYWZ9VMJ::L1::Q9",
+      "moduleId": "rn_4cM2y5tCVYWZ9VMJ::L1",
+      "stem": "In a laboratory tube, a beam of electrons fires across a magnetic field at right angles. Describe and explain what an observer sees.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The beam bends into a curve as it crosses the field, because each electron feels a force at right angles to its motion. The deflection is sideways — perpendicular to both the beam and the field — and reverses side if the field direction or the beam current is reversed.",
+      "keywords": [
+        "bends",
+        "force",
+        "perpendicular",
+        "reverses"
+      ],
+      "options": []
+    }
+  ]
+}

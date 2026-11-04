@@ -149,6 +149,63 @@ export async function requestRegionMark(
   }
 }
 
+/** The defined POST /parts/:partId/regrade outcomes — the typed channel's
+ * request half (T-MG-PLAYER-MARK-1; rollout plan Lane C). No 413 class:
+ * there is no crop, the answer rides as text (the api's own taxonomy —
+ * 400 malformed/validation, 404 unknown part, 422 no_mark_points). */
+export type PartRegradeRequestResult =
+  | { outcome: "accepted"; markId: string }
+  | { outcome: "rejected"; message: string }
+  | { outcome: "unconfigured" }
+  | { outcome: "no_token" }
+  | { outcome: "failed" };
+
+/**
+ * POST /api/v1/paper-marks/parts/:partId/regrade {answerHtml} — the typed
+ * channel: the learner's typed answer IS the transcription (no vision
+ * step); the same doctrine-match + once-only ledger write runs beneath it.
+ * 202 → accepted {markId} (the poll handle; the client polls, never
+ * re-POSTs — retry: 0). The DEFINED 4xx envelopes (malformed/validation
+ * 400 · unknown part 404 · no_mark_points 422) surface their honest
+ * message as "rejected"; everything else is "failed".
+ */
+export async function requestPartRegrade(
+  partId: string,
+  answerHtml: string,
+  token: string | null,
+  fetchImpl: typeof fetch = fetch,
+): Promise<PartRegradeRequestResult> {
+  // Token-first (the caller-supplied posture); unconfigured is the honest
+  // missing-origin class — the same order as requestRegionMark.
+  if (!token) return { outcome: "no_token" };
+  const base = marksBaseUrl();
+  if (!base) return { outcome: "unconfigured" };
+  try {
+    const res = await fetchImpl(`${base}/api/v1/paper-marks/parts/${encodeURIComponent(partId)}/regrade`, {
+      method: "POST",
+      headers: { ...authHeaders(token), "Content-Type": "application/json" },
+      cache: "no-store",
+      signal: AbortSignal.timeout(15_000),
+      body: JSON.stringify({ answerHtml }),
+    });
+    if (res.status === 202) {
+      const parsed = acceptedMirror.safeParse(await res.json().catch(() => null));
+      return parsed.success
+        ? { outcome: "accepted", markId: (parsed.data as PaperMarkAccepted).markId }
+        : { outcome: "failed" };
+    }
+    if (res.status === 400 || res.status === 404 || res.status === 422) {
+      const env = apiErrorMirror.safeParse(await res.json().catch(() => null));
+      return env.success
+        ? { outcome: "rejected", message: env.data.message }
+        : { outcome: "rejected", message: `marking refused the answer (HTTP ${res.status})` };
+    }
+    return { outcome: "failed" };
+  } catch {
+    return { outcome: "failed" };
+  }
+}
+
 /** The defined GET /marks/:markId outcomes. */
 export type MarkPollResult =
   | { outcome: "snapshot"; snapshot: MirroredPollSnapshot }

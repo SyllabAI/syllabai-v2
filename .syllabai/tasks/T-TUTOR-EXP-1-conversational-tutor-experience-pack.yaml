@@ -1,0 +1,42 @@
+version: 1
+task:
+  id: T-TUTOR-EXP-1
+  title: "T-TUTOR-EXP-1 - the conversational tutor experience pack (run-001): (A) the self-contained concept-graph deploy law — the 2026-11-03 tutor outage class killed at the root (the CLI 2-file stage deploy shipped api/index.js without the six sha256-pinned concept-graph YAMLs beside it; loadConceptGraphSnapshot fail-closed exactly as designed and EVERY tutor ask 500'd for ~5.5h while CLA/Teach-Me stayed healthy; the session-local hotfix inlined the assets but was never committed — this lands the committed form: a generated inline-assets module + the re-runnable generator that refuses to write off-pin bytes, so ANY deploy recipe is self-contained by construction); (B) citation source titles (001) — 'Revision notes — p1' becomes 'Revision notes — <document title> — p1' (additive EvidenceItem.sourceTitle, the 133d additive-field precedent, graceful null, warehouse-seam rows stay title-less honestly); (C) quiz-turn honesty (005) — the improvised-quiz law gains the marks clause (mark values only from the SOURCES, omit when absent, never invent) as prompt v16, and quiz-shaped asks without a pin drop weakly-fused filler citations (relative fusedScore floor, deterministic); (D) CLA spec-statement evidence (004) — the measured false-refusal class dies: 'what does 4CH1-1.59C say' was refused INSIDE the topic containing it because the evidence window carried KG node descriptions but never the spec statements' official wording; the frozen concept-graph snapshot (the tutor spec-boost's own substrate) now contributes ONE bounded deterministic SYLLABUS lead item on topic contexts; (E) verified-of-record, no code: hub courseRef already rides the registry curriculumCode (tutor/page.tsx law) and the disabled topic-context HINT/CHECK chips ARE the frozen CLA contract (question-context modes), not a defect"
+  owner: "r0 (Super Z, zai-web session web-5e612468-7ecd-499d-8b14-7c05e8412405) - self-filed under the operator directive 'Improve the conversational tutor experience' (2026-11-03/04 chat, trace 1a1a290703d26805); the run is the same session that diagnosed the outage live (7/7 failed asks, 08:48-14:13 UTC window) and restored the alias after the diagnostic-deploy incident"
+  status: "IN_REVIEW # run-001 on branch t-tutor-exp/run-001, receipt .syllabai/receipts/T-TUTOR-EXP-1/run-001.md, gates green first-hand (typecheck 5/5, api 2730/0, packages 565/0, golden selftest OK); review pass landed 2026-11-04 (.syllabai/receipts/T-TUTOR-EXP-1/run-001-review-pass.md — READY, no blocking findings, gates re-verified first-hand at head 2379cc4d, CI hub+verify green)"
+  priority: P1
+  wave: "post-migration experience band # the tutor family is migrated and serving; this band hardens the deploy law and closes the measured learner-experience gaps from the live verification battery"
+  deps: [T-MIG-060, T-MIG-069, T-MIG-133]
+  scope:
+    allowed:
+      - "apps/api/src/services/teacher/snapshot.ts (inline-first asset read, same sha256 pins)"
+      - "apps/api/src/services/teacher/concept-graph-assets.gen.ts (NEW generated file, committed)"
+      - "scripts/gen_concept_graph_assets.ts (NEW re-runnable generator, off-pin writes refuse)"
+      - "apps/api/package.json (one gen script entry)"
+      - "apps/api/src/services/tutor/evidence.ts (additive sourceTitle field)"
+      - "apps/api/src/services/tutor/vector-arm.ts (d.title projection + passthrough)"
+      - "apps/api/src/services/tutor/citations.ts (NOTE/TEXTBOOK label titles)"
+      - "apps/api/src/services/tutor/prompt.ts (v16 marks-honesty quiz clause)"
+      - "apps/api/src/services/tutor/karag.ts (quiz-turn citation floor, scaffold-less path only)"
+      - "apps/api/src/services/cla/service.ts (spec-statement lead item + leadItem sourceTitle null)"
+      - "apps/api/test/tutor/*.ts + apps/api/test/cla/*.ts (literal updates + new pins for the new laws)"
+      - ".syllabai/tasks/T-TUTOR-EXP-1-conversational-tutor-experience-pack.yaml (this yaml)"
+      - ".syllabai/receipts/T-TUTOR-EXP-1/**"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "packages/contracts/** (no schema change: sourceTitle rides the EXISTING label string; quiz floor rides evidence selection, not the wire)"
+      - "golden/** captured cases (never weakened; the quiz floor + labels touch LLM-facing assembly the golden gate does not pin — asserted in the receipt)"
+      - "apps/hub/** (002/003 verified of record; zero bytes needed — the pack ships no hub change)"
+      - "the deployed 2-file stage recipe itself (operator-gated lever; this band makes the BUNDLE self-contained so the recipe can no longer omit assets)"
+      - "Neon main writes; force-push; self-merge; credentials in any artifact"
+  execution_record: >
+    run-001 (this PR): diagnosis chain of record — 2026-11-03 live battery: 7/7 tutor asks failed
+    (500 /api/v1/tutor/ask + SSE event:error) across ~12min plus the whole 08:48-14:13 window; CLA
+    7-question battery healthy same window (4/4 grounded answers, 3/3 honest refusals, 0 fabrication);
+    root cause recovered from the deployment trees + bundle: the 08:48-09:14 CLI deploys shipped ONLY
+    api/index.js + vercel.json, the snapshot loader's readFileSync fail-closed ("concept graph snapshot
+    missing: concept-graph/specification_points.yaml"); production restored by the 14:13 rebuild and a
+    brief diagnostic-deploy alias incident was re-aliased (14:20-14:29 UTC). The hotfix's CONCEPT_ASSETS
+    inline never landed in git — this run lands the committed, re-runnable form and the four experience
+    fixes measured against the live 4CH1 battery. 002/003 re-verified as already-of-record on main
+    (tutor/page.tsx slug->curriculumCode; claModeSchema question-context law) — no hub bytes.

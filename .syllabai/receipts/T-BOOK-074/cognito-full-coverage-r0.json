@@ -1,0 +1,44 @@
+{
+ "/task": "T-BOOK-074",
+ "/run": "run-001",
+ "/receipt": "cognito-full-coverage-r0",
+ "/lane": "books/4ch1 media lane — Cognito FULL-COVERAGE integration (the operator's direct order)",
+ "/operator_order": "trace 1a1a4e45ca4e2325 — 'I want you to seamlessly integrate all the cognito videos into the course lesson 4ch1'; subsumes the open census question (trace 1a1a4d666e4e93a5) 'How many videos does cognito have for IGCSE chemistry edexcel?'",
+ "/date_utc": "2026-11-04",
+ "/agent": "operator sandbox session (trace 1a1a5051a8839469, continuing 1a1a28e9d73c60c1/1a1a2ea36d3287a9 lane)",
+ "/census_of_record": {
+   "method": "TOC fetch of the provider track of record (cognito.org/courses/gcse/chemistry-triple/iedexcel) -> per-topic page fetch -> primary embedded-video extraction (YT_RE of cog-curate.py); census JSON session-side: scripts/cog-igcse-chem-video-census.json",
+   "topic_pages": 93,
+   "video_bearing_pages": 63,
+   "distinct_assets": 61,
+   "duplicate_asset_pairs": [
+     "uYubwlPRdCs on 2.4 (Group 0) and 4.2 (Group 7 page reuses it) — canonical 2.4, pre-existing c04 row",
+     "MEQ1YGxfAQ4 on 3.11 (census misattribution, corrected by fresh fetch) and 4.14 (canonical) — canonical 4.14-titration-calculations, NEW c16 row (spec 2.33C)"
+   ],
+   "pages_without_video": 30,
+   "answer_to_census_question": "Cognito's Edexcel IGCSE Chemistry track: 93 lesson pages, 63 ship an embedded video, 61 distinct video assets; the 30 video-less pages (practicals 7.x, skills 8.x, several theory pages) stay honest-empty per ADR-BOOK-0006 decision 1"
+ },
+ "/curation_protocol": {
+   "fetch_first": "every NEW row verified fresh 2026-11-04 BEFORE authoring: provider page HTTP 200, fresh video-ID extraction, oEmbed 200, youtube-nocookie probe 200",
+   "verdicts": "34/34 CURATED — session-side scripts/t-book-074-curation.json (per-topic URL of record, provider_http, video_fresh, oembed, nocookie, oembed_title)",
+   "census_corrections": [
+     "3.11-concentration-of-solutions actually ships rluAIfmi7x8 (= the pre-existing c06 row; census had misattributed MEQ1YGxfAQ4 to it) -> no new row; covered by the existing c06 lesson",
+     "4.14-titration-calculations is MEQ1YGxfAQ4's canonical topic -> NEW c16 row, verified inline (oembed 'GCSE Chemistry - Titration Calculations')",
+     "4.2-group-7-halogens page reuses 2.4's uYubwlPRdCs -> no new row (ADR-BOOK-0006 decision 3 duplicate-asset policy), disclosed here"
+   ],
+   "spec_binding": "specRefs chosen from the official spec text (specification_points.yaml), each inside the hosting chapter's canonical subsection; examples of record: cracking -> 4.17/4.18, corrosion -> 2.18/2.19, redox -> 2.20, bond energies -> 3.6C/3.7C, rate practical -> 3.15"
+ },
+ "/authoring": {
+   "manifest": "books/4ch1/meta/media-sources.yaml 29 -> 63 rows (append-only; all provider=cognito; checked_date 2026-11-04, recheck_days 90)",
+   "blocks": "34 media-embed blocks across 17 packs — c02 x5, c03 x1, c04 x2, c05 x4, c06 x1, c07 x2, c08 x3, c10 x2, c13 x1, c14 x2, c16 x1, c18 x1, c19 x2, c20 x3, c21 x1, c23 x2, c29 x1; ords continue each pack's 1..n below the strength 100+ band; pdfPageAnchor = the pack's current last anchor (monotonic, in-range)",
+   "pack_plans": "17 pack.yaml planned_blocks bumps (S0-plan-is-binding law)",
+   "adr": "docs/adr/ADR-BOOK-0006-cognito-full-coverage-4ch1.md — revisits ADR-BOOK-0002 decision 6 (<=2 media blocks/chapter pilot density guard) via that decision's own revisit clause: full-coverage mode, 4CH1 only; every other ADR-BOOK-0002 decision preserved (embed law, manifest+G4 resolve, licensing basis, fetch-verify protocol, rollback-by-retire, anti-dilution)"
+ },
+ "/gates": {
+   "lint": "bun scripts/books/lint.mjs books/4ch1 <dev-manifest> apps/api/src/services/teacher/concept-graph/specification_points.yaml -> 33 packs, 300 blocks, 0 findings, 0 warns (re-run post-rebase 2026-11-04, same numbers; dev manifest anchor-derived per T-BOOK-070 disclosure precedent, generator scripts/t-book-073-dev-manifest.py)",
+   "ci_gate_b": "recorded in receipt r1"
+ },
+ "/commit_of_record": "17cce209 'T-BOOK-074 r0: Cognito full-coverage for 4CH1 — 34 fetch-verified videos integrated' (53 files, +1448/-17; tree bafff961) — pushed to origin by the earlier session segment; content merged via PR #716",
+ "/fleet_arithmetic": "61 census distinct assets = 27 pre-existing census-track rows + 34 new rows (ALL census assets integrated); +2 pre-existing Cognito assets outside the iedexcel topic census (c06 rluAIfmi7x8 GCSE-track concentration video; DnFcyhsSVGg) = 63 manifest rows = 63 media-embed blocks fleet-wide",
+ "/boundaries": "zero code outside books/4ch1 + docs/adr; zero force-push; no DB writes this leg (r2 owns them); census/curation/author scripts session-side only"
+}

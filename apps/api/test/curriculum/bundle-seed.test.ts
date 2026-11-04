@@ -1065,6 +1065,72 @@ describe("ruling A — the optionA identity laws (trace 1a15b161bf960249)", () =
     expect(() => mapBundleNodes(drifted, "p")).toThrow(/does not carry the official -T tail/);
   });
 
+  test("the ADR-039 §4 SME section rows skip the seed map (the disclosed childless leaf class, T-SME-REDS-FIX r0 trace 1a1a722ebe477629)", () => {
+    // the six rows of record — childless leaf TOPICs off the SUBJECT root,
+    // zero corpus anchors, UI-level selector rows of the hub corpus plane
+    // (ADR-039 §4). No UNIT identity lands for them: the CIE -T law would
+    // refuse (the CI verify red of record) and the Edexcel order law would
+    // graft an invented -S<order> UNIT the DB never carried. The skip is
+    // fleet-wide (both boards); nothing dangles — the rows carry no children.
+    const geo = mapBundleNodes(load("cie-igcse-geography-25"), "p");
+    expect(geo.has("cie-igcse-geography-2025-2026-SME-CLIMATE-CHANGE")).toBe(false);
+    expect(geo.has("cie-igcse-geography-2025-2026-SME-GEOGRAPHICAL-SKILLS")).toBe(false);
+    expect(
+      mapBundleNodes(load("cie-igcse-maths-international-maths-23-core"), "p")
+        .has("cie-igcse-maths-international-maths-2025-2027-TC-SME-INVESTIGATIONS"),
+    ).toBe(false);
+    expect(
+      mapBundleNodes(load("cie-igcse-maths-international-maths-23-extended"), "p")
+        .has("cie-igcse-maths-international-maths-2025-2027-TE-SME-INVESTIGATIONS-MODELLING"),
+    ).toBe(false);
+    expect(
+      mapBundleNodes(load("cie-igcse-science-combined-science-23-biology"), "p")
+        .has("cie-igcse-science-combined-science-2023-2024-SME-DRUGS"),
+    ).toBe(false);
+    expect(mapBundleNodes(load("ial-biology-18"), "p").has("ial-biology-SME-SYNOPTIC-ASSESSMENT")).toBe(false);
+    // the official grammar is untouched: geography-25's official -T topics
+    // still map byte-identically under the optionA namespace law
+    expect(geo.get("cie-igcse-geography-2025-2026-T1")!.dbCode).toBe("0460-2025-2026-S1");
+    expect(geo.get("cie-igcse-geography-2025-2026-T3")!.dbCode).toBe("0460-2025-2026-S3");
+  });
+
+  test("the -SME- shape guard refuses a data-bearing -SME- row (fail-closed, never a silent drop)", () => {
+    // a future -SME- row that is NOT the disclosed childless SUBJECT-root
+    // leaf shape (here: it carries a SPEC_POINT child) refuses rather than
+    // being silently skipped — the skip can never eat a data-bearing row
+    const b = load("cie-igcse-geography-25");
+    const subject = b.nodes.find((n) => n.family === "SUBJECT")!;
+    const bearing = {
+      ...b,
+      nodes: [
+        ...b.nodes,
+        {
+          family: "SPEC_POINT",
+          code: "0460-2025-2026-SME-FAKE.1",
+          title: "fake spec point",
+          description: null,
+          order: 1,
+          parents: ["cie-igcse-geography-2025-2026-SME-FAKE"],
+          provenanceTier: "RULE_DERIVED",
+          applicability: null,
+        },
+        {
+          family: "TOPIC",
+          code: "cie-igcse-geography-2025-2026-SME-FAKE",
+          title: "Fake (SME section)",
+          description: null,
+          order: 9,
+          parents: [subject.code],
+          provenanceTier: "RULE_DERIVED",
+          applicability: null,
+        },
+      ],
+    } as BundleCurriculum;
+    expect(() => mapBundleNodes(bearing, "p")).toThrow(
+      /not the disclosed childless SUBJECT-root leaf shape/,
+    );
+  });
+
   test("the title-drift refusal: a shared dbCode whose titles disagree is tree drift (honest red)", async () => {
     const mk = (slug: string, subject: string) => ({
       board: "Cambridge International",

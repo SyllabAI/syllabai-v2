@@ -1,0 +1,267 @@
+{
+  "format": "hub-import-run-receipt/0.1",
+  "generated_at_utc": "2026-11-04T10:29:18Z",
+  "feed": "physics-wave10-v29",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "landing_law": "additive",
+  "generated_at_utc_note": "figures feed: declared revision of the 112 lesson artifacts (G-DELTA); additive-only law unchanged for everything else",
+  "operator_trace": "1a1a4cdfef99f6c9",
+  "operator_directive": "run the new-subject wave-10 chain — import the igcse-physics-19 wave-10 tranche of record (14 notes: rn_sqCx39VrBpV7b3xJ 'Magnetism' / rn_4cM2y5tCVYWZ9VMJ 'Magnetic Force on a Charge' / rn_ktPSHfBc5pVkTTj4 'Magnetic Fields' / rn_xKZn9BFkpxpy6pBG 'Permanent & Induced Magnets' / rn_y9WPd7HxNXd6W7wx 'Core Practical: Investigating Magnetic Fields' / rn_vpyY8DrdsZGwBjBX 'Electromagnetism' / rn_tmY2Kb5JP5h5Vjcf 'The Motor Effect' / rn_g6D8Vm7wK3vwHhTG \"Fleming's Left-Hand Rule\" / rn_QFkHfwY9Brn5bhq8 'Electromagnets' / rn_djn7QGwpMBj2xb2q 'Magnetic Field Patterns' / rn_8859pDM2R7Y4qVKc 'Electromagnetic Induction' / rn_dRYCKprDDBys3j4W 'Generators & Dynamos' / rn_jzHmr535CQnZvdWC 'Transformers' / rn_hYbhpMKCjdqM8zQF 'Transformer Equations'; 31 lessons / 279 checks = 155 MCQ + 62 recall + 31 explain-why + 31 application) with the 170 prior-pack artifacts re-pinned byte-identical — CUMULATIVE pack 99 notes / 208 lessons / 1872 checks, manifest v29. Declared hub landing = 28/28 written + 170/170 identical-exists + the runner-owned guided-import.json index re-issued with all 99 rows; zero chemistry bytes touched. Operator ignition trace 1a1a4cdfef99f6c9 ('Wave-10 proceed'), execution trace 1a1a4cdfef99f6c9.",
+  "runner": {
+    "path": "apps/hub/scripts/import_guided/run_import.mjs",
+    "id": "hub-import-runner/1.0",
+    "runtime": "node v24.22.2"
+  },
+  "feed_config": {
+    "manifest": "hub-import-manifest-v29.json",
+    "manifest_version": 29,
+    "promo": {
+      "commit": "b3caaaa90c5e62b54caf82eda733dd83d2603ee6",
+      "tree": "c17773eca7e63797c605407b27479c6b938d297a",
+      "parent": "09d94aea85da021cc2f75de83e25a3d8bed094cd",
+      "trace": "1a1a4cdfef99f6c9"
+    },
+    "promotion_pending": false,
+    "integration_branch": "(main ancestry)",
+    "artifact_pin": "6312d659ec0db635b658e43ed74f1960e547eeb4",
+    "figures_feed": true
+  },
+  "gates": {
+    "P0": "promotion commit preflight (tree/parent/message/ancestry or declared pending promotion)",
+    "GA": "manifest integrity (format/version/kinds/counts/conservation/adapter/trace + survivor byte-identity + schemas byte-anchored)",
+    "GB": "198/198 fetched raw @ pinned commit, sha256+bytes exact",
+    "GC": "ajv draft-07 ×198 vs both target schemas",
+    "GD": "X ×99 — derived-ID grammar, checkRefs↔questions bidirectional 1:1 (1872 checks), pinned provenance, figure closure both ways (310 figures)",
+    "GE": "Φ — per-note stream anchors ×99 vs the feed's INT-3 record; wave subtotals ×11; grand stream vs manifest; legacy-anchor equality ×99 (figures carried no prose)",
+    "LAND": "byte-exact atomic landing (additive law) — additive-only, divergent overwrite aborts",
+    "GV": "cold re-read ×198; closing identity re-derived from disk; loader rel-shape probe; static-build pickup; idempotence 198/198; figure counts re-derived from disk"
+  },
+  "gate_results": [
+    {
+      "stage": "P0",
+      "name": "promotion commit resolves",
+      "ok": true,
+      "detail": "b3caaaa90c5e62b54caf82eda733dd83d2603ee6"
+    },
+    {
+      "stage": "P0",
+      "name": "tree matches promotion receipt",
+      "ok": true,
+      "detail": "tree=c17773eca7e63797c605407b27479c6b938d297a"
+    },
+    {
+      "stage": "P0",
+      "name": "parent matches promotion receipt",
+      "ok": true,
+      "detail": "parent=09d94aea85da021cc2f75de83e25a3d8bed094cd"
+    },
+    {
+      "stage": "P0",
+      "name": "message carries promotion trace",
+      "ok": true,
+      "detail": "Merge PR #303: guided(NS-4PH1 wave-10) — the 6-1 magnetism-and-electromagnetism + 6-2 elec"
+    },
+    {
+      "stage": "P0",
+      "name": "promotion commit remains main ancestor",
+      "ok": true,
+      "detail": "status=ahead behind_by=0"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest fetched @ promotion commit",
+      "ok": true,
+      "detail": "65127B"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest byte-identical to lane survivor",
+      "ok": true,
+      "detail": "remote aeb8984326dc vs survivor aeb8984326dc"
+    },
+    {
+      "stage": "G-A",
+      "name": "format hub-import-manifest/1.0",
+      "ok": true,
+      "detail": "hub-import-manifest/1.0"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest_version 29",
+      "ok": true,
+      "detail": "29"
+    },
+    {
+      "stage": "G-A",
+      "name": "198 artifacts listed",
+      "ok": true,
+      "detail": "198"
+    },
+    {
+      "stage": "G-A",
+      "name": "kinds 198/198 (feed census)",
+      "ok": true,
+      "detail": "{\"hub-lesson-import-1.5\":99,\"sme-question-package\":99}"
+    },
+    {
+      "stage": "G-A",
+      "name": "counts == closing identity",
+      "ok": true,
+      "detail": "{\"notes\":99,\"lessons\":208,\"checks\":1872,\"keyPoints\":1005,\"distractors\":3120,\"glossaryTerms\":395,\"figures\":310,\"figures_module_mapped\":297,\"figures_note_level\":13,\"workedExamples_populated\":46,\"workedExamples_null\":53,\"authored_chars_conserved\":1198079}"
+    },
+    {
+      "stage": "G-A",
+      "name": "conservation block present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "stage": "G-A",
+      "name": "adapter of record",
+      "ok": true,
+      "detail": "guided-lesson-0.6--hub-lesson-import-1.5"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest carries promotion operator trace",
+      "ok": true,
+      "detail": "1a1a4cdfef99f6c9"
+    },
+    {
+      "stage": "G-A",
+      "name": "artifact paths conform to the feed's path-map families",
+      "ok": true,
+      "detail": "198 conform"
+    },
+    {
+      "stage": "G-A",
+      "name": "hub schema byte-identical to survivor",
+      "ok": true,
+      "detail": "12004B"
+    },
+    {
+      "stage": "G-A",
+      "name": "package schema byte-identical to survivor",
+      "ok": true,
+      "detail": "6078B"
+    },
+    {
+      "stage": "G-B",
+      "name": "198/198 artifacts fetched + sha256/bytes exact",
+      "ok": true,
+      "detail": "all exact"
+    },
+    {
+      "stage": "G-C",
+      "name": "ajv draft-07 ×198 (guided-lesson-0.6--hub-lesson-import-1.5 + sme-question-package/1.2)",
+      "ok": true,
+      "detail": "all pass"
+    },
+    {
+      "stage": "G-D",
+      "name": "X ×99: grammar + checkRefs↔questions + figure closure + provenance",
+      "ok": true,
+      "detail": "1872 checks + 310 figures resolve"
+    },
+    {
+      "stage": "G-E",
+      "name": "per-note stream anchors ×99 (sha256 + chars)",
+      "ok": true,
+      "detail": "all conserved"
+    },
+    {
+      "stage": "G-E",
+      "name": "wave stream subtotals ×11 vs manifest",
+      "ok": true,
+      "detail": "all match"
+    },
+    {
+      "stage": "G-E",
+      "name": "grand stream vs manifest",
+      "ok": true,
+      "detail": "1198079 chars a6cf63d1e8ac"
+    },
+    {
+      "stage": "LAND",
+      "name": "198 artifacts landed byte-exact (additive law)",
+      "ok": true,
+      "detail": "0 written, 0 revised, 198 already identical"
+    },
+    {
+      "stage": "LAND",
+      "name": "guided-import.json index landed (runner-owned, re-issued)",
+      "ok": true,
+      "detail": "57825B"
+    },
+    {
+      "stage": "G-V",
+      "name": "cold re-read ×198 byte-identical vs manifest sha",
+      "ok": true,
+      "detail": "disk == fetched bytes"
+    },
+    {
+      "stage": "G-V",
+      "name": "closing identity re-derived from disk",
+      "ok": true,
+      "detail": "{\"notes\":99,\"lessons\":208,\"checks\":1872,\"keyPoints\":1005,\"distractors\":3120,\"glossaryTerms\":395}"
+    },
+    {
+      "stage": "G-V",
+      "name": "figure counts re-derived from disk",
+      "ok": true,
+      "detail": "{\"figures\":310,\"moduleMapped\":297,\"noteLevel\":13,\"modulesWithFigures\":173}"
+    },
+    {
+      "stage": "G-V",
+      "name": "loader rel-shape probe (content/<rel>)",
+      "ok": true,
+      "detail": "igcse-physics-19/guided-lessons/rn_RpyMnS5nqWSRWXXG.hub-lesson-import.json , igcse-physics-19/guided-questions/rn_RpyMnS5nqWSRWXXG.sme-question-package.json , igcse-physics-19/guided-import.json"
+    },
+    {
+      "stage": "G-V",
+      "name": "static build copies content/ recursively (cpSync recursive in build_corpus_static.mjs)",
+      "ok": true,
+      "detail": "whole-tree copy — new guided-* subdirs publish with the next build"
+    },
+    {
+      "stage": "G-V",
+      "name": "idempotence re-landing 198/198 identical-exists",
+      "ok": true,
+      "detail": "198/198"
+    }
+  ],
+  "landing": {
+    "hub_tree": "/home/z/my-project/wt-wave10/apps/hub",
+    "pack": "content/igcse-physics-19/",
+    "lessons_dir": "guided-lessons/ (99 files)",
+    "questions_dir": "guided-questions/ (99 files)",
+    "index": "guided-import.json (guided-import-index/1.0)",
+    "files_written": 0,
+    "files_revised": 0,
+    "files_already_identical": 198,
+    "bytes_landed": 2878375
+  },
+  "counts_landed": {
+    "notes": 99,
+    "lessons": 208,
+    "checks": 1872,
+    "keyPoints": 1005,
+    "distractors": 3120,
+    "glossaryTerms": 395
+  },
+  "figures_landed": {
+    "figures": 310,
+    "moduleMapped": 297,
+    "noteLevel": 13,
+    "modulesWithFigures": 173
+  },
+  "conservation_recomputed": {
+    "authored_chars": 1198079,
+    "authored_stream_sha256": "a6cf63d1e8ac9111f2c25837d6ef6a653bc820d45ec9792fb4107c5b65eaf1f0"
+  },
+  "next_operator_gated": [
+    "commit the hub tree addition (runner + content/igcse-physics-19/guided-*) per standing convention — push auto-bakes the hub (git-linked law)",
+    "hub PR (atomic): FEED runner + TS optional fields + renderer figure cards + revised artifacts + re-issued guided-import.json; merges only after resources PR #207"
+  ],
+  "duration_ms": 14762
+}
