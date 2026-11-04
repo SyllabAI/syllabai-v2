@@ -71,7 +71,7 @@ export async function GET(request: Request) {
   }[] = [];
 
   for (const topic of bundle.questionTopics) {
-    const code = subtopicOfQuestionSet(topic, index);
+    const code = subtopicOfQuestionSet(topic, index, bundle.notes);
     const sub = code ? index.subtopicByCode.get(code) : undefined;
     const items: QueueItem["part"][] = [];
     for (const q of topic.questions) {

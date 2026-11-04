@@ -11,6 +11,7 @@
  *     → SUBTOPIC (4CH1-S1-a "States of matter") → SPEC_POINTs (4CH1-1.1 …)
  */
 import type { Curriculum, CurriculumNode, ExamQuestionTopic, Flashcard, RevisionNote } from "@/lib/contracts";
+import { smeSectionTopicCode } from "@/lib/sme-section-map";
 
 export interface SpecSubtopic {
   code: string; // "4CH1-S1-a"
@@ -187,12 +188,121 @@ export function subtopicOfNote(
   return null;
 }
 
-/** Subtopic with the most anchored questions — the set's canonical home.
- *  Corpus-native placement (topicSlug) wins; spec-anchor tally is the
- *  fallback for the official-tree pilot. */
+// ── placement helpers (corpus-derived, nothing guessed) ─────────────────
+
+function normTitle(s: string | null | undefined): string {
+  return (s ?? "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+const TITLE_STOP = new Set(["and", "the", "of", "in", "a", "an", "for", "to"]);
+
+function titleToks(s: string | null | undefined): string[] {
+  const folded = (s ?? "").toLowerCase().replace("&", " and ");
+  return folded
+    .split(/[^a-z0-9]+/)
+    .filter((t) => t.length > 0 && !TITLE_STOP.has(t));
+}
+
+/** Official section number carried by the topic CODE ("4CH1-S1" → 1,
+ *  "…-TC6" → 6, sme-native "igcse-maths-a-T1" → 1) — the parsed tree keeps
+ *  the syllabus numbering even when corpus order drifts. */
+function officialTopicNumber(topicCode: string): number | null {
+  const m = /[ST][CE]?(\d+)$/.exec(topicCode);
+  return m ? parseInt(m[1], 10) : null;
+}
+
+/**
+ * Topic-level home for a set whose sub-topic cannot be resolved: the section
+ * it was published under, matched to exactly ONE official topic. Every rule
+ * is mechanical; the first hit wins:
+ *
+ *   a. section number ("6. External influences") → topic whose CODE carries
+ *      that official number ("…-T6") — immune to corpus-order drift
+ *   b. section number → the topic at that corpus position (number == order)
+ *   c. section title tokens folded ("&"→"and", stopwords dropped) with the
+ *      topic title — prefix match either way, or full containment, UNIQUE only
+ *   d. a single-topic spine (component courses: Mechanics, P1…) — every set
+ *      in the course belongs to it, trivially unambiguous
+ *   e. the frozen SME section map (reference-derived numbering backfill,
+ *      sme-section-map.ts — ADR-039 provenance)
+ */
+function topicHomeOfSet(topic: ExamQuestionTopic, index: SpecTreeIndex): SpecTopic | null {
+  const tree = index.tree.topics;
+  if (tree.length === 0) return null;
+  const sec = topic.section ?? "";
+  const secNum = /^(\d+)\./.exec(sec);
+  if (secNum) {
+    const n = parseInt(secNum[1], 10);
+    const byCode = tree.filter((t) => officialTopicNumber(t.code) === n);
+    if (byCode.length === 1) return byCode[0];
+    const byPos = tree.filter((t) => t.number === n);
+    if (byPos.length === 1) return byPos[0];
+  }
+  const st = titleToks(sec);
+  if (st.length > 0) {
+    const hits = tree.filter((t) => {
+      const tt = titleToks(t.title);
+      if (tt.length === 0) return false;
+      if (tt.length >= st.length && tt.slice(0, st.length).join(" ") === st.join(" ")) return true;
+      if (st.length >= tt.length && st.slice(0, tt.length).join(" ") === tt.join(" ")) return true;
+      return st.every((w) => tt.includes(w));
+    });
+    if (hits.length === 1) return hits[0];
+  }
+  if (tree.length === 1) return tree[0];
+  const mapped = smeSectionTopicCode(topic.sectionSlug, tree[0].code);
+  if (mapped) {
+    const hit = tree.find((t) => t.code === mapped);
+    if (hit) return hit;
+  }
+  return null;
+}
+
+/**
+ * The synthetic "General requirements" row (the same shape buildSpecTreeIndex
+ * uses for orphan spec points) — the honest home for TOPIC-LEVEL sets: they
+ * belong to the topic but not to any one sub-topic. Created on demand so a
+ * topic without orphan spec points still gets the row; idempotent.
+ */
+function ensureTopicGenRow(index: SpecTreeIndex, topicCode: string): string | null {
+  const genCode = `${topicCode}-gen`;
+  if (index.subtopicByCode.has(genCode)) return genCode;
+  const spec = index.topicByCode.get(topicCode);
+  if (!spec) return null;
+  const gen: SpecSubtopic = {
+    code: genCode,
+    label: "gen",
+    title: "General requirements",
+    topicCode,
+    specPointCodes: [],
+  };
+  spec.subtopics.push(gen);
+  index.subtopicByCode.set(genCode, gen);
+  index.topicOfSubtopic.set(genCode, topicCode);
+  return genCode;
+}
+
+/**
+ * Subtopic with the most anchored questions — the set's canonical home.
+ * Placement priority (all corpus-derived; ADR-039):
+ *
+ *   1. corpus-native placement (topicSlug is a tree sub-topic code)
+ *   2. spec-anchor tally (majority vote over anchored parts)
+ *   3. notes-bridge — sets key by the SAME SME topic slugs the notes carry;
+ *      a note with that slug anchors corpus-natively, so the set inherits
+ *      that placement (memoized per index)
+ *   4. numbering backfill — SME slug numbering ("1-2-…") matching the one
+ *      sme-native sub-topic numbered "SUB1.2"
+ *   5. unique title match — set name == sub-topic title, only candidate
+ *   6. topic-level home (topicHomeOfSet) → the topic's "General requirements"
+ *      row — never the first sub-topic row (that would fabricate D3 rows)
+ *
+ * Returns null when nothing mechanical matches (ADR-039 map-gaps queue).
+ */
 export function subtopicOfQuestionSet(
   topic: ExamQuestionTopic,
   index: SpecTreeIndex,
+  notes?: RevisionNote[],
 ): string | null {
   if (topic.topicSlug && index.subtopicByCode.has(topic.topicSlug)) {
     return topic.topicSlug;
@@ -216,7 +326,35 @@ export function subtopicOfQuestionSet(
       bestN = n;
     }
   }
-  return best;
+  if (best) return best;
+
+  // 3. notes-bridge: the set's SME slug ↔ the notes' slug vocabulary
+  if (topic.topicSlug && notes && notes.length > 0) {
+    const s = noteSlugBridge(notes, index).get(topic.topicSlug);
+    if (s) return s;
+  }
+  // 4. numbering backfill: sme-native sub-topic codes carry "SUB<topic>.<n>"
+  const m = /^(\d+)-(\d+)-/.exec(topic.topicSlug ?? "");
+  if (m) {
+    const want = `${m[1]}.${m[2]}`;
+    const cands = [...index.subtopicByCode.keys()].filter((c) => {
+      const sm = /SUB(\d+\.\d+)$/.exec(c);
+      return sm?.[1] === want;
+    });
+    if (cands.length === 1) return cands[0];
+  }
+  // 5. unique title match (the -gen rows are synthetic, never match)
+  const name = normTitle(topic.name);
+  if (name.length > 0) {
+    const cands = [...index.subtopicByCode.entries()].filter(
+      ([c, s]) => !c.endsWith("-gen") && normTitle(s.title) === name,
+    );
+    if (cands.length === 1) return cands[0][0];
+  }
+  // 6. topic-level home → "General requirements" row
+  const t = topicHomeOfSet(topic, index);
+  if (t) return ensureTopicGenRow(index, t.code);
+  return null;
 }
 
 /**
@@ -294,7 +432,7 @@ export function resourceCounts(
     if (s) bump(s, "notes");
   }
   for (const t of topics) {
-    const s = subtopicOfQuestionSet(t, index);
+    const s = subtopicOfQuestionSet(t, index, notes);
     if (s) bump(s, "questions", t.questions.length);
   }
   for (const f of flashcards) {

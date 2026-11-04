@@ -418,12 +418,8 @@ export const loadHubCourse = cache(
   const noteSubtopic: Record<string, string | null> = {};
 
   for (const t of questionTopics) {
-    const s = subtopicOfQuestionSet(t, index);
+    const s = subtopicOfQuestionSet(t, index, notes);
     if (s) {
-      // first-write wins: the row's default target is the first set in corpus
-      // order (e.g. Multiple-Choice before Structured); the tree expander
-      // lists every set anchored to the sub-topic
-      hrefs.questions[s] ??= `${base}/exam-questions/${t.slug}`;
       (setsBySubtopic[s] ??= []).push(t.slug);
       (setListsBySubtopic[s] ??= []).push({
         slug: t.slug,
@@ -431,6 +427,15 @@ export const loadHubCourse = cache(
         count: t.questions.length,
       });
     }
+  }
+  // D3 row-link policy: a sub-topic row that aggregates MULTIPLE question
+  // sets no longer deep-links to whichever set came first in corpus order —
+  // the row counts every set's questions but opened just one of them
+  // (audit D3: 233 rows / 8,345 questions, worst "Chemical formulae…" 45
+  // sets behind one link). Multi-set rows become expander-only — the tree
+  // lists every set under the row — and single-set rows keep a direct link.
+  for (const [code, sets] of Object.entries(setsBySubtopic)) {
+    if (sets.length === 1) hrefs.questions[code] = `${base}/exam-questions/${sets[0]}`;
   }
   for (const n of notes) {
     const s = subtopicOfNote(n, index);

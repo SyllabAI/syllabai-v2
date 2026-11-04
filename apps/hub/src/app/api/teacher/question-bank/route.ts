@@ -55,7 +55,7 @@ export async function GET(request: Request) {
     }
     const byId = new Map<string, ReturnType<typeof toAssembledQuestion>>();
     for (const set of bundle.questionTopics) {
-      const code = subtopicOfQuestionSet(set, index);
+      const code = subtopicOfQuestionSet(set, index, bundle.notes);
       const sub = code ? index.subtopicByCode.get(code) : undefined;
       for (const q of set.questions) {
         byId.set(q.id, toAssembledQuestion(q, sub?.code ?? "—", sub?.title ?? set.name));
@@ -83,7 +83,7 @@ export async function GET(request: Request) {
   type Row = ReturnType<typeof toAssembledQuestion> & { preview: string };
   const rows: Row[] = [];
   for (const set of bundle.questionTopics) {
-    const code = subtopicOfQuestionSet(set, index);
+    const code = subtopicOfQuestionSet(set, index, bundle.notes);
     const sub = code ? index.subtopicByCode.get(code) : undefined;
     for (const q of set.questions) {
       const subCode = sub?.code ?? "—";
