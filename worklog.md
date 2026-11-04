@@ -1258,3 +1258,18 @@ Stage Summary:
 - PR #761 first CI round: census success; verify FAILED at books-bundle-spine.test.ts:47 — the higher-bundle sha256-of-record pin (d1059c0a...) did exactly its job: the conscious curriculum-byte change (16 title repairs) tripped the anti-silent-drift gate. Re-pinned of record to 55aad22c... with a dated comment citing the run-004 receipt (of-record precedent: the 2ece53b re-pin comment). Grep-verified BEFORE re-pin that zero test fixtures quote any damaged wording; the structural assertions (census 234/6/39/188, byTier, code order, the 1.1A wording, the join smoke) are unaffected by title-only repairs. Local re-run: 15 pass / 0 fail / 596 expect() calls.
 - Receipt updated in place with the ciGate block (the PR had not shipped; r0 stays the run's receipt of record).
 - Anti-truncation asserts: worklog appended append-only (new = old + this section incl. leading blank-line separator; byte delta == len(section); line delta == section newlines).
+
+## T-BRAND-FAVICON-201 run-003 — hub favicon = the header atom glyph (operator correction "I wanted the atom glyph as the favicon", trace 1a1a81cd01b69e89)
+Agent: main (Z.ai, zai-web session web-561901d7-498c-4c6f-aad2-00aeb4727ae6)
+Task: run-002 shipped candidate A (Kodchasan "S" on brand blue) because the operator's favicon-only order was read as "ship the recommended round-2 candidate". The operator corrected: the tab must show the SAME glyph the frontend header renders — the lucide Atom. This run replaces the S mark with the atom design; run-001's geometry work carries over (its PR was superseded before it ever shipped).
+
+Work Log:
+- Geometry: lucide "Atom" exact path data (lucide-static v1.68.0) at 1.6x on a 38.4px box inside the 64-grid rounded square (rx 14.4/64 = the 22.5% corner law the header's rounded-md lands on at 28px), white stroke bolded to 4.2/24-grid (2.1x lucide's 2.0) so the crossing-ellipse structure survives the 16px tab raster; 4.8 and 5.4 were rejected in run-001 proofs (ellipses merge into a solid flower).
+- Fill: default SME brand blue #265bf6 (globals.css --primary, oklch(0.541 0.238 264.7)) baked into the favicon; the in-app header keeps rendering theme-adaptive bg-primary.
+- app/icon.svg <- atom mark; app/favicon.ico <- multi-size ICO rebuilt on the run-002 pipeline from exact resvg vector renders at 16/32/48/64/128/256 (PNG entries).
+- Favicon-only scope unchanged: apple-icon.png / public/logo.svg / any header edits stay deferred (T-BRAND-LOGO-201). No code, metadata or build-config changes; the header already renders this glyph.
+- Post-merge verification receipt: live /favicon.ico and /icon.svg must equal the staged brand/ship_atom artifacts; the /icon.svg link hash in the HTML head must change.
+
+Stage Summary:
+- T-BRAND-FAVICON-201 run-003: browser tab now shows the same atom-on-brand-blue glyph users see in the app header. The "S" mark and candidates B/C return to the T-BRAND-LOGO-201 park together with the wordmark decision.
+
