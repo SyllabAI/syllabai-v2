@@ -1,0 +1,117 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_QFkHfwY9Brn5bhq8",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "d22c54cb519873d47425828171ec6a25bbefa24e76f7027ff96fcf3433a9328a",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_QFkHfwY9Brn5bhq8",
+    "topicTitle": "6. Magnetism and Electromagnetism",
+    "subtopicTitle": "Magnetism and Electromagnetism",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/6-magnetism-and-electromagnetism/6-1-magnetism-and-electromagnetism/6-1-8-electromagnets",
+    "specAnchors": [
+      {
+        "code": "6.9P",
+        "text": "describe the construction of electromagnets"
+      }
+    ],
+    "primer": {
+      "text": "Wind a coil, add a soft iron core, switch on the current — and you own a magnet with an off switch. This note covers the construction of electromagnets, the polarity flip when the current reverses, and the two levers — turns and current — that set the strength.",
+      "prerequisiteSubtopic": "Magnetism and Electromagnetism"
+    },
+    "modules": [
+      {
+        "id": "rn_QFkHfwY9Brn5bhq8::L1",
+        "title": "Building and using an electromagnet",
+        "sourceHeadings": [
+          "Electromagnets",
+          "Electromagnet diagram"
+        ],
+        "specRefs": [
+          "6.9P"
+        ],
+        "opening": "An electromagnet is a coil of wire — often wound on a soft iron core — that becomes a magnet only while current flows through the coil. Its poles swap when the current reverses, its strength responds to the current and the number of turns, and the on/off switch is what makes it so useful.",
+        "keyPoints": [
+          "An electromagnet is constructed from a coil of wire carrying a current.",
+          "The coil is often wound around a soft iron core to strengthen the field.",
+          "The electromagnet behaves as a magnet only while the current flows.",
+          "Reversing the current swaps the positions of the electromagnet's poles.",
+          "More turns on the coil and a larger current both strengthen the electromagnet."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Wrap wire round an iron nail, connect a battery, and the nail picks up pins. Cut the current and the pins drop — the magnet switched off with the switch.",
+            "analogy": "A permanent magnet is a candle that never goes out; an electromagnet is a torch — light while pressed, dark when released.",
+            "examPointer": "Construction answers need both parts: a COIL of wire CARRYING CURRENT, and the soft iron core named for the stronger version."
+          },
+          "medium": {
+            "restatement": "Each turn contributes its circular field, and coiling stacks them into a bar-magnet-like pattern with poles at the ends; the soft iron core is induced by the coil's field, multiplying the field strength while the current runs. Reversing the current reverses every turn's circulation, so the induced core poles and the coil poles swap together.",
+            "analogy": "Each turn is one weak battery of field; coiling wires them in series so their fields add, and the iron core is the amplifier in the circuit.",
+            "examPointer": "Diagram descriptions should trace the polarity: which end is north for the drawn current direction — polarity questions are common."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_QFkHfwY9Brn5bhq8::L1::Q1",
+          "rn_QFkHfwY9Brn5bhq8::L1::Q2",
+          "rn_QFkHfwY9Brn5bhq8::L1::Q3",
+          "rn_QFkHfwY9Brn5bhq8::L1::Q4",
+          "rn_QFkHfwY9Brn5bhq8::L1::Q5",
+          "rn_QFkHfwY9Brn5bhq8::L1::Q6",
+          "rn_QFkHfwY9Brn5bhq8::L1::Q7",
+          "rn_QFkHfwY9Brn5bhq8::L1::Q8",
+          "rn_QFkHfwY9Brn5bhq8::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "electromagnet",
+          "definition": "A coil of wire, usually on a soft iron core, that acts as a magnet while current flows.",
+          "firstLesson": 1
+        },
+        {
+          "term": "core",
+          "definition": "The soft iron bar inside the coil that strengthens the electromagnet's field.",
+          "firstLesson": 1
+        },
+        {
+          "term": "soft iron",
+          "definition": "Magnetically soft iron that gains and loses induced magnetism easily, ideal for electromagnet cores.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1afbbd809e59-electromagnet.png",
+        "alt": "Electromagnet, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Electromagnet diagram",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Electromagnets are made up of a coil of wire wrapped around an iron core"
+      }
+    ]
+  }
+}

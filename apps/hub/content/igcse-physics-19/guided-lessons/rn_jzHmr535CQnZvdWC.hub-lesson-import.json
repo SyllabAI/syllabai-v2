@@ -1,0 +1,240 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_jzHmr535CQnZvdWC",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "53fb157583a55a1699957b433de71250b49eab8023ad3652a525f46a2f3127ee",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_jzHmr535CQnZvdWC",
+    "topicTitle": "6. Magnetism and Electromagnetism",
+    "subtopicTitle": "Electromagnetic Induction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/6-magnetism-and-electromagnetism/6-2-electromagnetic-induction/6-2-3-transformers",
+    "specAnchors": [
+      {
+        "code": "6.17P",
+        "text": "describe the structure of a transformer and understand that a transformer changes the size of an alternating voltage by having different numbers of turns on the input and output sides"
+      },
+      {
+        "code": "6.18P",
+        "text": "explain the use of step-up and step-down transformers in the large-scale generation and transmission of electrical energy"
+      }
+    ],
+    "primer": {
+      "text": "Two coils, one iron core, and an alternating input: the transformer rescales an alternating voltage by the turns ratio. This note builds the structure, sorts step-up from step-down, and follows the pair out onto the National Grid, where high voltage means cool cables.",
+      "prerequisiteSubtopic": "Electromagnetic Induction"
+    },
+    "modules": [
+      {
+        "id": "rn_jzHmr535CQnZvdWC::L1",
+        "title": "Transformer structure and the alternating requirement",
+        "sourceHeadings": [
+          "Transformers",
+          "Structure of a transformer"
+        ],
+        "specRefs": [
+          "6.17P"
+        ],
+        "opening": "A transformer is two coils sharing an iron core: the primary takes the input voltage, the secondary delivers the output, and the core carries the changing field between them. It rescales an alternating voltage — bigger or smaller by the turns ratio — and only alternating works, because a steady field through the secondary would induce nothing.",
+        "keyPoints": [
+          "A transformer has a primary coil, a secondary coil and a shared iron core.",
+          "The primary coil is connected to the input alternating voltage.",
+          "The changing field in the core threads the secondary coil and induces its output.",
+          "A transformer rescales the size of an alternating voltage.",
+          "A steady direct input induces nothing in the secondary."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Two coils of wire wrapped on one iron ring. Feed alternating current into the first coil and a changed voltage appears across the second — bigger or smaller depending on the turns.",
+            "analogy": "The core is a conveyor belt for changing fields: the primary places its alternating field on the belt, and the secondary unloads whatever comes round.",
+            "examPointer": "Structure marks need all three parts named — primary coil, secondary coil, iron core — plus the alternating input stated."
+          },
+          "medium": {
+            "restatement": "The primary's alternating current makes a continuously changing field in the core; that changing field threads the secondary turn by turn and induces its output voltage, whose size the turns ratio sets. A constant direct current gives a constant core field, so the secondary sees no change and induces nothing — the alternating requirement is the induction trigger, not a design preference.",
+            "analogy": "A transformer is a relay runner who only passes the baton while it is moving: a runner standing still (steady DC) never hands anything over.",
+            "examPointer": "If asked why DC fails, answer 'the field through the secondary is not changing, so nothing is induced' — naming the trigger earns the mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_jzHmr535CQnZvdWC::L1::Q1",
+          "rn_jzHmr535CQnZvdWC::L1::Q2",
+          "rn_jzHmr535CQnZvdWC::L1::Q3",
+          "rn_jzHmr535CQnZvdWC::L1::Q4",
+          "rn_jzHmr535CQnZvdWC::L1::Q5",
+          "rn_jzHmr535CQnZvdWC::L1::Q6",
+          "rn_jzHmr535CQnZvdWC::L1::Q7",
+          "rn_jzHmr535CQnZvdWC::L1::Q8",
+          "rn_jzHmr535CQnZvdWC::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_jzHmr535CQnZvdWC::L2",
+        "title": "Step-up and step-down transformers",
+        "sourceHeadings": [
+          "How a transformer works",
+          "Step-up & Step-down Transformers"
+        ],
+        "specRefs": [
+          "6.17P"
+        ],
+        "opening": "The turns ratio is the transformer's gear lever: more turns on the secondary than the primary steps the voltage up; fewer turns steps it down. Same changing field, same frequency — only the size of the alternating voltage changes, set entirely by the numbers of turns on the two sides.",
+        "keyPoints": [
+          "A step-up transformer has more secondary turns than primary turns and raises the voltage.",
+          "A step-down transformer has fewer secondary turns than primary turns and lowers the voltage.",
+          "The output size is set by the ratio of turns wound on the two coils.",
+          "The output stays alternating at the same frequency as the input.",
+          "Equal turns on both sides give an output equal to the input voltage."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Count the turns: more on the output side means the voltage is stepped up; fewer means stepped down; equal means unchanged.",
+            "analogy": "The turns ratio is a gearbox: a big output cog spins the voltage up, a small one winds it down, and equal cogs hold it level.",
+            "examPointer": "Match the names to the turn counts explicitly — 'step-up: more secondary turns' — the pairing is the marked fact."
+          },
+          "medium": {
+            "restatement": "Every secondary turn shares the same changing core field, so each turn contributes the same induced voltage increment; the secondary total is that increment times the secondary turn count, while the primary's input sets the per-turn value — hence the output scales with the turns ratio. The transformation alters magnitude only: frequency and alternating character pass through.",
+            "analogy": "Each secondary turn is one bucket under the same dripping field: ten turns fill ten buckets' worth, one turn fills one.",
+            "examPointer": "Comparing two transformers: read the turns FIRST, then name step-up or step-down — reversing the pairing loses the mark even with correct working."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_jzHmr535CQnZvdWC::L2::Q1",
+          "rn_jzHmr535CQnZvdWC::L2::Q2",
+          "rn_jzHmr535CQnZvdWC::L2::Q3",
+          "rn_jzHmr535CQnZvdWC::L2::Q4",
+          "rn_jzHmr535CQnZvdWC::L2::Q5",
+          "rn_jzHmr535CQnZvdWC::L2::Q6",
+          "rn_jzHmr535CQnZvdWC::L2::Q7",
+          "rn_jzHmr535CQnZvdWC::L2::Q8",
+          "rn_jzHmr535CQnZvdWC::L2::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_jzHmr535CQnZvdWC::L3",
+        "title": "Transformers on the grid: transmission at high voltage",
+        "sourceHeadings": [
+          "Transformers in electricity transmission",
+          "Why are step-down transformers used?"
+        ],
+        "specRefs": [
+          "6.18P"
+        ],
+        "opening": "The National Grid moves energy at very high voltage, and transformers are why: step-up transformers raise the voltage at the power station so the current falls, which slashes the energy lost as heat in the cables. Step-down transformers then lower the voltage safely for homes and factories.",
+        "keyPoints": [
+          "Step-up transformers raise the voltage before electricity is transmitted across the grid.",
+          "At higher transmission voltage the cable current is lower for the same power.",
+          "A lower cable current wastes less energy as heat in the cables.",
+          "Step-down transformers lower the voltage for safe local use.",
+          "The transformer pair — step-up then step-down — brackets the long transmission lines."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Power stations step the voltage UP for the long journey, so less energy is wasted heating the cables; near your home it is stepped DOWN to a safe level.",
+            "analogy": "It is like carrying water in a narrow pipe: pump at high pressure (voltage) so only a thin flow (current) is needed, and little is lost to friction on the way.",
+            "examPointer": "Transmission answers need the chain: higher voltage → lower current → less heat loss. Quoting only 'high voltage' misses the reasoning."
+          },
+          "medium": {
+            "restatement": "For a fixed transmitted power, raising the voltage proportionally lowers the current; cable heating scales with the square of the current, so the saving compounds at every voltage increase. Step-up transformers make the high-voltage transmission possible and step-down units restore safe levels at the consumer end — the 6.18P role split between the two transformer families.",
+            "analogy": "High-voltage transmission is carpooling for energy: pack the same passengers (power) into fewer vehicles (current) so the road (cable) heats up far less.",
+            "examPointer": "Use the word 'heat' or 'wasted energy' with 'lower current' — 'less resistance' is wrong: the cable is unchanged; only the current differs."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_jzHmr535CQnZvdWC::L3::Q1",
+          "rn_jzHmr535CQnZvdWC::L3::Q2",
+          "rn_jzHmr535CQnZvdWC::L3::Q3",
+          "rn_jzHmr535CQnZvdWC::L3::Q4",
+          "rn_jzHmr535CQnZvdWC::L3::Q5",
+          "rn_jzHmr535CQnZvdWC::L3::Q6",
+          "rn_jzHmr535CQnZvdWC::L3::Q7",
+          "rn_jzHmr535CQnZvdWC::L3::Q8",
+          "rn_jzHmr535CQnZvdWC::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "transformer",
+          "definition": "A primary coil, secondary coil and iron core that change the size of an alternating voltage.",
+          "firstLesson": 1
+        },
+        {
+          "term": "step-up transformer",
+          "definition": "A transformer with more secondary than primary turns that raises the voltage.",
+          "firstLesson": 2
+        },
+        {
+          "term": "step-down transformer",
+          "definition": "A transformer with fewer secondary than primary turns that lowers the voltage.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a571e2335048-7-10-3-transformer-diagram.png",
+        "alt": "Transformer Diagram, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Structure of a transformer",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Structure of a transformer"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/2be07de09a32-7-10-5-power-loss-national-grid.png",
+        "alt": "Power Loss National Grid, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Why are step-down transformers used?",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Electricity is transmitted at high voltage, reducing the current and hence power loss in the cables using transformers"
+      }
+    ]
+  }
+}

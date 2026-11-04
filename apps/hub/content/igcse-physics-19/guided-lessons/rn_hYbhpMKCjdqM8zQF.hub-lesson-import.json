@@ -1,0 +1,170 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_hYbhpMKCjdqM8zQF",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "49020874ba166ab78add510995294cc823b227795e9b294d8c340311e0c04017",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_hYbhpMKCjdqM8zQF",
+    "topicTitle": "6. Magnetism and Electromagnetism",
+    "subtopicTitle": "Electromagnetic Induction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/6-magnetism-and-electromagnetism/6-2-electromagnetic-induction/6-2-4-transformer-equations",
+    "specAnchors": [
+      {
+        "code": "6.19P",
+        "text": "know and use the relationship between input (primary) and output (secondary) voltages and the turns ratio for a transformer: input (primary) voltage = primary turns output (secondary) voltage secondary turns"
+      },
+      {
+        "code": "6.20P",
+        "text": "know and use the relationship: input power = output power V p I p = V s I s for 100% efficiency"
+      }
+    ],
+    "primer": {
+      "text": "Two equations run every transformer problem: the turns ratio links voltages to turns, and the ideal power balance VpIp = VsIs links voltage to current. This note drills both — step-up arithmetic with sanity checks, and the grid's trade of voltage for current.",
+      "prerequisiteSubtopic": "Electromagnetic Induction"
+    },
+    "modules": [
+      {
+        "id": "rn_hYbhpMKCjdqM8zQF::L1",
+        "title": "The turns-ratio equation in use",
+        "sourceHeadings": [
+          "The transformer equation",
+          "Step-up transformer"
+        ],
+        "specRefs": [
+          "6.19P"
+        ],
+        "opening": "One relationship runs every transformer calculation: primary voltage over secondary voltage equals primary turns over secondary turns. Read the turns, read the known voltage, and the unknown comes out — up for a step-up with more secondary turns, down for a step-down with fewer.",
+        "keyPoints": [
+          "The relationship is: primary voltage / secondary voltage = primary turns / secondary turns.",
+          "The input voltage is across the primary; the output is across the secondary.",
+          "Rearranged, secondary voltage = primary voltage × secondary turns / primary turns.",
+          "More secondary turns than primary means the voltage is stepped up.",
+          "Substitute in the ratio form and keep units consistent — volts in, volts out."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Voltage follows turns: divide the primary voltage by the turn ratio and you have the secondary voltage. Double the secondary turns and the voltage doubles with them.",
+            "analogy": "The turns ratio is a recipe scale: 800 turns instead of 20 is forty times the recipe, so the output voltage is forty times the per-turn serving.",
+            "examPointer": "Write the relationship FIRST in ratio form, then substitute — method marks live in the equation line, not the arithmetic."
+          },
+          "medium": {
+            "restatement": "The ratio form Vp/Vs = Np/Ns expresses the shared per-turn induced voltage: every turn sees the same changing flux, so voltages partition exactly as turns do. Solving for Vs gives Vp × Ns/Np, and the step-up/step-down classification follows from comparing Ns with Np before any arithmetic.",
+            "analogy": "The core field is one message read by every turn: how many readers you place on each side decides how the total voltage is shared out.",
+            "examPointer": "Sanity-check the answer against the classification: a step-up result larger than the input for Ns > Np — a mismatch means the ratio was inverted."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_hYbhpMKCjdqM8zQF::L1::Q1",
+          "rn_hYbhpMKCjdqM8zQF::L1::Q2",
+          "rn_hYbhpMKCjdqM8zQF::L1::Q3",
+          "rn_hYbhpMKCjdqM8zQF::L1::Q4",
+          "rn_hYbhpMKCjdqM8zQF::L1::Q5",
+          "rn_hYbhpMKCjdqM8zQF::L1::Q6",
+          "rn_hYbhpMKCjdqM8zQF::L1::Q7",
+          "rn_hYbhpMKCjdqM8zQF::L1::Q8",
+          "rn_hYbhpMKCjdqM8zQF::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_hYbhpMKCjdqM8zQF::L2",
+        "title": "The ideal transformer equation and the grid's arithmetic",
+        "sourceHeadings": [
+          "Step-down transformer",
+          "The ideal transformer equation"
+        ],
+        "specRefs": [
+          "6.20P",
+          "6.19P"
+        ],
+        "opening": "Assume a perfectly efficient transformer and power balances across it: input power equals output power, so Vp × Ip = Vs × Is. Step the voltage up and the current steps down by the same factor — the arithmetic that makes high-voltage transmission worthwhile.",
+        "keyPoints": [
+          "For 100% efficiency: input power = output power.",
+          "In symbols: Vp × Ip = Vs × Is.",
+          "Stepping the voltage up steps the current down by the same factor.",
+          "Stepping the voltage down lets the secondary deliver a larger current.",
+          "The relationship pairs with the turns ratio to solve full transformer problems."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Power in equals power out for an ideal transformer: raise the voltage and the current shrinks to pay for it; lower the voltage and the current grows.",
+            "analogy": "A seesaw in money terms: the transformer is a currency exchange between volts and amps at a fair rate — more of one means less of the other.",
+            "examPointer": "Quote the power balance with symbols — VpIp = VsIs — and label which side is input; unlabelled equations score half."
+          },
+          "medium": {
+            "restatement": "The ideal equation is energy conservation per unit time: with no losses, the input power VpIp must equal the delivered power VsIs, so current and voltage transform inversely. Combined with the turns ratio, the pair determines all four quantities — which is how grid designers trade voltage against current to keep cable heating down.",
+            "analogy": "The transformer is a two-way tap: what it gives the output in voltage it takes back in current, and the power ledger always balances.",
+            "examPointer": "The 100% efficiency assumption is stated in the specification — say 'assuming 100% efficiency' when deploying VpIp = VsIs."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_hYbhpMKCjdqM8zQF::L2::Q1",
+          "rn_hYbhpMKCjdqM8zQF::L2::Q2",
+          "rn_hYbhpMKCjdqM8zQF::L2::Q3",
+          "rn_hYbhpMKCjdqM8zQF::L2::Q4",
+          "rn_hYbhpMKCjdqM8zQF::L2::Q5",
+          "rn_hYbhpMKCjdqM8zQF::L2::Q6",
+          "rn_hYbhpMKCjdqM8zQF::L2::Q7",
+          "rn_hYbhpMKCjdqM8zQF::L2::Q8",
+          "rn_hYbhpMKCjdqM8zQF::L2::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "turns ratio",
+          "definition": "The relationship primary voltage / secondary voltage = primary turns / secondary turns.",
+          "firstLesson": 1
+        },
+        {
+          "term": "ideal transformer",
+          "definition": "A 100% efficient transformer for which input power equals output power: VpIp = VsIs.",
+          "firstLesson": 2
+        },
+        {
+          "term": "primary coil",
+          "definition": "The input winding of a transformer, connected to the alternating supply.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A transformer has 20 turns on the primary coil and 800 turns on the secondary coil. The input potential difference across the primary coil is 500 V. (a) Calculate the output potential difference across the secondary coil. (b) State what type of transformer it is.",
+        "steps": [
+          "List the known quantities: primary turns = 20, secondary turns = 800, primary voltage = 500 V.",
+          "Apply the turns-ratio relationship: primary voltage / secondary voltage = primary turns / secondary turns.",
+          "Rearrange: secondary voltage = primary voltage × (secondary turns / primary turns) = 500 × (800 / 20).",
+          "Evaluate: 500 × 40 = 20 000 V.",
+          "Compare: the output voltage (20 000 V) is larger than the input (500 V), so the transformer steps the voltage up."
+        ],
+        "finalAnswer": "(a) The output potential difference is 20 000 V. (b) Because the output is larger than the input, it is a step-up transformer."
+      }
+    }
+  }
+}

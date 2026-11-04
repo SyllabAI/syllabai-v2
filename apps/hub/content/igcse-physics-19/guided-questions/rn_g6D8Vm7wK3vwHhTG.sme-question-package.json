@@ -1,0 +1,255 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_g6D8Vm7wK3vwHhTG",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "7af034a831a1a2079654385b1f81c5759bace13c328f186eba7bf726b6507694",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "packageId": "igcse-physics::rn_g6D8Vm7wK3vwHhTG",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_g6D8Vm7wK3vwHhTG::L1::Q1",
+      "moduleId": "rn_g6D8Vm7wK3vwHhTG::L1",
+      "stem": "Which finger of the left hand gives the direction of the FORCE?",
+      "misconceptionClass": "rule recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the thumb",
+          "correct": true,
+          "explanation": "First finger field, second finger current, thumb force.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the first finger",
+          "correct": false,
+          "explanation": "The first finger carries the field direction.",
+          "misconception": "finger swap"
+        },
+        {
+          "key": "C",
+          "text": "the second finger",
+          "correct": false,
+          "explanation": "The second finger carries the current direction.",
+          "misconception": "finger swap"
+        },
+        {
+          "key": "D",
+          "text": "the palm",
+          "correct": false,
+          "explanation": "The palm plays no role in the rule.",
+          "misconception": "hand-part invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_g6D8Vm7wK3vwHhTG::L1::Q2",
+      "moduleId": "rn_g6D8Vm7wK3vwHhTG::L1",
+      "stem": "The FIRST finger in Fleming's left-hand rule points along:",
+      "misconceptionClass": "rule recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the electron flow",
+          "correct": false,
+          "explanation": "Electron flow runs opposite to the conventional current.",
+          "misconception": "charge confusion"
+        },
+        {
+          "key": "B",
+          "text": "the magnetic field, north to south",
+          "correct": true,
+          "explanation": "Field is assigned to the first finger.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the conventional current",
+          "correct": false,
+          "explanation": "Current belongs to the second finger.",
+          "misconception": "finger swap"
+        },
+        {
+          "key": "D",
+          "text": "the force",
+          "correct": false,
+          "explanation": "Force belongs to the thumb.",
+          "misconception": "finger swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_g6D8Vm7wK3vwHhTG::L1::Q3",
+      "moduleId": "rn_g6D8Vm7wK3vwHhTG::L1",
+      "stem": "A wire carries current at right angles to a field. The rule predicts the force direction. What is assumed about the current used in the rule?",
+      "misconceptionClass": "convention reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the alternating current peak value",
+          "correct": false,
+          "explanation": "Direction, not magnitude, is what the rule needs.",
+          "misconception": "quantity confusion"
+        },
+        {
+          "key": "B",
+          "text": "the resistance current",
+          "correct": false,
+          "explanation": "There is no separate 'resistance current'.",
+          "misconception": "invented quantity"
+        },
+        {
+          "key": "C",
+          "text": "the conventional current, from positive to negative",
+          "correct": true,
+          "explanation": "The rule uses conventional current, not electron flow.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the electron flow direction",
+          "correct": false,
+          "explanation": "Electrons run against the second finger.",
+          "misconception": "charge confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_g6D8Vm7wK3vwHhTG::L1::Q4",
+      "moduleId": "rn_g6D8Vm7wK3vwHhTG::L1",
+      "stem": "The current in the wire is reversed while the field stays fixed. What does the rule now predict?",
+      "misconceptionClass": "direction reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the same force direction",
+          "correct": false,
+          "explanation": "The prediction flips with the current.",
+          "misconception": "direction confusion"
+        },
+        {
+          "key": "B",
+          "text": "a larger force in the same direction",
+          "correct": false,
+          "explanation": "Reversal changes direction, not size.",
+          "misconception": "magnitude confusion"
+        },
+        {
+          "key": "C",
+          "text": "no force at all",
+          "correct": false,
+          "explanation": "The wire still crosses the field, so a force remains.",
+          "misconception": "vanishing claim"
+        },
+        {
+          "key": "D",
+          "text": "a force in the opposite direction",
+          "correct": true,
+          "explanation": "Reversing one input mirrors the predicted force.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_g6D8Vm7wK3vwHhTG::L1::Q5",
+      "moduleId": "rn_g6D8Vm7wK3vwHhTG::L1",
+      "stem": "Which arrangement is NOT the perpendicular case that the rule predicts?",
+      "misconceptionClass": "scope reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "a wire carrying current parallel to the field lines",
+          "correct": true,
+          "explanation": "The rule predicts forces for currents perpendicular to the field.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a wire carrying current across the field",
+          "correct": false,
+          "explanation": "That is exactly the case the rule covers.",
+          "misconception": "scope inversion"
+        },
+        {
+          "key": "C",
+          "text": "a wire between two opposite poles",
+          "correct": false,
+          "explanation": "The gap field is a standard case for the rule.",
+          "misconception": "scope confusion"
+        },
+        {
+          "key": "D",
+          "text": "a straight wire rather than a coil",
+          "correct": false,
+          "explanation": "The rule works wire by wire, straight or coiled.",
+          "misconception": "scope confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_g6D8Vm7wK3vwHhTG::L1::Q6",
+      "moduleId": "rn_g6D8Vm7wK3vwHhTG::L1",
+      "stem": "State what each of the three fingers represents in the left-hand rule.",
+      "misconceptionClass": "rule recall",
+      "kind": "recall",
+      "modelAnswer": "First finger along the magnetic field, second finger along the current, thumb along the force.",
+      "keywords": [
+        "first",
+        "field",
+        "second",
+        "current",
+        "thumb"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g6D8Vm7wK3vwHhTG::L1::Q7",
+      "moduleId": "rn_g6D8Vm7wK3vwHhTG::L1",
+      "stem": "State which hand is used in the rule for motor-effect force prediction.",
+      "misconceptionClass": "rule recall",
+      "kind": "recall",
+      "modelAnswer": "The left hand is used for predicting the force in the motor effect.",
+      "keywords": [
+        "left",
+        "hand",
+        "force"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g6D8Vm7wK3vwHhTG::L1::Q8",
+      "moduleId": "rn_g6D8Vm7wK3vwHhTG::L1",
+      "stem": "Explain why reversing the field direction flips the predicted force.",
+      "misconceptionClass": "geometry reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The three directions form a right-angled set: with the current unchanged, pointing the first finger the opposite way leaves the thumb pointing the opposite way too. The geometry of the hand mirrors the physics — the force depends on both inputs, so flipping either flips the result.",
+      "keywords": [
+        "first",
+        "finger",
+        "thumb",
+        "opposite"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g6D8Vm7wK3vwHhTG::L1::Q9",
+      "moduleId": "rn_g6D8Vm7wK3vwHhTG::L1",
+      "stem": "A horizontal wire runs north, carrying current northwards, in a field directed from east to west. Predict the initial force direction using the rule.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "First finger points west (field), second finger points north (current), and the left-hand thumb then points vertically upwards — the wire is pushed up out of its position.",
+      "keywords": [
+        "west",
+        "north",
+        "thumb",
+        "upwards"
+      ],
+      "options": []
+    }
+  ]
+}
