@@ -90,7 +90,7 @@ export default async function FlashcardsIndexPage({
         meta={meta}
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Flashcards`}
         crumb="Flashcards"
-        description={`Choose a deck to practise active recall — ${cardTotal} flashcard${cardTotal === 1 ? "" : "s"} across ${deckCount} deck${deckCount === 1 ? "" : "s"}, imported verbatim from the licensed deck corpus; rated cards return on an expanding review schedule.`}
+        description={`Choose a deck to practise active recall — ${cardTotal} flashcard${cardTotal === 1 ? "" : "s"} across ${deckCount} deck${deckCount === 1 ? "" : "s"}; rated cards return on an expanding review schedule.`}
       />
       {/* MathsGenie toolbar + numbered-section listing + empty states — client
           (flashcards-index) over the slim payload above. The no-decks card

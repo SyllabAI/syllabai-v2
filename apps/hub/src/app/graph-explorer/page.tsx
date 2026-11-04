@@ -4,7 +4,7 @@ import { GraphExplorerClient } from "./client";
 export const metadata: Metadata = {
   title: "Graph Explorer",
   description:
-    "The OpenHuman interaction-grammar knowledge-graph visualizer (v75: edge explainer, lasso selection, minimap) hosted byte-faithful for the 4CH1 pilot, with a build switcher and the decoupled canonicalKG data artifact.",
+    "The prototype build lab for the knowledge-graph visualizer — the product surface is Knowledge Graph.",
 };
 
 /**

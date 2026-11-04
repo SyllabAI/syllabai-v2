@@ -69,7 +69,7 @@ export default async function BooksShelfPage({
         // not a hardcode — the books rollout now reaches CIE/IAL lanes.
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Student Books`}
         crumb="Student Books"
-        description="The course's student books as first-class content: every chapter opens the book PDF at its own page range — the same pages, citations and spec joins the tutor grounds in."
+        description="The course's student books — every chapter opens the book PDF at its own page range."
       />
 
       {unavailable ? (

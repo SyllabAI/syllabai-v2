@@ -31,27 +31,23 @@ import { StrengthsPanel } from "./strengths/strengths-panel";
 import CourseBodyTabs from "@/components/hub/course-body-tabs";
 import type { TopicGroup } from "@/components/hub/course-body-tabs";
 import { CourseSwitcher } from "@/components/hub/course-switcher";
-import { TagChip } from "@/components/hub/chrome";
+import { loadGuidedIndex } from "@/lib/guided-lessons";
 import { allCourseParams } from "@/lib/static-params";
 import { courseHasBookArchive } from "@/lib/books-registry";
 import { getUgmBundle, ugmStationNames } from "@/lib/ugm";
-import { loadGuidedIndex } from "@/lib/guided-lessons";
 import { getGradeBoundariesSummary } from "@/lib/grade-boundaries";
-
-type FrameworkTag = "Study" | "Practice" | "Diagnose";
 
 interface ResourceItem {
   icon: typeof BookOpen;
   title: string;
   desc: string;
-  tags: FrameworkTag[];
   href?: string;
   countLabel?: string;
   ctaLabel?: string;
   ready: boolean;
-  /** the honest not-ready badge — defaults to "roadmap" (a planned build
-   *  phase); the tutor card overrides it ("not yet connected") because the
-   *  tutor is BUILT — it gates on the course's serving corpus, ADR-030. */
+  /** the honest not-ready badge — defaults to "coming soon"; the tutor
+   *  card overrides it ("not yet connected") because the tutor is BUILT —
+   *  it gates on the course's serving corpus, ADR-030. */
   notReadyLabel?: string;
   /** hub-coursepage-mg-layout: the tinted icon-square wash (MG tile
    *  anatomy), hub tokens at low alpha so dark mode inherits for free. */
@@ -209,12 +205,10 @@ export default async function CourseHubPage({
   }));
   const subtopicCount = topicGroups.reduce((a, g) => a + g.subtopics.length, 0);
 
-  const bands: { id: string; title: string; tagline: string; items: ResourceItem[] }[] = [
+  const bands: { id: string; title: string; items: ResourceItem[] }[] = [
     {
       id: "ask",
       title: "Ask the tutor",
-      tagline:
-        "Stuck on a topic? Ask — answers come only from this course's validated material, with citations.",
       items: [
         {
           // The per-course tutor entry (operator instruction 2026-10-21):
@@ -227,9 +221,8 @@ export default async function CourseHubPage({
           icon: Sparkles,
           title: "Course Tutor",
           desc: meta.curriculumCode
-            ? "A chat grounded in this course's specification, revision notes and past papers — every answer cites its sources and says so honestly when the evidence runs thin. Conversations stay separate per course."
-            : "Connects once this course has a validated serving corpus — the tutor never answers across courses, so there is no cross-course fallback.",
-          tags: ["Study", "Practice"],
+            ? "A chat grounded in this course's specification, revision notes and past papers — every answer cites its sources."
+            : "Connects once this course's material is ready — the tutor answers from one course's own material at a time.",
           href: meta.curriculumCode ? `/tutor?course=${meta.slug}` : undefined,
           ctaLabel: "Ask the tutor",
           ready: !!meta.curriculumCode,
@@ -245,13 +238,11 @@ export default async function CourseHubPage({
       // learner journey); the trackers/reference moved to Track & improve.
       id: "practise",
       title: "Practise",
-      tagline: "Test yourself with questions, tests and exam papers.",
       items: [
         {
           icon: FileQuestion,
           title: "Exam Questions",
           desc: "Past paper, exam-style and quiz questions with mark schemes and self-marking, organised by topic.",
-          tags: ["Practice", "Diagnose"],
           href: `${base}/exam-questions`,
           countLabel: `${fmtCount(stats.questions)} question${stats.questions === 1 ? "" : "s"} · ${fmtCount(stats.questionSets)} set${stats.questionSets === 1 ? "" : "s"}`,
           ready: stats.questions > 0,
@@ -262,9 +253,8 @@ export default async function CourseHubPage({
           title: "Past Papers",
           desc:
             pastPapers.length > 0
-              ? "The questions we hold from real past papers, grouped by session and played back in paper order — partial reconstructions, not the full official papers."
-              : "Official question papers and mark schemes streamed from the archive — view them side by side, self-mark, or run a timed mock. Interactive playback lands as papers are parsed.",
-          tags: ["Practice", "Diagnose"],
+              ? "Real past-paper questions grouped by session and played back in paper order — the questions we hold, not the full official papers."
+              : "Official question papers and mark schemes side by side — self-mark or run a timed mock.",
           ready: pastPapers.length > 0 || corpusArchivePapers.length > 0,
           href:
             pastPapers.length > 0 || corpusArchivePapers.length > 0
@@ -281,8 +271,7 @@ export default async function CourseHubPage({
         {
           icon: Files,
           title: "Practice Papers",
-          desc: "Full-length mixed papers assembled from this course's question bank — our stand-in for official papers that can't be redistributed. Same questions, same mark schemes.",
-          tags: ["Practice", "Diagnose"],
+          desc: "Full-length mixed papers assembled from this course's question bank — same questions, same mark schemes.",
           ready: practicePapers.length > 0,
           href: practicePapers.length > 0 ? `${base}/practice-papers` : undefined,
           countLabel:
@@ -295,15 +284,13 @@ export default async function CourseHubPage({
           icon: Files,
           title: "Mock Exams",
           desc: "Expert-created full practice papers — not available for this course yet.",
-          tags: ["Practice", "Diagnose"],
           ready: false,
           tint: "bg-chart-1/15",
         },
         {
           icon: Target,
           title: "Target Test",
-          desc: "Custom exam practice to target your weak spots — Phase C of the build plan.",
-          tags: ["Practice", "Diagnose"],
+          desc: "Custom exam practice to target your weak spots.",
           ready: false,
           tint: "bg-chart-2/15",
         },
@@ -318,9 +305,8 @@ export default async function CourseHubPage({
           icon: Swords,
           title: "Strength Battle",
           desc: battleServedFor(meta.slug)
-            ? "Three questions, sixty seconds, head-to-head against the fair-coin sparring bot — the same real bank the drill serves, with the examiner's mark schemes revealed instantly. Zero stakes: battles ride your practice log, never a gradebook."
-            : "Three questions, sixty seconds, head-to-head against a sparring bot on the same real exam-question bank — the drill wearing competitive energy, mark schemes revealed instantly. Rolling out course by course.",
-          tags: ["Practice", "Diagnose"],
+            ? "Three questions, sixty seconds, head-to-head against the sparring bot — real exam questions with mark schemes revealed instantly."
+            : "Three questions, sixty seconds, head-to-head against a sparring bot on real exam questions. Rolling out course by course.",
           href: battleServedFor(meta.slug) ? "/practice/battle" : undefined,
           ctaLabel: battleServedFor(meta.slug) ? "Battle the bot" : undefined,
           ready: battleServedFor(meta.slug),
@@ -335,7 +321,6 @@ export default async function CourseHubPage({
       // The learner journey closes here: practise → track → back into Learn.
       id: "track",
       title: "Track & improve",
-      tagline: "See where you're losing marks and what to do next — mistakes, boundaries and progress.",
       items: [
         {
           // T-MLOG-CARD-1 — the Mistakes Log card (operator order, trace
@@ -349,8 +334,7 @@ export default async function CourseHubPage({
           // tracker's home of record is Track & improve.
           icon: NotebookPen,
           title: "Mistakes Log",
-          desc: "Every question you get wrong, kept in one place — logged with your answer, filtered by subject, topic and mastery state, then retried with the solution nearby until it sticks.",
-          tags: ["Practice", "Diagnose"],
+          desc: "Every question you get wrong, kept in one place — retried with the solution nearby until it sticks.",
           ready: false,
           tint: "bg-chart-4/15",
         },
@@ -367,7 +351,6 @@ export default async function CourseHubPage({
           desc: gradeBoundaries
             ? "Official boundaries for every recent session — the trend graph, boundary tables and a mark-to-grade calculator."
             : "Official session-by-session grade boundaries with a trend graph and mark-to-grade calculator — landing with the corpus rollout.",
-          tags: ["Practice", "Diagnose"],
           href: gradeBoundaries ? `${base}/grade-boundaries` : undefined,
           ctaLabel: gradeBoundaries ? "See boundaries" : undefined,
           countLabel: gradeBoundaries
@@ -384,15 +367,13 @@ export default async function CourseHubPage({
       // (learn → practise → track) the band set now tells end to end.
       id: "learn",
       title: "Learn",
-      tagline: "Comprehensive content covering your entire exam specification.",
       items: [
         {
           icon: BookOpen,
           title: "Revision Notes",
           desc: officialTree
-            ? "Concise, high-quality notes to build your understanding of every topic in the official specification."
-            : "Concise, high-quality notes anchored to corpus spec points (official-spec mapping pending upstream).",
-          tags: ["Study"],
+            ? "Concise notes for every topic in the official specification."
+            : "Concise notes for every topic — official-spec mapping in progress.",
           href: `${base}/revision-notes`,
           countLabel: `${fmtCount(stats.notes)} note${stats.notes === 1 ? "" : "s"}`,
           ready: stats.notes > 0,
@@ -406,9 +387,8 @@ export default async function CourseHubPage({
           icon: BookMarked,
           title: "Student Book",
           desc: courseHasBookArchive(meta.slug)
-            ? "The full student book, chapter by chapter — every chapter opens the book at its own page range, with the same spec joins the tutor grounds in."
-            : "The full student book for this course — planned next in the books rollout.",
-          tags: ["Study"],
+            ? "The full student book, chapter by chapter — every chapter opens the book at its own page range."
+            : "The full student book for this course — coming soon.",
           href: courseHasBookArchive(meta.slug) ? `${base}/books` : undefined,
           ctaLabel: "Open the book",
           ready: courseHasBookArchive(meta.slug),
@@ -418,7 +398,6 @@ export default async function CourseHubPage({
           icon: SquareStack,
           title: "Flashcards",
           desc: "Interactive digital flashcards that reinforce facts and definitions, imported per subtopic.",
-          tags: ["Study", "Practice"],
           href: `${base}/flashcards`,
           countLabel: `${fmtCount(stats.flashcards)} card${stats.flashcards === 1 ? "" : "s"}`,
           ready: stats.flashcards > 0,
@@ -431,8 +410,7 @@ export default async function CourseHubPage({
               {
                 icon: Compass,
                 title: "Underground Mathematics",
-                desc: `Cambridge's Underground Mathematics (${ugmStationNames(ugm)} collections) — rich problems with suggestions and worked solutions, mapped to this course's specification points (alignment candidates, SUGGESTED).`,
-                tags: ["Study", "Practice"] as FrameworkTag[],
+                desc: `Cambridge's Underground Mathematics (${ugmStationNames(ugm)} collections) — rich problems with suggestions and worked solutions, mapped to this course's specification points.`,
                 href: `${base}/ugm`,
                 countLabel: `${fmtCount(ugm.coverage.aligned)} resources · ${fmtCount(ugm.specPoints.length)} spec points`,
                 ready: true,
@@ -454,7 +432,6 @@ export default async function CourseHubPage({
           desc: guided
             ? "Pick the concept you don't understand yet — we'll explain it simply, then check your understanding. Any order works."
             : "Step-by-step guided lessons for every revision note — rolling out course by course.",
-          tags: ["Study", "Practice", "Diagnose"],
           // Entry-path lanes (b)+(c) (operator decision of record, trace
           // 1a1810c1ef1cb521): the live card now lands on the dedicated
           // guided-lessons index (one hop into any lesson) instead of three
@@ -486,29 +463,13 @@ export default async function CourseHubPage({
           desc: teachMe
             ? "Learn by teaching: pick spec points and teach Baby Genie in your own words — he keeps asking until it makes sense, objectives tick off, and a review lands at the end."
             : "Learn by teaching — explain topics to Baby Genie and find your gaps before the exam does. Rolling out course by course.",
-          tags: ["Study", "Practice", "Diagnose"] as FrameworkTag[],
           href: teachMe ? `${base}/teach-genie` : undefined,
           ctaLabel: teachMe ? "Teach Baby Genie" : undefined,
           ready: teachMe,
-          notReadyLabel: "import pending",
+          notReadyLabel: "coming soon",
           tint: "bg-primary/10",
         },
       ],
-    },
-  ];
-
-  const framework = [
-    {
-      tag: "Study" as FrameworkTag,
-      desc: "Start with comprehensive revision material covering all specification content.",
-    },
-    {
-      tag: "Practice" as FrameworkTag,
-      desc: "Practise with exam-style questions and flashcards to build your confidence.",
-    },
-    {
-      tag: "Diagnose" as FrameworkTag,
-      desc: "Self-marking and strengths views expose your weak spots and guide you to improve.",
     },
   ];
 
@@ -525,10 +486,7 @@ export default async function CourseHubPage({
       {/* the resource bands as MG tile rows */}
       {bands.map((band) => (
         <section key={band.id} aria-label={band.title} className="space-y-3">
-          <div className="space-y-0.5">
-            <h2 className="text-lg font-bold tracking-tight">{band.title}</h2>
-            <p className="text-sm text-muted-foreground">{band.tagline}</p>
-          </div>
+          <h2 className="text-lg font-bold tracking-tight">{band.title}</h2>
           {/* t-ui-polish run-004 — grid rhythm: gap-4, the law the
               dashboard (run-001) and directory (run-003) grids share. */}
           <div className="grid gap-4 sm:grid-cols-2">
@@ -544,12 +502,9 @@ export default async function CourseHubPage({
                   <span className="min-w-0 flex-1">
                     <span className="flex flex-wrap items-center gap-2">
                       <span className="font-bold group-hover:text-primary">{r.title}</span>
-                      {r.tags.map((t) => (
-                        <TagChip key={t} tag={t} />
-                      ))}
                       {!r.ready && (
                         <span className="rounded-full bg-foreground px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-background">
-                          {r.notReadyLabel ?? "roadmap"}
+                          {r.notReadyLabel ?? "coming soon"}
                         </span>
                       )}
                     </span>
@@ -583,7 +538,7 @@ export default async function CourseHubPage({
                 <div
                   key={r.title}
                   aria-disabled
-                  title="On the roadmap — not available for this course yet"
+                  title="Not available for this course yet"
                   className={`${tileClass} opacity-70`}
                 >
                   {inner}
@@ -593,22 +548,6 @@ export default async function CourseHubPage({
           </div>
         </section>
       ))}
-
-      {/* SME's "Our revision framework" explainer */}
-      <section aria-label="Our revision framework" className="space-y-3 pb-2">
-        <h2 className="text-lg font-semibold">Our revision framework</h2>
-        {/* t-ui-polish run-004 — same gap-4 rhythm law for the explainer trio. */}
-        <div className="grid gap-4 sm:grid-cols-3">
-          {framework.map((f) => (
-            <Card key={f.tag} className="bg-muted/40">
-              <CardContent className="space-y-2 p-4">
-                <TagChip tag={f.tag} />
-                <p className="text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
     </>
   );
 
@@ -623,7 +562,7 @@ export default async function CourseHubPage({
       <CourseHeader
         meta={meta}
         title={meta.subject}
-        description={`Tools designed specifically for the ${qual} syllabus (${meta.code}): revision notes, the student book, exam-style questions and flashcards organised around the ${officialTree ? "official specification tree" : "corpus specification tree"} — with provenance kept visible on every item.`}
+        description={`Revision notes, the student book, exam-style questions and flashcards organised around the ${qual} syllabus (${meta.code}).`}
       >
         {/* SME hero anatomy: "Edexcel | IGCSE | 4CH1" + course switcher */}
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -647,8 +586,7 @@ export default async function CourseHubPage({
             </CardTitle>
             <CardDescription>
               This course is registered and its materials are in preparation — the full hub
-              switches on here the moment the content lands. Nothing is faked in the meantime:
-              an empty course stays honestly empty.
+              switches on here the moment the content lands.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
@@ -693,7 +631,7 @@ export default async function CourseHubPage({
                   href={`/knowledge-graph?course=${meta.slug}`}
                   className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted"
                 >
-                  View parsed spec <ArrowRight className="size-4" aria-hidden />
+                  Knowledge graph <ArrowRight className="size-4" aria-hidden />
                 </Link>
               </div>
               <StrengthsPanel course={meta.slug} />
@@ -705,10 +643,9 @@ export default async function CourseHubPage({
                   About this data
                 </summary>
                 <p className="mt-2">
-                  <span className="font-medium text-foreground">Where this data lives:</span> the bars read ONLY the
-                  drill&apos;s own practice log (the zero-stakes lane — never your gradebook or progress rings), and
-                  every decayed value is computed at read and never stored (ADR-031). Structured (written) drill
-                  parts stay ungraded until you self-check them against the mark scheme.
+                  The bars read only your practice log — never your gradebook or progress rings —
+                  and skill decay is computed when you open the page. Written drill parts stay
+                  ungraded until you self-check them against the mark scheme.
                 </p>
               </details>
             </>

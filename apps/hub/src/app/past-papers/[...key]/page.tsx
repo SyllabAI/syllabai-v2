@@ -125,12 +125,7 @@ export default async function SpecArchivePage({
 
       <div className="mt-4 rounded-xl border bg-muted/30 p-3 text-xs leading-relaxed text-muted-foreground print:hidden">
         <p>
-          Official exam documents streamed from the{" "}
-          <span className="font-mono text-[11px]">syllabai-pastpapers</span> archive
-          (AI-IDENTIFIED provenance, operator ratification pending · index generated{" "}
-          {corpusIndex.meta.generatedAt.slice(0, 10)}, tree{" "}
-          <span className="font-mono text-[11px]">{corpusIndex.meta.treeSha.slice(0, 7)}</span>).
-          QP = question paper, MS = mark scheme, ER = examiner report.
+          Official exam documents — QP = question paper, MS = mark scheme, ER = examiner report.
         </p>
         {!courseSlug && (
           <p className="mt-1">

@@ -40,7 +40,7 @@ export default async function PracticePapersPage({
         meta={meta}
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Practice Papers`}
         crumb="Practice Papers"
-        description="Full-length mixed-topic papers assembled from this course's question bank — every question is real corpus content with its attested mark scheme. Each paper is deterministic: the same paper every time you open it."
+        description="Full-length mixed-topic papers assembled from this course's question bank — the same paper every time you open it."
       />
 
       {papers.length === 0 ? (

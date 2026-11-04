@@ -85,7 +85,7 @@ export default async function GuidedLessonsIndexPage({
         meta={meta}
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Guided Lessons`}
         crumb="Guided Lessons"
-        description={`Step-by-step guided lessons mapped to the official ${meta.code} specification — live for ${index.counts.notes} note${index.counts.notes === 1 ? "" : "s"} · ${index.counts.lessons} lesson${index.counts.lessons === 1 ? "" : "s"}, each with confidence gating, plain-words depth layers and fully explained checks.`}
+        description={`Step-by-step guided lessons mapped to the official ${meta.code} specification — live for ${index.counts.notes} note${index.counts.notes === 1 ? "" : "s"} · ${index.counts.lessons} lesson${index.counts.lessons === 1 ? "" : "s"}.`}
       />
       <div className="mt-6 space-y-6">
         {groups.map(({ topic, rows: tRows }) => (
