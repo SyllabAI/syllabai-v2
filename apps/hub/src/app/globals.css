@@ -1484,3 +1484,93 @@ math-field.answer-mathfield:focus {
   font-style: normal;
   font-display: swap;
 }
+
+/*
+ * T-TEACHGENIE-001 — Teach Genie scope (MathsGenie Teach Genie parity,
+ * 2026-11-04). The attached page captures of MG's app (saved 2026-10-31)
+ * decode to this palette; the scope re-points the SAME shadcn token slots
+ * the components already use, so the Teach Genie surfaces render MG-exact
+ * inside any hub theme, light or dark, without a fork of the primitives.
+ *
+ * MG light: background #fff · foreground #0a0a0a · muted #f5f5f5 ·
+ * muted-foreground #737373 · border #e5e5e5 · accent-primary #cefbff on
+ * #1cb0f6 · accent-purple #e0e7ff on #4338ca · radius .5rem (+4 per step).
+ * MG dark: background #191919 · foreground #fafafa · muted #242424 ·
+ * muted-foreground #a3a3a3 · border #333 · accent-primary #002e5f on
+ * #46cbe3 · accent-purple #1e1b4b on #a5b4fc.
+ * Fonts: body Inter (--font-inter), titles Manrope-bold-adjacent → Inter
+ * bold tracking-tight (.tg-title; Manrope is not in the hub's pinned
+ * manifest, Inter is its metric sibling from the same foundry cuts).
+ */
+.tg-scope {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #171717;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #0a0a0a;
+  --accent-primary: #cefbff;
+  --accent-primary-foreground: #1cb0f6;
+  /* MG's user-bubble purple, tokenized for the scope */
+  --tg-purple: #e0e7ff;
+  --tg-purple-foreground: #4338ca;
+  /* radius ladder: MG base .5rem → rounded-xl = 12px exactly like the captures */
+  --radius: 0.5rem;
+}
+.dark .tg-scope {
+  --background: #191919;
+  --foreground: #fafafa;
+  --card: #191919;
+  --card-foreground: #fafafa;
+  --popover: #191919;
+  --popover-foreground: #fafafa;
+  --muted: #242424;
+  --muted-foreground: #a3a3a3;
+  --accent: #242424;
+  --accent-foreground: #fafafa;
+  --secondary: #242424;
+  --secondary-foreground: #fafafa;
+  --border: #333333;
+  --input: #333333;
+  --ring: #fafafa;
+  --accent-primary: #002e5f;
+  --accent-primary-foreground: #46cbe3;
+  --tg-purple: #1e1b4b;
+  --tg-purple-foreground: #a5b4fc;
+}
+
+/* MG's user bubble of record (review replay + landing preview). */
+.tg-bubble-user {
+  background: var(--tg-purple);
+  color: var(--tg-purple-foreground);
+}
+
+/* Titles: Inter bold tracking-tight (the MG `font-title` recipe). */
+.tg-scope .tg-title {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* Baby Genie's typing dots (landing hero, pre-session state). */
+@keyframes tg-dot-bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40% { transform: translateY(-3px); opacity: 1; }
+}
+.tg-dot {
+  animation: tg-dot-bounce 1.2s infinite ease-in-out;
+}
+.tg-dot:nth-child(2) { animation-delay: 0.15s; }
+.tg-dot:nth-child(3) { animation-delay: 0.3s; }
+@media (prefers-reduced-motion: reduce) {
+  .tg-dot { animation: none; opacity: 0.4; }
+}
