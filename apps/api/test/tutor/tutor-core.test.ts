@@ -1709,3 +1709,110 @@ describe("refusal truth — T-TUTOR-PIVOT-1 (the model-worded refusal records re
     expect(tel.refused).toBe(true);
   });
 });
+
+// ── T-TUTOR-PIVOT-1 run-002 — the deterministic redirect (live-measured) ────
+
+describe("refusal redirect — T-TUTOR-PIVOT-1 run-002 (the pipeline carries the way forward)", () => {
+  const emptyGraph = {
+    async structureNodes() {
+      return [];
+    },
+    async prerequisiteChains() {
+      return new Map();
+    },
+    async misconceptionsForTopics() {
+      return new Map();
+    },
+  };
+  const scopes = {
+    async resolveActive() {
+      return { curriculumVersionId: "cv", code: "4CH1", surface: new Set(["n1"]) };
+    },
+    async resolveForCourse() {
+      return null;
+    },
+  };
+  const notPaper = async () => ({ items: [], identityParsed: false, identityLabel: null });
+  const evidenceRow = evidenceFromChunk({
+    documentRowId: "row1",
+    documentId: "doc-row1",
+    documentVersion: 1,
+    chunkId: "c1",
+    chunkIndex: 0,
+    kind: "TEXTBOOK",
+    content: "Boiling happens throughout a liquid at its boiling point.",
+    pageStart: 7,
+    pageEnd: null,
+    elementIds: [],
+    embeddingModel: "test",
+    cosine: 0.9,
+  });
+  const events: unknown[] = [];
+  const baseDeps = (generator: unknown) => ({
+    sql: fakeSql({}),
+    clock: fixedClock,
+    kgGraph: emptyGraph,
+    scopes,
+    vectorRetriever: async () => [evidenceRow],
+    paperQuestionResolver: notPaper,
+    generator,
+    telemetry: (e: unknown) => events.push(e),
+  });
+  // the LIVE-MEASURED groq wording (run-001 replay): no apology stem, no redirect
+  const LIVE_GROQ_REFUSAL =
+    "The supplied sources do not contain information about the capital city of France.";
+
+  test("blocking ask: a non-compliant model refusal still ends with the redirect line", async () => {
+    events.length = 0;
+    const deps = baseDeps({
+      async generate() {
+        return { answer: LIVE_GROQ_REFUSAL, model: "gpt-oss-20b", provider: "groq", finishReason: "stop" };
+      },
+    });
+    const mod = buildTutorModule((deps as { sql: SqlFn }).sql, fixedClock, deps as never);
+    const result = await mod.ask("l1", "What is the capital city of France?", [], null, null);
+    expect(result.refused).toBe(true);
+    expect(result.answer.startsWith(LIVE_GROQ_REFUSAL)).toBe(true);
+    expect(result.answer).toContain("Could you rephrase the question, or start a new conversation");
+  });
+
+  test("blocking ask: an answer that already carries a redirect stays byte-identical", async () => {
+    events.length = 0;
+    const compliant =
+      "I can't answer that from the validated course material yet. Nothing here covers it. " +
+      "Could you rephrase the question, or start a new conversation on this topic?";
+    const deps = baseDeps({
+      async generate() {
+        return { answer: compliant, model: "m", provider: "p", finishReason: "stop" };
+      },
+    });
+    const mod = buildTutorModule((deps as { sql: SqlFn }).sql, fixedClock, deps as never);
+    const result = await mod.ask("l1", "q", [], null, null);
+    expect(result.answer).toBe(compliant);
+  });
+
+  test("stream parity: the redirect rides a TAIL DELTA; completed.fullAnswer matches the wire", async () => {
+    events.length = 0;
+    const deps = baseDeps({
+      async *streamGenerate() {
+        yield { answer: "The supplied sources do not contain ", model: "gpt-oss-20b", provider: "groq", finishReason: null };
+        yield { answer: "information about the capital city of France.", model: "gpt-oss-20b", provider: "groq", finishReason: "stop" };
+      },
+    });
+    const mod = buildTutorModule((deps as { sql: SqlFn }).sql, fixedClock, deps as never);
+    const kinds: string[] = [];
+    let tailText = "";
+    let completedFull = "";
+    for await (const event of mod.askStream("l1", "capital of France?", [], null, null)) {
+      kinds.push(event.kind);
+      if (event.kind === "delta") tailText = event.text;
+      if (event.kind === "completed") completedFull = event.fullAnswer;
+    }
+    expect(kinds).toEqual(["citations", "meta", "delta", "delta", "delta", "completed"]);
+    expect(tailText).toContain("Could you rephrase the question");
+    expect(completedFull.startsWith("The supplied sources do not contain")).toBe(true);
+    expect(completedFull).toContain("Could you rephrase the question");
+    const tel = events[0] as { refused: boolean };
+    expect(tel.refused).toBe(true);
+  });
+});
