@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Class-bearing modules outside app/components (the grid terminator law in
+   src/lib/subject-grid.ts was the first): v4 auto-detection missed lib/, so
+   the helpers' breakpoint variants never compiled. Explicit beats implicit
+   now that lib emits utility classes by design. */
+@source "../lib/**/*.{ts,tsx}";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

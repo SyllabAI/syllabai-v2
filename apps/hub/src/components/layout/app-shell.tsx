@@ -112,6 +112,8 @@ const QUICK_NAV_HREFS = ["/dashboard", "/courses", "/past-papers", "/plan"] as c
 const quickNavItems = QUICK_NAV_HREFS.map((href) =>
   TOOLS.find((t) => t.href === href),
 ).filter((t) => t !== undefined);
+// Set form of the same list for the menu's lg+ de-duplication law below.
+const quickNavHrefs = new Set<string>(QUICK_NAV_HREFS);
 
 export function AppShell({
   children,
@@ -230,7 +232,18 @@ export function AppShell({
                     <Link
                       href={courseScopedToolHref(t.href, pathname, lastOpened?.slug ?? null)}
                       aria-current={active ? "page" : undefined}
-                      className={cn("cursor-pointer", active && "bg-muted font-medium")}
+                      className={cn(
+                        "cursor-pointer",
+                        active && "bg-muted font-medium",
+                        // UX review 2026-11-04 deferred nit — dropdown vs
+                        // quick-nav overlap: at lg+ the inline "Quick tools"
+                        // nav already shows Dashboard/Courses/Past Papers/Study
+                        // plan, so the menu stops repeating them (the standard
+                        // responsive-nav law — a menu never duplicates what is
+                        // visible beside it; below lg the dropdown is the ONLY
+                        // nav and keeps the full index).
+                        quickNavHrefs.has(t.href) && "lg:hidden",
+                      )}
                     >
                       <t.icon className="size-4" aria-hidden />
                       <span className="flex-1">{t.label}</span>
