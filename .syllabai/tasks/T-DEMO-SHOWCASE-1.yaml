@@ -3,7 +3,7 @@ task:
   id: T-DEMO-SHOWCASE-1
   title: "Temporary showcase demo (operator order trace 1a1a826ecb54969d): anonymous visitors enter the student/teacher dashboards as two operator-provided demo accounts through the NORMAL login path; a temporary showcase landing renders at / and /demo behind a one-line kill-switch; the v2 API token TTL moves PT2H -> P30D so demo sessions survive the showcase."
   owner: "Z.ai main agent (zai-web session web-c414c074, chat 08b3170a, trace 1a1a826ecb54969d)"
-  status: RUN-001 # branch t-demo/showcase-r0; PR open; merge + deploy + live verification to follow in this run
+  status: RUN-001 LIVE of record # PR #771 merged (d9d95faa); hub dpl_GV9Suo6 READY; SYLLABAI_JWT_TTL=PT720H (NOT P30D — see the run-001 ADDENDUM worklog section + receipt addendum: PT-form only, P30D crashed the carrier and was corrected live)
   claimed_at: "2026-11-05"
   priority: P1
   wave: showcase
