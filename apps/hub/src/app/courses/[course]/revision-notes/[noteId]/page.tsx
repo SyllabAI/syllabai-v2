@@ -158,10 +158,13 @@ export default async function NoteReaderPage({
           <Card>
             <CardContent className="p-4">
               <p className="mb-2 text-sm font-semibold">Build on this topic</p>
+              {/* t-ui-polish run-005: these two card-links carry the house
+                  hover voice (border-primary/60 + shadow-sm lift) — they were
+                  legacy /40 border-shifts, off the runs-001-003 signature. */}
               <div className="grid gap-2 sm:grid-cols-2">
                 <Link
                   href={subtopicCode ? hub.hrefs.questions[subtopicCode] ?? `${base}/exam-questions` : `${base}/exam-questions`}
-                  className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-colors hover:border-primary/40"
+                  className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
                 >
                   <FileQuestion className="size-4 text-primary" aria-hidden />
                   <span className="text-[13px] font-medium">
@@ -172,7 +175,7 @@ export default async function NoteReaderPage({
                 </Link>
                 <Link
                   href={subtopicCode ? hub.hrefs.flashcards[subtopicCode] ?? `${base}/flashcards` : `${base}/flashcards`}
-                  className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-colors hover:border-primary/40"
+                  className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
                 >
                   <SquareStack className="size-4 text-primary" aria-hidden />
                   <span className="text-[13px] font-medium">

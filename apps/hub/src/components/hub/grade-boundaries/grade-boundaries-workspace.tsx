@@ -525,7 +525,7 @@ export function GradeBoundariesWorkspace({
     "flex size-14 items-center justify-center rounded-xl border-2 bg-background font-display text-2xl font-bold tabular-nums sm:size-16 sm:rounded-2xl";
 
   return (
-    <div className="mx-auto max-w-3xl space-y-3">
+    <div className="mx-auto mt-6 max-w-3xl space-y-3">
       {/* the MG calculator box — one bordered card for the whole surface */}
       <div className="rounded-2xl border-2 bg-card p-4 sm:p-6">
         <div className="flex flex-col gap-4">
