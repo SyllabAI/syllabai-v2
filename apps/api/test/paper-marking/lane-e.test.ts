@@ -167,7 +167,7 @@ const HASH_PARAM = 15;
 
 describe("Lane E — parse law (the verdict shape, validated never trusted)", () => {
   test("attempt: the three observed classes parse; invalid enum → marking_output_invalid; absent → null", () => {
-    for (const a of ["full", "partial", "blank"]) {
+    for (const a of ["full", "partial", "blank"] as const) {
       const v = parseVerdict(JSON.stringify(okVerdict({ attempt: a })));
       expect(v.attempt).toBe(a);
     }
