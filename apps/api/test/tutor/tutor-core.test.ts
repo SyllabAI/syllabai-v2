@@ -18,7 +18,7 @@ import {
   sanitizeAnswer,
   streamThrough,
 } from "../../src/services/tutor/sanitize";
-import { fuse, fuseWithPlanWeights, PLAN_V2_WEIGHTS } from "../../src/services/tutor/rrf";
+import { fuse, fuseWithPlanWeights, PLAN_V2_WEIGHTS, DEFAULT_RRF_K } from "../../src/services/tutor/rrf";
 import { evidenceFromChunk, evidenceFromNode, type EvidenceItem } from "../../src/services/tutor/evidence";
 import {
   noReranker,
@@ -355,8 +355,18 @@ topic (e.g. "moles", "bonding", "equilibria") or ask your teacher to
 ingest the relevant material.`);
     expect(courseScopeRefusal("4CH1")).toContain('scoped to the course "4CH1"');
     expect(courseScopeRefusal("4CH1")).toContain("SyllabAI never answers across\ncourses");
-    // v16 (T-TUTOR-EXP-1): the improvised-quiz marks law follows the bumped prompt
-    expect(promptIdentity()).toBe("tutor-grounded/v16");
+    // v17 (T-TUTOR-PIVOT-1): the refusal shape law follows the bumped prompt
+    expect(promptIdentity()).toBe("tutor-grounded/v17");
+  });
+
+  test("the v17 refusal shape law is in the system prompt", () => {
+    const prompt = systemPrompt();
+    expect(prompt).toContain(
+      'open the refusal exactly with "I can\'t answer that from the\n  validated course material yet."',
+    );
+    expect(prompt).toContain("state precisely what is missing");
+    expect(prompt).toContain("start a new conversation on the new topic");
+    expect(prompt).toContain("Never refuse a part\n  the SOURCES do cover");
   });
 
   test("the v11 spec-is-a-map quiz law is in the system prompt", () => {
@@ -1407,5 +1417,295 @@ describe("DC-1 mark context — karag prepare() step 2.8 (spec §3.1 P0016)", ()
     expect(prep.markContext).toBeNull();
     expect(prep.disclosureTier).toBe(1);
     void events;
+  });
+});
+
+// ── T-TUTOR-PIVOT-1 run-001 — the pivot arm + the refusal truth ─────────────
+//  Prereg of record docs/DC7-TUTOR-PIVOT-RETRIEVAL-AND-REFUSAL-TRUTH-PLAN.md.
+//  Measured defect (2026-11-05 live, session bd6c89ff seq 13-16): a
+//  mid-conversation topic pivot refused a corpus that holds the answer, and
+//  the model-worded refusal recorded refused=false.
+
+describe("ka-rag pivot arm — T-TUTOR-PIVOT-1 (the bare question retrieves on a topic pivot)", () => {
+  const emptyGraph = {
+    async structureNodes() {
+      return [];
+    },
+    async prerequisiteChains() {
+      return new Map();
+    },
+    async misconceptionsForTopics() {
+      return new Map();
+    },
+  };
+  const scopes = {
+    async resolveActive() {
+      return { curriculumVersionId: "cv", code: "4CH1", surface: new Set(["n1"]) };
+    },
+    async resolveForCourse() {
+      return null;
+    },
+  };
+
+  const chunkItem = (
+    row: string,
+    page: number | null,
+    chunkId: string,
+    kind: string,
+    cosine = 0.9,
+  ): EvidenceItem =>
+    evidenceFromChunk({
+      documentRowId: row,
+      documentId: "doc-" + row,
+      documentVersion: 1,
+      chunkId,
+      chunkIndex: 0,
+      kind,
+      content: `content-${chunkId}`,
+      pageStart: page,
+      pageEnd: null,
+      elementIds: [],
+      embeddingModel: "test",
+      cosine,
+    });
+
+  const examHistory = [
+    { role: "user", text: "How should I structure my answers to get full marks?" },
+    { role: "assistant", text: "Read the command word and plan your points." },
+    { role: "user", text: "What about six-mark questions?" },
+    { role: "assistant", text: "Plan, develop each point, conclude." },
+  ];
+
+  test("a topic pivot retrieves on the BARE question too — the pivot row survives into the pool", async () => {
+    const examRow = chunkItem("rowExam", 3, "c-exam", "TEXTBOOK", 0.9);
+    const pivotRow = chunkItem("rowPivot", 7, "c-pivot", "TEXTBOOK", 0.88);
+    const seenQueries: string[] = [];
+    const prep = await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: emptyGraph,
+        scopes,
+        vectorRetriever: async (query: string) => {
+          seenQueries.push(query);
+          // the working-memory blend lands in exam-technique territory; the
+          // bare pivot question lands on the corpus rows that hold the answer
+          return query.includes("structure my answers") ? [examRow] : [pivotRow];
+        },
+        paperQuestionResolver: async () => ({
+          items: [],
+          identityParsed: false,
+          identityLabel: null,
+        }),
+      } as never,
+      "l1",
+      "Difference between boiling and evaporation",
+      examHistory,
+      null,
+    );
+    expect(seenQueries.length).toBe(2); // the blend + the bare question
+    expect(seenQueries[1]).toBe("Difference between boiling and evaporation");
+    expect(prep.evidence.map((i) => i.chunkId)).toContain("c-pivot");
+  });
+
+  test("single-turn posture is byte-identical: ONE retrieval call, no pivot arm", async () => {
+    let calls = 0;
+    const prep = await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: emptyGraph,
+        scopes,
+        vectorRetriever: async (query: string) => {
+          calls += 1;
+          return [chunkItem("rowA", 1, "c1", "TEXTBOOK", 0.9), ...(query === "" ? [] : [])];
+        },
+        paperQuestionResolver: async () => ({
+          items: [],
+          identityParsed: false,
+          identityLabel: null,
+        }),
+      } as never,
+      "l1",
+      "what is a mole?",
+      [],
+      null,
+    );
+    expect(calls).toBe(1);
+    expect(prep.evidence.map((i) => i.chunkId)).toEqual(["c1"]);
+  });
+
+  test("an all-blank history degenerates to the single-turn posture (no pivot call)", async () => {
+    let calls = 0;
+    await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: emptyGraph,
+        scopes,
+        vectorRetriever: async () => {
+          calls += 1;
+          return [];
+        },
+        paperQuestionResolver: async () => ({
+          items: [],
+          identityParsed: false,
+          identityLabel: null,
+        }),
+      } as never,
+      "l1",
+      "what is a mole?",
+      [
+        { role: "user", text: "   " },
+        { role: "assistant", text: "" },
+      ],
+      null,
+    );
+    expect(calls).toBe(1);
+  });
+
+  test("RRF consensus: a row both arms agree on accumulates BOTH rank contributions", () => {
+    const shared = chunkItem("rowS", 2, "c-shared", "TEXTBOOK", 0.9);
+    const blendedOnly = chunkItem("rowB", 4, "c-blended", "TEXTBOOK", 0.8);
+    const bareOnly = chunkItem("rowP", 7, "c-pivot", "TEXTBOOK", 0.7);
+    const fused = fuseWithPlanWeights([[blendedOnly, shared], [bareOnly, shared]]);
+    const scores = new Map(fused.map((i) => [i.chunkId, i.fusedScore]));
+    const w = PLAN_V2_WEIGHTS.TEXTBOOK;
+    // shared: rank 1 in list A + rank 1 in list B → 2 · w/(k+2); the others: w/(k+1)
+    expect(scores.get("c-shared")).toBeCloseTo((2 * w) / (DEFAULT_RRF_K + 2), 12);
+    expect(scores.get("c-blended")).toBeCloseTo(w / (DEFAULT_RRF_K + 1), 12);
+    expect(scores.get("c-pivot")).toBeCloseTo(w / (DEFAULT_RRF_K + 1), 12);
+  });
+});
+
+describe("refusal truth — T-TUTOR-PIVOT-1 (the model-worded refusal records refused)", () => {
+  const emptyGraph = {
+    async structureNodes() {
+      return [];
+    },
+    async prerequisiteChains() {
+      return new Map();
+    },
+    async misconceptionsForTopics() {
+      return new Map();
+    },
+  };
+  const scopes = {
+    async resolveActive() {
+      return { curriculumVersionId: "cv", code: "4CH1", surface: new Set(["n1"]) };
+    },
+    async resolveForCourse() {
+      return null;
+    },
+  };
+  const notPaper = async () => ({ items: [], identityParsed: false, identityLabel: null });
+  const evidenceRow = evidenceFromChunk({
+    documentRowId: "row1",
+    documentId: "doc-row1",
+    documentVersion: 1,
+    chunkId: "c1",
+    chunkIndex: 0,
+    kind: "TEXTBOOK",
+    content: "Boiling happens throughout a liquid at its boiling point.",
+    pageStart: 7,
+    pageEnd: null,
+    elementIds: [],
+    embeddingModel: "test",
+    cosine: 0.9,
+  });
+
+  const events: unknown[] = [];
+  const baseDeps = (generator: unknown) => ({
+    sql: fakeSql({}),
+    clock: fixedClock,
+    kgGraph: emptyGraph,
+    scopes,
+    vectorRetriever: async () => [evidenceRow],
+    paperQuestionResolver: notPaper,
+    generator,
+    telemetry: (e: unknown) => events.push(e),
+  });
+
+  test("blocking ask: evidence present but the model refuses → refused=true, provider stays the generator's", async () => {
+    events.length = 0;
+    const deps = baseDeps({
+      async generate() {
+        return {
+          answer:
+            "I'm sorry, but the supplied sources do not contain any information about the difference between boiling and evaporation. You could rephrase the question, or start a new conversation on this topic.",
+          model: "gpt-oss-20b",
+          provider: "groq",
+          finishReason: "stop",
+        };
+      },
+    });
+    const mod = buildTutorModule((deps as { sql: SqlFn }).sql, fixedClock, deps as never);
+    const result = await mod.ask(
+      "l1",
+      "Difference between boiling and evaporation",
+      [
+        { role: "user", text: "How do I answer six-mark questions?" },
+        { role: "assistant", text: "Plan, develop, conclude." },
+      ],
+      null,
+      null,
+    );
+    expect(result.refused).toBe(true);
+    expect(result.provider).toBe("groq"); // NOT a deterministic refusal
+    expect(result.evidenceCount).toBe(1);
+    const tel = events[0] as { refused: boolean; provider: string };
+    expect(tel.refused).toBe(true);
+    expect(tel.provider).toBe("groq");
+  });
+
+  test("blocking ask: a normal grounded answer stays refused=false", async () => {
+    events.length = 0;
+    const deps = baseDeps({
+      async generate() {
+        return {
+          answer:
+            "Boiling happens throughout the liquid at its boiling point [1], while evaporation happens only at the surface.",
+          model: "gpt-oss-20b",
+          provider: "groq",
+          finishReason: "stop",
+        };
+      },
+    });
+    const mod = buildTutorModule((deps as { sql: SqlFn }).sql, fixedClock, deps as never);
+    const result = await mod.ask("l1", "boiling vs evaporation", [], null, null);
+    expect(result.refused).toBe(false);
+    const tel = events[0] as { refused: boolean };
+    expect(tel.refused).toBe(false);
+  });
+
+  test("stream parity: meta keeps the pre-generation contract; completed + telemetry carry the truth", async () => {
+    events.length = 0;
+    const deps = baseDeps({
+      async *streamGenerate() {
+        yield {
+          answer: "I'm sorry, but the supplied sources do not contain ",
+          model: "gpt-oss-20b",
+          provider: "groq",
+          finishReason: null,
+        };
+        yield {
+          answer: "any information about the difference between boiling and evaporation.",
+          model: "gpt-oss-20b",
+          provider: "groq",
+          finishReason: "stop",
+        };
+      },
+    });
+    const mod = buildTutorModule((deps as { sql: SqlFn }).sql, fixedClock, deps as never);
+    const refusedFlags: boolean[] = [];
+    for await (const event of mod.askStream("l1", "boiling vs evaporation", [], null, null)) {
+      if (event.kind === "meta") refusedFlags.push(event.refused);
+      if (event.kind === "completed") refusedFlags.push(event.refused);
+    }
+    // meta: false (pre-generation — a model-worded refusal is not knowable
+    // before the text arrives); completed: true (the accumulated text)
+    expect(refusedFlags).toEqual([false, true]);
+    const tel = events[0] as { refused: boolean };
+    expect(tel.refused).toBe(true);
   });
 });
