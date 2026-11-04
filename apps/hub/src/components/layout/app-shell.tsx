@@ -146,14 +146,16 @@ export function AppShell({
   // course pages manage their own horizontal rhythm (course shell + resource
   // panel); the graph surfaces are full-bleed (the visualizer canvas wants
   // the whole viewport); the tutor workspace is an immersive app surface
-  // (its own rail + header + composer, sized to the viewport); every other
-  // page gets the centred content column
+  // (its own rail + header + composer, sized to the viewport); T-DASH-SIDEBAR-001:
+  // the dashboard manages its own rhythm too (dashboard shell: persistent
+  // sidebar + content column); every other page gets the centred content column
   const inCourse = pathname.startsWith("/courses/");
   const inExplorer =
     pathname.startsWith("/graph-explorer") || pathname.startsWith("/knowledge-graph");
   const inTutor = pathname.startsWith("/tutor");
+  const inDashboard = pathname.startsWith("/dashboard");
   const viewerRoute = isViewerRoute(pathname);
-  const bare = inCourse || inExplorer || inTutor;
+  const bare = inCourse || inExplorer || inTutor || inDashboard;
 
   // UX audit 2026-10-02 #22: Experiments is the developer area — it sat next
   // to Tutor/Assistant for every signed-out visitor and student. Staff-only;

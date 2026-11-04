@@ -419,6 +419,14 @@ export function DashboardClient({
   const studyPlan = useStudyPlan(); // the Study plan rail (spec §5.3) — one server projection
   const signedIn = identity !== null; // the identity session of record (token + user)
   const [addOpen, setAddOpen] = useState(false);
+  // T-DASH-SIDEBAR-001: the sidebar's footer "Add subject" opens THIS
+  // overlay (a window event, not prop drilling — the shell is chrome, not
+  // an owner of the roster state).
+  useEffect(() => {
+    const open = () => setAddOpen(true);
+    window.addEventListener("syllabai:dashboard-add-course", open);
+    return () => window.removeEventListener("syllabai:dashboard-add-course", open);
+  }, []);
   const [stats, setStats] = useState<Record<string, CourseStat>>({});
 
   const bySlug = useMemo(() => {

@@ -1,4 +1,5 @@
 import { listCourses } from "@/lib/courses";
+import { DashboardShell } from "@/components/dashboard/dashboard-shell";
 import { DashboardClient } from "./dashboard-client";
 
 export const metadata = {
@@ -14,5 +15,12 @@ export default async function DashboardPage() {
   // and a code — not a display name; UX review 2026-11-04. The old
   // readSession/name pass rendered that handle as the h1.)
   const courses = await listCourses();
-  return <DashboardClient courses={courses} />;
+  // T-DASH-SIDEBAR-001: the persistent sidebar chrome wraps the dashboard —
+  // AppShell marks /dashboard full-bleed and the shell owns the layout
+  // (aside + content column), the course layout's contract exactly.
+  return (
+    <DashboardShell courses={courses}>
+      <DashboardClient courses={courses} />
+    </DashboardShell>
+  );
 }

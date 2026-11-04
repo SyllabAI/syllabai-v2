@@ -1213,3 +1213,7 @@ Stage Summary:
 - Kept: affordances, counts, empty-states, honest-nulls, aria-labels/semantics (agent experience), license/attribution lines, /about/provenance tier register.
 - Gates on 8d0bdac1: tsc 0; eslint byte-identical to pristine (15 errors/5 warnings pre-existing, none in touched files); bun test 4504/4519 with 2 fail + 1 error = pristine baseline byte-identical.
 - PR of record: https://github.com/SyllabAI/syllabai-v2/pull/760 (branch t-ux/frontend-copy-sweep @ a3a1b833) — NOT self-merged (integrator lane).
+
+---
+- Refile disclosure (same run, bookkeeping-only): PR #733's fresh-lane rebuild (970e8f71) carried the full run-003 worklog section but missed the three .syllabai filings (receipt t-resume-targets/run-003-live-verification.json + lane-artifacts exam/flashcards resume-flip PNGs); refiled byte-identical from the old lane head e61966cf (PR #726, closed unmerged after its event-drop). fetch-first, no force
+
