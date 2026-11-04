@@ -504,6 +504,13 @@ function coreHref(
  * code becomes the schedule fact it encodes, and unknown patterns pass
  * through untouched. Nothing is added — no numbers, dates or claims
  * beyond the row's own.
+ *
+ * The trailing ")" is dropped ONLY when the "(scheduled …" conversion
+ * actually ran — the paren is orphaned by that rewrite. Stripping it
+ * unconditionally (the first cut) unbalanced every other detail that
+ * happens to end in a paren ("Risk noted (self-marked)" → "…(self-marked"),
+ * so the strip is now guarded by whether the rewrite happened
+ * (tier-3 follow-up item 1: the boundary is pinned by tests).
  */
 export function humanizeCoreReasonDetail(detail: string): string {
   const dated = detail
@@ -517,9 +524,11 @@ export function humanizeCoreReasonDetail(detail: string): string {
         }),
     )
     .replace(/decay crossed threshold/gi, "its review date has passed");
-  return dated
-    .replace(/\s*\(\s*scheduled\s+/i, " — scheduled ")
-    .replace(/\s*\)\s*$/, "");
+  const scheduled = dated.replace(/\s*\(\s*scheduled\s+/i, " — scheduled ");
+  // The rewrite consumed the "(" — its matching ")" at the end is now noise.
+  return scheduled === dated
+    ? dated
+    : scheduled.replace(/\s*\)\s*$/, "");
 }
 
 /**

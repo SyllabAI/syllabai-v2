@@ -32,11 +32,13 @@ export function humanizeCode(code: string): string {
  *  minutes → hours → days → weeks → a real date; beyond two years the count
  *  is dropped (the Overdue badge already carries the fact) because no
  *  honest number helps there. Client-only caller today (SetWorkCard);
- *  en-GB dates for the audience (Edexcel / Cambridge International). */
-export function formatDue(iso: string): string {
+ *  en-GB dates for the audience (Edexcel / Cambridge International).
+ *  `now` is injectable so the boundaries are unit-testable (default keeps
+ *  every existing call site unchanged). */
+export function formatDue(iso: string, now: number = Date.now()): string {
   const t = new Date(iso).getTime();
   if (!Number.isFinite(t)) return "no due date";
-  const ms = t - Date.now();
+  const ms = t - now;
   const future = ms >= 0;
   const say = (v: number, unit: string) =>
     future
@@ -61,6 +63,20 @@ export function formatDue(iso: string): string {
   // ≥ 2 years: the stored dueAt is effectively junk (probe fixtures, clock
   // bugs) — a number would only erode trust; the badge carries the fact.
   return future ? "due later" : "overdue";
+}
+
+/**
+ * Progress label (dashboard UX review 2026-11-04 P1.4): a wall of near-zero
+ * percentages read as noise ("0.4%" of a 2,703-question bank is not a
+ * progress report) and a column of 0% bars read as failure. Below five
+ * percent the label says where you are in words; the bar underneath still
+ * moves. 0 is its own state — "Just started" on a truly untouched row would
+ * be a lie the row's own count contradicts.
+ */
+export function percentLabel(percent: number): string {
+  if (percent <= 0) return "Not started";
+  if (percent < 5) return "Just started";
+  return formatPercent(percent);
 }
 
 /**
