@@ -124,3 +124,48 @@ Engine + route ship together behind the existing `flags.json → flags.teachMe` 
 deploy. Migration `0025` must be applied to the shared Neon DB before the first In-Depth
 6-objective session (the API refuses nothing meanwhile — ordinals ≤4 still pass the old
 CHECK, so Quick sessions are safe pre-migration).
+
+## 7. T-TEACHGENIE-002 — the note-driven picker (unit/topic dropdowns)
+
+**Date:** 2026-11-05 · **Operator commission** (chat trace `1a1a84b5cf0e865d`): the picker should
+not make users choose spec points — they should choose the **Revision Note of the particular
+course**, organized under **unit/topic dropdowns**.
+
+### What changed
+
+- **Picker (`teach-genie/picker.tsx`, rewritten).** The spec-point tree with multi-pick chips is
+  replaced by two cascading dropdowns — **Unit** (spec-tree TOPIC, e.g. "Principles of chemistry")
+  and **Topic** (spec-tree SUBTOPIC, e.g. "States of matter") — over a single-select list of the
+  notes anchored under the chosen topic (the "Covers 4CH1-x.y" mono captions show each note's canon
+  codes). The search box keeps the describe-your-own spirit: typing filters notes by title/unit/
+  topic text and shows each hit's unit · topic home. Difficulty + length segmented controls, MG
+  styling and the AI_SUGGESTED/quota caption are unchanged.
+- **Projection (`teach-me/picker-data.ts` `buildTeachGenieNoteTree`, additive).** The SAME canonical
+  spec tree every notes surface uses (never a second taxonomy): notes ride the sub-topic their canon
+  codes anchor to (`subtopicOfNote` — the notes-index law); notes no code anchors land in an honest
+  trailing "Other notes" group; zero-code notes are not offered (they cannot ground a session);
+  note-free units/topics are pruned from the dropdowns. The page passes `bundle.curriculum +
+  bundle.notes` — the same committed course bundle the Revision Notes index rides.
+- **The bridge of record.** The picked note's `specPointCodes` ARE the create request's
+  `specPointIds`, sent verbatim. Every engine law stays server-side and untouched: the G1 canon
+  gate, the G2 note-corpus gate (the overlap detector already joins `revision_note` on these
+  codes), the objectives shape law (every requested code covered by ≥1 objective; no objective may
+  cite a code outside the requested set), quota, ceilings, D2/D4.
+- **Contract (`packages/contracts/src/teach-me.ts`).** `teachSpecPointIdsSchema` ceiling **3 → 8**:
+  a session may now ground on ONE note's full canon code set. The committed 4CH1 corpus carries
+  1–4 codes per note (72×1, 27×2, 12×3, 1×4 — all 112 notes place); 8 = headroom for corpus
+  growth, aligned with the objective ordinal ceiling (1–8, migration 0025). The old ≤3 wizard
+  shape still parses (backward compatible; the legacy `teach-me` wizard compiles untouched).
+- **Copy.** Landing "How it works" step 1 and the picker subtitle now describe the note-driven
+  flow. The honest empty state (flagged course with no code-anchored notes → "warming up") is
+  carried over from the bundle-missing case.
+
+### Bounds
+
+- No DB migration, no API route/service/sql byte changes, no new endpoints — the ceiling move is
+  the only wire delta, and `teach_sessions.spec_point_ids` is jsonb (no count constraint).
+- The API-side canon gate remains the fail-closed law: a note whose codes lack canon descriptions
+  (or a DB note corpus that doesn't index them) refuses honestly with COURSE_NOT_ELIGIBLE — the
+  same posture the spec-point picker had.
+- MG's own picker keys on their revision-topic list; this delta moves SyllabAI to the equivalent
+  unit of selection (one revision note ≈ one MG topic) without importing their taxonomy.

@@ -1,0 +1,55 @@
+{
+ "task": "T-TEACHGENIE-002",
+ "run": "run-001",
+ "agent": "Super Z (zai-web session web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2)",
+ "date": "2026-11-05",
+ "branch": "t-teachgenie-002/run-001",
+ "base": "origin/main 71c9618 (PR #770 merge, verified at clone time)",
+ "operator_commission": {
+  "audit_request": "\"Audit the teach me feature\" (trace 1a1a84b5cf0e865d, same chat) — located the surface first-hand @ 71c9618: T-TEACHGENIE-001's MathsGenie-parity learn-by-teaching lane (hub teach-genie/* over the run-002 apps/api/src/teach-me/ engine, flags.json teachMe gate, pilot igcse-chemistry-19); the picker made learners hand-pick ≤3 canon spec points",
+  "order": "\"the agent that created it, makes user choose spec points. But I want user to choose the Revision Note of the particular course. (make sure the notes are organized, under unit/topic dropdowns)\" — same trace, same chat"
+ },
+ "scope": "hub lane + one contract ceiling: the note-driven picker (unit = TOPIC dropdown, topic = SUBTOPIC dropdown, single-select revision note), the additive buildTeachGenieNoteTree projection, the picked note's specPointCodes sent verbatim as specPointIds, teachSpecPointIdsSchema max 3→8, landing/picker copy, honest no-notes page state, docs §7",
+ "gates": {
+  "contracts": "bun test packages/contracts/src/teach-me.test.ts — 9/9 (2 ceiling pins re-anchored: the negative now uses NINE codes; a new positive pins the 4-code corpus-max note 4CH1-4.7…4.10); full contracts dir 477/477 from repo root",
+  "api": "bun test apps/api/test/teach-me/ — 22/22 UNTOUCHED (zero apps/api bytes; the engine's G1 canon gate + G2 note-corpus gate + objectives shape law hold unchanged)",
+  "hub_tests": "teach-genie suite 9/9 (5 NEW note-picker projection pins: anchoring, verbatim codes, loose group, zero-code omission, empty curriculum); FULL hub battery 1170 pass / 4 fail / 34,338 expects — A/B-proven pre-existing via git-stash clean-main run showing the IDENTICAL fail set (T-UGM-RENDER-1 katex, question-cla isolation pin, T-MG-INK-11 ×2)",
+  "typecheck": "apps/hub bunx tsc --noEmit exit 0; apps/api bunx tsc --noEmit exit 0",
+  "build": "next build GREEN first-hand (compile 41s + TS 28.6s + 4648 static pages) with /courses/igcse-chemistry-19/teach-genie prerendered and the standalone artifacts verified on disk; a one-string landing-copy edit landed AFTER the green build — covered by tsc exit 0 + the PR's CI build gate, disclosed"
+ },
+ "laws_landed": [
+  "unit of selection: ONE revision note (≈ one MG topic) replaces ≤3 hand-picked spec points",
+  "grouping: the SAME canonical spec tree every notes surface uses — never a second taxonomy (TOPIC dropdown → SUBTOPIC dropdown → subtopicOfNote-anchored notes)",
+  "grounding: the picked note's specPointCodes are the create request's specPointIds, VERBATIM — the API's G1 canon gate stays the fail-closed law of what is servable; no hub-side eligibility fabricated",
+  "honesty: zero-code notes not offered (cannot ground a session); unanchored notes in a trailing 'Other notes' group; note-free units/topics pruned; flagged course with no code-anchored notes keeps the 'warming up' card",
+  "backward compatibility: the old ≤3 wizard shape still parses; the legacy teach-me wizard compiles untouched"
+ ],
+ "disclosures": [
+  "the committed 4CH1 bundle carries 1–4 codes per note (72×1, 27×2, 12×3, 1×4 — max 4, all 112 notes place, zero loose, zero zero-code; measured first-hand from content/igcse-chemistry-19/notes.json)",
+  "the DB revision_note corpus (the G2 overlap leg) is keyed on the same canon codes; whether the live DB corpus indexes every bundled note is the create gate's honest refusal domain, unchanged from the spec-point picker",
+  "sandbox: two early build attempts died to disk pressure/timeout (the standalone copy needs ~6G scratch) before a cache-clean; bunx once re-resolved deps and touched bun.lock — reverted to the frozen lockfile and re-verified with bun install --frozen-lockfile",
+  "a tracked placeholder blob apps/api/node_modules (a path-string pointer committed by a prior lane) was restored untouched after a test cycle — zero diff on it"
+ ],
+ "files": {
+  "modified": [
+   "packages/contracts/src/teach-me.ts",
+   "packages/contracts/src/teach-me.test.ts",
+   "apps/hub/src/components/hub/teach-me/picker-data.ts",
+   "apps/hub/src/components/hub/teach-genie/picker.tsx",
+   "apps/hub/src/components/hub/teach-genie/teach-genie-client.tsx",
+   "apps/hub/src/components/hub/teach-genie/landing.tsx",
+   "apps/hub/src/app/courses/[course]/teach-genie/page.tsx",
+   "docs/TEACH_GENIE.md",
+   ".syllabai/worklog.md"
+  ],
+  "added": [
+   "apps/hub/src/components/hub/teach-genie/note-picker-laws.test.ts",
+   ".syllabai/tasks/T-TEACHGENIE-002.yaml",
+   ".syllabai/receipts/T-TEACHGENIE-002/run-001.json"
+  ]
+ },
+ "pending_inputs": [
+  "PR review/merge by the integrator (opened, not self-merged)",
+  "the 5-code specPointIds / 4-code specPointCodes skew on rn_H9chr9BWCfXYW472 (Crude Oil & Fractional Distillation: 5 upstream spcpt_* ids fold to 4 canon codes) — harmless, codes are the wire truth"
+ ]
+}

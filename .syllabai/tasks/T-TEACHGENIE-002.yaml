@@ -1,0 +1,40 @@
+version: 1
+task:
+  id: T-TEACHGENIE-002
+  title: 'Teach Genie note-driven picker — the learner selects a Revision Note of the course (organized
+    under unit/topic dropdowns) instead of hand-picking spec points; the note''s canon spec codes
+    become the session''s specPointIds and every engine law stays server-side'
+  owner: Super Z (zai-web session web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2,
+    dispatch trace 1a1a84b5cf0e865d — audit request "Audit the teach me feature" + operator order
+    "I want user to choose the Revision Note of the particular course. (make sure the notes are
+    organized, under unit/topic dropdowns)")
+  status: 'IN_PROGRESS # run-001 (picker rewrite + contract ceiling 3→8 + projection + tests) — PR of record'
+  priority: P1
+  band: T-TEACHGENIE (MathsGenie-parity learn-by-teaching surface)
+  wave: teachme-phase-A
+  deps: [T-TEACHME-001, T-TEACHGENIE-001]
+  scope:
+    allowed:
+    - packages/contracts/src/teach-me.ts (teachSpecPointIdsSchema ceiling 3→8 + comments)
+    - packages/contracts/src/teach-me.test.ts (ceiling pins)
+    - apps/hub/src/components/hub/teach-me/picker-data.ts (additive note-tree projection only)
+    - apps/hub/src/components/hub/teach-genie/** (picker rewrite + client prop + landing step copy + projection tests)
+    - apps/hub/src/app/courses/[course]/teach-genie/page.tsx (note-tree wiring + honest empty state)
+    - docs/TEACH_GENIE.md (§7 delta)
+    - .syllabai/tasks/T-TEACHGENIE-002.yaml + .syllabai/receipts/T-TEACHGENIE-002/** + .syllabai/worklog.md (append-only)
+    forbidden:
+    - any apps/api byte (routes/services/sql/prompts/config) — the engine is untouched by design
+    - any DB migration — teach_sessions.spec_point_ids is jsonb; no count constraint exists
+    - the legacy teach-me wizard + picker spec-point projection (both compile untouched, backward compatible)
+    - any mutation of the ADR-040 evidence doctrine (D1/D2/D3/D4) or the flags gate
+  notes: 'DESIGN of record: the unit of selection moves from "≤3 hand-picked spec points" (MG ≤3
+    topics parity) to "ONE revision note" (one note ≈ one MG topic). The grouping is the SAME
+    canonical spec tree every notes surface uses (never a second taxonomy): unit = TOPIC dropdown,
+    topic = SUBTOPIC dropdown, notes anchored via subtopicOfNote (the notes-index law). The picked
+    note''s specPointCodes are sent VERBATIM as the create request''s specPointIds — so the G1 canon
+    gate, the G2 note-corpus gate (the overlap detector already joins revision_note on these codes),
+    the objectives shape law, quota, ceilings and D2/D4 all hold unchanged. Contract ceiling 3→8:
+    the committed 4CH1 corpus carries 1–4 codes per note (72×1, 27×2, 12×3, 1×4 — all 112 notes
+    place, zero loose, zero zero-code); 8 = headroom, aligned with the objective ordinal ceiling
+    (migration 0025). No hub-side eligibility is fabricated — create() still refuses honestly
+    (COURSE_NOT_ELIGIBLE) when the serving corpus cannot ground the note.'
