@@ -166,7 +166,7 @@ try {
                 FROM tutor_sessions s
                 JOIN tutor_session_turns t ON t.session_id = s.id
                 WHERE s.learner_id::text LIKE 'b8f8afb5%'
-                  AND s.created_at >= now() - interval '3 days'
+                  AND s.last_active_at >= now() - interval '3 days'
                 ORDER BY s.created_at, t.seq
                 LIMIT 80`;
 
