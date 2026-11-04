@@ -1,0 +1,975 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_tmY2Kb5JP5h5Vjcf",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "6d836d9bb10b1823b39e3d7214c791293ad00a70d2fc2c1887ec7368d368634b",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "packageId": "igcse-physics::rn_tmY2Kb5JP5h5Vjcf",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L1::Q1",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L1",
+      "stem": "When is a force exerted on a wire in a magnetic field?",
+      "misconceptionClass": "condition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "when the wire carries a current",
+          "correct": true,
+          "explanation": "The motor effect needs a current for the wire's own field.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "whenever the wire is made of copper",
+          "correct": false,
+          "explanation": "Material is irrelevant; the current matters.",
+          "misconception": "material confusion"
+        },
+        {
+          "key": "C",
+          "text": "only when the wire is still and disconnected",
+          "correct": false,
+          "explanation": "Without current there is no motor effect.",
+          "misconception": "condition inversion"
+        },
+        {
+          "key": "D",
+          "text": "only when the field is switched off",
+          "correct": false,
+          "explanation": "The field is a required ingredient, not an obstacle.",
+          "misconception": "condition inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L1::Q2",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L1",
+      "stem": "The motor effect arises because:",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the current leaks into the magnet",
+          "correct": false,
+          "explanation": "No charge crosses into the magnet.",
+          "misconception": "circuit confusion"
+        },
+        {
+          "key": "B",
+          "text": "the wire's field and the magnet's field combine unevenly around the wire",
+          "correct": true,
+          "explanation": "Reinforcement on one side and cancellation on the other give the sideways force.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the wire heats up and expands",
+          "correct": false,
+          "explanation": "Heating is real but is not the force mechanism.",
+          "misconception": "thermal confusion"
+        },
+        {
+          "key": "D",
+          "text": "the magnet attracts the copper atoms",
+          "correct": false,
+          "explanation": "Copper is non-magnetic; attraction is not the mechanism.",
+          "misconception": "attraction fallacy"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L1::Q3",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L1",
+      "stem": "The force on a current-carrying wire in a field acts:",
+      "misconceptionClass": "geometry recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "along the field lines",
+          "correct": false,
+          "explanation": "The force is perpendicular to the field, not along it.",
+          "misconception": "direction confusion"
+        },
+        {
+          "key": "B",
+          "text": "vertically upwards always",
+          "correct": false,
+          "explanation": "Direction depends on current and field directions.",
+          "misconception": "fixed-direction myth"
+        },
+        {
+          "key": "C",
+          "text": "perpendicular to both the current and the field",
+          "correct": true,
+          "explanation": "The force is at right angles to both inputs.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "along the wire, pushing the current faster",
+          "correct": false,
+          "explanation": "The force is sideways to the current, not along it.",
+          "misconception": "direction confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L1::Q4",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L1",
+      "stem": "Both the current and the magnetic field are reversed. What happens to the force?",
+      "misconceptionClass": "direction reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it reverses",
+          "correct": false,
+          "explanation": "One reversal flips the force; two restore it.",
+          "misconception": "double-counting"
+        },
+        {
+          "key": "B",
+          "text": "it doubles",
+          "correct": false,
+          "explanation": "Reversals change direction, not magnitude.",
+          "misconception": "magnitude confusion"
+        },
+        {
+          "key": "C",
+          "text": "it disappears",
+          "correct": false,
+          "explanation": "The force persists with unchanged direction.",
+          "misconception": "vanishing claim"
+        },
+        {
+          "key": "D",
+          "text": "it stays in the same direction",
+          "correct": true,
+          "explanation": "Two reversals cancel: the force direction is unchanged.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L1::Q5",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L1",
+      "stem": "Which devices apply the motor effect?",
+      "misconceptionClass": "application recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "d.c. electric motors and loudspeakers",
+          "correct": true,
+          "explanation": "Both convert current plus field into force and motion.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "transformers and dynamos",
+          "correct": false,
+          "explanation": "Those apply induction, the inverse effect.",
+          "misconception": "effect swap"
+        },
+        {
+          "key": "C",
+          "text": "electromagnets and relays",
+          "correct": false,
+          "explanation": "Those apply the field produced by current, not the force on it.",
+          "misconception": "effect swap"
+        },
+        {
+          "key": "D",
+          "text": "thermometers and barometers",
+          "correct": false,
+          "explanation": "Neither involves magnetic forces.",
+          "misconception": "category slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L1::Q6",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L1",
+      "stem": "State the name of the effect where a current-carrying wire experiences a force in a magnetic field.",
+      "misconceptionClass": "naming recall",
+      "kind": "recall",
+      "modelAnswer": "It is called the motor effect, seen when a current-carrying wire lies in a magnetic field.",
+      "keywords": [
+        "motor",
+        "effect",
+        "current-carrying",
+        "magnetic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L1::Q7",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L1",
+      "stem": "State what happens to the force on a wire if only the magnetic field is reversed.",
+      "misconceptionClass": "direction recall",
+      "kind": "recall",
+      "modelAnswer": "The force reverses direction because it depends on the field direction.",
+      "keywords": [
+        "force",
+        "reverses",
+        "direction",
+        "field"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L1::Q8",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L1",
+      "stem": "Explain why a current-carrying wire experiences a force between magnet poles.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The wire's own circular field adds to the magnet's uniform field: on one side of the wire the two fields reinforce into a strong region, and on the other side they cancel into a weak one. The field then behaves like a stretched catapult line, pushing the wire from the strong side towards the weak side — a force perpendicular to both the current and the field.",
+      "keywords": [
+        "fields",
+        "reinforce",
+        "cancel",
+        "force"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L1::Q9",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L1",
+      "stem": "A wire between poles feels an upward force. Predict the new force direction if (a) the current is reversed, (b) the current is reversed AND the poles are swapped.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "(a) Reversing only the current flips the force to downwards. (b) Reversing both the current and the field flips the force twice, so it is upwards again — unchanged.",
+      "keywords": [
+        "flips",
+        "downwards",
+        "twice",
+        "unchanged"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L2::Q1",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L2",
+      "stem": "Why do the two horizontal sides of the motor coil feel opposite forces?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the commutator pushes one side up",
+          "correct": false,
+          "explanation": "The commutator feeds current; the field provides the forces.",
+          "misconception": "role confusion"
+        },
+        {
+          "key": "B",
+          "text": "their currents flow in opposite directions",
+          "correct": true,
+          "explanation": "Antiparallel currents in the same field feel antiparallel forces.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "they are made of different metals",
+          "correct": false,
+          "explanation": "Both sides are the same coil of wire.",
+          "misconception": "material invention"
+        },
+        {
+          "key": "D",
+          "text": "the field is stronger on one side only",
+          "correct": false,
+          "explanation": "The field is uniform between the poles; the currents differ.",
+          "misconception": "field asymmetry myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L2::Q2",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L2",
+      "stem": "What is the role of the split-ring commutator in a d.c. motor?",
+      "misconceptionClass": "component recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "it measures the coil's speed",
+          "correct": false,
+          "explanation": "The commutator is a contact, not a sensor.",
+          "misconception": "role invention"
+        },
+        {
+          "key": "B",
+          "text": "it reduces the coil's resistance",
+          "correct": false,
+          "explanation": "Its function is the current swap, not resistance control.",
+          "misconception": "role invention"
+        },
+        {
+          "key": "C",
+          "text": "it reverses the coil's current every half turn",
+          "correct": true,
+          "explanation": "The swap keeps the torque in one rotational sense.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "it reverses the magnet's poles every half turn",
+          "correct": false,
+          "explanation": "The poles stay fixed; the current is what flips.",
+          "misconception": "role inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L2::Q3",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L2",
+      "stem": "The current to a spinning motor coil is switched off at the top of a turn. What happens?",
+      "misconceptionClass": "dynamic reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the coil keeps spinning at constant speed forever",
+          "correct": false,
+          "explanation": "Friction slows it — nothing sustains the rotation.",
+          "misconception": "perpetual motion"
+        },
+        {
+          "key": "B",
+          "text": "the coil reverses direction",
+          "correct": false,
+          "explanation": "Without forces nothing reverses the rotation.",
+          "misconception": "reversal invention"
+        },
+        {
+          "key": "C",
+          "text": "the coil jumps off the axle",
+          "correct": false,
+          "explanation": "No force acts to eject the coil.",
+          "misconception": "absurd outcome"
+        },
+        {
+          "key": "D",
+          "text": "the coil slows and stops, with no forces to sustain rotation",
+          "correct": true,
+          "explanation": "No current means no motor-effect forces.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L2::Q4",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L2",
+      "stem": "Which change makes a d.c. motor spin FASTER?",
+      "misconceptionClass": "design reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "increasing the current through the coil",
+          "correct": true,
+          "explanation": "Bigger current, bigger forces, faster rotation.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "decreasing the magnetic field strength",
+          "correct": false,
+          "explanation": "Weaker field gives smaller forces and slower spin.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "C",
+          "text": "removing half the coil's turns",
+          "correct": false,
+          "explanation": "Fewer turns reduce the total force on the coil.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "D",
+          "text": "insulating the coil from the commutator",
+          "correct": false,
+          "explanation": "That cuts the current entirely — the motor stops.",
+          "misconception": "self-defeating change"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L2::Q5",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L2",
+      "stem": "The poles of a running motor are swapped. What happens to the rotation?",
+      "misconceptionClass": "direction reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the coil spins faster",
+          "correct": false,
+          "explanation": "Field swap changes direction, not magnitude.",
+          "misconception": "speed confusion"
+        },
+        {
+          "key": "B",
+          "text": "the coil spins the opposite way",
+          "correct": true,
+          "explanation": "Both forces flip, so the torque reverses.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the coil keeps spinning the same way",
+          "correct": false,
+          "explanation": "The force directions both reverse with the field.",
+          "misconception": "inertia confusion"
+        },
+        {
+          "key": "D",
+          "text": "the coil stops immediately",
+          "correct": false,
+          "explanation": "The forces still act — now in the opposite rotational sense.",
+          "misconception": "stopping claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L2::Q6",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L2",
+      "stem": "State the two forces that act on a motor coil's horizontal sides.",
+      "misconceptionClass": "force recall",
+      "kind": "recall",
+      "modelAnswer": "One side feels an upward force and the other side feels a downward force, forming a turning couple.",
+      "keywords": [
+        "upward",
+        "downward",
+        "force",
+        "couple"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L2::Q7",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L2",
+      "stem": "State why the coil continues rotating past the vertical position.",
+      "misconceptionClass": "component recall",
+      "kind": "recall",
+      "modelAnswer": "The split-ring commutator reverses the current every half turn, so the forces keep pushing the coil round in the same rotational sense.",
+      "keywords": [
+        "commutator",
+        "reverses",
+        "current",
+        "half"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L2::Q8",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L2",
+      "stem": "Explain how opposite currents on the two sides of a coil produce rotation.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "In the same magnetic field, the two horizontal sides carry currents in opposite directions, so the motor effect gives them forces in opposite vertical directions — one up, one down. Because the forces act on opposite sides of the axle they form a couple, and a couple produces rotation of the coil rather than translation.",
+      "keywords": [
+        "opposite",
+        "forces",
+        "couple",
+        "rotation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L2::Q9",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L2",
+      "stem": "A model motor spins sluggishly. List three independent adjustments that would increase its speed, each justified by the motor effect.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Increase the current — each side's force grows with current. Use stronger magnets — a stronger field gives larger forces on the same current. Add more turns to the coil — more current-carrying sides contribute force, increasing the couple. Any of these raises the torque and the spin rate.",
+      "keywords": [
+        "current",
+        "magnets",
+        "turns",
+        "torque"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L3::Q1",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L3",
+      "stem": "What is the turning effect on the coil when it stands vertical in the field?",
+      "misconceptionClass": "position reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "reversed — the coil begins spinning backwards",
+          "correct": false,
+          "explanation": "No turning force exists at that instant to reverse anything.",
+          "misconception": "reversal invention"
+        },
+        {
+          "key": "B",
+          "text": "doubled by the commutator",
+          "correct": false,
+          "explanation": "The commutator swaps current; it does not amplify force.",
+          "misconception": "role confusion"
+        },
+        {
+          "key": "C",
+          "text": "zero — the forces no longer form a turning couple",
+          "correct": true,
+          "explanation": "The forces act towards the axle at the vertical position.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "maximum — the coil turns fastest here",
+          "correct": false,
+          "explanation": "The couple is smallest at vertical, not largest.",
+          "misconception": "position inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L3::Q2",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L3",
+      "stem": "Why must the current be reversed as the coil passes the vertical position?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "to reduce the current for safety",
+          "correct": false,
+          "explanation": "The swap is about direction, not magnitude or safety.",
+          "misconception": "purpose confusion"
+        },
+        {
+          "key": "B",
+          "text": "because the coil's resistance changes at vertical",
+          "correct": false,
+          "explanation": "Resistance does not step-change at the vertical position.",
+          "misconception": "electrical confusion"
+        },
+        {
+          "key": "C",
+          "text": "to let the coil cool down",
+          "correct": false,
+          "explanation": "Cooling is irrelevant to the half-turn geometry.",
+          "misconception": "irrelevant cause"
+        },
+        {
+          "key": "D",
+          "text": "so the forces keep driving the same rotation after the sides swap places",
+          "correct": true,
+          "explanation": "The reversal re-aligns the forces with the rotation.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L3::Q3",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L3",
+      "stem": "A motor runs WITHOUT a commutator. Predict its behaviour.",
+      "misconceptionClass": "design reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it turns to the horizontal position and settles there",
+          "correct": true,
+          "explanation": "Past vertical the forces oppose rotation and hold the coil horizontal.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "it spins continuously in one direction",
+          "correct": false,
+          "explanation": "Past vertical the forces reverse the torque.",
+          "misconception": "perpetual claim"
+        },
+        {
+          "key": "C",
+          "text": "it spins faster and faster",
+          "correct": false,
+          "explanation": "Nothing accelerates it beyond the initial couple.",
+          "misconception": "acceleration claim"
+        },
+        {
+          "key": "D",
+          "text": "it vibrates on the spot",
+          "correct": false,
+          "explanation": "The torque pulls it to rest at horizontal, not into vibration.",
+          "misconception": "motion invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L3::Q4",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L3",
+      "stem": "After a 180° rotation, the current is unchanged (no commutator). The force on each side now acts:",
+      "misconceptionClass": "geometry reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "there is no force any more",
+          "correct": false,
+          "explanation": "Current and field persist, so the forces persist.",
+          "misconception": "vanishing claim"
+        },
+        {
+          "key": "B",
+          "text": "opposite to the rotation, resisting it",
+          "correct": true,
+          "explanation": "The sides swapped positions, so the same currents now give opposing forces.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "in the direction of rotation",
+          "correct": false,
+          "explanation": "That was true before the half turn, not after.",
+          "misconception": "timing confusion"
+        },
+        {
+          "key": "D",
+          "text": "vertically, with no horizontal component",
+          "correct": false,
+          "explanation": "The forces stay vertical but their turning sense flips.",
+          "misconception": "direction confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L3::Q5",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L3",
+      "stem": "Which statement about the vertical position is correct?",
+      "misconceptionClass": "position recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the forces double",
+          "correct": false,
+          "explanation": "Nothing doubles at the vertical orientation.",
+          "misconception": "magnitude invention"
+        },
+        {
+          "key": "B",
+          "text": "the field switches off",
+          "correct": false,
+          "explanation": "The magnets' field is unchanged by coil position.",
+          "misconception": "field confusion"
+        },
+        {
+          "key": "C",
+          "text": "the forces on the sides still exist but produce no rotation",
+          "correct": true,
+          "explanation": "Forces persist; their lines of action pass through the axle region.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the forces disappear because the current is zero",
+          "correct": false,
+          "explanation": "The current flows — the commutator bridges the gap.",
+          "misconception": "current confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L3::Q6",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L3",
+      "stem": "State the forces' turning effect on the vertical coil.",
+      "misconceptionClass": "position recall",
+      "kind": "recall",
+      "modelAnswer": "The forces act towards the axle and produce no turning effect on the coil.",
+      "keywords": [
+        "forces",
+        "axle",
+        "no",
+        "turning"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L3::Q7",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L3",
+      "stem": "State what the commutator does at the vertical position.",
+      "misconceptionClass": "component recall",
+      "kind": "recall",
+      "modelAnswer": "The split ring reverses the current in the coil at the vertical position.",
+      "keywords": [
+        "split",
+        "ring",
+        "reverses",
+        "current"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L3::Q8",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L3",
+      "stem": "Explain why, without a commutator, a motor coil ends up resting horizontally.",
+      "misconceptionClass": "system reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Past the vertical position each side occupies the place the other just left, so with an unchanged current the motor-effect forces now act the opposite way round — one side pushed where it was pulled before. The resulting couple opposes the rotation, swings the coil back, and the coil settles in the horizontal orientation where the forces are balanced as a turning couple is absent there too.",
+      "keywords": [
+        "opposite",
+        "couple",
+        "settles",
+        "horizontal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L3::Q9",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L3",
+      "stem": "A motor's split ring is fitted half a turn out of phase. Predict the motion and justify it.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The current reverses at the horizontal instead of the vertical position, so for part of each turn the forces oppose the rotation. The coil jerks, loses most of its torque, and either crawls round unevenly or settles stuck — the swap must be synchronised with the vertical dead-centre for smooth rotation.",
+      "keywords": [
+        "reverses",
+        "oppose",
+        "torque",
+        "stuck"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L4::Q1",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L4",
+      "stem": "What does the force on a loudspeaker's coil do to the cone?",
+      "misconceptionClass": "function reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it spins the cone like a fan",
+          "correct": false,
+          "explanation": "The radial field gives axial forces, not rotation.",
+          "misconception": "motion confusion"
+        },
+        {
+          "key": "B",
+          "text": "it heats the cone to emit sound",
+          "correct": false,
+          "explanation": "Sound comes from cone vibration, not heat.",
+          "misconception": "mechanism confusion"
+        },
+        {
+          "key": "C",
+          "text": "it holds the cone perfectly still",
+          "correct": false,
+          "explanation": "A still cone makes no sound.",
+          "misconception": "stasis claim"
+        },
+        {
+          "key": "D",
+          "text": "it moves the cone in and out along its axis",
+          "correct": true,
+          "explanation": "The alternating force vibrates the cone.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L4::Q2",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L4",
+      "stem": "Why does a loudspeaker cone vibrate?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the alternating current reverses the force direction rapidly",
+          "correct": true,
+          "explanation": "Each reversal swaps the push for a pull on the coil.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the magnet switches its poles on and off",
+          "correct": false,
+          "explanation": "The permanent magnet's poles stay fixed.",
+          "misconception": "pole confusion"
+        },
+        {
+          "key": "C",
+          "text": "air blows through the coil",
+          "correct": false,
+          "explanation": "Air movement is the output, not the driver.",
+          "misconception": "cause swap"
+        },
+        {
+          "key": "D",
+          "text": "the coil's resistance oscillates",
+          "correct": false,
+          "explanation": "The signal varies the current, not the resistance.",
+          "misconception": "electrical confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L4::Q3",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L4",
+      "stem": "The current through a speaker coil is increased. What happens to the force and the sound?",
+      "misconceptionClass": "factor reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "no change to either",
+          "correct": false,
+          "explanation": "The force tracks the current directly.",
+          "misconception": "no-change claim"
+        },
+        {
+          "key": "B",
+          "text": "bigger force, louder sound",
+          "correct": true,
+          "explanation": "Force grows with current; larger cone swings make louder sound.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "smaller force, quieter sound",
+          "correct": false,
+          "explanation": "That inverts the current–force link.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "D",
+          "text": "same force, higher pitch",
+          "correct": false,
+          "explanation": "Current size changes loudness, not frequency.",
+          "misconception": "pitch confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L4::Q4",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L4",
+      "stem": "A loudspeaker magnet is swapped for a stronger one. What changes?",
+      "misconceptionClass": "factor reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the force direction reverses",
+          "correct": false,
+          "explanation": "Strength changes magnitude, not direction.",
+          "misconception": "direction confusion"
+        },
+        {
+          "key": "B",
+          "text": "the coil stops responding to current",
+          "correct": false,
+          "explanation": "The coil responds even more strongly.",
+          "misconception": "response claim"
+        },
+        {
+          "key": "C",
+          "text": "the forces on the coil grow for the same current",
+          "correct": true,
+          "explanation": "Force scales with field strength.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the forces shrink",
+          "correct": false,
+          "explanation": "A stronger field gives larger forces.",
+          "misconception": "factor inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L4::Q5",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L4",
+      "stem": "The connections to a speaker are swapped over, reversing the current direction. What happens to the cone's vibration?",
+      "misconceptionClass": "direction reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the cone stops vibrating",
+          "correct": false,
+          "explanation": "The alternating current still alternates the force.",
+          "misconception": "stasis claim"
+        },
+        {
+          "key": "B",
+          "text": "the cone vibrates twice as fast",
+          "correct": false,
+          "explanation": "Frequency follows the signal, which is unchanged.",
+          "misconception": "frequency confusion"
+        },
+        {
+          "key": "C",
+          "text": "the sound becomes louder",
+          "correct": false,
+          "explanation": "Loudness tracks force size, which is unchanged.",
+          "misconception": "loudness confusion"
+        },
+        {
+          "key": "D",
+          "text": "each push becomes a pull, so the vibration is inverted but sound continues",
+          "correct": true,
+          "explanation": "The force reverses; the alternating pattern just mirrors.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L4::Q6",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L4",
+      "stem": "State what provides the magnetic field in a loudspeaker.",
+      "misconceptionClass": "component recall",
+      "kind": "recall",
+      "modelAnswer": "A permanent magnet provides the field in which the coil sits.",
+      "keywords": [
+        "permanent",
+        "magnet",
+        "field",
+        "coil"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L4::Q7",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L4",
+      "stem": "State the two quantities the motor-effect force increases with.",
+      "misconceptionClass": "factor recall",
+      "kind": "recall",
+      "modelAnswer": "The force increases with the current and with the strength of the magnetic field.",
+      "keywords": [
+        "force",
+        "current",
+        "strength",
+        "field"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L4::Q8",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L4",
+      "stem": "Explain why the loudspeaker cone reproduces the waveform of the audio signal.",
+      "misconceptionClass": "system reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The force on the coil tracks the audio current: it grows and shrinks with the signal's size and reverses whenever the signal reverses direction. The cone is driven by that force, so its displacement rises, falls and reverses in step with the signal — tracing the same waveform and recreating the recorded pressure pattern as sound.",
+      "keywords": [
+        "force",
+        "tracks",
+        "current",
+        "waveform"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tmY2Kb5JP5h5Vjcf::L4::Q9",
+      "moduleId": "rn_tmY2Kb5JP5h5Vjcf::L4",
+      "stem": "A demonstration speaker is built with a weaker magnet and then a stronger one, all else equal. Compare the cone's motion and the sound in the two cases.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "With the weaker magnet the force on the coil for the same signal current is smaller, so the cone swings a shorter distance each vibration and the sound is quieter. With the stronger magnet the same signal gives larger forces, wider cone swings and louder sound — the vibration frequency is set by the signal and stays the same in both cases.",
+      "keywords": [
+        "weaker",
+        "quieter",
+        "stronger",
+        "louder"
+      ],
+      "options": []
+    }
+  ]
+}

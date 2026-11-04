@@ -1,0 +1,116 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_4cM2y5tCVYWZ9VMJ",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "744912f83a0e1d65fd7ec88f0268c63f78045073f24d1616a277e01e892acb73",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_4cM2y5tCVYWZ9VMJ",
+    "topicTitle": "6. Magnetism and Electromagnetism",
+    "subtopicTitle": "Magnetism and Electromagnetism",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/6-magnetism-and-electromagnetism/6-1-magnetism-and-electromagnetism/6-1-10-magnetic-force-on-a-charge",
+    "specAnchors": [
+      {
+        "code": "6.11P",
+        "text": "know that there is a force on a charged particle when it moves in a magnetic field as long as its motion is not parallel to the field"
+      }
+    ],
+    "primer": {
+      "text": "A magnetic field picks on moving charges only — and even then only when they cut across the field lines. This note pins down the two conditions for the force, the perpendicular maximum, the parallel zero, and why a deflected beam changes direction without changing speed.",
+      "prerequisiteSubtopic": "Magnetism and Electromagnetism"
+    },
+    "modules": [
+      {
+        "id": "rn_4cM2y5tCVYWZ9VMJ::L1",
+        "title": "Forces on moving charges in magnetic fields",
+        "sourceHeadings": [
+          "Magnetic force on a charge"
+        ],
+        "specRefs": [
+          "6.11P"
+        ],
+        "opening": "A magnetic field grabs a charged particle only when it moves, and even then only when the motion has a component across the field lines. Parallel travel earns no force at all; perpendicular travel earns the maximum, which is why electron beams bend sideways — never forwards — as they cross a field.",
+        "keyPoints": [
+          "A charged particle experiences a force in a magnetic field only while it is moving.",
+          "The force vanishes when the particle moves parallel to the magnetic field lines.",
+          "The force is greatest when the motion is perpendicular to the field lines.",
+          "The force direction depends on the sign of the charge, so electrons deflect opposite to positive charges.",
+          "The force acts at right angles to both the motion and the field, so it changes direction, not speed."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A still charge feels nothing in a magnetic field. Start it moving across the lines and it gets pushed sideways; move it along the lines instead and the push disappears.",
+            "analogy": "Swimming across a river's flow drags you sideways, but floating straight along the current adds no sideways push.",
+            "examPointer": "State both conditions in the mark scheme's order: moving AND not parallel to the field — dropping either loses the point."
+          },
+          "medium": {
+            "restatement": "The magnetic force on a charge is the cross-product-style interaction: its magnitude scales with the charge, the speed, the field strength and the sine of the angle between velocity and field, so a parallel-travelling charge contributes zero through the sine term. Because the force is always perpendicular to the velocity, it does no work on the particle — it steers the path into an arc without changing the speed.",
+            "analogy": "A cue ball struck perfectly side-on changes direction but not pace: the sideways push redirects, it never accelerates the ball along its own line of travel.",
+            "examPointer": "For deflection questions, commit to the geometry: the beam curves across the field with a circular-style bend, and reversing the charge sign flips the bend to the other side."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_4cM2y5tCVYWZ9VMJ::L1::Q1",
+          "rn_4cM2y5tCVYWZ9VMJ::L1::Q2",
+          "rn_4cM2y5tCVYWZ9VMJ::L1::Q3",
+          "rn_4cM2y5tCVYWZ9VMJ::L1::Q4",
+          "rn_4cM2y5tCVYWZ9VMJ::L1::Q5",
+          "rn_4cM2y5tCVYWZ9VMJ::L1::Q6",
+          "rn_4cM2y5tCVYWZ9VMJ::L1::Q7",
+          "rn_4cM2y5tCVYWZ9VMJ::L1::Q8",
+          "rn_4cM2y5tCVYWZ9VMJ::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "magnetic force",
+          "definition": "The push a magnetic field exerts on a moving charge crossing its field lines.",
+          "firstLesson": 1
+        },
+        {
+          "term": "deflection",
+          "definition": "The sideways bending of a charged particle's path by a magnetic force.",
+          "firstLesson": 1
+        },
+        {
+          "term": "magnetic field",
+          "definition": "The region around a magnet where magnetic forces act on moving charges.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/9af6e2b5e525-deflected-particle.png",
+        "alt": "Deflected particle, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Magnetic force on a charge",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The electron experiences a force upwards when it travels through the magnetic field between the two poles. Remember that conventional current flows in the opposite direction to electrons."
+      }
+    ]
+  }
+}
