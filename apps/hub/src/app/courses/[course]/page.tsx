@@ -639,7 +639,7 @@ export default async function CourseHubPage({
       </CourseHeader>
 
       {!hub.viaProvider && stats.notes + stats.questions === 0 ? (
-        <Card className="mt-8">
+        <Card className="mt-6">
           <CardHeader className="pb-2">
             <CardTitle className="flex items-center gap-2 text-base">
               <GraduationCap className="size-4 text-primary" aria-hidden />

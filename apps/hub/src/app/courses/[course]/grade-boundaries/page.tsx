@@ -58,7 +58,7 @@ export default async function GradeBoundariesPage({
       {entry ? (
         <GradeBoundariesWorkspace entry={entry} />
       ) : (
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto mt-6 max-w-3xl">
           <div className="rounded-2xl border-2 bg-card p-8 text-center">
             <p className="text-sm font-medium">No boundaries in the corpus yet</p>
             <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
