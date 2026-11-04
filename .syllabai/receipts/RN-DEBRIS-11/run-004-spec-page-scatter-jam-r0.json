@@ -1,0 +1,108 @@
+{
+ "schema": "syllabai-demo.lane-receipt/1.0",
+ "lane": "RN-DEBRIS-11",
+ "run": "run-004",
+ "kind": "repair",
+ "operatorTrace": "1a1a7bcdfbc3b921",
+ "generatedUtc": "2026-11-05T00:00:00Z",
+ "task": "the operator challenged the verified-clean verdict on https://syllabai-hub-v2.vercel.app/courses/igcse-maths-a-18-higher/specification ('You dont see any issues with this page?') and then ordered 'Proceed with fixing all the issues' — the challenge was CORRECT: a deep two-way audit found 16 damaged spec-point titles on that page alone (PDF-extraction scatter + italic-letter jams), plus byte-equivalent twins in the two modular Higher unit bundles; all 33 sites repaired from official Pearson printed text",
+ "discovery": {
+  "whatTheEarlierCheckMissed": "the earlier live verification was one-way (data->page presence of 234 titles + absence of 31 known R1 maths-segment strings) and could not see prose-plane damage because the corrupted forms were not in any of-record pair list; a reverse audit (page text vs data) + full-title eyeball against the official spec found the real defects",
+  "auditMethod": "browser screenshot + DOM text-run extraction, reverse classification of every visible run against curriculum.json, full 188-title eyeball, detector battery (paren jams, letter-digit jams, italic-x/y jams, exponent/fraction scatter, empty parens, doubled conjunctions, PUA), then per-statement alignment against the official printed documents",
+  "families": [
+   "S1 exponent scatter: printed superscripts extracted as floating leading digits ('3 2 y = Ax + Bx + Cx + D' for y = Ax³ + Bx² + Cx + D)",
+   "S2 fraction scatter: stacked fractions linearized as 'E F ... + + x x' for + E/x + F/x²",
+   "J1 letter-digit jam: 'is180°', 'per100'",
+   "J2 italic-letter jam: 'lettersxandy', 'functionfgand', 'ofy = f(x)the', 'notationn(A)for', 'setA', 'firstnterms', 'series(Sn)', 'gradientmand', 'point(0,c)', 'points(x, y)in', 'apositiveangle', 'difference(d)', 'usenth', 'powers ofx', '+ care', 'they-axis'",
+   "C1 content loss: 2.2F lost the ² entirely (x² -> x); 4.8E lost the ½ entirely (1⁄2 ab sin C -> ab sin C); U2 5.2M swallowed a printed N.B. line about 5.1 vectors into its title",
+   "C2 quote-direction: 18h 1.1G carried a right single quote where the 2016 doc prints a left one"
+  ]
+ },
+ "evidenceOfRecord": [
+  "Pearson Edexcel International GCSE in Mathematics (Specification A) 4MA1 — Specification — Issue 2 — November 2017 (official PDF, qualifications.pearson.com, sha256 recorded in artifacts; pdftotext -layout extraction /tmp/rn11/4ma1_spec.txt) — evidence for all igcse-maths-a-18-higher sites",
+  "Pearson Edexcel International GCSE in Mathematics (Specification A) (Modular) 4XMAF/4XMAH — Specification — Issue 2 — March 2024 (official PDF; /tmp/rn11/4xma1_modular.txt) — evidence for all modular U1/U2 sites",
+  "house style: Unicode super/subscripts already of record in corpus titles (sin⁻¹x, a² = b², xⁿ in cie/ial maths titles); 1⁄2 (U+2044) per ial-maths-20-pure-1 3.1 '1⁄2 ab sin C'"
+ ],
+ "zeroInventionKeeps": [
+  "18h 3.3E 'and and' KEPT — the 2016 linear spec prints 'and and' verbatim (Pearson typo of record); removing it would alter printed wording",
+  "U1 3.3A carries NO trailing 'or:' before 'y = sin x' — faithful to the modular spec print (the 2016 doc prints 'or:'); each file follows its own document",
+  "U1/U2 ‛ (U+201B) quote glyphs kept — the modular spec itself prints them",
+  "3.2B \\uf061 arrow kept — renders as ↦ via normalizeSpecText PUA_MAP (of-record spec-text.ts line 46)",
+  "(Sn) kept flattened in 3.1C — subscript flattened but content complete (loss ≠ flattening; maths-plane concern, not debris)"
+ ],
+ "apply": {
+  "files": {
+   "apps/hub/content/igcse-maths-a-18-higher/curriculum.json": 16,
+   "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/curriculum.json": 7,
+   "apps/hub/content/igcse-maths-a-modular-24-higher-unit-2/curriculum.json": 10
+  },
+  "sitesTotal": 33,
+  "perCode": {
+   "igcse-maths-a-18-higher": [
+    "1.1G",
+    "1.5C",
+    "2.2F",
+    "3.1A",
+    "3.1B",
+    "3.1C",
+    "3.2B",
+    "3.2D",
+    "3.3A",
+    "3.3B",
+    "3.3E",
+    "3.3H",
+    "3.4B",
+    "4.6C",
+    "4.8E",
+    "5.2C"
+   ],
+   "igcse-maths-a-modular-24-higher-unit-1": [
+    "1.5C",
+    "1.6A",
+    "2.2F",
+    "3.3A",
+    "3.3C",
+    "3.3H",
+    "4.8E"
+   ],
+   "igcse-maths-a-modular-24-higher-unit-2": [
+    "3.1A",
+    "3.1B",
+    "3.1C",
+    "3.2B",
+    "3.2D",
+    "3.3E",
+    "3.4B",
+    "4.6C",
+    "5.2C",
+    "5.2M"
+   ]
+  }
+ },
+ "gates": {
+  "G1_exactMatch": "every one of the 33 'old' forms matched the node title byte-exactly before any write (full-title anchors; an initial substring-anchor for 4.6C was caught by this gate and corrected to full-title before any write)",
+  "G2_structure": "node counts (234/99 nodes... exact per file), code order, and ALL non-title fields byte-identical",
+  "G3_serializerRoundTrip": "dumps(loads(raw)) == raw byte-exact for all 3 originals (compact separators, ensure_ascii=False) — therefore the only bytes that can differ are the replaced title values; post-write: 16/7/10 title diffs == repair table exactly",
+  "G4_postCensus": "0 scatter/jam residue across the 3 repaired files (targeted pattern battery re-run post-apply)",
+  "scope": "git diff --stat = exactly the 3 content files, 1 line each (compact-JSON single-line titles)"
+ },
+ "corpusCensusDelta": {
+  "S1S2_corpus_wide": "57 -> 50 (this run removed exactly its 7 evidenced scatter sites)",
+  "residualOfRecord": "50 S1/S2 sites corpus-wide (igcse-maths-b-16 4J same-family scatter; 104/90/74-hit courses are CIE chemistry/biology papers whose patterns need per-course official-doc evidence) + foundation-tier jam family (1.9A standard-form scatter 'and1 a < 10', 3.3C/3.3H jams in igcse-maths-a-18-foundation + modular foundation U1) — filed as the follow-up census for a future run, NOT touched here"
+ },
+ "artifacts": {
+  "applyScript": "scripts/rn11_run004_apply.py (workspace copy; run record in this receipt)",
+  "auditScript": "scripts/rn11_deep_page_audit.py (workspace copy)",
+  "officialPDFs": "/tmp/rn11/4ma1_spec.pdf (1534117 bytes) + /tmp/rn11/4xma1_modular.pdf (1137358 bytes), sandbox /tmp (not committed)"
+ },
+ "discipline": "fetch-first clone at origin/main a47d4496; run-003 merge ecb8fef8 ancestor-verified before work; zero content invented — every replacement string aligned to the official printed document per file's own spec issue; worklog append-only asserted",
+ "next": [
+  "post-merge: verify the static spec pages re-render (deployment fresh via existing probe pattern) on igcse-maths-a-18-higher + the two modular courses",
+  "follow-up lane census: the 50-residual S1/S2 corpus-wide + foundation jam family + igcse-maths-b-16 4J (needs 4MB1 official doc)"
+ ],
+ "ciGate": {
+  "event": "PR #761 first CI round: census success, hub in-progress, verify FAILED at books-bundle-spine.test.ts:47 — the higher-bundle sha256-of-record pin (d1059c0a...) caught the conscious curriculum-byte change, exactly the anti-silent-drift law working as designed",
+  "resolution": "re-pinned of record to 55aad22c... with a dated comment citing this receipt (of-record precedent: the 2ece53b re-pin comment); zero test fixtures quote any damaged wording (grep-verified before re-pin); structural assertions (census 234/6/39/188, byTier, code order, 1.1A wording, join smoke) unaffected by title-only repairs",
+  "raceGuard": "origin/main moved a47d4496 -> 018739e7 (#743) mid-run; rebase onto 018739e7; the only conflict was the dual worklog tails — resolved as append-only union (theirs-verbatim-first + this run's section, zero markers)"
+ }
+}
