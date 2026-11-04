@@ -18,10 +18,16 @@ import { MathText } from "@/components/hub/math-text";
  * external links are flattened by the renderer's outbound-link law, so the
  * source URL appears as attribution text, never a live hop).
  *
- * Honesty surfaces: per-spec-point provenance (AI_SUGGESTED tier +
- * confidence from the corpus of record), rights holder + attestation line,
- * teacher-support disclosure, and the declared non-overlap reason when the
- * resource is one.
+ * Honesty surfaces: rights holder, teacher-support disclosure, and the
+ * declared non-overlap reason when the resource is one.
+ *
+ * T-UX-STUDENT-COPY r0 (operator order, trace 1a1a719a34bc5761): the
+ * operator-vocabulary surfaces left the page — the per-chip AI confidence
+ * suffix, the "operator attestation of 2026-10-23" rights line, the
+ * import repo/ref hash and the "outbound-link law" / "review gate"
+ * phrasing. The bundle data is untouched (the attestation + review state
+ * stay in the committed bundle of record); they are just no longer
+ * rendered to students.
  *
  * Static-serving (T-UGM-RENDER-2): the reader joins the ADR-021 tranche-4.12
  * posture — the former force-dynamic was demo-era inheritance that forced
@@ -115,7 +121,7 @@ export default async function UgmReaderPage({
           ) : null}
           {resource.nonOverlap ? (
             <Badge variant="outline" className="border-dashed text-[10px]">
-              not mapped to this lane
+              beyond the specification map
             </Badge>
           ) : (
             specCodes.map((code) => {
@@ -126,7 +132,6 @@ export default async function UgmReaderPage({
                     <Star className="mr-0.5 size-2.5 text-primary" aria-hidden />
                   ) : null}
                   {code}
-                  {sp?.confidence ? ` · ${sp.confidence}` : ""}
                 </Badge>
               );
             })
@@ -139,9 +144,9 @@ export default async function UgmReaderPage({
           <CardContent className="flex items-start gap-2.5 p-3.5 text-[13px] leading-relaxed text-muted-foreground">
             <Landmark className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
             <span>
-              <span className="font-medium text-foreground">Declared non-overlap.</span>{" "}
-              {resource.nonOverlapReason} It is kept in the library for its maths, not as
-              spec-point coverage — no coverage is manufactured.
+              <span className="font-medium text-foreground">Beyond the specification map.</span>{" "}
+              {resource.nonOverlapReason} It is kept in the library for extra maths practice, not
+              as specification-point coverage.
             </span>
           </CardContent>
         </Card>
@@ -151,14 +156,8 @@ export default async function UgmReaderPage({
         <CardContent className="flex flex-wrap items-start gap-2.5 p-3.5 text-[12px] leading-relaxed text-muted-foreground">
           <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
           <span>
-            <span className="font-medium text-foreground">{ugm.rights.holder}</span>. Use inside
-            SyllabAI under the operator attestation of 2026-10-23 — {ugm.rights.license}. Source:
-            undergroundmathematics.org (text mention per the outbound-link law), imported from{" "}
-            <span className="font-mono text-[11px]">
-              {ugm.source.repo} {ugm.source.ref.slice(0, 16)}…
-            </span>{" "}
-            · alignment {ugm.reviewState.state.toLowerCase()} (AI-suggested, per-row confidence
-            shown on the spec-point chips).
+            <span className="font-medium text-foreground">{ugm.rights.holder}</span>. Source:
+            undergroundmathematics.org.
           </span>
         </CardContent>
       </Card>
