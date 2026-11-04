@@ -1018,3 +1018,18 @@ Work Log:
 
 Stage Summary:
 - t-book-073 run-001: CLOSED at the git/CI/merge plane and VERIFIED at the playback plane; 29/29 packs now have a curated video of-record on main (3b7dd7f4). Remaining: the c17 b07 DB ingest + post-ingest production re-probe, operator-keyed. Receipts .syllabai/receipts/T-BOOK-073/{c17-media-embed-r0,c17-media-embed-r1}.json; PR #705; merge 3b7dd7f4. Credential rotation reminder stands (ghp_/vcp_/napi_/npg_ x2 chat-exposed).
+
+## t-book-073 run-001 DB leg + serve proof — c17 b07 ingested & flipped on MAIN of record; the Watch card serves on production (operator order trace 1a1a20d3cc3c4e65; DSN re-knock trace 1a1a4819e2faa119)
+Agent: main (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7)
+Task: the operator-keyed DB leg the prior legs disclosed as pending — land c17 b07 in book_blocks on the ep-ancient-cake MAIN pooler, flip it, and prove the card serves from the lesson page.
+
+Work Log:
+- Recycle recovery: checkout had rolled back to a stale snapshot (t-book-015 @ 3002b509, 1573 behind) — fetch-first re-pinned main at 87d8e660; bun install rebuilt workspace deps (tracked node_modules symlink's store target was recycled).
+- Endpoint identity BEFORE any write: GUCs say project billowing-cherry-15418366, branch br-muddy-bar-a5huwldd, PG 18.6 — the MAIN of record. DSN env-injected per command, never echoed or on disk.
+- Preflight census: 265/265 rows VALIDATED; c17 chapter VALIDATED (join set holds 2.37+2.39); c16's media-embed updated 2026-11-02 vs its 2026-10-27 siblings → the widen runs used a SCOPED single-block landing, so the full re-ingest (whose upsert resets VALIDATED to SUGGESTED) was NOT run — dry-run only, shape proven (266 blocks, u2:c17 #7 rides).
+- Serving law read of record: railBlocksForChapter double gate (book VALIDATED AND row VALIDATED) — flip required.
+- Land: b07 INSERT on-conflict(identity) as SUGGESTED (binding laws checked live first). Flip: separate keyed S4 action → VALIDATED. Post-flip census: 266/266 VALIDATED, nothing else moved.
+- Serve proof (production, headless browser): c17 lesson (h1 'Salt preparations') renders the media-embed card — iframe youtube-nocookie.com/embed/vcxlISVJ6Os?rel=0 at 708x398, correct video title, Watch-on-YouTube link, Cognito attribution + media-sources.yaml licensing line. Screenshot: .syllabai/lane-artifacts/T-BOOK-073/c17-watch-card-production.png.
+
+Stage Summary:
+- t-book-073 CLOSED IN FULL: video hunted & curated (r0), pushed/PR #705/gate-b/merged 3b7dd7f4 (r1), DB land+flip on MAIN of record + first-hand production serve proof (r2). 'Does our Course Lessons have videos?' now answers 29/29 packs of-record; c17's Watch card plays from the lesson page. Credential rotation reminder stands (ghp_/vcp_/napi_/npg_ x2 chat-exposed).
