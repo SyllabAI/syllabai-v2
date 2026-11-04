@@ -186,4 +186,10 @@ async function main() {
   writeFileSync(args.receipt, JSON.stringify(receipt, null, 1));
   console.log(`apply ok: ${docRows} docs / ${chunkRows} chunks; post-commit d=${after[0].d} c=${after[0].c}`);
 }
-main().catch((e) => { console.error(String(e)); process.exit(1); });
+// run-005 fix-3: the NeonWsClient session has no close() on the adapter, so
+// after a fully committed + receipt-stamped apply the open websocket keeps
+// the event loop alive; Neon autosuspend (300s) then terminates the compute
+// (57P01 'administrator command') and the driver's unhandled 'error' event
+// crashes the process AFTER success (run-005 attempts 1-3). The receipt file
+// is written synchronously before this point, so force-exit is safe.
+main().then(() => process.exit(0)).catch((e) => { console.error(String(e)); process.exit(1); });
