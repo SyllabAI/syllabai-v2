@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_6Pp9dDJX4bzTJvHh",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "cb02e0b4f503d6a8b57a7768679b2d8a8e3aeffbd72fae96d2934d0d7cb45be6",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "packageId": "igcse-physics::rn_6Pp9dDJX4bzTJvHh",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L1::Q1",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L1",
+      "stem": "How do gas molecules move between collisions?",
+      "misconceptionClass": "kinetic recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "in straight lines at constant speed",
+          "correct": true,
+          "explanation": "With no forces acting between collisions, straight-line motion holds.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "in curved paths pulled by gravity",
+          "correct": false,
+          "explanation": "Gravity's bend is negligible at molecular scale and time-frame.",
+          "misconception": "force invention"
+        },
+        {
+          "key": "C",
+          "text": "in orbits around other molecules",
+          "correct": false,
+          "explanation": "Molecules do not orbit; they collide.",
+          "misconception": "model confusion"
+        },
+        {
+          "key": "D",
+          "text": "they hover and vibrate in place",
+          "correct": false,
+          "explanation": "Hovering describes nothing; vibrating in place is the solid picture.",
+          "misconception": "state confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L1::Q2",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L1",
+      "stem": "What does 'random motion' mean for a gas?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the molecules swap identities during collisions",
+          "correct": false,
+          "explanation": "Model molecules are conserved, not exchanged.",
+          "misconception": "model confusion"
+        },
+        {
+          "key": "B",
+          "text": "the molecules' directions of travel have no preferred direction",
+          "correct": true,
+          "explanation": "Randomness is about direction distribution, not chaos of speed.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the molecules all travel at random different speeds in one direction",
+          "correct": false,
+          "explanation": "One shared direction is exactly what randomness excludes.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "D",
+          "text": "the molecules stop and start at random times",
+          "correct": false,
+          "explanation": "Molecules keep moving between collisions; they do not pause.",
+          "misconception": "stop-start slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L1::Q3",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L1",
+      "stem": "Why does a gas fill its container uniformly?",
+      "misconceptionClass": "mechanism linking",
+      "options": [
+        {
+          "key": "A",
+          "text": "the molecules expand in size",
+          "correct": false,
+          "explanation": "Molecule size never changes.",
+          "misconception": "particle-size slip"
+        },
+        {
+          "key": "B",
+          "text": "the walls pull the molecules towards them",
+          "correct": false,
+          "explanation": "Walls receive collisions; they do not attract.",
+          "misconception": "force invention"
+        },
+        {
+          "key": "C",
+          "text": "random motion in all directions carries molecules into every region equally",
+          "correct": true,
+          "explanation": "Directional randomness plus free travel spreads the gas evenly.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "gravity spreads the molecules evenly",
+          "correct": false,
+          "explanation": "Gravity would pool them at the bottom if it dominated.",
+          "misconception": "force invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L1::Q4",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L1",
+      "stem": "A molecule hits another molecule head-on and bounces back. What has changed for it?",
+      "misconceptionClass": "collision model",
+      "options": [
+        {
+          "key": "A",
+          "text": "it has stopped moving",
+          "correct": false,
+          "explanation": "A collision transfers motion, it does not end it.",
+          "misconception": "stop-start slip"
+        },
+        {
+          "key": "B",
+          "text": "it has become a liquid molecule",
+          "correct": false,
+          "explanation": "State is a bulk property, not a single-molecule transformation.",
+          "misconception": "state confusion"
+        },
+        {
+          "key": "C",
+          "text": "its speed permanently halves at every collision",
+          "correct": false,
+          "explanation": "Elastic collisions conserve total kinetic energy.",
+          "misconception": "energy loss slip"
+        },
+        {
+          "key": "D",
+          "text": "its direction of travel has changed",
+          "correct": true,
+          "explanation": "Collisions redirect; in the elastic model speeds are conserved overall.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L1::Q5",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L1",
+      "stem": "Why can we say the gas as a whole has zero net velocity even though its molecules race about?",
+      "misconceptionClass": "statistical reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the random directions cancel: for every molecule going one way, another goes the opposite way",
+          "correct": true,
+          "explanation": "Vector sums over random directions average to zero.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "all molecules are actually at rest between collisions",
+          "correct": false,
+          "explanation": "They move fast between collisions.",
+          "misconception": "stop-start slip"
+        },
+        {
+          "key": "C",
+          "text": "the container absorbs their motion",
+          "correct": false,
+          "explanation": "Walls only reflect momentum; they do not swallow the net (which is already zero).",
+          "misconception": "force invention"
+        },
+        {
+          "key": "D",
+          "text": "speed and velocity are the same thing",
+          "correct": false,
+          "explanation": "Velocity is a vector; the average vector cancels while speed remains.",
+          "misconception": "vector confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L1::Q6",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L1",
+      "stem": "State what is meant by random motion of gas molecules.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The molecules move rapidly with no preferred direction of travel, flying in straight lines between collisions that redirect them.",
+      "keywords": [
+        "rapidly",
+        "direction",
+        "straight",
+        "collisions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L1::Q7",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L1",
+      "stem": "State two things that change a molecule's direction of travel.",
+      "misconceptionClass": "kinetic recall",
+      "kind": "recall",
+      "modelAnswer": "Collisions with other molecules and collisions with the container walls both redirect a molecule.",
+      "keywords": [
+        "collisions",
+        "molecules",
+        "walls",
+        "direction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L1::Q8",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L1",
+      "stem": "Explain why the random motion of molecules does not make the gas drift towards one side of the container.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because the motion is random, every direction of travel is equally represented among the molecules. For any molecule heading towards the left wall at any instant, another is heading right, another up and another down, so the momentum flows cancel. The gas's centre of mass therefore stays put even though each molecule is moving fast.",
+      "keywords": [
+        "random",
+        "direction",
+        "cancel",
+        "momentum"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L1::Q9",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L1",
+      "stem": "A perfume bottle is opened at the front of a classroom. Using the kinetic model, explain why the smell reaches the back but takes noticeably longer than a sound wave.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Perfume molecules leave the bottle moving fast but in random directions, so they travel by many short straight flights redirected at every collision — a random walk. Sound is an ordered wave carried by the air's existing molecules, so it crosses the room far faster than the diffusive random walk of the perfume molecules.",
+      "keywords": [
+        "random",
+        "collisions",
+        "walk",
+        "wave"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L2::Q1",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L2",
+      "stem": "Where does the pressure of a gas come from?",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the walls attracting the molecules",
+          "correct": false,
+          "explanation": "Attraction is negligible; impacts do the work.",
+          "misconception": "force invention"
+        },
+        {
+          "key": "B",
+          "text": "molecules colliding with the container walls",
+          "correct": true,
+          "explanation": "Wall bombardment delivers the steady force we call pressure.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the weight of the molecules only",
+          "correct": false,
+          "explanation": "Weight plays no role in a sealed container's gas pressure at this scale.",
+          "misconception": "weight conflation"
+        },
+        {
+          "key": "D",
+          "text": "molecules rubbing against each other",
+          "correct": false,
+          "explanation": "Friction between molecules is not the pressure mechanism.",
+          "misconception": "mechanism invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L2::Q2",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L2",
+      "stem": "What happens to the momentum of a molecule when it bounces off a wall?",
+      "misconceptionClass": "collision model",
+      "options": [
+        {
+          "key": "A",
+          "text": "it disappears into the wall",
+          "correct": false,
+          "explanation": "Momentum is transferred to the wall, not destroyed.",
+          "misconception": "conservation slip"
+        },
+        {
+          "key": "B",
+          "text": "nothing — walls are passive",
+          "correct": false,
+          "explanation": "The wall feels every impact.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "C",
+          "text": "it reverses, so the wall receives an impulse",
+          "correct": true,
+          "explanation": "Momentum reversal at the wall is the pressure mechanism.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "it doubles and stays the same direction",
+          "correct": false,
+          "explanation": "The bounce reverses the perpendicular component.",
+          "misconception": "collision confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L2::Q3",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L2",
+      "stem": "Why is the pressure the same on all walls of a sealed box of gas?",
+      "misconceptionClass": "isotropy",
+      "options": [
+        {
+          "key": "A",
+          "text": "the walls are made of the same material",
+          "correct": false,
+          "explanation": "Wall material is irrelevant to gas pressure.",
+          "misconception": "irrelevant cause"
+        },
+        {
+          "key": "B",
+          "text": "gravity presses the gas equally sideways",
+          "correct": false,
+          "explanation": "Gravity acts downwards; it does not equalise side walls.",
+          "misconception": "force invention"
+        },
+        {
+          "key": "C",
+          "text": "the molecules all orbit the box's centre",
+          "correct": false,
+          "explanation": "There are no orbits in the kinetic model.",
+          "misconception": "model confusion"
+        },
+        {
+          "key": "D",
+          "text": "random motion is equally likely towards every wall",
+          "correct": true,
+          "explanation": "Directional randomness makes the bombardment isotropic.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L2::Q4",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L2",
+      "stem": "A gas is squeezed into half its volume at constant temperature. What happens to the wall-collision rate?",
+      "misconceptionClass": "qualitative prediction",
+      "options": [
+        {
+          "key": "A",
+          "text": "collisions per second on each wall increase, raising the pressure",
+          "correct": true,
+          "explanation": "Less space means shorter flight times and more frequent impacts.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "collisions become rarer, raising the pressure",
+          "correct": false,
+          "explanation": "Rarer collisions would lower the pressure.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "C",
+          "text": "the collision rate is unchanged",
+          "correct": false,
+          "explanation": "Compression shortens paths, so the rate must rise.",
+          "misconception": "no-change slip"
+        },
+        {
+          "key": "D",
+          "text": "collisions stop once compressed",
+          "correct": false,
+          "explanation": "Molecules never stop moving at ordinary temperatures.",
+          "misconception": "stop-start slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L2::Q5",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L2",
+      "stem": "A sealed can is heated. Using the kinetic model, explain why the pressure inside rises.",
+      "misconceptionClass": "mechanism linking",
+      "options": [
+        {
+          "key": "A",
+          "text": "the can's area shrinks when hot",
+          "correct": false,
+          "explanation": "Thermal expansion of the can is negligible and opposite in effect.",
+          "misconception": "irrelevant cause"
+        },
+        {
+          "key": "B",
+          "text": "faster molecules hit the walls harder and more often",
+          "correct": true,
+          "explanation": "Both the impulse per hit and the hit rate rise with temperature.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the molecules grow larger when heated",
+          "correct": false,
+          "explanation": "Sizes are fixed; speeds are what change.",
+          "misconception": "particle-size slip"
+        },
+        {
+          "key": "D",
+          "text": "heating removes molecules from the walls",
+          "correct": false,
+          "explanation": "The molecule count is unchanged in a sealed can.",
+          "misconception": "count slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L2::Q6",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L2",
+      "stem": "State what exerts the force on the walls of a gas container.",
+      "misconceptionClass": "mechanism recall",
+      "kind": "recall",
+      "modelAnswer": "The molecules of the gas exert the force, through their collisions with the walls.",
+      "keywords": [
+        "molecules",
+        "force",
+        "collisions",
+        "walls"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L2::Q7",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L2",
+      "stem": "State how pressure is calculated from the wall force.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Pressure equals the total force on a wall divided by the area of that wall.",
+      "keywords": [
+        "pressure",
+        "force",
+        "divided",
+        "area"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L2::Q8",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L2",
+      "stem": "Explain why a collision with a wall delivers an impulse to the wall even though the molecule is microscopic.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The molecule arrives with momentum towards the wall and leaves with momentum away from it, so its momentum changes. By Newton's second law a change of momentum requires a force, and by Newton's third law the molecule and wall push on each other equally. The wall therefore receives an impulse — tiny, but delivered by trillions of molecules every second.",
+      "keywords": [
+        "momentum",
+        "change",
+        "force",
+        "impulse"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6Pp9dDJX4bzTJvHh::L2::Q9",
+      "moduleId": "rn_6Pp9dDJX4bzTJvHh::L2",
+      "stem": "A party balloon left near a fire swells and may burst. Use the kinetic model to explain the swelling in terms of wall collisions.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Heating makes the air molecules inside the balloon faster, so they strike the rubber walls harder and more often. The greater steady bombardment pushes the rubber outward, stretching the balloon until its tension balances the higher internal pressure — or it bursts if the rubber cannot stretch far enough.",
+      "keywords": [
+        "faster",
+        "collisions",
+        "pressure",
+        "outward"
+      ],
+      "options": []
+    }
+  ]
+}

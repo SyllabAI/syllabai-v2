@@ -1,0 +1,193 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_ppyHPvm5ynFYPsg8",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "89aad595252fd80c2017c1d25d49c444250201ac9b1890acf62482e443e0239e",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_ppyHPvm5ynFYPsg8",
+    "topicTitle": "5. Solids, Liquids and Gases",
+    "subtopicTitle": "Ideal Gases",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/5-solids-liquids-and-gases/5-3-ideal-gases/5-3-2-absolute-zero",
+    "specAnchors": [
+      {
+        "code": "5.16",
+        "text": "understand why there is an absolute zero of temperature, which is –273 ° C"
+      },
+      {
+        "code": "5.17",
+        "text": "describe the Kelvin scale of temperature and be able to convert between the Kelvin and Celsius scales"
+      }
+    ],
+    "primer": {
+      "text": "Temperature has a floor, and the kinetic model tells you where: particles slowed to the minimum possible motion. That floor is absolute zero at −273 °C, the zero of the Kelvin scale — and this note drills the two-way conversion between kelvin and degrees Celsius.",
+      "prerequisiteSubtopic": "Ideal Gases"
+    },
+    "modules": [
+      {
+        "id": "rn_ppyHPvm5ynFYPsg8::L1",
+        "title": "Why absolute zero exists",
+        "sourceHeadings": [
+          "Absolute zero"
+        ],
+        "specRefs": [
+          "5.16"
+        ],
+        "opening": "Cool a gas and its particles slow; keep cooling and a limit appears — the temperature at which particle motion reaches its minimum and cannot be reduced further. Below that point there is simply no slower state to reach: absolute zero, at −273 °C.",
+        "keyPoints": [
+          "Absolute zero is the lowest possible temperature, at −273 °C.",
+          "At absolute zero the particles have the minimum kinetic energy possible.",
+          "Colder-than-absolute-zero is impossible because particle motion cannot be reduced below its minimum.",
+          "Extrapolating the pressure–temperature graph of a fixed gas to zero pressure lands at −273 °C.",
+          "At absolute zero an ideal gas would exert no pressure from wall collisions."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Temperature tracks how fast particles jiggle and fly. Slow them down and the temperature drops; there is a hard stop when the motion is as small as physics allows, and that stop is −273 °C.",
+            "analogy": "A dimmer switch with a true zero: you can slide the lights down only to off — no setting is darker than off.",
+            "examPointer": "Quote the value with its minus sign: absolute zero is −273 °C (more precisely −273.15, but the qualification is −273 in exams)."
+          },
+          "medium": {
+            "restatement": "Because temperature is proportional to mean kinetic energy, the kinetic definition of coldness has a natural origin: the energy cannot go negative, so the scale bottoms out where molecular motion is minimal. The same origin appears experimentally: extrapolate any fixed-volume gas's pressure against temperature and every gas's line converges on the same −273 °C intercept — the pressure from wall collisions would vanish exactly where motion does.",
+            "analogy": "Every downhill road, however winding, meets the same valley floor: different gases have different slopes, but all their pressure–temperature lines hit the same absolute floor.",
+            "examPointer": "The strongest answers link both routes: the kinetic argument (motion has a minimum) and the graphical argument (pressure extrapolates to zero at −273 °C)."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ppyHPvm5ynFYPsg8::L1::Q1",
+          "rn_ppyHPvm5ynFYPsg8::L1::Q2",
+          "rn_ppyHPvm5ynFYPsg8::L1::Q3",
+          "rn_ppyHPvm5ynFYPsg8::L1::Q4",
+          "rn_ppyHPvm5ynFYPsg8::L1::Q5",
+          "rn_ppyHPvm5ynFYPsg8::L1::Q6",
+          "rn_ppyHPvm5ynFYPsg8::L1::Q7",
+          "rn_ppyHPvm5ynFYPsg8::L1::Q8",
+          "rn_ppyHPvm5ynFYPsg8::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_ppyHPvm5ynFYPsg8::L2",
+        "title": "The Kelvin scale and conversions",
+        "sourceHeadings": [
+          "The Kelvin scale"
+        ],
+        "specRefs": [
+          "5.17"
+        ],
+        "opening": "The Kelvin scale re-zeros temperature at absolute zero, so every kelvin reading is directly proportional to particle energy. Conversion is a single addition or subtraction of 273 — and the gas laws only ever speak kelvin.",
+        "keyPoints": [
+          "The Kelvin scale starts at 0 K, absolute zero, at −273 °C.",
+          "A temperature in kelvin is the Celsius temperature plus 273.",
+          "A Celsius temperature is the kelvin temperature minus 273.",
+          "One kelvin step equals one Celsius degree in size — only the origins differ.",
+          "Gas-law equations use kelvin because proportionality to kinetic energy starts at 0 K."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "To go from Celsius to kelvin, add 273; to come back, subtract 273. The step size is identical — 20 kelvin warmer is 20 Celsius degrees warmer — only the zero point moved to absolute zero.",
+            "analogy": "Two rulers pinned to the same wall, one starting 273 marks lower: readings differ by a constant, but a centimetre is a centimetre on both.",
+            "examPointer": "Convert before any gas-law calculation — substituting Celsius into a gas law is the single most common temperature mark lost."
+          },
+          "medium": {
+            "restatement": "The Kelvin scale is the absolute thermodynamic scale: its origin coincides with zero mean translational kinetic energy, so T in kelvin is proportional to molecular energy. Celsius is a relative scale pinned to water's phase changes, which is why ratios are meaningful only in kelvin — 300 K is genuinely twice 150 K in energy terms, while 27 °C is not twice 13.5 °C in any physical sense.",
+            "analogy": "Distance from a town centre versus altitude above sea level: only the altitude version supports 'twice as high' claims, because its zero is a true floor.",
+            "examPointer": "Watch the pressure-law and Boyle's-law questions: they hide Celsius values to trap unconverted substitution. Convert first, always."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ppyHPvm5ynFYPsg8::L2::Q1",
+          "rn_ppyHPvm5ynFYPsg8::L2::Q2",
+          "rn_ppyHPvm5ynFYPsg8::L2::Q3",
+          "rn_ppyHPvm5ynFYPsg8::L2::Q4",
+          "rn_ppyHPvm5ynFYPsg8::L2::Q5",
+          "rn_ppyHPvm5ynFYPsg8::L2::Q6",
+          "rn_ppyHPvm5ynFYPsg8::L2::Q7",
+          "rn_ppyHPvm5ynFYPsg8::L2::Q8",
+          "rn_ppyHPvm5ynFYPsg8::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "absolute zero",
+          "definition": "The lowest possible temperature, −273 °C or 0 K, where particle energy is minimal.",
+          "firstLesson": 1
+        },
+        {
+          "term": "Kelvin scale",
+          "definition": "The absolute temperature scale whose zero is absolute zero.",
+          "firstLesson": 2
+        },
+        {
+          "term": "extrapolation",
+          "definition": "Extending a graph's line beyond the measured data to find an intercept.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "The temperature in a room is 300 K. What is this temperature in Celsius?",
+        "steps": [
+          "Write the Kelvin-to-Celsius conversion: θ in °C = T in K − 273.",
+          "Substitute the value: 300 − 273.",
+          "Evaluate the difference: 300 − 273 = 27."
+        ],
+        "finalAnswer": "The room's temperature is 27 °C."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b3aa853a082b-6-5-2-pressure-law.png",
+        "alt": "Pressure Law, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Absolute zero",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "At absolute zero, or −273 °C, particles will have no net movement. It is therefore not possible to have a lower temperature"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/dc73556f9916-14-1-k-and-celsius-conversion-chart.png",
+        "alt": "K and Celsius conversion chart, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "The Kelvin scale",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Conversion chart relating the temperature on the Kelvin and Celsius scales"
+      }
+    ]
+  }
+}
