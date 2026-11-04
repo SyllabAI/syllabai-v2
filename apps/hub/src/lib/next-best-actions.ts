@@ -48,7 +48,6 @@ import {
   MASTERY_BANDS,
   effectiveMastery,
   reviewDueAt,
-  reviewThresholdFor,
 } from "./forgetting";
 import { buildOverlay, normalizeCode, type LearnerBridge } from "./learner-state";
 import type { CourseProgress } from "./progress";
@@ -256,7 +255,6 @@ function deriveCourseActions(input: NbaCourseInput, now: number): DashboardActio
         : w,
     );
     const eff = effectiveMastery(weakest.mastery as number, weakest.lastAttemptAt, now);
-    const threshold = reviewThresholdFor(weakest.mastery as number);
     const overdueDays = Math.max(0, Math.floor((now - reviewDueAt(weakest.mastery as number, weakest.lastAttemptAt)) / DAY));
     const title =
       (noteId && bridge.noteTitles?.[noteId]) || pointText(weakest.pointId) || "Review due";
@@ -268,8 +266,8 @@ function deriveCourseActions(input: NbaCourseInput, now: number): DashboardActio
       reasonCode: "DUE_REVIEW",
       title,
       detail:
-        `${plural(due.length, "spec point")} due for review — weakest at ${eff}% effective ` +
-        `mastery, up to ${plural(overdueDays, "day")} past the ${threshold} line`,
+        `${plural(due.length, "spec point")} due for review — weakest at ${Math.round(eff)}% mastery` +
+        (overdueDays > 0 ? `, review due up to ${plural(overdueDays, "day")} ago` : ""),
       href: noteId
         ? `/courses/${slug}/revision-notes/${noteId}`
         : practiceHref(slug, bridge, progress, [weakest.pointId]),
@@ -368,8 +366,7 @@ function deriveCourseActions(input: NbaCourseInput, now: number): DashboardActio
       reasonCode: "MISCONCEPTION_SUSPECTED",
       title: m.title,
       detail:
-        `SIMULATED likelihood ${pct}% · ${plural(m.evidenceCount, "evidence signal")} · ` +
-        `mapped to ${plural(pts.length, "spec point")}`,
+        `Simulated flag — likelihood ${pct}% from ${plural(m.evidenceCount, "signal")} · covers ${plural(pts.length, "spec point")}`,
       href: noteId
         ? `/courses/${slug}/revision-notes/${noteId}`
         : `/knowledge-graph?course=${slug}`,
@@ -498,12 +495,41 @@ function coreHref(
 }
 
 /**
+ * Presentation-only humanization of core's reasonDetail (dashboard UX
+ * review 2026-11-04): the account rows printed raw machine output —
+ * "Retrieval practice due (scheduled 2026-09-23T05:00:00.102Z, decay
+ * crossed threshold, overdue)" — ISO instants with milliseconds and the
+ * decay engine's vocabulary on a student-facing line. The facts stay
+ * core's verbatim: an ISO instant becomes a real en-GB date, the decay
+ * code becomes the schedule fact it encodes, and unknown patterns pass
+ * through untouched. Nothing is added — no numbers, dates or claims
+ * beyond the row's own.
+ */
+export function humanizeCoreReasonDetail(detail: string): string {
+  const dated = detail
+    .replace(
+      /(\d{4}-\d{2}-\d{2})T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z?/g,
+      (_m, d: string) =>
+        new Date(`${d}T00:00:00Z`).toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        }),
+    )
+    .replace(/decay crossed threshold/gi, "its review date has passed");
+  return dated
+    .replace(/\s*\(\s*scheduled\s+/i, " — scheduled ")
+    .replace(/\s*\)\s*$/, "");
+}
+
+/**
  * Map core's T-033 recommendation rows onto the dashboard's action shape.
  * The rows are rendered in core's own rank order — core's ranking IS the
  * audited deterministic read model this card's local rules are a port of,
  * so re-ranking it client-side would only add a second opinion. Every
- * reason line is core's evidence-derived reasonDetail verbatim; nothing is
- * reworded or invented here.
+ * reason line carries core's evidence-derived reasonDetail with its
+ * PRESENTATION humanized (humanizeCoreReasonDetail above) — the facts
+ * are untouched; only the machine formatting is.
  */
 export function coreActionsToDashboard(
   view: NextBestActionsView,
@@ -513,6 +539,7 @@ export function coreActionsToDashboard(
     .sort((a, b) => a.rank - b.rank || a.targetCode.localeCompare(b.targetCode))
     .map((raw) => {
       const { href, cta } = coreHref(raw, input);
+      const reason = humanizeCoreReasonDetail(raw.reasonDetail);
       return {
         key: `core:${raw.actionType}:${raw.targetNodeId}:${raw.questionId ?? ""}`,
         course: input.course,
@@ -526,8 +553,8 @@ export function coreActionsToDashboard(
         title: raw.targetTitle || "Next step",
         detail:
           raw.servableQuestionCount === 0
-            ? `${raw.reasonDetail} — no validated questions are mapped there yet`
-            : raw.reasonDetail,
+            ? `${reason} — no validated questions are mapped there yet`
+            : reason,
         href,
         cta,
         score: raw.rank,

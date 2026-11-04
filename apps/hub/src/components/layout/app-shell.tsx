@@ -307,7 +307,7 @@ export function AppShell({
           </nav>
 
           <span className="ml-1 hidden text-xs text-muted-foreground xl:inline">
-            IGCSE &amp; IAL revision · 4CH1 pilot
+            IGCSE &amp; IAL revision
           </span>
 
           {/* SME header parity: persistent primary CTA + session identity
@@ -375,20 +375,26 @@ export function AppShell({
                 </Link>
               </Button>
             )}
-            {/* B-1 (frontend-flow audit): the persistent CTA resolves the
-                role home too — a teacher's header button opens the workspace,
-                never the student dashboard. Signed-out keeps the demo
-                target (B-2's split is Tier 1). */}
+            {/* B-1 (frontend-flow audit): a teacher's header button opens
+                the workspace, never the student dashboard. Students and
+                signed-out visitors get /practice (UX review 2026-11-04). */}
             <Button
               asChild
               size="sm"
               className="gap-1.5 px-2 sm:px-3"
-              aria-label={identity?.role === "teacher" ? "Open workspace" : "Start studying"}
+              aria-label={identity?.role === "teacher" ? "Open workspace" : "Practise"}
             >
-              <Link href={roleHome(identity)}>
+              {/* UX review 2026-11-04: the student CTA was "Start studying"
+                  → the student's own home — a primary button that reloads the
+                  page it sits on. /practice is the always-valid open surface
+                  (index is ungated), and the verb family stays coherent:
+                  Practise = questions here, Review = the due queue (strip),
+                  Revise = course content (cards). Anonymous visitors get an
+                  open destination instead of a login bounce. */}
+              <Link href={identity?.role === "teacher" ? roleHome(identity) : "/practice"}>
                 <Zap className="size-3.5" aria-hidden />
                 <span className="hidden sm:inline">
-                  {identity?.role === "teacher" ? "Open workspace" : "Start studying"}
+                  {identity?.role === "teacher" ? "Open workspace" : "Practise"}
                 </span>
               </Link>
             </Button>
