@@ -144,6 +144,7 @@ export {
   TUTOR_MAX_TOPICS,
   TUTOR_VECTOR_CANDIDATES,
   TUTOR_EVIDENCE_LIMIT,
+  TUTOR_COMPLETION_BUDGET_DEFAULT,
   type AskResult,
   type TutorStreamEvent,
   type TutorGenerator,

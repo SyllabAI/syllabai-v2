@@ -95,6 +95,24 @@ export const TUTOR_EVIDENCE_LIMIT = 6; // syllabai.tutor.evidence-limit
  *  were front-matter the learner never needs). A no-pin ask is untouched. */
 export const TUTOR_PIN_FILLER_CAP = 2;
 
+/** The tutor completion budget (GeneratorOptions.maxTokens default).
+ * HISTORY OF THE VALUE: the frozen yml @ 6cad6ef bound
+ * syllabai.tutor.max-tokens=900 — calibrated when the groq member's
+ * effective default model was the NON-reasoning llama-3.3-70b-versatile.
+ * The chain of record (ruling4 §2, main de30ef8) retired that default for
+ * openai/gpt-oss-120b, a REASONING model whose reasoning tokens count
+ * against the completion cap — so a complex pinned ask (the paper
+ * walkthrough class, issue #706: 3/3 live reproductions) can exhaust the
+ * whole budget inside the reasoning channel, stream ZERO content deltas,
+ * and die on the L2 empty-generation law (karagAskStream) as the fixed
+ * wire error. 4000 gives the reasoning phase plus the longest shaped
+ * answer headroom; the truncation disclosure law (isTruncationFinish)
+ * keeps an over-long generation honest on the wire, and the env knob
+ * (SYLLABAI_TUTOR_MAX_TOKENS at the composition root — the frozen
+ * syllabai.tutor.max-tokens binding the tranche-2 port documented but
+ * never wired) tunes it without a code change. */
+export const TUTOR_COMPLETION_BUDGET_DEFAULT = 4000;
+
 /** Run-013 honest truncation law — the tutor's own copy of the marking
  *  pipeline's isTruncationFinish (services/llmchain/bridges.ts; per-module
  *  doctrine — importing it would cycle bridges→tutor/karag). Normalized
@@ -936,7 +954,7 @@ export function buildGroundedTutorGenerator(
   opts: GeneratorOptions = {},
 ): TutorGenerator {
   const temperature = opts.temperature ?? 0.2;
-  const maxTokens = opts.maxTokens ?? 900;
+  const maxTokens = opts.maxTokens ?? TUTOR_COMPLETION_BUDGET_DEFAULT;
 
   const requireAvailable = (): void => {
     if (!chain.available()) {
