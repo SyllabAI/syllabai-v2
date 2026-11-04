@@ -224,7 +224,9 @@ export default async function PastPapersPage({
                           {matchKeys.has(`${p.sessionId}:${p.dir}`) && (
                             <Badge
                               variant="outline"
-                              className="gap-1 border-primary/40 text-[10px] text-primary"
+                              // t-ui-polish run-007: the playable badge speaks the
+                              // house primary-tinted voice (border-primary/60).
+                              className="gap-1 border-primary/60 text-[10px] text-primary"
                             >
                               <Puzzle className="size-3" aria-hidden />
                               playable

@@ -1820,7 +1820,9 @@ export function TestBuilderClient({
                 onClick={() => setHideInTest((v) => !v)}
                 className={`h-8 shrink-0 rounded-md border px-2.5 text-xs font-medium transition-colors ${
                   hideInTest
-                    ? "border-primary/40 bg-primary/10 text-primary"
+                    // t-ui-polish run-007: the pressed state speaks the house
+                    // active voice (border-primary/60), not the legacy /40.
+                    ? "border-primary/60 bg-primary/10 text-primary"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >

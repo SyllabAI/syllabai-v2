@@ -115,7 +115,9 @@ export function ExamSeriesPicker({
         onChange={(e) => set(e.target.value)}
         className={`h-7 w-full min-w-0 truncate rounded-md border bg-transparent px-1.5 text-xs ${
           target
-            ? "border-primary/40 font-medium text-foreground"
+            // t-ui-polish run-007: the series-set state speaks the house active
+            // voice (border-primary/60), not the legacy /40.
+            ? "border-primary/60 font-medium text-foreground"
             : "border-dashed text-muted-foreground"
         }`}
       >

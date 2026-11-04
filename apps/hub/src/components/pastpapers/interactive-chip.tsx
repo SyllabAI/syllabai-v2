@@ -43,7 +43,9 @@ export function InteractiveChip({
         asChild
         size="sm"
         variant="outline"
-        className="h-7 gap-1.5 border-primary/40 text-xs text-primary"
+        // t-ui-polish run-007: the outline chip speaks the house primary-tinted
+        // voice (border-primary/60), not the legacy /40.
+        className="h-7 gap-1.5 border-primary/60 text-xs text-primary"
       >
         <Link href={href} title={title} aria-label={`Interactive reconstruction of ${paperRef} — ${title}`}>
           <Sparkles className="size-3.5" aria-hidden />
