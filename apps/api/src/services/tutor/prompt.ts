@@ -93,8 +93,18 @@ export const PROMPT_REGISTRY_KEY = "tutor-grounded";
  *  only strongly-fused citations (the karag-side relative fusedScore
  *  floor — the measured "alkenes in a rate quiz" tangential-citation
  *  class). The scaffolded path is untouched: its marks are the paper's
- *  OWN bank rows, deterministic. */
-export const PROMPT_VERSION = "16";
+ *  OWN bank rows, deterministic.
+ *  v17 (T-TUTOR-PIVOT-1 run-001; operator directive "draft the fix card",
+ *  the 2026-11-05 live refusal report, session bd6c89ff seq 13-16): the
+ *  refusal shape law — a refusal opens with the deterministic family stem
+ *  ("I can't answer that from the validated course material yet.") and
+ *  closes with ONE learner redirect (rephrase, or start a new
+ *  conversation on the new topic). The measured defect: the model-worded
+ *  refusal ("I'm sorry, but the supplied sources do not contain …")
+ *  stonewalled a mid-chat topic pivot with no way forward for the
+ *  learner, and the turn recorded refused=false (evidence present but
+ *  wrong — the analytics gap the refusal-truth patch closes). */
+export const PROMPT_VERSION = "17";
 export function promptIdentity(): string {
   return `${PROMPT_REGISTRY_KEY}/v${PROMPT_VERSION}`;
 }
@@ -121,6 +131,25 @@ export const CONVERSATION_REJUDGE_NOTE =
   "reuse an earlier turn's refusal wording as the reason a part fails now: the " +
   "only valid ground for refusing a part is that no row in the current SOURCES " +
   "corresponds to it.";
+
+// ── v17 refusal shape law (T-TUTOR-PIVOT-1) ─────────────────────────────────
+
+/** The refusal must be RECOGNISABLE and ACTIONABLE. The canonical stem is
+ *  the deterministic family's own opener (TUTOR_REFUSAL) — one refusal
+ *  voice across the deterministic and model-worded classes, and the anchor
+ *  the refusal-truth detector (refusal-detect.ts) keys on. The redirect
+ *  line is the measured student-experience fix: a bare apology stonewalls
+ *  a mid-chat topic pivot (the learner's question moved to a new topic and
+ *  the working-memory blend pulled the wrong evidence) — the way back is
+ *  a rephrased ask or a fresh conversation on the new topic, never silence. */
+const REFUSAL_SHAPE_LAW = `- Refusal shape. When the SOURCES cannot answer the QUESTION (or a part
+  of it), open the refusal exactly with "I can't answer that from the
+  validated course material yet." then state precisely what is missing,
+  and end with ONE short redirect inviting the learner to rephrase the
+  question or to start a new conversation on the new topic — a mid-chat
+  topic pivot is often best served by a fresh ask. Never refuse a part
+  the SOURCES do cover, and never open a refusal with any other
+  apology wording.`;
 
 // ── fence codes (v6 prompt-injection defence, :77-97 + :449-465) ────────────
 
@@ -181,6 +210,7 @@ Rules:
   repeat the fence markers in your answer.
 - If the SOURCES are insufficient to answer safely, say exactly what is
   missing and stop. Never fill gaps from general knowledge.
+${REFUSAL_SHAPE_LAW}
 - When the QUESTION names a specific exam-paper question and the SOURCES
   carry its question text and/or mark scheme, answer part by part in the
   paper's own order and label each part exactly as the paper labels it
