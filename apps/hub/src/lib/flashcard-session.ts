@@ -153,6 +153,83 @@ export interface DeckSessionState {
 export const deckSessionKey = (course: string, subtopicCode: string): string =>
   `syllabai-hub:deck-position:${course}:${subtopicCode}`;
 
+// ── T-AUDIT-TIER1 run-004 — the account mirror ─────────────────────────
+// The per-deck resume states (deliberately DEVICE-scoped since DC-8) now
+// ALSO mirror the account through the workspace-document plane under the
+// "deck-sessions" key of record — the per-account resume the DC-8 note
+// called future work. localStorage stays the reactive cache (T-TEACH-001);
+// the union is per deck key, the NEWER `at` wins (tie -> server), capped.
+// The honesty pins are UNCHANGED: a restored run must still cover EXACTLY
+// the deck's cards (validateSessionAgainstDeck), and resume position is
+// never engagement evidence.
+import {
+  atOf,
+  bridgeDocPool,
+  isAccountDocsHydrated,
+  mirrorDocPoolState,
+  unionByStamp,
+} from "@/lib/account-docs-records";
+import { readIdentitySnapshot } from "@/lib/identity";
+
+const DECK_PREFIX = "syllabai-hub:deck-position:";
+const DOC_KEY = "deck-sessions";
+const MAX_DECK_SESSIONS = 80;
+
+function deckPoolKey(storageKey: string): string {
+  return storageKey.slice(DECK_PREFIX.length);
+}
+
+function readDeckPool(): Record<string, DeckSessionState> {
+  const pool: Record<string, DeckSessionState> = {};
+  if (typeof window === "undefined") return pool;
+  try {
+    for (let i = 0; i < window.localStorage.length; i++) {
+      const k = window.localStorage.key(i);
+      if (!k || !k.startsWith(DECK_PREFIX)) continue;
+      const s = loadDeckSession(deckPoolKey(k).split(":")[0], deckPoolKey(k).split(":").slice(1).join(":"));
+      if (s) pool[deckPoolKey(k)] = s;
+    }
+  } catch {
+    // a torn localStorage scan degrades to the pool it could read
+  }
+  return pool;
+}
+
+function writeDeckPool(pool: Record<string, DeckSessionState>) {
+  if (typeof window === "undefined") return;
+  try {
+    const seen = new Set<string>();
+    for (const [pk, state] of Object.entries(pool)) {
+      const k = DECK_PREFIX + pk;
+      seen.add(k);
+      window.localStorage.setItem(k, JSON.stringify(state));
+    }
+    for (let i = 0; i < window.localStorage.length; i++) {
+      const k = window.localStorage.key(i);
+      if (k && k.startsWith(DECK_PREFIX) && !seen.has(k)) {
+        window.localStorage.removeItem(k); // dropped by the union/cap — honest clear
+      }
+    }
+  } catch {
+    // private mode — the pull-down just won't land
+  }
+}
+
+if (typeof window !== "undefined") {
+  bridgeDocPool<Record<string, DeckSessionState>, DeckSessionState>({
+    localKey: DECK_PREFIX.slice(0, -1),
+    docKey: DOC_KEY,
+    cap: MAX_DECK_SESSIONS,
+    readState: () => readDeckPool(),
+    readPool: (p) => p,
+    apply: (pool) => writeDeckPool(pool),
+    merge: (local, server) => unionByStamp(local, server),
+    stamp: (p) => Object.entries(p).map(([k, v]) => `${k}:${atOf(v.at)}`).sort().join("|"),
+    getAuthEmail: () => readIdentitySnapshot()?.email ?? null,
+    isHydrated: () => isAccountDocsHydrated(),
+  });
+}
+
 /** A saved run may only restore when it covers EXACTLY this deck's cards:
  *  same size, no duplicates, every id present. Anything else (corpus wave,
  *  shuffled-in stale ids) discards the session — never a silently hidden
@@ -190,4 +267,6 @@ export function saveDeckSession(course: string, subtopicCode: string, s: DeckSes
     // storage full / private mode — the session stays in-memory for this
     // visit; the resume simply won't survive a reload (honest degrade)
   }
+  // T-AUDIT-TIER1 run-004 — the account mirror (the persist-tail law)
+  mirrorDocPoolState(DOC_KEY, readDeckPool());
 }
