@@ -4,6 +4,7 @@ import { getDataProvider } from "@/lib/data";
 import { CourseHeader } from "@/components/hub/course-header";
 import { normalizeSpecText } from "@/lib/spec-text";
 import { parseSpecStatement } from "@/lib/spec-statement";
+import { buildSpecResources } from "@/lib/spec-resources";
 import { SpecificationExplorer, type SpecTopicVM } from "./client";
 import { allCourseParams } from "@/lib/static-params";
 
@@ -13,6 +14,12 @@ import { allCourseParams } from "@/lib/static-params";
  * applicability derivation). Zero invention: statements are the spine text
  * verbatim, chips render the canonical object verbatim, and the printed
  * rule sentence rides along as tooltip provenance.
+ *
+ * T-SPECLINK-1: each statement also carries its connected corpus resources
+ * (revision notes / exam-question sets / flashcard decks) — joined by
+ * lib/spec-resources from of-record anchors only, resolved once at build so
+ * the prerendered HTML carries them. Statements with no anchored resources
+ * render no affordance at all (honest absence, never a stub).
  */
 
 /** Prerendered at build (ADR-021 perf pass, tranche 4.12) — see static-params.ts. */
@@ -57,6 +64,11 @@ export default async function CourseSpecificationPage({
   const boardName = curriculum.board || "the awarding body";
   const hasApplicability = curriculum.nodes.some((n) => n.applicability);
 
+  // T-SPECLINK-1: spec-point → corpus resources (of-record joins only)
+  const { legend, resByCode } = bundle
+    ? buildSpecResources(bundle.notes, bundle.questionTopics, bundle.flashcards, nodeByCode, `/courses/${slug}`)
+    : { legend: { notes: [], sets: [], decks: [] }, resByCode: new Map() };
+
   const topics: SpecTopicVM[] = hub.index.tree.topics.map((t) => ({
     number: t.number,
     title: t.title,
@@ -64,7 +76,10 @@ export default async function CourseSpecificationPage({
       code: s.code,
       label: s.label,
       title: s.title,
-      points: points(s.specPointCodes),
+      points: points(s.specPointCodes).map((p) => ({
+        ...p,
+        res: resByCode.get(p.code) ?? null,
+      })),
     })),
   }));
 
@@ -77,7 +92,7 @@ export default async function CourseSpecificationPage({
         description={`All ${stats.specPoints} specification statements from the official ${boardName} specification, as printed${hasApplicability ? ` — filter by paper, unit or tier exactly as ${boardName} assesses them` : ""}.`}
       />
       <div className="mt-6">
-        <SpecificationExplorer topics={topics} totalPoints={stats.specPoints} />
+        <SpecificationExplorer topics={topics} totalPoints={stats.specPoints} legend={legend} />
       </div>
     </div>
   );
