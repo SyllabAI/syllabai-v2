@@ -66,17 +66,32 @@ const UUID_RE =
 
 /**
  * ISO-8601 duration subset used by the core config (PT2H default):
- * PT[nH][nM][nS] — hours/minutes/seconds. Java Duration.parse accepts more
- * (days, weeks), but the only configured value across the frozen repo is
- * PT2H (application.yml) and the env override carries the same shape.
+ * PT[nH][nM][nS] — hours/minutes/seconds, PLUS the day form P[n]D
+ * (optionally combined: P[n]DT[nH][nM][nS]). Java Duration.parse accepts
+ * days and weeks; the day form is the LIVE requirement of record — the
+ * T-DEMO-SHOWCASE-1 ops change (2026-11-05, trace 1a1a826ecb54969d) moved
+ * SYLLABAI_JWT_TTL to P30D on the API carrier, and the hour/minute/second
+ * -only subset threw at carrier init ([identity] unsupported jwt-ttl
+ * duration: P30D) taking every /api route down (FUNCTION_INVOCATION_FAILED
+ * from ~19:53Z). This extension restores Duration.parse parity for the
+ * day component the frozen Java core itself accepts; the week form stays
+ * out (no configured need, fail-closed on anything unparsed).
  */
 export function parseIsoDuration(value: string): number {
-  const m = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?$/.exec(value.trim());
-  if (!m || (!m[1] && !m[2] && !m[3])) {
+  const m =
+    /^P(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$/.exec(
+      value.trim(),
+    );
+  if (!m || (!m[1] && !m[2] && !m[3] && !m[4])) {
     throw new Error(`[identity] unsupported jwt-ttl duration: ${value}`);
   }
-  const [, h, min, s] = m;
-  return Number(h ?? 0) * 3600 + Number(min ?? 0) * 60 + Number(s ?? 0);
+  const [, d, h, min, s] = m;
+  return (
+    Number(d ?? 0) * 86400 +
+    Number(h ?? 0) * 3600 +
+    Number(min ?? 0) * 60 +
+    Number(s ?? 0)
+  );
 }
 
 export class JwtService {

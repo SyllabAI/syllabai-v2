@@ -52,7 +52,15 @@ describe("JwtService — TTL (application.yml: syllabai.security.jwt-ttl PT2H)",
   });
   test("unsupported duration shapes refuse to start", () => {
     expect(() => new JwtService(SECRET, "2h")).toThrow();
-    expect(() => new JwtService(SECRET, "P1D")).toThrow(); // Java accepts P1D; the core only ever configures PT* — refuse loudly instead of guessing
+    // SUPERSEDED PIN (was: P1D refuses — "the core only ever configures PT*"):
+    // the T-DEMO-SHOWCASE-1 ops change of record (2026-11-05, trace
+    // 1a1a826ecb54969d) moved SYLLABAI_JWT_TTL to P30D on the API carrier and
+    // the PT*-only subset threw at carrier init, taking every /api route down
+    // (FUNCTION_INVOCATION_FAILED from ~19:53Z). The day form is now
+    // Java Duration.parse parity (the frozen core itself accepts days); the
+    // week form and garbage still refuse loudly instead of guessing.
+    expect(new JwtService(SECRET, "P1D").ttl).toBe(86400);
+    expect(() => new JwtService(SECRET, "P1W")).toThrow();
   });
 });
 
@@ -183,5 +191,18 @@ describe("parseIsoDuration", () => {
     expect(parseIsoDuration("PT30M")).toBe(1800);
     expect(parseIsoDuration("PT90S")).toBe(90);
     expect(parseIsoDuration("PT1H30M")).toBe(5400);
+  });
+
+  test("the day form (Duration.parse parity; the live P30D carrier value)", () => {
+    expect(parseIsoDuration("P30D")).toBe(2592000);
+    expect(parseIsoDuration("P1D")).toBe(86400);
+    expect(parseIsoDuration("P30DT2H")).toBe(2592000 + 7200);
+  });
+
+  test("garbage and empty components still throw (fail-closed)", () => {
+    expect(() => parseIsoDuration("P")).toThrow("unsupported jwt-ttl duration");
+    expect(() => parseIsoDuration("PT")).toThrow("unsupported jwt-ttl duration");
+    expect(() => parseIsoDuration("PXL")).toThrow("unsupported jwt-ttl duration");
+    expect(() => parseIsoDuration("30 days")).toThrow("unsupported jwt-ttl duration");
   });
 });
