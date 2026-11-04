@@ -218,7 +218,7 @@ function ResourceRow({
         {value}
         {percent !== undefined && (
           <span
-            className={`w-16 shrink-0 text-right text-xs font-semibold tabular-nums ${
+            className={`w-20 shrink-0 whitespace-nowrap text-right text-xs font-semibold tabular-nums ${
               percent > 0 ? "text-foreground" : "text-muted-foreground"
             }`}
           >
