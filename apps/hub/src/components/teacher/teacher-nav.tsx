@@ -14,6 +14,7 @@ import {
   ClipboardCheck,
   ClipboardList,
   FileCheck2,
+  FileSpreadsheet,
   LayoutDashboard,
   ListChecks,
   Network,
@@ -41,6 +42,9 @@ const TABS = [
   // T-TEACH-013 — the 4 educator-ai generators; the picked class resolves
   // the subject server-side (no subject picker — the operator directive).
   { href: "/teacher/toolkit", label: "Toolkit", icon: Sparkles },
+  // T-TEACH-REPORTS-1 — Phase 3 operations: printable per-class summary +
+  // per-student / per-topic CSV exports over the same live evidence.
+  { href: "/teacher/reports", label: "Reports", icon: FileSpreadsheet },
 ] as const;
 
 export function TeacherNav() {
