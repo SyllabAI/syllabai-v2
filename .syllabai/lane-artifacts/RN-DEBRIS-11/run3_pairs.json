@@ -1,0 +1,77 @@
+{
+ "lane": "RN-DEBRIS-11",
+ "run": "run-003",
+ "title": "the residue run — A (P1 5.2 declared-elision) + B ruling (seg-internal reinsertion) + C2/C5/C6 (twin-attested joins incl. 23a backtick extension)",
+ "operatorOrder": {
+  "trace": "1a1a55d98046f799 'Proceed A -> B ruling -> C2/C5/C6 -> C3' + 'Go' (1a1a60e19096cb75)",
+  "queue": "A = the run-002 refused P1 5.2 text (re-attestation); B = the run-002 refused (x-3)^2 gathered seg (ruling-authorized repair); C2 = _{b m} x2 / _{e l} x1 twin hunt; C5 = backtick S_{x x} x1; C6 = backtick V_{i n}/V_{i n }/V_{o u t} joins; C3 = what remains, documented for the human-editor pass"
+ },
+ "STEP_A": {
+  "corrupted": "Integration of x\u207f and related sums, differences and constant multiples.: \u2022 (Excluding n = \u22121 and related sums, differences and multiples). For exam pressions such as ple,theabilit2\u20442andytointegrateex\u2044isexpected. \u00b9x\u00b2\u22123x\u207b1 (x+2)\u2044x 2 Given f \u2032(x) and a point on the curve, students should be able to find an equation of the curve in the form y = f(x).",
+  "intended": "Integration of x\u207f and related sums, differences and constant multiples.: \u2022 (Excluding n = \u22121 and related sums, differences and multiples). For example, the ability to integrate expressions such as 1\u20442x\u00b2 \u2212 3x\u207b\u00b9 and (x + 2)\u00b2\u2044x is expected. Given f \u2032(x) and a point on the curve, students should be able to find an equation of the curve in the form y = f(x).",
+  "sites": [
+   "apps/hub/content/ial-maths-20-pure-1/curriculum.json $.nodes[32].title",
+   "apps/hub/content/ial-maths-20-pure-1/ugm-resources.json $.specPoints[21].officialText",
+   "apps/hub/spines/ial-maths-20-pure-1.json $.curriculum.nodes[32].title"
+  ],
+  "attestation": {
+   "document": "Pearson Edexcel IAL Mathematics, Further Mathematics and Pure Mathematics \u2014 Specification \u2014 Issue 3 \u2014 April 2019",
+   "url": "https://qualifications.pearson.com/content/dam/pdf/International%20Advanced%20Level/Mathematics/2018/Specification-and-Sample-Assessment/international-a-level-maths-spec.pdf",
+   "sha256": "71351e66d8434cc8976fa41801b65d77bdcad56f902e45807bc635bca317b408",
+   "sha256Run1Register": ".syllabai/lane-artifacts/RN-DEBRIS-11/rn11-spec-sha256.txt (byte-identical re-download 2026-11-04)",
+   "officialSection": "P1 5.2 (page 16): title + bullet + guidance 'For example, the ability to integrate expressions such as 1/2x2 - 3x-1 and ((x + 2)2)/x is expected.' + continuation 'Given f'(x) and a point on the curve, ...' (all four blocks present in the corrupted bytes: official-only multiset = EMPTY)",
+   "gate": "flavor-normalized (superscript<->plain), slash-and-whitespace-stripped multiset(corrupted) == multiset(intended) + declared official-attested elision {\"2\" x1} EXACTLY",
+   "declaredElision": {
+    "byte": "2 x1",
+    "source": "the section-heading digit of '5.2' \u2014 the heading sits on the SAME pdftotext-layout line the zipper interleaved ('5.2    Integration of xn and related sums, ...'); the house style elides section numbers in 30/30 of-record intendeds (0/30 intendeds carry one)",
+    "disclosure": "NEW declaration class (mirror of the run-002 'official-attested restorations'): a corrupted byte attested to an official source that the house style elides. run-002 refused this text for the same byte; the refusal is answered by the heading-digit account. The alternate reading ('the zip duplicated a 2') has no mechanism precedent in the 30 of-record pairs (all 30 balanced EXACTLY) and no official source."
+   },
+   "slashSurplus": "corrupted carries +1 U+2044 vs intended \u2014 precedented in 19/30 of-record pairs (the zip leaves surplus slashes at splice points; the run-001 register law only bounds intended <= corrupted)"
+  }
+ },
+ "STEP_B": {
+  "corrupted": "$\\begin{gathered} ( x - 3 )^{2 } - 17 & = 0 \\\\ + 17 & = + 17 \\\\ ( x - 3 )^{2 } & = 17 \\\\ \\sqrt{ & = \\sqrt{ } } \\\\ x - 3^{ } & = \\pm \\sqrt{17} \\end{gathered}$",
+  "repaired": "$\\begin{gathered} ( x - 3 )^{2 } - 17 & = 0 \\\\ + 17 & = + 17 \\\\ ( x - 3 )^{2 } & = 17 \\\\ \\sqrt{( x - 3 )^{2 }} & = \\sqrt{ 17 } \\\\ x - 3^{ } & = \\pm \\sqrt{17} \\end{gathered}$",
+  "sites": [
+   "apps/hub/content/igcse-maths-a-18-higher/questions.json $[27].questions[20].parts[0].solutionMd x3",
+   "apps/hub/content/igcse-maths-a-modular-24-higher-unit-1/questions.json $[8].questions[20].parts[0].solutionMd x3"
+  ],
+  "ruling": "RULING B (operator-authorized via the run-003 queue): the run-002 refusal ('content-loss class \u2014 the sqrt group content is empty under every closer relocation') is unblocked by SEG-INTERNAL ATTESTED REINSERTION \u2014 row 4 is the square-root step of row 3; the inserted sequences '( x - 3 )^{2 }' and '17' are byte-verbatim copies of row 3 of the SAME seg; exactly one '}' relocates within its row (the of-record closer-relocation law); ZERO deletions; the repaired multiset == corrupted + insertions EXACTLY; the row-4 spacing is forced by the corrupted's own bytes (zero-deletion) and reads '\\sqrt{( x - 3 )^{2 }} & = \\sqrt{ 17 }'.",
+  "gates": "multiset EXACT; row-order preserved for all non-'}' bytes (with '}' relocation); insertions byte-verbatim in-seg; brace delta (+1 pair) carried by the inserted '^{2 }' group; KaTeX: corrupted RENDER FAIL -> repaired RENDER OK (katex 0.16.22 throwOnError), full-corpus sweep healed -1 unique / -6 occ EXACTLY, 0 new failures"
+ },
+ "STEP_C2": {
+  "pairs": [["I_{b m}", "I_{bm}"], ["\\Delta E_{e l}", "\\Delta E_{el}"]],
+  "scope": "dollar segments only",
+  "sites": [
+   "apps/hub/content/cie-a-level-physics-25/questions.json $[71].questions[5].parts[1].solutionMd x2",
+   "apps/hub/content/ial-physics-19/questions.json $[10].questions[1].parts[1].solutionMd x1"
+  ],
+  "grounding": "run-002 keeps ('no attestation') re-adjudicated on the CURRENT tip: I_{bm} joined x3 IN THE SAME QUESTION PART ($[71].questions[5], problem + solution fields); E_{el} joined x7 in the same course (ial-physics-19 flashcards $[192].back, notes $[25].bodyMd). Twin-gate of record (corpus joined >= 1) now passes for both."
+ },
+ "STEP_C5": {
+  "pairs": [["S_{x x}", "S_{xx}"]],
+  "scope": "backtick spans only (23a extension)",
+  "sites": ["apps/hub/content/ial-maths-20-statistics-1/flashcards.json $[18].front x1"],
+  "grounding": "S_{xx} joined x28 corpus-wide incl. the BACK of the same flashcard ($[18].back); the R3a class 'x x'->'xx' is of-record (fired on dollar spans in run-002)."
+ },
+ "STEP_C6": {
+  "pairs": [["V_{i n}", "V_{in}"], ["V_{i n }", "V_{in}"], ["V_{o u t}", "V_{out}"]],
+  "scope": "backtick spans only (23a extension)",
+  "sites": [
+   "apps/hub/content/cie-a-level-physics-25/questions.json $[105].questions[5].parts[0].solutionMd x4 (2 spans)",
+   "apps/hub/content/cie-as-physics-25/questions.json $[59].questions[4].parts[0].solutionMd x3 (2 spans incl. the V_{i n } variant)",
+   "apps/hub/content/cie-as-physics-25/questions.json $[59].questions[5].parts[0].solutionMd x4 (2 spans)"
+  ],
+  "grounding": "R2b of-record pair (V_{i n}->V_{in}, 12 dollar fires in run-002) + corpus twins V_{in} x34 / V_{out} x58. The 'V_{i n }' variant (space before the closing brace) is disclosed as a census-pattern gap of run-002 (V_IN regex matched 'V_{i n}' only); it joins under the same of-record grounding. The 'V_{o u t}' joins keep the spans internally consistent (leaving them spaced next to joined V_{in} would create a NEW mixed-style defect); grounded by the R2a repaired corpus forms.",
+  "23a_extension_ruling": "run-001 law 23a ('backtick spans never entered') is EXTENDED narrowly: a backtick span may be entered ONLY for a twin-gated label join whose joined form is of-record in the corpus; the delimiters themselves are never moved; no structural edits inside backticks. Disclosed here as the ruling of record."
+ },
+ "expectedFires": {"A": 3, "B": 6, "C2": 3, "C5": 1, "C6": 12, "total": 25},
+ "C3_documentation": {
+  "hybrid_segs": [
+   ["$V_{in} = \\frac{V_{out} }{( \\frac{R_{1}{R_{1} + R_{2} } )} = ( \\frac{R_{1} + R_{2} }{R_{1} } ) V_{o} u t}$", "cie-a-level-physics-25/notes.json $[81].bodyMd + cie-as-physics-25/notes.json $[81].bodyMd"],
+   ["$V_{in} = V_{out} \\div ( \\frac{R_{1}{R_{1} + R_{2} } ) = V_{o} u t} \\times ( \\frac{R_{1} + R_{2} }{R_{1} } )$", "cie-a-level-physics-25/questions.json $[29].questions[8].parts[0].solutionMd + cie-as-physics-25/questions.json $[56].questions[8].parts[0].solutionMd"]
+  ],
+  "note": "the ledger's 'un-adjudicated census-C remainder (notes-$[81] third potential-divider seg)' resolves to these 2 hybrid segs x2 sites: partially-repaired label forms (V_{in}/V_{out} joined) mixed with un-repaired corruption (the R1-style \\frac{R_{1}{R_{1}... brace swap + a V_{o} u t brace swap). Both RENDER OK at katex 0.16.22 (cosmetic, not structural) \u2014 which is why the run-001 failure-gated census never carried them as failures. NOT repaired in run-003: no byte-identical of-record pair covers them and no KaTeX failure gates a derivation; queued for the human-editor pass with the suggested reading (brace surgery mirroring R2a pair 1 + label joins).",
+  "resolvedByRun3": "the 'i n x5' sub-floor entries of the ledger are the SAME BYTES as the backtick V_{i n} x5 (census double-count via two patterns) \u2014 resolved by the C6 joins; the 'x x x1' entry resolved by C5"
+ }
+}
