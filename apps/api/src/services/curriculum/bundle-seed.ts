@@ -366,6 +366,12 @@ export function mapBundleNodes(
       ? a.order - b.order || a.code.localeCompare(b.code)
       : familyRank(a.family) - familyRank(b.family),
   );
+  // T-SME-REDS-FIX r0 (operator trace 1a1a722ebe477629 "fix the reds"): the
+  // SUBJECT node's bundle code — the anchor the disclosed -SME- leaf shape
+  // must hang from (the sole-parent guard below). The SUBJECT branch's own
+  // contract (family SUBJECT, exactly the one node) makes this unambiguous.
+  const subjectNodeCode =
+    bundle.nodes.find((x) => x.family === "SUBJECT")?.code ?? null;
   for (const n of nodes) {
     if (byCode.has(n.code)) {
       throw new BundleSeedConflictError("bundle node code collision: " + n.code);
@@ -412,6 +418,45 @@ export function mapBundleNodes(
     }
     if (n.family === "TOPIC") {
       if (n.order != null && n.order < 1) throw new BundleSeedConflictError("bundle TOPIC " + n.code + " order < 1");
+      // T-SME-REDS-FIX r0 (operator trace 1a1a722ebe477629 "fix the reds"):
+      // the ADR-039 §4 disclosed-edits data lane's SME section rows — TOPIC
+      // codes carrying the -SME- segment (the six rows of record: geography
+      // 2025-2026 -SME-CLIMATE-CHANGE / -SME-GEOGRAPHICAL-SKILLS,
+      // intl-maths 2025-2027 -TC-SME-INVESTIGATIONS /
+      // -TE-SME-INVESTIGATIONS-MODELLING, combined-science 2023-2024
+      // -SME-DRUGS on the CIE board; ial-biology-SME-SYNOPTIC-ASSESSMENT on
+      // the Edexcel board) — are UI-level selector rows of the hub corpus
+      // plane (ADR-039 §4: titles carry "(SME section)" — UI-level
+      // disclosure), NOT official spec-tree topics. No official -T tail
+      // exists for them, so the CIE branch's UNIT law would refuse (the
+      // fleet census threw at the geography row — the CI verify red of
+      // record), and the Edexcel order law would otherwise GRAFT an invented
+      // -S<order> UNIT identity the DB of record never carried. They are
+      // childless leaf TOPICs whose sole parent is the SUBJECT root and
+      // carry zero corpus anchors, so the seed map SKIPS them fleet-wide
+      // (both boards): nothing lands, nothing dangles, every official law
+      // below stays byte-identical. SHAPE-GUARDED fail-closed: a future
+      // -SME- row that is NOT the disclosed childless SUBJECT-root leaf
+      // shape refuses rather than silently dropping (the skip can never eat
+      // a data-bearing row). The pinned refusal law for OFFICIAL topics
+      // (a drifted non-SME code without the -T tail) is untouched.
+      if (n.code.includes("-SME-")) {
+        const childless = bundle.nodes.every(
+          (x) => !(x.parents ?? []).includes(n.code),
+        );
+        if (
+          subjectNodeCode == null ||
+          n.parents.length !== 1 ||
+          n.parents[0] !== subjectNodeCode ||
+          !childless
+        ) {
+          throw new BundleSeedConflictError(
+            "bundle TOPIC " + n.code +
+              " carries the -SME- segment but is not the disclosed childless SUBJECT-root leaf shape",
+          );
+        }
+        continue;
+      }
       // the optionA UNIT law: for CIE the UNIT identity is the TOPIC code's
       // own official -T tail, FAIL-CLOSED — the order digit is NOT an
       // identity (the 9709 census of record: six banks, every bank's one
