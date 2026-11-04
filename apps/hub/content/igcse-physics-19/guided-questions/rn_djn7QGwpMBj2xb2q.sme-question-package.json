@@ -1,0 +1,734 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_djn7QGwpMBj2xb2q",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "25b9d74077868418519712124629b721803962a100fa000f7be67a6cdacbc5d1",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "packageId": "igcse-physics::rn_djn7QGwpMBj2xb2q",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L1::Q1",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L1",
+      "stem": "What shape are the drawn field lines around a straight current-carrying wire?",
+      "misconceptionClass": "pattern recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "circles centred on the wire",
+          "correct": true,
+          "explanation": "The straight-wire pattern is concentric circles.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "lines from end to end of the wire",
+          "correct": false,
+          "explanation": "End-to-end lines belong to bar magnets.",
+          "misconception": "pattern swap"
+        },
+        {
+          "key": "C",
+          "text": "straight parallel lines",
+          "correct": false,
+          "explanation": "Parallel lines are the uniform-gap pattern.",
+          "misconception": "pattern swap"
+        },
+        {
+          "key": "D",
+          "text": "spirals into the wire",
+          "correct": false,
+          "explanation": "The circles close on themselves; they do not spiral in.",
+          "misconception": "shape invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L1::Q2",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L1",
+      "stem": "A cross is drawn on the wire symbol in a field diagram. It means the current flows:",
+      "misconceptionClass": "convention recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "no current flows",
+          "correct": false,
+          "explanation": "The cross marks a current, not its absence.",
+          "misconception": "meaning invention"
+        },
+        {
+          "key": "B",
+          "text": "into the page",
+          "correct": true,
+          "explanation": "The cross is the tail feathers of an arrow going away.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "out of the page",
+          "correct": false,
+          "explanation": "Out is drawn as a dot, the arrow tip.",
+          "misconception": "convention swap"
+        },
+        {
+          "key": "D",
+          "text": "along the page to the right",
+          "correct": false,
+          "explanation": "In-page directions are drawn as arrows, not crosses.",
+          "misconception": "convention confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L1::Q3",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L1",
+      "stem": "How does the drawing show that the field weakens with distance from the wire?",
+      "misconceptionClass": "representation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the circles change into squares",
+          "correct": false,
+          "explanation": "Shape never changes — only spacing.",
+          "misconception": "shape invention"
+        },
+        {
+          "key": "B",
+          "text": "the drawing cannot show strength",
+          "correct": false,
+          "explanation": "Spacing is exactly the strength encoding.",
+          "misconception": "encoding denial"
+        },
+        {
+          "key": "C",
+          "text": "the circles are spaced further apart with distance",
+          "correct": true,
+          "explanation": "Wider spacing encodes weaker field.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the circles get smaller with distance",
+          "correct": false,
+          "explanation": "Circles get LARGER with radius; spacing is the cue.",
+          "misconception": "geometry confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L1::Q4",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L1",
+      "stem": "A student draws the straight-wire pattern with the circles running the wrong way. Which check catches the error?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "measuring the wire with a ruler",
+          "correct": false,
+          "explanation": "Wire length is unrelated to the circulation sense.",
+          "misconception": "irrelevant check"
+        },
+        {
+          "key": "B",
+          "text": "counting the number of circles",
+          "correct": false,
+          "explanation": "Circle count is a drawing choice, not a physics check.",
+          "misconception": "irrelevant check"
+        },
+        {
+          "key": "C",
+          "text": "weighing the wire",
+          "correct": false,
+          "explanation": "Mass has no bearing on the field pattern.",
+          "misconception": "absurd check"
+        },
+        {
+          "key": "D",
+          "text": "applying the right-hand grip rule with the thumb along the current",
+          "correct": true,
+          "explanation": "The grip rule fixes the circulation sense.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L1::Q5",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L1",
+      "stem": "Which diagram element is ESSENTIAL when drawing the straight-wire pattern?",
+      "misconceptionClass": "drawing recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the current direction marked with a cross or dot",
+          "correct": true,
+          "explanation": "Without the current label the circulation sense is undefined.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "at least ten circles",
+          "correct": false,
+          "explanation": "Circle count is a choice, not a requirement.",
+          "misconception": "count invention"
+        },
+        {
+          "key": "C",
+          "text": "coloured shading inside the circles",
+          "correct": false,
+          "explanation": "Colour carries no field meaning here.",
+          "misconception": "decoration confusion"
+        },
+        {
+          "key": "D",
+          "text": "a second wire for comparison",
+          "correct": false,
+          "explanation": "The pattern of one wire stands alone.",
+          "misconception": "element invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L1::Q6",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L1",
+      "stem": "State the shape and direction rule for the field pattern of a straight wire.",
+      "misconceptionClass": "pattern recall",
+      "kind": "recall",
+      "modelAnswer": "Circles centred on the wire, with the circulation direction given by the right-hand grip rule.",
+      "keywords": [
+        "circles",
+        "centred",
+        "grip",
+        "direction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L1::Q7",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L1",
+      "stem": "State the drawing convention for current into and out of the page.",
+      "misconceptionClass": "convention recall",
+      "kind": "recall",
+      "modelAnswer": "A cross marks current into the page and a dot marks current out of the page.",
+      "keywords": [
+        "cross",
+        "into",
+        "dot",
+        "out"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L1::Q8",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L1",
+      "stem": "Explain why the drawn circles are closest together right next to the wire.",
+      "misconceptionClass": "representation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Line spacing encodes field strength, and the field around a straight wire is strongest at the wire surface and weakens with distance. Drawing the circles crowded at the wire and increasingly spaced outward makes the strength falloff visible in the pattern itself.",
+      "keywords": [
+        "spacing",
+        "strength",
+        "crowded",
+        "weakens"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L1::Q9",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L1",
+      "stem": "Sketch-check: a wire carries current out of the page. State the circulation sense of the field circles as seen looking at the page, and name the rule used.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "With the dot showing current towards the viewer, the grip rule gives anticlockwise circles as seen on the page — thumb pointing out at you, fingers curling anticlockwise. The rule used is the right-hand grip rule.",
+      "keywords": [
+        "anticlockwise",
+        "dot",
+        "grip",
+        "circles"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L2::Q1",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L2",
+      "stem": "Why is the field at the centre of a flat coil stronger than one wire's field?",
+      "misconceptionClass": "superposition reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the centre is closer to the battery",
+          "correct": false,
+          "explanation": "Distance to the battery is irrelevant to the pattern.",
+          "misconception": "circuit confusion"
+        },
+        {
+          "key": "B",
+          "text": "every turn contributes field in the same direction there",
+          "correct": true,
+          "explanation": "The contributions add at the centre.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the coil stores charge at the centre",
+          "correct": false,
+          "explanation": "No charge accumulates; fields add, not charge.",
+          "misconception": "charge confusion"
+        },
+        {
+          "key": "D",
+          "text": "the coil's wire is thicker at the centre",
+          "correct": false,
+          "explanation": "Wire thickness is uniform around the coil.",
+          "misconception": "geometry invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L2::Q2",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L2",
+      "stem": "How are the field lines drawn through the CENTRE of a flat circular coil?",
+      "misconceptionClass": "pattern recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "crossing at the centre point",
+          "correct": false,
+          "explanation": "Field lines never cross.",
+          "misconception": "crossing myth"
+        },
+        {
+          "key": "B",
+          "text": "absent — the centre has no field",
+          "correct": false,
+          "explanation": "The centre has the STRONGEST field.",
+          "misconception": "hole myth"
+        },
+        {
+          "key": "C",
+          "text": "nearly straight along the axis, crowded together",
+          "correct": true,
+          "explanation": "The centre field is strong and axial.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "randomly curved in every direction",
+          "correct": false,
+          "explanation": "The central field has one clear direction.",
+          "misconception": "chaos claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L2::Q3",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L2",
+      "stem": "Doubling the number of turns on a flat coil, keeping the current the same, does what to the central field?",
+      "misconceptionClass": "factor reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "weakens it",
+          "correct": false,
+          "explanation": "More turns add, not subtract.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "B",
+          "text": "reverses its direction",
+          "correct": false,
+          "explanation": "Direction follows the current sense, unchanged here.",
+          "misconception": "direction confusion"
+        },
+        {
+          "key": "C",
+          "text": "leaves it unchanged",
+          "correct": false,
+          "explanation": "Turn count is a strength factor.",
+          "misconception": "no-change claim"
+        },
+        {
+          "key": "D",
+          "text": "strengthens it",
+          "correct": true,
+          "explanation": "More turns, more contributing fields.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L2::Q4",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L2",
+      "stem": "The current in a flat coil is reversed. What happens to the drawn pattern?",
+      "misconceptionClass": "direction reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the pattern is mirrored — every field direction reverses",
+          "correct": true,
+          "explanation": "The axial field flips to the other direction.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the pattern is unchanged",
+          "correct": false,
+          "explanation": "Arrows all reverse with the current.",
+          "misconception": "no-change claim"
+        },
+        {
+          "key": "C",
+          "text": "the pattern becomes a straight-wire pattern",
+          "correct": false,
+          "explanation": "Shape follows geometry, not current sense.",
+          "misconception": "pattern confusion"
+        },
+        {
+          "key": "D",
+          "text": "the central field vanishes",
+          "correct": false,
+          "explanation": "The contributions still add — in the new direction.",
+          "misconception": "vanishing claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L2::Q5",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L2",
+      "stem": "Which statement about a single turn and a many-turn coil of the same radius and current is correct?",
+      "misconceptionClass": "comparison reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "neither has a central field",
+          "correct": false,
+          "explanation": "Both do — one weakly, one strongly.",
+          "misconception": "denial claim"
+        },
+        {
+          "key": "B",
+          "text": "the many-turn coil has the stronger central field",
+          "correct": true,
+          "explanation": "Turns stack the same-direction contributions.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the single turn has the stronger central field",
+          "correct": false,
+          "explanation": "Fewer contributions means a weaker total.",
+          "misconception": "comparison inversion"
+        },
+        {
+          "key": "D",
+          "text": "both have equal central fields",
+          "correct": false,
+          "explanation": "Turn count changes the sum.",
+          "misconception": "equality claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L2::Q6",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L2",
+      "stem": "State why the field lines through the coil centre point in one common direction.",
+      "misconceptionClass": "superposition recall",
+      "kind": "recall",
+      "modelAnswer": "Each turn of the coil gives a field contribution in the same axial direction at the centre, so they add to one common direction.",
+      "keywords": [
+        "turn",
+        "contribution",
+        "same",
+        "direction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L2::Q7",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L2",
+      "stem": "State two ways to strengthen the central field of a flat coil.",
+      "misconceptionClass": "factor recall",
+      "kind": "recall",
+      "modelAnswer": "Add more turns to the coil or increase the current through it.",
+      "keywords": [
+        "turns",
+        "current",
+        "increase"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L2::Q8",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L2",
+      "stem": "Explain why the drawn pattern of a flat coil looks like a bar magnet's field rather than a straight wire's.",
+      "misconceptionClass": "pattern reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The stacked turns give the coil two effective faces — field leaving one side and entering the other — like the poles of a bar magnet, so the external lines curl from face to face. A straight wire has no such faces: its field is pure circles with no pole structure to draw.",
+      "keywords": [
+        "faces",
+        "poles",
+        "curl",
+        "circles"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L2::Q9",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L2",
+      "stem": "A flat coil of 40 turns carries 2 A; a second coil of 80 turns carries 1 A at the same radius. Compare the two central fields and justify the comparison.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The central field scales with turns times current, so the first coil gives 40 × 2 = 80 units and the second 80 × 1 = 80 units — the two central fields are equal in strength and point along the same axial geometry determined by each coil's winding sense.",
+      "keywords": [
+        "turns",
+        "current",
+        "equal",
+        "axial"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L3::Q1",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L3",
+      "stem": "The field pattern OUTSIDE a current-carrying solenoid resembles:",
+      "misconceptionClass": "pattern recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "no pattern at all",
+          "correct": false,
+          "explanation": "The solenoid has a full external field.",
+          "misconception": "denial claim"
+        },
+        {
+          "key": "B",
+          "text": "a uniform gap between poles",
+          "correct": false,
+          "explanation": "The uniform-gap pattern is inside, not outside.",
+          "misconception": "region swap"
+        },
+        {
+          "key": "C",
+          "text": "the field of a bar magnet",
+          "correct": true,
+          "explanation": "The external pattern runs pole to pole like a magnet's.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "circles around one straight wire",
+          "correct": false,
+          "explanation": "That is the single-wire pattern, not a solenoid's.",
+          "misconception": "pattern swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L3::Q2",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L3",
+      "stem": "The field lines INSIDE a solenoid are drawn:",
+      "misconceptionClass": "pattern recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "curling around each individual turn",
+          "correct": false,
+          "explanation": "The turns' circles add into the axial field inside.",
+          "misconception": "pattern swap"
+        },
+        {
+          "key": "B",
+          "text": "crossing at the solenoid's centre",
+          "correct": false,
+          "explanation": "Field lines never cross.",
+          "misconception": "crossing myth"
+        },
+        {
+          "key": "C",
+          "text": "radiating outward from the middle",
+          "correct": false,
+          "explanation": "Radiation is not the solenoid's interior pattern.",
+          "misconception": "pattern invention"
+        },
+        {
+          "key": "D",
+          "text": "straight, parallel and crowded along the axis",
+          "correct": true,
+          "explanation": "The interior field is strong and uniform.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L3::Q3",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L3",
+      "stem": "Which rule names the poles of a solenoid?",
+      "misconceptionClass": "rule recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the right-hand grip rule applied to the coil",
+          "correct": true,
+          "explanation": "Curl with the current; the thumb gives the north end.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Fleming's left-hand rule",
+          "correct": false,
+          "explanation": "That rule predicts forces, not solenoid polarity.",
+          "misconception": "rule swap"
+        },
+        {
+          "key": "C",
+          "text": "the pressure law",
+          "correct": false,
+          "explanation": "A gas law has no role here.",
+          "misconception": "cross-topic confusion"
+        },
+        {
+          "key": "D",
+          "text": "trial and error with iron filings only",
+          "correct": false,
+          "explanation": "Filings show the pattern; the grip rule names the poles.",
+          "misconception": "method confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L3::Q4",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L3",
+      "stem": "A soft iron core is slid inside a current-carrying solenoid. What happens?",
+      "misconceptionClass": "core reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the field pattern becomes circles",
+          "correct": false,
+          "explanation": "The axial pattern is preserved and strengthened.",
+          "misconception": "pattern confusion"
+        },
+        {
+          "key": "B",
+          "text": "the interior field becomes much stronger",
+          "correct": true,
+          "explanation": "The induced core multiplies the field.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the field becomes weaker",
+          "correct": false,
+          "explanation": "Induction strengthens, never weakens, the applied field.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "D",
+          "text": "the poles swap ends",
+          "correct": false,
+          "explanation": "Core insertion changes strength, not polarity.",
+          "misconception": "polarity confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L3::Q5",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L3",
+      "stem": "Which THREE changes all strengthen a solenoid's field?",
+      "misconceptionClass": "factor recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "more turns, smaller current, steel core left permanent",
+          "correct": false,
+          "explanation": "Smaller current weakens; permanent steel defeats the switch-off.",
+          "misconception": "factor mix"
+        },
+        {
+          "key": "B",
+          "text": "longer wire everywhere but same turns and current",
+          "correct": false,
+          "explanation": "Extra length alone adds nothing to the field.",
+          "misconception": "irrelevant factor"
+        },
+        {
+          "key": "C",
+          "text": "more turns, larger current, soft iron core",
+          "correct": true,
+          "explanation": "These are the three strength levers.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "fewer turns, larger current, plastic core",
+          "correct": false,
+          "explanation": "Fewer turns weakens; plastic is non-magnetic.",
+          "misconception": "factor mix"
+        }
+      ]
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L3::Q6",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L3",
+      "stem": "State what a solenoid is.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "A solenoid is a long coil of wire that carries a current and acts like a bar magnet.",
+      "keywords": [
+        "long",
+        "coil",
+        "current",
+        "magnet"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L3::Q7",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L3",
+      "stem": "State how the right-hand grip rule names the poles of a solenoid.",
+      "misconceptionClass": "rule recall",
+      "kind": "recall",
+      "modelAnswer": "Curl the fingers of the right hand with the current around the coil; the thumb points to the north end.",
+      "keywords": [
+        "fingers",
+        "current",
+        "thumb",
+        "north"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L3::Q8",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L3",
+      "stem": "Explain why the interior field of a solenoid is strong and uniform.",
+      "misconceptionClass": "superposition reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Every turn adds a field contribution in the same axial direction inside the coil, so the contributions stack into a large total. Because the turns are evenly wound, the sum is the same at every interior point along the middle, giving a straight, parallel, equally spaced pattern — a uniform field.",
+      "keywords": [
+        "turn",
+        "add",
+        "axial",
+        "uniform"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_djn7QGwpMBj2xb2q::L3::Q9",
+      "moduleId": "rn_djn7QGwpMBj2xb2q::L3",
+      "stem": "An electromagnet crane uses a solenoid with 200 turns at 4 A on a soft iron core. State two independent upgrades for a stronger lift and one reason a permanent steel core would be a mistake.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Upgrade the current above 4 A, or add turns above 200 — either lever strengthens the field for a stronger lift. A permanent steel core is a mistake because it would keep holding the scrap after switch-off: the crane could lift but never release.",
+      "keywords": [
+        "current",
+        "turns",
+        "steel",
+        "release"
+      ],
+      "options": []
+    }
+  ]
+}

@@ -12,27 +12,59 @@
  * recommendation output (the NextBestActionsCard's never-mixed law is
  * preserved — this card never ranks, never advises; it counts).
  *
- * Signed-out / fetch-failure → renders nothing (the SIMULATED overlay has
- * no dashboard presence of record; the fallback posture is a
- * non-display here by design). One card per enrolled course — the hook
- * sits in a per-course COMPONENT (never in a loop; the rules-of-hooks law).
+ * Signed-out / fetch-failure per course → that course renders nothing (the
+ * SIMULATED overlay has no dashboard presence of record; the fallback
+ * posture is a non-display here by design). One card per enrolled course —
+ * the hook sits in a per-course COMPONENT (never in a loop; the
+ * rules-of-hooks law).
+ *
+ * Dashboard UX review 2026-11-04: the caller used to wrap this component in
+ * a bare <section aria-label="Today's progress"> — so on a signed-in
+ * dashboard whose projections all failed to resolve, production shipped a
+ * labelled, EMPTY landmark (screen readers announced it; sighted users saw
+ * a hole). The section now lives HERE and mounts only once at least one
+ * course has content, and it carries the rail's real h2 (the rail's other
+ * sections had headings; this one was a div in a labelled void). Cards keep
+ * rendering (as null) while unresolved so their effects can report back —
+ * no deadlock.
  */
+import { useCallback, useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useCourseProjection } from "@/lib/progress-server";
 import type { CourseMeta } from "@/lib/courses";
 
 export function ProgressAttributionCard({ courses }: { courses: CourseMeta[] }) {
+  const [resolved, setResolved] = useState<Record<string, boolean>>({});
+  const onResolved = useCallback((slug: string, ok: boolean) => {
+    setResolved((prev) => (prev[slug] === ok ? prev : { ...prev, [slug]: ok }));
+  }, []);
+  const resolvedSlugs = courses.filter((c) => resolved[c.slug]);
+
+  const cards = courses.map((c) => (
+    <CourseTodayCard key={c.slug} course={c} onResolved={onResolved} />
+  ));
+
+  if (resolvedSlugs.length === 0) return <>{cards}</>;
   return (
-    <>
-      {courses.map((c) => (
-        <CourseTodayCard key={c.slug} course={c} />
-      ))}
-    </>
+    <section aria-label="Today's progress" className="space-y-3">
+      <h2 className="text-lg font-semibold">Today&apos;s progress</h2>
+      {cards}
+    </section>
   );
 }
 
-function CourseTodayCard({ course }: { course: CourseMeta }) {
+function CourseTodayCard({
+  course,
+  onResolved,
+}: {
+  course: CourseMeta;
+  onResolved: (slug: string, ok: boolean) => void;
+}) {
   const payload = useCourseProjection(course.slug);
+  const ok = payload != null;
+  useEffect(() => {
+    onResolved(course.slug, ok);
+  }, [course.slug, ok, onResolved]);
   if (!payload) return null; // signed out / nothing resolved: no display
   const t = payload.today;
   const total = t.notesChecked + t.markedParts + t.mcqSubmitted;

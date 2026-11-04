@@ -1,0 +1,494 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_hYbhpMKCjdqM8zQF",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "49020874ba166ab78add510995294cc823b227795e9b294d8c340311e0c04017",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "packageId": "igcse-physics::rn_hYbhpMKCjdqM8zQF",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L1::Q1",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L1",
+      "stem": "The transformer relationship links which four quantities?",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "primary voltage, secondary voltage, primary turns, secondary turns",
+          "correct": true,
+          "explanation": "The ratio equation connects exactly these four.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "voltage, current, resistance, power",
+          "correct": false,
+          "explanation": "That is Ohm's-law territory, not the turns ratio.",
+          "misconception": "equation swap"
+        },
+        {
+          "key": "C",
+          "text": "voltage, turns, field strength, frequency",
+          "correct": false,
+          "explanation": "Field strength and frequency stay outside the ratio.",
+          "misconception": "quantity mix"
+        },
+        {
+          "key": "D",
+          "text": "turns, power, efficiency, temperature",
+          "correct": false,
+          "explanation": "None of these form the ratio relationship.",
+          "misconception": "quantity mix"
+        }
+      ]
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L1::Q2",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L1",
+      "stem": "A transformer has 4 times more secondary than primary turns. The output voltage is:",
+      "misconceptionClass": "ratio reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "zero",
+          "correct": false,
+          "explanation": "Turns scale the voltage; they never zero it.",
+          "misconception": "vanishing claim"
+        },
+        {
+          "key": "B",
+          "text": "4 times the input voltage",
+          "correct": true,
+          "explanation": "Voltage scales with the turns ratio.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a quarter of the input voltage",
+          "correct": false,
+          "explanation": "That reads the ratio backwards.",
+          "misconception": "ratio inversion"
+        },
+        {
+          "key": "D",
+          "text": "equal to the input",
+          "correct": false,
+          "explanation": "Equal outputs need equal turns.",
+          "misconception": "equality myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L1::Q3",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L1",
+      "stem": "The primary voltage is 12 V and the turns ratio Ns/Np is 5. The secondary voltage is:",
+      "misconceptionClass": "calculation",
+      "options": [
+        {
+          "key": "A",
+          "text": "17 V",
+          "correct": false,
+          "explanation": "Adding instead of multiplying is the slip.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "B",
+          "text": "5 V",
+          "correct": false,
+          "explanation": "The ratio was applied to nothing — Vs is 12 scaled by 5.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "60 V",
+          "correct": true,
+          "explanation": "Vs = 12 × 5 = 60 V.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "2.4 V",
+          "correct": false,
+          "explanation": "That divides by 5 — a step-down reading.",
+          "misconception": "ratio inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L1::Q4",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L1",
+      "stem": "Which rearrangement correctly gives the secondary voltage?",
+      "misconceptionClass": "algebra recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Vs = Vp × Np / Ns",
+          "correct": false,
+          "explanation": "That inverts the turns ratio.",
+          "misconception": "ratio inversion"
+        },
+        {
+          "key": "B",
+          "text": "Vs = Vp + Ns / Np",
+          "correct": false,
+          "explanation": "The relationship is multiplicative, not additive.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "Vs = Ns / Np",
+          "correct": false,
+          "explanation": "Dropping Vp loses the input voltage entirely.",
+          "misconception": "incomplete equation"
+        },
+        {
+          "key": "D",
+          "text": "Vs = Vp × Ns / Np",
+          "correct": true,
+          "explanation": "Multiply the primary voltage by the turns ratio.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L1::Q5",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L1",
+      "stem": "A step-up calculation gives an output SMALLER than the input. What is the verdict?",
+      "misconceptionClass": "sanity reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the turns ratio was probably inverted in the working",
+          "correct": true,
+          "explanation": "Step-up outputs must exceed the input.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the transformer is broken",
+          "correct": false,
+          "explanation": "Check the algebra before blaming the hardware.",
+          "misconception": "equipment blame"
+        },
+        {
+          "key": "C",
+          "text": "step-up transformers always reduce voltage",
+          "correct": false,
+          "explanation": "The name means the opposite.",
+          "misconception": "definition inversion"
+        },
+        {
+          "key": "D",
+          "text": "nothing — output size is random",
+          "correct": false,
+          "explanation": "The output is set exactly by the turns ratio.",
+          "misconception": "randomness myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L1::Q6",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L1",
+      "stem": "State the transformer relationship in ratio form.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "Primary voltage divided by secondary voltage equals primary turns divided by secondary turns.",
+      "keywords": [
+        "primary",
+        "voltage",
+        "secondary",
+        "turns"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L1::Q7",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L1",
+      "stem": "State the classification of a transformer whose secondary voltage exceeds its primary voltage.",
+      "misconceptionClass": "classification recall",
+      "kind": "recall",
+      "modelAnswer": "It is a step-up transformer, because the output is larger than the input.",
+      "keywords": [
+        "step-up",
+        "larger",
+        "output"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L1::Q8",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L1",
+      "stem": "Explain why the voltages across the two coils share the turns ratio.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The changing core field threads every turn of both coils identically, so each turn has the same voltage induced across it. The primary sums that per-turn voltage over its turns and the secondary over its own, so the two totals are in the same ratio as the two turn counts — which is exactly the turns-ratio relationship.",
+      "keywords": [
+        "per",
+        "turn",
+        "ratio",
+        "coils"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L1::Q9",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L1",
+      "stem": "A transformer has 100 primary turns and 5 secondary turns. The primary voltage is 230 V. Calculate the secondary voltage and name the transformer type.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Vs = Vp × Ns/Np = 230 × 5/100 = 11.5 V. The secondary voltage is far smaller than the primary, so it is a step-down transformer — the kind used to make mains voltage safe.",
+      "keywords": [
+        "11.5",
+        "step-down",
+        "230",
+        "turns"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L2::Q1",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L2",
+      "stem": "The ideal transformer equation states that:",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "input voltage equals output voltage",
+          "correct": false,
+          "explanation": "Changing the voltage is the transformer's job.",
+          "misconception": "equality myth"
+        },
+        {
+          "key": "B",
+          "text": "input power equals output power",
+          "correct": true,
+          "explanation": "VpIp = VsIs for 100% efficiency.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "input current equals output current",
+          "correct": false,
+          "explanation": "Currents differ whenever voltages do.",
+          "misconception": "current myth"
+        },
+        {
+          "key": "D",
+          "text": "output power exceeds input power",
+          "correct": false,
+          "explanation": "Transformers transfer power; they never create it.",
+          "misconception": "creation myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L2::Q2",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L2",
+      "stem": "A transformer steps the voltage up by a factor of 10. For an ideal transformer, the secondary current is:",
+      "misconceptionClass": "inverse reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "equal to the primary current",
+          "correct": false,
+          "explanation": "Equal currents with unequal voltages break the balance.",
+          "misconception": "equality myth"
+        },
+        {
+          "key": "B",
+          "text": "zero",
+          "correct": false,
+          "explanation": "The current falls but stays finite.",
+          "misconception": "vanishing claim"
+        },
+        {
+          "key": "C",
+          "text": "a tenth of the primary current",
+          "correct": true,
+          "explanation": "Power balance forces the current down as voltage rises.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "ten times the primary current",
+          "correct": false,
+          "explanation": "That would multiply the output power tenfold.",
+          "misconception": "direction inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L2::Q3",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L2",
+      "stem": "In the power-balance equation, input power equals output power — what do the symbols Vp, Ip, Vs and Is stand for?",
+      "misconceptionClass": "symbol recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "velocities and impulses",
+          "correct": false,
+          "explanation": "The symbols are electrical, not mechanical.",
+          "misconception": "symbol confusion"
+        },
+        {
+          "key": "B",
+          "text": "power and temperature",
+          "correct": false,
+          "explanation": "Power appears as the PRODUCT; temperature is absent.",
+          "misconception": "symbol confusion"
+        },
+        {
+          "key": "C",
+          "text": "resistances and turns",
+          "correct": false,
+          "explanation": "Turns live in the ratio equation, not the power balance.",
+          "misconception": "equation mix"
+        },
+        {
+          "key": "D",
+          "text": "voltages and currents on the primary and secondary sides",
+          "correct": true,
+          "explanation": "V and I with p and s subscripts for the two coils.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L2::Q4",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L2",
+      "stem": "A toy train transformer delivers 12 V at 2 A from the mains secondary. Assuming 100% efficiency and a 230 V primary, the primary current is about:",
+      "misconceptionClass": "calculation",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.1 A",
+          "correct": true,
+          "explanation": "Ip = VsIs/Vp = 12 × 2/230 ≈ 0.10 A.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "38 A",
+          "correct": false,
+          "explanation": "That multiplies instead of dividing.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "2 A",
+          "correct": false,
+          "explanation": "Primary current is smaller on a step-down transformer.",
+          "misconception": "direction confusion"
+        },
+        {
+          "key": "D",
+          "text": "4.6 A",
+          "correct": false,
+          "explanation": "That mixes up the ratio arithmetic.",
+          "misconception": "operation slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L2::Q5",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L2",
+      "stem": "Why does high-voltage transmission suit the ideal equation?",
+      "misconceptionClass": "grid reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it converts the supply to direct current",
+          "correct": false,
+          "explanation": "Transformers keep the supply alternating.",
+          "misconception": "conversion myth"
+        },
+        {
+          "key": "B",
+          "text": "stepping voltage up cuts the transmitted current for the same power",
+          "correct": true,
+          "explanation": "VpIp = VsIs trades current against voltage.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the equation increases the power transmitted",
+          "correct": false,
+          "explanation": "The power is fixed; only its V–I split changes.",
+          "misconception": "power myth"
+        },
+        {
+          "key": "D",
+          "text": "it removes the need for cables",
+          "correct": false,
+          "explanation": "Cables remain; they just heat less.",
+          "misconception": "absurd claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L2::Q6",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L2",
+      "stem": "State the ideal transformer relationship in symbols.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "Vp × Ip = Vs × Is, assuming 100% efficiency.",
+      "keywords": [
+        "Vp",
+        "Ip",
+        "Vs",
+        "Is"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L2::Q7",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L2",
+      "stem": "State what happens to the secondary current when a transformer steps the voltage down.",
+      "misconceptionClass": "inverse recall",
+      "kind": "recall",
+      "modelAnswer": "The secondary current is larger than the primary current by the same factor the voltage fell.",
+      "keywords": [
+        "larger",
+        "current",
+        "voltage",
+        "fell"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L2::Q8",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L2",
+      "stem": "Explain why a step-up transformer cannot give the grid more power than it receives.",
+      "misconceptionClass": "conservation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The ideal equation VpIp = VsIs is energy conservation per second: the output power equals the input power, it is merely repackaged with less current at higher voltage. A transformer changes the split between volts and amps, never the total — any claim of extra output power would break the conservation the equation encodes.",
+      "keywords": [
+        "power",
+        "equals",
+        "input",
+        "conservation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_hYbhpMKCjdqM8zQF::L2::Q9",
+      "moduleId": "rn_hYbhpMKCjdqM8zQF::L2",
+      "stem": "A plug-in travel adapter raises a 115 V mains supply to 230 V for a hair dryer drawing 5 A. Assuming 100% efficiency, calculate the current drawn from the mains and state the transformer type.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Using VpIp = VsIs: Ip = Vs × Is/Vp = 230 × 5/115 = 10 A. The output voltage is larger than the input, so it is a step-up transformer — and the mains supplies it 10 A at 115 V, the same 1150 W the dryer uses.",
+      "keywords": [
+        "10",
+        "230",
+        "115",
+        "step-up"
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_djn7QGwpMBj2xb2q",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "25b9d74077868418519712124629b721803962a100fa000f7be67a6cdacbc5d1",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_djn7QGwpMBj2xb2q",
+    "topicTitle": "6. Magnetism and Electromagnetism",
+    "subtopicTitle": "Magnetism and Electromagnetism",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/6-magnetism-and-electromagnetism/6-1-magnetism-and-electromagnetism/6-1-9-magnetic-field-patterns",
+    "specAnchors": [
+      {
+        "code": "6.10P",
+        "text": "draw magnetic field patterns for a straight wire, a flat circular coil and a solenoid when each is carrying a current"
+      }
+    ],
+    "primer": {
+      "text": "Three current geometries, three drawable fields: circles around a straight wire, a strong axial line through a flat coil, and a bar-magnet twin with a uniform core inside a solenoid. This note is a drawing course — cross and dot conventions, grip-rule polarities, and the spacing that shows strength.",
+      "prerequisiteSubtopic": "Magnetism and Electromagnetism"
+    },
+    "modules": [
+      {
+        "id": "rn_djn7QGwpMBj2xb2q::L1",
+        "title": "Drawing the field of a straight wire",
+        "sourceHeadings": [
+          "Magnetic field patterns",
+          "Magnetic field in a straight wire"
+        ],
+        "specRefs": [
+          "6.10P"
+        ],
+        "opening": "A current-carrying straight wire draws its own field: circles around the wire, clockwise or anticlockwise depending on the current direction, given by the right-hand grip. The drawing skill is to show the circles in the plane perpendicular to the wire, with the current marked into or out of the page.",
+        "keyPoints": [
+          "The field pattern for a straight wire is circles centred on the wire.",
+          "The circle direction follows the current by the right-hand grip rule.",
+          "Current into the page is drawn with a cross; current out with a dot.",
+          "The circles are drawn closest together near the wire where the field is strongest.",
+          "The pattern lies in the plane perpendicular to the wire."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Look down the wire: the field circles it like ring after ring. Thumb along the current and the fingers curl the way the rings run.",
+            "analogy": "The rings are like ripples spreading round a pole stuck in water — going all the way round, fading as they spread.",
+            "examPointer": "Use the cross/dot convention and label it — an unlabelled diagram scores half at best."
+          },
+          "medium": {
+            "restatement": "The drawn pattern encodes the azimuthal field: concentric circles with spacing growing with radius to show the strength falloff. The cross/dot notation projects the axial current onto the page, and the grip rule converts that projection into a definite circulation sense for the drawn circles.",
+            "analogy": "The diagram is a map viewed from above: the cross or dot is the tunnel under the map, and the circles are the roads looping round it.",
+            "examPointer": "Drawing marks: concentric, circular, spacing widening outward, plus a labelled current symbol — all four or expect deduction."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_djn7QGwpMBj2xb2q::L1::Q1",
+          "rn_djn7QGwpMBj2xb2q::L1::Q2",
+          "rn_djn7QGwpMBj2xb2q::L1::Q3",
+          "rn_djn7QGwpMBj2xb2q::L1::Q4",
+          "rn_djn7QGwpMBj2xb2q::L1::Q5",
+          "rn_djn7QGwpMBj2xb2q::L1::Q6",
+          "rn_djn7QGwpMBj2xb2q::L1::Q7",
+          "rn_djn7QGwpMBj2xb2q::L1::Q8",
+          "rn_djn7QGwpMBj2xb2q::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_djn7QGwpMBj2xb2q::L2",
+        "title": "The flat circular coil's field",
+        "sourceHeadings": [
+          "Magnetic field in a flat circular coil"
+        ],
+        "specRefs": [
+          "6.10P"
+        ],
+        "opening": "Bend the wire into a flat circular coil and every turn contributes its circles: through the centre of the coil all the contributions point the same way, so the field there is strong and axial. The drawn pattern shows crowded, nearly straight lines through the coil's middle, fanning out on either side.",
+        "keyPoints": [
+          "Each turn of a flat circular coil adds its own circular field.",
+          "At the coil's centre all turns give field in the same axial direction.",
+          "The field at the centre is stronger than one wire's field alone.",
+          "The drawn pattern is nearly straight through the centre, curling round outside.",
+          "More turns or more current strengthens the coil's central field."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "One loop of wire makes circles; stack the loop's effect with every extra turn and the middle of the coil gets a strong, straight-through field.",
+            "analogy": "One person clapping is quiet; a ring of people clapping in step is loud — the centre of the ring hears them all at once.",
+            "examPointer": "Say the contributions 'add' or 'reinforce' at the centre — 'each turn helps' scores nothing without the adding."
+          },
+          "medium": {
+            "restatement": "At the geometric centre every turn's azimuthal field points along the same axis, so the superposition is maximal there; the drawn axial lines are straight and crowded, bending round to close outside the coil. Strength scales with the number of turns and the current per turn, which is why the coil is half-way to a solenoid.",
+            "analogy": "Each turn is one lens focusing the field onto the central axis; more lenses, tighter focus, brighter line.",
+            "examPointer": "Contrast with the single wire: same current, but the coil's centre field is many times stronger because every turn contributes."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_djn7QGwpMBj2xb2q::L2::Q1",
+          "rn_djn7QGwpMBj2xb2q::L2::Q2",
+          "rn_djn7QGwpMBj2xb2q::L2::Q3",
+          "rn_djn7QGwpMBj2xb2q::L2::Q4",
+          "rn_djn7QGwpMBj2xb2q::L2::Q5",
+          "rn_djn7QGwpMBj2xb2q::L2::Q6",
+          "rn_djn7QGwpMBj2xb2q::L2::Q7",
+          "rn_djn7QGwpMBj2xb2q::L2::Q8",
+          "rn_djn7QGwpMBj2xb2q::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_djn7QGwpMBj2xb2q::L3",
+        "title": "The solenoid's field and its strength levers",
+        "sourceHeadings": [
+          "Magnetic field in a solenoid",
+          "Factors affecting magnetic field strength of a solenoid"
+        ],
+        "specRefs": [
+          "6.10P"
+        ],
+        "opening": "A solenoid is a long coil, and its field is the bar magnet's field reborn: outside, lines curl from a north end to a south end; inside, they run straight, parallel and crowded. The right-hand grip rule adapted to the whole coil names the poles, and turns, current and a soft iron core set the strength.",
+        "keyPoints": [
+          "A solenoid is a long coil of wire carrying a current.",
+          "Outside, its field pattern matches a bar magnet's, with poles at the ends.",
+          "Inside, the field is strong, straight and parallel along the axis.",
+          "The right-hand grip rule on the coil gives the north end.",
+          "More turns, a larger current and a soft iron core each strengthen the field."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Curl the wire into a spring shape and switch on: one end acts north, the other south, and the field inside runs straight down the tube. Fingers curl with the wire's current; the thumb points to the north end.",
+            "analogy": "The solenoid is a magnet you can dial up: twist the current knob and the invisible bar magnet inside gets stronger or weaker.",
+            "examPointer": "Inside-solenoid lines are 'straight and parallel' — that phrase signals uniformity and earns the pattern mark."
+          },
+          "medium": {
+            "restatement": "Each turn's contribution adds along the shared axis, so the interior superposes into a near-uniform axial field while the exterior closes the loops like a bar magnet's. The adapted grip rule reads the wrapped current to name the poles; strength scales with turns per length, current, and the induced soft iron core that multiplies the interior field.",
+            "analogy": "A solenoid is a ladder of coil-turns: every rung adds the same axial push, and the iron core turns the ladder into an escalator.",
+            "examPointer": "Polarity questions: curl the RIGHT hand's fingers with the current around the coil — the thumb gives the north-seeking end. Left hand gives the wrong pole."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_djn7QGwpMBj2xb2q::L3::Q1",
+          "rn_djn7QGwpMBj2xb2q::L3::Q2",
+          "rn_djn7QGwpMBj2xb2q::L3::Q3",
+          "rn_djn7QGwpMBj2xb2q::L3::Q4",
+          "rn_djn7QGwpMBj2xb2q::L3::Q5",
+          "rn_djn7QGwpMBj2xb2q::L3::Q6",
+          "rn_djn7QGwpMBj2xb2q::L3::Q7",
+          "rn_djn7QGwpMBj2xb2q::L3::Q8",
+          "rn_djn7QGwpMBj2xb2q::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "flat circular coil",
+          "definition": "Wire wound into a flat loop whose turns add their fields at the centre.",
+          "firstLesson": 2
+        },
+        {
+          "term": "solenoid",
+          "definition": "A long coil of wire whose field matches a bar magnet's, with a strong uniform interior field.",
+          "firstLesson": 3
+        },
+        {
+          "term": "cross and dot convention",
+          "definition": "Cross for current into the page, dot for current out of the page.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/18db53195e71-20-1-field-lines-on-wire.png",
+        "alt": "Field lines on wire, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Magnetic field in a straight wire",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The direction of the magnetic field around a wire is given by the right-hand thumb rule"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/09234d307940-flat-celular-coil.png",
+        "alt": "flat-celular-coil, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Magnetic field in a flat circular coil",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The magnetic field around a flat circular coil"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/13ed030b9c38-7-2-1-magnetic-field-around-a-solenoid.png",
+        "alt": "Magnetic field around a solenoid, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Magnetic field in a flat circular coil",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Magnetic field around and through a solenoid. This is similar to the field of a bar magnet."
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b44f1d336d4c-20-1-direction-of-field-solenoid.png",
+        "alt": "Direction of field solenoid, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Magnetic field in a solenoid",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Poles of a solenoid. The right hand rule can be adapted for this situation, with fingers following the direction of current and the thumb pointing in the direction of the central magnetic field lines."
+      }
+    ]
+  }
+}

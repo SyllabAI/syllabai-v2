@@ -96,7 +96,7 @@ export function assembleTest(
   const pool: PoolEntry[] = bundle.questionTopics
     .filter((set) => setSlugs.has(set.slug))
     .flatMap((set) => {
-      const code = subtopicOfQuestionSet(set, index);
+      const code = subtopicOfQuestionSet(set, index, bundle.notes);
       const sub = code ? index.subtopicByCode.get(code) : undefined;
       return set.questions.map((q) => ({
         q,

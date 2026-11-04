@@ -1,0 +1,394 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_tmY2Kb5JP5h5Vjcf",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "6d836d9bb10b1823b39e3d7214c791293ad00a70d2fc2c1887ec7368d368634b",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_tmY2Kb5JP5h5Vjcf",
+    "topicTitle": "6. Magnetism and Electromagnetism",
+    "subtopicTitle": "Magnetism and Electromagnetism",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/6-magnetism-and-electromagnetism/6-1-magnetism-and-electromagnetism/6-1-6-the-motor-effect",
+    "specAnchors": [
+      {
+        "code": "6.12",
+        "text": "understand why a force is exerted on a current-carrying wire in a magnetic field and how this effect is applied in simple d.c. electric motors and loudspeakers"
+      },
+      {
+        "code": "6.14",
+        "text": "describe how the force on a current-carrying conductor in a magnetic field changes with the magnitude and direction of the field and current"
+      }
+    ],
+    "primer": {
+      "text": "Current plus field equals force: the motor effect pushes a current-carrying wire sideways across a magnetic field, and that push, bent into a coil with a split-ring commutator, becomes the d.c. motor. This note follows the force from a single wire to the spinning coil — including the vertical dead centre — and into the loudspeaker cone.",
+      "prerequisiteSubtopic": "Magnetism and Electromagnetism"
+    },
+    "modules": [
+      {
+        "id": "rn_tmY2Kb5JP5h5Vjcf::L1",
+        "title": "The motor effect on a current-carrying wire",
+        "sourceHeadings": [
+          "Magnetic force on a current-carrying wire"
+        ],
+        "specRefs": [
+          "6.12"
+        ],
+        "opening": "Put a current-carrying wire inside a magnet's field and the two fields fight: the wire's own circular field adds to the field on one side and cancels on the other, leaving a sideways force on the wire. That push is the motor effect, and it is the engine behind d.c. motors and loudspeakers.",
+        "keyPoints": [
+          "A force acts on a current-carrying wire when it sits in a magnetic field.",
+          "The effect arises because the wire's field and the magnet's field combine — stronger on one side, weaker on the other.",
+          "The force is perpendicular to both the current and the field.",
+          "Reversing the current or the field reverses the force direction.",
+          "The motor effect is the working principle of d.c. motors and loudspeakers."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Wire with current, dropped between magnet poles, gets shoved sideways. The shove flips if you swap the current's direction or the magnet's poles.",
+            "analogy": "Two crowds pushing a door: reinforcements on one side and defectors on the other swing the door — the wire is the door.",
+            "examPointer": "Name the effect ('the motor effect') AND the mechanism ('the two fields combine') — either alone drops a mark."
+          },
+          "medium": {
+            "restatement": "The wire's circular field adds vectorially to the uniform pole field: on one side the circulations reinforce, producing a crowded, strong region; on the other they cancel, leaving a weak region. The unbalanced 'catapult' field exerts the resultant force on the wire, perpendicular to both current and field — reversing either input mirrors the imbalance and flips the force.",
+            "analogy": "Rowing across a river with a current: your heading plus the flow decides the actual path — flip either and you land on the other bank.",
+            "examPointer": "For 'explain why a force is exerted', sketch the combined field: crowded on one side, sparse on the other — the sketch is the explanation."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_tmY2Kb5JP5h5Vjcf::L1::Q1",
+          "rn_tmY2Kb5JP5h5Vjcf::L1::Q2",
+          "rn_tmY2Kb5JP5h5Vjcf::L1::Q3",
+          "rn_tmY2Kb5JP5h5Vjcf::L1::Q4",
+          "rn_tmY2Kb5JP5h5Vjcf::L1::Q5",
+          "rn_tmY2Kb5JP5h5Vjcf::L1::Q6",
+          "rn_tmY2Kb5JP5h5Vjcf::L1::Q7",
+          "rn_tmY2Kb5JP5h5Vjcf::L1::Q8",
+          "rn_tmY2Kb5JP5h5Vjcf::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_tmY2Kb5JP5h5Vjcf::L2",
+        "title": "Inside the D.C. motor: forces on the horizontal coil",
+        "sourceHeadings": [
+          "The D.C. motor",
+          "Forces on the horizontal coil in a D.C. motor"
+        ],
+        "specRefs": [
+          "6.12"
+        ],
+        "opening": "A d.c. motor is the motor effect bent into a rectangle: a coil of wire between magnet poles. On the horizontal sides the currents run in opposite directions, so the left-hand rule gives one side an upward force and the other a downward force — a turning couple that spins the coil.",
+        "keyPoints": [
+          "A d.c. motor uses a current-carrying coil in a magnetic field.",
+          "The two horizontal sides carry currents in opposite directions.",
+          "The motor effect gives one side an upward force and the other a downward force.",
+          "The opposite forces form a couple that rotates the coil about its axle.",
+          "A split-ring commutator reverses the coil's current every half turn to keep the rotation going."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Current goes up one side of the coil and down the other. Between the poles, one side is pushed up and the other down — the coil spins like a key turning.",
+            "analogy": "Two children on opposite sides of a roundabout, one pushing up, one pushing down on the far rail — the platform turns.",
+            "examPointer": "Say 'a couple' or 'opposite forces on the two sides' — writing 'the magnet spins the coil' has no mechanism in it."
+          },
+          "medium": {
+            "restatement": "Each horizontal side is a current-carrying wire in the field, so each feels a force perpendicular to both current and field; with antiparallel currents the forces are antiparallel, producing torque about the axle. The split-ring commutator re-aligns the current with the poles every half turn, so the torque never changes sign and rotation is sustained.",
+            "analogy": "A commutator is a smarter reverse gear: it flips your pedalling direction exactly when the crank passes dead centre, so the wheel never stalls.",
+            "examPointer": "For 6-mark motor explanations, chain: opposite currents → opposite forces → couple → rotation → commutator sustains it. Miss a link, lose a mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_tmY2Kb5JP5h5Vjcf::L2::Q1",
+          "rn_tmY2Kb5JP5h5Vjcf::L2::Q2",
+          "rn_tmY2Kb5JP5h5Vjcf::L2::Q3",
+          "rn_tmY2Kb5JP5h5Vjcf::L2::Q4",
+          "rn_tmY2Kb5JP5h5Vjcf::L2::Q5",
+          "rn_tmY2Kb5JP5h5Vjcf::L2::Q6",
+          "rn_tmY2Kb5JP5h5Vjcf::L2::Q7",
+          "rn_tmY2Kb5JP5h5Vjcf::L2::Q8",
+          "rn_tmY2Kb5JP5h5Vjcf::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_tmY2Kb5JP5h5Vjcf::L3",
+        "title": "Half a turn: the vertical coil and the flipped coil",
+        "sourceHeadings": [
+          "Coil in the vertical position",
+          "Forces on the coil when rotated 180°"
+        ],
+        "specRefs": [
+          "6.12"
+        ],
+        "opening": "Two special positions test the motor's cleverness. With the coil vertical, the two sides sit at the top and bottom where their forces no longer form a couple — the split ring chooses that moment to swap the current. Half a turn later the sides have swapped places, and without the commutator the forces would now push the coil backwards.",
+        "keyPoints": [
+          "With the coil vertical, the forces on the sides act towards the axle and produce no turning effect.",
+          "The split-ring commutator swaps the current contacts exactly at the vertical position.",
+          "After a 180° rotation, each side has moved to where the other was.",
+          "Without the commutator, the forces after half a turn would oppose the rotation and hold the coil still.",
+          "With the commutator, the current reversal keeps the forces driving the same rotational sense."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Coil upright: the pushes now squeeze the coil instead of turning it — that is when the commutator swaps the wires. Half a turn on, the sides have traded places, and the swapped current makes their pushes still drive the spin.",
+            "analogy": "Rowers switching stroke sides exactly as the boat crosses dead centre — the swap keeps the boat spinning in one direction.",
+            "examPointer": "Vertical-position questions want 'no turning effect' — the forces still exist; they just act through the axle line."
+          },
+          "medium": {
+            "restatement": "At the vertical orientation each side's force is radial — collinear with the axle plane — so the torque arm is zero and the couple vanishes. The 180° problem is geometric: side currents have swapped their field-relative positions, so a constant current would give forces opposing the established rotation; the commutator's synchronized reversal re-aligns current with position, restoring the driving couple.",
+            "analogy": "A film projector's shutter flips each frame at the exact blackout moment — the swap is invisible in the motion but essential to the story.",
+            "examPointer": "Draw the 180° coil and mark forces BOTH with and without the commutator: the contrast earns the explanation mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_tmY2Kb5JP5h5Vjcf::L3::Q1",
+          "rn_tmY2Kb5JP5h5Vjcf::L3::Q2",
+          "rn_tmY2Kb5JP5h5Vjcf::L3::Q3",
+          "rn_tmY2Kb5JP5h5Vjcf::L3::Q4",
+          "rn_tmY2Kb5JP5h5Vjcf::L3::Q5",
+          "rn_tmY2Kb5JP5h5Vjcf::L3::Q6",
+          "rn_tmY2Kb5JP5h5Vjcf::L3::Q7",
+          "rn_tmY2Kb5JP5h5Vjcf::L3::Q8",
+          "rn_tmY2Kb5JP5h5Vjcf::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04"
+        ]
+      },
+      {
+        "id": "rn_tmY2Kb5JP5h5Vjcf::L4",
+        "title": "Loudspeakers and the levers of magnetic force",
+        "sourceHeadings": [
+          "Loudspeakers"
+        ],
+        "specRefs": [
+          "6.12",
+          "6.14"
+        ],
+        "opening": "A loudspeaker is the motor effect turned into sound: a coil carrying the audio current sits in a radial field, and the force on it — reversing with every swing of the current — drives the cone in and out. The same physics answers the control question: force grows with current and with field strength, and flips when either is flipped.",
+        "keyPoints": [
+          "A loudspeaker coil sits in a magnetic field and carries the audio current.",
+          "The motor-effect force moves the coil and cone in and out along the axis.",
+          "The current's direction reverses with the alternating signal, so the force alternates too.",
+          "The force grows with the size of the current and the strength of the magnetic field.",
+          "The force reverses when either the current or the field direction is reversed."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Music current flows through the speaker coil; the field pushes the coil and cone out, the current reverses, the push pulls the cone in. The cone's vibrations are the sound you hear.",
+            "analogy": "The cone is a drum skin played by an invisible finger that taps out, in, out, in — following the music's signal exactly.",
+            "examPointer": "Link the alternating current to the alternating force explicitly — 'the cone vibrates at the frequency of the signal' is the mark."
+          },
+          "medium": {
+            "restatement": "The loudspeaker geometry puts the coil in a radial field so the motor-effect force is always axial: force magnitude scales with current and field, direction follows the instantaneous current sense. The cone therefore reproduces the waveform — displacement tracking the signal — and louder output comes from larger current swings or stronger fields.",
+            "analogy": "The radial field is a curved slide: whatever direction the coil pushes, the slide converts it into the same in-out motion of the cone.",
+            "examPointer": "For 6.14 phrasing: the force increases with field strength and with current, and reverses when EITHER is reversed — quote all three clauses."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_tmY2Kb5JP5h5Vjcf::L4::Q1",
+          "rn_tmY2Kb5JP5h5Vjcf::L4::Q2",
+          "rn_tmY2Kb5JP5h5Vjcf::L4::Q3",
+          "rn_tmY2Kb5JP5h5Vjcf::L4::Q4",
+          "rn_tmY2Kb5JP5h5Vjcf::L4::Q5",
+          "rn_tmY2Kb5JP5h5Vjcf::L4::Q6",
+          "rn_tmY2Kb5JP5h5Vjcf::L4::Q7",
+          "rn_tmY2Kb5JP5h5Vjcf::L4::Q8",
+          "rn_tmY2Kb5JP5h5Vjcf::L4::Q9"
+        ],
+        "figureIds": [
+          "fig-05",
+          "fig-06",
+          "fig-07",
+          "fig-08",
+          "fig-09",
+          "fig-10"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "motor effect",
+          "definition": "The force experienced by a current-carrying wire when it lies in a magnetic field.",
+          "firstLesson": 1
+        },
+        {
+          "term": "split-ring commutator",
+          "definition": "The contact that reverses the coil's current every half turn of a d.c. motor.",
+          "firstLesson": 2
+        },
+        {
+          "term": "couple",
+          "definition": "A pair of opposite forces on opposite sides of an axle that turns a coil.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A d.c. motor is set up as shown in the diagram. Determine whether the coil rotates clockwise or anticlockwise when viewed from the position shown, and explain your reasoning.",
+        "steps": [
+          "Identify the current direction along each side of the coil from the supply connections in the diagram.",
+          "Identify the magnetic field direction between the poles, from north to south.",
+          "Apply the left-hand rule to each horizontal side: first finger along the field, second finger along the current, thumb gives the force.",
+          "One side is pushed up and the other down, so the coil turns; reading the diagram, the side with the force towards the viewer determines the rotation sense as anticlockwise from the viewpoint shown."
+        ],
+        "finalAnswer": "The coil rotates anticlockwise as viewed in the diagram, because the left-hand rule gives opposite vertical forces on the two sides of the coil."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/d717dfeb2369-the-motor-effect.png",
+        "alt": "The-motor-effect, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Magnetic force on a current-carrying wire",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The motor effect is a result of two magnetic fields interacting to produce a force on the wire"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/e43c661631f4-1-9-dc-motor-coloured-wires-wejc.png",
+        "alt": "1-9-dc-motor-coloured-wires-wejc",
+        "sourceHeading": "Forces on the horizontal coil in a D.C. motor",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Forces acting in opposite directions on each side of the coil, causing it to rotate. The split ring connects the coil to the flow of current"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/0d69366c800c-1-9-vertical-dc-motor-wjec.png",
+        "alt": "1-9-vertical-dc-motor-wjec",
+        "sourceHeading": "Coil in the vertical position",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "No force acts on the coil when vertical, as the split ring is not in contact with the brushes"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1379eef55dab-1-9-flipped-dc-motor.png",
+        "alt": "1-9-flipped-dc-motor",
+        "sourceHeading": "Forces on the coil when rotated 180°",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Even though the coil has flipped, current still flows anticlockwise and the forces still cause rotation in the same direction"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a7f729621e9e-loudspeaker-cross-section.png",
+        "alt": "loudspeaker-cross-section, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Loudspeakers",
+        "moduleIds": [
+          "L4"
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing a cross-section of a loudspeaker"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/03dc15448dd0-7-2-4-we-d-c-motor-question-image.png",
+        "alt": "WE D.C Motor Question image, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Loudspeakers",
+        "moduleIds": [
+          "L4"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-07",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a44722957c24-7-2-4-we-d-c-motor-step-1.png",
+        "alt": "WE D.C Motor Step 1, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Loudspeakers",
+        "moduleIds": [
+          "L4"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-08",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/c73317a70f9a-7-2-4-we-d-c-motor-step-2.png",
+        "alt": "WE D.C Motor Step 2, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Loudspeakers",
+        "moduleIds": [
+          "L4"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-09",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1d7645b9161f-7-2-4-we-d-c-motor-step-3.png",
+        "alt": "WE D.C Motor Step 3, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Loudspeakers",
+        "moduleIds": [
+          "L4"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-10",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/9c8c7da61b0b-7-2-4-we-d-c-motor-step-4.png",
+        "alt": "WE D.C Motor Step 4, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Loudspeakers",
+        "moduleIds": [
+          "L4"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

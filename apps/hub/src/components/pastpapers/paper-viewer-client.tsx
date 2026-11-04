@@ -48,6 +48,7 @@ import { cn } from "@/lib/utils";
 import { PdfPane, type PdfPaneHandle } from "@/components/pastpapers/pdf-pane";
 import { InkLayer } from "@/components/pastpapers/ink/InkLayer";
 import { RegionMarkLayer } from "@/components/pastpapers/region-mark/RegionMarkLayer";
+import { resolvePaperAssetCached } from "@/lib/regions";
 import {
   corpusRawUrl,
   corpusViewerUrl,
@@ -156,6 +157,31 @@ export function PaperViewerClient({
   const [breakSource, setBreakSource] = useState<BreakSource>("manual");
   const [rows, setRows] = useState<BreakRow[]>([]);
   const [qpQuestions, setQpQuestions] = useState<QpQuestion[] | null>(null);
+
+  // ── T-MG-SURFACE-1: discoverability — derive the paper-asset uuid when the
+  // learner opened the paper NORMALLY (no ?paperId= deep-link). The corpus
+  // card→ledger identity bridge (paper.ref + sessionLabelStr → uuid; the
+  // resolvePaperAssetCached memo the paper-marks rollup already rides) arms
+  // the region-mark surface for covered papers without a hand-built link.
+  // Honest posture carried verbatim: a null resolve (not ingested), a missing
+  // token (signed out — anonymous marking stays IMPOSSIBLE, the token gate
+  // lives in RegionMarkLayer), and an uncovered paper (the regions fetch's
+  // honest empty) ALL keep the zero-chrome default; mock mode is excluded
+  // (the region-mark posture pin). The explicit deep-link always wins.
+  const [derivedPaperId, setDerivedPaperId] = useState<string | null>(null);
+  useEffect(() => {
+    if (paperId || mode !== "view") return;
+    const token = window.localStorage.getItem("syllabai.token");
+    if (!token) return;
+    let live = true;
+    resolvePaperAssetCached(paper.ref, sessionLabelStr, token).then((resolved) => {
+      if (live && resolved) setDerivedPaperId(resolved.paperId);
+    });
+    return () => {
+      live = false;
+    };
+  }, [paperId, mode, paper.ref, sessionLabelStr]);
+  const regionPaperId = paperId ?? derivedPaperId;
 
   const qpUrl = paper.qpPath ? corpusRawUrl(paper.qpPath) : null;
   const msUrl = paper.msPath ? corpusRawUrl(paper.msPath) : null;
@@ -850,11 +876,12 @@ export function PaperViewerClient({
             {/* T-MG-CROPMARK-1 run-002 (plan §3.4): the crop producer's
              * trigger UI — clickable region rects + the 202/poll mark
              * panel over the run-001 API. Zero chrome unless an authed
-             * learner deep-links a grounded paper (?paperId=). */}
+             * learner opens a grounded paper — the ?paperId= deep-link
+             * OR the T-MG-SURFACE-1 self-derived uuid (view mode). */}
             <RegionMarkLayer
               hostRef={qpInkHostRef}
               sourceUrl={paper.qpPath ? corpusRawUrl(paper.qpPath) : null}
-              paperId={paperId ?? null}
+              paperId={regionPaperId}
             />
           </div>
         )}

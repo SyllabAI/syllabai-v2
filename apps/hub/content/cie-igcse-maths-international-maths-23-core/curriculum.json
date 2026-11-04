@@ -2036,6 +2036,17 @@
    "provenanceTier": "RULE_DERIVED",
    "order": 109,
    "tier": "Core"
+  },
+  {
+   "code": "cie-igcse-maths-international-maths-2025-2027-TC-SME-INVESTIGATIONS",
+   "family": "TOPIC",
+   "title": "Investigations (SME section)",
+   "description": null,
+   "parents": [
+    "cie-igcse-maths-international-maths-23-core"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 11
   }
  ],
  "edges": [
@@ -3081,6 +3092,12 @@
    "source": "cie-igcse-maths-international-maths-2025-2027-TC10:SUBC10.7",
    "relation": "PART_OF",
    "target": "C10.7.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-igcse-maths-international-maths-23-core",
+   "relation": "PART_OF",
+   "target": "cie-igcse-maths-international-maths-2025-2027-TC-SME-INVESTIGATIONS",
    "provenanceTier": "RULE_DERIVED"
   }
  ]

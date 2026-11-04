@@ -451,7 +451,8 @@ describe("ClaService — the KG_TOPIC pipeline", () => {
     // the interaction event carries the provenance (the 061 posture)
     const event = telemetry[0] as Record<string, unknown>;
     expect(event.refused).toBe(false);
-    expect(event.promptIdentity).toBe("tutor-grounded/v15");
+    // v16 (T-TUTOR-EXP-1): the improvised-quiz marks law follows the bumped prompt
+    expect(event.promptIdentity).toBe("tutor-grounded/v16");
     expect(event.kind).toBe("KG_TOPIC");
     expect(event.mode).toBe("EXPLAIN");
   });

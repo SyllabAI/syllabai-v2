@@ -1133,3 +1133,32 @@ Operator order: "I want you to seamlessly integrate all the cognito videos into 
 
 Stage Summary:
 - t-book-074 CLOSED IN FULL: census (93/63/61) answered and delivered; ALL 61 census assets integrated (27 pre-existing + 34 new); receipts r0/r1/r2 filed; PR #716 merged 02886329e6; DB estate 266 → 300/300 VALIDATED via scoped land+flip; 63/63 video cards serve fleet-wide from the lesson pages of record. Fleet video question now answers 63/29 — every chapter's lesson carries its full Cognito video set (4CH1 only; other books adopt full-coverage by their own ADR per ADR-BOOK-0006 decision 5). Credential rotation reminder stands (ghp_/vcp_/napi_/npg_ x2 chat-exposed).
+
+## t-mg-player-mark-1 + t-mg-surface-1 run-001 receipts — both rollout PRs opened, CI green (operator order "Now, start working", 2026-11-04, continued)
+
+Work Log:
+- t-mg-player-mark-1/run-001 (branch, PR #722): lib/paper-marks.ts `requestPartRegrade` (the mirror-law client of the typed regrade channel — 202 accepted | 400/404/422 rejected with the honest message incl. no_mark_points | no_token | unconfigured | failed; retry: 0) + CoreMarkingFlow draft-phase advisory "Mark my draft with AI" (per structured part via the bridge join's core part UUIDs; verdicts through feedbackCopyModel; writes NO attempt; Smart Mark + legacy lane byte-identical) + paper-marks-regrade.test.ts (6 tests). Gate 1 asserted by diff: prompt.ts / PROMPT_VERSION / packages/contracts/** / packages/db/** zero diffs. Local: bun 6/6 + paper-feedback 8/8 + tsc clean + eslint clean. CI: SUCCESS (run 41781956955).
+- t-mg-surface-1/run-001 (branch, PR #725): PaperViewerClient derives the paper-asset uuid when no ?paperId= deep-link (resolvePaperAssetCached — the rollup's own memoized resolve); honest posture verbatim (signed-out → no resolve → zero chrome; not-ingested → honest null; uncovered → the regions fetch's honest empty; mock excluded; deep-link wins). Zero bytes in pdf-pane.tsx / RegionMarkLayer / InkLayer / api / contracts / db (+29/−2, one file). Local: tsc clean + eslint clean + region-mark suite 39/39. CI: SUCCESS (run 41782338279).
+
+Stage Summary:
+- Both rollout PRs are OPEN with green CI and await the operator's merge word (parent plan Gate 5 carries): #722 (Lane C — the typed regrade channel gets its hub consumer; the MG value moment type→mark→read on the core lane) and #725 (Lane A — region marking discovers itself; the deep-link requirement is gone). Records on main 20fc832c (plan + cards + ADR-042/043). Lane E carded (engine-side, next), Lane D operator-held, Lane B scale-out recorded against the executed RECT-2 instrument.
+
+## T-OEQ-PHYS-FORMAT-1 run-013-m4 plane sync — the 2 radiation banks serve the repaired corpus (2026-11-04, traces 1a1a55a658b4e201 + 1a1a60ec9f8d140d)
+
+Work Log:
+- The F135 hand-off item 2 follow-up leg executed. Corpus first: resources PR #309 (merged ef5c93cc) — the run-011-m3-analog isotope/decay debris repair, 26 spans / 8 part-fields / 3 topic.json + 5 renders in igcse-physics-modular-24-unit-2 + igcse-science-double-award-17-physics; live-aria law (3 pages, 16 labels, sha-pinned, re-fetched + hash-verified byte-exact 2026-11-04); gates G0–G8 green, independently reproduced (census 26, G4a parity, G8 plane pre-identity 8/8).
+- Plane sync (this repo, PR #738, merged 205f604e): the 8 fields := canon(repaired corpus) through the wave-D serving canon (LRM strip + asset repin at bank pin 1a5c37bc + trim); compact T1 per bank (detected: indent=None, separators (',',':'), no trailing newline). B2 canon(new) == serve-table pins 8/8 (sha256+len, the of-record bridge); B3 plane pre-identity 8/8 (every replaced value was canon(corpus pre-repair) — the wave-D-written fields were debris-verbatim, exactly as P5 disclosed); B5 deep-diff == exactly the 8 leaves; B6 census guard CLEAN exit-0 per touched bank pre AND post (4 receipts + run013-m4-sync-payload.json committed); full-corpus census-guard green on the PR and on the merged main; served bytes re-fetched from live main == serve-table pins 8/8.
+- Posture note: the verify-check red is pre-existing main debt (bundle-seed.test.ts:1024 + cie-phase4-roster.test.ts:25, identical signature at 7ddaf8a1 and 45d59a00 — before this branch existed; documented on the PR).
+
+Stage Summary:
+- The P5 debris class is extinct on the plane: the Po/Pb/Bi-210 grids, the Pu-238 chain, the Th-232 decay and the vanadium-50 span render proper isotope/decay notation for the first time. The hand-off chain F133→F134→F135→F136 is fully discharged (census-guard CI + M4 corpus repair + plane sync + the #306 CI infra item); corpus↔plane reconciliation HOLDS @ resources ef5c93cc / v2 205f604e.
+
+## t-mg-player-mark-1 + t-mg-surface-1 run-001 MERGED — the operator's merge word received; AI marking is learner-visible on the core player and region marking discovers itself (order "Merge #722 and #725", 2026-11-04)
+
+Work Log:
+- PR #722 (t-mg-player-mark-1/run-001) MERGED as a3718538; PR #725 (t-mg-surface-1/run-001) MERGED as 5b63a8e2 (main tip). Both merge-method=merge with house-style commit titles; lane branches deleted post-merge (404-verified).
+- Cards flipped to DONE in this commit: T-MG-PLAYER-MARK-1 (Gate-1 zero-diff receipt, CI run 41781956955) and T-MG-SURFACE-1 (CI run 41782338279; the screenshot receipt pin disclosed as OWED with the next live verification pass).
+- Env: sandbox recycled between turns (the local clone vanished) — fresh blob:none clone at the merge tip; token via GIT_ASKPASS from .gh_token (never argv/URL).
+
+Stage Summary:
+- The rollout tranche's ship-first lanes are ON MAIN: the typed regrade channel has its hub consumer (advisory "Mark my draft with AI" on the core player — the MG value moment type→mark→read, no attempt written, Smart Mark + legacy lane untouched), and region marking arms for any covered paper the learner opens normally (the ?paperId= deep-link requirement is gone; honest-null preserved for signed-out/not-ingested/uncovered; mock excluded). Remaining per docs/MG-MARK-ROLLOUT-PLAN.md: Lane E (carded, engine-side contract delta), Lane B scale-out (against the executed RECT-2 instrument), Lane D (operator-held product-scope decision + legal review).

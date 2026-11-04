@@ -28,6 +28,18 @@
  *     raw PDF coords here. null for every non-translated item.
  *   - bookCourseId: the book_chapters.course_id binding for TEXTBOOK items
  *     (the books deep link's course hint). null otherwise.
+ *
+ * T-TUTOR-EXP-1 run-001 (the 001 citation-titles patch) — ADDITIVE field,
+ * same precedent as the 133d extensions (append, never reorder):
+ *   - sourceTitle: the document's OWN title for document-backed evidence
+ *     (the revision-note's title for NOTE, the book title for TEXTBOOK, the
+ *     paper title for QUESTION_PAPER/MARK_SCHEME). Feeds the learner-facing
+ *     citation labels — "Revision notes — p1" was ambiguous once several
+ *     note documents served the same course (the live 4CH1 battery finding);
+ *     "Revision notes — <title> — p1" is self-identifying. null when the
+ *     serving row does not carry a title (the warehouse seam's projection is
+ *     title-less) or the source has none — the label law degrades to the
+ *     pre-patch text, never a fabricated title.
  */
 
 export type EvidenceSource =
@@ -89,6 +101,8 @@ export interface EvidenceItem {
   sourcePageEnd: number | null;
   /** book_chapters.course_id binding for TEXTBOOK items (null otherwise) */
   bookCourseId: string | null;
+  /** the document's own title (null when the row carries none — 001) */
+  sourceTitle: string | null;
   /** canonical elements backing this evidence (§17) */
   elementIds: string[];
   /** KG topics this evidence is associated with (v0: the intent-matched topics) */
@@ -133,6 +147,8 @@ export function evidenceFromChunk(args: {
   sourcePageStart?: number | null;
   sourcePageEnd?: number | null;
   bookCourseId?: string | null;
+  /** 001 additive: the document title for the citation label (default null) */
+  sourceTitle?: string | null;
 }): EvidenceItem {
   const source = kindToSource[args.kind == null ? "OTHER" : args.kind] ?? "OTHER";
   return {
@@ -153,6 +169,7 @@ export function evidenceFromChunk(args: {
     sourcePageStart: args.sourcePageStart == null ? null : args.sourcePageStart,
     sourcePageEnd: args.sourcePageEnd == null ? null : args.sourcePageEnd,
     bookCourseId: args.bookCourseId == null ? null : args.bookCourseId,
+    sourceTitle: args.sourceTitle == null ? null : args.sourceTitle,
     elementIds: args.elementIds == null ? [] : [...args.elementIds],
     topicIds: [],
     retrievalScore: args.cosine,
@@ -198,6 +215,7 @@ export function evidenceFromNode(args: {
     sourcePageStart: null,
     sourcePageEnd: null,
     bookCourseId: null,
+    sourceTitle: null,
     elementIds: [],
     topicIds: [args.nodeId],
     retrievalScore: args.matchScore,

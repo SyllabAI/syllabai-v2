@@ -76,6 +76,7 @@ import { QuestionFamilyAssembler, QuestionTaxonomy, ServableQuestions } from "..
 import type { SqlFn } from "../assessment/sql";
 import type { SubmitClock } from "../selfmark";
 import { promptIdentity } from "../tutor/prompt";
+import { loadConceptGraphSnapshot, type ConceptGraphSnapshot } from "../teacher/snapshot";
 import { BadRequestException, NotFoundException } from "../identity/errors";
 import {
   checkModeAdmission,
@@ -96,6 +97,7 @@ import {
 import {
   isQuestionContext,
   isQuestionPartContext,
+  isTopicContext,
   type ClaContextKind,
   type ClaResourceContext,
 } from "./context";
@@ -118,6 +120,25 @@ export const CLA_REFUSAL =
  * for validated chunks.
  */
 export const SPEC_STRUCTURE_LIMIT = 4;
+
+/**
+ * T-TUTOR-EXP-1 (004) — the spec-statement evidence bounds. The measured
+ * false-refusal class (2026-11-03 live 4CH1 battery): "what does 4CH1-1.59C
+ * say" was refused INSIDE the very topic that contains 1.59C — the evidence
+ * window carried the KG node's title/description and the topic's subtopic
+ * structure, but never the spec statements' OFFICIAL WORDING, and the
+ * grounding gate honestly refused what it could not see. The frozen
+ * concept-graph snapshot (the same sha256-pinned substrate the tutor's
+ * spec-boost index reads) carries every spec point's official_code +
+ * official_wording — this band lets the CLA topic window read them.
+ *
+ * Bounded so ONE statement item joins the window without crowding out
+ * validated chunks: the tutor prompt's evidence bound is 600 chars for
+ * non-paper sources, so the item carries at most SPEC_STATEMENT_LIMIT
+ * statements of SPEC_STATEMENT_BOUND chars each (~520 chars worst case).
+ */
+export const SPEC_STATEMENT_LIMIT = 4;
+export const SPEC_STATEMENT_BOUND = 130;
 
 /** per-part prompt bound inside the whole-question parts evidence (:104-106) */
 export const PART_PROMPT_BOUND = 1200;
@@ -249,6 +270,79 @@ interface MarkPointRow {
   ordering: number;
 }
 
+/**
+ * T-TUTOR-EXP-1 (004) — the process-cached snapshot read for the CLA's
+ * spec-statement evidence. The tutor's spec-boost index caches the SAME
+ * substrate one layer up (its own index); the CLA needs the raw spec
+ * points, cached at the snapshot level so the 1.5 MB parse happens once
+ * per process. The sha256 pins gate the bytes exactly as everywhere else.
+ */
+let claCachedSnapshot: ConceptGraphSnapshot | null = null;
+function claSnapshot(): ConceptGraphSnapshot {
+  if (claCachedSnapshot == null) {
+    claCachedSnapshot = loadConceptGraphSnapshot();
+  }
+  return claCachedSnapshot;
+}
+
+/**
+ * The PURE spec-statement builder (unit-tested directly against the real
+ * pinned snapshot — test/cla/spec-statement.test.ts). One bounded SYLLABUS
+ * item carrying the topic's official statements; null when the topic code
+ * matches nothing in the snapshot (every non-pilot subject) — the honest
+ * unchanged posture, never a fabricated statement.
+ */
+export function claSpecStatementItem(
+  topicCode: string,
+  topicNodeId: string,
+  snapshot: ConceptGraphSnapshot,
+): EvidenceItem | null {
+  const code = topicCode == null ? "" : String(topicCode).trim();
+  if (code === "") return null;
+  const statements = snapshot.specPoints
+    .filter((sp) => sp.sectionCode === code || sp.subsectionCode === code)
+    .sort((a, b) => a.globalOrder - b.globalOrder)
+    .slice(0, SPEC_STATEMENT_LIMIT);
+  if (statements.length === 0) return null;
+  const lines = statements.map(
+    (sp) =>
+      `- ${sp.officialCode}: ${
+        sp.wording.length <= SPEC_STATEMENT_BOUND
+          ? sp.wording
+          : sp.wording.slice(0, SPEC_STATEMENT_BOUND) + "…"
+      }`,
+  );
+  const content =
+    "Official specification statements for this topic:\n" + lines.join("\n");
+  return {
+    source: "SYLLABUS",
+    content,
+    documentRowId: null,
+    documentId: null,
+    documentVersion: null,
+    chunkId: null,
+    chunkIndex: null,
+    nodeId: null,
+    nodeCode: null,
+    nodeType: null,
+    nodeTitle: null,
+    pageStart: null,
+    pageEnd: null,
+    // the statements' own official codes ride the item (the same column
+    // the 133d spec-boost reads on the tutor surface)
+    specCodes: statements.map((sp) => sp.officialCode),
+    sourcePageStart: null,
+    sourcePageEnd: null,
+    bookCourseId: null,
+    sourceTitle: null,
+    elementIds: [],
+    topicIds: [topicNodeId],
+    retrievalScore: 1.0,
+    fusedScore: 0.0,
+    rerankScore: null,
+  };
+}
+
 export function buildClaService(deps: ClaServiceDeps) {
   const { sql, clock, resolver, registryDeps, learnerModel } = deps;
   const vectorCandidates = Math.max(1, deps.vectorCandidates ?? CLA_VECTOR_CANDIDATES);
@@ -365,6 +459,7 @@ export function buildClaService(deps: ClaServiceDeps) {
     sourcePageStart: null,
     sourcePageEnd: null,
     bookCourseId: null,
+    sourceTitle: null, // T-TUTOR-EXP-1 (001): the additive field; CLA lead items carry no document title
     elementIds: [],
     topicIds: [topicNodeId],
     retrievalScore: 1.0,
@@ -460,6 +555,25 @@ export function buildClaService(deps: ClaServiceDeps) {
         }),
         topicIds: [context.topicNodeId],
       }));
+  };
+
+  /**
+   * T-TUTOR-EXP-1 (004) — the spec-statement evidence item (topic contexts).
+   *
+   * The resolved topic's code lives in the spine section/subsection code
+   * space ("4CH1-S1" / "4CH1-S1-b") — the same space the tutor's 133d
+   * spec-boost index keys (spec-boost.ts: "the KG's matched topic nodes
+   * carry spine-section/-subsection codes"). The frozen snapshot is the
+   * code-space bridge: each spec point carries officialCode + wording +
+   * its section/subsection parents. One deterministic SYLLABUS item carries
+   * the topic's official statements; null when the topic code matches
+   * nothing in the snapshot (every non-pilot subject) — the honest
+   * unchanged posture, never a fabricated statement. The snapshot parse is
+   * process-cached (the tutor's own index caches the same substrate).
+   */
+  const specStatementEvidence = (context: ClaResourceContext): EvidenceItem | null => {
+    if (!isTopicContext(context)) return null;
+    return claSpecStatementItem(String(context.topicCode), context.topicNodeId, claSnapshot());
   };
 
   /** part-scoped learner-work selection (:683-688): a part context sees
@@ -735,7 +849,7 @@ export function buildClaService(deps: ClaServiceDeps) {
 
   return {
     /** the constants + pieces the route layer and pins consume. */
-    constants: { SPEC_STRUCTURE_LIMIT, PART_PROMPT_BOUND, vectorCandidates, evidenceLimit },
+    constants: { SPEC_STRUCTURE_LIMIT, SPEC_STATEMENT_LIMIT, PART_PROMPT_BOUND, vectorCandidates, evidenceLimit },
 
     /**
      * contextualAsk (:220-455) — the deterministic pipeline end to end.
@@ -863,6 +977,14 @@ export function buildClaService(deps: ClaServiceDeps) {
         });
       }
       kgCandidates.push(...(await specStructureEvidence(context, subjectTree)));
+      // T-TUTOR-EXP-1 (004): the topic's OFFICIAL spec statements ride the
+      // deterministic prior too — right behind the anchor, ahead of the
+      // subtopic structure — so the wording is IN the window the grounding
+      // gate judges (the measured false-refusal class dies at the data
+      // layer, never a prompt-side nudge). null on non-pilot subjects: the
+      // honest unchanged posture.
+      const statementItem = specStatementEvidence(context);
+      if (statementItem !== null) kgCandidates.push(statementItem);
       const vectorList = await deps.vectorRetriever(question, vectorCandidates, await scopeOf(context));
       const fused = fuseWithPlanWeights([kgCandidates, vectorList]);
       // rerank → cap → attribution → the §7.4 deterministic evidence filter
