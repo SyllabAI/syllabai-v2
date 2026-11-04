@@ -103,7 +103,7 @@ function WaitingStatus({ message }: { message: Turn }) {
     ? "Loading the past-paper view…"
     : n > 0
       ? `Reading ${n} source${n === 1 ? "" : "s"}…`
-      : "Grounding from your corpus…";
+      : "Checking the course material…";
   return (
     <span className="flex items-center gap-2 py-1" role="status" aria-live="polite">
       <TypingDots />

@@ -12,34 +12,27 @@ import {
   User,
   Zap,
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getDataProvider } from "@/lib/data";
 import { listCourses, pilotCourseSlug } from "@/lib/courses";
-import { publicConfig } from "@/lib/config";
 
 export default async function HubPage() {
   const provider = getDataProvider();
-  const cfg = publicConfig();
   const pilotSlug = await pilotCourseSlug();
   const courses = await listCourses();
   const courseCount = courses.length;
-  const courseLevels = [...new Set(courses.map((c) => c.level))].sort().join(" + ");
-  const [manifest, graph, notes, topics] = await Promise.all([
+  const [manifest, graph] = await Promise.all([
     provider.manifest(),
     provider.conceptGraph(),
-    provider.revisionNotes(),
-    provider.examQuestionTopics(),
   ]);
-  const questionCount = topics.reduce((a, t) => a + t.questions.length, 0);
 
   const surfaces = [
     {
       href: "/courses",
       icon: GraduationCap,
       title: `Courses — ${courseCount} Learning Hubs`,
-      desc: "SaveMyExams-style per-subject hubs (pilot: Edexcel IGCSE Chemistry 4CH1): sidebar topic tree, notes reader, question player, flashcards.",
+      desc: "Per-subject hubs (pilot: Edexcel IGCSE Chemistry 4CH1): sidebar topic tree, notes reader, question player, flashcards.",
     },
     {
       href: `/courses/${pilotSlug ?? ""}`,
@@ -51,25 +44,25 @@ export default async function HubPage() {
       href: "/knowledge-graph",
       icon: Network,
       title: "Knowledge Graph",
-      desc: "The 4CH1 specification as an explorable graph — your measured mastery painted onto the spec points it belongs to.",
+      desc: "The 4CH1 specification as an explorable graph — your mastery painted onto the spec points it belongs to.",
     },
     {
       href: "/practice",
       icon: Zap,
       title: "Practice",
-      desc: "Part-level practice player with confidence/self-doubt telemetry feeding the SIMULATED overlay.",
+      desc: "Part-level drills with instant marking — weak parts come back until they stick.",
     },
     {
       href: "/tutor",
       icon: Sparkles,
       title: "Tutor",
-      desc: "Grounded AI tutor with numbered citations + honest refusals when evidence is thin.",
+      desc: "A grounded AI tutor — every answer cites the spec points it draws on.",
     },
     {
       href: "/learner",
       icon: User,
       title: "My Progress",
-      desc: "Your measured mastery, review queue and attempt history — live from your SyllabAI account on the 4CH1 pilot.",
+      desc: "Your strengths, review queue and attempt history — from your SyllabAI account.",
     },
     // F-2 (frontend-flow audit): the Experiments card marketed the internal
     // sandbox on the product's first screen. The route stays URL-available
@@ -82,25 +75,17 @@ export default async function HubPage() {
           signed-in identity opening / is redirected to the role home
           before first paint. Tier 0's client-side role-home-redirect was
           removed in the same series — it lost every race to the proxy. */}
+      {/* T-UX-COPY-SWEEP: the provider/core-api status chips left the hero —
+          data-plane instrumentation is not the first screen a visitor needs.
+          The provider of record is still in the page payload. */}
       {/* hero — SME student flow */}
       <section className="space-y-4">
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge variant="secondary" className="font-mono text-[11px]">
-            {provider.displayName}
-          </Badge>
-          {cfg.coreConfigured && (
-            <Badge variant="outline" className="font-mono text-[11px]">
-              core-api ✓
-            </Badge>
-          )}
-        </div>
         <h1 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
           Revise by subject. Master by spec point.
         </h1>
         <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-          Add the subjects you are studying, then revise from spec-anchored notes, drill real exam
-          questions by topic and drill flashcards — all in one place, all mapped to your
-          syllabus. {manifest.curriculum.board} {courseLevels} registry ·{" "}
+          Add the subjects you are studying, then revise from spec-anchored notes, practise
+          exam questions by topic and drill flashcards — all mapped to your syllabus.{" "}
           <span className="font-medium text-foreground">{courseCount} subjects</span> ready to add.
         </p>
         <div className="flex flex-wrap items-center gap-3 pt-1">
@@ -169,14 +154,14 @@ export default async function HubPage() {
           (UX audit P2-6: they were presented as global totals) */}
       <section aria-label="Pilot corpus stats" className="space-y-2">
         <h2 className="text-sm font-medium text-muted-foreground">
-          Inside the {manifest.curriculum.code} {manifest.curriculum.subject} pilot
+          Inside the {manifest.curriculum.code} {manifest.curriculum.subject} hub
         </h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {[
           // manifest counts keys are the corpus's own (sections/topics/specPoints/…);
           // the graph node count comes from the already-fetched T-C11 graph
           { label: "Spec points", value: manifest.counts.specPoints },
-          { label: "Graph nodes (T-C11)", value: graph.nodes.length },
+          { label: "Concept graph", value: graph.nodes.length },
           { label: "Revision notes", value: manifest.counts.notes },
           { label: "Exam questions", value: manifest.counts.questions },
         ].map((s) => (
@@ -192,14 +177,7 @@ export default async function HubPage() {
 
       {/* surfaces */}
       <section aria-label="More to explore" className="space-y-3">
-        <div className="space-y-1">
-          <h2 className="text-lg font-semibold">More to explore</h2>
-          <p className="max-w-2xl text-sm text-muted-foreground">
-            Beyond the core study flow: a grounded AI tutor with citations, the contextual
-            assistant, knowledge-graph surfaces and the full past-paper library — all anchored to
-            the specification.
-          </p>
-        </div>
+        <h2 className="text-lg font-semibold">More to explore</h2>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {surfaces.map((s) => (
             <Link key={s.href} href={s.href} className="group focus-visible:outline-none">

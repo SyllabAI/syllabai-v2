@@ -140,7 +140,7 @@ export function Composer({
           onClick={() =>
             toast({
               title: "File upload isn’t available yet",
-              description: "The tutor grounds its answers in the corpus for now — paste the relevant text into your question.",
+              description: "Paste the relevant text into your question for now.",
             })
           }
         >

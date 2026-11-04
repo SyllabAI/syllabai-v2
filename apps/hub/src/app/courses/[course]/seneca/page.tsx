@@ -52,7 +52,7 @@ export default async function SenecaPage({
         meta={meta}
         title={`${board}${meta.level} ${meta.label} — Seneca Resources`}
         crumb="Seneca"
-        description={`Lesson notes and exam questions from the Seneca course content mapped to this qualification (${seneca.bundles.map((b) => b.label).join(", ")}). Browse lessons with their illustrations, or drill exam questions by topic with revealable mark schemes — exactly as the material presented in Seneca.`}
+        description={`Lesson notes and exam questions from the Seneca course content mapped to this qualification (${seneca.bundles.map((b) => b.label).join(", ")}). Browse lessons with their illustrations, or drill exam questions by topic with revealable mark schemes.`}
       />
 
       {/* t-ui-polish run-004: hero→body joins sit at mt-6 across the 16

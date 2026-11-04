@@ -56,7 +56,7 @@ export default async function SavedQuestionsPage({
           meta={meta}
           title="Saved questions"
           crumb="Saved questions"
-          description="Questions you bookmarked with the Save control in the question player. Saved to your browser — no account, no canonical writes."
+          description="Questions you bookmarked with the Save control in the question player — saved in this browser."
         />
         <div className="mt-6">
           <SavedQuestionsList course={meta.slug} all={all} />
