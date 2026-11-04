@@ -7,7 +7,8 @@
     "dev": "bun run --hot src/index.ts",
     "typecheck": "tsc --noEmit",
     "build": "tsc --noEmit",
-    "dev:realtime": "bun run src/realtime/server.ts"
+    "dev:realtime": "bun run src/realtime/server.ts",
+    "gen:concept-assets": "bun run ../../scripts/gen_concept_graph_assets.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "0.10.2",

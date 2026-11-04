@@ -297,6 +297,26 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-13 (batch eleven, the geography family tranche 8): CIE
+        # 0460 both examination spines (one lattice, two identical served
+        # spines — the 9709P1 two-course pattern), CIE 9696 A Level,
+        # Edexcel 4GE1.
+        geography = {
+            "cie-igcse-geography-20": ("f8ge_lattice_0460", "0460"),
+            "cie-igcse-geography-25": ("f8ge_lattice_0460", "0460"),
+            "cie-a-level-geography-21": ("f8ge_lattice_9696", "9696"),
+            "igcse-geography-19": ("f8ge_lattice_4ge1", "4GE1"),
+        }
+        if args.course in geography:
+            mod, tag = geography[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="eleven", task="T-KG-PRE-13", exporter_ver="v1.6",
+            )
+            return
         # T-KG-PRE-12 (batch ten, the English cluster tranche 7): CIE 8021
         # AS GP, CIE 0500 both examination spines, CIE 0475, Edexcel 4EA1
         # all three papers, Edexcel 4ET1.

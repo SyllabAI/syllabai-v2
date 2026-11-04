@@ -115,7 +115,7 @@ function SubtopicRow({ row, index }: { row: TopicSubtopicRow; index: number }) {
           type="button"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 pr-2 text-left leading-tight transition-colors hover:bg-muted"
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 pr-2 text-left leading-tight transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           {/* UX review F-07: the decorative completion rings are gone — 138
               permanently-empty rings per lane announced "0 of N completed"
@@ -209,7 +209,9 @@ export default function CourseBodyTabs({
             onClick={() => pushTab(t.key)}
             aria-pressed={tab === t.key}
             className={cn(
-              "flex items-center gap-1.5 border-b-[3px] px-1 pb-2.5 pt-1 transition-colors",
+              // t-ui-polish run-004 — the site's focus-visible ring law, the
+              // recipe the resource Link tiles already carry.
+              "flex items-center gap-1.5 border-b-[3px] px-1 pb-2.5 pt-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               tab === t.key
                 ? "border-primary text-primary"
                 : "border-transparent text-muted-foreground hover:text-foreground",
@@ -240,7 +242,13 @@ export default function CourseBodyTabs({
 
           <div className="mt-6 flex flex-col gap-4">
             {filtered.map((g) => (
-              <section key={g.code} className="rounded-2xl border bg-card p-1">
+              /* t-ui-polish run-004 — the site's one card hover language
+                 (run-001 SubjectCards, run-003 directory cards): the bordered
+                 topic cluster answers the pointer the same way. */
+              <section
+                key={g.code}
+                className="rounded-2xl border bg-card p-1 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
+              >
                 <div className="flex items-center gap-3 rounded-xl px-3 py-3 pr-2">
                   <span className="min-w-0 flex-auto text-base font-semibold">
                     {g.number}. {g.title}
