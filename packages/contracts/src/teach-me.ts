@@ -27,11 +27,26 @@ import { z } from "zod";
 /* Shared primitives                                                   */
 /* ------------------------------------------------------------------ */
 
-/** A session teaches at most 3 spec points (MG parity: ≤3 topics). */
+/**
+ * The canon spec codes a session grounds on.
+ *
+ * T-TEACHME-001 (MG parity): a learner picked ≤3 spec points by hand —
+ * max(3) mirrored MG's ≤3 topics.
+ *
+ * T-TEACHGENIE-002 (operator order, chat trace 1a1a84b5cf0e865d): the picker
+ * now selects ONE revision note of the course (organized under unit/topic
+ * dropdowns) and the session grounds on THAT NOTE's canon code set instead of
+ * hand-picked points. The committed 4CH1 corpus carries 1–4 codes per note
+ * (72×1, 27×2, 12×3, 1×4), so the ceiling moves 3 → 8 — headroom for corpus
+ * growth, aligned with the objective ordinal ceiling (1–8, migration 0025).
+ * The engine shape law is unchanged: every requested code must still be
+ * covered by ≥1 generated objective, and no objective may cite a code
+ * outside the requested set.
+ */
 export const teachSpecPointIdsSchema = z
   .array(z.string().min(1))
   .min(1)
-  .max(3);
+  .max(8);
 export type TeachSpecPointIds = z.infer<typeof teachSpecPointIdsSchema>;
 
 export const teachDifficultySchema = z.enum(["easy", "medium", "hard"]);
@@ -75,6 +90,7 @@ export const teachObjectiveSchema = z
   })
   .strict();
 export type TeachObjective = z.infer<typeof teachObjectiveSchema>;
+// (T-TEACHGENIE-002: per-objective code citations inherit the 1–8 note-driven ceiling.)
 
 /** Expandable chip under each student message (probe of record: "Great"). */
 export const verdictChipSchema = z
@@ -213,6 +229,8 @@ export const teachSessionSchema = z
   .object({
     id: z.string().uuid(),
     courseId: z.string().min(1),
+    /** T-TEACHGENIE-002: for note-driven sessions this is the picked note's
+     *  canon code set (1–8), not a hand-picked ≤3 list. */
     specPointIds: teachSpecPointIdsSchema,
     difficulty: teachDifficultySchema,
     length: teachSessionLengthSchema,

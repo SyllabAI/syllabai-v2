@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { getCourseBundle, loadHubCourse } from "@/lib/courses";
 import { allCourseParams } from "@/lib/static-params";
 import { teachMeEnabledForCourse, teachMeGate } from "@/components/hub/teach-me/gate";
-import { buildTeachMePickerTree } from "@/components/hub/teach-me/picker-data";
+import { buildTeachGenieNoteTree } from "@/components/hub/teach-me/picker-data";
 import { TeachGenieClient } from "@/components/hub/teach-genie/teach-genie-client";
 
 /**
@@ -24,6 +24,13 @@ import { TeachGenieClient } from "@/components/hub/teach-genie/teach-genie-clien
  *
  * Wave 0 pilot of record: Edexcel IGCSE Chemistry (4CH1) —
  * igcse-chemistry-19. Wave 1/2 courses flip by flags.json slug.
+ *
+ * T-TEACHGENIE-002 (operator order, chat trace 1a1a84b5cf0e865d): the picker
+ * selects a REVISION NOTE of the course — organized under unit/topic
+ * dropdowns — instead of hand-picked spec points. The tree is projected from
+ * the SAME committed course bundle (curriculum + notes) the Revision Notes
+ * index rides; the picked note's canon spec codes become the create
+ * request's specPointIds and every engine law stays server-side.
  */
 
 export async function generateStaticParams() {
@@ -98,7 +105,24 @@ export default async function TeachGeniePage({
     );
   }
 
-  const topics = buildTeachMePickerTree(bundle.curriculum);
+  const noteTree = buildTeachGenieNoteTree(bundle.curriculum, bundle.notes);
+
+  if (noteTree.length === 0) {
+    // flagged course whose committed bundle carries no code-anchored notes —
+    // the picker would be an empty shell, so the honest warm-up state stays
+    return (
+      <div className="px-4 py-6 sm:px-6 lg:px-8">
+        <div className="mx-auto mt-6 max-w-3xl">
+          <div className="rounded-lg border border-dashed border-border bg-card px-6 py-10 text-center">
+            <h2 className="text-base font-semibold">Teach Genie is warming up</h2>
+            <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
+              The flag is on but this course&apos;s revision notes haven&apos;t finished importing. Check back shortly.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="tg-scope flex min-h-[calc(100dvh-3.5rem)] flex-col antialiased">
@@ -109,7 +133,7 @@ export default async function TeachGeniePage({
           <span className="font-medium text-foreground">Teach Genie</span>
         </p>
       </div>
-      <TeachGenieClient course={slug} courseLabel={meta.label} topics={topics} />
+      <TeachGenieClient course={slug} courseLabel={meta.label} noteTree={noteTree} />
     </div>
   );
 }

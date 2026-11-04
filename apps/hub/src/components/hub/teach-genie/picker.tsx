@@ -1,23 +1,29 @@
 "use client";
 
 /**
- * T-TEACHGENIE-001 — the topic picker ("Pick your topics — Pick up to three
- * from your spec, or describe your own"). The picker tree is the committed
- * curriculum projection from components/hub/teach-me/picker-data.ts (the
- * same spec codes the API's canon gate validates). "Describe your own" is
- * the search box: typing filters the tree live and — if a phrase matches a
- * spec statement — surfaces it, so a free-text description picks the spec
- * points it describes without ever leaving the grounded canon (create()
- * still refuses honestly when the corpus can't ground a pick).
+ * T-TEACHGENIE-002 — the note-driven topic picker (operator order, chat trace
+ * 1a1a84b5cf0e865d): the learner chooses the REVISION NOTE of the course they
+ * want to teach from, organized under unit/topic dropdowns — not hand-picked
+ * spec points (T-TEACHME-001's wizard shape, retired with the teach-me route).
+ *
+ * The dropdowns walk the SAME canonical spec tree every notes surface uses
+ * (never a second taxonomy): the unit select lists the tree's TOPICs, the
+ * topic select the chosen unit's SUBTOPICs, and the list under them holds the
+ * notes anchored there (components/hub/teach-me/picker-data.ts
+ * buildTeachGenieNoteTree). The picked note's canon specPointCodes ARE the
+ * session's ground truth — they are sent verbatim as the create request's
+ * specPointIds, and the API's G1–G4 gates stay the fail-closed law of what is
+ * actually servable (create() still refuses honestly when the serving corpus
+ * cannot ground the note). The search box keeps the "describe your own"
+ * spirit: typing filters notes by title/unit/topic text.
  */
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { Check, ChevronDown, Search, X } from "lucide-react";
 import type { TeachDifficulty, TeachSessionLength } from "@syllabai/contracts";
-import type { TeachMePickerTopic } from "@/components/hub/teach-me/picker-data";
-import { TEACH_ME_MAX_SPEC_POINTS } from "@/components/hub/teach-me/picker-data";
+import type { TeachGeniePickerNote, TeachGeniePickerNoteTopic } from "@/components/hub/teach-me/picker-data";
 
 export interface TeachGeniePickerProps {
-  topics: TeachMePickerTopic[];
+  noteTree: TeachGeniePickerNoteTopic[];
   courseLabel: string;
   busy: boolean;
   onStart: (body: {
@@ -40,21 +46,51 @@ const LENGTHS: Array<{ value: TeachSessionLength; label: string; hint: string }>
   { value: "in_depth", label: "In-Depth", hint: "6 objectives · up to 8 messages" },
 ];
 
-export function TeachGeniePicker({ topics, courseLabel, busy, onStart, onBack }: TeachGeniePickerProps) {
-  const [picked, setPicked] = useState<string[]>([]);
+export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack }: TeachGeniePickerProps) {
+  const [unitCode, setUnitCode] = useState<string>(noteTree[0]?.code ?? "");
+  const [topicCode, setTopicCode] = useState<string>(noteTree[0]?.subtopics[0]?.code ?? "");
+  const [picked, setPicked] = useState<TeachGeniePickerNote | null>(null);
   const [query, setQuery] = useState("");
   const [difficulty, setDifficulty] = useState<TeachDifficulty>("medium");
   const [length, setLength] = useState<TeachSessionLength>("quick");
-  const [openTopic, setOpenTopic] = useState<string | null>(topics[0]?.code ?? null);
-  const searchRef = useRef<HTMLInputElement>(null);
 
-  const filtered = useMemo(() => filterTree(topics, query), [topics, query]);
+  const unit = noteTree.find((t) => t.code === unitCode) ?? null;
+  const topic = unit?.subtopics.find((s) => s.code === topicCode) ?? unit?.subtopics[0] ?? null;
+  const searching = query.trim().length > 0;
 
-  const toggle = (code: string) => {
-    setPicked((prev) =>
-      prev.includes(code) ? prev.filter((c) => c !== code) : prev.length >= TEACH_ME_MAX_SPEC_POINTS ? prev : [...prev, code],
-    );
+  const searchHits = useMemo(() => {
+    if (!searching) return [];
+    const q = query.trim().toLowerCase();
+    const words = q.split(/\s+/).filter((w) => w.length > 2);
+    const hit = (text: string) => {
+      const t = text.toLowerCase();
+      return t.includes(q) || (words.length > 0 && words.every((w) => t.includes(w)));
+    };
+    const out: Array<{ note: TeachGeniePickerNote; unitTitle: string; topicTitle: string }> = [];
+    for (const t of noteTree) {
+      for (const s of t.subtopics) {
+        for (const n of s.notes) {
+          if (hit(n.title) || hit(s.title) || hit(t.title)) {
+            out.push({ note: n, unitTitle: t.title, topicTitle: s.title });
+          }
+        }
+      }
+    }
+    return out;
+  }, [noteTree, query, searching]);
+
+  const visibleNotes = searching ? searchHits.map((h) => h.note) : (topic?.notes ?? []);
+
+  const pickUnit = (code: string) => {
+    setUnitCode(code);
+    const next = noteTree.find((t) => t.code === code);
+    setTopicCode(next?.subtopics[0]?.code ?? "");
   };
+
+  const codesCaption = (n: TeachGeniePickerNote): string =>
+    n.specPointCodes.length === 1
+      ? `Covers ${n.specPointCodes[0]}`
+      : `Covers ${n.specPointCodes.length} spec points — ${n.specPointCodes.join(" · ")}`;
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 sm:px-6">
@@ -68,38 +104,26 @@ export function TeachGeniePicker({ topics, courseLabel, busy, onStart, onBack }:
 
       <h2 className="tg-title mt-3 text-balance text-3xl tracking-tight text-foreground">New session</h2>
       <p className="mt-2 text-sm text-muted-foreground">
-        Pick up to three from your spec, or describe your own — Baby Genie will muddle his way through whatever you
-        teach him.
+        Pick the revision note you&apos;ll teach {courseLabel} from — Baby Genie will muddle his way through whatever&apos;s in
+        it.
       </p>
 
-      {/* picked chips */}
+      {/* picked note chip */}
       <div className="mt-5 flex min-h-9 flex-wrap items-center gap-2" aria-live="polite">
-        {picked.length === 0 ? (
-          <span className="text-xs text-muted-foreground">
-            {picked.length}/{TEACH_ME_MAX_SPEC_POINTS} picked
+        {picked ? (
+          <span className="inline-flex max-w-full items-center gap-1 rounded-full bg-[#cefbff] px-3 py-1 text-xs font-medium text-[#1a6fb8] dark:bg-[#002e5f] dark:text-[#46cbe3]">
+            <span className="truncate">{picked.title}</span>
+            <button
+              type="button"
+              aria-label={`Remove ${picked.title}`}
+              onClick={() => setPicked(null)}
+              className="cursor-pointer rounded-full p-0.5 hover:bg-black/10 dark:hover:bg-white/10"
+            >
+              <X className="size-3" aria-hidden />
+            </button>
           </span>
         ) : (
-          <>
-            <span className="text-xs text-muted-foreground">
-              {picked.length}/{TEACH_ME_MAX_SPEC_POINTS}:
-            </span>
-            {picked.map((code) => (
-              <span
-                key={code}
-                className="inline-flex items-center gap-1 rounded-full bg-[#cefbff] px-3 py-1 text-xs font-medium text-[#1a6fb8] dark:bg-[#002e5f] dark:text-[#46cbe3]"
-              >
-                {code}
-                <button
-                  type="button"
-                  aria-label={`Remove ${code}`}
-                  onClick={() => toggle(code)}
-                  className="cursor-pointer rounded-full p-0.5 hover:bg-black/10 dark:hover:bg-white/10"
-                >
-                  <X className="size-3" aria-hidden />
-                </button>
-              </span>
-            ))}
-          </>
+          <span className="text-xs text-muted-foreground">No note picked yet</span>
         )}
       </div>
 
@@ -107,22 +131,18 @@ export function TeachGeniePicker({ topics, courseLabel, busy, onStart, onBack }:
       <div className="mt-3 flex items-center gap-2 rounded-2xl bg-muted px-3 py-2 focus-within:ring-2 focus-within:ring-[#1cb0f6]/40">
         <Search className="size-4 shrink-0 text-muted-foreground" aria-hidden />
         <input
-          ref={searchRef}
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder={`Search ${courseLabel} spec, or describe what you want to teach…`}
-          aria-label="Search the spec or describe your own topic"
+          placeholder="Search notes, or describe what you want to teach…"
+          aria-label="Search the course's revision notes"
           className="w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
         />
-        {query && (
+        {searching && (
           <button
             type="button"
             aria-label="Clear search"
-            onClick={() => {
-              setQuery("");
-              searchRef.current?.focus();
-            }}
+            onClick={() => setQuery("")}
             className="cursor-pointer rounded-full p-1 text-muted-foreground hover:bg-background hover:text-foreground"
           >
             <X className="size-3.5" aria-hidden />
@@ -130,65 +150,81 @@ export function TeachGeniePicker({ topics, courseLabel, busy, onStart, onBack }:
         )}
       </div>
 
-      {/* the tree */}
-      <div className="mt-3 max-h-80 overflow-y-auto rounded-xl border-2 border-border" role="list" aria-label="Spec topics">
-        {filtered.length === 0 ? (
+      {/* unit / topic dropdowns */}
+      {!searching && (
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          <label className="block">
+            <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-muted-foreground">Unit</span>
+            <select
+              value={unitCode}
+              onChange={(e) => pickUnit(e.target.value)}
+              aria-label="Choose a unit"
+              className="w-full cursor-pointer appearance-none rounded-xl bg-muted px-3 py-2.5 text-sm font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-[#1cb0f6]/40"
+            >
+              {noteTree.map((t) => (
+                <option key={t.code} value={t.code}>
+                  {t.number}. {t.title}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="block">
+            <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-muted-foreground">Topic</span>
+            <select
+              value={topic?.code ?? ""}
+              onChange={(e) => setTopicCode(e.target.value)}
+              aria-label="Choose a topic"
+              className="w-full cursor-pointer appearance-none rounded-xl bg-muted px-3 py-2.5 text-sm font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-[#1cb0f6]/40"
+            >
+              {(unit?.subtopics ?? []).map((s) => (
+                <option key={s.code} value={s.code}>
+                  {s.label === "·" ? s.title : `${s.label} · ${s.title}`}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+      )}
+
+      {/* the notes under the selection (or the search hits) */}
+      <div className="mt-3 max-h-80 overflow-y-auto rounded-xl border-2 border-border" role="radiogroup" aria-label="Revision notes">
+        {visibleNotes.length === 0 ? (
           <p className="px-4 py-8 text-center text-sm text-muted-foreground">
-            Nothing in your spec matches that yet — try a shorter phrase, or a key word from the statement.
+            {searching
+              ? "No revision note matches that yet — try a shorter phrase, or a key word from the note's title."
+              : "No revision notes live under this topic yet — pick another topic, or search for one."}
           </p>
         ) : (
-          filtered.map((topic) => {
-            const open = openTopic === topic.code;
+          visibleNotes.map((n) => {
+            const isPicked = picked?.noteId === n.noteId;
+            const hit = searching ? searchHits.find((h) => h.note.noteId === n.noteId) : undefined;
             return (
-              <div key={topic.code} className="border-b border-border last:border-b-0">
+              <div key={n.noteId} className="border-b border-border last:border-b-0">
                 <button
                   type="button"
-                  onClick={() => setOpenTopic(open ? null : topic.code)}
-                  aria-expanded={open}
-                  className="flex w-full cursor-pointer items-center justify-between gap-2 px-4 py-3 text-left transition-colors hover:bg-muted"
+                  role="radio"
+                  aria-checked={isPicked}
+                  onClick={() => setPicked(isPicked ? null : n)}
+                  className={`flex w-full cursor-pointer items-start gap-2.5 px-4 py-3 text-left text-sm transition-colors ${
+                    isPicked ? "bg-[#cefbff]/60 dark:bg-[#002e5f]/50" : "hover:bg-muted"
+                  }`}
                 >
+                  <span
+                    className={`mt-0.5 grid size-4 shrink-0 place-items-center rounded-full border-2 ${
+                      isPicked ? "border-[#1cb0f6] bg-[#1cb0f6] text-white" : "border-border bg-transparent"
+                    }`}
+                    aria-hidden
+                  >
+                    {isPicked && <Check className="size-2.5" strokeWidth={3.5} />}
+                  </span>
                   <span className="min-w-0">
-                    <span className="text-xs font-medium text-muted-foreground">
-                      {topic.number}. {topic.title}
+                    <span className="block leading-snug text-foreground">{n.title}</span>
+                    <span className="mt-0.5 block text-[11px] leading-snug text-muted-foreground">
+                      {hit ? `${hit.unitTitle} · ${hit.topicTitle} — ` : ""}
+                      <span className="font-mono">{codesCaption(n)}</span>
                     </span>
                   </span>
-                  <ChevronDown className={`size-4 shrink-0 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`} aria-hidden />
                 </button>
-                {open && (
-                  <ul className="px-2 pb-2">
-                    {topic.subtopics.map((sub) =>
-                      sub.points.map((pt) => {
-                        const isPicked = picked.includes(pt.code);
-                        return (
-                          <li key={pt.code}>
-                            <button
-                              type="button"
-                              onClick={() => toggle(pt.code)}
-                              aria-pressed={isPicked}
-                              disabled={!isPicked && picked.length >= TEACH_ME_MAX_SPEC_POINTS}
-                              className={`flex w-full cursor-pointer items-start gap-2.5 rounded-lg px-3 py-2 text-left text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
-                                isPicked ? "bg-[#cefbff]/60 dark:bg-[#002e5f]/50" : "hover:bg-muted"
-                              }`}
-                            >
-                              <span
-                                className={`mt-0.5 grid size-4 shrink-0 place-items-center rounded-full border-2 ${
-                                  isPicked ? "border-[#1cb0f6] bg-[#1cb0f6] text-white" : "border-border bg-transparent"
-                                }`}
-                                aria-hidden
-                              >
-                                {isPicked && <Check className="size-2.5" strokeWidth={3.5} />}
-                              </span>
-                              <span className="min-w-0">
-                                <span className="font-mono text-[10px] text-muted-foreground">{pt.code}</span>
-                                <span className="block leading-snug text-foreground">{pt.title}</span>
-                              </span>
-                            </button>
-                          </li>
-                        );
-                      }),
-                    )}
-                  </ul>
-                )}
               </div>
             );
           })
@@ -214,8 +250,11 @@ export function TeachGeniePicker({ topics, courseLabel, busy, onStart, onBack }:
       <div className="mt-7 flex flex-col items-center gap-3">
         <button
           type="button"
-          disabled={picked.length === 0 || busy}
-          onClick={() => onStart({ specPointIds: picked, difficulty, length, mode: "chat" })}
+          disabled={!picked || busy}
+          onClick={() =>
+            picked &&
+            onStart({ specPointIds: picked.specPointCodes, difficulty, length, mode: "chat" })
+          }
           className="inline-flex w-full max-w-xs cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-full border-2 border-transparent bg-[#1cb0f6] px-4 py-2.5 font-medium text-white transition-all hover:bg-[#1cb0f6]/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground disabled:cursor-not-allowed disabled:opacity-50 dark:bg-[#46cbe3] dark:text-[#191919]"
         >
           {busy ? "Waking Baby Genie…" : "Start session"}
@@ -262,30 +301,4 @@ function Segmented({
       <p className="mt-1.5 text-xs text-muted-foreground">{active?.hint}</p>
     </fieldset>
   );
-}
-
-/** Live "describe your own" filter: match topic titles and spec statements. */
-function filterTree(topics: TeachMePickerTopic[], query: string): TeachMePickerTopic[] {
-  const q = query.trim().toLowerCase();
-  if (!q) return topics;
-  const words = q.split(/\s+/).filter((w) => w.length > 2);
-  const hit = (text: string) => {
-    const t = text.toLowerCase();
-    return t.includes(q) || (words.length > 0 && words.every((w) => t.includes(w)));
-  };
-  return topics
-    .map((topic) => {
-      const subtopics = topic.subtopics
-        .map((sub) => ({
-          ...sub,
-          points: sub.points.filter((pt) => hit(pt.title) || hit(sub.title) || hit(topic.title)),
-        }))
-        .filter((sub) => sub.points.length > 0);
-      if (subtopics.length === 0 && hit(topic.title)) {
-        // topic-level hit: keep the whole topic
-        return topic;
-      }
-      return subtopics.length > 0 ? { ...topic, subtopics } : null;
-    })
-    .filter((t): t is TeachMePickerTopic => t !== null);
 }

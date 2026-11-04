@@ -28,7 +28,7 @@ import type {
   VerdictChip,
 } from "@syllabai/contracts";
 import { classifyTeachMeFailure, type TeachMeFailure } from "@/components/hub/teach-me/errors";
-import type { TeachMePickerTopic } from "@/components/hub/teach-me/picker-data";
+import type { TeachGeniePickerNoteTopic } from "@/components/hub/teach-me/picker-data";
 import { TeachGenieLanding, type TeachGeniePreviewRow } from "./landing";
 import { TeachGeniePicker } from "./picker";
 import { TeachGenieSession, type TeachGenieTranscriptRow } from "./session-screen";
@@ -43,7 +43,8 @@ type View =
 export interface TeachGenieClientProps {
   course: string;
   courseLabel: string;
-  topics: TeachMePickerTopic[];
+  /** T-TEACHGENIE-002: the course's revision notes under unit/topic dropdowns. */
+  noteTree: TeachGeniePickerNoteTopic[];
 }
 
 function openingRow(session: TeachSession, opening: PupilMessage): TeachGenieTranscriptRow {
@@ -56,7 +57,7 @@ function openingRow(session: TeachSession, opening: PupilMessage): TeachGenieTra
   };
 }
 
-export function TeachGenieClient({ course, courseLabel, topics }: TeachGenieClientProps) {
+export function TeachGenieClient({ course, courseLabel, noteTree }: TeachGenieClientProps) {
   const [view, setView] = useState<View>({ name: "landing" });
   const [session, setSession] = useState<TeachSession | null>(null);
   const [transcript, setTranscript] = useState<TeachGenieTranscriptRow[]>([]);
@@ -288,7 +289,7 @@ export function TeachGenieClient({ course, courseLabel, topics }: TeachGenieClie
 
       {view.name === "picker" && (
         <div className="py-4">
-          <TeachGeniePicker topics={topics} courseLabel={courseLabel} busy={busy} onStart={start} onBack={backToLanding} />
+          <TeachGeniePicker noteTree={noteTree} courseLabel={courseLabel} busy={busy} onStart={start} onBack={backToLanding} />
         </div>
       )}
 

@@ -174,8 +174,8 @@ export function TeachGenieLanding({
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
                 <Step
                   badge="1"
-                  title="Pick your topics"
-                  body="Pick up to three from your spec, or search to describe your own."
+                  title="Pick a revision note"
+                  body="Choose the note you want to teach from, under unit and topic dropdowns — or search for it."
                 />
                 <Step
                   badge="2"
