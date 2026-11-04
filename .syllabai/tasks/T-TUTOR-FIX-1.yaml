@@ -1,0 +1,27 @@
+version: 1
+task:
+  id: T-TUTOR-FIX-1
+  title: "Tutor fix band — the paper-walkthrough empty-generation death (issue #706): the frozen 900 completion budget was calibrated for the retired non-reasoning groq default; the chain of record serves openai/gpt-oss-120b whose reasoning tokens count against the cap, so the walkthrough-class ask exhausts the budget in the reasoning channel, streams ZERO content deltas, and dies on the L2 empty-generation law as the fixed wire error. Fix: the reasoning-model-calibrated default (TUTOR_COMPLETION_BUDGET_DEFAULT=4000) + the frozen syllabai.tutor.max-tokens knob actually wired at the composition root (SYLLABAI_TUTOR_MAX_TOKENS, blank/invalid/<=0 resolve to the default)."
+  owner: "operator-direct (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5) — claimed under the operator chat order 'Proceed with fixing' (trace 1a1a50c9524a9c05); the fix the #706 filer asked to be 'filed under the tutor lane'"
+  status: RUN-001 # branch t-tutor-fix1/run-001; live re-verification is the T-TUTOR-EXP-2 battery re-run scenario 9 (operator-gated, per the issue's own next step)
+  claimed_at: "2026-11-04"
+  priority: P1
+  wave: tutor-bugfix
+  deps: [T-MIG-060, T-MIG-090]
+  endpoints:
+  - POST /api/v1/tutor/ask/stream
+  - POST /api/v1/tutor/ask
+  service_status: keyed of record (groq/openai/gpt-oss-120b + gemini + openrouter failover); this lane never calls a provider (TEST doctrine, recording fakes only)
+  scope:
+    allowed:
+    - apps/api/src/services/tutor/karag.ts (the budget constant + the generator default only)
+    - apps/api/src/services/tutor/index.ts (the constant re-export only)
+    - apps/api/src/routes/tutor.ts (the env projection + the generator construction site only)
+    - apps/api/test/tutor/completion-budget.test.ts (NEW)
+    - .syllabai/tasks/T-TUTOR-FIX-1.yaml; .syllabai/receipts/T-TUTOR-FIX-1/**; .syllabai/worklog.md (append-only)
+    forbidden:
+    - the L2 empty-generation law (karagAskStream) — UNCHANGED, it is correct
+    - the chain stream law (FailoverLlmChain.stream, the empty-complete-is-clean frozen law) — UNCHANGED
+    - the adapters/bridges/bands (llmchain family) — UNCHANGED
+    - the prompt family, session store, resolver, pin, quiz scaffold, mark context — UNCHANGED
+    - any golden capture edit; any env write against prod; self-merge
