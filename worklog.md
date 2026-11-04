@@ -1273,3 +1273,15 @@ Work Log:
 Stage Summary:
 - T-BRAND-FAVICON-201 run-003: browser tab now shows the same atom-on-brand-blue glyph users see in the app header. The "S" mark and candidates B/C return to the T-BRAND-LOGO-201 park together with the wordmark decision.
 
+
+---
+Task ID: T-DEMO-SHOWCASE-1 (run-001)
+Agent: Z.ai main agent (zai-web session web-c414c074, chat 08b3170a, trace 1a1a826ecb54969d)
+Task: Operator order — temporary showcase: "temporarily allow people to be able to view the student and teacher dashboards without logging in … perpetually logged in … a new enhanced temporary landing page … Make sure other agents know about this, and nothing should hamper their work." Demo accounts provided by the operator (student hussaina269a / teacher hussaina269b, roles STUDENT/TEACHER live-verified on the v2 API).
+Stage Summary:
+- ADDITIVE demo layer, zero shared-code edits beyond a 3-line graft in app/page.tsx (flag-gated early return): lib/demo/showcase.ts (server-only flag + the two demo accounts, env-var upgrade path documented in-file), app/api/demo/login/route.ts (server-side mint of the demo session through the NORMAL /api/v1/auth/login path — credentials never reach the browser; role allow-list; authenticated email must equal the requested account; no-store), components/demo/showcase-landing.tsx (the showcase landing: two role cards, the exact login-client dance setSession → announceSessionChange → AWAITED mirrorRoutingSession → route push), app/demo/page.tsx (re-entry + role switcher, deliberately outside the proxy matcher so a signed-in session stays reachable; flag-off renders a signed-out notice).
+- Landing surfaces: `/` (anonymous visitors; the proxy still bounces a signed-in session to the role home — by design, that IS "perpetually logged in") and `/demo` (always reachable, both roles re-mintable per click).
+- NOT touched: proxy.ts, route-gate.ts, session.ts, identity.ts, api.ts, login flow, RBAC. Flag SHOWCASE_DEMO_ENABLED=false kills the whole showcase with no other behavior change (removal instructions in the module header).
+- Ops change of record (operator-authorized via the same order's "perpetually logged in"): SYLLABAI_JWT_TTL=P30D applied to the v2 API carrier env (default was PT2H — a 2h token dies mid-showcase; 30d matches the hub routing cookie's existing SESSION_TTL_SECONDS=30d posture) + API carrier redeploy. Reversible by removing the env var and redeploying.
+- Gates: tsc 0 errors; eslint clean on all 5 touched files; bun test apps/hub = 1132 pass / 15 fail / 2 errors with the failure set BYTE-IDENTICAL to pristine origin/main (cb0ae9df) same-scope run (26-line fail list diffed empty — all pre-existing environment-class/known reds).
+- OTHER AGENTS: the showcase is flag-off-able in one line; the demo accounts are showcase-only; the landing owns `/` visually but changes no route contract, matcher, gate law or test assertion. Nothing else in the repo needs awareness beyond this filing (receipt .syllabai/receipts/T-DEMO-SHOWCASE-1/run-001.md, task .syllabai/tasks/T-DEMO-SHOWCASE-1.yaml).
