@@ -2114,6 +2114,28 @@
    ],
    "provenanceTier": "RULE_DERIVED",
    "order": 163
+  },
+  {
+   "code": "cie-igcse-english-language-2024-2026-TP1",
+   "family": "TOPIC",
+   "title": "Paper 1: Reading",
+   "description": null,
+   "parents": [
+    "cie-igcse-english-language-20"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 15
+  },
+  {
+   "code": "cie-igcse-english-language-2024-2026-TP2",
+   "family": "TOPIC",
+   "title": "Paper 2: Writing",
+   "description": null,
+   "parents": [
+    "cie-igcse-english-language-20"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 16
   }
  ],
  "edges": [
@@ -3261,6 +3283,18 @@
    "source": "cie-igcse-english-language-2024-2026-TS14:SUB_",
    "relation": "PART_OF",
    "target": "S14.001",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-igcse-english-language-20",
+   "relation": "PART_OF",
+   "target": "cie-igcse-english-language-2024-2026-TP1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-igcse-english-language-20",
+   "relation": "PART_OF",
+   "target": "cie-igcse-english-language-2024-2026-TP2",
    "provenanceTier": "RULE_DERIVED"
   }
  ]

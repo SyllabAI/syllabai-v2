@@ -1,0 +1,494 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_sqCx39VrBpV7b3xJ",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "69ced37f1b6e1c7f18d358f8c584a7adbc611edbc8c7a1f5978c561a5d919b03",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "packageId": "igcse-physics::rn_sqCx39VrBpV7b3xJ",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L1::Q1",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L1",
+      "stem": "Which statement is the law of magnetism?",
+      "misconceptionClass": "law recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "opposite poles attract; like poles repel",
+          "correct": true,
+          "explanation": "This is the interaction rule between two magnetic poles.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "all poles attract each other",
+          "correct": false,
+          "explanation": "Like poles push apart — attraction is only half the story.",
+          "misconception": "overgeneralised attraction"
+        },
+        {
+          "key": "C",
+          "text": "all poles repel each other",
+          "correct": false,
+          "explanation": "Opposite poles pull together, so total repulsion is wrong.",
+          "misconception": "overgeneralised repulsion"
+        },
+        {
+          "key": "D",
+          "text": "poles only interact through contact",
+          "correct": false,
+          "explanation": "Magnetic forces act at a distance through the field.",
+          "misconception": "contact requirement"
+        }
+      ]
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L1::Q2",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L1",
+      "stem": "Where is the magnetic force of a bar magnet strongest?",
+      "misconceptionClass": "pole property",
+      "options": [
+        {
+          "key": "A",
+          "text": "only inside the material",
+          "correct": false,
+          "explanation": "The external pull is strongest just outside each pole.",
+          "misconception": "interior focus"
+        },
+        {
+          "key": "B",
+          "text": "at the poles",
+          "correct": true,
+          "explanation": "Field lines bunch most densely at the ends.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "at the middle of the bar",
+          "correct": false,
+          "explanation": "The middle is the weakest region of a bar magnet.",
+          "misconception": "position swap"
+        },
+        {
+          "key": "D",
+          "text": "equally everywhere along the bar",
+          "correct": false,
+          "explanation": "Strength varies sharply from poles to middle.",
+          "misconception": "uniformity claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L1::Q3",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L1",
+      "stem": "A suspended bar is brought near a magnet and is attracted to BOTH poles in turn. What can be concluded?",
+      "misconceptionClass": "test reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the bar must be a magnet with two north poles",
+          "correct": false,
+          "explanation": "Like poles would repel, not attract.",
+          "misconception": "law violation"
+        },
+        {
+          "key": "B",
+          "text": "the test proves nothing at all",
+          "correct": false,
+          "explanation": "It rules the bar magnetic — just not necessarily a magnet.",
+          "misconception": "overstatement"
+        },
+        {
+          "key": "C",
+          "text": "the bar is a magnetic substance but not necessarily a magnet",
+          "correct": true,
+          "explanation": "Either pole attracts unmagnetised magnetic material, so attraction alone is inconclusive.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the bar must be a magnet with two south poles",
+          "correct": false,
+          "explanation": "No magnet has two like poles; attraction to both points to induced magnetism.",
+          "misconception": "impossible object"
+        }
+      ]
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L1::Q4",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L1",
+      "stem": "Which observation would PROVE that an object is a magnet?",
+      "misconceptionClass": "certain test",
+      "options": [
+        {
+          "key": "A",
+          "text": "it is attracted to a known magnet",
+          "correct": false,
+          "explanation": "Magnetic substances are attracted too — attraction is ambiguous.",
+          "misconception": "attraction fallacy"
+        },
+        {
+          "key": "B",
+          "text": "it is made of iron",
+          "correct": false,
+          "explanation": "Iron objects need not be magnetised.",
+          "misconception": "material confusion"
+        },
+        {
+          "key": "C",
+          "text": "it sticks to a wall",
+          "correct": false,
+          "explanation": "Sticking depends on the wall, not on magnetism alone.",
+          "misconception": "irrelevant evidence"
+        },
+        {
+          "key": "D",
+          "text": "it repels the north pole of a known magnet",
+          "correct": true,
+          "explanation": "Only another magnet can repel a pole, so repulsion is conclusive.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L1::Q5",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L1",
+      "stem": "Two bar magnets are placed with their south poles facing. What happens?",
+      "misconceptionClass": "pole interaction",
+      "options": [
+        {
+          "key": "A",
+          "text": "they repel each other",
+          "correct": true,
+          "explanation": "Like poles repel under the law of magnetism.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "they attract each other",
+          "correct": false,
+          "explanation": "Attraction needs opposite poles facing.",
+          "misconception": "law inversion"
+        },
+        {
+          "key": "C",
+          "text": "nothing, because the poles are the same",
+          "correct": false,
+          "explanation": "Matching poles interact most strongly — by repelling.",
+          "misconception": "no-interaction claim"
+        },
+        {
+          "key": "D",
+          "text": "the magnets lose their magnetism",
+          "correct": false,
+          "explanation": "Bring poles together does not demagnetise them here.",
+          "misconception": "property invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L1::Q6",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L1",
+      "stem": "State the law of magnetism.",
+      "misconceptionClass": "law recall",
+      "kind": "recall",
+      "modelAnswer": "Opposite poles attract each other and like poles repel each other.",
+      "keywords": [
+        "opposite",
+        "poles",
+        "attract",
+        "repel"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L1::Q7",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L1",
+      "stem": "State the only interaction that proves an object is a magnet.",
+      "misconceptionClass": "test recall",
+      "kind": "recall",
+      "modelAnswer": "Repulsion by a known magnet, because magnetic substances are only ever attracted.",
+      "keywords": [
+        "repulsion",
+        "known",
+        "magnet",
+        "attracted"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L1::Q8",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L1",
+      "stem": "Explain why attraction to a magnet is not a certain test for magnetism.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A magnet attracts both opposite poles and unmagnetised magnetic substances, so an attracted object could simply be iron or steel that has had magnetism induced in it. Repulsion, by contrast, can only come from a second magnet with its like pole facing, so only repulsion separates a magnet from an ordinary magnetic material.",
+      "keywords": [
+        "attracts",
+        "substances",
+        "induced",
+        "repulsion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L1::Q9",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L1",
+      "stem": "Two labelled bars, X and Y, hang freely. When the north pole of a strong magnet is brought near X's end, X swings away; near Y's end it swings in. Identify what each bar is.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "X repels the north pole, so X must itself be a magnet with a north pole facing out. Y is attracted, so Y is a magnetic material — or a magnet with a south pole out — but the attraction alone does not decide which.",
+      "keywords": [
+        "repels",
+        "magnet",
+        "attracted",
+        "magnetic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L2::Q1",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L2",
+      "stem": "Which list contains only magnetic substances?",
+      "misconceptionClass": "material recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "nickel, plastic, iron, glass",
+          "correct": false,
+          "explanation": "Plastic and glass are non-magnetic materials.",
+          "misconception": "category slip"
+        },
+        {
+          "key": "B",
+          "text": "iron, steel, cobalt, nickel",
+          "correct": true,
+          "explanation": "These are the magnetic metals of the course.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "copper, iron, nickel, zinc",
+          "correct": false,
+          "explanation": "Copper and zinc are not magnetic substances.",
+          "misconception": "metal conflation"
+        },
+        {
+          "key": "D",
+          "text": "steel, aluminium, cobalt, tin",
+          "correct": false,
+          "explanation": "Aluminium and tin are non-magnetic.",
+          "misconception": "metal conflation"
+        }
+      ]
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L2::Q2",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L2",
+      "stem": "Which material is used for a permanent magnet?",
+      "misconceptionClass": "hard/soft",
+      "options": [
+        {
+          "key": "A",
+          "text": "copper wire",
+          "correct": false,
+          "explanation": "Copper is not a magnetic substance.",
+          "misconception": "non-magnetic choice"
+        },
+        {
+          "key": "B",
+          "text": "aluminium alloy",
+          "correct": false,
+          "explanation": "Aluminium does not hold induced magnetism.",
+          "misconception": "non-magnetic choice"
+        },
+        {
+          "key": "C",
+          "text": "magnetically hard steel",
+          "correct": true,
+          "explanation": "Hard materials retain magnetisation, which is what permanence requires.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "magnetically soft pure iron",
+          "correct": false,
+          "explanation": "Soft iron demagnetises easily — the temporary choice.",
+          "misconception": "hard/soft swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L2::Q3",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L2",
+      "stem": "Why is soft iron chosen as the core of an electromagnet?",
+      "misconceptionClass": "design reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it keeps its magnetism permanently, strengthening the electromagnet",
+          "correct": false,
+          "explanation": "Permanent retention is the failure mode here, not the goal.",
+          "misconception": "retention inversion"
+        },
+        {
+          "key": "B",
+          "text": "soft iron conducts the electric current round the circuit",
+          "correct": false,
+          "explanation": "The coil, not the core, carries the current.",
+          "misconception": "function swap"
+        },
+        {
+          "key": "C",
+          "text": "soft iron is the cheapest metal available",
+          "correct": false,
+          "explanation": "The choice is magnetic behaviour, not price.",
+          "misconception": "cost reasoning"
+        },
+        {
+          "key": "D",
+          "text": "it magnetises and demagnetises readily, so the magnet switches with the current",
+          "correct": true,
+          "explanation": "Soft-iron magnetism follows the field on and off.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L2::Q4",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L2",
+      "stem": "A steel pin hangs near an electromagnet. When the current is switched on the pin swings towards it; when switched off it drops. What has happened to the pin?",
+      "misconceptionClass": "induction reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "magnetism was induced in it while the field was present",
+          "correct": true,
+          "explanation": "The field induces magnetism in the steel, attracting it; removal lets it drop.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the pin melted slightly and lost rigidity",
+          "correct": false,
+          "explanation": "No heating is involved in the switching behaviour.",
+          "misconception": "impossible cause"
+        },
+        {
+          "key": "C",
+          "text": "the current pushed the pin with an electric force",
+          "correct": false,
+          "explanation": "The pin is not part of the circuit; the pull is magnetic.",
+          "misconception": "force mislabel"
+        },
+        {
+          "key": "D",
+          "text": "the pin was already a permanent magnet",
+          "correct": false,
+          "explanation": "A permanent magnet would be attracted whether or not the current flowed.",
+          "misconception": "timing mismatch"
+        }
+      ]
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L2::Q5",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L2",
+      "stem": "Which statement about induced magnetism is correct?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "induction works on any metal",
+          "correct": false,
+          "explanation": "Only magnetic substances can be induced.",
+          "misconception": "scope slip"
+        },
+        {
+          "key": "B",
+          "text": "the induced material is always attracted to the inducing magnet",
+          "correct": true,
+          "explanation": "Induction always places an unlike pole nearest the magnet.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the induced material may repel the inducing magnet",
+          "correct": false,
+          "explanation": "Only two magnets can repel; induced poles attract.",
+          "misconception": "law violation"
+        },
+        {
+          "key": "D",
+          "text": "induction only works on already-magnetised objects",
+          "correct": false,
+          "explanation": "Induction magnetises unmagnetised magnetic materials.",
+          "misconception": "scope inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L2::Q6",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L2",
+      "stem": "Name the two classes of magnetic material according to how long they keep their magnetism.",
+      "misconceptionClass": "classification recall",
+      "kind": "recall",
+      "modelAnswer": "Magnetically hard materials, which keep their magnetism, and magnetically soft materials, which lose it easily.",
+      "keywords": [
+        "hard",
+        "soft",
+        "magnetism",
+        "lose"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L2::Q7",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L2",
+      "stem": "Give two magnetic elements used to make magnetic alloys.",
+      "misconceptionClass": "material recall",
+      "kind": "recall",
+      "modelAnswer": "Any two of iron, cobalt and nickel — for example iron and nickel.",
+      "keywords": [
+        "iron",
+        "cobalt",
+        "nickel"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L2::Q8",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L2",
+      "stem": "Explain why a paperclip chain can hang from a magnet, with each clip holding the next.",
+      "misconceptionClass": "chain reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The magnet induces magnetism in the first clip, giving it poles of its own; that induced clip then acts as the inducing magnet for the second clip, and so on down the chain. Each clip is attracted because its nearest induced pole is always unlike the pole above it, so the whole chain hangs together while the field is present.",
+      "keywords": [
+        "induces",
+        "poles",
+        "attracted",
+        "unlike"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sqCx39VrBpV7b3xJ::L2::Q9",
+      "moduleId": "rn_sqCx39VrBpV7b3xJ::L2",
+      "stem": "A scrapyard crane needs to pick up and release steel car bodies on demand. Choose the magnet design and justify it using hard and soft magnetic behaviour.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The crane uses an electromagnet: a coil around a soft iron core. The soft core magnetises strongly while current flows, grabbing the steel bodies, and demagnetises the instant the current stops, releasing them. A permanent hard-steel magnet could not let go of the load on command.",
+      "keywords": [
+        "electromagnet",
+        "soft",
+        "core",
+        "current"
+      ],
+      "options": []
+    }
+  ]
+}

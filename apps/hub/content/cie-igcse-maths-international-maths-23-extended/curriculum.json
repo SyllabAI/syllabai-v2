@@ -2873,6 +2873,17 @@
    "provenanceTier": "RULE_DERIVED",
    "order": 165,
    "tier": "Extended"
+  },
+  {
+   "code": "cie-igcse-maths-international-maths-2025-2027-TE-SME-INVESTIGATIONS-MODELLING",
+   "family": "TOPIC",
+   "title": "Investigations & Modelling (SME section)",
+   "description": null,
+   "parents": [
+    "cie-igcse-maths-international-maths-23-extended"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 11
   }
  ],
  "edges": [
@@ -4344,6 +4355,12 @@
    "source": "cie-igcse-maths-international-maths-2025-2027-TE10:SUBE10.8",
    "relation": "PART_OF",
    "target": "E10.8.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-igcse-maths-international-maths-23-extended",
+   "relation": "PART_OF",
+   "target": "cie-igcse-maths-international-maths-2025-2027-TE-SME-INVESTIGATIONS-MODELLING",
    "provenanceTier": "RULE_DERIVED"
   }
  ]

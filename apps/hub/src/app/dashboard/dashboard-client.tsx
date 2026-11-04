@@ -4,8 +4,10 @@
  * Dashboard — the student's SME-style home (Task 21 + 21-b fidelity pass,
  * matched against the real savemyexams.com /members/ reference page):
  *
- *   1. Greeting header ("Hi {name} 👋" — server-rendered from the routing
- *        session; B-2 made /dashboard an account surface)
+ *   1. Greeting header ("Welcome back 👋" — server-rendered from the
+ *        routing session; B-2 made /dashboard an account surface; the
+ *        neutral form — the session carries an account handle, not a
+ *        display name)
  *   2. My courses — one card per added subject:
  *        eyebrow "Edexcel · {level}" · subject name · Last viewed badge ·
  *        "Continue revising" · per-resource rows with corpus counts AND
@@ -51,7 +53,6 @@ import {
   CloudCheck,
   FileQuestion,
   GraduationCap,
-  Info,
   Plus,
   RotateCcw,
   SquareStack,
@@ -69,7 +70,7 @@ import { useLastOpened, resourceLabel } from "@/lib/last-opened";
 import { useCourseProgress } from "@/lib/progress";
 // UX audit 2026-10-02 #17: the dashboard's sub-1%-decimal formatting is now
 // the shared contract (progress-ring and strengths-panel had rounded to 0%)
-import { formatPercent } from "@/lib/format";
+import { formatPercent, percentLabel } from "@/lib/format";
 import { api, getToken } from "@/lib/api";
 import { railTodayCopy, useStudyPlan } from "@/lib/study-plan-client";
 import { boardOf, hasExamSeriesCalendar } from "@/lib/board";
@@ -207,11 +208,11 @@ function ResourceRow({
         {value}
         {percent !== undefined && (
           <span
-            className={`w-9 shrink-0 text-right text-xs font-semibold tabular-nums ${
+            className={`w-20 shrink-0 whitespace-nowrap text-right text-xs font-semibold tabular-nums ${
               percent > 0 ? "text-foreground" : "text-muted-foreground"
             }`}
           >
-            {formatPercent(percent)}
+            {percentLabel(percent)}
           </span>
         )}
         <ChevronRight
@@ -330,6 +331,7 @@ function SubjectCard({
               level={meta.level}
               board={boardOf(meta)}
               target={examTarget}
+              label={`${meta.subject} (${meta.code || "code pending"})`}
               compact
             />
           )}
@@ -343,22 +345,15 @@ function SubjectCard({
           <ChevronRight className="size-3.5" aria-hidden />
         </Link>
 
-        {/* per-resource rows: corpus counts + live progress % (SME parity).
+        {/* per-resource rows: corpus counts + live progress (SME parity).
             D-3: ONE number, one definition — these rows are this device's
-            activity against the course's corpus totals, said once on the
-            line above (hover the info icon for the fine print); the
+            activity against the course's corpus totals; the rule is stated
+            ONCE in the dashboard header sentence (UX review 2026-11-04:
+            the per-card "Progress on this device" label + tooltip repeated
+            the same provenance line five times down one page). The
             account-level trail lives at the My subjects section level. */}
         {counts && percents ? (
           <>
-            <p className="mt-1 flex items-center gap-1 border-t pt-2 text-[11px] font-medium text-muted-foreground">
-              Progress on this device
-              <span
-                className="cursor-help"
-                title="Notes read, questions attempted and flashcards rated on this device. Your account trail — the line under My subjects — follows you across devices."
-              >
-                <Info className="size-3" aria-hidden />
-              </span>
-            </p>
             <ul className="space-y-0.5 pt-0.5">
             <ResourceRow
               href={`${base}/revision-notes`}
@@ -412,11 +407,8 @@ function SubjectCard({
 
 export function DashboardClient({
   courses,
-  name,
 }: {
   courses: CourseMeta[];
-  /** the routing session's display name — server-rendered (B-2) */
-  name: string;
 }) {
   useMyCoursesSync(); // T-TEACH-001 — mirror the roster to core while signed in (write-through + reconcile)
   // T-TIER1: the last-opened + mock-results mirrors mount in the app shell
@@ -588,23 +580,20 @@ export function DashboardClient({
 
   return (
     <div className="space-y-8">
-      {/* greeting (SME: "Hi, {name} 👋") — the name rides the routing
-          session and renders on the server (B-2): no more "Hi there" frame
-          before localStorage hydrates */}
+      {/* greeting — the neutral form (UX review 2026-11-04): the routing
+          session carries only the account handle (initials + a code, e.g.
+          "HNA 269a"), not a display name, and "Hi HNA 269a" read as a
+          login chip where a greeting belongs. "Welcome back" is honest
+          for every session; the header's identity chip already shows the
+          handle. Renders on the server (B-2): no "Hi there" frame. */}
       <header className="space-y-1.5">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Hi {name} 👋
+          Welcome back 👋
         </h1>
         <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Welcome to your SyllabAI dashboard — your launchpad for stress-free, spec-anchored
-          study. Add the courses you are taking, then revise each one from notes, exam questions
-          and flashcards mapped to its syllabus.{" "}
-          {/* HUB-DASH-CORE P0-2 (operator trace 1a0ec29c8c8cfb71): the progress
-              sentence tells the account truth unconditionally — B-2 removed the
-              signed-out branch along with the demo itself, so the old
-              "saved on this device" posture no longer has an audience here. */}
-          Your measured progress follows your account across devices — self-marked answers and
-          reading history stay on this device.
+          Your launchpad for spec-anchored revision — notes, exam questions and flashcards
+          mapped to each of your courses. Your progress syncs to your account across
+          devices; self-marked answers and reading history stay on this device.
         </p>
       </header>
 
@@ -708,7 +697,7 @@ export function DashboardClient({
               {plural(accountStats.attempts, "attempt")} ·{" "}
               {plural(accountStats.distinctQuestions, "question")} ·{" "}
               {plural(accountStats.notesViewed, "note")} ·{" "}
-              {plural(accountStats.flashcardsRated, "card")} on your account
+              {plural(accountStats.flashcardsRated, "card")}
             </span>
           </p>
         )}
@@ -783,10 +772,11 @@ export function DashboardClient({
 
       {/* ---- DC-7 progress attribution (measured facts — the SAME projection
           the trees' rings read; never advice, never a local counter; renders
-          nothing signed out) ---- */}
-      <section aria-label="Today's progress">
-        <ProgressAttributionCard courses={mySubjects} />
-      </section>
+          nothing signed out). The labelled section + h2 live inside the
+          component and mount only when at least one course resolved — the
+          old bare wrapper shipped an empty labelled landmark (UX review
+          2026-11-04). ---- */}
+      <ProgressAttributionCard courses={mySubjects} />
 
       {/* ---- Next best actions (recommendation output — advice, not facts) ---- */}
       <section aria-label="Next best actions">

@@ -1,0 +1,215 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_xKZn9BFkpxpy6pBG",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "d3421b0c1523c70aa72f7832c77297841c3c57f45b57982e218080b1f812f9fb",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_xKZn9BFkpxpy6pBG",
+    "topicTitle": "6. Magnetism and Electromagnetism",
+    "subtopicTitle": "Magnetism and Electromagnetism",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/6-magnetism-and-electromagnetism/6-1-magnetism-and-electromagnetism/6-1-3-permanent-and-induced-magnets",
+    "specAnchors": [
+      {
+        "code": "6.5",
+        "text": "know that magnetism is induced in some materials when they are placed in a magnetic field"
+      }
+    ],
+    "primer": {
+      "text": "Permanent magnets keep their poles for decades; induced magnets borrow them for as long as the field lasts. This note sorts the magnetic family — iron, steel, cobalt, nickel — into hard keepers and soft losers, and shows why a magnet plus an unmagnetised material can only ever attract.",
+      "prerequisiteSubtopic": "Magnetism and Electromagnetism"
+    },
+    "modules": [
+      {
+        "id": "rn_xKZn9BFkpxpy6pBG::L1",
+        "title": "Magnetic materials and the permanent/induced split",
+        "sourceHeadings": [
+          "Permanent & induced magnets",
+          "Magnetic materials"
+        ],
+        "specRefs": [
+          "6.5"
+        ],
+        "opening": "Only a short list of substances — iron, steel, cobalt, nickel — respond to magnets at all. Permanent magnets hold their magnetism indefinitely; induced magnets are ordinary magnetic materials that gain poles only while sitting in a field, and always pull towards whatever induced them.",
+        "keyPoints": [
+          "Magnetic materials include iron, steel, cobalt, nickel and alloys containing them.",
+          "Non-magnetic materials such as copper, aluminium, plastic and glass are unaffected by magnetic fields.",
+          "A permanent magnet produces its own magnetic field continuously.",
+          "An induced magnet is a magnetic material that becomes magnetised only while in another magnet's field.",
+          "The force between a magnet and an induced magnet is always attraction."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A fridge magnet works forever — it is permanent. A paperclip only sticks while it is near the magnet — it is an induced magnet, gaining and losing its pull with the field.",
+            "analogy": "A permanent magnet is a lamp with its own battery; an induced magnet is a reflective panel that shines only while the lamp is on.",
+            "examPointer": "Use the phrase 'while placed in the magnetic field' for induced magnetism — the timing condition is the mark."
+          },
+          "medium": {
+            "restatement": "The distinction is persistence of domain alignment: permanent (hard) materials lock their aligned domains, sustaining a field with no external help; induced (soft) materials align only under the applied field and randomise when it leaves. Induction always yields attraction because the alignment places the unlike pole nearest the inducing pole.",
+            "analogy": "A permanent magnet is a marching band that keeps formation after the music stops; an induced magnet is the band that snaps into step only while the drum plays.",
+            "examPointer": "For the 'always attraction' claim, justify it geometrically: induced pole nearest the magnet is always unlike, and unlike poles attract."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_xKZn9BFkpxpy6pBG::L1::Q1",
+          "rn_xKZn9BFkpxpy6pBG::L1::Q2",
+          "rn_xKZn9BFkpxpy6pBG::L1::Q3",
+          "rn_xKZn9BFkpxpy6pBG::L1::Q4",
+          "rn_xKZn9BFkpxpy6pBG::L1::Q5",
+          "rn_xKZn9BFkpxpy6pBG::L1::Q6",
+          "rn_xKZn9BFkpxpy6pBG::L1::Q7",
+          "rn_xKZn9BFkpxpy6pBG::L1::Q8",
+          "rn_xKZn9BFkpxpy6pBG::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_xKZn9BFkpxpy6pBG::L2",
+        "title": "Permanent magnets at work, inducing and losing magnetism",
+        "sourceHeadings": [
+          "Permanent magnets",
+          "Induced magnets"
+        ],
+        "specRefs": [
+          "6.5"
+        ],
+        "opening": "Permanent magnets are engineered to forget nothing: hard steels keep their aligned domains for decades. Induced magnets do the opposite — poles appear the moment a field arrives, with the unlike pole always facing the source, and vanish the moment it leaves.",
+        "keyPoints": [
+          "Permanent magnets are made from magnetically hard materials such as steel.",
+          "A permanent magnet keeps its field without any external magnet nearby.",
+          "Induced magnetism appears only while the material sits in the magnetic field.",
+          "The induced pole nearest the inducing magnet is always unlike that pole.",
+          "Removing the field — or the magnet — lets an induced magnet lose its magnetism."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A steel fridge magnet never switches off. An iron tack held near it grows a south pole on the side facing the magnet's north pole — and loses it again when taken away.",
+            "analogy": "Permanent magnetism is a tattoo; induced magnetism is a stamp that fades as soon as the stamp is lifted.",
+            "examPointer": "Name the induced pole explicitly in diagram questions: near a north pole, the near face becomes south."
+          },
+          "medium": {
+            "restatement": "Induction is domain alignment under an external field: the nearest-face domains flip to present the unlike pole, minimising the system's field energy, which is why the resulting force is attraction. Hard materials resist realignment both ways — that is why they hold permanent magnetism but are slow to induce; soft materials flip freely in both directions.",
+            "analogy": "Soft material is a crowd that instantly faces whoever shouts; hard material is a crowd that turns slowly but then refuses to turn back.",
+            "examPointer": "Chain questions: each newly induced clip induces the next — say 'each clip acts as the inducing magnet for the next' for the evaluation mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_xKZn9BFkpxpy6pBG::L2::Q1",
+          "rn_xKZn9BFkpxpy6pBG::L2::Q2",
+          "rn_xKZn9BFkpxpy6pBG::L2::Q3",
+          "rn_xKZn9BFkpxpy6pBG::L2::Q4",
+          "rn_xKZn9BFkpxpy6pBG::L2::Q5",
+          "rn_xKZn9BFkpxpy6pBG::L2::Q6",
+          "rn_xKZn9BFkpxpy6pBG::L2::Q7",
+          "rn_xKZn9BFkpxpy6pBG::L2::Q8",
+          "rn_xKZn9BFkpxpy6pBG::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "permanent magnet",
+          "definition": "A magnet made of hard magnetic material that keeps its field without external help.",
+          "firstLesson": 1
+        },
+        {
+          "term": "magnetic material",
+          "definition": "A substance, such as iron, steel, cobalt or nickel, that a magnet can attract or induce.",
+          "firstLesson": 1
+        },
+        {
+          "term": "domain alignment",
+          "definition": "The lining-up of tiny magnetic regions inside a material that gives it net magnetism.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "The diagram shows a magnet held close to a piece of metal that is suspended by a light cotton thread. The piece of metal is attracted towards the magnet. Explain this observation, and state what it does and does not prove about the metal.",
+        "steps": [
+          "The magnet's field acts on the suspended metal, so magnetism is induced in it while the field is present.",
+          "Induction always places an unlike induced pole nearest the magnet, so the force between them is attraction.",
+          "The observation proves the metal is a magnetic substance; it does not prove the metal was already a magnet, because either pole of the magnet would attract it.",
+          "A certain test would be to check for repulsion with the magnet's pole — only a true magnet can repel."
+        ],
+        "finalAnswer": "The metal is attracted because magnetism is induced in it by the magnet's field; this shows it is a magnetic material but does not show it was magnetised beforehand."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/23cd3a8f0eb7-7-1-2-magnetic-materials.png",
+        "alt": "Magnetic Materials, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Magnetic materials",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Magnetic materials are attracted to a magnet; non-magnetic materials are not"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/2086733c4e71-7-1-2-magnetic-materials-attracted-to-magnet.png",
+        "alt": "Magnetic Materials Attracted to Magnet, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Magnetic materials",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Magnetic materials attracted to either pole of a magnet"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/af605cc66069-7-1-2-inducing-magnetism-in-a-magnetic-material.png",
+        "alt": "Inducing magnetism in a magnetic material, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Induced magnets",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Inducing magnetism in a magnetic material"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/fb0cff853241-7-1-2-we-magnet-question-image.png",
+        "alt": "WE Magnet question image, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Induced magnets",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

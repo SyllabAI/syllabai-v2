@@ -1,12 +1,14 @@
 # S0 output of record - c19-energetics (T-BOOK-012)
 # T-BOOK-070: b07 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 6 -> 7);
 # the S0 plan is binding — lint G1 checks planned == on-disk.
+# T-BOOK-074: b08 media-embed appended — Cognito full-coverage extension (ADR-BOOK-0006; planned_blocks 7 -> 8; trace 1a1a4e45ca4e2325).
+
 chapter: "c19"
 chapter_key: "u3:c19"
 title: "Energetics"
 status: published # S4 flip of record — T-BOOK-011/012 r0 (operator dispatch trace 1a15f60b53d4e0d5); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 7
+planned_blocks: 9
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p216 intro, p217 exo/endo sort, p218 energy-level figure, p219 sign callout, p226 mcq, p227 activity-4 stepper"
 blocks:
@@ -17,3 +19,5 @@ blocks:
   - {ord: 5, id: "c19-energetics/b05", type: mcq-embed, file: "blocks/b05-mcq-check.json", anchor: 226}
   - {ord: 6, id: "c19-energetics/b06", type: num-stepper, file: "blocks/b06-num-stepper-neutralisation-calc.json", anchor: 227}
   - {ord: 7, id: "c19-energetics/b07", type: media-embed, file: "blocks/b07-media-embed.json", anchor: 227}
+  - {ord: 8, id: "c19-energetics/b08", type: media-embed, file: "blocks/b08-media-embed.json", anchor: 227}
+  - {ord: 9, id: "c19-energetics/b09", type: media-embed, file: "blocks/b09-media-embed.json", anchor: 227}

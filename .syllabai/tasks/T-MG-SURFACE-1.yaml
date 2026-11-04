@@ -1,0 +1,22 @@
+version: 1
+task:
+  id: T-MG-SURFACE-1
+  title: "Rollout Lane A — discoverability: the region-marking surface arms only via ?paperId= deep-link; give covered papers a learner-facing 'Mark with AI' entry point on the past-papers surface (honest-null for uncovered papers)"
+  owner: "main agent (Z.ai)"
+  status: OPEN
+  priority: P1
+  band: T-MG-MARK-PARITY (interactive paper marking) — rollout tranche per docs/MG-MARK-ROLLOUT-PLAN.md
+  wave: mg-rollout-2026-11
+  deps: [T-MG-CROPMARK-1, T-MG-FEEDBACK-1]
+  plan_of_record: "docs/MG-MARK-ROLLOUT-PLAN.md §3 Lane A; engine plan docs/MG-MARK-PARITY-PLAN.md (unchanged)"
+  parent: T-MG-MARK-PARITY-1
+  acceptance_pins:
+    - "(discovery pin) a logged-in learner on a paper WITH mark_point_rects coverage reaches region marking in <=2 clicks from the past-papers surface; a logged-in learner on an UNCOVERED paper sees no dead affordance (honest-null — the same posture as the regions fetch's typed outcomes); a signed-out learner sees no entry (marking = login-constrained, the design law of record)."
+    - "(zero-touch pin) pdf-pane.tsx is UNTOUCHED (the monolith freeze law); arming stays in paper-viewer-client.tsx where InkLayer/RegionMarkLayer already mount; no api/db/contracts bytes."
+    - "(receipt pin) a screenshot receipt of the affordance on a covered paper + the honest-null on an uncovered paper (the parity-sweep pattern)."
+  non_goals:
+    - "no new api surface (coverage reads piggyback the regions fetch already made on arming, or a boolean the page already holds)"
+    - "no rect-coverage work (Lane B owns scale), no upload flow (Lane D), no mock-mode changes"
+  execution_record: >
+    Commissioned 2026-11-04 with docs/MG-MARK-ROLLOUT-PLAN.md (records push).
+    run-001 branches as t-mg-surface-1/run-001.

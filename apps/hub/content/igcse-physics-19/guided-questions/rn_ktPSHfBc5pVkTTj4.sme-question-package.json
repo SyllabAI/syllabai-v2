@@ -1,0 +1,493 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_ktPSHfBc5pVkTTj4",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "996587f7f91088116848f476478e4fc28470e90b545918d7fc25884b29a43800",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "packageId": "igcse-physics::rn_ktPSHfBc5pVkTTj4",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L1::Q1",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L1",
+      "stem": "What is a magnetic field line?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a line showing the direction of the force on a north pole",
+          "correct": true,
+          "explanation": "The field-line direction is defined by the north-pole force.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a line showing the path iron filings melt along",
+          "correct": false,
+          "explanation": "Filings align with the field; nothing melts.",
+          "misconception": "physical confusion"
+        },
+        {
+          "key": "C",
+          "text": "the track a magnet slides along",
+          "correct": false,
+          "explanation": "Field lines map force direction, not motion tracks.",
+          "misconception": "motion confusion"
+        },
+        {
+          "key": "D",
+          "text": "the outline of the magnet itself",
+          "correct": false,
+          "explanation": "The field exists in the space around the magnet, beyond its outline.",
+          "misconception": "boundary confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L1::Q2",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L1",
+      "stem": "Outside a bar magnet, field lines run:",
+      "misconceptionClass": "pattern recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "in circles around the middle of the magnet",
+          "correct": false,
+          "explanation": "Circles belong to current-carrying wires, not bar magnets.",
+          "misconception": "pattern mix-up"
+        },
+        {
+          "key": "B",
+          "text": "out of the north pole and into the south pole",
+          "correct": true,
+          "explanation": "The external flow is north to south by convention.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "from the south pole to the north pole",
+          "correct": false,
+          "explanation": "That reverses the direction convention.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "D",
+          "text": "straight out of both poles without return",
+          "correct": false,
+          "explanation": "Field lines are continuous loops, not open rays.",
+          "misconception": "open-line claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L1::Q3",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L1",
+      "stem": "Two field line diagrams of the same magnet are drawn. In diagram A the lines near a pole are crowded; in diagram B they are spread out. Compare the field strengths.",
+      "misconceptionClass": "density reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "both show equal strength",
+          "correct": false,
+          "explanation": "Line spacing is the strength cue; different spacing means different strength.",
+          "misconception": "equality claim"
+        },
+        {
+          "key": "B",
+          "text": "neither diagram encodes strength",
+          "correct": false,
+          "explanation": "Density is exactly how strength is encoded.",
+          "misconception": "information denial"
+        },
+        {
+          "key": "C",
+          "text": "A shows the stronger field there",
+          "correct": true,
+          "explanation": "Crowded lines mean stronger field at that place.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "B shows the stronger field there",
+          "correct": false,
+          "explanation": "Spaced-out lines indicate a weaker field.",
+          "misconception": "density inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L1::Q4",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L1",
+      "stem": "Why can two magnetic field lines never cross?",
+      "misconceptionClass": "consistency reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "crossing lines would make the magnet too heavy",
+          "correct": false,
+          "explanation": "Field lines are drawings, not physical objects.",
+          "misconception": "absurd cause"
+        },
+        {
+          "key": "B",
+          "text": "they can cross, but only at the poles",
+          "correct": false,
+          "explanation": "Even at poles the field has one local direction.",
+          "misconception": "pole exception"
+        },
+        {
+          "key": "C",
+          "text": "crossing would reverse the compass direction",
+          "correct": false,
+          "explanation": "The impossibility is the two-direction reading, not compass damage.",
+          "misconception": "wrong mechanism"
+        },
+        {
+          "key": "D",
+          "text": "the field has one direction at each point, and a crossing would give two",
+          "correct": true,
+          "explanation": "A single-valued field forbids intersecting lines.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L1::Q5",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L1",
+      "stem": "A plotting compass is placed at a point near a bar magnet. What does its needle show?",
+      "misconceptionClass": "instrument reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the needle's north end points along the field line there",
+          "correct": true,
+          "explanation": "The compass north is a north pole pushed along the field direction.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the needle always points to geographic north",
+          "correct": false,
+          "explanation": "Near a magnet the local field can overpower Earth's field.",
+          "misconception": "earth-field override"
+        },
+        {
+          "key": "C",
+          "text": "the needle points at the magnet's middle",
+          "correct": false,
+          "explanation": "It aligns with the local field line, not the magnet's centre.",
+          "misconception": "centre myth"
+        },
+        {
+          "key": "D",
+          "text": "the needle spins continuously",
+          "correct": false,
+          "explanation": "A steady field gives a steady alignment.",
+          "misconception": "spin claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L1::Q6",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L1",
+      "stem": "Define a magnetic field line.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "A line whose direction at any point is the direction of the magnetic force on a north pole placed there.",
+      "keywords": [
+        "direction",
+        "force",
+        "north",
+        "pole"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L1::Q7",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L1",
+      "stem": "State what the spacing of field lines tells you about the field.",
+      "misconceptionClass": "density recall",
+      "kind": "recall",
+      "modelAnswer": "Closer spacing of field lines means a stronger magnetic field at that point.",
+      "keywords": [
+        "closer",
+        "spacing",
+        "stronger"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L1::Q8",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L1",
+      "stem": "Explain how iron filings reveal the field pattern around a bar magnet.",
+      "misconceptionClass": "method reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Each filing becomes an induced magnet in the field and turns to lie along the local field-line direction. Across the whole sheet the filings therefore line up end-to-end in curves, tracing the pattern from the north pole round to the south pole and bunching where the field is strongest.",
+      "keywords": [
+        "induced",
+        "lie",
+        "direction",
+        "curves"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L1::Q9",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L1",
+      "stem": "A student maps a bar magnet's field with a plotting compass: marking the needle direction at each point and stepping the compass along. Describe the map that builds up.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The marked steps chain into smooth curves leaving the magnet's north pole and entering the south pole. The curves are closest together at the poles, showing the strongest field there, and they never cross anywhere on the map.",
+      "keywords": [
+        "north",
+        "south",
+        "curves",
+        "poles"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L2::Q1",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L2",
+      "stem": "What is a uniform magnetic field?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "one that changes direction every few millimetres",
+          "correct": false,
+          "explanation": "That is the opposite of uniform.",
+          "misconception": "definition inversion"
+        },
+        {
+          "key": "B",
+          "text": "one with the same strength and direction at every point",
+          "correct": true,
+          "explanation": "Uniformity fixes both magnitude and direction.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "one with lines of different lengths",
+          "correct": false,
+          "explanation": "Line length carries no meaning here; uniformity is even spacing.",
+          "misconception": "length confusion"
+        },
+        {
+          "key": "D",
+          "text": "one found only inside a magnet",
+          "correct": false,
+          "explanation": "Uniform fields are set up in the gap between poles.",
+          "misconception": "location confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L2::Q2",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L2",
+      "stem": "How are the field lines drawn in a uniform field?",
+      "misconceptionClass": "pattern recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "crossing at regular intervals",
+          "correct": false,
+          "explanation": "Field lines never cross, uniform or not.",
+          "misconception": "crossing myth"
+        },
+        {
+          "key": "B",
+          "text": "radiating from a single point",
+          "correct": false,
+          "explanation": "Radial patterns belong to single poles, not uniform gaps.",
+          "misconception": "pattern swap"
+        },
+        {
+          "key": "C",
+          "text": "straight, parallel and equally spaced",
+          "correct": true,
+          "explanation": "This is the drawn signature of uniformity.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "curved and bunching at the edges",
+          "correct": false,
+          "explanation": "Curves and bunching mean the field varies — non-uniform.",
+          "misconception": "pattern swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L2::Q3",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L2",
+      "stem": "Which arrangement produces a uniform field between the magnets?",
+      "misconceptionClass": "setup recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "two bar magnets with like poles facing",
+          "correct": false,
+          "explanation": "Like poles facing give a neutral point, not a uniform gap.",
+          "misconception": "pole choice error"
+        },
+        {
+          "key": "B",
+          "text": "one magnet on its own",
+          "correct": false,
+          "explanation": "A single bar magnet's field is strongly non-uniform.",
+          "misconception": "single-magnet myth"
+        },
+        {
+          "key": "C",
+          "text": "two magnets end to end in a line",
+          "correct": false,
+          "explanation": "End-to-end stacking strengthens poles; it does not open a uniform gap.",
+          "misconception": "arrangement error"
+        },
+        {
+          "key": "D",
+          "text": "two bar magnets with opposite poles facing",
+          "correct": true,
+          "explanation": "North facing south sets up the even gap field.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L2::Q4",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L2",
+      "stem": "A plotting compass is moved across the gap between two facing opposite poles. What does the needle do?",
+      "misconceptionClass": "uniformity reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it points the same direction at every position in the gap",
+          "correct": true,
+          "explanation": "Uniform field means one constant direction throughout.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "it reverses as it crosses the middle",
+          "correct": false,
+          "explanation": "Reversal happens at neutral points of like-pole gaps, not here.",
+          "misconception": "midpoint reversal"
+        },
+        {
+          "key": "C",
+          "text": "it spins faster near the poles",
+          "correct": false,
+          "explanation": "A steady uniform field gives a steady alignment.",
+          "misconception": "spin invention"
+        },
+        {
+          "key": "D",
+          "text": "it points at whichever magnet is nearer",
+          "correct": false,
+          "explanation": "It aligns with the resultant uniform field, not the nearest magnet.",
+          "misconception": "nearest-magnet myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L2::Q5",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L2",
+      "stem": "The gap between two facing poles is widened from 2 cm to 8 cm. What happens to the uniform region?",
+      "misconceptionClass": "scaling reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the magnets demagnetise",
+          "correct": false,
+          "explanation": "Gap width does not demagnetise permanent magnets.",
+          "misconception": "property invention"
+        },
+        {
+          "key": "B",
+          "text": "a smaller fraction of the gap stays uniform",
+          "correct": true,
+          "explanation": "Fringing fields claim a proportionally larger share of a wide gap.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the whole wider gap becomes uniform",
+          "correct": false,
+          "explanation": "Widening adds fringing regions, not uniformity.",
+          "misconception": "scaling inversion"
+        },
+        {
+          "key": "D",
+          "text": "the field direction reverses",
+          "correct": false,
+          "explanation": "The north-to-south direction is unchanged by the gap size.",
+          "misconception": "direction invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L2::Q6",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L2",
+      "stem": "State how two permanent magnets are arranged to give a uniform field.",
+      "misconceptionClass": "method recall",
+      "kind": "recall",
+      "modelAnswer": "Place two bar magnets a short distance apart with opposite poles facing each other.",
+      "keywords": [
+        "opposite",
+        "poles",
+        "facing"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L2::Q7",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L2",
+      "stem": "State the three drawing properties of a uniform field's field lines.",
+      "misconceptionClass": "pattern recall",
+      "kind": "recall",
+      "modelAnswer": "The lines are straight, parallel and equally spaced.",
+      "keywords": [
+        "straight",
+        "parallel",
+        "equally",
+        "spaced"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L2::Q8",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L2",
+      "stem": "Explain why equally spaced parallel lines represent a field of constant strength.",
+      "misconceptionClass": "representation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Field strength is read from the density of field lines, so equal spacing everywhere means the same number of lines per unit area at every position. Parallel straightness adds that the direction never changes, so both the magnitude and the direction of the field are constant — the definition of a uniform field.",
+      "keywords": [
+        "density",
+        "spacing",
+        "strength",
+        "direction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ktPSHfBc5pVkTTj4::L2::Q9",
+      "moduleId": "rn_ktPSHfBc5pVkTTj4::L2",
+      "stem": "A school Hall-effect probe reads the field at five points across the gap between two facing opposite poles: the readings are equal. Which field property does this verify, and how would the readings behave near a single magnet instead?",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Equal readings at all five points verify the field is uniform in the gap — same strength and direction everywhere. Near a single bar magnet the readings would rise sharply towards either pole and change direction around the magnet, because that field is non-uniform.",
+      "keywords": [
+        "uniform",
+        "readings",
+        "non-uniform",
+        "poles"
+      ],
+      "options": []
+    }
+  ]
+}

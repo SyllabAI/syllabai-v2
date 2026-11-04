@@ -1,0 +1,493 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_xKZn9BFkpxpy6pBG",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "d3421b0c1523c70aa72f7832c77297841c3c57f45b57982e218080b1f812f9fb",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "packageId": "igcse-physics::rn_xKZn9BFkpxpy6pBG",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L1::Q1",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L1",
+      "stem": "Which everyday material is NON-magnetic?",
+      "misconceptionClass": "material recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "aluminium drinks can",
+          "correct": true,
+          "explanation": "Aluminium is not a magnetic substance.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "steel paperclip",
+          "correct": false,
+          "explanation": "Steel is magnetic — it can be induced.",
+          "misconception": "metal conflation"
+        },
+        {
+          "key": "C",
+          "text": "iron nail",
+          "correct": false,
+          "explanation": "Iron is the classic magnetic element.",
+          "misconception": "metal conflation"
+        },
+        {
+          "key": "D",
+          "text": "nickel coin",
+          "correct": false,
+          "explanation": "Nickel is one of the magnetic elements.",
+          "misconception": "metal conflation"
+        }
+      ]
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L1::Q2",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L1",
+      "stem": "What is an induced magnet?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a magnet made in a factory",
+          "correct": false,
+          "explanation": "Manufacture is irrelevant; the field-driven mechanism defines induction.",
+          "misconception": "origin confusion"
+        },
+        {
+          "key": "B",
+          "text": "a magnetic material magnetised while in another magnet's field",
+          "correct": true,
+          "explanation": "Induction is field-driven, temporary magnetisation.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a magnet that keeps its field for years",
+          "correct": false,
+          "explanation": "That describes a permanent magnet.",
+          "misconception": "category swap"
+        },
+        {
+          "key": "D",
+          "text": "a non-magnetic material pulled by a magnet",
+          "correct": false,
+          "explanation": "Non-magnetic materials are never pulled.",
+          "misconception": "material confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L1::Q3",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L1",
+      "stem": "The force between a permanent magnet and an induced magnet is always:",
+      "misconceptionClass": "force direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "zero",
+          "correct": false,
+          "explanation": "Induction exists precisely to produce the pull.",
+          "misconception": "no-force claim"
+        },
+        {
+          "key": "B",
+          "text": "alternating with distance",
+          "correct": false,
+          "explanation": "The force weakens with distance but stays attractive.",
+          "misconception": "sign flip"
+        },
+        {
+          "key": "C",
+          "text": "attractive",
+          "correct": true,
+          "explanation": "Induction puts an unlike pole nearest, so the pair attracts.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "repulsive",
+          "correct": false,
+          "explanation": "Repulsion needs two independent magnets with like poles facing.",
+          "misconception": "force inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L1::Q4",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L1",
+      "stem": "A paperclip sticks to a magnet. The magnet is removed and the clip no longer holds a second clip. What type of magnetic material is the clip?",
+      "misconceptionClass": "classification reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "magnetically hard",
+          "correct": false,
+          "explanation": "A hard material would keep the induced magnetism.",
+          "misconception": "hard/soft swap"
+        },
+        {
+          "key": "B",
+          "text": "non-magnetic",
+          "correct": false,
+          "explanation": "It was attracted, so it is a magnetic substance.",
+          "misconception": "category error"
+        },
+        {
+          "key": "C",
+          "text": "permanently magnetised",
+          "correct": false,
+          "explanation": "A permanent clip would keep holding the second one.",
+          "misconception": "retention claim"
+        },
+        {
+          "key": "D",
+          "text": "magnetically soft",
+          "correct": true,
+          "explanation": "Losing magnetism as soon as the field goes is soft behaviour.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L1::Q5",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L1",
+      "stem": "Which set lists ONLY permanent-magnet behaviour?",
+      "misconceptionClass": "behaviour recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "keeps its field with no external help; can repel another magnet",
+          "correct": true,
+          "explanation": "Sustained field plus pole interaction are permanent traits.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "gains poles only near a magnet; loses them when removed",
+          "correct": false,
+          "explanation": "That is induced behaviour.",
+          "misconception": "behaviour swap"
+        },
+        {
+          "key": "C",
+          "text": "attracted to either pole; never repels",
+          "correct": false,
+          "explanation": "Attraction-only describes induced magnets or raw magnetic materials.",
+          "misconception": "behaviour swap"
+        },
+        {
+          "key": "D",
+          "text": "demagnetises when tapped lightly",
+          "correct": false,
+          "explanation": "Hard permanent magnets resist casual demagnetising.",
+          "misconception": "property invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L1::Q6",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L1",
+      "stem": "Name four magnetic elements or their alloys.",
+      "misconceptionClass": "material recall",
+      "kind": "recall",
+      "modelAnswer": "Iron, steel, cobalt and nickel — steel being the iron alloy used for permanent magnets.",
+      "keywords": [
+        "iron",
+        "steel",
+        "cobalt",
+        "nickel"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L1::Q7",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L1",
+      "stem": "State what is always true about the force between a magnet and an unmagnetised magnetic material.",
+      "misconceptionClass": "force recall",
+      "kind": "recall",
+      "modelAnswer": "The force is always attraction, whatever pole of the magnet is presented.",
+      "keywords": [
+        "always",
+        "attraction",
+        "pole"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L1::Q8",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L1",
+      "stem": "Explain why an induced magnet always attracts the magnet that induces it.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The field aligns the material's domains so an induced pole forms at its near face that is unlike the facing pole of the magnet. Unlike poles attract, so the interaction is a pull no matter which pole was presented — the geometry of induction guarantees attraction.",
+      "keywords": [
+        "induced",
+        "pole",
+        "unlike",
+        "attract"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L1::Q9",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L1",
+      "stem": "A technician sorts scrap with a magnet: some pieces stick and stay stuck after release; others fall straight off. Sort the pieces by magnetic class and name each class.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Pieces that stay magnetised after release are made of magnetically hard material and behave as permanent magnets. Pieces that fall straight off were induced magnets of soft magnetic material — they held poles only while in the field.",
+      "keywords": [
+        "hard",
+        "permanent",
+        "soft",
+        "induced"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L2::Q1",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L2",
+      "stem": "Which material suits a PERMANENT magnet?",
+      "misconceptionClass": "material choice",
+      "options": [
+        {
+          "key": "A",
+          "text": "plastic composite",
+          "correct": false,
+          "explanation": "Plastics carry no magnetic response.",
+          "misconception": "non-magnetic pick"
+        },
+        {
+          "key": "B",
+          "text": "magnetically hard steel",
+          "correct": true,
+          "explanation": "Hard materials retain their aligned domains permanently.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "magnetically soft iron",
+          "correct": false,
+          "explanation": "Soft iron sheds its magnetism when the field leaves.",
+          "misconception": "choice inversion"
+        },
+        {
+          "key": "D",
+          "text": "copper",
+          "correct": false,
+          "explanation": "Copper is non-magnetic.",
+          "misconception": "non-magnetic pick"
+        }
+      ]
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L2::Q2",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L2",
+      "stem": "A north pole is held near one end of an iron bar. What pole appears at that near end?",
+      "misconceptionClass": "pole prediction",
+      "options": [
+        {
+          "key": "A",
+          "text": "no pole at all",
+          "correct": false,
+          "explanation": "The field induces poles in the bar.",
+          "misconception": "no-induction claim"
+        },
+        {
+          "key": "B",
+          "text": "both poles at the same end",
+          "correct": false,
+          "explanation": "One face carries one induced pole.",
+          "misconception": "pole confusion"
+        },
+        {
+          "key": "C",
+          "text": "a south pole",
+          "correct": true,
+          "explanation": "Induction always puts the unlike pole nearest.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a north pole",
+          "correct": false,
+          "explanation": "A near north pole would repel — induction instead attracts.",
+          "misconception": "pole swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L2::Q3",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L2",
+      "stem": "When the magnet is taken away from the iron bar, the bar:",
+      "misconceptionClass": "retention reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "keeps its full induced magnetism forever",
+          "correct": false,
+          "explanation": "Permanent retention is hard-material behaviour; the bar is soft iron.",
+          "misconception": "retention claim"
+        },
+        {
+          "key": "B",
+          "text": "reverses its poles",
+          "correct": false,
+          "explanation": "Nothing reverses; the induced poles simply fade.",
+          "misconception": "reversal invention"
+        },
+        {
+          "key": "C",
+          "text": "becomes non-magnetic to future fields",
+          "correct": false,
+          "explanation": "It can be induced again at any time.",
+          "misconception": "future exclusion"
+        },
+        {
+          "key": "D",
+          "text": "loses most of its induced magnetism",
+          "correct": true,
+          "explanation": "Induced magnetism persists only while the field is present.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L2::Q4",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L2",
+      "stem": "Which observation shows a bar is a PERMANENT magnet rather than an induced one?",
+      "misconceptionClass": "evidence reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it still attracts pins an hour after being far from any other magnet",
+          "correct": true,
+          "explanation": "Field-free retention is the permanent signature.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "it attracts a known magnet",
+          "correct": false,
+          "explanation": "Both permanent and induced magnets attract.",
+          "misconception": "ambiguous evidence"
+        },
+        {
+          "key": "C",
+          "text": "it is made of iron",
+          "correct": false,
+          "explanation": "Material alone does not settle the magnetisation state.",
+          "misconception": "material confusion"
+        },
+        {
+          "key": "D",
+          "text": "it hangs pointing north-south when freely suspended",
+          "correct": false,
+          "explanation": "Earth's field induces that alignment even in soft materials.",
+          "misconception": "earth-field confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L2::Q5",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L2",
+      "stem": "Steel is described as magnetically HARD. What does 'hard' mean here?",
+      "misconceptionClass": "terminology recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "it only magnetises under heat",
+          "correct": false,
+          "explanation": "Heating is not part of the hard/soft definition.",
+          "misconception": "condition invention"
+        },
+        {
+          "key": "B",
+          "text": "it keeps its magnetism and resists demagnetising",
+          "correct": true,
+          "explanation": "Hardness refers to retention, not physical scratch resistance.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "it is difficult to cut or drill",
+          "correct": false,
+          "explanation": "Mechanical hardness is not the magnetic meaning.",
+          "misconception": "term confusion"
+        },
+        {
+          "key": "D",
+          "text": "it feels hard to the touch",
+          "correct": false,
+          "explanation": "Texture is irrelevant to the magnetic class.",
+          "misconception": "term confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L2::Q6",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L2",
+      "stem": "State what a permanent magnet does that an induced magnet cannot.",
+      "misconceptionClass": "contrast recall",
+      "kind": "recall",
+      "modelAnswer": "A permanent magnet keeps its magnetic field without any external field present.",
+      "keywords": [
+        "keeps",
+        "field",
+        "without",
+        "external"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L2::Q7",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L2",
+      "stem": "State the pole that appears on the near face of an iron bar next to a south pole.",
+      "misconceptionClass": "pole recall",
+      "kind": "recall",
+      "modelAnswer": "A north pole is induced on the near face, unlike the facing south pole.",
+      "keywords": [
+        "north",
+        "pole",
+        "near"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L2::Q8",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L2",
+      "stem": "Explain why the paperclip chain collapses the instant the top magnet is lifted away.",
+      "misconceptionClass": "cascade reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Every clip in the chain held only induced magnetism, created by the field of the magnet and of the clips above it. Lifting the magnet removes the top field, so the first clip loses its poles and drops; losing it removes the field for the second, and the collapse cascades down the chain.",
+      "keywords": [
+        "induced",
+        "loses",
+        "field",
+        "cascades"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xKZn9BFkpxpy6pBG::L2::Q9",
+      "moduleId": "rn_xKZn9BFkpxpy6pBG::L2",
+      "stem": "A magnetic door catch must hold the door firmly whenever it is near the frame plate but must never interfere when the door is open. Design the catch's magnetic pairing and justify it.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Fix a small permanent magnet in the frame and fit a soft iron plate on the door. Whenever the door nears the frame the plate becomes an induced magnet and is attracted firmly to the permanent magnet, latching the door; with the door open the plate holds no magnetism, so it does nothing until it is close again.",
+      "keywords": [
+        "permanent",
+        "soft",
+        "induced",
+        "attracted"
+      ],
+      "options": []
+    }
+  ]
+}

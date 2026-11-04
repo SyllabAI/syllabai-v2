@@ -1,12 +1,14 @@
 # S0 output of record - c10-electrolysis
 # T-BOOK-070: b08 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 7 -> 8);
 # the S0 plan is binding — lint G1 checks planned == on-disk.
+# T-BOOK-074: b09 media-embed appended — Cognito full-coverage extension (ADR-BOOK-0006; planned_blocks 8 -> 9; trace 1a1a4e45ca4e2325).
+
 chapter: "c10"
 chapter_key: "u1:c10"
 title: "Electrolysis"
 status: published # S4 flip of record — T-BOOK-016 (operator dispatch trace 1a15f18fdca65e79); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 8
+planned_blocks: 10
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "chem_only + widget_density high: p110 intro, p111 PANiC, p112 apparatus + check, p113 OILRIG, p114 half-equations, p119 aqueous products"
 blocks:
@@ -18,3 +20,5 @@ blocks:
   - {ord: 6, id: "c10-electrolysis/b06", type: eq-builder, file: "blocks/b06-eq-builder-half-equation.json", anchor: 114}
   - {ord: 7, id: "c10-electrolysis/b07", type: table-fill, file: "blocks/b07-table-fill-aqueous-products.json", anchor: 119}
   - {ord: 8, id: "c10-electrolysis/b08", type: media-embed, file: "blocks/b08-media-embed.json", anchor: 119}
+  - {ord: 9, id: "c10-electrolysis/b09", type: media-embed, file: "blocks/b09-media-embed.json", anchor: 119}
+  - {ord: 10, id: "c10-electrolysis/b10", type: media-embed, file: "blocks/b10-media-embed.json", anchor: 119}

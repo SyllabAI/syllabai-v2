@@ -1,0 +1,147 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_g6D8Vm7wK3vwHhTG",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "7af034a831a1a2079654385b1f81c5759bace13c328f186eba7bf726b6507694",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_g6D8Vm7wK3vwHhTG",
+    "topicTitle": "6. Magnetism and Electromagnetism",
+    "subtopicTitle": "Magnetism and Electromagnetism",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/6-magnetism-and-electromagnetism/6-1-magnetism-and-electromagnetism/6-1-7-flemings-left-hand-rule",
+    "specAnchors": [
+      {
+        "code": "6.13",
+        "text": "use the left-hand rule to predict the direction of the resulting force when a wire carries a current perpendicular to a magnetic field"
+      }
+    ],
+    "primer": {
+      "text": "Three directions, one hand: the first finger along the field, the second along the current, and the thumb fires out the force. This note drills Fleming's left-hand rule for wires crossing a magnetic field — including the conventional-current trap and what happens when either input flips.",
+      "prerequisiteSubtopic": "Magnetism and Electromagnetism"
+    },
+    "modules": [
+      {
+        "id": "rn_g6D8Vm7wK3vwHhTG::L1",
+        "title": "Predicting the force with Fleming's left-hand rule",
+        "sourceHeadings": [
+          "Fleming's left-hand rule"
+        ],
+        "specRefs": [
+          "6.13"
+        ],
+        "opening": "The left-hand rule turns three directions into one prediction: first finger along the magnetic field, second finger along the current, and the thumb at right angles to both gives the direction of the force on the wire. It works whenever the current runs perpendicular to the field — the geometry the rule was built for.",
+        "keyPoints": [
+          "The first finger points along the magnetic field, from north to south.",
+          "The second finger points along the conventional current in the wire.",
+          "The thumb then gives the direction of the force on the wire.",
+          "The three fingers are held at right angles to each other in a left hand.",
+          "The rule predicts the force when the current is perpendicular to the field."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Hold the left hand flat: point the first finger the way the field runs, the second finger the way the current flows, and the thumb sticks out in the direction the wire gets pushed.",
+            "analogy": "It is a three-arrow machine: feed in field and current, and the thumb fires out the answer.",
+            "examPointer": "Name the fingers in order — first (field), second (current), thumb (force) — examiners check the mapping, not just the pose."
+          },
+          "medium": {
+            "restatement": "The rule encodes the perpendicular geometry of the motor effect: force, field and current are mutually at right angles, so a left-hand coordinate frame fixes the third direction once two are known. The rule applies to the conventional-current direction, so electron flow runs against the second finger, and it presumes the current crosses the field — parallel arrangements fall outside it.",
+            "analogy": "Like a 3D jigsaw: two pieces click in, and the shape of the frame forces the third piece into one place only.",
+            "examPointer": "Check the current direction in the diagram first — using electron flow instead of conventional current is the classic inversion error."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_g6D8Vm7wK3vwHhTG::L1::Q1",
+          "rn_g6D8Vm7wK3vwHhTG::L1::Q2",
+          "rn_g6D8Vm7wK3vwHhTG::L1::Q3",
+          "rn_g6D8Vm7wK3vwHhTG::L1::Q4",
+          "rn_g6D8Vm7wK3vwHhTG::L1::Q5",
+          "rn_g6D8Vm7wK3vwHhTG::L1::Q6",
+          "rn_g6D8Vm7wK3vwHhTG::L1::Q7",
+          "rn_g6D8Vm7wK3vwHhTG::L1::Q8",
+          "rn_g6D8Vm7wK3vwHhTG::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "Fleming's left-hand rule",
+          "definition": "The rule assigning field to the first finger, current to the second and force to the thumb of a left hand.",
+          "firstLesson": 1
+        },
+        {
+          "term": "conventional current",
+          "definition": "The direction of current flow from positive to negative, used by the rule.",
+          "firstLesson": 1
+        },
+        {
+          "term": "motor effect",
+          "definition": "The force on a current-carrying wire in a magnetic field, whose direction the rule predicts.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A current-carrying wire is placed into the magnetic field between the poles of a magnet, as shown in the diagram. Use Fleming's left-hand rule to determine the direction of the force on the wire.",
+        "steps": [
+          "Read the current direction along the wire from the diagram.",
+          "Read the field direction between the poles, from north to south.",
+          "Align the first finger with the field and the second finger with the current.",
+          "The thumb then gives the force direction; from the diagram this is vertically downwards."
+        ],
+        "finalAnswer": "The force on the wire acts vertically downwards, as given by the thumb of the left hand with first finger along the field and second finger along the current."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/6f50bab96981-7-2-3-flemings-left-hand-rule.png",
+        "alt": "Flemings Left Hand Rule, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Fleming's left-hand rule",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Fleming’s left-hand rule can be used to determine the directions of the force, magnetic field and current"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/4be7f49afd13-7-2-3-we-flemings-lhr-question-image.png",
+        "alt": "WE Flemings LHR Question Image, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Fleming's left-hand rule",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/f5e2f028c1bd-7-2-3-we-flemings-lhr-answer-image.png",
+        "alt": "WE Flemings LHR Answer Image, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Fleming's left-hand rule",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

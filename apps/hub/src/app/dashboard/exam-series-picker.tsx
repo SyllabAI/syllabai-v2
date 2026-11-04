@@ -41,6 +41,7 @@ export function ExamSeriesPicker({
   level,
   board,
   target,
+  label,
   compact = false,
 }: {
   slug: string;
@@ -53,11 +54,16 @@ export function ExamSeriesPicker({
   board?: string;
   /** undefined = availability unknown → no surface; null = nothing declared */
   target: CourseExamTargetView | null | undefined;
+  /** human-readable course name for the accessible label (UX review
+   *  2026-11-04: the label used to read "Exam series for igcse-chemistry-19"
+   *  — a registry slug spoken to screen readers); falls back to the slug */
+  label?: string;
   /** compact = inline on subject cards; full = the add-course overlay row */
   compact?: boolean;
 }) {
   const calendar = useExamCalendar(qualForLevel(level, board));
   const [busy, setBusy] = useState(false);
+  const name = label || slug;
 
   if (calendar === null) return null;
 
@@ -86,7 +92,7 @@ export function ExamSeriesPicker({
     // truthful control, never a placeholder row
     return (
       <select
-        aria-label={`Exam series for ${slug} (none imported yet)`}
+        aria-label={`Exam series for ${name} (none imported yet)`}
         disabled
         className={`h-7 w-full truncate rounded-md border border-dashed bg-transparent px-1.5 text-xs text-muted-foreground ${width}`}
       >
@@ -102,7 +108,7 @@ export function ExamSeriesPicker({
         aria-hidden
       />
       <select
-        aria-label={`Exam series for ${slug}`}
+        aria-label={`Exam series for ${name}`}
         title={`Measured from ${calendarProvenanceNote(board)} — estimated windows are marked ≈`}
         value={target ? target.seriesId : ""}
         disabled={busy}
@@ -126,7 +132,11 @@ export function ExamSeriesPicker({
       {target && (
         <span
           className={`shrink-0 whitespace-nowrap text-[11px] font-semibold tabular-nums ${
-            target.entryDeadlinePassed ? "text-destructive" : "text-muted-foreground"
+            // UX review 2026-11-04: a closed entry window was rendered in
+            // destructive red — four cards, four red chips, zero failures.
+            // Red is for overdue work; an informational countdown (even one
+            // whose entry window closed) gets the amber attention slot.
+            target.entryDeadlinePassed ? "text-warn" : "text-muted-foreground"
           }`}
           title={
             target.entryDeadlinePassed

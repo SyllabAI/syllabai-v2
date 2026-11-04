@@ -1,0 +1,235 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_8859pDM2R7Y4qVKc",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "9c43248acf03d7e3b0c9c79b4c6a97c35fa1326826a0bc35d27e283e9353ebf5",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_8859pDM2R7Y4qVKc",
+    "topicTitle": "6. Magnetism and Electromagnetism",
+    "subtopicTitle": "Electromagnetic Induction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/6-magnetism-and-electromagnetism/6-2-electromagnetic-induction/6-2-1-electromagnetic-induction",
+    "specAnchors": [
+      {
+        "code": "6.15",
+        "text": "know that a voltage is induced in a conductor or a coil when it moves through a magnetic field or when a magnetic field changes through it and describe the factors that affect the size of the induced voltage"
+      }
+    ],
+    "primer": {
+      "text": "Motion makes electricity: sweep a wire across field lines or thread a changing field through a coil, and a voltage appears without any battery. This note covers both induction triggers, the meter-kick diagrams, and the three size factors — speed, field strength and turns.",
+      "prerequisiteSubtopic": "Electromagnetic Induction"
+    },
+    "modules": [
+      {
+        "id": "rn_8859pDM2R7Y4qVKc::L1",
+        "title": "Making voltage from motion",
+        "sourceHeadings": [
+          "Electromagnetic induction",
+          "Generating potential difference"
+        ],
+        "specRefs": [
+          "6.15"
+        ],
+        "opening": "Induction is the motor effect run backwards: move a conductor through a magnetic field — or move the field past the conductor — and a voltage appears across the conductor. No battery is needed; the motion itself is the source, and the faster or stronger the arrangement, the bigger the induced voltage.",
+        "keyPoints": [
+          "A voltage is induced in a conductor when it moves through a magnetic field.",
+          "A voltage is also induced when the magnetic field through a conductor changes.",
+          "The induced voltage grows with the speed of the movement.",
+          "A stronger magnetic field induces a larger voltage.",
+          "No relative change between conductor and field means no induced voltage."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Wave a wire across a magnet's field and the wire becomes a tiny battery — that is induction. Hold it still with the field steady and the battery disappears.",
+            "analogy": "The field is a river and the wire a fishing net: sweep the net and it catches voltage; leave it parked in a steady current and it catches nothing new.",
+            "examPointer": "Both trigger phrases score: 'moves through a magnetic field' OR 'the field through it changes' — quote one precisely."
+          },
+          "medium": {
+            "restatement": "Induction is the cutting of field lines: a conductor sweeping across the lines, or field lines sweeping across a stationary conductor, generates the induced voltage, whose size rises with cutting speed, field strength and (for coils) the number of turns. Relative motion is the essence — a conductor carried along WITH the field lines, cutting none, induces nothing.",
+            "analogy": "Induction counts crossings: every field line the wire slices adds to the harvest, and riding parallel to the lines slices none.",
+            "examPointer": "For 'factors' questions, list speed, field strength and turns — omitting turns is the common half-answer on coil versions."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_8859pDM2R7Y4qVKc::L1::Q1",
+          "rn_8859pDM2R7Y4qVKc::L1::Q2",
+          "rn_8859pDM2R7Y4qVKc::L1::Q3",
+          "rn_8859pDM2R7Y4qVKc::L1::Q4",
+          "rn_8859pDM2R7Y4qVKc::L1::Q5",
+          "rn_8859pDM2R7Y4qVKc::L1::Q6",
+          "rn_8859pDM2R7Y4qVKc::L1::Q7",
+          "rn_8859pDM2R7Y4qVKc::L1::Q8",
+          "rn_8859pDM2R7Y4qVKc::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_8859pDM2R7Y4qVKc::L2",
+        "title": "Reading the induction diagrams",
+        "sourceHeadings": [
+          "Electromagnetic induction diagram"
+        ],
+        "specRefs": [
+          "6.15"
+        ],
+        "opening": "The diagram of a wire sweeping through a horseshoe field tells the whole story: the wire cuts the lines, the meter needle kicks, and the kick's direction follows the sweep direction. Reverse the sweep and the needle kicks the other way — polarity tracks the motion.",
+        "keyPoints": [
+          "The moving wire cuts across the field lines between the poles.",
+          "The connected meter shows the induced voltage as a needle kick.",
+          "Reversing the sweep direction reverses the kick direction.",
+          "Holding the wire still between the poles gives a zero reading.",
+          "The kick lasts only while the wire is actually moving."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Wire sweeps left: needle kicks one way. Wire sweeps right: the kick flips. Wire stops: the needle falls back to zero.",
+            "analogy": "The meter is a lie detector for motion: any crossing gets flagged, the flag flips with direction, and stopping erases it.",
+            "examPointer": "Diagram questions often ask for the needle deflection given an arrow on the wire — trace the sweep arrow first, then answer."
+          },
+          "medium": {
+            "restatement": "The setup is the canonical induction probe: uniform gap field, cutting wire, centre-zero meter. The kick polarity follows the sweep sense because the induced voltage changes sign with the cutting direction, and its magnitude follows the sweep speed — so the meter trace is effectively a velocity readout of the cut.",
+            "analogy": "The needle is a speedometer for field-cutting: direction of travel sets the side, speed sets the size.",
+            "examPointer": "Zero-between-kicks is a real reading: steady position gives steady zero — do not mistake it for a broken meter."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_8859pDM2R7Y4qVKc::L2::Q1",
+          "rn_8859pDM2R7Y4qVKc::L2::Q2",
+          "rn_8859pDM2R7Y4qVKc::L2::Q3",
+          "rn_8859pDM2R7Y4qVKc::L2::Q4",
+          "rn_8859pDM2R7Y4qVKc::L2::Q5",
+          "rn_8859pDM2R7Y4qVKc::L2::Q6",
+          "rn_8859pDM2R7Y4qVKc::L2::Q7",
+          "rn_8859pDM2R7Y4qVKc::L2::Q8",
+          "rn_8859pDM2R7Y4qVKc::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_8859pDM2R7Y4qVKc::L3",
+        "title": "Coils, factors, and bigger induced voltages",
+        "sourceHeadings": [
+          "Diagram of electromagnetic induction in a coil",
+          "Factors affecting the induced potential difference"
+        ],
+        "specRefs": [
+          "6.15"
+        ],
+        "opening": "Replace the single wire with a coil and every turn cuts the field, so the induced voltages add — more turns, bigger voltage. The full factor list for the induced potential difference is the exam's favourite: speed of movement, magnetic field strength, and the number of turns.",
+        "keyPoints": [
+          "A coil induces a larger voltage than a single wire because the turns add.",
+          "The magnet entering or leaving a coil changes the field through it and induces voltage.",
+          "Faster movement of the magnet or coil induces a larger voltage.",
+          "A stronger magnetic field induces a larger voltage.",
+          "More turns on the coil induce a larger voltage."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Push a magnet into a coil: the meter kicks one way. Pull it out: the kick flips. Push it faster or add more turns: the kick grows.",
+            "analogy": "The coil is a team of wire catchers standing in the same spot — every extra catcher nets more voltage from the same passing magnet.",
+            "examPointer": "Factor answers must name all three — speed, field strength, turns — and 'relative motion' as the trigger."
+          },
+          "medium": {
+            "restatement": "The coil version multiplies the single-wire effect by the turn count because the same changing field threads every turn, so their induced voltages sum. Entry and exit of the magnet give opposite polarities, faster relative motion gives larger magnitude, and the strength and turn-count levers scale the result — the complete 6.15 factor set.",
+            "analogy": "The magnet's entry is a forwards wave and its exit a backwards wave through the coil's rings — same wave, opposite signs, bigger if the wave moves faster.",
+            "examPointer": "Polarity contrast (entering vs leaving) is frequently examined — always answer with the pair, not just one case."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_8859pDM2R7Y4qVKc::L3::Q1",
+          "rn_8859pDM2R7Y4qVKc::L3::Q2",
+          "rn_8859pDM2R7Y4qVKc::L3::Q3",
+          "rn_8859pDM2R7Y4qVKc::L3::Q4",
+          "rn_8859pDM2R7Y4qVKc::L3::Q5",
+          "rn_8859pDM2R7Y4qVKc::L3::Q6",
+          "rn_8859pDM2R7Y4qVKc::L3::Q7",
+          "rn_8859pDM2R7Y4qVKc::L3::Q8",
+          "rn_8859pDM2R7Y4qVKc::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "electromagnetic induction",
+          "definition": "The generation of a voltage in a conductor by relative motion between it and a magnetic field.",
+          "firstLesson": 1
+        },
+        {
+          "term": "induced voltage",
+          "definition": "The potential difference created across a conductor or coil by a changing magnetic field.",
+          "firstLesson": 1
+        },
+        {
+          "term": "cutting field lines",
+          "definition": "The sweeping of a conductor across magnetic field lines that triggers induction.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/33774e818aef-em-induction-1-1.png",
+        "alt": "Electromagnetic induction diagram: a wire conductor sweeping through the magnetic field between two magnet poles, with an induced voltage shown across it",
+        "sourceHeading": "Electromagnetic induction diagram",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Moving an electrical conductor in a magnetic field to induce a potential difference"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/9a0d388365c9-coil-induction.png",
+        "alt": "coil-induction, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Diagram of electromagnetic induction in a coil",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "When the magnet enters the coil, the field lines cut through the turns, inducing a potential difference"
+      }
+    ]
+  }
+}
