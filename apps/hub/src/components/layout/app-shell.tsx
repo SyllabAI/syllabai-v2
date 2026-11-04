@@ -146,14 +146,16 @@ export function AppShell({
   // course pages manage their own horizontal rhythm (course shell + resource
   // panel); the graph surfaces are full-bleed (the visualizer canvas wants
   // the whole viewport); the tutor workspace is an immersive app surface
-  // (its own rail + header + composer, sized to the viewport); every other
-  // page gets the centred content column
+  // (its own rail + header + composer, sized to the viewport); T-DASH-SIDEBAR-001:
+  // the dashboard manages its own rhythm too (dashboard shell: persistent
+  // sidebar + content column); every other page gets the centred content column
   const inCourse = pathname.startsWith("/courses/");
   const inExplorer =
     pathname.startsWith("/graph-explorer") || pathname.startsWith("/knowledge-graph");
   const inTutor = pathname.startsWith("/tutor");
+  const inDashboard = pathname.startsWith("/dashboard");
   const viewerRoute = isViewerRoute(pathname);
-  const bare = inCourse || inExplorer || inTutor;
+  const bare = inCourse || inExplorer || inTutor || inDashboard;
 
   // UX audit 2026-10-02 #22: Experiments is the developer area — it sat next
   // to Tutor/Assistant for every signed-out visitor and student. Staff-only;
@@ -421,14 +423,18 @@ export function AppShell({
           (repo names, attestation dates, the data-plane chip) in the one
           strip every page renders. Same honesty, student nouns. On
           document-focus routes (paper viewer / player) it is omitted
-          entirely (the immersive contract). */}
+          entirely (the immersive contract).
+          T-UX-STUDENT-COPY r0: the pledge sentence dropped the remaining
+          operator nouns ("committed content traced to its specification",
+          "labelled, never faked" — repo/QA vocabulary) for student nouns;
+          the link to the full provenance register stays. */}
       {!isImmersiveRoute(pathname) && (
       <footer className="mx-auto w-full max-w-6xl px-4 pb-10 sm:px-6 lg:px-8 print:hidden">
         <div className="flex flex-wrap items-center gap-1.5 border-t pt-4">
           <ThemeToggle variant="row" />
           <span className="text-[11px] text-muted-foreground">
-            Every note, question and flashcard here is real, committed content traced to its
-            specification — and a resource that isn&apos;t ready yet is labelled, never faked.{" "}
+            Every note, question and flashcard is written against the official specification and
+            checked before it ships — anything not ready yet is marked as coming soon.{" "}
             {/* F-1 (frontend-flow audit): the student-safe statement stays; the
                 full tier register (RULE_DERIVED / AI_SUGGESTED / DEMO_DERIVED /
                 SIMULATED) lives at /about/provenance, linked from its own room. */}
@@ -436,7 +442,7 @@ export function AppShell({
               href="/about/provenance"
               className="underline underline-offset-2 hover:text-foreground"
             >
-              How each kind of content is checked
+              How content is checked
             </Link>
           </span>
         </div>
