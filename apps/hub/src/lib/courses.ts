@@ -445,7 +445,7 @@ export const loadHubCourse = cache(
   const noteSubtopic: Record<string, string | null> = {};
 
   for (const t of questionTopics) {
-    const s = subtopicOfQuestionSet(t, index);
+    const s = subtopicOfQuestionSet(t, index, notes);
     if (s) {
       (setsBySubtopic[s] ??= []).push(t.slug);
       (setListsBySubtopic[s] ??= []).push({
