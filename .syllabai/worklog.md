@@ -210,3 +210,19 @@ Stage Summary:
 - KATEX SWEEP AT TIP: full-corpus katex 0.16.22 throwOnError (family law) — failures 5723 uniques / 11207 occurrences BYTE-COUNT-IDENTICAL to the pinned post-apply state; 0 repaired segs in the failure set; the 6 failing occurrences of the lane = the ledgered (x-3)^2 refusal. The 32 commits of other-lane activity introduced zero new failures and reverted zero repairs.
 - Boundaries: .syllabai/receipts/RN-DEBRIS-11/run-002-postadvance-verify-r0.json + this section; read-only verification before the receipt commit itself; bookkeeping-only, FF push, race-guarded; zero content/code/db bytes.
 - Standing reminder (carried from the run-002 receipt): the chat-exposed PAT must be revoked/rotated when this cycle closes.
+
+---
+Task ID: T-SME-SEL r2 (rebuild of record after workspace recycle + deploy)
+Agent: r7a (Super Z, session web-da4ab8b1, chat 1f3003b6)
+Task: operator supplied GITHUB_PAT/VERCEL_PAT — push, PR, preview deploy, public spot-check. Discovered the sandbox recycle had rolled the repo back to main @ 4008e6ce: the r1-rebased branch (af9b2e96/b8df85c5/a63309e3) was garbage-collected; rebuilt from scratch.
+
+Work Log:
+- RECOVERY OF RECORD: the r0 rebased branch was LOST to the recycle (git cat-file: all 3 commits MISSING; fsck dangling = other lanes only). Surviving artifacts: scratch/d0d3_lane.patch (the SUPERSEDED D0-ladder draft — NOT the r0 design; its section join lands on first sub-topic rows, r0 replaced that with gen rows), scratch/sme_section_map.json + scripts/sme_section_map_derive.py (the frozen table data), the in-conversation verbatim reads of the merged r0 files, and download/sme-wire-spotcheck/ (report + screenshots). Rebuilt the branch fresh from origin/main @ 3e129c6a (10 new commits since the r1 rebase; none touch the wired files — verified by diff 87d8e660..origin/main on the 3 wired files: EMPTY).
+- REBUILT: spec-tree.ts (helpers normTitle/titleToks/officialTopicNumber + topicHomeOfSet rules a-e + ensureTopicGenRow + 6-step subtopicOfQuestionSet(topic, index, notes?) + resourceCounts notes pass); sme-section-map.ts regenerated from the recovered JSON (34 rows + 2 honest nulls); courses.ts notes pass; topic-tree.tsx link-or-expander; 5 teacher surfaces pass bundle.notes; verify_sme_wire_r0.ts restored; ADR-039 written at r1 numbers.
+- BUG CAUGHT BY THE GATE of record: first verify pass gave 2,543/31 (18 regressed, all in the 4 CIE maths courses) — my smeSectionTopicCode returned the table's SUFFIX ("TE4") while topicHomeOfSet compares full codes; r0's function composes prefix+suffix into the FULL topic code. Fixed; verify re-run: 2,561/2,574 placed (99.5%), 13 unplaced == ADR-039 §4 exactly, 48 gen-row homes — behaviorally IDENTICAL to the pre-recycle r0.
+- GATES: tsc clean (0 errors — fresh bun install also cleared the stale jsdom harness red herring), eslint clean (0 problems on 9 touched files), corpus untouched (read-only chain).
+- Credentials law honored: tokens as env vars only; never echoed/committed/logged; push remote composed per-command.
+
+Stage Summary:
+- T-SME-SEL r2 is the rebuild of record: same 99.5% placement, same 13-row ADR-039 §4 residual, same 48 gen homes — proven by the verify gate, not by memory.
+- Next: push + PR + Vercel preview deploy + public-URL spot-check (the r1 local spot-check numbers stand as the behavioral baseline).
