@@ -6,7 +6,7 @@
  */
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
-import { buildSpecTreeIndex, subtopicOfQuestionSet } from "../src/lib/spec-tree";
+import { buildSpecTreeIndex, generalTopicsOfQuestionTopics, subtopicOfQuestionSet } from "../src/lib/spec-tree";
 import type { Curriculum, ExamQuestionTopic, RevisionNote } from "../src/lib/contracts";
 
 const CONTENT = join(import.meta.dir, "..", "content");
@@ -30,7 +30,12 @@ for (const dir of readdirSync(CONTENT).sort()) {
     (t.source?.provider ?? "").toLowerCase().includes("save my exams"),
   );
   if (sme.length === 0) continue;
-  const index = buildSpecTreeIndex(cur);
+  // runtime parity: courses.ts builds the index with generalTopics pre-created
+  // from the FULL set list (corpus -gen stamps resolve there) — the gate must
+  // measure what production places, not a stricter projection of it.
+  const index = buildSpecTreeIndex(cur, {
+    generalTopics: generalTopicsOfQuestionTopics(sets),
+  });
   totals.courses++;
   const miss: string[] = [];
   for (const t of sme) {

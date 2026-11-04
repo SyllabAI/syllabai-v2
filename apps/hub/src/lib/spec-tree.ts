@@ -324,6 +324,12 @@ function ensureTopicGenRow(index: SpecTreeIndex, topicCode: string): string | nu
  *   5. unique title match — set name == sub-topic title, only candidate
  *   6. topic-level home (topicHomeOfSet) → the topic's "General requirements"
  *      row — never the first sub-topic row (that would fabricate D3 rows)
+ *   7. corpus-stamped topic-level code — a `<topicCode>-gen` subtopicCode the
+ *      D0 tag-backfill wrote into the corpus (ADR-039 r2 data lane). Honored
+ *      ONLY after every mechanical rung missed: a set that self-anchors keeps
+ *      its precise sub-topic home (the corpus law "placement reconcile drops
+ *      stamps once the set self-anchors"); the stamp is the last-resort home,
+ *      never a demotion.
  *
  * Returns null when nothing mechanical matches (ADR-039 map-gaps queue).
  */
@@ -385,6 +391,12 @@ export function subtopicOfQuestionSet(
   // 6. topic-level home → "General requirements" row
   const t = topicHomeOfSet(topic, index);
   if (t) return ensureTopicGenRow(index, t.code);
+  // 7. corpus-stamped topic-level code (last resort — see doc comment)
+  const stamp = topic.subtopicCode;
+  if (stamp && stamp.endsWith("-gen")) {
+    const t2 = index.topicByCode.get(stamp.slice(0, -4));
+    if (t2) return ensureTopicGenRow(index, t2.code);
+  }
   return null;
 }
 
