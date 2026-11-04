@@ -90,7 +90,9 @@ export function ResourcePanel({ variant }: { variant: PanelVariant }) {
               href={`${base}/exam-questions/saved`}
               className={cn(
                 "group mb-3 flex items-center justify-between rounded-md border px-3 py-2 text-sm font-medium transition-colors hover:bg-muted",
-                pathname === `${base}/exam-questions/saved` && "border-primary/40 bg-primary/[0.04]",
+                // t-ui-polish run-007: the active nav item speaks the house
+                // active voice (border-primary/60), not the legacy /40.
+                pathname === `${base}/exam-questions/saved` && "border-primary/60 bg-primary/[0.04]",
               )}
             >
               <span className="flex items-center gap-2">

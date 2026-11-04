@@ -201,7 +201,9 @@ export default async function ExamQuestionsIndexPage({
             href={`${base}/exam-questions`}
             className={`rounded-full border px-2.5 py-1 text-xs font-medium transition-colors ${
               paperActive === null
-                ? "border-primary/40 bg-primary/10 text-primary"
+                // t-ui-polish run-007: the active filter chips speak the house
+                // active voice (border-primary/60), not the legacy /40.
+                ? "border-primary/60 bg-primary/10 text-primary"
                 : "text-muted-foreground hover:bg-muted"
             }`}
           >
@@ -213,7 +215,7 @@ export default async function ExamQuestionsIndexPage({
               href={`${base}/exam-questions?paper=${encodeURIComponent(p)}`}
               className={`rounded-full border px-2.5 py-1 text-xs font-medium transition-colors ${
                 paperActive === p
-                  ? "border-primary/40 bg-primary/10 text-primary"
+                  ? "border-primary/60 bg-primary/10 text-primary"
                   : "text-muted-foreground hover:bg-muted"
               }`}
             >

@@ -2331,7 +2331,9 @@ function MarkSchemeDialog({
                     </Button>
                   )}
                   {typed && (
-                    <div className="rounded-md border border-dashed border-primary/40 bg-primary/5 p-3">
+                    // t-ui-polish run-007: the typed-answer shell speaks the
+                    // house active voice (border-primary/60), not the legacy /40.
+                    <div className="rounded-md border border-dashed border-primary/60 bg-primary/5 p-3">
                       <p className="mb-1 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-primary">
                         <PenLine className="size-3" aria-hidden /> Your typed answer
                       </p>

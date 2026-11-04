@@ -144,7 +144,7 @@ export function CourseDirectory({
                   className={
                     c.hasBundle
                       ? "h-full border-primary/30 transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
-                      : "h-full transition-[border-color,box-shadow] group-hover:border-primary/40 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
+                      : "h-full transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
                   }
                 >
                   <CardContent className="flex min-h-[7.5rem] items-start gap-3 p-5 sm:min-h-[8rem]">

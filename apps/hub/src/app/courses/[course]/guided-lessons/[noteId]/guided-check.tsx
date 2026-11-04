@@ -142,7 +142,9 @@ function GuidedCheck({ index, question, pickedKey, revealed, onPick, onReveal }:
                 className={cn(
                   "flex items-start gap-3 rounded-md border px-3 py-2.5 text-left text-[13px] transition-colors",
                   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
-                  state === "idle" && "hover:border-primary/40",
+                  // t-ui-polish run-007: the idle hover speaks the house voice,
+                  // matching the picked state's border-primary/60 below.
+                  state === "idle" && "hover:border-primary/60",
                   state === "picked" && "border-primary/60 bg-primary/5",
                   state === "correct" && "border-success/50 bg-success/10",
                   state === "wrong" && "border-destructive/50 bg-destructive/10",

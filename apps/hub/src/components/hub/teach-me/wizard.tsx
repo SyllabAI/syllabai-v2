@@ -125,7 +125,9 @@ export function TeachMeWizard({ topics, onStart, busy }: TeachMeWizardProps) {
               aria-current={step === i ? "step" : undefined}
               className={`rounded-full border px-2.5 py-1 transition-colors ${
                 step === i
-                  ? "border-primary/40 bg-primary/10 font-medium text-primary"
+                  // t-ui-polish run-007: the current step speaks the house
+                  // active voice (border-primary/60), not the legacy /40.
+                  ? "border-primary/60 bg-primary/10 font-medium text-primary"
                   : i < step
                     ? "border-muted-foreground/20 text-muted-foreground"
                     : "border-muted-foreground/15 text-muted-foreground/60"
