@@ -36,7 +36,10 @@ const FOUNDATION_BUNDLE = join(
 
 /** sha256 of record — the pinned-bundle law (see module header). */
 // re-pinned after 2ece53b (T-CONSUME-EDX-1 re-import changed the curriculum bytes; its gates did not include bun test)
-const HIGHER_SHA256 = "d1059c0a7e8f6f7b76464fb39c53633dcc848bde33699fc29acad899bdd47c6d";
+// re-pinned after 2e6dbe80 (RN-DEBRIS-11 run-004: 16 spec-point title repairs from the official
+// 4MA1 printed text — scatter/jam debris removed, zero node-structure change; conscious repair
+// disclosed in .syllabai/receipts/RN-DEBRIS-11/run-004-spec-page-scatter-jam-r0.json)
+const HIGHER_SHA256 = "55aad22c689df82904b87754013e834d2aeb3cf8ca271f74b7498c32550b9bd5";
 
 const higherBytes = readFileSync(HIGHER_BUNDLE, "utf8");
 const higherBundle = JSON.parse(higherBytes) as BundleCurriculumLike;

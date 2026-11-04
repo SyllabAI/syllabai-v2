@@ -99,5 +99,10 @@
  "next": [
   "post-merge: verify the static spec pages re-render (deployment fresh via existing probe pattern) on igcse-maths-a-18-higher + the two modular courses",
   "follow-up lane census: the 50-residual S1/S2 corpus-wide + foundation jam family + igcse-maths-b-16 4J (needs 4MB1 official doc)"
- ]
+ ],
+ "ciGate": {
+  "event": "PR #761 first CI round: census success, hub in-progress, verify FAILED at books-bundle-spine.test.ts:47 — the higher-bundle sha256-of-record pin (d1059c0a...) caught the conscious curriculum-byte change, exactly the anti-silent-drift law working as designed",
+  "resolution": "re-pinned of record to 55aad22c... with a dated comment citing this receipt (of-record precedent: the 2ece53b re-pin comment); zero test fixtures quote any damaged wording (grep-verified before re-pin); structural assertions (census 234/6/39/188, byTier, code order, 1.1A wording, join smoke) unaffected by title-only repairs",
+  "raceGuard": "origin/main moved a47d4496 -> 018739e7 (#743) mid-run; rebase onto 018739e7; the only conflict was the dual worklog tails — resolved as append-only union (theirs-verbatim-first + this run's section, zero markers)"
+ }
 }
