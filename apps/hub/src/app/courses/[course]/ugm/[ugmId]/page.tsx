@@ -90,7 +90,10 @@ export default async function UgmReaderPage({
         ]}
       />
 
-      <header className="mt-4 space-y-3">
+      {/* t-ui-polish run-005: the crumb→header join aligns with the 20px
+          stack rhythm every other bare-breadcrumb reader uses (space-y-5).
+          The page's internal furniture/content/footer tiering stays. */}
+      <header className="mt-5 space-y-3">
         <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-[28px]">
           <MathText text={resource.title} />
         </h1>
@@ -167,6 +170,8 @@ export default async function UgmReaderPage({
       {siblings.length > 0 ? (
         <nav aria-label="More from these spec points" className="mt-8 border-t pt-4">
           <p className="mb-2 text-sm font-semibold">More from these spec points</p>
+          {/* t-ui-polish run-005: sibling links speak the house card-hover
+              voice (border-primary/60 + shadow-sm lift), not the legacy /40. */}
           <ul className="grid gap-2 sm:grid-cols-2">
             {siblings.map((id) => {
               const r = ugm.resources.find((x) => x.ugmId === id);
@@ -175,7 +180,7 @@ export default async function UgmReaderPage({
                 <li key={id}>
                   <Link
                     href={`${base}/ugm/${r.ugmId}`}
-                    className="flex items-center gap-2 rounded-md border px-3 py-2 text-[13px] transition-colors hover:border-primary/40"
+                    className="flex items-center gap-2 rounded-md border px-3 py-2 text-[13px] transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
                   >
                     <ArrowLeft className="size-3.5 rotate-180 text-primary" aria-hidden />
                     <span className="min-w-0 truncate">

@@ -75,6 +75,7 @@ import { createBooksRouter } from "./routes/books";
 import { buildLlmAdminRouters } from "./routes/llmadmin";
 import { buildLearnerMeRouters } from "./routes/learnerme";
 import { buildTeacherMeRouters } from "./routes/teacherme";
+import { buildWorkspaceDocsRouters } from "./routes/workspace-docs";
 import { buildLearnerKgRouters } from "./routes/learnerkg";
 import { buildRevisionNotesRouters } from "./routes/revision-notes";
 import { buildKnowledgeRouters } from "./routes/knowledge";
@@ -111,6 +112,7 @@ const testbuilder = buildTestBuilderRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const teacherMe = buildTeacherMeRouters();
+const workspaceDocs = buildWorkspaceDocsRouters();
 const learnerKg = buildLearnerKgRouters();
 const learnerProgress = buildLearnerProgressRouters();
 const learnerStudyPlan = buildLearnerStudyPlanRouters();
@@ -549,6 +551,14 @@ app.route("/api/v1/learners/me", learnerMe.learnerMeRoute);
 // classroom.ts shell law); the /api/v1/* fallback below stays the
 // 404-after-auth path for NO router claimed.
 app.route("/api/v1/teachers/me", teacherMe.teacherMeRoute);
+// Workspace-docs router (T-AUDIT-TIER1 run-003 — v2-NATIVE additive, NO
+// frozen-core counterpart): the closed-vocabulary per-account document
+// plane under /api/v1/me/documents (the tutor/assistant/CLA thread pools
+// this band; deck/guided-flow/progress/teacher-classes/test-builder-drafts
+// follow in run-004). The router owns its authz internally (requireAuth —
+// every signed-in account owns this plane; the /api/v1/* fallback below
+// stays the 404-after-auth path for NO router claimed).
+app.route("/api/v1/me/documents", workspaceDocs.workspaceDocsRoute);
 // SME admin router (T-MIG-033 tranche-3 — Wave 3). Path parity with the
 // frozen core: SmeQuestionAdminController under /api/v1/admin/question-bank
 // (SecurityConfig.java:86 hasRole("ADMIN") + @PreAuthorize defense-in-depth;

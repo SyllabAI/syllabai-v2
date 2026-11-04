@@ -84,7 +84,7 @@ function CoverageBar({
 
 function FailureCard({ body }: { body: string }) {
   return (
-    <Card className="mt-8">
+    <Card className="mt-6">
       <CardContent className="space-y-3 py-6">
         <p className="text-sm text-muted-foreground">{body}</p>
         <Button variant="outline" onClick={() => window.location.reload()}>
@@ -139,7 +139,7 @@ export function CoveragePanel({ course }: { course: string }) {
 
   if (graphLoading || (!rollup && !graphFailed)) {
     return (
-      <p className="mt-8 text-sm text-muted-foreground">
+      <p className="mt-6 text-sm text-muted-foreground">
         Reading the syllabus map and joining your evidence…
       </p>
     );
@@ -163,7 +163,7 @@ export function CoveragePanel({ course }: { course: string }) {
   const awaiting = learner.drawer.stats.awaitingMarks;
 
   return (
-    <div className="mt-8 space-y-6">
+    <div className="mt-6 space-y-6">
       {/* ── overall ── */}
       <Card>
         <CardContent className="space-y-4 py-6">
