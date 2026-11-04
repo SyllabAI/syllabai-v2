@@ -70,7 +70,7 @@ import { useLastOpened, resourceLabel } from "@/lib/last-opened";
 import { useCourseProgress } from "@/lib/progress";
 // UX audit 2026-10-02 #17: the dashboard's sub-1%-decimal formatting is now
 // the shared contract (progress-ring and strengths-panel had rounded to 0%)
-import { formatPercent } from "@/lib/format";
+import { formatPercent, percentLabel } from "@/lib/format";
 import { api, getToken } from "@/lib/api";
 import { railTodayCopy, useStudyPlan } from "@/lib/study-plan-client";
 import { boardOf, hasExamSeriesCalendar } from "@/lib/board";
@@ -126,16 +126,6 @@ function percentOf(done: number, total: number | undefined): number | undefined 
 
 function plural(n: number, unit: string): string {
   return `${n} ${unit}${n === 1 ? "" : "s"}`;
-}
-
-/** Dashboard UX review 2026-11-04: a wall of near-zero percentages read as
- *  noise ("0.4%" of a 2,703-question bank is not a progress report) and a
- *  column of 0% bars read as failure. Below five percent the label says
- *  where you are in words; the bar underneath still moves. */
-function percentLabel(percent: number): string {
-  if (percent <= 0) return "Not started";
-  if (percent < 5) return "Just started";
-  return formatPercent(percent);
 }
 
 /**
