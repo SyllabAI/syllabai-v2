@@ -92,6 +92,10 @@ export default async function CourseUgmPage({
               </Badge>
             </div>
             <ul className="grid gap-2 sm:grid-cols-2">
+              {/* t-ui-polish run-005: the lane's resource card-links speak the
+                  house card-hover voice (border-primary/60 + shadow-sm lift).
+                  Legacy /40 border-shifts — same pattern as the reader's
+                  sibling nav, upgraded together. */}
               {sp.ugmIds.map((id) => {
                 const r = byId.get(id);
                 if (!r) return null; // bundle law guarantees presence; stay honest if drift
@@ -100,7 +104,7 @@ export default async function CourseUgmPage({
                   <li key={id}>
                     <Link
                       href={`${base}/ugm/${r.ugmId}`}
-                      className="group flex h-full items-start gap-3 rounded-md border px-3 py-2.5 transition-colors hover:border-primary/40"
+                      className="group flex h-full items-start gap-3 rounded-md border px-3 py-2.5 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
                     >
                       <Compass className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
                       <span className="min-w-0">
@@ -148,7 +152,7 @@ export default async function CourseUgmPage({
               <li key={r.ugmId}>
                 <Link
                   href={`${base}/ugm/${r.ugmId}`}
-                  className="group flex h-full items-start gap-3 rounded-md border border-dashed px-3 py-2.5 transition-colors hover:border-primary/40"
+                  className="group flex h-full items-start gap-3 rounded-md border border-dashed px-3 py-2.5 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
                 >
                   <Landmark className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
                   <span className="min-w-0">

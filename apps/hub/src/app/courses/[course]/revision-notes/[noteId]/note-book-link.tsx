@@ -98,11 +98,13 @@ export function NoteBookLinks({
 
   return (
     <section aria-label="In the student book" className="pt-2">
+      {/* t-ui-polish run-005: book back-links speak the house card-hover
+          voice (border-primary/60 + shadow-sm lift), not the legacy /40. */}
       {matches.map((c) => (
         <Link
           key={c.chapterKey}
           href={`/courses/${course}/books/${c.documentId}?chapter=${encodeURIComponent(c.chapterKey)}`}
-          className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-colors hover:border-primary/40"
+          className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
         >
           <BookOpen className="size-4 text-primary" aria-hidden />
           <span className="text-[13px] font-medium">
