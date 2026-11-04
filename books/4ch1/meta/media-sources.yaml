@@ -521,3 +521,590 @@
   checked_date: "2026-11-02"
   recheck_days: 90
   status: curated
+
+# ── T-BOOK-074 full-coverage extension (ADR-BOOK-0006): every remaining
+# fetch-verified Cognito Edexcel-IGCSE Chemistry video, one row per asset.
+# Curation of record: 93-topic census + fresh provider/oembed/nocookie
+# verification on 2026-11-04 (trace 1a1a4e45ca4e2325). The ADR-BOOK-0002 pilot density
+# guard (≤2 media blocks/chapter) is revisited by ADR-BOOK-0006: full-coverage
+# mode — per-chapter media blocks may exceed 2. Duplicate-asset policy: one
+# video = one row = one canonical hosting chapter.
+
+- id: cog-1-7-purity
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Purity & Formulations (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/a3JTUUhQVWs/1.7-purity"
+  youtube_id: X1zptKXIEfY
+  specRefs: ["1.9"]
+  hosting_pack: "u1-c02-elements-compounds-and-mixtures"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-1-8-filtration-crystallisation
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Separation Techniques - Filtration | Evaporation | Crystallisation"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/dmNWdnR2dVI/1.8-filtration-crystallisation"
+  youtube_id: 29Rd-Lly-fw
+  specRefs: ["1.10"]
+  hosting_pack: "u1-c02-elements-compounds-and-mixtures"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-1-9-chromatography-rf-values
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Paper Chromatography"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/eURiTmJNeHk/1.9-chromatography-rf-values"
+  youtube_id: TdJ57SQ6GAQ
+  specRefs: ["1.11"]
+  hosting_pack: "u1-c02-elements-compounds-and-mixtures"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-1-10-distillation
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Distillation - Simple & Fractional Distillation (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/WXV5b09SY2U/1.10-distillation"
+  youtube_id: wFZrm7CAg0M
+  specRefs: ["1.12"]
+  hosting_pack: "u1-c02-elements-compounds-and-mixtures"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-7-1-paper-chromatography-rf-values
+  provider: cognito
+  kind: video
+  title: "Chromatography - GCSE Science Required Practical"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/WWljWkpJWWQ/7.1-paper-chromatography-rf-values"
+  youtube_id: pnTGNAfu6GE
+  specRefs: ["1.13"]
+  hosting_pack: "u1-c02-elements-compounds-and-mixtures"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-1-5-isotopes-relative-atomic-mass
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Elements, Isotopes & Relative Atomic Mass (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/TXRmZW1jY2M/1.5-isotopes-relative-atomic-mass"
+  youtube_id: -FBk8cNvJds
+  specRefs: ["1.17"]
+  hosting_pack: "u1-c03-atomic-structure"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-2-2-electronic-structure
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Electronic Structure (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/Rm5XUUdoVWE/2.2-electronic-structure"
+  youtube_id: kvTzdD1eGUQ
+  specRefs: ["1.19"]
+  hosting_pack: "u1-c04-the-periodic-table"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-2-3-metals-non-metals
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Metals & Non-metals: Electron Arrangement & Properties (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/b1J0aUNSSVA/2.3-metals-non-metals"
+  youtube_id: DOB_fJO6-uA
+  specRefs: ["1.21"]
+  hosting_pack: "u1-c04-the-periodic-table"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-3-4-relative-formula-mass
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Relative Formula Mass | Mr & Percentage Mass Calculations (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/aXNVZVNla3E/3.4-relative-formula-mass"
+  youtube_id: -I2mwJH6MhA
+  specRefs: ["1.26"]
+  hosting_pack: "u1-c05-formulae-and-calculations-part-1"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-3-5-the-mole
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Moles & Mass - Avogadro's Constant | Formula for Moles, Mass & Mr (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/cGRMelFkdHg/3.5-the-mole"
+  youtube_id: kBlmEfS_P00
+  specRefs: ["1.27", "1.28"]
+  hosting_pack: "u1-c05-formulae-and-calculations-part-1"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-3-7-limiting-reactants
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Limiting Reactants & Balanced Equations (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/cWZwTWlBeFQ/3.7-limiting-reactants"
+  youtube_id: LTnhZvyOvFU
+  specRefs: ["1.29"]
+  hosting_pack: "u1-c05-formulae-and-calculations-part-1"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-3-8-percentage-yield
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Percentage Yield - Theoretical & Actual Yield | Calculations (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/d2JuaHd6Z1Q/3.8-percentage-yield"
+  youtube_id: DIird9oZVII
+  specRefs: ["1.30"]
+  hosting_pack: "u1-c05-formulae-and-calculations-part-1"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-3-12-gas-volume-calculations
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Gas Calculations - Volume & Moles | Mass, Moles & Mr (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/QXZmenVtR3g/3.12-gas-volume-calculations"
+  youtube_id: Xx9xrkbDLog
+  specRefs: ["1.35C"]
+  hosting_pack: "u1-c06-formulae-and-calculations-part-2"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-2-5-formation-of-ions
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Formation of Ions - Electrons | Charge | Equations (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/dUFDakZ0WFk/2.5-formation-of-ions"
+  youtube_id: V1OXjdN9QoU
+  specRefs: ["1.37"]
+  hosting_pack: "u1-c07-ionic-bonding"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-2-7-ionic-compounds
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Ionic Compounds - Structure | Properties | Formula (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/SERBbmhhZ3U/2.7-ionic-compounds"
+  youtube_id: ybi6kQHKVws
+  specRefs: ["1.39", "1.40"]
+  hosting_pack: "u1-c07-ionic-bonding"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-2-9-simple-giant-covalent-structures
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Types of Covalent Structures: Simple Molecular & Giant Covalent Structures"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/bnduY1ByeFI/2.9-simple-giant-covalent-structures"
+  youtube_id: SxuldWdqFB0
+  specRefs: ["1.47", "1.48", "1.49"]
+  hosting_pack: "u1-c08-covalent-bonding"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-2-10-diamond-graphite
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Diamond & Graphite - Structure | Properties (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/U0FnaGFpcm4/2.10-diamond-graphite"
+  youtube_id: RVV8pncaA7A
+  specRefs: ["1.50"]
+  hosting_pack: "u1-c08-covalent-bonding"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-2-11-fullerenes
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Graphene & Fullerenes - Structure | Properties | Uses (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/SEx2dEZURXU/2.11-fullerenes"
+  youtube_id: ZeJubj0KWdM
+  specRefs: ["1.50"]
+  hosting_pack: "u1-c08-covalent-bonding"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-3-13-electrolysis-molten-compounds
+  provider: cognito
+  kind: video
+  title: "Electrolysis Part 1/3 - Basics and Molten Compounds (2027/28 Exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/eFhMWG1vaWk/3.13-electrolysis-molten-compounds"
+  youtube_id: RAEm-kJ_QkU
+  specRefs: ["1.58C"]
+  hosting_pack: "u1-c10-electrolysis"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-7-7-electrolysis-of-aqueous-solutions
+  provider: cognito
+  kind: video
+  title: "Electrolysis - GCSE Science Required Practical"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/TUFoWE1DeWM/7.7-electrolysis-of-aqueous-solutions"
+  youtube_id: tCHE_7QeRUc
+  specRefs: ["1.60C"]
+  hosting_pack: "u1-c10-electrolysis"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-4-5-the-greenhouse-effect
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Greenhouse Gases & Climate Change (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/R3dHS09tSHk/4.5-the-greenhouse-effect"
+  youtube_id: 5ZzDxYY48HQ
+  specRefs: ["2.13"]
+  hosting_pack: "u2-c13-gases-in-the-atmosphere"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-4-7-corrosion-rusting
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - What is Corrosion and How to Stop it (2026/27 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/T0dUWGVPSkc/4.7-corrosion-rusting"
+  youtube_id: q0CAfXV-YdY
+  specRefs: ["2.18", "2.19"]
+  hosting_pack: "u2-c14-reactivity-series"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-4-8-redox
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Redox Reactions - Displacement Reactions | Ionic Equations | Half Equations"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/SFFJQXZCaUE/4.8-redox"
+  youtube_id: QlG9Kt-9yTI
+  specRefs: ["2.20"]
+  hosting_pack: "u2-c14-reactivity-series"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-4-14-titration-calculations
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Moles, Concentration & Volume Calculations"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/TVVCV3FMTmI/4.14-titration-calculations"
+  youtube_id: MEQ1YGxfAQ4
+  specRefs: ["2.33C"]
+  hosting_pack: "u2-c16-acids-alkalis-titrations"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-4-19-tests-for-gases
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Testing for Gases - Hydrogen/Chlorine/Oxygen/CO2 (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/bU5wSmtOY0E/4.19-tests-for-gases"
+  youtube_id: QH-7X5STCO4
+  specRefs: ["2.44"]
+  hosting_pack: "u2-c18-chemical-tests"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-5-3-bond-energy-calculations
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Bond Energies - Determining if Reactions are Exothermic or Endothermic"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/TGNqZGRhbHo/5.3-bond-energy-calculations"
+  youtube_id: CegXaqWMyr4
+  specRefs: ["3.6C", "3.7C"]
+  hosting_pack: "u3-c19-energetics"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-7-8-temperature-changes-in-reacting-solutions
+  provider: cognito
+  kind: video
+  title: "Temperature Changes - GCSE Science Required Practical"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/YWxoRHdERlQ/7.8-temperature-changes-in-reacting-solutions"
+  youtube_id: tKxcQYZ2YH8
+  specRefs: ["3.8"]
+  hosting_pack: "u3-c19-energetics"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-5-4-rate-of-reaction-measuring-it
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry -  Rates of Reaction - How to Measure it | How to Show it on Graphs (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/dUdmUHJuZk4/5.4-rate-of-reaction-measuring-it"
+  youtube_id: HaQm4pNMZug
+  specRefs: ["3.9"]
+  hosting_pack: "u3-c20-rates-of-reaction"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-5-6-calculating-rate-from-graphs
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry -  Measuring Rates of Reaction from Graphs - Mean Rate & Rate at a Specific Time"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/eEVkeFNvT1c/5.6-calculating-rate-from-graphs"
+  youtube_id: aanZzrUPEDw
+  specRefs: ["3.15"]
+  hosting_pack: "u3-c20-rates-of-reaction"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-7-9-rate-of-reaction-by-gas-collection-or-mass-loss
+  provider: cognito
+  kind: video
+  title: "Rates Of Reaction 2 (Collecting Gas) - GCSE Science Required Practical"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/b1lzd1lYSU4/7.9-rate-of-reaction-by-gas-collection-or-mass-loss"
+  youtube_id: ssa3wh3RNt0
+  specRefs: ["3.15"]
+  hosting_pack: "u3-c20-rates-of-reaction"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-5-8-changing-the-position-of-equilibrium
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Le Chatelier's Principle - Position of Equilibrium in Reversible Reactions"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/cmNCcXRrU0I/5.8-changing-the-position-of-equilibrium"
+  youtube_id: KZPO23kia_o
+  specRefs: ["3.19C", "3.20C"]
+  hosting_pack: "u3-c21-reversible-reactions-and-equilibria"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-6-4-cracking
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Cracking & Alkenes - Catalytic & Steam Cracking | Equations (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/b0hrdlVtbU4/6.4-cracking"
+  youtube_id: LfweGr7Y8L4
+  specRefs: ["4.17", "4.18"]
+  hosting_pack: "u4-c23-crude-oil"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-6-6-air-pollution
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Air Pollution - How Pollutants are Made | Why They're Harmful (2027/28 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/Zk9EQ0tQUUQ/6.6-air-pollution"
+  youtube_id: H0Z_R6GLo9A
+  specRefs: ["4.12", "4.14", "4.15", "4.16"]
+  hosting_pack: "u4-c23-crude-oil"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated
+- id: cog-6-13-condensation-polymers
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - Condensation Polymers (Polyesters) (2026/27 exams)"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/bWFLTURTRWg/6.13-condensation-polymers"
+  youtube_id: U-eCXeFwTgY
+  specRefs: ["4.49C", "4.50C"]
+  hosting_pack: "u4-c29-synthetic-polymers"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (full-coverage order trace 1a1a4e45ca4e2325; basis unchanged from ADR-BOOK-0002 decision 4 + pilot endorsement trace 1a179adedb4682cd)"
+    reviewed_date: "2026-11-04"
+  checked_date: "2026-11-04"
+  recheck_days: 90
+  status: curated

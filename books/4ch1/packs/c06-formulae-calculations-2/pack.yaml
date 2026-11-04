@@ -1,12 +1,14 @@
 # S0 output of record - c06-formulae-calculations-2
 # T-BOOK-070: b08 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 7 -> 8);
 # the S0 plan is binding — lint G1 checks planned == on-disk.
+# T-BOOK-074: b09 media-embed appended — Cognito full-coverage extension (ADR-BOOK-0006; planned_blocks 8 -> 9; trace 1a1a4e45ca4e2325).
+
 chapter: "c06"
 chapter_key: "u1:c6"
 title: "Formulae and calculations (part 2)"
 status: published # S4 flip of record — T-BOOK-016 (operator dispatch trace 1a15f18fdca65e79); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 8
+planned_blocks: 9
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p73 intro, p75 excess, p77 ladder + example, p78 sim, p79 titrations, p80 check"
 blocks:
@@ -18,3 +20,4 @@ blocks:
   - {ord: 6, id: "c06-formulae-calculations-2/b06", type: table-fill, file: "blocks/b06-table-fill-titration.json", anchor: 79}
   - {ord: 7, id: "c06-formulae-calculations-2/b07", type: mcq-embed, file: "blocks/b07-mcq-check.json", anchor: 80}
   - {ord: 8, id: "c06-formulae-calculations-2/b08", type: media-embed, file: "blocks/b08-media-embed.json", anchor: 80}
+  - {ord: 9, id: "c06-formulae-calculations-2/b09", type: media-embed, file: "blocks/b09-media-embed.json", anchor: 80}

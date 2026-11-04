@@ -1,12 +1,14 @@
 # S0 output of record - c14-reactivity-series (T-BOOK-011)
 # T-BOOK-070: b08 media-embed appended per ADR-BOOK-0002 widen (planned_blocks 7 -> 8);
 # the S0 plan is binding — lint G1 checks planned == on-disk.
+# T-BOOK-074: b09 media-embed appended — Cognito full-coverage extension (ADR-BOOK-0006; planned_blocks 8 -> 9; trace 1a1a4e45ca4e2325).
+
 chapter: "c14"
 chapter_key: "u2:c14"
 title: "Reactivity series"
 status: published # S4 flip of record — T-BOOK-011/012 r0 (operator dispatch trace 1a15f60b53d4e0d5); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 8
+planned_blocks: 10
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 note: "page-true anchors ascending: p154 intro, p155 series figure + order drag, p156 redox builder, p162 mcq, p164 predictions sort, p165 rusting callout"
 blocks:
@@ -18,3 +20,5 @@ blocks:
   - {ord: 6, id: "c14-reactivity-series/b06", type: sort-match, file: "blocks/b06-sort-match-predictions.json", anchor: 164}
   - {ord: 7, id: "c14-reactivity-series/b07", type: callout, file: "blocks/b07-callout-rusting.json", anchor: 165}
   - {ord: 8, id: "c14-reactivity-series/b08", type: media-embed, file: "blocks/b08-media-embed.json", anchor: 165}
+  - {ord: 9, id: "c14-reactivity-series/b09", type: media-embed, file: "blocks/b09-media-embed.json", anchor: 165}
+  - {ord: 10, id: "c14-reactivity-series/b10", type: media-embed, file: "blocks/b10-media-embed.json", anchor: 165}
