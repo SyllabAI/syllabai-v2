@@ -55,8 +55,26 @@ export const GradeBoundariesSchema = z.object({
           aStar: z
             .object({
               overallMin: z.number(),
-              a2Min: z.number(),
+              // T-GRADE-10: the two A* forms are mutually exclusive —
+              // pair-mode courses carry the fixed a2Min (e.g. 180/200
+              // from P3+P4); selection-mode courses carry the rate
+              // (a2Rate 0.9) because the A2 UMS maximum depends on which
+              // units the candidate's combination uses
+              a2Min: z.number().optional(),
+              a2Rate: z.number().optional(),
               a2Units: z.array(z.string()),
+            })
+            .optional(),
+          // selection-mode cash-ins (T-GRADE-10, YFM01): the candidate's
+          // `size` units are drawn from the official pool — mustInclude
+          // and atLeastOneOf guard eligibility (IAL 2018 Mathematics
+          // Aggregation Rules & Guidance + the info manual's routes)
+          selection: z
+            .object({
+              pool: z.array(z.string()),
+              size: z.number(),
+              mustInclude: z.array(z.string()).optional(),
+              atLeastOneOf: z.array(z.string()).optional(),
             })
             .optional(),
         })

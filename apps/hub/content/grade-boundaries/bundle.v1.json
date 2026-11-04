@@ -1,11 +1,11 @@
 {
  "schema": "syllabai.grade-boundaries/1.0",
- "generated": "2026-11-02T06:40:40Z",
+ "generated": "2026-11-04T18:50:53Z",
  "generator": "GradeBoundaries/scripts/build_hub_import.py v2",
  "source": {
   "lane": "SyllabAI/syllabai-resources GradeBoundaries",
-  "documents": 159,
-  "manifest_sha16": "c175e3544d8d774c"
+  "documents": 144,
+  "manifest_sha16": "e7631b68359dc6e2"
  },
  "counts": {
   "courses_served": 105,
@@ -93888,8 +93888,45 @@
     "U"
    ],
    "calculator": {
-    "mode": "display-only",
-    "maxMark": null
+    "mode": "aggregate-ums",
+    "cashIn": "YFM01",
+    "required": [
+     "WFM01"
+    ],
+    "selection": {
+     "pool": [
+      "WFM01",
+      "WFM02",
+      "WFM03",
+      "WME01",
+      "WME02",
+      "WME03",
+      "WST01",
+      "WST02",
+      "WST03",
+      "WDM11"
+     ],
+     "size": 6,
+     "mustInclude": [
+      "WFM01"
+     ],
+     "atLeastOneOf": [
+      "WFM02",
+      "WFM03"
+     ]
+    },
+    "aStar": {
+     "overallMin": 480,
+     "a2Rate": 0.9,
+     "a2Units": [
+      "WFM02",
+      "WFM03",
+      "WME02",
+      "WME03",
+      "WST02",
+      "WST03"
+     ]
+    }
    },
    "reviewRequired": false,
    "series": [
@@ -93932,6 +93969,132 @@
          "U": 0
         }
        }
+      },
+      {
+       "code": "WME01",
+       "title": "Mechanics M1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 60,
+        "B": 53,
+        "C": 46,
+        "D": 39,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Statistics S1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 58,
+        "B": 50,
+        "C": 42,
+        "D": 35,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Mechanics M2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 62,
+        "B": 55,
+        "C": 48,
+        "D": 41,
+        "E": 35,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Statistics S2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 59,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Mechanics M3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 67,
+        "B": 60,
+        "C": 53,
+        "D": 46,
+        "E": 39,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ],
      "cashIns": [
@@ -93956,6 +94119,158 @@
         "U"
        ]
       }
+     ],
+     "calculatorUnits": [
+      {
+       "code": "WFM01",
+       "title": "Further Pure Mathematics F1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 64,
+        "B": 59,
+        "C": 54,
+        "D": 49,
+        "E": 44,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "Mechanics M1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 60,
+        "B": 53,
+        "C": 46,
+        "D": 39,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Mechanics M2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 62,
+        "B": 55,
+        "C": 48,
+        "D": 41,
+        "E": 35,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Mechanics M3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 67,
+        "B": 60,
+        "C": 53,
+        "D": 46,
+        "E": 39,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Statistics S1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 58,
+        "B": 50,
+        "C": 42,
+        "D": 35,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Statistics S2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 59,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
      ]
     },
     {
@@ -93974,6 +94289,283 @@
       "sha256_16": "e354abe7435cd0dc"
      },
      "units": [
+      {
+       "code": "WFM01",
+       "title": "Further Pure Mathematics F1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 61,
+        "B": 54,
+        "C": 47,
+        "D": 40,
+        "E": 34,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "Mechanics M1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 63,
+        "B": 56,
+        "C": 49,
+        "D": 43,
+        "E": 37,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Statistics S1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 50,
+        "B": 43,
+        "C": 36,
+        "D": 30,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM02",
+       "title": "Further Pure Mathematics F2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 68,
+        "B": 61,
+        "C": 54,
+        "D": 47,
+        "E": 40,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM03",
+       "title": "Further Pure Mathematics F3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 67,
+        "B": 60,
+        "C": 54,
+        "D": 48,
+        "E": 42,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Mechanics M2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 65,
+        "A": 58,
+        "B": 51,
+        "C": 44,
+        "D": 38,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Mechanics M3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 64,
+        "B": 57,
+        "C": 51,
+        "D": 45,
+        "E": 39,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Statistics S2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 59,
+        "B": 51,
+        "C": 43,
+        "D": 36,
+        "E": 29,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Statistics S3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 67,
+        "B": 60,
+        "C": 53,
+        "D": 46,
+        "E": 40,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "Mathematics: Decision D1 (New)",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 59,
+        "B": 53,
+        "C": 47,
+        "D": 42,
+        "E": 37,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
+     ],
+     "cashIns": [
+      {
+       "code": "YFM01",
+       "title": "International A level Further Mathematics",
+       "maxMark": 600,
+       "boundaries": {
+        "A": 480,
+        "B": 420,
+        "C": 360,
+        "D": 300,
+        "E": 240,
+        "U": 0
+       },
+       "gradeLadder": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "U"
+       ]
+      }
+     ],
+     "calculatorUnits": [
       {
        "code": "WFM01",
        "title": "Further Pure Mathematics F1",
@@ -94049,29 +94641,182 @@
          "U": 0
         }
        }
-      }
-     ],
-     "cashIns": [
+      },
       {
-       "code": "YFM01",
-       "title": "International A level Further Mathematics",
-       "maxMark": 600,
+       "code": "WME01",
+       "title": "Mechanics M1",
+       "maxMark": 75,
        "boundaries": {
-        "A": 480,
-        "B": 420,
-        "C": 360,
-        "D": 300,
-        "E": 240,
+        "A": 63,
+        "B": 56,
+        "C": 49,
+        "D": 43,
+        "E": 37,
         "U": 0
        },
-       "gradeLadder": [
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-        "U"
-       ]
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Mechanics M2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 65,
+        "A": 58,
+        "B": 51,
+        "C": 44,
+        "D": 38,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Mechanics M3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 64,
+        "B": 57,
+        "C": 51,
+        "D": 45,
+        "E": 39,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Statistics S1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 50,
+        "B": 43,
+        "C": 36,
+        "D": 30,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Statistics S2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 59,
+        "B": 51,
+        "C": 43,
+        "D": 36,
+        "E": 29,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Statistics S3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 67,
+        "B": 60,
+        "C": 53,
+        "D": 46,
+        "E": 40,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "Mathematics: Decision D1 (New)",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 59,
+        "B": 53,
+        "C": 47,
+        "D": 42,
+        "E": 37,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ]
     },
@@ -94114,6 +94859,156 @@
          "U": 0
         }
        }
+      },
+      {
+       "code": "WME01",
+       "title": "Mechanics M1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 60,
+        "B": 53,
+        "C": 46,
+        "D": 39,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Statistics S1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 52,
+        "B": 45,
+        "C": 38,
+        "D": 31,
+        "E": 25,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Mechanics M2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 64,
+        "A": 56,
+        "B": 48,
+        "C": 40,
+        "D": 32,
+        "E": 25,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Mechanics M3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 64,
+        "B": 56,
+        "C": 48,
+        "D": 40,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Statistics S2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 64,
+        "B": 56,
+        "C": 48,
+        "D": 40,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "Mathematics: Decision D1 (New)",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 55,
+        "B": 49,
+        "C": 43,
+        "D": 38,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ],
      "cashIns": [
@@ -94138,6 +95033,182 @@
         "U"
        ]
       }
+     ],
+     "calculatorUnits": [
+      {
+       "code": "WFM01",
+       "title": "Further Pure Mathematics F1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 65,
+        "B": 60,
+        "C": 55,
+        "D": 50,
+        "E": 46,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "Mechanics M1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 60,
+        "B": 53,
+        "C": 46,
+        "D": 39,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Mechanics M2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 64,
+        "A": 56,
+        "B": 48,
+        "C": 40,
+        "D": 32,
+        "E": 25,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Mechanics M3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 64,
+        "B": 56,
+        "C": 48,
+        "D": 40,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Statistics S1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 52,
+        "B": 45,
+        "C": 38,
+        "D": 31,
+        "E": 25,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Statistics S2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 64,
+        "B": 56,
+        "C": 48,
+        "D": 40,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "Mathematics: Decision D1 (New)",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 55,
+        "B": 49,
+        "C": 43,
+        "D": 38,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
      ]
     },
     {
@@ -94156,6 +95227,283 @@
       "sha256_16": "13ccc8de73f16587"
      },
      "units": [
+      {
+       "code": "WDM11",
+       "title": "Mathematics: Decision D1 (New)",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 46,
+        "B": 38,
+        "C": 30,
+        "D": 22,
+        "E": 14,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM01",
+       "title": "Further Pure Mathematics F1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 52,
+        "B": 44,
+        "C": 36,
+        "D": 28,
+        "E": 20,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "Mechanics M1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 49,
+        "B": 38,
+        "C": 27,
+        "D": 16,
+        "E": 6,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Statistics S1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 42,
+        "B": 33,
+        "C": 24,
+        "D": 16,
+        "E": 8,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM02",
+       "title": "Further Pure Mathematics F2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 61,
+        "A": 52,
+        "B": 43,
+        "C": 34,
+        "D": 25,
+        "E": 16,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM03",
+       "title": "Further Pure Mathematics F3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 64,
+        "A": 53,
+        "B": 41,
+        "C": 30,
+        "D": 19,
+        "E": 8,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Mechanics M2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 58,
+        "A": 48,
+        "B": 38,
+        "C": 28,
+        "D": 18,
+        "E": 8,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Mechanics M3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 61,
+        "A": 52,
+        "B": 42,
+        "C": 33,
+        "D": 24,
+        "E": 15,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Statistics S2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 59,
+        "A": 49,
+        "B": 39,
+        "C": 29,
+        "D": 19,
+        "E": 10,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Statistics S3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 64,
+        "A": 55,
+        "B": 44,
+        "C": 34,
+        "D": 24,
+        "E": 14,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
+     ],
+     "cashIns": [
+      {
+       "code": "YFM01",
+       "title": "International A Level Further Mathematics",
+       "maxMark": 600,
+       "boundaries": {
+        "A": 480,
+        "B": 420,
+        "C": 360,
+        "D": 300,
+        "E": 240,
+        "U": 0
+       },
+       "gradeLadder": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "U"
+       ]
+      }
+     ],
+     "calculatorUnits": [
       {
        "code": "WFM01",
        "title": "Further Pure Mathematics F1",
@@ -94231,29 +95579,182 @@
          "U": 0
         }
        }
-      }
-     ],
-     "cashIns": [
+      },
       {
-       "code": "YFM01",
-       "title": "International A Level Further Mathematics",
-       "maxMark": 600,
+       "code": "WME01",
+       "title": "Mechanics M1",
+       "maxMark": 75,
        "boundaries": {
-        "A": 480,
-        "B": 420,
-        "C": 360,
-        "D": 300,
-        "E": 240,
+        "A": 49,
+        "B": 38,
+        "C": 27,
+        "D": 16,
+        "E": 6,
         "U": 0
        },
-       "gradeLadder": [
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-        "U"
-       ]
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Mechanics M2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 58,
+        "A": 48,
+        "B": 38,
+        "C": 28,
+        "D": 18,
+        "E": 8,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Mechanics M3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 61,
+        "A": 52,
+        "B": 42,
+        "C": 33,
+        "D": 24,
+        "E": 15,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Statistics S1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 42,
+        "B": 33,
+        "C": 24,
+        "D": 16,
+        "E": 8,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Statistics S2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 59,
+        "A": 49,
+        "B": 39,
+        "C": 29,
+        "D": 19,
+        "E": 10,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Statistics S3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 64,
+        "A": 55,
+        "B": 44,
+        "C": 34,
+        "D": 24,
+        "E": 14,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "Mathematics: Decision D1 (New)",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 46,
+        "B": 38,
+        "C": 30,
+        "D": 22,
+        "E": 14,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ]
     },
@@ -94298,6 +95799,54 @@
        }
       },
       {
+       "code": "WME01",
+       "title": "Mechanics M1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 49,
+        "B": 38,
+        "C": 27,
+        "D": 16,
+        "E": 6,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Statistics S1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 44,
+        "B": 35,
+        "C": 26,
+        "D": 17,
+        "E": 9,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
        "code": "WFM02",
        "title": "Further Pure Mathematics F2",
        "maxMark": 75,
@@ -94348,6 +95897,134 @@
          "U": 0
         }
        }
+      },
+      {
+       "code": "WME02",
+       "title": "Mechanics M2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 58,
+        "A": 48,
+        "B": 38,
+        "C": 28,
+        "D": 18,
+        "E": 8,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Mechanics M3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 61,
+        "A": 52,
+        "B": 42,
+        "C": 33,
+        "D": 24,
+        "E": 15,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Statistics S2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 57,
+        "A": 47,
+        "B": 37,
+        "C": 28,
+        "D": 19,
+        "E": 10,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "Mathematics: Decision D1 (New)",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 46,
+        "B": 38,
+        "C": 30,
+        "D": 22,
+        "E": 14,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Statistics S3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 64,
+        "A": 55,
+        "B": 44,
+        "C": 34,
+        "D": 24,
+        "E": 14,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ],
      "cashIns": [
@@ -94372,6 +96049,260 @@
         "U"
        ]
       }
+     ],
+     "calculatorUnits": [
+      {
+       "code": "WFM01",
+       "title": "Further Pure Mathematics F1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 52,
+        "B": 44,
+        "C": 36,
+        "D": 28,
+        "E": 20,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM02",
+       "title": "Further Pure Mathematics F2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 61,
+        "A": 52,
+        "B": 43,
+        "C": 34,
+        "D": 25,
+        "E": 16,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM03",
+       "title": "Further Pure Mathematics F3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 64,
+        "A": 53,
+        "B": 41,
+        "C": 30,
+        "D": 19,
+        "E": 8,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "Mechanics M1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 49,
+        "B": 38,
+        "C": 27,
+        "D": 16,
+        "E": 6,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Mechanics M2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 58,
+        "A": 48,
+        "B": 38,
+        "C": 28,
+        "D": 18,
+        "E": 8,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Mechanics M3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 61,
+        "A": 52,
+        "B": 42,
+        "C": 33,
+        "D": 24,
+        "E": 15,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Statistics S1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 44,
+        "B": 35,
+        "C": 26,
+        "D": 17,
+        "E": 9,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Statistics S2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 57,
+        "A": 47,
+        "B": 37,
+        "C": 28,
+        "D": 19,
+        "E": 10,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Statistics S3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 64,
+        "A": 55,
+        "B": 44,
+        "C": 34,
+        "D": 24,
+        "E": 14,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "Mathematics: Decision D1 (New)",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 46,
+        "B": 38,
+        "C": 30,
+        "D": 22,
+        "E": 14,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
      ]
     },
     {
@@ -94390,6 +96321,283 @@
       "sha256_16": "8fe239da08708b38"
      },
      "units": [
+      {
+       "code": "WDM11",
+       "title": "D1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 46,
+        "B": 40,
+        "C": 34,
+        "D": 29,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM01",
+       "title": "FP1: Further Pure Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 47,
+        "B": 40,
+        "C": 34,
+        "D": 28,
+        "E": 22,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 49,
+        "B": 40,
+        "C": 32,
+        "D": 24,
+        "E": 16,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 48,
+        "B": 39,
+        "C": 31,
+        "D": 23,
+        "E": 15,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM02",
+       "title": "FP2: Further Pure Mathematics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 65,
+        "B": 55,
+        "C": 46,
+        "D": 37,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM03",
+       "title": "FP3: Further Pure Mathematics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 50,
+        "A": 39,
+        "B": 33,
+        "C": 27,
+        "D": 22,
+        "E": 17,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 57,
+        "B": 48,
+        "C": 40,
+        "D": 32,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "M3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 55,
+        "B": 46,
+        "C": 37,
+        "D": 28,
+        "E": 20,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 52,
+        "A": 38,
+        "B": 30,
+        "C": 23,
+        "D": 16,
+        "E": 9,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "S3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 58,
+        "A": 50,
+        "B": 41,
+        "C": 32,
+        "D": 24,
+        "E": 16,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
+     ],
+     "cashIns": [
+      {
+       "code": "YFM01",
+       "title": "International A Level Further Mathematics",
+       "maxMark": 600,
+       "boundaries": {
+        "A": 480,
+        "B": 420,
+        "C": 360,
+        "D": 300,
+        "E": 240,
+        "U": 0
+       },
+       "gradeLadder": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "U"
+       ]
+      }
+     ],
+     "calculatorUnits": [
       {
        "code": "WFM01",
        "title": "FP1: Further Pure Mathematics 1",
@@ -94465,29 +96673,182 @@
          "U": 0
         }
        }
-      }
-     ],
-     "cashIns": [
+      },
       {
-       "code": "YFM01",
-       "title": "International A Level Further Mathematics",
-       "maxMark": 600,
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
        "boundaries": {
-        "A": 480,
-        "B": 420,
-        "C": 360,
-        "D": 300,
-        "E": 240,
+        "A": 49,
+        "B": 40,
+        "C": 32,
+        "D": 24,
+        "E": 16,
         "U": 0
        },
-       "gradeLadder": [
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-        "U"
-       ]
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 57,
+        "B": 48,
+        "C": 40,
+        "D": 32,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "M3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 55,
+        "B": 46,
+        "C": 37,
+        "D": 28,
+        "E": 20,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 48,
+        "B": 39,
+        "C": 31,
+        "D": 23,
+        "E": 15,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 52,
+        "A": 38,
+        "B": 30,
+        "C": 23,
+        "D": 16,
+        "E": 9,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "S3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 58,
+        "A": 50,
+        "B": 41,
+        "C": 32,
+        "D": 24,
+        "E": 16,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "D1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 46,
+        "B": 40,
+        "C": 34,
+        "D": 29,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ]
     },
@@ -94506,6 +96867,108 @@
       "family": "pearson-ial",
       "sha256_16": "28c562dd2fe2b898"
      },
+     "units": [
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 48,
+        "B": 39,
+        "C": 30,
+        "D": 21,
+        "E": 13,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 48,
+        "B": 39,
+        "C": 30,
+        "D": 21,
+        "E": 13,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 59,
+        "B": 50,
+        "C": 41,
+        "D": 32,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 60,
+        "A": 46,
+        "B": 39,
+        "C": 32,
+        "D": 25,
+        "E": 18,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
+     ],
      "cashIns": [
       {
        "code": "YFM01",
@@ -94527,6 +96990,108 @@
         "E",
         "U"
        ]
+      }
+     ],
+     "calculatorUnits": [
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 48,
+        "B": 39,
+        "C": 30,
+        "D": 21,
+        "E": 13,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 59,
+        "B": 50,
+        "C": 41,
+        "D": 32,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 48,
+        "B": 39,
+        "C": 30,
+        "D": 21,
+        "E": 13,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 60,
+        "A": 46,
+        "B": 39,
+        "C": 32,
+        "D": 25,
+        "E": 18,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ]
     },
@@ -94546,6 +97111,283 @@
       "sha256_16": "275f8905b039ed7d"
      },
      "units": [
+      {
+       "code": "WDM11",
+       "title": "D1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 45,
+        "B": 39,
+        "C": 33,
+        "D": 27,
+        "E": 22,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM01",
+       "title": "FP1: Further Pure Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 47,
+        "B": 40,
+        "C": 34,
+        "D": 28,
+        "E": 22,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 52,
+        "B": 43,
+        "C": 34,
+        "D": 25,
+        "E": 16,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 48,
+        "B": 39,
+        "C": 31,
+        "D": 23,
+        "E": 15,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM02",
+       "title": "FP2: Further Pure Mathematics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 65,
+        "A": 60,
+        "B": 52,
+        "C": 44,
+        "D": 36,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM03",
+       "title": "FP3: Further Pure Mathematics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 54,
+        "A": 43,
+        "B": 37,
+        "C": 31,
+        "D": 25,
+        "E": 20,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 57,
+        "B": 48,
+        "C": 40,
+        "D": 32,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "M3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 55,
+        "B": 46,
+        "C": 37,
+        "D": 28,
+        "E": 20,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 62,
+        "A": 48,
+        "B": 40,
+        "C": 33,
+        "D": 26,
+        "E": 19,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "S3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 58,
+        "A": 50,
+        "B": 41,
+        "C": 32,
+        "D": 24,
+        "E": 16,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
+     ],
+     "cashIns": [
+      {
+       "code": "YFM01",
+       "title": "International A Level Further Mathematics",
+       "maxMark": 600,
+       "boundaries": {
+        "A": 480,
+        "B": 420,
+        "C": 360,
+        "D": 300,
+        "E": 240,
+        "U": 0
+       },
+       "gradeLadder": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "U"
+       ]
+      }
+     ],
+     "calculatorUnits": [
       {
        "code": "WFM01",
        "title": "FP1: Further Pure Mathematics 1",
@@ -94621,6 +97463,452 @@
          "U": 0
         }
        }
+      },
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 52,
+        "B": 43,
+        "C": 34,
+        "D": 25,
+        "E": 16,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 57,
+        "B": 48,
+        "C": 40,
+        "D": 32,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "M3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 55,
+        "B": 46,
+        "C": 37,
+        "D": 28,
+        "E": 20,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 48,
+        "B": 39,
+        "C": 31,
+        "D": 23,
+        "E": 15,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 62,
+        "A": 48,
+        "B": 40,
+        "C": 33,
+        "D": 26,
+        "E": 19,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "S3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 58,
+        "A": 50,
+        "B": 41,
+        "C": 32,
+        "D": 24,
+        "E": 16,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "D1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 45,
+        "B": 39,
+        "C": 33,
+        "D": 27,
+        "E": 22,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "session": "June 2023",
+     "year": 2023,
+     "gradeLadder": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "U"
+     ],
+     "source": {
+      "family": "pearson-ial",
+      "sha256_16": "f03def79429337fe"
+     },
+     "units": [
+      {
+       "code": "WDM11",
+       "title": "D1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 50,
+        "B": 45,
+        "C": 40,
+        "D": 36,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM01",
+       "title": "FP1: Further Pure Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 62,
+        "B": 55,
+        "C": 49,
+        "D": 43,
+        "E": 37,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 67,
+        "B": 58,
+        "C": 50,
+        "D": 42,
+        "E": 34,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 62,
+        "B": 53,
+        "C": 44,
+        "D": 35,
+        "E": 26,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM02",
+       "title": "FP2: Further Pure Mathematics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 66,
+        "B": 57,
+        "C": 49,
+        "D": 41,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM03",
+       "title": "FP3: Further Pure Mathematics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 53,
+        "A": 48,
+        "B": 43,
+        "C": 38,
+        "D": 33,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 64,
+        "A": 57,
+        "B": 50,
+        "C": 43,
+        "D": 37,
+        "E": 31,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "M3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 63,
+        "B": 54,
+        "C": 45,
+        "D": 36,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 57,
+        "B": 48,
+        "C": 40,
+        "D": 32,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "S3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 67,
+        "B": 58,
+        "C": 50,
+        "D": 42,
+        "E": 34,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ],
      "cashIns": [
@@ -94645,24 +97933,8 @@
         "U"
        ]
       }
-     ]
-    },
-    {
-     "session": "June 2023",
-     "year": 2023,
-     "gradeLadder": [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "U"
      ],
-     "source": {
-      "family": "pearson-ial",
-      "sha256_16": "f03def79429337fe"
-     },
-     "units": [
+     "calculatorUnits": [
       {
        "code": "WFM01",
        "title": "FP1: Further Pure Mathematics 1",
@@ -94738,29 +98010,182 @@
          "U": 0
         }
        }
-      }
-     ],
-     "cashIns": [
+      },
       {
-       "code": "YFM01",
-       "title": "International A Level Further Mathematics",
-       "maxMark": 600,
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
        "boundaries": {
-        "A": 480,
-        "B": 420,
-        "C": 360,
-        "D": 300,
-        "E": 240,
+        "A": 67,
+        "B": 58,
+        "C": 50,
+        "D": 42,
+        "E": 34,
         "U": 0
        },
-       "gradeLadder": [
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-        "U"
-       ]
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 64,
+        "A": 57,
+        "B": 50,
+        "C": 43,
+        "D": 37,
+        "E": 31,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "M3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 63,
+        "B": 54,
+        "C": 45,
+        "D": 36,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 62,
+        "B": 53,
+        "C": 44,
+        "D": 35,
+        "E": 26,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 57,
+        "B": 48,
+        "C": 40,
+        "D": 32,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "S3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 67,
+        "B": 58,
+        "C": 50,
+        "D": 42,
+        "E": 34,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "D1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 50,
+        "B": 45,
+        "C": 40,
+        "D": 36,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ]
     },
@@ -94779,6 +98204,108 @@
       "family": "pearson-ial",
       "sha256_16": "619f75b8faa53b10"
      },
+     "units": [
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 65,
+        "B": 57,
+        "C": 49,
+        "D": 41,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 62,
+        "B": 53,
+        "C": 44,
+        "D": 35,
+        "E": 26,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 64,
+        "A": 57,
+        "B": 50,
+        "C": 43,
+        "D": 37,
+        "E": 31,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 57,
+        "B": 48,
+        "C": 40,
+        "D": 32,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
+     ],
      "cashIns": [
       {
        "code": "YFM01",
@@ -94800,6 +98327,108 @@
         "E",
         "U"
        ]
+      }
+     ],
+     "calculatorUnits": [
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 65,
+        "B": 57,
+        "C": 49,
+        "D": 41,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 64,
+        "A": 57,
+        "B": 50,
+        "C": 43,
+        "D": 37,
+        "E": 31,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 62,
+        "B": 53,
+        "C": 44,
+        "D": 35,
+        "E": 26,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 57,
+        "B": 48,
+        "C": 40,
+        "D": 32,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ]
     },
@@ -94819,6 +98448,283 @@
       "sha256_16": "d8f54f704f7ee967"
      },
      "units": [
+      {
+       "code": "WDM11",
+       "title": "D1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 50,
+        "B": 45,
+        "C": 40,
+        "D": 36,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM01",
+       "title": "FP1: Further Pure Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 62,
+        "B": 56,
+        "C": 50,
+        "D": 44,
+        "E": 39,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 65,
+        "B": 56,
+        "C": 48,
+        "D": 40,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 62,
+        "B": 53,
+        "C": 44,
+        "D": 35,
+        "E": 26,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM02",
+       "title": "FP2: Further Pure Mathematics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 66,
+        "B": 57,
+        "C": 49,
+        "D": 41,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM03",
+       "title": "FP3: Further Pure Mathematics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 53,
+        "A": 48,
+        "B": 43,
+        "C": 38,
+        "D": 33,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 59,
+        "B": 52,
+        "C": 46,
+        "D": 40,
+        "E": 34,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "M3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 63,
+        "B": 54,
+        "C": 45,
+        "D": 36,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 57,
+        "B": 48,
+        "C": 40,
+        "D": 32,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "S3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 67,
+        "B": 58,
+        "C": 50,
+        "D": 42,
+        "E": 34,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
+     ],
+     "cashIns": [
+      {
+       "code": "YFM01",
+       "title": "International A Level Further Mathematics",
+       "maxMark": 600,
+       "boundaries": {
+        "A": 480,
+        "B": 420,
+        "C": 360,
+        "D": 300,
+        "E": 240,
+        "U": 0
+       },
+       "gradeLadder": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "U"
+       ]
+      }
+     ],
+     "calculatorUnits": [
       {
        "code": "WFM01",
        "title": "FP1: Further Pure Mathematics 1",
@@ -94894,6 +98800,452 @@
          "U": 0
         }
        }
+      },
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 65,
+        "B": 56,
+        "C": 48,
+        "D": 40,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 59,
+        "B": 52,
+        "C": 46,
+        "D": 40,
+        "E": 34,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "M3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 63,
+        "B": 54,
+        "C": 45,
+        "D": 36,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 62,
+        "B": 53,
+        "C": 44,
+        "D": 35,
+        "E": 26,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 57,
+        "B": 48,
+        "C": 40,
+        "D": 32,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "S3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 67,
+        "B": 58,
+        "C": 50,
+        "D": 42,
+        "E": 34,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "D1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 50,
+        "B": 45,
+        "C": 40,
+        "D": 36,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "session": "June 2024",
+     "year": 2024,
+     "gradeLadder": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "U"
+     ],
+     "source": {
+      "family": "pearson-ial",
+      "sha256_16": "87a38ec897029637"
+     },
+     "units": [
+      {
+       "code": "WDM11",
+       "title": "D1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 57,
+        "B": 52,
+        "C": 47,
+        "D": 42,
+        "E": 38,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM01",
+       "title": "FP1: Further Pure Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 64,
+        "B": 57,
+        "C": 50,
+        "D": 44,
+        "E": 38,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 64,
+        "B": 56,
+        "C": 48,
+        "D": 40,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 57,
+        "B": 49,
+        "C": 41,
+        "D": 33,
+        "E": 26,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM02",
+       "title": "FP2: Further Pure Mathematics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 68,
+        "B": 60,
+        "C": 52,
+        "D": 45,
+        "E": 38,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM03",
+       "title": "FP3: Further Pure Mathematics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 61,
+        "A": 55,
+        "B": 49,
+        "C": 43,
+        "D": 38,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 59,
+        "A": 53,
+        "B": 47,
+        "C": 41,
+        "D": 35,
+        "E": 29,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "M3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 67,
+        "B": 60,
+        "C": 53,
+        "D": 46,
+        "E": 39,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 58,
+        "B": 49,
+        "C": 40,
+        "D": 31,
+        "E": 23,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "S3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 63,
+        "B": 54,
+        "C": 45,
+        "D": 36,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ],
      "cashIns": [
@@ -94918,24 +99270,8 @@
         "U"
        ]
       }
-     ]
-    },
-    {
-     "session": "June 2024",
-     "year": 2024,
-     "gradeLadder": [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "U"
      ],
-     "source": {
-      "family": "pearson-ial",
-      "sha256_16": "87a38ec897029637"
-     },
-     "units": [
+     "calculatorUnits": [
       {
        "code": "WFM01",
        "title": "FP1: Further Pure Mathematics 1",
@@ -95011,29 +99347,182 @@
          "U": 0
         }
        }
-      }
-     ],
-     "cashIns": [
+      },
       {
-       "code": "YFM01",
-       "title": "International A Level Further Mathematics",
-       "maxMark": 600,
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
        "boundaries": {
-        "A": 480,
-        "B": 420,
-        "C": 360,
-        "D": 300,
-        "E": 240,
+        "A": 64,
+        "B": 56,
+        "C": 48,
+        "D": 40,
+        "E": 33,
         "U": 0
        },
-       "gradeLadder": [
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-        "U"
-       ]
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 59,
+        "A": 53,
+        "B": 47,
+        "C": 41,
+        "D": 35,
+        "E": 29,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "M3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 67,
+        "B": 60,
+        "C": 53,
+        "D": 46,
+        "E": 39,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 57,
+        "B": 49,
+        "C": 41,
+        "D": 33,
+        "E": 26,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 58,
+        "B": 49,
+        "C": 40,
+        "D": 31,
+        "E": 23,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "S3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 63,
+        "B": 54,
+        "C": 45,
+        "D": 36,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "D1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 57,
+        "B": 52,
+        "C": 47,
+        "D": 42,
+        "E": 38,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ]
     },
@@ -95052,6 +99541,108 @@
       "family": "pearson-ial",
       "sha256_16": "ec2d2ed09c7151ac"
      },
+     "units": [
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 63,
+        "B": 55,
+        "C": 47,
+        "D": 39,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 60,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 60,
+        "B": 52,
+        "C": 45,
+        "D": 38,
+        "E": 31,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 58,
+        "B": 49,
+        "C": 41,
+        "D": 33,
+        "E": 25,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
+     ],
      "cashIns": [
       {
        "code": "YFM01",
@@ -95073,6 +99664,108 @@
         "E",
         "U"
        ]
+      }
+     ],
+     "calculatorUnits": [
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 63,
+        "B": 55,
+        "C": 47,
+        "D": 39,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 60,
+        "B": 52,
+        "C": 45,
+        "D": 38,
+        "E": 31,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 60,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 58,
+        "B": 49,
+        "C": 41,
+        "D": 33,
+        "E": 25,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ]
     },
@@ -95092,6 +99785,283 @@
       "sha256_16": "217805b52ec63a2d"
      },
      "units": [
+      {
+       "code": "WDM11",
+       "title": "D1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 58,
+        "B": 51,
+        "C": 45,
+        "D": 39,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM01",
+       "title": "FP1: Further Pure Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 64,
+        "B": 58,
+        "C": 52,
+        "D": 46,
+        "E": 40,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 64,
+        "B": 56,
+        "C": 48,
+        "D": 40,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 59,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM02",
+       "title": "FP2: Further Pure Mathematics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 66,
+        "B": 58,
+        "C": 50,
+        "D": 43,
+        "E": 36,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM03",
+       "title": "FP3: Further Pure Mathematics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 62,
+        "B": 55,
+        "C": 48,
+        "D": 42,
+        "E": 36,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 60,
+        "B": 53,
+        "C": 46,
+        "D": 39,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "M3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 62,
+        "B": 53,
+        "C": 45,
+        "D": 37,
+        "E": 29,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 59,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "S3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 66,
+        "B": 57,
+        "C": 48,
+        "D": 39,
+        "E": 31,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
+     ],
+     "cashIns": [
+      {
+       "code": "YFM01",
+       "title": "International A Level Further Mathematics",
+       "maxMark": 600,
+       "boundaries": {
+        "A": 480,
+        "B": 420,
+        "C": 360,
+        "D": 300,
+        "E": 240,
+        "U": 0
+       },
+       "gradeLadder": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "U"
+       ]
+      }
+     ],
+     "calculatorUnits": [
       {
        "code": "WFM01",
        "title": "FP1: Further Pure Mathematics 1",
@@ -95167,29 +100137,182 @@
          "U": 0
         }
        }
-      }
-     ],
-     "cashIns": [
+      },
       {
-       "code": "YFM01",
-       "title": "International A Level Further Mathematics",
-       "maxMark": 600,
+       "code": "WME01",
+       "title": "M1: Mechanics 1",
+       "maxMark": 75,
        "boundaries": {
-        "A": 480,
-        "B": 420,
-        "C": 360,
-        "D": 300,
-        "E": 240,
+        "A": 64,
+        "B": 56,
+        "C": 48,
+        "D": 40,
+        "E": 33,
         "U": 0
        },
-       "gradeLadder": [
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-        "U"
-       ]
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "M2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 60,
+        "B": 53,
+        "C": 46,
+        "D": 39,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "M3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 62,
+        "B": 53,
+        "C": 45,
+        "D": 37,
+        "E": 29,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "S1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 59,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "S2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 59,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "S3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 66,
+        "B": 57,
+        "C": 48,
+        "D": 39,
+        "E": 31,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "D1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 58,
+        "B": 51,
+        "C": 45,
+        "D": 39,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ]
     },
@@ -95210,6 +100333,30 @@
      },
      "units": [
       {
+       "code": "WDM11",
+       "title": "Unit 1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 63,
+        "B": 57,
+        "C": 51,
+        "D": 45,
+        "E": 39,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
        "code": "WFM01",
        "title": "Unit 1: Further Pure Mathematics 1",
        "maxMark": 75,
@@ -95219,6 +100366,54 @@
         "C": 50,
         "D": 44,
         "E": 38,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "Unit 1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 64,
+        "B": 56,
+        "C": 48,
+        "D": 40,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Unit 1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 57,
+        "B": 49,
+        "C": 41,
+        "D": 33,
+        "E": 25,
         "U": 0
        },
        "ums": {
@@ -95310,6 +100505,136 @@
          "U": 0
         }
        }
+      },
+      {
+       "code": "WME02",
+       "title": "Unit 2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 62,
+        "A": 55,
+        "B": 48,
+        "C": 42,
+        "D": 36,
+        "E": 30,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Unit 2A: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 62,
+        "A": 55,
+        "B": 48,
+        "C": 42,
+        "D": 36,
+        "E": 30,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Unit 3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 64,
+        "B": 56,
+        "C": 48,
+        "D": 41,
+        "E": 34,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Unit 2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 60,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Unit 3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 66,
+        "B": 57,
+        "C": 49,
+        "D": 41,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ],
      "cashIns": [
@@ -95333,6 +100658,260 @@
         "E",
         "U"
        ]
+      }
+     ],
+     "calculatorUnits": [
+      {
+       "code": "WFM01",
+       "title": "Unit 1: Further Pure Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 64,
+        "B": 57,
+        "C": 50,
+        "D": 44,
+        "E": 38,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM02",
+       "title": "Unit 2: Further Pure Mathematics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 71,
+        "A": 67,
+        "B": 59,
+        "C": 52,
+        "D": 45,
+        "E": 38,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM03",
+       "title": "Unit 3: Further Pure Mathematics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 64,
+        "A": 58,
+        "B": 52,
+        "C": 46,
+        "D": 40,
+        "E": 35,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "Unit 1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 64,
+        "B": 56,
+        "C": 48,
+        "D": 40,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Unit 2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 62,
+        "A": 55,
+        "B": 48,
+        "C": 42,
+        "D": 36,
+        "E": 30,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Unit 3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 64,
+        "B": 56,
+        "C": 48,
+        "D": 41,
+        "E": 34,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Unit 1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 57,
+        "B": 49,
+        "C": 41,
+        "D": 33,
+        "E": 25,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Unit 2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 60,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Unit 3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 66,
+        "B": 57,
+        "C": 49,
+        "D": 41,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "Unit 1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 63,
+        "B": 57,
+        "C": 51,
+        "D": 45,
+        "E": 39,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ]
     },
@@ -95351,6 +100930,208 @@
       "family": "pearson-ial",
       "sha256_16": "8198a393d20e0ec9"
      },
+     "units": [
+      {
+       "code": "WME01",
+       "title": "Unit 1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 61,
+        "B": 53,
+        "C": 45,
+        "D": 37,
+        "E": 30,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "Unit 1A: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 61,
+        "B": 53,
+        "C": 45,
+        "D": 37,
+        "E": 30,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Unit 1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 66,
+        "B": 56,
+        "C": 46,
+        "D": 36,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Unit 1A: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 62,
+        "B": 53,
+        "C": 44,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Unit 2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 62,
+        "B": 54,
+        "C": 47,
+        "D": 40,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Unit 2A: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 62,
+        "B": 54,
+        "C": 47,
+        "D": 40,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Unit 2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 60,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Unit 2A: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 65,
+        "B": 56,
+        "C": 47,
+        "D": 38,
+        "E": 30,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
+     ],
      "cashIns": [
       {
        "code": "YFM01",
@@ -95372,6 +101153,108 @@
         "E",
         "U"
        ]
+      }
+     ],
+     "calculatorUnits": [
+      {
+       "code": "WME01",
+       "title": "Unit 1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 61,
+        "B": 53,
+        "C": 45,
+        "D": 37,
+        "E": 30,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Unit 2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 62,
+        "B": 54,
+        "C": 47,
+        "D": 40,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Unit 1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 66,
+        "B": 56,
+        "C": 46,
+        "D": 36,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Unit 2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 60,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ]
     },
@@ -95495,6 +101378,310 @@
          "U": 0
         }
        }
+      },
+      {
+       "code": "WME02",
+       "title": "Unit 2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 59,
+        "B": 51,
+        "C": 43,
+        "D": 36,
+        "E": 29,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Unit 2A: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 64,
+        "B": 56,
+        "C": 48,
+        "D": 41,
+        "E": 34,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Unit 3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 62,
+        "B": 53,
+        "C": 45,
+        "D": 37,
+        "E": 29,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Unit 3A: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 64,
+        "B": 55,
+        "C": 46,
+        "D": 37,
+        "E": 29,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Unit 2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 60,
+        "B": 51,
+        "C": 42,
+        "D": 33,
+        "E": 25,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Unit 2A: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 66,
+        "A": 58,
+        "B": 49,
+        "C": 40,
+        "D": 32,
+        "E": 24,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Unit 3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 65,
+        "B": 55,
+        "C": 46,
+        "D": 37,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Unit 3A: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 63,
+        "B": 55,
+        "C": 47,
+        "D": 39,
+        "E": 31,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "Unit 1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 58,
+        "B": 51,
+        "C": 45,
+        "D": 39,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM01",
+       "title": "Unit 1: Further Pure Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 63,
+        "B": 56,
+        "C": 49,
+        "D": 43,
+        "E": 37,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "Unit 1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 60,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Unit 1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 66,
+        "B": 56,
+        "C": 46,
+        "D": 36,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ],
      "cashIns": [
@@ -95519,6 +101706,260 @@
         "U"
        ]
       }
+     ],
+     "calculatorUnits": [
+      {
+       "code": "WFM01",
+       "title": "Unit 1: Further Pure Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 63,
+        "B": 56,
+        "C": 49,
+        "D": 43,
+        "E": 37,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM02",
+       "title": "Unit 2: Further Pure Mathematics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 66,
+        "B": 58,
+        "C": 50,
+        "D": 43,
+        "E": 36,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM03",
+       "title": "Unit 3: Further Pure Mathematics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 69,
+        "A": 63,
+        "B": 56,
+        "C": 49,
+        "D": 42,
+        "E": 36,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "Unit 1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 60,
+        "B": 51,
+        "C": 43,
+        "D": 35,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Unit 2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 59,
+        "B": 51,
+        "C": 43,
+        "D": 36,
+        "E": 29,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Unit 3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 62,
+        "B": 53,
+        "C": 45,
+        "D": 37,
+        "E": 29,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Unit 1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 66,
+        "B": 56,
+        "C": 46,
+        "D": 36,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Unit 2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 60,
+        "B": 51,
+        "C": 42,
+        "D": 33,
+        "E": 25,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Unit 3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 65,
+        "B": 55,
+        "C": 46,
+        "D": 37,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "Unit 1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 58,
+        "B": 51,
+        "C": 45,
+        "D": 39,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      }
      ]
     },
     {
@@ -95537,6 +101978,54 @@
       "sha256_16": "ac0f906306991e80"
      },
      "units": [
+      {
+       "code": "WDM11",
+       "title": "Unit 1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 58,
+        "B": 51,
+        "C": 44,
+        "D": 38,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "Unit 1A: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 49,
+        "B": 43,
+        "C": 37,
+        "D": 31,
+        "E": 25,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
       {
        "code": "WFM01",
        "title": "Unit 1: Further Pure Mathematics 1",
@@ -95571,6 +102060,102 @@
         "C": 47,
         "D": 41,
         "E": 35,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "Unit 1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 57,
+        "B": 50,
+        "C": 43,
+        "D": 36,
+        "E": 29,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "Unit 1A: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 57,
+        "B": 49,
+        "C": 41,
+        "D": 33,
+        "E": 25,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Unit 1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 65,
+        "B": 56,
+        "C": 47,
+        "D": 39,
+        "E": 31,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Unit 1A: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 55,
+        "B": 46,
+        "C": 37,
+        "D": 28,
+        "E": 20,
         "U": 0
        },
        "ums": {
@@ -95688,6 +102273,214 @@
          "U": 0
         }
        }
+      },
+      {
+       "code": "WME02",
+       "title": "Unit 2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 58,
+        "A": 52,
+        "B": 46,
+        "C": 40,
+        "D": 34,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Unit 2A: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 55,
+        "A": 49,
+        "B": 43,
+        "C": 37,
+        "D": 32,
+        "E": 27,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Unit 3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 66,
+        "B": 58,
+        "C": 50,
+        "D": 43,
+        "E": 36,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Unit 3A: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 58,
+        "A": 51,
+        "B": 44,
+        "C": 37,
+        "D": 30,
+        "E": 23,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Unit 2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 61,
+        "B": 53,
+        "C": 46,
+        "D": 39,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Unit 2A: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 67,
+        "A": 59,
+        "B": 50,
+        "C": 41,
+        "D": 33,
+        "E": 25,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Unit 3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 66,
+        "B": 57,
+        "C": 49,
+        "D": 41,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Unit 3A: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 66,
+        "B": 57,
+        "C": 48,
+        "D": 40,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ],
      "cashIns": [
@@ -95711,6 +102504,260 @@
         "E",
         "U"
        ]
+      }
+     ],
+     "calculatorUnits": [
+      {
+       "code": "WFM01",
+       "title": "Unit 1: Further Pure Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 63,
+        "B": 57,
+        "C": 51,
+        "D": 45,
+        "E": 40,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM02",
+       "title": "Unit 2: Further Pure Mathematics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 62,
+        "B": 55,
+        "C": 48,
+        "D": 41,
+        "E": 35,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WFM03",
+       "title": "Unit 3: Further Pure Mathematics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 62,
+        "A": 57,
+        "B": 52,
+        "C": 47,
+        "D": 43,
+        "E": 39,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME01",
+       "title": "Unit 1: Mechanics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 57,
+        "B": 50,
+        "C": 43,
+        "D": 36,
+        "E": 29,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME02",
+       "title": "Unit 2: Mechanics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 58,
+        "A": 52,
+        "B": 46,
+        "C": 40,
+        "D": 34,
+        "E": 28,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WME03",
+       "title": "Unit 3: Mechanics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 66,
+        "B": 58,
+        "C": 50,
+        "D": 43,
+        "E": 36,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST01",
+       "title": "Unit 1: Statistics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 65,
+        "B": 56,
+        "C": 47,
+        "D": 39,
+        "E": 31,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST02",
+       "title": "Unit 2: Statistics 2",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 68,
+        "A": 61,
+        "B": 53,
+        "C": 46,
+        "D": 39,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WST03",
+       "title": "Unit 3: Statistics 3",
+       "maxMark": 75,
+       "boundaries": {
+        "A*": 70,
+        "A": 66,
+        "B": 57,
+        "C": 49,
+        "D": 41,
+        "E": 33,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A*": 90,
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
+      },
+      {
+       "code": "WDM11",
+       "title": "Unit 1: Decision Mathematics 1",
+       "maxMark": 75,
+       "boundaries": {
+        "A": 58,
+        "B": 51,
+        "C": 44,
+        "D": 38,
+        "E": 32,
+        "U": 0
+       },
+       "ums": {
+        "maxMark": 100,
+        "boundaries": {
+         "A": 80,
+         "B": 70,
+         "C": 60,
+         "D": 50,
+         "E": 40,
+         "U": 0
+        }
+       }
       }
      ]
     }

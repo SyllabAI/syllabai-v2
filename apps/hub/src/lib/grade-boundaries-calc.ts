@@ -255,6 +255,12 @@ export function aggregateUms(input: AggregateInput): AggregateOutcome {
  * boundary: grade A overall AND at least (a2Min) UMS across the A2 units
  * (Pearson: "at least 90% of the A2 UMS marks" — Mathematics 480 overall
  * + 180/200 from P3+P4; six-unit IALs 480 + 270/300).
+ *
+ * T-GRADE-10: selection-mode cash-ins (YFM01) carry the rate form
+ * (a2Rate 0.9) instead of a fixed a2Min, because their A2 UMS maximum
+ * depends on which units the candidate's combination uses — the threshold
+ * is the rate times the maxima of the A2 units actually in the
+ * aggregation. Both forms are mutually exclusive.
  */
 export function gradeFromAggregation(
   cashIn: {
@@ -262,29 +268,166 @@ export function gradeFromAggregation(
     gradeLadder?: string[];
   },
   aStar:
-    | { overallMin: number; a2Min: number; a2Units: string[] }
+    | {
+        overallMin: number;
+        a2Min?: number;
+        a2Rate?: number;
+        a2Units: string[];
+      }
     | undefined,
   agg: AggregateOutcome,
 ): { grade: string | null; aStarRuleApplied: boolean } {
   const ladder = cashIn.gradeLadder ?? Object.keys(cashIn.boundaries);
   let grade = gradeForMark(cashIn.boundaries, ladder, agg.totalUms);
   let aStarRuleApplied = false;
+  const a2Ums = aStar
+    ? aStar.a2Units.reduce(
+        (acc, code) =>
+          acc +
+          (agg.perUnit.find((p) => p.code === code)?.ums ?? 0),
+        0,
+      )
+    : 0;
+  const a2Threshold =
+    aStar === undefined
+      ? undefined
+      : aStar.a2Rate !== undefined
+        ? a2MaxOf(aStar.a2Units, agg) > 0
+          ? Math.round(aStar.a2Rate * a2MaxOf(aStar.a2Units, agg))
+          : Number.POSITIVE_INFINITY // no A2 ceiling: the rule cannot apply
+        : aStar.a2Min;
   if (
     aStar &&
     agg.complete &&
     cashIn.boundaries["A*"] === undefined &&
     agg.totalUms >= aStar.overallMin &&
-    aStar.a2Units.reduce(
-      (acc, code) =>
-        acc +
-        (agg.perUnit.find((p) => p.code === code)?.ums ?? 0),
-      0,
-    ) >= aStar.a2Min
+    a2Threshold !== undefined &&
+    a2Ums >= a2Threshold
   ) {
     grade = "A*";
     aStarRuleApplied = true;
   }
   return { grade, aStarRuleApplied };
+}
+
+/** Sum of the maxima of `codes` among the aggregated units (0 for a code
+ * the combination does not use) — the A2 UMS ceiling of a selection. */
+function a2MaxOf(codes: string[], agg: AggregateOutcome): number {
+  return codes.reduce(
+    (acc, code) =>
+      acc + (agg.perUnit.find((p) => p.code === code)?.maxUms ?? 0),
+    0,
+  );
+}
+
+/** Selection-mode cash-in rule (T-GRADE-10, YFM01): the candidate's
+ * `size` units are drawn from the official pool. */
+export interface SelectionRule {
+  pool: string[];
+  size: number;
+  mustInclude?: string[];
+  atLeastOneOf?: string[];
+}
+
+export interface SelectionOutcome {
+  outcome: AggregateOutcome;
+  grade: string | null;
+  aStarRuleApplied: boolean;
+  /** codes of the units the award uses (the locked-in combination) */
+  usedCodes: string[];
+  /** convertible units that stayed in the bank (Pearson Rule 1 examples:
+   * "leaving the result for M2 in the bank") */
+  unusedCodes: string[];
+}
+
+/**
+ * The board's Rule 1 over a selection-mode cash-in (IAL 2018 Mathematics
+ * Aggregation Rules & Guidance): step (i) maximisation of the
+ * qualification grade, step (ii) maximisation of the UMS total — over
+ * every ELIGIBLE combination of `size` units from the units this session
+ * can convert (mustInclude + atLeastOneOf guard eligibility; a unit the
+ * session has no UMS table for can never aggregate). Ties on grade and
+ * total resolve to the first combination in code order. Returns null
+ * when no eligible combination exists (the honest not-offered case).
+ * Pure: inputs are never mutated.
+ */
+export function bestAggregationSelection(
+  units: readonly AggregationUnit[],
+  marks: Record<string, number>,
+  rule: SelectionRule,
+  cashIn: {
+    boundaries: BoundaryRow;
+    gradeLadder?: string[];
+  },
+  aStar:
+    | {
+        overallMin: number;
+        a2Min?: number;
+        a2Rate?: number;
+        a2Units: string[];
+      }
+    | undefined,
+): SelectionOutcome | null {
+  const byCode = new Map(
+    units
+      .filter(
+        (u) =>
+          rule.pool.includes(u.code) &&
+          !!u.ums &&
+          (u.ums?.boundaries ?? null) !== null,
+      )
+      .map((u) => [u.code, u] as const),
+  );
+  const codes = [...byCode.keys()].sort();
+  const ladder = ["A*", ...(cashIn.gradeLadder ?? Object.keys(cashIn.boundaries))];
+  // lower index = better grade ("A*" sits at 0; null grades are worst)
+  const rank = (g: string | null): number =>
+    g === null ? Number.POSITIVE_INFINITY : ladder.indexOf(g);
+  let best: SelectionOutcome | null = null;
+  let bestRank = Number.POSITIVE_INFINITY;
+  let bestTotal = -1;
+  const combo: string[] = [];
+  const walk = (start: number) => {
+    if (combo.length === rule.size) {
+      if (
+        !(rule.mustInclude ?? []).every((c) => combo.includes(c)) ||
+        !(rule.atLeastOneOf ?? []).some((c) => combo.includes(c))
+      ) {
+        return;
+      }
+      const picked = combo.map((c) => byCode.get(c)!);
+      const outcome = aggregateUms({ units: picked, marks });
+      if (!outcome.complete) return;
+      const { grade, aStarRuleApplied } = gradeFromAggregation(
+        cashIn,
+        aStar,
+        outcome,
+      );
+      const r = rank(grade);
+      if (
+        r < bestRank ||
+        (r === bestRank && outcome.totalUms > bestTotal)
+      ) {
+        bestRank = r;
+        bestTotal = outcome.totalUms;
+        best = {
+          outcome,
+          grade,
+          aStarRuleApplied,
+          usedCodes: [...combo],
+          unusedCodes: codes.filter((c) => !combo.includes(c)),
+        };
+      }
+      return;
+    }
+    for (let i = start; i < codes.length; i++) {
+      combo.push(codes[i]);
+      walk(i + 1);
+      combo.pop();
+    }
+  };
+  walk(0);
+  return best;
 }
 
 /**
