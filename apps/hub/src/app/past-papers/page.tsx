@@ -9,7 +9,7 @@ import officialLinksJson from "@/data/pastpapers-official-links.json";
 export const metadata: Metadata = {
   title: "Past papers archive",
   description:
-    "Every specification in the syllabai-pastpapers corpus — Pearson Edexcel and Cambridge International — browsable by qualification and subject.",
+    "Every past-paper specification — Pearson Edexcel and Cambridge International — browsable by qualification and subject.",
 };
 
 interface OfficialLinkEntry {

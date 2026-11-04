@@ -28,6 +28,87 @@
  */
 
 import type { SwitchableCourse } from "@/lib/teacher/types";
+import {
+  atOf,
+  bridgeDocPool,
+  isAccountDocsHydrated,
+  mirrorDocPoolState,
+  unionByStamp,
+} from "@/lib/account-docs-records";
+import { readIdentitySnapshot } from "@/lib/identity";
+
+// ── T-AUDIT-TIER1 run-004 — the account mirror ─────────────────────────
+// The per-course builder drafts (T-TEACH-008) mirror the account under the
+// "test-builder-drafts" key of record. The union is per course slug, the
+// NEWER savedAt wins (the stamp the draft has carried since day one), tie
+// -> server, capped. The legacy v1 slot stays read-only (its migration
+// path lands in the v2 key and mirrors like any other write).
+// DISCLOSED: a draft CLEARED on this device loses to a server copy whose
+// savedAt is newer (the conservative union never loses a record) — the
+// cleared draft can resurrect on the next hydration, the same law the
+// thread pools' deletions follow.
+const DRAFT_PREFIX = "syllabai.testBuilderDraft.v2.";
+const DRAFT_DOC_KEY = "test-builder-drafts";
+const MAX_DRAFTS = 20;
+
+function draftPoolKey(storageKey: string): string {
+  return storageKey.slice(DRAFT_PREFIX.length);
+}
+
+function readDraftPool(): Record<string, object> {
+  const pool: Record<string, object> = {};
+  if (typeof window === "undefined") return pool;
+  try {
+    for (let i = 0; i < window.localStorage.length; i++) {
+      const k = window.localStorage.key(i);
+      if (!k || !k.startsWith(DRAFT_PREFIX)) continue;
+      const raw = window.localStorage.getItem(k);
+      if (!raw) continue;
+      const parsed = JSON.parse(raw) as unknown;
+      if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+        pool[draftPoolKey(k)] = parsed as object;
+      }
+    }
+  } catch {
+    // a torn scan degrades to the pool it could read
+  }
+  return pool;
+}
+
+function writeDraftPool(pool: Record<string, object>) {
+  if (typeof window === "undefined") return;
+  try {
+    const seen = new Set<string>();
+    for (const [slug, draft] of Object.entries(pool)) {
+      const k = DRAFT_PREFIX + slug;
+      seen.add(k);
+      window.localStorage.setItem(k, JSON.stringify(draft));
+    }
+    for (let i = 0; i < window.localStorage.length; i++) {
+      const k = window.localStorage.key(i);
+      if (k && k.startsWith(DRAFT_PREFIX) && !seen.has(k)) {
+        window.localStorage.removeItem(k);
+      }
+    }
+  } catch {
+    // private mode — the pull-down just won't land
+  }
+}
+
+if (typeof window !== "undefined") {
+  bridgeDocPool<Record<string, object>, object>({
+    localKey: DRAFT_PREFIX.slice(0, -1),
+    docKey: DRAFT_DOC_KEY,
+    cap: MAX_DRAFTS,
+    readState: () => readDraftPool(),
+    readPool: (p) => p,
+    apply: (pool) => writeDraftPool(pool),
+    merge: (local, server) => unionByStamp(local, server, "savedAt"),
+    stamp: (p) => Object.entries(p).map(([k, v]) => `${k}:${atOf((v as { savedAt?: unknown }).savedAt)}`).sort().join("|"),
+    getAuthEmail: () => readIdentitySnapshot()?.email ?? null,
+    isHydrated: () => isAccountDocsHydrated(),
+  });
+}
 
 /** The single-slot draft of the pre-separation era (read-only after this band). */
 export const LEGACY_DRAFT_KEY = "syllabai.testBuilderDraft.v1";
@@ -91,6 +172,8 @@ export function writeBuilderDraft(slug: string, draft: object | null): void {
   } catch {
     // private mode / quota — the draft just won't persist
   }
+  // T-AUDIT-TIER1 run-004 — the account mirror (the persist-tail law)
+  mirrorDocPoolState(DRAFT_DOC_KEY, readDraftPool());
 }
 
 /**

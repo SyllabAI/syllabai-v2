@@ -21,6 +21,15 @@
  * the manifest/payload (curation + licensing law unchanged), it is just
  * no longer the displayed affordance. Attribution text stays (licensing
  * law); the provider-link card remains ONLY as the no-youtubeId fallback.
+ *
+ * T-UX-STUDENT-COPY r0 (operator order, trace 1a1a719a34bc5761) — the
+ * manifest reference line ("Licensing: media-sources.yaml#… (public-embed;
+ * reviewed …)") LEFT the card: manifest paths and review dates are
+ * operator-side provenance, not student copy. The licensing law itself is
+ * unchanged — licenseRef stays a REQUIRED content field and the null gate
+ * below keeps enforcing it (a block without one still renders nothing);
+ * the human-readable attribution line stays as the card's single
+ * provenance line.
  */
 import type { RailBlock } from "@/lib/books-rail";
 
@@ -83,7 +92,6 @@ export function MediaEmbedBlock({ block }: { block: RailBlock }) {
         </div>
       )}
       {attribution && <p className="mt-1.5 text-[11px] text-muted-foreground">{attribution}</p>}
-      <p className="text-[11px] text-muted-foreground">Licensing: {licenseRef}</p>
     </WidgetCard>
   );
 }

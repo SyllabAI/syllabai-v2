@@ -190,7 +190,9 @@ export default async function ExamQuestionsIndexPage({
       />
 
       {paperOptions.length > 1 && (
-        <div className="mt-4 flex flex-wrap items-center gap-1.5 rounded-lg border bg-card px-3 py-2.5">
+        /* t-ui-polish run-004: hero→body join at the mt-6 family rhythm
+            (was mt-4 — the only join on this page off the constant). */
+        <div className="mt-6 flex flex-wrap items-center gap-1.5 rounded-lg border bg-card px-3 py-2.5">
           <span className="mr-1 flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
             <Filter className="size-3.5" aria-hidden />
             Assessed in

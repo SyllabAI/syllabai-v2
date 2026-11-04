@@ -1153,6 +1153,85 @@ Work Log:
 Stage Summary:
 - The P5 debris class is extinct on the plane: the Po/Pb/Bi-210 grids, the Pu-238 chain, the Th-232 decay and the vanadium-50 span render proper isotope/decay notation for the first time. The hand-off chain F133→F134→F135→F136 is fully discharged (census-guard CI + M4 corpus repair + plane sync + the #306 CI infra item); corpus↔plane reconciliation HOLDS @ resources ef5c93cc / v2 205f604e.
 
+## t-mg-player-mark-1 + t-mg-surface-1 run-001 MERGED — the operator's merge word received; AI marking is learner-visible on the core player and region marking discovers itself (order "Merge #722 and #725", 2026-11-04)
+
+Work Log:
+- PR #722 (t-mg-player-mark-1/run-001) MERGED as a3718538; PR #725 (t-mg-surface-1/run-001) MERGED as 5b63a8e2 (main tip). Both merge-method=merge with house-style commit titles; lane branches deleted post-merge (404-verified).
+- Cards flipped to DONE in this commit: T-MG-PLAYER-MARK-1 (Gate-1 zero-diff receipt, CI run 41781956955) and T-MG-SURFACE-1 (CI run 41782338279; the screenshot receipt pin disclosed as OWED with the next live verification pass).
+- Env: sandbox recycled between turns (the local clone vanished) — fresh blob:none clone at the merge tip; token via GIT_ASKPASS from .gh_token (never argv/URL).
+
+Stage Summary:
+- The rollout tranche's ship-first lanes are ON MAIN: the typed regrade channel has its hub consumer (advisory "Mark my draft with AI" on the core player — the MG value moment type→mark→read, no attempt written, Smart Mark + legacy lane untouched), and region marking arms for any covered paper the learner opens normally (the ?paperId= deep-link requirement is gone; honest-null preserved for signed-out/not-ingested/uncovered; mock excluded). Remaining per docs/MG-MARK-ROLLOUT-PLAN.md: Lane E (carded, engine-side contract delta), Lane B scale-out (against the executed RECT-2 instrument), Lane D (operator-held product-scope decision + legal review).
+
+## t-resume-targets run-003 — three select pages' Resume targets verified live (traces 1a1a1c45fcbce721 + 1a1a51face8c6319 "exercise the exam-questions/flashcards Resume targets the same way next" / "Verify three select pages' Resume targets") — bookkeeping-only, ZERO code bytes
+- Scope of record: the shared select-toolbar (PR #628 da60c126) renders on revision-notes / exam-questions / flashcards; each select page computes its OWN resume target — notes = most recently engaged note (notesRead + note-scroll join via pickResumeNoteId, run-001/PR #633 + run-002/PR #670 of record); exam-questions = most recently scored set (max `at` across selfScores + mcqAnswers keyed on topicSlug, resolved against sets listed under the current paper scope); flashcards = most recently rated deck (max `at` across progress.flashcards keyed on subtopic, resolved against listed SME decks).
+- Integrity: resume-flow files untouched this run (last-touch: questionbank-index e13bc8b1, flashcards-index 5a036412, select-toolbar da60c126, progress 8f5beef7, note-scroll 1e032e49, flashcard-session a4c62f72); main of the day 964307aa; fetch-first honored, scrub-assert 0/0/0 before the run.
+- Local gates: 36/36 (note-scroll 10 + progress-select-rings + progress-notes-ring + flashcard-decks).
+- Live chunks: 5/5 pages carry face markers (notes select: note-scroll ns + pickResumeNoteId + resume=1; exam select+target: progress ns + selfScores + mcqAnswers + "Search exam questions"; flashcards select+target: progress ns + rating/trail + "Search flashcard decks").
+- Headless E2E (syllabai-hub-v2.vercel.app, course igcse-chemistry-19, signed-out): EXAM face 5/5 — empty store → no button; seed selfScores → Resume 'Elements, Compounds & Mixtures' href /exam-questions/1-2-…--exam-questions, NO ?resume=1; stale slug → no button; click → lands on the engaged set page (h1 'Elements, Compounds & Mixtures (Edexcel IGCSE Chemistry): Exam Questions'); SAVE leg real UI self-score 3/5 on set 1-3 (qstn_9RXH9v8YFXgSVwGx, at 1793772643574) → Resume FLIPS to 'Atomic Structure'. FLASHCARDS face 5/5 — empty → no button; seed rating → Resume href /flashcards/1-2-elements-compounds-and-mixtures, NO stamp; NEGATIVES legacy '4CH1-S1-c' + unknown '999-fake-deck' → no button both; click → lands on deck page (h1 'Elements, Compounds & Mixtures: Flashcards', 49 cards); SAVE leg real flip+Know on deck 1-3 (fl_4b5MrFN9gKMwjkDb, trail sync:"local" honest signed-out receipt) → Resume FLIPS to 'Atomic Structure'. NOTES face re-assert: Resume href /revision-notes/rn_2VnK66PqbvFKdKYt?resume=1 'The Three States of Matter' — the ?resume=1 intent stamp is notes-face-ONLY, the three-face stamp asymmetry confirmed live.
+- Login posture (operator note "you might need to log in"): corpus routes stay open per the route-gate law (GATED_ROUTES = /dashboard /tutor /assistant /learner /plan /practice/drill /practice/battle /teacher only) — no login wall on the three select pages or both targets; E2E ran signed-out on the localStorage overlay, real engagement stamps carry sync:"local" receipts honestly.
+- Cleanup: seeded keys + this run's deck-position keys removed surgically → zero syllabai-hub:* keys in the headless profile; browser closed.
+- Verdict: ALL THREE SELECT PAGES' RESUME TARGETS VERIFIED LIVE — correct href/title per face, stale/legacy anchors suppressed, exact landing, recency flips through real UI engagement. No code change; no defect; no remainder disclosed. Receipt .syllabai/receipts/t-resume-targets/run-003-live-verification.json; evidence .syllabai/lane-artifacts/t-resume-targets/run-003/ (exam + flashcards flip screenshots). fetch-first, no force.
+- CI re-dispatch nudge (same run, no code bytes): the PR-open event dropped (ci.yml's own documented event-drop class — two orphaned check-suites queued, zero workflow runs for head 8ff0d858, while sibling PRs' CI completed normally in the same window); this line is the synchronize-event carrier to re-fire ci.yml on the same lane.
+- Supersession disclosure (same run): the dropped events persisted through close+reopen on PR #726 (opened, synchronize AND reopened all produced zero workflow runs while sibling PRs' CI completed normally) — the lane re-files as a FRESH PR (new branch lane/t-resume-targets-run003b off main ddbc83a9, worklog union-merged over the concurrent t-mg sections) to escape the PR-entity-attached event drop; #726 closes with this disclosure, no force push anywhere.
+
+
+## t-ugm-0580-19 run-001 — igcse-extended lane 19 EXECUTED: CIE IGCSE 0580 Extended TE2 Algebra and graphs closed 47/47 (operator ack trace 1a1a4dd427524861 "lane 19"; run trace 1a1a4e8f09331a25)
+Agent: main (Z.ai, zai-web session web-6e44932a-9395-44ac-a2c0-2065fd87c4bf, chat 80480363-0470-4136-a682-25ff79c05704)
+Task: execute DECISION-0580-IGCSE-EXTENDED-LANE.md Option B lane 19 (T-UGM-0580-19) — the FIRST lane of the igcse-extended course plane — end to end on the operator's "lane 19" ack.
+
+Work Log:
+- Sandbox-recycle recovery: the three repo clones were stale/gone (experimental at 915bfa8c with mode-bit-only noise — discarded and ff-merged to the of-record b2fce30d; resources/v2 clones dead) — re-cloned (blobless sparse for resources after the full clone hit ENOSPC at 7.7G; v2 sparse 17M), PAT re-derived from the experimental remote URL (never echoed), auth 200.
+- TE2 ground truth: the hub spine of record (cie-igcse-maths-25-extended.json, blob 1458bcba45…) walked — TE2 "Algebra and graphs" = 13 subtopics / 47 spec points E2.1.1-E2.13.3 (incl. E2.12 Differentiation + E2.13 Functions inside TE2; E2.10.1a synthetic suffix; the E2.4.3 truncated exclusion-note row "Knowledge of logarithms is").
+- Sweep of record: 855 screened (corpus verified 855/25) -> 710 candidates via five angles (register sweep, station blocks, pre-baked contrast/quadratics-lane bearings, exact-phrase signatures, the UGM-SCOPE-1 mechanics register) -> closed exactly: 118 rows (82 cross-course reference riding of-record pure-1/pure-3 bodies by textOfRecordUnder — NO twin-substrate law on this plane, zero spine-twin joins; the r8946/r9386 second-spec-row law — + 36 fresh) over 99 substrate resources + 7 non-overlap companions + 604 class rejections (R-CALC 205 / R-BEYOND 251 / R-OTHER-LANE 132 / R-CONTEXT 9 / R-INSUFFICIENT 4 / R-TEACHER 2 / R-TOOL 1).
+- Closure: 33/47 spec points with rows / 14 honest-empty (E2.4.3 exclusion-by-design; E2.12.1-5 subject-excluded per DECISION-0580 §1 with the spine-presence tension DISCLOSED — the spine carries E2.12 inside TE2 while the decision's "no calculus" scoping excludes the only substrate; thin tail never manufactured; E2.9.3/E2.9.4 companion-only); 30 primaries; the 9 contrast rows of record (E2.2.3-E2.11.4) reconciled BYTE-TRUE.
+- Disclosures of record: calculus-trig-log is a SIXTH calculus station (the UGM-SCOPE-1 register names it; DECISION-0580 §1 said "five" — the subject law applies identically, disclosed not repaired); r9586 is the corpus friendlyName of the site-slug what-is-the-acceleration-of-this-particle (the UGM-SCOPE-1 v-t trio third member); r6864 (quadratics) is a 14th mechanics-flavoured sighting -> companion.
+- Land: cross-map cross-map-0580-te2-algebra-graphs.json + the FULL TE2 spine export pushed to syllabai-experimental main @ 79088f34 (linear, after ff-sync); 28 fresh bodies (T-A 16 / TAF 9 / polynomials 3) emitted through the OF-RECORD converter (scripts/ugm_import_build.py) with PRE-FLIGHT BYTE-IDENTITY vs the lane-1 of-record body r6638; MANIFEST v18 -> v19 (file_count 628 -> 656, lanes 17 -> 18); filed as syllabai-resources#304 (NOT self-merged — the eyeball gate stays operator-side); bookkeeping (INTEGRATION-PLAN P7 lane-19 block + ADR Status Tracking lane-19 row + README lanes section) pushed @ 84408e97.
+
+Stage Summary:
+- lane 19 (T-UGM-0580-19) EXECUTED of record: experimental 79088f34 + 84408e97; resources PR #304 (enrichment T-UGM-MODE1-19 + corpus T-UGM-IMPORT-19, MANIFEST v19); T-UGM-HUB-CONSUME-19 filed as syllabai-v2 issue — awaits the #304 merge + operator order. Lane 20 = TE3 Coordinate geometry next per the decision; TE8/TE9 stay pre-ruled honest-empty (UGM-SCOPE-1).
+
+---
+Task ID: 10 (recovered entry — the original worklog append died with the recycled sandbox; re-recorded from session context)
+Agent: Z.ai main agent (zai-web session web-c414c074, chat 08b3170a, traces 1a1a719a34bc5761 / 1a1a738eb03a8f21)
+Task: Operator order "T-UX-STUDENT-COPY r0" — operator vocabulary out of the student surfaces (angry report: manifest/Licensing lines under videos, provider-key diagnostic, "SME · Light" footer chip, defensive pledge).
+Stage Summary (recovered):
+- 6 files, copy-only: media-embed-block (Licensing: {licenseRef} line out; payload/lint G4 keep the law; attribution stays), question-player (provider-key hint → learner nouns), theme-store (SME → SyllabAI chip label), app-shell footer (one plain honesty sentence + "How content is checked"), ugm index + reader (review-state/repo-ref/attestation instruments out; "recommended"; "Beyond these specification points"; Label-in-Name aria fix).
+- Gates on a5a47cc7: tsc 0 / eslint clean / bun test = pristine baseline. Commit 15117651 (lost to recycle; of record on origin as 1881ad5f).
+- Pushed + PR #748 opened (token env-only, one-shot script scripts/push_pr_student_copy.sh); mergeable clean; MERGED 2026-11-04 (8d0bdac1).
+
+---
+Task ID: 11
+Agent: Z.ai main agent (zai-web session web-c414c074, chat 08b3170a, trace 1a1a7544f31e07cd)
+Task: Operator order — whole-frontend copy sweep: "Cut taglines, non-relevant helper text, and secondary labels. If a screen needs them to make sense, fix the layout. Every decision should elevate UX, DX and agent experience at once, without breaking anything."
+Stage Summary:
+- Whole-hub pass (16 files, +63/−199, commit a3a1b833 on t-ux/frontend-copy-sweep, rebased-of-record on 8d0bdac1):
+  LANDING: hero badges (provider/core-api ✓) cut; "Graph nodes (T-C11)" → "Concept graph"; build-log descs ("SIMULATED overlay telemetry", "honest refusals", "SaveMyExams-style") → student nouns; "More to explore" intro paragraph cut (duplicated its own cards); dead manifest fetches removed.
+  COURSE HUB: Study/Practice/Diagnose tag-chip system retired (identical chips per band = zero information) + the "Our revision framework" explainer that existed only to define them; 4 band taglines cut; build-plan speak out ("Phase C of the build plan", "alignment candidates, SUGGESTED", "spec joins"); not-ready chip "roadmap" → "coming soon"; "View parsed spec" → "Knowledge graph"; strengths data note de-ADR'd.
+  TUTOR: provider/model + corpus badges out of the thread header (write-only meta state removed with them); "Grounding from your corpus…" → "Checking the course material…"; negative-policy empty state tightened.
+  INDEX PAGES: operator clauses out of descriptions (canonical writes, attested mark scheme, licensed deck corpus, plain-words depth layers, syllabai-pastpapers corpus); past-papers spec page archive instrument panel (AI-IDENTIFIED provenance / ratification / tree sha) cut, QP/MS/ER legend stays.
+- Kept: affordances, counts, empty-states, honest-nulls, aria-labels/semantics (agent experience), license/attribution lines, /about/provenance tier register.
+- Gates on 8d0bdac1: tsc 0; eslint byte-identical to pristine (15 errors/5 warnings pre-existing, none in touched files); bun test 4504/4519 with 2 fail + 1 error = pristine baseline byte-identical.
+- PR of record: https://github.com/SyllabAI/syllabai-v2/pull/760 (branch t-ux/frontend-copy-sweep @ a3a1b833) — NOT self-merged (integrator lane).
+
+---
+- Refile disclosure (same run, bookkeeping-only): PR #733's fresh-lane rebuild (970e8f71) carried the full run-003 worklog section but missed the three .syllabai filings (receipt t-resume-targets/run-003-live-verification.json + lane-artifacts exam/flashcards resume-flip PNGs); refiled byte-identical from the old lane head e61966cf (PR #726, closed unmerged after its event-drop). fetch-first, no force
+
+## T-BRAND-FAVICON-201 run-002 — hub favicon = flat brand-S mark (candidate A) replaces placeholder glyph (operator rejected run-001 design; scope narrowed to favicon-only; trace 1a1a76468524e201)
+Agent: main (Z.ai, zai-web session web-561901d7-498c-4c6f-aad2-00aeb4727ae6)
+Task: run-001's lucide-Atom favicon was rejected by the operator ("I dont like this favicon, try something else, that will also fit with the existing themes as well"). Round-2 delivered flat, theme-agnostic candidates A/B/C on a published proof sheet; the operator then narrowed scope to "For now just make the syllabai frontend icon ... the favicon — basically i want the tab in browser to show the same icon". Candidate A ships as the standing recommendation.
+
+Work Log:
+- Flat design law: one flat fill + white glyph so the mark is theme-agnostic across all four hub themes (SME #265bf6 default; quiet-green #2e6b4f; candy-shop #ff2d6e; chat-app-plum #7b44c7) — no gradients.
+- Candidate A geometry: Kodchasan-Bold "S" (the hub's display face) extracted as an outline (fontTools + uharfbuzz), cap-height 36 on the 64-grid, white fill on the #265bf6 rounded square (rx 14.4/64 — the same 22.5% corner law as run-001).
+- app/icon.svg <- candidate A mark; app/favicon.ico <- multi-size ICO assembled from exact resvg vector renders at 16/32/48/64/128/256 (PNG entries; replaces the single-size placeholder).
+- Favicon-only scope: apple-icon.png / public/logo.svg / header Atom swap deliberately deferred to T-BRAND-LOGO-201. No code, metadata or build-config changes.
+- Post-merge verification receipt: live /favicon.ico and /icon.svg sha256 must equal the staged brand/ship2 artifacts; the /icon.svg link hash in the HTML head must change (cache-bust).
+
+Stage Summary:
+- T-BRAND-FAVICON-201 run-002: browser tab shows the SyllabAI "S" on brand blue (SVG-favicon browsers via icon.svg; raster-only contexts via the ICO). Candidates B/C and the header-mark restyle remain parked under T-BRAND-LOGO-201.
+
+
 ## T-GRADE-10 run-001 receipts — the YFM01 selection calculator: schema + Rule-1 engine + workspace (2026-11-04, trace 1a1b0c7d2e3f4a5b)
 
 Work Log:

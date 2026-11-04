@@ -62,6 +62,7 @@ import {
   buildPaperQuestionResolver,
   buildSqlVectorArm,
   buildTutorModule,
+  TUTOR_COMPLETION_BUDGET_DEFAULT,
   type LlmProvider,
   type TutorModule,
 } from "../services/tutor";
@@ -406,6 +407,22 @@ export const dormantTutorLlm: LlmProvider = {
 };
 
 /**
+ * The composition-root projection of syllabai.tutor.max-tokens (the frozen
+ * yml knob the tranche-2 port documented in GeneratorOptions but never
+ * wired — every construction site took the code default). Spring relaxed
+ * binding → SYLLABAI_TUTOR_MAX_TOKENS; blank/invalid/≤0 resolves to the
+ * calibrated default (the record-compactor semantics resolveInt uses).
+ */
+export function tutorMaxTokensFromEnv(env: Record<string, string | undefined>): number {
+  const raw = env.SYLLABAI_TUTOR_MAX_TOKENS;
+  if (raw == null || raw.trim() === "") return TUTOR_COMPLETION_BUDGET_DEFAULT;
+  const n = Number(raw);
+  if (!Number.isFinite(n)) return TUTOR_COMPLETION_BUDGET_DEFAULT;
+  const t = Math.trunc(n);
+  return t <= 0 ? TUTOR_COMPLETION_BUDGET_DEFAULT : t;
+}
+
+/**
  * buildTutorRouters — the tranche-2 composition root. Wires the REAL
  * module: the content module's curriculum scopes (resolveActive /
  * resolveForCourse compose, never mirrored), the T-C32-compliant vector
@@ -431,6 +448,7 @@ export const dormantTutorLlm: LlmProvider = {
  * accepts the shared composition-root chain (index.ts builds ONE); chain
  * null forces the dormant seam (rig work only).
  */
+
 export function buildTutorRouters(
   env: Record<string, string | undefined> = process.env,
   opts: { chain?: FailoverLlmChain | null } = {},
@@ -447,7 +465,7 @@ export function buildTutorRouters(
     // same sql seam — a pin that cannot resolve a VALIDATED in-scope paper
     // degrades to the unpinned ask honestly
     paperPin: buildPaperPinResolver(sql),
-    generator: buildGroundedTutorGenerator(llm),
+    generator: buildGroundedTutorGenerator(llm, { maxTokens: tutorMaxTokensFromEnv(env) }),
     // T-MIG-124: the learner model is WIRED (the ported T-026 policy + s140
     // digest + brief read real tables; empty substrate degrades honestly to
     // the pre-wiring behavior) and the telemetry seam records the frozen
