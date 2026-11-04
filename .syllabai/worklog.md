@@ -226,3 +226,19 @@ Work Log:
 Stage Summary:
 - T-SME-SEL r2 is the rebuild of record: same 99.5% placement, same 13-row ADR-039 §4 residual, same 48 gen homes — proven by the verify gate, not by memory.
 - Next: push + PR + Vercel preview deploy + public-URL spot-check (the r1 local spot-check numbers stand as the behavioral baseline).
+
+---
+Task ID: T-SME-SEL r3 (deploy + public spot-check)
+Agent: r7a (Super Z, session web-da4ab8b1, chat 1f3003b6)
+Task: push, PR, preview deploy, public-URL spot-check (operator credentials; law honored — env-only, never echoed/committed/logged).
+
+Work Log:
+- PUSH: t-sme-sel/wire-d0-d3-r2 pushed (fetch-first, behind:0; the ORIGINAL remote t-sme-sel/wire-d0-d3-r0 @ 606738b4 left UNTOUCHED — no force; r2 supersedes and its PR carries the full history). First push attempts failed on an EMPTY env var artifact (fresh shell per command — env exports do not persist across Bash calls; the 'Invalid username or token' / 'Bad credentials' / Vercel 'missingToken' responses were all empty-var symptoms, NOT revocations; same-command assignment fixed all).
+- PR #714 opened (base main <- t-sme-sel/wire-d0-d3-r2): full chain description + gates + spot-check numbers.
+- DEPLOY: Vercel /v13/deployments gitSource github branch t-sme-sel/wire-d0-d3-r2 (project syllabai-hub-v2, team-scoped, rootDir apps/hub) — server-side build from git, no CLI upload. dpl URL syllabai-hub-v2-77dmbhcr2-syllab-ai.vercel.app READY at 05:05Z (~10 min build). (Note: v13 get-by-id polling failed on a self-truncated id print; get-by-URL endpoint worked; v6 list returned empty for the team — URL polling is the reliable path of record.)
+- PUBLIC SPOT-CHECK (agent-browser on the deployment URL): maths-25-extended — 9 SME-numbered topics; gen rows TE1-gen 93 / TE2-gen 71 / TE3-gen 47 / TE4-gen 47; 12 grouped ?subtopic= rows; SUBE1.13 grouped view renders BOTH sets (48+49=97). chemistry-19 — header 524q/28 sets; 29 distinct set-page targets (= 28 set rows + saved-questions); row-count sum 524 EXACT; zero subtopic-stacking. ALL NUMBERS == the r1 local baseline (behavioral parity of the r2 rebuild re-proven on the deployed artifact).
+- Evidence updated in workspace download/sme-wire-spotcheck/ (04-PUBLIC-grouped-view.png, 05-PUBLIC-chemistry19.png, report UPDATE section).
+
+Stage Summary:
+- The SME selector anchoring chain is DEPLOYED and verified end-to-end on a public preview: 99.5% placement, gen-row homes exact, D3 grouped-view policy live, residual == ADR-039 §4 (13 rows).
+- Next: operator reviews PR #714 and merges (merge to main auto-deploys production); ADR-039 §4's 13-row queue goes to the data lane; the stale 69z8qrkps deployment URL is superseded and can be deleted in the Vercel dashboard.
