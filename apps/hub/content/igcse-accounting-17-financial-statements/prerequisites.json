@@ -1,0 +1,160 @@
+{
+  "source": "AI concept-web startup run (F8 rollout batch seven; T-KG-PRE-9, lane 4AC1P1). The web is the AI_SUGGESTED, UNVALIDATED concept lattice authored by the F8 lane for this syllabus, every anchor machine-verified against the served spine's point ids (0 unmapped pass law) and exported in-order only by the calibrated law of scripts/kg_f8al_project.py. Bases mirror the operator-validated store vocabulary. prereqValidated stays EMPTY — the renderer labels every shipped pair INFERRED PROTOTYPE; the named gate before any of this is treated as truth remains the SME validation pass.",
+  "generatedUtc": "2026-11-04T04:50:46Z",
+  "curriculumCode": "4AC1",
+  "hubCourseSlug": "igcse-accounting-17-financial-statements",
+  "conceptAnchors": {
+    "ACP1-CON-INCOME-STATEMENT": [
+      "IGCSE_ACCOUNTING:S4.158"
+    ],
+    "ACP1-CON-SOFP": [
+      "IGCSE_ACCOUNTING:S4.159"
+    ],
+    "ACP1-CON-PARTNERSHIP": [
+      "IGCSE_ACCOUNTING:S4.160",
+      "IGCSE_ACCOUNTING:S4.162"
+    ],
+    "ACP1-CON-LLP": [
+      "IGCSE_ACCOUNTING:S4.161"
+    ],
+    "ACP1-CON-APPROPRIATION": [
+      "IGCSE_ACCOUNTING:S4.163",
+      "IGCSE_ACCOUNTING:S4.164"
+    ],
+    "ACP1-CON-PARTNER-ACCOUNTS": [
+      "IGCSE_ACCOUNTING:S4.165",
+      "IGCSE_ACCOUNTING:S4.166"
+    ],
+    "ACP1-CON-EQUITY-PROFIT": [
+      "IGCSE_ACCOUNTING:S4.167"
+    ],
+    "ACP1-CON-INCOMPLETE-RECORDS": [
+      "IGCSE_ACCOUNTING:S4.168",
+      "IGCSE_ACCOUNTING:S4.169"
+    ],
+    "ACP1-CON-PROFITABILITY-LIQUIDITY": [
+      "IGCSE_ACCOUNTING:S4.170"
+    ],
+    "ACP1-CON-PROFITABILITY-RATIOS": [
+      "IGCSE_ACCOUNTING:S4.171"
+    ],
+    "ACP1-CON-LIQUIDITY-RATIOS": [
+      "IGCSE_ACCOUNTING:S4.172"
+    ],
+    "ACP1-CON-INVENTORY-TYPES": [
+      "IGCSE_ACCOUNTING:S4.173"
+    ],
+    "ACP1-CON-MANUFACTURING-ACCOUNTS": [
+      "IGCSE_ACCOUNTING:S4.174"
+    ],
+    "ACP1-CON-CONCEPTS": [
+      "IGCSE_ACCOUNTING:S5.175"
+    ],
+    "ACP1-CON-DEPRECIATION": [
+      "IGCSE_ACCOUNTING:S5.176",
+      "IGCSE_ACCOUNTING:S5.177",
+      "IGCSE_ACCOUNTING:S5.178"
+    ],
+    "ACP1-CON-DISPOSALS": [
+      "IGCSE_ACCOUNTING:S5.179"
+    ],
+    "ACP1-CON-IRRECOVERABLE-DEBTS": [
+      "IGCSE_ACCOUNTING:S5.180",
+      "IGCSE_ACCOUNTING:S5.181",
+      "IGCSE_ACCOUNTING:S5.182"
+    ],
+    "ACP1-CON-RECEIVABLES-PAYABLES": [
+      "IGCSE_ACCOUNTING:S5.183",
+      "IGCSE_ACCOUNTING:S5.184",
+      "IGCSE_ACCOUNTING:S5.185"
+    ]
+  },
+  "validatedPrerequisiteEdges": [],
+  "inferredPrototypePre": [],
+  "inferredPrototypeRel": [],
+  "conceptWebPrerequisiteEdges": [
+    {
+      "prerequisite": "ACP1-CON-INCOME-STATEMENT",
+      "dependent": "ACP1-CON-SOFP",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "ACP1-CON-PARTNERSHIP",
+      "dependent": "ACP1-CON-LLP",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "ACP1-CON-PARTNERSHIP",
+      "dependent": "ACP1-CON-APPROPRIATION",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "ACP1-CON-APPROPRIATION",
+      "dependent": "ACP1-CON-PARTNER-ACCOUNTS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "ACP1-CON-SOFP",
+      "dependent": "ACP1-CON-PARTNER-ACCOUNTS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "ACP1-CON-SOFP",
+      "dependent": "ACP1-CON-EQUITY-PROFIT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "ACP1-CON-EQUITY-PROFIT",
+      "dependent": "ACP1-CON-INCOMPLETE-RECORDS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "ACP1-CON-INCOME-STATEMENT",
+      "dependent": "ACP1-CON-PROFITABILITY-LIQUIDITY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "ACP1-CON-PROFITABILITY-LIQUIDITY",
+      "dependent": "ACP1-CON-PROFITABILITY-RATIOS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "ACP1-CON-PROFITABILITY-LIQUIDITY",
+      "dependent": "ACP1-CON-LIQUIDITY-RATIOS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "ACP1-CON-INVENTORY-TYPES",
+      "dependent": "ACP1-CON-MANUFACTURING-ACCOUNTS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "ACP1-CON-CONCEPTS",
+      "dependent": "ACP1-CON-INCOME-STATEMENT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "ACP1-CON-DEPRECIATION",
+      "dependent": "ACP1-CON-SOFP",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "ACP1-CON-IRRECOVERABLE-DEBTS",
+      "dependent": "ACP1-CON-INCOME-STATEMENT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    }
+  ],
+  "counts": {
+    "anchoredConcepts": 18,
+    "conceptWebEdges": 14,
+    "validatedEdges": 0,
+    "inferredPre": 0,
+    "inferredRel": 0
+  },
+  "exportCounts": {
+    "candidates": 27,
+    "selfLoops": 0,
+    "reversedDropped": 8,
+    "preExported": 19
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_5VwtXpGcdNVHV2tm",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "20daa1e7885e1b57a6d0ffa650c915f767e9e53b0ecdb00ac724eefcc2e7d636",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_5VwtXpGcdNVHV2tm",
+    "topicTitle": "4. Energy Resources and Energy Transfers",
+    "subtopicTitle": "Work, Power & Energy Resources",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/4-energy-resources-and-energy-transfers/4-2-work-power-and-energy-resources/4-2-2-gravitational-potential-energy",
+    "specAnchors": [
+      {
+        "code": "4.13",
+        "text": "know and use the relationship between gravitational potential energy, mass, gravitational field strength and height: gravitational potential energy = mass × gravitational field strength × height GPE = m × g × h"
+      }
+    ],
+    "primer": {
+      "text": "Height is a place where energy can be parked. These lessons define the gravitational store, build the GPE equation piece by piece, and show how the strength of gravity — from the Moon to the gas giants — changes what the same lifted height is worth.",
+      "prerequisiteSubtopic": "Work, Power & Energy Resources"
+    },
+    "modules": [
+      {
+        "id": "rn_5VwtXpGcdNVHV2tm::L1",
+        "title": "The GPE store and its equation",
+        "sourceHeadings": [
+          "The gravitational potential energy equation",
+          "The gravitational potential energy equation applied to a person lifting a mass"
+        ],
+        "specRefs": [
+          "4.13"
+        ],
+        "opening": "An object lifted in a gravitational field carries energy because of where it is, not because of what it is doing. The gravitational potential store holds that energy, and multiplying mass by gravitational field strength by height prices it in joules.",
+        "keyPoints": [
+          "Gravitational potential energy is the energy an object has because of its height in a gravitational field.",
+          "Lifting an object transfers energy into its gravitational store; a falling object transfers energy out of it.",
+          "GPE = m × g × h, with mass in kilograms, gravitational field strength in newtons per kilogram and height in metres.",
+          "The energy in the gravitational store grows in direct proportion to each of mass, field strength and height."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Raise something and you bank energy in its height; drop it and the bank pays out. The bill is mass times field strength times height — treble any one input and the stored energy trebles with it.",
+            "analogy": "A car park on a hill: the more cars (mass), the steeper the ramp (field strength) and the higher the level (height), the more fuel is stored in the climb.",
+            "examPointer": "Keep the three inputs' units straight — kilograms, newtons per kilogram, metres — and the answer comes out in joules without conversion drama."
+          },
+          "medium": {
+            "restatement": "The gravitational store's contents are priced by GPE = mgh: each input multiplies the others, so the store responds proportionally to mass, to field strength and to height alike. Lifting deposits energy mechanically; descending releases it to other stores.",
+            "analogy": "Water pumped to a header tank: every extra metre of head, litre of water or strength of the pump's feed raises the energy held ready by the same factor.",
+            "examPointer": "State the proportionality explicitly when a question doubles one input — examiners want 'the store doubles' with the reason, not just the number."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_5VwtXpGcdNVHV2tm::L1::Q1",
+          "rn_5VwtXpGcdNVHV2tm::L1::Q2",
+          "rn_5VwtXpGcdNVHV2tm::L1::Q3",
+          "rn_5VwtXpGcdNVHV2tm::L1::Q4",
+          "rn_5VwtXpGcdNVHV2tm::L1::Q5",
+          "rn_5VwtXpGcdNVHV2tm::L1::Q6",
+          "rn_5VwtXpGcdNVHV2tm::L1::Q7",
+          "rn_5VwtXpGcdNVHV2tm::L1::Q8",
+          "rn_5VwtXpGcdNVHV2tm::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_5VwtXpGcdNVHV2tm::L2",
+        "title": "Gravitational field strength",
+        "sourceHeadings": [
+          "Gravitational field strength"
+        ],
+        "specRefs": [
+          "4.13"
+        ],
+        "opening": "The same lifted mass is worth different energy on different worlds, because gravitational field strength g varies. Around ten newtons per kilogram on Earth, weaker on the Moon and stronger on the gas giants, g scales every GPE calculation.",
+        "keyPoints": [
+          "Gravitational field strength g is about 10 N/kg on Earth and multiplies mass inside the GPE equation.",
+          "The Moon's weaker field makes lifting a given mass easier there than on Earth.",
+          "Gas giants such as Jupiter and Saturn have stronger fields than Earth, so lifting is harder there.",
+          "GPE rises in a straight line with height, so equal upward steps add equal amounts of energy."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "g is the exchange rate between height and energy. Earth pays roughly ten joules per kilogram per metre; the Moon pays less, the gas giants more. Plot store contents against height and the line is straight — level steps, equal deposits.",
+            "analogy": "Currency conversion for height: the same suitcase of mass converts to more stored energy where gravity's exchange rate (g) is stronger.",
+            "examPointer": "You will always be given g in the question or on the equation sheet — quote it with its unit, N/kg, in your working."
+          },
+          "medium": {
+            "restatement": "Gravitational field strength enters the store equation as a multiplier with the unit newton per kilogram: about 10 on Earth, lower on the Moon, higher on Jupiter and Saturn. Because m and g are fixed for a given lifted object on a given world, the store grows linearly with height.",
+            "analogy": "A pay rate: mass is the hours worked, g is the hourly rate set by each world, and height is the hours logged — doubling the hours doubles the pay, whatever the rate.",
+            "examPointer": "When a question switches world, swap g first and recompute; never carry Earth's rate into a Moon or Jupiter calculation."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_5VwtXpGcdNVHV2tm::L2::Q1",
+          "rn_5VwtXpGcdNVHV2tm::L2::Q2",
+          "rn_5VwtXpGcdNVHV2tm::L2::Q3",
+          "rn_5VwtXpGcdNVHV2tm::L2::Q4",
+          "rn_5VwtXpGcdNVHV2tm::L2::Q5",
+          "rn_5VwtXpGcdNVHV2tm::L2::Q6",
+          "rn_5VwtXpGcdNVHV2tm::L2::Q7",
+          "rn_5VwtXpGcdNVHV2tm::L2::Q8",
+          "rn_5VwtXpGcdNVHV2tm::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "gravitational potential energy",
+          "definition": "The energy an object has because of its height in a gravitational field.",
+          "firstLesson": 1
+        },
+        {
+          "term": "gravitational field strength",
+          "definition": "The force per unit mass exerted by gravity, about 10 N/kg on Earth.",
+          "firstLesson": 2
+        },
+        {
+          "term": "newton per kilogram",
+          "definition": "The unit of gravitational field strength, giving the newtons acting on each kilogram of mass.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A man of mass 70 kg climbs a flight of stairs that is 3 m higher than the floor. Gravitational field strength is approximately 10 N/kg. Calculate the increase in energy transferred to his gravitational potential store.",
+        "steps": [
+          "List the known quantities: mass m = 70 kg, gravitational field strength g = 10 N/kg, height h = 3 m.",
+          "State the equation: GPE = m × g × h.",
+          "Substitute: GPE = 70 × 10 × 3.",
+          "Evaluate: GPE = 2100 J."
+        ],
+        "finalAnswer": "The energy transferred to his gravitational potential store increases by 2100 J."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/151ebbcb0d2e-gpe-man.png",
+        "alt": "gpe man, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The gravitational potential energy equation applied to a person lifting a mass",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Energy is transferred to the mass's gravitational store as it is lifted above the ground"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3ee2e4e6b09d-3-1-1-6-gravitational-field-strength-diagram.png",
+        "alt": "Gravitational field strength diagram, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Gravitational field strength",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Some values for g on the different objects in the Solar System"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1a40138cd733-5-2-2-gpe-graphs.png",
+        "alt": "GPE graphs, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Gravitational field strength",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Graphs showing the linear relationship between GPE and height"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/c31dacdcd846-1-1-1-estimating-physical-quantities-e1615900077.png",
+        "alt": "Estimating Physical Quantities, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Gravitational field strength",
+        "moduleIds": [],
+        "binding": "heading-unique",
+        "caption": "Exam Hint"
+      }
+    ]
+  }
+}

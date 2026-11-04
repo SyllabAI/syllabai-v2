@@ -1,0 +1,161 @@
+{
+  "source": "AI concept-web startup run (F8 rollout batch five; T-KG-PRE-7, lane 9709P2). The web is the AI_SUGGESTED, UNVALIDATED concept lattice authored by the F8 lane for this syllabus, every anchor machine-verified against the served spine's point ids (0 unmapped pass law) and exported in-order only by the calibrated law of scripts/kg_f8al_project.py. Bases mirror the operator-validated store vocabulary. prereqValidated stays EMPTY — the renderer labels every shipped pair INFERRED PROTOTYPE; the named gate before any of this is treated as truth remains the SME validation pass.",
+  "generatedUtc": "2026-11-03T19:16:36Z",
+  "curriculumCode": "9709",
+  "hubCourseSlug": "cie-a-level-maths-20-pure-2",
+  "conceptAnchors": {
+    "MAP2-CON-MODULUS": [
+      "2.1.1",
+      "2.1.2"
+    ],
+    "MAP2-CON-POLY-DIVISION-FACTOR": [
+      "2.1.2"
+    ],
+    "MAP2-CON-LOGS": [
+      "2.2.1"
+    ],
+    "MAP2-CON-EXP-LN": [
+      "2.2.2"
+    ],
+    "MAP2-CON-LOG-EQUATIONS": [
+      "2.2.3"
+    ],
+    "MAP2-CON-LOG-LINEARISE": [
+      "2.2.4"
+    ],
+    "MAP2-CON-SEC-CSC-COT": [
+      "2.3.1"
+    ],
+    "MAP2-CON-TRIG-IDENTITIES": [
+      "2.3.2"
+    ],
+    "MAP2-CON-DIFF-STD": [
+      "2.4.1"
+    ],
+    "MAP2-CON-DIFF-PROD-QUOT": [
+      "2.4.2"
+    ],
+    "MAP2-CON-DIFF-PARAM-IMPLICIT": [
+      "2.4.3"
+    ],
+    "MAP2-CON-INT-REVERSE": [
+      "2.5.1"
+    ],
+    "MAP2-CON-INT-TRIG": [
+      "2.5.2"
+    ],
+    "MAP2-CON-TRAPEZIUM": [
+      "2.5.3"
+    ],
+    "MAP2-CON-ROOT-LOCATION": [
+      "2.6.1"
+    ],
+    "MAP2-CON-ITERATION": [
+      "2.6.2",
+      "2.6.3"
+    ]
+  },
+  "validatedPrerequisiteEdges": [],
+  "inferredPrototypePre": [],
+  "inferredPrototypeRel": [],
+  "conceptWebPrerequisiteEdges": [
+    {
+      "prerequisite": "MAP2-CON-LOGS",
+      "dependent": "MAP2-CON-EXP-LN",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAP2-CON-LOGS",
+      "dependent": "MAP2-CON-LOG-EQUATIONS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAP2-CON-EXP-LN",
+      "dependent": "MAP2-CON-LOG-EQUATIONS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAP2-CON-LOGS",
+      "dependent": "MAP2-CON-LOG-LINEARISE",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAP2-CON-EXP-LN",
+      "dependent": "MAP2-CON-LOG-LINEARISE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAP2-CON-SEC-CSC-COT",
+      "dependent": "MAP2-CON-TRIG-IDENTITIES",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAP2-CON-EXP-LN",
+      "dependent": "MAP2-CON-DIFF-STD",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAP2-CON-SEC-CSC-COT",
+      "dependent": "MAP2-CON-DIFF-STD",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAP2-CON-DIFF-STD",
+      "dependent": "MAP2-CON-DIFF-PROD-QUOT",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAP2-CON-DIFF-STD",
+      "dependent": "MAP2-CON-DIFF-PARAM-IMPLICIT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAP2-CON-DIFF-PROD-QUOT",
+      "dependent": "MAP2-CON-DIFF-PARAM-IMPLICIT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAP2-CON-DIFF-STD",
+      "dependent": "MAP2-CON-INT-REVERSE",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAP2-CON-INT-REVERSE",
+      "dependent": "MAP2-CON-INT-TRIG",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAP2-CON-SEC-CSC-COT",
+      "dependent": "MAP2-CON-INT-TRIG",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAP2-CON-TRIG-IDENTITIES",
+      "dependent": "MAP2-CON-INT-TRIG",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAP2-CON-INT-REVERSE",
+      "dependent": "MAP2-CON-TRAPEZIUM",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAP2-CON-ROOT-LOCATION",
+      "dependent": "MAP2-CON-ITERATION",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    }
+  ],
+  "counts": {
+    "anchoredConcepts": 16,
+    "conceptWebEdges": 17,
+    "validatedEdges": 0,
+    "inferredPre": 0,
+    "inferredRel": 0
+  },
+  "exportCounts": {
+    "candidates": 18,
+    "selfLoops": 0,
+    "reversedDropped": 0,
+    "preExported": 18
+  }
+}

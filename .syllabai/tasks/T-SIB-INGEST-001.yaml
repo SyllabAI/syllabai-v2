@@ -1,0 +1,53 @@
+version: 1
+task:
+  id: T-SIB-INGEST-001
+  title: 'SIB 4CH1 research evidence into the tutor RAG — 95 artifacts / 1,593 chunks ingested as
+    RESEARCH_EVIDENCE documents (VALIDATED at ingest citing ASSESSMENT_R3_SILVER), embed_rev=2
+    NULL-vector land + 133d-law backfill (GAP family held internal via NULL vectors), zero serving-code changes'
+  owner: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b, chat 54c94863-9377-41e2-923e-dd45fe835c1a,
+    operator order trace 1a1a2a0f13661c75 "start ingesting" + "Go with your recommendations")
+  status: 'RUN-002 IN_PROGRESS on THIS BRANCH — run-001 dry CLEAN + migration 0023 authored; run-002 Gate-A
+    REHEARSAL CLEAN (PGlite disposable: 24 migrations, apply 95/1,593, serving-SQL 14/14 in-scope, foreign 0,
+    GAP unreachable) via PR-body receipt; apply script of record (sib-ingest.ts, 093/133b law: 0600 db file,
+    COW-proof probe, ONE transaction, postverify-in-transaction) + Gate-B driver (backfill-4ch1.sh +
+    sib-row-ids.ts, GAP excluded by enumeration law, resume-safe) LANDED; execution awaits: prod DSN (A-apply),
+    supported egress (B — sandbox is HK-egress, Gemini location-law 400s reconfirmed), repo token (C)'
+  priority: P1
+  band: T-SIB-INGEST (SubjectIntelligence -> tutor RAG consumption lane)
+  wave: sib-consumption-A
+  deps: [SIB-RUN023-r0 (resources), T-MIG-133 (the ingest laws of record), T-MIG-060 (the scoped tutor serving arm)]
+  scope:
+    allowed:
+    - packages/db/** (additive migration 0023 — widen ck_documents_kind + ck_document_chunks_kind with
+      RESEARCH_EVIDENCE; archive snapshot table untouched)
+    - apps/api/scripts/sib-ingest*.ts (new, mirrors books-ingest.ts law: dry + apply, ONE transaction, receipt)
+    - .syllabai/tasks/T-SIB-INGEST-001.yaml + .syllabai/receipts/T-SIB-INGEST-001/**
+    - scripts/ (dry-run receipt generator of record, zero-DB)
+    forbidden:
+    - any prod Neon write without the operator 093/133b-law write order (COW-proof first)
+    - any change to the frozen tutor serving arm (T-MIG-060/070/092/106) or its scope SQL
+    - any change to SubjectIntelligence/** in syllabai-resources (read-only source plane)
+    - printing/staging/committing credentials (keys live repo-external 0600, never echoed)
+    - embedding-provider substitution (gemini-embedding-001 768-dim is the of-record model for embed_rev=2)
+  research: 'DRY RECEIPT OF RECORD (2026-11-03, scripts/sib_dryrun_receipt.py -> sib-ingest-dry-receipt.json):
+    source = syllabai-resources@main SubjectIntelligence/CHEMISTRY_4CH1/chunks/ 95 files fetched raw
+    (file sha256 pins x95 in receipt); verdict CLEAN; 95 documents / 1,593 chunk lines; G1 parse
+    1,593/1,593; G2 content_sha256 == sha256(text) 1,593/1,593; GAP family = 8 artifacts / 136 chunks
+    (NULL-vector held internal — the arm''s `embedding is not null` law makes them unreachable; activatable
+    by a later backfill word); serving-backfill census = 1,457 chunks; temporal census: current 1,593 /
+    legacy 0. DISCREPANCY of record: manifest lifecycle line says 1,404 chunks — predates the RUN-017..022
+    D3 tranches (+189 records = 1,593); fetched truth pinned. RULINGS (operator-approved recs):
+    kind RESEARCH_EVIDENCE (migration 0023); VALIDATED at ingest citing ASSESSMENT_R3_SILVER
+    (CHEMISTRY_4CH1/ASSESSMENT_R3_SILVER_2026-10-30.md, PR #234 merge 3f6547b1) as the validation
+    evidence of record; all 95 artifacts ingested with GAP unserveable; scope law untouched (the arm
+    throws on null scope; subject branch = subjects.curriculum_version_id). CREDENTIALS: 8 operator keys
+    staged repo-external 0600 (chat-transit exposed — ROTATE AFTER USE); live probe from this sandbox:
+    5x 400 LOCATION_BLOCKED (133d region law reconfirmed), 3x 403 project unbilled (001/002/666next);
+    backfill must run from supported egress (CI-egress precedent).'
+  needs:
+    - 'Operator gate A (DB apply): the 093/133b-law prod write order for migration 0023 + the 95-doc
+      apply transaction (COW-proof first) — OR a task-owned Neon branch DSN in a 0600 file for rehearsal'
+    - 'Operator gate B (backfill): run t-mig-133d-backfill-exec.ts (row-keyed, subject-blind, of-record
+      mechanism) from SUPPORTED EGRESS with a billed project key; 1,457 rows; GAP rows skipped by policy'
+    - 'Operator gate C (PR): a valid repo-scoped token — the staged github_token now returns 401 (rotation
+      landed); push + PR of this branch await it'

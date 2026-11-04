@@ -1,0 +1,290 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_F4DQN5PJR8qD7dbw",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "7d165be5ef0edc6d8c4f7851159d605c8357a7459fcd8c6134ff21702904d981",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_F4DQN5PJR8qD7dbw",
+    "topicTitle": "5. Solids, Liquids and Gases",
+    "subtopicTitle": "Changes of State",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/5-solids-liquids-and-gases/5-2-changes-of-state/5-2-3-core-practical-investigating-changes-of-state",
+    "specAnchors": [
+      {
+        "code": "5.11P",
+        "text": "practical: obtain a temperature–time graph to show the constant temperature during a change of state"
+      }
+    ],
+    "primer": {
+      "text": "This practical watches ice become water on a temperature–time graph and catches the melting plateau red-handed: while the change of state runs, the thermometer refuses to move. The method, the expected flat region, and the honest error analysis are all part of the mark scheme.",
+      "prerequisiteSubtopic": "Changes of State"
+    },
+    "modules": [
+      {
+        "id": "rn_F4DQN5PJR8qD7dbw::L1",
+        "title": "Aim and equipment of the melting-ice practical",
+        "sourceHeadings": [
+          "Aims of the experiment",
+          "Equipment"
+        ],
+        "specRefs": [
+          "5.11P"
+        ],
+        "opening": "The investigation has one target: record how the temperature of crushed ice behaves as it is heated steadily, and reveal the plateau at the melting point. The kit list is deliberately ordinary so the plateau is not hidden by apparatus quirks.",
+        "keyPoints": [
+          "The aim is to obtain a temperature–time graph showing constant temperature while ice melts.",
+          "Crushed ice is used so the thermometer bulb makes good thermal contact throughout the sample.",
+          "A thermometer, a beaker, a heat source and a stopwatch form the core equipment set.",
+          "Readings are taken at regular, equal intervals of time so the graph is fair."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Melt some crushed ice with a gentle flame, note the temperature every half-minute, and plot temperature against time. The graph should climb, sit flat at zero degrees while the ice melts, then climb again.",
+            "analogy": "Filming a staircase where one step is a landing: the temperature climbs, rests on the melting landing for a while, then resumes climbing.",
+            "examPointer": "Quote the aim in the question's own terms — a temperature–time graph showing the constant temperature during the change of state — rather than a vague 'find the melting point'."
+          },
+          "medium": {
+            "restatement": "The design manipulates the heating rate (independent variable in time) and measures temperature at fixed intervals, with crushed ice chosen to minimise thermal gradients around the bulb. The plateau is the dependent behaviour of interest: energy supplied during melting is going into the change of state, not into temperature.",
+            "analogy": "A taxi meter that stops ticking while the passenger changes seats: the engine (heater) keeps running, the fare (temperature) pauses during the transition.",
+            "examPointer": "If asked why crushed ice rather than a single block, answer thermal contact: small chips surround the bulb so the reading reflects the whole sample, not one warm corner."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_F4DQN5PJR8qD7dbw::L1::Q1",
+          "rn_F4DQN5PJR8qD7dbw::L1::Q2",
+          "rn_F4DQN5PJR8qD7dbw::L1::Q3",
+          "rn_F4DQN5PJR8qD7dbw::L1::Q4",
+          "rn_F4DQN5PJR8qD7dbw::L1::Q5",
+          "rn_F4DQN5PJR8qD7dbw::L1::Q6",
+          "rn_F4DQN5PJR8qD7dbw::L1::Q7",
+          "rn_F4DQN5PJR8qD7dbw::L1::Q8",
+          "rn_F4DQN5PJR8qD7dbw::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_F4DQN5PJR8qD7dbw::L2",
+        "title": "Method and apparatus for the melting-ice practical",
+        "sourceHeadings": [
+          "Method",
+          "The experimental set-up with ice"
+        ],
+        "specRefs": [
+          "5.11P"
+        ],
+        "opening": "The run itself is a rhythm: heat gently, stir nothing, read on the beat. Gentle heating is the whole trick — too fierce a flame smears the plateau across seconds instead of minutes.",
+        "keyPoints": [
+          "Place the thermometer bulb in the centre of the crushed ice before heating begins.",
+          "Heat gently and steadily so the change of state is stretched out in time.",
+          "Record the temperature at equal intervals from before melting starts until all the ice has melted.",
+          "The apparatus is a beaker of crushed ice over a heat source with the bulb central in the sample."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Bury the bulb in the ice, light a small flame underneath, and take a temperature reading every fixed interval. Keep the flame gentle so the melting stage lasts long enough to be caught by several readings.",
+            "analogy": "Slow-roasting rather than searing: a low heat lets the cook watch every stage of the change instead of skipping past it.",
+            "examPointer": "The words 'gentle' and 'steady' earn method marks — an uncontrolled flame is the classic reason a plateau shows only one reading."
+          },
+          "medium": {
+            "restatement": "The apparatus couples a low, steady heating rate to fixed-interval sampling so that the isothermal melt occupies a measurable stretch of the time axis. Starting readings before heating establishes the initial state, and continuing past full melt shows the resumed temperature rise — both anchor the plateau between two climbing limbs.",
+            "analogy": "A slow-motion replay of a sprint finish: only by slowing the action (gentle heating) can the judge (thermometer) log each frame (reading) of the decisive moment.",
+            "examPointer": "Describe readings taken before, during and after the melt — the plateau is only convincing if the graph rises, flattens, then rises again."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_F4DQN5PJR8qD7dbw::L2::Q1",
+          "rn_F4DQN5PJR8qD7dbw::L2::Q2",
+          "rn_F4DQN5PJR8qD7dbw::L2::Q3",
+          "rn_F4DQN5PJR8qD7dbw::L2::Q4",
+          "rn_F4DQN5PJR8qD7dbw::L2::Q5",
+          "rn_F4DQN5PJR8qD7dbw::L2::Q6",
+          "rn_F4DQN5PJR8qD7dbw::L2::Q7",
+          "rn_F4DQN5PJR8qD7dbw::L2::Q8",
+          "rn_F4DQN5PJR8qD7dbw::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_F4DQN5PJR8qD7dbw::L3",
+        "title": "Results and the analysis of the melting curve",
+        "sourceHeadings": [
+          "Results",
+          "Analysis of results"
+        ],
+        "specRefs": [
+          "5.11P"
+        ],
+        "opening": "The numbers become a table, the table becomes a curve, and the curve confesses: temperature climbs, refuses to move through the melt, then climbs again. The flat stretch is the energy of change of state made visible.",
+        "keyPoints": [
+          "Readings are tabulated as time against temperature at the fixed sampling interval.",
+          "Plotting temperature against time reveals a flat region at the melting point.",
+          "The flat region shows energy supplied during melting is not raising the temperature.",
+          "After the last ice melts, the temperature of the liquid water rises again."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Write each reading in the table, plot it, and look for the horizontal step. That step sits at zero degrees for melting ice and proves the temperature held constant while the state changed.",
+            "analogy": "A heartbeat trace with a flat pause: the pulse (heating) never stopped, but the trace held its line through the pause.",
+            "examPointer": "When asked to 'use the graph', point at the flat region by name and read its temperature off the axis — that pairing is the analysis mark."
+          },
+          "medium": {
+            "restatement": "During the plateau the supplied energy raises the internal energy of the sample by weakening intermolecular attractions rather than by speeding particles up, so the mean kinetic energy — and hence the temperature — is unchanged. The gradient before and after the plateau reflects the specific heat capacities of ice and water respectively, which differ, so the two limbs need not be parallel.",
+            "analogy": "Paying workers to unbolt seats instead of pushing the rows faster: the money (energy) is spent, the seating chart (state) changes, but the row speed (temperature) pauses.",
+            "examPointer": "If asked why the two rising limbs have different slopes, answer that ice and water have different specific heat capacities — equal heating raises their temperatures at different rates."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_F4DQN5PJR8qD7dbw::L3::Q1",
+          "rn_F4DQN5PJR8qD7dbw::L3::Q2",
+          "rn_F4DQN5PJR8qD7dbw::L3::Q3",
+          "rn_F4DQN5PJR8qD7dbw::L3::Q4",
+          "rn_F4DQN5PJR8qD7dbw::L3::Q5",
+          "rn_F4DQN5PJR8qD7dbw::L3::Q6",
+          "rn_F4DQN5PJR8qD7dbw::L3::Q7",
+          "rn_F4DQN5PJR8qD7dbw::L3::Q8",
+          "rn_F4DQN5PJR8qD7dbw::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_F4DQN5PJR8qD7dbw::L4",
+        "title": "Evaluating the melt-curve practical and working safely",
+        "sourceHeadings": [
+          "Evaluating the experiment",
+          "Safety considerations"
+        ],
+        "specRefs": [
+          "5.11P"
+        ],
+        "opening": "No practical is perfect: heat leaks, readings wobble, bulbs touch glass. Naming the systematic and random errors — and the fixes — is as much a part of the practical as the plateau itself.",
+        "keyPoints": [
+          "A systematic error such as heat bypassing the ice tilts or shortens the plateau.",
+          "Random reading errors are reduced by averaging and by careful, consistent reading technique.",
+          "The main safety duties are handling the hot beaker with tongs or a heatproof mat and keeping the flame controlled.",
+          "Eye protection is worn throughout because heated glassware can spit or crack."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Watch out for heat sneaking straight into the thermometer or beaker rather than the ice, and for small wobbly readings. Use goggles, stand the hot beaker on a mat, and lift it with tongs.",
+            "analogy": "Checking a cake recipe: note where heat escaped, accept that every timing jitters a little, and keep the oven gloves on.",
+            "examPointer": "Classify before you fix: systematic errors shift every reading the same way, random errors scatter — improvements should match the error type."
+          },
+          "medium": {
+            "restatement": "The dominant systematic threat is energy entering the bulb or glass rather than the sample, which lifts the apparent melt temperature; the control is insulating or repositioning the bulb. Random scatter comes from parallax and reaction-time variation between interval readings; repeating the run and smoothing the plot mitigates it. Safety mirrors any small-scale heating practical: eye protection, heatproof mat, tongs, and flame discipline.",
+            "analogy": "Calibrating bathroom scales on a tilted floor: no amount of re-weighing (averaging) fixes a tilt (systematic), but the jitter between steps (random) does average out.",
+            "examPointer": "For the evaluation mark, name the error, name its effect on the plateau, and name the fix — all three, in that order."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_F4DQN5PJR8qD7dbw::L4::Q1",
+          "rn_F4DQN5PJR8qD7dbw::L4::Q2",
+          "rn_F4DQN5PJR8qD7dbw::L4::Q3",
+          "rn_F4DQN5PJR8qD7dbw::L4::Q4",
+          "rn_F4DQN5PJR8qD7dbw::L4::Q5",
+          "rn_F4DQN5PJR8qD7dbw::L4::Q6",
+          "rn_F4DQN5PJR8qD7dbw::L4::Q7",
+          "rn_F4DQN5PJR8qD7dbw::L4::Q8",
+          "rn_F4DQN5PJR8qD7dbw::L4::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "temperature–time graph",
+          "definition": "A plot of temperature against time used to reveal constant-temperature regions during heating.",
+          "firstLesson": 1
+        },
+        {
+          "term": "plateau",
+          "definition": "The flat region of the graph where temperature stays constant while the state changes.",
+          "firstLesson": 3
+        },
+        {
+          "term": "systematic error",
+          "definition": "A repeatable bias that shifts every reading in the same direction.",
+          "firstLesson": 4
+        },
+        {
+          "term": "random error",
+          "definition": "Unpredictable scatter between readings that averaging can reduce.",
+          "firstLesson": 4
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/14f5b912e95a-5-2-3-change-of-state-apparatus.png",
+        "alt": "Change of State Apparatus, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The experimental set-up with ice",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Apparatus used to heat ice and measure its temperature as it melts"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/98b15b249897-14-1-10-practical-shc-heating-curve.png",
+        "alt": "Practical SHC Heating curve, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Analysis of results",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "A graph of temperature against time will show a flat region where the ice is melting"
+      }
+    ]
+  }
+}

@@ -1004,3 +1004,151 @@ Work Log:
 
 Stage Summary:
 - t-select-search-resume run-002: VERDICT — both select pages exercise exactly per the law of record: each owns its own engagement plane (EQ: scored parts; FC: rated cards), resolves the target against what IT lists, offers the jump only while the target is listed (scoped honesty verified both ways), and lands on the named set/deck. No defect found, no remainder disclosed, no code change required. Receipt .syllabai/receipts/t-select-search-resume/run-002-live-verification.json. With t-note-scroll-resume run-002, all three select pages' Resume targets are now first-hand verified in production on 2026-11-03.
+
+---
+Task ID: T-SIB-INGEST-001 run-001 (operator order trace 1a1a2a0f13661c75: "start ingesting" + "Go with your recommendations")
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+Base commit: 73af204 (fetched-first clone; branch sib/ingest-4ch1-r0; NO push — gate C open)
+
+Work Log:
+- RULINGS LOCKED (operator-approved recs): kind RESEARCH_EVIDENCE via migration 0023; VALIDATED at ingest citing ASSESSMENT_R3_SILVER as the validation evidence of record; all 95 artifacts ingested with GAP family serving-unreachable (NULL-vector rows — the arm's `embedding is not null` law); scope law untouched (vector-arm throws on null scope; subject branch = subjects.curriculum_version_id, 4CH1-2017).
+- MIGRATION 0023 (0023_sib-research-evidence-kind.sql + snapshot + journal idx23): widens ck_documents_kind + ck_document_chunks_kind with RESEARCH_EVIDENCE (varchar(20) fits); archive_tc27 snapshot table deliberately NOT widened.
+- DRY RECEIPT CLEAN (scripts/sib_dryrun_receipt.py -> .syllabai/receipts/T-SIB-INGEST-001/run-001-dry-receipt.json): source = syllabai-resources@main CHEMISTRY_4CH1/chunks 95 files raw-fetched, sha256 pins x95; 95 docs / 1,593 chunks; G1 parse 1,593/1,593; G2 content_sha256==sha256(text) 1,593/1,593; GAP = 8 artifacts / 136 chunks held; serving-backfill census 1,457; temporal current 1,593 / legacy 0. Discrepancy of record: manifest's "1,404" line predates RUN-017..022 tranches (+189 = 1,593) — fetched truth pinned.
+- CREDENTIALS: 8 operator Gemini keys staged repo-external 0600, never echoed/committed; CHAT-TRANSIT EXPOSED — rotate after use. Sandbox live probe: 5x 400 LOCATION_BLOCKED (133d region law reconfirmed), 3x 403 project-unbilled (001/002/666next). Backfill (t-mig-133d-backfill-exec.ts, gemini-embedding-001 768-dim) must run from supported egress.
+- APPLY SCRIPT (sib-ingest.ts mirroring books-ingest law: dry+apply, ONE transaction, COW-proof probe, receipt) authored on the NEXT run — apply + backfill + push/PR await operator gates A/B/C.
+
+Stage Summary:
+- T-SIB-INGEST-001 run-001 committed locally (0e0c11f): rulings locked, migration authored, dry receipt CLEAN. Zero prod contact, zero credential exposure. Gates: A = 093/133b write order or task-owned branch DSN; B = billed key + supported egress for the 1,457-row backfill; C = valid repo token (staged one 401s) for push + PR.
+
+---
+Task ID: T-SIB-INGEST-001 run-002 (operator order trace 1a1a2a8cf4758161: "land A+B")
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+Base commit: 5e14dc0 (this branch; NO push — gate C open)
+
+Work Log:
+- GATE-A REHEARSAL CLEAN (disposable PGlite 0.2.17 + bundled pgvector, zero prod contact; receipt + rehearse-of-record.js in run-002-rehearsal/): ALL 24 migrations 0000..0023 apply (0023 widens both kind CHECKs — RESEARCH_EVIDENCE lands); mid-chain precondition of record found + documented (0013's warehouse seed requires the REAL 4MA1 subject 763dfe2d to pre-exist); apply transaction body: 95 documents + 1,593 chunks (VALIDATED, embed_rev=2, NULL vectors), postverify exact; the vector-arm serving SQL VERBATIM: 14/14 in-scope RESEARCH_EVIDENCE rows returned, foreign scope 0 rows, GAP rows provably never embedded (136 NULL-held). 14/14 asserts green.
+- APPLY SCRIPT OF RECORD LANDED (apps/api/scripts/sib-ingest.ts, mirrors books-ingest law): dry + apply modes; fail-closed corpus re-verification (G2 sha per chunk, abort-before-DB); V53-exact subject resolution (4CH1 x 4CH1-2017, refuse when != 1 row); 093/133b gates (0600 db file enforced, COW-proof probe word, idempotency abort, ONE transaction, postverify INSIDE the transaction); receipt out.
+- GATE-B DRIVER LANDED (scripts/sib-ingest/backfill-4ch1.sh + sib-row-ids.ts): enumerates 87 serving docs (GAP excluded BY ENUMERATION LAW — executor never pointed at GAP rows), resume-safe (already-embedded skip), continue-on-fail, final census asserts gap_embedded == 0, region law header (sandbox egress = HK, Gemini 400 LOCATION_BLOCKED reconfirmed live on all 5 candidate keys; 001/002/666next are project-unbilled 403s).
+- CREDENTIALS posture: 8 keys staged repo-external 0600 (chat-transit exposed — rotate after use); GH token still 401 — push/PR blocked (gate C).
+
+Stage Summary:
+- "land A+B" executed to the last credential-free line: A = write-order ACKNOWLEDGED + rehearsed CLEAN + apply script of record ready (needs ONLY a task-owned DSN in a 0600 file, or operator execution); B = driver ready + GAP law encoded (needs ONLY supported egress + a billed key — sandbox is HK-egress, physically blocked). Zero prod contact, zero credential exposure. Gates remaining: A-exec (DSN), B-exec (egress), C (token).
+
+---
+Task ID: T-SIB-INGEST-001 run-003 (continuation of operator order trace 1a1a2a8cf4758161 "land A+B"; session resumed after context loss — state recovered from disk, nothing re-asked or re-ruled)
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+Base commit: 176a9db (this branch; NO push — gate C open)
+
+Work Log:
+- STATE RECOVERY: prior session chat context lost; task state recovered entirely from disk artifacts of record (worklog run-001/run-002 entries + workspace/sib-pg-rehearsal/rehearsal-receipt.json REHEARSAL CLEAN + staged corpus + dry receipt). No operator re-consultation; no re-ruling.
+- WORKSPACE RE-MATERIALIZED: v2 apps/api node_modules absent (fetch-first clone) — bun install, 988 packages, lockfile-clean (bun.lock unchanged).
+- SCRIPT-OF-RECORD DRY GREEN (first execution of sib-ingest.ts itself — run-002 rehearsal proved the SQL body, this proves the script): --mode dry on the real staged corpus -> .syllabai/receipts/T-SIB-INGEST-001/run-003-script-dry-receipt.json: 95 docs / 1,593 chunks / GAP 8 docs + 136 chunks NULL-held / serving_backfill_census 1,457; verdict "DRY PLAN OK — no DB touched". Zero DB, zero network writes, zero credential contact.
+- CORPUS DRIFT CHECK OF RECORD: run-003's 95 file pins vs run-001 dry receipt pins — 95/95 identical, 0 mismatched, 0 missing; censuses agree (1,593 / 136 / 1,457). Staged corpus is byte-identical to the corpus the rulings were made on.
+- GATE POSTURE RE-VERIFIED (evidence-fresh): A-exec still blocked — no 0600 DSN file staged anywhere under /home/z (0600 scan found only sib-keys/gemini.env; the .env DATABASE_URL is 0755 and task-foreign — refused by the 093/133b law as staged); B-exec still physically blocked — sandbox egress re-confirmed HK (Alibaba) under the 133d region law, no billed-key path from here; C still blocked (GH token 401 of record). No key re-probing: egress block is physical, probes would only burn budget.
+- SECURITY RULING (unchanged, restated): the chat-order "extract keys from chat records into an env file / stage azure_gpt_35" remains REFUSED — no keys exist in any chat transcript of record; operator keys are already staged repo-external 0600 (workspace/sib-keys/gemini.env) per the run-001 convention; duplicating chat-transit secrets to additional disk files only widens exposure. azure_gpt_35 is not part of this task's credential set (embeddings = gemini-embedding-001 per ruling).
+
+Stage Summary:
+- T-SIB-INGEST-001 run-003: the apply script of record is now proven green in dry mode on the byte-identical staged corpus (receipt committed); every credential-free line of "land A+B" is executed. Remaining: A-exec (0600 DSN file + probe word, or operator execution), B-exec (supported egress + billed key), C (valid GH token).
+
+---
+Task ID: T-SIB-INGEST-001 post-run-003 security note (operator keyring re-supply, trace 1a1a2bd75e3aa7bd)
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+
+Work Log:
+- Operator re-supplied the 8-key Gemini ring in chat (same labels of record). Verified by fingerprint comparison ONLY (sha256 prefixes; values never printed/committed): all 8 MATCH the staged keyring of record byte-for-byte — workspace/sib-keys/gemini.env (repo-external, 0600, dir 0700) is CURRENT; no re-staging performed. Comparison temp file (0600) shredded after use.
+- Gate posture UNCHANGED by this message: A-exec still needs the 0600 DSN + probe word; B-exec still physically egress-blocked (HK reconfirmed this session; keys already probed of record — 5x 400 LOCATION_BLOCKED, 3x 403 project-unbilled); C still token-401. No Gemini re-probe performed (egress block is physical; probes burn budget without new information).
+- Standing operator item re-escalated: the ring has now transited chat TWICE (run-001 staging + this re-supply). Rotation after use remains mandatory; rotation NOW is also safe — re-staging a rotated ring is a 2-minute fingerprint-verified operation.
+
+Stage Summary:
+- Staged keyring verified current against the operator's fresh supply; zero secret values moved, printed, or committed; gates A-exec/B-exec/C unchanged.
+
+---
+Task ID: T-SIB-INGEST-001 run-004 (operator order trace 1a1a2d4e0294d969: "use github actions")
+Agent: Super Z (zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+Base commit: 42ff25d (this branch; pushed + PR of record this run — gate C OPEN via the rotated PAT of record)
+
+Work Log:
+- GATE-C REALITY CORRECTION: the PAT of record (gh_api.py, "the rotated PAT") is LIVE — repo GET 200 (the run-002 "staged one 401s" posture is stale). No token value entered chat context (platform-redacted on read); used only inside processes.
+- ACTIONS RUNNERS AUTHORED — both workflow_dispatch-ONLY, INERT until dispatched (the dispatch = the operator's fire order per the 093/133b law):
+  - .github/workflows/t-sib-ingest-001-apply.yml (Gate A-exec): job cow-apply = stage-of-record rebuild (scripts/sib-ingest/fetch-stage.sh: fetch from syllabai-resources@main + sha256 pin-verify vs the COMMITTED run-001 dry receipt, fail-closed) -> script-of-record DRY on the runner -> Neon COW branch + branch-local owner password reset (prod roles never touched; 423-aware) -> migration 0023 as RAW SQL per the 0007 disclosure law (scripts/sib-ingest/apply-0023.ts: one tx, lock/statement timeouts, idempotent-safe, postverify inside the tx, scrubbed receipt) -> sib-ingest.ts --mode apply (one transaction, COW-proof probe word input, postverify) -> receipts ALWAYS -> DROP COW + 404-verify; job prod-apply (needs cow-apply green, mode=cow+prod) = same frozen path against the per-run-staged SIB_PROD_DATABASE_URL.
+  - .github/workflows/t-sib-embed-backfill.yml (Gate B-exec): job cow-proof = COW + 0023 + full corpus apply + ONE pilot doc backfilled via the FROZEN executor + census asserts (docs=95, pilot embedded, gap_embedded=0); job prod-backfill = driver of record backfill-4ch1.sh (87-row census guard, resume-safe, GAP excluded by enumeration law, gap_embedded=0 law) from Actions egress under the 133d REGION LAW. Modes mirror t-mig-133d (cow+prod default | prod-only).
+- CI-PATH SIMULATION GREEN (sandbox, zero DB): fetch-stage.sh -> 95/95 pins verified LIVE from the source of record (corpus still drift-free right now); sib-ingest.ts --mode dry on the rebuilt stage -> 95 docs / 1,593 chunks / GAP 136 / census 1,457 — exact match of record. Both YAMLs parse; apply-0023.ts transpile-clean.
+- SECRETS OF RECORD (operator, per-run, hygiene-deleted after): SIB_PROD_DATABASE_URL + SIB_GEMINI_KEY (the BILLED key of the staged ring). Probe word = dispatch input (not a credential). NEON_API_KEY / NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID already of record.
+- SECURITY: no key/URI/token value placed in any workflow, script, receipt, or this worklog; the COW discipline (prod roles untouched, drop+404 even on failure) preserved verbatim from the precedents.
+
+Stage Summary:
+- PUSH + PR OF RECORD: branch pushed to origin/sib/ingest-4ch1-r0 @ 6b580fb (rotated PAT of record, in-process credential helper — no token on any command line or in any output); PR #702 opened (base main): https://github.com/SyllabAI/syllabai-v2/pull/702. Note: the workflows become UI-dispatchable once the PR lands on main; until then dispatch via API against the branch ref, or merge first.
+- "use github actions" executed to the last pre-dispatch line: both gate runners INERT-dispatchable on the branch, CI path simulated green end-to-end minus DB. Remaining (operator): stage the 2 per-run secrets, dispatch t-sib-ingest-001-apply (probe word of choice; cow-only for receipt review or cow+prod to land), then t-sib-embed-backfill (after apply-prod green — mechanically census-guarded).
+## t-book-073 run-001 close-out — c17 media-embed pushed, PR #705 merged (main 3b7dd7f4); playback re-verified on production (operator order trace 1a1a20d3cc3c4e65, continued on PAT re-knock trace 1a1a2ea36d3287a9)
+Agent: main (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7)
+Task: land the r0-prepared c17 video close-out (branch was local-only at 95d4c33a, blocked in the prior session on a presumed-dead PAT) and re-verify the lesson-page playback law first-hand.
+
+Work Log:
+- fetch-first: origin/main 5853e431 -> 59dbd8ad since the r0 pin; the 3 touched files have ZERO overlap with the intervening RN-DEBRIS-11 run-002 repairs — branch rebased clean (95d4c33a -> db9d08b2), re-pinned, diff re-reviewed (manifest row cog-4-12-reactions-of-acids + b07 block + planned_blocks 6->7, byte-identical intent).
+- PAT forensics: the r0 "PAT is DEAD: 401" verdict was an empty-env artifact (shell exports do not persist across tool calls; the 401 battery had fired against an EMPTY credential). Same command-injection re-test: HTTP 200 login SyllabAI on /user + /rate_limit. Superseded of record in receipt r1.
+- Land: push -> PR #705 -> gate-b watched to completion (hub success + verify success, absent != success honored) -> merged as 3b7dd7f4; the 28/29 -> 29/29 packs video coverage closes of-record.
+- Production re-probe (headless browser, syllabai-hub-v2.vercel.app): c16 lesson renders the media-embed iframe youtube-nocookie.com/embed/Yrf3Z_TQu_k?rel=0 at 708x398 with Watch-on-YouTube + Cognito attribution — videos PLAY from the lesson page; c17 lesson (h1 'Salt preparations') still honest-empty (no iframe) until the DB ingest; new video vcxlISVJ6Os re-probed direct (oembed 200 author Cognito, nocookie embed 200 / 135,998 B).
+- Open item (single): the operator-keyed ingest DATABASE_URL=... bun apps/api/scripts/books-ingest-rail.ts books/4ch1 <manifest> — the ep-ancient-cake MAIN pooler DSN was not resident this session (env-injection law); the c17 Watch card serves on its completion, then the c17 lesson re-probe flips.
+
+Stage Summary:
+- t-book-073 run-001: CLOSED at the git/CI/merge plane and VERIFIED at the playback plane; 29/29 packs now have a curated video of-record on main (3b7dd7f4). Remaining: the c17 b07 DB ingest + post-ingest production re-probe, operator-keyed. Receipts .syllabai/receipts/T-BOOK-073/{c17-media-embed-r0,c17-media-embed-r1}.json; PR #705; merge 3b7dd7f4. Credential rotation reminder stands (ghp_/vcp_/napi_/npg_ x2 chat-exposed).
+
+## t-book-073 run-001 DB leg + serve proof — c17 b07 ingested & flipped on MAIN of record; the Watch card serves on production (operator order trace 1a1a20d3cc3c4e65; DSN re-knock trace 1a1a4819e2faa119)
+Agent: main (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7)
+Task: the operator-keyed DB leg the prior legs disclosed as pending — land c17 b07 in book_blocks on the ep-ancient-cake MAIN pooler, flip it, and prove the card serves from the lesson page.
+
+Work Log:
+- Recycle recovery: checkout had rolled back to a stale snapshot (t-book-015 @ 3002b509, 1573 behind) — fetch-first re-pinned main at 87d8e660; bun install rebuilt workspace deps (tracked node_modules symlink's store target was recycled).
+- Endpoint identity BEFORE any write: GUCs say project billowing-cherry-15418366, branch br-muddy-bar-a5huwldd, PG 18.6 — the MAIN of record. DSN env-injected per command, never echoed or on disk.
+- Preflight census: 265/265 rows VALIDATED; c17 chapter VALIDATED (join set holds 2.37+2.39); c16's media-embed updated 2026-11-02 vs its 2026-10-27 siblings → the widen runs used a SCOPED single-block landing, so the full re-ingest (whose upsert resets VALIDATED to SUGGESTED) was NOT run — dry-run only, shape proven (266 blocks, u2:c17 #7 rides).
+- Serving law read of record: railBlocksForChapter double gate (book VALIDATED AND row VALIDATED) — flip required.
+- Land: b07 INSERT on-conflict(identity) as SUGGESTED (binding laws checked live first). Flip: separate keyed S4 action → VALIDATED. Post-flip census: 266/266 VALIDATED, nothing else moved.
+- Serve proof (production, headless browser): c17 lesson (h1 'Salt preparations') renders the media-embed card — iframe youtube-nocookie.com/embed/vcxlISVJ6Os?rel=0 at 708x398, correct video title, Watch-on-YouTube link, Cognito attribution + media-sources.yaml licensing line. Screenshot: .syllabai/lane-artifacts/T-BOOK-073/c17-watch-card-production.png.
+
+Stage Summary:
+- t-book-073 CLOSED IN FULL: video hunted & curated (r0), pushed/PR #705/gate-b/merged 3b7dd7f4 (r1), DB land+flip on MAIN of record + first-hand production serve proof (r2). 'Does our Course Lessons have videos?' now answers 29/29 packs of-record; c17's Watch card plays from the lesson page. Credential rotation reminder stands (ghp_/vcp_/napi_/npg_ x2 chat-exposed).
+
+## t-mg-rollout-commission run-001 — the AI-marking rollout tranche commissioned: rollout plan of record + 2 lane cards + 2 ADRs, grounded in a live capture of the reference product's own marking pipeline (operator order "Now, start working", 2026-11-04)
+
+Work Log:
+- Operator order followed the rollout question ("how do we get this feature in syllabai, with the existing system, seamlessly. Plan it out" → plan delivered and reviewed → "Now, start working"). Provisioning: sandbox had reset (no clone, no gh binary) — re-cloned SyllabAI/syllabai-v2 (blob:none filter) at main 02886329; bun 1.x present; gh replaced by curl API calls + the persisted git_askpass.sh askpass pattern.
+- NEW EVIDENCE PACK: a LIVE capture of mathsgenie.co.uk's own AI marking (operator-consented, operator-supplied account, 6-digit code login): two real marks run through their pipeline (Q1 "Simplify e+e+e+e+e" → 5e → 1/1; Q2 "Write 3/4 as a decimal" → 0.75 → 1/1) with `fetch` patched in page context — request `POST /api/trpc/pdfMarking.markQuestionRegion {regionId, imageDataUrl(30KB JPEG), subjectCode, workingBlocks}` and the FULL response captured verbatim: score/maxScore, markschemeUsed, feedback{thoughtProcess (their model's raw reasoning, shipped to the client), pointsScored/pointsNotScored, strategiesForImprovement, chatMessage, markPointsAwarded[{code B1, awarded, workingRef W2}]}, workingBlocks[{ref, shapeIds}]. The JPEG decoded: their region crop contains the PRINTED QUESTION + footer + the writing in a handwriting font — the model reads the question from pixels. Energy: 5→3 (1/mark). Pack: sandbox download/mg-marking-{raw.json,capture.md} + mg-q2-region.jpg.
+- CODEBASE SURVEY (first-hand, this repo at main): the marking ENGINE is already landed (T-MG-MARK-PARITY-1 phases 1–4+6: mark_point_rects, mark_awards ledger + mark_working_blocks, syllabai-ink/1, paper-mark/v1 crop-then-mark 202+poll, honest feedback panel + rollup) — including T-MG-MP-RECT-2 run-001 ALREADY EXECUTED (the deterministic extraction instrument + the 76-row manifest + oracle validation 63/64 vs MG's public getRegions). The genuine gaps: (1) the typed regrade channel `POST /api/v1/paper-marks/parts/:partId/regrade` exists with ZERO hub callers while the core player's drafts get no AI mark before submission; (2) region marking arms only via ?paperId= deep-link; (3) the legacy /api/ai/mark 501 stub is the HONEST legacy-lane floor (ADR-029) — the draft plan's "delete it" premise was corrected by ground truth; (4) the small contract delta the capture settled (§1.9 of the parent plan).
+- LANDED (this commit, records): docs/MG-MARK-ROLLOUT-PLAN.md (the rollout plan of record — asset inventory vs the live contract, six lanes, sequencing, deliberate divergences, risks); cards T-MG-PLAYER-MARK-1.yaml (Lane C, P1, ship-first: advisory per-part AI marking on the core lane via the regrade channel) + T-MG-SURFACE-1.yaml (Lane A, P1: discoverability beyond the deep-link); docs/ADR-042-NO_ENERGY_ECONOMY_FOR_AI_MARKING.md (metering stays at the provider-budget layer; mark_entitlements/ai_mark_events are the seam if paid tiers ever need quota) + docs/ADR-043-PAPER_MARK_JOB_DURABILITY_POSTURE.md (202+poll stands; durable queue carded-not-built; both ADRs PROPOSED → ACCEPTED on merge per house law).
+- NOT carded: T-MG-UPLOAD-1 (the waived Phase 5) stays operator-held — the product-vs-internal-tooling decision + legal review gate it (rollout plan Lane D); T-MG-MP-RECT-2's scale-out is recorded in the rollout plan (Lane B) against the existing card.
+
+Stage Summary:
+- The tranche is COMMISSIONED: engine already on main, the rollout plan of record is committed, two P1 lane cards are OPEN and branch-ready (t-mg-player-mark-1/run-001 first), the divergence set from the reference product is ADR-recorded (energy: not built; sync: stands), and the only genuine open decision left on the surface is Lane D's scope (operator-held). Lane C run-001 branches next on its own dispatch word.
+## T-BOOK-074 run-001 — Cognito FULL-COVERAGE for 4CH1 (2026-11-04, trace 1a1a4e45ca4e2325)
+
+Operator order: "I want you to seamlessly integrate all the cognito videos into the course lesson 4ch1" (subsumes the census question 1a1a4d666e4e93a5: "How many videos does cognito have for IGCSE chemistry edexcel?").
+
+- Census of record: Cognito's Edexcel-IGCSE Chemistry track (cognito.org/courses/gcse/chemistry-triple/iedexcel) = **93 topic pages; 63 ship an embedded video; 61 distinct assets** (uYubwlPRdCs shared 2.4/4.2; MEQ1YGxfAQ4 shared 3.11/4.14). 30 video-less pages (7.x practicals, 8.x skills, several theory pages) stay honest-empty.
+- ADR-BOOK-0006: ADR-BOOK-0002 decision 6 (≤2 media blocks/chapter pilot density guard) revisited via its own revisit clause — full-coverage mode, 4CH1 only; every other ADR-BOOK-0002 decision preserved.
+- Curation: 34/34 verdicts fetch-verified fresh 2026-11-04 (provider 200 + fresh video id + oembed 200 + nocookie 200). Census corrections: 3.11 actually ships rluAIfmi7x8 (pre-existing c06 row — no new row); MEQ1YGxfAQ4 canonically 4.14 → new c16 row (spec 2.33C); 4.2 disclosed reuse of 2.4's asset (decision 3).
+- Authoring: media-sources.yaml 29 → 63 rows (append-only, all cognito); 34 media-embed blocks across 17 packs (c02 ×5, c03 ×1, c04 ×2, c05 ×4, c06 ×1, c07 ×2, c08 ×3, c10 ×2, c13 ×1, c14 ×2, c16 ×1, c18 ×1, c19 ×2, c20 ×3, c21 ×1, c23 ×2, c29 ×1); ords below the strength 100+ band; anchors = pack-last monotonic; 17 pack.yaml bumps. Lint of record: 33 packs / 300 blocks / 0 findings / 0 warns.
+- r1: branch books/4ch1-cognito-full-coverage-r0 @ 17cce209 (pushed by the earlier session segment); post-recycle rebase discarded, zero force-push; PR #716 gate-b hub+verify ALL success; merged (merge commit) → main 02886329e6.
+- r2 (DB leg): DSN recovered via session-side .prod_url (api.neon.tech unreachable — no DNS A record, verified via two DoH resolvers; password never echoed). Pre-flight GUC identity = MAIN of record (billowing-cherry-15418366 / br-muddy-bar-a5huwldd / PG 18.6), estate 266/266 VALIDATED. Scoped land (binding laws ALL PASS; 34 landed SUGGESTED, 29 pre-existing skipped — zero downgrades) → operator S4 flip → **estate 300/300 VALIDATED**, exactly 34 rows touched, nothing else moved.
+- r2 (serve proof, first-hand on production): c02 renders 6 cards (5 new ids verified), c20 renders 4 cards (3 new ids verified); fleet census 29/29 chapters rendered == DB-expected, 63/63 cards fleet-wide. Card chrome verified (blurb, Watch-on-YouTube, Cognito attribution, licensing line with reviewed 2026-11-04). Screenshots: .syllabai/lane-artifacts/T-BOOK-074/ (c02 + c20 close-ups). Headless player paints as placeholder (consent/JS-gated); iframe addressing + endpoints 200-verified at curation; interactive playback of the same renderer chain proven in T-BOOK-073.
+
+Stage Summary:
+- t-book-074 CLOSED IN FULL: census (93/63/61) answered and delivered; ALL 61 census assets integrated (27 pre-existing + 34 new); receipts r0/r1/r2 filed; PR #716 merged 02886329e6; DB estate 266 → 300/300 VALIDATED via scoped land+flip; 63/63 video cards serve fleet-wide from the lesson pages of record. Fleet video question now answers 63/29 — every chapter's lesson carries its full Cognito video set (4CH1 only; other books adopt full-coverage by their own ADR per ADR-BOOK-0006 decision 5). Credential rotation reminder stands (ghp_/vcp_/napi_/npg_ x2 chat-exposed).
+
+## t-mg-player-mark-1 + t-mg-surface-1 run-001 receipts — both rollout PRs opened, CI green (operator order "Now, start working", 2026-11-04, continued)
+
+Work Log:
+- t-mg-player-mark-1/run-001 (branch, PR #722): lib/paper-marks.ts `requestPartRegrade` (the mirror-law client of the typed regrade channel — 202 accepted | 400/404/422 rejected with the honest message incl. no_mark_points | no_token | unconfigured | failed; retry: 0) + CoreMarkingFlow draft-phase advisory "Mark my draft with AI" (per structured part via the bridge join's core part UUIDs; verdicts through feedbackCopyModel; writes NO attempt; Smart Mark + legacy lane byte-identical) + paper-marks-regrade.test.ts (6 tests). Gate 1 asserted by diff: prompt.ts / PROMPT_VERSION / packages/contracts/** / packages/db/** zero diffs. Local: bun 6/6 + paper-feedback 8/8 + tsc clean + eslint clean. CI: SUCCESS (run 41781956955).
+- t-mg-surface-1/run-001 (branch, PR #725): PaperViewerClient derives the paper-asset uuid when no ?paperId= deep-link (resolvePaperAssetCached — the rollup's own memoized resolve); honest posture verbatim (signed-out → no resolve → zero chrome; not-ingested → honest null; uncovered → the regions fetch's honest empty; mock excluded; deep-link wins). Zero bytes in pdf-pane.tsx / RegionMarkLayer / InkLayer / api / contracts / db (+29/−2, one file). Local: tsc clean + eslint clean + region-mark suite 39/39. CI: SUCCESS (run 41782338279).
+
+Stage Summary:
+- Both rollout PRs are OPEN with green CI and await the operator's merge word (parent plan Gate 5 carries): #722 (Lane C — the typed regrade channel gets its hub consumer; the MG value moment type→mark→read on the core lane) and #725 (Lane A — region marking discovers itself; the deep-link requirement is gone). Records on main 20fc832c (plan + cards + ADR-042/043). Lane E carded (engine-side, next), Lane D operator-held, Lane B scale-out recorded against the executed RECT-2 instrument.
+
+## T-OEQ-PHYS-FORMAT-1 run-013-m4 plane sync — the 2 radiation banks serve the repaired corpus (2026-11-04, traces 1a1a55a658b4e201 + 1a1a60ec9f8d140d)
+
+Work Log:
+- The F135 hand-off item 2 follow-up leg executed. Corpus first: resources PR #309 (merged ef5c93cc) — the run-011-m3-analog isotope/decay debris repair, 26 spans / 8 part-fields / 3 topic.json + 5 renders in igcse-physics-modular-24-unit-2 + igcse-science-double-award-17-physics; live-aria law (3 pages, 16 labels, sha-pinned, re-fetched + hash-verified byte-exact 2026-11-04); gates G0–G8 green, independently reproduced (census 26, G4a parity, G8 plane pre-identity 8/8).
+- Plane sync (this repo, PR #738, merged 205f604e): the 8 fields := canon(repaired corpus) through the wave-D serving canon (LRM strip + asset repin at bank pin 1a5c37bc + trim); compact T1 per bank (detected: indent=None, separators (',',':'), no trailing newline). B2 canon(new) == serve-table pins 8/8 (sha256+len, the of-record bridge); B3 plane pre-identity 8/8 (every replaced value was canon(corpus pre-repair) — the wave-D-written fields were debris-verbatim, exactly as P5 disclosed); B5 deep-diff == exactly the 8 leaves; B6 census guard CLEAN exit-0 per touched bank pre AND post (4 receipts + run013-m4-sync-payload.json committed); full-corpus census-guard green on the PR and on the merged main; served bytes re-fetched from live main == serve-table pins 8/8.
+- Posture note: the verify-check red is pre-existing main debt (bundle-seed.test.ts:1024 + cie-phase4-roster.test.ts:25, identical signature at 7ddaf8a1 and 45d59a00 — before this branch existed; documented on the PR).
+
+Stage Summary:
+- The P5 debris class is extinct on the plane: the Po/Pb/Bi-210 grids, the Pu-238 chain, the Th-232 decay and the vanadium-50 span render proper isotope/decay notation for the first time. The hand-off chain F133→F134→F135→F136 is fully discharged (census-guard CI + M4 corpus repair + plane sync + the #306 CI infra item); corpus↔plane reconciliation HOLDS @ resources ef5c93cc / v2 205f604e.

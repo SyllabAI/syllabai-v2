@@ -1,0 +1,44 @@
+{
+ "lane": "RN-DEBRIS-11",
+ "run": "run-002",
+ "title": "the brace-aware repair lane — POST-ADVANCE FINISH-VERIFICATION of the APPLY of record (re-asserted intact at the advanced main tip)",
+ "operatorOrder": {
+  "trace": "1a1a1abf12d847ed -> 'run-002' (1a1a28bb59a92d39) -> 'finish run-002' -> 'Continue, why did you stop?' (1a1a2b8afef587a1) -> plain-language explanation (1a1a4d857e3f8c15) -> 'Continue' (1a1a4dc3bccd9b35) -> 'check' (1a1a50576cb20ef5)",
+  "order": "finish run-002 — close the lane: the APPLY window had already landed; this window re-grounded and verified"
+ },
+ "contextExhaustionDisclosure": "the APPLY window (prior incarnation) completed the FULL chain of record — impl 88a757ca, PR #703, merge 59dbd8ad, receipt b6bfd645, worklog section — before context ran out; its handoff summary lagged the landed state (described the R1 pair-table build as still in-progress). This window (1a1a4dc3bccd9b35/1a1a50576cb20ef5) re-grounded fetch-first and found the chain already closed of record; the sole remaining step was exactly this finish-verification + its filing.",
+ "environmentEvent": {
+  "what": "sandbox recycled between windows: the sv2-rn9 work copy and /tmp/rn11 were consumed; the GITHUB_PAT env var was lost with the shell",
+  "recovery": "fresh re-clone of SyllabAI/syllabai-v2 at origin/main c31778f0 (clean tree, clean remote URL); token re-read from work/.tokens via the GIT_ASKPASS helper (scripts/git_askpass.sh) — never in argv, never in the remote URL, never in logs; katex@0.16.22 re-installed to /tmp/rn11/node_modules; pair tables re-staged from the committed lane artifacts",
+  "losses": "none — the run-002 work was already pushed and merged; all evidence was committed on main"
+ },
+ "verification": {
+  "tip": "c31778f0 (32 commits past the receipt b6bfd645: T-KG-PRE-7/8/9/10 F8 rollouts incl. 18 maths spines, NS-4PH1 physics waves 8/9, SIB ingest #702, UI polish #712, T-BOOK-073)",
+  "idempotence": "rn11_convert.py --plan at this tip: planned families {}, planned files 0 — zero remaining conversions for every adjudicated family",
+  "pairsPresence": {
+   "R1": "all 30 non-refused intended texts present in the decoded corpus; zero corrupted texts linger",
+   "R2a": "all 4 repaired segs present (potential-divider x3 + lambda); zero corrupted segs linger",
+   "R2b": "repaired V_{in} present; every remaining V_{i n} (x5) sits inside a backtick span — the protected 23a keeps, dollar forms fully purged",
+   "R2c": "the spacecraf re-zipper repaired seg present; corrupted seg gone",
+   "R3b": "all repaired segs present (lambda seg excluded from the R3b table — owned by R2a per the run-001 double-listing disclosure); zero corrupted segs linger",
+   "R3c": "all non-refused repaired segs present; zero corrupted segs linger"
+  },
+  "residueExactlyLedgered": {
+   "R1_P1_5_2_refused": "3 sites exactly — ial-maths-20-pure-1 curriculum $.nodes[32].title + ugm-resources $.specPoints[21].officialText + spine $.curriculum.nodes[32].title",
+   "R3c_x_minus_3_squared_refused": "6 occurrences exactly (the content-loss class seg, still failing KaTeX — known, disclosed)",
+   "R3a_keeps": "dollar {b m: 2, e l: 1}; backtick 6 total (i n x5 + x x x1) — byte-exact with the run-002 refusals ledger"
+  },
+  "applyReportReconcile": "apply_report.json: 37 files; totals R1 79 / segpair 69 / R2b 12 / R3a 77 = 237 fires EXACT (== receipt of record)",
+  "katexSweep": {
+   "law": "full-corpus $-segment sweep, katex 0.16.22, throwOnError, dollar-stripped bodies (family law)",
+   "result": "failures 5723 uniques / 11207 occurrences — BYTE-COUNT-IDENTICAL to the pinned post-apply state in the run-002 receipt",
+   "healedSegs": "0 repaired segs in the failure set; 0 failing segs contain V_{in}",
+   "interpretation": "32 commits of other-lane activity (incl. 18 maths spines by T-KG-PRE-8) introduced zero new KaTeX failures and reverted zero repairs"
+  },
+  "verifiedOfRecordTitle": "'Knowledge and use of sec\u00b2\u03b8 = 1 + tan\u00b2\u03b8 and cosec\u00b2\u03b8 = 1 + cot\u00b2\u03b8.' present in ial-maths-20-pure-3 curriculum.json AND spine"
+ },
+ "gates": "this window touched zero repo bytes before the receipt commit itself (read-only verification: fresh clone, --plan, decoded-string walks, full-corpus KaTeX sweep)",
+ "boundaries": ".syllabai/receipts/RN-DEBRIS-11/run-002-postadvance-verify-r0.json + the appended worklog section — bookkeeping-only, .syllabai-only, zero content/code/db bytes",
+ "discipline": "fetch-first; fail-closed; zero-invention; token via GIT_ASKPASS from work/.tokens only (env-restored, never argv/URL/log); FF push, no force; race-guard on the direct bookkeeping commit (matching the b6bfd645 post-merge receipt pattern)",
+ "standingReminder": "the chat-exposed PAT must be revoked/rotated when this cycle closes (carried from the run-002 receipt)"
+}

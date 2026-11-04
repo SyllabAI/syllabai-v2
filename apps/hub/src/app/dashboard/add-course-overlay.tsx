@@ -287,6 +287,7 @@ export function AddCourseOverlay({
                           level={c.level}
                           board={boardOf(c)}
                           target={laneTarget}
+                          label={`${c.subject} (${c.code || "code pending"})`}
                         />
                       )}
                     </div>

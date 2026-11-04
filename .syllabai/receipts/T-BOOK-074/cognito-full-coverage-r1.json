@@ -1,0 +1,26 @@
+{
+ "/task": "T-BOOK-074",
+ "/run": "run-001",
+ "/receipt": "cognito-full-coverage-r1",
+ "/lane": "books/4ch1 media lane — push / PR / gate-b / merge legs",
+ "/date_utc": "2026-11-04",
+ "/agent": "operator sandbox session (trace 1a1a5051a8839469)",
+ "/baseline_of_record": {
+   "fetch_first": "origin/main re-fetched at session start: 1911ebfe -> c31778f0 (T-KG-PRE-9 #715 + T-KG-PRE-10 #717, parallel lanes, zero overlap with books/4ch1)",
+   "branch_state": "books/4ch1-cognito-full-coverage-r0 already on origin at 17cce209 (pushed by the earlier session segment); a post-recycle local rebase to 2266c12c (onto c31778f0) was DISCARDED — branch reset to the remote tip; zero force-push at any point",
+   "lint_on_rebased_tree": "33 packs / 300 blocks / 0 findings / 0 warns (same of-record numbers; rebase applied cleanly, discarded as redundant)"
+ },
+ "/legs_executed": {
+   "push": "no-op required — origin already at 17cce209 (verified git ls-remote); dry-run handshake used for credential check, never echoing the token",
+   "pr": "PR #716 already OPEN (opened by the earlier session segment; re-discovered after a head-filtered PR query anomalously returned empty); title 'T-BOOK-074 r0: Cognito full-coverage for 4CH1 — 34 fetch-verified videos integrated'; base main @ 1911ebfe, head 17cce209",
+   "ci_gate_b": "head 17cce209 check-runs: hub COMPLETED/success + verify COMPLETED/success — ALL checks success, none absent/pending (the combined-status endpoint's 'pending' with 0 statuses is the known absent!=success trap; check-runs taken as of-record, same shape as T-BOOK-073 PR #705)",
+   "merge": "PR #716 merged (merge commit, T-BOOK-073 precedent) -> origin/main 02886329e6 'T-BOOK-074 run-001: Cognito full-coverage for 4CH1 — 34 fetch-verified videos integrated (#716)'"
+ },
+ "/pr_url": "https://github.com/SyllabAI/syllabai-v2/pull/716",
+ "/merge_sha": "02886329e6",
+ "/pending": [
+   "DB leg: scoped ingest land+flip of the 34 blocks (r2)",
+   "production serve-proof + fleet census (r2)"
+ ],
+ "/boundaries": "zero code changes this leg; zero force-push; bookkeeping receipts land on main direct (this file)"
+}

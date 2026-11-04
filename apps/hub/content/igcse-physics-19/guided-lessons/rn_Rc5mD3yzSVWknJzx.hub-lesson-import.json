@@ -1,0 +1,211 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_Rc5mD3yzSVWknJzx",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "95b085ef8d15bacf8840711181916f95ebcc1d60e3d5f182c666f9f1000ad06a",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_Rc5mD3yzSVWknJzx",
+    "topicTitle": "5. Solids, Liquids and Gases",
+    "subtopicTitle": "Density & Pressure",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/5-solids-liquids-and-gases/5-1-density-and-pressure/5-1-3-pressure",
+    "specAnchors": [
+      {
+        "code": "5.5",
+        "text": "know and use the relationship between pressure, force and area : pressure = area force F p = A"
+      }
+    ],
+    "primer": {
+      "text": "The same push can bruise a thumb or anchor a nail, depending on how concentrated it is. These lessons define pressure as force spread over area, build the pressure equation, and walk the applications from drawing pins to tractors.",
+      "prerequisiteSubtopic": "Density & Pressure"
+    },
+    "modules": [
+      {
+        "id": "rn_Rc5mD3yzSVWknJzx::L1",
+        "title": "The pressure equation",
+        "sourceHeadings": [
+          "Pressure",
+          "Pressure, force, area formula triangle"
+        ],
+        "specRefs": [
+          "5.5"
+        ],
+        "opening": "Pressure asks how hard a force pushes on each square metre it meets: force divided by the area it acts across. Small area, concentrated push, big pressure; the pascal counts the newtons per square metre.",
+        "keyPoints": [
+          "Pressure is the concentration of a force — the force applied across each unit of area.",
+          "p = F ÷ A, with pressure in pascals, force in newtons and cross-sectional area in metres squared.",
+          "The cross-sectional area is the area the force pushes against at right angles.",
+          "A formula triangle covering p, F or A reproduces every rearrangement of the equation."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Take the push, spread it over the contact patch, and divide: fewer square metres of contact means a sharper push per patch. The triangle hides whichever of p, F or A the question wants.",
+            "analogy": "Standing on snow: boots (big patch, gentle squeeze) versus stiletto heels (tiny patch, savage squeeze) — same person, same weight, different pressure.",
+            "examPointer": "Quote pressure in pascals and remember one pascal is one newton spread across one square metre."
+          },
+          "medium": {
+            "restatement": "The pressure equation p = F/A divides the applied force by the cross-sectional area it acts across — the area perpendicular to the push. Halving the area doubles the pressure at fixed force; the triangle encodes F = pA and A = F/p for the quantity a question withholds.",
+            "analogy": "A hiring budget: the same wage bill (force) across fewer staff (area) means a heavier load on each (pressure).",
+            "examPointer": "State the perpendicular condition when defining the area — the force must act at right angles to it — before any arithmetic."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Rc5mD3yzSVWknJzx::L1::Q1",
+          "rn_Rc5mD3yzSVWknJzx::L1::Q2",
+          "rn_Rc5mD3yzSVWknJzx::L1::Q3",
+          "rn_Rc5mD3yzSVWknJzx::L1::Q4",
+          "rn_Rc5mD3yzSVWknJzx::L1::Q5",
+          "rn_Rc5mD3yzSVWknJzx::L1::Q6",
+          "rn_Rc5mD3yzSVWknJzx::L1::Q7",
+          "rn_Rc5mD3yzSVWknJzx::L1::Q8",
+          "rn_Rc5mD3yzSVWknJzx::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_Rc5mD3yzSVWknJzx::L2",
+        "title": "Pressure in action",
+        "sourceHeadings": [
+          "Applying a force to a drawing pin",
+          "The surface area of the shoe affects the pressure applied to the ground"
+        ],
+        "specRefs": [
+          "5.5"
+        ],
+        "opening": "Everyday engineering is pressure design: drawing pins and nails concentrate a push onto a tiny point, while tractor tyres and flat shoes spread the same weight wide. One equation explains both directions.",
+        "keyPoints": [
+          "A drawing pin's sharp point concentrates the push onto a small area, creating a large pressure that enters the surface.",
+          "Nails drive into walls for the same reason — pointed ends give very small areas and large pressures.",
+          "Tractor tyres are large so the machine's weight spreads out, reducing the pressure that would sink it into mud.",
+          "High heels press harder into ground than flat shoes because the same weight divides by a smaller area."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Concentrate and you pierce; spread and you float. The pin's point and the nail's tip are pressure multipliers; the tractor's tyres and the flat shoe are pressure dividers.",
+            "analogy": "A pencil between two palms: push gently — the blunt end is fine, the sharp point aches. Same force, different patch, different complaint.",
+            "examPointer": "For application questions, write the chain explicitly — same force, smaller area, larger pressure — the reasoning mark lives in the chain."
+          },
+          "medium": {
+            "restatement": "Applications exploit p = F/A in both directions: pins and nails shrink the contact area to multiply pressure into surfaces, while tractor tyres and flat soles enlarge the area to sink the pressure below the mud's or turf's tolerance. The force rarely changes; the design lever is the area.",
+            "analogy": "Two salespeople with the same quota: one calls on one huge client (small area, intense), the other canvasses a whole street (large area, gentle).",
+            "examPointer": "Name both quantities that stay fixed in the comparison — the weight or force — before attributing the pressure change to the area."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Rc5mD3yzSVWknJzx::L2::Q1",
+          "rn_Rc5mD3yzSVWknJzx::L2::Q2",
+          "rn_Rc5mD3yzSVWknJzx::L2::Q3",
+          "rn_Rc5mD3yzSVWknJzx::L2::Q4",
+          "rn_Rc5mD3yzSVWknJzx::L2::Q5",
+          "rn_Rc5mD3yzSVWknJzx::L2::Q6",
+          "rn_Rc5mD3yzSVWknJzx::L2::Q7",
+          "rn_Rc5mD3yzSVWknJzx::L2::Q8",
+          "rn_Rc5mD3yzSVWknJzx::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "pressure",
+          "definition": "The concentration of a force — the force applied across each unit of area.",
+          "firstLesson": 1
+        },
+        {
+          "term": "pascal",
+          "definition": "The unit of pressure; one pascal is one newton spread across one square metre.",
+          "firstLesson": 1
+        },
+        {
+          "term": "cross-sectional area",
+          "definition": "The area of the surface the force pushes against at right angles.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "The pump of a lifting machine creates a pressure in the liquid of 5.28 × 10⁵ Pa to move the platform upwards. The piston's cross-sectional area is 2.73 × 10⁻² m². Calculate the force that the liquid applies to the piston.",
+        "steps": [
+          "List the known quantities: pressure p = 5.28 × 10⁵ Pa and area A = 2.73 × 10⁻² m².",
+          "State the equation: p = F ÷ A.",
+          "Rearrange for the force: F = p × A.",
+          "Substitute: F = (5.28 × 10⁵) × (2.73 × 10⁻²) = 14 414.4 N.",
+          "Round to 3 significant figures and quote the unit: F = 14 400 N = 14.4 kN."
+        ],
+        "finalAnswer": "The liquid applies a force of about 14.4 kN to the piston."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/790262f6572c-pressure-triangle-2.png",
+        "alt": "Pressure triangle (2), IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Pressure, force, area formula triangle",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "A formula triangle can help rearrange the pressure equation"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3fdfd42412bf-drawing-pin-v1.png",
+        "alt": "drawing-pin, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Applying a force to a drawing pin",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "When you push a drawing pin, it goes into the surface (rather than your finger)"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/0b58f1b01a86-4-2-2-pressure-on-different-areas.png",
+        "alt": "Pressure on different areas, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "The surface area of the shoe affects the pressure applied to the ground",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "High heels produce a higher pressure on the ground because of their smaller area, compared to flat shoes"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/24b0a4fa0b97-5-5-1-pressure-worked-example-gcse.png",
+        "alt": "Pressure Worked Example GCSE, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The surface area of the shoe affects the pressure applied to the ground",
+        "moduleIds": [],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

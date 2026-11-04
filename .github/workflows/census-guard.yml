@@ -1,0 +1,41 @@
+name: census-guard
+
+# Platform-lane item 2 (DISC-6, F133/F134 in resources LANE-STATUS.md):
+# the standing census guard wired into CI. Any change to a served question
+# bank (or to the guard itself) re-runs the cross-part census over ALL banks
+# (CENSUS-GUARD.md law). Known findings of record -- the 22 deduped
+# signatures behind the 34 findings of run012-waved-guard-full.json
+# (2026-11-03, RECONCILIATION HOLDS @ main) -- live in the committed
+# allowlist; any NEW sibling_copy / collapse_signature finding fails the job
+# fail-closed. The receipt lands as a CI artifact for the run receipt.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/hub/content/**"
+      - "apps/hub/scripts/import_corpus/**"
+  pull_request:
+    paths:
+      - "apps/hub/content/**"
+      - "apps/hub/scripts/import_corpus/**"
+
+permissions:
+  contents: read
+
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: DISC-6 census guard (all banks, allowlist of record)
+        run: |
+          python3 apps/hub/scripts/import_corpus/census_guard.py \
+            --content-dir apps/hub/content \
+            --allowlist apps/hub/scripts/import_corpus/census_guard_allowlist.json \
+            --json census-guard-receipt.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: census-guard-receipt
+          path: census-guard-receipt.json

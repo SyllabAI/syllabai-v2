@@ -1,0 +1,137 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_p8XznQx2MXjbvz38",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "aaf2c1b9055d9e47565d1263e1973bb2f0db3409686d018e8e3b98011ec60892",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_p8XznQx2MXjbvz38",
+    "topicTitle": "5. Solids, Liquids and Gases",
+    "subtopicTitle": "Ideal Gases",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/5-solids-liquids-and-gases/5-3-ideal-gases/5-3-6-boyles-law",
+    "specAnchors": [
+      {
+        "code": "5.22",
+        "text": "use the relationship between the pressure and volume of a fixed mass of gas at constant temperature: p 1 V 1 = p 2 V 2"
+      }
+    ],
+    "primer": {
+      "text": "Boyle's law is the squeeze law: for a fixed sample at constant temperature, pressure times volume never changes, so p1V1 = p2V2. Compress the gas and the pressure climbs in exact inverse proportion — and this note runs the calculation to a two-significant-figure finish.",
+      "prerequisiteSubtopic": "Ideal Gases"
+    },
+    "modules": [
+      {
+        "id": "rn_p8XznQx2MXjbvz38::L1",
+        "title": "Boyle's law and its use",
+        "sourceHeadings": [
+          "Boyle's law"
+        ],
+        "specRefs": [
+          "5.22"
+        ],
+        "opening": "Halve the volume of a sealed gas at constant temperature and its pressure doubles; double the volume and it halves. The product pV is the invariant — a direct echo of collision frequency set by box size.",
+        "keyPoints": [
+          "Boyle's law states p1V1 = p2V2 — for a sealed sample held at one steady temperature, the pressure–volume product never changes.",
+          "Pressure and volume are inversely proportional at constant temperature.",
+          "The temperature must be constant and the amount of gas fixed for the law to hold.",
+          "Rearranged, p2 = p1V1/V2 gives the pressure after a volume change.",
+          "A graph of pressure against volume is a falling curve; pressure against 1/volume is a straight line."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Squeeze the gas into half the space and its pressure doubles; let it expand to double the space and its pressure halves. Multiply pressure by volume before and after — the two products match.",
+            "analogy": "A fixed number of footsteps must cross a smaller room, so each wall gets visited more often: halve the room's size and the visiting rate doubles.",
+            "examPointer": "Check the final answer's direction: compression must raise the pressure. If your p2 came out below p1 after compression, the algebra flipped somewhere."
+          },
+          "medium": {
+            "restatement": "At constant temperature the molecular speeds are fixed, so pressure scales purely with collision frequency per unit wall area, which scales inversely with the volume per molecule. The invariant product pV is the cancellation of that inverse proportionality between two states, and the 1/V linearisation of the P–V curve is the experimental signature of the inverse law.",
+            "analogy": "A fixed staffing budget spread across wards: halve the number of wards and the staff-per-ward doubles — the product of wards and staff-per-ward never budges.",
+            "examPointer": "Slow compression keeps 'constant temperature' honest; a rapid pump compresses adiabatically and warms the gas, so real data curves away from the law."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_p8XznQx2MXjbvz38::L1::Q1",
+          "rn_p8XznQx2MXjbvz38::L1::Q2",
+          "rn_p8XznQx2MXjbvz38::L1::Q3",
+          "rn_p8XznQx2MXjbvz38::L1::Q4",
+          "rn_p8XznQx2MXjbvz38::L1::Q5",
+          "rn_p8XznQx2MXjbvz38::L1::Q6",
+          "rn_p8XznQx2MXjbvz38::L1::Q7",
+          "rn_p8XznQx2MXjbvz38::L1::Q8",
+          "rn_p8XznQx2MXjbvz38::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "Boyle's law",
+          "definition": "For a fixed mass at constant temperature, p1V1 = p2V2 — pressure and volume are inversely proportional.",
+          "firstLesson": 1
+        },
+        {
+          "term": "compression",
+          "definition": "A volume reduction that, at constant temperature, raises the gas's pressure in inverse proportion.",
+          "firstLesson": 1
+        },
+        {
+          "term": "inverse proportionality",
+          "definition": "A relationship in which one quantity rises in the same ratio as the other falls, leaving their product constant.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A gas occupies a volume of 0.70 m^3 at a pressure of 200 Pa. Calculate the pressure exerted by the gas if it is compressed to a volume of 0.15 m^3. Assume that the temperature and mass of the gas stay the same.",
+        "steps": [
+          "List the known quantities: V1 = 0.70 m^3, p1 = 200 Pa, V2 = 0.15 m^3.",
+          "Write the relevant equation: p1V1 = p2V2.",
+          "Rearrange for the final pressure by dividing both sides by V2: p2 = p1V1/V2.",
+          "Substitute: p2 = (200 × 0.70)/0.15 = 933.3 Pa, which rounds to 930 Pa (2 s.f.)."
+        ],
+        "finalAnswer": "The compressed gas exerts a pressure of 930 Pa (2 s.f.)."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b01a6a8acdaf-6-5-2-gas-laws-molecular-model-1.png",
+        "alt": "Gas Laws Molecular Model (1), downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Boyle's law",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Increasing the volume of a gas decreases its pressure"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/f34dd7dbd072-pressure-vs-volume.png",
+        "alt": "Pressure-vs-Volume, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Boyle's law",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Initial pressure and volume, p1 and V1, and final pressure and volume, p2 and V2. When volume decreases, pressure increases"
+      }
+    ]
+  }
+}

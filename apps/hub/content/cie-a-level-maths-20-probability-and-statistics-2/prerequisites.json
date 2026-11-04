@@ -1,0 +1,166 @@
+{
+  "source": "AI concept-web startup run (F8 rollout batch five; T-KG-PRE-7, lane 9709S2). The web is the AI_SUGGESTED, UNVALIDATED concept lattice authored by the F8 lane for this syllabus, every anchor machine-verified against the served spine's point ids (0 unmapped pass law) and exported in-order only by the calibrated law of scripts/kg_f8al_project.py. Bases mirror the operator-validated store vocabulary. prereqValidated stays EMPTY — the renderer labels every shipped pair INFERRED PROTOTYPE; the named gate before any of this is treated as truth remains the SME validation pass.",
+  "generatedUtc": "2026-11-03T19:16:36Z",
+  "curriculumCode": "9709",
+  "hubCourseSlug": "cie-a-level-maths-20-probability-and-statistics-2",
+  "conceptAnchors": {
+    "MAS2-CON-POISSON-PROB": [
+      "6.1.1"
+    ],
+    "MAS2-CON-POISSON-MEANVAR": [
+      "6.1.2"
+    ],
+    "MAS2-CON-POISSON-MODEL": [
+      "6.1.3"
+    ],
+    "MAS2-CON-POISSON-BINOM-APPROX": [
+      "6.1.4"
+    ],
+    "MAS2-CON-NORMAL-POISSON-APPROX": [
+      "6.1.5"
+    ],
+    "MAS2-CON-LINCOMB-EXPECT": [
+      "6.2.1"
+    ],
+    "MAS2-CON-LINCOMB-DISTRIBUTIONS": [
+      "6.2.2"
+    ],
+    "MAS2-CON-CRV-PDF": [
+      "6.3.1"
+    ],
+    "MAS2-CON-CRV-CALC": [
+      "6.3.2"
+    ],
+    "MAS2-CON-SAMPLING-BASICS": [
+      "6.4.1",
+      "6.4.2"
+    ],
+    "MAS2-CON-SAMPLE-MEAN": [
+      "6.4.3",
+      "6.4.4"
+    ],
+    "MAS2-CON-HYPOTHESIS-BASICS": [
+      "6.5.1"
+    ],
+    "MAS2-CON-HYPOTHESIS-DISCRETE": [
+      "6.5.2"
+    ],
+    "MAS2-CON-HYPOTHESIS-MEAN": [
+      "6.5.3"
+    ],
+    "MAS2-CON-ERROR-TYPES": [
+      "6.5.4"
+    ],
+    "MAS2-CON-ERROR-CALC": [
+      "6.5.5"
+    ]
+  },
+  "validatedPrerequisiteEdges": [],
+  "inferredPrototypePre": [],
+  "inferredPrototypeRel": [],
+  "conceptWebPrerequisiteEdges": [
+    {
+      "prerequisite": "MAS2-CON-POISSON-PROB",
+      "dependent": "MAS2-CON-POISSON-MEANVAR",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS2-CON-POISSON-PROB",
+      "dependent": "MAS2-CON-POISSON-MODEL",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAS2-CON-POISSON-PROB",
+      "dependent": "MAS2-CON-POISSON-BINOM-APPROX",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS2-CON-POISSON-MODEL",
+      "dependent": "MAS2-CON-POISSON-BINOM-APPROX",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAS2-CON-POISSON-PROB",
+      "dependent": "MAS2-CON-NORMAL-POISSON-APPROX",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS2-CON-POISSON-MEANVAR",
+      "dependent": "MAS2-CON-LINCOMB-EXPECT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAS2-CON-LINCOMB-EXPECT",
+      "dependent": "MAS2-CON-LINCOMB-DISTRIBUTIONS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS2-CON-CRV-PDF",
+      "dependent": "MAS2-CON-CRV-CALC",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS2-CON-SAMPLING-BASICS",
+      "dependent": "MAS2-CON-SAMPLE-MEAN",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS2-CON-HYPOTHESIS-BASICS",
+      "dependent": "MAS2-CON-HYPOTHESIS-DISCRETE",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS2-CON-HYPOTHESIS-BASICS",
+      "dependent": "MAS2-CON-HYPOTHESIS-MEAN",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS2-CON-POISSON-PROB",
+      "dependent": "MAS2-CON-HYPOTHESIS-DISCRETE",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS2-CON-POISSON-MODEL",
+      "dependent": "MAS2-CON-HYPOTHESIS-DISCRETE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAS2-CON-SAMPLE-MEAN",
+      "dependent": "MAS2-CON-HYPOTHESIS-MEAN",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS2-CON-HYPOTHESIS-BASICS",
+      "dependent": "MAS2-CON-ERROR-TYPES",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS2-CON-ERROR-TYPES",
+      "dependent": "MAS2-CON-ERROR-CALC",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS2-CON-HYPOTHESIS-DISCRETE",
+      "dependent": "MAS2-CON-ERROR-CALC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAS2-CON-HYPOTHESIS-MEAN",
+      "dependent": "MAS2-CON-ERROR-CALC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    }
+  ],
+  "counts": {
+    "anchoredConcepts": 16,
+    "conceptWebEdges": 18,
+    "validatedEdges": 0,
+    "inferredPre": 0,
+    "inferredRel": 0
+  },
+  "exportCounts": {
+    "candidates": 22,
+    "selfLoops": 0,
+    "reversedDropped": 0,
+    "preExported": 22
+  }
+}

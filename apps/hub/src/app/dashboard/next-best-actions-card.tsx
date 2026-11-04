@@ -38,7 +38,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchBridge, type LearnerBridge } from "@/lib/learner-state";
 import { useAllCourseProgress } from "@/lib/progress";
@@ -47,7 +47,6 @@ import { useNow } from "@/lib/use-now";
 import {
   coreActionsToDashboard,
   deriveDashboardActions,
-  humanizeCode,
   NBA_ROW_CAP,
   type DashboardAction,
   type NbaActionType,
@@ -235,10 +234,19 @@ export function NextBestActionsCard({ courses }: { courses: CourseMeta[] }) {
     return [...coreActions, ...deriveDashboardActions(inputs, now)].slice(0, NBA_ROW_CAP);
   }, [coreActions, inputs, now]);
 
-  const reasonCodes = useMemo(
-    () => [...new Set(actions.map((a) => a.reasonCode))].map(humanizeCode),
-    [actions],
-  );
+  const resolvedSubject =
+    coreCourse != null
+      ? (courses.find((c) => c.slug === coreCourse)?.subject ?? coreCourse)
+      : null;
+
+  // Dashboard UX review 2026-11-04: the footer used to enumerate internal
+  // reason codes ("reason codes: Due Review, Low Mastery") — debug output,
+  // not policy. One plain sentence per source now; the codes stay internal.
+  const provenance = coreReplacedResolved
+    ? localCourses.length > 0
+      ? `Ranked from your account's progress (${resolvedSubject}); your other courses from this device's activity.`
+      : "Ranked from your account's progress — the same read model the workbench consumes."
+    : "Ranked from this device's study activity — marks, mastery and the review schedule.";
 
   const bridgeFailed =
     courses.length > 0 &&
@@ -246,24 +254,16 @@ export function NextBestActionsCard({ courses }: { courses: CourseMeta[] }) {
     courses.every((c) => bridges[c.slug] === null) &&
     !(core.kind === "ready" && core.model.recommendations);
 
-  const resolvedSubject =
-    coreCourse != null
-      ? (courses.find((c) => c.slug === coreCourse)?.subject ?? coreCourse)
-      : null;
-
-  const provenance = coreReplacedResolved
-    ? localCourses.length > 0
-      ? `advice from your account's learner model (${resolvedSubject}) — other courses ranked from this device's evidence`
-      : "advice from your account's learner model — the same read model the workbench consumes"
-    : "deterministic rule baseline";
-
   return (
     <Card className="md:col-span-2">
       <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2 text-base">
+        {/* real h2 (UX review 2026-11-04): the rail's sections were labelled
+            landmarks with no headings — the AT outline jumped from h2 in the
+            main column to nothing here. Visual styling is unchanged. */}
+        <h2 className="flex items-center gap-2 text-base font-semibold">
           <Compass className="size-4 text-primary" aria-hidden="true" />
           Next best actions
-        </CardTitle>
+        </h2>
         <CardDescription>
           Ranked learning advice from your evidence — what to do next and why. Reasons cite
           measured marks, mastery and review schedules; they are advice, not facts.
@@ -298,8 +298,7 @@ export function NextBestActionsCard({ courses }: { courses: CourseMeta[] }) {
             <div className="flex flex-wrap items-center justify-between gap-2">
               <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
                 <Layers className="size-3 shrink-0" aria-hidden="true" />
-                {provenance} · reason codes: {reasonCodes.slice(0, 3).join(", ")}
-                {reasonCodes.length > 3 ? ", …" : ""}
+                {provenance}
               </p>
               <Button asChild variant="ghost" size="sm" className="h-7 gap-1.5 text-xs">
                 <Link href="/tutor">

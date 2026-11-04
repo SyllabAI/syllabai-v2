@@ -26,19 +26,57 @@ export function humanizeCode(code: string): string {
     .join(" ");
 }
 
-/** Future-facing compact relative time (ported from syllabai-web's
- *  lib/format.ts): "due in 2 d" / "due in 3 h" / "due in 45 min", or
- *  "overdue · 2 d" once the instant has passed. */
-export function formatDue(iso: string): string {
-  const ms = new Date(iso).getTime() - Date.now();
-  const absDays = Math.abs(ms) / 86_400_000;
-  const unit =
-    absDays >= 1
-      ? `${Math.floor(absDays)} d`
-      : absDays * 24 >= 1
-        ? `${Math.floor(absDays * 24)} h`
-        : `${Math.max(1, Math.floor(absDays * 60))} min`;
-  return ms < 0 ? `overdue · ${unit}` : `due in ${unit}`;
+/** Human-facing due/overdue time (dashboard UX review 2026-11-04): the old
+ *  "overdue · 20761 d" wore a machine unit on a student-facing line and let
+ *  a bogus dueAt print a 57-year overdue count. One idiom, human units:
+ *  minutes → hours → days → weeks → a real date; beyond two years the count
+ *  is dropped (the Overdue badge already carries the fact) because no
+ *  honest number helps there. Client-only caller today (SetWorkCard);
+ *  en-GB dates for the audience (Edexcel / Cambridge International).
+ *  `now` is injectable so the boundaries are unit-testable (default keeps
+ *  every existing call site unchanged). */
+export function formatDue(iso: string, now: number = Date.now()): string {
+  const t = new Date(iso).getTime();
+  if (!Number.isFinite(t)) return "no due date";
+  const ms = t - now;
+  const future = ms >= 0;
+  const say = (v: number, unit: string) =>
+    future
+      ? `due in ${v} ${unit}${v === 1 ? "" : "s"}`
+      : `overdue by ${v} ${unit}${v === 1 ? "" : "s"}`;
+  const mins = Math.abs(ms) / 60_000;
+  if (mins < 1) return future ? "due any moment" : "overdue";
+  if (mins < 60) return say(Math.floor(mins), "min");
+  const hours = mins / 60;
+  if (hours < 48) return say(Math.floor(hours), "hour");
+  const days = hours / 24;
+  if (days < 14) return say(Math.round(days), "day");
+  if (days < 70) return say(Math.round(days / 7), "week");
+  if (days < 730) {
+    const d = new Date(t).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+    return future ? `due ${d}` : `overdue since ${d}`;
+  }
+  // ≥ 2 years: the stored dueAt is effectively junk (probe fixtures, clock
+  // bugs) — a number would only erode trust; the badge carries the fact.
+  return future ? "due later" : "overdue";
+}
+
+/**
+ * Progress label (dashboard UX review 2026-11-04 P1.4): a wall of near-zero
+ * percentages read as noise ("0.4%" of a 2,703-question bank is not a
+ * progress report) and a column of 0% bars read as failure. Below five
+ * percent the label says where you are in words; the bar underneath still
+ * moves. 0 is its own state — "Just started" on a truly untouched row would
+ * be a lie the row's own count contradicts.
+ */
+export function percentLabel(percent: number): string {
+  if (percent <= 0) return "Not started";
+  if (percent < 5) return "Just started";
+  return formatPercent(percent);
 }
 
 /**

@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_Rc5mD3yzSVWknJzx",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "95b085ef8d15bacf8840711181916f95ebcc1d60e3d5f182c666f9f1000ad06a",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "packageId": "igcse-physics::rn_Rc5mD3yzSVWknJzx",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L1::Q1",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L1",
+      "stem": "Which equation defines pressure?",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "p = F ÷ A",
+          "correct": true,
+          "explanation": "Force divided by the area it acts across.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "p = F × A",
+          "correct": false,
+          "explanation": "Multiplying misstates the concentration.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "p = A ÷ F",
+          "correct": false,
+          "explanation": "That inverts the relationship.",
+          "misconception": "inversion slip"
+        },
+        {
+          "key": "D",
+          "text": "p = m ÷ V",
+          "correct": false,
+          "explanation": "That is density's equation.",
+          "misconception": "equation tangle"
+        }
+      ]
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L1::Q2",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L1",
+      "stem": "A force spreads over a larger area. What happens to the pressure?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "it doubles regardless",
+          "correct": false,
+          "explanation": "The change tracks the area ratio, not a fixed double.",
+          "misconception": "over-claim"
+        },
+        {
+          "key": "B",
+          "text": "it decreases, because the same force divides by more area",
+          "correct": true,
+          "explanation": "Larger denominators shrink the quotient.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "it increases, because more area carries more force",
+          "correct": false,
+          "explanation": "The force is unchanged; only the spreading changes.",
+          "misconception": "inversion slip"
+        },
+        {
+          "key": "D",
+          "text": "it stays the same",
+          "correct": false,
+          "explanation": "The area entered the equation; the answer changed.",
+          "misconception": "no-transfer slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L1::Q3",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L1",
+      "stem": "What is the unit of pressure?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "the joule",
+          "correct": false,
+          "explanation": "Joules measure energy.",
+          "misconception": "unit swap"
+        },
+        {
+          "key": "B",
+          "text": "the kilogram",
+          "correct": false,
+          "explanation": "Kilograms measure mass.",
+          "misconception": "unit swap"
+        },
+        {
+          "key": "C",
+          "text": "the pascal",
+          "correct": true,
+          "explanation": "One pascal is one newton per square metre.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the newton",
+          "correct": false,
+          "explanation": "Newtons measure force alone.",
+          "misconception": "unit swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L1::Q4",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L1",
+      "stem": "Which area counts in the pressure equation?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "the object's total surface area",
+          "correct": false,
+          "explanation": "Only the pushed patch counts.",
+          "misconception": "over-claim"
+        },
+        {
+          "key": "B",
+          "text": "the floor's area beneath the whole room",
+          "correct": false,
+          "explanation": "The contact area, not the room's, enters.",
+          "misconception": "over-claim"
+        },
+        {
+          "key": "C",
+          "text": "the area of the force's arrow diagram",
+          "correct": false,
+          "explanation": "Diagrams carry no area for the equation.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "the cross-sectional area the force acts across at right angles",
+          "correct": true,
+          "explanation": "Perpendicular contact is the definition.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L1::Q5",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L1",
+      "stem": "A box rests on a table. The box is turned so it rests on its smallest face. The pressure it exerts",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "increases, because the same weight now squeezes a smaller area",
+          "correct": true,
+          "explanation": "Smaller contact patch, sharper pressure.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "decreases, because the box is more stable",
+          "correct": false,
+          "explanation": "Stability is not the variable; area is.",
+          "misconception": "context slip"
+        },
+        {
+          "key": "C",
+          "text": "stays the same, because the weight is unchanged",
+          "correct": false,
+          "explanation": "The weight is unchanged, but the division changed.",
+          "misconception": "no-transfer slip"
+        },
+        {
+          "key": "D",
+          "text": "becomes zero, because the box is not moving",
+          "correct": false,
+          "explanation": "Static pushes still exert pressure.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L1::Q6",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L1",
+      "stem": "State the pressure equation in symbols with each quantity's unit.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "p = F ÷ A, where p is the pressure in pascals, F is the force in newtons and A is the cross-sectional area in metres squared.",
+      "keywords": [
+        "pressure",
+        "force",
+        "area",
+        "pascals"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L1::Q7",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L1",
+      "stem": "State how pressure is defined in words.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Pressure is the concentration of a force — the force applied across each unit of area.",
+      "keywords": [
+        "pressure",
+        "concentration",
+        "force",
+        "area"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L1::Q8",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L1",
+      "stem": "Explain why the area in the pressure equation must face the force at right angles.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The equation counts the push delivered onto a surface, and only the component perpendicular to that surface presses into it. The cross-sectional area is therefore the patch the force strikes head-on; a glancing contact would spread its effect along the surface instead.",
+      "keywords": [
+        "force",
+        "surface",
+        "perpendicular",
+        "area"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L1::Q9",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L1",
+      "stem": "A piston of cross-sectional area 0.02 m² carries a force of 900 N. Calculate the pressure it exerts.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "p = F ÷ A = 900 ÷ 0.02 = 45 000 Pa.",
+      "keywords": [
+        "pressure",
+        "900",
+        "0.02",
+        "45 000"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L2::Q1",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L2",
+      "stem": "Why does a drawing pin enter the surface rather than your thumb?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the push travels around the pin to avoid the thumb",
+          "correct": false,
+          "explanation": "Nothing travels around; the areas differ.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "B",
+          "text": "its sharp point concentrates the push into a small area, creating a large pressure there",
+          "correct": true,
+          "explanation": "The point is the pressure multiplier.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the pin is heavier than the surface",
+          "correct": false,
+          "explanation": "Weight is irrelevant to the direction.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "the surface is softer than skin everywhere",
+          "correct": false,
+          "explanation": "The mechanism is area concentration, not softness alone.",
+          "misconception": "cause slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L2::Q2",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L2",
+      "stem": "What do a nail's pointed end and a tractor's wide tyres have in common?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "both are designed to increase pressure",
+          "correct": false,
+          "explanation": "Tyres decrease it.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "B",
+          "text": "both rely on high friction",
+          "correct": false,
+          "explanation": "Friction is not the mechanism cited.",
+          "misconception": "mechanism swap"
+        },
+        {
+          "key": "C",
+          "text": "both engineer pressure through the contact area",
+          "correct": true,
+          "explanation": "One concentrates, the other spreads — same equation.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "both reduce the force the machine applies",
+          "correct": false,
+          "explanation": "The forces are set by the hammer and the tractor's weight.",
+          "misconception": "quantity swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L2::Q3",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L2",
+      "stem": "High heels press harder into soft ground than flat shoes because",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "heels apply a larger force",
+          "correct": false,
+          "explanation": "The wearer's weight — the force — is unchanged.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "B",
+          "text": "flat shoes weigh less",
+          "correct": false,
+          "explanation": "Shoe mass is not the driver.",
+          "misconception": "cause slip"
+        },
+        {
+          "key": "C",
+          "text": "the ground is softer for heels",
+          "correct": false,
+          "explanation": "The ground is the same ground.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "the same weight acts across a smaller area",
+          "correct": true,
+          "explanation": "Smaller denominator, larger pressure.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L2::Q4",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L2",
+      "stem": "A tractor is modified with narrower tyres. What happens on soft mud?",
+      "misconceptionClass": "application transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "the pressure on the mud rises and the tractor sinks more easily",
+          "correct": true,
+          "explanation": "Narrower tyres shrink the contact area.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the pressure falls and the tractor floats",
+          "correct": false,
+          "explanation": "The change runs the other way.",
+          "misconception": "inversion slip"
+        },
+        {
+          "key": "C",
+          "text": "nothing changes — mud ignores tyres",
+          "correct": false,
+          "explanation": "The mud feels the pressure difference.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "the tractor's weight doubles",
+          "correct": false,
+          "explanation": "Weight is untouched by tyre choice.",
+          "misconception": "quantity swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L2::Q5",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L2",
+      "stem": "Which design change would REDUCE the pressure of a footpath sign's base on a lawn?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "balancing the sign on one corner",
+          "correct": false,
+          "explanation": "That shrinks the patch and raises pressure.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "B",
+          "text": "a wider base plate spreading the same weight",
+          "correct": true,
+          "explanation": "More area, less pressure per patch.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a sharper spike under the same weight",
+          "correct": false,
+          "explanation": "That raises the pressure.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "D",
+          "text": "a heavier sign",
+          "correct": false,
+          "explanation": "More force raises the pressure.",
+          "misconception": "direction slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L2::Q6",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L2",
+      "stem": "State why a nail's pointed end helps it enter a wall.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "recall",
+      "modelAnswer": "The point gives a very small contact area, so the hammer's force concentrates into a large pressure that drives the nail in.",
+      "keywords": [
+        "point",
+        "area",
+        "pressure",
+        "nail"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L2::Q7",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L2",
+      "stem": "State what a tractor's large tyres do to the machine's pressure on mud.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "The large tyres spread the tractor's weight over a large area, reducing the pressure so it avoids sinking into the mud.",
+      "keywords": [
+        "tyres",
+        "weight",
+        "area",
+        "pressure"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L2::Q8",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L2",
+      "stem": "Explain why the drawing pin example involves the SAME force at both ends but different pressures.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The thumb's push transmits through the pin unchanged in size, but the two ends present different areas: the broad head against the thumb and the sharp point against the surface. Dividing the same force by different areas yields different pressures, which is why the pin bites the board and not the thumb.",
+      "keywords": [
+        "force",
+        "area",
+        "pressure",
+        "different"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Rc5mD3yzSVWknJzx::L2::Q9",
+      "moduleId": "rn_Rc5mD3yzSVWknJzx::L2",
+      "stem": "An elephant's foot spans 0.1 m² and presses with 5000 N; a stiletto heel spans 0.0001 m² and presses with 500 N. Which applies the greater pressure, and by how many times?",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Elephant: 5000 ÷ 0.1 = 50 000 Pa; heel: 500 ÷ 0.0001 = 5 000 000 Pa, so the heel applies 100 times the elephant's pressure.",
+      "keywords": [
+        "5000",
+        "5 000 000",
+        "heel",
+        "100"
+      ],
+      "options": []
+    }
+  ]
+}

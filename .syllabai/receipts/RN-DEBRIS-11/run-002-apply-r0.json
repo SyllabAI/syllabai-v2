@@ -1,0 +1,62 @@
+{
+ "lane": "RN-DEBRIS-11",
+ "run": "run-002",
+ "title": "the brace-aware repair lane — APPLY (237 byte-anchored repairs across 37 content files)",
+ "operatorOrder": {
+  "trace": "1a1a1abf12d847ed + 'finish run-002' (1a1a2b8afef587a1)",
+  "order": "run-002 / finish run-002 — execute the run-001 pre-registered families"
+ },
+ "preState": {
+  "tip": "06326969 (fresh clone, fetch-first; census tip 30a5ce59 had advanced)",
+  "freshPresenceReassert": "82/82 R1 copies + every R2a/R2b/R2c/R3b/R3c seg byte-exact at this tip BEFORE apply (the lambda seg double-listed R2a+R3b in the ledger = 1 real site)",
+  "mainAdvanceSinceCensus": "T-KG-PRE-4 touched physics prerequisites/spines only; no lane target string moved"
+ },
+ "apply": {
+  "fires": {
+   "R1": 79,
+   "segpair(R2a+R2c+R3b+R3c)": 69,
+   "R2b": 12,
+   "R3a": 77,
+   "total": 237
+  },
+  "files": 37,
+  "R1": "30/31 distinct texts de-zippered to the official Pearson IAL spec Issue-3 wording in corpus house style; byte-multiset gate: corrupted == intended + declared attested restorations EXACTLY (Alge, Coo x2, Exp, Diff, Cen+U+0307+U+0308, Trig+parens x2, parens)",
+  "R2a": "4 of-record corrupt-brace segs (potential-divider x3 + lambda) — frozen pairs, brace surgery + label joins",
+  "R2b": "V_{i n} -> V_{in} — 12 dollar-segment sites; 5 backtick forms KEEP (23a named stay)",
+  "R2c": "spacecraf re-zipper — 1 site (letter-join twins p_{spacecraft}/m_{asteroid} in-field; 1 brace insertion + word-space restoration disclosed)",
+  "R3b": "26-1(lambda in R2a) paren-brace-swap segs — closer-relocation, only } bytes move",
+  "R3c": "8 gathered-& segs — row-close relocation; (x-3)^2 seg REFUSED (content-loss class, 6 occ)",
+  "R3a": "21 classes twin-gated (corpus _{joined} >= 1; CM via same-file prose twin **CM**); C P class added (had been omitted from the working table, caught by plan reconciliation)"
+ },
+ "refusals_ledger": [
+  "R1 P1 5.2 text (3 sites): the '2/2andy' region carries a duplicated '2' unaccounted by the official-anchored reading — byte-exact reconstruction not attestable",
+  "R3c (x-3)^2 gathered seg (6 occ): content-loss class — the sqrt group content is empty under every closer relocation",
+  "R2b backtick V_{i n} x5: 23a protected class (named in run-001 stays)",
+  "R3a keeps: _{b m} x2 / _{e l} x1 (no attestation), backtick sub-floor x6",
+  "un-adjudicated census-C remainder (e.g. notes-$[81] third potential-divider seg) — out of run-002 scope, disclosed"
+ ],
+ "gates": {
+  "apply": "per-form fire counts exact (237); per-file JSON-parse fail-closed; changed jpaths == planned jpaths; backtick spans never entered by the replacer; dual JSON-escape raw-byte anchoring",
+  "idempotence": "re-plan on the applied tree = 0 conversions (and again on merged main)",
+  "katexHeal": "full-corpus sweep 0.16.22 throwOnError: pre 5760 uniques/11275 occ -> post 5723/11207 = -37 uniques/-68 occ EXACTLY the fired failing segs; 0 new failures",
+  "censusGuard": "census_guard.py findings byte-identical pre/post (worktree vs --git-rev HEAD); exit-1 = the pre-existing of-record baseline groups only (igcse-maths-b-16 lane-owned, ial-maths-20-statistics-2 twin, ...)",
+  "scope": "git diff = exactly the 37 planned content files, 122 changed lines, single-line compact serialization preserved",
+  "keepsIntact": "refused texts + backtick forms + keeps verified present post-apply"
+ },
+ "delivery": {
+  "branch": "rn-debris-11/run-002",
+  "commit": "88a757ca",
+  "pr": 703,
+  "ci": "verify+hub 2/2 success (bounded poll, 2 rounds)",
+  "merge": "59dbd8ad (merge commit; base had advanced to 3635e220 — GitHub merge clean, no conflicts)",
+  "postMergeMain": "re-plan 0; of-record corrupted title 0; repaired title present in curriculum + spine"
+ },
+ "specEvidence": {
+  "document": "Pearson Edexcel IAL Mathematics, Further Mathematics and Pure Mathematics — Specification — Issue 3 — April 2019",
+  "url": "https://qualifications.pearson.com/content/dam/pdf/International%20Advanced%20Level/Mathematics/2018/Specification-and-Sample-Assessment/international-a-level-maths-spec.pdf",
+  "sha256File": ".syllabai/lane-artifacts/RN-DEBRIS-11/rn11-spec-sha256.txt",
+  "register": ".syllabai/lane-artifacts/RN-DEBRIS-11/rn11-spec-evidence.md"
+ },
+ "artifacts": ".syllabai/lane-artifacts/RN-DEBRIS-11/ (rn11_convert.py, rn11_r1_pairs.py, rn11_r3_derive.py, rn11_sweep.py, rn11_fresh_sites.py, rn11_seg_diff.py, rn11_dump_inventory.py, r1_pairs.json, r3_pairs.json, plan.json, apply_report.json); the full pre/post sweep JSONs are /tmp-resident and regenerable from rn11_sweep.py",
+ "discipline": "fetch-first; fail-closed; zero-invention; tokens env-only; no force-push; bounded CI poll 2 rounds (8x75s), disclosed"
+}

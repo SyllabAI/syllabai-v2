@@ -1,0 +1,170 @@
+{
+  "source": "AI concept-web startup run (F8 rollout batch five; T-KG-PRE-7, lane 9709S1). The web is the AI_SUGGESTED, UNVALIDATED concept lattice authored by the F8 lane for this syllabus, every anchor machine-verified against the served spine's point ids (0 unmapped pass law) and exported in-order only by the calibrated law of scripts/kg_f8al_project.py. Bases mirror the operator-validated store vocabulary. prereqValidated stays EMPTY — the renderer labels every shipped pair INFERRED PROTOTYPE; the named gate before any of this is treated as truth remains the SME validation pass.",
+  "generatedUtc": "2026-11-03T19:16:36Z",
+  "curriculumCode": "9709",
+  "hubCourseSlug": "cie-as-maths-20-probability-and-statistics-1",
+  "conceptAnchors": {
+    "MAS1-CON-DATA-REPRESENT": [
+      "5.1.1",
+      "5.1.2"
+    ],
+    "MAS1-CON-CENTRAL-TENDENCY": [
+      "5.1.3"
+    ],
+    "MAS1-CON-CUMULATIVE-FREQ": [
+      "5.1.4"
+    ],
+    "MAS1-CON-MEAN-SD": [
+      "5.1.5"
+    ],
+    "MAS1-CON-PERM-COMB": [
+      "5.2.1"
+    ],
+    "MAS1-CON-ARRANGEMENTS": [
+      "5.2.2"
+    ],
+    "MAS1-CON-PROB-BASIC": [
+      "5.3.1"
+    ],
+    "MAS1-CON-PROB-ADDMULT": [
+      "5.3.2"
+    ],
+    "MAS1-CON-EXCL-INDEP": [
+      "5.3.3"
+    ],
+    "MAS1-CON-CONDITIONAL": [
+      "5.3.4"
+    ],
+    "MAS1-CON-DRV-TABLE": [
+      "5.4.1"
+    ],
+    "MAS1-CON-BINOM-GEOM": [
+      "5.4.2"
+    ],
+    "MAS1-CON-BINOM-EXPECT": [
+      "5.4.3"
+    ],
+    "MAS1-CON-NORMAL-MODEL": [
+      "5.5.1"
+    ],
+    "MAS1-CON-NORMAL-CALC": [
+      "5.5.2"
+    ],
+    "MAS1-CON-NORMAL-BINOM-APPROX": [
+      "5.5.3"
+    ]
+  },
+  "validatedPrerequisiteEdges": [],
+  "inferredPrototypePre": [],
+  "inferredPrototypeRel": [],
+  "conceptWebPrerequisiteEdges": [
+    {
+      "prerequisite": "MAS1-CON-DATA-REPRESENT",
+      "dependent": "MAS1-CON-CENTRAL-TENDENCY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAS1-CON-DATA-REPRESENT",
+      "dependent": "MAS1-CON-CUMULATIVE-FREQ",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS1-CON-CENTRAL-TENDENCY",
+      "dependent": "MAS1-CON-CUMULATIVE-FREQ",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAS1-CON-CENTRAL-TENDENCY",
+      "dependent": "MAS1-CON-MEAN-SD",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS1-CON-PERM-COMB",
+      "dependent": "MAS1-CON-ARRANGEMENTS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS1-CON-PERM-COMB",
+      "dependent": "MAS1-CON-PROB-BASIC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAS1-CON-PROB-BASIC",
+      "dependent": "MAS1-CON-PROB-ADDMULT",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS1-CON-PROB-ADDMULT",
+      "dependent": "MAS1-CON-EXCL-INDEP",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS1-CON-PROB-ADDMULT",
+      "dependent": "MAS1-CON-CONDITIONAL",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS1-CON-EXCL-INDEP",
+      "dependent": "MAS1-CON-CONDITIONAL",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAS1-CON-PROB-BASIC",
+      "dependent": "MAS1-CON-DRV-TABLE",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS1-CON-PROB-ADDMULT",
+      "dependent": "MAS1-CON-DRV-TABLE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAS1-CON-DRV-TABLE",
+      "dependent": "MAS1-CON-BINOM-GEOM",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS1-CON-BINOM-GEOM",
+      "dependent": "MAS1-CON-BINOM-EXPECT",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS1-CON-DRV-TABLE",
+      "dependent": "MAS1-CON-BINOM-EXPECT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAS1-CON-NORMAL-MODEL",
+      "dependent": "MAS1-CON-NORMAL-CALC",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS1-CON-MEAN-SD",
+      "dependent": "MAS1-CON-NORMAL-CALC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "MAS1-CON-BINOM-GEOM",
+      "dependent": "MAS1-CON-NORMAL-BINOM-APPROX",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "MAS1-CON-NORMAL-CALC",
+      "dependent": "MAS1-CON-NORMAL-BINOM-APPROX",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    }
+  ],
+  "counts": {
+    "anchoredConcepts": 16,
+    "conceptWebEdges": 19,
+    "validatedEdges": 0,
+    "inferredPre": 0,
+    "inferredRel": 0
+  },
+  "exportCounts": {
+    "candidates": 21,
+    "selfLoops": 0,
+    "reversedDropped": 0,
+    "preExported": 21
+  }
+}
