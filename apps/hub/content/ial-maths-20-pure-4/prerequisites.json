@@ -1,0 +1,143 @@
+{
+  "source": "AI concept-web startup run (F8 rollout batch six; T-KG-PRE-8, lane IALP4). The web is the AI_SUGGESTED, UNVALIDATED concept lattice authored by the F8 lane for this syllabus, every anchor machine-verified against the served spine's point ids (0 unmapped pass law) and exported in-order only by the calibrated law of scripts/kg_f8al_project.py. Bases mirror the operator-validated store vocabulary. prereqValidated stays EMPTY — the renderer labels every shipped pair INFERRED PROTOTYPE; the named gate before any of this is treated as truth remains the SME validation pass.",
+  "generatedUtc": "2026-11-04T01:31:13Z",
+  "curriculumCode": "YMA01",
+  "hubCourseSlug": "ial-maths-20-pure-4",
+  "conceptAnchors": {
+    "IAP4-CON-CONTRADICTION": [
+      "1.1"
+    ],
+    "IAP4-CON-PARTIAL-FRACTIONS": [
+      "2.1"
+    ],
+    "IAP4-CON-PARAMETRIC": [
+      "3.1"
+    ],
+    "IAP4-CON-BINOMIAL-SERIES": [
+      "4.1"
+    ],
+    "IAP4-CON-DIFF-IMPLICIT-PARAM": [
+      "5.1"
+    ],
+    "IAP4-CON-FORM-DE": [
+      "5.2"
+    ],
+    "IAP4-CON-VOLUME-REV": [
+      "6.1"
+    ],
+    "IAP4-CON-INT-SUB-PARTS": [
+      "6.2"
+    ],
+    "IAP4-CON-INT-PARTIAL-FRACS": [
+      "6.3"
+    ],
+    "IAP4-CON-SEPARABLE-ODE": [
+      "6.4"
+    ],
+    "IAP4-CON-PARAM-AREA": [
+      "6.5"
+    ],
+    "IAP4-CON-VECTORS": [
+      "7.1",
+      "7.3"
+    ],
+    "IAP4-CON-VECTOR-MAGNITUDE": [
+      "7.2"
+    ],
+    "IAP4-CON-POSITION-VECTORS": [
+      "7.4"
+    ],
+    "IAP4-CON-VECTOR-DISTANCE": [
+      "7.5"
+    ],
+    "IAP4-CON-LINE-VECTORS": [
+      "7.6"
+    ],
+    "IAP4-CON-SCALAR-PRODUCT": [
+      "7.7"
+    ]
+  },
+  "validatedPrerequisiteEdges": [],
+  "inferredPrototypePre": [],
+  "inferredPrototypeRel": [],
+  "conceptWebPrerequisiteEdges": [
+    {
+      "prerequisite": "IAP4-CON-PARAMETRIC",
+      "dependent": "IAP4-CON-DIFF-IMPLICIT-PARAM",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP4-CON-DIFF-IMPLICIT-PARAM",
+      "dependent": "IAP4-CON-FORM-DE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAP4-CON-PARAMETRIC",
+      "dependent": "IAP4-CON-VOLUME-REV",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAP4-CON-PARAMETRIC",
+      "dependent": "IAP4-CON-PARAM-AREA",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAP4-CON-PARTIAL-FRACTIONS",
+      "dependent": "IAP4-CON-INT-PARTIAL-FRACS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP4-CON-FORM-DE",
+      "dependent": "IAP4-CON-SEPARABLE-ODE",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP4-CON-VECTORS",
+      "dependent": "IAP4-CON-VECTOR-MAGNITUDE",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP4-CON-VECTORS",
+      "dependent": "IAP4-CON-POSITION-VECTORS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP4-CON-POSITION-VECTORS",
+      "dependent": "IAP4-CON-VECTOR-DISTANCE",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP4-CON-VECTOR-MAGNITUDE",
+      "dependent": "IAP4-CON-VECTOR-DISTANCE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAP4-CON-VECTORS",
+      "dependent": "IAP4-CON-LINE-VECTORS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAP4-CON-POSITION-VECTORS",
+      "dependent": "IAP4-CON-LINE-VECTORS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP4-CON-VECTORS",
+      "dependent": "IAP4-CON-SCALAR-PRODUCT",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    }
+  ],
+  "counts": {
+    "anchoredConcepts": 17,
+    "conceptWebEdges": 13,
+    "validatedEdges": 0,
+    "inferredPre": 0,
+    "inferredRel": 0
+  },
+  "exportCounts": {
+    "candidates": 17,
+    "selfLoops": 0,
+    "reversedDropped": 1,
+    "preExported": 16
+  }
+}

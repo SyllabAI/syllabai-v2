@@ -297,7 +297,48 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
-        fail(f"no lattice registered for {args.course}")
+        # T-KG-PRE-8 (batch six, the maths family tranche 3) — the Edexcel
+        # maths corpus: IAL units (YMA01/YFM01) and IGCSE (4MA1/4XMA1/4MB1/4PM1).
+        edexcel = {
+            "ial-maths-20-pure-1": ("f8ma_lattice_ialp1", "IALP1"),
+            "ial-maths-20-pure-2": ("f8ma_lattice_ialp2", "IALP2"),
+            "ial-maths-20-pure-3": ("f8ma_lattice_ialp3", "IALP3"),
+            "ial-maths-20-pure-4": ("f8ma_lattice_ialp4", "IALP4"),
+            "ial-maths-20-mechanics-1": ("f8ma_lattice_ialm1", "IALM1"),
+            "ial-maths-20-mechanics-2": ("f8ma_lattice_ialm2", "IALM2"),
+            "ial-maths-20-statistics-1": ("f8ma_lattice_ials1", "IALS1"),
+            "ial-maths-20-statistics-2": ("f8ma_lattice_ials2", "IALS2"),
+            "ial-maths-20-decision-1": ("f8ma_lattice_iald1", "IALD1"),
+            "ial-further-maths-18-further-pure-1": (
+                "f8ma_lattice_ialfp1", "IALFP1",
+            ),
+            "igcse-maths-a-18-foundation": ("f8ma_lattice_4ma1f", "4MA1F"),
+            "igcse-maths-a-18-higher": ("f8ma_lattice_4ma1h", "4MA1H"),
+            "igcse-maths-a-modular-24-foundation-unit-1": (
+                "f8ma_lattice_4xmfu1", "4XMA1F-U1",
+            ),
+            "igcse-maths-a-modular-24-foundation-unit-2": (
+                "f8ma_lattice_4xmfu2", "4XMA1F-U2",
+            ),
+            "igcse-maths-a-modular-24-higher-unit-1": (
+                "f8ma_lattice_4xmhu1", "4XMA1H-U1",
+            ),
+            "igcse-maths-a-modular-24-higher-unit-2": (
+                "f8ma_lattice_4xmhu2", "4XMA1H-U2",
+            ),
+            "igcse-maths-b-16": ("f8ma_lattice_4mb1", "4MB1"),
+            "igcse-further-maths-19": ("f8ma_lattice_4pm1", "4PM1"),
+        }
+        if args.course not in edexcel:
+            fail(f"no lattice registered for {args.course}")
+        mod, tag = edexcel[args.course]
+        from importlib import import_module
+
+        lattice = import_module(mod)
+        install_web(
+            args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+            batch="six", task="T-KG-PRE-8", exporter_ver="v1.2",
+        )
 
 
 if __name__ == "__main__":
