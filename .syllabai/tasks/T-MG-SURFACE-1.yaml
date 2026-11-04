@@ -3,7 +3,7 @@ task:
   id: T-MG-SURFACE-1
   title: "Rollout Lane A — discoverability: the region-marking surface arms only via ?paperId= deep-link; give covered papers a learner-facing 'Mark with AI' entry point on the past-papers surface (honest-null for uncovered papers)"
   owner: "main agent (Z.ai)"
-  status: OPEN
+  status: DONE
   priority: P1
   band: T-MG-MARK-PARITY (interactive paper marking) — rollout tranche per docs/MG-MARK-ROLLOUT-PLAN.md
   wave: mg-rollout-2026-11
@@ -19,4 +19,18 @@ task:
     - "no rect-coverage work (Lane B owns scale), no upload flow (Lane D), no mock-mode changes"
   execution_record: >
     Commissioned 2026-11-04 with docs/MG-MARK-ROLLOUT-PLAN.md (records push).
-    run-001 branches as t-mg-surface-1/run-001.
+    run-001 (PR #725, branch t-mg-surface-1/run-001): the viewer derives the
+    paper-asset uuid when no ?paperId= deep-link is present
+    (resolvePaperAssetCached — the rollup's own memoized resolve); covered
+    papers arm on open (<=2 clicks), honest-null preserved for signed-out
+    (no resolve fires; the RegionMarkLayer token gate is unchanged —
+    anonymous marking stays impossible) / not-ingested / uncovered states;
+    mock mode excluded; the deep-link wins. One file +29/-2; pdf-pane.tsx /
+    RegionMarkLayer / InkLayer / api / contracts / db all zero bytes.
+    Evidence: tsc + eslint clean, region-mark suite 39/39, branch CI
+    SUCCESS (run 41782338279). OPERATOR MERGE WORD received; MERGED as
+    5b63a8e2 (merge commit, main). DISCLOSURE: the screenshot receipt pin
+    remains OWED — the affordance is a state change in an existing
+    component with no visual delta of its own; the screenshot lands with
+    the next live verification pass (mock-mode exclusion + uncovered-paper
+    zero-chrome included in that pass's checklist).

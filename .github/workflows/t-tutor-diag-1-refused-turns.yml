@@ -1,0 +1,79 @@
+# T-TUTOR-DIAG-1 run-001 — the read-only refused-turns probe lane.
+#
+# Trigger: a live operator report — the tutor refused "difference between
+# evaporation and boiling" with the honesty-floor wording, while the same
+# topic serves ev=6 evidence rows on the verify learner. tutor_session_turns
+# persists every ask with evidence_count / refused / answer_model /
+# answer_provider, so ONE SELECT answers the differential: empty-evidence
+# context (learner/course binding) vs provider-stochastic refusal vs
+# something else.
+#
+# STRICT DISPOSITIONS (the t097 read-only doctrine, re-applied):
+#   - the probe runs SELECT ONLY against prod (T138_PROD_DATABASE_URL, the
+#     same secret the apply lanes use); zero writes to the DB;
+#   - the workflow NEVER writes to the repo (post-run git diff proof) and
+#     no Neon branch is created (no COW needed for reads);
+#   - the receipt carries the endpoint host, learner UUIDs, course refs and
+#     200-char text heads ONLY — never credentials, emails or transcripts;
+#   - artifact retention 3 days (public-repo artifact hygiene).
+name: t-tutor-diag-1-refused-turns
+
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "Operator note for this read-only diagnostic run"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-tutor-diag-1-refused-turns
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+
+      - name: Install workspace deps (root lockfile)
+        run: bun install --frozen-lockfile
+
+      - name: Preconditions (prod read secret present)
+        run: |
+          if [ -z "${{ secrets.T138_PROD_DATABASE_URL }}" ]; then
+            echo "::error::T138_PROD_DATABASE_URL is not configured"
+            exit 1
+          fi
+          echo "secret present"
+
+      - name: READ-ONLY probe — refused turns + provider stats (SELECT only)
+        env:
+          DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          mkdir -p reports
+          bun scripts/t-tutor-diag-1-refused-turns.ts --receipt reports/refused-turns-receipt.json
+
+      - name: READ-ONLY PROOF — the runner wrote nothing to the repo
+        if: always()
+        run: |
+          git diff --exit-code -- apps/ packages/ scripts/ .github/ golden/ docs/ \
+            || { echo "::error::repo mutation detected — the read-only posture is VIOLATED"; exit 1; }
+          echo "read-only posture verified"
+
+      - name: Upload receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t-tutor-diag-refused-turns-${{ github.run_id }}-${{ github.run_attempt }}
+          path: reports/
+          retention-days: 3
+          if-no-files-found: warn

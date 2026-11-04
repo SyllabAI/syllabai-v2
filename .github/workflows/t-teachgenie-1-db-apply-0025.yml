@@ -18,16 +18,22 @@
 #     config-mode and flag-mode) — then DROP the COW +
 #     404-verify, even on failure (if: always(), the T-MIG-035 discipline).
 #   job 2 (prod-apply, needs job 1 ALL GREEN, mode=cow+prod default): the same
-#     frozen driver against the production DATABASE_URL of record
-#     (T138_PROD_DATABASE_URL — the same secret three lanes already use).
-#     Receipt artifact always. The driver is IDEMPOTENT: a re-run against an
-#     already-relaxed prod is an honest zero-DDL no-op, so a red receipt after
-#     a partial state can be retried safely.
+#     frozen driver against the OWNER-CAPABLE production DSN of record
+#     (SIB_PROD_DATABASE_URL — the exact secret the T-SIB-INGEST-001 prod leg
+#     used at 2026-11-04 04:44 UTC to apply migration 0024's CHECK re-scope,
+#     the same ALTER-with-ownership class). Run-004/005 PROVED the T138 secret
+#     connects as the APP role (syllabai_v2_app_w2r2) which does NOT own the
+#     teach tables and holds no owner membership — the driver's ownership
+#     gate refused with both roles named in the receipt (zero DDL). The
+#     receipt always records the ownership resolution. The driver is
+#     IDEMPOTENT: a re-run against an already-relaxed prod is an honest
+#     zero-DDL no-op, so a red receipt after a partial state can be retried
+#     safely.
 #
 # OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
 # dispatched (the dispatch = the operator's fire order per the 093/133b law;
 # this run's fire order = "apply migration 0025 with it", 2026-11-04).
-# Secrets of record: NEON_API_KEY (exists), T138_PROD_DATABASE_URL (exists).
+# Secrets of record: NEON_API_KEY (exists), SIB_PROD_DATABASE_URL (exists, owner-capable).
 # Vars of record: NEON_PROJECT_ID, NEON_PARENT_BRANCH_ID (exist).
 # Receipts are scrubbed by construction: the driver records the DB host only,
 # never URIs or tokens.
@@ -155,11 +161,11 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Apply 0025 against PRODUCTION (frozen driver — preflight / apply / post-verify, idempotent)
         env:
-          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+          SIB_PROD_DATABASE_URL: ${{ secrets.SIB_PROD_DATABASE_URL }}
         run: |
           set -euo pipefail
-          [ -n "$T138_PROD_DATABASE_URL" ] || { echo "T138_PROD_DATABASE_URL not staged — abort"; exit 2; }
-          printf '%s' "$T138_PROD_DATABASE_URL" > /tmp/tg-prod.uri
+          [ -n "$SIB_PROD_DATABASE_URL" ] || { echo "SIB_PROD_DATABASE_URL not staged — abort"; exit 2; }
+          printf '%s' "$SIB_PROD_DATABASE_URL" > /tmp/tg-prod.uri
           chmod 600 /tmp/tg-prod.uri
           bun scripts/teach-genie-apply-0025.ts --db file:/tmp/tg-prod.uri --receipt prod-0025-receipt.json
       - name: Upload the receipt artifacts

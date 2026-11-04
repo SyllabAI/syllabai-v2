@@ -123,6 +123,7 @@ const nodeItem = (nodeId: string, title: string): EvidenceItem =>
     sourcePageStart: null,
     sourcePageEnd: null,
     bookCourseId: null,
+    sourceTitle: null,
     elementIds: [],
     topicIds: [nodeId],
     retrievalScore: 0.9,

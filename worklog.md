@@ -1152,3 +1152,13 @@ Work Log:
 
 Stage Summary:
 - The P5 debris class is extinct on the plane: the Po/Pb/Bi-210 grids, the Pu-238 chain, the Th-232 decay and the vanadium-50 span render proper isotope/decay notation for the first time. The hand-off chain F133→F134→F135→F136 is fully discharged (census-guard CI + M4 corpus repair + plane sync + the #306 CI infra item); corpus↔plane reconciliation HOLDS @ resources ef5c93cc / v2 205f604e.
+
+## t-mg-player-mark-1 + t-mg-surface-1 run-001 MERGED — the operator's merge word received; AI marking is learner-visible on the core player and region marking discovers itself (order "Merge #722 and #725", 2026-11-04)
+
+Work Log:
+- PR #722 (t-mg-player-mark-1/run-001) MERGED as a3718538; PR #725 (t-mg-surface-1/run-001) MERGED as 5b63a8e2 (main tip). Both merge-method=merge with house-style commit titles; lane branches deleted post-merge (404-verified).
+- Cards flipped to DONE in this commit: T-MG-PLAYER-MARK-1 (Gate-1 zero-diff receipt, CI run 41781956955) and T-MG-SURFACE-1 (CI run 41782338279; the screenshot receipt pin disclosed as OWED with the next live verification pass).
+- Env: sandbox recycled between turns (the local clone vanished) — fresh blob:none clone at the merge tip; token via GIT_ASKPASS from .gh_token (never argv/URL).
+
+Stage Summary:
+- The rollout tranche's ship-first lanes are ON MAIN: the typed regrade channel has its hub consumer (advisory "Mark my draft with AI" on the core player — the MG value moment type→mark→read, no attempt written, Smart Mark + legacy lane untouched), and region marking arms for any covered paper the learner opens normally (the ?paperId= deep-link requirement is gone; honest-null preserved for signed-out/not-ingested/uncovered; mock excluded). Remaining per docs/MG-MARK-ROLLOUT-PLAN.md: Lane E (carded, engine-side contract delta), Lane B scale-out (against the executed RECT-2 instrument), Lane D (operator-held product-scope decision + legal review).

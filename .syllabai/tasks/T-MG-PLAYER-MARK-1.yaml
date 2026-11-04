@@ -3,7 +3,7 @@ task:
   id: T-MG-PLAYER-MARK-1
   title: "Rollout Lane C — advisory per-part AI marking in the core player: the typed regrade channel (POST /api/v1/paper-marks/parts/:partId/regrade, shipped with zero hub callers) gets its hub consumer; core-live drafts get an instant AI read BEFORE any attempt is written"
   owner: "main agent (Z.ai)"
-  status: OPEN
+  status: DONE
   priority: P1
   band: T-MG-MARK-PARITY (interactive paper marking) — rollout tranche per docs/MG-MARK-ROLLOUT-PLAN.md (ship-first lane)
   wave: mg-rollout-2026-11
@@ -31,4 +31,15 @@ task:
     - "no vision, no crop, no paper-viewer changes (that is Lane A), no contracts/api/db bytes"
   execution_record: >
     Commissioned 2026-11-04 with docs/MG-MARK-ROLLOUT-PLAN.md (records push).
-    run-001 branches as t-mg-player-mark-1/run-001.
+    run-001 (PR #722, branch t-mg-player-mark-1/run-001): advisory draft
+    marking on the core lane — lib/paper-marks.ts requestPartRegrade (the
+    mirror-law client; the typed channel's FIRST hub caller) +
+    CoreMarkingFlow draft-phase "Mark my draft with AI" (per structured
+    part via the bridge join's core part UUIDs; verdicts through
+    feedbackCopyModel; writes NO attempt) + paper-marks-regrade.test.ts
+    (6 tests). Gate-1 asserted by diff (prompt.ts / PROMPT_VERSION /
+    packages/contracts/** / packages/db/**: zero diffs). Evidence: bun
+    6/6 + paper-feedback 8/8 + region-mark 39/39, tsc + eslint clean,
+    branch CI SUCCESS (run 41781956955). OPERATOR MERGE WORD received;
+    MERGED as a3718538 (merge commit, main). Legacy-lane stub untouched
+    (ADR-029 floor).
