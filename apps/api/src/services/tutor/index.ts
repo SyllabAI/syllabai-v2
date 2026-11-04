@@ -88,6 +88,9 @@ export {
   // T-TUTOR-PIVOT-1: the model-worded refusal truth
   modelRefusalLikely,
   CANONICAL_REFUSAL_STEMS,
+  SOURCE_STEMS,
+  REFUSAL_REDIRECT_SUFFIX,
+  withRefusalRedirect,
 } from "./refusal-detect";
 export {
   // prompt identity + fences + the v10 assembly

@@ -37,6 +37,41 @@ export const APOLOGY_REFUSAL_STEMS = [
   "sorry, but",
 ] as const;
 
+/** T-TUTOR-PIVOT-1 run-002 (live finding, 2026-11-05 prod replay): the
+ *  rotated pool's DOMINANT refusal family skips the apology entirely —
+ *  "The supplied sources do not contain information about …" (groq),
+ *  "The provided sources do not contain information or definitions …"
+ *  (gemini). The stem names the material itself, so the gate is a
+ *  content-LACK verb in the tail — correction verbs ("do not support",
+ *  "do not say") stay deliberately UNLISTED so a corrective opener
+ *  ("The sources do not support that claim — here is the correction")
+ *  never records refused. */
+export const SOURCE_STEMS = [
+  "the supplied sources",
+  "the provided sources",
+  "the sources",
+  // the bare "none of the …" opener (the negation is IN the stem) — the
+  // tail only needs to name the material
+  "none of the",
+] as const;
+
+/** Content-lack verbs for the SOURCE_STEMS tier. */
+export const SOURCE_LACK_MARKERS = [
+  "do not contain",
+  "do not cover",
+  "do not include",
+  "do not provide",
+  "do not have",
+  "do not state",
+  "do not mention",
+  "don't contain",
+  "don't cover",
+  "don't have",
+  "none of",
+  "no information",
+  "no matching",
+] as const;
+
 /** A material-limitation phrase must follow the apology stem — the refusal
  *  is about what the SOURCES (not the learner) lack. */
 export const REFUSAL_MATERIAL_MARKERS = [
@@ -44,6 +79,7 @@ export const REFUSAL_MATERIAL_MARKERS = [
   "course material",
   "validated",
   "supplied",
+  "provided",
 ] as const;
 
 /** And the limitation must be NEGATED — "the sources do not contain" is a
@@ -69,6 +105,9 @@ export const REFUSAL_NEGATIONS = [
   "missing",
   "insufficient",
   "lack",
+  // T-TUTOR-PIVOT-1 run-002 (live finding): "I'm sorry, but none of the
+  // supplied sources contain that information." — the "none of" family
+  "none of",
 ] as const;
 
 /** The stem + limitation phrase live in the answer's opening; the head
@@ -90,10 +129,48 @@ export function modelRefusalLikely(answer: string | null | undefined): boolean {
   for (const stem of CANONICAL_REFUSAL_STEMS) {
     if (head.startsWith(stem)) return true;
   }
+  // run-002 tier: the source-first family (the rotated pool's dominant
+  // wording) — the material is in the stem; a content-LACK verb decides.
+  // "none of the …" carries its negation in the stem, so the material
+  // markers decide for that prefix.
+  const srcStem = SOURCE_STEMS.find((s) => head.startsWith(s));
+  if (srcStem != null) {
+    const tail = head.slice(srcStem.length);
+    if (srcStem === "none of the") {
+      return REFUSAL_MATERIAL_MARKERS.some((m) => tail.includes(m));
+    }
+    return SOURCE_LACK_MARKERS.some((m) => tail.includes(m));
+  }
   const stem = APOLOGY_REFUSAL_STEMS.find((s) => head.startsWith(s));
   if (stem == null) return false;
   const tail = head.slice(stem.length);
   const material = REFUSAL_MATERIAL_MARKERS.some((m) => tail.includes(m));
   const negated = REFUSAL_NEGATIONS.some((n) => tail.includes(n));
   return material && negated;
+}
+
+/** T-TUTOR-PIVOT-1 run-002 — the DETERMINISTIC redirect. Run-001's live
+ *  replay (prod, post-deploy) measured the small-model pool ignoring the
+ *  v17 redirect law: 6/6 model-worded refusals ended bare, no way forward
+ *  for the learner. A prompt law is not a foundation — the pipeline now
+ *  appends the redirect line itself whenever a model-worded refusal is
+ *  detected (blocking: before the answer returns; streaming: as a tail
+ *  delta before the completed event). Idempotent: an answer that already
+ *  carries a redirect (law-compliant model, or the deterministic
+ *  TUTOR_REFUSAL's own "Try naming the topic …") is returned untouched. */
+export const REFUSAL_REDIRECT_SUFFIX =
+  "\n\nCould you rephrase the question, or start a new conversation on this topic?";
+
+/** True when the answer already carries a redirect line (either wording of
+ *  the law or the appended suffix). */
+export function hasRedirectLine(answer: string): boolean {
+  const lower = answer.toLowerCase();
+  return lower.includes("rephrase") || lower.includes("new conversation");
+}
+
+/** The deterministic redirect append — the pipeline's own way-forward line
+ *  on every detected model-worded refusal. */
+export function withRefusalRedirect(answer: string): string {
+  if (hasRedirectLine(answer)) return answer;
+  return answer + REFUSAL_REDIRECT_SUFFIX;
 }

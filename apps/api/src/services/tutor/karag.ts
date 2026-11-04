@@ -57,7 +57,7 @@ import {
   promptIdentity,
 } from "./prompt";
 import { retrievalQuery } from "./retrieval-query";
-import { modelRefusalLikely } from "./refusal-detect";
+import { modelRefusalLikely, withRefusalRedirect } from "./refusal-detect";
 import { fuseWithPlanWeights } from "./rrf";
 import {
   defaultSpecBoostIndex,
@@ -766,7 +766,16 @@ export async function karagAsk(
   // shape law's canonical stem (tolerant family for provider-rotated
   // wording). The telemetry event and the persisted turn inherit the truth
   // through this one computation (routes persist answer.refused verbatim).
-  const refusedFinal = refused || modelRefusalLikely(generated.answer);
+  const modelWordedRefusal = !refused && modelRefusalLikely(generated.answer);
+  const refusedFinal = refused || modelWordedRefusal;
+  // T-TUTOR-PIVOT-1 run-002: the DETERMINISTIC redirect. Run-001's live
+  // replay measured the small-model pool ignoring the v17 redirect law
+  // (6/6 model-worded refusals ended bare — no way forward). The pipeline
+  // appends the redirect line itself on every detected model-worded
+  // refusal; an answer that already carries one is returned untouched.
+  if (modelWordedRefusal) {
+    generated = { ...generated, answer: withRefusalRedirect(generated.answer) };
+  }
 
   const citations = resolveCitations(prep.evidence);
   const latencyMs = (Date.now() - startedAt) / 1000.0;
@@ -926,6 +935,16 @@ export async function* karagAskStream(
   // completed event, the telemetry event and the persisted turn (routes
   // persist event.refused verbatim) carry the truth.
   const modelRefused = modelRefusalLikely(full);
+  // T-TUTOR-PIVOT-1 run-002: the DETERMINISTIC redirect (stream parity with
+  // the blocking path) — appended as a TAIL DELTA before the completed
+  // event, so the rendered chat itself carries the way forward; the
+  // completed event's fullAnswer and the persisted turn match the wire.
+  if (modelRefused) {
+    const redirected = withRefusalRedirect(full);
+    const tail = redirected.slice(full.length);
+    full = redirected;
+    if (tail.length > 0) yield { kind: "delta", text: tail };
+  }
   deps.telemetry({
     learnerId,
     query: prep.query,

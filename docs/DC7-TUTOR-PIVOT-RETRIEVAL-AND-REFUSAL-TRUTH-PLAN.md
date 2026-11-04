@@ -127,3 +127,40 @@ RRF** — frozen math, tiebreak order, weight map untouched.
   v17 law narrows both by pinning the stem.
 - Single-turn asks are byte-identical; multi-turn asks carry one extra
   embedding call + one extra pgvector query.
+
+## 7. Run-001 live findings (post-merge prod replay, 2026-11-05)
+
+Deployment `ad852640` (Production, success 19:37:42Z). Replay via
+`/api/v1/tutor/ask` as the verify learner, course `4CH1-2017`:
+
+- **Workstream 1 (the pivot arm): LIVE and working.** The deterministic
+  fingerprint held: the with-history pivot ask shares citations with the
+  cold single-turn ask (overlap ≥ 2 — model-independent), and the pivot
+  answered correctly with citations on the post-deploy probes ("Evaporation
+  vs. boiling — Temperature: boiling occurs at one fixed temperature …").
+  The pre-deploy gemini refusals were the old build.
+- **Workstream 2: two live-measured gaps, fixed in run-002.**
+  1. The small-model pool does not follow the v17 stem/redirect law: 6/6
+     observed model-worded refusals used their own wording families
+     ("The supplied/provided sources do not contain …", "I'm sorry, but
+     none of the supplied sources contain …") — none opened with the
+     canonical stem, none carried a redirect.
+  2. The detector missed both live families: the source-first openers
+     (no apology stem) and the "none of the … contain" negation.
+- **Run-002 corrections (this commit):**
+  - Detector tier 3: `SOURCE_STEMS` ("the supplied/provided/the sources",
+    "none of the") gated on content-LACK verbs — correction verbs
+    ("do not support/say") deliberately unlisted so corrective openers
+    never record refused.
+  - The DETERMINISTIC redirect: `withRefusalRedirect` appends the
+    way-forward line ("Could you rephrase the question, or start a new
+    conversation on this topic?") on every detected model-worded refusal —
+    blocking before the answer returns; streaming as a tail delta before
+    the completed event (rendered chat + fullAnswer + persisted turn all
+    match). Idempotent (law-compliant answers untouched). A prompt law is
+    not a foundation; the pipeline now carries the redirect itself.
+- **Residual:** the streamed meta event keeps refused=false (pre-generation
+  contract); the completed event, telemetry and the persisted turn are the
+  truth carriers. "None of the sources …" corrective openers would
+  false-positive (deemed implausible as a correction shape; disclosed).
+- Suite: 3400 pass / 0 fail (9 new run-002 tests). Typecheck clean.
