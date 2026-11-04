@@ -4,6 +4,7 @@
  * sign-out reset, the account-switch law. No network: the api module is
  * stubbed at the boundary (the engine's only external contact).
  */
+import "./api-v2-test-env";
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import {
   __needsSwitchReset,

@@ -5,6 +5,7 @@
  * pull-down, one-PUT-per-intent (the echo guard), and the device-local
  * pre-hydration posture. No network: api is stubbed at the boundary.
  */
+import "./api-v2-test-env";
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import {
   __resetAccountDocsForTests,
