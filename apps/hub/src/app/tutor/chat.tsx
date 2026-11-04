@@ -218,7 +218,7 @@ export function TutorCourseGate({
         <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
           {unknown
             ? `No course is registered under "${label}" — check the link or pick the course from its hub.`
-            : `The ${label} tutor is not connected to a validated serving corpus yet. SyllabAI never answers across courses, so there is nothing to chat with here — the gate is honest, not a fallback to another course's material.`}
+            : `The ${label} tutor isn't connected yet — it answers only from that course's own material, so there's nothing to chat with here.`}
         </p>
         <div className="mt-4 flex justify-center gap-2">
           <Button asChild size="sm" variant="outline">
@@ -260,7 +260,6 @@ export function TutorChat({
   const [streamingId, setStreamingId] = useState<string | null>(null);
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
   const [atBottom, setAtBottom] = useState(true);
-  const [meta, setMeta] = useState<{ provider?: string; model?: string | null }>({});
   const sidebarPref = useSyncExternalStore(subscribeSidebarPref, getSidebarPref, () => true);
   const [sidebarOverride, setSidebarOverride] = useState<boolean | null>(null);
   const sidebarOpen = sidebarOverride ?? sidebarPref;
@@ -483,7 +482,6 @@ export function TutorChat({
               // pre-ask probe resolved — zero LLM behind this turn)
               patchTurn({ band: data.band });
             } else if (event === "meta") {
-              setMeta({ provider: data.provider, model: data.model });
               patchTurn({ provider: data.provider, refused: data.refused });
             } else if (event === "delta") {
               answer += data.text as string;
@@ -709,7 +707,6 @@ export function TutorChat({
    *  local threads only — other courses' histories are untouched. */
   const clearScopedThreads = () => {
     clearThreadsWhere((t) => threadInScope(t, courseSlug));
-    setMeta({});
   };
 
   const clearConversation = () => {
@@ -717,7 +714,6 @@ export function TutorChat({
     if (activeThread) {
       updateThread(activeThread.id, (t) => ({ ...t, messages: [], title: "New chat" }));
     }
-    setMeta({});
   };
 
   const newChat = () => {
@@ -811,22 +807,13 @@ export function TutorChat({
               {activeThread?.title ?? "New chat"}
             </p>
             <p className="truncate text-[10.5px] text-muted-foreground">
-              SyllabAI tutor · answers only from validated course content
+              SyllabAI tutor · answers come only from this course's own content
             </p>
           </div>
 
-          <Badge
-            variant="outline"
-            className="hidden gap-1 font-mono text-[10px] md:inline-flex"
-            title={meta.model ?? undefined}
-          >
-            <Sparkles className="size-3 text-primary" aria-hidden />
-            {meta.provider ?? "auto"}
-          </Badge>
-          <Badge variant="outline" className="hidden gap-1 text-[10px] font-normal sm:inline-flex">
-            <Database className="size-3" aria-hidden />
-            {courseLabel ? `${courseLabel} corpus` : "4CH1 corpus"}
-          </Badge>
+          {/* T-UX-COPY-SWEEP: the provider/model and corpus badges left the
+              header — serving instrumentation is operator telemetry, not a
+              learner affordance. The thread header keeps the honesty line. */}
 
           {/* the reference's New chat action (itutor.study header, verbatim
               anatomy): bordered pill, Plus glyph, label on sm+ and icon-only
@@ -1015,7 +1002,7 @@ export function TutorChat({
               onStop={() => abortsRef.current.get(activeThread?.id ?? "")?.abort()}
             />
             <p className="text-center text-[10px] leading-relaxed text-muted-foreground">
-              Answers cite the {courseLabel ? `${courseLabel} corpus` : "4CH1 corpus"} and can make
+              Answers cite the {courseLabel ? `${courseLabel} material` : "4CH1 material"} and can make
               mistakes — check citations before an exam. By asking you agree to the{" "}
               <Link href="/" className="underline underline-offset-2 hover:text-foreground">
                 study-use terms
@@ -1099,8 +1086,8 @@ function Welcome({
           </h1>
           <p className="mx-auto max-w-md text-sm leading-relaxed text-muted-foreground">
             {courseRef != null && !/^4CH/.test(courseRef)
-              ? `Your grounded study companion for this course's ${courseBoard ?? "Edexcel"} specification. Every answer cites the spec points and notes it draws on — and tells you honestly when the evidence runs thin.`
-              : "Your grounded study companion for Pearson Edexcel IGCSE Chemistry. Every answer cites the spec points and notes it draws on — and tells you honestly when the evidence runs thin."}
+              ? `Answers come from this course's ${courseBoard ?? "Edexcel"} specification and notes — every one cites the spec points it draws on.`
+              : "Answers come from the Pearson Edexcel IGCSE Chemistry specification and notes — every one cites the spec points it draws on."}
           </p>
         </div>
       </div>

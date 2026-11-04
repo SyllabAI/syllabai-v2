@@ -97,39 +97,6 @@ export function ExamCodePill({ code, href, className }: { code: string; href?: s
   );
 }
 
-/** Framework tags on hub resource cards (Edexcel / IGCSE / 4CH1). */
-export function FrameworkTags({ tags }: { tags: string[] }) {
-  return (
-    <span className="flex flex-wrap items-center gap-1.5">
-      {tags.map((t) => (
-        <span
-          key={t}
-          className="rounded border border-primary/25 bg-primary/5 px-1.5 py-0.5 text-[10.5px] font-medium text-primary"
-        >
-          {t}
-        </span>
-      ))}
-    </span>
-  );
-}
-
-/**
- * Framework tag chip — SME's Study / Practice / Diagnose pills (Task 21-b,
- * dissected from the reference course page). Colors live in globals.css
- * (chip-study / chip-practice / chip-diagnose).
- */
-export function TagChip({ tag }: { tag: "Study" | "Practice" | "Diagnose" }) {
-  return (
-    <span
-      className={cn(
-        "inline-flex items-center rounded-full px-2 py-0.5 text-[10.5px] font-semibold leading-none",
-        `chip-${tag.toLowerCase()}`,
-      )}
-    >
-      {tag}
-    </span>
-  );
-}
 
 /** Numbered syllabus label, e.g. topic "1. Principles of chemistry". */
 export function NumberedLabel({ number, title }: { number: number; title: string }) {
