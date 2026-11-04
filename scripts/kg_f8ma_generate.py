@@ -297,6 +297,35 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-12 (batch ten, the English cluster tranche 7): CIE 8021
+        # AS GP, CIE 0500 both examination spines, CIE 0475, Edexcel 4EA1
+        # all three papers, Edexcel 4ET1.
+        english = {
+            "cie-as-english-general-paper-21": ("f8en_lattice_8021gp", "8021GP"),
+            "cie-igcse-english-language-20": ("f8en_lattice_0500x20", "0500x20"),
+            "cie-igcse-english-language-25": ("f8en_lattice_0500x25", "0500x25"),
+            "cie-igcse-english-literature-21": ("f8en_lattice_0475", "0475"),
+            "igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing": (
+                "f8en_lattice_4ea1p1", "4EA1P1",
+            ),
+            "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing": (
+                "f8en_lattice_4ea1p2", "4EA1P2",
+            ),
+            "igcse-english-language-a-16-paper-3-coursework": (
+                "f8en_lattice_4ea1p3", "4EA1P3",
+            ),
+            "igcse-english-literature-16": ("f8en_lattice_4et1", "4ET1"),
+        }
+        if args.course in english:
+            mod, tag = english[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="ten", task="T-KG-PRE-12", exporter_ver="v1.5",
+            )
+            return
         # T-KG-PRE-11 (batch nine, the economics family tranche 6): CIE 9708
         # A Level, CIE 0455 both examination spines (2020 + 2025), Edexcel 4EC1.
         economics = {
