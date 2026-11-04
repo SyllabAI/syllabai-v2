@@ -148,6 +148,9 @@ export default async function SpecArchivePage({
           <section key={sessionId} aria-label={sessionLabel(sessionId)} className="space-y-2">
             <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
               {sessionLabel(sessionId)}
+              {/* t-ui-polish run-002 — the MG session header carries its
+                  size; same recipe as the course archive. */}
+              <span className="font-normal text-muted-foreground/60"> · {group.length}</span>
             </h2>
             <ul className="overflow-hidden rounded-xl border">
               {group.map((p) => (
@@ -177,7 +180,10 @@ export default async function SpecArchivePage({
                         {p.erBytes ? ` · ER ${prettyBytes(p.erBytes)}` : ""}
                       </p>
                     </div>
-                    <div className="flex flex-wrap items-center gap-1.5">
+                    {/* t-ui-polish run-002 — right-aligned, never wrapping
+                        at sm+ (the QP/MS/ER chips are uniform width, so the
+                        session reads as a table). */}
+                    <div className="flex flex-wrap items-center gap-1.5 sm:flex-nowrap sm:justify-end">
                       <PdfChip
                         label="Question Paper"
                         short="QP"

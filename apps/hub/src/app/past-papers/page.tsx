@@ -149,11 +149,21 @@ export default function PastPapersArchivePage() {
                         .get(subject)!
                         .sort((a, b) => a.specKey.localeCompare(b.specKey));
                       return (
-                        <ul key={subject} className="overflow-hidden rounded-xl border">
-                          {rows.map((s) => (
-                            <SpecRow key={s.specKey} s={s} />
-                          ))}
-                        </ul>
+                        // t-ui-polish run-002 — the subject becomes a visible
+                        // card: the grouping level the page was missing (rows
+                        // no longer repeat the subject inline). The header
+                        // rides the quiet recipe, count included.
+                        <div key={subject} className="overflow-hidden rounded-xl border">
+                          <p className="border-b bg-muted/30 px-3 py-2 text-[13px] font-semibold sm:px-4">
+                            {subject}
+                            <span className="font-normal text-muted-foreground/60"> · {rows.length}</span>
+                          </p>
+                          <ul>
+                            {rows.map((s) => (
+                              <SpecRow key={s.specKey} s={s} />
+                            ))}
+                          </ul>
+                        </div>
                       );
                     })}
                   </div>
@@ -175,7 +185,8 @@ function SpecRow({ s }: { s: CorpusArchiveSpec }) {
         <div className="min-w-0 flex-1 basis-52">
           <p className="flex flex-wrap items-center gap-1.5">
             <span className="font-mono text-sm font-semibold">{s.spec.spec.toUpperCase()}</span>
-            <span className="text-sm">{s.spec.subject}</span>
+            {/* t-ui-polish run-002 — the subject lives on the card header
+                now; the row carries only what varies (spec code + badges). */}
             {s.courseSlug && (
               <Badge variant="outline" className="text-[10px] text-muted-foreground">
                 hub course
@@ -188,7 +199,8 @@ function SpecRow({ s }: { s: CorpusArchiveSpec }) {
             {s.courseSlug ? " · mocks + interactive in the hub archive" : " · direct PDF browsing"}
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-1.5">
+        {/* t-ui-polish run-002 — right-aligned, never wrapping at sm+. */}
+        <div className="flex flex-wrap items-center gap-1.5 sm:flex-nowrap sm:justify-end">
           {s.courseSlug && (
             <Button asChild size="sm" variant="secondary" className="h-7 text-xs">
               <Link href={`/courses/${s.courseSlug}/past-papers`}>
