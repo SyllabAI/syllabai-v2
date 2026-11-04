@@ -1,0 +1,177 @@
+# T-TEACHGENIE-001 — migration 0025 apply runner (teach_objectives ordinal
+# CHECK relax 1–4 → 1–8; the operator fire order "review + merge PR #731
+# (apply migration 0025 with it)", IM chat 97a19c8c, 2026-11-04).
+#
+# Executed behind the t-sib-ingest-001 / t-mig-141-phase-b guard protocol of
+# record:
+#   job 1 (cow-apply): a disposable Neon COW branch off production (in-line
+#     read_write endpoint, NEON_API_KEY = the CI key of record), branch-local
+#     owner password reset (PRODUCTION ROLES NEVER TOUCHED), then the FROZEN
+#     driver scripts/teach-genie-apply-0025.ts applies 0025 as RAW SQL (one
+#     transaction, lock_timeout=5s, idempotent preflight — honest no-op when
+#     the CHECK is already semantically 1–8), post-verifies the constraint
+#     bounds and the full columns/FKs/indexes/triggers census — THE PROOF OF
+#     RECORD is the driver receipt (same standard as the 0020/0021 runner,
+#     which never carried a db:pull leg; the pull-based proof was dropped in
+#     run-004 after the workspace's drizzle-kit pull proved incompatible with
+#     the installed drizzle-orm subpath exports — pre-existing, both spelled
+#     config-mode and flag-mode) — then DROP the COW +
+#     404-verify, even on failure (if: always(), the T-MIG-035 discipline).
+#   job 2 (prod-apply, needs job 1 ALL GREEN, mode=cow+prod default): the same
+#     frozen driver against the OWNER-CAPABLE production DSN of record
+#     (SIB_PROD_DATABASE_URL — the exact secret the T-SIB-INGEST-001 prod leg
+#     used at 2026-11-04 04:44 UTC to apply migration 0024's CHECK re-scope,
+#     the same ALTER-with-ownership class). Run-004/005 PROVED the T138 secret
+#     connects as the APP role (syllabai_v2_app_w2r2) which does NOT own the
+#     teach tables and holds no owner membership — the driver's ownership
+#     gate refused with both roles named in the receipt (zero DDL). The
+#     receipt always records the ownership resolution. The driver is
+#     IDEMPOTENT: a re-run against an already-relaxed prod is an honest
+#     zero-DDL no-op, so a red receipt after a partial state can be retried
+#     safely.
+#
+# OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
+# dispatched (the dispatch = the operator's fire order per the 093/133b law;
+# this run's fire order = "apply migration 0025 with it", 2026-11-04).
+# Secrets of record: NEON_API_KEY (exists), SIB_PROD_DATABASE_URL (exists, owner-capable).
+# Vars of record: NEON_PROJECT_ID, NEON_PARENT_BRANCH_ID (exist).
+# Receipts are scrubbed by construction: the driver records the DB host only,
+# never URIs or tokens.
+
+name: t-teachgenie-1-db-apply-0025
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "cow+prod (default — full landing) | cow-only (COW proof first; prod only after the operator reviews the receipt)"
+        required: false
+        default: "cow+prod"
+      note:
+        description: "Operator note for this apply run"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-teachgenie-1-db-apply-0025
+  cancel-in-progress: false
+
+jobs:
+  cow-apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="t-teachgenie-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          HOST=""
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched; 423-aware)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          PW=""
+          for i in $(seq 1 20); do
+            CODE=$(curl -s -o /tmp/tg-reset.json -w "%{http_code}" \
+              -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            if [ "$CODE" = "200" ]; then
+              PW=$(jq -r '.role.password' /tmp/tg-reset.json)
+              break
+            fi
+            if [ "$CODE" = "423" ]; then sleep 5; continue; fi
+            echo "unexpected reset status ${CODE}"; exit 1
+          done
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Apply 0025 + post-verify on the COW (frozen driver, idempotent)
+        run: |
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/tg-cow.uri
+          chmod 600 /tmp/tg-cow.uri
+          bun scripts/teach-genie-apply-0025.ts --db file:/tmp/tg-cow.uri --receipt cow-0025-receipt.json
+      - name: Upload the receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tteachgenie-cow-receipts
+          path: cow-0025-receipt.json
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }
+
+  prod-apply:
+    needs: cow-apply
+    if: ${{ inputs.mode == 'cow+prod' && !failure() && !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Apply 0025 against PRODUCTION (frozen driver — preflight / apply / post-verify, idempotent)
+        env:
+          SIB_PROD_DATABASE_URL: ${{ secrets.SIB_PROD_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          [ -n "$SIB_PROD_DATABASE_URL" ] || { echo "SIB_PROD_DATABASE_URL not staged — abort"; exit 2; }
+          printf '%s' "$SIB_PROD_DATABASE_URL" > /tmp/tg-prod.uri
+          chmod 600 /tmp/tg-prod.uri
+          bun scripts/teach-genie-apply-0025.ts --db file:/tmp/tg-prod.uri --receipt prod-0025-receipt.json
+      - name: Upload the receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tteachgenie-prod-receipts
+          path: prod-0025-receipt.json
+          if-no-files-found: ignore
