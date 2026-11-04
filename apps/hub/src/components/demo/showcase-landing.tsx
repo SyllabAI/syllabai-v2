@@ -23,6 +23,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Atom, ClipboardList, GraduationCap, Loader2, ShieldCheck, Sparkles, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AigniteBadge } from "@/components/brand/aignite-badge";
 import { setSession } from "@/lib/api";
 import { announceSessionChange, useIdentity } from "@/lib/identity";
 import { mirrorRoutingSession } from "@/lib/session-cookie";
@@ -98,7 +99,7 @@ export function ShowcaseLanding() {
   }
 
   return (
-    <div className="mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-4xl flex-col justify-center px-4 py-10 sm:px-6">
+    <div className="mx-auto flex min-h-[calc(100vh-6.75rem)] w-full max-w-4xl flex-col justify-center px-4 py-10 sm:px-6">
       <div className="mb-8 flex items-center gap-2">
         <span className="flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
           <Atom className="size-4" aria-hidden />
@@ -115,6 +116,15 @@ export function ShowcaseLanding() {
         account needed. Demo sessions are real accounts, so anything you do
         here is saved.
       </p>
+
+      {/* T-BRAND-AIGNITE-101 — the mandatory buildathon sticker, prominent on
+          the showcase's first screen (the judges' entry point); the AppShell
+          strip carries it on every other surface. The min-h above now also
+          subtracts that strip's h-11 so the landing still fills the viewport
+          exactly. */}
+      <div className="mt-6">
+        <AigniteBadge className="h-14 w-auto drop-shadow-sm sm:h-16" />
+      </div>
 
       {identity && (
         <p className="mt-4 rounded-lg border bg-muted/40 px-3 py-2 text-sm text-muted-foreground">
