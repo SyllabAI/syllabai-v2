@@ -17,11 +17,16 @@ import { CourseHeader } from "@/components/hub/course-header";
  * notFound() — the flag law is absent=OFF and an unflagged page must not
  * exist, not merely be empty.
  *
- * Honesty surfaces baked in: review_state SUGGESTED with its note, the
- * corpus pin, the rights holder + license line, and the primaryPick marker
+ * Honesty surfaces baked in: the rights holder line, the primaryPick marker
  * (the corpus's own curation, not our ranking). The declared
  * non-overlaps are listed with their recorded reasons — coverage is never
  * manufactured (AGENT.md rule 3 mirrored hub-side).
+ *
+ * T-UX-STUDENT-COPY r0 (operator order, trace 1a1a719a34bc5761): the
+ * operator chips (review state, import repo/ref, text-only import) and
+ * the operator-vocabulary prose ("operator attestation", "review gate",
+ * "SUGGESTED") left the page — the bundle data of record is untouched,
+ * it is just no longer rendered to students.
  */
 export const dynamic = "force-dynamic";
 
@@ -38,7 +43,7 @@ export default async function CourseUgmPage({
 
   const byId = new Map(ugm.resources.map((r) => [r.ugmId, r]));
   const nonOverlaps = ugm.resources.filter((r) => r.nonOverlap);
-  const { coverage, source, rights, reviewState } = ugm;
+  const { coverage, rights } = ugm;
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
@@ -46,7 +51,7 @@ export default async function CourseUgmPage({
         meta={meta}
         crumb="Underground Mathematics"
         title="Underground Mathematics"
-        description={`Cambridge's Underground Mathematics ${ugmStationNames(ugm)} collections for ${boardOf(meta)} ${meta.level} ${meta.subject} — ${coverage.aligned} resources mapped across ${ugm.specPoints.length} specification points, each with suggestions and worked solutions. Alignment candidates are SUGGESTED, promoted only through the review gate.`}
+        description={`Cambridge's Underground Mathematics ${ugmStationNames(ugm)} collections for ${boardOf(meta)} ${meta.level} ${meta.subject} — ${coverage.aligned} resources mapped across ${ugm.specPoints.length} specification points, each with suggestions and worked solutions.`}
       />
 
       {/* provenance & rights card — always first, never buried */}
@@ -58,23 +63,14 @@ export default async function CourseUgmPage({
           </CardTitle>
           <CardDescription className="flex flex-wrap items-center gap-2 pt-1">
             <Badge variant="outline" className="font-mono text-[10px]">
-              review state: {reviewState.state}
-            </Badge>
-            <Badge variant="outline" className="font-mono text-[10px]">
-              {source.repo} {source.ref.slice(0, 16)}…
-            </Badge>
-            <Badge variant="outline" className="font-mono text-[10px]">
-              text-only import
+              {ugm.specPoints.length} specification points
             </Badge>
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-2 text-[13px] leading-relaxed text-muted-foreground">
-          <p>{reviewState.note}</p>
           <p>
-            <span className="font-medium text-foreground">{rights.holder}</span> — use inside
-            SyllabAI under the operator attestation of 2026-10-23 ({rights.license}).{" "}
-            {rights.note} The collection lives at undergroundmathematics.org (text mention, not a
-            link, per the outbound-link law).
+            <span className="font-medium text-foreground">{rights.holder}</span>. Source:
+            undergroundmathematics.org.
           </p>
         </CardContent>
       </Card>
@@ -109,9 +105,9 @@ export default async function CourseUgmPage({
                           {primary ? (
                             <span
                               className="ml-1.5 inline-flex items-center gap-0.5 rounded bg-primary/10 px-1 py-0.5 align-middle text-[10px] font-semibold text-primary"
-                              title="The corpus's own primary pick for this spec point"
+                              title="Recommended for this specification point"
                             >
-                              <Star className="size-2.5" aria-hidden /> primary pick
+                              <Star className="size-2.5" aria-hidden /> recommended
                             </span>
                           ) : null}
                         </span>
@@ -130,18 +126,18 @@ export default async function CourseUgmPage({
         ))}
       </div>
 
-      {/* declared non-overlaps — recorded, never collapsed (rule 3) */}
+      {/* extra-to-spec resources — recorded, never collapsed (rule 3) */}
       {nonOverlaps.length > 0 ? (
-        <section aria-label="Declared non-overlaps" className="mt-10 space-y-2">
+        <section aria-label="Resources beyond the specification map" className="mt-10 space-y-2">
           <h2 className="text-lg font-bold tracking-tight">
-            Not mapped to this lane
+            Beyond these specification points
             <span className="ml-2 align-middle font-mono text-xs font-normal text-muted-foreground">
-              {nonOverlaps.length} recorded
+              {nonOverlaps.length} in the library
             </span>
           </h2>
           <p className="text-[13px] text-muted-foreground">
-            These {ugmStationNames(ugm)} resources were considered and deliberately left unmapped — the
-            recorded reasons are kept visible instead of manufactured coverage.
+            These {ugmStationNames(ugm)} resources are kept for extra maths practice — they are
+            not tied to the specification points above, and each one says why.
           </p>
           <ul className="grid gap-2 sm:grid-cols-2">
             {nonOverlaps.map((r) => (

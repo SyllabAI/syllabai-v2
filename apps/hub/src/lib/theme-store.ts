@@ -138,7 +138,10 @@ export function setTheme(partial: Partial<ThemeState>): void {
 }
 
 export const THEME_LABEL: Record<ThemeName, string> = {
-  sme: "SME",
+  // "SME" is the internal design-variant codename (student-facing surfaces
+  // must never render it) — the student label is the product name
+  // (T-UX-STUDENT-COPY r0).
+  sme: "SyllabAI",
   "quiet-green": "Quiet Green",
   "candy-shop": "Candy Shop",
   "chat-app-plum": "Chat App Plum",
