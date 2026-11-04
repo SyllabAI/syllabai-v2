@@ -1190,3 +1190,26 @@ Work Log:
 
 Stage Summary:
 - lane 19 (T-UGM-0580-19) EXECUTED of record: experimental 79088f34 + 84408e97; resources PR #304 (enrichment T-UGM-MODE1-19 + corpus T-UGM-IMPORT-19, MANIFEST v19); T-UGM-HUB-CONSUME-19 filed as syllabai-v2 issue — awaits the #304 merge + operator order. Lane 20 = TE3 Coordinate geometry next per the decision; TE8/TE9 stay pre-ruled honest-empty (UGM-SCOPE-1).
+
+---
+Task ID: 10 (recovered entry — the original worklog append died with the recycled sandbox; re-recorded from session context)
+Agent: Z.ai main agent (zai-web session web-c414c074, chat 08b3170a, traces 1a1a719a34bc5761 / 1a1a738eb03a8f21)
+Task: Operator order "T-UX-STUDENT-COPY r0" — operator vocabulary out of the student surfaces (angry report: manifest/Licensing lines under videos, provider-key diagnostic, "SME · Light" footer chip, defensive pledge).
+Stage Summary (recovered):
+- 6 files, copy-only: media-embed-block (Licensing: {licenseRef} line out; payload/lint G4 keep the law; attribution stays), question-player (provider-key hint → learner nouns), theme-store (SME → SyllabAI chip label), app-shell footer (one plain honesty sentence + "How content is checked"), ugm index + reader (review-state/repo-ref/attestation instruments out; "recommended"; "Beyond these specification points"; Label-in-Name aria fix).
+- Gates on a5a47cc7: tsc 0 / eslint clean / bun test = pristine baseline. Commit 15117651 (lost to recycle; of record on origin as 1881ad5f).
+- Pushed + PR #748 opened (token env-only, one-shot script scripts/push_pr_student_copy.sh); mergeable clean; MERGED 2026-11-04 (8d0bdac1).
+
+---
+Task ID: 11
+Agent: Z.ai main agent (zai-web session web-c414c074, chat 08b3170a, trace 1a1a7544f31e07cd)
+Task: Operator order — whole-frontend copy sweep: "Cut taglines, non-relevant helper text, and secondary labels. If a screen needs them to make sense, fix the layout. Every decision should elevate UX, DX and agent experience at once, without breaking anything."
+Stage Summary:
+- Whole-hub pass (16 files, +63/−199, commit a3a1b833 on t-ux/frontend-copy-sweep, rebased-of-record on 8d0bdac1):
+  LANDING: hero badges (provider/core-api ✓) cut; "Graph nodes (T-C11)" → "Concept graph"; build-log descs ("SIMULATED overlay telemetry", "honest refusals", "SaveMyExams-style") → student nouns; "More to explore" intro paragraph cut (duplicated its own cards); dead manifest fetches removed.
+  COURSE HUB: Study/Practice/Diagnose tag-chip system retired (identical chips per band = zero information) + the "Our revision framework" explainer that existed only to define them; 4 band taglines cut; build-plan speak out ("Phase C of the build plan", "alignment candidates, SUGGESTED", "spec joins"); not-ready chip "roadmap" → "coming soon"; "View parsed spec" → "Knowledge graph"; strengths data note de-ADR'd.
+  TUTOR: provider/model + corpus badges out of the thread header (write-only meta state removed with them); "Grounding from your corpus…" → "Checking the course material…"; negative-policy empty state tightened.
+  INDEX PAGES: operator clauses out of descriptions (canonical writes, attested mark scheme, licensed deck corpus, plain-words depth layers, syllabai-pastpapers corpus); past-papers spec page archive instrument panel (AI-IDENTIFIED provenance / ratification / tree sha) cut, QP/MS/ER legend stays.
+- Kept: affordances, counts, empty-states, honest-nulls, aria-labels/semantics (agent experience), license/attribution lines, /about/provenance tier register.
+- Gates on 8d0bdac1: tsc 0; eslint byte-identical to pristine (15 errors/5 warnings pre-existing, none in touched files); bun test 4504/4519 with 2 fail + 1 error = pristine baseline byte-identical.
+- PR of record: https://github.com/SyllabAI/syllabai-v2/pull/760 (branch t-ux/frontend-copy-sweep @ a3a1b833) — NOT self-merged (integrator lane).
