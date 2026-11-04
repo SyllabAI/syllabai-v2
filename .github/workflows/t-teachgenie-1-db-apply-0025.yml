@@ -9,9 +9,13 @@
 #     owner password reset (PRODUCTION ROLES NEVER TOUCHED), then the FROZEN
 #     driver scripts/teach-genie-apply-0025.ts applies 0025 as RAW SQL (one
 #     transaction, lock_timeout=5s, idempotent preflight — honest no-op when
-#     the CHECK already reads BETWEEN 1 AND 8), post-verifies the constraint
-#     and the full columns/FKs/indexes/triggers census, db:pull-proves the
-#     end-state schema — receipt artifact always — then DROP the COW +
+#     the CHECK is already semantically 1–8), post-verifies the constraint
+#     bounds and the full columns/FKs/indexes/triggers census — THE PROOF OF
+#     RECORD is the driver receipt (same standard as the 0020/0021 runner,
+#     which never carried a db:pull leg; the pull-based proof was dropped in
+#     run-004 after the workspace's drizzle-kit pull proved incompatible with
+#     the installed drizzle-orm subpath exports — pre-existing, both spelled
+#     config-mode and flag-mode) — then DROP the COW +
 #     404-verify, even on failure (if: always(), the T-MIG-035 discipline).
 #   job 2 (prod-apply, needs job 1 ALL GREEN, mode=cow+prod default): the same
 #     frozen driver against the production DATABASE_URL of record
@@ -112,18 +116,6 @@ jobs:
           printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/tg-cow.uri
           chmod 600 /tmp/tg-cow.uri
           bun scripts/teach-genie-apply-0025.ts --db file:/tmp/tg-cow.uri --receipt cow-0025-receipt.json
-      - name: Schema-source proof — db:pull the COW end-state, assert the ordinal check
-        run: |
-          set -euo pipefail
-          cd packages/db
-          rm -rf /tmp/tg-pull
-          DATABASE_URL="$(cat /tmp/tg-cow.uri)" bun run db:pull --out /tmp/tg-pull
-          GREP_PATH="/tmp/tg-pull/schema.ts"
-          [ -f "$GREP_PATH" ] || { echo "db:pull produced no schema file"; exit 1; }
-          echo "pulled schema: $GREP_PATH"
-          grep -q 'teach_objectives_ordinal_check' "$GREP_PATH" || { echo "ordinal check missing from pulled schema"; exit 1; }
-          grep -Eq 'ordinal BETWEEN 1 AND 8|ordinal >= 1' "$GREP_PATH" || { echo "pulled schema does NOT read 1–8 — snapshot drift"; exit 1; }
-          echo "db:pull end-state matches schema.ts + 0025_snapshot.json (ordinal 1–8)"
       - name: Upload the receipt artifacts
         if: always()
         uses: actions/upload-artifact@v4
