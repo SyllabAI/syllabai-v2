@@ -40,16 +40,12 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { api, getToken } from "@/lib/api";
 import { formatDue } from "@/lib/format";
 import { useNow } from "@/lib/use-now";
+// Tier-3 follow-up 4: the probe-fixture filter is the ONE shared
+// implementation (@syllabai/shared) — the api's fetchAssignmentLists
+// drops these rows at the source; this presentation-side filter stays as
+// defense-in-depth and imports the same law.
+import { isSyntheticTitle } from "@syllabai/shared";
 import type { AgendaView } from "@/lib/types";
-
-/** Teacher-onboarding fixture rows: join-code probes named after the
- *  synthetic account slug ("probe late asprobe_1790628651"). Matched on
- *  the slug pattern and the "probe …" prefix — a real assignment titled
- *  e.g. "Temperature probes" survives (no word-boundary slug). */
-const SYNTHETIC_SLUG = /asprobe_\d+/i;
-function isSyntheticTitle(title: string): boolean {
-  return SYNTHETIC_SLUG.test(title) || /^probe\s/i.test(title);
-}
 
 export function SetWorkCard() {
   // Signed-out is captured once — the agenda is account data, so the card

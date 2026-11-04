@@ -74,6 +74,11 @@ import type { SqlFn } from "../assessment/sql";
 import { BadRequestError, ConflictError, type SubmitClock } from "../selfmark";
 import { buildNbaEngine, type NbaDeps } from "./nba";
 import { LearnerMeForbiddenError, LearnerMeNotImplementedError, LearnerMeNotFoundError } from "./errors";
+// Tier-3 follow-up 4: the probe-fixture filter is the ONE shared
+// implementation (@syllabai/shared) — the hub's set-work-card
+// defense-in-depth filter imports the same law; the contract is pinned in
+// packages/shared/src/synthetic-assignment.test.ts.
+import { isSyntheticTitle } from "@syllabai/shared";
 import type {
   AssignmentSubmissionRequest,
   CardScheduleView,
@@ -1187,19 +1192,16 @@ interface AssignmentLists {
  */
 /**
  * Teacher-onboarding probe fixtures (dashboard UX review 2026-11-04, item 3 —
- * the source fix). Join-code probe rows ("probe late asprobe_1790628651",
- * seeded with a bogus epoch-0 dueAt) are QA artefacts whose class_id is NULL
- * — and the V49 visibility law makes NULL-class rows visible to EVERY
- * enabled student, so the probe account's homework leaked into every live
- * agenda and assignment list. The hub already filters these presentation-side
- * (apps/hub set-work-card.tsx, same predicate); this filter stops the learner
- * surfaces ISSUING them at all. A real assignment titled e.g. "Temperature
- * probes" survives (no word-boundary slug; not at string start).
+ * the source fix; follow-up 4 — the ONE shared predicate). Join-code probe
+ * rows ("probe late asprobe_1790628651", seeded with a bogus epoch-0 dueAt)
+ * are QA artefacts whose class_id is NULL — and the V49 visibility law makes
+ * NULL-class rows visible to EVERY enabled student, so the probe account's
+ * homework leaked into every live agenda and assignment list. The hub also
+ * filters these presentation-side (apps/hub set-work-card.tsx) as
+ * defense-in-depth; this filter stops the learner surfaces ISSUING them at
+ * all. A real assignment titled e.g. "Temperature probes" survives (the
+ * law's pinned false-positive boundary lives with the shared contract).
  */
-const SYNTHETIC_SLUG = /asprobe_\d+/i;
-function isSyntheticTitle(title: string): boolean {
-  return SYNTHETIC_SLUG.test(title) || /^probe\s/i.test(title);
-}
 
 async function fetchAssignmentLists(
   deps: FlashcardRatingRecordDeps,
