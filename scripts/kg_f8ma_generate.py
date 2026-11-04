@@ -297,6 +297,25 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-14 (batch twelve, the computer-science family tranche 9):
+        # CIE 9618 A Level, CIE 9618 AS (sibling lattice on the identical
+        # id+text 1-12 subset — NOT a shared two-course module, the point
+        # sets differ), CIE 0478 IGCSE.
+        computer_science = {
+            "cie-a-level-computer-science-19": ("f8cs_lattice_9618al", "9618AL"),
+            "cie-as-computer-science-19": ("f8cs_lattice_9618as", "9618AS"),
+            "cie-igcse-computer-science-23": ("f8cs_lattice_0478x23", "0478x23"),
+        }
+        if args.course in computer_science:
+            mod, tag = computer_science[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="twelve", task="T-KG-PRE-14", exporter_ver="v1.7",
+            )
+            return
         # T-KG-PRE-13 (batch eleven, the geography family tranche 8): CIE
         # 0460 both examination spines (one lattice, two identical served
         # spines — the 9709P1 two-course pattern), CIE 9696 A Level,
