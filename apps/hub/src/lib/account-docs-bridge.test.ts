@@ -10,7 +10,8 @@
  * the suites stay isolated per-process). bun has no DOM: the fixture
  * installs the `window.localStorage` the owner-tag side-law reads.
  */
-import { beforeEach, afterEach, describe, expect, mock, test } from "bun:test";
+import { beforeEach, afterEach, describe, expect, test } from "bun:test";
+import type { WorkspaceDoc } from "@syllabai/contracts";
 
 // ── the DOM-less window stub (BEFORE any store code runs) ───────────────
 const tagStore = new Map<string, string>();
@@ -23,33 +24,22 @@ const tagStore = new Map<string, string>();
   },
 };
 
-class FakeApiError extends Error {
-  status: number;
-  constructor(status: number, message: string) {
-    super(message);
-    this.status = status;
-  }
-}
+// The ./api module is NOT replaced (see the engine fixtures' note): the
+// exported `api` OBJECT's plane methods are patched at runtime.
+// The v2-surface fixture pins this exact env value before its own import;
+// setting it here (ONLY when unset) keeps the ONE api.ts module evaluation —
+// whichever fixture runs first in the process — bound to the same dual-run
+// posture, so `bun test src/lib` is order-independent.
+process.env.NEXT_PUBLIC_API_V2_BASE_URL ??= "https://v2.example";
+const { api } = await import("./api");
 
 const putCalls: Array<{ key: string; value: unknown }> = [];
-let listImpl: () => Promise<unknown> = async () => ({ documents: [] });
 
-const apiMock = () => ({
-  ApiError: FakeApiError,
-  api: {
-    workspaceDocs: () => listImpl(),
-    putWorkspaceDoc: async (key: string, value: unknown) => {
-      putCalls.push({ key, value });
-      return { key, value, updatedAt: "2026-11-05T00:00:00.000Z" };
-    },
-    deleteWorkspaceDoc: async () => undefined,
-  },
-  clearSession: () => undefined,
-  currentUser: async () => null,
-  getToken: () => null,
-});
-mock.module("./api", apiMock);
-mock.module("@/lib/api", apiMock);
+api.workspaceDocs = async () => ({ documents: [] });
+api.putWorkspaceDoc = async (key: string, value: unknown): Promise<WorkspaceDoc> => {
+  putCalls.push({ key, value });
+  return { key, value, updatedAt: "2026-11-05T00:00:00.000Z" };
+};
 
 const {
   mirrorThreadState,

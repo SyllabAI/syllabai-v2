@@ -1,6 +1,12 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import {
+  bridgeThreadStore,
+  isAccountDocsHydrated,
+  mirrorThreadState,
+} from "@/lib/account-docs-bridge";
+import { readIdentitySnapshot } from "@/lib/identity";
 
 /**
  * Tutor conversation store — multi-thread chat persistence (localStorage).
@@ -143,6 +149,9 @@ export interface Thread {
 
 const KEY = "syllabai.tutor.threads.v1";
 const ACTIVE_KEY = "syllabai.tutor.activeThread.v1";
+/** T-AUDIT-TIER1 run-003 — the account plane this pool mirrors into (the
+ *  workspace-document key of record; the closed-vocabulary member). */
+const DOC_KEY = "tutor-threads";
 const EVENT = "syllabai:tutor-threads-changed";
 
 /** storage guards — keep localStorage bounded */
@@ -189,6 +198,10 @@ function persist() {
   } catch {
     // quota exceeded / private mode — the session still works in memory
   }
+  // T-AUDIT-TIER1 run-003 — the account mirror: the durable copy rides the
+  // workspace-document plane (write-through; localStorage stays the
+  // reactive cache — the T-TEACH-001 law, run-001 precedent).
+  mirrorThreadState(DOC_KEY, notifySnapshot());
 }
 
 /** Trailing-edge throttle: streaming deltas commit often; disk writes wait. */
@@ -527,3 +540,30 @@ export function downloadThread(thread: Thread) {
   a.click();
   URL.revokeObjectURL(url);
 }
+
+// ── T-AUDIT-TIER1 run-003 — the account mirror (bridge registration) ─────
+// The device-local thread pool mirrors the account through the workspace-
+// document plane (lib/account-docs-bridge.ts — the reconcile decision tree,
+// the owner-tag side-law and the conservative union live THERE). The
+// persist tail above drives the commit-up path; this registration drives
+// hydration, pull-down and the re-base laws (the registration-time
+// evaluation converges a store whose doc already hydrated — first visit).
+bridgeThreadStore<StoredState, Thread>({
+  localKey: KEY,
+  docKey: DOC_KEY,
+  maxThreads: MAX_THREADS,
+  maxMessages: MAX_MESSAGES_PER_THREAD,
+  readState: () => ({ threads: state.threads, activeId: state.activeId }),
+  readThreads: (s) => s.threads,
+  apply: (threads) => {
+    // hydration / pull-down / re-base: the active pointer survives when
+    // its thread does; a dropped pointer re-pins to the newest survivor
+    // (the merge returns newest-first) or null when the pool is empty.
+    const ids = new Set(threads.map((t) => t.id));
+    const activeId =
+      state.activeId && ids.has(state.activeId) ? state.activeId : (threads[0]?.id ?? null);
+    commit({ threads, activeId });
+  },
+  getAuthEmail: () => readIdentitySnapshot()?.email ?? null,
+  isHydrated: () => isAccountDocsHydrated(),
+});

@@ -1,6 +1,12 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import {
+  bridgeThreadStore,
+  isAccountDocsHydrated,
+  mirrorThreadState,
+} from "@/lib/account-docs-bridge";
+import { readIdentitySnapshot } from "@/lib/identity";
 
 /**
  * Question-CLA thread store — DC-6 phase 2a
@@ -63,6 +69,8 @@ export type QuestionClaMessagesUpdate =
 
 const KEY = "syllabai.claThreads.v1";
 const ACTIVE_KEY = "syllabai.claThreads.activeByQuestion.v1";
+/** T-AUDIT-TIER1 run-003 — the account plane this pool mirrors into. */
+const DOC_KEY = "cla-question-threads";
 
 /** storage guards — keep localStorage bounded (family parity; heavier
  *  messages: the CLA answer view carries citations + tools, hence 100) */
@@ -147,6 +155,9 @@ function persist() {
   } catch {
     // quota exceeded / private mode — the session still works in memory
   }
+  // T-AUDIT-TIER1 run-003 — the account mirror (family parity; the CLA
+  // snapshot carries the per-question active map the tutor pool lacks).
+  mirrorThreadState(DOC_KEY, { threads: state.threads, activeByQuestion: state.activeByQuestion });
 }
 
 /** Trailing-edge throttle: disk writes wait (family parity). */
@@ -474,3 +485,32 @@ export function insertQuestionClaThread(thread: QuestionClaThread, makeActive: b
   if (makeActive) activeByQuestion[thread.questionId] = thread.id;
   commit({ threads, activeByQuestion });
 }
+
+// ── T-AUDIT-TIER1 run-003 — the account mirror (bridge registration) ─────
+// The CLA pool's snapshot keeps its per-question active map: every dangling
+// pointer re-pins to the NEWEST surviving thread of the SAME question
+// (threads are newest-first) or clears to null — the question's thread
+// identity never leaks across questions.
+bridgeThreadStore<StoredState, QuestionClaThread>({
+  localKey: KEY,
+  docKey: DOC_KEY,
+  maxThreads: MAX_THREADS,
+  maxMessages: MAX_MESSAGES_PER_THREAD,
+  readState: () => ({ threads: state.threads, activeByQuestion: state.activeByQuestion }),
+  readThreads: (s) => s.threads,
+  apply: (threads) => {
+    const byId = new Set(threads.map((t) => t.id));
+    const activeByQuestion: Record<string, string | null> = {};
+    for (const [qid, tid] of Object.entries(state.activeByQuestion)) {
+      if (tid && byId.has(tid)) {
+        activeByQuestion[qid] = tid;
+      } else {
+        const newest = threads.find((t) => t.questionId === qid);
+        activeByQuestion[qid] = newest?.id ?? null;
+      }
+    }
+    commit({ threads, activeByQuestion });
+  },
+  getAuthEmail: () => readIdentitySnapshot()?.email ?? null,
+  isHydrated: () => isAccountDocsHydrated(),
+});

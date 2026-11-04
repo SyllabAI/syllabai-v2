@@ -1,54 +1,40 @@
 /**
  * account-docs engine fixtures — T-AUDIT-TIER1 run-003.
  *
- * The ./api module is REPLACED (bun mock.module) so the engine runs over
- * captured calls: the PUT receipts, the hydration list, the 401 and 500
- * failure classes. The visibility stub arms the re-arm law without a real
- * DOM (bun has no `document` — the fixture installs one).
+ * The engine runs over CAPTURED calls: the exported `api` object's three
+ * plane methods are patched at runtime (no mock.module — the module graph
+ * stays real, so a same-process `bun test` run cannot clobber the other
+ * fixtures' module-level env bindings). The REAL ApiError class serves the
+ * 401/500 failure laws. The visibility stub arms the re-arm law without a
+ * real DOM (bun has no `document` — the fixture installs one).
  */
-import { describe, expect, mock, test } from "bun:test";
+import { describe, expect, test } from "bun:test";
+import type { WorkspaceDoc, WorkspaceDocList } from "@syllabai/contracts";
 
-export class FakeApiError extends Error {
-  status: number;
-  constructor(status: number, message: string) {
-    super(message);
-    this.status = status;
-  }
-}
+// The ./api module is NOT replaced (a mock.module here would clobber the
+// v2-surface fixtures' real module in a same-process run): the exported
+// `api` OBJECT is a mutable const — the plane's three methods are patched
+// onto it at runtime, and the REAL ApiError class serves the failure laws.
+// The v2-surface fixture pins this exact env value before its own import;
+// setting it here (ONLY when unset) keeps the ONE api.ts module evaluation —
+// whichever fixture runs first in the process — bound to the same dual-run
+// posture, so `bun test src/lib` is order-independent.
+process.env.NEXT_PUBLIC_API_V2_BASE_URL ??= "https://v2.example";
+const { ApiError, api } = await import("./api");
 
 const putCalls: Array<{ key: string; value: unknown }> = [];
-let putImpl: (key: string, value: unknown) => Promise<unknown> = async (key, value) => ({
+let putImpl: (key: string, value: unknown) => Promise<WorkspaceDoc> = async (key, value) => ({
   key,
   value,
   updatedAt: "2026-11-05T00:00:00.000Z",
 });
-let listImpl: () => Promise<unknown> = async () => ({ documents: [] });
+let listImpl: () => Promise<WorkspaceDocList> = async () => ({ documents: [] });
 
-mock.module("./api", () => ({
-  ApiError: FakeApiError,
-  api: {
-    workspaceDocs: () => listImpl(),
-    putWorkspaceDoc: (key: string, value: unknown) => {
-      putCalls.push({ key, value });
-      return putImpl(key, value);
-    },
-    deleteWorkspaceDoc: async () => undefined,
-  },
-}));
-mock.module("@/lib/api", () => ({
-  ApiError: FakeApiError,
-  api: {
-    workspaceDocs: () => listImpl(),
-    putWorkspaceDoc: (key: string, value: unknown) => {
-      putCalls.push({ key, value });
-      return putImpl(key, value);
-    },
-    deleteWorkspaceDoc: async () => undefined,
-  },
-  clearSession: () => undefined,
-  currentUser: async () => null,
-  getToken: () => null,
-}));
+api.workspaceDocs = () => listImpl();
+api.putWorkspaceDoc = (key: string, value: unknown) => {
+  putCalls.push({ key, value });
+  return putImpl(key, value);
+};
 
 const {
   readDoc,
@@ -134,7 +120,7 @@ describe("account-docs engine", () => {
   test("401 flush drops the dirty flag, keeps the value, never re-PUTs", async () => {
     freshEngine();
     putImpl = async () => {
-      throw new FakeApiError(401, "Session expired — please sign in again.");
+      throw new ApiError(401, "Session expired — please sign in again.");
     };
     writeDoc(DOC, { v: "keep-me" });
     await __flushAllForTests();
@@ -148,7 +134,7 @@ describe("account-docs engine", () => {
     freshEngine();
     let fail = true;
     putImpl = async () => {
-      if (fail) throw new FakeApiError(500, "the server hit an error");
+      if (fail) throw new ApiError(500, "the server hit an error");
       return { key: DOC, value: null, updatedAt: "2026-11-05T00:00:00.000Z" };
     };
     writeDoc(DOC, { v: "retry-me" });
@@ -213,7 +199,7 @@ describe("account-docs engine", () => {
   test("a hydration failure keeps hydrated false (device-local state untouched, retry converges)", async () => {
     freshEngine();
     listImpl = async () => {
-      throw new FakeApiError(500, "the server hit an error");
+      throw new ApiError(500, "the server hit an error");
     };
     await hydrateAccountDocs("me@example.edu");
     expect(isAccountDocsHydrated()).toBe(false);
