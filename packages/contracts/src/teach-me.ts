@@ -66,7 +66,9 @@ export type TeachObjectiveStatus = z.infer<typeof teachObjectiveStatusSchema>;
 export const teachObjectiveSchema = z
   .object({
     id: z.string().uuid(),
-    ordinal: z.number().int().min(1).max(4),
+    // T-TEACHGENIE-001: In-Depth carries 6 objectives (MG Teach Genie parity,
+    // "Objective 1/6") — ordinals relax 1–4 → 1–8 (migration 0025).
+    ordinal: z.number().int().min(1).max(8),
     text: z.string().min(1),
     specPointIds: teachSpecPointIdsSchema,
     status: teachObjectiveStatusSchema,
@@ -81,7 +83,7 @@ export const verdictChipSchema = z
     verdict: z.string().min(1),
     /** Extractive one-sentence feedback naming the covered learning point. */
     feedbackLine: z.string().min(1),
-    coveredObjectiveIds: z.array(z.string().uuid()).max(4),
+    coveredObjectiveIds: z.array(z.string().uuid()).max(8),
     /** ADR-040 D2 guardrail input: the pupil must NOT affirm this message. */
     contradictionDetected: z.boolean(),
     wordFloorPassed: z.boolean(),
@@ -216,7 +218,8 @@ export const teachSessionSchema = z
     length: teachSessionLengthSchema,
     mode: teachSessionModeSchema,
     status: teachSessionStatusSchema,
-    objectives: z.array(teachObjectiveSchema).min(3).max(4),
+    // T-TEACHGENIE-001: 3 (Quick) … 6 (In-Depth, MG parity) — schema ceiling 8.
+    objectives: z.array(teachObjectiveSchema).min(3).max(8),
     messageCount: z.number().int().min(0),
     llmCallCount: z.number().int().min(0),
     tokensUsed: z.number().int().min(0),
@@ -234,8 +237,8 @@ export const teachMeErrorCodeSchema = z.enum([
   "TEACH_ME_FLAG_DISABLED",
   "COURSE_NOT_ELIGIBLE", // content gate G1–G4 failed (e.g. no indexed corpus)
   "QUOTA_EXCEEDED", // 3 sessions/day (ADR-040 D3)
-  "MESSAGE_CEILING", // Quick ≤ 5 / In-Depth ≤ 6
-  "TOKEN_CEILING", // ≤ 10 calls / ≤ 60k tokens per session
+  "MESSAGE_CEILING", // Quick ≤ 5 / In-Depth ≤ 8 (T-TEACHGENIE-001)
+  "TOKEN_CEILING", // ≤ 12 calls / ≤ 90k estimated tokens per session (T-TEACHGENIE-001)
   "LLM_SHAPE_DRIFT", // T-MIG-039 fail-closed refusal
   "SESSION_NOT_ACTIVE",
   "NOT_OWNER",

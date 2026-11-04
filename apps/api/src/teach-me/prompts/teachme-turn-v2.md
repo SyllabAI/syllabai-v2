@@ -1,7 +1,9 @@
-# Pinned prompt `teachme.turn.v1` — combined coverage judge + pupil probe (one LLM call per message)
+# Pinned prompt `teachme.turn.v2` — combined coverage judge + pupil probe (one LLM call per message)
 
-> Drop-in path: apps/api/src/teach-me/prompts/teachme-turn-v1.md
-> Fixture-replayed in CI (T-MIG-039). Bump to v2, never edit in place.
+> Drop-in path: apps/api/src/teach-me/prompts/teachme-turn-v2.md
+> Fixture-replayed in CI (T-MIG-039). v2 (T-TEACHGENIE-001): persona renamed to
+> Baby Genie + MG casual voice; objective count wording widened to 3–6. Bump to
+> v3, never edit in place.
 > Output is validated against the zod contract in run-002; shape drift = fail-closed
 > refusal (LLM_SHAPE_DRIFT), never coercion.
 
@@ -10,7 +12,7 @@
 - `{{PUPIL_CHARTER}}` — prompts/pupil.md, verbatim
 - `{{COURSE_CANON}}` — the session's spec-point canon excerpts from the course notes
   (the ONLY factual ground truth the model may rely on)
-- `{{OBJECTIVES}}` — the session's 3–4 objectives with current status + ordinals
+- `{{OBJECTIVES}}` — the session's 3–6 objectives with current status + ordinals
 - `{{DIFFICULTY}}` — easy | medium | hard
 - `{{TRANSCRIPT}}` — prior turns, pupil messages and student messages, sequenced
 - `{{STUDENT_MESSAGE}}` — the current student message (≥ minWords; the word floor and
@@ -33,8 +35,8 @@ Against `{{OBJECTIVES}}` and `{{COURSE_CANON}}` only:
   `feedbackLine` — ONE sentence naming the learning point just covered, extractive in
   spirit, never correcting anything.
 
-**JOB 2 — the Pupil (student-facing, follows the charter in `{{PUPIL_CHARTER}}` exactly).**
-Write the Pupil's next message:
+**JOB 2 — Baby Genie (student-facing, follows the charter in `{{PUPIL_CHARTER}}` exactly).**
+Write Baby Genie's next message:
 - If `contradictionDetected` is true: the charter's confusion behaviour — stay in
   character, express that the new claim doesn't match what you were told, end with a
   question. NEVER affirm ("that clicks" is forbidden on contradiction).
@@ -53,7 +55,7 @@ Write the Pupil's next message:
     { "objectiveOrdinal": 1, "covered": true, "evidenceQuote": "exact student words" }
   ],
   "contradictionDetected": false,
-  "pupilMessage": "the Pupil's next message, in character"
+  "pupilMessage": "Baby Genie's next message, in character"
 }
 ```
 
