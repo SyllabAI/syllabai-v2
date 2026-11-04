@@ -54,7 +54,10 @@ function parseArgs(argv: string[]): Args {
   if (!stage || !existsSync(stage)) throw new Error("--stage <dir with chunks/> required");
   const receipt = get("receipt");
   if (!receipt) throw new Error("--receipt <out.json> required");
-  const db = get("db");
+  const dbRaw = get("db");
+  // the workflows pass --db file:/tmp/xxx.uri (the apply-0024 driver form);
+  // strip the scheme so the 0600 stat + later readFileSync see the path.
+  const db = dbRaw && dbRaw.startsWith("file:") ? dbRaw.slice(5) : dbRaw;
   const probeWord = get("probe-word");
   if (mode === "apply" && (!db || !probeWord)) throw new Error("apply requires --db <0600 file> and --probe-word");
   if (db) {
