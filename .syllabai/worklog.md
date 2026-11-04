@@ -360,3 +360,22 @@ Stage Summary:
 - Chain: operator trace 1a1a722ebe477629 ("fix the reds") -> this run on a fresh worktree at origin/main da2985cc (fetch-first; main moved twice mid-window — a5a47cc7 #744 then da2985cc #745 — both re-grounded before any edit; zero overlap with the touched paths verified by the suites themselves).
 - Anti-truncation asserts: worklog appended append-only (new = old + this section incl. leading blank-line separator; byte delta == len(section); line delta == section newlines), asserted by the filing script before commit.
 
+
+---
+Task ID: T-ADR039-DATA r1 (post-deploy public spot-check receipt — the r0 "Next" closed; re-cut of record)
+Agent: r7a (Super Z, session web-da4ab8b1, chat 1f3003b6)
+Task: continuation after a context recycle — the operator's "r4 bookkeeping receipt PR, then the ADR-039 disclosed-edits queue" was found ALREADY landed of record (r4 = PR #728 squash ad568b9d merged 2026-11-04T07:01:42Z; the queue = PR #732 squash ddbc83a9); this receipt independently re-verifies the landed state and executes the r0 receipt's queued "post-deploy public spot-check". The first cut of this branch (26275005) was lost to a second workspace rollback pre-push; re-cut and re-verified against the moved main.
+
+Work Log:
+- RECOVERY x2: the sandbox recycle rolled the workspace checkout back to main @ 4008e6ce (pre-#714) AGAIN; origin/main re-fetched (fetch-first, no force) — at the first cut the tip was ddbc83a9; by the re-cut main had moved ~22 PRs to d0c1a6cd (#754); receipt re-based there.
+- GATE RE-PROVEN TWICE: bun scripts/verify_sme_wire_r0.ts at ddbc83a9 AND re-run at d0c1a6cd — both courses 90 / sets 2,574 / placed 2,574 / unplaced 0 / gen-row homes 34 / residual section EMPTY (the #733-#754 wave did not touch SME placement).
+- GATE-PARITY CLAIM AUDITED (no gate loosening): spec-tree.ts rung 7 honors corpus-stamped <topicCode>-gen codes ONLY after rungs 1-6 miss (the stamp-never-demotion law pinned in the doc comment); courses.ts:433 really builds the production index with generalTopics: generalTopicsOfQuestionTopics(questionTopics); the gate now passes the identical option; class-geography route carries the same one-line parity pass. Denominator and mechanical rungs unchanged.
+- PRODUCTION PARITY (public SSR HTML, curl): syllabai-hub-v2.vercel.app serves the #732 state — geography-25 "Climate change (SME section)" + "Geographical skills (SME section)", CS-23 "Algorithm design and problem solving"/"Databases"/"Boolean logic"/"SQL", ial-biology-18 "Synoptic Assessment" all present (3 course pages, HTTP 200).
+- GROUPED-VIEW PROOFS (?subtopic=<row code>, exactly one intended set each; re-confirmed live at the moved-tip era): CS-23 ...-T9-gen -> sql--exam-questions; geography-25 ...-SME-CLIMATE-CHANGE-gen -> causes-and-impacts-of-climate-change--exam-questions; RS-23 ...-TC6-gen -> christianity-and-social-action--exam-questions (the TC6 per-set stamp renders end-to-end). Probe note: ?subtopic= keys on ROW codes — a first probe with bare topic codes rendered the unfiltered 31-set bank; corrected from the ADR-039 §4 table.
+- Evidence pack: workspace download/adr039-prod-spotcheck/SPOT-CHECK-REPORT.md (commands + raw counts + the x2 recovery disclosures; workspace artifact, not committed — r4 precedent).
+- Credentials law: the recycles dropped env state between windows (no cross-call persistence); the operator supplied a fresh PAT this window and this receipt's own push/PR/merge runs in that same window after this commit; the standing rotation advisory applies to every chat-pasted PAT; tokens env-only, never echoed/committed/logged.
+
+Stage Summary:
+- T-ADR039-DATA is PRODUCTION-CLOSED OF RECORD: PR #732 merged (ddbc83a9), prod serving the disclosed placements, gate 2,574/2,574 (100%) re-proven independently at TWO tips, three grouped-view single-set proofs on the public site, ADR-039 §4 empty of record.
+- Still queued (not this lane): the ADR-039 r2 spine-cosmetics trio (RS-23 variant-title disambiguation, business-25 missing T1, mechanics/stats-1 off-by-one titles) + the CS-23 T7/T9/T10 spec-point parse.
+- Anti-truncation asserts: worklog appended append-only (new = old + this section; byte delta == len(section); line delta == section newlines), asserted by the delivery script before commit.
