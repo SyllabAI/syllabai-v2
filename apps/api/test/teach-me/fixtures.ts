@@ -171,9 +171,7 @@ const objectivesResponse = (length: "quick" | "in_depth"): Record<string, unknow
   const spByN: string[][] =
     n === 3
       ? [["2.3"], ["2.4"], ["2.5"]]
-      : n === 4
-        ? [["2.3"], ["2.4"], ["2.5"], ["2.3", "2.4", "2.5"]]
-        : [["2.3"], ["2.4"], ["2.5"], ["2.3"], ["2.4"], ["2.3", "2.4", "2.5"]];
+      : [["2.3"], ["2.4"], ["2.5"], ["2.3"], ["2.4"], ["2.3", "2.4", "2.5"]];
   return {
     objectives: texts.map((t, i) => ({ text: t, specPointIds: spByN[i] })),
     // T-TEACHGENIE-001: Baby Genie's topic-aware opener (MG parity)
