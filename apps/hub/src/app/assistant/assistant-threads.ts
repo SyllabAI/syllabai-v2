@@ -1,6 +1,12 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import {
+  bridgeThreadStore,
+  isAccountDocsHydrated,
+  mirrorThreadState,
+} from "@/lib/account-docs-bridge";
+import { readIdentitySnapshot } from "@/lib/identity";
 
 /**
  * Assistant conversation store — DC-6 phase 1 (docs/DC6-ASSISTANT-HISTORY-PLAN.md).
@@ -64,6 +70,8 @@ export interface AssistantThread {
 
 const KEY = "syllabai.assistant.threads.v1";
 const ACTIVE_KEY = "syllabai.assistant.activeThread.v1";
+/** T-AUDIT-TIER1 run-003 — the account plane this pool mirrors into. */
+const DOC_KEY = "assistant-threads";
 const EVENT = "syllabai:assistant-threads-changed";
 
 /** storage guards — keep localStorage bounded (tutor parity) */
@@ -115,6 +123,10 @@ function persist() {
   } catch {
     // quota exceeded / private mode — the session still works in memory
   }
+  // T-AUDIT-TIER1 run-003 — the account mirror (the tutor store's law, the
+  // DC-6 copy-adapt disclosure extends to the plane: zero shared files with
+  // the tutor — the plane KEY is the only join point).
+  mirrorThreadState(DOC_KEY, notifySnapshot());
 }
 
 /** Trailing-edge throttle: disk writes wait (tutor parity). */
@@ -418,3 +430,24 @@ function updateInPlace(id: string, patch: Partial<AssistantThread>) {
     threads: state.threads.map((t) => (t.id === id ? { ...t, ...patch } : t)),
   });
 }
+
+// ── T-AUDIT-TIER1 run-003 — the account mirror (bridge registration) ─────
+// Same reconcile law as the tutor pool (lib/account-docs-bridge.ts); the
+// shared ZERO-files discipline holds — only the DOC_KEY vocabulary joins.
+bridgeThreadStore<StoredState, AssistantThread>({
+  localKey: KEY,
+  docKey: DOC_KEY,
+  maxThreads: MAX_THREADS,
+  maxMessages: MAX_MESSAGES_PER_THREAD,
+  readState: () => ({ threads: state.threads, activeId: state.activeId }),
+  readThreads: (s) => s.threads,
+  apply: (threads) => {
+    // dropped active pointer re-pins to the newest survivor / null
+    const ids = new Set(threads.map((t) => t.id));
+    const activeId =
+      state.activeId && ids.has(state.activeId) ? state.activeId : (threads[0]?.id ?? null);
+    commit({ threads, activeId });
+  },
+  getAuthEmail: () => readIdentitySnapshot()?.email ?? null,
+  isHydrated: () => isAccountDocsHydrated(),
+});

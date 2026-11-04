@@ -205,6 +205,22 @@ const DUAL_RUN_PATHS: readonly string[] = [
   // dependency disclosed of record and accepted by the ruling; the
   // chain-down path serves the frozen 503 transcription_unavailable law.
   "/api/v1/learners/me/answer-input/transcribe",
+  // T-TEACHME-001 run-003 RIDER — the teach-me family's hub-emitted forms
+  // (lib/api.ts teachMe client): the literal rows the family's flip has
+  // always implied but this table never pinned (the same pre-existing
+  // drift the exact-set literal carried — fixed of record in this band).
+  "/api/v1/learners/me/teach-me",
+  "/api/v1/learners/me/teach-me/tm_session_1",
+  "/api/v1/learners/me/teach-me/tm_session_1/messages",
+  // T-AUDIT-TIER1 run-003 — the workspace-document plane's hub-emitted
+  // forms (lib/api.ts workspaceDocs/putWorkspaceDoc/deleteWorkspaceDoc —
+  // the account-docs engine is the only caller; the key is
+  // encodeURIComponent'd, so the progress:<slug> family rides the same row).
+  "/api/v1/me/documents",
+  "/api/v1/me/documents/tutor-threads",
+  "/api/v1/me/documents/assistant-threads",
+  "/api/v1/me/documents/cla-question-threads",
+  "/api/v1/me/documents/progress%3Aigcse-chemistry-19",
 ];
 
 /** Hub-emitted (or hub-adjacent) paths that MUST stay on the core in the dual-run posture. */
@@ -325,6 +341,13 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/attempts",
       "/api/v1/learners/me/attempts",
       "/api/v1/learners/me/revision-notes", // Wave S3: T-MIG-082 golden-verified (run-002/003, r3a)
+      "/api/v1/learners/me/teach-me", // T-TEACHME-001 run-003: v2-NATIVE family (PR #585, 21-test behavioural fixture) — NARROW: the teach-me family ONLY; the exact-set literal RIDER of record: this row existed in api.ts before this band but was missing here (the literal drift self-caught at the T-AUDIT-TIER1 run-003 widening — CI pins kg-corpus + build only, disclosed)
+      // T-AUDIT-TIER1 run-003 — the workspace-document plane: v2-NATIVE
+      // family (no core analogue — the 17-test route fixture suite gates
+      // it), NARROW to exactly /api/v1/me/documents (no sibling /api/v1/me/*
+      // path shares the segment — grep-verified at the flip commit); the
+      // closed key vocabulary rides INSIDE the wire, not the routing.
+      "/api/v1/me/documents",
       "/api/v1/admin/llm/chain-health", // T-MIG-090: golden-verified (run-005, r0 rider) — NARROWEST: the prefix IS the single endpoint
       "/api/v1/tutor/sessions", // T-MIG-092: golden-verified (run-003 14/14, r0 rider) — NARROW: the sessions tree ONLY, ask/stream stay core
       "/api/v1/learners/me/agenda", // T-MIG-096: golden-verified (run-001 16/18, r0 rider) — per-exact-subpath rows, NEVER the bare /learners/me
@@ -775,6 +798,29 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     expect(v2SurfaceBase("/api/v1/learners/me/cla/threadsxyz", V2)).toBe(V2);
     // the bare cla family root stays core-routed (no row claims it)
     expect(v2SurfaceBase("/api/v1/learners/me/cla", V2)).toBeNull();
+  });
+
+  test("the T-AUDIT-TIER1 run-003 line: the workspace-document plane routes v2 (v2-native, no frozen counterpart)", () => {
+    // the plane rides ONE prefix row (the DC-6 cla-threads row class): the
+    // base list, the get/put/delete key paths and the encoded progress:<slug>
+    // family all resolve v2. The closed key vocabulary rides INSIDE the wire
+    // (workspaceDocKeySchema) — the ROUTING row cannot express it, and must
+    // not: an unknown key 400s validation_failed at the router before any
+    // query, so startsWith over-capture (documentsxyz) is DOCUMENTED INERT
+    // — no route or hub emitter named documents* beyond this plane exists.
+    expect(v2SurfaceBase("/api/v1/me/documents", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/me/documents/tutor-threads", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/me/documents/assistant-threads", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/me/documents/cla-question-threads", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/me/documents/progress%3Aigcse-chemistry-19", V2)).toBe(V2);
+    // the five refused sibling keys ride the SAME row (the 400 is the
+    // vocabulary's own law, not a routing decision)
+    expect(v2SurfaceBase("/api/v1/me/documents/saved-tests", V2)).toBe(V2);
+    // startsWith partial-segment capture is DOCUMENTED INERT
+    expect(v2SurfaceBase("/api/v1/me/documentsxyz", V2)).toBe(V2);
+    // no sibling /api/v1/me/* surface exists to over-capture (grep-verified
+    // at the flip commit)
+    expect(v2SurfaceBase("/api/v1/me", V2)).toBeNull();
   });
 
   test("the T-MIG-106 line: the tutor ask pair flips declared-justified (r4b, operator ruling (b) trace 1a11c4b762f6043d)", () => {

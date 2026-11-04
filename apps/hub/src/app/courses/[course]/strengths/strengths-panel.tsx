@@ -75,7 +75,7 @@ export function StrengthsPanel({ course }: { course: string }) {
 
   if (!signedIn) {
     return (
-      <Card className="mt-8">
+      <Card className="mt-6">
         <CardContent className="space-y-3 py-6">
           {/* UX review F-09: the signed-out state led with system internals;
               the one thing a signed-out visitor needs is the invitation. */}
@@ -95,13 +95,13 @@ export function StrengthsPanel({ course }: { course: string }) {
 
   if (loading) {
     return (
-      <p className="mt-8 text-sm text-muted-foreground">Computing your strength bars at read…</p>
+      <p className="mt-6 text-sm text-muted-foreground">Computing your strength bars at read…</p>
     );
   }
 
   if (failed && !data) {
     return (
-      <Card className="mt-8">
+      <Card className="mt-6">
         <CardContent className="space-y-3 py-6">
           <p className="text-sm text-muted-foreground">
             The strength service did not answer. Nothing is fabricated in its place — the bars exist only
@@ -118,7 +118,7 @@ export function StrengthsPanel({ course }: { course: string }) {
   if (!data) return null;
 
   return (
-    <div className="mt-8 space-y-6">
+    <div className="mt-6 space-y-6">
       <div className="flex flex-wrap items-center gap-2">
         <Activity className="size-4 text-primary" aria-hidden />
         <h2 className="text-base font-semibold">Strength by spec point</h2>
@@ -140,11 +140,13 @@ export function StrengthsPanel({ course }: { course: string }) {
           </CardHeader>
           <CardContent className="space-y-2">
             <p className="text-xs text-muted-foreground">{data.semantics.queue}</p>
+            {/* t-ui-polish run-005: the drill queue rows speak the house
+                card-hover voice (border-primary/60 + shadow-sm lift). */}
             {data.queue.map((q) => (
               <Link
                 key={q.code}
                 href={`/practice/drill?code=${encodeURIComponent(q.code)}`}
-                className="flex items-center gap-3 rounded-lg border p-3 transition-colors hover:border-primary/40"
+                className="flex items-center gap-3 rounded-lg border p-3 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
               >
                 <span className="font-mono text-sm font-medium">{q.code}</span>
                 <Badge variant="outline" className={cn("text-[10px]", BAND_CHIP[q.band])}>

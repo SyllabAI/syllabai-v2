@@ -73,7 +73,7 @@ export default async function BooksShelfPage({
       />
 
       {unavailable ? (
-        <Card>
+        <Card className="mt-6">
           <CardContent className="flex flex-col items-center gap-2 py-10 text-center">
             <BookOpen className="h-8 w-8 text-muted-foreground" />
             <p className="font-medium">Student books are temporarily unavailable</p>
@@ -84,7 +84,7 @@ export default async function BooksShelfPage({
           </CardContent>
         </Card>
       ) : shelf.length === 0 ? (
-        <Card>
+        <Card className="mt-6">
           <CardContent className="flex flex-col items-center gap-2 py-10 text-center">
             <BookOpen className="h-8 w-8 text-muted-foreground" />
             <p className="font-medium">No student books published for this course yet</p>
@@ -95,7 +95,9 @@ export default async function BooksShelfPage({
           </CardContent>
         </Card>
       ) : (
-        <div className="space-y-8">
+        /* t-ui-polish run-004: hero→body join at the mt-6 family rhythm —
+            this page's three branch roots were the only gapless surfaces. */
+        <div className="mt-6 space-y-8">
           {shelf.map((book) => (
             <BookCard key={book.documentId} slug={slug} book={book} />
           ))}
