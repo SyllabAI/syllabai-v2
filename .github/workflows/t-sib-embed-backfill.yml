@@ -116,14 +116,25 @@ jobs:
           [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
           ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
           echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
-      - name: Migration 0024 + full corpus APPLY onto the COW
+      - name: Migration 0024 + full corpus APPLY onto the COW (skipped when inherited)
         run: |
+          set -euo pipefail
           printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/sib-cow.uri
           chmod 600 /tmp/sib-cow.uri
-          bun scripts/sib-ingest/apply-0024.ts --db file:/tmp/sib-cow.uri --receipt cow-0024-receipt.json
-          bun apps/api/scripts/sib-ingest.ts --mode apply --stage /tmp/sib-stage \
-            --db file:/tmp/sib-cow.uri --probe-word "${{ inputs.probe-word }}" \
-            --receipt cow-apply-receipt.json
+          PRE=$(DB_URI="$(cat /tmp/sib-cow.uri)" bun -e "
+            import postgres from 'postgres';
+            const sql = postgres(process.env.DB_URI, { max: 1, prepare: false });
+            const r = await sql\`select count(*)::int n from documents where document_id like 'SIB-4CH1-%'\`;
+            console.log(r[0].n); await sql.end();")
+          if [ "$PRE" = "95" ]; then
+            echo "COW inherits the 95-doc SIB corpus from production (Gate A of record) - 0024+apply skipped by idempotency law"
+          else
+            [ "$PRE" = "0" ] || { echo "unexpected pre-state: ${PRE} SIB docs on COW - abort"; exit 1; }
+            bun scripts/sib-ingest/apply-0024.ts --db file:/tmp/sib-cow.uri --receipt cow-0024-receipt.json
+            bun apps/api/scripts/sib-ingest.ts --mode apply --stage /tmp/sib-stage \
+              --db file:/tmp/sib-cow.uri --probe-word "${{ inputs.probe-word }}" \
+              --receipt cow-apply-receipt.json
+          fi
       - name: Pilot backfill via the FROZEN executor (one non-GAP document)
         env:
           SYLLABAI_EMBEDDING_GEMINI_API_KEY: ${{ secrets.SIB_GEMINI_KEY }}
