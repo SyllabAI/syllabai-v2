@@ -1,0 +1,212 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_tq52Kk7NNvjdsnPx",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "9447e76cafc0828bda81583b022bb666fa6ec3dca28c07ef1689dfb2eb337204",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_tq52Kk7NNvjdsnPx",
+    "topicTitle": "5. Solids, Liquids and Gases",
+    "subtopicTitle": "Changes of State",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/5-solids-liquids-and-gases/5-2-changes-of-state/5-2-2-changes-of-state",
+    "specAnchors": [
+      {
+        "code": "5.8P",
+        "text": "explain why heating a system will change the energy stored within the system and raise its temperature or produce changes of state"
+      },
+      {
+        "code": "5.9P",
+        "text": "describe the changes that occur when a solid melts to form a liquid, and when a liquid evaporates or boils to form a gas"
+      }
+    ],
+    "primer": {
+      "text": "Heating does not always show up on a thermometer. Supplied energy can push a substance up in temperature, or it can be spent rearranging particles as the substance melts, evaporates or boils. This note names every state change, tracks the energy in and out, and separates heat from temperature.",
+      "prerequisiteSubtopic": "Changes of State"
+    },
+    "modules": [
+      {
+        "id": "rn_tq52Kk7NNvjdsnPx::L1",
+        "title": "Naming the state changes and their energy flows",
+        "sourceHeadings": [
+          "Changing between states of matter"
+        ],
+        "specRefs": [
+          "5.8P",
+          "5.9P"
+        ],
+        "opening": "Six named transitions connect the three states, three driven by heating and three by cooling. Each transition carries an energy signature: taken in while bonds loosen, released while bonds tighten.",
+        "keyPoints": [
+          "Melting turns a solid into a liquid; freezing turns a liquid into a solid.",
+          "Evaporation and boiling turn a liquid into a gas; condensation turns a gas into a liquid.",
+          "Melting, evaporation and boiling are endothermic — energy is absorbed from the surroundings.",
+          "Freezing and condensation are exothermic — energy is released to the surroundings.",
+          "Sublimation turns a solid directly into a gas without passing through the liquid state."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Warm a solid and it melts; warm a liquid and it evaporates or boils; cool a gas and it condenses; cool a liquid and it freezes. The warming direction drinks in energy and the cooling direction gives it back out.",
+            "analogy": "A reversible commuter route: heating pays the fare that loosens the bonds and lets particles travel further apart, cooling refunds exactly that fare as the crowd packs tight again.",
+            "examPointer": "Match the direction word to the energy word: if particles are being pulled apart, say energy is absorbed; if they are being pulled together, say it is released."
+          },
+          "medium": {
+            "restatement": "On heating, supplied energy first raises internal energy and can overcome the attractions holding particles in place, producing melting at the melting point and vaporisation at the boiling point. The reverse transitions export that latent energy to the surroundings as new attractions form, which is why condensation and freezing warm their surroundings.",
+            "analogy": "Breaking camp: hours of effort (absorbed energy) are needed to pull the tent pegs up, and every peg hammered back in on packing up (released energy) returns effort to the day.",
+            "examPointer": "Boiling happens throughout the liquid at a fixed boiling point, while evaporation is a surface process at any temperature — quote that distinction when the question says 'state two differences'."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_tq52Kk7NNvjdsnPx::L1::Q1",
+          "rn_tq52Kk7NNvjdsnPx::L1::Q2",
+          "rn_tq52Kk7NNvjdsnPx::L1::Q3",
+          "rn_tq52Kk7NNvjdsnPx::L1::Q4",
+          "rn_tq52Kk7NNvjdsnPx::L1::Q5",
+          "rn_tq52Kk7NNvjdsnPx::L1::Q6",
+          "rn_tq52Kk7NNvjdsnPx::L1::Q7",
+          "rn_tq52Kk7NNvjdsnPx::L1::Q8",
+          "rn_tq52Kk7NNvjdsnPx::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_tq52Kk7NNvjdsnPx::L2",
+        "title": "Heat, temperature and internal energy",
+        "sourceHeadings": [
+          "Heat & temperature",
+          "The relationship between temperature and internal energy"
+        ],
+        "specRefs": [
+          "5.8P"
+        ],
+        "opening": "Heat and temperature are not rivals but different currencies: heat is the energy in transit, temperature the per-particle reading of the internal store. A beaker left open overnight shows how one can fall while nothing warms at all.",
+        "keyPoints": [
+          "Heat is energy transferred because of a temperature difference, flowing from hotter to colder.",
+          "Temperature measures the average kinetic energy of the particles in a substance.",
+          "Heating a system raises the energy stored within it — its internal energy.",
+          "A temperature rise or a change of state are the two possible outcomes of that stored-energy rise.",
+          "Evaporation removes the most energetic molecules, so the average energy of those left behind falls."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Heat is energy on the move between a hot thing and a cold thing; temperature is the crowd's average pace. Give energy to a system and either its particles speed up (warmer) or they break ranks and change state.",
+            "analogy": "A wallet and a speedometer: heat is the cash handed over, temperature is the speedometer needle that rises when the crowd's energy per head rises.",
+            "examPointer": "Never write 'heat rises' — write 'energy is transferred'. Heat is a transfer, temperature is a measure; mixing the two nouns is a classic lost mark."
+          },
+          "medium": {
+            "restatement": "The internal energy of a system is the total kinetic and potential energy of its particles. Heating increases that store, and the increase is spent either on kinetic energy (temperature rise) or on potential energy as separations widen (change of state). Evaporation is selective: only the fastest surface molecules escape, lowering the mean kinetic energy of the residue even though no thermostat changed.",
+            "analogy": "A cinema that lets only the fastest filmgoers leave first: the average running speed of the remaining audience drops even though nobody inside slowed down.",
+            "examPointer": "For 'explain why an open beaker of water cools', the winning chain is: most energetic molecules evaporate first, so the average kinetic energy of those remaining falls, so the temperature reading falls."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_tq52Kk7NNvjdsnPx::L2::Q1",
+          "rn_tq52Kk7NNvjdsnPx::L2::Q2",
+          "rn_tq52Kk7NNvjdsnPx::L2::Q3",
+          "rn_tq52Kk7NNvjdsnPx::L2::Q4",
+          "rn_tq52Kk7NNvjdsnPx::L2::Q5",
+          "rn_tq52Kk7NNvjdsnPx::L2::Q6",
+          "rn_tq52Kk7NNvjdsnPx::L2::Q7",
+          "rn_tq52Kk7NNvjdsnPx::L2::Q8",
+          "rn_tq52Kk7NNvjdsnPx::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "endothermic",
+          "definition": "A process that absorbs energy from the surroundings, such as melting or boiling.",
+          "firstLesson": 1
+        },
+        {
+          "term": "exothermic",
+          "definition": "A process that releases energy to the surroundings, such as freezing or condensing.",
+          "firstLesson": 1
+        },
+        {
+          "term": "internal energy",
+          "definition": "The total kinetic and potential energy stored in the particles of a system.",
+          "firstLesson": 2
+        },
+        {
+          "term": "heat",
+          "definition": "Energy transferred between regions because of a temperature difference.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A student weighs a beaker of water, leaves it for 24 hours at constant room temperature, and weighs it again to find the mass has decreased. Which of the following is NOT a correct conclusion from the experiment: A — the mass difference equals the mass of water that evaporated; B — the total energy stored in the beaker of water decreased; C — the density of water vapour in the room's air increased; D — the overall count of water molecules in beaker and air combined decreased.",
+        "steps": [
+          "Option A holds: the missing mass is exactly the water that evaporated from the beaker.",
+          "Option B holds: the most energetic molecules left the liquid, so the energy stored in the remaining water fell.",
+          "Option C holds: evaporated molecules were added to the room's air without a significant change in the air's volume, so the vapour density rose.",
+          "Option D fails: evaporation conserves the molecules — the beaker's count fell, but the air's count rose by the same amount, so the total is unchanged."
+        ],
+        "finalAnswer": "D is not a correct conclusion: evaporation moves molecules from the beaker into the air, conserving the overall molecule count."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/c178aa43eec6-solids-liquids-gases.png",
+        "alt": "Solids liquids gases",
+        "sourceHeading": "Changing between states of matter",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Changing the temperature of a solid, liquid or gas changes its state"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/89b189588fe5-16-1-change-in-internal-energy.png",
+        "alt": "Change in internal energy, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "The relationship between temperature and internal energy",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "As the container is heated up, the gas molecules move faster with higher kinetic energy. The energy stored within the system - the internal energy - therefore increases"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/4e9686e19821-14-1-4-we-decrease-in-mass-question-image.png",
+        "alt": "WE Decrease in mass Question image, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The relationship between temperature and internal energy",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

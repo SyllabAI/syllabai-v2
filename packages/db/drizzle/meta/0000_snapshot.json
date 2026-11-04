@@ -11498,7 +11498,7 @@
   },
   "public.teach_messages": {
    "name": "teach_messages",
-   "schema": null,
+   "schema": "",
    "columns": {
     "id": {
      "name": "id",
@@ -11584,7 +11584,7 @@
      "onUpdate": "no action"
     }
    },
-   "compositePrimaryKeys": [],
+   "compositePrimaryKeys": {},
    "uniqueConstraints": {},
    "policies": {},
    "checkConstraints": {
@@ -11601,7 +11601,7 @@
   },
   "public.teach_review_cards": {
    "name": "teach_review_cards",
-   "schema": null,
+   "schema": "",
    "columns": {
     "id": {
      "name": "id",
@@ -11662,7 +11662,7 @@
      "onUpdate": "no action"
     }
    },
-   "compositePrimaryKeys": [],
+   "compositePrimaryKeys": {},
    "uniqueConstraints": {},
    "policies": {},
    "checkConstraints": {},
@@ -11884,6 +11884,364 @@
     "learner_mock_results_questions_check": {
      "name": "learner_mock_results_questions_check",
      "value": "questions IS NULL OR jsonb_typeof(questions) = 'array'"
+    }
+   },
+   "isRLSEnabled": false
+  },
+  "public.teacher_saved_tests": {
+   "name": "teacher_saved_tests",
+   "schema": "",
+   "columns": {
+    "id": {
+     "name": "id",
+     "type": "uuid",
+     "primaryKey": true,
+     "notNull": true
+    },
+    "user_id": {
+     "name": "user_id",
+     "type": "uuid",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "client_id": {
+     "name": "client_id",
+     "type": "text",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "name": {
+     "name": "name",
+     "type": "text",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "course_slug": {
+     "name": "course_slug",
+     "type": "text",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "course_code": {
+     "name": "course_code",
+     "type": "text",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "subtopics": {
+     "name": "subtopics",
+     "type": "jsonb",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "target_marks": {
+     "name": "target_marks",
+     "type": "integer",
+     "primaryKey": false,
+     "notNull": false
+    },
+    "max_questions": {
+     "name": "max_questions",
+     "type": "integer",
+     "primaryKey": false,
+     "notNull": false
+    },
+    "question_ids": {
+     "name": "question_ids",
+     "type": "jsonb",
+     "primaryKey": false,
+     "notNull": false
+    },
+    "created_at": {
+     "name": "created_at",
+     "type": "timestamp with time zone",
+     "primaryKey": false,
+     "notNull": true
+    }
+   },
+   "indexes": {
+    "teacher_saved_tests_user_idx": {
+     "name": "teacher_saved_tests_user_idx",
+     "columns": [
+      {
+       "expression": "user_id",
+       "isExpression": false,
+       "asc": true,
+       "nulls": "last",
+       "opclass": "uuid_ops"
+      }
+     ],
+     "isUnique": false,
+     "concurrently": false,
+     "method": "btree",
+     "with": {}
+    }
+   },
+   "foreignKeys": {
+    "teacher_saved_tests_user_id_fkey": {
+     "name": "teacher_saved_tests_user_id_fkey",
+     "tableFrom": "teacher_saved_tests",
+     "tableTo": "users",
+     "columnsFrom": [
+      "user_id"
+     ],
+     "columnsTo": [
+      "id"
+     ],
+     "onDelete": "cascade",
+     "onUpdate": "no action"
+    }
+   },
+   "compositePrimaryKeys": {},
+   "uniqueConstraints": {},
+   "policies": {},
+   "checkConstraints": {
+    "teacher_saved_tests_course_slug_check": {
+     "name": "teacher_saved_tests_course_slug_check",
+     "value": "course_slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'"
+    },
+    "teacher_saved_tests_subtopics_check": {
+     "name": "teacher_saved_tests_subtopics_check",
+     "value": "jsonb_typeof(subtopics) = 'array'"
+    },
+    "teacher_saved_tests_question_ids_check": {
+     "name": "teacher_saved_tests_question_ids_check",
+     "value": "question_ids IS NULL OR jsonb_typeof(question_ids) = 'array'"
+    },
+    "teacher_saved_tests_bounds_check": {
+     "name": "teacher_saved_tests_bounds_check",
+     "value": "(target_marks IS NULL OR target_marks >= 0) AND (max_questions IS NULL OR max_questions >= 0)"
+    }
+   },
+   "isRLSEnabled": false
+  },
+  "public.teacher_teaching_coverage": {
+   "name": "teacher_teaching_coverage",
+   "schema": "",
+   "columns": {
+    "id": {
+     "name": "id",
+     "type": "uuid",
+     "primaryKey": true,
+     "notNull": true
+    },
+    "user_id": {
+     "name": "user_id",
+     "type": "uuid",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "course_slug": {
+     "name": "course_slug",
+     "type": "text",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "codes": {
+     "name": "codes",
+     "type": "jsonb",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "updated_at": {
+     "name": "updated_at",
+     "type": "timestamp with time zone",
+     "primaryKey": false,
+     "notNull": true,
+     "default": "now()"
+    }
+   },
+   "indexes": {
+    "teacher_teaching_coverage_user_course_idx": {
+     "name": "teacher_teaching_coverage_user_course_idx",
+     "columns": [
+      {
+       "expression": "user_id",
+       "isExpression": false,
+       "asc": true,
+       "nulls": "last",
+       "opclass": "uuid_ops"
+      },
+      {
+       "expression": "course_slug",
+       "isExpression": false,
+       "asc": true,
+       "nulls": "last",
+       "opclass": "text_ops"
+      }
+     ],
+     "isUnique": true,
+     "concurrently": false,
+     "method": "btree",
+     "with": {}
+    }
+   },
+   "foreignKeys": {
+    "teacher_teaching_coverage_user_id_fkey": {
+     "name": "teacher_teaching_coverage_user_id_fkey",
+     "tableFrom": "teacher_teaching_coverage",
+     "tableTo": "users",
+     "columnsFrom": [
+      "user_id"
+     ],
+     "columnsTo": [
+      "id"
+     ],
+     "onDelete": "cascade",
+     "onUpdate": "no action"
+    }
+   },
+   "compositePrimaryKeys": {},
+   "uniqueConstraints": {},
+   "policies": {},
+   "checkConstraints": {
+    "teacher_teaching_coverage_course_slug_check": {
+     "name": "teacher_teaching_coverage_course_slug_check",
+     "value": "course_slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'"
+    },
+    "teacher_teaching_coverage_codes_check": {
+     "name": "teacher_teaching_coverage_codes_check",
+     "value": "jsonb_typeof(codes) = 'array'"
+    }
+   },
+   "isRLSEnabled": false
+  },
+  "public.teacher_content_reviews": {
+   "name": "teacher_content_reviews",
+   "schema": "",
+   "columns": {
+    "id": {
+     "name": "id",
+     "type": "uuid",
+     "primaryKey": true,
+     "notNull": true
+    },
+    "user_id": {
+     "name": "user_id",
+     "type": "uuid",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "resource_id": {
+     "name": "resource_id",
+     "type": "text",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "course_slug": {
+     "name": "course_slug",
+     "type": "text",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "course_code": {
+     "name": "course_code",
+     "type": "text",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "kind": {
+     "name": "kind",
+     "type": "text",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "verdict": {
+     "name": "verdict",
+     "type": "text",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "comment": {
+     "name": "comment",
+     "type": "text",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "reviewer": {
+     "name": "reviewer",
+     "type": "text",
+     "primaryKey": false,
+     "notNull": true
+    },
+    "created_at": {
+     "name": "created_at",
+     "type": "timestamp with time zone",
+     "primaryKey": false,
+     "notNull": true
+    }
+   },
+   "indexes": {
+    "teacher_content_reviews_user_idx": {
+     "name": "teacher_content_reviews_user_idx",
+     "columns": [
+      {
+       "expression": "user_id",
+       "isExpression": false,
+       "asc": true,
+       "nulls": "last",
+       "opclass": "uuid_ops"
+      }
+     ],
+     "isUnique": false,
+     "concurrently": false,
+     "method": "btree",
+     "with": {}
+    },
+    "teacher_content_reviews_user_resource_idx": {
+     "name": "teacher_content_reviews_user_resource_idx",
+     "columns": [
+      {
+       "expression": "user_id",
+       "isExpression": false,
+       "asc": true,
+       "nulls": "last",
+       "opclass": "uuid_ops"
+      },
+      {
+       "expression": "resource_id",
+       "isExpression": false,
+       "asc": true,
+       "nulls": "last",
+       "opclass": "text_ops"
+      }
+     ],
+     "isUnique": true,
+     "concurrently": false,
+     "method": "btree",
+     "with": {}
+    }
+   },
+   "foreignKeys": {
+    "teacher_content_reviews_user_id_fkey": {
+     "name": "teacher_content_reviews_user_id_fkey",
+     "tableFrom": "teacher_content_reviews",
+     "tableTo": "users",
+     "columnsFrom": [
+      "user_id"
+     ],
+     "columnsTo": [
+      "id"
+     ],
+     "onDelete": "cascade",
+     "onUpdate": "no action"
+    }
+   },
+   "compositePrimaryKeys": {},
+   "uniqueConstraints": {},
+   "policies": {},
+   "checkConstraints": {
+    "teacher_content_reviews_course_slug_check": {
+     "name": "teacher_content_reviews_course_slug_check",
+     "value": "course_slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'"
+    },
+    "teacher_content_reviews_kind_check": {
+     "name": "teacher_content_reviews_kind_check",
+     "value": "kind IN ('solution','note','flashcard')"
+    },
+    "teacher_content_reviews_verdict_check": {
+     "name": "teacher_content_reviews_verdict_check",
+     "value": "verdict IN ('approved','edited','rejected')"
     }
    },
    "isRLSEnabled": false

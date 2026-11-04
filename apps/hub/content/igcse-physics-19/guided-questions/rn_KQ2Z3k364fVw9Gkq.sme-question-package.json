@@ -1,0 +1,975 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_KQ2Z3k364fVw9Gkq",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "207d7144048b5879ca73431d5102ac0b4a13cf0fa2bcc71883e444c7f0450ded",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "packageId": "igcse-physics::rn_KQ2Z3k364fVw9Gkq",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L1::Q1",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L1",
+      "stem": "What is the aim of this investigation into specific heat capacity?",
+      "misconceptionClass": "aim recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "to find the specific heat capacity of water or another material",
+          "correct": true,
+          "explanation": "The measurement of c from supplied energy and temperature rise is the target.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "to observe a constant temperature during melting",
+          "correct": false,
+          "explanation": "That is the changes-of-state practical.",
+          "misconception": "practical swap"
+        },
+        {
+          "key": "C",
+          "text": "to measure the latent heat of vaporisation",
+          "correct": false,
+          "explanation": "No boiling occurs in this investigation.",
+          "misconception": "practical swap"
+        },
+        {
+          "key": "D",
+          "text": "to compare the densities of liquids",
+          "correct": false,
+          "explanation": "Density is a different topic entirely.",
+          "misconception": "topic swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L1::Q2",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L1",
+      "stem": "Which is the independent variable in this investigation?",
+      "misconceptionClass": "variable roles",
+      "options": [
+        {
+          "key": "A",
+          "text": "the room temperature",
+          "correct": false,
+          "explanation": "Room conditions are background controls, not the manipulated input.",
+          "misconception": "role swap"
+        },
+        {
+          "key": "B",
+          "text": "the energy supplied by the heater",
+          "correct": true,
+          "explanation": "Energy in is what the experimenter controls and changes.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the temperature rise of the material",
+          "correct": false,
+          "explanation": "The rise is measured, making it the dependent variable.",
+          "misconception": "role swap"
+        },
+        {
+          "key": "D",
+          "text": "the mass of the material",
+          "correct": false,
+          "explanation": "Mass is held fixed — a control variable.",
+          "misconception": "role swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L1::Q3",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L1",
+      "stem": "How is the energy supplied by the immersion heater calculated?",
+      "misconceptionClass": "energy accounting",
+      "options": [
+        {
+          "key": "A",
+          "text": "mass × temperature rise",
+          "correct": false,
+          "explanation": "That product has no energy meaning without the capacity.",
+          "misconception": "equation tangle"
+        },
+        {
+          "key": "B",
+          "text": "current ÷ time",
+          "correct": false,
+          "explanation": "Charge per second is not energy.",
+          "misconception": "equation tangle"
+        },
+        {
+          "key": "C",
+          "text": "voltage × current × heating time",
+          "correct": true,
+          "explanation": "E = VIt is the electrical energy delivered.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "voltage × current",
+          "correct": false,
+          "explanation": "That is power; the heating time factor is missing.",
+          "misconception": "factor drop"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L1::Q4",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L1",
+      "stem": "Why is the mass of the liquid a control variable?",
+      "misconceptionClass": "fairness",
+      "options": [
+        {
+          "key": "A",
+          "text": "changing the mass would break the thermometer",
+          "correct": false,
+          "explanation": "The risk is unfair comparison, not equipment damage.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "B",
+          "text": "mass cannot be measured in a laboratory",
+          "correct": false,
+          "explanation": "A balance measures it easily.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "C",
+          "text": "mass is the dependent variable",
+          "correct": false,
+          "explanation": "Temperature rise is the dependent variable.",
+          "misconception": "role swap"
+        },
+        {
+          "key": "D",
+          "text": "the temperature rise per joule depends on the mass, so it must be fixed for a fair test",
+          "correct": true,
+          "explanation": "ΔQ = mcΔT ties the response to the mass.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L1::Q5",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L1",
+      "stem": "A student starts with water at 5 °C on a cold bench instead of near room temperature. Why does this threaten the accuracy?",
+      "misconceptionClass": "design critique",
+      "options": [
+        {
+          "key": "A",
+          "text": "the large temperature gap with the surroundings adds uncontrolled energy exchange",
+          "correct": true,
+          "explanation": "Cold water draws in heat from the room, corrupting the energy account.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the thermometer cannot read 5 °C",
+          "correct": false,
+          "explanation": "Ordinary lab thermometers read far below 5 °C.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "C",
+          "text": "the heater stops working below 10 °C",
+          "correct": false,
+          "explanation": "Immersion heaters work at any starting temperature.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "D",
+          "text": "water has no specific heat capacity at 5 °C",
+          "correct": false,
+          "explanation": "The capacity is defined at all temperatures within the liquid state.",
+          "misconception": "absurd claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L1::Q6",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L1",
+      "stem": "State the independent and dependent variables of this practical.",
+      "misconceptionClass": "variable recall",
+      "kind": "recall",
+      "modelAnswer": "The independent variable is the energy supplied by the heater; the dependent variable is the resulting temperature rise of the material.",
+      "keywords": [
+        "energy",
+        "supplied",
+        "temperature",
+        "rise"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L1::Q7",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L1",
+      "stem": "State the equation used to compute the electrical energy supplied to the heater.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "Energy = voltage × current × time, E = V × I × t.",
+      "keywords": [
+        "voltage",
+        "current",
+        "time",
+        "energy"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L1::Q8",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L1",
+      "stem": "Explain why the starting temperature is controlled near room temperature in this investigation.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The energy account assumes all the heater's joules go into the sample. If the sample starts well below room temperature, the surroundings donate extra heat during the run; if well above, the sample leaks heat out. Starting near room temperature keeps that unmeasured exchange small, so c = ΔQ ÷ (mΔT) stays honest.",
+      "keywords": [
+        "room",
+        "temperature",
+        "energy",
+        "exchange"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L1::Q9",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L1",
+      "stem": "A heater runs at 10 V and 2.0 A for 500 s. Calculate the energy supplied.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "E = V × I × t = 10 × 2.0 × 500 = 10 000 J.",
+      "keywords": [
+        "10",
+        "000",
+        "energy",
+        "supplied"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L2::Q1",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L2",
+      "stem": "Which instrument measures the mass of the water before heating?",
+      "misconceptionClass": "equipment recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the thermometer",
+          "correct": false,
+          "explanation": "The thermometer reads temperature.",
+          "misconception": "instrument swap"
+        },
+        {
+          "key": "B",
+          "text": "a balance",
+          "correct": true,
+          "explanation": "The known mass comes from the balance reading.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a measuring cylinder",
+          "correct": false,
+          "explanation": "A cylinder measures volume; converting to mass invites density error.",
+          "misconception": "instrument swap"
+        },
+        {
+          "key": "D",
+          "text": "the ammeter",
+          "correct": false,
+          "explanation": "The ammeter reads current.",
+          "misconception": "instrument swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L2::Q2",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L2",
+      "stem": "Why must the immersion heater be fully submerged?",
+      "misconceptionClass": "method design",
+      "options": [
+        {
+          "key": "A",
+          "text": "so the meters read more accurately",
+          "correct": false,
+          "explanation": "Meter accuracy is independent of submersion.",
+          "misconception": "irrelevant cause"
+        },
+        {
+          "key": "B",
+          "text": "so the thermometer fits alongside",
+          "correct": false,
+          "explanation": "Thermometer placement is a separate matter.",
+          "misconception": "irrelevant cause"
+        },
+        {
+          "key": "C",
+          "text": "so all the electrical energy is delivered into the water",
+          "correct": true,
+          "explanation": "Exposed heater sections waste energy to air, corrupting ΔQ.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "so the water cannot boil",
+          "correct": false,
+          "explanation": "Submersion has nothing to do with suppressing boiling.",
+          "misconception": "absurd claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L2::Q3",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L2",
+      "stem": "When should the stopwatch be started?",
+      "misconceptionClass": "method recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "five minutes after heating starts",
+          "correct": false,
+          "explanation": "A late start loses energy from the account.",
+          "misconception": "timing slip"
+        },
+        {
+          "key": "B",
+          "text": "after the first temperature reading",
+          "correct": false,
+          "explanation": "The first reading belongs to the timed sequence.",
+          "misconception": "timing slip"
+        },
+        {
+          "key": "C",
+          "text": "when the water starts warming",
+          "correct": false,
+          "explanation": "Warming begins almost immediately; the switch-on moment is the reference.",
+          "misconception": "timing slip"
+        },
+        {
+          "key": "D",
+          "text": "at the same moment the heater is switched on",
+          "correct": true,
+          "explanation": "The energy ledger and the clock must open together.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L2::Q4",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L2",
+      "stem": "Why is the beaker lagged or insulated in this set-up?",
+      "misconceptionClass": "error control",
+      "options": [
+        {
+          "key": "A",
+          "text": "to reduce energy lost to the surroundings, a systematic error",
+          "correct": true,
+          "explanation": "Insulation keeps the measured ΔQ closer to the energy the water actually received.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "to stop the water from changing state",
+          "correct": false,
+          "explanation": "The water is not meant to change state anyway at these temperatures.",
+          "misconception": "misattributed fix"
+        },
+        {
+          "key": "C",
+          "text": "to make the heater more powerful",
+          "correct": false,
+          "explanation": "Insulation does not change the heater's power.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "D",
+          "text": "to hold the thermometer upright",
+          "correct": false,
+          "explanation": "A stand does that job.",
+          "misconception": "instrument swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L2::Q5",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L2",
+      "stem": "A student reads the voltmeter only at the end of the run. Why is this poor practice?",
+      "misconceptionClass": "design critique",
+      "options": [
+        {
+          "key": "A",
+          "text": "the voltmeter must be read by two students",
+          "correct": false,
+          "explanation": "Crew size is irrelevant to drift.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "B",
+          "text": "the supply can drift during the run, so the energy account needs readings throughout",
+          "correct": true,
+          "explanation": "E = VIt assumes steady V and I; only monitoring proves it.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "voltmeters drain their batteries if read twice",
+          "correct": false,
+          "explanation": "Reading a voltmeter does not drain anything.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "D",
+          "text": "the final voltage is always wrong",
+          "correct": false,
+          "explanation": "A single reading is not always wrong; it is just unverified.",
+          "misconception": "overstatement"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L2::Q6",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L2",
+      "stem": "State the full equipment list for measuring the specific heat capacity of water.",
+      "misconceptionClass": "equipment recall",
+      "kind": "recall",
+      "modelAnswer": "A balance, insulated beaker, immersion heater, voltmeter, ammeter, stopwatch and thermometer.",
+      "keywords": [
+        "balance",
+        "heater",
+        "voltmeter",
+        "thermometer"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L2::Q7",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L2",
+      "stem": "State what should be measured before the heater is switched on.",
+      "misconceptionClass": "method recall",
+      "kind": "recall",
+      "modelAnswer": "The mass of the water on the balance, plus the initial temperature of the water and the meter readings.",
+      "keywords": [
+        "mass",
+        "initial",
+        "temperature",
+        "readings"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L2::Q8",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L2",
+      "stem": "Explain why the voltmeter and ammeter are read during the run and not only at the end.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The energy ledger uses E = VIt, which multiplies an average voltage and current by the time. If the supply sags or surges partway through, end-point readings misrepresent the energy actually delivered. Periodic meter readings verify that V and I stayed steady, or allow an averaged product to be used, keeping ΔQ honest.",
+      "keywords": [
+        "voltage",
+        "current",
+        "energy",
+        "steady"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L2::Q9",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L2",
+      "stem": "A run delivers 10 000 J to 1.0 kg of water and the temperature climbs from 14 °C to 30 °C. Calculate the specific heat capacity this suggests.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "ΔT = 30 − 14 = 16 °C, so c = ΔQ ÷ (m × ΔT) = 10 000 ÷ (1.0 × 16) = 625 J/kg °C — far below water's 4200, pointing to energy lost or misdelivered in the set-up.",
+      "keywords": [
+        "625",
+        "10",
+        "000",
+        "capacity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L3::Q1",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L3",
+      "stem": "Which columns belong in the results table?",
+      "misconceptionClass": "results recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "only the final temperature",
+          "correct": false,
+          "explanation": "A single reading cannot support the analysis.",
+          "misconception": "column starvation"
+        },
+        {
+          "key": "B",
+          "text": "the student's names per interval",
+          "correct": false,
+          "explanation": "Roles may be noted elsewhere, not in the data table.",
+          "misconception": "column invention"
+        },
+        {
+          "key": "C",
+          "text": "time, temperature, and meter readings for voltage and current",
+          "correct": true,
+          "explanation": "Together they let energy be computed against each temperature.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "colour and smell of the water",
+          "correct": false,
+          "explanation": "Qualitative observations are not part of this quantitative ledger.",
+          "misconception": "column invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L3::Q2",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L3",
+      "stem": "How is the cumulative energy at each interval obtained?",
+      "misconceptionClass": "energy accounting",
+      "options": [
+        {
+          "key": "A",
+          "text": "adding all the temperature readings so far",
+          "correct": false,
+          "explanation": "Temperatures are not additive into energy.",
+          "misconception": "equation tangle"
+        },
+        {
+          "key": "B",
+          "text": "multiplying the mass by the elapsed time",
+          "correct": false,
+          "explanation": "Mass times time has no energy meaning.",
+          "misconception": "equation tangle"
+        },
+        {
+          "key": "C",
+          "text": "reading it from the thermometer",
+          "correct": false,
+          "explanation": "The thermometer reads temperature, not energy.",
+          "misconception": "instrument swap"
+        },
+        {
+          "key": "D",
+          "text": "voltage × current × the elapsed heating time",
+          "correct": true,
+          "explanation": "E = VIt with the running clock gives the accumulated energy.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L3::Q3",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L3",
+      "stem": "Why pair each temperature with the energy delivered up to that moment?",
+      "misconceptionClass": "analysis design",
+      "options": [
+        {
+          "key": "A",
+          "text": "the paired points let energy be plotted against temperature rise for a gradient method",
+          "correct": true,
+          "explanation": "Paired data is what the ΔQ–ΔT plot needs.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "pairing makes the table look fuller",
+          "correct": false,
+          "explanation": "Presentation is not the purpose.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "C",
+          "text": "pairing is required by the exam board's form",
+          "correct": false,
+          "explanation": "The pairing serves the physics, not paperwork.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "D",
+          "text": "unpaired readings are invalid units",
+          "correct": false,
+          "explanation": "The readings are valid; pairing is for the analysis.",
+          "misconception": "absurd claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L3::Q4",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L3",
+      "stem": "In the results-table image for this practical, what does the caption note about energy supplied?",
+      "misconceptionClass": "figure read-off",
+      "options": [
+        {
+          "key": "A",
+          "text": "energy supplied is constant whatever the meters say",
+          "correct": false,
+          "explanation": "The meters define the energy.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "B",
+          "text": "energy supplied equals voltage × current × time",
+          "correct": true,
+          "explanation": "The caption restates the E = VIt ledger law.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "energy supplied equals mass × temperature rise",
+          "correct": false,
+          "explanation": "That is missing the capacity and the wrong ledger entirely.",
+          "misconception": "equation tangle"
+        },
+        {
+          "key": "D",
+          "text": "energy supplied is read from the thermometer",
+          "correct": false,
+          "explanation": "Thermometers never read energy.",
+          "misconception": "instrument swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L3::Q5",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L3",
+      "stem": "A table shows energy climbing in equal steps while the temperature rise per step shrinks. What does that suggest?",
+      "misconceptionClass": "data interpretation",
+      "options": [
+        {
+          "key": "A",
+          "text": "the thermometer is broken",
+          "correct": false,
+          "explanation": "A systematic flattening points to leakage, not breakage.",
+          "misconception": "equipment blame"
+        },
+        {
+          "key": "B",
+          "text": "the meters are adding wrongly",
+          "correct": false,
+          "explanation": "Equal energy steps are exactly what steady meters show.",
+          "misconception": "wrong culprit"
+        },
+        {
+          "key": "C",
+          "text": "energy is leaking from the system faster as the water gets hotter",
+          "correct": true,
+          "explanation": "Hotter water loses more to the surroundings, so less of each step warms it.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the water's specific heat capacity is falling during the run",
+          "correct": false,
+          "explanation": "The capacity is effectively constant; leakage explains the curve.",
+          "misconception": "property invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L3::Q6",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L3",
+      "stem": "State what each row of the results table represents.",
+      "misconceptionClass": "results recall",
+      "kind": "recall",
+      "modelAnswer": "Each row is one timed interval: the clock time, the temperature read then, and the meter readings that fix the energy delivered by then.",
+      "keywords": [
+        "time",
+        "temperature",
+        "meter",
+        "energy"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L3::Q7",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L3",
+      "stem": "State the relationship the completed table is designed to reveal.",
+      "misconceptionClass": "analysis recall",
+      "kind": "recall",
+      "modelAnswer": "It shows the proportionality between the energy supplied and the temperature rise, whose ratio through the mass gives the specific heat capacity.",
+      "keywords": [
+        "energy",
+        "temperature",
+        "proportion",
+        "capacity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L3::Q8",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L3",
+      "stem": "Explain why a cumulative energy column is more useful than recording energy only at the end of the run.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A cumulative column turns the run into many paired (energy, temperature) points, so the analysis can use the gradient of the whole dataset instead of trusting one end-point division. It also exposes any non-linearity — drift, leakage, boiling — that a single final figure would silently hide.",
+      "keywords": [
+        "cumulative",
+        "energy",
+        "gradient",
+        "points"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L3::Q9",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L3",
+      "stem": "A heater delivers 10 000 J in total and the table's final temperature rise is 16 °C for a 1.0 kg sample. Using c = ΔQ ÷ (mΔT), calculate the capacity the table suggests and compare it to water's 4200 J/kg °C.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "c = 10 000 ÷ (1.0 × 16) = 625 J/kg °C. That is far below 4200 J/kg °C, so only a fraction of the heater's energy actually warmed the sample — losses dominated the ledger.",
+      "keywords": [
+        "625",
+        "4200",
+        "energy",
+        "losses"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L4::Q1",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L4",
+      "stem": "What is plotted on each axis for the gradient analysis?",
+      "misconceptionClass": "graph design",
+      "options": [
+        {
+          "key": "A",
+          "text": "energy vertically, temperature rise horizontally",
+          "correct": false,
+          "explanation": "That inversion makes the gradient mc instead — workable but not the of-record layout.",
+          "misconception": "axis swap"
+        },
+        {
+          "key": "B",
+          "text": "time on both axes",
+          "correct": false,
+          "explanation": "Time is the sampling rhythm, not an analysis axis here.",
+          "misconception": "axis invention"
+        },
+        {
+          "key": "C",
+          "text": "mass vertically, voltage horizontally",
+          "correct": false,
+          "explanation": "Mass is fixed; voltage is an intermediate reading.",
+          "misconception": "axis invention"
+        },
+        {
+          "key": "D",
+          "text": "temperature rise vertically, energy supplied horizontally",
+          "correct": true,
+          "explanation": "That orientation gives gradient = ΔT/ΔQ = 1/(mc).",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L4::Q2",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L4",
+      "stem": "What does the gradient of the ΔT–ΔQ line equal?",
+      "misconceptionClass": "gradient recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "1 ÷ (m × c)",
+          "correct": true,
+          "explanation": "From ΔT = (1/mc)·ΔQ with mass fixed.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "m × c",
+          "correct": false,
+          "explanation": "That is the reciprocal layout's gradient.",
+          "misconception": "reciprocal slip"
+        },
+        {
+          "key": "C",
+          "text": "c on its own",
+          "correct": false,
+          "explanation": "The mass factor must be divided out.",
+          "misconception": "factor drop"
+        },
+        {
+          "key": "D",
+          "text": "ΔQ × ΔT",
+          "correct": false,
+          "explanation": "Gradients are ratios of changes, not products.",
+          "misconception": "operation slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L4::Q3",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L4",
+      "stem": "How does heat lost to the surroundings bias the measured specific heat capacity?",
+      "misconceptionClass": "error direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "it makes the value random rather than biased",
+          "correct": false,
+          "explanation": "Leakage is repeatable and one-directional — systematic.",
+          "misconception": "error-class swap"
+        },
+        {
+          "key": "B",
+          "text": "it makes the measured value too high, because ΔQ is overcounted for the rise achieved",
+          "correct": true,
+          "explanation": "c = ΔQ/(mΔT) grows when ΔQ includes joules that never warmed the sample.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "it makes the measured value too low",
+          "correct": false,
+          "explanation": "Missing energy from the sample's side, not excess, would lower it.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "D",
+          "text": "it has no effect because the meters are accurate",
+          "correct": false,
+          "explanation": "The meters are accurate about energy delivered — including the wasted part.",
+          "misconception": "meter faith"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L4::Q4",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L4",
+      "stem": "Which improvement most directly reduces the dominant systematic error?",
+      "misconceptionClass": "error control",
+      "options": [
+        {
+          "key": "A",
+          "text": "using a shorter stopwatch",
+          "correct": false,
+          "explanation": "Timing precision is not the systematic driver.",
+          "misconception": "irrelevant fix"
+        },
+        {
+          "key": "B",
+          "text": "writing neater tables",
+          "correct": false,
+          "explanation": "Presentation does not change the physics.",
+          "misconception": "irrelevant fix"
+        },
+        {
+          "key": "C",
+          "text": "lagging the beaker and keeping the heater fully submerged",
+          "correct": true,
+          "explanation": "Both cut the energy that leaves the sample unaccounted.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "reading the thermometer from directly above",
+          "correct": false,
+          "explanation": "That reduces parallax, a random error, not leakage.",
+          "misconception": "error-class swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L4::Q5",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L4",
+      "stem": "Which pair lists one random and one systematic error of this practical?",
+      "misconceptionClass": "error classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "heat loss (random) and parallax (systematic)",
+          "correct": false,
+          "explanation": "Both are swapped.",
+          "misconception": "class swap"
+        },
+        {
+          "key": "B",
+          "text": "parallax and parallax",
+          "correct": false,
+          "explanation": "One error cannot be both classes.",
+          "misconception": "duplication"
+        },
+        {
+          "key": "C",
+          "text": "neither error exists in this practical",
+          "correct": false,
+          "explanation": "Both classes are present in any heating run.",
+          "misconception": "denial"
+        },
+        {
+          "key": "D",
+          "text": "parallax on the thermometer (random) and heat loss through the beaker (systematic)",
+          "correct": true,
+          "explanation": "Scatter versus repeatable bias — correctly classified.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L4::Q6",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L4",
+      "stem": "State the relation between the graph's gradient and the specific heat capacity.",
+      "misconceptionClass": "gradient recall",
+      "kind": "recall",
+      "modelAnswer": "Gradient = ΔT ÷ ΔQ = 1 ÷ (m × c), so the specific heat capacity equals 1 divided by the product of mass and gradient.",
+      "keywords": [
+        "gradient",
+        "mass",
+        "capacity",
+        "divide"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L4::Q7",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L4",
+      "stem": "State two safety precautions specific to using an electric immersion heater with water.",
+      "misconceptionClass": "safety recall",
+      "kind": "recall",
+      "modelAnswer": "Keep hands dry and use insulated leads when connecting the mains-powered heater, and protect against scalding hot water with eye protection and safe handling.",
+      "keywords": [
+        "dry",
+        "insulated",
+        "scalding",
+        "protection"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L4::Q8",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L4",
+      "stem": "Explain why the first few points of the graph often sit closest to the ideal straight line, and why repeating the run with a fresh cool sample tightens the result.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Early in the run the sample is near room temperature, so the surroundings gap — and therefore the leaked power — is smallest and almost all the metered energy warms the water. Repetition with a fresh cool sample keeps that gap small again and averages the random scatter of thermometer and stopwatch readings, pulling the fitted gradient towards the ideal proportional line.",
+      "keywords": [
+        "room",
+        "temperature",
+        "scatter",
+        "gradient"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KQ2Z3k364fVw9Gkq::L4::Q9",
+      "moduleId": "rn_KQ2Z3k364fVw9Gkq::L4",
+      "stem": "A 1.0 kg sample's ΔT–ΔQ line has a gradient of 0.0016 °C/J over its linear region. Calculate the specific heat capacity.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "c = 1 ÷ (m × gradient) = 1 ÷ (1.0 × 0.0016) = 625 J/kg °C.",
+      "keywords": [
+        "625",
+        "gradient",
+        "1",
+        "0.0016"
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,735 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_r6HzX8DgQ84bGBMP",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "f67bb06c89287f377327913be187cd3531b09dec2217158131efa3d0472b7c87",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "packageId": "igcse-physics::rn_r6HzX8DgQ84bGBMP",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L1::Q1",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L1",
+      "stem": "When is work done by a force on an object?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "only when the object moves along the direction of the force",
+          "correct": true,
+          "explanation": "Movement through a distance along the force's line is the defining condition.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "whenever a force is applied, moving or not",
+          "correct": false,
+          "explanation": "A force with no movement transfers nothing.",
+          "misconception": "definition slip"
+        },
+        {
+          "key": "C",
+          "text": "only when the force is very large",
+          "correct": false,
+          "explanation": "Size does not decide whether work happens; movement does.",
+          "misconception": "magnitude confusion"
+        },
+        {
+          "key": "D",
+          "text": "only when the object speeds up afterwards",
+          "correct": false,
+          "explanation": "A change of speed is not required; any movement along the force counts.",
+          "misconception": "over-narrow reading"
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L1::Q2",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L1",
+      "stem": "A person applies a strong force to a heavy wall and nothing moves. How much work does the push do on the wall?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a small non-zero amount",
+          "correct": false,
+          "explanation": "With zero movement the work done on the wall is exactly zero.",
+          "misconception": "partial-credit slip"
+        },
+        {
+          "key": "B",
+          "text": "none, because the wall never moves",
+          "correct": true,
+          "explanation": "No distance is covered, so no energy is transferred by the push.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a large amount, because the push is strong",
+          "correct": false,
+          "explanation": "Force size alone transfers nothing without movement.",
+          "misconception": "magnitude confusion"
+        },
+        {
+          "key": "D",
+          "text": "an amount equal to the pusher's tiredness",
+          "correct": false,
+          "explanation": "Muscle effort is not the measure of mechanical work here.",
+          "misconception": "energy-source confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L1::Q3",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L1",
+      "stem": "A rope pulls a sledge forward, along its direction of travel. What happens to the sledge's stores?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "its thermal store fills immediately and only",
+          "correct": false,
+          "explanation": "Heating of surroundings belongs to opposing forces, not the forward pull.",
+          "misconception": "store mismatch"
+        },
+        {
+          "key": "B",
+          "text": "its stores stay exactly as they were",
+          "correct": false,
+          "explanation": "Work done along the motion always transfers energy in.",
+          "misconception": "no-transfer slip"
+        },
+        {
+          "key": "C",
+          "text": "its kinetic store fills as energy is transferred to it",
+          "correct": true,
+          "explanation": "A force acting along the motion fills the mover's kinetic store.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "its gravitational store empties as it is pulled",
+          "correct": false,
+          "explanation": "Nothing about the pull changes height.",
+          "misconception": "store mismatch"
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L1::Q4",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L1",
+      "stem": "A frictional force drags backwards on a moving cart, opposite to its motion. What does that force do?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it does no work because it opposes the motion",
+          "correct": false,
+          "explanation": "Opposing forces do work too — negative-direction work on the stores.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "B",
+          "text": "it adds energy to the cart's kinetic store",
+          "correct": false,
+          "explanation": "That is what an aligned force does, not an opposing one.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "it only changes the cart's direction of travel",
+          "correct": false,
+          "explanation": "The cart keeps its heading; energy is what changes hands.",
+          "misconception": "effect mismatch"
+        },
+        {
+          "key": "D",
+          "text": "it removes energy from the cart, transferring it to the surroundings",
+          "correct": true,
+          "explanation": "An opposing force drains the mover's store and dissipates energy by heating.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L1::Q5",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L1",
+      "stem": "Which unit counts both the work done by a force and the energy it transfers?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "the joule",
+          "correct": true,
+          "explanation": "Work done and energy transferred share the joule.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the newton",
+          "correct": false,
+          "explanation": "Newtons measure force, not the transfer.",
+          "misconception": "unit swap"
+        },
+        {
+          "key": "C",
+          "text": "the watt",
+          "correct": false,
+          "explanation": "Watts measure power — energy transferred per second.",
+          "misconception": "unit swap"
+        },
+        {
+          "key": "D",
+          "text": "the kilogram",
+          "correct": false,
+          "explanation": "Kilograms measure mass.",
+          "misconception": "unit swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L1::Q6",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L1",
+      "stem": "State the condition under which a force does work on an object.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The object must move through a distance along the direction of the applied force; without that movement, no work is done.",
+      "keywords": [
+        "move",
+        "distance",
+        "direction",
+        "work"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L1::Q7",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L1",
+      "stem": "State the relationship between the energy transferred when work is done and the size of that work.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The energy transferred is equal to the work done, and both quantities are measured in joules.",
+      "keywords": [
+        "energy",
+        "transferred",
+        "equal",
+        "joules"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L1::Q8",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L1",
+      "stem": "Explain why leaning against a closed door and pushing hard does no work on the door, even though your muscles tire.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Work requires the point of application of the force to travel some distance. The door stays closed and nothing moves, so no distance is covered, no energy is transferred by the push, and the work done on the door is zero — the tiredness comes from muscle chemistry, not from mechanical work.",
+      "keywords": [
+        "distance",
+        "energy",
+        "transferred",
+        "zero"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L1::Q9",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L1",
+      "stem": "A sledge is hauled 4 m forward along flat ground, then dragged 4 m back along the same path by an identical backward-acting frictional pull. Describe the work each force does.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The forward haul does work on the sledge and fills its kinetic store along the first leg, while the frictional drag acts opposite to the return motion, removing energy from the sledge and dissipating it to the thermal stores of the surroundings by heating.",
+      "keywords": [
+        "work",
+        "kinetic",
+        "energy",
+        "dissipating"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L2::Q1",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L2",
+      "stem": "A person slides a box forward along the floor. Where does the energy transferred by the pushing force end up?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "entirely in the box's gravitational store",
+          "correct": false,
+          "explanation": "Height does not change on a level floor.",
+          "misconception": "store mismatch"
+        },
+        {
+          "key": "B",
+          "text": "in the box's motion and in warming the box and floor",
+          "correct": true,
+          "explanation": "The aligned push fills the kinetic store; friction's opposing work warms the surfaces.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "back inside the person's muscles, untouched",
+          "correct": false,
+          "explanation": "Energy leaves the person; it does not return by itself.",
+          "misconception": "direction slip"
+        },
+        {
+          "key": "D",
+          "text": "nowhere, because sliding costs nothing",
+          "correct": false,
+          "explanation": "Movement against any resistance always involves transfers.",
+          "misconception": "no-transfer slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L2::Q2",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L2",
+      "stem": "A ball is lifted steadily upward. Which transfer does the lifting force perform?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "an electrical transfer along the lifter's arm",
+          "correct": false,
+          "explanation": "The transfer route here is mechanical, not electrical.",
+          "misconception": "route mismatch"
+        },
+        {
+          "key": "B",
+          "text": "no transfer, because the speed stays constant",
+          "correct": false,
+          "explanation": "Constant speed does not mean no transfer; height is changing.",
+          "misconception": "kinetic-only slip"
+        },
+        {
+          "key": "C",
+          "text": "a mechanical transfer into the ball's gravitational potential store",
+          "correct": true,
+          "explanation": "Lifting against gravity fills the gravitational store as height grows.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a heating transfer into the ball's thermal store",
+          "correct": false,
+          "explanation": "Steady lifting is not primarily a heating process.",
+          "misconception": "store mismatch"
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L2::Q3",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L2",
+      "stem": "A bird flies level at constant speed through still air. Which statement about its work is right?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it does no work because its speed is constant",
+          "correct": false,
+          "explanation": "Level flight still requires working against drag every second.",
+          "misconception": "no-transfer slip"
+        },
+        {
+          "key": "B",
+          "text": "all its transferred energy goes to its gravitational store",
+          "correct": false,
+          "explanation": "Level flight changes no height.",
+          "misconception": "store mismatch"
+        },
+        {
+          "key": "C",
+          "text": "the energy it spends returns to its kinetic store untouched",
+          "correct": false,
+          "explanation": "Drag constantly drains the store; the bird must keep refilling it.",
+          "misconception": "circular slip"
+        },
+        {
+          "key": "D",
+          "text": "it does work against air resistance, and that energy is dissipated to thermal stores",
+          "correct": true,
+          "explanation": "The bird pushes forward against drag, so energy drains from its kinetic store into warmth.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L2::Q4",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L2",
+      "stem": "In the lifted-ball example, which statement about the stores is correct?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "energy leaves the lifter and fills the ball's gravitational store",
+          "correct": true,
+          "explanation": "The lifting force does work and the height store fills.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "energy multiplies as it passes between stores",
+          "correct": false,
+          "explanation": "Conservation forbids multiplication; amounts are transferred.",
+          "misconception": "creation slip"
+        },
+        {
+          "key": "C",
+          "text": "the ball's kinetic store grows while height increases at steady speed",
+          "correct": false,
+          "explanation": "Steady speed keeps the kinetic store level.",
+          "misconception": "store mismatch"
+        },
+        {
+          "key": "D",
+          "text": "the surroundings gain nothing at all",
+          "correct": false,
+          "explanation": "Small heating effects are always present in real lifting.",
+          "misconception": "absolute slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L2::Q5",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L2",
+      "stem": "Which everyday case involves a force doing work that immediately dissipates energy to the surroundings?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "a satellite coasting far from any atmosphere",
+          "correct": false,
+          "explanation": "With no resistive force to work against, nothing dissipates.",
+          "misconception": "context slip"
+        },
+        {
+          "key": "B",
+          "text": "a bird pushing through air resistance",
+          "correct": true,
+          "explanation": "Drag work ends as heating of the bird and the air.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a box resting untouched on the ground",
+          "correct": false,
+          "explanation": "No movement, no work.",
+          "misconception": "no-transfer slip"
+        },
+        {
+          "key": "D",
+          "text": "a ball held motionless in an open hand",
+          "correct": false,
+          "explanation": "Holding still transfers no mechanical energy.",
+          "misconception": "no-transfer slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L2::Q6",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L2",
+      "stem": "Name the store that fills when a ball is lifted to a height.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "The ball's gravitational potential store fills as it is lifted higher in the gravitational field.",
+      "keywords": [
+        "gravitational",
+        "potential",
+        "store",
+        "lifted"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L2::Q7",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L2",
+      "stem": "State which force a flying bird works against in level flight.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The bird does work against air resistance, also called drag, as it moves forward.",
+      "keywords": [
+        "air",
+        "resistance",
+        "work",
+        "forward"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L2::Q8",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L2",
+      "stem": "Explain why pushing a box along a rough floor warms the box and the floor slightly.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The pushing force does work as the box moves, and the rough surface drags against the motion. That opposing force also does work, taking energy from the box and dissipating it by heating to the thermal stores of the box and the floor.",
+      "keywords": [
+        "work",
+        "energy",
+        "heating",
+        "thermal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L2::Q9",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L2",
+      "stem": "A crane lifts a steel beam upward at constant speed. Compare the work done by the cable's pull with the work done by gravity on the beam.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The cable's upward pull does work along the lift and fills the beam's gravitational potential store, while gravity acts downward opposite the movement, doing work that drains that store — at constant speed the two effects balance, so the beam's kinetic store stays level.",
+      "keywords": [
+        "work",
+        "gravity",
+        "gravitational",
+        "speed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L3::Q1",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L3",
+      "stem": "Which product gives the work done by a steady force?",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "force × speed",
+          "correct": false,
+          "explanation": "Speed belongs to kinetic energy, not work done.",
+          "misconception": "equation tangle"
+        },
+        {
+          "key": "B",
+          "text": "mass × distance moved",
+          "correct": false,
+          "explanation": "Mass never appears in the work done equation.",
+          "misconception": "equation tangle"
+        },
+        {
+          "key": "C",
+          "text": "force × distance moved along the force",
+          "correct": true,
+          "explanation": "That product is exactly the energy the force transfers.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "force ÷ distance moved",
+          "correct": false,
+          "explanation": "Dividing gives one rearrangement for finding force, not the definition.",
+          "misconception": "operation slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L3::Q2",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L3",
+      "stem": "A force of 20 N moves an object 3 m along the force's line. How much work is done?",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "6.7 J",
+          "correct": false,
+          "explanation": "That is 20 ÷ 3 — the wrong operation.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "B",
+          "text": "23 J",
+          "correct": false,
+          "explanation": "Adding the numbers is meaningless here.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "200 J",
+          "correct": false,
+          "explanation": "No step of the calculation produces this value.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "D",
+          "text": "60 J",
+          "correct": true,
+          "explanation": "20 × 3 = 60, so 60 J of energy is transferred.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L3::Q3",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L3",
+      "stem": "Which pair of units feeds W = F × d so the answer comes out in joules?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "force in newtons, distance in metres",
+          "correct": true,
+          "explanation": "Newtons times metres gives joules (equivalently newton-metres).",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "force in newtons, time in seconds",
+          "correct": false,
+          "explanation": "Time is not part of work done.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "C",
+          "text": "mass in kilograms, distance in metres",
+          "correct": false,
+          "explanation": "Mass does not enter this equation.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "D",
+          "text": "force in newtons, distance in centimetres",
+          "correct": false,
+          "explanation": "Centimetres must be converted to metres first.",
+          "misconception": "unit slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L3::Q4",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L3",
+      "stem": "On the work done formula triangle, which arrangement is correct?",
+      "misconceptionClass": "method detail",
+      "options": [
+        {
+          "key": "A",
+          "text": "the triangle only works for speed, distance and time",
+          "correct": false,
+          "explanation": "The same triangle pattern serves many equations, including this one.",
+          "misconception": "over-narrow reading"
+        },
+        {
+          "key": "B",
+          "text": "W on top, with F and d along the base",
+          "correct": true,
+          "explanation": "Covering W leaves F × d; covering F leaves W over d.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "F on top, with W and d along the base",
+          "correct": false,
+          "explanation": "That layout would encode F = W × d, which is wrong.",
+          "misconception": "layout slip"
+        },
+        {
+          "key": "D",
+          "text": "d on top, with W and F along the base",
+          "correct": false,
+          "explanation": "That layout would encode d = W × F, which is wrong.",
+          "misconception": "layout slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L3::Q5",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L3",
+      "stem": "A crate is dragged 5 m along the floor, but the rope's tension acts at a slack angle so the crate's motion is only partly along the pull. What best describes the work done by the tension?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "no work is done because of the angle",
+          "correct": false,
+          "explanation": "A partly-aligned force still does some work.",
+          "misconception": "all-or-nothing slip"
+        },
+        {
+          "key": "B",
+          "text": "the work done doubles because of the angle",
+          "correct": false,
+          "explanation": "Angling reduces, never inflates, the along-force distance.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "only the distance component along the pull counts toward the work done",
+          "correct": true,
+          "explanation": "The equation uses distance travelled in the force's own direction.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the full 5 m counts regardless of the angle",
+          "correct": false,
+          "explanation": "Off-axis movement earns nothing from that force.",
+          "misconception": "over-counting slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L3::Q6",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L3",
+      "stem": "State the work done equation using symbols, and name each quantity.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "W = F × d, where W is the work done, F is the applied force and d is the distance the object travels along the force's line of action.",
+      "keywords": [
+        "work",
+        "force",
+        "distance",
+        "equation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L3::Q7",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L3",
+      "stem": "State the unit of work done and one equivalent combined unit.",
+      "misconceptionClass": "variable identification",
+      "kind": "recall",
+      "modelAnswer": "Work done is measured in joules, which is equivalent to the newton-metre.",
+      "keywords": [
+        "joules",
+        "newton-metre",
+        "work",
+        "equivalent"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L3::Q8",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L3",
+      "stem": "Explain why the distance must lie along the direction of the force for W = F × d to give the work done by that force.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The equation counts only the energy transfer caused by that particular force. Movement perpendicular to the force involves no push or drag along its line, so only distance travelled in the force's own direction represents energy moved by it.",
+      "keywords": [
+        "distance",
+        "force",
+        "energy",
+        "direction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_r6HzX8DgQ84bGBMP::L3::Q9",
+      "moduleId": "rn_r6HzX8DgQ84bGBMP::L3",
+      "stem": "The brakes of a van apply a force of 400 N and bring it to a stop over 30 m. Calculate the work done by the brakes.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "W = F × d = 400 × 30 = 12 000 J, so the brakes transfer 12 000 J of energy while stopping the van.",
+      "keywords": [
+        "work",
+        "force",
+        "distance",
+        "12 000"
+      ],
+      "options": []
+    }
+  ]
+}

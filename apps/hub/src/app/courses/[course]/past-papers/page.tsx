@@ -192,6 +192,9 @@ export default async function PastPapersPage({
             <section key={sessionId} aria-label={sessionLabel(sessionId)} className="space-y-2">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                 {sessionLabel(sessionId)}
+                {/* t-ui-polish run-002 — the MG session header carries its
+                    size; the count rides the same quiet recipe. */}
+                <span className="font-normal text-muted-foreground/60"> · {group.length}</span>
               </h2>
               <ul className="overflow-hidden rounded-xl border">
                 {group.map((p) => (
@@ -237,12 +240,17 @@ export default async function PastPapersPage({
                           {p.msBytes ? ` · MS ${prettyBytes(p.msBytes)}` : ""}
                         </p>
                       </div>
-                      <div className="flex flex-wrap items-center gap-1.5">
+                      {/* t-ui-polish run-002 — the MG paper-row signature:
+                          the resource chips line up into COLUMNS (QP/MS at a
+                          fixed width, right-aligned, never wrapping at sm+)
+                          so a session reads as a table without being one.
+                          Below sm the chips wrap as before. */}
+                      <div className="flex flex-wrap items-center gap-1.5 sm:flex-nowrap sm:justify-end">
                         {p.qpBytes ? (
                           <CorpusPdfLink
                             size="sm"
                             variant="secondary"
-                            className="h-7 text-xs"
+                            className="h-7 text-xs sm:w-32 sm:justify-center"
                             href={`${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=qp`}
                             pdfUrl={corpusViewerUrl(p.qpPath)}
                           >
@@ -251,7 +259,7 @@ export default async function PastPapersPage({
                           </CorpusPdfLink>
                         ) : (
                           <span
-                            className="inline-flex h-7 items-center rounded-md px-2 text-xs text-muted-foreground/50"
+                            className="inline-flex h-7 items-center rounded-md px-2 text-xs text-muted-foreground/50 sm:w-32 sm:justify-center"
                             title="No question paper held for this paper"
                           >
                             Question Paper
@@ -261,7 +269,7 @@ export default async function PastPapersPage({
                           <CorpusPdfLink
                             size="sm"
                             variant="outline"
-                            className="h-7 text-xs"
+                            className="h-7 text-xs sm:w-32 sm:justify-center"
                             href={`${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=ms`}
                             pdfUrl={corpusViewerUrl(p.msPath)}
                           >
@@ -269,7 +277,7 @@ export default async function PastPapersPage({
                           </CorpusPdfLink>
                         ) : (
                           <span
-                            className="inline-flex h-7 items-center rounded-md px-2 text-xs text-muted-foreground/50"
+                            className="inline-flex h-7 items-center rounded-md px-2 text-xs text-muted-foreground/50 sm:w-32 sm:justify-center"
                             title="No mark scheme held for this paper"
                           >
                             Mark Scheme
@@ -340,6 +348,8 @@ function ReconstructionArchive({
     <section aria-label="Interactive reconstructions" className="space-y-2">
       <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
         Interactive reconstructions
+        {/* t-ui-polish run-002 — same session-count recipe as above. */}
+        <span className="font-normal text-muted-foreground/60"> · {papers.length}</span>
       </h2>
       <p className="text-xs text-muted-foreground">
         Papers the question corpus has parsed (partial reconstructions — the questions we hold, in
@@ -352,7 +362,7 @@ function ReconstructionArchive({
             <li key={p.key} className={i > 0 ? "border-t" : undefined}>
               <Link
                 href={`${base}/past-papers/${p.key}`}
-                className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-muted"
+                className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-muted/50"
               >
                 <span className="min-w-0 flex-1">
                   <span className="flex flex-wrap items-center gap-1.5">

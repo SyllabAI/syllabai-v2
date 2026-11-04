@@ -1,0 +1,499 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_kTvJN82ZMcTrCypr",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "5001a6f3543f64514f5650cc040fe011843504b50fd8e1217c03577b23bc61ba",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "packageId": "igcse-physics::rn_kTvJN82ZMcTrCypr",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L1::Q1",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L1",
+      "stem": "Which property of the vibrating source sets the pitch of a sound?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "its frequency of vibration",
+          "correct": true,
+          "explanation": "Pitch is related to the frequency of the vibrating source.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the speed of sound in air",
+          "correct": false,
+          "explanation": "Sound speed is the same for all pitches in the same medium.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "C",
+          "text": "the distance to the listener",
+          "correct": false,
+          "explanation": "Distance changes loudness, not pitch.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "D",
+          "text": "its amplitude of vibration",
+          "correct": false,
+          "explanation": "Amplitude sets loudness, not pitch.",
+          "misconception": "quantity swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L1::Q2",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L1",
+      "stem": "A guitar string is tightened so it vibrates with higher frequency. What happens to the note?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "it becomes louder",
+          "correct": false,
+          "explanation": "Loudness tracks amplitude, not frequency.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "B",
+          "text": "it becomes higher in pitch",
+          "correct": true,
+          "explanation": "Higher vibration frequency gives higher pitch.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "it becomes lower in pitch",
+          "correct": false,
+          "explanation": "That would need a LOWER frequency.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "D",
+          "text": "it becomes inaudible",
+          "correct": false,
+          "explanation": "Guitar strings sit inside the audible range.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L1::Q3",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L1",
+      "stem": "On an oscilloscope, which feature signals the higher-pitched of two notes?",
+      "misconceptionClass": "reading the trace",
+      "options": [
+        {
+          "key": "A",
+          "text": "the brighter line",
+          "correct": false,
+          "explanation": "Brightness carries no waveform information.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "B",
+          "text": "the taller trace",
+          "correct": false,
+          "explanation": "Height signals loudness.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "C",
+          "text": "more complete waves across the same width",
+          "correct": true,
+          "explanation": "More cycles in the same time window means higher frequency and pitch.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the wider peak-to-peak spacing",
+          "correct": false,
+          "explanation": "Wider spacing means fewer cycles per second, so LOWER pitch.",
+          "misconception": "inverted relation"
+        }
+      ]
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L1::Q4",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L1",
+      "stem": "A note of frequency 512 Hz sounds beside a 256 Hz note. How do their pitches compare?",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "both forks sound identical",
+          "correct": false,
+          "explanation": "Different frequencies give different pitches.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "B",
+          "text": "the 512 Hz fork is louder",
+          "correct": false,
+          "explanation": "The label gives frequency, not amplitude.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "C",
+          "text": "the 256 Hz fork sounds higher",
+          "correct": false,
+          "explanation": "Higher frequency means higher pitch; 256 Hz is the lower one.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "D",
+          "text": "the 512 Hz fork sounds one octave above the 256 Hz fork",
+          "correct": true,
+          "explanation": "Doubling the frequency raises the note by one octave, and 512 = 2 × 256.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L1::Q5",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L1",
+      "stem": "A violinist plays a note, then a second note one octave higher. The first note had frequency 220 Hz. What was the second note’s frequency?",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "440 Hz",
+          "correct": true,
+          "explanation": "One octave up doubles the frequency: 2 × 220 = 440 Hz.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "220 Hz",
+          "correct": false,
+          "explanation": "The same frequency is the same pitch.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "C",
+          "text": "110 Hz",
+          "correct": false,
+          "explanation": "Halving goes one octave DOWN.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "D",
+          "text": "330 Hz",
+          "correct": false,
+          "explanation": "An octave doubles the frequency; 330 is not a doubling.",
+          "misconception": "arithmetic slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L1::Q6",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L1",
+      "stem": "State how pitch tracks the vibration of its source.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Pitch tracks the frequency of the vibrating source: high-frequency vibration gives high pitch and low-frequency vibration gives low pitch.",
+      "keywords": [
+        "frequency",
+        "vibration",
+        "pitch"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L1::Q7",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L1",
+      "stem": "Two traces share the same screen width; trace A shows three complete cycles and trace B shows one. State which trace has the lower frequency.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Trace B has the lower frequency, because fewer complete cycles across the same width means fewer cycles per second.",
+      "keywords": [
+        "fewer",
+        "cycles",
+        "lower",
+        "frequency"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L1::Q8",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L1",
+      "stem": "Two traces on an oscilloscope have the same height but trace B shows twice as many cycles as trace A across the same width. Explain which is higher-pitched and whether their loudnesses can be told apart.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Trace B completes twice as many cycles in the same time, so its frequency is double and its pitch is higher. Both traces have the same height, so their amplitudes are equal and the oscilloscope gives no loudness difference between them.",
+      "keywords": [
+        "cycles",
+        "frequency",
+        "pitch",
+        "amplitude",
+        "equal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L1::Q9",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L1",
+      "stem": "A mosquito deterrent emits a 17 000 Hz tone. Explain whether a person with full human hearing will hear it, and compare its pitch with a 500 Hz hum.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "17 000 Hz lies below the 20 000 Hz upper limit of human hearing, so a person with full hearing can hear it; it has a much higher frequency than a 500 Hz hum, so it sounds far higher in pitch.",
+      "keywords": [
+        "17 000",
+        "20 000",
+        "hearing",
+        "pitch",
+        "higher"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L2::Q1",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L2",
+      "stem": "A drum is struck harder, so its skin vibrates with larger amplitude. What happens to the sound?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "it becomes higher in pitch",
+          "correct": false,
+          "explanation": "Amplitude does not set pitch.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "B",
+          "text": "it becomes louder",
+          "correct": true,
+          "explanation": "Larger vibration amplitude gives a louder sound.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "its frequency doubles",
+          "correct": false,
+          "explanation": "Harder strikes change amplitude; frequency is set by the skin’s tension and size.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "D",
+          "text": "it becomes ultrasound",
+          "correct": false,
+          "explanation": "A drum remains far below 20 000 Hz.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L2::Q2",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L2",
+      "stem": "What is the frequency range for human hearing?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "200 Hz to 200 000 Hz",
+          "correct": false,
+          "explanation": "Both boundaries are ten times too large.",
+          "misconception": "magnitude error"
+        },
+        {
+          "key": "B",
+          "text": "20 Hz to 2 000 000 Hz",
+          "correct": false,
+          "explanation": "The upper boundary is far too large.",
+          "misconception": "magnitude error"
+        },
+        {
+          "key": "C",
+          "text": "20 Hz to 20 000 Hz",
+          "correct": true,
+          "explanation": "This is the stated range of human hearing.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "2 Hz to 2000 Hz",
+          "correct": false,
+          "explanation": "Both boundaries are ten times too small.",
+          "misconception": "magnitude error"
+        }
+      ]
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L2::Q3",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L2",
+      "stem": "A bat emits a 45 000 Hz squeak. How is that sound classified for humans?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "infrasound, because bats are small",
+          "correct": false,
+          "explanation": "Infrasound is BELOW 20 Hz.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "B",
+          "text": "audible, because 45 000 Hz is below 20 000 Hz",
+          "correct": false,
+          "explanation": "45 000 is greater than 20 000.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "C",
+          "text": "audible, because bats are loud",
+          "correct": false,
+          "explanation": "Audibility depends on frequency, not loudness.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "D",
+          "text": "ultrasound, because 45 000 Hz is above the human upper limit",
+          "correct": true,
+          "explanation": "45 000 Hz exceeds 20 000 Hz, so it is ultrasound.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L2::Q4",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L2",
+      "stem": "An earthquake sensor records a 16 Hz vibration. For human hearing this is:",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "infrasound, because it lies below 20 Hz",
+          "correct": true,
+          "explanation": "16 Hz falls under the 20 Hz lower boundary.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "audible, because earthquakes are loud",
+          "correct": false,
+          "explanation": "Loudness cannot bring a frequency into range.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "C",
+          "text": "at the centre of the audible range",
+          "correct": false,
+          "explanation": "The centre is near 10 000 Hz.",
+          "misconception": "magnitude error"
+        },
+        {
+          "key": "D",
+          "text": "ultrasound",
+          "correct": false,
+          "explanation": "16 Hz is below the range, not above.",
+          "misconception": "concept mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L2::Q5",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L2",
+      "stem": "A dog whistle claims 25 000 Hz. Which row is correct for a human and a dog with hearing up to 45 000 Hz?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "the human may hear it and the dog does not",
+          "correct": false,
+          "explanation": "This reverses the two limits.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "B",
+          "text": "the human does not hear it but the dog may",
+          "correct": true,
+          "explanation": "25 000 Hz is above 20 000 Hz but below the dog’s 45 000 Hz limit.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "both hear it",
+          "correct": false,
+          "explanation": "25 000 Hz exceeds the human upper limit.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "D",
+          "text": "neither hears it",
+          "correct": false,
+          "explanation": "The dog’s limit of 45 000 Hz covers 25 000 Hz.",
+          "misconception": "concept mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L2::Q6",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L2",
+      "stem": "State how loudness tracks the vibration of its source.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Loudness tracks the amplitude of the vibrating source: larger amplitude gives a louder sound.",
+      "keywords": [
+        "amplitude",
+        "vibration",
+        "loudness"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L2::Q7",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L2",
+      "stem": "State the names given to sound frequencies below and above the range of human hearing.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Below the range is infrasound and above the range is ultrasound.",
+      "keywords": [
+        "infrasound",
+        "below",
+        "ultrasound",
+        "above"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L2::Q8",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L2",
+      "stem": "Explain why a 30 000 Hz dog whistle is silent to a person with full human hearing even when it is blown loudly.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The ear only responds to vibrations between 20 Hz and 20 000 Hz; 30 000 Hz lies above that window, so the eardrum and ear cannot respond to it and no loudness makes it audible.",
+      "keywords": [
+        "30 000",
+        "20 000",
+        "above",
+        "range",
+        "loudness"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kTvJN82ZMcTrCypr::L2::Q9",
+      "moduleId": "rn_kTvJN82ZMcTrCypr::L2",
+      "stem": "Sort these four frequencies into infrasound, audible and ultrasound: 15 Hz, 440 Hz, 15 000 Hz, 25 000 Hz.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "15 Hz is infrasound because it is below 20 Hz; 440 Hz and 15 000 Hz are audible because both lie between 20 Hz and 20 000 Hz; 25 000 Hz is ultrasound because it is above 20 000 Hz.",
+      "keywords": [
+        "15",
+        "infrasound",
+        "440",
+        "15 000",
+        "audible",
+        "25 000",
+        "ultrasound"
+      ],
+      "options": []
+    }
+  ]
+}

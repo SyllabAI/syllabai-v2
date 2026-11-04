@@ -2672,6 +2672,497 @@ const FEEDS = {
       ) && !!a.path.split("/").pop();
     },
   },
+  "physics-wave7-v26": {
+    manifest: "hub-import-manifest-v26.json",
+    manifest_version: 26,
+    // NEW-SUBJECT wave-7 (resources PR #296 + amendment PR #299, chain of record a2b6386a (292cc36b + db2cc6f5); runbook §1 + B6
+    // continue-global at v26 — CUMULATIVE over the igcse-physics-19 pack, the chemistry
+    // v8..v17 pattern, the physics v18..v25 pattern). W7 of the frozen B4 partition: the
+    // 3-3 sound + 4-1 energy-stores-and-transfers subtopics, 10 notes (register rows 54-63
+    // 1-based; the PR title cites 53-62 0-based — same ten rows, indexing disclosed). The
+    // INT-3 carries ALL 63 pack rows (the v19 index-regression lesson of record), so the
+    // runner-owned guided-import.json re-issue keeps the whole flow. The 106 prior-pack
+    // artifacts are re-pinned byte-identical (the 53 note provenance pins carried forward
+    // verbatim); the 20 wave-7 artifacts are FIRST issues @ the commit-A pin 8f834fff738f114f05e2078aedf5fdaad53b9ff7.
+    // ZERO chemistry bytes touched, ZERO authored prior-pack bytes changed. Race posture:
+    // resources main ADVANCED past the wave-open base mid-wave (run-012 wave-C/D lane,
+    // 2 commits c72c55ea->c63aac4e, dossier-only, disclosed) — the merge-of-record parents
+    // are c63aac4e49789a90f1edb0f8d5b690c042d09b14 (main at merge) + d1835842 (branch head), mergeable_state=clean
+    // at merge; hub main re-checked at this patch + at push.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 63, "sme-question-package": 63 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-7 chain — import the igcse-physics-19 wave-7 tranche of record (10 notes: rn_SCPfx5yXVvZQSpgw 'Core Practical: Investigating the Speed of Sound' / rn_mr7Dpsm3T3mCqmns 'Sound & Oscilloscopes' / rn_P8xWkdTw6SrvWYJx 'Core Practical: Using an Oscilloscope' / rn_kTvJN82ZMcTrCypr 'Pitch & Loudness' / rn_7Mn6fNZ3mz6pYFkg 'Energy Stores & Transfers' / rn_g66ndvxcyxsTpKPn 'Conservation of Energy' / rn_vctGRbxP4NVz34JT 'Efficiency' / rn_kxdTzqwVgkFBYVC3 'Conduction, Convection & Radiation' / rn_6wZc5RHQn4qftvc8 'Core Practical: Investigating Thermal Energy' / rn_mf22KJj8JXw3DRHn 'Reducing Energy Loss'; 22 lessons / 198 checks = 110 MCQ + 44 recall + 22 explain-why + 22 application) with the 106 prior-pack artifacts re-pinned byte-identical — CUMULATIVE pack 63 notes / 127 lessons / 1143 checks, manifest v26. Declared hub landing = 20/20 written + 106/106 identical-exists + the runner-owned guided-import.json index re-issued with all 63 rows; zero chemistry bytes touched. Operator ignition trace 1a1a1b6d5b658cb5 ('Proceed with Wave-7'), execution trace 1a1a1b6d5b658cb5.",
+    promo: {
+      // promotion commit of record = the resources PR #299 amendment merge-of-record (chain: PR #296 merge 292cc36b [commit A 8f834fff738f114f05e2078aedf5fdaad53b9ff7 +
+      // commit C d1835842] + PR #299 amendment db2cc6f5: counts serialization strings->ints, value-identical 12/12 — the hub-runner G-A fail-closed disclosure; the merge commit message carries the execution trace verbatim;
+      // merge parents c63aac4e49789a90f1edb0f8d5b690c042d09b14 = main at merge (advanced past the wave-open base
+      // c72c55ea by the run-012 lane mid-wave — disclosed), d1835842 = the branch head)
+      commit: "a2b6386ac78f590448f3fb1989ef0146885c12b6",
+      tree: "ca32a5c470090f91cd9bcaadfe7e627632e25e4f",
+      parent: "292cc36b1fd64686bf264fcee9802ed289c145e7",
+      trace: "1a1a1b6d5b658cb5",
+    },
+    integration_branch: null, // ancestry of record — resources PR #296 merged before this hub run
+    artifact_pin: "8f834fff738f114f05e2078aedf5fdaad53b9ff7", // wave-7 commit A — the source-0.6 generation pin of record for the 10 wave-7 notes
+    artifact_pins_by_note: {
+      // prior-pack provenance of record (G-D pinnedRef, per-note law): the stage-A pilot
+      // keeps its v18 source pin, the six wave-1 notes keep their v19 source pin, the nine
+      // wave-2 notes keep their v21 source pin, the seven wave-3 notes keep their v22
+      // source pin (commit A 0cea83a7), the eight wave-4 notes keep their v23 source pin
+      // (commit A 275f3b53), the nine wave-5 notes keep their v24 source pin (commit A
+      // 502107a3), the thirteen wave-6 notes keep their v25 source pin (commit A dad406f1)
+      // — re-pinning them to the wave-7 commit would falsify their provenance
+      rn_RpyMnS5nqWSRWXXG: "7d493985c7729f30c2186e7e61a713ceacc96517",
+      rn_k9wr3prcgSBg5vfw: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_pfndTqR6DTJGZ8xQ: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_CpJZQWzbvMcM8fw3: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_5hfYYFrc2XjMJCrq: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_GxNWbSMqkTN4zgZB: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_ZgGMNrRGBKvYxxFf: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+      rn_nyV7C6zmyKXWJjKg: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_4zdmGRWTg5ksK44N: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_K3p2R3ykwwvHV9dp: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_gDy2qTkY26r5sMtd: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_2R3NrjGfJJY29Hzv: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_ZCGJsYwy6S6FbbbW: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_Mrfn29ZgQMq8th5P: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_kN63sqWsc9QdHSVx: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_nC3BswtJzYw8k6nX: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+      rn_pqp4mfpHzGVtrjTT: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_NfCjFmPfmMQ8pQSw: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_8wqvPtsCCh3gdJN5: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_RQK2MW3zRPNNzwtc: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_jzQZQcPRQkJvdYwJ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_zn4NVCRcTSNv8sRZ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_TPDdhwDYsrWgQB7R: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_NZ5D2Mx9SXQY98wy: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_BcxDP3RzXk3k7rwf: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_64pQyK4tm9P9rdKN: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_BFQBSmVz2xFZVsB6: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_ynsstfBQngnx2pgq: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_PyxMmTd6S9pMDTt6: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_WzQZfyNNFFFFghbF: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_gYqbXsJPfrqtg5yQ: "275f3b535d78552d09e07f65fb9347e570eae68d",
+      rn_PZZFkywYbmP9bwyh: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_FfvmFrDdhSsMk9rm: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_kxw7Ms4Pr7dQJykY: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_z4nNPFw97V9fDkyS: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_NgxJhPpm5Zs7kFSz: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_qG9dxcQrRJJVDQf7: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_ws8NtMW3QwCs73Gh: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_NhRw6hdrVD4vmNJw: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_W3QnDKVK9mMQ3Mhg: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+      rn_HKZzkTMztGJvqXCd: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_TPSJT83Gh8nMCcVV: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_hkV9ncw6zTQqrbN5: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_ctTgFb5NSQTSQVSP: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_GVDsPK5gmYw5wqvG: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_8K4rhNpfVqrR8pHF: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_dx62W8M2b3RpDWjM: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_25TjVtFjyh6Hmr8X: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_35snKWs7CjH7vshw: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_N74nsXGBw66yzqSf: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_J6rwHvcb9zhBpJCM: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_MfKYy7mHFkx7zF9x: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      rn_HhjktGSR32fxhHPW: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+      // wave-7 first issues: the ten W7 notes carry the wave-7 commit-A pin of record
+      rn_SCPfx5yXVvZQSpgw: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+      rn_mr7Dpsm3T3mCqmns: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+      rn_P8xWkdTw6SrvWYJx: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+      rn_kTvJN82ZMcTrCypr: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+      rn_7Mn6fNZ3mz6pYFkg: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+      rn_g66ndvxcyxsTpKPn: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+      rn_vctGRbxP4NVz34JT: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+      rn_kxdTzqwVgkFBYVC3: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+      rn_6wZc5RHQn4qftvc8: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+      rn_mf22KJj8JXw3DRHn: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+    },
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 202 cumulative figures (168 prior + 34 wave-7; 197 module-mapped + 5 note-level)
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave7-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave7-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave7-survivors/hub-import-manifest-v26.json",
+      int3: "/home/z/my-project/scripts/physics-wave7-survivors/INT-3-transform-record-physics-wave7.json",
+    },
+    receipt: "/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261103-physics-wave7-v26.json",
+    identity: {
+      notes: 63,
+      lessons: 127,
+      checks: 1143,
+      keyPoints: 627,
+      distractors: 1905,
+      glossaryTerms: 279,
+      figures: 202,
+      figures_module_mapped: 197,
+      figures_note_level: 5,
+      workedExamples_populated: 28,
+      workedExamples_null: 35,
+      authored_chars_conserved: 715840,
+    },
+    artifact_count: 126,
+    note_count: 63,
+    wave_count: 8,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v26 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
+  "physics-wave8-v27": {
+    manifest: "hub-import-manifest-v27.json",
+    manifest_version: 27,
+    // NEW-SUBJECT wave-8 (resources PR #300 merge 6dc1a022 + amendment PR #301 merge 135269ca; runbook §1 + B6
+    // continue-global at v27 — CUMULATIVE over the igcse-physics-19 pack, the chemistry
+    // v8..v17 pattern, the physics v18..v26 pattern). W8 of the frozen B4 partition: the
+    // 4-2 work-power-and-energy-resources + 5-1 density-and-pressure subtopics, 11 notes (register rows
+    // 64-74 1-based; the PR title cites 63-73 0-based — same eleven rows, indexing disclosed). The
+    // INT-3 carries ALL 74 pack rows (the v19 index-regression lesson of record), so the
+    // runner-owned guided-import.json re-issue keeps the whole flow. The 126 prior-pack
+    // artifacts are re-pinned byte-identical (the 63 note provenance pins carried forward
+    // verbatim); the 22 wave-8 artifacts are FIRST issues @ the commit-A pin c40b8b2849356ad2c27c4ef9c9e89d301622dcaf.
+    // ZERO chemistry bytes touched, ZERO authored prior-pack bytes changed. Race posture:
+    // resources main held at the wave-open base 68175c8d until the wave-8 PRs; the amendment
+    // merge-of-record parents are 6dc1a022e82f1b4df447e436de4d30019fb50964 (main at merge, the #300
+    // wave-8 merge) + a8df6ea77834e06c6c8861454fe8e277f4fb1a63 (branch head), mergeable_state=unstable
+    // (the pre-existing 'sync' check class, disclosed) at merge; hub main re-checked at this patch + at push.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 74, "sme-question-package": 74 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-8 chain — import the igcse-physics-19 wave-8 tranche of record (11 notes: rn_r6HzX8DgQ84bGBMP 'Work Done' / rn_5VwtXpGcdNVHV2tm 'Gravitational Potential Energy' / rn_vR82ncPDnnyGQ94P 'Kinetic Energy' / rn_p3SDZQRDzPCYhztZ 'Work, GPE & KE' / rn_bktjjV5hs9qSQQDS 'Power' / rn_sb9rpDPgVq9JChng 'Energy Resources' / rn_xdVXyYb6CH5MyXws 'Comparing Energy Resources' / rn_9SWwrq7BZFhXQbsT 'Density' / rn_97j6FkgNn87V4vGC 'Core Practical: Determining Density' / rn_Rc5mD3yzSVWknJzx 'Pressure' / rn_HQhkn6sZhxfKfbj3 'Pressure in Liquids'; 26 lessons / 234 checks = 130 MCQ + 52 recall + 26 explain-why + 26 application) with the 126 prior-pack artifacts re-pinned byte-identical — CUMULATIVE pack 74 notes / 153 lessons / 1377 checks, manifest v27. Declared hub landing = 22/22 written + 126/126 identical-exists + the runner-owned guided-import.json index re-issued with all 74 rows; zero chemistry bytes touched. Operator ignition trace 1a1a2ee639052b71 ('Wave-8 proceed'), execution trace 1a1a2ee639052b71.",
+    promo: {
+      // promotion commit of record = the resources PR #301 amendment merge-of-record (chain: PR #300 merge 6dc1a022 [commit A c40b8b28 +
+      // commit C 956cab0] + PR #301 amendment a8df6ea7: worked-example census 4/7 -> 8/3 value-derived, manifest counts already correct — the hub-runner fail-closed disclosure class; the merge commit message carries the execution trace verbatim;
+      // merge parents 6dc1a022e82f1b4df447e436de4d30019fb50964 = main at merge (the #300 wave-8 merge; the wave-open
+      // base 68175c8d held until the wave-8 PRs), a8df6ea77834e06c6c8861454fe8e277f4fb1a63 = the branch head)
+      commit: "135269ca56a81d64b5436e2abbbf06e162fea382",
+      tree: "f94e1d2f42e1e368e0622bc984b0d2e510aaf82c",
+      parent: "6dc1a022e82f1b4df447e436de4d30019fb50964",
+      trace: "1a1a2ee639052b71",
+    },
+    integration_branch: null, // ancestry of record — resources PRs #300 + #301 merged before this hub run
+    artifact_pin: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf", // wave-8 commit A — the source-0.6 generation pin of record for the 11 wave-8 notes
+    artifact_pins_by_note: {
+      // prior-pack provenance of record (G-D pinnedRef, per-note law): the stage-A pilot
+      // keeps its v18 source pin, the six wave-1 notes keep their v19 source pin, the nine
+      // wave-2 notes keep their v21 source pin, the seven wave-3 notes keep their v22
+      // source pin (commit A 0cea83a7), the eight wave-4 notes keep their v23 source pin
+      // (commit A 275f3b53), the nine wave-5 notes keep their v24 source pin (commit A
+      // 502107a3), the thirteen wave-6 notes keep their v25 source pin (commit A dad406f1),
+      // the ten wave-7 notes keep their v26 source pin (commit A 8f834fff)
+      // — re-pinning them to the wave-8 commit would falsify their provenance
+rn_25TjVtFjyh6Hmr8X: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_2R3NrjGfJJY29Hzv: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_35snKWs7CjH7vshw: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_4zdmGRWTg5ksK44N: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_5hfYYFrc2XjMJCrq: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+rn_64pQyK4tm9P9rdKN: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_6wZc5RHQn4qftvc8: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_7Mn6fNZ3mz6pYFkg: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_8K4rhNpfVqrR8pHF: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_8wqvPtsCCh3gdJN5: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+rn_BFQBSmVz2xFZVsB6: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_BcxDP3RzXk3k7rwf: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_CpJZQWzbvMcM8fw3: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+rn_FfvmFrDdhSsMk9rm: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_GVDsPK5gmYw5wqvG: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_GxNWbSMqkTN4zgZB: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+rn_HKZzkTMztGJvqXCd: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_HhjktGSR32fxhHPW: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_J6rwHvcb9zhBpJCM: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_K3p2R3ykwwvHV9dp: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_MfKYy7mHFkx7zF9x: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_Mrfn29ZgQMq8th5P: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_N74nsXGBw66yzqSf: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_NZ5D2Mx9SXQY98wy: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_NfCjFmPfmMQ8pQSw: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+rn_NgxJhPpm5Zs7kFSz: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_NhRw6hdrVD4vmNJw: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_P8xWkdTw6SrvWYJx: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_PZZFkywYbmP9bwyh: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_PyxMmTd6S9pMDTt6: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_RQK2MW3zRPNNzwtc: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+rn_RpyMnS5nqWSRWXXG: "7d493985c7729f30c2186e7e61a713ceacc96517",
+rn_SCPfx5yXVvZQSpgw: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_TPDdhwDYsrWgQB7R: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+rn_TPSJT83Gh8nMCcVV: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_W3QnDKVK9mMQ3Mhg: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_WzQZfyNNFFFFghbF: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_ZCGJsYwy6S6FbbbW: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_ZgGMNrRGBKvYxxFf: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+rn_ctTgFb5NSQTSQVSP: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_dx62W8M2b3RpDWjM: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_g66ndvxcyxsTpKPn: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_gDy2qTkY26r5sMtd: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_gYqbXsJPfrqtg5yQ: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_hkV9ncw6zTQqrbN5: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_jzQZQcPRQkJvdYwJ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+rn_k9wr3prcgSBg5vfw: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+rn_kN63sqWsc9QdHSVx: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_kTvJN82ZMcTrCypr: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_kxdTzqwVgkFBYVC3: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_kxw7Ms4Pr7dQJykY: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_mf22KJj8JXw3DRHn: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_mr7Dpsm3T3mCqmns: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_nC3BswtJzYw8k6nX: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_nyV7C6zmyKXWJjKg: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_pfndTqR6DTJGZ8xQ: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+rn_pqp4mfpHzGVtrjTT: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+rn_qG9dxcQrRJJVDQf7: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_vctGRbxP4NVz34JT: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_ws8NtMW3QwCs73Gh: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_ynsstfBQngnx2pgq: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_z4nNPFw97V9fDkyS: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_zn4NVCRcTSNv8sRZ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      // wave-8 first issues: the eleven W8 notes carry the wave-8 commit-A pin of record
+      rn_r6HzX8DgQ84bGBMP: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_5VwtXpGcdNVHV2tm: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_vR82ncPDnnyGQ94P: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_p3SDZQRDzPCYhztZ: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_bktjjV5hs9qSQQDS: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_sb9rpDPgVq9JChng: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_xdVXyYb6CH5MyXws: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_9SWwrq7BZFhXQbsT: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_97j6FkgNn87V4vGC: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_Rc5mD3yzSVWknJzx: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_HQhkn6sZhxfKfbj3: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+    },
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 238 cumulative figures (202 prior + 36 wave-8; 225 module-mapped + 13 note-level)
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave8-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave8-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave8-survivors/hub-import-manifest-v27.json",
+      int3: "/home/z/my-project/scripts/physics-wave8-survivors/INT-3-transform-record-physics-wave8.json",
+    },
+    receipt: "/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261104-physics-wave8-v27.json",
+    identity: {
+      notes: 74,
+      lessons: 153,
+      checks: 1377,
+      keyPoints: 736,
+      distractors: 2295,
+      glossaryTerms: 316,
+      figures: 238,
+      figures_module_mapped: 225,
+      figures_note_level: 13,
+      workedExamples_populated: 36,
+      workedExamples_null: 38,
+      authored_chars_conserved: 863014,
+    },
+    artifact_count: 148,
+    note_count: 74,
+    wave_count: 9,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v27 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
+
+  "physics-wave9-v28": {
+    manifest: "hub-import-manifest-v28.json",
+    manifest_version: 28,
+    // NEW-SUBJECT wave-9 (resources PR #302 merge 09d94aea; runbook §1 + B6
+    // continue-global at v28 — CUMULATIVE over the igcse-physics-19 pack, the chemistry
+    // v8..v17 pattern, the physics v18..v27 pattern). W9 of the frozen B4 partition: the
+    // 5-2 changes-of-state + 5-3 ideal-gases subtopics, 11 notes (register rows 75-85 1-based; the
+    // PR title cites 74-84 0-based — same eleven rows, indexing disclosed). The
+    // INT-3 carries ALL 85 pack rows (the v19 index-regression lesson of record), so the
+    // runner-owned guided-import.json re-issue keeps the whole flow. The 148 prior-pack
+    // artifacts are re-pinned byte-identical (the 74 note provenance pins carried forward
+    // verbatim); the 22 wave-9 artifacts are FIRST issues @ the commit-A pin 8788fc85a2c111be22458fcefa3dac247e0d1f46.
+    // ZERO chemistry bytes touched, ZERO authored prior-pack bytes changed. Race posture:
+    // resources main held at the wave-open base 135269ca until the wave-9 PR; the
+    // merge-of-record parents are 135269ca56a81d64b5436e2abbbf06e162fea382 (main at merge, the wave-open
+    // base) + 33577291c2014870d27442a00995321e3bb7a088 (branch head), mergeable_state=unstable
+    // (the pre-existing 'sync' check class, disclosed) at merge; hub main re-checked at this patch + at push —
+    // main moved fe18850e -> f4671aa1 mid-wave via PR #709 (the maths KG lane; zero overlap with the
+    // runner or igcse-physics paths), and this branch was cut at f4671aa1 before any hub edit.
+    course_id: "igcse-physics-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 85, "sme-question-package": 85 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the new-subject wave-9 chain — import the igcse-physics-19 wave-9 tranche of record (11 notes: rn_7kByTFpXspTbVrWf 'Solids, Liquids & Gases' / rn_tq52Kk7NNvjdsnPx 'Changes of State' / rn_F4DQN5PJR8qD7dbw 'Core Practical: Investigating Changes of State' / rn_H8r8FssR6Q3Ks7pc 'Specific Heat Capacity' / rn_KQ2Z3k364fVw9Gkq 'Core Practical: Investigating Specific Heat Capacity' / rn_6Pp9dDJX4bzTJvHh 'Kinetic Theory' / rn_ppyHPvm5ynFYPsg8 'Absolute Zero' / rn_tnYrJzct8r6GSYfy 'Temperature' / rn_TbkRRTNgrJZqfkhV 'The Gas Laws' / rn_VrW4vQKk2VCQ2sQd 'The Pressure Law' / rn_p8XznQx2MXjbvz38 \"Boyle's Law\"; 24 lessons / 216 checks = 120 MCQ + 48 recall + 24 explain-why + 24 application) with the 148 prior-pack artifacts re-pinned byte-identical — CUMULATIVE pack 85 notes / 177 lessons / 1593 checks, manifest v28. Declared hub landing = 22/22 written + 148/148 identical-exists + the runner-owned guided-import.json index re-issued with all 85 rows; zero chemistry bytes touched. Operator ignition trace 1a1a418931c2fae5 ('Proceed with Wave-9'), execution trace 1a1a418931c2fae5.",
+    promo: {
+      // promotion commit of record = the resources PR #302 merge-of-record (chain: commit A 8788fc85 [11 authored
+      // source-0.6 notes + tooling/physics-wave9-pipeline.js, the wave-8-derived pipeline] + commit C 33577291
+      // [11 hub-import-1.5 + 11 question-packages-1.2 first issues + hub-import-manifest-v28.json + INT-3 wave-9
+      // + PROMOTION receipt]; the pipeline of record ran 2938/2938 gates GREEN at commit A;
+      // merge parents 135269ca56a81d64b5436e2abbbf06e162fea382 = main at merge (the wave-open base held
+      // until the wave-9 PR), 33577291c2014870d27442a00995321e3bb7a088 = the branch head)
+      commit: "09d94aea85da021cc2f75de83e25a3d8bed094cd",
+      tree: "ece20ce997e9d88fcab1012b8f0577756bedde4b",
+      parent: "135269ca56a81d64b5436e2abbbf06e162fea382",
+      trace: "1a1a418931c2fae5",
+    },
+    integration_branch: null, // ancestry of record — resources PR #302 merged before this hub run
+    artifact_pin: "8788fc85a2c111be22458fcefa3dac247e0d1f46", // wave-9 commit A — the source-0.6 generation pin of record for the 11 wave-9 notes
+    artifact_pins_by_note: {
+      // prior-pack provenance of record (G-D pinnedRef, per-note law): the stage-A pilot
+      // keeps its v18 source pin, the six wave-1 notes keep their v19 source pin, the nine
+      // wave-2 notes keep their v21 source pin, the seven wave-3 notes keep their v22
+      // source pin (commit A 0cea83a7), the eight wave-4 notes keep their v23 source pin
+      // (commit A 275f3b53), the nine wave-5 notes keep their v24 source pin (commit A
+      // 502107a3), the thirteen wave-6 notes keep their v25 source pin (commit A dad406f1),
+      // the ten wave-7 notes keep their v26 source pin (commit A 8f834fff), the eleven
+      // wave-8 notes keep their v27 source pin (commit A c40b8b28)
+      // — re-pinning them to the wave-9 commit would falsify their provenance
+rn_25TjVtFjyh6Hmr8X: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_2R3NrjGfJJY29Hzv: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_35snKWs7CjH7vshw: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_4zdmGRWTg5ksK44N: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_5hfYYFrc2XjMJCrq: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+rn_64pQyK4tm9P9rdKN: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_6wZc5RHQn4qftvc8: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_7Mn6fNZ3mz6pYFkg: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_8K4rhNpfVqrR8pHF: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_8wqvPtsCCh3gdJN5: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+rn_BFQBSmVz2xFZVsB6: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_BcxDP3RzXk3k7rwf: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_CpJZQWzbvMcM8fw3: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+rn_FfvmFrDdhSsMk9rm: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_GVDsPK5gmYw5wqvG: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_GxNWbSMqkTN4zgZB: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+rn_HKZzkTMztGJvqXCd: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_HhjktGSR32fxhHPW: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_J6rwHvcb9zhBpJCM: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_K3p2R3ykwwvHV9dp: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_MfKYy7mHFkx7zF9x: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_Mrfn29ZgQMq8th5P: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_N74nsXGBw66yzqSf: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_NZ5D2Mx9SXQY98wy: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_NfCjFmPfmMQ8pQSw: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+rn_NgxJhPpm5Zs7kFSz: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_NhRw6hdrVD4vmNJw: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_P8xWkdTw6SrvWYJx: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_PZZFkywYbmP9bwyh: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_PyxMmTd6S9pMDTt6: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_RQK2MW3zRPNNzwtc: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+rn_RpyMnS5nqWSRWXXG: "7d493985c7729f30c2186e7e61a713ceacc96517",
+rn_SCPfx5yXVvZQSpgw: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_TPDdhwDYsrWgQB7R: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+rn_TPSJT83Gh8nMCcVV: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_W3QnDKVK9mMQ3Mhg: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_WzQZfyNNFFFFghbF: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_ZCGJsYwy6S6FbbbW: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_ZgGMNrRGBKvYxxFf: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+rn_ctTgFb5NSQTSQVSP: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_dx62W8M2b3RpDWjM: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_g66ndvxcyxsTpKPn: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_gDy2qTkY26r5sMtd: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_gYqbXsJPfrqtg5yQ: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_hkV9ncw6zTQqrbN5: "dad406f1ecd8919cbcddd4c429b20f4f1aadae24",
+rn_jzQZQcPRQkJvdYwJ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+rn_k9wr3prcgSBg5vfw: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+rn_kN63sqWsc9QdHSVx: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_kTvJN82ZMcTrCypr: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_kxdTzqwVgkFBYVC3: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_kxw7Ms4Pr7dQJykY: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_mf22KJj8JXw3DRHn: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_mr7Dpsm3T3mCqmns: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_nC3BswtJzYw8k6nX: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_nyV7C6zmyKXWJjKg: "bfae9977809436fc2e5c20967bf2581f67a52bec",
+rn_pfndTqR6DTJGZ8xQ: "aa6485187429e0911b4a47a8a468e256bb41ce32",
+rn_pqp4mfpHzGVtrjTT: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+rn_qG9dxcQrRJJVDQf7: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_vctGRbxP4NVz34JT: "8f834fff738f114f05e2078aedf5fdaad53b9ff7",
+rn_ws8NtMW3QwCs73Gh: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_ynsstfBQngnx2pgq: "275f3b535d78552d09e07f65fb9347e570eae68d",
+rn_z4nNPFw97V9fDkyS: "502107a3fcacad2340d0ac5e66b5ad93ef32800c",
+rn_zn4NVCRcTSNv8sRZ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
+      rn_r6HzX8DgQ84bGBMP: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_5VwtXpGcdNVHV2tm: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_vR82ncPDnnyGQ94P: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_p3SDZQRDzPCYhztZ: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_bktjjV5hs9qSQQDS: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_sb9rpDPgVq9JChng: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_xdVXyYb6CH5MyXws: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_9SWwrq7BZFhXQbsT: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_97j6FkgNn87V4vGC: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_Rc5mD3yzSVWknJzx: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      rn_HQhkn6sZhxfKfbj3: "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf",
+      // wave-9 first issues: the eleven W9 notes carry the wave-9 commit-A pin of record
+      rn_7kByTFpXspTbVrWf: "8788fc85a2c111be22458fcefa3dac247e0d1f46",
+      rn_tq52Kk7NNvjdsnPx: "8788fc85a2c111be22458fcefa3dac247e0d1f46",
+      rn_F4DQN5PJR8qD7dbw: "8788fc85a2c111be22458fcefa3dac247e0d1f46",
+      rn_H8r8FssR6Q3Ks7pc: "8788fc85a2c111be22458fcefa3dac247e0d1f46",
+      rn_KQ2Z3k364fVw9Gkq: "8788fc85a2c111be22458fcefa3dac247e0d1f46",
+      rn_6Pp9dDJX4bzTJvHh: "8788fc85a2c111be22458fcefa3dac247e0d1f46",
+      rn_ppyHPvm5ynFYPsg8: "8788fc85a2c111be22458fcefa3dac247e0d1f46",
+      rn_tnYrJzct8r6GSYfy: "8788fc85a2c111be22458fcefa3dac247e0d1f46",
+      rn_TbkRRTNgrJZqfkhV: "8788fc85a2c111be22458fcefa3dac247e0d1f46",
+      rn_VrW4vQKk2VCQ2sQd: "8788fc85a2c111be22458fcefa3dac247e0d1f46",
+      rn_p8XznQx2MXjbvz38: "8788fc85a2c111be22458fcefa3dac247e0d1f46",
+    },
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    figures_feed: true, // 261 cumulative figures (238 prior + 23 wave-9; 248 module-mapped + 13 note-level)
+    schemas: {
+      hub: "/home/z/my-project/scripts/physics-wave9-survivors/schema/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/physics-wave9-survivors/schema/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/physics-wave9-survivors/hub-import-manifest-v28.json",
+      int3: "/home/z/my-project/scripts/physics-wave9-survivors/INT-3-transform-record-physics-wave9.json",
+    },
+    receipt: "/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261104-physics-wave9-v28.json",
+    identity: {
+      notes: 85,
+      lessons: 177,
+      checks: 1593,
+      keyPoints: 850,
+      distractors: 2655,
+      glossaryTerms: 352,
+      figures: 261,
+      figures_module_mapped: 248,
+      figures_note_level: 13,
+      workedExamples_populated: 42,
+      workedExamples_null: 43,
+      authored_chars_conserved: 1014533,
+    },
+    artifact_count: 170,
+    note_count: 85,
+    wave_count: 10,
+    id_prefix: "igcse-physics",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "additive",
+    relFor(a) { return a.path; }, // v28 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
 };
 
 const FEED_ID = process.env.FEED || "fullcorpus-v2";

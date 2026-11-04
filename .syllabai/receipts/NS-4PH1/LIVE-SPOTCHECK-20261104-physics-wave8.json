@@ -1,0 +1,140 @@
+{
+  "format": "live-spotcheck/0.1",
+  "wave": "PHYSICS-4PH1 wave-8 (B4 W8: 4-2 work power and energy resources + 5-1 density and pressure)",
+  "generated_at_utc": "2026-11-03T21:08:50Z",
+  "operator_traces": {
+    "ignition": "1a1a2ee639052b71",
+    "execution": "1a1a2ee639052b71"
+  },
+  "surface": "https://syllabai-hub-v2.vercel.app/courses/igcse-physics-19/guided-lessons/",
+  "probe_rounds": 9,
+  "results": {
+    "rn_r6HzX8DgQ84bGBMP": {
+      "expected": 12,
+      "actual": 12,
+      "bytes": 309090,
+      "titled": true,
+      "marker_hits": 0
+    },
+    "rn_5VwtXpGcdNVHV2tm": {
+      "expected": 8,
+      "actual": 8,
+      "bytes": 256151,
+      "titled": true,
+      "marker_hits": 0
+    },
+    "rn_vR82ncPDnnyGQ94P": {
+      "expected": 4,
+      "actual": 4,
+      "bytes": 199369,
+      "titled": true,
+      "marker_hits": 0
+    },
+    "rn_p3SDZQRDzPCYhztZ": {
+      "expected": 8,
+      "actual": 8,
+      "bytes": 249655,
+      "titled": true,
+      "marker_hits": 0
+    },
+    "rn_bktjjV5hs9qSQQDS": {
+      "expected": 8,
+      "actual": 8,
+      "bytes": 252791,
+      "titled": true,
+      "marker_hits": 0
+    },
+    "rn_sb9rpDPgVq9JChng": {
+      "expected": 12,
+      "actual": 12,
+      "bytes": 316935,
+      "titled": true,
+      "marker_hits": 0
+    },
+    "rn_xdVXyYb6CH5MyXws": {
+      "expected": 12,
+      "actual": 12,
+      "bytes": 299214,
+      "titled": true,
+      "marker_hits": 0
+    },
+    "rn_9SWwrq7BZFhXQbsT": {
+      "expected": 12,
+      "actual": 12,
+      "bytes": 300433,
+      "titled": true,
+      "marker_hits": 0
+    },
+    "rn_97j6FkgNn87V4vGC": {
+      "expected": 12,
+      "actual": 12,
+      "bytes": 303828,
+      "titled": true,
+      "marker_hits": 0
+    },
+    "rn_Rc5mD3yzSVWknJzx": {
+      "expected": 8,
+      "actual": 8,
+      "bytes": 254228,
+      "titled": true,
+      "marker_hits": 0
+    },
+    "rn_HQhkn6sZhxfKfbj3": {
+      "expected": 8,
+      "actual": 8,
+      "bytes": 250829,
+      "titled": true,
+      "marker_hits": 0
+    },
+    "rn_RpyMnS5nqWSRWXXG": {
+      "expected": 8,
+      "actual": 8,
+      "bytes": 267077,
+      "titled": true,
+      "marker_hits": 0
+    },
+    "rn_2MpXPtNXvn8pQm3r": {
+      "expected": 8,
+      "actual": 0,
+      "bytes": 97186,
+      "titled": true,
+      "marker_hits": 0
+    },
+    "rn_2z53qk2CdWrVVc7V": {
+      "expected": 8,
+      "actual": 0,
+      "bytes": 97186,
+      "titled": true,
+      "marker_hits": 0
+    }
+  },
+  "counts_law": "occurrence-aware 'Your answer' counts = 4 written checks x lessons per note (W8 sum 114)",
+  "controls_law": "physics pilot + two chemistry controls must hold their pre-wave counts (8/8/8)",
+  "verdict": "GREEN",
+  "marker_law": "learner-surface 2.1B marker 'from the revision note' == 0 hits on all probed pages",
+  "controls_final_round": {
+    "rn_RpyMnS5nqWSRWXXG": {
+      "url": "https://syllabai-hub-v2.vercel.app/courses/igcse-physics-19/guided-lessons/rn_RpyMnS5nqWSRWXXG",
+      "expected": 8,
+      "actual": 8,
+      "bytes": 267077,
+      "marker_hits": 0
+    },
+    "rn_2MpXPtNXvn8pQm3r": {
+      "url": "https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/guided-lessons/rn_2MpXPtNXvn8pQm3r",
+      "expected": 8,
+      "actual": 8,
+      "bytes": 264926,
+      "marker_hits": 0
+    },
+    "rn_2z53qk2CdWrVVc7V": {
+      "url": "https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/guided-lessons/rn_2z53qk2CdWrVVc7V",
+      "expected": 8,
+      "actual": 8,
+      "bytes": 248031,
+      "marker_hits": 0
+    }
+  },
+  "controls_final_verdict": "GREEN 3/3",
+  "controls_note": "controls probed at their own course paths (physics pilot under igcse-physics-19, the two chemistry controls under igcse-chemistry-19); an initial probe-window shell on the chemistry controls was the wave-8 probe script itself hitting the wrong course path (the correct notFound shell) plus slow per-route bake propagation, both resolved — final round GREEN"
+}

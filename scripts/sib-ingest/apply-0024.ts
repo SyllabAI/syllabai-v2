@@ -1,7 +1,7 @@
 /**
- * T-SIB-INGEST-001 — migration 0023 apply driver (the 0007 disclosure law,
+ * T-SIB-INGEST-001 — migration 0024 apply driver (the 0007 disclosure law,
  * t-teachme-1-db-apply.ts house precedent):
- *   - RAW SQL from packages/db/drizzle/0023_sib-research-evidence-kind.sql,
+ *   - RAW SQL from packages/db/drizzle/0024_sib-research-evidence-kind.sql,
  *     ONE transaction, lock_timeout=5s, statement_timeout=60s.
  *   - NO drizzle bookkeeping is created; flyway_schema_history untouched.
  *   - Idempotent-safe: if both CHECKs already carry RESEARCH_EVIDENCE the
@@ -10,7 +10,7 @@
  *   - Receipt ALWAYS written (even on failure) — honest red. Credentials
  *     never enter the receipt: only the endpoint host is recorded.
  *
- * CLI: bun scripts/sib-ingest/apply-0023.ts --db <uri-or-0600-file> --receipt <out.json>
+ * CLI: bun scripts/sib-ingest/apply-0024.ts --db <uri-or-0600-file> --receipt <out.json>
  *      (--db accepts a file path containing the URI — chmod 600 — or a raw URI.)
  */
 import { readFileSync, writeFileSync, statSync } from "node:fs";
@@ -29,7 +29,7 @@ function arg(name: string): string {
 const dbArg = arg("db");
 const receiptPath = arg("receipt");
 const REPO_ROOT = path.resolve(import.meta.dir, "..", "..");
-const MIG_0023 = path.join(REPO_ROOT, "packages/db/drizzle/0023_sib-research-evidence-kind.sql");
+const MIG_0024 = path.join(REPO_ROOT, "packages/db/drizzle/0024_sib-research-evidence-kind.sql");
 
 const dbFile = dbArg.startsWith("file:") ? dbArg.slice(5) : dbArg;
 const st = statSync(dbFile);
@@ -47,13 +47,13 @@ const host = (() => {
 })();
 
 const receipt: Record<string, unknown> = {
-	task: "T-SIB-INGEST-001 migration 0023",
+	task: "T-SIB-INGEST-001 migration 0024",
 	db_host: host,
 	started_utc: new Date().toISOString(),
 };
 
 function loadStatements(): string[] {
-	const raw = readFileSync(MIG_0023, "utf8");
+	const raw = readFileSync(MIG_0024, "utf8");
 	const parts = raw.includes("--> statement-breakpoint")
 		? raw.split("--> statement-breakpoint")
 		: raw.split(";");

@@ -1,0 +1,193 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_TbkRRTNgrJZqfkhV",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "1be17b5dc4304b7e9e0e711a135a89ceddfec37cea14c52d4e23ee0cb63d44b0",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_TbkRRTNgrJZqfkhV",
+    "topicTitle": "5. Solids, Liquids and Gases",
+    "subtopicTitle": "Ideal Gases",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/5-solids-liquids-and-gases/5-3-ideal-gases/5-3-4-the-gas-laws",
+    "specAnchors": [
+      {
+        "code": "5.20",
+        "text": "explain, for a fixed amount of gas, the qualitative relationship between: • pressure and volume at constant temperature • pressure and Kelvin temperature at constant volume"
+      }
+    ],
+    "primer": {
+      "text": "Squeeze a gas and it pushes back; heat it in a sealed box and it presses harder. This note sets out the two qualitative gas laws for a fixed sample — pressure against volume at constant temperature, and pressure against kelvin temperature at constant volume — each read straight off the kinetic model.",
+      "prerequisiteSubtopic": "Ideal Gases"
+    },
+    "modules": [
+      {
+        "id": "rn_TbkRRTNgrJZqfkhV::L1",
+        "title": "Pressure and volume at constant temperature",
+        "sourceHeadings": [
+          "Pressure & volume"
+        ],
+        "specRefs": [
+          "5.20"
+        ],
+        "opening": "Compress a gas slowly — temperature unchanged — and its pressure climbs. The molecules are the same, moving at the same speeds, but the shorter distances between walls mean every molecule lands hits more often.",
+        "keyPoints": [
+          "At constant temperature, reducing the volume of a fixed gas raises its pressure.",
+          "At constant temperature, increasing the volume lowers the pressure.",
+          "The molecular speeds are unchanged at constant temperature; only the flight distances shrink.",
+          "Shorter flights mean more frequent wall collisions per second.",
+          "More frequent collisions deliver a greater total force per wall area — higher pressure."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Shrink the box and the same fast molecules bump the walls more often, so the pressure goes up. Give them more room and the collisions thin out and the pressure drops.",
+            "analogy": "A fixed stream of shoppers forced through a narrower entrance: the door is hit more times per second even though each shopper walks at the same pace.",
+            "examPointer": "Keep the two halves of the mechanism separate: same speeds (constant temperature) but more frequent collisions (smaller volume). Missing either half costs the mark."
+          },
+          "medium": {
+            "restatement": "With temperature fixed, the mean molecular kinetic energy is fixed, so the impulse per collision is unchanged. Halving the volume shortens the mean free path, raising the collision rate per unit wall area; since pressure is impulse flux, it doubles in the ideal case — the inverse proportionality that Boyle quantifies.",
+            "analogy": "Crumpling the corridors of an office block: the walkers keep their pace, but everyone reaches an end-wall sooner, so the doors take a pounding.",
+            "examPointer": "The compression must be slow for 'constant temperature' to hold — a fast squeeze does work on the gas and warms it, which is why the question says 'at constant temperature'."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_TbkRRTNgrJZqfkhV::L1::Q1",
+          "rn_TbkRRTNgrJZqfkhV::L1::Q2",
+          "rn_TbkRRTNgrJZqfkhV::L1::Q3",
+          "rn_TbkRRTNgrJZqfkhV::L1::Q4",
+          "rn_TbkRRTNgrJZqfkhV::L1::Q5",
+          "rn_TbkRRTNgrJZqfkhV::L1::Q6",
+          "rn_TbkRRTNgrJZqfkhV::L1::Q7",
+          "rn_TbkRRTNgrJZqfkhV::L1::Q8",
+          "rn_TbkRRTNgrJZqfkhV::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_TbkRRTNgrJZqfkhV::L2",
+        "title": "Pressure and kelvin temperature at constant volume",
+        "sourceHeadings": [
+          "Pressure & temperature"
+        ],
+        "specRefs": [
+          "5.20"
+        ],
+        "opening": "Heat a sealed, rigid container of gas and the pressure climbs on the gauge. The molecules are already fast; warmer still, they fly faster, strike harder, and return sooner — a triple intensification of the bombardment.",
+        "keyPoints": [
+          "At constant volume, raising the kelvin temperature raises the pressure of a fixed gas.",
+          "Hotter molecules have higher average kinetic energy and higher average speeds.",
+          "Faster molecules deliver a larger impulse at each wall collision.",
+          "Faster molecules also return to the walls sooner, so collisions are more frequent.",
+          "Together the harder and more frequent impacts raise the pressure."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "In a rigid sealed box, heating makes the molecules faster, so they smack the walls harder and come back for another hit sooner. Both effects push the pressure up together.",
+            "analogy": "Hail upgrading from gravel to golf balls arriving twice as often: the roof feels it on both counts.",
+            "examPointer": "Quote both changes — harder hits AND more frequent hits — because a one-cause answer scores half."
+          },
+          "medium": {
+            "restatement": "At fixed volume the number density is fixed, so the collision frequency rises only through speed. Mean impulse per collision grows with molecular speed and the round-trip time to a wall falls with it, so the impulse flux — pressure — is proportional to mean kinetic energy, which is proportional to kelvin temperature: the qualitative seed of the pressure law.",
+            "analogy": "Shortening a squash court and speeding up the players simultaneously: the walls take a double penalty, pace and frequency compounding.",
+            "examPointer": "Connect to proportionality: pressure rises in step with kelvin temperature at constant volume — the statement the next note quantifies."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_TbkRRTNgrJZqfkhV::L2::Q1",
+          "rn_TbkRRTNgrJZqfkhV::L2::Q2",
+          "rn_TbkRRTNgrJZqfkhV::L2::Q3",
+          "rn_TbkRRTNgrJZqfkhV::L2::Q4",
+          "rn_TbkRRTNgrJZqfkhV::L2::Q5",
+          "rn_TbkRRTNgrJZqfkhV::L2::Q6",
+          "rn_TbkRRTNgrJZqfkhV::L2::Q7",
+          "rn_TbkRRTNgrJZqfkhV::L2::Q8",
+          "rn_TbkRRTNgrJZqfkhV::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "fixed amount of gas",
+          "definition": "A sealed sample whose molecule count does not change during the process.",
+          "firstLesson": 1
+        },
+        {
+          "term": "rigid container",
+          "definition": "A sealed container whose volume cannot change, the setting of the pressure–temperature relationship.",
+          "firstLesson": 2
+        },
+        {
+          "term": "collision rate",
+          "definition": "The number of wall impacts per second delivering the gas's pressure.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/96939ee14636-1-2-6-gas-volumes-at-low-temperatures-high-press.png",
+        "alt": "Gas Volumes at Low Temperatures & High Pressures, downloadable IB Chemistry revision notes",
+        "sourceHeading": "Pressure & volume",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Pressure increases when a gas is compressed"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/5906bdc81002-14-2-3-vacuum-pump.png",
+        "alt": "Vacuum pump, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Pressure & volume",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "By changing the pressure around the balloon, its change in volume can be seen"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/9cd38d07d244-1-2-5-states-of-matter-temperature-and-pressure.png",
+        "alt": "States of Matter Temperature and Pressure, downloadable IB Chemistry revision notes",
+        "sourceHeading": "Pressure & temperature",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "At constant volume, an increase in the temperature of the gas increases the pressure due to more collisions on the container walls"
+      }
+    ]
+  }
+}

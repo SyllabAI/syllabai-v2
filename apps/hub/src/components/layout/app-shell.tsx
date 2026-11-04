@@ -55,6 +55,7 @@ import { roleHome } from "@/lib/role-home";
 import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { useLastOpenedSync } from "@/lib/last-opened";
 import { useMockResultsSync } from "@/lib/mock-results";
+import { useTeacherStoresSync } from "@/lib/teacher/stores";
 import { isImmersiveRoute, isViewerRoute } from "@/lib/focus-routes";
 import { useLastOpened } from "@/lib/last-opened";
 import { cn } from "@/lib/utils";
@@ -100,6 +101,17 @@ const MORE_TOOLS = [
 // (run-015, audit F7 — extracted from this file and unit-tested); consumed via
 // the @/lib/tool-hrefs import above.
 
+// t-ui-polish run-001 — the MG/RD header signature: the most-used tools sit
+// INLINE in the header as quiet links with the run-004b active pill
+// (bg-accent-primary / text-accent-primary-foreground), exactly the course
+// nav row's recipe. Both references keep a visible top nav and relegate the
+// long tail to a menu — the dropdown stays for the full list at every width.
+// Hover rides @media(hover:hover) per the run-005 tier-a capture law.
+const QUICK_NAV_HREFS = ["/dashboard", "/courses", "/past-papers", "/plan"] as const;
+const quickNavItems = QUICK_NAV_HREFS.map((href) =>
+  TOOLS.find((t) => t.href === href),
+).filter((t) => t !== undefined);
+
 export function AppShell({
   children,
   // `config` stays part of the call contract (root layout still passes it);
@@ -122,6 +134,10 @@ export function AppShell({
   // everywhere the learner navigates, exactly like the identity store.
   useLastOpenedSync();
   useMockResultsSync();
+  // T-TIER1 run-002 — the teacher stores (saved tests / coverage / verdicts)
+  // mirror the account while a TEACHER is signed in; the hook is a no-op for
+  // students and signed-out sessions (the surface is teacher-owned).
+  useTeacherStoresSync();
   // course pages manage their own horizontal rhythm (course shell + resource
   // panel); the graph surfaces are full-bleed (the visualizer canvas wants
   // the whole viewport); the tutor workspace is an immersive app surface
@@ -262,6 +278,33 @@ export function AppShell({
               )}
             </DropdownMenuContent>
           </DropdownMenu>
+
+          {/* t-ui-polish run-001 — the MG/RD inline quick nav (lg+): quiet
+              links, the run-004b filled pill marks the active tool. Icons
+              ride inline at this width (the references' idiom); below lg
+              the Study tools dropdown remains the only nav. */}
+          <nav aria-label="Quick tools" className="hidden items-center gap-0.5 lg:flex">
+            {quickNavItems.map((t) => {
+              const active = isToolActive(t.href, pathname);
+              return (
+                <Link
+                  key={t.href}
+                  href={courseScopedToolHref(t.href, pathname, lastOpened?.slug ?? null)}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "group inline-flex h-9 items-center gap-1.5 rounded-md px-3 text-sm font-medium transition-colors",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                    active
+                      ? "bg-accent-primary text-accent-primary-foreground"
+                      : "text-muted-foreground [@media(hover:hover)]:hover:bg-muted [@media(hover:hover)]:hover:text-foreground",
+                  )}
+                >
+                  <t.icon className="size-4 opacity-60 [@media(hover:hover)]:group-hover:opacity-100" aria-hidden />
+                  <span>{t.label}</span>
+                </Link>
+              );
+            })}
+          </nav>
 
           <span className="ml-1 hidden text-xs text-muted-foreground xl:inline">
             IGCSE &amp; IAL revision · 4CH1 pilot

@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_H8r8FssR6Q3Ks7pc",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8baaf5940ab9136e273115b599d7e4545c1c8b664a75babf848889697d85502f",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "packageId": "igcse-physics::rn_H8r8FssR6Q3Ks7pc",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L1::Q1",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L1",
+      "stem": "What is the definition of specific heat capacity?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the energy needed to warm 1 kg of a substance by 1 °C",
+          "correct": true,
+          "explanation": "Per kilogram and per degree — the full definition.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the energy needed to melt 1 kg of a substance",
+          "correct": false,
+          "explanation": "That describes latent heat of fusion, not specific heat capacity.",
+          "misconception": "latent conflation"
+        },
+        {
+          "key": "C",
+          "text": "the temperature rise produced by 1 joule in any mass",
+          "correct": false,
+          "explanation": "The definition fixes the mass at 1 kg and the rise at 1 °C.",
+          "misconception": "definition tangle"
+        },
+        {
+          "key": "D",
+          "text": "the total energy stored in a heated object",
+          "correct": false,
+          "explanation": "That is thermal energy, not a per-kilogram-per-degree property.",
+          "misconception": "quantity conflation"
+        }
+      ]
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L1::Q2",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L1",
+      "stem": "Which is the correct unit of specific heat capacity?",
+      "misconceptionClass": "unit recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "J/kg",
+          "correct": false,
+          "explanation": "That omits the per-degree part.",
+          "misconception": "unit truncation"
+        },
+        {
+          "key": "B",
+          "text": "J/kg °C",
+          "correct": true,
+          "explanation": "Joules per kilogram per degree Celsius.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "J/°C",
+          "correct": false,
+          "explanation": "That omits the per-kilogram part — heat capacity, not specific heat capacity.",
+          "misconception": "unit truncation"
+        },
+        {
+          "key": "D",
+          "text": "W/kg °C",
+          "correct": false,
+          "explanation": "Watts measure energy per second, not energy.",
+          "misconception": "unit swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L1::Q3",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L1",
+      "stem": "Two identical pans, one water and one oil, sit on identical flames. The oil warms faster. Why?",
+      "misconceptionClass": "comparison reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the oil pan receives more energy",
+          "correct": false,
+          "explanation": "The flames are identical, so the energy supply is the same.",
+          "misconception": "energy invention"
+        },
+        {
+          "key": "B",
+          "text": "water always stays at the same temperature",
+          "correct": false,
+          "explanation": "Water warms too — just more slowly.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "C",
+          "text": "oil has a lower specific heat capacity than water",
+          "correct": true,
+          "explanation": "A smaller per-kilogram price means the same energy buys more degrees.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "oil has a higher specific heat capacity than water",
+          "correct": false,
+          "explanation": "Higher capacity would make the oil warm more slowly.",
+          "misconception": "relation inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L1::Q4",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L1",
+      "stem": "Why is water used as a coolant in car engines?",
+      "misconceptionClass": "application transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "its low specific heat capacity lets it heat up fast",
+          "correct": false,
+          "explanation": "Water's capacity is high, not low — and the cooling role wants that.",
+          "misconception": "relation inversion"
+        },
+        {
+          "key": "B",
+          "text": "water conducts electricity around the engine",
+          "correct": false,
+          "explanation": "Pure water is a poor conductor and that is not the design goal.",
+          "misconception": "irrelevant claim"
+        },
+        {
+          "key": "C",
+          "text": "water boils away to carry heat as steam",
+          "correct": false,
+          "explanation": "A coolant is meant to stay liquid, not boil off.",
+          "misconception": "mechanism invention"
+        },
+        {
+          "key": "D",
+          "text": "its high specific heat capacity lets it absorb lots of energy for a small temperature rise",
+          "correct": true,
+          "explanation": "High capacity makes an excellent energy carrier.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L1::Q5",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L1",
+      "stem": "A hot sand beach cools within minutes after sunset while the neighbouring sea stays warm for hours. Which property difference explains this?",
+      "misconceptionClass": "comparison reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "sand's specific heat capacity is much lower than water's",
+          "correct": true,
+          "explanation": "Low capacity swings temperature quickly both ways.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "sand's specific heat capacity is much higher than water's",
+          "correct": false,
+          "explanation": "High capacity would make sand the slow one.",
+          "misconception": "relation inversion"
+        },
+        {
+          "key": "C",
+          "text": "the sea receives extra energy at night",
+          "correct": false,
+          "explanation": "Both lose energy after sunset; the capacities differ.",
+          "misconception": "energy invention"
+        },
+        {
+          "key": "D",
+          "text": "water cannot cool below air temperature",
+          "correct": false,
+          "explanation": "Water cools freely; it just does so slowly.",
+          "misconception": "absurd claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L1::Q6",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L1",
+      "stem": "State what a specific heat capacity of 4200 J/kg °C tells you about water.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "It takes 4200 joules of energy to raise the temperature of 1 kilogram of water by 1 °C.",
+      "keywords": [
+        "4200",
+        "kilogram",
+        "degree",
+        "energy"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L1::Q7",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L1",
+      "stem": "State whether a substance with a low specific heat capacity heats up quickly or slowly, and why.",
+      "misconceptionClass": "property recall",
+      "kind": "recall",
+      "modelAnswer": "It heats up quickly, because only a little energy is needed per kilogram to raise its temperature by each degree.",
+      "keywords": [
+        "quickly",
+        "little",
+        "energy",
+        "temperature"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L1::Q8",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L1",
+      "stem": "Explain why the same campfire warms a small iron kettle quickly but a large copper cauldron slowly, even though both metals have low specific heat capacities.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The energy needed follows ΔQ = mcΔT, so mass matters as well as capacity. The kettle's small mass means the fire supplies its required energy quickly, while the cauldron's much larger mass multiplies the same per-kilogram price into a far larger total demand, so its temperature climbs slowly despite the low specific heat capacity.",
+      "keywords": [
+        "mass",
+        "capacity",
+        "energy",
+        "temperature"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L1::Q9",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L1",
+      "stem": "A 0.5 kg block of a metal with specific heat capacity 420 J/kg °C absorbs 21 000 J from a heater. Calculate its temperature rise.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "ΔT = ΔQ ÷ (m × c) = 21 000 ÷ (0.5 × 420) = 21 000 ÷ 210 = 100 °C, so the block warms by 100 °C.",
+      "keywords": [
+        "21",
+        "000",
+        "rise",
+        "100"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L2::Q1",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L2",
+      "stem": "Which equation gives the change in thermal energy with no change of state?",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "ΔQ = m × c ÷ ΔT",
+          "correct": false,
+          "explanation": "The temperature change multiplies; it does not divide.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "B",
+          "text": "ΔQ = m × c × ΔT",
+          "correct": true,
+          "explanation": "Mass times capacity times temperature change.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "ΔQ = m × L",
+          "correct": false,
+          "explanation": "That is the latent heat equation for state changes.",
+          "misconception": "equation tangle"
+        },
+        {
+          "key": "D",
+          "text": "ΔQ = c × ΔT",
+          "correct": false,
+          "explanation": "The mass factor is missing.",
+          "misconception": "factor drop"
+        }
+      ]
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L2::Q2",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L2",
+      "stem": "In the equation ΔQ = m × c × ΔT, what are the units of each quantity?",
+      "misconceptionClass": "unit recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "J, g, J/kg °C, °C",
+          "correct": false,
+          "explanation": "Mass must be in kilograms; grams need converting first.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "B",
+          "text": "J, kg, J/°C, °C",
+          "correct": false,
+          "explanation": "The capacity unit must keep its per-kilogram part.",
+          "misconception": "unit truncation"
+        },
+        {
+          "key": "C",
+          "text": "J, kg, J/kg °C, °C",
+          "correct": true,
+          "explanation": "Energy, mass, capacity, temperature change — in that order.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "W, kg, J/kg °C, K",
+          "correct": false,
+          "explanation": "ΔQ is energy in joules, not power in watts.",
+          "misconception": "unit swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L2::Q3",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L2",
+      "stem": "A kettle heats 0.48 kg of water by 0.7 °C. Taking c = 4200 J/kg °C, what energy is transferred?",
+      "misconceptionClass": "substitution",
+      "options": [
+        {
+          "key": "A",
+          "text": "about 14 000 J",
+          "correct": false,
+          "explanation": "That overstates the product by a factor of ten.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "B",
+          "text": "about 140 J",
+          "correct": false,
+          "explanation": "That understates the product by a factor of ten.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "C",
+          "text": "about 2016 J",
+          "correct": false,
+          "explanation": "That forgets the 0.7 factor.",
+          "misconception": "factor drop"
+        },
+        {
+          "key": "D",
+          "text": "about 1400 J",
+          "correct": true,
+          "explanation": "0.48 × 4200 × 0.7 = 1411.2 J, which is 1400 J to 2 s.f.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L2::Q4",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L2",
+      "stem": "A student computes a specific heat capacity of 42 000 J/kg °C for water from lab data. The accepted value is 4200. Which error best explains the tenfold result?",
+      "misconceptionClass": "error diagnosis",
+      "options": [
+        {
+          "key": "A",
+          "text": "the mass was entered in grams instead of kilograms",
+          "correct": true,
+          "explanation": "c = ΔQ/(mΔT): a mass ten times too big makes c ten times too small — in reverse, an entry slip of units inflates it.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the temperature change was measured too accurately",
+          "correct": false,
+          "explanation": "Precision does not produce a tenfold bias.",
+          "misconception": "irrelevant claim"
+        },
+        {
+          "key": "C",
+          "text": "water's capacity changes with the weather",
+          "correct": false,
+          "explanation": "Water's capacity is effectively constant across lab conditions.",
+          "misconception": "property invention"
+        },
+        {
+          "key": "D",
+          "text": "the accepted value is wrong",
+          "correct": false,
+          "explanation": "4200 J/kg °C is the established value.",
+          "misconception": "authority slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L2::Q5",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L2",
+      "stem": "Why does ΔQ = mcΔT give zero energy across a melting plateau, and what replaces it there?",
+      "misconceptionClass": "regime boundary",
+      "options": [
+        {
+          "key": "A",
+          "text": "no energy is supplied during melting",
+          "correct": false,
+          "explanation": "Energy is supplied — it funds the state change.",
+          "misconception": "no-energy slip"
+        },
+        {
+          "key": "B",
+          "text": "ΔT is zero during melting, so latent heat replaces the equation as the energy account",
+          "correct": true,
+          "explanation": "State changes are governed by latent heat, not by ΔQ = mcΔT.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the mass becomes zero during melting",
+          "correct": false,
+          "explanation": "Mass is conserved through a change of state.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "D",
+          "text": "c becomes infinite during melting",
+          "correct": false,
+          "explanation": "Capacity is defined within a single state.",
+          "misconception": "property invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L2::Q6",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L2",
+      "stem": "State the equation linking the thermal energy change to mass, capacity and temperature change.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "ΔQ = m × c × ΔT — change in thermal energy equals mass times specific heat capacity times change in temperature.",
+      "keywords": [
+        "energy",
+        "mass",
+        "capacity",
+        "temperature"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L2::Q7",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L2",
+      "stem": "State the rearrangement used to find specific heat capacity from experimental data.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "Divide the measured energy by the product of mass and temperature change: c = ΔQ ÷ (m × ΔT).",
+      "keywords": [
+        "energy",
+        "mass",
+        "temperature",
+        "divide"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L2::Q8",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L2",
+      "stem": "Explain why quoting 1411.2 J as 'about 1400 J' is better practice in an exam than leaving the long decimal.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The inputs — 0.48, 0.7 — carry at most two significant figures, so the product cannot honestly carry more than two. Quoting 1400 J matches the precision of the data, avoids implying a false accuracy, and matches the mark scheme's expectation for rounded final answers.",
+      "keywords": [
+        "significant",
+        "figures",
+        "precision",
+        "rounded"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_H8r8FssR6Q3Ks7pc::L2::Q9",
+      "moduleId": "rn_H8r8FssR6Q3Ks7pc::L2",
+      "stem": "A 2.0 kg block of water-equivalent material at 20 °C is warmed to 50 °C by a 252 000 J input. Show that this is consistent with c = 4200 J/kg °C.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "ΔT = 50 − 20 = 30 °C, so ΔQ = m × c × ΔT = 2.0 × 4200 × 30 = 252 000 J — exactly the supplied energy, confirming the capacity value.",
+      "keywords": [
+        "30",
+        "252",
+        "000",
+        "4200"
+      ],
+      "options": []
+    }
+  ]
+}

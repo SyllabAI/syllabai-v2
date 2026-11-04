@@ -78,6 +78,7 @@ import { createPortal } from "react-dom";
 import {
   AlertTriangle,
   Check,
+  ChevronDown,
   Compass,
   Eraser,
   Gauge,
@@ -96,6 +97,12 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import {
   INK_COLORS,
@@ -212,7 +219,10 @@ type LocalInkMigration =
 
 export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   const [token, setToken] = useState<string | null>(null);
-  const [enabled, setEnabled] = useState(false);
+  // T-MG-INK-11: MG's law — the annotator toolbar is ALWAYS visible on a
+  // paper page (extracted live: all 18 buttons render with no gate, no
+  // launcher). The old consent gate ("Ink" launcher) is gone; the sync
+  // gate below (sourceUrl) is the only mount condition.
   const [mode, setMode] = useState<InkToolMode>("pen");
   // T-MG-INK-10: the arm epoch — every explicit arming (toolbar click,
   // hint-card arm) bumps it; the hover chips key their per-arm spend on
@@ -324,7 +334,6 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   // (the disclosed difference).
   const [hintOpen, setHintOpen] = useState(false);
   useEffect(() => {
-    if (!enabled) return;
     let done = "1";
     try {
       done = window.localStorage.getItem(HINT_KEY) ?? "";
@@ -333,7 +342,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
       done = "";
     }
     if (!done) setHintOpen(true);
-  }, [enabled]);
+  }, []);
   const dismissHint = useCallback(() => {
     try {
       window.localStorage.setItem(HINT_KEY, "1");
@@ -468,7 +477,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   // re-fire on it), the re-attach is an addition-only batch, and benign
   // addition-only batches (the pane's text-layer rebuilds) never heal.
   useEffect(() => {
-    if (!enabled || !hostRef.current) return;
+    if (!hostRef.current) return;
     const host = hostRef.current;
     const rescan = () => {
       const found: HolderEntry[] = [];
@@ -514,7 +523,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
     });
     obs.observe(host, { childList: true, subtree: true });
     return () => obs.disconnect();
-  }, [enabled, hostRef, sync]);
+  }, [hostRef, sync]);
 
   const commitStroke = useCallback(
     (page: number, points: Array<[number, number]>) => {
@@ -642,9 +651,9 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
     <>
       {/* toolbar — floats over the pane's bottom edge (the mobile A/B pill
           pattern; the pane's own search owns top-11 right-2, so ink takes
-          the bottom-right corner); renders nothing until the learner asks
-          for ink */}
-      {enabled ? (
+          the bottom-right corner); ALWAYS visible (T-MG-INK-11: MG's
+          annotator toolbar ships with no gate — parity law) */}
+      {(
         <div
           role="toolbar"
           aria-label="Ink annotations"
@@ -750,43 +759,83 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             <Compass className="size-4" aria-hidden />
           </Button>
           <span className="mx-1 h-5 w-px bg-border" aria-hidden />
-          {INK_COLOR_KEYS.map((c) => (
-            <button
-              key={c}
-              type="button"
-              aria-label={`Pen colour: ${c[0].toUpperCase()}${c.slice(1)}`}
-              aria-pressed={color === c}
-              onClick={() => setColor(c)}
-              className={cn(
-                "size-6 rounded-full border-2 transition-transform",
-                color === c ? "scale-110 border-foreground" : "border-transparent",
-              )}
-              style={{ backgroundColor: INK_COLORS[c] }}
-            />
-          ))}
-          <span className="mx-1 h-5 w-px bg-border" aria-hidden />
-          {/* T-MG-INK-8: MG's thickness row — their names (Fine/Medium/
-            * Thick/Extra thick) and their exact toolbar dot diameters
-            * (4/7/11/16 px), index-aligned with INK_WIDTH_FRACS. */}
-          {INK_WIDTH_FRACS.map((w, i) => (
-            <button
-              key={w}
-              type="button"
-              aria-label={`Pen thickness: ${INK_WIDTH_NAMES[i]}`}
-              aria-pressed={widthIdx === i}
-              onClick={() => setWidthIdx(i)}
-              className={cn(
-                "flex size-8 items-center justify-center rounded-md",
-                widthIdx === i ? "bg-secondary" : "hover:bg-secondary/60",
-              )}
-            >
-              <span
-                aria-hidden
-                className="rounded-full bg-foreground"
-                style={{ width: INK_WIDTH_DOTS[i], height: INK_WIDTH_DOTS[i] }}
-              />
-            </button>
-          ))}
+          {/* T-MG-INK-11: MG's palette anatomy (extracted live): ONE
+            * trigger per row — a 16px round dot of the CURRENT colour,
+            * label "Pen colour: {Name}" — opening a menu of the six
+            * named colours; same for the four named thicknesses. The
+            * old inline swatch/dot rows are gone (never MG's shape). */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                size="sm"
+                variant="ghost"
+                className="size-8 gap-1 px-1.5"
+                aria-label={`Pen colour: ${color[0].toUpperCase()}${color.slice(1)}`}
+              >
+                <span
+                  aria-hidden
+                  className="size-4 rounded-full border-2 border-foreground/30"
+                  style={{ backgroundColor: INK_COLORS[color] }}
+                />
+                <ChevronDown className="size-3 text-muted-foreground" aria-hidden />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" aria-label="Pen colour">
+              {INK_COLOR_KEYS.map((c) => (
+                <DropdownMenuItem
+                  key={c}
+                  aria-label={c[0].toUpperCase() + c.slice(1)}
+                  onSelect={() => setColor(c)}
+                >
+                  <span
+                    aria-hidden
+                    className="size-4 rounded-full border-2 border-foreground/30"
+                    style={{ backgroundColor: INK_COLORS[c] }}
+                  />
+                  {c[0].toUpperCase() + c.slice(1)}
+                  {color === c && <Check className="ml-auto size-3.5" aria-hidden />}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                size="sm"
+                variant="ghost"
+                className="size-8 gap-1 px-1.5"
+                aria-label={`Pen thickness: ${INK_WIDTH_NAMES[widthIdx]}`}
+              >
+                <span
+                  aria-hidden
+                  className="rounded-full bg-foreground"
+                  style={{ width: INK_WIDTH_DOTS[widthIdx], height: INK_WIDTH_DOTS[widthIdx] }}
+                />
+                <ChevronDown className="size-3 text-muted-foreground" aria-hidden />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" aria-label="Pen thickness">
+              {INK_WIDTH_FRACS.map((w, i) => (
+                <DropdownMenuItem
+                  key={w}
+                  aria-label={INK_WIDTH_NAMES[i]}
+                  onSelect={() => setWidthIdx(i)}
+                >
+                  <span
+                    aria-hidden
+                    className="flex size-4 items-center justify-center"
+                  >
+                    <span
+                      className="rounded-full bg-foreground"
+                      style={{ width: INK_WIDTH_DOTS[i], height: INK_WIDTH_DOTS[i] }}
+                    />
+                  </span>
+                  {INK_WIDTH_NAMES[i]}
+                  {widthIdx === i && <Check className="ml-auto size-3.5" aria-hidden />}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
           <span className="mx-1 h-5 w-px bg-border" aria-hidden />
           <Button
             size="sm"
@@ -867,26 +916,10 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
               Local only — saved on this device. Log in to sync.
             </span>
           )}
-          <Button
-            size="sm"
-            variant="ghost"
-            className="size-8 px-0"
-            aria-label="Close ink layer"
-            onClick={() => setEnabled(false)}
-          >
-            <X className="size-4" aria-hidden />
-          </Button>
+          {/* T-MG-INK-11: no "Close ink layer" — MG's toolbar has no
+              close/launch chrome at all (their Collapse-toolbar is the
+              recorded out-of-scope extra); the toolbar simply IS. */}
         </div>
-      ) : (
-        <Button
-          size="sm"
-          variant="outline"
-          className="absolute bottom-3 right-2 z-40 h-8 gap-1.5 bg-background/95 text-xs shadow-md backdrop-blur"
-          aria-label="Draw on this paper (ink layer)"
-          onClick={() => setEnabled(true)}
-        >
-          <Pen className="size-3.5" aria-hidden /> Ink
-        </Button>
       )}
 
       {/* T-MG-INK-3 run-002: the consent-gated migration notice — sync
@@ -946,7 +979,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
           shown once (until armed/dismissed), only while the paper has
           no ink yet; clicking the card arms TEXT (MG's keyboard default),
           the ghost button arms the pen (MG's touch default), ✕ dismisses. */}
-      {enabled && hintOpen && snap.shapes.length === 0 && (
+      {hintOpen && snap.shapes.length === 0 && (
         <div
           aria-label="Put your answer down"
           className="absolute bottom-14 right-2 z-40 w-72 rounded-lg border bg-background/95 p-3 text-xs shadow-md backdrop-blur"
@@ -988,7 +1021,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
       {/* T-MG-INK-9: the math keyboard portal host (pane-wide bottom
           strip; the MathKeyboard portals in here while a math draft is
           editing with the keyboard toggled open). */}
-      {enabled && (
+      {(
         <div
           ref={setKbHost}
           data-ink-kb-host
@@ -1001,8 +1034,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
           re-attaches this exact subtree if the pane's repaint empties the
           holder (same nodes, no remount). display:contents keeps the
           canvas's absolute positioning resolved against the holder. */}
-      {enabled &&
-        holders.map(({ page, el }) =>
+      {holders.map(({ page, el }) =>
           createPortal(
             <div
               key={`ink-${page}`}
@@ -1841,7 +1873,10 @@ export function InkCanvas({
             fontFamily: INK_TEXT_FONT_STACK,
             fontWeight: mode === "text" ? INK_TEXT_WEIGHT : 400,
             fontSize: mode === "text" ? INK_CHIP_TEXT_PX : INK_CHIP_MATH_PX,
-            lineHeight: mode === "math" ? 1 : undefined,
+            // T-MG-INK-11: MG's text chip paints at line-height 1.35
+            // (their measured 32.39px box at 24px = 1.3496); maths is
+            // leading-none (their measured 18px box).
+            lineHeight: mode === "math" ? 1 : 1.35,
             color: INK_CHIP_COLOR,
             opacity: INK_CHIP_OPACITY,
           }}

@@ -1,0 +1,122 @@
+{
+  "source": "AI concept-web startup run (F8 rollout batch six; T-KG-PRE-8, lane IALD1). The web is the AI_SUGGESTED, UNVALIDATED concept lattice authored by the F8 lane for this syllabus, every anchor machine-verified against the served spine's point ids (0 unmapped pass law) and exported in-order only by the calibrated law of scripts/kg_f8al_project.py. Bases mirror the operator-validated store vocabulary. prereqValidated stays EMPTY — the renderer labels every shipped pair INFERRED PROTOTYPE; the named gate before any of this is treated as truth remains the SME validation pass.",
+  "generatedUtc": "2026-11-04T01:31:13Z",
+  "curriculumCode": "YMA01",
+  "hubCourseSlug": "ial-maths-20-decision-1",
+  "conceptAnchors": {
+    "IAD1-CON-ALGORITHMS": [
+      "1.1",
+      "1.2"
+    ],
+    "IAD1-CON-MST": [
+      "2.1"
+    ],
+    "IAD1-CON-DIJKSTRA": [
+      "2.2"
+    ],
+    "IAD1-CON-ROUTE-INSPECTION": [
+      "3.1"
+    ],
+    "IAD1-CON-TSP": [
+      "3.2"
+    ],
+    "IAD1-CON-TSP-BOUNDS": [
+      "3.3"
+    ],
+    "IAD1-CON-NEAREST-NEIGHBOUR": [
+      "3.4"
+    ],
+    "IAD1-CON-ACTIVITY-NETWORKS": [
+      "4.1",
+      "4.2"
+    ],
+    "IAD1-CON-CRITICAL-PATH": [
+      "4.3"
+    ],
+    "IAD1-CON-FLOAT-GANTT": [
+      "4.4"
+    ],
+    "IAD1-CON-LP-FORMULATION": [
+      "5.1"
+    ],
+    "IAD1-CON-LP-GRAPHICAL": [
+      "5.2"
+    ],
+    "IAD1-CON-LP-INTEGER": [
+      "5.3"
+    ]
+  },
+  "validatedPrerequisiteEdges": [],
+  "inferredPrototypePre": [],
+  "inferredPrototypeRel": [],
+  "conceptWebPrerequisiteEdges": [
+    {
+      "prerequisite": "IAD1-CON-ALGORITHMS",
+      "dependent": "IAD1-CON-MST",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAD1-CON-ALGORITHMS",
+      "dependent": "IAD1-CON-DIJKSTRA",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAD1-CON-DIJKSTRA",
+      "dependent": "IAD1-CON-ROUTE-INSPECTION",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAD1-CON-DIJKSTRA",
+      "dependent": "IAD1-CON-TSP",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAD1-CON-TSP",
+      "dependent": "IAD1-CON-TSP-BOUNDS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAD1-CON-MST",
+      "dependent": "IAD1-CON-TSP-BOUNDS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAD1-CON-TSP",
+      "dependent": "IAD1-CON-NEAREST-NEIGHBOUR",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAD1-CON-ACTIVITY-NETWORKS",
+      "dependent": "IAD1-CON-CRITICAL-PATH",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAD1-CON-CRITICAL-PATH",
+      "dependent": "IAD1-CON-FLOAT-GANTT",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAD1-CON-LP-FORMULATION",
+      "dependent": "IAD1-CON-LP-GRAPHICAL",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAD1-CON-LP-GRAPHICAL",
+      "dependent": "IAD1-CON-LP-INTEGER",
+      "basis": "USED_WITHOUT_RETEACHING"
+    }
+  ],
+  "counts": {
+    "anchoredConcepts": 13,
+    "conceptWebEdges": 11,
+    "validatedEdges": 0,
+    "inferredPre": 0,
+    "inferredRel": 0
+  },
+  "exportCounts": {
+    "candidates": 14,
+    "selfLoops": 0,
+    "reversedDropped": 0,
+    "preExported": 14
+  }
+}

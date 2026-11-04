@@ -14,7 +14,7 @@
 #
 #   job 1 (cow-proof, mode != prod-only): COW branch off production +
 #     BRANCH-LOCAL owner password reset (production roles never touched),
-#     migration 0023 as RAW SQL (0007 disclosure law) + the FULL corpus
+#     migration 0024 as RAW SQL (0007 disclosure law) + the FULL corpus
 #     apply onto the COW, then ONE pilot document backfilled via the frozen
 #     executor; asserts pilot embedded && gap_embedded == 0; receipt
 #     artifacts ALWAYS; DROP the COW + 404-verify even on failure
@@ -116,11 +116,11 @@ jobs:
           [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
           ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
           echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
-      - name: Migration 0023 + full corpus APPLY onto the COW
+      - name: Migration 0024 + full corpus APPLY onto the COW
         run: |
           printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/sib-cow.uri
           chmod 600 /tmp/sib-cow.uri
-          bun scripts/sib-ingest/apply-0023.ts --db file:/tmp/sib-cow.uri --receipt cow-0023-receipt.json
+          bun scripts/sib-ingest/apply-0024.ts --db file:/tmp/sib-cow.uri --receipt cow-0024-receipt.json
           bun apps/api/scripts/sib-ingest.ts --mode apply --stage /tmp/sib-stage \
             --db file:/tmp/sib-cow.uri --probe-word "${{ inputs.probe-word }}" \
             --receipt cow-apply-receipt.json
@@ -162,7 +162,7 @@ jobs:
         with:
           name: tsib001-cow-backfill-proof
           path: |
-            cow-0023-receipt.json
+            cow-0024-receipt.json
             cow-apply-receipt.json
             cow-pilot-result.json
           if-no-files-found: ignore

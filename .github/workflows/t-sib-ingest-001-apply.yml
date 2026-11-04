@@ -10,7 +10,7 @@
 #     apply script of record DRY on the runner, create a disposable Neon COW
 #     branch off production (in-line read_write endpoint, NEON_API_KEY = the
 #     CI key of record), reset the BRANCH-LOCAL owner password (production
-#     roles never touched), apply migration 0023 as RAW SQL (0007 disclosure
+#     roles never touched), apply migration 0024 as RAW SQL (0007 disclosure
 #     law — NO drizzle bookkeeping), run sib-ingest.ts --mode apply (ONE
 #     transaction, COW-proof probe word, postverify inside), receipt
 #     artifacts ALWAYS, then DROP the COW + 404-verify even on failure
@@ -114,11 +114,11 @@ jobs:
           [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
           ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
           echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
-      - name: Migration 0023 as RAW SQL (0007 disclosure law)
+      - name: Migration 0024 as RAW SQL (0007 disclosure law)
         run: |
           printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/sib-cow.uri
           chmod 600 /tmp/sib-cow.uri
-          bun scripts/sib-ingest/apply-0023.ts --db file:/tmp/sib-cow.uri --receipt cow-0023-receipt.json
+          bun scripts/sib-ingest/apply-0024.ts --db file:/tmp/sib-cow.uri --receipt cow-0024-receipt.json
       - name: APPLY the SIB corpus (one transaction, COW-proof probe, postverify)
         run: |
           bun apps/api/scripts/sib-ingest.ts --mode apply --stage /tmp/sib-stage \
@@ -131,7 +131,7 @@ jobs:
           name: tsib001-cow-receipts
           path: |
             cow-dry-receipt.json
-            cow-0023-receipt.json
+            cow-0024-receipt.json
             cow-apply-receipt.json
           if-no-files-found: ignore
       - name: DROP the COW + 404-verify (zero residue, even on failure)
@@ -168,7 +168,7 @@ jobs:
         run: bash scripts/sib-ingest/fetch-stage.sh /tmp/sib-stage
       - name: Apply script of record — DRY on the runner
         run: bun apps/api/scripts/sib-ingest.ts --mode dry --stage /tmp/sib-stage --receipt prod-dry-receipt.json
-      - name: Migration 0023 as RAW SQL + APPLY against production
+      - name: Migration 0024 as RAW SQL + APPLY against production
         env:
           SIB_PROD_DATABASE_URL: ${{ secrets.SIB_PROD_DATABASE_URL }}
         run: |
@@ -176,7 +176,7 @@ jobs:
           [ -n "$SIB_PROD_DATABASE_URL" ] || { echo "SIB_PROD_DATABASE_URL not staged — abort"; exit 2; }
           printf '%s' "$SIB_PROD_DATABASE_URL" > /tmp/sib-prod.uri
           chmod 600 /tmp/sib-prod.uri
-          bun scripts/sib-ingest/apply-0023.ts --db file:/tmp/sib-prod.uri --receipt prod-0023-receipt.json
+          bun scripts/sib-ingest/apply-0024.ts --db file:/tmp/sib-prod.uri --receipt prod-0024-receipt.json
           bun apps/api/scripts/sib-ingest.ts --mode apply --stage /tmp/sib-stage \
             --db file:/tmp/sib-prod.uri --probe-word "${{ inputs.probe-word }}" \
             --receipt prod-apply-receipt.json
@@ -187,6 +187,6 @@ jobs:
           name: tsib001-prod-receipts
           path: |
             prod-dry-receipt.json
-            prod-0023-receipt.json
+            prod-0024-receipt.json
             prod-apply-receipt.json
           if-no-files-found: ignore

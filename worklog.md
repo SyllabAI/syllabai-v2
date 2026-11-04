@@ -1079,3 +1079,31 @@ Work Log:
 Stage Summary:
 - PUSH + PR OF RECORD: branch pushed to origin/sib/ingest-4ch1-r0 @ 6b580fb (rotated PAT of record, in-process credential helper — no token on any command line or in any output); PR #702 opened (base main): https://github.com/SyllabAI/syllabai-v2/pull/702. Note: the workflows become UI-dispatchable once the PR lands on main; until then dispatch via API against the branch ref, or merge first.
 - "use github actions" executed to the last pre-dispatch line: both gate runners INERT-dispatchable on the branch, CI path simulated green end-to-end minus DB. Remaining (operator): stage the 2 per-run secrets, dispatch t-sib-ingest-001-apply (probe word of choice; cow-only for receipt review or cow+prod to land), then t-sib-embed-backfill (after apply-prod green — mechanically census-guarded).
+## t-book-073 run-001 close-out — c17 media-embed pushed, PR #705 merged (main 3b7dd7f4); playback re-verified on production (operator order trace 1a1a20d3cc3c4e65, continued on PAT re-knock trace 1a1a2ea36d3287a9)
+Agent: main (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7)
+Task: land the r0-prepared c17 video close-out (branch was local-only at 95d4c33a, blocked in the prior session on a presumed-dead PAT) and re-verify the lesson-page playback law first-hand.
+
+Work Log:
+- fetch-first: origin/main 5853e431 -> 59dbd8ad since the r0 pin; the 3 touched files have ZERO overlap with the intervening RN-DEBRIS-11 run-002 repairs — branch rebased clean (95d4c33a -> db9d08b2), re-pinned, diff re-reviewed (manifest row cog-4-12-reactions-of-acids + b07 block + planned_blocks 6->7, byte-identical intent).
+- PAT forensics: the r0 "PAT is DEAD: 401" verdict was an empty-env artifact (shell exports do not persist across tool calls; the 401 battery had fired against an EMPTY credential). Same command-injection re-test: HTTP 200 login SyllabAI on /user + /rate_limit. Superseded of record in receipt r1.
+- Land: push -> PR #705 -> gate-b watched to completion (hub success + verify success, absent != success honored) -> merged as 3b7dd7f4; the 28/29 -> 29/29 packs video coverage closes of-record.
+- Production re-probe (headless browser, syllabai-hub-v2.vercel.app): c16 lesson renders the media-embed iframe youtube-nocookie.com/embed/Yrf3Z_TQu_k?rel=0 at 708x398 with Watch-on-YouTube + Cognito attribution — videos PLAY from the lesson page; c17 lesson (h1 'Salt preparations') still honest-empty (no iframe) until the DB ingest; new video vcxlISVJ6Os re-probed direct (oembed 200 author Cognito, nocookie embed 200 / 135,998 B).
+- Open item (single): the operator-keyed ingest DATABASE_URL=... bun apps/api/scripts/books-ingest-rail.ts books/4ch1 <manifest> — the ep-ancient-cake MAIN pooler DSN was not resident this session (env-injection law); the c17 Watch card serves on its completion, then the c17 lesson re-probe flips.
+
+Stage Summary:
+- t-book-073 run-001: CLOSED at the git/CI/merge plane and VERIFIED at the playback plane; 29/29 packs now have a curated video of-record on main (3b7dd7f4). Remaining: the c17 b07 DB ingest + post-ingest production re-probe, operator-keyed. Receipts .syllabai/receipts/T-BOOK-073/{c17-media-embed-r0,c17-media-embed-r1}.json; PR #705; merge 3b7dd7f4. Credential rotation reminder stands (ghp_/vcp_/napi_/npg_ x2 chat-exposed).
+
+## t-book-073 run-001 DB leg + serve proof — c17 b07 ingested & flipped on MAIN of record; the Watch card serves on production (operator order trace 1a1a20d3cc3c4e65; DSN re-knock trace 1a1a4819e2faa119)
+Agent: main (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7)
+Task: the operator-keyed DB leg the prior legs disclosed as pending — land c17 b07 in book_blocks on the ep-ancient-cake MAIN pooler, flip it, and prove the card serves from the lesson page.
+
+Work Log:
+- Recycle recovery: checkout had rolled back to a stale snapshot (t-book-015 @ 3002b509, 1573 behind) — fetch-first re-pinned main at 87d8e660; bun install rebuilt workspace deps (tracked node_modules symlink's store target was recycled).
+- Endpoint identity BEFORE any write: GUCs say project billowing-cherry-15418366, branch br-muddy-bar-a5huwldd, PG 18.6 — the MAIN of record. DSN env-injected per command, never echoed or on disk.
+- Preflight census: 265/265 rows VALIDATED; c17 chapter VALIDATED (join set holds 2.37+2.39); c16's media-embed updated 2026-11-02 vs its 2026-10-27 siblings → the widen runs used a SCOPED single-block landing, so the full re-ingest (whose upsert resets VALIDATED to SUGGESTED) was NOT run — dry-run only, shape proven (266 blocks, u2:c17 #7 rides).
+- Serving law read of record: railBlocksForChapter double gate (book VALIDATED AND row VALIDATED) — flip required.
+- Land: b07 INSERT on-conflict(identity) as SUGGESTED (binding laws checked live first). Flip: separate keyed S4 action → VALIDATED. Post-flip census: 266/266 VALIDATED, nothing else moved.
+- Serve proof (production, headless browser): c17 lesson (h1 'Salt preparations') renders the media-embed card — iframe youtube-nocookie.com/embed/vcxlISVJ6Os?rel=0 at 708x398, correct video title, Watch-on-YouTube link, Cognito attribution + media-sources.yaml licensing line. Screenshot: .syllabai/lane-artifacts/T-BOOK-073/c17-watch-card-production.png.
+
+Stage Summary:
+- t-book-073 CLOSED IN FULL: video hunted & curated (r0), pushed/PR #705/gate-b/merged 3b7dd7f4 (r1), DB land+flip on MAIN of record + first-hand production serve proof (r2). 'Does our Course Lessons have videos?' now answers 29/29 packs of-record; c17's Watch card plays from the lesson page. Credential rotation reminder stands (ghp_/vcp_/napi_/npg_ x2 chat-exposed).

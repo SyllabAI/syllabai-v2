@@ -1,0 +1,278 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_r6HzX8DgQ84bGBMP",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "f67bb06c89287f377327913be187cd3531b09dec2217158131efa3d0472b7c87",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_r6HzX8DgQ84bGBMP",
+    "topicTitle": "4. Energy Resources and Energy Transfers",
+    "subtopicTitle": "Work, Power & Energy Resources",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/4-energy-resources-and-energy-transfers/4-2-work-power-and-energy-resources/4-2-1-work-done",
+    "specAnchors": [
+      {
+        "code": "4.11",
+        "text": "know and use the relationship between work done, force and distance moved in the direction of the force: work done = force × distance moved W = F × d"
+      },
+      {
+        "code": "4.12",
+        "text": "know that work done is equal to energy transferred"
+      }
+    ],
+    "primer": {
+      "text": "Work done is the energy story behind every push and pull that actually moves something. These lessons pin down when a force counts as doing work, how the transferred joules land in different stores, and how the work done equation turns force and distance into a number you can calculate.",
+      "prerequisiteSubtopic": "Energy Stores & Transfers"
+    },
+    "modules": [
+      {
+        "id": "rn_r6HzX8DgQ84bGBMP::L1",
+        "title": "The meaning of work done",
+        "sourceHeadings": [
+          "What is work done?",
+          "Work done and energy transfer"
+        ],
+        "specRefs": [
+          "4.12"
+        ],
+        "opening": "Whenever a force succeeds in moving an object along the direction it acts, physicists say the force does work. That work is not lost: it is the measure of energy transferred, which is why both are counted in the same unit, the joule.",
+        "keyPoints": [
+          "Work is done only when a force makes an object move through a distance along the direction of the force.",
+          "A force that fails to produce any movement transfers no energy, so no work is done.",
+          "The energy transferred when work is done equals the work done, both measured in joules.",
+          "A force acting along the direction of motion fills the object's kinetic store, while an opposing force drains energy away to the surroundings."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Push something and it moves: the pusher loses energy and the mover gains it, and the size of that exchange is exactly the work done. Hold something still with all your strength and nothing moves, so nothing is transferred and the work done stays at zero.",
+            "analogy": "Treat work done as a payment for movement: the force offers the money, distance covered along the force's line earns it, and a payment with no movement is refunded — nothing changes hands.",
+            "examPointer": "When a sketch shows a force arrow and a motion arrow, check their directions first: energy flows into the object when they agree and out of it when they oppose."
+          },
+          "medium": {
+            "restatement": "Work done quantifies a mechanical transfer of energy: a force of given size acting while its point of application travels a matching distance shifts an equal quantity of energy, counted in joules, into or out of the object's stores depending on the alignment.",
+            "analogy": "A conveyor belt handing out energy coupons: every metre the belt drives the load forward along the push, one coupon's worth of energy changes hands.",
+            "examPointer": "Quote the unit joule when equating energy transferred with work done, and state the direction condition — movement along the line of the force — before claiming work has been done."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_r6HzX8DgQ84bGBMP::L1::Q1",
+          "rn_r6HzX8DgQ84bGBMP::L1::Q2",
+          "rn_r6HzX8DgQ84bGBMP::L1::Q3",
+          "rn_r6HzX8DgQ84bGBMP::L1::Q4",
+          "rn_r6HzX8DgQ84bGBMP::L1::Q5",
+          "rn_r6HzX8DgQ84bGBMP::L1::Q6",
+          "rn_r6HzX8DgQ84bGBMP::L1::Q7",
+          "rn_r6HzX8DgQ84bGBMP::L1::Q8",
+          "rn_r6HzX8DgQ84bGBMP::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_r6HzX8DgQ84bGBMP::L2",
+        "title": "Work done in everyday examples",
+        "sourceHeadings": [
+          "Examples of work done",
+          "Work done pushing a box"
+        ],
+        "specRefs": [
+          "4.12"
+        ],
+        "opening": "Three everyday scenes make the idea concrete: pushing a box across a floor, lifting a ball upward, and a bird battling through the air. In each one a force acts over a distance, and the energy movements between stores can be traced store by store.",
+        "keyPoints": [
+          "Pushing a box across the floor transfers energy from the person to the box while the force moves it along.",
+          "Lifting a ball transfers energy mechanically into its gravitational potential store as it gains height.",
+          "A bird flying forwards does work against air resistance, draining its kinetic store into thermal stores of the bird and the air.",
+          "Whether energy lands in a useful store or is dissipated depends on which direction the force acts relative to the movement."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Push a box and your effort lands in its motion and in the warming floor; lift a ball and your effort lands in its height; fly as a bird and your effort leaks into the air as heat. Same law, three destinations.",
+            "analogy": "Three delivery vans leaving one depot: the address — aligned push, upward lift, headwind drag — decides which warehouse, motion or height or warmth, receives the parcel of energy.",
+            "examPointer": "Name the force, the distance and the receiving store in every description: that trio earns the marks in examples like these."
+          },
+          "medium": {
+            "restatement": "In each scene the work done by the named force equals the energy it transfers, but the destination store differs: aligned pushes feed kinetic stores, lifts feed gravitational stores, and drags against motion dissipate energy to thermal stores of object and surroundings alike.",
+            "analogy": "A pay slip routed three ways: the same wage (work done) lands in a current account (kinetic), a savings account (gravitational) or is spent at once (dissipated heat), depending on the route chosen.",
+            "examPointer": "When asked about a specific example, tie the direction of the force to the store that fills or empties — opposing forces always route energy to thermal stores."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_r6HzX8DgQ84bGBMP::L2::Q1",
+          "rn_r6HzX8DgQ84bGBMP::L2::Q2",
+          "rn_r6HzX8DgQ84bGBMP::L2::Q3",
+          "rn_r6HzX8DgQ84bGBMP::L2::Q4",
+          "rn_r6HzX8DgQ84bGBMP::L2::Q5",
+          "rn_r6HzX8DgQ84bGBMP::L2::Q6",
+          "rn_r6HzX8DgQ84bGBMP::L2::Q7",
+          "rn_r6HzX8DgQ84bGBMP::L2::Q8",
+          "rn_r6HzX8DgQ84bGBMP::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_r6HzX8DgQ84bGBMP::L3",
+        "title": "Calculating work done",
+        "sourceHeadings": [
+          "The work done equation",
+          "Work done formula triangle"
+        ],
+        "specRefs": [
+          "4.11"
+        ],
+        "opening": "The work done equation turns the idea into numbers: multiply the force by the distance travelled along that force and you have the energy transferred in joules. A formula triangle keeps the three quantities straight when rearranging.",
+        "keyPoints": [
+          "Work done = force × distance travelled along the force's line, written W = F × d.",
+          "Force enters the equation in newtons and distance in metres, giving work done in joules or newton-metres.",
+          "A formula triangle covering W with F and d on show reproduces every rearrangement of the equation.",
+          "Only the distance component along the force's own line counts toward the work done by that force."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Pick the force, measure how far the thing moved along that push, and multiply: the answer is the energy handed over. The triangle is the pocket version — hide the quantity you want and the layout of the other two shows the operation.",
+            "analogy": "A vending machine: insert force, insert distance along the slot, and the machine dispenses the exact number of joules — wrong slot alignment, wrong payout.",
+            "examPointer": "Convert to newtons and metres before multiplying so the answer lands in joules, and quote the unit with the number."
+          },
+          "medium": {
+            "restatement": "W = F × d prices a transfer in joules: F in newtons, d in metres measured along the force's line. The triangle encodes the three rearrangements — W = Fd, F = W/d, d = W/F — for the quantity an exam question hides.",
+            "analogy": "Three cogs labelled W, F and d in a row: cover any one and the remaining two show whether to multiply or divide.",
+            "examPointer": "For angled pulls, use the distance along the force's direction, not the full path length, and say so in your working."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_r6HzX8DgQ84bGBMP::L3::Q1",
+          "rn_r6HzX8DgQ84bGBMP::L3::Q2",
+          "rn_r6HzX8DgQ84bGBMP::L3::Q3",
+          "rn_r6HzX8DgQ84bGBMP::L3::Q4",
+          "rn_r6HzX8DgQ84bGBMP::L3::Q5",
+          "rn_r6HzX8DgQ84bGBMP::L3::Q6",
+          "rn_r6HzX8DgQ84bGBMP::L3::Q7",
+          "rn_r6HzX8DgQ84bGBMP::L3::Q8",
+          "rn_r6HzX8DgQ84bGBMP::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "work done",
+          "definition": "The energy transferred when a force moves an object through a distance along the direction of the force.",
+          "firstLesson": 1
+        },
+        {
+          "term": "joule",
+          "definition": "The unit of energy and of work done; one joule equals one newton-metre.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dissipated",
+          "definition": "Spread to the surroundings, usually by heating, so the energy is no longer held in a useful store.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A car moving at speed begins to apply the brakes. The brakes of the car apply a force of 500 N which brings it to a stop after 23 m. Calculate the work done by the brakes in stopping the car.",
+        "steps": [
+          "List the known quantities: force F = 500 N and distance d = 23 m.",
+          "State the equation: W = F × d.",
+          "Substitute: W = 500 × 23.",
+          "Evaluate: W = 11 500 J."
+        ],
+        "finalAnswer": "The brakes do 11 500 J of work in stopping the car."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/257ed8820c14-work-force-object.png",
+        "alt": "work-force-object, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Work done pushing a box",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Work is done when a force is used to move an object over a distance, and energy is transferred from the person to the box"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/380d730eadbb-5-2-1-work-done-ball.png",
+        "alt": "Work Done ball, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Examples of work done",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The weight on the ball produced by the gravitational field does work on the ball over a distance"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/c3bea2ecf35b-5-2-1-work-done-bird.png",
+        "alt": "Work Done bird, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Examples of work done",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The bird does work against air resistance (drag) as it flies through the air"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/9c65141220dc-work-triangle-3.png",
+        "alt": "Work triangle (3), IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Work done formula triangle",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Work, force, distance formula triangle"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/34727e658289-braking-work.png",
+        "alt": "braking-work, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Work done formula triangle",
+        "moduleIds": [],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

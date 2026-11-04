@@ -1,0 +1,221 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_kTvJN82ZMcTrCypr",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "5001a6f3543f64514f5650cc040fe011843504b50fd8e1217c03577b23bc61ba",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_kTvJN82ZMcTrCypr",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Sound",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-3-sound/3-3-4-pitch--loudness",
+    "specAnchors": [
+      {
+        "code": "3.28P",
+        "text": "understand how the pitch of a sound relates to the frequency of vibration of the source"
+      },
+      {
+        "code": "3.29P",
+        "text": "understand how the loudness of a sound relates to the amplitude of vibration of the source"
+      },
+      {
+        "code": "3.24P",
+        "text": "know that the frequency range for human hearing is 20–20 000 Hz"
+      }
+    ],
+    "primer": {
+      "text": "Pitch and loudness are the two handles a listener has on any note, and both have a mechanical counterpart in the vibrating source. This note fixes the pitch-frequency pairing on the oscilloscope, the loudness-amplitude pairing beside it, and marks out the frequency window of human hearing with its infrasound and ultrasound borders.",
+      "prerequisiteSubtopic": "Sound"
+    },
+    "modules": [
+      {
+        "id": "rn_kTvJN82ZMcTrCypr::L1",
+        "title": "Pitch and the oscilloscope trace",
+        "sourceHeadings": [
+          "The relationship between the pitch and frequency of sound",
+          "Comparing the pitch of sound displayed on an oscilloscope"
+        ],
+        "specRefs": [
+          "3.28P"
+        ],
+        "opening": "Pitch tracks how fast a sound source vibrates. On an oscilloscope that speed becomes visible as the number of complete cycles packed across the screen, so two notes can be ranked by pitch from their traces alone, without hearing either one.",
+        "keyPoints": [
+          "Pitch tracks the frequency of the vibrating source.",
+          "High-frequency vibration gives high pitch and low-frequency vibration gives low pitch.",
+          "On an oscilloscope, a higher-frequency note shows more complete cycles across the same screen width.",
+          "Wider peak-to-peak spacing on the screen means fewer cycles per second, so lower pitch.",
+          "Doubling the frequency of a note raises it by one octave."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Frequency sets pitch; the oscilloscope displays frequency horizontally, so more cycles across the same width is the higher-pitched note.",
+            "analogy": "A garden swing: how many full swings it makes each second is the frequency, and that count is the pitch you hear.",
+            "examPointer": "Octave arithmetic is fair game: doubling frequency (256 → 512 Hz) is one octave up; halving is one octave down."
+          },
+          "medium": {
+            "restatement": "Frequency and pitch move together because the ear follows the source’s vibration rate; on screen the comparison is horizontal (cycles per width) while amplitude stays vertical, so pitch and loudness are read from the same trace without confusion.",
+            "analogy": "Two garden swings of different lengths: the shorter one completes more swings each minute, like the higher-pitched note.",
+            "examPointer": "Octave arithmetic: doubling the frequency (256 → 512 Hz) raises the note one octave; halving lowers it one octave."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kTvJN82ZMcTrCypr::L1::Q1",
+          "rn_kTvJN82ZMcTrCypr::L1::Q2",
+          "rn_kTvJN82ZMcTrCypr::L1::Q3",
+          "rn_kTvJN82ZMcTrCypr::L1::Q4",
+          "rn_kTvJN82ZMcTrCypr::L1::Q5",
+          "rn_kTvJN82ZMcTrCypr::L1::Q6",
+          "rn_kTvJN82ZMcTrCypr::L1::Q7",
+          "rn_kTvJN82ZMcTrCypr::L1::Q8",
+          "rn_kTvJN82ZMcTrCypr::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_kTvJN82ZMcTrCypr::L2",
+        "title": "Loudness and the range of human hearing",
+        "sourceHeadings": [
+          "Comparing the volume of sound displayed on an oscilloscope",
+          "The infrasound, human hearing and ultrasound frequency ranges"
+        ],
+        "specRefs": [
+          "3.29P",
+          "3.24P"
+        ],
+        "opening": "Loudness tracks how far the source vibrates, and the oscilloscope shows it as trace height. Frequency itself has hard borders for the human ear: 20 Hz to 20 000 Hz, with infrasound below and ultrasound above — a sorting rule examiners love to test.",
+        "keyPoints": [
+          "Loudness tracks the amplitude of the vibrating source: louder sounds swing with larger amplitude.",
+          "On an oscilloscope, a louder note shows a taller trace measured from the centre line.",
+          "The human ear responds to vibrations caused by sound waves.",
+          "Human hearing spans 20 Hz to 20 000 Hz.",
+          "Frequencies below the range are infrasound and frequencies above it are ultrasound."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Amplitude sets loudness and shows vertically on the screen; frequency has an audible window of 20 Hz to 20 000 Hz, with infrasound underneath and ultrasound above.",
+            "analogy": "A radio that only tunes between two stations: infrasound and ultrasound broadcast outside the dial, perfectly real but unheard.",
+            "examPointer": "Quote the hearing range with units every time: 20 Hz to 20 000 Hz. Sorting a frequency into infra-, audible or ultra- is a one-mark giveaway."
+          },
+          "medium": {
+            "restatement": "Loudness scales with amplitude as height on the screen; the 20 Hz–20 000 Hz window then sorts every frequency into audible, infrasound (below) or ultrasound (above), independent of loudness.",
+            "analogy": "A torch beam too dim to see is still light; an ultrasound tone too high to hear is still sound — the window, not the wave, decides perception.",
+            "examPointer": "Classification turns on the numbers: 16 Hz < 20 Hz is infrasound, 25 000 Hz > 20 000 Hz is ultrasound; quote the boundary in the answer."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kTvJN82ZMcTrCypr::L2::Q1",
+          "rn_kTvJN82ZMcTrCypr::L2::Q2",
+          "rn_kTvJN82ZMcTrCypr::L2::Q3",
+          "rn_kTvJN82ZMcTrCypr::L2::Q4",
+          "rn_kTvJN82ZMcTrCypr::L2::Q5",
+          "rn_kTvJN82ZMcTrCypr::L2::Q6",
+          "rn_kTvJN82ZMcTrCypr::L2::Q7",
+          "rn_kTvJN82ZMcTrCypr::L2::Q8",
+          "rn_kTvJN82ZMcTrCypr::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "pitch",
+          "definition": "How high or low a sound seems, set by the frequency of the vibrating source.",
+          "firstLesson": 1
+        },
+        {
+          "term": "loudness",
+          "definition": "How strong a sound seems, set by the amplitude of the vibrating source.",
+          "firstLesson": 2
+        },
+        {
+          "term": "infrasound",
+          "definition": "Sound with frequency below 20 Hz, outside human hearing.",
+          "firstLesson": 2
+        },
+        {
+          "term": "ultrasound",
+          "definition": "Sound with frequency above 20 000 Hz, outside human hearing.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/c635ee399d31-3-3-4-frequency-and-pitch-igcse.png",
+        "alt": "Frequency and Pitch IGCSE, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The relationship between the pitch and frequency of sound",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The pitch of the sound is related to the frequency of the sound waves"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a6736ed124fe-3-3-4-pitch-of-sound-igcse.png",
+        "alt": "Pitch of Sound IGCSE, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Comparing the pitch of sound displayed on an oscilloscope",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "This image shows two sound waves displayed on an oscilloscope. The red wave has smaller wavelength than the blue wave hence it has higher frequency and higher pitch"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/f6202461db97-3-3-4-loudness-of-sound-igcse.png",
+        "alt": "Loudness of Sound IGCSE, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Comparing the volume of sound displayed on an oscilloscope",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "This image shows two sound waves displayed on an oscilloscope. The blue wave has twice the amplitude of the green wave because the blue wave is louder"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/6763948e36f8-range-of-human-hearing.png",
+        "alt": "Range of human hearing, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The infrasound, human hearing and ultrasound frequency ranges",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The range of human hearing is between 20 – 20 000 Hz. Below 20 Hz is known as infrasound. Above 20 000 Hz is known as ultrasound"
+      }
+    ]
+  }
+}

@@ -1,0 +1,733 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_g66ndvxcyxsTpKPn",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "e522bd85ca5866fb68be35516df5bf3019b8ea84f13bb2c719702868e0229dcc",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "packageId": "igcse-physics::rn_g66ndvxcyxsTpKPn",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L1::Q1",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L1",
+      "stem": "Which statement is the principle of conservation of energy?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "energy cannot be created or destroyed, only transferred between stores",
+          "correct": true,
+          "explanation": "This is the stated principle.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "energy always decreases as it is used",
+          "correct": false,
+          "explanation": "Using energy transfers it; the total is constant.",
+          "misconception": "dissipation myth"
+        },
+        {
+          "key": "C",
+          "text": "energy is created usefully and destroyed wastefully",
+          "correct": false,
+          "explanation": "Neither creation nor destruction happens.",
+          "misconception": "dissipation myth"
+        },
+        {
+          "key": "D",
+          "text": "energy runs out when a machine stops",
+          "correct": false,
+          "explanation": "The energy has transferred to other stores, not ended.",
+          "misconception": "dissipation myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L1::Q2",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L1",
+      "stem": "A closed system contains two objects that interact. If object A gains 30 J, what happens to object B?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "B gains 30 J as well",
+          "correct": false,
+          "explanation": "That would create energy within the closed system.",
+          "misconception": "conservation error"
+        },
+        {
+          "key": "B",
+          "text": "B loses exactly 30 J",
+          "correct": true,
+          "explanation": "One system’s gain must equal the other’s loss inside a closed system.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "B loses more than 30 J because of dissipation",
+          "correct": false,
+          "explanation": "Dissipation redistributes within the accounting; it does not inflate losses.",
+          "misconception": "conservation error"
+        },
+        {
+          "key": "D",
+          "text": "B is unaffected",
+          "correct": false,
+          "explanation": "The transfer came from somewhere.",
+          "misconception": "conservation error"
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L1::Q3",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L1",
+      "stem": "What does dissipated mean?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "converted back into chemical fuel",
+          "correct": false,
+          "explanation": "Nothing reverses like that in these scenarios.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "B",
+          "text": "destroyed so it no longer exists",
+          "correct": false,
+          "explanation": "Dissipated energy still exists.",
+          "misconception": "dissipation myth"
+        },
+        {
+          "key": "C",
+          "text": "spread out to the surroundings, often by heating and radiation",
+          "correct": true,
+          "explanation": "Dissipation is spreading, usually by heating and radiation.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "stored permanently in the thermal store",
+          "correct": false,
+          "explanation": "It is spread through the surroundings, not parked in one store.",
+          "misconception": "concept mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L1::Q4",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L1",
+      "stem": "Why is dissipated energy often called wasted?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "because it breaks the conservation law",
+          "correct": false,
+          "explanation": "Dissipation is fully compatible with conservation.",
+          "misconception": "conservation error"
+        },
+        {
+          "key": "B",
+          "text": "because it always leaves as sound",
+          "correct": false,
+          "explanation": "Heating is the more common dissipation route.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "C",
+          "text": "because it is destroyed",
+          "correct": false,
+          "explanation": "It is not destroyed; conservation forbids that.",
+          "misconception": "dissipation myth"
+        },
+        {
+          "key": "D",
+          "text": "because it has spread to the surroundings where it cannot be used for the intended purpose",
+          "correct": true,
+          "explanation": "Wasted energy is dissipated energy that no longer serves the purpose.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L1::Q5",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L1",
+      "stem": "A kettle boils water. Which transfer is the WASTED transfer?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "energy warming the plastic kettle body",
+          "correct": true,
+          "explanation": "The plastic body’s thermal store gain is not useful for boiling water.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "water turning to steam",
+          "correct": false,
+          "explanation": "Boiling the water is exactly what the kettle is for.",
+          "misconception": "useful-wasted swap"
+        },
+        {
+          "key": "C",
+          "text": "mains supply to the heating element, electrically",
+          "correct": false,
+          "explanation": "That is the intended first link of the chain.",
+          "misconception": "useful-wasted swap"
+        },
+        {
+          "key": "D",
+          "text": "element to the water, by heating",
+          "correct": false,
+          "explanation": "Heating the water is the purpose of the kettle.",
+          "misconception": "useful-wasted swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L1::Q6",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L1",
+      "stem": "State what happens to the total energy of a closed system.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The total energy of a closed system remains constant.",
+      "keywords": [
+        "total",
+        "closed",
+        "constant"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L1::Q7",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L1",
+      "stem": "State the two dissipation routes named in the principle’s description.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Heating and radiation — the two dissipation routes named in the principle.",
+      "keywords": [
+        "heating",
+        "radiation",
+        "dissipation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L1::Q8",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L1",
+      "stem": "Explain why a bouncing ball never quite returns to its release height, using the conservation law in your answer.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "At each bounce some energy is transferred out of the ball’s kinetic and elastic stores into the thermal stores of the ball and the floor, and some is radiated away as sound. The energy is not destroyed — the total is conserved — but the mechanical energy available for the rebound is reduced, so each bounce reaches a lower height.",
+      "keywords": [
+        "thermal",
+        "sound",
+        "conserved",
+        "lower",
+        "bounce"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L1::Q9",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L1",
+      "stem": "A trampoline jumper reaches the top of a bounce with 500 J in her gravitational store; at the top of the next bounce she has 420 J there. State the energy dissipated between the two tops and name one route it took.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "500 - 420 = 80 J was dissipated between the two tops; one route is heating of the trampoline canvas and the air (with some sound radiated at the canvas).",
+      "keywords": [
+        "80",
+        "dissipated",
+        "heating",
+        "sound"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L2::Q1",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L2",
+      "stem": "In the bat-and-ball impact, which transfer is USEFUL?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "ball thermal store to bat thermal store",
+          "correct": false,
+          "explanation": "No useful purpose is served by heating either way.",
+          "misconception": "useful-wasted swap"
+        },
+        {
+          "key": "B",
+          "text": "bat kinetic store to ball kinetic store",
+          "correct": true,
+          "explanation": "Sending the ball on its way is the purpose of the strike.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "bat kinetic store to ball thermal store",
+          "correct": false,
+          "explanation": "Warming the ball is not the aim.",
+          "misconception": "useful-wasted swap"
+        },
+        {
+          "key": "D",
+          "text": "bat kinetic store to surroundings by sound",
+          "correct": false,
+          "explanation": "The crack of the bat is dissipated sound.",
+          "misconception": "useful-wasted swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L2::Q2",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L2",
+      "stem": "How is energy transferred from the bat’s kinetic store to the ball’s thermal store?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "by radiation only",
+          "correct": false,
+          "explanation": "Radiation is the sound route, not the impact route.",
+          "misconception": "pathway mix-up"
+        },
+        {
+          "key": "B",
+          "text": "by convection",
+          "correct": false,
+          "explanation": "Convection needs a fluid current; the impact is a solid contact.",
+          "misconception": "pathway mix-up"
+        },
+        {
+          "key": "C",
+          "text": "mechanically, due to the impact",
+          "correct": true,
+          "explanation": "The impact’s mechanical work deforms and warms the ball.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "electrically",
+          "correct": false,
+          "explanation": "No circuit is involved.",
+          "misconception": "pathway mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L2::Q3",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L2",
+      "stem": "In the kettle, what is the FIRST store to receive the energy from the mains?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "the plastic kettle’s thermal store",
+          "correct": false,
+          "explanation": "The plastic receives wasted energy later.",
+          "misconception": "sequence error"
+        },
+        {
+          "key": "B",
+          "text": "the surroundings",
+          "correct": false,
+          "explanation": "Dissipation comes last.",
+          "misconception": "sequence error"
+        },
+        {
+          "key": "C",
+          "text": "the water’s thermal store",
+          "correct": false,
+          "explanation": "The element warms first; the water receives energy from the element.",
+          "misconception": "sequence error"
+        },
+        {
+          "key": "D",
+          "text": "the heating element’s thermal store",
+          "correct": true,
+          "explanation": "Energy is transferred electrically to the element’s thermal store.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L2::Q4",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L2",
+      "stem": "Which kettle transfer is wasted?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "element to plastic kettle body by heating",
+          "correct": true,
+          "explanation": "Warming the plastic serves no purpose.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "water to steam at boiling point",
+          "correct": false,
+          "explanation": "Boiling is the desired outcome.",
+          "misconception": "useful-wasted swap"
+        },
+        {
+          "key": "C",
+          "text": "element to water by heating",
+          "correct": false,
+          "explanation": "That is the kettle’s job.",
+          "misconception": "useful-wasted swap"
+        },
+        {
+          "key": "D",
+          "text": "mains to element electrically",
+          "correct": false,
+          "explanation": "The intended input link.",
+          "misconception": "useful-wasted swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L2::Q5",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L2",
+      "stem": "The bat’s kinetic store loses 200 J in the strike. Which set of destinations could conserve energy?",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "200 J destroyed by friction",
+          "correct": false,
+          "explanation": "Friction transfers; it does not destroy.",
+          "misconception": "dissipation myth"
+        },
+        {
+          "key": "B",
+          "text": "120 J to the ball’s kinetic store, 50 J to thermal stores, 30 J radiated as sound: 200 J total",
+          "correct": true,
+          "explanation": "The shares sum to exactly 200 J, so the books balance.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "120 J to the ball’s kinetic store and 50 J to thermal stores: 170 J total",
+          "correct": false,
+          "explanation": "30 J has vanished, which conservation forbids.",
+          "misconception": "conservation error"
+        },
+        {
+          "key": "D",
+          "text": "220 J to the ball’s kinetic store alone",
+          "correct": false,
+          "explanation": "More energy arrives than left the bat.",
+          "misconception": "conservation error"
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L2::Q6",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L2",
+      "stem": "State the pathway for each link: (a) mains to kettle element, (b) element to water.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "(a) electrical work from the mains supply; (b) heating from the element to the water.",
+      "keywords": [
+        "electrical",
+        "heating",
+        "element",
+        "water"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L2::Q7",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L2",
+      "stem": "In the bat-and-ball example, state the two stores that receive WASTED energy.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Thermal stores — of the ball, the bat and the surroundings — receive wasted energy (with some dissipated by heating and radiated as sound).",
+      "keywords": [
+        "thermal",
+        "wasted",
+        "sound"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L2::Q8",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L2",
+      "stem": "Explain why the bat, the ball and the air all end up very slightly warmer after the strike.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The strike cannot transfer all of the bat’s kinetic energy into the ball’s motion: impact deformation transfers energy mechanically into thermal stores, and heating and radiation dissipate more into the surroundings. Since energy is conserved rather than destroyed, those spreads show up as tiny temperature rises everywhere the wasted energy landed.",
+      "keywords": [
+        "kinetic",
+        "thermal",
+        "dissipated",
+        "temperature"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L2::Q9",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L2",
+      "stem": "A kettle element receives 180 kJ from the mains. 150 kJ ends up in the water and steam. Name the account that holds the difference and state its size.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The missing 30 kJ sits in wasted transfers — the plastic kettle’s thermal store and the dissipated surroundings — because conservation requires the full 180 kJ to be accounted for.",
+      "keywords": [
+        "30",
+        "wasted",
+        "plastic",
+        "surroundings"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L3::Q1",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L3",
+      "stem": "As the jumper falls towards the canvas, which transfer occurs?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "thermal store to kinetic store",
+          "correct": false,
+          "explanation": "The thermal store is where wasted energy ends up, not the source here.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "B",
+          "text": "kinetic store to gravitational store",
+          "correct": false,
+          "explanation": "That is the rising phase.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "gravitational store to kinetic store",
+          "correct": true,
+          "explanation": "Falling empties the gravitational store into the kinetic store.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "elastic store to kinetic store",
+          "correct": false,
+          "explanation": "The canvas is not yet stretched.",
+          "misconception": "sequence error"
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L3::Q2",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L3",
+      "stem": "At the lowest point of the bounce, which store holds most of the energy?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "the chemical store",
+          "correct": false,
+          "explanation": "Chemical energy is the jumper’s internal fuel, not the bounce account.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "B",
+          "text": "the gravitational store",
+          "correct": false,
+          "explanation": "The jumper is at minimum height there.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "C",
+          "text": "the kinetic store",
+          "correct": false,
+          "explanation": "The jumper is momentarily at rest at the lowest point.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "D",
+          "text": "the elastic store of the stretched canvas",
+          "correct": true,
+          "explanation": "Maximum stretch means maximum elastic energy.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L3::Q3",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L3",
+      "stem": "Why do the bounces get lower each time?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "some energy is dissipated by heating and radiated as sound each cycle",
+          "correct": true,
+          "explanation": "The wasted transfers shrink the mechanical account each round trip.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "gravity gets stronger near the canvas",
+          "correct": false,
+          "explanation": "Gravity is essentially constant over the bounce height.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "C",
+          "text": "the canvas loses its elasticity permanently",
+          "correct": false,
+          "explanation": "The canvas rebounds fine; the losses are thermal and sound.",
+          "misconception": "concept mix-up"
+        },
+        {
+          "key": "D",
+          "text": "energy is destroyed at each bounce",
+          "correct": false,
+          "explanation": "Nothing is destroyed; it is dissipated.",
+          "misconception": "dissipation myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L3::Q4",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L3",
+      "stem": "Which pathway delivers fresh energy when the jumper jumps higher from the canvas?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "by radiation",
+          "correct": false,
+          "explanation": "Radiation is an output here, not an input.",
+          "misconception": "pathway mix-up"
+        },
+        {
+          "key": "B",
+          "text": "mechanically, from the jumper’s muscles pushing on the canvas",
+          "correct": true,
+          "explanation": "Muscles do mechanical work to refill the bounce account.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "by heating from the sun",
+          "correct": false,
+          "explanation": "Sunbathing does not power the bounce.",
+          "misconception": "pathway mix-up"
+        },
+        {
+          "key": "D",
+          "text": "electrically",
+          "correct": false,
+          "explanation": "No circuit is involved.",
+          "misconception": "pathway mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L3::Q5",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L3",
+      "stem": "Between two successive tops, the gravitational store holds 500 J then 420 J. The missing 80 J is:",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "impossible to know without measuring sound",
+          "correct": false,
+          "explanation": "Conservation pins the total; the split between routes is the only detail.",
+          "misconception": "method myth"
+        },
+        {
+          "key": "B",
+          "text": "destroyed during the bounce",
+          "correct": false,
+          "explanation": "Conservation forbids destruction.",
+          "misconception": "dissipation myth"
+        },
+        {
+          "key": "C",
+          "text": "dissipated to thermal stores and radiated as sound",
+          "correct": true,
+          "explanation": "The difference is exactly the wasted share of the cycle.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "still in the elastic store at the top",
+          "correct": false,
+          "explanation": "At the top the canvas is unstretched.",
+          "misconception": "concept mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L3::Q6",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L3",
+      "stem": "State the order of stores in one full trampoline cycle, starting from the top of a bounce.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Gravitational, then kinetic, then elastic, then kinetic, then gravitational again — with thermal and sound taking wasted shares at each exchange.",
+      "keywords": [
+        "gravitational",
+        "kinetic",
+        "elastic",
+        "thermal",
+        "sound"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L3::Q7",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L3",
+      "stem": "State the pathway by which the jumper’s muscles add energy at each bounce.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Mechanically — the muscles do mechanical work pushing against the canvas.",
+      "keywords": [
+        "mechanical",
+        "muscles",
+        "work"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L3::Q8",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L3",
+      "stem": "Explain why the jumper’s body and the trampoline canvas are slightly warmer after a session of bouncing.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Every stretch of the canvas and every impact dissipates some energy by heating into the canvas and the jumper’s body, and some radiates away as sound. The energy is conserved, but the repeated wasted transfers accumulate as small temperature rises in the materials involved.",
+      "keywords": [
+        "dissipates",
+        "heating",
+        "sound",
+        "temperature",
+        "conserved"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_g66ndvxcyxsTpKPn::L3::Q9",
+      "moduleId": "rn_g66ndvxcyxsTpKPn::L3",
+      "stem": "A jumper’s first top-of-bounce gravitational store holds 600 J and each cycle wastes 12% of the mechanical energy. State the gravitational-store energy at the third top of bounce.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Cycle 1: 600 × 0.88 = 528 J; cycle 2: 528 × 0.88 = about 465 J at the third top.",
+      "keywords": [
+        "0.88",
+        "528",
+        "465"
+      ],
+      "options": []
+    }
+  ]
+}

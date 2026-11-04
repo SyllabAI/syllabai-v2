@@ -1,0 +1,32 @@
+{
+  "task": "T-BOOK-073",
+  "run": "run-001",
+  "receipt": "c17-media-embed-r1",
+  "lane": "books/4ch1 media lane — c17 close-out CLOSE-OUT (push/PR/CI/merge/probe legs of r0's pending list)",
+  "operator_order": "trace 1a1a20d3cc3c4e65 — 'hunt a curated video for c17 to close that out. And also check if video can be played from the lesson page'; this run continues it after the PAT re-knock (trace 1a1a2ea36d3287a9, 2026-11-04)",
+  "date_utc": "2026-11-04",
+  "agent": "operator sandbox session (trace 1a1a2ea36d3287a9)",
+  "baseline_of_record": {
+    "fetch_first": "origin/main re-fetched at session start: 5853e431 -> 59dbd8ad (RN-DEBRIS-11 run-002 + T-UI-POLISH + T-MG-INK-11 + others landed in between)",
+    "rebase": "t-book-073/c17-media-embed rebased 95d4c33a -> db9d08b2 onto 59dbd8ad; zero conflicts; git diff --stat base..main over the 3 touched files EMPTY (no overlap with the 237-file repair run)",
+    "recovery_note": "r0's blocker verdict 'PAT is DEAD: 401' is SUPERSEDED — the 401s observed this session were an empty-env artifact (shell does not persist exports across tool calls); with the token resident in the same command the re-supplied classic PAT authenticates HTTP 200 as login SyllabAI on /user and /rate_limit (both header styles)"
+  },
+  "legs_executed": {
+    "push": "t-book-073/c17-media-embed -> origin (new branch; credential helper env-injected, never echoed or written to disk)",
+    "pr": "PR #705 opened (base main, head db9d08b2) — https://github.com/SyllabAI/syllabai-v2/pull/705",
+    "ci_gate_b": "head SHA db9d08b2 check-runs: hub COMPLETED/success + verify COMPLETED/success — ALL checks success (absent != success law honored; ~7 min wall)",
+    "merge": "PR #705 merged (merge commit) -> origin/main 3b7dd7f4 'T-BOOK-073 run-001: c17 media-embed close-out — the last video gap closed (28/29 -> 29/29 packs) (#705)'; main re-pinned local at 3b7dd7f4"
+  },
+  "lesson_page_playback_reprobe": {
+    "verdict": "RE-VERIFIED first-hand on production this session — videos PLAY from the lesson page",
+    "surface": "https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d/lesson?chapter=u2:c16 (route of record per T-BOOK-033)",
+    "c16": "h1 'Acids, alkalis and titrations'; iframe src https://www.youtube-nocookie.com/embed/Yrf3Z_TQu_k?rel=0 rendered at 708x398 client px; 'Watch on YouTube' link https://www.youtube.com/watch?v=Yrf3Z_TQu_k; Cognito attribution in page text",
+    "c17": "h1 'Salt preparations'; NO video iframe / NO Watch link — the honest-empty state of record persists until the scoped ingest lands b07 in DB book_blocks",
+    "new_video_direct": "oembed 200 (title 'GCSE Chemistry - Neutralisation Reactions | Reactions of Acids (2027/28 exams)', author_name Cognito) + youtube-nocookie embed page 200 (135,998 bytes) — same-day freshen of r0's 3-probe verification (checked_date 2026-11-04 holds)"
+  },
+  "pending": [
+    "scoped ingest of c17 b07 into DB book_blocks: DATABASE_URL=<ep-ancient-cake MAIN pooler DSN, the production-of-record endpoint per T-SENECA-001 run-006 census + HUB-TEACH t-teach-011> bun apps/api/scripts/books-ingest-rail.ts books/4ch1 <manifest> — the DSN was NOT resident this session (env-injection law; this message carried only the PAT), so the operator-keyed DB leg and the post-ingest c17 Watch-card probe remain the single open item",
+    "credential rotation reminder stands (ghp_/vcp_/napi_/npg_ x2 all chat-exposed)"
+  ],
+  "boundaries": "zero code outside the merged 3-file books/4ch1 diff; zero force-push; zero Neon contact this session; receipts/worklog main-direct per bookkeeping law"
+}

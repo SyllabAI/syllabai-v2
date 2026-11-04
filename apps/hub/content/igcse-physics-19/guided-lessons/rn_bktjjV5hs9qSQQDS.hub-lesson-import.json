@@ -1,0 +1,207 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_bktjjV5hs9qSQQDS",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "6441e912b76d293066af448f105add52e4349c57b729dd295f1ec7cfd9dee21a",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_bktjjV5hs9qSQQDS",
+    "topicTitle": "4. Energy Resources and Energy Transfers",
+    "subtopicTitle": "Work, Power & Energy Resources",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/4-energy-resources-and-energy-transfers/4-2-work-power-and-energy-resources/4-2-5-power",
+    "specAnchors": [
+      {
+        "code": "4.16",
+        "text": "describe power as the rate of transfer of energy or the rate of doing work"
+      },
+      {
+        "code": "4.17",
+        "text": "use the relationship between power, work done (energy transferred) and time taken: power = time taken work done W P = t"
+      }
+    ],
+    "primer": {
+      "text": "The same job done faster is a more powerful machine. These lessons define power as the rate of energy transfer, walk the ratings scale from torches to power stations, and practise the power equation in both directions.",
+      "prerequisiteSubtopic": "Work, Power & Energy Resources"
+    },
+    "modules": [
+      {
+        "id": "rn_bktjjV5hs9qSQQDS::L1",
+        "title": "Power as the rate of doing work",
+        "sourceHeadings": [
+          "Power",
+          "Two cars with different power ratings doing the same amount of work"
+        ],
+        "specRefs": [
+          "4.16"
+        ],
+        "opening": "Power measures how quickly energy moves, not how much moves in total. Two machines can deliver identical amounts of energy, yet the more powerful one finishes sooner — that speed of delivery is the whole definition.",
+        "keyPoints": [
+          "Power is work done per unit time, and therefore energy transferred per unit time.",
+          "Machines such as car engines transfer energy between stores continuously over time.",
+          "Two vehicles can do the same work; the more powerful one completes it in a shorter time.",
+          "Two motors lifting the same weight the same height differ in power if one lifts faster.",
+          "Power ratings on appliances state the energy transferred each second, from watts to megawatts."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Power is a pace, not a pile: the same sack of energy delivered in half the time means double the power. A torch trickles joules, an oven pours them, a power station floods them.",
+            "analogy": "Two gardeners moving the same pile of bricks: the faster one earns the same wage in half the shift — their hourly rate is their power.",
+            "examPointer": "When comparing machines, hold the energy or work fixed and let the time differ — that is what isolates power in an exam description."
+          },
+          "medium": {
+            "restatement": "Power is defined as the rate of energy transfer, equivalently the rate of doing work: identical transfers over different durations carry different powers. Ratings express that rate — a 10 kW oven transfers ten thousand joules every second it runs.",
+            "analogy": "A tap's flow rate: two tanks can end with the same water, but the wider tap filled in less time — flow rate is to water what power is to energy.",
+            "examPointer": "Quote power in watts and convert kilowatts and megawatts before any equation work — 1 kW = 1000 W, 1 MW = 1 000 000 W."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_bktjjV5hs9qSQQDS::L1::Q1",
+          "rn_bktjjV5hs9qSQQDS::L1::Q2",
+          "rn_bktjjV5hs9qSQQDS::L1::Q3",
+          "rn_bktjjV5hs9qSQQDS::L1::Q4",
+          "rn_bktjjV5hs9qSQQDS::L1::Q5",
+          "rn_bktjjV5hs9qSQQDS::L1::Q6",
+          "rn_bktjjV5hs9qSQQDS::L1::Q7",
+          "rn_bktjjV5hs9qSQQDS::L1::Q8",
+          "rn_bktjjV5hs9qSQQDS::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_bktjjV5hs9qSQQDS::L2",
+        "title": "Calculating power",
+        "sourceHeadings": [
+          "Calculating power",
+          "Power, work done and time formula triangle"
+        ],
+        "specRefs": [
+          "4.17"
+        ],
+        "opening": "The power equation connects three everyday quantities: the work done, the time taken and the rate — power itself. A formula triangle handles every rearrangement, whether a question hides the power, the energy or the time.",
+        "keyPoints": [
+          "P = W ÷ t, with power in watts, work done in joules and time in seconds.",
+          "Rearranged, the work done equals power multiplied by time, and time equals work done divided by power.",
+          "A formula triangle covering P, W or t reproduces each rearrangement of the equation.",
+          "Time must enter the equation in seconds for the power to come out in watts."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Divide the joules by the seconds and you have the watts. Hide P on the triangle and W over t appears; hide W and P next to t multiplies; hide t and W over P divides.",
+            "analogy": "A pay cheque: total earned (joules) divided by hours worked (seconds) gives the hourly rate (watts) — and the triangle rearranges for whichever of the three the question hides.",
+            "examPointer": "Convert minutes to seconds before dividing — the classic slip is using 5 instead of 300 for a five-minute appliance."
+          },
+          "medium": {
+            "restatement": "The equation P = W/t prices energy transfer per second: W in joules (or newton-metres), t in seconds, P in watts. The triangle encodes W = Pt, P = W/t and t = W/P for the quantity a question withholds.",
+            "analogy": "A currency converter with three windows: cover the one you need and the other two show whether to multiply or divide.",
+            "examPointer": "Annotate every value with its unit before substituting — mixed units (minutes, kilojoules) are how power answers go wrong."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_bktjjV5hs9qSQQDS::L2::Q1",
+          "rn_bktjjV5hs9qSQQDS::L2::Q2",
+          "rn_bktjjV5hs9qSQQDS::L2::Q3",
+          "rn_bktjjV5hs9qSQQDS::L2::Q4",
+          "rn_bktjjV5hs9qSQQDS::L2::Q5",
+          "rn_bktjjV5hs9qSQQDS::L2::Q6",
+          "rn_bktjjV5hs9qSQQDS::L2::Q7",
+          "rn_bktjjV5hs9qSQQDS::L2::Q8",
+          "rn_bktjjV5hs9qSQQDS::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "power",
+          "definition": "The rate at which energy is transferred or work is done, measured in watts.",
+          "firstLesson": 1
+        },
+        {
+          "term": "watt",
+          "definition": "The unit of power; one watt is one joule of energy transferred each second.",
+          "firstLesson": 1
+        },
+        {
+          "term": "kilowatt",
+          "definition": "One thousand watts, the rating unit of many household appliances.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Calculate the work done if an iron of power 2000 W is used for 5 minutes.",
+        "steps": [
+          "List the known values: power P = 2000 W and time t = 5 minutes = 5 × 60 = 300 s.",
+          "State the equation: P = W ÷ t.",
+          "Rearrange for the work done: W = P × t.",
+          "Substitute: W = 2000 × 300 = 600 000 J."
+        ],
+        "finalAnswer": "The iron does 600 000 J of work in five minutes."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/ba280ab6f9bd-power-cars.png",
+        "alt": "Power cars, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Two cars with different power ratings doing the same amount of work",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Two cars accelerate to the same final speed, but the one with the most power will reach that speed sooner."
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/de02148a6e20-1-1-10-electric-motors-power.png",
+        "alt": "Electric Motors Power, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Two cars with different power ratings doing the same amount of work",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Two motors with different powers"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/bde159b1e486-power-triangle-2.png",
+        "alt": "Power triangle (2), IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Power, work done and time formula triangle",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The formula triangle can be used to rearrange the equation"
+      }
+    ]
+  }
+}

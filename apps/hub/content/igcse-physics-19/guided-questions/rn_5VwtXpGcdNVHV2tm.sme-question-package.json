@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_5VwtXpGcdNVHV2tm",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "20daa1e7885e1b57a6d0ffa650c915f767e9e53b0ecdb00ac724eefcc2e7d636",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "packageId": "igcse-physics::rn_5VwtXpGcdNVHV2tm",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L1::Q1",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L1",
+      "stem": "What gives an object gravitational potential energy?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "its height in a gravitational field",
+          "correct": true,
+          "explanation": "Position in the field, not motion, fills this store.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "its speed across the ground",
+          "correct": false,
+          "explanation": "Speed fills the kinetic store.",
+          "misconception": "store swap"
+        },
+        {
+          "key": "C",
+          "text": "its temperature",
+          "correct": false,
+          "explanation": "Temperature belongs to the thermal store.",
+          "misconception": "store swap"
+        },
+        {
+          "key": "D",
+          "text": "the material it is made of",
+          "correct": false,
+          "explanation": "Material alone stores nothing here.",
+          "misconception": "attribute slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L1::Q2",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L1",
+      "stem": "A book is raised from the floor to a shelf. What happens to the book's gravitational store?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "it first empties and then fills",
+          "correct": false,
+          "explanation": "Nothing about a steady lift drains the store first.",
+          "misconception": "mystery sequence"
+        },
+        {
+          "key": "B",
+          "text": "it fills as energy is transferred to it",
+          "correct": true,
+          "explanation": "Lifting deposits energy in the height store.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "it empties during the lift",
+          "correct": false,
+          "explanation": "Ascending fills the store; descending empties it.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "D",
+          "text": "it stays exactly the same",
+          "correct": false,
+          "explanation": "Height changed, so the store changed.",
+          "misconception": "no-transfer slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L1::Q3",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L1",
+      "stem": "Which equation correctly prices gravitational potential energy?",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "GPE = F × d",
+          "correct": false,
+          "explanation": "That is work done, a different quantity.",
+          "misconception": "equation tangle"
+        },
+        {
+          "key": "B",
+          "text": "GPE = m × g ÷ h",
+          "correct": false,
+          "explanation": "Height multiplies; it never divides.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "GPE = m × g × h",
+          "correct": true,
+          "explanation": "Mass, field strength and height multiply.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "GPE = m × v²",
+          "correct": false,
+          "explanation": "That mixes the kinetic equation with a missing half.",
+          "misconception": "equation tangle"
+        }
+      ]
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L1::Q4",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L1",
+      "stem": "A mass is lifted twice as high, with mass and field strength unchanged. What happens to the energy in its gravitational store?",
+      "misconceptionClass": "proportional reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it stays the same",
+          "correct": false,
+          "explanation": "Height changed, so the contents changed.",
+          "misconception": "no-transfer slip"
+        },
+        {
+          "key": "B",
+          "text": "it halves",
+          "correct": false,
+          "explanation": "Nothing about a higher lift reduces the store.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "it quadruples",
+          "correct": false,
+          "explanation": "Quadrupling would need the speed, not the height.",
+          "misconception": "squaring slip"
+        },
+        {
+          "key": "D",
+          "text": "it doubles, because the store grows in proportion to height",
+          "correct": true,
+          "explanation": "Height is a multiplying input, so doubling it doubles the total.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L1::Q5",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L1",
+      "stem": "Which unit triple of kilograms, newtons per kilogram and metres feeds the GPE equation correctly?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "kilograms, newtons per kilogram, metres",
+          "correct": true,
+          "explanation": "That combination evaluates to newton-metres, i.e. joules.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "newtons, kilograms, seconds",
+          "correct": false,
+          "explanation": "Seconds never enter this equation.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "C",
+          "text": "kilograms, metres per second, metres",
+          "correct": false,
+          "explanation": "Metres per second is a speed input for kinetic energy.",
+          "misconception": "unit slip"
+        },
+        {
+          "key": "D",
+          "text": "joules, newtons, metres",
+          "correct": false,
+          "explanation": "The answer is in joules; the inputs are not.",
+          "misconception": "unit slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L1::Q6",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L1",
+      "stem": "State what GPE stands for and define it.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "GPE is gravitational potential energy, the energy an object has because of its height in a gravitational field.",
+      "keywords": [
+        "gravitational",
+        "potential",
+        "energy",
+        "height"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L1::Q7",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L1",
+      "stem": "State the GPE equation in words.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "Gravitational potential energy equals mass multiplied by gravitational field strength multiplied by height.",
+      "keywords": [
+        "mass",
+        "gravitational",
+        "field",
+        "height"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L1::Q8",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L1",
+      "stem": "Explain why a falling apple transfers energy away from its gravitational store.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "As the apple descends, its height in the gravitational field shrinks, and the equation shows a smaller height means less energy parked in the store. The released energy moves into other stores, such as the apple's kinetic store as it speeds up.",
+      "keywords": [
+        "height",
+        "energy",
+        "gravitational",
+        "kinetic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L1::Q9",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L1",
+      "stem": "A 2 kg bag is lifted 1.5 m on Earth, where g is 10 N/kg. Calculate the energy transferred to its gravitational store.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "GPE = m × g × h = 2 × 10 × 1.5 = 30 J, so 30 J is transferred to the store.",
+      "keywords": [
+        "energy",
+        "gravitational",
+        "store",
+        "30 J"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L2::Q1",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L2",
+      "stem": "Roughly what is the gravitational field strength at Earth's surface?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "about 100 N/kg",
+          "correct": false,
+          "explanation": "That is far stronger than Earth's field.",
+          "misconception": "magnitude slip"
+        },
+        {
+          "key": "B",
+          "text": "about 10 N/kg",
+          "correct": true,
+          "explanation": "Earth's field strength is approximately ten newtons per kilogram.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "about 10 kg/N",
+          "correct": false,
+          "explanation": "That inverts the unit.",
+          "misconception": "unit inversion"
+        },
+        {
+          "key": "D",
+          "text": "about 1 N/kg",
+          "correct": false,
+          "explanation": "That is far weaker than Earth's field.",
+          "misconception": "magnitude slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L2::Q2",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L2",
+      "stem": "How would lifting the same mass on the Moon compare with lifting it on Earth?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "identical, because the mass never changes",
+          "correct": false,
+          "explanation": "Mass is unchanged, but the field — and so the energy — is not.",
+          "misconception": "fixed-mass slip"
+        },
+        {
+          "key": "B",
+          "text": "impossible, because there is no gravity anywhere in space",
+          "correct": false,
+          "explanation": "The Moon has a real, just weaker, field.",
+          "misconception": "absolutisation"
+        },
+        {
+          "key": "C",
+          "text": "easier, because the Moon's field is weaker",
+          "correct": true,
+          "explanation": "A smaller g means less energy per metre of lift.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "harder, because the Moon's field is stronger",
+          "correct": false,
+          "explanation": "The Moon's field is the weaker one.",
+          "misconception": "inverted relation"
+        }
+      ]
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L2::Q3",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L2",
+      "stem": "Lifting a mass on Jupiter is harder than on Earth because",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Jupiter's field is weaker than Earth's",
+          "correct": false,
+          "explanation": "The direction is reversed.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "B",
+          "text": "Jupiter has no solid surface to stand on, ever",
+          "correct": false,
+          "explanation": "The comparison is about field strength, not footing.",
+          "misconception": "context slip"
+        },
+        {
+          "key": "C",
+          "text": "the mass itself grows on the way up",
+          "correct": false,
+          "explanation": "Mass is invariant; the field changes the energy, not the mass.",
+          "misconception": "creation slip"
+        },
+        {
+          "key": "D",
+          "text": "Jupiter's surface field is stronger than Earth's",
+          "correct": true,
+          "explanation": "Gas giants' stronger fields raise the energy cost of every metre.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L2::Q4",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L2",
+      "stem": "Which statement describes the GPE–height graph for a ball thrown upward?",
+      "misconceptionClass": "reading the graph",
+      "options": [
+        {
+          "key": "A",
+          "text": "a straight line, showing the store grows evenly with height",
+          "correct": true,
+          "explanation": "GPE is proportional to height, so the graph is linear.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a downward curve, showing the store shrinks with height",
+          "correct": false,
+          "explanation": "Ascending grows the store.",
+          "misconception": "inverted relation"
+        },
+        {
+          "key": "C",
+          "text": "a flat line, showing height does not matter",
+          "correct": false,
+          "explanation": "Height is the defining input.",
+          "misconception": "no-transfer slip"
+        },
+        {
+          "key": "D",
+          "text": "a loop, showing the store depends on time",
+          "correct": false,
+          "explanation": "The store tracks position, not the clock.",
+          "misconception": "variable swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L2::Q5",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L2",
+      "stem": "A 5 kg mass rests on a shelf 2 m high on Earth (g = 10 N/kg). How much energy sits in its gravitational store relative to the ground?",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "10 J",
+          "correct": false,
+          "explanation": "That keeps only one input.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "B",
+          "text": "100 J",
+          "correct": true,
+          "explanation": "GPE = 5 × 10 × 2 = 100 J.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "50 J",
+          "correct": false,
+          "explanation": "That drops the height factor.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "D",
+          "text": "20 J",
+          "correct": false,
+          "explanation": "That drops the field strength.",
+          "misconception": "arithmetic slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L2::Q6",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L2",
+      "stem": "State the approximate value of g at Earth's surface, with its unit.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "Gravitational field strength on Earth is approximately 10 N/kg.",
+      "keywords": [
+        "approximately",
+        "10",
+        "N/kg",
+        "Earth"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L2::Q7",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L2",
+      "stem": "State which world named in these lessons has a weaker gravitational field than Earth.",
+      "misconceptionClass": "concept recall",
+      "kind": "recall",
+      "modelAnswer": "The Moon has a weaker gravitational field than Earth, so masses are easier to lift there.",
+      "keywords": [
+        "Moon",
+        "weaker",
+        "field",
+        "lift"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L2::Q8",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L2",
+      "stem": "Explain why equal upward steps of height add equal amounts of energy to a climber's gravitational store.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The equation multiplies g and mass, both fixed for the climber on a given world, by height, so the store's contents rise in a straight line with height. Equal height steps therefore shift equal energy amounts into the store.",
+      "keywords": [
+        "height",
+        "energy",
+        "store",
+        "equal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_5VwtXpGcdNVHV2tm::L2::Q9",
+      "moduleId": "rn_5VwtXpGcdNVHV2tm::L2",
+      "stem": "The 70 kg climber repeats a 3 m climb on the Moon, where g is about 1.6 N/kg. Calculate the energy transferred to the climber's gravitational store, and compare it with the Earth value of 2100 J.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "On the Moon GPE = 70 × 1.6 × 3 = 336 J, which is roughly one sixth of the Earth value of 2100 J, because the lunar field is so much weaker.",
+      "keywords": [
+        "336",
+        "2100",
+        "field",
+        "weaker"
+      ],
+      "options": []
+    }
+  ]
+}

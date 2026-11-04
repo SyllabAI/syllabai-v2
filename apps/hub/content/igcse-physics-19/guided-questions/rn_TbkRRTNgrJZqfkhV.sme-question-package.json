@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_TbkRRTNgrJZqfkhV",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "1be17b5dc4304b7e9e0e711a135a89ceddfec37cea14c52d4e23ee0cb63d44b0",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "packageId": "igcse-physics::rn_TbkRRTNgrJZqfkhV",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L1::Q1",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L1",
+      "stem": "A fixed mass of gas is compressed slowly at constant temperature. What happens to its pressure?",
+      "misconceptionClass": "qualitative prediction",
+      "options": [
+        {
+          "key": "A",
+          "text": "it increases",
+          "correct": true,
+          "explanation": "Smaller volume means more frequent wall collisions.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "it decreases",
+          "correct": false,
+          "explanation": "Compression raises pressure.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "C",
+          "text": "it stays the same",
+          "correct": false,
+          "explanation": "The collision rate changes with volume.",
+          "misconception": "no-change slip"
+        },
+        {
+          "key": "D",
+          "text": "it falls to zero when compressed",
+          "correct": false,
+          "explanation": "Compression concentrates impacts; it never empties them.",
+          "misconception": "extreme slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L1::Q2",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L1",
+      "stem": "At constant temperature, why does a larger volume give a lower pressure?",
+      "misconceptionClass": "mechanism linking",
+      "options": [
+        {
+          "key": "A",
+          "text": "the walls get softer",
+          "correct": false,
+          "explanation": "Wall properties do not enter the gas law.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "B",
+          "text": "molecules take longer between wall hits, so collisions per second fall",
+          "correct": true,
+          "explanation": "Longer flight paths thin out the bombardment.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the molecules slow down in a bigger box",
+          "correct": false,
+          "explanation": "At constant temperature the speeds are unchanged.",
+          "misconception": "speed conflation"
+        },
+        {
+          "key": "D",
+          "text": "some molecules leave the gas",
+          "correct": false,
+          "explanation": "The sample is fixed — nothing escapes.",
+          "misconception": "count slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L1::Q3",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L1",
+      "stem": "What is held constant for the pressure–volume relationship to apply as stated?",
+      "misconceptionClass": "condition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "volume and temperature",
+          "correct": false,
+          "explanation": "Volume is the other variable.",
+          "misconception": "condition confusion"
+        },
+        {
+          "key": "B",
+          "text": "nothing needs to be constant",
+          "correct": false,
+          "explanation": "The relationship is conditional on both constants.",
+          "misconception": "condition denial"
+        },
+        {
+          "key": "C",
+          "text": "temperature and the amount of gas",
+          "correct": true,
+          "explanation": "Fixed sample at fixed temperature — the stated conditions.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "pressure and temperature",
+          "correct": false,
+          "explanation": "Pressure is the very thing changing.",
+          "misconception": "condition confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L1::Q4",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L1",
+      "stem": "A balloon is placed inside a vacuum chamber and the outside pressure is gradually removed. What happens to the balloon and why?",
+      "misconceptionClass": "application transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "it shrinks, because the gas loses molecules",
+          "correct": false,
+          "explanation": "The balloon stays sealed.",
+          "misconception": "count slip"
+        },
+        {
+          "key": "B",
+          "text": "it stays the same size because gas volume is fixed",
+          "correct": false,
+          "explanation": "Gas volume is not fixed — that is the point of the law.",
+          "misconception": "solid conflation"
+        },
+        {
+          "key": "C",
+          "text": "it freezes solid",
+          "correct": false,
+          "explanation": "Nothing in the setup cools it.",
+          "misconception": "irrelevant claim"
+        },
+        {
+          "key": "D",
+          "text": "it expands, because the trapped gas spreads into a larger effective volume at lower opposing pressure",
+          "correct": true,
+          "explanation": "Less outside squeeze lets the gas's internal pressure expand it.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L1::Q5",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L1",
+      "stem": "A student compresses a gas very quickly and observes the pressure rise more than expected. What extra effect crept in?",
+      "misconceptionClass": "condition critique",
+      "options": [
+        {
+          "key": "A",
+          "text": "the fast compression did work on the gas and raised its temperature, adding a second pressure rise",
+          "correct": true,
+          "explanation": "Beyond the volume effect, hotter molecules hit harder — the constant-temperature assumption broke.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the molecules multiplied during compression",
+          "correct": false,
+          "explanation": "Molecules are conserved.",
+          "misconception": "count slip"
+        },
+        {
+          "key": "C",
+          "text": "the gauge always over-reads on fast changes",
+          "correct": false,
+          "explanation": "The excess is physics, not instrument error.",
+          "misconception": "instrument blame"
+        },
+        {
+          "key": "D",
+          "text": "the volume fell below zero",
+          "correct": false,
+          "explanation": "Volumes stay positive.",
+          "misconception": "absurd claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L1::Q6",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L1",
+      "stem": "State what happens to the pressure of a fixed gas at constant temperature when its volume is halved.",
+      "misconceptionClass": "qualitative recall",
+      "kind": "recall",
+      "modelAnswer": "The pressure rises — in the ideal case it doubles — because the same molecules collide with the walls more frequently in the smaller volume.",
+      "keywords": [
+        "pressure",
+        "rises",
+        "collide",
+        "frequently"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L1::Q7",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L1",
+      "stem": "State the two conditions that must hold when relating pressure and volume of a fixed gas.",
+      "misconceptionClass": "condition recall",
+      "kind": "recall",
+      "modelAnswer": "The temperature must be constant and the amount of gas must be fixed.",
+      "keywords": [
+        "temperature",
+        "constant",
+        "amount",
+        "fixed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L1::Q8",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L1",
+      "stem": "Explain, using the kinetic model, why the pressure of a gas falls as it is slowly expanded at constant temperature.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The molecules keep the same average speeds because the temperature is unchanged, so each collision delivers the same impulse. But in the larger volume each molecule travels further between wall impacts, so each wall receives fewer collisions per second. The total impulse per unit area per second — the pressure — therefore falls.",
+      "keywords": [
+        "speed",
+        "collisions",
+        "walls",
+        "pressure"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L1::Q9",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L1",
+      "stem": "A vacuum pump removes air from around a sealed balloon, which swells to twice its size. Sketch the reasoning linking the change in available volume to the change in the trapped gas's pressure.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "As the outside squeeze falls, the trapped gas expands into a larger volume at the same temperature. With longer flight paths between wall hits, the internal collision rate per unit area falls, so the internal pressure drops until it balances the reduced outside pressure — the pressure falls as the volume grows.",
+      "keywords": [
+        "volume",
+        "collisions",
+        "pressure",
+        "balance"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L2::Q1",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L2",
+      "stem": "A sealed rigid canister of gas is heated. What happens to the pressure inside?",
+      "misconceptionClass": "qualitative prediction",
+      "options": [
+        {
+          "key": "A",
+          "text": "it depends on the can's colour",
+          "correct": false,
+          "explanation": "Colour is irrelevant here.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "B",
+          "text": "it increases",
+          "correct": true,
+          "explanation": "Hotter molecules hit harder and more often.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "it decreases",
+          "correct": false,
+          "explanation": "Heating intensifies the bombardment.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "D",
+          "text": "it stays the same because the volume is fixed",
+          "correct": false,
+          "explanation": "Fixed volume fixes the density, not the impact energy.",
+          "misconception": "no-change slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L2::Q2",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L2",
+      "stem": "Why do hotter molecules raise the pressure in a fixed volume?",
+      "misconceptionClass": "mechanism linking",
+      "options": [
+        {
+          "key": "A",
+          "text": "they become heavier",
+          "correct": false,
+          "explanation": "Mass is unchanged by heating.",
+          "misconception": "mass invention"
+        },
+        {
+          "key": "B",
+          "text": "they stick to the walls longer",
+          "correct": false,
+          "explanation": "Model collisions are instantaneous.",
+          "misconception": "model confusion"
+        },
+        {
+          "key": "C",
+          "text": "they hit the walls harder and more frequently",
+          "correct": true,
+          "explanation": "Both the impulse per hit and the hit rate rise.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "they hit the walls less often but harder",
+          "correct": false,
+          "explanation": "Faster molecules also return sooner — frequency rises too.",
+          "misconception": "half mechanism"
+        }
+      ]
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L2::Q3",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L2",
+      "stem": "Which quantity must be constant for the pressure–temperature relationship as stated?",
+      "misconceptionClass": "condition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the pressure",
+          "correct": false,
+          "explanation": "Pressure is the responding variable.",
+          "misconception": "condition confusion"
+        },
+        {
+          "key": "B",
+          "text": "the temperature",
+          "correct": false,
+          "explanation": "Temperature is the manipulated variable.",
+          "misconception": "condition confusion"
+        },
+        {
+          "key": "C",
+          "text": "the wall material",
+          "correct": false,
+          "explanation": "Material does not feature in the law.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "D",
+          "text": "the volume and the amount of gas",
+          "correct": true,
+          "explanation": "Fixed rigid box, fixed sample.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L2::Q4",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L2",
+      "stem": "A full aerosol can is thrown onto a bonfire and its internal pressure climbs. What is the most likely outcome, and which law explains it?",
+      "misconceptionClass": "application transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "it bursts, because pressure rises with temperature at fixed volume",
+          "correct": true,
+          "explanation": "The sealed can is a constant-volume gas box; the fire raises T and P.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "it cools down, because pressure and temperature are inversely related",
+          "correct": false,
+          "explanation": "At fixed volume the relation is direct.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "C",
+          "text": "nothing happens because the can is sealed",
+          "correct": false,
+          "explanation": "Sealed is exactly the risk — nowhere for the pressure to go.",
+          "misconception": "denial"
+        },
+        {
+          "key": "D",
+          "text": "the can's volume doubles to relieve the pressure",
+          "correct": false,
+          "explanation": "Rigid cans barely change volume before bursting.",
+          "misconception": "absurd claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L2::Q5",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L2",
+      "stem": "A gas at 200 K in a rigid box is warmed until the pressure doubles. What temperature has been reached, qualitatively using the proportionality?",
+      "misconceptionClass": "proportional reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "about 473 K",
+          "correct": false,
+          "explanation": "That adds 273 instead of doubling the kelvin value.",
+          "misconception": "conversion tangle"
+        },
+        {
+          "key": "B",
+          "text": "about 400 K, since pressure tracks kelvin temperature at fixed volume",
+          "correct": true,
+          "explanation": "Doubling pressure needs doubling kelvin temperature.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "about 100 K",
+          "correct": false,
+          "explanation": "Halving the temperature would halve the pressure.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "D",
+          "text": "200 K still",
+          "correct": false,
+          "explanation": "The pressure changed, so the temperature did.",
+          "misconception": "no-change slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L2::Q6",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L2",
+      "stem": "State what happens to the pressure of a fixed gas at constant volume when its kelvin temperature is increased.",
+      "misconceptionClass": "qualitative recall",
+      "kind": "recall",
+      "modelAnswer": "The pressure increases in step with the kelvin temperature, because faster molecules strike the walls harder and more often.",
+      "keywords": [
+        "pressure",
+        "increases",
+        "walls",
+        "faster"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L2::Q7",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L2",
+      "stem": "State the two ways in which faster molecules intensify the wall bombardment.",
+      "misconceptionClass": "mechanism recall",
+      "kind": "recall",
+      "modelAnswer": "Each collision delivers a larger impulse, and the molecules return to the walls sooner so collisions happen more frequently.",
+      "keywords": [
+        "impulse",
+        "larger",
+        "frequent",
+        "collisions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L2::Q8",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L2",
+      "stem": "Explain why the pressure–temperature relationship requires the amount of gas to be fixed.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Pressure is produced by the total bombardment of all the molecules present. Adding or removing molecules changes the number of impactors independently of temperature, so the clean correspondence between kelvin temperature and pressure would be broken. Fixing the amount of gas isolates temperature as the only driver of the collision totals.",
+      "keywords": [
+        "molecules",
+        "total",
+        "temperature",
+        "fixed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TbkRRTNgrJZqfkhV::L2::Q9",
+      "moduleId": "rn_TbkRRTNgrJZqfkhV::L2",
+      "stem": "A rigid gas cylinder left in direct sun warms from 300 K to 330 K. Using the qualitative proportionality, state roughly how the internal pressure changes.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "At fixed volume pressure tracks kelvin temperature, so the pressure rises by about a tenth — roughly 10% higher — because 330 K is 10% above 300 K.",
+      "keywords": [
+        "10%",
+        "pressure",
+        "rises",
+        "temperature"
+      ],
+      "options": []
+    }
+  ]
+}

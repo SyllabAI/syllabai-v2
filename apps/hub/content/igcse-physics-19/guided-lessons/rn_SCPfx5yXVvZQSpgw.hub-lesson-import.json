@@ -1,0 +1,188 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_SCPfx5yXVvZQSpgw",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "5115dff7853f472e4927bac5143de93778741c87545ebcc3b96b57c0f17848f5",
+    "pinnedRef": "8f834fff738f114f05e2078aedf5fdaad53b9ff7"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_SCPfx5yXVvZQSpgw",
+    "topicTitle": "3. Waves",
+    "subtopicTitle": "Sound",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/3-waves/3-3-sound/3-3-1-core-practical-investigating-the-speed-of-sound",
+    "specAnchors": [
+      {
+        "code": "3.25P",
+        "text": "practical: investigate the speed of sound in air"
+      }
+    ],
+    "primer": {
+      "text": "This core practical measures the speed of sound in air twice: once with a stopwatch over a long measured distance, and once with two microphones and an oscilloscope over a short one. Comparing the methods is where the evaluation marks live, because one of them is fighting human reaction time.",
+      "prerequisiteSubtopic": "Sound"
+    },
+    "modules": [
+      {
+        "id": "rn_SCPfx5yXVvZQSpgw::L1",
+        "title": "Timing sound over a measured distance",
+        "sourceHeadings": [
+          "Experiment 1: measuring the speed of sound between two points",
+          "Measuring the speed of sound in air"
+        ],
+        "specRefs": [
+          "3.25P"
+        ],
+        "opening": "The oldest way to catch the speed of sound is also the simplest: make a sharp bang a known distance away, start a stopwatch when you see the bang and stop it when the sound reaches you. Distance divided by time then gives a value close to the accepted 340 m/s.",
+        "keyPoints": [
+          "The experiment measures how fast sound crosses a known gap between two people.",
+          "A trundle wheel measures a distance of about 100 m between two people.",
+          "One person bangs two wooden blocks together; the other starts a stopwatch on seeing the bang and stops it on hearing it.",
+          "The timing is repeated several times and averaged, then repeated at several distances.",
+          "Speed is calculated from distance divided by time, giving about 340 m/s in air."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Two people stand a known distance apart, one bangs blocks while the other times the gap between seeing the bang and hearing it, and distance divided by the average time gives the speed of sound.",
+            "analogy": "Timing a storm: you already use light as the instant signal and sound as the delayed one, so thunder counting is this experiment outdoors.",
+            "examPointer": "Name the measuring instruments and their jobs: trundle wheel for distance, stopwatch for time, wooden blocks for the bang."
+          },
+          "medium": {
+            "restatement": "Over a 100 m gap the sound takes about 0.3 s, so the stopwatch reading is largely reaction time; averaging and long distances keep the ratio usable, and distance divided by average time still lands near 340 m/s.",
+            "analogy": "Measuring a river by floating a stick between two bridges: a crude timing over a long baseline still reveals the speed.",
+            "examPointer": "If asked to improve accuracy, move the analysis onto a graph: the gradient of distance against average time cancels a constant reaction offset."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_SCPfx5yXVvZQSpgw::L1::Q1",
+          "rn_SCPfx5yXVvZQSpgw::L1::Q2",
+          "rn_SCPfx5yXVvZQSpgw::L1::Q3",
+          "rn_SCPfx5yXVvZQSpgw::L1::Q4",
+          "rn_SCPfx5yXVvZQSpgw::L1::Q5",
+          "rn_SCPfx5yXVvZQSpgw::L1::Q6",
+          "rn_SCPfx5yXVvZQSpgw::L1::Q7",
+          "rn_SCPfx5yXVvZQSpgw::L1::Q8",
+          "rn_SCPfx5yXVvZQSpgw::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_SCPfx5yXVvZQSpgw::L2",
+        "title": "Timing sound with microphones and an oscilloscope",
+        "sourceHeadings": [
+          "Measuring the speed of sound with an oscilloscope",
+          "Evaluating the experiments"
+        ],
+        "specRefs": [
+          "3.25P"
+        ],
+        "opening": "The electronic upgrade swaps the stopwatch for an oscilloscope: two microphones a couple of metres apart feed the scope, the bang produces one pulse on each trace, and the delay between the pulses is the travel time across the measured gap. Electronic triggering removes the reaction-time error that limits the manual method.",
+        "keyPoints": [
+          "Two microphones are connected to one oscilloscope and placed a measured distance apart, about 2 m.",
+          "The oscilloscope triggers when the first microphone detects the bang.",
+          "The second microphone receives the bang later, so the traces are separated by the travel time across the gap.",
+          "A tape measure gives the microphone separation and the delay is read from the scope.",
+          "Electronic timing removes human reaction time, so the result is more precise than the stopwatch method."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Two microphones feed one oscilloscope; the bang shows on both traces, and the horizontal offset between the pulses divided into the known microphone separation gives the speed of sound.",
+            "analogy": "Two runners crossing the same finish line at different times: the oscilloscope is the photo-finish camera for the sound pulse.",
+            "examPointer": "Evaluation marks live in the comparison: name human reaction time as the weakness of method 1 and electronic triggering as the fix."
+          },
+          "medium": {
+            "restatement": "The scope draws both microphone traces on one time axis; the offset in divisions converts to seconds through the time-base scale, and dividing the known separation by that delay yields the speed with no human timing in the loop.",
+            "analogy": "A photo-finish camera: two runners cross the same line, and the timestamp difference is the time of flight.",
+            "examPointer": "Evaluation pairs: reaction time (method 1’s flaw) against electronic triggering (method 2’s fix); quote both to earn the comparison marks."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_SCPfx5yXVvZQSpgw::L2::Q1",
+          "rn_SCPfx5yXVvZQSpgw::L2::Q2",
+          "rn_SCPfx5yXVvZQSpgw::L2::Q3",
+          "rn_SCPfx5yXVvZQSpgw::L2::Q4",
+          "rn_SCPfx5yXVvZQSpgw::L2::Q5",
+          "rn_SCPfx5yXVvZQSpgw::L2::Q6",
+          "rn_SCPfx5yXVvZQSpgw::L2::Q7",
+          "rn_SCPfx5yXVvZQSpgw::L2::Q8",
+          "rn_SCPfx5yXVvZQSpgw::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "trundle wheel",
+          "definition": "A rolling wheel of known circumference used to measure distances by counting rotations.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reaction time",
+          "definition": "The delay between a person perceiving an event and responding to it, a source of random timing error.",
+          "firstLesson": 1
+        },
+        {
+          "term": "trigger",
+          "definition": "The signal event that starts an oscilloscope drawing its trace, so every pulse is recorded from the same instant.",
+          "firstLesson": 2
+        },
+        {
+          "term": "resolution",
+          "definition": "The smallest change an instrument can reliably display or record.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/ca925ae067c3-sound-method-1.png",
+        "alt": "sound-method-1, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Measuring the speed of sound in air",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Measuring the speed of sound directly between two points"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/63af23f9b475-sound-method-3.png",
+        "alt": "sound-method-3, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Measuring the speed of sound with an oscilloscope",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Measuring the speed of sound using an oscilloscope"
+      }
+    ]
+  }
+}

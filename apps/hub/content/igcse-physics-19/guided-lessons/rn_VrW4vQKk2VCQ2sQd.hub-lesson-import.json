@@ -1,0 +1,137 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_VrW4vQKk2VCQ2sQd",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "cc0322e39d6bfebc9c873b846714c3d392221c713fe3c054f222c6a1333cd923",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_VrW4vQKk2VCQ2sQd",
+    "topicTitle": "5. Solids, Liquids and Gases",
+    "subtopicTitle": "Ideal Gases",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/5-solids-liquids-and-gases/5-3-ideal-gases/5-3-5-the-pressure-law",
+    "specAnchors": [
+      {
+        "code": "5.21",
+        "text": "use the relationship between the pressure and Kelvin temperature of a fixed mass of gas at constant volume: p 1 p 2 = T 1 T 2"
+      }
+    ],
+    "primer": {
+      "text": "For a sealed, rigid container of gas, pressure and kelvin temperature rise and fall together in strict proportion: p1/T1 = p2/T2. This note puts the law to work on a bicycle tyre and a hot cylinder, with the kelvin conversion done before any substitution — the law's one non-negotiable.",
+      "prerequisiteSubtopic": "Ideal Gases"
+    },
+    "modules": [
+      {
+        "id": "rn_VrW4vQKk2VCQ2sQd::L1",
+        "title": "The pressure law and its use",
+        "sourceHeadings": [
+          "The pressure law"
+        ],
+        "specRefs": [
+          "5.21"
+        ],
+        "opening": "One law, one condition set, one trap: for a fixed mass at constant volume, pressure is proportional to kelvin temperature, so p1/T1 = p2/T2. The trap is Celsius — converting to kelvin is not optional, it is the law's grammar.",
+        "keyPoints": [
+          "The pressure law states p1/T1 = p2/T2 — with the sample sealed and the volume rigid, pressure divided by kelvin temperature stays constant.",
+          "Pressure and kelvin temperature are directly proportional at constant volume.",
+          "Temperatures must be converted to kelvin before any substitution into the law.",
+          "Rearranged, p2 = p1 × T2/T1 gives the new pressure after a temperature change.",
+          "A graph of pressure against kelvin temperature is a straight line through the origin."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "In a sealed rigid container, double the kelvin temperature and the pressure doubles; halve it and the pressure halves. Write the law as pressure divided by temperature staying constant and solve for the unknown.",
+            "analogy": "A seesaw pinned at one end: load (pressure) and arm length (kelvin temperature) stay in the same ratio no matter where you set them.",
+            "examPointer": "Convert to kelvin first, then substitute — writing 27 °C as 27 K is the classic full-mark-to-zero error on this law."
+          },
+          "medium": {
+            "restatement": "The law is the quantitative form of the kinetic argument at fixed volume: mean molecular kinetic energy scales with kelvin temperature, so both the impulse per wall impact and the collision frequency scale with T, making pressure proportional to T. The ratio form p1/T1 = p2/T2 is just the proportionality constant cancelling between two states of the same sealed sample.",
+            "analogy": "A fixed-fee taxi whose fare per minute never changes: total fare divided by journey time is the same constant on every trip, so any two trips give the ratio equation.",
+            "examPointer": "Quote the proportionality — P ∝ T (kelvin, fixed volume) — in explanations, then deploy the ratio form for calculations; mixing the narrative and the algebra loses structure marks."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_VrW4vQKk2VCQ2sQd::L1::Q1",
+          "rn_VrW4vQKk2VCQ2sQd::L1::Q2",
+          "rn_VrW4vQKk2VCQ2sQd::L1::Q3",
+          "rn_VrW4vQKk2VCQ2sQd::L1::Q4",
+          "rn_VrW4vQKk2VCQ2sQd::L1::Q5",
+          "rn_VrW4vQKk2VCQ2sQd::L1::Q6",
+          "rn_VrW4vQKk2VCQ2sQd::L1::Q7",
+          "rn_VrW4vQKk2VCQ2sQd::L1::Q8",
+          "rn_VrW4vQKk2VCQ2sQd::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "pressure law",
+          "definition": "For a fixed mass at constant volume, p1/T1 = p2/T2 with temperatures in kelvin.",
+          "firstLesson": 1
+        },
+        {
+          "term": "constant volume",
+          "definition": "The condition that the gas's container neither expands nor contracts during the process.",
+          "firstLesson": 1
+        },
+        {
+          "term": "kelvin",
+          "definition": "The absolute temperature unit the pressure law requires; Celsius values must be converted before use.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "The pressure inside a bicycle tyre is 5.10 × 10^5 Pa when the temperature is 279 K. After the bicycle has been ridden, the temperature of the air in the tyre is 299 K. Calculate the new pressure in the tyre, assuming the volume is unchanged.",
+        "steps": [
+          "Volume is constant, so the pressure law applies: p1/T1 = p2/T2.",
+          "List the known quantities: p1 = 5.10 × 10^5 Pa, T1 = 279 K, T2 = 299 K.",
+          "Rearrange for p2 by multiplying both sides by T2: p2 = p1 × T2/T1.",
+          "Substitute: p2 = 5.10 × 10^5 × 299/279 = 5.47 × 10^5 Pa (3 s.f.)."
+        ],
+        "finalAnswer": "The new pressure in the tyre is 5.47 × 10^5 Pa."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/8a80507a35f7-6-5-2-gas-laws-molecular-model-3.png",
+        "alt": "Gas Laws Molecular Model (3), downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "The pressure law",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Pressure and temperature are proportional. Doubling temperature also doubles the pressure for a gas in a fixed volume."
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b3aa853a082b-6-5-2-pressure-law.png",
+        "alt": "Pressure Law, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "The pressure law",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Pressure law graph representing temperature (in °C) directly proportional to the volume"
+      }
+    ]
+  }
+}

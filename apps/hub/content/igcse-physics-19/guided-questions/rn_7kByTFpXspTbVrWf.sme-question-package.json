@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_7kByTFpXspTbVrWf",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "ee95090b7cc79d810f0f00a2c5488126b74ba39f4b1e4c4384573234f3017153",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "packageId": "igcse-physics::rn_7kByTFpXspTbVrWf",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L1::Q1",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L1",
+      "stem": "How do the particles in a solid move?",
+      "misconceptionClass": "particle motion recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "they vibrate about fixed positions",
+          "correct": true,
+          "explanation": "Fixed sites plus vibration is the signature of the solid state.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "they slide past one another freely",
+          "correct": false,
+          "explanation": "Sliding neighbours describe a liquid, where positions are not fixed.",
+          "misconception": "state confusion"
+        },
+        {
+          "key": "C",
+          "text": "they fly around at high speed in all directions",
+          "correct": false,
+          "explanation": "Free flight between collisions describes a gas.",
+          "misconception": "state confusion"
+        },
+        {
+          "key": "D",
+          "text": "they stay completely still at all temperatures",
+          "correct": false,
+          "explanation": "Particles always carry some vibration above absolute zero.",
+          "misconception": "motion-less slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L1::Q2",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L1",
+      "stem": "Which property does a liquid share with a solid?",
+      "misconceptionClass": "property mapping",
+      "options": [
+        {
+          "key": "A",
+          "text": "particles flying between distant collisions",
+          "correct": false,
+          "explanation": "That is gaseous behaviour; liquid neighbours stay in contact.",
+          "misconception": "state confusion"
+        },
+        {
+          "key": "B",
+          "text": "a fixed volume",
+          "correct": true,
+          "explanation": "Particles remain in contact in both states, so neither is readily compressed.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a fixed shape of its own",
+          "correct": false,
+          "explanation": "Only the solid holds its own shape; a liquid adopts its container's.",
+          "misconception": "property swap"
+        },
+        {
+          "key": "D",
+          "text": "particles locked in a regular pattern",
+          "correct": false,
+          "explanation": "Regular packing belongs to the solid lattice only.",
+          "misconception": "state confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L1::Q3",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L1",
+      "stem": "Why does a liquid take the shape of the bottom of its container?",
+      "misconceptionClass": "mechanism linking",
+      "options": [
+        {
+          "key": "A",
+          "text": "its particles are locked in place so gravity pulls the whole block down",
+          "correct": false,
+          "explanation": "Locked particles would preserve the original shape, as in a solid.",
+          "misconception": "contradiction slip"
+        },
+        {
+          "key": "B",
+          "text": "its particles shrink so the liquid collapses",
+          "correct": false,
+          "explanation": "Particle size never changes between states; only spacing and motion do.",
+          "misconception": "particle-size slip"
+        },
+        {
+          "key": "C",
+          "text": "its particles can move past one another while staying in contact",
+          "correct": true,
+          "explanation": "Relative sliding lets the bulk flow until it settles under gravity.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "its particles expand to fill the whole container",
+          "correct": false,
+          "explanation": "Liquids keep a fixed volume; only gases fill the space available.",
+          "misconception": "gas bleed"
+        }
+      ]
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L1::Q4",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L1",
+      "stem": "Which statement about the spacing of particles is correct for solids and liquids?",
+      "misconceptionClass": "spacing recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "liquid particles are far apart like a gas",
+          "correct": false,
+          "explanation": "Large separations appear only in the gas state.",
+          "misconception": "state confusion"
+        },
+        {
+          "key": "B",
+          "text": "solid particles have big gaps that lock them apart",
+          "correct": false,
+          "explanation": "Solids are the most tightly packed of the three states.",
+          "misconception": "spacing inversion"
+        },
+        {
+          "key": "C",
+          "text": "particle spacing is identical in all three states",
+          "correct": false,
+          "explanation": "Spacing widens dramatically only on vaporisation.",
+          "misconception": "uniformity slip"
+        },
+        {
+          "key": "D",
+          "text": "particles touch in both states, with a liquid only slightly less dense",
+          "correct": true,
+          "explanation": "Both states are close-packed; melting costs little volume for most substances.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L1::Q5",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L1",
+      "stem": "A block of ice is dropped into a jug and melts. What has changed for its particles?",
+      "misconceptionClass": "state transition",
+      "options": [
+        {
+          "key": "A",
+          "text": "they kept touching but gained the ability to slide past each other",
+          "correct": true,
+          "explanation": "Melting moves particles from fixed lattice sites to mobile contact — the liquid signature.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "they moved far apart and fly independently",
+          "correct": false,
+          "explanation": "That describes boiling to a gas, not melting to a liquid.",
+          "misconception": "transition overshoot"
+        },
+        {
+          "key": "C",
+          "text": "they became smaller and packed tighter",
+          "correct": false,
+          "explanation": "Particle size is fixed; melting slightly loosens the packing.",
+          "misconception": "particle-size slip"
+        },
+        {
+          "key": "D",
+          "text": "nothing changed because the substance is still water",
+          "correct": false,
+          "explanation": "Same substance, different state — the arrangement and motion did change.",
+          "misconception": "identity confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L1::Q6",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L1",
+      "stem": "State the arrangement and motion of particles in a solid.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Solid particles are packed in a regular, fixed arrangement and vibrate about fixed positions without changing places.",
+      "keywords": [
+        "regular",
+        "fixed",
+        "vibrate",
+        "positions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L1::Q7",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L1",
+      "stem": "State two bulk properties that a liquid has but a gas does not.",
+      "misconceptionClass": "property recall",
+      "kind": "recall",
+      "modelAnswer": "A liquid keeps a fixed volume and sits in contact at the bottom of the container, whereas a gas expands to fill all the space available.",
+      "keywords": [
+        "volume",
+        "container",
+        "expand",
+        "gas"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L1::Q8",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L1",
+      "stem": "Explain why a solid keeps its own shape when it is tipped out of a mould but a liquid does not.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "In the solid each particle is locked to one site in a regular lattice, so the relative positions of all the particles cannot change and the moulded shape survives. In a liquid the particles remain in contact but can slide past one another, so the collection flows under gravity and adopts the shape of the surface that holds it.",
+      "keywords": [
+        "locked",
+        "lattice",
+        "slide",
+        "shape"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L1::Q9",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L1",
+      "stem": "A student tips 200 cm3 of liquid from a bottle into a wide dish. State what happens to the volume of the liquid and use particle behaviour to explain the shape it ends up with.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The volume stays 200 cm3 because liquid particles remain in contact, so the substance is neither compressed nor expanded. The particles slide past one another, so the liquid spreads until it forms a shallow layer taking the shape of the dish bottom.",
+      "keywords": [
+        "volume",
+        "contact",
+        "slide",
+        "shape"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L2::Q1",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L2",
+      "stem": "Which description matches the particles of a gas?",
+      "misconceptionClass": "particle motion recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "arranged in a regular pattern with large gaps",
+          "correct": false,
+          "explanation": "Gas arrangements are irregular as well as widely separated.",
+          "misconception": "hybrid slip"
+        },
+        {
+          "key": "B",
+          "text": "far apart, moving fast and randomly in all directions",
+          "correct": true,
+          "explanation": "Large separations and rapid random motion define the gas state.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "touching, vibrating about fixed points",
+          "correct": false,
+          "explanation": "That is the solid arrangement.",
+          "misconception": "state confusion"
+        },
+        {
+          "key": "D",
+          "text": "touching but sliding past each other",
+          "correct": false,
+          "explanation": "That is the liquid arrangement.",
+          "misconception": "state confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L2::Q2",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L2",
+      "stem": "What can be said about the shape and volume of a gas?",
+      "misconceptionClass": "property mapping",
+      "options": [
+        {
+          "key": "A",
+          "text": "fixed volume, fixed shape",
+          "correct": false,
+          "explanation": "That pair describes a solid.",
+          "misconception": "state confusion"
+        },
+        {
+          "key": "B",
+          "text": "fixed volume, variable shape",
+          "correct": false,
+          "explanation": "That pair describes a liquid.",
+          "misconception": "state confusion"
+        },
+        {
+          "key": "C",
+          "text": "both shape and volume change to match the container",
+          "correct": true,
+          "explanation": "Free flight between collisions lets the gas occupy all available space.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "fixed shape, variable volume",
+          "correct": false,
+          "explanation": "No state pairs a fixed shape with a variable volume.",
+          "misconception": "property swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L2::Q3",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L2",
+      "stem": "Why does a gas spread out to fill the whole container?",
+      "misconceptionClass": "mechanism linking",
+      "options": [
+        {
+          "key": "A",
+          "text": "its particles attract each other into every corner",
+          "correct": false,
+          "explanation": "Inter-particle forces in a gas are negligible between collisions.",
+          "misconception": "force invention"
+        },
+        {
+          "key": "B",
+          "text": "its particles grow in size until they touch every wall",
+          "correct": false,
+          "explanation": "Particle size never changes; only separation does.",
+          "misconception": "particle-size slip"
+        },
+        {
+          "key": "C",
+          "text": "gravity pulls them evenly across the container",
+          "correct": false,
+          "explanation": "Filling is uniform precisely because gravity is not the driver at particle scale.",
+          "misconception": "force invention"
+        },
+        {
+          "key": "D",
+          "text": "its particles travel in straight lines between collisions with nothing holding them together",
+          "correct": true,
+          "explanation": "Unconstrained straight-line motion carries particles to every region of the space.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L2::Q4",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L2",
+      "stem": "A sealed syringe contains air. The plunger is pushed in and the air is squeezed into half the volume. Which particle property made this possible?",
+      "misconceptionClass": "application transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "the large empty separations between gas particles",
+          "correct": true,
+          "explanation": "Most of a gas is empty space, so particles can be forced closer.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the particles themselves shrank",
+          "correct": false,
+          "explanation": "Particle size is fixed; only the separations reduce.",
+          "misconception": "particle-size slip"
+        },
+        {
+          "key": "C",
+          "text": "the regular arrangement collapsed",
+          "correct": false,
+          "explanation": "Gases have no regular arrangement to begin with.",
+          "misconception": "state confusion"
+        },
+        {
+          "key": "D",
+          "text": "some particles escaped through the syringe",
+          "correct": false,
+          "explanation": "The syringe is sealed, so the particle count is unchanged.",
+          "misconception": "count slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L2::Q5",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L2",
+      "stem": "Which row correctly links each state to its particle behaviour?",
+      "misconceptionClass": "synthesis",
+      "options": [
+        {
+          "key": "A",
+          "text": "all three states vibrate about fixed points",
+          "correct": false,
+          "explanation": "Only the solid locks particles to sites.",
+          "misconception": "uniformity slip"
+        },
+        {
+          "key": "B",
+          "text": "solid vibrate in place, liquid slide in contact, gas fly freely apart",
+          "correct": true,
+          "explanation": "Each state is correctly paired with its particle freedom.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "solid slide in contact, liquid vibrate in place, gas fly freely apart",
+          "correct": false,
+          "explanation": "The solid and liquid behaviours are swapped.",
+          "misconception": "state swap"
+        },
+        {
+          "key": "D",
+          "text": "solid vibrate in place, liquid fly freely apart, gas slide in contact",
+          "correct": false,
+          "explanation": "The liquid and gas behaviours are swapped.",
+          "misconception": "state swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L2::Q6",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L2",
+      "stem": "State the arrangement and motion of particles in a gas.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Gas particles are widely separated with no regular arrangement, moving rapidly and randomly in all directions between collisions.",
+      "keywords": [
+        "separated",
+        "random",
+        "rapidly",
+        "collisions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L2::Q7",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L2",
+      "stem": "State what happens to the shape and the volume of a gas released into a larger container.",
+      "misconceptionClass": "property recall",
+      "kind": "recall",
+      "modelAnswer": "Both increase: the gas takes the shape of the new container and its volume grows to fill all of the space available.",
+      "keywords": [
+        "shape",
+        "volume",
+        "container",
+        "fill"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L2::Q8",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L2",
+      "stem": "Explain why the same substance can hold a fixed volume as a liquid but a variable volume as a gas.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Liquid particles remain in contact, so pushing them appreciably closer is resisted by the contact forces and the volume is effectively fixed. In a gas the particles are already far apart with negligible binding between them, so there is abundant empty space and nothing prevents the separations growing or shrinking, letting the volume match whatever container holds it.",
+      "keywords": [
+        "contact",
+        "separated",
+        "volume",
+        "space"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_7kByTFpXspTbVrWf::L2::Q9",
+      "moduleId": "rn_7kByTFpXspTbVrWf::L2",
+      "stem": "A balloon is filled with air and placed inside a vacuum chamber from which the outside pressure is removed. Use the particle model to explain what happens to the balloon's volume.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Inside the balloon the air particles keep colliding with the inner walls and push outward. With the outside pressure removed there is less inward push on the rubber, so the balloon expands until the rubber's tension balances the particle collisions — its volume increases because gas particles fly freely and fill the larger space.",
+      "keywords": [
+        "colliding",
+        "outward",
+        "expand",
+        "volume"
+      ],
+      "options": []
+    }
+  ]
+}
