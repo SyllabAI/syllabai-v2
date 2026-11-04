@@ -297,6 +297,30 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-9 (batch seven, the accounting family tranche 4): CIE 9706
+        # AS/A Level, CIE 0452 both examination spines, Edexcel 4AC1 papers.
+        accounting = {
+            "cie-as-accounting-21": ("f8ac_lattice_9706as", "9706AS"),
+            "cie-a-level-accounting-21": ("f8ac_lattice_9706al", "9706AL"),
+            "cie-igcse-accounting-21": ("f8ac_lattice_0452x21", "0452x21"),
+            "cie-igcse-accounting-25": ("f8ac_lattice_0452x25", "0452x25"),
+            "igcse-accounting-17-financial-statements": (
+                "f8ac_lattice_4ac1p1", "4AC1P1",
+            ),
+            "igcse-accounting-17-introduction-to-bookkeeping-and-accounting": (
+                "f8ac_lattice_4ac1p2", "4AC1P2",
+            ),
+        }
+        if args.course in accounting:
+            mod, tag = accounting[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="seven", task="T-KG-PRE-9", exporter_ver="v1.3",
+            )
+            return
         # T-KG-PRE-8 (batch six, the maths family tranche 3) — the Edexcel
         # maths corpus: IAL units (YMA01/YFM01) and IGCSE (4MA1/4XMA1/4MB1/4PM1).
         edexcel = {
