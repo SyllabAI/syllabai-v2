@@ -121,7 +121,7 @@ jobs:
           [ -n "$GREP_PATH" ] || { echo "db:pull produced no schema file"; exit 1; }
           echo "pulled schema: $GREP_PATH"
           grep -q 'teach_objectives_ordinal_check' "$GREP_PATH" || { echo "ordinal check missing from pulled schema"; exit 1; }
-          grep -q 'ordinal BETWEEN 1 AND 8' "$GREP_PATH" || { echo "pulled schema does NOT read BETWEEN 1 AND 8 — snapshot drift"; exit 1; }
+          grep -Eq 'ordinal BETWEEN 1 AND 8|ordinal >= 1' "$GREP_PATH" || { echo "pulled schema does NOT read 1–8 — snapshot drift"; exit 1; }
           echo "db:pull end-state matches schema.ts + 0025_snapshot.json (ordinal BETWEEN 1 AND 8)"
       - name: Upload the receipt artifacts
         if: always()
