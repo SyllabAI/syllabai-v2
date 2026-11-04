@@ -1,0 +1,182 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_H8r8FssR6Q3Ks7pc",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8baaf5940ab9136e273115b599d7e4545c1c8b664a75babf848889697d85502f",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_H8r8FssR6Q3Ks7pc",
+    "topicTitle": "5. Solids, Liquids and Gases",
+    "subtopicTitle": "Changes of State",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/5-solids-liquids-and-gases/5-2-changes-of-state/5-2-4-specific-heat-capacity",
+    "specAnchors": [
+      {
+        "code": "5.12P",
+        "text": "know that specific heat capacity is the energy required to change the temperature of an object by one degree Celsius per kilogram of mass (J/kg °C)"
+      },
+      {
+        "code": "5.13P",
+        "text": "use the equation: change in thermal energy = mass × specific heat capacity × change in temperature Δ Q = m × c × ΔT"
+      }
+    ],
+    "primer": {
+      "text": "Different substances are differently stubborn about warming: water soaks up four thousand joules per kilogram per degree, metals far less. This note defines specific heat capacity, contrasts the high-capacity and low-capacity worlds, and drills the ΔQ = mcΔT calculation to a two-significant-figure finish.",
+      "prerequisiteSubtopic": "Changes of State"
+    },
+    "modules": [
+      {
+        "id": "rn_H8r8FssR6Q3Ks7pc::L1",
+        "title": "Defining specific heat capacity",
+        "sourceHeadings": [
+          "Specific heat capacity",
+          "Examples of specific heat capacity"
+        ],
+        "specRefs": [
+          "5.12P"
+        ],
+        "opening": "Specific heat capacity is the price, in joules, of lifting one kilogram of a substance by one degree Celsius. High-capacity substances are slow to warm and slow to cool; low-capacity substances sprint through both.",
+        "keyPoints": [
+          "Specific heat capacity is the energy needed to warm 1 kg of a substance by 1 °C.",
+          "Its unit is joules per kilogram per degree Celsius, written J/kg °C.",
+          "Water has a high specific heat capacity, so it warms up and cools down slowly.",
+          "Substances with a low specific heat capacity heat up and cool down quickly for the same energy.",
+          "The temperature change for a given energy input depends on the mass and the material heated."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Think of specific heat capacity as a per-kilogram, per-degree price tag. Water's tag is about 4200 J/kg °C, so a kettle needs thousands of joules for every single degree on every single kilogram.",
+            "analogy": "Filling buckets of different widths: the same jug of energy raises the narrow bucket (low capacity) far faster than the wide one (high capacity).",
+            "examPointer": "Always attach all three units — J/kg °C — because dropping the 'per kilogram' or the 'per degree' makes the definition wrong on the mark scheme."
+          },
+          "medium": {
+            "restatement": "The definition is energetic, not thermal-intuitive: it is the energy per unit mass per unit temperature rise stored by the substance's particles. A high capacity means much of the supplied energy goes into the substance's internal store per degree, so temperature responds sluggishly in both heating and cooling directions.",
+            "analogy": "A wide harbour versus a narrow pool fed by the same stream: the harbour's level (temperature) creeps up while the pool leaps, even though the inflow (power) is identical.",
+            "examPointer": "Comparison questions want the consequence chain: higher capacity means slower warming AND slower cooling — quote both directions or the mark is half-earned."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_H8r8FssR6Q3Ks7pc::L1::Q1",
+          "rn_H8r8FssR6Q3Ks7pc::L1::Q2",
+          "rn_H8r8FssR6Q3Ks7pc::L1::Q3",
+          "rn_H8r8FssR6Q3Ks7pc::L1::Q4",
+          "rn_H8r8FssR6Q3Ks7pc::L1::Q5",
+          "rn_H8r8FssR6Q3Ks7pc::L1::Q6",
+          "rn_H8r8FssR6Q3Ks7pc::L1::Q7",
+          "rn_H8r8FssR6Q3Ks7pc::L1::Q8",
+          "rn_H8r8FssR6Q3Ks7pc::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_H8r8FssR6Q3Ks7pc::L2",
+        "title": "Calculating with ΔQ = mcΔT",
+        "sourceHeadings": [
+          "Calculating specific heat capacity"
+        ],
+        "specRefs": [
+          "5.13P"
+        ],
+        "opening": "One triangle equation runs the whole topic: change in thermal energy equals mass times specific heat capacity times temperature change. Rearranged, it also yields capacity from experiment data — the bridge to the core practical that follows this note.",
+        "keyPoints": [
+          "The equation is ΔQ = m × c × ΔT for a temperature change with no change of state.",
+          "ΔQ is the change in thermal energy in joules, m the mass in kilograms, c the specific heat capacity, ΔT the temperature change in °C.",
+          "Rearranged forms give c = ΔQ ÷ (mΔT) and ΔT = ΔQ ÷ (mc).",
+          "Final answers should be quoted to an appropriate number of significant figures.",
+          "The equation applies only while the substance stays in one state — latent heat governs melting and boiling instead."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Multiply the mass by the capacity by the temperature change and you have the energy bill. Know any three of the four quantities and the fourth falls out by rearranging.",
+            "analogy": "A restaurant bill: heads (mass) times set-menu price (capacity) times rounds (degrees) equals the total (energy).",
+            "examPointer": "Write the equation first, substitute second, and quote units last — the three-line layout collects all the method marks."
+          },
+          "medium": {
+            "restatement": "ΔQ = mcΔT quantifies the kinetic-energy store change of the particles: heavier samples and high-capacity substances demand proportionally more energy per degree. The rearrangement c = ΔQ/(mΔT) is exactly how the immersion-heater practical measures capacity, turning two meter readings and a thermometer into a material property.",
+            "analogy": "A toll road: total fare (ΔQ) scales with the number of vehicles (m), the per-vehicle rate (c), and the number of zones crossed (ΔT) — know three, recover the fourth.",
+            "examPointer": "Check the state before calculating: across a melting or boiling plateau ΔT is zero and the equation would wrongly return zero energy — that regime belongs to latent heat."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_H8r8FssR6Q3Ks7pc::L2::Q1",
+          "rn_H8r8FssR6Q3Ks7pc::L2::Q2",
+          "rn_H8r8FssR6Q3Ks7pc::L2::Q3",
+          "rn_H8r8FssR6Q3Ks7pc::L2::Q4",
+          "rn_H8r8FssR6Q3Ks7pc::L2::Q5",
+          "rn_H8r8FssR6Q3Ks7pc::L2::Q6",
+          "rn_H8r8FssR6Q3Ks7pc::L2::Q7",
+          "rn_H8r8FssR6Q3Ks7pc::L2::Q8",
+          "rn_H8r8FssR6Q3Ks7pc::L2::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "specific heat capacity",
+          "definition": "The energy required to raise the temperature of 1 kg of a substance by 1 °C, in J/kg °C.",
+          "firstLesson": 1
+        },
+        {
+          "term": "thermal energy",
+          "definition": "The internal energy of a substance associated with its particle motion and temperature.",
+          "firstLesson": 2
+        },
+        {
+          "term": "significant figures",
+          "definition": "The digits of an answer that carry meaningful precision given the inputs.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Water of mass 0.48 kg is increased in temperature by 0.7 °C. The specific heat capacity of water is 4200 J/kg °C. Calculate the amount of thermal energy transferred to the water.",
+        "steps": [
+          "List the known quantities: mass m = 0.48 kg, temperature change ΔT = 0.7 °C, specific heat capacity c = 4200 J/kg °C.",
+          "Write the relevant equation: ΔQ = m × c × ΔT.",
+          "Substitute the values: ΔQ = 0.48 × 4200 × 0.7 = 1411.2 J.",
+          "Round the answer to 2 significant figures: ΔQ = 1400 J."
+        ],
+        "finalAnswer": "The thermal energy transferred to the water is 1400 J (2 s.f.)."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/73554555f332-14-2-specific-heat-examples.png",
+        "alt": "Specific heat examples, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Examples of specific heat capacity",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Low vs high specific heat capacity"
+      }
+    ]
+  }
+}

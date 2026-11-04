@@ -1,0 +1,182 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_6Pp9dDJX4bzTJvHh",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "cb02e0b4f503d6a8b57a7768679b2d8a8e3aeffbd72fae96d2934d0d7cb45be6",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_6Pp9dDJX4bzTJvHh",
+    "topicTitle": "5. Solids, Liquids and Gases",
+    "subtopicTitle": "Ideal Gases",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/5-solids-liquids-and-gases/5-3-ideal-gases/5-3-1-kinetic-theory",
+    "specAnchors": [
+      {
+        "code": "5.15",
+        "text": "explain how molecules in a gas have random motion and that they exert a force, and hence a pressure, on the walls of a container"
+      }
+    ],
+    "primer": {
+      "text": "Pressure is not a substance pushing — it is quadrillions of tiny collisions adding up. This note follows one gas molecule from collision to collision and shows how random motion plus wall impacts produce a steady, measurable pressure on every wall of the container.",
+      "prerequisiteSubtopic": "Ideal Gases"
+    },
+    "modules": [
+      {
+        "id": "rn_6Pp9dDJX4bzTJvHh::L1",
+        "title": "Random motion of gas molecules",
+        "sourceHeadings": [
+          "Kinetic theory of gases",
+          "Random motion"
+        ],
+        "specRefs": [
+          "5.15"
+        ],
+        "opening": "Gas molecules never rest: they travel in straight lines at hundreds of metres per second until a collision sends them off in a new direction. The motion is random — no direction is preferred — and that randomness is the seed of every gas law.",
+        "keyPoints": [
+          "Gas molecules move with rapid, random motion in all directions.",
+          "Between collisions each molecule travels in a straight line at constant speed.",
+          "Collisions with other molecules and with the container walls change a molecule's direction.",
+          "No direction of travel is preferred because the motion is random.",
+          "The random directions average out, so the gas fills its container uniformly."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Picture trillions of ping-pong balls in a box, all flying fast, bouncing off each other and the walls forever. Each ball's path is straight between bounces, and no direction is special.",
+            "analogy": "A popcorn kernel panic inside a sealed pan: every corn rockets off in whatever direction its last bounce dictated.",
+            "examPointer": "The word 'random' must be paired with 'rapid' — questions usually want the motion described as fast and in all directions."
+          },
+          "medium": {
+            "restatement": "Kinetic theory models molecules as point masses undergoing elastic collisions, so speeds stay high and directions randomise at every impact. The velocity distribution is isotropic: summed over all molecules, the mean velocity vector is zero even though the mean speed is large, which is why the gas as a whole stays put while its molecules race.",
+            "analogy": "A swarm of bees in a marquee: individually each bee dashes purposefully, but the swarm's centre never moves because every direction cancels its opposite.",
+            "examPointer": "If asked why the gas's net momentum is zero, answer with the cancellation of random directions — individual speeds are far from zero."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6Pp9dDJX4bzTJvHh::L1::Q1",
+          "rn_6Pp9dDJX4bzTJvHh::L1::Q2",
+          "rn_6Pp9dDJX4bzTJvHh::L1::Q3",
+          "rn_6Pp9dDJX4bzTJvHh::L1::Q4",
+          "rn_6Pp9dDJX4bzTJvHh::L1::Q5",
+          "rn_6Pp9dDJX4bzTJvHh::L1::Q6",
+          "rn_6Pp9dDJX4bzTJvHh::L1::Q7",
+          "rn_6Pp9dDJX4bzTJvHh::L1::Q8",
+          "rn_6Pp9dDJX4bzTJvHh::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_6Pp9dDJX4bzTJvHh::L2",
+        "title": "From wall collisions to pressure",
+        "sourceHeadings": [
+          "Pressure"
+        ],
+        "specRefs": [
+          "5.15"
+        ],
+        "opening": "Every time a molecule strikes a wall it delivers a tiny impulse. Multiply by trillions of molecules and billions of strikes per second and the bombardment becomes a smooth, steady push — the gas's pressure.",
+        "keyPoints": [
+          "Each molecule striking a container wall exerts a tiny force on it.",
+          "Pressure is the total force from all collisions divided by the wall's area.",
+          "Countless collisions per second make the wall force steady and measurable.",
+          "Higher molecular speeds or more frequent collisions give a greater pressure.",
+          "Pressure acts at right angles to every wall, on all sides of the container."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "One molecule's hit is negligible, but trillions of hits every second add up to a smooth push on each wall. That push spread over the wall's area is the pressure the gauge reads.",
+            "analogy": "Rain on a roof: one drop is nothing, but a steady downpour produces a constant drumming force across the whole surface.",
+            "examPointer": "Tie the mechanism in one chain — collision, force, total force over area, pressure — because exam marks are awarded for the chain, not the endpoint."
+          },
+          "medium": {
+            "restatement": "On impact a molecule's momentum reverses, so by Newton's second law the wall experiences an impulse; summing impulses per unit time gives an average force, and force per unit area is pressure. The isotropy of random motion makes this pressure equal on all walls, and it scales with both the collision rate and the momentum change per collision.",
+            "analogy": "A firing squad of ping-pong balls aimed from every angle: no single ball dents the armour, but the sustained hail presses on it from every side equally.",
+            "examPointer": "Quote Newton's second law in impulse form when explaining the force — 'the wall reverses the molecule's momentum' — because that is the rigorous version of 'the molecule pushes the wall'."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6Pp9dDJX4bzTJvHh::L2::Q1",
+          "rn_6Pp9dDJX4bzTJvHh::L2::Q2",
+          "rn_6Pp9dDJX4bzTJvHh::L2::Q3",
+          "rn_6Pp9dDJX4bzTJvHh::L2::Q4",
+          "rn_6Pp9dDJX4bzTJvHh::L2::Q5",
+          "rn_6Pp9dDJX4bzTJvHh::L2::Q6",
+          "rn_6Pp9dDJX4bzTJvHh::L2::Q7",
+          "rn_6Pp9dDJX4bzTJvHh::L2::Q8",
+          "rn_6Pp9dDJX4bzTJvHh::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "kinetic theory",
+          "definition": "The model explaining gas behaviour by the rapid random motion of its molecules.",
+          "firstLesson": 1
+        },
+        {
+          "term": "elastic collision",
+          "definition": "A collision in which total kinetic energy is conserved.",
+          "firstLesson": 1
+        },
+        {
+          "term": "pressure",
+          "definition": "Force per unit area, produced in gases by molecular collisions with the walls.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1f9b0c8a5b38-random-motion-of-gas-particles-e1631778537313.png",
+        "alt": "Random motion of gas particles, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Random motion",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Random motion of gas molecules in a container, caused by collisions"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/faa71de98d36-molecules-force.png",
+        "alt": "molecules-&-force, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Pressure",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Gas molecules colliding with the walls of a container, exerting a force over the area and hence generating pressure"
+      }
+    ]
+  }
+}

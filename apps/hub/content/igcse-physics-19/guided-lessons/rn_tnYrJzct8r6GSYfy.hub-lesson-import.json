@@ -1,0 +1,194 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_tnYrJzct8r6GSYfy",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "ef6f5915b56ca9a9496ee5dce091f017e0c0fde3e0642cededefe8645930cac8",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_tnYrJzct8r6GSYfy",
+    "topicTitle": "5. Solids, Liquids and Gases",
+    "subtopicTitle": "Ideal Gases",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/5-solids-liquids-and-gases/5-3-ideal-gases/5-3-3-temperature",
+    "specAnchors": [
+      {
+        "code": "5.18",
+        "text": "understand why an increase in temperature results in an increase in the average speed of gas molecules"
+      },
+      {
+        "code": "5.19",
+        "text": "know that the Kelvin temperature of a gas is proportional to the average kinetic energy of its molecules"
+      }
+    ],
+    "primer": {
+      "text": "A thermometer is a speedometer for molecules. Warm the gas and the average molecular speed rises; cool it and the swarm slows. Better still, the kelvin temperature is exactly proportional to the average kinetic energy — the proportionality that makes every gas law work.",
+      "prerequisiteSubtopic": "Ideal Gases"
+    },
+    "modules": [
+      {
+        "id": "rn_tnYrJzct8r6GSYfy::L1",
+        "title": "Temperature and molecular speed",
+        "sourceHeadings": [
+          "Temperature & speed"
+        ],
+        "specRefs": [
+          "5.18"
+        ],
+        "opening": "Heat a sealed gas and the molecules do not drift in a preferred direction — they simply move faster in every direction. The speed distribution shifts upward: more molecules at every higher speed, same chaos, hotter gas.",
+        "keyPoints": [
+          "Gas molecules move randomly with a range of speeds at any temperature.",
+          "Increasing the temperature increases the average speed of the molecules.",
+          "Heating transfers energy into the molecules' kinetic store.",
+          "The direction of molecular motion stays random as the speeds rise.",
+          "Cooling the gas lowers the average molecular speed."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Warm the gas, and its molecules zip about faster; chill it, and they slow. The directions stay random — only the pace changes with temperature.",
+            "analogy": "A dance floor where the DJ raises the tempo: everyone keeps dancing every which way, but the whole crowd moves quicker.",
+            "examPointer": "Say 'average speed increases' — individual molecules still vary, and the randomness of direction never becomes ordered flow."
+          },
+          "medium": {
+            "restatement": "The molecules hold a spread of speeds described by a distribution, not a single value. Supplied energy raises the whole distribution: the mean speed grows, the spread widens, but the velocity vectors remain isotropic, so no bulk flow appears. The temperature rise is precisely the growth of mean translational kinetic energy.",
+            "analogy": "A crowded motorway at rush hour versus midnight: every car still picks its own lane and direction, but the average pace on the network rises with the 'temperature' of the traffic.",
+            "examPointer": "When explaining, connect the energy chain explicitly: heating → energy into molecular kinetic store → higher mean speed → (at fixed volume) harder, more frequent wall impacts."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_tnYrJzct8r6GSYfy::L1::Q1",
+          "rn_tnYrJzct8r6GSYfy::L1::Q2",
+          "rn_tnYrJzct8r6GSYfy::L1::Q3",
+          "rn_tnYrJzct8r6GSYfy::L1::Q4",
+          "rn_tnYrJzct8r6GSYfy::L1::Q5",
+          "rn_tnYrJzct8r6GSYfy::L1::Q6",
+          "rn_tnYrJzct8r6GSYfy::L1::Q7",
+          "rn_tnYrJzct8r6GSYfy::L1::Q8",
+          "rn_tnYrJzct8r6GSYfy::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_tnYrJzct8r6GSYfy::L2",
+        "title": "Kelvin temperature and average kinetic energy",
+        "sourceHeadings": [
+          "Temperature & kinetic energy"
+        ],
+        "specRefs": [
+          "5.19"
+        ],
+        "opening": "The precise statement behind 'hotter means faster' is a proportionality: kelvin temperature and the mean kinetic energy of the molecules rise in lockstep. Double the kelvin temperature and the mean molecular energy doubles — the ladder every gas law climbs.",
+        "keyPoints": [
+          "Kelvin temperature scales directly with the mean kinetic energy carried by the molecules.",
+          "At 0 K the average kinetic energy of the molecules is at its minimum.",
+          "Doubling the kelvin temperature doubles the average molecular kinetic energy.",
+          "The proportionality is why kelvin must be used in gas-law equations.",
+          "Average kinetic energy refers to the mean over all molecules, not to any single molecule."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Kelvin temperature and the molecules' average kinetic energy rise and fall together: double one and you double the other. At absolute zero that energy bottoms out.",
+            "analogy": "A fuel gauge wired to the tank: the needle (temperature) and the fuel (energy) are locked together by design.",
+            "examPointer": "Use the word 'proportional', not 'equal' — temperature is not the energy itself; it is proportional to it."
+          },
+          "medium": {
+            "restatement": "The proportionality T ∝ mean translational KE is the kinetic definition of temperature, and it anchors why 0 K is unreachable-but-defined: it is the energy origin. Because the relation is linear through the true zero, temperature ratios in kelvin are energy ratios, which is exactly the property the pressure law and Charles-type arguments require.",
+            "analogy": "Staircases rising from the same ground floor: only from the common ground can 'twice as high' mean anything — and 0 K is that ground for molecular energy.",
+            "examPointer": "In evaporation questions, the survival chain is: the most energetic molecules leave, the average KE of the remainder falls, and since kelvin temperature is proportional to that average, the temperature falls. Quote all three links."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_tnYrJzct8r6GSYfy::L2::Q1",
+          "rn_tnYrJzct8r6GSYfy::L2::Q2",
+          "rn_tnYrJzct8r6GSYfy::L2::Q3",
+          "rn_tnYrJzct8r6GSYfy::L2::Q4",
+          "rn_tnYrJzct8r6GSYfy::L2::Q5",
+          "rn_tnYrJzct8r6GSYfy::L2::Q6",
+          "rn_tnYrJzct8r6GSYfy::L2::Q7",
+          "rn_tnYrJzct8r6GSYfy::L2::Q8",
+          "rn_tnYrJzct8r6GSYfy::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "average kinetic energy",
+          "definition": "The mean translational kinetic energy of a gas's molecules, proportional to kelvin temperature.",
+          "firstLesson": 2
+        },
+        {
+          "term": "mean speed",
+          "definition": "The average speed of the molecules, which rises with temperature and falls on cooling.",
+          "firstLesson": 1
+        },
+        {
+          "term": "speed distribution",
+          "definition": "The spread of molecular speeds around the mean at any temperature.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "When a liquid evaporates, molecules escape from the surface of the liquid. What happens to the temperature of the liquid and the average kinetic energy of the molecules within it? A — both increase; B — both decrease; C — both stay the same; D — temperature decreases while average kinetic energy increases.",
+        "steps": [
+          "Evaporation is selective: the most energetic molecules are the ones that leave the surface first.",
+          "With the energetic tail gone, the average kinetic energy per molecule of those remaining must decrease.",
+          "Options A and D fail because the average energy falls rather than rises or stays fixed.",
+          "Because kelvin temperature tracks the mean kinetic energy per molecule, the temperature falls too."
+        ],
+        "finalAnswer": "B — both the temperature of the liquid and the average kinetic energy of its remaining molecules decrease."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/6eeebdbb5302-15-1-gas-molecules-in-a-box-2.png",
+        "alt": "Gas molecules moving randomly in a box",
+        "sourceHeading": "Temperature & speed",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Gas molecules move about randomly at high speeds"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/89b189588fe5-16-1-change-in-internal-energy.png",
+        "alt": "Change in internal energy, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Temperature & kinetic energy",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "As the container is heated up, the gas molecules move faster with higher kinetic energy. The energy stored within the system - the internal energy - therefore increases"
+      }
+    ]
+  }
+}

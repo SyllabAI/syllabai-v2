@@ -1,0 +1,255 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_p8XznQx2MXjbvz38",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "aaf2c1b9055d9e47565d1263e1973bb2f0db3409686d018e8e3b98011ec60892",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "packageId": "igcse-physics::rn_p8XznQx2MXjbvz38",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_p8XznQx2MXjbvz38::L1::Q1",
+      "moduleId": "rn_p8XznQx2MXjbvz38::L1",
+      "stem": "What is the correct form of Boyle's law?",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "p1V1 = p2V2",
+          "correct": true,
+          "explanation": "The pressure–volume product is invariant.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "p1/V1 = p2/V2",
+          "correct": false,
+          "explanation": "That would make pressure proportional to volume — the opposite.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "p1/T1 = p2/T2",
+          "correct": false,
+          "explanation": "That is the pressure law, not Boyle's.",
+          "misconception": "law tangle"
+        },
+        {
+          "key": "D",
+          "text": "p1 + V1 = p2 + V2",
+          "correct": false,
+          "explanation": "The invariant is the product, not the sum.",
+          "misconception": "operation slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_p8XznQx2MXjbvz38::L1::Q2",
+      "moduleId": "rn_p8XznQx2MXjbvz38::L1",
+      "stem": "A gas at 200 Pa fills 0.70 m^3. It is compressed to 0.15 m^3 at constant temperature. The new pressure is about:",
+      "misconceptionClass": "substitution",
+      "options": [
+        {
+          "key": "A",
+          "text": "9300 Pa",
+          "correct": false,
+          "explanation": "That slipped a factor of ten.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "B",
+          "text": "930 Pa",
+          "correct": true,
+          "explanation": "p2 = 200 × 0.70/0.15 = 933.3, which is 930 Pa to 2 s.f.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "43 Pa",
+          "correct": false,
+          "explanation": "That inverted the ratio — compression must raise pressure.",
+          "misconception": "ratio inversion"
+        },
+        {
+          "key": "D",
+          "text": "200 Pa",
+          "correct": false,
+          "explanation": "The volume changed, so the pressure did.",
+          "misconception": "no-change slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_p8XznQx2MXjbvz38::L1::Q3",
+      "moduleId": "rn_p8XznQx2MXjbvz38::L1",
+      "stem": "Which conditions must hold for Boyle's law to apply?",
+      "misconceptionClass": "condition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "constant volume",
+          "correct": false,
+          "explanation": "Volume is the other variable.",
+          "misconception": "condition confusion"
+        },
+        {
+          "key": "B",
+          "text": "no conditions apply",
+          "correct": false,
+          "explanation": "The law is strictly conditional.",
+          "misconception": "condition denial"
+        },
+        {
+          "key": "C",
+          "text": "constant temperature and fixed amount of gas",
+          "correct": true,
+          "explanation": "Both are the law's stated conditions.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "constant pressure and fixed amount",
+          "correct": false,
+          "explanation": "Pressure is the variable being predicted.",
+          "misconception": "condition confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_p8XznQx2MXjbvz38::L1::Q4",
+      "moduleId": "rn_p8XznQx2MXjbvz38::L1",
+      "stem": "Why does the pressure of a gas rise when it is compressed at constant temperature?",
+      "misconceptionClass": "mechanism linking",
+      "options": [
+        {
+          "key": "A",
+          "text": "the molecules speed up when compressed",
+          "correct": false,
+          "explanation": "At constant temperature the speeds stay the same.",
+          "misconception": "speed conflation"
+        },
+        {
+          "key": "B",
+          "text": "the molecules become larger",
+          "correct": false,
+          "explanation": "Sizes never change.",
+          "misconception": "particle-size slip"
+        },
+        {
+          "key": "C",
+          "text": "the walls move towards the molecules giving them energy",
+          "correct": false,
+          "explanation": "Slow compression adds negligible energy — temperature is constant by design.",
+          "misconception": "energy invention"
+        },
+        {
+          "key": "D",
+          "text": "the same-speed molecules collide with the walls more frequently in the smaller volume",
+          "correct": true,
+          "explanation": "Shorter flight paths raise the collision rate.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_p8XznQx2MXjbvz38::L1::Q5",
+      "moduleId": "rn_p8XznQx2MXjbvz38::L1",
+      "stem": "Which graph shape correctly represents Boyle's law?",
+      "misconceptionClass": "graph interpretation",
+      "options": [
+        {
+          "key": "A",
+          "text": "a falling curve of pressure against volume",
+          "correct": true,
+          "explanation": "Inverse proportionality plots as a rectangular hyperbola.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a rising straight line of pressure against volume",
+          "correct": false,
+          "explanation": "That is direct proportionality — the wrong relation.",
+          "misconception": "shape confusion"
+        },
+        {
+          "key": "C",
+          "text": "a horizontal line of pressure against volume",
+          "correct": false,
+          "explanation": "Pressure changes as volume changes.",
+          "misconception": "no-change slip"
+        },
+        {
+          "key": "D",
+          "text": "a falling straight line through the origin",
+          "correct": false,
+          "explanation": "The P–V curve is a curve, not a line; P against 1/V is the line.",
+          "misconception": "shape confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_p8XznQx2MXjbvz38::L1::Q6",
+      "moduleId": "rn_p8XznQx2MXjbvz38::L1",
+      "stem": "State Boyle's law in words.",
+      "misconceptionClass": "law recall",
+      "kind": "recall",
+      "modelAnswer": "For a sealed sample held at one steady temperature, the pressure is inversely proportional to the volume, so the product pressure times volume stays constant.",
+      "keywords": [
+        "pressure",
+        "inversely",
+        "volume",
+        "constant"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_p8XznQx2MXjbvz38::L1::Q7",
+      "moduleId": "rn_p8XznQx2MXjbvz38::L1",
+      "stem": "State what happens to the volume of a fixed gas at constant temperature when its pressure is doubled.",
+      "misconceptionClass": "inverse recall",
+      "kind": "recall",
+      "modelAnswer": "The volume halves, because pressure and volume are inversely proportional under Boyle's law.",
+      "keywords": [
+        "volume",
+        "halves",
+        "inversely",
+        "proportional"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_p8XznQx2MXjbvz38::L1::Q8",
+      "moduleId": "rn_p8XznQx2MXjbvz38::L1",
+      "stem": "Explain why a plot of pressure against 1/volume is a straight line through the origin for a gas obeying Boyle's law.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Boyle's law says pV = constant, so p = constant × (1/V). Pressure is therefore directly proportional to the reciprocal of volume, and a directly proportional relationship from zero plots as a straight line through the origin with gradient equal to the constant product pV.",
+      "keywords": [
+        "proportional",
+        "reciprocal",
+        "straight",
+        "origin"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_p8XznQx2MXjbvz38::L1::Q9",
+      "moduleId": "rn_p8XznQx2MXjbvz38::L1",
+      "stem": "A diver's air bubble of volume 0.003 m^3 rises from a depth where the pressure is 1.5 × 10^5 Pa to the surface at 1.0 × 10^5 Pa. Calculate the bubble's volume at the surface.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "p1V1 = p2V2 gives V2 = p1V1/p2 = (1.5 × 10^5 × 0.003)/(1.0 × 10^5) = 0.0045 m^3 — the bubble expands as the pressure on it falls.",
+      "keywords": [
+        "0.0045",
+        "expands",
+        "pressure",
+        "volume"
+      ],
+      "options": []
+    }
+  ]
+}

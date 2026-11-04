@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_tnYrJzct8r6GSYfy",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "ef6f5915b56ca9a9496ee5dce091f017e0c0fde3e0642cededefe8645930cac8",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "packageId": "igcse-physics::rn_tnYrJzct8r6GSYfy",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L1::Q1",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L1",
+      "stem": "What happens to the average speed of gas molecules when the gas is heated?",
+      "misconceptionClass": "kinetic prediction",
+      "options": [
+        {
+          "key": "A",
+          "text": "it increases",
+          "correct": true,
+          "explanation": "Heating raises the mean molecular speed.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "it decreases",
+          "correct": false,
+          "explanation": "Cooling, not heating, slows the swarm.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "C",
+          "text": "it stays the same",
+          "correct": false,
+          "explanation": "Speed tracks the energy supplied.",
+          "misconception": "no-change slip"
+        },
+        {
+          "key": "D",
+          "text": "it becomes zero as they align",
+          "correct": false,
+          "explanation": "Heating never orders the directions.",
+          "misconception": "ordering slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L1::Q2",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L1",
+      "stem": "When a gas is heated in a sealed box, what happens to the directions of molecular motion?",
+      "misconceptionClass": "isotropy",
+      "options": [
+        {
+          "key": "A",
+          "text": "they point downwards under gravity",
+          "correct": false,
+          "explanation": "Random motion swamps gravity at molecular scale.",
+          "misconception": "weight conflation"
+        },
+        {
+          "key": "B",
+          "text": "they stay random in all directions",
+          "correct": true,
+          "explanation": "Heating changes speeds, not the isotropy of directions.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "they all align with the heating element",
+          "correct": false,
+          "explanation": "Collisions re-randomise directions instantly.",
+          "misconception": "ordering slip"
+        },
+        {
+          "key": "D",
+          "text": "they rotate around the box",
+          "correct": false,
+          "explanation": "No bulk rotation appears in a sealed box.",
+          "misconception": "flow invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L1::Q3",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L1",
+      "stem": "Where does the extra molecular speed come from when a gas is heated?",
+      "misconceptionClass": "energy accounting",
+      "options": [
+        {
+          "key": "A",
+          "text": "the molecules shrink and so travel faster",
+          "correct": false,
+          "explanation": "Size changes nothing; energy does.",
+          "misconception": "particle-size slip"
+        },
+        {
+          "key": "B",
+          "text": "the box pushes them faster",
+          "correct": false,
+          "explanation": "The walls receive collisions; they do not motor the molecules.",
+          "misconception": "force invention"
+        },
+        {
+          "key": "C",
+          "text": "the supplied energy transfers into the molecules' kinetic store",
+          "correct": true,
+          "explanation": "Heating raises the mean translational kinetic energy.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the molecules multiply in number",
+          "correct": false,
+          "explanation": "The molecule count is fixed in a sealed system.",
+          "misconception": "count slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L1::Q4",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L1",
+      "stem": "A gas cools from 400 K to 200 K at constant volume. What happens to the wall collisions?",
+      "misconceptionClass": "qualitative prediction",
+      "options": [
+        {
+          "key": "A",
+          "text": "molecules hit the walls harder, so pressure rises",
+          "correct": false,
+          "explanation": "Cooling slows the swarm; pressure falls.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "B",
+          "text": "collisions stop entirely at 200 K",
+          "correct": false,
+          "explanation": "200 K is far above absolute zero; motion continues.",
+          "misconception": "extreme slip"
+        },
+        {
+          "key": "C",
+          "text": "collisions are unchanged because volume is fixed",
+          "correct": false,
+          "explanation": "Speed changes with temperature regardless of volume.",
+          "misconception": "no-change slip"
+        },
+        {
+          "key": "D",
+          "text": "molecules hit the walls more slowly and less often, so pressure falls",
+          "correct": true,
+          "explanation": "Slower swarm means weaker, rarer impacts.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L1::Q5",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L1",
+      "stem": "Why does a balloon of air left in the sun feel firmer as its temperature rises?",
+      "misconceptionClass": "application transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "faster molecules strike the rubber harder and more often, raising internal pressure",
+          "correct": true,
+          "explanation": "Speed rise feeds directly into wall bombardment.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the sun adds molecules to the balloon",
+          "correct": false,
+          "explanation": "The molecule count is sealed inside.",
+          "misconception": "count slip"
+        },
+        {
+          "key": "C",
+          "text": "the rubber contracts in heat, squeezing the air",
+          "correct": false,
+          "explanation": "Rubber expands slightly in heat; the pressure story suffices.",
+          "misconception": "wrong mechanism"
+        },
+        {
+          "key": "D",
+          "text": "the molecules align and push in one direction",
+          "correct": false,
+          "explanation": "Directions stay random; pressure rises through totals.",
+          "misconception": "ordering slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L1::Q6",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L1",
+      "stem": "State what happens to the average speed of gas molecules as temperature increases.",
+      "misconceptionClass": "kinetic recall",
+      "kind": "recall",
+      "modelAnswer": "The average speed of the molecules increases as the temperature rises.",
+      "keywords": [
+        "average",
+        "speed",
+        "increases",
+        "temperature"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L1::Q7",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L1",
+      "stem": "State what happens to the direction of molecular motion while a gas is heated.",
+      "misconceptionClass": "isotropy recall",
+      "kind": "recall",
+      "modelAnswer": "The directions remain random in all directions — heating changes the speeds, not the pattern of directions.",
+      "keywords": [
+        "random",
+        "directions",
+        "heating",
+        "speeds"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L1::Q8",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L1",
+      "stem": "Explain why heating a gas does not cause all its molecules to move at one identical new speed.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Collisions constantly redistribute energy between molecules — one gains in a collision exactly what another loses. The result is a spread of speeds around a rising mean, not a single value. Heating lifts the whole distribution of speeds; it does not synchronise the molecules.",
+      "keywords": [
+        "collisions",
+        "redistribute",
+        "spread",
+        "mean"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L1::Q9",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L1",
+      "stem": "A sealed aerosol can warns against incineration. Using molecular speed, explain the danger.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "In a fire the can's temperature rises sharply, so the average molecular speed of the propellant gas increases greatly. The faster swarm strikes the can's walls harder and far more often, raising the internal pressure beyond what the can can withstand, so it may explode.",
+      "keywords": [
+        "faster",
+        "walls",
+        "pressure",
+        "explode"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L2::Q1",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L2",
+      "stem": "Kelvin temperature is proportional to which molecular quantity?",
+      "misconceptionClass": "proportionality recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the average size of the molecules",
+          "correct": false,
+          "explanation": "Size never enters the temperature definition.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "B",
+          "text": "the average kinetic energy of the molecules",
+          "correct": true,
+          "explanation": "T ∝ mean KE is the kinetic definition.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the average mass of the molecules",
+          "correct": false,
+          "explanation": "Mass is fixed per gas; temperature tracks energy.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "D",
+          "text": "the number of molecules",
+          "correct": false,
+          "explanation": "Count is independent of temperature.",
+          "misconception": "quantity swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L2::Q2",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L2",
+      "stem": "A gas's kelvin temperature doubles. What happens to the average molecular kinetic energy?",
+      "misconceptionClass": "proportional reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it halves",
+          "correct": false,
+          "explanation": "Heating raises the energy.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "B",
+          "text": "it stays constant",
+          "correct": false,
+          "explanation": "Energy tracks temperature.",
+          "misconception": "no-change slip"
+        },
+        {
+          "key": "C",
+          "text": "it doubles",
+          "correct": true,
+          "explanation": "Proportionality is linear in kelvin.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "it quadruples",
+          "correct": false,
+          "explanation": "Quadrupling would need a squared relation, which this is not.",
+          "misconception": "squaring slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L2::Q3",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L2",
+      "stem": "A liquid evaporates, its most energetic molecules escaping. What happens to the temperature of what remains, and why?",
+      "misconceptionClass": "evaporation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it rises, because evaporation adds energy",
+          "correct": false,
+          "explanation": "Evaporation removes the energetic tail of the distribution.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "B",
+          "text": "it stays the same because the molecule count fell too",
+          "correct": false,
+          "explanation": "Count is irrelevant; the average energy fell.",
+          "misconception": "count conflation"
+        },
+        {
+          "key": "C",
+          "text": "it becomes undefined",
+          "correct": false,
+          "explanation": "The remaining molecules still define a temperature.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "D",
+          "text": "it falls, because the average kinetic energy of the remaining molecules falls",
+          "correct": true,
+          "explanation": "Selective loss drags the mean down, and temperature tracks the mean.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L2::Q4",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L2",
+      "stem": "Why must kelvin — not Celsius — be used when reasoning about energy ratios in a gas?",
+      "misconceptionClass": "scale reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "kelvin's zero coincides with zero molecular kinetic energy, so ratios are energy ratios",
+          "correct": true,
+          "explanation": "Only from the true zero do ratios carry meaning.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Celsius values are too small to compute with",
+          "correct": false,
+          "explanation": "Size is irrelevant; the origin is the issue.",
+          "misconception": "convenience conflation"
+        },
+        {
+          "key": "C",
+          "text": "Celsius thermometers are less accurate",
+          "correct": false,
+          "explanation": "Accuracy is not the problem; the reference point is.",
+          "misconception": "instrument blame"
+        },
+        {
+          "key": "D",
+          "text": "kelvin has smaller units",
+          "correct": false,
+          "explanation": "The units are identical in size.",
+          "misconception": "unit confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L2::Q5",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L2",
+      "stem": "Two samples of the same gas are at 300 K and 600 K. Compare their mean molecular speeds.",
+      "misconceptionClass": "proportional reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the hotter sample's molecules have half the kinetic energy",
+          "correct": false,
+          "explanation": "Higher temperature is higher energy.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "B",
+          "text": "the hotter sample's molecules have twice the average kinetic energy, so a higher average speed",
+          "correct": true,
+          "explanation": "Energy doubles with kelvin; speed rises accordingly.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the hotter sample's average speed is exactly half",
+          "correct": false,
+          "explanation": "Speed rises with temperature, it does not halve.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "D",
+          "text": "both samples have equal average speeds",
+          "correct": false,
+          "explanation": "Different temperatures mean different mean energies.",
+          "misconception": "no-change slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L2::Q6",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L2",
+      "stem": "State the proportionality between Kelvin temperature and molecular energy.",
+      "misconceptionClass": "proportionality recall",
+      "kind": "recall",
+      "modelAnswer": "Kelvin temperature scales in proportion with the mean kinetic energy of the gas's molecules.",
+      "keywords": [
+        "kelvin",
+        "proportional",
+        "average",
+        "kinetic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L2::Q7",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L2",
+      "stem": "State what happens to the average kinetic energy of a gas's molecules between 0 K and any higher temperature.",
+      "misconceptionClass": "kinetic recall",
+      "kind": "recall",
+      "modelAnswer": "It rises from its minimum at 0 K in direct proportion to the kelvin temperature.",
+      "keywords": [
+        "minimum",
+        "0",
+        "K",
+        "proportion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L2::Q8",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L2",
+      "stem": "Explain why the temperature of the air inside a pumped bicycle tyre can rise while the pump is worked quickly.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Rapid compression does work on the air, transferring energy into the molecules' kinetic store. The average kinetic energy of the molecules rises, and since kelvin temperature is proportional to that average, the air's temperature rises — the fast-moving swarm is hotter before any heat even conducts to the frame.",
+      "keywords": [
+        "work",
+        "energy",
+        "average",
+        "temperature"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tnYrJzct8r6GSYfy::L2::Q9",
+      "moduleId": "rn_tnYrJzct8r6GSYfy::L2",
+      "stem": "A science fiction story claims a gas was chilled to −300 °C. Show with a conversion that this is unphysical.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "−300 °C would be −300 + 273 = −27 K on the kelvin scale. Negative kelvin is below absolute zero, where average molecular kinetic energy would be negative — impossible, so the story violates the kinetic model.",
+      "keywords": [
+        "−27",
+        "kelvin",
+        "absolute",
+        "impossible"
+      ],
+      "options": []
+    }
+  ]
+}
