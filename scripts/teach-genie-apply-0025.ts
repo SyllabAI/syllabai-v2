@@ -138,6 +138,34 @@ try {
                 throw new Error(`preflight fail-closed: unexpected ordinal CHECK shape (${defBefore ?? "absent"}) — refusing to touch it`);
         }
 
+        // ── ownership gate (run-005 fix): ALTER TABLE requires the table owner. ──
+        // The staged prod DSN may connect as a role that holds ownership only VIA
+        // ROLE MEMBERSHIP — if pg_has_role says member, SET ROLE to the owner for
+        // the session (the DDL transaction then runs as the owner). No membership
+        // → fail-closed with the FULL diagnostic in the receipt (owner + connected
+        // role) so the operator can stage the right secret or grant; zero DDL.
+        const ownRow = await sql`SELECT tableowner FROM pg_tables WHERE schemaname='public' AND tablename='teach_objectives'`;
+        const tableOwner = ownRow[0]?.tableowner as string | undefined;
+        const meRow = await sql`SELECT current_user AS u`;
+        const connectedAs = meRow[0]?.u as string | undefined;
+        const member = tableOwner && connectedAs
+                ? (await sql`SELECT pg_has_role(current_user::text, ${tableOwner}, 'member') AS m`)[0]?.m as boolean
+                : false;
+        receipt.ownership = {
+                table_owner: tableOwner ?? null,
+                connected_as: connectedAs ?? null,
+                member_of_owner: member,
+                set_role_used: null as string | null,
+        };
+        if (tableOwner && connectedAs && tableOwner !== connectedAs) {
+                if (!member) {
+                        throw new Error(`fail-closed ownership gate: connected as ${connectedAs}, table owned by ${tableOwner}, no role membership — ALTER TABLE would refuse; zero DDL executed`);
+                }
+                await sql.unsafe(`SET ROLE "${tableOwner.replace(/"/g, '""')}"`);
+                receipt.ownership.set_role_used = tableOwner;
+                console.log(`SET ROLE ${tableOwner} (membership path)`);
+        }
+
         // ── apply: ONE transaction, lock/statement timeouts, raw SQL of record ──
         await sql.begin(async (tx) => {
                 await tx.unsafe(`SET LOCAL lock_timeout = '5s'`);
