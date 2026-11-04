@@ -85,6 +85,10 @@ type Rating = "low" | "medium" | "high";
 
 interface FlowState {
   v: 1;
+  /** T-AUDIT-TIER1 run-004 — the reconcile stamp of record (ms, stamped on
+   *  every set()). Optional + additive: pre-band states load unchanged
+   *  (stamp 0 = oldest — they lose every merge until the next step). */
+  at?: number;
   /** module currently being walked */
   moduleIndex: number;
   /** index into the module's computed stage list */
@@ -152,6 +156,8 @@ interface FlowStore {
   subscribe: (fn: () => void) => () => void;
   get: () => FlowState;
   set: (updater: (s: FlowState) => FlowState) => void;
+  /** run-004: the remote pull-down's live-store refresh (disk-first) */
+  refresh: (next: FlowState) => void;
 }
 
 /**
@@ -180,17 +186,100 @@ function getFlowStore(lessonId: string): FlowStore {
     set(updater) {
       const next = updater(current);
       if (next === current) return;
-      current = next;
+      const stamped: FlowState = { ...next, at: Date.now() };
+      current = stamped;
       try {
-        window.localStorage.setItem(STORAGE_PREFIX + lessonId, JSON.stringify(current));
+        window.localStorage.setItem(STORAGE_PREFIX + lessonId, JSON.stringify(stamped));
       } catch {
         // storage unavailable — the flow still works, it just won't resume
       }
+      listeners.forEach((fn) => fn());
+      // T-AUDIT-TIER1 run-004 — the account mirror (the persist-tail law;
+      // echo-guarded on the remote-apply path below)
+      mirrorDocPoolState(FLOW_DOC_KEY, readFlowPool());
+    },
+    /** run-004: the remote pull-down's live-store refresh — disk is
+     *  already written by the bridge's apply; this only moves the in-memory
+     *  `current` so an OPEN lesson re-renders to the merged state. */
+    refresh(next: FlowState) {
+      current = next;
       listeners.forEach((fn) => fn());
     },
   };
   flowStores.set(lessonId, store);
   return store;
+}
+
+// ── T-AUDIT-TIER1 run-004 — the account mirror (bridge registration) ─────
+// The per-lesson wizard states mirror the account under the "guided-flow"
+// key of record: the pool is the DISK family (set() persists synchronously,
+// so disk is always current), the union is per lesson id, the NEWER `at`
+// wins (tie -> server), capped. apply writes the disk keys back AND
+// refreshes any LIVE store so an open lesson converges in place.
+import {
+  atOf,
+  bridgeDocPool,
+  isAccountDocsHydrated,
+  mirrorDocPoolState,
+  unionByStamp,
+} from "@/lib/account-docs-records";
+import { readIdentitySnapshot } from "@/lib/identity";
+
+const FLOW_DOC_KEY = "guided-flow";
+const MAX_FLOWS = 50;
+
+function readFlowPool(): Record<string, FlowState> {
+  const pool: Record<string, FlowState> = {};
+  if (typeof window === "undefined") return pool;
+  try {
+    for (let i = 0; i < window.localStorage.length; i++) {
+      const k = window.localStorage.key(i);
+      if (!k || !k.startsWith(STORAGE_PREFIX)) continue;
+      const raw = window.localStorage.getItem(k);
+      if (!raw) continue;
+      const parsed = JSON.parse(raw) as FlowState;
+      if (parsed?.v === 1) pool[k.slice(STORAGE_PREFIX.length)] = parsed;
+    }
+  } catch {
+    // a torn scan degrades to the pool it could read
+  }
+  return pool;
+}
+
+function writeFlowPool(pool: Record<string, FlowState>) {
+  if (typeof window === "undefined") return;
+  try {
+    const seen = new Set<string>();
+    for (const [lessonId, state] of Object.entries(pool)) {
+      const k = STORAGE_PREFIX + lessonId;
+      seen.add(k);
+      window.localStorage.setItem(k, JSON.stringify(state));
+      flowStores.get(lessonId)?.refresh(state); // an OPEN lesson converges
+    }
+    for (let i = 0; i < window.localStorage.length; i++) {
+      const k = window.localStorage.key(i);
+      if (k && k.startsWith(STORAGE_PREFIX) && !seen.has(k)) {
+        window.localStorage.removeItem(k);
+      }
+    }
+  } catch {
+    // private mode — the pull-down just won't land
+  }
+}
+
+if (typeof window !== "undefined") {
+  bridgeDocPool<Record<string, FlowState>, FlowState>({
+    localKey: STORAGE_PREFIX.slice(0, -1),
+    docKey: FLOW_DOC_KEY,
+    cap: MAX_FLOWS,
+    readState: () => readFlowPool(),
+    readPool: (p) => p,
+    apply: (pool) => writeFlowPool(pool),
+    merge: (local, server) => unionByStamp(local, server),
+    stamp: (p) => Object.entries(p).map(([k, v]) => `${k}:${atOf(v.at)}`).sort().join("|"),
+    getAuthEmail: () => readIdentitySnapshot()?.email ?? null,
+    isHydrated: () => isAccountDocsHydrated(),
+  });
 }
 
 type Stage =
