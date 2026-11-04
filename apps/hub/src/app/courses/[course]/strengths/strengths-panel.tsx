@@ -75,7 +75,7 @@ export function StrengthsPanel({ course }: { course: string }) {
 
   if (!signedIn) {
     return (
-      <Card className="mt-8">
+      <Card className="mt-6">
         <CardContent className="space-y-3 py-6">
           {/* UX review F-09: the signed-out state led with system internals;
               the one thing a signed-out visitor needs is the invitation. */}
@@ -95,13 +95,13 @@ export function StrengthsPanel({ course }: { course: string }) {
 
   if (loading) {
     return (
-      <p className="mt-8 text-sm text-muted-foreground">Computing your strength bars at read…</p>
+      <p className="mt-6 text-sm text-muted-foreground">Computing your strength bars at read…</p>
     );
   }
 
   if (failed && !data) {
     return (
-      <Card className="mt-8">
+      <Card className="mt-6">
         <CardContent className="space-y-3 py-6">
           <p className="text-sm text-muted-foreground">
             The strength service did not answer. Nothing is fabricated in its place — the bars exist only
@@ -118,7 +118,7 @@ export function StrengthsPanel({ course }: { course: string }) {
   if (!data) return null;
 
   return (
-    <div className="mt-8 space-y-6">
+    <div className="mt-6 space-y-6">
       <div className="flex flex-wrap items-center gap-2">
         <Activity className="size-4 text-primary" aria-hidden />
         <h2 className="text-base font-semibold">Strength by spec point</h2>
