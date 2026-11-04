@@ -132,7 +132,9 @@ export default async function HubPage() {
           },
         ].map((s) => (
           <Link key={s.step} href={s.href} className="group focus-visible:outline-none">
-            <Card className="h-full transition-colors group-hover:border-primary/40 group-focus-visible:border-primary/60">
+            {/* t-ui-polish run-006: the step cards speak the house card-hover
+                voice (border-primary/60 + shadow-sm), not the legacy /40. */}
+            <Card className="h-full transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60">
               <CardContent className="flex h-full items-start gap-3 p-4">
                 <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
                   {s.step}
@@ -181,7 +183,9 @@ export default async function HubPage() {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {surfaces.map((s) => (
             <Link key={s.href} href={s.href} className="group focus-visible:outline-none">
-              <Card className="h-full transition-colors group-hover:border-primary/40 group-focus-visible:border-primary/60">
+              {/* t-ui-polish run-006: the surface cards join the same house
+                  card-hover voice. */}
+              <Card className="h-full transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60">
                 <CardHeader className="pb-2">
                   <CardTitle className="flex items-center gap-2 text-base">
                     <s.icon className="size-4 text-primary" aria-hidden />

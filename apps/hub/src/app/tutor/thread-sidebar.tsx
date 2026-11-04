@@ -291,7 +291,9 @@ export function ThreadSidebar({
                   return (
                     <li key={t.id}>
                       {renamingId === t.id ? (
-                        <div className="flex items-center gap-1 rounded-md border border-primary/40 bg-background p-1">
+                        /* t-ui-polish run-006: the rename shell speaks the house
+                           active voice (border-primary/60), not the legacy /40. */
+                        <div className="flex items-center gap-1 rounded-md border border-primary/60 bg-background p-1">
                           <Input
                             autoFocus
                             value={renameDraft}
