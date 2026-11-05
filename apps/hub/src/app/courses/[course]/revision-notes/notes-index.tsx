@@ -65,7 +65,20 @@ export interface NoteListItem {
   title: string;
   guidedStudy: boolean;
   specPointCodes: string[];
+  contentKind: string | null;
   subtopic: string | null;
+}
+
+/** T-SPEC-ANCHOR-1: compact marker for exam-technique (not spec-tied) notes. */
+function TechniquePill() {
+  return (
+    <span
+      className="shrink-0 rounded-md bg-amber-500/10 px-1.5 py-0.5 text-[10.5px] font-medium text-amber-700 dark:text-amber-400"
+      title="Exam technique — teaches exam/practical skill, not tied to a specification statement"
+    >
+      Exam technique
+    </span>
+  );
 }
 
 const ZERO = { notes: 0, questions: 0, flashcards: 0 };
@@ -274,6 +287,7 @@ export function NotesIndex({
                           >
                             {rowLink}
                           </Link>
+                          {n.contentKind === "exam_technique" && <TechniquePill />}
                           {n.guidedStudy && <GuidedPill course={course} noteId={n.noteId} />}
                         </div>
                       </li>
@@ -316,6 +330,7 @@ export function NotesIndex({
                               >
                                 {n.title}
                               </Link>
+                              {n.contentKind === "exam_technique" && <TechniquePill />}
                               {n.guidedStudy && <GuidedPill course={course} noteId={n.noteId} />}
                             </li>
                           ))}
@@ -348,6 +363,7 @@ export function NotesIndex({
                     >
                       {n.title}
                     </Link>
+                    {n.contentKind === "exam_technique" && <TechniquePill />}
                     {n.guidedStudy && <GuidedPill course={course} noteId={n.noteId} />}
                   </li>
                 ))}

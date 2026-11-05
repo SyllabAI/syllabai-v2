@@ -145,6 +145,10 @@ export const RevisionNote = z.object({
   // corpus-native placement (SME section/topic slugs) — set by the importer
   sectionSlug: z.string().optional(),
   topicSlug: z.string().optional(),
+  // T-SPEC-ANCHOR-1: "exam_technique" = exam-skills / practical-technique page
+  // that carries no official spec-statement anchor by design (the label is
+  // content-kind, never a spec anchor). Absent = ordinary spec-tied content.
+  contentKind: z.string().optional(),
 });
 export type RevisionNote = z.infer<typeof RevisionNote>;
 

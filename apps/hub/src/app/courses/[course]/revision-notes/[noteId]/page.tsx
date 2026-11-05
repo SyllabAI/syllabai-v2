@@ -85,6 +85,14 @@ export default async function NoteReaderPage({
                 ({boardOf(meta)} {meta.level} {meta.subject})
               </span>
             </h1>
+            {/* T-SPEC-ANCHOR-1: exam-technique pages teach exam/practical
+                skill rather than a spec statement — label them explicitly
+                instead of letting an empty anchor row read as a gap. */}
+            {note.contentKind === "exam_technique" && (
+              <span className="inline-flex items-center gap-1 rounded-md bg-amber-500/10 px-1.5 py-0.5 text-[11px] font-medium text-amber-700 dark:text-amber-400">
+                Exam technique · not spec-tied
+              </span>
+            )}
             {/* trust meta — the SyllabAI analogue of SME's authorship block.
                 Board-aware (CIE wave): registry-explicit board, else the
                 founding "Pearson Edexcel" — pre-CIE rows render byte-identical. */}
