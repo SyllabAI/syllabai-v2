@@ -19,8 +19,11 @@
  * Behaviour is the dashboard shell's proven mechanics verbatim, NOT new
  * CSS: the 44px collapsed rail (one rail width app-wide — run-008 C-1),
  * rail-keep rows with tooltips (run-005 tier-b), the hover-expand float
- * with the rail strip pointer-intent guard (run-009/run-010),
- * localStorage persistence, the mobile drawer with the focus-trap
+ * with the rail strip pointer-intent guard (run-009/run-010), the
+ * account-backed rail pref (T-ACCOUNT-ONLY run-001: the collapse lives in
+ * the "teacher-shell-prefs" workspace doc — the dashboard-prefs rail's
+ * twin; the retired localStorage record adopts once per tab), the mobile
+ * drawer with the focus-trap
  * contract (UX audit P2-8), and the shared run-004b SideNav renderer —
  * so the active-row law cannot drift between the student and teacher
  * sidebars. The strip's identity line moves to the sidebar footer (the
@@ -50,40 +53,70 @@ import {
   type SideNavGroup,
 } from "@/components/layout/side-nav";
 import { useIdentity } from "@/lib/identity";
+import { createAccountStore } from "@/lib/account-stores";
 import { TEACHER_NAV_GROUPS } from "@/lib/teacher/nav-config";
 
-const RAIL_HIDDEN_KEY = "hub:teacher-rail-hidden";
+const RAIL_HIDDEN_KEY = "hub:teacher-rail-hidden"; // RETIRED (legacy adoption pin)
+
+/**
+ * The teacher shell's preference doc — the "teacher-shell-prefs" key of
+ * the workspace-document plane (T-ACCOUNT-ONLY run-001, the review pass's
+ * catch: this rail was the one LIVE localStorage writer the sweep missed).
+ * The desktop rail collapse lives in the account; the retired localStorage
+ * record above is adopted once per tab, then removed. The shape is the
+ * dashboard-prefs rail field verbatim, so the two shells stay twins.
+ */
+const teacherShellPrefsStore = createAccountStore<{ railHidden: boolean }>({
+  docKey: "teacher-shell-prefs",
+  initial: { railHidden: false },
+  parse: (raw) => {
+    if (!raw || typeof raw !== "object") return { railHidden: false };
+    return { railHidden: (raw as { railHidden?: unknown }).railHidden === true };
+  },
+  legacyKeys: [RAIL_HIDDEN_KEY],
+  readLegacy: () => {
+    try {
+      return { railHidden: window.localStorage.getItem(RAIL_HIDDEN_KEY) === "1" };
+    } catch {
+      return { railHidden: false };
+    }
+  },
+});
 
 export function TeacherShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const identity = useIdentity();
 
   const [open, setOpen] = useState(false); // mobile drawer
-  // Desktop collapse — SSR-initialised expanded; a persisted collapse
+  // Desktop collapse — SSR-initialised expanded; the account-backed pref
   // restores after hydration (the course shell's width-restore posture:
   // one expanded frame beats a hydration mismatch).
   const [hidden, setHidden] = useState(false);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
   const drawerPanelRef = useRef<HTMLDivElement>(null);
 
+  // T-ACCOUNT-ONLY run-001: the rail collapse is the account's
+  // "teacher-shell-prefs" doc. Restore on hydration (subscribe, not a
+  // one-shot read — the store's value lands with the engine's merge),
+  // persist through the store (the engine's debounced PUT); no
+  // localStorage behind any of it (the legacy adoption is the store's).
   useEffect(() => {
-    try {
-      if (window.localStorage.getItem(RAIL_HIDDEN_KEY) === "1") {
+    const restore = () => {
+      const prefs = teacherShellPrefsStore.get();
+      if (prefs.railHidden) {
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setHidden(true);
       }
-    } catch {
-      // private mode / blocked storage — the default is honest
-    }
+    };
+    restore(); // the legacy adoption's seed may already be in memory
+    return teacherShellPrefsStore.subscribe(() => {
+      if (teacherShellPrefsStore.hydrated()) restore();
+    });
   }, []);
 
   const persistHidden = (next: boolean) => {
     setHidden(next);
-    try {
-      window.localStorage.setItem(RAIL_HIDDEN_KEY, next ? "1" : "0");
-    } catch {
-      // the state still applies for this visit
-    }
+    teacherShellPrefsStore.set({ railHidden: next });
   };
 
   // run-009 hover-expand — the course shell's exact contract.

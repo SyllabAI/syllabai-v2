@@ -302,7 +302,7 @@ export function TutorChat({
   // Each course's tutor is a SEPARATE tutor: its rail, its active thread,
   // its synced pane and its restores see ONLY this course's history; the
   // legacy /tutor entry sees only course-less threads. The global store
-  // stays shared (one localStorage, one server session list) — the SCOPE
+  // stays shared (one store, one server session list) — the SCOPE
   // is applied at the component boundary, slug-to-slug (never the label).
   // `activeThread` from here on is the scoped active — every downstream
   // use (send/ask/clear/export/busy) can never reach another course's
@@ -561,8 +561,9 @@ export function TutorChat({
   // s143: the synced pane's list loads on mount — and, s140 adapted to the
   // hub: a SIGNED-IN browser with an empty local store (fresh device, cleared
   // storage, private mode) restores the most recent server conversation, so
-  // the chat picks up where the account left off. Local transcripts already
-  // survive refresh via localStorage; the server is the store of record.
+  // the chat picks up where the account left off. Transcripts survive
+  // refresh via the account (the store of record, T-ACCOUNT-ONLY run-001);
+  // the tab's memory is the reactive cache.
   // Skipped when a deep-link boot is armed (it creates its own thread).
   useEffect(() => {
     void refreshConversations();

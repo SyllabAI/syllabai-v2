@@ -31,8 +31,8 @@
 import { z } from "zod";
 
 /**
- * The closed key vocabulary of record. Eight string literals, three family
- * regexes — the fifteen stores this plane serves.
+ * The closed key vocabulary of record. Fourteen string literals, two family
+ * regexes — the sixteen stores this plane serves.
  *
  *  - "deck-sessions"          (run-004) the deck player session state;
  *  - "guided-flow"            (run-004) the guided flow wizard state;
@@ -59,7 +59,10 @@ import { z } from "zod";
  *                             flag;
  *  - /^note-scroll:<slug>/    (T-ACCOUNT-ONLY run-001) ONE doc per course —
  *                             the reading-position memory (the same slug law
- *                             as progress:<slug>).
+ *                             as progress:<slug>);
+ *  - "teacher-shell-prefs"    (T-ACCOUNT-ONLY run-001) the teacher shell's
+ *                             desktop rail collapse — the twin of the
+ *                             dashboard-prefs rail, teacher edition.
  */
 export const WORKSPACE_DOC_KEY_PATTERNS: readonly (string | RegExp)[] = [
   "deck-sessions",
@@ -77,6 +80,7 @@ export const WORKSPACE_DOC_KEY_PATTERNS: readonly (string | RegExp)[] = [
   "tutor-prefs",
   "pdf-viewer-prefs",
   /^note-scroll:[a-z0-9][a-z0-9-]{0,79}$/,
+  "teacher-shell-prefs",
 ];
 
 /** 512KB per document value — the plane carries bounded workspace state,

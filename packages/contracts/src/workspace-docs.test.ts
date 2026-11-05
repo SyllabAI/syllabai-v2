@@ -72,12 +72,13 @@ describe("workspace-docs contracts", () => {
     expect(parsed.success).toBe(true);
   });
 
-  test("vocabulary of record has 15 entries (the dedicated planes stay refused)", () => {
+  test("vocabulary of record has 16 entries (the dedicated planes stay refused)", () => {
     // T-ACCOUNT-ONLY run-001: the sweep added the seven single-preference
     // families (theme / cla-panel-mode / dashboard-prefs / course-shell-prefs
     // / tutor-prefs / pdf-viewer-prefs / note-scroll:<slug>) to the eight
-    // run-003/004 keys.
-    expect(WORKSPACE_DOC_KEY_PATTERNS).toHaveLength(15);
+    // run-003/004 keys, then the review pass added the teacher shell's rail
+    // pref (teacher-shell-prefs) — the dashboard rail's twin.
+    expect(WORKSPACE_DOC_KEY_PATTERNS).toHaveLength(16);
     // the dedicated server planes keep their OWN surfaces — they are
     // deliberately NOT workspace docs (the two planes never overlap).
     for (const refused of ["saved-tests", "teaching-coverage", "content-reviews", "mock-results", "last-opened"]) {

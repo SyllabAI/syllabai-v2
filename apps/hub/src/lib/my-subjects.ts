@@ -133,8 +133,11 @@ export function useMySubjects(): MySubjects {
 // online").
 //
 // Law of record:
-//  - The localStorage roster stays the UI truth (reactive, instant, works
-//    signed-out exactly as before).
+//  - The roster is the module memory (reactive, instant, works signed-out
+//    exactly as before). T-ACCOUNT-ONLY run-001 re-words the T-TEACH-001
+//    text ("the localStorage roster stays the UI truth"): the device
+//    record is now a one-time adoption seed and the ACCOUNT is the only
+//    durable store — the memory cache law itself is unchanged.
 //  - Signed in, every LOCAL write is mirrored to core as an idempotent
 //    full-set PUT (debounced per tick to coalesce bursts); a failed PUT
 //    leaves the local roster untouched (cache law) and the next write or
