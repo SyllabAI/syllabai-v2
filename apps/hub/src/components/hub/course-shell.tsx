@@ -38,6 +38,7 @@ import {
   PanelLeftOpen,
   ScrollText,
   Sparkles,
+  Speech,
   SquareStack,
   Target,
   TrendingUp,
@@ -431,6 +432,21 @@ export function CourseShell({
         // today, and the chrome never shows a placeholder for the other 108.
         ...(data.hasGuidedLessons
           ? [{ href: `${base}/guided-lessons`, label: "Guided lessons", icon: Lightbulb }]
+          : []),
+        // T-TEACHGENIE-004 (operator order 2026-11-05, "the frontend flow of
+        // Teach me/SillyAI is not like the other pages"): the learn-by-
+        // teaching lane rides the persistent chrome like every other lane —
+        // until now it was reachable ONLY through the dashboard tile. Same
+        // absent-when-absent law as the rows above: the flags.json "teachMe"
+        // gate (the SAME teachMeEnabledForCourse read the /teach-genie page
+        // and the Learn-band card key on) decides the row; non-pilot courses
+        // keep the honest roadmap card, never a dead link. ⚠️ OUT-OF-FENCE
+        // ADDITIVE MOUNT (course-shell + layout are outside the
+        // T-TEACHGENIE fence) — same one-commit precedent as the course
+        // tile (T-TEACHME-001 run-003 R0), shipped separately for
+        // ratification.
+        ...(data.hasTeachMe
+          ? [{ href: `${base}/teach-genie`, label: "Teach SillyAI", icon: Speech }]
           : []),
         // run-013 R1/G5 (audit MEDIUM-LOW): Underground Mathematics — the
         // SAME absent=OFF law as lib/ugm.ts (flag + committed bundle or

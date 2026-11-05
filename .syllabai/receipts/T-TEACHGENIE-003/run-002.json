@@ -1,0 +1,69 @@
+{
+  "task": "T-TEACHGENIE-003",
+  "run": "run-002",
+  "kind": "LIVE PILOT of record — the run-001 'live-pilot caveat' executed against production",
+  "agent": "Super Z (zai-web session web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2, dispatch trace 1a1ac4dca771efb5)",
+  "date": "2026-11-05",
+  "operator_commission": {
+    "order": "conduct a live pilot after deployment",
+    "trace": "1a1ac4dca771efb5",
+    "standing_orders_in_effect": "review-and-merge-yourself for this lane's PRs (trace 1a1ab62c0baf067d); PRs #785 (rename) and #788 (design system) merged at 33a3fd02 / 151b9d80 before the pilot"
+  },
+  "environment_of_record": {
+    "hub": "https://www.syllab-ai.com — Vercel project syllabai-hub-v2, DEPLOYED CURRENT (success on 151b9d80 11:58 UTC and fb6581d5 14:53 UTC)",
+    "api": "https://syllabai-v2.vercel.app/api/v1 — Vercel project syllabai-v2, DEPLOYED STALE",
+    "api_deployment_of_record": "04e3c40a (#783 merge) at 2026-11-05T07:14:15Z — the LAST commit carrying an API-project Vercel status; every main commit since 3100dd58 (~11:31 UTC) carries hub-only statuses (170f981a, 33a3fd02, 151b9d80, fb6581d5, 1e432049 all checked) — the API project's git integration went silent mid-day",
+    "stale_proof": "the live API answers the pre-#785 fail-closed copy verbatim: 'Teach Genie is not enabled for this course yet' (S10/F3a) and 'Daily Teach Genie session cap reached — back tomorrow.' (run-1 S3) — both strings were renamed in #785"
+  },
+  "method": "wire-plane driver scripts/pilot_teachgenie_live2.py (every request/response captured in scripts/pilot_raw.json) + real-UI walk via agent-browser through the REAL click paths (demo sign-in, note picker, composer) — no DB and no Vercel access from the sandbox; zero code changes made or needed by the pilot",
+  "identities": [
+    "the PUBLIC showcase demo student (the shared showcase account; its 3/day quota was consumed by real traffic before the pilot — one real visitor's session from 15:09 UTC was observed mid-flight)",
+    "probe learner tg003-pilot-probe@example.com — registered LIVE via POST /api/v1/auth/register (201), a labelled test identity for fresh-quota lifecycle + the NOT_OWNER probe"
+  ],
+  "verified_live_working": [
+    "auth: demo mint 200, register 201, login 200; unknown /api/v1/* paths answer 401 (anyRequest().authenticated() parity)",
+    "flags gate: igcse-chemistry-19 passes; cie-igcse-biology-23 → 409 TEACH_ME_FLAG_DISABLED (honest fail-closed, no partial render)",
+    "G1 canon gate: 4CH1-1.1/1.2 resolve in knowledge_nodes; unauthenticated create → 401",
+    "G2 note-corpus gate: revision_note rows serve the picker's note",
+    "D3 quota: 3/day ENFORCED with the honest 'back tomorrow' state (demo account exhausted by real showcase traffic; fresh learner got its own budget) — the cost-protection law is real",
+    "objectives+opener LIVE LLM call: 200 in ~1.8-2s with in-character lowercase openers and exactly one question ('i'm a bit confused about the states of matter… can you walk me through…?')",
+    "judged turns LIVE LLM: paraphrase_probe voice ('so what I've got now is that solids keep their shape because the particles are stuck in a lattice…') — the combined judge+pupil call works live",
+    "D2 confusion-never-affirmation LIVE: the deliberate particle-misconception turn produced pupil/confusion ('hmm, that doesn't match the notes I was given about particles not changing size. can you explain why you think…') — the ADR-040 hard invariant holds on the real chain",
+    "transcript persistence: all 7 rows (opening, student, clarify_nudge, judged turns incl. probe + confusion) present via the permalink read",
+    "history (today bucket) and permalink reads: 200",
+    "authz: cross-learner permalink reads → 403 NOT_OWNER on BOTH the real user's and today's sessions",
+    "hub UI (current build): the 'Teach SillyAI' sidebar row renders on the pilot course ONLY (non-pilot cie-igcse-biology-23 → zero teach rows, absent-when-absent verified); CourseHeader hero band + house tokens live on the landing (breadcrumb Home→Edexcel→IGCSE→Chemistry→Teach SillyAI, H1, exam-code pill 4CH1); picker on house design with renamed copy; the quota fail-closed card renders honestly; the 500 surfaces as a dismissible honest error banner, never a fake success"
+  ],
+  "verified_live_broken": {
+    "symptom": "every teach-me request that issues an UPDATE on teach_sessions fails with a generic 500 internal_error: the sub-floor nudge path (post-writes), BOTH judged turns (post-writes, ~2.4s — the LLM call completes first), and end-session (311ms, status never leaves 'active', review never generates)",
+    "forensics": "INSERTs and SELECTs all succeed (session rows, objective rows, message rows persist — F2e shows the nudge's two messages committed); the session-row counters stay frozen at their create-time values (message_count 0, llm_call_count 1, flags null) — the ONLY common failing write is UPDATE teach_sessions",
+    "impact": "sessions cannot progress or complete for ANY user — a real showcase visitor's 15:09 UTC session shows the identical stuck shape; every judged turn's LLM cost is burned then the response 500s",
+    "root_cause_hypothesis": "production app-role (syllabai_v2_app_w2r2) lacks the UPDATE privilege on teach_sessions (INSERT/SELECT granted, UPDATE never granted) — the same F5-S7 grants class the T-TIER1-DB-APPLY lane documented for its six tables; the teach tables' grants predate that law and were never completed. Run-004/005 of the 0025 runner already proved the T138 secret connects AS the app role with no owner membership, so prod DDL/grants need the owner-capable path",
+    "code_exoneration": "the fixture-replayed behavioural suite (22/22, same router+service over an in-memory store) covers every one of these paths; the failure is environment-plane, not code-plane"
+  },
+  "operator_actions_required": [
+    "1. REDEPLOY the API: the syllabai-v2 Vercel project's production integration stopped after 04e3c40a (last API status 07:14 UTC; hub statuses continued) — relink/retrigger production deploys so main's rename (#785) and successors go live; a docs-only push to main accompanies this receipt and may itself retrigger the project if the integration is alive-but-stalled",
+    "2. GRANTS LANE (suggest T-TEACHGENIE-005): a t-tier1-pattern dispatch workflow (COW proof + owner-capable prod apply) that grants the app role the full 4-verb DML on teach_sessions/teach_messages/teach_objectives/teach_objective_coverages/teach_misconception_candidates/teach_review_cards — minimum UPDATE on teach_sessions to unblock every session — with the has_table_privilege probe as the receipt; requires the operator's fire order (prod mutation, 093/133b law) — NOT fired by this pilot"
+  ],
+  "quota_accounting": "pilot consumed 2 session creations total (1 on the demo student before its quota wall; 1 on the probe learner, stuck-active by the UPDATE defect) plus 1 pre-existing real-visitor session observed (created 15:09 UTC, untouched beyond a read); the probe learner's remaining budget was left unused",
+  "files": {
+    "code": "NONE — zero code bytes touched by this run",
+    "docs_of_record": [
+      "docs/TEACH_GENIE.md §10 (the live-pilot record)",
+      ".syllabai/receipts/T-TEACHGENIE-003/run-002.json (this file)",
+      ".syllabai/tasks/T-TEACHGENIE-003.yaml (status + run_002 block)",
+      ".syllabai/worklog.md (append-only section)",
+      ".syllabai/worklog.md (run-002 section + BYTE-EXACT RESTORATION of the -003 run-001 receipt/addendum and -004 receipt sections wiped from main by the #786 merge resolution — restored from 9d358ca3)"
+    ],
+    "evidence_out_of_repo": "scripts/pilot_raw.json (full wire transcript), scripts/pilot_teachgenie_live2.py (driver), download/pilot-ui/01–06 screenshots (sidebar row, house landing, picker, live session with objectives/opener, honest 500 banner, non-pilot absent-when-absent)"
+  },
+  "disclosures": [
+    "the sandbox holds no Vercel token and no prod DB secret — the redeploy and the grants landing are operator-plane; this pilot can only prove the gap, not close it",
+    "the live LLM chain is the #783-era build: the DC8 key-pool failover bytes ARE deployed (04e3c40a includes #783), so the judged-turn 500s are NOT the ask-lane outage class (objectives calls succeed on the same chain minutes apart)",
+    "the probe learner account remains in prod as a labelled test identity (tg003-pilot-probe@example.com) — harmless, single-purpose, disclosed",
+    "the two stuck-active sessions (86e7e7bc probe, 60008625 real visitor) were NOT mutated beyond reads — they are the evidence of record and will complete normally once the grants land",
+    "NOT_OWNER was probed cross-LEARNER; no ADMIN-role escalation was probed",
+    "the UI walk used the real click paths but the hub's 'Recent sessions' rail and review screen could not be observed completed for the same reason the wire plane 500s — the review card remains fixture-proven only until the grants land"
+  ],
+  "verdict": "the lane's LAWS are live and correct end to end (auth, gates, quota, LLM persona voice, D2, authz, honest fail-closed) — the lane's WRITES are blocked by one environment-plane defect (UPDATE grants) and the API deployment is one day stale; both are operator-plane actions with exact recipes recorded here"
+}

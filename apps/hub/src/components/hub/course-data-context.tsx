@@ -52,6 +52,11 @@ export interface SidebarData {
    * lib/ugm.ts absent=OFF law — absent flag/key/slug degrades to OFF, and
    * the dashboard Learn card keys on the same getUgmBundle) */
   hasUgm?: boolean;
+  /** T-TEACHGENIE-004: the learn-by-teaching lane rides the sidebar like
+   * every other lane — the flags.json "teachMe" gate (absent=OFF; the SAME
+   * teachMeEnabledForCourse read the /teach-genie page and the Learn-band
+   * card key on), computed in the course layout for the hydration contract. */
+  hasTeachMe?: boolean;
 }
 
 const CourseDataContext = createContext<SidebarData | null>(null);

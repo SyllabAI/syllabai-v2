@@ -297,6 +297,90 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-19 (batch seventeen, the Edexcel science tranche 14):
+        # the physics family — 4PH1 linear, both 4XPH1 modular units
+        # (renumbered derivatives of the 4PH1 master lattice, derivation
+        # disclosed in the unit modules' docstrings) and the YPH11 IAL
+        # register.
+        physics = {
+            "igcse-physics-19": ("f8ph_lattice_4ph1", "4PH1"),
+            "igcse-physics-modular-24-unit-1": ("f8ph_lattice_4xph1u1", "4XPH1U1"),
+            "igcse-physics-modular-24-unit-2": ("f8ph_lattice_4xph1u2", "4XPH1U2"),
+            "ial-physics-19": ("f8ph_lattice_wph11", "YPH11"),
+        }
+        if args.course in physics:
+            mod, tag = physics[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="seventeen", task="T-KG-PRE-19", exporter_ver="v2.2",
+            )
+            return
+        # T-KG-PRE-18 (batch sixteen, the religious-studies family
+        # tranche 13): CIE 0490 IGCSE.
+        religious_studies = {
+            "cie-igcse-religious-studies-23": ("f8rs_lattice_0490", "0490"),
+        }
+        if args.course in religious_studies:
+            mod, tag = religious_studies[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="sixteen", task="T-KG-PRE-18", exporter_ver="v2.1",
+            )
+            return
+        # T-KG-PRE-17 (batch fifteen, the history family tranche 12):
+        # CIE 0470 IGCSE, Edexcel 4HI1 IGCSE.
+        history = {
+            "cie-igcse-history-18": ("f8hi_lattice_0470", "0470"),
+            "igcse-history-17": ("f8hi_lattice_4hi1", "4HI1"),
+        }
+        if args.course in history:
+            mod, tag = history[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="fifteen", task="T-KG-PRE-17", exporter_ver="v2.0",
+            )
+            return
+        # T-KG-PRE-16 (batch fourteen, the ICT family tranche 11):
+        # CIE 0417 IGCSE, Edexcel 4IT1 IGCSE.
+        ict = {
+            "cie-igcse-ict-21": ("f8it_lattice_0417", "0417"),
+            "igcse-ict-17": ("f8it_lattice_4it1", "4IT1"),
+        }
+        if args.course in ict:
+            mod, tag = ict[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="fourteen", task="T-KG-PRE-16", exporter_ver="v1.9",
+            )
+            return
+        # T-KG-PRE-15 (batch thirteen, the environmental-management family
+        # tranche 10): CIE 8291 AS, CIE 0680 IGCSE (2025 series).
+        environmental_management = {
+            "cie-as-environmental-management-20": ("f8em_lattice_8291", "8291"),
+            "cie-igcse-environmental-management-25": ("f8em_lattice_0680", "0680x25"),
+        }
+        if args.course in environmental_management:
+            mod, tag = environmental_management[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="thirteen", task="T-KG-PRE-15", exporter_ver="v1.8",
+            )
+            return
         # T-KG-PRE-14 (batch twelve, the computer-science family tranche 9):
         # CIE 9618 A Level, CIE 9618 AS (sibling lattice on the identical
         # id+text 1-12 subset — NOT a shared two-course module, the point

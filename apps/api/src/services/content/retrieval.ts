@@ -22,10 +22,22 @@
  *     verbatim message (:51-53) → 500 internal_error. The provider seam is
  *     config-gated (SYLLABAI_EMBEDDING_GEMINI_API_KEY); the Gemini adapter
  *     is a port of GeminiEmbeddingProvider's query path (text-embedding-004,
- *     768-dim, no failover by design — T-013 house rule).
+ *     768-dim). T-013's "no failover by design" is AMENDED by DC8 (operator
+ *     directive, trace 1a1aa5bf9c669399 — "if quota finishes, use
+ *     automatically the others"): the key var accepts a comma-separated
+ *     POOL and the provider rotates across the pool with the CHAIN's own
+ *     health law (LlmProviderHealth — 429 keys cool after the failure
+ *     threshold, dead keys bench to the end of the UTC day); the key var
+ *     stays the SAME name, a single key is the pool of one (byte-
+ *     compatible). The T-013 posture that survives: NO silent fallback to
+ *     empty search — when every key is exhausted the failure still throws
+ *     (the honest red), never an unmarked degraded answer.
  */
 import type { SqlFn } from "../identity/users";
 import type { DocumentKind } from "@syllabai/contracts";
+import { LlmProviderHealth } from "../llmchain/health";
+import { classifyHttpStatus, classifyTransportError } from "../llmchain/adapters";
+import { parseKeyPool } from "../llmchain/index";
 
 export type SearchEmptyCause =
   | "SCOPE_UNRESOLVED"
@@ -94,11 +106,33 @@ export interface EmbeddingProvider {
 
 const EMBED_DIMENSION = 768;
 
+/** The default per-key health knobs for the embedding pool (the chain's
+ *  yml-effective 3/60 — ONE law across both planes; overridable via the
+ *  same SYLLABAI_LLM_CHAIN_* env the chain reads). */
+const EMBED_POOL_FAILURE_THRESHOLD = 3;
+const EMBED_POOL_COOLDOWN_SECONDS = 60;
+
+export interface EmbeddingProviderOptions {
+  /** Test seam — deterministic fetch, never real HTTP in CI. */
+  fetchImpl?: typeof fetch;
+  /** Test seam — injectable clock for cooldown/day-roll laws. */
+  clock?: ConstructorParameters<typeof LlmProviderHealth>[6];
+  failureThreshold?: number;
+  cooldownSeconds?: number;
+}
+
 /**
  * GeminiEmbeddingProvider query path (gemini-embedding-001 pinned to 768
- * output dimensions, no failover by design). A transport failure throws —
- * the chain degrades to the core's own provider-absent posture, never to a
- * silent empty search.
+ * output dimensions). DC8 key POOL: the provider rotates across its keys
+ * with the chain's own health law — per-key LlmProviderHealth (same
+ * failureThreshold/cooldownSeconds knobs), classified failures
+ * (classifyHttpStatus/TransportError — ONE classifier law), first healthy
+ * key serves, exhausted keys cool exactly like chain members, and an
+ * AUTHENTICATION_FAILURE key benches to the end of the UTC day (a dead
+ * key never heals mid-deployment). When EVERY key is cooling or the last
+ * attempts failed, the aggregate throws — the honest red the frozen arm
+ * contract requires (transport failures PROPAGATE; never a silent empty
+ * search).
  *
  * 2026-10 amendment of record (lane w0a, live flip-proof): Google retired
  * text-embedding-004 from v1beta (models/text-embedding-004 → 404 NOT_FOUND
@@ -107,7 +141,32 @@ const EMBED_DIMENSION = 768;
  * are unchanged, only the provider-side model name moves.
  */
 export class GeminiEmbeddingProvider implements EmbeddingProvider {
-  constructor(private readonly apiKey: string) {}
+  private readonly keys: string[];
+  private readonly healths: LlmProviderHealth[];
+  private readonly fetchImpl: typeof fetch;
+
+  constructor(
+    keys: string | string[],
+    opts: EmbeddingProviderOptions = {},
+  ) {
+    this.keys = Array.isArray(keys) ? keys : parseKeyPool(keys);
+    if (this.keys.length === 0) {
+      throw new Error("GeminiEmbeddingProvider requires at least one API key");
+    }
+    this.fetchImpl = opts.fetchImpl ?? fetch;
+    this.healths = this.keys.map(
+      () =>
+        new LlmProviderHealth(
+          true,
+          true,
+          opts.failureThreshold ?? EMBED_POOL_FAILURE_THRESHOLD,
+          opts.cooldownSeconds ?? EMBED_POOL_COOLDOWN_SECONDS,
+          0, // no local budget on the embedding plane (chain knob governs the chat plane)
+          this.model(),
+          opts.clock,
+        ),
+    );
+  }
 
   model(): string {
     return "gemini-embedding-001";
@@ -117,35 +176,85 @@ export class GeminiEmbeddingProvider implements EmbeddingProvider {
     return EMBED_DIMENSION;
   }
 
-  private async embed(text: string): Promise<number[]> {
-    const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-goog-api-key": this.apiKey,
+  /** poolSize — observability (the boot log discloses the pool grain). */
+  get poolSize(): number {
+    return this.keys.length;
+  }
+
+  private async embedOne(keyIndex: number, text: string): Promise<number[]> {
+    const key = this.keys[keyIndex]!;
+    const health = this.healths[keyIndex]!;
+    let res: Response;
+    try {
+      res = await this.fetchImpl(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-goog-api-key": key,
+          },
+          body: JSON.stringify({
+            model: "models/gemini-embedding-001",
+            content: { parts: [{ text }] },
+            outputDimensionality: EMBED_DIMENSION,
+          }),
         },
-        body: JSON.stringify({
-          model: "models/gemini-embedding-001",
-          content: { parts: [{ text }] },
-          outputDimensionality: EMBED_DIMENSION,
-        }),
-      },
-    );
-    if (!res.ok) {
-      throw new Error(
-        `embedding provider request failed with status ${res.status} — no failover by design`,
       );
+    } catch (e) {
+      health.recordFailure(
+        `${e instanceof Error ? e.name : "Error"}: ${e instanceof Error ? e.message : String(e)}`,
+        classifyTransportError(e) === "UNKNOWN" ? "PROVIDER_UNAVAILABLE" : classifyTransportError(e),
+      );
+      throw e;
     }
-    const body = (await res.json()) as { embedding?: { values?: number[] } };
+    if (!res.ok) {
+      const raw = await res.text().catch(() => "");
+      const snippet = raw.replace(/\s+/g, " ").trim().slice(0, 200);
+      const message = `embedding provider request failed with status ${res.status}${snippet ? `: ${snippet}` : ""}`;
+      health.recordFailure(message, classifyHttpStatus(res.status));
+      throw new Error(message);
+    }
+    let body: { embedding?: { values?: number[] } };
+    try {
+      body = (await res.json()) as { embedding?: { values?: number[] } };
+    } catch {
+      const message = "embedding provider returned an unparseable payload";
+      health.recordFailure(message, "INVALID_RESPONSE");
+      throw new Error(message);
+    }
     const values = body.embedding?.values;
     if (!values || values.length !== EMBED_DIMENSION) {
-      throw new Error(
-        `embedding provider ${this.model()} returned ${values ? values.length : "null"} dimensions, expected ${EMBED_DIMENSION}`,
-      );
+      const message = `embedding provider ${this.model()} returned ${values ? values.length : "null"} dimensions, expected ${EMBED_DIMENSION}`;
+      health.recordFailure(message, "INVALID_RESPONSE");
+      throw new Error(message);
     }
+    health.recordSuccess();
     return values;
+  }
+
+  private async embed(text: string): Promise<number[]> {
+    // the DC8 rotation: first HEALTHY key serves (cooling keys skipped —
+    // the LlmProviderHealth law does the benching); failures move to the
+    // next key in pool order; every key unhealthy → the aggregate throw.
+    const failures: string[] = [];
+    let attempted = 0;
+    for (let i = 0; i < this.keys.length; i++) {
+      if (!this.healths[i]!.healthy()) continue; // cooling / benched — skip silently
+      attempted++;
+      try {
+        return await this.embedOne(i, text);
+      } catch (e) {
+        failures.push(`key#${i + 1}: ${e instanceof Error ? e.message : String(e)}`);
+      }
+    }
+    const detail = failures.join(" | ");
+    const last = failures[failures.length - 1]?.replace(/^key#\d+: /, "") ?? "unknown";
+    throw new Error(
+      attempted === 0
+        ? `all ${this.keys.length} embedding key(s) are cooling or benched — quota exhausted across the pool [keys: ${this.keys.length}]`
+        : `all embedding keys failed, last error: ${last} [${detail}]`,
+    );
   }
 
   embedQuery(query: string): Promise<number[]> {
@@ -160,14 +269,20 @@ export class GeminiEmbeddingProvider implements EmbeddingProvider {
 /**
  * Port of ContentRetrievalService's provider resolution: keyed config →
  * provider; unkeyed → null (the caller raises the verbatim
- * IllegalStateException). There is deliberately NO silent fallback.
+ * IllegalStateException). DC8: the key var accepts a comma-separated
+ * POOL — every key gets its own health state and the provider rotates
+ * with the chain's law; a single key is the pool of one (the pre-DC8
+ * behaviour). There is still NO silent fallback to an unkeyed boot.
  */
-export function resolveEmbeddingProvider(env: {
-  SYLLABAI_EMBEDDING_GEMINI_API_KEY?: string;
-}): EmbeddingProvider | null {
-  const key = env.SYLLABAI_EMBEDDING_GEMINI_API_KEY;
-  if (key == null || key.trim() === "") return null;
-  return new GeminiEmbeddingProvider(key);
+export function resolveEmbeddingProvider(
+  env: {
+    SYLLABAI_EMBEDDING_GEMINI_API_KEY?: string;
+  },
+  opts: EmbeddingProviderOptions = {},
+): EmbeddingProvider | null {
+  const pool = parseKeyPool(env.SYLLABAI_EMBEDDING_GEMINI_API_KEY);
+  if (pool.length === 0) return null;
+  return new GeminiEmbeddingProvider(pool, opts);
 }
 
 function toVectorLiteral(vector: number[]): string {

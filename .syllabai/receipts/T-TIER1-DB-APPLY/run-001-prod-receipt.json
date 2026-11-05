@@ -1,0 +1,234 @@
+{
+  "card": "T-TIER1-DB-APPLY",
+  "driver": "scripts/t-tier1-apply-0022-0023-0026.ts",
+  "migrations": [
+    "packages/db/drizzle/0022_learner-last-opened-mock-results.sql",
+    "packages/db/drizzle/0023_teacher-stores.sql",
+    "packages/db/drizzle/0026_user-documents.sql"
+  ],
+  "db_host": "ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech",
+  "app_role": "syllabai_v2_app_w2r2",
+  "mode": "apply-0022-0023-0026",
+  "started_at": "2026-11-05T10:57:23.365Z",
+  "preflight": {
+    "users": {
+      "table": "public.users",
+      "owner": "neondb_owner",
+      "rows": 666
+    }
+  },
+  "files": [
+    {
+      "id": "0022",
+      "file": "packages/db/drizzle/0022_learner-last-opened-mock-results.sql",
+      "sha256": "57db36644ebea36044e7a192e3dcd7f1e13e9313a32aab982a7fcc119a263453",
+      "statements": 5
+    },
+    {
+      "id": "0023",
+      "file": "packages/db/drizzle/0023_teacher-stores.sql",
+      "sha256": "252abd08690907a8771394ff8aab2f12ed1efb732d8df8234f10ee42f51eaa4f",
+      "statements": 10
+    },
+    {
+      "id": "0026",
+      "file": "packages/db/drizzle/0026_user-documents.sql",
+      "sha256": "cf1354a0161e64c83d7b46b460d5696edebcf582291b75a379c45e0d2fabb778",
+      "statements": 2
+    }
+  ],
+  "ownership": {
+    "users_owner": "neondb_owner",
+    "connected_as": "neondb_owner",
+    "member_of_owner": true,
+    "set_role_used": null
+  },
+  "app_role_present": true,
+  "plan": [
+    {
+      "id": "0022",
+      "decision": "already_applied",
+      "existing": [
+        "learner_last_opened",
+        "learner_mock_results"
+      ],
+      "missing": []
+    },
+    {
+      "id": "0023",
+      "decision": "already_applied",
+      "existing": [
+        "teacher_saved_tests",
+        "teacher_teaching_coverage",
+        "teacher_content_reviews"
+      ],
+      "missing": []
+    },
+    {
+      "id": "0026",
+      "decision": "already_applied",
+      "existing": [
+        "user_documents"
+      ],
+      "missing": []
+    }
+  ],
+  "applied_files": [],
+  "post_verify": {
+    "census": [
+      {
+        "table": "learner_last_opened",
+        "exists": true,
+        "columns": 4,
+        "pk": [
+          "learner_last_opened_pkey"
+        ],
+        "fks": [
+          {
+            "conname": "learner_last_opened_user_id_fkey",
+            "confdeltype": "c"
+          }
+        ],
+        "indexes": [
+          "learner_last_opened_pkey"
+        ],
+        "checks": 2,
+        "app_role_grants": [
+          "DELETE",
+          "INSERT",
+          "SELECT",
+          "UPDATE"
+        ]
+      },
+      {
+        "table": "learner_mock_results",
+        "exists": true,
+        "columns": 15,
+        "pk": [
+          "learner_mock_results_pkey"
+        ],
+        "fks": [
+          {
+            "conname": "learner_mock_results_user_id_fkey",
+            "confdeltype": "c"
+          }
+        ],
+        "indexes": [
+          "learner_mock_results_pkey",
+          "learner_mock_results_user_course_idx"
+        ],
+        "checks": 4,
+        "app_role_grants": [
+          "DELETE",
+          "INSERT",
+          "SELECT",
+          "UPDATE"
+        ]
+      },
+      {
+        "table": "teacher_saved_tests",
+        "exists": true,
+        "columns": 11,
+        "pk": [
+          "teacher_saved_tests_pkey"
+        ],
+        "fks": [
+          {
+            "conname": "teacher_saved_tests_user_id_fkey",
+            "confdeltype": "c"
+          }
+        ],
+        "indexes": [
+          "teacher_saved_tests_pkey",
+          "teacher_saved_tests_user_idx"
+        ],
+        "checks": 4,
+        "app_role_grants": [
+          "DELETE",
+          "INSERT",
+          "SELECT",
+          "UPDATE"
+        ]
+      },
+      {
+        "table": "teacher_teaching_coverage",
+        "exists": true,
+        "columns": 5,
+        "pk": [
+          "teacher_teaching_coverage_pkey"
+        ],
+        "fks": [
+          {
+            "conname": "teacher_teaching_coverage_user_id_fkey",
+            "confdeltype": "c"
+          }
+        ],
+        "indexes": [
+          "teacher_teaching_coverage_pkey",
+          "teacher_teaching_coverage_user_course_idx"
+        ],
+        "checks": 2,
+        "app_role_grants": [
+          "DELETE",
+          "INSERT",
+          "SELECT",
+          "UPDATE"
+        ]
+      },
+      {
+        "table": "teacher_content_reviews",
+        "exists": true,
+        "columns": 10,
+        "pk": [
+          "teacher_content_reviews_pkey"
+        ],
+        "fks": [
+          {
+            "conname": "teacher_content_reviews_user_id_fkey",
+            "confdeltype": "c"
+          }
+        ],
+        "indexes": [
+          "teacher_content_reviews_pkey",
+          "teacher_content_reviews_user_idx",
+          "teacher_content_reviews_user_resource_idx"
+        ],
+        "checks": 3,
+        "app_role_grants": [
+          "DELETE",
+          "INSERT",
+          "SELECT",
+          "UPDATE"
+        ]
+      },
+      {
+        "table": "user_documents",
+        "exists": true,
+        "columns": 4,
+        "pk": [
+          "user_documents_pk"
+        ],
+        "fks": [
+          {
+            "conname": "user_documents_user_id_fkey",
+            "confdeltype": "c"
+          }
+        ],
+        "indexes": [
+          "user_documents_pk"
+        ],
+        "checks": 0,
+        "app_role_grants": [
+          "DELETE",
+          "INSERT",
+          "SELECT",
+          "UPDATE"
+        ]
+      }
+    ],
+    "invariants_ok": true
+  },
+  "app_role_privilege_proof": "all 4 DML verbs × all 6 tables granted to syllabai_v2_app_w2r2 (has_table_privilege, no impersonation)",
+  "ok": true,
+  "finished_at": "2026-11-05T10:57:36.309Z"
+}

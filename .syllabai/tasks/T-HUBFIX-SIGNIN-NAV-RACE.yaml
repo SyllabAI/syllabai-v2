@@ -1,0 +1,22 @@
+version: 1
+task:
+  id: T-HUBFIX-SIGNIN-NAV-RACE
+  title: "New-domain sign-in hardening (operator order trace 1a1aa3ed1849bdc1): www.syllab-ai.com verification found two production blockers — (1) the v2 API's SYLLABAI_CORS_ORIGINS allowlist did not include the new hub origin, so every client-side fetch from the new domain failed the CORS preflight (403) and the account-backed roster never reconciled ('My subjects · 0' while core held 5 courses) — resolved out-of-repo via the API carrier env + redeploy; (2) the signed-out landing's quick-nav prefetches cache the proxy's 307 sign-in redirect under the gated destination's key in the Next client router cache, and every later client-side navigation to /dashboard or /teacher (router.push OR <Link>, fresh cookie aboard) replays the cached redirect — the just-signed-in visitor lands on /login?next=… and the login page's own 'Go to my dashboard' link bounces onto itself; fixed by making the two sign-in success paths hard-navigate (window.location.assign), which bypasses the client router cache entirely."
+  owner: "Z.ai main agent (zai-web session web-c414c074, chat 08b3170a, trace 1a1aa3ed1849bdc1)"
+  status: RUN-001 SHIPPED # branch t-hubfix/signin-nav-race-r0; CI gates + live verification of record in the run-001 receipt
+  claimed_at: "2026-11-05"
+  priority: P1
+  wave: hubfix
+  deps: [T-DEMO-SHOWCASE-1, T-BRAND-AIGNITE-101]
+  endpoints: []
+  service_status: not applicable (two navigation one-liners; zero new routes, zero providers, zero LLM)
+  scope:
+    allowed:
+    - apps/hub/src/components/demo/showcase-landing.tsx (router.push → window.location.assign + doc-comment of record; useRouter import removed)
+    - apps/hub/src/app/login/login-client.tsx (router.push → window.location.assign + doc-comment of record; useRouter import removed)
+    - .syllabai/tasks/T-HUBFIX-SIGNIN-NAV-RACE.yaml; .syllabai/receipts/T-HUBFIX-SIGNIN-NAV-RACE/**; worklog.md (append-only)
+    forbidden:
+    - proxy.ts / route-gate.ts / session.ts / identity.ts / api.ts — UNTOUCHED (the proxy's 307 contract and the A-2 awaited-mirror law are correct as-is)
+    - the showcase demo contract (demo/login route, showcase.ts, 30d tokens) — UNTOUCHED
+    - any attempt to "fix" this by disabling prefetch app-wide or touching shared nav components
+    - the v2 API carrier (syllabai-v2 project) — the CORS env correction is an operator-side env change with its own of-record note in the receipt, not a repo change

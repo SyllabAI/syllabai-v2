@@ -57,13 +57,22 @@ import {
   RotateCcw,
   SquareStack,
   X,
+  Zap,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ToastAction } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+// dashboard-redesign kit (T-DASH-SKIN-2): the page wears the course pages'
+// hero-band + band-section spine — the opening band and every section
+// header come from the kit, so the dashboard and the course page can never
+// grow apart again.
+import { PageHero } from "@/components/dashboard/kit/page-hero";
+import { BandSection } from "@/components/dashboard/kit/band-section";
+import { StatChip } from "@/components/dashboard/kit/stat-chip";
 import { useMyCoursesSync, useMySubjects } from "@/lib/my-subjects";
+import { DashboardSyncStatus } from "./dashboard-sync-status";
 import { useToast } from "@/hooks/use-toast";
 import { useIdentity } from "@/lib/identity";
 import { useLastOpened, resourceLabel } from "@/lib/last-opened";
@@ -593,35 +602,43 @@ export function DashboardClient({
 
   return (
     <div className="space-y-8">
+      {/* T-SYNC-OBS-001 — the account-sync health notifier (pure chrome,
+          renders nothing; toasts sync failures with a manual Retry). */}
+      <DashboardSyncStatus />
       {/* greeting — the neutral form (UX review 2026-11-04): the routing
           session carries only the account handle (initials + a code, e.g.
           "HNA 269a"), not a display name, and "Hi HNA 269a" read as a
           login chip where a greeting belongs. "Welcome back" is honest
           for every session; the header's identity chip already shows the
-          handle. Renders on the server (B-2): no "Hi there" frame. */}
-      <header className="space-y-1.5">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Welcome back 👋
-        </h1>
-        <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Your launchpad for spec-anchored revision — notes, exam questions and flashcards
-          mapped to each of your courses. Your progress syncs to your account across
-          devices; self-marked answers and reading history stay on this device.
-        </p>
-      </header>
+          handle. Renders on the server (B-2): no "Hi there" frame.
+          T-DASH-SKIN-2: the plain header becomes the course pages' hero
+          band (PageHero), and the roster count rides it as a StatChip —
+          the hero's one honest number until the account trail loads. */}
+      <PageHero
+        title="Welcome back 👋"
+        description="Your launchpad for spec-anchored revision — notes, exam questions and flashcards mapped to each of your courses. Your progress syncs to your account across devices; self-marked answers and reading history stay on this device."
+        stats={
+          <StatChip
+            icon={GraduationCap}
+            label={mySubjects.length === 1 ? "subject" : "subjects"}
+            value={mySubjects.length}
+          />
+        }
+      />
 
       {/* ---- Act now (D-1): the dashboard's first row answers "what should
           I do now?" — the retention loop's headline (HUB-DASH-CORE P1-5:
           account queue when the resolved course's core path is live, the
           device's Ebbinghaus derivation otherwise) beside the server-composed
           set-work facts (T-C78 agenda). One row, one card each; either may
-          render nothing when it has no news. ---- */}
-      <section aria-label="Act now">
+          render nothing when it has no news. T-DASH-SKIN-2: the band gets
+          its visible header (BandSection) instead of a bare aria-label. ---- */}
+      <BandSection icon={Zap} title="Act now">
         <div className="grid gap-3 lg:grid-cols-2">
           <ReviewDueStrip courses={mySubjects} />
           <SetWorkCard />
         </div>
-      </section>
+      </BandSection>
 
       {/* t-ui-polish run-001 — the MG/RD dashboard split: the working surfaces
           (resume, subjects) own the main column; the advice layer (progress
@@ -638,11 +655,7 @@ export function DashboardClient({
           fills the gap. The source badge explains why the card can differ
           between the phone and the school lab instead of reading as a bug. ---- */}
       {resume && (
-        <section aria-label="Jump back in" className="space-y-2">
-          <h2 className="flex items-center gap-2 text-lg font-semibold">
-            <RotateCcw className="size-4 text-primary" aria-hidden />
-            Jump back in
-          </h2>
+        <BandSection icon={RotateCcw} title="Jump back in">
           <Link href={resume.href} className="group block focus-visible:outline-none">
             <Card className="transition-colors group-hover:border-primary/50">
               <CardContent className="flex flex-wrap items-center gap-x-3 gap-y-1 p-4">
@@ -671,15 +684,15 @@ export function DashboardClient({
               </CardContent>
             </Card>
           </Link>
-        </section>
+        </BandSection>
       )}
 
       {/* ---- My courses ---- */}
-      <section aria-label="My subjects" className="space-y-3">
-        <div className="flex items-center justify-between gap-3">
-          <h2 className="text-lg font-semibold">
-            My subjects <span className="text-sm font-normal text-muted-foreground">· {mySubjects.length}</span>
-          </h2>
+      <BandSection
+        icon={GraduationCap}
+        title="My subjects"
+        count={`· ${mySubjects.length}`}
+        action={
           <Button
             size="sm"
             variant="outline"
@@ -689,8 +702,8 @@ export function DashboardClient({
             <Plus className="size-3.5" aria-hidden />
             Add course
           </Button>
-        </div>
-
+        }
+      >
         {/* D-3/D-4: the account trail is ONE section-level line — the
             per-learner coverage the course-stats contract returns — instead
             of a second, disagreeing number duplicated onto one pilot card.
@@ -780,7 +793,7 @@ export function DashboardClient({
             </button>
           </div>
         )}
-      </section>
+      </BandSection>
 
         </div>
 
@@ -807,11 +820,7 @@ export function DashboardClient({
           completed 1 of 4 tasks today" with a progress bar. The counters
           ride the same server payload as the plan page — one projection,
           never a local counter; docs/STUDY-PLAN-BUILDER-PLAN.md) ---- */}
-      <section aria-label="Study plan" className="space-y-2">
-        <h2 className="flex items-center gap-2 text-lg font-semibold">
-          <CalendarCheck className="size-4 text-primary" aria-hidden />
-          Study plan
-        </h2>
+      <BandSection icon={CalendarCheck} title="Study plan">
         {signedIn && studyPlan ? (
           <Card>
             <CardContent className="space-y-2 p-4">
@@ -842,7 +851,7 @@ export function DashboardClient({
             </CardContent>
           </Card>
         )}
-      </section>
+      </BandSection>
 
         </aside>
       </div>
