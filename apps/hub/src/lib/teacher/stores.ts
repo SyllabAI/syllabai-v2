@@ -113,7 +113,7 @@ export function useTeachingCoverage(course: string) {
 
   const toggle = useCallback(
     (code: string) => {
-      const map = readCoverage();
+      const map = { ...coverageStore };
       const cur = new Set(map[course] ?? []);
       if (cur.has(code)) cur.delete(code);
       else cur.add(code);

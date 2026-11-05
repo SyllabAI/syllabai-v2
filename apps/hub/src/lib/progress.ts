@@ -183,16 +183,23 @@ function load(course: string): CourseProgress {
 }
 
 function persist(course: string, next: CourseProgress) {
+  ensureProgressBridge(course); // idempotent — the mirror needs its bridge registered
   cache.set(course, next);
   listeners.get(course)?.forEach((fn) => fn());
   // T-AUDIT-TIER1 run-004 → T-ACCOUNT-ONLY run-001: the account mirror IS
   // the store now (echo-guarded on the remote-apply path; the registration
-  // rides load()). There is no localStorage write behind it anymore.
+  // rides load() AND persist()). There is no localStorage write behind it.
   mirrorDocPoolState(`progress:${course}`, next);
 }
 
 function mutate(course: string, fn: (p: CourseProgress) => CourseProgress) {
   persist(course, fn(load(course)));
+}
+
+/** Test seam: replace one course's overlay (the fixtures' "local writes"
+ *  with historical stamps the mutators can't express). */
+export function __setProgressForTests(course: string, p: CourseProgress): void {
+  persist(course, p);
 }
 
 export function subscribeProgress(course: string, fn: () => void): () => void {

@@ -110,6 +110,18 @@ function subscribe(onChange: () => void) {
   };
 }
 
+/** Plain (non-hook) read of the current roster — the law tests and the
+ *  sync layer's own fixtures (the roster is the in-memory store of record,
+ *  T-ACCOUNT-ONLY run-001). */
+export function readMyClassesSnapshot(): TeacherClass[] {
+  return getSnapshot();
+}
+
+/** Test seam: replace the in-memory roster (the fixtures' "local writes"). */
+export function __setClassesForTests(classes: TeacherClass[]): void {
+  writeClasses(classes);
+}
+
 function makeId(): string {
   try {
     return `local-${crypto.randomUUID()}`;
@@ -198,7 +210,9 @@ if (typeof window !== "undefined") {
   adoptLegacyStorage(DOC_KEY, [KEY], () => {
     try {
       const raw = window.localStorage.getItem(KEY);
-      return raw ? parseClasses(JSON.parse(raw) as unknown) : null;
+      // the DOC shape is the POOL (id → class), not the array — the same
+      // shape the bridge's merge/stamp laws read
+      return raw ? classesPoolOf(parseClasses(JSON.parse(raw) as unknown)) : null;
     } catch {
       return null;
     }

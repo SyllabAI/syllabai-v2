@@ -53,27 +53,31 @@ describe("route gate policy", () => {
     expect(gateForPath("/teacher/classes/xyz")).toBe("teacher");
   });
 
-  it("corpus surfaces stay open — browsing never meets a login wall", () => {
+  it("T-ACCOUNT-ONLY run-001 — every stateful surface gates (the account is the only store)", () => {
+    // The sweep moved ALL user state onto the account, so the course hubs
+    // (progress overlays, flashcards, guided lessons, question players),
+    // past papers (mocks, marking, ink) and the practice launcher now gate
+    // exactly like the dashboard.
     for (const path of [
-      "/",
       "/courses",
       "/courses/igcse-chemistry-19",
       "/courses/igcse-chemistry-19/revision-notes",
       "/past-papers",
       "/practice",
       "/practice/",
+    ]) {
+      expect(gateForPath(path)).toBe("session");
+    }
+  });
+
+  it("marketing/public surfaces stay open — only stateless browsing is anonymous", () => {
+    for (const path of [
+      "/",
       "/knowledge-graph",
       "/login",
       "/about/provenance",
     ]) {
       expect(gateForPath(path)).toBeNull();
     }
-  });
-
-  it("/practice itself is open even though its drill and battle gate", () => {
-    // the launcher is a corpus surface; the identity-bearing modes gate.
-    // The prefix rows must not swallow the open parent.
-    expect(gateForPath("/practice")).toBeNull();
-    expect(gateForPath("/practice/drill")).toBe("session");
   });
 });

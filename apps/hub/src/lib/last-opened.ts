@@ -55,6 +55,7 @@ const EMPTY: LastOpened | null = null;
 
 // ── the in-memory pointer of record + the one-time legacy adoption ────────
 let entry: LastOpened | null = EMPTY;
+let snapshot: LastOpened | null = EMPTY;
 let legacyKeyPresent = false;
 
 function parseEntry(raw: unknown): LastOpened | null {
@@ -90,7 +91,6 @@ function readEntry(): LastOpened | null {
   return entry;
 }
 
-let snapshot: LastOpened | null = EMPTY;
 function getSnapshot(): LastOpened | null {
   if (
     !snapshot ||
@@ -121,6 +121,20 @@ function retireLegacyPointerKey(): void {
   } catch {
     // best-effort
   }
+  legacyKeyPresent = false;
+}
+
+/** Plain (non-hook) read of the current pointer — for plain async stores
+ *  and the law tests. The pointer is the in-memory store of record
+ *  (T-ACCOUNT-ONLY run-001). */
+export function readLastOpened(): LastOpened | null {
+  return entry;
+}
+
+/** Test seam: the explicit-empty state without a device or a network. */
+export function __resetLastOpenedForTests(): void {
+  entry = EMPTY;
+  snapshot = EMPTY;
   legacyKeyPresent = false;
 }
 

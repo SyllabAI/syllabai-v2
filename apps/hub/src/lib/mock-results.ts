@@ -92,6 +92,12 @@ function writeAll(next: MockResult[]): void {
   window.dispatchEvent(new CustomEvent(MOCK_RESULTS_EVENT));
 }
 
+/** Test seam: the explicit-empty state without a device or a network. */
+export function __resetMockResultsForTests(): void {
+  all = [];
+  legacyKeyPresent = false;
+}
+
 export function saveMockResult(result: MockResult): void {
   if (typeof window === "undefined") return;
   try {

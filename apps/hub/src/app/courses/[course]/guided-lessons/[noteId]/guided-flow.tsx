@@ -210,6 +210,12 @@ function getFlowStore(lessonId: string): FlowStore {
   return store;
 }
 
+/** Test seam: the live store for one lesson (the fixtures drive the SAME
+ *  chain the component does — set() writes the pool + mirrors). */
+export function __flowStoreForTests(lessonId: string): FlowStore {
+  return getFlowStore(lessonId);
+}
+
 // ── T-AUDIT-TIER1 run-004 → T-ACCOUNT-ONLY run-001 — the bridge
 // registration ─────────────────────────────────────────────────────────
 // The per-lesson wizard states mirror the account under the "guided-flow"

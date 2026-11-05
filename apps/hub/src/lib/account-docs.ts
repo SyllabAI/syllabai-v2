@@ -189,9 +189,12 @@ export async function hydrateAccountDocs(_email: string): Promise<void> {
       for (const doc of list.documents) {
         seen.add(doc.key);
         const cur = memory.get(doc.key);
-        // a LEGACY-dirty seed yields to the server (the server doc is the
-        // account's own newer truth; the device copy then retires); a plain
-        // dirty edit wins and flushes after the merge
+        // a LEGACY-dirty seed yields to a REAL server value (the server doc
+        // is the account's own newer truth; the device copy then retires) —
+        // but an honest-null server row (the account has never written this
+        // doc) yields to the SEED, whose flush commits it up. A plain dirty
+        // edit always wins and flushes after the merge.
+        if (cur?.dirty && cur.legacy && doc.value === null) continue;
         if (cur?.dirty && !cur.legacy) continue;
         memory.set(doc.key, { value: doc.value, dirty: false });
         retireLegacyKeys(doc.key); // server-adopted → the device copy retires
@@ -310,6 +313,14 @@ export function __legacyKeysForTests(docKey: string): string[] {
 export function __markCleanForTests(docKey: string): void {
   const mem = memory.get(docKey);
   if (mem) memory.set(docKey, { value: mem.value, dirty: false });
+}
+
+/** Test seam: forget the tab-lifetime adoption guard + the registered
+ *  retirement keys, so a fixture can re-run adoptLegacyStorage for a fresh
+ *  "device visit" (the production law is once per tab, forever). */
+export function __resetLegacyAdoptionForTests(): void {
+  legacyAdopted.clear();
+  legacyKeysByDoc.clear();
 }
 
 export function subscribeAccountDocs(cb: (key: string | null) => void): () => void {
