@@ -11,7 +11,7 @@ import {
   timeAgo,
 } from "./util";
 
-describe("teach-genie display laws (T-TEACHGENIE-001)", () => {
+describe("teach-genie display laws (T-TEACHGENIE-001; house tokens since -004)", () => {
   it("timeAgo: MG row recipe — minutes, hours, days, then the date", () => {
     const now = new Date("2026-11-04T12:00:00Z");
     expect(timeAgo("2026-11-04T12:00:00Z", now)).toBe("0m ago");
@@ -22,9 +22,9 @@ describe("teach-genie display laws (T-TEACHGENIE-001)", () => {
     expect(timeAgo("2026-10-01T12:00:00Z", now)).toMatch(/Oct/);
   });
 
-  it("status dots + labels: completed is green, active is MG blue, pending amber", () => {
+  it("status dots + labels: completed is green, active is house primary, pending amber", () => {
     expect(statusDotClass("completed")).toBe("bg-green-500");
-    expect(statusDotClass("active")).toContain("1cb0f6");
+    expect(statusDotClass("active")).toBe("bg-primary");
     expect(statusDotClass("review_pending")).toBe("bg-amber-500");
     expect(statusDotClass("abandoned")).toContain("muted-foreground");
     expect(statusLabel("completed")).toBe("Completed");
@@ -36,7 +36,7 @@ describe("teach-genie display laws (T-TEACHGENIE-001)", () => {
     expect(objectiveStatusLabel("covered")).toBe("Covered");
     expect(objectiveStatusLabel("not_covered")).toBe("Not covered");
     expect(objectiveStatusLabel("flagged")).toContain("Flagged");
-    // dots: covered green, flagged amber, not_started is the hollow MG radio
+    // dots: covered green, flagged amber, not_started is the hollow radio
     expect(objectiveDotClass("covered")).toContain("green");
     expect(objectiveDotClass("flagged")).toContain("amber");
     expect(objectiveDotClass("not_started")).toContain("border-border");

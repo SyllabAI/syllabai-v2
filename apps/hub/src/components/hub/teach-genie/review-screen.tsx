@@ -1,23 +1,26 @@
 "use client";
 
 /**
- * T-TEACHGENIE-001 — the session review screen (MG capture (9)): the full
- * transcript on the left (Baby Genie groups + PURPLE user bubbles — the
- * review replay of record), the "Session ended · <date>" rule, the learning
- * objectives; the right rail carries "Review your session": Strengths
- * (emerald), Areas for Improvement (orange), Suggested Practice cards with
- * Open links. Data is the ReviewCard contract — strengths are extractive
- * quotes with their turn number, improvements pair what you said with the
- * canon correction, practice hrefs are real course resources only.
+ * T-TEACHGENIE-001 — the session review screen (data laws unchanged: the
+ * ReviewCard contract — strengths are extractive quotes with their turn
+ * number, improvements pair what you said with the canon correction,
+ * practice hrefs are real course resources only). T-TEACHGENIE-004 re-lays
+ * it out from the MG two-pane rail into the house single-column pattern:
+ * the review card (Strengths / Areas for Improvement / Suggested Practice)
+ * stacks above the replay transcript, which now renders the SAME anatomy as
+ * the live session view (bubble-less SillyAI prose, bg-muted user bubbles),
+ * then the "Session ended" divider and the learning objectives.
  *
- * While the review is still generating (end() → review_pending), the rail
- * shows the honest pending card with the same poll law the old Teach-Me
- * review used (3s interval, ~2min ceiling, manual retry — no silent spin).
+ * While the review is still generating (end() → review_pending), the review
+ * card shows the honest pending card with the same poll law the old
+ * Teach-Me review used (3s interval, ~2min ceiling, manual retry — no
+ * silent spin).
  */
 import { useEffect, useRef } from "react";
-import { ArrowLeft, CheckCircle2, CircleAlert, X } from "lucide-react";
+import { ArrowLeft, CheckCircle2, CircleAlert, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Markdown } from "@/components/markdown";
+import { Button } from "@/components/ui/button";
 import { BabyGenieAvatar } from "./baby-genie";
 import { ObjectiveRow } from "./session-screen";
 import { endedLine } from "./util";
@@ -46,96 +49,17 @@ export function TeachGenieReview({ session, transcript, review, courseLabel, ref
   const covered = session.objectives.filter((o) => o.status === "covered").length;
 
   return (
-    <div className="flex min-h-0 flex-1 overflow-hidden">
-      {/* main transcript column */}
-      <div className="flex min-w-0 flex-1 flex-col overflow-y-auto">
-        <div className="bg-background px-4 py-3 sm:px-6 md:sticky md:top-0 md:z-10 md:border-b-2 md:border-border">
-          <div className="mx-auto flex max-w-2xl items-center gap-3">
-            <button
-              type="button"
-              onClick={onBack}
-              className="inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-xl px-2 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              <ArrowLeft className="size-4" aria-hidden /> Go back
-            </button>
-          </div>
-        </div>
-        <div className="mx-auto w-full max-w-2xl flex-1 px-4 py-4 sm:px-6">
-          {/* mobile: review sections above the transcript */}
-          <div className="mb-6 lg:hidden">
-            {review ? (
-              <ReviewSections review={review} />
-            ) : pending ? (
-              <PendingCard />
-            ) : (
-              <FailedCard />
-            )}
-          </div>
-
-          <div className="flex flex-col gap-3">
-            {transcript.map((row) =>
-              row.role === "pupil" ? (
-                <div key={row.id} className="flex w-full flex-col items-start gap-1">
-                  <div className="mb-0.5 flex items-center gap-2 px-2">
-                    <BabyGenieAvatar size={24} round />
-                    <span className="tg-title text-sm text-muted-foreground">SillyAI</span>
-                  </div>
-                  <div className="max-w-[75%] px-2">
-                    <div className="rounded-2xl bg-muted px-4 py-3 text-[15px] leading-relaxed text-foreground">
-                      <Markdown>{row.text}</Markdown>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div key={row.id} className="flex w-full flex-col items-end gap-1">
-                  <div className="tg-bubble-user max-w-[75%] rounded-2xl px-4 py-3 text-[15px] leading-relaxed">
-                    <p className="m-0 whitespace-pre-wrap">{row.text}</p>
-                  </div>
-                </div>
-              ),
-            )}
-          </div>
-
-          {session.endedAt && (
-            <div className="my-6 flex items-center gap-3 font-medium">
-              <div className="h-0.5 flex-1 bg-muted" />
-              <p className="whitespace-nowrap text-xs font-normal text-muted-foreground">
-                Session ended · {endedLine(session.endedAt)}
-              </p>
-              <div className="h-0.5 flex-1 bg-muted" />
-            </div>
-          )}
-
-          <div className="mb-8 mt-16">
-            <p className="mb-4 text-xs font-medium text-muted-foreground">
-              Learning objectives · {covered}/{session.objectives.length} completed
-            </p>
-            <ul className="space-y-4">
-              {session.objectives.map((o) => (
-                <ObjectiveRow key={o.id} o={o} />
-              ))}
-            </ul>
-          </div>
-        </div>
+    <div className="flex w-full flex-col" data-testid="tg-review">
+      <div>
+        <Button type="button" variant="ghost" size="sm" onClick={onBack} className="-ml-2 text-muted-foreground">
+          <ArrowLeft aria-hidden /> Back to session
+        </Button>
       </div>
 
-      {/* review rail (desktop) */}
-      <aside
-        aria-label="Review your session"
-        className="hidden w-[22rem] shrink-0 overflow-y-auto border-l-2 border-border bg-background p-5 lg:block xl:w-96"
-      >
-        <div className="flex flex-col gap-6">
-          <div className="flex items-start justify-between gap-3">
-            <h4 className="tg-title text-balance text-xl tracking-tight text-foreground">Review your session</h4>
-            <button
-              type="button"
-              onClick={onBack}
-              aria-label="Close review"
-              className="inline-flex cursor-pointer items-center justify-center rounded-xl p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              <X className="size-5" aria-hidden />
-            </button>
-          </div>
+      {/* the review card of record — sections stacked, the house pattern */}
+      <section aria-label="Review your session" className="mt-3 rounded-xl border bg-card p-5 sm:p-6">
+        <h3 className="text-xl font-bold tracking-tight text-foreground">Review your session</h3>
+        <div className="mt-5 flex flex-col gap-6">
           {review ? (
             <ReviewSections review={review} courseLabel={courseLabel} />
           ) : pending ? (
@@ -144,7 +68,53 @@ export function TeachGenieReview({ session, transcript, review, courseLabel, ref
             <FailedCard />
           )}
         </div>
-      </aside>
+      </section>
+
+      {/* the replay — same anatomy as the live session view */}
+      <div className="mt-8 flex flex-col gap-3" aria-label="Session transcript">
+        {transcript.map((row) =>
+          row.role === "pupil" ? (
+            <div key={row.id} className="flex w-full flex-col items-start">
+              <div className="mb-1.5 flex items-center gap-2 px-2">
+                <BabyGenieAvatar size={24} round />
+                <span className="text-sm font-medium text-muted-foreground">SillyAI</span>
+              </div>
+              <div className="w-full max-w-[75%] px-2">
+                <div className="prose-sm min-w-0 text-[15px] leading-relaxed text-foreground">
+                  <Markdown>{row.text}</Markdown>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div key={row.id} className="flex w-full flex-col items-end gap-1">
+              <div className="max-w-[75%] rounded-2xl rounded-br-md bg-muted px-4 py-3 text-[15px] leading-relaxed text-foreground">
+                <p className="m-0 whitespace-pre-wrap">{row.text}</p>
+              </div>
+            </div>
+          ),
+        )}
+      </div>
+
+      {session.endedAt && (
+        <div className="my-8 flex items-center gap-3 font-medium">
+          <div className="h-px flex-1 bg-border" />
+          <p className="whitespace-nowrap text-xs font-normal text-muted-foreground">
+            Session ended · {endedLine(session.endedAt)}
+          </p>
+          <div className="h-px flex-1 bg-border" />
+        </div>
+      )}
+
+      <div className="mb-4">
+        <p className="mb-4 text-xs font-medium text-muted-foreground">
+          Learning objectives · {covered}/{session.objectives.length} completed
+        </p>
+        <ul className="space-y-4">
+          {session.objectives.map((o) => (
+            <ObjectiveRow key={o.id} o={o} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
@@ -172,7 +142,7 @@ function useReviewPoll(active: boolean, refresh: () => Promise<void>) {
 
 function PendingCard() {
   return (
-    <div className="rounded-xl border-2 border-border bg-card p-5 text-center" role="status">
+    <div className="rounded-lg border border-dashed border-border p-5 text-center" role="status">
       <div className="mx-auto mb-3 flex w-fit items-center gap-1" aria-hidden>
         <span className="tg-dot size-2 rounded-full bg-muted-foreground/50" />
         <span className="tg-dot size-2 rounded-full bg-muted-foreground/50" />
@@ -189,7 +159,7 @@ function PendingCard() {
 
 function FailedCard() {
   return (
-    <div className="rounded-xl border-2 border-border bg-card p-5 text-center" role="status">
+    <div className="rounded-lg border border-dashed border-border p-5 text-center" role="status">
       <p className="text-sm font-medium text-foreground">The review didn&apos;t land</p>
       <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
         The session ended before the review could generate (or generation was refused). Nothing was invented to fill
@@ -203,7 +173,7 @@ function ReviewSections({ review, courseLabel }: { review: ReviewCard; courseLab
   return (
     <>
       <section aria-label="Strengths">
-        <h3 className="tg-title mb-3 text-base font-bold tracking-tight text-foreground">Strengths</h3>
+        <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Strengths</h4>
         {review.strengths.length === 0 ? (
           <p className="text-sm text-muted-foreground">Nothing quotable this session — that&apos;s honest, not harsh.</p>
         ) : (
@@ -222,7 +192,9 @@ function ReviewSections({ review, courseLabel }: { review: ReviewCard; courseLab
       </section>
 
       <section aria-label="Areas for Improvement">
-        <h3 className="tg-title mb-3 text-base font-bold tracking-tight text-foreground">Areas for Improvement</h3>
+        <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+          Areas for Improvement
+        </h4>
         {review.improvements.length === 0 ? (
           <p className="text-sm text-muted-foreground">
             No corrections this session — the canon agrees with what you taught.
@@ -244,15 +216,19 @@ function ReviewSections({ review, courseLabel }: { review: ReviewCard; courseLab
 
       {review.suggestedPractice.length > 0 && (
         <section aria-label="Suggested Practice">
-          <h3 className="tg-title mb-3 text-base font-bold tracking-tight text-foreground">Suggested Practice</h3>
+          <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            Suggested Practice
+          </h4>
           <ul className="space-y-2">
             {review.suggestedPractice.map((p, i) => {
               const typeLabel = p.resourceType === "question_bank" ? "Question Bank" : p.resourceType === "revision_notes" ? "Notes" : "Past Paper";
               return (
                 <li key={i}>
+                  {/* the house card-hover voice (border-primary/60 + shadow lift),
+                      the same one the Exam-code pill and the lesson rows speak */}
                   <Link
                     href={p.href}
-                    className="flex items-start gap-3 rounded-xl bg-muted p-4 transition-colors hover:bg-muted/70"
+                    className="flex items-start gap-3 rounded-lg border bg-background p-4 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
                   >
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-medium leading-snug text-foreground">{p.label}</p>
@@ -260,8 +236,8 @@ function ReviewSections({ review, courseLabel }: { review: ReviewCard; courseLab
                         {courseLabel ? <span>{courseLabel} · </span> : null}
                         {typeLabel}
                       </p>
-                      <span className="mt-2 inline-flex items-center gap-2 text-xs font-medium text-foreground">
-                        Open <span aria-hidden>→</span>
+                      <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-primary">
+                        Open <ExternalLink className="size-3" aria-hidden />
                       </span>
                     </div>
                   </Link>

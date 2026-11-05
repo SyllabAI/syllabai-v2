@@ -3,12 +3,13 @@
 /**
  * T-TEACHGENIE-001 — the Teach Genie client orchestrator. Same five learner
  * routes of record as the Teach-Me engine it fronts (create → player → end →
- * poll → review, plus history/permalink), re-skinned to the MG Teach Genie
- * experience:
+ * poll → review, plus history/permalink), rendered in the house design
+ * system (T-TEACHGENIE-004 — the lane rejoined the hub's token sheet and
+ * CourseHeader chrome; the MG skin is retired):
  *
- *   landing (hero + history) → picker → session → Session Complete overlay
- *   → review (transcript + rail) — with permalinks reopening as the
- *   read-only chat + rail (MG "View Chat" / "View review").
+ *   landing (hero + recent sessions) → picker → session → Session Complete
+ *   overlay → review (transcript + review card) — with permalinks reopening
+ *   as the read-only chat + review sections.
  *
  * Every law stays server-side (quota, ceilings, word floor, overlap, D2);
  * this component renders contract-shaped truth and fails honest via
@@ -247,7 +248,7 @@ export function TeachGenieClient({ course, courseLabel, noteTree }: TeachGenieCl
   const failureBanner = failure && (
     <div
       role="alert"
-      className={`mx-auto mb-4 w-full max-w-3xl rounded-xl border-2 px-4 py-3 text-sm leading-relaxed ${
+      className={`mb-4 w-full rounded-lg border px-4 py-3 text-sm leading-relaxed ${
         failure.cls === "guardrail"
           ? "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-400"
           : failure.cls === "provider" || failure.cls === "network"
@@ -261,7 +262,7 @@ export function TeachGenieClient({ course, courseLabel, noteTree }: TeachGenieCl
         <button
           type="button"
           onClick={() => setFailure(null)}
-          className="mt-2 cursor-pointer rounded-xl border-2 border-border px-3 py-1 text-xs font-medium hover:bg-muted"
+          className="mt-2 cursor-pointer rounded-md border border-border px-3 py-1 text-xs font-medium hover:bg-muted"
         >
           Dismiss
         </button>
@@ -270,11 +271,8 @@ export function TeachGenieClient({ course, courseLabel, noteTree }: TeachGenieCl
   );
 
   return (
-    <div className="flex min-h-[calc(100dvh-13rem)] w-full flex-col" data-testid="teach-genie-root">
-      {view.name === "session" && failureBanner}
-      {view.name !== "session" && (
-        <div className="mx-auto w-full max-w-6xl px-4 pt-4 sm:px-6">{failureBanner}</div>
-      )}
+    <div className="flex w-full flex-col" data-testid="teach-genie-root">
+      {failureBanner}
 
       {view.name === "landing" && (
         <TeachGenieLanding
@@ -288,9 +286,7 @@ export function TeachGenieClient({ course, courseLabel, noteTree }: TeachGenieCl
       )}
 
       {view.name === "picker" && (
-        <div className="py-4">
-          <TeachGeniePicker noteTree={noteTree} courseLabel={courseLabel} busy={busy} onStart={start} onBack={backToLanding} />
-        </div>
+        <TeachGeniePicker noteTree={noteTree} courseLabel={courseLabel} busy={busy} onStart={start} onBack={backToLanding} />
       )}
 
       {view.name === "session" && session && (
