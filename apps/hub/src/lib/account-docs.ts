@@ -199,8 +199,7 @@ export async function hydrateAccountDocs(_email: string): Promise<void> {
       }
       for (const key of [...memory.keys()]) {
         if (seen.has(key)) continue;
-        const cur = memory.get(key);
-        if (cur?.dirty && !cur.legacy) continue;
+        if (memory.get(key)?.dirty) continue; // plain edits AND legacy seeds flush below
         memory.set(key, { value: null, dirty: false });
         notify(key);
       }
@@ -271,7 +270,7 @@ export function adoptLegacyStorage(
   read: () => unknown,
 ): void {
   if (typeof window === "undefined") return;
-  if (legacyAdopted.has(docKey) || memory.has(docKey)) return;
+  if (legacyAdopted.has(docKey)) return;
   legacyAdopted.add(docKey);
   const present = keys.filter((k) => {
     try {
@@ -282,6 +281,12 @@ export function adoptLegacyStorage(
   });
   if (present.length === 0) return;
   legacyKeysByDoc.set(docKey, [...present]);
+  if (memory.has(docKey)) {
+    // the engine already owns this doc (server-adopted at hydration, or an
+    // in-tab edit) — the device record is superseded: retire immediately
+    retireLegacyKeys(docKey);
+    return;
+  }
   let value: unknown;
   try {
     value = read();
@@ -291,6 +296,7 @@ export function adoptLegacyStorage(
   if (value !== null && value !== undefined) {
     memory.set(docKey, { value, dirty: true, legacy: true });
     notify(docKey);
+    if (hydrated) void flushDoc(docKey); // late adoption (post-hydration module init)
   }
 }
 

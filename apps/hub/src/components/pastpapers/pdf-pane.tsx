@@ -162,6 +162,13 @@ import {
   type PdfLine,
 } from "@/lib/pdf-lines";
 import { prettyBytes } from "@/lib/pastpapers-shared";
+import {
+  PP_ZOOM_LADDER,
+  getPpPrefs,
+  ppPrefsHydrated,
+  subscribePpPrefs,
+  updatePpPrefs,
+} from "@/lib/pp-viewer-prefs";
 
 type PdfDoc = import("pdfjs-dist").PDFDocumentProxy;
 type PdfPage = import("pdfjs-dist").PDFPageProxy;
@@ -226,7 +233,7 @@ const LOAD_TIMEOUT_MS = 45_000;
  * preset alongside fit-width"): 25% joins as the thumbnail floor, and the
  * base the ladder multiplies is either fit-width or fit-page (FitMode).
  */
-const ZOOM_LADDER = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3];
+const ZOOM_LADDER = PP_ZOOM_LADDER;
 /** Ladder index of 100% — the default zoom and the `0` key's reset target. */
 const FIT_LADDER_IDX = ZOOM_LADDER.indexOf(1);
 /** Lowest ladder step, as a toolbar percentage (the zoom-out button's floor). */
@@ -350,45 +357,11 @@ function rotRect(
   }
 }
 
-// ── viewing preferences (s143): ONE localStorage record per browser, shared
-// by every pane and every paper — "the viewer's setup", not per-document
-// state. Fields are validated against TODAY's constants on read, so a record
-// written by an older build (shorter ladder, no spread) degrades safely.
-const PREFS_KEY = "pp-viewer-prefs-v1";
-interface PpPrefs {
-  fit: FitMode;
-  /** ladder MULTIPLIER — portable across papers, it is relative to the fit base */
-  zoom: number;
-  rot: Rot;
-  spread: boolean;
-}
-const DEFAULT_PREFS: PpPrefs = { fit: "width", zoom: 1, rot: 0, spread: false };
-
-function readPrefs(): PpPrefs {
-  const d = DEFAULT_PREFS;
-  try {
-    const raw = window.localStorage.getItem(PREFS_KEY);
-    if (!raw) return d;
-    const p = JSON.parse(raw) as Partial<PpPrefs>;
-    return {
-      fit: p.fit === "page" || p.fit === "width" ? p.fit : d.fit,
-      zoom:
-        typeof p.zoom === "number" && ZOOM_LADDER.includes(p.zoom) ? p.zoom : d.zoom,
-      rot: p.rot === 90 || p.rot === 180 || p.rot === 270 ? p.rot : d.rot,
-      spread: typeof p.spread === "boolean" ? p.spread : d.spread,
-    };
-  } catch {
-    return d; // storage disabled or a corrupt record — defaults
-  }
-}
-
-function writePrefs(p: PpPrefs) {
-  try {
-    window.localStorage.setItem(PREFS_KEY, JSON.stringify(p));
-  } catch {
-    /* private mode et al. — viewing works, it just isn't remembered */
-  }
-}
+// ── viewing preferences (s143): ONE ACCOUNT DOC shared by every pane and
+// every paper (T-ACCOUNT-ONLY run-001 — lib/pp-viewer-prefs.ts, the
+// "pdf-viewer-prefs" key of the workspace-document plane). Fields are
+// validated against TODAY's constants on read, so a doc written by an
+// older build (shorter ladder, no spread) degrades safely.
 
 export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
   { url, fallbackUrl, downloadUrl, label, active, initialPage, className },
@@ -525,31 +498,39 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
     }
   }, []);
 
-  // ── viewing preferences (s143): restore on mount, write on every change ──
+  // ── viewing preferences (s143): restore from the ACCOUNT DOC, write on
+  // every change ─────────────────────────────────────────────────────────
   // The restore runs BEFORE the doc can finish loading (effects fire before
-  // any network promise resolves), so the first placeholder sizing and the
-  // first renders already use the user's fit base, zoom step and rotation.
-  // Spread is validated later against the pane's measured width (the resize
-  // observer auto-offs it when too narrow — intent preserved, see spreadWantedRef).
+  // any network promise resolves) and RE-RUNS when the account hydration
+  // lands (the real preferences replace the pre-hydration defaults). Spread
+  // is validated later against the pane's measured width (the resize
+  // observer auto-offs it when too narrow — intent preserved, see
+  // spreadWantedRef).
   useEffect(() => {
-    const p = readPrefs();
-    fitModeRef.current = p.fit;
-    setFitMode(p.fit);
-    const zi = ZOOM_LADDER.indexOf(p.zoom);
-    zoomIdxRef.current = zi >= 0 ? zi : FIT_LADDER_IDX;
-    zoomRef.current = ZOOM_LADDER[zoomIdxRef.current];
-    setZoomPct(Math.round(ZOOM_LADDER[zoomIdxRef.current] * 100));
-    rotRef.current = p.rot;
-    setRot(p.rot);
-    spreadWantedRef.current = p.spread;
-    spreadRef.current = p.spread;
-    setSpread(p.spread);
-    setPrefsHydrated(true);
+    const restore = () => {
+      const p = getPpPrefs();
+      fitModeRef.current = p.fit;
+      setFitMode(p.fit);
+      const zi = PP_ZOOM_LADDER.indexOf(p.zoom);
+      zoomIdxRef.current = zi >= 0 ? zi : FIT_LADDER_IDX;
+      zoomRef.current = PP_ZOOM_LADDER[zoomIdxRef.current];
+      setZoomPct(Math.round(PP_ZOOM_LADDER[zoomIdxRef.current] * 100));
+      rotRef.current = p.rot;
+      setRot(p.rot);
+      spreadWantedRef.current = p.spread;
+      spreadRef.current = p.spread;
+      setSpread(p.spread);
+      setPrefsHydrated(true);
+    };
+    restore();
+    return subscribePpPrefs(() => {
+      if (ppPrefsHydrated()) restore(); // an adoption, not our own echo
+    });
   }, []);
 
   useEffect(() => {
-    if (!prefsHydrated) return;
-    writePrefs({
+    if (!prefsHydrated || !ppPrefsHydrated()) return;
+    updatePpPrefs({
       fit: fitMode,
       zoom: zoomPct / 100, // the ladder value (zoomPct = round(ladder×100))
       rot,

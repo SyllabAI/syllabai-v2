@@ -171,12 +171,9 @@ import {
   type RulerGuide,
 } from "./instruments";
 import { ProtractorGuideView, RulerGuideView, holderRead } from "./InstrumentGuides";
+import { getPpPrefs, subscribePpPrefs, updatePpPrefs } from "@/lib/pp-viewer-prefs";
 
 const TOKEN_KEY = "syllabai.token";
-
-/** T-MG-INK-8: the first-open affordance's once-flag (MG's pattern:
- * their mg-first-region-hint-done, ours namespaced). */
-const HINT_KEY = "syllabai.ink-hint-done";
 
 /** T-MG-INK-4 — the tool modes of record. The MG census family closes:
  * pen / text / MATH (the Math text box) / SELECT / ERASE + the four
@@ -331,24 +328,18 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   // learner arms a tool from it; clicking it arms TEXT on desktop, MG's
   // keyboard default). MG anchors it to their parsed first answer
   // region; we don't parse regions, so it floats above the ink toolbar
-  // (the disclosed difference).
+  // (the disclosed difference). T-ACCOUNT-ONLY run-001: the once-flag is
+  // the "pdf-viewer-prefs" account doc's inkHintSeen field — the retired
+  // localStorage flag is that module's legacy adoption.
   const [hintOpen, setHintOpen] = useState(false);
   useEffect(() => {
-    let done = "1";
-    try {
-      done = window.localStorage.getItem(HINT_KEY) ?? "";
-    } catch {
-      // private mode: the card just shows every open — honest default
-      done = "";
-    }
-    if (!done) setHintOpen(true);
+    if (!getPpPrefs().inkHintSeen) setHintOpen(true);
+    return subscribePpPrefs(() => {
+      if (!getPpPrefs().inkHintSeen) setHintOpen(true);
+    });
   }, []);
   const dismissHint = useCallback(() => {
-    try {
-      window.localStorage.setItem(HINT_KEY, "1");
-    } catch {
-      // private mode: dismiss for this session only
-    }
+    updatePpPrefs({ inkHintSeen: true });
     setHintOpen(false);
   }, []);
   const armFromHint = useCallback(

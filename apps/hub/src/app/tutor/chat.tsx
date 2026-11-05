@@ -42,6 +42,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { createAccountStore } from "@/lib/account-stores";
 import { api, getToken } from "@/lib/api";
 import { useIdentity } from "@/lib/identity";
 import type { TutorSessionSummary, TutorSessionTurnView } from "@/lib/types";
@@ -151,7 +152,30 @@ const STARTERS: { icon: typeof BookOpen; label: string; prompt: string }[] = sta
 
 /** "near the bottom" tolerance (px) for auto-follow + jump-button visibility. */
 const NEAR_BOTTOM_PX = 96;
-const SIDEBAR_KEY = "syllabai.tutor.sidebar";
+const SIDEBAR_KEY = "syllabai.tutor.sidebar"; // RETIRED (legacy adoption pin)
+
+/**
+ * The tutor preference doc — the "tutor-prefs" key of the workspace-document
+ * plane (T-ACCOUNT-ONLY run-001): the chat sidebar open/closed choice lives
+ * in the account. The retired localStorage record is adopted once per tab,
+ * then removed.
+ */
+const tutorPrefsStore = createAccountStore<{ sidebarOpen: boolean }>({
+  docKey: "tutor-prefs",
+  initial: { sidebarOpen: true },
+  parse: (raw) =>
+    raw && typeof raw === "object"
+      ? { sidebarOpen: (raw as { sidebarOpen?: unknown }).sidebarOpen !== false }
+      : { sidebarOpen: true },
+  legacyKeys: [SIDEBAR_KEY],
+  readLegacy: () => {
+    try {
+      return { sidebarOpen: window.localStorage.getItem(SIDEBAR_KEY) !== "closed" };
+    } catch {
+      return { sidebarOpen: true };
+    }
+  },
+});
 
 /**
  * Map a stored §22 transcript turn back to the thread's Turn shape (web s140
@@ -173,20 +197,11 @@ function restoredTurn(turn: TutorSessionTurnView): Turn {
 
 /**
  * Sidebar preference, hydration-safe: server snapshot is "open", client
- * snapshot reads the stored pref; same-tab toggles go through an override so
+ * snapshot is the account doc; same-tab toggles go through an override so
  * no effect ever needs to sync state.
  */
-const subscribeSidebarPref = (cb: () => void) => {
-  window.addEventListener("storage", cb);
-  return () => window.removeEventListener("storage", cb);
-};
-const getSidebarPref = () => {
-  try {
-    return window.localStorage.getItem(SIDEBAR_KEY) !== "closed";
-  } catch {
-    return true;
-  }
-};
+const subscribeSidebarPref = tutorPrefsStore.subscribe;
+const getSidebarPref = () => tutorPrefsStore.get().sidebarOpen;
 
 /**
  * V53 (ADR-030) course gate: the tutor is honestly unavailable here. A
@@ -320,11 +335,7 @@ export function TutorChat({
   const toggleSidebar = () => {
     const next = !sidebarOpen;
     setSidebarOverride(next);
-    try {
-      window.localStorage.setItem(SIDEBAR_KEY, next ? "open" : "closed");
-    } catch {
-      /* private mode — session-only */
-    }
+    tutorPrefsStore.set({ ...tutorPrefsStore.get(), sidebarOpen: next });
   };
 
   const scrollToBottom = useCallback((smooth = false) => {
