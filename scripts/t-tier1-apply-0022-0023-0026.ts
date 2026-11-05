@@ -277,20 +277,29 @@ try {
         }
         receipt.post_verify = { census: after, invariants_ok: true };
 
-        // ── app-role DML wire proof (the exact queries the API's routes run) ─────
+        // ── app-role DML wire proof (run-001 lesson, the COW catch of record):
+        // the privilege system is checked DIRECTLY (has_table_privilege for the
+        // four DML verbs × six tables) — NOT via `SET LOCAL ROLE`: the owner
+        // role is not a MEMBER of the app role, so impersonation is refused
+        // (permission denied to set role) even when the grants are correctly
+        // in place and visible in role_table_grants. has_table_privilege reads
+        // the same ACLs the planner consults, from the grantor side, with no
+        // membership required — the honest non-impersonating proof. ──────────
         if (rolePresent) {
-                const SET_ROLE = `SET LOCAL ROLE ${APP_ROLE}`;
-                await sql.begin(async (tx) => {
-                        await tx.unsafe(SET_ROLE);
-                        await tx.unsafe(`SET LOCAL statement_timeout = '15s'`);
-                        await tx.unsafe(`SELECT * FROM public.learner_last_opened LIMIT 0`);
-                        await tx.unsafe(`SELECT * FROM public.learner_mock_results LIMIT 0`);
-                        await tx.unsafe(`SELECT * FROM public.teacher_saved_tests LIMIT 0`);
-                        await tx.unsafe(`SELECT * FROM public.teacher_teaching_coverage LIMIT 0`);
-                        await tx.unsafe(`SELECT * FROM public.teacher_content_reviews LIMIT 0`);
-                        await tx.unsafe(`SELECT * FROM public.user_documents LIMIT 0`);
-                });
-                receipt.app_role_select_proof = `all 6 tables SELECT-able as ${APP_ROLE}`;
+                const tables = files.flatMap((f) => f.tables);
+                const privs = ["SELECT", "INSERT", "UPDATE", "DELETE"] as const;
+                const denied: string[] = [];
+                for (const t of tables) {
+                        for (const p of privs) {
+                                const ok = (await sql`SELECT has_table_privilege(${APP_ROLE}, ${`public.${t}`}, ${p}) AS ok`)[0]?.ok as boolean;
+                                if (!ok) denied.push(`${APP_ROLE} lacks ${p} on public.${t}`);
+                        }
+                }
+                if (denied.length > 0) {
+                        receipt.app_role_privilege_proof = { denied };
+                        throw new Error(`app-role DML wire proof fail-closed: ${denied.length} denial(s) — first: ${denied[0]}`);
+                }
+                receipt.app_role_privilege_proof = `all 4 DML verbs × all 6 tables granted to ${APP_ROLE} (has_table_privilege, no impersonation)`;
         }
 
         receipt.ok = true;
