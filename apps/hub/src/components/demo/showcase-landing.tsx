@@ -11,16 +11,29 @@
  *
  * The button runs the same dance the sign-in page runs (login-client.tsx):
  * mint the demo session server-side (credentials never reach the browser),
- * setSession → announceSessionChange → AWAIT mirrorRoutingSession → route
- * push. AWAIT matters: a fire-and-forget mirror races the proxy and bounces
- * a fresh teacher back to /login (the A-2 lesson, kept verbatim).
+ * setSession → announceSessionChange → AWAIT mirrorRoutingSession → hard
+ * navigate. AWAIT matters: a fire-and-forget mirror races the proxy and
+ * bounces a fresh teacher back to /login (the A-2 lesson, kept verbatim).
+ *
+ * T-HUBFIX-SIGNIN-NAV-RACE — why the LAST step is a hard navigation and
+ * not router.push: the signed-out landing's quick-nav <Link>s prefetch
+ * the gated routes, and the proxy answers those prefetches with the 307
+ * sign-in redirect — which the App Router caches under the DESTINATION's
+ * key. Every later client-side navigation to /dashboard or /teacher
+ * (push OR <Link>, even with the fresh cookie aboard) replays that cached
+ * redirect and lands the just-signed-in visitor on /login?next=… — the
+ * "pick a dashboard and you're in" contract dead on arrival (observed
+ * live in production, both roles, on the demo CTA AND the login page's
+ * "Go to my dashboard" link; a full document load was always fine). A
+ * hard navigation bypasses the client router cache entirely: the proxy
+ * sees the cookie and the dashboard renders. The one-shot full load is
+ * the correct price for a deterministic "you're in".
  *
  * Voice law (T-UX-COPY-SWEEP): concrete nouns, no taglines, no internal
  * vocabulary. aria-labels and real buttons kept (agent experience).
  */
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Atom, ClipboardList, GraduationCap, Loader2, ShieldCheck, Sparkles, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AigniteBadge } from "@/components/brand/aignite-badge";
@@ -77,7 +90,6 @@ async function mintDemoSession(role: DemoRole): Promise<AuthResponse> {
 }
 
 export function ShowcaseLanding() {
-  const router = useRouter();
   const identity = useIdentity();
   const [busyRole, setBusyRole] = useState<DemoRole | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -89,9 +101,11 @@ export function ShowcaseLanding() {
       const auth = await mintDemoSession(role);
       setSession(auth);
       announceSessionChange();
-      // AWAITED before router.push — the A-2 race law (see header).
+      // AWAITED before the hard navigation — the A-2 race law (see header);
+      // the navigation itself is a full load, NOT router.push (the cached
+      // signed-out redirect replay, T-HUBFIX-SIGNIN-NAV-RACE).
       await mirrorRoutingSession(auth.user);
-      router.push(destination);
+      window.location.assign(destination);
     } catch (e) {
       setError(e instanceof Error ? e.message : "The demo session couldn't start — try again in a moment.");
       setBusyRole(null);
