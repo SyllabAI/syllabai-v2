@@ -303,6 +303,7 @@ try {
         }
 
         receipt.ok = true;
+        writeReceipt(true); // the receipt law: ALWAYS written — run-002 lesson (the success path omitted the write; both uploads found no file; the log carried the proof but the artifact of record was missing)
         console.log("0022/0023/0026 applied + verified (idempotent per file; app-role grants verified)");
 } catch (err) {
         receipt.error = err instanceof Error ? err.message : String(err);
