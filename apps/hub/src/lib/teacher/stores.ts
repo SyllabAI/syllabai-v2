@@ -49,6 +49,23 @@ function parseCoverage(raw: unknown): CoverageMap {
   return out;
 }
 
+// ── the in-memory stores of record (T-ACCOUNT-ONLY run-001) — the device
+// records seed them in the adoption block below (before the sync surface) ──
+let coverageStore: CoverageMap = {};
+let legacyKeysPresent = false;
+
+function retireLegacyTeacherKeys(): void {
+  if (!legacyKeysPresent || typeof window === "undefined") return;
+  for (const k of [COVERAGE_KEY, TESTS_KEY, REVIEWS_KEY]) {
+    try {
+      window.localStorage.removeItem(k);
+    } catch {
+      // best-effort
+    }
+  }
+  legacyKeysPresent = false;
+}
+
 let coverageSnapshot: CoverageMap = {};
 const EMPTY_COVERAGE: string[] = [];
 
