@@ -1,0 +1,199 @@
+# T-TIER1-DB-APPLY — migrations 0022/0023/0026 apply runner (the additive
+# account-persistence tables: learner_last_opened + learner_mock_results,
+# teacher_saved_tests + teacher_teaching_coverage + teacher_content_reviews,
+# user_documents — the schema behind the DEPLOYED T-TIER1/T-AUDIT-TIER1 hub
+# sync hooks, live-probed 500 on production 2026-11-05).
+#
+# Executed behind the t-teachgenie-1-db-apply-0025 guard protocol of record:
+#   job 1 (cow-apply): a disposable Neon COW branch off production (in-line
+#     read_write endpoint, NEON_API_KEY = the CI key of record), branch-local
+#     owner password reset (PRODUCTION ROLES NEVER TOUCHED), then the FROZEN
+#     driver scripts/t-tier1-apply-0022-0023-0026.ts applies the three files
+#     as RAW SQL (one transaction PER FILE, lock_timeout=5s, idempotent
+#     preflight per file — honest no-op when a file's tables are already
+#     applied, fail-closed on any partial state), post-verifies the full
+#     per-table invariant census (columns / PK / FK→users cascade / indexes
+#     / CHECKs / app-role DML grants) and proves the app role can SELECT all
+#     six tables — THE PROOF OF RECORD is the driver receipt — then DROP the
+#     COW + 404-verify, even on failure (if: always(), the T-MIG-035
+#     discipline). Production roles are never touched.
+#   job 2 (prod-apply, needs job 1 ALL GREEN, mode=cow+prod default): the
+#     same frozen driver against the OWNER-CAPABLE production DSN of record
+#     (SIB_PROD_DATABASE_URL — the exact secret the t-teachgenie-1-db-apply-
+#     0025 prod leg used), then the LIVE WIRE PROOF: the runner mints both
+#     demo tokens through the production demo contract and re-probes the
+#     five endpoints that were live-probed 500 before this lane (the hub's
+#     own demo login → GET last-opened / mock-results / me/documents /
+#     teachers/me/saved-tests / teachers/me/teaching-coverage — all must be
+#     200; a 500 after a green DDL apply = honest red). The driver is
+#     IDEMPOTENT: a re-run against already-relaxed prod is an honest
+#     zero-DDL no-op, so a red receipt after a partial state can be retried
+#     safely.
+#
+# OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
+# dispatched (the dispatch = the operator's fire order per the 093/133b law;
+# this run's fire order = the operator's 'go' on the persistence plan,
+# zai-web chat 08b3170a, trace 1a1ab2eac6ead959, 2026-11-05).
+# Secrets of record: NEON_API_KEY (exists), SIB_PROD_DATABASE_URL (exists,
+# owner-capable). Vars of record: NEON_PROJECT_ID, NEON_PARENT_BRANCH_ID
+# (exist). Receipts are scrubbed by construction: the driver records the DB
+# host only, never URIs or tokens.
+
+name: t-tier1-db-apply-0022-0023-0026
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "cow+prod (default — full landing) | cow-only (COW proof first; prod only after the operator reviews the receipt)"
+        required: false
+        default: "cow+prod"
+      note:
+        description: "Operator note for this apply run"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-tier1-db-apply-0022-0023-0026
+  cancel-in-progress: false
+
+jobs:
+  cow-apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+      - name: Install workspace deps (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="t-tier1-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          HOST=""
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched; 423-aware)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          PW=""
+          for i in $(seq 1 20); do
+            CODE=$(curl -s -o /tmp/tt1-reset.json -w "%{http_code}" \
+              -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            if [ "$CODE" = "200" ]; then
+              PW=$(jq -r '.role.password' /tmp/tt1-reset.json)
+              break
+            fi
+            if [ "$CODE" = "423" ]; then sleep 5; continue; fi
+            echo "unexpected reset status ${CODE}"; exit 1
+          done
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Apply 0022→0023→0026 + post-verify on the COW (frozen driver, idempotent)
+        run: |
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/tt1-cow.uri
+          chmod 600 /tmp/tt1-cow.uri
+          bun scripts/t-tier1-apply-0022-0023-0026.ts --db file:/tmp/tt1-cow.uri --receipt cow-tier1-receipt.json
+      - name: Upload the receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ttier1-cow-receipts
+          path: cow-tier1-receipt.json
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }
+
+  prod-apply:
+    needs: cow-apply
+    if: ${{ inputs.mode == 'cow+prod' && !failure() && !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+      - name: Install workspace deps (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Apply 0022→0023→0026 against PRODUCTION (frozen driver — preflight / apply / post-verify, idempotent)
+        env:
+          SIB_PROD_DATABASE_URL: ${{ secrets.SIB_PROD_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          [ -n "$SIB_PROD_DATABASE_URL" ] || { echo "SIB_PROD_DATABASE_URL not staged — abort"; exit 2; }
+          printf '%s' "$SIB_PROD_DATABASE_URL" > /tmp/tt1-prod.uri
+          chmod 600 /tmp/tt1-prod.uri
+          bun scripts/t-tier1-apply-0022-0023-0026.ts --db file:/tmp/tt1-prod.uri --receipt prod-tier1-receipt.json
+      - name: LIVE WIRE PROOF (the five endpoints that were 500 before this lane)
+        run: |
+          set -euo pipefail
+          API="https://syllabai-v2.vercel.app/api/v1"
+          WEB="https://www.syllab-ai.com"
+          STUDENT=$(curl -sf "${WEB}/api/demo/login?role=student" | jq -r '.accessToken')
+          [ -n "$STUDENT" ] && [ "$STUDENT" != "null" ] || { echo "demo student mint failed"; exit 1; }
+          TEACHER=$(curl -sf "${WEB}/api/demo/login?role=teacher" | jq -r '.accessToken')
+          [ -n "$TEACHER" ] && [ "$TEACHER" != "null" ] || { echo "demo teacher mint failed"; exit 1; }
+          probe() { # probe <label> <token> <path>
+            local CODE=$(curl -s -o /tmp/tt1-probe.json -w "%{http_code}" -H "Authorization: Bearer $2" "${API}$3")
+            echo "$1 → HTTP ${CODE}"
+            if [ "$CODE" != "200" ]; then echo "body: $(head -c 300 /tmp/tt1-probe.json)"; return 1; fi
+          }
+          probe "GET /learners/me/last-opened"       "$STUDENT" "/learners/me/last-opened"
+          probe "GET /learners/me/mock-results"      "$STUDENT" "/learners/me/mock-results"
+          probe "GET /me/documents"                  "$STUDENT" "/me/documents"
+          probe "GET /teachers/me/saved-tests"       "$TEACHER" "/teachers/me/saved-tests"
+          probe "GET /teachers/me/teaching-coverage" "$TEACHER" "/teachers/me/teaching-coverage"
+          probe "GET /teachers/me/content-reviews"   "$TEACHER" "/teachers/me/content-reviews"
+          echo "WIRE PROOF: all persistence endpoints 200"
+      - name: Upload the receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ttier1-prod-receipts
+          path: prod-tier1-receipt.json
+          if-no-files-found: ignore
