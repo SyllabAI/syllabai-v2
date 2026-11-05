@@ -293,7 +293,7 @@ export function QuestionPlayer({
             </button>
           ))}
         </div>
-        <label className="ml-auto flex cursor-not-allowed items-center gap-2 text-[13px] text-muted-foreground" title="Adaptive sessions are Phase C of the build plan">
+        <label className="ml-auto flex cursor-not-allowed items-center gap-2 text-[13px] text-muted-foreground" title="Adaptive sessions are coming soon">
           Guided practice
           <Switch disabled aria-label="Guided practice (roadmap)" />
         </label>
@@ -2383,7 +2383,7 @@ function MarkSchemeDialog({
               );
             })}
             <p className="text-xs text-muted-foreground">
-              Marking points are AND-joined in the corpus (all required for the mark). Self-mark
+              Every marking point listed is required for the mark. Self-mark
               honestly — your score stays in this browser only.
             </p>
           </div>

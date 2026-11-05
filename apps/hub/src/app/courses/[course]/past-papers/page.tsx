@@ -180,7 +180,7 @@ export default async function PastPapersPage({
             <p className="mt-1">
               Official {meta.board ?? "Pearson Edexcel"} documents streamed from the{" "}
               <span className="font-mono text-[11px]">syllabai-pastpapers</span> archive
-              (AI-IDENTIFIED provenance, operator ratification pending · index generated{" "}
+              (auto-matched — official-source verification in progress · index generated{" "}
               {corpusIndex.meta.generatedAt.slice(0, 10)}).
             </p>
           </div>

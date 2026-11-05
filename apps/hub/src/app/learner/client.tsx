@@ -140,7 +140,7 @@ function Header({ live, courseCode }: { live: boolean; courseCode: string | null
       <h1 className="flex flex-wrap items-center gap-2 text-2xl font-bold tracking-tight">
         <User className="size-5 text-primary" aria-hidden />
         My Progress
-        <ProvenanceBadge tier={live ? "CORE_MEASURED" : "SIMULATED"} />
+        <ProvenanceBadge tier={live ? "CORE_MEASURED" : "SIMULATED"} studentVoice />
         <Badge variant="outline" className="font-mono text-[10px]">
           {courseCode ?? "4CH1"} · pilot
         </Badge>
