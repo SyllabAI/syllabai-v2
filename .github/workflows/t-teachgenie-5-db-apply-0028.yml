@@ -43,10 +43,26 @@
 # whose run-002 receipt named this exact t-tier1-pattern grants lane
 # (suggested T-TEACHGENIE-005) as the required operator action; the reading
 # is disclosed in the run receipt and the worklog.
-# Secrets of record: NEON_API_KEY (exists), SIB_PROD_DATABASE_URL (exists,
-# owner-capable per the t-tier1 prod leg). Vars of record: NEON_PROJECT_ID,
-# NEON_PARENT_BRANCH_ID (exist). Receipts are scrubbed by construction: the
-# driver records the DB host only, never URIs or tokens.
+#
+# RUN-001 AMENDMENT (the SIB deletion disclosure of record): the first
+# dispatch found SIB_PROD_DATABASE_URL UNSTAGED — the secret list of record
+# (13 repo secrets, read via the API at 2026-11-05T19:06Z) no longer carries
+# it; it was removed since the t-tier1 prod leg succeeded with it at
+# 2026-11-05T10:52Z (the rotation the standing receipts kept flagging). The
+# prod leg gains a prod_secret vantage input (default sib — unchanged
+# behavior): smoke aims the leg at SMOKE_DB_URI, the of-record production
+# smoke connection (t-teachme-1-vantage-probe), whose role vantage is
+# UNKNOWN — the driver's ownership gate is the safety: a wrong-vantage
+# connection fails CLOSED with both roles named and ZERO SQL executed (the
+# 0025 run-004/005 behavior), an owner-capable connection lands the grants.
+# t138 aims at T138_PROD_DATABASE_URL, PROVEN app-role (syllabai_v2_app_w2r2)
+# by the 0025 run-004/005 — a known honest red, kept for the census value.
+# Secrets of record: NEON_API_KEY (exists), SIB_PROD_DATABASE_URL (WAS
+# owner-capable — now unstaged), SMOKE_DB_URI (exists, vantage unknown),
+# T138_PROD_DATABASE_URL (exists, app-role per the 0025 receipts). Vars of
+# record: NEON_PROJECT_ID, NEON_PARENT_BRANCH_ID (exist). Receipts are
+# scrubbed by construction: the driver records the DB host only, never URIs
+# or tokens.
 
 name: t-teachgenie-5-db-apply-0028
 
@@ -57,6 +73,15 @@ on:
         description: "cow+prod (default — full landing) | cow-only (COW proof first; prod only after the operator reviews the receipt)"
         required: false
         default: "cow+prod"
+      prod_secret:
+        description: "prod-apply vantage of record: sib (default) | smoke (SMOKE_DB_URI, vantage unknown — gate decides) | t138 (known app-role, census only)"
+        required: false
+        default: "sib"
+        type: choice
+        options:
+          - sib
+          - smoke
+          - t138
       note:
         description: "Operator note for this apply run"
         required: false
@@ -172,10 +197,18 @@ jobs:
       - name: Apply the six teach-table grants against PRODUCTION (frozen driver — preflight / apply / post-verify, idempotent)
         env:
           SIB_PROD_DATABASE_URL: ${{ secrets.SIB_PROD_DATABASE_URL }}
+          SMOKE_DB_URI: ${{ secrets.SMOKE_DB_URI }}
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
         run: |
           set -euo pipefail
-          [ -n "$SIB_PROD_DATABASE_URL" ] || { echo "SIB_PROD_DATABASE_URL not staged — abort"; exit 2; }
-          printf '%s' "$SIB_PROD_DATABASE_URL" > /tmp/tg5-prod.uri
+          case "${{ inputs.prod_secret }}" in
+            sib)   PROD_URI="${SIB_PROD_DATABASE_URL:-}";;
+            smoke) PROD_URI="${SMOKE_DB_URI:-}";;
+            t138)  PROD_URI="${T138_PROD_DATABASE_URL:-}";;
+            *)     echo "unknown prod_secret input"; exit 2;;
+          esac
+          [ -n "$PROD_URI" ] || { echo "chosen prod vantage (${{ inputs.prod_secret }}) not staged — abort"; exit 2; }
+          printf '%s' "$PROD_URI" > /tmp/tg5-prod.uri
           chmod 600 /tmp/tg5-prod.uri
           bun scripts/t-teachgenie5-apply-0028.ts --db file:/tmp/tg5-prod.uri --receipt prod-0028-receipt.json
       - name: LIVE WIRE PROOF (teach-me SELECT scope on the Wave-0 pilot course)
