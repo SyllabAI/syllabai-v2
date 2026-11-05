@@ -47,6 +47,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
+import { createAccountStore } from "@/lib/account-stores";
 import {
   CourseDataProvider,
   type SidebarData,
@@ -73,19 +74,43 @@ export type { SidebarData, SidebarVariant } from "@/components/hub/course-data-c
 const SIDEBAR_MIN_W = 200;
 const SIDEBAR_MAX_W = 340;
 const SIDEBAR_DEFAULT_W = 256;
-const SIDEBAR_WIDTH_KEY = "hub:course-rail-width";
+const SIDEBAR_WIDTH_KEY = "hub:course-rail-width"; // RETIRED (legacy adoption pin)
 const SIDEBAR_RESIZE_STEP = 16;
 
 const clampSidebarWidth = (n: number) =>
   Math.min(SIDEBAR_MAX_W, Math.max(SIDEBAR_MIN_W, n));
 
+/**
+ * The course-shell preference doc — the "course-shell-prefs" key of the
+ * workspace-document plane (T-ACCOUNT-ONLY run-001): the sidebar width
+ * lives in the account. The retired localStorage record is adopted once
+ * per tab, then removed.
+ */
+const courseShellStore = createAccountStore<{ sidebarWidth: number | null }>({
+  docKey: "course-shell-prefs",
+  initial: { sidebarWidth: null },
+  parse: (raw) => {
+    if (!raw || typeof raw !== "object") return { sidebarWidth: null };
+    const w = (raw as { sidebarWidth?: unknown }).sidebarWidth;
+    return {
+      sidebarWidth: typeof w === "number" && Number.isFinite(w) ? clampSidebarWidth(Math.round(w)) : null,
+    };
+  },
+  legacyKeys: [SIDEBAR_WIDTH_KEY],
+  readLegacy: () => {
+    try {
+      const raw = window.localStorage.getItem(SIDEBAR_WIDTH_KEY);
+      if (raw === null || raw.trim() === "") return { sidebarWidth: null };
+      const n = Number(raw);
+      return { sidebarWidth: Number.isFinite(n) ? n : null };
+    } catch {
+      return { sidebarWidth: null };
+    }
+  },
+});
+
 function persistSidebarWidth(w: number) {
-  try {
-    window.localStorage.setItem(SIDEBAR_WIDTH_KEY, String(w));
-  } catch {
-    // storage blocked / full — the width just won't survive a reload
-    // (honest degrade, same posture as the other hub prefs)
-  }
+  courseShellStore.set({ sidebarWidth: w });
 }
 
 /**
@@ -186,18 +211,19 @@ export function CourseShell({
   const dragWidthRef = useRef<number | null>(null);
   const asideId = useId();
 
-  // restore a saved width once on mount (guarded like the other hub prefs)
+  // restore the account's saved width (guarded like the other hub prefs);
+  // re-restores when the account hydration lands
   useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem(SIDEBAR_WIDTH_KEY);
-      if (raw === null || raw.trim() === "") return;
-      const n = Number(raw);
-      if (!Number.isFinite(n)) return;
+    const restore = () => {
+      const w = courseShellStore.get().sidebarWidth;
+      if (w === null) return;
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setSidebarWidth(clampSidebarWidth(Math.round(n)));
-    } catch {
-      // private mode / blocked storage — default width
-    }
+      setSidebarWidth(clampSidebarWidth(Math.round(w)));
+    };
+    restore();
+    return courseShellStore.subscribe(() => {
+      if (courseShellStore.hydrated()) restore();
+    });
   }, []);
 
   // stable + idempotent: safe to call from pointerup, lostpointercapture,

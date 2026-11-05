@@ -1,29 +1,32 @@
 "use client";
 
 /**
- * Teacher-side client stores (TEACHER-2) — versioned localStorage, same
- * pattern family as my-subjects.ts / identity.ts.
+ * Teacher-side client stores (TEACHER-2) — T-TIER1 run-002 → T-ACCOUNT-ONLY
+ * run-001.
  *
- *   syllabai.teachingCoverage.v1 — per-course teaching-coverage overlay
- *     { [courseSlug]: string[] } (taught subtopic codes). TEACHER_ARCHITECTURE
- *     §13.4: coverage is a TEACHER-side overlay, semantically separate from
- *     learner mastery — NOT_TAUGHT means "no coverage recorded", never "weak".
+ *   teaching coverage — per-course overlay { [courseSlug]: string[] }
+ *     (taught subtopic codes). TEACHER_ARCHITECTURE §13.4: coverage is a
+ *     TEACHER-side overlay, semantically separate from learner mastery —
+ *     NOT_TAUGHT means "no coverage recorded", never "weak".
  *
- *   syllabai.savedTests.v1 — Test Builder saves (SME reference: reuse/edit):
+ *   saved tests — Test Builder saves (SME reference: reuse/edit):
  *     { id, name, course, subtopics, targetMarks, maxQuestions, createdAt }
  *
- *   syllabai.contentReviews.v1 — content reviews (Phase 2 validation queue):
+ *   content reviews — content reviews (Phase 2 validation queue):
  *     the teacher's verdicts on AI-authored content, one per resource.
  *
- * T-TIER1 run-002 (2026-11-03: "things that are localStorage-only, make
- * them saved to account"): all three are now ACCOUNT-BACKED — the
- * localStorage records stay the UI cache, and while signed in as a teacher
- * they mirror the account (teacher_saved_tests / teacher_teaching_coverage /
- * teacher_content_reviews, the run-001 learner-me tables' teacher edition).
- * The sync layer at the bottom of this file follows the my-subjects.ts
- * T-TEACH-001 write-through law with the mock-results conservative merge
- * (a UNION never loses a record from either side). Signed out (or signed in
- * as a student) the stores behave exactly as before — this-browser-only.
+ * T-ACCOUNT-ONLY run-001 (operator order 2026-11-05: "remove device-local
+ * things completely — every single thing must be saved in account"): all
+ * three live in MODULE MEMORY and the ACCOUNT
+ * (teacher_saved_tests / teacher_teaching_coverage / teacher_content_reviews,
+ * via /teachers/me) is their ONLY durable store. The retired localStorage
+ * records (syllabai.teachingCoverage.v1 / syllabai.savedTests.v1 /
+ * syllabai.contentReviews.v1) adopt ONCE per tab — they seed the memory
+ * stores so the reconcile's conservative union migrates them — and the
+ * device keys are removed after the first successful reconcile. The sync
+ * layer at the bottom keeps the my-subjects.ts write-through law with the
+ * mock-results conservative merge (a UNION never loses a record from either
+ * side). Signed out the stores work in-memory only; the sync is a no-op.
  */
 
 import { useCallback, useEffect, useSyncExternalStore } from "react";
@@ -32,32 +35,42 @@ import { readIdentitySnapshot, useIdentity } from "@/lib/identity";
 
 // ── teaching coverage ─────────────────────────────────────────────────────
 
-const COVERAGE_KEY = "syllabai.teachingCoverage.v1";
+const COVERAGE_KEY = "syllabai.teachingCoverage.v1"; // RETIRED (legacy adoption pin)
 const COVERAGE_EVENT = "syllabai:teaching-coverage-changed";
 
 type CoverageMap = Record<string, string[]>;
 
-function readCoverage(): CoverageMap {
-  try {
-    const raw = window.localStorage.getItem(COVERAGE_KEY);
-    if (!raw) return {};
-    const parsed = JSON.parse(raw) as CoverageMap;
-    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
-    const out: CoverageMap = {};
-    for (const [k, v] of Object.entries(parsed)) {
-      if (Array.isArray(v)) out[k] = v.filter((x): x is string => typeof x === "string");
-    }
-    return out;
-  } catch {
-    return {};
+function parseCoverage(raw: unknown): CoverageMap {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
+  const out: CoverageMap = {};
+  for (const [k, v] of Object.entries(raw as CoverageMap)) {
+    if (Array.isArray(v)) out[k] = v.filter((x): x is string => typeof x === "string");
   }
+  return out;
+}
+
+// ── the in-memory stores of record (T-ACCOUNT-ONLY run-001) — the device
+// records seed them in the adoption block below (before the sync surface) ──
+let coverageStore: CoverageMap = {};
+let legacyKeysPresent = false;
+
+function retireLegacyTeacherKeys(): void {
+  if (!legacyKeysPresent || typeof window === "undefined") return;
+  for (const k of [COVERAGE_KEY, TESTS_KEY, REVIEWS_KEY]) {
+    try {
+      window.localStorage.removeItem(k);
+    } catch {
+      // best-effort
+    }
+  }
+  legacyKeysPresent = false;
 }
 
 let coverageSnapshot: CoverageMap = {};
 const EMPTY_COVERAGE: string[] = [];
 
 function coverageSnapshotGet(): CoverageMap {
-  const next = readCoverage();
+  const next = coverageStore;
   const nextKeys = Object.keys(next);
   const curKeys = Object.keys(coverageSnapshot);
   const same =
@@ -77,11 +90,7 @@ function coverageFor(course: string): string[] {
 }
 
 function writeCoverage(map: CoverageMap) {
-  try {
-    window.localStorage.setItem(COVERAGE_KEY, JSON.stringify(map));
-  } catch {
-    // private mode — coverage just won't persist
-  }
+  coverageStore = map;
   window.dispatchEvent(new CustomEvent(COVERAGE_EVENT));
 }
 
@@ -104,7 +113,7 @@ export function useTeachingCoverage(course: string) {
 
   const toggle = useCallback(
     (code: string) => {
-      const map = readCoverage();
+      const map = { ...coverageStore };
       const cur = new Set(map[course] ?? []);
       if (cur.has(code)) cur.delete(code);
       else cur.add(code);
@@ -133,28 +142,16 @@ export interface SavedTest {
   createdAt: string;
 }
 
-const TESTS_KEY = "syllabai.savedTests.v1";
+const TESTS_KEY = "syllabai.savedTests.v1"; // RETIRED (legacy adoption pin)
 const TESTS_EVENT = "syllabai:saved-tests-changed";
 const TESTS_EMPTY: SavedTest[] = [];
 
-function readTests(): SavedTest[] {
-  try {
-    const raw = window.localStorage.getItem(TESTS_KEY);
-    if (!raw) return TESTS_EMPTY;
-    const parsed = JSON.parse(raw) as SavedTest[];
-    if (!Array.isArray(parsed)) return TESTS_EMPTY;
-    return parsed.filter(
-      (t) => t && typeof t.id === "string" && Array.isArray(t.subtopics),
-    );
-  } catch {
-    return TESTS_EMPTY;
-  }
-}
+let testsStore: SavedTest[] = TESTS_EMPTY;
 
 let testsSnapshot: SavedTest[] = TESTS_EMPTY;
 
 function testsSnapshotGet(): SavedTest[] {
-  const next = readTests();
+  const next = testsStore;
   if (next.length !== testsSnapshot.length || next.some((t, i) => t.id !== testsSnapshot[i]?.id)) {
     testsSnapshot = next;
   }
@@ -162,21 +159,15 @@ function testsSnapshotGet(): SavedTest[] {
 }
 
 function writeTests(tests: SavedTest[]) {
-  try {
-    window.localStorage.setItem(TESTS_KEY, JSON.stringify(tests));
-  } catch {
-    // ignore
-  }
+  testsStore = tests;
   window.dispatchEvent(new CustomEvent(TESTS_EVENT));
 }
 
 export function useSavedTests() {
   const subscribe = useCallback((onChange: () => void) => {
     window.addEventListener(TESTS_EVENT, onChange);
-    window.addEventListener("storage", onChange);
     return () => {
       window.removeEventListener(TESTS_EVENT, onChange);
-      window.removeEventListener("storage", onChange);
     };
   }, []);
   const tests = useSyncExternalStore(subscribe, testsSnapshotGet, () => TESTS_EMPTY);
@@ -203,14 +194,13 @@ export function useSavedTests() {
 
 // ── content reviews (Phase 2 validation queue) ────────────────────────────
 //
-// syllabai.contentReviews.v1 — teacher verdicts on AI-authored content
-// (TEACHER_MODE_PLAN §4 ContentReview: resourceId, reviewer, verdict,
+// syllabai.contentReviews.v1 (RETIRED) — teacher verdicts on AI-authored
+// content (TEACHER_MODE_PLAN §4 ContentReview: resourceId, reviewer, verdict,
 // comment, createdAt). The pilot pipeline marks AI-authored model solutions
 // for teacher validation before they count; the queue works on REAL corpus
-// items. T-TIER1 run-002: the verdicts are saved to the teacher's ACCOUNT
-// (teacher_content_reviews, one per (account, resource)) — the localStorage
-// record stays the UI cache; the "persist locally until the write path
-// exists" posture is retired, this IS the write path.
+// items. T-TIER1 run-002 → T-ACCOUNT-ONLY run-001: the verdicts live in the
+// teacher's ACCOUNT (teacher_content_reviews, one per (account, resource))
+// and in module memory — no device record exists anymore.
 
 export type ReviewVerdict = "approved" | "edited" | "rejected";
 
@@ -225,31 +215,16 @@ export interface ContentReview {
   createdAt: string;
 }
 
-const REVIEWS_KEY = "syllabai.contentReviews.v1";
+const REVIEWS_KEY = "syllabai.contentReviews.v1"; // RETIRED (legacy adoption pin)
 const REVIEWS_EVENT = "syllabai:content-reviews-changed";
 const REVIEWS_EMPTY: ContentReview[] = [];
 
-function readReviews(): ContentReview[] {
-  try {
-    const raw = window.localStorage.getItem(REVIEWS_KEY);
-    if (!raw) return REVIEWS_EMPTY;
-    const parsed = JSON.parse(raw) as ContentReview[];
-    if (!Array.isArray(parsed)) return REVIEWS_EMPTY;
-    return parsed.filter(
-      (r) =>
-        r &&
-        typeof r.resourceId === "string" &&
-        (r.verdict === "approved" || r.verdict === "edited" || r.verdict === "rejected"),
-    );
-  } catch {
-    return REVIEWS_EMPTY;
-  }
-}
+let reviewsStore: ContentReview[] = REVIEWS_EMPTY;
 
 let reviewsSnapshot: ContentReview[] = REVIEWS_EMPTY;
 
 function reviewsSnapshotGet(): ContentReview[] {
-  const next = readReviews();
+  const next = reviewsStore;
   if (
     next.length !== reviewsSnapshot.length ||
     next.some((r, i) => r.resourceId !== reviewsSnapshot[i]?.resourceId)
@@ -260,21 +235,15 @@ function reviewsSnapshotGet(): ContentReview[] {
 }
 
 function writeReviews(list: ContentReview[]) {
-  try {
-    window.localStorage.setItem(REVIEWS_KEY, JSON.stringify(list));
-  } catch {
-    // ignore
-  }
+  reviewsStore = list;
   window.dispatchEvent(new CustomEvent(REVIEWS_EVENT));
 }
 
 export function useContentReviews() {
   const subscribe = useCallback((onChange: () => void) => {
     window.addEventListener(REVIEWS_EVENT, onChange);
-    window.addEventListener("storage", onChange);
     return () => {
       window.removeEventListener(REVIEWS_EVENT, onChange);
-      window.removeEventListener("storage", onChange);
     };
   }, []);
   const reviews = useSyncExternalStore(subscribe, reviewsSnapshotGet, () => REVIEWS_EMPTY);
@@ -299,32 +268,32 @@ export function useContentReviews() {
   return { reviews, add, remove };
 }
 
-// ── server sync (T-TIER1 run-002) — the account-backed teacher stores ───────
-// Operator order 2026-11-03 ("things that are localStorage-only, make them
-// saved to account"); the my-subjects.ts T-TEACH-001 write-through law with
-// the mock-results conservative merge:
+// ── server sync (T-TIER1 run-002 → T-ACCOUNT-ONLY run-001) — the account
+// IS the store ──────────────────────────────────────────────────────────
+// Operator order 2026-11-05 ("remove device-local things completely"); the
+// my-subjects.ts write-through law with the mock-results conservative merge:
 //
 // Law of record:
-//  - The localStorage records stay the UI truth (reactive, instant, work
-//    signed-out exactly as before).
+//  - The in-memory stores are the UI truth (reactive, instant); the ACCOUNT
+//    is their only durable store (no device record exists anymore).
 //  - The sync is gated on the TEACHER identity — a student (or signed-out)
 //    session never contacts /teachers/me (the surface is teacher-owned;
 //    the shell 403s students by law).
 //  - Signed in as a teacher, every LOCAL write mirrors to the account as a
 //    full-set PUT (debounced per tick; per-course for coverage); a failed
-//    PUT leaves the local record untouched (cache law) and re-arms.
-//  - On identity acquisition (mount / login / cross-tab session) the sync
-//    reconciles ONCE with a CONSERVATIVE UNION per store — a union never
-//    loses a record from either side (the mock-results merge law; these are
-//    sets/ledgers with no single "newest wins" answer):
+//    PUT leaves the in-memory record untouched (cache law) and re-arms.
+//  - On identity acquisition (mount / login) the sync reconciles ONCE with
+//    a CONSERVATIVE UNION per store — a union never loses a record from
+//    either side (the mock-results merge law; these are sets/ledgers with
+//    no single "newest wins" answer):
 //      · saved tests — union by the opaque `id`, newest-createdAt first,
 //        capped 30 (both sides' bound);
 //      · coverage — per-course union of the taught-code SETS (sorted,
 //        deduped), capped 500 per course;
 //      · content reviews — union by resourceId, the NEWER createdAt wins a
 //        conflict (a verdict is a correction; tie → server), capped 200.
-//    Merged sets that differ from the server's re-mirror up; the local
-//    cache takes the merge down.
+//    Merged sets that differ from the server's re-mirror up; the in-memory
+//    store takes the merge down.
 //  - Remote-driven writes set applyingRemote so the mirror does not echo
 //    the set back to the account (one PUT per intent, never two).
 
@@ -482,8 +451,46 @@ export function mergeContentReviews(
 
 // ── the one-call sync surface ────────────────────────────────────────────────
 
+// T-ACCOUNT-ONLY run-001 — the one-time legacy adoption: the three retired
+// device records seed the memory stores (so the reconcile's conservative
+// union migrates them) and retire after the first successful reconcile.
+if (typeof window !== "undefined") {
+  try {
+    const rawCov = window.localStorage.getItem(COVERAGE_KEY);
+    if (rawCov) coverageStore = parseCoverage(JSON.parse(rawCov) as unknown);
+    const rawTests = window.localStorage.getItem(TESTS_KEY);
+    if (rawTests) {
+      const parsed = JSON.parse(rawTests) as unknown;
+      if (Array.isArray(parsed)) {
+        testsStore = parsed.filter(
+          (t): t is SavedTest => !!t && typeof t === "object" && typeof (t as SavedTest).id === "string" && Array.isArray((t as SavedTest).subtopics),
+        );
+      }
+    }
+    const rawReviews = window.localStorage.getItem(REVIEWS_KEY);
+    if (rawReviews) {
+      const parsed = JSON.parse(rawReviews) as unknown;
+      if (Array.isArray(parsed)) {
+        reviewsStore = parsed.filter(
+          (r): r is ContentReview =>
+            !!r && typeof r === "object" && typeof (r as ContentReview).resourceId === "string",
+        );
+      }
+    }
+    legacyKeysPresent = rawCov !== null || rawTests !== null || rawReviews !== null;
+  } catch {
+    // corrupt records → the account reconcile decides alone
+  }
+  // account switch / sign-out: the in-memory stores clear with the sync's
+  // own fresh-acquisition guard; the engine's reset broadcast keeps any
+  // future doc-backed store consistent — nothing doc-backed lives here.
+}
+
 const applyingRemote = { tests: false, coverage: false, reviews: false };
 const putScheduled = { tests: false, coverage: false, reviews: false };
+/** The account the in-tab stores currently mirror (the cross-account
+ *  guard: a stale store from account A never unions into account B). */
+let syncedForEmail: string | null = null;
 
 function putSavedTestsLocal(): void {
   if (putScheduled.tests || applyingRemote.tests) return;
@@ -491,11 +498,11 @@ function putSavedTestsLocal(): void {
   setTimeout(() => {
     putScheduled.tests = false;
     if (typeof window === "undefined") return;
-    if (!readIdentitySnapshot()) return; // signed out mid-flight — local-only mode
+    if (!readIdentitySnapshot()) return; // signed out mid-flight — memory-only mode
     void api
-      .setSavedTests({ tests: readTests().slice(0, SAVED_TESTS_CAP).map(savedTestToWire) })
+      .setSavedTests({ tests: testsStore.slice(0, SAVED_TESTS_CAP).map(savedTestToWire) })
       .catch(() => {
-        // silent cache law: local stays; the next write/reconcile re-mirrors
+        // silent cache law: memory stays; the next write/reconcile re-mirrors
       });
   }, 0);
 }
@@ -507,12 +514,12 @@ function putCoverageLocal(): void {
     putScheduled.coverage = false;
     if (typeof window === "undefined") return;
     if (!readIdentitySnapshot()) return;
-    const map = readCoverage();
-    // a change event names no course — arm every course present locally
+    const map = coverageStore;
+    // a change event names no course — arm every course present in memory
     // (bounded: the overlay's own per-course entries)
     for (const [course, codes] of Object.entries(map)) {
       void api.setTeachingCoverage(course, { codes: codes.slice(0, 500) }).catch(() => {
-        // silent cache law: local stays; re-armed on the next write/reconcile
+        // silent cache law: memory stays; re-armed on the next write/reconcile
       });
     }
   }, 0);
@@ -527,22 +534,21 @@ function putContentReviewsLocal(): void {
     if (!readIdentitySnapshot()) return;
     void api
       .setContentReviews({
-        reviews: readReviews().slice(0, CONTENT_REVIEWS_CAP).map(reviewToWire),
+        reviews: reviewsStore.slice(0, CONTENT_REVIEWS_CAP).map(reviewToWire),
       })
       .catch(() => {
-        // silent cache law: local stays; the next write/reconcile re-mirrors
+        // silent cache law: memory stays; the next write/reconcile re-mirrors
       });
   }, 0);
 }
 
-function writeTestsRemote(map: Record<string, string[]>): void {
+function writeCoverageRemote(map: Record<string, string[]>): void {
   applyingRemote.coverage = true;
   try {
-    window.localStorage.setItem(COVERAGE_KEY, JSON.stringify(map));
-  } catch {
-    // private mode — the merge just won't persist
+    coverageStore = map;
+  } finally {
+    window.dispatchEvent(new CustomEvent(COVERAGE_EVENT));
   }
-  window.dispatchEvent(new CustomEvent(COVERAGE_EVENT));
   applyingRemote.coverage = false;
 }
 
@@ -550,8 +556,8 @@ function writeTestsRemote(map: Record<string, string[]>): void {
  * The one-call sync surface: mount ONCE (the app shell mounts it — the Test
  * Builder, the coverage panel and the validation queue are spread across
  * teacher routes), pass no arguments. While signed in AS A TEACHER it keeps
- * the account stores and the local caches in step; signed out or signed in
- * as a student it is a no-op (the stores behave exactly as before run-002).
+ * the account stores and the in-memory stores in step; signed out or signed
+ * in as a student it is a no-op (the stores stay memory-only).
  */
 export function useTeacherStoresSync(): void {
   const identity = useIdentity();
@@ -567,21 +573,27 @@ export function useTeacherStoresSync(): void {
       try {
         const view = await api.savedTests();
         if (cancelled) return;
+        if (syncedForEmail !== identity.email) {
+          // fresh acquisition: a stale in-tab store from ANOTHER account is
+          // cleared (the legacy seeds are exempt — their one-time migration
+          // IS the point of this reconcile)
+          if (!legacyKeysPresent) {
+            testsStore = TESTS_EMPTY;
+            coverageStore = {};
+            reviewsStore = REVIEWS_EMPTY;
+          }
+          syncedForEmail = identity.email;
+        }
         const serverTests = view.tests.map(savedTestFromWire);
-        const { merged, diverged, localChanged } = mergeSavedTests(serverTests, readTests());
+        const { merged, diverged, localChanged } = mergeSavedTests(serverTests, testsStore);
         if (localChanged) {
           applyingRemote.tests = true;
-          try {
-            window.localStorage.setItem(TESTS_KEY, JSON.stringify(merged));
-          } catch {
-            // ignore — the mirror is best-effort
-          }
-          window.dispatchEvent(new CustomEvent(TESTS_EVENT));
+          writeTests(merged);
           applyingRemote.tests = false;
         }
         if (diverged) putSavedTestsLocal();
       } catch {
-        // core unreachable — cache law: local library stays as-is
+        // core unreachable — cache law: the in-memory library stays as-is
       }
 
       try {
@@ -589,32 +601,28 @@ export function useTeacherStoresSync(): void {
         if (cancelled) return;
         const serverMap: Record<string, string[]> = {};
         for (const e of view.coverage) serverMap[e.courseSlug] = e.codes;
-        const { merged, diverged, localChanged } = mergeCoverage(serverMap, readCoverage());
-        if (localChanged) writeTestsRemote(merged);
+        const { merged, diverged, localChanged } = mergeCoverage(serverMap, coverageStore);
+        if (localChanged) writeCoverageRemote(merged);
         if (diverged.length > 0) putCoverageLocal();
       } catch {
-        // cache law: local overlay stays as-is
+        // cache law: the in-memory overlay stays as-is
       }
 
       try {
         const view = await api.contentReviews();
         if (cancelled) return;
         const serverReviews = view.reviews.map(reviewFromWire);
-        const { merged, diverged, localChanged } = mergeContentReviews(serverReviews, readReviews());
+        const { merged, diverged, localChanged } = mergeContentReviews(serverReviews, reviewsStore);
         if (localChanged) {
           applyingRemote.reviews = true;
-          try {
-            window.localStorage.setItem(REVIEWS_KEY, JSON.stringify(merged));
-          } catch {
-            // ignore — the mirror is best-effort
-          }
-          window.dispatchEvent(new CustomEvent(REVIEWS_EVENT));
+          writeReviews(merged);
           applyingRemote.reviews = false;
         }
         if (diverged) putContentReviewsLocal();
       } catch {
-        // cache law: local verdicts stay as-is
+        // cache law: the in-memory verdicts stay as-is
       }
+      retireLegacyTeacherKeys(); // a successful reconcile ends the device records
     };
     void reconcile();
 

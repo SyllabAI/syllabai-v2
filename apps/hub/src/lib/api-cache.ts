@@ -6,13 +6,21 @@
  * boot (tens of seconds on a 0.1-CPU instance) — the "takes forever to
  * load" experience. Two complementary defenses live here:
  *
- * 1. `cachedGet` — localStorage-backed stale-while-revalidate cache for
- *    CURRICULUM CONTENT ONLY (subjects, knowledge tree, question lists,
- *    exam-paper browse/detail, concept-graph edges). Content is global and
- *    user-independent, changes only through teacher validation flows, and
- *    those flows call `invalidateContentCache()`. A repeat visit paints
+ * 1. `cachedGet` — stale-while-revalidate cache for CURRICULUM CONTENT ONLY
+ *    (subjects, knowledge tree, question lists, exam-paper browse/detail,
+ *    concept-graph edges). Content is global and user-independent, changes
+ *    only through teacher validation flows, and those flows call
+ *    `invalidateContentCache()`. A repeat visit in the SAME TAB paints
  *    instantly from cache and — crucially — never wakes the sleeping
  *    backend: fewer instance-hours burned on the 750 h/month free budget.
+ *
+ *    T-ACCOUNT-ONLY run-001 (operator order 2026-11-05: "remove device-local
+ *    things completely"): the cache is an IN-MEMORY Map, not localStorage —
+ *    a cache is not account state, so it must not live on the device
+ *    either. The cost is honest and bounded: the first content GET of a
+ *    fresh tab hits the network (the SWR stale-copy speedup survives within
+ *    the tab). The API surface and the SWR/single-flight semantics are
+ *    byte-identical to the localStorage era.
  *
  * 2. `singleFlight` — de-duplicates in-flight GETs (React StrictMode
  *    double-mounts, two components asking for the same URL while the
@@ -28,7 +36,10 @@
  * per browser session (tied to a real page view) lives in `api.ts`.
  */
 
-const CACHE_PREFIX = "syllabai.cache.v2";
+/** The RETIRED device-cache key prefix (a legacy sweep pin — nothing reads
+ *  it; stale device cache entries simply expire ignored). */
+export const RETIRED_CACHE_PREFIX = "syllabai.cache.v2";
+
 const DEFAULT_TTL_MS = 6 * 60 * 60 * 1000; // 6h when a call site omits a TTL
 
 interface CacheEntry<T> {
@@ -38,6 +49,9 @@ interface CacheEntry<T> {
 
 /** In-flight GET de-duplication, shared with the api client. */
 const inflight = new Map<string, Promise<unknown>>();
+
+/** The in-memory content cache of record (per tab — see the header law). */
+const cache = new Map<string, CacheEntry<unknown>>();
 
 /**
  * Coalesce concurrent identical GETs into one network request.
@@ -56,78 +70,13 @@ export function singleFlight<T>(key: string, run: () => Promise<T>): Promise<T> 
   return p;
 }
 
-function storage(): Storage | null {
-  if (typeof window === "undefined") return null;
-  try {
-    // Probe access once — Safari private mode and storage-disabled browsers
-    // throw on the first touch, and every helper below must degrade to
-    // "no cache, just fetch" rather than break the app.
-    const probe = window.localStorage;
-    probe.setItem(`${CACHE_PREFIX}.probe`, "1");
-    probe.removeItem(`${CACHE_PREFIX}.probe`);
-    return probe;
-  } catch {
-    return null;
-  }
-}
-
-function readEntry<T>(key: string): CacheEntry<T> | null {
-  const store = storage();
-  if (!store) return null;
-  try {
-    const raw = store.getItem(`${CACHE_PREFIX}.${key}`);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as CacheEntry<T>;
-    if (
-      typeof parsed !== "object" ||
-      parsed === null ||
-      typeof parsed.storedAt !== "number" ||
-      !("data" in parsed)
-    ) {
-      return null;
-    }
-    return parsed;
-  } catch {
-    return null;
-  }
-}
-
-function writeEntry<T>(key: string, data: T): void {
-  const store = storage();
-  if (!store) return;
-  const entry: CacheEntry<T> = { storedAt: Date.now(), data };
-  try {
-    store.setItem(`${CACHE_PREFIX}.${key}`, JSON.stringify(entry));
-  } catch {
-    // Quota exceeded (or blocked): drop every cached content key and retry
-    // once. Coarse, but cached content is cheap to rebuild — the network
-    // fetch already succeeded, so at worst the NEXT visit pays it again.
-    try {
-      dropAllKeys(store);
-      store.setItem(`${CACHE_PREFIX}.${key}`, JSON.stringify(entry));
-    } catch {
-      // Still failing (hard quota): run cache-less from now on.
-    }
-  }
-}
-
-function dropAllKeys(store: Storage): void {
-  const doomed: string[] = [];
-  for (let i = 0; i < store.length; i++) {
-    const k = store.key(i);
-    if (k && k.startsWith(CACHE_PREFIX)) doomed.push(k);
-  }
-  doomed.forEach((k) => store.removeItem(k));
-}
-
 /**
  * Drop every cached content payload. Called by teacher mutation flows that
  * change what the serving gate exposes (validate/place/reject papers and
  * versions, topic remapping, concept-graph re-activation).
  */
 export function invalidateContentCache(): void {
-  const store = storage();
-  if (store) dropAllKeys(store);
+  cache.clear();
 }
 
 /**
@@ -140,7 +89,7 @@ export function invalidateContentCache(): void {
  * - miss       → single-flight network fetch, cached on success.
  */
 export function cachedGet<T>(key: string, fetcher: () => Promise<T>, ttlMs: number = DEFAULT_TTL_MS): Promise<T> {
-  const entry = readEntry<T>(key);
+  const entry = cache.get(key) as CacheEntry<T> | undefined;
   const now = Date.now();
 
   if (entry && now - entry.storedAt < ttlMs) {
@@ -152,7 +101,9 @@ export function cachedGet<T>(key: string, fetcher: () => Promise<T>, ttlMs: numb
     // fire-and-forget from the caller's perspective; a wake triggered by it
     // is user-visible work being done anyway (they asked for this content).
     void singleFlight(`${key}#revalidate`, fetcher)
-      .then((fresh) => writeEntry(key, fresh))
+      .then((fresh) => {
+        cache.set(key, { storedAt: Date.now(), data: fresh });
+      })
       .catch(() => {
         /* offline / backend down: the stale copy keeps serving */
       });
@@ -161,7 +112,7 @@ export function cachedGet<T>(key: string, fetcher: () => Promise<T>, ttlMs: numb
 
   return singleFlight(`${key}#fetch`, async () => {
     const fresh = await fetcher();
-    writeEntry(key, fresh);
+    cache.set(key, { storedAt: Date.now(), data: fresh });
     return fresh;
   });
 }

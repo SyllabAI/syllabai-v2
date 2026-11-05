@@ -49,10 +49,10 @@ import { readLiveInk } from "@/components/pastpapers/ink/live-ink";
 import type { PaperAssetRegion } from "@syllabai/contracts";
 import {
   planRegionViewRect,
-  readViewerRotation,
   type NormRect,
   type ViewRotation,
 } from "./region-crop";
+import { getPpPrefs } from "@/lib/pp-viewer-prefs";
 import { produceRegionCrop } from "./produce-crop";
 import {
   awardsTotals,
@@ -198,7 +198,9 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
     cancelledRef.current.delete(region.id);
     dispatch({ type: "start", regionId: region.id, label });
 
-    const rot: ViewRotation = readViewerRotation();
+    const storedRot = getPpPrefs().rot;
+    const rot: ViewRotation =
+      storedRot === 90 || storedRot === 180 || storedRot === 270 ? storedRot : 0;
     const viewRect: NormRect | null = planRegionViewRect(region.rects, page, rot);
     if (!viewRect) {
       dispatch({ type: "failed", regionId: region.id, detail: "The region has no grounded rect on that page." });

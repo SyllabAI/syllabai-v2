@@ -6,16 +6,24 @@ import {
   isAccountDocsHydrated,
   mirrorThreadState,
 } from "@/lib/account-docs-bridge";
+import { adoptLegacyStorage, onAccountDocsReset } from "@/lib/account-docs";
 import { readIdentitySnapshot } from "@/lib/identity";
 
 /**
- * Tutor conversation store — multi-thread chat persistence (localStorage).
+ * Tutor conversation store — multi-thread chat persistence.
  *
- * Same store pattern as identity.ts / theme-store.ts: module-level state +
- * useSyncExternalStore, custom event for same-tab reactivity, storage event
- * for cross-tab. Threads are the full client-side model of a conversation;
- * the server stays stateless (each turn POSTs its own history to
- * /api/ai/chat, brief §11).
+ * T-ACCOUNT-ONLY run-001 (operator order 2026-11-05: "remove device-local
+ * things completely — every single thing must be saved in account"): the
+ * pool lives in module memory and the ACCOUNT is its only durable store —
+ * the "tutor-threads" workspace doc (write-through persist tail; hydration
+ * and pull-down ride the bridge registration at the bottom). The retired
+ * localStorage records (syllabai.tutor.threads.v1 / .activeThread.v1) are
+ * adopted ONCE per tab (the engine's legacy adoption — they commit up only
+ * when the account has no doc of its own) and then removed. Same module
+ * store pattern as identity.ts: module-level state + useSyncExternalStore
+ * + custom event for same-tab reactivity; cross-tab sync is the ACCOUNT
+ * (each tab's engine PUTs, each tab's hydration pulls). The server tutor
+ * session (§22) stays stateless per turn (each ask POSTs its own history).
  */
 
 export interface Turn {
@@ -147,14 +155,14 @@ export interface Thread {
   courseLabel?: string | null;
 }
 
-const KEY = "syllabai.tutor.threads.v1";
-const ACTIVE_KEY = "syllabai.tutor.activeThread.v1";
+const KEY = "syllabai.tutor.threads.v1"; // RETIRED (legacy adoption pin)
+const ACTIVE_KEY = "syllabai.tutor.activeThread.v1"; // RETIRED (legacy adoption pin)
 /** T-AUDIT-TIER1 run-003 — the account plane this pool mirrors into (the
  *  workspace-document key of record; the closed-vocabulary member). */
 const DOC_KEY = "tutor-threads";
 const EVENT = "syllabai:tutor-threads-changed";
 
-/** storage guards — keep localStorage bounded */
+/** storage guards — keep the doc bounded */
 const MAX_THREADS = 40;
 const MAX_MESSAGES_PER_THREAD = 200;
 
@@ -163,48 +171,55 @@ interface StoredState {
   activeId: string | null;
 }
 
-let state: StoredState = load();
+const EMPTY_STATE: StoredState = { threads: [], activeId: null };
+let state: StoredState = EMPTY_STATE;
 const listeners = new Set<() => void>();
 
-function load(): StoredState {
-  if (typeof window === "undefined") return { threads: [], activeId: null };
-  try {
-    const raw = window.localStorage.getItem(KEY);
-    if (!raw) return { threads: [], activeId: null };
-    const parsed = JSON.parse(raw) as StoredState;
-    if (!Array.isArray(parsed.threads)) return { threads: [], activeId: null };
-    const threads = parsed.threads
-      .filter((t) => t && typeof t.id === "string" && Array.isArray(t.messages))
-      .slice(0, MAX_THREADS);
-    return {
-      threads,
-      activeId:
-        parsed.activeId && threads.some((t) => t.id === parsed.activeId)
-          ? parsed.activeId
-          : (threads[0]?.id ?? null),
-    };
-  } catch {
-    return { threads: [], activeId: null };
-  }
+function parseState(raw: unknown): StoredState {
+  if (!raw || typeof raw !== "object") return EMPTY_STATE;
+  const parsed = raw as StoredState;
+  if (!Array.isArray(parsed.threads)) return EMPTY_STATE;
+  const threads = parsed.threads
+    .filter((t) => t && typeof t.id === "string" && Array.isArray(t.messages))
+    .slice(0, MAX_THREADS);
+  return {
+    threads,
+    activeId:
+      parsed.activeId && threads.some((t) => t.id === parsed.activeId)
+        ? parsed.activeId
+        : (threads[0]?.id ?? null),
+  };
+}
+
+// T-ACCOUNT-ONLY run-001 — the one-time legacy adoption (see the header)
+if (typeof window !== "undefined") {
+  adoptLegacyStorage(DOC_KEY, [KEY, ACTIVE_KEY], () => {
+    try {
+      const raw = window.localStorage.getItem(KEY);
+      return raw ? parseState(JSON.parse(raw) as unknown) : null;
+    } catch {
+      return null;
+    }
+  });
+  // account switch / sign-out: the pool clears with the engine
+  onAccountDocsReset(() => {
+    state = EMPTY_STATE;
+    snap = notifySnapshot();
+    for (const l of listeners) l();
+  });
 }
 
 let persistTimer: ReturnType<typeof setTimeout> | null = null;
 
 function persist() {
   if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(KEY, JSON.stringify(state));
-    window.localStorage.setItem(ACTIVE_KEY, state.activeId ?? "");
-  } catch {
-    // quota exceeded / private mode — the session still works in memory
-  }
-  // T-AUDIT-TIER1 run-003 — the account mirror: the durable copy rides the
-  // workspace-document plane (write-through; localStorage stays the
-  // reactive cache — the T-TEACH-001 law, run-001 precedent).
+  // T-AUDIT-TIER1 run-003 → T-ACCOUNT-ONLY run-001 — the account mirror IS
+  // the store: the durable copy rides the workspace-document plane
+  // (write-through; there is no localStorage write behind it anymore).
   mirrorThreadState(DOC_KEY, notifySnapshot());
 }
 
-/** Trailing-edge throttle: streaming deltas commit often; disk writes wait. */
+/** Trailing-edge throttle: streaming deltas commit often; doc writes wait. */
 function emit() {
   if (persistTimer) clearTimeout(persistTimer);
   persistTimer = setTimeout(() => {
@@ -212,15 +227,6 @@ function emit() {
     persist();
   }, 400);
   for (const l of listeners) l();
-}
-
-if (typeof window !== "undefined") {
-  window.addEventListener("storage", (e) => {
-    if (e.key === KEY || e.key === ACTIVE_KEY) {
-      state = load();
-      for (const l of listeners) l();
-    }
-  });
 }
 
 function notifySnapshot() {
@@ -541,15 +547,15 @@ export function downloadThread(thread: Thread) {
   URL.revokeObjectURL(url);
 }
 
-// ── T-AUDIT-TIER1 run-003 — the account mirror (bridge registration) ─────
-// The device-local thread pool mirrors the account through the workspace-
-// document plane (lib/account-docs-bridge.ts — the reconcile decision tree,
-// the owner-tag side-law and the conservative union live THERE). The
-// persist tail above drives the commit-up path; this registration drives
-// hydration, pull-down and the re-base laws (the registration-time
-// evaluation converges a store whose doc already hydrated — first visit).
+// ── T-AUDIT-TIER1 run-003 → T-ACCOUNT-ONLY run-001 — the bridge
+// registration ─────────────────────────────────────────────────────────
+// The in-memory thread pool mirrors the account through the workspace-
+// document plane (lib/account-docs-bridge.ts — the reconcile decision tree
+// and the conservative union live THERE). The persist tail above drives
+// the commit-up path; this registration drives hydration and pull-down
+// (the registration-time evaluation converges a store whose doc already
+// hydrated — first visit).
 bridgeThreadStore<StoredState, Thread>({
-  localKey: KEY,
   docKey: DOC_KEY,
   maxThreads: MAX_THREADS,
   maxMessages: MAX_MESSAGES_PER_THREAD,

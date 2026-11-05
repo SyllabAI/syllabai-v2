@@ -46,8 +46,8 @@ const COURSE_SCOPED_KINDS = new Set([
  * Resolution order:
  *
  *   1. the course you're in (same pattern as knowledgeGraphHref below)
- *   2. your last-opened course (localStorage via lib/last-opened.ts,
- *      validated against the build-time registry)
+ *   2. your last-opened course (the account's last-opened doc via
+ *      lib/last-opened.ts, validated against the build-time registry)
  *   3. the bare href — for the course-scoped kinds the legacy redirect
  *      lands the pilot, the only course with a full licensed corpus today
  *      (disclosed in-header); for global rows the bare href IS the

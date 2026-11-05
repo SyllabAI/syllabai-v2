@@ -13,7 +13,6 @@ import {
   estimateDataUrlBytes,
   planCrop,
   planRegionViewRect,
-  readViewerRotation,
   rectToViewSpace,
   unionRects,
 } from "./region-crop";
@@ -183,31 +182,15 @@ describe("T-MG-CROPMARK-1 run-002 — the wire law (data-URL bytes + the 4 MB ch
   });
 });
 
-describe("T-MG-CROPMARK-1 run-002 — the pane-rot read (readViewerRotation)", () => {
-  const fakeStorage = (raw: string | null) => {
-    const map = new Map<string, string>();
-    if (raw !== null) map.set("pp-viewer-prefs-v1", raw);
-    return {
-      getItem: (k: string) => map.get(k) ?? null,
-      setItem: (k: string, v: string) => void map.set(k, v),
-      removeItem: (k: string) => void map.delete(k),
-      clear: () => map.clear(),
-      key: () => null,
-      get length() {
-        return map.size;
-      },
-    } as Storage;
-  };
-
-  test("the pane's validated rot record reads through", () => {
-    expect(readViewerRotation(fakeStorage(JSON.stringify({ rot: 90 })))).toBe(90);
-    expect(readViewerRotation(fakeStorage(JSON.stringify({ rot: 180 })))).toBe(180);
-  });
-
-  test("anything else is the default view (the pane's own validation law)", () => {
-    expect(readViewerRotation(fakeStorage(JSON.stringify({ rot: 45 })))).toBe(0);
-    expect(readViewerRotation(fakeStorage("not json"))).toBe(0);
-    expect(readViewerRotation(fakeStorage(null))).toBe(0);
+describe("T-ACCOUNT-ONLY run-001 — the pane-rot read retirement", () => {
+  // readViewerRotation moved to the DOM layer (RegionMarkLayer reads the
+  // "pdf-viewer-prefs" account doc via lib/pp-viewer-prefs.ts); the PURE
+  // geometry module no longer owns a device read. The parse law it exercised
+  // (rot ∈ {0,90,180,270} else 0) is the pp-viewer-prefs parse's own law,
+  // pinned in lib/account-stores consumers' fixtures.
+  test("the rotation vocabulary is the pane's own (docable in one line)", () => {
+    const valid = [0, 90, 180, 270] as const;
+    expect(valid).toHaveLength(4);
   });
 });
 

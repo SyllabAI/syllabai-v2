@@ -171,12 +171,9 @@ import {
   type RulerGuide,
 } from "./instruments";
 import { ProtractorGuideView, RulerGuideView, holderRead } from "./InstrumentGuides";
+import { getPpPrefs, subscribePpPrefs, updatePpPrefs } from "@/lib/pp-viewer-prefs";
 
 const TOKEN_KEY = "syllabai.token";
-
-/** T-MG-INK-8: the first-open affordance's once-flag (MG's pattern:
- * their mg-first-region-hint-done, ours namespaced). */
-const HINT_KEY = "syllabai.ink-hint-done";
 
 /** T-MG-INK-4 — the tool modes of record. The MG census family closes:
  * pen / text / MATH (the Math text box) / SELECT / ERASE + the four
@@ -268,15 +265,17 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
     }
   }, []);
 
-  // T-MG-INK-3 run-002: the persistence MODE FORK of record — WITH a
-  // token the sync controller is constructed exactly as shipped (and
-  // NEVER without one: the sync gate is preserved verbatim); WITHOUT a
-  // token the SAME surface mounts on the browser-local store (IndexedDB,
-  // key = sourceUrl, zero network — ./ink-local-store never touches the
-  // wire, so the fetch-spy pin holds by construction).
+  // T-MG-INK-3 run-002 → T-ACCOUNT-ONLY run-001: the persistence plane is
+  // the SERVER controller ONLY. The device-local fork (the IndexedDB
+  // controller) is retired as a LIVING store — /past-papers is a gated
+  // surface, so a mounted InkLayer always rides a signed-in session. The
+  // ONLY remaining consumer of ./ink-local-store is the consent-gated
+  // migration below: a one-time RESCUE reader for ink drawn before the
+  // sweep (upload → server confirm → the device doc clears). IndexedDB is
+  // never written for new strokes and drains to empty as migrations land.
   const sync = useMemo(() => {
-    if (!sourceUrl) return null;
-    return token ? createInkSync({ sourceUrl, token }) : createInkLocal({ sourceUrl });
+    if (!sourceUrl || !token) return null;
+    return createInkSync({ sourceUrl, token });
   }, [sourceUrl, token]);
 
   useEffect(() => {
@@ -331,24 +330,18 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   // learner arms a tool from it; clicking it arms TEXT on desktop, MG's
   // keyboard default). MG anchors it to their parsed first answer
   // region; we don't parse regions, so it floats above the ink toolbar
-  // (the disclosed difference).
+  // (the disclosed difference). T-ACCOUNT-ONLY run-001: the once-flag is
+  // the "pdf-viewer-prefs" account doc's inkHintSeen field — the retired
+  // localStorage flag is that module's legacy adoption.
   const [hintOpen, setHintOpen] = useState(false);
   useEffect(() => {
-    let done = "1";
-    try {
-      done = window.localStorage.getItem(HINT_KEY) ?? "";
-    } catch {
-      // private mode: the card just shows every open — honest default
-      done = "";
-    }
-    if (!done) setHintOpen(true);
+    if (!getPpPrefs().inkHintSeen) setHintOpen(true);
+    return subscribePpPrefs(() => {
+      if (!getPpPrefs().inkHintSeen) setHintOpen(true);
+    });
   }, []);
   const dismissHint = useCallback(() => {
-    try {
-      window.localStorage.setItem(HINT_KEY, "1");
-    } catch {
-      // private mode: dismiss for this session only
-    }
+    updatePpPrefs({ inkHintSeen: true });
     setHintOpen(false);
   }, []);
   const armFromHint = useCallback(
@@ -868,10 +861,11 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
             <Trash2 className="size-4" aria-hidden />
           </Button>
           <span className="mx-1 h-5 w-px bg-border" aria-hidden />
-          {/* the status pill — honest states only. T-MG-INK-3 run-002:
-              LOCAL mode renders exactly ONE healthy state (the posture
-              statement, role=status) plus the honest error; the sync
-              states (Saving…/Saved/Edited elsewhere) are sync-mode-only. */}
+          {/* the status pill — honest states only. T-ACCOUNT-ONLY run-001:
+              the account IS the store — the sync states (Saving…/Saved/
+              Edited elsewhere/Retry) are the only states; the retired
+              "Local only" posture is gone (the surface is gated, so a
+              mounted layer always rides a signed-in session). */}
           {token ? (
             <>
               {snap.status === "saving" && (
@@ -899,23 +893,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
                 </button>
               )}
             </>
-          ) : snap.status === "error" ? (
-            <button
-              type="button"
-              className="flex items-center gap-1 rounded px-1 text-[11px] text-destructive underline underline-offset-2"
-              onClick={() => sync.retry()}
-            >
-              <AlertTriangle className="size-3" aria-hidden /> Couldn't save on this device — retry
-            </button>
-          ) : (
-            <span
-              className="flex items-center gap-1 px-1 text-[11px] text-muted-foreground"
-              role="status"
-              aria-label="Local only — saved on this device. Log in to sync."
-            >
-              Local only — saved on this device. Log in to sync.
-            </span>
-          )}
+          ) : null}
           {/* T-MG-INK-11: no "Close ink layer" — MG's toolbar has no
               close/launch chrome at all (their Collapse-toolbar is the
               recorded out-of-scope extra); the toolbar simply IS. */}

@@ -23,11 +23,14 @@
  * Hydration-safe by construction (the wave-3c lesson: a pref read during
  * first render SSRs a value the client may not agree with → React #418).
  * useSyncExternalStore's server snapshot is the default ("popup"); the
- * client snapshot reads localStorage only after hydration, and cross-tab
- * changes arrive via the storage event.
+ * client snapshot is the ACCOUNT doc (T-ACCOUNT-ONLY run-001 — the
+ * "cla-panel-mode" key of the workspace-document plane), applied when the
+ * account-docs hydration lands. The retired localStorage record
+ * ("syllabai.cla.panel") is adopted once, then removed.
  */
 
 import { useEffect, useSyncExternalStore } from "react";
+import { createAccountStore } from "@/lib/account-stores";
 
 export type ClaPanelForm = "popup" | "sidebar";
 
@@ -36,38 +39,33 @@ export type ClaPanelForm = "popup" | "sidebar";
 export const claHeaderCircleBtn =
   "flex size-8 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground";
 
-const KEY = "syllabai.cla.panel";
+/** The RETIRED device key (the legacy adoption's target). */
+export const RETIRED_CLA_PANEL_KEY = "syllabai.cla.panel";
 export const DEFAULT_CLA_PANEL_FORM: ClaPanelForm = "popup";
 
-function readForm(): ClaPanelForm {
-  try {
-    const raw = window.localStorage.getItem(KEY);
-    return raw === "sidebar" ? "sidebar" : "popup";
-  } catch {
-    return DEFAULT_CLA_PANEL_FORM;
-  }
-}
+const store = createAccountStore<ClaPanelForm>({
+  docKey: "cla-panel-mode",
+  initial: DEFAULT_CLA_PANEL_FORM,
+  parse: (raw) => (raw === "sidebar" ? "sidebar" : DEFAULT_CLA_PANEL_FORM),
+  legacyKeys: [RETIRED_CLA_PANEL_KEY],
+  readLegacy: () => {
+    try {
+      return window.localStorage.getItem(RETIRED_CLA_PANEL_KEY);
+    } catch {
+      return null;
+    }
+  },
+});
 
-function subscribe(cb: () => void) {
-  window.addEventListener("storage", cb);
-  return () => window.removeEventListener("storage", cb);
-}
-
-/** The stored form, live across tabs; "popup" on the server. */
+/** The stored form from the account; "popup" on the server. */
 export function useClaPanelForm(): [ClaPanelForm, (next: ClaPanelForm) => void] {
   const form = useSyncExternalStore(
-    subscribe,
-    readForm,
+    store.subscribe,
+    store.get,
     () => DEFAULT_CLA_PANEL_FORM,
   );
   const setForm = (next: ClaPanelForm) => {
-    try {
-      window.localStorage.setItem(KEY, next);
-    } catch {
-      /* private mode — session-only */
-    }
-    // same-tab change: the storage event does not fire in the writing tab
-    window.dispatchEvent(new Event("storage"));
+    store.set(next);
   };
   return [form, setForm];
 }

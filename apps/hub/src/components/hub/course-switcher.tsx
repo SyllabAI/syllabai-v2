@@ -5,9 +5,10 @@
  * dissected from the reference course page: "Course | Chemistry Edexcel"
  * picker listing the student's saved courses first).
  *
- * Order: the student's roster (localStorage, most relevant first) then the
- * rest of the registry. The current course is marked. Client island —
- * the roster lives in localStorage, so this cannot be a server component.
+ * Order: the student's roster (their account's saved courses, most relevant
+ * first) then the rest of the registry. The current course is marked.
+ * Client island — the roster is a reactive client store over the account's
+ * course list, so this cannot be a server component.
  */
 import { useState } from "react";
 import Link from "next/link";
