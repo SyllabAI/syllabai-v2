@@ -3,7 +3,7 @@ task:
   id: T-HUBFIX-SIGNOUT-LANDING
   title: "Sign out (the top-right identity dropdown) lands on the signed-out showcase landing '/' — never the login page — via clearIdentity + a hard window.location.assign('/'), the same nav-race law as T-HUBFIX-SIGNIN-NAV-RACE"
   owner: "Z.ai main agent (zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a, trace 1a1acc186515d23d)"
-  status: RUN-001
+  status: RUN-002 LIVE of record (PR #802 merged 97f7d818; run-002 PR #803 merged 6ee4b638; hub prod dpl_f3orhHPNS7HX9EDSq5TufbcRoEja READY @ fa0cf3db; live agent-browser verification BOTH ROLES -> landing "/")
   claimed_at: "2026-11-05"
   priority: P1
   wave: showcase
