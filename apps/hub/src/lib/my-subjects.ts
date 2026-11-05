@@ -76,6 +76,13 @@ function subscribe(onChange: () => void) {
   };
 }
 
+/** Plain (non-hook) read of the current roster — for plain async stores
+ *  (dashboard-core's selection law) that cannot mount hooks. The roster is
+ *  the in-memory store of record (T-ACCOUNT-ONLY run-001). */
+export function readRosterSnapshot(): string[] {
+  return roster;
+}
+
 export interface MySubjects {
   /** added course slugs, insertion order preserved */
   slugs: string[];

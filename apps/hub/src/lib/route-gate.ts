@@ -41,15 +41,26 @@ interface GatedRoute {
  * The gated set. Order is irrelevant (prefixes do not overlap). Adding a
  * core-backed surface means adding one row here — the proxy matcher, the
  * signed-out treatment and the ?next serialisation all follow.
+ *
+ * T-ACCOUNT-ONLY run-001 (operator order 2026-11-05: "remove device-local
+ * things completely — every single thing must be saved in account"): the
+ * sweep moved EVERY user state onto the account, so every stateful surface
+ * gates — the course hubs (progress overlays, flashcards, guided lessons,
+ * question players), past papers (mocks, marking, ink) and the practice
+ * index now require a signed-in identity, exactly like the dashboard.
+ * Only the marketing/public pages stay open (the corpus landing, the
+ * knowledge graph explorer, about/sources/demo/experiments — nothing
+ * there persists user state).
  */
 export const GATED_ROUTES: readonly GatedRoute[] = [
   { prefix: "/dashboard", gate: "session" }, // B-2: accounts, not the demo
+  { prefix: "/courses", gate: "session" }, // T-ACCOUNT-ONLY run-001
+  { prefix: "/past-papers", gate: "session" }, // T-ACCOUNT-ONLY run-001
+  { prefix: "/practice", gate: "session" }, // T-ACCOUNT-ONLY run-001 (drill/battle were already gated)
   { prefix: "/tutor", gate: "session" },
   { prefix: "/assistant", gate: "session" },
   { prefix: "/learner", gate: "session" },
   { prefix: "/plan", gate: "session" },
-  { prefix: "/practice/drill", gate: "session" },
-  { prefix: "/practice/battle", gate: "session" },
   { prefix: "/teacher", gate: "teacher" },
 ];
 
