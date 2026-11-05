@@ -297,6 +297,22 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-15 (batch thirteen, the environmental-management family
+        # tranche 10): CIE 8291 AS, CIE 0680 IGCSE (2025 series).
+        environmental_management = {
+            "cie-as-environmental-management-20": ("f8em_lattice_8291", "8291"),
+            "cie-igcse-environmental-management-25": ("f8em_lattice_0680", "0680x25"),
+        }
+        if args.course in environmental_management:
+            mod, tag = environmental_management[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="thirteen", task="T-KG-PRE-15", exporter_ver="v1.8",
+            )
+            return
         # T-KG-PRE-14 (batch twelve, the computer-science family tranche 9):
         # CIE 9618 A Level, CIE 9618 AS (sibling lattice on the identical
         # id+text 1-12 subset — NOT a shared two-course module, the point
