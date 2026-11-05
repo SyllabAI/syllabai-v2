@@ -331,18 +331,20 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // the per-course taught-codes overlay, per-course upsert),
   // teacher_content_reviews (10 cols, the AI-content validation verdicts,
   // one per (user, resource) — on top of the T-TIER1 run-001 baseline
-  // -> 99/924/131/100/180 (measured: rebaseline.ts verify PASS, 0 drifts, on
+  // -> 99/926/131/100/181 (measured: rebaseline.ts verify PASS, 0 drifts, on
   // the union end-state; T-AUDIT-TIER1 run-003 adds user_documents — 4 cols,
-  // composite PK (not an index), 1 FK, 0 checks).
-  test("99/924/131/100/180 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // composite PK (not an index), 1 FK, 0 checks; T-MG-MARK-DELTA-1 run-001
+  // (Lane E) adds mark_awards.attempt_class + cache_hash — 2 nullable cols,
+  // 1 check, 0 indexes/FKs — the 0027 additive migration).
+  test("99/926/131/100/181 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
     expect(v.inventory).toContain("tables 99/99");
-    expect(v.inventory).toContain("columns 924");
+    expect(v.inventory).toContain("columns 926");
     expect(v.inventory).toContain("indexes 131");
     expect(v.inventory).toContain("fks 100");
-    expect(v.inventory).toContain("checks 180");
+    expect(v.inventory).toContain("checks 181");
   });
 
   test("runtime loader sees the real table inventory", async () => {
