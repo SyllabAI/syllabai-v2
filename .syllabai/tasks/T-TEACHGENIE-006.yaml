@@ -1,0 +1,32 @@
+version: 1
+task:
+  id: T-TEACHGENIE-006
+  title: 'The updateSession seam fix — the TRUE root cause of the LIVE-pilot blocker
+    (the house sql seam is tagged-template-only; the one-piece function-form call
+    produced "WHERE id = $2$1$2" on EVERY updateSession since 62e786e6)'
+  owner: Super Z (zai-web session web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2,
+    dispatch trace 1a1ad0a00dc0c991 — continuation of the LIVE-pilot order)
+  status: 'DONE # run-001: #808 (fix + 5-test regression gate + live proof runner/workflow); the live
+    proof receipt ok:true (all three updateSession proofs round-tripped on the production tables);
+    run-002: #810 (the proof driver exit hygiene) + the GREEN JOB of record (workflow run 42098306197)'
+  priority: P1
+  band: T-TEACHGENIE (the learn-by-teaching lane code plane)
+  wave: teachme-phase-A
+  deps: [T-TEACHGENIE-003, T-TEACHGENIE-005]
+  scope:
+    allowed:
+    - apps/api/src/teach-me/sql.ts (updateSession ONLY — the one dynamic-SQL site in the lane)
+    - apps/api/test/teach-me/update-session-seam.test.ts (the regression gate)
+    - scripts/t-teachgenie6-prove-update.ts + .github/workflows/t-teachgenie-6-update-session-proof.yml
+    - .syllabai/tasks/T-TEACHGENIE-006.yaml + .syllabai/receipts/T-TEACHGENIE-006/** + .syllabai/worklog.md (append-only)
+    forbidden:
+    - the service/config/prompts/prompts files (the laws untouched)
+    - the shared SqlFn seam type and services/identity/users.ts (zero seam changes)
+    - every other store (grep of record: updateSession was the ONLY function-form caller)
+  notes: 'THE FALSIFICATION of record: T-TEACHGENIE-005 went green (has_table_privilege proved all
+    4 verbs x 6 tables) and the write paths STILL 500ed — the grants were a real but SECONDARY gap.
+    The regression suite replays every captured seam call through the REAL toQuery; the pre-fix
+    malformation is pinned executable in the suite. LIVE PROOF of record: flags-only / judged-turn
+    counter / end-session status patches all round-trip on the production tables of record
+    (SMOKE_DB_URI vantage); the session of record keeps only the disclosed flags stamps, status
+    net-zero (active at rest).'

@@ -1,0 +1,29 @@
+{
+ "task": "T-TEACHGENIE-005",
+ "run": "run-001",
+ "kind": "the teach-tables DML grants lane \u2014 applied + proven on production",
+ "agent": "Super Z (zai-web web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2, dispatch trace 1a1ad0a00dc0c991)",
+ "date": "2026-11-06",
+ "operator_commission": {
+  "order": "Continue",
+  "trace": "1a1ad0a00dc0c991",
+  "reading": "the dispatch = the operator fire order per the 093/133b law; fired under the Continue continuing the LIVE-pilot order (trace 1a1ac4dca771efb5) whose run-002 receipt named this lane"
+ },
+ "prs": [
+  "#805 (driver + runner, merged 9979b9d8)",
+  "#807 (prod_secret vantage input after the SIB unstaged disclosure, merged e19d496e)"
+ ],
+ "dispatches": [
+  "run 1 (42089945497): COW leg GREEN; prod leg aborted HONESTLY \u2014 SIB_PROD_DATABASE_URL unstaged (deleted from the repo secrets since the t-tier1 prod leg 2026-11-05T10:52Z; the rotation the standing receipts kept flagging)",
+  "run 2 (42092537859, prod_secret=smoke): COW leg GREEN (drop + 404-verify included); prod leg GREEN + SELECT-scope wire proof GREEN"
+ ],
+ "prod_receipt_of_record": {
+  "db_host": "ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech (the Neon MAIN wire of record)",
+  "connected_as": "neondb_owner (direct, no SET ROLE needed)",
+  "ownership": "users_owner=neondb_owner, all six teach tables owned by neondb_owner",
+  "applied": "GRANT SELECT, INSERT, UPDATE, DELETE ON the six teach_* tables TO syllabai_v2_app_w2r2 (one transaction, lock_timeout=5s, idempotent re-grant)",
+  "proof": "all 4 DML verbs x all 6 teach_* tables granted to syllabai_v2_app_w2r2 (has_table_privilege, no impersonation)",
+  "rollback_of_record": "REVOKE UPDATE, DELETE ON the six tables FROM syllabai_v2_app_w2r2;"
+ },
+ "boundaries": "zero repo src bytes (scripts/ + .github/ only); no DDL; no drizzle bookkeeping; production roles untouched (the COW leg resets BRANCH-LOCAL owner only); receipts host-scrubbed"
+}

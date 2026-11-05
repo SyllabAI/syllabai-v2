@@ -1,0 +1,34 @@
+version: 1
+task:
+  id: T-TEACHGENIE-005
+  title: 'The teach-tables DML grants lane — the LIVE-pilot environment blocker fix
+    named by the T-TEACHGENIE-003 run-002 receipt (4 DML verbs x 6 teach_* tables to
+    syllabai_v2_app_w2r2, the F5-S7 class the 0020/0021 band predates)'
+  owner: Super Z (zai-web session web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2,
+    dispatch trace 1a1ad0a00dc0c991 — the operator "Continue" continuing the LIVE-pilot order
+    "conduct a live pilot after deployment", trace 1a1ac4dca771efb5, whose run-002 receipt named
+    this exact lane as the required operator action)
+  status: 'DONE # run-001: #805 (driver+runner) + #807 (prod_secret vantage input after the SIB
+    unstaged disclosure); prod apply GREEN via the smoke vantage (neondb_owner on the ep-ancient-cake
+    MAIN wire); has_table_privilege proof 4 verbs x 6 tables; run-002 of the runner re-dispatched green'
+  priority: P1
+  band: T-TEACHGENIE (the learn-by-teaching lane environment plane)
+  wave: teachme-phase-A
+  deps: [T-TEACHGENIE-003]
+  scope:
+    allowed:
+    - scripts/t-teachgenie5-apply-0028.ts (grants-only frozen driver, the t-tier1-apply template)
+    - .github/workflows/t-teachgenie-5-db-apply-0028.yml (workflow_dispatch only; COW leg + prod leg)
+    - .syllabai/tasks/T-TEACHGENIE-005.yaml + .syllabai/receipts/T-TEACHGENIE-005/** + .syllabai/worklog.md (append-only)
+    forbidden:
+    - apps/api/**, apps/hub/**, packages/** (zero src bytes)
+    - production role mutations (the COW leg resets BRANCH-LOCAL owner only)
+    - any DDL (grants are not schema; no drizzle bookkeeping)
+  notes: 'THE FIRE ORDER of record: the dispatch = the operator fire order per the 093/133b law;
+    this dispatch was made under the operator "Continue" (trace 1a1ad0a00dc0c991) continuing the
+    LIVE-pilot order whose run-002 receipt named the lane — the reading is disclosed in the PR
+    body (#805), the runner header, the receipt, and the worklog. REVERSIBILITY: REVOKE UPDATE,
+    DELETE on the six tables FROM the app role (recorded in the driver receipt). The SECOND
+    operator action named by run-002 (retrigger the API Vercel deploys) is NOT dischargeable
+    from the sandbox — and was overtaken by the 402 DEPLOYMENT_DISABLED usage suspension
+    discovered 2026-11-05 ~19:5x UTC (the T-TEACHGENIE-003 run-003 receipt).'
