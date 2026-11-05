@@ -266,3 +266,46 @@ Compare with other pages."
   engine laws, wire — zero delta; the API side is byte-untouched by this task.
 - **The avatar art** (persona of record, original stand-in).
 - **History:** §§1–8 stay as written.
+
+## 10. T-TEACHGENIE-003 run-002 — the LIVE pilot (2026-11-05, trace 1a1ac4dca771efb5)
+
+The run-001 caveat ("needs the deployed hub + a learner account + a live LLM key") was executed:
+a wire-plane driver (`scripts/pilot_teachgenie_live2.py`, raw transcript kept) plus a real-UI walk
+through the production click paths — `www.syllab-ai.com` (hub, current) against
+`syllabai-v2.vercel.app/api/v1` (API). Verdict: **the laws are live and correct end to end; the
+writes are blocked by one environment-plane defect; the API deployment is one day stale.**
+
+**Live and correct** (every one reproducible from the raw transcript): auth (demo mint / register
+201 / login / 401 on unknown paths) · flags gate (pilot course passes; non-pilot → 409
+`TEACH_ME_FLAG_DISABLED`) · G1 canon + G2 note-corpus gates · **D3 quota 3/day enforced** with the
+honest "back tomorrow" card (the public demo account was exhausted by real traffic) · the
+objectives+opener LIVE LLM call with in-character lowercase openers · judged turns LIVE with the
+paraphrase-probe voice · **D2 confusion-never-affirmation LIVE**: the planted particle-misconception
+turn produced `pupil/confusion` ("hmm, that doesn't match the notes I was given about particles not
+changing size…") — never an affirmation · transcript persistence (7 rows) · history · permalink ·
+cross-learner 403 `NOT_OWNER` · the UI: sidebar "Teach SillyAI" row on the pilot course ONLY
+(absent-when-absent verified on cie-igcse-biology-23), CourseHeader hero + house tokens on the
+landing, the honest 500 banner (dismiss + back, never a fake success).
+
+**Broken (blocker, operator-plane):** every request whose write path includes an
+`UPDATE teach_sessions` fails with a generic 500 — nudge (post-writes), both judged turns (post-writes,
+after the LLM completes), and end-session; sessions freeze at `status=active`,
+`message_count=0`, `flags=null`, reviews never generate, and each judged turn burns its LLM cost
+then dies. INSERTs and SELECTs all succeed, and the fixture suite passes 22/22 on the same code —
+the failure is environment-plane. Root-cause hypothesis of record: the app role
+(`syllabai_v2_app_w2r2`) holds INSERT/SELECT but not UPDATE on `teach_sessions` — the F5-S7 grants
+class, documented for the T-TIER1 tables, never completed for the teach tables (the 0025 runner's
+run-004/005 already proved the prod secret connects AS that role, owner-capable DSN required for
+grants). **Recipe of record:** a t-tier1-pattern dispatch lane (COW proof → owner-capable prod
+apply, `has_table_privilege` probe as the receipt) granting the app role 4-verb DML on the six
+`teach_*` tables; NOT fired by the pilot (prod mutation needs the operator's fire order).
+
+**Deployment gap of record:** the API project last deployed `04e3c40a` (#783, 07:14 UTC) — every
+main commit since `3100dd58` carries hub-only Vercel statuses, so #785's rename is hub-live but
+API-stale (the live API still says "Teach Genie is not enabled…" / "Daily Teach Genie session cap
+reached"). The hub is current and correct. Relink/retrigger the `syllabai-v2` Vercel project's
+production integration; the docs-only push carrying this section may itself retrigger it.
+
+Full evidence: `.syllabai/receipts/T-TEACHGENIE-003/run-002.json`, the raw wire transcript, and the
+six UI screenshots (sidebar row, house landing, picker, live session with objectives/opener, the
+honest 500 banner, non-pilot absent-when-absent).

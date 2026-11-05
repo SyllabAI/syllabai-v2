@@ -7,7 +7,7 @@ task:
   owner: Super Z (zai-web session web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2,
     dispatch trace 1a1aa68d913fd0d5 — operator order "Rename this feature to ''Teach SillyAI''.
     And check end to end if it is working or not.")
-  status: 'IN_PROGRESS # run-001 (display strings + persona + prompt bumps v3 + E2E battery) — PR of record'
+  status: 'run-002 (the LIVE pilot) executed 2026-11-05: laws verified live end to end; two operator-plane actions filed — the syllabai-v2 API Vercel project stopped deploying after 04e3c40a (rename hub-live, API-stale) and the app role lacks UPDATE on teach_sessions (every judged turn/end 500s post-writes). PRs #785/#788 merged; grants lane suggested as T-TEACHGENIE-005'
   priority: P1
   band: T-TEACHGENIE (MathsGenie-parity learn-by-teaching surface)
   wave: teachme-phase-A
@@ -42,3 +42,15 @@ task:
     behavioural suite re-pins byte-equality + the persona config constant. The E2E check of record is
     the fixture-replayed behavioural suite (create → opener → judged turns → end → review → history →
     permalink over an in-memory store) plus the hub projection/display laws, contracts and tsc.'
+
+  run_002:
+    date: '2026-11-05'
+    kind: live-pilot-of-record
+    commission: '"conduct a live pilot after deployment" (trace 1a1ac4dca771efb5)'
+    method: wire-plane driver + real-UI walk (agent-browser) against www.syllab-ai.com + syllabai-v2.vercel.app/api/v1
+    verified_live: [auth register/login/demo-mint, flags gate 409 fail-closed, G1 canon, G2 note corpus, D3 quota 3/day enforced with the honest card, objectives+opener LLM in-character, judged-turn paraphrase_probe voice, D2 confusion-never-affirmation on a planted misconception, transcript persistence, history, permalink, NOT_OWNER 403 cross-learner, sidebar row absent-when-absent, CourseHeader house design live]
+    blocker: 'UPDATE teach_sessions fails in prod (500 post-writes on nudge/judged/end; counters frozen; reviews never generate) — hypothesis: app-role missing UPDATE grant (F5-S7 class); fixture suite 22/22 exonerates the code'
+    deployment_gap: 'API last deployed 04e3c40a 07:14 UTC; hub-only statuses since 3100dd58 — #785 rename is hub-live, API-stale'
+    operator_actions: [relink/retrigger the syllabai-v2 Vercel production deploys, grants lane T-TEACHGENIE-005 (t-tier1 pattern, operator fire order required)]
+    receipt: .syllabai/receipts/T-TEACHGENIE-003/run-002.json
+    docs: docs/TEACH_GENIE.md §10
