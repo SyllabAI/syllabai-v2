@@ -676,6 +676,13 @@ Task ID: T-ADR039-R5 r0 (the selector-structure alignment lane: audit + disclose
 - Anti-truncation asserts: worklog appended append-only (new = old + this section; byte delta == len(section); line delta == section newlines), asserted by this script before commit.
 
 
+## receipt(T-HUBFIX-SIGNOUT-LANDING) — run-001: sign-out lands on the showcase landing "/" — 2026-11-05 (operator order trace 1a1acc186515d23d, chat 08b3170a: "when we sign out … I want it to take us to the main landing page … not the login page")
+
+- The law of record: the ONE "Sign out" item (app-shell.tsx identity dropdown; grep-pinned single `clearIdentity` caller) now runs `clearIdentity(); window.location.assign("/")` — the session clears and a HARD navigation lands on `/`, which sits outside the route-gate policy and renders the signed-out showcase landing. Before: no navigation, the gate (`proxy.ts:73`) bounced the next gated round trip to `/login`. The hard-assign is the SAME nav-race law as T-HUBFIX-SIGNIN-NAV-RACE (no `router.push` on identity transitions — the gate's 307 would race the in-app redirect on gated routes).
+- Boundaries: one component, one handler (+16/−4). proxy.ts / route-gate.ts / session.ts / identity.ts / api.ts / login flow / showcase contract UNTOUCHED. No other sign-out surface exists (grep of record).
+- Gates (worktree @ e5c32b9a = origin/main): hub tsc CLEAN; eslint app-shell CLEAN; `bun test apps/hub/src/lib` 880 pass / 15 fail / 1 error — BYTE-IDENTICAL to the pristine-main control run (change stashed: same 880/15/1, same 895 tests). All reds pre-existing on main (env-gated dual-run suite, UGM katex, requestPartRegrade, account-docs store-law set) — ZERO delta from this change.
+- Receipt: .syllabai/receipts/T-HUBFIX-SIGNOUT-LANDING/run-001.md (change law, gate numbers, boundaries, live-verification plan). Merge on green per the lane's standing merge pattern; live agent-browser verification of the landing follows the hub deploy.
+
 ## receipt(T-UX-VOICE-1) — run-001: the student-voice residue sweep + the AI-IDENTIFIED retirement — 2026-11-05 (operator order "Remove the AI-IDENTIFIED label / Finish the student-voice sweep for the confirmed leaks (#1/#9/#11)" trace 1a1aa31bd31ac699, on the Claude frontend audit assessment; branch t-ux-voice-1/run-001 cut @ main e262525)
 
 - SHIPPED OF RECORD (12 files, copy-only + one optional badge prop; full mapping table in .syllabai/receipts/T-UX-VOICE-1/run-001.md):
