@@ -64,6 +64,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useMyCoursesSync, useMySubjects } from "@/lib/my-subjects";
+import { DashboardSyncStatus } from "./dashboard-sync-status";
 import { useToast } from "@/hooks/use-toast";
 import { useIdentity } from "@/lib/identity";
 import { useLastOpened, resourceLabel } from "@/lib/last-opened";
@@ -593,6 +594,9 @@ export function DashboardClient({
 
   return (
     <div className="space-y-8">
+      {/* T-SYNC-OBS-001 — the account-sync health notifier (pure chrome,
+          renders nothing; toasts sync failures with a manual Retry). */}
+      <DashboardSyncStatus />
       {/* greeting — the neutral form (UX review 2026-11-04): the routing
           session carries only the account handle (initials + a code, e.g.
           "HNA 269a"), not a display name, and "Hi HNA 269a" read as a
