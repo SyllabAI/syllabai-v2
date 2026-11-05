@@ -297,6 +297,21 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-18 (batch sixteen, the religious-studies family
+        # tranche 13): CIE 0490 IGCSE.
+        religious_studies = {
+            "cie-igcse-religious-studies-23": ("f8rs_lattice_0490", "0490"),
+        }
+        if args.course in religious_studies:
+            mod, tag = religious_studies[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="sixteen", task="T-KG-PRE-18", exporter_ver="v2.1",
+            )
+            return
         # T-KG-PRE-17 (batch fifteen, the history family tranche 12):
         # CIE 0470 IGCSE, Edexcel 4HI1 IGCSE.
         history = {
