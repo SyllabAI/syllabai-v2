@@ -1,0 +1,409 @@
+"""0680 IGCSE Environmental Management concept lattice — T-KG-PRE-15
+(F8 rollout batch thirteen, the environmental-management family tranche 10;
+serves cie-igcse-environmental-management-25, 142 served points).
+
+AI_SUGGESTED / UNVALIDATED concept web authored by the F8 lane from the CIE
+0680 IGCSE Environmental Management syllabus (2025 examination series;
+sections: 1 natural resources — rocks/ores/energy/fracking, 2 land — soils
+and agriculture, 3 water — supply, pollution, disease, oceans, oil, plastics,
+4 the atmosphere and human activities, 5 ecosystems biodiversity and
+fieldwork, 6 natural hazards, 7 human population), anchored to the served
+spine's point ids. Every anchor is machine-verified against the spine before
+any byte is written (0-unmapped pass law, enforced in kg_f8ma_generate.py).
+
+Structure of record: the 0680 syllabus writes every point as its own
+describe/define/discuss register, so the lattice is near-1:1 — all 142
+points are anchored, none deliberately excluded — and the chains run
+definition -> process -> impacts -> evaluation within each section, with
+honest cross-section bridges only where the syllabus itself names the
+dependency (rock cycle weathering -> soil mineral particles; fossil-fuel
+formation -> the finite classification, plastics and oil-pollution
+registers; energy classification -> greenhouse-gas causes and acid-rain
+formation; energy management -> carbon-footprint reduction; sustainability
+principle -> sustainable food production; unsustainable agriculture ->
+soil-erosion causes; soil erosion and deforestation -> flooding causes;
+potable water and sewage treatment -> cholera control; weather -> climate;
+the natural greenhouse effect -> the greenhouse-gas register; climate
+change -> drought causes; tectonic management -> the shared cyclone/flood/
+drought monitoring-and-warning pattern; respiration -> the carbon cycle;
+trees as carbon sinks -> the need for sustainable forest management).
+Two authored pairs sit in knowingly served-order-reversed territory
+(photosynthesis -> the 2.1.6 optimum-photosynthesis crop conditions: the
+syllabus teaches photosynthesis in 5.1.5 but the spine serves the crop
+register in section 2 first; deforestation impacts -> the 2.3.1 soil-erosion
+causes list that names deforestation, served in section 2 before the
+deforestation register in section 5); the calibrated in-order law drops
+exactly those, counted and disclosed — the law working as designed.
+
+Honesty: prereqValidated stays EMPTY; the renderer labels every exported pair
+INFERRED PROTOTYPE; the named gate remains the SME validation pass.
+"""
+
+DD = "DEFINITIONAL_DEPENDENCY"
+UWR = "USED_WITHOUT_RETEACHING"
+
+CONCEPTS = {
+    # 1.1 rocks
+    "EM6-CON-ROCK-FORMATION": ["1.1.1"],
+    "EM6-CON-ROCK-CYCLE": ["1.1.2"],
+    "EM6-CON-PERMEABILITY": ["1.1.3"],
+    "EM6-CON-ROCK-PERMEABILITY-CLASS": ["1.1.4"],
+    # 1.2 ores and mining
+    "EM6-CON-ORE-DEF": ["1.2.1"],
+    "EM6-CON-EXTRACTION-METHODS": ["1.2.2"],
+    "EM6-CON-EXTRACTION-FACTORS": ["1.2.3"],
+    "EM6-CON-EXTRACTION-IMPACTS": ["1.2.4"],
+    "EM6-CON-LAND-RESTORATION": ["1.2.5"],
+    "EM6-CON-RESTORATION-EVAL": ["1.2.6"],
+    # 1.3 finite resources
+    "EM6-CON-FINITE-RESOURCE": ["1.3.1"],
+    "EM6-CON-SUSTAINABLE-RESOURCE-MGMT": ["1.3.2"],
+    "EM6-CON-ROCK-SUSTAINABLE-STRATEGIES": ["1.3.3"],
+    "EM6-CON-ROCK-STRATEGIES-EVAL": ["1.3.4"],
+    # 1.4 energy resources
+    "EM6-CON-FOSSIL-FUEL-FORMATION": ["1.4.1"],
+    "EM6-CON-ENERGY-CLASSIFY": ["1.4.2"],
+    "EM6-CON-ELECTRICITY-GENERATION": ["1.4.3"],
+    "EM6-CON-ENERGY-BEN-LIM": ["1.4.4"],
+    "EM6-CON-ENERGY-DEMAND-FACTORS": ["1.4.5"],
+    # 1.5 energy management
+    "EM6-CON-ENERGY-MGMT-STRATEGIES": ["1.5.1"],
+    "EM6-CON-NEW-ENERGY-RESOURCES": ["1.5.2"],
+    "EM6-CON-ENERGY-STRATEGIES-EVAL": ["1.5.3"],
+    # 1.6 fracking
+    "EM6-CON-FRACKING-DEF": ["1.6.1"],
+    "EM6-CON-FRACKING-EVAL": ["1.6.2"],
+    # 2.1 soils and crop growth
+    "EM6-CON-SOIL-COMPOSITION": ["2.1.1"],
+    "EM6-CON-SOIL-CROP-GROWTH": ["2.1.2"],
+    "EM6-CON-LOAM-SOILS": ["2.1.3"],
+    "EM6-CON-WEATHER-DEF": ["2.1.4"],
+    "EM6-CON-SEASONS-IMPACT": ["2.1.5"],
+    "EM6-CON-CROP-OPTIMUM-CONDITIONS": ["2.1.6"],
+    # 2.2 agriculture
+    "EM6-CON-AGRICULTURE-TYPES": ["2.2.1"],
+    "EM6-CON-SUSTAINABLE-FOOD-PROD": ["2.2.2"],
+    "EM6-CON-FOOD-PROD-STRATEGIES": ["2.2.3"],
+    "EM6-CON-UNSUSTAINABLE-AGRI-IMPACTS": ["2.2.4"],
+    # 2.3 soil erosion
+    "EM6-CON-SOIL-EROSION-CAUSES": ["2.3.1"],
+    "EM6-CON-SOIL-EROSION-IMPACTS": ["2.3.2"],
+    "EM6-CON-SOIL-EROSION-STRATEGIES": ["2.3.3"],
+    # 3.1 water supply
+    "EM6-CON-WATER-CYCLE-68": ["3.1.1"],
+    "EM6-CON-FRESHWATER-SOURCES": ["3.1.2"],
+    "EM6-CON-OCEANS-ID": ["3.1.3"],
+    "EM6-CON-POTABLE-DEF": ["3.1.4"],
+    "EM6-CON-WATER-TREATMENT": ["3.1.5"],
+    "EM6-CON-POTABLE-AVAILABILITY": ["3.1.6"],
+    "EM6-CON-DESALINATION": ["3.1.7"],
+    "EM6-CON-DESALINATION-EVAL": ["3.1.8"],
+    "EM6-CON-MULTIPURPOSE-DAM": ["3.1.9"],
+    "EM6-CON-DAM-EVAL": ["3.1.10"],
+    # 3.2 water pollution
+    "EM6-CON-WATER-POLLUTION-SOURCES": ["3.2.1"],
+    "EM6-CON-WATER-POLLUTION-IMPACTS": ["3.2.2"],
+    "EM6-CON-WATER-QUALITY-STRATEGIES": ["3.2.3"],
+    # 3.3 water-related disease
+    "EM6-CON-MALARIA-VECTOR": ["3.3.1"],
+    "EM6-CON-MALARIA-CONTROL": ["3.3.2"],
+    "EM6-CON-CHOLERA-CONTROL": ["3.3.3"],
+    "EM6-CON-DISEASE-CONTROL-EVAL": ["3.3.4"],
+    # 3.4 oceans
+    "EM6-CON-MARINE-EXPLOITATION-IMPACTS": ["3.4.1"],
+    "EM6-CON-MARINE-AQUACULTURE-DEF": ["3.4.2"],
+    "EM6-CON-AQUACULTURE-IMPACTS": ["3.4.3"],
+    "EM6-CON-HARVEST-MANAGEMENT": ["3.4.4"],
+    "EM6-CON-HARVEST-MGMT-EVAL": ["3.4.5"],
+    # 3.5 oil pollution
+    "EM6-CON-OIL-POLLUTION-CAUSES": ["3.5.1"],
+    "EM6-CON-OIL-POLLUTION-IMPACTS": ["3.5.2"],
+    "EM6-CON-OIL-SPILL-PREVENTION": ["3.5.3"],
+    "EM6-CON-OIL-SPILL-MINIMISE": ["3.5.4"],
+    # 3.6 plastics
+    "EM6-CON-PLASTICS-CONVENTIONAL": ["3.6.1"],
+    "EM6-CON-BIOPLASTICS": ["3.6.2"],
+    "EM6-CON-BIODEGRADABLE-PLASTICS": ["3.6.3"],
+    "EM6-CON-NON-BIODEGRADABLE-PLASTICS": ["3.6.4"],
+    "EM6-CON-MICROPLASTICS": ["3.6.5"],
+    "EM6-CON-PLASTIC-POLLUTION-IMPACTS": ["3.6.6"],
+    "EM6-CON-PLASTIC-POLLUTION-MGMT": ["3.6.7"],
+    # 4.1 atmosphere structure
+    "EM6-CON-ATMOS-STRUCTURE-68": ["4.1.1"],
+    "EM6-CON-CLIMATE-DEF": ["4.1.2"],
+    "EM6-CON-GREENHOUSE-EFFECT-68": ["4.1.3"],
+    # 4.2 greenhouse gases and climate change
+    "EM6-CON-GHG-DEF-68": ["4.2.1"],
+    "EM6-CON-GHG-GASES-68": ["4.2.2"],
+    "EM6-CON-GHG-CAUSES": ["4.2.3"],
+    "EM6-CON-GHG-EFFECTS": ["4.2.4"],
+    "EM6-CON-CLIMATE-CHANGE-IMPACTS-68": ["4.2.5"],
+    "EM6-CON-CARBON-FOOTPRINT-REDUCTION": ["4.2.6"],
+    "EM6-CON-ADAPTATION-DEF": ["4.2.7"],
+    "EM6-CON-ADAPTATION-STRATEGIES": ["4.2.8"],
+    "EM6-CON-CLIMATE-STRATEGY-EVAL-68": ["4.2.9"],
+    # 4.3 acid rain
+    "EM6-CON-ACID-RAIN-FORMATION": ["4.3.1"],
+    "EM6-CON-ACID-RAIN-IMPACTS": ["4.3.2"],
+    "EM6-CON-ACID-RAIN-MGMT": ["4.3.3"],
+    "EM6-CON-ACID-RAIN-EVAL": ["4.3.4"],
+    # 4.4 ozone depletion
+    "EM6-CON-CFC-OZONE-CAUSE": ["4.4.1"],
+    "EM6-CON-OZONE-DEP-IMPACTS-68": ["4.4.2"],
+    "EM6-CON-OZONE-MGMT": ["4.4.3"],
+    "EM6-CON-OZONE-MGMT-EVAL": ["4.4.4"],
+    # 5.1 ecosystems
+    "EM6-CON-ECOSYSTEM-COMPONENTS": ["5.1.1"],
+    "EM6-CON-BIOTIC-ABIOTIC-68": ["5.1.2"],
+    "EM6-CON-BIOTIC-INTERACTIONS-68": ["5.1.3"],
+    "EM6-CON-POLLINATION": ["5.1.4"],
+    "EM6-CON-PHOTOSYNTHESIS-68": ["5.1.5"],
+    "EM6-CON-ENERGY-FLOW": ["5.1.6"],
+    "EM6-CON-ECOLOGICAL-PYRAMIDS-68": ["5.1.7"],
+    "EM6-CON-RESPIRATION-68": ["5.1.8"],
+    "EM6-CON-CARBON-CYCLE-68": ["5.1.9"],
+    # 5.2 forests
+    "EM6-CON-DEFORESTATION-CAUSES": ["5.2.1"],
+    "EM6-CON-DEFORESTATION-IMPACTS": ["5.2.2"],
+    "EM6-CON-FOREST-SUSTAIN-MGMT-DEF": ["5.2.3"],
+    "EM6-CON-FOREST-SUSTAIN-NEED": ["5.2.4"],
+    # 5.3 conservation
+    "EM6-CON-CONSERVATION-STRATEGIES": ["5.3.1"],
+    "EM6-CON-CONSERVATION-EVAL": ["5.3.2"],
+    # 5.4 fieldwork
+    "EM6-CON-SCIENTIFIC-METHOD-68": ["5.4.1"],
+    "EM6-CON-SAMPLING-STRATEGIES-68": ["5.4.2"],
+    "EM6-CON-SAMPLING-STRATEGIES-EVAL": ["5.4.3"],
+    "EM6-CON-SAMPLING-TECHNIQUES": ["5.4.4"],
+    "EM6-CON-SAMPLING-TECHNIQUES-EVAL": ["5.4.5"],
+    # 6.1 tectonics
+    "EM6-CON-EARTH-STRUCTURE": ["6.1.1"],
+    "EM6-CON-CONTINENTS-ID": ["6.1.2"],
+    "EM6-CON-PLATE-DISTRIBUTION": ["6.1.3"],
+    "EM6-CON-CONVECTION-PLATE-BOUNDARIES": ["6.1.4"],
+    "EM6-CON-EARTHQUAKE-FEATURES": ["6.1.5"],
+    "EM6-CON-VOLCANO-FEATURES": ["6.1.6"],
+    "EM6-CON-TECTONIC-IMPACTS": ["6.1.7"],
+    "EM6-CON-TECTONIC-MANAGEMENT": ["6.1.8"],
+    "EM6-CON-TECTONIC-MGMT-EVAL": ["6.1.9"],
+    "EM6-CON-VOLCANO-OPPORTUNITIES": ["6.1.10"],
+    # 6.2 tropical cyclones
+    "EM6-CON-CYCLONE-FORMATION": ["6.2.1"],
+    "EM6-CON-CYCLONE-IMPACTS": ["6.2.2"],
+    "EM6-CON-CYCLONE-MANAGEMENT": ["6.2.3"],
+    "EM6-CON-CYCLONE-MGMT-EVAL": ["6.2.4"],
+    # 6.3 flooding
+    "EM6-CON-FLOODING-CAUSES": ["6.3.1"],
+    "EM6-CON-FLOODING-IMPACTS": ["6.3.2"],
+    "EM6-CON-FLOODING-MANAGEMENT": ["6.3.3"],
+    "EM6-CON-FLOODING-MGMT-EVAL": ["6.3.4"],
+    "EM6-CON-FLOODING-OPPORTUNITIES": ["6.3.5"],
+    # 6.4 drought
+    "EM6-CON-DROUGHT-DEF": ["6.4.1"],
+    "EM6-CON-DROUGHT-CAUSES": ["6.4.2"],
+    "EM6-CON-DROUGHT-IMPACTS": ["6.4.3"],
+    "EM6-CON-DROUGHT-MANAGEMENT": ["6.4.4"],
+    "EM6-CON-DROUGHT-MGMT-EVAL": ["6.4.5"],
+    # 7.1 population structure
+    "EM6-CON-POP-DENSITY-68": ["7.1.1"],
+    "EM6-CON-POP-PYRAMIDS": ["7.1.2"],
+    "EM6-CON-INCOME-GROUPS-68": ["7.1.3"],
+    "EM6-CON-LIC-HIC-COMPARE": ["7.1.4"],
+    # 7.2 population change
+    "EM6-CON-POP-CHANGE-FACTORS": ["7.2.1"],
+    "EM6-CON-POP-GROWTH-IMPACTS": ["7.2.2"],
+    # 7.3 population management
+    "EM6-CON-POP-SIZE-MANAGEMENT": ["7.3.1"],
+    "EM6-CON-POP-SIZE-MGMT-EVAL": ["7.3.2"],
+}
+
+EDGES = [
+    # 1.1 rocks
+    ("EM6-CON-ROCK-FORMATION", "EM6-CON-ROCK-CYCLE", DD),
+    ("EM6-CON-ROCK-CYCLE", "EM6-CON-PERMEABILITY", UWR),
+    ("EM6-CON-PERMEABILITY", "EM6-CON-ROCK-PERMEABILITY-CLASS", DD),
+    # 1.2 ores and mining
+    ("EM6-CON-ROCK-CYCLE", "EM6-CON-ORE-DEF", UWR),
+    ("EM6-CON-ORE-DEF", "EM6-CON-EXTRACTION-METHODS", DD),
+    ("EM6-CON-EXTRACTION-METHODS", "EM6-CON-EXTRACTION-FACTORS", UWR),
+    ("EM6-CON-EXTRACTION-FACTORS", "EM6-CON-EXTRACTION-IMPACTS", DD),
+    ("EM6-CON-EXTRACTION-IMPACTS", "EM6-CON-LAND-RESTORATION", DD),
+    ("EM6-CON-LAND-RESTORATION", "EM6-CON-RESTORATION-EVAL", DD),
+    # 1.3 finite resources
+    ("EM6-CON-EXTRACTION-IMPACTS", "EM6-CON-FINITE-RESOURCE", UWR),
+    ("EM6-CON-FINITE-RESOURCE", "EM6-CON-SUSTAINABLE-RESOURCE-MGMT", DD),
+    ("EM6-CON-SUSTAINABLE-RESOURCE-MGMT", "EM6-CON-ROCK-SUSTAINABLE-STRATEGIES", DD),
+    ("EM6-CON-ROCK-SUSTAINABLE-STRATEGIES", "EM6-CON-ROCK-STRATEGIES-EVAL", DD),
+    # 1.4 energy resources
+    ("EM6-CON-ROCK-CYCLE", "EM6-CON-FOSSIL-FUEL-FORMATION", UWR),
+    ("EM6-CON-FOSSIL-FUEL-FORMATION", "EM6-CON-ENERGY-CLASSIFY", UWR),
+    ("EM6-CON-ENERGY-CLASSIFY", "EM6-CON-ELECTRICITY-GENERATION", UWR),
+    ("EM6-CON-ENERGY-CLASSIFY", "EM6-CON-ENERGY-BEN-LIM", DD),
+    ("EM6-CON-ENERGY-BEN-LIM", "EM6-CON-ENERGY-DEMAND-FACTORS", UWR),
+    # 1.5 energy management
+    ("EM6-CON-ENERGY-DEMAND-FACTORS", "EM6-CON-ENERGY-MGMT-STRATEGIES", UWR),
+    ("EM6-CON-ENERGY-MGMT-STRATEGIES", "EM6-CON-NEW-ENERGY-RESOURCES", UWR),
+    ("EM6-CON-NEW-ENERGY-RESOURCES", "EM6-CON-ENERGY-STRATEGIES-EVAL", DD),
+    # 1.6 fracking
+    ("EM6-CON-FRACKING-DEF", "EM6-CON-FRACKING-EVAL", DD),
+    ("EM6-CON-ENERGY-CLASSIFY", "EM6-CON-FRACKING-EVAL", UWR),
+    # 2.1 soils and crop growth
+    ("EM6-CON-ROCK-CYCLE", "EM6-CON-SOIL-COMPOSITION", UWR),
+    ("EM6-CON-SOIL-COMPOSITION", "EM6-CON-SOIL-CROP-GROWTH", DD),
+    ("EM6-CON-SOIL-CROP-GROWTH", "EM6-CON-LOAM-SOILS", DD),
+    ("EM6-CON-WEATHER-DEF", "EM6-CON-SEASONS-IMPACT", UWR),
+    ("EM6-CON-SEASONS-IMPACT", "EM6-CON-CROP-OPTIMUM-CONDITIONS", UWR),
+    ("EM6-CON-LOAM-SOILS", "EM6-CON-CROP-OPTIMUM-CONDITIONS", UWR),
+    # 2.2 agriculture
+    ("EM6-CON-CROP-OPTIMUM-CONDITIONS", "EM6-CON-AGRICULTURE-TYPES", UWR),
+    ("EM6-CON-SUSTAINABLE-RESOURCE-MGMT", "EM6-CON-SUSTAINABLE-FOOD-PROD", UWR),
+    ("EM6-CON-AGRICULTURE-TYPES", "EM6-CON-SUSTAINABLE-FOOD-PROD", UWR),
+    ("EM6-CON-SUSTAINABLE-FOOD-PROD", "EM6-CON-FOOD-PROD-STRATEGIES", DD),
+    ("EM6-CON-FOOD-PROD-STRATEGIES", "EM6-CON-UNSUSTAINABLE-AGRI-IMPACTS", UWR),
+    # 2.3 soil erosion
+    ("EM6-CON-UNSUSTAINABLE-AGRI-IMPACTS", "EM6-CON-SOIL-EROSION-CAUSES", UWR),
+    ("EM6-CON-SOIL-EROSION-CAUSES", "EM6-CON-SOIL-EROSION-IMPACTS", DD),
+    ("EM6-CON-SOIL-EROSION-IMPACTS", "EM6-CON-SOIL-EROSION-STRATEGIES", DD),
+    # 3.1 water supply
+    ("EM6-CON-WATER-CYCLE-68", "EM6-CON-FRESHWATER-SOURCES", DD),
+    ("EM6-CON-FRESHWATER-SOURCES", "EM6-CON-OCEANS-ID", UWR),
+    ("EM6-CON-FRESHWATER-SOURCES", "EM6-CON-POTABLE-DEF", UWR),
+    ("EM6-CON-POTABLE-DEF", "EM6-CON-WATER-TREATMENT", DD),
+    ("EM6-CON-POTABLE-DEF", "EM6-CON-POTABLE-AVAILABILITY", UWR),
+    ("EM6-CON-POTABLE-AVAILABILITY", "EM6-CON-DESALINATION", UWR),
+    ("EM6-CON-DESALINATION", "EM6-CON-DESALINATION-EVAL", DD),
+    ("EM6-CON-FRESHWATER-SOURCES", "EM6-CON-MULTIPURPOSE-DAM", UWR),
+    ("EM6-CON-MULTIPURPOSE-DAM", "EM6-CON-DAM-EVAL", DD),
+    # 3.2 water pollution
+    ("EM6-CON-WATER-POLLUTION-SOURCES", "EM6-CON-WATER-POLLUTION-IMPACTS", DD),
+    ("EM6-CON-WATER-POLLUTION-IMPACTS", "EM6-CON-WATER-QUALITY-STRATEGIES", DD),
+    ("EM6-CON-WATER-TREATMENT", "EM6-CON-WATER-QUALITY-STRATEGIES", UWR),
+    # 3.3 water-related disease
+    ("EM6-CON-WATER-POLLUTION-IMPACTS", "EM6-CON-MALARIA-VECTOR", UWR),
+    ("EM6-CON-MALARIA-VECTOR", "EM6-CON-MALARIA-CONTROL", DD),
+    ("EM6-CON-WATER-TREATMENT", "EM6-CON-CHOLERA-CONTROL", UWR),
+    ("EM6-CON-POTABLE-DEF", "EM6-CON-CHOLERA-CONTROL", UWR),
+    ("EM6-CON-MALARIA-CONTROL", "EM6-CON-DISEASE-CONTROL-EVAL", UWR),
+    ("EM6-CON-CHOLERA-CONTROL", "EM6-CON-DISEASE-CONTROL-EVAL", UWR),
+    # 3.4 oceans
+    ("EM6-CON-MARINE-EXPLOITATION-IMPACTS", "EM6-CON-MARINE-AQUACULTURE-DEF", UWR),
+    ("EM6-CON-MARINE-AQUACULTURE-DEF", "EM6-CON-AQUACULTURE-IMPACTS", DD),
+    ("EM6-CON-MARINE-EXPLOITATION-IMPACTS", "EM6-CON-HARVEST-MANAGEMENT", UWR),
+    ("EM6-CON-AQUACULTURE-IMPACTS", "EM6-CON-HARVEST-MANAGEMENT", UWR),
+    ("EM6-CON-HARVEST-MANAGEMENT", "EM6-CON-HARVEST-MGMT-EVAL", DD),
+    # 3.5 oil pollution
+    ("EM6-CON-ENERGY-CLASSIFY", "EM6-CON-OIL-POLLUTION-CAUSES", UWR),
+    ("EM6-CON-OIL-POLLUTION-CAUSES", "EM6-CON-OIL-POLLUTION-IMPACTS", DD),
+    ("EM6-CON-OIL-POLLUTION-IMPACTS", "EM6-CON-OIL-SPILL-PREVENTION", UWR),
+    ("EM6-CON-OIL-SPILL-PREVENTION", "EM6-CON-OIL-SPILL-MINIMISE", UWR),
+    # 3.6 plastics
+    ("EM6-CON-FOSSIL-FUEL-FORMATION", "EM6-CON-PLASTICS-CONVENTIONAL", UWR),
+    ("EM6-CON-PLASTICS-CONVENTIONAL", "EM6-CON-BIOPLASTICS", UWR),
+    ("EM6-CON-BIOPLASTICS", "EM6-CON-BIODEGRADABLE-PLASTICS", UWR),
+    ("EM6-CON-BIOPLASTICS", "EM6-CON-NON-BIODEGRADABLE-PLASTICS", UWR),
+    ("EM6-CON-NON-BIODEGRADABLE-PLASTICS", "EM6-CON-MICROPLASTICS", UWR),
+    ("EM6-CON-MICROPLASTICS", "EM6-CON-PLASTIC-POLLUTION-IMPACTS", DD),
+    ("EM6-CON-PLASTIC-POLLUTION-IMPACTS", "EM6-CON-PLASTIC-POLLUTION-MGMT", DD),
+    # 4.1 atmosphere structure
+    ("EM6-CON-ATMOS-STRUCTURE-68", "EM6-CON-CLIMATE-DEF", UWR),
+    ("EM6-CON-WEATHER-DEF", "EM6-CON-CLIMATE-DEF", DD),
+    ("EM6-CON-CLIMATE-DEF", "EM6-CON-GREENHOUSE-EFFECT-68", UWR),
+    # 4.2 greenhouse gases and climate change
+    ("EM6-CON-GREENHOUSE-EFFECT-68", "EM6-CON-GHG-DEF-68", DD),
+    ("EM6-CON-GHG-DEF-68", "EM6-CON-GHG-GASES-68", DD),
+    ("EM6-CON-GHG-GASES-68", "EM6-CON-GHG-CAUSES", UWR),
+    ("EM6-CON-ENERGY-CLASSIFY", "EM6-CON-GHG-CAUSES", UWR),
+    ("EM6-CON-GHG-CAUSES", "EM6-CON-GHG-EFFECTS", DD),
+    ("EM6-CON-GHG-EFFECTS", "EM6-CON-CLIMATE-CHANGE-IMPACTS-68", DD),
+    ("EM6-CON-CLIMATE-CHANGE-IMPACTS-68", "EM6-CON-CARBON-FOOTPRINT-REDUCTION", UWR),
+    ("EM6-CON-ENERGY-MGMT-STRATEGIES", "EM6-CON-CARBON-FOOTPRINT-REDUCTION", UWR),
+    ("EM6-CON-CARBON-FOOTPRINT-REDUCTION", "EM6-CON-ADAPTATION-DEF", UWR),
+    ("EM6-CON-ADAPTATION-DEF", "EM6-CON-ADAPTATION-STRATEGIES", DD),
+    ("EM6-CON-ADAPTATION-STRATEGIES", "EM6-CON-CLIMATE-STRATEGY-EVAL-68", DD),
+    # 4.3 acid rain
+    ("EM6-CON-ENERGY-CLASSIFY", "EM6-CON-ACID-RAIN-FORMATION", UWR),
+    ("EM6-CON-ACID-RAIN-FORMATION", "EM6-CON-ACID-RAIN-IMPACTS", DD),
+    ("EM6-CON-ACID-RAIN-IMPACTS", "EM6-CON-ACID-RAIN-MGMT", UWR),
+    ("EM6-CON-ACID-RAIN-MGMT", "EM6-CON-ACID-RAIN-EVAL", DD),
+    # 4.4 ozone depletion
+    ("EM6-CON-ATMOS-STRUCTURE-68", "EM6-CON-CFC-OZONE-CAUSE", UWR),
+    ("EM6-CON-CFC-OZONE-CAUSE", "EM6-CON-OZONE-DEP-IMPACTS-68", DD),
+    ("EM6-CON-OZONE-DEP-IMPACTS-68", "EM6-CON-OZONE-MGMT", UWR),
+    ("EM6-CON-OZONE-MGMT", "EM6-CON-OZONE-MGMT-EVAL", DD),
+    # 5.1 ecosystems
+    ("EM6-CON-ECOSYSTEM-COMPONENTS", "EM6-CON-BIOTIC-ABIOTIC-68", DD),
+    ("EM6-CON-BIOTIC-ABIOTIC-68", "EM6-CON-BIOTIC-INTERACTIONS-68", DD),
+    ("EM6-CON-BIOTIC-INTERACTIONS-68", "EM6-CON-POLLINATION", UWR),
+    ("EM6-CON-ECOSYSTEM-COMPONENTS", "EM6-CON-PHOTOSYNTHESIS-68", UWR),
+    ("EM6-CON-PHOTOSYNTHESIS-68", "EM6-CON-ENERGY-FLOW", UWR),
+    ("EM6-CON-ENERGY-FLOW", "EM6-CON-ECOLOGICAL-PYRAMIDS-68", DD),
+    ("EM6-CON-PHOTOSYNTHESIS-68", "EM6-CON-RESPIRATION-68", UWR),
+    ("EM6-CON-RESPIRATION-68", "EM6-CON-CARBON-CYCLE-68", UWR),
+    ("EM6-CON-PHOTOSYNTHESIS-68", "EM6-CON-CARBON-CYCLE-68", UWR),
+    # 5.2 forests
+    ("EM6-CON-DEFORESTATION-CAUSES", "EM6-CON-DEFORESTATION-IMPACTS", DD),
+    ("EM6-CON-DEFORESTATION-IMPACTS", "EM6-CON-FOREST-SUSTAIN-MGMT-DEF", DD),
+    ("EM6-CON-FOREST-SUSTAIN-MGMT-DEF", "EM6-CON-FOREST-SUSTAIN-NEED", UWR),
+    ("EM6-CON-CARBON-CYCLE-68", "EM6-CON-FOREST-SUSTAIN-NEED", UWR),
+    # 5.3 conservation
+    ("EM6-CON-BIOTIC-INTERACTIONS-68", "EM6-CON-CONSERVATION-STRATEGIES", UWR),
+    ("EM6-CON-FOREST-SUSTAIN-NEED", "EM6-CON-CONSERVATION-STRATEGIES", UWR),
+    ("EM6-CON-CONSERVATION-STRATEGIES", "EM6-CON-CONSERVATION-EVAL", DD),
+    # 5.4 fieldwork
+    ("EM6-CON-SCIENTIFIC-METHOD-68", "EM6-CON-SAMPLING-STRATEGIES-68", DD),
+    ("EM6-CON-SAMPLING-STRATEGIES-68", "EM6-CON-SAMPLING-STRATEGIES-EVAL", DD),
+    ("EM6-CON-SAMPLING-STRATEGIES-EVAL", "EM6-CON-SAMPLING-TECHNIQUES", UWR),
+    ("EM6-CON-SAMPLING-TECHNIQUES", "EM6-CON-SAMPLING-TECHNIQUES-EVAL", DD),
+    # 6.1 tectonics
+    ("EM6-CON-EARTH-STRUCTURE", "EM6-CON-CONTINENTS-ID", UWR),
+    ("EM6-CON-EARTH-STRUCTURE", "EM6-CON-PLATE-DISTRIBUTION", UWR),
+    ("EM6-CON-PLATE-DISTRIBUTION", "EM6-CON-CONVECTION-PLATE-BOUNDARIES", DD),
+    ("EM6-CON-CONVECTION-PLATE-BOUNDARIES", "EM6-CON-EARTHQUAKE-FEATURES", UWR),
+    ("EM6-CON-CONVECTION-PLATE-BOUNDARIES", "EM6-CON-VOLCANO-FEATURES", UWR),
+    ("EM6-CON-EARTHQUAKE-FEATURES", "EM6-CON-TECTONIC-IMPACTS", UWR),
+    ("EM6-CON-VOLCANO-FEATURES", "EM6-CON-TECTONIC-IMPACTS", UWR),
+    ("EM6-CON-TECTONIC-IMPACTS", "EM6-CON-TECTONIC-MANAGEMENT", DD),
+    ("EM6-CON-TECTONIC-MANAGEMENT", "EM6-CON-TECTONIC-MGMT-EVAL", DD),
+    ("EM6-CON-VOLCANO-FEATURES", "EM6-CON-VOLCANO-OPPORTUNITIES", UWR),
+    # 6.2 tropical cyclones
+    ("EM6-CON-CYCLONE-FORMATION", "EM6-CON-CYCLONE-IMPACTS", DD),
+    ("EM6-CON-CYCLONE-IMPACTS", "EM6-CON-CYCLONE-MANAGEMENT", UWR),
+    ("EM6-CON-TECTONIC-MANAGEMENT", "EM6-CON-CYCLONE-MANAGEMENT", UWR),
+    ("EM6-CON-CYCLONE-MANAGEMENT", "EM6-CON-CYCLONE-MGMT-EVAL", DD),
+    # 6.3 flooding
+    ("EM6-CON-SOIL-EROSION-IMPACTS", "EM6-CON-FLOODING-CAUSES", UWR),
+    ("EM6-CON-DEFORESTATION-IMPACTS", "EM6-CON-FLOODING-CAUSES", UWR),
+    ("EM6-CON-FLOODING-CAUSES", "EM6-CON-FLOODING-IMPACTS", DD),
+    ("EM6-CON-FLOODING-IMPACTS", "EM6-CON-FLOODING-MANAGEMENT", UWR),
+    ("EM6-CON-TECTONIC-MANAGEMENT", "EM6-CON-FLOODING-MANAGEMENT", UWR),
+    ("EM6-CON-FLOODING-MANAGEMENT", "EM6-CON-FLOODING-MGMT-EVAL", DD),
+    ("EM6-CON-FLOODING-MGMT-EVAL", "EM6-CON-FLOODING-OPPORTUNITIES", UWR),
+    # 6.4 drought
+    ("EM6-CON-DROUGHT-DEF", "EM6-CON-DROUGHT-CAUSES", DD),
+    ("EM6-CON-CLIMATE-CHANGE-IMPACTS-68", "EM6-CON-DROUGHT-CAUSES", UWR),
+    ("EM6-CON-DROUGHT-CAUSES", "EM6-CON-DROUGHT-IMPACTS", DD),
+    ("EM6-CON-FRESHWATER-SOURCES", "EM6-CON-DROUGHT-IMPACTS", UWR),
+    ("EM6-CON-DROUGHT-IMPACTS", "EM6-CON-DROUGHT-MANAGEMENT", UWR),
+    ("EM6-CON-TECTONIC-MANAGEMENT", "EM6-CON-DROUGHT-MANAGEMENT", UWR),
+    ("EM6-CON-DROUGHT-MANAGEMENT", "EM6-CON-DROUGHT-MGMT-EVAL", DD),
+    # 7.1 population structure
+    ("EM6-CON-POP-DENSITY-68", "EM6-CON-POP-PYRAMIDS", UWR),
+    ("EM6-CON-POP-PYRAMIDS", "EM6-CON-LIC-HIC-COMPARE", UWR),
+    ("EM6-CON-INCOME-GROUPS-68", "EM6-CON-LIC-HIC-COMPARE", DD),
+    # 7.2 population change
+    ("EM6-CON-POP-CHANGE-FACTORS", "EM6-CON-POP-GROWTH-IMPACTS", DD),
+    ("EM6-CON-POP-PYRAMIDS", "EM6-CON-POP-CHANGE-FACTORS", UWR),
+    # 7.3 population management
+    ("EM6-CON-POP-GROWTH-IMPACTS", "EM6-CON-POP-SIZE-MANAGEMENT", UWR),
+    ("EM6-CON-POP-SIZE-MANAGEMENT", "EM6-CON-POP-SIZE-MGMT-EVAL", DD),
+    # knowingly served-order-reversed authored pairs (honest teaching
+    # direction; the in-order law drops them, counted and disclosed):
+    # photosynthesis -> the optimum-photosynthesis crop conditions (the
+    # syllabus teaches photosynthesis in 5.1.5, but the spine serves the
+    # crop register in section 2 before the ecosystem register in section 5)
+    ("EM6-CON-PHOTOSYNTHESIS-68", "EM6-CON-CROP-OPTIMUM-CONDITIONS", UWR),
+    # deforestation impacts -> the soil-erosion causes list that names
+    # deforestation (section 2 is served before the section-5 deforestation
+    # register whose impacts drive erosion)
+    ("EM6-CON-DEFORESTATION-IMPACTS", "EM6-CON-SOIL-EROSION-CAUSES", UWR),
+]
