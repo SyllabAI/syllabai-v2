@@ -297,6 +297,27 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-19 (batch seventeen, the Edexcel science tranche 14):
+        # the physics family — 4PH1 linear, both 4XPH1 modular units
+        # (renumbered derivatives of the 4PH1 master lattice, derivation
+        # disclosed in the unit modules' docstrings) and the YPH11 IAL
+        # register.
+        physics = {
+            "igcse-physics-19": ("f8ph_lattice_4ph1", "4PH1"),
+            "igcse-physics-modular-24-unit-1": ("f8ph_lattice_4xph1u1", "4XPH1U1"),
+            "igcse-physics-modular-24-unit-2": ("f8ph_lattice_4xph1u2", "4XPH1U2"),
+            "ial-physics-19": ("f8ph_lattice_wph11", "YPH11"),
+        }
+        if args.course in physics:
+            mod, tag = physics[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="seventeen", task="T-KG-PRE-19", exporter_ver="v2.2",
+            )
+            return
         # T-KG-PRE-18 (batch sixteen, the religious-studies family
         # tranche 13): CIE 0490 IGCSE.
         religious_studies = {
