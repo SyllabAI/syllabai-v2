@@ -9,6 +9,7 @@ import { getGradeBoundariesSummary } from "@/lib/grade-boundaries";
 import { loadGuidedIndex } from "@/lib/guided-lessons";
 import { getUgmBundle } from "@/lib/ugm";
 import { CourseShell, type SidebarData } from "@/components/hub/course-shell";
+import { teachMeEnabledForCourse } from "@/components/hub/teach-me/gate";
 import { LastOpenedTracker } from "@/components/hub/last-opened-tracker";
 
 /**
@@ -79,11 +80,15 @@ export default async function CourseLayout({
   // same reads) so SSR and the client render identical rows — the ADR-021
   // hydration contract. Committed-content reads only; nothing session-scoped,
   // so static prerender is unaffected.
-  const [seneca, gradeBoundaries, guided, ugm] = await Promise.all([
+  // T-TEACHGENIE-004: the teach lane joins the same law — the flags.json
+  // gate read (React-cached) shared with the /teach-genie page and the
+  // Learn-band card. ⚠️ Out-of-fence additive mount (see course-shell row).
+  const [seneca, gradeBoundaries, guided, ugm, teachMe] = await Promise.all([
     getSenecaForCourse(slug),
     getGradeBoundariesSummary(slug),
     loadGuidedIndex(slug),
     getUgmBundle(slug),
+    teachMeEnabledForCourse(slug),
   ]);
 
   const data: SidebarData = {
@@ -115,6 +120,10 @@ export default async function CourseLayout({
     hasGradeBoundaries: gradeBoundaries !== null,
     hasGuidedLessons: guided !== null,
     hasUgm: ugm !== null,
+    // T-TEACHGENIE-004 (sidebar Learn-band row — same one-mount precedent
+    // as the course tile): the lane rides the persistent chrome for pilot
+    // courses, absent-when-absent everywhere else.
+    hasTeachMe: teachMe,
   };
 
   return (
