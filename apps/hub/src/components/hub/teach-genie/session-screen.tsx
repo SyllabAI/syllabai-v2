@@ -280,7 +280,7 @@ function ChatStream({
           onScroll={onScroll}
           role="log"
           aria-live="polite"
-          aria-label="Teach Genie conversation"
+          aria-label="Teach SillyAI conversation"
           className="scrollbar-none relative flex min-h-0 flex-1 flex-col overflow-y-auto"
         >
           <div className="flex flex-col gap-2.5 px-2 py-4">
@@ -289,7 +289,7 @@ function ChatStream({
                 <div key={row.id} className="flex w-full flex-col items-start">
                   <div className="mb-1.5 flex items-center gap-2 px-2">
                     <BabyGenieAvatar size={28} />
-                    <span className="text-base font-medium text-foreground">Baby Genie</span>
+                    <span className="text-base font-medium text-foreground">SillyAI</span>
                   </div>
                   <div className="group relative w-full max-w-[75%] px-2">
                     <div className="prose-sm max-w-full min-w-0 text-[15px] leading-relaxed text-foreground">
@@ -309,10 +309,10 @@ function ChatStream({
               ),
             )}
             {sending && (
-              <div className="flex w-full flex-col items-start" aria-label="Baby Genie is thinking">
+              <div className="flex w-full flex-col items-start" aria-label="SillyAI is thinking">
                 <div className="mb-1.5 flex items-center gap-2 px-2">
                   <BabyGenieAvatar size={28} />
-                  <span className="text-base font-medium text-foreground">Baby Genie</span>
+                  <span className="text-base font-medium text-foreground">SillyAI</span>
                 </div>
                 <div className="px-2">
                   <div className="flex w-fit items-center gap-[3px] rounded-2xl bg-background px-3 py-2.5 shadow ring-1 ring-foreground/5">
@@ -520,8 +520,8 @@ function Composer({
             }
           }}
           rows={1}
-          placeholder="Teach Baby Genie — type it, or say it out loud…"
-          aria-label="Your explanation to Baby Genie"
+          placeholder="Teach SillyAI — type it, or say it out loud…"
+          aria-label="Your explanation to SillyAI"
           disabled={sending}
           className="max-h-[200px] min-h-[24px] w-full resize-none bg-transparent px-3 py-2 text-[15px] outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
         />
@@ -553,7 +553,7 @@ function Composer({
               <PopoverContent align="start" sideOffset={8} className="w-80 max-w-[90vw]">
                 <p className="text-sm font-medium text-foreground">Stuck on this one?</p>
                 <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                  Baby Genie can&apos;t help you — he&apos;s the one learning. The SyllabAI Tutor can walk you through{" "}
+                  SillyAI can&apos;t help you — it&apos;s the one learning. The SyllabAI Tutor can walk you through{" "}
                   {currentObjectiveText ? (
                     <span className="font-medium text-foreground">“{currentObjectiveText}”</span>
                   ) : (
@@ -575,7 +575,7 @@ function Composer({
           <button
             type="submit"
             disabled={!text.trim() || sending}
-            aria-label="Send to Baby Genie"
+            aria-label="Send to SillyAI"
             className="inline-flex size-9 cursor-pointer items-center justify-center rounded-full bg-[#1cb0f6] text-white transition-all hover:bg-[#1cb0f6]/80 disabled:cursor-not-allowed disabled:opacity-40 dark:bg-[#46cbe3] dark:text-[#191919]"
           >
             <SendHorizontal className="size-4.5" aria-hidden />

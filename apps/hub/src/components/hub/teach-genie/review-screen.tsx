@@ -78,7 +78,7 @@ export function TeachGenieReview({ session, transcript, review, courseLabel, ref
                 <div key={row.id} className="flex w-full flex-col items-start gap-1">
                   <div className="mb-0.5 flex items-center gap-2 px-2">
                     <BabyGenieAvatar size={24} round />
-                    <span className="tg-title text-sm text-muted-foreground">Baby Genie</span>
+                    <span className="tg-title text-sm text-muted-foreground">SillyAI</span>
                   </div>
                   <div className="max-w-[75%] px-2">
                     <div className="rounded-2xl bg-muted px-4 py-3 text-[15px] leading-relaxed text-foreground">
@@ -180,7 +180,7 @@ function PendingCard() {
       </div>
       <p className="text-sm font-medium text-foreground">Preparing your review…</p>
       <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-        Baby Genie&apos;s teacher is writing up what landed and what to tighten. This usually takes under a minute —
+        SillyAI&apos;s teacher is writing up what landed and what to tighten. This usually takes under a minute —
         it lands here the moment it&apos;s ready.
       </p>
     </div>

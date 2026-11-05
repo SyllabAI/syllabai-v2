@@ -196,16 +196,16 @@ describe("teach-me behavioural gate (T-MIG-039, ADR-040)", () => {
   });
 
   it("prompt pinning: the TS module is byte-identical to the pinned .md sources (bump, never edit)", async () => {
-    const { PUPIL_CHARTER_V2, TEACHME_TURN_V2, TEACHME_REVIEW_V1 } = await import("../../src/teach-me/prompts");
+    const { PUPIL_CHARTER_V3, TEACHME_TURN_V3, TEACHME_REVIEW_V1 } = await import("../../src/teach-me/prompts");
     const dir = join(import.meta.dir, "../../src/teach-me/prompts");
-    expect(PUPIL_CHARTER_V2).toBe(readFileSync(join(dir, "pupil.md"), "utf-8"));
-    expect(TEACHME_TURN_V2).toBe(readFileSync(join(dir, "teachme-turn-v2.md"), "utf-8"));
+    expect(PUPIL_CHARTER_V3).toBe(readFileSync(join(dir, "pupil-v3.md"), "utf-8"));
+    expect(TEACHME_TURN_V3).toBe(readFileSync(join(dir, "teachme-turn-v3.md"), "utf-8"));
     expect(TEACHME_REVIEW_V1).toBe(readFileSync(join(dir, "teachme-review-v1.md"), "utf-8"));
     // the fused prompt must carry the charter verbatim (the {{PUPIL_CHARTER}} fill)
-    expect(TEACHME_TURN_V2).toContain("{{PUPIL_CHARTER}}");
+    expect(TEACHME_TURN_V3).toContain("{{PUPIL_CHARTER}}");
   });
 
-  it("T-TEACHGENIE-001 opener: the create response opens with Baby Genie's topic-aware in-character message", async () => {
+  it("opener: the create response opens with SillyAI's topic-aware in-character message (T-TEACHGENIE-001; persona renamed T-TEACHGENIE-003)", async () => {
     const h = makeHarness({});
     const created = await h.createSession();
     expect(created.status).toBe(200);
@@ -327,7 +327,7 @@ describe("teach-me behavioural gate (T-MIG-039, ADR-040)", () => {
     expect(CFG.antiGaming.repeatCreditWindowDays).toBe(7);
     expect(CFG.flags.teachMe.courses).toEqual([COURSE]);
     expect(CFG.evidence).toEqual({ kind: "TEACH_SESSION", tier: "AI_SUGGESTED", appendOnly: true });
-    expect(CFG.pupilName).toBe("Baby Genie");
+    expect(CFG.pupilName).toBe("SillyAI");
     expect(typeof USER).toBe("string"); // fixtures keep identity constants here too
   });
 });

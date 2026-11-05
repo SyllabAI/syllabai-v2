@@ -1,7 +1,8 @@
 "use client";
 
 /**
- * T-TEACHGENIE-001 — Baby Genie's avatar of record.
+ * T-TEACHGENIE-001 — the pupil avatar of record (renamed SillyAI in
+ * T-TEACHGENIE-003; same original art).
  *
  * Original art (inline SVG, drawn for SyllabAI): a friendly baby-genie face
  * on the dark tile MG's chat avatar uses (`rounded-xl border-2 bg-black` in
@@ -19,7 +20,7 @@ export function BabyGenieAvatar({ size = 32, round = false }: { size?: number; r
       }`}
       style={{ width: size, height: size }}
     >
-      <svg width={size} height={size} viewBox="0 0 64 64" role="img" aria-label="Baby Genie">
+      <svg width={size} height={size} viewBox="0 0 64 64" role="img" aria-label="SillyAI">
         <defs>
           <radialGradient id="tg-bg" cx="50%" cy="38%" r="80%">
             <stop offset="0%" stopColor="#1d3a5f" />

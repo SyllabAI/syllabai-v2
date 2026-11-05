@@ -49,8 +49,8 @@ export async function generateMetadata({
   const hub = await loadHubCourse(slug);
   if (!hub) return {};
   return {
-    title: `Teach Genie — ${hub.meta.label}`,
-    description: `Learn by teaching: explain ${hub.meta.label} topics to Baby Genie in your own words — he keeps asking until it makes sense, objectives tick off, and a review lands at the end.`,
+    title: `Teach SillyAI — ${hub.meta.label}`,
+    description: `Learn by teaching: explain ${hub.meta.label} topics to SillyAI in your own words — it keeps asking until it makes sense, objectives tick off, and a review lands at the end.`,
     robots: { index: false }, // per-session learner surface, like the sibling lanes
   };
 }
@@ -75,10 +75,10 @@ export default async function TeachGeniePage({
             <Badge variant="outline" className="text-[10px]">
               import pending
             </Badge>
-            <h2 className="mt-3 text-base font-semibold">Teach Genie isn&apos;t live for this course yet</h2>
+            <h2 className="mt-3 text-base font-semibold">Teach SillyAI isn&apos;t live for this course yet</h2>
             <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
               Learn-by-teaching rolls out course by course, grounded in each course&apos;s validated material. When
-              this course&apos;s serving corpus is ready, Baby Genie appears here — this page is the honest state, not
+              this course&apos;s serving corpus is ready, SillyAI appears here — this page is the honest state, not
               a stub.
             </p>
           </div>
@@ -95,7 +95,7 @@ export default async function TeachGeniePage({
       <div className="px-4 py-6 sm:px-6 lg:px-8">
         <div className="mx-auto mt-6 max-w-3xl">
           <div className="rounded-lg border border-dashed border-border bg-card px-6 py-10 text-center">
-            <h2 className="text-base font-semibold">Teach Genie is warming up</h2>
+            <h2 className="text-base font-semibold">Teach SillyAI is warming up</h2>
             <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
               The flag is on but this course&apos;s spec tree hasn&apos;t finished importing. Check back shortly.
             </p>
@@ -114,7 +114,7 @@ export default async function TeachGeniePage({
       <div className="px-4 py-6 sm:px-6 lg:px-8">
         <div className="mx-auto mt-6 max-w-3xl">
           <div className="rounded-lg border border-dashed border-border bg-card px-6 py-10 text-center">
-            <h2 className="text-base font-semibold">Teach Genie is warming up</h2>
+            <h2 className="text-base font-semibold">Teach SillyAI is warming up</h2>
             <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
               The flag is on but this course&apos;s revision notes haven&apos;t finished importing. Check back shortly.
             </p>
@@ -130,7 +130,7 @@ export default async function TeachGeniePage({
       <div className="px-4 pt-4 sm:px-6">
         <p className="text-xs text-muted-foreground">
           {meta.label} <span className="mx-1" aria-hidden>·</span>{" "}
-          <span className="font-medium text-foreground">Teach Genie</span>
+          <span className="font-medium text-foreground">Teach SillyAI</span>
         </p>
       </div>
       <TeachGenieClient course={slug} courseLabel={meta.label} noteTree={noteTree} />
