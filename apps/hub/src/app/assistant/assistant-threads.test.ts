@@ -233,16 +233,16 @@ describe("assistant threads — the sync tier (phase 3b)", () => {
   });
 
   test("hydrate under a full store: the active thread is protected, evictables go first, the count discloses", () => {
-    for (let i = 0; i < 40; i++) createThread(`filler ${i}`); // active = filler 39
+    for (let i = 0; i < 200; i++) createThread(`filler ${i}`); // active = filler 199 (T-CAPS-POLICY-1: the cap is 200)
     const activeBefore = getActiveThread()?.id;
     const landed = hydrateAssistantThreads([hydrated("srv-pressure-1"), hydrated("srv-pressure-2")]);
     expect(landed).toBe(2); // both additions land — eviction covers the overflow
-    expect(getAssistantThreads().length).toBe(40); // the cap held
+    expect(getAssistantThreads().length).toBe(200); // the cap held
     expect(getActiveThread()?.id).toBe(activeBefore); // the active thread survived
     // the OLDEST fillers evicted first (the survivor law's first arm)
     expect(getAssistantThreads().some((t) => t.title === "filler 0")).toBe(false);
     expect(getAssistantThreads().some((t) => t.title === "filler 1")).toBe(false);
-    expect(getAssistantThreads().some((t) => t.title === "filler 39")).toBe(true);
+    expect(getAssistantThreads().some((t) => t.title === "filler 199")).toBe(true);
     for (const t of [...getAssistantThreads()]) deleteThread(t.id);
     setActiveThread(null);
   });

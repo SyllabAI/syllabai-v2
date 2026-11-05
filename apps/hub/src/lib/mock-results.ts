@@ -4,8 +4,9 @@
  * Mocks are graded by the student against the official MS PDF. Since the
  * frontend deep-audit Tier 1 (operator order 2026-11-03: "things that are
  * localStorage-only, make them saved to account") the tally is saved to the
- * learner's account (learner_mock_results, server cap 20 per course — the
- * same MAX_PER_COURSE bound here) while the localStorage record stays the
+ * learner's account (learner_mock_results, server cap 50 per course — the
+ * same MAX_PER_COURSE bound here; T-CAPS-POLICY-1 raised 20 → 50 on all
+ * three sites) while the localStorage record stays the
  * UI cache, per the my-subjects.ts T-TEACH-001 write-through law. Signed
  * out, the store behaves exactly as before (this-browser-only, honestly
  * disclosed by the strip).
@@ -45,7 +46,10 @@ export interface MockResult {
 }
 
 const KEY = "syllabai.mockResults.v1";
-const MAX_PER_COURSE = 20;
+/** T-CAPS-POLICY-1: 20 → 50, both sides (the contracts'
+ *  MOCK_RESULTS_PER_COURSE and the server's MOCK_RESULTS_CAP move with
+ *  this — one law, three sites, never disagreeing). */
+const MAX_PER_COURSE = 50;
 export const MOCK_RESULTS_EVENT = "syllabai:mock-results-changed";
 
 export function loadMockResults(course?: string): MockResult[] {
@@ -149,7 +153,7 @@ export function useMockResults(course: string): MockResult[] | null {
 //    recency law does not apply here).
 //  - Remote-driven writes set applyingRemote so the mirror does not echo
 //    the set back to core (one PUT per intent, never two).
-//  - Per-course cap: 20 of record, both sides (MAX_PER_COURSE here, the
+//  - Per-course cap: 50 of record, both sides (MAX_PER_COURSE here, the
 //    server's own bound) — cache and account can never disagree on shape.
 
 const wireToLocal = (

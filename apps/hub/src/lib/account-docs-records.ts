@@ -110,6 +110,54 @@ export function capByStamp<T>(pool: Record<string, T>, cap: number, atKey = "at"
   );
 }
 
+// ── the byte budget of record (T-CAPS-POLICY-1) ─────────────────────────
+
+/**
+ * The durable-copy char budget for MAP-shaped pools — the same law as the
+ * thread bridge's THREAD_DOC_BYTE_BUDGET (260,000 chars ≈ ≤520KB UTF-8 at
+ * the pathological 2-bytes/char, ~4× under the plane's 512KB cap for
+ * ASCII-heavy content): the count caps can never bound serialized size, and
+ * an over-budget PUT 413s into silent per-device divergence. The budget
+ * bounds the DURABLE copy only — the device cache keeps every entry.
+ */
+export const POOL_DOC_BYTE_BUDGET = 260_000;
+
+/**
+ * The pool byte-budget cap of record: newest-stamp-first preference, entries
+ * that cannot fit are SKIPPED (not prefix-evicted — pool entries are
+ * heterogeneous per-key records, so packing maximizes durable coverage),
+ * the returned pool serializes under the budget. THE IRREDUCIBLE LAW: when
+ * even the smallest entry alone exceeds the budget, the pool passes through
+ * UNCHANGED and the PUT 413s — which the engine now SURFACES (readDocError);
+ * the local cache keeps every entry either way.
+ */
+export function capPoolByBytes<T>(
+  pool: Record<string, T>,
+  budget: number = POOL_DOC_BYTE_BUDGET,
+  atKey = "at",
+): Record<string, T> {
+  const entries = Object.entries(pool);
+  if (entries.length === 0) return pool;
+  const lengths = entries.map(([k, v]) => JSON.stringify({ [k]: v }).length);
+  if (Math.min(...lengths) + 2 > budget) return pool;
+  const order = entries
+    .map((_, i) => i)
+    .sort(
+      (a, b) =>
+        atOf((entries[b][1] as Record<string, unknown>)?.[atKey]) -
+        atOf((entries[a][1] as Record<string, unknown>)?.[atKey]),
+    );
+  let acc = 2; // "{}"
+  const kept: Array<[string, T]> = [];
+  for (const i of order) {
+    const cost = lengths[i] + (kept.length > 0 ? 1 : 0);
+    if (acc + cost > budget) continue; // too fat here — smaller older entries may still fit
+    acc += cost;
+    kept.push(entries[i]);
+  }
+  return Object.fromEntries(kept);
+}
+
 // ── the mirror shell ────────────────────────────────────────────────────
 
 export interface DocPoolBridgeConfig<S, E> {
@@ -137,6 +185,25 @@ export interface DocPoolBridgeConfig<S, E> {
 }
 
 const applyingRemote = new Set<string>();
+
+/**
+ * The echo-guard span (T-CAPS-POLICY-1 hardening): covers ONE remote-driven
+ * mutation's SYNCHRONOUS notify cascade. try/finally is the point — the
+ * old inline add/delete pairs LEAKED the guard whenever `apply` threw mid-
+ * span (the outer catch swallowed the throw, the guard never released, and
+ * every later mirror for that key no-oped for the REST of the process).
+ * A leaked guard is now impossible by construction (the thread bridge's
+ * `guarded` law, pool-shaped).
+ */
+function guarded(docKey: string, fn: () => void): void {
+  applyingRemote.add(docKey);
+  try {
+    fn();
+  } finally {
+    applyingRemote.delete(docKey);
+  }
+}
+
 const registry = new Map<string, DocPoolBridgeConfig<never, unknown>>();
 
 /** The stored doc shape of record: a plain Record<string, E>; anything
@@ -169,20 +236,14 @@ export function mirrorDocPoolState<S, E>(docKey: string, snapshot: S): void {
       if (owner && owner !== email) {
         // the device-local pool belongs to ANOTHER account: re-base to
         // EMPTY + re-tag + the durable empty (B's pool initialized)
-        applyingRemote.add(docKey);
-        config.apply({} as Record<string, E>);
-        applyingRemote.delete(docKey);
+        guarded(docKey, () => config.apply({} as Record<string, E>));
         stampPoolOwner(config.localKey, email);
-        applyingRemote.add(docKey);
-        writeDoc(docKey, {});
-        applyingRemote.delete(docKey);
+        guarded(docKey, () => writeDoc(docKey, {}));
         return;
       }
       // adoptable or already ours: mirror the device-local pool UP
       stampPoolOwner(config.localKey, email);
-      applyingRemote.add(docKey);
-      writeDoc(docKey, capByStamp(local, config.cap));
-      applyingRemote.delete(docKey);
+      guarded(docKey, () => writeDoc(docKey, capPoolByBytes(capByStamp(local, config.cap))));
       return;
     }
 
@@ -190,29 +251,29 @@ export function mirrorDocPoolState<S, E>(docKey: string, snapshot: S): void {
     if (owner && owner !== email) {
       // the durable copy belongs to the OTHER account: re-base locally,
       // NO PUT (the server copy is already B's own durable truth)
-      applyingRemote.add(docKey);
-      config.apply(serverPool);
-      applyingRemote.delete(docKey);
+      guarded(docKey, () => config.apply(serverPool));
       stampPoolOwner(config.localKey, email);
       return;
     }
 
-    const union = capByStamp(config.merge(local, serverPool), config.cap);
-    if (config.stamp(union) !== config.stamp(serverPool)) {
-      // local has something new/newer → commit up, ONE intent
+    // T-CAPS-POLICY-1: the byte budget bounds the DURABLE copy, never the
+    // device cache — same ordering as the thread bridge (trim BEFORE the
+    // stamp checks so a trimmed commit converges; pull-down adopts the
+    // count-capped union, never the byte-trimmed one).
+    const capped = capByStamp(config.merge(local, serverPool), config.cap);
+    const bounded = capPoolByBytes(capped);
+    if (config.stamp(bounded) !== config.stamp(serverPool)) {
+      // local has something new/newer (or the budget trimmed the doc) →
+      // commit up, ONE intent
       stampPoolOwner(config.localKey, email);
-      applyingRemote.add(docKey);
-      writeDoc(docKey, union);
-      applyingRemote.delete(docKey);
+      guarded(docKey, () => writeDoc(docKey, bounded));
       return;
     }
-    if (config.stamp(union) !== config.stamp(local)) {
+    if (config.stamp(capped) !== config.stamp(local)) {
       // per-key refresh from the server → pull down only (the memory
       // baseline is ALREADY the server's clean value, so the persist-tail
       // mirror this apply schedules later sees stamp equality and no-ops)
-      applyingRemote.add(docKey);
-      config.apply(union);
-      applyingRemote.delete(docKey);
+      guarded(docKey, () => config.apply(capped));
     }
   } catch {
     // a mirror never throws — the surfaces keep working device-local

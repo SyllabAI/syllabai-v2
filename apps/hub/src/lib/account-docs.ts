@@ -49,6 +49,20 @@ const subscribers = new Set<(key: string | null) => void>();
 let hydrated = false;
 let hydrating: Promise<void> | null = null;
 
+/** T-CAPS-POLICY-1 — the silent-413 retirement. The last REJECTED-PUT state
+ *  per key ("too_large" = the plane answered 413 document_too_large). A
+ *  failed PUT used to keep the dirty flag and re-arm invisibly forever: the
+ *  account copy froze while every surface kept working device-local, and
+ *  NOTHING told anyone. Now the state is readable (readDocError) and
+ *  notified (subscribers see the key), so any UI can surface it. Cleared
+ *  on the next successful flush and on reset. */
+export type DocError = "too_large";
+const docErrors = new Map<string, DocError>();
+
+export function readDocError(key: string): DocError | null {
+  return docErrors.get(key) ?? null;
+}
+
 function notify(key: string | null) {
   for (const s of subscribers) {
     try {
@@ -122,11 +136,26 @@ export async function flushDoc(key: string): Promise<void> {
       memory.set(key, { value, dirty: false });
       notify(key);
     }
+    if (docErrors.delete(key)) notify(key); // the honest clear after a healed write
   } catch (e) {
     if (e instanceof ApiError && e.status === 401) {
       const cur = memory.get(key);
       if (cur) memory.set(key, { value: cur.value, dirty: false });
       notify(key);
+      return;
+    }
+    if (e instanceof ApiError && e.status === 413) {
+      // T-CAPS-POLICY-1: surface the rejection instead of swallowing it.
+      // The value STAYS dirty per the law (a later smaller write — e.g.
+      // after the user deletes the fat thread — can still land); the
+      // visibility re-arm still applies. Retry is futile until the value
+      // changes, but the USER now knows; before this, nobody ever did.
+      docErrors.set(key, "too_large");
+      console.error(
+        `[account-docs] PUT "${key}" rejected (413 document_too_large) — the account copy is stale until the value shrinks; local data is safe`,
+      );
+      notify(key);
+      rearmOnVisible(key);
       return;
     }
     rearmOnVisible(key);
@@ -193,6 +222,7 @@ export function resetAccountDocs(): void {
   }
   rearmHandlers.clear();
   memory.clear();
+  docErrors.clear();
   hydrated = false;
   hydrating = null;
 }

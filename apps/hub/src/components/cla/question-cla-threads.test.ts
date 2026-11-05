@@ -210,25 +210,26 @@ describe("question-cla thread store (DC-6 phase 2a)", () => {
     setActiveQuestionThread(q, null);
   });
 
-  test("the 40-thread cap evicts oldest-updated and protects the active thread", () => {
-    // fill to the cap across distinct questions
-    for (let i = 0; i < 40; i++) {
+  test("the 200-thread cap evicts oldest-updated and protects the active thread", () => {
+    // fill to the cap across distinct questions (T-CAPS-POLICY-1: cap 200,
+    // server-parity — MAX_THREADS_PER_LEARNER law)
+    for (let i = 0; i < 200; i++) {
       commitQuestionClaMessages(`cap-q-${i}`, [userTurn(`q${i}`)], { questionNumber: i });
     }
-    expect(getActiveThreadFor("cap-q-39")).not.toBeNull();
+    expect(getActiveThreadFor("cap-q-199")).not.toBeNull();
     // one more commit pushes past the cap — the OLDEST thread goes, the
     // active one stays
     commitQuestionClaMessages("cap-q-new", [userTurn("newest")]);
     const total = getActiveThreadFor("cap-q-new") ? threadsForQuestion("cap-q-new").length : 0;
     expect(total).toBe(1);
-    const allCount = 40; // family cap
+    const allCount = 200; // family cap
     let count = 0;
-    for (let i = 0; i < 41; i++) {
-      const qid = i === 40 ? "cap-q-new" : `cap-q-${i}`;
+    for (let i = 0; i < 201; i++) {
+      const qid = i === 200 ? "cap-q-new" : `cap-q-${i}`;
       count += threadsForQuestion(qid).length;
     }
     expect(count).toBe(allCount);
-    expect(threadsForQuestion("cap-q-39").length).toBe(1); // recent — survives
+    expect(threadsForQuestion("cap-q-199").length).toBe(1); // recent — survives
     setActiveQuestionThread("cap-q-new", null);
   });
 
@@ -472,8 +473,8 @@ describe("question cla threads — the rail verbs (phase 3c)", () => {
     expect(threadsForQuestion(RAIL_Q2).length).toBeGreaterThan(0);
   });
 
-  test("insert: the 40-thread cap is respected on the insert path (runs LAST — fill pressure is global)", () => {
-    for (let i = 0; i < 50; i++) {
+  test("insert: the 200-thread cap is respected on the insert path (runs LAST — fill pressure is global)", () => {
+    for (let i = 0; i < 210; i++) {
       insertQuestionClaThread(
         {
           id: `qc-cap-${i}`,
@@ -490,6 +491,6 @@ describe("question cla threads — the rail verbs (phase 3c)", () => {
         false,
       );
     }
-    expect(threadsForQuestion(RAIL_CAP_Q).length).toBeLessThanOrEqual(40);
+    expect(threadsForQuestion(RAIL_CAP_Q).length).toBeLessThanOrEqual(200);
   });
 });

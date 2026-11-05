@@ -74,8 +74,10 @@ const ACTIVE_KEY = "syllabai.assistant.activeThread.v1";
 const DOC_KEY = "assistant-threads";
 const EVENT = "syllabai:assistant-threads-changed";
 
-/** storage guards — keep localStorage bounded (tutor parity) */
-const MAX_THREADS = 40;
+/** storage guards — keep localStorage bounded (tutor parity). T-CAPS-POLICY-1:
+ *  the count cap raises to 200 (server threads-store parity); the BINDING
+ *  bound for the durable copy is the bridge's byte budget (capThreadsByBytes). */
+const MAX_THREADS = 200;
 const MAX_MESSAGES_PER_THREAD = 200;
 
 interface StoredState {

@@ -154,8 +154,12 @@ const ACTIVE_KEY = "syllabai.tutor.activeThread.v1";
 const DOC_KEY = "tutor-threads";
 const EVENT = "syllabai:tutor-threads-changed";
 
-/** storage guards — keep localStorage bounded */
-const MAX_THREADS = 40;
+/** storage guards — keep localStorage bounded. T-CAPS-POLICY-1: the count
+ *  cap raises to 200 (parity with the server CLA threads-store law:
+ *  MAX_THREADS_PER_LEARNER=200, 409-never-evict); the BINDING bound for the
+ *  durable copy is the bridge's byte budget (capThreadsByBytes), which
+ *  evicts oldest-first BEFORE any PUT can 413. */
+const MAX_THREADS = 200;
 const MAX_MESSAGES_PER_THREAD = 200;
 
 interface StoredState {
