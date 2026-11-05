@@ -395,7 +395,23 @@ export function AppShell({
                     </DropdownMenuItem>
                   )}
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={() => clearIdentity()} className="cursor-pointer">
+                  {/*
+                    T-HUBFIX-SIGNOUT-LANDING — sign-out lands on the signed-out
+                    showcase landing ("/"), never the login page. The hard
+                    navigation is the SAME law as the sign-in fix
+                    (T-HUBFIX-SIGNIN-NAV-RACE): a hard assign, NOT router.push —
+                    clearIdentity fires the identity event (the shell re-renders
+                    signed-out in place), and the route gate's 307 would
+                    otherwise race the in-app redirect on gated routes. "/"
+                    sits outside the gate policy, so the assign always lands.
+                  */}
+                  <DropdownMenuItem
+                    onClick={() => {
+                      clearIdentity();
+                      window.location.assign("/");
+                    }}
+                    className="cursor-pointer"
+                  >
                     <LogOut className="size-4" aria-hidden />
                     Sign out
                   </DropdownMenuItem>

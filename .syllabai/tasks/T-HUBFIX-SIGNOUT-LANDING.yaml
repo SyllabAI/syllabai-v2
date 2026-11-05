@@ -1,0 +1,21 @@
+version: 1
+task:
+  id: T-HUBFIX-SIGNOUT-LANDING
+  title: "Sign out (the top-right identity dropdown) lands on the signed-out showcase landing '/' — never the login page — via clearIdentity + a hard window.location.assign('/'), the same nav-race law as T-HUBFIX-SIGNIN-NAV-RACE"
+  owner: "Z.ai main agent (zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a, trace 1a1acc186515d23d)"
+  status: RUN-001
+  claimed_at: "2026-11-05"
+  priority: P1
+  wave: showcase
+  deps: [T-DEMO-SHOWCASE-1, T-HUBFIX-SIGNIN-NAV-RACE]
+  endpoints: []
+  service_status: not applicable (hub UI one-handler change; zero providers, zero DDL)
+  scope:
+    allowed:
+    - apps/hub/src/components/layout/app-shell.tsx (the ONE sign-out DropdownMenuItem: clearIdentity() + window.location.assign("/") + doc-comment of record)
+    - .syllabai/tasks/T-HUBFIX-SIGNOUT-LANDING.yaml; .syllabai/receipts/T-HUBFIX-SIGNOUT-LANDING/**; worklog.md (append-only)
+    forbidden:
+    - proxy.ts / route-gate.ts / session.ts / identity.ts / api.ts / login flow / RBAC — UNTOUCHED (the gate's 307 contract and clearSession law are correct as-is; "/" already sits outside the gate policy)
+    - the showcase demo contract (demo/login route, showcase.ts, page.tsx graft) — UNTOUCHED
+    - any other sign-out surface (there is exactly ONE: the app-shell identity dropdown — pinned by grep of record)
+    - router.push for this navigation (the sign-in nav-race precedent forbids it on identity transitions)
