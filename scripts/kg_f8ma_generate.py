@@ -602,6 +602,29 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-21 (batch nineteen, the Edexcel science tranche 16):
+        # the biology family — the 4BI1 linear register (fresh web),
+        # both 4XBI1 modular units (renumbered derivatives of the 4BI1
+        # master lattice, derivation disclosed in the unit modules'
+        # docstrings) and the YBI11 IAL register — all four plain
+        # startup installs (the courses are web-less, 0 served pre,
+        # no legacy store — no merge case this batch).
+        biology_edx = {
+            "igcse-biology-19": ("f8bi_lattice_4bi1", "4BI1-F8"),
+            "igcse-biology-modular-24-unit-1": ("f8bi_lattice_4xbi1u1", "4XBI1U1"),
+            "igcse-biology-modular-24-unit-2": ("f8bi_lattice_4xbi1u2", "4XBI1U2"),
+            "ial-biology-18": ("f8bi_lattice_ybi11", "YBI11"),
+        }
+        if args.course in biology_edx:
+            mod, tag = biology_edx[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="nineteen", task="T-KG-PRE-21", exporter_ver="v2.4",
+            )
+            return
         # T-KG-PRE-20 (batch eighteen, the Edexcel science tranche 15):
         # the chemistry family — ial-chemistry-17 (YCH11 fresh web),
         # both 4XCH1 modular units (renumbered derivatives of the 4CH1
