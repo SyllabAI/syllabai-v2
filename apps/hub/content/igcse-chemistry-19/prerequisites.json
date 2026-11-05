@@ -1,1146 +1,2690 @@
 {
- "source": "syllabai-core production knowledge_edges — the operator-validated T-C11 settled store (REQUIRES_PREREQUISITE, VALIDATED, provenance verbatim) plus the concept->spec-point anchor PART_OF edges; prerequisite tiers: operator-validated (projected by scripts/kg_export.py through concept anchors, deterministic) and inferred-prototype (hand-curated SME tuples transcribed verbatim from the canonicalKG prototype artifact).",
- "generatedUtc": "2026-09-30T09:26:58Z",
- "curriculumCode": "4CH1-2017",
- "hubCourseSlug": "igcse-chemistry-19",
- "conceptAnchors": {
-  "4CH1-CON-ACTIVATION-ENERGY": [
-   "4CH1-3.14C"
-  ],
-  "4CH1-CON-ANODE-CATHODE": [
-   "4CH1-1.57C"
-  ],
-  "4CH1-CON-AQUEOUS-DISCHARGE": [
-   "4CH1-1.58C"
-  ],
-  "4CH1-CON-AR": [
-   "4CH1-1.26",
-   "4CH1-1.28"
-  ],
-  "4CH1-CON-ATOM": [
-   "4CH1-1.14"
-  ],
-  "4CH1-CON-ATOMIC-NUMBER": [
-   "4CH1-1.16"
-  ],
-  "4CH1-CON-AVOGADRO-CONST": [
-   "4CH1-1.27"
-  ],
-  "4CH1-CON-AVOGADRO-LAW": [
-   "4CH1-1.35C"
-  ],
-  "4CH1-CON-BOND-BREAKING-MAKING": [
-   "4CH1-3.6C"
-  ],
-  "4CH1-CON-BOND-ENERGY-CALC": [
-   "4CH1-3.7C"
-  ],
-  "4CH1-CON-CALORIMETRY": [
-   "4CH1-3.2"
-  ],
-  "4CH1-CON-CATALYST": [
-   "4CH1-3.12",
-   "4CH1-3.13"
-  ],
-  "4CH1-CON-CHROMATOGRAM-INTERPRETATION": [
-   "4CH1-1.11"
-  ],
-  "4CH1-CON-CHROMATOGRAPHY": [
-   "4CH1-1.10"
-  ],
-  "4CH1-CON-COLLISION-THEORY": [
-   "4CH1-3.11"
-  ],
-  "4CH1-CON-COMPOUND": [
-   "4CH1-1.8"
-  ],
-  "4CH1-CON-CONC-CALC": [
-   "4CH1-1.34C"
-  ],
-  "4CH1-CON-CONCENTRATION": [
-   "4CH1-1.34C"
-  ],
-  "4CH1-CON-CONSERVATION-MASS": [
-   "4CH1-1.25",
-   "4CH1-1.26"
-  ],
-  "4CH1-CON-COVALENT-BOND": [
-   "4CH1-1.44",
-   "4CH1-1.45"
-  ],
-  "4CH1-CON-COVALENT-CONDUCTION": [
-   "4CH1-1.51",
-   "4CH1-1.55C"
-  ],
-  "4CH1-CON-CRYSTALLISATION": [
-   "4CH1-1.10"
-  ],
-  "4CH1-CON-DIAMOND-GRAPHITE": [
-   "4CH1-1.50"
-  ],
-  "4CH1-CON-DIFFUSION": [
-   "4CH1-1.3"
-  ],
-  "4CH1-CON-DILUTION": [
-   "4CH1-1.3"
-  ],
-  "4CH1-CON-DOT-CROSS-COVALENT": [
-   "4CH1-1.46"
-  ],
-  "4CH1-CON-DOT-CROSS-IONIC": [
-   "4CH1-1.40"
-  ],
-  "4CH1-CON-DYNAMIC-EQUILIBRIUM": [
-   "4CH1-3.19C",
-   "4CH1-3.20C"
-  ],
-  "4CH1-CON-ELECTRODE-HALF-EQUATIONS": [
-   "4CH1-1.59C"
-  ],
-  "4CH1-CON-ELECTROLYSIS": [
-   "4CH1-1.58C"
-  ],
-  "4CH1-CON-ELECTRONIC-CONFIGURATION": [
-   "4CH1-1.19",
-   "4CH1-1.22"
-  ],
-  "4CH1-CON-ELEMENT": [
-   "4CH1-1.8"
-  ],
-  "4CH1-CON-EMP-MOL-CALC": [
-   "4CH1-1.33"
-  ],
-  "4CH1-CON-EMPIRICAL-FORMULA": [
-   "4CH1-1.32",
-   "4CH1-1.33"
-  ],
-  "4CH1-CON-ENERGY-LEVEL-DIAGRAM": [
-   "4CH1-3.5C"
-  ],
-  "4CH1-CON-EQ-POSITION": [
-   "4CH1-3.21C",
-   "4CH1-3.22C"
-  ],
-  "4CH1-CON-EQ-STATE-SYM": [
-   "4CH1-1.25"
-  ],
-  "4CH1-CON-EQ-SYMBOL": [
-   "4CH1-1.25"
-  ],
-  "4CH1-CON-EQ-WORD": [
-   "4CH1-1.25"
-  ],
-  "4CH1-CON-EVAPORATION-BOILING": [
-   "4CH1-1.2"
-  ],
-  "4CH1-CON-EXO-ENDO": [
-   "4CH1-3.1"
-  ],
-  "4CH1-CON-EXP-FORMULA-DEDUCTION": [
-   "4CH1-1.31",
-   "4CH1-1.36"
-  ],
-  "4CH1-CON-FILTRATION": [
-   "4CH1-1.10"
-  ],
-  "4CH1-CON-FRACTIONAL-DISTILLATION": [
-   "4CH1-1.10"
-  ],
-  "4CH1-CON-GAS-VOL-CALC": [
-   "4CH1-1.35C"
-  ],
-  "4CH1-CON-GIANT-COVALENT": [
-   "4CH1-1.49"
-  ],
-  "4CH1-CON-GROUP-SIMILARITY": [
-   "4CH1-1.23"
-  ],
-  "4CH1-CON-HEAT-CALC": [
-   "4CH1-3.3"
-  ],
-  "4CH1-CON-HEATING-CONSTANT-MASS": [
-   "4CH1-1.7C"
-  ],
-  "4CH1-CON-ION": [
-   "4CH1-1.37"
-  ],
-  "4CH1-CON-ION-CHARGE-RULES": [
-   "4CH1-1.38"
-  ],
-  "4CH1-CON-IONIC-BOND": [
-   "4CH1-1.41"
-  ],
-  "4CH1-CON-IONIC-CONDUCTION": [
-   "4CH1-1.43",
-   "4CH1-1.56C"
-  ],
-  "4CH1-CON-IONIC-FORMULA": [
-   "4CH1-1.39"
-  ],
-  "4CH1-CON-IONIC-LATTICE": [
-   "4CH1-1.42"
-  ],
-  "4CH1-CON-ISOTOPES": [
-   "4CH1-1.16",
-   "4CH1-1.17"
-  ],
-  "4CH1-CON-MASS-NUMBER": [
-   "4CH1-1.16"
-  ],
-  "4CH1-CON-METAL-NONMETAL": [
-   "4CH1-1.20",
-   "4CH1-1.21"
-  ],
-  "4CH1-CON-METAL-PROPERTIES": [
-   "4CH1-1.54C"
-  ],
-  "4CH1-CON-METALLIC-BOND": [
-   "4CH1-1.52C",
-   "4CH1-1.53C"
-  ],
-  "4CH1-CON-METALLOID": [
-   "4CH1-1.21"
-  ],
-  "4CH1-CON-MIXTURE": [
-   "4CH1-1.8"
-  ],
-  "4CH1-CON-MOLAR-ENTHALPY": [
-   "4CH1-3.4"
-  ],
-  "4CH1-CON-MOLAR-GAS-VOL": [
-   "4CH1-1.35C"
-  ],
-  "4CH1-CON-MOLAR-MASS": [
-   "4CH1-1.28"
-  ],
-  "4CH1-CON-MOLAR-RATIO": [
-   "4CH1-1.29"
-  ],
-  "4CH1-CON-MOLE": [
-   "4CH1-1.27"
-  ],
-  "4CH1-CON-MOLE-MASS-CONV": [
-   "4CH1-1.28"
-  ],
-  "4CH1-CON-MOLECULAR-FORMULA": [
-   "4CH1-1.32",
-   "4CH1-1.33"
-  ],
-  "4CH1-CON-MOLECULE": [
-   "4CH1-1.14"
-  ],
-  "4CH1-CON-MR": [
-   "4CH1-1.26",
-   "4CH1-1.28"
-  ],
-  "4CH1-CON-NOBLE-GAS-INERTNESS": [
-   "4CH1-1.24"
-  ],
-  "4CH1-CON-PERCENT-YIELD": [
-   "4CH1-1.30"
-  ],
-  "4CH1-CON-PERIODIC-TABLE": [
-   "4CH1-1.18"
-  ],
-  "4CH1-CON-PURE-SUBSTANCE": [
-   "4CH1-1.9"
-  ],
-  "4CH1-CON-RATE-EXPERIMENTS": [
-   "4CH1-3.9"
-  ],
-  "4CH1-CON-RATE-FACTORS": [
-   "4CH1-3.10"
-  ],
-  "4CH1-CON-REACTING-MASS": [
-   "4CH1-1.29"
-  ],
-  "4CH1-CON-REACTION-PROFILE": [
-   "4CH1-3.14C"
-  ],
-  "4CH1-CON-REDOX-ELECTRONS": [
-   "4CH1-1.59C"
-  ],
-  "4CH1-CON-REVERSIBLE": [
-   "4CH1-3.17"
-  ],
-  "4CH1-CON-REVERSIBLE-EXAMPLES": [
-   "4CH1-3.18"
-  ],
-  "4CH1-CON-RF-VALUE": [
-   "4CH1-1.12"
-  ],
-  "4CH1-CON-SATURATED-SOLUTION": [
-   "4CH1-1.10",
-   "4CH1-1.4"
-  ],
-  "4CH1-CON-SIMPLE-DISTILLATION": [
-   "4CH1-1.10"
-  ],
-  "4CH1-CON-SIMPLE-MOLECULAR": [
-   "4CH1-1.47",
-   "4CH1-1.48"
-  ],
-  "4CH1-CON-SOLUBILITY": [
-   "4CH1-1.5C"
-  ],
-  "4CH1-CON-SOLUBILITY-CURVE": [
-   "4CH1-1.6C"
-  ],
-  "4CH1-CON-SOLUTION": [
-   "4CH1-1.4"
-  ],
-  "4CH1-CON-STATE-CHANGES": [
-   "4CH1-1.2"
-  ],
-  "4CH1-CON-STATE-PARTICLE-MODEL": [
-   "4CH1-1.1",
-   "4CH1-1.3"
-  ],
-  "4CH1-CON-STATES-THREE": [
-   "4CH1-1.1"
-  ],
-  "4CH1-CON-SUBATOMIC-PARTICLES": [
-   "4CH1-1.15"
-  ],
-  "4CH1-CON-THEOR-YIELD": [
-   "4CH1-1.30"
-  ],
-  "4CH1-CON-VOL-CONVERSION": [
-   "4CH1-1.34C"
-  ],
-  "4CH1-CON-WATER-CRYST": [
-   "4CH1-1.31"
-  ],
-  "4CH1-CON-YIELD": [
-   "4CH1-1.30"
-  ],
-  "4CH1-CON-YIELD-FACTORS": [
-   "4CH1-1.30"
-  ]
- },
- "validatedPrerequisiteEdges": [
-  {
-   "dependent": "4CH1-CON-ANODE-CATHODE",
-   "prerequisite": "4CH1-CON-ION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-AQUEOUS-DISCHARGE",
-   "prerequisite": "4CH1-CON-ELECTROLYSIS",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-AR",
-   "prerequisite": "4CH1-CON-ISOTOPES",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-ATOMIC-NUMBER",
-   "prerequisite": "4CH1-CON-SUBATOMIC-PARTICLES",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-BOND-BREAKING-MAKING",
-   "prerequisite": "4CH1-CON-EXO-ENDO",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-BOND-ENERGY-CALC",
-   "prerequisite": "4CH1-CON-BOND-BREAKING-MAKING",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-BOND-ENERGY-CALC",
-   "prerequisite": "4CH1-CON-COVALENT-BOND",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-CATALYST",
-   "prerequisite": "4CH1-CON-ACTIVATION-ENERGY",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-CHROMATOGRAM-INTERPRETATION",
-   "prerequisite": "4CH1-CON-CHROMATOGRAPHY",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:EXAMINER_TIP_EXPLICIT|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-CHROMATOGRAM-INTERPRETATION",
-   "prerequisite": "4CH1-CON-PURE-SUBSTANCE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-CHROMATOGRAPHY",
-   "prerequisite": "4CH1-CON-SOLUBILITY",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-COMPOUND",
-   "prerequisite": "4CH1-CON-ELEMENT",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-CONC-CALC",
-   "prerequisite": "4CH1-CON-MOLE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-CONC-CALC",
-   "prerequisite": "4CH1-CON-VOL-CONVERSION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-COVALENT-BOND",
-   "prerequisite": "4CH1-CON-ATOM",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-COVALENT-BOND",
-   "prerequisite": "4CH1-CON-ELECTRONIC-CONFIGURATION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-COVALENT-CONDUCTION",
-   "prerequisite": "4CH1-CON-SIMPLE-MOLECULAR",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-CRYSTALLISATION",
-   "prerequisite": "4CH1-CON-SATURATED-SOLUTION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-DIAMOND-GRAPHITE",
-   "prerequisite": "4CH1-CON-GIANT-COVALENT",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-DOT-CROSS-COVALENT",
-   "prerequisite": "4CH1-CON-COVALENT-BOND",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-DOT-CROSS-COVALENT",
-   "prerequisite": "4CH1-CON-MOLECULE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-DOT-CROSS-IONIC",
-   "prerequisite": "4CH1-CON-ION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-DYNAMIC-EQUILIBRIUM",
-   "prerequisite": "4CH1-CON-REVERSIBLE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-ELECTRODE-HALF-EQUATIONS",
-   "prerequisite": "4CH1-CON-ELECTROLYSIS",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-ELECTRODE-HALF-EQUATIONS",
-   "prerequisite": "4CH1-CON-REDOX-ELECTRONS",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-ELECTROLYSIS",
-   "prerequisite": "4CH1-CON-ANODE-CATHODE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-ELECTROLYSIS",
-   "prerequisite": "4CH1-CON-IONIC-BOND",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-ELECTROLYSIS",
-   "prerequisite": "4CH1-CON-IONIC-CONDUCTION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-ELECTRONIC-CONFIGURATION",
-   "prerequisite": "4CH1-CON-PERIODIC-TABLE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-ELECTRONIC-CONFIGURATION",
-   "prerequisite": "4CH1-CON-SUBATOMIC-PARTICLES",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-EMP-MOL-CALC",
-   "prerequisite": "4CH1-CON-AR",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-EMP-MOL-CALC",
-   "prerequisite": "4CH1-CON-EMPIRICAL-FORMULA",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-EMP-MOL-CALC",
-   "prerequisite": "4CH1-CON-MOLE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-ENERGY-LEVEL-DIAGRAM",
-   "prerequisite": "4CH1-CON-EXO-ENDO",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-EQ-POSITION",
-   "prerequisite": "4CH1-CON-CATALYST",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-EQ-POSITION",
-   "prerequisite": "4CH1-CON-DYNAMIC-EQUILIBRIUM",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-EQ-POSITION",
-   "prerequisite": "4CH1-CON-EXO-ENDO",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-EVAPORATION-BOILING",
-   "prerequisite": "4CH1-CON-STATE-CHANGES",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-EXP-FORMULA-DEDUCTION",
-   "prerequisite": "4CH1-CON-MOLE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-FILTRATION",
-   "prerequisite": "4CH1-CON-SOLUTION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-FRACTIONAL-DISTILLATION",
-   "prerequisite": "4CH1-CON-SIMPLE-DISTILLATION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:EXPLICIT_TEACH_SEQUENCE|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-GAS-VOL-CALC",
-   "prerequisite": "4CH1-CON-MOLAR-GAS-VOL",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-GAS-VOL-CALC",
-   "prerequisite": "4CH1-CON-MOLE-MASS-CONV",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-GIANT-COVALENT",
-   "prerequisite": "4CH1-CON-COVALENT-BOND",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-GROUP-SIMILARITY",
-   "prerequisite": "4CH1-CON-PERIODIC-TABLE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-HEAT-CALC",
-   "prerequisite": "4CH1-CON-CALORIMETRY",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:EXPLICIT_TEACH_SEQUENCE|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-HEAT-CALC",
-   "prerequisite": "4CH1-CON-EXO-ENDO",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-ION",
-   "prerequisite": "4CH1-CON-ATOM",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-ION",
-   "prerequisite": "4CH1-CON-ELECTRONIC-CONFIGURATION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-ION-CHARGE-RULES",
-   "prerequisite": "4CH1-CON-ION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-IONIC-BOND",
-   "prerequisite": "4CH1-CON-ION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-IONIC-CONDUCTION",
-   "prerequisite": "4CH1-CON-ION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-IONIC-CONDUCTION",
-   "prerequisite": "4CH1-CON-IONIC-LATTICE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-IONIC-FORMULA",
-   "prerequisite": "4CH1-CON-ION-CHARGE-RULES",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-IONIC-LATTICE",
-   "prerequisite": "4CH1-CON-IONIC-BOND",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-ISOTOPES",
-   "prerequisite": "4CH1-CON-SUBATOMIC-PARTICLES",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-MASS-NUMBER",
-   "prerequisite": "4CH1-CON-ATOMIC-NUMBER",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-MASS-NUMBER",
-   "prerequisite": "4CH1-CON-SUBATOMIC-PARTICLES",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-METAL-NONMETAL",
-   "prerequisite": "4CH1-CON-PERIODIC-TABLE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-METALLIC-BOND",
-   "prerequisite": "4CH1-CON-ION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-MIXTURE",
-   "prerequisite": "4CH1-CON-COMPOUND",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-MOLAR-ENTHALPY",
-   "prerequisite": "4CH1-CON-HEAT-CALC",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:EXPLICIT_TEACH_SEQUENCE|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-MOLAR-ENTHALPY",
-   "prerequisite": "4CH1-CON-MOLE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-MOLAR-GAS-VOL",
-   "prerequisite": "4CH1-CON-MOLE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-MOLAR-MASS",
-   "prerequisite": "4CH1-CON-AR",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-MOLAR-MASS",
-   "prerequisite": "4CH1-CON-MOLE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-MOLAR-MASS",
-   "prerequisite": "4CH1-CON-MR",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-MOLE-MASS-CONV",
-   "prerequisite": "4CH1-CON-MOLAR-MASS",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-MOLECULAR-FORMULA",
-   "prerequisite": "4CH1-CON-EMPIRICAL-FORMULA",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-MOLECULAR-FORMULA",
-   "prerequisite": "4CH1-CON-MR",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-MOLECULE",
-   "prerequisite": "4CH1-CON-ATOM",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-MR",
-   "prerequisite": "4CH1-CON-AR",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-NOBLE-GAS-INERTNESS",
-   "prerequisite": "4CH1-CON-PERIODIC-TABLE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-PERCENT-YIELD",
-   "prerequisite": "4CH1-CON-THEOR-YIELD",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-PERCENT-YIELD",
-   "prerequisite": "4CH1-CON-YIELD",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-PERIODIC-TABLE",
-   "prerequisite": "4CH1-CON-ATOMIC-NUMBER",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-PERIODIC-TABLE",
-   "prerequisite": "4CH1-CON-ELEMENT",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-PURE-SUBSTANCE",
-   "prerequisite": "4CH1-CON-COMPOUND",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-PURE-SUBSTANCE",
-   "prerequisite": "4CH1-CON-STATE-CHANGES",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-RATE-FACTORS",
-   "prerequisite": "4CH1-CON-CONCENTRATION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-REACTING-MASS",
-   "prerequisite": "4CH1-CON-MOLAR-RATIO",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-REACTING-MASS",
-   "prerequisite": "4CH1-CON-MOLE-MASS-CONV",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-REACTION-PROFILE",
-   "prerequisite": "4CH1-CON-ACTIVATION-ENERGY",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-REACTION-PROFILE",
-   "prerequisite": "4CH1-CON-ENERGY-LEVEL-DIAGRAM",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-REVERSIBLE",
-   "prerequisite": "4CH1-CON-EQ-SYMBOL",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-REVERSIBLE-EXAMPLES",
-   "prerequisite": "4CH1-CON-REVERSIBLE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-REVERSIBLE-EXAMPLES",
-   "prerequisite": "4CH1-CON-WATER-CRYST",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-RF-VALUE",
-   "prerequisite": "4CH1-CON-CHROMATOGRAM-INTERPRETATION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-SATURATED-SOLUTION",
-   "prerequisite": "4CH1-CON-SOLUTION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-SIMPLE-DISTILLATION",
-   "prerequisite": "4CH1-CON-SOLUTION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-SIMPLE-DISTILLATION",
-   "prerequisite": "4CH1-CON-STATE-CHANGES",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-SIMPLE-MOLECULAR",
-   "prerequisite": "4CH1-CON-COVALENT-BOND",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-SIMPLE-MOLECULAR",
-   "prerequisite": "4CH1-CON-MOLECULE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-CON-SOLUBILITY",
-   "prerequisite": "4CH1-CON-SATURATED-SOLUTION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-SOLUBILITY-CURVE",
-   "prerequisite": "4CH1-CON-SOLUBILITY",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-STATE-CHANGES",
-   "prerequisite": "4CH1-CON-STATE-PARTICLE-MODEL",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-STATE-PARTICLE-MODEL",
-   "prerequisite": "4CH1-CON-STATES-THREE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-SUBATOMIC-PARTICLES",
-   "prerequisite": "4CH1-CON-ATOM",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-THEOR-YIELD",
-   "prerequisite": "4CH1-CON-REACTING-MASS",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-CON-WATER-CRYST",
-   "prerequisite": "4CH1-CON-EMP-MOL-CALC",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:EXPLICIT_TEACH_SEQUENCE|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-1.7C",
-   "prerequisite": "4CH1-CON-SATURATED-SOLUTION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-1.7C",
-   "prerequisite": "4CH1-CON-SOLUBILITY",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-1.13",
-   "prerequisite": "4CH1-CON-CHROMATOGRAPHY",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-1.13",
-   "prerequisite": "4CH1-CON-RF-VALUE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-1.36",
-   "prerequisite": "4CH1-CON-EXP-FORMULA-DEDUCTION",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
-  },
-  {
-   "dependent": "4CH1-1.60C",
-   "prerequisite": "4CH1-CON-AQUEOUS-DISCHARGE",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-1.60C",
-   "prerequisite": "4CH1-CON-ELECTROLYSIS",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-3.8",
-   "prerequisite": "4CH1-CON-CALORIMETRY",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-3.15",
-   "prerequisite": "4CH1-CON-RATE-EXPERIMENTS",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-3.15",
-   "prerequisite": "4CH1-CON-RATE-FACTORS",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-3.16",
-   "prerequisite": "4CH1-CON-CATALYST",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
-  },
-  {
-   "dependent": "4CH1-3.16",
-   "prerequisite": "4CH1-CON-RATE-EXPERIMENTS",
-   "strength": null,
-   "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+  "source": "Two-layer merged prerequisite store (F8 rollout batch eighteen; T-KG-PRE-20, lane 4CH1-F8). Layer 1 — the operator-validated T-C11 settled store, byte-intact exactly as previously served (validatedPrerequisiteEdges with provenance verbatim, inferredPrototypePre/Rel, practicalEndpointRetarget), re-derivation-verified at merge time against the 145 legacy served pre edges. Layer 2 — the AI concept web startup (F8 rollout batch eighteen; T-KG-PRE-20, lane 4CH1-F8): the AI_SUGGESTED, UNVALIDATED concept lattice authored by the F8 lane for this syllabus, every anchor machine-verified against the served spine's point ids (0 unmapped pass law) and exported in-order only by the calibrated law of scripts/kg_f8al_project.py, merged WITH — never over — layer 1 (the export is disjoint from the legacy served set up to counted alreadyServed collisions and never reverses a served pair). Bases mirror the operator-validated store vocabulary. The F8 layer's pairs are AI_SUGGESTED — unvalidated, labelled INFERRED PROTOTYPE by the renderer — while layer 1's validated edges keep their operator provenance; the named gate before any of this is treated as truth remains the SME validation pass.",
+  "generatedUtc": "2026-11-05T18:24:14Z",
+  "curriculumCode": "4CH1-2017",
+  "hubCourseSlug": "igcse-chemistry-19",
+  "conceptAnchors": {
+    "4CH1-CON-ACTIVATION-ENERGY": [
+      "3.14C"
+    ],
+    "4CH1-CON-ANODE-CATHODE": [
+      "1.57C"
+    ],
+    "4CH1-CON-AQUEOUS-DISCHARGE": [
+      "1.58C"
+    ],
+    "4CH1-CON-AR": [
+      "1.26",
+      "1.28"
+    ],
+    "4CH1-CON-ATOM": [
+      "1.14"
+    ],
+    "4CH1-CON-ATOMIC-NUMBER": [
+      "1.16"
+    ],
+    "4CH1-CON-AVOGADRO-CONST": [
+      "1.27"
+    ],
+    "4CH1-CON-AVOGADRO-LAW": [
+      "1.35C"
+    ],
+    "4CH1-CON-BOND-BREAKING-MAKING": [
+      "3.6C"
+    ],
+    "4CH1-CON-BOND-ENERGY-CALC": [
+      "3.7C"
+    ],
+    "4CH1-CON-CALORIMETRY": [
+      "3.2"
+    ],
+    "4CH1-CON-CATALYST": [
+      "3.12",
+      "3.13"
+    ],
+    "4CH1-CON-CHROMATOGRAM-INTERPRETATION": [
+      "1.11"
+    ],
+    "4CH1-CON-CHROMATOGRAPHY": [
+      "1.10"
+    ],
+    "4CH1-CON-COLLISION-THEORY": [
+      "3.11"
+    ],
+    "4CH1-CON-COMPOUND": [
+      "1.8"
+    ],
+    "4CH1-CON-CONC-CALC": [
+      "1.34C"
+    ],
+    "4CH1-CON-CONCENTRATION": [
+      "1.34C"
+    ],
+    "4CH1-CON-CONSERVATION-MASS": [
+      "1.25",
+      "1.26"
+    ],
+    "4CH1-CON-COVALENT-BOND": [
+      "1.44",
+      "1.45"
+    ],
+    "4CH1-CON-COVALENT-CONDUCTION": [
+      "1.51",
+      "1.55C"
+    ],
+    "4CH1-CON-CRYSTALLISATION": [
+      "1.10"
+    ],
+    "4CH1-CON-DIAMOND-GRAPHITE": [
+      "1.50"
+    ],
+    "4CH1-CON-DIFFUSION": [
+      "1.3"
+    ],
+    "4CH1-CON-DILUTION": [
+      "1.3"
+    ],
+    "4CH1-CON-DOT-CROSS-COVALENT": [
+      "1.46"
+    ],
+    "4CH1-CON-DOT-CROSS-IONIC": [
+      "1.40"
+    ],
+    "4CH1-CON-DYNAMIC-EQUILIBRIUM": [
+      "3.19C",
+      "3.20C"
+    ],
+    "4CH1-CON-ELECTRODE-HALF-EQUATIONS": [
+      "1.59C"
+    ],
+    "4CH1-CON-ELECTROLYSIS": [
+      "1.58C"
+    ],
+    "4CH1-CON-ELECTRONIC-CONFIGURATION": [
+      "1.19",
+      "1.22"
+    ],
+    "4CH1-CON-ELEMENT": [
+      "1.8"
+    ],
+    "4CH1-CON-EMP-MOL-CALC": [
+      "1.33"
+    ],
+    "4CH1-CON-EMPIRICAL-FORMULA": [
+      "1.32",
+      "1.33"
+    ],
+    "4CH1-CON-ENERGY-LEVEL-DIAGRAM": [
+      "3.5C"
+    ],
+    "4CH1-CON-EQ-POSITION": [
+      "3.21C",
+      "3.22C"
+    ],
+    "4CH1-CON-EQ-STATE-SYM": [
+      "1.25"
+    ],
+    "4CH1-CON-EQ-SYMBOL": [
+      "1.25"
+    ],
+    "4CH1-CON-EQ-WORD": [
+      "1.25"
+    ],
+    "4CH1-CON-EVAPORATION-BOILING": [
+      "1.2"
+    ],
+    "4CH1-CON-EXO-ENDO": [
+      "3.1"
+    ],
+    "4CH1-CON-EXP-FORMULA-DEDUCTION": [
+      "1.31",
+      "1.36"
+    ],
+    "4CH1-CON-FILTRATION": [
+      "1.10"
+    ],
+    "4CH1-CON-FRACTIONAL-DISTILLATION": [
+      "1.10"
+    ],
+    "4CH1-CON-GAS-VOL-CALC": [
+      "1.35C"
+    ],
+    "4CH1-CON-GIANT-COVALENT": [
+      "1.49"
+    ],
+    "4CH1-CON-GROUP-SIMILARITY": [
+      "1.23"
+    ],
+    "4CH1-CON-HEAT-CALC": [
+      "3.3"
+    ],
+    "4CH1-CON-HEATING-CONSTANT-MASS": [
+      "1.7C"
+    ],
+    "4CH1-CON-ION": [
+      "1.37"
+    ],
+    "4CH1-CON-ION-CHARGE-RULES": [
+      "1.38"
+    ],
+    "4CH1-CON-IONIC-BOND": [
+      "1.41"
+    ],
+    "4CH1-CON-IONIC-CONDUCTION": [
+      "1.43",
+      "1.56C"
+    ],
+    "4CH1-CON-IONIC-FORMULA": [
+      "1.39"
+    ],
+    "4CH1-CON-IONIC-LATTICE": [
+      "1.42"
+    ],
+    "4CH1-CON-ISOTOPES": [
+      "1.16",
+      "1.17"
+    ],
+    "4CH1-CON-MASS-NUMBER": [
+      "1.16"
+    ],
+    "4CH1-CON-METAL-NONMETAL": [
+      "1.20",
+      "1.21"
+    ],
+    "4CH1-CON-METAL-PROPERTIES": [
+      "1.54C"
+    ],
+    "4CH1-CON-METALLIC-BOND": [
+      "1.52C",
+      "1.53C"
+    ],
+    "4CH1-CON-METALLOID": [
+      "1.21"
+    ],
+    "4CH1-CON-MIXTURE": [
+      "1.8"
+    ],
+    "4CH1-CON-MOLAR-ENTHALPY": [
+      "3.4"
+    ],
+    "4CH1-CON-MOLAR-GAS-VOL": [
+      "1.35C"
+    ],
+    "4CH1-CON-MOLAR-MASS": [
+      "1.28"
+    ],
+    "4CH1-CON-MOLAR-RATIO": [
+      "1.29"
+    ],
+    "4CH1-CON-MOLE": [
+      "1.27"
+    ],
+    "4CH1-CON-MOLE-MASS-CONV": [
+      "1.28"
+    ],
+    "4CH1-CON-MOLECULAR-FORMULA": [
+      "1.32",
+      "1.33"
+    ],
+    "4CH1-CON-MOLECULE": [
+      "1.14"
+    ],
+    "4CH1-CON-MR": [
+      "1.26",
+      "1.28"
+    ],
+    "4CH1-CON-NOBLE-GAS-INERTNESS": [
+      "1.24"
+    ],
+    "4CH1-CON-PERCENT-YIELD": [
+      "1.30"
+    ],
+    "4CH1-CON-PERIODIC-TABLE": [
+      "1.18"
+    ],
+    "4CH1-CON-PURE-SUBSTANCE": [
+      "1.9"
+    ],
+    "4CH1-CON-RATE-EXPERIMENTS": [
+      "3.9"
+    ],
+    "4CH1-CON-RATE-FACTORS": [
+      "3.10"
+    ],
+    "4CH1-CON-REACTING-MASS": [
+      "1.29"
+    ],
+    "4CH1-CON-REACTION-PROFILE": [
+      "3.14C"
+    ],
+    "4CH1-CON-REDOX-ELECTRONS": [
+      "1.59C"
+    ],
+    "4CH1-CON-REVERSIBLE": [
+      "3.17"
+    ],
+    "4CH1-CON-REVERSIBLE-EXAMPLES": [
+      "3.18"
+    ],
+    "4CH1-CON-RF-VALUE": [
+      "1.12"
+    ],
+    "4CH1-CON-SATURATED-SOLUTION": [
+      "1.10",
+      "1.4"
+    ],
+    "4CH1-CON-SIMPLE-DISTILLATION": [
+      "1.10"
+    ],
+    "4CH1-CON-SIMPLE-MOLECULAR": [
+      "1.47",
+      "1.48"
+    ],
+    "4CH1-CON-SOLUBILITY": [
+      "1.5C"
+    ],
+    "4CH1-CON-SOLUBILITY-CURVE": [
+      "1.6C"
+    ],
+    "4CH1-CON-SOLUTION": [
+      "1.4"
+    ],
+    "4CH1-CON-STATE-CHANGES": [
+      "1.2"
+    ],
+    "4CH1-CON-STATE-PARTICLE-MODEL": [
+      "1.1",
+      "1.3"
+    ],
+    "4CH1-CON-STATES-THREE": [
+      "1.1"
+    ],
+    "4CH1-CON-SUBATOMIC-PARTICLES": [
+      "1.15"
+    ],
+    "4CH1-CON-THEOR-YIELD": [
+      "1.30"
+    ],
+    "4CH1-CON-VOL-CONVERSION": [
+      "1.34C"
+    ],
+    "4CH1-CON-WATER-CRYST": [
+      "1.31"
+    ],
+    "4CH1-CON-YIELD": [
+      "1.30"
+    ],
+    "4CH1-CON-YIELD-FACTORS": [
+      "1.30"
+    ],
+    "C1-AN-CAT": [
+      "1.57C"
+    ],
+    "C1-AR-CALC": [
+      "1.17"
+    ],
+    "C1-ATOM": [
+      "1.14"
+    ],
+    "C1-ATOM-STRUCT": [
+      "1.15"
+    ],
+    "C1-CARBON-FORMS": [
+      "1.50"
+    ],
+    "C1-CHROMATOGRAM": [
+      "1.11"
+    ],
+    "C1-CONC": [
+      "1.34C"
+    ],
+    "C1-COV-BOND": [
+      "1.44"
+    ],
+    "C1-COV-COND": [
+      "1.51"
+    ],
+    "C1-COV-COND-WHY": [
+      "1.55C"
+    ],
+    "C1-COV-ELECTRO": [
+      "1.45"
+    ],
+    "C1-DIFFUSION": [
+      "1.3"
+    ],
+    "C1-DOT-COV": [
+      "1.46"
+    ],
+    "C1-DOT-IONIC": [
+      "1.40"
+    ],
+    "C1-EC-DEDUCE": [
+      "1.19"
+    ],
+    "C1-EC-POSITION": [
+      "1.22"
+    ],
+    "C1-ECM": [
+      "1.8"
+    ],
+    "C1-ELECTROLYSIS": [
+      "1.58C"
+    ],
+    "C1-EMP-MOL": [
+      "1.32"
+    ],
+    "C1-EQNS": [
+      "1.25"
+    ],
+    "C1-FORMULA-CALC": [
+      "1.33"
+    ],
+    "C1-FORMULA-EXP": [
+      "1.31"
+    ],
+    "C1-FORMULAE-IONS": [
+      "1.39"
+    ],
+    "C1-GAS-VOL": [
+      "1.35C"
+    ],
+    "C1-GIANT-COV": [
+      "1.49"
+    ],
+    "C1-GROUP-SIMILAR": [
+      "1.23"
+    ],
+    "C1-HALF-EQNS": [
+      "1.59C"
+    ],
+    "C1-INTERCONV": [
+      "1.2"
+    ],
+    "C1-ION-CHARGES": [
+      "1.38"
+    ],
+    "C1-ION-FORM": [
+      "1.37"
+    ],
+    "C1-IONIC-BOND": [
+      "1.41"
+    ],
+    "C1-IONIC-COND": [
+      "1.43"
+    ],
+    "C1-IONIC-COND-WHY": [
+      "1.56C"
+    ],
+    "C1-IONIC-MP": [
+      "1.42"
+    ],
+    "C1-ISO": [
+      "1.16"
+    ],
+    "C1-METAL-BOND": [
+      "1.53C"
+    ],
+    "C1-METAL-CLASSIFY": [
+      "1.20"
+    ],
+    "C1-METAL-LATTICE": [
+      "1.52C"
+    ],
+    "C1-METAL-POS": [
+      "1.21"
+    ],
+    "C1-METAL-PROPS": [
+      "1.54C"
+    ],
+    "C1-MOLE": [
+      "1.27"
+    ],
+    "C1-MOLE-CALC": [
+      "1.28"
+    ],
+    "C1-MR": [
+      "1.26"
+    ],
+    "C1-MR-BP": [
+      "1.48"
+    ],
+    "C1-NOBLE": [
+      "1.24"
+    ],
+    "C1-PRAC-CHROM": [
+      "1.13"
+    ],
+    "C1-PRAC-ELECTRO": [
+      "1.60C"
+    ],
+    "C1-PRAC-MGO": [
+      "1.36"
+    ],
+    "C1-PRAC-SOLUB": [
+      "1.7C"
+    ],
+    "C1-PT-ARRANGE": [
+      "1.18"
+    ],
+    "C1-PURITY": [
+      "1.9"
+    ],
+    "C1-REACT-MASS": [
+      "1.29"
+    ],
+    "C1-RF": [
+      "1.12"
+    ],
+    "C1-SEPARATION": [
+      "1.10"
+    ],
+    "C1-SIMPLE-MOL": [
+      "1.47"
+    ],
+    "C1-SOLUB-CURVES": [
+      "1.6C"
+    ],
+    "C1-SOLUBILITY": [
+      "1.5C"
+    ],
+    "C1-SOLUTION-TERMS": [
+      "1.4"
+    ],
+    "C1-STATES": [
+      "1.1"
+    ],
+    "C1-YIELD": [
+      "1.30"
+    ],
+    "C2-ACID-REACTIONS": [
+      "2.37"
+    ],
+    "C2-AIR": [
+      "2.9"
+    ],
+    "C2-ALLOY": [
+      "2.26C"
+    ],
+    "C2-ALLOY-HARD": [
+      "2.27C"
+    ],
+    "C2-ANION-TESTS": [
+      "2.48"
+    ],
+    "C2-BASES": [
+      "2.38"
+    ],
+    "C2-CATION-TESTS": [
+      "2.47"
+    ],
+    "C2-CO2-CARB": [
+      "2.12"
+    ],
+    "C2-COMBUSTION": [
+      "2.11"
+    ],
+    "C2-DISPLACE-M": [
+      "2.16"
+    ],
+    "C2-DONOR-AB": [
+      "2.36"
+    ],
+    "C2-EXTRACT": [
+      "2.23C"
+    ],
+    "C2-EXTRACT-COMMENT": [
+      "2.24C"
+    ],
+    "C2-FLAME": [
+      "2.45"
+    ],
+    "C2-FLAME-COLOURS": [
+      "2.46"
+    ],
+    "C2-G1-EC": [
+      "2.4C"
+    ],
+    "C2-G1-FAMILY": [
+      "2.1"
+    ],
+    "C2-G1-PREDICT": [
+      "2.3"
+    ],
+    "C2-G1-TREND": [
+      "2.2"
+    ],
+    "C2-G7-DISPLACE": [
+      "2.7"
+    ],
+    "C2-G7-EC": [
+      "2.8C"
+    ],
+    "C2-G7-PREDICT": [
+      "2.6"
+    ],
+    "C2-G7-PROPS": [
+      "2.5"
+    ],
+    "C2-GAS-TESTS": [
+      "2.44"
+    ],
+    "C2-GREENHOUSE": [
+      "2.13"
+    ],
+    "C2-H-OH": [
+      "2.31"
+    ],
+    "C2-INDICATORS": [
+      "2.28"
+    ],
+    "C2-METAL-USES": [
+      "2.25C"
+    ],
+    "C2-NEUTRALISE": [
+      "2.32"
+    ],
+    "C2-O2-PERCENT": [
+      "2.10"
+    ],
+    "C2-ORES": [
+      "2.22C"
+    ],
+    "C2-PH": [
+      "2.29"
+    ],
+    "C2-PRAC-ACID-M": [
+      "2.21"
+    ],
+    "C2-PRAC-CUSO4": [
+      "2.42"
+    ],
+    "C2-PRAC-O2": [
+      "2.14"
+    ],
+    "C2-PRAC-PBSO4": [
+      "2.43C"
+    ],
+    "C2-PROTON-AB": [
+      "2.35"
+    ],
+    "C2-REACT-ORDER": [
+      "2.17"
+    ],
+    "C2-REACT-SERIES": [
+      "2.15"
+    ],
+    "C2-REDOX": [
+      "2.20"
+    ],
+    "C2-RUST": [
+      "2.18"
+    ],
+    "C2-RUST-PREVENT": [
+      "2.19"
+    ],
+    "C2-SALT-INSOLB": [
+      "2.39"
+    ],
+    "C2-SALT-PPN": [
+      "2.41C"
+    ],
+    "C2-SALT-TITR": [
+      "2.40C"
+    ],
+    "C2-SOLUB-RULES": [
+      "2.34"
+    ],
+    "C2-TITRATION": [
+      "2.33C"
+    ],
+    "C2-UNIV-IND": [
+      "2.30"
+    ],
+    "C2-WATER-PURE": [
+      "2.50"
+    ],
+    "C2-WATER-TEST": [
+      "2.49"
+    ],
+    "C3-BOND-CALC": [
+      "3.7C"
+    ],
+    "C3-BOND-EN": [
+      "3.6C"
+    ],
+    "C3-CALORIMETRY": [
+      "3.2"
+    ],
+    "C3-CATALYST": [
+      "3.12"
+    ],
+    "C3-CATALYST-EA": [
+      "3.13"
+    ],
+    "C3-COLLISION": [
+      "3.11"
+    ],
+    "C3-DYN-EQ": [
+      "3.19C"
+    ],
+    "C3-ENERGY-DIAG": [
+      "3.5C"
+    ],
+    "C3-EQ-CATALYST": [
+      "3.21C"
+    ],
+    "C3-EQ-CHAR": [
+      "3.20C"
+    ],
+    "C3-EQ-SHIFT": [
+      "3.22C"
+    ],
+    "C3-EXO-ENDO": [
+      "3.1"
+    ],
+    "C3-MOLAR-DH": [
+      "3.4"
+    ],
+    "C3-PRAC-MARBLE": [
+      "3.15"
+    ],
+    "C3-PRAC-PEROXIDE": [
+      "3.16"
+    ],
+    "C3-PRAC-TEMP": [
+      "3.8"
+    ],
+    "C3-PROFILE": [
+      "3.14C"
+    ],
+    "C3-Q-MC": [
+      "3.3"
+    ],
+    "C3-RATE-EXP": [
+      "3.9"
+    ],
+    "C3-RATE-FACTORS": [
+      "3.10"
+    ],
+    "C3-REV-EXAMPLES": [
+      "3.18"
+    ],
+    "C3-REVERSIBLE": [
+      "3.17"
+    ],
+    "C4-ACID-RAIN": [
+      "4.16"
+    ],
+    "C4-ADD-POLY": [
+      "4.44"
+    ],
+    "C4-ALCOHOL-DRAW": [
+      "4.30C"
+    ],
+    "C4-ALKANE-DRAW": [
+      "4.21"
+    ],
+    "C4-ALKANE-FORM": [
+      "4.19"
+    ],
+    "C4-ALKANE-HAL": [
+      "4.22"
+    ],
+    "C4-ALKANE-SAT": [
+      "4.20"
+    ],
+    "C4-ALKENE-BR": [
+      "4.27"
+    ],
+    "C4-ALKENE-DRAW": [
+      "4.26"
+    ],
+    "C4-ALKENE-FG": [
+      "4.23"
+    ],
+    "C4-ALKENE-FORM": [
+      "4.24"
+    ],
+    "C4-ALKENE-UNSAT": [
+      "4.25"
+    ],
+    "C4-BIOPOLY": [
+      "4.50C"
+    ],
+    "C4-BROMINE-WATER": [
+      "4.28"
+    ],
+    "C4-CO-POISON": [
+      "4.13"
+    ],
+    "C4-COA-DRAW": [
+      "4.35C"
+    ],
+    "C4-COA-FG": [
+      "4.34C"
+    ],
+    "C4-COA-REACTIONS": [
+      "4.36C"
+    ],
+    "C4-COMBUSTION-PROD": [
+      "4.12"
+    ],
+    "C4-COND-POLY": [
+      "4.48C"
+    ],
+    "C4-CRACKING": [
+      "4.17"
+    ],
+    "C4-CRACKING-WHY": [
+      "4.18"
+    ],
+    "C4-CRUDE": [
+      "4.7"
+    ],
+    "C4-ESTER-DRAW": [
+      "4.40C"
+    ],
+    "C4-ESTER-FG": [
+      "4.38C"
+    ],
+    "C4-ESTER-GENERAL": [
+      "4.41C"
+    ],
+    "C4-ESTER-USES": [
+      "4.42C"
+    ],
+    "C4-ETHANOL-MFG": [
+      "4.32C"
+    ],
+    "C4-ETHANOL-OX": [
+      "4.31C"
+    ],
+    "C4-ETHYL-ETH": [
+      "4.39C"
+    ],
+    "C4-FERMENT": [
+      "4.33C"
+    ],
+    "C4-FORMULAE-REP": [
+      "4.2"
+    ],
+    "C4-FRAC-DIST": [
+      "4.8"
+    ],
+    "C4-FRACTION-TREND": [
+      "4.10"
+    ],
+    "C4-FRACTIONS": [
+      "4.9"
+    ],
+    "C4-FUEL": [
+      "4.11"
+    ],
+    "C4-HOMOLOG": [
+      "4.3"
+    ],
+    "C4-HYDROCARBON": [
+      "4.1"
+    ],
+    "C4-IUPAC": [
+      "4.4"
+    ],
+    "C4-MONOMER": [
+      "4.46"
+    ],
+    "C4-NOX": [
+      "4.14"
+    ],
+    "C4-OH-FG": [
+      "4.29C"
+    ],
+    "C4-POLY-DISPOSAL": [
+      "4.47"
+    ],
+    "C4-POLYESTER": [
+      "4.49C"
+    ],
+    "C4-PRAC-ESTER": [
+      "4.43C"
+    ],
+    "C4-REACT-CLASS": [
+      "4.6"
+    ],
+    "C4-REPEAT-UNIT": [
+      "4.45"
+    ],
+    "C4-SO2": [
+      "4.15"
+    ],
+    "C4-STRUCT-DRAW": [
+      "4.5"
+    ],
+    "C4-VINEGAR": [
+      "4.37C"
+    ]
+  },
+  "validatedPrerequisiteEdges": [
+    {
+      "dependent": "4CH1-CON-ANODE-CATHODE",
+      "prerequisite": "4CH1-CON-ION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-AQUEOUS-DISCHARGE",
+      "prerequisite": "4CH1-CON-ELECTROLYSIS",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-AR",
+      "prerequisite": "4CH1-CON-ISOTOPES",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-ATOMIC-NUMBER",
+      "prerequisite": "4CH1-CON-SUBATOMIC-PARTICLES",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-BOND-BREAKING-MAKING",
+      "prerequisite": "4CH1-CON-EXO-ENDO",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-BOND-ENERGY-CALC",
+      "prerequisite": "4CH1-CON-BOND-BREAKING-MAKING",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-BOND-ENERGY-CALC",
+      "prerequisite": "4CH1-CON-COVALENT-BOND",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-CATALYST",
+      "prerequisite": "4CH1-CON-ACTIVATION-ENERGY",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-CHROMATOGRAM-INTERPRETATION",
+      "prerequisite": "4CH1-CON-CHROMATOGRAPHY",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:EXAMINER_TIP_EXPLICIT|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-CHROMATOGRAM-INTERPRETATION",
+      "prerequisite": "4CH1-CON-PURE-SUBSTANCE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-CHROMATOGRAPHY",
+      "prerequisite": "4CH1-CON-SOLUBILITY",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-COMPOUND",
+      "prerequisite": "4CH1-CON-ELEMENT",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-CONC-CALC",
+      "prerequisite": "4CH1-CON-MOLE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-CONC-CALC",
+      "prerequisite": "4CH1-CON-VOL-CONVERSION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-COVALENT-BOND",
+      "prerequisite": "4CH1-CON-ATOM",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-COVALENT-BOND",
+      "prerequisite": "4CH1-CON-ELECTRONIC-CONFIGURATION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-COVALENT-CONDUCTION",
+      "prerequisite": "4CH1-CON-SIMPLE-MOLECULAR",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-CRYSTALLISATION",
+      "prerequisite": "4CH1-CON-SATURATED-SOLUTION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-DIAMOND-GRAPHITE",
+      "prerequisite": "4CH1-CON-GIANT-COVALENT",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-DOT-CROSS-COVALENT",
+      "prerequisite": "4CH1-CON-COVALENT-BOND",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-DOT-CROSS-COVALENT",
+      "prerequisite": "4CH1-CON-MOLECULE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-DOT-CROSS-IONIC",
+      "prerequisite": "4CH1-CON-ION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-DYNAMIC-EQUILIBRIUM",
+      "prerequisite": "4CH1-CON-REVERSIBLE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-ELECTRODE-HALF-EQUATIONS",
+      "prerequisite": "4CH1-CON-ELECTROLYSIS",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-ELECTRODE-HALF-EQUATIONS",
+      "prerequisite": "4CH1-CON-REDOX-ELECTRONS",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-ELECTROLYSIS",
+      "prerequisite": "4CH1-CON-ANODE-CATHODE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-ELECTROLYSIS",
+      "prerequisite": "4CH1-CON-IONIC-BOND",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-ELECTROLYSIS",
+      "prerequisite": "4CH1-CON-IONIC-CONDUCTION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-ELECTRONIC-CONFIGURATION",
+      "prerequisite": "4CH1-CON-PERIODIC-TABLE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-ELECTRONIC-CONFIGURATION",
+      "prerequisite": "4CH1-CON-SUBATOMIC-PARTICLES",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-EMP-MOL-CALC",
+      "prerequisite": "4CH1-CON-AR",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-EMP-MOL-CALC",
+      "prerequisite": "4CH1-CON-EMPIRICAL-FORMULA",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-EMP-MOL-CALC",
+      "prerequisite": "4CH1-CON-MOLE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-ENERGY-LEVEL-DIAGRAM",
+      "prerequisite": "4CH1-CON-EXO-ENDO",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-EQ-POSITION",
+      "prerequisite": "4CH1-CON-CATALYST",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-EQ-POSITION",
+      "prerequisite": "4CH1-CON-DYNAMIC-EQUILIBRIUM",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-EQ-POSITION",
+      "prerequisite": "4CH1-CON-EXO-ENDO",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-EVAPORATION-BOILING",
+      "prerequisite": "4CH1-CON-STATE-CHANGES",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-EXP-FORMULA-DEDUCTION",
+      "prerequisite": "4CH1-CON-MOLE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-FILTRATION",
+      "prerequisite": "4CH1-CON-SOLUTION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-FRACTIONAL-DISTILLATION",
+      "prerequisite": "4CH1-CON-SIMPLE-DISTILLATION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:EXPLICIT_TEACH_SEQUENCE|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-GAS-VOL-CALC",
+      "prerequisite": "4CH1-CON-MOLAR-GAS-VOL",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-GAS-VOL-CALC",
+      "prerequisite": "4CH1-CON-MOLE-MASS-CONV",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-GIANT-COVALENT",
+      "prerequisite": "4CH1-CON-COVALENT-BOND",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-GROUP-SIMILARITY",
+      "prerequisite": "4CH1-CON-PERIODIC-TABLE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-HEAT-CALC",
+      "prerequisite": "4CH1-CON-CALORIMETRY",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:EXPLICIT_TEACH_SEQUENCE|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-HEAT-CALC",
+      "prerequisite": "4CH1-CON-EXO-ENDO",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-ION",
+      "prerequisite": "4CH1-CON-ATOM",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-ION",
+      "prerequisite": "4CH1-CON-ELECTRONIC-CONFIGURATION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-ION-CHARGE-RULES",
+      "prerequisite": "4CH1-CON-ION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-IONIC-BOND",
+      "prerequisite": "4CH1-CON-ION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-IONIC-CONDUCTION",
+      "prerequisite": "4CH1-CON-ION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-IONIC-CONDUCTION",
+      "prerequisite": "4CH1-CON-IONIC-LATTICE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-IONIC-FORMULA",
+      "prerequisite": "4CH1-CON-ION-CHARGE-RULES",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-IONIC-LATTICE",
+      "prerequisite": "4CH1-CON-IONIC-BOND",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-ISOTOPES",
+      "prerequisite": "4CH1-CON-SUBATOMIC-PARTICLES",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-MASS-NUMBER",
+      "prerequisite": "4CH1-CON-ATOMIC-NUMBER",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-MASS-NUMBER",
+      "prerequisite": "4CH1-CON-SUBATOMIC-PARTICLES",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-METAL-NONMETAL",
+      "prerequisite": "4CH1-CON-PERIODIC-TABLE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-METALLIC-BOND",
+      "prerequisite": "4CH1-CON-ION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-MIXTURE",
+      "prerequisite": "4CH1-CON-COMPOUND",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-MOLAR-ENTHALPY",
+      "prerequisite": "4CH1-CON-HEAT-CALC",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:EXPLICIT_TEACH_SEQUENCE|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-MOLAR-ENTHALPY",
+      "prerequisite": "4CH1-CON-MOLE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-MOLAR-GAS-VOL",
+      "prerequisite": "4CH1-CON-MOLE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-MOLAR-MASS",
+      "prerequisite": "4CH1-CON-AR",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-MOLAR-MASS",
+      "prerequisite": "4CH1-CON-MOLE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-MOLAR-MASS",
+      "prerequisite": "4CH1-CON-MR",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-MOLE-MASS-CONV",
+      "prerequisite": "4CH1-CON-MOLAR-MASS",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-MOLECULAR-FORMULA",
+      "prerequisite": "4CH1-CON-EMPIRICAL-FORMULA",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-MOLECULAR-FORMULA",
+      "prerequisite": "4CH1-CON-MR",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-MOLECULE",
+      "prerequisite": "4CH1-CON-ATOM",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-MR",
+      "prerequisite": "4CH1-CON-AR",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-NOBLE-GAS-INERTNESS",
+      "prerequisite": "4CH1-CON-PERIODIC-TABLE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-PERCENT-YIELD",
+      "prerequisite": "4CH1-CON-THEOR-YIELD",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-PERCENT-YIELD",
+      "prerequisite": "4CH1-CON-YIELD",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-PERIODIC-TABLE",
+      "prerequisite": "4CH1-CON-ATOMIC-NUMBER",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-PERIODIC-TABLE",
+      "prerequisite": "4CH1-CON-ELEMENT",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-PURE-SUBSTANCE",
+      "prerequisite": "4CH1-CON-COMPOUND",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-PURE-SUBSTANCE",
+      "prerequisite": "4CH1-CON-STATE-CHANGES",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-RATE-FACTORS",
+      "prerequisite": "4CH1-CON-CONCENTRATION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-REACTING-MASS",
+      "prerequisite": "4CH1-CON-MOLAR-RATIO",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-REACTING-MASS",
+      "prerequisite": "4CH1-CON-MOLE-MASS-CONV",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-REACTION-PROFILE",
+      "prerequisite": "4CH1-CON-ACTIVATION-ENERGY",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-REACTION-PROFILE",
+      "prerequisite": "4CH1-CON-ENERGY-LEVEL-DIAGRAM",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-REVERSIBLE",
+      "prerequisite": "4CH1-CON-EQ-SYMBOL",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-REVERSIBLE-EXAMPLES",
+      "prerequisite": "4CH1-CON-REVERSIBLE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-REVERSIBLE-EXAMPLES",
+      "prerequisite": "4CH1-CON-WATER-CRYST",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-RF-VALUE",
+      "prerequisite": "4CH1-CON-CHROMATOGRAM-INTERPRETATION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-SATURATED-SOLUTION",
+      "prerequisite": "4CH1-CON-SOLUTION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-SIMPLE-DISTILLATION",
+      "prerequisite": "4CH1-CON-SOLUTION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-SIMPLE-DISTILLATION",
+      "prerequisite": "4CH1-CON-STATE-CHANGES",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-SIMPLE-MOLECULAR",
+      "prerequisite": "4CH1-CON-COVALENT-BOND",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-SIMPLE-MOLECULAR",
+      "prerequisite": "4CH1-CON-MOLECULE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-CON-SOLUBILITY",
+      "prerequisite": "4CH1-CON-SATURATED-SOLUTION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-SOLUBILITY-CURVE",
+      "prerequisite": "4CH1-CON-SOLUBILITY",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-STATE-CHANGES",
+      "prerequisite": "4CH1-CON-STATE-PARTICLE-MODEL",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-STATE-PARTICLE-MODEL",
+      "prerequisite": "4CH1-CON-STATES-THREE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-SUBATOMIC-PARTICLES",
+      "prerequisite": "4CH1-CON-ATOM",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:DEFINITIONAL_DEPENDENCY|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-THEOR-YIELD",
+      "prerequisite": "4CH1-CON-REACTING-MASS",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-CON-WATER-CRYST",
+      "prerequisite": "4CH1-CON-EMP-MOL-CALC",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:EXPLICIT_TEACH_SEQUENCE|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-1.7C",
+      "prerequisite": "4CH1-CON-SATURATED-SOLUTION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-1.7C",
+      "prerequisite": "4CH1-CON-SOLUBILITY",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-1.13",
+      "prerequisite": "4CH1-CON-CHROMATOGRAPHY",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-1.13",
+      "prerequisite": "4CH1-CON-RF-VALUE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-2|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-1.36",
+      "prerequisite": "4CH1-CON-EXP-FORMULA-DEDUCTION",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-pilot-pass-1|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-12"
+    },
+    {
+      "dependent": "4CH1-1.60C",
+      "prerequisite": "4CH1-CON-AQUEOUS-DISCHARGE",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-1.60C",
+      "prerequisite": "4CH1-CON-ELECTROLYSIS",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-3|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-3.8",
+      "prerequisite": "4CH1-CON-CALORIMETRY",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-3.15",
+      "prerequisite": "4CH1-CON-RATE-EXPERIMENTS",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-3.15",
+      "prerequisite": "4CH1-CON-RATE-FACTORS",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-3.16",
+      "prerequisite": "4CH1-CON-CATALYST",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    },
+    {
+      "dependent": "4CH1-3.16",
+      "prerequisite": "4CH1-CON-RATE-EXPERIMENTS",
+      "strength": null,
+      "provenance": "t-c11:settled|pass:c11-s16-batch-4|method:USED_WITHOUT_RETEACHING|validated_by:operator|date:2026-09-13"
+    }
+  ],
+  "inferredPrototypePre": [
+    [
+      "p:1.18",
+      "p:1.19"
+    ],
+    [
+      "p:1.19",
+      "p:1.22"
+    ],
+    [
+      "p:1.25",
+      "p:1.28"
+    ],
+    [
+      "p:1.27",
+      "p:1.28"
+    ],
+    [
+      "p:1.28",
+      "p:1.29"
+    ],
+    [
+      "p:1.37",
+      "p:1.39"
+    ],
+    [
+      "p:1.41",
+      "p:1.42"
+    ],
+    [
+      "p:1.41",
+      "p:1.43"
+    ],
+    [
+      "p:1.44",
+      "p:1.46"
+    ],
+    [
+      "p:1.45",
+      "p:1.47"
+    ],
+    [
+      "p:1.57C",
+      "p:1.58C"
+    ],
+    [
+      "p:2.15",
+      "p:2.17"
+    ],
+    [
+      "p:2.15",
+      "p:2.20"
+    ],
+    [
+      "p:2.29",
+      "p:2.31"
+    ],
+    [
+      "p:2.35",
+      "p:2.36"
+    ],
+    [
+      "p:2.31",
+      "p:2.32"
+    ],
+    [
+      "p:3.1",
+      "p:3.5C"
+    ],
+    [
+      "p:3.6C",
+      "p:3.7C"
+    ],
+    [
+      "p:3.9",
+      "p:3.11"
+    ],
+    [
+      "p:3.13",
+      "p:3.14C"
+    ],
+    [
+      "p:3.19C",
+      "p:3.20C"
+    ],
+    [
+      "p:4.7",
+      "p:4.8"
+    ],
+    [
+      "p:4.19",
+      "p:4.20"
+    ],
+    [
+      "p:4.23",
+      "p:4.25"
+    ],
+    [
+      "p:4.23",
+      "p:4.27"
+    ],
+    [
+      "p:4.29C",
+      "p:4.31C"
+    ],
+    [
+      "p:4.29C",
+      "p:4.32C"
+    ],
+    [
+      "p:4.34C",
+      "p:4.36C"
+    ],
+    [
+      "p:4.39C",
+      "p:4.40C"
+    ],
+    [
+      "p:4.44",
+      "p:4.46"
+    ]
+  ],
+  "inferredPrototypeRel": [
+    [
+      "p:1.59C",
+      "p:1.60C"
+    ],
+    [
+      "p:2.34",
+      "p:2.37"
+    ],
+    [
+      "p:3.22C",
+      "p:3.21C"
+    ],
+    [
+      "p:4.8",
+      "p:4.9"
+    ],
+    [
+      "p:4.27",
+      "p:4.28"
+    ]
+  ],
+  "practicalEndpointRetarget": "12 operator-validated edges carried ad-hoc 4CH1-PR-01..11 endpoints; retargeted here to the real core-practical spec codes via the mapping verified 1:1 in spec order against curriculum.json (same mapping as scripts/fix_pr_edges.py, commit fd05d75, which fixed concept-graph.json). Provenance strings untouched. The upstream syllabai-core settled store retarget is the follow-up data fix.",
+  "conceptWebPrerequisiteEdges": [
+    {
+      "prerequisite": "C1-STATES",
+      "dependent": "C1-INTERCONV",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-STATES",
+      "dependent": "C1-DIFFUSION",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-STATES",
+      "dependent": "C1-SOLUTION-TERMS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-SOLUTION-TERMS",
+      "dependent": "C1-SOLUBILITY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-SOLUBILITY",
+      "dependent": "C1-SOLUB-CURVES",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-SOLUBILITY",
+      "dependent": "C1-PRAC-SOLUB",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-ECM",
+      "dependent": "C1-PURITY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-ECM",
+      "dependent": "C1-SEPARATION",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-SEPARATION",
+      "dependent": "C1-CHROMATOGRAM",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-CHROMATOGRAM",
+      "dependent": "C1-RF",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-CHROMATOGRAM",
+      "dependent": "C1-PRAC-CHROM",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-ATOM",
+      "dependent": "C1-ATOM-STRUCT",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-ATOM-STRUCT",
+      "dependent": "C1-ISO",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-ISO",
+      "dependent": "C1-AR-CALC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-ISO",
+      "dependent": "C1-PT-ARRANGE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-PT-ARRANGE",
+      "dependent": "C1-EC-DEDUCE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-PT-ARRANGE",
+      "dependent": "C1-METAL-POS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-METAL-CLASSIFY",
+      "dependent": "C1-METAL-POS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-EC-DEDUCE",
+      "dependent": "C1-EC-POSITION",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-EC-POSITION",
+      "dependent": "C1-GROUP-SIMILAR",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-GROUP-SIMILAR",
+      "dependent": "C1-NOBLE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-ISO",
+      "dependent": "C1-MR",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-EQNS",
+      "dependent": "C1-REACT-MASS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-MR",
+      "dependent": "C1-MOLE-CALC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-MOLE",
+      "dependent": "C1-MOLE-CALC",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-MOLE-CALC",
+      "dependent": "C1-REACT-MASS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-REACT-MASS",
+      "dependent": "C1-YIELD",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-FORMULA-EXP",
+      "dependent": "C1-EMP-MOL",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-EMP-MOL",
+      "dependent": "C1-FORMULA-CALC",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-MOLE-CALC",
+      "dependent": "C1-CONC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-MOLE-CALC",
+      "dependent": "C1-GAS-VOL",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-FORMULA-EXP",
+      "dependent": "C1-PRAC-MGO",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-EC-POSITION",
+      "dependent": "C1-ION-FORM",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-ION-FORM",
+      "dependent": "C1-ION-CHARGES",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-ION-CHARGES",
+      "dependent": "C1-FORMULAE-IONS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-ION-FORM",
+      "dependent": "C1-DOT-IONIC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-ION-FORM",
+      "dependent": "C1-IONIC-BOND",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-DOT-IONIC",
+      "dependent": "C1-IONIC-BOND",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-IONIC-BOND",
+      "dependent": "C1-IONIC-MP",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-IONIC-BOND",
+      "dependent": "C1-IONIC-COND",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-COV-BOND",
+      "dependent": "C1-COV-ELECTRO",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-COV-BOND",
+      "dependent": "C1-DOT-COV",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-DOT-COV",
+      "dependent": "C1-SIMPLE-MOL",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-SIMPLE-MOL",
+      "dependent": "C1-MR-BP",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-SIMPLE-MOL",
+      "dependent": "C1-GIANT-COV",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-GIANT-COV",
+      "dependent": "C1-CARBON-FORMS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-SIMPLE-MOL",
+      "dependent": "C1-COV-COND",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-METAL-LATTICE",
+      "dependent": "C1-METAL-BOND",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-METAL-BOND",
+      "dependent": "C1-METAL-PROPS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-COV-COND",
+      "dependent": "C1-COV-COND-WHY",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-IONIC-COND",
+      "dependent": "C1-IONIC-COND-WHY",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C1-ION-FORM",
+      "dependent": "C1-AN-CAT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-IONIC-COND-WHY",
+      "dependent": "C1-ELECTROLYSIS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-AN-CAT",
+      "dependent": "C1-ELECTROLYSIS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-EQNS",
+      "dependent": "C1-HALF-EQNS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-ELECTROLYSIS",
+      "dependent": "C1-HALF-EQNS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-ELECTROLYSIS",
+      "dependent": "C1-PRAC-ELECTRO",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-GROUP-SIMILAR",
+      "dependent": "C2-G1-FAMILY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-G1-FAMILY",
+      "dependent": "C2-G1-TREND",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C2-G1-TREND",
+      "dependent": "C2-G1-PREDICT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-EC-POSITION",
+      "dependent": "C2-G1-EC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-G1-TREND",
+      "dependent": "C2-G1-EC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-G7-PROPS",
+      "dependent": "C2-G7-PREDICT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-G7-PROPS",
+      "dependent": "C2-G7-DISPLACE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-EC-POSITION",
+      "dependent": "C2-G7-EC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-G7-DISPLACE",
+      "dependent": "C2-G7-EC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-AIR",
+      "dependent": "C2-O2-PERCENT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-COMBUSTION",
+      "dependent": "C2-O2-PERCENT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-EQNS",
+      "dependent": "C2-COMBUSTION",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-CO2-CARB",
+      "dependent": "C2-GREENHOUSE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-O2-PERCENT",
+      "dependent": "C2-PRAC-O2",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-DISPLACE-M",
+      "dependent": "C2-REACT-ORDER",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-REACT-SERIES",
+      "dependent": "C2-DISPLACE-M",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-REACT-SERIES",
+      "dependent": "C2-REACT-ORDER",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-RUST",
+      "dependent": "C2-RUST-PREVENT",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C2-DISPLACE-M",
+      "dependent": "C2-REDOX",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-REACT-SERIES",
+      "dependent": "C2-PRAC-ACID-M",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-REACT-ORDER",
+      "dependent": "C2-EXTRACT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-REDOX",
+      "dependent": "C2-EXTRACT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-EXTRACT",
+      "dependent": "C2-EXTRACT-COMMENT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-METAL-PROPS",
+      "dependent": "C2-METAL-USES",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-ECM",
+      "dependent": "C2-ALLOY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-METAL-USES",
+      "dependent": "C2-ALLOY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-ALLOY",
+      "dependent": "C2-ALLOY-HARD",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-METAL-LATTICE",
+      "dependent": "C2-ALLOY-HARD",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-PH",
+      "dependent": "C2-UNIV-IND",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-INDICATORS",
+      "dependent": "C2-PH",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-ION-CHARGES",
+      "dependent": "C2-H-OH",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-H-OH",
+      "dependent": "C2-NEUTRALISE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-NEUTRALISE",
+      "dependent": "C2-TITRATION",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-UNIV-IND",
+      "dependent": "C2-TITRATION",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-SOLUTION-TERMS",
+      "dependent": "C2-SOLUB-RULES",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-H-OH",
+      "dependent": "C2-PROTON-AB",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-PROTON-AB",
+      "dependent": "C2-DONOR-AB",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C2-REACT-SERIES",
+      "dependent": "C2-ACID-REACTIONS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-DONOR-AB",
+      "dependent": "C2-ACID-REACTIONS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-DONOR-AB",
+      "dependent": "C2-BASES",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-ACID-REACTIONS",
+      "dependent": "C2-SALT-INSOLB",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-SOLUB-RULES",
+      "dependent": "C2-SALT-INSOLB",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-TITRATION",
+      "dependent": "C2-SALT-TITR",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-SOLUB-RULES",
+      "dependent": "C2-SALT-PPN",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-SALT-INSOLB",
+      "dependent": "C2-PRAC-CUSO4",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-SALT-PPN",
+      "dependent": "C2-PRAC-PBSO4",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-CO2-CARB",
+      "dependent": "C2-GAS-TESTS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-FLAME",
+      "dependent": "C2-FLAME-COLOURS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C2-FLAME",
+      "dependent": "C2-CATION-TESTS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-CATION-TESTS",
+      "dependent": "C2-ANION-TESTS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-SOLUB-RULES",
+      "dependent": "C2-ANION-TESTS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-ANION-TESTS",
+      "dependent": "C2-WATER-TEST",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-PURITY",
+      "dependent": "C2-WATER-PURE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-WATER-TEST",
+      "dependent": "C2-WATER-PURE",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C3-EXO-ENDO",
+      "dependent": "C3-CALORIMETRY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-CALORIMETRY",
+      "dependent": "C3-Q-MC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-Q-MC",
+      "dependent": "C3-MOLAR-DH",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-EXO-ENDO",
+      "dependent": "C3-ENERGY-DIAG",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-ENERGY-DIAG",
+      "dependent": "C3-BOND-EN",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-BOND-EN",
+      "dependent": "C3-BOND-CALC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-CALORIMETRY",
+      "dependent": "C3-PRAC-TEMP",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-RATE-EXP",
+      "dependent": "C3-RATE-FACTORS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-STATES",
+      "dependent": "C3-COLLISION",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-RATE-FACTORS",
+      "dependent": "C3-COLLISION",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-RATE-FACTORS",
+      "dependent": "C3-CATALYST",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-CATALYST",
+      "dependent": "C3-CATALYST-EA",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-ENERGY-DIAG",
+      "dependent": "C3-CATALYST-EA",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-ENERGY-DIAG",
+      "dependent": "C3-PROFILE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-RATE-EXP",
+      "dependent": "C3-PRAC-MARBLE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-CATALYST",
+      "dependent": "C3-PRAC-PEROXIDE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-REVERSIBLE",
+      "dependent": "C3-REV-EXAMPLES",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-REVERSIBLE",
+      "dependent": "C3-DYN-EQ",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-DYN-EQ",
+      "dependent": "C3-EQ-CHAR",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C3-CATALYST",
+      "dependent": "C3-EQ-CATALYST",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-EQ-CHAR",
+      "dependent": "C3-EQ-CATALYST",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-EXO-ENDO",
+      "dependent": "C3-EQ-SHIFT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C3-EQ-CHAR",
+      "dependent": "C3-EQ-SHIFT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-EMP-MOL",
+      "dependent": "C4-FORMULAE-REP",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-FORMULAE-REP",
+      "dependent": "C4-HOMOLOG",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-HOMOLOG",
+      "dependent": "C4-IUPAC",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-FORMULAE-REP",
+      "dependent": "C4-STRUCT-DRAW",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-HYDROCARBON",
+      "dependent": "C4-CRUDE",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C1-SEPARATION",
+      "dependent": "C4-FRAC-DIST",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-CRUDE",
+      "dependent": "C4-FRAC-DIST",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-FRAC-DIST",
+      "dependent": "C4-FRACTIONS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-FRACTIONS",
+      "dependent": "C4-FRACTION-TREND",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C4-FUEL",
+      "dependent": "C4-COMBUSTION-PROD",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-COMBUSTION",
+      "dependent": "C4-COMBUSTION-PROD",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-COMBUSTION-PROD",
+      "dependent": "C4-CO-POISON",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-COMBUSTION-PROD",
+      "dependent": "C4-NOX",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-COMBUSTION-PROD",
+      "dependent": "C4-SO2",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-SO2",
+      "dependent": "C4-ACID-RAIN",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-NOX",
+      "dependent": "C4-ACID-RAIN",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-FRACTIONS",
+      "dependent": "C4-CRACKING",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-CRACKING",
+      "dependent": "C4-CRACKING-WHY",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C4-HOMOLOG",
+      "dependent": "C4-ALKANE-FORM",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ALKANE-FORM",
+      "dependent": "C4-ALKANE-SAT",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C4-ALKANE-FORM",
+      "dependent": "C4-ALKANE-DRAW",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-STRUCT-DRAW",
+      "dependent": "C4-ALKANE-DRAW",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ALKANE-DRAW",
+      "dependent": "C4-ALKANE-HAL",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-REACT-CLASS",
+      "dependent": "C4-ALKANE-HAL",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-HOMOLOG",
+      "dependent": "C4-ALKENE-FG",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ALKENE-FG",
+      "dependent": "C4-ALKENE-FORM",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ALKANE-FORM",
+      "dependent": "C4-ALKENE-FORM",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ALKENE-FORM",
+      "dependent": "C4-ALKENE-UNSAT",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C4-ALKENE-FORM",
+      "dependent": "C4-ALKENE-DRAW",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-STRUCT-DRAW",
+      "dependent": "C4-ALKENE-DRAW",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ALKENE-DRAW",
+      "dependent": "C4-ALKENE-BR",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-REACT-CLASS",
+      "dependent": "C4-ALKENE-BR",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ALKENE-BR",
+      "dependent": "C4-BROMINE-WATER",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ALKANE-SAT",
+      "dependent": "C4-BROMINE-WATER",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-HOMOLOG",
+      "dependent": "C4-OH-FG",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-OH-FG",
+      "dependent": "C4-ALCOHOL-DRAW",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-STRUCT-DRAW",
+      "dependent": "C4-ALCOHOL-DRAW",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ALCOHOL-DRAW",
+      "dependent": "C4-ETHANOL-OX",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ALKENE-BR",
+      "dependent": "C4-ETHANOL-MFG",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ETHANOL-MFG",
+      "dependent": "C4-FERMENT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-COA-FG",
+      "dependent": "C4-COA-DRAW",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-STRUCT-DRAW",
+      "dependent": "C4-COA-DRAW",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-COA-DRAW",
+      "dependent": "C4-COA-REACTIONS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C2-ACID-REACTIONS",
+      "dependent": "C4-COA-REACTIONS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-COA-FG",
+      "dependent": "C4-VINEGAR",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ESTER-FG",
+      "dependent": "C4-ETHYL-ETH",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-COA-FG",
+      "dependent": "C4-ETHYL-ETH",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-OH-FG",
+      "dependent": "C4-ETHYL-ETH",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ETHYL-ETH",
+      "dependent": "C4-ESTER-DRAW",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ESTER-DRAW",
+      "dependent": "C4-ESTER-GENERAL",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ESTER-GENERAL",
+      "dependent": "C4-ESTER-USES",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ETHYL-ETH",
+      "dependent": "C4-PRAC-ESTER",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ALKENE-FG",
+      "dependent": "C4-ADD-POLY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-ADD-POLY",
+      "dependent": "C4-REPEAT-UNIT",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-REPEAT-UNIT",
+      "dependent": "C4-MONOMER",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "C4-ADD-POLY",
+      "dependent": "C4-POLY-DISPOSAL",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-COA-FG",
+      "dependent": "C4-COND-POLY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-OH-FG",
+      "dependent": "C4-COND-POLY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-COND-POLY",
+      "dependent": "C4-POLYESTER",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "C4-POLYESTER",
+      "dependent": "C4-BIOPOLY",
+      "basis": "USED_WITHOUT_RETEACHING"
+    }
+  ],
+  "mergeOf": {
+    "legacyLayer": {
+      "generatedUtc": "2026-09-30T09:26:58Z",
+      "source": "syllabai-core production knowledge_edges — the operator-validated T-C11 settled store (REQUIRES_PREREQUISITE, VALIDATED, provenance verbatim) plus the concept->spec-point anchor PART_OF edges; prerequisite tiers: operator-validated (projected by scripts/kg_export.py through concept anchors, deterministic) and inferred-prototype (hand-curated SME tuples transcribed verbatim from the canonicalKG prototype artifact).",
+      "validatedEdges": 112,
+      "inferredPre": 30,
+      "inferredRel": 5,
+      "servedPreReDerived": 145,
+      "reDerivationExact": true
+    },
+    "f8Layer": {
+      "lane": "4CH1-F8",
+      "concepts": 182,
+      "webEdges": 194,
+      "law": "scripts/kg_f8al_project.py v1.0 export_pairs"
+    }
+  },
+  "counts": {
+    "anchoredConcepts": 280,
+    "conceptWebEdges": 194,
+    "validatedEdges": 112,
+    "inferredPre": 30,
+    "inferredRel": 5
+  },
+  "exportCounts": {
+    "candidates": 194,
+    "selfLoops": 0,
+    "reversedDropped": 1,
+    "preExported": 193,
+    "alreadyServed": 58,
+    "newAppended": 135
   }
- ],
- "inferredPrototypePre": [
-  [
-   "p:1.18",
-   "p:1.19"
-  ],
-  [
-   "p:1.19",
-   "p:1.22"
-  ],
-  [
-   "p:1.25",
-   "p:1.28"
-  ],
-  [
-   "p:1.27",
-   "p:1.28"
-  ],
-  [
-   "p:1.28",
-   "p:1.29"
-  ],
-  [
-   "p:1.37",
-   "p:1.39"
-  ],
-  [
-   "p:1.41",
-   "p:1.42"
-  ],
-  [
-   "p:1.41",
-   "p:1.43"
-  ],
-  [
-   "p:1.44",
-   "p:1.46"
-  ],
-  [
-   "p:1.45",
-   "p:1.47"
-  ],
-  [
-   "p:1.57C",
-   "p:1.58C"
-  ],
-  [
-   "p:2.15",
-   "p:2.17"
-  ],
-  [
-   "p:2.15",
-   "p:2.20"
-  ],
-  [
-   "p:2.29",
-   "p:2.31"
-  ],
-  [
-   "p:2.35",
-   "p:2.36"
-  ],
-  [
-   "p:2.31",
-   "p:2.32"
-  ],
-  [
-   "p:3.1",
-   "p:3.5C"
-  ],
-  [
-   "p:3.6C",
-   "p:3.7C"
-  ],
-  [
-   "p:3.9",
-   "p:3.11"
-  ],
-  [
-   "p:3.13",
-   "p:3.14C"
-  ],
-  [
-   "p:3.19C",
-   "p:3.20C"
-  ],
-  [
-   "p:4.7",
-   "p:4.8"
-  ],
-  [
-   "p:4.19",
-   "p:4.20"
-  ],
-  [
-   "p:4.23",
-   "p:4.25"
-  ],
-  [
-   "p:4.23",
-   "p:4.27"
-  ],
-  [
-   "p:4.29C",
-   "p:4.31C"
-  ],
-  [
-   "p:4.29C",
-   "p:4.32C"
-  ],
-  [
-   "p:4.34C",
-   "p:4.36C"
-  ],
-  [
-   "p:4.39C",
-   "p:4.40C"
-  ],
-  [
-   "p:4.44",
-   "p:4.46"
-  ]
- ],
- "inferredPrototypeRel": [
-  [
-   "p:1.59C",
-   "p:1.60C"
-  ],
-  [
-   "p:2.34",
-   "p:2.37"
-  ],
-  [
-   "p:3.22C",
-   "p:3.21C"
-  ],
-  [
-   "p:4.8",
-   "p:4.9"
-  ],
-  [
-   "p:4.27",
-   "p:4.28"
-  ]
- ],
- "counts": {
-  "anchoredConcepts": 98,
-  "validatedEdges": 112,
-  "inferredPre": 30,
-  "inferredRel": 5
- },
- "practicalEndpointRetarget": "12 operator-validated edges carried ad-hoc 4CH1-PR-01..11 endpoints; retargeted here to the real core-practical spec codes via the mapping verified 1:1 in spec order against curriculum.json (same mapping as scripts/fix_pr_edges.py, commit fd05d75, which fixed concept-graph.json). Provenance strings untouched. The upstream syllabai-core settled store retarget is the follow-up data fix."
 }
