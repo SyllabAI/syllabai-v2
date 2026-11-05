@@ -26,14 +26,22 @@ Ledger:
        F8.3 web pair hygiene — no self/duplicate/mutual web pairs.
        F8.4 snapshot counts self-consistent — counts block matches the
             snapshot body; validatedEdges == len(validatedPrerequisiteEdges)
-            and inferred counters zero (nothing claims validation or an
-            unshipped inference).
+            and inferred counters match their lists (zero on plain web
+            snapshots — nothing claims validation or an unshipped
+            inference; on mergeOf two-layer snapshots the legacy layer's
+            operator-validated/inferred counters match its lists).
        F8.5 served == calibrated export — the served pre set equals the
-            in-order export of the web (the kg_f8al_project.py law).
+            in-order export of the web (the kg_f8al_project.py law); on
+            mergeOf snapshots, the union of the web export and the legacy
+            layer's own documented derivation (validated concept edges AND
+            direct-point endpoint edges through the legacy anchors, plus
+            the inferredPrototypePre tuples).
        F8.6 prereqValidated EMPTY — validatedPrerequisiteEdges == [] and
-            inferredPrototypePre/Rel == [] on web-schema snapshots (the
-            INFERRED PROTOTYPE honesty law: the web tier never claims
-            operator validation).
+            inferredPrototypePre/Rel == [] on plain web-schema snapshots
+            (the INFERRED PROTOTYPE honesty law: the web tier never claims
+            operator validation); on mergeOf snapshots the legacy layer's
+            validated edges keep operator provenance (validated_by:operator
+            verbatim) and the F8 web edges carry NO provenance field.
        F8.7 disclosure present — meta.prerequisites exists and says
             AI_SUGGESTED / unvalidated; meta.counts.byEdgeType matches the
             served edge type census.
@@ -140,6 +148,8 @@ def main() -> None:
         if "conceptWebPrerequisiteEdges" not in pre:
             continue  # legacy generation (T-KG-PRE-1) — F8 web laws N/A
 
+        is_merge = "mergeOf" in pre  # T-KG-PRE-20 two-layer merged store
+
         pts = [p.get("id") for p in d["points"]]
         ids = set(pts)
         prefix_code = d.get("meta", {}).get("code")
@@ -182,11 +192,21 @@ def main() -> None:
             fail("F8.4", slug, "counts.conceptWebEdges mismatch")
         if cnt.get("validatedEdges") != len(pre.get("validatedPrerequisiteEdges", [])):
             fail("F8.4", slug, "counts.validatedEdges mismatch")
-        if cnt.get("validatedEdges") != 0 or cnt.get("inferredPre") != 0 or cnt.get("inferredRel") != 0:
+        if cnt.get("inferredPre") != len(pre.get("inferredPrototypePre", [])):
+            fail("F8.4", slug, "counts.inferredPre mismatch")
+        if cnt.get("inferredRel") != len(pre.get("inferredPrototypeRel", [])):
+            fail("F8.4", slug, "counts.inferredRel mismatch")
+        if not is_merge and (
+            cnt.get("validatedEdges") != 0 or cnt.get("inferredPre") != 0 or cnt.get("inferredRel") != 0
+        ):
             fail("F8.4", slug, "web-schema snapshot claims validated/inferred counters != 0")
-        ok("F8.4", slug, "counts block self-consistent, zero validated/inferred claims")
+        if is_merge:
+            ok("F8.4", slug, "counts block self-consistent over the two-layer merge (legacy validated/inferred counters match their lists)")
+        else:
+            ok("F8.4", slug, "counts block self-consistent, zero validated/inferred claims")
 
-        # F8.5 — served == calibrated in-order export
+        # F8.5 — served == calibrated in-order export (web layer; plus the
+        # legacy layer's documented derivation on mergeOf snapshots)
         order = {p: i for i, p in enumerate(pts)}
         derived = set()
         for e in pre["conceptWebPrerequisiteEdges"]:
@@ -195,16 +215,49 @@ def main() -> None:
                     if a != b and order[a] < order[b]:
                         derived.add((f"p:{a}", f"p:{b}"))
         served_set = {(e[0], e[1]) for e in d["edges"] if e[2] == "pre"}
+        if is_merge:
+            cand = set()
+            for e in pre.get("validatedPrerequisiteEdges", []):
+                def leg_ep(x):
+                    return anchors[x] if x in anchors else [
+                        res(x) if res(x) else fail("F8.5", slug, f"legacy endpoint {x!r} does not resolve")
+                    ]
+                for a in leg_ep(e["prerequisite"]):
+                    for b in leg_ep(e["dependent"]):
+                        if a != b:
+                            cand.add((a, b))
+            legacy_pairs = {
+                (f"p:{a}", f"p:{b}") for a, b in cand if order[a] < order[b]
+            } | {(x[0], x[1]) for x in pre.get("inferredPrototypePre", [])}
+            derived = derived | legacy_pairs
         if derived != served_set:
             fail("F8.5", slug, f"calibration drift: derived {len(derived)} vs served {len(served_set)}, sym {len(derived ^ served_set)}")
-        ok("F8.5", slug, f"served pre == in-order web export exactly ({len(derived)} pairs)")
+        if is_merge:
+            ok("F8.5", slug, f"served pre == legacy derivation UNION web export exactly ({len(derived)} pairs)")
+        else:
+            ok("F8.5", slug, f"served pre == in-order web export exactly ({len(derived)} pairs)")
 
         # F8.6 — prereqValidated EMPTY + inferred prototype lists empty
-        if pre.get("validatedPrerequisiteEdges") != []:
-            fail("F8.6", slug, "validatedPrerequisiteEdges not empty — web tier must never claim validation")
-        if pre.get("inferredPrototypePre") != [] or pre.get("inferredPrototypeRel") != []:
-            fail("F8.6", slug, "inferredPrototypePre/Rel not empty on a web-schema snapshot")
-        ok("F8.6", slug, "prereqValidated EMPTY — INFERRED PROTOTYPE honesty law holds")
+        # (plain web snapshots); on mergeOf snapshots the legacy layer's
+        # operator provenance must ride along byte-intact and the F8 web
+        # layer must carry NO provenance claim.
+        if is_merge:
+            bad_prov = [
+                e for e in pre.get("validatedPrerequisiteEdges", [])
+                if "validated_by:operator" not in e.get("provenance", "")
+            ]
+            if bad_prov:
+                fail("F8.6", slug, f"{len(bad_prov)} legacy validated edges lost operator provenance")
+            prov_web = [e for e in pre["conceptWebPrerequisiteEdges"] if "provenance" in e]
+            if prov_web:
+                fail("F8.6", slug, f"{len(prov_web)} F8 web edges carry a provenance field — web tier must never claim validation")
+            ok("F8.6", slug, "legacy layer operator provenance byte-intact; F8 web layer carries zero validated claims")
+        else:
+            if pre.get("validatedPrerequisiteEdges") != []:
+                fail("F8.6", slug, "validatedPrerequisiteEdges not empty — web tier must never claim validation")
+            if pre.get("inferredPrototypePre") != [] or pre.get("inferredPrototypeRel") != []:
+                fail("F8.6", slug, "inferredPrototypePre/Rel not empty on a web-schema snapshot")
+            ok("F8.6", slug, "prereqValidated EMPTY — INFERRED PROTOTYPE honesty law holds")
 
         # F8.7 — disclosure present
         pr = d.get("meta", {}).get("prerequisites")
