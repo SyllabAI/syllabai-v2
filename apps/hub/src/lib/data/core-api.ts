@@ -57,7 +57,10 @@ export function coreApiProvider(): DemoDataProvider {
   const fallback = mockProvider();
   return {
     id: "core-api",
-    displayName: "syllabai-core API (authoritative)",
+    // T-UX-VOICE-1: student-voiced display name — the of-record provider id
+    // stays "core-api"; the raw backing-service vocabulary lives in comments
+    // and /about/provenance, not in UI strings.
+    displayName: "Official syllabus data",
     detail: `${coreBaseUrl() ?? ""} — unprovisioned surfaces fall back to the bundled corpus`,
     manifest: fallback.manifest,
     curriculum: fallback.curriculum,

@@ -164,7 +164,7 @@ function MisconceptionWatchCard({ watch, live = false }: { watch: MisconceptionW
           {active.length} active · {watching.length} watching
         </Badge>
         <Badge variant="outline" className="ml-auto text-[10px] text-muted-foreground">
-          {live ? "CORE_MEASURED" : "SIMULATED"}
+          {live ? "From your account" : "Illustrative — this browser"}
         </Badge>
       </header>
       <div className="px-3 py-2">
@@ -745,7 +745,7 @@ export function LearnerStateDrawer({
           <div className="flex items-center gap-2">
             <Gauge className="size-4 shrink-0 text-primary" aria-hidden />
             <SheetTitle className="text-base">My learning state</SheetTitle>
-            <ProvenanceBadge tier={live ? "CORE_MEASURED" : "SIMULATED"} />
+            <ProvenanceBadge tier={live ? "CORE_MEASURED" : "SIMULATED"} studentVoice />
           </div>
           <SheetDescription className="text-xs">
             {live
