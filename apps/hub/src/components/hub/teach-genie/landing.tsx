@@ -45,7 +45,7 @@ export function TeachGenieLanding({
             rail entirely on the fresh landing, snapshot (3)) */}
         {hasRail && (
           <aside
-            aria-label="Your Teach Genie sessions"
+            aria-label="Your Teach SillyAI sessions"
             className="flex shrink-0 flex-col gap-3 border-b-2 border-border pb-6 lg:w-60 lg:border-b-0 lg:border-r-2 lg:pr-4 lg:pb-0"
           >
             <button
@@ -104,7 +104,7 @@ export function TeachGenieLanding({
                       preview.map((row) =>
                         row.role === "pupil" ? (
                           <div key={row.id} className="flex flex-col items-start">
-                            <span className="mb-1 px-2 text-xs font-medium text-muted-foreground/60">Baby Genie</span>
+                            <span className="mb-1 px-2 text-xs font-medium text-muted-foreground/60">SillyAI</span>
                             <div className="w-fit max-w-[65%] rounded-2xl bg-background p-2 px-3 text-left text-xs font-medium leading-relaxed text-pretty text-foreground shadow-lg ring-2 ring-foreground/5">
                               {row.text}
                             </div>
@@ -122,7 +122,7 @@ export function TeachGenieLanding({
                       <div className="flex justify-start">
                         <div
                           role="img"
-                          aria-label="Baby Genie is thinking"
+                          aria-label="SillyAI is thinking"
                           className="flex w-fit items-center gap-[3px] rounded-2xl bg-background px-3 py-2 shadow-lg ring-2 ring-foreground/5"
                         >
                           <span className="tg-dot size-[5px] rounded-full bg-foreground/30" />
@@ -138,7 +138,7 @@ export function TeachGenieLanding({
             <BabyGenieAvatar size={180} />
             <h2 className="tg-title mt-6 text-balance text-3xl tracking-tight text-foreground">Learn by Teaching</h2>
             <p className="mt-3 text-balance text-base font-normal text-muted-foreground">
-              Review a concept by teaching it to Baby Genie.
+              Review a concept by teaching it to SillyAI.
               <br />
               Practice learning with the{" "}
               <TooltipProvider delayDuration={100}>
@@ -179,8 +179,8 @@ export function TeachGenieLanding({
                 />
                 <Step
                   badge="2"
-                  title="Teach Baby Genie"
-                  body="Type it or say it out loud. He keeps asking until it makes sense to him."
+                  title="Teach SillyAI"
+                  body="Type it or say it out loud. It keeps asking until every step makes sense."
                 />
                 <Step
                   badge="3"

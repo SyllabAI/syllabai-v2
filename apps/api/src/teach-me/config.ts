@@ -16,10 +16,12 @@
 export const TEACH_ME_CONFIG = {
   feature: "teach-me",
   /** T-TEACHGENIE-001: the learner-facing persona of record (MG parity — the
-   *  student teaches Baby Genie, a confused younger pupil, Feynman-style).
+   *  student teaches a confused younger pupil, Feynman-style).
+   *  T-TEACHGENIE-003: the persona is renamed to SillyAI (the "Teach SillyAI"
+   *  rebrand); charter v3 carries the identity, voice and invariants unchanged.
    *  Still no mascot art in the API contract; the hub renders an original
    *  stand-in avatar (no MathsGenie assets are copied). */
-  pupilName: "Baby Genie",
+  pupilName: "SillyAI",
 
   /** Runtime render gate lives in flags.json; this mirror is the serving scope of record. */
   flags: {
@@ -88,12 +90,13 @@ export const TEACH_ME_CONFIG = {
   },
 
   /** Pinned prompts (fixture-replayed in CI; bump version, never edit).
-   *  T-TEACHGENIE-001 bumps the charter (Baby Genie identity + MG casual
-   *  voice) and the objectives prompt (dynamic in-character opener). */
+   *  T-TEACHGENIE-001 bumped the charter (MG casual voice + in-character opener);
+   *  T-TEACHGENIE-003 bumps pupil/turn/objectives to v3 for the "Teach SillyAI"
+   *  persona rename — identity, voice and invariants carry over unchanged. */
   prompts: {
-    pupilCharter: "pupil.v2",
-    turn: "teachme.turn.v1",
-    objectives: "teachme.objectives.v2", // inline canon-grounding system prompt (not a version-pinned file)
+    pupilCharter: "pupil.v3",
+    turn: "teachme.turn.v3",
+    objectives: "teachme.objectives.v3", // inline canon-grounding system prompt (not a version-pinned file)
     review: "teachme.review.v1",
   },
 } as const;

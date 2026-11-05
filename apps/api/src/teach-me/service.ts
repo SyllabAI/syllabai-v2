@@ -33,7 +33,7 @@ import {
 } from "@syllabai/contracts";
 import { isTruncationFinish } from "../services/llmchain";
 import { TEACH_ME_CONFIG } from "./config";
-import { OBJECTIVES_SYSTEM_V2, PUPIL_CHARTER_V2, TEACHME_REVIEW_V1, TEACHME_TURN_V2 } from "./prompts";
+import { OBJECTIVES_SYSTEM_V3, PUPIL_CHARTER_V3, TEACHME_REVIEW_V1, TEACHME_TURN_V3 } from "./prompts";
 import type {
   Clock,
   SpecPointCanonRow,
@@ -360,7 +360,7 @@ export function createTeachMeService(deps: {
 
     // flags gate (serving scope of record)
     if (!CFG.flags.teachMe.enabled || !(CFG.flags.teachMe.courses as readonly string[]).includes(req.courseId)) {
-      throw new TeachMeFailClosed("TEACH_ME_FLAG_DISABLED", "Teach Genie is not enabled for this course yet");
+      throw new TeachMeFailClosed("TEACH_ME_FLAG_DISABLED", "Teach SillyAI is not enabled for this course yet");
     }
 
     // G1: canon exists with per-point descriptions (objectives must be spec-grounded)
@@ -384,7 +384,7 @@ export function createTeachMeService(deps: {
     // D3 quota — count sessions started today (UTC), fail-closed at cap
     const started = await store.countSessionsToday(userId, utcDayStart(clock.now()));
     if (started >= CFG.quota.dailySessionCap) {
-      throw new TeachMeFailClosed("QUOTA_EXCEEDED", "Daily Teach Genie session cap reached — back tomorrow.");
+      throw new TeachMeFailClosed("QUOTA_EXCEEDED", "Daily Teach SillyAI session cap reached — back tomorrow.");
     }
 
     requireAvailable(chain);
@@ -400,12 +400,12 @@ export function createTeachMeService(deps: {
       "Cover every listed spec point at least once; no objective may cite a spec point outside this list.",
     ].join("\n");
     const res = await chain.generate({
-      system: OBJECTIVES_SYSTEM_V2,
+      system: OBJECTIVES_SYSTEM_V3,
       user: userPrompt,
       temperature: CFG.llm.objectivesTemperature,
       maxTokens: CFG.llm.maxTokens,
     });
-    let tokensUsed = estimateTokens(OBJECTIVES_SYSTEM_V2, userPrompt, res.text);
+    let tokensUsed = estimateTokens(OBJECTIVES_SYSTEM_V3, userPrompt, res.text);
 
     let parsed: z.infer<typeof objectivesOutputSchema>;
     try {
@@ -543,9 +543,9 @@ export function createTeachMeService(deps: {
 
     requireAvailable(chain);
 
-    // LLM call 2..n — the combined judge+probe (pinned teachme.turn.v2)
+    // LLM call 2..n — the combined judge+probe (pinned teachme.turn.v3)
     const canon = await store.loadSpecPointCanon(session.specPointIds);
-    const judgeSystem = TEACHME_TURN_V2.replace("{{PUPIL_CHARTER}}", PUPIL_CHARTER_V2);
+    const judgeSystem = TEACHME_TURN_V3.replace("{{PUPIL_CHARTER}}", PUPIL_CHARTER_V3);
     const judgeUser = [
       "COURSE_CANON:",
       canonBlock(canon),

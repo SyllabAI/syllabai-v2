@@ -36,9 +36,9 @@ export interface TeachGeniePickerProps {
 }
 
 const DIFFICULTIES: Array<{ value: TeachDifficulty; label: string; hint: string }> = [
-  { value: "easy", label: "Easy", hint: "Baby Genie knows nothing yet" },
-  { value: "medium", label: "Medium", hint: "He mixes things up" },
-  { value: "hard", label: "Hard", hint: "He grills you on edge cases" },
+  { value: "easy", label: "Easy", hint: "SillyAI knows nothing yet" },
+  { value: "medium", label: "Medium", hint: "It mixes things up" },
+  { value: "hard", label: "Hard", hint: "It grills you on edge cases" },
 ];
 
 const LENGTHS: Array<{ value: TeachSessionLength; label: string; hint: string }> = [
@@ -104,7 +104,7 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
 
       <h2 className="tg-title mt-3 text-balance text-3xl tracking-tight text-foreground">New session</h2>
       <p className="mt-2 text-sm text-muted-foreground">
-        Pick the revision note you&apos;ll teach {courseLabel} from — Baby Genie will muddle his way through whatever&apos;s in
+        Pick the revision note you&apos;ll teach {courseLabel} from — SillyAI will muddle its way through whatever&apos;s in
         it.
       </p>
 
@@ -234,7 +234,7 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
       {/* difficulty + length */}
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <Segmented
-          legend="How unsure is Baby Genie?"
+          legend="How unsure is SillyAI?"
           options={DIFFICULTIES.map((d) => ({ value: d.value, label: d.label, hint: d.hint }))}
           value={difficulty}
           onChange={(v) => setDifficulty(v as TeachDifficulty)}
@@ -257,7 +257,7 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
           }
           className="inline-flex w-full max-w-xs cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-full border-2 border-transparent bg-[#1cb0f6] px-4 py-2.5 font-medium text-white transition-all hover:bg-[#1cb0f6]/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground disabled:cursor-not-allowed disabled:opacity-50 dark:bg-[#46cbe3] dark:text-[#191919]"
         >
-          {busy ? "Waking Baby Genie…" : "Start session"}
+          {busy ? "Waking SillyAI…" : "Start session"}
         </button>
         <p className="text-center text-[11px] leading-relaxed text-muted-foreground">
           Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts. Quota: 3 sessions a day.

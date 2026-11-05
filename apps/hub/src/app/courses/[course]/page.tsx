@@ -459,12 +459,12 @@ export default async function CourseHubPage({
           // page of record serves under — and non-pilot courses keep the
           // honest "import pending" roadmap card (plan §10), never a dead CTA.
           icon: GraduationCap,
-          title: "Teach Genie",
+          title: "Teach SillyAI",
           desc: teachMe
-            ? "Learn by teaching: pick spec points and teach Baby Genie in your own words — he keeps asking until it makes sense, objectives tick off, and a review lands at the end."
-            : "Learn by teaching — explain topics to Baby Genie and find your gaps before the exam does. Rolling out course by course.",
+            ? "Learn by teaching: pick a revision note and teach SillyAI in your own words — it keeps asking until it makes sense, objectives tick off, and a review lands at the end."
+            : "Learn by teaching — explain topics to SillyAI and find your gaps before the exam does. Rolling out course by course.",
           href: teachMe ? `${base}/teach-genie` : undefined,
-          ctaLabel: teachMe ? "Teach Baby Genie" : undefined,
+          ctaLabel: teachMe ? "Teach SillyAI" : undefined,
           ready: teachMe,
           notReadyLabel: "coming soon",
           tint: "bg-primary/10",

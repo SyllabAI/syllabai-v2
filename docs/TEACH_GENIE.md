@@ -169,3 +169,42 @@ course**, organized under **unit/topic dropdowns**.
   same posture the spec-point picker had.
 - MG's own picker keys on their revision-topic list; this delta moves SyllabAI to the equivalent
   unit of selection (one revision note ≈ one MG topic) without importing their taxonomy.
+
+## 8. T-TEACHGENIE-003 — the "Teach SillyAI" rename (feature + persona)
+
+**Date:** 2026-11-05 · **Operator commission** (chat trace `1a1aa68d913fd0d5`): "Rename this
+feature to 'Teach SillyAI'. And check end to end if it is working or not."
+
+### What changed
+
+- **Feature display name:** every learner-visible "Teach Genie" string is now **"Teach SillyAI"** —
+  page metadata title/description, the honest "not live"/"warming up" cards, the breadcrumb, the
+  landing history-rail aria, the session conversation aria, and the course-page tile title/CTA.
+- **Persona:** the pupil the learner teaches is renamed **Baby Genie → SillyAI** everywhere the
+  learner sees it: landing preview label + typing-dots aria, session speaker names, composer
+  placeholder/aria/send aria, the "Ask for help" popover copy, review-screen speaker + pending card,
+  the avatar's `aria-label`, picker difficulty hints/legend/waking state, and `config.pupilName`
+  (the API's persona of record). Pronouns move with the rename (he → it).
+- **Pinned prompts bumped (the pinned-prompt law: bump, never edit):** `pupil.v2 → pupil.v3`
+  (charter: identity line + provenance note; voice, probe pattern and all hard invariants byte-carried),
+  `teachme.turn.v2 → teachme.turn.v3` (JOB 2 persona naming + output field description),
+  `teachme.objectives.v2 → teachme.objectives.v3` (opener persona). The v2 `.md` sources stay checked
+  in as pinned history; `scripts/gen_prompts_ts.py` now embeds the v3 files and the behavioural suite
+  re-pins byte-equality against them. Review stays `teachme.review.v1` (persona-free).
+- **API user-facing copy:** the two fail-closed messages now say "Teach SillyAI" (flag-disabled,
+  daily cap). `TEACH_ME_CONFIG.prompts` re-pinned to the v3 trio (the stale `teachme.turn.v1` key —
+  unconsumed, contradicting the v2 module since T-TEACHGENIE-001 — is corrected in the same breath).
+- **Stale copy fix:** the course-page tile still advertised "pick spec points" after T-TEACHGENIE-002
+  moved the picker to revision notes; it now says "pick a revision note".
+
+### What deliberately did NOT change
+
+- **Routes and identifiers:** `/courses/[course]/teach-genie`, the `teach-me` legacy redirect, the
+  `teach-me` API module path, `flags.json → flags.teachMe`, the `TeachGenie*` component/contract
+  identifiers, `buildTeachGenieNoteTree`, the `tg-*` CSS scope, DB tables and migration 0025's name —
+  all internal, zero wire or data delta, untouched to keep the rename reviewable as a copy+prompt change.
+- **The MathsGenie parity references** in comments/docs (MG-INK/MG-MARK plans, "MG Teach Genie parity"
+  notes) — those describe where the design came from, not the feature's display name.
+- **The avatar art** — the original stand-in (no MG IP) stays; re-drawing it for the SillyAI identity
+  is an explicit follow-up, not part of a string rename.
+- **History:** worklog, task/receipt records, and docs §§1–7 are dated records and stay as written.
