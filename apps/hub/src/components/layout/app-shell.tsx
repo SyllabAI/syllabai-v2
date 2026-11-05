@@ -52,6 +52,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { AigniteBadge } from "@/components/brand/aignite-badge";
 import { clearIdentity, useIdentity } from "@/lib/identity";
+import { unmirrorRoutingSession } from "@/lib/session-cookie";
 import { roleHome } from "@/lib/role-home";
 import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { useLastOpenedSync } from "@/lib/last-opened";
@@ -404,10 +405,21 @@ export function AppShell({
                     signed-out in place), and the route gate's 307 would
                     otherwise race the in-app redirect on gated routes. "/"
                     sits outside the gate policy, so the assign always lands.
+
+                    RUN-002: the assign must WAIT for the routing-cookie
+                    unmirror. clearSession() fires the DELETE /api/session as
+                    fire-and-forget (api.ts:1052) — a naive assign races it,
+                    the stale sai_session cookie rides the GET /, and the
+                    proxy's role-home redirect (proxy.ts roleHomeRedirect)
+                    bounces the fresh sign-out straight back to /dashboard.
+                    Awaiting unmirrorRoutingSession() (best-effort by design:
+                    it catches its own network errors, so a blip degrades to
+                    the old bounce, never a hang) keeps the landing honest.
                   */}
                   <DropdownMenuItem
-                    onClick={() => {
+                    onClick={async () => {
                       clearIdentity();
+                      await unmirrorRoutingSession();
                       window.location.assign("/");
                     }}
                     className="cursor-pointer"
