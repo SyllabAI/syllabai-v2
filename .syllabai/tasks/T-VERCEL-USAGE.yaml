@@ -3,7 +3,7 @@ task:
   id: T-VERCEL-USAGE
   title: "Vercel Hobby-quota survival — fetch-TTL raises to the deploy-reset law, CONTENT_CACHE s-maxage 86400, guided-lessons ISR flip, hub ignoreCommand (ends receipt-churn auto-bakes)"
   owner: "operator (Z.ai, zai-web session web-974db600-b478-4fa9-8c8b-5a8ef6246e45, chat 3d40f07c-e73d-4c6c-a56d-254d6acecce4, trace 1a1ac3bf8794b065)"
-  status: "LANDED run-001 — branch t-vercel-usage/r5 from origin/main fb6581d, PR of record opened from that branch (merge + deploy verification recorded in the receipt)"
+  status: "LANDED run-001 (PR #796, a8df668a) + run-002 hotfix direct-to-main (ignoreCommand cwd fix — the run-001 command froze all builds; see receipts/run-002.md)"
   priority: P0
   band: T-VERCEL (infra — hub serving cost & Vercel migration completion)
   wave: vercel-throttle-r0
@@ -31,6 +31,18 @@ task:
     hub git-linked, prj_vf1MQaCuu… api CLI-only) with env keys at full
     parity (7/7 hub, 16/16 api), both READY — this patch auto-bakes there
     on merge too; old team syllab-ai still holds www.syllab-ai.com.
+
+    run-002 (2026-11-05, trace 1a1ac3bf8794b065, hotfix direct-to-main):
+    the run-001 ignoreCommand executed with cwd = Root Directory (apps/hub),
+    where its apps/hub|packages/ pathspecs match nothing — diff always
+    empty, exit 0, Vercel skipped EVERY build (first-hand: #797's
+    apps/hub/public/kg/data change was spurious-skipped at 15:37, the
+    manual gitSource pins at 15:41 likewise; production froze at fb6581d).
+    Fix: re-root the diff at `git rev-parse --show-toplevel` and fail open
+    (build) when HEAD^ is unavailable. The hotfix commit touches
+    apps/hub/vercel.json so the fixed command admits its own build on both
+    hubs. Direct-to-main justified by the frozen-pipeline emergency;
+    receipt .syllabai/receipts/T-VERCEL-USAGE/run-002.md.
     DELIBERATE NON-GOALS per house law: corpus-pdf proxy untouched
     (T-MIG-128/T-MIG-133c stand), teacher/learner pages stay dynamic
     (auth), revision-notes stays per-request (searchParams legacy deep
