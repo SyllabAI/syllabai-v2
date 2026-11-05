@@ -1,0 +1,21 @@
+{
+ "task": "T-TEACHGENIE-006",
+ "run": "run-001+run-002",
+ "kind": "the updateSession seam fix \u2014 the TRUE root cause of the LIVE-pilot blocker, merged + proven live",
+ "agent": "Super Z (zai-web web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2, dispatch trace 1a1ad0a00dc0c991)",
+ "date": "2026-11-06",
+ "falsification": "T-TEACHGENIE-005's prod apply went GREEN (has_table_privilege 4 verbs x 6 tables) and the write paths STILL 500ed (re-probed live 19:23 UTC: judged turn, sub-floor nudge, end-session, now fast-failing before any LLM) \u2014 the run-002 grants hypothesis was a real but SECONDARY gap",
+ "root_cause_proven_verbatim": "updateSession handed the house sql seam ONE piece carrying the whole hand-numbered statement; toQuery (services/identity/users.ts) is TAGGED-TEMPLATE ONLY (text = s[0] + $1 + s[1] + $2 + ...) and appended its own $n trail \u2014 'UPDATE teach_sessions SET flags = $1::jsonb WHERE id = $2$1$2' reproduced through the REAL toQuery \u2014 a guaranteed Postgres syntax error on EVERY updateSession call (sub-floor nudge, BOTH judged turns post-writes, end-session) while every INSERT/SELECT (proper tagged templates) succeeded. Shipped 62e786e6 2026-10-31 (T-TEACHME-001 run-002); FakeStore fixtures cannot see the seam; grep of record: the ONLY dynamic-SQL site in the lane",
+ "fix": "the seam-native composition (pieces.length = assignments+1, piece i precedes $i, casts ride the following piece, id last) \u2014 zero seam/type changes, zero blast radius outside the one method",
+ "prs": [
+  "#808 (fix + regression gate + live proof runner, merged 33bdd3b0)",
+  "#810 (proof driver exit hygiene, merged 13fc6312)"
+ ],
+ "gates": "regression suite 5/5 (the REAL store against a capturing fake seam, every call replayed through the REAL toQuery; the pre-fix malformation pinned executable); behavioural 22/22 (130 expects, unchanged); apps/api tsc clean",
+ "live_proof_of_record": {
+  "run_001": "receipt ok:TRUE (all three steps) but the JOB went red post-receipt: the Neon WebSocket held the event loop; the runner hung 5.4min until 'Connection terminated unexpectedly' \u2014 the green receipt predates the red by 5.4 minutes",
+  "run_002_green_job_of_record": "workflow t-teachgenie-6-update-session-proof run 2 (42098306197) completed SUCCESS: flags-only patch ok \u00b7 judged-turn counter patch ok \u00b7 end-session status patch + revert (net-zero) ok \u2014 on ep-ancient-cake (the Neon MAIN wire) via the SMOKE_DB_URI vantage",
+  "session_of_record": "76564f18-70e3-4166-a193-cdbf10daf738 (the LIVE-pilot probe session): flags carry the disclosed proof stamps; status net-zero (active at rest); message/llm/token counters untouched"
+ },
+ "boundaries": "apps/api/src/teach-me/sql.ts updateSession ONLY + the new test + scripts/ + .github/; zero seam/type changes; zero contact with the service laws, prompts, or any other store"
+}
