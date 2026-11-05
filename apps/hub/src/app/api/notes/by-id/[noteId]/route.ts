@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
  * so the CDN may cache responses (same discipline as the course-scoped
  * /api/notes/[course]/[noteId] route, ADR-021 perf pass, tranche 4.12).
  */
-const CONTENT_CACHE = { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=86400" };
+const CONTENT_CACHE = { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=86400" };
 
 /**
  * GET /api/notes/by-id/[noteId] — the course-agnostic half of the citation

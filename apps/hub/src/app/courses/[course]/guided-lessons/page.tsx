@@ -6,7 +6,15 @@ import { loadGuidedIndex } from "@/lib/guided-lessons";
 import { looseAnchorCopy } from "@/lib/loose-copy";
 import { CourseHeader } from "@/components/hub/course-header";
 
-export const dynamic = "force-dynamic";
+/**
+ * T-VERCEL-USAGE: params-only page over the committed corpus (no
+ * request-time APIs — cookies()/headers() verified absent from this
+ * page and its loaders), so ISR replaces force-dynamic: the first
+ * request renders and caches, the CDN serves repeats until the next
+ * deploy resets the cache. 1-day revalidate keeps Hobby ISR writes
+ * inside quota.
+ */
+export const revalidate = 86400;
 
 /**
  * Guided-lessons index — entry-path lane (c), operator decision of record

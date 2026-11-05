@@ -1,0 +1,69 @@
+version: 1
+task:
+  id: T-VERCEL-USAGE
+  title: "Vercel Hobby-quota survival — fetch-TTL raises to the deploy-reset law, CONTENT_CACHE s-maxage 86400, guided-lessons ISR flip, hub ignoreCommand (ends receipt-churn auto-bakes)"
+  owner: "operator (Z.ai, zai-web session web-974db600-b478-4fa9-8c8b-5a8ef6246e45, chat 3d40f07c-e73d-4c6c-a56d-254d6acecce4, trace 1a1ac3bf8794b065)"
+  status: "LANDED run-001 — branch t-vercel-usage/r5 from origin/main fb6581d, PR of record opened from that branch (merge + deploy verification recorded in the receipt)"
+  priority: P0
+  band: T-VERCEL (infra — hub serving cost & Vercel migration completion)
+  wave: vercel-throttle-r0
+  deps: []
+  execution_record: >
+    run-000 (2026-11-05, trace 1a1aa8956062cf89): authored the patch
+    (11 files, +31/−13, delivered as syllabai-throttle.patch) after first-hand
+    Vercel recon; see T-VERCEL-MIGRATION-RUNBOOK.md §2 for the P1–P6 mapping
+    and the burned counters (ISR writes 878K/200K, Fluid CPU 21h49m/4h,
+    Origin transfer 26GB/10GB).
+    run-001 (2026-11-05, trace 1a1ac3bf8794b065, operator order "land the
+    throttle patch next"): branch t-vercel-usage/r5 from origin/main fb6581d
+    (post-#786 dashboard-redesign); git apply --check exit 0 on the new base;
+    house gates — bun run typecheck 5/5 successful; bun test apps/hub =
+    1176 pass / 9 fail / 1 error with the failure band byte-identical to a
+    pristine origin/main stash-run in the same worktree (16 fail-lines both
+    sides, diff = timings only — the documented pre-existing band: store
+    laws, UGM render, dual-run posture, requestPartRegrade; none in this
+    patch's files); bun golden/runner.ts --selftest OK (T-MIG-024/072/071/
+    075/077 posture re-proven). Operator blessing for P6 (ignoreCommand
+    amends the CUTOVER_RUNBOOK supersession desk law "receipt-push
+    auto-bakes are churn-only" — strictly less churn) recorded at landing
+    per the runbook requirement. Same-session recon: the second account
+    (syllabainoreply-4440) already holds IMPORTED projects (prj_idqk5yM3…
+    hub git-linked, prj_vf1MQaCuu… api CLI-only) with env keys at full
+    parity (7/7 hub, 16/16 api), both READY — this patch auto-bakes there
+    on merge too; old team syllab-ai still holds www.syllab-ai.com.
+    DELIBERATE NON-GOALS per house law: corpus-pdf proxy untouched
+    (T-MIG-128/T-MIG-133c stand), teacher/learner pages stay dynamic
+    (auth), revision-notes stays per-request (searchParams legacy deep
+    links — R5 backlog candidate), core-api.ts untouched (retired dead
+    path).
+base:
+  repo: "syllabai-v2 @ fb6581d (origin/main, PR #786 merge, 2026-11-05)"
+basis: >
+  Operator directive 2026-11-05 ("land the throttle patch next") on top of
+  the carried "migrate ASAP" order after Hobby-quota exhaustion on the old
+  team (Fluid CPU 21h49m/4h, ISR writes 878K/200K, Origin Transfer 26GB/
+  10GB, ISR reads 1.5M/1M, CDN requests 1.1M/1M); ADR-021 (committed-corpus
+  immutability — the law the TTL raises lean on); CUTOVER_RUNBOOK.md
+  supersession 2026-10-18 (git-linked auto-bake desk law — the
+  ignoreCommand amends it, operator blessing recorded at landing);
+  T-MIG-128/T-MIG-133c (corpus-pdf law — untouched).
+scope:
+  allowed:
+    - "apps/hub/src/lib/corpus.ts"
+    - "apps/hub/src/lib/core-topics.ts"
+    - "apps/hub/src/lib/books.ts"
+    - "apps/hub/src/app/api/course-stats/route.ts"
+    - "apps/hub/src/app/api/teacher/class-geography/route.ts"
+    - "apps/hub/src/app/api/questions/[course]/[topicSlug]/route.ts"
+    - "apps/hub/src/app/api/notes/[course]/route.ts"
+    - "apps/hub/src/app/api/notes/[course]/[noteId]/route.ts"
+    - "apps/hub/src/app/api/notes/by-id/[noteId]/route.ts"
+    - "apps/hub/src/app/courses/[course]/guided-lessons/page.tsx"
+    - "apps/hub/vercel.json"
+    - ".syllabai/tasks/T-VERCEL-USAGE.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "apps/api/** (link=null CLI deploys — the serialized operator-gated lever)"
+    - "apps/hub/src/app/api/corpus-pdf/** (T-MIG-128/T-MIG-133c law stands)"
+    - "apps/hub/src/app/learner/**, apps/hub/src/app/teacher/** (auth-gated dynamic surfaces)"
+    - "packages/**, golden/**, Neon main (read-only law), Render, GitHub archive settings"
