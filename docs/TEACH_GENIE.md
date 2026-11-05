@@ -208,3 +208,61 @@ feature to 'Teach SillyAI'. And check end to end if it is working or not."
 - **The avatar art** — the original stand-in (no MG IP) stays; re-drawing it for the SillyAI identity
   is an explicit follow-up, not part of a string rename.
 - **History:** worklog, task/receipt records, and docs §§1–7 are dated records and stay as written.
+
+## 9. T-TEACHGENIE-004 — the lane rejoins the house design system
+
+**Date:** 2026-11-05 · **Operator commission** (chat trace `1a1ab2fc81bfd909`): "Also the
+frontend flow of the Teach me/sillyai, is not like the other pages. Design is not consistent.
+Compare with other pages."
+
+### The comparison of record (Teach SillyAI vs the seventeen sibling course pages)
+
+| Dimension | House style (revision-notes, flashcards, exam-questions, …) | Teach SillyAI before this task |
+| --- | --- | --- |
+| Page chrome | `CourseHeader` hero band: full breadcrumb trail (Home / board / level / course / crumb), extrabold H1, exam-code pill, description, pastel gradient | a two-word `text-xs` line (`Chemistry · Teach SillyAI`); no H1, no trail, no pill |
+| Theme | the hub token sheet — SME primary, theme-aware dark mode, every hub theme renders | `.tg-scope` re-pointed the ENTIRE shadcn token sheet to MathsGenie's palette inside the hub shell |
+| Colours | tokens only | ~12 inline MG hexes (`#1cb0f6`, `#46cbe3`, `#cefbff`, `#002e5f`, `#1a6fb8`, `#191919`) across five components |
+| Type | Jakarta body / Kodchasan display | `.tg-title` forced Inter |
+| Shape | hairline `border`, hub radius (0.625rem), `rounded-lg/xl/2xl` | `border-2` everywhere, MG radius (0.5rem), `rounded-full` pills |
+| Buttons | house `Button` | raw `<button>` cyan pills |
+| Layout | `mx-auto max-w-3xl` narrow column | full-bleed `max-w-6xl` landing, `100dvh` takeovers |
+| History | list sections in the column | MG-style left rail with `border-2` dividers |
+| Chat voice | tutor: user bubble `bg-muted` + `rounded-br-md`, composer `border bg-card` | purple `.tg-bubble-user` in preview/review but `bg-muted` live — inconsistent even with itself |
+| Review | single-column sections as cards | MG two-pane right rail |
+| Reachability | every lane has a sidebar row | NO sidebar row — the dashboard tile was the only door |
+
+### What changed
+
+- **globals.css:** the `.tg-scope` token override (light + dark), `.tg-title` and
+  `.tg-bubble-user` are RETIRED; `.tg-dot` (the persona's typing dots) survives. §2 above now
+  describes where the design came from, not what ships.
+- **page.tsx:** mounts the SAME `CourseHeader` hero band and the SAME `mx-auto max-w-3xl`
+  column as the sibling lanes (all states — pilot, not-live, warming-up — render under it).
+- **landing.tsx:** the MG left rail becomes a house "Recent sessions" list section (still
+  absent until the first session); hero/preview/steps re-skinned to tokens; house `Button`.
+- **picker.tsx:** house tokens only — accent-primary picked chip, primary pick voice (the notes
+  index's active-row wash), house search/select focus voice, hairline list card.
+- **session-screen.tsx:** sticky header card, objective strip and complete overlay on hairline
+  borders; End Session speaks the destructive voice; the composer adopts the tutor composer's
+  house voice verbatim (border bg-card focus-within:border-primary/50, ghost mic, round primary
+  send); user bubbles gain the tutor's `rounded-br-md` tail.
+- **review-screen.tsx:** the MG two-pane rail becomes the house single column — review card
+  (Strengths / Areas for Improvement / Suggested Practice) above a replay that now renders the
+  SAME anatomy as the live view; suggested-practice rows speak the house card-hover voice.
+- **Reachability:** the sidebar's Learn band gains a "Teach SillyAI" row for flagged courses
+  (`hasTeachMe` on SidebarData, computed in the course layout from the SAME
+  `teachMeEnabledForCourse` read; absent-when-absent elsewhere). ⚠️ Out-of-fence additive mount
+  (course-shell/course-data-context/layout are outside the T-TEACHGENIE fence) — same one-commit
+  precedent as the course tile (T-TEACHME-001 run-003 R0), shipped as its own commit for
+  ratification.
+- **util.ts:** the active status dot is house `bg-primary` (the one MG-hex law test re-pinned).
+
+### What deliberately did NOT change
+
+- **The flow:** landing → picker → session → Session Complete overlay → review, permalinks,
+  the objectives popover, verdict chips, dictation, the poll law, quota copy — all mechanics are
+  untouched; this was a skin + chrome change.
+- **Routes and identifiers:** `/teach-genie`, `TeachGenie*` names, `tg-*` class prefix (dots),
+  engine laws, wire — zero delta; the API side is byte-untouched by this task.
+- **The avatar art** (persona of record, original stand-in).
+- **History:** §§1–8 stay as written.
