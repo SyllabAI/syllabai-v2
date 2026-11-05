@@ -1,0 +1,368 @@
+"""8291 AS Environmental Management concept lattice — T-KG-PRE-15
+(F8 rollout batch thirteen, the environmental-management family tranche 10;
+serves cie-as-environmental-management-20, 131 served points).
+
+AI_SUGGESTED / UNVALIDATED concept web authored by the F8 lane from the CIE
+8291 AS Environmental Management syllabus (sections: 1 introduction to
+environmental management, 2 environmental research and data collection, 3
+managing human population, 4 managing ecosystems and biodiversity, 5 managing
+resources, 6 managing water supplies, 7 managing the atmosphere, 8 managing
+climate change), anchored to the served spine's point ids. Every anchor is
+machine-verified against the spine before any byte is written (0-unmapped
+pass law, enforced in kg_f8ma_generate.py).
+
+Structure of record: each section is a definitional chain (foundation concept
+-> process -> impacts -> management strategies), with honest cross-section
+bridges only where the syllabus itself names the dependency (water cycle ->
+water distribution; atmosphere composition/structure -> the ozone and
+greenhouse registers; photosynthesis -> GPP/NPP productivity; energy loss in
+food chains -> trophic transfer efficiency; Lincoln index <- capture-mark-
+recapture and Simpson's index <- representative sampling; scientific method
+and hypothesis-to-theory -> the Rowland-Molina ozone case; carbon cycle ->
+energy-resource classification and greenhouse-gas sources; waste methane ->
+the enhanced greenhouse effect; fossil-fuel combustion -> acid-deposition
+formation; income groups -> HIC/LIC population structures; sustainability ->
+the per-resource management strategies; food security -> climate-change
+human impacts; energy management -> climate management). The seven
+Case-study points (2.5.4, 3.3.2, 4.3.5, 5.3.4, 6.1.6, 7.4.9, 8.3.4) are
+application vehicles, not teachable content registers, and the 2.4.1a
+pagination artifact is not content — all eight are deliberately unanchored.
+Two exported drops sit in knowingly served-order-reversed territory: the
+authored water-insecurity->food-insecurity pair (the syllabus teaches water
+first, but the spine serves food 5.1 before water 6.1), and the collateral
+expansion of the Lincoln-index edge over both of its bindings (2.4.3
+technique selection -> the 2.4.4 calculation, whose 2.4.2a formula legend is
+served before 2.4.3); the calibrated in-order law drops exactly those,
+counted and disclosed — the law working as designed.
+
+Honesty: prereqValidated stays EMPTY; the renderer labels every exported pair
+INFERRED PROTOTYPE; the named gate remains the SME validation pass.
+"""
+
+DD = "DEFINITIONAL_DEPENDENCY"
+UWR = "USED_WITHOUT_RETEACHING"
+
+CONCEPTS = {
+    # 1.1 geography register
+    "EM8-CON-CONTINENTS-OCEANS": ["1.1.1"],
+    # 1.2 income classification
+    "EM8-CON-INCOME-GROUPS": ["1.2.1"],
+    # 1.3 sustainability
+    "EM8-CON-SUSTAINABILITY": ["1.3.1"],
+    "EM8-CON-SUSTAINABLE-MGMT-NEED": ["1.3.2"],
+    # 1.4 water cycle
+    "EM8-CON-WATER-CYCLE": ["1.4.1"],
+    "EM8-CON-WATER-CYCLE-DIAGRAM": ["1.4.2"],
+    # 1.5 atmosphere
+    "EM8-CON-ATMOS-COMPOSITION": ["1.5.1"],
+    "EM8-CON-ATMOS-STRUCTURE": ["1.5.2"],
+    "EM8-CON-OZONE-LAYER-LOCATION": ["1.5.3"],
+    "EM8-CON-OZONE-LAYER-ROLE": ["1.5.4"],
+    "EM8-CON-GREENHOUSE-EFFECT-NATURAL": ["1.5.5"],
+    # 1.6 ecosystems, energy flows, cycles
+    "EM8-CON-ECOSYSTEM-TERMS": ["1.6.1"],
+    "EM8-CON-BIOTIC-ABIOTIC": ["1.6.2"],
+    "EM8-CON-BIOTIC-FACTORS-EFFECT": ["1.6.3"],
+    "EM8-CON-BIOTIC-INTERACTIONS": ["1.6.4"],
+    "EM8-CON-PHOTOSYNTHESIS-DEF": ["1.6.5"],
+    "EM8-CON-PHOTOSYNTHESIS-EQ": ["1.6.6"],
+    "EM8-CON-CHLOROPHYLL": ["1.6.7"],
+    "EM8-CON-LIMITING-FACTORS": ["1.6.8"],
+    "EM8-CON-PHOTOSYNTH-CARBON-CYCLE": ["1.6.9"],
+    "EM8-CON-PRODUCER-CONSUMER-TERMS": ["1.6.10"],
+    "EM8-CON-TROPHIC-LEVELS": ["1.6.11"],
+    "EM8-CON-FOOD-CHAIN-IDENTIFY": ["1.6.12"],
+    "EM8-CON-ENERGY-TRANSFER-FOOD-CHAIN": ["1.6.13"],
+    "EM8-CON-ENERGY-LOSS": ["1.6.14"],
+    "EM8-CON-FOOD-CHAIN-CONSTRUCT": ["1.6.15"],
+    "EM8-CON-RESPIRATION-DEF": ["1.6.16"],
+    "EM8-CON-RESPIRATION-EQ": ["1.6.17"],
+    "EM8-CON-CARBON-CYCLE": ["1.6.18"],
+    "EM8-CON-CARBON-CYCLE-DIAGRAM": ["1.6.19"],
+    # 2.1 scientific method
+    "EM8-CON-SCIENTIFIC-METHOD": ["2.1.1"],
+    "EM8-CON-HYPOTHESES": ["2.1.2"],
+    "EM8-CON-INVESTIGATION-DESIGN": ["2.1.3"],
+    "EM8-CON-VARIABLES": ["2.1.4"],
+    "EM8-CON-DATA-SUPPORT-REFUTE": ["2.1.5"],
+    "EM8-CON-UNCERTAINTY": ["2.1.6"],
+    "EM8-CON-HYPOTHESIS-TO-THEORY": ["2.1.7"],
+    # 2.2 reliability and bias
+    "EM8-CON-RELIABLE-BIAS": ["2.2.1"],
+    "EM8-CON-CLIMATE-HISTORICAL-DATA": ["2.2.2"],
+    "EM8-CON-BIAS-MISUSE": ["2.2.3"],
+    "EM8-CON-UNRELIABLE-FALSE-REPORT": ["2.2.4"],
+    # 2.3 sampling strategies
+    "EM8-CON-SAMPLING-REPRESENTATIVE": ["2.3.1"],
+    "EM8-CON-RANDOM-SYSTEMATIC": ["2.3.2"],
+    "EM8-CON-SAMPLING-SUITABILITY": ["2.3.3"],
+    "EM8-CON-SAMPLING-EVALUATION": ["2.3.4"],
+    # 2.4 techniques and estimation
+    "EM8-CON-TECHNIQUES": ["2.4.1"],
+    "EM8-CON-TECHNIQUE-BEN-LIM": ["2.4.2"],
+    "EM8-CON-SELECT-TECHNIQUE": ["2.4.3"],
+    "EM8-CON-LINCOLN-INDEX": ["2.4.4", "2.4.2a"],
+    "EM8-CON-SIMPSONS-INDEX": ["2.4.3a", "2.4.4a"],
+    "EM8-CON-QUADRAT-COVER-ACFOR": ["2.4.5"],
+    # 2.5 technology and big data
+    "EM8-CON-TECH-DATA-COLLECTION": ["2.5.1"],
+    "EM8-CON-BIG-DATA": ["2.5.2"],
+    "EM8-CON-BIG-DATA-ANALYSIS": ["2.5.3"],
+    # 3.1 population structure
+    "EM8-CON-POP-DENSITY-CALC": ["3.1.1"],
+    "EM8-CON-DENSITY-FACTORS": ["3.1.2"],
+    "EM8-CON-POP-SIZE-AGE-STRUCTURE": ["3.1.3"],
+    "EM8-CON-BIRTH-DEATH-MIGRATION": ["3.1.4"],
+    "EM8-CON-DEPENDENCY-RATIO": ["3.1.5"],
+    "EM8-CON-HIC-LIC-STRUCTURES": ["3.1.6"],
+    # 3.2 ageing
+    "EM8-CON-AGEING-IMPACTS": ["3.2.1"],
+    # 3.3 population management
+    "EM8-CON-POP-MANAGEMENT-STRATEGIES": ["3.3.1"],
+    # 4.1 biomes, succession, productivity
+    "EM8-CON-BIOMES": ["4.1.1"],
+    "EM8-CON-SUCCESSION": ["4.1.2"],
+    "EM8-CON-GPP-NPP": ["4.1.3"],
+    "EM8-CON-ECOSYSTEM-PRODUCTIVITY": ["4.1.4"],
+    "EM8-CON-ENERGY-TRANSFER-EFFICIENCY": ["4.1.5"],
+    "EM8-CON-ECOLOGICAL-PYRAMIDS": ["4.1.6"],
+    "EM8-CON-PYRAMID-SHAPES": ["4.1.7"],
+    # 4.2 biodiversity and conservation
+    "EM8-CON-NATIVE-INVASIVE": ["4.2.1"],
+    "EM8-CON-INVASIVE-IMPACTS": ["4.2.2"],
+    "EM8-CON-CONSERVE-BENEFITS": ["4.2.3"],
+    "EM8-CON-LEGISLATION-PROTOCOLS": ["4.2.4"],
+    "EM8-CON-EDGE-PROGRAMME": ["4.2.5"],
+    "EM8-CON-CAPTIVE-BREEDING": ["4.2.6"],
+    "EM8-CON-HABITAT-CONSERVATION": ["4.2.7"],
+    # 4.3 rainforest and Antarctica
+    "EM8-CON-RAINFOREST-IMPACTS": ["4.3.1"],
+    "EM8-CON-RAINFOREST-MANAGEMENT": ["4.3.2"],
+    "EM8-CON-ANTARCTICA-IMPACTS": ["4.3.3"],
+    "EM8-CON-ANTARCTICA-MANAGEMENT": ["4.3.4"],
+    # 5.1 food security
+    "EM8-CON-FOOD-SECURITY-DEF": ["5.1.1"],
+    "EM8-CON-FOOD-INSECURITY-CAUSES": ["5.1.2"],
+    "EM8-CON-FOOD-INSECURITY-IMPACTS": ["5.1.3"],
+    "EM8-CON-FOOD-MANAGEMENT": ["5.1.4"],
+    # 5.2 energy security
+    "EM8-CON-ENERGY-RESOURCES-CLASSIFY": ["5.2.1"],
+    "EM8-CON-ENERGY-SECURITY-DEF": ["5.2.2"],
+    "EM8-CON-ENERGY-INSECURITY-CAUSES": ["5.2.3"],
+    "EM8-CON-ENERGY-INSECURITY-IMPACTS": ["5.2.4"],
+    "EM8-CON-ENERGY-MANAGEMENT": ["5.2.5"],
+    # 5.3 waste
+    "EM8-CON-WASTE-DISPOSAL-METHODS": ["5.3.1"],
+    "EM8-CON-WASTE-IMPACTS": ["5.3.2"],
+    "EM8-CON-WASTE-REDUCTION-STRATEGIES": ["5.3.3"],
+    # 6.1 water security
+    "EM8-CON-WATER-DISTRIBUTION": ["6.1.1"],
+    "EM8-CON-WATER-SECURITY-DEF": ["6.1.2"],
+    "EM8-CON-WATER-INSECURITY-CAUSES": ["6.1.3"],
+    "EM8-CON-WATER-INSECURITY-IMPACTS": ["6.1.4"],
+    "EM8-CON-WATER-MANAGEMENT": ["6.1.5"],
+    # 7.1 acid deposition
+    "EM8-CON-ACID-DEP-DEF": ["7.1.1"],
+    "EM8-CON-ACID-DEP-TYPES": ["7.1.2"],
+    "EM8-CON-ACID-DEP-FORMATION": ["7.1.3"],
+    "EM8-CON-ACID-DEP-IMPACTS": ["7.1.4"],
+    # 7.2 photochemical smog
+    "EM8-CON-PHOTOCHEMICAL-SMOG-DEF": ["7.2.1"],
+    "EM8-CON-SMOG-IMPACTS": ["7.2.2"],
+    # 7.3 air-pollution management
+    "EM8-CON-AIR-POLLUTION-MANAGEMENT": ["7.3.1"],
+    # 7.4 ozone depletion
+    "EM8-CON-OZONE-DEP-MECHANISM": ["7.4.1"],
+    "EM8-CON-DOBSON-UNIT": ["7.4.2"],
+    "EM8-CON-OZONE-HOLE": ["7.4.3"],
+    "EM8-CON-OZONE-ANTARCTICA": ["7.4.4"],
+    "EM8-CON-OZONE-DEP-IMPACTS": ["7.4.5"],
+    "EM8-CON-OZONE-AGREEMENTS": ["7.4.6"],
+    "EM8-CON-OZONE-ALTERNATIVES": ["7.4.7"],
+    "EM8-CON-ROWLAND-MOLINA": ["7.4.8"],
+    # 8.1 greenhouse gases
+    "EM8-CON-GHG-DEF": ["8.1.1"],
+    "EM8-CON-GHG-SOURCES": ["8.1.2"],
+    "EM8-CON-ENHANCED-GREENHOUSE": ["8.1.3"],
+    "EM8-CON-CLIMATE-MONITORING-DIFFICULTY": ["8.1.4"],
+    # 8.2 impacts
+    "EM8-CON-CLIMATE-ENV-IMPACTS": ["8.2.1"],
+    "EM8-CON-CLIMATE-HUMAN-IMPACTS": ["8.2.2"],
+    # 8.3 management
+    "EM8-CON-CLIMATE-MANAGEMENT": ["8.3.1"],
+    "EM8-CON-GEO-ENGINEERING": ["8.3.2"],
+    "EM8-CON-CLIMATE-STRATEGY-EVAL": ["8.3.3"],
+}
+
+EDGES = [
+    # 1.1-1.3 foundations
+    ("EM8-CON-CONTINENTS-OCEANS", "EM8-CON-INCOME-GROUPS", UWR),
+    ("EM8-CON-INCOME-GROUPS", "EM8-CON-SUSTAINABILITY", UWR),
+    ("EM8-CON-SUSTAINABILITY", "EM8-CON-SUSTAINABLE-MGMT-NEED", DD),
+    # 1.4 water cycle
+    ("EM8-CON-SUSTAINABILITY", "EM8-CON-WATER-CYCLE", UWR),
+    ("EM8-CON-WATER-CYCLE", "EM8-CON-WATER-CYCLE-DIAGRAM", DD),
+    # 1.5 atmosphere
+    ("EM8-CON-ATMOS-COMPOSITION", "EM8-CON-ATMOS-STRUCTURE", UWR),
+    ("EM8-CON-ATMOS-STRUCTURE", "EM8-CON-OZONE-LAYER-LOCATION", DD),
+    ("EM8-CON-OZONE-LAYER-LOCATION", "EM8-CON-OZONE-LAYER-ROLE", UWR),
+    ("EM8-CON-ATMOS-COMPOSITION", "EM8-CON-GREENHOUSE-EFFECT-NATURAL", UWR),
+    # 1.6 ecosystems
+    ("EM8-CON-ECOSYSTEM-TERMS", "EM8-CON-BIOTIC-ABIOTIC", DD),
+    ("EM8-CON-BIOTIC-ABIOTIC", "EM8-CON-BIOTIC-FACTORS-EFFECT", DD),
+    ("EM8-CON-BIOTIC-FACTORS-EFFECT", "EM8-CON-BIOTIC-INTERACTIONS", UWR),
+    # 1.6 photosynthesis
+    ("EM8-CON-PHOTOSYNTHESIS-DEF", "EM8-CON-PHOTOSYNTHESIS-EQ", DD),
+    ("EM8-CON-PHOTOSYNTHESIS-EQ", "EM8-CON-CHLOROPHYLL", UWR),
+    ("EM8-CON-CHLOROPHYLL", "EM8-CON-LIMITING-FACTORS", UWR),
+    ("EM8-CON-LIMITING-FACTORS", "EM8-CON-PHOTOSYNTH-CARBON-CYCLE", UWR),
+    # 1.6 food chains
+    ("EM8-CON-BIOTIC-ABIOTIC", "EM8-CON-PRODUCER-CONSUMER-TERMS", UWR),
+    ("EM8-CON-PRODUCER-CONSUMER-TERMS", "EM8-CON-TROPHIC-LEVELS", DD),
+    ("EM8-CON-TROPHIC-LEVELS", "EM8-CON-FOOD-CHAIN-IDENTIFY", UWR),
+    ("EM8-CON-FOOD-CHAIN-IDENTIFY", "EM8-CON-ENERGY-TRANSFER-FOOD-CHAIN", UWR),
+    ("EM8-CON-ENERGY-TRANSFER-FOOD-CHAIN", "EM8-CON-ENERGY-LOSS", UWR),
+    ("EM8-CON-ENERGY-LOSS", "EM8-CON-FOOD-CHAIN-CONSTRUCT", UWR),
+    # 1.6 respiration and the carbon cycle
+    ("EM8-CON-PHOTOSYNTHESIS-DEF", "EM8-CON-RESPIRATION-DEF", UWR),
+    ("EM8-CON-RESPIRATION-DEF", "EM8-CON-RESPIRATION-EQ", DD),
+    ("EM8-CON-RESPIRATION-EQ", "EM8-CON-CARBON-CYCLE", UWR),
+    ("EM8-CON-PHOTOSYNTH-CARBON-CYCLE", "EM8-CON-CARBON-CYCLE", DD),
+    ("EM8-CON-CARBON-CYCLE", "EM8-CON-CARBON-CYCLE-DIAGRAM", DD),
+    # 2.1 scientific method
+    ("EM8-CON-SCIENTIFIC-METHOD", "EM8-CON-HYPOTHESES", DD),
+    ("EM8-CON-HYPOTHESES", "EM8-CON-INVESTIGATION-DESIGN", UWR),
+    ("EM8-CON-INVESTIGATION-DESIGN", "EM8-CON-VARIABLES", DD),
+    ("EM8-CON-VARIABLES", "EM8-CON-DATA-SUPPORT-REFUTE", UWR),
+    ("EM8-CON-DATA-SUPPORT-REFUTE", "EM8-CON-UNCERTAINTY", UWR),
+    ("EM8-CON-UNCERTAINTY", "EM8-CON-HYPOTHESIS-TO-THEORY", UWR),
+    # 2.2 reliability and bias
+    ("EM8-CON-DATA-SUPPORT-REFUTE", "EM8-CON-RELIABLE-BIAS", UWR),
+    ("EM8-CON-RELIABLE-BIAS", "EM8-CON-CLIMATE-HISTORICAL-DATA", UWR),
+    ("EM8-CON-RELIABLE-BIAS", "EM8-CON-BIAS-MISUSE", DD),
+    ("EM8-CON-BIAS-MISUSE", "EM8-CON-UNRELIABLE-FALSE-REPORT", DD),
+    # 2.3 sampling strategies
+    ("EM8-CON-INVESTIGATION-DESIGN", "EM8-CON-SAMPLING-REPRESENTATIVE", UWR),
+    ("EM8-CON-SAMPLING-REPRESENTATIVE", "EM8-CON-RANDOM-SYSTEMATIC", DD),
+    ("EM8-CON-RANDOM-SYSTEMATIC", "EM8-CON-SAMPLING-SUITABILITY", UWR),
+    ("EM8-CON-SAMPLING-SUITABILITY", "EM8-CON-SAMPLING-EVALUATION", UWR),
+    # 2.4 techniques and estimation
+    ("EM8-CON-SAMPLING-EVALUATION", "EM8-CON-TECHNIQUES", UWR),
+    ("EM8-CON-TECHNIQUES", "EM8-CON-TECHNIQUE-BEN-LIM", DD),
+    ("EM8-CON-TECHNIQUE-BEN-LIM", "EM8-CON-SELECT-TECHNIQUE", UWR),
+    ("EM8-CON-SELECT-TECHNIQUE", "EM8-CON-LINCOLN-INDEX", UWR),
+    ("EM8-CON-SELECT-TECHNIQUE", "EM8-CON-QUADRAT-COVER-ACFOR", UWR),
+    ("EM8-CON-SAMPLING-REPRESENTATIVE", "EM8-CON-SIMPSONS-INDEX", UWR),
+    # 2.5 technology and big data
+    ("EM8-CON-TECHNIQUES", "EM8-CON-TECH-DATA-COLLECTION", UWR),
+    ("EM8-CON-TECH-DATA-COLLECTION", "EM8-CON-BIG-DATA", UWR),
+    ("EM8-CON-BIG-DATA", "EM8-CON-BIG-DATA-ANALYSIS", DD),
+    # 3.1 population structure
+    ("EM8-CON-POP-DENSITY-CALC", "EM8-CON-DENSITY-FACTORS", UWR),
+    ("EM8-CON-DENSITY-FACTORS", "EM8-CON-POP-SIZE-AGE-STRUCTURE", UWR),
+    ("EM8-CON-POP-SIZE-AGE-STRUCTURE", "EM8-CON-BIRTH-DEATH-MIGRATION", DD),
+    ("EM8-CON-BIRTH-DEATH-MIGRATION", "EM8-CON-DEPENDENCY-RATIO", UWR),
+    ("EM8-CON-DEPENDENCY-RATIO", "EM8-CON-HIC-LIC-STRUCTURES", UWR),
+    ("EM8-CON-INCOME-GROUPS", "EM8-CON-HIC-LIC-STRUCTURES", UWR),
+    # 3.2-3.3 population management
+    ("EM8-CON-DEPENDENCY-RATIO", "EM8-CON-AGEING-IMPACTS", UWR),
+    ("EM8-CON-BIRTH-DEATH-MIGRATION", "EM8-CON-POP-MANAGEMENT-STRATEGIES", UWR),
+    # 4.1 biomes, succession, productivity
+    ("EM8-CON-ECOSYSTEM-TERMS", "EM8-CON-BIOMES", DD),
+    ("EM8-CON-BIOMES", "EM8-CON-SUCCESSION", UWR),
+    ("EM8-CON-PHOTOSYNTHESIS-DEF", "EM8-CON-GPP-NPP", DD),
+    ("EM8-CON-GPP-NPP", "EM8-CON-ECOSYSTEM-PRODUCTIVITY", DD),
+    ("EM8-CON-ECOSYSTEM-PRODUCTIVITY", "EM8-CON-ENERGY-TRANSFER-EFFICIENCY", UWR),
+    ("EM8-CON-ENERGY-LOSS", "EM8-CON-ENERGY-TRANSFER-EFFICIENCY", UWR),
+    ("EM8-CON-TROPHIC-LEVELS", "EM8-CON-ECOLOGICAL-PYRAMIDS", UWR),
+    ("EM8-CON-FOOD-CHAIN-CONSTRUCT", "EM8-CON-ECOLOGICAL-PYRAMIDS", UWR),
+    ("EM8-CON-ENERGY-TRANSFER-EFFICIENCY", "EM8-CON-ECOLOGICAL-PYRAMIDS", DD),
+    ("EM8-CON-ECOLOGICAL-PYRAMIDS", "EM8-CON-PYRAMID-SHAPES", DD),
+    # 4.2 biodiversity and conservation
+    ("EM8-CON-BIOTIC-INTERACTIONS", "EM8-CON-NATIVE-INVASIVE", UWR),
+    ("EM8-CON-NATIVE-INVASIVE", "EM8-CON-INVASIVE-IMPACTS", DD),
+    ("EM8-CON-SIMPSONS-INDEX", "EM8-CON-INVASIVE-IMPACTS", UWR),
+    ("EM8-CON-INVASIVE-IMPACTS", "EM8-CON-CONSERVE-BENEFITS", UWR),
+    ("EM8-CON-CONSERVE-BENEFITS", "EM8-CON-LEGISLATION-PROTOCOLS", UWR),
+    ("EM8-CON-LEGISLATION-PROTOCOLS", "EM8-CON-EDGE-PROGRAMME", UWR),
+    ("EM8-CON-CONSERVE-BENEFITS", "EM8-CON-CAPTIVE-BREEDING", UWR),
+    ("EM8-CON-CONSERVE-BENEFITS", "EM8-CON-HABITAT-CONSERVATION", UWR),
+    # 4.3 rainforest and Antarctica
+    ("EM8-CON-RAINFOREST-IMPACTS", "EM8-CON-RAINFOREST-MANAGEMENT", DD),
+    ("EM8-CON-HABITAT-CONSERVATION", "EM8-CON-RAINFOREST-MANAGEMENT", UWR),
+    ("EM8-CON-ANTARCTICA-IMPACTS", "EM8-CON-ANTARCTICA-MANAGEMENT", DD),
+    ("EM8-CON-LEGISLATION-PROTOCOLS", "EM8-CON-ANTARCTICA-MANAGEMENT", UWR),
+    ("EM8-CON-HABITAT-CONSERVATION", "EM8-CON-ANTARCTICA-MANAGEMENT", UWR),
+    # 5.1 food security
+    ("EM8-CON-FOOD-SECURITY-DEF", "EM8-CON-FOOD-INSECURITY-CAUSES", DD),
+    ("EM8-CON-BIRTH-DEATH-MIGRATION", "EM8-CON-FOOD-INSECURITY-CAUSES", UWR),
+    ("EM8-CON-FOOD-INSECURITY-CAUSES", "EM8-CON-FOOD-INSECURITY-IMPACTS", DD),
+    ("EM8-CON-SUSTAINABLE-MGMT-NEED", "EM8-CON-FOOD-MANAGEMENT", UWR),
+    ("EM8-CON-FOOD-INSECURITY-IMPACTS", "EM8-CON-FOOD-MANAGEMENT", UWR),
+    # 5.2 energy security
+    ("EM8-CON-CARBON-CYCLE", "EM8-CON-ENERGY-RESOURCES-CLASSIFY", UWR),
+    ("EM8-CON-ENERGY-RESOURCES-CLASSIFY", "EM8-CON-ENERGY-INSECURITY-CAUSES", UWR),
+    ("EM8-CON-ENERGY-SECURITY-DEF", "EM8-CON-ENERGY-INSECURITY-CAUSES", DD),
+    ("EM8-CON-ENERGY-INSECURITY-CAUSES", "EM8-CON-ENERGY-INSECURITY-IMPACTS", DD),
+    ("EM8-CON-SUSTAINABLE-MGMT-NEED", "EM8-CON-ENERGY-MANAGEMENT", UWR),
+    ("EM8-CON-ENERGY-INSECURITY-IMPACTS", "EM8-CON-ENERGY-MANAGEMENT", UWR),
+    # 5.3 waste
+    ("EM8-CON-WASTE-DISPOSAL-METHODS", "EM8-CON-WASTE-IMPACTS", DD),
+    ("EM8-CON-WASTE-IMPACTS", "EM8-CON-WASTE-REDUCTION-STRATEGIES", UWR),
+    # 6.1 water security
+    ("EM8-CON-WATER-CYCLE", "EM8-CON-WATER-DISTRIBUTION", UWR),
+    ("EM8-CON-WATER-DISTRIBUTION", "EM8-CON-WATER-SECURITY-DEF", UWR),
+    ("EM8-CON-WATER-SECURITY-DEF", "EM8-CON-WATER-INSECURITY-CAUSES", DD),
+    ("EM8-CON-WATER-INSECURITY-CAUSES", "EM8-CON-WATER-INSECURITY-IMPACTS", DD),
+    ("EM8-CON-SUSTAINABLE-MGMT-NEED", "EM8-CON-WATER-MANAGEMENT", UWR),
+    ("EM8-CON-WATER-INSECURITY-IMPACTS", "EM8-CON-WATER-MANAGEMENT", UWR),
+    # 7.1 acid deposition
+    ("EM8-CON-ENERGY-RESOURCES-CLASSIFY", "EM8-CON-ACID-DEP-FORMATION", UWR),
+    ("EM8-CON-ACID-DEP-DEF", "EM8-CON-ACID-DEP-TYPES", DD),
+    ("EM8-CON-ACID-DEP-TYPES", "EM8-CON-ACID-DEP-FORMATION", UWR),
+    ("EM8-CON-ACID-DEP-FORMATION", "EM8-CON-ACID-DEP-IMPACTS", DD),
+    # 7.2 photochemical smog
+    ("EM8-CON-PHOTOCHEMICAL-SMOG-DEF", "EM8-CON-SMOG-IMPACTS", DD),
+    # 7.3 air-pollution management
+    ("EM8-CON-ACID-DEP-IMPACTS", "EM8-CON-AIR-POLLUTION-MANAGEMENT", UWR),
+    ("EM8-CON-SMOG-IMPACTS", "EM8-CON-AIR-POLLUTION-MANAGEMENT", UWR),
+    # 7.4 ozone depletion
+    ("EM8-CON-OZONE-LAYER-ROLE", "EM8-CON-OZONE-DEP-MECHANISM", UWR),
+    ("EM8-CON-ATMOS-STRUCTURE", "EM8-CON-OZONE-DEP-MECHANISM", UWR),
+    ("EM8-CON-OZONE-DEP-MECHANISM", "EM8-CON-DOBSON-UNIT", UWR),
+    ("EM8-CON-DOBSON-UNIT", "EM8-CON-OZONE-HOLE", DD),
+    ("EM8-CON-OZONE-HOLE", "EM8-CON-OZONE-ANTARCTICA", UWR),
+    ("EM8-CON-OZONE-ANTARCTICA", "EM8-CON-OZONE-DEP-IMPACTS", DD),
+    ("EM8-CON-OZONE-DEP-IMPACTS", "EM8-CON-OZONE-AGREEMENTS", UWR),
+    ("EM8-CON-OZONE-AGREEMENTS", "EM8-CON-OZONE-ALTERNATIVES", UWR),
+    ("EM8-CON-SCIENTIFIC-METHOD", "EM8-CON-ROWLAND-MOLINA", UWR),
+    ("EM8-CON-HYPOTHESIS-TO-THEORY", "EM8-CON-ROWLAND-MOLINA", UWR),
+    ("EM8-CON-OZONE-ALTERNATIVES", "EM8-CON-ROWLAND-MOLINA", UWR),
+    # 8.1 greenhouse gases
+    ("EM8-CON-GREENHOUSE-EFFECT-NATURAL", "EM8-CON-GHG-DEF", DD),
+    ("EM8-CON-ATMOS-COMPOSITION", "EM8-CON-GHG-DEF", UWR),
+    ("EM8-CON-GHG-DEF", "EM8-CON-GHG-SOURCES", DD),
+    ("EM8-CON-CARBON-CYCLE", "EM8-CON-GHG-SOURCES", UWR),
+    ("EM8-CON-GHG-SOURCES", "EM8-CON-ENHANCED-GREENHOUSE", DD),
+    ("EM8-CON-GREENHOUSE-EFFECT-NATURAL", "EM8-CON-ENHANCED-GREENHOUSE", UWR),
+    ("EM8-CON-WASTE-IMPACTS", "EM8-CON-ENHANCED-GREENHOUSE", UWR),
+    ("EM8-CON-ENHANCED-GREENHOUSE", "EM8-CON-CLIMATE-MONITORING-DIFFICULTY", UWR),
+    ("EM8-CON-UNCERTAINTY", "EM8-CON-CLIMATE-MONITORING-DIFFICULTY", UWR),
+    ("EM8-CON-CLIMATE-HISTORICAL-DATA", "EM8-CON-CLIMATE-MONITORING-DIFFICULTY", UWR),
+    ("EM8-CON-TECH-DATA-COLLECTION", "EM8-CON-CLIMATE-MONITORING-DIFFICULTY", UWR),
+    # 8.2 impacts
+    ("EM8-CON-ENHANCED-GREENHOUSE", "EM8-CON-CLIMATE-ENV-IMPACTS", DD),
+    ("EM8-CON-CLIMATE-ENV-IMPACTS", "EM8-CON-CLIMATE-HUMAN-IMPACTS", DD),
+    ("EM8-CON-FOOD-SECURITY-DEF", "EM8-CON-CLIMATE-HUMAN-IMPACTS", UWR),
+    # 8.3 management
+    ("EM8-CON-CLIMATE-HUMAN-IMPACTS", "EM8-CON-CLIMATE-MANAGEMENT", DD),
+    ("EM8-CON-ENERGY-MANAGEMENT", "EM8-CON-CLIMATE-MANAGEMENT", UWR),
+    ("EM8-CON-CLIMATE-MANAGEMENT", "EM8-CON-GEO-ENGINEERING", UWR),
+    ("EM8-CON-GEO-ENGINEERING", "EM8-CON-CLIMATE-STRATEGY-EVAL", UWR),
+    # knowingly served-order-reversed authored pair (honest teaching
+    # direction; the in-order law drops it, counted and disclosed):
+    # water insecurity's crop-failure impacts feed the food-insecurity
+    # causes list that names water shortages, but the spine serves the
+    # food register (5.1) before the water register (6.1)
+    ("EM8-CON-WATER-INSECURITY-IMPACTS", "EM8-CON-FOOD-INSECURITY-CAUSES", UWR),
+]
