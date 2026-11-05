@@ -1,0 +1,48 @@
+version: 1
+task:
+  id: T-NAV-STRIP-1
+  title: 'Course tool strip — the MathsGenie navigation tab on every course-scoped tool
+    page; one shared course-nav registry feeding BOTH the sidebar and the new strip'
+  owner: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4, chat
+    0fe43d89-ff92-4e81-857a-1b1c6040a895, dispatch trace 1a1ad262917ee41d — operator order
+    "spec this as a T-NAV-STRIP-1 task and build it on a branch", following the
+    mathsgenie/revisiondojo navigation-tab investigation of trace 1a1ad0b4bdfb8985)
+  status: 'IN_PROGRESS # run-001 (registry extraction + CourseToolNav + shell mount)'
+  priority: P1
+  band: T-NAV-STRIP (MathsGenie-parity course tool navigation)
+  wave: hub-nav
+  deps: []
+  scope:
+    allowed:
+    - apps/hub/src/lib/course-nav.ts (NEW — buildCourseNavGroups(data, pathname) moved
+      VERBATIM from course-shell.tsx navGroups + buildCourseStripItems(data); icons ride
+      along; zero behaviour change to the sidebar)
+    - apps/hub/src/components/hub/course-tool-nav.tsx (NEW — the strip: server-constent
+      Link row, aria-current=page, accent underline, horizontal scroll, focus-visible law)
+    - apps/hub/src/components/hub/course-shell.tsx (call the shared builder; mount the
+      strip in the content column; icon imports shrink accordingly)
+    - .syllabai/tasks/T-NAV-STRIP-1.yaml + .syllabai/receipts/T-NAV-STRIP-1/** +
+      worklog.md + .syllabai/worklog.md (append-only)
+    forbidden:
+    - the course ROOT tab trio (course-body-tabs.tsx stays byte-untouched — its URL
+      contract is STRONGER than MG's and run-002 of the investigation explicitly kept it)
+    - routes/slugs, SidebarData shape, flags, gates, bundles, DB, contracts, apps/api/**
+    - the sidebar's groups/order/gates (the extraction is a MOVE, not a redesign; the
+      strip is a second view of the same registry)
+    - self-merge (integrator merges; PR from this branch)
+  notes: 'INVESTIGATION of record (2026-11-06, live mathsgenie.co.uk + revisiondojo.com,
+    download/course-tool-nav-investigation.md): MG renders a shared horizontal course tool
+    strip on every course-scoped tool page (16 items on GCSE Maths Edexcel, 11 on A-Level
+    Maths Edexcel — data-driven per course, real <a> links, aria-current=page, accent
+    underline, first item bridges back to the course root''s ?tab= vocabulary). MG''s
+    course root carries NO strip — its Topics/Resources pair is the root nav. RevisionDojo''s
+    tabbed shell is login-gated; MG is the pattern source (per course-body-tabs.tsx''s own
+    comment). HOUSE DELTA (deliberate): the strip suppresses on the course root (the
+    CourseBodyTabs trio is the root nav, MG parity), on viewer routes (s146 chrome
+    stand-down) and on document-focus routes (full-height player); ghost/roadmap rows
+    (Target Test) and tree facets (Saved questions) never render in the strip; gates are
+    the SAME absent-when-absent gates the sidebar already carries (hasTeachMe, hasUgm,
+    seneca, courseHasBookArchive, hasGuidedLessons, hasGradeBoundaries,
+    hasPastPapers||hasCorpusPapers, curriculumCode). Active law: the root item matches
+    EXACTLY (pathActive''s prefix match would pin it on every course route); every other
+    item rides pathActive like the sidebar rows ("one active law, zero drift").'
