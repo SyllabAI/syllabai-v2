@@ -418,15 +418,31 @@ function parseNonNegative(v: string): number | undefined {
 
 export interface LlmChainPropertiesPort {
   mode: "PRODUCTION" | "TEST" | "LIVE";
-  groq: { enabled: boolean; apiKey: string | null; baseUrl: string; model: string };
-  gemini: { enabled: boolean; apiKey: string | null; model: string };
-  openRouter: { enabled: boolean; apiKey: string | null; baseUrl: string; model: string };
+  groq: { enabled: boolean; apiKeys: string[]; baseUrl: string; model: string };
+  gemini: { enabled: boolean; apiKeys: string[]; model: string };
+  openRouter: { enabled: boolean; apiKeys: string[]; baseUrl: string; model: string };
   chain: {
     timeoutSeconds: number;
     cooldownSeconds: number;
     failureThreshold: number;
     dailyBudgetPerProvider: number;
   };
+}
+
+/**
+ * parseKeyPool — the DC8 key-pool projection (operator directive, trace
+ * 1a1aa5bf9c669399: "we have a lot of keys — if quota finishes, use
+ * automatically the others"). The EXISTING key vars accept a comma-
+ * separated pool ("k1,k2,k3"); a single key is the pool of one — the
+ * pre-DC8 surface, byte-compatible. Split on commas, trim, drop empties;
+ * NO dedupe (duplicate keys are the operator's own redundancy, disclosed).
+ */
+export function parseKeyPool(raw: string | null | undefined): string[] {
+  if (raw == null) return [];
+  return raw
+    .split(",")
+    .map((k) => k.trim())
+    .filter((k) => k !== "");
 }
 
 /** Boolean resolution: layer-1 relaxed binding > layer-2 yml bridge > yml literal. */
@@ -480,27 +496,27 @@ export function readLlmChainProperties(env: Record<string, string | undefined>):
     mode,
     groq: {
       enabled: resolveBool(env.SYLLABAI_LLM_GROQ_ENABLED, env.SYLLABAI_GROQ_ENABLED, true),
-      apiKey:
+      apiKeys: parseKeyPool(
         envStr(env.SYLLABAI_LLM_GROQ_API_KEY) ??
-        (envStr(env.SYLLABAI_GROQ_API_KEY)?.trim() ? env.SYLLABAI_GROQ_API_KEY : null) ??
-        null,
+          (envStr(env.SYLLABAI_GROQ_API_KEY)?.trim() ? env.SYLLABAI_GROQ_API_KEY : null),
+      ),
       baseUrl: resolveString(env.SYLLABAI_LLM_GROQ_BASE_URL, YML_GROQ_BASE_URL, CODE_DEFAULT_GROQ_BASE_URL),
       model: resolveString(env.SYLLABAI_LLM_GROQ_MODEL, ymlGroqModel, CODE_DEFAULT_GROQ_MODEL),
     },
     gemini: {
       enabled: resolveBool(env.SYLLABAI_LLM_GEMINI_ENABLED, env.SYLLABAI_GEMINI_ENABLED, true),
-      apiKey:
+      apiKeys: parseKeyPool(
         envStr(env.SYLLABAI_LLM_GEMINI_API_KEY) ??
-        (envStr(env.SYLLABAI_GEMINI_API_KEY)?.trim() ? env.SYLLABAI_GEMINI_API_KEY : null) ??
-        null,
+          (envStr(env.SYLLABAI_GEMINI_API_KEY)?.trim() ? env.SYLLABAI_GEMINI_API_KEY : null),
+      ),
       model: resolveString(env.SYLLABAI_LLM_GEMINI_MODEL, YML_GEMINI_MODEL, CODE_DEFAULT_GEMINI_MODEL),
     },
     openRouter: {
       enabled: resolveBool(env.SYLLABAI_LLM_OPENROUTER_ENABLED, env.SYLLABAI_OPENROUTER_ENABLED, true),
-      apiKey:
+      apiKeys: parseKeyPool(
         envStr(env.SYLLABAI_LLM_OPENROUTER_API_KEY) ??
-        (envStr(env.SYLLABAI_OPENROUTER_API_KEY)?.trim() ? env.SYLLABAI_OPENROUTER_API_KEY : null) ??
-        null,
+          (envStr(env.SYLLABAI_OPENROUTER_API_KEY)?.trim() ? env.SYLLABAI_OPENROUTER_API_KEY : null),
+      ),
       baseUrl: resolveString(
         env.SYLLABAI_LLM_OPENROUTER_BASE_URL,
         YML_OPENROUTER_BASE_URL,
@@ -525,10 +541,6 @@ export function readLlmChainProperties(env: Record<string, string | undefined>):
   };
 }
 
-function hasKey(apiKey: string | null): boolean {
-  return apiKey != null && apiKey.trim() !== "";
-}
-
 /**
  * buildLlmChain — LlmChainConfig.failoverLlmChain. Chain order per §26.1:
  * Groq → Gemini → OpenRouter; gemini is the vision-capable member (media
@@ -539,6 +551,19 @@ function hasKey(apiKey: string | null): boolean {
  * path can silently spend quota); unconfigured providers register the
  * dormant member, still visible in the chain report with the model it WOULD
  * use (the enabled/configured distinction is the drift signal).
+ *
+ * DC8 AMENDMENT (operator directive, trace 1a1aa5bf9c669399 — "if quota
+ * finishes, use automatically the others"): each provider's key var may
+ * carry a comma-separated POOL; every key constructs its own member
+ * (`groq`, `groq#2`, `groq#3`, …), inserted in provider order so the
+ * frozen failover loop tries a provider's next key before moving to the
+ * next provider. The frozen health law does the quota handling: a 429
+ * key cools after failureThreshold consecutive failures, an
+ * AUTHENTICATION_FAILURE key benches to the end of the UTC day — the
+ * ask layer serves from the next live key instead of aggregating a 500
+ * when ONE provider's quota dies. Single-key boots are byte-identical
+ * (the pool of one); the daily budget becomes per KEY (per-member),
+ * which is the truer free-tier grain — disclosed in the DC8 card.
  */
 export function buildLlmChain(
   env: Record<string, string | undefined> = process.env,
@@ -552,64 +577,69 @@ export function buildLlmChain(
   const timeout = Math.max(1, props.chain.timeoutSeconds);
   const memberOpts = { failureThreshold: threshold, cooldownSeconds: cooldown, dailyBudget, timeoutSeconds: timeout, clock };
 
+  const memberName = (provider: string, index: number): string =>
+    index === 0 ? provider : `${provider}#${index + 1}`;
+
   const register = (
     name: string,
     enabled: boolean,
-    apiKey: string | null,
-    construct: (key: string) => ChainMember,
+    apiKeys: string[],
+    construct: (key: string, memberName: string) => ChainMember,
     defaultModel: string,
     mediaCapable: boolean,
-  ): ChainMember => {
+  ): ChainMember[] => {
     // the frozen registerProvider law: real adapters only when the mode
     // allows it AND the provider is enabled AND its key is present
-    if (!testMode && enabled && hasKey(apiKey)) {
-      return construct(apiKey as string);
+    if (!testMode && enabled && apiKeys.length > 0) {
+      return apiKeys.map((key, i) => construct(key, memberName(name, i)));
     }
-    if (testMode && enabled && hasKey(apiKey)) {
-      // the frozen warn: the key is present but IGNORED (fail-closed)
+    if (testMode && enabled && apiKeys.length > 0) {
+      // the frozen warn: the keys are present but IGNORED (fail-closed)
       console.warn(
-        `LLM mode=test: provider '${name}' has an API key in the environment but it is ` +
+        `LLM mode=test: provider '${name}' has ${apiKeys.length} API key(s) in the environment but they are ` +
           `IGNORED — real providers are never constructed in test mode (fail-closed, ADR-023)`,
       );
     }
-    return new DormantChainMember(
-      name,
-      enabled,
-      false,
-      mediaCapable,
-      threshold,
-      cooldown,
-      dailyBudget,
-      defaultModel,
-      clock,
-    );
+    return [
+      new DormantChainMember(
+        name,
+        enabled,
+        false,
+        mediaCapable,
+        threshold,
+        cooldown,
+        dailyBudget,
+        defaultModel,
+        clock,
+      ),
+    ];
   };
 
   return new FailoverLlmChain([
-    register(
+    ...register(
       "groq",
       props.groq.enabled,
-      props.groq.apiKey,
-      (key) =>
-        new OpenAiCompatibleChainMember("groq", { apiKey: key, baseUrl: props.groq.baseUrl, model: props.groq.model }, memberOpts),
+      props.groq.apiKeys,
+      (key, memberName_) =>
+        new OpenAiCompatibleChainMember(memberName_, { apiKey: key, baseUrl: props.groq.baseUrl, model: props.groq.model }, memberOpts),
       props.groq.model,
       false,
     ),
-    register(
+    ...register(
       "gemini",
       props.gemini.enabled,
-      props.gemini.apiKey,
-      (key) => new GeminiChainMember("gemini", { apiKey: key, model: props.gemini.model }, memberOpts),
+      props.gemini.apiKeys,
+      (key, memberName_) => new GeminiChainMember(memberName_, { apiKey: key, model: props.gemini.model }, memberOpts),
       props.gemini.model,
       true,
     ),
-    register(
+    ...register(
       "openrouter",
       props.openRouter.enabled,
-      props.openRouter.apiKey,
-      (key) =>
+      props.openRouter.apiKeys,
+      (key, memberName_) =>
         new OpenAiCompatibleChainMember(
-          "openrouter",
+          memberName_,
           { apiKey: key, baseUrl: props.openRouter.baseUrl, model: props.openRouter.model },
           memberOpts,
         ),
