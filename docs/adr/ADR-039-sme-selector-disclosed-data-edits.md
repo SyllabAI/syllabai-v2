@@ -2,8 +2,8 @@
 
 | | |
 |---|---|
-| **Status** | Executed (r2 — the §4 queue is empty of record; placement 2,574/2,574 = 100%) |
-| **Date** | 2026-11-04 (r1) / 2026-11-04 (r2 execution) |
+| **Status** | Executed (r3 — placement 2,574/2,574 = 100%; §4 rows 1–13 executed r2, rows 14–17 executed r3) |
+| **Date** | 2026-11-04 (r1) / 2026-11-04 (r2 execution) / 2026-11-05 (r3 check-again pass) |
 | **Deciders** | SME selector lane (T-SME-SEL), operator-directed |
 | **Basis** | SME selector blast-radius audit (81 SME courses / 2,012 sets / 34,940 questions; defect classes D0–D9); `apps/hub/src/lib/spec-tree.ts` (production anchoring); `SME-ExamQuestion` reference manifests (syllabai-resources @ main); ADR-039 principle: **the pipeline improves; provenance discloses** — no silent data surgery |
 
@@ -135,6 +135,51 @@ dedicated spine-cosmetics pass):
   "Probability & Statistics 1") — sub-topic content is correct; title-only
   defect. Sets still home topic-level via the single-topic-spine rule (d).
 
+### r3 — the check-again pass (2026-11-05): hub selector vs SME's own pages, re-derived at tip 170f981a
+
+The selector-vs-SME alignment was re-checked from scratch at tip `170f981a`
+(1,355 commits after the r2 verification), against the SME-ExamQuestion
+reference manifests freshly re-read from syllabai-resources @ main (105
+courses; 91 with topic trees + 14 honest-flat) and two live SME selection
+pages fetched 2026-11-05 (cie-igcse-ict-21, cie-a-level-chemistry-25 — both
+byte-consistent with the manifests: zero upstream drift). Findings:
+
+- **Fidelity holds fleet-wide**: every hub set's (section, sub-topic) slug
+  pair exists in the reference manifest (0 phantom homes across 2,574 sets);
+  every manifest sub-topic has ≥1 hub set except `igcse-maths-b-16/past-papers`
+  (20 session dirs — a content-class boundary: past papers live in the hub's
+  separate past-papers plane, not the exam-questions selector).
+- **The name-vs-home sweep** (every set with a stamped `:SUB` code, 195 sets,
+  set-name vs destination-title token similarity + runtime home probe) found
+  two defect families behind 5 low-similarity hits. The rest verified clean
+  or belong to already-queued classes: igcse-geography-19's 19 hits are
+  positional stamps whose SLOTS match SME's own sub-topic order (the spine's
+  row LABELS are the defect — see the queue addition below);
+  cie-igcse-biology-23 "Human Diet & Digestion"→SUB7.1 "Diet" and
+  cie-igcse-business-23 "1.4 Types of Businesses"→SUB1.4 "Types of business
+  organisation" are legitimate SME-vs-official title variance.
+
+Executed edits (rows 14–17; per-set stamps and one node title, nothing else
+moves — 5 diff lines across 3 files):
+
+| # | Course | Set / node | Gap class | Edit of record → home |
+|---|--------|------------|-----------|------------------------|
+| 14 | cie-igcse-ict-21 | Communication (7-communication, 20 q) | truncated-title trap: spine SUB6.1 titled "Communication" (official 0417 heading: "Communication applications") captured the set by title-match into ICT applications | per-set stamp `…-T10-gen`: the questions are email / URLs / internet / spam / search engines = official topic 10 "Communication" (10.1 email, 10.2 internet); set name == the T10 topic title, no single sub-topic fits both → rung 1 |
+| 15 | cie-igcse-ict-21 | spine node `…-T6:SUB6.1` | the truncation itself (rows 6.2–6.11 carry full official headings; 6.1 alone was clipped) | title edit → "Communication applications" — executed here as the root-cause guard so rung 5 can never re-capture a "Communication" set into ICT applications (blast radius verified: rung 5 is the only title consumer; no tests reference the node) |
+| 16 | cie-igcse-chemistry-23 | Applications of Electrolysis, alternative-to-practical (1 q) | numbering collision: SME dir `4-2-applications-of-electrolysis` maps onto official SUB4.2 "Hydrogen–oxygen fuel cells" via the numbering rung, but the question is electroplating (steel-spoon silver plating) | per-set stamp `…-T4:SUB4.1` — corpus-proven precise home (spec points 4.1.6/4.1.7 are the electroplating points) → rung 1 |
+| 17 | cie-igcse-chemistry-23 | Applications of Electrolysis MCQ (18 q) + theory (15 q) | same collision; these sets MIX fuel-cell (6 + 6 questions) and electroplating (10 + 9) content — SME publishes fuel cells as an "application of electrolysis", the official spine splits them across 4.1/4.2, so no single sub-topic home is honest | per-set stamps `…-T4-gen` (topic-level "General requirements" row under T4 Electrochemistry, rule (c) class; an honesty correction — the fuel-cells row was displaying majority-electroplating content) → rung 1 |
+
+Related spine defect added to the queue by the r3 sweep (placement-neutral,
+queued with the cosmetics class):
+
+- **igcse-geography-19 (4GE1) spine sub-topic titles are sentence
+  fragments** ("Description", "Physical processes", "Distinctive", "Some
+  places are", "Countries"…) and T3 mis-parents a `SUB1.4` node — the
+  Edexcel front-matter parse wreck, same family as the english-language
+  TS1–TS14 wreck. The 19 sets' positional stamps sit in the CORRECT slots
+  (they match SME's own sub-topic order `1-1`/`1-2`… from the manifest), so
+  placement stands; the row labels are the queued defect.
+
 ### Count reconciliation
 
 - Workbook (pre-notes-bridge joins): 101 high + 144 medium + 205 manual = 450.
@@ -170,3 +215,11 @@ dedicated spine-cosmetics pass):
   the audit's worst D3 row (45 sets / 426q behind one link) is gone: 28 sets
   / 524q, every row a single honest target, counts sum exactly. (The r2
   lane's own post-deploy spot-check: see the worklog receipt of record.)
+- r3 gates (2026-11-05, tip 170f981a + the three data files): `bun
+  scripts/verify_sme_wire_r0.ts` — 2,574/2,574 placed, residual 0, gen-row
+  homes 31 (unchanged by law: the r3 homes are rung-1 stamps with
+  pre-created rows, and the gate counts only on-demand creations — the r2
+  counting law); runtime home probes confirm the three r3 destinations
+  (T10-gen / SUB4.1 / T4-gen); `verify_corpus_23a` and
+  `validate_cie_bundles` PASS; tsc untouched (data-only edits — the
+  sandbox's missing node_modules makes tsc vacuous here, disclosed).
