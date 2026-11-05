@@ -297,6 +297,22 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-16 (batch fourteen, the ICT family tranche 11):
+        # CIE 0417 IGCSE, Edexcel 4IT1 IGCSE.
+        ict = {
+            "cie-igcse-ict-21": ("f8it_lattice_0417", "0417"),
+            "igcse-ict-17": ("f8it_lattice_4it1", "4IT1"),
+        }
+        if args.course in ict:
+            mod, tag = ict[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="fourteen", task="T-KG-PRE-16", exporter_ver="v1.9",
+            )
+            return
         # T-KG-PRE-15 (batch thirteen, the environmental-management family
         # tranche 10): CIE 8291 AS, CIE 0680 IGCSE (2025 series).
         environmental_management = {
