@@ -297,6 +297,22 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-17 (batch fifteen, the history family tranche 12):
+        # CIE 0470 IGCSE, Edexcel 4HI1 IGCSE.
+        history = {
+            "cie-igcse-history-18": ("f8hi_lattice_0470", "0470"),
+            "igcse-history-17": ("f8hi_lattice_4hi1", "4HI1"),
+        }
+        if args.course in history:
+            mod, tag = history[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="fifteen", task="T-KG-PRE-17", exporter_ver="v2.0",
+            )
+            return
         # T-KG-PRE-16 (batch fourteen, the ICT family tranche 11):
         # CIE 0417 IGCSE, Edexcel 4IT1 IGCSE.
         ict = {
