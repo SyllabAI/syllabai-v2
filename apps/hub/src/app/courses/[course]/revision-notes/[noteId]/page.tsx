@@ -89,6 +89,14 @@ export default async function NoteReaderPage({
                 Board-aware (CIE wave): registry-explicit board, else the
                 founding "Pearson Edexcel" — pre-CIE rows render byte-identical. */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-muted-foreground">
+              {/* RN-DEBRIS-11 run-005: exam-skills notes carry their explicit
+                  fold label at the point of reading — exam technique, not
+                  spec-tied (no spec-point anchor by design). */}
+              {note.contentKind === "exam-technique" && (
+                <span className="rounded-md bg-muted px-1.5 py-0.5 text-[11px] font-medium text-muted-foreground">
+                  Exam technique — not tied to a spec point
+                </span>
+              )}
               <span>
                 Exam board{" "}
                 <span className="font-medium text-foreground">{meta.board ?? "Pearson Edexcel"}</span> ·{" "}
