@@ -5,11 +5,12 @@
  * Mocks are graded by the student against the official MS PDF. Operator
  * order 2026-11-05 ("remove device-local things completely — every single
  * thing must be saved in account"): the tallies live in module memory and
- * the learner's account (learner_mock_results, server cap 20 per course —
- * the same MAX_PER_COURSE bound here) is their only durable store. The
- * retired localStorage record (syllabai.mockResults.v1) adopts ONCE per tab
- * (it seeds the memory tallies so the reconcile's union law migrates them)
- * and is removed after the first successful server contact.
+ * the learner's account (learner_mock_results, server cap 50 per course —
+ * the same MAX_PER_COURSE bound here; T-CAPS-POLICY-1 raised 20 → 50 on
+ * all three sites) is their only durable store. The retired localStorage
+ * record (syllabai.mockResults.v1) adopts ONCE per tab (it seeds the
+ * memory tallies so the reconcile's union law migrates them) and is
+ * removed after the first successful server contact.
  *
  * Nothing here touches canonical learner state or the marking plane — these
  * are the student's OWN tallies (the self-marked honesty is preserved).
@@ -46,7 +47,10 @@ export interface MockResult {
 }
 
 const KEY = "syllabai.mockResults.v1"; // RETIRED (legacy adoption pin)
-const MAX_PER_COURSE = 20;
+/** T-CAPS-POLICY-1: 20 → 50, both sides (the contracts'
+ *  MOCK_RESULTS_PER_COURSE and the server's MOCK_RESULTS_CAP move with
+ *  this — one law, three sites, never disagreeing). */
+const MAX_PER_COURSE = 50;
 export const MOCK_RESULTS_EVENT = "syllabai:mock-results-changed";
 
 // ── the in-memory tallies of record + the one-time legacy adoption ────────
@@ -178,7 +182,7 @@ export function useMockResults(course: string): MockResult[] | null {
 //    recency law does not apply here).
 //  - Remote-driven writes set applyingRemote so the mirror does not echo
 //    the set back to core (one PUT per intent, never two).
-//  - Per-course cap: 20 of record, both sides (MAX_PER_COURSE here, the
+//  - Per-course cap: 50 of record, both sides (MAX_PER_COURSE here, the
 //    server's own bound) — memory and account can never disagree on shape.
 
 const wireToLocal = (

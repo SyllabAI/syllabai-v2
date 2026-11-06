@@ -38,6 +38,7 @@ api.putWorkspaceDoc = (key: string, value: unknown) => {
 
 const {
   readDoc,
+  readDocError,
   writeDoc,
   flushDoc,
   hydrateAccountDocs,
@@ -168,6 +169,25 @@ describe("account-docs engine", () => {
     } finally {
       delete (globalThis as { document?: unknown }).document;
     }
+  });
+
+  test("a 413 flush records too_large (the silent-413 retirement), keeps the dirty flag, and a healed flush clears it", async () => {
+    freshEngine();
+    let reject = true;
+    putImpl = async () => {
+      if (reject) throw new ApiError(413, "document_too_large");
+      return { key: DOC, value: null, updatedAt: "2026-11-05T00:00:00.000Z" };
+    };
+    writeDoc(DOC, { v: "too-fat" });
+    await __flushAllForTests();
+    expect(putCalls).toHaveLength(1);
+    expect(readDocError(DOC)).toBe("too_large"); // SURFACED — never a silent swallow
+    expect(readDoc(DOC)).toEqual({ v: "too-fat" }); // the value stays (local truth intact)
+    reject = false; // the value shrank / the cap moved — the retry lands
+    await __flushAllForTests();
+    expect(putCalls).toHaveLength(2);
+    expect(readDoc(DOC)).toEqual({ v: "too-fat" }); // went clean
+    expect(readDocError(DOC)).toBeNull(); // the honest clear
   });
 
   test("the switch-reset truth table (pure)", () => {

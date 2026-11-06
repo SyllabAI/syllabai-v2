@@ -53,6 +53,8 @@ const {
   sameIdStamp,
   isBridgedThread,
   tsOf,
+  capThreadsByBytes,
+  THREAD_DOC_BYTE_BUDGET,
 } = await import("./account-docs-bridge");
 const { __seedAccountDocsForTests, __flushAllForTests, resetAccountDocs, readDoc } =
   await import("./account-docs");
@@ -233,5 +235,115 @@ describe("account-docs-bridge", () => {
     expect(putCalls).toHaveLength(1);
     expect(putCalls[0].value).toEqual({ threads: [t("t1", 5)] });
     store.unregister();
+  });
+});
+
+// ── T-CAPS-POLICY-1 — the byte budget of record ───────────────────────────
+
+describe("capThreadsByBytes — the durable-copy byte budget", () => {
+  test("a pool far under the budget passes through untouched (same array contents)", () => {
+    const pool = [t("a", 3, ["x".repeat(100)]), t("b", 2, ["y".repeat(100)]), t("c", 1)];
+    const capped = capThreadsByBytes(pool);
+    expect(capped).toHaveLength(3);
+    expect(capped.map((x) => x.id)).toEqual(["a", "b", "c"]);
+    expect(JSON.stringify({ threads: capped }).length).toBeLessThanOrEqual(THREAD_DOC_BYTE_BUDGET);
+  });
+
+  test("a saturated pool trims OLDEST-first until the doc fits the budget", () => {
+    // 60 threads × ~10KB bodies ≈ 600K chars — far over the 260K budget
+    const pool = Array.from({ length: 60 }, (_, i) =>
+      t(`fat-${i}`, 1000 - i, ["z".repeat(10_000)]),
+    );
+    const capped = capThreadsByBytes(pool);
+    expect(capped.length).toBeLessThan(60);
+    expect(capped.length).toBeGreaterThan(0);
+    // newest-first survivors: the ids are a PREFIX of the input order
+    expect(capped.map((x) => x.id)).toEqual(pool.slice(0, capped.length).map((x) => x.id));
+    expect(JSON.stringify({ threads: capped }).length).toBeLessThanOrEqual(THREAD_DOC_BYTE_BUDGET);
+  });
+
+  test("an irreducible singleton passes through UNCHANGED (the PUT 413s, surfaced — never a silent trim)", () => {
+    const monster = [t("monster", 1, ["w".repeat(THREAD_DOC_BYTE_BUDGET + 5_000)])];
+    const capped = capThreadsByBytes(monster);
+    expect(capped).toBe(monster); // the SAME array — no silent loss
+    expect(JSON.stringify({ threads: capped }).length).toBeGreaterThan(THREAD_DOC_BYTE_BUDGET);
+  });
+
+  test("an over-budget pool with a small newest thread still keeps everything that fits (prefix law)", () => {
+    const small = t("small-new", 10, ["s".repeat(50)]);
+    const fat = t("fat-old", 5, ["f".repeat(THREAD_DOC_BYTE_BUDGET)]); // older AND over budget
+    const capped = capThreadsByBytes([small, fat], THREAD_DOC_BYTE_BUDGET);
+    // prefix law: once `fat` cannot fit, everything after it is gone — but
+    // `small` (newest) survives, and the doc fits
+    expect(capped).toHaveLength(1);
+    expect(capped[0].id).toBe("small-new");
+    expect(JSON.stringify({ threads: capped }).length).toBeLessThanOrEqual(THREAD_DOC_BYTE_BUDGET);
+  });
+
+  test("the mirror commits the BOUNDED doc and CONVERGES (no PUT ping-pong)", async () => {
+    // 30 × 10KB local threads (UNDER the fixture's 40 count cap, OVER the
+    // 260K byte budget — the byte law is the binding one) over an EMPTY
+    // account: the adoption PUT must carry the trimmed pool, and the NEXT
+    // mirror pass must be a no-op — the count-only law re-PUT the same
+    // trimmed content forever.
+    const store = makeFakeStore(
+      Array.from({ length: 30 }, (_, i) => t(`fat-${i}`, 1000 - i, ["z".repeat(10_000)])),
+    );
+    hydratedImpl = () => true;
+    __seedAccountDocsForTests({}); // empty account → adopt
+    mirrorThreadState(DOC, store.threads);
+    await __flushAllForTests();
+    expect(putCalls).toHaveLength(1);
+    const first = putCalls[0].value as { threads: BT[] };
+    expect(first.threads.length).toBeLessThan(30);
+    expect(JSON.stringify(first).length).toBeLessThanOrEqual(THREAD_DOC_BYTE_BUDGET);
+    // the device cache keeps EVERY thread — the budget bounds the doc, not
+    // the store (30 < the count cap, so no count-cap pull-down can fire)
+    expect(store.threads).toHaveLength(30);
+    // the converged re-evaluation: seed the engine memory to EXACTLY what
+    // the server now holds (a fresh hydration), mirror again — zero PUTs
+    __seedAccountDocsForTests({ [DOC]: first });
+    putCalls.length = 0;
+    mirrorThreadState(DOC, store.threads);
+    await __flushAllForTests();
+    expect(putCalls).toHaveLength(0);
+    store.unregister();
+  });
+
+  test("a throwing apply cannot leak the echo guard (the guarded-span law)", async () => {
+    // the pre-T-CAPS-POLICY-1 defect: an apply that threw mid-span left the
+    // key echo-guarded FOREVER (the outer catch swallowed the throw) — every
+    // later mirror for that key no-oped for the rest of the process. The
+    // guarded span releases in finally, so the plane self-heals.
+    let applyCalls = 0;
+    let threads: BT[] = [];
+    const unregister = bridgeThreadStore<BT[], BT>({
+      docKey: DOC,
+      maxThreads: 40,
+      maxMessages: 200,
+      readState: () => threads,
+      readThreads: (s) => s,
+      apply: (next) => {
+        applyCalls += 1;
+        if (applyCalls === 1) throw new Error("the store's apply exploded");
+        threads = next;
+      },
+      getAuthEmail: () => emailImpl(),
+      isHydrated: () => hydratedImpl(),
+    });
+    hydratedImpl = () => true;
+    __seedAccountDocsForTests({ [DOC]: { threads: [t("srv", 9)] } }); // server has what local lacks
+    mirrorThreadState(DOC, threads); // pull-down → apply throws → the guard MUST release
+    expect(applyCalls).toBe(1);
+    // a later local write still syncs — a leaked guard would have no-oped here
+    threads = [t("local-new", 10)];
+    mirrorThreadState(DOC, threads);
+    await __flushAllForTests();
+    expect(putCalls).toHaveLength(1);
+    expect((putCalls[0].value as { threads: BT[] }).threads.map((x) => x.id)).toEqual([
+      "local-new",
+      "srv",
+    ]);
+    unregister();
   });
 });
