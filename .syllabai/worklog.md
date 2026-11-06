@@ -798,6 +798,13 @@ Stage Summary:
 - Gates first-hand: bunx tsc --noEmit (apps/hub) exit 0; bunx eslint course-tool-nav.tsx exit 0 (bun install 988 packages first).
 - NOT self-merged — design change; operator reviews the PR preview first. Receipt of record: .syllabai/receipts/T-NAV-STRIP-1/run-002.md. Sandbox NOTE: recycle had stripped ref/syllabai-v2/.git (outer-repo accident repaired; sparse blobless clone restored, /tmp store refreshed).
 
+## receipt(T-HEADER-1) — run-001: the page-header unification (one title law, MG parity) — 2026-11-06 (operator scope pick "A, full unification", trace 1a1b173567f8eb99)
+
+- Audit of record: topbar was uniform (h-14); the page-header block was two languages (hero band 3xl/4xl on 17 course pages + dashboard + teacher home vs 6+ bare-h1 treatments incl. teacher font-display and two detail-page sm: scales) + 5 container outliers.
+- Laws landed: PageHeader (text-2xl bold, breadcrumbs/eyebrow/actions/description slots) for every tool/detail page; PageHero lander-only (course root, dashboard, teacher home) with a new breadcrumbs prop (CourseHeader = thin wrapper); font-display dropped from all page titles; one course container.
+- ~35 call sites converted; exam-code pill affordance preserved on every course page (CoursePageHeader default action). Workspace-chrome headings exempt (MG essay-marker precedent).
+- Gates first-hand: tsc exit 0 ×3 checkpoints; eslint = 4 problems all pre-existing on main (stash-baseline verified), zero new. Visual QA: 10 surfaces, download/t-header-1/qa/.
+- NOT self-merged — operator reviews the PR preview first. Receipt of record: .syllabai/receipts/T-HEADER-1/run-001.md.
 
 
 ## receipt(T-KG-PRE-22) — F8 rollout batch twenty: the Edexcel science tranche 17, the double-award family — run-001 — 2026-11-07 (operator trace 1a1b1d23a022d501 "Proceed", the plural next-tranches order continued after batch nineteen #804, merge fa0cf3db, the double-award family being the tranche named in the T-KG-PRE-21 receipt's Next line per the standing batch order; the sandbox was RECYCLED between turns — the run began from a fresh clone at origin/main 55b586e0 and the startup census re-verified 91 web / 106 spines / 15 web-less with the web-less list matching the T-KG-PRE-21 census EXACTLY before anything was written — no duplicate batch run; ten PRs landed on main after fa0cf3db (#805-#820) and NONE touched KG data)

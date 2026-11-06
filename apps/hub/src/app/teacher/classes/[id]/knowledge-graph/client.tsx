@@ -26,6 +26,7 @@ import { KGExplorer } from "@/components/kg-explorer/KGExplorer";
 import { classKnowledgeGraphHost } from "@/components/kg-explorer/adapters";
 import { NodeDrillDown } from "./drill-down-panel";
 import { ForesightsDialog } from "./foresights-dialog";
+import { PageHeader } from "@/components/layout/page-header";
 import type {
   ClassKnowledgeGraphView,
   SubjectView,
@@ -132,9 +133,11 @@ export function ClassKGClient({ classId }: { classId: string }) {
     <div className="space-y-4">
       <TeacherNav />
 
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <div className="flex flex-wrap items-center gap-2">
+      {/* T-HEADER-1: the shared tool-page header (back link + archived badge
+          ride the breadcrumbs slot; the subject badge the title row). */}
+      <PageHeader
+        breadcrumbs={
+          <span className="flex flex-wrap items-center gap-2">
             <Link
               href={`/teacher/classes/${classId}`}
               className="text-sm text-muted-foreground hover:text-foreground"
@@ -146,8 +149,10 @@ export function ClassKGClient({ classId }: { classId: string }) {
                 archived · read-only
               </Badge>
             ) : null}
-          </div>
-          <h1 className="mt-1 flex flex-wrap items-center gap-2 text-2xl font-bold tracking-tight">
+          </span>
+        }
+        title={
+          <span className="flex flex-wrap items-center gap-2">
             <Network className="size-6 text-primary" aria-hidden />
             Class KG heatmap
             {subject ? (
@@ -155,8 +160,10 @@ export function ClassKGClient({ classId }: { classId: string }) {
                 {subject.code}
               </Badge>
             ) : null}
-          </h1>
-          <p className="mt-1 text-sm text-muted-foreground">
+          </span>
+        }
+        description={
+          <>
             {detail ? `${detail.name} · ${detail.courseLabel}` : "Class"}
             {kg
               ? ` · ${kg.learnersEnrolled} enrolled member${kg.learnersEnrolled === 1 ? "" : "s"}`
@@ -166,9 +173,9 @@ export function ClassKGClient({ classId }: { classId: string }) {
               only this class&apos;s enrolled students count — independent students never
               enter these numbers
             </span>
-          </p>
-        </div>
-      </div>
+          </>
+        }
+      />
 
       {/* the ring legend — the §13.4 semantics, stated where the teacher reads */}
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">

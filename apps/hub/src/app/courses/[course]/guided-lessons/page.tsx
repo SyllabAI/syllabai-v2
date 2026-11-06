@@ -4,7 +4,7 @@ import { ArrowRight, GraduationCap } from "lucide-react";
 import { boardOf, loadHubCourse } from "@/lib/courses";
 import { loadGuidedIndex } from "@/lib/guided-lessons";
 import { looseAnchorCopy } from "@/lib/loose-copy";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 
 /**
  * T-VERCEL-USAGE: params-only page over the committed corpus (no
@@ -89,7 +89,7 @@ export default async function GuidedLessonsIndexPage({
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Guided Lessons`}
         crumb="Guided Lessons"

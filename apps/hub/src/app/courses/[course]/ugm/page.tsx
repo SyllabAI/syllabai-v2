@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { boardOf, getCourseMeta } from "@/lib/courses";
 import { getUgmBundle, ugmStationNames } from "@/lib/ugm";
 import { MathText } from "@/components/hub/math-text";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 
 /**
  * Underground Mathematics index — the per-spec-point resource library for
@@ -47,7 +47,7 @@ export default async function CourseUgmPage({
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         crumb="Underground Mathematics"
         title="Underground Mathematics"

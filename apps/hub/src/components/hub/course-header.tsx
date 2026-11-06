@@ -1,35 +1,38 @@
 /**
- * Course header block — the course hero band.
+ * Course header blocks — T-HEADER-1 (operator trace 1a1b173567f8eb99,
+ * scope "A, full unification"): the ONE course-header module with TWO
+ * postures of the same law.
  *
- * Restyled to the MathsGenie course-page anatomy (hub-coursepage-mg-layout,
- * operator request via chat trace 1a18c3f754d0e421): a pastel gradient hero
- * card carrying the breadcrumb trail, bold qualification title, exam-code
- * pill and description. The band's gradient lives in globals.css
- * (.course-hero-gradient) — hub token hues, dark-mode aware.
+ *   - CourseHeader — the LANDER hero band (course ROOT only). The MathsGenie
+ *     course-page anatomy (hub-coursepage-mg-layout, operator request via
+ *     chat trace 1a18c3f754d0e421): pastel gradient hero card carrying the
+ *     breadcrumb trail, bold qualification title, exam-code pill and
+ *     description. Since run T-HEADER-1 it is a thin wrapper over PageHero
+ *     (the dashboard kit's generalisation of this very band) — same gradient
+ *     (.course-hero-gradient), same padding rhythm, same 3xl/4xl title; the
+ *     component was duplicated markup before, now it is one hero everywhere.
+ *     The Course Resources / Strengths & Weaknesses tab pair that used to sit
+ *     bottom-aligned on the band's edge is GONE (operator request via chat
+ *     trace 1a19368d4aa8384d): the course root's body tabs (course-body-tabs)
+ *     carry Strengths & Weaknesses as their third pane.
  *
- * The Course Resources / Strengths & Weaknesses tab pair that used to sit
- * bottom-aligned on the band's edge is GONE (operator request via chat
- * trace 1a19368d4aa8384d): the course root's body tabs (course-body-tabs)
- * now carry Strengths & Weaknesses as their third pane, so the hero was
- * running two navigation systems for the same content. The showTabs and
- * activeTab props left with the pair — the fourteen subpage call sites
- * (exam-questions, past-papers, revision-notes, …) already rendered the
- * hero bare, and the strengths route page keeps its hero without the pair
- * too. Every other part of the SME anatomy survives: breadcrumbs, H1,
- * exam-code pill, description, children slot (the root page's
- * "Edexcel | IGCSE | 4CH1" line + course switcher).
+ *   - CoursePageHeader — the TOOL-page header (every course subpage + detail
+ *     page): the shared PageHeader block (text-2xl bold — MG's exact tool
+ *     title law), same breadcrumb trail, same exam-code pill affordance
+ *     (T-COURSE-SPECPILL-1: the pill doubles as the Specification link) in
+ *     the actions slot unless the caller brings its own. The fourteen-plus
+ *     subpage call sites swapped CourseHeader → CoursePageHeader; the course
+ *     ROOT keeps the hero (lander exception — MG's home/resources run big
+ *     too; four landers total: course root, dashboard, teacher home,
+ *     marketing home which sits outside the fence).
  */
 import { Breadcrumbs, ExamCodePill } from "@/components/hub/chrome";
+import { PageHeader } from "@/components/layout/page-header";
+import { PageHero } from "@/components/dashboard/kit/page-hero";
 import { courseCrumbItems } from "@/lib/board";
 import type { CourseMeta } from "@/lib/courses";
 
-export function CourseHeader({
-  meta,
-  title,
-  description,
-  crumb,
-  children,
-}: {
+type CourseHeaderProps = {
   meta: Pick<CourseMeta, "level" | "subject" | "label" | "code" | "slug" | "board">;
   title: string;
   description?: string;
@@ -42,29 +45,50 @@ export function CourseHeader({
    *  middle crumb to the page's own URL). */
   crumb?: string;
   children?: React.ReactNode;
+};
+
+function courseTrail(meta: CourseHeaderProps["meta"], crumb?: string) {
+  return <Breadcrumbs items={courseCrumbItems(meta, crumb)} />;
+}
+
+function specPill(meta: CourseHeaderProps["meta"]) {
+  return <ExamCodePill code={meta.code} href={`/courses/${meta.slug}/specification`} />;
+}
+
+/** The course ROOT lander hero — pastel band, 3xl/4xl title. Lander exception. */
+export function CourseHeader({ meta, title, description, crumb, children }: CourseHeaderProps) {
+  return (
+    <PageHero
+      breadcrumbs={courseTrail(meta, crumb)}
+      title={title}
+      description={description}
+      actions={specPill(meta)}
+    >
+      {children}
+    </PageHero>
+  );
+}
+
+/** The course TOOL-page header — bare block, text-2xl title, same trail + pill. */
+export function CoursePageHeader({
+  meta,
+  title,
+  description,
+  crumb,
+  actions,
+  children,
+}: CourseHeaderProps & {
+  /** Overrides the default exam-code pill in the actions slot. */
+  actions?: React.ReactNode;
 }) {
   return (
-    <header className="relative isolate overflow-hidden rounded-2xl border bg-card shadow-sm">
-      {/* MG pastel wash — hub-token gradient, see globals.css */}
-      <div aria-hidden className="course-hero-gradient absolute inset-0 -z-10" />
-      <div className="space-y-3 p-5 sm:p-6">
-        <Breadcrumbs items={courseCrumbItems(meta, crumb)} />
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <h1 className="max-w-2xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
-            {title}
-          </h1>
-          {/* T-COURSE-SPECPILL-1 (operator trace 1a1955167e89eb11): the exam
-              code doubles as the Specification link — the affordance moved
-              here from the spec card's standalone tree button. */}
-          <ExamCodePill code={meta.code} href={`/courses/${meta.slug}/specification`} />
-        </div>
-        {description && (
-          <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
-            {description}
-          </p>
-        )}
-        {children}
-      </div>
-    </header>
+    <PageHeader
+      breadcrumbs={courseTrail(meta, crumb)}
+      title={title}
+      description={description}
+      actions={actions ?? specPill(meta)}
+    >
+      {children}
+    </PageHeader>
   );
 }
