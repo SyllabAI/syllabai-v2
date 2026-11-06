@@ -3,7 +3,7 @@ task:
   id: T-MG-MARK-DELTA-1
   title: "Rollout Lane E — the 2026-11-04 live-capture contract delta: per-award workingRef citation surfaced, attempt classification, stem-text doctrine context, crop-hash re-mark caching, plan-of-record §1.9 observed-row update"
   owner: "main agent (Z.ai)"
-  status: OPEN
+  status: DONE
   priority: P2
   band: T-MG-MARK-PARITY (interactive paper marking) — rollout tranche per docs/MG-MARK-ROLLOUT-PLAN.md
   wave: mg-rollout-2026-11
@@ -30,3 +30,33 @@ task:
   execution_record: >
     Commissioned 2026-11-04 with docs/MG-MARK-ROLLOUT-PLAN.md (records push).
     Engine-side run; branches as t-mg-mark-delta-1/run-001 after C/A.
+    run-001 (PR #763, branch t-mg-mark-delta-1/run-001 @ 5b6870fc): the five
+    pins landed engine-side — (1) citation law: the prompt labels prior working
+    blocks W1, W2…, a point MAY carry workingRef, parseVerdict accepts the label
+    and the pipeline RESOLVES it to the GIVEN mark_working_blocks row into
+    mark_awards.working_ref (the model never mints ledger truth; an unmatched
+    echoed label = honest marking_output_invalid 502); arbitration: a citation
+    wins the row's working_ref, the run's own block shifts to the FIRST uncited
+    row (zero-orphan preserved, all-cited skip asserted); honest panels render
+    "this mark came from your working at W2". (2) attempt:
+    0027_mark-award-delta.sql — mark_awards.attempt_class text NULL CHECK
+    (full|partial|blank) + cache_hash text NULL, both nullable, no backfill; the
+    verdict's attempt stamps every run row; served additively on the Phase-2
+    ledger read. (3) stem: bounded 1200-char "context only — never a mark
+    source" section under the Context law; CROP_TRANSCRIPTION byte-identical;
+    grounding stays the mark_points rows (unknown-ref 502). (4) cache:
+    sha256(content bytes, ink-doc revision, mark_points fingerprint) stamps
+    every claimed row; identical re-marks SHORT-CIRCUIT to the standing award
+    (zero model calls, zero writes, receipt.cached true assembled from stored
+    rows); forceFresh additive optional on both request bodies = the explicit
+    mark-again affordance (hub re-tap / re-mark sends it). (5) doc: plan §1.9
+    residual row → OBSERVED (2026-11-04 capture pack). Gate-1: contracts
+    ADDITIVE OPTIONAL ONLY asserted by diff; hub mirror backward-compat asserted
+    by test; tutor prompt.ts / PROMPT_VERSION / packages/db beyond the two
+    columns / pdf-pane.tsx zero-touch asserted. Evidence: marking 44/44 (12
+    lane-e tests), awards + marking 56/56, api suite 2803 pass / 0 fail, tsc ×4
+    clean, hub mirror 30/30. OPERATOR MERGE WORD received ("merge it",
+    2026-11-05); MERGED as 3766358a (merge-method=merge, house title; the base
+    had moved to 97f7d818 — #802 landed mid-lane, merged clean over it with
+    zero file overlap); post-merge main CI SUCCESS (workflow run 42080177423:
+    verify + hub); lane branch deleted post-merge.

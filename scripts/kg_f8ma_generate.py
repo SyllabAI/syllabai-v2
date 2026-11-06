@@ -36,6 +36,10 @@ import kg_f8al_project as P  # noqa: E402  (repo's pipeline of record — law so
 BASIS_VOCAB = P.BASIS_VOCAB
 
 
+def _dt_now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
 def fail(msg: str) -> None:
     print(f"FAIL: {msg}", flush=True)
     sys.exit(2)
@@ -221,6 +225,307 @@ def install_web(
     )
 
 
+def install_web_merge(
+    slug: str,
+    concepts: dict,
+    edges: list,
+    lane_tag: str,
+    batch: str = "eighteen",
+    task: str = "T-KG-PRE-20",
+    exporter_ver: str = "v2.3",
+) -> None:
+    """T-KG-PRE-20 special case: MERGE-WITH, never overwrite.
+
+    For the one course whose spine already carries the operator-validated
+    T-C11 store (igcse-chemistry-19: 112 VALIDATED concept edges projected
+    to 145 served pre, plus 30 inferred-prototype pre tuples and 5 rel
+    tuples). The legacy prerequisites.json's ten keys ride along
+    byte-intact; the legacy served pre edges ride along byte-verbatim in
+    the spine; this fresh F8 web layer contributes only NEW in-order pairs.
+    Fail-closed laws before any byte is written:
+      M0 the legacy file is the pre-web generation (no concept web keys);
+      M1 the legacy layer re-derives the served pre set EXACTLY through the
+         documented derivation (validated concept edges AND direct-point
+         endpoint edges through concept anchors by the calibrated in-order
+         law, plus the inferredPrototypePre direct tuples) — if the store
+         is not fully derivable the merge aborts;
+      M2 F8 concept ids never collide with legacy concept ids;
+      M3 web hygiene (basis vocabulary, no self/dup/mutual, 0-unmapped
+         anchors) exactly as install_web;
+      M4 the export never REVERSES a served pair and every already-served
+         pair is counted (alreadyServed), never re-landed.
+    """
+    import json as _json
+
+    spine, point_ids, prefix = P.load_spine(slug)
+    pre_path = P.prereq_path(slug)
+    if not pre_path.exists():
+        fail(f"{slug}: merge-with requires the legacy prerequisites.json")
+    leg = P.load_json(pre_path)
+    # M0 — legacy generation shape
+    if "conceptWebPrerequisiteEdges" in leg:
+        fail(f"{slug}: legacy file already carries a concept web — merge-with refused")
+    served_pairs = {(e[0][2:], e[1][2:]) for e in spine["edges"] if e[2] == "pre"}
+    rel_pairs = {(e[0][2:], e[1][2:]) for e in spine["edges"] if e[2] == "rel"}
+
+    # M1 — legacy layer must re-derive the served set exactly
+    legacy_anchors: dict[str, list[str]] = {}
+    for con, binds in leg["conceptAnchors"].items():
+        resolved = []
+        for b in binds:
+            r = P.resolve_anchor(b, point_ids, prefix)
+            if r is None:
+                fail(f"{slug}: legacy concept {con} has an unresolvable anchor {b!r}")
+            resolved.append(r)
+        legacy_anchors[con] = resolved
+
+    def legacy_endpoint(x: str) -> list[str]:
+        if x in legacy_anchors:
+            return legacy_anchors[x]
+        r = P.resolve_anchor(x, point_ids, prefix)
+        if r is None:
+            fail(f"{slug}: legacy edge endpoint {x!r} does not resolve")
+        return [r]
+
+    cand = set()
+    for e in leg["validatedPrerequisiteEdges"]:
+        for a in legacy_endpoint(e["prerequisite"]):
+            for b in legacy_endpoint(e["dependent"]):
+                if a != b:
+                    cand.add((a, b))
+    order = {p["id"]: i for i, p in enumerate(spine["points"])}
+    legacy_derived = {(a, b) for a, b in cand if order[a] < order[b]} | {
+        (x[0][2:], x[1][2:]) for x in leg["inferredPrototypePre"]
+    }
+    if legacy_derived != served_pairs:
+        fail(
+            f"{slug}: legacy layer re-derivation {len(legacy_derived)} != served "
+            f"{len(served_pairs)} (sym {len(legacy_derived ^ served_pairs)}) — "
+            "store not fully derivable, merge aborted"
+        )
+
+    # M2 — concept-id namespace separation
+    collide = sorted(set(concepts) & set(legacy_anchors))
+    if collide:
+        fail(f"{slug}: F8 concept ids collide with legacy ids: {collide[:5]}")
+
+    # M3 — anchor resolution + web hygiene (same laws as install_web)
+    anchors: dict[str, list[str]] = {}
+    for con, binds in concepts.items():
+        resolved = []
+        for b in binds:
+            r = P.resolve_anchor(b, point_ids, prefix)
+            if r is None:
+                fail(f"{slug}: concept {con} has an unresolvable anchor {b!r}")
+            resolved.append(r)
+        anchors[con] = resolved
+    seen_pairs = set()
+    for e in edges:
+        if e[2] not in BASIS_VOCAB:
+            fail(f"{slug}: web basis {e[2]!r} outside the store vocabulary")
+        key = (e[0], e[1])
+        if key[0] == key[1] or key in seen_pairs or (key[1], key[0]) in seen_pairs:
+            fail(f"{slug}: self/dup/mutual web pair {key}")
+        if key[0] not in anchors or key[1] not in anchors:
+            fail(f"{slug}: web edge {key} references an unanchored/unknown concept")
+        seen_pairs.add(key)
+
+    # calibrated export (the law of record, imported)
+    web_edges = [
+        {"prerequisite": pr, "dependent": dp, "basis": basis}
+        for pr, dp, basis in edges
+    ]
+    pairs, stats = P.export_pairs(web_edges, anchors, order)
+
+    # M4 — merge laws
+    already_served = pairs & served_pairs
+    rev_conflicts = {(b, a) for a, b in pairs} & served_pairs
+    if rev_conflicts:
+        fail(
+            f"{slug}: F8 export reverses {len(rev_conflicts)} served pair(s), "
+            f"e.g. {sorted(rev_conflicts)[:3]} — merge refused"
+        )
+    rel_conflicts = {(b, a) for a, b in pairs} & rel_pairs
+    if rel_conflicts:
+        fail(
+            f"{slug}: F8 export reverses {len(rel_conflicts)} served rel pair(s) "
+            f"{sorted(rel_conflicts)[:3]} — merge refused"
+        )
+    new_pairs = pairs - served_pairs
+    if not new_pairs:
+        fail(f"{slug}: merge produced zero new pre pairs — nothing to land")
+
+    now = _dt_now()
+    merged_anchors = {**legacy_anchors, **anchors}
+    snap = {
+        "source": (
+            f"Two-layer merged prerequisite store (F8 rollout batch {batch}; "
+            f"{task}, lane {lane_tag}). Layer 1 — the operator-validated T-C11 "
+            f"settled store, byte-intact exactly as previously served "
+            f"(validatedPrerequisiteEdges with provenance verbatim, "
+            f"inferredPrototypePre/Rel, practicalEndpointRetarget), "
+            f"re-derivation-verified at merge time against the {len(served_pairs)} "
+            f"legacy served pre edges. Layer 2 — the AI concept web startup "
+            f"(F8 rollout batch {batch}; {task}, lane {lane_tag}): the "
+            f"AI_SUGGESTED, UNVALIDATED concept lattice authored by the F8 lane "
+            f"for this syllabus, every anchor machine-verified against the "
+            f"served spine's point ids (0 unmapped pass law) and exported "
+            f"in-order only by the calibrated law of scripts/kg_f8al_project.py, "
+            f"merged WITH — never over — layer 1 (the export is disjoint from "
+            f"the legacy served set up to counted alreadyServed collisions and "
+            f"never reverses a served pair). Bases mirror the operator-validated "
+            f"store vocabulary. The F8 layer's pairs are AI_SUGGESTED — "
+            f"unvalidated, labelled INFERRED PROTOTYPE by the renderer — while "
+            f"layer 1's validated edges keep their operator provenance; the "
+            f"named gate before any of this is treated as truth remains the SME "
+            f"validation pass."
+        ),
+        "generatedUtc": now,
+        "curriculumCode": leg.get("curriculumCode")
+        or spine["meta"].get("curriculumCode")
+        or spine["meta"].get("code"),
+        "hubCourseSlug": slug,
+        "conceptAnchors": {k: merged_anchors[k] for k in sorted(merged_anchors)},
+        "validatedPrerequisiteEdges": leg["validatedPrerequisiteEdges"],
+        "inferredPrototypePre": leg["inferredPrototypePre"],
+        "inferredPrototypeRel": leg["inferredPrototypeRel"],
+        "practicalEndpointRetarget": leg["practicalEndpointRetarget"],
+        "conceptWebPrerequisiteEdges": web_edges,
+        "mergeOf": {
+            "legacyLayer": {
+                "generatedUtc": leg.get("generatedUtc"),
+                "source": leg.get("source"),
+                "validatedEdges": len(leg["validatedPrerequisiteEdges"]),
+                "inferredPre": len(leg["inferredPrototypePre"]),
+                "inferredRel": len(leg["inferredPrototypeRel"]),
+                "servedPreReDerived": len(legacy_derived),
+                "reDerivationExact": True,
+            },
+            "f8Layer": {
+                "lane": lane_tag,
+                "concepts": len(anchors),
+                "webEdges": len(web_edges),
+                "law": "scripts/kg_f8al_project.py v1.0 export_pairs",
+            },
+        },
+        "counts": {
+            "anchoredConcepts": len(merged_anchors),
+            "conceptWebEdges": len(web_edges),
+            "validatedEdges": len(leg["validatedPrerequisiteEdges"]),
+            "inferredPre": len(leg["inferredPrototypePre"]),
+            "inferredRel": len(leg["inferredPrototypeRel"]),
+        },
+        "exportCounts": {
+            "candidates": stats["candidates"],
+            "selfLoops": stats["selfLoops"],
+            "reversedDropped": stats["reversedDropped"],
+            "preExported": stats["exported"],
+            "alreadyServed": len(already_served),
+            "newAppended": len(new_pairs),
+        },
+    }
+
+    # served spine: existing edges byte-verbatim (including the legacy
+    # interleaved hier/pre/rel layout), new pre appended at the END
+    new_edges = list(spine["edges"]) + [
+        [f"p:{a}", f"p:{b}", "pre"]
+        for (a, b) in sorted(new_pairs, key=lambda ab: (order[ab[0]], order[ab[1]]))
+    ]
+    new_spine = _json.loads(_json.dumps(spine))  # deep copy, structure preserved
+    new_spine["edges"] = new_edges
+    m = new_spine["meta"]
+    m["prerequisites"] = {
+        "source": (
+            f"Two-layer store: operator-validated T-C11 settled core "
+            f"({len(served_pairs)} pre edges, provenance in "
+            f"content/{slug}/prerequisites.json validatedPrerequisiteEdges, "
+            f"unchanged at this merge) + F8 AI concept-web augmentation "
+            f"(batch {batch}, {task}, lane {lane_tag}; {len(new_pairs)} new pre "
+            f"edges): AI_SUGGESTED — unvalidated, labelled INFERRED PROTOTYPE "
+            f"by the renderer, never in prereqValidated; the validated core "
+            f"keeps its operator provenance."
+        ),
+        "webEdges": len(web_edges),
+        "preEdges": len([e for e in new_edges if e[2] == "pre"]),
+        "legacyPreEdges": len(served_pairs),
+    }
+    m["exporter"] = (
+        "scripts/kg_export.py v1.6 web tier via scripts/kg_f8ma_generate.py "
+        f"{exporter_ver} (merge-with {lane_tag} F8 layer over the legacy T-C11 "
+        "store; legacy re-derivation verified exact; law imported from "
+        "scripts/kg_f8al_project.py)"
+    )
+    m["generatedUtc"] = now
+    et = collections.Counter(e[2] for e in new_edges)
+    m["counts"] = {
+        **m["counts"],
+        "edges": len(new_edges),
+        "byEdgeType": {"hier": et.get("hier", 0), "pre": et.get("pre", 0)},
+    }
+
+    # index sync (P5 law), single entry; serialization preserved
+    index_raw = (P.DATA / "index.json").read_text()
+    index = _json.loads(index_raw)
+    index_compact = "\n" not in index_raw.rstrip("\n")
+    row = next((r for r in index.get("courses", []) if r.get("slug") == slug), None)
+    if row is None:
+        fail(f"{slug}: not registered in index.json (P1 no-orphans)")
+    if row["counts"]["edges"] != len(spine["edges"]):
+        fail(
+            f"{slug}: index edges {row['counts']['edges']} != served "
+            f"{len(spine['edges'])} — index is stale before the run"
+        )
+    row["counts"]["edges"] = len(new_edges)
+
+    # final asserts BEFORE any write (tree law + endpoint law + append-only)
+    if et.get("hier", 0) != len(spine["nodes"]) - 1:
+        fail(f"{slug}: tree law violated: hier != nodes-1")
+    if new_edges[: len(spine["edges"])] != spine["edges"]:
+        fail(f"{slug}: existing edges were disturbed — append-only violated")
+    node_ids = {n["id"] for n in new_spine["nodes"]}
+    for e in new_edges[len(spine["edges"]):]:
+        if e[0] not in node_ids or e[1] not in node_ids:
+            fail(f"{slug}: pre endpoint missing from spine: {e}")
+    new_pre_only = [e for e in new_edges if e[2] == "pre"]
+    seen_all = set()
+    for a, b, _t in new_pre_only:
+        k = (a, b)
+        if k in seen_all or (b, a) in seen_all:
+            fail(f"{slug}: post-merge dup/mutual pre pair {k}")
+        seen_all.add(k)
+
+    spine_raw = P.spine_path(slug).read_text()
+    spine_compact = "\n" not in spine_raw.rstrip("\n")
+    pre_out = P.prereq_path(slug)
+    pre_out.parent.mkdir(parents=True, exist_ok=True)
+    pre_out.write_text(_json.dumps(snap, indent=2, ensure_ascii=False) + "\n")
+    if spine_compact:
+        P.spine_path(slug).write_text(
+            _json.dumps(new_spine, separators=(",", ":"), ensure_ascii=False)
+        )
+    else:
+        P.spine_path(slug).write_text(
+            _json.dumps(new_spine, indent=2, ensure_ascii=False) + "\n"
+        )
+    if index_compact:
+        (P.DATA / "index.json").write_text(
+            _json.dumps(index, separators=(",", ":"), ensure_ascii=False)
+        )
+    else:
+        (P.DATA / "index.json").write_text(
+            _json.dumps(index, indent=2, ensure_ascii=False) + "\n"
+        )
+    print(
+        f"OK merge-with {slug} ({lane_tag}): legacy {len(served_pairs)} pre "
+        f"byte-verbatim, F8 concepts {len(anchors)}, web {len(web_edges)}, "
+        f"pre exported {stats['exported']} (alreadyServed {len(already_served)}, "
+        f"new appended {len(new_pairs)}, reversed dropped "
+        f"{stats['reversedDropped']}, self-loops {stats['selfLoops']}), "
+        f"index synced {row['counts']['edges'] - len(new_pairs)} -> "
+        f"{row['counts']['edges']}, existing edges byte-verbatim"
+    )
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--course", required=True)
@@ -297,6 +602,109 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-21 (batch nineteen, the Edexcel science tranche 16):
+        # the biology family — the 4BI1 linear register (fresh web),
+        # both 4XBI1 modular units (renumbered derivatives of the 4BI1
+        # master lattice, derivation disclosed in the unit modules'
+        # docstrings) and the YBI11 IAL register — all four plain
+        # startup installs (the courses are web-less, 0 served pre,
+        # no legacy store — no merge case this batch).
+        biology_edx = {
+            "igcse-biology-19": ("f8bi_lattice_4bi1", "4BI1-F8"),
+            "igcse-biology-modular-24-unit-1": ("f8bi_lattice_4xbi1u1", "4XBI1U1"),
+            "igcse-biology-modular-24-unit-2": ("f8bi_lattice_4xbi1u2", "4XBI1U2"),
+            "ial-biology-18": ("f8bi_lattice_ybi11", "YBI11"),
+        }
+        if args.course in biology_edx:
+            mod, tag = biology_edx[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="nineteen", task="T-KG-PRE-21", exporter_ver="v2.4",
+            )
+            return
+        # T-KG-PRE-20 (batch eighteen, the Edexcel science tranche 15):
+        # the chemistry family — ial-chemistry-17 (YCH11 fresh web),
+        # both 4XCH1 modular units (renumbered derivatives of the 4CH1
+        # master lattice, derivation disclosed in the unit modules'
+        # docstrings), and the igcse-chemistry-19 legacy-T-C11 special
+        # case (MERGE-WITH, never overwrite — install_web_merge).
+        chemistry = {
+            "ial-chemistry-17": ("f8ch_lattice_ych11", "YCH11", "startup"),
+            "igcse-chemistry-modular-24-unit-1": ("f8ch_lattice_4xch1u1", "4XCH1U1", "startup"),
+            "igcse-chemistry-modular-24-unit-2": ("f8ch_lattice_4xch1u2", "4XCH1U2", "startup"),
+            "igcse-chemistry-19": ("f8ch_lattice_4ch1", "4CH1-F8", "merge"),
+        }
+        if args.course in chemistry:
+            mod, tag, mode = chemistry[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            if mode == "merge":
+                install_web_merge(
+                    args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                    batch="eighteen", task="T-KG-PRE-20", exporter_ver="v2.3",
+                )
+            else:
+                install_web(
+                    args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                    batch="eighteen", task="T-KG-PRE-20", exporter_ver="v2.3",
+                )
+            return
+        # T-KG-PRE-19 (batch seventeen, the Edexcel science tranche 14):
+        # the physics family — 4PH1 linear, both 4XPH1 modular units
+        # (renumbered derivatives of the 4PH1 master lattice, derivation
+        # disclosed in the unit modules' docstrings) and the YPH11 IAL
+        # register.
+        physics = {
+            "igcse-physics-19": ("f8ph_lattice_4ph1", "4PH1"),
+            "igcse-physics-modular-24-unit-1": ("f8ph_lattice_4xph1u1", "4XPH1U1"),
+            "igcse-physics-modular-24-unit-2": ("f8ph_lattice_4xph1u2", "4XPH1U2"),
+            "ial-physics-19": ("f8ph_lattice_wph11", "YPH11"),
+        }
+        if args.course in physics:
+            mod, tag = physics[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="seventeen", task="T-KG-PRE-19", exporter_ver="v2.2",
+            )
+            return
+        # T-KG-PRE-18 (batch sixteen, the religious-studies family
+        # tranche 13): CIE 0490 IGCSE.
+        religious_studies = {
+            "cie-igcse-religious-studies-23": ("f8rs_lattice_0490", "0490"),
+        }
+        if args.course in religious_studies:
+            mod, tag = religious_studies[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="sixteen", task="T-KG-PRE-18", exporter_ver="v2.1",
+            )
+            return
+        # T-KG-PRE-17 (batch fifteen, the history family tranche 12):
+        # CIE 0470 IGCSE, Edexcel 4HI1 IGCSE.
+        history = {
+            "cie-igcse-history-18": ("f8hi_lattice_0470", "0470"),
+            "igcse-history-17": ("f8hi_lattice_4hi1", "4HI1"),
+        }
+        if args.course in history:
+            mod, tag = history[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="fifteen", task="T-KG-PRE-17", exporter_ver="v2.0",
+            )
+            return
         # T-KG-PRE-16 (batch fourteen, the ICT family tranche 11):
         # CIE 0417 IGCSE, Edexcel 4IT1 IGCSE.
         ict = {

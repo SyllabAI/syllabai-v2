@@ -48,6 +48,7 @@
  * 404s honestly); a re-mark is a NEW job whose award writes are absorbed
  * by the once-only claim.
  */
+import { createHash } from "node:crypto";
 import {
   paperMarkPollResponseSchema,
   type MarkAwardWrite,
@@ -177,13 +178,26 @@ export interface MarkVerdictPoint {
   ref: string;
   awarded: boolean;
   comment: string;
+  /** T-MG-MARK-DELTA-1: the echoed evidence-citation label ("W2") when the
+   * point's decision rests on one of the learner's saved working blocks.
+   * Optional; resolved to the mark_working_blocks id by the pipeline (the
+   * model never mints ledger truth) — an echoed label with no matching
+   * given block is an honest marking_output_invalid. */
+  workingRef: string | null;
 }
+
+export type AttemptClass = "full" | "partial" | "blank";
 
 export interface MarkVerdict {
   chatMessage: string;
   reasoning: string;
   points: MarkVerdictPoint[];
   strategiesForImprovement: string[];
+  /** T-MG-MARK-DELTA-1: the attempt classification (the observed MG
+   * `attempt: "full"` field). Absent from the verdict = null (honest
+   * absence — the migration's nullable law); present but not in the enum
+   * is an honest marking_output_invalid. */
+  attempt: AttemptClass | null;
 }
 
 /** The honest parse: strip ONE surrounding code fence if present (models
@@ -229,7 +243,16 @@ export function parseVerdict(raw: string): MarkVerdict {
     if (typeof q.comment !== "string") {
       throw markingOutputInvalid(`verdict.points[${i}].comment must be a string`);
     }
-    return { ref: q.ref, awarded: q.awarded, comment: q.comment };
+    // T-MG-MARK-DELTA-1 citation law: workingRef is OPTIONAL — present must
+    // be a non-empty string (the echoed saved-block label); absent = null.
+    let workingRef: string | null = null;
+    if (q.workingRef !== undefined && q.workingRef !== null) {
+      if (typeof q.workingRef !== "string" || q.workingRef.trim().length === 0) {
+        throw markingOutputInvalid(`verdict.points[${i}].workingRef must be a non-empty string when present`);
+      }
+      workingRef = q.workingRef.trim();
+    }
+    return { ref: q.ref, awarded: q.awarded, comment: q.comment, workingRef };
   });
   if (
     !Array.isArray(strategies) ||
@@ -237,11 +260,21 @@ export function parseVerdict(raw: string): MarkVerdict {
   ) {
     throw markingOutputInvalid("verdict.strategiesForImprovement must be an array of strings");
   }
+  // T-MG-MARK-DELTA-1 attempt law: absent = null (honest absence); present
+  // must be one of the three observed classes — anything else is invalid.
+  let attempt: AttemptClass | null = null;
+  if (o.attempt !== undefined && o.attempt !== null) {
+    if (o.attempt !== "full" && o.attempt !== "partial" && o.attempt !== "blank") {
+      throw markingOutputInvalid("verdict.attempt must be one of full | partial | blank");
+    }
+    attempt = o.attempt;
+  }
   return {
     chatMessage,
     reasoning,
     points: cleaned,
     strategiesForImprovement: strategies as string[],
+    attempt,
   };
 }
 
@@ -264,7 +297,7 @@ export interface MarkRunResult {
   transcription: string;
   feedback: MarkAwardWrite["feedback"];
   awards: MarkAwardWrite[];
-  receipt: { emitted: number; suppressed: number; workingBlocks: number };
+  receipt: { emitted: number; suppressed: number; workingBlocks: number; cached?: boolean };
 }
 
 // ── the in-process job registry (the 202 + poll posture) ────────────────────
@@ -303,6 +336,9 @@ export class MarkJobRegistry {
           // the ASSEMBLED rows (the job's view of what was written) — the
           // per-award ledger ids are the CLAIM's gen_random_uuid() outputs,
           // served by the Phase-2 ledger read, never fabricated here.
+          // T-MG-MARK-DELTA-1: attemptClass + workingRefLabel ride the
+          // assembled view (the honest panel's citation/classification
+          // sources; the label is job-voiced, not persisted).
           awards: result.awards.map((a) => ({
             code: a.code,
             awarded: a.awarded,
@@ -311,6 +347,8 @@ export class MarkJobRegistry {
             ordinal: a.ordinal,
             markPointId: a.markPointId ?? null,
             page: a.page ?? null,
+            attemptClass: a.attemptClass ?? null,
+            workingRefLabel: a.workingRefLabel,
           })),
           receipt: result.receipt,
         });
@@ -385,31 +423,156 @@ export class PaperMarking {
   /**
    * The crop channel (plan §3.4 step 1): transcribe → doctrine-match →
    * assemble → write through the Phase-2 site. Throws PipelineError only
-   * (the registry maps everything else honestly).
+   * (the registry maps everything else honestly). T-MG-MARK-DELTA-1 cache
+   * law: the run's content hash ({crop bytes, ink-doc revision, mark_points
+   * version}) is computed first; an IDENTICAL re-mark short-circuits to the
+   * standing award (zero model calls, zero writes — receipt.cached), unless
+   * forceFresh (the explicit "mark again with AI" affordance).
    */
-  async markRegion(input: { learnerId: string; plan: MarkPlan; imageDataUrl: string }): Promise<MarkRunResult> {
+  async markRegion(input: {
+    learnerId: string;
+    plan: MarkPlan;
+    imageDataUrl: string;
+    forceFresh?: boolean;
+  }): Promise<MarkRunResult> {
     const { mimeType, base64 } = parseImageDataUrl(input.imageDataUrl);
+    const hash = await this.cacheHash(input.learnerId, input.plan, base64);
+    if (!input.forceFresh) {
+      const standing = await this.standingResult(input.learnerId, input.plan, hash);
+      if (standing) return standing;
+    }
     const transcription = await this.transcribe(input.plan.regionLabel, mimeType, base64);
     return this.matchAndWrite({
       learnerId: input.learnerId,
       plan: input.plan,
       transcription,
+      cacheHash: hash,
       working: { kind: "ink", content: this.inkBlockContent(input.plan, transcription, mimeType, base64.length) },
     });
   }
 
   /**
    * The typed channel (plan §3.4): the learner's typed answer IS the
- * transcription — no vision step; the same doctrine-match + ledger write
-   * runs beneath it. The answerHtml rides the working block verbatim.
+   * transcription — no vision step; the same doctrine-match + ledger write
+   * runs beneath it. The answerHtml rides the working block verbatim. The
+   * cache law mirrors the crop channel: content = the answerHtml bytes.
    */
-  async regradePart(input: { learnerId: string; plan: MarkPlan; answerHtml: string }): Promise<MarkRunResult> {
+  async regradePart(input: { learnerId: string; plan: MarkPlan; answerHtml: string; forceFresh?: boolean }): Promise<MarkRunResult> {
+    const hash = await this.cacheHash(input.learnerId, input.plan, input.answerHtml);
+    if (!input.forceFresh) {
+      const standing = await this.standingResult(input.learnerId, input.plan, hash);
+      if (standing) return standing;
+    }
     return this.matchAndWrite({
       learnerId: input.learnerId,
       plan: input.plan,
       transcription: input.answerHtml,
+      cacheHash: hash,
       working: { kind: "text", content: { answerHtml: input.answerHtml } },
     });
+  }
+
+  // ── the re-mark cache (T-MG-MARK-DELTA-1, the cost law) ──────────────────
+
+  /** The run's content hash: sha256 over {content bytes, ink-doc revision,
+   * mark_points version}. The definition fingerprint (over the resolved
+   * rows' identity + text + weights) invalidates the cache when the scheme
+   * changes; the ink revision invalidates it when the learner's annotation
+   * layer moved under the crop. */
+  private async cacheHash(learnerId: string, plan: MarkPlan, content: string): Promise<string> {
+    const revision = await this.inkRevision(learnerId, plan.resolution);
+    const pointsFingerprint = createHash("sha256")
+      .update(
+        JSON.stringify(
+          plan.definitions.map((d) => ({
+            id: d.id,
+            ref: d.ref,
+            ordinal: d.ordering,
+            text: d.text,
+            marks: d.marks,
+            acceptanceCriteria: d.acceptance_criteria ?? null,
+          })),
+        ),
+      )
+      .digest("hex");
+    return createHash("sha256")
+      .update(
+        JSON.stringify({
+          v: 1,
+          content: createHash("sha256").update(content, "utf8").digest("hex"),
+          inkRevision: revision,
+          markPoints: pointsFingerprint,
+        }),
+      )
+      .digest("hex");
+  }
+
+  /** The learner's annotation-ink doc revision for this paper (the
+   * learner_pdf_drawings LWW revision; null = no ink doc — "no ink yet" is
+   * a cache key state of its own). */
+  private async inkRevision(learnerId: string, resolution: ResolvedRegion): Promise<number | null> {
+    const rows = (await this.sql`
+      select revision
+      from learner_pdf_drawings
+      where learner_id = ${learnerId}
+        and document_ref_type = ${resolution.documentRefType}
+        and document_ref_id = ${resolution.documentRefId}
+      limit 1
+    `) as unknown as Array<{ revision: number }>;
+    return rows.length > 0 ? (rows[0]!.revision ?? null) : null;
+  }
+
+  /** The standing award for an identical re-mark: the rows whose cache_hash
+   * matches for (learner, doc, region) — rebuilt into the run result with
+   * receipt.cached (zero writes: emitted 0, suppressed 0, blocks 0). The
+   * citation LABEL is not persisted (the ledger row keeps the resolved
+   * uuid pointer) — cache-served assembled rows carry no workingRefLabel,
+   * the honest absence. */
+  private async standingResult(learnerId: string, plan: MarkPlan, hash: string): Promise<MarkRunResult | null> {
+    const rows = (await this.sql`
+      select a.code, a.awarded, a.score, a.max_score, a.ordinal,
+             a.mark_point_id, a.page, a.pipeline_version, a.feedback, a.attempt_class
+      from mark_awards a
+      where a.learner_id = ${learnerId}
+        and a.document_ref_type = ${plan.resolution.documentRefType}
+        and a.document_ref_id = ${plan.resolution.documentRefId}
+        and a.region_key = ${plan.resolution.regionKey}
+        and a.cache_hash = ${hash}
+      order by a.ordinal asc, a.created_at asc, a.id asc
+    `) as unknown as Array<{
+      code: string;
+      awarded: boolean;
+      score: number;
+      max_score: number;
+      ordinal: number;
+      mark_point_id: string | null;
+      page: number | null;
+      pipeline_version: string;
+      feedback: MarkAwardWrite["feedback"];
+      attempt_class: string | null;
+    }>;
+    if (rows.length === 0) return null;
+    const feedback = rows[0]!.feedback;
+    return {
+      pipelineVersion: rows[0]!.pipeline_version,
+      documentRefType: plan.resolution.documentRefType,
+      documentRefId: plan.resolution.documentRefId,
+      regionKey: plan.resolution.regionKey,
+      transcription: feedback.attempt,
+      feedback,
+      awards: rows.map((r) => ({
+        code: r.code,
+        awarded: r.awarded,
+        score: r.score,
+        maxScore: r.max_score,
+        ordinal: r.ordinal,
+        markPointId: r.mark_point_id,
+        page: r.page,
+        feedback,
+        attemptClass: (r.attempt_class as MarkAwardWrite["attemptClass"]) ?? null,
+      })),
+      receipt: { emitted: 0, suppressed: 0, workingBlocks: 0, cached: true },
+    };
   }
 
   // ── steps 3-5, shared by both channels ────────────────────────────────────
@@ -418,20 +581,26 @@ export class PaperMarking {
     learnerId: string;
     plan: MarkPlan;
     transcription: string;
+    cacheHash: string | null;
     working: { kind: "ink" | "text" | "structure"; content: unknown };
   }): Promise<MarkRunResult> {
     const { plan, transcription } = input;
 
     // step 1 (context seam): the learner's prior working blocks for THIS
-    // region only — the scoping law at the context seam (pin b).
-    const context = await this.workingContext(
+    // region only — the scoping law at the context seam (pin b). Lane E:
+    // the lines are labeled W1, W2, ... in order (the evidence-citations
+    // law's given labels) and the rows ride back for label → id resolution.
+    const working = await this.workingContext(
       input.learnerId,
       plan.resolution.documentRefType,
       plan.resolution.documentRefId,
       plan.resolution.regionKey,
     );
 
-    // step 4: doctrine-match against the definition rows.
+    // step 4: doctrine-match against the definition rows. Lane E: the
+    // question stem rides as CONTEXT ONLY (the prompt's context law — the
+    // grounding stays the listed mark_points rows), bounded at 1200 chars.
+    const stem = plan.resolution.stem ? plan.resolution.stem.slice(0, 1200) : null;
     if (this.markingLlm === null) throw markingUnavailable();
     const verdictRaw = await this.markingLlm
       .generate({
@@ -444,7 +613,8 @@ export class PaperMarking {
             marks: d.marks,
             acceptanceCriteria: d.acceptance_criteria ?? null,
           })),
-          workingContext: context,
+          stemContext: stem,
+          workingContext: working.lines,
           transcription,
         }),
         temperature: 0,
@@ -469,6 +639,11 @@ export class PaperMarking {
       );
     }
 
+    // the citation-join law (T-MG-MARK-DELTA-1): an echoed workingRef label
+    // is resolved to the GIVEN context block it names (W{n} → rows[n-1]) —
+    // the model never mints ledger truth; an echoed label with no matching
+    // given block is an honest marking_output_invalid (the same posture as
+    // an unknown scheme ref).
     const joined = verdict.points.map((p, ordinal) => {
       const row = plan.definitions[ordinal]!; // the equality check above guarantees it
       const expectedRef = row.ref ?? `p${row.ordering + 1}`;
@@ -477,7 +652,19 @@ export class PaperMarking {
           `verdict point ${ordinal} echoes ref ${p.ref} but the scheme lists ${expectedRef}`,
         );
       }
-      return { p, row, ordinal };
+      let citation: { id: string; label: string } | null = null;
+      if (p.workingRef !== null) {
+        const match = /^W([1-9]\d*)$/.exec(p.workingRef);
+        const idx = match ? Number(match[1]) - 1 : -1;
+        const block = idx >= 0 ? working.rows[idx] : undefined;
+        if (!block) {
+          throw markingOutputInvalid(
+            `verdict point ${ordinal} cites workingRef ${p.workingRef} but no such working block was given`,
+          );
+        }
+        citation = { id: block.id, label: p.workingRef };
+      }
+      return { p, row, ordinal, citation };
     });
 
     // step 5: assemble the award rows — ledger truth from the DEFINITION
@@ -502,7 +689,16 @@ export class PaperMarking {
       strategiesForImprovement: verdict.strategiesForImprovement,
     };
 
-    const awardWrites: MarkAwardWrite[] = joined.map(({ p, row, ordinal }, i) => {
+    // the run's own region-grain evidence block (transcription + crop
+    // provenance) rides the FIRST row WITHOUT a citation — a cited row's
+    // working_ref points at the cited PRIOR block (the more specific
+    // evidence), and the block insert is skipped for it (the publisher's
+    // citation arbitration; zero-orphan by construction). When EVERY row
+    // cites a prior block, the run's own block honestly skips — the
+    // transcription still lives in feedback.thoughtProcess.
+    const carrier = joined.findIndex(({ citation }) => citation === null);
+
+    const awardWrites: MarkAwardWrite[] = joined.map(({ p, row, ordinal, citation }, i) => {
       return {
         code: row.ref ?? `P${row.ordering + 1}`,
         awarded: p.awarded,
@@ -512,23 +708,29 @@ export class PaperMarking {
         markPointId: row.id,
         page: plan.page,
         feedback,
-        // ONE working block per marking run — the evidence is REGION-grain
-        // (the crop/transcription belongs to the region, not to one point);
-        // it rides the FIRST assembled row. A suppressed re-fire (row 0's
-        // claim lost) writes NO block — the once-only ordering of the
-        // Phase-2 publisher handles it.
-        working: i === 0 ? input.working : undefined,
+        attemptClass: verdict.attempt,
+        workingRefCitation: citation?.id ?? null,
+        workingRefLabel: citation?.label,
+        // ONE working block per marking run (unless every row cites a prior
+        // block) — the evidence is REGION-grain (the crop/transcription
+        // belongs to the region, not to one point); a suppressed re-fire
+        // (the carrier row's claim lost) writes NO block — the once-only
+        // ordering of the Phase-2 publisher handles it.
+        working: i === carrier ? input.working : undefined,
       };
     });
 
     // step 5 (the write site of record): the Phase-2 bridge + the DC-7
     // claim-before-write once-only publisher — "Phase 4's pipeline writes
     // here" (plan §3.2). Suppressed re-fires are counted, never errors.
+    // T-MG-MARK-DELTA-1: the run's cache hash stamps every claimed row
+    // (the re-mark cache's standing-award key).
     const receipt = await this.awards.recordRegionAwards({
       learnerId: input.learnerId,
       resolution: plan.resolution,
       pipelineVersion: PIPELINE_VERSION,
       awards: awardWrites,
+      cacheHash: input.cacheHash,
     });
 
     return {
@@ -621,14 +823,17 @@ export class PaperMarking {
   }
 
   /** mark_working_blocks for (learner, doc, region) — the plan §3.4 step 1
-   * context carry. Deterministic: created_at asc, id asc, capped at 10
-   * (the prompt is context, not a transcript). */
+   * context carry. T-MG-MARK-DELTA-1: the lines are labeled W1, W2, ... in
+   * order (the evidence-citations law's GIVEN labels — the verdict may cite
+   * only these), and the rows ride back for the label → block-id resolution
+   * (the model never mints ledger truth). Deterministic: created_at asc,
+   * id asc, capped at 10 (the prompt is context, not a transcript). */
   private async workingContext(
     learnerId: string,
     documentRefType: string,
     documentRefId: string,
     regionKey: string,
-  ): Promise<string[]> {
+  ): Promise<{ lines: string[]; rows: WorkingBlockRow[] }> {
     const rows = (await this.sql`
       select id, kind, content, created_at
       from mark_working_blocks
@@ -639,10 +844,13 @@ export class PaperMarking {
       order by created_at asc, id asc
       limit 10
     `) as unknown as WorkingBlockRow[];
-    return rows.map((r) => {
-      const content = typeof r.content === "string" ? r.content : JSON.stringify(r.content ?? null);
-      return `${r.created_at} (${r.kind}): ${content.slice(0, 400)}`;
-    });
+    return {
+      rows,
+      lines: rows.map((r, i) => {
+        const content = typeof r.content === "string" ? r.content : JSON.stringify(r.content ?? null);
+        return `W${i + 1} — ${r.created_at} (${r.kind}): ${content.slice(0, 400)}`;
+      }),
+    };
   }
 
   /** The ink working-block content — the evidence pointer's payload law:

@@ -30,21 +30,13 @@
 import { useSyncExternalStore } from "react";
 import { api, getToken } from "./api";
 import { fetchPilotInfo, PILOT_COURSE_SLUG } from "./attempt-bridge";
+import { readRosterSnapshot } from "./my-subjects";
 
-/** The roster read the selection law uses — the same localStorage the
- *  useMySubjects store owns (read directly: this module is a plain async
- *  store, not a hook tree). */
+/** The roster read the selection law uses — the in-memory store of record
+ *  the useMySubjects store owns (read via its plain snapshot accessor:
+ *  this module is a plain async store, not a hook tree). */
 function rosterSlugs(): string[] {
-  try {
-    const raw = window.localStorage.getItem("syllabai.mySubjects.v1");
-    if (!raw) return [];
-    const parsed: unknown = JSON.parse(raw);
-    return Array.isArray(parsed)
-      ? parsed.filter((s): s is string => typeof s === "string" && s.length > 0)
-      : [];
-  } catch {
-    return [];
-  }
+  return readRosterSnapshot();
 }
 import type {
   LearnerKnowledgeGraphView,

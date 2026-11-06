@@ -1,8 +1,8 @@
 /**
- * T-TIER1 store law tests — the account-backed last-opened pointer and
- * self-marked mock tallies (frontend deep-audit Tier 1, operator order
- * 2026-11-03: "things that are localStorage-only, make them saved to
- * account").
+ * T-TIER1 → T-ACCOUNT-ONLY run-001 store law tests — the account-only
+ * last-opened pointer and self-marked mock tallies (operator order
+ * 2026-11-05: "remove device-local things completely — every single thing
+ * must be saved in account").
  *
  * Pinned here (pure-module, per the answer-format.test.ts law): the
  * last-opened record validation + no-op law, the pathname→kind mapping,
@@ -11,35 +11,19 @@
  * slice/cap/dedupe laws, and the UNION MERGE decision (never loses a
  * record from either side, capped 20, diverged = what re-mirrors up).
  *
- * The localStorage surface is stubbed per test (the
- * test-builder-access.test.ts pattern — the module reads
- * `window.localStorage`, so the stub is installed before the import and
- * reset per test).
+ * The stores are IN-MEMORY now (the account is the only durable store);
+ * the window stub carries the event surface the writes dispatch on, and
+ * the per-test isolation rides the __resetForTests seams. The localStorage
+ * device records these stores retired are the ENGINE's adoption law —
+ * pinned in the account-docs fixtures.
  *
  * Run: bun test apps/hub/src/lib/tier1-stores.test.ts
  */
 import { afterEach, describe, expect, test } from "bun:test";
 
-// ── a minimal localStorage stub (per-test isolation) ────────────────────────
-function makeStorageStub(): Storage {
-  let map = new Map<string, string>();
-  return {
-    get length() {
-      return map.size;
-    },
-    clear: () => map.clear(),
-    getItem: (k: string) => (map.has(k) ? map.get(k)! : null),
-    key: (i: number) => [...map.keys()][i] ?? null,
-    removeItem: (k: string) => map.delete(k),
-    setItem: (k: string, v: string) => map.set(k, String(v)),
-  } as Storage;
-}
-
-const stub = makeStorageStub();
-// the store's write path dispatches CustomEvents on window (same-tab
+// the stores' write path dispatches CustomEvents on window (same-tab
 // reactivity) — the stub carries the minimal event surface the laws touch
 (globalThis as { window?: unknown }).window = {
-  localStorage: stub,
   dispatchEvent: () => true,
   addEventListener: () => {},
   removeEventListener: () => {},
@@ -48,7 +32,7 @@ const stub = makeStorageStub();
   constructor(public type: string) {}
 };
 
-const { recordLastOpened, resourceFromPathname, reconcileLastOpened } = await import(
+const { recordLastOpened, resourceFromPathname, reconcileLastOpened, readLastOpened, __resetLastOpenedForTests } = await import(
   "./last-opened"
 );
 const {
@@ -56,13 +40,12 @@ const {
   saveMockResult,
   clearMockResults,
   mergeMockResults,
+  __resetMockResultsForTests,
 } = await import("./mock-results");
 
-const LO_KEY = "syllabai.lastOpened.v1";
-const MR_KEY = "syllabai.mockResults.v1";
-
 afterEach(() => {
-  stub.clear();
+  __resetLastOpenedForTests();
+  __resetMockResultsForTests();
 });
 
 // ── last-opened: the record law ─────────────────────────────────────────────
@@ -70,34 +53,33 @@ afterEach(() => {
 describe("last-opened record law", () => {
   test("recordLastOpened writes the real navigation only (slug + kind + ts)", () => {
     recordLastOpened("igcse-chemistry-19", "exam-questions");
-    const raw = stub.getItem(LO_KEY);
-    expect(raw).not.toBeNull();
-    const parsed = JSON.parse(raw!);
-    expect(parsed.slug).toBe("igcse-chemistry-19");
-    expect(parsed.resource).toBe("exam-questions");
-    expect(typeof parsed.ts).toBe("number");
+    const parsed = readLastOpened();
+    expect(parsed).not.toBeNull();
+    expect(parsed!.slug).toBe("igcse-chemistry-19");
+    expect(parsed!.resource).toBe("exam-questions");
+    expect(typeof parsed!.ts).toBe("number");
   });
 
   test("re-recording the SAME surface is a no-op (ts survives)", () => {
     recordLastOpened("igcse-chemistry-19", "hub");
-    const first = JSON.parse(stub.getItem(LO_KEY)!);
+    const first = readLastOpened();
     recordLastOpened("igcse-chemistry-19", "hub");
-    const second = JSON.parse(stub.getItem(LO_KEY)!);
-    expect(second.ts).toBe(first.ts);
+    const second = readLastOpened();
+    expect(second!.ts).toBe(first!.ts);
   });
 
   test("re-recording a DIFFERENT surface refreshes the pointer", () => {
     recordLastOpened("igcse-chemistry-19", "hub");
     recordLastOpened("igcse-physics-25", "flashcards");
-    const parsed = JSON.parse(stub.getItem(LO_KEY)!);
-    expect(parsed.slug).toBe("igcse-physics-25");
-    expect(parsed.resource).toBe("flashcards");
+    const parsed = readLastOpened();
+    expect(parsed!.slug).toBe("igcse-physics-25");
+    expect(parsed!.resource).toBe("flashcards");
   });
 
   test("a corrupted record reads as empty (never throws)", () => {
-    stub.setItem(LO_KEY, "{not json");
-    expect(reconcileLastOpened(null, null)).toEqual({ action: "none", entry: null });
-    stub.setItem(LO_KEY, JSON.stringify({ slug: 4, resource: "hub" }));
+    // the pure decision treats an absent local as absent — the malformed-
+    // shape drop is the parse law (parseEntry) at the adoption boundary,
+    // not the pure decision's business
     expect(reconcileLastOpened(null, null)).toEqual({ action: "none", entry: null });
   });
 

@@ -3,42 +3,60 @@
 /**
  * My Subjects — the student's personally added courses (SME flow step 1).
  *
- * The demo has no auth, so the roster persists in localStorage under a
- * versioned key. Slugs are validated against the course registry at read
- * time by the caller (the dashboard filters unknown slugs out).
+ * T-ACCOUNT-ONLY run-001 (operator order 2026-11-05: "remove device-local
+ * things completely — every single thing must be saved in account"): the
+ * roster lives in module memory and the ACCOUNT (GET/PUT
+ * /api/v1/learners/me/courses) is its only durable store — the T-TEACH-001
+ * write-through law with the server-wins reconcile. The retired localStorage
+ * record (syllabai.mySubjects.v1) is adopted ONCE per tab: it seeds the
+ * memory roster (so the reconcile's server-empty seed PUT migrates it) and
+ * the device key is REMOVED after the first successful reconcile. Slugs are
+ * validated against the course registry at read time by the caller (the
+ * dashboard filters unknown slugs out).
  *
- * Implementation note: useSyncExternalStore keeps the roster reactive
- * across tabs (storage event) and across hook instances in this tab
- * (custom event) without setState-in-effect cascades.
+ * Implementation note: useSyncExternalStore keeps the roster reactive across
+ * hook instances in this tab (custom event); cross-tab sync is the ACCOUNT
+ * (each tab's PUT, each tab's reconcile).
  */
 import { useCallback, useEffect, useSyncExternalStore } from "react";
 import { ApiError, api } from "@/lib/api";
 import { readIdentitySnapshot, useIdentity } from "@/lib/identity";
 
-const KEY = "syllabai.mySubjects.v1";
+const KEY = "syllabai.mySubjects.v1"; // RETIRED (legacy adoption pin)
 export const MY_SUBJECTS_EVENT = "syllabai:my-subjects-changed";
 
 const EMPTY: string[] = [];
 
-function readSlugs(): string[] {
+// ── the in-memory roster of record + the one-time legacy adoption ─────────
+let roster: string[] = EMPTY;
+let snapshot: string[] = EMPTY;
+let legacyKeyPresent = false;
+
+if (typeof window !== "undefined") {
   try {
     const raw = window.localStorage.getItem(KEY);
-    if (!raw) return EMPTY;
-    const parsed: unknown = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return EMPTY;
-    return parsed.filter((s): s is string => typeof s === "string" && s.length > 0);
+    if (raw) {
+      const parsed: unknown = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        const slugs = parsed.filter((s): s is string => typeof s === "string" && s.length > 0);
+        if (slugs.length > 0) {
+          roster = slugs;
+          snapshot = slugs;
+          legacyKeyPresent = true;
+        }
+      }
+    }
   } catch {
-    return EMPTY;
+    // corrupt record → the account reconcile decides alone
   }
 }
 
-// getSnapshot must return a referentially stable value between store changes
-let snapshot: string[] = EMPTY;
+function readSlugs(): string[] {
+  return roster;
+}
+
 function getSnapshot(): string[] {
-  const next = readSlugs();
-  if (next.length !== snapshot.length || next.some((s, i) => s !== snapshot[i])) {
-    snapshot = next;
-  }
+  if (roster !== snapshot) snapshot = roster;
   return snapshot;
 }
 function getServerSnapshot(): string[] {
@@ -46,21 +64,23 @@ function getServerSnapshot(): string[] {
 }
 
 function writeSlugs(slugs: string[]) {
-  try {
-    window.localStorage.setItem(KEY, JSON.stringify(slugs));
-  } catch {
-    // storage full / private mode — roster just won't persist
-  }
+  roster = slugs;
+  snapshot = slugs;
   window.dispatchEvent(new CustomEvent(MY_SUBJECTS_EVENT));
 }
 
 function subscribe(onChange: () => void) {
   window.addEventListener(MY_SUBJECTS_EVENT, onChange);
-  window.addEventListener("storage", onChange);
   return () => {
     window.removeEventListener(MY_SUBJECTS_EVENT, onChange);
-    window.removeEventListener("storage", onChange);
   };
+}
+
+/** Plain (non-hook) read of the current roster — for plain async stores
+ *  (dashboard-core's selection law) that cannot mount hooks. The roster is
+ *  the in-memory store of record (T-ACCOUNT-ONLY run-001). */
+export function readRosterSnapshot(): string[] {
+  return roster;
 }
 
 export interface MySubjects {
@@ -113,8 +133,11 @@ export function useMySubjects(): MySubjects {
 // online").
 //
 // Law of record:
-//  - The localStorage roster stays the UI truth (reactive, instant, works
-//    signed-out exactly as before).
+//  - The roster is the module memory (reactive, instant, works signed-out
+//    exactly as before). T-ACCOUNT-ONLY run-001 re-words the T-TEACH-001
+//    text ("the localStorage roster stays the UI truth"): the device
+//    record is now a one-time adoption seed and the ACCOUNT is the only
+//    durable store — the memory cache law itself is unchanged.
 //  - Signed in, every LOCAL write is mirrored to core as an idempotent
 //    full-set PUT (debounced per tick to coalesce bursts); a failed PUT
 //    leaves the local roster untouched (cache law) and the next write or
@@ -216,6 +239,7 @@ function clearRetryTimer(): void {
 function noteSyncOk(): void {
   clearRetryTimer();
   setSyncState(reduceCoursesSyncState(syncState, { type: "ok" }));
+  retireLegacyRosterKey(); // a successful server contact ends the device record
 }
 
 function noteSyncError(err: unknown): void {
@@ -244,6 +268,23 @@ function noteSignedOut(): void {
  *  response applies only if the acquiring account still holds the session
  *  (the old effect-scoped `cancelled` flag, generalized to mid-flight
  *  account switches). One reconcile at a time (single-flight). */
+/** The one-time legacy adoption's retirement: the device record is removed
+ *  after the FIRST successful server contact (the memory roster — seeded
+ *  from it or mirrored from the server — is the store now). */
+function retireLegacyRosterKey(): void {
+  if (!legacyKeyPresent || typeof window === "undefined") return;
+  try {
+    window.localStorage.removeItem(KEY);
+  } catch {
+    // best-effort — the memory roster already owns the data
+  }
+  legacyKeyPresent = false;
+}
+
+/** The account the in-tab roster currently mirrors (the cross-account
+ *  guard: a stale roster from account A never seeds account B). */
+let syncedForEmail: string | null = null;
+
 async function reconcileOnce(reason: string): Promise<void> {
   const identity = readIdentityForSync();
   if (!identity) return; // signed out — local-only mode, no core contact
@@ -252,6 +293,13 @@ async function reconcileOnce(reason: string): Promise<void> {
   try {
     const view = await api.myCourses();
     if (readIdentityForSync()?.email !== identity.email) return; // account switched mid-flight
+    if (syncedForEmail !== identity.email) {
+      // fresh acquisition: a stale in-tab roster from ANOTHER account is
+      // cleared (the legacy seed is exempt — its one-time migration IS the
+      // point of this reconcile); the server decision below then applies
+      if (!legacyKeyPresent && roster.length > 0) writeSlugs([]);
+      syncedForEmail = identity.email;
+    }
     const serverSlugs = view.courses.map((c) => c.slug);
     const localSlugs = readSlugs();
     const sameSet =

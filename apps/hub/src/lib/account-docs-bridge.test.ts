@@ -1,14 +1,19 @@
 /**
- * account-docs-bridge fixtures — T-AUDIT-TIER1 run-003.
+ * account-docs-bridge fixtures — T-AUDIT-TIER1 run-003 → T-ACCOUNT-ONLY
+ * run-001.
  *
  * A FAKE thread store (the apply→mirror chain a real store runs: commit →
- * emit → the persist tail) exercises the FULL decision tree: adoption,
- * the foreign re-base laws, the conservative union both ways, the
- * one-intent-one-PUT law, the caps, the malformed-input drop, the echo
- * guard and the pre-hydration posture. The engine is REAL (its ./api is
+ * emit → the persist tail) exercises the FULL decision tree of the
+ * account-only world: the null-doc mirror-up, the conservative union both
+ * ways, the one-intent-one-PUT law, the caps, the malformed-input drop, the
+ * echo guard and the pre-hydration posture. The owner-tag side-law is
+ * RETIRED (no device pool exists to tag, adopt or re-base — the account
+ * switch resets the engine AND the stores' memory caches), so the foreign
+ * re-base fixtures are gone with it. The engine is REAL (its ./api is
  * the same mock.module the engine fixtures install — re-declared here so
  * the suites stay isolated per-process). bun has no DOM: the fixture
- * installs the `window.localStorage` the owner-tag side-law reads.
+ * installs the `window.localStorage` the engine's legacy-retirement paths
+ * tolerate.
  */
 import { beforeEach, afterEach, describe, expect, test } from "bun:test";
 import type { WorkspaceDoc } from "@syllabai/contracts";
@@ -44,10 +49,6 @@ api.putWorkspaceDoc = async (key: string, value: unknown): Promise<WorkspaceDoc>
 const {
   mirrorThreadState,
   bridgeThreadStore,
-  readPoolOwner,
-  stampPoolOwner,
-  ownerTagKey,
-  poolAdoptable,
   mergeThreadLists,
   sameIdStamp,
   isBridgedThread,
@@ -61,28 +62,26 @@ const { __seedAccountDocsForTests, __flushAllForTests, resetAccountDocs, readDoc
 type BT = { id: string; updatedAt?: number; messages?: unknown[] };
 
 const DOC = "tutor-threads";
-const LOCAL_KEY = "syllabai.tutor.threads.v1";
 const ME = "me@example.edu";
 
 let hydratedImpl: () => boolean = () => false;
 let emailImpl: () => string | null = () => ME;
 let liveUnregister: (() => void) | null = null;
 
-/** A fake store: `initial` is the device-local pool the store LOADS with
- *  (the real stores' load()); the bridge REGISTERS with it — the
+/** A fake store: `initial` is the in-memory pool the store holds (the
+ *  account-only world's module memory); the bridge REGISTERS with it — the
  *  registration-time evaluation is part of the law (a store whose doc
  *  already hydrated converges at registration, exactly like the real
- *  surfaces do on first visit). setLocal is the device-local write
- *  (mirrors like the real persist tail does, synchronously — the real
- *  one is 400ms-debounced but the ORDER of the echoes is what the guard
- *  law cares about); apply is the remote-driven mutation (also mirrors,
- *  like the real commit chain). */
+ *  surfaces do on first visit). setLocal is the in-memory write (mirrors
+ *  like the real persist tail does, synchronously — the real one is
+ *  400ms-debounced but the ORDER of the echoes is what the guard law cares
+ *  about); apply is the remote-driven mutation (also mirrors, like the real
+ *  commit chain). */
 function makeFakeStore(initial: BT[] = []) {
   liveUnregister?.(); // never two live bridges in one process
   let threads: BT[] = initial;
   let applyCalls = 0;
   const unregister = bridgeThreadStore<BT[], BT>({
-    localKey: LOCAL_KEY,
     docKey: DOC,
     maxThreads: 40,
     maxMessages: 200,
@@ -132,14 +131,6 @@ afterEach(() => {
 });
 
 describe("account-docs-bridge", () => {
-  test("the owner-tag helpers ride the device localStorage under <localKey>:owner", () => {
-    expect(ownerTagKey(LOCAL_KEY)).toBe(`${LOCAL_KEY}:owner`);
-    expect(poolAdoptable(LOCAL_KEY)).toBe(true);
-    stampPoolOwner(LOCAL_KEY, "a@x");
-    expect(readPoolOwner(LOCAL_KEY)).toBe("a@x");
-    expect(poolAdoptable(LOCAL_KEY)).toBe(false);
-  });
-
   test("mergeThreadLists: newer wins, tie → server, newest-first, malformed dropped", () => {
     const server = [t("s1", 10, ["sv"]), t("s2", 5)];
     const local = [t("s1", 20, ["lv"]), t("s3", 7), null as unknown as BT];
@@ -174,7 +165,7 @@ describe("account-docs-bridge", () => {
     );
   });
 
-  test("pre-hydration the mirror is a total no-op (device-local stays device-local)", () => {
+  test("pre-hydration the mirror is a total no-op (the in-memory pool stays put)", () => {
     const store = makeFakeStore();
     store.setLocal([t("t1", 5)]);
     expect(readDoc(DOC)).toBeUndefined();
@@ -182,38 +173,22 @@ describe("account-docs-bridge", () => {
     store.unregister();
   });
 
-  test("null doc + adoptable local pool → the pool ADOPTS (mirror up, one PUT)", async () => {
+  test("null doc + a non-empty in-memory pool → mirror up, ONE PUT", async () => {
     hydratedImpl = () => true;
     __seedAccountDocsForTests({}); // hydrated, memory empty
-    const store = makeFakeStore([t("t1", 5, ["hello"])]); // loads → REGISTRATION adopts
+    const store = makeFakeStore([t("t1", 5, ["hello"])]); // REGISTRATION mirrors up
     await __flushAllForTests();
-    expect(readPoolOwner(LOCAL_KEY)).toBe(ME);
     expect(putCalls).toHaveLength(1);
     expect(putCalls[0].value).toEqual({ threads: [t("t1", 5, ["hello"])] });
     store.unregister();
   });
 
-  test("null doc + FOREIGN pool → re-base to empty + re-tag + the durable empty PUT", async () => {
+  test("null doc + an empty in-memory pool → no PUT (nothing on either side)", async () => {
     hydratedImpl = () => true;
     __seedAccountDocsForTests({});
-    stampPoolOwner(LOCAL_KEY, "other@x"); // foreign
-    const store = makeFakeStore([t("old-account-thread", 5)]); // re-bases at REGISTRATION
+    const store = makeFakeStore([]); // empty at registration
     await __flushAllForTests();
-    expect(store.threads).toEqual([]); // re-based
-    expect(readPoolOwner(LOCAL_KEY)).toBe(ME); // re-tagged
-    expect(putCalls).toHaveLength(1);
-    expect(putCalls[0].value).toEqual({ threads: [] });
-    store.unregister();
-  });
-
-  test("server doc + FOREIGN pool → re-base to the server's copy, NO PUT", () => {
-    hydratedImpl = () => true;
-    __seedAccountDocsForTests({ [DOC]: { threads: [t("b1", 9)] } });
-    stampPoolOwner(LOCAL_KEY, "other@x");
-    const store = makeFakeStore([t("old-account-thread", 5)]); // re-bases at REGISTRATION
-    expect(store.threads).toEqual([t("b1", 9)]); // the durable copy wins locally
-    expect(putCalls).toHaveLength(0); // NO PUT — it's already B's truth
-    expect(readPoolOwner(LOCAL_KEY)).toBe(ME);
+    expect(putCalls).toHaveLength(0);
     store.unregister();
   });
 
@@ -249,7 +224,7 @@ describe("account-docs-bridge", () => {
     store.unregister();
   });
 
-  test("pre-hydration device-local threads adopt when hydration lands (the null broadcast)", async () => {
+  test("pre-hydration in-memory threads adopt when hydration lands (the null broadcast)", async () => {
     const store = makeFakeStore([t("t1", 5)]); // pre-hydration: the registration no-ops
     expect(readDoc(DOC)).toBeUndefined();
     // hydration lands with an empty account → the completion broadcast fires
@@ -259,7 +234,6 @@ describe("account-docs-bridge", () => {
     await __flushAllForTests();
     expect(putCalls).toHaveLength(1);
     expect(putCalls[0].value).toEqual({ threads: [t("t1", 5)] });
-    expect(readPoolOwner(LOCAL_KEY)).toBe(ME);
     store.unregister();
   });
 });
@@ -344,7 +318,6 @@ describe("capThreadsByBytes — the durable-copy byte budget", () => {
     let applyCalls = 0;
     let threads: BT[] = [];
     const unregister = bridgeThreadStore<BT[], BT>({
-      localKey: LOCAL_KEY,
       docKey: DOC,
       maxThreads: 40,
       maxMessages: 200,

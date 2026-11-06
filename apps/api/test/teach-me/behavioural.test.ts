@@ -316,7 +316,10 @@ describe("teach-me behavioural gate (T-MIG-039, ADR-040)", () => {
   });
 
   it("config sanity: the config object is the single source (route tests never hard-code Q4/Q5 constants)", () => {
-    expect(CFG.quota.dailySessionCap).toBe(3);
+    // T-TEACHGENIE-007: daily cap LIFTED by live operator order 2026-11-06
+    // ("Remove the limits for now", trace f9485122fd9a94a93659e25f350af676);
+    // restore cost protection by setting 3 (mirrors config.ts).
+    expect(CFG.quota.dailySessionCap).toBe(999);
     // T-TEACHGENIE-001: In-Depth = 6 objectives (MG "Objective 1/6" parity), 8 slots
     expect(CFG.sessionShape.objectivesByLength).toEqual({ quick: 3, in_depth: 6 });
     expect(CFG.sessionShape.maxMessagesByLength).toEqual({ quick: 5, in_depth: 8 });

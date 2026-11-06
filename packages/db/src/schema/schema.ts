@@ -1889,6 +1889,15 @@ export const markAwards = pgTable("mark_awards", {
         workingRef: uuid("working_ref"),
         pipelineVersion: text("pipeline_version").notNull(),
         feedback: jsonb().notNull(),
+        // T-MG-MARK-DELTA-1 (rollout plan Lane E): the 2026-11-04 live-capture
+        // contract delta — attempt classification (full|partial|blank, the
+        // observed `attempt: "full"` verdict field) + the re-mark content hash
+        // ({crop bytes, ink-doc revision, mark_points version} — identical
+        // re-marks short-circuit to the standing award; "mark again" forces
+        // fresh). BOTH nullable: pre-existing rows stay honest (absence =
+        // the additive law; one migration, 0027).
+        attemptClass: text("attempt_class"),
+        cacheHash: text("cache_hash"),
         createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
 }, (table) => [
         index("ix_mark_awards_learner_doc").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.documentRefType.asc().nullsLast().op("text_ops"), table.documentRefId.asc().nullsLast().op("uuid_ops")),
@@ -1907,6 +1916,7 @@ export const markAwards = pgTable("mark_awards", {
         check("mark_awards_max_score_check", sql`max_score > 0`),
         check("mark_awards_ordinal_check", sql`ordinal >= 0`),
         check("mark_awards_page_check", sql`page IS NULL OR page > 0`),
+        check("mark_awards_attempt_class_check", sql`attempt_class IS NULL OR attempt_class IN ('full', 'partial', 'blank')`),
 ]);
 
 // T-MG-AWARDS-1 run-001 (plan §3.2, the "mark_working_blocks (additive,

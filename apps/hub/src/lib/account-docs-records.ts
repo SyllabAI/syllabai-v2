@@ -10,17 +10,14 @@
  *   "guided-flow"          the guided-lesson wizard states (per lesson);
  *   "test-builder-drafts"  the Test Builder per-course WIP drafts.
  *
- * THE SHELL IS THE SAME LAW (the run-003 decision tree, pool-shaped):
+ * THE SHELL IS THE SAME LAW (the run-003 decision tree, pool-shaped;
+ * T-ACCOUNT-ONLY run-001 retirement of the owner-tag branches):
  *
  *   not hydrated / echo guard / signed out                → no-op
  *   server doc null-or-unknown:
- *     local pool empty                                    → no-op
- *     pool foreign-tagged                                 → re-base to {}
- *                                                           + re-tag
- *     pool adoptable or ours                              → mirror UP
+ *     in-memory pool empty                                → no-op
+ *     pool has entries                                    → mirror UP
  *   server doc present:
- *     pool foreign-tagged → the durable copy IS the other account's own
- *     sync: re-base locally, NO PUT                        → pull
  *     stamp(union) ≠ stamp(server) (local has new/newer)   → commit up,
  *                                                            ONE intent
  *     stamp(union) ≠ stamp(local) (per-key refresh)        → pull down
@@ -32,9 +29,12 @@
  * "nothing to sync" must see ONLY the fields the merge keys on, so a
  * capped/decorated re-merge can never re-trigger its own sync).
  *
- * The owner-tag side-law, the echo guard, the never-throws posture and
- * the caps are inherited verbatim from the run-003 bridge (separate
- * registry — the two bridges never share a docKey).
+ * The echo guard, the never-throws posture and the caps are inherited
+ * verbatim from the run-003 bridge (separate registry — the two bridges
+ * never share a docKey). Device localStorage no longer holds any pool
+ * (the sweep law): the owner-tag/adopt/re-base branches are retired —
+ * account switches reset the engine AND the stores' memory caches, and
+ * hydration pulls the signed-in account's own truth.
  */
 import {
   isAccountDocsHydrated,
@@ -42,7 +42,6 @@ import {
   subscribeAccountDocs,
   writeDoc,
 } from "./account-docs";
-import { readPoolOwner, stampPoolOwner } from "./account-docs-bridge";
 
 // ── shared helpers ──────────────────────────────────────────────────────
 
@@ -161,9 +160,6 @@ export function capPoolByBytes<T>(
 // ── the mirror shell ────────────────────────────────────────────────────
 
 export interface DocPoolBridgeConfig<S, E> {
-  /** the store's OWN localStorage key (or a stable family name) —
-   *  namespaces the :owner side-tag */
-  localKey: string;
   /** the workspace-document key this pool mirrors into */
   docKey: string;
   /** max entries the durable copy carries (the plane is bounded state) */
@@ -229,33 +225,15 @@ export function mirrorDocPoolState<S, E>(docKey: string, snapshot: S): void {
     const raw = readDoc(docKey);
     // post-hydration, an unknown key behaves as the explicit null
     const serverRaw = raw === undefined ? null : raw;
-    const owner = readPoolOwner(config.localKey);
 
     if (serverRaw === null) {
       if (Object.keys(local).length === 0) return; // nothing on either side
-      if (owner && owner !== email) {
-        // the device-local pool belongs to ANOTHER account: re-base to
-        // EMPTY + re-tag + the durable empty (B's pool initialized)
-        guarded(docKey, () => config.apply({} as Record<string, E>));
-        stampPoolOwner(config.localKey, email);
-        guarded(docKey, () => writeDoc(docKey, {}));
-        return;
-      }
-      // adoptable or already ours: mirror the device-local pool UP
-      stampPoolOwner(config.localKey, email);
+      // the account has no doc: mirror the in-memory pool UP
       guarded(docKey, () => writeDoc(docKey, capPoolByBytes(capByStamp(local, config.cap))));
       return;
     }
 
     const serverPool = storedPool(serverRaw) as Record<string, E>;
-    if (owner && owner !== email) {
-      // the durable copy belongs to the OTHER account: re-base locally,
-      // NO PUT (the server copy is already B's own durable truth)
-      guarded(docKey, () => config.apply(serverPool));
-      stampPoolOwner(config.localKey, email);
-      return;
-    }
-
     // T-CAPS-POLICY-1: the byte budget bounds the DURABLE copy, never the
     // device cache — same ordering as the thread bridge (trim BEFORE the
     // stamp checks so a trimmed commit converges; pull-down adopts the
@@ -265,7 +243,6 @@ export function mirrorDocPoolState<S, E>(docKey: string, snapshot: S): void {
     if (config.stamp(bounded) !== config.stamp(serverPool)) {
       // local has something new/newer (or the budget trimmed the doc) →
       // commit up, ONE intent
-      stampPoolOwner(config.localKey, email);
       guarded(docKey, () => writeDoc(docKey, bounded));
       return;
     }
@@ -276,7 +253,7 @@ export function mirrorDocPoolState<S, E>(docKey: string, snapshot: S): void {
       guarded(docKey, () => config.apply(capped));
     }
   } catch {
-    // a mirror never throws — the surfaces keep working device-local
+    // a mirror never throws — the surfaces keep working in-memory
   }
 }
 

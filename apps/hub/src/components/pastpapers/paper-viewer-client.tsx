@@ -747,9 +747,9 @@ export function PaperViewerClient({
         <Badge
           variant="outline"
           className="hidden text-[10px] md:inline-flex"
-          title={`AI-IDENTIFIED corpus — provenance ratification pending · index generated ${metaGeneratedAt.slice(0, 10)}`}
+          title={`Auto-matched index — official-source verification in progress · index generated ${metaGeneratedAt.slice(0, 10)}`}
         >
-          AI-IDENTIFIED
+          Auto-matched
         </Badge>
         {/* doc switch — three states on desktop (QP | MS | Split). Gated to
             lg+: the two-pane split grid only exists at lg, so exposing the

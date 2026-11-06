@@ -1136,20 +1136,18 @@ function fireOk(): void {
  * human being lands on the login screen. With the core's eager Spring init,
  * Tomcat only accepts connections after Flyway + Hibernate are up — so a
  * health response means the login POST that follows lands on a fully warm
- * server. Guarded by sessionStorage; failures swallowed by design. This is
- * user-triggered prefetch, NOT a keep-alive pinger (Render ToS: services
- * kept perpetually awake by uptime pingers risk suspension — do not turn
- * this into a timer).
+ * server. Guarded by an in-memory flag (T-ACCOUNT-ONLY run-001: the guard is
+ * session plumbing, not account state — sessionStorage is retired like every
+ * other device store); failures swallowed by design. This is user-triggered
+ * prefetch, NOT a keep-alive pinger (Render ToS: services kept perpetually
+ * awake by uptime pingers risk suspension — do not turn this into a timer).
  */
+let wakePinged = false;
+
 export function wakeBackend(): void {
   if (typeof window === "undefined") return;
-  const GUARD = "syllabai.wake-pinged";
-  try {
-    if (sessionStorage.getItem(GUARD) === "1") return;
-    sessionStorage.setItem(GUARD, "1");
-  } catch {
-    return; // storage blocked — skip the ping rather than risk repeats
-  }
+  if (wakePinged) return;
+  wakePinged = true;
   void fetch(apiPath("/actuator/health"), { method: "GET", cache: "no-store" }).then(
     () => {
       lastOkAt = Date.now();

@@ -6,6 +6,7 @@ import {
   isAccountDocsHydrated,
   mirrorThreadState,
 } from "@/lib/account-docs-bridge";
+import { adoptLegacyStorage, onAccountDocsReset } from "@/lib/account-docs";
 import { readIdentitySnapshot } from "@/lib/identity";
 
 /**
@@ -67,12 +68,12 @@ export type QuestionClaMessagesUpdate =
   | QuestionClaStoredMessage[]
   | ((prev: QuestionClaStoredMessage[]) => QuestionClaStoredMessage[]);
 
-const KEY = "syllabai.claThreads.v1";
-const ACTIVE_KEY = "syllabai.claThreads.activeByQuestion.v1";
+const KEY = "syllabai.claThreads.v1"; // RETIRED (legacy adoption pin)
+const ACTIVE_KEY = "syllabai.claThreads.activeByQuestion.v1"; // RETIRED (legacy adoption pin)
 /** T-AUDIT-TIER1 run-003 — the account plane this pool mirrors into. */
 const DOC_KEY = "cla-question-threads";
 
-/** storage guards — keep localStorage bounded (family parity; heavier
+/** storage guards — keep the doc bounded (family parity; heavier
  *  messages: the CLA answer view carries citations + tools, hence 100).
  *  T-CAPS-POLICY-1: the count cap raises to 200 — exact parity with the
  *  server sync tier's MAX_THREADS_PER_LEARNER=200 (409-never-evict); the
@@ -85,9 +86,10 @@ interface StoredState {
   activeByQuestion: Record<string, string | null>;
 }
 
-/** monotonic creation counter — survives reload via load()'s derive step */
+/** monotonic creation counter — restored with the pool (adoption/hydration) */
 let seqCounter = 0;
-let state: StoredState = load();
+const EMPTY_STATE: StoredState = { threads: [], activeByQuestion: {} };
+let state: StoredState = EMPTY_STATE;
 const listeners = new Set<() => void>();
 
 /** Stored-message validation: a malformed entry is dropped, never thrown. */
@@ -108,58 +110,60 @@ function validMessage(m: unknown): m is QuestionClaStoredMessage {
   }
 }
 
-function load(): StoredState {
-  const s =
-    typeof window === "undefined" ? { threads: [], activeByQuestion: {} } : loadFromStorage();
-  // seq continuity: new threads must sort AFTER everything already stored
-  seqCounter = s.threads.reduce((m, t) => Math.max(m, t.seq ?? 0), 0) + 1;
-  return s;
+function parseState(raw: unknown): StoredState {
+  if (!raw || typeof raw !== "object") return EMPTY_STATE;
+  const parsed = raw as StoredState;
+  if (!Array.isArray(parsed.threads)) return EMPTY_STATE;
+  const threads = parsed.threads
+    .filter(
+      (t) =>
+        t &&
+        typeof t.id === "string" &&
+        typeof t.questionId === "string" &&
+        typeof t.title === "string" &&
+        Array.isArray(t.messages),
+    )
+    .map((t) => ({ ...t, messages: t.messages.filter(validMessage) }))
+    .slice(0, MAX_THREADS);
+  const activeByQuestion: Record<string, string | null> = {};
+  const claimed = parsed.activeByQuestion && typeof parsed.activeByQuestion === "object"
+    ? parsed.activeByQuestion
+    : {};
+  for (const [qid, tid] of Object.entries(claimed)) {
+    if (typeof tid === "string" && threads.some((t) => t.id === tid && t.questionId === qid)) {
+      activeByQuestion[qid] = tid;
+    }
+  }
+  // seq continuity: new threads must sort AFTER everything already loaded
+  seqCounter = threads.reduce((m, t) => Math.max(m, t.seq ?? 0), 0) + 1;
+  return { threads, activeByQuestion };
 }
 
-function loadFromStorage(): StoredState {
-  try {
-    const raw = window.localStorage.getItem(KEY);
-    if (!raw) return { threads: [], activeByQuestion: {} };
-    const parsed = JSON.parse(raw) as StoredState;
-    if (!Array.isArray(parsed.threads)) return { threads: [], activeByQuestion: {} };
-    const threads = parsed.threads
-      .filter(
-        (t) =>
-          t &&
-          typeof t.id === "string" &&
-          typeof t.questionId === "string" &&
-          typeof t.title === "string" &&
-          Array.isArray(t.messages),
-      )
-      .map((t) => ({ ...t, messages: t.messages.filter(validMessage) }))
-      .slice(0, MAX_THREADS);
-    const activeByQuestion: Record<string, string | null> = {};
-    const claimed = parsed.activeByQuestion && typeof parsed.activeByQuestion === "object"
-      ? parsed.activeByQuestion
-      : {};
-    for (const [qid, tid] of Object.entries(claimed)) {
-      if (typeof tid === "string" && threads.some((t) => t.id === tid && t.questionId === qid)) {
-        activeByQuestion[qid] = tid;
-      }
+// T-ACCOUNT-ONLY run-001 — the one-time legacy adoption + the reset law
+// (the tutor store's shape; see threads.ts for the full law)
+if (typeof window !== "undefined") {
+  adoptLegacyStorage(DOC_KEY, [KEY, ACTIVE_KEY], () => {
+    try {
+      const raw = window.localStorage.getItem(KEY);
+      return raw ? parseState(JSON.parse(raw) as unknown) : null;
+    } catch {
+      return null;
     }
-    return { threads, activeByQuestion };
-  } catch {
-    return { threads: [], activeByQuestion: {} };
-  }
+  });
+  onAccountDocsReset(() => {
+    state = EMPTY_STATE;
+    snap = { threads: state.threads, activeByQuestion: state.activeByQuestion };
+    for (const l of listeners) l();
+  });
 }
 
 let persistTimer: ReturnType<typeof setTimeout> | null = null;
 
 function persist() {
   if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(KEY, JSON.stringify(state));
-    window.localStorage.setItem(ACTIVE_KEY, JSON.stringify(state.activeByQuestion));
-  } catch {
-    // quota exceeded / private mode — the session still works in memory
-  }
-  // T-AUDIT-TIER1 run-003 — the account mirror (family parity; the CLA
-  // snapshot carries the per-question active map the tutor pool lacks).
+  // T-AUDIT-TIER1 run-003 → T-ACCOUNT-ONLY run-001 — the account mirror IS
+  // the store (family parity; the CLA snapshot carries the per-question
+  // active map the tutor pool lacks).
   mirrorThreadState(DOC_KEY, { threads: state.threads, activeByQuestion: state.activeByQuestion });
 }
 
@@ -171,15 +175,6 @@ function emit() {
     persist();
   }, 400);
   for (const l of listeners) l();
-}
-
-if (typeof window !== "undefined") {
-  window.addEventListener("storage", (e) => {
-    if (e.key === KEY || e.key === ACTIVE_KEY) {
-      state = load();
-      for (const l of listeners) l();
-    }
-  });
 }
 
 let snap = { threads: state.threads, activeByQuestion: state.activeByQuestion };
@@ -495,7 +490,6 @@ export function insertQuestionClaThread(thread: QuestionClaThread, makeActive: b
 // (threads are newest-first) or clears to null — the question's thread
 // identity never leaks across questions.
 bridgeThreadStore<StoredState, QuestionClaThread>({
-  localKey: KEY,
   docKey: DOC_KEY,
   maxThreads: MAX_THREADS,
   maxMessages: MAX_MESSAGES_PER_THREAD,

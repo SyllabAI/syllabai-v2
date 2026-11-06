@@ -31,9 +31,15 @@ export const TEACH_ME_CONFIG = {
     },
   },
 
-  /** Ruling Q4 — cost protection, NOT a monetization meter. Enforced server-side. */
+  /** Ruling Q4 — cost protection, NOT a monetization meter. Enforced server-side.
+   *  T-TEACHGENIE-007 (2026-11-06, live operator order "Remove the limits for
+   *  now", trace f9485122fd9a94a93659e25f350af676): the DAILY CAP IS LIFTED —
+   *  999/day is de-facto unlimited for human learners. The remaining real
+   *  bounds are unchanged: the per-session 12-call ceiling (D3) and the
+   *  20/min per-learner LLM-tier rate limit. Restore cost protection by
+   *  setting 3 (the config-sanity test mirrors this value). */
   quota: {
-    dailySessionCap: 3,
+    dailySessionCap: 999,
     /** "back tomorrow" honest state; no countdown/upsell dark patterns. */
   },
 

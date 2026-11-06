@@ -293,7 +293,7 @@ export function QuestionPlayer({
             </button>
           ))}
         </div>
-        <label className="ml-auto flex cursor-not-allowed items-center gap-2 text-[13px] text-muted-foreground" title="Adaptive sessions are Phase C of the build plan">
+        <label className="ml-auto flex cursor-not-allowed items-center gap-2 text-[13px] text-muted-foreground" title="Adaptive sessions are coming soon">
           Guided practice
           <Switch disabled aria-label="Guided practice (roadmap)" />
         </label>
@@ -1769,7 +1769,12 @@ function CoreMarkingFlow({
     setAdvisory(initial);
     await Promise.all(
       targets.map(async (t) => {
-        const req = await requestPartRegrade(t.corePartId, answerFor(t.hubPartId), token);
+        // T-MG-MARK-DELTA-1: re-marking a part that already carries a
+        // completed advisory read is the EXPLICIT "mark again" — force a
+        // fresh job (MG's re-mark semantics); a first mark rides the
+        // content-hash cache law.
+        const reMark = advisory[t.hubPartId]?.kind === "done";
+        const req = await requestPartRegrade(t.corePartId, answerFor(t.hubPartId), token, fetch, reMark);
         if (req.outcome !== "accepted") {
           const message =
             req.outcome === "rejected"
@@ -1988,6 +1993,11 @@ function CoreMarkingFlow({
             const verdict = state.snapshot.feedback
               ? feedbackCopyModel(state.snapshot.feedback, score, max)
               : null;
+            // T-MG-MARK-DELTA-1: the verdict's evidence citations + attempt
+            // class — additive renderings; the five-field copy law is
+            // untouched.
+            const citations = awards.filter((a) => a.workingRefLabel);
+            const attemptClass = awards.map((a) => a.attemptClass).find((c) => c) ?? null;
             return (
               <div key={hubPartId} className="rounded-lg border bg-background p-3">
                 <div className="flex flex-wrap items-center gap-2">
@@ -2005,6 +2015,23 @@ function CoreMarkingFlow({
                     advisory · no attempt written
                   </Badge>
                 </div>
+                {attemptClass && (
+                  <p className="mt-1 text-[11px] text-muted-foreground">Attempt read as: {attemptClass}</p>
+                )}
+                {citations.length > 0 && (
+                  <ul className="mt-1 space-y-0.5 text-[11px] text-muted-foreground">
+                    {citations.map((a) => (
+                      <li key={`cite-${a.ordinal}-${a.code}`}>
+                        {a.code}: this mark came from your working at {a.workingRefLabel}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {state.snapshot.receipt?.cached && (
+                  <p className="mt-1 text-[11px] text-muted-foreground">
+                    served from your standing mark — identical content, no new run
+                  </p>
+                )}
                 {verdict && (
                   <>
                     {verdict.chatMessage && (
@@ -2383,7 +2410,7 @@ function MarkSchemeDialog({
               );
             })}
             <p className="text-xs text-muted-foreground">
-              Marking points are AND-joined in the corpus (all required for the mark). Self-mark
+              Every marking point listed is required for the mark. Self-mark
               honestly — your score stays in this browser only.
             </p>
           </div>

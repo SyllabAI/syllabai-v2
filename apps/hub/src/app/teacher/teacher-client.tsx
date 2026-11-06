@@ -38,19 +38,26 @@ import {
   Database,
   GraduationCap,
   Plus,
+  ShieldCheck,
   Users,
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { TeacherNav } from "@/components/teacher/teacher-nav";
+// dashboard-redesign kit (T-TEACH-SKIN-1): the teacher home wears the same
+// hero-band + band-section spine as the course pages, and its class cards
+// wear the shared EntityTileCard chassis + the ONE provenance badge.
+import { PageHero } from "@/components/dashboard/kit/page-hero";
+import { BandSection } from "@/components/dashboard/kit/band-section";
+import { StatChip } from "@/components/dashboard/kit/stat-chip";
+import { ProvenanceBadge } from "@/components/dashboard/kit/provenance-badge";
+import { EntityTileCard } from "@/components/dashboard/kit/entity-tile-card";
 import { useIdentity } from "@/lib/identity";
 import { useMyClasses, type TeacherClass } from "@/lib/teacher/my-classes";
 import { boardOf } from "@/lib/board";
 import { ApiError, api } from "@/lib/api";
 import type { TeacherClassView } from "@/lib/types";
-import { cn } from "@/lib/utils";
 import { AddClassOverlay } from "./add-class-overlay";
 
 /** The page passes the registry subset this dashboard renders. The board
@@ -136,39 +143,25 @@ function apiMessage(err: unknown, fallback: string): string {
   return fallback;
 }
 
-/** A LIVE core class on the dashboard (audit P2-6) — same compact card as the
- *  local ClassCard, but with the provenance badge it can never shed: live,
- *  database-backed, roster-managed on the Classes surface. */
+/** A LIVE core class on the dashboard (audit P2-6) — the EntityTileCard
+ *  chassis with the ONE provenance badge it can never shed: live,
+ *  database-backed, roster-managed on the Classes surface. The ad-hoc
+ *  "Live · core" span retired into ProvenanceBadge (T-TEACH-SKIN-1). */
 function CoreClassCard({ cls }: { cls: TeacherClassView }) {
   return (
-    <Card className={cn("relative h-full", cls.status === "archived" && "opacity-70")}>
-      <CardContent className="flex h-full flex-col gap-1 p-4">
-        <div className="flex items-center justify-between gap-2">
-          <p className="min-w-0 truncate text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-            {cls.courseLabel}
-          </p>
-          <span className="shrink-0 rounded-full border border-success/30 bg-success/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-success">
-            Live · core
-          </span>
-        </div>
-        <Link href={`/teacher/classes/${cls.id}`} className="group mt-1 min-w-0">
-          <span className="block truncate text-base font-bold group-hover:text-primary">
-            {cls.name}
-          </span>
-        </Link>
-        <p className="text-xs text-muted-foreground">
-          {cls.memberCount} {cls.memberCount === 1 ? "student" : "students"} enrolled
-          {cls.status === "archived" ? " · archived" : ""}
-        </p>
-        <Link
-          href={`/teacher/classes/${cls.id}`}
-          className="mt-auto inline-flex w-fit items-center gap-1 pt-2 text-xs font-semibold text-primary hover:underline"
-        >
-          Open workspace
-          <ChevronRight className="size-3.5" aria-hidden />
-        </Link>
-      </CardContent>
-    </Card>
+    <EntityTileCard
+      eyebrow={cls.courseLabel}
+      badge={<ProvenanceBadge kind="live-core" />}
+      name={cls.name}
+      nameHref={`/teacher/classes/${cls.id}`}
+      footerLink={{ href: `/teacher/classes/${cls.id}`, label: "Open workspace" }}
+      muted={cls.status === "archived"}
+    >
+      <p className="text-xs text-muted-foreground">
+        {cls.memberCount} {cls.memberCount === 1 ? "student" : "students"} enrolled
+        {cls.status === "archived" ? " · archived" : ""}
+      </p>
+    </EntityTileCard>
   );
 }
 
@@ -203,71 +196,57 @@ function ClassCard({
         : "Mixed boards";
 
   return (
-    <Card className="relative h-full border-primary/25 transition-colors hover:border-primary/60">
-      <Button
-        variant="ghost"
-        size="icon"
-        aria-label={`Remove ${cls.name} from my classes`}
-        onClick={() => onRemove(cls.id)}
-        className="absolute top-1 right-1 size-9 rounded-full text-muted-foreground hover:text-destructive"
-      >
-        <X className="size-4" aria-hidden />
-      </Button>
-      <CardContent className="flex h-full flex-col gap-1 p-4 pr-11">
-        {/* eyebrow (SubjectCard parity) — the row's real board(s) */}
-        <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-          {eyebrowBoard ? `${eyebrowBoard} · ` : ""}
-          {subjects.length} {subjects.length === 1 ? "subject" : "subjects"}
-        </p>
-
-        {/* class name */}
-        <div className="flex flex-wrap items-center gap-2">
-          <Link href={`/teacher/classes/${cls.id}`} className="group min-w-0">
-            <span className="block truncate text-base font-bold group-hover:text-primary">
-              {cls.name}
-            </span>
-          </Link>
-        </div>
-
-        <Link
-          href={`/teacher/classes/${cls.id}`}
-          className="mt-1 inline-flex w-fit items-center gap-1 text-xs font-semibold text-primary hover:underline"
+    <EntityTileCard
+      eyebrow={
+        eyebrowBoard
+          ? `${eyebrowBoard} · ${subjects.length} ${subjects.length === 1 ? "subject" : "subjects"}`
+          : `${subjects.length} ${subjects.length === 1 ? "subject" : "subjects"}`
+      }
+      badge={<ProvenanceBadge kind="device" />}
+      name={cls.name}
+      nameHref={`/teacher/classes/${cls.id}`}
+      footerLink={{ href: `/teacher/classes/${cls.id}`, label: "Open class workspace" }}
+      footerSlot={
+        <Button
+          size="sm"
+          variant="ghost"
+          className="h-7 gap-1.5 px-2 text-xs text-muted-foreground"
+          onClick={() => onEdit(cls)}
         >
-          Open class workspace
-          <ChevronRight className="size-3.5" aria-hidden />
-        </Link>
-
-        {/* per-subject rows with real corpus counts (course-stats) */}
-        {subjects.length > 0 ? (
-          <ul className="mt-1 space-y-0.5 border-t pt-1">
-            {subjects.map((c) => (
-              <SubjectRow
-                key={c.slug}
-                classId={cls.id}
-                label={c.subject}
-                code={c.code || "code pending"}
-                stat={stats[c.slug]}
-              />
-            ))}
-          </ul>
-        ) : (
-          <p className="mt-2 border-t pt-2 text-xs text-muted-foreground">
-            No valid subjects left — edit the class to pick its lanes.
-          </p>
-        )}
-
-        <div className="mt-auto flex items-center gap-2 pt-2">
-          <Button
-            size="sm"
-            variant="ghost"
-            className="h-7 gap-1.5 px-2 text-xs text-muted-foreground"
-            onClick={() => onEdit(cls)}
-          >
-            Edit subjects
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
+          Edit subjects
+        </Button>
+      }
+      topRightSlot={
+        <Button
+          variant="ghost"
+          size="icon"
+          aria-label={`Remove ${cls.name} from my classes`}
+          onClick={() => onRemove(cls.id)}
+          className="absolute top-1 right-1 size-9 rounded-full text-muted-foreground hover:text-destructive"
+        >
+          <X className="size-4" aria-hidden />
+        </Button>
+      }
+    >
+      {/* per-subject rows with real corpus counts (course-stats) */}
+      {subjects.length > 0 ? (
+        <ul className="mt-1 space-y-0.5 border-t pt-1">
+          {subjects.map((c) => (
+            <SubjectRow
+              key={c.slug}
+              classId={cls.id}
+              label={c.subject}
+              code={c.code || "code pending"}
+              stat={stats[c.slug]}
+            />
+          ))}
+        </ul>
+      ) : (
+        <p className="mt-2 border-t pt-2 text-xs text-muted-foreground">
+          No valid subjects left — edit the class to pick its lanes.
+        </p>
+      )}
+    </EntityTileCard>
   );
 }
 
@@ -341,33 +320,47 @@ export function TeacherClient({ courses }: { courses: TeacherCourseLite[] }) {
 
   return (
     <div className="space-y-8">
-      {/* greeting (student dashboard parity) */}
-      <header className="space-y-1.5">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Hi {identity?.name ?? "there"} 👋
-        </h1>
-        <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Welcome to your teacher workspace — add a class, pick the subjects it covers, and every
-          tool and course resource for them lives inside it. Marking review and class intelligence
-          read live cohort data; the corpus tools run on the local sample bank.
-        </p>
-      </header>
+      {/* T-TEACH-SKIN-1: the course page's hero band opens the teacher
+          dashboard — eyebrow, display title, description, and the two
+          class provenances as StatChips (live once core answered, the
+          browser-local containers always). Core still loading renders no
+          chip at all rather than a fabricated zero. */}
+      <PageHero
+        eyebrow="Teacher workspace"
+        title={<>Hi {identity?.name ?? "there"} 👋</>}
+        description="Add a class, pick the subjects it covers, and every tool and course resource for them lives inside it. Marking review and class intelligence read live cohort data; the corpus tools run on the local sample bank."
+        stats={
+          <>
+            <StatChip
+              icon={ShieldCheck}
+              tone="success"
+              label="live classes"
+              value={identity ? (coreClasses?.length ?? undefined) : 0}
+            />
+            <StatChip
+              icon={Database}
+              tone="muted"
+              label="this browser"
+              value={classes.length}
+            />
+          </>
+        }
+      />
 
-      <TeacherNav />
-
-      {/* ---- My classes ---- */}
-      <section aria-label="My classes" className="space-y-3">
-        <div className="flex items-center justify-between gap-3">
-          <h2 className="text-lg font-semibold">
-            My classes{" "}
-            <span className="text-sm font-normal text-muted-foreground">
-              {identity && coreClasses === null
-                ? "· loading live classes…"
-                : identity
-                  ? `· ${coreClasses?.length ?? 0} live · ${classes.length} this browser`
-                  : `· ${classes.length} this browser`}
-            </span>
-          </h2>
+      {/* ---- My classes (BandSection chassis: the count line stays the
+          honest provenance summary, the Add class action rides the band
+          header) ---- */}
+      <BandSection
+        icon={Users}
+        title="My classes"
+        count={
+          identity && coreClasses === null
+            ? "· loading live classes…"
+            : identity
+              ? `· ${coreClasses?.length ?? 0} live · ${classes.length} this browser`
+              : `· ${classes.length} this browser`
+        }
+        action={
           <Button
             size="sm"
             variant="outline"
@@ -380,7 +373,8 @@ export function TeacherClient({ courses }: { courses: TeacherCourseLite[] }) {
             <Plus className="size-3.5" aria-hidden />
             Add class
           </Button>
-        </div>
+        }
+      >
 
         {coreError && (
           <p
@@ -431,21 +425,17 @@ export function TeacherClient({ courses }: { courses: TeacherCourseLite[] }) {
               <CoreClassCard key={c.id} cls={c} />
             ))}
             {classes.map((cls) => (
-              <div key={cls.id} className="relative">
-                <span className="absolute top-2 left-2 z-10 rounded-full border bg-background/90 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-muted-foreground">
-                  This browser
-                </span>
-                <ClassCard
-                  cls={cls}
-                  bySlug={bySlug}
-                  stats={stats}
-                  onRemove={remove}
-                  onEdit={(c) => {
-                    setEditClass(c);
-                    setAddOpen(true);
-                  }}
-                />
-              </div>
+              <ClassCard
+                key={cls.id}
+                cls={cls}
+                bySlug={bySlug}
+                stats={stats}
+                onRemove={remove}
+                onEdit={(c) => {
+                  setEditClass(c);
+                  setAddOpen(true);
+                }}
+              />
             ))}
             {/* the student dashboard's trailing slot cell, class edition */}
             <button
@@ -467,7 +457,7 @@ export function TeacherClient({ courses }: { courses: TeacherCourseLite[] }) {
             </button>
           </div>
         )}
-      </section>
+      </BandSection>
 
       {/* E-2 (frontend-flow audit): the delivery roadmap rendered inside
           the product — "Phase 3" badges are operator language with no

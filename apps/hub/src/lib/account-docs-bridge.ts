@@ -4,23 +4,17 @@
  * is store-agnostic; THIS module owns the thread-pool semantics the three
  * conversation stores (tutor / assistant / CLA) share.
  *
- * THE DECISION TREE (evaluated on every store change AND every engine
- * notification, for the one docKey the store registered):
+ * THE DECISION TREE (T-ACCOUNT-ONLY run-001, evaluated on every store
+ * change AND every engine notification, for the one docKey the store
+ * registered):
  *
  *   not hydrated, or an in-flight remote apply (the echo guard)  → no-op
  *   signed out                                                   → no-op
- *   server value unknown AND not hydrated                        → no-op
  *   server doc null/unknown:
- *     local pool empty                                           → no-op
- *     pool foreign-tagged (another account's device-local data)  → re-base
- *                                                                  to EMPTY
- *                                                                  + re-tag
- *     pool adoptable (untagged on this device) or ours           → mirror
- *                                                                  UP (adopt)
+ *     in-memory pool empty                                       → no-op
+ *     pool has entries                                           → mirror
+ *                                                                  UP
  *   server doc present:
- *     pool foreign-tagged → the durable copy IS the other account's own
- *     data (B's sync from another device): re-base the local pool to it,
- *     NO PUT (the server copy is already B's durable truth)      → pull
  *     union stamp ≠ server stamp (local has something new/newer) → commit
  *                                                                  up, ONE
  *                                                                  intent
@@ -28,11 +22,10 @@
  *                                                                  down
  *     otherwise (stamps equal both ways)                         → no-op
  *
- * THE OWNER-TAG LAW: the device's localStorage carries a `<localKey>:owner`
- * side-tag naming the LAST account whose data this device's pool held.
- * Untagged = adoptable (a signed-out device's local history uploads on
- * first sign-in). Foreign = the pool is ANOTHER account's working state —
- * it never unions into the new account (a switch re-bases, never merges).
+ * THE OWNER-TAG LAW IS RETIRED (run-003): device localStorage no longer
+ * holds any pool, so there is nothing to tag, adopt or re-base — account
+ * switches reset the engine AND the stores' memory caches (the reset
+ * broadcast), and hydration then pulls the signed-in account's own truth.
  *
  * THE STAMP LAW: `sameIdStamp` compares ONLY the id:updatedAt sets. The
  * caps (maxThreads / the per-thread messages tail-cap) are invisible to
@@ -46,7 +39,7 @@
  * must no-op until the intent completes. One intent, one mutation, one
  * PUT.
  *
- * A mirror NEVER THROWS: every store keeps working device-local no matter
+ * A mirror NEVER THROWS: every store keeps working in-memory no matter
  * what the plane does.
  */
 import {
@@ -178,38 +171,9 @@ export function capThreadsByBytes<T extends BridgedThread>(
   return threads.slice(0, count);
 }
 
-// ── the owner-tag side-law (device localStorage, never the account) ─────
-
-export function ownerTagKey(localKey: string): string {
-  return `${localKey}:owner`;
-}
-
-function ls(): Storage | null {
-  try {
-    return typeof window !== "undefined" ? window.localStorage : null;
-  } catch {
-    return null;
-  }
-}
-
-export function readPoolOwner(localKey: string): string | null {
-  return ls()?.getItem(ownerTagKey(localKey)) ?? null;
-}
-
-/** Untagged on this device = the pool may ADOPT (upload) itself. */
-export function poolAdoptable(localKey: string): boolean {
-  return readPoolOwner(localKey) === null;
-}
-
-export function stampPoolOwner(localKey: string, email: string): void {
-  ls()?.setItem(ownerTagKey(localKey), email);
-}
-
-// ── the mirror ──────────────────────────────────────────────────────────
+// ── the mirror ───────────────────────────────────────────────────────────
 
 export interface ThreadStoreBridgeConfig<S, T extends BridgedThread> {
-  /** the store's OWN localStorage key — namespaces the :owner side-tag */
-  localKey: string;
   /** the workspace-document key this pool mirrors into */
   docKey: string;
   maxThreads: number;
@@ -258,7 +222,7 @@ function storedThreads(raw: unknown): BridgedThread[] {
 }
 
 /**
- * The mirror of record — called by the store's persist tail (a device-local
+ * The mirror of record — called by the store's persist tail (an in-memory
  * write) and by the bridge's engine subscription (an engine-driven change),
  * with the store's FRESH snapshot.
  */
@@ -272,23 +236,12 @@ export function mirrorThreadState<S, T extends BridgedThread>(docKey: string, sn
     const local = config.readThreads(snapshot);
     const raw = readDoc(docKey);
     // post-hydration, an unknown key behaves as the explicit null (the
-    // "server never mentioned it" state) — the adoption path handles it
+    // "server never mentioned it" state)
     const serverRaw = raw === undefined ? null : raw;
-    const owner = readPoolOwner(config.localKey);
 
     if (serverRaw === null) {
       if (local.length === 0) return; // nothing on either side
-      if (owner && owner !== email) {
-        // the device-local pool belongs to ANOTHER account and the new
-        // account's server space is empty: re-base to EMPTY + re-tag +
-        // write the durable empty (B's pool is initialized honestly)
-        guarded(docKey, () => config.apply([] as unknown as T[]));
-        stampPoolOwner(config.localKey, email);
-        guarded(docKey, () => writeDoc(docKey, { threads: [] }));
-        return;
-      }
-      // adoptable or already ours: mirror the device-local pool UP
-      stampPoolOwner(config.localKey, email);
+      // the account has no doc: mirror the in-memory pool UP
       guarded(docKey, () =>
         writeDoc(docKey, {
           threads: capThreadsByBytes(
@@ -300,15 +253,6 @@ export function mirrorThreadState<S, T extends BridgedThread>(docKey: string, sn
     }
 
     const serverThreads = storedThreads(serverRaw);
-    if (owner && owner !== email) {
-      // the durable copy belongs to the OTHER account (its own sync from
-      // another device): re-base the local pool to it — NO PUT, and the
-      // tag re-points to the signed-in account
-      guarded(docKey, () => config.apply(serverThreads as unknown as T[]));
-      stampPoolOwner(config.localKey, email);
-      return;
-    }
-
     const union = mergeThreadLists(local, serverThreads, config.maxThreads, config.maxMessages);
     // T-CAPS-POLICY-1: the byte budget bounds the DURABLE copy, never the
     // device cache. The trim runs BEFORE the stamp checks so a trimmed
@@ -319,7 +263,6 @@ export function mirrorThreadState<S, T extends BridgedThread>(docKey: string, sn
     if (!sameIdStamp(bounded, serverThreads)) {
       // local has something new/newer (or the budget trimmed the doc) →
       // commit up, ONE intent
-      stampPoolOwner(config.localKey, email);
       guarded(docKey, () => writeDoc(docKey, { threads: bounded }));
       return;
     }
@@ -330,7 +273,7 @@ export function mirrorThreadState<S, T extends BridgedThread>(docKey: string, sn
       guarded(docKey, () => config.apply(union as unknown as T[]));
     }
   } catch {
-    // a mirror never throws — the surfaces keep working device-local
+    // a mirror never throws — the surfaces keep working in-memory
   }
 }
 

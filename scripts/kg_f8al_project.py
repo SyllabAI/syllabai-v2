@@ -159,6 +159,42 @@ def verify_export(slug: str) -> None:
     order = {p["id"]: i for i, p in enumerate(spine["points"])}
     derived, stats = export_pairs(pre["conceptWebPrerequisiteEdges"], anchors, order)
     served = {(e[0][2:], e[1][2:]) for e in spine["edges"] if e[2] == "pre"}
+    if "mergeOf" in pre:
+        # T-KG-PRE-20 two-layer merged store: the served set is the union of
+        # the F8 web export and the legacy layer's own documented derivation
+        # (validated concept edges AND direct-point endpoint edges through
+        # the legacy anchors by the same in-order law, plus the
+        # inferredPrototypePre direct tuples).
+        cand = set()
+        for e in pre.get("validatedPrerequisiteEdges", []):
+            def leg_ep(x):
+                if x in anchors:
+                    return anchors[x]
+                r = resolve_anchor(x, point_ids, prefix)
+                if r is None:
+                    fail(f"{slug}: legacy edge endpoint {x!r} does not resolve")
+                return [r]
+            for a in leg_ep(e["prerequisite"]):
+                for b in leg_ep(e["dependent"]):
+                    if a != b:
+                        cand.add((a, b))
+        legacy_pairs = {(a, b) for a, b in cand if order[a] < order[b]} | {
+            (x[0][2:], x[1][2:]) for x in pre.get("inferredPrototypePre", [])
+        }
+        served_full = legacy_pairs | derived
+        if served_full != served:
+            fail(
+                f"{slug}: merge calibration FAILED — legacy+web derived "
+                f"{len(served_full)} vs served {len(served)} "
+                f"(sym {len(served_full ^ served)})"
+            )
+        print(
+            f"OK {slug}: merge calibration exact — web {len(pre['conceptWebPrerequisiteEdges'])} "
+            f"-> pre {stats['exported']} (reversed dropped {stats['reversedDropped']}, "
+            f"self-loops {stats['selfLoops']}) UNION legacy {len(legacy_pairs)} == served "
+            f"{len(served)}"
+        )
+        return
     if derived != served:
         fail(
             f"{slug}: calibration FAILED — derived {len(derived)} vs served "

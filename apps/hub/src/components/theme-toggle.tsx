@@ -6,9 +6,11 @@
  *   variant="icon" (default) — compact header dropdown
  *   variant="row"            — labelled pill for the footer
  *
- * State lives in src/lib/theme-store.ts (localStorage-backed, no-flash
- * bootstrap applied server-side before paint). The first mount calls
- * hydrateTheme() so the React store agrees with what the bootstrap applied.
+ * State lives in src/lib/theme-store.ts (the account's "theme" workspace
+ * doc, T-ACCOUNT-ONLY run-001 — nothing device-local). The inline bootstrap
+ * in app/layout.tsx applies the system light/dark default pre-paint; the
+ * account theme applies when the account-docs hydration lands. The first
+ * mount calls hydrateTheme() so the React store agrees with the account doc.
  */
 import { useEffect, useSyncExternalStore } from "react";
 import { Check, Monitor, Moon, Palette, Sun } from "lucide-react";

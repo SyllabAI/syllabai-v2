@@ -111,21 +111,41 @@ export function createTeachMeStore(sql: SqlFn): TeachMeStore {
     },
 
     async updateSession(id, patch) {
-      const sets: string[] = [];
-      const vals: unknown[] = [];
-      const push = (clause: string, value: unknown) => {
-        vals.push(value);
-        sets.push(clause.replace("?", `$${vals.length}`));
-      };
-      if (patch.status !== undefined) push("status = ?", patch.status);
-      if (patch.messageCount !== undefined) push("message_count = ?", patch.messageCount);
-      if (patch.llmCallCount !== undefined) push("llm_call_count = ?", patch.llmCallCount);
-      if (patch.tokensUsed !== undefined) push("tokens_used = ?", patch.tokensUsed);
-      if (patch.endedAt !== undefined) push("ended_at = ?", patch.endedAt);
-      if (patch.flags !== undefined) push("flags = ?::jsonb", JSON.stringify(patch.flags));
-      if (sets.length === 0) return;
-      const stmt = `UPDATE teach_sessions SET ${sets.join(", ")} WHERE id = $${vals.length + 1}`;
-      await sql([stmt] as unknown as TemplateStringsArray, ...vals, id);
+      // T-TEACHGENIE-006: the REAL-store UPDATE of record. The house sql seam
+      // (services/identity/users.ts toQuery) is TAGGED-TEMPLATE ONLY: it
+      // builds text = s[0] + "$1" + s[1] + "$2" + … — every placeholder lands
+      // BETWEEN pieces, and pieces.length MUST be params.length + 1. The
+      // previous implementation handed the seam ONE piece containing the
+      // whole hand-numbered statement, so toQuery appended its own $n trail
+      // ("…WHERE id = $2$1$2" — proven verbatim) and Postgres syntax-errored
+      // on EVERY updateSession call: the sub-floor nudge, BOTH judged turns
+      // (post-writes, after the LLM completes) and end-session all 500ed
+      // while every INSERT/SELECT (proper tagged templates) succeeded — the
+      // LIVE-pilot blocker (T-TEACHGENIE-003 run-002 receipt; its grants
+      // hypothesis was a real but SECONDARY gap, closed by T-TEACHGENIE-005).
+      // The composition below is the seam-native form: piece i carries the
+      // column assignment whose $i it precedes, casts ride the FOLLOWING
+      // piece, and the id param is last (the pieces.length = params.length+1
+      // law). The FakeStore fixtures cannot see this seam — the regression
+      // test (test/teach-me/update-session-seam.test.ts) runs the captured
+      // call back through the REAL toQuery and asserts the exact text.
+      type Assign = { col: string; value: unknown; cast: string };
+      const assigns: Assign[] = [];
+      if (patch.status !== undefined) assigns.push({ col: "status", value: patch.status, cast: "" });
+      if (patch.messageCount !== undefined) assigns.push({ col: "message_count", value: patch.messageCount, cast: "" });
+      if (patch.llmCallCount !== undefined) assigns.push({ col: "llm_call_count", value: patch.llmCallCount, cast: "" });
+      if (patch.tokensUsed !== undefined) assigns.push({ col: "tokens_used", value: patch.tokensUsed, cast: "" });
+      if (patch.endedAt !== undefined) assigns.push({ col: "ended_at", value: patch.endedAt, cast: "" });
+      if (patch.flags !== undefined) assigns.push({ col: "flags", value: JSON.stringify(patch.flags), cast: "::jsonb" });
+      if (assigns.length === 0) return;
+      const k = assigns.length;
+      const pieces: string[] = new Array(k + 1);
+      pieces[0] = `UPDATE teach_sessions SET ${assigns[0]!.col} = `;
+      for (let j = 1; j < k; j++) {
+        pieces[j] = `${assigns[j - 1]!.cast}, ${assigns[j]!.col} = `;
+      }
+      pieces[k] = `${assigns[k - 1]!.cast} WHERE id = `;
+      await sql(pieces as unknown as TemplateStringsArray, ...assigns.map((a) => a.value), id);
     },
 
     async appendMessage(row) {
