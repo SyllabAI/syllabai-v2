@@ -790,3 +790,10 @@ Work Log:
 
 Stage Summary:
 - Branch t-teachgenie-007/run-001 pushed; PR opened; merge + deploy + live proof to follow as the landing addendum in this entry.
+
+## receipt(T-NAV-STRIP-1) — run-002: the strip goes below-lg only (desktop duplication fix) — 2026-11-06 (operator feedback trace 1a1b11a742612305: "it makes the website look too noisy", following run-001 merge 449c13d #809)
+
+- Capture re-read: MG has no persistent sidebar at all — the strip IS their nav (12 site-wide items, subset of pages: question bank/papers/lessons/revision-guides; absent on root/index/home/marker/progress). run-001's desktop duplicated the persistent sidebar (lg+) — the noise the operator saw.
+- course-tool-nav.tsx nav gains lg:hidden (tailwind-merge override hatch: caller passes lg:block); registry/items/order/gates/active-law/root+viewer suppressions byte-untouched.
+- Gates first-hand: bunx tsc --noEmit (apps/hub) exit 0; bunx eslint course-tool-nav.tsx exit 0 (bun install 988 packages first).
+- NOT self-merged — design change; operator reviews the PR preview first. Receipt of record: .syllabai/receipts/T-NAV-STRIP-1/run-002.md. Sandbox NOTE: recycle had stripped ref/syllabai-v2/.git (outer-repo accident repaired; sparse blobless clone restored, /tmp store refreshed).
