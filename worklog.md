@@ -1402,3 +1402,17 @@ Stage Summary:
 
 Stage Summary:
 - The MathsGenie navigation tab now exists on every course-scoped tool page; the sidebar and the strip are two views of ONE gated registry (lib/course-nav.ts) and cannot drift. Open: push + PR (PAT-gated), R0 review of the deliberate deltas (root suppression + ghost/facet exclusion), optional T-NAV-STRIP-2 (mobile pill variant tokens / aria-label density).
+
+---
+Task ID: T-NAV-STRIP-1 run-002 (operator feedback trace 1a1b11a742612305: "their nav strip is not present in all the pages. Currently it makes the website look too noisy")
+Agent: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4)
+Task: De-noise the run-001 strip per operator feedback — re-read the MG captures, fix the REAL delta, keep MG parity where it actually lives.
+
+Work Log:
+- Capture re-read (tool-results/mg-rd/): MG has NO persistent sidebar (the strip IS their nav, single-column page); strip = 12 site-wide items (icon + text, -mb-[2px] underline, nowrap scroll row) directly under the header; present on question bank/papers/lessons/revision-guides only — ABSENT on course root, GCSE index, home, essay marker, my-progress (marker/progress captures possibly login-gated, disclosed in the receipt).
+- Fix: course-tool-nav.tsx nav gains lg:hidden — below lg the sidebar stands down behind the sticky Menu/course bar (single-column, the MG-like range) and the strip rides under it; at lg+ the persistent sidebar is the only course nav. tailwind-merge override hatch documented (caller may pass lg:block). Registry/items/order/gates/active-law/root+viewer suppressions byte-untouched; sidebar and root trio untouched.
+- GATES of record (first-hand): bun install refreshed the workspace (988 packages); bunx tsc --noEmit (apps/hub) exit 0; bunx eslint course-tool-nav.tsx exit 0.
+- NOTE of record: the sandbox recycle lost ref/syllabai-v2/.git; interim git commands ran against the outer /home/z/my-project scaffold repo (reset to origin/main twice — repaired: outer reset back to 4c3f5b66, injected top-level entries removed, fresh sparse blobless clone restored with .git; /tmp persistence store refreshed from it).
+
+Stage Summary:
+- Branch t-nav-strip-2/run-001 pushed; PR opened for operator eyeball (design change — NOT self-merged). Next knobs if the verdict is harsher: full revert (one class), MG-style subset gating on mobile, below-hero position.
