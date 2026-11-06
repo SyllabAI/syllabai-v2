@@ -1,0 +1,75 @@
+version: 1
+task:
+  id: T-CAPS-POLICY-1
+  title: "The caps policy of record — count caps to server-parity (threads 40→200, mocks 20→50 on all three sites), the durable-copy byte budget (over-budget PUTs impossible by construction), the silent-413 retirement (readDocError + console surface), the echo-guard leak fix; T-CHAT-DB-1 trigger armed"
+  owner: "operator-direct (Z.ai, zai-web session web-64d10b73, chat d889551c-b3b5-4885-b1c1-57af82e11b0a, trace 1a1ab65956cf37b5)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-AUDIT-TIER1 (persistence-plane hardening)
+  wave: caps-policy
+  deps: [T-AUDIT-TIER1, T-TIER1-DB-APPLY]
+  execution_record: >
+    Operator decision on the caps policy card: "raise caps now (#1) + fix the
+    silent-413 case to surface a real error + cut the relational chat lane
+    (#2) when usage data justifies it" (trace 1a1ab65956cf37b5). Executed as
+    run-001: (a) count caps raised to server-parity — tutor/assistant/CLA
+    MAX_THREADS 40→200 (the server CLA threads-store MAX_THREADS_PER_LEARNER=200
+    409-never-evict law is the parity target), mock results 20→50 moved as ONE
+    law across contracts MOCK_RESULTS_PER_COURSE + hub MAX_PER_COURSE + server
+    MOCK_RESULTS_CAP; (b) the durable-copy BYTE BUDGET — the count caps can
+    never bound serialized size, so both bridges now trim the durable doc to
+    THREAD_DOC_BYTE_BUDGET / POOL_DOC_BYTE_BUDGET (260,000 UTF-16 chars ≈ ≤520KB
+    UTF-8 at the pathological 2-bytes/char, ~4× under the plane's 512KB 413 cap)
+    before every writeDoc, oldest-first for threads / skip-and-pack for pools,
+    with the IRREDUCIBLE law (a single entry over budget passes through
+    UNCHANGED and the PUT 413s — surfaced, never silently trimmed); the trim
+    runs BEFORE the stamp checks so a trimmed commit converges (no PUT
+    ping-pong) and the device cache NEVER shrinks because the account doc did;
+    (c) the silent-413 retirement — the engine records the rejection
+    (readDocError(key) === "too_large"), console.errors an honest line, and
+    notifies subscribers; the value STAYS dirty per the law and a healed write
+    clears the error; (d) FOUND AND FIXED during the battery: the echo guard
+    (applyingRemote) leaked forever whenever a store's apply threw mid-span —
+    the outer catch swallowed the throw and every later mirror for that key
+    no-oped for the rest of the process; both bridges now wrap each span in a
+    try/finally guarded() helper (leak impossible by construction) + the
+    regression pin; (e) T-CHAT-DB-1 trigger armed (see the receipt's Next
+    section): tutor/assistant relational transcripts when a 413 is observed on
+    /me/documents PUT in provider logs, or readDocError fires in the wild, or
+    a 30-day census shows p95 doc size > 300KB. No UI banner in this lane (the
+    surfaced state + subscriber notification is the seam; a visual consumer is
+    a follow-up).base:
+  repo: "syllabai-v2 @ 3100dd58 (origin/main; isolated worktree wt-caps-policy-1)"
+basis: >
+  Operator order (trace 1a1ab65956cf37b5); T-AUDIT-TIER1 run-003 (the thread
+  bridge) + run-004 (the records bridge); T-TIER1-DB-APPLY run-001 (PR #792,
+  the production landing — landed mid-flight in a parallel lane and COMPOSES:
+  the tables behind this lane's durable copies went live 2026-11-05).
+scope:
+  allowed:
+    - apps/hub/src/lib/account-docs.ts
+    - apps/hub/src/lib/account-docs-bridge.ts
+    - apps/hub/src/lib/account-docs-records.ts
+    - apps/hub/src/lib/account-docs.test.ts
+    - apps/hub/src/lib/account-docs-bridge.test.ts
+    - apps/hub/src/lib/account-docs-stores.test.ts
+    - apps/hub/src/lib/tier1-stores.test.ts
+    - apps/hub/src/app/tutor/threads.ts
+    - apps/hub/src/app/assistant/assistant-threads.ts
+    - apps/hub/src/app/assistant/assistant-threads.test.ts
+    - apps/hub/src/components/cla/question-cla-threads.ts
+    - apps/hub/src/components/cla/question-cla-threads.test.ts
+    - apps/hub/src/lib/mock-results.ts
+    - apps/api/src/services/learner-me/index.ts
+    - apps/api/test/learner-me/routes.test.ts
+    - packages/contracts/src/learner-me.ts
+    - packages/contracts/src/learner-me.test.ts
+    - .syllabai/tasks/T-CAPS-POLICY-1.yaml
+    - .syllabai/receipts/T-CAPS-POLICY-1/run-001.md
+    - .syllabai/worklog.md
+  forbidden:
+    - self-merge (the PR opens for operator review; the no-self-merge fence stands unless ordered)
+    - server CLA threads-store cap changes (MAX_THREADS_PER_LEARNER=200 / 409-never-evict is the parity TARGET, untouched)
+    - any UI banner/consumer of readDocError in this lane (the seam ships; the visual is a follow-up)
+    - tutor/assistant server-side transcript tables (T-CHAT-DB-1 is trigger-gated, not built speculatively)
+    - WORKSPACE_DOC_MAX_BYTES changes (the 512KB plane cap stays; the client budget composes under it)
