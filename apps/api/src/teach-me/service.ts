@@ -33,7 +33,7 @@ import {
 } from "@syllabai/contracts";
 import { isTruncationFinish } from "../services/llmchain";
 import { TEACH_ME_CONFIG } from "./config";
-import { OBJECTIVES_SYSTEM_V3, PUPIL_CHARTER_V3, TEACHME_REVIEW_V1, TEACHME_TURN_V3 } from "./prompts";
+import { OBJECTIVES_SYSTEM_V3, PUPIL_CHARTER_V3, TEACHME_REVIEW_V1, TEACHME_REVIEW_V2, TEACHME_TURN_V3 } from "./prompts";
 import type {
   Clock,
   SpecPointCanonRow,
@@ -769,7 +769,7 @@ export function createTeachMeService(deps: {
     const studentTexts = messages.filter((m) => m.role === "student").map((m) => m.text);
     const studentSeqs = new Set(messages.filter((m) => m.role === "student").map((m) => m.seq));
 
-    const reviewSystem = TEACHME_REVIEW_V1;
+    const reviewSystem = TEACHME_REVIEW_V2; // T-FIX-REVIEW-V2: strengths role guard (pupil-paraphrase drift)
     const reviewUser = [
       "COURSE_CANON:",
       canonBlock(canon),
@@ -836,33 +836,39 @@ export function createTeachMeService(deps: {
       if (v.verdict === "flagged" && !flaggedSpecPoints.has(v.specPointId)) {
         throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "flagged verdict without a flagged objective (overlap law)");
       }
-      if (v.evidenceQuote != null && !isExtractive(v.evidenceQuote, studentTexts)) {
-        throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "verdict evidenceQuote was not extractive from the student's messages");
-      }
+      // T-FIX-REVIEW-V2: non-extractive verdict evidenceQuote degrades to null
+      // below (sanitizer) instead of refusing the card.
     }
-    for (const s of parsed.strengths) {
-      if (!studentSeqs.has(s.messageSeq) || !isExtractive(s.quote, studentTexts)) {
-        throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "strength quote was not extractive from the student's messages");
-      }
-    }
+    // T-FIX-REVIEW-V2 (operator ruling 2026-11-06): quoted-evidence and served-LIST
+    // laws degrade by dropping/normalizing drift instead of refusing the whole
+    // card — the review is the correction of record (ADR-040 D2) and must not be
+    // lost to LLM drift; invented material never reaches the student either way.
+    // The verdict-SET and improvement-scope laws above stay fail-closed.
     const registryCodes = new Set(inputs.registry.map((r) => r.code));
-    for (const m of parsed.misconceptionNotes) {
-      if (m.matchedMisconceptionId != null && !registryCodes.has(m.matchedMisconceptionId)) {
-        throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "misconception id was invented (not in the registry excerpt)");
-      }
-    }
     const anchorKeys = new Set(inputs.anchors.map((a) => `${a.specPointId}|${a.paperRef}|${a.questionRef}`));
-    for (const a of parsed.examAnchors) {
-      if (!anchorKeys.has(`${a.specPointId}|${a.paperRef}|${a.questionRef}`)) {
-        throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "exam anchor was invented (not in the serving corpus)");
-      }
-    }
     const practiceKeys = new Set(inputs.practice.map((p) => `${p.label}|${p.resourceType}|${p.href}`));
-    for (const p of parsed.suggestedPractice) {
-      if (!practiceKeys.has(`${p.label}|${p.resourceType}|${p.href}`)) {
-        throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "suggested practice was invented (not a real course resource)");
-      }
-    }
+    parsed = {
+      ...parsed,
+      strengths: parsed.strengths.filter(
+        (s) => studentSeqs.has(s.messageSeq) && isExtractive(s.quote, studentTexts),
+      ),
+      specPointVerdicts: parsed.specPointVerdicts.map((v) =>
+        v.evidenceQuote != null && !isExtractive(v.evidenceQuote, studentTexts)
+          ? { ...v, evidenceQuote: null }
+          : v,
+      ),
+      misconceptionNotes: parsed.misconceptionNotes.map((m) =>
+        m.matchedMisconceptionId != null && !registryCodes.has(m.matchedMisconceptionId)
+          ? { ...m, matchedMisconceptionId: null }
+          : m,
+      ),
+      examAnchors: parsed.examAnchors.filter((a) =>
+        anchorKeys.has(`${a.specPointId}|${a.paperRef}|${a.questionRef}`),
+      ),
+      suggestedPractice: parsed.suggestedPractice.filter((p) =>
+        practiceKeys.has(`${p.label}|${p.resourceType}|${p.href}`),
+      ),
+    };
     for (const imp of parsed.improvements) {
       if (!imp.specPointIds.every((sp) => sessionIds.has(sp))) {
         throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "improvement cites a spec point outside this session");

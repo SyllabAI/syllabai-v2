@@ -602,6 +602,36 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-22 (batch twenty, the Edexcel science tranche 17):
+        # the double-award family — the three 4SD0 linear registers
+        # (bio/chem/phys, DERIVED webs — the 4SD0 register is a verified
+        # text-subset of the separate-science 2017 specs, so each lattice
+        # is the separate-science master web renumbered onto the 4SD0
+        # register, derivation disclosed in the module docstrings) and
+        # all six 4XSD1 modular units (renumbered derivatives of the 4SD0
+        # lattices, two disclosed hops). All nine plain startup installs
+        # (the courses are web-less, 0 served pre, no legacy store).
+        double_award = {
+            "igcse-science-double-award-17-biology": ("f8da_lattice_4sd0bio", "4SD0BIO"),
+            "igcse-science-double-award-17-chemistry": ("f8da_lattice_4sd0chem", "4SD0CHEM"),
+            "igcse-science-double-award-17-physics": ("f8da_lattice_4sd0phys", "4SD0PHYS"),
+            "igcse-science-double-award-modular-24-biology-unit-1": ("f8da_lattice_4xsdbu1", "4XSDBU1"),
+            "igcse-science-double-award-modular-24-biology-unit-2": ("f8da_lattice_4xsdbu2", "4XSDBU2"),
+            "igcse-science-double-award-modular-24-chemistry-unit-1": ("f8da_lattice_4xsdcu1", "4XSDCU1"),
+            "igcse-science-double-award-modular-24-chemistry-unit-2": ("f8da_lattice_4xsdcu2", "4XSDCU2"),
+            "igcse-science-double-award-modular-24-physics-unit-1": ("f8da_lattice_4xsdpu1", "4XSDPU1"),
+            "igcse-science-double-award-modular-24-physics-unit-2": ("f8da_lattice_4xsdpu2", "4XSDPU2"),
+        }
+        if args.course in double_award:
+            mod, tag = double_award[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="twenty", task="T-KG-PRE-22", exporter_ver="v2.5",
+            )
+            return
         # T-KG-PRE-21 (batch nineteen, the Edexcel science tranche 16):
         # the biology family — the 4BI1 linear register (fresh web),
         # both 4XBI1 modular units (renumbered derivatives of the 4BI1
