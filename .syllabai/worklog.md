@@ -770,6 +770,26 @@ Stage Summary:
 - Census after the batch (taken from the spine files): 15 web-less spine-bearing courses remain — the Edexcel double-award family (igcse-science-double-award-17 biology/chemistry/physics 161/157/182 nodes + the six 24-modular units 90/73/101/61/111/73) and the 6 CIE science courses (co-ordinated double-award biology/chemistry/physics 293/240/251, combined science biology/chemistry/physics 103/127/117); the double-award family is the next tranche, subject to the operator's standing order.
 - Anti-truncation asserts: worklog appended append-only (new == old + this section; byte delta == len(section); line delta == section newlines), asserted by this script before commit.
 >>>>>>> 8ab0a31f (T-KG-PRE-21 run-001: F8 rollout batch nineteen — the Edexcel science tranche 16, the biology family (4BI1 linear + both 4XBI1 modular units + YBI11 IAL))
+
+---
+Task ID: T-TEACHGENIE-007 run-001 (live operator order "Remove the limits for now", Discord trace f9485122fd9a94a93659e25f350af676, 2026-11-06T12:01Z)
+Agent: main agent (Super Z, Discord DM session — operating the operator's delegated PAT)
+Task: Lift the daily Teach SillyAI session cap (config-only; every other teach-me law byte-stable) and land it END TO END: PR, merge, API production redeploy, live proof.
+
+Orientation:
+- State read first-hand this session: config.ts is the SINGLE SOURCE (ADR-040 D3/D4; the retune convention from T-TEACHGENIE-001). The D3 quota check is service.ts:386 (fail-closed QUOTA_EXCEEDED, 409). The only hard-coded mirrors are behavioural.test.ts:319 (config sanity) and the contracts teach-me.ts:12 docstring — the latter is a verbatim ADR-040 citation (historical; already carries the older 4-objectives/60k values that T-TEACHGENIE-001 superseded in config.ts only), so it stays untouched. Zero golden cases assert the quota; zero hub bytes display a cap; the census gate classifies hub→core wires only (orthogonal to this diff).
+- Pre-change production evidence: teach_sessions max-per-user-per-day = 3 ALL-TIME, with two users sitting AT the cap today (2026-11-06) — the limit was real and biting, not theoretical. Suite of record: the fixture-replayed behavioural battery 22/22 (T-TEACHGENIE-003 run-002).
+- Deploy reality of record: the API project lost its git integration with the old account's usage suspension (T-TEACHGENIE-003 run-002 receipt); it is now CLI-deployed by the operator (latest 06:22Z today). This lane deploys the API via the operator's delegated Vercel token, PREVIEW-gated before the prod promote, with `vercel rollback` as the named arm.
+- FENCE DISCLOSURE: the R0-integrator/self-merge fence is knowingly overridden by the live operator order — the merge executes with the operator's own delegated PAT at the operator's direct instruction. Disclosed here, in the card, and in the PR body. Revert = one commit (config 999 → 3 + the test mirror).
+
+Work Log:
+- apps/api/src/teach-me/config.ts: quota.dailySessionCap 3 → 999; docstring cites the order, the remaining real bounds (12-call/session D3 ceiling, 20/min per-learner LLM-tier rate limit) and the restore path.
+- apps/api/test/teach-me/behavioural.test.ts: config-sanity mirrors 999 (comment cites the order).
+- .syllabai/tasks/T-TEACHGENIE-007.yaml filed (scope.allowed = the two code lines + this paperwork; anti-gaming/shape/cost/prompts explicitly forbidden).
+- Local gates NOT run in this sandbox (no bun toolchain here) — covered by the PR/main CI on the exact head, disclosed (the T-TEACHGENIE-003 posture).
+
+Stage Summary:
+- Branch t-teachgenie-007/run-001 pushed; PR opened; merge + deploy + live proof to follow as the landing addendum in this entry.
 ## receipt(RN-DEBRIS-11) — run-005: the CIE fleet anchoring run — 22,914 flashcards wired to official spec statements, exam-skills notes folded under an explicit "exam technique (not spec-tied)" label, and the SME-native cross-mapping verified end-to-end — 2026-11-06 (operator order "wire the unanchored flashcards to spec statements via their topic → subtopic → spec-point mapping … fold the exam-skills notes … the revision notes, exam questions and flashcards were imported from savemyexams and are probably mapped among themselves. Verify please" + scope "the CIE fleet", trace 1a1aef3e55afbedd)
 
 Work Log:
