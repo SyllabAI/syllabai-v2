@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { boardOf, loadHubCourse } from "@/lib/courses";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { NotesIndex, type NoteListItem } from "./notes-index";
 import type { RevisionNote } from "@/lib/contracts";
 
@@ -42,8 +42,8 @@ export default async function CourseRevisionNotesPage({
   }));
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
-      <CourseHeader
+    <div className="px-4 py-6 sm:px-6 lg:px-8">
+      <CoursePageHeader
         meta={meta}
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Revision Notes`}
         crumb="Revision Notes"

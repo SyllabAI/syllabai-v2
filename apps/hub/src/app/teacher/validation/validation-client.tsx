@@ -41,6 +41,7 @@ import { useIdentity } from "@/lib/identity";
 import { useContentReviews, type ReviewVerdict } from "@/lib/teacher/stores";
 import type { SwitchableCourse } from "@/lib/teacher/types";
 import { cn } from "@/lib/utils";
+import { PageHeader } from "@/components/layout/page-header";
 
 interface QueueItem {
   resourceId: string;
@@ -182,29 +183,32 @@ export function ValidationClient({
 
   return (
     <div className="space-y-6">
-      {/* header */}
-      <div className="space-y-1.5">
-        <div className="flex items-center gap-2">
-          <Badge variant="outline" className="gap-1 text-[10px] font-normal">
-            <FileCheck2 className="size-3" aria-hidden />
-            Validation
-          </Badge>
-          <Badge variant="secondary" className="text-[10px] font-normal">
-            Phase 2 · demo-truth
-          </Badge>
-        </div>
-        <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
-          AI content validation
-        </h1>
-        <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          The teacher gate in the content loop: AI-authored model solutions are reviewed before
-          they count toward mastery. The queue lists real items from the committed question bank —
-          nothing is invented. Verdicts persist locally in the demo until the write path exists
-          (Phase 1 data foundation); in production this queue is backed by{" "}
-          <span className="font-mono text-xs">ContentReview</span> and enforced at the pipeline
-          boundary.
-        </p>
-      </div>
+      {/* header — T-HEADER-1: the shared tool-page header (badge row rides
+          the eyebrow slot; font-display dropped). */}
+      <PageHeader
+        eyebrow={
+          <span className="flex items-center gap-2">
+            <Badge variant="outline" className="gap-1 text-[10px] font-normal">
+              <FileCheck2 className="size-3" aria-hidden />
+              Validation
+            </Badge>
+            <Badge variant="secondary" className="text-[10px] font-normal">
+              Phase 2 · demo-truth
+            </Badge>
+          </span>
+        }
+        title="AI content validation"
+        description={
+          <>
+            The teacher gate in the content loop: AI-authored model solutions are reviewed before
+            they count toward mastery. The queue lists real items from the committed question bank —
+            nothing is invented. Verdicts persist locally in the demo until the write path exists
+            (Phase 1 data foundation); in production this queue is backed by{" "}
+            <span className="font-mono text-xs">ContentReview</span> and enforced at the pipeline
+            boundary.
+          </>
+        }
+      />
 
       <TeacherNav />
 

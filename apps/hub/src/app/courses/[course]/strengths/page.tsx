@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { loadHubCourse } from "@/lib/courses";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { StrengthsPanel } from "./strengths-panel";
 import { allCourseParams } from "@/lib/static-params";
 
@@ -40,7 +40,7 @@ export default async function StrengthsPage({
           1a19368d4aa8384d) — the course root's body tab trio carries
           Strengths & Weaknesses now, so this deep-linked page renders the
           bare hero. */}
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         title="Strengths & Weaknesses"
         crumb="Strengths & Weaknesses"

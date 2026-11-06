@@ -34,6 +34,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { TeacherNav } from "@/components/teacher/teacher-nav";
 import { TOOLKIT_TOOLS, toolkitToolMeta } from "@/components/teaching-toolkit/presets";
 import { api, ApiError } from "@/lib/api";
+import { PageHeader } from "@/components/layout/page-header";
 import type {
   ToolkitClassContextView,
   ToolkitQuotaView,
@@ -179,22 +180,26 @@ export function ToolkitClient({
     <div className="space-y-6">
       <TeacherNav />
 
-      <header className="space-y-1.5">
-        <div className="flex flex-wrap items-center gap-2">
-          <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
+      {/* T-HEADER-1: the shared tool-page header (badges ride the title row;
+          font-display dropped). */}
+      <PageHeader
+        title={
+          <span className="flex flex-wrap items-center gap-2">
             Teaching Toolkit
-          </h1>
-          <Badge variant="outline" className="text-[10px] font-normal">
-            Phase 3
-          </Badge>
-          <QuotaBadge quota={quota} />
-        </div>
-        <p className="max-w-3xl text-sm text-muted-foreground">
-          Four AI generators that work <em>from your classes</em>: pick a class and its subject,
-          board and level are resolved for you — every document is grounded in that course&apos;s
-          curriculum. Generated drafts are a first pass: review before classroom use.
-        </p>
-      </header>
+            <Badge variant="outline" className="text-[10px] font-normal">
+              Phase 3
+            </Badge>
+            <QuotaBadge quota={quota} />
+          </span>
+        }
+        description={
+          <>
+            Four AI generators that work <em>from your classes</em>: pick a class and its subject,
+            board and level are resolved for you — every document is grounded in that course&apos;s
+            curriculum. Generated drafts are a first pass: review before classroom use.
+          </>
+        }
+      />
 
       {/* class picker — the subject picker's replacement */}
       <section aria-label="Class" className="space-y-2">

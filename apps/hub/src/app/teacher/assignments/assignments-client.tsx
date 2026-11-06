@@ -55,6 +55,7 @@ import { useSavedTests } from "@/lib/teacher/stores";
 import type { AssembledTest } from "@/lib/teacher/test-assembly";
 import type { SwitchableCourse, TeacherCourseData } from "@/lib/teacher/types";
 import { cn } from "@/lib/utils";
+import { PageHeader } from "@/components/layout/page-header";
 
 const DAY = 24 * 60 * 60 * 1000;
 
@@ -475,25 +476,23 @@ export function AssignmentsClient({
 
   return (
     <div className="space-y-6">
-      {/* header */}
-      <div className="space-y-1.5">
-        <div className="flex items-center gap-2">
-          <Badge variant="outline" className="gap-1 text-[10px] font-normal">
-            <ClipboardList className="size-3" aria-hidden />
-            Assignments
-          </Badge>
-          <Badge variant="secondary" className="text-[10px] font-normal">
-            core-backed · live
-          </Badge>
-        </div>
-        <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">Assignments</h1>
-        <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          Build from the question bank, assign to your cohort, set a due date, and track real
-          completion — the full assignment cycle on your SyllabAI account. Assembly uses the same
-          marks-aware rules as the Test Builder; the roster and completion data below are real
-          learner hand-ins recorded on core (the SAMPLE roster sim is retired).
-        </p>
-      </div>
+      {/* header — T-HEADER-1: the shared tool-page header (badge row rides
+          the eyebrow slot; font-display dropped per the one-family law). */}
+      <PageHeader
+        eyebrow={
+          <span className="flex items-center gap-2">
+            <Badge variant="outline" className="gap-1 text-[10px] font-normal">
+              <ClipboardList className="size-3" aria-hidden />
+              Assignments
+            </Badge>
+            <Badge variant="secondary" className="text-[10px] font-normal">
+              core-backed · live
+            </Badge>
+          </span>
+        }
+        title="Assignments"
+        description="Build from the question bank, assign to your cohort, set a due date, and track real completion — the full assignment cycle on your SyllabAI account. Assembly uses the same marks-aware rules as the Test Builder; the roster and completion data below are real learner hand-ins recorded on core (the SAMPLE roster sim is retired)."
+      />
 
       <TeacherNav />
 

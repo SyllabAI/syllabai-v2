@@ -1416,3 +1416,19 @@ Work Log:
 
 Stage Summary:
 - Branch t-nav-strip-2/run-001 pushed; PR opened for operator eyeball (design change — NOT self-merged). Next knobs if the verdict is harsher: full revert (one class), MG-style subset gating on mobile, below-hero position.
+
+---
+Task ID: T-HEADER-1 run-001 (operator scope pick "A, full unification", trace 1a1b173567f8eb99, after the header audit of trace 1a1b16dba1e17571)
+Agent: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4)
+Task: Unify the page-header block — one title scale law (MG parity): shared PageHeader for every tool/detail page, hero band reserved for landers, one title family, one course container.
+
+Work Log:
+- Built PageHeader (components/layout/page-header.tsx): breadcrumbs + eyebrow (badge rows) + h1 text-2xl bold tracking-tight + actions + description + children — bare block, no card. PageHero gains the breadcrumbs prop; CourseHeader is now a thin PageHero wrapper (identical visuals); CoursePageHeader added for course tool pages (same trail + exam pill on the shared block).
+- Conversions (~35 call sites): 16 course subpages CourseHeader→CoursePageHeader (root keeps the hero — lander); 5 course detail pages (sm:text-3xl / sm:text-[28px] escalations dropped); 6 learner/directory pages (courses index 3xl→2xl; past-pairs xl→2xl); 14 teacher blocks (font-display dropped everywhere; class workspace 3xl/4xl→2xl; badge rows ride the eyebrow slot; back links ride breadcrumbs).
+- Containers: 5 outliers unified to the majority course container px-4 py-6 sm:px-6 lg:px-8 (flashcards/exam-questions/revision-notes/teach-genie ×4 states max-w-3xl → full; books px-3 py-4 → full).
+- Exemptions of record: workspace-chrome headings (tutor chat, plan wizard, KG surfaces, assistant, source-reader, book strength check) per the MG essay-marker precedent; demo/login font-display out of fence.
+- GATES of record (first-hand): bunx tsc --noEmit (apps/hub) exit 0 at three checkpoints; eslint across all 46 touched files = 4 problems ALL pre-existing on main (stash-baseline verified: drill exhaustive-deps + unused-disable, toolkit 2× set-state-in-effect) — zero new.
+- Visual QA (dev server :3100 + minted teacher JWT, download/t-header-1/qa/): course root hero intact; exam-questions ≡ revision-notes headers; 390px stack coherent (strip under Menu bar per #820); reconstructed paper on the shared block; dashboard PageHero regression-free; teacher/learner/directory surfaces on the one law.
+
+Stage Summary:
+- Branch t-header-1/run-001 pushed; PR opened for operator eyeball (design change — NOT self-merged; run-002 fence). Rollback = revert of one PR.

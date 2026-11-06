@@ -797,3 +797,11 @@ Stage Summary:
 - course-tool-nav.tsx nav gains lg:hidden (tailwind-merge override hatch: caller passes lg:block); registry/items/order/gates/active-law/root+viewer suppressions byte-untouched.
 - Gates first-hand: bunx tsc --noEmit (apps/hub) exit 0; bunx eslint course-tool-nav.tsx exit 0 (bun install 988 packages first).
 - NOT self-merged — design change; operator reviews the PR preview first. Receipt of record: .syllabai/receipts/T-NAV-STRIP-1/run-002.md. Sandbox NOTE: recycle had stripped ref/syllabai-v2/.git (outer-repo accident repaired; sparse blobless clone restored, /tmp store refreshed).
+
+## receipt(T-HEADER-1) — run-001: the page-header unification (one title law, MG parity) — 2026-11-06 (operator scope pick "A, full unification", trace 1a1b173567f8eb99)
+
+- Audit of record: topbar was uniform (h-14); the page-header block was two languages (hero band 3xl/4xl on 17 course pages + dashboard + teacher home vs 6+ bare-h1 treatments incl. teacher font-display and two detail-page sm: scales) + 5 container outliers.
+- Laws landed: PageHeader (text-2xl bold, breadcrumbs/eyebrow/actions/description slots) for every tool/detail page; PageHero lander-only (course root, dashboard, teacher home) with a new breadcrumbs prop (CourseHeader = thin wrapper); font-display dropped from all page titles; one course container.
+- ~35 call sites converted; exam-code pill affordance preserved on every course page (CoursePageHeader default action). Workspace-chrome headings exempt (MG essay-marker precedent).
+- Gates first-hand: tsc exit 0 ×3 checkpoints; eslint = 4 problems all pre-existing on main (stash-baseline verified), zero new. Visual QA: 10 surfaces, download/t-header-1/qa/.
+- NOT self-merged — operator reviews the PR preview first. Receipt of record: .syllabai/receipts/T-HEADER-1/run-001.md.

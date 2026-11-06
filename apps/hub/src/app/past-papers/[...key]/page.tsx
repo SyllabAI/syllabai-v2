@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink, FileText, ScrollText } from "lucide-react";
+import { PageHeader } from "@/components/layout/page-header";
 import {
   allArchiveSpecs,
   archivePapersForSpec,
@@ -84,20 +85,25 @@ export default async function SpecArchivePage({
         All specifications
       </Link>
 
-      <div className="mt-2 flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="flex flex-wrap items-center gap-2 text-xl font-bold tracking-tight">
+      {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
+          (was text-xl); the session-count badge rides the actions slot. */}
+      <PageHeader
+        className="mt-2"
+        title={
+          <span className="flex flex-wrap items-center gap-2">
             <ScrollText className="size-5 text-primary" aria-hidden />
             {specTitle(spec)}
-          </h1>
-          <p className="mt-1 text-xs text-muted-foreground">
-            <span className="font-mono text-[11px]">{specKey}</span>
-          </p>
-        </div>
-        <Badge variant="secondary" className="font-medium">
-          {papers.length} papers · {sessions.length} session{sessions.length === 1 ? "" : "s"}
-        </Badge>
-      </div>
+          </span>
+        }
+        description={
+          <span className="font-mono text-[11px]">{specKey}</span>
+        }
+        actions={
+          <Badge variant="secondary" className="font-medium">
+            {papers.length} papers · {sessions.length} session{sessions.length === 1 ? "" : "s"}
+          </Badge>
+        }
+      />
 
       <div className="mt-4 flex flex-wrap items-center gap-1.5">
         {courseSlug && (

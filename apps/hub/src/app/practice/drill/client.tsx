@@ -20,6 +20,7 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Atom, CheckCircle2, ChevronRight, RefreshCw, XCircle } from "lucide-react";
+import { PageHeader } from "@/components/layout/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -512,15 +513,14 @@ export function DrillClient({ course }: { course: string }) {
 
 function DrillHeading() {
   return (
-    <div>
-      <h1 className="flex items-center gap-2 text-2xl font-bold tracking-tight">
-        <Atom className="size-5 text-primary" aria-hidden />
-        Spec-point drill
-      </h1>
-      <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-        Five random parts at one syllabus address, drawn from the tagged corpus of record. Answer, reveal
-        the solution instantly, retake forever — the strength-test habit, zero stakes.
-      </p>
-    </div>
+    <PageHeader
+      title={
+        <span className="flex items-center gap-2">
+          <Atom className="size-5 text-primary" aria-hidden />
+          Spec-point drill
+        </span>
+      }
+      description="Five random parts at one syllabus address, drawn from the tagged corpus of record. Answer, reveal the solution instantly, retake forever — the strength-test habit, zero stakes."
+    />
   );
 }

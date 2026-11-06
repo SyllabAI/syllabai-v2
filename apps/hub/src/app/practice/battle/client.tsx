@@ -20,6 +20,7 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Bot, CheckCircle2, ChevronRight, Clock, RefreshCw, Swords, XCircle } from "lucide-react";
+import { PageHeader } from "@/components/layout/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -520,15 +521,14 @@ export function BattleClient({ course }: { course: string }) {
 
 function BattleHeading() {
   return (
-    <div>
-      <h1 className="flex items-center gap-2 text-2xl font-bold tracking-tight">
-        <Swords className="size-5 text-primary" aria-hidden />
-        Strength Battle
-      </h1>
-      <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-        Three questions, sixty seconds, head-to-head at one spec-point address — the same real past-paper bank the
-        drill serves, with model-drawn sets and the examiner&apos;s mark schemes revealed instantly.
-      </p>
-    </div>
+    <PageHeader
+      title={
+        <span className="flex items-center gap-2">
+          <Swords className="size-5 text-primary" aria-hidden />
+          Strength Battle
+        </span>
+      }
+      description="Three questions, sixty seconds, head-to-head at one spec-point address — the same real past-paper bank the drill serves, with model-drawn sets and the examiner's mark schemes revealed instantly."
+    />
   );
 }
