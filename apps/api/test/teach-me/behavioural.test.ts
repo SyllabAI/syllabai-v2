@@ -196,11 +196,12 @@ describe("teach-me behavioural gate (T-MIG-039, ADR-040)", () => {
   });
 
   it("prompt pinning: the TS module is byte-identical to the pinned .md sources (bump, never edit)", async () => {
-    const { PUPIL_CHARTER_V3, TEACHME_TURN_V3, TEACHME_REVIEW_V1 } = await import("../../src/teach-me/prompts");
+    const { PUPIL_CHARTER_V3, TEACHME_TURN_V3, TEACHME_REVIEW_V1, TEACHME_REVIEW_V2 } = await import("../../src/teach-me/prompts");
     const dir = join(import.meta.dir, "../../src/teach-me/prompts");
     expect(PUPIL_CHARTER_V3).toBe(readFileSync(join(dir, "pupil-v3.md"), "utf-8"));
     expect(TEACHME_TURN_V3).toBe(readFileSync(join(dir, "teachme-turn-v3.md"), "utf-8"));
     expect(TEACHME_REVIEW_V1).toBe(readFileSync(join(dir, "teachme-review-v1.md"), "utf-8"));
+    expect(TEACHME_REVIEW_V2).toBe(readFileSync(join(dir, "teachme-review-v2.md"), "utf-8"));
     // the fused prompt must carry the charter verbatim (the {{PUPIL_CHARTER}} fill)
     expect(TEACHME_TURN_V3).toContain("{{PUPIL_CHARTER}}");
   });
