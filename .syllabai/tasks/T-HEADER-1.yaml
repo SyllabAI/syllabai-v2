@@ -1,0 +1,55 @@
+version: 1
+task:
+  id: T-HEADER-1
+  title: 'Page-header unification — ONE title scale law (MG parity): a shared
+    PageHeader (breadcrumbs + text-2xl bold title + actions + one-line description)
+    for every tool/detail page; the pastel hero band reserved for LANDERS only
+    (course root, dashboard, teacher home); one title family; one course container'
+  owner: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4, chat
+    0fe43d89-ff92-4e81-857a-1b1c6040a895, dispatch trace 1a1b173567f8eb99 — operator
+    scope pick "A, full unification" after the header audit of trace 1a1b16dba1e17571)
+  status: 'IN_PROGRESS # run-001 (PageHeader + hero consolidation + call-site conversions)'
+  priority: P1
+  band: T-HEADER (page-header unification — MathsGenie title-scale parity)
+  wave: hub-nav
+  deps: []
+  scope:
+    allowed:
+    - apps/hub/src/components/layout/page-header.tsx (NEW — the tool-page header:
+      breadcrumbs slot, h1 text-2xl font-bold tracking-tight, actions slot, optional
+      one-line description, eyebrow slot; bare block, no card/band)
+    - apps/hub/src/components/dashboard/kit/page-hero.tsx (gains breadcrumbs prop —
+      the hero generalises; visual identity unchanged)
+    - apps/hub/src/components/hub/course-header.tsx (becomes a PageHero wrapper —
+      17 call sites keep their API; only the course ROOT keeps the hero)
+    - course subpage + detail call sites, learner tool pages, teacher inner pages
+      (bare-h1 blocks swap to PageHeader; teacher drops font-display; content and
+      handlers byte-preserved around the heading block)
+    - container fixes (flashcards index max-w-3xl outlier -> the sibling course
+      container px-4 py-6 sm:px-6 lg:px-8)
+    - .syllabai/tasks/T-HEADER-1.yaml + .syllabai/receipts/T-HEADER-1/** +
+      worklog.md + .syllabai/worklog.md (append-only)
+    forbidden:
+    - course ROOT hero removal (lander exception is the law; MG home/resources run
+      big too), the marketing home page (pre-app brand surface, out of fence)
+    - workspace-chrome h1s (tutor chat, plan wizard steps, knowledge-graph,
+      graph-explorer, assistant, source-reader — panel titles inside full-height
+      workspaces, MG's essay-marker has no page title either)
+    - routes/slugs, data loaders, gates, bundles, DB, contracts, apps/api/**
+    - the course tool strip + sidebar + root tab trio (T-NAV-STRIP-1 territory)
+    - self-merge (design change; operator eyeballs the PR preview first — run-002 fence)
+  notes: 'AUDIT of record (2026-11-06, trace 1a1b16dba1e17571): the global topbar is
+    uniform (h-14 sticky + h-11 badge aside); the inconsistency is the page-header
+    block — TWO languages (pastel hero 3xl/4xl extrabold on 17 course pages +
+    dashboard + teacher home vs 6+ bare-h1 treatments: course details text-2xl with
+    two sm: scales [3xl / 28px], learner tools xl/2xl bold, teacher font-display
+    2xl/3xl + workspace 3xl/4xl, courses index 3xl) and container drift
+    (flashcards max-w-3xl vs siblings px-4 py-6 sm:px-6 lg:px-8). MG evidence
+    (tool-results/mg-rd captures): EVERY tool page runs font-title text-2xl bold
+    (course/lessons/papers/questions/revguides identical); only landers (home,
+    resources) run bigger — that is the consistency the operator sees in MG/RD.
+    LAWS: (1) scale — tool/detail pages PageHeader text-2xl bold tracking-tight,
+    hero band ONLY on course root/dashboard/teacher home; (2) family — page titles
+    drop font-display (hero family default sans is the app majority); (3) container
+    — one course content container; (4) height honesty — description optional but
+    one block, same rhythm everywhere.'
