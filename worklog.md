@@ -1571,3 +1571,15 @@ Work Log:
 - RACE (first-hand): receipt-only 2fc4735e (pushed 54s after 8b51b331's build) built despite the gate skipping it locally (rc=0) — Vercel-side stale-checkout race during rapid pushes; throttle shrinks exposure; bake floor keeps prod convergent (newest READY holds the alias).
 - Bake floor: dispatched run 42366210560 executed end-to-end (idempotence gate correctly detected prod≠HEAD after main advanced, proceeded to bake) — first Actions-run CLI bake of record.
 - This push (single .syllabai-only push to main) doubles as the post-race skip-proof: expect ZERO new deployments from it.
+
+## receipt(T-VERCEL-USAGE) — run-005: the bake floor's state-aware read — 2026-11-07
+- Cause (first-hand): run-004's dispatch proved the state-blind read (limit=1) suppresses on an in-flight HEAD build; the same blindness would let an ERROR/CANCELED newest deployment freeze the floor (fail-closed, run-002 law violated).
+- Fix: read step now picks the newest LIVE deployment (READY/BUILDING/QUEUED/INITIATING, limit=5); dead newest ignored; all-dead/empty -> bake. sha+state both exported; log prints the chosen state.
+- Asserts: YAML safe_load OK; 5/5 fixtures PASS (CANCELED-falls-through, ERROR-falls-through, BUILDING-suppresses, all-dead-bakes, empty-bakes). Two local YAML/python-indent iterations caught by asserts pre-push (disclosed in receipt).
+- First real staleness-catch: bake run 42369036435 dispatched on main 61b9a53a while prod held 135bf1c17 (#784 linkfix + #843/#846 bytes stranded by cancel-supersede in the merge train) — outcome recorded post-run.
+- Merge authority: operator order "merge it fleet-style" (zai-web, 2026-11-07); zero app/contract/config bytes (workflow read-step + docs only).
+
+## receipt(T-VERCEL-USAGE) — run-005 addendum: the daily-cap event + the backlog drain — 2026-11-07
+- CAP EVENT (first-hand): the first real staleness-catch bake (run 42369036435) was refused by Vercel — "api-deployments-free-per-day" (more than 100): the NEW account exhausted its daily allowance in the transition window; hub project created 64 deployments today (29 stuck QUEUED at census). Floor behavior of record: tried, refused, next scheduled dispatch self-heals after reset; no operator action.
+- BACKLOG DRAIN: all 30 non-terminal deployments classified vs main HEAD pre-cancellation (27+1 superseded ancestors / 3 stale lane previews / 0 current) and cancelled — they would otherwise have aliased prod backward and re-burned the reset allowance serially (~4-5h). Post-drain: 0 QUEUED, 0 BUILDING; prod holds newest READY 135bf1c17 until the first post-reset bake.
+- Steady-state projection: lane gate (proven) + main diff gate + 1 nightly bake ≈ two orders of magnitude under the 100/day cap.

@@ -50,11 +50,23 @@ jobs:
           VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
           PROJECT_ID: prj_idqk5yM3leODE1Rmm2pPNKxy2x6m
         run: |
-          SHA=$(curl -sSf -H "Authorization: Bearer $VERCEL_BAKE_TOKEN" \
-            "https://api.vercel.com/v6/deployments?projectId=$PROJECT_ID&target=production&limit=1" \
-            | python3 -c "import json,sys;d=json.load(sys.stdin);dep=(d.get('deployments') or [{}])[0];print((dep.get('meta') or {}).get('githubCommitSha',''))")
-          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
-          echo "production sha: ${SHA:0:10} (empty = nothing READY yet -> bake)"
+          # run-005: state-aware read — the newest LIVE deployment (READY /
+          # BUILDING / QUEUED / INITIATING) is what "production is at" means.
+          # ERROR/CANCELED newest entries are IGNORED: a dead newest can never
+          # freeze the floor (run-002 law: fail open toward freshness), while
+          # an in-flight HEAD build still suppresses a duplicate bake.
+          curl -sSf -H "Authorization: Bearer $VERCEL_BAKE_TOKEN" \
+            "https://api.vercel.com/v6/deployments?projectId=$PROJECT_ID&target=production&limit=5" \
+            | python3 -c "
+          import json, os, sys
+          live = {'READY', 'BUILDING', 'QUEUED', 'INITIATING'}
+          pick = next((d for d in json.load(sys.stdin).get('deployments', []) if d.get('state') in live), None)
+          sha = (pick.get('meta') or {}).get('githubCommitSha', '') if pick else ''
+          state = pick.get('state', 'none') if pick else 'none'
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write('sha=' + sha + chr(10) + 'state=' + state + chr(10))
+          print('newest live deployment: ' + state + ' @ ' + (sha[:10] if sha else '(none)'))
+          "
 
       - name: Skip when production is already current
         if: steps.prod.outputs.sha == steps.head.outputs.sha
