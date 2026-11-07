@@ -3,7 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { Filter } from "lucide-react";
 import { boardOf, getCourseBundle, loadHubCourse } from "@/lib/courses";
 import { getDataProvider } from "@/lib/data";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { QuestionbankIndex, type QbLooseSet, type QbTopic } from "./questionbank-index";
 import type { Course } from "@/lib/progress";
 
@@ -181,8 +181,8 @@ export default async function ExamQuestionsIndexPage({
         .map((t) => ({ slug: t.slug, title: t.setName ? `${t.name} — ${t.setName}` : t.name, count: t.questions.length }));
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
-      <CourseHeader
+    <div className="px-4 py-6 sm:px-6 lg:px-8">
+      <CoursePageHeader
         meta={meta}
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Exam Questions`}
         crumb="Exam Questions"

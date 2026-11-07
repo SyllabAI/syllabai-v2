@@ -1416,3 +1416,32 @@ Work Log:
 
 Stage Summary:
 - Branch t-nav-strip-2/run-001 pushed; PR opened for operator eyeball (design change — NOT self-merged). Next knobs if the verdict is harsher: full revert (one class), MG-style subset gating on mobile, below-hero position.
+
+---
+Task ID: T-HEADER-1 run-001 (operator scope pick "A, full unification", trace 1a1b173567f8eb99, after the header audit of trace 1a1b16dba1e17571)
+Agent: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4)
+Task: Unify the page-header block — one title scale law (MG parity): shared PageHeader for every tool/detail page, hero band reserved for landers, one title family, one course container.
+
+Work Log:
+- Built PageHeader (components/layout/page-header.tsx): breadcrumbs + eyebrow (badge rows) + h1 text-2xl bold tracking-tight + actions + description + children — bare block, no card. PageHero gains the breadcrumbs prop; CourseHeader is now a thin PageHero wrapper (identical visuals); CoursePageHeader added for course tool pages (same trail + exam pill on the shared block).
+- Conversions (~35 call sites): 16 course subpages CourseHeader→CoursePageHeader (root keeps the hero — lander); 5 course detail pages (sm:text-3xl / sm:text-[28px] escalations dropped); 6 learner/directory pages (courses index 3xl→2xl; past-pairs xl→2xl); 14 teacher blocks (font-display dropped everywhere; class workspace 3xl/4xl→2xl; badge rows ride the eyebrow slot; back links ride breadcrumbs).
+- Containers: 5 outliers unified to the majority course container px-4 py-6 sm:px-6 lg:px-8 (flashcards/exam-questions/revision-notes/teach-genie ×4 states max-w-3xl → full; books px-3 py-4 → full).
+- Exemptions of record: workspace-chrome headings (tutor chat, plan wizard, KG surfaces, assistant, source-reader, book strength check) per the MG essay-marker precedent; demo/login font-display out of fence.
+- GATES of record (first-hand): bunx tsc --noEmit (apps/hub) exit 0 at three checkpoints; eslint across all 46 touched files = 4 problems ALL pre-existing on main (stash-baseline verified: drill exhaustive-deps + unused-disable, toolkit 2× set-state-in-effect) — zero new.
+- Visual QA (dev server :3100 + minted teacher JWT, download/t-header-1/qa/): course root hero intact; exam-questions ≡ revision-notes headers; 390px stack coherent (strip under Menu bar per #820); reconstructed paper on the shared block; dashboard PageHero regression-free; teacher/learner/directory surfaces on the one law.
+
+Stage Summary:
+- Branch t-header-1/run-001 pushed; PR opened for operator eyeball (design change — NOT self-merged; run-002 fence). Rollback = revert of one PR.
+Task ID: T-THEME-LOCAL-1 run-001 (operator order trace 1a1b1e31ca7141e1: "Theme must be browser saved only", issued after the live two-account theme experiment proved the account-doc carrier)
+Agent: Super Z (zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355)
+Task: Reverse the THEME leg of the T-ACCOUNT-ONLY sweep — the theme is a browser record again; every other pref store stays an account doc.
+
+Work Log:
+- Live proof of the carrier being reversed (agent-browser, www.syllab-ai.com): fresh wiped browser -> student {quiet-green,dark} PUT /api/v1/me/documents/theme 200; sign-out -> default sme (no account, no theme); teacher -> loads its OWN account doc, set {candy-shop,dark} PUT 200; sign-out -> default; student re-login -> {quiet-green,dark} RESTORED. Two accounts, two themes, one browser, all server-side — the operator then ordered the theme leg back to the browser.
+- SHIPPED (branch t-theme-local-1/run-001 @ main 55b586e0; 3 code files + task yaml + receipt): theme-store.ts REWRITE (localStorage["syllabai-theme"] is the primary store again; one-time account-doc adoption when the device holds no record of its own — device wins — then ONE honest-null PUT retires the account copy, converging every row to the honest null after its first post-revert login; deliberately NOT wired to onAccountDocsReset — sign-out/account switches never clear the theme; exported contract unchanged, theme-toggle.tsx byte-untouched, "sme" keeps the T-UX-STUDENT-COPY label "SyllabAI"); layout.tsx (the inline no-flash bootstrap reads localStorage["syllabai-theme"] pre-paint again — the sweep's system-default-only bootstrap and its flash-of-default cost are gone); theme-store.test.ts NEW (8 fixtures over the REAL store + REAL engine, house harness: browser-primary, junk->default, subscriber law, sign-out survival, adoption, device-wins, single retirement PUT, zero account traffic without a theme doc).
+- MIRROR LAW of record: the sweep adopted the device key once into the account (no-data-loss clause) and retired the device key once clean; the revert adopts the account doc once into the device and retires the account copy once the device record is clean. contracts keep "theme" in the workspace-document vocabulary (existing rows stay readable; GET never 400s on legacy rows) — contracts/db/api/engine bytes untouched. Every OTHER pref store stays an account doc (cla-panel-mode, dashboard-prefs, course-shell-prefs, teacher-shell-prefs, tutor-prefs, pdf-viewer-prefs, note-scroll:<slug>, progress:<slug>) — the operator order named the THEME only.
+- GATES of record (first-hand; bun 1.3.14 == pinned): bunx tsc --noEmit (apps/hub) exit 0; bunx eslint on the 3 touched files 0 errors; bun test (apps/hub full) 1189 pass / 9 fail vs a PRISTINE origin/main worktree's 1181 pass / 9 fail — the nine failures IDENTICAL test-for-test (progress:<slug> ×3, ugm-katex corpus ×1, dual-run posture ×5), +8 = exactly the new fixtures, zero regressions; bunx next build exit 0 (first attempt ENOSPC'd the rootfs — baseline worktree removed, node_modules repaired by fresh bun install, build re-run clean; no code implication).
+- FENCES respected: zero bundle/data/contracts/db/API bytes; no route/flag changes; author did not self-merge (landing needs the integrator).
+
+Stage Summary:
+- Branch t-theme-local-1/run-001 pushed; PR opened for operator eyeball (behavior change — NOT self-merged). After merge: theme changes write ONLY the browser record (no theme PUTs), the theme survives sign-out and account switches on the same browser, other browsers/devices start at the system default, and each account's stale theme doc self-retires to the honest null on its first post-revert login.

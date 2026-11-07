@@ -8,6 +8,7 @@ import { findGuidedEntry, loadGuidedIndex } from "@/lib/guided-lessons";
 import { sanitizeNoteBody } from "@/lib/note-body-fix";
 import { Markdown } from "@/components/markdown";
 import { Breadcrumbs } from "@/components/hub/chrome";
+import { PageHeader } from "@/components/layout/page-header";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import { NoteCla } from "@/components/cla/note-cla";
 import { NoteFootnote } from "./note-footnote";
@@ -78,13 +79,18 @@ export default async function NoteReaderPage({
             ]}
           />
 
-          <header className="space-y-3">
-            <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-[28px]">
-              {note.title}{" "}
-              <span className="text-muted-foreground">
-                ({boardOf(meta)} {meta.level} {meta.subject})
-              </span>
-            </h1>
+          {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
+              (was sm:text-[28px]); the trust meta rides as a child. */}
+          <PageHeader
+            title={
+              <>
+                {note.title}{" "}
+                <span className="text-muted-foreground">
+                  ({boardOf(meta)} {meta.level} {meta.subject})
+                </span>
+              </>
+            }
+          >
             {/* trust meta — the SyllabAI analogue of SME's authorship block.
                 Board-aware (CIE wave): registry-explicit board, else the
                 founding "Pearson Edexcel" — pre-CIE rows render byte-identical. */}
@@ -103,7 +109,7 @@ export default async function NoteReaderPage({
                   stays in the data contract (corpus tooling joins on it), it
                   just no longer renders on the page. */}
             </div>
-          </header>
+          </PageHeader>
 
           {/* contextual help (CLA) — the note-anchored assistant. The floating
               CLA button opens the overlay (the guided-study banner was removed

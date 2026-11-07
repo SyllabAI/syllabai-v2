@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { loadHubCourse } from "@/lib/courses";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import { DeckPlayer, type DeckCard } from "./deck-player";
 import { pilotFlashcardParams } from "@/lib/static-params";
@@ -72,7 +72,7 @@ export default async function FlashcardDeckPage({
         <div className="mx-auto max-w-3xl">
           {/* "(Chemistry)" was redundant with breadcrumb + sidebar and wrapped
               the h1 to two lines at 390px (UX audit P3-16) */}
-          <CourseHeader
+          <CoursePageHeader
             meta={meta}
             title={`${deckTitle}: Flashcards`}
             crumb={deckTitle}
