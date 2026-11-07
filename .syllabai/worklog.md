@@ -1665,3 +1665,10 @@ Work Log:
 - §5 ITEM 4 LANDED: PR #843 — TU-8 study-use page (honest destination), TU-12 clear-all confirm (s143 law), TU-15 touch hint, TU-5 raw-id pill guard, TU-7 student-facing refusal tails (stem byte-frozen). TU-14 deliberately untouched (P3, visual-pass gate).
 - OPEN AFTER THIS QUEUE: T-TUTOR-MOLES-1 (the moles class); TU-14 visual pass; the full dictation manual pass; the calculation battery; E-01's doc of record; the rights position (H-01/P-01); demo phase-2 full removal; G4 token rotation (incl. the credential follow-up flag above); the hub build queue draining (the #843/#845 hub builds serve when the slot frees — the entry-router live probe rides that build).
 - Anti-truncation asserts: worklog appended append-only (byte delta == len(section); line delta == section newlines), asserted by this filing script before push.
+
+## receipt(T-VERCEL-USAGE) — run-004 post-merge verification + the rapid-push race observation — 2026-11-07
+- Hotfix build dpl_5HU5Q (3e7ec207e) READY 10:52Z — 256-char fix proven in prod; alias moved.
+- Queue deduped ×4 (superseded-content only, disclosed per-cancellation in the receipt addendum) — surgical dedup, not cancel-churn.
+- RACE (first-hand): receipt-only 2fc4735e (pushed 54s after 8b51b331's build) built despite the gate skipping it locally (rc=0) — Vercel-side stale-checkout race during rapid pushes; throttle shrinks exposure; bake floor keeps prod convergent (newest READY holds the alias).
+- Bake floor: dispatched run 42366210560 executed end-to-end (idempotence gate correctly detected prod≠HEAD after main advanced, proceeded to bake) — first Actions-run CLI bake of record.
+- This push (single .syllabai-only push to main) doubles as the post-race skip-proof: expect ZERO new deployments from it.
