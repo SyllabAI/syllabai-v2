@@ -256,17 +256,23 @@ export function Markdown({
             }
             // corpus images are hotlinked from the public resources repo
             if (s.startsWith("https")) {
-              // UX audit 2026-10-02 #21: bare <img> without dimensions — every
-              // hotlinked note image reflowed the page while loading (CLS).
-              // A fixed 16:9 box with object-contain reserves the layout: any
-              // intrinsic ratio letterboxes inside, nothing shifts.
+              // Full-width natural-aspect figures. Supersedes UX audit
+              // 2026-10-02 #21 (fixed 16:9 object-contain box): that box
+              // reserved layout height to kill image-load CLS, but locked
+              // ~850px-wide SME-Rev / SME-ExamQuestion figures into a 448px
+              // letterboxed frame at ~53% scale. Figures now span the article
+              // column at their intrinsic ratio. Trade-off: layout height is
+              // not reserved, so content below a lazy image shifts once it
+              // loads (a single self-grow mid-document; accepted). If CLS ever
+              // needs re-mitigating, add intrinsic width/height attributes here.
               return (
-                <span className="mx-auto my-1 block aspect-video w-full max-w-[448px] overflow-hidden rounded-md border bg-muted/40 md:max-w-md">
+                <span className="mx-auto my-2 block w-full overflow-hidden rounded-md border bg-muted/40">
                   <img
                     src={s}
                     alt={alt ?? ""}
                     loading="lazy"
-                    className="size-full object-contain"
+                    decoding="async"
+                    className="h-auto w-full"
                   />
                 </span>
               );
