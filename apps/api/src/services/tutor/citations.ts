@@ -79,10 +79,17 @@ function labelOf(item: EvidenceItem): string {
 }
 
 /** "Revision notes" → "Revision notes — States of Matter" when the serving
- *  row carries a title; the em-dash separator matches pageSuffix's own. */
+ *  row carries a title; the em-dash separator matches pageSuffix's own.
+ *  T-TUTOR-UX-1 (TU-5): a RAW-ID-shaped title ("sme-note-rn_…", the SME
+ *  ingest rows whose title column carries the internal id) carries no human
+ *  information — it renders as absent (the frozen label stands, never a
+ *  fabricated replacement; the ingest plane owning real titles is the
+ *  durable fix). */
+const RAW_ID_TITLE = /^[a-z0-9]+(?:[-_][a-z0-9]+)*[-_][A-Za-z0-9]{10,}$/;
+
 function titledLabel(base: string, title: string | null): string {
   const t = title == null ? "" : title.trim();
-  return t === "" ? base : `${base} — ${t}`;
+  return t === "" || RAW_ID_TITLE.test(t) ? base : `${base} — ${t}`;
 }
 
 /** pageSuffix :61-68 — " — pp6–8" for ranges, " — p6" for a single page. */

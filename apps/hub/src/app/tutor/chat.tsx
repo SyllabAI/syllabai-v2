@@ -45,6 +45,7 @@ import { cn } from "@/lib/utils";
 import { createAccountStore } from "@/lib/account-stores";
 import { api, getToken } from "@/lib/api";
 import { useIdentity } from "@/lib/identity";
+import { toast } from "@/hooks/use-toast";
 import type { TutorSessionSummary, TutorSessionTurnView } from "@/lib/types";
 import { Composer, QUESTION_CAP } from "./composer";
 import { MessageItem } from "./message-item";
@@ -287,6 +288,9 @@ export function TutorChat({
   const [conversationsError, setConversationsError] = useState<string | null>(null);
   const [openingId, setOpeningId] = useState<string | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<TutorSessionSummary | null>(null);
+  // T-TUTOR-UX-1 (TU-12): the bulk clear is destructive and gets the same
+  // confirm law as the s143 server delete — no one-click wipes.
+  const [clearAllOpen, setClearAllOpen] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const hydratedServerRef = useRef(false);
 
@@ -757,7 +761,7 @@ export function TutorChat({
           openingId={openingId}
           onOpenConversation={openServerConversation}
           onDeleteConversation={setDeleteTarget}
-          onClearAll={clearScopedThreads}
+          onClearAll={() => setClearAllOpen(true)}
         />
       </aside>
 
@@ -782,7 +786,7 @@ export function TutorChat({
                 void openServerConversation(s);
               }}
               onDeleteConversation={setDeleteTarget}
-              onClearAll={clearScopedThreads}
+              onClearAll={() => setClearAllOpen(true)}
             />
           </div>
         </SheetContent>
@@ -1019,7 +1023,10 @@ export function TutorChat({
             <p className="text-center text-[10px] leading-relaxed text-muted-foreground">
               Answers cite the {courseLabel ? `${courseLabel} material` : "4CH1 material"} and can make
               mistakes — check citations before an exam. By asking you agree to the{" "}
-              <Link href="/" className="underline underline-offset-2 hover:text-foreground">
+              <Link
+                href="/about/study-use"
+                className="underline underline-offset-2 hover:text-foreground"
+              >
                 study-use terms
               </Link>
               .
@@ -1050,6 +1057,40 @@ export function TutorChat({
               }}
             >
               {deleting ? "Deleting…" : "Delete"}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* T-TUTOR-UX-1 (TU-12): the bulk clear-all confirm — the s143 law
+          generalized: a destructive action with no undo never fires on one
+          click. The toast rides the confirm path (it used to fire before
+          the dialog even opened). */}
+      <AlertDialog open={clearAllOpen} onOpenChange={(o) => !o && setClearAllOpen(false)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Clear all conversations?</AlertDialogTitle>
+            <AlertDialogDescription>
+              All conversations in this tutor
+              {courseLabel ? ` (${courseLabel})` : ""} will be cleared from this browser.
+              Other courses are untouched, and your account's server-side
+              transcripts are not affected. This cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Keep them</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive/60"
+              onClick={() => {
+                setClearAllOpen(false);
+                clearScopedThreads();
+                toast({
+                  title: "Conversations cleared",
+                  description: "This tutor's conversations were cleared from this browser. Other courses are untouched.",
+                });
+              }}
+            >
+              Clear all
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
