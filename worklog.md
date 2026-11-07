@@ -1578,3 +1578,8 @@ Work Log:
 - Asserts: YAML safe_load OK; 5/5 fixtures PASS (CANCELED-falls-through, ERROR-falls-through, BUILDING-suppresses, all-dead-bakes, empty-bakes). Two local YAML/python-indent iterations caught by asserts pre-push (disclosed in receipt).
 - First real staleness-catch: bake run 42369036435 dispatched on main 61b9a53a while prod held 135bf1c17 (#784 linkfix + #843/#846 bytes stranded by cancel-supersede in the merge train) — outcome recorded post-run.
 - Merge authority: operator order "merge it fleet-style" (zai-web, 2026-11-07); zero app/contract/config bytes (workflow read-step + docs only).
+
+## receipt(T-VERCEL-USAGE) — run-005 addendum: the daily-cap event + the backlog drain — 2026-11-07
+- CAP EVENT (first-hand): the first real staleness-catch bake (run 42369036435) was refused by Vercel — "api-deployments-free-per-day" (more than 100): the NEW account exhausted its daily allowance in the transition window; hub project created 64 deployments today (29 stuck QUEUED at census). Floor behavior of record: tried, refused, next scheduled dispatch self-heals after reset; no operator action.
+- BACKLOG DRAIN: all 30 non-terminal deployments classified vs main HEAD pre-cancellation (27+1 superseded ancestors / 3 stale lane previews / 0 current) and cancelled — they would otherwise have aliased prod backward and re-burned the reset allowance serially (~4-5h). Post-drain: 0 QUEUED, 0 BUILDING; prod holds newest READY 135bf1c17 until the first post-reset bake.
+- Steady-state projection: lane gate (proven) + main diff gate + 1 nightly bake ≈ two orders of magnitude under the 100/day cap.
