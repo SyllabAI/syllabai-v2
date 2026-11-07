@@ -1067,3 +1067,10 @@ Work Log:
 - Matrix asserted pre-push: lane ref → SKIP; main → BUILD; unset → BUILD (fail-open); ledger-only pair → SKIP. vercel.json single-line swap; crons+git byte-identical; JSON parse OK; secret scan clean.
 - First-hand branch-gate proof: two pushes to t-vercel-usage/r6 (981eadd7, 6066cb93) → ZERO preview deployments (skip-artifact status only) — VERCEL_GIT_COMMIT_REF populated in ignoreCommand context; red X on PR heads is the designed cost of the preview kill; house gate = verify+hub.
 - Merge authority: operator order "merge it fleet-style" (zai-web, 2026-11-07); same-branch hotfix; PR merged on green verify+hub. Zero app/contract bytes.
+
+## receipt(T-VERCEL-USAGE) — run-004 post-merge verification + the rapid-push race observation — 2026-11-07
+- Hotfix build dpl_5HU5Q (3e7ec207e) READY 10:52Z — 256-char fix proven in prod; alias moved.
+- Queue deduped ×4 (superseded-content only, disclosed per-cancellation in the receipt addendum) — surgical dedup, not cancel-churn.
+- RACE (first-hand): receipt-only 2fc4735e (pushed 54s after 8b51b331's build) built despite the gate skipping it locally (rc=0) — Vercel-side stale-checkout race during rapid pushes; throttle shrinks exposure; bake floor keeps prod convergent (newest READY holds the alias).
+- Bake floor: dispatched run 42366210560 executed end-to-end (idempotence gate correctly detected prod≠HEAD after main advanced, proceeded to bake) — first Actions-run CLI bake of record.
+- This push (single .syllabai-only push to main) doubles as the post-race skip-proof: expect ZERO new deployments from it.
