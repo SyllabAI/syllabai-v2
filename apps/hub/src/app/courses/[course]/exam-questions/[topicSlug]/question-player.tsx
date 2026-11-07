@@ -151,6 +151,8 @@ export function QuestionPlayer({
   subtopicCode,
   subtopicTitle,
   questions,
+  variant = "bank",
+  questionNumbers,
 }: {
   course: Course;
   topicName: string;
@@ -158,6 +160,18 @@ export function QuestionPlayer({
   subtopicCode: string | null;
   subtopicTitle: string | null;
   questions: ExamQuestion[];
+  /** "bank" (default): difficulty tabs + guided practice, positional
+   *  numbering. "paper" (T-PAPER-PLAYBACK-1): fixed-paper playback — the
+   *  printed question numbers are the navigation, so the difficulty
+   *  controls never mount (filtering a paper would renumber it, and
+   *  corpus difficulty is nullable — untagged questions would silently
+   *  vanish under easy/hard). */
+  variant?: "bank" | "paper";
+  /** printed paper question number per entry, aligned with `questions`
+   *  (PastPaper.questionNumbers). Null entries — provenance didn't carry
+   *  a number — fall back to the 1-based position; the array is ignored
+   *  entirely unless its length matches `questions` (fail-closed). */
+  questionNumbers?: Array<number | null>;
 }) {
   const progress = useCourseProgress(course);
   const [difficulty, setDifficulty] = useState<Difficulty>("all");
@@ -195,6 +209,26 @@ export function QuestionPlayer({
 
   const isAttempted = (q: ExamQuestion) =>
     !!progress.selfScores[q.id] || q.parts.some((p) => !!progress.mcqAnswers[p.id]);
+
+  // T-PAPER-PLAYBACK-1 — ONE label language for the card chips, the jump
+  // grid and the CLA anchor chip: the printed paper question number when
+  // the corpus attests one (paper playback), else the 1-based position.
+  // A partial reconstruction must not renumber itself — when Q3 is missing
+  // the held cards still read 1, 2, 4… exactly as the coverage line next
+  // to them says.
+  const printedById = useMemo(() => {
+    if (!questionNumbers || questionNumbers.length !== questions.length) return null;
+    const m = new Map<string, string>();
+    questions.forEach((q, i) => {
+      const n = questionNumbers[i];
+      if (n != null && n > 0) m.set(q.id, String(n));
+    });
+    return m.size > 0 ? m : null;
+  }, [questions, questionNumbers]);
+  const qLabel = (i: number) => {
+    const q = visible[i];
+    return (printedById && q && printedById.get(q.id)) || String(i + 1);
+  };
 
   /** the CLA anchors resolve ONLY through the verified join — an unverified
    *  question gets no entries at all (same honesty rule as attempts) */
@@ -272,34 +306,44 @@ export function QuestionPlayer({
       {/* 4CH1 bridge status — one honest line, never a blocker */}
       <BridgeBanner status={bridge} />
 
-      {/* difficulty tabs + guided practice (SME controls, research §6.2) */}
-      <div className="flex flex-wrap items-center gap-3 rounded-lg border bg-card px-4 py-3">
-        <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="Difficulty">
-          {DIFFICULTIES.map((d) => (
-            <button
-              key={d}
-              role="tab"
-              aria-selected={difficulty === d}
-              onClick={() => setDifficulty(d)}
-              className={cn(
-                "rounded-md px-3 py-2.5 text-[13px] font-medium capitalize transition-colors",
-                difficulty === d
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground",
-              )}
-            >
-              {d === "all" ? "All" : d}
-              <span className="ml-1.5 text-[11px] tabular-nums opacity-70">{counts[d]}</span>
-            </button>
-          ))}
+      {/* difficulty tabs + guided practice (SME controls, research §6.2) —
+          bank playback ONLY (T-PAPER-PLAYBACK-1): a past paper is a fixed
+          document played back in paper order — its printed question numbers
+          are the navigation, difficulty filtering would renumber it, and
+          corpus difficulty is nullable (null reads as "medium", so untagged
+          questions would silently vanish under easy/hard). */}
+      {variant === "bank" && (
+        <div className="flex flex-wrap items-center gap-3 rounded-lg border bg-card px-4 py-3">
+          <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="Difficulty">
+            {DIFFICULTIES.map((d) => (
+              <button
+                key={d}
+                role="tab"
+                aria-selected={difficulty === d}
+                onClick={() => setDifficulty(d)}
+                className={cn(
+                  "rounded-md px-3 py-2.5 text-[13px] font-medium capitalize transition-colors",
+                  difficulty === d
+                    ? "bg-primary/10 text-primary"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                )}
+              >
+                {d === "all" ? "All" : d}
+                <span className="ml-1.5 text-[11px] tabular-nums opacity-70">{counts[d]}</span>
+              </button>
+            ))}
+          </div>
+          <label className="ml-auto flex cursor-not-allowed items-center gap-2 text-[13px] text-muted-foreground" title="Adaptive sessions are coming soon">
+            Guided practice
+            <Switch disabled aria-label="Guided practice (roadmap)" />
+          </label>
         </div>
-        <label className="ml-auto flex cursor-not-allowed items-center gap-2 text-[13px] text-muted-foreground" title="Adaptive sessions are coming soon">
-          Guided practice
-          <Switch disabled aria-label="Guided practice (roadmap)" />
-        </label>
-      </div>
+      )}
 
-      {/* question number grid (SME) */}
+      {/* question number grid (SME) — printed paper numbers on paper
+          playback (T-PAPER-PLAYBACK-1); the ring marks the question
+          currently in view ("you are here") and layers over the attempted
+          fill, so the cell being read is findable either way */}
       <div ref={gridRef} className="flex flex-wrap gap-1.5" aria-label="Jump to question">
         {visible.map((q, i) => (
           <button
@@ -308,15 +352,19 @@ export function QuestionPlayer({
               setActiveIdx(i);
               scrollTo(`q-${q.id}`);
             }}
-            aria-label={`Question ${i + 1}${isAttempted(q) ? " (attempted)" : ""}`}
+            aria-label={`Question ${qLabel(i)}${isAttempted(q) ? " (attempted)" : ""}`}
+            aria-current={activeIdx === i || undefined}
             className={cn(
               "flex size-10 items-center justify-center rounded-md border text-[13px] font-medium transition-colors",
               isAttempted(q)
                 ? "border-primary bg-primary text-primary-foreground"
-                : "hover:border-primary/50 hover:text-primary",
+                : activeIdx === i
+                  ? "border-primary bg-primary/10 text-primary"
+                  : "hover:border-primary/50 hover:text-primary",
+              activeIdx === i && "ring-2 ring-primary/60 ring-offset-2 ring-offset-background",
             )}
           >
-            {i + 1}
+            {qLabel(i)}
           </button>
         ))}
       </div>
@@ -326,7 +374,8 @@ export function QuestionPlayer({
         {visible.map((q, qi) => (
           <article key={q.id} id={`q-${q.id}`} data-qidx={qi} className="scroll-mt-24 rounded-xl border bg-card">
             <div className="flex flex-wrap items-center gap-2 border-b px-4 py-2.5">
-              <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">{qi + 1}</span>
+              {/* printed paper number when attested, else position (T-PAPER-PLAYBACK-1) */}
+              <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">{qLabel(qi)}</span>
               <Badge variant="outline" className="text-[10px]">
                 {q.totalMarks} mark{q.totalMarks === 1 ? "" : "s"}
               </Badge>
@@ -415,14 +464,14 @@ export function QuestionPlayer({
           // high-frequency swap would breach frequency-appropriateness.
           className="fixed bottom-6 right-6 z-40 h-12 gap-2 rounded-full px-5 shadow-lg animate-in fade-in-0 zoom-in-95 duration-200 ease-out"
           aria-haspopup="dialog"
-          aria-label={`Ask the contextual assistant about question ${claAnchorIdx + 1}${
+          aria-label={`Ask the contextual assistant about question ${qLabel(claAnchorIdx)}${
             activeIdx !== null && activeIdx !== claAnchorIdx
-              ? ` (question ${activeIdx + 1} is not anchored for the assistant yet)`
+              ? ` (question ${qLabel(activeIdx)} is not anchored for the assistant yet)`
               : ""
           }`}
-          title={`Ask CLA about question ${claAnchorIdx + 1}${
+          title={`Ask CLA about question ${qLabel(claAnchorIdx)}${
             activeIdx !== null && activeIdx !== claAnchorIdx
-              ? ` (question ${activeIdx + 1} is not anchored for the assistant yet)`
+              ? ` (question ${qLabel(activeIdx)} is not anchored for the assistant yet)`
               : ""
           }`}
           onClick={() => openCla(visible[claAnchorIdx], claAnchorIdx, null)}
@@ -433,7 +482,7 @@ export function QuestionPlayer({
             className="rounded-full bg-primary-foreground/15 px-2 py-0.5 text-[11px] font-semibold tabular-nums"
             aria-hidden
           >
-            Q{claAnchorIdx + 1}
+            Q{qLabel(claAnchorIdx)}
           </span>
         </Button>
       )}
