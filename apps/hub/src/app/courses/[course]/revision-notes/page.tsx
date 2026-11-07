@@ -39,6 +39,7 @@ export default async function CourseRevisionNotesPage({
     guidedStudy: n.guidedStudy,
     specPointCodes: n.specPointCodes,
     subtopic: hub.noteSubtopic[n.noteId] ?? null,
+    contentKind: n.contentKind ?? null,
   }));
 
   return (
