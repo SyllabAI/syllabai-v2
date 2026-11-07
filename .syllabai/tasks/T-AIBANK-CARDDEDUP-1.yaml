@@ -1,0 +1,41 @@
+version: 1
+task:
+  id: T-AIBANK-CARDDEDUP-1
+  title: "AI bank card-level deduplication — the tutor's deterministic bank cards (band 1 census + band 2 paper one-view) never serve the same question slot twice; slot-identity dedup as a serve-side projection, one law both bands"
+  owner: "operator (Z.ai, zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4, chat 0fe43d89-ff92-4e81-857a-1b1c6040a895, trace 1a1b6fe0cc532d49)"
+  status: "IN PROGRESS run-001"
+  priority: P1
+  band: T-AIBANK (tutor bank bands — the deterministic card surface the chat relay serves)
+  deps: [T-MIG-128, T-MIG-129, T-MIG-130]
+  spec: >
+    Operator order 2026-11-08 "AI bank card level deduplication": the tutor
+    chat's bank cards (BandCard — the T-MIG-130 rendering of the bank-band
+    views) must never list the same question twice. The bank's rows of
+    record can carry one question slot more than once (a double-run
+    ingestion re-inserts the same exam_paper_id + external_ref; a paperless
+    card-bank insert can double the same way), and both bands serve rows
+    verbatim — the census total, the shown list, the card's marks sum and
+    the copy/export text all inflate with every duplicate row. The law: a
+    question SLOT (one paper + one question number) serves at most once per
+    card; slot identity = (paperId, external_ref) when the ref exists,
+    (paperId, normalized stem, marks, command_word) when it does not;
+    first-wins in the SQL's own deterministic ORDER BY (the collapse never
+    re-orders); cross-paper rows NEVER collapse — a regional variant or a
+    second paper owning the same stem is a real bank row with its own
+    disclosed paper ref, not a duplicate; siblings stay untouched (the
+    sibling line is the candidate DISCLOSURE surface — hiding a second
+    exam_papers row there would un-disclose, the opposite of the card's
+    posture). Placement: the serve-side projection in bank-bands.ts (the
+    stem-hygiene precedent — one law, both bands, the renderer untouched;
+    the relay passes wire truth through unreshaped). Honesty: total, the
+    limit cut and every marks sum read AFTER the dedup.
+  execution_record: >
+    run-001 (2026-11-08, trace 1a1b6fe0cc532d49): audit first — the chat
+    client's band attach is a single patchTurn (no UI-side duplication
+    path); threads.ts persists one band payload per turn (no re-hydration
+    dup); the multiplication class is the bank rows themselves through
+    listQuestions (node-mapped census, total = raw rows.length) and
+    fetchPaper (exam_paper_id listing; the marks sum in bankPaperLeadIn and
+    PaperBand counts a duplicate slot's marks twice). Implementation in
+    bank-bands.ts + pins in bank-bands.test.ts; gates: bun test tutor dir,
+    tsc --noEmit both apps, eslint touched files.
