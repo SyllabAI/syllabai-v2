@@ -30,6 +30,10 @@ export interface IdentityConfig {
   jwtSecret: string;
   jwtTtl: string;
   teacherJoinCode: string;
+  /** T-DEMO-PASSGUARD-1 — env-declared accounts (lowercased) whose
+   *  self-service password rotation is refused (403). Default empty =
+   *  the guard is inert; listing an account is the deliberate act. */
+  protectedEmails: string[];
   corsOrigins: string[];
   bootstrapEnabled: boolean;
   ratelimit: {
@@ -65,6 +69,12 @@ export function readIdentityConfig(env: Record<string, string | undefined> = pro
   const jwtSecret = env.SYLLABAI_JWT_SECRET ?? "";
   const jwtTtl = env.SYLLABAI_JWT_TTL || "PT2H";
   const teacherJoinCode = (env.SYLLABAI_TEACHER_JOIN_CODE ?? "").trim();
+  // T-DEMO-PASSGUARD-1 — comma-separated SYLLABAI_PROTECTED_EMAILS, trimmed
+  // + lowercased; blank env → empty list → no account is protected.
+  const protectedEmails = (env.SYLLABAI_PROTECTED_EMAILS ?? "")
+    .split(",")
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
   const corsRaw = (env.SYLLABAI_CORS_ORIGINS ?? "").trim();
   const corsOrigins = corsRaw === "" ? [...DEFAULT_CORS_ORIGINS] : corsRaw.split(",").map((s) => s.trim()).filter(Boolean);
   const ratelimitEnabled = (env.SYLLABAI_RATELIMIT_ENABLED ?? "true").trim().toLowerCase() !== "false";
@@ -81,6 +91,7 @@ export function readIdentityConfig(env: Record<string, string | undefined> = pro
     jwtSecret,
     jwtTtl,
     teacherJoinCode,
+    protectedEmails,
     corsOrigins,
     bootstrapEnabled,
     ratelimit: {
