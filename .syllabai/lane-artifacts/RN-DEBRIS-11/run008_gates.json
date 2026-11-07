@@ -1,0 +1,32 @@
+{
+ "verifier": "scripts/rn11_run008_geo_verify.py (workspace copy run008docs/rn11_run008_geo_verify.py)",
+ "gateLines": [
+  "G0 byte anchors (only the 2 expected files changed): OK",
+  "G2a curriculum: 31 title-only edits: OK (31 edits)",
+  "G2b kg: 31 subtopics-label + 31 node-label edits, all else byte-equal: OK",
+  "G3 structure (243 nodes, 242 edges byte-equal, 202 spec-point codes byte-identical): OK",
+  "G4 zero-invention (fresh re-extraction 24 rows byte-exact, composed rows per doc headings): OK",
+  "G4-upstream cross-check: 30 prefix-consistent, 0 disclosed divergences []",
+  "G5 stamp neutrality (25 stamps, all destinations exist, questions.json untouched): OK",
+  "G6 mirror equality (kg labels == curriculum titles, 31/31): OK",
+  "G7 title uniqueness: OK",
+  "VERDICT: ALL GATES GREEN"
+ ],
+ "verifierExit": 0,
+ "placementGateAB": {
+  "script": "apps/hub/scripts/verify_sme_wire_r0.ts (bun 1.3.14)",
+  "pre": [
+   "courses: 90 sets: 2574 questions: 43232",
+   "placed: 2574 unplaced: 0",
+   "gen-row homes: 31"
+  ],
+  "post": [
+   "courses: 90 sets: 2574 questions: 43232",
+   "placed: 2574 unplaced: 0",
+   "gen-row homes: 31"
+  ],
+  "identical": true,
+  "ofRecord_r3": "2,574/2,574 residual 0, gen-row homes 31 (ADR-039 r3 receipts @ 170f981a) — both legs reproduce it"
+ },
+ "renderCheck": "normalizeSpecText spot-check on the 5 glyph-bearing titles: byte-faithful pass (bun, src/lib/spec-text.ts)"
+}
