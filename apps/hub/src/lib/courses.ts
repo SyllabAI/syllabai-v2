@@ -55,6 +55,12 @@ const CourseRegistry = z.object({
        *  the tutor is not yet available for this course; the /tutor surface
        *  gates honestly instead of falling back to another course's corpus. */
       curriculumCode: z.string().optional(),
+      /** T-TUTOR-ENTRY-1 (T-TUTOR-AUDIT-1 TU-11): the course has a live
+       *  tutor — the /tutor no-param entry routes/picks among these rows.
+       *  EXPLICIT hub-maintained data, never derived (the API's retrieval
+       *  corpus is per-course; a code match alone proves nothing). Absent =
+       *  the course does not offer a tutor session. */
+      tutorEnabled: z.boolean().optional(),
       /** T-MIG-135d: the course is cleared for the core identity bridge —
        *  real attempts, Smart Mark and learner-model writes (the pilot
        *  gate's operator-declared DATA form; the chemistry pilot row is
@@ -80,6 +86,10 @@ export interface CourseMeta {
   /** V53 (ADR-030): hub-maintained bridge to core's curriculum registry —
    *  absent = tutor honestly gated for this course (no cross-corpus fallback). */
   curriculumCode?: string;
+  /** T-TUTOR-ENTRY-1 (T-TUTOR-AUDIT-1 TU-11): the course has a live tutor —
+   *  the /tutor no-param entry routes/picks among these rows. Absent = no
+   *  tutor session for this course. */
+  tutorEnabled?: boolean;
   /** T-MIG-135d: the course is cleared for the core identity bridge (real
    *  attempts, Smart Mark, learner-model writes) — the operator-declared
    *  DATA form of the pilot gate; the chemistry pilot row is eligible via

@@ -183,17 +183,22 @@ export function Markdown({
           h3: ({ children }) => (
             <h4 className="mt-3 text-sm font-semibold">{children}</h4>
           ),
+          // T-QVIEW-AUDIT-BCD-1 batch B: corpus prose reads at the design
+          // scale's text-sm (14px) — the 13.5px micro-size was the stem's
+          // reading-typography defect (the audit's "13.5px vs the micro-px
+          // debris"); h4 rises with it (no heading may sit below the prose
+          // it headings).
           h4: ({ children }) => (
-            <h5 className="mt-2 text-[13px] font-semibold text-muted-foreground">{children}</h5>
+            <h5 className="mt-2 text-sm font-semibold text-muted-foreground">{children}</h5>
           ),
           p: ({ children }) => (
-            <p className={cn("text-[13.5px] leading-relaxed", pClassName)}>{children}</p>
+            <p className={cn("text-sm leading-relaxed", pClassName)}>{children}</p>
           ),
           ul: ({ children }) => (
-            <ul className="list-disc space-y-1 pl-5 text-[13.5px]">{children}</ul>
+            <ul className="list-disc space-y-1 pl-5 text-sm">{children}</ul>
           ),
           ol: ({ children }) => (
-            <ol className="list-decimal space-y-1 pl-5 text-[13.5px]">{children}</ol>
+            <ol className="list-decimal space-y-1 pl-5 text-sm">{children}</ol>
           ),
           li: ({ children }) => <li className="leading-relaxed">{children}</li>,
           strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
@@ -256,17 +261,23 @@ export function Markdown({
             }
             // corpus images are hotlinked from the public resources repo
             if (s.startsWith("https")) {
-              // UX audit 2026-10-02 #21: bare <img> without dimensions — every
-              // hotlinked note image reflowed the page while loading (CLS).
-              // A fixed 16:9 box with object-contain reserves the layout: any
-              // intrinsic ratio letterboxes inside, nothing shifts.
+              // Full-width natural-aspect figures. Supersedes UX audit
+              // 2026-10-02 #21 (fixed 16:9 object-contain box): that box
+              // reserved layout height to kill image-load CLS, but locked
+              // ~850px-wide SME-Rev / SME-ExamQuestion figures into a 448px
+              // letterboxed frame at ~53% scale. Figures now span the article
+              // column at their intrinsic ratio. Trade-off: layout height is
+              // not reserved, so content below a lazy image shifts once it
+              // loads (a single self-grow mid-document; accepted). If CLS ever
+              // needs re-mitigating, add intrinsic width/height attributes here.
               return (
-                <span className="mx-auto my-1 block aspect-video w-full max-w-[448px] overflow-hidden rounded-md border bg-muted/40 md:max-w-md">
+                <span className="mx-auto my-2 block w-full overflow-hidden rounded-md border bg-muted/40">
                   <img
                     src={s}
                     alt={alt ?? ""}
                     loading="lazy"
-                    className="size-full object-contain"
+                    decoding="async"
+                    className="h-auto w-full"
                   />
                 </span>
               );
@@ -306,7 +317,7 @@ export function Markdown({
             );
           },
           code: ({ children }) => (
-            <code className="rounded bg-muted px-1 py-0.5 text-[12px]">{children}</code>
+            <code className="rounded bg-muted px-1 py-0.5 text-xs">{children}</code>
           ),
         }}
       >
