@@ -19,6 +19,14 @@ import { listCourses, pilotCourseSlug } from "@/lib/courses";
 import { ShowcaseLanding } from "@/components/demo/showcase-landing";
 import { SHOWCASE_DEMO_ENABLED } from "@/lib/demo/showcase";
 
+// T-SHOWCASE-DYNAMIC-1 — the kill-switch must be a RUNTIME decision: the turbo
+// build cache reuses a prerendered landing across builds with identical hub
+// source bytes, so a build-time flag read freezes the showcase state into the
+// HTML (the 2026-11-07 re-enable baked stale flag-off HTML while the runtime
+// env was already on — mint 200, landing dark). force-dynamic evaluates the
+// flag per request; the landing flips with the env on redeploy.
+export const dynamic = "force-dynamic";
+
 export default async function HubPage() {
   // T-DEMO-SHOWCASE-1 (temporary): while the showcase flag is on, the
   // product's first screen is the demo landing — pick student or teacher
