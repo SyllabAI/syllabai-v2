@@ -182,8 +182,8 @@ describe("mock-results store law", () => {
     expect(course[0].marks).toBe(55);
   });
 
-  test("the per-course cap of 20 holds (oldest beyond the cap drops)", () => {
-    for (let i = 0; i < 25; i++) {
+  test("the per-course cap of 50 holds (oldest beyond the cap drops)", () => {
+    for (let i = 0; i < 55; i++) {
       saveMockResult(
         mockResult({
           id: `c1:s:1:${1000 + i}`,
@@ -193,9 +193,9 @@ describe("mock-results store law", () => {
       );
     }
     const course = loadMockResults("c1");
-    expect(course).toHaveLength(20);
+    expect(course).toHaveLength(50);
     // newest-first: the last-saved (highest timestamp) survives, the earliest drops
-    expect(course[0].id).toBe("c1:s:1:1024");
+    expect(course[0].id).toBe("c1:s:1:1054");
   });
 
   test("clearMockResults clears ONLY that course", () => {
@@ -241,15 +241,15 @@ describe("mock-results union merge decision", () => {
     expect(localChanged).toBe(true);
   });
 
-  test("the cap of 20 holds after the merge (newest survive)", () => {
-    const serverRows = Array.from({ length: 15 }, (_, i) =>
+  test("the cap of 50 holds after the merge (newest survive)", () => {
+    const serverRows = Array.from({ length: 30 }, (_, i) =>
       mockResult({
         id: `c1:s:1:${i}`,
         course: "c1",
         finishedAt: new Date(Date.UTC(2026, 0, 1, 0, 0, i)).toISOString(),
       }),
     );
-    const localRows = Array.from({ length: 15 }, (_, i) =>
+    const localRows = Array.from({ length: 30 }, (_, i) =>
       mockResult({
         id: `c1:s:2:${i}`,
         course: "c1",
@@ -257,8 +257,8 @@ describe("mock-results union merge decision", () => {
       }),
     );
     const { mergedAll } = mergeMockResults(serverRows, localRows);
-    expect(mergedAll).toHaveLength(20);
-    // all 15 February (local) rows are newer than any January row
-    expect(mergedAll.filter((r) => r.id.startsWith("c1:s:2:"))).toHaveLength(15);
+    expect(mergedAll).toHaveLength(50);
+    // all 30 February (local) rows are newer than any January row
+    expect(mergedAll.filter((r) => r.id.startsWith("c1:s:2:"))).toHaveLength(30);
   });
 });

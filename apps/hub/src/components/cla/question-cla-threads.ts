@@ -74,8 +74,11 @@ const ACTIVE_KEY = "syllabai.claThreads.activeByQuestion.v1"; // RETIRED (legacy
 const DOC_KEY = "cla-question-threads";
 
 /** storage guards — keep the doc bounded (family parity; heavier
- *  messages: the CLA answer view carries citations + tools, hence 100) */
-const MAX_THREADS = 40;
+ *  messages: the CLA answer view carries citations + tools, hence 100).
+ *  T-CAPS-POLICY-1: the count cap raises to 200 — exact parity with the
+ *  server sync tier's MAX_THREADS_PER_LEARNER=200 (409-never-evict); the
+ *  BINDING bound for the durable copy is the bridge's byte budget. */
+const MAX_THREADS = 200;
 const MAX_MESSAGES_PER_THREAD = 100;
 
 interface StoredState {

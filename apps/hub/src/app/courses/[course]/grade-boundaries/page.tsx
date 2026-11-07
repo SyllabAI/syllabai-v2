@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { listCourses, boardOf, loadHubCourse } from "@/lib/courses";
 import { getGradeBoundaries } from "@/lib/grade-boundaries";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { GradeBoundariesWorkspace } from "@/components/hub/grade-boundaries/grade-boundaries-workspace";
 
 /**
@@ -50,7 +50,7 @@ export default async function GradeBoundariesPage({
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         title={`Grade Boundaries — ${meta.code}`}
         crumb="Grade Boundaries"

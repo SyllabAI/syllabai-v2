@@ -1420,3 +1420,58 @@ Gates of record (first-hand, this sandbox; bun 1.3.14 == the pinned toolchain):
 Stage Summary:
 - The CIE fleet's flashcard plane is now spec-anchored at the same law as the exam-question and notes planes (83.3% official, honest residue disclosed), exam-skills notes no longer masquerade as pending spec-mapping work, and the SME-native cross-mapping among the three imported planes is verified preserved at the byte level — the "probably mapped among themselves" question now has a receipted answer: yes, and the wiring rode exactly those native mappings.
 
+
+---
+Task ID: T-NAV-STRIP-1 run-002 (operator feedback trace 1a1b11a742612305: "their nav strip is not present in all the pages. Currently it makes the website look too noisy")
+Agent: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4)
+Task: De-noise the run-001 strip per operator feedback — re-read the MG captures, fix the REAL delta, keep MG parity where it actually lives.
+
+Work Log:
+- Capture re-read (tool-results/mg-rd/): MG has NO persistent sidebar (the strip IS their nav, single-column page); strip = 12 site-wide items (icon + text, -mb-[2px] underline, nowrap scroll row) directly under the header; present on question bank/papers/lessons/revision-guides only — ABSENT on course root, GCSE index, home, essay marker, my-progress (marker/progress captures possibly login-gated, disclosed in the receipt).
+- Fix: course-tool-nav.tsx nav gains lg:hidden — below lg the sidebar stands down behind the sticky Menu/course bar (single-column, the MG-like range) and the strip rides under it; at lg+ the persistent sidebar is the only course nav. tailwind-merge override hatch documented (caller may pass lg:block). Registry/items/order/gates/active-law/root+viewer suppressions byte-untouched; sidebar and root trio untouched.
+- GATES of record (first-hand): bun install refreshed the workspace (988 packages); bunx tsc --noEmit (apps/hub) exit 0; bunx eslint course-tool-nav.tsx exit 0.
+- NOTE of record: the sandbox recycle lost ref/syllabai-v2/.git; interim git commands ran against the outer /home/z/my-project scaffold repo (reset to origin/main twice — repaired: outer reset back to 4c3f5b66, injected top-level entries removed, fresh sparse blobless clone restored with .git; /tmp persistence store refreshed from it).
+
+Stage Summary:
+- Branch t-nav-strip-2/run-001 pushed; PR opened for operator eyeball (design change — NOT self-merged). Next knobs if the verdict is harsher: full revert (one class), MG-style subset gating on mobile, below-hero position.
+
+---
+Task ID: T-HEADER-1 run-001 (operator scope pick "A, full unification", trace 1a1b173567f8eb99, after the header audit of trace 1a1b16dba1e17571)
+Agent: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4)
+Task: Unify the page-header block — one title scale law (MG parity): shared PageHeader for every tool/detail page, hero band reserved for landers, one title family, one course container.
+
+Work Log:
+- Built PageHeader (components/layout/page-header.tsx): breadcrumbs + eyebrow (badge rows) + h1 text-2xl bold tracking-tight + actions + description + children — bare block, no card. PageHero gains the breadcrumbs prop; CourseHeader is now a thin PageHero wrapper (identical visuals); CoursePageHeader added for course tool pages (same trail + exam pill on the shared block).
+- Conversions (~35 call sites): 16 course subpages CourseHeader→CoursePageHeader (root keeps the hero — lander); 5 course detail pages (sm:text-3xl / sm:text-[28px] escalations dropped); 6 learner/directory pages (courses index 3xl→2xl; past-pairs xl→2xl); 14 teacher blocks (font-display dropped everywhere; class workspace 3xl/4xl→2xl; badge rows ride the eyebrow slot; back links ride breadcrumbs).
+- Containers: 5 outliers unified to the majority course container px-4 py-6 sm:px-6 lg:px-8 (flashcards/exam-questions/revision-notes/teach-genie ×4 states max-w-3xl → full; books px-3 py-4 → full).
+- Exemptions of record: workspace-chrome headings (tutor chat, plan wizard, KG surfaces, assistant, source-reader, book strength check) per the MG essay-marker precedent; demo/login font-display out of fence.
+- GATES of record (first-hand): bunx tsc --noEmit (apps/hub) exit 0 at three checkpoints; eslint across all 46 touched files = 4 problems ALL pre-existing on main (stash-baseline verified: drill exhaustive-deps + unused-disable, toolkit 2× set-state-in-effect) — zero new.
+- Visual QA (dev server :3100 + minted teacher JWT, download/t-header-1/qa/): course root hero intact; exam-questions ≡ revision-notes headers; 390px stack coherent (strip under Menu bar per #820); reconstructed paper on the shared block; dashboard PageHero regression-free; teacher/learner/directory surfaces on the one law.
+
+Stage Summary:
+- Branch t-header-1/run-001 pushed; PR opened for operator eyeball (design change — NOT self-merged; run-002 fence). Rollback = revert of one PR.
+Task ID: T-THEME-LOCAL-1 run-001 (operator order trace 1a1b1e31ca7141e1: "Theme must be browser saved only", issued after the live two-account theme experiment proved the account-doc carrier)
+Agent: Super Z (zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355)
+Task: Reverse the THEME leg of the T-ACCOUNT-ONLY sweep — the theme is a browser record again; every other pref store stays an account doc.
+
+Work Log:
+- Live proof of the carrier being reversed (agent-browser, www.syllab-ai.com): fresh wiped browser -> student {quiet-green,dark} PUT /api/v1/me/documents/theme 200; sign-out -> default sme (no account, no theme); teacher -> loads its OWN account doc, set {candy-shop,dark} PUT 200; sign-out -> default; student re-login -> {quiet-green,dark} RESTORED. Two accounts, two themes, one browser, all server-side — the operator then ordered the theme leg back to the browser.
+- SHIPPED (branch t-theme-local-1/run-001 @ main 55b586e0; 3 code files + task yaml + receipt): theme-store.ts REWRITE (localStorage["syllabai-theme"] is the primary store again; one-time account-doc adoption when the device holds no record of its own — device wins — then ONE honest-null PUT retires the account copy, converging every row to the honest null after its first post-revert login; deliberately NOT wired to onAccountDocsReset — sign-out/account switches never clear the theme; exported contract unchanged, theme-toggle.tsx byte-untouched, "sme" keeps the T-UX-STUDENT-COPY label "SyllabAI"); layout.tsx (the inline no-flash bootstrap reads localStorage["syllabai-theme"] pre-paint again — the sweep's system-default-only bootstrap and its flash-of-default cost are gone); theme-store.test.ts NEW (8 fixtures over the REAL store + REAL engine, house harness: browser-primary, junk->default, subscriber law, sign-out survival, adoption, device-wins, single retirement PUT, zero account traffic without a theme doc).
+- MIRROR LAW of record: the sweep adopted the device key once into the account (no-data-loss clause) and retired the device key once clean; the revert adopts the account doc once into the device and retires the account copy once the device record is clean. contracts keep "theme" in the workspace-document vocabulary (existing rows stay readable; GET never 400s on legacy rows) — contracts/db/api/engine bytes untouched. Every OTHER pref store stays an account doc (cla-panel-mode, dashboard-prefs, course-shell-prefs, teacher-shell-prefs, tutor-prefs, pdf-viewer-prefs, note-scroll:<slug>, progress:<slug>) — the operator order named the THEME only.
+- GATES of record (first-hand; bun 1.3.14 == pinned): bunx tsc --noEmit (apps/hub) exit 0; bunx eslint on the 3 touched files 0 errors; bun test (apps/hub full) 1189 pass / 9 fail vs a PRISTINE origin/main worktree's 1181 pass / 9 fail — the nine failures IDENTICAL test-for-test (progress:<slug> ×3, ugm-katex corpus ×1, dual-run posture ×5), +8 = exactly the new fixtures, zero regressions; bunx next build exit 0 (first attempt ENOSPC'd the rootfs — baseline worktree removed, node_modules repaired by fresh bun install, build re-run clean; no code implication).
+- FENCES respected: zero bundle/data/contracts/db/API bytes; no route/flag changes; author did not self-merge (landing needs the integrator).
+
+Stage Summary:
+- Branch t-theme-local-1/run-001 pushed; PR opened for operator eyeball (behavior change — NOT self-merged). After merge: theme changes write ONLY the browser record (no theme PUTs), the theme survives sign-out and account switches on the same browser, other browsers/devices start at the system default, and each account's stale theme doc self-retires to the honest null on its first post-revert login.
+
+
+## t-ugm-link-fix run-002 — live re-verification on the new production of record (second Vercel account)
+
+Task ID: t-ugm-link-fix/r2 (run-002; operator trace 1a1b4da4df42f121 "Vercel account was changed. We use a second account now. PAT (in-chat, never persisted)"; continuing run-001 trace 1a1b22336016dbdd "fix the 8 broken links")
+Task: close the two run-001 residuals — the owed production redeploy and post-deploy re-verification — against the SECOND-account production of record.
+- Production of record moved: second Vercel account syllabainoreply-4440 hosts syllabai-hub-v2 (www.syllab-ai.com canonical + apex redirect + syllabai-hub-v2-seven.vercel.app) and the api project; the first account (syllabai-1403) serves 402 DEPLOYMENT_DISABLED on both projects (verified 2026-11-07).
+- Fix currency PROVEN: the hub project is Git-integrated — auto-bake of the t-ugm-link-fix merge fired on merge: deployment 30e0wwdaf READY 2026-11-06T21:11:40Z, meta.githubCommitSha = dab1fd67 (the merge of record). No manual deploy fired (a CLI deploy would have raced the integration); newer queued bake 3ae3ef1ddf (another lane) supersedes with dab1fd67 as ancestor.
+- Live battery (bounded sweep, sandbox scripts/prod_battery.py, ~25 requests, polite): 13/13 internal URLs land 200 (content or the designed /login gate), zero 4xx/5xx; the 3 fixed UGM reader routes 307 -> /login (ALIVE, NOT 404); the 3 absolutized undergroundmathematics.org targets re-verified 200 on 2026-11-07; CI on dab1fd67 3/3 green (census + hub + verify).
+- Dispositions: residual 1 (redeploy owed) SATISFIED by the account move + auto-bake sha currency; residual 2 (full prod re-crawl) NOT re-run at 16,456-URL scale — the run-001 crawler scripts are no longer present in this recycled sandbox (file census 2026-11-07); a bounded fresh sweep executed instead; full prod re-crawl on operator order.
+- Disclosures: in-body flattening assertion still needs an authenticated session (/ugm/* gates logged-out; run-001 limitation stands — evidence = URL-level + build-sha + run-001 0-live-hops census); /courses, /past-papers, /practice, /plan now gate to /login (auth-first posture, other lanes' session law — reachable-auth, NOT broken); receipt contains zero tokens.
+Bookkeeping-only: .syllabai/** + worklog; no code or content change. fetch-first, no force.

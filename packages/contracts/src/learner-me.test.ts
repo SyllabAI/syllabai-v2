@@ -180,8 +180,8 @@ describe("T-TIER1 lastOpened schemas", () => {
 });
 
 describe("T-TIER1 mockResults schemas", () => {
-  it("pins the per-course cap of record (the hub's MAX_PER_COURSE)", () => {
-    expect(MOCK_RESULTS_PER_COURSE).toBe(20);
+  it("pins the per-course cap of record (the hub's MAX_PER_COURSE; T-CAPS-POLICY-1: 20 → 50)", () => {
+    expect(MOCK_RESULTS_PER_COURSE).toBe(50);
   });
 
   it("accepts a valid tally with an optional per-question list", () => {

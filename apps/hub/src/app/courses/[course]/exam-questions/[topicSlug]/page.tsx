@@ -1,6 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { boardOf, loadHubCourse } from "@/lib/courses";
 import { Breadcrumbs, ExamCodePill } from "@/components/hub/chrome";
+import { PageHeader } from "@/components/layout/page-header";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import { QuestionPlayer } from "./question-player";
 import { pilotTopicSetParams } from "@/lib/static-params";
@@ -63,21 +64,21 @@ export default async function QuestionSetPage({
               { label: topic.name },
             ]}
           />
-          <header className="space-y-3">
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <h1 className="max-w-2xl text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
+          {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
+              for every course detail page (was sm:text-3xl here). */}
+          <PageHeader
+            title={
+              <>
                 {topic.name}
                 {topic.setName ? ` — ${topic.setName}` : ""}{" "}
                 <span className="text-muted-foreground">
                   ({boardOf(meta)} {meta.level} {meta.subject}): Exam Questions
                 </span>
-              </h1>
-              <ExamCodePill code={meta.code} href={`/courses/${meta.slug}/specification`} />
-            </div>
-            <p className="text-sm text-muted-foreground">
-              {topic.questions.length} questions · {totalMarks} marks · {estTime}
-            </p>
-          </header>
+              </>
+            }
+            description={`${topic.questions.length} questions · ${totalMarks} marks · ${estTime}`}
+            actions={<ExamCodePill code={meta.code} href={`/courses/${meta.slug}/specification`} />}
+          />
 
           <QuestionPlayer
             course={meta.slug}

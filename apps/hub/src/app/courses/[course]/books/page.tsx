@@ -17,7 +17,7 @@ import {
 import { booksRawUrl } from "@/lib/pastpapers-shared";
 import { fetchLessonShelfEntries, normalizedChapterKey } from "@/lib/books-lesson";
 import { strengthCheckCount } from "@/lib/books-strength";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { CorpusPdfLink } from "@/components/pastpapers/corpus-pdf-link";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -60,9 +60,9 @@ export default async function BooksShelfPage({
   const unavailable = shelf === null;
 
   return (
-    <div className="px-3 py-4 sm:px-5 lg:px-6">
+    <div className="px-4 py-6 sm:px-6 lg:px-8">
       <PreconnectCorpus />
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         // T-MIG-140: the board is the registry row's own (boardOf — explicit
         // "Cambridge International" on the CIE wave rows, else "Edexcel"),

@@ -96,20 +96,26 @@ const inter = localFont({
 });
 
 /**
- * No-flash theme bootstrap — runs before first paint. T-ACCOUNT-ONLY
- * run-001: the theme itself is an ACCOUNT doc (lib/theme-store.ts, the
- * "theme" key of the workspace-document plane) and localStorage is no
- * longer read here — the bootstrap applies the SYSTEM default only
- * (data-theme sme + the OS light/dark), and the account theme applies
- * when the account-docs hydration lands (lib/theme-store.ts).
+ * No-flash theme bootstrap — runs before first paint, mirrors the logic in
+ * src/lib/theme-store.ts (same storage key + parsing — keep both in sync).
+ * T-THEME-LOCAL-1 run-001 ("Theme must be browser saved only"): the theme
+ * is a BROWSER record again — this reads { theme: "sme"|"quiet-green"|
+ * "candy-shop"|"chat-app-plum", mode: "light"|"dark"|"system" } from
+ * localStorage["syllabai-theme"] and applies data-theme + .dark before any
+ * content paints. (The account-only sweep's bootstrap applied the system
+ * default only and let the account theme land post-hydration — the flash
+ * cost this restore removes.)
  */
-const themeBootstrap = `(function(){
-var dark=window.matchMedia("(prefers-color-scheme: dark)").matches;
+const themeBootstrap = `(function(){try{
+var t=JSON.parse(localStorage.getItem("syllabai-theme")||"{}");
+var theme=t.theme==="quiet-green"?"quiet-green":t.theme==="candy-shop"?"candy-shop":t.theme==="chat-app-plum"?"chat-app-plum":"sme";
+var mode=t.mode||"system";
+var dark=mode==="dark"||(mode==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches);
 var d=document.documentElement;
-d.setAttribute("data-theme","sme");
+d.setAttribute("data-theme",theme);
 d.classList.toggle("dark",dark);
 d.style.colorScheme=dark?"dark":"light";
-})();`;
+}catch(e){}})();`;
 
 export const metadata: Metadata = {
   // UX review 2026-10-31 F-08: canonical + Open Graph URLs on the course
