@@ -79,3 +79,19 @@ scope:
     - "apps/hub/src/app/api/corpus-pdf/** (T-MIG-128/T-MIG-133c law stands)"
     - "apps/hub/src/app/learner/**, apps/hub/src/app/teacher/** (auth-gated dynamic surfaces)"
     - "packages/**, golden/**, Neon main (read-only law), Render, GitHub archive settings"
+
+    run-003 (2026-11-06, trace 1a1b4eabc366fc49, operator order "Proceed
+    with the thing that actually protects the new account"): branch
+    t-vercel-usage/r6 from origin/main 3ae3ef1d. W1 ignoreCommand branch
+    gate — non-main refs skip when VERCEL_GIT_COMMIT_REF is present; empty
+    var fails open into the run-002 diff gate (byte-preserved suffix;
+    crons+git asserted untouched). W2 t-vercel-usage-bake.yml: nightly
+    02:30 UTC + dispatch CLI prod bake, idempotent (skips when prod SHA ==
+    main), CLI because run-002 proved gitSource pins die to
+    ignored-build-step; VERCEL_BAKE_TOKEN repo secret (encrypted, never
+    printed). W3 receipt run-003 + worklog appends ×2. First-hand: bake
+    path proven in-sandbox (CLI bake of 3ae3ef1d → READY); today's
+    preview-building lanes (1453b93e, 1f71a2493b) predate #796's
+    deploymentEnabled block — self-extinguishing; the branch gate covers
+    every branch carrying main's vercel.json regardless of the "*"
+    glob's honor status.

@@ -1445,3 +1445,10 @@ Work Log:
 
 Stage Summary:
 - Branch t-theme-local-1/run-001 pushed; PR opened for operator eyeball (behavior change — NOT self-merged). After merge: theme changes write ONLY the browser record (no theme PUTs), the theme survives sign-out and account switches on the same browser, other browsers/devices start at the system default, and each account's stale theme doc self-retires to the honest null on its first post-revert login.
+
+## receipt(T-VERCEL-USAGE) — run-003: the preview kill + the deliberate bake floor — 2026-11-06
+- Operator order of record: "Proceed with the thing that actually protects the new account" (zai-web trace 1a1b4eabc366fc49). Extends run-001 (#796) + run-002 (hotfix direct-to-main).
+- W1 ignoreCommand branch gate: non-main refs skip the build when `VERCEL_GIT_COMMIT_REF` is present and != main; empty var FAILS OPEN into the run-002 diff gate (byte-preserved suffix). crons+git blocks byte-identical (asserted). The preview kill now rides the proven mechanism — whether Vercel honors the "*" glob is moot for every branch carrying main's vercel.json.
+- W2 NEW `.github/workflows/t-vercel-usage-bake.yml`: nightly 02:30 UTC + dispatch; bakes prod via vercel CLI — gitSource would die to ignored-build-step (run-002 first-hand); idempotent (skips when production SHA == main HEAD); VERCEL_BAKE_TOKEN repo secret, never printed; concurrency-grouped.
+- W3 Burn of record: run-000 counters (Fluid CPU 21h49m/4h, ISR writes 878K/200K, Origin 26GB/10GB) — runtime, already cut by run-001; account-2 recon 2026-11-06: 76 deploys/24h, 43 canceled, ~45 lane previews/day from pre-#796 lanes (first-hand: 1453b93ed4, 1f71a2493b predate a8df668a) — self-extinguishing; deploy-count pressure now gated.
+- W4 FENCES respected: zero app/contracts/db/API/bundle/data bytes; author did not self-merge (PR left for the integrator desk).

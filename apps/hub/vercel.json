@@ -1,16 +1,16 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "git": {
-    "deploymentEnabled": {
-      "main": true,
-      "*": false
-    }
-  },
-  "ignoreCommand": "git cat-file -e HEAD^ 2>/dev/null || exit 1; cd \"$(git rev-parse --show-toplevel)\" && git diff --quiet HEAD^ HEAD -- apps/hub packages/ package.json bun.lock bunfig.toml turbo.json tsconfig.base.json",
-  "crons": [
-    {
-      "path": "/api/cron/nightly-decay",
-      "schedule": "0 0 * * *"
-    }
-  ]
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "git": {
+        "deploymentEnabled": {
+            "main": true,
+            "*": false
+        }
+    },
+    "ignoreCommand": "[ -n \"$VERCEL_GIT_COMMIT_REF\" ] && [ \"$VERCEL_GIT_COMMIT_REF\" != \"main\" ] && exit 0; git cat-file -e HEAD^ 2>/dev/null || exit 1; cd \"$(git rev-parse --show-toplevel)\" && git diff --quiet HEAD^ HEAD -- apps/hub packages/ package.json bun.lock bunfig.toml turbo.json tsconfig.base.json",
+    "crons": [
+        {
+            "path": "/api/cron/nightly-decay",
+            "schedule": "0 0 * * *"
+        }
+    ]
 }
