@@ -1,0 +1,66 @@
+version: 1
+task:
+  id: T-HUB-COURSES-UI-1
+  title: "Courses directory redesign — stage 1 of the approved plan: the subject-identity single source (18 identities: family + bespoke glyph + tile colour pair), the 17-glyph bespoke SVG set with lucide fallback, and the build-gate coverage law over all 106 registry slugs (zero visual change by design)"
+  owner: "operator-delegate (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de4)"
+  status: "IN_REVIEW run-001 (PR open, awaiting merge; operator order 'Proceed with lane T-HUB-COURSES-UI-1/run-001. Make sure not to break anything. The project needs to be always working')"
+  priority: P1
+  band: T-HUB (frontend — courses directory surface)
+  wave: hub-courses-directory
+  deps: [T-HUB-COURSES-PUBLIC-1]
+  execution_record: >
+    run-000 (2026-11-07, design phase): the /courses redesign plan of record
+    (Courses-Redesign-Plan.docx + PDF, 12 sections, R1/GO-1 cover) and the
+    approved HTML mockup of record (download/redesign/mockup/
+    courses-redesign-mockup.html, desktop+mobile renders) — audit findings
+    F-1..F-7, three implementation options, CourseCard 5 zones, 4-stage
+    roadmap (this lane = stage 1). User-locked direction: hybrid glyph set,
+    4 level sections with family grouping, progress + past-paper + corpus
+    status cards, /courses only.
+    run-001 (2026-11-07, operator trace 1a1b6dc0f68c4249, order "Proceed
+    with lane T-HUB-COURSES-UI-1/run-001; make sure not to break anything;
+    the project needs to be always working"): stage 1 landed ADDITIVE-ONLY —
+    zero changed call sites, zero visual delta on any rendered page (the
+    directory's lucide subjectIcon() path is untouched; wiring happens in
+    stage 2/run-002).
+    Scope: (a) src/lib/subject-identity.ts — the ONE source of truth: 18
+    canonical subject identities (family + glyph id + tile bg/fg from the
+    approved mockup), 5 ordered families, the Mathematics→Maths alias +
+    case-insensitive folding (registry carries ICT/Ict), client-safe (no
+    server-only import) so the stage-2 client directory can consume it;
+    (b) src/components/icons/subject-glyph.tsx — 17 bespoke 24×24
+    currentColor stroke glyphs (byte-faithful mockup path data), typed
+    Record<SubjectGlyphId,…> so a missing component fails typecheck,
+    lucide BookOpen runtime fallback for not-yet-existing subjects;
+    (c) scripts/verify_subject_identity.ts — the build gate in the hub
+    prebuild chain: every courses.json slug must resolve (unknown subject
+    fails CI), no stale mappings, no dead glyphs, #rrggbb colour law,
+    family integrity; (d) subject-identity.test.ts — 11 unit tests on the
+    pure semantics; (e) package.json prebuild chain extended.
+    DESIGN DELTA vs the plan's "12 bespoke glyphs": the approved mockup
+    itself draws 17 designs covering ALL 18 canonical subjects (the "12"
+    predates the mockup); shipped 17 = zero fallback rendering for current
+    subjects, fallback stays a resilience net. Disclosed here and in the PR.
+    Gates: verify law PASS (106/106 slugs resolved, 18 identities from 20
+    raw subject strings, 17/17 glyphs in use, families 36/38/8/15/9);
+    bun test 11/11 (132 expect calls); turbo typecheck 5/5 workspaces;
+    eslint clean on all new src files (scripts/ is house-ignored);
+    build:hub compile+prerender COMPLETE (4647/4647 pages, BUILD_ID minted)
+    — standalone packaging cp and next-start boot blocked by the sandbox
+    rootfs (ENOSPC at the final packaging mkdir, twice, 9.9GB rootfs with
+    4.7-5.9G free: the 4647-page standalone artifact set exceeds the
+    sandbox ceiling) — the same disclosed limit the T-HUB-COURSES-PUBLIC-1
+    lane hit; CI hub job runs the identical build on a clean runner and is
+    the packaging gate of record.
+    Production environment note (observed during this run, disclosed to the
+    operator): syllabai-hub-v2.vercel.app answers 402 DEPLOYMENT_DISABLED
+    since ~16:2xZ 2026-11-07 (both projects) after the post-bake merge
+    train (#852/#851/#850 + receipt, 15:45-16:22Z) exhausted the new
+    account's daily deployment allowance again — same serving-down class as
+    the 2026-11-05 old-account suspension, same self-heal expectation as
+    the 2026-11-07 cap event ("tried, refused, next dispatch self-heals
+    after reset"). The t-vercel-usage-bake dispatch attempts from this
+    session are GitHub-API-rate-blocked (secondary limit, mutations 403);
+    the scheduled 02:30Z bake is the self-heal floor. This lane merges
+    nothing to prod until Vercel accepts deployments again; the merge is
+    deploy-neutral while blocked.
