@@ -21,10 +21,10 @@ import type { MarkContext } from "./mark-context";
 // ── refusal texts (KaRagService.java :48-83, byte-verbatim) ─────────────────
 
 export const TUTOR_REFUSAL = `I can't answer that from the validated course material yet. There is no
-matching specification topic or source document for this question, so
-answering would mean guessing — which SyllabAI never does. Try naming the
-topic (e.g. "moles", "bonding", "equilibria") or ask your teacher to
-ingest the relevant material.`;
+matching specification topic or source document for this question here,
+so answering would mean guessing — which SyllabAI never does. Try naming
+the topic (e.g. "moles", "bonding", "equilibria"), or open the tutor from
+inside your course so it searches that course's material.`;
 
 /** The %s echo makes the refusal verifiable — the answer never cites
  *  wrong-paper chunks (the fail-open guard, 09-27 adjudication direction (a)). */
@@ -33,8 +33,8 @@ export function paperIdentityRefusal(identityLabel: string): string {
 find ${identityLabel} in the validated corpus — the paper or question may not be
 ingested yet, or it may still be awaiting validation. Answering would
 mean guessing, which SyllabAI never does. Try naming the topic (e.g.
-"moles", "bonding", "equilibria") or ask your teacher to ingest the
-relevant material.`;
+"moles", "bonding", "equilibria"), or check the paper's ingest status in
+the course hub.`;
 }
 
 /** V53 (ADR-030) per-course scope refusal — no cross-corpus fallback ever. */
@@ -43,8 +43,9 @@ export function courseScopeRefusal(courseRef: string): string {
 is scoped to the course "${courseRef}", and I can't find a validated, serving
 corpus for it — the course may not be available for tutoring yet, or
 it may still be awaiting validation. SyllabAI never answers across
-courses, so I won't borrow another course's material. Try asking your
-teacher to check the course's tutoring availability.`;
+courses, so I won't borrow another course's material. Try opening the
+tutor from a course that has one — it answers only from that course's
+own material.`;
 }
 
 // ── prompt identity (:23-39, :530-536) ──────────────────────────────────────

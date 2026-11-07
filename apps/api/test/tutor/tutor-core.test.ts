@@ -333,6 +333,14 @@ describe("citation resolution", () => {
     );
     // the graceful null: no title → the pre-001 frozen label byte-for-byte
     expect(resolveCitations([note(null)])[0]?.label).toBe("Revision notes — p1");
+    // T-TUTOR-UX-1 (TU-5): a raw-id-shaped title renders as absent — the
+    // frozen label stands, never a fabricated one
+    expect(resolveCitations([note("sme-note-rn_T6S7R66N2wSZpWyc")])[0]?.label).toBe(
+      "Revision notes — p1",
+    );
+    expect(resolveCitations([note("Chemical tests")])[0]?.label).toBe(
+      "Revision notes — Chemical tests — p1",
+    );
     // blank/whitespace titles degrade too (never "Revision notes —  — p1")
     expect(resolveCitations([note("   ")])[0]?.label).toBe("Revision notes — p1");
 
@@ -351,12 +359,17 @@ describe("citation resolution", () => {
 // ── refusal texts (frozen KaRagService :48-83, byte-verbatim) ───────────────
 
 describe("refusal texts", () => {
-  test("the three refusal laws are the frozen bytes", () => {
+  // T-TUTOR-UX-1 (TU-7) ruling: the CANONICAL STEM stays byte-frozen (the
+  // refusal-detect tier-1 law keys on it); the TAILS speak to students —
+  // the admin-language redirect ("ask your teacher to ingest") is retired,
+  // the redirects name the learner's own next step. Parity break documented
+  // in the PR of record.
+  test("the three refusal laws: frozen stem, student-facing tails (TU-7)", () => {
     expect(TUTOR_REFUSAL).toBe(`I can't answer that from the validated course material yet. There is no
-matching specification topic or source document for this question, so
-answering would mean guessing — which SyllabAI never does. Try naming the
-topic (e.g. "moles", "bonding", "equilibria") or ask your teacher to
-ingest the relevant material.`);
+matching specification topic or source document for this question here,
+so answering would mean guessing — which SyllabAI never does. Try naming
+the topic (e.g. "moles", "bonding", "equilibria"), or open the tutor from
+inside your course so it searches that course's material.`);
     expect(courseScopeRefusal("4CH1")).toContain('scoped to the course "4CH1"');
     expect(courseScopeRefusal("4CH1")).toContain("SyllabAI never answers across\ncourses");
     // v17 (T-TUTOR-PIVOT-1): the refusal shape law follows the bumped prompt
