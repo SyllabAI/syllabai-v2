@@ -193,7 +193,9 @@ export function Composer({
         )}
       </div>
       <div className="flex items-center justify-between border-t px-3 py-1 text-[10px] text-muted-foreground">
-        <span>
+        {/* T-TUTOR-UX-1 (TU-15): keyboard hints are desktop noise on touch —
+            they render only where a hardware keyboard plausibly exists. */}
+        <span className="hidden [@media(pointer:fine)]:inline">
           <kbd className="rounded border bg-muted px-1 py-px font-mono">Enter</kbd> to send ·{" "}
           <kbd className="rounded border bg-muted px-1 py-px font-mono">Shift</kbd>+
           <kbd className="rounded border bg-muted px-1 py-px font-mono">Enter</kbd> for a new line
