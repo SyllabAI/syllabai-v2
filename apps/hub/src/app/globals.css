@@ -1517,3 +1517,32 @@ math-field.answer-mathfield:focus {
 @media (prefers-reduced-motion: reduce) {
   .tg-dot { animation: none; opacity: 0.4; }
 }
+
+/*
+ * T-HUB-COURSES-UI-1 run-002 — the /courses directory redesign (stage 2 of
+ * the approved plan): each course card renders its subject's bespoke glyph
+ * (components/icons/subject-glyph.tsx) on a tile tinted with the
+ * subject-identity colour pair (lib/subject-identity.ts — the approved
+ * mockup's values, carried since run-001 as the subject-brand constants).
+ *
+ * The pair reaches this block as inline custom props (--subj-bg/--subj-fg)
+ * and is consumed through the run-004b colour-derivation template, so all
+ * FOUR themes (sme / quiet-green / candy-shop / chat-app-plum) and both
+ * modes re-skin it for free (#500 — no per-theme rules anywhere):
+ *   - light: the mockup's own pastel wash + saturated ink, over a hairline
+ *     mixed from the same hue (a decorative aria-hidden glyph — the text
+ *     contrast law does not bind a glyph);
+ *   - dark: a deep tinted fill mixed over the THEME'S OWN card surface +
+ *     a lightened ink — the --accent-primary dark law exactly, so the tile
+ *     sits inside its card in quiet-green, candy-shop and plum too.
+ */
+.subject-tile {
+  background-color: var(--subj-bg);
+  color: var(--subj-fg);
+  border-color: color-mix(in srgb, var(--subj-fg) 18%, transparent);
+}
+.dark .subject-tile {
+  background-color: color-mix(in srgb, var(--subj-fg) 16%, var(--card));
+  color: color-mix(in srgb, var(--subj-fg) 60%, white);
+  border-color: color-mix(in srgb, var(--subj-fg) 28%, transparent);
+}
