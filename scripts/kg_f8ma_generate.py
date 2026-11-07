@@ -602,6 +602,66 @@ def main() -> None:
             batch="five", task="T-KG-PRE-7", exporter_ver="v1.1",
         )
     else:
+        # T-KG-PRE-23 (batch twenty-one, the CIE science family, the F8
+        # rollout tail): the three co-ordinated-sciences double-award
+        # registers (DERIVED webs — each co-ordinated register is a
+        # verified text restatement of the separate-science 2023 register,
+        # so each lattice is the separate-science master web re-anchored
+        # onto the co-ordinated spine, derivation disclosed in the module
+        # docstrings and reproducible via scripts/f8ci_derive.py) and the
+        # three combined-science registers (FRESH AUTHORED webs — the
+        # combined register is not a text mirror of any master register,
+        # measured in the mapcheck of record). All six plain startup
+        # installs (the courses are web-less, 0 served pre, no legacy
+        # store). Fail-closed startup-only law holds on every route.
+        cie_science = {
+            "cie-igcse-science-co-ordinated-sciences-double-award-23-biology": ("f8ci_lattice_coordbio", "COORD-BIO"),
+            "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry": ("f8ci_lattice_coordchem", "COORD-CHEM"),
+            "cie-igcse-science-co-ordinated-sciences-double-award-23-physics": ("f8ci_lattice_coordphys", "COORD-PHYS"),
+            "cie-igcse-science-combined-science-23-biology": ("f8ci_lattice_combbio", "COMB-BIO"),
+            "cie-igcse-science-combined-science-23-chemistry": ("f8ci_lattice_combchem", "COMB-CHEM"),
+            "cie-igcse-science-combined-science-23-physics": ("f8ci_lattice_combphys", "COMB-PHYS"),
+        }
+        if args.course in cie_science:
+            mod, tag = cie_science[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="twenty-one", task="T-KG-PRE-23", exporter_ver="v2.6",
+            )
+            return
+        # T-KG-PRE-22 (batch twenty, the Edexcel science tranche 17):
+        # the double-award family — the three 4SD0 linear registers
+        # (bio/chem/phys, DERIVED webs — the 4SD0 register is a verified
+        # text-subset of the separate-science 2017 specs, so each lattice
+        # is the separate-science master web renumbered onto the 4SD0
+        # register, derivation disclosed in the module docstrings) and
+        # all six 4XSD1 modular units (renumbered derivatives of the 4SD0
+        # lattices, two disclosed hops). All nine plain startup installs
+        # (the courses are web-less, 0 served pre, no legacy store).
+        double_award = {
+            "igcse-science-double-award-17-biology": ("f8da_lattice_4sd0bio", "4SD0BIO"),
+            "igcse-science-double-award-17-chemistry": ("f8da_lattice_4sd0chem", "4SD0CHEM"),
+            "igcse-science-double-award-17-physics": ("f8da_lattice_4sd0phys", "4SD0PHYS"),
+            "igcse-science-double-award-modular-24-biology-unit-1": ("f8da_lattice_4xsdbu1", "4XSDBU1"),
+            "igcse-science-double-award-modular-24-biology-unit-2": ("f8da_lattice_4xsdbu2", "4XSDBU2"),
+            "igcse-science-double-award-modular-24-chemistry-unit-1": ("f8da_lattice_4xsdcu1", "4XSDCU1"),
+            "igcse-science-double-award-modular-24-chemistry-unit-2": ("f8da_lattice_4xsdcu2", "4XSDCU2"),
+            "igcse-science-double-award-modular-24-physics-unit-1": ("f8da_lattice_4xsdpu1", "4XSDPU1"),
+            "igcse-science-double-award-modular-24-physics-unit-2": ("f8da_lattice_4xsdpu2", "4XSDPU2"),
+        }
+        if args.course in double_award:
+            mod, tag = double_award[args.course]
+            from importlib import import_module
+
+            lattice = import_module(mod)
+            install_web(
+                args.course, lattice.CONCEPTS, lattice.EDGES, tag,
+                batch="twenty", task="T-KG-PRE-22", exporter_ver="v2.5",
+            )
+            return
         # T-KG-PRE-21 (batch nineteen, the Edexcel science tranche 16):
         # the biology family — the 4BI1 linear register (fresh web),
         # both 4XBI1 modular units (renumbered derivatives of the 4BI1

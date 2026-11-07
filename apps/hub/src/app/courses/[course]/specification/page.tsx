@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { getCourseBundle, loadHubCourse } from "@/lib/courses";
 import { getDataProvider } from "@/lib/data";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { normalizeSpecText } from "@/lib/spec-text";
 import { parseSpecStatement } from "@/lib/spec-statement";
 import { buildSpecResources } from "@/lib/spec-resources";
@@ -85,7 +85,7 @@ export default async function CourseSpecificationPage({
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         title={`${meta.subject} ${meta.code} — specification explorer`}
         crumb="Specification"

@@ -792,7 +792,7 @@ describe("GET/PUT /api/v1/learners/me/last-opened + GET /mock-results + PUT /moc
     expect(await res.json()).toEqual({ results: [] });
   });
 
-  test("GET mock-results → rows map to the wire; the per-course rn cap filters (20 of record); newest-finished order", async () => {
+  test("GET mock-results → rows map to the wire; the per-course rn cap filters (50 of record); newest-finished order", async () => {
     const res = await makeApp(asStudent, [
       ...routesWith({}),
       {
@@ -838,7 +838,7 @@ describe("GET/PUT /api/v1/learners/me/last-opened + GET /mock-results + PUT /moc
             total: 80,
             ended: "exited",
             questions: null,
-            rn: 21,
+            rn: 51,
           },
         ],
       },

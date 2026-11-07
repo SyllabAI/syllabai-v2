@@ -371,6 +371,34 @@ except ImportError:
 
 FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
+UGM_SITE_ORIGIN = "https://undergroundmathematics.org"
+
+
+def normalize_ugm_outbound_links(body: str, where: str) -> str:
+    """Outbound-link normalization law (t-ugm-link-fix/r1, 2026-11-06).
+
+    The resources mirror stores undergroundmathematics.org paths
+    domain-stripped, so body links like ](/quadratics/discriminating-
+    teacher-support) are UGM SITE paths, not hub routes — rendered live
+    they 404 on the hub (absolute-crawl finding, 3 hits, 2026-11-06). The
+    renderer's outbound-link law flattens absolute http(s) links to
+    attribution text, so absolutize every root-relative markdown link
+    against the UGM origin here. /ugm-assets/* is EXCLUDED: those are
+    hub-side mirror asset routes, not UGM site paths. Fail-closed: any
+    root-relative link that survives must be an /ugm-assets/ route.
+    """
+
+    def _abs(m: "re.Match[str]") -> str:
+        path = m.group(1)
+        if path.startswith("/ugm-assets/"):
+            return m.group(0)
+        return f"]({UGM_SITE_ORIGIN}{path})"
+
+    body = re.sub(r"\]\((/[^)\s]+)\)", _abs, body)
+    if re.search(r"\]\(/(?!ugm-assets/)[^)\s]*\)", body):
+        fail(f"[{where}] non-UGM root-relative link survived normalization")
+    return body
+
 # 1.2 (T-UGM-HUB-CONSUME-13): primaryPick is nullable — the honest-gap
 # law. A spec point whose corpus-wide sweep closed with ZERO rows (rule 3 —
 # no coverage manufactured; lane 13's 3.5.4 the first of record) carries
@@ -1220,6 +1248,7 @@ def import_lane(repo, lane_block, course):
             fail(f"[{station}] delimiter imbalance in {f}")
         if not body.strip():
             fail(f"[{station}] empty body: {f}")
+        body = normalize_ugm_outbound_links(body, f"{station} {f}")
         spec_pts = ((fm.get("spec_map") or {}).get("spec_points")) or []
         parsed[ugm_id] = {
             "ugmId": ugm_id,
@@ -1635,6 +1664,7 @@ def _import_course_plane_lane(repo, lane_block, course):
             fail(f"[{station}] {slug}: delimiter imbalance in {rel}")
         if not body.strip():
             fail(f"[{station}] {slug}: empty body: {rel}")
+        body = normalize_ugm_outbound_links(body, f"{station} {rel}")
         codes = r.get("codes") or []
         if not codes:
             fail(f"[{station}] {slug}: a course-plane row must claim its P2 codes")

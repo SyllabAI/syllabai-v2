@@ -1062,8 +1062,11 @@ export async function setLastOpened(
   return view;
 }
 
-/** The per-course bound of record (the hub's own MAX_PER_COURSE). */
-const MOCK_RESULTS_CAP = 20;
+/** The per-course bound of record (the hub's own MAX_PER_COURSE).
+ *  T-CAPS-POLICY-1: 20 → 50, moving with the contracts'
+ *  MOCK_RESULTS_PER_COURSE and the hub's MAX_PER_COURSE — one law, three
+ *  sites (a weekly-mock cadence now covers a full school year per course). */
+const MOCK_RESULTS_CAP = 50;
 
 interface MockResultRow {
   client_id: string;
@@ -1095,7 +1098,7 @@ const toMockResultView = (r: MockResultRow) => ({
 
 /**
  * GET /api/v1/learners/me/mock-results — every course's self-marked mock
- * tallies, newest finished first, capped at 20 per course server-side (the
+ * tallies, newest finished first, capped at 50 per course server-side (the
  * same bound the hub's store enforces locally — the cap is a law, not a
  * UI choice, so cache and account can never disagree about the shape).
  */

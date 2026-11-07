@@ -180,7 +180,7 @@ export function QuestionbankIndex({
           overlay holds a scored part in a set listed here. */}
       {/* t-ui-polish run-004: hero→body join at the mt-6 family rhythm
           (was mt-4; when the paper filter bar renders, both joins now sit
-          at the same 24px step as every other CourseHeader surface). */}
+          at the same 24px step as every other course-header surface). */}
       <div className="mt-6">
         <SelectToolbar
           searchLabel="Search exam questions"

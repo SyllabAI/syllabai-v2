@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { loadHubCourse } from "@/lib/courses";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import { SavedQuestionsList, type SavedQuestionMeta } from "./saved-list";
 import { allCourseParams } from "@/lib/static-params";
@@ -52,7 +52,7 @@ export default async function SavedQuestionsPage({
     <div className="flex w-full">
       <ResourcePanel variant="questions" />
       <div className="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-8">
-        <CourseHeader
+        <CoursePageHeader
           meta={meta}
           title="Saved questions"
           crumb="Saved questions"

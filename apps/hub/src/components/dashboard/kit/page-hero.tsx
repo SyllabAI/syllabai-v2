@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
  * like CourseHeader's children slot.
  */
 export function PageHero({
+  breadcrumbs,
   eyebrow,
   title,
   description,
@@ -23,6 +24,11 @@ export function PageHero({
   children,
   className,
 }: {
+  /** Breadcrumb trail above the title (T-HEADER-1: the course lander's
+   *  board → level → course trail rides the same hero as everything else —
+   *  one header component, two postures: hero band here for LANDERS, the
+   *  bare PageHeader block everywhere else). */
+  breadcrumbs?: React.ReactNode;
   /** Small-caps context line above the title ("Teacher workspace"). */
   eyebrow?: string;
   title: React.ReactNode;
@@ -46,6 +52,7 @@ export function PageHero({
       {/* the course hero's pastel wash — one gradient, every surface */}
       <div aria-hidden className="course-hero-gradient absolute inset-0 -z-10" />
       <div className="space-y-3 p-5 sm:p-6">
+        {breadcrumbs}
         {eyebrow && (
           <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
             {eyebrow}

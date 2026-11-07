@@ -8,6 +8,7 @@ import { findGuidedEntry, loadGuidedIndex } from "@/lib/guided-lessons";
 import { sanitizeNoteBody } from "@/lib/note-body-fix";
 import { Markdown } from "@/components/markdown";
 import { Breadcrumbs } from "@/components/hub/chrome";
+import { PageHeader } from "@/components/layout/page-header";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import { NoteCla } from "@/components/cla/note-cla";
 import { NoteFootnote } from "./note-footnote";
@@ -78,25 +79,30 @@ export default async function NoteReaderPage({
             ]}
           />
 
-          <header className="space-y-3">
-            <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-[28px]">
-              {note.title}{" "}
-              <span className="text-muted-foreground">
-                ({boardOf(meta)} {meta.level} {meta.subject})
-              </span>
-            </h1>
-            {/* T-SPEC-ANCHOR-1: exam-technique pages teach exam/practical
-                skill rather than a spec statement — label them explicitly
-                instead of letting an empty anchor row read as a gap. */}
-            {note.contentKind === "exam_technique" && (
-              <span className="inline-flex items-center gap-1 rounded-md bg-amber-500/10 px-1.5 py-0.5 text-[11px] font-medium text-amber-700 dark:text-amber-400">
-                Exam technique · not spec-tied
-              </span>
-            )}
+          {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
+              (was sm:text-[28px]); the trust meta rides as a child. */}
+          <PageHeader
+            title={
+              <>
+                {note.title}{" "}
+                <span className="text-muted-foreground">
+                  ({boardOf(meta)} {meta.level} {meta.subject})
+                </span>
+              </>
+            }
+          >
             {/* trust meta — the SyllabAI analogue of SME's authorship block.
                 Board-aware (CIE wave): registry-explicit board, else the
                 founding "Pearson Edexcel" — pre-CIE rows render byte-identical. */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-muted-foreground">
+              {/* RN-DEBRIS-11 run-005: exam-skills notes carry their explicit
+                  fold label at the point of reading — exam technique, not
+                  spec-tied (no spec-point anchor by design). */}
+              {note.contentKind === "exam-technique" && (
+                <span className="rounded-md bg-muted px-1.5 py-0.5 text-[11px] font-medium text-muted-foreground">
+                  Exam technique — not tied to a spec point
+                </span>
+              )}
               <span>
                 Exam board{" "}
                 <span className="font-medium text-foreground">{meta.board ?? "Pearson Edexcel"}</span> ·{" "}
@@ -111,7 +117,7 @@ export default async function NoteReaderPage({
                   stays in the data contract (corpus tooling joins on it), it
                   just no longer renders on the page. */}
             </div>
-          </header>
+          </PageHeader>
 
           {/* contextual help (CLA) — the note-anchored assistant. The floating
               CLA button opens the overlay (the guided-study banner was removed

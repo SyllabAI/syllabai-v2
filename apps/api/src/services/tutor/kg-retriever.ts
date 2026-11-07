@@ -265,3 +265,69 @@ export async function kgRetrieve(
 function compareStrings(a: string, b: string): number {
   return a < b ? -1 : a > b ? 1 : 0;
 }
+
+/**
+ * T-TUTOR-PIVOT-2 run-001 (prereg of record docs/DC9-TUTOR-KG-INTENT-PIVOT-ARM-PLAN.md)
+ * — the union of two intent resolutions over the SAME scope: the frozen
+ * blend-arm context (the working-memory query) and the bare-question
+ * pivot-arm context. The DC7 §4 disclosed residual, escalated on the
+ * T-TUTOR-AUDIT-1 live receipts: on a pivot the intent surface described
+ * only the PREVIOUS topic, so the previous topic's rows anchored at the 1.0
+ * spec-boost tier and owned the head of the pool the honesty floor reads,
+ * while the pivot topic contributed nothing.
+ *
+ * Laws (deterministic, no new thresholds — the DC7 posture):
+ *   - topics dedup by nodeId at the MAX matchScore, then re-sort by the
+ *     frozen ranking law (specificity desc, code asc — the kgRetrieve
+ *     order), so the merge is order-insensitive;
+ *   - prerequisites dedup by (forTopicId, nodeId) at the max depth; blend
+ *     order first, bare additions appended;
+ *   - misconceptions dedup by (forTopicId, nodeId), blend order first;
+ *   - an empty arm is the identity (the single-turn degenerate case never
+ *     constructs the second arm at all — byte-identical posture);
+ *   - no cap here: each arm is already capped at maxTopics by its own
+ *     resolution and the union may exceed maxTopics BY DESIGN (the pivot's
+ *     topic must survive even when the blend's topics are all real); the
+ *     pool cap law (TUTOR_EVIDENCE_LIMIT) governs what actually serves.
+ */
+export function mergeKnowledgeContexts(
+  blend: KnowledgeContext,
+  bare: KnowledgeContext,
+): KnowledgeContext {
+  if (blend.topics.length === 0) return bare;
+  if (bare.topics.length === 0) return blend;
+
+  const byNode = new Map<string, MatchedTopic>();
+  for (const topic of [...blend.topics, ...bare.topics]) {
+    const hit = byNode.get(topic.nodeId);
+    if (hit == null) byNode.set(topic.nodeId, topic);
+    else
+      byNode.set(topic.nodeId, {
+        ...hit,
+        matchScore: Math.max(hit.matchScore, topic.matchScore),
+      });
+  }
+  const topics = [...byNode.values()].sort(
+    (a, b) => b.matchScore - a.matchScore || compareStrings(a.code, b.code),
+  );
+
+  const prereqKeys = new Map<string, PrerequisiteLink>();
+  for (const link of [...blend.prerequisites, ...bare.prerequisites]) {
+    const key = `${link.forTopicId}\u0000${link.nodeId}`;
+    const hit = prereqKeys.get(key);
+    if (hit == null) prereqKeys.set(key, link);
+    else prereqKeys.set(key, { ...hit, depth: Math.max(hit.depth, link.depth) });
+  }
+
+  const misKeys = new Map<string, MisconceptionSignal>();
+  for (const mis of [...blend.misconceptions, ...bare.misconceptions]) {
+    const key = `${mis.forTopicId}\u0000${mis.nodeId}`;
+    if (!misKeys.has(key)) misKeys.set(key, mis);
+  }
+
+  return {
+    topics,
+    prerequisites: [...prereqKeys.values()],
+    misconceptions: [...misKeys.values()],
+  };
+}

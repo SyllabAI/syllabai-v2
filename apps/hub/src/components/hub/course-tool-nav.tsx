@@ -29,6 +29,18 @@ import type { CourseStripItem } from "@/lib/course-nav";
  * EXACT match only (pathActive's prefix match would pin it on every course
  * route); every other item rides pathActive — the SAME helper the sidebar
  * rows use, so the two views can never disagree about what is active.
+ *
+ * Run-002 (operator feedback 2026-11-06, "it makes the website look too
+ * noisy"): re-read of the 2026-11-06 captures — MG has NO persistent
+ * sidebar at all; the strip IS their nav, on a single-column page, and it
+ * shows only on a subset of tool pages (question bank, papers, lessons,
+ * revision guides — 12 site-wide items), never on the course root, index,
+ * home, marker or progress pages. Our desktop already has the persistent
+ * sidebar (lg+), so a second full nav above the hero reads as duplication.
+ * The strip therefore rides BELOW lg only — exactly the range where the
+ * sidebar stands down behind the Menu bar and the page is single-column,
+ * i.e. the range this MG transcription was always for. Override escape
+ * hatch: tailwind-merge lets a caller pass lg:block to restore desktop.
  */
 export function CourseToolNav({
   items,
@@ -42,7 +54,7 @@ export function CourseToolNav({
   return (
     <nav
       aria-label="Course tools"
-      className={cn("border-b-2 bg-background", className)}
+      className={cn("border-b-2 bg-background lg:hidden", className)}
     >
       <div className="scrollbar-none flex min-w-0 items-center overflow-x-auto px-3 sm:px-4">
         {items.map((item) => {

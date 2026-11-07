@@ -33,6 +33,7 @@ import type { TeacherClassView } from "@/lib/types";
 import type { CourseMeta } from "@/lib/courses";
 import { useMyClasses } from "@/lib/teacher/my-classes";
 import { cn } from "@/lib/utils";
+import { PageHeader } from "@/components/layout/page-header";
 
 function apiMessage(err: unknown, fallback: string): string {
   if (err instanceof ApiError) return err.message;
@@ -110,23 +111,21 @@ export function TeacherClassesClient({
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h1 className="flex items-center gap-2 text-2xl font-bold tracking-tight">
+      {/* T-HEADER-1: the shared tool-page header — one text-2xl title law. */}
+      <PageHeader
+        title={
+          <span className="flex items-center gap-2">
             <Users className="size-5 text-primary" aria-hidden />
             Classes
-          </h1>
-          <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-            Your classes per subject — rosters, announcements and class-targeted
-            assignments. Live from the SyllabAI backend; members see the classroom
-            overlay inside their subject workspace, and independent students are
-            never touched by it.
-          </p>
-        </div>
-        <Button onClick={() => setShowCreate((v) => !v)} aria-expanded={showCreate}>
-          <Plus className="size-4" aria-hidden /> New class
-        </Button>
-      </div>
+          </span>
+        }
+        description="Your classes per subject — rosters, announcements and class-targeted assignments. Live from the SyllabAI backend; members see the classroom overlay inside their subject workspace, and independent students are never touched by it."
+        actions={
+          <Button onClick={() => setShowCreate((v) => !v)} aria-expanded={showCreate}>
+            <Plus className="size-4" aria-hidden /> New class
+          </Button>
+        }
+      />
 
       {showCreate && (
         <Card>

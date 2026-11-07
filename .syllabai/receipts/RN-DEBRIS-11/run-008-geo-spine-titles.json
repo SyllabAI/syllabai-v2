@@ -1,0 +1,66 @@
+{
+ "receipt": "rn11-run-008-geo-spine-titles",
+ "family": "RN-DEBRIS-11",
+ "run": "008",
+ "lane": "the geography repair — igcse-geography-19 (4GE1) spine row-label restoration (content plane + KG mirror)",
+ "operatorTrace": "1a1b47b3e77f481d",
+ "operatorOrder": "run the geography repair as run-007",
+ "renumbered": "008 — run-007 is claimed of record by PR #828 (lane/rn-debris-11-run-007-logged-in-ui-walk, trace 1a1b274ce325058d, open, unmerged); zero-collision law (t-mig-081 claim precedent: earliest claim wins) forbids a second run-007; this run took the next free number and discloses the substitution",
+ "generatedUtc": "2026-11-07",
+ "mode": "apply+verify",
+ "base": "origin/main dab1fd67 (fetch-first)",
+ "defectOfRecord": {
+  "queue": "ADR-039 r3 queue addition — 'igcse-geography-19 (4GE1) spine sub-topic titles are sentence fragments (\"Description\", \"Physical processes\", \"Distinctive\", \"Some places are\", \"Countries\"...) and T3 mis-parents a SUB1.4 node — the Edexcel front-matter parse wreck, same family as the english-language TS1-TS14 wreck ... the row labels are the queued defect'",
+  "scope": "all 31 SUBTOPIC rows of the 4GE1 spine (27 official Key-idea rows + 4 wreck rows), both planes of record",
+  "wreckRows": {
+   "igcse-geography-T3:SUB1.4": "spec §1.4 'Assessment of fieldwork skills – Section B' (Paper 1 fieldwork, 17 spec points S3.042-058) captured under Topic 3",
+   "igcse-geography-T3:SUB2.1": "spec §2.1 'Description' (Paper 2 section, 6 points S3.061-066 = the paper-2 topic list) captured under Topic 3",
+   "igcse-geography-T6:SUB2.4": "spec §2.4 'Assessment of fieldwork skills – Section B' (Paper 2 fieldwork, 17 points S6.067-083) captured under Topic 6",
+   "igcse-geography-T9:SUB_": "appendices blob (72 points S9.082-253: Appendix 4 Geographical skills / 5 Practical geographical enquiry process / 6 Fieldwork requirements / 7 Health and safety in the field families + S9.082-083 = the AO2/AO3 descriptor wordings) under a broken-code row titled with the topic's own name"
+  }
+ },
+ "evidenceOfRecord": {
+  "officialDoc": "Pearson Edexcel International GCSE in Geography (4GE1), Issue 4 – February 2026 © Pearson Education Limited 2026 — the file pinned upstream at syllabai-resources Official-Specifications/igcse-geography/9781446958360-int-gcse-geog-issue-3.pdf (filename says issue-3; the pinned bytes are the Issue 4 print, header-verified)",
+  "pdfSha256": "a5ff19bd10182ce739b3f2eae6e94ab543ea3df31b418def965d184ad245aa0f",
+  "pdfSha1": "fa6a75d1197e23a8c6f75a54d9d7e04e3a408718 == upstream parsed spec_points.json source.pdf_sha1 pin (verified byte-exact after download)",
+  "extraction": "scripts/geo_repair_extract_titles.py — pdftotext -bbox-layout word-geometry extraction of the 'Key ideas | Detailed content' tables: key-idea titles are the left-column text (title words x0 91-205, bullets a)-e) at x≈211, per-page baseline grouping); doc-section headers (§1.1-§2.5) and appendix headings (4/5/6/7/8) extracted on the same geometry",
+  "crossValidation": "the upstream parsed spec_points.json subsection titles (same PDF pin, independent parser) agree byte-exactly with this extraction wherever upstream captured a full title (1.2, 2.1, 3.2 measured); 30/30 upstream (topic,subsection) pairs prefix-consistent with the repaired titles, 0 divergences"
+ },
+ "repair": {
+  "script": "scripts/rn11_run008_geo_title_repair.py (workspace copy run008docs/)",
+  "files": [
+   "apps/hub/content/igcse-geography-19/curriculum.json (31 node.title edits)",
+   "apps/hub/public/kg/data/igcse-geography-19.json (31 SubTopic node labels + 31 subtopics-dict labels)"
+  ],
+  "law": "title-only, placement-neutral, zero code changes; official headings verbatim; composed parentheticals ('(Paper 1)'/'(Paper 2)'/'(appendices)') follow the corpus's established disclosure-suffix pattern ('(SME section)' rows, ADR-039 §4) and are flagged composed in run008_title_map.json",
+  "noInvention": "24 of 31 titles byte-exact from the PDF extraction; 3 composed from the doc's own §-heading + the doc's own paper attribution sentence ('Fieldwork is assessed in Section B of Paper 1/2'); 1 composed from the two appendix headings"
+ },
+ "gates": {
+  "G0_byteAnchors": "git diff --name-only == exactly the 2 expected files (105 other courses + all other repo files untouched)",
+  "G1_serializer": "json round-trip byte-exact on both ORIGINAL files before any edit (compact single-line JSON law preserved)",
+  "G2_fieldDiffs": "curriculum: 31 title-only node diffs, zero other field diffs; kg: 31 subtopics labels + 31 node labels, meta/sections/points/pointSubtopics/subPointCounts/edges byte-equal",
+  "G3_structure": "243 nodes / 242 edges byte-equal, 202 spec-point codes byte-identical, parent sets + order + provenanceTier untouched",
+  "G4_zeroInvention": "fresh bbox re-extraction reproduces all 27 key-idea titles byte-exact; composed rows asserted against the doc headings; upstream cross-check 30 prefix-consistent / 0 divergent",
+  "G5_stampNeutrality": "25 question-set subtopicCode stamps (incl. the T2-gen synthetic-row stamp) — all destinations exist, questions.json untouched (G0)",
+  "G6_mirrorEquality": "kg labels == curriculum titles 31/31 post-repair (id map re-derived independently from edge order)",
+  "G7_uniqueness": "31/31 distinct titles (title-correspondence law safe)",
+  "placementGate": "apps/hub/scripts/verify_sme_wire_r0.ts A/B (stash pre vs post): IDENTICAL — 90 courses / 2,574 sets / 43,232 questions / placed 2,574 / unplaced 0 / gen-row homes 31, both legs reproducing the ADR-039 r3 of-record census; recorded in run008_gates.json",
+  "renderCheck": "normalizeSpecText (the render normalizer, src/lib/spec-text.ts) byte-faithful on the glyph-bearing titles (’ – parentheticals)"
+ },
+ "disclosures": [
+  "RUN NUMBER: operator order said 'as run-007'; run-007 is claimed of record (PR #828, UI walk, open) — filed as run-008 per the zero-collision law; renumber by R0 if the desk prefers",
+  "MIS-PARENTING NOT RESTRUCTURED (by contract, disclosed): buildSpecTreeIndex (apps/hub/src/lib/spec-tree.ts) renders SUBTOPIC rows only under TOPIC parents — re-parenting the three paper-section rows to the course root would drop 112 spec points out of the /specification tree (orphanSpecs rescues only topic-attached points), breaking the run-006 106/106 render gate; the doc itself positions §1.4/§2.4 immediately after Topics 3/6 and §2.1 between the papers, so the parse's parents are doc-order positions; the rows are now self-describing (official title + paper attribution) instead",
+  "T1:SUB1.1 residual: the three Paper-1 summary points SX.039-041 hang under the row now titled with key idea 1.1's own title (they belong to the doc's §1.1 Description section); no stamps reference them; left in place, disclosed",
+  "T9:SUB_ broken CODE kept (identity law — codes are load-bearing, no stamps reference it, the tree's subtopicLabel falls back to the ordinal); only the label was repaired",
+  "T9:SUB_ composed title 'Geographical skills and transferable skills (appendices)' names the two largest appendix families (4 + 8); the child-level mapping (appendices 5/6/7 families + the AO2/AO3 descriptor rows) is disclosed here and in run008_title_map.json",
+  "spines/igcse-geography-19.json (the build-time import artifact, IGCSE_GEOGRAPHY:S* code plane) NOT edited — the run-006 precedent repairs the content plane of record; regeneration from upstream would need the same downstream repair (upstream parsed subsection titles are themselves partially fragmentary — 110 of 240 points have subsection None)",
+  "tsc/CI: data-only JSON edits; CI's hub battery is the production prerender gate; sandbox gates above are the of-record local proof (bun 1.3.14)"
+ ],
+ "artifacts": [
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run008_title_map.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run008_census_pre.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run008_gates.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run008docs/ (extractor + repair + verifier scripts, pdf_sha256.txt)"
+ ],
+ "boundaries": "zero src/ bytes; zero code changes; zero spec-point/code/stamp bytes; author does not self-merge"
+}

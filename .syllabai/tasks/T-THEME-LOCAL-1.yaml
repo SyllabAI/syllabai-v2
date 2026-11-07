@@ -1,0 +1,55 @@
+version: 1
+task:
+  id: T-THEME-LOCAL-1
+  title: 'Theme back to browser-only storage — reverse the theme leg of the
+    T-ACCOUNT-ONLY sweep (operator order 2026-11-07: "Theme must be browser
+    saved only")'
+  owner: Super Z (zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355,
+    chat 08b3170a-413a-4779-973b-74fdd8404de7 — operator order after a live
+    two-account demo confirmed the account doc carrier: "Theme must be
+    browser saved only")
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-THEME-LOCAL-1 (theme device-locality revert)
+  wave: hub-prefs
+  deps: []
+  scope:
+    allowed:
+    - apps/hub/src/lib/theme-store.ts (the theme is a browser record again —
+      localStorage["syllabai-theme"] is the primary store; one-time
+      account-doc adoption for the sweep's existing rows, then one null PUT
+      retires the account copy; deliberately NOT wired to
+      onAccountDocsReset — sign-out/account switches never clear it)
+    - apps/hub/src/app/layout.tsx (the inline bootstrap reads
+      localStorage["syllabai-theme"] pre-paint again — the no-flash restore;
+      comment of record updated)
+    - apps/hub/src/lib/theme-store.test.ts (NEW — the law fixtures: browser
+      record primary, sign-out survival, one-time adoption, device-wins,
+      single retirement PUT)
+    - .syllabai/tasks/T-THEME-LOCAL-1.yaml + .syllabai/receipts/T-THEME-LOCAL-1/**
+      + worklog.md (append-only)
+    forbidden:
+    - every OTHER pref store stays an account doc (cla-panel-mode,
+      dashboard-prefs, course-shell-prefs, teacher-shell-prefs, tutor-prefs,
+      pdf-viewer-prefs, note-scroll:<slug>, progress:<slug> — the operator
+      order named the THEME only)
+    - packages/contracts/** (the "theme" key STAYS in the workspace-document
+      vocabulary — existing rows must stay readable for the one-time
+      adoption and the GET plane must never 400 on legacy rows)
+    - apps/api/**, packages/db/**, the account-docs engine bytes
+      (apps/hub/src/lib/account-docs.ts + account-stores.ts)
+    - theme-toggle.tsx (the store's exported contract is unchanged — the
+      component stays byte-untouched)
+    - self-merge (integrator merges; PR from this branch)
+  notes: 'Operator order of record (2026-11-07, live two-account experiment
+    on www.syllab-ai.com: student {quiet-green,dark} vs teacher
+    {candy-shop,dark} held simultaneously via PUT /api/v1/me/documents/theme)
+    — "Theme must be browser saved only". The revert is the exact mirror of
+    the sweep''s own migration laws: the sweep adopted the device key once
+    into the account (no-data-loss clause) and retired the device key once
+    clean; the revert adopts the account doc once into the device (only when
+    the device holds no record of its own — device wins) and retires the
+    account copy with one honest-null PUT. The workspace-document vocabulary
+    keeps "theme" so existing rows stay readable and GET never 400s; the row
+    converges to the honest null after each account''s first post-revert
+    login.'

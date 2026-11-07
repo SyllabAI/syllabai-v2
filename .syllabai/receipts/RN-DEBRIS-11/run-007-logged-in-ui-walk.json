@@ -1,0 +1,170 @@
+{
+ "schema": "syllabai-demo.lane-receipt/1.0",
+ "lane": "RN-DEBRIS-11",
+ "run": "run-007",
+ "kind": "verification-walk",
+ "operatorTrace": "1a1b274ce325058d",
+ "operatorOrder": "run-007 logged-in hub UI walk",
+ "generatedUtc": "2026-11-06T20:19:45Z",
+ "task": "the first fully LOGGED-IN hub UI walk on the syllab-ai.com plane: register through the real UI, walk dashboard->courses->course hub->spec->Teach SillyAI, drive one live teach-me session through the UI, then behaviorally pin the serving API build's cap law (#817). Escalated into a defect-census receipt when the walk found the end/review seam refusing and stalling.",
+ "servingPlaneOfRecord": {
+  "api": {
+   "project": "syllabai-v2",
+   "deployment": "dpl_GUtDCvyPBsrcEs1LSCVQzEBCMQ8w",
+   "createdUtc": "2026-11-06T18:12:15Z",
+   "readyState": "READY",
+   "target": "production",
+   "meta": "CLI deploy (nogit sha) - exact commit UNPROVABLE from metadata; behavioral bounds recorded below",
+   "health": "GET /actuator/health -> 200 {groups:[liveness,readiness],status:UP}"
+  },
+  "hub": {
+   "project": "syllabai-hub-v2",
+   "deployment": "dpl_CUqSUEcMUYUbb3ztApiWTqwTd2QH",
+   "createdUtc": "2026-11-06T19:18:47Z",
+   "sha": "902ec68f423f (main HEAD)",
+   "readyState": "READY"
+  },
+  "domainNote": "hub www.syllab-ai.com CSP connect-src names https://api.syllab-ai.com; apex 301s to www"
+ },
+ "phaseA_loggedInWalk": {
+  "learner": "r-rn11-007-uiwalk-7c1d44e9@example.invalid (labelled, registered through the REAL UI form, displayName rn11-007-uiwalk)",
+  "steps": [
+   "landing www.syllab-ai.com -> 200, theme menu + F8 region present",
+   "login page -> 'Create a student account' -> register form (Name/Email/Password)",
+   "UI register submit -> POST /api/v1/auth/register 201 (browser network log of record) -> auto-login -> /dashboard",
+   "hub session exchange POST www.syllab-ai.com/api/session -> 200 (the run-006 routing-cookie trick replaced by the REAL account)",
+   "logged-in reads all 200: learners/me/agenda, /courses, /study-plan, /course-stats, /last-opened, /mock-results, /me/documents",
+   "/courses renders under the REAL account (T-ACCOUNT-ONLY gate passes with a genuine session, no routing cookie)",
+   "course hub /courses/igcse-chemistry-19: sidebar 'Teach SillyAI' link (rename live in nav), tutor/practise regions render",
+   "/specification: 4CH1-1.1 title + statement rendered in the DOM (logged-in parity with run-006's logged-out sweep)",
+   "teach-genie landing: h1 'Teach SillyAI — Chemistry', history probe GET .../teach-me/sessions?course=igcse-chemistry-19 -> 200 (empty)",
+   "New session form: unit/topic comboxes + note radios ('The Three States of Matter' covers 4CH1-1.1 · 4CH1-1.2) + Easy/Medium/Hard + Quick/In-Depth",
+   "Start session -> POST .../teach-me/sessions 200 (LLM LIVE): session 82ec4d5c-f22a-47c9-a9ee-61657c6dd41a, Objective 1/3, in-character SillyAI opener in the conversation log",
+   "student turn: 90-word correct 4CH1-1.1 explanation -> POST .../message 200 -> judged chip 'Good' + in-character follow-up (melting question)",
+   "objectives popover: objective 1 'Covered', objectives 2-3 'Not started'",
+   "End Session -> confirm 'End & review' -> POST .../end -> 409 (FINDING F1)"
+  ]
+ },
+ "phaseB_capProof": {
+  "law": "old cap of record = 3 successful same-day sessions (T-TEACHGENIE-007 run-001, PR #817 merged 2026-11-06T12:13:43Z lifted 3->999); a 4th successful same-day create on one learner under the serving build proves cap>3",
+  "learner": "same walk learner, same UTC day",
+  "attempts": [
+   {
+    "step": "control-409 rename fingerprint",
+    "http": 409,
+    "secs": 0.287,
+    "body": {
+     "error": "TEACH_ME_FLAG_DISABLED",
+     "message": "Teach SillyAI is not enabled for this course yet"
+    },
+    "meaning": "post-#785 rename live on serving build; flags gate before quota counter = zero cost"
+   },
+   {
+    "step": "create #2 (pilot course)",
+    "http": 200,
+    "secs": 1.806,
+    "end": {
+     "http": 200,
+     "secs": 1.608,
+     "status": "completed"
+    }
+   },
+   {
+    "step": "create #3",
+    "http": 409,
+    "secs": 1.223,
+    "body": {
+     "error": "LLM_SHAPE_DRIFT",
+     "message": "objective generation returned the wrong count or grounding"
+    },
+    "meaning": "FINDING F4 - transient fail-closed refusal on the CREATE path; the next create succeeded"
+   },
+   {
+    "step": "create #4",
+    "http": 200,
+    "secs": 0.992,
+    "end": {
+     "http": 200,
+     "secs": 13.659,
+     "status": "completed"
+    }
+   },
+   {
+    "step": "create #5",
+    "http": 200,
+    "secs": 1.218,
+    "id": "50ed621d-b90c-45b8-a668-396741131a6e",
+    "end": {
+     "http": 500,
+     "secs": 0.741
+    },
+    "meaning": "FINDING F3"
+   }
+  ],
+  "verdict": "cap>3 PROVEN: 4 successful same-day creates on one learner (UI #1, #2, #4, #5); the 4th success (create #5, 200) would have been a 429 under the cap-3 config of record. #817's 999 lift is LIVE on the serving build. (Create #3's 409 was an LLM drift refusal, not a cap 429.)"
+ },
+ "findings": {
+  "context": "two fail-closed refusals + one 500 + one permanently pending review inside one walk; fail-closed laws HELD (no invented material reached the student) but the review - the correction of record per ADR-040 D2 - was LOST on the walk session",
+  "F1_endDriftRefusal": {
+   "wire": "POST /api/v1/learners/me/teach-me/sessions/82ec4d5c-.../end -> 409",
+   "ui": "alert 'review output was the wrong shape', End & review button remains",
+   "transcriptShape": "clean one-turn session: chip Good, objective 1 Covered, no contradictions - the same shape run-004 reviewed successfully on the 06:22Z build",
+   "meaning": "sync review generation refused fail-closed (LLM_SHAPE_DRIFT family) on the 18:12Z build"
+  },
+  "F2_reviewPendingStuck": {
+   "wire": "re-end (API replay) -> 200 {status:review_pending, review:null} in 0.30s",
+   "census": "GET session -> status review_pending, endedAt null, review null; 14 polls over ~40 min (20:08Z-20:4xZ), never landed",
+   "historyContradiction": "GET .../sessions?course=igcse-chemistry-19 returned [1 session] at 20:16Z then [] at 20:2xZ while GET-by-id stays 200 - review_pending rows wobble out of the listing",
+   "meaning": "review_pending is a terminal non-state: endedAt never set, no async consumer lands the card, history listing unstable"
+  },
+  "F3_end500": {
+   "wire": "POST .../50ed621d-.../end -> 500 in 0.741s on an empty-transcript session; identical shape ended 200-completed twice (#2 in 1.6s, #4 in 13.7s)",
+   "meaning": "end seam non-deterministic across identical request shapes"
+  },
+  "F4_createDriftRefusal": {
+   "wire": "POST create -> 409 'objective generation returned the wrong count or grounding' (LLM_SHAPE_DRIFT), transient - next create 200",
+   "meaning": "fail-closed held; no bad session surfaced"
+  },
+  "F5_endSeamSpread": {
+   "observed": [
+    "409 drift refusal",
+    "200 completed (sync review, 1.6s)",
+    "200 completed (sync review, 13.7s)",
+    "500",
+    "200 review_pending (stuck)"
+   ],
+   "meaning": "five distinct outcomes on one build within 40 minutes"
+  },
+  "caveat_honesty": "CLI deploy carries no commit sha: build regression vs LLM-provider drift-day CANNOT be distinguished from outside. run-004 context: 0 refusals in 3 LLM-bearing calls on the 06:22Z build (2026-11-05); this run: 2 refusals + 1 500 in 6 LLM-bearing calls. Whatever the root cause, review_pending with no consumer is a state the API should never persist."
+ },
+ "capFingerprintSummary": {
+  "post785_rename": "PROVEN (control-409 TEACH_ME_FLAG_DISABLED copy)",
+  "post817_capLift": "PROVEN behaviorally (4th same-day success)",
+  "post824_reviewV2": "NOT behaviorally pinned - deploy window contains it (17:51:30Z < 18:12:15Z) but a clean session cannot distinguish v1 refusal from v2 sanitizer paths; recorded as a timeline bound only"
+ },
+ "boundaries": [
+  "run-003 session 76564f18... and run-002 stuck sessions untouched",
+  "burn of record: 1 UI session + 3 API sessions + ~6 LLM calls - all inside the declared purpose (cap proof + walk)",
+  "walk session 82ec4d5c left in review_pending (server-side state, not fixable from this lane); B2/B4 completed cleanly; B5 review_pending after its 500",
+  "PR not self-merged (integrator merges)"
+ ],
+ "disclosures": [
+  "sandbox recycled mid-run: screenshots 06-15 (course hub through first review attempt) lost from disk; static pages re-shot, live-session states covered by the network log + wire receipts instead",
+  "probe logging defect of this run's own script: creates #2/#4 session ids not retained in the result file (their 200/completed ends were); ids of SID0 and B5 are of record",
+  "CLI deploy = nogit: serving-commit bound stated behaviorally, not by sha"
+ ],
+ "artifacts": [
+  "network-all.txt (full browser network log, 230 lines)",
+  "network-teachme.txt",
+  "cap_probe_result.json",
+  "cap_probe_part2.json",
+  "review_census.json",
+  "history_dump.json",
+  "shots/ (partial set of record after the mid-run recycle: landing, signin, register, dashboard, courses + re-shot course hub, spec explorer, teach-genie landing; session-setup and live-session shots lost — those states are quoted verbatim in phaseA steps and the network log)"
+ ],
+ "next": [
+  "API lane: the end/review seam needs a decision of record - sync-review refusal must not strand review_pending rows with endedAt null; history listing must be stable",
+  "T-TEACHGENIE-003 follow-up: run-004's end-seam law (end 19.85s -> completed + review inline) changed on this build; the pilot's permalink/review step needs a re-walk once the seam is settled",
+  "review.v2 behavioral pin needs a drift-inducing fixture against prod or a canary session once the seam is fixed"
+ ]
+}
