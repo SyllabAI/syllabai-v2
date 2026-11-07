@@ -143,7 +143,10 @@ export const config = {
     "/login",
     "/dashboard",
     "/dashboard/:path*",
-    "/courses",
+    // Option 1 (trace 1a1b53d8068b9b7d): the directory ROOT /courses is
+    // open — it sits OUTSIDE the matcher. The trailing-slash row gates the
+    // hub subtree only; mirrors GATED_ROUTES' "/courses/" prefix.
+    "/courses/",
     "/courses/:path*",
     "/past-papers",
     "/past-papers/:path*",

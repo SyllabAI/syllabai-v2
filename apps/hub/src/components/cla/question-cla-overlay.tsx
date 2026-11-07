@@ -519,7 +519,7 @@ export function QuestionClaOverlay({
                   <Lightbulb className="size-3.5 shrink-0 text-primary" aria-hidden />
                   Approach
                   {target && (
-                    <span className="rounded-full bg-muted px-1.5 py-px text-[9px] font-medium text-muted-foreground">
+                    <span className="rounded-full bg-muted px-1.5 py-px text-[10px] font-medium text-muted-foreground">
                       part {target.label}
                     </span>
                   )}

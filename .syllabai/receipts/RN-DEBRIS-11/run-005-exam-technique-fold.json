@@ -1,0 +1,110 @@
+{
+ "receipt": "rn11-run-005-exam-technique-fold",
+ "family": "RN-DEBRIS-11",
+ "run": "005",
+ "lane": "exam-skills notes \u2192 explicit 'exam technique (not spec-tied)' fold (CIE fleet)",
+ "operatorTrace": "1a1aef3e55afbedd",
+ "generatedUtc": "2026-11-06",
+ "data": {
+  "contentKindField": "RevisionNote.contentKind (additive optional, apps/hub/src/lib/contracts.ts) \u2014 \"exam-technique\"",
+  "tagged": 50,
+  "perCourse": {
+   "cie-a-level-business-23": [
+    "rn_w6J44MY6wmcXzNk4",
+    "rn_J4jNV3437ztWDxCQ",
+    "rn_6RpHyxKj4g5Z3JWB",
+    "rn_gxyVFvW3xpVKBMrM",
+    "rn_Q5QSZzGBcfHwX49m",
+    "rn_H7CxrP3NdsXHYDSj",
+    "rn_xChVkZNFRXKdWgwX",
+    "rn_CSzkz5vkYdnyP3Tb"
+   ],
+   "cie-a-level-computer-science-19": [
+    "rn_4GhpD4WYxvh3MPBH",
+    "rn_hqGV8kcwvBr8hr45",
+    "rn_VRrwVG8K53bNNK3S",
+    "rn_DG3KJVJR3bzNHrNw",
+    "rn_TzSKxcSCgPsmBFc9",
+    "rn_vFRgrhD3XT32GPhV",
+    "rn_TTfQbtKsQ6zy7NGT",
+    "rn_3ShZ5GNbHFWwBgzK",
+    "rn_PqVfqcDcBzskBKyY"
+   ],
+   "cie-igcse-business-23": [
+    "rn_4vZXBN3NQxYxbMH7",
+    "rn_sKzZ3wWrgTk7Cq6R",
+    "rn_xGchsvH6bNkYWhDb",
+    "rn_SbnSKDNhfKgKQwG3",
+    "rn_WbsQ9bPjFzqNHRMt",
+    "rn_QDYb2vH3S47TwdS2",
+    "rn_mgY9tYh5jFJZyQHf",
+    "rn_jWDt3Tk3pxZBpgpd"
+   ],
+   "cie-igcse-business-25": [
+    "rn_cNzkdr86ZbDGS4SH",
+    "rn_MqVgYB4fpvpF3mZ6",
+    "rn_J8Y7J4PW8k2wpZbX",
+    "rn_tZcgjg8NJZpqXqRD",
+    "rn_44JtKHpXgd568TRS",
+    "rn_NGw9YpYSRcCC67cd",
+    "rn_GB7V6dYZPMYZ5h7c",
+    "rn_5r92Fk9k3XMcgRZT"
+   ],
+   "cie-igcse-computer-science-23": [
+    "rn_zkVQ7zXzM6x8j8Q4",
+    "rn_CWV3Dd7BKdgWHMHT",
+    "rn_54QKMbFJZ5R4wtwG",
+    "rn_n7Xc8WnwtyhbCxVz"
+   ],
+   "cie-igcse-economics-25": [
+    "rn_dbKCSCpQG8YFcqtZ",
+    "rn_hXsmsxDxn4hHrVk8",
+    "rn_jvzVDtXrpBQpHZ8k",
+    "rn_KFNNrMtgqjbZkFvH",
+    "rn_m6qXGp5R2233sfHC",
+    "rn_dt2GkRZ96fsfMVFR",
+    "rn_9D8jPwkKR5rDpzvc",
+    "rn_VnG6kjcWkkPcKMTZ"
+   ],
+   "cie-igcse-geography-25": [
+    "rn_nQQS3TNBDSxhxNTP",
+    "rn_6wyRh84zXgqx2p7N",
+    "rn_wcssZgPkMfqH4Zzs",
+    "rn_msgXSxwNdPGBwPwY",
+    "rn_7S4PxvMpPHyrphbT"
+   ]
+  },
+  "retractedCodes": [
+   {
+    "course": "cie-igcse-business-23",
+    "noteId": "rn_xGchsvH6bNkYWhDb",
+    "title": "Skills You Need To Demonstrate",
+    "retracted": [
+     "4.2.3"
+    ]
+   },
+   {
+    "course": "cie-igcse-business-25",
+    "noteId": "rn_J8Y7J4PW8k2wpZbX",
+    "title": "Skills You Need To Demonstrate",
+    "retracted": [
+     "4.4.3"
+    ]
+   }
+  ],
+  "bodyMd": "byte-equal everywhere (reader sanitizes raw spcpt_* chips at render; R2 preservation law)",
+  "smeSpecPointIds": "byte-equal everywhere"
+ },
+ "ui": {
+  "notesIndex": "dedicated \"Exam technique (not spec-tied)\" section (own copy, not the loose-notes pending-work card); loose section unchanged for other code-less notes",
+  "noteReader": "trust-meta chip \"Exam technique \u2014 not tied to a spec point\" on contentKind==exam-technique notes",
+  "specPages": "the two retracted notes drop out of the spec-point resources join automatically (codes gone)"
+ },
+ "gates": [
+  "untouched notes byte-equal",
+  "smeSpecPointIds + bodyMd byte-equal",
+  "serializer round-trip byte-exact",
+  "only the two known name-phrase mistags retract (asserted)",
+  "tsc --noEmit exit 0; targeted suites 27+138 pass"
+ ]
+}

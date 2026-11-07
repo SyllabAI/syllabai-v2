@@ -348,7 +348,10 @@ export function AppShell({
           </nav>
 
           <span className="ml-1 hidden text-xs text-muted-foreground xl:inline">
-            IGCSE &amp; IAL revision
+            {/* T-HUB-COURSES-PUBLIC-1 fix ②: the registry runs IGCSE + AS +
+                A-Level + IAL on two boards — the chrome tagline undercounted
+                both axes (metadata twin fixed in app/layout.tsx). */}
+            IGCSE &amp; A-Level revision
           </span>
 
           {/* SME header parity: persistent primary CTA + session identity
@@ -509,8 +512,8 @@ export function AppShell({
           </span>
         </div>
         <p className="mt-2 text-xs text-muted-foreground">
-          SyllabAI Hub — revision for Edexcel IGCSE &amp; IAL and Cambridge International
-          qualifications.
+          SyllabAI Hub — IGCSE &amp; A-Level revision for Edexcel and Cambridge
+          International qualifications.
         </p>
       </footer>
       )}
