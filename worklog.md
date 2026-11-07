@@ -1515,6 +1515,13 @@ Work Log:
 - W3 Burn of record: run-000 counters (Fluid CPU 21h49m/4h, ISR writes 878K/200K, Origin 26GB/10GB) — runtime, already cut by run-001; account-2 recon 2026-11-06: 76 deploys/24h, 43 canceled, ~45 lane previews/day from pre-#796 lanes (first-hand: 1453b93ed4, 1f71a2493b predate a8df668a) — self-extinguishing; deploy-count pressure now gated.
 - W4 FENCES respected: zero app/contracts/db/API/bundle/data bytes; author did not self-merge (PR left for the integrator desk).
 
+## receipt(T-VERCEL-USAGE) — run-004: hotfix — ignoreCommand under the 256-char schema limit — 2026-11-07
+- Cause (first-hand): run-003's branch-gated ignoreCommand was 275 chars > Vercel's 256 cap → the #833 merge commit's git build died at config validation (dpl_G9WWZN..., errorMessage of record). run-003's gates had no length assert; run-004 adds it.
+- Fix: prefix compacted to `case "$VERCEL_GIT_COMMIT_REF" in main|"") ;; *) exit 0;; esac;` — 217 chars total; run-002 diff-gate pathspec preserved byte-exact as suffix; cat-file HEAD^ guard dropped as redundant (git diff exits 128 on missing HEAD^ → same build outcome, disclosed).
+- Matrix asserted pre-push: lane ref → SKIP; main → BUILD; unset → BUILD (fail-open); ledger-only pair → SKIP. vercel.json single-line swap; crons+git byte-identical; JSON parse OK; secret scan clean.
+- First-hand branch-gate proof: two pushes to t-vercel-usage/r6 (981eadd7, 6066cb93) → ZERO preview deployments (skip-artifact status only) — VERCEL_GIT_COMMIT_REF populated in ignoreCommand context; red X on PR heads is the designed cost of the preview kill; house gate = verify+hub.
+- Merge authority: operator order "merge it fleet-style" (zai-web, 2026-11-07); same-branch hotfix; PR merged on green verify+hub. Zero app/contract bytes.
+
 ## receipt(T-QVIEW-MODES-1 run-001) — the player gets two view modes: "All on one page" (default) and "One at a time" — 2026-11-07 (operator order "I want there to be 2 modes … Tell me your plan first" trace 1a1b5432d196acfd → plan presented → operator "Agree"; branch t-qview-modes-1/run-001 @ main 563f2a1d)
 
 - THE ORDER: the operator wants the shared QuestionPlayer to offer TWO view modes — (1) ONE question on the page at a time, navigated by the question-number grid at the top and Previous/Next buttons at the bottom, and (2) today's all-questions-on-one-page scroll. The plan was presented FIRST (per "Tell me your plan first") with three decision points; the operator's "Agree" locked: default "all" on BOTH surfaces (no surprise for current readers), toggle above the question-number grid, endpoints DISABLED (a paper has ends; it does not wrap).

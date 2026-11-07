@@ -95,3 +95,16 @@ scope:
     deploymentEnabled block — self-extinguishing; the branch gate covers
     every branch carrying main's vercel.json regardless of the "*"
     glob's honor status.
+
+    run-004 (2026-11-07, hotfix to run-003, same operator order "merge it
+    fleet-style"): run-003's branch-gated ignoreCommand exceeded the Vercel
+    schema limit (ignoreCommand <= 256 chars) — the merge commit's git build
+    died at config validation (dpl_G9WWZN..., first-hand errorMessage).
+    Fix: prefix compacted to `case "$VERCEL_GIT_COMMIT_REF" in main|"") ;;
+    *) exit 0;; esac` (217 chars total); semantics identical (lane refs
+    skip; main AND unset fail open into the run-002 diff gate; the cat-file
+    HEAD^ guard dropped as redundant — git diff exits 128 on missing HEAD^,
+    same non-zero->build outcome). Matrix asserted locally: lane->skip,
+    main->build, unset->build, ledger-only->skip. First-hand branch-gate
+    proof: two pushes to t-vercel-usage/r6 (981eadd7, 6066cb93) produced
+    ZERO preview deployments (skip-artifact status only).
