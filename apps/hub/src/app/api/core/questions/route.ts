@@ -4,7 +4,7 @@ import { rootIdForCourseCode } from "@/lib/core-topics";
 import { coreBaseUrl, coreFetchAuthorized } from "@/lib/core-proxy";
 import { v2SurfaceBase } from "@/lib/api";
 import { v2FetchAuthorized } from "@/lib/v2-proxy";
-import { smeMemberSuffixReserve, smeQuestionRef } from "@syllabai/shared";
+import { smeMemberSuffixReserve, smeQuestionRef, smeClaimIndex, smeSeriesForSoft, type SmeSeries } from "@syllabai/shared";
 import type { QuestionFamilyView } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -255,10 +255,38 @@ export async function GET(req: NextRequest) {
   } catch {
     legacyPilotSlug = null;
   }
+  // D-KG1b: the series of record derives from THIS course's own corpus view
+  // (full census fidelity — parts carry marks, specPointCodes, choices)
+  // under the SAME gates the shim's emit loop applies, through the SAME
+  // shared claim-index law: the first (topicSlug, order) claimer keeps the
+  // legacy bytes; the k-th structured twin takes -w / -w2 … The SOFT variant
+  // keeps today's serving semantics for anything the gates excluded (the
+  // family lookup then decides honestly; the join never 500s).
+  const claims = smeClaimIndex(
+    hub.questionTopics.map((t) => ({
+      topicSlug: t.topicSlug ?? t.slug.replace(/--exam-questions$/, ""),
+      orders: (() => {
+        const out = new Set<number>();
+        const seen = new Set<number>();
+        for (const q of t.questions) {
+          if (seen.has(q.order)) continue; // dupOrder: first occurrence claims
+          seen.add(q.order);
+          const parts = q.parts ?? [];
+          if (!parts.some((p) => (p.specPointCodes ?? []).length > 0)) continue; // unmapped
+          if (parts.reduce((a, p) => a + p.marks, 0) !== q.totalMarks) continue; // badSum
+          out.add(q.order);
+        }
+        return out;
+      })(),
+    })),
+  );
+  const topicIndex = hub.questionTopics.indexOf(topic);
+  const seriesForOrder = (order: number): SmeSeries | undefined =>
+    smeSeriesForSoft(claims, corpusTopicSlug, topicIndex, order);
   const refFor = (order: number, reserved = 0): string =>
     course === legacyPilotSlug
       ? `sme-eq-${corpusTopicSlug}-q${order}`
-      : smeQuestionRef(course, corpusTopicSlug, order, reserved);
+      : smeQuestionRef(course, corpusTopicSlug, order, reserved, seriesForOrder(order));
 
   const families = await familiesForRoot(rootId, token);
   if (!families) {
@@ -281,8 +309,21 @@ export async function GET(req: NextRequest) {
     // the member-suffix reserve — the SAME law the ingest shim emits with
     // (smeMemberSuffixReserve over the same corpus parts): the derived base
     // leaves room for the "-p<idx>"/"-s" member refs on mixed questions
+    const series = seriesForOrder(q.order);
     const ref = refFor(q.order, smeMemberSuffixReserve(q.parts));
-    const family = families.find((f) => f.ref === ref || f.key === ref);
+    let family = families.find((f) => f.ref === ref || f.key === ref);
+    if (!family && series === "structured" && course !== legacyPilotSlug) {
+      // D-KG1b serving continuity: the FIRST structured twin's wave-era
+      // identity was the bare slot ref (banked before the amendment, e.g.
+      // topics that gained their MCQ page only later) — degrade to it when
+      // the -w family is not (yet) banked. k>=2 slots have NO wave-era
+      // identity (they were unbankable before the amendment) — no fallback,
+      // a bare hit there would be a DIFFERENT question's family.
+      const legacyRef = smeQuestionRef(course, corpusTopicSlug, q.order, smeMemberSuffixReserve(q.parts));
+      if (legacyRef !== ref) {
+        family = families.find((f) => f.ref === legacyRef || f.key === legacyRef);
+      }
+    }
     if (!family) {
       skipped.push(q.id);
       continue;
