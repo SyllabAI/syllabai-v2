@@ -1,0 +1,75 @@
+{
+ "receipt": "rn11-run-011-business25-structural",
+ "family": "RN-DEBRIS-11",
+ "run": "011",
+ "lane": "the business-25 structural repair — the run-009 F4_0264 STRUCTURAL-REPAIR-QUEUED verdict executed: edges + 9 official points + KG regeneration",
+ "operatorTrace": "1a1b5278685c4505",
+ "operatorOrder": "business-25's structural repair (edges + 9 points + KG regeneration)",
+ "generatedUtc": "2026-11-07",
+ "mode": "apply+verify (structural repair of the curriculum tree + manifest counts + KG plane regeneration; zero code changes, zero content-plane changes)",
+ "base": "origin/main 6b87ef15 (fetch-first; the advance 5275f538..6b87ef15 is PR #814 run-005 CIE fleet wiring + #834/#837 paperwork — zero overlap with this changeset's 4 files, name-only diff verified; run-008/PR #830, run-009/PR #832 and run-010/PR (open) remain at the R0 desk — this run cuts from main per the lane law, the worklog union-resolves at merge time)",
+ "repairOfRecord": {
+  "F4_cie_igcse_business_25_0264": {
+   "verdictRepaired": "run-009 F4_0264 STRUCTURAL-REPAIR-QUEUED — titles official-correct but T1 subtree has ZERO edges (invisible to the tree), 0 of 9 official points, KG plane pre-r5",
+   "edges": "15 PART_OF edges added (the corpus DFS law): subject->T1, T1->SUB1.1..1.5, SUB->each of the 9 points — the r5 husk's declared parents fields are now fully mirrored in the edge plane (81 -> 96 edges); the 81 legacy edges byte-verbatim",
+   "ninePoints": "the 9 official topic-1 SPEC_POINT nodes added (1.1.1, 1.2.1, 1.3.1, 1.3.2, 1.3.3, 1.3.4, 1.4.1, 1.5.1, 1.5.2), titles PDF-extracted under the corpus flatten law (statement + ': ' + bullets joined ' \u2022 '), wrap continuations joined (run-010 law): orders 1-9 in the fleet's global 1..N sequence; the existing 52 points shift +9 (relative order preserved); 52 -> 61 points",
+   "arrayRestoration": "the r5 T1 husk (TOPIC + SUB1.1-1.5, appended at the array tail out of order) moved to its canonical position (first TOPIC group after SUBJECT) — REQUIRED by the exporter's sections-from-array-order law (sec1 must be T1, else topic 1 would export as section 6); node bytes untouched, only position",
+   "topicOrders": "T2-T6 order 1..5 -> 2..6 (the fleet TOPIC 1..N law restored; the r5 husk's duplicate order 1 resolved)",
+   "kgRegeneration": "public/kg/data/cie-igcse-business-25.json regenerated from the repaired curriculum truth by the exporter of record apps/hub/scripts/kg_export.py export_course() (T-SPEC-KG-REGEN-1 in-process law): pre-r5 5 sections / 24 subtopics / 52 points / 133 edges -> 6 sections / 29 subtopics / 61 points / 148 edges (96 hier + 52 pre); the 52 pre pairs re-project ENDPOINT-EXACT from the committed T-C11 snapshot (1 reversed web pair drops again, matching the f8ma install's own exportCounts); snapshot byte-untouched; index.json row synced (82n/133e/52sp -> 97n/148e/61sp)",
+   "manifestCounts": "manifest.json counts synced to curriculum truth (sections 5->6, topics 24->29, specPoints 52->61) — stale since the r5 husk wave; the hub home page's 'Spec points' card reads these (apps/hub/src/app/page.tsx)"
+  }
+ },
+ "evidenceOfRecord": {
+  "officialDoc": "the run-009 byte-pinned 0264 syllabus PDF (sha256 74cc69211e44bd0f..., sha1 7818147b2e47655e...) — pins re-verified this run; pdftotext -layout regeneration byte-identical to the run-009 cached text",
+  "extraction": "run-009's own extractor laws (topic/subsection/point regexes + CTRL/continued norm) extended with the bullet/wrap-continuation layer the point TITLES need; topic 1 is ABSENT from the upstream parse (run-009 disclosure) — the pinned PDF is the only source, zero-invention holds by construction",
+  "crossChecks": [
+   "topics 1-6 + 29 subsections + T1 point numbers byte-exact vs the run-009 official_evidence artifact F4_0264",
+   "T1 + SUB1.1-1.5 titles byte-exact vs curriculum truth (the run-009 'titles official-correct' verdict re-proven)",
+   "the 5 T1-stamped question sets (business-activity/economic-sectors/enterprise-business-growth-and-size/types-of-business-organisation/business-objectives-and-stakeholder-objectives) keep their subtopicCode homes"
+  ]
+ },
+ "gates": {
+  "verifier": "scripts/rn11_run011_verify.py (workspace copy run011docs/)",
+  "gateLines": [
+   "G0 byte anchors (exactly the 4 of-record files changed): OK",
+   "G1 serializer laws (curriculum+manifest indent=1+trailing NL; KG+index compact single-line) round-trip byte-exact: OK",
+   "G2 zero-invention (fresh PDF extraction byte-stable; 9 titles == evidence artifact; all legacy bytes outside {order} equal origin/main 6b87ef15; legacy 81 edges verbatim): OK",
+   "G3 structure (97 nodes = 1+6+29+61; TOPIC 1..6; SPEC_POINT 1..61 global seq; SUBTOPIC per-topic 1..M; parents<->edges mirrored; strict hierarchical array blocks; DFS edge head T1): OK",
+   "G4 KG recompute (export_course() rerun deep-equals the written KG ex-generatedUtc; index row == meta counts; 105 sibling KG files byte-untouched): OK",
+   "G5 manifest sync (sections 6, topics 29, specPoints 61 == curriculum truth): OK",
+   "G7 untouched planes (questions/notes/flashcards/prerequisites/concept-graph/learner-sim/placement-backfill byte-equal origin/main): OK",
+   "G8 title uniqueness (97 distinct; the 9 new titles distinct + non-colliding): OK"
+  ],
+  "treeProbe": {
+   "script": "run011docs/rn11_run011_bun_probe.ts (bun 1.3.14, buildSpecTreeIndex + normalizeSpecText)",
+   "results": "tree topics 6, topic 1 'Understanding business activity' with 5 subtopics + 9 points in official order; tree total 61; all 9 T1 points resolve in subtopicOfSpecPoint; the 5 T1-stamped sets' homes exist; render check 15/15 byte-faithful",
+   "exit": 0
+  },
+  "placementGateAB": {
+   "script": "apps/hub/scripts/verify_sme_wire_r0.ts (bun 1.3.14)",
+   "pre": [
+    "courses: 90 sets: 2574 questions: 43232",
+    "placed: 2574 unplaced: 0",
+    "gen-row homes: 31"
+   ],
+   "post": [
+    "courses: 90 sets: 2574 questions: 43232",
+    "placed: 2574 unplaced: 0",
+    "gen-row homes: 31"
+   ],
+   "identical": true,
+   "ofRecord_r3": "2,574/2,574 residual 0, gen-row homes 31 (ADR-039 r3 census) — both legs reproduce it",
+   "note": "the structural repair captured or moved NO set — the 5 T1 sets keep their subtopic homes, now backed by 9 real points under the same subtopics"
+  },
+  "verifierExit": 0
+ },
+ "disclosures": [
+  "KG LABEL: the regenerated meta.exporter is the canonical kg_export v1.6 string (prerequisite projection + concept-web tier + reversed-pair governance + display-text normalization); the previous 'web tier via kg_f8ma_generate.py v1.3 (fresh 0264x25 web...)' label was the f8ma STARTUP installer's label — the regen is a kg_export invocation, the web tier itself re-projects from the same committed snapshot (endpoint-exact, tier counts in meta.prerequisites)",
+  "META.PREREQ shape: the f8ma installer's {source, webEdges, preEdges} block is replaced by the exporter's canonical projection block (source/snapshotGeneratedUtc/tiers/reversedGovernance/conceptWebSkipped/projection) — provenance preserved via the snapshot's own source field; generatedUtc is the regen stamp",
+  "SERIALIZER: curriculum.json and manifest.json are indent=1 + trailing newline (round-trip verified pre-write, the corpus's own state preserved); KG + index stay compact single-line (kg_export main() law)",
+  "MANIFEST COUNTS: stale since the r5 husk wave (5/24/52 vs an 88-node curriculum); synced to 6/29/61 as part of the structural repair — the derivation-vintage importSource block rides along byte-unchanged",
+  "CONTENT-WIRING FOLLOW-UP (queued, separate class): the 5 T1 sets' parts carry smeSpecPointIds with official specPointIds [] and the manifest tagBackfill records partsExact 0 / partsSubtopicLevel 78 / residualSets 5 — with the 9 official points now real, a part-level re-backfill CAN resolve spcpt_* -> 1.x official codes; that is the tagBackfill engine's lane, not this structural run (zero content-plane bytes touched here)",
+  "UPSTREAM: syllabai-resources' spine/parse for 0264 still lacks topic 1 (run-009 disclosure) — the hub-side curriculum is now MORE complete than upstream; upstream sync stays a resources-repo lane",
+  "ict-21 KG mirror drift and the 0500 spine rebuilds stay queued per the run-009 receipt (separate repair classes); run-011 per the zero-collision law; author does not self-merge"
+ ]
+}
