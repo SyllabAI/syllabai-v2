@@ -108,3 +108,11 @@ scope:
     main->build, unset->build, ledger-only->skip. First-hand branch-gate
     proof: two pushes to t-vercel-usage/r6 (981eadd7, 6066cb93) produced
     ZERO preview deployments (skip-artifact status only).
+
+    run-005 (2026-11-07, same operator order): bake floor's idempotence
+    read was state-blind (limit=1) — run-004's dispatch proved the
+    in-flight-suppress behavior, but an ERROR/CANCELED newest deployment
+    would freeze the floor forever (fail-closed; run-002 law violated).
+    Fix: state-aware read (limit=5, newest of READY/BUILDING/QUEUED/
+    INITIATING; dead ignored; all-dead -> bake). 5/5 fixture asserts +
+    YAML safe_load green pre-push; workflow read-step only.

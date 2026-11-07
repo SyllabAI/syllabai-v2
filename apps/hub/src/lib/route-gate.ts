@@ -9,10 +9,22 @@
  *      study plan, and the two identity-bearing practice surfaces (the
  *      drill and the battle draw and key evidence to the learner).
  *   2. The teacher workspace additionally requires the teacher role.
- *   3. Corpus surfaces stay open — the marketing hero, /courses, the
- *      course hubs, past papers, and the practice index (a launcher over
- *      the modes; the modes themselves gate). Browsing never meets a
- *      login wall.
+ *   3. Corpus surfaces stay open — the marketing hero, the /courses
+ *      directory, past papers' index siblings and the practice index stay
+ *      within the policy's reach; browsing never meets a login wall where
+ *      the surface is pure corpus data.
+ *
+ *      OPTION 1 AMENDMENT (operator ruling 2026-11-07, trace
+ *      1a1b53d8068b9b7d, "option 1"): the directory ROOT /courses re-opens.
+ *      It renders static registry data only — no user state, no session
+ *      read, statically prerendered — so the anonymous directory is honest
+ *      browsing, and the login page's "Browse without an account" link
+ *      finally resolves (it 307-looped while T-ACCOUNT-ONLY gated the very
+ *      route it named). The per-course hub subtree (/courses/<slug>/…)
+ *      KEEPS the session gate: progress overlays, flashcards, guided
+ *      lessons and question players are account surfaces. The row below
+ *      therefore prefixes with the trailing slash: "/courses/" matches
+ *      everything under the directory but never the root itself.
  *
  * Consumers:
  *   - src/proxy.ts enforces the routing half server-side: a gated path
@@ -51,10 +63,20 @@ interface GatedRoute {
  * Only the marketing/public pages stay open (the corpus landing, the
  * knowledge graph explorer, about/sources/demo/experiments — nothing
  * there persists user state).
+ *
+ * OPTION 1 AMENDMENT (operator ruling 2026-11-07, trace 1a1b53d8068b9b7d,
+ * "option 1"): the directory ROOT /courses re-opens — it is statically
+ * prerendered registry data with zero user state, so the account-only
+ * premise does not reach it. The hub subtree keeps the gate via the
+ * trailing-slash prefix "/courses/"; the exact root never matches it.
  */
 export const GATED_ROUTES: readonly GatedRoute[] = [
   { prefix: "/dashboard", gate: "session" }, // B-2: accounts, not the demo
-  { prefix: "/courses", gate: "session" }, // T-ACCOUNT-ONLY run-001
+  // T-ACCOUNT-ONLY run-001, narrowed by option 1 (trace 1a1b53d8068b9b7d):
+  // the DIRECTORY root /courses is public (static registry, no user state);
+  // the trailing slash keeps /courses/<slug>/… (progress, flashcards,
+  // players) session-gated while the bare root never matches.
+  { prefix: "/courses/", gate: "session" },
   { prefix: "/past-papers", gate: "session" }, // T-ACCOUNT-ONLY run-001
   { prefix: "/practice", gate: "session" }, // T-ACCOUNT-ONLY run-001 (drill/battle were already gated)
   { prefix: "/tutor", gate: "session" },
@@ -64,10 +86,25 @@ export const GATED_ROUTES: readonly GatedRoute[] = [
   { prefix: "/teacher", gate: "teacher" },
 ];
 
-/** The gate class for a pathname, or null when the path is open (policy 3). */
+/** The gate class for a pathname, or null when the path is open (policy 3).
+ *
+ * One trailing slash is normalized before matching: "/courses/" must
+ * classify as the OPEN directory root (option 1), never as a hub-subtree
+ * hit on the "/courses/" prefix — and "…/x/" must classify exactly like
+ * "…/x" everywhere else. (Next itself 308-normalizes trailing slashes;
+ * the normalization here is the policy-level guarantee so the law does
+ * not depend on the router's order of operations.) */
 export function gateForPath(pathname: string): GateClass | null {
+  const path =
+    pathname.length > 1 && pathname.endsWith("/")
+      ? pathname.slice(0, -1)
+      : pathname;
   for (const { prefix, gate } of GATED_ROUTES) {
-    if (pathname === prefix || pathname.startsWith(`${prefix}/`)) return gate;
+    // The subtree arm appends "/" only when the prefix doesn't already end
+    // in one — the "/courses/" row's arm is "/courses/" itself, not the
+    // never-matching "/courses//".
+    const base = prefix.endsWith("/") ? prefix : `${prefix}/`;
+    if (path === prefix || path.startsWith(base)) return gate;
   }
   return null;
 }
@@ -85,5 +122,11 @@ export function gateForPath(pathname: string): GateClass | null {
 export const PROXY_MATCHER = [
   "/",
   "/login",
-  ...GATED_ROUTES.flatMap(({ prefix }) => [prefix, `${prefix}/:path*`]),
+  // A trailing-slash prefix ("/courses/", the option-1 subtree row) yields
+  // its :path* arm WITHOUT a doubled slash — the strip keeps the derived
+  // matcher equal to proxy.ts's literal (the no-drift test pins it).
+  ...GATED_ROUTES.flatMap(({ prefix }) => [
+    prefix,
+    `${prefix.replace(/\/+$/, "")}/:path*`,
+  ]),
 ];

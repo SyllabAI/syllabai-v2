@@ -1,0 +1,47 @@
+version: 1
+task:
+  id: T-QVIEW-MODES-1
+  title: 'The player gets two view modes — "All on one page" (today''s
+    scroll, default) and "One at a time" (one question per view, navigated
+    by the number grid and a Previous/Next footer; operator order
+    2026-11-07: "I want there to be 2 modes … Do you understand what I am
+    saying? Tell me your plan first" → plan agreed: "Agree")'
+  owner: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4,
+    chat 0fe43d89-ff92-4e81-857a-1b1c6040a895 — operator approved the plan
+    verbatim with "Agree", trace 1a1b5432d196acfd)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-QVIEW-MODES-1 (question player view modes)
+  wave: questions-viewing
+  deps: []
+  scope:
+    allowed:
+    - apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx
+      (view-mode external store — VIEW_MODE_STORAGE_KEY "syllabai-player-viewmode",
+      useSyncExternalStore + storage-event cross-tab sync, server snapshot
+      pinned to "all" for hydration safety; derived viewIdx clamp;
+      switchViewMode scroll choreography; goTo useCallback; ←/→ keyboard
+      stepping gated off typing/dialogs/tablist; the toggle pill; the
+      single-card map gate; the pagination footer with aria-live counter;
+      scroll-spy gated to "all" mode only)
+    - .syllabai/tasks/T-QVIEW-MODES-1.yaml +
+      .syllabai/receipts/T-QVIEW-MODES-1/** + worklog.md (append-only)
+    forbidden:
+    - the "all"-mode behavior (the historical default — the toggle is the
+      only new element; cards, CLA, full-screen, mark scheme, scoring,
+      progress persistence untouched)
+    - both call sites (past-papers [paperKey] + exam-questions [topicSlug]
+      + practice-papers [paperId] pages pass no new props — the mode is a
+      client preference, not a page decision)
+    - lib/ logic (zero new lib logic — the mode never touches numbering,
+      filtering or coverage)
+    - self-merge (integrator merges; PR from this branch)
+  notes: 'Operator''s three agreed decisions (chat trace 1a1b5432d196acfd):
+    default mode = "all" on BOTH surfaces (no surprise for current
+    readers; the toggle remembers the choice device-locally); toggle
+    placement = above the question-number grid on both surfaces (bank and
+    paper); endpoints = Previous/Next DISABLED at the ends (a paper has
+    ends; it does not wrap). In single mode the grid ring is the whole
+    navigation truth (no scroll-spy) and a click swaps the card instead of
+    scrolling. Batches B/C/D of the 2026-11-07 audit remain parked; the
+    typography batch (B) will land inside both modes when picked up.'

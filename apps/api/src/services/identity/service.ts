@@ -179,6 +179,15 @@ export class AuthService {
   ): Promise<void> {
     const user = await this.users.findByEmailIgnoreCase(email);
     if (user === null) throw new NotFoundException("user", email);
+    // T-DEMO-PASSGUARD-1 — env-declared protected accounts refuse self-service
+    // rotation: the showcase demo accounts' credentials are burned in git
+    // history (T-DEMO-SHOWCASE-1 hardcoded them; T-TUTOR-SEC-1 rotated + went
+    // env-gated), so any history reader with a minted session could otherwise
+    // rotate them again and re-lock the showcase. 403 BEFORE the credential
+    // check; the rotate happens only through the operator's own channel.
+    if (this.identity.config.protectedEmails.includes(email.toLowerCase())) {
+      throw new ForbiddenException("password self-service is disabled for this account");
+    }
     if (!user.enabled || !(await verifyPassword(request.currentPassword, user.passwordHash))) {
       throw new BadCredentialsException();
     }
