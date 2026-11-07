@@ -1,0 +1,58 @@
+version: 1
+task:
+  id: T-QVIEW-AUDIT-BCD-1
+  title: 'The questions-viewing design audit''s parked batches B/C/D land, plus
+    the disclosed single-mode CLA nearest-anchor nuance (batch D addition;
+    operator order 2026-11-07: "parked audit batches B/C/D, and the
+    disclosed single-mode CLA nearest-anchor nuance (batch D)", trace
+    1a1b683714f5cb35)'
+  owner: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4,
+    chat 0fe43d89-ff92-4e81-857a-1b1c6040a895)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-QVIEW-AUDIT-BCD-1 (the questions-viewing design audit, batches B/C/D)
+  wave: questions-viewing
+  deps: [T-PAPER-PLAYBACK-1, T-QVIEW-MODES-1]
+  scope:
+    allowed:
+    - apps/hub/src/components/markdown.tsx (batch B — the stem is rendered
+      here: corpus prose p/ul/ol 13.5px → text-sm; h4 below-prose inversion
+      fixed; code → named text-xs step)
+    - apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx
+      (batch B — half-pixel debris 10.5px→11px, 12.5px→13px, integer-only
+      census; part-label chips recomputed to the operator's one-size-smaller
+      law against the new 14px prose. Batch C — the mark-scheme modal's
+      section chips speak the SAME printed-label law as the cards
+      (partDisplayLabel, honest fallbacks, never an order-number guess);
+      the typed-answer aria and the core/advisory part labels unify to the
+      same language; the non-answerable MCQ notice drops its duplicate
+      View-answer button (the footer owns the action); paper-variant cards
+      drop the difficulty badge (the difficulty dimension is bank-only —
+      batch A's law completed to the badge). Batch D — self-score input
+      validated (whole number 0..totalMarks, inline honest error, no silent
+      clamp); the floating CLA button clears the single-mode pagination
+      footer; the AI-unavailable self-mark fallback sentence single-sourced;
+      the single-mode nearest-anchor disclosure names the swap explicitly)
+    - apps/hub/src/components/mark-scheme.tsx (batch B — 10.5px→11px;
+      rendered inside the player for solutionMd)
+    - apps/hub/src/components/cla/question-cla-overlay.tsx (batch D/B — the
+      9px chip → 10px; the overlay is the player's CLA surface)
+    - .syllabai/tasks/T-QVIEW-AUDIT-BCD-1.yaml +
+      .syllabai/receipts/T-QVIEW-AUDIT-BCD-1/** + worklog.md (append-only)
+    forbidden:
+    - the tutor / dashboard / side-nav / topic-tree / course-directory /
+      teacher half-px sizes (out of the question-viewing band — disclosed
+      as the follow-up debris tranche)
+    - lib/ logic (zero new lib logic — labels stay single-sourced in
+      lib/part-label.ts)
+    - the all/single view-mode mechanics and call sites (T-QVIEW-MODES-1
+      behavior untouched; no new props at any call site)
+    - self-merge (integrator merges; PR from this branch)
+  notes: 'Batch definitions of record (T-PAPER-PLAYBACK-1 run-001 receipt):
+    B = reading typography (stem 13.5px vs the 8-size micro-px debris);
+    C = card de-dup + part-label unification (scheme-modal order numbers
+    vs inline "(a)"); D = small polish (CLA-button clearance, self-score
+    validation, answer-wording unification) + the T-QVIEW-MODES-1
+    disclosed nuance. The part-label law is never a guess: attested
+    printed label, honest fallbacks, positional language only where it
+    claims position ("answer box 2"), never print identity.'

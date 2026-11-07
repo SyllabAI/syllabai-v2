@@ -4,8 +4,10 @@
   "cardType": "keyword_definition",
   "front": "Define **null hypothesis** and **alternative hypothesis**.\n",
   "back": "The **null hypothesis** $\\text{H}_{0}$ states the assumed value of the population parameter, taking it that nothing has changed.\n\nThe **alternative hypothesis** $\\text{H}_{1}$ states how that parameter may have changed.\n\nA test assumes $\\text{H}_{0}$ is true throughout, and ends by either **rejecting** it or not.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -22,8 +24,10 @@
   "cardType": "keyword_definition",
   "front": "Define **population parameter**.\n",
   "back": "A numerical characteristic that helps define a **population**, such as the probability $p$ of an event happening, or the mean $μ$.\n\nA hypothesis test uses a **sample** to test a claim made about one of these values.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -40,8 +44,10 @@
   "cardType": "keyword_definition",
   "front": "Define **significance level**.\n",
   "back": "The probability threshold a test is judged against, setting how unlikely a result has to be before $\\text{H}_{0}$ is rejected.\n\nIt must be fixed **before** the test is carried out, and is usually 1%, 5% or 10%.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -58,8 +64,10 @@
   "cardType": "fill_in_the_blanks",
   "front": "Complete the **alternative hypothesis** in each case, for a population parameter $θ$.\n\nTesting for a **decrease**: `\\text{H}_1 : \\theta \\_\\_\\_\\_\\_\\_ \\dots`\n\nTesting for a **change**: `\\text{H}_1 : \\theta \\_\\_\\_\\_\\_\\_ \\dots`\n",
   "back": "The completed hypotheses are:\n\nTesting for a **decrease**: $\\text{H}_{1} : θ < \\dots$\n\nTesting for a **change**: $\\text{H}_{1} : θ \\neq \\dots$\n\nA **one-tailed** test uses $>$ or $<$, and a **two-tailed** test uses $\\neq$.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -76,8 +84,10 @@
   "cardType": "keyword_definition",
   "front": "Define **critical region** and **critical value**.\n",
   "back": "The **critical region** is the set of values the test statistic could take that would lead to $\\text{H}_{0}$ being **rejected**.\n\nThe **critical value** is its boundary, the least extreme value that still causes rejection.\n\nThe test statistic is also called the **observed value**, and the significance level fixes where the boundary sits.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -94,8 +104,10 @@
   "cardType": "question_and_answer",
   "front": "For a discrete distribution, why is the actual significance level usually below the stated one?\n",
   "back": "The critical value has to be a **whole value** the variable can actually take, so the region cannot be trimmed to meet the stated level exactly.\n\nThe probability of landing inside it, assuming $\\text{H}_{0}$ is true, therefore comes out at or below the stated level.\n\nThat probability is the **actual significance level**.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -112,8 +124,10 @@
   "cardType": "question_and_answer",
   "front": "What is compared with the significance level when a test is carried out without finding a critical region?\n",
   "back": "The **p-value**: the probability, assuming $\\text{H}_{0}$ is true, of a value at least as extreme as the one observed.\n\nUse $\\text{P} ( X \\geq \\text{observed value} )$ when testing for an **increase**, and $\\text{P} ( X \\leq \\text{observed value} )$ when testing for a **decrease**.\n\nReject $\\text{H}_{0}$ if the p-value is **less than** the significance level.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -130,8 +144,10 @@
   "cardType": "question_and_answer",
   "front": "In a two-tailed test, what is a one-tail probability compared with?\n",
   "back": "**Half** the significance level, because the level is shared between the two tails.\n\nAt 5% each tail holds 2.5%, and at 1% each tail holds 0.5%.\n\nComparing a one-tail probability with the full level would make rejection twice as easy as intended.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -148,8 +164,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nA p-value of 0.0429 in a one-tailed test gives the same conclusion at the 1% level as at the 5% level.\n",
   "back": "**False.**\n\nAt 5% the p-value is below the significance level, so $\\text{H}_{0}$ is **rejected**; at 1% it is above, so $\\text{H}_{0}$ is **not rejected**.\n\nA conclusion is only ever a conclusion **at the stated significance level**.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -166,8 +184,10 @@
   "cardType": "question_and_answer",
   "front": "How should the conclusion of a hypothesis test be worded?\n",
   "back": "**In the context of the question**, reusing its own wording, and never definitively.\n\nRejecting $\\text{H}_{0}$ gives **sufficient evidence to suggest** the alternative hypothesis at that significance level.\n\nNot rejecting it gives **insufficient evidence** to suggest the alternative hypothesis.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -184,8 +204,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nA hypothesis test carried out correctly can still reach the wrong conclusion.\n",
   "back": "**True.**\n\nThe test weighs the **probability** of what one sample showed, so an unusual sample can point the wrong way.\n\nThis is why a conclusion is written as **evidence** rather than as proof.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -202,8 +224,10 @@
   "cardType": "question_and_answer",
   "front": "What does a two-tailed test that rejects $\\text{H}_{0}$ show, and what does it not show?\n",
   "back": "It shows there is evidence that the population parameter has **changed**.\n\nIt does not show **which direction** the change was in, so the conclusion must not say the parameter increased or decreased.\n\nOnly a **one-tailed** test provides evidence about direction.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -220,8 +244,10 @@
   "cardType": "fill_in_the_blanks",
   "front": "Complete each description, using **true** or **false**.\n\nA **Type I** error is rejecting a `\\_\\_\\_\\_\\_\\_` null hypothesis.\n\nA **Type II** error is accepting a `\\_\\_\\_\\_\\_\\_` null hypothesis.\n",
   "back": "The completed descriptions are:\n\nA **Type I** error is rejecting a **true** null hypothesis.\n\nA **Type II** error is accepting a **false** null hypothesis.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -238,8 +264,10 @@
   "cardType": "question_and_answer",
   "front": "How does the conclusion of a test tell you which error could have occurred?\n",
   "back": "If $\\text{H}_{0}$ was **rejected**, only a **Type I** error is possible.\n\nIf $\\text{H}_{0}$ was **not rejected**, only a **Type II** error is possible.\n\nThe conclusion settles which of the two is available before anything is known about the truth.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -256,8 +284,10 @@
   "cardType": "question_and_answer",
   "front": "What is the probability of a Type I error equal to?\n",
   "back": "The probability of **rejecting** $\\text{H}_{0}$ given that $\\text{H}_{0}$ is in fact **true**.\n\nIn a completed test this is the **actual significance level**, so it does not have to be worked out separately.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -274,8 +304,10 @@
   "cardType": "question_and_answer",
   "front": "What extra information is needed to find the probability of a Type II error?\n",
   "back": "The **true value** of the population parameter, which the question has to supply.\n\nThe probability is then that of the observed value falling **outside** the critical region, worked out using that true value in place of the one in $\\text{H}_{0}$.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -292,8 +324,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nLowering the significance level reduces the probability of both types of error.\n",
   "back": "**False.**\n\nA lower significance level **shrinks** the critical region, so $\\text{H}_{0}$ is rejected less often and a **Type I** error becomes less likely.\n\nThe same change makes $\\text{H}_{0}$ harder to reject, so a **Type II** error becomes more likely.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -310,8 +344,10 @@
   "cardType": "question_and_answer",
   "front": "In which two situations does a hypothesis test make no error?\n",
   "back": "When $\\text{H}_{0}$ is **true** and the test does not reject it, and when $\\text{H}_{0}$ is **false** and the test rejects it.\n\nOnly the two mismatched pairings of reality and conclusion count as errors.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -328,8 +364,10 @@
   "cardType": "question_and_answer",
   "front": "Why might two parties want the significance level set differently?\n",
   "back": "Because they are exposed to different errors.\n\nSomeone defending a claim wants a **Type I** error to be unlikely, so a true claim is not rejected.\n\nSomeone challenging it wants a **Type II** error to be unlikely, so a real change is not missed.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.5.5",
+  "specPointIds": [
+   "6.5.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "hypothesis-testing",
@@ -724,8 +762,14 @@
   "cardType": "keyword_definition",
   "front": "Define **Poisson distribution**.\n",
   "back": "The **Poisson distribution** models a discrete random variable that counts the number of events occurring at random in a given interval of time or space.\n\nIt is written `X \\sim \\text{Po}(\\lambda)`, where $λ$ is the mean number of occurrences in that interval.\n\nUnlike a binomial there is no fixed number of trials, so $X$ can in principle be any non-negative whole number.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.1.1",
+  "specPointIds": [
+   "6.1.1",
+   "6.1.2",
+   "6.1.3",
+   "6.1.4",
+   "6.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "poisson-distribution",
@@ -742,8 +786,14 @@
   "cardType": "fill_in_the_blanks",
   "front": "Fill in the three conditions a Poisson model requires:\n\nevents occur `\\_\\_\\_\\_\\_\\_` and at random in the interval\n\nthe mean number of occurrences, $λ$, is known and `\\_\\_\\_\\_\\_\\_`\n\neach occurrence is `\\_\\_\\_\\_\\_\\_` of the others\n",
   "back": "The completed conditions are:\n\nevents occur **singly** and at random in the interval\n\nthe mean number of occurrences, $λ$, is known and **finite**\n\neach occurrence is **independent** of the others\n\nSingly means two events cannot happen at exactly the same instant, and $λ$ must be positive but need not be a whole number.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.1.1",
+  "specPointIds": [
+   "6.1.1",
+   "6.1.2",
+   "6.1.3",
+   "6.1.4",
+   "6.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "poisson-distribution",
@@ -760,8 +810,14 @@
   "cardType": "question_and_answer",
   "front": "For `X \\sim \\text{Po}(\\lambda)`, what are $\\text{E} ( X )$ and $\\text{Var} ( X )$?\n",
   "back": "They are both **exactly** $λ$.\n\nThe mean and the variance of a Poisson distribution are equal, which no other distribution on this course does.\n\nThe standard deviation is therefore $\\sqrt{λ}$, and there is only ever one parameter to find.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.1.1",
+  "specPointIds": [
+   "6.1.1",
+   "6.1.2",
+   "6.1.3",
+   "6.1.4",
+   "6.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "poisson-distribution",
@@ -778,8 +834,14 @@
   "cardType": "question_and_answer",
   "front": "How does the shape of a Poisson distribution depend on $λ$?\n",
   "back": "A small $λ$ gives a strong **tail to the right**, with most of the probability piled up at 0 and 1.\n\nAs $λ$ grows the distribution becomes steadily more **symmetrical**, and by about $λ = 5$ it is already roughly so.\n\nThat drift towards symmetry is exactly why a large $λ$ can be approximated by a normal distribution.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.1.1",
+  "specPointIds": [
+   "6.1.1",
+   "6.1.2",
+   "6.1.3",
+   "6.1.4",
+   "6.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "poisson-distribution",
@@ -796,8 +858,14 @@
   "cardType": "fill_in_the_blanks",
   "front": "Complete the formula for the probability of exactly $r$ occurrences:\n\n`\\text{P}(X = r) = e^{-\\lambda} \\times \\frac{\\lambda^{r}}{\\_\\_\\_\\_\\_\\_}`\n",
   "back": "The completed formula is:\n\n$\\text{P} ( X = r ) = e^{-λ} \\times \\frac{λ^{r}}{r!}$\n\nIt applies for $r = 0 , 1 , 2 , \\dots$ with no upper limit, which is what distinguishes it from a binomial.\n\nAny non-integer or negative value of $r$ has probability zero.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.1.1",
+  "specPointIds": [
+   "6.1.1",
+   "6.1.2",
+   "6.1.3",
+   "6.1.4",
+   "6.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "poisson-distribution",
@@ -814,8 +882,14 @@
   "cardType": "question_and_answer",
   "front": "Before choosing a Poisson model for some data, what quick check can you make?\n",
   "back": "Work out the **mean** and the **variance** of the data and see whether they come out **roughly equal**.\n\nA Poisson distribution has them exactly equal, so data whose variance is far from its mean is telling you the model does not fit.\n\nIt is only a check, not a proof: the three conditions still have to be considered.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.1.1",
+  "specPointIds": [
+   "6.1.1",
+   "6.1.2",
+   "6.1.3",
+   "6.1.4",
+   "6.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "poisson-distribution",
@@ -832,8 +906,14 @@
   "cardType": "question_and_answer",
   "front": "What must you state before writing down a Poisson model?\n",
   "back": "What your **random variable** is, in words, for example \"let $X$ be the number of typing errors per page\".\n\nThe interval matters as much as the count, since $λ$ is a mean **per interval** and is meaningless without one.\n\nOnly then write `X \\sim \\text{Po}(\\lambda)` with the value of $λ$ that belongs to that interval.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.1.1",
+  "specPointIds": [
+   "6.1.1",
+   "6.1.2",
+   "6.1.3",
+   "6.1.4",
+   "6.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "poisson-distribution",
@@ -850,8 +930,14 @@
   "cardType": "question_and_answer",
   "front": "A team scores a mean of 2 goals an hour. What distribution models the goals in a 90-minute game?\n",
   "back": "It is $\\text{Po} ( 3 )$, because 90 minutes is $1 . 5$ hours and $λ$ scales with the interval.\n\nSo multiply the given mean by however many of the stated intervals the question asks about.\n\nThis is worth checking at every part of a question, because the interval often changes between parts.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.1.1",
+  "specPointIds": [
+   "6.1.1",
+   "6.1.2",
+   "6.1.3",
+   "6.1.4",
+   "6.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "poisson-distribution",
@@ -868,8 +954,14 @@
   "cardType": "question_and_answer",
   "front": "How do you find $\\text{P} ( X \\leq 3 )$ for a Poisson distribution without typing four separate terms?\n",
   "back": "Every term contains $e^{-λ}$, so factorise it out:\n\n`\\text{P}(X \\le 3) = e^{-\\lambda}\\left(1 + \\lambda + \\frac{\\lambda^{2}}{2!} + \\frac{\\lambda^{3}}{3!}\\right)`\n\nThe first two terms simplify because $λ^{0} = 1$ and $0 ! = 1 ! = 1$.\n\nThat single bracket is far quicker to type and much less prone to slips than four separate products.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.1.1",
+  "specPointIds": [
+   "6.1.1",
+   "6.1.2",
+   "6.1.3",
+   "6.1.4",
+   "6.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "poisson-distribution",
@@ -886,8 +978,14 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nFor a Poisson distribution, subtracting from 1 is merely a quicker way of finding $\\text{P} ( X > k )$.\n",
   "back": "**False.**\n\nIt is the **only** way. A Poisson variable has no upper limit, so there are infinitely many values greater than $k$ and they cannot be added up directly.\n\nSo $\\text{P} ( X > k ) = 1 - \\text{P} ( X \\leq k )$ is a necessity here, where for a binomial it would only have been a convenience.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.1.1",
+  "specPointIds": [
+   "6.1.1",
+   "6.1.2",
+   "6.1.3",
+   "6.1.4",
+   "6.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "poisson-distribution",
@@ -904,8 +1002,11 @@
   "cardType": "fill_in_the_blanks",
   "front": "For constants $a$ and $b$, fill in the two results:\n\n`\\text{E}(aX + b) = \\_\\_\\_\\_\\_\\_`\n\n`\\text{Var}(aX + b) = \\_\\_\\_\\_\\_\\_`\n",
   "back": "The completed results are:\n\n$\\text{E} ( a X + b ) = a \\text{E} ( X ) + b$\n\n$\\text{Var} ( a X + b ) = a^{2} \\text{Var} ( X )$\n\nThe mean is affected by both the multiplication and the addition, but the variance is affected only by the multiplication.\n\nThe $a$ is **squared** in the variance, because variance is built from squared deviations.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.2.1",
+  "specPointIds": [
+   "6.2.1",
+   "6.2.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "linear-combinations-of-random-variables",
@@ -922,8 +1023,11 @@
   "cardType": "question_and_answer",
   "front": "Why does adding a constant leave the variance unchanged?\n",
   "back": "Adding a constant slides every value along by the same amount, so the whole distribution shifts without being stretched.\n\nVariance measures **spread** about the mean, and shifting the values and the mean together leaves every deviation exactly as it was.\n\nSo $\\text{Var} ( X + 7 )$ and $\\text{Var} ( X )$ are the same number.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.2.1",
+  "specPointIds": [
+   "6.2.1",
+   "6.2.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "linear-combinations-of-random-variables",
@@ -940,8 +1044,11 @@
   "cardType": "question_and_answer",
   "front": "If $X$ is normal, is $a X + b$ normal? What if $X$ is Poisson?\n",
   "back": "If $X$ is normal then $a X + b$ is **also normal**, specifically $\\text{N} ( a μ + b , a^{2} σ^{2} )$.\n\nA binomial, geometric or Poisson variable does **not** keep its type: doubling a Poisson count gives only even numbers, which no Poisson distribution does.\n\nThat closure under linear change is one of the things that makes the normal distribution so convenient.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.2.1",
+  "specPointIds": [
+   "6.2.1",
+   "6.2.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "linear-combinations-of-random-variables",
@@ -958,8 +1065,11 @@
   "cardType": "fill_in_the_blanks",
   "front": "For independent $X$ and $Y$, fill in the two results:\n\n`\\text{E}(aX + bY) = \\_\\_\\_\\_\\_\\_`\n\n`\\text{Var}(aX + bY) = \\_\\_\\_\\_\\_\\_`\n",
   "back": "The completed results are:\n\n$\\text{E} ( a X + b Y ) = a \\text{E} ( X ) + b \\text{E} ( Y )$\n\n$\\text{Var} ( a X + b Y ) = a^{2} \\text{Var} ( X ) + b^{2} \\text{Var} ( Y )$\n\nThe result for the expectation holds for **any** two random variables, but the one for the variance needs them to be **independent**.\n\nBoth constants are squared in the variance, exactly as in the single-variable case.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.2.1",
+  "specPointIds": [
+   "6.2.1",
+   "6.2.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "linear-combinations-of-random-variables",
@@ -976,8 +1086,11 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\n$\\text{Var} ( X - Y )$ is the same as $\\text{Var} ( X + Y )$ for independent $X$ and $Y$.\n",
   "back": "**True.**\n\nSubtracting $Y$ is adding $- Y$, and the coefficient is **squared** in the variance, so $( - 1 )^{2} = 1$ and nothing changes.\n\nVariances therefore **add** for a difference just as they do for a sum, which is the single most commonly lost mark in this topic.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.2.1",
+  "specPointIds": [
+   "6.2.1",
+   "6.2.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "linear-combinations-of-random-variables",
@@ -994,8 +1107,11 @@
   "cardType": "question_and_answer",
   "front": "If $X$ and $Y$ are independent normal variables, what is the distribution of $a X + b Y$?\n",
   "back": "It is **normal** as well, with mean $a μ_{1} + b μ_{2}$ and variance $a^{2} σ_{1}^{2} + b^{2} σ_{2}^{2}$.\n\nThis is what makes questions about differences and totals of normal variables tractable at all.\n\nIt holds for a difference too, with the means subtracting while the variances still add.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.2.1",
+  "specPointIds": [
+   "6.2.1",
+   "6.2.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "linear-combinations-of-random-variables",
@@ -1012,8 +1128,11 @@
   "cardType": "question_and_answer",
   "front": "If $X$ and $Y$ are independent Poisson variables, when is a combination of them Poisson?\n",
   "back": "Only for the plain **sum**: if `X \\sim \\text{Po}(\\lambda)` and `Y \\sim \\text{Po}(\\mu)` then `X + Y \\sim \\text{Po}(\\lambda + \\mu)`.\n\nOnce constants are involved it fails: $a X + b Y$ is **not** Poisson for values of $a$ and $b$ other than 0 and 1.\n\nThe normal is closed under any linear combination, but the Poisson is closed only under addition.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.2.1",
+  "specPointIds": [
+   "6.2.1",
+   "6.2.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "linear-combinations-of-random-variables",
@@ -1030,8 +1149,11 @@
   "cardType": "question_and_answer",
   "front": "$X$ and $Y$ are independent with $\\text{Var} ( X ) = 3$ and $\\text{Var} ( Y ) = 4$. What is $\\text{Var} ( 4 X - Y )$?\n",
   "back": "It is $4^{2} \\times 3 + ( - 1 )^{2} \\times 4 = 48 + 4 = 52$.\n\nBoth coefficients are squared and the two terms are then **added**, however the original expression was signed.\n\nWriting the squares in explicitly, rather than doing them in your head, is what stops the minus sign getting through.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.2.1",
+  "specPointIds": [
+   "6.2.1",
+   "6.2.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "linear-combinations-of-random-variables",
@@ -1048,8 +1170,11 @@
   "cardType": "question_and_answer",
   "front": "What is the difference between $2 X$ and $X_{1} + X_{2}$?\n",
   "back": "$2 X$ means **one** observation of $X$, doubled; $X_{1} + X_{2}$ means **two** separate observations added together.\n\nThey have the same expected value, $2 \\text{E} ( X )$, but different variances: $\\text{Var} ( 2 X ) = 4 \\text{Var} ( X )$ while $\\text{Var} ( X_{1} + X_{2} ) = 2 \\text{Var} ( X )$.\n\nIf $X$ could be 0 or 1 then $2 X$ can only be 0 or 2, whereas $X_{1} + X_{2}$ can also be 1, which shows they are genuinely different variables.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.2.1",
+  "specPointIds": [
+   "6.2.1",
+   "6.2.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "linear-combinations-of-random-variables",
@@ -1066,8 +1191,11 @@
   "cardType": "question_and_answer",
   "front": "A carton holds six eggs. Why is the total mass not modelled by $C + 6 E$?\n",
   "back": "Because the six eggs have six **different** masses, so the model must be $C + E_{1} + E_{2} + E_{3} + E_{4} + E_{5} + E_{6}$.\n\nWriting $6 E$ would mean weighing one egg and multiplying by six, which would give a larger variance than the real situation has.\n\nAsking whether the question means one thing repeated or several separate things is what decides between the two.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.2.1",
+  "specPointIds": [
+   "6.2.1",
+   "6.2.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "linear-combinations-of-random-variables",
@@ -1912,8 +2040,10 @@
   "cardType": "keyword_definition",
   "front": "Define **unbiased estimate**.\n",
   "back": "An **unbiased estimate** is one produced by a statistic whose expected value is equal to the population parameter being estimated.\n\nIn plainer terms, individual estimates will vary from sample to sample, but the process gives an accurate result **on average**.\n\nSo the mean of many such estimates closes in on the true parameter as more samples are taken.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -1930,8 +2060,10 @@
   "cardType": "fill_in_the_blanks",
   "front": "Complete the unbiased estimate of a population variance from a sample of size $n$:\n\n`s^{2} = \\frac{1}{\\_\\_\\_\\_\\_\\_}\\left(\\Sigma x^{2} - \\frac{\\left(\\Sigma x\\right)^{2}}{n}\\right)`\n",
   "back": "The completed formula is:\n\n`s^{2} = \\frac{1}{n - 1}\\left(\\Sigma x^{2} - \\frac{\\left(\\Sigma x\\right)^{2}}{n}\\right)`\n\nNotice that the $n$ inside the bracket is still $n$: only the divisor outside it changes.\n\nGetting those two the wrong way round is the commonest slip in the whole calculation.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -1948,8 +2080,10 @@
   "cardType": "question_and_answer",
   "front": "What is the one difference between the formula for a population variance and the unbiased estimate of it from a sample?\n",
   "back": "The **divisor**.\n\nA population variance divides by $n$, while the unbiased estimate from a sample divides by $n - 1$; everything else is identical.\n\nSo one route to the estimate is to work out the sample's own variance and then multiply it by $\\frac{n}{n-1}$.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -1966,8 +2100,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nThe unbiased estimate of a population mean is just the sample mean.\n",
   "back": "**True.**\n\nIt is exactly the same formula, $\\overline{x} = \\frac{Σx}{n}$, with no adjustment of any kind.\n\nThe mean needs no correction; it is only the variance that does, which is what makes the two cases worth keeping apart in your head.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -1984,8 +2120,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nSquare-rooting an unbiased estimate of the variance gives an unbiased estimate of the standard deviation.\n",
   "back": "**False.**\n\nSquare-rooting does not preserve unbiasedness, and there is no formula that gives an unbiased estimate of the standard deviation for every population.\n\nThe square root of $s^{2}$ is still a perfectly good estimate and is what you would quote, but it is better to work with the variance wherever you can.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2002,8 +2140,10 @@
   "cardType": "question_and_answer",
   "front": "From $n = 50$, $Σ t = 6174$ and $Σ t^{2} = 831581$, what are the unbiased estimates?\n",
   "back": "The mean is $\\frac{6174}{50} = 123$ minutes to 3 significant figures.\n\nThe variance is\n\n`\\frac{1}{49}\\left(831581 - \\frac{6174^{2}}{50}\\right) = 1410 \\text{ min}^{2}`\n\nNote the units: a variance carries the **square** of the unit of the original data.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2020,8 +2160,10 @@
   "cardType": "question_and_answer",
   "front": "A question gives you the raw data rather than the summary statistics. What is the first thing to do?\n",
   "back": "Work out $Σ x$ and $Σ x^{2}$ from the data yourself, then use exactly the same formulae.\n\nThe formulae are written in terms of those two sums precisely so that raw data and summarised data can be handled the same way.\n\nIt is worth writing both sums down before substituting anything, because each is used more than once.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2038,8 +2180,10 @@
   "cardType": "question_and_answer",
   "front": "What does $\\overline{X}$ stand for, and why is it a random variable?\n",
   "back": "$\\overline{X}$ is the mean of a sample of size $n$ taken from a population.\n\nIt is a **random variable** because a different sample gives a different value for it, so before the sample is taken its value is unknown.\n\nIts distribution is the distribution of all the values a sample mean could take.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2056,8 +2200,10 @@
   "cardType": "fill_in_the_blanks",
   "front": "For a sample of size $n$ from a population with mean $μ$ and variance $σ^{2}$, fill in the two results:\n\n`\\text{E}(\\bar{X}) = \\_\\_\\_\\_\\_\\_`\n\n`\\text{Var}(\\bar{X}) = \\_\\_\\_\\_\\_\\_`\n",
   "back": "The completed results are:\n\n$\\text{E} ( \\overline{X} ) = μ$\n\n$\\text{Var} ( \\overline{X} ) = \\frac{σ^{2}}{n}$\n\nAveraging does not shift the centre, so the mean is unchanged; what it does is reduce the spread.\n\nThe variance is divided by $n$ itself, not by the square root of it.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2074,8 +2220,10 @@
   "cardType": "question_and_answer",
   "front": "What is the standard deviation of $\\overline{X}$, and what happens to it as $n$ grows?\n",
   "back": "It is $\\frac{σ}{\\sqrt{n}}$, so it is inversely proportional to the **square root** of the sample size.\n\nA larger sample therefore makes the distribution of sample means narrower and taller.\n\nThe square root is what makes this expensive: quadrupling the sample only halves the spread.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2092,8 +2240,10 @@
   "cardType": "question_and_answer",
   "front": "If `X \\sim \\text{N}(30, 25)` and a sample of 10 is taken, what is the distribution of $\\overline{X}$?\n",
   "back": "It is `\\bar{X} \\sim \\text{N}(30, 2.5)`.\n\nThe mean stays at 30 and the variance becomes $\\frac{25}{10}$.\n\nBecause the population is normal, this is **exact**, with no approximation involved anywhere.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2110,8 +2260,10 @@
   "cardType": "question_and_answer",
   "front": "Why is the mean of a sample a more reliable estimate of $μ$ than a single observation?\n",
   "back": "Taking a mean dilutes the effect of any one extreme value, since a high reading can be offset by a low one.\n\nThe distribution of sample means is correspondingly narrower than the population's, and the larger the sample the narrower it gets.\n\nSo a sample mean clusters much more tightly around $μ$ than a single reading ever does.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2128,8 +2280,10 @@
   "cardType": "keyword_definition",
   "front": "Define the **Central Limit Theorem**.\n",
   "back": "For a random sample of size $n$ from **any** population with mean $μ$ and variance $σ^{2}$, the **Central Limit Theorem** says that $\\overline{X}$ can be approximated by `\\text{N}\\left(\\mu, \\frac{\\sigma^{2}}{n}\\right)`, provided $n$ is large enough.\n\nLarge enough is usually taken to mean at least 30.\n\nIts power is that it says nothing at all about the shape of the population.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2146,8 +2300,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nIf the population is normal, the sample mean is exactly normal however small the sample.\n",
   "back": "**True.**\n\nA normal population gives an exactly normal distribution of sample means at any sample size, with no approximation at all.\n\nSo the Central Limit Theorem is **not needed** here: it is only for populations that are not normal, and then only when the sample is large.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2164,8 +2320,10 @@
   "cardType": "question_and_answer",
   "front": "Susie's 40 numbers come from a population with mean 15 and variance 70. How do you find $\\text{P} ( \\overline{X} < 13 )$?\n",
   "back": "The population is not normal, but 40 is a large sample, so the Central Limit Theorem gives `\\bar{X} \\approx \\text{N}\\left(15, \\frac{70}{40}\\right)`.\n\nStandardising 13 against that distribution gives $z = - 1 . 512$.\n\nThe probability is then $0 . 0653$, and the answer should say that the Central Limit Theorem was used and why.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2182,8 +2340,10 @@
   "cardType": "keyword_definition",
   "front": "Define **confidence interval**.\n",
   "back": "A **confidence interval** is an interval, calculated from a sample, within which a population parameter is likely to lie.\n\nIts **confidence level** is the probability that an interval constructed in that way contains the parameter.\n\nIt is the best that can be done when the exact value of a parameter cannot be found from a sample.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2200,8 +2360,10 @@
   "cardType": "question_and_answer",
   "front": "Why is it wrong to say there is a 95% probability that $μ$ lies inside a particular confidence interval?\n",
   "back": "Because $μ$ is a **fixed** number: it either is inside that particular interval or it is not, and there is no probability about it.\n\nThe 95% describes the **procedure** instead. If 100 samples were taken and an interval built from each, about 95 of those intervals would contain $μ$.\n\nThat is why the wording is always \"the interval contains the parameter\" rather than the other way round.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2218,8 +2380,10 @@
   "cardType": "fill_in_the_blanks",
   "front": "Fill in the $z$-values for these three confidence levels:\n\n90%: `z = \\_\\_\\_\\_\\_\\_`\n\n95%: `z = \\_\\_\\_\\_\\_\\_`\n\n99%: `z = \\_\\_\\_\\_\\_\\_`\n",
   "back": "The completed values are:\n\n90%: $z = 1 . 645$\n\n95%: $z = 1 . 960$\n\n99%: $z = 2 . 576$\n\nThey are quoted to three decimal places because $z$ is multiplied by a standard deviation, so an error in it is magnified.\n\nAll three appear in the table of critical values, so they need not be memorised, but recognising them is a useful check.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2236,8 +2400,10 @@
   "cardType": "question_and_answer",
   "front": "For a 90% confidence interval, why do you look up $0 . 95$ rather than $0 . 90$?\n",
   "back": "The 90% sits in the **middle** of the distribution, so the remaining 10% is shared equally between the two tails, leaving 5% above $z$.\n\nThe probability below $z$ is therefore 95%, which is what the table needs.\n\nIn general you look up $\\frac{α+100}{2}$ per cent for a confidence level of $α$%.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2254,8 +2420,10 @@
   "cardType": "question_and_answer",
   "front": "What two things affect the width of a confidence interval, and in which direction?\n",
   "back": "A **higher confidence level** makes it wider, because catching the parameter more often requires casting a wider net.\n\nA **larger sample** makes it narrower, because $\\frac{σ}{\\sqrt{n}}$ shrinks as $n$ grows.\n\nThe two pull against each other, which is why more confidence is not simply better.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2272,8 +2440,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nThe sample mean affects both where a confidence interval for $μ$ sits and how wide it is.\n",
   "back": "**False.**\n\nThe sample mean is the **midpoint**, so it fixes where the interval sits, but the width is $2 z \\times \\frac{σ}{\\sqrt{n}}$ and does not contain $\\overline{x}$ at all.\n\nAn interval for a **proportion** behaves differently: there the sample proportion appears in the width as well as at the centre.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2290,8 +2460,10 @@
   "cardType": "question_and_answer",
   "front": "A 95% confidence interval for $μ$ is 18.5 to 22.1, and someone claims that $μ = 23$. What can you say?\n",
   "back": "23 lies **outside** the interval, so there is **not enough evidence to support** the claim.\n\nA value lying inside the interval would be supported by it instead.\n\nThe wording matters either way: a confidence interval gives evidence rather than proof, so it never establishes a value or rules one out for certain.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2308,8 +2480,10 @@
   "cardType": "question_and_answer",
   "front": "What is the confidence interval for a population proportion?\n",
   "back": "It is `\\hat{p} \\pm z \\times \\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}}`, where `\\hat{p}` is the proportion in the sample.\n\nIt may only be used when the sample is large enough for the Central Limit Theorem to apply.\n\nThe formula booklet gives the distribution of the sample proportion as `\\text{N}\\left(p, \\frac{p(1 - p)}{n}\\right)`, which is where the square root comes from.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",
@@ -2326,8 +2500,10 @@
   "cardType": "question_and_answer",
   "front": "How can a confidence interval for a proportion test whether a coin is fair?\n",
   "back": "Work out the proportion of heads in a sample and build a confidence interval for the population proportion $p$.\n\nA fair coin would have $p = 0 . 5$, so check whether $0 . 5$ lies inside the interval.\n\nIf it lies outside there is evidence the coin is not fair; if it lies inside, there is not enough evidence to say so.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "6.4.4",
+  "specPointIds": [
+   "6.4.4"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "sampling-and-estimation",

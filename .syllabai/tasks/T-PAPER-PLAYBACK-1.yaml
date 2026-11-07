@@ -1,0 +1,48 @@
+version: 1
+task:
+  id: T-PAPER-PLAYBACK-1
+  title: 'Paper playback reads like the paper — printed question numbers,
+    difficulty controls retired on papers, "you are here" grid state
+    (batch A of the questions-viewing design audit; operator order
+    2026-11-07: "A first")'
+  owner: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4,
+    chat 0fe43d89-ff92-4e81-857a-1b1c6040a895 — operator picked batch A
+    from the audit's batch list)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-PAPER-PLAYBACK-1 (past-paper player labeling honesty)
+  wave: questions-viewing
+  deps: []
+  scope:
+    allowed:
+    - apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx
+      (variant?: "bank" | "paper" prop — paper mode never mounts the
+      difficulty/guided-practice bar; printedById label source feeds the
+      card chip, the jump grid and the CLA anchor chip; grid gains
+      aria-current + an active ring over the attempted fill)
+    - apps/hub/src/app/courses/[course]/past-papers/[paperKey]/page.tsx
+      (passes variant="paper" + questionNumbers={paper.questionNumbers})
+    - .syllabai/tasks/T-PAPER-PLAYBACK-1.yaml +
+      .syllabai/receipts/T-PAPER-PLAYBACK-1/** + worklog.md (append-only)
+    forbidden:
+    - the bank call sites' behavior (exam-questions [topicSlug] page +
+      practice-papers [paperId] page pass no variant — defaults keep
+      today's bank behavior exactly; zero visual delta on the two bank
+      surfaces)
+    - lib/past-papers.ts (questionNumbers is already computed there and
+      drives coverage math — single source of truth, never re-derived in
+      the player)
+    - self-merge (integrator merges; PR from this branch)
+  notes: 'Audit of record: the 2026-11-07 questions-viewing design audit
+    (this chat). The player rendered filtered-list positions as question
+    numbers while PastPaper.questionNumbers — the printed paper numbers,
+    already computed and driving coverage math — was never shown, so a
+    partial reconstruction renumbered itself against its own coverage line
+    ("missing Q4" rendered beside a card labeled 3); the difficulty bar on
+    a fixed paper renumbered further, and corpus difficulty is nullable
+    (null reads as "medium", so untagged questions silently vanish under
+    easy/hard). Batches B/C/D of the audit remain parked: B reading
+    typography (stem 13.5px vs the micro-px debris), C card de-dup +
+    part-label unification (scheme modal order-numbers vs inline "(a)"),
+    D small polish (CLA-button clearance, self-score validation,
+    answer-wording unification).'

@@ -1,0 +1,89 @@
+# T-VERCEL-USAGE run-003 — the deliberate prod bake (freshness floor).
+#
+# Operator order "Proceed with the thing that actually protects the new
+# account" (zai-web trace 1a1b4eabc366fc49, 2026-11-06). Companion to the
+# run-003 ignoreCommand branch gate: git-triggered builds stay diff-gated
+# on main and skip non-main refs entirely; THIS workflow is the freshness
+# floor that keeps prod honest without the lane-preview churn.
+#
+# STRICT DISPOSITIONS (t-ops-plane doctrine class):
+#   - VERCEL_BAKE_TOKEN is a repository secret: never printed, never
+#     echoed, never interpolated into log lines (the Vercel CLI redacts
+#     its own token; no step writes it anywhere else).
+#   - prod writes: at most ONE deployment per run, and ONLY when the
+#     current READY production SHA differs from main HEAD (idempotent).
+#   - no other environment touched; zero app/contracts/db/API bytes.
+#
+# Why CLI and not gitSource: the run-002 receipt proved first-hand that
+# the ignored-build-step ALSO cancels manual gitSource pins (15:41Z,
+# errorLink=ignored-build-step). A CLI deploy uploads source directly and
+# does not consult ignoreCommand. First-hand bake-path proof: run-003
+# gates (sandbox CLI bake, exit 0, deployment READY — see the receipt).
+
+name: t-vercel-usage-bake
+
+on:
+  schedule:
+    - cron: "30 2 * * *" # 02:30 UTC — off-peak, ahead of the day's merge train
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bake-hub-prod
+  cancel-in-progress: false
+
+jobs:
+  bake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve main HEAD
+        id: head
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Read current production SHA (Vercel API)
+        id: prod
+        env:
+          VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
+          PROJECT_ID: prj_idqk5yM3leODE1Rmm2pPNKxy2x6m
+        run: |
+          # run-005: state-aware read — the newest LIVE deployment (READY /
+          # BUILDING / QUEUED / INITIATING) is what "production is at" means.
+          # ERROR/CANCELED newest entries are IGNORED: a dead newest can never
+          # freeze the floor (run-002 law: fail open toward freshness), while
+          # an in-flight HEAD build still suppresses a duplicate bake.
+          curl -sSf -H "Authorization: Bearer $VERCEL_BAKE_TOKEN" \
+            "https://api.vercel.com/v6/deployments?projectId=$PROJECT_ID&target=production&limit=5" \
+            | python3 -c "
+          import json, os, sys
+          live = {'READY', 'BUILDING', 'QUEUED', 'INITIATING'}
+          pick = next((d for d in json.load(sys.stdin).get('deployments', []) if d.get('state') in live), None)
+          sha = (pick.get('meta') or {}).get('githubCommitSha', '') if pick else ''
+          state = pick.get('state', 'none') if pick else 'none'
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write('sha=' + sha + chr(10) + 'state=' + state + chr(10))
+          print('newest live deployment: ' + state + ' @ ' + (sha[:10] if sha else '(none)'))
+          "
+
+      - name: Skip when production is already current
+        if: steps.prod.outputs.sha == steps.head.outputs.sha
+        run: echo "production already at main HEAD — nothing to bake"
+
+      - name: Install Vercel CLI
+        if: steps.prod.outputs.sha != steps.head.outputs.sha
+        run: npm install -g vercel@latest
+
+      - name: Link project (repo root — Root Directory "apps/hub" is a project setting)
+        if: steps.prod.outputs.sha != steps.head.outputs.sha
+        env:
+          VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
+        run: vercel link --yes --project syllabai-hub-v2 --token="$VERCEL_BAKE_TOKEN"
+
+      - name: Bake production (CLI deploy from repo root; bypasses ignoreCommand by design)
+        if: steps.prod.outputs.sha != steps.head.outputs.sha
+        env:
+          VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
+        run: vercel deploy --prod --yes --token="$VERCEL_BAKE_TOKEN"
