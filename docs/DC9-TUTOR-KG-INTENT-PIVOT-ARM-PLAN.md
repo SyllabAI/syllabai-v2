@@ -119,3 +119,36 @@ WS1 work for the vector plane.
   cap law bounds serving.
 - The streamed meta event keeps its pre-generation contract (DC7 run-002
   residual, unchanged here).
+
+
+## 8. Run-001 live findings (post-merge prod replay, 2026-11-07)
+
+API deploy of record: the 6a0a2753 bundle (READY, aliased api.syllab-ai.com —
+the Git-integration builds were starved behind the hub's single build slot;
+the documented shim-bundle path of record deployed the merged main). Probes
+via a labelled probe learner (`r-dc9-pivot2-…@example.invalid`), course
+4CH1-2017, the audit's own shapes:
+
+- **(a) the bare potassium pivot: PASS.** The exact TU-2 repro (chlorine turn
+  → bare "Why does potassium react more violently with water than sodium?")
+  ANSWERED grounded (ev=6), and the pill rail is the pivot topic's own:
+  `Specification topic 4CH1-S2-a — Group 1 (alkali metals)`, `4CH1-2.17 —
+  know the order of reactivity`, Textbook p126 — the audit's chemical-tests
+  rail is gone. The mechanism analysis (§2) is retroactively validated: with
+  the bare intent arm live, the pivot topic owns the head the honesty floor
+  reads.
+- **(b)+(c) the moles asks: a DIFFERENT, pre-existing class — now precisely
+  bounded.** "New topic: calculate the moles in 8.0 g of methane" AND the
+  SINGLE-TURN control ("How do you calculate moles from mass and RFM?") both
+  refused MODEL-WORDER ("I need the molar mass of methane…") with ev=6 —
+  and the RIGHT topic retrieved (`Specification topic 4CH1-1.17 — be able to
+  calculate the…`). Single-turn refusing proves this is NOT the pivot class
+  (no blend involved; the KG arm cannot be implicated) — it is a
+  model-declines-on-numeric-asks class with on-topic evidence served
+  (provider-variance suspected: the audit measured the same single-turn ask
+  ANSWERING on 2026-11-06). Follow-up card candidate of record:
+  **T-TUTOR-MOLES-1** (model-worded refusals on quantitative asks with
+  on-topic evidence retrieved; provider rotation + corpus granularity are
+  the first two instruments). Not claimed by this card.
+- Probe footprint: 1 labelled probe learner (register), 5 asks across 3
+  sessions; zero other writes.
