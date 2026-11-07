@@ -165,19 +165,8 @@ export interface ViewerPrefs {
 const PREFS_KEY = "pp-viewer-prefs-v1";
 
 /**
- * Read the pane's user-rotation offset from localStorage (the pane's own
- * pp-viewer-prefs-v1 record, validated against its law: rot ∈ {0,90,180,270}
- * else 0). Storage disabled / corrupt → the default view. Read at click
- * time (event grain — never a listener).
+ * RETIRED with T-ACCOUNT-ONLY run-001: the pane-rotation read moved to the
+ * DOM layer (RegionMarkLayer reads the "pdf-viewer-prefs" account doc via
+ * lib/pp-viewer-prefs.ts) — this module stays PURE (no React, no DOM, no
+ * account plane). The key name is kept only as the migration pin.
  */
-export function readViewerRotation(storage?: Storage | null): ViewRotation {
-  try {
-    const s = storage ?? window.localStorage;
-    const raw = s.getItem(PREFS_KEY);
-    if (!raw) return 0;
-    const p = JSON.parse(raw) as Partial<ViewerPrefs>;
-    return p.rot === 90 || p.rot === 180 || p.rot === 270 ? p.rot : 0;
-  } catch {
-    return 0;
-  }
-}

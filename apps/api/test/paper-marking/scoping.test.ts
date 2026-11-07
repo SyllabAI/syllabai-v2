@@ -69,6 +69,14 @@ function makeSql() {
     },
     { match: /insert into mark_awards/, rowsFor: () => [{ id: crypto.randomUUID() }] },
     { match: /insert into mark_working_blocks/, rowsFor: () => [{ id: crypto.randomUUID() }] },
+    {
+      match: /select revision\s+from learner_pdf_drawings/,
+      rowsFor: () => [],
+    },
+    {
+      match: /a\.cache_hash = \?/,
+      rowsFor: () => [],
+    },
   ];
   const sql = (async (strings: TemplateStringsArray, ...params: unknown[]) => {
     const text = strings.join(" ? ").replace(/\s+/g, " ").trim();

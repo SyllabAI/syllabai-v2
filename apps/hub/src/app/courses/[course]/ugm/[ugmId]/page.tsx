@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Landmark, ShieldCheck, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { PageHeader } from "@/components/layout/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { boardOf, getCourseMeta } from "@/lib/courses";
 import { getUgmBundle, ugmResourceById } from "@/lib/ugm";
@@ -99,10 +100,9 @@ export default async function UgmReaderPage({
       {/* t-ui-polish run-005: the crumb→header join aligns with the 20px
           stack rhythm every other bare-breadcrumb reader uses (space-y-5).
           The page's internal furniture/content/footer tiering stays. */}
-      <header className="mt-5 space-y-3">
-        <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-[28px]">
-          <MathText text={resource.title} />
-        </h1>
+      {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
+          (was sm:text-[28px]); the resource badges ride as children. */}
+      <PageHeader className="mt-5" title={<MathText text={resource.title} />}>
         <div className="flex flex-wrap items-center gap-1.5">
           {resource.resourceTypeLabel || resource.resourceType ? (
             <Badge variant="outline" className="text-[10px]">
@@ -137,7 +137,7 @@ export default async function UgmReaderPage({
             })
           )}
         </div>
-      </header>
+      </PageHeader>
 
       {resource.nonOverlap && resource.nonOverlapReason ? (
         <Card className="mt-4 border-dashed">

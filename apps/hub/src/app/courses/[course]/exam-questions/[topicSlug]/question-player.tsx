@@ -3,6 +3,10 @@
 /**
  * Question set player — the SME practice loop (research §6.2–6.4), upgraded:
  *   - difficulty tabs + question-number grid above the question list;
+ *   - two view modes (T-QVIEW-MODES-1): "All on one page" (the classic
+ *     scroll) and "One at a time" (one question per view — the number grid
+ *     and a Previous/Next footer navigate, the grid ring is the truth);
+ *     the choice persists locally (localStorage) across visits;
  *   - per-question toolbar: Full screen, Save (bookmark), difficulty chip;
  *   - MCQs are ANSWERABLE (SME parity — live SME markup verified 2026-09-18):
  *     the answer UI is always "Choose your answer" letter buttons → Submit
@@ -33,7 +37,14 @@
  *     per-part lightbulbs stay as precision shortcuts that pre-aim the
  *     Approach target.
  */
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -42,6 +53,8 @@ import {
   BookmarkCheck,
   CheckCircle2,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   ChevronUp,
   Lightbulb,
   Loader2,
@@ -105,6 +118,46 @@ import { cn } from "@/lib/utils";
 const DIFFICULTIES = ["all", "easy", "medium", "hard"] as const;
 type Difficulty = (typeof DIFFICULTIES)[number];
 
+// T-QVIEW-MODES-1 — the player's two view modes; "all" (one-page scroll,
+// the historical default) and "single" (one question per view). The choice
+// persists device-locally under one key across all surfaces that mount the
+// player.
+const VIEW_MODE_STORAGE_KEY = "syllabai-player-viewmode";
+type ViewMode = "all" | "single";
+
+// tiny external store for the persisted view mode: localStorage is not
+// reactive, so subscribers are pinged explicitly on write (same tab) and
+// via the `storage` event (other tabs). useSyncExternalStore keeps SSR and
+// first paint on the "all" snapshot — no hydration mismatch ever renders.
+const viewModeListeners = new Set<() => void>();
+function subscribeViewMode(onChange: () => void) {
+  viewModeListeners.add(onChange);
+  window.addEventListener("storage", onChange);
+  return () => {
+    viewModeListeners.delete(onChange);
+    window.removeEventListener("storage", onChange);
+  };
+}
+function getViewModeSnapshot(): ViewMode {
+  try {
+    const v = window.localStorage.getItem(VIEW_MODE_STORAGE_KEY);
+    return v === "single" ? "single" : "all";
+  } catch {
+    return "all"; // storage unavailable (private mode, disabled) — default stands
+  }
+}
+function getServerViewModeSnapshot(): ViewMode {
+  return "all"; // hydration truth: server and first paint agree on "all"
+}
+function writeViewMode(m: ViewMode) {
+  try {
+    window.localStorage.setItem(VIEW_MODE_STORAGE_KEY, m);
+  } catch {
+    // storage unavailable — the in-session choice still applies
+  }
+  viewModeListeners.forEach((cb) => cb());
+}
+
 interface McqChoice {
   label: string;
   isCorrect: boolean;
@@ -151,6 +204,8 @@ export function QuestionPlayer({
   subtopicCode,
   subtopicTitle,
   questions,
+  variant = "bank",
+  questionNumbers,
 }: {
   course: Course;
   topicName: string;
@@ -158,6 +213,18 @@ export function QuestionPlayer({
   subtopicCode: string | null;
   subtopicTitle: string | null;
   questions: ExamQuestion[];
+  /** "bank" (default): difficulty tabs + guided practice, positional
+   *  numbering. "paper" (T-PAPER-PLAYBACK-1): fixed-paper playback — the
+   *  printed question numbers are the navigation, so the difficulty
+   *  controls never mount (filtering a paper would renumber it, and
+   *  corpus difficulty is nullable — untagged questions would silently
+   *  vanish under easy/hard). */
+  variant?: "bank" | "paper";
+  /** printed paper question number per entry, aligned with `questions`
+   *  (PastPaper.questionNumbers). Null entries — provenance didn't carry
+   *  a number — fall back to the 1-based position; the array is ignored
+   *  entirely unless its length matches `questions` (fail-closed). */
+  questionNumbers?: Array<number | null>;
 }) {
   const progress = useCourseProgress(course);
   const [difficulty, setDifficulty] = useState<Difficulty>("all");
@@ -196,6 +263,26 @@ export function QuestionPlayer({
   const isAttempted = (q: ExamQuestion) =>
     !!progress.selfScores[q.id] || q.parts.some((p) => !!progress.mcqAnswers[p.id]);
 
+  // T-PAPER-PLAYBACK-1 — ONE label language for the card chips, the jump
+  // grid and the CLA anchor chip: the printed paper question number when
+  // the corpus attests one (paper playback), else the 1-based position.
+  // A partial reconstruction must not renumber itself — when Q3 is missing
+  // the held cards still read 1, 2, 4… exactly as the coverage line next
+  // to them says.
+  const printedById = useMemo(() => {
+    if (!questionNumbers || questionNumbers.length !== questions.length) return null;
+    const m = new Map<string, string>();
+    questions.forEach((q, i) => {
+      const n = questionNumbers[i];
+      if (n != null && n > 0) m.set(q.id, String(n));
+    });
+    return m.size > 0 ? m : null;
+  }, [questions, questionNumbers]);
+  const qLabel = (i: number) => {
+    const q = visible[i];
+    return (printedById && q && printedById.get(q.id)) || String(i + 1);
+  };
+
   /** the CLA anchors resolve ONLY through the verified join — an unverified
    *  question gets no entries at all (same honesty rule as attempts) */
   const openCla = (q: ExamQuestion, index: number, targetId: string | null) => {
@@ -217,9 +304,92 @@ export function QuestionPlayer({
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
 
+  // audit 2026-10-30 (motion review): grid jumps honor reduced motion —
+  // the unguarded spelling of the contract TypedAnswerWorkspace already
+  // implemented inline (scrollBehavior() consolidates all three sites).
+  const scrollTo = useCallback((id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
+  }, []);
+
+  // ── view modes (T-QVIEW-MODES-1) ─────────────────────────────────────
+  // "all" = today's one-page scroll (the default, so nothing changes for
+  // anyone who hasn't opted in); "single" = one question per view, navigated
+  // by the number grid above and a Previous/Next footer below. The choice
+  // persists in localStorage (device-local, one preference across surfaces)
+  // through a tiny external store: useSyncExternalStore keeps SSR and first
+  // paint on the "all" snapshot (no hydration mismatch ever renders) and the
+  // `storage` event carries the choice across open tabs for free.
+  const viewMode = useSyncExternalStore(
+    subscribeViewMode,
+    getViewModeSnapshot,
+    getServerViewModeSnapshot,
+  );
+  const single = viewMode === "single";
+  // the question the player is actually ON — derived, never stored: clamped
+  // into the visible list in single mode (difficulty filters shrink it),
+  // passthrough in "all" where the scroll-spy owns it
+  const viewIdx = single
+    ? Math.max(0, Math.min(activeIdx ?? 0, visible.length - 1))
+    : activeIdx;
+  const switchViewMode = (m: ViewMode) => {
+    writeViewMode(m);
+    // after commit: entering single lands at the top of the page (the card
+    // is the page now); returning to all restores the question being read
+    setTimeout(() => {
+      if (m === "single") {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      } else if (viewIdx != null && visible[viewIdx]) {
+        scrollTo(`q-${visible[viewIdx].id}`);
+      }
+    }, 0);
+  };
+  const goTo = useCallback(
+    (i: number) => {
+      const q = visible[i];
+      if (!q) return;
+      setActiveIdx(i);
+      if (single) {
+        // card swap, not anchor scroll — the card IS the page; land at the top
+        window.scrollTo({ top: 0, behavior: scrollBehavior() });
+      } else {
+        scrollTo(`q-${q.id}`);
+      }
+    },
+    [single, visible, scrollTo, setActiveIdx],
+  );
+  // ←/→ step through questions in single mode — but never while typing, in
+  // a dialog/overlay, or on the difficulty tablist (its arrows mean tabs)
+  useEffect(() => {
+    if (!single) return;
+    const onKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement | null;
+      if (
+        !t ||
+        t.tagName === "INPUT" ||
+        t.tagName === "TEXTAREA" ||
+        t.tagName === "SELECT" ||
+        t.isContentEditable ||
+        t.closest('[role="dialog"], [role="tablist"]')
+      ) {
+        return;
+      }
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const cur = viewIdx ?? 0;
+      const next = e.key === "ArrowRight" ? cur + 1 : cur - 1;
+      if (next < 0 || next >= visible.length) return;
+      e.preventDefault();
+      goTo(next);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [single, viewIdx, visible, goTo]);
+
   useEffect(() => {
     const root = listRef.current;
-    if (!root || typeof IntersectionObserver === "undefined") return;
+    // single mode (T-QVIEW-MODES-1): one card is always in view and active
+    // is set directly by the grid / footer / arrows — the scroll-spy is
+    // an "all"-mode instrument only
+    if (single || !root || typeof IntersectionObserver === "undefined") return;
     const ratios = new Map<Element, number>();
     const io = new IntersectionObserver(
       (entries) => {
@@ -242,7 +412,7 @@ export function QuestionPlayer({
     );
     root.querySelectorAll("article[data-qidx]").forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [visible]);
+  }, [visible, single]);
 
   /** the question the floating button will anchor — the active one when it
    *  can anchor (verified join), else the nearest that can; null = no
@@ -251,151 +421,227 @@ export function QuestionPlayer({
     if (visible.length === 0) return null;
     const canAnchor = (i: number) =>
       !!visible[i] && bridge.kind === "ready" && !!bridge.data.questions[visible[i].id];
-    const a = activeIdx ?? 0;
+    const a = viewIdx ?? 0;
     if (canAnchor(a)) return a;
     for (let d = 1; d < visible.length; d++) {
       if (canAnchor(a + d)) return a + d;
       if (canAnchor(a - d)) return a - d;
     }
     return null;
-  }, [activeIdx, visible, bridge]);
-
-  // audit 2026-10-30 (motion review): grid jumps honor reduced motion —
-  // the unguarded spelling of the contract TypedAnswerWorkspace already
-  // implemented inline (scrollBehavior() consolidates all three sites).
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
-  };
+  }, [viewIdx, visible, bridge]);
 
   return (
     <div className="space-y-5">
       {/* 4CH1 bridge status — one honest line, never a blocker */}
       <BridgeBanner status={bridge} />
 
-      {/* difficulty tabs + guided practice (SME controls, research §6.2) */}
-      <div className="flex flex-wrap items-center gap-3 rounded-lg border bg-card px-4 py-3">
-        <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="Difficulty">
-          {DIFFICULTIES.map((d) => (
-            <button
-              key={d}
-              role="tab"
-              aria-selected={difficulty === d}
-              onClick={() => setDifficulty(d)}
-              className={cn(
-                "rounded-md px-3 py-2.5 text-[13px] font-medium capitalize transition-colors",
-                difficulty === d
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground",
-              )}
-            >
-              {d === "all" ? "All" : d}
-              <span className="ml-1.5 text-[11px] tabular-nums opacity-70">{counts[d]}</span>
-            </button>
-          ))}
+      {/* difficulty tabs + guided practice (SME controls, research §6.2) —
+          bank playback ONLY (T-PAPER-PLAYBACK-1): a past paper is a fixed
+          document played back in paper order — its printed question numbers
+          are the navigation, difficulty filtering would renumber it, and
+          corpus difficulty is nullable (null reads as "medium", so untagged
+          questions would silently vanish under easy/hard). */}
+      {variant === "bank" && (
+        <div className="flex flex-wrap items-center gap-3 rounded-lg border bg-card px-4 py-3">
+          <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="Difficulty">
+            {DIFFICULTIES.map((d) => (
+              <button
+                key={d}
+                role="tab"
+                aria-selected={difficulty === d}
+                onClick={() => setDifficulty(d)}
+                className={cn(
+                  "rounded-md px-3 py-2.5 text-[13px] font-medium capitalize transition-colors",
+                  difficulty === d
+                    ? "bg-primary/10 text-primary"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                )}
+              >
+                {d === "all" ? "All" : d}
+                <span className="ml-1.5 text-[11px] tabular-nums opacity-70">{counts[d]}</span>
+              </button>
+            ))}
+          </div>
+          <label className="ml-auto flex cursor-not-allowed items-center gap-2 text-[13px] text-muted-foreground" title="Adaptive sessions are coming soon">
+            Guided practice
+            <Switch disabled aria-label="Guided practice (roadmap)" />
+          </label>
         </div>
-        <label className="ml-auto flex cursor-not-allowed items-center gap-2 text-[13px] text-muted-foreground" title="Adaptive sessions are Phase C of the build plan">
-          Guided practice
-          <Switch disabled aria-label="Guided practice (roadmap)" />
-        </label>
+      )}
+
+      {/* view-mode toggle (T-QVIEW-MODES-1) — one preference for both
+          surfaces; "all" is the default so current readers see no change */}
+      <div className="flex gap-1 rounded-lg border bg-card p-1" role="group" aria-label="View mode">
+        <button
+          aria-pressed={viewMode === "all"}
+          onClick={() => switchViewMode("all")}
+          className={cn(
+            "rounded-md px-3 py-1.5 text-[13px] font-medium transition-colors",
+            viewMode === "all"
+              ? "bg-primary/10 text-primary"
+              : "text-muted-foreground hover:bg-muted hover:text-foreground",
+          )}
+        >
+          All on one page
+        </button>
+        <button
+          aria-pressed={viewMode === "single"}
+          onClick={() => switchViewMode("single")}
+          className={cn(
+            "rounded-md px-3 py-1.5 text-[13px] font-medium transition-colors",
+            viewMode === "single"
+              ? "bg-primary/10 text-primary"
+              : "text-muted-foreground hover:bg-muted hover:text-foreground",
+          )}
+        >
+          One at a time
+        </button>
       </div>
 
-      {/* question number grid (SME) */}
+      {/* question number grid (SME) — printed paper numbers on paper
+          playback (T-PAPER-PLAYBACK-1); the ring marks the question
+          currently in view ("you are here") and layers over the attempted
+          fill, so the cell being read is findable either way. In single
+          mode the ring is the WHOLE navigation truth (no scroll-spy) and a
+          click swaps the card instead of scrolling. */}
       <div ref={gridRef} className="flex flex-wrap gap-1.5" aria-label="Jump to question">
         {visible.map((q, i) => (
           <button
             key={q.id}
-            onClick={() => {
-              setActiveIdx(i);
-              scrollTo(`q-${q.id}`);
-            }}
-            aria-label={`Question ${i + 1}${isAttempted(q) ? " (attempted)" : ""}`}
+            onClick={() => goTo(i)}
+            aria-label={`Question ${qLabel(i)}${isAttempted(q) ? " (attempted)" : ""}`}
+            aria-current={viewIdx === i || undefined}
             className={cn(
               "flex size-10 items-center justify-center rounded-md border text-[13px] font-medium transition-colors",
               isAttempted(q)
                 ? "border-primary bg-primary text-primary-foreground"
-                : "hover:border-primary/50 hover:text-primary",
+                : viewIdx === i
+                  ? "border-primary bg-primary/10 text-primary"
+                  : "hover:border-primary/50 hover:text-primary",
+              viewIdx === i && "ring-2 ring-primary/60 ring-offset-2 ring-offset-background",
             )}
           >
-            {i + 1}
+            {qLabel(i)}
           </button>
         ))}
       </div>
 
-      {/* questions — data-qidx feeds the floating button's anchor tracker */}
+      {/* questions — data-qidx feeds the floating button's anchor tracker.
+          Single mode renders exactly ONE card of the same list (same keys,
+          same real index qi — so printed numbers, CLA anchoring and the
+          full-screen/mark-scheme targets are all unchanged). */}
       <div ref={listRef} className="space-y-4">
-        {visible.map((q, qi) => (
-          <article key={q.id} id={`q-${q.id}`} data-qidx={qi} className="scroll-mt-24 rounded-xl border bg-card">
-            <div className="flex flex-wrap items-center gap-2 border-b px-4 py-2.5">
-              <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">{qi + 1}</span>
-              <Badge variant="outline" className="text-[10px]">
-                {q.totalMarks} mark{q.totalMarks === 1 ? "" : "s"}
-              </Badge>
-              {q.difficulty && (
-                <Badge variant="secondary" className="text-[10px] capitalize">
-                  {q.difficulty}
+        {visible.map((q, qi) =>
+          single && qi !== viewIdx ? null : (
+            <article key={q.id} id={`q-${q.id}`} data-qidx={qi} className="scroll-mt-24 rounded-xl border bg-card">
+              <div className="flex flex-wrap items-center gap-2 border-b px-4 py-2.5">
+                {/* printed paper number when attested, else position (T-PAPER-PLAYBACK-1) */}
+                <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">{qLabel(qi)}</span>
+                <Badge variant="outline" className="text-[10px]">
+                  {q.totalMarks} mark{q.totalMarks === 1 ? "" : "s"}
                 </Badge>
-              )}
-              {isAttempted(q) && (
-                <Badge variant="outline" className="border-success/30 text-[10px] text-success">
-                  <CheckCircle2 className="mr-0.5 size-3" aria-hidden /> attempted
-                </Badge>
-              )}
-              <div className="ml-auto flex items-center gap-1">
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="h-9 gap-1.5 px-2 text-xs"
-                  onClick={() => {
-                    setActiveIdx(qi);
-                    setFullFor({ q, index: qi });
-                  }}
-                >
-                  <Maximize2 className="size-3.5" aria-hidden /> Full screen
-                </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="h-9 gap-1.5 px-2 text-xs"
-                  onClick={() => toggleSavedQuestion(course, q.id, topicSlug, subtopicCode)}
-                  aria-pressed={!!progress.saved[q.id]}
-                >
-                  {progress.saved[q.id] ? (
-                    <>
-                      <BookmarkCheck className="size-3.5 text-primary" aria-hidden /> Saved
-                    </>
-                  ) : (
-                    <>
-                      <Bookmark className="size-3.5" aria-hidden /> Save
-                    </>
-                  )}
-                </Button>
+                {q.difficulty && (
+                  <Badge variant="secondary" className="text-[10px] capitalize">
+                    {q.difficulty}
+                  </Badge>
+                )}
+                {isAttempted(q) && (
+                  <Badge variant="outline" className="border-success/30 text-[10px] text-success">
+                    <CheckCircle2 className="mr-0.5 size-3" aria-hidden /> attempted
+                  </Badge>
+                )}
+                <div className="ml-auto flex items-center gap-1">
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-9 gap-1.5 px-2 text-xs"
+                    onClick={() => {
+                      setActiveIdx(qi);
+                      setFullFor({ q, index: qi });
+                    }}
+                  >
+                    <Maximize2 className="size-3.5" aria-hidden /> Full screen
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-9 gap-1.5 px-2 text-xs"
+                    onClick={() => toggleSavedQuestion(course, q.id, topicSlug, subtopicCode)}
+                    aria-pressed={!!progress.saved[q.id]}
+                  >
+                    {progress.saved[q.id] ? (
+                      <>
+                        <BookmarkCheck className="size-3.5 text-primary" aria-hidden /> Saved
+                      </>
+                    ) : (
+                      <>
+                        <Bookmark className="size-3.5" aria-hidden /> Save
+                      </>
+                    )}
+                  </Button>
+                </div>
               </div>
-            </div>
 
-            <div className="px-4 py-4">
-              <QuestionBody
-                course={course}
-                question={q}
-                topicSlug={topicSlug}
-                subtopicCode={subtopicCode}
-                subtopicTitle={subtopicTitle}
-                onViewModel={() => {
-                  setActiveIdx(qi);
-                  setSchemeFor(q);
-                }}
-                bridge={bridge}
-                onAskCla={() => openCla(q, qi, null)}
-                onAskClaPart={(partId) => openCla(q, qi, partId)}
-              />
-            </div>
-          </article>
-        ))}
+              <div className="px-4 py-4">
+                <QuestionBody
+                  course={course}
+                  question={q}
+                  topicSlug={topicSlug}
+                  subtopicCode={subtopicCode}
+                  subtopicTitle={subtopicTitle}
+                  onViewModel={() => {
+                    setActiveIdx(qi);
+                    setSchemeFor(q);
+                  }}
+                  bridge={bridge}
+                  onAskCla={() => openCla(q, qi, null)}
+                  onAskClaPart={(partId) => openCla(q, qi, partId)}
+                />
+              </div>
+            </article>
+          ),
+        )}
         {visible.length === 0 && (
           <p className="rounded-lg border bg-muted/30 px-4 py-6 text-center text-sm text-muted-foreground">
             No {difficulty} questions in this set.
           </p>
         )}
       </div>
+
+      {/* single-mode pagination footer (T-QVIEW-MODES-1) — Previous /
+          Question N of M / Next, endpoints disabled (a paper has ends; it
+          does not wrap). The counter is aria-live so a screen reader hears
+          the step; labels carry the printed question numbers. */}
+      {single && visible.length > 0 && (
+        <nav
+          aria-label="Question pagination"
+          className="flex items-center justify-between gap-3 rounded-lg border bg-card px-4 py-3"
+        >
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-1.5"
+            disabled={(viewIdx ?? 0) === 0}
+            aria-keyshortcuts="ArrowLeft"
+            onClick={() => goTo((viewIdx ?? 0) - 1)}
+          >
+            <ChevronLeft className="size-4" aria-hidden /> Previous
+          </Button>
+          <p className="text-[13px] tabular-nums text-muted-foreground" aria-live="polite">
+            Question {qLabel(viewIdx ?? 0)} of {visible.length}
+          </p>
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-1.5"
+            disabled={(viewIdx ?? 0) >= visible.length - 1}
+            aria-keyshortcuts="ArrowRight"
+            onClick={() => goTo((viewIdx ?? 0) + 1)}
+          >
+            Next <ChevronRight className="size-4" aria-hidden />
+          </Button>
+        </nav>
+      )}
 
       {/* the FLOATING CLA entry (Revision Notes parity — operator 2026-09-29,
           trace 1a0ec14f2f7e3581). One page holds MANY questions, so the
@@ -415,14 +661,14 @@ export function QuestionPlayer({
           // high-frequency swap would breach frequency-appropriateness.
           className="fixed bottom-6 right-6 z-40 h-12 gap-2 rounded-full px-5 shadow-lg animate-in fade-in-0 zoom-in-95 duration-200 ease-out"
           aria-haspopup="dialog"
-          aria-label={`Ask the contextual assistant about question ${claAnchorIdx + 1}${
-            activeIdx !== null && activeIdx !== claAnchorIdx
-              ? ` (question ${activeIdx + 1} is not anchored for the assistant yet)`
+          aria-label={`Ask the contextual assistant about question ${qLabel(claAnchorIdx)}${
+            viewIdx !== null && viewIdx !== claAnchorIdx
+              ? ` (question ${qLabel(viewIdx)} is not anchored for the assistant yet)`
               : ""
           }`}
-          title={`Ask CLA about question ${claAnchorIdx + 1}${
-            activeIdx !== null && activeIdx !== claAnchorIdx
-              ? ` (question ${activeIdx + 1} is not anchored for the assistant yet)`
+          title={`Ask CLA about question ${qLabel(claAnchorIdx)}${
+            viewIdx !== null && viewIdx !== claAnchorIdx
+              ? ` (question ${qLabel(viewIdx)} is not anchored for the assistant yet)`
               : ""
           }`}
           onClick={() => openCla(visible[claAnchorIdx], claAnchorIdx, null)}
@@ -433,7 +679,7 @@ export function QuestionPlayer({
             className="rounded-full bg-primary-foreground/15 px-2 py-0.5 text-[11px] font-semibold tabular-nums"
             aria-hidden
           >
-            Q{claAnchorIdx + 1}
+            Q{qLabel(claAnchorIdx)}
           </span>
         </Button>
       )}
@@ -1769,7 +2015,12 @@ function CoreMarkingFlow({
     setAdvisory(initial);
     await Promise.all(
       targets.map(async (t) => {
-        const req = await requestPartRegrade(t.corePartId, answerFor(t.hubPartId), token);
+        // T-MG-MARK-DELTA-1: re-marking a part that already carries a
+        // completed advisory read is the EXPLICIT "mark again" — force a
+        // fresh job (MG's re-mark semantics); a first mark rides the
+        // content-hash cache law.
+        const reMark = advisory[t.hubPartId]?.kind === "done";
+        const req = await requestPartRegrade(t.corePartId, answerFor(t.hubPartId), token, fetch, reMark);
         if (req.outcome !== "accepted") {
           const message =
             req.outcome === "rejected"
@@ -1988,6 +2239,11 @@ function CoreMarkingFlow({
             const verdict = state.snapshot.feedback
               ? feedbackCopyModel(state.snapshot.feedback, score, max)
               : null;
+            // T-MG-MARK-DELTA-1: the verdict's evidence citations + attempt
+            // class — additive renderings; the five-field copy law is
+            // untouched.
+            const citations = awards.filter((a) => a.workingRefLabel);
+            const attemptClass = awards.map((a) => a.attemptClass).find((c) => c) ?? null;
             return (
               <div key={hubPartId} className="rounded-lg border bg-background p-3">
                 <div className="flex flex-wrap items-center gap-2">
@@ -2005,6 +2261,23 @@ function CoreMarkingFlow({
                     advisory · no attempt written
                   </Badge>
                 </div>
+                {attemptClass && (
+                  <p className="mt-1 text-[11px] text-muted-foreground">Attempt read as: {attemptClass}</p>
+                )}
+                {citations.length > 0 && (
+                  <ul className="mt-1 space-y-0.5 text-[11px] text-muted-foreground">
+                    {citations.map((a) => (
+                      <li key={`cite-${a.ordinal}-${a.code}`}>
+                        {a.code}: this mark came from your working at {a.workingRefLabel}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {state.snapshot.receipt?.cached && (
+                  <p className="mt-1 text-[11px] text-muted-foreground">
+                    served from your standing mark — identical content, no new run
+                  </p>
+                )}
                 {verdict && (
                   <>
                     {verdict.chatMessage && (
@@ -2383,7 +2656,7 @@ function MarkSchemeDialog({
               );
             })}
             <p className="text-xs text-muted-foreground">
-              Marking points are AND-joined in the corpus (all required for the mark). Self-mark
+              Every marking point listed is required for the mark. Self-mark
               honestly — your score stays in this browser only.
             </p>
           </div>

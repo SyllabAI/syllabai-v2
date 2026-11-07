@@ -20,32 +20,11 @@ import {
   useState,
 } from "react";
 import { usePathname } from "next/navigation";
-import {
-  BookMarked,
-  BookOpen,
-  Bookmark,
-  Compass,
-  FileQuestion,
-  Files,
-  GraduationCap,
-  LayoutDashboard,
-  Lightbulb,
-  ListChecks,
-  ListTree,
-  Map,
-  Menu,
-  PanelLeftClose,
-  PanelLeftOpen,
-  ScrollText,
-  Sparkles,
-  SquareStack,
-  Target,
-  TrendingUp,
-  X,
-} from "lucide-react";
+import { Menu, PanelLeftClose, PanelLeftOpen, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
+import { createAccountStore } from "@/lib/account-stores";
 import {
   CourseDataProvider,
   type SidebarData,
@@ -53,14 +32,16 @@ import {
 } from "@/components/hub/course-data-context";
 import { TopicTreeWithIndexAuto } from "@/components/hub/topic-tree";
 import { isDocumentFocusRoute, isViewerRoute } from "@/lib/focus-routes";
-import { courseHasBookArchive } from "@/lib/books-registry";
+// T-NAV-STRIP-1: the ONE course-nav registry (moved verbatim from the inline
+// navGroups below-removed) + the MG navigation-tab strip that reads it.
+import { buildCourseNavGroups, buildCourseStripItems } from "@/lib/course-nav";
+import { CourseToolNav } from "@/components/hub/course-tool-nav";
 // T-DASH-SIDEBAR-001: the run-004b nav renderer (rows, folds, rail shapes)
 // now lives in components/layout/side-nav.tsx, shared with the dashboard
 // sidebar — one active-row law, zero drift between the two sidebars.
 import {
   SideNav,
   SIDEBAR_RAIL_PX,
-  type NavItem,
   type SideNavGroup,
 } from "@/components/layout/side-nav";
 
@@ -72,19 +53,43 @@ export type { SidebarData, SidebarVariant } from "@/components/hub/course-data-c
 const SIDEBAR_MIN_W = 200;
 const SIDEBAR_MAX_W = 340;
 const SIDEBAR_DEFAULT_W = 256;
-const SIDEBAR_WIDTH_KEY = "hub:course-rail-width";
+const SIDEBAR_WIDTH_KEY = "hub:course-rail-width"; // RETIRED (legacy adoption pin)
 const SIDEBAR_RESIZE_STEP = 16;
 
 const clampSidebarWidth = (n: number) =>
   Math.min(SIDEBAR_MAX_W, Math.max(SIDEBAR_MIN_W, n));
 
+/**
+ * The course-shell preference doc — the "course-shell-prefs" key of the
+ * workspace-document plane (T-ACCOUNT-ONLY run-001): the sidebar width
+ * lives in the account. The retired localStorage record is adopted once
+ * per tab, then removed.
+ */
+const courseShellStore = createAccountStore<{ sidebarWidth: number | null }>({
+  docKey: "course-shell-prefs",
+  initial: { sidebarWidth: null },
+  parse: (raw) => {
+    if (!raw || typeof raw !== "object") return { sidebarWidth: null };
+    const w = (raw as { sidebarWidth?: unknown }).sidebarWidth;
+    return {
+      sidebarWidth: typeof w === "number" && Number.isFinite(w) ? clampSidebarWidth(Math.round(w)) : null,
+    };
+  },
+  legacyKeys: [SIDEBAR_WIDTH_KEY],
+  readLegacy: () => {
+    try {
+      const raw = window.localStorage.getItem(SIDEBAR_WIDTH_KEY);
+      if (raw === null || raw.trim() === "") return { sidebarWidth: null };
+      const n = Number(raw);
+      return { sidebarWidth: Number.isFinite(n) ? n : null };
+    } catch {
+      return { sidebarWidth: null };
+    }
+  },
+});
+
 function persistSidebarWidth(w: number) {
-  try {
-    window.localStorage.setItem(SIDEBAR_WIDTH_KEY, String(w));
-  } catch {
-    // storage blocked / full — the width just won't survive a reload
-    // (honest degrade, same posture as the other hub prefs)
-  }
+  courseShellStore.set({ sidebarWidth: w });
 }
 
 /**
@@ -185,18 +190,19 @@ export function CourseShell({
   const dragWidthRef = useRef<number | null>(null);
   const asideId = useId();
 
-  // restore a saved width once on mount (guarded like the other hub prefs)
+  // restore the account's saved width (guarded like the other hub prefs);
+  // re-restores when the account hydration lands
   useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem(SIDEBAR_WIDTH_KEY);
-      if (raw === null || raw.trim() === "") return;
-      const n = Number(raw);
-      if (!Number.isFinite(n)) return;
+    const restore = () => {
+      const w = courseShellStore.get().sidebarWidth;
+      if (w === null) return;
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setSidebarWidth(clampSidebarWidth(Math.round(n)));
-    } catch {
-      // private mode / blocked storage — default width
-    }
+      setSidebarWidth(clampSidebarWidth(Math.round(w)));
+    };
+    restore();
+    return courseShellStore.subscribe(() => {
+      if (courseShellStore.hydrated()) restore();
+    });
   }, []);
 
   // stable + idempotent: safe to call from pointerup, lostpointercapture,
@@ -379,130 +385,16 @@ export function CourseShell({
 
   const base = `/courses/${data.course.slug}`;
 
-  const navGroups: SideNavGroup[] = [
-    {
-      label: "Course",
-      items: [
-        // run-013 R1/G2 (sidebar content audit): the dashboard's band-1
-        // flagship — the tutor — finally rides the persistent chrome. The
-        // gate is the ADR-030 law itself (the registry curriculumCode, the
-        // SAME field the band card and the /tutor page key on); a course
-        // without a validated serving corpus shows NO row here — the honest
-        // "not yet connected" state stays on the dashboard card. The row
-        // never pills: /tutor sits outside /courses/*, which is correct —
-        // it is a session surface, not a course route.
-        ...(data.course.curriculumCode
-          ? [{ href: `/tutor?course=${data.course.slug}`, label: "Course Tutor", icon: GraduationCap }]
-          : []),
-        { href: base, label: "Course Resources", icon: LayoutDashboard, exact: pathname === base },
-        // run-013 R1/G1 (audit HIGH): the corpus spine — prerendered for ALL
-        // 109 courses (ADR-021 allCourseParams) — was chrome-less on desktop;
-        // its only persistent entry was a small exam-code pill in the page
-        // header, which on a phone was the sole route into the most
-        // subject-specific tool the platform has.
-        { href: `${base}/specification`, label: "Specification", icon: ListTree },
-      ],
-    },
-    {
-      // run-013 C2: the dashboard's Learn band taxonomy (T-COURSE-BANDS-1) —
-      // the group stops being "Revision" and mirrors the band that actually
-      // holds these tools.
-      label: "Learn",
-      items: [
-        { href: `${base}/revision-notes`, label: "Revision Notes", icon: BookOpen },
-        // run-013 C1 (sidebar content audit): ONE ghost law per class —
-        // data-conditional tools are ABSENT-WHEN-ABSENT (the law Seneca has
-        // obeyed since T-SENECA-001), never disabled placeholders. T-MIG-140's
-        // disabled+roadmap row is superseded: the chrome no longer advertises
-        // a tool this course cannot open; the honest roadmap state stays on
-        // the dashboard's Learn-band card. Same committed-registry gate as
-        // the card (courseHasBookArchive); the shelf behind the link stays
-        // the live T-C20 gate.
-        ...(courseHasBookArchive(data.course.slug)
-          ? [{ href: `${base}/books`, label: "Student Book", icon: BookMarked }]
-          : []),
-        // run-014 (audit F2): SquareStack — the old CircleHelp glyph read as
-        // "Help"; same glyph as the header dropdown's Flashcards row.
-        { href: `${base}/flashcards`, label: "Flashcards", icon: SquareStack },
-        // run-013 R1/G4 (audit MEDIUM): guided lessons — the committed
-        // guided-import.json gate (the SAME loadGuidedIndex the Learn-band
-        // card keys on). Absent-when-absent (the Seneca law) means this row
-        // self-updates as the corpus rollout progresses — coverage 1/109
-        // today, and the chrome never shows a placeholder for the other 108.
-        ...(data.hasGuidedLessons
-          ? [{ href: `${base}/guided-lessons`, label: "Guided lessons", icon: Lightbulb }]
-          : []),
-        // run-013 R1/G5 (audit MEDIUM-LOW): Underground Mathematics — the
-        // SAME absent=OFF law as lib/ugm.ts (flag + committed bundle or
-        // nothing, errors degrade to OFF); the SAME getUgmBundle the
-        // Learn-band card keys on. 10 maths courses today.
-        ...(data.hasUgm
-          ? [{ href: `${base}/ugm`, label: "Underground Mathematics", icon: Map }]
-          : []),
-        // T-SENECA-001 Task 43: harvested Seneca course content — the row
-        // only renders for courses with a registered Seneca bundle under the
-        // live flag (courses without a mapping show nothing, never a
-        // disabled placeholder).
-        ...(data.seneca
-          ? [{ href: `${base}/seneca`, label: "Seneca Resources", icon: Sparkles, badge: data.seneca.total.toLocaleString() }]
-          : []),
-      ],
-    },
-    {
-      // run-013 C2: the dashboard's Practise band name, verbatim.
-      label: "Practise",
-      items: [
-        {
-          href: `${base}/exam-questions`,
-          label: "Exam Questions",
-          icon: FileQuestion,
-          // run-004b: Saved questions is real hierarchy (a facet of the
-          // question bank), so it rides RD's tree-child pattern — the only
-          // nesting the content honestly has
-          children: [
-            { href: `${base}/exam-questions/saved`, label: "Saved questions", icon: Bookmark, exact: pathname.endsWith("/saved") },
-          ],
-        },
-        // run-013 C1: same class law. The OFFICIAL-PLANE-ONLY gate below is
-        // unchanged (official parsed plane OR corpus PDF archive — never the
-        // SME bank's sourcePaper citations); only the missing-data
-        // presentation changes: disabled+roadmap → absent. The dashboard
-        // keeps the honest roadmap card.
-        ...(data.hasPastPapers || data.hasCorpusPapers
-          ? [{ href: `${base}/past-papers`, label: "Past Papers", icon: ScrollText }]
-          : []),
-        { href: `${base}/practice-papers`, label: "Practice Papers", icon: Files },
-        // run-013 C1+C3: the OTHER class — platform roadmap items render as
-        // ghost rows (disabled + roadmap badge, NO href: the old "#" was an
-        // inert-but-sloppy real anchor, and a disabled row is not a link).
-        // Target Test keeps the one chrome ghost it already had; the
-        // dashboard-only roadmap cards (Mock Exams, Mistakes Log, Strength
-        // Battle) stay dashboard-only — the chrome is curated navigation and
-        // this lane adds no new ghost rows.
-        { label: "Target Test", icon: Target, disabled: true, badge: "roadmap" },
-      ],
-    },
-    {
-      // run-013 C2 (audit C2): the dashboard's Track & improve band — the
-      // sidebar taxonomy was left behind by the band reorg ("Strengths &
-      // Weaknesses" is a Track tool that sat under "Course"; Grade
-      // Boundaries had no group to live in). Both rows move here so the two
-      // information architectures agree about the same tools.
-      label: "Track & improve",
-      items: [
-        // T-KG-COV-1: the coarse weekly question ("how far through the
-        // specification am I?") rides beside the per-point one it feeds.
-        { href: `${base}/coverage`, label: "Syllabus coverage", icon: ListChecks },
-        { href: `${base}/strengths`, label: "Strengths & Weaknesses", icon: Compass, exact: pathname === `${base}/strengths` },
-        // run-013 R1/G3: official boundaries live for 106/109 courses — the
-        // same getGradeBoundariesSummary the Track card keys on;
-        // absent-when-absent.
-        ...(data.hasGradeBoundaries
-          ? [{ href: `${base}/grade-boundaries`, label: "Grade Boundaries", icon: TrendingUp }]
-          : []),
-      ],
-    },
-  ];
+  // T-NAV-STRIP-1: the groups moved VERBATIM into lib/course-nav.ts — the ONE
+  // course-nav registry — so the sidebar and the new course tool strip are two
+  // views of the same gated list and can never drift (same groups, order,
+  // absent-when-absent gates; the investigation lives in
+  // download/course-tool-nav-investigation.md).
+  const navGroups = buildCourseNavGroups(data, pathname);
+  // the strip view: flattened, real links only — ghost/roadmap rows (Target
+  // Test) and tree facets (Saved questions) are chrome-only concepts and never
+  // ride the strip (see buildCourseStripItems).
+  const stripItems = buildCourseStripItems(data);
 
   // NOTE (run-004b): the rail is no longer its own <aside> — the shell is
   // ONE element that animates its width between the expanded panel and the
@@ -727,6 +619,15 @@ export function CourseShell({
                 item of the trigger bar, so long course names hard-clipped. */}
             <span className="min-w-0 truncate text-sm font-medium">{data.course.label ?? data.course.subject}</span>
           </div>
+          )}
+          {/* T-NAV-STRIP-1 — the course tool strip (MG's navigation tab) on every
+              course-scoped tool page. Suppressions of record: the course ROOT
+              (the CourseBodyTabs trio is the root nav — MG's root carries no
+              strip either), the paper-viewer route (s146 chrome stand-down) and
+              the document-focus player routes (full-height surfaces). Active
+              law + items live in lib/course-nav.ts + course-tool-nav.tsx. */}
+          {!viewerRoute && !focusRoute && pathname !== base && (
+            <CourseToolNav items={stripItems} pathname={pathname} />
           )}
           {children}
         </div>

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { loadHubCourse } from "@/lib/courses";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { CoveragePanel } from "./coverage-panel";
 import { allCourseParams } from "@/lib/static-params";
 
@@ -35,7 +35,7 @@ export default async function CoveragePage({
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         title="Syllabus coverage"
         crumb="Syllabus coverage"

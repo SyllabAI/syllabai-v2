@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
 import { loadHubCourse } from "@/lib/courses";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { allCourseParams } from "@/lib/static-params";
 import { getSenecaForCourse, listSenecaCourseSlugs } from "@/lib/seneca-hub";
 import { SenecaBrowser } from "@/components/hub/seneca-browser";
@@ -48,7 +48,7 @@ export default async function SenecaPage({
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         title={`${board}${meta.level} ${meta.label} — Seneca Resources`}
         crumb="Seneca"
@@ -59,7 +59,7 @@ export default async function SenecaPage({
           CourseHeader surfaces — this row was the mt-5 outlier. */}
       <div className="mt-6 flex flex-wrap items-center gap-2">
         <Badge variant="outline" className="border-muted-foreground/30 text-[10px] text-muted-foreground">
-          T-SENECA-001 harvest
+          Imported from Seneca
         </Badge>
         <Badge variant="secondary" className="text-[10px]">
           {sections.toLocaleString()} lessons

@@ -41,17 +41,24 @@ export const paperMarkImageDataUrlSchema = z
     "imageDataUrl must be a data:image/(png|jpeg|webp);base64 URL",
   );
 
-/** POST /api/v1/paper-marks/regions/:regionId/mark body. */
+/** POST /api/v1/paper-marks/regions/:regionId/mark body. T-MG-MARK-DELTA-1:
+ * forceFresh is ADDITIVE OPTIONAL — false/absent lets an IDENTICAL re-mark
+ * short-circuit to the standing award (the content-hash cache law);
+ * true = the explicit "mark again with AI" affordance forces a fresh job
+ * (MG's re-mark semantics + our cost law). */
 export const paperMarkRegionRequestSchema = z.object({
   imageDataUrl: paperMarkImageDataUrlSchema,
+  forceFresh: z.boolean().optional(),
 });
 export type PaperMarkRegionRequest = z.infer<typeof paperMarkRegionRequestSchema>;
 
 /** POST /api/v1/paper-marks/parts/:partId/regrade body — the typed
  * channel: the learner's typed answer IS the transcription (no vision
- * step); the same doctrine-match + ledger write runs beneath it. */
+ * step); the same doctrine-match + ledger write runs beneath it.
+ * forceFresh: the same additive cache law as the crop channel. */
 export const paperMarkRegradeRequestSchema = z.object({
   answerHtml: z.string().min(1).max(20_000),
+  forceFresh: z.boolean().optional(),
 });
 export type PaperMarkRegradeRequest = z.infer<typeof paperMarkRegradeRequestSchema>;
 
@@ -70,7 +77,16 @@ export type PaperMarkStatus = z.infer<typeof paperMarkStatusSchema>;
 /** One ASSEMBLED award in a succeeded poll snapshot — the job's view of
  * what was written (ledger truth from the definition plane). The per-award
  * ledger ids are the claim's gen_random_uuid() outputs, served by the
- * Phase-2 ledger read (GET /api/v1/paper-marks) — never fabricated here. */
+ * Phase-2 ledger read (GET /api/v1/paper-marks) — never fabricated here.
+ * T-MG-MARK-DELTA-1 additions (ADDITIVE OPTIONAL, the Gate-1 disclosure):
+ *   attemptClass — the verdict's attempt classification (null/absent =
+ *     honest absence, e.g. an older standing award served from the cache).
+ *   workingRefLabel — the echoed evidence-pointer label ("W2") when the
+ *     verdict cited a saved working block — the honest panel's "this mark
+ *     came from your working at W2" source. The LEDGER's workingRef stays
+ *     the resolved mark_working_blocks uuid (the evidence-pointer law
+ *     untouched). Absent on cache-served standing awards (the label is
+ *     job-voiced, not persisted). */
 export const assembledMarkAwardSchema = z.object({
   code: z.string().min(1),
   awarded: z.boolean(),
@@ -79,6 +95,8 @@ export const assembledMarkAwardSchema = z.object({
   ordinal: z.number().int().min(0),
   markPointId: z.string().uuid().nullable(),
   page: z.number().int().min(1).nullable(),
+  attemptClass: z.enum(["full", "partial", "blank"]).nullable().optional(),
+  workingRefLabel: z.string().min(1).optional(),
 });
 export type AssembledMarkAward = z.infer<typeof assembledMarkAwardSchema>;
 
@@ -101,6 +119,10 @@ export const paperMarkPollResponseSchema = z.object({
       emitted: z.number().int().min(0),
       suppressed: z.number().int().min(0),
       workingBlocks: z.number().int().min(0),
+      /** T-MG-MARK-DELTA-1 (ADDITIVE OPTIONAL): true = the standing award
+       * served from the content-hash cache (zero claim writes, zero model
+       * calls — the identical re-mark short-circuit). */
+      cached: z.boolean().optional(),
     })
     .optional(),
   error: z

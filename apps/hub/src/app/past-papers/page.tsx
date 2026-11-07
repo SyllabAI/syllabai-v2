@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, ExternalLink, ScrollText } from "lucide-react";
+import { PageHeader } from "@/components/layout/page-header";
 import { allArchiveSpecs, corpusIndex, type CorpusArchiveSpec } from "@/lib/pastpapers-corpus";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -93,30 +94,36 @@ export default function PastPapersArchivePage() {
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
       <PreconnectCorpus />
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="flex items-center gap-2 text-xl font-bold tracking-tight">
+      {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
+          (was text-xl); the corpus-count badge rides the actions slot. */}
+      <PageHeader
+        title={
+          <span className="flex items-center gap-2">
             <ScrollText className="size-5 text-primary" aria-hidden />
             Past papers archive
-          </h1>
-          <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
+          </span>
+        }
+        description={
+          <>
             Every specification held in the{" "}
             <span className="font-mono text-xs">syllabai-pastpapers</span> corpus — grouped by
             board, qualification and subject. Specs with a hub course open the full archive
             (mocks, interactive play); the rest open a direct PDF browser.
-          </p>
-        </div>
-        <Badge variant="secondary" className="font-medium">
-          {specs.length} specifications · {paperTotal} papers
-          {officialCount > 0 ? ` · ${officialCount} with official links` : ""}
-        </Badge>
-      </div>
+          </>
+        }
+        actions={
+          <Badge variant="secondary" className="font-medium">
+            {specs.length} specifications · {paperTotal} papers
+            {officialCount > 0 ? ` · ${officialCount} with official links` : ""}
+          </Badge>
+        }
+      />
 
       <div className="mt-4 rounded-xl border bg-muted/30 p-3 text-xs leading-relaxed text-muted-foreground print:hidden">
         <p>
           Official exam documents streamed from the{" "}
-          <span className="font-mono text-[11px]">syllabai-pastpapers</span> archive — AI-IDENTIFIED
-          provenance, operator ratification pending · index generated{" "}
+          <span className="font-mono text-[11px]">syllabai-pastpapers</span> archive — auto-matched
+          to each course, official-source verification in progress · index generated{" "}
           {corpusIndex.meta.generatedAt.slice(0, 10)}, tree{" "}
           <span className="font-mono text-[11px]">{corpusIndex.meta.treeSha.slice(0, 7)}</span>.
         </p>

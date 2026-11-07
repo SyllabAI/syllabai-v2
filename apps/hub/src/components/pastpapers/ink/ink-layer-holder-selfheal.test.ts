@@ -66,6 +66,13 @@ async function flushObservation() {
 async function mountInkLayer() {
   const container = doc.createElement("div");
   doc.body.appendChild(container);
+  // T-ACCOUNT-ONLY run-001: the persistence plane is the SERVER controller
+  // only — a mounted InkLayer rides a signed-in session (the /past-papers
+  // gate). The harness seeds the session the same way the gate delivers it.
+  (globalThis as { window?: { localStorage?: Storage } }).window?.localStorage?.setItem?.(
+    "syllabai.token",
+    "test-token",
+  );
   // The pane-shaped mount: the host (the pane wrapper) is a REACT-MANAGED
   // node carrying the [data-page] holders as its children — exactly the
   // production topology (the pane renders the wrapper; InkLayer portals

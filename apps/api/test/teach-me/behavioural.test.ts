@@ -196,16 +196,17 @@ describe("teach-me behavioural gate (T-MIG-039, ADR-040)", () => {
   });
 
   it("prompt pinning: the TS module is byte-identical to the pinned .md sources (bump, never edit)", async () => {
-    const { PUPIL_CHARTER_V2, TEACHME_TURN_V2, TEACHME_REVIEW_V1 } = await import("../../src/teach-me/prompts");
+    const { PUPIL_CHARTER_V3, TEACHME_TURN_V3, TEACHME_REVIEW_V1, TEACHME_REVIEW_V2 } = await import("../../src/teach-me/prompts");
     const dir = join(import.meta.dir, "../../src/teach-me/prompts");
-    expect(PUPIL_CHARTER_V2).toBe(readFileSync(join(dir, "pupil.md"), "utf-8"));
-    expect(TEACHME_TURN_V2).toBe(readFileSync(join(dir, "teachme-turn-v2.md"), "utf-8"));
+    expect(PUPIL_CHARTER_V3).toBe(readFileSync(join(dir, "pupil-v3.md"), "utf-8"));
+    expect(TEACHME_TURN_V3).toBe(readFileSync(join(dir, "teachme-turn-v3.md"), "utf-8"));
     expect(TEACHME_REVIEW_V1).toBe(readFileSync(join(dir, "teachme-review-v1.md"), "utf-8"));
+    expect(TEACHME_REVIEW_V2).toBe(readFileSync(join(dir, "teachme-review-v2.md"), "utf-8"));
     // the fused prompt must carry the charter verbatim (the {{PUPIL_CHARTER}} fill)
-    expect(TEACHME_TURN_V2).toContain("{{PUPIL_CHARTER}}");
+    expect(TEACHME_TURN_V3).toContain("{{PUPIL_CHARTER}}");
   });
 
-  it("T-TEACHGENIE-001 opener: the create response opens with Baby Genie's topic-aware in-character message", async () => {
+  it("opener: the create response opens with SillyAI's topic-aware in-character message (T-TEACHGENIE-001; persona renamed T-TEACHGENIE-003)", async () => {
     const h = makeHarness({});
     const created = await h.createSession();
     expect(created.status).toBe(200);
@@ -316,7 +317,10 @@ describe("teach-me behavioural gate (T-MIG-039, ADR-040)", () => {
   });
 
   it("config sanity: the config object is the single source (route tests never hard-code Q4/Q5 constants)", () => {
-    expect(CFG.quota.dailySessionCap).toBe(3);
+    // T-TEACHGENIE-007: daily cap LIFTED by live operator order 2026-11-06
+    // ("Remove the limits for now", trace f9485122fd9a94a93659e25f350af676);
+    // restore cost protection by setting 3 (mirrors config.ts).
+    expect(CFG.quota.dailySessionCap).toBe(999);
     // T-TEACHGENIE-001: In-Depth = 6 objectives (MG "Objective 1/6" parity), 8 slots
     expect(CFG.sessionShape.objectivesByLength).toEqual({ quick: 3, in_depth: 6 });
     expect(CFG.sessionShape.maxMessagesByLength).toEqual({ quick: 5, in_depth: 8 });
@@ -327,7 +331,7 @@ describe("teach-me behavioural gate (T-MIG-039, ADR-040)", () => {
     expect(CFG.antiGaming.repeatCreditWindowDays).toBe(7);
     expect(CFG.flags.teachMe.courses).toEqual([COURSE]);
     expect(CFG.evidence).toEqual({ kind: "TEACH_SESSION", tier: "AI_SUGGESTED", appendOnly: true });
-    expect(CFG.pupilName).toBe("Baby Genie");
+    expect(CFG.pupilName).toBe("SillyAI");
     expect(typeof USER).toBe("string"); // fixtures keep identity constants here too
   });
 });

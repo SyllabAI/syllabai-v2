@@ -226,6 +226,7 @@ describe("T-MG-AWARDS-1 run-001 — the POST region-key bridge (the RECT-1 deriv
       documentRefId: PAPER,
       regionKey: "9.a", // labeled part law: /^[a-z]/i → questionKey + "." + label
       questionPartId: PART,
+      stem: null, // the stub's partBridge row carries no prompt — honest null
     });
   });
 
@@ -247,6 +248,7 @@ describe("T-MG-AWARDS-1 run-001 — the POST region-key bridge (the RECT-1 deriv
       documentRefId: PAPER,
       regionKey: "9",
       questionPartId: null,
+      stem: null, // the stub's questionRoute row carries no stem — honest null
     });
   });
 
@@ -280,7 +282,7 @@ describe("T-MG-AWARDS-1 run-001 — the POST region-key bridge (the RECT-1 deriv
     const awards = new PaperAwards(makeSql(), spy);
     const receipt = await awards.recordRegionAwards({
       learnerId: LEARNER,
-      resolution: { documentRefType: "paper_asset", documentRefId: PAPER, regionKey: "9", questionPartId: PART },
+      resolution: { documentRefType: "paper_asset", documentRefId: PAPER, regionKey: "9", questionPartId: PART, stem: null },
       pipelineVersion: "paper-mark/v1",
       awards: [
         { code: "P1", awarded: true, score: 1, maxScore: 1, ordinal: 0, feedback: fb("x"), working: { kind: "ink", content: {} } },

@@ -56,7 +56,19 @@ export const markWorkingBlockInputSchema = z.object({
 export type MarkWorkingBlockInput = z.infer<typeof markWorkingBlockInputSchema>;
 
 /** One award write row (Phase 4's pipeline shape; ordinal REQUIRED — the
- * position law: multi-P1 disambiguates, the unique claim needs it). */
+ * position law: multi-P1 disambiguates, the unique claim needs it).
+ * T-MG-MARK-DELTA-1 additions (rollout plan Lane E — ADDITIVE OPTIONAL
+ * ONLY, no renames/removals; the Gate-1 disclosure of record):
+ *   attemptClass — the verdict's attempt classification (full | partial |
+ *     blank), stamped per row by the pipeline; null = honest absence
+ *     (pre-existing rows).
+ *   workingRefCitation — the RESOLVED prior working block the point's
+ *     evidence rests on (the verdict's echoed label resolved to the
+ *     mark_working_blocks id — the evidence-pointer law untouched); null =
+ *     no citation.
+ *   workingRefLabel — the echoed citation label ("W2") as the verdict
+ *     voiced it; job-view presentation for the honest panel, NOT persisted
+ *     (the ledger row keeps the resolved uuid pointer). */
 export const markAwardWriteSchema = z.object({
   code: z.string().min(1),
   awarded: z.boolean(),
@@ -67,6 +79,9 @@ export const markAwardWriteSchema = z.object({
   page: z.number().int().min(1).nullable().optional(),
   feedback: markAwardFeedbackSchema,
   working: markWorkingBlockInputSchema.optional(),
+  attemptClass: z.enum(["full", "partial", "blank"]).nullable().optional(),
+  workingRefCitation: z.string().uuid().nullable().optional(),
+  workingRefLabel: z.string().min(1).optional(),
 });
 export type MarkAwardWrite = z.infer<typeof markAwardWriteSchema>;
 
@@ -81,7 +96,9 @@ export type PaperAwardWriteRequest = z.infer<typeof paperAwardWriteRequestSchema
 
 /** One served award row — per-award `id` is the parity headline (theirs is
  * region-grain only). markPointId may be null (free-form region, no
- * definition join — the plan §3.2 null-law). */
+ * definition join — the plan §3.2 null-law). T-MG-MARK-DELTA-1: attemptClass
+ * is ADDITIVE OPTIONAL (null/absent = pre-existing row, the honest
+ * absence — no backfill). */
 export const servedMarkAwardSchema = z.object({
   id: z.string().uuid(),
   code: z.string().min(1),
@@ -94,6 +111,7 @@ export const servedMarkAwardSchema = z.object({
   workingRef: z.string().uuid().nullable(),
   pipelineVersion: z.string().min(1),
   feedback: markAwardFeedbackSchema,
+  attemptClass: z.enum(["full", "partial", "blank"]).nullable().optional(),
   createdAt: z.string(),
 });
 export type ServedMarkAward = z.infer<typeof servedMarkAwardSchema>;

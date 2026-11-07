@@ -18,7 +18,7 @@ export const dynamic = "force-dynamic";
  * so the CDN may cache responses (ADR-021 perf pass, tranche 4.12). Not
  * `immutable` — URLs are not deploy-versioned.
  */
-const CONTENT_CACHE = { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=86400" };
+const CONTENT_CACHE = { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=86400" };
 
 interface CourseStat {
   slug: string;

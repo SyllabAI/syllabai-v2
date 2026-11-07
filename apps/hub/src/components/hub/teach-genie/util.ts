@@ -15,13 +15,14 @@ export function timeAgo(iso: string, now: Date = new Date()): string {
   return new Date(iso).toLocaleDateString(undefined, { month: "short", day: "numeric" });
 }
 
-/** The MG status-dot recipe for a session row. */
+/** The status-dot recipe for a session row (house primary since
+ *  T-TEACHGENIE-004 — the MG cyan is retired with the .tg-scope skin). */
 export function statusDotClass(status: string): string {
   switch (status) {
     case "completed":
       return "bg-green-500";
     case "active":
-      return "bg-[#1cb0f6]";
+      return "bg-primary";
     case "review_pending":
       return "bg-amber-500";
     default:

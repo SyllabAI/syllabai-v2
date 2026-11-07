@@ -4,9 +4,17 @@ import { ArrowRight, GraduationCap } from "lucide-react";
 import { boardOf, loadHubCourse } from "@/lib/courses";
 import { loadGuidedIndex } from "@/lib/guided-lessons";
 import { looseAnchorCopy } from "@/lib/loose-copy";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 
-export const dynamic = "force-dynamic";
+/**
+ * T-VERCEL-USAGE: params-only page over the committed corpus (no
+ * request-time APIs — cookies()/headers() verified absent from this
+ * page and its loaders), so ISR replaces force-dynamic: the first
+ * request renders and caches, the CDN serves repeats until the next
+ * deploy resets the cache. 1-day revalidate keeps Hobby ISR writes
+ * inside quota.
+ */
+export const revalidate = 86400;
 
 /**
  * Guided-lessons index — entry-path lane (c), operator decision of record
@@ -81,7 +89,7 @@ export default async function GuidedLessonsIndexPage({
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Guided Lessons`}
         crumb="Guided Lessons"

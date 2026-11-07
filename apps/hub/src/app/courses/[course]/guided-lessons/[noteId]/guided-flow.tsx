@@ -42,9 +42,12 @@
  * restores it and must not re-prompt (the gate radio locks once written;
  * completed modules reopen as a re-walk with the rating locked).
  *
- * PERSISTENCE: browser-local only (hub progress law — no accounts; and the
- * integration channel's zero-DB law), localStorage keyed per lesson id,
- * refresh-safe. Progress never writes to canonical content.
+ * PERSISTENCE (T-ACCOUNT-ONLY run-001): the ACCOUNT is the only durable
+ * store — the "guided-flow" workspace doc, one pool entry per lesson id,
+ * module memory is the reactive cache. The retired localStorage records
+ * (syllabai.guided-flow.v1.*) adopt ONCE per tab (the engine's legacy
+ * adoption — they commit up only when the account has no doc of its own)
+ * and then retire. Progress never writes to canonical content.
  */
 import { useMemo, useState, useSyncExternalStore } from "react";
 import {
@@ -118,7 +121,7 @@ interface Props {
   flashcardsHref: string;
 }
 
-const STORAGE_PREFIX = "syllabai.guided-flow.v1.";
+const STORAGE_PREFIX = "syllabai.guided-flow.v1."; // RETIRED (legacy adoption pin)
 
 const RATING_LABEL: Record<Rating, string> = {
   low: "Low",
@@ -139,39 +142,39 @@ function freshState(): FlowState {
 /** The server snapshot: SSR/prerender always renders the fresh gate. */
 const SERVER_STATE = freshState();
 
-/** Restore from localStorage; client-only, tolerant of bad records. */
-function loadState(lessonId: string): FlowState {
-  try {
-    const raw = window.localStorage.getItem(STORAGE_PREFIX + lessonId);
-    if (!raw) return freshState();
-    const parsed = JSON.parse(raw) as FlowState;
-    if (parsed?.v !== 1) return freshState();
-    return parsed;
-  } catch {
-    return freshState();
-  }
+/** Restore a stored record; client-only, tolerant of bad records. (The
+ *  pool — not localStorage — is the source since T-ACCOUNT-ONLY run-001.) */
+function parseFlowState(raw: unknown): FlowState {
+  if (!raw || typeof raw !== "object") return freshState();
+  const parsed = raw as FlowState;
+  if (parsed?.v !== 1) return freshState();
+  return parsed;
 }
 
 interface FlowStore {
   subscribe: (fn: () => void) => () => void;
   get: () => FlowState;
   set: (updater: (s: FlowState) => FlowState) => void;
-  /** run-004: the remote pull-down's live-store refresh (disk-first) */
+  /** run-004: the remote pull-down's live-store refresh */
   refresh: (next: FlowState) => void;
 }
 
 /**
- * One browser-local store per lesson id (module-level cache). Mutations are
- * plain store updates that persist synchronously — no setState-in-effect;
- * hydration renders the server snapshot and re-renders to the restored
- * state after mount (the hub progress.ts useSyncExternalStore pattern).
+ * One in-memory store per lesson id (module-level cache) over the shared
+ * flowPool. Mutations are plain store updates that write the pool + mirror
+ * to the account synchronously — no setState-in-effect; hydration renders
+ * the server snapshot and re-renders to the restored state after mount
+ * (the hub progress.ts useSyncExternalStore pattern).
  */
 const flowStores = new Map<string, FlowStore>();
+
+// the in-memory pool of record (T-ACCOUNT-ONLY run-001) — one entry per lesson id
+const flowPool = new Map<string, FlowState>();
 
 function getFlowStore(lessonId: string): FlowStore {
   const existing = flowStores.get(lessonId);
   if (existing) return existing;
-  let current = loadState(lessonId);
+  let current = flowPool.get(lessonId) ?? freshState();
   const listeners = new Set<() => void>();
   const store: FlowStore = {
     subscribe(fn) {
@@ -188,17 +191,14 @@ function getFlowStore(lessonId: string): FlowStore {
       if (next === current) return;
       const stamped: FlowState = { ...next, at: Date.now() };
       current = stamped;
-      try {
-        window.localStorage.setItem(STORAGE_PREFIX + lessonId, JSON.stringify(stamped));
-      } catch {
-        // storage unavailable — the flow still works, it just won't resume
-      }
+      flowPool.set(lessonId, stamped);
       listeners.forEach((fn) => fn());
-      // T-AUDIT-TIER1 run-004 — the account mirror (the persist-tail law;
-      // echo-guarded on the remote-apply path below)
+      // T-AUDIT-TIER1 run-004 → T-ACCOUNT-ONLY run-001 — the account mirror
+      // IS the store (the persist-tail law; echo-guarded on the remote-apply
+      // path below)
       mirrorDocPoolState(FLOW_DOC_KEY, readFlowPool());
     },
-    /** run-004: the remote pull-down's live-store refresh — disk is
+    /** run-004: the remote pull-down's live-store refresh — the pool is
      *  already written by the bridge's apply; this only moves the in-memory
      *  `current` so an OPEN lesson re-renders to the merged state. */
     refresh(next: FlowState) {
@@ -210,11 +210,18 @@ function getFlowStore(lessonId: string): FlowStore {
   return store;
 }
 
-// ── T-AUDIT-TIER1 run-004 — the account mirror (bridge registration) ─────
+/** Test seam: the live store for one lesson (the fixtures drive the SAME
+ *  chain the component does — set() writes the pool + mirrors). */
+export function __flowStoreForTests(lessonId: string): FlowStore {
+  return getFlowStore(lessonId);
+}
+
+// ── T-AUDIT-TIER1 run-004 → T-ACCOUNT-ONLY run-001 — the bridge
+// registration ─────────────────────────────────────────────────────────
 // The per-lesson wizard states mirror the account under the "guided-flow"
-// key of record: the pool is the DISK family (set() persists synchronously,
-// so disk is always current), the union is per lesson id, the NEWER `at`
-// wins (tie -> server), capped. apply writes the disk keys back AND
+// key of record: the pool IS the store (set() writes it synchronously),
+// the union is per lesson id, the NEWER `at`
+// wins (tie -> server), capped. apply writes the pool keys back AND
 // refreshes any LIVE store so an open lesson converges in place.
 import {
   atOf,
@@ -223,14 +230,30 @@ import {
   mirrorDocPoolState,
   unionByStamp,
 } from "@/lib/account-docs-records";
+import { adoptLegacyStorage, onAccountDocsReset } from "@/lib/account-docs";
 import { readIdentitySnapshot } from "@/lib/identity";
 
 const FLOW_DOC_KEY = "guided-flow";
 const MAX_FLOWS = 50;
 
 function readFlowPool(): Record<string, FlowState> {
-  const pool: Record<string, FlowState> = {};
-  if (typeof window === "undefined") return pool;
+  return Object.fromEntries(flowPool);
+}
+
+function writeFlowPool(pool: Record<string, FlowState>) {
+  flowPool.clear();
+  for (const [lessonId, state] of Object.entries(pool)) {
+    flowPool.set(lessonId, state);
+    flowStores.get(lessonId)?.refresh(state); // an OPEN lesson converges
+  }
+}
+
+if (typeof window !== "undefined") {
+  // T-ACCOUNT-ONLY run-001 — the one-time legacy adoption: scan the retired
+  // per-lesson keys ONCE, seed the pool AND the engine (they commit up only
+  // when the account has no doc of its own), then let the sweep retire them
+  const legacyKeys: string[] = [];
+  const legacyPool: Record<string, FlowState> = {};
   try {
     for (let i = 0; i < window.localStorage.length; i++) {
       const k = window.localStorage.key(i);
@@ -238,38 +261,25 @@ function readFlowPool(): Record<string, FlowState> {
       const raw = window.localStorage.getItem(k);
       if (!raw) continue;
       const parsed = JSON.parse(raw) as FlowState;
-      if (parsed?.v === 1) pool[k.slice(STORAGE_PREFIX.length)] = parsed;
+      if (parsed?.v === 1) {
+        legacyPool[k.slice(STORAGE_PREFIX.length)] = parseFlowState(parsed);
+        legacyKeys.push(k);
+      }
     }
   } catch {
     // a torn scan degrades to the pool it could read
   }
-  return pool;
-}
-
-function writeFlowPool(pool: Record<string, FlowState>) {
-  if (typeof window === "undefined") return;
-  try {
-    const seen = new Set<string>();
-    for (const [lessonId, state] of Object.entries(pool)) {
-      const k = STORAGE_PREFIX + lessonId;
-      seen.add(k);
-      window.localStorage.setItem(k, JSON.stringify(state));
-      flowStores.get(lessonId)?.refresh(state); // an OPEN lesson converges
-    }
-    for (let i = 0; i < window.localStorage.length; i++) {
-      const k = window.localStorage.key(i);
-      if (k && k.startsWith(STORAGE_PREFIX) && !seen.has(k)) {
-        window.localStorage.removeItem(k);
-      }
-    }
-  } catch {
-    // private mode — the pull-down just won't land
+  if (legacyKeys.length > 0) {
+    for (const [lessonId, state] of Object.entries(legacyPool)) flowPool.set(lessonId, state);
+    adoptLegacyStorage(FLOW_DOC_KEY, legacyKeys, () => legacyPool);
   }
-}
+  // account switch / sign-out: the pool and the live stores clear with the engine
+  onAccountDocsReset(() => {
+    flowPool.clear();
+    for (const store of flowStores.values()) store.refresh(freshState());
+  });
 
-if (typeof window !== "undefined") {
   bridgeDocPool<Record<string, FlowState>, FlowState>({
-    localKey: STORAGE_PREFIX.slice(0, -1),
     docKey: FLOW_DOC_KEY,
     cap: MAX_FLOWS,
     readState: () => readFlowPool(),

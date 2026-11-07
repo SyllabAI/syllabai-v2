@@ -125,8 +125,8 @@ function CourseGraphLanding({
           <h1 className="text-sm font-semibold tracking-tight">Knowledge graphs</h1>
         </div>
         <p className="mt-1 text-xs text-muted-foreground">
-          One specification graph per course, exported from its curriculum bundle
-          (scripts/kg_export.py). Open a graph here or from that course&apos;s page.
+          One specification graph per course, generated from the course&apos;s
+          curriculum. Open a graph here or from that course&apos;s page.
         </p>
         {requested && (
           <Alert className="mt-4">
@@ -447,13 +447,12 @@ function KnowledgeGraphCourse({
       <div className="flex items-center gap-1.5 border-t px-4 py-1.5 text-[10px] text-muted-foreground">
         <Network className="size-3 shrink-0" aria-hidden />
         <span>
-          {current?.label ?? "This course"}&apos;s specification graph — canonicalKG JSON
-          exported from its curriculum bundle (<span className="font-mono">scripts/kg_export.py</span>),
-          loaded by the OpenHuman renderer fork. One graph per course: open it from that
-          course&apos;s page. Prerequisite links come from the operator-validated T-C11
-          concept-dependency store (projected through concept anchors) plus an
-          inferred prototype tier — the provenance panel labels each tier; edge
-          types toggle in the relation menu. Prototype builds:{" "}
+          {current?.label ?? "This course"}&apos;s specification graph — generated
+          from its official curriculum content and rendered by our graph viewer.
+          One graph per course: open it from that course&apos;s page. Prerequisite
+          links come from tutor-validated concept dependencies plus a draft,
+          inferred tier — the provenance panel labels each tier; edge types
+          toggle in the relation menu. Experimental build:{" "}
           <span className="font-mono">/graph-explorer</span>.
         </span>
       </div>

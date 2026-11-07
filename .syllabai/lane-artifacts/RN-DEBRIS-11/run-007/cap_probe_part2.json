@@ -1,0 +1,29 @@
+{
+ "generatedUtc": "2026-11-06T20:16:54Z",
+ "steps": [
+  {
+   "step": "B5_create",
+   "http": "200",
+   "secs": 1.218,
+   "id": "50ed621d-b90c-45b8-a668-396741131a6e",
+   "message": null,
+   "error": null
+  },
+  {
+   "step": "B5_end",
+   "http": "500",
+   "secs": 0.741,
+   "status": 500
+  }
+ ],
+ "historyHttp": "200",
+ "sessions": [
+  {
+   "id": "50ed621d-b90c-45b8-a668-396741131a6e",
+   "http": "200",
+   "status": "review_pending",
+   "reviewLanded": false
+  }
+ ],
+ "capVerdict": "cap proof INCONCLUSIVE: B5=200, listed sessions=1"
+}

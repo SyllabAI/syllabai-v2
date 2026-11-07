@@ -31,8 +31,8 @@
 import { z } from "zod";
 
 /**
- * The closed key vocabulary of record. Two string literals, one family
- * regex, five exact-match keys — the eight stores this plane serves.
+ * The closed key vocabulary of record. Fourteen string literals, two family
+ * regexes — the sixteen stores this plane serves.
  *
  *  - "deck-sessions"          (run-004) the deck player session state;
  *  - "guided-flow"            (run-004) the guided flow wizard state;
@@ -43,7 +43,26 @@ import { z } from "zod";
  *  - "test-builder-drafts"    (run-004) the Test Builder in-progress draft;
  *  - "assistant-threads"      (run-003, this band) the assistant pool;
  *  - "tutor-threads"          (run-003, this band) the tutor pool;
- *  - "cla-question-threads"   (run-003, this band) the CLA question pool.
+ *  - "cla-question-threads"   (run-003, this band) the CLA question pool;
+ *  - "theme"                  (T-ACCOUNT-ONLY run-001) the quad-theme +
+ *                             light/dark/system preference;
+ *  - "cla-panel-mode"         (T-ACCOUNT-ONLY run-001) the CLA popup/sidebar
+ *                             panel form;
+ *  - "dashboard-prefs"        (T-ACCOUNT-ONLY run-001) the dashboard rail +
+ *                             level-filter preferences;
+ *  - "course-shell-prefs"     (T-ACCOUNT-ONLY run-001) the course shell
+ *                             sidebar width;
+ *  - "tutor-prefs"            (T-ACCOUNT-ONLY run-001) the tutor chat sidebar
+ *                             open/closed preference;
+ *  - "pdf-viewer-prefs"       (T-ACCOUNT-ONLY run-001) the past-paper viewer
+ *                             setup (fit/zoom/rotation/spread) + the ink hint
+ *                             flag;
+ *  - /^note-scroll:<slug>/    (T-ACCOUNT-ONLY run-001) ONE doc per course —
+ *                             the reading-position memory (the same slug law
+ *                             as progress:<slug>);
+ *  - "teacher-shell-prefs"    (T-ACCOUNT-ONLY run-001) the teacher shell's
+ *                             desktop rail collapse — the twin of the
+ *                             dashboard-prefs rail, teacher edition.
  */
 export const WORKSPACE_DOC_KEY_PATTERNS: readonly (string | RegExp)[] = [
   "deck-sessions",
@@ -54,6 +73,14 @@ export const WORKSPACE_DOC_KEY_PATTERNS: readonly (string | RegExp)[] = [
   "assistant-threads",
   "tutor-threads",
   "cla-question-threads",
+  "theme",
+  "cla-panel-mode",
+  "dashboard-prefs",
+  "course-shell-prefs",
+  "tutor-prefs",
+  "pdf-viewer-prefs",
+  /^note-scroll:[a-z0-9][a-z0-9-]{0,79}$/,
+  "teacher-shell-prefs",
 ];
 
 /** 512KB per document value — the plane carries bounded workspace state,

@@ -1,0 +1,34 @@
+version: 1
+task:
+  id: T-TEACHGENIE-007
+  title: '"Remove the limits for now" — the daily Teach SillyAI session cap LIFTED (3 → 999,
+    de-facto unlimited) on live operator order; per-session shape, cost ceilings and every
+    anti-gaming/integrity law byte-stable'
+  owner: 'Super Z (zai-web session, Discord DM ObviousGazelle — live operator order "Remove
+    the limits for now", trace f9485122fd9a94a93659e25f350af676, 2026-11-06T12:01Z)'
+  status: 'run-001: config-only cap lift landed via branch t-teachgenie-007/run-001 → PR →
+    merged with the operator''s delegated PAT (the live operator order is the fire order; the
+    R0/self-merge fence is knowingly overridden and disclosed in the receipt); API redeployed
+    to production; live end-to-end proof: a fresh QA learner created 4 same-day sessions
+    (the 4th previously answered 409 QUOTA_EXCEEDED)'
+  priority: P0
+  band: T-TEACHGENIE (the learn-by-teaching lane code plane)
+  wave: teachme-phase-A
+  deps: [T-TEACHGENIE-001, T-TEACHGENIE-003, T-TEACHGENIE-005, T-TEACHGENIE-006]
+  scope:
+    allowed:
+    - apps/api/src/teach-me/config.ts (quota.dailySessionCap + its docstring ONLY)
+    - apps/api/test/teach-me/behavioural.test.ts (the config-sanity mirror line ONLY)
+    - .syllabai/tasks/T-TEACHGENIE-007.yaml + .syllabai/worklog.md (append-only)
+    forbidden:
+    - the anti-gaming block (40-word floor, 0.80 overlap flag, 7-day dedupe), session shape
+      (objectives/slots), cost ceilings (12 calls / 90k tokens), pinned prompts, service.ts
+      and sql.ts bytes
+    - DB schema/rows plane; flags key teachMe; hub bytes; ADR-040 doctrine bytes
+    - packages/contracts bytes (its D3 line is a verbatim ADR-040 citation — historical,
+      already superseded by T-TEACHGENIE-001's 6/12/90k retune convention: config.ts only)
+  notes: 'RESTORE PATH: set quota.dailySessionCap back to 3 in config.ts and mirror 3 in the
+    config-sanity test — one commit, no schema/migration surface. The operator was told the
+    cost exposure explicitly: sessions stay bounded at 12 LLM calls each; the daily ceiling
+    was the only aggregate brake removed. The 20/min per-learner LLM-tier rate limit remains
+    the abuse backstop.'

@@ -16,9 +16,15 @@
  * actually servable (create() still refuses honestly when the serving corpus
  * cannot ground the note). The search box keeps the "describe your own"
  * spirit: typing filters notes by title/unit/topic text.
+ *
+ * T-TEACHGENIE-004: restyled to the house design system — hub tokens only
+ * (accent-primary chip, primary pick voice like the notes index's active
+ * row, hairline borders, house select/search focus voice); the MG hexes are
+ * retired.
  */
 import { useMemo, useState } from "react";
-import { Check, ChevronDown, Search, X } from "lucide-react";
+import { ArrowLeft, Check, Search, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import type { TeachDifficulty, TeachSessionLength } from "@syllabai/contracts";
 import type { TeachGeniePickerNote, TeachGeniePickerNoteTopic } from "@/components/hub/teach-me/picker-data";
 
@@ -36,9 +42,9 @@ export interface TeachGeniePickerProps {
 }
 
 const DIFFICULTIES: Array<{ value: TeachDifficulty; label: string; hint: string }> = [
-  { value: "easy", label: "Easy", hint: "Baby Genie knows nothing yet" },
-  { value: "medium", label: "Medium", hint: "He mixes things up" },
-  { value: "hard", label: "Hard", hint: "He grills you on edge cases" },
+  { value: "easy", label: "Easy", hint: "SillyAI knows nothing yet" },
+  { value: "medium", label: "Medium", hint: "It mixes things up" },
+  { value: "hard", label: "Hard", hint: "It grills you on edge cases" },
 ];
 
 const LENGTHS: Array<{ value: TeachSessionLength; label: string; hint: string }> = [
@@ -93,25 +99,21 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
       : `Covers ${n.specPointCodes.length} spec points — ${n.specPointCodes.join(" · ")}`;
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 sm:px-6">
-      <button
-        type="button"
-        onClick={onBack}
-        className="inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-xl px-2 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-      >
-        <ChevronDown className="size-4 -rotate-90" aria-hidden /> Back
-      </button>
+    <div className="w-full">
+      <Button type="button" variant="ghost" size="sm" onClick={onBack} className="-ml-2 text-muted-foreground">
+        <ArrowLeft aria-hidden /> Back
+      </Button>
 
-      <h2 className="tg-title mt-3 text-balance text-3xl tracking-tight text-foreground">New session</h2>
+      <h2 className="mt-3 text-balance text-2xl font-extrabold tracking-tight text-foreground">New session</h2>
       <p className="mt-2 text-sm text-muted-foreground">
-        Pick the revision note you&apos;ll teach {courseLabel} from — Baby Genie will muddle his way through whatever&apos;s in
+        Pick the revision note you&apos;ll teach {courseLabel} from — SillyAI will muddle its way through whatever&apos;s in
         it.
       </p>
 
       {/* picked note chip */}
       <div className="mt-5 flex min-h-9 flex-wrap items-center gap-2" aria-live="polite">
         {picked ? (
-          <span className="inline-flex max-w-full items-center gap-1 rounded-full bg-[#cefbff] px-3 py-1 text-xs font-medium text-[#1a6fb8] dark:bg-[#002e5f] dark:text-[#46cbe3]">
+          <span className="inline-flex max-w-full items-center gap-1 rounded-full bg-accent-primary px-3 py-1 text-xs font-medium text-accent-primary-foreground">
             <span className="truncate">{picked.title}</span>
             <button
               type="button"
@@ -127,8 +129,8 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
         )}
       </div>
 
-      {/* search / describe-your-own */}
-      <div className="mt-3 flex items-center gap-2 rounded-2xl bg-muted px-3 py-2 focus-within:ring-2 focus-within:ring-[#1cb0f6]/40">
+      {/* search / describe-your-own — the house composer focus voice */}
+      <div className="mt-3 flex items-center gap-2 rounded-xl border bg-card px-3 py-2 shadow-xs transition-colors focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/15">
         <Search className="size-4 shrink-0 text-muted-foreground" aria-hidden />
         <input
           type="search"
@@ -143,7 +145,7 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
             type="button"
             aria-label="Clear search"
             onClick={() => setQuery("")}
-            className="cursor-pointer rounded-full p-1 text-muted-foreground hover:bg-background hover:text-foreground"
+            className="cursor-pointer rounded-full p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
           >
             <X className="size-3.5" aria-hidden />
           </button>
@@ -159,7 +161,7 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
               value={unitCode}
               onChange={(e) => pickUnit(e.target.value)}
               aria-label="Choose a unit"
-              className="w-full cursor-pointer appearance-none rounded-xl bg-muted px-3 py-2.5 text-sm font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-[#1cb0f6]/40"
+              className="w-full cursor-pointer appearance-none rounded-lg border bg-card px-3 py-2 text-sm font-medium text-foreground shadow-xs outline-none transition-colors focus-visible:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary/15"
             >
               {noteTree.map((t) => (
                 <option key={t.code} value={t.code}>
@@ -174,7 +176,7 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
               value={topic?.code ?? ""}
               onChange={(e) => setTopicCode(e.target.value)}
               aria-label="Choose a topic"
-              className="w-full cursor-pointer appearance-none rounded-xl bg-muted px-3 py-2.5 text-sm font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-[#1cb0f6]/40"
+              className="w-full cursor-pointer appearance-none rounded-lg border bg-card px-3 py-2 text-sm font-medium text-foreground shadow-xs outline-none transition-colors focus-visible:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary/15"
             >
               {(unit?.subtopics ?? []).map((s) => (
                 <option key={s.code} value={s.code}>
@@ -187,7 +189,7 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
       )}
 
       {/* the notes under the selection (or the search hits) */}
-      <div className="mt-3 max-h-80 overflow-y-auto rounded-xl border-2 border-border" role="radiogroup" aria-label="Revision notes">
+      <div className="mt-3 max-h-80 overflow-y-auto rounded-xl border bg-card" role="radiogroup" aria-label="Revision notes">
         {visibleNotes.length === 0 ? (
           <p className="px-4 py-8 text-center text-sm text-muted-foreground">
             {searching
@@ -199,26 +201,28 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
             const isPicked = picked?.noteId === n.noteId;
             const hit = searching ? searchHits.find((h) => h.note.noteId === n.noteId) : undefined;
             return (
-              <div key={n.noteId} className="border-b border-border last:border-b-0">
+              <div key={n.noteId} className="border-b border-border/60 last:border-b-0">
                 <button
                   type="button"
                   role="radio"
                   aria-checked={isPicked}
                   onClick={() => setPicked(isPicked ? null : n)}
                   className={`flex w-full cursor-pointer items-start gap-2.5 px-4 py-3 text-left text-sm transition-colors ${
-                    isPicked ? "bg-[#cefbff]/60 dark:bg-[#002e5f]/50" : "hover:bg-muted"
+                    isPicked ? "bg-primary/[0.05]" : "hover:bg-muted"
                   }`}
                 >
                   <span
                     className={`mt-0.5 grid size-4 shrink-0 place-items-center rounded-full border-2 ${
-                      isPicked ? "border-[#1cb0f6] bg-[#1cb0f6] text-white" : "border-border bg-transparent"
+                      isPicked ? "border-primary bg-primary text-primary-foreground" : "border-muted-foreground/25 bg-transparent"
                     }`}
                     aria-hidden
                   >
                     {isPicked && <Check className="size-2.5" strokeWidth={3.5} />}
                   </span>
                   <span className="min-w-0">
-                    <span className="block leading-snug text-foreground">{n.title}</span>
+                    <span className={`block leading-snug ${isPicked ? "font-medium text-foreground" : "text-foreground"}`}>
+                      {n.title}
+                    </span>
                     <span className="mt-0.5 block text-[11px] leading-snug text-muted-foreground">
                       {hit ? `${hit.unitTitle} · ${hit.topicTitle} — ` : ""}
                       <span className="font-mono">{codesCaption(n)}</span>
@@ -234,7 +238,7 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
       {/* difficulty + length */}
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <Segmented
-          legend="How unsure is Baby Genie?"
+          legend="How unsure is SillyAI?"
           options={DIFFICULTIES.map((d) => ({ value: d.value, label: d.label, hint: d.hint }))}
           value={difficulty}
           onChange={(v) => setDifficulty(v as TeachDifficulty)}
@@ -248,17 +252,18 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
       </div>
 
       <div className="mt-7 flex flex-col items-center gap-3">
-        <button
+        <Button
           type="button"
+          size="lg"
           disabled={!picked || busy}
           onClick={() =>
             picked &&
             onStart({ specPointIds: picked.specPointCodes, difficulty, length, mode: "chat" })
           }
-          className="inline-flex w-full max-w-xs cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-full border-2 border-transparent bg-[#1cb0f6] px-4 py-2.5 font-medium text-white transition-all hover:bg-[#1cb0f6]/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground disabled:cursor-not-allowed disabled:opacity-50 dark:bg-[#46cbe3] dark:text-[#191919]"
+          className="w-full max-w-xs"
         >
-          {busy ? "Waking Baby Genie…" : "Start session"}
-        </button>
+          {busy ? "Waking SillyAI…" : "Start session"}
+        </Button>
         <p className="text-center text-[11px] leading-relaxed text-muted-foreground">
           Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts. Quota: 3 sessions a day.
         </p>
@@ -282,7 +287,7 @@ function Segmented({
   return (
     <fieldset>
       <legend className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">{legend}</legend>
-      <div className="flex rounded-xl bg-muted p-1" role="radiogroup" aria-label={legend}>
+      <div className="flex rounded-lg bg-muted p-1" role="radiogroup" aria-label={legend}>
         {options.map((o) => (
           <button
             key={o.value}
@@ -290,8 +295,8 @@ function Segmented({
             role="radio"
             aria-checked={value === o.value}
             onClick={() => onChange(o.value)}
-            className={`flex-1 cursor-pointer rounded-lg px-2 py-1.5 text-sm font-medium transition-all ${
-              value === o.value ? "bg-background shadow-sm ring-1 ring-foreground/5" : "text-muted-foreground hover:text-foreground"
+            className={`flex-1 cursor-pointer rounded-md px-2 py-1.5 text-sm font-medium transition-all ${
+              value === o.value ? "bg-card shadow-sm ring-1 ring-border" : "text-muted-foreground hover:text-foreground"
             }`}
           >
             {o.label}

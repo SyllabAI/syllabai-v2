@@ -60,6 +60,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { createAccountStore } from "@/lib/account-stores";
 import { cn } from "@/lib/utils";
 import {
   SideNav,
@@ -77,8 +78,44 @@ import {
   type LevelFilter,
 } from "@/lib/dashboard-sidebar-model";
 
-const RAIL_HIDDEN_KEY = "hub:dashboard-rail-hidden";
-const LEVEL_FILTER_KEY = "hub:dashboard-level-filter";
+const RAIL_HIDDEN_KEY = "hub:dashboard-rail-hidden"; // RETIRED (legacy adoption pin)
+const LEVEL_FILTER_KEY = "hub:dashboard-level-filter"; // RETIRED (legacy adoption pin)
+
+/**
+ * The dashboard preference doc — the "dashboard-prefs" key of the
+ * workspace-document plane (T-ACCOUNT-ONLY run-001): the rail collapse +
+ * the level filter live in the account. The two retired localStorage keys
+ * above are adopted once per tab, then removed.
+ */
+const dashboardPrefsStore = createAccountStore<{
+  railHidden: boolean;
+  levelFilter: LevelFilter;
+}>({
+  docKey: "dashboard-prefs",
+  initial: { railHidden: false, levelFilter: "all" },
+  parse: (raw) => {
+    const d = { railHidden: false, levelFilter: "all" as LevelFilter };
+    if (!raw || typeof raw !== "object") return d;
+    const p = raw as { railHidden?: unknown; levelFilter?: unknown };
+    return {
+      railHidden: p.railHidden === true,
+      levelFilter:
+        p.levelFilter === "igcse" || p.levelFilter === "ial" ? p.levelFilter : d.levelFilter,
+    };
+  },
+  legacyKeys: [RAIL_HIDDEN_KEY, LEVEL_FILTER_KEY],
+  readLegacy: () => {
+    try {
+      const railHidden = window.localStorage.getItem(RAIL_HIDDEN_KEY) === "1";
+      const rawLevel = window.localStorage.getItem(LEVEL_FILTER_KEY);
+      const levelFilter =
+        rawLevel === "igcse" || rawLevel === "ial" ? rawLevel : "all";
+      return { railHidden, levelFilter };
+    } catch {
+      return { railHidden: false, levelFilter: "all" };
+    }
+  },
+});
 
 /** T-DASH-SIDEBAR-001: the sidebar footer's "Add subject" opens the SAME
  *  cascading overlay the My subjects grid uses, without prop-drilling the
@@ -160,36 +197,28 @@ export function DashboardShell({
   const [level, setLevel] = useState<LevelFilter>("all");
 
   useEffect(() => {
-    try {
-      if (window.localStorage.getItem(RAIL_HIDDEN_KEY) === "1") {
+    const restore = () => {
+      const prefs = dashboardPrefsStore.get();
+      if (prefs.railHidden) {
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setHidden(true);
       }
-      const rawLevel = window.localStorage.getItem(LEVEL_FILTER_KEY);
-      if (rawLevel === "all" || rawLevel === "igcse" || rawLevel === "ial") {
-        setLevel(rawLevel);
-      }
-    } catch {
-      // private mode / blocked storage — defaults are honest
-    }
+      setLevel(prefs.levelFilter);
+    };
+    restore();
+    return dashboardPrefsStore.subscribe(() => {
+      if (dashboardPrefsStore.hydrated()) restore();
+    });
   }, []);
 
   const persistHidden = (next: boolean) => {
     setHidden(next);
-    try {
-      window.localStorage.setItem(RAIL_HIDDEN_KEY, next ? "1" : "0");
-    } catch {
-      // the state still applies for this visit
-    }
+    dashboardPrefsStore.set({ ...dashboardPrefsStore.get(), railHidden: next });
   };
 
   const changeLevel = (next: LevelFilter) => {
     setLevel(next);
-    try {
-      window.localStorage.setItem(LEVEL_FILTER_KEY, next);
-    } catch {
-      // the filter still applies for this visit
-    }
+    dashboardPrefsStore.set({ ...dashboardPrefsStore.get(), levelFilter: next });
   };
 
   // run-009 hover-expand — the course shell's exact contract: with the rail

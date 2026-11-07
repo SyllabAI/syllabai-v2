@@ -23,7 +23,7 @@ import {
   blueprintFor,
   type ReconstructionCoverage,
 } from "@/lib/pastpapers-reconstruction";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -125,7 +125,7 @@ export default async function PastPapersPage({
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
       <PreconnectCorpus />
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Past Papers`}
         crumb="Past Papers"
@@ -137,7 +137,7 @@ export default async function PastPapersPage({
             {interactiveCount > 0 ? ` · ${interactiveCount} interactive` : ""}
           </Badge>
         )}
-      </CourseHeader>
+      </CoursePageHeader>
 
       {papers.length === 0 ? (
         <div className="mt-6 space-y-4">
@@ -180,7 +180,7 @@ export default async function PastPapersPage({
             <p className="mt-1">
               Official {meta.board ?? "Pearson Edexcel"} documents streamed from the{" "}
               <span className="font-mono text-[11px]">syllabai-pastpapers</span> archive
-              (AI-IDENTIFIED provenance, operator ratification pending · index generated{" "}
+              (auto-matched — official-source verification in progress · index generated{" "}
               {corpusIndex.meta.generatedAt.slice(0, 10)}).
             </p>
           </div>

@@ -1,0 +1,231 @@
+# T-TEACHGENIE-005 — the teach-tables DML grants apply runner (0028-class,
+# grants-only): the environment-plane fix the LIVE pilot (T-TEACHGENIE-003
+# run-002, receipt on main, PR #799) demanded — every write path that issues
+# an UPDATE on teach_sessions 500s generically on production (the sub-floor
+# nudge, BOTH judged turns post-writes, end-session), while INSERT/SELECT
+# succeed. Root cause of record: the app role (syllabai_v2_app_w2r2) holds
+# INSERT/SELECT but NOT UPDATE on teach_sessions — the F5-S7 grants class
+# (the teach tables were created 2026-11-01 by the 0020/0021 band BEFORE the
+# driver-grants law existed; the T-TIER1 lane later granted its OWN six
+# tables and proved the prod secret owner-capable).
+#
+# Executed behind the t-tier1-db-apply guard protocol of record:
+#   job 1 (cow-apply): a disposable Neon COW branch off production (in-line
+#     read_write endpoint, NEON_API_KEY = the CI key of record), branch-local
+#     owner password reset (PRODUCTION ROLES NEVER TOUCHED), then the FROZEN
+#     driver scripts/t-teachgenie5-apply-0028.ts applies the six GRANT
+#     statements as ONE transaction (lock_timeout=5s; idempotent re-grant) —
+#     preflight census of the six teach tables, ownership gate, post-verify
+#     role_table_grants census + the has_table_privilege wire proof (4 DML
+#     verbs × 6 tables, no impersonation — the t-tier1 run-001 COW catch
+#     law) — THE PROOF OF RECORD is the driver receipt — then DROP the COW +
+#     404-verify, even on failure (if: always(), the T-MIG-035 discipline).
+#     Production roles are never touched.
+#   job 2 (prod-apply, needs job 1 ALL GREEN, mode=cow+prod default): the
+#     same frozen driver against the OWNER-CAPABLE production DSN of record
+#     (SIB_PROD_DATABASE_URL — the exact secret the t-tier1 prod leg used),
+#     then the LIVE WIRE PROOF: the runner mints the demo student token
+#     through the production demo contract and probes the teach-me history
+#     endpoint on the Wave-0 pilot course (GET /learners/me/teach-me/
+#     sessions?course=igcse-chemistry-19 must be 200). The SELECT-scope probe
+#     is deliberately NOT the completion proof — the session-completing
+#     UPDATE proof is the LIVE pilot completion run that follows this lane
+#     (the operator's standing order), run from the pilot session against
+#     the production wire. The driver is IDEMPOTENT: a re-run against
+#     already-granted prod is an honest zero-SQL no-op, so a red receipt
+#     after a partial state can be retried safely.
+#
+# OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
+# dispatched (the dispatch = the operator's fire order per the 093/133b law).
+# This run's fire order of record: the operator's "Continue" (zai-web chat
+# f8d27d04, trace 1a1ad0a00dc0c991, 2026-11-06) continuing the LIVE-pilot
+# order "conduct a live pilot after deployment" (trace 1a1ac4dca771efb5)
+# whose run-002 receipt named this exact t-tier1-pattern grants lane
+# (suggested T-TEACHGENIE-005) as the required operator action; the reading
+# is disclosed in the run receipt and the worklog.
+#
+# RUN-001 AMENDMENT (the SIB deletion disclosure of record): the first
+# dispatch found SIB_PROD_DATABASE_URL UNSTAGED — the secret list of record
+# (13 repo secrets, read via the API at 2026-11-05T19:06Z) no longer carries
+# it; it was removed since the t-tier1 prod leg succeeded with it at
+# 2026-11-05T10:52Z (the rotation the standing receipts kept flagging). The
+# prod leg gains a prod_secret vantage input (default sib — unchanged
+# behavior): smoke aims the leg at SMOKE_DB_URI, the of-record production
+# smoke connection (t-teachme-1-vantage-probe), whose role vantage is
+# UNKNOWN — the driver's ownership gate is the safety: a wrong-vantage
+# connection fails CLOSED with both roles named and ZERO SQL executed (the
+# 0025 run-004/005 behavior), an owner-capable connection lands the grants.
+# t138 aims at T138_PROD_DATABASE_URL, PROVEN app-role (syllabai_v2_app_w2r2)
+# by the 0025 run-004/005 — a known honest red, kept for the census value.
+# Secrets of record: NEON_API_KEY (exists), SIB_PROD_DATABASE_URL (WAS
+# owner-capable — now unstaged), SMOKE_DB_URI (exists, vantage unknown),
+# T138_PROD_DATABASE_URL (exists, app-role per the 0025 receipts). Vars of
+# record: NEON_PROJECT_ID, NEON_PARENT_BRANCH_ID (exist). Receipts are
+# scrubbed by construction: the driver records the DB host only, never URIs
+# or tokens.
+
+name: t-teachgenie-5-db-apply-0028
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "cow+prod (default — full landing) | cow-only (COW proof first; prod only after the operator reviews the receipt)"
+        required: false
+        default: "cow+prod"
+      prod_secret:
+        description: "prod-apply vantage of record: sib (default) | smoke (SMOKE_DB_URI, vantage unknown — gate decides) | t138 (known app-role, census only)"
+        required: false
+        default: "sib"
+        type: choice
+        options:
+          - sib
+          - smoke
+          - t138
+      note:
+        description: "Operator note for this apply run"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-teachgenie-5-db-apply-0028
+  cancel-in-progress: false
+
+jobs:
+  cow-apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+      - name: Install workspace deps (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="t-teachgenie5-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          HOST=""
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched; 423-aware)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          PW=""
+          for i in $(seq 1 20); do
+            CODE=$(curl -s -o /tmp/tg5-reset.json -w "%{http_code}" \
+              -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            if [ "$CODE" = "200" ]; then
+              PW=$(jq -r '.role.password' /tmp/tg5-reset.json)
+              break
+            fi
+            if [ "$CODE" = "423" ]; then sleep 5; continue; fi
+            echo "unexpected reset status ${CODE}"; exit 1
+          done
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Apply the six teach-table grants + post-verify on the COW (frozen driver, idempotent)
+        run: |
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/tg5-cow.uri
+          chmod 600 /tmp/tg5-cow.uri
+          bun scripts/t-teachgenie5-apply-0028.ts --db file:/tmp/tg5-cow.uri --receipt cow-0028-receipt.json
+      - name: Upload the receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tteachgenie5-cow-receipts
+          path: cow-0028-receipt.json
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }
+
+  prod-apply:
+    needs: cow-apply
+    if: ${{ inputs.mode == 'cow+prod' && !failure() && !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+      - name: Install workspace deps (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Apply the six teach-table grants against PRODUCTION (frozen driver — preflight / apply / post-verify, idempotent)
+        env:
+          SIB_PROD_DATABASE_URL: ${{ secrets.SIB_PROD_DATABASE_URL }}
+          SMOKE_DB_URI: ${{ secrets.SMOKE_DB_URI }}
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          case "${{ inputs.prod_secret }}" in
+            sib)   PROD_URI="${SIB_PROD_DATABASE_URL:-}";;
+            smoke) PROD_URI="${SMOKE_DB_URI:-}";;
+            t138)  PROD_URI="${T138_PROD_DATABASE_URL:-}";;
+            *)     echo "unknown prod_secret input"; exit 2;;
+          esac
+          [ -n "$PROD_URI" ] || { echo "chosen prod vantage (${{ inputs.prod_secret }}) not staged — abort"; exit 2; }
+          printf '%s' "$PROD_URI" > /tmp/tg5-prod.uri
+          chmod 600 /tmp/tg5-prod.uri
+          bun scripts/t-teachgenie5-apply-0028.ts --db file:/tmp/tg5-prod.uri --receipt prod-0028-receipt.json
+      - name: LIVE WIRE PROOF (teach-me SELECT scope on the Wave-0 pilot course)
+        run: |
+          set -euo pipefail
+          API="https://syllabai-v2.vercel.app/api/v1"
+          WEB="https://www.syllab-ai.com"
+          STUDENT=$(curl -sf "${WEB}/api/demo/login?role=student" | jq -r '.accessToken')
+          [ -n "$STUDENT" ] && [ "$STUDENT" != "null" ] || { echo "demo student mint failed"; exit 1; }
+          CODE=$(curl -s -o /tmp/tg5-probe.json -w "%{http_code}" -H "Authorization: Bearer $STUDENT" "${API}/learners/me/teach-me/sessions?course=igcse-chemistry-19")
+          echo "GET /learners/me/teach-me/sessions?course=igcse-chemistry-19 → HTTP ${CODE}"
+          if [ "$CODE" != "200" ]; then echo "body: $(head -c 300 /tmp/tg5-probe.json)"; exit 1; fi
+          echo "WIRE PROOF: teach-me history 200 (SELECT scope; the session-completing UPDATE proof is the LIVE pilot completion run of record)"
+      - name: Upload the receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tteachgenie5-prod-receipts
+          path: prod-0028-receipt.json
+          if-no-files-found: ignore

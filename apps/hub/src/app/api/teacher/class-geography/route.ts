@@ -22,7 +22,7 @@ export const dynamic = "force-dynamic";
  * The corpus behind this route is committed and immutable between deploys
  * (same policy as /api/course-stats, ADR-021 perf pass tranche 4.12).
  */
-const CONTENT_CACHE = { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=86400" };
+const CONTENT_CACHE = { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=86400" };
 
 interface GeographySubtopic {
   code: string;

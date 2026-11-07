@@ -32,6 +32,7 @@ import { api, ApiError } from "@/lib/api";
 import { TeacherNav } from "@/components/teacher/teacher-nav";
 import { formatRelative, humanizeCode } from "@/lib/format";
 import type { ClassLearnerRow, ClassOverviewView, SubjectView } from "@/lib/types";
+import { PageHeader } from "@/components/layout/page-header";
 import {
   downloadCsv,
   formatIso,
@@ -153,38 +154,37 @@ export function ReportsClient() {
     <div className="space-y-6">
       <TeacherNav />
 
-      <div className="flex flex-wrap items-end justify-between gap-3 print:hidden">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Reports</h1>
-          <p className="text-sm text-muted-foreground">
-            Live, read-only class evidence — printable summary plus per-student and per-topic CSV
-            exports. Term grouping is pending a term entity in the core; exports stamp the evidence
-            window instead.
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
-          <label htmlFor="report-subject" className="text-sm text-muted-foreground">
-            Subject
-          </label>
-          <select
-            id="report-subject"
-            value={rootId ?? ""}
-            onChange={(e) => setRootId(e.target.value || null)}
-            className="h-9 rounded-md border bg-background px-3 text-sm"
-            disabled={subjectsWithRoot.length === 0}
-          >
-            {subjectsWithRoot.length === 0 ? (
-              <option value="">No subjects with a knowledge root</option>
-            ) : (
-              subjectsWithRoot.map((s) => (
-                <option key={s.id} value={s.knowledgeNodeId ?? ""}>
-                  {s.name}
-                </option>
-              ))
-            )}
-          </select>
-        </div>
-      </div>
+      {/* T-HEADER-1: the shared tool-page header (the subject picker rides
+          the actions slot). */}
+      <PageHeader
+        className="print:hidden"
+        title="Reports"
+        description="Live, read-only class evidence — printable summary plus per-student and per-topic CSV exports. Term grouping is pending a term entity in the core; exports stamp the evidence window instead."
+        actions={
+          <div className="flex items-center gap-2">
+            <label htmlFor="report-subject" className="text-sm text-muted-foreground">
+              Subject
+            </label>
+            <select
+              id="report-subject"
+              value={rootId ?? ""}
+              onChange={(e) => setRootId(e.target.value || null)}
+              className="h-9 rounded-md border bg-background px-3 text-sm"
+              disabled={subjectsWithRoot.length === 0}
+            >
+              {subjectsWithRoot.length === 0 ? (
+                <option value="">No subjects with a knowledge root</option>
+              ) : (
+                subjectsWithRoot.map((s) => (
+                  <option key={s.id} value={s.knowledgeNodeId ?? ""}>
+                    {s.name}
+                  </option>
+                ))
+              )}
+            </select>
+          </div>
+        }
+      />
 
       {/* print-only report header */}
       {overview && stamp ? (

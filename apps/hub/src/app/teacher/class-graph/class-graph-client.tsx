@@ -46,6 +46,7 @@ import type { TeacherCourseData } from "@/lib/teacher/types";
 import type { SubtopicAggregate, UnderstandingBand } from "@/lib/teacher/class-sim";
 import type { SwitchableCourse } from "@/lib/teacher/types";
 import { cn } from "@/lib/utils";
+import { PageHeader } from "@/components/layout/page-header";
 
 const BAND_LABEL: Record<UnderstandingBand, string> = {
   strong: "Strong understanding",
@@ -126,25 +127,29 @@ export function ClassGraphClient({
     <div className="space-y-6">
       <TeacherNav />
 
-      <header className="space-y-1.5">
-        <div className="flex items-center gap-2">
-          <Badge variant="outline" className="gap-1 text-[10px] font-normal">
-            <Network className="size-3" aria-hidden />
-            Analytics · teacher
-          </Badge>
-          <Badge variant="secondary" className="text-[10px] font-normal">
-            TEACHER_ARCHITECTURE §13
-          </Badge>
-        </div>
-        <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
-          Class graph (demo)
-        </h1>
-        <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          A different lens over the same subject graph the students use. Teaching coverage
-          (your overlay) and class understanding (aggregated evidence) are kept semantically
-          separate — grey means <em>not taught</em>, never <em>weak</em>.
-        </p>
-      </header>
+      {/* T-HEADER-1: the shared tool-page header (badge row rides the eyebrow
+          slot; font-display dropped). */}
+      <PageHeader
+        eyebrow={
+          <span className="flex items-center gap-2">
+            <Badge variant="outline" className="gap-1 text-[10px] font-normal">
+              <Network className="size-3" aria-hidden />
+              Analytics · teacher
+            </Badge>
+            <Badge variant="secondary" className="text-[10px] font-normal">
+              TEACHER_ARCHITECTURE §13
+            </Badge>
+          </span>
+        }
+        title="Class graph (demo)"
+        description={
+          <>
+            A different lens over the same subject graph the students use. Teaching coverage
+            (your overlay) and class understanding (aggregated evidence) are kept semantically
+            separate — grey means <em>not taught</em>, never <em>weak</em>.
+          </>
+        }
+      />
 
       {/* controls + disclosure */}
       <div className="flex flex-wrap items-center gap-3 print:hidden">

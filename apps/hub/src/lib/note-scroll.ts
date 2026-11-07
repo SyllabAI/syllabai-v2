@@ -17,14 +17,19 @@
  * KaTeX, images, corpus updates) — a fraction of the scrollable height
  * degrades gracefully, a pixel offset rots.
  *
- * Why its own localStorage namespace (`syllabai-hub:note-scroll:<course>`)
- * instead of a field on the progress overlay: scroll writes are
- * high-frequency and position-only — they must never churn the learner
- * progress object the rings read, and the overlay's notesRead entries only
- * exist once a note is READ (scrolled to its end), while resume must be
- * able to point at a note the learner is mid-way through. Recency across
- * both planes is joined at the resume-target computation
- * (pickResumeNoteId).
+ * Why its own plane (`note-scroll:<course>` — ONE workspace-document per
+ * course, T-ACCOUNT-ONLY run-001) instead of a field on the progress
+ * overlay: scroll writes are high-frequency and position-only — they must
+ * never churn the learner progress object the rings read, and the overlay's
+ * notesRead entries only exist once a note is READ (scrolled to its end),
+ * while resume must be able to point at a note the learner is mid-way
+ * through. Recency across both planes is joined at the resume-target
+ * computation (pickResumeNoteId).
+ *
+ * T-ACCOUNT-ONLY run-001: the account doc is the ONLY durable store — the
+ * retired localStorage namespace (`syllabai-hub:note-scroll:<course>`) is
+ * adopted once per tab (the engine's legacy adoption) and removed when the
+ * account copy is clean.
  *
  * Laws of record (all owned here so the island, the index and the tests
  * share one truth):
@@ -38,10 +43,11 @@
  *     fresh from the top. An interrupted read (the case the operator
  *     described) sits inside the band and resumes exactly there.
  *   - BOUND — the per-course map holds at most MAX_ENTRIES notes (oldest
- *     `at` evicted), so the overlay can never grow unbounded on a long
- *     revision streak.
+ *     `at` evicted), so the doc can never grow unbounded on a long
+ *     revision streak (the 512KB plane cap stays far away).
  */
 import { useCallback, useSyncExternalStore } from "react";
+import { createAccountStore, type AccountStore } from "./account-stores";
 
 export interface NoteScrollEntry {
   /** window-scroll fraction of the note body, clamped to [0, 1] */
@@ -54,49 +60,55 @@ export const MIN_RESUME_FRAC = 0.02;
 export const MAX_RESUME_FRAC = 0.98;
 export const MAX_ENTRIES = 120;
 
-const keyFor = (course: string) => `syllabai-hub:note-scroll:${course}`;
-const isBrowser = typeof window !== "undefined";
+const LEGACY_PREFIX = "syllabai-hub:note-scroll:";
 
-// module-level cache so every hook instance sees the same object graph
-// (the same posture lib/progress.ts uses for the overlay store)
-const cache = new Map<string, Record<string, NoteScrollEntry>>();
-const listeners = new Map<string, Set<() => void>>();
-
-function load(course: string): Record<string, NoteScrollEntry> {
-  if (cache.has(course)) return cache.get(course)!;
-  let data: Record<string, NoteScrollEntry> = {};
-  if (isBrowser) {
-    try {
-      const raw = window.localStorage.getItem(keyFor(course));
-      if (raw) {
-        const parsed = JSON.parse(raw) as Record<string, NoteScrollEntry>;
-        if (parsed && typeof parsed === "object") data = parsed;
-      }
-    } catch {
-      // corrupted state → reset (scroll memory is disposable by design)
+function parsePool(raw: unknown): Record<string, NoteScrollEntry> {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
+  const out: Record<string, NoteScrollEntry> = {};
+  for (const [k, v] of Object.entries(raw as Record<string, unknown>)) {
+    if (
+      v &&
+      typeof v === "object" &&
+      typeof (v as { frac?: unknown }).frac === "number" &&
+      typeof (v as { at?: unknown }).at === "number"
+    ) {
+      out[k] = v as NoteScrollEntry;
     }
   }
-  cache.set(course, data);
-  return data;
+  return out;
 }
 
-function persist(course: string, next: Record<string, NoteScrollEntry>) {
-  cache.set(course, next);
-  if (isBrowser) {
-    try {
-      window.localStorage.setItem(keyFor(course), JSON.stringify(next));
-    } catch {
-      // storage full / private mode — memory stays in-session only
-    }
+// one account store per course — the same lazy-cache posture lib/progress.ts uses
+const stores = new Map<string, AccountStore<Record<string, NoteScrollEntry>>>();
+
+function storeFor(course: string): AccountStore<Record<string, NoteScrollEntry>> {
+  let s = stores.get(course);
+  if (!s) {
+    s = createAccountStore<Record<string, NoteScrollEntry>>({
+      docKey: `note-scroll:${course}`,
+      initial: {},
+      parse: parsePool,
+      legacyKeys: [`${LEGACY_PREFIX}${course}`],
+      readLegacy: () => {
+        try {
+          const raw = window.localStorage.getItem(`${LEGACY_PREFIX}${course}`);
+          return raw ? (JSON.parse(raw) as unknown) : null;
+        } catch {
+          return null;
+        }
+      },
+    });
+    stores.set(course, s);
   }
-  listeners.get(course)?.forEach((fn) => fn());
+  return s;
 }
 
 /**
  * Persist the learner's reading position in one note. Called by the note
  * page island on a throttle (and flushed on pagehide), so the write rate is
- * bounded. Positions below the save gate are refused — they are not reading
- * positions and must not manufacture resume targets.
+ * bounded — the engine's 400ms doc debounce coalesces further. Positions
+ * below the save gate are refused — they are not reading positions and must
+ * not manufacture resume targets.
  */
 export function saveNoteScroll(
   course: string,
@@ -105,9 +117,10 @@ export function saveNoteScroll(
   at: number = Date.now(),
 ) {
   if (!Number.isFinite(frac)) return;
+  if (!/^[a-z0-9][a-z0-9-]{0,79}$/.test(course)) return; // the docKey slug law — a non-registry course is memory-only
   const clamped = Math.min(1, Math.max(0, frac));
   if (clamped < MIN_RESUME_FRAC) return;
-  const cur = load(course);
+  const cur = storeFor(course).get();
   const prev = cur[noteId];
   if (prev && prev.frac === clamped && prev.at === at) return;
   const next: Record<string, NoteScrollEntry> = {
@@ -121,22 +134,20 @@ export function saveNoteScroll(
     entries.sort((a, b) => a[1].at - b[1].at);
     for (const [k] of entries.slice(0, entries.length - MAX_ENTRIES)) delete next[k];
   }
-  persist(course, next);
+  storeFor(course).set(next);
 }
 
 export function getNoteScroll(course: string, noteId: string): NoteScrollEntry | null {
-  return load(course)[noteId] ?? null;
+  return storeFor(course).get()[noteId] ?? null;
 }
 
 /** Whole per-course scroll map (the plain read behind useNoteScrolls). */
 export function getNoteScrolls(course: string): Record<string, NoteScrollEntry> {
-  return load(course);
+  return storeFor(course).get();
 }
 
 export function subscribeNoteScroll(course: string, fn: () => void): () => void {
-  if (!listeners.has(course)) listeners.set(course, new Set());
-  listeners.get(course)!.add(fn);
-  return () => listeners.get(course)!.delete(fn);
+  return storeFor(course).subscribe(fn);
 }
 
 /** Stable server snapshot (useSyncExternalStore requires a cached value). */
@@ -144,7 +155,7 @@ const EMPTY: Record<string, NoteScrollEntry> = {};
 
 /** Reactive per-course scroll-memory snapshot for client components. */
 export function useNoteScrolls(course: string): Record<string, NoteScrollEntry> {
-  const getSnapshot = useCallback(() => load(course), [course]);
+  const getSnapshot = useCallback(() => storeFor(course).get(), [course]);
   return useSyncExternalStore(
     (cb) => subscribeNoteScroll(course, cb),
     getSnapshot,

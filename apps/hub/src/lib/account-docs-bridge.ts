@@ -4,23 +4,17 @@
  * is store-agnostic; THIS module owns the thread-pool semantics the three
  * conversation stores (tutor / assistant / CLA) share.
  *
- * THE DECISION TREE (evaluated on every store change AND every engine
- * notification, for the one docKey the store registered):
+ * THE DECISION TREE (T-ACCOUNT-ONLY run-001, evaluated on every store
+ * change AND every engine notification, for the one docKey the store
+ * registered):
  *
  *   not hydrated, or an in-flight remote apply (the echo guard)  → no-op
  *   signed out                                                   → no-op
- *   server value unknown AND not hydrated                        → no-op
  *   server doc null/unknown:
- *     local pool empty                                           → no-op
- *     pool foreign-tagged (another account's device-local data)  → re-base
- *                                                                  to EMPTY
- *                                                                  + re-tag
- *     pool adoptable (untagged on this device) or ours           → mirror
- *                                                                  UP (adopt)
+ *     in-memory pool empty                                       → no-op
+ *     pool has entries                                           → mirror
+ *                                                                  UP
  *   server doc present:
- *     pool foreign-tagged → the durable copy IS the other account's own
- *     data (B's sync from another device): re-base the local pool to it,
- *     NO PUT (the server copy is already B's durable truth)      → pull
  *     union stamp ≠ server stamp (local has something new/newer) → commit
  *                                                                  up, ONE
  *                                                                  intent
@@ -28,11 +22,10 @@
  *                                                                  down
  *     otherwise (stamps equal both ways)                         → no-op
  *
- * THE OWNER-TAG LAW: the device's localStorage carries a `<localKey>:owner`
- * side-tag naming the LAST account whose data this device's pool held.
- * Untagged = adoptable (a signed-out device's local history uploads on
- * first sign-in). Foreign = the pool is ANOTHER account's working state —
- * it never unions into the new account (a switch re-bases, never merges).
+ * THE OWNER-TAG LAW IS RETIRED (run-003): device localStorage no longer
+ * holds any pool, so there is nothing to tag, adopt or re-base — account
+ * switches reset the engine AND the stores' memory caches (the reset
+ * broadcast), and hydration then pulls the signed-in account's own truth.
  *
  * THE STAMP LAW: `sameIdStamp` compares ONLY the id:updatedAt sets. The
  * caps (maxThreads / the per-thread messages tail-cap) are invisible to
@@ -46,7 +39,7 @@
  * must no-op until the intent completes. One intent, one mutation, one
  * PUT.
  *
- * A mirror NEVER THROWS: every store keeps working device-local no matter
+ * A mirror NEVER THROWS: every store keeps working in-memory no matter
  * what the plane does.
  */
 import {
@@ -129,38 +122,58 @@ export function sameIdStamp(a: BridgedThread[], b: BridgedThread[]): boolean {
   return stamp(a) === stamp(b);
 }
 
-// ── the owner-tag side-law (device localStorage, never the account) ─────
+// ── the byte budget of record (T-CAPS-POLICY-1) ─────────────────────────
 
-export function ownerTagKey(localKey: string): string {
-  return `${localKey}:owner`;
-}
+/**
+ * The durable-copy char budget. The workspace-doc plane rejects a PUT whose
+ * serialized value exceeds WORKSPACE_DOC_MAX_BYTES (512KB) with 413 — and
+ * the count caps (however high) can NEVER bound serialized size, because a
+ * thread's cost lives in its message bodies. Before this law a saturated
+ * pool PUT 413'd SILENTLY: the value stayed dirty on the device forever, the
+ * account copy froze, nothing told anyone.
+ *
+ * The budget is measured in UTF-16 chars with a 2× UTF-8 safety factor:
+ * 260,000 chars ≤ ~520KB at the pathological 2-bytes/char, and sits ~4×
+ * under the server cap for the ASCII-heavy English content the surfaces
+ * actually hold. The BINDING cap for a rich pool is THIS budget, not the
+ * count cap — the count caps (200, server-parity) are the ceiling, the
+ * budget is the wall.
+ */
+export const THREAD_DOC_BYTE_BUDGET = 260_000;
 
-function ls(): Storage | null {
-  try {
-    return typeof window !== "undefined" ? window.localStorage : null;
-  } catch {
-    return null;
+/** The envelope overhead: '{"threads":[]}' plus separators — subtracted
+ *  once per doc, not per thread. */
+const THREAD_DOC_OVERHEAD = 15;
+
+/**
+ * The byte-budget cap of record: newest-first in (the mergeThreadLists
+ * order), oldest threads fall off first, the returned list serializes under
+ * the budget. THE IRREDUCIBLE LAW: a single thread that alone exceeds the
+ * budget cannot be bounded by eviction — the pool passes through UNCHANGED
+ * and the PUT 413s, which the engine now SURFACES (readDocError). The local
+ * cache keeps every thread either way; only the durable copy is bounded.
+ */
+export function capThreadsByBytes<T extends BridgedThread>(
+  threads: T[],
+  budget: number = THREAD_DOC_BYTE_BUDGET,
+): T[] {
+  if (threads.length === 0) return threads;
+  const lengths = threads.map((t) => JSON.stringify(t).length);
+  if (lengths[0] + THREAD_DOC_OVERHEAD > budget) return threads;
+  let acc = THREAD_DOC_OVERHEAD;
+  let count = 0;
+  for (let i = 0; i < threads.length; i++) {
+    const cost = lengths[i] + (count > 0 ? 1 : 0);
+    if (acc + cost > budget) break;
+    acc += cost;
+    count++;
   }
+  return threads.slice(0, count);
 }
 
-export function readPoolOwner(localKey: string): string | null {
-  return ls()?.getItem(ownerTagKey(localKey)) ?? null;
-}
-
-/** Untagged on this device = the pool may ADOPT (upload) itself. */
-export function poolAdoptable(localKey: string): boolean {
-  return readPoolOwner(localKey) === null;
-}
-
-export function stampPoolOwner(localKey: string, email: string): void {
-  ls()?.setItem(ownerTagKey(localKey), email);
-}
-
-// ── the mirror ──────────────────────────────────────────────────────────
+// ── the mirror ───────────────────────────────────────────────────────────
 
 export interface ThreadStoreBridgeConfig<S, T extends BridgedThread> {
-  /** the store's OWN localStorage key — namespaces the :owner side-tag */
-  localKey: string;
   /** the workspace-document key this pool mirrors into */
   docKey: string;
   maxThreads: number;
@@ -179,6 +192,24 @@ export interface ThreadStoreBridgeConfig<S, T extends BridgedThread> {
 }
 
 const applyingRemote = new Set<string>();
+
+/**
+ * The echo-guard span (T-CAPS-POLICY-1 hardening): covers ONE remote-driven
+ * mutation's SYNCHRONOUS notify cascade. try/finally is the point — the
+ * old inline add/delete pairs LEAKED the guard whenever `apply` threw mid-
+ * span (the outer catch swallowed the throw, the guard never released, and
+ * every later mirror for that key no-oped for the REST of the process — the
+ * single-process full battery made this class visible). A leaked guard is
+ * now impossible by construction.
+ */
+function guarded(docKey: string, fn: () => void): void {
+  applyingRemote.add(docKey);
+  try {
+    fn();
+  } finally {
+    applyingRemote.delete(docKey);
+  }
+}
 const registry = new Map<string, ThreadStoreBridgeConfig<never, BridgedThread>>();
 
 /** The stored doc shape of record: { threads: BridgedThread[] }; anything
@@ -191,7 +222,7 @@ function storedThreads(raw: unknown): BridgedThread[] {
 }
 
 /**
- * The mirror of record — called by the store's persist tail (a device-local
+ * The mirror of record — called by the store's persist tail (an in-memory
  * write) and by the bridge's engine subscription (an engine-driven change),
  * with the store's FRESH snapshot.
  */
@@ -205,66 +236,44 @@ export function mirrorThreadState<S, T extends BridgedThread>(docKey: string, sn
     const local = config.readThreads(snapshot);
     const raw = readDoc(docKey);
     // post-hydration, an unknown key behaves as the explicit null (the
-    // "server never mentioned it" state) — the adoption path handles it
+    // "server never mentioned it" state)
     const serverRaw = raw === undefined ? null : raw;
-    const owner = readPoolOwner(config.localKey);
 
     if (serverRaw === null) {
       if (local.length === 0) return; // nothing on either side
-      if (owner && owner !== email) {
-        // the device-local pool belongs to ANOTHER account and the new
-        // account's server space is empty: re-base to EMPTY + re-tag +
-        // write the durable empty (B's pool is initialized honestly)
-        applyingRemote.add(docKey);
-        config.apply([] as unknown as T[]);
-        applyingRemote.delete(docKey);
-        stampPoolOwner(config.localKey, email);
-        applyingRemote.add(docKey);
-        writeDoc(docKey, { threads: [] });
-        applyingRemote.delete(docKey);
-        return;
-      }
-      // adoptable or already ours: mirror the device-local pool UP
-      stampPoolOwner(config.localKey, email);
-      applyingRemote.add(docKey);
-      writeDoc(docKey, {
-        threads: mergeThreadLists(local, [], config.maxThreads, config.maxMessages),
-      });
-      applyingRemote.delete(docKey);
+      // the account has no doc: mirror the in-memory pool UP
+      guarded(docKey, () =>
+        writeDoc(docKey, {
+          threads: capThreadsByBytes(
+            mergeThreadLists(local, [], config.maxThreads, config.maxMessages),
+          ),
+        }),
+      );
       return;
     }
 
     const serverThreads = storedThreads(serverRaw);
-    if (owner && owner !== email) {
-      // the durable copy belongs to the OTHER account (its own sync from
-      // another device): re-base the local pool to it — NO PUT, and the
-      // tag re-points to the signed-in account
-      applyingRemote.add(docKey);
-      config.apply(serverThreads as unknown as T[]);
-      applyingRemote.delete(docKey);
-      stampPoolOwner(config.localKey, email);
-      return;
-    }
-
     const union = mergeThreadLists(local, serverThreads, config.maxThreads, config.maxMessages);
-    if (!sameIdStamp(union, serverThreads)) {
-      // local has something new/newer → commit up, ONE intent
-      stampPoolOwner(config.localKey, email);
-      applyingRemote.add(docKey);
-      writeDoc(docKey, { threads: union });
-      applyingRemote.delete(docKey);
+    // T-CAPS-POLICY-1: the byte budget bounds the DURABLE copy, never the
+    // device cache. The trim runs BEFORE the stamp checks so a trimmed
+    // commit converges (bounded == server → no-op next pass; the count-only
+    // law ping-ponged here) and the pull-down adopts the UNBOUNDED union
+    // (the device cache never shrinks because the account doc did).
+    const bounded = capThreadsByBytes(union);
+    if (!sameIdStamp(bounded, serverThreads)) {
+      // local has something new/newer (or the budget trimmed the doc) →
+      // commit up, ONE intent
+      guarded(docKey, () => writeDoc(docKey, { threads: bounded }));
       return;
     }
     if (!sameIdStamp(union, local)) {
       // per-id refresh from the server → pull down only (the memory
       // baseline is ALREADY the server's clean value, so the persist-tail
       // mirror this apply schedules later sees stamp equality and no-ops)
-      applyingRemote.add(docKey);
-      config.apply(union as unknown as T[]);
-      applyingRemote.delete(docKey);
+      guarded(docKey, () => config.apply(union as unknown as T[]));
     }
   } catch {
-    // a mirror never throws — the surfaces keep working device-local
+    // a mirror never throws — the surfaces keep working in-memory
   }
 }
 

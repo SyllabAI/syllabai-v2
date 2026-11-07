@@ -1,0 +1,726 @@
+{
+ "schema": "syllabai.lane-receipt/1.0",
+ "lane": "T-SPEC-ANCHOR-1",
+ "run": "run-001",
+ "role": "spec-anchor-wiring",
+ "directive": "operator (zai-web chat, trace 1a1ad177cd14a5d9): (a) wire the unanchored flashcards to spec statements via their topic -> subtopic -> spec-point mapping; (b) fold exam-skills notes under an explicit 'exam technique (not spec-tied)' label; (3) verify the SME cross-mapping upstream (SME-ExamQuestion / SME-RevisionNotes / SME-Flashcards / Official-Specifications/parsed)",
+ "base_commit": "9979b9d8",
+ "upstream": {
+  "repo": "SyllabAI/syllabai-resources",
+  "pin": "raw.githubusercontent at HEAD 4e3a1c6 (blob:none sparse clone; 2,548 files fetched, 0 fail)",
+  "subtrees": [
+   "spec-links/",
+   "Official-Specifications/parsed/",
+   "SME-Flashcards/*/deck.json (Edexcel)",
+   "SME-ExamQuestion manifest+spec_point_index",
+   "SME-RevisionNotes manifests",
+   "scripts (join chain README)"
+  ],
+  "spec_links_flash16_sha16": "64e7bd8b8a84ae62"
+ },
+ "verification_of_record": {
+  "sme_cross_mapping": "VERIFIED \u2014 SME-RevisionNotes notes carry spec_point_ids (spcpt_*); SME-ExamQuestion parts carry spec_point_ids + per-course spec_point_index.json (spcpt_* -> {name,definition,notes[],subtopic_slugs[]}); SME-Flashcards deck.json cards carry spec_links (spcpt_*) for the vintages that have them (many Edexcel decks carry none \u2014 honest upstream state); spec-links/<course>.json joins all three kinds to official codes with provenance tiers + pending preserved; Official-Specifications/parsed is the deterministic PDF parse (23 Edexcel quals) the official_id space comes from",
+  "import_fidelity": "hub item ids (rn_*/qstnprt_*/fl_*) match spec-links 1:1 wherever items exist; the fresh origin/main tree already carried most spec-links state (notes anchored, card-level C-joins imported for maths-b-16, smeSpecPointIds = raw spcpt_*); the hub's remaining empty cards were decks whose SME decks carry no spec links and no card-level join existed",
+  "bugs_found": [
+   {
+    "course": "igcse-geography-19",
+    "finding": "EQFC-CONSUME-1 wrote parsed-spec ids (IGCSE_GEOGRAPHY:S3.042) into flashcards.json + questions.json parts while the spine codes are 4GE1-S3.042 -> 1,155 card refs + 851 part refs dangling",
+    "fix": "deterministic prefix-swap, 16/16 distinct refs map to existing spine codes (0 invented), 2,310 card fields + 1,702 part fields re-pointed; post-fix dangling 0"
+   }
+  ]
+ },
+ "task_a_wiring": {
+  "rules": [
+   "candidates = cards with NO spec fields at all (specPointCode null, specPointIds [], smeSpecPointIds [])",
+   "card-level upstream join first (spec-links flashcard items, tiers excluding S2_name_ambiguous/T4_fuzzy which are flagged upstream) -> official codes + via_spcpt/pending into smeSpecPointIds",
+   "topic-level (the directive's topic -> subtopic -> spec-point chain): union of the course's own verified sibling anchors (notes + question parts sharing sectionSlug/topicSlug) and upstream spec-links authoritative note/part codes for the same topic; specPointCode = codes[0], specPointIds = sorted codes, smeSpecPointIds stays [] (honest: no upstream SME anchor exists)",
+   "fail-closed: cards with no derivable target stay untouched (0 in this run); every written code verified against the course spine (dangling_after = 0)"
+  ],
+  "cards_wired": 9123,
+  "wired_by_course": {
+   "ial-biology-18": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "ial-chemistry-17": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "ial-further-maths-18-further-pure-1": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "ial-maths-20-decision-1": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "ial-maths-20-mechanics-1": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "ial-maths-20-mechanics-2": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "ial-maths-20-pure-1": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "ial-maths-20-pure-2": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "ial-maths-20-pure-3": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "ial-maths-20-pure-4": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "ial-maths-20-statistics-1": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "ial-maths-20-statistics-2": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "ial-physics-19": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-accounting-17-financial-statements": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-accounting-17-introduction-to-bookkeeping-and-accounting": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-biology-19": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 1199,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {
+     "5": 30,
+     "7": 10,
+     "8": 11,
+     "9": 40,
+     "10": 39,
+     "12": 115,
+     "13": 27,
+     "14": 17,
+     "16": 100,
+     "17": 51,
+     "18": 96,
+     "19": 103,
+     "21": 103,
+     "26": 68,
+     "33": 132,
+     "40": 129,
+     "44": 128
+    },
+    "dangling_after": 0
+   },
+   "igcse-biology-modular-24-unit-1": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 434,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {
+     "4": 30,
+     "6": 10,
+     "7": 40,
+     "10": 39,
+     "11": 68,
+     "12": 47,
+     "14": 68,
+     "28": 132
+    },
+    "dangling_after": 0
+   },
+   "igcse-biology-modular-24-unit-2": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 765,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {
+     "5": 11,
+     "8": 17,
+     "10": 32,
+     "12": 56,
+     "13": 67,
+     "14": 29,
+     "15": 22,
+     "17": 171,
+     "19": 103,
+     "25": 129,
+     "38": 128
+    },
+    "dangling_after": 0
+   },
+   "igcse-business-19": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-chemistry-19": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 909,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {
+     "9": 23,
+     "13": 26,
+     "15": 36,
+     "17": 37,
+     "18": 108,
+     "20": 94,
+     "21": 74,
+     "22": 91,
+     "23": 101,
+     "25": 145,
+     "26": 48,
+     "28": 52,
+     "43": 74
+    },
+    "dangling_after": 0
+   },
+   "igcse-chemistry-modular-24-unit-1": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-chemistry-modular-24-unit-2": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-economics-17": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-english-language-a-16-paper-3-coursework": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-english-literature-16": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 58,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {
+     "1": 38,
+     "2": 10,
+     "3": 10
+    },
+    "dangling_after": 0
+   },
+   "igcse-further-maths-19": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-geography-19": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-history-17": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-ict-17": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-maths-a-18-foundation": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 330,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {
+     "2": 15,
+     "3": 21,
+     "4": 90,
+     "5": 55,
+     "6": 75,
+     "7": 34,
+     "8": 14,
+     "13": 26
+    },
+    "dangling_after": 0
+   },
+   "igcse-maths-a-18-higher": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-maths-a-modular-24-foundation-unit-1": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-maths-a-modular-24-foundation-unit-2": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-maths-a-modular-24-higher-unit-1": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 514,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {
+     "1": 10,
+     "2": 32,
+     "3": 51,
+     "4": 9,
+     "5": 94,
+     "6": 35,
+     "7": 65,
+     "8": 41,
+     "9": 59,
+     "10": 54,
+     "11": 48,
+     "15": 16
+    },
+    "dangling_after": 0
+   },
+   "igcse-maths-a-modular-24-higher-unit-2": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 485,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {
+     "1": 5,
+     "2": 40,
+     "3": 41,
+     "4": 92,
+     "5": 37,
+     "6": 116,
+     "7": 30,
+     "8": 62,
+     "9": 43,
+     "10": 19
+    },
+    "dangling_after": 0
+   },
+   "igcse-maths-b-16": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 814,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {
+     "1": 218,
+     "2": 323,
+     "3": 180,
+     "4": 68,
+     "5": 25
+    },
+    "dangling_after": 0
+   },
+   "igcse-physics-19": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 921,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {
+     "6": 85,
+     "7": 50,
+     "10": 59,
+     "11": 142,
+     "12": 84,
+     "13": 158,
+     "14": 107,
+     "15": 62,
+     "16": 35,
+     "17": 72,
+     "19": 67
+    },
+    "dangling_after": 0
+   },
+   "igcse-physics-modular-24-unit-1": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 4,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {
+     "19": 4
+    },
+    "dangling_after": 0
+   },
+   "igcse-physics-modular-24-unit-2": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 3,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {
+     "12": 3
+    },
+    "dangling_after": 0
+   },
+   "igcse-science-double-award-17-biology": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-science-double-award-17-chemistry": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-science-double-award-17-physics": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 688,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {
+     "3": 30,
+     "6": 36,
+     "7": 61,
+     "9": 34,
+     "10": 55,
+     "11": 131,
+     "12": 33,
+     "13": 82,
+     "14": 136,
+     "16": 23,
+     "19": 67
+    },
+    "dangling_after": 0
+   },
+   "igcse-science-double-award-modular-24-biology-unit-1": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-science-double-award-modular-24-biology-unit-2": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-science-double-award-modular-24-chemistry-unit-1": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-science-double-award-modular-24-chemistry-unit-2": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-science-double-award-modular-24-physics-unit-1": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   },
+   "igcse-science-double-award-modular-24-physics-unit-2": {
+    "cards_fixed_idspace": 0,
+    "parts_fixed_idspace": 0,
+    "wired_card_join": 0,
+    "wired_topic": 0,
+    "left_empty": 0,
+    "left_empty_ids": [],
+    "code_set_sizes": {},
+    "dangling_after": 0
+   }
+  },
+  "note": "9,123 = 8,123 fleet + 999 igcse-maths-a-18-higher from the validation run (single idempotent apply); T-SPECLINK-1's subtopic-note-inherited join is the in-repo precedent this extends to the fleet"
+ },
+ "task_b_exam_technique": {
+  "law": "no official-resolving codes AND technique rule match AND not carve-out",
+  "labeled_count": 119,
+  "labeled_by_course": {
+   "ial-physics-19": 48,
+   "igcse-business-19": 9,
+   "igcse-economics-17": 1,
+   "igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing": 30,
+   "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing": 9,
+   "igcse-english-language-a-16-paper-3-coursework": 6,
+   "igcse-english-literature-16": 12,
+   "igcse-geography-19": 4
+  },
+  "skipped_official_resolving": 29,
+  "skipped_carve_outs": 7,
+  "carve_outs_noteids": [
+   "rn_2mGbSZRQR4xmF63Q",
+   "rn_KgDbZZ6rYv3ZnHr7",
+   "rn_wrzDFjb5gCdCDyTS",
+   "rn_8pSXMzJXDrQrsYQk",
+   "rn_4pcbH88RWKD6NtnH",
+   "rn_kTdM4MwkwdWzzfyt",
+   "rn_TbNJnh8R99YPzZSw"
+  ],
+  "ui": "RevisionNote.contentKind (optional string) in contracts.ts; 'Exam technique' pill on list rows (3 sites) + 'Exam technique \u00b7 not spec-tied' pill on the note page header"
+ },
+ "post_state_edexcel_fleet": {
+  "flashcards": "23,094/24,128 = 95.7% officially anchored (was 14,923-pre-refresh/61.8%-at-audit-base); 1,034 (4.3%) carry upstream spcpt_* anchors pending official resolution (upstream pending lists, honest)",
+  "notes": "3,469/3,743 anchored; 8 unanchored (CIE); 119 technique-labeled",
+  "question_parts": "29,167/30,493 anchored; residual unanchored parts concentrate in IAL maths modules (upstream SME parts carry no spec_point_ids there) \u2014 separate program of record",
+  "dangling_refs": "0 (all planes)"
+ },
+ "scope_guards": [
+  "CIE courses untouched (their join program has its own accepted state; T-SPECLINK-1 pattern exists) \u2014 census only",
+  "already-anchored cards/notes/parts never touched (except the geography id-space fix)",
+  "byte-compact JSON formatting + per-file trailing newline preserved",
+  "notes.json bodies, questions, guided lessons: zero bytes touched"
+ ],
+ "gates": {
+  "bun_run_typecheck": "5/5 PASS",
+  "bun_test_apps_api_packages": "3,446 pass / 13 skip / 0 fail",
+  "preflight_zero_core_census": "GATE GREEN",
+  "verify_corpus_23a": "CORPUS GATE PASSED (dangling relatedNoteIds 0)",
+  "verify_flashcard_sync_courses": "exit 0",
+  "verify_flashcard_unified": "ALL GREEN",
+  "hub_next_build": "ENOSPC in sandbox (disk ceiling) \u2014 attempted 2x, content gates above are the data plane; CI hub lane runs the full build on the PR"
+ },
+ "files_changed": {
+  "data": 28,
+  "breakdown": "15 flashcards.json + 8 notes.json + 1 questions.json (geography) + contracts.ts + 3 revision-notes UI files"
+ },
+ "scripts_of_record": [
+  "scripts/wire_flashcards.py",
+  "scripts/exam_technique.py",
+  "scripts/anchor_audit.py",
+  "scripts/wire_census.py",
+  "scripts/flash_axis_compare.py"
+ ]
+}

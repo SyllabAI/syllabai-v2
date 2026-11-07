@@ -4,7 +4,7 @@ import { loadHubCourse } from "@/lib/courses";
 export const dynamic = "force-dynamic";
 
 /** Committed corpus, immutable between deploys — CDN-cacheable (tranche 4.12). */
-const CONTENT_CACHE = { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=86400" };
+const CONTENT_CACHE = { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=86400" };
 
 /**
  * GET /api/questions/[course]/[topicSlug] — compact question catalog for the

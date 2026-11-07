@@ -65,7 +65,11 @@ export async function fetchCoreJson<T>(
   try {
     const res = await fetch(`${base}${path}`, {
       headers: { Accept: "application/json", Authorization: `Bearer ${token}` },
-      next: { revalidate: 300 },
+      // T-VERCEL-USAGE: the curriculum tree/subject views behind these
+      // paths are global committed content (no per-user response
+      // variance), so the data cache rides the deploy reset — 1-day TTL
+      // keeps Hobby ISR writes inside quota (was 300s).
+      next: { revalidate: 86400 },
       signal: AbortSignal.timeout(timeoutMs),
     });
     if (!res.ok) return null;

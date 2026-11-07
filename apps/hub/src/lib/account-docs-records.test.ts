@@ -46,7 +46,6 @@ const {
   capByStamp,
   atOf,
 } = await import("./account-docs-records");
-const { readPoolOwner, stampPoolOwner, ownerTagKey } = await import("./account-docs-bridge");
 const { __seedAccountDocsForTests, __flushAllForTests, resetAccountDocs, readDoc } =
   await import("./account-docs");
 
@@ -65,7 +64,6 @@ function makeFakePool(initial: Record<string, E> = {}) {
   let pool: Record<string, E> = initial;
   let applyCalls = 0;
   const unregister = bridgeDocPool<Record<string, E>, E>({
-    localKey: LOCAL_KEY,
     docKey: DOC,
     cap: 40,
     readState: () => pool,
@@ -154,12 +152,6 @@ describe("account-docs-records — the shared helpers", () => {
 });
 
 describe("account-docs-records — the shell", () => {
-  test("owner-tag helpers ride the shared device namespace", () => {
-    expect(ownerTagKey(LOCAL_KEY)).toBe(`${LOCAL_KEY}:owner`);
-    stampPoolOwner(LOCAL_KEY, "a@x");
-    expect(readPoolOwner(LOCAL_KEY)).toBe("a@x");
-  });
-
   test("pre-hydration the mirror is a total no-op", () => {
     const store = makeFakePool({ a: { at: 1 } });
     store.setLocal({ a: { at: 2 } });
@@ -167,38 +159,13 @@ describe("account-docs-records — the shell", () => {
     expect(store.pool.a).toEqual({ at: 2 }); // untouched
   });
 
-  test("null doc + adoptable pool → mirrors UP, one PUT, tagged", async () => {
+  test("null doc + a non-empty in-memory pool → mirrors UP, one PUT", async () => {
     hydratedImpl = () => true;
     __seedAccountDocsForTests({});
-    const store = makeFakePool({ a: { at: 1 } }); // loads → REGISTRATION adopts
+    const store = makeFakePool({ a: { at: 1 } }); // REGISTRATION mirrors up
     await __flushAllForTests();
-    expect(readPoolOwner(LOCAL_KEY)).toBe(ME);
     expect(putCalls).toHaveLength(1);
     expect(putCalls[0].value).toEqual({ a: { at: 1 } });
-    store.unregister();
-  });
-
-  test("null doc + FOREIGN pool → re-base to empty + re-tag + the durable empty PUT", async () => {
-    hydratedImpl = () => true;
-    __seedAccountDocsForTests({});
-    stampPoolOwner(LOCAL_KEY, "other@x");
-    const store = makeFakePool({ old: { at: 1 } }); // re-bases at REGISTRATION
-    await __flushAllForTests();
-    expect(store.pool).toEqual({});
-    expect(readPoolOwner(LOCAL_KEY)).toBe(ME);
-    expect(putCalls).toHaveLength(1);
-    expect(putCalls[0].value).toEqual({});
-    store.unregister();
-  });
-
-  test("server doc + FOREIGN pool → re-base to the server's copy, NO PUT", () => {
-    hydratedImpl = () => true;
-    __seedAccountDocsForTests({ [DOC]: { b1: { at: 9 } } });
-    stampPoolOwner(LOCAL_KEY, "other@x");
-    const store = makeFakePool({ old: { at: 1 } });
-    expect(store.pool).toEqual({ b1: { at: 9 } });
-    expect(putCalls).toHaveLength(0);
-    expect(readPoolOwner(LOCAL_KEY)).toBe(ME);
     store.unregister();
   });
 
@@ -232,7 +199,6 @@ describe("account-docs-records — the shell", () => {
     __seedAccountDocsForTests({});
     let pool: Record<string, E> = {};
     const tight = bridgeDocPool<Record<string, E>, E>({
-      localKey: LOCAL_KEY,
       docKey: DOC,
       cap: 2,
       readState: () => pool,
@@ -253,7 +219,7 @@ describe("account-docs-records — the shell", () => {
     expect(Object.keys(putCalls[0].value as Record<string, E>).sort()).toEqual(["b", "c"]);
   });
 
-  test("pre-hydration device-local pool adopts when hydration lands (the null broadcast)", async () => {
+  test("pre-hydration in-memory pool adopts when hydration lands (the null broadcast)", async () => {
     const store = makeFakePool({ a: { at: 1 } }); // pre-hydration: the registration no-ops
     expect(readDoc(DOC)).toBeUndefined();
     hydratedImpl = () => true;
@@ -262,7 +228,6 @@ describe("account-docs-records — the shell", () => {
     await __flushAllForTests();
     expect(putCalls).toHaveLength(1);
     expect(putCalls[0].value).toEqual({ a: { at: 1 } });
-    expect(readPoolOwner(LOCAL_KEY)).toBe(ME);
     store.unregister();
   });
 });

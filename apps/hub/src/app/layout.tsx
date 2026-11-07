@@ -97,10 +97,14 @@ const inter = localFont({
 
 /**
  * No-flash theme bootstrap — runs before first paint, mirrors the logic in
- * src/lib/theme-store.ts (same storage key + parsing). Reads
- * { theme: "sme"|"quiet-green"|"candy-shop"|"chat-app-plum",
- *   mode: "light"|"dark"|"system" }
- * from localStorage["syllabai-theme"] and applies data-theme + .dark.
+ * src/lib/theme-store.ts (same storage key + parsing — keep both in sync).
+ * T-THEME-LOCAL-1 run-001 ("Theme must be browser saved only"): the theme
+ * is a BROWSER record again — this reads { theme: "sme"|"quiet-green"|
+ * "candy-shop"|"chat-app-plum", mode: "light"|"dark"|"system" } from
+ * localStorage["syllabai-theme"] and applies data-theme + .dark before any
+ * content paints. (The account-only sweep's bootstrap applied the system
+ * default only and let the account theme land post-hydration — the flash
+ * cost this restore removes.)
  */
 const themeBootstrap = `(function(){try{
 var t=JSON.parse(localStorage.getItem("syllabai-theme")||"{}");
