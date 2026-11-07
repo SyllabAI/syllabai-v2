@@ -4,8 +4,10 @@
   "cardType": "keyword_definition",
   "front": "Define a **measure of central tendency**.\n",
   "back": "A **measure of central tendency** is a single value describing where the centre of a data set lies, which is what is usually meant by an **average**.\n\nThe three used in this course are the **mean**, the **median** and the **mode**.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -22,8 +24,10 @@
   "cardType": "question_and_answer",
   "front": "What is the median of a data set, and how do you find it when there is an even number of values?\n",
   "back": "The **median** is the middle value once the data has been put in **order of size**.\n\nWith an even number of values there is no single middle one, so the median is the **midpoint of the two middle values**: for 14, 19, 19, 23, 27, 28 it is $\\frac{19+23}{2} = 21$.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -40,8 +44,10 @@
   "cardType": "fill_in_the_blanks",
   "front": "Complete the formula for the mean of $n$ data values:\n\n`\\bar{x} = \\frac{\\_\\_\\_\\_\\_\\_}{\\_\\_\\_\\_\\_\\_}`\n",
   "back": "The completed formula is:\n\n$\\overline{x} = \\frac{Σx}{n}$\n\n$Σ x$ is the **total** of all the data values and $n$ is **how many** of them there are, so the mean shares that total out equally between them.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -58,8 +64,10 @@
   "cardType": "question_and_answer",
   "front": "Why can a single extreme value make the mean a poor description of a data set?\n",
   "back": "Because the mean is worked out from **every** value, so one unusually large or small value changes the total and drags the mean towards it.\n\nThe mean can then sit above almost all of the data, which is why the **median** is preferred for data sets containing extreme values.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -76,8 +84,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nEvery data set has exactly one mode.\n",
   "back": "**False.**\n\nA data set has **two** modes if two values tie for the highest frequency, and **no mode at all** if every value occurs the same number of times.\n\nA data set with two modes is described as **bimodal**.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -94,8 +104,10 @@
   "cardType": "question_and_answer",
   "front": "What do the three quartiles divide an ordered data set into, and what does each one mark?\n",
   "back": "They divide it into **four equal sections**, each holding a quarter of the data.\n\nThe lower quartile $Q_{1}$ marks the point 25% of the way through, the median $Q_{2}$ the point 50% of the way through, and the upper quartile $Q_{3}$ the point 75% of the way through.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -112,8 +124,10 @@
   "cardType": "question_and_answer",
   "front": "In an ordered list of $n$ values, how do you find the position of the lower quartile?\n",
   "back": "Work out $\\frac{n+1}{4}$, which gives the position of the lower quartile within the ordered list.\n\nIf that comes out as a whole number the lower quartile is the value in that position, and if it does not you take the **midpoint** of the two values on either side of it.\n\nThe upper quartile is found the same way from `\\frac{3 \\left(n + 1\\right)}{4}`.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -130,8 +144,10 @@
   "cardType": "question_and_answer",
   "front": "Why is the interquartile range often a better measure of spread than the range?\n",
   "back": "Because the range is worked out from only the largest and smallest values, which are the two most likely to be unusual, so a single odd value can change it completely.\n\nThe **interquartile range**, $Q_{3} - Q_{1}$, covers only the middle half of the data, so values at either extreme do not affect it at all.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -148,8 +164,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nThe range and the interquartile range are measured in the same units as the data itself.\n",
   "back": "**True.**\n\nBoth are found by **subtracting one data value from another**, so the answer carries whatever unit the data was measured in: a range of 67 for data measured in metres is a range of **67 metres**.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -166,8 +184,10 @@
   "cardType": "question_and_answer",
   "front": "Why is a mean found from a grouped frequency table only an estimate?\n",
   "back": "Because grouping records only **how many values fell in each class**, so the individual values are lost and cannot be added up.\n\nAn **ungrouped** table records how many times each individual value occurred, so nothing is thrown away and the mean it gives is the true one.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -185,8 +205,10 @@
   "cardType": "question_and_answer",
   "front": "In a frequency table, why is each data value multiplied by its frequency before the total is divided?\n",
   "back": "Because a value listed once with a frequency of $f$ stands for $f$ separate data values, so $x f$ is their combined contribution.\n\nAdding these products and dividing by the **total frequency** $Σ f$ therefore gives the mean:\n\n$\\overline{x} = \\frac{Σxf}{Σf}$\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -203,8 +225,10 @@
   "cardType": "question_and_answer",
   "front": "In an ungrouped frequency table of $n$ values, how do you find which data value is the median?\n",
   "back": "Work out $\\frac{n+1}{2}$ to get the median's **position** in the ordered data, then add the frequencies down the table until the running total first reaches that position.\n\nThe median is the value in the row where the running total arrives, because the table already lists the values in order and the running total says how far through them you have reached.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -221,8 +245,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nIn a table with classes $155 \\leq h < 160$ and $160 \\leq h < 165$, a height of exactly 160 cm belongs to the first class.\n",
   "back": "**False.**\n\nThe first class stops **below** 160, because $h < 160$ excludes 160 itself, while the second class starts **at** 160, because $160 \\leq h$ includes it.\n\nSo 160 cm goes into $160 \\leq h < 165$, and it is the inequality signs rather than the numbers that settle every case like this.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -239,8 +265,10 @@
   "cardType": "question_and_answer",
   "front": "Grouping a frequency table hides the individual data values. Why does that mean you can only give a modal **class**?\n",
   "back": "Because the table records only how many values fell in each class and never which values they were, so there is no way to tell which single value occurred most often.\n\nThe most that can be said is **which class** the data is concentrated in, and that class is called the **modal class**.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -257,8 +285,10 @@
   "cardType": "question_and_answer",
   "front": "When estimating the mean from a grouped frequency table, what value do you use for each class, and what does that assume?\n",
   "back": "Use the **midpoint** of each class, which is the mean of its lower and upper boundaries, and then work exactly as you would for an ungrouped table.\n\nThis assumes that the values within each class average out at its **midpoint**, which they need not do.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -275,8 +305,10 @@
   "cardType": "fill_in_the_blanks",
   "front": "A grouped table has classes $10 \\leq x \\leq 19$ and $20 \\leq x \\leq 29$, leaving a gap between them. Complete the boundaries once the gap has been closed:\n\n`\\_\\_\\_\\_\\_\\_ \\le x < 19.5 \\text{ and } 19.5 \\le x < \\_\\_\\_\\_\\_\\_`\n",
   "back": "The completed boundaries are:\n\n$9 . 5 \\leq x < 19 . 5 \\text{and} 19 . 5 \\leq x < 29 . 5$\n\nThe boundaries move to the **halfway points** because the data has been rounded, so a value recorded as 19 could really be anything up to 19.5.\n\nClosing the gap matters because a value of 19.4 would otherwise belong to no class at all.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -293,8 +325,10 @@
   "cardType": "keyword_definition",
   "front": "Define the **standard deviation** of a set of data.\n",
   "back": "The **standard deviation**, written $σ$, measures how **spread out** the values in a data set are about the mean.\n\nA data set whose values cluster close together has a small standard deviation, and one whose values are widely scattered has a large one.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -311,8 +345,10 @@
   "cardType": "fill_in_the_blanks",
   "front": "Complete the formula for the variance of $n$ data values with mean $\\overline{x}$:\n\n`\\sigma^{2} = \\frac{\\_\\_\\_\\_\\_\\_}{n} - \\left(\\bar{x}\\right)^{2}`\n",
   "back": "The completed formula is:\n\n`\\sigma^{2} = \\frac{\\Sigma x^{2}}{n} - \\left(\\bar{x}\\right)^{2}`\n\n$Σ x^{2}$ is the sum of the **squares** of the data values, which is not the same thing as `\\left(\\Sigma x\\right)^{2}`, the square of their sum.\n\nThis is the useful form because the two totals $Σ x$ and $Σ x^{2}$ are enough to find the standard deviation without knowing a single individual value.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -329,8 +365,10 @@
   "cardType": "question_and_answer",
   "front": "What are the units of the variance, and what are the units of the standard deviation?\n",
   "back": "The **standard deviation** is in the same units as the data itself, while the **variance** is in those units **squared**.\n\nSo a set of times measured in minutes has, for example, a variance of $10 . 4 \\text{minutes}^{2}$ and a standard deviation of $3 . 23 \\text{minutes}$.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -347,8 +385,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nA data set with a variance of 16 has a standard deviation of 16.\n",
   "back": "**False.**\n\nThe standard deviation is the **square root** of the variance, so a variance of 16 gives a standard deviation of $\\sqrt{16} = 4$.\n\nThis is why the two are written $σ$ and $σ^{2}$: the symbols themselves record that one is the square of the other.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -365,8 +405,10 @@
   "cardType": "question_and_answer",
   "front": "The variance can also be written as `\\frac{\\Sigma \\left(x - \\bar{x}\\right)^{2}}{n}`. What does this form show about what the variance measures?\n",
   "back": "It shows that the variance is the **mean of the squared deviations** from the mean: each value's distance from the mean is squared, and those squares are then averaged.\n\nWritten this way it is slow to calculate, because it needs the mean first and then a separate subtraction for every value in the data set.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -383,8 +425,10 @@
   "cardType": "question_and_answer",
   "front": "The variance has more than one formula. What decides which one you can use?\n",
   "back": "**What the question supplies** decides it. If you are given the individual data values then either form will work.\n\nIf you are given only the totals and not the values themselves, the form built from those totals is the **only** one available.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -401,8 +445,10 @@
   "cardType": "keyword_definition",
   "front": "Define an **assumed mean**.\n",
   "back": "An **assumed mean** is a convenient value that is subtracted from every value in a data set before the statistics are calculated.\n\nIt is usually chosen as an easy round number close to where the true mean is expected to lie, and the data is then said to have been **coded**.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -419,8 +465,10 @@
   "cardType": "question_and_answer",
   "front": "What is the point of coding a data set before calculating with it?\n",
   "back": "Coding replaces awkward numbers with much smaller and simpler ones, which makes the arithmetic quicker and less error-prone.\n\nIt is most useful when the data consists of very large or very small numbers, such as volumes all close to 150 ml, where the coded values come out as small numbers instead.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -437,8 +485,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nSubtracting the same number from every value in a data set leaves the standard deviation unchanged.\n",
   "back": "**True.**\n\nSubtracting a constant slides every value along by the same amount, so the values sit exactly as far apart from one another as they did before, and a measure of spread cannot detect a shift.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -455,8 +505,10 @@
   "cardType": "question_and_answer",
   "front": "In a sample of 20 cups of coffee, `\\Sigma \\left(c - 150\\right) = -16`, where $c$ ml is the volume of a cup. Find the mean volume.\n",
   "back": "The mean of the **coded** values is $\\frac{-16}{20} = - 0 . 8$, so on average a cup holds 0.8 ml less than the assumed mean of 150 ml.\n\nAdding the 150 back gives a mean volume of\n\n$\\overline{c} = 150 - 0 . 8 = 149 . 2 \\text{ml}$\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -473,8 +525,10 @@
   "cardType": "question_and_answer",
   "front": "A data set is coded using $y = a x + b$. How is the standard deviation of the coded data related to the standard deviation of the original?\n",
   "back": "They are related by\n\n`\\sigma_{y} = \\vert a \\vert \\sigma_{x}`\n\nso the coded standard deviation is the original one multiplied by the size of the multiplier $a$.\n\nThe modulus is needed because a negative multiplier reverses the order of the data, but a measure of spread can never come out negative.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -491,8 +545,10 @@
   "cardType": "question_and_answer",
   "front": "The mean of some coded data $y = a x + b$ is $\\overline{y}$. How do you get back to the mean $\\overline{x}$ of the original data?\n",
   "back": "Reverse the coding, undoing the addition first and then the multiplication:\n\n$\\overline{x} = \\frac{\\overline{y}-b}{a}$\n\nThe mean is a measure of **location**, so whatever was done to every data value has been done to the mean as well, and can simply be undone.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.5",
+  "specPointIds": [
+   "5.1.5"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "statistical-measures",
@@ -509,8 +565,10 @@
   "cardType": "fill_in_the_blanks",
   "front": "Complete the kind of data these two diagrams are drawn from:\n\nA histogram and a cumulative frequency graph both need `\\_\\_\\_\\_\\_\\_` data that has been `\\_\\_\\_\\_\\_\\_` into classes.\n",
   "back": "The completed sentence is:\n\nA histogram and a cumulative frequency graph both need **continuous** data that has been **grouped** into classes.\n\nBoth diagrams are built from class intervals rather than from individual values, so the data has to be capable of being divided into classes in the first place.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -527,8 +585,10 @@
   "cardType": "question_and_answer",
   "front": "What can a stem-and-leaf diagram show you that a box plot cannot?\n",
   "back": "Every individual data value, because a stem-and-leaf diagram lists them all while a box plot reduces the data to five numbers.\n\nThat also means further statistics such as the **mean**, the **mode** and the **standard deviation** can be worked out from a stem-and-leaf diagram but not from a box plot, which only gives the median, the quartiles and the range.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -545,8 +605,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nA grouped frequency table contains enough information to draw a stem-and-leaf diagram.\n",
   "back": "**False.**\n\nA stem-and-leaf diagram displays every individual data value, and a grouped table records only how many values fell in each class, so the values it would need have already been thrown away.\n\nThe reverse is possible: a grouped table can always be built from a stem-and-leaf diagram.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -563,8 +625,10 @@
   "cardType": "question_and_answer",
   "front": "What three things about the data should you establish before choosing how to present it?\n",
   "back": "Whether the data is raw and ungrouped or has already been grouped, whether it is **discrete** or **continuous**, and whether you need to display one set or compare two.\n\nEach of the three rules some diagrams out: a histogram cannot be drawn from discrete data, and a comparison needs a diagram that can carry two data sets at once.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -581,8 +645,10 @@
   "cardType": "question_and_answer",
   "front": "A grouped frequency table has classes of different widths. Which diagram is designed to cope with that, and what would go wrong without it?\n",
   "back": "A **histogram**, which is built to handle unequal class intervals.\n\nA diagram that simply plotted the frequency as the height of each bar would misrepresent the data, because a wide class would appear more important than a narrow one purely for being wide.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -599,8 +665,10 @@
   "cardType": "keyword_definition",
   "front": "Define a **stem-and-leaf diagram**.\n",
   "back": "A **stem-and-leaf diagram** displays numerical data by splitting each value into a **stem** and a **leaf**, with all the values sharing a stem written along a single row.\n\nIt is always read together with a **key**, and it suits two-digit data best, although three-digit data can be shown as well.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -617,8 +685,10 @@
   "cardType": "question_and_answer",
   "front": "Why must a stem-and-leaf diagram always be given a key?\n",
   "back": "Because the split between the stem and the leaf carries no place value of its own, so a row reading `2 \\mid 3` could mean 23, or 2.3, or 230.\n\nThe key fixes which, by stating what one particular entry represents.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -635,8 +705,10 @@
   "cardType": "question_and_answer",
   "front": "How would the three-digit value 122 be entered on a stem-and-leaf diagram?\n",
   "back": "As `12 \\mid 2`, with the leading digits **12** forming the stem and the final digit **2** forming the leaf.\n\nA leaf is always a single digit, so any extra digits are absorbed into the stem.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -653,8 +725,10 @@
   "cardType": "question_and_answer",
   "front": "What do the numbers in brackets down the side of a stem-and-leaf diagram tell you?\n",
   "back": "How many data values are on that row, which is the frequency of that class interval.\n\nThey are not always included, but they are worth having when there is a lot of data, because they let the total be checked without counting the leaves again.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -671,8 +745,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nThe leaves in a finished stem-and-leaf diagram must be written in order of size.\n",
   "back": "**True.**\n\nAn ordered diagram is what makes it possible to count to a particular position in the data, so an unordered one is only ever a working draft.\n\nStarting from unordered data it is usual to draw the diagram twice, once to collect the leaves onto the right rows and once to put them in order.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -689,8 +765,10 @@
   "cardType": "fill_in_the_blanks",
   "front": "With a large amount of data each stem may be listed twice. Complete the split:\n\nThe first row holds the leaves 0 to `\\_\\_\\_\\_\\_\\_`, and the second row holds the leaves `\\_\\_\\_\\_\\_\\_` to 9.\n",
   "back": "The completed split is:\n\nThe first row holds the leaves 0 to **4**, and the second row holds the leaves **5** to 9.\n\nSplitting the stems this way halves the length of each row, which spreads the data out and makes its shape easier to see.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -707,8 +785,10 @@
   "cardType": "question_and_answer",
   "front": "In a back-to-back stem-and-leaf diagram, in which direction do the left-hand leaves increase?\n",
   "back": "**Outwards from the stem**, so the smallest leaf sits next to the stem in the middle and the values get larger as you read leftwards.\n\nThe right-hand side increases outwards too, which keeps both sides reading from the centre and lets the two distributions be compared shape against shape.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -725,8 +805,10 @@
   "cardType": "question_and_answer",
   "front": "What five values is a box plot built from, and what does the box itself contain?\n",
   "back": "The **minimum**, the **lower quartile**, the **median**, the **upper quartile** and the **maximum**.\n\nThe box runs from the lower quartile to the upper quartile, so it holds the middle 50% of the data, and each whisker covers a further quarter.\n\nThose are exactly the five values an ordered stem-and-leaf diagram gives you, which is why a box plot can be drawn straight from one.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -743,8 +825,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nThe depth of the box on a box plot tells you how many data values there are.\n",
   "back": "**False.**\n\nThe box may be drawn to any depth at all, and its depth carries no information: only the positions of its edges along the scale mean anything.\n\nA box plot uses a single axis, so everything it has to tell you is read off horizontally.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -761,8 +845,10 @@
   "cardType": "question_and_answer",
   "front": "How must two box plots be drawn if the two data sets are to be compared?\n",
   "back": "One above the other against a **single shared scale**, so that the medians, quartiles and extremes line up and can be compared directly by eye.\n\nOn two different scales the comparison would be meaningless, because a wider box would no longer mean a more varied data set.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -779,8 +865,10 @@
   "cardType": "question_and_answer",
   "front": "A box plot has its minimum at 8 cm, its lower quartile at 14 cm, its upper quartile at 30 cm and its maximum at 58 cm. Find the range and the interquartile range.\n",
   "back": "Subtracting the two extremes gives the range, and subtracting the two quartiles gives the interquartile range:\n\n$\\text{range} = 58 - 8 = 50 \\text{cm}$\n\n$\\text{IQR} = 30 - 14 = 16 \\text{cm}$\n\nThe median is not needed for either, which is why a box plot gives both at a glance.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -797,8 +885,10 @@
   "cardType": "question_and_answer",
   "front": "Why is cumulative frequency plotted against the upper boundary of each class?\n",
   "back": "Because the cumulative frequency counts every value **up to and including** that class, and the largest value the class can hold is its upper boundary.\n\nPlotting it against the midpoint or the lower boundary would claim the running total had been reached earlier than it really was.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -815,8 +905,10 @@
   "cardType": "fill_in_the_blanks",
   "front": "On a cumulative frequency graph of $n$ values, complete the cumulative frequencies at which the quartiles are read:\n\nThe lower quartile is read at `\\_\\_\\_\\_\\_\\_`, the median at $\\frac{n}{2}$, and the upper quartile at `\\_\\_\\_\\_\\_\\_`.\n",
   "back": "The completed readings are:\n\nThe lower quartile is read at $\\frac{n}{4}$, the median at $\\frac{n}{2}$, and the upper quartile at $\\frac{3n}{4}$.\n\nRead across from that value on the vertical axis to the curve, then straight down to the horizontal axis to get the quartile itself, and find any percentile the same way from the matching percentage of the total frequency.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -833,8 +925,10 @@
   "cardType": "question_and_answer",
   "front": "A cumulative frequency graph of 30 puppies shows that 25 of them are shorter than 53.5 cm. What percentage are longer than 53.5 cm?\n",
   "back": "The graph gives the number **below** a value, so subtract from the total: $30 - 25 = 5$ puppies are longer than 53.5 cm.\n\nAs a percentage that is `\\frac{5}{30} = 16.7\\%` to three significant figures.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -851,8 +945,10 @@
   "cardType": "question_and_answer",
   "front": "How do you find the frequency of a single class from a cumulative frequency graph?\n",
   "back": "Read the cumulative frequency at the class's **upper** boundary, then subtract the cumulative frequency at its **lower** boundary.\n\nFor a class running from 40 cm to 45 cm, readings of 16 and 8 give $16 - 8 = 8$ values in that class, because the running total has grown by 8 across it.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -869,8 +965,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nA cumulative frequency graph can never fall as you read it from left to right.\n",
   "back": "**True.**\n\nA frequency can never be negative, so adding the next class's frequency to the running total can only leave it unchanged or make it larger.\n\nA graph that dipped would be claiming a class with a negative number of values in it.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -887,8 +985,10 @@
   "cardType": "fill_in_the_blanks",
   "front": "Complete the formula for the height of a bar on a histogram:\n\n`\\text{frequency density} = \\frac{\\_\\_\\_\\_\\_\\_}{\\_\\_\\_\\_\\_\\_}`\n",
   "back": "The completed formula is:\n\n$\\text{frequency density} = \\frac{\\text{frequency}}{\\text{class width}}$\n\nDividing by the class width is what lets classes of different widths share one diagram fairly, because it measures how tightly the values are packed rather than simply how many of them there are.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -905,8 +1005,10 @@
   "cardType": "question_and_answer",
   "front": "A bar on a histogram has height 3 and spans from 13 to 15. How many data values does it represent?\n",
   "back": "Its **area**, which is $3 \\times 2 = 6$ values.\n\nThe area of a bar, or of any part of a bar, gives the frequency it stands for, so multiply the height by the width measured along the horizontal axis.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -923,8 +1025,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nThere are never gaps between the bars of a histogram.\n",
   "back": "**True.**\n\nA histogram displays **continuous** data, whose classes run edge to edge with no values able to fall between them, so the bars meet.\n\nWhere a grouped table appears to leave a gap, its boundaries are adjusted to close it before the histogram is drawn.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -941,8 +1045,10 @@
   "cardType": "question_and_answer",
   "front": "Why must a histogram's horizontal axis have an even scale?\n",
   "back": "Because the width of each bar has to be read off that scale to get its class width, and the bars are deliberately allowed to differ in width.\n\nOn an uneven scale two bars drawn the same width would stand for different class widths, and nothing on the diagram could be trusted.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -959,8 +1065,10 @@
   "cardType": "question_and_answer",
   "front": "A class running from 15 to 30 contains 6 values. What is its frequency density, and what does that number mean?\n",
   "back": "Its frequency density is $\\frac{6}{15} = 0 . 4$.\n\nThat says the values are spread thinly, at 0.4 of a value per unit along the horizontal axis, which is why a wide class draws a much lower bar than a narrow class holding the same 6 values.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.1.2",
+  "specPointIds": [
+   "5.1.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "representation-of-data-",
@@ -1643,8 +1751,12 @@
   "cardType": "keyword_definition",
   "front": "Define **factorial**.\n",
   "back": "The **factorial** of a non-negative whole number $n$, written $n !$, is the result of multiplying $n$ by every whole number below it down to 1.\n\nSo, **for example**, $5 ! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$.\n\nIt is an operation in its own right, in the same way that $+$ and $\\times$ are, and it is written after the number rather than before it.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.1",
+  "specPointIds": [
+   "5.2.1",
+   "5.2.2",
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1661,8 +1773,10 @@
   "cardType": "question_and_answer",
   "front": "Why is the number of ways of arranging $n$ **different** objects in a row equal to $n !$?\n",
   "back": "Because the positions are filled one at a time: any of the $n$ objects can go first, $n - 1$ are left for the second position, $n - 2$ for the third, and so on until one object is left for the last.\n\nThe number of choices at each stage multiplies together, and that product is exactly the factorial of $n$.\n\nThis is why factorials appear everywhere in counting problems rather than only in this one.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.2",
+  "specPointIds": [
+   "5.2.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1679,8 +1793,12 @@
   "cardType": "fill_in_the_blanks",
   "front": "Fill in the two gaps:\n\nThe value of $0 !$ is `\\_\\_\\_\\_\\_\\_`.\n\nThe factorial of a negative number is `\\_\\_\\_\\_\\_\\_`.\n",
   "back": "The completed statements are:\n\nThe value of $0 !$ is **1**.\n\nThe factorial of a negative number is **not defined**.\n\nZero objects can be arranged in exactly one way, which is to arrange nothing at all, whereas there is no way at all to arrange a negative number of objects.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.1",
+  "specPointIds": [
+   "5.2.1",
+   "5.2.2",
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1697,8 +1815,12 @@
   "cardType": "question_and_answer",
   "front": "How do you simplify a fraction with a larger factorial on top and a smaller one underneath, such as $\\frac{8!}{5!}$?\n",
   "back": "Write the larger factorial out only as far down as the smaller one reaches, because every factor from the smaller factorial downwards cancels.\n\nThat leaves\n\n$\\frac{8!}{5!} = 8 \\times 7 \\times 6$\n\nand the same cancelling works whatever the two factorials are, which is what keeps the numbers manageable.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.1",
+  "specPointIds": [
+   "5.2.1",
+   "5.2.2",
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1715,8 +1837,10 @@
   "cardType": "question_and_answer",
   "front": "When the objects being arranged in a row are not all different, what has to be done to $n !$, and why?\n",
   "back": "Divide by the factorial of the number of copies of each repeated object.\n\nEach arrangement has been counted once for every way the identical copies could be swapped over, and all those swaps give the same-looking row.\n\nSo with one object repeated $r$ times the count is $\\frac{n!}{r!}$, and with a second object repeated $s$ times it is $\\frac{n!}{r!s!}$.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.2",
+  "specPointIds": [
+   "5.2.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1733,8 +1857,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nThe word REVISE has six letters, so it has $6 ! = 720$ different arrangements.\n",
   "back": "**False.**\n\nThe two Es are identical, so REVISE has only **360** different-looking arrangements.\n\nThe answer 720 would be right only if all six letters were different, which is why checking for repeated letters is the first thing to do.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.2",
+  "specPointIds": [
+   "5.2.2"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1751,8 +1877,12 @@
   "cardType": "fill_in_the_blanks",
   "front": "Fill in the two standard factorial results:\n\n`\\frac{n!}{\\left(n - 1\\right)!} = \\_\\_\\_\\_\\_\\_`\n\n`\\frac{n!}{\\left(n - 2\\right)!} = \\_\\_\\_\\_\\_\\_`\n",
   "back": "The completed results are:\n\n`\\frac{n!}{\\left(n - 1\\right)!} = n`\n\n`\\frac{n!}{\\left(n - 2\\right)!} = n \\left(n - 1\\right)`\n\nBoth follow from `n! = n \\times \\left(n - 1\\right)!`, which lets you peel one factor at a time off the front of a factorial.\n\nResults like these are what turn an equation containing factorials into an ordinary equation you can solve.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.1",
+  "specPointIds": [
+   "5.2.1",
+   "5.2.2",
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1769,8 +1899,10 @@
   "cardType": "keyword_definition",
   "front": "Define **permutation**.\n",
   "back": "A **permutation** is an arrangement of objects in which the **order** matters, so the same objects in a different order count as a different permutation.\n\nIt covers both arranging all $n$ of the objects and arranging only $r$ of them chosen from $n$.\n\nSo, **for example**, AB and BA are two different permutations of the letters A and B.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.3.1",
+  "specPointIds": [
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1787,8 +1919,10 @@
   "cardType": "fill_in_the_blanks",
   "front": "Fill in the formula for the number of ways of arranging $r$ objects chosen from $n$ different objects:\n\n`{}^{n}\\text{P}_{r} = \\frac{n!}{\\_\\_\\_\\_\\_\\_}`\n",
   "back": "The completed formula is:\n\n`{}^{n}\\text{P}_{r} = \\frac{n!}{\\left(n - r\\right)!}`\n\nThe `\\left(n - r\\right)!` underneath cancels away the arrangements of the objects you did **not** choose, leaving only the $r$ positions you are filling.\n\nSo, **for example**, arranging 3 objects chosen from 5 gives $\\frac{5!}{2!} = 5 \\times 4 \\times 3 = 60$.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.3.1",
+  "specPointIds": [
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1805,8 +1939,10 @@
   "cardType": "question_and_answer",
   "front": "Besides arranging $r$ objects chosen from $n$, what else does `{}^{n}\\text{P}_{r}` count?\n",
   "back": "It counts the ways of placing a **smaller** number of objects into a **larger** number of spaces, at most one object to a space.\n\nSo, **for example**, seating 5 people in a row of 10 empty chairs is `{}^{10}\\text{P}_{5}`, because you are choosing which chairs get used and in which order.\n\nSpotting this second reading is what makes the formula usable on problems that never mention choosing anything.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.3.1",
+  "specPointIds": [
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1823,8 +1959,10 @@
   "cardType": "question_and_answer",
   "front": "How do you count the arrangements in which two or more particular items must **stay together**?\n",
   "back": "Treat the items that must stay together as a **single object**, and count the arrangements of the shorter list that results.\n\nThen count the arrangements of those items **within** their block, and multiply the two counts together.\n\nSo, **for example**, the seven letters of ORANGES with the three vowels together give $5 ! \\times 3 ! = 720$.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.3.1",
+  "specPointIds": [
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1841,8 +1979,10 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nSubtracting the arrangements in which three items are all together from the total leaves the arrangements in which the three items are all separated.\n",
   "back": "**False.**\n\nWhat is left over also includes every arrangement in which exactly **two** of the three items are next to each other, since those were never subtracted.\n\n\"Not all together\" and \"all separated\" are different conditions, and the subtraction answers only the first of them.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.3.1",
+  "specPointIds": [
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1859,8 +1999,10 @@
   "cardType": "question_and_answer",
   "front": "How do you count the arrangements in which several particular items must **all be separated** from one another?\n",
   "back": "First arrange all the **other** items, then count the gaps between them, remembering the gap before the first item and the gap after the last, so $k$ other items leave $k + 1$ gaps.\n\nThen place the items that have to be kept apart into those gaps, at most one to a gap, and multiply the two counts together.\n\nSo, **for example**, ORANGES with its three vowels all separated gives `4! \\times {}^{5}\\text{P}_{3} = 1440`.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.3.1",
+  "specPointIds": [
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1877,8 +2019,10 @@
   "cardType": "question_and_answer",
   "front": "The letters of BANANAS are arranged with the B and the S at the two ends. Why is the answer not simply the number of arrangements of the middle five letters?\n",
   "back": "Because the B and the S can also be swapped over, so each arrangement of the middle five letters occurs twice, once with the B first and once with the S first.\n\nThe count is therefore\n\n$\\frac{5!}{3!2!} \\times 2 ! = 20$\n\nAsking whether the items you pinned in place could be interchanged is the step most often left out.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.3.1",
+  "specPointIds": [
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1895,8 +2039,12 @@
   "cardType": "keyword_definition",
   "front": "Define **combination**.\n",
   "back": "A **combination** is a selection of $r$ objects from $n$ in which the **order** does not matter, so the same objects picked in a different order count only once.\n\nSo, **for example**, choosing two letters from CAB, the selections AB and BA are one combination although they are two permutations.\n\nThe number of combinations is written `{}^{n}\\text{C}_{r}` and read \"$n$ choose $r$\".\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.1",
+  "specPointIds": [
+   "5.2.1",
+   "5.2.2",
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1913,8 +2061,12 @@
   "cardType": "fill_in_the_blanks",
   "front": "Fill in the gap linking the two counting formulae:\n\n`{}^{n}\\text{C}_{r} = \\frac{{}^{n}\\text{P}_{r}}{\\_\\_\\_\\_\\_\\_}`\n",
   "back": "The completed link is:\n\n`{}^{n}\\text{C}_{r} = \\frac{{}^{n}\\text{P}_{r}}{r!}`\n\nEvery selection of $r$ objects has been counted once for each of the $r !$ orders those objects could have been picked in, so dividing removes the orderings and leaves the selections.\n\nWriting `{}^{n}\\text{P}_{r}` out in full then gives `{}^{n}\\text{C}_{r} = \\frac{n!}{r! \\left(n - r\\right)!}`.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.1",
+  "specPointIds": [
+   "5.2.1",
+   "5.2.2",
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1931,8 +2083,12 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\n`{}^{n}\\text{C}_{r}` always works out to a whole number, even though its formula is a fraction.\n",
   "back": "**True.**\n\nIt counts how many different selections there are, and there is no such thing as a fraction of a selection, so the division always comes out exactly.\n\nA decimal answer is a reliable sign that the numbers have gone into the formula in the wrong places.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.1",
+  "specPointIds": [
+   "5.2.1",
+   "5.2.2",
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1949,8 +2105,12 @@
   "cardType": "question_and_answer",
   "front": "Why does `{}^{n}\\text{C}_{r}` always equal `{}^{n}\\text{C}_{n - r}`?\n",
   "back": "Because choosing which $r$ objects to **take** is the same act as choosing which $n - r$ objects to **leave behind**, so the two counts cannot differ.\n\nThe formula agrees, since exchanging $r$ for $n - r$ simply swaps the two factorials underneath and leaves their product unchanged.\n\nIt is worth using, because it turns an awkward calculation into an easier one.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.1",
+  "specPointIds": [
+   "5.2.1",
+   "5.2.2",
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1967,8 +2127,12 @@
   "cardType": "question_and_answer",
   "front": "When a selection has to meet several conditions, when do you **multiply** the separate counts and when do you **add** them?\n",
   "back": "Multiply when all the conditions have to hold at once, which is an **and**, and add when the selection could be made in one of several alternative ways, which is an **or**.\n\nSo, **for example**, taking exactly 3 pure and 2 statistics questions is a product, while taking either 5 pure or 5 statistics is a sum.\n\nDeciding which word the question means before writing anything down is what keeps the two apart.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.1",
+  "specPointIds": [
+   "5.2.1",
+   "5.2.2",
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -1985,8 +2149,12 @@
   "cardType": "question_and_answer",
   "front": "Oscar picks 4 books from 4 fantasy, 5 historical fiction and 2 classics, and must take **at least two** fantasy books. How is that counted?\n",
   "back": "List every split that meets the condition, count each split as a product, and add the results.\n\nHere he takes 2, 3 or 4 fantasy books, and once the fantasy count is fixed the other categories no longer matter, so the rest can be drawn from the 7 **non-fantasy** books:\n\n`{}^{4}\\text{C}_{2} \\times {}^{7}\\text{C}_{2} + {}^{4}\\text{C}_{3} \\times {}^{7}\\text{C}_{1} + {}^{4}\\text{C}_{4} \\times {}^{7}\\text{C}_{0} = 155`\n\nCollapsing the categories the condition says nothing about turns six cases into three.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.1",
+  "specPointIds": [
+   "5.2.1",
+   "5.2.2",
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -2003,8 +2171,12 @@
   "cardType": "question_and_answer",
   "front": "How do you count the ways of choosing objects when some of the objects available are **identical**?\n",
   "back": "Split the count into cases according to how many of the identical objects are taken, work out each case on its own, and add the results.\n\nSo, **for example**, choosing 4 letters from CHOOSE means handling zero Os, one O and two Os as three separate cases.\n\nThe identical objects have to be dealt with separately because the formula assumes the objects you are choosing from are all distinguishable.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.2.1",
+  "specPointIds": [
+   "5.2.1",
+   "5.2.2",
+   "5.3.1"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "permutations-and-combinations",
@@ -2561,8 +2733,12 @@
   "cardType": "keyword_definition",
   "front": "Define **discrete random variable**.\n",
   "back": "A **random variable** is a variable whose value depends on the outcome of a random event, so it is not known until that event happens.\n\nIt is **discrete** when it can take only certain **separate** values rather than any value in a range.\n\nDiscrete random variables usually **count** something, such as the number of heads in 20 coin flips.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2579,8 +2755,12 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nA discrete random variable can take values that are not whole numbers.\n",
   "back": "**True.**\n\n**Discrete** means the values it can take are **separate** from one another, not that they are integers.\n\nSo, **for example**, a spinner whose sectors are labelled $- 2$, $0$, $\\frac{1}{3}$ and $5$ gives a perfectly good discrete random variable, with one value negative and one a fraction.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2597,8 +2777,12 @@
   "cardType": "question_and_answer",
   "front": "In probability notation, what is the difference between $X$ and $x$?\n",
   "back": "The **upper case** $X$ is the random variable itself, and the **lower case** $x$ is a particular value that it might take.\n\nSo $\\text{P} ( X = x )$ reads as the probability that the random variable $X$ takes the value $x$.\n\nKeeping the two cases apart is what makes the rest of the notation readable, and mixing them up is the commonest way to lose track of a question.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2615,8 +2799,12 @@
   "cardType": "question_and_answer",
   "front": "In what three ways can a discrete probability distribution be presented?\n",
   "back": "As a **table**, listing each value against its probability.\n\nAs a **function**, giving $\\text{P} ( X = x )$ by a formula, which is called a probability mass function.\n\nOr as a **vertical line graph**, with the values along the horizontal axis and the probabilities as the heights.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2633,8 +2821,12 @@
   "cardType": "fill_in_the_blanks",
   "front": "Complete the property that every discrete probability distribution must have:\n\n`\\sum \\text{P}(X = x) = \\_\\_\\_\\_\\_\\_`\n",
   "back": "The completed property is:\n\n$\\sum \\text{P} ( X = x ) = 1$\n\nThe variable is certain to take one of its possible values, so the probabilities of all of them together must account for everything.\n\nThis is the equation you form whenever a distribution contains an unknown.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2651,8 +2843,12 @@
   "cardType": "question_and_answer",
   "front": "A distribution is given by $\\text{P} ( X = x ) = k x^{2}$ for $x = - 3 , - 1 , 2 , 4$. How do you find $k$?\n",
   "back": "Work out each probability in terms of $k$, then set their sum equal to 1 and solve.\n\nHere the four probabilities are $9 k$, $k$, $4 k$ and $16 k$, so\n\n$30 k = 1 , \\text{so} k = \\frac{1}{30}$\n\nWriting the distribution out as a table first makes the sum much harder to get wrong.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2669,8 +2865,12 @@
   "cardType": "question_and_answer",
   "front": "How do you find $\\text{P} ( X \\leq 3 )$ from a probability distribution table?\n",
   "back": "Pick out every value in the table that is **at most 3**, and add their probabilities together.\n\nOnly values the variable can actually take contribute anything, so a number that is not in the table has probability zero and is simply ignored.\n\nRemember to include the smallest value, which is easy to skip over.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2687,8 +2887,12 @@
   "cardType": "fill_in_the_blanks",
   "front": "Fill in the inequality each phrase translates to, for a discrete random variable:\n\nat most $k$ becomes `\\_\\_\\_\\_\\_\\_`\n\nfewer than $k$ becomes `\\_\\_\\_\\_\\_\\_`\n\nat least $k$ becomes `\\_\\_\\_\\_\\_\\_`\n",
   "back": "The completed translations are:\n\nat most $k$ becomes $X \\leq k$\n\nfewer than $k$ becomes $X < k$\n\nat least $k$ becomes $X \\geq k$\n\nThe difference between **at most** and **fewer than** is whether $k$ itself is counted, and for a discrete variable that changes the answer.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2705,8 +2909,12 @@
   "cardType": "question_and_answer",
   "front": "Why does $\\text{P} ( X > k ) = 1 - \\text{P} ( X \\leq k )$, and when is it worth using?\n",
   "back": "Every value the variable can take is either at most $k$ or greater than $k$, never both and never neither, so the two probabilities account for everything and add to 1.\n\nIt is worth using whenever there are fewer unwanted values than wanted ones, since it replaces a long sum with a short one.\n\nThe matching pair is $\\text{P} ( X \\geq k ) = 1 - \\text{P} ( X < k )$, and mixing the two up is what the strict and weak inequalities are there to warn you about.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2723,8 +2931,12 @@
   "cardType": "question_and_answer",
   "front": "How do you find $\\text{P} ( X^{2} < 5 )$ when $X$ can take the values $- 3 , - 1 , 2$ and $4$?\n",
   "back": "Test each value in turn, keep the ones that satisfy the condition, and add their probabilities.\n\nHere $( - 1 )^{2} = 1$ and $2^{2} = 4$ are below 5, while $( - 3 )^{2} = 9$ and $4^{2} = 16$ are not, so the answer is $\\text{P} ( X = - 1 ) + \\text{P} ( X = 2 )$.\n\nTesting each value one at a time matters because a **negative** value can satisfy a condition on $X^{2}$, which solving an inequality in your head is likely to miss.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2741,8 +2953,12 @@
   "cardType": "keyword_definition",
   "front": "Define **expected value**.\n",
   "back": "The **expected value** of a random variable, written $\\text{E} ( X )$, is its **mean**.\n\nIt is the value that the average of a large number of observations of $X$ would be expected to settle near.\n\nIt need not be a value that $X$ can actually take: a fair die has expected value 3.5.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2759,8 +2975,12 @@
   "cardType": "fill_in_the_blanks",
   "front": "Fill in the two expectation formulae for a discrete random variable:\n\n`\\text{E}(X) = \\sum \\_\\_\\_\\_\\_\\_ \\text{P}(X = x)`\n\n`\\text{E}(X^{2}) = \\sum \\_\\_\\_\\_\\_\\_ \\text{P}(X = x)`\n",
   "back": "The completed formulae are:\n\n$\\text{E} ( X ) = \\sum x \\text{P} ( X = x )$\n\n$\\text{E} ( X^{2} ) = \\sum x^{2} \\text{P} ( X = x )$\n\nIn each case you weight the quantity you are averaging by the probability of getting it, and add.\n\nNotice that the probabilities are untouched: it is only the thing being averaged that gets squared.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2777,8 +2997,12 @@
   "cardType": "question_and_answer",
   "front": "How would you find `\\text{E}\\left(\\frac{1}{X}\\right)` for a discrete random variable?\n",
   "back": "Apply the function to each value of $X$, multiply each result by that value's probability, and add.\n\nSo it is $\\sum \\frac{1}{x} \\text{P} ( X = x )$, worked out value by value.\n\nThe same pattern gives $\\text{E}$ of any function of $X$, and it is the only safe route, because applying the function to the mean instead does not give the same answer.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2795,8 +3019,12 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\n$\\text{E} ( X^{2} )$ is the same as $\\text{E} ( X )$ squared.\n",
   "back": "**False.**\n\nThe mean of the squares is not the square of the mean.\n\nSo, **for example**, if $X$ is $- 1$ or $1$ with equal chance, its mean is 0, so squaring the mean gives 0; but every value squares to 1, so the mean of the squares is 1.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2813,8 +3041,12 @@
   "cardType": "question_and_answer",
   "front": "A distribution has $\\text{E} ( X ) = 4 . 9$ and $\\text{E} ( X^{2} ) = 27 . 7$. What are its variance and standard deviation?\n",
   "back": "The variance is\n\n$27 . 7 - 4 . 9^{2} = 27 . 7 - 24 . 01 = 3 . 69$\n\nand the standard deviation is $\\sqrt{3.69} = 1 . 92$ to 3 significant figures.\n\nThe order matters: square the mean and subtract it, rather than subtracting first and squaring afterwards.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2831,8 +3063,12 @@
   "cardType": "question_and_answer",
   "front": "A variable takes the values 1, 5 and 9 with probabilities 0.3, 0.4 and 0.3. What is $\\text{E} ( X )$, and why is no calculation needed?\n",
   "back": "It is **5**.\n\nBoth the values and their probabilities are **symmetrical** about 5, so the weighting either side of it balances exactly and the mean sits at the centre.\n\nSpotting a symmetrical distribution saves the whole calculation, and it also tells you the mean and the median are equal.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -2849,8 +3085,12 @@
   "cardType": "question_and_answer",
   "front": "Why must $\\text{E} ( X )$ always lie between the smallest and largest values that $X$ can take?\n",
   "back": "Because it is a **weighted average** of those values, and the weights are probabilities that add up to 1.\n\nAn average built that way cannot escape the range of the things being averaged, however uneven the weights are.\n\nThat makes it a quick check on any expectation you calculate: an answer outside the range means an arithmetic slip.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.4.1",
+  "specPointIds": [
+   "5.4.1",
+   "5.4.2",
+   "5.4.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "probability-distributions",
@@ -3353,8 +3593,12 @@
   "cardType": "keyword_definition",
   "front": "Define **continuous random variable**.\n",
   "back": "A continuous random variable is a random variable that can take **any value within a range**, rather than only certain separate values.\n\nContinuous random variables usually **measure** something, so height, weight and time are all continuous.\n\nThat is the contrast with a discrete random variable, which counts, and the difference decides which distributions can model the variable.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3371,8 +3615,12 @@
   "cardType": "question_and_answer",
   "front": "For a continuous distribution, what is `\\text{P} \\left(X = k\\right)`, and what follows from it?\n",
   "back": "`\\text{P} \\left(X = k\\right) = 0` for **every** value of $k$, because probability is the **area under the graph** and a single value is a line with no width.\n\nWhat has a probability is a **range** of values: the area between $x = a$ and $x = b$ is `\\text{P} \\left(a \\leq X \\leq b\\right)`, and the total area under the graph is 1.\n\nWhat follows is convenient: since the endpoints contribute nothing, strict and weak inequalities give the same answer.\n\n`\\text{P} \\left(X \\leq k\\right) = \\text{P} \\left(X < k\\right)`\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3389,8 +3637,12 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nIn `X \\sim \\text{N} \\left(\\mu , \\sigma^{2}\\right)`, the second number in the bracket is the standard deviation.\n",
   "back": "**False.**\n\nThe second number is the **variance**, $σ^{2}$: the notation says so, but it is easy to read past.\n\nSo `W \\sim \\text{N} \\left(50 , 36\\right)` has variance 36 and standard deviation $\\sqrt{36} = 6$.\n\nThis matters because calculators ask for the **standard deviation**, so entering the second number straight from the bracket is a common error; square root it first, unless the variance is already written as a square, as in `\\text{N} \\left(20 , 5^{2}\\right)`.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3407,8 +3659,12 @@
   "cardType": "question_and_answer",
   "front": "A normal distribution is symmetrical about $x = μ$. What two things follow from that?\n",
   "back": "The three averages all coincide:\n\n$\\text{mean} = \\text{median} = \\text{mode} = μ$\n\nand half the area lies on each side of the mean:\n\n`\\text{P} \\left(X < \\mu\\right) = \\text{P} \\left(X > \\mu\\right) = 0.5`\n\nThe second is worth having ready. It gives you a probability with no calculation, and it is often the quickest way to check that an answer is on the right side of the mean.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3425,8 +3681,12 @@
   "cardType": "fill_in_the_blanks",
   "front": "Complete the proportions of a normal distribution that lie within one, two and three standard deviations of the mean:\n\nwithin $μ \\pm σ$, about `\\_\\_\\_\\_\\_\\_`% of the data\n\nwithin $μ \\pm 2 σ$, about `\\_\\_\\_\\_\\_\\_`% of the data\n\nwithin $μ \\pm 3 σ$, about `\\_\\_\\_\\_\\_\\_`% of the data\n",
   "back": "The completed proportions are:\n\nwithin $μ \\pm σ$, about **68**% of the data, which is roughly two thirds\n\nwithin $μ \\pm 2 σ$, about **95**% of the data\n\nwithin $μ \\pm 3 σ$, about **99.7**% of the data, which is nearly all of it\n\nThese are worth knowing by heart as a sense check. If a calculation says that 40% of the data lies within one standard deviation of the mean, something has gone wrong.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3443,8 +3703,12 @@
   "cardType": "question_and_answer",
   "front": "Where are the points of inflection on a normal distribution curve?\n",
   "back": "At $x = μ \\pm σ$, exactly **one standard deviation** either side of the mean.\n\nThose are the two places where the curve stops bending one way and starts bending the other, as it changes from falling ever more steeply to falling ever less steeply.\n\nThis gives you a way to read $σ$ off a sketch: it is the horizontal distance from the mean to a point of inflection.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3461,8 +3725,12 @@
   "cardType": "question_and_answer",
   "front": "How does a normal curve change when $μ$ changes, and how when $σ^{2}$ changes?\n",
   "back": "Changing $μ$ **translates** the curve horizontally, moving the whole shape along without altering it.\n\nChanging $σ^{2}$ **stretches** it horizontally: a small variance gives a tall curve with a narrow centre, and a large variance a short curve with a wide centre.\n\nThe reason a narrower curve has to be taller is that the **total area is always 1**, so squeezing the curve inwards must push it upwards.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3479,8 +3747,12 @@
   "cardType": "question_and_answer",
   "front": "What has to be true of a real-life variable before a normal distribution is a sensible model for it?\n",
   "back": "It must be **continuous**, so it measures something, its distribution must be **symmetrical** and **bell-shaped** with a **single mode**, and the population needs to be large enough.\n\nSo, **for example**, a variable produced by a random number generator cannot be modelled this way, because every value is equally likely and it has no mode.\n\nNor can how long a human lives, because that distribution is not symmetrical.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3497,8 +3769,12 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nA normal distribution cannot model height, because it allows any real value and a height cannot be negative.\n",
   "back": "**False.**\n\nIt is true that a normal distribution is defined for every real number, but values more than about **four standard deviations** from the mean have a probability density of practically zero.\n\nSo a normal model of human height puts a negligible probability on the impossible values and describes the realistic ones well, which is what makes it usable for quantities like height and weight that have a natural floor.\n\nA model does not have to be perfect to be useful, only good enough over the range that matters.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3515,8 +3791,12 @@
   "cardType": "keyword_definition",
   "front": "Define the **standard normal distribution**.\n",
   "back": "The **standard normal distribution** is the normal distribution with mean 0 and standard deviation 1, written `Z \\sim \\text{N}(0, 1^{2})`.\n\nIts probabilities have been worked out once and printed as a table, which can then be used for **every** normal distribution.\n\nThe letter $Z$ is reserved for it, so seeing $Z$ in a question tells you the mean and standard deviation without being told.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3533,8 +3813,12 @@
   "cardType": "fill_in_the_blanks",
   "front": "Complete the formula that converts any normal variable to the standard one:\n\n`Z = \\frac{X - \\_\\_\\_\\_\\_\\_}{\\_\\_\\_\\_\\_\\_}`\n",
   "back": "The completed formula is:\n\n$Z = \\frac{X-μ}{σ}$\n\nSubtracting the mean shifts the distribution so that its centre sits at 0, and dividing by the standard deviation rescales it so that its spread is 1.\n\nSo standardising is a translation followed by a stretch, and it turns any normal curve into the same one.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3551,8 +3835,12 @@
   "cardType": "question_and_answer",
   "front": "What does a $z$-value of $1 . 5$ tell you about a data value?\n",
   "back": "That it lies **one and a half standard deviations above the mean**.\n\nA negative $z$ means the value is below the mean, and $z = 0$ means it sits exactly at the mean.\n\nSo a $z$-value is a measure of position expressed in standard deviations rather than in the original units.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3569,8 +3857,12 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nTwo students with different marks in different exams can have the same $z$-value.\n",
   "back": "**True.**\n\nA $z$-value records how far a mark sits from **its own** mean, measured in **its own** standard deviations, so 70 in one exam and 55 in another can standardise to the same value.\n\nThat is exactly what makes standardising worth doing: it puts results from different distributions onto one common scale so they can be compared.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3587,8 +3879,12 @@
   "cardType": "question_and_answer",
   "front": "What does $Φ ( z )$ mean?\n",
   "back": "It is the probability that $Z$ is **less than** $z$, so $Φ ( z ) = \\text{P} ( Z < z )$.\n\nThis is the function the normal distribution table gives, and the table lists it for values of $z$ from 0 to 3.\n\nBeyond $z = 3$ the remaining probability is small enough to be treated as negligible.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3605,8 +3901,12 @@
   "cardType": "question_and_answer",
   "front": "How do you read $Φ ( 1 . 234 )$ from the normal distribution table?\n",
   "back": "Find where the $1 . 2$ row meets the $3$ column, which gives $Φ ( 1 . 23 ) = 0 . 8907$.\n\nThen use the ADD section to the right of the table for the third decimal place: the ADD 4 entry on that row is 7, meaning $0 . 0007$.\n\nAdding it gives $Φ ( 1 . 234 ) = 0 . 8914$, and the ADD entries are always counted in ten-thousandths.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3623,8 +3923,12 @@
   "cardType": "fill_in_the_blanks",
   "front": "The table only gives $Φ ( z )$ for positive $z$. Fill in the other two cases:\n\n`\\text{P}(Z > z) = \\_\\_\\_\\_\\_\\_`\n\n`\\text{P}(Z > -z) = \\_\\_\\_\\_\\_\\_`\n",
   "back": "The completed results are:\n\n$\\text{P} ( Z > z ) = 1 - Φ ( z )$\n\n$\\text{P} ( Z > - z ) = Φ ( z )$\n\nThe first uses the total area being 1, and the second uses the curve being symmetrical about 0.\n\nBetween them, those two ideas turn the one column of table values into every case you could be asked for.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3641,8 +3945,12 @@
   "cardType": "question_and_answer",
   "front": "How do you find $z$ when $\\text{P} ( Z < z ) = 0 . 3$?\n",
   "back": "The table only lists probabilities of $0 . 5$ and above, so look up $1 - 0 . 3 = 0 . 7$ instead, which gives $0 . 524$.\n\nA probability below $0 . 5$ puts the value to the **left** of the mean, so the answer is the negative of what you looked up: $z = - 0 . 524$.\n\nWriting the minus sign down at the start, before doing the lookup, is what stops it going missing.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3659,8 +3967,12 @@
   "cardType": "question_and_answer",
   "front": "What values can a normally distributed variable take?\n",
   "back": "**Any real number**, including negative and non-integer values, however unlikely the extremes may be.\n\nThat is the contrast with a binomial variable, which can only take whole numbers from 0 to $n$.\n\nIt is also why a normal question always concerns a range of values rather than a list of them.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3677,8 +3989,12 @@
   "cardType": "question_and_answer",
   "front": "How do you find $\\text{P} ( X < a )$ when `X \\sim \\text{N}(\\mu, \\sigma^{2})`?\n",
   "back": "Sketch the curve and shade the region you want, then standardise $a$ into a $z$-value.\n\nRead the corresponding probability from the normal distribution table, and use the sketch to decide whether that is the answer or whether you need 1 minus it.\n\nThe sketch is doing real work here: it is what settles the direction, and it costs a few seconds.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3695,8 +4011,12 @@
   "cardType": "fill_in_the_blanks",
   "front": "Complete the rule for a normal probability between two values:\n\n`\\text{P}(a < X < b) = \\Phi\\left(\\frac{b - \\mu}{\\sigma}\\right) - \\_\\_\\_\\_\\_\\_`\n",
   "back": "The completed rule is:\n\n`\\text{P}(a < X < b) = \\Phi\\left(\\frac{b - \\mu}{\\sigma}\\right) - \\Phi\\left(\\frac{a - \\mu}{\\sigma}\\right)`\n\nYou are taking the area up to $b$ and removing the area up to $a$, leaving the strip between them.\n\nBoth ends are standardised with the **same** $μ$ and $σ$, and if either $z$ comes out negative you will need the symmetry result before you can look it up.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3713,8 +4033,12 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nStandardising changes the probability you are calculating.\n",
   "back": "**False.**\n\nStandardising is a change of **scale**, not a change of the event: the region under the curve is exactly the same region, measured in different units.\n\nThat is precisely why a single table of probabilities is enough for every normal distribution there is.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3731,8 +4055,12 @@
   "cardType": "question_and_answer",
   "front": "For `X \\sim \\text{N}(20, 5^{2})`, how do you find $\\text{P} ( 18 \\leq X < 27 )$?\n",
   "back": "Standardise both ends, which gives $z = - 0 . 4$ and $z = 1 . 4$.\n\nThen take the difference of the two cumulative probabilities:\n\n$Φ ( 1 . 4 ) - Φ ( - 0 . 4 ) = 0 . 9192 - 0 . 3446 = 0 . 5746$\n\nThe negative $z$ has to be converted before it can be looked up, which is the step most often rushed.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3749,8 +4077,12 @@
   "cardType": "question_and_answer",
   "front": "You are told that $\\text{P} ( X > a ) = 0 . 7676$ and want to find $a$. What do you do?\n",
   "back": "Find the $z$-value that gives that probability, then substitute it into $z = \\frac{a-μ}{σ}$ and solve for $a$.\n\nHere the probability is above $0 . 5$, so $a$ lies **below** the mean and $z$ is negative.\n\nFinishing with a check that $a$ really is on the expected side of the mean catches a lost minus sign immediately.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3767,8 +4099,12 @@
   "cardType": "question_and_answer",
   "front": "You are told that `\\text{P}(\\mu - a < X < \\mu + a) = 80\\%`. How do you find $a$?\n",
   "back": "The remaining 20% is shared **equally** between the two tails by symmetry, so 10% lies above $μ + a$ and therefore `\\text{P}(X < \\mu + a) = 90\\%`.\n\nLook up the $z$-value for $0 . 9$, then use the fact that standardising $μ + a$ gives simply $\\frac{a}{σ}$, since the means cancel.\n\nA sketch makes the halving obvious and is much easier than remembering a formula for it.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3785,8 +4121,12 @@
   "cardType": "fill_in_the_blanks",
   "front": "Complete the rearrangement of the standardisation formula that is most useful when a parameter is unknown:\n\n`x = \\mu + \\_\\_\\_\\_\\_\\_`\n",
   "back": "The completed rearrangement is:\n\n$x = μ + σ z$\n\nIt says that any value is the mean plus so many standard deviations, which is the same statement as the standardisation formula read the other way round.\n\nThis form is the one to use here, because it is **linear** in $μ$ and $σ$ and so gives an equation that is easy to solve or to combine with another.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3803,8 +4143,12 @@
   "cardType": "question_and_answer",
   "front": "You know $σ$ and one probability, and want to find $μ$. What do you do?\n",
   "back": "Find the $z$-value for that probability, then substitute the known $x$, $z$ and $σ$ into $x = μ + σ z$ and solve for $μ$.\n\nOne probability is enough because only one parameter is missing, so one equation determines it.\n\nThe same works the other way round: knowing $μ$ and one probability gives $σ$.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3821,8 +4165,12 @@
   "cardType": "question_and_answer",
   "front": "Both $μ$ and $σ$ are unknown. What must the question give you, and what do you do with it?\n",
   "back": "**Two** probabilities, each attached to a different value of $x$.\n\nEach one gives a $z$-value and hence one equation in $μ$ and $σ$, and the pair is then solved simultaneously.\n\nWriting both equations in the form $x = μ + σ z$ first is what makes the pair straightforward to handle.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3839,8 +4187,12 @@
   "cardType": "true_or_false",
   "front": "**True or False?**\n\nYou can work out $σ$ without ever knowing $μ$.\n",
   "back": "**True.**\n\nSubtracting one of the two equations from the other removes $μ$ altogether, leaving a single equation in $σ$ alone.\n\nSo $σ$ comes out first, and $μ$ is recovered afterwards by substituting back, even though neither equation on its own determines either parameter.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3857,8 +4209,12 @@
   "cardType": "question_and_answer",
   "front": "When two equations are formed from two probabilities, what is the commonest mistake?\n",
   "back": "Pairing a $z$-value with the **wrong** $x$.\n\nEach probability belongs to one particular value of $x$, and its $z$-value has to go into the equation for that value and no other.\n\nLabelling them as $z_{1}$ with $x_{1}$ and $z_{2}$ with $x_{2}$ before substituting anything is what prevents it.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3875,8 +4231,12 @@
   "cardType": "question_and_answer",
   "front": "Why should a $z$-value be taken to three decimal places in this kind of question?\n",
   "back": "Because $z$ gets **multiplied by** $σ$ and then added to $μ$, so any error in it is magnified into the final answer.\n\nThree decimal places keeps the result reliable to three significant figures.\n\nThat is why the formula booklet carries a separate table of critical values quoted to exactly that accuracy.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",
@@ -3893,8 +4253,12 @@
   "cardType": "question_and_answer",
   "front": "10% of students take under 12 minutes and 5% take over 40 minutes. How do you find $μ$ and $σ$?\n",
   "back": "The two $z$-values are $- 1 . 282$ and $1 . 645$, one negative because 12 is below the mean and one positive because 40 is above it.\n\nThat gives the pair of equations\n\n$- 1 . 282 σ = 12 - μ \\text{and} 1 . 645 σ = 40 - μ$\n\nSolving them gives $σ = 9 . 57$ and $μ = 24 . 3$ minutes.\n",
-  "specPointCode": null,
-  "specPointIds": [],
+  "specPointCode": "5.5.1",
+  "specPointIds": [
+   "5.5.1",
+   "5.5.2",
+   "5.5.3"
+  ],
   "sourceNoteId": null,
   "sourceTitle": null,
   "deckSlug": "normal-distribution",

@@ -145,6 +145,10 @@ export const RevisionNote = z.object({
   // corpus-native placement (SME section/topic slugs) — set by the importer
   sectionSlug: z.string().optional(),
   topicSlug: z.string().optional(),
+  // corpus-native content kind — "exam-technique" marks SME exam-skills
+  // notes: exam technique, explicitly NOT tied to a spec statement (their
+  // codes, where a mistag landed, are retracted; RN-DEBRIS-11 run-005)
+  contentKind: z.string().optional(),
 });
 export type RevisionNote = z.infer<typeof RevisionNote>;
 

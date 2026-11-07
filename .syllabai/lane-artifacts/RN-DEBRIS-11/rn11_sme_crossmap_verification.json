@@ -1,0 +1,195 @@
+{
+ "resourcesTip": "4e3a1c6843b03c485911849d93e4b08a4a2d397c",
+ "v1": {
+  "courses": 56,
+  "links": 6024,
+  "resolved": 6024
+ },
+ "v2": {
+  "question": "do SME flashcards carry card-to-note links at source (would make sourceNoteId:null a dropped mapping)?",
+  "method": "upstream SME-Flashcards/<slug>/<section>/<topic>/deck.json fetched at resources tip 4e3a1c6843b0 for 3 sampled courses; card schema inspected",
+  "upstreamCardSchema": [
+   "id",
+   "card_type",
+   "order",
+   "set_id",
+   "front_blocks",
+   "back_blocks",
+   "front_md",
+   "back_md",
+   "spec_links",
+   "flags",
+   "blanks"
+  ],
+  "noteLinkFieldExists": false,
+  "specLinksFieldPreserved": true,
+  "workedExample": {
+   "card": "fl_GnXQznKNQvy4qzys (cie-a-level-chemistry-25 1-1 deck)",
+   "upstreamSpecLinks": [
+    "spcpt_55MQgFXdfMQTbHBn"
+   ],
+   "importedSmeSpecPointIds": [
+    "spcpt_55MQgFXdfMQTbHBn"
+   ],
+   "wiredSpecPointIds": [
+    "1.1.1",
+    "1.1.2",
+    "1.1.3",
+    "1.1.4",
+    "1.1.5",
+    "1.1.6",
+    "1.1.6a",
+    "1.1.7"
+   ]
+  },
+  "verdict": "sourceNoteId:null fleet-wide is HONEST \u2014 the SME corpus schema carries no card\u2192note link; the card\u2192spec link (spec_links) IS preserved byte-equal as smeSpecPointIds and now wired to official codes"
+ },
+ "v3": {
+  "notes": 5408,
+  "withInline": 4326,
+  "inlineTokens": 8424,
+  "subset": 4326,
+  "violations": [],
+  "violationCount": 0
+ },
+ "v4": {
+  "courses": 40,
+  "cardTopics": 1166,
+  "inNotes": 1166,
+  "inSets": 1117,
+  "neither": 0,
+  "neitherSamples": {}
+ },
+ "v5": {
+  "courses": 54,
+  "files": 198,
+  "match": 155,
+  "drift": [
+   {
+    "course": "cie-a-level-accounting-21",
+    "file": "SME-ExamQuestion/cie-a-level-accounting-21/spec_point_index.json",
+    "recorded": "d26a91c29a77",
+    "now": "6c165e267d67"
+   },
+   {
+    "course": "cie-a-level-biology-25",
+    "file": "SME-ExamQuestion/cie-a-level-biology-25/spec_point_index.json",
+    "recorded": "c5ff1c01694d",
+    "now": "8c3589405a7b"
+   },
+   {
+    "course": "cie-a-level-business-23",
+    "file": "SME-ExamQuestion/cie-a-level-business-23/spec_point_index.json",
+    "recorded": "3946ace8da48",
+    "now": "7e2325a29c2f"
+   },
+   {
+    "course": "cie-a-level-chemistry-25",
+    "file": "SME-ExamQuestion/cie-a-level-chemistry-25/spec_point_index.json",
+    "recorded": "df52900db1d4",
+    "now": "f77c66aeddda"
+   },
+   {
+    "course": "cie-a-level-computer-science-19",
+    "file": "SME-ExamQuestion/cie-a-level-computer-science-19/spec_point_index.json",
+    "recorded": "97735e1e44a9",
+    "now": "2913419a0a0a"
+   },
+   {
+    "course": "cie-a-level-economics-23",
+    "file": "SME-ExamQuestion/cie-a-level-economics-23/spec_point_index.json",
+    "recorded": "d537aba1f596",
+    "now": "d7f0125a4d5a"
+   },
+   {
+    "course": "cie-a-level-maths-20-mechanics",
+    "file": "SME-ExamQuestion/cie-a-level-maths-20-mechanics/spec_point_index.json",
+    "recorded": "7fe44dceb747",
+    "now": "78b510a0eb34"
+   },
+   {
+    "course": "cie-a-level-maths-20-probability-and-statistics-1",
+    "file": "SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-1/spec_point_index.json",
+    "recorded": "4e7c08cec228",
+    "now": "3cedcf34a742"
+   },
+   {
+    "course": "cie-a-level-maths-20-probability-and-statistics-2",
+    "file": "SME-ExamQuestion/cie-a-level-maths-20-probability-and-statistics-2/spec_point_index.json",
+    "recorded": "8db88894c2be",
+    "now": "588c3de02b55"
+   },
+   {
+    "course": "cie-a-level-maths-20-pure-1",
+    "file": "SME-ExamQuestion/cie-a-level-maths-20-pure-1/spec_point_index.json",
+    "recorded": "918f6f4b7298",
+    "now": "e23748e40ae7"
+   },
+   {
+    "course": "cie-a-level-maths-20-pure-3",
+    "file": "SME-ExamQuestion/cie-a-level-maths-20-pure-3/spec_point_index.json",
+    "recorded": "38b84bd97b72",
+    "now": "7112c04ef6f0"
+   },
+   {
+    "course": "cie-a-level-physics-25",
+    "file": "SME-ExamQuestion/cie-a-level-physics-25/spec_point_index.json",
+    "recorded": "00f70fba2cf5",
+    "now": "71925f19dd6b"
+   },
+   {
+    "course": "cie-as-english-general-paper-21",
+    "file": "SME-ExamQuestion/cie-as-english-general-paper-21/spec_point_index.json",
+    "recorded": "744d2eee0e40",
+    "now": "b49ad7f1ba28"
+   },
+   {
+    "course": "cie-as-environmental-management-20",
+    "file": "SME-ExamQuestion/cie-as-environmental-management-20/spec_point_index.json",
+    "recorded": "4689922c322e",
+    "now": "ea3d4a8addc9"
+   },
+   {
+    "course": "cie-igcse-accounting-21",
+    "file": "SME-ExamQuestion/cie-igcse-accounting-21/spec_point_index.json",
+    "recorded": "12dbf3508343",
+    "now": "da0209ebb6b5"
+   },
+   {
+    "course": "cie-igcse-accounting-25",
+    "file": "SME-ExamQuestion/cie-igcse-accounting-25/spec_point_index.json",
+    "recorded": "be37e4e833e1",
+    "now": "1df0d6078c5e"
+   },
+   {
+    "course": "cie-igcse-biology-23",
+    "file": "SME-ExamQuestion/cie-igcse-biology-23/spec_point_index.json",
+    "recorded": "0481e4f868a3",
+    "now": "8114386edcb2"
+   },
+   {
+    "course": "cie-igcse-business-23",
+    "file": "SME-ExamQuestion/cie-igcse-business-23/spec_point_index.json",
+    "recorded": "6762c3d79ae3",
+    "now": "af4f5b4ba929"
+   },
+   {
+    "course": "cie-igcse-business-25",
+    "file": "SME-ExamQuestion/cie-igcse-business-25/spec_point_index.json",
+    "recorded": "fa9c19121585",
+    "now": "8291c7053f75"
+   },
+   {
+    "course": "cie-igcse-chemistry-23",
+    "file": "SME-ExamQuestion/cie-igcse-chemistry-23/spec_point_index.json",
+    "recorded": "4f2fa3fcbb34",
+    "now": "2c06b254ea83"
+   }
+  ],
+  "missing": [],
+  "driftCount": 43,
+  "missingCount": 0,
+  "conclusion": "all 54 spec-links item-level verdict sidecars byte-match at the current upstream tip; all 90 rejoin/wave resolution yamls match (155 matches total); the only drift is spec_point_index.json (43/54) \u2014 the SME census artifact that regenerates on every upstream run, NOT a verdict input. Upstream inputs of record are byte-frozen vs the consumed pins.",
+  "driftBreakdownVerified": "spec-links re-fetch 54/54 match; yamls matched by subtraction (90/90); drift = spec_point_index.json only"
+ }
+}
