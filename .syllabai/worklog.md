@@ -1005,3 +1005,8 @@ Stage Summary:
 - VERIFICATION: tsc --noEmit clean (exit 0); eslint clean on the touched file; "all"-mode logic byte-equivalent (grid click → same setActiveIdx + anchor scroll; scroll-spy unchanged; cards unchanged — the toggle pill is the only new element in all mode); both call sites unchanged (mode is a device-local client preference, not a page decision); CI PR-gated, waited to completion before the receipt-of-record; design-behavior changes are never self-merged.
 - KNOWN NUANCE (disclosed, parked to audit batch D): in single mode, when the current question cannot anchor CLA, the floating button still opens for the nearest anchorable question (join-gated) with the aria/title disclosure naming both numbers — same honesty rule as all mode, now pointed at a card that may not be the one in view.
 - Anti-truncation asserts: BOTH worklogs appended append-only (new = old + blank-line separator + section; byte delta == len(section) + 1 each), asserted by scripts/tqvm1-worklog-append.py before commit.
+
+## receipt(T-QVIEW-MODES-1 run-001 evidence-of-record) — PR #839 CI green — 2026-11-07
+
+- PR #839 (head 1bdb3772, base main 563f2a1d) — CI polled to completion: verify success + hub success + Vercel Preview Comments success, 3/3 green at the receipt head; the PR stays integrator-merged (design changes are never self-merged). Scope held to question-player.tsx + bookkeeping (task card, receipt, both worklogs); both call sites and all-mode behavior untouched.
+- Anti-truncation asserts: both worklogs appended append-only (new = old + blank-line separator + section; byte delta == len(section) + 1 each), asserted by scripts/tqvm1-evidence-append.py before commit.
