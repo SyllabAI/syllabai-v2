@@ -1060,3 +1060,10 @@ Work Log:
 - W2 NEW `.github/workflows/t-vercel-usage-bake.yml`: nightly 02:30 UTC + dispatch; bakes prod via vercel CLI — gitSource would die to ignored-build-step (run-002 first-hand); idempotent (skips when production SHA == main HEAD); VERCEL_BAKE_TOKEN repo secret, never printed; concurrency-grouped.
 - W3 Burn of record: run-000 counters (Fluid CPU 21h49m/4h, ISR writes 878K/200K, Origin 26GB/10GB) — runtime, already cut by run-001; account-2 recon 2026-11-06: 76 deploys/24h, 43 canceled, ~45 lane previews/day from pre-#796 lanes (first-hand: 1453b93ed4, 1f71a2493b predate a8df668a) — self-extinguishing; deploy-count pressure now gated.
 - W4 FENCES respected: zero app/contracts/db/API/bundle/data bytes; author did not self-merge (PR left for the integrator desk).
+
+## receipt(T-VERCEL-USAGE) — run-004: hotfix — ignoreCommand under the 256-char schema limit — 2026-11-07
+- Cause (first-hand): run-003's branch-gated ignoreCommand was 275 chars > Vercel's 256 cap → the #833 merge commit's git build died at config validation (dpl_G9WWZN..., errorMessage of record). run-003's gates had no length assert; run-004 adds it.
+- Fix: prefix compacted to `case "$VERCEL_GIT_COMMIT_REF" in main|"") ;; *) exit 0;; esac;` — 217 chars total; run-002 diff-gate pathspec preserved byte-exact as suffix; cat-file HEAD^ guard dropped as redundant (git diff exits 128 on missing HEAD^ → same build outcome, disclosed).
+- Matrix asserted pre-push: lane ref → SKIP; main → BUILD; unset → BUILD (fail-open); ledger-only pair → SKIP. vercel.json single-line swap; crons+git byte-identical; JSON parse OK; secret scan clean.
+- First-hand branch-gate proof: two pushes to t-vercel-usage/r6 (981eadd7, 6066cb93) → ZERO preview deployments (skip-artifact status only) — VERCEL_GIT_COMMIT_REF populated in ignoreCommand context; red X on PR heads is the designed cost of the preview kill; house gate = verify+hub.
+- Merge authority: operator order "merge it fleet-style" (zai-web, 2026-11-07); same-branch hotfix; PR merged on green verify+hub. Zero app/contract bytes.
