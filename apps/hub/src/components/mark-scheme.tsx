@@ -80,7 +80,7 @@ export function MarkScheme({ md, className }: { md: string; className?: string }
             {s.codes.map((c, j) => (
               <span
                 key={j}
-                className="rounded bg-primary/10 px-1.5 py-0.5 text-[10.5px] font-semibold tabular-nums text-primary"
+                className="rounded bg-primary/10 px-1.5 py-0.5 text-[11px] font-semibold tabular-nums text-primary"
                 title={`mark code ${c}`}
               >
                 {c}

@@ -430,6 +430,20 @@ export function QuestionPlayer({
     return null;
   }, [viewIdx, visible, bridge]);
 
+  /** the floating button's disclosure — when the question in view cannot
+   *  anchor, the button opens for the nearest anchorable one. In single
+   *  mode the click ALSO swaps the card to that question (openCla pins
+   *  activeIdx and the single-mode viewIdx follows it), so the disclosure
+   *  names the swap explicitly (T-QVIEW-AUDIT-BCD-1 batch D, the nuance
+   *  disclosed at T-QVIEW-MODES-1); "all" keeps the compact parenthetical
+   *  (the discrepancy there is transient — the scroll-spy re-ties it). */
+  const claAnchorDisclosure =
+    claAnchorIdx !== null && viewIdx !== null && viewIdx !== claAnchorIdx
+      ? single
+        ? ` — question ${qLabel(viewIdx)} in view has no assistant link yet, so this opens question ${qLabel(claAnchorIdx)} instead`
+        : ` (question ${qLabel(viewIdx)} is not anchored for the assistant yet)`
+      : "";
+
   return (
     <div className="space-y-5">
       {/* 4CH1 bridge status — one honest line, never a blocker */}
@@ -540,7 +554,7 @@ export function QuestionPlayer({
                 <Badge variant="outline" className="text-[10px]">
                   {q.totalMarks} mark{q.totalMarks === 1 ? "" : "s"}
                 </Badge>
-                {q.difficulty && (
+                {variant === "bank" && q.difficulty && (
                   <Badge variant="secondary" className="text-[10px] capitalize">
                     {q.difficulty}
                   </Badge>
@@ -659,18 +673,16 @@ export function QuestionPlayer({
           // label swap itself stays INSTANT: it re-fires on every anchor
           // change while scrolling (IntersectionObserver), and animating a
           // high-frequency swap would breach frequency-appropriateness.
-          className="fixed bottom-6 right-6 z-40 h-12 gap-2 rounded-full px-5 shadow-lg animate-in fade-in-0 zoom-in-95 duration-200 ease-out"
+          // T-QVIEW-AUDIT-BCD-1 batch D (CLA-button clearance): in single
+          // mode the button rides above the pagination footer band
+          // (bottom-24) instead of overlapping the footer's Next control.
+          className={cn(
+            "fixed right-6 z-40 h-12 gap-2 rounded-full px-5 shadow-lg animate-in fade-in-0 zoom-in-95 duration-200 ease-out",
+            single ? "bottom-24" : "bottom-6",
+          )}
           aria-haspopup="dialog"
-          aria-label={`Ask the contextual assistant about question ${qLabel(claAnchorIdx)}${
-            viewIdx !== null && viewIdx !== claAnchorIdx
-              ? ` (question ${qLabel(viewIdx)} is not anchored for the assistant yet)`
-              : ""
-          }`}
-          title={`Ask CLA about question ${qLabel(claAnchorIdx)}${
-            viewIdx !== null && viewIdx !== claAnchorIdx
-              ? ` (question ${qLabel(viewIdx)} is not anchored for the assistant yet)`
-              : ""
-          }`}
+          aria-label={`Ask the contextual assistant about question ${qLabel(claAnchorIdx)}${claAnchorDisclosure}`}
+          title={`Ask CLA about question ${qLabel(claAnchorIdx)}${claAnchorDisclosure}`}
           onClick={() => openCla(visible[claAnchorIdx], claAnchorIdx, null)}
         >
           <Sparkles className="size-4" aria-hidden />
@@ -848,6 +860,15 @@ function QuestionBody({
   )}${anchorSpec ? `&spec=${encodeURIComponent(anchorSpec)}` : ""}`;
   const recorded = progress.selfScores[question.id];
 
+  // T-QVIEW-AUDIT-BCD-1 batch D (self-score validation): the box validates
+  // BEFORE saving — a whole number within 0..totalMarks — and says so
+  // inline, replacing the silent clamp (typing 99 saved as the cap, typing
+  // 3.7 saved the fraction, both without a word). Save stays disabled
+  // until the draft is valid; the hint names the exact legal range.
+  const scoreNum = Number(scoreDraft);
+  const scoreValid = /^\d+$/.test(scoreDraft.trim()) && scoreNum >= 0 && scoreNum <= question.totalMarks;
+  const scoreInvalidVisible = scoreDraft.trim() !== "" && !scoreValid;
+
   /** SME: MCQs are marked instantly — no manual "How did you do?" box.
    * Mixed MCQ+structured questions keep the self-score box (their MCQ parts
    * still record instant per-part marks). Multi-select MCQs (attested
@@ -878,7 +899,6 @@ function QuestionBody({
               topicSlug={topicSlug}
               subtopicCode={subtopicCode}
               optionsVisible={mcqOptionsVisible(question, idx)}
-              onViewModel={onViewModel}
               coreJoin={coreJoin?.mcq[p.id] ?? null}
               labelChip={labelChip}
               partLabel={labelChip ?? (question.parts.length > 1 ? String.fromCharCode(97 + idx) : null)}
@@ -926,19 +946,25 @@ function QuestionBody({
                   onChange={(e) => setScoreDraft(e.target.value)}
                   placeholder="–"
                   aria-label={`Self score out of ${question.totalMarks}`}
+                  aria-invalid={scoreInvalidVisible}
+                  aria-describedby={scoreInvalidVisible ? `self-score-hint-${question.id}` : undefined}
                   className="h-9 w-16 text-center"
                 />
                 <span className="text-muted-foreground">/ {question.totalMarks}</span>
               </span>
             </label>
+            {scoreInvalidVisible && (
+              <span id={`self-score-hint-${question.id}`} className="text-xs text-destructive">
+                Whole number between 0 and {question.totalMarks}
+              </span>
+            )}
             <Button
               size="sm"
               variant="outline"
-              disabled={scoreDraft === "" || Number.isNaN(Number(scoreDraft))}
+              disabled={!scoreValid}
               onClick={() => {
-                const v = Math.max(0, Math.min(question.totalMarks, Number(scoreDraft)));
-                recordSelfScore(course, question.id, topicSlug, subtopicCode, v, question.totalMarks);
-                setScoreDraft(String(v));
+                recordSelfScore(course, question.id, topicSlug, subtopicCode, scoreNum, question.totalMarks);
+                setScoreDraft(String(scoreNum));
               }}
             >
               Save score
@@ -1058,7 +1084,7 @@ function StructuredPart({
           layout-identical to the bare pre-467 block. */}
       <div className="flex items-baseline gap-x-1.5" data-part-row={part.id}>
         {labelChip && (
-          <span className="shrink-0 text-sm font-semibold tabular-nums" data-part-label={labelChip}>
+          <span className="shrink-0 text-[13px] font-semibold tabular-nums" data-part-label={labelChip}>
             {labelChip}
           </span>
         )}
@@ -1074,6 +1100,7 @@ function StructuredPart({
           topicSlug={topicSlug}
           subtopicCode={subtopicCode}
           coreLive={coreLive}
+          partLabel={labelChip}
         />
       )}
     </div>
@@ -1089,6 +1116,7 @@ function TypedAnswerWorkspace({
   topicSlug,
   subtopicCode,
   coreLive,
+  partLabel,
 }: {
   course: Course;
   question: ExamQuestion;
@@ -1096,6 +1124,10 @@ function TypedAnswerWorkspace({
   topicSlug: string;
   subtopicCode: string | null;
   coreLive: boolean;
+  /** the attested printed label ("(a)") when the corpus carries one; null =
+   *  honestly unlabeled — the aria drops the part qualifier instead of
+   *  guessing an order number (T-QVIEW-AUDIT-BCD-1 batch C) */
+  partLabel: string | null;
 }) {
   const progress = useCourseProgress(course);
   const savedText = progress.typedAnswers[part.id]?.text ?? "";
@@ -1222,7 +1254,7 @@ function TypedAnswerWorkspace({
           kind: "error",
           message:
             j.detail ??
-            "AI marking is unavailable right now — use “How did you do?” to self-mark instead.",
+            AI_MARK_UNAVAILABLE,
         });
         return;
       }
@@ -1237,7 +1269,7 @@ function TypedAnswerWorkspace({
     } catch {
       setMark({
         kind: "error",
-        message: "Network error while marking — use “How did you do?” to self-mark instead.",
+        message: `Network error while marking — ${SELF_MARK_POINTER}`,
       });
     }
   };
@@ -1253,7 +1285,7 @@ function TypedAnswerWorkspace({
         onChange={onType}
         onBlur={flushNow}
         label="Your answer"
-        ariaLabel={`Your typed answer for part ${part.order + 1}`}
+        ariaLabel={partLabel ? `Your typed answer for part ${partLabel}` : "Your typed answer"}
         placeholder={answerPlaceholder(part.problemMd)}
         marks={part.marks}
         onSubmitShortcut={submitShortcut}
@@ -1267,7 +1299,7 @@ function TypedAnswerWorkspace({
             <Badge
               variant="outline"
               className={cn(
-                "px-1 text-[10.5px] uppercase",
+                "px-1 text-[11px] uppercase",
                 coreLive ? "border-success/30 text-success" : "text-muted-foreground",
               )}
             >
@@ -1314,7 +1346,7 @@ function TypedAnswerWorkspace({
           </Button>
         ) : (
           <span className="text-[11px] text-muted-foreground">
-            AI marking is unavailable right now — use “How did you do?” below to mark your answer.
+            {AI_MARK_UNAVAILABLE}
           </span>
         )}
         {aiAvailable === true && text.trim().length === 0 && (
@@ -1401,6 +1433,15 @@ function TypedAnswerWorkspace({
 
 // ── MCQ part — answerable, marked instantly (SME, research figure 24) ───
 
+// T-QVIEW-AUDIT-BCD-1 batch D (answer-wording unification): ONE tail for
+// the AI-unavailable fallback, single-sourced — the render sites (legacy
+// error, network error, the probed-off static line, the core advisory
+// lane) previously spelled the self-mark pointer three ways. "How did you
+// do?" is the exact footer box label, in every lane (the box renders for
+// structured questions in both the local and the core lane).
+const SELF_MARK_POINTER = 'use “How did you do?” to self-mark instead.';
+const AI_MARK_UNAVAILABLE = `AI marking is unavailable right now — ${SELF_MARK_POINTER}`;
+
 function hasUsableChoices(part: ExamQuestion["parts"][number]): boolean {
   const c = part.choices;
   if (!c || c.length === 0) return false;
@@ -1469,7 +1510,6 @@ function McqPart({
   topicSlug,
   subtopicCode,
   optionsVisible,
-  onViewModel,
   coreJoin,
   labelChip,
   partLabel,
@@ -1481,7 +1521,6 @@ function McqPart({
   subtopicCode: string | null;
   /** option content is visible somewhere (stem media or an earlier part) */
   optionsVisible: boolean;
-  onViewModel: () => void;
   /** core identity for this part, when the 4CH1 bridge verified the join */
   coreJoin: BridgeMcqPart | null;
   /** the printed label ("(a)", "(a)(i)") when the corpus attests one; null = no chip */
@@ -1638,7 +1677,7 @@ function McqPart({
           than the stem (T-OEQ-PARTLABEL-3 font note). */}
       <div className="flex items-baseline gap-x-1.5" data-part-row={part.id}>
         {labelChip && (
-          <span className="shrink-0 text-sm font-semibold tabular-nums" data-part-label={labelChip}>
+          <span className="shrink-0 text-[13px] font-semibold tabular-nums" data-part-label={labelChip}>
             {labelChip}
           </span>
         )}
@@ -1919,11 +1958,9 @@ function McqPart({
       ) : (
         <div className="rounded-md border border-warn/30 bg-warn/10 px-3 py-2 text-xs leading-relaxed text-warn-ink">
           This is a multiple-choice question, but its option content and answer key were not
-          captured by the authorized import — the demo never fabricates content. Use{" "}
-          <button className="font-medium underline underline-offset-2" onClick={onViewModel}>
-            View answer
-          </button>{" "}
-          for the final answer and explanation.
+          captured by the authorized import — the demo never fabricates content. Use the{" "}
+          <span className="font-medium">View answer</span> button below for the final answer
+          and explanation.
         </div>
       )}
     </div>
@@ -2029,7 +2066,7 @@ function CoreMarkingFlow({
                 ? "Sign in to use AI marking."
                 : req.outcome === "unconfigured"
                   ? "AI marking is not configured on the server yet."
-                  : "AI marking is unavailable right now — submit and self-mark via the mark scheme instead.";
+                  : AI_MARK_UNAVAILABLE;
           setAdvisory((prev) => ({ ...prev, [t.hubPartId]: { kind: "failed", message } }));
           return;
         }
@@ -2145,7 +2182,7 @@ function CoreMarkingFlow({
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <Sparkles className="size-3.5 text-primary" aria-hidden />
         <span className="text-[13px] font-medium">Submit for marking — SyllabAI core</span>
-        <Badge variant="outline" className="border-success/30 px-1 text-[10.5px] uppercase text-success">
+        <Badge variant="outline" className="border-success/30 px-1 text-[11px] uppercase text-success">
           live
         </Badge>
         <span className="text-[11px] text-muted-foreground">
@@ -2210,7 +2247,13 @@ function CoreMarkingFlow({
           </div>
           {Object.entries(advisory).map(([hubPartId, state]) => {
             const hub = structuredHubParts.find((p) => p.id === hubPartId);
-            const label = hub ? (partDisplayLabel(hub) ?? `Part ${hub.order + 1}`) : "Part";
+            // T-QVIEW-AUDIT-BCD-1 batch C: the attested printed label when
+            // the corpus carries one; the honest POSITIONAL fallback
+            // ("answer box 2" — claims position, never print identity)
+            // replaces the "Part 2" order-number guess.
+            const label = hub
+              ? (partDisplayLabel(hub) ?? `Answer box ${hub.order + 1}`)
+              : "Your answer";
             if (state.kind === "loading") {
               return (
                 <div key={hubPartId} className="flex items-center gap-2 rounded-lg border bg-background p-2 text-[13px]">
@@ -2284,7 +2327,7 @@ function CoreMarkingFlow({
                       <Markdown>{verdict.chatMessage}</Markdown>
                     )}
                     {verdict.scored.length > 0 && (
-                      <ul className="mt-1.5 list-disc space-y-0.5 pl-5 text-[12.5px]">
+                      <ul className="mt-1.5 list-disc space-y-0.5 pl-5 text-[13px]">
                         {verdict.scored.map((p, i) => (
                           <li key={i}>{p}</li>
                         ))}
@@ -2292,8 +2335,8 @@ function CoreMarkingFlow({
                     )}
                     {verdict.notScored.length > 0 && (
                       <>
-                        <p className="mt-1.5 text-[12.5px] font-medium">Not scored</p>
-                        <ul className="list-disc space-y-0.5 pl-5 text-[12.5px]">
+                        <p className="mt-1.5 text-[13px] font-medium">Not scored</p>
+                        <ul className="list-disc space-y-0.5 pl-5 text-[13px]">
                           {verdict.notScored.map((p, i) => (
                             <li key={i}>{p}</li>
                           ))}
@@ -2302,8 +2345,8 @@ function CoreMarkingFlow({
                     )}
                     {verdict.strategies && verdict.strategies.length > 0 && (
                       <>
-                        <p className="mt-1.5 text-[12.5px] font-medium">How to improve</p>
-                        <ul className="list-disc space-y-0.5 pl-5 text-[12.5px]">
+                        <p className="mt-1.5 text-[13px] font-medium">How to improve</p>
+                        <ul className="list-disc space-y-0.5 pl-5 text-[13px]">
                           {verdict.strategies.map((p, i) => (
                             <li key={i}>{p}</li>
                           ))}
@@ -2393,7 +2436,10 @@ function CoreMarkingFlow({
                 <div key={p.partId} className="rounded-lg border bg-background p-3">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="text-[13px] font-medium">
-                      Part {p.label}
+                      {/* T-QVIEW-AUDIT-BCD-1 batch C: the hub part's attested
+                          printed label ("(a)") leads; core's own label stays
+                          the fallback — no second numbering language */}
+                      {(hub && partDisplayLabel(hub)) || `Part ${p.label}`}
                       {hub && question.parts.filter((x) => x.questionType !== "multiple_choice").length > 1
                         ? ` · ${hub.marks} mark${hub.marks === 1 ? "" : "s"}`
                         : ""}
@@ -2413,7 +2459,7 @@ function CoreMarkingFlow({
                       </Badge>
                     )}
                     {p.modelId && (
-                      <span className="text-[10.5px] text-muted-foreground">via {p.modelId}</span>
+                      <span className="text-[11px] text-muted-foreground">via {p.modelId}</span>
                     )}
                     <div className="ml-auto flex items-center gap-1.5">
                       <Button
@@ -2581,12 +2627,25 @@ function MarkSchemeDialog({
           <div className="space-y-4">
             {question.parts.map((p) => {
               const typed = progress.typedAnswers[p.id]?.text ?? null;
+              // T-QVIEW-AUDIT-BCD-1 batch C (part-label unification): the
+              // modal's section chips speak the SAME printed-label law as
+              // the cards — the attested "(a)"-form label from
+              // lib/part-label, never an order-number guess (the card rows
+              // render "(a)"; the modal rendering "1" renumbered the
+              // question against its own card and against a partial paper's
+              // printed numbers). Fallbacks are honest: single-part
+              // questions with no attested label keep the whole-question
+              // "Q"; multi-part unlabeled parts render no chip at all (the
+              // marks stay right-aligned) — exactly the card's null law.
+              const label = partDisplayLabel(p) ?? (question.parts.length === 1 ? "Q" : null);
               return (
                 <section key={p.id} className="space-y-2 rounded-lg border bg-card p-4">
                   <div className="flex items-center gap-2">
-                    <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">
-                      {question.parts.length > 1 ? `${p.order + 1}` : "Q"}
-                    </span>
+                    {label && (
+                      <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">
+                        {label}
+                      </span>
+                    )}
                     {/* SME (figure 16): part marks right-aligned in the scheme row */}
                     <span className="ml-auto text-[13px] text-muted-foreground">
                       {p.marks} mark{p.marks === 1 ? "" : "s"}
@@ -2638,7 +2697,7 @@ function MarkSchemeDialog({
                         {p.markPoints.map((mp) => (
                           <li key={mp.id} className="flex items-start gap-2 text-[13px] leading-relaxed">
                             <span
-                              className="mt-0.5 shrink-0 rounded bg-muted px-1.5 py-0.5 text-[10.5px] font-semibold tabular-nums text-muted-foreground"
+                              className="mt-0.5 shrink-0 rounded bg-muted px-1.5 py-0.5 text-[11px] font-semibold tabular-nums text-muted-foreground"
                               title={`${mp.marks} mark${mp.marks === 1 ? "" : "s"}`}
                             >
                               {mp.id}
