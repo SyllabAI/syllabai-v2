@@ -125,11 +125,15 @@ export const metadata: Metadata = {
   // UX audit 2026-10-02 #14: a template brands every nested title (pages
   // export the bare page name; the suffix is appended exactly once here).
   title: {
-    default: "SyllabAI Hub — IGCSE & IAL revision",
+    // T-HUB-COURSES-PUBLIC-1 fix ②: the registry outgrew the tagline —
+    // 106 courses across IGCSE/AS/A-Level/IAL on two boards, so "IGCSE &
+    // IAL" undercounted the A-Level/AS lanes and the Edexcel-only framing
+    // hid Cambridge International entirely.
+    default: "SyllabAI Hub — IGCSE & A-Level revision",
     template: "%s — SyllabAI Hub",
   },
   description:
-    "Spec-anchored revision for Edexcel IGCSE & IAL: notes, exam questions, flashcards, past papers and a grounded AI tutor — mapped to your syllabus.",
+    "Spec-anchored revision for Edexcel & Cambridge International: notes, exam questions, flashcards, past papers and a grounded AI tutor — mapped to your syllabus.",
 };
 
 export default function RootLayout({
