@@ -183,17 +183,22 @@ export function Markdown({
           h3: ({ children }) => (
             <h4 className="mt-3 text-sm font-semibold">{children}</h4>
           ),
+          // T-QVIEW-AUDIT-BCD-1 batch B: corpus prose reads at the design
+          // scale's text-sm (14px) — the 13.5px micro-size was the stem's
+          // reading-typography defect (the audit's "13.5px vs the micro-px
+          // debris"); h4 rises with it (no heading may sit below the prose
+          // it headings).
           h4: ({ children }) => (
-            <h5 className="mt-2 text-[13px] font-semibold text-muted-foreground">{children}</h5>
+            <h5 className="mt-2 text-sm font-semibold text-muted-foreground">{children}</h5>
           ),
           p: ({ children }) => (
-            <p className={cn("text-[13.5px] leading-relaxed", pClassName)}>{children}</p>
+            <p className={cn("text-sm leading-relaxed", pClassName)}>{children}</p>
           ),
           ul: ({ children }) => (
-            <ul className="list-disc space-y-1 pl-5 text-[13.5px]">{children}</ul>
+            <ul className="list-disc space-y-1 pl-5 text-sm">{children}</ul>
           ),
           ol: ({ children }) => (
-            <ol className="list-decimal space-y-1 pl-5 text-[13.5px]">{children}</ol>
+            <ol className="list-decimal space-y-1 pl-5 text-sm">{children}</ol>
           ),
           li: ({ children }) => <li className="leading-relaxed">{children}</li>,
           strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
@@ -306,7 +311,7 @@ export function Markdown({
             );
           },
           code: ({ children }) => (
-            <code className="rounded bg-muted px-1 py-0.5 text-[12px]">{children}</code>
+            <code className="rounded bg-muted px-1 py-0.5 text-xs">{children}</code>
           ),
         }}
       >
