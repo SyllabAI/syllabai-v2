@@ -3,7 +3,7 @@ task:
   id: T-AIBANK-CARDDEDUP-1
   title: "AI bank card-level deduplication — the tutor's deterministic bank cards (band 1 census + band 2 paper one-view) never serve the same question slot twice; slot-identity dedup as a serve-side projection, one law both bands"
   owner: "operator (Z.ai, zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4, chat 0fe43d89-ff92-4e81-857a-1b1c6040a895, trace 1a1b6fe0cc532d49)"
-  status: "IN PROGRESS run-001"
+  status: "LANDED run-001 (PR #853, feat ee11a86f, CI 3/3 green on both heads) — awaiting integrator merge"
   priority: P1
   band: T-AIBANK (tutor bank bands — the deterministic card surface the chat relay serves)
   deps: [T-MIG-128, T-MIG-129, T-MIG-130]
