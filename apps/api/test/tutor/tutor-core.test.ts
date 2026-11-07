@@ -38,7 +38,11 @@ import {
   systemPrompt,
   userPrompt,
 } from "../../src/services/tutor/prompt";
-import { kgRetrieve, tokensOf } from "../../src/services/tutor/kg-retriever";
+import {
+  kgRetrieve,
+  mergeKnowledgeContexts,
+  tokensOf,
+} from "../../src/services/tutor/kg-retriever";
 import {
   INTERVENTION_THRESHOLD,
   assembleTutorContext,
@@ -1814,5 +1818,208 @@ describe("refusal redirect — T-TUTOR-PIVOT-1 run-002 (the pipeline carries the
     expect(completedFull).toContain("Could you rephrase the question");
     const tel = events[0] as { refused: boolean };
     expect(tel.refused).toBe(true);
+  });
+});
+
+// ── T-TUTOR-PIVOT-2 run-001 — the KG intent pivot arm (DC9) ────────────────
+// Prereg of record: docs/DC9-TUTOR-KG-INTENT-PIVOT-ARM-PLAN.md. The DC7 §4
+// disclosed residual, escalated on the T-TUTOR-AUDIT-1 live receipts: on a
+// pivot, KG intent ran on the blended query only, so the intent surface (and
+// with it the spec-boost anchor tier) described the PREVIOUS topic and the
+// pivot topic contributed nothing to the pool's head.
+
+describe("mergeKnowledgeContexts — T-TUTOR-PIVOT-2 union laws", () => {
+  const topic = (nodeId: string, code: string, score: number) => ({
+    nodeId,
+    code,
+    title: `title-${nodeId}`,
+    matchScore: score,
+  });
+  const ctx = (
+    topics: ReturnType<typeof topic>[],
+    prerequisites: Array<{ forTopicId: string; nodeId: string; title: string; depth: number }> = [],
+    misconceptions: Array<{ forTopicId: string; nodeId: string; title: string }> = [],
+  ) => ({ topics, prerequisites, misconceptions });
+
+  test("empty arms are identities", () => {
+    const full = ctx([topic("a", "c1", 1)]);
+    expect(mergeKnowledgeContexts({ topics: [], prerequisites: [], misconceptions: [] }, full)).toBe(full);
+    expect(mergeKnowledgeContexts(full, { topics: [], prerequisites: [], misconceptions: [] })).toBe(full);
+  });
+
+  test("topics dedup by node id at the MAX matchScore, re-sorted by the frozen law (specificity desc, code asc)", () => {
+    const merged = mergeKnowledgeContexts(
+      ctx([topic("n1", "b-code", 0.5), topic("n2", "a-code", 0.9)]),
+      ctx([topic("n1", "b-code", 1.0), topic("n3", "c-code", 0.7)]),
+    );
+    expect(merged.topics.map((t) => t.nodeId)).toEqual(["n1", "n2", "n3"]);
+    expect(merged.topics[0]?.matchScore).toBe(1.0);
+  });
+
+  test("prerequisites dedup per (forTopicId, nodeId) at the max depth; misconceptions dedup", () => {
+    const merged = mergeKnowledgeContexts(
+      ctx([topic("a", "c1", 1)], [
+        { forTopicId: "a", nodeId: "p1", title: "p1", depth: 2 },
+        { forTopicId: "a", nodeId: "p2", title: "p2", depth: 1 },
+      ], [{ forTopicId: "a", nodeId: "m1", title: "m1" }]),
+      ctx([topic("b", "c2", 0.9)], [
+        { forTopicId: "b", nodeId: "p1", title: "p1", depth: 3 },
+        { forTopicId: "a", nodeId: "p1", title: "p1", depth: 1 },
+      ], [{ forTopicId: "b", nodeId: "m1", title: "m1" }]),
+    );
+    const p1a = merged.prerequisites.find((p) => p.forTopicId === "a" && p.nodeId === "p1");
+    const p1b = merged.prerequisites.find((p) => p.forTopicId === "b" && p.nodeId === "p1");
+    expect(p1a?.depth).toBe(2); // same (topic, node) pair dedups at max depth
+    expect(p1b?.depth).toBe(3); // different topic ⇒ distinct link
+    expect(merged.misconceptions).toHaveLength(2); // keyed per topic
+  });
+
+  test("merge is idempotent", () => {
+    const a = ctx([topic("n1", "c1", 0.6)]);
+    const b = ctx([topic("n2", "c2", 0.8)]);
+    expect(mergeKnowledgeContexts(mergeKnowledgeContexts(a, b), mergeKnowledgeContexts(a, b))).toEqual(
+      mergeKnowledgeContexts(a, b),
+    );
+  });
+});
+
+describe("ka-rag KG intent pivot arm — T-TUTOR-PIVOT-2 (the bare question resolves its own intent)", () => {
+  const scopes = {
+    async resolveActive() {
+      return { curriculumVersionId: "cv", code: "4CH1", surface: new Set(["node-moles", "node-answers"]) };
+    },
+    async resolveForCourse() {
+      return null;
+    },
+  };
+  const graph = (titles: Array<[string, string]>) => {
+    let kgCalls = 0;
+    return {
+      calls: () => kgCalls,
+      async structureNodes() {
+        kgCalls += 1;
+        return titles.map(([id, title]) => ({
+          id,
+          code: `4CH1-${id}`,
+          title,
+          validation_status: "VALIDATED",
+        }));
+      },
+      async prerequisiteChains() {
+        return new Map();
+      },
+      async misconceptionsForTopics() {
+        return new Map();
+      },
+    };
+  };
+  const resolver = async () => ({ items: [], identityParsed: false, identityLabel: null });
+  // local copy — the DC7 block's examHistory fixture is describe-scoped
+  const pivotHistory = [
+    { role: "user", text: "How should I structure my answers to get full marks?" },
+    { role: "assistant", text: "Read the command word and plan your points." },
+    { role: "user", text: "What about six-mark questions?" },
+    { role: "assistant", text: "Plan, develop each point, conclude." },
+  ];
+
+  test("a topic pivot resolves the BARE question's KG intent too — the pivot topic enters the intent surface and the pool", async () => {
+    const g = graph([["node-moles", "Moles"]]);
+    const seen: string[] = [];
+    const prep = await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: g,
+        scopes,
+        vectorRetriever: async (q: string) => {
+          seen.push(q);
+          return [];
+        },
+        paperQuestionResolver: resolver,
+      } as never,
+      "l1",
+      "New topic: calculate moles in 8.0 g of methane",
+      pivotHistory,
+      null,
+    );
+    expect(seen.length).toBe(2); // the blend arm + the bare arm (vector)
+    expect(seen[1]).toBe("New topic: calculate moles in 8.0 g of methane");
+    expect(g.calls()).toBe(2); // the blend intent + the bare intent (KG)
+    const codes = prep.knowledge.topics.map((t) => t.code);
+    expect(codes).toContain("4CH1-node-moles"); // the pivot topic resolved on the BARE question
+    expect(prep.evidence.some((i) => i.source === "KNOWLEDGE_NODE" && i.nodeId === "node-moles")).toBe(true);
+  });
+
+  test("both arms' topics ride one intent surface — the blend topic and the pivot topic co-exist", async () => {
+    // "Answer structure" matches the exam-technique blend tokens; "Moles"
+    // matches only the bare pivot question — the union keeps BOTH.
+    const g = graph([
+      ["node-answers", "Answer structure"],
+      ["node-moles", "Moles"],
+    ]);
+    const prep = await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: g,
+        scopes,
+        vectorRetriever: async () => [],
+        paperQuestionResolver: resolver,
+      } as never,
+      "l1",
+      "New topic: calculate moles in 8.0 g of methane",
+      pivotHistory,
+      null,
+    );
+    const codes = prep.knowledge.topics.map((t) => t.code);
+    expect(codes).toContain("4CH1-node-answers"); // the blend arm keeps its signal
+    expect(codes).toContain("4CH1-node-moles"); // the bare arm adds the pivot topic
+  });
+
+  test("single-turn posture is byte-identical: ONE intent resolution, no bare arm", async () => {
+    const g = graph([["node-moles", "Moles"]]);
+    let vectorCalls = 0;
+    const prep = await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: g,
+        scopes,
+        vectorRetriever: async () => {
+          vectorCalls += 1;
+          return [];
+        },
+        paperQuestionResolver: resolver,
+      } as never,
+      "l1",
+      "what is a mole?",
+      [],
+      null,
+    );
+    expect(g.calls()).toBe(1);
+    expect(vectorCalls).toBe(1);
+    expect(prep.knowledge.topics.map((t) => t.code)).toContain("4CH1-node-moles");
+  });
+
+  test("an all-blank history degenerates to the single-turn intent posture", async () => {
+    const g = graph([["node-moles", "Moles"]]);
+    await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: g,
+        scopes,
+        vectorRetriever: async () => [],
+        paperQuestionResolver: resolver,
+      } as never,
+      "l1",
+      "what is a mole?",
+      [
+        { role: "user", text: "   " },
+        { role: "assistant", text: "" },
+      ],
+      null,
+    );
+    expect(g.calls()).toBe(1); // the blank blend equals the bare query — no second arm
   });
 });

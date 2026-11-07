@@ -1,0 +1,88 @@
+{
+ "generatedUtc": "2026-11-06T20:15:02Z",
+ "walkSessionId": "82ec4d5c-f22a-47c9-a9ee-61657c6dd41a",
+ "steps": [
+  {
+   "step": "A_control409_rename",
+   "http": "409",
+   "secs": 0.287,
+   "body": {
+    "message": "Teach SillyAI is not enabled for this course yet",
+    "error": "TEACH_ME_FLAG_DISABLED"
+   }
+  },
+  {
+   "step": "B2_create",
+   "http": "200",
+   "secs": 1.806,
+   "body": {},
+   "end": {
+    "http": "200",
+    "secs": 1.608,
+    "status": "completed"
+   }
+  },
+  {
+   "step": "B3_create",
+   "http": "409",
+   "secs": 1.223,
+   "body": {
+    "message": "objective generation returned the wrong count or grounding",
+    "error": "LLM_SHAPE_DRIFT"
+   }
+  },
+  {
+   "step": "B4_create",
+   "http": "200",
+   "secs": 0.992,
+   "body": {},
+   "end": {
+    "http": "200",
+    "secs": 13.659,
+    "status": "completed"
+   }
+  },
+  {
+   "step": "C_review_poll_1",
+   "http": "200",
+   "sessionStatus": "review_pending",
+   "reviewLanded": false
+  },
+  {
+   "step": "C_review_poll_2",
+   "http": "200",
+   "sessionStatus": "review_pending",
+   "reviewLanded": false
+  },
+  {
+   "step": "C_review_poll_3",
+   "http": "200",
+   "sessionStatus": "review_pending",
+   "reviewLanded": false
+  },
+  {
+   "step": "C_review_poll_4",
+   "http": "200",
+   "sessionStatus": "review_pending",
+   "reviewLanded": false
+  },
+  {
+   "step": "C_review_poll_5",
+   "http": "200",
+   "sessionStatus": "review_pending",
+   "reviewLanded": false
+  },
+  {
+   "step": "C_review_poll_6",
+   "http": "200",
+   "sessionStatus": "review_pending",
+   "reviewLanded": false
+  }
+ ],
+ "sessionIds": [
+  "82ec4d5c-f22a-47c9-a9ee-61657c6dd41a",
+  "4d02b480-c263-497d-a3bb-493af1486833",
+  "415ebfb8-8583-4feb-89c0-d9c61568935a"
+ ],
+ "capVerdict": "cap proof INCONCLUSIVE - inspect steps"
+}
