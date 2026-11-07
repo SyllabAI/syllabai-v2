@@ -1446,6 +1446,18 @@ Work Log:
 Stage Summary:
 - Branch t-theme-local-1/run-001 pushed; PR opened for operator eyeball (behavior change — NOT self-merged). After merge: theme changes write ONLY the browser record (no theme PUTs), the theme survives sign-out and account switches on the same browser, other browsers/devices start at the system default, and each account's stale theme doc self-retires to the honest null on its first post-revert login.
 
+
+## t-ugm-link-fix run-002 — live re-verification on the new production of record (second Vercel account)
+
+Task ID: t-ugm-link-fix/r2 (run-002; operator trace 1a1b4da4df42f121 "Vercel account was changed. We use a second account now. PAT (in-chat, never persisted)"; continuing run-001 trace 1a1b22336016dbdd "fix the 8 broken links")
+Task: close the two run-001 residuals — the owed production redeploy and post-deploy re-verification — against the SECOND-account production of record.
+- Production of record moved: second Vercel account syllabainoreply-4440 hosts syllabai-hub-v2 (www.syllab-ai.com canonical + apex redirect + syllabai-hub-v2-seven.vercel.app) and the api project; the first account (syllabai-1403) serves 402 DEPLOYMENT_DISABLED on both projects (verified 2026-11-07).
+- Fix currency PROVEN: the hub project is Git-integrated — auto-bake of the t-ugm-link-fix merge fired on merge: deployment 30e0wwdaf READY 2026-11-06T21:11:40Z, meta.githubCommitSha = dab1fd67 (the merge of record). No manual deploy fired (a CLI deploy would have raced the integration); newer queued bake 3ae3ef1ddf (another lane) supersedes with dab1fd67 as ancestor.
+- Live battery (bounded sweep, sandbox scripts/prod_battery.py, ~25 requests, polite): 13/13 internal URLs land 200 (content or the designed /login gate), zero 4xx/5xx; the 3 fixed UGM reader routes 307 -> /login (ALIVE, NOT 404); the 3 absolutized undergroundmathematics.org targets re-verified 200 on 2026-11-07; CI on dab1fd67 3/3 green (census + hub + verify).
+- Dispositions: residual 1 (redeploy owed) SATISFIED by the account move + auto-bake sha currency; residual 2 (full prod re-crawl) NOT re-run at 16,456-URL scale — the run-001 crawler scripts are no longer present in this recycled sandbox (file census 2026-11-07); a bounded fresh sweep executed instead; full prod re-crawl on operator order.
+- Disclosures: in-body flattening assertion still needs an authenticated session (/ugm/* gates logged-out; run-001 limitation stands — evidence = URL-level + build-sha + run-001 0-live-hops census); /courses, /past-papers, /practice, /plan now gate to /login (auth-first posture, other lanes' session law — reachable-auth, NOT broken); receipt contains zero tokens.
+Bookkeeping-only: .syllabai/** + worklog; no code or content change. fetch-first, no force.
+
 ## receipt(T-VERCEL-USAGE) — run-003: the preview kill + the deliberate bake floor — 2026-11-06
 - Operator order of record: "Proceed with the thing that actually protects the new account" (zai-web trace 1a1b4eabc366fc49). Extends run-001 (#796) + run-002 (hotfix direct-to-main).
 - W1 ignoreCommand branch gate: non-main refs skip the build when `VERCEL_GIT_COMMIT_REF` is present and != main; empty var FAILS OPEN into the run-002 diff gate (byte-preserved suffix). crons+git blocks byte-identical (asserted). The preview kill now rides the proven mechanism — whether Vercel honors the "*" glob is moot for every branch carrying main's vercel.json.
