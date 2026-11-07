@@ -260,8 +260,11 @@ export function Markdown({
               // hotlinked note image reflowed the page while loading (CLS).
               // A fixed 16:9 box with object-contain reserves the layout: any
               // intrinsic ratio letterboxes inside, nothing shifts.
+              // Enlarged 448px -> 672px (max-w-2xl): same zero-CLS guarantee,
+              // figures now use the full article column width instead of
+              // rendering postcard-sized at ~53% scale.
               return (
-                <span className="mx-auto my-1 block aspect-video w-full max-w-[448px] overflow-hidden rounded-md border bg-muted/40 md:max-w-md">
+                <span className="mx-auto my-1 block aspect-video w-full max-w-2xl overflow-hidden rounded-md border bg-muted/40">
                   <img
                     src={s}
                     alt={alt ?? ""}
