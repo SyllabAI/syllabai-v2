@@ -1,9 +1,9 @@
 version: 1
 task:
   id: T-HUB-COURSES-UI-1
-  title: "Courses directory redesign — stage 1 of the approved plan: the subject-identity single source (18 identities: family + bespoke glyph + tile colour pair), the 17-glyph bespoke SVG set with lucide fallback, and the build-gate coverage law over all 106 registry slugs (zero visual change by design)"
+  title: "Courses directory redesign — stage 1 shipped the subject-identity single source (18 identities: family + bespoke glyph + tile colour pair), the 17-glyph bespoke SVG set, and the build-gate coverage law over all 106 registry slugs; stage 2 (run-002) wires the directory onto it — the theme-fitted visual redesign of /courses"
   owner: "operator-delegate (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de4)"
-  status: "SHIPPED run-001 (PR #856 merged to main f6c7a376, 2026-11-07; operator order 'Proceed with lane T-HUB-COURSES-UI-1/run-001. Make sure not to break anything. The project needs to be always working')"
+  status: "IN_REVIEW run-002 (branch t-hub-courses-ui-1/run-002, PR against main pending CI; operator order 'start run-002 and also keep in mind of all the themes we have. The redesign should fit in perfectly', trace 1a1b74a9139b7f5d, 2026-11-07)"
   priority: P1
   band: T-HUB (frontend — courses directory surface)
   wave: hub-courses-directory
@@ -64,3 +64,46 @@ task:
     the scheduled 02:30Z bake is the self-heal floor. This lane merges
     nothing to prod until Vercel accepts deployments again; the merge is
     deploy-neutral while blocked.
+    run-002 (2026-11-07, operator trace 1a1b74a9139b7f5d, order "start
+    run-002 and also keep in mind of all the themes we have. The redesign
+    should fit in perfectly"): STAGE 2 WIRES THE DIRECTORY — the /courses
+    visual redesign lands on top of run-001's identity single source, theme-
+    fitted across all four themes (sme / quiet-green / candy-shop /
+    chat-app-plum) and both modes. (a) lib/directory-groups.ts — the pure,
+    unit-pinned grouping law: level sections keep the curriculum ladder
+    IGCSE->AS->A-Level->IAL verbatim (T-HUB-COURSES-PUBLIC-1 fix ④), family
+    groups inside each level in the identity lib's order (Sciences -> Maths
+    & CS -> English -> Business & Econ -> Humanities, the approved mockup's
+    scan order), rows sorted canonical subject -> board -> code -> label ->
+    slug (deterministic end to end); (b) course-directory.tsx rebuilt on it:
+    every card renders its subject's bespoke glyph on the identity tile pair
+    (mockup values byte-carried since run-001), the search haystack gains
+    the canonical subject + family label, and the continue-card, toolbar,
+    board chips + URL sync, ghost/bundle border laws, past-paper + corpus
+    badges, deep-link law and empty state are byte-identical behaviour;
+    (c) globals.css — one additive block, the .subject-tile colour template
+    derived through the run-004b color-mix pattern (light = the mockup's
+    pastel wash + saturated ink; dark = 16% identity fg over the theme's own
+    card + lightened ink; zero per-theme rules, the #500 law); (d)
+    directory-groups.test.ts — 10 tests / 16 expects pinning ladder, family
+    order, alias+case folding, sort law, unmapped-subject resilience,
+    determinism.
+    Gates: verify law PASS 106/106; bun test 21/21 (10 new + 11 run-001);
+    tsc --noEmit clean; eslint clean on changed src files; build:hub
+    compile+prerender complete (standalone cp = the disclosed sandbox
+    ENOSPC step; CI hub job is the packaging gate of record); prerendered
+    /courses structure check: IGCSE families 27+16+7+10+7=67, AS 12,
+    A-Level 14, IAL 13 = 106, zero lucide fallbacks rendered; visual
+    captures across sme light/dark, quiet-green, candy-shop light/dark,
+    mobile light/dark confirm the identity hue stays the subject-brand
+    constant while token chrome re-skins per theme/mode. Full-suite src/lib
+    run shows 23 pre-existing "Cannot find package react" resolution errors
+    REPRODUCED IDENTICAL on clean main (sandbox bun-hoisting quirk, not a
+    regression; CI's clean runner is the test gate of record).
+    Production fact (observed, disclosed): both projects still answer 402
+    DEPLOYMENT_DISABLED at 19:0xZ (probe) — the 02:30Z bake is the self-heal
+    floor; this PR is deploy-neutral while Vercel refuses deployments. The
+    session's GitHub REST mutations are secondary-rate-blocked (same class
+    run-001 disclosed; git push over the x-access-token path unaffected);
+    the PR goes through a patient retry loop and CI runs via the
+    pull_request trigger (main's push filter remains broken: 'ain]').
