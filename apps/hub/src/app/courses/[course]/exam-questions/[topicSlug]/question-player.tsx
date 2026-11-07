@@ -3,6 +3,10 @@
 /**
  * Question set player — the SME practice loop (research §6.2–6.4), upgraded:
  *   - difficulty tabs + question-number grid above the question list;
+ *   - two view modes (T-QVIEW-MODES-1): "All on one page" (the classic
+ *     scroll) and "One at a time" (one question per view — the number grid
+ *     and a Previous/Next footer navigate, the grid ring is the truth);
+ *     the choice persists locally (localStorage) across visits;
  *   - per-question toolbar: Full screen, Save (bookmark), difficulty chip;
  *   - MCQs are ANSWERABLE (SME parity — live SME markup verified 2026-09-18):
  *     the answer UI is always "Choose your answer" letter buttons → Submit
@@ -33,7 +37,14 @@
  *     per-part lightbulbs stay as precision shortcuts that pre-aim the
  *     Approach target.
  */
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -42,6 +53,8 @@ import {
   BookmarkCheck,
   CheckCircle2,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   ChevronUp,
   Lightbulb,
   Loader2,
@@ -104,6 +117,46 @@ import { cn } from "@/lib/utils";
 
 const DIFFICULTIES = ["all", "easy", "medium", "hard"] as const;
 type Difficulty = (typeof DIFFICULTIES)[number];
+
+// T-QVIEW-MODES-1 — the player's two view modes; "all" (one-page scroll,
+// the historical default) and "single" (one question per view). The choice
+// persists device-locally under one key across all surfaces that mount the
+// player.
+const VIEW_MODE_STORAGE_KEY = "syllabai-player-viewmode";
+type ViewMode = "all" | "single";
+
+// tiny external store for the persisted view mode: localStorage is not
+// reactive, so subscribers are pinged explicitly on write (same tab) and
+// via the `storage` event (other tabs). useSyncExternalStore keeps SSR and
+// first paint on the "all" snapshot — no hydration mismatch ever renders.
+const viewModeListeners = new Set<() => void>();
+function subscribeViewMode(onChange: () => void) {
+  viewModeListeners.add(onChange);
+  window.addEventListener("storage", onChange);
+  return () => {
+    viewModeListeners.delete(onChange);
+    window.removeEventListener("storage", onChange);
+  };
+}
+function getViewModeSnapshot(): ViewMode {
+  try {
+    const v = window.localStorage.getItem(VIEW_MODE_STORAGE_KEY);
+    return v === "single" ? "single" : "all";
+  } catch {
+    return "all"; // storage unavailable (private mode, disabled) — default stands
+  }
+}
+function getServerViewModeSnapshot(): ViewMode {
+  return "all"; // hydration truth: server and first paint agree on "all"
+}
+function writeViewMode(m: ViewMode) {
+  try {
+    window.localStorage.setItem(VIEW_MODE_STORAGE_KEY, m);
+  } catch {
+    // storage unavailable — the in-session choice still applies
+  }
+  viewModeListeners.forEach((cb) => cb());
+}
 
 interface McqChoice {
   label: string;
@@ -251,9 +304,92 @@ export function QuestionPlayer({
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
 
+  // audit 2026-10-30 (motion review): grid jumps honor reduced motion —
+  // the unguarded spelling of the contract TypedAnswerWorkspace already
+  // implemented inline (scrollBehavior() consolidates all three sites).
+  const scrollTo = useCallback((id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
+  }, []);
+
+  // ── view modes (T-QVIEW-MODES-1) ─────────────────────────────────────
+  // "all" = today's one-page scroll (the default, so nothing changes for
+  // anyone who hasn't opted in); "single" = one question per view, navigated
+  // by the number grid above and a Previous/Next footer below. The choice
+  // persists in localStorage (device-local, one preference across surfaces)
+  // through a tiny external store: useSyncExternalStore keeps SSR and first
+  // paint on the "all" snapshot (no hydration mismatch ever renders) and the
+  // `storage` event carries the choice across open tabs for free.
+  const viewMode = useSyncExternalStore(
+    subscribeViewMode,
+    getViewModeSnapshot,
+    getServerViewModeSnapshot,
+  );
+  const single = viewMode === "single";
+  // the question the player is actually ON — derived, never stored: clamped
+  // into the visible list in single mode (difficulty filters shrink it),
+  // passthrough in "all" where the scroll-spy owns it
+  const viewIdx = single
+    ? Math.max(0, Math.min(activeIdx ?? 0, visible.length - 1))
+    : activeIdx;
+  const switchViewMode = (m: ViewMode) => {
+    writeViewMode(m);
+    // after commit: entering single lands at the top of the page (the card
+    // is the page now); returning to all restores the question being read
+    setTimeout(() => {
+      if (m === "single") {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      } else if (viewIdx != null && visible[viewIdx]) {
+        scrollTo(`q-${visible[viewIdx].id}`);
+      }
+    }, 0);
+  };
+  const goTo = useCallback(
+    (i: number) => {
+      const q = visible[i];
+      if (!q) return;
+      setActiveIdx(i);
+      if (single) {
+        // card swap, not anchor scroll — the card IS the page; land at the top
+        window.scrollTo({ top: 0, behavior: scrollBehavior() });
+      } else {
+        scrollTo(`q-${q.id}`);
+      }
+    },
+    [single, visible, scrollTo, setActiveIdx],
+  );
+  // ←/→ step through questions in single mode — but never while typing, in
+  // a dialog/overlay, or on the difficulty tablist (its arrows mean tabs)
+  useEffect(() => {
+    if (!single) return;
+    const onKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement | null;
+      if (
+        !t ||
+        t.tagName === "INPUT" ||
+        t.tagName === "TEXTAREA" ||
+        t.tagName === "SELECT" ||
+        t.isContentEditable ||
+        t.closest('[role="dialog"], [role="tablist"]')
+      ) {
+        return;
+      }
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const cur = viewIdx ?? 0;
+      const next = e.key === "ArrowRight" ? cur + 1 : cur - 1;
+      if (next < 0 || next >= visible.length) return;
+      e.preventDefault();
+      goTo(next);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [single, viewIdx, visible, goTo]);
+
   useEffect(() => {
     const root = listRef.current;
-    if (!root || typeof IntersectionObserver === "undefined") return;
+    // single mode (T-QVIEW-MODES-1): one card is always in view and active
+    // is set directly by the grid / footer / arrows — the scroll-spy is
+    // an "all"-mode instrument only
+    if (single || !root || typeof IntersectionObserver === "undefined") return;
     const ratios = new Map<Element, number>();
     const io = new IntersectionObserver(
       (entries) => {
@@ -276,7 +412,7 @@ export function QuestionPlayer({
     );
     root.querySelectorAll("article[data-qidx]").forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [visible]);
+  }, [visible, single]);
 
   /** the question the floating button will anchor — the active one when it
    *  can anchor (verified join), else the nearest that can; null = no
@@ -285,21 +421,14 @@ export function QuestionPlayer({
     if (visible.length === 0) return null;
     const canAnchor = (i: number) =>
       !!visible[i] && bridge.kind === "ready" && !!bridge.data.questions[visible[i].id];
-    const a = activeIdx ?? 0;
+    const a = viewIdx ?? 0;
     if (canAnchor(a)) return a;
     for (let d = 1; d < visible.length; d++) {
       if (canAnchor(a + d)) return a + d;
       if (canAnchor(a - d)) return a - d;
     }
     return null;
-  }, [activeIdx, visible, bridge]);
-
-  // audit 2026-10-30 (motion review): grid jumps honor reduced motion —
-  // the unguarded spelling of the contract TypedAnswerWorkspace already
-  // implemented inline (scrollBehavior() consolidates all three sites).
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
-  };
+  }, [viewIdx, visible, bridge]);
 
   return (
     <div className="space-y-5">
@@ -340,28 +469,56 @@ export function QuestionPlayer({
         </div>
       )}
 
+      {/* view-mode toggle (T-QVIEW-MODES-1) — one preference for both
+          surfaces; "all" is the default so current readers see no change */}
+      <div className="flex gap-1 rounded-lg border bg-card p-1" role="group" aria-label="View mode">
+        <button
+          aria-pressed={viewMode === "all"}
+          onClick={() => switchViewMode("all")}
+          className={cn(
+            "rounded-md px-3 py-1.5 text-[13px] font-medium transition-colors",
+            viewMode === "all"
+              ? "bg-primary/10 text-primary"
+              : "text-muted-foreground hover:bg-muted hover:text-foreground",
+          )}
+        >
+          All on one page
+        </button>
+        <button
+          aria-pressed={viewMode === "single"}
+          onClick={() => switchViewMode("single")}
+          className={cn(
+            "rounded-md px-3 py-1.5 text-[13px] font-medium transition-colors",
+            viewMode === "single"
+              ? "bg-primary/10 text-primary"
+              : "text-muted-foreground hover:bg-muted hover:text-foreground",
+          )}
+        >
+          One at a time
+        </button>
+      </div>
+
       {/* question number grid (SME) — printed paper numbers on paper
           playback (T-PAPER-PLAYBACK-1); the ring marks the question
           currently in view ("you are here") and layers over the attempted
-          fill, so the cell being read is findable either way */}
+          fill, so the cell being read is findable either way. In single
+          mode the ring is the WHOLE navigation truth (no scroll-spy) and a
+          click swaps the card instead of scrolling. */}
       <div ref={gridRef} className="flex flex-wrap gap-1.5" aria-label="Jump to question">
         {visible.map((q, i) => (
           <button
             key={q.id}
-            onClick={() => {
-              setActiveIdx(i);
-              scrollTo(`q-${q.id}`);
-            }}
+            onClick={() => goTo(i)}
             aria-label={`Question ${qLabel(i)}${isAttempted(q) ? " (attempted)" : ""}`}
-            aria-current={activeIdx === i || undefined}
+            aria-current={viewIdx === i || undefined}
             className={cn(
               "flex size-10 items-center justify-center rounded-md border text-[13px] font-medium transition-colors",
               isAttempted(q)
                 ? "border-primary bg-primary text-primary-foreground"
-                : activeIdx === i
+                : viewIdx === i
                   ? "border-primary bg-primary/10 text-primary"
                   : "hover:border-primary/50 hover:text-primary",
-              activeIdx === i && "ring-2 ring-primary/60 ring-offset-2 ring-offset-background",
+              viewIdx === i && "ring-2 ring-primary/60 ring-offset-2 ring-offset-background",
             )}
           >
             {qLabel(i)}
@@ -369,82 +526,122 @@ export function QuestionPlayer({
         ))}
       </div>
 
-      {/* questions — data-qidx feeds the floating button's anchor tracker */}
+      {/* questions — data-qidx feeds the floating button's anchor tracker.
+          Single mode renders exactly ONE card of the same list (same keys,
+          same real index qi — so printed numbers, CLA anchoring and the
+          full-screen/mark-scheme targets are all unchanged). */}
       <div ref={listRef} className="space-y-4">
-        {visible.map((q, qi) => (
-          <article key={q.id} id={`q-${q.id}`} data-qidx={qi} className="scroll-mt-24 rounded-xl border bg-card">
-            <div className="flex flex-wrap items-center gap-2 border-b px-4 py-2.5">
-              {/* printed paper number when attested, else position (T-PAPER-PLAYBACK-1) */}
-              <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">{qLabel(qi)}</span>
-              <Badge variant="outline" className="text-[10px]">
-                {q.totalMarks} mark{q.totalMarks === 1 ? "" : "s"}
-              </Badge>
-              {q.difficulty && (
-                <Badge variant="secondary" className="text-[10px] capitalize">
-                  {q.difficulty}
+        {visible.map((q, qi) =>
+          single && qi !== viewIdx ? null : (
+            <article key={q.id} id={`q-${q.id}`} data-qidx={qi} className="scroll-mt-24 rounded-xl border bg-card">
+              <div className="flex flex-wrap items-center gap-2 border-b px-4 py-2.5">
+                {/* printed paper number when attested, else position (T-PAPER-PLAYBACK-1) */}
+                <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">{qLabel(qi)}</span>
+                <Badge variant="outline" className="text-[10px]">
+                  {q.totalMarks} mark{q.totalMarks === 1 ? "" : "s"}
                 </Badge>
-              )}
-              {isAttempted(q) && (
-                <Badge variant="outline" className="border-success/30 text-[10px] text-success">
-                  <CheckCircle2 className="mr-0.5 size-3" aria-hidden /> attempted
-                </Badge>
-              )}
-              <div className="ml-auto flex items-center gap-1">
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="h-9 gap-1.5 px-2 text-xs"
-                  onClick={() => {
-                    setActiveIdx(qi);
-                    setFullFor({ q, index: qi });
-                  }}
-                >
-                  <Maximize2 className="size-3.5" aria-hidden /> Full screen
-                </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="h-9 gap-1.5 px-2 text-xs"
-                  onClick={() => toggleSavedQuestion(course, q.id, topicSlug, subtopicCode)}
-                  aria-pressed={!!progress.saved[q.id]}
-                >
-                  {progress.saved[q.id] ? (
-                    <>
-                      <BookmarkCheck className="size-3.5 text-primary" aria-hidden /> Saved
-                    </>
-                  ) : (
-                    <>
-                      <Bookmark className="size-3.5" aria-hidden /> Save
-                    </>
-                  )}
-                </Button>
+                {q.difficulty && (
+                  <Badge variant="secondary" className="text-[10px] capitalize">
+                    {q.difficulty}
+                  </Badge>
+                )}
+                {isAttempted(q) && (
+                  <Badge variant="outline" className="border-success/30 text-[10px] text-success">
+                    <CheckCircle2 className="mr-0.5 size-3" aria-hidden /> attempted
+                  </Badge>
+                )}
+                <div className="ml-auto flex items-center gap-1">
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-9 gap-1.5 px-2 text-xs"
+                    onClick={() => {
+                      setActiveIdx(qi);
+                      setFullFor({ q, index: qi });
+                    }}
+                  >
+                    <Maximize2 className="size-3.5" aria-hidden /> Full screen
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-9 gap-1.5 px-2 text-xs"
+                    onClick={() => toggleSavedQuestion(course, q.id, topicSlug, subtopicCode)}
+                    aria-pressed={!!progress.saved[q.id]}
+                  >
+                    {progress.saved[q.id] ? (
+                      <>
+                        <BookmarkCheck className="size-3.5 text-primary" aria-hidden /> Saved
+                      </>
+                    ) : (
+                      <>
+                        <Bookmark className="size-3.5" aria-hidden /> Save
+                      </>
+                    )}
+                  </Button>
+                </div>
               </div>
-            </div>
 
-            <div className="px-4 py-4">
-              <QuestionBody
-                course={course}
-                question={q}
-                topicSlug={topicSlug}
-                subtopicCode={subtopicCode}
-                subtopicTitle={subtopicTitle}
-                onViewModel={() => {
-                  setActiveIdx(qi);
-                  setSchemeFor(q);
-                }}
-                bridge={bridge}
-                onAskCla={() => openCla(q, qi, null)}
-                onAskClaPart={(partId) => openCla(q, qi, partId)}
-              />
-            </div>
-          </article>
-        ))}
+              <div className="px-4 py-4">
+                <QuestionBody
+                  course={course}
+                  question={q}
+                  topicSlug={topicSlug}
+                  subtopicCode={subtopicCode}
+                  subtopicTitle={subtopicTitle}
+                  onViewModel={() => {
+                    setActiveIdx(qi);
+                    setSchemeFor(q);
+                  }}
+                  bridge={bridge}
+                  onAskCla={() => openCla(q, qi, null)}
+                  onAskClaPart={(partId) => openCla(q, qi, partId)}
+                />
+              </div>
+            </article>
+          ),
+        )}
         {visible.length === 0 && (
           <p className="rounded-lg border bg-muted/30 px-4 py-6 text-center text-sm text-muted-foreground">
             No {difficulty} questions in this set.
           </p>
         )}
       </div>
+
+      {/* single-mode pagination footer (T-QVIEW-MODES-1) — Previous /
+          Question N of M / Next, endpoints disabled (a paper has ends; it
+          does not wrap). The counter is aria-live so a screen reader hears
+          the step; labels carry the printed question numbers. */}
+      {single && visible.length > 0 && (
+        <nav
+          aria-label="Question pagination"
+          className="flex items-center justify-between gap-3 rounded-lg border bg-card px-4 py-3"
+        >
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-1.5"
+            disabled={(viewIdx ?? 0) === 0}
+            aria-keyshortcuts="ArrowLeft"
+            onClick={() => goTo((viewIdx ?? 0) - 1)}
+          >
+            <ChevronLeft className="size-4" aria-hidden /> Previous
+          </Button>
+          <p className="text-[13px] tabular-nums text-muted-foreground" aria-live="polite">
+            Question {qLabel(viewIdx ?? 0)} of {visible.length}
+          </p>
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-1.5"
+            disabled={(viewIdx ?? 0) >= visible.length - 1}
+            aria-keyshortcuts="ArrowRight"
+            onClick={() => goTo((viewIdx ?? 0) + 1)}
+          >
+            Next <ChevronRight className="size-4" aria-hidden />
+          </Button>
+        </nav>
+      )}
 
       {/* the FLOATING CLA entry (Revision Notes parity — operator 2026-09-29,
           trace 1a0ec14f2f7e3581). One page holds MANY questions, so the
@@ -465,13 +662,13 @@ export function QuestionPlayer({
           className="fixed bottom-6 right-6 z-40 h-12 gap-2 rounded-full px-5 shadow-lg animate-in fade-in-0 zoom-in-95 duration-200 ease-out"
           aria-haspopup="dialog"
           aria-label={`Ask the contextual assistant about question ${qLabel(claAnchorIdx)}${
-            activeIdx !== null && activeIdx !== claAnchorIdx
-              ? ` (question ${qLabel(activeIdx)} is not anchored for the assistant yet)`
+            viewIdx !== null && viewIdx !== claAnchorIdx
+              ? ` (question ${qLabel(viewIdx)} is not anchored for the assistant yet)`
               : ""
           }`}
           title={`Ask CLA about question ${qLabel(claAnchorIdx)}${
-            activeIdx !== null && activeIdx !== claAnchorIdx
-              ? ` (question ${qLabel(activeIdx)} is not anchored for the assistant yet)`
+            viewIdx !== null && viewIdx !== claAnchorIdx
+              ? ` (question ${qLabel(viewIdx)} is not anchored for the assistant yet)`
               : ""
           }`}
           onClick={() => openCla(visible[claAnchorIdx], claAnchorIdx, null)}
