@@ -36,6 +36,27 @@
  * zero vector calls on every path. SQL note: the createSql adapter
  * (identity/users toQuery) serializes $N params only — every statement here
  * is ONE flat template, fully parameterized (no fragments, no .raw).
+ *
+ * CARD-LEVEL DEDUP (T-AIBANK-CARDDEDUP-1, operator order 2026-11-08 "AI
+ * bank card level deduplication"): the bank's rows of record can carry one
+ * question SLOT more than once — a double-run ingestion re-inserts the same
+ * exam_paper_id + external_ref, a paperless card-bank insert can double the
+ * same way — and both bands serve rows verbatim, so the census total, the
+ * shown list, the card's marks sum and the copy text all inflated with
+ * every duplicate row. The law: a question slot (one paper + one question
+ * number) serves at most once per card. Slot identity = (paperId,
+ * external_ref) when the ref exists — case/whitespace-insensitive, a slot
+ * is a number on a paper, not a spelling — else (paperId, normalized stem,
+ * marks, command_word) for the ref-less rows. First-wins in the SQL's own
+ * deterministic ORDER BY, so the collapse never re-orders. Cross-paper rows
+ * NEVER collapse: a regional variant or a second paper owning the same
+ * stem is a real bank row with its own disclosed paper ref, not a
+ * duplicate. Siblings stay untouched — the sibling line is the candidate
+ * DISCLOSURE surface; hiding a second exam_papers row there would
+ * un-disclose, the opposite of the card's posture. Placement follows the
+ * stem-hygiene precedent: a serve-side projection, ONE law for both bands,
+ * the renderer untouched (the relay passes wire truth through unreshaped).
+ * total, the limit cut and every marks sum read AFTER the dedup.
  */
 import type { SqlFn } from "./sql";
 import { parseFetchQuery, parsedIsEmpty } from "./fetch-parser";
@@ -181,6 +202,49 @@ async function resolveNodes(
     nodes: await nodeRowsByIds(sql, [...ids], scope.surface),
     mode: "topic",
   };
+}
+
+// ── the card-level dedup (T-AIBANK-CARDDEDUP-1) ─────────────────────────────
+
+/** The row shape the slot key reads (snake_case — both call sites key the
+ *  RAW listing rows, before the item projections). paper_id is required so
+ *  a caller can never silently dedupe across papers by omitting it. */
+export interface SlotKeyableRow {
+  paper_id: string | null;
+  external_ref: string | null;
+  stem: string;
+  marks: number;
+  command_word: string | null;
+}
+
+/** The question SLOT identity — what "the same question on this card"
+ *  means, per the header law. A ref'd row keys by (paper, ref); a ref-less
+ *  row by (paper, normalized stem, marks, command word). */
+function questionSlotKey(r: SlotKeyableRow): string {
+  const paper = r.paper_id == null ? "-" : String(r.paper_id);
+  const ref = r.external_ref == null ? null : String(r.external_ref).trim();
+  if (ref != null && ref !== "") {
+    return `${paper}|ref|${ref.toLowerCase()}`;
+  }
+  const stem = String(r.stem ?? "").trim().replace(/\s+/g, " ").toLowerCase();
+  const command = r.command_word == null ? "" : String(r.command_word).trim().toLowerCase();
+  return `${paper}|stem|${stem}|${Number(r.marks)}|${command}`;
+}
+
+/** The dedup projection: first-wins in the caller's order (the SQL's
+ *  deterministic ORDER BY — the collapse never re-orders), everything else
+ *  passes byte-intact. Applied to BOTH bands before the census total, the
+ *  limit cut and the item projections. */
+export function distinctQuestionRows<T extends SlotKeyableRow>(rows: T[]): T[] {
+  const seen = new Set<string>();
+  const out: T[] = [];
+  for (const r of rows) {
+    const key = questionSlotKey(r);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(r);
+  }
+  return out;
 }
 
 // ── the listing (band 1) ────────────────────────────────────────────────────
@@ -407,21 +471,25 @@ export function buildBankBands(sql: SqlFn) {
       order by (ep.id is null), ep.year desc nulls last, ep.paper_code nulls last,
                q.external_ref nulls last, q.id`) as unknown as ListingRow[];
 
+    // the card-level dedup FIRST (T-AIBANK-CARDDEDUP-1): the census total,
+    // the limit cut and the spec/figure lookups all read the distinct rows —
+    // a double-ingested slot must not inflate "N matches" nor eat a shown slot
+    const distinct = distinctQuestionRows(rows);
     const codes = await specCodesByQuestion(
       sql,
-      rows.map((r) => String(r.id)),
+      distinct.map((r) => String(r.id)),
     );
     // lane #3: figure maps for the SHOWN items' distinct papers (after the
     // limit cut — the census total never pays for figures). Each resolve is
     // two small fail-open reads; a listing spans a handful of papers.
-    const shown = rows.slice(0, params.limit);
+    const shown = distinct.slice(0, params.limit);
     const figMaps = new Map<string, Map<string, TutorQuestionFigure[]>>();
     for (const pid of [...new Set(shown.map((r) => r.paper_id).filter((p): p is string => p != null))]) {
       figMaps.set(String(pid), await figuresByQuestionNumber(sql, String(pid)));
     }
     return {
       resolvedNodes: resolved.nodes.map(nodeOf),
-      total: rows.length,
+      total: distinct.length,
       items: shown.map((r) =>
         itemOf(
           r,
@@ -493,14 +561,21 @@ export function buildBankBands(sql: SqlFn) {
       order by q.external_ref, q.id`) as unknown as Array<
       Pick<ListingRow, "id" | "external_ref" | "question_type" | "stem" | "marks" | "command_word">
     >;
+    // the card-level dedup (T-AIBANK-CARDDEDUP-1): every row here IS the
+    // bound paper (the query filtered on exam_paper_id), so the paper rides
+    // each row explicitly and a double-ingested slot serves once — the
+    // card's "N questions · M marks" header stops counting a slot twice
+    const distinct = distinctQuestionRows(
+      rows.map((r) => ({ ...r, paper_id: bound.paperId })),
+    );
     const codes = await specCodesByQuestion(
       sql,
-      rows.map((r) => String(r.id)),
+      distinct.map((r) => String(r.id)),
     );
     // lane #3: the bound paper's figure map — the parser's own attribution
     // (the GLM draft refs) resolved to canonical pages, fail-open.
     const figMap = await figuresByQuestionNumber(sql, bound.paperId);
-    const questions = rows.map((r) =>
+    const questions = distinct.map((r) =>
       bankQuestionItemOf(
         r,
         codes.get(String(r.id)) ?? [],
