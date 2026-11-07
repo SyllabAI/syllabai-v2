@@ -1,0 +1,21 @@
+version: 1
+task:
+  id: T-UGM-LINKFIX-1
+  title: 'Broken-links zero band: fix every dead link the absolute full crawl proved on the production hub (7 internal 404s from scheme-less UGM source-path imports + 2 mirror-stale pastpapers-index entries)'
+  owner: Super Z (zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5, chat dd7e60e9-8ed0-4bd3-bbac-74ba824dc977,
+    dispatch trace 1a1aa3851b7563b1)
+  status: 'run-001 THIS BRANCH — PR of record'
+  priority: P1
+  band: T-UGM-LINKFIX (link-integrity band; evidence = the 2026-11-05 absolute full crawl, 65,900 fetches, queue drained)
+  wave: ugm-linkfix
+  deps: []
+  scope:
+    allowed:
+    - apps/hub/content/*/ugm-resources.json (bodyMd markdown link hrefs only)
+    - apps/hub/src/data/pastpapers-index.json (2 mirror-stale paper entries)
+    - worklog.md (append-only section)
+    - .syllabai/tasks/T-UGM-LINKFIX-1.yaml + .syllabai/receipts/T-UGM-LINKFIX-1/**
+    forbidden:
+    - any renderer/code change (the markdown outbound-link law already covers https?:// flattening; no heading-id/slug plugin addition in this band)
+    - the cones 'Pappus's Theorems' ](/) link (200, not broken; true UM target not statically verifiable — Angular SPA — no guessing URLs)
+    - full pastpapers-index <-> mirror reconciliation (separate hygiene task; index treeSha 2026-10-21 vs live mirror drift)

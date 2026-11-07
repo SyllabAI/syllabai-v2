@@ -1,0 +1,47 @@
+{
+ "schema": "syllabai-demo.lane-receipt/1.0",
+ "lane": "T-UGM-LINKFIX-1",
+ "run": "run-001",
+ "kind": "content-fix (broken-link zero band)",
+ "operatorTrace": "1a1aa3851b7563b1",
+ "generatedUtc": "2026-11-05T06:51:50Z",
+ "operatorOrder": {
+  "trace": "1a1aa3851b7563b1",
+  "order": "'fix the 8 broken links' — closing the loop on the operator-commissioned absolute full crawl of the production hub (https://syllabai-hub-v2.vercel.app)"
+ },
+ "task": "zero every broken link the absolute full crawl proved: 7 internal 404 URLs + 2 external raw-PDF 404s (9 URLs, 6 root causes)",
+ "evidenceOfRecord": {
+  "crawl": "scripts/crawl_full_site.py (resumable BFS; every <a href> on rendered HTML; same-origin recursed, externals fetched once, /api/* status-classified, gated routes per route-gate law)",
+  "numbers": "65,900 fetches = 58,376 unique internal URLs (all PAGE 200) + 7,524 unique external URLs; queue drained to zero (no unreachable page); 63 YouTube 429s = bot throttle (re-checked, not dead); failures = 7 FAIL_HTTP_404 internal + 2 EXTERNAL 404 raw.githubusercontent"
+ },
+ "findingsOfRecord": {
+  "rootCauses": {
+   "C1_schemeless_ugm_source_paths": "4 undergroundmathematics.org paths imported scheme-less into bodyMd; the shared Markdown <a> law renders scheme-less hrefs as LIVE internal links, so every render 404'd on the hub: /quadratics/discriminating-teacher-support x3 course-bundles, /circles/teddy-bear-teacher-support x5, /calculus-meets-functions/two-way-calculus-teacher-support x6, /chain-rule/reflecting-on-change x10 (24 renders across 10 course bundles; crawl-visible as 4 unique 404 URLs because the root-absolute targets dedupe)",
+   "C2_intradoc_relative_link": "[the next section](disagreement) in stretch-the-function x4 course-bundles resolved per-course to /courses/<c>/ugm/disagreement -> 404 (3 crawl-visible; cie-igcse-further-maths-additional-maths-25 latent because its UGM reader pages are not linked at runtime)",
+   "C3_mirror_stale_index": "pastpapers-index.json (treeSha 2c438f38, generated 2026-10-21) listed 4MA0-1H@2015-06 {\"d\":\"4MA0-1H\",\"qp\":627582} and 4MA0-2H@2013-06 {\"d\":\"4MA0-2H\",\"qp\":198982}; both dirs absent from the SyllabAI/syllabai-pastpapers mirror of record (contents-API listing: sessions contain only 1F/1FR/2F/2FR/3H/3HR/4H/4HR) -> raw qp.pdf 404 x2"
+  },
+  "countVsOperatorEight": "today's deterministic count is 9 broken URLs (7 unique internal + 2 external); the earlier verbal report said 8 — the delta is a counting perspective on the 3 per-course ugm/disagreement renders (1 pattern) vs 3 URLs; every root cause is fixed either way"
+ },
+ "apply": {
+  "files": {
+   "apps/hub/content/{cie-a-level-maths-20-pure-1,cie-as-maths-20-pure-1,ial-maths-20-pure-1,cie-a-level-maths-20-pure-2,cie-a-level-maths-20-pure-3,cie-as-maths-20-pure-2,ial-maths-20-pure-2,ial-maths-20-pure-3,ial-maths-20-pure-4,cie-igcse-further-maths-additional-maths-25}/ugm-resources.json": "string surgery on bodyMd: 24 link instances — 20 retargeted to verified-live https://undergroundmathematics.org/... source URLs (rendered as flattened label text per the outbound-link law, zero live hops) + 4 unwrapped to **the next section** (the '## A disagreement' section sits a few paragraphs below in the same bodyMd; the renderer adds no heading ids, an #anchor would be a no-op)",
+   "apps/hub/src/data/pastpapers-index.json": "2 mirror-stale qp-only entries dropped (byte surgery, single-line compact preserved); regeneration from the current mirror tree would drop the same 2"
+  },
+  "sourceUrlVerification": "all 4 retarget targets probed 200 with distinctive resource text (discriminating 19 hits / teddy bear 7 / two-way calculus 8 / reflecting on change 3); bogus-URL control 404s properly (UM is not an SPA catch-all)"
+ },
+ "gates": {
+  "json": "json.loads on all 11 touched files",
+  "byteDiff": "git diff --stat = 11 files, 24 insertions + 24 deletions exactly (the 24 link instances + the single-line index change)",
+  "residualCensus": "whole-corpus UGM markdown-link re-audit after fix: true dead links = 0; remaining non-external links = 8x mailto:info@undergroundmathematics.org (mailto is not an HTTP hop) + 1x cones ](/) (200, disclosed, not broken) + 1 LaTeX false positive \\right)(2x-a-b) (not a link)",
+  "siblingIntegrity": "pastpapers-index vs HEAD: \"d\":\"4MA0-1H\" 1->0, \"d\":\"4MA0-2H\" 1->0 — exactly the 2 dead entries, nothing else moved",
+  "noGuess": "every written URL was fetched before this run; nothing invented"
+ },
+ "boundaries": "10 ugm-resources.json bodyMd link hrefs + 2 index entries + filings; zero code/renderer changes; zero backend/db; zero other content planes",
+ "disclosures": [
+  "cones 'see [Pappus's Theorems](/)' lands on the hub home (200, not broken, same import class; true UM target not statically verifiable — Angular SPA — left untouched, no URL guessed)",
+  "cie-igcse-further-maths-additional-maths-25 UGM reader pages are not linked at runtime (only the /ugm index serves) — its bundle carried the same dead links latently; fixed at content level regardless",
+  "pastpapers-index meta.treeSha (2026-10-21) vs live mirror drift: a full index<->mirror reconciliation is a separate hygiene task (out of this band)",
+  "63 YouTube 429 responses during the crawl are bot throttling (the crawl UA gets rate-limited), not dead links — no fix owed"
+ ],
+ "antiTruncation": "worklog appended append-only (byte delta == len(section), asserted by this filing script)"
+}
