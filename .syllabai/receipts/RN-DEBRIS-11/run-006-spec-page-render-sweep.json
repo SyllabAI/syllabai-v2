@@ -1,0 +1,113 @@
+{
+ "receipt": "rn11-run-006-spec-page-render-sweep",
+ "family": "RN-DEBRIS-11",
+ "run": "006",
+ "lane": "spec-page render sweep (all registered courses) + repair tranche + headless click-through",
+ "operatorTrace": "1a1b1647c6722a4d",
+ "operatorOrder": "spec-page render sweep + headless click-through (the queued run-004 'next': post-merge re-render verification of the repaired maths pages, the corpus-wide S1/S2 residual census, and the end-to-end click verification)",
+ "generatedUtc": "2026-11-06",
+ "mode": "apply+verify",
+ "base": "origin/main be8668e9 (fetch-first; registry of record = 106 courses — 50 Edexcel + 56 Cambridge International)",
+ "phaseA_dataCensus": {
+  "script": "scripts/rn11_run006_sweep.py (workspace copy in lane artifacts as run006_census_pre/post.json)",
+  "scope": "every course curriculum.json (the spec page's data plane), run-004 detector battery + structural integrity",
+  "structural": {
+   "duplicateCodes": 0,
+   "emptyTitles": 0,
+   "parentRefsMissing": 0,
+   "unhandledPUA": 0,
+   "handledPUAOccurrences": 110,
+   "handledNote": "all 110 render through normalizeSpecText's adjudicated map (spec-text.ts) — incl. U+F084→≤ 14/14, U+F0FC tick, large-paren pieces"
+  },
+  "preTotals": {
+   "S1_expo_scatter": 29,
+   "S2_cap_pair": 102,
+   "S2_plus_pair": 3,
+   "J1_letter_digit_jam": 62,
+   "J2_doubled_italic": 9,
+   "doubled_conjunction": 2,
+   "coursesWithHits": 44
+  },
+  "postTotals": {
+   "S1_expo_scatter": 29,
+   "S2_cap_pair": 101,
+   "S2_plus_pair": 2,
+   "J1_letter_digit_jam": 58,
+   "J2_doubled_italic": 8,
+   "doubled_conjunction": 2,
+   "coursesWithHits": 42
+  },
+  "classification": {
+   "legit_kept": [
+    "author initials (W H Auden, A R D Fairburn, R C Sherriff, H G Wells, J G Ballard, U A Fanthorpe, D H Lawrence, J B Priestley — 15 S2_cap hits across cie-igcse-english-literature-21 + igcse-english-literature-16)",
+    "ordinals/coefficients printed verbatim (1st/2nd/3rd degree, 13th/14th/15th/19th/21st century ordinals, 1/12th, 3sin/2sec/3cos/2sin/4ac/2at — the J1 majority)",
+    "run-004 adjudicated keeps excluded (igcse-maths-a-18-higher 3.3E 'and and')"
+   ],
+   "repaired_this_run": 6,
+   "nextTrancheInventory": {
+    "CIE_science_formula_scatter": "cie-a-level/as-chemistry-25 (9701), cie-a-level/as-physics-25 (9702), cie-igcse-chemistry-23 + co-ordinated/combined chemistry (0620/0654/0653), cie-igcse-biology-23 + co-ordinated/combined biology (0610), env-mgmt (0680/5014) — subscript-loss (H O for H2O, NaC l for NaCl) + leading-digit superscript scatter; needs the per-syllabus official PDF evidence pass (~80 file-sites, ~40 unique alignments; 9701 PDF already fetched+sha-pinned in run006docs)",
+    "Edexcel_physics_fraction_family": "W P = t t / F A / Q V stacked-fraction linearization across 4PH1 + 4SD0 + 4XSD1 physics courses (8 file-sites)",
+    "CIE_maths_tex_scatter": "ial/further/pure polar-form + sum + nCr scatter (pure-3 3.9.5, FP1 1.2/8.1, pure-2 4.5/5.2, pure-4 6.2, stats-2 6.4.4, mech 4.1.6 F G) — needs 9709 prints",
+    "CIE_maths_25_23_exponent_loss": "standard-form 'A × 10 where n …' (exponent n lost) across cie-igcse-maths-25-core/extended + international-maths-23 — same 10ⁿ family as this run's 1.9A repair",
+    "twoColumn_interleave": "cie-igcse-maths-25-core/extended + international-maths-23 C2.5.3/C4.1.2/C5.4.1/E1.1.1/E1.4.1/E2.4.1/E2.12.4/E3.3.1/E5.1.2/E5.4.1-class titles carry left/right PDF-column interleave — separate family, needs per-line print alignment",
+    "english_language_TS": "cie-igcse-english-language-25 TS13/TS15 '2 2 General' leading digits (page-number scatter class) — 4 sites",
+    "doubled_conjunctions": "cie-a-level-maths-20-pure-3 3.7.4 'the the' + cie-igcse-science-combined-science-23-physics P4.4.1 'to to' — pending print checks (9709 / 0653)"
+   }
+  }
+ },
+ "phaseA_repairTranche": {
+  "script": "scripts/rn11_run006_apply.py",
+  "sites": 6,
+  "files": [
+   "apps/hub/content/igcse-maths-a-18-foundation/curriculum.json (1.9A)",
+   "apps/hub/content/igcse-maths-a-modular-24-foundation-unit-2/curriculum.json (1.9A)",
+   "apps/hub/content/igcse-maths-a-modular-24-foundation-unit-1/curriculum.json (1.6A, 1.8A)",
+   "apps/hub/content/igcse-maths-b-16/curriculum.json (5F, 4J)"
+  ],
+  "evidenceOfRecord": {
+   "4MA1": "Pearson Edexcel International GCSE Mathematics (Specification A) — Specification — Issue 2 — November 2017, qualifications.pearson.com, sha256 d58830e570d58aeccd7146f5465b3c117378c42d08d663f18478f2793c7e737b (byte-identical to run-004's recorded doc: 1534117 bytes); p19 char-exact extraction (pymupdf): 'the form a × 10n  where n is an integer  and 1 \\uf084 a < 10' — U+F084 is the corpus-adjudicated ≤ glyph ALREADY PRESENT verbatim in the damaged data (never invented); the print's superscript n after '× 10' was lost in the corpus extraction → restored as 10ⁿ (run-004 Unicode-superscript convention)",
+   "4MB1": "Pearson Edexcel International GCSE Mathematics (Specification B) — Specification — Issue 1 — January 2016, qualifications.pearson.com, sha256 62d4534ba1c0aee42ce2d3e7fd1da8083fd03216dd106da11ae590525d3187a5; p15: 'y= Ax 3 + Bx 2 + Cx + D + [E over x] + [F over x2]' → y = Ax³ + Bx² + Cx + D + E/x + F/x² (stacked fractions linearized per run-004's own S2 target description; superscripts per run-004 convention); p17 5F: 'with 2 × 2 matrices'"
+  },
+  "gates": [
+   "G1 serializer round-trip byte-exact on all 4 originals (compact separators, ensure_ascii=False)",
+   "G0 full-title byte anchors — every old form matched byte-exactly before any write",
+   "G2 post-write title diffs == exactly the expected 6 (per-file 1/1/2/2)",
+   "G3 node counts, code order and ALL non-title fields byte-identical",
+   "G4 post-census: 0 non-legit residue on the 4 files (legit 3G ordinals excluded)"
+  ],
+  "delta": "J1 62→58, S2C 102→101, S2P 3→2, J2 9→8; the 4J repair cleared three detector families at once"
+ },
+ "phaseB_liveRenderSweep": {
+  "method": "production-grade render proof on a local Next 16 dev server (sandbox cannot finish the 4,648-page prerender build — the build toolchain OOM-kills silently here; dev serves the same RSC pipeline), every registered course's /specification fetched with a signed routing cookie",
+  "authDiscovery": "T-ACCOUNT-ONLY run-001 (landed 2026-11-05) gates the WHOLE /courses tree behind sign-in — anonymous fetches get 307 /login?next=… (the earlier all-missing sweep rows were the login wall, not a render defect). The sweep + click-through ran with a routing cookie issued by the of-record POST /api/session endpoint against a LOCAL-ONLY SESSION_SECRET (dev sandbox value, never committed; the cookie authorizes routing only — data-plane authn unchanged)",
+  "checkerFidelity": "title matching runs a byte-faithful mirror of normalizeSpecText (PUA map + residual-PUA strip, derivative-dot scatter, modulus-bar de-padding '| x |'→'|x|', NBSP/zero-width/control strips) + parseSpecStatement's ' • ' bullet restructuring (bullets elided both sides — list markers are CSS pseudo-elements with no text runs); text compared against tag-stripped DOM runs",
+  "result": "106/106 pages HTTP 200, zero error markers, ALL 12,246 SPEC_POINT statements verified present in the rendered text (per-course counts in run006_pagesweep.json)",
+  "includes": "run-004 'next' item #1 CLOSED: the run-004-repaired courses re-render verified — igcse-maths-a-18-foundation live DOM text '…form a × 10ⁿ where n is an integer and 1≤ a < 10' captured verbatim; igcse-maths-a-18-higher + both modular units pass"
+ },
+ "phaseC_headlessClickThrough": {
+  "tool": "agent-browser (headless chromium), session cookie injected",
+  "legs": [
+   "Edexcel leg: /courses (106 courses + board filters render) → search/filter → igcse-maths-a-18-foundation course hub → Specification nav → explorer (162 spec points, Paper/Tier scope filters, per-statement resource chips) → '3 resources' chip → popover (Revision Notes/Flashcards/Exam Questions) → Revision Notes → notes index → specific note page rn_TWbnDdF5fDgzjvVg (URL + h1 verified at each hop)",
+   "CIE leg: cie-a-level-chemistry-25/specification ('Chemistry 9701 — specification explorer — All 356 specification statements', honest applicability-pending note) → statement 1.1.1 '1 resource' chip → popover with the of-record join (Revision notes: None yet / Exam questions: 'Particles in the Atom & Atomic Radius · Structured Questions 6 Q' / Flashcards: None yet) → set page /courses/cie-a-level-chemistry-25/exam-questions/1-1-particles-in-the-atom-and-atomic-radius--structured-questions (title 'Chemistry — A-Level — SyllabAI Hub')"
+  ],
+  "screenshots": [
+   "/tmp/rn11/cie_spec_page.png",
+   "/tmp/rn11/cie_set_page.png (sandbox /tmp, regenerable)"
+  ],
+  "verdict": "the spec surface is click-through-intact end-to-end on both boards, including the run-005-wired CIE resource joins"
+ },
+ "fences": "content edits confined to the 4 curriculum.json files (title field only); zero contracts/db/API changes; zero CIE content edits; receipts + artifacts + docs only otherwise",
+ "artifacts": {
+  "censusPre": ".syllabai/lane-artifacts/RN-DEBRIS-11/run006_census_pre.json",
+  "censusPost": ".syllabai/lane-artifacts/RN-DEBRIS-11/run006_census_post.json",
+  "pageSweep": ".syllabai/lane-artifacts/RN-DEBRIS-11/run006_pagesweep.json",
+  "evidencePDFs": ".syllabai/lane-artifacts/RN-DEBRIS-11/run006docs/pdf_sha256.txt",
+  "scripts": "workspace copies: rn11_run006_sweep.py / rn11_run006_apply.py / rn11_run006_pagesweep.py (+ chunk driver)"
+ },
+ "next": [
+  "run-007 tranche: the CIE science formula-scatter pass (9701/9702/0620/0610/0654/0653/0680 official PDFs — 9701 already fetched+sha-pinned)",
+  "Edexcel physics fraction family (4PH1/4SD0/4XSD1 prints)",
+  "CIE maths 25/23 exponent-loss + two-column interleave families",
+  "production-build prerender verification on CI (the sandbox OOM constraint is local-only)"
+ ]
+}
