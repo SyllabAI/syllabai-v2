@@ -416,13 +416,7 @@ export function ThreadSidebar({
             variant="ghost"
             size="sm"
             className="h-7 w-full justify-start gap-1.5 px-2 text-[11px] text-muted-foreground hover:text-destructive"
-            onClick={() => {
-              onClearAll();
-              toast({
-                title: "Conversations cleared",
-                description: "This tutor's conversations were cleared from this browser. Other courses are untouched.",
-              });
-            }}
+            onClick={() => onClearAll()}
           >
             <Trash2 className="size-3" aria-hidden /> Clear all conversations
           </Button>
