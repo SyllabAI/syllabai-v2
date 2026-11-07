@@ -1,0 +1,66 @@
+{
+ "task": "T-TEACHGENIE-003",
+ "run": "run-006",
+ "kind": "the CLI API deploy EXECUTED END-TO-END from this session — main 55b586e090f3 baked via the of-record chain, preview-gated GREEN, aliased to the production domain; the #817 dailySessionCap 999 is LIVE of record",
+ "agent": "Super Z (zai-web web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2)",
+ "date": "2026-11-06",
+ "order": "operator supplied the delegated Vercel token in web chat (~17:20Z, 'vcp_…' one-liner) — exactly the delegation the run-005 receipt anticipated ('if a token is delegated to THIS session (standing no-echo discipline), future deploys become executable end-to-end from here'); the token supply IS the deploy order",
+ "target_of_record": {
+  "sha": "main HEAD 55b586e090f3 (2026-11-06T15:16:04Z, merge #820 — hub nav strip; UNCHANGED since run-005 filed it as the target of record)",
+  "drift": "git diff be8668e99f2b..55b586e -- apps/api EMPTY (first-hand in the fresh clone) — the deployed API bytes are exactly the state the run-004 LIVE pilot verified, plus the #817 config line",
+  "clone": "fresh clone of SyllabAI/syllabai-v2, HEAD 55b586e, 0 dirty files"
+ },
+ "build_of_record": {
+  "recipe": "faithful re-run of the T-MIG-093 chain with shim v3 (the T-TEACH-REPORTS-1 run-002 2026-11-04 bake recipe, latest of-record adaptation), disclosed against current main: the six concept-graph YAMLs are COMMITTED inline (teacher/concept-graph-assets.gen.ts) so the v2 generated-module + readResource shims are RETIRED (snapshot.ts is inline-first upstream); the learner-me NBA loader (not yet converted) re-pointed at the committed inline module (keys concept-graph/<file>.yaml; requireHash pins verify at boot, fail-closed); Bun.CryptoHasher/Bun.YAML.parse -> node:crypto + js-yaml (hoisted root store, zero manifest changes, bun install 988 pkgs); entry = the r1c Wave-A Node adapter verbatim (x-forwarded-proto/host + req.url reconstruction, streaming pass-through); worktree-only shims RESTORED post-build, git status PRISTINE (0 dirty)",
+  "bundle": "411 modules, 3,811,644 bytes CJS, sha256-16 a4bf41654e7a468f (stage /tmp/api-stage/api/index.js); bun build --target=node --format=cjs; CLI 65.12.1 (of-record 62.7.0/65.11.0 — version drift disclosed)",
+  "bundle_content_proof": [
+   "the #817 cap lift rides the bundle VERBATIM: 'quota: { dailySessionCap: 999 }' found first-hand in the built bytes",
+   "the post-#785 RENAMED gate copy rides the bundle VERBATIM: TEACH_ME_FLAG_DISABLED / 'Teach SillyAI is not enabled for this course yet'"
+  ]
+ },
+ "local_gate": {
+  "verdict": "REDUCED GATE 3/3 PASS + boot proof (adaptation DISCLOSED)",
+  "why_reduced": "the NEW-account env posture is SENSITIVE: GET env with decrypt=true returns ciphertext envelopes ({v:v2,...}) — the of-record DATABASE_URL is NOT lane-readable by design, so the 2026-11-04 8/8 DB legs (register/tutor on the real wire) are not executable locally anymore; those legs were proven on the PREVIEW deployment (real sensitive envs injected server-side) BEFORE the prod promote, per the T-TEACHGENIE-007 lane law (worklog :782, preview-gated)",
+  "executed": "real Node http server on the bundle (node v24.22.2): boot proof (module scope constructs clean, no Bun.* on the path); health 200 {groups,status:UP}; login-malformed 400 validation_failed; unknown-path 401 (anyRequest().authenticated()); local-only 44-byte JWT key + well-formed dummy DATABASE_URL; env file + server stub shredded post-gate"
+ },
+ "preview_gate": {
+  "verdict": "GREEN 7/7 (the worklog :782 law executed — prod promote only after this gate)",
+  "deployment": "dpl_G3iKfwvpGkBD3xfdFy4R3ZMxoomK (preview upload of the 2-file stage: api/index.js + vercel.json 2 rewrites /api/v1/(.*) + /actuator/health -> /api/index; .vercel/project.json linked to prj_vf1MQaCuuGHd83HaTA3uqDxETpb5 / team_oRKtmWlfLMR0hNaqViyWj7NZ)",
+  "probes": [
+   "health 200 {groups:[liveness,readiness],status:UP} Java-parity",
+   "anonymous /api/v1/auth/me 401 fail-closed",
+   "register 201 (fresh labelled learner r-tg006-preview-342212b5@example.invalid) — real Neon INSERT on the REAL env wire",
+   "login 200 (read path on the real wire)",
+   "auth/me 200",
+   "control course cie-igcse-biology-23 -> 409 TEACH_ME_FLAG_DISABLED, copy VERBATIM 'Teach SillyAI is not enabled for this course yet' (post-#785 RENAMED fingerprint; gate fires BEFORE quota counting — zero sessions, zero LLM)",
+   "GET teach-me history -> 200 {items:[]} (fresh learner)"
+  ],
+  "queue_note": "single Hobby-tier build slot: the preview queued ~25 min behind hub builds (of-record hub builds 900-1112s); the API build itself is seconds"
+ },
+ "promote_path": {
+  "promote_attempt": "vercel promote dpl_G3iK... --yes -> 'Successfully created new deployment' — the promote flow RE-CREATES a production-target deployment (dpl_GUtDCvyPBsrcEs1LSCVQzEBCMQ8w) rather than re-aliasing in place; that deploy queued behind the same hub builds",
+  "lever_executed": "the CUTOVER runbook §5 one-call re-alias lever (the named rollback/promote mechanism for this project): vercel alias syllabai-v2-nshzxoo1a-syllabainoreply-4440.vercel.app api.syllab-ai.com -> Success",
+  "domain_resolve_of_record": "GET /v13/deployments/api.syllab-ai.com FIRST-HAND after the alias: serves dpl_G3iKfwvpGkBD3xfdFy4R3ZMxoomK (the wire-proven deployment) — NOT the incumbent",
+  "pending_background": "the promote-created dpl_GUtDCvyPB (SAME deployment source — byte-identical bundle) remained in queue at filing time; when READY it may re-alias api.syllab-ai.com to itself — no behavioral delta, no action needed; disclosed"
+ },
+ "prod_battery": {
+  "verdict": "GREEN 5/5 wire probes against api.syllab-ai.com AFTER the alias switch (18:24:46Z): health 200 UP; anonymous me 401; register 201 (fresh labelled learner r-tg006-prod-7b01c58e@example.invalid); control-409 RENAMED copy VERBATIM on prod; hub www.syllab-ai.com 200 (hub untouched; this API origin is the hub CSP connect-src of record)",
+  "rollback_arm": "incumbent dpl_5qszhQNiipFE2uqTtdyJZDZdgUwP (15:49Z 2026-11-06, source cli, one lambda) stays READY and re-aliasable — the named vercel rollback lever; zero env changes made",
+  "evidence_files": "scripts/tg006_probes.json (preview gate 7), scripts/tg006_prod_probes.json (prod battery; its probe-6 'aliases:[]' reading is a v13 detail-endpoint quirk — the domain-resolve endpoint is the authoritative check and returned the promoted id first-hand)"
+ },
+ "cap_of_record": "the #817 dailySessionCap 999 is LIVE by the chain: bundle-content verbatim (a) -> bundle sha256-16 a4bf41654e7a468f (b) -> deployment dpl_G3iKfwvpGkBD3xfdFy4R3ZMxoomK READY (c) -> api.syllab-ai.com domain resolve first-hand (d); the constant itself stays NOT wire-readable (run-005 posture stands: the only wire discriminator is burning sessions to a cap of 3 — not executed, and meaningless at 999); config-sanity mirror intact (behavioural.test.ts asserts 999 on this head, CI green)",
+ "quota_accounting": "ZERO learner sessions created; ZERO LLM calls; 4 labelled probe learners total (r-tg006-preview-34560417 + r-tg006-preview-342212b5 on the preview wire, r-tg006-prod-61b584bd + r-tg006-prod-7b01c58e on prod — the first preview gate run 400ed on a PROBE-SHAPE error (difficulty/length transposed vs the contract enums easy|medium|hard / quick|in_depth — corrected and disclosed); 2 free control-course 409 probes; 1 Neon INSERT per probe learner (4 rows, disclosed test identities)",
+ "boundaries": [
+  "hub lane UNTOUCHED: no hub project calls beyond the read-only 200 sanity; observed account-plane context disclosed — multiple hub deployments churned during this run (one prod hub deploy CANCELED 17:49Z-era with the alias held, fail-safe per the supersession law; not this lane's action)",
+  "zero repo src bytes (receipts + worklog only, appended to the open run-004 receipts PR #819 branch)",
+  "PR not self-merged (receipts ride #819; integrator merges)",
+  "no-echo discipline held: the delegated Vercel token lived in .creds/vercel.token (mode 600) and was passed via $(cat) substitutions only — never printed, never stored in any artifact or receipt; sensitive-env ENVELOPES never materialized as plaintext (one ciphertext blob is visible in the local-gate boot-failure trace — envelope only, by construction undecryptable lane-side)",
+  "zero project config writes: no env mutations, no domain/setting changes beyond the one alias assignment of record"
+ ],
+ "sandbox_disclosures": [
+  "single Hobby build slot serialized the whole run: preview +25 min queue, promote-deploy still queued at filing; hub builds (900-1112s of record) dominated the slot",
+  "vercel CLI 65.12.1 via npx (of-record 62.7.0 / 65.11.0 — drift disclosed)",
+  "the promote-flow behavior (re-create-as-production instead of in-place re-alias) was discovered first-hand and recorded; the runbook lever settled the switch"
+ ],
+ "completion_driver": "scripts/tg006_bundle_build.py (build), scripts/tg006_localgate_reduced.py (gate), scripts/tg006_preview_probes.py (preview gate), scripts/tg006_prod_battery.py (battery), scripts/tg006_env_fetch.py (env names; staged envelopes shredded) — all sandbox-resident, probe JSONs alongside"
+}

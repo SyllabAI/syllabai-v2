@@ -134,6 +134,12 @@ export default async function PastPaperPage({
           subtopicCode={null}
           subtopicTitle={null}
           questions={paper.questions}
+          // T-PAPER-PLAYBACK-1: fixed-paper playback — the cards, the jump
+          // grid and the CLA chip carry the printed paper question numbers
+          // (position fallback where provenance is null), and the difficulty
+          // bar never mounts (filtering a paper would renumber it).
+          variant="paper"
+          questionNumbers={paper.questionNumbers}
         />
       </div>
     </div>
