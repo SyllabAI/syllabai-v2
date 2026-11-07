@@ -65,6 +65,7 @@ import { ApiError, api } from "@/lib/api";
 import type { TeacherAnnouncementView, TeacherClassDetailView } from "@/lib/types";
 import type { TeacherCourseLite } from "../../teacher-client";
 import { cn } from "@/lib/utils";
+import { PageHeader } from "@/components/layout/page-header";
 
 function apiMessage(err: unknown, fallback: string): string {
   if (err instanceof ApiError) return err.message;
@@ -385,40 +386,44 @@ export function ClassDetailClient({
         <ArrowLeft className="size-4" aria-hidden /> All classes
       </Link>
 
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <h1 className="flex flex-wrap items-center gap-2 text-2xl font-bold tracking-tight">
+      {/* T-HEADER-1: the shared tool-page header (status badge rides the title
+          row; the hub/KG/archive buttons the actions slot). */}
+      <PageHeader
+        title={
+          <span className="flex flex-wrap items-center gap-2">
             {detail.name}
             <Badge variant="outline" className="font-mono text-[10px]">
               {detail.status}
             </Badge>
-          </h1>
-          <p className="mt-1 text-sm text-muted-foreground">{detail.courseLabel}</p>
-        </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <Button variant="outline" size="sm" asChild>
-            <Link href={`/courses/${detail.courseSlug}`}>
-              <BookOpen className="size-3.5" aria-hidden /> Course hub
-            </Link>
-          </Button>
-          <Button variant="outline" size="sm" asChild>
-            <Link href={`/teacher/classes/${detail.id}/knowledge-graph`}>
-              <Network className="size-3.5" aria-hidden /> Class KG heatmap
-            </Link>
-          </Button>
-          <Button variant="outline" size="sm" onClick={() => void toggleStatus()}>
-            {active ? (
-              <>
-                <Archive className="size-3.5" aria-hidden /> Archive
-              </>
-            ) : (
-              <>
-                <ArchiveRestore className="size-3.5" aria-hidden /> Reopen
-              </>
-            )}
-          </Button>
-        </div>
-      </div>
+          </span>
+        }
+        description={detail.courseLabel}
+        actions={
+          <div className="flex flex-wrap items-center gap-2">
+            <Button variant="outline" size="sm" asChild>
+              <Link href={`/courses/${detail.courseSlug}`}>
+                <BookOpen className="size-3.5" aria-hidden /> Course hub
+              </Link>
+            </Button>
+            <Button variant="outline" size="sm" asChild>
+              <Link href={`/teacher/classes/${detail.id}/knowledge-graph`}>
+                <Network className="size-3.5" aria-hidden /> Class KG heatmap
+              </Link>
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => void toggleStatus()}>
+              {active ? (
+                <>
+                  <Archive className="size-3.5" aria-hidden /> Archive
+                </>
+              ) : (
+                <>
+                  <ArchiveRestore className="size-3.5" aria-hidden /> Reopen
+                </>
+              )}
+            </Button>
+          </div>
+        }
+      />
 
       {!active && (
         <div className="rounded-lg border border-dashed px-4 py-3 text-xs text-muted-foreground">

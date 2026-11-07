@@ -14,6 +14,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { GraduationCap, User } from "lucide-react";
+import { PageHeader } from "@/components/layout/page-header";
 import { ProvenanceBadge } from "@/components/provenance";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -136,20 +137,22 @@ export function LearnerClient() {
 
 function Header({ live, courseCode }: { live: boolean; courseCode: string | null }) {
   return (
-    <div>
-      <h1 className="flex flex-wrap items-center gap-2 text-2xl font-bold tracking-tight">
-        <User className="size-5 text-primary" aria-hidden />
-        My Progress
-        <ProvenanceBadge tier={live ? "CORE_MEASURED" : "SIMULATED"} studentVoice />
-        <Badge variant="outline" className="font-mono text-[10px]">
-          {courseCode ?? "4CH1"} · pilot
-        </Badge>
-      </h1>
-      <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-        {live
+    <PageHeader
+      title={
+        <span className="flex flex-wrap items-center gap-2">
+          <User className="size-5 text-primary" aria-hidden />
+          My Progress
+          <ProvenanceBadge tier={live ? "CORE_MEASURED" : "SIMULATED"} studentVoice />
+          <Badge variant="outline" className="font-mono text-[10px]">
+            {courseCode ?? "4CH1"} · pilot
+          </Badge>
+        </span>
+      }
+      description={
+        live
           ? "Measured live from your SyllabAI account — real attempts, Smart Mark evidence, Ebbinghaus decay and review scheduling computed on the backend. The same model paints the Knowledge Graph."
-          : "Derived from this browser's practice on the pilot course — a simulated, browser-local overlay that never writes to course data. Sign in on a bridge-eligible course to switch to the measured model."}
-      </p>
-    </div>
+          : "Derived from this browser's practice on the pilot course — a simulated, browser-local overlay that never writes to course data. Sign in on a bridge-eligible course to switch to the measured model."
+      }
+    />
   );
 }

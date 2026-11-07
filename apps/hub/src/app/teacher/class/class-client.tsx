@@ -42,6 +42,7 @@ import { formatRelative, humanizeCode } from "@/lib/format";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { KGExplorer } from "@/components/kg-explorer/KGExplorer";
 import { classGraphHost } from "@/components/kg-explorer/adapters";
+import { PageHeader } from "@/components/layout/page-header";
 import type {
   ClassLearnerRow,
   ClassOverviewView,
@@ -175,11 +176,7 @@ export function ClassIntelligenceClient() {
   if (subjectsError) {
     return (
       <div className="space-y-6">
-        <div className="min-w-0">
-          <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
-            Class insights
-          </h1>
-        </div>
+        <PageHeader title="Class insights" />
         <TeacherNav />
         <Alert variant="destructive">
           <AlertTitle>Could not load subjects</AlertTitle>
@@ -192,11 +189,7 @@ export function ClassIntelligenceClient() {
   if (subjects !== null && subjects.length === 0) {
     return (
       <div className="space-y-6">
-        <div className="min-w-0">
-          <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
-            Class insights
-          </h1>
-        </div>
+        <PageHeader title="Class insights" />
         <TeacherNav />
         <Alert>
           <AlertTitle>No subjects available</AlertTitle>
@@ -208,16 +201,11 @@ export function ClassIntelligenceClient() {
 
   return (
     <div className="space-y-6">
-      {/* header */}
-      <div className="min-w-0">
-        <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
-          Class insights
-        </h1>
-        <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Live from the SyllabAI backend — class-level facts over the whole pilot cohort, separated
-          by evidence kind.
-        </p>
-      </div>
+      {/* header — T-HEADER-1: the shared tool-page header. */}
+      <PageHeader
+        title="Class insights"
+        description="Live from the SyllabAI backend — class-level facts over the whole pilot cohort, separated by evidence kind."
+      />
 
       <TeacherNav />
 
