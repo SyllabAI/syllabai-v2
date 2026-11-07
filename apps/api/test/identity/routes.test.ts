@@ -528,3 +528,86 @@ describe("bootstrap surface — BootstrapAdminController/Service parity (unit ti
     expect(true).toBe(true);
   });
 });
+
+/**
+ * T-DEMO-PASSGUARD-1 — SYLLABAI_PROTECTED_EMAILS: env-declared accounts whose
+ * self-service password rotation is refused (403) BEFORE any credential work.
+ * The showcase demo accounts' credentials are burned in git history
+ * (T-DEMO-SHOWCASE-1 hardcoded them; T-TUTOR-SEC-1 rotated + went env-gated),
+ * so any history reader with a minted session could otherwise rotate them
+ * again and re-lock the showcase. Default (unset env) = empty list = inert.
+ */
+describe("POST /api/v1/auth/password — T-DEMO-PASSGUARD-1 protected accounts", () => {
+  const { app } = buildTestApp({
+    ...baseEnv,
+    // deliberately messy on purpose: spaces + mixed case — the loader trims
+    // and lowercases, so the registered lowercase email must still match.
+    SYLLABAI_PROTECTED_EMAILS: " Hussaina269A@gmail.com , spare@example.invalid ",
+  });
+
+  test("listed account → 403 forbidden, hash untouched (no AUDIT rotate)", async () => {
+    const reg = await post(app, "/api/v1/auth/register", {
+      email: "hussaina269a@gmail.com",
+      password: STRONG,
+      displayName: "demo student",
+    });
+    expect(reg.status).toBe(201);
+    const { accessToken } = (await reg.json()) as { accessToken: string };
+
+    const res = await post(
+      app,
+      "/api/v1/auth/password",
+      { currentPassword: STRONG, newPassword: "brand-new-password-2" },
+      { Authorization: `Bearer ${accessToken}` },
+    );
+    expect(res.status).toBe(403);
+    const body = (await res.json()) as ApiErrorBody;
+    expect(body.error).toBe("forbidden");
+    expect(body.message).toBe("password self-service is disabled for this account");
+  });
+
+  test("wrong current password on a listed account → still 403 (guard fires BEFORE the credential check)", async () => {
+    const reg = await post(app, "/api/v1/auth/register", {
+      email: "spare@example.invalid",
+      password: STRONG,
+      displayName: "spare",
+    });
+    const { accessToken } = (await reg.json()) as { accessToken: string };
+    const res = await post(
+      app,
+      "/api/v1/auth/password",
+      { currentPassword: "not-the-password", newPassword: "brand-new-password-2" },
+      { Authorization: `Bearer ${accessToken}` },
+    );
+    expect(res.status).toBe(403);
+  });
+
+  test("unlisted account keeps self-service rotation (204)", async () => {
+    const reg = await post(app, "/api/v1/auth/register", {
+      email: "plain-user@example.invalid",
+      password: STRONG,
+      displayName: "plain",
+    });
+    const { accessToken } = (await reg.json()) as { accessToken: string };
+    const res = await post(
+      app,
+      "/api/v1/auth/password",
+      { currentPassword: STRONG, newPassword: "brand-new-password-2" },
+      { Authorization: `Bearer ${accessToken}` },
+    );
+    expect(res.status).toBe(204);
+  });
+
+  test("unset env → guard inert (default posture unchanged)", () => {
+    const cfg = readIdentityConfig({ ...baseEnv });
+    expect(cfg.protectedEmails).toEqual([]);
+  });
+
+  test("loader trims + lowercases + drops empties", () => {
+    const cfg = readIdentityConfig({
+      ...baseEnv,
+      SYLLABAI_PROTECTED_EMAILS: " A@Example.com ,,, b@example.com ",
+    });
+    expect(cfg.protectedEmails).toEqual(["a@example.com", "b@example.com"]);
+  });
+});
