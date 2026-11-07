@@ -5,7 +5,7 @@ import { LoginClient } from "./login-client";
 export const metadata: Metadata = {
   title: "Sign in",
   description:
-    "Sign in or create your SyllabAI account — your tutor, assistant and progress live on your account. Browsing the course hubs stays open to everyone.",
+    "Sign in or create your SyllabAI account — your tutor, assistant and progress live on your account. Browsing the course directory needs no account.",
 };
 
 export default function LoginPage() {
