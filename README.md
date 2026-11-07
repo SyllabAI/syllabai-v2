@@ -1,8 +1,14 @@
 # syllabai-v2
 
 TypeScript monorepo and, since the **2026-10-13 cutover**, the **only system
-of record** for SyllabAI (api-of-record `syllabai-v2.vercel.app`, hub-of-record
-`syllabai-hub-v2.vercel.app`). The Java backend (`SyllabAI/syllabai-core`,
+of record** for SyllabAI (hub-of-record `https://www.syllab-ai.com` — the
+2026-11-05/06 redeploy from the successor Vercel account; api-of-record
+`https://api.syllab-ai.com`, attached 2026-11-06, with bare deployment origin
+`https://syllabai-v2-six.vercel.app` — see `docs/T-HUBWIRE-1-PLAN.md`). The
+earlier of-record URLs `syllabai-v2.vercel.app` / `syllabai-hub-v2.vercel.app`
+were **RETIRED 2026-11-05**: the original Vercel team hit its usage wall
+(deploys CANCELED, both URLs now serve 402 `DEPLOYMENT_DISABLED`). The Java
+backend (`SyllabAI/syllabai-core`,
 archived read-only) and the product frontend (`SyllabAI/syllabai-hub`, archived
 read-only) were re-platformed here as **apps/api** (Hono + Drizzle + Neon
 serverless) and **apps/hub** (imported Next.js frontend), sharing
