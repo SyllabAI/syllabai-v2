@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """RN-DEBRIS-11 run-012 — the independent verification battery.
 
-Re-derives every gate from the tree content + origin/main (base 1533294d ==
-origin/lane run-011 tip; el20/el25/ict-21 planes are byte-identical between
-origin/main and the base — asserted in G0) and never trusts the executor's
+Re-derives every gate from the tree content + origin/main (origin/main at the post-merge race-guard tip (3e7ec207, incl. the
+run-008 geography merge); the untouched-plane laws compare vs it) and never trusts the executor's
 censuses as their own input.
 """
 import json
@@ -16,7 +15,7 @@ REPO = Path("/home/z/my-project/work/syllabai-v2")
 HUB = REPO / "apps" / "hub"
 CONTENT = HUB / "content"
 KG = HUB / "public" / "kg" / "data"
-BASE = "1533294d"
+BASE = "origin/main"  # post-merge: the race-guard advance (3e7ec207) is the of-record base; the sibling/untouched laws compare vs it
 ART = REPO / ".syllabai" / "lane-artifacts" / "RN-DEBRIS-11"
 
 results = []
@@ -39,6 +38,11 @@ def require(cond, msg):
 
 def base_bytes(path):
     return subprocess.run(["git", "-C", str(REPO), "show", f"{BASE}:{path}"],
+                          capture_output=True, check=True).stdout
+
+
+def base_bytes_at(ref, path):
+    return subprocess.run(["git", "-C", str(REPO), "show", f"{ref}:{path}"],
                           capture_output=True, check=True).stdout
 
 
@@ -77,6 +81,7 @@ COURSES = {
 B25 = "cie-igcse-business-25"
 ICT21 = "cie-igcse-ict-21"
 
+# run-012's declared content delta vs origin/main
 DECLARED_MODIFIED = {
     f"apps/hub/content/{B25}/questions.json",
     f"apps/hub/content/{B25}/manifest.json",
@@ -92,32 +97,49 @@ DECLARED_MODIFIED = {
     "apps/hub/public/kg/data/cie-igcse-english-language-25.json",
     "apps/hub/public/kg/data/index.json",
 }
+# run-011's of-record delta CARRIED by this branch (receipted at 1533294d;
+# R0 merge order: run-011 first, then run-012)
+RUN011_FILES = {
+    f"apps/hub/content/{B25}/curriculum.json",
+    f"apps/hub/content/{B25}/manifest.json",
+    f"apps/hub/public/kg/data/{B25}.json",
+}
+RUN011_BASE = "1533294d"
+SYLLABAI_PREFIXES = (".syllabai/receipts/RN-DEBRIS-11/run-011-",
+                     ".syllabai/receipts/RN-DEBRIS-11/run-012-",
+                     ".syllabai/lane-artifacts/RN-DEBRIS-11/run011",
+                     ".syllabai/lane-artifacts/RN-DEBRIS-11/run012",
+                     ".syllabai/worklog.md")
 
 
 def g0():
-    st = subprocess.run(["git", "-C", str(REPO), "status", "--short"],
-                        capture_output=True, check=True).stdout.decode()
-    modified, untracked = set(), set()
-    for line in st.splitlines():
-        code, path = line[:2], line[3:].strip('"')
-        if code.strip() in ("M", "A"):
-            modified.add(path)
-        elif code.strip() == "??":
-            untracked.add(path)
-    require(modified == DECLARED_MODIFIED,
-            f"modified set drift: extra={sorted(modified - DECLARED_MODIFIED)[:3]} "
-            f"missing={sorted(DECLARED_MODIFIED - modified)[:3]}")
-    allowed_prefixes = (".syllabai/lane-artifacts/RN-DEBRIS-11/",)
-    bad = [u for u in untracked if not u.startswith(allowed_prefixes)]
-    require(not bad, f"untracked outside lane artifacts: {bad[:4]}")
-    # base identity: the three streams' untouched planes byte-equal origin/main
-    for path in [f"apps/hub/content/{B25}/curriculum.json",
-                 f"apps/hub/content/{ICT21}/curriculum.json",
+    delta = subprocess.run(["git", "-C", str(REPO), "diff", "--name-only",
+                            "origin/main..HEAD"],
+                           capture_output=True, check=True).stdout.decode().split()
+    declared_seen, bad = set(), []
+    for path in delta:
+        if path in DECLARED_MODIFIED:
+            declared_seen.add(path)
+        elif path in RUN011_FILES:
+            require((REPO / path).read_bytes() ==
+                    base_bytes_at(RUN011_BASE, path),
+                    f"run-011 carried file drifted: {path}")
+        elif path.startswith(SYLLABAI_PREFIXES):
+            pass
+        else:
+            bad.append(path)
+    require(declared_seen == DECLARED_MODIFIED,
+            f"declared delta drift: missing={sorted(DECLARED_MODIFIED - declared_seen)[:3]}")
+    require(not bad, f"delta outside the of-record sets: {bad[:4]}")
+    # the three streams' untouched planes byte-equal origin/main
+    for path in [f"apps/hub/content/{ICT21}/curriculum.json",
                  "apps/hub/content/cie-igcse-english-language-20/prerequisites.json",
-                 "apps/hub/content/cie-igcse-english-language-25/prerequisites.json"]:
+                 "apps/hub/content/cie-igcse-english-language-25/prerequisites.json",
+                 f"apps/hub/content/{B25}/prerequisites.json"]:
         cur = Path(REPO / path).read_bytes()
         require(cur == base_bytes(path), f"{path} drifted vs origin/main")
-    return f"13 declared files + {len(untracked)} lane artifacts; base planes == origin/main"
+    return (f"delta vs origin/main == 13 run-012 files + 4 run-011 carried files "
+            f"(== 1533294d) + .syllabai bookkeeping; untouched planes == origin/main")
 
 
 def g1():
@@ -259,10 +281,17 @@ def g4_kg():
     out = []
     written = {"cie-igcse-ict-21.json", "cie-igcse-english-language-20.json",
                "cie-igcse-english-language-25.json", "index.json"}
+    carried = {f"{B25}.json"}   # run-011's of-record KG (== 1533294d)
     for f in sorted(KG.glob("*.json")):
-        if f.name not in written:
-            base = base_bytes(f"apps/hub/public/kg/data/{f.name}")
-            require(f.read_bytes() == base, f"sibling KG {f.name} drifted")
+        if f.name in written:
+            continue
+        if f.name in carried:
+            require(f.read_bytes() == base_bytes_at(RUN011_BASE,
+                    f"apps/hub/public/kg/data/{f.name}"),
+                    f"run-011 carried KG {f.name} drifted")
+        else:
+            require(f.read_bytes() == base_bytes(f"apps/hub/public/kg/data/{f.name}"),
+                    f"sibling KG {f.name} drifted vs origin/main")
     for slug in [ICT21, "cie-igcse-english-language-20",
                  "cie-igcse-english-language-25"]:
         raw = (KG / f"{slug}.json").read_bytes()
@@ -419,20 +448,28 @@ def g7_index():
     raw = (KG / "index.json").read_bytes()
     idx = json.loads(raw)
     base_idx = json.loads(base_bytes("apps/hub/public/kg/data/index.json"))
-    changed, ict21_equal = 0, None
+    run011_idx = json.loads(base_bytes_at(RUN011_BASE,
+                            "apps/hub/public/kg/data/index.json"))
+    changed, b25_law = 0, None
+    row11 = next(r for r in run011_idx["courses"] if r["slug"] == B25)
     for co, cb in zip(idx["courses"], base_idx["courses"]):
         require(co["slug"] == cb["slug"], "index order drift")
         if co != cb:
             changed += 1
-            require(co["slug"] in ("cie-igcse-english-language-20",
-                                   "cie-igcse-english-language-25"),
-                    f"unexpected index row change {co['slug']}")
+            if co["slug"] == B25:
+                b25_law = co == row11
+            else:
+                require(co["slug"] in ("cie-igcse-english-language-20",
+                                       "cie-igcse-english-language-25"),
+                        f"unexpected index row change {co['slug']}")
         if co["slug"] == ICT21:
-            ict21_equal = co == cb
-    require(changed == 2, f"index changed rows {changed} != 2")
-    require(ict21_equal is True,
-            "ict-21 index row must stay byte-equal (counts unchanged 163/257/95)")
-    return "index.json: exactly 2 rows changed (el20/el25 25n/36e|39e/18sp); ict-21 row byte-equal"
+            require(co == cb,
+                    "ict-21 index row must stay byte-equal (counts unchanged 163/257/95)")
+    require(changed == 3, f"index changed rows {changed} != 3 (el20/el25 + run-011's b25)")
+    require(b25_law is True,
+            "business-25 index row must equal the run-011 receipted row (97/148/61)")
+    return ("index.json: exactly 3 rows changed (el20/el25 run-012 25n/36e|39e/18sp; "
+            "b25 == the run-011 receipted row); ict-21 byte-equal")
 
 
 def g8_titles():
