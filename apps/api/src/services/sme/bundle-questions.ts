@@ -103,7 +103,13 @@ import type {
   SmeQuestion,
   SmeSpecPoint,
 } from "./package";
-import { smeMemberSuffixReserve, smeQuestionRef } from "@syllabai/shared";
+import {
+  smeMemberSuffixReserve,
+  smeQuestionRef,
+  smeClaimIndex,
+  smeSeriesFor,
+  type SmeSeries,
+} from "@syllabai/shared";
 
 export class BundleQuestionsError extends Error {}
 
@@ -183,6 +189,34 @@ function partLabel(order: number): string {
   return String.fromCharCode(97 + order);
 }
 
+/** D-KG1b: the orders a page CLAIMS — the census gates exactly as the emit
+ * loop applies them (unmapped / badSum; dupOrder: the first occurrence
+ * claims). The claim index feeds the structured-twin series law.
+ * GATE-ORDER LAW (reconstruction r1.2): the gates run in the emit loop's
+ * own order — unmapped, badSum, THEN dupOrder — because a gated-OUT
+ * question never reserves its order slot (the emit loop's setOrders.add
+ * sits after the gates): a later good duplicate of that order IS
+ * admitted and must therefore be the claimer of record. Reserving the
+ * slot on the first RAW occurrence (the pre-reconstruction draft) left
+ * admitted questions without a claim — the strict smeSeriesFor
+ * fail-closed on cie-igcse-maths-25-core "circle-theorems|10" (page 14
+ * carries an unmapped q10 followed by a mapped q10) and the roster
+ * census zeroed. Claims == the exact (topicSlug, order) set the emit
+ * loop derives refs for, by construction. */
+function censusValidOrdersOf(questions: ReadonlyArray<BundleQuestion>): Set<number> {
+  const out = new Set<number>();
+  const seen = new Set<number>();
+  for (const q of questions) {
+    const parts = q.parts ?? [];
+    if (!parts.some((p) => (p.specPointCodes ?? []).length > 0)) continue; // unmapped
+    if (parts.reduce((a, p) => a + p.marks, 0) !== q.totalMarks) continue; // badSum
+    if (seen.has(q.order)) continue; // dupOrder: first PASSING occurrence claims
+    seen.add(q.order);
+    out.add(q.order);
+  }
+  return out;
+}
+
 /** spec code → the parent TOPIC dbCode (the 135a map; SPEC_POINT → TOPIC). */
 function topicCodeResolver(
   mapped: ReturnType<typeof mapBundleNodes>,
@@ -219,11 +253,43 @@ export interface BundleQuestionsInput {
   sets: BundleQuestionSet[];
   generatedUtc: string | null;
   importRef: string | null;
+  /** D-KG1b: the series of record per (set slug, order) — built by the
+   * census/driver mirror from the FULL course file (the package tree this
+   * shim receives is pre-filtered to never families and cannot rebuild the
+   * claim index). ABSENT = full-bundle path: the index is built from the
+   * input sets under the emit loop's own gates — a partial view degrades
+   * conservatively to legacy bytes, never to a wrong -w. */
+  seriesBySetOrder?: Map<string, SmeSeries>;
 }
 
 export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
   const { courseSlug, curriculum, sets } = input;
   if (sets.length === 0) throw new BundleQuestionsError("bundle carries no question sets");
+  // D-KG1b: the series of record. With a supplied map (the driver's
+  // pre-filtered path) the lookup is strict — a miss is index/caller drift
+  // and fails closed. Without one (full-bundle path) the claim index is
+  // built from the input sets under the EXACT gates the emit loop applies
+  // below (unmapped / badSum / dupOrder; the first occurrence claims).
+  const selfClaims = input.seriesBySetOrder
+    ? null
+    : smeClaimIndex(
+        sets.map((s) => ({
+          topicSlug: s.topicSlug,
+          orders: censusValidOrdersOf(s.questions),
+        })),
+      );
+  const seriesOf = (set: BundleQuestionSet, setIndex: number, q: BundleQuestion): SmeSeries => {
+    if (input.seriesBySetOrder) {
+      const s = input.seriesBySetOrder.get(set.slug + "|" + String(q.order));
+      if (s == null) {
+        throw new BundleQuestionsError(
+          "no series of record for " + set.slug + " order " + String(q.order) + " (driver/index drift)",
+        );
+      }
+      return s;
+    }
+    return smeSeriesFor(selfClaims!, set.topicSlug, setIndex, q.order);
+  };
   // the 135a node map, computed ONCE: the topic resolver and the spec-code
   // dbCode emission (the T-MIG-136 band-4 code-join amendment) share it, so
   // the two sides cannot drift
@@ -262,7 +328,7 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
   // census law is the DB-plane archive law, not the serving law).
   let crossSetRefCollision = 0;
 
-  for (const set of sets) {
+  for (const [setIndex, set] of sets.entries()) {
     const setOrders = new Set<number>();
     if (!set.topicSlug || set.topicSlug.trim() === "") {
       throw new BundleQuestionsError("set " + set.slug + " carries no topicSlug");
@@ -317,6 +383,7 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
         set.topicSlug,
         q.order,
         smeMemberSuffixReserve(q.parts),
+        seriesOf(set, setIndex, q),   // D-KG1b: k-th structured twin takes -w / -w2…
       );
       if (externalRef.length > MAX_REF) {
         // unreachable — the shared law enforces the bound by construction;

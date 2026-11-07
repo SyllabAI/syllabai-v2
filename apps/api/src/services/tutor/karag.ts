@@ -49,7 +49,7 @@ import {
 } from "./prompt";
 import { promptVariantFor } from "./subject-profile";
 import { evidenceFromNode, withRerankScore, type EvidenceItem } from "./evidence";
-import { kgRetrieve } from "./kg-retriever";
+import { kgRetrieve, mergeKnowledgeContexts } from "./kg-retriever";
 import {
   TUTOR_REFUSAL,
   courseScopeRefusal,
@@ -365,10 +365,31 @@ export async function prepare(
   const enriched = retrievalQuery(query, turns);
 
   // 1. deterministic intent + KG context
-  const knowledge: KnowledgeContext =
+  const knowledgeBlend: KnowledgeContext =
     scope == null
       ? { topics: [], prerequisites: [], misconceptions: [] }
       : await kgRetrieve(deps.kgGraph, enriched, deps.maxTopics ?? TUTOR_MAX_TOPICS, scope);
+
+  // 1.1 the KG intent pivot arm (T-TUTOR-PIVOT-2 run-001; prereg of record
+  //  docs/DC9-TUTOR-KG-INTENT-PIVOT-ARM-PLAN.md — the DC7 §4 disclosed
+  //  residual, escalated on the T-TUTOR-AUDIT-1 live receipts: on a pivot
+  //  the intent surface described only the PREVIOUS topic, so that topic's
+  //  rows anchored at the 1.0 spec-boost tier and owned the head of the
+  //  pool the honesty floor reads while the pivot topic contributed
+  //  nothing — the audit's potassium-vs-sodium and "New topic: moles"
+  //  repro classes). The blend keeps its frozen primary arm; the BARE
+  //  question resolves its OWN intent under the exact DC7 pivot condition
+  //  (enriched !== query), and the two contexts merge (mergeKnowledgeContexts
+  //  laws). The bare topics then carry their own KG rows into the pool AND
+  //  join the spec-boost set — on-pivot rows reach the anchor tier the
+  //  previous topic's rows already held. A single-turn ask (or all-blank
+  //  history) degenerates to enriched === query: no second resolution,
+  //  byte-identical behaviour, zero extra queries.
+  const knowledgeBare: KnowledgeContext =
+    scope == null || enriched === query
+      ? { topics: [], prerequisites: [], misconceptions: [] }
+      : await kgRetrieve(deps.kgGraph, query, deps.maxTopics ?? TUTOR_MAX_TOPICS, scope);
+  const knowledge = mergeKnowledgeContexts(knowledgeBlend, knowledgeBare);
 
   // 2. hybrid retrieval: KG evidence + vector evidence
   const kgCandidates = knowledge.topics.map((topic) =>

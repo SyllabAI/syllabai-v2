@@ -258,28 +258,33 @@ describe("T-MIG-135b the fail-closed shim laws", () => {
     expect(ref.startsWith("sme-eq-")).toBe(true);
   });
 
-  test("two sets sharing a topicSlug collide on the package-global namespace and the SECOND TWIN IS EXCLUDED + COUNTED (the CONSUME-3 cross-set law; the run-003 blocker class was the build-time refusal, the per-paper namespace remains the durable fix)", () => {
-    // the CONSUME-3 amendment (operator trace 1a18bc6701800065): the wave3
-    // codes made the corpus's MCQ + structured set twins per topic
-    // simultaneously ingestable — the (course, topicSlug, order) namespace
-    // collides cross-set. The honest shim EXCLUDES + COUNTS the second twin
-    // exactly like the T-MIG-136 band-4 badSum class (nothing rewritten; the
-    // skipped twin never ingests so no stored identity changes; the fleet
-    // census of record carries 1,118 disclosed collisions). The pre-fix
-    // build-time refusal was the run-003 blocker class; the per-paper
-    // namespace remains the durable namespace fix.
+  test("two sets sharing a topicSlug: the SECOND TWIN banks under the -w namespace (the D-KG1b claim-index law; the CONSUME-3 exclusion is superseded)", () => {
+    // D-KG1b r1 (operator word "authorising (b)", IM trace 1a1b15cbb24f4a11):
+    // the per-(topicSlug, order) claim index replaces the CONSUME-3 exclusion
+    // (operator trace 1a18bc6701800065) — the FIRST claimer of a slot keeps
+    // the LEGACY ref bytes, the k-th claimer (k>=2) derives the series marker
+    // (-w / -w2 .., fail-closed beyond nine). The second twin is no longer
+    // excluded: it banks under its own namespace, which is exactly the
+    // structured-twin unlock of record (1,181 fleet collisions joined the
+    // servable side; crossSetRefCollision stays as the belt-and-braces
+    // counter and is zero of record under the claim index).
     const a = structuredClone(foundation.sets.slice(0, 1)) as BundleQuestionSet[];
     const b = structuredClone(foundation.sets.slice(0, 1)) as BundleQuestionSet[];
     b[0]!.slug = a[0]!.slug + "-twin";
     b[0]!.questions[0]!.order = a[0]!.questions[0]!.order;
     const collided = oneSet(foundation.slug, foundation.curriculum, [...a, ...b]);
-    // the second twin's colliding questions are excluded, the first wins
-    // (7 of the twin's 8 questions reach the ref gate — one is excluded
-    // earlier by another census law — each colliding ref counts once)
-    expect(collided.counts?.crossSetRefCollision).toBe(7);
+    // BOTH twins now reach the package (7 of each twin's 8 questions reach
+    // the ref gate — one is excluded earlier by another census law):
+    expect((collided.questions ?? []).length).toBe(14);
+    // the namespace split: the first claimer keeps the legacy bytes, the
+    // second twin rides -w — every admitted ref stays unique
+    expect(collided.counts?.crossSetRefCollision).toBe(0);
     const crefs = (collided.questions ?? []).map((q) => q.externalRef as string);
     expect(new Set(crefs).size).toBe(crefs.length);
-    // the fix law: distinct per-paper topicSlugs dissolve the collision —
+    expect(crefs.filter((r) => r.endsWith("-w")).length).toBe(7);
+    expect(crefs.filter((r) => !r.endsWith("-w")).length).toBe(7);
+    // the dissolution law still holds: distinct per-paper topicSlugs make
+    // each page the SOLE claimer of its slots — legacy bytes on BOTH sides,
     // same orders, same course, disjoint refs, clean build
     const c = structuredClone(a);
     const d = structuredClone(b);
@@ -288,6 +293,7 @@ describe("T-MIG-135b the fail-closed shim laws", () => {
     const pkg = oneSet(foundation.slug, foundation.curriculum, [...c, ...d]);
     const refs = (pkg.questions ?? []).map((q) => q.externalRef as string);
     expect(new Set(refs).size).toBe(refs.length);
+    expect(refs.filter((r) => r.endsWith("-w")).length).toBe(0);
   });
 
   test("duplicate orders are SKIPPED past the first occurrence (the dupOrder law)", () => {
