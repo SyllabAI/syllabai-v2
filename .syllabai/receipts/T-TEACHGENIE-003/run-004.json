@@ -1,0 +1,39 @@
+{
+ "task": "T-TEACHGENIE-003",
+ "run": "run-004",
+ "kind": "the LIVE pilot RESUMED + COMPLETED on the NEW Vercel account — api.syllab-ai.com serves main post-#785-rename + post-#808-seam-fix; steps C-F executed GREEN end-to-end on a fresh of-record session",
+ "agent": "Super Z (zai-web web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2)",
+ "date": "2026-11-06",
+ "operator_context": "operator order 'we moved to new vercel account. New deployment at syllab-ai.com' (web chat, ~13:41Z) — the ONE remaining operator action named by run-003 (lift the Vercel usage suspension / let it deploy main) executed via the account move",
+ "plane_of_record": {
+  "api": "https://api.syllab-ai.com (the NEW account; the hub CSP connect-src names exactly this origin; /actuator/health 200 {groups:[liveness,readiness],status:UP} parity shape; anonymous /api/v1/auth/me 401 Java-parity error shape)",
+  "hub": "https://www.syllab-ai.com (apex 301 -> www, HTTP 200 on Vercel; /courses/igcse-chemistry-19/teach-genie 307 -> /login?next=... — the fail-closed auth gate)",
+  "old_account": "syllabai-v2.vercel.app still answers 402 Payment Required / DEPLOYMENT_DISABLED — consistent with the suspension of record; the new account replaces it"
+ },
+ "deployment_freshness_of_record": {
+  "gate_copy_fingerprint": "control course cie-igcse-biology-23 -> 409 TEACH_ME_FLAG_DISABLED, copy VERBATIM 'Teach SillyAI is not enabled for this course yet' (the RENAMED fail-closed string; the stale 04e3c40a deploy said 'Teach Genie ...') => the deployed API is post-#785 rename",
+  "seam_fix_fingerprint": "behavioral: judged turn + sub-floor nudge + end-session ALL 200 — every updateSession-carrying path works; these exact paths 500ed on every pre-#808 build (run-003 probe of record) => the deployed API is post-#808 seam fix",
+  "not_proven": "whether the deployed API carries #817's dailySessionCap 999 (merged 12:08Z today, AFTER the 06:22Z CLI deploy of record in the T-TEACHGENIE-007 worklog entry) — deliberately NOT probed: the only wire discriminator is creating sessions up to a cap of 3, which burns prod sessions + LLM calls; the run-004 single session is under any cap. One CLI deploy from main be8668e99f2b settles it."
+ },
+ "probe_of_record_13_5x_utc": {
+  "auth": "register 201 + login 200 + auth/me 200 (fresh probe learner r-tg004-newacct-62cc037f@example.invalid, user 64ceef4c-6580-497f-8ffe-b5dd20ae63a7, labelled test identity)",
+  "flags_gate": "control course cie-igcse-biology-23 -> 409 TEACH_ME_FLAG_DISABLED, renamed copy verbatim (zero side effects: the gate fires BEFORE quota counting, service.ts:362 vs :384)",
+  "g1_g2_and_llm_live": "POST sessions igcse-chemistry-19 [4CH1-1.1] quick/chat/medium -> 200 FIRST TRY (1.72s): session ff5a2db0-e1f2-4511-9055-dea9e5d3565e, 3 quick objectives ALL spec-cited 4CH1-1.1 (arrangement/movement/energy across solids, liquids, gases), in-character lowercase opener 'i'm a bit confused about the three states of matter...' — LLM call 1 LIVE on the new account; the canon of record carries the 4CH1-<n> descriptions in the prod DB exactly as run-003 recorded",
+  "step_C_judged": "POST message (~120 words, states of matter) -> 200 (4.38s): chip 'Great', wordFloorPassed TRUE, contradictionDetected FALSE, coveredObjectiveIds 3/3, extractive feedbackLine 'You explained how solids, liquids, and gases differ in particle arrangement, movement, and energy.', pupil paraphrase_probe ends with an in-character probe question ('at the melting point, do the particles still have a fixed...') — the updateSession-carrying path PROVEN in prod",
+  "step_D_nudge": "POST message 8 words -> 200 fast (0.33s, pre-LLM): chip NULL, pupil clarify_nudge 'Can you unpack that a bit more for me? I don't think I've got it yet.' — the word-floor fail-closed path PROVEN (minWordsPerExplanation 40)",
+  "step_E_end": "POST end -> 200 (19.85s): status completed, review card present in the end response — review LLM call N LIVE; strengths EXTRACTIVE (quotes the learner's own lattice sentence verbatim), improvements CORRECT the planted sub-floor statement (D2 of record: 'it just changes when you heat it more' -> the melting-point particle-energy correction), specPointVerdicts [4CH1-1.1 -> covered], examAnchors 3, suggestedPractice 2, misconceptionNotes 0, prereqWarnings 0",
+  "step_F": "GET sessions/:id -> 200 review/permalink payload (review keys: examAnchors, generatedAt, improvements, misconceptionNotes, prereqWarnings, sessionId, specPointVerdicts, strengths, suggestedPractice); GET sessions?course=igcse-chemistry-19 -> 200 history: exactly 1 item, of-record present, status completed"
+ },
+ "quota_accounting": "ONE session created on the pilot course (the run-004 of-record session ff5a2db0); ONE control-course 409 probe (free); LLM calls 3 total (objectives, judged, review) vs the 20/min per-learner tier; zero other prod mutations beyond the disclosed proof stamps",
+ "boundaries": [
+  "run-003 session of record 76564f18-70e3-4166-a193-cdbf10daf738 NEVER touched — the owner probe learner's credentials died with the recycled sandbox, so run-004 re-established state on a FRESH labelled learner and completed steps C-F there",
+  "the stuck run-002 sessions untouched",
+  "zero repo src bytes (receipts + worklog only)",
+  "no logged-in hub UI walk on the new account (it would burn a second prod session; the hub plane is verified serving + auth-gated + CSP-named to the proven API origin; the wire lane of record is complete) — available as a run-005 if the operator wants the browser walk"
+ ],
+ "sandbox_disclosures": [
+  "the sandbox was RECYCLED between turns: the run-003 completion driver scripts/tg_pilot_run003.py and its .tg_pilot_state.json are GONE; rebuilt as scripts/tg_pilot_run004.py (state .tg_pilot_state.json, incremental resume) from the receipts of record — the resume it performs is on a fresh session for the credential reason above",
+  "GitHub PAT shared 5000/hr window: 4984 remaining at the run's start"
+ ],
+ "completion_driver": "scripts/tg_pilot_run004.py (sandbox-resident; state .tg_pilot_state.json; probe log scripts/tg004_probes.json, 8 probes; receipt scripts/tg004_receipt.json) — phase DONE, all steps green, exit 0"
+}

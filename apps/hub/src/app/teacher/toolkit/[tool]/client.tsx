@@ -65,6 +65,7 @@ import type {
   ToolkitResourceSummaryView,
 } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { PageHeader } from "@/components/layout/page-header";
 
 function apiMessage(err: unknown, fallback: string): string {
   if (err instanceof ApiError) return err.message;
@@ -411,24 +412,27 @@ export function ToolkitToolClient({
     <div className="space-y-6">
       <TeacherNav />
 
-      <header className="space-y-1.5">
-        <div className="flex flex-wrap items-center gap-2">
+      {/* T-HEADER-1: the shared tool-page header (back link rides the
+          breadcrumbs slot; quota badge the actions slot; font-display dropped). */}
+      <PageHeader
+        breadcrumbs={
           <Link
             href={classId ? `/teacher/toolkit?class=${classId}` : "/teacher/toolkit"}
             className="text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
           >
             ← Toolkit
           </Link>
-          <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
-            {meta.title}
-          </h1>
-          {quota && (
+        }
+        title={meta.title}
+        description={meta.subtitle}
+        actions={
+          quota ? (
             <Badge variant="outline" className="gap-1 font-normal">
               {quota.used} / {quota.limit} today
             </Badge>
-          )}
-        </div>
-        <p className="text-sm text-muted-foreground">{meta.subtitle}</p>
+          ) : undefined
+        }
+      >
         {ctx && (
           <div className="flex flex-wrap gap-1.5 pt-1">
             {[
@@ -447,7 +451,7 @@ export function ToolkitToolClient({
               ))}
           </div>
         )}
-      </header>
+      </PageHeader>
 
       {/* class resolution when deep-linked without ?class= */}
       {!classId && (

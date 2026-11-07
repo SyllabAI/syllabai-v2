@@ -66,6 +66,8 @@ export interface NoteListItem {
   guidedStudy: boolean;
   specPointCodes: string[];
   subtopic: string | null;
+  /** corpus-native content kind — "exam-technique" = SME exam-skills notes */
+  contentKind: string | null;
 }
 
 const ZERO = { notes: 0, questions: 0, flashcards: 0 };
@@ -170,6 +172,20 @@ export function NotesIndex({
   const unmapped = useMemo(
     () => notes.filter((n) => !n.subtopic && (!searching || matchTitle(n.title, q))),
     [notes, searching, q],
+  );
+
+  // RN-DEBRIS-11 run-005: exam-skills notes fold under their own explicit
+  // label — they are exam technique, deliberately NOT tied to a spec
+  // statement (the corpus's own exam-technique sections), so they must not
+  // read as "not yet anchored" pending work like the loose-notes card does.
+  // Everything else code-less keeps the loose-notes treatment unchanged.
+  const examTechnique = useMemo(
+    () => unmapped.filter((n) => n.contentKind === "exam-technique"),
+    [unmapped],
+  );
+  const looseOthers = useMemo(
+    () => unmapped.filter((n) => n.contentKind !== "exam-technique"),
+    [unmapped],
   );
 
   const nothingAtAll = groups.length === 0 && unmapped.length === 0;
@@ -328,14 +344,43 @@ export function NotesIndex({
             </details>
           ))}
 
-          {unmapped.length > 0 && (
+          {examTechnique.length > 0 && (
+            <section aria-label="Exam technique (not spec-tied)" className="py-3">
+              <h2 className="text-[15px] font-semibold">Exam technique (not spec-tied)</h2>
+              <p className="mt-1 max-w-prose text-xs leading-relaxed text-muted-foreground">
+                Exam-skills notes — how to answer, command words, the papers
+                themselves. They deliberately carry no spec-point anchor: they
+                belong to the exam, not to a single statement.
+              </p>
+              <ul className="mt-1.5 space-y-0.5">
+                {examTechnique.map((n) => (
+                  <li
+                    key={n.noteId}
+                    className="flex items-center gap-2 rounded-md px-2 py-1 text-[13px] transition-colors hover:bg-muted"
+                  >
+                    <ReadTick read={Boolean(progress.notesRead[n.noteId])} />
+                    <FileText className="size-3.5 shrink-0 text-primary" aria-hidden />
+                    <Link
+                      href={`${base}/revision-notes/${n.noteId}`}
+                      className="min-w-0 flex-1 truncate text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {n.title}
+                    </Link>
+                    {n.guidedStudy && <GuidedPill course={course} noteId={n.noteId} />}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {looseOthers.length > 0 && (
             <section aria-label={looseCopy.title} className="py-3">
               <h2 className="text-[15px] font-semibold">{looseCopy.title}</h2>
               <p className="mt-1 max-w-prose text-xs leading-relaxed text-muted-foreground">
                 {looseCopy.body}
               </p>
               <ul className="mt-1.5 space-y-0.5">
-                {unmapped.map((n) => (
+                {looseOthers.map((n) => (
                   <li
                     key={n.noteId}
                     className="flex items-center gap-2 rounded-md px-2 py-1 text-[13px] transition-colors hover:bg-muted"

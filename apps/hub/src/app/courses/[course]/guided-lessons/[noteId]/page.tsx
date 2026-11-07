@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { loadHubCourse } from "@/lib/courses";
 import { Breadcrumbs } from "@/components/hub/chrome";
+import { PageHeader } from "@/components/layout/page-header";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import {
   findGuidedEntry,
@@ -110,7 +111,9 @@ export default async function GuidedLessonPage({
             ]}
           />
 
-          <header className="space-y-3">
+          {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
+              (was sm:text-[28px]); the lesson icon row and spec anchors stay. */}
+          <div className="space-y-3">
             <div className="flex items-center gap-2">
               <span className="flex size-8 items-center justify-center rounded-md bg-primary/10 text-primary">
                 <GraduationCap className="size-4.5" aria-hidden />
@@ -119,21 +122,19 @@ export default async function GuidedLessonPage({
                 Guided lesson
               </span>
             </div>
-            <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-[28px]">
-              {note.title}
-            </h1>
-            <div className="flex flex-wrap items-center gap-2">
-              {lesson.specAnchors.map((a) => (
-                <Badge key={a.code} variant="secondary" className="font-mono text-[11px]">
-                  {a.code}
-                </Badge>
-              ))}
-            </div>
-            <p className="text-[13px] text-muted-foreground">
-              {lesson.modules.length} guided {lesson.modules.length === 1 ? "lesson" : "lessons"} ·{" "}
-              {totalChecks} checks · {lesson.topicTitle} → {lesson.subtopicTitle}
-            </p>
-          </header>
+            <PageHeader
+              title={note.title}
+              description={`${lesson.modules.length} guided ${lesson.modules.length === 1 ? "lesson" : "lessons"} · ${totalChecks} checks · ${lesson.topicTitle} → ${lesson.subtopicTitle}`}
+            >
+              <div className="flex flex-wrap items-center gap-2">
+                {lesson.specAnchors.map((a) => (
+                  <Badge key={a.code} variant="secondary" className="font-mono text-[11px]">
+                    {a.code}
+                  </Badge>
+                ))}
+              </div>
+            </PageHeader>
+          </div>
 
           {/* the adaptive flow — confidence gate → layers → terms → example
               → checks → recalibration, state browser-local per lesson */}

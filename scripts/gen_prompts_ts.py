@@ -47,6 +47,7 @@ def embed(name: str, value: str) -> str:
 pupil = (PROMPTS_DIR / "pupil-v3.md").read_text(encoding="utf-8")
 turn = (PROMPTS_DIR / "teachme-turn-v3.md").read_text(encoding="utf-8")
 review = (PROMPTS_DIR / "teachme-review-v1.md").read_text(encoding="utf-8")
+review2 = (PROMPTS_DIR / "teachme-review-v2.md").read_text(encoding="utf-8")
 
 body = "\n".join(
     [
@@ -64,6 +65,7 @@ body = "\n".join(
         embed("PUPIL_CHARTER_V3", pupil),
         embed("TEACHME_TURN_V3", turn),
         embed("TEACHME_REVIEW_V1", review),
+embed("TEACHME_REVIEW_V2", review2),
         embed("OBJECTIVES_SYSTEM_V3", OBJECTIVES_SYSTEM_V3),
     ]
 )

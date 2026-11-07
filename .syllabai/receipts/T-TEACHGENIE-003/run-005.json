@@ -1,0 +1,33 @@
+{
+ "task": "T-TEACHGENIE-003",
+ "run": "run-005",
+ "kind": "the CLI API deploy order — lane recon + honest handoff: not executable from this session (no Vercel token exists here or in the repo), target + verification of record prepared",
+ "agent": "Super Z (zai-web web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2, dispatch trace 1a1b1cf9b4e069dd)",
+ "date": "2026-11-06",
+ "order": "\"CLI API deploy\" (web chat ~17:0xZ) — the operator firing the run-004 remaining action (one CLI deploy from main ships the #817 dailySessionCap 999)",
+ "outcome": {
+  "executable_from_this_session": false,
+  "why": "no Vercel credential exists in this sandbox (.creds: gh.pat only — the 'operator's delegated Vercel token' of the T-TEACHGENIE-007 lane lived in the Discord DM session whose sandbox was recycled) and none in the repo (Actions secrets enumerated by NAME: NEON_API_KEY, PROBE_*/SYLLABAI_*/T138_* LLM keys, SIB_PROD_DATABASE_URL, SMOKE_DB_URI, T138_PROD_DATABASE_URL — no VERCEL_*), no deploy workflow exists (.github/workflows enumerated — DB-apply/census/CI lanes only; code search: no deploy hooks documented)",
+  "therefore": "the deploy of record remains the operator's one-liner (their 06:22Z invocation is the proven form); this session prepared the target + verification"
+ },
+ "target_of_record": {
+  "sha": "main HEAD 55b586e090f3 (2026-11-06T15:16Z)",
+  "api_bytes": "ZERO apps/api files changed since be8668e99f2b (compare be8668e...main: 2 commits, hub/receipts/worklog only) — deploying main now ships the #817 cap lift with zero drift vs the state the LIVE pilot (run-004) verified",
+  "command_of_record": "the same CLI invocation the operator ran at 06:22Z, from a clean checkout with main fetched (generic form: npx vercel deploy --prod --cwd apps/api with the linked project scope)"
+ },
+ "verification_posture_of_record": {
+  "wire_non_readable": "the cap constant is NOT wire-readable: teachSessionSchema exposes no quota fields (contracts, read this run) — the only wire discriminator is burning sessions up to a cap of 3 (4 labelled sessions + 4 LLM calls), NOT recommended",
+  "proof_posture": "per the T-TEACHGENIE-007 lane: the config-sanity mirror (behavioural.test.ts asserts 999 on the exact head, CI-green on main at 12:13Z and 15:16Z) + the deploy command's own SHA/URL output = the proof of record; no session burn",
+  "this_session_baseline": "plane probes re-run post-order: /actuator/health 200 UP parity shape (0.27s), anonymous /api/v1/auth/me 401 fail-closed, hub 200 — the plane of record alive at ~17:1xZ",
+  "on_deployed_confirmation": "the moment the operator confirms, this session re-runs the wire probes (health/gate copy/auth 401) and files the deploy receipt; if a token is delegated to THIS session (standing no-echo discipline), future deploys become executable end-to-end from here — a workflow_dispatch deploy lane + VERCEL_TOKEN secret is the durable option, offered, not built unilaterally"
+ },
+ "quota_accounting": "ZERO prod mutations this run (health/401/hub GETs only); no sessions created; no LLM calls",
+ "boundaries": [
+  "no Vercel token was requested, received, printed, or stored",
+  "zero repo src bytes (receipts + worklog only, appended to the open run-004 receipts PR #819)",
+  "the run-004 probe learner credentials are noted UNRECOVERABLE (the recycled sandbox lost .tg_pilot_state.json and the local probe log; email + user_id of record survive in the run-004 receipt) — single-use test identity, no action needed"
+ ],
+ "sandbox_disclosures": [
+  "the sandbox was recycled AGAIN between turns: scripts/tg_pilot_run004.py, tg004_probes.json, tg004_receipt*.json and .tg_pilot_state.json are gone locally; the durable copies of record are the run-004 receipt + worklog on this branch (pushed pre-recycle) — re-established from GitHub this run"
+ ]
+}

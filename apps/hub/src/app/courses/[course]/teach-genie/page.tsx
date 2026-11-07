@@ -4,7 +4,7 @@ import { getCourseBundle, loadHubCourse } from "@/lib/courses";
 import { allCourseParams } from "@/lib/static-params";
 import { teachMeEnabledForCourse, teachMeGate } from "@/components/hub/teach-me/gate";
 import { buildTeachGenieNoteTree } from "@/components/hub/teach-me/picker-data";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { TeachGenieClient } from "@/components/hub/teach-genie/teach-genie-client";
 
 /**
@@ -76,7 +76,7 @@ export default async function TeachGeniePage({
   // exam-code pill, description), so the lane reads as part of the hub
   // before a single teach-specific pixel paints.
   const header = (
-    <CourseHeader
+    <CoursePageHeader
       meta={meta}
       title={`Teach SillyAI — ${meta.label}`}
       crumb="Teach SillyAI"
@@ -88,7 +88,7 @@ export default async function TeachGeniePage({
     // honest roadmap state (plan §10): the lane rolls out course by course —
     // a non-pilot course renders this instead of a fabricated wizard.
     return (
-      <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
+      <div className="px-4 py-6 sm:px-6 lg:px-8">
         {header}
         <div className="mt-6 rounded-lg border border-dashed border-border bg-card px-6 py-10 text-center">
           <h2 className="text-base font-semibold">Teach SillyAI isn&apos;t live for this course yet</h2>
@@ -108,7 +108,7 @@ export default async function TeachGeniePage({
     // flags.json law keeps the surface honest (an empty state, never
     // invented data)
     return (
-      <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
+      <div className="px-4 py-6 sm:px-6 lg:px-8">
         {header}
         <div className="mt-6 rounded-lg border border-dashed border-border bg-card px-6 py-10 text-center">
           <h2 className="text-base font-semibold">Teach SillyAI is warming up</h2>
@@ -126,7 +126,7 @@ export default async function TeachGeniePage({
     // flagged course whose committed bundle carries no code-anchored notes —
     // the picker would be an empty shell, so the honest warm-up state stays
     return (
-      <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
+      <div className="px-4 py-6 sm:px-6 lg:px-8">
         {header}
         <div className="mt-6 rounded-lg border border-dashed border-border bg-card px-6 py-10 text-center">
           <h2 className="text-base font-semibold">Teach SillyAI is warming up</h2>
@@ -139,7 +139,7 @@ export default async function TeachGeniePage({
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
+    <div className="px-4 py-6 sm:px-6 lg:px-8">
       {header}
       <div className="mt-6">
         <TeachGenieClient course={slug} courseLabel={meta.label} noteTree={noteTree} />

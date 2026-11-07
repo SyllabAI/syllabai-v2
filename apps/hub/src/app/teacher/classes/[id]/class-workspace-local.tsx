@@ -75,6 +75,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useMyClasses } from "@/lib/teacher/my-classes";
 import { AddClassOverlay } from "../../add-class-overlay";
 import type { TeacherCourseLite } from "../../teacher-client";
+import { PageHeader } from "@/components/layout/page-header";
 
 interface CourseStat {
   slug: string;
@@ -249,10 +250,12 @@ export function LocalClassWorkspace({
 
   return (
     <div className="space-y-8">
-      {/* header */}
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-2">
+      {/* header — T-HEADER-1: the shared tool-page header (badge row rides the
+          eyebrow slot; font-display + the 3xl/4xl escalation dropped — one
+          text-2xl title law, the class name truncates inside the h1). */}
+      <PageHeader
+        eyebrow={
+          <span className="flex flex-wrap items-center gap-2">
             <Badge variant="outline" className="gap-1 text-[10px] font-normal">
               <Users className="size-3" aria-hidden />
               Class workspace
@@ -260,35 +263,35 @@ export function LocalClassWorkspace({
             <Badge variant="secondary" className="text-[10px] font-normal">
               browser-local container
             </Badge>
-          </div>
-          <h1 className="mt-2 truncate font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            {cls.name}
-          </h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {subjects.length > 0
-              ? `Covering ${subjects.length} ${subjects.length === 1 ? "subject" : "subjects"} — every tool and course resource for them lives here.`
-              : "No subjects selected yet."}
-          </p>
-        </div>
-        <div className="flex shrink-0 items-center gap-2">
-          <Button variant="outline" size="sm" className="gap-1.5" onClick={() => setEditOpen(true)}>
-            <Pencil className="size-3.5" aria-hidden />
-            Edit subjects
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="gap-1.5 text-muted-foreground hover:text-destructive"
-            onClick={() => {
-              remove(cls.id);
-              router.push("/teacher");
-            }}
-          >
-            <Trash2 className="size-3.5" aria-hidden />
-            Remove class
-          </Button>
-        </div>
-      </div>
+          </span>
+        }
+        title={<span className="block truncate">{cls.name}</span>}
+        description={
+          subjects.length > 0
+            ? `Covering ${subjects.length} ${subjects.length === 1 ? "subject" : "subjects"} — every tool and course resource for them lives here.`
+            : "No subjects selected yet."
+        }
+        actions={
+          <>
+            <Button variant="outline" size="sm" className="gap-1.5" onClick={() => setEditOpen(true)}>
+              <Pencil className="size-3.5" aria-hidden />
+              Edit subjects
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="gap-1.5 text-muted-foreground hover:text-destructive"
+              onClick={() => {
+                remove(cls.id);
+                router.push("/teacher");
+              }}
+            >
+              <Trash2 className="size-3.5" aria-hidden />
+              Remove class
+            </Button>
+          </>
+        }
+      />
 
       {/* live teacher console — global surfaces, class-adjacent */}
       <section aria-labelledby="live-console">
