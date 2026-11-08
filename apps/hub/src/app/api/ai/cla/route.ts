@@ -74,9 +74,10 @@ import {
  * POST /api/ai/cla — the explicitly-anchored CLA ask, PROXIED to core
  * (ADR-029 R3). Context kinds map onto core's CLA contract:
  *
- *   note (course slug + noteId)   → NOTE_SECTION  — forwarded; core's
- *                                   runtime decides (the note-serving lane
- *                                   lights this up when it lands)
+ *   note (course slug + noteId)   → NOTE_SECTION  — forwarded; the note-
+ *                                   serving lane (053-t3 wiring) resolves the
+ *                                   note's stored spec-point anchor and
+ *                                   serves it (unresolvable → 404)
  *   topic (course slug + topicCode) → KG_TOPIC   — topicNodeId resolved
  *                                   through core's knowledge tree by code
  *                                   (pilot-gated: only core-served subjects
