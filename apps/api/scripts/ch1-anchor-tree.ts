@@ -227,12 +227,29 @@ async function main() {
     // the rehearsal posture: resolve + gates only, zero writes
     console.log("DRY — no bytes written. Would anchor", questions.length, "questions.");
   } else {
-    await db().transaction(async (tx) => {
-      for (let i = 0; i < questions.length; i++) {
-        await anchorOne(tx as unknown as Sql, paper, questions[i], i + 1);
-      }
-    });
-    console.log("APPLIED:", JSON.stringify(counts));
+    // TRANSPORT LAW fast-path (run-002/run-004 evidence): a RE-anchor of an
+    // already-complete tree is ~340 sequential round trips (every row takes
+    // the find+update path) — over the Neon serverless WS that crosses the
+    // connection reaper at the ~5 min wall (run 4's prod leg, 2026-11-08).
+    // One probe query: if the tree of record is already complete, skip.
+    const existing = (await db()`select
+        (select count(*)::int from questions where exam_paper_id = ${paper.id}) as q,
+        (select count(*)::int from mark_points mp
+          join mark_schemes ms on ms.id = mp.mark_scheme_id
+          join question_versions v on v.id = ms.question_version_id
+          join questions qq on qq.id = v.question_id
+          where qq.exam_paper_id = ${paper.id}) as mp`) as Array<{ q: number; mp: number }>;
+    if (existing[0]!.q === questions.length && existing[0]!.mp === nPoints) {
+      console.log(`SKIP: tree already anchored (questions ${existing[0]!.q} / points ${existing[0]!.mp} — complete of record); nothing to write`);
+    } else {
+      console.log(`anchor path: existing questions ${existing[0]!.q} / points ${existing[0]!.mp} — full idempotent re-anchor`);
+      await db().transaction(async (tx) => {
+        for (let i = 0; i < questions.length; i++) {
+          await anchorOne(tx as unknown as Sql, paper, questions[i], i + 1);
+        }
+      });
+      console.log("APPLIED:", JSON.stringify(counts));
+    }
   }
   if (receiptPath) {
     writeFileSync(receiptPath, JSON.stringify({
