@@ -1,0 +1,144 @@
+{
+ "receipt": "rn11-run-009-rowlabel-evidence",
+ "family": "RN-DEBRIS-11",
+ "run": "009",
+ "lane": "the row-label evidence pass — the run-008 evidence standard applied to the other queued row-label families + a fleet sweep for the same wreck classes",
+ "operatorTrace": "1a1b4e9529e2ec71",
+ "operatorOrder": "run the same evidence pass on other queued row-label families",
+ "renumbered": "run-009 taken — run-007 is claimed of record (PR #828, open) and run-008 is this lane's geography repair (pushed, unmerged); zero-collision law (earliest claim wins)",
+ "generatedUtc": "2026-11-07",
+ "mode": "evidence-only — zero content-plane bytes touched (G0 of record); every map in run009_title_map.json is a PROPOSAL for the follow-up repair run",
+ "base": "origin/main 3ae3ef1d (fetch-first; the single advance dab1fd67..3ae3ef1d is theme-bake bookkeeping with zero content overlap — name-only diff verified)",
+ "scopeOfRecord": {
+  "queuedFamilies": [
+   "F1 cie-igcse-english-language-20 (TS1-TS14 front-matter wreck — the r3 queue addition's 'same family as' reference)",
+   "F2 cie-igcse-english-language-25 (TS1-TS25, same wreck class — added to the queue of record by this pass)",
+   "F3 cie-igcse-religious-studies-23 (0490 variant spine — r2 queue item)",
+   "F4 cie-igcse-business-25 (0264 T1 — r2 queue item, structure class)",
+   "F5 cie-{as,a-level}-maths-20-* 9709 component spines (r2 queue item)",
+   "F6 igcse-business-19 (4BS1 Edexcel front-matter wreck — the geography wreck's twin, found by this pass's sweep)"
+  ],
+  "fleetSweep": "all 106 content courses swept for the wreck classes (fragment-endings, table-header captures, sentence fragments, paren-tails excluded as the corpus's own suffix law)",
+  "mirrorSweep": "all 106 KG planes label-equality-checked under the run-008 G6 sequence law"
+ },
+ "evidenceOfRecord": {
+  "officialDocs": "six byte-pinned PDFs (5 CIE syllabuses + the 4BS1 Issue 2 – February 2026 print), sha256+sha1 in run009docs/pdf_sha256.txt|pdf_sha1.txt; every CIE PDF's sha1 MATCHES its upstream parsed.json source.pdf_sha1 pin; the 4BS1 sha1 matches parsed/igcse-business/topics.json source.pdf_sha1",
+  "extraction": "pdftotext -layout linear parsing (CIE) and the Pearson two-column wrap-continuation law (4BS1), scripts in run009docs/; the 0490 extraction additionally cross-checked against the PDF's own bbox word geometry for the ʿ/ʾ mark rows (joined forms: Shiʿah / Qurʾan / ʿUmrah are the PDF's words; the hub's spaced forms are an upstream-parse artifact)",
+  "upstreamCrosschecks": {
+   "F6": {
+    "consistent": 25,
+    "divergent": 0
+   },
+   "F3": {
+    "exact": 75,
+    "glyph-variant": 6,
+    "dedupe-suffix": 4
+   },
+   "F5": {
+    "topics": "10/10",
+    "subs": "62/62"
+   },
+   "F4": "upstream parse topic numbers = [2,3,4,5,6] — topic 1 absent from the upstream parse, disclosed"
+  }
+ },
+ "verdictsOfRecord": {
+  "F5_9709": "DISCHARGED — the r2 queue item is closed: r5's renames are official-verified (10/10 topics, 62/62 subs byte-equal the PDF)",
+  "F3_0490": "MINOR-REPAIR-QUEUED — the 85 SUB rows already carry the full official titles (75 byte-exact + 6 glyph-spacing + 4 dedupe-suffixes); the 18 composed topic names are composed-of-record (official titles repeat per religion; uniqueness law); the r2 queue note is superseded by r5",
+  "F4_0264": "STRUCTURAL-REPAIR-QUEUED — titles official-correct but T1 subtree has ZERO edges (invisible to the tree), 0 of 9 official points, KG plane pre-r5",
+  "F1_F2_0500": "STRUCTURAL-REPAIR-QUEUED — not title-repairable: the rows are front-matter/assessment-table captures; official content = 3 blocks × 6 bullets vs 163/209 parse points",
+  "F6_4BS1": "TITLE-REPAIR-QUEUED — 25-row map ready, 11 truncation repairs, upstream prefix law 25/25 (the repair must use the PDF, not upstream, which carries the same fragments)"
+ },
+ "newFindingsOfRecord": [
+  "cie-igcse-ict-21 KG mirror drift: the r3 row-15 title edit ('Communication applications') never reached the KG plane (kg still 'Communication') — the fleet's ONLY label-drift course under the G6 sequence law",
+  "cie-igcse-business-25 T1 connectivity: 0 PART_OF edges touch T1 or SUB1.1-1.5 (nodes carry parents fields declaring the intent; the tree consumes edges) — invisible to buildSpecTreeIndex",
+  "the upstream 0490 parse carries 29 control-char-dirt subsection titles; the hub import cleaned them (75/85 byte-exact vs the clean PDF forms) — the dirt was never a hub defect",
+  "fleet sweep queue additions: cie-{a-level,as}-biology-25, cie-{a-level,as}-chemistry-25, cie-igcse-further-maths-additional-maths-25, ial-biology-18, ial-chemistry-17, igcse-history-17, igcse-ict-17, igcse-maths-a-modular-24-foundation-unit-2 (census+class of record in run009_census_pre.json; title maps are repair-pass work)"
+ ],
+ "gates": {
+  "G0": true,
+  "G2": true,
+  "G1_pins": {
+   "sixSha256": true,
+   "cieParseSha1Matches": {
+    "0500-2024": true,
+    "0500-2027": true,
+    "0490": true,
+    "0264": true,
+    "9709": true
+   },
+   "fourBS1SourcePin": "1da38c0f2b395471de64d08e147f3cea6a487b55"
+  },
+  "G3_crosschecks": {
+   "F6_upstreamPrefix": {
+    "consistent": 25,
+    "divergent": 0
+   },
+   "F5_topicMatches": "10/10",
+   "F5_subExact": "62/62",
+   "F3_subCoverage": {
+    "exact": 75,
+    "glyph-variant": 6,
+    "dedupe-suffix": 4
+   }
+  },
+  "G4_census": {
+   "families": {
+    "F1_english_language_20": [
+     "cie-igcse-english-language-20"
+    ],
+    "F2_english_language_25": [
+     "cie-igcse-english-language-25"
+    ],
+    "F3_religious_studies_23": [
+     "cie-igcse-religious-studies-23"
+    ],
+    "F4_business_25": [
+     "cie-igcse-business-25"
+    ],
+    "F5_maths_9709_components": [
+     "cie-a-level-maths-20-mechanics",
+     "cie-a-level-maths-20-probability-and-statistics-1",
+     "cie-a-level-maths-20-probability-and-statistics-2",
+     "cie-a-level-maths-20-pure-1",
+     "cie-a-level-maths-20-pure-2",
+     "cie-a-level-maths-20-pure-3",
+     "cie-as-maths-20-mechanics",
+     "cie-as-maths-20-probability-and-statistics-1",
+     "cie-as-maths-20-pure-1",
+     "cie-as-maths-20-pure-2"
+    ],
+    "F6_igcse_business_19": [
+     "igcse-business-19"
+    ]
+   },
+   "sweepCourses": 15,
+   "sweepClasses": {
+    "fragment-ending": 85,
+    "table-header-capture": 30,
+    "sentence-fragment": 8
+   }
+  },
+  "G5_mirrorConnectivity": {
+   "driftCourses": [
+    "cie-igcse-ict-21"
+   ],
+   "business25T1Edges": 0
+  }
+ },
+ "disclosures": [
+  "EVIDENCE-ONLY: this run edits zero content bytes; the git working tree outside .syllabai is empty at receipt time (G0). Every title in run009_title_map.json is a proposal for the operator-gated repair run.",
+  "geography-19 sweep hits on this base (11 fragment rows) are the pre-repair state — run-008 (branch lane/rn-debris-11-run-008-geo-spine-titles, pushed @ 2169cbd7, unmerged, R0 desk) discharges them; no double-queue.",
+  "ADR-039 §4's r2-era queue notes for RS-23/maths/business-25 predate the r5 alignment band (PR #779 @ e2625254) which already renamed those titles on live-SME evidence; this pass upgrades the evidence to the official-PDF standard and closes/adjusts the queue items accordingly (F5 closes; F3 narrows; F4 becomes a structure item). The ADR file itself is NOT edited by this run (data-lane discipline — zero doc bytes).",
+  "the RS-23 composed topic names (r5, SME-derived naming) are retained as composed-of-record proposals; switching them to official+suffix parentheticals is an operator-gated alternative the repair run may take under the run-008 disclosure-suffix precedent.",
+  "the 0500 family's 163/209 'spec points' include front-matter and mark-scheme table content (TS5:SUB_ alone carries 51) — any repair is a spine-rebuild decision with a content-migration plan, explicitly NOT proposed by this run.",
+  "4BS1 PDF is Issue 2 – February 2026 (filename '9781446942765-international-gcse-business-specification.pdf'); the hub spine was parsed from the same pinned bytes (upstream topics.json source pin matches) — the fragments were born upstream.",
+  "run-007/008/009 numbering per the zero-collision law; renumber by R0 if the desk prefers."
+ ],
+ "artifacts": [
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run009_census_pre.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run009_official_evidence.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run009_title_map.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run009docs/ (fetch/census/extract/verify/assemble scripts + pdf pins)"
+ ],
+ "boundaries": "zero content-plane bytes; zero src/ bytes; zero docs/ bytes; author does not self-merge; fetch-first FF push, no force"
+}

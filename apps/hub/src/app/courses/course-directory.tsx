@@ -1,23 +1,24 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import Link from "next/link";
-import {
-  BookOpen,
-  Briefcase,
-  Cpu,
-  FlaskConical,
-  Globe2,
-  Sigma,
-  type LucideIcon,
-} from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { boardOf, distinctBoards } from "@/lib/board";
 import type { CourseMeta } from "@/lib/courses";
+import {
+  groupDirectory,
+} from "@/lib/directory-groups";
 import { duplicateVariants } from "@/lib/course-variant";
+import {
+  FAMILY_LABELS,
+  getSubjectIdentity,
+  subjectFamily,
+} from "@/lib/subject-identity";
+import { SubjectGlyph } from "@/components/icons/subject-glyph";
 import { resourceLabel, useLastOpened } from "@/lib/last-opened";
 
 // The short names people actually type into a courses search — matched
@@ -26,31 +27,6 @@ import { resourceLabel, useLastOpened } from "@/lib/last-opened";
 const BOARD_SEARCH_ALIASES: Record<string, string> = {
   "Cambridge International": "cie caie cambridge",
   Edexcel: "pearson edexcel",
-};
-
-// T-HUB-COURSES-PUBLIC-1 fix ④: the directory grouped by size (b.length),
-// which happened to put IGCSE first — a coincidence of the registry, not a
-// law. The order is now the curriculum's own ladder: IGCSE (14–16) → AS →
-// A-Level → IAL (16–18), unknown levels trail by size. Deterministic.
-const STAGE_ORDER = ["IGCSE", "AS", "A-Level", "IAL"] as const;
-const stageRank = (level: string): number => {
-  const i = (STAGE_ORDER as readonly string[]).indexOf(level);
-  return i === -1 ? STAGE_ORDER.length : i;
-};
-
-// T-HUB-COURSES-PUBLIC-1 fix ③: 106 courses, zero imagery — the cards were
-// an undifferentiated wall. Each subject family gets one quiet glyph (the
-// house icon set, muted foreground, decorative) so a scan of the grid reads
-// as subjects, not as 106 equal tiles. Case-insensitive: the registry has
-// both "ICT" and "Ict".
-const subjectIcon = (subject: string): LucideIcon => {
-  const s = subject.toLowerCase();
-  if (/biolog|chem|phys|science/.test(s)) return FlaskConical;
-  if (/math/.test(s)) return Sigma;
-  if (/account|business|econom/.test(s)) return Briefcase;
-  if (/comput|\bict\b/.test(s)) return Cpu;
-  if (/geog|hist|religio|environment/.test(s)) return Globe2;
-  return BookOpen; // English + everything else
 };
 
 // fix ③: the "Continue" chip deep-links only to lanes that are plain
@@ -126,10 +102,16 @@ export function CourseDirectory({
     return courses.filter((c) => {
       if (board && boardOf(c) !== board) return false;
       if (!needle) return true;
+      // run-002: the haystack gains the identity lib's canonical subject
+      // and family label — "humanities" finds History/Geography/…, the
+      // registry's "Mathematics" spelling is findable as "maths" (and
+      // vice versa) because both fold onto the same canonical key.
+      const family = subjectFamily(c.subject);
       const alias = BOARD_SEARCH_ALIASES[boardOf(c)] ?? "";
       return (
         c.label.toLowerCase().includes(needle) ||
         c.subject.toLowerCase().includes(needle) ||
+        (family && FAMILY_LABELS[family].toLowerCase().includes(needle)) ||
         c.code.toLowerCase().includes(needle) ||
         c.level.toLowerCase().includes(needle) ||
         boardOf(c).toLowerCase().includes(needle) ||
@@ -138,15 +120,13 @@ export function CourseDirectory({
     });
   }, [courses, board, q]);
 
-  const groups = useMemo(() => {
-    const g = new Map<string, CourseMeta[]>();
-    for (const c of filtered) g.set(c.level, [...(g.get(c.level) ?? []), c]);
-    return [...g.entries()].sort((a, b) => {
-      const byStage = stageRank(a[0]) - stageRank(b[0]);
-      if (byStage !== 0) return byStage;
-      return b[1].length - a[1].length || a[0].localeCompare(b[0]);
-    });
-  }, [filtered]);
+  // T-HUB-COURSES-UI-1 run-002 (stage 2 of the approved redesign): the
+  // grouping moved to the pure, unit-pinned law in lib/directory-groups.ts —
+  // level sections keep the curriculum ladder (IGCSE → AS → A-Level → IAL,
+  // T-HUB-COURSES-PUBLIC-1 fix ④) and each level groups its rows by subject
+  // family in the identity lib's order (Sciences → Maths & CS → English →
+  // Business & Econ → Humanities — the approved mockup's scan order).
+  const groups = useMemo(() => groupDirectory(filtered), [filtered]);
 
   return (
     <div className="space-y-6">
@@ -212,86 +192,132 @@ export function CourseDirectory({
         ))}
         </div>
       </div>
-      {groups.map(([level, list]) => (
+      {groups.map(({ level, total, families }) => (
         <section key={level} aria-label={level}>
-          <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-            {level} <span className="font-normal">· {list.length} course{list.length === 1 ? "" : "s"}</span>
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            {level}{" "}
+            <span className="font-normal">
+              · {total} course{total === 1 ? "" : "s"}
+            </span>
           </h2>
-          {/* t-ui-polish run-003 — the dashboard subjects grid recipe:
-              gap-4, MG-sized quiet targets. */}
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {list.map((c) => {
-              // fix ③: two lanes, legible at a glance — committed corpus
-              // cards carry the primary tint; import-pending cards go
-              // dashed on a muted surface and keep a NEUTRAL hover (their
-              // hover used to invite exactly like real cards, then led to
-              // grey tiles). min-h is gone: with 2-line titles the dead
-              // vertical budget was ~35% of every card.
-              const ghost = c.status !== "pilot" && c.status !== "full";
-              const Icon = subjectIcon(c.subject);
-              return (
-                <Link key={c.slug} href={`/courses/${c.slug}`} className="group min-w-0 focus-visible:outline-none">
-                  <Card
-                    className={
-                      ghost
-                        ? "h-full border-dashed bg-muted/40 transition-[border-color,box-shadow] group-hover:border-muted-foreground/50 group-focus-visible:border-muted-foreground/50 group-focus-visible:ring-2 group-focus-visible:ring-ring"
-                        : c.hasBundle
-                          ? "h-full border-primary/30 transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
-                          : "h-full transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
-                    }
-                  >
-                    <CardContent className="flex items-start gap-3 p-5">
-                      <Icon aria-hidden className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
-                      <div className="min-w-0 flex-1">
-                        {/* fix ③: the distinguishing tail ("Biology Unit 1" vs
-                            "Unit 2") now wraps to two balanced lines instead
-                            of being truncated away; the color flip on hover
-                            stays a real-corpus signal, ghosts keep foreground. */}
-                        <p
+          <div className="space-y-5">
+            {families.map(({ family, label, courses: rows }) => (
+              <div key={family}>
+                {/* run-002: the family scan line — quieter than the level
+                    header (text-xs under its text-sm), still a real heading
+                    so the section reads as level → family → card. */}
+                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  {label}{" "}
+                  <span className="font-normal">
+                    · {rows.length} course{rows.length === 1 ? "" : "s"}
+                  </span>
+                </h3>
+                {/* the dashboard subjects grid recipe: gap-4, MG-sized
+                    quiet targets (t-ui-polish run-003) — now per family. */}
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {rows.map((c) => {
+                    // fix ③: two lanes, legible at a glance — committed corpus
+                    // cards carry the primary tint; import-pending cards go
+                    // dashed on a muted surface and keep a NEUTRAL hover (their
+                    // hover used to invite exactly like real cards, then led to
+                    // grey tiles). min-h is gone: with 2-line titles the dead
+                    // vertical budget was ~35% of every card.
+                    const ghost = c.status !== "pilot" && c.status !== "full";
+                    // run-002: the card's icon slot is the run-001 identity —
+                    // the subject's bespoke glyph on its tile colour pair
+                    // (lib/subject-identity.ts, the approved mockup), themed
+                    // through the .subject-tile colour template in
+                    // globals.css so all four themes and dark mode re-skin
+                    // it without per-theme rules. Unmapped subjects (the
+                    // build gate makes this a resilience path) render the
+                    // muted lucide fallback tile instead.
+                    const identity = getSubjectIdentity(c.subject);
+                    return (
+                      <Link key={c.slug} href={`/courses/${c.slug}`} className="group min-w-0 focus-visible:outline-none">
+                        <Card
                           className={
-                            "line-clamp-2 text-pretty text-sm font-semibold" +
-                            (ghost ? "" : " group-hover:text-primary")
+                            ghost
+                              ? "h-full border-dashed bg-muted/40 transition-[border-color,box-shadow] group-hover:border-muted-foreground/50 group-focus-visible:border-muted-foreground/50 group-focus-visible:ring-2 group-focus-visible:ring-ring"
+                              : c.hasBundle
+                                ? "h-full border-primary/30 transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
+                                : "h-full transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
                           }
                         >
-                          {c.label}
-                        </p>
-                        {subtitles.get(c.slug) && (
-                          <p className="mt-0.5 truncate text-xs text-muted-foreground">{subtitles.get(c.slug)}</p>
-                        )}
-                        <p className="mt-0.5 font-mono text-xs text-muted-foreground">
-                          {/* t-ui-polish run-003 — the board rides the mono meta
-                              line (the MG spec-code recipe); the badges carry
-                              only the honesty signals (archive size, corpus
-                              status), max two, no soup. */}
-                          {boardOf(c)} · {c.code ? c.code : <span className="not-italic">code pending</span>}
-                        </p>
-                        <div className="mt-2 flex flex-wrap gap-1.5">
-                          {(archivePapers?.[c.slug] ?? 0) > 0 && (
-                          <Badge
-                            variant="secondary"
-                            title="Official question papers + mark schemes, readable on the course page"
-                          >
-                            {archivePapers?.[c.slug]} past paper{(archivePapers?.[c.slug] ?? 0) === 1 ? "" : "s"}
-                          </Badge>
-                        )}
-                        {c.status === "pilot" ? (
-                            <Badge className="uppercase">pilot corpus · official spec tree</Badge>
-                          ) : c.status === "full" ? (
-                            <Badge variant="outline" className="uppercase">
-                              full corpus
-                            </Badge>
-                          ) : (
-                            <Badge variant="outline" className="uppercase text-muted-foreground">
-                              import pending
-                            </Badge>
-                          )}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              );
-            })}
+                          <CardContent className="flex h-full items-start gap-3.5 p-5">
+                            {identity ? (
+                              <span
+                                aria-hidden
+                                className="subject-tile flex size-10 shrink-0 items-center justify-center rounded-lg border"
+                                style={
+                                  {
+                                    "--subj-bg": identity.tile.bg,
+                                    "--subj-fg": identity.tile.fg,
+                                  } as CSSProperties
+                                }
+                              >
+                                <SubjectGlyph glyph={identity.glyph} className="size-5" />
+                              </span>
+                            ) : (
+                              <span
+                                aria-hidden
+                                className="flex size-10 shrink-0 items-center justify-center rounded-lg border bg-muted text-muted-foreground"
+                              >
+                                <BookOpen className="size-5" />
+                              </span>
+                            )}
+                            <div className="min-w-0 flex-1">
+                              {/* fix ③: the distinguishing tail ("Biology Unit 1" vs
+                                  "Unit 2") now wraps to two balanced lines instead
+                                  of being truncated away; the color flip on hover
+                                  stays a real-corpus signal, ghosts keep foreground. */}
+                              <p
+                                className={
+                                  "line-clamp-2 text-pretty text-sm font-semibold" +
+                                  (ghost ? "" : " group-hover:text-primary")
+                                }
+                              >
+                                {c.label}
+                              </p>
+                              {subtitles.get(c.slug) && (
+                                <p className="mt-0.5 truncate text-xs text-muted-foreground">{subtitles.get(c.slug)}</p>
+                              )}
+                              <p className="mt-0.5 font-mono text-xs text-muted-foreground">
+                                {/* t-ui-polish run-003 — the board rides the mono meta
+                                    line (the MG spec-code recipe); the badges carry
+                                    only the honesty signals (archive size, corpus
+                                    status), max two, no soup. */}
+                                {boardOf(c)} · {c.code ? c.code : <span className="not-italic">code pending</span>}
+                              </p>
+                              <div className="mt-2 flex flex-wrap gap-1.5">
+                                {(archivePapers?.[c.slug] ?? 0) > 0 && (
+                                <Badge
+                                  variant="secondary"
+                                  title="Official question papers + mark schemes, readable on the course page"
+                                >
+                                  {archivePapers?.[c.slug]} past paper{(archivePapers?.[c.slug] ?? 0) === 1 ? "" : "s"}
+                                </Badge>
+                              )}
+                              {c.status === "pilot" ? (
+                                  <Badge className="uppercase">pilot corpus · official spec tree</Badge>
+                                ) : c.status === "full" ? (
+                                  <Badge variant="outline" className="uppercase">
+                                    full corpus
+                                  </Badge>
+                                ) : (
+                                  <Badge variant="outline" className="uppercase text-muted-foreground">
+                                    import pending
+                                  </Badge>
+                                )}
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       ))}

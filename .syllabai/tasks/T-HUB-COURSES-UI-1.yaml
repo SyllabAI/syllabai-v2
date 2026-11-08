@@ -1,0 +1,109 @@
+version: 1
+task:
+  id: T-HUB-COURSES-UI-1
+  title: "Courses directory redesign — stage 1 shipped the subject-identity single source (18 identities: family + bespoke glyph + tile colour pair), the 17-glyph bespoke SVG set, and the build-gate coverage law over all 106 registry slugs; stage 2 (run-002) wires the directory onto it — the theme-fitted visual redesign of /courses"
+  owner: "operator-delegate (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de4)"
+  status: "SHIPPED run-002 (PR #857 merged to main c292b48a, 2026-11-07; CI 2/2 green on the PR head c2035706 via the pull_request trigger; operator order 'start run-002 and also keep in mind of all the themes we have. The redesign should fit in perfectly', trace 1a1b74a9139b7f5d)"
+  priority: P1
+  band: T-HUB (frontend — courses directory surface)
+  wave: hub-courses-directory
+  deps: [T-HUB-COURSES-PUBLIC-1]
+  execution_record: >
+    run-000 (2026-11-07, design phase): the /courses redesign plan of record
+    (Courses-Redesign-Plan.docx + PDF, 12 sections, R1/GO-1 cover) and the
+    approved HTML mockup of record (download/redesign/mockup/
+    courses-redesign-mockup.html, desktop+mobile renders) — audit findings
+    F-1..F-7, three implementation options, CourseCard 5 zones, 4-stage
+    roadmap (this lane = stage 1). User-locked direction: hybrid glyph set,
+    4 level sections with family grouping, progress + past-paper + corpus
+    status cards, /courses only.
+    run-001 (2026-11-07, operator trace 1a1b6dc0f68c4249, order "Proceed
+    with lane T-HUB-COURSES-UI-1/run-001; make sure not to break anything;
+    the project needs to be always working"): stage 1 landed ADDITIVE-ONLY —
+    zero changed call sites, zero visual delta on any rendered page (the
+    directory's lucide subjectIcon() path is untouched; wiring happens in
+    stage 2/run-002).
+    Scope: (a) src/lib/subject-identity.ts — the ONE source of truth: 18
+    canonical subject identities (family + glyph id + tile bg/fg from the
+    approved mockup), 5 ordered families, the Mathematics→Maths alias +
+    case-insensitive folding (registry carries ICT/Ict), client-safe (no
+    server-only import) so the stage-2 client directory can consume it;
+    (b) src/components/icons/subject-glyph.tsx — 17 bespoke 24×24
+    currentColor stroke glyphs (byte-faithful mockup path data), typed
+    Record<SubjectGlyphId,…> so a missing component fails typecheck,
+    lucide BookOpen runtime fallback for not-yet-existing subjects;
+    (c) scripts/verify_subject_identity.ts — the build gate in the hub
+    prebuild chain: every courses.json slug must resolve (unknown subject
+    fails CI), no stale mappings, no dead glyphs, #rrggbb colour law,
+    family integrity; (d) subject-identity.test.ts — 11 unit tests on the
+    pure semantics; (e) package.json prebuild chain extended.
+    DESIGN DELTA vs the plan's "12 bespoke glyphs": the approved mockup
+    itself draws 17 designs covering ALL 18 canonical subjects (the "12"
+    predates the mockup); shipped 17 = zero fallback rendering for current
+    subjects, fallback stays a resilience net. Disclosed here and in the PR.
+    Gates: verify law PASS (106/106 slugs resolved, 18 identities from 20
+    raw subject strings, 17/17 glyphs in use, families 36/38/8/15/9);
+    bun test 11/11 (132 expect calls); turbo typecheck 5/5 workspaces;
+    eslint clean on all new src files (scripts/ is house-ignored);
+    build:hub compile+prerender COMPLETE (4647/4647 pages, BUILD_ID minted)
+    — standalone packaging cp and next-start boot blocked by the sandbox
+    rootfs (ENOSPC at the final packaging mkdir, twice, 9.9GB rootfs with
+    4.7-5.9G free: the 4647-page standalone artifact set exceeds the
+    sandbox ceiling) — the same disclosed limit the T-HUB-COURSES-PUBLIC-1
+    lane hit; CI hub job runs the identical build on a clean runner and is
+    the packaging gate of record.
+    Production environment note (observed during this run, disclosed to the
+    operator): syllabai-hub-v2.vercel.app answers 402 DEPLOYMENT_DISABLED
+    since ~16:2xZ 2026-11-07 (both projects) after the post-bake merge
+    train (#852/#851/#850 + receipt, 15:45-16:22Z) exhausted the new
+    account's daily deployment allowance again — same serving-down class as
+    the 2026-11-05 old-account suspension, same self-heal expectation as
+    the 2026-11-07 cap event ("tried, refused, next dispatch self-heals
+    after reset"). The t-vercel-usage-bake dispatch attempts from this
+    session are GitHub-API-rate-blocked (secondary limit, mutations 403);
+    the scheduled 02:30Z bake is the self-heal floor. This lane merges
+    nothing to prod until Vercel accepts deployments again; the merge is
+    deploy-neutral while blocked.
+    run-002 (2026-11-07, operator trace 1a1b74a9139b7f5d, order "start
+    run-002 and also keep in mind of all the themes we have. The redesign
+    should fit in perfectly"): STAGE 2 WIRES THE DIRECTORY — the /courses
+    visual redesign lands on top of run-001's identity single source, theme-
+    fitted across all four themes (sme / quiet-green / candy-shop /
+    chat-app-plum) and both modes. (a) lib/directory-groups.ts — the pure,
+    unit-pinned grouping law: level sections keep the curriculum ladder
+    IGCSE->AS->A-Level->IAL verbatim (T-HUB-COURSES-PUBLIC-1 fix ④), family
+    groups inside each level in the identity lib's order (Sciences -> Maths
+    & CS -> English -> Business & Econ -> Humanities, the approved mockup's
+    scan order), rows sorted canonical subject -> board -> code -> label ->
+    slug (deterministic end to end); (b) course-directory.tsx rebuilt on it:
+    every card renders its subject's bespoke glyph on the identity tile pair
+    (mockup values byte-carried since run-001), the search haystack gains
+    the canonical subject + family label, and the continue-card, toolbar,
+    board chips + URL sync, ghost/bundle border laws, past-paper + corpus
+    badges, deep-link law and empty state are byte-identical behaviour;
+    (c) globals.css — one additive block, the .subject-tile colour template
+    derived through the run-004b color-mix pattern (light = the mockup's
+    pastel wash + saturated ink; dark = 16% identity fg over the theme's own
+    card + lightened ink; zero per-theme rules, the #500 law); (d)
+    directory-groups.test.ts — 10 tests / 16 expects pinning ladder, family
+    order, alias+case folding, sort law, unmapped-subject resilience,
+    determinism.
+    Gates: verify law PASS 106/106; bun test 21/21 (10 new + 11 run-001);
+    tsc --noEmit clean; eslint clean on changed src files; build:hub
+    compile+prerender complete (standalone cp = the disclosed sandbox
+    ENOSPC step; CI hub job is the packaging gate of record); prerendered
+    /courses structure check: IGCSE families 27+16+7+10+7=67, AS 12,
+    A-Level 14, IAL 13 = 106, zero lucide fallbacks rendered; visual
+    captures across sme light/dark, quiet-green, candy-shop light/dark,
+    mobile light/dark confirm the identity hue stays the subject-brand
+    constant while token chrome re-skins per theme/mode. Full-suite src/lib
+    run shows 23 pre-existing "Cannot find package react" resolution errors
+    REPRODUCED IDENTICAL on clean main (sandbox bun-hoisting quirk, not a
+    regression; CI's clean runner is the test gate of record).
+    Production fact (observed, disclosed): both projects still answer 402
+    DEPLOYMENT_DISABLED at 19:0xZ (probe) — the 02:30Z bake is the self-heal
+    floor; this PR is deploy-neutral while Vercel refuses deployments. The
+    session's GitHub REST mutations are secondary-rate-blocked (same class
+    run-001 disclosed; git push over the x-access-token path unaffected);
+    the PR goes through a patient retry loop and CI runs via the
+    pull_request trigger (main's push filter remains broken: 'ain]').
