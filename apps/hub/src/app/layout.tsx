@@ -121,7 +121,11 @@ export const metadata: Metadata = {
   // UX review 2026-10-31 F-08: canonical + Open Graph URLs on the course
   // pages are relative — metadataBase is the absolute base they resolve
   // against (the deployment's canonical home).
-  metadataBase: new URL("https://syllabai-hub-v2.vercel.app"),
+  // T-HUB-COURSES-PUBLIC-2 (⑤): production of record is www.syllab-ai.com —
+  // the old syllabai-hub-v2.vercel.app project answers 402
+  // DEPLOYMENT_DISABLED (the disclosed cap-class halt), so every canonical /
+  // og: URL on the now-public site must resolve against the LIVE domain.
+  metadataBase: new URL("https://www.syllab-ai.com"),
   // UX audit 2026-10-02 #14: a template brands every nested title (pages
   // export the bare page name; the suffix is appended exactly once here).
   title: {

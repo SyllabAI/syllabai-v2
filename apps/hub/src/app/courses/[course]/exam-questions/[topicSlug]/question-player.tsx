@@ -531,7 +531,7 @@ export function QuestionPlayer({
                 ? "border-primary bg-primary text-primary-foreground"
                 : viewIdx === i
                   ? "border-primary bg-primary/10 text-primary"
-                  : "hover:border-primary/50 hover:text-primary",
+                  : "hover:border-primary/60 hover:text-primary",
               viewIdx === i && "ring-2 ring-primary/60 ring-offset-2 ring-offset-background",
             )}
           >
@@ -880,6 +880,12 @@ function QuestionBody({
   const coreJoin: BridgeQuestion | null =
     bridge.kind === "ready" ? (bridge.data.questions[question.id] ?? null) : null;
   const coreLive = bridge.kind === "ready" && coreJoin !== null;
+  // T-QBANK-AILANE-DEDUP-1: the per-box lane badge renders only when it is
+  // the SOLE liveness signifier on the card. When the core marking flow
+  // owns the question (same gate as the flow below), its header "live"
+  // badge is the one liveness statement — a per-box "live draft" badge on
+  // every structured part repeated that fact N+1 times on one card.
+  const coreFlowActive = coreLive && coreJoin !== null && coreJoin.structured.length > 0;
 
   return (
     <div className="space-y-4" data-question-block={question.id}>
@@ -918,6 +924,7 @@ function QuestionBody({
             labelChip={labelChip}
             partLabel={labelChip ?? (question.parts.length > 1 ? String.fromCharCode(97 + idx) : null)}
             coreLive={coreLive}
+            showLaneBadge={!coreFlowActive}
             onAskClaPart={coreJoin ? () => onAskClaPart(p.id) : undefined}
           />
         );
@@ -1018,6 +1025,7 @@ function StructuredPart({
   labelChip,
   partLabel,
   coreLive,
+  showLaneBadge,
   onAskClaPart,
 }: {
   course: Course;
@@ -1026,6 +1034,10 @@ function StructuredPart({
   topicSlug: string;
   subtopicCode: string | null;
   showPartBadge: boolean;
+  /** T-QBANK-AILANE-DEDUP-1: false = the core flow's header badge owns the
+   *  card's liveness statement; true = this box's lane badge is the sole
+   *  signifier (legacy/demo planes) and stays */
+  showLaneBadge: boolean;
   /** the printed label ("(a)", "(a)(i)") when the corpus attests one; null = no chip */
   labelChip: string | null;
   /** true label when known, else the legacy index letter — CLA aria text only
@@ -1100,6 +1112,7 @@ function StructuredPart({
           topicSlug={topicSlug}
           subtopicCode={subtopicCode}
           coreLive={coreLive}
+          showLaneBadge={showLaneBadge}
           partLabel={labelChip}
         />
       )}
@@ -1116,6 +1129,7 @@ function TypedAnswerWorkspace({
   topicSlug,
   subtopicCode,
   coreLive,
+  showLaneBadge,
   partLabel,
 }: {
   course: Course;
@@ -1124,6 +1138,10 @@ function TypedAnswerWorkspace({
   topicSlug: string;
   subtopicCode: string | null;
   coreLive: boolean;
+  /** T-QBANK-AILANE-DEDUP-1: when the core marking flow owns this card its
+   *  header "live" badge is the only liveness signifier — this per-box lane
+   *  badge renders only when it would otherwise be the sole statement */
+  showLaneBadge: boolean;
   /** the attested printed label ("(a)") when the corpus carries one; null =
    *  honestly unlabeled — the aria drops the part qualifier instead of
    *  guessing an order number (T-QVIEW-AUDIT-BCD-1 batch C) */
@@ -1290,21 +1308,23 @@ function TypedAnswerWorkspace({
         marks={part.marks}
         onSubmitShortcut={submitShortcut}
         // wave 1 honesty features, demoted into the active state (SME's box
-        // "looks normal at first"): lane badge + derived save chip ride the
-        // strip's right side; the where-drafts-live copy is the muted line
-        // under it. Both still appear the moment there is content (a typed
-        // or reloaded draft keeps the box active).
+        // "looks normal at first"): the derived save chip rides the strip's
+        // right side; the where-drafts-live copy is the muted line under it.
+        // T-QBANK-AILANE-DEDUP-1: the lane badge rides the same slot only
+        // when it is the card's sole liveness signifier (showLaneBadge).
         statusSlot={
           <>
-            <Badge
-              variant="outline"
-              className={cn(
-                "px-1 text-[11px] uppercase",
-                coreLive ? "border-success/30 text-success" : "text-muted-foreground",
-              )}
-            >
-              {coreLive ? "live draft" : "simulated"}
-            </Badge>
+            {showLaneBadge && (
+              <Badge
+                variant="outline"
+                className={cn(
+                  "px-1 text-[11px] uppercase",
+                  coreLive ? "border-success/30 text-success" : "text-muted-foreground",
+                )}
+              >
+                {coreLive ? "live draft" : "simulated"}
+              </Badge>
+            )}
             {text.length > 0 && (
               <span
                 aria-live="polite"
@@ -1382,7 +1402,7 @@ function TypedAnswerWorkspace({
               <Sparkles className="size-3" aria-hidden /> AI-suggested mark: {mark.score}/{mark.max}
             </Badge>
             <span className="text-[11px] text-muted-foreground">
-              via {mark.provider} · AI_SUGGESTED — check against the mark scheme
+              via {mark.provider} — check against the mark scheme
             </span>
             {singlePart && !applied && (
               <Button
@@ -1761,7 +1781,7 @@ function McqPart({
                         ? "border-success/40 bg-success/10"
                         : isChosen
                           ? "border-primary bg-primary/5"
-                          : "hover:border-primary/50",
+                          : "hover:border-primary/60",
                   )}
                 >
                   <span
@@ -2299,9 +2319,6 @@ function CoreMarkingFlow({
                     )}
                   >
                     {score}/{max}
-                  </Badge>
-                  <Badge variant="secondary" className="text-[10px]">
-                    advisory · no attempt written
                   </Badge>
                 </div>
                 {attemptClass && (

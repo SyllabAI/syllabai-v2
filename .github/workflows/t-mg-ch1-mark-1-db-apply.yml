@@ -1,0 +1,206 @@
+# T-MG-CH1-MARK-1 — the 4CH1/1C June 2026 marking-coverage apply.
+#
+# Two writes, one guard protocol of record (the 133d discipline, mirrored
+# from t-mig-138-intake.yml):
+#   job 1 (cow-proof): a disposable Neon COW branch off production; the
+#     paper-anchor driver (apps/api/scripts/ch1-anchor-tree.ts) writes the
+#     ADR-037 official-set tree, the rects seed's DRY-RUN gate proves the
+#     95/95 ref resolutions (fail loudly BEFORE any rect write), then the
+#     seed applies; postverify (65 regions, 56 part regions wired);
+#     DROP the COW + 404-verify — even on failure (the T-MIG-035 discipline).
+#     Production roles are never touched.
+#   job 2 (prod-apply, needs job 1 ALL GREEN): the same driver + seed gate +
+#     apply against the production DATABASE_URL, postverify + artifact.
+#
+# The rects manifest of record (apps/api/scripts/fixtures/mark-point-rects-
+# 4ch1-1c-jun2026.json) is sha-pinned in-repo; the bundle source
+# (official-papers.json) is the committed ADR-037 corpus.
+#
+# OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
+# dispatched (the dispatch = the operator's fire order per the 093/133b law).
+# Secrets of record: NEON_API_KEY, T138_PROD_DATABASE_URL (both exist).
+# Vars of record: NEON_PROJECT_ID, NEON_PARENT_BRANCH_ID (exist).
+
+name: t-mg-ch1-mark-1-db-apply
+
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "Operator note for this apply"
+        required: false
+        default: ""
+      mode:
+        description: "cow+prod (default, full guard protocol) | prod-only (COW proof already of record)"
+        required: false
+        default: "cow+prod"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-mg-ch1-mark-1-db-apply
+  cancel-in-progress: false
+
+jobs:
+  cow-proof:
+    if: ${{ inputs.mode == 'cow+prod' || inputs.mode == '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="t-mg-ch1-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          PW=$(echo "$RESP" | jq -r '.role.password')
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Anchor the tree + dry-run gate + seed rects on the COW
+        run: |
+          set -euo pipefail
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/ch1-cow.uri
+          chmod 600 /tmp/ch1-cow.uri
+          bun apps/api/scripts/ch1-anchor-tree.ts --apply \
+            --db /tmp/ch1-cow.uri --receipt cow-tree-receipt.json
+          DATABASE_URL="$(cat /tmp/ch1-cow.uri)" bun apps/api/scripts/seed-mark-point-rects.ts \
+            apps/api/scripts/fixtures/mark-point-rects-4ch1-1c-jun2026.json --dry-run
+          DATABASE_URL="$(cat /tmp/ch1-cow.uri)" bun apps/api/scripts/seed-mark-point-rects.ts \
+            apps/api/scripts/fixtures/mark-point-rects-4ch1-1c-jun2026.json | tee cow-rects-seed.log
+      - name: Postverify the COW (the regions service, end to end)
+        run: |
+          bun -e '
+            import postgres from "postgres";
+            const sql = postgres(process.env.COW_URL, { max: 1, prepare: false });
+            const q = await sql`select count(*)::int as n from questions where exam_paper_id = ${"ef899774-7aa1-4246-8fb1-99b4d3cdfa95"}`;
+            const mp = await sql`select count(*)::int as n from mark_points mp join mark_schemes ms on ms.id = mp.mark_scheme_id
+              join question_versions v on v.id = ms.question_version_id
+              join questions qq on qq.id = v.question_id where qq.exam_paper_id = ${"ef899774-7aa1-4246-8fb1-99b4d3cdfa95"}`;
+            const rc = await sql`select count(*)::int as n from mark_point_rects r
+              join mark_points mp on mp.id = r.mark_point_id join mark_schemes ms on ms.id = mp.mark_scheme_id
+              join question_versions v on v.id = ms.question_version_id
+              join questions qq on qq.id = v.question_id where qq.exam_paper_id = ${"ef899774-7aa1-4246-8fb1-99b4d3cdfa95"}`;
+            console.log("COW postverify: questions =", q[0].n, "| mark_points =", mp[0].n, "| rects =", rc[0].n);
+            if (Number(q[0].n) !== 9) { console.error("expected 9 anchored questions"); process.exit(1); }
+            if (Number(mp[0].n) !== 95) { console.error("expected 95 mark points"); process.exit(1); }
+            if (Number(rc[0].n) !== 95) { console.error("expected 95 rects"); process.exit(1); }
+            await sql.end();
+          '
+        env:
+          COW_URL: ${{ steps.role.outputs.cow_url }}
+      - name: Upload the COW proof artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t-mg-ch1-cow-proof
+          path: |
+            cow-tree-receipt.json
+            cow-rects-seed.log
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }
+
+  prod-apply:
+    needs: cow-proof
+    if: ${{ !failure() && !cancelled() && (inputs.mode == 'cow+prod' || inputs.mode == '' || inputs.mode == 'prod-only') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Anchor the tree + dry-run gate + seed rects on PRODUCTION
+        env:
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          printf '%s' "$T138_PROD_DATABASE_URL" > /tmp/ch1-prod.uri
+          chmod 600 /tmp/ch1-prod.uri
+          bun apps/api/scripts/ch1-anchor-tree.ts --apply \
+            --db /tmp/ch1-prod.uri --receipt prod-tree-receipt.json
+          DATABASE_URL="$(cat /tmp/ch1-prod.uri)" bun apps/api/scripts/seed-mark-point-rects.ts \
+            apps/api/scripts/fixtures/mark-point-rects-4ch1-1c-jun2026.json --dry-run
+          DATABASE_URL="$(cat /tmp/ch1-prod.uri)" bun apps/api/scripts/seed-mark-point-rects.ts             apps/api/scripts/fixtures/mark-point-rects-4ch1-1c-jun2026.json | tee prod-rects-seed.log
+      - name: Postverify PRODUCTION counts
+        env:
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          bun -e '
+            import postgres from "postgres";
+            const sql = postgres(process.env.T138_PROD_DATABASE_URL, { max: 1, prepare: false });
+            const q = await sql`select count(*)::int as n from questions where exam_paper_id = ${"ef899774-7aa1-4246-8fb1-99b4d3cdfa95"}`;
+            const mp = await sql`select count(*)::int as n from mark_points mp join mark_schemes ms on ms.id = mp.mark_scheme_id
+              join question_versions v on v.id = ms.question_version_id
+              join questions qq on qq.id = v.question_id where qq.exam_paper_id = ${"ef899774-7aa1-4246-8fb1-99b4d3cdfa95"}`;
+            const rc = await sql`select count(*)::int as n from mark_point_rects r
+              join mark_points mp on mp.id = r.mark_point_id join mark_schemes ms on ms.id = mp.mark_scheme_id
+              join question_versions v on v.id = ms.question_version_id
+              join questions qq on qq.id = v.question_id where qq.exam_paper_id = ${"ef899774-7aa1-4246-8fb1-99b4d3cdfa95"}`;
+            console.log("PROD postverify: questions =", q[0].n, "| mark_points =", mp[0].n, "| rects =", rc[0].n);
+            if (Number(q[0].n) !== 9) { console.error("expected 9 anchored questions"); process.exit(1); }
+            if (Number(mp[0].n) !== 95) { console.error("expected 95 mark points"); process.exit(1); }
+            if (Number(rc[0].n) !== 95) { console.error("expected 95 rects"); process.exit(1); }
+            await sql.end();
+          '
+      - name: Upload the prod apply artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t-mg-ch1-prod-apply
+          path: |
+            prod-tree-receipt.json
+            prod-rects-seed.log
+          if-no-files-found: ignore

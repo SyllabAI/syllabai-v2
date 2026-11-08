@@ -1,11 +1,11 @@
 {
- "schema": "syllabai.grade-boundaries/1.0",
- "generated": "2026-11-04T18:50:53Z",
- "generator": "GradeBoundaries/scripts/build_hub_import.py v2",
+ "schema": "syllabai.grade-boundaries/1.1",
+ "generated": "2026-11-08T03:23:37Z",
+ "generator": "GradeBoundaries/scripts/build_hub_import.py v3",
  "source": {
   "lane": "SyllabAI/syllabai-resources GradeBoundaries",
-  "documents": 144,
-  "manifest_sha16": "e7631b68359dc6e2"
+  "documents": 159,
+  "manifest_sha16": "a71dad2e318a8046"
  },
  "counts": {
   "courses_served": 105,
@@ -221141,7 +221141,68 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": "9-1",
+    "papers": [
+     {
+      "code": "4MB1/01",
+      "paperLabel": "01",
+      "title": "Paper 1",
+      "rawMax": 100,
+      "duration": "1h 30m",
+      "tier": "Higher",
+      "weight": {
+       "num": 1,
+       "den": 3,
+       "asPrinted": "33 1/3%"
+      },
+      "weightFactor": 1,
+      "regionalVariant": "4MB1/01R"
+     },
+     {
+      "code": "4MB1/02",
+      "paperLabel": "02",
+      "title": "Paper 2",
+      "rawMax": 100,
+      "duration": "2h 30m",
+      "tier": "Higher",
+      "weight": {
+       "num": 2,
+       "den": 3,
+       "asPrinted": "66 2/3%"
+      },
+      "weightFactor": 2,
+      "regionalVariant": "4MB1/02R"
+     }
+    ],
+    "total": {
+     "maxMark": 300,
+     "derivation": "100×1 + 100×2 = 300",
+     "note": "Paper 2 counts double: the graded total is 300 weighted marks (100 from Paper 1, 200 from Paper 2), not 200 raw marks."
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Linear 9-1 qualification: no unit-grade or A* aggregate conditions; grades 9..1 are awarded directly on the weighted total per session."
+    },
+    "sources": [
+     {
+      "id": "pearson-4mb1-specification",
+      "title": "Pearson Edexcel International GCSE in Mathematics (Specification B) — Specification, Issue 1, January 2016",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Mathematics%20B/2016/Specification%20and%20sample%20assessments/international-gcse-in-mathematics-spec-b.pdf",
+      "sha256_16": "62d4534ba1c0aee4",
+      "usedFor": "Assessment requirements table: paper codes 4MB1/01 and 4MB1/02, 100 marks each, Paper 1 weighted 33 1/3% (1h 30m), Paper 2 weighted 66 2/3% (2h 30m), both Higher tier"
+     },
+     {
+      "id": "pearson-int-gcse-grade-boundaries-2606",
+      "title": "Pearson Grade Boundaries — June 2026 International GCSE (9-1)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Support/Grade-boundaries/International-GCSE/grade-boundaries-june-2026-international-gcse.pdf",
+      "sha256_16": "9c5627002aeba93e",
+      "usedFor": "Cross-check: the 4MB1 subject row prints maxMark 300 with overall 9-1 boundaries on the weighted total (papers 01 02 / 01R 02R)"
+     }
+    ]
+   }
   },
   "igcse-physics-19": {
    "code": "4PH1",

@@ -7,6 +7,7 @@
  */
 import { describe, expect, test } from "bun:test";
 import {
+  courseLevelAnchor,
   groupDirectory,
   stageRank,
   STAGE_ORDER,
@@ -137,5 +138,26 @@ describe("determinism (prerender + hydration consistency)", () => {
       ).flatMap((g) => g.families.map((f) => f.family)),
     );
     expect([...emitted]).toEqual(["sciences"]);
+  });
+});
+
+/**
+ * T-HUB-COURSES-PUBLIC-2 (③): the jump-nav anchor law — deterministic,
+ * DOM-safe ids that can never collide with another element on the page.
+ */
+describe("courseLevelAnchor", () => {
+  test("the four registry levels pin to stable ids", () => {
+    expect(courseLevelAnchor("IGCSE")).toBe("courses-igcse");
+    expect(courseLevelAnchor("AS")).toBe("courses-as");
+    expect(courseLevelAnchor("A-Level")).toBe("courses-a-level");
+    expect(courseLevelAnchor("IAL")).toBe("courses-ial");
+  });
+
+  test("unusual levels stay DOM-safe and collision-free", () => {
+    expect(courseLevelAnchor("O Level")).toBe("courses-o-level");
+    expect(courseLevelAnchor("  GCSE!! ")).toBe("courses-gcse");
+    expect(courseLevelAnchor("A--Level")).toBe("courses-a-level");
+    // every id keeps the courses- prefix — no bare-name collisions
+    expect(courseLevelAnchor("x").startsWith("courses-")).toBe(true);
   });
 });
