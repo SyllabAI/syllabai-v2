@@ -33,6 +33,9 @@ export const ProvenanceTier = z.enum([
   "HUMAN_VALIDATED", // operator-reviewed
   "DEMO_DERIVED",   // generated inside the demo for prototyping only
   "SIMULATED",      // deterministic fiction (learner overlay)
+  "SME_REFERENCE",  // ADR-039 wave-1: SME picker section/topic rows copied
+                    // verbatim from the live SaveMyExams picker (selector
+                    // navigation layer only — never spec content)
 ]);
 
 export const MasteryBand = z.enum(["LOW", "DEVELOPING", "SECURE", "UNMEASURED"]);

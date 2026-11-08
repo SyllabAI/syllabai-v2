@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Filter } from "lucide-react";
 import { boardOf, getCourseBundle, loadHubCourse } from "@/lib/courses";
+import { smeRowOfQuestionSet } from "@/lib/spec-tree";
 import { getDataProvider } from "@/lib/data";
 import { CoursePageHeader } from "@/components/hub/course-header";
 import { QuestionbankIndex, type QbLooseSet, type QbTopic } from "./questionbank-index";
@@ -133,6 +134,60 @@ export default async function ExamQuestionsIndexPage({
   const scopedSub = scopedCode ? hub.index.subtopicByCode.get(scopedCode)! : null;
   const scopedTopic = scopedSub ? hub.index.topicByCode.get(scopedSub.topicCode) ?? null : null;
 
+  // ADR-039 wave 1: courses whose spine ships the SME picker layer render
+  // THIS index from it — sections → topic rows exactly as SaveMyExams' own
+  // Exam Questions picker organizes them (operator directive: the selector
+  // must mirror the SME picker). Sets file into rows 1:1 by their corpus
+  // topicSlug (smeRowOfQuestionSet — deterministic bijection, audited per
+  // course). Every other surface keeps the official spine: sidebar, notes,
+  // flashcards, Teach-Me, and legacy ?spec=/official ?subtopic= deep links
+  // (those still resolve through allRows below).
+  const smeSections = hub.index.tree.smeSections ?? [];
+  const smeActive = smeSections.length > 0;
+  const smeRowTopic = new Map(
+    smeSections.flatMap((s) => s.subtopics.map((r) => [r.code, s] as const)),
+  );
+  const smeAllRows: QbTopic[] = smeSections
+    .map((sec) => ({
+      code: sec.code,
+      number: sec.number,
+      title: sec.title,
+      subs: sec.subtopics
+        .map((row) => {
+          // the same whole-set count sum + corpus-order list law the official
+          // rows get from setListsBySubtopic; title = the set-row law
+          // (setName ?? name) used everywhere sets are listed
+          const sets = hub.questionTopics
+            .filter((t) => smeRowOfQuestionSet(t, hub.index) === row.code && inScope(t.slug))
+            .map((t) => ({ slug: t.slug, title: t.setName ?? t.name, count: t.questions.length }));
+          return {
+            code: row.code,
+            label: null,
+            title: row.title,
+            sets,
+            count: sets.reduce((a, s) => a + s.count, 0),
+          };
+        })
+        .filter((r) => r.count > 0),
+    }))
+    .filter((g) => g.subs.length > 0);
+  // rings read counts per row code — give SME rows the same questions-only
+  // denominator the select-page law fixes for official rows
+  const pageCounts = { ...hub.counts };
+  if (smeActive) {
+    for (const sec of smeSections) {
+      const secCell = pageCounts[sec.code] ?? { notes: 0, questions: 0, flashcards: 0 };
+      for (const row of sec.subtopics) {
+        const n = hub.questionTopics
+          .filter((t) => smeRowOfQuestionSet(t, hub.index) === row.code)
+          .reduce((a, t) => a + t.questions.length, 0);
+        pageCounts[row.code] = { notes: 0, questions: n, flashcards: 0 };
+        secCell.questions += n;
+      }
+      pageCounts[sec.code] = secCell;
+    }
+  }
+
   // Sub-topic granularity of record: every set is listed under its canonical
   // sub-topic (subtopicOfQuestionSet — the same law that feeds the sidebar's
   // setsBySubtopic / setListsBySubtopic / hrefs.questions), so row counts
@@ -160,13 +215,21 @@ export default async function ExamQuestionsIndexPage({
       return { code: topic.code, number: topic.number, title: topic.title, subs };
     })
     .filter((g) => g.subs.length > 0);
-  // scoped landing: only the scoped sub-topic's row, under its own topic
-  const rows: QbTopic[] = scopedCode
-    ? allRows
-        .filter((t) => t.code === scopedTopic?.code)
-        .map((t) => ({ ...t, subs: t.subs.filter((s) => s.code === scopedCode) }))
-        .filter((t) => t.subs.length > 0)
-    : allRows;
+  // scoped landing: only the scoped sub-topic's row, under its own topic —
+  // SME rows scope into the SME layer, official codes keep the official rows
+  // (legacy ?spec= and pre-wave ?subtopic= links never break)
+  const scopedFilter = (groups: QbTopic[]) =>
+    groups
+      .filter((t) => t.code === scopedTopic?.code)
+      .map((t) => ({ ...t, subs: t.subs.filter((s) => s.code === scopedCode) }))
+      .filter((t) => t.subs.length > 0);
+  const rows: QbTopic[] = !scopedCode
+    ? smeActive
+      ? smeAllRows
+      : allRows
+    : smeRowTopic.has(scopedCode)
+      ? scopedFilter(smeAllRows)
+      : scopedFilter(allRows);
 
   // sets whose canonical home resolved to nothing — never listed under any
   // sub-topic — keep the honest "Other sets" section
@@ -231,7 +294,7 @@ export default async function ExamQuestionsIndexPage({
           with the same copy (paperLabel carries the active label). */}
       <QuestionbankIndex
         course={meta.slug as Course}
-        counts={hub.counts}
+        counts={pageCounts}
         rows={rows}
         unplaced={unplaced}
         paperLabel={paperActive ? paperLabelOf(paperActive) : null}

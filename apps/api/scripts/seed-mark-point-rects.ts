@@ -127,7 +127,9 @@ async function main() {
 
   if (dryRun) {
     console.log("DRY RUN complete — resolutions verified, nothing written");
-    return;
+    // the transport law's exit covers the dry-run path too (run 6: the
+    // early return bypassed the tail exit and idled into the reaper)
+    process.exit(0);
   }
 
   // (C) idempotent upsert (uq_mark_point_rect_point_ordinal) — SET-BASED:
@@ -155,6 +157,12 @@ async function main() {
       height = excluded.height,
       extraction_confidence = excluded.extraction_confidence`;
   console.log(`seeded: ${resolved.length} rect row(s) upserted onto ${paperId} (batched, one statement)`);
+  // TRANSPORT LAW (run-004/run-005 evidence): the createSql seam exposes no
+  // close — the Neon serverless WebSocket keeps bun's event loop alive after
+  // the work is done; the process idles until Neon's backend reaper kills
+  // the session ("terminating connection due to administrator command") and
+  // the unhandled error event fails the job. Exit explicitly.
+  process.exit(0);
 }
 
 main().catch((e) => {

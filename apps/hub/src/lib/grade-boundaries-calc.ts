@@ -272,7 +272,10 @@ export function gradeFromAggregation(
         overallMin: number;
         a2Min?: number;
         a2Rate?: number;
-        a2Units: string[];
+        // T-GB-STRUCT-3: modular IGCSE top-grade laws (9-1 ladder) carry
+        // only overallMin — there is no A2 rule to satisfy, and the grade
+        // already comes from the served fixed thresholds
+        a2Units?: string[];
       }
     | undefined,
   agg: AggregateOutcome,
@@ -280,7 +283,7 @@ export function gradeFromAggregation(
   const ladder = cashIn.gradeLadder ?? Object.keys(cashIn.boundaries);
   let grade = gradeForMark(cashIn.boundaries, ladder, agg.totalUms);
   let aStarRuleApplied = false;
-  const a2Ums = aStar
+  const a2Ums = aStar?.a2Units
     ? aStar.a2Units.reduce(
         (acc, code) =>
           acc +
@@ -292,12 +295,13 @@ export function gradeFromAggregation(
     aStar === undefined
       ? undefined
       : aStar.a2Rate !== undefined
-        ? a2MaxOf(aStar.a2Units, agg) > 0
+        ? aStar.a2Units && a2MaxOf(aStar.a2Units, agg) > 0
           ? Math.round(aStar.a2Rate * a2MaxOf(aStar.a2Units, agg))
           : Number.POSITIVE_INFINITY // no A2 ceiling: the rule cannot apply
         : aStar.a2Min;
   if (
     aStar &&
+    aStar.a2Units &&
     agg.complete &&
     cashIn.boundaries["A*"] === undefined &&
     agg.totalUms >= aStar.overallMin &&
@@ -364,7 +368,7 @@ export function bestAggregationSelection(
         overallMin: number;
         a2Min?: number;
         a2Rate?: number;
-        a2Units: string[];
+        a2Units?: string[];
       }
     | undefined,
 ): SelectionOutcome | null {

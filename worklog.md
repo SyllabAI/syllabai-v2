@@ -1740,6 +1740,35 @@ Stage Summary:
 - Header comment carries the transport law (the run-001 evidence). Zero behavior change to the exactly-one resolution law, the manifest schema, or the dry-run posture.
 
 
+## T-MG-CH1-MARK-1 run-003 (2026-11-08) — the tree driver's transport fast-path
+
+- Run 4 (prod-only, the batched seed) hung in the prod-apply step: the driver's RE-anchor path (the tree landed in prod via run 3's partial success) takes the find+update branch for every row — ~340 sequential round trips inside one transaction over the Neon serverless WS, past the ~5 min reaper wall. The batched seed never got its turn.
+- THE FIX: one probe query before the transaction — if the tree of record is already complete (questions == 9 AND points == 95 for the paper), the driver SKIPS with an explicit line; otherwise the unchanged idempotent full re-anchor runs. A re-run of the activation is now ~2 round trips for the tree leg + 3 for the seed leg.
+- Local proof: complete tree → "SKIP: tree already anchored (questions 9 / points 95 — complete of record)"; the full path is byte-identical to run-001's (proven twice on COW + locally). Typecheck 5/5.
+
+
+## T-MG-CH1-MARK-1 run-004 (2026-11-08) — the Neon WS loop-alive law: explicit exit after the work
+
+- Run 4's log finally isolated it: APPLIED (178 updates, the full re-anchor) printed at 17:40:23 — 21 SECONDS after start — then 21 minutes of NOTHING, then "terminating connection due to administrator command". Run 5: the SKIP fired at 18:07:15 (1 query), then 5min17s of nothing, then the same death. The scripts were NEVER slow — they FINISHED and did not exit: the createSql seam exposes no close, the Neon serverless WebSocket keeps bun's event loop alive, the process idles with an open session, and Neon's backend reaper kills it (5-21 min depending on the endpoint's idle policy); the unhandled 'error' event then crashes the process and set -e fails the job. The batched-seed theory (run-002) was a red herring — query COUNT was never the problem.
+- THE FIX: process.exit(0) at the end of BOTH scripts (the tree driver + the rects seed), immediately after the work/receipt, with the evidence in the comments. Local sanity: skip fires, seed re-applies 95 idempotent, typecheck 5/5. The workflow's postverify step uses postgres.js directly (TCP, closes cleanly) — unaffected.
+- The data of record was already in prod the whole time (run 4's APPLIED + run 5's seed upserts with buffered output lost): the re-dispatch is pure idempotent convergence + the green postverify.
+
+
+## T-MG-CH1-MARK-1 run-005 (2026-11-08) — the dry-run path exits too
+
+- Run 6 got the furthest yet: the tree SKIP exited cleanly (the run-004 exit works), the seed's batched resolution resolved 95/95 against PRODUCTION in one query, "DRY RUN complete" printed at 18:25:55 — then 5min37s of idle and the reaper kill. The dry-run block RETURNED from main() before reaching the tail process.exit(0) — the run-004 fix had a hole exactly on the rehearsal path.
+- THE FIX: process.exit(0) inside the dry-run block (after the completion line). Every path out of the seed now exits explicitly. Local dry-run + tsc 5/5.
+- Scoreboard so far: the tree leg proved green on prod (SKIP, 1 query); the seed's resolution leg proved green on prod (95/95, one query); the only unexecuted line on prod is the apply leg's single unnest statement (proven locally: fresh + idempotent) — the next dispatch runs it and the postgres.js postverify gates 9/95/95.
+
+
+## T-HUBHDR-MOBILELEAK-1 run-001 (2026-11-08) — the signed-in header no longer overflows the 390px viewport
+
+- Operator order: "file the 19px header fix as a tiny task card" — the production visual pass (www.syllab-ai.com, 390×844, signed-in) measured html.scrollWidth 409 vs clientWidth 390: a 19px page-level horizontal scroll. Isolation: breadcrumbs self-contain (overflow-x-auto scroller sw 1822 / cw 390), content tables are wrapped and scroll internally (right edge 444 inside their own scroller); the ONLY page-level leak was the header's ml-auto identity cluster (theme icon trigger 40px + identity chip 124px + practise 34px = 210px into the row budget).
+- Reproduced locally at main a3561bd1 by injecting the pilot-shape identity into localStorage (the exact shape currentUser() shape-checks: id/email/displayName/roles as strings; the first probe without `id` was instantly cleared by the shape-guard — clearSession() from inside currentUser(), caught via a Storage.removeItem stack capture, which is the guard working as built). Overflow exactly 19px, cluster 210px — parity with production.
+- THE FIX (two responsive class changes, sm+ pixel-identical): (1) theme-toggle.tsx icon trigger size-10 → size-8 sm:size-10 — the 32px phone trigger matches the h-8 identity chip and sign-in button beside it (the icon variant is shared with course-shell's collapsed-sidebar mount; the sub-sm size lands there too, disclosed on the card); (2) app-shell.tsx identity name span max-w-16 → max-w-12 below sm — the "Hub suffix returns at sm" precedent law (375px fit wave) applied one chip over.
+- Verified: signed-in 390px overflow 19 → 0 (cluster 210 → 186, −24px, 5px slack); desktop 1440 overflow 0 with the trigger back to 40px; aria labels untouched; tsc --noEmit exit 0; eslint exit 0 on both files; route-gate suite 8/8 (35 expect calls). Task card .syllabai/tasks/T-HUBHDR-MOBILELEAK-1.yaml + receipt .syllabai/receipts/T-HUBHDR-MOBILELEAK-1/run-001.md. Branch t-hubhdr-mobileleak/run-001, PR integrator-queued — NOT self-merged per house law.
+
+
 ## T-QVIEW-ACTION-1 run-001 (2026-11-08) — the MathsGenie steal-list lands on the question-viewing action layer
 
 - Operator order: "file the 19px header fix as a tiny task card, and proceed to the MathsGenie steal-list batch". Source benchmark: the two-round MG pixel review of record (visual craft 8/10, interaction 7/10). Four steals landed; two audited non-goals recorded on the card.

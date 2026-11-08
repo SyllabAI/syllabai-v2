@@ -39,3 +39,39 @@ export function formatCourseStats(c: CourseCounts): string {
   if (c.questions > 0) parts.push(plural(c.questions, "question", "questions"));
   return parts.join(" · ");
 }
+
+/**
+ * T-HUB-COURSES-UI-2: the hero band's StatChip row — the directory's own
+ * census, derived from the SAME arrays the cards render (registry facts +
+ * the archivePapers map; option-1 law: nothing but static, committed
+ * facts). `fullCorpus` counts status="full" lanes (the pilot lane keeps its
+ * own honest badge — it is not counted here); `tutorReady` counts lanes
+ * whose registry `curriculumCode` genuinely scopes a tutor; `papers` sums
+ * the committed archive map. The caller feeds these straight into StatChip,
+ * whose own honesty law hides anything absent.
+ */
+export interface DirectoryStatsSummary {
+  total: number;
+  fullCorpus: number;
+  tutorReady: number;
+  papers: number;
+}
+
+export function summarizeDirectoryStats(
+  courses: ReadonlyArray<{
+    status: string;
+    curriculumCode?: string | null;
+  }>,
+  archivePapers?: Record<string, number>,
+): DirectoryStatsSummary {
+  const papers = Object.values(archivePapers ?? {}).reduce(
+    (sum, n) => sum + n,
+    0,
+  );
+  return {
+    total: courses.length,
+    fullCorpus: courses.filter((c) => c.status === "full").length,
+    tutorReady: courses.filter((c) => Boolean(c.curriculumCode)).length,
+    papers,
+  };
+}
