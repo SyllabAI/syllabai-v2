@@ -111,7 +111,7 @@ export function ThemeToggle({ variant = "icon" }: { variant?: "icon" | "row" }) 
         variant="ghost"
         size="icon"
         aria-label={`Theme: ${THEME_LABEL[state.theme]}, appearance: ${MODE_LABEL[state.mode]} — open theme menu`}
-        className="size-10"
+        className="size-8 sm:size-10"
       >
         <Palette className="size-4" aria-hidden />
       </Button>
