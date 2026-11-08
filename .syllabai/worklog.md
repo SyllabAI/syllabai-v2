@@ -1936,3 +1936,16 @@ Stage Summary:
 - Run 4's log finally isolated it: APPLIED (178 updates, the full re-anchor) printed at 17:40:23 — 21 SECONDS after start — then 21 minutes of NOTHING, then "terminating connection due to administrator command". Run 5: the SKIP fired at 18:07:15 (1 query), then 5min17s of nothing, then the same death. The scripts were NEVER slow — they FINISHED and did not exit: the createSql seam exposes no close, the Neon serverless WebSocket keeps bun's event loop alive, the process idles with an open session, and Neon's backend reaper kills it (5-21 min depending on the endpoint's idle policy); the unhandled 'error' event then crashes the process and set -e fails the job. The batched-seed theory (run-002) was a red herring — query COUNT was never the problem.
 - THE FIX: process.exit(0) at the end of BOTH scripts (the tree driver + the rects seed), immediately after the work/receipt, with the evidence in the comments. Local sanity: skip fires, seed re-applies 95 idempotent, typecheck 5/5. The workflow's postverify step uses postgres.js directly (TCP, closes cleanly) — unaffected.
 - The data of record was already in prod the whole time (run 4's APPLIED + run 5's seed upserts with buffered output lost): the re-dispatch is pure idempotent convergence + the green postverify.
+
+## receipt(T-KG-TRIPWIRE-1) — Phase 1 T1 thumbs-down — run-003 — 2026-11-09 (trace 1a1bc99cd7f38ef1)
+
+- Shipped: T1 affordance in the provenance drawer (product fork), browser-local course-keyed
+  event store, schema law of record + fork-contract tests as a new CI hub step. 22/22 tests,
+  tsc + eslint clean, node --check on the fork, first-hand headless smoke test PASS
+  (evidence in lane-artifacts/T-KG-TRIPWIRE-1/run-003/).
+- I1-I5 intact: signal-not-verdict (no disposition path exists), no label bytes
+  (prereqValidated untouched, snapshot census 0/106), no serving/progress gate, nothing
+  crosses the bridge (no network call added), store append-only.
+- Disclosed boundary: the /graph-explorer prototype builds stay byte-faithful (no-patch
+  law) — affordance ships on the product surface where the served corpus lives; export
+  path + weekly report are Phase 2. Standing PAT-rotation reminder (fifth filing).

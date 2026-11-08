@@ -1752,3 +1752,34 @@ Stage Summary:
 - Run 4's log finally isolated it: APPLIED (178 updates, the full re-anchor) printed at 17:40:23 — 21 SECONDS after start — then 21 minutes of NOTHING, then "terminating connection due to administrator command". Run 5: the SKIP fired at 18:07:15 (1 query), then 5min17s of nothing, then the same death. The scripts were NEVER slow — they FINISHED and did not exit: the createSql seam exposes no close, the Neon serverless WebSocket keeps bun's event loop alive, the process idles with an open session, and Neon's backend reaper kills it (5-21 min depending on the endpoint's idle policy); the unhandled 'error' event then crashes the process and set -e fails the job. The batched-seed theory (run-002) was a red herring — query COUNT was never the problem.
 - THE FIX: process.exit(0) at the end of BOTH scripts (the tree driver + the rects seed), immediately after the work/receipt, with the evidence in the comments. Local sanity: skip fires, seed re-applies 95 idempotent, typecheck 5/5. The workflow's postverify step uses postgres.js directly (TCP, closes cleanly) — unaffected.
 - The data of record was already in prod the whole time (run 4's APPLIED + run 5's seed upserts with buffered output lost): the re-dispatch is pure idempotent convergence + the green postverify.
+
+## receipt(T-KG-TRIPWIRE-1) — Phase 1: the T1 thumbs-down ships — run-003 — 2026-11-09 (operator trace 1a1bc99cd7f38ef1 "Phase 1 — ship the T1 thumbs-down")
+
+- Scope: Phase 1 of the merged tripwire spec's own rollout ladder (PR #859 = Phase 0). The
+  affordance lives in the product fork's relationship inspector (public/kg/
+  openhuman-course-explorer.html): "This prerequisite seems wrong?" with the spec's
+  WRONG_DIRECTION / NOT_A_PREREQ / UNCLEAR vocabulary, optional free text capped at 280,
+  and the honest disclosure in tooltip + visible copy (reviewed by humans · does not change
+  the graph · stays in this browser).
+- Event law: kg_prereq_feedback per spec §4 — browser-local, course-keyed
+  (syllabai.kg-feedback:<course>), append-only, anonymous per-browser session id
+  (crypto.randomUUID, no account link, never the account doc — the T-ACCOUNT-ONLY retirement
+  of the localStorage progress store makes a dedicated namespace the letter of the §7 law).
+  Events post out as syllabai-kg:feedback (host-ignorable); ZERO network calls added — the
+  loader's /kg/data fetch remains the only fetch in the file (test-enforced).
+- Schema law of record: src/lib/kg-prereq-feedback.ts (builder + ingestion guard + store +
+  the Phase-2 aggregation law pinned now: >=3 DISTINCT sessions in a rolling 7-day window,
+  same-session repeats never converge). The fork cannot import TS, so the fork-contract
+  tests pin the fork's inline constants to the lib's verbatim — drift fails CI.
+- First-hand runtime proof (headless chromium, static serve of public/): pre edge opens the
+  block (3 chips), hier edge shows none, click stored the exact §4 schema (verified in
+  localStorage) + honest confirmation; no page errors. Evidence filed under
+  .syllabai/lane-artifacts/T-KG-TRIPWIRE-1/run-003/.
+- Boundaries: /graph-explorer's byte-faithful builds stay unpatched (the host chrome's
+  no-patch law wins over the spec's "both surfaces" parenthetical until the operator says
+  otherwise — the build lab's dataset is the legacy 4CH1 prototype, not the served corpus);
+  no host client.tsx bytes; no export path (Phase 2); zero content/, public/kg/data/, label
+  bytes; prereqValidated untouched (snapshot key census still 0/106).
+- Gates: bun test kg-prereq-feedback.test.ts 22/22 PASS; tsc --noEmit clean; eslint clean;
+  fork JS node --check OK; CI hub lane gains the T1 acceptance step (schema + fork contract).
+- Standing PAT-rotation reminder refiled (fifth filing) — the token remains unrotated.

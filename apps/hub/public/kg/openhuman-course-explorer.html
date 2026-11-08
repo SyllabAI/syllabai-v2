@@ -222,6 +222,8 @@ g.edgeHovering .edge.hoveredEdge{opacity:1}
 /* v74: analysis layer — selection set, compare panel, pins, saved views */
 /* v75: relationship explainer, lasso selection, minimap */
 .relExRow{margin-top:6px;font-size:9px;line-height:1.5;color:#4c514c}.relExLabel{font-size:7.5px;text-transform:uppercase;letter-spacing:.08em;color:#858981;margin-bottom:2px}.relExStatement{font-style:italic;color:#5d625e;margin-top:2px}.relExNote{margin-top:6px;padding:6px 7px;background:#f5f2ea;border-left:2px solid #9a958a;font-size:8px;line-height:1.45;color:#697276}.relExEnds{display:grid;grid-template-columns:1fr;gap:4px;margin-top:6px}.relExEnd{padding:5px 7px;border:1px solid #e4e0d6;border-radius:7px;background:#fbfaf6;font-size:9px;line-height:1.4}.relExEnd b{font-size:9px}
+/* T-KG-TRIPWIRE-1 run-003 — T1 feedback block in the relationship inspector (drawer-local, honest disclosure register) */
+.relFeedback{margin-top:8px;padding:7px 8px;border:1px dashed #c9c4b8;border-radius:8px;background:#fbfaf5}.relFeedbackTitle{font-size:9px;font-weight:700;color:#5d625e;margin-bottom:4px}.relFeedbackNote{font-size:8px;line-height:1.45;color:#858981;margin-bottom:5px}.relFeedbackText{width:100%;box-sizing:border-box;font:inherit;font-size:9px;line-height:1.4;padding:5px 6px;border:1px solid #d4d1c7;border-radius:6px;background:#fffdf8;color:#343b38;resize:vertical;margin-bottom:5px}.relFeedbackChips{display:flex;flex-wrap:wrap;gap:5px}.relFeedbackDone{font-size:9px;line-height:1.5;color:#3f6b46;padding:2px 0}
 #miniMap{position:absolute;right:14px;bottom:53px;width:192px;z-index:24;background:rgba(251,250,246,.97);border:1px solid var(--border);border-radius:9px;box-shadow:0 8px 20px rgba(0,0,0,.06);padding:6px;display:none}#miniMap.show{display:block}#miniMapHead{display:flex;justify-content:space-between;align-items:center;font-size:7.5px;text-transform:uppercase;letter-spacing:.08em;color:#858981;margin-bottom:4px}#miniMapClose{font:inherit;font-size:10px;border:none;background:none;cursor:pointer;color:#858981;padding:0 2px;line-height:1}#miniSvg{display:block;width:100%;height:auto;background:#f3f1ea;border-radius:6px;cursor:crosshair;touch-action:none}#miniSvg .miniDot{fill:#7d8480}#miniSvg .miniDot.spMini{fill:#a7aeaa}#miniSvg .miniSel{fill:#6656a9}#miniSvg .miniRect{fill:rgba(102,86,169,.10);stroke:#6656a9;stroke-width:1}#miniHint{margin-top:3px;font-size:7px;color:#8b9193;line-height:1.35}
 #lassoRect{fill:rgba(102,86,169,.10);stroke:#6656a9;stroke-width:1.5;stroke-dasharray:5 3;pointer-events:none}
 #lassoHint{position:absolute;z-index:30;left:50%;top:60px;transform:translateX(-50%);background:rgba(251,250,246,.97);border:1px solid #cdc9bd;border-radius:9px;padding:5px 9px;font-size:8px;color:#4c514c;display:none;pointer-events:none;box-shadow:0 6px 20px rgba(40,45,42,.12)}#lassoHint.show{display:block}
@@ -1932,7 +1934,7 @@ function updateProvenance(){
  if(n.type==='SpecificationPoint'&&n.assessment)tags.push('<span class="provSourceTag">assessment mapping</span>');
  const reason=l?.reviewDue?'Review due':l?.misconception?'Misconception signal':l?.mastery!=null?`Learner mastery ${l.mastery}%`:'No learner evidence recorded';
  const rec=state.recommendation&&state.recommendation.target?.id===n.id?state.recommendation.label:'No active recommendation for this node';
- const ri=document.getElementById('relationInspector'); if(ri){const parts=state.selectedEdge?state.selectedEdge.split('|'):null;if(parts&&parts.length===3){const a=nodeBy().get(parts[0]),b=nodeBy().get(parts[1]),d=edgeDescription(parts[2],parts[0],parts[1]),ex=relationshipExplanation(parts[2],a,b);const acts=relationshipActions(a,b,parts[2]);const relEnd=(n,fallback)=>{const head=n?'<b>'+escapeHtml(shortNodeLabel(n.id))+'</b> <span class="provTag">'+escapeHtml(n.type)+'</span>':'<b>'+escapeHtml(fallback)+'</b>';const stmt=n&&n.statement?'<div class="relExStatement">'+escapeHtml(n.statement.length>150?n.statement.slice(0,147)+'…':n.statement)+'</div>':'';return '<div class="relExEnd">'+head+stmt+'</div>'};ri.innerHTML=`<div class="relationInspectorTitle">Relationship explanation</div><div><b>${escapeHtml(a?.pointId||a?.label||parts[0])}</b> → <b>${escapeHtml(b?.pointId||b?.label||parts[1])}</b><span class="relationTag">${d.tag}</span></div><div class="relExEnds">${relEnd(a,parts[0])}${relEnd(b,parts[1])}</div><div class="relExRow"><div class="relExLabel">What this edge means</div>${escapeHtml(ex.meaning)}</div><div class="relExRow"><div class="relExLabel">How to read the arrow</div>${escapeHtml(ex.direction)}</div>${ex.why.length?`<div class="relExRow"><div class="relExLabel">Why it matters here</div>${ex.why.map(w=>`<div style="margin-top:3px">${escapeHtml(w)}</div>`).join('')}</div>`:''}<div class="relExNote">${escapeHtml(ex.label)} · ${escapeHtml(ex.provenance)}</div><div class="relationActions">${acts.map(x=>`<button class="relationAction ${x.kind!=='inspect'?'primary':''}" type="button" data-rel-action="${escapeHtml(x.kind)}" data-rel-node="${escapeHtml(b?.id||parts[1])}">${escapeHtml(x.label)}</button>`).join('')}</div><button class="relationClear" type="button" id="relationClearBtn">Clear relationship</button>`; ri.querySelectorAll('[data-rel-action]').forEach(btn=>btn.addEventListener('click',()=>runRelationshipAction(btn.dataset.relAction,btn.dataset.relNode))); ri.querySelector('#relationClearBtn')?.addEventListener('click',()=>{state.selectedEdge=null;updateProvenance();refresh()});}else ri.innerHTML='';}
+ const ri=document.getElementById('relationInspector'); if(ri){const parts=state.selectedEdge?state.selectedEdge.split('|'):null;if(parts&&parts.length===3){const a=nodeBy().get(parts[0]),b=nodeBy().get(parts[1]),d=edgeDescription(parts[2],parts[0],parts[1]),ex=relationshipExplanation(parts[2],a,b);const acts=relationshipActions(a,b,parts[2]);const relEnd=(n,fallback)=>{const head=n?'<b>'+escapeHtml(shortNodeLabel(n.id))+'</b> <span class="provTag">'+escapeHtml(n.type)+'</span>':'<b>'+escapeHtml(fallback)+'</b>';const stmt=n&&n.statement?'<div class="relExStatement">'+escapeHtml(n.statement.length>150?n.statement.slice(0,147)+'…':n.statement)+'</div>':'';return '<div class="relExEnd">'+head+stmt+'</div>'};ri.innerHTML=`<div class="relationInspectorTitle">Relationship explanation</div><div><b>${escapeHtml(a?.pointId||a?.label||parts[0])}</b> → <b>${escapeHtml(b?.pointId||b?.label||parts[1])}</b><span class="relationTag">${d.tag}</span></div><div class="relExEnds">${relEnd(a,parts[0])}${relEnd(b,parts[1])}</div><div class="relExRow"><div class="relExLabel">What this edge means</div>${escapeHtml(ex.meaning)}</div><div class="relExRow"><div class="relExLabel">How to read the arrow</div>${escapeHtml(ex.direction)}</div>${ex.why.length?`<div class="relExRow"><div class="relExLabel">Why it matters here</div>${ex.why.map(w=>`<div style="margin-top:3px">${escapeHtml(w)}</div>`).join('')}</div>`:''}<div class="relExNote">${escapeHtml(ex.label)} · ${escapeHtml(ex.provenance)}</div><div class="relationActions">${acts.map(x=>`<button class="relationAction ${x.kind!=='inspect'?'primary':''}" type="button" data-rel-action="${escapeHtml(x.kind)}" data-rel-node="${escapeHtml(b?.id||parts[1])}">${escapeHtml(x.label)}</button>`).join('')}</div>${kfbBlockHtml(parts[2],d.tag)}<button class="relationClear" type="button" id="relationClearBtn">Clear relationship</button>`; ri.querySelectorAll('[data-rel-action]').forEach(btn=>btn.addEventListener('click',()=>runRelationshipAction(btn.dataset.relAction,btn.dataset.relNode))); ri.querySelector('#relationClearBtn')?.addEventListener('click',()=>{state.selectedEdge=null;updateProvenance();refresh()});kfbWire(ri,parts,d.tag);}else ri.innerHTML='';}
  ctx.innerHTML=`<div class="provContextTitle">Selected node · ${n.pointId||n.label}</div><div class="provTrail"><div class="provTrailRow"><b>Authority</b><span>Official curriculum structure ${tags[0]||''}</span></div><div class="provTrailRow"><b>Relations</b><span>${rels.length?`${rels.length} graph relationship${rels.length===1?'':'s'}`:'No explicit relationships'} ${tags.slice(2).join(' ')}</span></div><div class="provTrailRow"><b>Learner</b><span>${reason} ${l?'<span class="provSourceTag">derived evidence</span>':''}</span></div><div class="provTrailRow"><b>Action</b><span>${rec} ${state.recommendation&&state.recommendation.target?.id===n.id?'<span class="provSourceTag">derived recommendation</span>':''}</span></div></div>`+learnerEvidenceTrail(n,l);
 }
 function updateStatus(){
@@ -3146,6 +3148,76 @@ function kgApplicabilityChips(a){
 }
 
 // ============================================================================
+// T-KG-TRIPWIRE-1 run-003 — Phase 1: T1 "this prerequisite seems wrong"
+// signal (spec §4, apps/hub/docs/KG-F8-TELEMETRY-TRIPWIRE-SPEC.md).
+//
+// One signal is EVIDENCE, never a verdict (I1/I2): it appends to a
+// browser-local, course-keyed store and posts syllabai-kg:feedback to the
+// host for awareness. Zero network calls are added — the only fetch in this
+// file remains the loader's own /kg/data read. No label byte is touched:
+// the graph, its tier tags and the prereqValidated payload law are
+// unchanged. The schema law's tested twin of record lives in
+// apps/hub/src/lib/kg-prereq-feedback.ts; the fork-contract test pins the
+// two together (changing one without the other fails CI).
+// ============================================================================
+var KFB_EVENT='kg_prereq_feedback';
+var KFB_VERDICTS=['WRONG_DIRECTION','NOT_A_PREREQ','UNCLEAR'];
+var KFB_TEXT_CAP=280;
+var KFB_STORE_PREFIX='syllabai.kg-feedback:';
+var KFB_SESSION_KEY='syllabai.kg-feedback.session';
+var KFB_COURSE=null;
+function kfbStoreKey(course){return KFB_STORE_PREFIX+course}
+function kfbSession(){
+ try{
+  var v=window.localStorage.getItem(KFB_SESSION_KEY);
+  if(!v){v=(window.crypto&&typeof window.crypto.randomUUID==='function')?window.crypto.randomUUID():('kfb-'+Date.now()+'-'+Math.random().toString(36).slice(2,10));window.localStorage.setItem(KFB_SESSION_KEY,v);}
+  return v;
+ }catch(e){return 'kfb-unavailable'}
+}
+function kfbRead(course){
+ try{var raw=window.localStorage.getItem(kfbStoreKey(course));var arr=raw?JSON.parse(raw):[];return Array.isArray(arr)?arr:[];}catch(e){return []}
+}
+function kfbCountFor(course,a,b){return kfbRead(course).filter(function(e){return e&&e.a===a&&e.b===b&&e.type==='pre'}).length}
+function kfbRecord(course,a,b,renderedTier,verdict,freeText){
+ if(KFB_VERDICTS.indexOf(verdict)<0)return {ok:false,reason:'invalid verdict'};
+ var ev={event:KFB_EVENT,course:String(course||''),a:String(a||''),b:String(b||''),type:'pre',
+  rendered_tier:String(renderedTier||''),verdict:verdict,
+  free_text:String(freeText||'').slice(0,KFB_TEXT_CAP),
+  ts:new Date().toISOString(),session:kfbSession()};
+ try{
+  var arr=kfbRead(course);arr.push(ev);
+  window.localStorage.setItem(kfbStoreKey(ev.course),JSON.stringify(arr));
+ }catch(e){return {ok:false,reason:'browser storage refused the write'}}
+ try{parent.postMessage({type:'syllabai-kg:feedback',payload:ev},location.origin);}catch(e){}
+ return {ok:true,event:ev,count:kfbCountFor(ev.course,ev.a,ev.b)};
+}
+function kfbBlockHtml(type,tag){
+ if(type!=='pre'||!KFB_COURSE)return '';
+ return '<div class="relFeedback" id="relFeedback">'
+  +'<div class="relFeedbackTitle">This prerequisite seems wrong?</div>'
+  +'<div class="relFeedbackNote" title="Your signal is reviewed by humans and does not change the graph. It stays in this browser; only anonymous counts are ever exported.">Your signal is reviewed by humans &mdash; it does not change the graph. It stays in this browser; only anonymous counts are ever exported.</div>'
+  +'<textarea class="relFeedbackText" id="kfbText" maxlength="'+KFB_TEXT_CAP+'" rows="2" aria-label="Optional detail about this prerequisite (stays in this browser)" placeholder="Optional &mdash; what is off about it? (stays in this browser)"></textarea>'
+  +'<div class="relFeedbackChips" role="group" aria-label="Flag this prerequisite">'
+  +KFB_VERDICTS.map(function(v){return '<button type="button" class="relationAction" data-kfb="'+v+'">'+({WRONG_DIRECTION:'Wrong direction',NOT_A_PREREQ:'Not a prerequisite',UNCLEAR:'Unclear'})[v]+'</button>'}).join('')
+  +'</div></div>';
+}
+function kfbWire(ri,parts,tag){
+ if(!ri)return;
+ var box=ri.querySelector('#relFeedback');if(!box)return;
+ var chips=box.querySelectorAll('[data-kfb]');
+ Array.prototype.forEach.call(chips,function(ch){
+  ch.addEventListener('click',function(){
+   var txt=box.querySelector('#kfbText');
+   var res=kfbRecord(KFB_COURSE,parts[0],parts[1],tag,ch.getAttribute('data-kfb'),txt?String(txt.value):'');
+   if(res.ok){
+    box.innerHTML='<div class="relFeedbackDone" role="status">Signal noted &mdash; thank you. Saved in this browser only; a human reviews these signals, and the graph does not change'+(res.count>1?' ('+res.count+' on this edge from this browser so far)':'')+'.</div>';
+   }else{
+    box.innerHTML='<div class="relFeedbackDone" role="alert">The signal was not saved ('+escapeHtml(res.reason)+'). Nothing was sent &mdash; the graph is unchanged.</div>';
+   }
+  });
+ });
+}
+// ============================================================================
 // course loader fork (syllabai-demo) — data-decoupled operation.
 // ?course=<slug>  ->  fetch /kg/data/<slug>.json (scripts/kg_export.py output,
 // generated from content/<slug>/curriculum.json), validate against
@@ -3158,6 +3230,10 @@ function kgApplicabilityChips(a){
 (async function(){
   const slug=new URLSearchParams(location.search).get('course');
   if(!slug) return;
+  // T1 gate: the affordance renders only in loader mode (a served course's
+  // graph). Standalone opens show the embedded prototype sample — not a
+  // served corpus — so there is nothing honest to signal about there.
+  KFB_COURSE=slug;
   // F5 (KG-AUDIT-1): bind to our own origin — the loader is only ever hosted
   // same-origin by the hub page, so this never blocks the real handshake.
   const post=(t,p)=>{try{parent.postMessage(Object.assign({type:t},p||{}),location.origin)}catch(e){}};
