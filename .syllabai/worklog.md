@@ -1974,6 +1974,10 @@ Stage Summary:
 - Gates: turbo typecheck 5/5; bun test apps/hub 1212 pass / 12 fail / 2 errors against a pristine stash-baseline of 13 fail / 2 errors on the identical tree (the documented pre-existing band, ±1 timing flake — zero new failures); csp-frames 2/2. Branch t-book-csp-1/run-001 from origin/main 668f411d.
 
 
+## T-BOOK-CSP-1 run-001 production addendum (2026-11-08) — SHIPPED AND LIVE-VERIFIED: the videos play
+
+- PR #875 merged clean (CI hub+verify green on the head, zero main drift at merge) → main dc766c5d; the git-linked deploy converged without any bake dispatch — the live CSP read `frame-src 'self' https://www.youtube-nocookie.com https://phet.colorado.edu` at 19:25:22Z, ~15 minutes after the merge, no 402 interference today.
+- The lesson page re-verified in a real browser on the serving chemistry book (chapter u1:c1): the YouTube player RENDERS — "GCSE Chemistry - States of Matter & Changing State" with play button and the Cognito attribution — where this morning's screenshot showed the browser's blocked glyph; the PhET sim mounts on its consent click and renders ("States of Matter: Basics"). The multi-day "videos aren't loading" defect is CLOSED of record; 63 videos + the sims are live; who-frames-us posture byte-unchanged.
 ## T-SME-SEL-W1-1 run-001 (2026-11-09) — SME picker layer for the Exam Questions selector, wave 1 (ial-physics-19 + ial-chemistry-17)
 
 - Operator order: "Go with A" (align the hub selector to SaveMyExams' own Exam Question picker organization) + the live-picker verification order ("Here is how edexcel ial physics is organized in syllabai vs savemyexams", then "start the chemistry-17 verification next") and the dual go "① implement wave 1 (physics + chemistry), ② keep verifying (ial-biology-18)".
