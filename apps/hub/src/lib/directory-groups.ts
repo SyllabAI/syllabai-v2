@@ -134,3 +134,13 @@ export function groupDirectory<T extends DirectoryCourse>(
       return b.total - a.total || a.level.localeCompare(b.level);
     });
 }
+
+/**
+ * T-HUB-COURSES-PUBLIC-2 (③): the directory jump-nav's anchor id for a
+ * level section — deterministic, DOM-safe (lowercase, non-alphanumerics
+ * fold to one hyphen), and prefixed so the ids can never collide with any
+ * other element id on the page. "A-Level" → "courses-a-level".
+ */
+export function courseLevelAnchor(level: string): string {
+  return `courses-${level.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")}`;
+}
