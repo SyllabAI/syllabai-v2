@@ -327,7 +327,7 @@ function SubtopicRow({
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
             isTaught
               ? "border-primary bg-primary text-primary-foreground"
-              : "bg-background text-muted-foreground hover:border-primary/50",
+              : "bg-background text-muted-foreground hover:border-primary/60",
           )}
         >
           <Check className="size-4" aria-hidden />
