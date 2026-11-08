@@ -1690,3 +1690,15 @@ Work Log:
 Stage Summary:
 - Landed here: 4 deliverables in the download channel (workbook + 3 CSVs) + this bookkeeping. Zero code/data/label bytes in-repo; prereqValidated still a 0/106 key census.
 - Open queue: PR #859 awaits operator merge (spec + run-001/002 bookkeeping); T1/T2 implementation phases await spec adoption; PAT rotation STILL pending (fourth filing).
+
+## receipt(DEPLOY api-of-record-redeploy-from-tip run-014 executed) — NOTE_SECTION live on the wire (dpl_8FRDnLyZ9, census 10/10, relay replay 200) — 2026-11-08 (operator task ① + "Check", chat 97a19c8c)
+
+- The check that ordered the act: wiring merged (0cdaf9a / PR #858) but the last serve predated it — production still answered the closed-enum 400 at 09:10Z. Carrier census since dpl_FW2zs3UT = 0cdaf9a (note lane) + ee11a86 (bank dedup), nothing else.
+- Built at tip 3a0758c (bun CJS 409 modules / 3.83 MB; session-local shim-v3 assembler: js-yaml load inlined private-scope, node:crypto sha256, __dirname-relative resource paths), stage = bundle + 6 pin-verified concept YAMLs + drill bank files + vercel.json + project.json; localgate 4/4 (reduced class, disclosed — sealed env on both accounts, boot proves the shim chain via the module-init concept graph), CLA suites 113/113.
+- Fired: dpl_8FRDnLyZ9ScLD2cuLtrThnrDUAdP READY on the production alias; census 10/10 (unknown-note 404 identity label = the 400 extinct; real note ask 200 grounded with note-titled citations ev=8; PAST_PAPER_QUESTION 200; relay replay via the hub 200). Fix item ① LIVE.
+- HONEST CORRECTION disclosed: probe-era rootId e4075119 is the YCH11 IAL root; the relay of record resolves 297a8706 (4CH1, 438 VALIDATED nodes). First census run corrected in-session, 10/10 re-run.
+- Boundaries: prod Neon read-only (+2 answer-path asks); zero DDL/env writes/repo build mutations. PAT rotation standing reminder (fifth filing).
+
+Stage Summary:
+- Landed here: this receipt + both worklogs ONLY (the deploy artifact itself lives on Vercel; the recipe tooling stays session-local under scripts/deploy3).
+- Open queue: PR (bookkeeping) awaits operator merge; the SPECIFICATION_POINT registry gap (exact-match spec codes vs the served subtree) remains its own ticket — unchanged posture, disclosed in the receipt; PAT rotation STILL pending (fifth filing).
