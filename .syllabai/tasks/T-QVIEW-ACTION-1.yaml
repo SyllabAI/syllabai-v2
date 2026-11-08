@@ -1,0 +1,63 @@
+version: 1
+task:
+  id: T-QVIEW-ACTION-1
+  title: 'MathsGenie steal-list run-001 — the question-viewing action layer
+    adopts the four steals that survive our own laws: marks-weighted
+    verb-first submit, non-occluding scheme drawer, blur-teaser model
+    answer, contextual CLA prompt chips (operator order: "file the 19px
+    header fix as a tiny task card, and proceed to the MathsGenie
+    steal-list batch")'
+  owner: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4,
+    chat 0fe43d89-ff92-4e81-857a-1b1c6040a895)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-QVIEW-AUDIT (the questions-viewing band — the same surface the
+    B/C/D batches and T-QBANK-AILANE-DEDUP-1 landed on)
+  wave: questions-viewing
+  deps: [T-QVIEW-AUDIT-BCD-1, T-QBANK-AILANE-DEDUP-1, T-MG-PLAYER-MARK-1]
+  scope:
+    allowed:
+    - apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/
+      question-player.tsx (four changes: (1) the core-flow submit button
+      carries its stake — "Submit · N marks", the MG "1⚡ Grade answer"
+      law; (2) MarkSchemeDialog renders as a RIGHT DRAWER (Sheet) —
+      full-bleed phones, 36rem sm, 42rem lg, the question card stays
+      readable beside it at overlay bg-black/10; (3) the model answer
+      ("The completed answer should show") waits behind ONE verb-first
+      reveal until the learner saves a self-score or taps the reveal —
+      marking points and the typed-answer block stay ungated; (4) a
+      part jump-row of attested printed labels when any part carries
+      one, scroll-anchoring the drawer)
+    - apps/hub/src/components/cla/question-cla-overlay.tsx (the MG
+      contextual-prompt steal: four situational starter chips — two per
+      live mode (EXPLAIN/HINT), part-phrased when anchored — that
+      PREFILL the draft and focus the ask box; the send stays the
+      learner's deliberate fire, our law beats MG's auto-send)
+    - apps/hub/src/components/ui/sheet.tsx (additive: an optional
+      overlayClassName prop so a side-drawer caller can soften the
+      default 50% black — no behavior change, the default stays)
+    - .syllabai/tasks/T-QVIEW-ACTION-1.yaml (this card)
+    - .syllabai/worklog.md + worklog.md (append-only, byte-asserted)
+    - .syllabai/receipts/T-QVIEW-ACTION-1/run-001.md (receipt of record)
+  non_goals:
+  - AI vocabulary unification — AUDITED, already one-noun-per-concept:
+    "Smart Mark" = the authoritative attempt-plane mark; "Mark my draft
+    with AI" = the advisory pre-submit read (deliberately NOT Smart
+    Mark — it writes no attempt); "AI-suggested mark" = the legacy
+    plane's result badge; AI_MARK_UNAVAILABLE = the single-sourced
+    unavailable pointer (T-QVIEW-AUDIT-BCD-1 batch D). No churn.
+  - single-accent-per-concept color law — the theme system was just
+    audited land-wide in #865; recoloring is a design-system decision,
+    not a steal-list rider
+  - per-part visible action relabeling — SME's quiet-part law ("looks
+    normal at first") beats MG's always-visible part actions; the
+    per-part Ask CLA buttons keep their icon form with full aria names
+  definition_of_done:
+  - tsc --noEmit clean; eslint clean on all three touched files
+  - mark-scheme + route-gate suites green; full hub suite parity with
+    main (the single pre-existing T-UGM-RENDER-1 corpus failure on both)
+  - drawer: the question card measurable beside the open drawer; reveal
+    is one deliberate click; self-scored questions render ungated
+  - chips prefill + focus, never auto-send
+  - CI green on the PR head; preview-verified (chips + submit label are
+    core-plane features — verified against the preview deployment)
