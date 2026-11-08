@@ -344,6 +344,9 @@ export function GradeBoundariesWorkspace({
     if (!aggResult || !aStar || !aggGrade) return null;
     if (aggGrade.aStarRuleApplied) return null;
     if (aggResult.totalUms < aStar.overallMin) return null;
+    // modular IGCSE laws (T-GB-STRUCT-3) carry no A2 units: the A2
+    // shortfall text is an A-level concept, absent stays absent
+    if (!aStar.a2Units) return null;
     const a2Ums = aStar.a2Units.reduce(
       (acc, code) =>
         acc + (aggResult.perUnit.find((p) => p.code === code)?.ums ?? 0),
