@@ -127,7 +127,9 @@ async function main() {
 
   if (dryRun) {
     console.log("DRY RUN complete — resolutions verified, nothing written");
-    return;
+    // the transport law's exit covers the dry-run path too (run 6: the
+    // early return bypassed the tail exit and idled into the reaper)
+    process.exit(0);
   }
 
   // (C) idempotent upsert (uq_mark_point_rect_point_ordinal) — SET-BASED:
