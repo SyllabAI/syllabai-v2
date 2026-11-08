@@ -261,6 +261,14 @@ async function main() {
     console.log("receipt ->", receiptPath);
   }
   await (sql as unknown as { end?: () => Promise<void> } | null)?.end?.();
+  // TRANSPORT LAW (run-004 evidence): the createSql seam exposes no close —
+  // the Neon serverless WebSocket keeps bun's event loop alive AFTER the
+  // work is done, the process idles, and Neon's backend reaper eventually
+  // kills the idle session ("terminating connection due to administrator
+  // command" — the unhandled error event then fails the job). Run 4: the
+  // re-anchor completed in 21s (APPLIED 17:40:23) and the job still died at
+  // 18:01:32 on the idle socket. Exit explicitly the moment the work ends.
+  process.exit(0);
 }
 
 main().catch((e) => {
