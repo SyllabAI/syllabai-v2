@@ -1,0 +1,22 @@
+version: 1
+task:
+  id: T-MG-CH1-MARK-1
+  title: "Marking coverage for a BROWSABLE paper — 4CH1/1C June 2026: the paper-anchored tree from the ADR-037 official set + the rect manifest + the regions 500 fix"
+  owner: "main agent (Z.ai)"
+  status: DONE
+  priority: P1
+  band: T-MG-MARK-PARITY (interactive paper marking) — content + fix lane
+  wave: mg-rollout-2026-11
+  deps: [T-MG-SURFACE-1, T-MG-MP-RECT-2]
+  plan_of_record: "operator order 2026-11-08: 'create/activate it for a paper that exists in our website — e.g. one chemistry 4ch1 past paper pdf'"
+  parent: T-MG-MARK-PARITY-1
+  acceptance_pins:
+    - "(a) reachability pin — the covered paper is BROWSABLE on the hub (the corpus snapshot carries pearson-edexcel/international-gcse/chemistry/4ch1, session 2026-06, dir 4CH1-1C): the Lane-A affordance has a live target, unlike the 1MA1 seed family (resolve 404 in prod — never landed)"
+    - "(b) tree pin — the paper-anchored tree (questions/question_versions/question_parts/mark_schemes/mark_points) derives from the operator-validated ADR-037 official set official-4ch1-1c-2026-06 (9 questions / 56 parts / 95 points, G7 part-sums), refs q{n}{part}-{k} in MS row order, idempotent find-or-create, ONE transaction (the createSql transaction seam), VALIDATED posture disclosed"
+    - "(c) census pin — the rect manifest reconciles: G1 56/56 labels+order, G2 no undercounts (7 collapse representations disclosed, marks agree), G3 per-part marks exact, G4 per-question sums == QP footers == 110; QP/MS sha256-pinned, byte-verified against the committed hub corpus index"
+    - "(d) regions pin — the /paper-assets/:id/regions endpoint returns the REAL payload for the covered paper (65 regions, 56 part regions with rects and wired questionPartId); the live January-2023 500 (uuid = uuid[] operator absence, postgres.js array param) is fixed at the source (3 sites to = any(...::uuid[])) with a source-law test (the stubbed fakeSql could never catch it)"
+    - "(e) activation pin — the COW-guarded workflow (t-mg-ch1-mark-1-db-apply.yml, dispatch-only, 133d protocol) carries tree+rects to production: COW proof (postverify 9/95/95) then prod-apply; the operator (or the lane agent on the operator's standing order) dispatches"
+  non_goals:
+    - "no Lane-B scale-out (other papers stay honest-null)"
+    - "no hub bytes (the affordance/overlay/marking UI already serve any covered paper; zero hub files touched)"
+    - "no migration (the schema of record already holds mark_point_rects 0017)"
