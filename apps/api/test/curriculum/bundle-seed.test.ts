@@ -1027,8 +1027,11 @@ describe("ruling A — the optionA identity laws (trace 1a15b161bf960249)", () =
     // 0580: core/extended official C/E sections -> SC/SE disjoint
     expect(mapBundleNodes(load("cie-igcse-maths-25-core"), "p").get("cie-igcse-maths-2025-2027-TC1")!.dbCode).toBe("0580-2025-2027-SC1");
     expect(mapBundleNodes(load("cie-igcse-maths-25-extended"), "p").get("cie-igcse-maths-2025-2027-TE1")!.dbCode).toBe("0580-2025-2027-SE1");
-    // 0500: the syllabus's own S-prefixed sections land SS (mechanical, official)
-    expect(mapBundleNodes(load("cie-igcse-english-language-20"), "p").get("cie-igcse-english-language-2024-2026-TS1")!.dbCode).toBe("0500-2024-2026-SS1");
+    // 0500: the run-012 spine-rebuild containers mint the fleet T-code convention
+    // (T1/T2/T3, the run-011 node template) — plain digit tails land the S law;
+    // the old S-prefixed TS1->SS1 wreck-parse class is gone of record (PR #855)
+    expect(mapBundleNodes(load("cie-igcse-english-language-20"), "p").get("cie-igcse-english-language-2024-2026-T1")!.dbCode).toBe("0500-2024-2026-S1");
+    expect(mapBundleNodes(load("cie-igcse-english-language-25"), "p").get("cie-igcse-english-language-2027-2029-T1")!.dbCode).toBe("0500-2027-2029-S1");
     // 0452: plain digit tails
     expect(mapBundleNodes(load("cie-igcse-accounting-21"), "p").get("cie-igcse-accounting-2023-2025-T1")!.dbCode).toBe("0452-2023-2025-S1");
   });

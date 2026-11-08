@@ -41,7 +41,13 @@ const V2_ORIGIN = (process.env.NEXT_PUBLIC_API_V2_BASE_URL ?? "")
  * - frames: the KG explorer and graph explorer are SAME-ORIGIN self-frames
  *   (public/kg/*.html), so frame-ancestors is 'self' — 'none' would break our
  *   own embeds while 'self' still blocks cross-site framing (with
- *   X-Frame-Options: SAMEORIGIN as the legacy fallback).
+ *   X-Frame-Options: SAMEORIGIN as the legacy fallback). The books lesson
+ *   rail adds exactly TWO cross-origin frame hosts, one per shipped widget
+ *   law: youtube-nocookie.com (media-embed, ADR-BOOK-0002 — video embeds
+ *   via youtube-nocookie ONLY) and phet.colorado.edu (sim-embed, T-BOOK-006
+ *   — PhET is the ONLY sim provider). Everything else cross-origin stays
+ *   blocked; lib/csp-frames.test.ts pins this list to the widget laws so
+ *   the header and the rail can never drift apart again.
  * - fonts: pinned woff2 assets (src/fonts/) served same-origin via
  *   next/font/local — zero font network fetches at build or runtime;
  *   KaTeX ships with the bundle.
@@ -54,7 +60,7 @@ const CSP = [
   "img-src 'self' data: https://raw.githubusercontent.com",
   "font-src 'self' data:",
   `connect-src 'self' https://raw.githubusercontent.com${CORE_ORIGIN ? ` ${CORE_ORIGIN}` : ""}${V2_ORIGIN && V2_ORIGIN !== CORE_ORIGIN ? ` ${V2_ORIGIN}` : ""}`,
-  "frame-src 'self'",
+  "frame-src 'self' https://www.youtube-nocookie.com https://phet.colorado.edu",
   "worker-src 'self' blob:",
   "object-src 'none'",
   "base-uri 'self'",
