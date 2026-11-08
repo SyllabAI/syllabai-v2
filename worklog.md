@@ -1639,3 +1639,20 @@ Work Log:
 
 
 - PRODUCTION ADDENDUM (run-002, ~20:3xZ): the state-probe bake read the deployment plane through the workflow's own law — "newest live deployment: BUILDING @ c292b48a" at 19:59:10Z (the git-triggered deploy of the merge was ACCEPTED; the cap no longer refuses new deployments), then "READY @ c292b48a" at 20:17:15Z: the deployment of record for the merged main — stage 2 included — is BUILT and READY. Serving still answers 402 DEPLOYMENT_DISABLED (probes to 20:31Z): the account-level serving halt of the cap class persists until the allowance reset, then production returns AT main HEAD c292b48a with the /courses redesign live. The session's 3 bake dispatches all correctly no-op'd under the idempotence law (newest live SHA == main HEAD); 02:30Z bake = the standing floor; no Vercel token in this session (env-only), nothing further actionable, nothing broken.
+
+---
+Task ID: T-KG-TRIPWIRE-1 run-001 (operator trace 1a1b924333902f45: "I do want the spec to live in the repo")
+Agent: f8-agent (session web-dd74f9c0)
+Task: Draft the telemetry tripwire spec as a repo doc on the KG lane (approved implementation lane item b), via branch + PR per the coordination law.
+
+Work Log:
+- Sandbox recycled again between turns (clone/download/token all lost); plumbing rebuilt: token file (0600), git-askpass (0700), gh.py REST helper; PAT still live — identity SyllabAI; rotation STILL pending (standing reminder, third filing).
+- Repo re-cloned; main tip advanced 563f2a1d -> 24205d26 (T-HUB-COURSES-UI-1 run-002 landing); corpus facts unchanged (106 web courses / 20,369 pre).
+- Which-repo question answered plainly: SyllabAI/syllabai-v2, the hub monorepo holding apps/hub/public/kg/data — there is exactly one repo in play.
+- Spec grounded in the live surface before writing: /knowledge-graph + /graph-explorer (edge click -> relationship explainer + provenance drawer), /api/kg-learner-bridge codes-only law, browser-local progress store, the honest two-tier footnote. No feedback affordance exists today (rg: zero hits) — T1 is greenfield on an existing drawer.
+- Wrote apps/hub/docs/KG-F8-TELEMETRY-TRIPWIRE-SPEC.md (house style, KG- family): T1 thumbs-down (event schema, >=3-distinct-session aggregation, honesty tooltip), T2 prereq-skip vs downstream differential (skip defined course-locally; effect size + CI, n>=30 both arms, confounds stated — self-selection, coverage asymmetry, operator-tier calibration cohort, position-inversion cohort), T3 weekly anomaly report -> append-only review queue ledger in .syllabai/lane-artifacts/T-KG-TRIPWIRE-1/ (in-repo persistence law). Binding invariants I1-I5: no auto-disposition, no label changes (prereqValidated stays EMPTY), no serving gate, codes-only across the bridge, append-only queue.
+- Bookkeeping: receipt run-001 (checks grep-verified), both worklogs appended byte-asserted; branch t-kg-tripwire-1/run-001; PR only, no direct main.
+
+Stage Summary:
+- Landed here: the spec (docs only) + lane bookkeeping. Zero code/data/label bytes; AI verdict fields nowhere written.
+- Open queue: SME review package regeneration (approved lane item a, sandbox-wiped, next); T1/T2 implementation phases 1-2 await operator adoption of the spec; PAT rotation.
