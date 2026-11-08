@@ -1760,6 +1760,14 @@ Stage Summary:
 - THE FIX: process.exit(0) inside the dry-run block (after the completion line). Every path out of the seed now exits explicitly. Local dry-run + tsc 5/5.
 - Scoreboard so far: the tree leg proved green on prod (SKIP, 1 query); the seed's resolution leg proved green on prod (95/95, one query); the only unexecuted line on prod is the apply leg's single unnest statement (proven locally: fresh + idempotent) — the next dispatch runs it and the postgres.js postverify gates 9/95/95.
 
+
+## T-HUBHDR-MOBILELEAK-1 run-001 (2026-11-08) — the signed-in header no longer overflows the 390px viewport
+
+- Operator order: "file the 19px header fix as a tiny task card" — the production visual pass (www.syllab-ai.com, 390×844, signed-in) measured html.scrollWidth 409 vs clientWidth 390: a 19px page-level horizontal scroll. Isolation: breadcrumbs self-contain (overflow-x-auto scroller sw 1822 / cw 390), content tables are wrapped and scroll internally (right edge 444 inside their own scroller); the ONLY page-level leak was the header's ml-auto identity cluster (theme icon trigger 40px + identity chip 124px + practise 34px = 210px into the row budget).
+- Reproduced locally at main a3561bd1 by injecting the pilot-shape identity into localStorage (the exact shape currentUser() shape-checks: id/email/displayName/roles as strings; the first probe without `id` was instantly cleared by the shape-guard — clearSession() from inside currentUser(), caught via a Storage.removeItem stack capture, which is the guard working as built). Overflow exactly 19px, cluster 210px — parity with production.
+- THE FIX (two responsive class changes, sm+ pixel-identical): (1) theme-toggle.tsx icon trigger size-10 → size-8 sm:size-10 — the 32px phone trigger matches the h-8 identity chip and sign-in button beside it (the icon variant is shared with course-shell's collapsed-sidebar mount; the sub-sm size lands there too, disclosed on the card); (2) app-shell.tsx identity name span max-w-16 → max-w-12 below sm — the "Hub suffix returns at sm" precedent law (375px fit wave) applied one chip over.
+- Verified: signed-in 390px overflow 19 → 0 (cluster 210 → 186, −24px, 5px slack); desktop 1440 overflow 0 with the trigger back to 40px; aria labels untouched; tsc --noEmit exit 0; eslint exit 0 on both files; route-gate suite 8/8 (35 expect calls). Task card .syllabai/tasks/T-HUBHDR-MOBILELEAK-1.yaml + receipt .syllabai/receipts/T-HUBHDR-MOBILELEAK-1/run-001.md. Branch t-hubhdr-mobileleak/run-001, PR integrator-queued — NOT self-merged per house law.
+
 ## receipt(T-KG-TRIPWIRE-1) — Phase 1: the T1 thumbs-down ships — run-003 — 2026-11-09 (operator trace 1a1bc99cd7f38ef1 "Phase 1 — ship the T1 thumbs-down")
 
 - Scope: Phase 1 of the merged tripwire spec's own rollout ladder (PR #859 = Phase 0). The
