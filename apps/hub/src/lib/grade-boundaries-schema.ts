@@ -62,9 +62,22 @@ export const GradeBoundariesSchema = z.object({
               // units the candidate's combination uses
               a2Min: z.number().optional(),
               a2Rate: z.number().optional(),
-              a2Units: z.array(z.string()),
+              // T-GB-STRUCT-3: modular IGCSE top-grade laws (9-1 ladder)
+              // carry only overallMin — no A2 units exist on those ladders
+              a2Units: z.array(z.string()).optional(),
+              note: z.string().optional(),
             })
             .optional(),
+          // T-GB-STRUCT-3: the modular IGCSE award law — fixed UMS grade
+          // thresholds published in the modular specifications, unit UMS
+          // maxima, per-unit fixed tables and the resit rule
+          umsMax: z.number().optional(),
+          unitUmsMax: z.record(z.string(), z.number()).optional(),
+          gradeThresholds: z.record(z.string(), z.number()).optional(),
+          unitGradeTables: z
+            .record(z.string(), z.record(z.string(), z.number()))
+            .optional(),
+          resitRule: z.string().optional(),
           // selection-mode cash-ins (T-GRADE-10, YFM01): the candidate's
           // `size` units are drawn from the official pool — mustInclude
           // and atLeastOneOf guard eligibility (IAL 2018 Mathematics
@@ -116,6 +129,19 @@ export const GradeBoundariesSchema = z.object({
               note: z.string().nullable().optional(),
             })
             .nullable()
+            .optional(),
+          // T-GB-STRUCT-3: official adapted sessions (COVID-era Nov 2021,
+          // advance-information June 2022) whose totals Pearson printed at
+          // other than the spec figure — the served bundle carries its own
+          // evidence
+          adaptedSessions: z
+            .record(
+              z.string(),
+              z.object({
+                servedMaxMark: z.number(),
+                note: z.string(),
+              }),
+            )
             .optional(),
           sources: z.array(
             z.object({
