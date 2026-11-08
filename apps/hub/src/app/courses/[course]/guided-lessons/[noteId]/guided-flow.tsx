@@ -531,11 +531,12 @@ export function GuidedLessonFlow({
                           gotoModule(mi);
                         }}
                         className={cn(
-                          // t-ui-polish run-007: the module-list idle hover speaks
-                          // the house voice (border-primary/60); the active
-                          // state's /50 tint is observed drift, left as-is.
+                          // t-ui-polish run-008: the module-list idle hover and
+                          // the active state both speak the house voice now —
+                          // the run-007-observed active-tint drift is
+                          // discharged here.
                           "flex w-full items-center gap-3 rounded-md border px-3 py-2.5 text-left transition-colors",
-                          active ? "border-primary/50 bg-primary/5" : "hover:border-primary/60",
+                          active ? "border-primary/60 bg-primary/5" : "hover:border-primary/60",
                         )}
                         aria-current={active ? "step" : undefined}
                       >
