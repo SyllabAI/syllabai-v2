@@ -3,7 +3,7 @@ task:
   id: T-BOOK-CSP-1
   title: "The lesson embeds' frame-src law — the books rail's video (youtube-nocookie) and PhET sim iframes were blocked by the hub CSP's frame-src 'self'"
   owner: "operator-delegate (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7, run trace 1a1bc844616c4d39)"
-  status: "IN_REVIEW run-001 (PR open, awaiting operator/integrator review)"
+  status: "SHIPPED run-001 (PR #875 merged dc766c5d; production CSP verified live 19:25:22Z 2026-11-08 — both embed hosts serving)"
   priority: P1
   band: T-BOOK (content serving — the lesson rail embed widgets)
   wave: books-lesson-embeds
