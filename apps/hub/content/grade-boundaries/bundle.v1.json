@@ -1,6 +1,6 @@
 {
  "schema": "syllabai.grade-boundaries/1.1",
- "generated": "2026-11-08T03:23:37Z",
+ "generated": "2026-11-08T19:18:46Z",
  "generator": "GradeBoundaries/scripts/build_hub_import.py v3",
  "source": {
   "lane": "SyllabAI/syllabai-resources GradeBoundaries",
@@ -191121,7 +191121,56 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4AC1/01",
+      "paperLabel": "01",
+      "title": "Paper 1: Introduction to Bookkeeping and Accounting",
+      "rawMax": 100,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 2,
+       "den": 3,
+       "asPrinted": "66.6%"
+      }
+     },
+     {
+      "code": "4AC1/02",
+      "paperLabel": "02",
+      "title": "Paper 2: Financial Statements",
+      "rawMax": 50,
+      "duration": "1h 15m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 3,
+       "asPrinted": "33.3%"
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 150,
+     "derivation": "100×1 + 50×1 = 150 (unscaled; printed weights 66.6% / 33.3%)"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Linear 9-1 qualification: grades 9..1 awarded on the unscaled total of Paper 1 (100) and Paper 2 (50)."
+    },
+    "sources": [
+     {
+      "id": "pearson-4ac1-specification",
+      "title": "Pearson Edexcel International GCSE 4AC1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Accounting/2017/Specification-and-sample-assessments/ig-accountancy-spec.pdf",
+      "sha256_16": "3f7ff62da3988a09",
+      "usedFor": "4AC1 assessment requirements (Paper 1 100/2h 66.6%, Paper 2 50/1h15 33.3%, total 150)"
+     }
+    ]
+   }
   },
   "igcse-accounting-17-introduction-to-bookkeeping-and-accounting": {
    "code": "4AC1",
@@ -191795,7 +191844,56 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4AC1/01",
+      "paperLabel": "01",
+      "title": "Paper 1: Introduction to Bookkeeping and Accounting",
+      "rawMax": 100,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 2,
+       "den": 3,
+       "asPrinted": "66.6%"
+      }
+     },
+     {
+      "code": "4AC1/02",
+      "paperLabel": "02",
+      "title": "Paper 2: Financial Statements",
+      "rawMax": 50,
+      "duration": "1h 15m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 3,
+       "asPrinted": "33.3%"
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 150,
+     "derivation": "100×1 + 50×1 = 150 (unscaled; printed weights 66.6% / 33.3%)"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Linear 9-1 qualification: grades 9..1 awarded on the unscaled total of Paper 1 (100) and Paper 2 (50)."
+    },
+    "sources": [
+     {
+      "id": "pearson-4ac1-specification",
+      "title": "Pearson Edexcel International GCSE 4AC1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Accounting/2017/Specification-and-sample-assessments/ig-accountancy-spec.pdf",
+      "sha256_16": "3f7ff62da3988a09",
+      "usedFor": "4AC1 assessment requirements (Paper 1 100/2h 66.6%, Paper 2 50/1h15 33.3%, total 150)"
+     }
+    ]
+   }
   },
   "igcse-biology-19": {
    "code": "4BI1",
@@ -192613,7 +192711,54 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4BI1/1B",
+      "paperLabel": "1B",
+      "title": "Paper 1 (Biology Paper 1)",
+      "rawMax": 110,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 11,
+       "den": 18
+      }
+     },
+     {
+      "code": "4BI1/2B",
+      "paperLabel": "2B",
+      "title": "Paper 2 (Biology Paper 2)",
+      "rawMax": 70,
+      "duration": "1h 15m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 7,
+       "den": 18
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 180,
+     "derivation": "110×1 + 70×1 = 180 (marks not scaled; spec: 'The total number of marks for this qualification is 180')"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Linear 9-1 qualification: grades 9..1 awarded on the unscaled total of Paper 1 (110) and Paper 2 (70). No unit grades or A* aggregate conditions."
+    },
+    "sources": [
+     {
+      "id": "pearson-4bi1-specification",
+      "title": "Pearson Edexcel International GCSE 4BI1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Biology/2017/specification-and-sample-assessments/international-gcse-biology-2017-specification1.pdf",
+      "sha256_16": "9f474a0ef0e93ef3",
+      "usedFor": "4BI1 assessment requirements (1B 110/2h, 2B 70/1h15, unscaled total 180)"
+     }
+    ]
+   }
   },
   "igcse-biology-modular-24-unit-1": {
    "code": "4XBI1",
@@ -192638,7 +192783,52 @@
     "required": [
      "4WBI1",
      "4WBI2"
-    ]
+    ],
+    "umsMax": 240,
+    "unitUmsMax": {
+     "4WBI1": 120,
+     "4WBI2": 120
+    },
+    "gradeThresholds": {
+     "9": 216,
+     "8": 192,
+     "7": 168,
+     "6": 144,
+     "5": 120,
+     "4": 96,
+     "3": 72,
+     "2": 48,
+     "1": 24
+    },
+    "unitGradeTables": {
+     "4WBI1": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     },
+     "4WBI2": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     }
+    },
+    "aStar": {
+     "overallMin": 216,
+     "note": "9-1 ladder: grade 9 is the top grade (no A*); overallMin is the spec's fixed minimum total UMS for grade 9"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -193184,7 +193374,52 @@
     "required": [
      "4WBI1",
      "4WBI2"
-    ]
+    ],
+    "umsMax": 240,
+    "unitUmsMax": {
+     "4WBI1": 120,
+     "4WBI2": 120
+    },
+    "gradeThresholds": {
+     "9": 216,
+     "8": 192,
+     "7": 168,
+     "6": 144,
+     "5": 120,
+     "4": 96,
+     "3": 72,
+     "2": 48,
+     "1": 24
+    },
+    "unitGradeTables": {
+     "4WBI1": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     },
+     "4WBI2": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     }
+    },
+    "aStar": {
+     "overallMin": 216,
+     "note": "9-1 ladder: grade 9 is the top grade (no A*); overallMin is the spec's fixed minimum total UMS for grade 9"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -194811,7 +195046,56 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4BS1/01",
+      "paperLabel": "01",
+      "title": "Paper 1: Investigating small businesses",
+      "rawMax": 80,
+      "duration": "1h 30m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      }
+     },
+     {
+      "code": "4BS1/02",
+      "paperLabel": "02",
+      "title": "Paper 2: Investigating large businesses",
+      "rawMax": 80,
+      "duration": "1h 30m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 160,
+     "derivation": "80×1 + 80×1 = 160"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Linear 9-1 qualification: two equally weighted papers (available paper-based or onscreen)."
+    },
+    "sources": [
+     {
+      "id": "pearson-4bs1-specification",
+      "title": "Pearson Edexcel International GCSE 4BS1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Business%20Studies/2017/specification-and-sample-assessment/9781446942765-international-gcse-business-specification.pdf",
+      "sha256_16": "fe492c90db0c52a3",
+      "usedFor": "4BS1 assessment requirements (papers 01/02, 1h30, 80 marks each, 50% each, total 160)"
+     }
+    ]
+   }
   },
   "igcse-chemistry-19": {
    "code": "4CH1",
@@ -195629,7 +195913,54 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4CH1/1C",
+      "paperLabel": "1C",
+      "title": "Paper 1 (Chemistry Paper 1)",
+      "rawMax": 110,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 11,
+       "den": 18
+      }
+     },
+     {
+      "code": "4CH1/2C",
+      "paperLabel": "2C",
+      "title": "Paper 2 (Chemistry Paper 2)",
+      "rawMax": 70,
+      "duration": "1h 15m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 7,
+       "den": 18
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 180,
+     "derivation": "110×1 + 70×1 = 180 (marks not scaled)"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Linear 9-1 qualification: grades 9..1 awarded on the unscaled total of Paper 1 (110) and Paper 2 (70)."
+    },
+    "sources": [
+     {
+      "id": "pearson-4ch1-specification",
+      "title": "Pearson Edexcel International GCSE 4CH1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Chemistry/2017/specification-and-sample-assessments/international-gcse-chemistry-2017-specification.pdf",
+      "sha256_16": "36e2080d2e99f060",
+      "usedFor": "4CH1 assessment requirements (1C 110/2h, 2C 70/1h15, unscaled total 180)"
+     }
+    ]
+   }
   },
   "igcse-chemistry-modular-24-unit-1": {
    "code": "4XCH1",
@@ -195654,7 +195985,52 @@
     "required": [
      "4WCH1",
      "4WCH2"
-    ]
+    ],
+    "umsMax": 240,
+    "unitUmsMax": {
+     "4WCH1": 120,
+     "4WCH2": 120
+    },
+    "gradeThresholds": {
+     "9": 216,
+     "8": 192,
+     "7": 168,
+     "6": 144,
+     "5": 120,
+     "4": 96,
+     "3": 72,
+     "2": 48,
+     "1": 24
+    },
+    "unitGradeTables": {
+     "4WCH1": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     },
+     "4WCH2": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     }
+    },
+    "aStar": {
+     "overallMin": 216,
+     "note": "9-1 ladder: grade 9 is the top grade (no A*); overallMin is the spec's fixed minimum total UMS for grade 9"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -196200,7 +196576,52 @@
     "required": [
      "4WCH1",
      "4WCH2"
-    ]
+    ],
+    "umsMax": 240,
+    "unitUmsMax": {
+     "4WCH1": 120,
+     "4WCH2": 120
+    },
+    "gradeThresholds": {
+     "9": 216,
+     "8": 192,
+     "7": 168,
+     "6": 144,
+     "5": 120,
+     "4": 96,
+     "3": 72,
+     "2": 48,
+     "1": 24
+    },
+    "unitGradeTables": {
+     "4WCH1": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     },
+     "4WCH2": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     }
+    },
+    "aStar": {
+     "overallMin": 216,
+     "note": "9-1 ladder: grade 9 is the top grade (no A*); overallMin is the spec's fixed minimum total UMS for grade 9"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -197755,7 +198176,56 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4EC1/01",
+      "paperLabel": "01",
+      "title": "Paper 1: Microeconomics and Business Economics",
+      "rawMax": 80,
+      "duration": "1h 30m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      }
+     },
+     {
+      "code": "4EC1/02",
+      "paperLabel": "02",
+      "title": "Paper 2: Macroeconomics and the Global Economy",
+      "rawMax": 80,
+      "duration": "1h 30m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 160,
+     "derivation": "80×1 + 80×1 = 160"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Linear 9-1 qualification: two equally weighted papers (available paper-based or onscreen)."
+    },
+    "sources": [
+     {
+      "id": "pearson-4ec1-specification",
+      "title": "Pearson Edexcel International GCSE 4EC1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Economics/2017/Specification%20and%20SAMS/international-gcse-spec-9781446942789.pdf",
+      "sha256_16": "4920f7524cc9c519",
+      "usedFor": "4EC1 assessment requirements (papers 01/02, 1h30, 80 marks each, 50% each, total 160)"
+     }
+    ]
+   }
   },
   "igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing": {
    "code": "4EA1",
@@ -201633,7 +202103,54 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4EA1/01",
+      "paperLabel": "01",
+      "title": "Component 1: Non-fiction Texts and Transactional Writing",
+      "rawMax": 90,
+      "duration": "2h 15m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 3,
+       "den": 5
+      }
+     },
+     {
+      "code": "4EA1/02",
+      "paperLabel": "02",
+      "title": "Component 2: Poetry and Prose Texts and Imaginative Writing",
+      "rawMax": 60,
+      "duration": "1h 30m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 2,
+       "den": 5
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 150,
+     "derivation": "90×1 + 60×1 = 150 (exam route)"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Route choice by spec: students must complete either Component 2 (examination, 60 marks) or Component 3 (non-examined assessment/coursework, 60 marks); either route totals 150 with Component 1 (90). An optional Spoken Language endorsement carries no marks."
+    },
+    "sources": [
+     {
+      "id": "pearson-4ea1-specification",
+      "title": "Pearson Edexcel International GCSE 4EA1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/English%20Language%20A/2016/Specification%20and%20sample%20assessments/9781446954379-int-gcse-englang-a-iss6-02-02-2023.pdf",
+      "sha256_16": "512ea0098f7f6bd4",
+      "usedFor": "4EA1 assessment requirements (Component 1 90/2h15, Component 2 exam or Component 3 coursework 60, total 150; spoken endorsement ungraded)"
+     }
+    ]
+   }
   },
   "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing": {
    "code": "4EA1",
@@ -205511,7 +206028,54 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4EA1/01",
+      "paperLabel": "01",
+      "title": "Component 1: Non-fiction Texts and Transactional Writing",
+      "rawMax": 90,
+      "duration": "2h 15m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 3,
+       "den": 5
+      }
+     },
+     {
+      "code": "4EA1/02",
+      "paperLabel": "02",
+      "title": "Component 2: Poetry and Prose Texts and Imaginative Writing",
+      "rawMax": 60,
+      "duration": "1h 30m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 2,
+       "den": 5
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 150,
+     "derivation": "90×1 + 60×1 = 150 (exam route)"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Route choice by spec: students must complete either Component 2 (examination, 60 marks) or Component 3 (non-examined assessment/coursework, 60 marks); either route totals 150 with Component 1 (90). An optional Spoken Language endorsement carries no marks."
+    },
+    "sources": [
+     {
+      "id": "pearson-4ea1-specification",
+      "title": "Pearson Edexcel International GCSE 4EA1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/English%20Language%20A/2016/Specification%20and%20sample%20assessments/9781446954379-int-gcse-englang-a-iss6-02-02-2023.pdf",
+      "sha256_16": "512ea0098f7f6bd4",
+      "usedFor": "4EA1 assessment requirements (Component 1 90/2h15, Component 2 exam or Component 3 coursework 60, total 150; spoken endorsement ungraded)"
+     }
+    ]
+   }
   },
   "igcse-english-language-a-16-paper-3-coursework": {
    "code": "4EA1",
@@ -209389,7 +209953,54 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4EA1/01",
+      "paperLabel": "01",
+      "title": "Component 1: Non-fiction Texts and Transactional Writing",
+      "rawMax": 90,
+      "duration": "2h 15m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 3,
+       "den": 5
+      }
+     },
+     {
+      "code": "4EA1/02",
+      "paperLabel": "02",
+      "title": "Component 2: Poetry and Prose Texts and Imaginative Writing",
+      "rawMax": 60,
+      "duration": "1h 30m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 2,
+       "den": 5
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 150,
+     "derivation": "90×1 + 60×1 = 150 (exam route)"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Route choice by spec: students must complete either Component 2 (examination, 60 marks) or Component 3 (non-examined assessment/coursework, 60 marks); either route totals 150 with Component 1 (90). An optional Spoken Language endorsement carries no marks."
+    },
+    "sources": [
+     {
+      "id": "pearson-4ea1-specification",
+      "title": "Pearson Edexcel International GCSE 4EA1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/English%20Language%20A/2016/Specification%20and%20sample%20assessments/9781446954379-int-gcse-englang-a-iss6-02-02-2023.pdf",
+      "sha256_16": "512ea0098f7f6bd4",
+      "usedFor": "4EA1 assessment requirements (Component 1 90/2h15, Component 2 exam or Component 3 coursework 60, total 150; spoken endorsement ungraded)"
+     }
+    ]
+   }
   },
   "igcse-english-literature-16": {
    "code": "4ET1",
@@ -212727,7 +213338,54 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4ET1/01",
+      "paperLabel": "01",
+      "title": "Component 1: Poetry and Modern Prose",
+      "rawMax": 90,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 3,
+       "den": 5
+      }
+     },
+     {
+      "code": "4ET1/02",
+      "paperLabel": "02",
+      "title": "Component 2: Modern Drama and Literary Heritage Texts",
+      "rawMax": 60,
+      "duration": "1h 30m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 2,
+       "den": 5
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 150,
+     "derivation": "90×1 + 60×1 = 150 (exam route)"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Route choice by spec: learners must complete either Component 2 (examination, open book, 60 marks) or Component 3 (non-examined assessment, two assignments, 60 marks); either route totals 150 with Component 1 (90)."
+    },
+    "sources": [
+     {
+      "id": "pearson-4et1-specification",
+      "title": "Pearson Edexcel International GCSE 4ET1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/English%20Literature/2016/Specification%20and%20sample%20assessments/international-gcse-english-literature-specification.pdf",
+      "sha256_16": "a4d27a8c98028b09",
+      "usedFor": "4ET1 assessment requirements (Component 1 90/2h, Component 2 exam or Component 3 NEA 60, total 150)"
+     }
+    ]
+   }
   },
   "igcse-further-maths-19": {
    "code": "4PM1",
@@ -213545,7 +214203,58 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4PM1/01",
+      "paperLabel": "01",
+      "title": "Paper 1",
+      "rawMax": 100,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      },
+      "tier": "Single tier"
+     },
+     {
+      "code": "4PM1/02",
+      "paperLabel": "02",
+      "title": "Paper 2",
+      "rawMax": 100,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      },
+      "tier": "Single tier"
+     }
+    ],
+    "total": {
+     "maxMark": 200,
+     "derivation": "100×1 + 100×1 = 200"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Single-tier qualification targeted at grades 9–4 with 3 allowed; the two papers each contribute half of the graded total (200 raw marks)."
+    },
+    "sources": [
+     {
+      "id": "pearson-4pm1-specification",
+      "title": "Pearson Edexcel International GCSE 4PM1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Further%20Pure%20Mathematics/2016/Specification%20and%20sample%20assessments/international-gcse-in-further-pure-mathematics-spec.pdf",
+      "sha256_16": "4d13a0fb7002e472",
+      "usedFor": "4PM1 assessment requirements (papers 01/02, 2h, 100 marks each, 50% each, single tier, total 200)"
+     }
+    ]
+   }
   },
   "igcse-geography-19": {
    "code": "4GE1",
@@ -214435,7 +215144,66 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4GE1/01",
+      "paperLabel": "01",
+      "title": "Paper 1: Physical geography",
+      "rawMax": 70,
+      "duration": "1h 10m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 2,
+       "den": 5,
+       "asPrinted": "40%"
+      }
+     },
+     {
+      "code": "4GE1/02",
+      "paperLabel": "02",
+      "title": "Paper 2: Human geography",
+      "rawMax": 105,
+      "duration": "1h 45m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 3,
+       "den": 5,
+       "asPrinted": "60%"
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 175,
+     "derivation": "70×1 + 105×1 = 175 (printed weights 40% / 60%)"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Linear 9-1 qualification: Paper 1 carries 70 marks (40%), Paper 2 carries 105 marks (60%); graded on the unscaled total."
+    },
+    "sources": [
+     {
+      "id": "pearson-4ge1-specification",
+      "title": "Pearson Edexcel International GCSE 4GE1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Geography/2017/specification-and-sample-assessments/9781446958360-int-gcse-geog-issue-3.pdf",
+      "sha256_16": "a5ff19bd10182ce7",
+      "usedFor": "4GE1 assessment requirements (Paper 1 70/1h10 40%, Paper 2 105/1h45 60%, total 175)"
+     }
+    ],
+    "adaptedSessions": {
+     "November 2021": {
+      "servedMaxMark": 160,
+      "note": "Adapted November 2021 assessment: the official boundaries document prints the 4GE1 subject row at maxMark 160 (COVID-era adaptations). Evidence: raw/pearson-int-gcse-linear/November 2021.pdf (pinned in raw/MANIFEST.jsonl)."
+     },
+     "June 2022": {
+      "servedMaxMark": 134,
+      "note": "Adapted June 2022 assessment (advance-information arrangements): the official boundaries document prints the 4GE1 subject row at maxMark 134. Evidence: raw/pearson-int-gcse-linear/June 2022.pdf (pinned)."
+     }
+    }
+   }
   },
   "igcse-history-17": {
    "code": "4HI1",
@@ -215613,7 +216381,66 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4HI1/01",
+      "paperLabel": "01",
+      "title": "Paper 1: Depth Studies",
+      "rawMax": 60,
+      "duration": "1h 30m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      }
+     },
+     {
+      "code": "4HI1/02",
+      "paperLabel": "02",
+      "title": "Paper 2: Investigation and Breadth Studies",
+      "rawMax": 60,
+      "duration": "1h 30m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 120,
+     "derivation": "60×1 + 60×1 = 120"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Linear 9-1 qualification: two equally weighted 60-mark papers (available paper-based or onscreen)."
+    },
+    "sources": [
+     {
+      "id": "pearson-4hi1-specification",
+      "title": "Pearson Edexcel International GCSE 4HI1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/History/2017/specification-and-sample-assessments/int-gcse-history-specification.pdf",
+      "sha256_16": "c8efe4433e9b03bb",
+      "usedFor": "4HI1 assessment requirements (papers 01/02, 1h30, 60 marks each, 50% each, total 120)"
+     }
+    ],
+    "adaptedSessions": {
+     "November 2021": {
+      "servedMaxMark": 90,
+      "note": "Adapted November 2021 assessment: the official boundaries document prints 4HI1 route rows (Papers 1A+2A, 1B+2B) at maxMark 90. Evidence: raw/pearson-int-gcse-linear/November 2021.pdf (pinned)."
+     },
+     "June 2022": {
+      "servedMaxMark": 90,
+      "note": "Adapted June 2022 assessment: the official boundaries document prints 4HI1 route rows at maxMark 90. Evidence: raw/pearson-int-gcse-linear/June 2022.pdf (pinned)."
+     }
+    }
+   }
   },
   "igcse-ict-17": {
    "code": "4IT1",
@@ -216287,7 +217114,56 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4IT1/01",
+      "paperLabel": "01",
+      "title": "Paper 1: Written Paper",
+      "rawMax": 100,
+      "duration": "1h 30m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      }
+     },
+     {
+      "code": "4IT1/02",
+      "paperLabel": "02",
+      "title": "Paper 2: Practical Paper",
+      "rawMax": 100,
+      "duration": "3h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 200,
+     "derivation": "100×1 + 100×1 = 200"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Linear 9-1 qualification: written paper (100) + practical examination (100), each half of the graded total."
+    },
+    "sources": [
+     {
+      "id": "pearson-4it1-specification",
+      "title": "Pearson Edexcel International GCSE 4IT1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Information%20and%20Communication%20Technology/2017/Specification%20and%20sample%20assessments/international-gcse-in-ict-spec.pdf",
+      "sha256_16": "12f15eeaae987589",
+      "usedFor": "4IT1 assessment requirements (Paper 1 written 100/1h30, Paper 2 practical 100/3h, total 200)"
+     }
+    ]
+   }
   },
   "igcse-maths-a-18-foundation": {
    "code": "4MA1",
@@ -217177,7 +218053,58 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4MA1/1F",
+      "paperLabel": "1F",
+      "title": "Paper 1F",
+      "rawMax": 100,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      },
+      "tier": "Foundation"
+     },
+     {
+      "code": "4MA1/2F",
+      "paperLabel": "2F",
+      "title": "Paper 2F",
+      "rawMax": 100,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      },
+      "tier": "Foundation"
+     }
+    ],
+    "total": {
+     "maxMark": 200,
+     "derivation": "100×1 + 100×1 = 200"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Linear 9-1, Foundation tier targeted at grades 5–1: two equally weighted 2-hour papers, graded on the unscaled total of 200."
+    },
+    "sources": [
+     {
+      "id": "pearson-4ma1-specification",
+      "title": "Pearson Edexcel International GCSE Mathematics A (4MA1) specification Issue 2 (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Mathematics%20A/2016/Specification%20and%20sample%20assessments/international-gcse-in-mathematics-spec-a.pdf",
+      "sha256_16": "d58830e570d58aec",
+      "usedFor": "4MA1 assessment requirements (papers 1F/2F/1H/2H, 2h, 100 marks each, 50% each, per-tier total 200; Issue 2 code renames)"
+     }
+    ]
+   }
   },
   "igcse-maths-a-18-higher": {
    "code": "4MA1",
@@ -218067,7 +218994,58 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4MA1/1H",
+      "paperLabel": "1H",
+      "title": "Paper 1H",
+      "rawMax": 100,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      },
+      "tier": "Higher"
+     },
+     {
+      "code": "4MA1/2H",
+      "paperLabel": "2H",
+      "title": "Paper 2H",
+      "rawMax": 100,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 2,
+       "asPrinted": "50%"
+      },
+      "tier": "Higher"
+     }
+    ],
+    "total": {
+     "maxMark": 200,
+     "derivation": "100×1 + 100×1 = 200"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Linear 9-1, Higher tier targeted at grades 9–4 with 3 allowed: two equally weighted 2-hour papers, graded on the unscaled total of 200. Issue 2 renamed the earlier 4MA1/3H,4MA1/4H codes to 4MA1/1H,4MA1/2H."
+    },
+    "sources": [
+     {
+      "id": "pearson-4ma1-specification",
+      "title": "Pearson Edexcel International GCSE Mathematics A (4MA1) specification Issue 2 (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Mathematics%20A/2016/Specification%20and%20sample%20assessments/international-gcse-in-mathematics-spec-a.pdf",
+      "sha256_16": "d58830e570d58aec",
+      "usedFor": "4MA1 assessment requirements (papers 1F/2F/1H/2H, 2h, 100 marks each, 50% each, per-tier total 200; Issue 2 code renames)"
+     }
+    ]
+   }
   },
   "igcse-maths-a-modular-24-foundation-unit-1": {
    "code": "4XMAF/4XMAH",
@@ -218092,7 +219070,40 @@
     "required": [
      "4WM1F",
      "4WM2F"
-    ]
+    ],
+    "umsMax": 240,
+    "unitUmsMax": {
+     "4WM1F": 120,
+     "4WM2F": 120
+    },
+    "gradeThresholds": {
+     "5": 120,
+     "4": 96,
+     "3": 72,
+     "2": 48,
+     "1": 24
+    },
+    "unitGradeTables": {
+     "4WM1F": {
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     },
+     "4WM2F": {
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     }
+    },
+    "aStar": {
+     "overallMin": 120,
+     "note": "Foundation tier top grade is 5; overallMin is the spec's fixed minimum total UMS for grade 5 (240-UMS ladder, 9-1 scale with F grades 5-1)"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -218638,7 +219649,40 @@
     "required": [
      "4WM1F",
      "4WM2F"
-    ]
+    ],
+    "umsMax": 240,
+    "unitUmsMax": {
+     "4WM1F": 120,
+     "4WM2F": 120
+    },
+    "gradeThresholds": {
+     "5": 120,
+     "4": 96,
+     "3": 72,
+     "2": 48,
+     "1": 24
+    },
+    "unitGradeTables": {
+     "4WM1F": {
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     },
+     "4WM2F": {
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     }
+    },
+    "aStar": {
+     "overallMin": 120,
+     "note": "Foundation tier top grade is 5; overallMin is the spec's fixed minimum total UMS for grade 5 (240-UMS ladder, 9-1 scale with F grades 5-1)"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -219184,7 +220228,46 @@
     "required": [
      "4WM1H",
      "4WM2H"
-    ]
+    ],
+    "umsMax": 240,
+    "unitUmsMax": {
+     "4WM1H": 120,
+     "4WM2H": 120
+    },
+    "gradeThresholds": {
+     "9": 216,
+     "8": 192,
+     "7": 168,
+     "6": 144,
+     "5": 120,
+     "4": 96,
+     "3": 84
+    },
+    "unitGradeTables": {
+     "4WM1H": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 42
+     },
+     "4WM2H": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 42
+     }
+    },
+    "aStar": {
+     "overallMin": 216,
+     "note": "Higher tier top grade 9; grades below 3 not targeted (3 allowed at 84/240 total, 42 per 120-UMS unit)"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -219730,7 +220813,46 @@
     "required": [
      "4WM1H",
      "4WM2H"
-    ]
+    ],
+    "umsMax": 240,
+    "unitUmsMax": {
+     "4WM1H": 120,
+     "4WM2H": 120
+    },
+    "gradeThresholds": {
+     "9": 216,
+     "8": 192,
+     "7": 168,
+     "6": 144,
+     "5": 120,
+     "4": 96,
+     "3": 84
+    },
+    "unitGradeTables": {
+     "4WM1H": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 42
+     },
+     "4WM2H": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 42
+     }
+    },
+    "aStar": {
+     "overallMin": 216,
+     "note": "Higher tier top grade 9; grades below 3 not targeted (3 allowed at 84/240 total, 42 per 120-UMS unit)"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -222020,7 +223142,54 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4PH1/1P",
+      "paperLabel": "1P",
+      "title": "Paper 1 (Physics Paper 1)",
+      "rawMax": 110,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 11,
+       "den": 18
+      }
+     },
+     {
+      "code": "4PH1/2P",
+      "paperLabel": "2P",
+      "title": "Paper 2 (Physics Paper 2)",
+      "rawMax": 70,
+      "duration": "1h 15m",
+      "weightFactor": 1,
+      "weight": {
+       "num": 7,
+       "den": 18
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 180,
+     "derivation": "110×1 + 70×1 = 180 (marks not scaled)"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Linear 9-1 qualification: grades 9..1 awarded on the unscaled total of Paper 1 (110) and Paper 2 (70)."
+    },
+    "sources": [
+     {
+      "id": "pearson-4ph1-specification",
+      "title": "Pearson Edexcel International GCSE 4PH1 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Physics/2017/specification-and-sample-assessments/international-gcse-physics-2017-specification.pdf",
+      "sha256_16": "bac4b8312d4fbfc8",
+      "usedFor": "4PH1 assessment requirements (1P 110/2h, 2P 70/1h15, unscaled total 180)"
+     }
+    ]
+   }
   },
   "igcse-physics-modular-24-unit-1": {
    "code": "4XPH1",
@@ -222045,7 +223214,52 @@
     "required": [
      "4WPH1",
      "4WPH2"
-    ]
+    ],
+    "umsMax": 240,
+    "unitUmsMax": {
+     "4WPH1": 120,
+     "4WPH2": 120
+    },
+    "gradeThresholds": {
+     "9": 216,
+     "8": 192,
+     "7": 168,
+     "6": 144,
+     "5": 120,
+     "4": 96,
+     "3": 72,
+     "2": 48,
+     "1": 24
+    },
+    "unitGradeTables": {
+     "4WPH1": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     },
+     "4WPH2": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     }
+    },
+    "aStar": {
+     "overallMin": 216,
+     "note": "9-1 ladder: grade 9 is the top grade (no A*); overallMin is the spec's fixed minimum total UMS for grade 9"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -222591,7 +223805,52 @@
     "required": [
      "4WPH1",
      "4WPH2"
-    ]
+    ],
+    "umsMax": 240,
+    "unitUmsMax": {
+     "4WPH1": 120,
+     "4WPH2": 120
+    },
+    "gradeThresholds": {
+     "9": 216,
+     "8": 192,
+     "7": 168,
+     "6": 144,
+     "5": 120,
+     "4": 96,
+     "3": 72,
+     "2": 48,
+     "1": 24
+    },
+    "unitGradeTables": {
+     "4WPH1": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     },
+     "4WPH2": {
+      "9": 108,
+      "8": 96,
+      "7": 84,
+      "6": 72,
+      "5": 60,
+      "4": 48,
+      "3": 36,
+      "2": 24,
+      "1": 12
+     }
+    },
+    "aStar": {
+     "overallMin": 216,
+     "note": "9-1 ladder: grade 9 is the top grade (no A*); overallMin is the spec's fixed minimum total UMS for grade 9"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -223930,7 +225189,69 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4BI1/1B",
+      "paperLabel": "1B",
+      "title": "Biology Paper 1",
+      "rawMax": 110,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 3,
+       "asPrinted": "33.3%"
+      }
+     },
+     {
+      "code": "4CH1/1C",
+      "paperLabel": "1C",
+      "title": "Chemistry Paper 1",
+      "rawMax": 110,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 3,
+       "asPrinted": "33.3%"
+      }
+     },
+     {
+      "code": "4PH1/1P",
+      "paperLabel": "1P",
+      "title": "Physics Paper 1",
+      "rawMax": 110,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 3,
+       "asPrinted": "33.3%"
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 330,
+     "derivation": "110×1 + 110×1 + 110×1 = 330 (spec: 'This total is obtained by adding up the marks for Paper 1B, Paper 1C and Paper 1P')"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Science (Double Award): grades are double awards 9-9 down to 1-1 (9-9 highest), awarded on the unscaled total of the three Paper 1s. Papers carry the single-science codes (4BI1/1B, 4CH1/1C, 4PH1/1P) with legacy 4SD0 codes also printed (spec Appendix 1)."
+    },
+    "sources": [
+     {
+      "id": "pearson-4sd1-specification",
+      "title": "Pearson Edexcel International GCSE 4SD0 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Science%20(Double%20Award)/2017/specification-and-sample-assessments/international-gcse-science-double-award-2017-specification1.pdf",
+      "sha256_16": "5780fb046368974e",
+      "usedFor": "4SD1/4SD0 assessment requirements (three Paper 1s 4BI1/1B, 4CH1/1C, 4PH1/1P, 110 each 33.3%, total 330, double grades 9-9..1-1)"
+     }
+    ]
+   }
   },
   "igcse-science-double-award-17-chemistry": {
    "code": "4SD0",
@@ -224748,7 +226069,69 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4BI1/1B",
+      "paperLabel": "1B",
+      "title": "Biology Paper 1",
+      "rawMax": 110,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 3,
+       "asPrinted": "33.3%"
+      }
+     },
+     {
+      "code": "4CH1/1C",
+      "paperLabel": "1C",
+      "title": "Chemistry Paper 1",
+      "rawMax": 110,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 3,
+       "asPrinted": "33.3%"
+      }
+     },
+     {
+      "code": "4PH1/1P",
+      "paperLabel": "1P",
+      "title": "Physics Paper 1",
+      "rawMax": 110,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 3,
+       "asPrinted": "33.3%"
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 330,
+     "derivation": "110×1 + 110×1 + 110×1 = 330 (spec: 'This total is obtained by adding up the marks for Paper 1B, Paper 1C and Paper 1P')"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Science (Double Award): grades are double awards 9-9 down to 1-1 (9-9 highest), awarded on the unscaled total of the three Paper 1s. Papers carry the single-science codes (4BI1/1B, 4CH1/1C, 4PH1/1P) with legacy 4SD0 codes also printed (spec Appendix 1)."
+    },
+    "sources": [
+     {
+      "id": "pearson-4sd1-specification",
+      "title": "Pearson Edexcel International GCSE 4SD0 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Science%20(Double%20Award)/2017/specification-and-sample-assessments/international-gcse-science-double-award-2017-specification1.pdf",
+      "sha256_16": "5780fb046368974e",
+      "usedFor": "4SD1/4SD0 assessment requirements (three Paper 1s 4BI1/1B, 4CH1/1C, 4PH1/1P, 110 each 33.3%, total 330, double grades 9-9..1-1)"
+     }
+    ]
+   }
   },
   "igcse-science-double-award-17-physics": {
    "code": "4SD0",
@@ -225566,7 +226949,69 @@
       "sha256_16": "9c5627002aeba93e"
      }
     }
-   ]
+   ],
+   "structure": {
+    "kind": "linear-weighted",
+    "gradeScale": null,
+    "papers": [
+     {
+      "code": "4BI1/1B",
+      "paperLabel": "1B",
+      "title": "Biology Paper 1",
+      "rawMax": 110,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 3,
+       "asPrinted": "33.3%"
+      }
+     },
+     {
+      "code": "4CH1/1C",
+      "paperLabel": "1C",
+      "title": "Chemistry Paper 1",
+      "rawMax": 110,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 3,
+       "asPrinted": "33.3%"
+      }
+     },
+     {
+      "code": "4PH1/1P",
+      "paperLabel": "1P",
+      "title": "Physics Paper 1",
+      "rawMax": 110,
+      "duration": "2h",
+      "weightFactor": 1,
+      "weight": {
+       "num": 1,
+       "den": 3,
+       "asPrinted": "33.3%"
+      }
+     }
+    ],
+    "total": {
+     "maxMark": 330,
+     "derivation": "110×1 + 110×1 + 110×1 = 330 (spec: 'This total is obtained by adding up the marks for Paper 1B, Paper 1C and Paper 1P')"
+    },
+    "awardRules": {
+     "kind": "linear-9-1",
+     "note": "Science (Double Award): grades are double awards 9-9 down to 1-1 (9-9 highest), awarded on the unscaled total of the three Paper 1s. Papers carry the single-science codes (4BI1/1B, 4CH1/1C, 4PH1/1P) with legacy 4SD0 codes also printed (spec Appendix 1)."
+    },
+    "sources": [
+     {
+      "id": "pearson-4sd1-specification",
+      "title": "Pearson Edexcel International GCSE 4SD0 specification (official PDF, full sha256 pinned)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/International%20GCSE/Science%20(Double%20Award)/2017/specification-and-sample-assessments/international-gcse-science-double-award-2017-specification1.pdf",
+      "sha256_16": "5780fb046368974e",
+      "usedFor": "4SD1/4SD0 assessment requirements (three Paper 1s 4BI1/1B, 4CH1/1C, 4PH1/1P, 110 each 33.3%, total 330, double grades 9-9..1-1)"
+     }
+    ]
+   }
   },
   "igcse-science-double-award-modular-24-biology-unit-1": {
    "code": "4XSD1",
@@ -225595,7 +227040,108 @@
      "4WSD4",
      "4WSD5",
      "4WSD6"
-    ]
+    ],
+    "umsMax": 480,
+    "unitUmsMax": {
+     "4WSD1": 80,
+     "4WSD2": 80,
+     "4WSD3": 80,
+     "4WSD4": 80,
+     "4WSD5": 80,
+     "4WSD6": 80
+    },
+    "gradeThresholds": {
+     "9-9": 480,
+     "9-8": 432,
+     "8-8": 408,
+     "8-7": 384,
+     "7-7": 360,
+     "7-6": 336,
+     "6-6": 312,
+     "6-5": 288,
+     "5-5": 264,
+     "5-4": 240,
+     "4-4": 216,
+     "4-3": 192,
+     "3-3": 168,
+     "3-2": 144,
+     "2-2": 120,
+     "2-1": 96,
+     "1-1": 72
+    },
+    "unitGradeTables": {
+     "4WSD1": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD2": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD3": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD4": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD5": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD6": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     }
+    },
+    "aStar": {
+     "overallMin": 480,
+     "note": "17-grade double-award ladder 9-9..1-1; the top grade 9-9 requires the full 480 UMS (spec caps 9-9 at the maximum uniform mark)"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -226282,7 +227828,108 @@
      "4WSD4",
      "4WSD5",
      "4WSD6"
-    ]
+    ],
+    "umsMax": 480,
+    "unitUmsMax": {
+     "4WSD1": 80,
+     "4WSD2": 80,
+     "4WSD3": 80,
+     "4WSD4": 80,
+     "4WSD5": 80,
+     "4WSD6": 80
+    },
+    "gradeThresholds": {
+     "9-9": 480,
+     "9-8": 432,
+     "8-8": 408,
+     "8-7": 384,
+     "7-7": 360,
+     "7-6": 336,
+     "6-6": 312,
+     "6-5": 288,
+     "5-5": 264,
+     "5-4": 240,
+     "4-4": 216,
+     "4-3": 192,
+     "3-3": 168,
+     "3-2": 144,
+     "2-2": 120,
+     "2-1": 96,
+     "1-1": 72
+    },
+    "unitGradeTables": {
+     "4WSD1": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD2": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD3": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD4": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD5": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD6": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     }
+    },
+    "aStar": {
+     "overallMin": 480,
+     "note": "17-grade double-award ladder 9-9..1-1; the top grade 9-9 requires the full 480 UMS (spec caps 9-9 at the maximum uniform mark)"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -226969,7 +228616,108 @@
      "4WSD4",
      "4WSD5",
      "4WSD6"
-    ]
+    ],
+    "umsMax": 480,
+    "unitUmsMax": {
+     "4WSD1": 80,
+     "4WSD2": 80,
+     "4WSD3": 80,
+     "4WSD4": 80,
+     "4WSD5": 80,
+     "4WSD6": 80
+    },
+    "gradeThresholds": {
+     "9-9": 480,
+     "9-8": 432,
+     "8-8": 408,
+     "8-7": 384,
+     "7-7": 360,
+     "7-6": 336,
+     "6-6": 312,
+     "6-5": 288,
+     "5-5": 264,
+     "5-4": 240,
+     "4-4": 216,
+     "4-3": 192,
+     "3-3": 168,
+     "3-2": 144,
+     "2-2": 120,
+     "2-1": 96,
+     "1-1": 72
+    },
+    "unitGradeTables": {
+     "4WSD1": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD2": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD3": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD4": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD5": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD6": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     }
+    },
+    "aStar": {
+     "overallMin": 480,
+     "note": "17-grade double-award ladder 9-9..1-1; the top grade 9-9 requires the full 480 UMS (spec caps 9-9 at the maximum uniform mark)"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -227656,7 +229404,108 @@
      "4WSD4",
      "4WSD5",
      "4WSD6"
-    ]
+    ],
+    "umsMax": 480,
+    "unitUmsMax": {
+     "4WSD1": 80,
+     "4WSD2": 80,
+     "4WSD3": 80,
+     "4WSD4": 80,
+     "4WSD5": 80,
+     "4WSD6": 80
+    },
+    "gradeThresholds": {
+     "9-9": 480,
+     "9-8": 432,
+     "8-8": 408,
+     "8-7": 384,
+     "7-7": 360,
+     "7-6": 336,
+     "6-6": 312,
+     "6-5": 288,
+     "5-5": 264,
+     "5-4": 240,
+     "4-4": 216,
+     "4-3": 192,
+     "3-3": 168,
+     "3-2": 144,
+     "2-2": 120,
+     "2-1": 96,
+     "1-1": 72
+    },
+    "unitGradeTables": {
+     "4WSD1": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD2": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD3": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD4": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD5": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD6": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     }
+    },
+    "aStar": {
+     "overallMin": 480,
+     "note": "17-grade double-award ladder 9-9..1-1; the top grade 9-9 requires the full 480 UMS (spec caps 9-9 at the maximum uniform mark)"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -228343,7 +230192,108 @@
      "4WSD4",
      "4WSD5",
      "4WSD6"
-    ]
+    ],
+    "umsMax": 480,
+    "unitUmsMax": {
+     "4WSD1": 80,
+     "4WSD2": 80,
+     "4WSD3": 80,
+     "4WSD4": 80,
+     "4WSD5": 80,
+     "4WSD6": 80
+    },
+    "gradeThresholds": {
+     "9-9": 480,
+     "9-8": 432,
+     "8-8": 408,
+     "8-7": 384,
+     "7-7": 360,
+     "7-6": 336,
+     "6-6": 312,
+     "6-5": 288,
+     "5-5": 264,
+     "5-4": 240,
+     "4-4": 216,
+     "4-3": 192,
+     "3-3": 168,
+     "3-2": 144,
+     "2-2": 120,
+     "2-1": 96,
+     "1-1": 72
+    },
+    "unitGradeTables": {
+     "4WSD1": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD2": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD3": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD4": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD5": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD6": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     }
+    },
+    "aStar": {
+     "overallMin": 480,
+     "note": "17-grade double-award ladder 9-9..1-1; the top grade 9-9 requires the full 480 UMS (spec caps 9-9 at the maximum uniform mark)"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
@@ -229030,7 +230980,108 @@
      "4WSD4",
      "4WSD5",
      "4WSD6"
-    ]
+    ],
+    "umsMax": 480,
+    "unitUmsMax": {
+     "4WSD1": 80,
+     "4WSD2": 80,
+     "4WSD3": 80,
+     "4WSD4": 80,
+     "4WSD5": 80,
+     "4WSD6": 80
+    },
+    "gradeThresholds": {
+     "9-9": 480,
+     "9-8": 432,
+     "8-8": 408,
+     "8-7": 384,
+     "7-7": 360,
+     "7-6": 336,
+     "6-6": 312,
+     "6-5": 288,
+     "5-5": 264,
+     "5-4": 240,
+     "4-4": 216,
+     "4-3": 192,
+     "3-3": 168,
+     "3-2": 144,
+     "2-2": 120,
+     "2-1": 96,
+     "1-1": 72
+    },
+    "unitGradeTables": {
+     "4WSD1": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD2": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD3": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD4": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD5": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     },
+     "4WSD6": {
+      "9": 72,
+      "8": 64,
+      "7": 56,
+      "6": 48,
+      "5": 40,
+      "4": 32,
+      "3": 24,
+      "2": 16,
+      "1": 8
+     }
+    },
+    "aStar": {
+     "overallMin": 480,
+     "note": "17-grade double-award ladder 9-9..1-1; the top grade 9-9 requires the full 480 UMS (spec caps 9-9 at the maximum uniform mark)"
+    },
+    "resitRule": "Only the better of the two most recent attempts of a unit counts toward aggregation (spec 'Resitting of units')."
    },
    "reviewRequired": false,
    "series": [
