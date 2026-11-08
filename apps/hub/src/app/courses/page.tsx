@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { listCourses } from "@/lib/courses";
+import { loadContentJson } from "@/lib/corpus";
 import { corpusPapersForCourse } from "@/lib/pastpapers-corpus";
+import type { CourseCounts } from "@/lib/directory-stats";
 import { CourseDirectory } from "./course-directory";
 import { PageHeader } from "@/components/layout/page-header";
 
@@ -42,13 +44,67 @@ export default async function CoursesIndexPage() {
   const archivePapers = Object.fromEntries(
     courses.map((c) => [c.slug, corpusPapersForCourse(c.slug).length]),
   );
+  // T-HUB-COURSES-PUBLIC-2 (①): the card substance line's data — each
+  // course's OWN manifest counts (notes / flashcards / questions), one small
+  // manifest.json read per row at build on this static page, plumbed to the
+  // client like archivePapers. A manifest that fails to read simply yields
+  // zeroes — the card renders no line rather than a fabricated one.
+  const bundleStats = Object.fromEntries(
+    await Promise.all(
+      courses.map(async (c): Promise<[string, CourseCounts]> => {
+        const manifest = await loadContentJson<{
+          counts?: { notes?: number; flashcards?: number; questions?: number };
+        }>(`${c.slug}/manifest.json`);
+        const k = manifest?.counts;
+        return [
+          c.slug,
+          {
+            notes: k?.notes ?? 0,
+            flashcards: k?.flashcards ?? 0,
+            questions: k?.questions ?? 0,
+          },
+        ];
+      }),
+    ),
+  );
   const counts = {
     edexcel: courses.filter((c) => c.board == null).length,
     cambridge: courses.filter((c) => c.board != null).length,
     total: courses.length,
   };
+  // T-HUB-COURSES-PUBLIC-2 (⑤): the directory is public and statically
+  // prerendered — it now gets the same structured-data treatment the course
+  // pages already carry (the F-08 precedent in [course]/page.tsx). Registry
+  // facts only; nothing invented. Item URLs resolve against the production
+  // of record (www.syllab-ai.com — see the metadataBase note in layout.tsx).
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "SyllabAI course directory",
+    description: intro(counts),
+    numberOfItems: courses.length,
+    itemListElement: courses.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Course",
+        name: c.label,
+        url: `https://www.syllab-ai.com/courses/${c.slug}`,
+        educationalLevel: c.level,
+        inLanguage: "en",
+        isAccessibleForFree: true,
+        provider: { "@type": "Organization", name: "SyllabAI" },
+      },
+    })),
+  };
   return (
     <div className="space-y-6">
+      {/* T-HUB-COURSES-PUBLIC-2 (⑤): structured data — same honestly
+          composed facts as the page copy, nothing invented. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
           (was text-3xl; the directory is a tool page, not a lander). */}
       <PageHeader title="Courses" description={intro(counts)}>
@@ -78,7 +134,11 @@ export default async function CoursesIndexPage() {
           </div>
         </details>
       </PageHeader>
-      <CourseDirectory courses={courses} archivePapers={archivePapers} />
+      <CourseDirectory
+        courses={courses}
+        archivePapers={archivePapers}
+        bundleStats={bundleStats}
+      />
     </div>
   );
 }
