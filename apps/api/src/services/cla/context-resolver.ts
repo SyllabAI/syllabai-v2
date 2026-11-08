@@ -20,16 +20,43 @@
  *     from the client.
  *
  * RUNTIME STEP (disclosed): this port lands the FOUR dependency-served kinds
- * — KG_TOPIC, SPECIFICATION_POINT, PAST_PAPER_QUESTION, QUESTION_PART. The
- * frozen resolveSmartLesson (:209-222) and resolveNoteSection (:252-282)
- * branches DEFER: SmartLessonService rides T-MIG-053 t4 and
- * RevisionNoteRepository rides T-MIG-053 t3 (r3a's in-flight tranches). The
- * frozen controller law "kinds not served by the current runtime step are a
- * 400 (closed enum, §1)" is the serving mechanism for the deferral — the
- * route dispatch (tranche-2) refuses the deferred kinds with the fixed 400
- * body; the deferral is disclosed, never silent. The with-copies the two
- * deferred resolvers consume (withLessonAction/withNote) already ported in
- * tranche-1a (context.ts) — the t3/t4 lanes enrich WITHOUT re-running gates.
+ * — KG_TOPIC, SPECIFICATION_POINT, PAST_PAPER_QUESTION, QUESTION_PART — and,
+ * since T-MIG-053 t3 (the revision-notes read model) landed on main, the
+ * frozen resolveNoteSection (:252-282) rides THIS step too: the note-serving
+ * lane wires RevisionNoteRepository through the SAME spine (the curriculum
+ * identity resolves first, fail-closed through the spec-point gate, then the
+ * note's own identity enriches via withNote — the tranche-1a with-copy).
+ * resolveSmartLesson (:209-222) still DEFERS: SmartLessonService rides
+ * T-MIG-053 t4's serving lane. The frozen controller law "kinds not served
+ * by the current runtime step are a 400 (closed enum, §1)" remains the
+ * serving mechanism for THAT deferral — the route dispatch (tranche-2)
+ * refuses it with the fixed 400 body; the deferral is disclosed, never
+ * silent. The with-copy the deferred resolver consumes (withLessonAction)
+ * already ported in tranche-1a (context.ts) — the t4 lane enriches WITHOUT
+ * re-running gates.
+ *
+ * NOTE_SECTION v2 seams (REUSE-not-redeclare + the two disclosures of
+ * record):
+ *  - RevisionNoteRepository.findById is the resolver's OWN read over the
+ *    V27 revision_note table (the 053-t3 learner read model's SAME
+ *    substrate — allNotesInCanonicalOrder/markViewed read the identical
+ *    rows), ported as a local read with the resolver's fail laws verbatim
+ *    (the 069 header law for repo-level reads: different consumers,
+ *    different fail laws). The 053-t3 module's own readers throw the
+ *    selfmark NotFoundError, which the CLA route's exception mapping does
+ *    NOT carry — composing them would 500 a miss instead of the frozen
+ *    indistinguishable 404, so the read is local and the miss throws the
+ *    identity NotFoundException("revision note", noteId) — byte-identical
+ *    message to the 053-t3 reader ("revision note <id> not found").
+ *  - the wire law pins `reference` to a UUID (claContextViewSchema) while
+ *    the v2 note id is the corpus business id ("rn_*", ≤256 chars) — so
+ *    reference = the resolved anchor TOPIC node id (the uuid the learner's
+ *    brief and the learner-state scope already key on) and the note
+ *    identity rides its OWN fields (noteId/noteTitle, both strings on the
+ *    ratified contract). The frozen core's note ids were UUIDs; the v2
+ *    corpus id law ("canonical rn_* id — preserved, never regenerated",
+ *    hub contracts.ts) is the disclosed divergence the contract already
+ *    carries (noteId: z.string().nullable()).
  *
  * v2 seams (REUSE-not-redeclare):
  *  - graph.tree(rootId) is 053's knowledgeTree (the single tree read — the
@@ -71,7 +98,7 @@ import {
 import { BadRequestException, NotFoundException } from "../identity/errors";
 import type { SqlFn } from "../assessment/sql";
 import type { SubmitClock } from "../selfmark";
-import type { ClaContextKind, ClaResourceContext } from "./context";
+import { withNote, type ClaContextKind, type ClaResourceContext } from "./context";
 
 /** the resolver's deps — the sql adapter + the resolution clock. */
 export interface ClaContextResolverDeps {
@@ -97,6 +124,11 @@ export interface ClaContextResolver {
   resolveQuestionPart(
     partId: string,
     rootId: string | null,
+    learnerId: string,
+  ): Promise<ClaResourceContext>;
+  resolveNoteSection(
+    rootId: string,
+    noteId: string,
     learnerId: string,
   ): Promise<ClaResourceContext>;
 }
@@ -158,6 +190,15 @@ interface NodeEntityRow {
   code: string;
   title: string;
   validation_status: string;
+}
+
+/** revision note row as the resolver's repo read selects it (the identity
+ *  spine's columns — the body rides the SERVICE's own evidence read, the
+ *  frozen topology's second consumer). */
+interface NoteRow {
+  note_id: string;
+  title: string;
+  spec_point_codes: string;
 }
 
 /**
@@ -239,6 +280,17 @@ export function buildClaContextResolver(
       where learner_id = ${learnerId} and question_id = ${questionId}
       limit 1`) as unknown as unknown[];
     return rows.length > 0;
+  };
+
+  /** RevisionNoteRepository.findById — the note identity read over the V27
+   *  corpus (the 053-t3 substrate; the miss law is the CALLER's frozen
+   *  orElseThrow label). */
+  const noteById = async (noteId: string): Promise<NoteRow | null> => {
+    const rows = (await sql`
+      select note_id, title, spec_point_codes
+      from revision_note
+      where note_id = ${noteId}`) as unknown as NoteRow[];
+    return rows[0] ?? null;
   };
 
   /** the frozen collect() (:484-491): flatten the tree into the by-id
@@ -627,6 +679,78 @@ export function buildClaContextResolver(
         attempted,
         part.marks,
       );
+    },
+
+    /**
+     * Resolve a NOTE_SECTION context (:252-282 — the note reader's anchor).
+     * The v2 note corpus is the V27 revision_note table (T-MIG-053 t3); its
+     * curriculum anchor is the note's OWN stored spec-point codes — the
+     * client passes only the opaque note id and the subject root its UI is
+     * scoped to; everything else resolves server-side:
+     *  1. the curriculum spine resolves FIRST (the withNote doc law,
+     *     context.ts :238-249): the root must BE a subject root — else the
+     *     indistinguishable 404;
+     *  2. the note must EXIST — RevisionNoteRepository.findById, the
+     *     resolver's own read ("revision note <id> not found", byte-identical
+     *     to the 053-t3 reader's label); no existence oracle;
+     *  3. THE SPEC-POINT GATE (fail-closed, the resolveSpecificationPoint law
+     *     per code): the note's stored spec codes are walked in their own
+     *     stored order; the FIRST code that resolves INSIDE the subject
+     *     subtree (exact code match, deterministic first-by-id on duplicates)
+     *     to a VALIDATED node anchors the context. A note with NO resolvable
+     *     validated spec anchor in this subject is a 404 — never a
+     *     best-effort guess, no existence/validation-state oracle;
+     *  4. the note's own identity enriches WITHOUT re-running the gates
+     *     (withNote — the tranche-1a with-copy): noteId (the corpus business
+     *     id, "rn_*") + noteTitle ride their own context fields; `reference`
+     *     is the resolved anchor topic node id (the wire's uuid law — see the
+     *     header disclosure).
+     */
+    async resolveNoteSection(rootId, noteId, learnerId) {
+      if (noteId === null || noteId === undefined || noteId.trim().length === 0) {
+        throw new BadRequestException("NOTE_SECTION context requires rootId and noteId");
+      }
+      // the curriculum spine first (rootId → subject — the shared 404 law)
+      const subject = await subjectByKnowledgeNodeId(rootId);
+      if (subject === null) {
+        throw new NotFoundException("curriculum subject root", rootId);
+      }
+
+      // the note identity (no existence oracle: unknown note is the 404)
+      const note = await noteById(noteId);
+      if (note === null) {
+        throw new NotFoundException("revision note", noteId);
+      }
+
+      // the spec-point gate: the note's own stored codes, in order; the
+      // FIRST code that resolves inside the subject subtree anchors (the
+      // resolveSpecificationPoint match law: exact code, first-by-id)
+      const byId = await registry(rootId);
+      const codes = note.spec_point_codes == null
+        ? []
+        : note.spec_point_codes.split(",").map((c) => c.trim()).filter((c) => c.length > 0);
+      let anchorNodeId: string | null = null;
+      for (const wanted of codes) {
+        const match = [...byId.values()]
+          .filter((n) => wanted === n.code)
+          .map((n) => n.id)
+          .sort()[0];
+        if (match !== undefined) {
+          anchorNodeId = match;
+          break;
+        }
+      }
+      if (anchorNodeId === null) {
+        throw new NotFoundException("revision note spec anchor in this subject", noteId);
+      }
+      const base = await resolveCurriculumNode(
+        rootId,
+        anchorNodeId,
+        learnerId,
+        "NOTE_SECTION",
+        "validated revision note spec anchor",
+      );
+      return withNote(base, note.note_id, note.title);
     },
   };
 }
