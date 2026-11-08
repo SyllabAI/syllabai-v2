@@ -79,6 +79,55 @@ export const GradeBoundariesSchema = z.object({
             .optional(),
         })
         .nullable(),
+      // T-GB-STRUCT-1: the qualification-structure layer (curated/
+      // structure.json in the resources lane) — papers, official
+      // weightings, the graded-total derivation and award rules, every
+      // value transcribed from full-sha256-pinned specification
+      // documents. Optional: absent stays absent (honest, never a stub).
+      structure: z
+        .object({
+          kind: z.string(),
+          gradeScale: z.string().nullable().optional(),
+          papers: z.array(
+            z.object({
+              code: z.string(),
+              paperLabel: z.string().optional(),
+              title: z.string().nullable().optional(),
+              rawMax: z.number(),
+              duration: z.string().nullable().optional(),
+              tier: z.string().nullable().optional(),
+              weight: z.object({
+                num: z.number(),
+                den: z.number(),
+                asPrinted: z.string().optional(),
+              }),
+              weightFactor: z.number(),
+              regionalVariant: z.string().nullable().optional(),
+            }),
+          ),
+          total: z.object({
+            maxMark: z.number(),
+            derivation: z.string(),
+            note: z.string().nullable().optional(),
+          }),
+          awardRules: z
+            .object({
+              kind: z.string().nullable().optional(),
+              note: z.string().nullable().optional(),
+            })
+            .nullable()
+            .optional(),
+          sources: z.array(
+            z.object({
+              id: z.string(),
+              title: z.string(),
+              url: z.string(),
+              sha256_16: z.string(),
+              usedFor: z.string(),
+            }),
+          ),
+        })
+        .optional(),
       reviewRequired: z.boolean(),
       series: z.array(
         z.object({

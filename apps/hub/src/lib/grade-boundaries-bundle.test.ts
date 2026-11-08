@@ -115,4 +115,49 @@ describe("committed grade-boundaries bundle", () => {
     expect(s.units![0].ums?.boundaries).toBeDefined();
     expect(s.cashIns![0].boundaries).toBeDefined();
   });
+
+  // T-GB-STRUCT-1: the structure law — Σ(rawMax × weightFactor) equals the
+  // graded total, which equals the calculator's and every served series
+  // row's maxMark, and every block carries full-sha-pinned official sources.
+  it("structure blocks are arithmetically sound and provenance-complete", () => {
+    const withStructure = Object.entries(bundle.courses).filter(
+      ([, c]) => c.structure,
+    );
+    expect(withStructure.length).toBeGreaterThan(0);
+    for (const [, c] of withStructure) {
+      const st = c.structure!;
+      let weighted = 0;
+      let weights = 0;
+      for (const p of st.papers) {
+        expect(p.rawMax).toBeGreaterThan(0);
+        expect(p.weightFactor).toBeGreaterThanOrEqual(1);
+        weighted += p.rawMax * p.weightFactor;
+        weights += p.weight.num / p.weight.den;
+      }
+      expect(weighted).toBe(st.total.maxMark);
+      expect(Math.abs(weights - 1)).toBeLessThan(1e-9);
+      expect(st.sources.length).toBeGreaterThan(0);
+      for (const s of st.sources) {
+        expect(s.sha256_16).toMatch(/^[0-9a-f]{16}$/);
+        expect(s.url).toMatch(/^https?:\/\//);
+      }
+      if (c.calculator?.mode === "linear-total") {
+        expect(c.calculator.maxMark ?? null).toBe(st.total.maxMark);
+      }
+      for (const s of c.series) {
+        if (s.maxMark != null) expect(s.maxMark).toBe(st.total.maxMark);
+      }
+    }
+  });
+
+  it("regression anchor: igcse-maths-b-16 (4MB1) carries the weighted-total structure", () => {
+    const st = bundle.courses["igcse-maths-b-16"]?.structure;
+    expect(st).toBeDefined();
+    expect(st!.papers.map((p) => p.code)).toEqual(["4MB1/01", "4MB1/02"]);
+    expect(st!.papers.map((p) => p.rawMax)).toEqual([100, 100]);
+    expect(st!.papers.map((p) => p.weightFactor)).toEqual([1, 2]);
+    expect(st!.total.maxMark).toBe(300);
+    expect(st!.total.derivation).toContain("100");
+    expect(st!.awardRules?.note).toBeTruthy();
+  });
 });
