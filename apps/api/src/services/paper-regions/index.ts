@@ -145,11 +145,15 @@ export class PaperRegions {
     }
     const versionIds = questionRows.map((q) => q.version_id);
 
-    // (C) parts of the head versions.
+    // (C) parts of the head versions. (= ANY, not the IN parenthesized form:
+    // a JS array param under postgres.js is ONE uuid[] parameter, so an IN
+    // list built from it compiles to `uuid = uuid[]` and 500s (the
+    // January-2023 live probe, 2026-11-08). The codebase-standard serving
+    // idiom is = any(...) with the cast.)
     const partRows = (await this.sql`
       select p.id as part_id, p.question_version_id, p.label, p.marks, p.ordering
       from question_parts p
-      where p.question_version_id in (${versionIds}::uuid[])
+      where p.question_version_id = any(${versionIds}::uuid[])
       order by p.question_version_id, p.ordering asc, p.id asc`) as unknown as PartRow[];
 
     // (D) mark_points over those versions with their binding columns
@@ -161,7 +165,7 @@ export class PaperRegions {
              ms.question_version_id
       from mark_points mp
       join mark_schemes ms on ms.id = mp.mark_scheme_id
-      where ms.question_version_id in (${versionIds}::uuid[])`) as unknown as PointRow[];
+      where ms.question_version_id = any(${versionIds}::uuid[])`) as unknown as PointRow[];
 
     // (E) rects for those points (multi-rect, ordinal order).
     const pointIds = pointRows.map((p) => p.mark_point_id);
@@ -171,7 +175,7 @@ export class PaperRegions {
         : ((await this.sql`
       select r.mark_point_id, r.page, r.x, r.y, r.width, r.height, r.ordinal
       from mark_point_rects r
-      where r.mark_point_id in (${pointIds}::uuid[])
+      where r.mark_point_id = any(${pointIds}::uuid[])
       order by r.mark_point_id, r.ordinal asc`) as unknown as RectRow[]);
 
     return assemble(questionRows, partRows, pointRows, rectRows);

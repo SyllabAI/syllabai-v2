@@ -1433,6 +1433,96 @@ export function GradeBoundariesWorkspace({
         </div>
       </div>
 
+      {/* T-GB-STRUCT-1: how this qualification is graded — the paper/
+          weighting/award layer from the curated structure of record
+          (official spec documents, sha-pinned). Absent stays absent. */}
+      {entry.structure && (
+        <div className="rounded-2xl border-2 bg-card p-4 sm:p-6">
+          <h5 className="font-display text-lg font-bold tracking-tight">
+            How this qualification is graded
+          </h5>
+          <div className="mt-3 overflow-x-auto">
+            <table className="w-full border-collapse text-sm">
+              <thead>
+                <tr className="bg-muted/60 text-left">
+                  <th className="border-b-2 border-border py-2 pl-3 pr-3 font-medium text-muted-foreground">
+                    Paper
+                  </th>
+                  <th className="border-b-2 border-border px-3 py-2 text-right font-medium text-muted-foreground">
+                    Raw marks
+                  </th>
+                  <th className="border-b-2 border-border px-3 py-2 text-right font-medium text-muted-foreground">
+                    Weight
+                  </th>
+                  <th className="border-b-2 border-border px-3 py-2 text-right font-medium text-muted-foreground">
+                    Counts as
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {entry.structure.papers.map((p) => (
+                  <tr key={p.code} className="border-b border-border/60">
+                    <td className="py-2 pl-3 pr-3">
+                      <span className="font-medium">{p.title ?? p.code}</span>
+                      <span className="ml-2 text-xs tabular-nums text-muted-foreground">
+                        {p.code}
+                        {p.duration ? ` · ${p.duration}` : ""}
+                      </span>
+                    </td>
+                    <td className="px-3 py-2 text-right tabular-nums">
+                      {p.rawMax}
+                    </td>
+                    <td className="px-3 py-2 text-right tabular-nums">
+                      {p.weight.asPrinted ??
+                        `${Math.round((p.weight.num / p.weight.den) * 100)}%`}
+                    </td>
+                    <td className="px-3 py-2 text-right font-medium tabular-nums">
+                      ×{p.weightFactor} → {p.rawMax * p.weightFactor}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Graded total:{" "}
+            <span className="font-medium text-foreground">
+              {entry.structure.total.derivation} ={" "}
+              {entry.structure.total.maxMark}
+            </span>
+            {entry.structure.total.note
+              ? ` — ${entry.structure.total.note}`
+              : ""}
+          </p>
+          {entry.structure.awardRules?.note && (
+            <p className="mt-1.5 text-sm text-muted-foreground">
+              {entry.structure.awardRules.note}
+            </p>
+          )}
+          <p className="mt-2 flex items-start gap-1.5 text-xs text-muted-foreground">
+            <Info className="mt-0.5 size-3.5 shrink-0" aria-hidden />
+            <span>
+              Structure verified against the official specifications:{" "}
+              {entry.structure.sources.map((s, i) => (
+                <span key={s.id}>
+                  {i > 0 && "; "}
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-border underline-offset-2 hover:decoration-foreground"
+                  >
+                    {s.title}
+                  </a>{" "}
+                  (sha256 {s.sha256_16}…)
+                </span>
+              ))}
+              .
+            </span>
+          </p>
+        </div>
+      )}
+
       {/* provenance footer (MG's muted page footer slot) */}
       <p className="flex items-start gap-1.5 px-1 text-sm text-muted-foreground">
         <span>

@@ -163,7 +163,10 @@
   --accent-primary: color-mix(in srgb, var(--primary) 24%, var(--background));
   --accent-primary-foreground: color-mix(in srgb, var(--primary) 50%, white);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
+  /* Tier-3 theme audit (2026-11-08): white/10 over the dark card composited
+     to 1.32:1 — card hairlines were effectively invisible. 15% (1.58:1)
+     matches --input below, so every dark hairline reads the same strength. */
+  --border: oklch(1 0 0 / 15%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
@@ -290,7 +293,18 @@
   --ink: #ecedea;  --ink-soft: #a9acb1;  --ink-faint: #74777d;  --ink-faintest: #63666c;
   --line: #2e3036;  --line-soft: #26282d;  --line-strong: #ecedea;
 
-  --primary-qg: #3d8e67;  --primary-qg-hover: #479e74;  --on-primary-qg: #ecf7f0;
+  --primary-qg: #3d8e67;  --primary-qg-hover: #479e74;
+  /* Tier-3 theme audit (2026-11-08): the inherited near-white ink measured
+     3.63:1 on the lightened fern — the one UNdocumented fill FAIL in the
+     8-cell matrix. The ink flips dark, the house dark idiom (SME dark runs
+     dark ink on its lightened fill at 7.4:1; this theme's own success-ink
+     already does it on fern chips): #04110b clears AA on the solid fill
+     (4.83), the hover token (5.88) and the /70 gradient end (3.9 — icons
+     only, aria-hidden avatars). The dark hover is pinned to
+     --primary-qg-hover in the authored layer below: bg-primary/90
+     composites DARKER over dark surfaces and even #000 fails there
+     (4.30), so the alpha hover can't carry this ink. */
+  --on-primary-qg: #04110b;
   --danger-qg: #df7c63;
 
   color-scheme: dark;
@@ -358,6 +372,22 @@
 [data-theme="quiet-green"] :is(.shadow-2xs, .shadow-xs, .shadow-sm, .shadow, .shadow-md, .shadow-lg, .shadow-xl) {
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
+}
+
+/* --- primary hover: Tier-3 theme audit (2026-11-08), dark mode only.
+       The component's hover:bg-primary/90 composites the fern 90% over
+       whatever dark surface it sits on — DARKER than the fill itself — and
+       no ink carries that composite at AA (even #000 measures 4.30 on the
+       worst one, hover:bg-primary/90 over the page bg). Pin the hover to
+       --primary-qg-hover, which lightens toward the viewer (the CS/plum
+       authored-hover idiom): the dark ink holds 5.88 there and the token
+       finally gets its consumer. Light mode keeps the component default —
+       its /90 composite passes with white ink (~4.9) and is out of scope.
+       Broad .bg-primary selector: it only fires on elements that hover, so
+       static fills are untouched (also covers the plain <button> on
+       app/error.tsx, which carries no data-slot). --- */
+[data-theme="quiet-green"].dark .bg-primary:hover {
+  background: var(--primary-qg-hover);
 }
 
 /* --- tabs: the signature underline style (fern spine) --- */
@@ -457,6 +487,8 @@
      arbitrary or pill radii)
    - known spec exception (§13 option 1, documented): white-on-cherry
      fills ≈3.6:1 — carried by the 800-weight uppercase label style
+     (buttons via the authored signature below; badges pinned onto the
+     same voice — Tier-3 theme audit 2026-11-08)
    ==================================================================== */
 [data-theme="candy-shop"] {
   /* brand constants — identical in both themes */
@@ -594,6 +626,17 @@
   border-radius: 14px;
 }
 [data-theme="candy-shop"] [data-slot="badge"] { border-radius: 999px; }
+
+/* --- Tier-3 theme audit (2026-11-08): the documented cherry exception is
+       mitigated on buttons by the 800-weight uppercase signature, but the
+       default badge variant renders the SAME white-on-cherry pair at 12px
+       with no label voice. Pin the identical mitigation onto
+       primary-filled badges so every cherry label surface carries it. --- */
+[data-theme="candy-shop"] [data-slot="badge"].bg-primary {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
 
 /* --- audit F4: floating slots ride the exact rungs. Menus/tooltips/
        alerts = radius-sm (14); sheets = radius-lg (40). The shipped

@@ -1,0 +1,49 @@
+{
+ "card": "LEVER api-of-record redeploy from tip \u2014 EXECUTED AND VERIFIED (operator fix item \u2460 of the CLA-in-revision-notes diagnosis, task 'serve NOTE_SECTION (wire RevisionNoteRepository + flip the lever)': the wiring landed on main as 0cdaf9a / PR #858 patch/serve-note-section at 01:23Z; the LAST production serve predated it, so the lever was still dark on the wire; this act carries main tip 3a0758c to the serving artifact and the note reader's CLA is LIVE)",
+ "receipt": "api-of-record-redeploy-from-tip-run-014-executed-mainlane",
+ "lane": "main (Z.ai main agent, zai-web session web-5e612468-7ecd-499d-8b14-7c05e8412405, chat 97a19c8c-d041-4ae2-9754-07fef634fc42)",
+ "created_at_utc": "2026-11-08T10:05Z",
+ "operator_traces": [
+  "task \u2460 of the CLA fix list: 'serve NOTE_SECTION (wire RevisionNoteRepository + flip the lever)' (chat 97a19c8c, session of 2026-11-07/08)",
+  "'Check' (this session) \u2014 checked: wiring merged but NOT served; executed the deploy the check implied"
+ ],
+ "source_of_record": "main tip 3a0758c (fetched first; worktree fresh from origin/main; carrier census since the last serve dpl_FW2zs3UT @ 2026-11-07 15:45Z = exactly 2 code deltas, both already CI-gated on main: 0cdaf9a the NOTE_SECTION lane + ee11a86 the T-AIBANK-CARDDEDUP-1 bank-bands dedup)",
+ "build_at_tip_3a0758c": [
+  "plain bun 1.3.14 `bun build apps/api/src/index.ts --target=node --format=cjs` (409 modules / 3.83 MB) \u2014 no repo tree mutations, no shim-in-tree (the recipe tool stays session-local)",
+  "stage shims applied by the session-local assembler (the shim-v3 class, receipt-disclosed): (a) the YAML global parse -> js-yaml 4 load, inlined 97 KB private-scope micro-bundle; (b) the CryptoHasher sha256 -> node:crypto createHash (update/digest-hex parity, 2 sites); (c) the three build-time-inlined absolute dirs -> runtime __dirname-relative (learner-me + teacher -> __dirname, drill -> __dirname + /apps/api/src/services/drill); verification: zero remaining runtime-touchable Bun.* globals (hono's typeof-guarded version probe retained), zero /home/z paths, node new Function syntax OK",
+  "concept-graph assets: the 6 pinned YAMLs copied to stage api/concept-graph/ with sha256 VERIFIED AGAINST THE BUNDLE'S OWN PINS at copy time (6/6 MATCH); teacher/snapshot.ts keeps the inline-first law (concept-graph-assets.gen.ts byte-verified: the generator re-run was a byte no-op); the learner-me loader rides the stage files via the __dirname rewrite",
+  "drill bank lazy reads: the registry's single course (igcse-chemistry-19) 3 JSONs staged under api/hub/content/",
+  "stage: api/index.js + vercel.json (@vercel/node, maxDuration 60, includeFiles concept-graph/** + hub/content/igcse-chemistry-19/**; routes /api/v1/(.*) + /actuator/health) + .vercel/project.json (NEW account prj_vf1MQaCuuGHd83HaTA3uqDxETpb5 / team team_oRKtmWlfLMR0hNaqViyWj7NZ)"
+ ],
+ "gates": [
+  "CLA suites at tip: bun test apps/api/test/cla/ = 113 pass / 0 fail (571 expect calls)",
+  "concept-assets generator re-run at tip: byte no-op, 6 pins echoed exact (8a651dd9\u2026 / 24fa91ac\u2026 / e53e5f87\u2026 / b3b75292\u2026 / b1fea699\u2026 / a7b14cbd\u2026)",
+  "localgate 4/4 ALL PASS \u2014 REDUCED CLASS, DISCLOSED: the sealed-env class (Sensitive env vars are not API-decryptable on either account \u2014 verified by probing both tokens) + the sandbox rebuild consumed the prior Neon wire artifact, so the real-wire gate legs were IMPOSSIBLE pre-deploy (the run-012 precedent class); the gate ran a LOCAL-ONLY random JWT secret (the of-record law) + a closed-port DATABASE_URL, and proved: (L0/L4) the shimmed bundle BOOTS under Node \u2014 which exercises the whole learner-me concept-graph chain end-to-end (NBA_CONCEPT_GRAPH builds at module init: __dirname path + node:crypto hash + js-yaml parse + the 3 sha pins + graph validation), (L1) health 200 UP, (L2) login-malformed 400 'password: must not be blank' EXACT, (L3) cla/ask unauth 401"
+ ],
+ "deploy_leg": [
+  "EXECUTED: vercel CLI 62.7.0 `deploy --prod --yes --token` from the stage (npx, token volatile env only, never printed/persisted/committed)",
+  "RESULT: dpl_8FRDnLyZ9ScLD2cuLtrThnrDUAdP READY (QUEUED ~4.5 min on the shared builder, then BUILDING -> READY); production serving domain api.syllab-ai.com follows the alias of record",
+  "token hygiene: VCT_NEW volatile env per invocation; zero repo contact; zero secret material in receipts/logs"
+ ],
+ "post_deploy_census_10_10_ALL_PASS": [
+  "L1 health 200 UP; L2 login 200 (real Neon read, learner of record zoe.verify.1103); L3 learners/me/state 200; L4 cla/ask unauth 401",
+  "L5 THE DISCRIMINATOR: NOTE_SECTION with an unknown noteId -> 404 'revision note rn_\u2026 not found' (the identity label of record) \u2014 the closed-enum 400 'context kind not supported by this runtime step: NOTE_SECTION' is GONE from the wire",
+  "L6 THE FIX, real note ask: NOTE_SECTION rootId 297a8706 (4CH1) + noteId rn_2VnK66PqbvFKdKYt ('The Three States of Matter') -> 200 in 1.7\u20135.1 s, grounded answer ('Key terms from \"The Three States of Matter\" \u2026 Solids \u2026 Liquids \u2026'), evidenceCount=8 (the note-lead cap of record), 8 NOTE citations titled 'Revision notes \u2014 The Three States of Matter', refused=false, provider groq / openai/gpt-oss-20b (the provider chain is HEALTHY on this wire today \u2014 the 17:47Z-era fail-closed 503 posture is gone)",
+  "L7 PAST_PAPER_QUESTION 200 (2.5 s) \u2014 the already-served kinds unchanged; L8 the 053-t3 revision-notes read model 200; L9 CORS preflight 204 + ACAO exactly https://www.syllab-ai.com; L10 hub /api/health 200 dataMode=core-api",
+  "THE REAL RELAY replay: POST https://www.syllab-ai.com/api/ai/cla with the EXACT note-panel body (kind note, course igcse-chemistry-19, noteId rn_2VnK66PqbvFKdKYt, mode EXPLAIN, isQuickAction true) -> 200 \u2014 the learner-facing island is served end-to-end"
+ ],
+ "honest_correction": [
+  "the FIRST census run's L6 leg used rootId e4075119 and 404'd ('revision note spec anchor in this subject \u2026 not found'); investigation showed e4075119 is the YCH11 (International A-Level chemistry) subject root \u2014 a stale probe-era constant from the diagnosis scripts, NOT what the hub relay resolves; production rootIdForCourseCode('igcse-chemistry-19') reads the subjects list and returns 297a8706 (the 4CH1 root; its tree = 438 nodes, all 4CH1-*, VALIDATED, incl. 4CH1-1.1). Correction applied in-session; the full census re-run 10/10. No production bytes were involved in the error \u2014 probe-side only"
+ ],
+ "residuals_disclosed": [
+  "the spec-point gate is exact-match by design (first stored code that resolves inside the subject subtree; no fallthrough, no validation-state oracle) \u2014 a note whose stored spec_point_codes carry no code of the served subject's tree 404s indistinguishably; the SPECIFICATION_POINT kind's pre-existing '4CH1-1.1 not found in this subject' gap is the SAME registry law (reproduced unchanged post-deploy at the YCH11 root) and remains its own ticket, not a regression of this act",
+  "localgate was the reduced class (disclosed above); the real-wire legs discharged by the post-deploy census 10/10"
+ ],
+ "rollback_anchors": [
+  "dpl_8FRDnLyZ9ScLD2cuLtrThnrDUAdP (NEW \u2014 live)",
+  "dpl_FW2zs3UTBjutbk3ksSFr9USYk6NM (the pre-deploy holder, READY 2026-11-07 15:45Z, re-aliasable)",
+  "dpl_8ZQSC7Pyy1kt1nA1wEsdhpdNu7f1 (deeper lineage)"
+ ],
+ "write_ledger": "prod Neon read-only for the whole act (login/me-state/revision-notes reads + 2 cla answer-path asks on the real learner); ZERO DDL; ZERO env writes; ZERO repo-tree mutations for the build (bun build + session-local shims); one production deployment (the operator-ordered act)",
+ "verdict": "DEPLOYED AND VERIFIED \u2014 the API of record serves main tip 3a0758c as dpl_8FRDnLyZ9ScLD2cuLtrThnrDUAdP (READY, production); operator fix item \u2460 is LIVE: NOTE_SECTION serves end-to-end (relay replay 200, grounded answer, note-titled citations); census 10/10; closed-enum refusal extinct on the wire; rollback lineage captured"
+}

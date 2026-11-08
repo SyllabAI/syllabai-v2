@@ -31,6 +31,14 @@
  * Usage:
  *   DATABASE_URL=... bun apps/api/scripts/seed-mark-point-rects.ts \
  *     scripts/fixtures/mark-point-rects-joinproof.json [--dry-run]
+ *
+ * TRANSPORT LAW (T-MG-CH1-MARK-1 follow-up, run-001 evidence): both the
+ * resolution and the upsert are SET-BASED — one query each, arrays bound
+ * via = any() / unnest(). The original per-row loops (95 + 95 sequential
+ * round trips) crossed the Neon serverless connection reaper at the ~5 min
+ * wall ("terminating connection due to administrator command") on every
+ * COW/prod dispatch (runs 1-3 of t-mg-ch1-mark-1-db-apply, 2026-11-08),
+ * while the tree driver's transactional batch sailed through in seconds.
  */
 import { readFileSync } from "node:fs";
 import { randomUUID } from "node:crypto";
@@ -87,25 +95,34 @@ async function main() {
   const paperId = papers[0]!.id;
   console.log(`paper: ${paperId}`);
 
-  // (B) per-rect resolution: exactly one mark_points row per ref within the
-  // paper's tree (ref scoped by the exam_paper_id join — never global).
+  // (B) batched resolution: ONE query for all distinct refs — exactly one
+  // mark_points row per ref within the paper's tree (ref scoped by the
+  // exam_paper_id join — never global; zero hits and multiple hits BOTH
+  // fail loudly, ambiguity never silently resolves).
+  const distinctRefs = [...new Set(manifest.rects.map((r) => r.markPointRef))];
+  const hitRows = (await sql`
+    select mp.ref, array_agg(mp.id::text) as ids
+    from mark_points mp
+    join mark_schemes ms on ms.id = mp.mark_scheme_id
+    join question_versions v on v.id = ms.question_version_id
+    join questions q on q.id = v.question_id
+    where q.exam_paper_id = ${paperId}
+      and mp.ref = any(${distinctRefs}::text[])
+    group by mp.ref`) as Array<{ ref: string; ids: string[] }>;
+  const hitsByRef = new Map(hitRows.map((h) => [h.ref, h.ids]));
   const resolved: Array<{ ref: string; regionKey: string; pointId: string } & (typeof manifest.rects)[number]> = [];
-  for (const rect of manifest.rects) {
-    const hits = (await sql`
-      select mp.id
-      from mark_points mp
-      join mark_schemes ms on ms.id = mp.mark_scheme_id
-      join question_versions v on v.id = ms.question_version_id
-      join questions q on q.id = v.question_id
-      where q.exam_paper_id = ${paperId}
-        and mp.ref = ${rect.markPointRef}`) as Array<{ id: string }>;
-    if (hits.length !== 1) {
-      console.error(`FAIL: markPointRef ${rect.markPointRef} (${rect.regionKey}) resolved ${hits.length} mark_points row(s) within the paper — exactly one required`);
+  for (const ref of distinctRefs) {
+    const ids = hitsByRef.get(ref) ?? [];
+    if (ids.length !== 1) {
+      const sample = manifest.rects.find((r) => r.markPointRef === ref)!;
+      console.error(`FAIL: markPointRef ${ref} (${sample.regionKey}) resolved ${ids.length} mark_points row(s) within the paper — exactly one required`);
       process.exit(3);
     }
-    resolved.push({ ref: rect.markPointRef, regionKey: rect.regionKey, pointId: hits[0]!.id, ...rect });
   }
-  console.log(`resolution: ${resolved.length}/${manifest.rects.length} refs resolved 1:1`);
+  for (const rect of manifest.rects) {
+    resolved.push({ ref: rect.markPointRef, regionKey: rect.regionKey, pointId: hitsByRef.get(rect.markPointRef)![0]!, ...rect });
+  }
+  console.log(`resolution: ${distinctRefs.length} distinct refs, ${resolved.length}/${manifest.rects.length} rows resolved 1:1 (batched, one query)`);
   for (const r of resolved) console.log(`  ${r.regionKey} → ${r.pointId} (page ${r.page}, ord ${r.ordinal})`);
 
   if (dryRun) {
@@ -113,21 +130,31 @@ async function main() {
     return;
   }
 
-  // (C) idempotent upsert (uq_mark_point_rect_point_ordinal).
-  for (const r of resolved) {
-    await sql`
-      insert into mark_point_rects
-        (id, mark_point_id, page, x, y, width, height, ordinal, extraction_confidence)
-      values (${randomUUID()}, ${r.pointId}, ${r.page}, ${r.x}, ${r.y}, ${r.width}, ${r.height}, ${r.ordinal}, ${r.extractionConfidence})
-      on conflict (mark_point_id, ordinal) do update set
-        page = excluded.page,
-        x = excluded.x,
-        y = excluded.y,
-        width = excluded.width,
-        height = excluded.height,
-        extraction_confidence = excluded.extraction_confidence`;
-  }
-  console.log(`seeded: ${resolved.length} rect row(s) upserted onto ${paperId}`);
+  // (C) idempotent upsert (uq_mark_point_rect_point_ordinal) — SET-BASED:
+  // one INSERT ... SELECT from unnest(...) carrying every row in one round
+  // trip (the transport law in the header).
+  await sql`
+    insert into mark_point_rects
+      (id, mark_point_id, page, x, y, width, height, ordinal, extraction_confidence)
+    select * from unnest(
+      ${resolved.map(() => randomUUID())}::uuid[],
+      ${resolved.map((r) => r.pointId)}::uuid[],
+      ${resolved.map((r) => r.page)}::int[],
+      ${resolved.map((r) => r.x)}::float8[],
+      ${resolved.map((r) => r.y)}::float8[],
+      ${resolved.map((r) => r.width)}::float8[],
+      ${resolved.map((r) => r.height)}::float8[],
+      ${resolved.map((r) => r.ordinal)}::int[],
+      ${resolved.map((r) => r.extractionConfidence)}::float8[]
+    )
+    on conflict (mark_point_id, ordinal) do update set
+      page = excluded.page,
+      x = excluded.x,
+      y = excluded.y,
+      width = excluded.width,
+      height = excluded.height,
+      extraction_confidence = excluded.extraction_confidence`;
+  console.log(`seeded: ${resolved.length} rect row(s) upserted onto ${paperId} (batched, one statement)`);
 }
 
 main().catch((e) => {
