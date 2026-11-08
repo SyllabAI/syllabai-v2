@@ -1,11 +1,13 @@
 /**
- * Pins for the CLA context resolver — T-MIG-069 tranche-1b.
- * Frozen law source: ClaContextResolverTest (:1-574) + the
- * ClaContextResolver spine laws, line-against-line from syllabai-core
- * @ 6cad6ef. Every pin names the frozen test/law it holds. The frozen
- * SMART_LESSON / NOTE_SECTION resolver pins defer with their branches
- * (T-MIG-053 t3/t4 gate); the deferral pin at the tail documents the
- * runtime-step surface of record.
+ * Pins for the CLA context resolver — T-MIG-069 tranche-1b (+ the note-
+ * serving lane's resolveNoteSection). Frozen law source:
+ * ClaContextResolverTest (:1-574) + the ClaContextResolver spine laws,
+ * line-against-line from syllabai-core @ 6cad6ef. Every pin names the
+ * frozen test/law it holds. The frozen SMART_LESSON resolver pins defer
+ * with their branch (T-MIG-053 t4 gate); the deferral pin at the tail
+ * documents the runtime-step surface of record. The NOTE_SECTION pins pin
+ * the 053-t3-wired port of resolveNoteSection (:252-282) — the spine-first
+ * + spec-point-gate + withNote law over the V27 corpus.
  */
 import { describe, expect, it } from "bun:test";
 import { buildClaContextResolver } from "../../src/services/cla/context-resolver";
@@ -28,6 +30,15 @@ const PAPER = "b0000000-0000-4000-8000-000000000009";
 const OTHER_SUBJECT = "b0000000-0000-4000-8000-00000000000a";
 const CONCEPT = "b0000000-0000-4000-8000-00000000000b";
 const SUPERSEDED = "b0000000-0000-4000-8000-00000000000c";
+
+// the note-serving lane's corpus row (V27 revision_note — the 053-t3
+// substrate; the business id is the canonical "rn_*" form, never a uuid)
+const NOTE_ID = "rn_TESTNOTE0001";
+const noteRow = (specCodes: string) => ({
+  note_id: NOTE_ID,
+  title: "Ionic bonding",
+  spec_point_codes: specCodes,
+});
 
 const nodeRow = (id: string, code: string, type: string, title: string, status = "VALIDATED") => ({
   id,
@@ -137,6 +148,8 @@ interface Overrides {
   subjectForRootId?: string | null;
   /** question active flag (the :304-306 active filter). */
   questionActive?: boolean;
+  /** the note's stored spec-point CSV (the spec-point gate's input). */
+  noteSpecCodes?: string;
 }
 
 function routes(o: Overrides = {}): Route[] {
@@ -293,6 +306,14 @@ function routes(o: Overrides = {}): Route[] {
       rows: [],
       rowsFor: (params: unknown[]) =>
         o.attempted === true && (params[1] as string) === QUESTION ? [{ 1: 1 }] : [],
+    },
+    {
+      // RevisionNoteRepository.findById (the note lane's identity read;
+      // param-aware: only the fixture note exists)
+      match: /select note_id, title, spec_point_codes from revision_note where note_id = \?$/,
+      rows: [],
+      rowsFor: (params: unknown[]) =>
+        (params[0] as string) === NOTE_ID ? [noteRow(o.noteSpecCodes ?? "IALCHEM2018-U1-T3")] : [],
     },
   ];
 }
@@ -500,20 +521,87 @@ describe("ClaContextResolver — PAST_PAPER_QUESTION", () => {
 });
 
 /* ------------------------------------------------------------------ */
+/* NOTE_SECTION — the note reader's anchor (:252-282, the 053-t3 lane) */
+/* ------------------------------------------------------------------ */
+
+describe("ClaContextResolver — NOTE_SECTION", () => {
+  it("resolves through the spine + the note's own spec-point gate, then enriches the note identity", async () => {
+    const resolver = build();
+    const context = await resolver.resolveNoteSection(ROOT, NOTE_ID, LEARNER);
+    expect(context.kind).toBe("NOTE_SECTION");
+    // the wire uuid law: reference is the resolved anchor TOPIC node id —
+    // the corpus business id rides its OWN field (the header disclosure)
+    expect(context.reference).toBe(TOPIC);
+    expect(context.topicNodeId).toBe(TOPIC);
+    expect(context.rootId).toBe(ROOT);
+    expect(context.subjectCode).toBe("4CH1");
+    expect(context.topicCode).toBe("IALCHEM2018-U1-T3");
+    expect(context.topicTitle).toBe("Bonding and structure");
+    // the note identity (withNote — the corpus business id + title)
+    expect(context.noteId).toBe(NOTE_ID);
+    expect(context.noteTitle).toBe("Ionic bonding");
+    // curriculum identity resolved from the owning subject, never client-supplied
+    expect(context.curriculumVersion.code).toBe("IALCHEM2018");
+    expect(context.curriculumVersion.board).toBe("Edexcel");
+    expect(context.validationState).toBe("VALIDATED");
+    expect(context.learnerId).toBe(LEARNER);
+    expect(context.resolvedAt).not.toBeNull();
+  });
+
+  it("spec-point gate: the note's FIRST resolvable stored code anchors (stored order, first-by-id)", async () => {
+    const resolver = build({ noteSpecCodes: "IALCHEM2018-U1-T3,IALCHEM2018-U1" });
+    const context = await resolver.resolveNoteSection(ROOT, NOTE_ID, LEARNER);
+    expect(context.topicCode).toBe("IALCHEM2018-U1-T3");
+  });
+
+  it("fail-closed: an unknown note is a 404, no existence oracle", async () => {
+    const resolver = build();
+    await expect(
+      resolver.resolveNoteSection(ROOT, "rn_UNKNOWN0001", LEARNER),
+    ).rejects.toThrow("revision note rn_UNKNOWN0001 not found");
+  });
+
+  it("fail-closed: a note with no resolvable spec anchor in this subject is a 404", async () => {
+    const resolver = build({ noteSpecCodes: "WCH11-T1.1,IALCHEM2018-U1-T99" });
+    await expect(resolver.resolveNoteSection(ROOT, NOTE_ID, LEARNER)).rejects.toBeInstanceOf(
+      NotFoundException,
+    );
+  });
+
+  it("validation gate over the gate: a note anchored via a code on non-VALIDATED content fails closed — no fallthrough to a later code (no validation-state oracle in the anchor choice)", async () => {
+    const resolver = build({ noteSpecCodes: "CONCEPT-x,IALCHEM2018-U1-T3" });
+    await expect(resolver.resolveNoteSection(ROOT, NOTE_ID, LEARNER)).rejects.toThrow(
+      "validated revision note spec anchor",
+    );
+  });
+
+  it("fail-closed: a root that is not a subject root is a 404 (the spine resolves first)", async () => {
+    const resolver = build({ subjectForRootId: null });
+    const unknownRoot = "b8888888-8888-4888-8888-888888888888";
+    await expect(resolver.resolveNoteSection(unknownRoot, NOTE_ID, LEARNER)).rejects.toThrow(
+      "subject root",
+    );
+  });
+});
+
+/* ------------------------------------------------------------------ */
 /* the runtime-step surface of record (the deferral disclosure)        */
 /* ------------------------------------------------------------------ */
 
 describe("ClaContextResolver — runtime step", () => {
-  it("serves exactly the four dependency-landed kinds; SMART_LESSON and NOTE_SECTION defer to the 053 t3/t4 gate", () => {
+  it("serves the four dependency-landed kinds + the 053-t3 note lane; SMART_LESSON defers to the t4 gate", () => {
     const resolver = build() as unknown as Record<string, unknown>;
     expect(typeof resolver.resolveKgTopic).toBe("function");
     expect(typeof resolver.resolveSpecificationPoint).toBe("function");
     expect(typeof resolver.resolvePastPaperQuestion).toBe("function");
     expect(typeof resolver.resolveQuestionPart).toBe("function");
-    // the frozen resolveSmartLesson (:209-222) / resolveNoteSection
-    // (:252-282) have NO v2 runtime-step surface yet — the route dispatch
-    // (tranche-2) refuses the kinds with the fixed 400 (closed enum, §1)
+    // the 053-t3 note lane: the frozen resolveNoteSection (:252-282) has a
+    // v2 runtime-step surface now (the spec-point-gate port over the V27
+    // corpus)
+    expect(typeof resolver.resolveNoteSection).toBe("function");
+    // the frozen resolveSmartLesson (:209-222) has NO v2 runtime-step
+    // surface yet — the route dispatch (tranche-2) refuses the kind with
+    // the fixed 400 (closed enum, §1)
     expect(resolver.resolveSmartLesson).toBeUndefined();
-    expect(resolver.resolveNoteSection).toBeUndefined();
   });
 });
