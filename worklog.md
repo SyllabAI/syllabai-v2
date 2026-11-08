@@ -1653,3 +1653,40 @@ Work Log:
 
 
 - PRODUCTION ADDENDUM (run-002, ~20:3xZ): the state-probe bake read the deployment plane through the workflow's own law — "newest live deployment: BUILDING @ c292b48a" at 19:59:10Z (the git-triggered deploy of the merge was ACCEPTED; the cap no longer refuses new deployments), then "READY @ c292b48a" at 20:17:15Z: the deployment of record for the merged main — stage 2 included — is BUILT and READY. Serving still answers 402 DEPLOYMENT_DISABLED (probes to 20:31Z): the account-level serving halt of the cap class persists until the allowance reset, then production returns AT main HEAD c292b48a with the /courses redesign live. The session's 3 bake dispatches all correctly no-op'd under the idempotence law (newest live SHA == main HEAD); 02:30Z bake = the standing floor; no Vercel token in this session (env-only), nothing further actionable, nothing broken.
+
+---
+Task ID: T-KG-TRIPWIRE-1 run-001 (operator trace 1a1b924333902f45: "I do want the spec to live in the repo")
+Agent: f8-agent (session web-dd74f9c0)
+Task: Draft the telemetry tripwire spec as a repo doc on the KG lane (approved implementation lane item b), via branch + PR per the coordination law.
+
+Work Log:
+- Sandbox recycled again between turns (clone/download/token all lost); plumbing rebuilt: token file (0600), git-askpass (0700), gh.py REST helper; PAT still live — identity SyllabAI; rotation STILL pending (standing reminder, third filing).
+- Repo re-cloned; main tip advanced 563f2a1d -> 24205d26 (T-HUB-COURSES-UI-1 run-002 landing); corpus facts unchanged (106 web courses / 20,369 pre).
+- Which-repo question answered plainly: SyllabAI/syllabai-v2, the hub monorepo holding apps/hub/public/kg/data — there is exactly one repo in play.
+- Spec grounded in the live surface before writing: /knowledge-graph + /graph-explorer (edge click -> relationship explainer + provenance drawer), /api/kg-learner-bridge codes-only law, browser-local progress store, the honest two-tier footnote. No feedback affordance exists today (rg: zero hits) — T1 is greenfield on an existing drawer.
+- Wrote apps/hub/docs/KG-F8-TELEMETRY-TRIPWIRE-SPEC.md (house style, KG- family): T1 thumbs-down (event schema, >=3-distinct-session aggregation, honesty tooltip), T2 prereq-skip vs downstream differential (skip defined course-locally; effect size + CI, n>=30 both arms, confounds stated — self-selection, coverage asymmetry, operator-tier calibration cohort, position-inversion cohort), T3 weekly anomaly report -> append-only review queue ledger in .syllabai/lane-artifacts/T-KG-TRIPWIRE-1/ (in-repo persistence law). Binding invariants I1-I5: no auto-disposition, no label changes (prereqValidated stays EMPTY), no serving gate, codes-only across the bridge, append-only queue.
+- Bookkeeping: receipt run-001 (checks grep-verified), both worklogs appended byte-asserted; branch t-kg-tripwire-1/run-001; PR only, no direct main.
+
+Stage Summary:
+- Landed here: the spec (docs only) + lane bookkeeping. Zero code/data/label bytes; AI verdict fields nowhere written.
+- Open queue: SME review package regeneration (approved lane item a, sandbox-wiped, next); T1/T2 implementation phases 1-2 await operator adoption of the spec; PAT rotation.
+
+---
+Task ID: T-KG-TRIPWIRE-1 run-002 (operator trace 1a1b95f1bf9cce21: "Okay, proceed")
+Agent: f8-agent (session web-dd74f9c0)
+Task: Regenerate the full SME review package (approved implementation lane item a) — workbook + CSVs, verdict columns strictly empty.
+
+Work Log:
+- xlsx skill re-loaded (sandbox wipe had consumed it too): SKILL.md + scenes/create.md + engines/design.md + quality/pipeline.md + templates/base.py re-read in full; FULL-path QA pipeline applied.
+- Schema re-probed before writing (the wiped exporter was reconstructed from data, not memory): WEB-REVIEW's review unit re-derived as the CONCEPT-level web edge — 9,072 across 106 courses (the 20,282 point-level pairs carrying the web label are the projection, both censused separately in SUMMARY).
+- Pilot layer arithmetic re-pinned against mergeOf: legacy re-derivation claims 145 served; under today's anchors the operator expansion yields 137 candidates / 112 served (25 unserved candidates disclosed in README, claim nothing); inferred 30/30 served; web 193 served (1 reversed dropped per exportCounts).
+- The 6 otherwise-unclassified pilot pairs TRACED: operator-validated practical-endpoint retarget (4CH1-PR-01..11 -> real core-practical spec codes), mapping recovered verbatim from commit fd05d755 (scripts/fix_pr_edges.py) and disclosed in the merge's practicalEndpointRetarget note. Classified VALIDATED_BY_OPERATOR (T-C11 legacy) with retarget provenance; fail-closed assert pins exactly 6, pilot-only.
+- scripts/f8sme_export.py rebuilt: classification + fail-closed asserts (courses=106, served pre=20,369, web edges=9,072, unclassified=0, parse errors=0, retarget=6, basis vocab exact, verdict cells empty x9,072). CSVs: web-edges 9,073 lines (verdict idx 12 empty), shipped-pairs 20,370, + course-census 107.
+- scripts/f8sme_workbook.py: 5-sheet workbook per the design system (B2 origin, borderless-first, professional palette): README honesty contract / SUMMARY live COUNTIF counters + 7-row combo census with live-vs-build-time PASS column + verdict panel (9,072 blank) + honesty panel / COURSES 106 rows with live SUM totals / WEB-REVIEW 9,072 rows with CONFIRM-REJECT-AMEND DataValidation on N5:N9076, verdict+reviewer cells EMPTY / SHIPPED-EDGES 20,369 rows read-only ledger.
+- QA chain ALL GREEN: recalc success 0 errors (38 formulas), audit 0 errors (4 zero-values = the honest zeros: 0 inversions, 0 verdicts), scan 16 informational findings reviewed (extent heuristics on 20k rows + intentional TOTAL-row formulas; semantic checks prove ranges exact), validate PASSED exit 0.
+- Inspector 45/45: live counters == Python census (106 / 20,369 / 9,072 / 20,282 / 118 / 30 / 0), combo table 7/7 PASS, DV intact, zero placeholder tokens, CSV counts exact, verdict/reviewer cells byte-empty.
+- HONEST CORRECTION: run-001's receipt line "SME review package regenerated this lane" was written PROSPECTIVELY (the wipe had consumed the artifacts); run-002 is the discharge with the real artifacts. Tense disclosed, numbers never fabricated.
+
+Stage Summary:
+- Landed here: 4 deliverables in the download channel (workbook + 3 CSVs) + this bookkeeping. Zero code/data/label bytes in-repo; prereqValidated still a 0/106 key census.
+- Open queue: PR #859 awaits operator merge (spec + run-001/002 bookkeeping); T1/T2 implementation phases await spec adoption; PAT rotation STILL pending (fourth filing).
