@@ -34,6 +34,15 @@ export interface SpecTree {
   subjectCode: string;
   subjectTitle: string;
   topics: SpecTopic[];
+  /** ADR-039 wave 1 — the SaveMyExams picker layer (section → topic rows),
+   *  copied verbatim from the live picker into the curriculum as
+   *  SME_REFERENCE nodes (code pattern "<course>-SME-S<n>[":<slug>]").
+   *  Present only for courses whose spine ships the layer; the OFFICIAL
+   *  topics above stay the anchoring truth (sidebar, notes, flashcards,
+   *  Teach-Me are untouched) — only the exam-questions picker renders this
+   *  layer, per the operator directive that its selector must mirror the
+   *  SME picker's own organization. */
+  smeSections?: SpecTopic[];
 }
 
 export interface SpecTreeIndex {
@@ -91,7 +100,13 @@ export function buildSpecTreeIndex(
 ): SpecTreeIndex {
   const nodes = curriculum.nodes;
   const subject = nodes.find((n) => n.family === "SUBJECT");
-  const topics = nodes.filter((n) => n.family === "TOPIC").sort(byNodeOrder);
+  // ADR-039 wave 1: SME picker section rows are TOPIC-family nodes, but they
+  // are the EXAM-QUESTIONS picker layer (tree.smeSections below), never part
+  // of the official spec spine — exclude them from the anchor tree.
+  const smeSectionRe = /-SME-S\d+$/;
+  const topics = nodes
+    .filter((n) => n.family === "TOPIC" && !smeSectionRe.test(n.code))
+    .sort(byNodeOrder);
   const generalTopics = new Set(opts?.generalTopics ?? []);
 
   const tree: SpecTree = {
@@ -173,7 +188,68 @@ export function buildSpecTreeIndex(
     for (const s of spec.subtopics) subtopicByCode.set(s.code, s);
   }
 
+  // ── ADR-039 wave 1: build the SME picker layer (sections → topic rows) ──
+  // Rows carry NO spec points: they are navigation homes for question sets
+  // (matched 1:1 by the corpus topicSlug), not spec containers. Registering
+  // them in the subtopic/topic maps is what lets ?subtopic=<sme-row> deep
+  // links and the grouped view resolve without touching the official tree.
+  const smeSectionNodes = nodes
+    .filter((n) => n.family === "TOPIC" && smeSectionRe.test(n.code))
+    .sort(byNodeOrder);
+  if (smeSectionNodes.length > 0) {
+    tree.smeSections = [];
+    for (const sec of smeSectionNodes) {
+      const sme: SpecTopic = {
+        code: sec.code,
+        number: sec.order ?? 0,
+        title: normalizeSpecText(sec.title),
+        subtopics: [],
+        specPointCount: 0,
+      };
+      const rows = nodes
+        .filter((n) => n.family === "SUBTOPIC" && n.parents.includes(sec.code))
+        .sort(byNodeOrder);
+      for (const [j, row] of rows.entries()) {
+        const sub: SpecSubtopic = {
+          code: row.code,
+          label: String(j + 1),
+          title: normalizeSpecText(row.title),
+          topicCode: sec.code,
+          specPointCodes: [],
+        };
+        sme.subtopics.push(sub);
+        topicOfSubtopic.set(sub.code, sec.code);
+        subtopicByCode.set(sub.code, sub);
+      }
+      tree.smeSections.push(sme);
+      topicByCode.set(sec.code, sme);
+    }
+  }
+
   return { tree, subtopicOfSpecPoint, topicOfSubtopic, subtopicByCode, topicByCode };
+}
+
+/**
+ * ADR-039 wave 1 — SME picker row for a question set: the row whose code
+ * embeds the set's corpus topicSlug ("<course>-SME-S1:motion" ↔ "motion").
+ * The corpus carries SME's own slugs verbatim (audited 1:1 per course —
+ * 37/37 physics, 40/40 chemistry, 29/29 biology), so this is a deterministic
+ * bijection, never a guess. Returns null when the course has no SME layer or
+ * the slug has no row (the set keeps its official spine home).
+ */
+export function smeRowOfQuestionSet(
+  topic: ExamQuestionTopic,
+  index: SpecTreeIndex,
+): string | null {
+  const secs = index.tree.smeSections;
+  if (!secs || secs.length === 0 || !topic.topicSlug) return null;
+  const want = `:${topic.topicSlug}`;
+  for (const sec of secs) {
+    for (const row of sec.subtopics) {
+      if (row.code.endsWith(want)) return row.code;
+    }
+  }
+  return null;
 }
 
 /** "4CH1-1.10" sorts after "4CH1-1.9" — numeric, not lexical. */

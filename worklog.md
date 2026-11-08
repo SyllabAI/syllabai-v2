@@ -1753,6 +1753,13 @@ Stage Summary:
 - THE FIX: process.exit(0) at the end of BOTH scripts (the tree driver + the rects seed), immediately after the work/receipt, with the evidence in the comments. Local sanity: skip fires, seed re-applies 95 idempotent, typecheck 5/5. The workflow's postverify step uses postgres.js directly (TCP, closes cleanly) — unaffected.
 - The data of record was already in prod the whole time (run 4's APPLIED + run 5's seed upserts with buffered output lost): the re-dispatch is pure idempotent convergence + the green postverify.
 
+
+## T-MG-CH1-MARK-1 run-005 (2026-11-08) — the dry-run path exits too
+
+- Run 6 got the furthest yet: the tree SKIP exited cleanly (the run-004 exit works), the seed's batched resolution resolved 95/95 against PRODUCTION in one query, "DRY RUN complete" printed at 18:25:55 — then 5min37s of idle and the reaper kill. The dry-run block RETURNED from main() before reaching the tail process.exit(0) — the run-004 fix had a hole exactly on the rehearsal path.
+- THE FIX: process.exit(0) inside the dry-run block (after the completion line). Every path out of the seed now exits explicitly. Local dry-run + tsc 5/5.
+- Scoreboard so far: the tree leg proved green on prod (SKIP, 1 query); the seed's resolution leg proved green on prod (95/95, one query); the only unexecuted line on prod is the apply leg's single unnest statement (proven locally: fresh + idempotent) — the next dispatch runs it and the postgres.js postverify gates 9/95/95.
+
 ## receipt(T-KG-TRIPWIRE-1) — Phase 1: the T1 thumbs-down ships — run-003 — 2026-11-09 (operator trace 1a1bc99cd7f38ef1 "Phase 1 — ship the T1 thumbs-down")
 
 - Scope: Phase 1 of the merged tripwire spec's own rollout ladder (PR #859 = Phase 0). The

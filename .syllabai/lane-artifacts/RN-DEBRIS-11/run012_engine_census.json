@@ -1,0 +1,919 @@
+{
+ "engine": {
+  "changed": true,
+  "sets": 29,
+  "setsTagged": 4,
+  "partsExact": 0,
+  "partsSubtopic": 71,
+  "partsPerPart": 0,
+  "partsUntouched": 0,
+  "residualSets": 1,
+  "questions": 576,
+  "questionsTagged": 71
+ },
+ "pin": "main@4e3a1c6843b0",
+ "vintageBlockReplaced": {
+  "schema": "syllabai.hub.tag-backfill/1.0",
+  "date": "2026-11-03",
+  "source": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "SME-ExamQuestion/cie-igcse-business-25",
+   "ref": "main@fb28c174adec"
+  },
+  "method": "part smeSpecPointIds \u2192 SME spec-point-index name \u2192 official SPEC_POINT title (exact, per part); else the part's SME subtopic slugs resolved to curriculum subtopics (per part); else set-level fallback via SME topic-name title join to a unique curriculum SUBTOPIC",
+  "sets": 5,
+  "questions": 77,
+  "partsExact": 0,
+  "partsPerPartSme": 0,
+  "partsSubtopicLevel": 78,
+  "residualSets": 5
+ },
+ "newBlock": {
+  "schema": "syllabai.hub.tag-backfill/1.0",
+  "date": "2026-11-03",
+  "source": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "SME-ExamQuestion/cie-igcse-business-25",
+   "ref": "main@4e3a1c6843b0"
+  },
+  "method": "part smeSpecPointIds \u2192 SME spec-point-index name \u2192 official SPEC_POINT title (exact, per part); else the part's SME subtopic slugs resolved to curriculum subtopics (per part); else set-level fallback via SME topic-name title join to a unique curriculum SUBTOPIC",
+  "sets": 4,
+  "questions": 71,
+  "partsExact": 0,
+  "partsPerPartSme": 0,
+  "partsSubtopicLevel": 71,
+  "residualSets": 1
+ },
+ "partWrites": [
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_mdVcHyS2RYwQsNCs",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_mVx9b3vKCfVpsvHZ"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_5vqDzm55YJRTxV8C",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_8FjP6D4Dmrh9D8G2"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_wykP7x5fVV9jfZSz",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_8FjP6D4Dmrh9D8G2"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_6SmJFwwVrKyDZgXQ",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_N3Mtr9HTrfW6rqFg"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_c4BPWDVqyxPqqXzj",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_mVx9b3vKCfVpsvHZ"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_c8SyHnxgBWCGH92v",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_N3Mtr9HTrfW6rqFg"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_22JBFFfrmr4s8RM3",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_8FjP6D4Dmrh9D8G2"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_mqVZYNqqHVJgkgwH",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_N3Mtr9HTrfW6rqFg"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_DvXMHpsSJWZ4TmtK",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_8FjP6D4Dmrh9D8G2"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_46Yfn4crVTb2xjy2",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_8FjP6D4Dmrh9D8G2"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_CMMRVhRDZ29pf5Gc",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_8FjP6D4Dmrh9D8G2"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_7sChjP8dRSW7n2rd",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_N3Mtr9HTrfW6rqFg"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_2JBRYdh9RWGktXm4",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_8FjP6D4Dmrh9D8G2"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_2rjTnq6yKQp9DjVM",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_8FjP6D4Dmrh9D8G2"
+   ]
+  },
+  {
+   "set": "business-activity--exam-questions",
+   "partId": "qstnprt_6QS8Nd7P5SrKtFc9",
+   "was": [],
+   "now": [
+    "1.1.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_8FjP6D4Dmrh9D8G2"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_hRZtwYmRnrqxR88x",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_2H3KMFfbcrKzR6KK"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_HSTmhjNstR2XD6HN",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_k2hWR83M586bwRft",
+    "spcpt_79tdGrJPTcwyYPZw"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_K4wcFz7J9YqVGt4v",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_pJkVJXkR5bh82bvp",
+    "spcpt_CPqs9bx2GcGMMWxS"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_yp63wQMSFD8NwYTz",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_CPqs9bx2GcGMMWxS"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_6DqpCGfqRXTqjbd7",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_CPqs9bx2GcGMMWxS"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_YPBC5QdcKcbc3JRS",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_k2hWR83M586bwRft"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_8XvPFBqZTGxgzwWh",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_CPqs9bx2GcGMMWxS"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_Btz8zwNv7cKX5yMH",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_2H3KMFfbcrKzR6KK"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_hMs8nwncMhWBcqtK",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_k2hWR83M586bwRft",
+    "spcpt_zd3ykq5RWfK2CMvY",
+    "spcpt_VcXY9Pkst6mZNjhN",
+    "spcpt_79tdGrJPTcwyYPZw"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_5wGsW6V64HrhVxpB",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_gSC6pskYBHjc6mkx"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_Ck3xx4gt4RwdKPHX",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_k2hWR83M586bwRft"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_RZ5gxqNkwHGDN5Ds",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_CPqs9bx2GcGMMWxS"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_HRC4rNkBD5m6GCw7",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_k2hWR83M586bwRft",
+    "spcpt_79tdGrJPTcwyYPZw"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_kndG6z6DggNGgXmT",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_Spwbn8H2XSxMtYdY",
+    "spcpt_CPqs9bx2GcGMMWxS"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_djQKK78KHvPsGmms",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_vtsXZ9nsqw6bFKzH",
+    "spcpt_CPqs9bx2GcGMMWxS"
+   ]
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "partId": "qstnprt_RqXQMQB8jH5KKk7C",
+   "was": [],
+   "now": [
+    "1.5.1",
+    "1.5.2"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_k2hWR83M586bwRft",
+    "spcpt_79tdGrJPTcwyYPZw"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_7DkChRKW5HR3wP8Z",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_sKs33c8wbdfMjkCK"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_Tk34hkbcZFwDW7m8",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_27yx55T4pyBRChN4"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_M7Kqc3B6rSQ3VcmV",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_sNm8bkTNyvBSPHTk"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_8bFsmpTGJ6tGWH6T",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_FZV43HFFbM59y3hZ"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_wmysdRQK7CRkvnCx",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_sNm8bkTNyvBSPHTk",
+    "spcpt_FZV43HFFbM59y3hZ"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_zfJjb7DCBxD5PZfv",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_DbFJcBDMbchh9Fxp",
+    "spcpt_27yx55T4pyBRChN4"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_T6k5498ZBtJmB9Ng",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_pJkVJXkR5bh82bvp"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_gywxjkCb9j3fmmRP",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_pJkVJXkR5bh82bvp"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_b993DknsB4TwnvHW",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_sKs33c8wbdfMjkCK",
+    "spcpt_FZV43HFFbM59y3hZ",
+    "spcpt_27yx55T4pyBRChN4"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_kWBkNXdzMTTsKVfx",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_FZV43HFFbM59y3hZ",
+    "spcpt_27yx55T4pyBRChN4",
+    "spcpt_sKs33c8wbdfMjkCK"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_wnHnFtVB2s4ctDpG",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_pJkVJXkR5bh82bvp"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_KTr7Wvjb5jTyHQVK",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_sNm8bkTNyvBSPHTk"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_R4w2nsffZTfVm7vy",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_FZV43HFFbM59y3hZ"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_kYcjQ2GmGXxg3fv8",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_sKs33c8wbdfMjkCK",
+    "spcpt_27yx55T4pyBRChN4"
+   ]
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "partId": "qstnprt_frdTv5PWFqYjNgXs",
+   "was": [],
+   "now": [
+    "1.2.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_sNm8bkTNyvBSPHTk",
+    "spcpt_pJkVJXkR5bh82bvp"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_WQnFZD92HnzyRW7b",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_3NfdwHK9Knpm8mnR"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_CYmNvZ6p7k2zB43v",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_3NfdwHK9Knpm8mnR"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_nsbQhXZty3tdvWmH",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_zd3ykq5RWfK2CMvY"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_VKcqs8PMQxGG6V6Y",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_zd3ykq5RWfK2CMvY"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_HQ5Fb82n5vSHQZwP",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_FrFrSdKP58n4pFV6"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_KnzKQHCBNQSvSNhN",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_zjggs3gQHp7wwQH6",
+    "spcpt_zd3ykq5RWfK2CMvY",
+    "spcpt_VcXY9Pkst6mZNjhN",
+    "spcpt_3NfdwHK9Knpm8mnR"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_v5XbXby9K7gGbMDP",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_zjggs3gQHp7wwQH6",
+    "spcpt_3NfdwHK9Knpm8mnR"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_snbMX2mypSkFbB5k",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_VcXY9Pkst6mZNjhN"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_qj5KG2PSndNzPyMq",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_Spwbn8H2XSxMtYdY"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_6CZNssnfK54536dD",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_PNB3VvKjhRjhPx34"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_Yk3Grt9NCM6ZSxSF",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_PNB3VvKjhRjhPx34"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_K7Vt9rTMvsr2GXpR",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_3NfdwHK9Knpm8mnR"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_wpksFPcTfCVWxFj3",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_zjggs3gQHp7wwQH6",
+    "spcpt_VcXY9Pkst6mZNjhN",
+    "spcpt_3NfdwHK9Knpm8mnR"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_tgV8jw2j9szgTc45",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_TMtQZy9GCKQ3btNP"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_rRgTvTrPjPJCQgyc",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_TMtQZy9GCKQ3btNP"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_XFc389YStTmrHh3X",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_3NfdwHK9Knpm8mnR"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_fBVzpSRKMwQCZrxY",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_zjggs3gQHp7wwQH6"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_jmdhPvKVX9zFt8cg",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_VcXY9Pkst6mZNjhN"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_thQWpDJYdWPTbs3V",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_zd3ykq5RWfK2CMvY"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_ZPxV9zRbBSTTB3bS",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_zjggs3gQHp7wwQH6"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_VZJvhXC7HsbkQ5hQ",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_xbbTHNrVnkBS5r6n",
+    "spcpt_VcXY9Pkst6mZNjhN"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_n6PntvdDPMPjr8RY",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_TMtQZy9GCKQ3btNP"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_mjMQ8mSrxfjHq62p",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_zjggs3gQHp7wwQH6",
+    "spcpt_VcXY9Pkst6mZNjhN"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_yG5t5hSQmBvX92MT",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_zjggs3gQHp7wwQH6",
+    "spcpt_VcXY9Pkst6mZNjhN",
+    "spcpt_3NfdwHK9Knpm8mnR"
+   ]
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "partId": "qstnprt_bB9NZ53vqSQmM5HG",
+   "was": [],
+   "now": [
+    "1.4.1"
+   ],
+   "smeSpecPointIds": [
+    "spcpt_zjggs3gQHp7wwQH6"
+   ]
+  }
+ ],
+ "t1Sets": [
+  {
+   "set": "business-activity--exam-questions",
+   "tagBackfill": {
+    "via": "sme-topic-name-subset",
+    "home": "cie-igcse-business-2027-2029-T1:SUB1.1",
+    "partsExact": 0,
+    "partsPerPartSme": 0,
+    "partsSubtopicLevel": 15,
+    "date": "2026-11-03"
+   }
+  },
+  {
+   "set": "business-objectives-and-stakeholder-objectives--exam-questions",
+   "tagBackfill": {
+    "via": "sme-topic-name-subset",
+    "home": "cie-igcse-business-2027-2029-T1:SUB1.5",
+    "partsExact": 0,
+    "partsPerPartSme": 0,
+    "partsSubtopicLevel": 16,
+    "date": "2026-11-03"
+   }
+  },
+  {
+   "set": "economic-sectors--exam-questions",
+   "tagBackfill": {
+    "via": "sme-topic-name-subset",
+    "home": "cie-igcse-business-2027-2029-T1:SUB1.2",
+    "partsExact": 0,
+    "partsPerPartSme": 0,
+    "partsSubtopicLevel": 15,
+    "date": "2026-11-03"
+   }
+  },
+  {
+   "set": "types-of-business-organisation--exam-questions",
+   "tagBackfill": {
+    "via": "sme-topic-name-subset",
+    "home": "cie-igcse-business-2027-2029-T1:SUB1.4",
+    "partsExact": 0,
+    "partsPerPartSme": 0,
+    "partsSubtopicLevel": 25,
+    "date": "2026-11-03"
+   }
+  }
+ ]
+}
