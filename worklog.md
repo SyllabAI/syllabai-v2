@@ -1738,3 +1738,24 @@ Stage Summary:
 - THE FIX: both loops set-based. Resolution = ONE query (`mp.ref = any(${distinctRefs}::text[])` grouped by ref, the exactly-one law enforced per distinct ref with zero/multi BOTH failing loudly — duplicates in the manifest (page-break multi-rect rows share a ref) deduped before the wire). Upsert = ONE `insert ... select * from unnest(9 arrays)` on conflict do update (uq_mark_point_rect_point_ordinal). ~190 round trips → 4 queries total.
 - Local rehearsal on the full schema: rects cleared → dry-run gate 95/95 → apply 95 seeded → idempotent re-apply 95 (no dupes) → regions payload real (65 regions, 56 part regions all rected + wired). Typecheck 5/5.
 - Header comment carries the transport law (the run-001 evidence). Zero behavior change to the exactly-one resolution law, the manifest schema, or the dry-run posture.
+
+
+## T-MG-CH1-MARK-1 run-003 (2026-11-08) — the tree driver's transport fast-path
+
+- Run 4 (prod-only, the batched seed) hung in the prod-apply step: the driver's RE-anchor path (the tree landed in prod via run 3's partial success) takes the find+update branch for every row — ~340 sequential round trips inside one transaction over the Neon serverless WS, past the ~5 min reaper wall. The batched seed never got its turn.
+- THE FIX: one probe query before the transaction — if the tree of record is already complete (questions == 9 AND points == 95 for the paper), the driver SKIPS with an explicit line; otherwise the unchanged idempotent full re-anchor runs. A re-run of the activation is now ~2 round trips for the tree leg + 3 for the seed leg.
+- Local proof: complete tree → "SKIP: tree already anchored (questions 9 / points 95 — complete of record)"; the full path is byte-identical to run-001's (proven twice on COW + locally). Typecheck 5/5.
+
+
+## T-MG-CH1-MARK-1 run-004 (2026-11-08) — the Neon WS loop-alive law: explicit exit after the work
+
+- Run 4's log finally isolated it: APPLIED (178 updates, the full re-anchor) printed at 17:40:23 — 21 SECONDS after start — then 21 minutes of NOTHING, then "terminating connection due to administrator command". Run 5: the SKIP fired at 18:07:15 (1 query), then 5min17s of nothing, then the same death. The scripts were NEVER slow — they FINISHED and did not exit: the createSql seam exposes no close, the Neon serverless WebSocket keeps bun's event loop alive, the process idles with an open session, and Neon's backend reaper kills it (5-21 min depending on the endpoint's idle policy); the unhandled 'error' event then crashes the process and set -e fails the job. The batched-seed theory (run-002) was a red herring — query COUNT was never the problem.
+- THE FIX: process.exit(0) at the end of BOTH scripts (the tree driver + the rects seed), immediately after the work/receipt, with the evidence in the comments. Local sanity: skip fires, seed re-applies 95 idempotent, typecheck 5/5. The workflow's postverify step uses postgres.js directly (TCP, closes cleanly) — unaffected.
+- The data of record was already in prod the whole time (run 4's APPLIED + run 5's seed upserts with buffered output lost): the re-dispatch is pure idempotent convergence + the green postverify.
+
+
+## T-MG-CH1-MARK-1 run-005 (2026-11-08) — the dry-run path exits too
+
+- Run 6 got the furthest yet: the tree SKIP exited cleanly (the run-004 exit works), the seed's batched resolution resolved 95/95 against PRODUCTION in one query, "DRY RUN complete" printed at 18:25:55 — then 5min37s of idle and the reaper kill. The dry-run block RETURNED from main() before reaching the tail process.exit(0) — the run-004 fix had a hole exactly on the rehearsal path.
+- THE FIX: process.exit(0) inside the dry-run block (after the completion line). Every path out of the seed now exits explicitly. Local dry-run + tsc 5/5.
+- Scoreboard so far: the tree leg proved green on prod (SKIP, 1 query); the seed's resolution leg proved green on prod (95/95, one query); the only unexecuted line on prod is the apply leg's single unnest statement (proven locally: fresh + idempotent) — the next dispatch runs it and the postgres.js postverify gates 9/95/95.

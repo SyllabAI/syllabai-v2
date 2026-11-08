@@ -657,7 +657,7 @@ export function DashboardClient({
       {resume && (
         <BandSection icon={RotateCcw} title="Jump back in">
           <Link href={resume.href} className="group block focus-visible:outline-none">
-            <Card className="transition-colors group-hover:border-primary/50">
+            <Card className="transition-colors group-hover:border-primary/60">
               <CardContent className="flex flex-wrap items-center gap-x-3 gap-y-1 p-4">
                 <Badge variant="secondary" className="font-medium">
                   {resourceLabel(resume.resource)}
