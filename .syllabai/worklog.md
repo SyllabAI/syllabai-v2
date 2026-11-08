@@ -2001,3 +2001,13 @@ Stage Summary:
 - Receipt: .syllabai/receipts/T-SME-SEL-W2-1/run-001.md. Branch t-sme-sel-w2/run-001 from main 48540486. PR against main; NOT self-merged per house law.
 
 
+
+
+## T-SME-SEL-W2-1 run-002 (2026-11-09) — the seed-map law extension: the picker-layer -SME- class lands nothing, fail-closed
+
+- Same operator order, follow-up run: CI's verify job on the wave-2 PR head 681f27e4 went RED — 3,481 pass / 1 fail: "ruling A — the optionA identity laws > the ADR-039 §4 SME section rows skip the seed map (T-SME-REDS-FIX r0)".
+- ROOT CAUSE (pinned): the r0 fleet law skips -SME- TOPIC rows in mapBundleNodes ONLY as childless SUBJECT-root leaves, refusing everything else fail-closed. Wave 1 (48540486) introduced a SECOND, data-bearing -SME- class — picker section rows with topic-row children — but the pinned ruling-A test maps only ial-biology-18 (the Edexcel representative), never physics/chemistry, so CI stayed green and the law/shape divergence went unexposed. Wave 2 appended the same layer to the one course the test maps -> the guard refused ial-biology-18-SME-S1 (has children) and the honest red fired exactly as designed. The wave-1 layer has the SAME latent exposure on main (any api seed/bundle pass over physics-19/chemistry-17 would refuse); this run fixes the LAW fleet-wide, not a biology-shaped hole.
+- THE CHANGE (fail-closed, disclosed): bundle-seed.ts -SME- skip law gains class 2, the picker-layer shape — TOPIC rows matching <course>-SME-S<digits> (sole SUBJECT-root parent) whose children are EXCLUSIVELY the picker topic rows <section-code>:<slug> skip with the same rationale as r0 (hub-UI navigation rows, no official UNIT identity, nothing lands, nothing dangles); a -SME-S<n> row failing the shape refuses with a NEW message; every other -SME- shape keeps the ORIGINAL r0 message byte-identical (the geography refusal pin untouched). NEW SUBTOPIC-branch guard: <course>-SME-S<n>:<slug> rows skip ONLY when childless with a sole -SME-S<n> TOPIC parent; every other -SME- SUBTOPIC refuses — the :SUBx grammar can never graft an identity onto a picker row.
+- TESTS: ruling-A pin extended (all three picker courses assert section rows AND :<slug> rows absent AND zero -SME- keys land; official biology spine still maps); two new refusal pins (a -SME-S99 section with a SPEC_POINT child -> the new message; a picker row given a SPEC_POINT child -> the SUBTOPIC message). Original tests byte-identical.
+- GATES: bundle-seed.test.ts 64/64; full CI lane locally bun test apps/api packages = 3,484 pass / 0 fail (was 3,481/1); root typecheck 5/5. Hub gates unchanged (content untouched by this run).
+- Receipt: .syllabai/receipts/T-SME-SEL-W2-1/run-002.md. Same branch t-sme-sel-w2/run-001, second commit.
