@@ -7,6 +7,9 @@
  * paths ride fakeSql.
  */
 import { describe, expect, test } from "bun:test";
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { PaperRegions, assemble, type PartRow, type PointRow, type QuestionRow, type RectRow } from "../../src/services/paper-regions";
 import type { SqlFn } from "../../src/services/paper-regions/sql";
 import { NotFoundException, toErrorResponse } from "../../src/services/identity/errors";
@@ -202,5 +205,33 @@ describe("PaperRegions service — 404 + honest-empty service paths", () => {
     expect(questionsQuery).toContain("distinct on (v.question_id)");
     expect(questionsQuery).toContain("order by v.question_id, v.version desc");
     expect(questionsQuery).toContain("order by q.external_ref asc nulls last, q.created_at asc, q.id asc");
+  });
+});
+
+// ── T-MG-CH1-MARK-1 run-001 — the array-membership idiom law ────────────────
+// Live probe 2026-11-08 (api.syllab-ai.com, signed-in GET /paper-assets/:id/
+// regions on a REAL tree, 4CH1/1C January 2023): the service 500'd with
+// "operator does not exist: uuid = uuid[]". Root cause pinned empirically
+// against postgres.js 3.4.9 + PostgreSQL 17.11 (scripts/pg_in_vs_any_test.js):
+// a JS array parameter is ONE uuid[] parameter, so `in (${ids}::uuid[])`
+// compiles to `uuid = uuid[]` — a runtime SQL error on every paper that has
+// questions. The stubbed fakeSql here can never catch it (no real planner),
+// so this law is enforced at the SOURCE level: the idiom is banned, the
+// codebase-standard serving shape (= any(...) with the cast) is required.
+
+describe("array-membership idiom law (the January-2023 live 500)", () => {
+  const source = readFileSync(
+    join(dirname(fileURLToPath(import.meta.url)), "../../src/services/paper-regions/index.ts"),
+    "utf8",
+  );
+
+  test("no `in (${ids}::uuid[])` template anywhere in the service", () => {
+    const banned = source.match(/in\s*\(\$\{[^}]+\}::uuid\[\]\)/);
+    expect(banned).toBeNull();
+  });
+
+  test("array membership rides = any(...) with the cast (3 query sites)", () => {
+    const sites = source.match(/= any\(\$\{[^}]+\}::uuid\[\]\)/g) ?? [];
+    expect(sites.length).toBe(3); // parts (C), points (D), rects (E)
   });
 });
