@@ -1,0 +1,58 @@
+{
+ "verifier": "scripts/rn11_run011_verify.py (workspace copy run011docs/)",
+ "gateLines": [
+  "G0 byte anchors (exactly the 4 of-record files changed): OK",
+  "G1 serializer laws (curriculum+manifest indent=1+trailing NL; KG+index compact single-line) round-trip byte-exact: OK",
+  "G2 zero-invention (fresh PDF extraction byte-stable; 9 titles == evidence artifact; all legacy bytes outside {order} equal origin/main 6b87ef15; legacy 81 edges verbatim): OK",
+  "G3 structure (97 nodes = 1+6+29+61; TOPIC 1..6; SPEC_POINT 1..61 global seq; SUBTOPIC per-topic 1..M; parents<->edges mirrored; strict hierarchical array blocks; DFS edge head T1): OK",
+  "G4 KG recompute (export_course() rerun deep-equals the written KG ex-generatedUtc; index row == meta counts; 105 sibling KG files byte-untouched): OK",
+  "G5 manifest sync (sections 6, topics 29, specPoints 61 == curriculum truth): OK",
+  "G7 untouched planes (questions/notes/flashcards/prerequisites/concept-graph/learner-sim/placement-backfill byte-equal origin/main): OK",
+  "G8 title uniqueness (97 distinct; the 9 new titles distinct + non-colliding): OK"
+ ],
+ "bunProbe": [
+  "OK   tree topics == 6 (got 6)",
+  "OK   topic 1 == 'Understanding business activity' (got 'Understanding business activity')",
+  "OK   T1 subtopics == 5 (got 5)",
+  "OK   T1 points == 9 (got 9)",
+  "OK   T1 point codes in official order",
+  "OK   tree specPointCount total == 61 (got 61)",
+  "INFO tree subtopic rows == 29 (5 real T1 rows + 24 + gen rows)",
+  "OK   subtopicOfSpecPoint resolves 1.1.1",
+  "OK   subtopicOfSpecPoint resolves 1.2.1",
+  "OK   subtopicOfSpecPoint resolves 1.3.1",
+  "OK   subtopicOfSpecPoint resolves 1.3.2",
+  "OK   subtopicOfSpecPoint resolves 1.3.3",
+  "OK   subtopicOfSpecPoint resolves 1.3.4",
+  "OK   subtopicOfSpecPoint resolves 1.4.1",
+  "OK   subtopicOfSpecPoint resolves 1.5.1",
+  "OK   subtopicOfSpecPoint resolves 1.5.2",
+  "OK   T1-stamped sets == 5 (got 5)",
+  "OK   set business-activity--exam-questions home exists: cie-igcse-business-2027-2029-T1:SUB1.1",
+  "OK   set business-objectives-and-stakeholder-objectives--exam-questions home exists: cie-igcse-business-2027-2029-T1:SUB1.5",
+  "OK   set economic-sectors--exam-questions home exists: cie-igcse-business-2027-2029-T1:SUB1.2",
+  "OK   set enterprise-business-growth-and-size--exam-questions home exists: cie-igcse-business-2027-2029-T1:SUB1.3",
+  "OK   set types-of-business-organisation--exam-questions home exists: cie-igcse-business-2027-2029-T1:SUB1.4",
+  "OK   render check 15/15 byte-faithful",
+  "PROBE: PASS"
+ ],
+ "probeExit": 0,
+ "placementGateAB": {
+  "script": "apps/hub/scripts/verify_sme_wire_r0.ts (bun 1.3.14)",
+  "pre": [
+   "courses: 90 sets: 2574 questions: 43232",
+   "placed: 2574 unplaced: 0",
+   "gen-row homes: 31"
+  ],
+  "post": [
+   "courses: 90 sets: 2574 questions: 43232",
+   "placed: 2574 unplaced: 0",
+   "gen-row homes: 31"
+  ],
+  "identical": true,
+  "abDiff": "byte-identical stdout incl. the residual section",
+  "ofRecord_r3": "2,574/2,574 residual 0, gen-row homes 31 (ADR-039 r3 census) — both legs reproduce it",
+  "note": "the 5 T1-stamped sets keep their subtopic homes; the 9 new points captured or moved NO set"
+ },
+ "verifierExit": 0
+}

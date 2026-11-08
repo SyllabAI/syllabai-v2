@@ -1,0 +1,24 @@
+{
+ "receipt": "rn11-run-011-filing-r0",
+ "family": "RN-DEBRIS-11",
+ "run": "011-filing",
+ "kind": "filing-window bookkeeping (recycled-sandbox re-anchor)",
+ "generatedUtc": "2026-11-08",
+ "filingWindow": "the executing window pushed the lane branch with receipts but no PR; this window re-anchored fetch-first, verified, race-guard-synced, pushed and files the PR",
+ "syncOfRecord": {
+  "merge": "origin/main 0dab13a9 into the lane branch (race-guard; main advanced past the execution base)",
+  "worklogUnion": "append-only law: main's appends byte-verbatim first, the run-011 section byte-exact re-appended at tail; byte delta == len(suffix) 5573B; zero NEW markers (the base's line-772 stale marker stays of-record R0)",
+  "novelBytes": "zero — every non-worklog path byte-equal to one parent (asserted scripted)",
+  "push": "FF 1533294d..f982852d, no force"
+ },
+ "verificationThisWindow": {
+  "carriedFiles": "the branch's 4 content files byte-equal 1533294d (run-012 battery G0 on the stacked tree)",
+  "independentSpot": "business-25 census recomputed from tree: SUBJECT 1 / TOPIC 6 / SUBTOPIC 29 / SPEC_POINT 61 (D1 of the 26-check independent battery, ALL PASS)"
+ },
+ "prFiling": {
+  "attempted": "2026-11-07 16:46-16:48 UTC",
+  "event": "GitHub API 403 secondary (write-bucket) rate limit for user 309817640; core budget 4846/5000 untouched; write bucket reset 17:13:34 UTC",
+  "disposition": "retry scheduled one-time; the PR body of record is prepared (scripts/rn12_open_prs.py in the workspace); author does not self-merge"
+ },
+ "boundaries": "bookkeeping-only; zero content/src/docs bytes"
+}

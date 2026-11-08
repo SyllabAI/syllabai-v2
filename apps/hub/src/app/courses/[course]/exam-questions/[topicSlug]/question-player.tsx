@@ -531,7 +531,7 @@ export function QuestionPlayer({
                 ? "border-primary bg-primary text-primary-foreground"
                 : viewIdx === i
                   ? "border-primary bg-primary/10 text-primary"
-                  : "hover:border-primary/50 hover:text-primary",
+                  : "hover:border-primary/60 hover:text-primary",
               viewIdx === i && "ring-2 ring-primary/60 ring-offset-2 ring-offset-background",
             )}
           >
@@ -1781,7 +1781,7 @@ function McqPart({
                         ? "border-success/40 bg-success/10"
                         : isChosen
                           ? "border-primary bg-primary/5"
-                          : "hover:border-primary/50",
+                          : "hover:border-primary/60",
                   )}
                 >
                   <span
