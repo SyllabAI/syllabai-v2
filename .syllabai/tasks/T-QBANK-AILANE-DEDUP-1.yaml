@@ -1,0 +1,43 @@
+version: 1
+task:
+  id: T-QBANK-AILANE-DEDUP-1
+  title: 'AI lane signage deduplicated at bank-card level (operator order:
+    "AI bank card level deduplication" — one liveness signifier per card,
+    one advisory-ness statement per advisory block, telemetry tokens off
+    the student face)'
+  owner: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4,
+    chat 0fe43d89-ff92-4e81-857a-1b1c6040a895, message trace 1a1ba97ccdb0e1c9
+    carries the session restart; the order itself predates it in the same
+    conversation)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-QVIEW-AUDIT (the questions-viewing band — the card is the same
+    surface the B/C/D batches landed on)
+  wave: questions-viewing
+  deps: [T-QVIEW-AUDIT-BCD-1, T-MG-PLAYER-MARK-1]
+  scope:
+    allowed:
+    - apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx
+      (the ONLY code file — three dedup edits, zero behavior change: (1)
+      the per-box lane badge renders only when it is the SOLE liveness
+      signifier — when the core marking flow owns the card, its header
+      "live" badge is the one liveness statement and the per-box "live
+      draft" badge drops, killing the N+1 liveness-badge layout on
+      multi-part core cards; (2) the core advisory result rows drop the
+      per-part "advisory · no attempt written" badge — the advisory
+      block's own caption already states that law once above the results;
+      (3) the legacy AI-mark result caption drops the internal
+      "AI_SUGGESTED" provenance token AND the duplicate AI-ness declaration
+      — the "AI-suggested mark" badge next to it already says it once)
+    - .syllabai/tasks/T-QBANK-AILANE-DEDUP-1.yaml (this card)
+    - .syllabai/worklog.md + worklog.md (append-only lane sections,
+      byte-asserted)
+    - .syllabai/receipts/T-QBANK-AILANE-DEDUP-1/run-001.md (receipt of
+      record)
+  definition_of_done:
+  - tsc --noEmit clean; eslint clean on the touched file
+  - CI green on the PR head (verify + hub + preview)
+  - zero behavior change (buttons, handlers, gating, aria semantics all
+    untouched — badge VISIBILITY only, plus one display caption)
+  - honest copy preserved everywhere it is the sole statement of a fact
+    (the "simulated" demo badge and the drafts-live hint stay)
