@@ -1,0 +1,27 @@
+{
+ "receipt": "rn11-run-012-filing-r0",
+ "family": "RN-DEBRIS-11",
+ "run": "012-filing",
+ "kind": "filing-window bookkeeping (recycled-sandbox re-anchor)",
+ "generatedUtc": "2026-11-08",
+ "filingWindow": "the executing window (operator trace 1a1b55358fae3d51) pushed the lane branch with the receipt of record but no PR; this window re-anchored fetch-first, re-verified first-hand, race-guard-synced round-2, pushed and files the PR",
+ "syncOfRecord": {
+  "merge": "origin/main 3e7ec207 -> 0dab13a9 into the lane branch (race-guard round-2; #852/#851/#850/#840 merges + receipts)",
+  "worklogUnion": "append-only law: main's appends byte-verbatim first, the lane's run-011 + run-012 sections byte-exact re-appended at tail; byte delta == len(suffix) 12805B, run-011's 5573B section a byte-exact prefix (stacking law); zero NEW markers (the base's line-772 stale marker stays of-record R0)",
+  "novelBytes": "zero — all 40 other paths byte-equal to one parent (asserted scripted)",
+  "push": "FF f0cea6d4..9990f29d, no force"
+ },
+ "verificationThisWindow": {
+  "committedBattery": "rn12_run012_verify.py re-run first-hand on the synced tree: 11/11 gates PASS",
+  "committedProbe": "rn12_run012_bun_probe.ts re-run first-hand: 51/51 OK, 0 fail",
+  "independentSpots": "26/26 PASS (recomputed from tree + refs, not battery-trusting): A1-A8 T1 tagBackfill (delta==71, per-set 15/15/25/16, all codes in-spine, zero field drift outside specPointCodes, engine specPointIds==[] law), B1-B6 ict-21 (curriculum byte-identity, label delta EXACTLY 5a, endpoint-multiset identity, counts 163/257/95), C1-C6 el20/el25 (25n/24e, orders 1..3 + 1..18, zero invented codes, parents<->edges mirror, manifest 3/3/18), D1 carried run-011 census 6/29/61",
+  "environmentReplayDisclosure": "the battery's G6b post-census defaults CONTENT to the main-worktree path (the executing session's checkout); on the recycled sandbox that path held origin/main content, so the post leg was re-pinned to the verification worktree via RN12_CONTENT (the gate then passed; pre-wt reconstructed at the declared base 1533294d). Gate logic untouched; the patched runner stays workspace-side, the committed battery is byte-untouched"
+ },
+ "prFiling": {
+  "attempted": "2026-11-07 16:46-16:48 UTC",
+  "event": "GitHub API 403 secondary (write-bucket) rate limit for user 309817640; core budget 4846/5000 untouched; write bucket reset 17:13:34 UTC",
+  "disposition": "retry scheduled one-time; the PR body of record is prepared (scripts/rn12_open_prs.py in the workspace); author does not self-merge"
+ },
+ "mergeOrderNote": "this branch carries run-011 (stacked); R0 merges run-011 first then this shows its own 13-file delta, or takes this alone (squashes both deltas) — the desk decides, receipt disclosure verbatim",
+ "boundaries": "bookkeeping-only; zero content/src/docs bytes"
+}
