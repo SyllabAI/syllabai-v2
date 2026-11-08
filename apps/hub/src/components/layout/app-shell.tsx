@@ -367,7 +367,7 @@ export function AppShell({
                   )}
                 >
                   <User className="size-3.5" aria-hidden />
-                  <span className="max-w-16 truncate sm:max-w-28">{identity.name}</span>
+                  <span className="max-w-12 truncate sm:max-w-28">{identity.name}</span>
                   <ChevronDown className="size-3 text-muted-foreground" aria-hidden />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
