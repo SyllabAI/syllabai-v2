@@ -8,6 +8,7 @@
 import { describe, expect, test } from "bun:test";
 import {
   formatCourseStats,
+  summarizeDirectoryStats,
   ZERO_COURSE_COUNTS,
 } from "./directory-stats";
 
@@ -50,5 +51,43 @@ describe("course substance line formatting", () => {
     expect(
       formatCourseStats({ notes: 12, flashcards: 0, questions: 30 }),
     ).toBe("12 notes · 30 questions");
+  });
+});
+
+describe("directory hero summary (T-HUB-COURSES-UI-2)", () => {
+  const registry = [
+    { status: "full", curriculumCode: "4CH1" },
+    { status: "full", curriculumCode: "4PH1" },
+    { status: "full" },
+    { status: "pilot", curriculumCode: "X" },
+    { status: "registered" },
+  ];
+
+  test("counts are derived, not invented — full/tutor-ready/papers", () => {
+    const s = summarizeDirectoryStats(registry, { a: 3, b: 4, c: 0 });
+    expect(s.total).toBe(5);
+    // the pilot lane has a corpus too but is NOT "full" — the chip says
+    // full corpus and counts exactly the full lanes
+    expect(s.fullCorpus).toBe(3);
+    // tutor-ready = genuinely curriculum-scoped lanes (registry field)
+    expect(s.tutorReady).toBe(3);
+    // committed archive papers sum over the map
+    expect(s.papers).toBe(7);
+  });
+
+  test("absent archive map sums to zero — never a fabricated total", () => {
+    const s = summarizeDirectoryStats(registry);
+    expect(s.papers).toBe(0);
+    expect(s.total).toBe(5);
+  });
+
+  test("empty registry -> all zeroes (StatChip hides what it is told to)", () => {
+    const s = summarizeDirectoryStats([], {});
+    expect(s).toEqual({
+      total: 0,
+      fullCorpus: 0,
+      tutorReady: 0,
+      papers: 0,
+    });
   });
 });

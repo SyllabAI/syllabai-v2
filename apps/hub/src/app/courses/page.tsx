@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { FileStack, GraduationCap, LibraryBig, Sparkles } from "lucide-react";
 import { listCourses } from "@/lib/courses";
 import { loadContentJson } from "@/lib/corpus";
 import { corpusPapersForCourse } from "@/lib/pastpapers-corpus";
-import type { CourseCounts } from "@/lib/directory-stats";
+import {
+  summarizeDirectoryStats,
+  type CourseCounts,
+} from "@/lib/directory-stats";
+import { StatChip } from "@/components/dashboard/kit/stat-chip";
 import { CourseDirectory } from "./course-directory";
-import { PageHeader } from "@/components/layout/page-header";
 
 // T-HUB-COURSES-PUBLIC-1 (UX audit 2026-11-07, fix ②): the intro led with a
 // 113-word operator-provenance paragraph — the page's own finding was that it
@@ -97,6 +101,11 @@ export default async function CoursesIndexPage() {
       },
     })),
   };
+  // T-HUB-COURSES-UI-2: the hero band's StatChip row — the directory's own
+  // census, derived from the same arrays the cards render. Registry +
+  // committed-bundle facts only (option-1 law); StatChip hides anything
+  // absent, and summarizeDirectoryStats is unit-pinned for the derivation.
+  const summary = summarizeDirectoryStats(courses, archivePapers);
   return (
     <div className="space-y-6">
       {/* T-HUB-COURSES-PUBLIC-2 (⑤): structured data — same honestly
@@ -105,39 +114,77 @@ export default async function CoursesIndexPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
-          (was text-3xl; the directory is a tool page, not a lander). */}
-      <PageHeader title="Courses" description={intro(counts)}>
-        {/* T-HUB-COURSES-PUBLIC-1 fix ②: the provenance paragraph, demoted
-            from the intro but kept whole — no-JS <details>, server-rendered. */}
-        <details className="group max-w-3xl">
-          <summary className="cursor-pointer select-none text-xs font-medium text-muted-foreground underline decoration-muted-foreground/40 underline-offset-2 transition-colors hover:text-foreground hover:decoration-foreground">
-            Where this content comes from
-          </summary>
-          <div className="mt-2 space-y-2 text-sm leading-relaxed text-muted-foreground">
-            <p>
-              The bundles are imported from the operator-authorized Save My
-              Exams corpus — revision notes, exam questions and flashcards
-              organised around each course&apos;s corpus specification tree.
-              The Cambridge International lanes run the same import: the
-              resource wave has landed, their teaching banks are live alongside
-              the official QP+MS past-paper archive on every course page the
-              archive covers.
-            </p>
-            <p>
-              The few lanes the publisher never shipped (no SME exam questions;
-              the newest wave has no past papers yet) stay honestly empty
-              rather than fabricated. The 4CH1 Chemistry pilot additionally
-              runs on the official Pearson specification tree with its concept
-              graph.
-            </p>
-          </div>
-        </details>
-      </PageHeader>
+      {/* T-HUB-COURSES-UI-2: the page opens with the course page's own hero
+          band (operator design order, trace 1a1bc441088a9629 — "make the
+          course page look more like this"). The band is the house's approved
+          PageHero kit — the same gradient wash, title recipe and StatChip row
+          the attached course page runs. LAW AMENDMENT (disclosed in the task
+          yaml + PR): T-HEADER-1 pinned /courses to the bare tool-page header;
+          this operator order moves THIS page to the lander posture, every
+          other tool page keeps the PageHeader law. The hero's interactive
+          slots (search, board chips, Continue chip) are composed inside the
+          client directory; the server authors title/description/stats and the
+          provenance disclosure here. */}
       <CourseDirectory
         courses={courses}
         archivePapers={archivePapers}
         bundleStats={bundleStats}
+        hero={{
+          eyebrow: "Course directory",
+          title: "Courses",
+          description: intro(counts),
+          stats: (
+            <>
+              <StatChip icon={GraduationCap} label="courses" value={summary.total} />
+              <StatChip
+                icon={LibraryBig}
+                label="full corpus"
+                value={summary.fullCorpus}
+                tone="success"
+              />
+              <StatChip
+                icon={Sparkles}
+                label="tutor ready"
+                value={summary.tutorReady}
+                tone="cat"
+              />
+              <StatChip
+                icon={FileStack}
+                label="past papers"
+                value={summary.papers.toLocaleString("en-GB")}
+                tone="info"
+              />
+            </>
+          ),
+          // T-HUB-COURSES-PUBLIC-1 fix ②: the provenance paragraph, demoted
+          // from the intro but kept whole — no-JS <details>, server-rendered,
+          // now riding the hero's quiet bottom slot.
+          provenance: (
+            <details className="group max-w-3xl">
+              <summary className="cursor-pointer select-none text-xs font-medium text-muted-foreground underline decoration-muted-foreground/40 underline-offset-2 transition-colors hover:text-foreground hover:decoration-foreground">
+                Where this content comes from
+              </summary>
+              <div className="mt-2 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                <p>
+                  The bundles are imported from the operator-authorized Save My
+                  Exams corpus — revision notes, exam questions and flashcards
+                  organised around each course&apos;s corpus specification tree.
+                  The Cambridge International lanes run the same import: the
+                  resource wave has landed, their teaching banks are live alongside
+                  the official QP+MS past-paper archive on every course page the
+                  archive covers.
+                </p>
+                <p>
+                  The few lanes the publisher never shipped (no SME exam questions;
+                  the newest wave has no past papers yet) stay honestly empty
+                  rather than fabricated. The 4CH1 Chemistry pilot additionally
+                  runs on the official Pearson specification tree with its concept
+                  graph.
+                </p>
+              </div>
+            </details>
+          ),
+        }}
       />
     </div>
   );
