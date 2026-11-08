@@ -1,0 +1,35 @@
+{
+ "verifier": "scripts/rn11_run010_verify.py (workspace copy run010docs/)",
+ "gateLines": [
+  "G0 byte anchors (only the 4 expected files changed): OK",
+  "G1 per-file serializer laws identified + round-trip byte-exact: business-19 curriculum + KG compact; RS-23 curriculum indent=1+trailing-newline (pre-existing r5-era state, preserved); RS-23 KG compact: OK",
+  "G2a business-19 curriculum: 22 title-only edits (11 TOPIC + 11 SUBTOPIC): OK",
+  "G2b RS-23 curriculum: 6 title-only edits: OK",
+  "G2c business-19 KG: 11 pair + 11 node label edits, all else byte-equal: OK",
+  "G2d RS-23 KG: 6 pair + 6 node label edits, all else byte-equal: OK",
+  "G3 structure (node/edge counts, edges byte-equal, spec-point codes byte-identical): OK",
+  "G4 zero-invention (fresh re-extraction reproduces 11 + 6 titles byte-exact): OK",
+  "G5 stamp neutrality (business-19: 0 stamps; RS-23: 2 gen stamps, all destinations exist, questions.json untouched): OK",
+  "G6 mirror equality (kg labels == curriculum titles): business-19 25/25, RS-23 85/85: OK",
+  "G7 title uniqueness (business-19 25/25 TOPIC titles distinct + twin law; RS-23 103 rows distinct): OK",
+  "G8 glyph invariance (the 6 RS joins identical under the production spec-tree normTitle law): OK"
+ ],
+ "placementGateAB": {
+  "script": "apps/hub/scripts/verify_sme_wire_r0.ts (bun 1.3.14)",
+  "pre": [
+   "courses: 90 sets: 2574 questions: 43232",
+   "placed: 2574 unplaced: 0",
+   "gen-row homes: 31"
+  ],
+  "post": [
+   "courses: 90 sets: 2574 questions: 43232",
+   "placed: 2574 unplaced: 0",
+   "gen-row homes: 31"
+  ],
+  "identical": true,
+  "ofRecord_r3": "2,574/2,574 residual 0, gen-row homes 31 (ADR-039 r3 census) — both legs reproduce it",
+  "note": "the retitled rows captured or moved NO set — the rung-5 title-match concern is discharged empirically; business-19's 'Classification of Businesses' set stays on its rung-4 numbering home"
+ },
+ "renderCheck": "normalizeSpecText (apps/hub/src/lib/spec-text.ts) over all 17 new titles: 17/17 byte-faithful (bun)",
+ "verifierExit": 0
+}
