@@ -14,8 +14,10 @@
  * Fail-closed request semantics (the controller javadoc :28-33, verbatim
  * law): an unknown kind/mode is a 400 (undeclared values rejected, §3); a
  * kind whose required reference is missing is a 400; kinds not served by
- * the current runtime step are a 400 (closed enum, §1 — the
- * SMART_LESSON/NOTE_SECTION deferral is served by THIS law, disclosed);
+ * the current runtime step are a 400 (closed enum, §1 — the SMART_LESSON
+ * deferral is served by THIS law, disclosed; NOTE_SECTION SERVES since the
+ * 053-t3 note lane landed — the resolver's note branch + the lead-evidence
+ * branch carry refs-present asks);
  * unresolvable references are 404 with no existence oracles; CHECK without
  * attempt evidence is a 409 (the §7.3 answer-leakage gate).
  *
@@ -33,9 +35,12 @@
  *   (3) the DEFERRED kinds' required-reference gates fire BEFORE the
  *       runtime-step refusal (capture L05/L06: "SMART_LESSON context
  *       requires rootId and topicNodeId" / "NOTE_SECTION context requires
- *       rootId and noteId" verbatim) — the runtime-step refusal remains
+ *       rootId and noteId" verbatim) — the runtime-step refusal remained
  *       for refs-present asks (the generation wire rides the operator's
- *       section-3 lever, disclosed).
+ *       section-3 lever, disclosed). NOTE_SECTION has since LEFT the
+ *       deferral set: the 053-t3 note lane wires its resolver branch, so
+ *       refs-present NOTE_SECTION asks resolve and serve (SMART_LESSON
+ *       remains the sole deferred kind).
  *
  * Exception law (GlobalExceptionHandler parity, verbatim):
  *   NotFoundError / NotFoundException → 404 not_found, e.message verbatim
@@ -242,9 +247,11 @@ export function createClaRouter(cla: ClaService): Hono {
     // the T-MIG-097 deferred-kind reference gates (capture L05/L06): the
     // frozen dispatch checks SMART_LESSON/NOTE_SECTION required references
     // BEFORE the runtime-step refusal — the context-requirement law is
-    // load-bearing on the wire. Refs-present asks still reach the disclosed
-    // runtime-step deferral below (SmartLessonService/RevisionNoteRepository
-    // ride T-MIG-053 t3/t4; the generation wire rides the operator's
+    // load-bearing on the wire. Refs-present NOTE_SECTION asks now SERVE
+    // (the 053-t3 note lane landed — the resolver's note branch + the
+    // lead-evidence branch carry them); refs-present SMART_LESSON asks
+    // still reach the disclosed runtime-step deferral below (the t4
+    // SmartLessonService lane; the generation wire rides the operator's
     // section-3 lever).
     const rootId = parsed.data.rootId ?? null;
     const topicNodeId = parsed.data.topicNodeId ?? null;

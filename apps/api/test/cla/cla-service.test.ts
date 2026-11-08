@@ -39,6 +39,20 @@ const SUBTOPIC_A = "b0000000-0000-4000-8000-00000000000d";
 const SUBTOPIC_B = "b0000000-0000-4000-8000-00000000000e";
 const ATTEMPT = "b0000000-0000-4000-8000-00000000000f";
 
+// the note-serving lane's corpus row (V27 revision_note — the 053-t3
+// substrate; the business id is the canonical "rn_*" form, never a uuid)
+const NOTE_ID = "rn_TESTNOTE0001";
+const NOTE_BODY = [
+  "Ionic bonding happens when metals transfer electrons to non-metals.",
+  "The ions formed are held together by strong electrostatic forces in a giant lattice.",
+  "Ionic compounds conduct when molten or dissolved because their ions are free to move.",
+].join("\n\n");
+const noteIdentityRow = (specCodes: string) => ({
+  note_id: NOTE_ID,
+  title: "Ionic bonding",
+  spec_point_codes: specCodes,
+});
+
 const nodeRow = (id: string, code: string, type: string, title: string, status = "VALIDATED") => ({
   id,
   code,
@@ -124,6 +138,10 @@ interface Overrides {
   answers?: Array<{ question_part_id: string; answer_text: string }>;
   /** VALIDATED scheme points for the CHECK feedback evidence */
   schemePoints?: Array<{ ref: string; marks: number; text: string; question_part_id: string | null; ordering: number }>;
+  /** the note's stored spec-point CSV (the spec-point gate's input). */
+  noteSpecCodes?: string;
+  /** the note body the evidence read serves (the lead segments' source). */
+  noteBody?: string | null;
   /** T-MIG-125: inject the REAL shared tutor adapter (buildSqlLearnerModel
    *  over its own substrate sql) in place of the empty stub — the reuse
    *  band's serving reads ride through the full service pipeline. */
@@ -297,6 +315,26 @@ function routes(o: Overrides = {}): Route[] {
       match: /from knowledge_edges e join knowledge_nodes s on s\.id = e\.source_node_id where e\.target_node_id = \? ::uuid and e\.relation_type = 'MISCONCEPTION_OF'/,
       rows: [],
     },
+    {
+      // RevisionNoteRepository.findById (the note lane's identity read;
+      // param-aware: only the fixture note exists)
+      match: /select note_id, title, spec_point_codes from revision_note where note_id = \?$/,
+      rows: [],
+      rowsFor: (params: unknown[]) =>
+        (params[0] as string) === NOTE_ID
+          ? [noteIdentityRow(o.noteSpecCodes ?? "IALCHEM2018-U1-T3")]
+          : [],
+    },
+    {
+      // the note evidence read (the SERVICE's own repo read — the body the
+      // lead segments come from)
+      match: /select title, body_md from revision_note where note_id = \?$/,
+      rows: [],
+      rowsFor: (params: unknown[]) =>
+        (params[0] as string) === NOTE_ID && o.noteBody !== null
+          ? [{ title: "Ionic bonding", body_md: o.noteBody ?? NOTE_BODY }]
+          : [],
+    },
   ];
 }
 
@@ -396,14 +434,18 @@ describe("ClaService — the kind dispatch (closed enum, §1)", () => {
     ).rejects.toThrow("QUESTION_PART context requires partId");
   });
 
-  it("kinds not served by this runtime step are a 400 — the SMART_LESSON/NOTE_SECTION deferral rides the frozen closed-enum law", async () => {
+  it("SMART_LESSON (the sole deferred kind) with refs present is the runtime-step 400 — NOTE_SECTION left the deferral set (the 053-t3 note lane serves)", async () => {
     const { cla } = build();
     await expect(
       ask(cla, { kind: "SMART_LESSON" }),
     ).rejects.toThrow("context kind not supported by this runtime step: SMART_LESSON");
+  });
+
+  it("NOTE_SECTION without its required references is the established 400 (the frozen dispatch's own context-requirement law)", async () => {
+    const { cla } = build();
     await expect(
-      ask(cla, { kind: "NOTE_SECTION" }),
-    ).rejects.toThrow("context kind not supported by this runtime step: NOTE_SECTION");
+      ask(cla, { kind: "NOTE_SECTION", rootId: null, noteId: null }),
+    ).rejects.toThrow("NOTE_SECTION context requires rootId and noteId");
   });
 
   it("a blank question is refused at the boundary (the frozen ArgumentError)", async () => {
@@ -674,6 +716,89 @@ describe("ClaService — the question-context lead evidence", () => {
     // whole-question parts item is a whole-question-context law)
     expect(stemItems.length).toBe(1);
     expect(stemItems[0]?.content).not.toContain("Question parts:\n");
+  });
+});
+
+/* ------------------------------------------------------------------ */
+/* the NOTE lead evidence (the :746-790 branch, the 053-t3 lane — the  */
+/* note the learner is LOOKING at leads the window, then the bounded   */
+/* note-context cap applies to the whole list)                         */
+/* ------------------------------------------------------------------ */
+
+describe("ClaService — the NOTE_SECTION note lead evidence", () => {
+  it("resolves the note through its spec-point gate and leads the evidence with the note's OWN body segments", async () => {
+    const { cla, lastContext, telemetry } = build();
+    const view = await ask(cla, {
+      kind: "NOTE_SECTION",
+      topicNodeId: null,
+      noteId: NOTE_ID,
+      mode: "EXPLAIN",
+    });
+    const ctx = lastContext() as {
+      evidence: Array<{ source: string; content: string; sourceTitle: string | null; topicIds: string[] }>;
+      learnerBrief: string;
+    };
+    // the note lead: the body's deterministic segments, NOTE source,
+    // attributed to the resolved anchor topic, stored order
+    const noteItems = ctx.evidence.filter((e) => e.source === "NOTE");
+    expect(noteItems.length).toBeGreaterThanOrEqual(1);
+    expect(noteItems[0]?.content).toContain("Ionic bonding happens when metals transfer");
+    expect(noteItems[0]?.sourceTitle).toBe("Ionic bonding");
+    expect(noteItems[0]?.topicIds).toEqual([TOPIC]);
+    // the anchor follows the lead (the KG prior stays in the window)
+    expect(ctx.evidence.some((e) => e.source === "KNOWLEDGE_NODE")).toBe(true);
+    // the noteTitle brief branch (frozen :584-608 family) is REACHABLE now:
+    // the anchored label carries the note
+    expect(ctx.learnerBrief === null || typeof ctx.learnerBrief === "string").toBe(true);
+    // telemetry rides the resolved context identity
+    const event = telemetry[0] as { kind: string; reference: string };
+    expect(event.kind).toBe("NOTE_SECTION");
+    expect(event.reference).toBe(TOPIC);
+    // the wire: the ratified contract parses — reference is the anchor uuid,
+    // noteId/noteTitle ride their own string fields
+    const wire = claAnswerViewSchema.parse(view);
+    expect(wire.context.kind).toBe("NOTE_SECTION");
+    expect(wire.context.reference).toBe(TOPIC);
+    expect(wire.context.noteId).toBe(NOTE_ID);
+    expect(wire.context.noteTitle).toBe("Ionic bonding");
+  });
+
+  it("modePlan anchors the note: the generator brief carries the note-anchored label", async () => {
+    const { cla, lastContext } = build();
+    await ask(cla, { kind: "NOTE_SECTION", topicNodeId: null, noteId: NOTE_ID, mode: "SUMMARIZE" });
+    const ctx = lastContext() as { interventionPlan: { rationale: string } };
+    expect(ctx.interventionPlan.rationale).toContain(
+      "anchored revision note 'Ionic bonding' on topic IALCHEM2018-U1-T3",
+    );
+    expect(ctx.interventionPlan.rationale).toContain("SUMMARIZE");
+  });
+
+  it("the body segments are bounded: blocks fold under NOTE_CHUNK_BOUND and the lead caps at NOTE_CHUNK_LIMIT", async () => {
+    const long = Array.from({ length: 12 }, (_, i) => `Paragraph ${i + 1} `.padEnd(240, "x").trim()).join(
+      "\n\n",
+    );
+    const { cla, lastContext } = build({ noteBody: long });
+    const view = await ask(cla, {
+      kind: "NOTE_SECTION",
+      topicNodeId: null,
+      noteId: NOTE_ID,
+      mode: "EXPLAIN",
+    });
+    const ctx = lastContext() as { evidence: Array<{ source: string; content: string }> };
+    const noteItems = ctx.evidence.filter((e) => e.source === "NOTE");
+    expect(noteItems.length).toBe(4); // NOTE_CHUNK_LIMIT
+    for (const item of noteItems) {
+      expect(item.content.length).toBeLessThanOrEqual(600); // NOTE_CHUNK_BOUND
+    }
+    const wire = claAnswerViewSchema.parse(view);
+    expect(wire.evidenceCount).toBeLessThanOrEqual(8); // NOTE_CONTEXT_EVIDENCE_LIMIT
+  });
+
+  it("an unresolvable note reference is the indistinguishable 404 (no existence oracle)", async () => {
+    const { cla } = build();
+    await expect(
+      ask(cla, { kind: "NOTE_SECTION", topicNodeId: null, noteId: "rn_UNKNOWN0001" }),
+    ).rejects.toThrow("revision note rn_UNKNOWN0001 not found");
   });
 });
 
