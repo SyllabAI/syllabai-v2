@@ -77,6 +77,7 @@ import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { AnswerTextarea, answerPlaceholder } from "@/components/answer-textarea";
@@ -2226,7 +2227,10 @@ function CoreMarkingFlow({
                 <Loader2 className="size-3.5 animate-spin" aria-hidden /> Submitting…
               </>
             ) : (
-              "Submit answers"
+              // T-QVIEW-ACTION-1 (the MG marks-weighted verb steal): the
+              // action carries the stake it fires for — MathsGenie's
+              // "1⚡ Grade answer" law. Verb-first, marks on the button.
+              `Submit · ${question.totalMarks} mark${question.totalMarks === 1 ? "" : "s"}`
             )}
           </Button>
           <span className="text-[11px] text-muted-foreground">
@@ -2622,26 +2626,82 @@ function MarkSchemeDialog({
   onClose: () => void;
 }) {
   const [expanded, setExpanded] = useState(false);
+  // T-QVIEW-ACTION-1 (the MG blur-teaser steal): the completed answer waits
+  // behind ONE deliberate reveal until the learner has done the honest
+  // pass. Two keys unlock it per part: a saved self-score for this
+  // question (the store of record — MCQs auto-record, so MCQ answers
+  // never blur), or the reveal button below. The MARKING POINTS stay
+  // visible either way — the dialog's own law ("compare it with the
+  // marking points — award yourself the marks you clearly earned") is
+  // untouched; only the model answer is gated.
+  const [revealed, setRevealed] = useState<ReadonlySet<string>>(() => new Set());
   const progress = useCourseProgress(course);
+  // each question opens fresh: the reveal set and the long-restate expand
+  // reset on question change (expanded previously stuck across questions —
+  // a pre-existing quirk this reset closes). Render-phase state adjustment
+  // — the React-documented reset pattern, no effect needed.
+  const qid = question?.id ?? null;
+  const [seenQid, setSeenQid] = useState<string | null>(null);
+  if (qid !== seenQid) {
+    setSeenQid(qid);
+    setRevealed(new Set());
+    setExpanded(false);
+  }
+  const selfScored = question ? progress.selfScores[question.id] != null : false;
   const restated = question ? firstLine(question) : "";
   const longRestate = restated.length > 220;
 
   return (
-    <Dialog open={!!question} onOpenChange={(o) => !o && onClose()}>
-      {/* sm:max-w-4xl: keep the base's mobile cap max-w-[calc(100%-2rem)] —
-          an unprefixed max-w override wins the tailwind-merge conflict and
-          renders full-bleed on phones (s133) */}
-      <DialogContent aria-describedby={undefined} className="h-[92dvh] sm:max-w-4xl overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="flex flex-wrap items-center gap-2 text-base">
+    <Sheet open={!!question} onOpenChange={(o) => !o && onClose()}>
+      {/* T-QVIEW-ACTION-1 (the MG non-occluding drawer steal): the scheme
+          reads as a RIGHT DRAWER — the question card stays visible beside
+          it instead of a centered modal covering the page. Full-bleed on
+          phones (the drawer idiom), 36rem at sm, 42rem at lg. The Sheet's
+          built-in close sits at the same top-right spot the dialog's
+          bespoke button occupied; its sr-only label is the generic
+          "Close" (the title announces the surface). */}
+      <SheetContent
+        side="right"
+        aria-describedby={undefined}
+        overlayClassName="bg-black/10"
+        className="w-full gap-0 sm:max-w-xl lg:max-w-[42rem]"
+      >
+        <SheetHeader className="border-b pr-12">
+          <SheetTitle className="flex flex-wrap items-center gap-2 text-base">
             <Badge variant="outline" className="rounded-full px-3 py-1 text-xs font-medium">
               {subtopicTitle ?? topicName}
             </Badge>
             <span className="text-sm font-normal text-muted-foreground">Mark scheme</span>
-          </DialogTitle>
-        </DialogHeader>
+          </SheetTitle>
+        </SheetHeader>
         {question && (
-          <div className="space-y-4">
+          <div className="min-h-0 flex-1 overflow-y-auto p-4 sm:p-6">
+            {question.parts.some((p) => partDisplayLabel(p)) && (
+              /* the drawer's part jump-row: the attested printed labels
+                 (same law as the section chips below — never an order
+                 number), scroll the drawer to the part */
+              <nav
+                aria-label="Jump to a part"
+                className="sticky top-0 z-10 -mx-4 -mt-4 mb-3 flex flex-wrap gap-1.5 border-b bg-background px-4 pb-2.5 pt-4 sm:-mx-6 sm:px-6"
+              >
+                {question.parts.map((p) => {
+                  const chip = partDisplayLabel(p) ?? (question.parts.length === 1 ? "Q" : null);
+                  return chip ? (
+                    <button
+                      key={p.id}
+                      type="button"
+                      className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold transition-colors [@media(hover:hover)]:hover:bg-primary/10"
+                      onClick={() =>
+                        document.getElementById(`ms-part-${p.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" })
+                      }
+                    >
+                      {chip}
+                    </button>
+                  ) : null;
+                })}
+              </nav>
+            )}
+            <div className="space-y-4">
             {question.parts.map((p) => {
               const typed = progress.typedAnswers[p.id]?.text ?? null;
               // T-QVIEW-AUDIT-BCD-1 batch C (part-label unification): the
@@ -2656,7 +2716,11 @@ function MarkSchemeDialog({
               // marks stay right-aligned) — exactly the card's null law.
               const label = partDisplayLabel(p) ?? (question.parts.length === 1 ? "Q" : null);
               return (
-                <section key={p.id} className="space-y-2 rounded-lg border bg-card p-4">
+                <section
+                  key={p.id}
+                  id={`ms-part-${p.id}`}
+                  className="scroll-mt-20 space-y-2 rounded-lg border bg-card p-4"
+                >
                   <div className="flex items-center gap-2">
                     {label && (
                       <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">
@@ -2697,10 +2761,36 @@ function MarkSchemeDialog({
                       <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                         The completed answer should show:
                       </p>
-                      {hasMarkCodes(p.solutionMd) ? (
-                        <MarkScheme md={p.solutionMd} />
+                      {selfScored || revealed.has(p.id) ? (
+                        hasMarkCodes(p.solutionMd) ? (
+                          <MarkScheme md={p.solutionMd} />
+                        ) : (
+                          <Markdown>{transformMarkTags(p.solutionMd)}</Markdown>
+                        )
                       ) : (
-                        <Markdown>{transformMarkTags(p.solutionMd)}</Markdown>
+                        <>
+                          {/* the blurred teaser: clipped, unselectable,
+                              uninteractive; the gradient idiom is the same
+                              one the long-restate fade already uses */}
+                          <div aria-hidden="true" className="relative max-h-36 select-none overflow-hidden">
+                            <div className="pointer-events-none blur-[5px]">
+                              {hasMarkCodes(p.solutionMd) ? (
+                                <MarkScheme md={p.solutionMd} />
+                              ) : (
+                                <Markdown>{transformMarkTags(p.solutionMd)}</Markdown>
+                              )}
+                            </div>
+                            <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-card to-transparent" aria-hidden />
+                          </div>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="mt-2 h-9 text-xs"
+                            onClick={() => setRevealed((prev) => new Set(prev).add(p.id))}
+                          >
+                            Reveal the completed answer
+                          </Button>
+                        </>
                       )}
                     </div>
                   )}
@@ -2735,17 +2825,11 @@ function MarkSchemeDialog({
               Every marking point listed is required for the mark. Self-mark
               honestly — your score stays in this browser only.
             </p>
+            </div>
           </div>
         )}
-        <button
-          className="absolute top-4 right-4 -m-2.5 flex size-9 items-center justify-center rounded-md opacity-70 transition-opacity hover:bg-accent hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          onClick={onClose}
-          aria-label="Close mark scheme"
-        >
-          <X className="size-4" aria-hidden />
-        </button>
-      </DialogContent>
-    </Dialog>
+      </SheetContent>
+    </Sheet>
   );
 }
 

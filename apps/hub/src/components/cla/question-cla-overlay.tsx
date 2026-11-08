@@ -224,6 +224,9 @@ export function QuestionClaOverlay({
 }) {
   const [freeMode, setFreeMode] = useState<QuestionMode>("HINT");
   const [draft, setDraft] = useState("");
+  // T-QVIEW-ACTION-1: the suggested-prompt chips prefill the draft and move
+  // focus into the ask box — the send stays the learner's own key/click.
+  const askInputRef = useRef<HTMLInputElement | null>(null);
   const [busy, setBusy] = useState(false);
   const [targetId, setTargetId] = useState<string | null>(null);
   // DC-6 phase 3c — the rail's rename affordance state (the assistant
@@ -767,6 +770,37 @@ export function QuestionClaOverlay({
               </button>
             ))}
           </div>
+          {/* T-QVIEW-ACTION-1 (the MG contextual-prompt steal): four
+              situational starters — two per live mode, phrased against the
+              anchored part when one is. A tap PREFILLS the draft and moves
+              focus; the send stays the learner's deliberate fire (the
+              house law that beats MG's auto-send). They speak the
+              overlay's own voice: scaffolded, never the answer. */}
+          <div className="flex flex-wrap gap-1.5" role="group" aria-label="Suggested prompts">
+            {([
+              { mode: "EXPLAIN" as const, phrase: "Explain what this question is asking" },
+              {
+                mode: "EXPLAIN" as const,
+                phrase: target ? `Break down part (${target.label}) for me` : "Break the question down for me",
+              },
+              { mode: "HINT" as const, phrase: "Give me a hint to get started" },
+              { mode: "HINT" as const, phrase: "I'm stuck — coach me step by step" },
+            ]).map((p) => (
+              <button
+                key={p.phrase}
+                type="button"
+                disabled={busy}
+                onClick={() => {
+                  setFreeMode(p.mode);
+                  setDraft(p.phrase);
+                  askInputRef.current?.focus();
+                }}
+                className="rounded-full border border-border bg-background px-2.5 py-1 text-[11px] text-muted-foreground transition-colors [@media(hover:hover)]:hover:border-primary/60 [@media(hover:hover)]:hover:text-foreground disabled:opacity-50"
+              >
+                {p.phrase}
+              </button>
+            ))}
+          </div>
           <form
             className="flex items-center gap-2"
             onSubmit={(e) => {
@@ -783,6 +817,7 @@ export function QuestionClaOverlay({
             }}
           >
             <Input
+              ref={askInputRef}
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
               placeholder={

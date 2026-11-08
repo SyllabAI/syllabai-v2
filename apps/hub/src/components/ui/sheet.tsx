@@ -47,14 +47,20 @@ function SheetOverlay({
 function SheetContent({
   className,
   children,
+  overlayClassName,
   side = "right",
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
   side?: "top" | "right" | "bottom" | "left"
+  /** the overlay sits between page and drawer; callers that need the
+   *  page readable behind a side drawer (the non-occluding law) soften
+   *  the default 50% black here — behavior (outside-click close, focus,
+   *  Esc) is Radix's, independent of the overlay's paint */
+  overlayClassName?: string
 }) {
   return (
     <SheetPortal>
-      <SheetOverlay />
+      <SheetOverlay className={overlayClassName} />
       <SheetPrimitive.Content
         data-slot="sheet-content"
         // F7 (KG-AUDIT-1, hub-wide): the content renders role=dialog with an
