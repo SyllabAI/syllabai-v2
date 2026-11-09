@@ -165,11 +165,19 @@ const objectivesResponse = (length: "quick" | "in_depth"): Record<string, unknow
     "Walk me through electrolysis in solution and why concentration matters.",
     "Describe electroplating and what the electrolyte does.",
     "Link the three: what changes when you go from melt to solution?",
+    "Predict the products at each electrode for a molten compound.",
+    "Explain why concentration changes the product in solution.",
   ].slice(0, n);
-  const spByN: string[][] = n === 3
-    ? [["2.3"], ["2.4"], ["2.5"]]
-    : [["2.3"], ["2.4"], ["2.5"], ["2.3", "2.4", "2.5"]];
-  return { objectives: texts.map((t, i) => ({ text: t, specPointIds: spByN[i] })) };
+  const spByN: string[][] =
+    n === 3
+      ? [["2.3"], ["2.4"], ["2.5"]]
+      : [["2.3"], ["2.4"], ["2.5"], ["2.3"], ["2.4"], ["2.3", "2.4", "2.5"]];
+  return {
+    objectives: texts.map((t, i) => ({ text: t, specPointIds: spByN[i] })),
+    // T-TEACHGENIE-001: Baby Genie's topic-aware opener (MG parity)
+    openingMessage:
+      "i'm a bit muddled about electrolysis — molten compounds, solutions, all of it. could you help me untangle where the ions actually go?",
+  };
 };
 
 const reviewResponse = (fixture: ReviewFixture, studentTexts: string[]): Record<string, unknown> => ({
@@ -209,9 +217,9 @@ export class FakeChain implements TeachMeChain {
 
   async generate(request: { system: string; user: string }): Promise<{ text: string; model: string; providerName: string; finishReason: string | null }> {
     this.calls.push({ system: request.system, user: request.user });
-    const text = request.system.startsWith("# Pinned prompt `teachme.objectives.v1`")
+    const text = request.system.startsWith("# Pinned prompt `teachme.objectives.v3`")
       ? JSON.stringify(this.opts.objectives ?? objectivesResponse(/in_depth/i.test(request.user) ? "in_depth" : "quick"))
-      : request.system.startsWith("# Pinned prompt `teachme.turn.v1`")
+      : request.system.startsWith("# Pinned prompt `teachme.turn.v3`")
         ? JSON.stringify(judgeResponse(this.opts.judgeFixture ?? "ok", request.user))
         : JSON.stringify(reviewResponse(this.opts.reviewFixture ?? "ok", studentTextsFromPrompt(request.user)));
     return { text, model: "fixture-model", providerName: "fixture", finishReason: null };

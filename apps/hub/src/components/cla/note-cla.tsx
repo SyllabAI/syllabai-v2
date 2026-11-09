@@ -376,10 +376,12 @@ export function NoteCla({
               onClick={() => setFreeMode(m)}
               aria-pressed={freeMode === m}
               className={cn(
+                // t-ui-polish run-006: the inactive pill's hover speaks the
+                // house hover voice (border-primary/60), not the legacy /40.
                 "rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors",
                 freeMode === m
                   ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border text-muted-foreground hover:border-primary/40",
+                  : "border-border text-muted-foreground hover:border-primary/60",
               )}
             >
               {m === "EXPLAIN" ? "Explain" : "Summarize"}

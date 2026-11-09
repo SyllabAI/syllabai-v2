@@ -154,6 +154,8 @@ import type {
   SetLastOpenedRequest,
   TeachSession,
   TeachingCoverageView,
+  WorkspaceDoc,
+  WorkspaceDocList,
 } from "@syllabai/contracts";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "";
@@ -225,6 +227,15 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // over-capture — no sibling path shares the "teach-me" segment
   // (grep-verified at the flip commit).
   "/api/v1/learners/me/teach-me",
+  // T-AUDIT-TIER1 run-003 — the workspace-document plane: v2-NATIVE family
+  // (no core analogue exists to golden-verify — the surface of record is
+  // the run-003 Hono router mounted at /api/v1/me/documents/**, gated by
+  // the 17-test route fixture suite). NARROW form: the prefix covers
+  // EXACTLY the documents family (list / get / put / delete under that
+  // base); it captures NO sibling /api/v1/me/* path (grep-verified at the
+  // flip commit — no other hub-emitted path shares the /api/v1/me/ segment),
+  // and the closed key vocabulary rides INSIDE the wire, not the routing.
+  "/api/v1/me/documents",
   // T-MIG-090 (r0 rider) — LLM chain-observability report: golden-verified of
   // record (run-005: the post-merge golden-verify leg 4/4 PASS at merged main
   // bd4eaeb vs the r4b wire truth golden-captures/t-mig-090/ legs 01-04 —
@@ -1125,20 +1136,18 @@ function fireOk(): void {
  * human being lands on the login screen. With the core's eager Spring init,
  * Tomcat only accepts connections after Flyway + Hibernate are up — so a
  * health response means the login POST that follows lands on a fully warm
- * server. Guarded by sessionStorage; failures swallowed by design. This is
- * user-triggered prefetch, NOT a keep-alive pinger (Render ToS: services
- * kept perpetually awake by uptime pingers risk suspension — do not turn
- * this into a timer).
+ * server. Guarded by an in-memory flag (T-ACCOUNT-ONLY run-001: the guard is
+ * session plumbing, not account state — sessionStorage is retired like every
+ * other device store); failures swallowed by design. This is user-triggered
+ * prefetch, NOT a keep-alive pinger (Render ToS: services kept perpetually
+ * awake by uptime pingers risk suspension — do not turn this into a timer).
  */
+let wakePinged = false;
+
 export function wakeBackend(): void {
   if (typeof window === "undefined") return;
-  const GUARD = "syllabai.wake-pinged";
-  try {
-    if (sessionStorage.getItem(GUARD) === "1") return;
-    sessionStorage.setItem(GUARD, "1");
-  } catch {
-    return; // storage blocked — skip the ping rather than risk repeats
-  }
+  if (wakePinged) return;
+  wakePinged = true;
   void fetch(apiPath("/actuator/health"), { method: "GET", cache: "no-store" }).then(
     () => {
       lastOkAt = Date.now();
@@ -1873,6 +1882,31 @@ export const api = {
     request<ContentReviewsView>("/api/v1/teachers/me/content-reviews", {
       method: "PUT",
       body: JSON.stringify(body),
+    }),
+
+  // ── T-AUDIT-TIER1 run-003 — the workspace-document plane ─────────────
+  // The hub's remaining localStorage-only conversation pools (tutor /
+  // assistant / CLA threads; deck/guided-flow/progress/teacher-classes/
+  // test-builder-drafts follow in run-004) mirror the account through ONE
+  // generic plane. These three methods are the only callers — the sync
+  // layer (lib/account-docs.ts) owns the debounce, the 401 drop and the
+  // per-store conservative reconcile (the run-003 bridge).
+
+  // GET — every stored doc for the account (updated_at ascending).
+  workspaceDocs: () => request<WorkspaceDocList>("/api/v1/me/documents"),
+
+  // PUT — the upsert of record; the receipt carries the server updatedAt
+  // (client clocks never win — the plane is arrival-order LWW per key).
+  putWorkspaceDoc: (key: string, value: unknown) =>
+    request<WorkspaceDoc>(`/api/v1/me/documents/${encodeURIComponent(key)}`, {
+      method: "PUT",
+      body: JSON.stringify({ value }),
+    }),
+
+  // DELETE — 204; idempotent (an absent doc already holds the end-state).
+  deleteWorkspaceDoc: (key: string) =>
+    request<null>(`/api/v1/me/documents/${encodeURIComponent(key)}`, {
+      method: "DELETE",
     }),
 
   // Attempt history (Review Hub minimal slice) — read-only view over the

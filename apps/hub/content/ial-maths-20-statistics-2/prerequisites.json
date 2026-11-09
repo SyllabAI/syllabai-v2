@@ -1,0 +1,131 @@
+{
+  "source": "AI concept-web startup run (F8 rollout batch six; T-KG-PRE-8, lane IALS2). The web is the AI_SUGGESTED, UNVALIDATED concept lattice authored by the F8 lane for this syllabus, every anchor machine-verified against the served spine's point ids (0 unmapped pass law) and exported in-order only by the calibrated law of scripts/kg_f8al_project.py. Bases mirror the operator-validated store vocabulary. prereqValidated stays EMPTY — the renderer labels every shipped pair INFERRED PROTOTYPE; the named gate before any of this is treated as truth remains the SME validation pass.",
+  "generatedUtc": "2026-11-04T01:31:13Z",
+  "curriculumCode": "YMA01",
+  "hubCourseSlug": "ial-maths-20-statistics-2",
+  "conceptAnchors": {
+    "IAS2-CON-BINOMIAL-POISSON": [
+      "1.1",
+      "1.2"
+    ],
+    "IAS2-CON-POISSON-APPROX": [
+      "1.3"
+    ],
+    "IAS2-CON-CRV": [
+      "2.1"
+    ],
+    "IAS2-CON-PDF-CDF": [
+      "2.2",
+      "2.3"
+    ],
+    "IAS2-CON-CRV-MOMENTS": [
+      "2.4"
+    ],
+    "IAS2-CON-CRV-QUANTILES": [
+      "2.5"
+    ],
+    "IAS2-CON-UNIFORM": [
+      "3.1"
+    ],
+    "IAS2-CON-NORMAL-APPROX": [
+      "3.2"
+    ],
+    "IAS2-CON-SAMPLING": [
+      "4.1",
+      "4.2"
+    ],
+    "IAS2-CON-HYP-TEST": [
+      "4.3",
+      "4.5"
+    ],
+    "IAS2-CON-CRITICAL-REGION": [
+      "4.4"
+    ],
+    "IAS2-CON-BIN-POIS-TESTS": [
+      "4.6"
+    ]
+  },
+  "validatedPrerequisiteEdges": [],
+  "inferredPrototypePre": [],
+  "inferredPrototypeRel": [],
+  "conceptWebPrerequisiteEdges": [
+    {
+      "prerequisite": "IAS2-CON-BINOMIAL-POISSON",
+      "dependent": "IAS2-CON-POISSON-APPROX",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAS2-CON-CRV",
+      "dependent": "IAS2-CON-PDF-CDF",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAS2-CON-PDF-CDF",
+      "dependent": "IAS2-CON-CRV-MOMENTS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAS2-CON-PDF-CDF",
+      "dependent": "IAS2-CON-CRV-QUANTILES",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAS2-CON-PDF-CDF",
+      "dependent": "IAS2-CON-UNIFORM",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAS2-CON-CRV-MOMENTS",
+      "dependent": "IAS2-CON-UNIFORM",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAS2-CON-BINOMIAL-POISSON",
+      "dependent": "IAS2-CON-NORMAL-APPROX",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAS2-CON-CRV",
+      "dependent": "IAS2-CON-NORMAL-APPROX",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAS2-CON-SAMPLING",
+      "dependent": "IAS2-CON-HYP-TEST",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAS2-CON-HYP-TEST",
+      "dependent": "IAS2-CON-CRITICAL-REGION",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAS2-CON-HYP-TEST",
+      "dependent": "IAS2-CON-BIN-POIS-TESTS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAS2-CON-CRITICAL-REGION",
+      "dependent": "IAS2-CON-BIN-POIS-TESTS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAS2-CON-BINOMIAL-POISSON",
+      "dependent": "IAS2-CON-BIN-POIS-TESTS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    }
+  ],
+  "counts": {
+    "anchoredConcepts": 12,
+    "conceptWebEdges": 13,
+    "validatedEdges": 0,
+    "inferredPre": 0,
+    "inferredRel": 0
+  },
+  "exportCounts": {
+    "candidates": 25,
+    "selfLoops": 0,
+    "reversedDropped": 1,
+    "preExported": 24
+  }
+}

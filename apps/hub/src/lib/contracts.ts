@@ -33,6 +33,9 @@ export const ProvenanceTier = z.enum([
   "HUMAN_VALIDATED", // operator-reviewed
   "DEMO_DERIVED",   // generated inside the demo for prototyping only
   "SIMULATED",      // deterministic fiction (learner overlay)
+  "SME_REFERENCE",  // ADR-039 wave-1: SME picker section/topic rows copied
+                    // verbatim from the live SaveMyExams picker (selector
+                    // navigation layer only — never spec content)
 ]);
 
 export const MasteryBand = z.enum(["LOW", "DEVELOPING", "SECURE", "UNMEASURED"]);
@@ -145,6 +148,10 @@ export const RevisionNote = z.object({
   // corpus-native placement (SME section/topic slugs) — set by the importer
   sectionSlug: z.string().optional(),
   topicSlug: z.string().optional(),
+  // corpus-native content kind — "exam-technique" marks SME exam-skills
+  // notes: exam technique, explicitly NOT tied to a spec statement (their
+  // codes, where a mistag landed, are retracted; RN-DEBRIS-11 run-005)
+  contentKind: z.string().optional(),
 });
 export type RevisionNote = z.infer<typeof RevisionNote>;
 

@@ -126,6 +126,7 @@ import {
 import type { TeacherCourseData } from "@/lib/teacher/types";
 import type { AssembledQuestion, AssembledTest } from "@/lib/teacher/test-assembly";
 import type { SwitchableCourse } from "@/lib/teacher/types";
+import { PageHeader } from "@/components/layout/page-header";
 
 const WEAK_LANE_CAP = 6;
 const BANK_PAGE = 40;
@@ -1323,33 +1324,34 @@ export function TestBuilderClient({
     <div className="space-y-6">
       <TeacherNav />
 
-      <header className="space-y-1.5 print:hidden">
-        {view === "builder" && (
-          <button
-            type="button"
-            onClick={goTests}
-            className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft className="size-3" aria-hidden />
-            All tests
-          </button>
-        )}
-        <div className="flex items-center gap-2">
-          <Badge variant="outline" className="gap-1 text-[10px] font-normal">
-            <ClipboardList className="size-3" aria-hidden />
-            Assessment · teacher
-          </Badge>
-          <Badge variant="secondary" className="text-[10px] font-normal">
-            TEACHER_ARCHITECTURE §6
-          </Badge>
-        </div>
-        <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">Test Builder</h1>
-        <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          Pick questions from the bank, arrange them, and print — or auto-build from the class&apos;s
-          weakest areas. Every part keeps its corpus provenance; export a clean student handout or
-          the full teacher copy with the mark scheme.
-        </p>
-      </header>
+      {/* T-HEADER-1: the shared tool-page header (back button + badge row ride
+          the eyebrow slot; font-display dropped; print:hidden preserved). */}
+      <PageHeader
+        className="print:hidden"
+        eyebrow={
+          <span className="flex flex-wrap items-center gap-2">
+            {view === "builder" && (
+              <button
+                type="button"
+                onClick={goTests}
+                className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <ArrowLeft className="size-3" aria-hidden />
+                All tests
+              </button>
+            )}
+            <Badge variant="outline" className="gap-1 text-[10px] font-normal">
+              <ClipboardList className="size-3" aria-hidden />
+              Assessment · teacher
+            </Badge>
+            <Badge variant="secondary" className="text-[10px] font-normal">
+              TEACHER_ARCHITECTURE §6
+            </Badge>
+          </span>
+        }
+        title="Test Builder"
+        description="Pick questions from the bank, arrange them, and print — or auto-build from the class's weakest areas. Every part keeps its corpus provenance; export a clean student handout or the full teacher copy with the mark scheme."
+      />
 
       {taughtCourses === null ? (
         /* ══ T-TEACH-008: the taught set is loading — the builder NEVER
@@ -1820,7 +1822,9 @@ export function TestBuilderClient({
                 onClick={() => setHideInTest((v) => !v)}
                 className={`h-8 shrink-0 rounded-md border px-2.5 text-xs font-medium transition-colors ${
                   hideInTest
-                    ? "border-primary/40 bg-primary/10 text-primary"
+                    // t-ui-polish run-007: the pressed state speaks the house
+                    // active voice (border-primary/60), not the legacy /40.
+                    ? "border-primary/60 bg-primary/10 text-primary"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >

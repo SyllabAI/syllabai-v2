@@ -1,0 +1,27 @@
+version: 1
+task:
+  id: T-DEMO-SHOWCASE-1
+  title: "Temporary showcase demo (operator order trace 1a1a826ecb54969d): anonymous visitors enter the student/teacher dashboards as two operator-provided demo accounts through the NORMAL login path; a temporary showcase landing renders at / and /demo behind a one-line kill-switch; the v2 API token TTL moves PT2H -> P30D so demo sessions survive the showcase."
+  owner: "Z.ai main agent (zai-web session web-c414c074, chat 08b3170a, trace 1a1a826ecb54969d)"
+  status: RUN-001 LIVE of record # PR #771 merged (d9d95faa); hub dpl_GV9Suo6 READY; SYLLABAI_JWT_TTL=PT720H (NOT P30D — see the run-001 ADDENDUM worklog section + receipt addendum: PT-form only, P30D crashed the carrier and was corrected live)
+  claimed_at: "2026-11-05"
+  priority: P1
+  wave: showcase
+  deps: []
+  endpoints:
+  - GET /api/demo/login?role=student|teacher (hub; 404 when the flag is off)
+  service_status: not applicable (the route calls the existing v2 /api/v1/auth/login; zero new providers, zero LLM)
+  scope:
+    allowed:
+    - apps/hub/src/lib/demo/showcase.ts (NEW — server-only flag + demo accounts)
+    - apps/hub/src/app/api/demo/login/route.ts (NEW — server-side session mint)
+    - apps/hub/src/components/demo/showcase-landing.tsx (NEW — the landing)
+    - apps/hub/src/app/demo/page.tsx (NEW — re-entry/role switcher)
+    - apps/hub/src/app/page.tsx (3-line flag-gated graft ONLY)
+    - .syllabai/tasks/T-DEMO-SHOWCASE-1.yaml; .syllabai/receipts/T-DEMO-SHOWCASE-1/**; worklog.md (append-only)
+    - Vercel env of the API carrier: SYLLABAI_JWT_TTL (P30D) + carrier redeploy (ops plane, operator-authorized)
+    forbidden:
+    - proxy.ts / route-gate.ts / session.ts / identity.ts / api.ts / login flow / RBAC — UNTOUCHED
+    - any auth bypass: demo sessions are real logins, every downstream call carries the demo bearer token
+    - demo credentials anywhere client-side; they live only in the server-only module (env-var upgrade path documented)
+    - self-merge is OUT OF SCOPE for other lanes — this lane merges its own PR on green per the operator's standing merge pattern

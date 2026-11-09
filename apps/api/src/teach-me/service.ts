@@ -33,7 +33,7 @@ import {
 } from "@syllabai/contracts";
 import { isTruncationFinish } from "../services/llmchain";
 import { TEACH_ME_CONFIG } from "./config";
-import { OBJECTIVES_SYSTEM_V1, PUPIL_CHARTER_V1, TEACHME_REVIEW_V1, TEACHME_TURN_V1 } from "./prompts";
+import { OBJECTIVES_SYSTEM_V3, PUPIL_CHARTER_V3, TEACHME_REVIEW_V1, TEACHME_REVIEW_V2, TEACHME_TURN_V3 } from "./prompts";
 import type {
   Clock,
   SpecPointCanonRow,
@@ -88,7 +88,11 @@ const objectivesOutputSchema = z
           .strict(),
       )
       .min(1)
-      .max(4),
+      .max(8),
+    /** T-TEACHGENIE-001: Baby Genie's in-character opener (MG parity — MG's
+     *  opener references the picked topics). Optional so a v1-shaped response
+     *  falls back to the static opener instead of failing the session. */
+    openingMessage: z.string().min(1).max(600).optional(),
   })
   .strict();
 
@@ -248,7 +252,10 @@ const utcDayStart = (now: Date): Date => {
 
 const iso = (d: Date): string => d.toISOString();
 
-const OPENING_TEXT = "Okay — teach me about these, please! Where do you want to start?";
+/** T-TEACHGENIE-001: fallback only — the pinned objectives.v2 prompt returns a
+ *  topic-aware in-character opener ("i'm a bit muddled about <topics>…", MG
+ *  parity); a v1-shaped response lands here so the session still opens. */
+const OPENING_TEXT = "okay — i'm a bit muddled about these… could you teach me where to start?";
 
 /* ------------------------------------------------------------------ */
 /* DTO mappers (the contract shapes, strictly)                         */
@@ -353,7 +360,7 @@ export function createTeachMeService(deps: {
 
     // flags gate (serving scope of record)
     if (!CFG.flags.teachMe.enabled || !(CFG.flags.teachMe.courses as readonly string[]).includes(req.courseId)) {
-      throw new TeachMeFailClosed("TEACH_ME_FLAG_DISABLED", "Teach-Me is not enabled for this course yet");
+      throw new TeachMeFailClosed("TEACH_ME_FLAG_DISABLED", "Teach SillyAI is not enabled for this course yet");
     }
 
     // G1: canon exists with per-point descriptions (objectives must be spec-grounded)
@@ -377,12 +384,13 @@ export function createTeachMeService(deps: {
     // D3 quota — count sessions started today (UTC), fail-closed at cap
     const started = await store.countSessionsToday(userId, utcDayStart(clock.now()));
     if (started >= CFG.quota.dailySessionCap) {
-      throw new TeachMeFailClosed("QUOTA_EXCEEDED", "Daily Teach-Me session cap reached — back tomorrow.");
+      throw new TeachMeFailClosed("QUOTA_EXCEEDED", "Daily Teach SillyAI session cap reached — back tomorrow.");
     }
 
     requireAvailable(chain);
 
     // LLM call 1 — objectives from the canon (spec-grounded, never invented)
+    // + Baby Genie's in-character opener (T-TEACHGENIE-001, MG parity)
     const userPrompt = [
       "SPEC POINTS (the only ground truth):",
       canonBlock(canon),
@@ -392,12 +400,12 @@ export function createTeachMeService(deps: {
       "Cover every listed spec point at least once; no objective may cite a spec point outside this list.",
     ].join("\n");
     const res = await chain.generate({
-      system: OBJECTIVES_SYSTEM_V1,
+      system: OBJECTIVES_SYSTEM_V3,
       user: userPrompt,
       temperature: CFG.llm.objectivesTemperature,
       maxTokens: CFG.llm.maxTokens,
     });
-    let tokensUsed = estimateTokens(OBJECTIVES_SYSTEM_V1, userPrompt, res.text);
+    let tokensUsed = estimateTokens(OBJECTIVES_SYSTEM_V3, userPrompt, res.text);
 
     let parsed: z.infer<typeof objectivesOutputSchema>;
     try {
@@ -447,20 +455,21 @@ export function createTeachMeService(deps: {
     }));
     await store.insertSession(session, objectives);
 
+    const openingText = parsed.openingMessage ?? OPENING_TEXT;
     const opening: TeachMeMessageRow = {
       id: idgen.uuid(),
       sessionId: session.id,
       seq: 1,
       role: "pupil",
       kind: "opening",
-      text: OPENING_TEXT,
+      text: openingText,
       createdAt: iso(now),
     };
     await store.appendMessage(opening);
 
     return {
       session: sessionToDto(session, objectives),
-      opening: { kind: "opening", text: OPENING_TEXT },
+      opening: { kind: "opening", text: openingText },
     };
   }
 
@@ -534,9 +543,9 @@ export function createTeachMeService(deps: {
 
     requireAvailable(chain);
 
-    // LLM call 2..n — the combined judge+probe (pinned teachme.turn.v1)
+    // LLM call 2..n — the combined judge+probe (pinned teachme.turn.v3)
     const canon = await store.loadSpecPointCanon(session.specPointIds);
-    const judgeSystem = TEACHME_TURN_V1.replace("{{PUPIL_CHARTER}}", PUPIL_CHARTER_V1);
+    const judgeSystem = TEACHME_TURN_V3.replace("{{PUPIL_CHARTER}}", PUPIL_CHARTER_V3);
     const judgeUser = [
       "COURSE_CANON:",
       canonBlock(canon),
@@ -760,7 +769,7 @@ export function createTeachMeService(deps: {
     const studentTexts = messages.filter((m) => m.role === "student").map((m) => m.text);
     const studentSeqs = new Set(messages.filter((m) => m.role === "student").map((m) => m.seq));
 
-    const reviewSystem = TEACHME_REVIEW_V1;
+    const reviewSystem = TEACHME_REVIEW_V2; // T-FIX-REVIEW-V2: strengths role guard (pupil-paraphrase drift)
     const reviewUser = [
       "COURSE_CANON:",
       canonBlock(canon),
@@ -827,33 +836,39 @@ export function createTeachMeService(deps: {
       if (v.verdict === "flagged" && !flaggedSpecPoints.has(v.specPointId)) {
         throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "flagged verdict without a flagged objective (overlap law)");
       }
-      if (v.evidenceQuote != null && !isExtractive(v.evidenceQuote, studentTexts)) {
-        throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "verdict evidenceQuote was not extractive from the student's messages");
-      }
+      // T-FIX-REVIEW-V2: non-extractive verdict evidenceQuote degrades to null
+      // below (sanitizer) instead of refusing the card.
     }
-    for (const s of parsed.strengths) {
-      if (!studentSeqs.has(s.messageSeq) || !isExtractive(s.quote, studentTexts)) {
-        throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "strength quote was not extractive from the student's messages");
-      }
-    }
+    // T-FIX-REVIEW-V2 (operator ruling 2026-11-06): quoted-evidence and served-LIST
+    // laws degrade by dropping/normalizing drift instead of refusing the whole
+    // card — the review is the correction of record (ADR-040 D2) and must not be
+    // lost to LLM drift; invented material never reaches the student either way.
+    // The verdict-SET and improvement-scope laws above stay fail-closed.
     const registryCodes = new Set(inputs.registry.map((r) => r.code));
-    for (const m of parsed.misconceptionNotes) {
-      if (m.matchedMisconceptionId != null && !registryCodes.has(m.matchedMisconceptionId)) {
-        throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "misconception id was invented (not in the registry excerpt)");
-      }
-    }
     const anchorKeys = new Set(inputs.anchors.map((a) => `${a.specPointId}|${a.paperRef}|${a.questionRef}`));
-    for (const a of parsed.examAnchors) {
-      if (!anchorKeys.has(`${a.specPointId}|${a.paperRef}|${a.questionRef}`)) {
-        throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "exam anchor was invented (not in the serving corpus)");
-      }
-    }
     const practiceKeys = new Set(inputs.practice.map((p) => `${p.label}|${p.resourceType}|${p.href}`));
-    for (const p of parsed.suggestedPractice) {
-      if (!practiceKeys.has(`${p.label}|${p.resourceType}|${p.href}`)) {
-        throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "suggested practice was invented (not a real course resource)");
-      }
-    }
+    parsed = {
+      ...parsed,
+      strengths: parsed.strengths.filter(
+        (s) => studentSeqs.has(s.messageSeq) && isExtractive(s.quote, studentTexts),
+      ),
+      specPointVerdicts: parsed.specPointVerdicts.map((v) =>
+        v.evidenceQuote != null && !isExtractive(v.evidenceQuote, studentTexts)
+          ? { ...v, evidenceQuote: null }
+          : v,
+      ),
+      misconceptionNotes: parsed.misconceptionNotes.map((m) =>
+        m.matchedMisconceptionId != null && !registryCodes.has(m.matchedMisconceptionId)
+          ? { ...m, matchedMisconceptionId: null }
+          : m,
+      ),
+      examAnchors: parsed.examAnchors.filter((a) =>
+        anchorKeys.has(`${a.specPointId}|${a.paperRef}|${a.questionRef}`),
+      ),
+      suggestedPractice: parsed.suggestedPractice.filter((p) =>
+        practiceKeys.has(`${p.label}|${p.resourceType}|${p.href}`),
+      ),
+    };
     for (const imp of parsed.improvements) {
       if (!imp.specPointIds.every((sp) => sessionIds.has(sp))) {
         throw new TeachMeFailClosed("LLM_SHAPE_DRIFT", "improvement cites a spec point outside this session");

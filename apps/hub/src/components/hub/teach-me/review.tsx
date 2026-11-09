@@ -167,7 +167,9 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
                 <li key={i}>
                   <Link
                     href={p.href}
-                    className="inline-block rounded-full border border-primary/40 px-3 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
+                    // t-ui-polish run-007: the practice chips speak the house
+                    // primary-tinted voice (border-primary/60), not the legacy /40.
+                    className="inline-block rounded-full border border-primary/60 px-3 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
                   >
                     {p.label}
                   </Link>
@@ -216,7 +218,8 @@ export function ReviewPending({
             <button
               type="button"
               onClick={onRefresh}
-              className="mt-4 rounded-full border border-primary/40 px-3 py-1.5 text-xs font-medium text-primary hover:bg-primary/10"
+              // t-ui-polish run-007: the check-again chip joins the same voice.
+              className="mt-4 rounded-full border border-primary/60 px-3 py-1.5 text-xs font-medium text-primary hover:bg-primary/10"
             >
               Check again
             </button>

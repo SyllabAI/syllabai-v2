@@ -30,7 +30,7 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
           {c.href && i < items.length - 1 ? (
             <Link
               href={c.href}
-              className="inline-flex min-h-9 items-center py-2 text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline"
+              className="inline-flex min-h-9 items-center rounded-md py-2 text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline"
             >
               {c.label}
             </Link>
@@ -82,7 +82,12 @@ export function ExamCodePill({ code, href, className }: { code: string; href?: s
       aria-label={`Exam code ${code} — open the specification`}
       className={cn(
         pillClass,
-        "transition-colors hover:border-ring hover:bg-muted focus-visible:outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+        // t-ui-polish run-004: the pill is the most-repeated interactive
+        // affordance in the hub (16 hero bands + 3 bare headers + the paper
+        // viewer toolbar) — its hover now speaks the house card-hover voice
+        // (border-primary/60 + shadow-sm lift, runs 001-003) instead of the
+        // off-vocabulary border-ring/bg-muted shift. Focus voice untouched.
+        "transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm focus-visible:outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
       )}
     >
       <span className="font-semibold text-foreground">Exam code:</span>
@@ -92,39 +97,6 @@ export function ExamCodePill({ code, href, className }: { code: string; href?: s
   );
 }
 
-/** Framework tags on hub resource cards (Edexcel / IGCSE / 4CH1). */
-export function FrameworkTags({ tags }: { tags: string[] }) {
-  return (
-    <span className="flex flex-wrap items-center gap-1.5">
-      {tags.map((t) => (
-        <span
-          key={t}
-          className="rounded border border-primary/25 bg-primary/5 px-1.5 py-0.5 text-[10.5px] font-medium text-primary"
-        >
-          {t}
-        </span>
-      ))}
-    </span>
-  );
-}
-
-/**
- * Framework tag chip — SME's Study / Practice / Diagnose pills (Task 21-b,
- * dissected from the reference course page). Colors live in globals.css
- * (chip-study / chip-practice / chip-diagnose).
- */
-export function TagChip({ tag }: { tag: "Study" | "Practice" | "Diagnose" }) {
-  return (
-    <span
-      className={cn(
-        "inline-flex items-center rounded-full px-2 py-0.5 text-[10.5px] font-semibold leading-none",
-        `chip-${tag.toLowerCase()}`,
-      )}
-    >
-      {tag}
-    </span>
-  );
-}
 
 /** Numbered syllabus label, e.g. topic "1. Principles of chemistry". */
 export function NumberedLabel({ number, title }: { number: number; title: string }) {

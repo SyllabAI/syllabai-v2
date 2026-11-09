@@ -76,8 +76,16 @@ const SHARED_CODES_OF_RECORD: Record<string, number> = {
 // the 2026-11-02 re-pin (its consume chain finally admitted a servable set —
 // see the census re-pin disclosure below); english-language-25 departed at
 // the same re-pin; english-language-20 remains the sole honest zero.
+// RUN-012 AMENDMENT (RN-DEBRIS-11, PR #855): the F1/F2_0500 verdict executed —
+// english-language-25's spine was rebuilt from the 209-row front-matter/
+// assessment-table wreck parse to the official 3 blocks x 6 bullets of record
+// (the wreck rows were its question anchors), so the admission's anchor set no
+// longer admits its bank — el25 REJOINS the honest zero here pending the
+// resources-side spec-links re-anchor lane (the manifest bank stays: 5 sets /
+// 30 questions, byte-untouched content plane).
 const ZERO_SERVABLE_OF_RECORD = [
   "cie-igcse-english-language-20",
+  "cie-igcse-english-language-25",
 ];
 
 describe("cie-phase4 roster law", () => {
@@ -243,12 +251,34 @@ describe("cie-phase4 roster law", () => {
     // 81; crossSetRefCollision 1,118 -> 1,181. NOT a loosening: growth of
     // the servable census, the identity re-proven at the new floors
     // (27,246 - 13,310 == 12,674 + 81 + 1,181 == 13,936).
-    expect(questions).toBe(13310);
-    expect(parts).toBe(15281);
+    // D-KG1b re-pin (operator word "authorising (b)", IM trace
+    // 1a1b15cbb24f4a11): the claim-index law admits the SECOND claimant of
+    // every (topicSlug, order) slot under the -w/-w2 namespace — the 1,181
+    // CONSUME-3 collision census joins the servable side and the
+    // belt-and-braces counter goes to zero of record. Re-pinned first-hand
+    // on the dkg1b-exec branch: questions 13,310 -> 14,491; parts 15,281 ->
+    // 19,174; pkgParts 21,274 -> 25,167; crossSetRefCollision 1,181 -> 0;
+    // unmapped/dupOrder/badSum untouched. The identity re-proven:
+    // 27,246 - 14,491 == 12,674 + 81 + 0 == 12,755. NOT a loosening: the
+    // per-bank deltas are EXACTLY the second-claimant populations
+    // (physics-23 +397 = its dry-r0 crossSetRefCollision census of record;
+    // every non-twin bank pin byte-unchanged).
+    // RUN-012 RE-PIN (RN-DEBRIS-11, PR #855): stream A's business-25 T1
+    // tagBackfill (the engine of record re-run named by the run-011
+    // disclosure) wrote the official 1.x codes onto 71 parts across the 4 T1
+    // sets — 64 questions crossed from the unmapped class into the servable
+    // side (fleet +64 q/p/pkg in lockstep; unmapped 12,674 -> 12,610 EXACTLY;
+    // badSum/dupOrder/crossSetRefCollision untouched; raw banks untouched —
+    // every non-business-25 bank byte-unchanged). english-language-25's
+    // servable 0 rides the ZERO_SERVABLE_OF_RECORD amendment above — no
+    // counter moves for it at this re-pin (its raw bank was already fully in
+    // the unmapped class).
+    expect(questions).toBe(14555);
+    expect(parts).toBe(19238);
     // the package-shape disclosure (the other half of the law split): the
     // package parts stay counted, never again a floor
     const pkgParts = real.reduce((s, e) => s + e.expectedPackageParts, 0);
-    expect(pkgParts).toBe(21274);
+    expect(pkgParts).toBe(25231); // run-012 re-pin (was 25,167 — the stream A note above)
     expect(parts + (pkgParts - parts)).toBe(pkgParts);
     // bank-level pins of the row law (the run-008 fleet's own numbers):
     // option-part banks (past-paper MCQ shape) emit ~ZERO part rows;
@@ -260,13 +290,15 @@ describe("cie-phase4 roster law", () => {
     // MCQ rows, the plain-part population is now 207 of record)
     const physics23 = real.find((e) => e.slug === "cie-igcse-physics-23");
     expect(physics23).toBeDefined();
-    expect(physics23!.expectedQuestions).toBe(703);
-    expect(physics23!.expectedParts).toBe(207);
-    expect(physics23!.expectedPackageParts).toBe(840);
+    // D-KG1b re-pin: +397 second claimants (= its dry-r0 crossSetRefCollision
+    // census of record) — 703/207/840 -> 1,100/1,320/1,953
+    expect(physics23!.expectedQuestions).toBe(1100);
+    expect(physics23!.expectedParts).toBe(1320);
+    expect(physics23!.expectedPackageParts).toBe(1953);
     const bio25 = real.find((e) => e.slug === "cie-a-level-biology-25");
     expect(bio25).toBeDefined();
-    expect(bio25!.expectedParts).toBe(1225); // CONSUME-3 re-pin (was 859)
-    expect(bio25!.expectedPackageParts).toBe(1895); // (was 1529)
+    expect(bio25!.expectedParts).toBe(2065); // D-KG1b re-pin (CONSUME-3 re-pin was 859)
+    expect(bio25!.expectedPackageParts).toBe(2735); // D-KG1b re-pin (was 1529, then 1895)
     // the wave-2 r1 bank pin + the CONSUME-3 re-pin (operator trace
     // 1a18bc6701800065): the T-SPECS-CIE-JOIN-3 fresh sidecar's gate-3
     // ACCEPTED codes lifted the bank 789/1055/1561 -> 977/1201/1858
@@ -329,10 +361,13 @@ describe("cie-phase4 roster law", () => {
       }),
       { unmapped: 0, badSum: 0, dupOrder: 0, crossSetRefCollision: 0 },
     );
-    expect(excl).toEqual({ unmapped: 12674, badSum: 0, dupOrder: 81, crossSetRefCollision: 1181 });
+    // D-KG1b: the claim index dissolves the cross-set collision class —
+    // the belt-and-braces counter is zero of record under the amendment
+    expect(excl).toEqual({ unmapped: 12610, badSum: 0, dupOrder: 81, crossSetRefCollision: 0 }); // run-012 re-pin: unmapped 12,674 -> 12,610 (the business-25 T1 tagBackfill class)
     // the question-level identity: raw - servable = unmapped + dupOrder + crossSetRefCollision
     // (each exclusion removes whole questions; badSum is zero of record) —
-    // re-proven at the 2026-11-03 re-pin: 27246-13310 == 12674+81+1181 == 13936
+    // re-proven at the D-KG1b re-pin: 27246-14491 == 12674+81+0 == 12755
+    // re-proven at the run-012 re-pin: 27246-14555 == 12610+81+0 == 12691
     expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder + (excl.crossSetRefCollision ?? 0));
     // the zero-servable real banks of record — see ZERO_SERVABLE_OF_RECORD
     // (the module-level law; econ-25 departed at run-006, the wave-2

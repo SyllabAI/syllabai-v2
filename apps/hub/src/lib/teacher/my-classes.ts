@@ -7,23 +7,35 @@
  * then select subjects. Then inside there, all the tools and course
  * resources will exist.").
  *
- * A class is a browser-local container: { id, name, subjectSlugs[],
- * createdAt } — the exact demo-truth class the student's subject roster is
- * (lib/my-subjects.ts, same useSyncExternalStore pattern, same honesty):
- * no auth in the demo, so the roster persists in localStorage under a
- * versioned key and the UI copy says so. The LIVE core class entity
- * (RBAC rosters, /teacher/classes) is a different, database-backed concept
- * — the two never blur: the local class workspace links to the live roster
- * surface, it never impersonates it.
+ * A class is an ACCOUNT-backed container: { id, name, subjectSlugs[],
+ * createdAt } — T-ACCOUNT-ONLY run-001: the roster lives in module memory
+ * and the "teacher-classes" workspace doc is its only durable store (the
+ * bridge registration at the bottom). The retired localStorage record
+ * (syllabai-hub:teacher-classes.v1) adopts ONCE per tab (the engine's
+ * legacy adoption) and then retires. The LIVE core class entity (RBAC
+ * rosters, /teacher/classes) is a different, database-backed concept — the
+ * two never blur: the class workspace links to the live roster surface, it
+ * never impersonates it.
  *
  * Slugs are validated against the course registry at read time by the
  * caller (the dashboard filters unknown slugs out), exactly like
  * my-subjects.
  */
 import { useCallback, useSyncExternalStore } from "react";
+import {
+  bridgeDocPool,
+  isAccountDocsHydrated,
+  mirrorDocPoolState,
+  stampOf,
+  unionByStamp,
+} from "@/lib/account-docs-records";
+import { adoptLegacyStorage, onAccountDocsReset } from "@/lib/account-docs";
+import { readIdentitySnapshot } from "@/lib/identity";
 
-export const KEY = "syllabai-hub:teacher-classes.v1";
+export const KEY = "syllabai-hub:teacher-classes.v1"; // RETIRED (legacy adoption pin)
 export const MY_CLASSES_EVENT = "syllabai-hub:teacher-classes-changed";
+/** T-AUDIT-TIER1 run-004 — the account plane this roster mirrors into. */
+const DOC_KEY = "teacher-classes";
 
 export interface TeacherClass {
   id: string;
@@ -32,33 +44,38 @@ export interface TeacherClass {
   subjectSlugs: string[];
   /** ISO timestamp — set at creation, display-only */
   createdAt: string;
+  /** T-AUDIT-TIER1 run-004 — the reconcile stamp of record (ISO, stamped
+   *  on every mutation). Additive + optional: pre-band records load
+   *  unchanged (stamp 0 = oldest — they lose every merge until their
+   *  first post-band edit). */
+  updatedAt?: string;
 }
 
 const EMPTY: TeacherClass[] = [];
 
+// the in-memory roster of record (T-ACCOUNT-ONLY run-001)
+let classesStore: TeacherClass[] = EMPTY;
+
+function parseClasses(raw: unknown): TeacherClass[] {
+  if (!Array.isArray(raw)) return EMPTY;
+  return raw
+    .filter(
+      (c): c is TeacherClass =>
+        !!c &&
+        typeof c === "object" &&
+        typeof (c as TeacherClass).id === "string" &&
+        typeof (c as TeacherClass).name === "string" &&
+        Array.isArray((c as TeacherClass).subjectSlugs),
+    )
+    .map((c) => ({
+      ...c,
+      name: c.name.trim() || "Untitled class",
+      subjectSlugs: [...new Set(c.subjectSlugs.filter((s): s is string => typeof s === "string" && s.length > 0))],
+    }));
+}
+
 function readClasses(): TeacherClass[] {
-  try {
-    const raw = window.localStorage.getItem(KEY);
-    if (!raw) return EMPTY;
-    const parsed: unknown = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return EMPTY;
-    return parsed
-      .filter(
-        (c): c is TeacherClass =>
-          !!c &&
-          typeof c === "object" &&
-          typeof (c as TeacherClass).id === "string" &&
-          typeof (c as TeacherClass).name === "string" &&
-          Array.isArray((c as TeacherClass).subjectSlugs),
-      )
-      .map((c) => ({
-        ...c,
-        name: c.name.trim() || "Untitled class",
-        subjectSlugs: [...new Set(c.subjectSlugs.filter((s): s is string => typeof s === "string" && s.length > 0))],
-      }));
-  } catch {
-    return EMPTY;
-  }
+  return classesStore;
 }
 
 // getSnapshot must return a referentially stable value between store changes
@@ -78,21 +95,31 @@ function getServerSnapshot(): TeacherClass[] {
 }
 
 function writeClasses(classes: TeacherClass[]) {
-  try {
-    window.localStorage.setItem(KEY, JSON.stringify(classes));
-  } catch {
-    // storage full / private mode — the roster just won't persist
-  }
+  classesStore = classes;
   window.dispatchEvent(new CustomEvent(MY_CLASSES_EVENT));
+  // T-AUDIT-TIER1 run-004 → T-ACCOUNT-ONLY run-001 — the account mirror IS
+  // the store (the persist tail drives the commit-up path; echo-guarded on
+  // the remote-apply path).
+  mirrorDocPoolState(DOC_KEY, classes);
 }
 
 function subscribe(onChange: () => void) {
   window.addEventListener(MY_CLASSES_EVENT, onChange);
-  window.addEventListener("storage", onChange);
   return () => {
     window.removeEventListener(MY_CLASSES_EVENT, onChange);
-    window.removeEventListener("storage", onChange);
   };
+}
+
+/** Plain (non-hook) read of the current roster — the law tests and the
+ *  sync layer's own fixtures (the roster is the in-memory store of record,
+ *  T-ACCOUNT-ONLY run-001). */
+export function readMyClassesSnapshot(): TeacherClass[] {
+  return getSnapshot();
+}
+
+/** Test seam: replace the in-memory roster (the fixtures' "local writes"). */
+export function __setClassesForTests(classes: TeacherClass[]): void {
+  writeClasses(classes);
 }
 
 function makeId(): string {
@@ -135,6 +162,7 @@ export function useMyClasses(): MyClasses {
       name: trimmed,
       subjectSlugs: slugs,
       createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     };
     writeClasses([...readClasses(), cls]);
     return cls;
@@ -147,6 +175,7 @@ export function useMyClasses(): MyClasses {
     const next = [...cur];
     const merged: TeacherClass = {
       ...next[idx],
+      updatedAt: new Date().toISOString(),
       ...(patch.name !== undefined
         ? { name: patch.name.trim() || next[idx].name }
         : null),
@@ -166,3 +195,45 @@ export function useMyClasses(): MyClasses {
 
   return { classes, has, get, add, update, remove };
 }
+
+// ── T-AUDIT-TIER1 run-004 — the account mirror (bridge registration) ─────
+// The roster mirrors the account through the workspace-document plane
+// (lib/account-docs-records.ts): conservative union by id, the NEWER
+// updatedAt wins (pre-band records stamp 0 = oldest — they lose until
+// their first post-band edit), a tie keeps the server's record, creation
+// order preserved on pull-down (the store's ordering law rides in apply).
+const classesPoolOf = (classes: TeacherClass[]): Record<string, TeacherClass> =>
+  Object.fromEntries(classes.map((c) => [c.id, c]));
+
+// T-ACCOUNT-ONLY run-001 — the one-time legacy adoption + the reset law
+if (typeof window !== "undefined") {
+  adoptLegacyStorage(DOC_KEY, [KEY], () => {
+    try {
+      const raw = window.localStorage.getItem(KEY);
+      // the DOC shape is the POOL (id → class), not the array — the same
+      // shape the bridge's merge/stamp laws read
+      return raw ? classesPoolOf(parseClasses(JSON.parse(raw) as unknown)) : null;
+    } catch {
+      return null;
+    }
+  });
+  onAccountDocsReset(() => {
+    classesStore = EMPTY;
+    snapshot = EMPTY;
+    window.dispatchEvent(new CustomEvent(MY_CLASSES_EVENT));
+  });
+}
+
+bridgeDocPool<TeacherClass[], TeacherClass>({
+  docKey: DOC_KEY,
+  cap: 40,
+  readState: () => readClasses(),
+  readPool: (classes) => classesPoolOf(classes),
+  apply: (pool) => {
+    writeClasses(Object.values(pool).sort((a, b) => a.createdAt.localeCompare(b.createdAt)));
+  },
+  merge: (local, server) => unionByStamp(local, server, "updatedAt"),
+  stamp: (pool) => stampOf(pool, "updatedAt"),
+  getAuthEmail: () => readIdentitySnapshot()?.email ?? null,
+  isHydrated: () => isAccountDocsHydrated(),
+});

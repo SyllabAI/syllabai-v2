@@ -42,9 +42,12 @@
  * restores it and must not re-prompt (the gate radio locks once written;
  * completed modules reopen as a re-walk with the rating locked).
  *
- * PERSISTENCE: browser-local only (hub progress law — no accounts; and the
- * integration channel's zero-DB law), localStorage keyed per lesson id,
- * refresh-safe. Progress never writes to canonical content.
+ * PERSISTENCE (T-ACCOUNT-ONLY run-001): the ACCOUNT is the only durable
+ * store — the "guided-flow" workspace doc, one pool entry per lesson id,
+ * module memory is the reactive cache. The retired localStorage records
+ * (syllabai.guided-flow.v1.*) adopt ONCE per tab (the engine's legacy
+ * adoption — they commit up only when the account has no doc of its own)
+ * and then retire. Progress never writes to canonical content.
  */
 import { useMemo, useState, useSyncExternalStore } from "react";
 import {
@@ -85,6 +88,10 @@ type Rating = "low" | "medium" | "high";
 
 interface FlowState {
   v: 1;
+  /** T-AUDIT-TIER1 run-004 — the reconcile stamp of record (ms, stamped on
+   *  every set()). Optional + additive: pre-band states load unchanged
+   *  (stamp 0 = oldest — they lose every merge until the next step). */
+  at?: number;
   /** module currently being walked */
   moduleIndex: number;
   /** index into the module's computed stage list */
@@ -114,7 +121,7 @@ interface Props {
   flashcardsHref: string;
 }
 
-const STORAGE_PREFIX = "syllabai.guided-flow.v1.";
+const STORAGE_PREFIX = "syllabai.guided-flow.v1."; // RETIRED (legacy adoption pin)
 
 const RATING_LABEL: Record<Rating, string> = {
   low: "Low",
@@ -135,37 +142,39 @@ function freshState(): FlowState {
 /** The server snapshot: SSR/prerender always renders the fresh gate. */
 const SERVER_STATE = freshState();
 
-/** Restore from localStorage; client-only, tolerant of bad records. */
-function loadState(lessonId: string): FlowState {
-  try {
-    const raw = window.localStorage.getItem(STORAGE_PREFIX + lessonId);
-    if (!raw) return freshState();
-    const parsed = JSON.parse(raw) as FlowState;
-    if (parsed?.v !== 1) return freshState();
-    return parsed;
-  } catch {
-    return freshState();
-  }
+/** Restore a stored record; client-only, tolerant of bad records. (The
+ *  pool — not localStorage — is the source since T-ACCOUNT-ONLY run-001.) */
+function parseFlowState(raw: unknown): FlowState {
+  if (!raw || typeof raw !== "object") return freshState();
+  const parsed = raw as FlowState;
+  if (parsed?.v !== 1) return freshState();
+  return parsed;
 }
 
 interface FlowStore {
   subscribe: (fn: () => void) => () => void;
   get: () => FlowState;
   set: (updater: (s: FlowState) => FlowState) => void;
+  /** run-004: the remote pull-down's live-store refresh */
+  refresh: (next: FlowState) => void;
 }
 
 /**
- * One browser-local store per lesson id (module-level cache). Mutations are
- * plain store updates that persist synchronously — no setState-in-effect;
- * hydration renders the server snapshot and re-renders to the restored
- * state after mount (the hub progress.ts useSyncExternalStore pattern).
+ * One in-memory store per lesson id (module-level cache) over the shared
+ * flowPool. Mutations are plain store updates that write the pool + mirror
+ * to the account synchronously — no setState-in-effect; hydration renders
+ * the server snapshot and re-renders to the restored state after mount
+ * (the hub progress.ts useSyncExternalStore pattern).
  */
 const flowStores = new Map<string, FlowStore>();
+
+// the in-memory pool of record (T-ACCOUNT-ONLY run-001) — one entry per lesson id
+const flowPool = new Map<string, FlowState>();
 
 function getFlowStore(lessonId: string): FlowStore {
   const existing = flowStores.get(lessonId);
   if (existing) return existing;
-  let current = loadState(lessonId);
+  let current = flowPool.get(lessonId) ?? freshState();
   const listeners = new Set<() => void>();
   const store: FlowStore = {
     subscribe(fn) {
@@ -180,17 +189,107 @@ function getFlowStore(lessonId: string): FlowStore {
     set(updater) {
       const next = updater(current);
       if (next === current) return;
+      const stamped: FlowState = { ...next, at: Date.now() };
+      current = stamped;
+      flowPool.set(lessonId, stamped);
+      listeners.forEach((fn) => fn());
+      // T-AUDIT-TIER1 run-004 → T-ACCOUNT-ONLY run-001 — the account mirror
+      // IS the store (the persist-tail law; echo-guarded on the remote-apply
+      // path below)
+      mirrorDocPoolState(FLOW_DOC_KEY, readFlowPool());
+    },
+    /** run-004: the remote pull-down's live-store refresh — the pool is
+     *  already written by the bridge's apply; this only moves the in-memory
+     *  `current` so an OPEN lesson re-renders to the merged state. */
+    refresh(next: FlowState) {
       current = next;
-      try {
-        window.localStorage.setItem(STORAGE_PREFIX + lessonId, JSON.stringify(current));
-      } catch {
-        // storage unavailable — the flow still works, it just won't resume
-      }
       listeners.forEach((fn) => fn());
     },
   };
   flowStores.set(lessonId, store);
   return store;
+}
+
+/** Test seam: the live store for one lesson (the fixtures drive the SAME
+ *  chain the component does — set() writes the pool + mirrors). */
+export function __flowStoreForTests(lessonId: string): FlowStore {
+  return getFlowStore(lessonId);
+}
+
+// ── T-AUDIT-TIER1 run-004 → T-ACCOUNT-ONLY run-001 — the bridge
+// registration ─────────────────────────────────────────────────────────
+// The per-lesson wizard states mirror the account under the "guided-flow"
+// key of record: the pool IS the store (set() writes it synchronously),
+// the union is per lesson id, the NEWER `at`
+// wins (tie -> server), capped. apply writes the pool keys back AND
+// refreshes any LIVE store so an open lesson converges in place.
+import {
+  atOf,
+  bridgeDocPool,
+  isAccountDocsHydrated,
+  mirrorDocPoolState,
+  unionByStamp,
+} from "@/lib/account-docs-records";
+import { adoptLegacyStorage, onAccountDocsReset } from "@/lib/account-docs";
+import { readIdentitySnapshot } from "@/lib/identity";
+
+const FLOW_DOC_KEY = "guided-flow";
+const MAX_FLOWS = 50;
+
+function readFlowPool(): Record<string, FlowState> {
+  return Object.fromEntries(flowPool);
+}
+
+function writeFlowPool(pool: Record<string, FlowState>) {
+  flowPool.clear();
+  for (const [lessonId, state] of Object.entries(pool)) {
+    flowPool.set(lessonId, state);
+    flowStores.get(lessonId)?.refresh(state); // an OPEN lesson converges
+  }
+}
+
+if (typeof window !== "undefined") {
+  // T-ACCOUNT-ONLY run-001 — the one-time legacy adoption: scan the retired
+  // per-lesson keys ONCE, seed the pool AND the engine (they commit up only
+  // when the account has no doc of its own), then let the sweep retire them
+  const legacyKeys: string[] = [];
+  const legacyPool: Record<string, FlowState> = {};
+  try {
+    for (let i = 0; i < window.localStorage.length; i++) {
+      const k = window.localStorage.key(i);
+      if (!k || !k.startsWith(STORAGE_PREFIX)) continue;
+      const raw = window.localStorage.getItem(k);
+      if (!raw) continue;
+      const parsed = JSON.parse(raw) as FlowState;
+      if (parsed?.v === 1) {
+        legacyPool[k.slice(STORAGE_PREFIX.length)] = parseFlowState(parsed);
+        legacyKeys.push(k);
+      }
+    }
+  } catch {
+    // a torn scan degrades to the pool it could read
+  }
+  if (legacyKeys.length > 0) {
+    for (const [lessonId, state] of Object.entries(legacyPool)) flowPool.set(lessonId, state);
+    adoptLegacyStorage(FLOW_DOC_KEY, legacyKeys, () => legacyPool);
+  }
+  // account switch / sign-out: the pool and the live stores clear with the engine
+  onAccountDocsReset(() => {
+    flowPool.clear();
+    for (const store of flowStores.values()) store.refresh(freshState());
+  });
+
+  bridgeDocPool<Record<string, FlowState>, FlowState>({
+    docKey: FLOW_DOC_KEY,
+    cap: MAX_FLOWS,
+    readState: () => readFlowPool(),
+    readPool: (p) => p,
+    apply: (pool) => writeFlowPool(pool),
+    merge: (local, server) => unionByStamp(local, server),
+    stamp: (p) => Object.entries(p).map(([k, v]) => `${k}:${atOf(v.at)}`).sort().join("|"),
+    getAuthEmail: () => readIdentitySnapshot()?.email ?? null,
+    isHydrated: () => isAccountDocsHydrated(),
+  });
 }
 
 type Stage =
@@ -432,8 +531,12 @@ export function GuidedLessonFlow({
                           gotoModule(mi);
                         }}
                         className={cn(
+                          // t-ui-polish run-008: the module-list idle hover and
+                          // the active state both speak the house voice now —
+                          // the run-007-observed active-tint drift is
+                          // discharged here.
                           "flex w-full items-center gap-3 rounded-md border px-3 py-2.5 text-left transition-colors",
-                          active ? "border-primary/50 bg-primary/5" : "hover:border-primary/40",
+                          active ? "border-primary/60 bg-primary/5" : "hover:border-primary/60",
                         )}
                         aria-current={active ? "step" : undefined}
                       >
@@ -677,7 +780,7 @@ function GateStage(p: StageProps) {
                 className={cn(
                   "flex w-full items-start gap-3 rounded-md border px-3 py-2.5 text-left transition-colors",
                   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
-                  isSelected ? "border-primary/60 bg-primary/5" : "hover:border-primary/40",
+                  isSelected ? "border-primary/60 bg-primary/5" : "hover:border-primary/60",
                   written && "cursor-default",
                 )}
               >
@@ -971,7 +1074,7 @@ function RecalibrateStage(p: StageProps) {
               }}
               className={cn(
                 "flex w-full items-center gap-3 rounded-md border px-3 py-2.5 text-left transition-colors",
-                choice === r ? "border-primary/60 bg-primary/5" : "hover:border-primary/40",
+                choice === r ? "border-primary/60 bg-primary/5" : "hover:border-primary/60",
               )}
             >
               <span
@@ -1182,7 +1285,9 @@ function CheckQuestion({
               className={cn(
                 "flex items-start gap-3 rounded-md border px-3 py-2.5 text-left text-[13px] transition-colors",
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
-                state === "idle" && "hover:border-primary/40",
+                // t-ui-polish run-007: the idle hover speaks the house voice,
+                // matching the picked state's border-primary/60 below.
+                state === "idle" && "hover:border-primary/60",
                 state === "picked" && "border-primary/60 bg-primary/5",
                 state === "correct" && "border-success/50 bg-success/10",
                 state === "wrong" && "border-destructive/50 bg-destructive/10",

@@ -1,0 +1,206 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_vpyY8DrdsZGwBjBX",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "2bdef5d1b9f4af03acdf5641d1f2c265e0b253a95bf5ce8df86f5f18fc0a0c2c",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_vpyY8DrdsZGwBjBX",
+    "topicTitle": "6. Magnetism and Electromagnetism",
+    "subtopicTitle": "Magnetism and Electromagnetism",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/6-magnetism-and-electromagnetism/6-1-magnetism-and-electromagnetism/6-1-5-electromagnetism",
+    "specAnchors": [
+      {
+        "code": "6.8",
+        "text": "know that an electric current in a conductor produces a magnetic field around it"
+      }
+    ],
+    "primer": {
+      "text": "An electric current is a magnetic-field machine: switch it on and circles of field wrap around the conductor, switch it off and they vanish. This note draws the circular pattern around a straight wire, fixes its direction with the grip rule, and names the two levers — current size and distance — that set its strength.",
+      "prerequisiteSubtopic": "Magnetism and Electromagnetism"
+    },
+    "modules": [
+      {
+        "id": "rn_vpyY8DrdsZGwBjBX::L1",
+        "title": "Current as a source of magnetic field",
+        "sourceHeadings": [
+          "Electromagnetism",
+          "Magnetic field of a wire carrying current"
+        ],
+        "specRefs": [
+          "6.8"
+        ],
+        "opening": "Switch on a current and the space around the wire changes: a current flowing in a conductor sets up a magnetic field in the space around it. The field's map is a set of circles centred on the wire, their direction set by the current — reverse the current and every circle runs the other way.",
+        "keyPoints": [
+          "A current flowing in a conductor sets up a magnetic field in the space around it.",
+          "The field lines around a straight wire are circles centred on the wire.",
+          "The field direction follows the current, given by the right-hand grip rule.",
+          "Reversing the current reverses the direction of the field circles.",
+          "Switching the current off collapses the field — the field exists only while current flows."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Current flowing through a wire makes a magnetic field that wraps round the wire in rings. Thumb along the current, curled fingers give the ring direction — swap the current's direction and the rings flip too.",
+            "analogy": "The field circles the wire like water spiralling down a plughole around the drain: change the spin direction and the spiral reverses.",
+            "examPointer": "Say 'a FIELD is produced around the conductor' — writing 'the wire becomes magnetic' loses the mechanism mark."
+          },
+          "medium": {
+            "restatement": "The observation is the electromagnetism link: moving charges are a source of magnetic field, with circular symmetry about the wire because each element of current contributes equally in every azimuthal direction. The right-hand grip rule fixes the circulation sense, and the field's existence is conditional on the current — no flow, no field.",
+            "analogy": "Each moving charge is a tiny paddler rowing circles around the wire; billions in step make one smooth circulation pattern.",
+            "examPointer": "Diagrams need the current direction labelled (or an into/out-of-page cross/dot) — an unlabelled circle set scores poorly."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vpyY8DrdsZGwBjBX::L1::Q1",
+          "rn_vpyY8DrdsZGwBjBX::L1::Q2",
+          "rn_vpyY8DrdsZGwBjBX::L1::Q3",
+          "rn_vpyY8DrdsZGwBjBX::L1::Q4",
+          "rn_vpyY8DrdsZGwBjBX::L1::Q5",
+          "rn_vpyY8DrdsZGwBjBX::L1::Q6",
+          "rn_vpyY8DrdsZGwBjBX::L1::Q7",
+          "rn_vpyY8DrdsZGwBjBX::L1::Q8",
+          "rn_vpyY8DrdsZGwBjBX::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_vpyY8DrdsZGwBjBX::L2",
+        "title": "What makes a wire's field stronger",
+        "sourceHeadings": [
+          "Factors affecting field strength"
+        ],
+        "specRefs": [
+          "6.8"
+        ],
+        "opening": "The field around a current-carrying wire is not fixed: a larger current crowds the circles closer, and the field weakens rapidly with distance from the wire. Both levers — current size and distance — decide how strongly the field acts at a given place.",
+        "keyPoints": [
+          "A larger current produces a stronger magnetic field around the wire.",
+          "The field is strongest close to the wire and weakens with distance.",
+          "Field lines spread further apart with distance, showing the weakening field.",
+          "Reversing or switching the current changes the field's direction or existence, not this strength pattern.",
+          "Coiling the wire concentrates the field — the basis of the electromagnet."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Turn the current up and the rings around the wire squeeze tighter — stronger field. Move away from the wire and the rings spread out — weaker field.",
+            "analogy": "The field is like the warmth of a radiator: stronger when the heater is turned up, fading as you step away.",
+            "examPointer": "Quote both factors in 'strength' questions — current size AND distance from the wire — for the full mark."
+          },
+          "medium": {
+            "restatement": "Field strength around a long straight wire scales with the current and falls off with distance, which the diagram encodes as line crowding near the wire and spreading far away. Direction stays set by the current sense, so current changes alter magnitude while the geometry keeps its circular form.",
+            "analogy": "Ripples from a stone in a pond: a bigger stone makes taller ripples, and every ripple flattens as it spreads.",
+            "examPointer": "If a diagram question asks where the field is strongest, answer 'nearest the wire' and justify with the closest line spacing."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vpyY8DrdsZGwBjBX::L2::Q1",
+          "rn_vpyY8DrdsZGwBjBX::L2::Q2",
+          "rn_vpyY8DrdsZGwBjBX::L2::Q3",
+          "rn_vpyY8DrdsZGwBjBX::L2::Q4",
+          "rn_vpyY8DrdsZGwBjBX::L2::Q5",
+          "rn_vpyY8DrdsZGwBjBX::L2::Q6",
+          "rn_vpyY8DrdsZGwBjBX::L2::Q7",
+          "rn_vpyY8DrdsZGwBjBX::L2::Q8",
+          "rn_vpyY8DrdsZGwBjBX::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "electromagnetism",
+          "definition": "The production of a magnetic field by an electric current in a conductor.",
+          "firstLesson": 1
+        },
+        {
+          "term": "right-hand grip rule",
+          "definition": "Thumb along the current, curled fingers giving the direction of the field circles around a straight wire.",
+          "firstLesson": 1
+        },
+        {
+          "term": "field strength",
+          "definition": "How strong the magnetic field is at a point, shown by how crowded the field lines are.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/4447a0b30a78-12-2-1-field-around-a-wire.png",
+        "alt": "Field Around a Wire, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Magnetic field of a wire carrying current",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing the magnetic field around a current-carrying wire"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3f22ee6927d1-7-2-1-right-hand-thumb-rule-showing-the-directio.png",
+        "alt": "Right hand thumb rule, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Magnetic field of a wire carrying current",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The right-hand thumb rule shows the direction of current flow through a wire and the direction of the magnetic field around the wire"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/d11f5d764dc0-7-2-1-side-and-top-view-of-current-flowing-throu.png",
+        "alt": "Side and Top View of Current and the Magnetic Field Produced, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Magnetic field of a wire carrying current",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Side and top view of the current flowing through a wire and the magnetic field produced"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a5779f50a525-12-2-1-field-lines-wire.png",
+        "alt": "Field Lines Wire, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Factors affecting field strength",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The greater the current, the stronger the magnetic field. This is shown by more concentrated field lines"
+      }
+    ]
+  }
+}

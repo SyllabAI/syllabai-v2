@@ -15,10 +15,9 @@
  *   - DC-8 the RESUME: deck run position (and the filter that shaped it)
  *     survives a full reload — the SyllabAI analogue of SME's server-side
  *     resume (research pass 5, screenshot 198: position and bucket counts
- *     survive reload). Deliberately DEVICE-scoped browser-local state,
- *     matching the honesty chip's account/device disclosure — SME persists
- *     server-side per account; a per-account resume needs a core surface
- *     and is future work, not silently approximated here.
+ *     survive reload). T-ACCOUNT-ONLY run-001: the resume is ACCOUNT-scoped
+ *     (the "deck-sessions" workspace doc) — the per-account resume the DC-8
+ *     note called future work; the device record is retired by the sweep.
  *
  * Honesty pins (inherited from the flashcard evidence class):
  *   - this store is NEVER engagement evidence: resume position does not
@@ -135,7 +134,7 @@ export function filterCardIds(
   });
 }
 
-// ── DC-8: the device-scoped resume ───────────────────────────────────────
+// ── DC-8: the resume ───────────────────────────────────────────────────
 
 /** One saved deck session. `order` is the FULL run order (pre-filter);
  *  `pos` indexes the FILTERED run at save time; `filter` null = unfiltered.
@@ -151,7 +150,106 @@ export interface DeckSessionState {
 }
 
 export const deckSessionKey = (course: string, subtopicCode: string): string =>
-  `syllabai-hub:deck-position:${course}:${subtopicCode}`;
+  `syllabai-hub:deck-position:${course}:${subtopicCode}`; // RETIRED (legacy adoption pin)
+
+// ── T-AUDIT-TIER1 run-004 → T-ACCOUNT-ONLY run-001 — the account IS the
+// store ─────────────────────────────────────────────────────────────────
+// The per-deck resume states (deliberately DEVICE-scoped since DC-8) mirror
+// the account through the workspace-document plane under the
+// "deck-sessions" key of record — and since the 2026-11-05 sweep order the
+// account is the ONLY durable store: the pool lives in module memory,
+// hydrates from the doc, and every save is the write-through. The retired
+// per-deck localStorage records (syllabai-hub:deck-position:*) are adopted
+// ONCE per tab (the engine's legacy adoption — they commit up only when the
+// account has no doc of its own) and then removed.
+// The union is per deck key, the NEWER `at` wins (tie -> server), capped.
+// The honesty pins are UNCHANGED: a restored run must still cover EXACTLY
+// the deck's cards (validateSessionAgainstDeck), and resume position is
+// never engagement evidence.
+import {
+  atOf,
+  bridgeDocPool,
+  isAccountDocsHydrated,
+  mirrorDocPoolState,
+  unionByStamp,
+} from "@/lib/account-docs-records";
+import { adoptLegacyStorage, onAccountDocsReset } from "@/lib/account-docs";
+import { readIdentitySnapshot } from "@/lib/identity";
+
+const DECK_PREFIX = "syllabai-hub:deck-position:";
+const DOC_KEY = "deck-sessions";
+const MAX_DECK_SESSIONS = 80;
+
+// the in-memory pool of record — every hook instance reads the same Map
+const pool = new Map<string, DeckSessionState>();
+const poolListeners = new Set<() => void>();
+
+function emitPool(): void {
+  for (const l of [...poolListeners]) {
+    try {
+      l();
+    } catch {
+      // a broken listener never breaks the store
+    }
+  }
+}
+
+function deckPoolKey(storageKey: string): string {
+  return storageKey.slice(DECK_PREFIX.length);
+}
+
+function readDeckPool(): Record<string, DeckSessionState> {
+  return Object.fromEntries(pool);
+}
+
+function writeDeckPool(next: Record<string, DeckSessionState>) {
+  pool.clear();
+  for (const [pk, state] of Object.entries(next)) pool.set(pk, state);
+  emitPool();
+}
+
+// account switch / sign-out: the pool clears with the engine
+if (typeof window !== "undefined") {
+  onAccountDocsReset(() => {
+    pool.clear();
+    emitPool();
+  });
+
+  // the one-time legacy adoption: scan the retired per-deck keys ONCE, seed
+  // the engine, and let the sweep law retire them on clean
+  const legacyKeys: string[] = [];
+  const legacyPool: Record<string, DeckSessionState> = {};
+  try {
+    for (let i = 0; i < window.localStorage.length; i++) {
+      const k = window.localStorage.key(i);
+      if (!k || !k.startsWith(DECK_PREFIX)) continue;
+      const pk = deckPoolKey(k);
+      const parts = pk.split(":");
+      const s = loadLegacyDeckSession(parts[0] ?? "", parts.slice(1).join(":"));
+      if (s) {
+        legacyPool[pk] = s;
+        legacyKeys.push(k);
+      }
+    }
+  } catch {
+    // a torn localStorage scan degrades to the pool it could read
+  }
+  if (legacyKeys.length > 0) {
+    adoptLegacyStorage(DOC_KEY, legacyKeys, () => legacyPool);
+  }
+
+  bridgeDocPool<Record<string, DeckSessionState>, DeckSessionState>({
+    docKey: DOC_KEY,
+    cap: MAX_DECK_SESSIONS,
+    readState: () => readDeckPool(),
+    readPool: (p) => p,
+    apply: (next) => writeDeckPool(next),
+    merge: (local, server) => unionByStamp(local, server),
+    stamp: (p) => Object.entries(p).map(([k, v]) => `${k}:${atOf(v.at)}`).sort().join("|"),
+    getAuthEmail: () => readIdentitySnapshot()?.email ?? null,
+    isHydrated: () => isAccountDocsHydrated(),
+  });
+}
 
 /** A saved run may only restore when it covers EXACTLY this deck's cards:
  *  same size, no duplicates, every id present. Anything else (corpus wave,
@@ -164,30 +262,39 @@ export function validateSessionAgainstDeck(s: DeckSessionState, deckIds: Readonl
   return true;
 }
 
-export function loadDeckSession(course: string, subtopicCode: string): DeckSessionState | null {
-  if (typeof window === "undefined") return null;
+/** The strict shape check of record — shared by the legacy adoption (a raw
+ *  device record) and the memory reads (a remote-merged entry). */
+function parseDeckSession(raw: unknown): DeckSessionState | null {
+  if (!raw || typeof raw !== "object") return null;
+  const parsed = raw as Record<string, unknown>;
+  if (parsed.v !== 1) return null;
+  if (!Array.isArray(parsed.order) || !parsed.order.every((x) => typeof x === "string")) return null;
+  if (typeof parsed.pos !== "number" || !Number.isInteger(parsed.pos) || parsed.pos < 0) return null;
+  const filter = normalizeFilter(parsed.filter);
+  if (parsed.filter != null && filter === null) return null; // corrupt filter → discard the session
+  if (typeof parsed.at !== "number" || !Number.isFinite(parsed.at)) return null;
+  return { v: 1, order: parsed.order as string[], pos: parsed.pos, filter, at: parsed.at };
+}
+
+/** The legacy-adoption reader: one retired device record, validated. */
+function loadLegacyDeckSession(course: string, subtopicCode: string): DeckSessionState | null {
   try {
     const raw = window.localStorage.getItem(deckSessionKey(course, subtopicCode));
     if (!raw) return null;
-    const parsed = JSON.parse(raw) as Record<string, unknown>;
-    if (parsed.v !== 1) return null;
-    if (!Array.isArray(parsed.order) || !parsed.order.every((x) => typeof x === "string")) return null;
-    if (typeof parsed.pos !== "number" || !Number.isInteger(parsed.pos) || parsed.pos < 0) return null;
-    const filter = normalizeFilter(parsed.filter);
-    if (parsed.filter != null && filter === null) return null; // corrupt filter → discard the session
-    if (typeof parsed.at !== "number" || !Number.isFinite(parsed.at)) return null;
-    return { v: 1, order: parsed.order as string[], pos: parsed.pos, filter, at: parsed.at };
+    return parseDeckSession(JSON.parse(raw) as unknown);
   } catch {
     return null;
   }
 }
 
+export function loadDeckSession(course: string, subtopicCode: string): DeckSessionState | null {
+  const s = pool.get(`${course}:${subtopicCode}`);
+  return s ? parseDeckSession(s) : null;
+}
+
 export function saveDeckSession(course: string, subtopicCode: string, s: DeckSessionState): void {
-  if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(deckSessionKey(course, subtopicCode), JSON.stringify(s));
-  } catch {
-    // storage full / private mode — the session stays in-memory for this
-    // visit; the resume simply won't survive a reload (honest degrade)
-  }
+  pool.set(`${course}:${subtopicCode}`, s);
+  // T-ACCOUNT-ONLY run-001 — the account mirror IS the store (the
+  // persist-tail law; there is no localStorage write behind it anymore)
+  mirrorDocPoolState(DOC_KEY, readDeckPool());
 }

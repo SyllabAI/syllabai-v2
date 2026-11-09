@@ -84,7 +84,7 @@ function CoverageBar({
 
 function FailureCard({ body }: { body: string }) {
   return (
-    <Card className="mt-8">
+    <Card className="mt-6">
       <CardContent className="space-y-3 py-6">
         <p className="text-sm text-muted-foreground">{body}</p>
         <Button variant="outline" onClick={() => window.location.reload()}>
@@ -139,7 +139,7 @@ export function CoveragePanel({ course }: { course: string }) {
 
   if (graphLoading || (!rollup && !graphFailed)) {
     return (
-      <p className="mt-8 text-sm text-muted-foreground">
+      <p className="mt-6 text-sm text-muted-foreground">
         Reading the syllabus map and joining your evidence…
       </p>
     );
@@ -163,14 +163,14 @@ export function CoveragePanel({ course }: { course: string }) {
   const awaiting = learner.drawer.stats.awaitingMarks;
 
   return (
-    <div className="mt-8 space-y-6">
+    <div className="mt-6 space-y-6">
       {/* ── overall ── */}
       <Card>
         <CardContent className="space-y-4 py-6">
           <div className="flex flex-wrap items-center gap-2">
             <ListChecks className="size-4 text-primary" aria-hidden />
             <h2 className="text-base font-semibold">Coverage across the course</h2>
-            <ProvenanceBadge tier={live ? "CORE_MEASURED" : "SIMULATED"} />
+            <ProvenanceBadge tier={live ? "CORE_MEASURED" : "SIMULATED"} studentVoice />
           </div>
           <CoverageBar proven={proven} seen={seen} total={total} className="h-3" />
           <div className="space-y-1">
@@ -189,7 +189,7 @@ export function CoveragePanel({ course }: { course: string }) {
             <p className="text-xs text-muted-foreground">
               {live
                 ? "Live account evidence — marked attempts recorded on your account."
-                : "This browser's local progress — the same demo lane the knowledge graph reads."}
+                : "This browser's local progress — the same local data the knowledge graph reads."}
               {awaiting > 0 &&
                 ` ${awaiting} typed ${awaiting === 1 ? "answer" : "answers"} await self-marking and will count once marked.`}
             </p>

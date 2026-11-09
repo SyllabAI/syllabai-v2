@@ -1,0 +1,81 @@
+{
+ "checks": {
+  "sweep_heal_exactly_B": {
+   "ok": true,
+   "detail": "healed=1 new=0"
+  },
+  "sweep_counts": {
+   "ok": true,
+   "detail": "5723u/11207occ -> 5722u/11201occ"
+  },
+  "A_intended_present_x3": {
+   "ok": true,
+   "detail": "found 3/3"
+  },
+  "A_corrupted_absent": {
+   "ok": true,
+   "detail": ""
+  },
+  "B_repaired_present_x6": {
+   "ok": true,
+   "detail": "found 6/6"
+  },
+  "B_corrupted_absent": {
+   "ok": true,
+   "detail": ""
+  },
+  "C2_joined[I_{bm}]": {
+   "ok": true,
+   "detail": ""
+  },
+  "C2_spaced_gone[I_{b m}]": {
+   "ok": true,
+   "detail": ""
+  },
+  "C2_joined[\\Delta E_{el}]": {
+   "ok": true,
+   "detail": ""
+  },
+  "C2_spaced_gone[\\Delta E_{e l}]": {
+   "ok": true,
+   "detail": ""
+  },
+  "C5_joined[S_xx]": {
+   "ok": true,
+   "detail": ""
+  },
+  "C5_spaced_gone": {
+   "ok": true,
+   "detail": ""
+  },
+  "C6[cie-a-level-physics-25]_joined_and_spaced_gone": {
+   "ok": true,
+   "detail": "vin=2 vout=2"
+  },
+  "C6[cie-as-physics-25]_joined_and_spaced_gone": {
+   "ok": true,
+   "detail": "vin=4 vout=4"
+  },
+  "C6_corpus_totals": {
+   "ok": true,
+   "detail": "vin=6 vout=6"
+  },
+  "C6_spaced_absent_corpuswide_backtick": {
+   "ok": true,
+   "detail": ""
+  },
+  "run2_repaired_all_present": {
+   "ok": true,
+   "detail": "missing=[]"
+  },
+  "run2_r1_corrupted_absent": {
+   "ok": true,
+   "detail": "seen=0"
+  },
+  "C3_hybrid_keeps_intact": {
+   "ok": true,
+   "detail": "hybrid1=2 hybrid2=2"
+  }
+ },
+ "fail": []
+}

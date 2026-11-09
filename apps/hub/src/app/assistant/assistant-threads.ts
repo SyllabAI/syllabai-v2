@@ -1,6 +1,13 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import {
+  bridgeThreadStore,
+  isAccountDocsHydrated,
+  mirrorThreadState,
+} from "@/lib/account-docs-bridge";
+import { adoptLegacyStorage, onAccountDocsReset } from "@/lib/account-docs";
+import { readIdentitySnapshot } from "@/lib/identity";
 
 /**
  * Assistant conversation store — DC-6 phase 1 (docs/DC6-ASSISTANT-HISTORY-PLAN.md).
@@ -62,12 +69,15 @@ export interface AssistantThread {
   seq?: number;
 }
 
-const KEY = "syllabai.assistant.threads.v1";
-const ACTIVE_KEY = "syllabai.assistant.activeThread.v1";
-const EVENT = "syllabai:assistant-threads-changed";
+const KEY = "syllabai.assistant.threads.v1"; // RETIRED (legacy adoption pin)
+const ACTIVE_KEY = "syllabai.assistant.activeThread.v1"; // RETIRED (legacy adoption pin)
+/** T-AUDIT-TIER1 run-003 — the account plane this pool mirrors into. */
+const DOC_KEY = "assistant-threads";
 
-/** storage guards — keep localStorage bounded (tutor parity) */
-const MAX_THREADS = 40;
+/** storage guards — keep the doc bounded (tutor parity). T-CAPS-POLICY-1:
+ *  the count cap raises to 200 (server threads-store parity); the BINDING
+ *  bound for the durable copy is the bridge's byte budget (capThreadsByBytes). */
+const MAX_THREADS = 200;
 const MAX_MESSAGES_PER_THREAD = 200;
 
 interface StoredState {
@@ -75,46 +85,57 @@ interface StoredState {
   activeId: string | null;
 }
 
-let state: StoredState = load();
+const EMPTY_STATE: StoredState = { threads: [], activeId: null };
+let state: StoredState = EMPTY_STATE;
 const listeners = new Set<() => void>();
 
-/** monotonic creation counter — survives reload via load()'s derive step */
+/** monotonic creation counter — restored with the pool (adoption/hydration) */
 let seqCounter = 0;
 
-function load(): StoredState {
-  if (typeof window === "undefined") return { threads: [], activeId: null };
-  try {
-    const raw = window.localStorage.getItem(KEY);
-    if (!raw) return { threads: [], activeId: null };
-    const parsed = JSON.parse(raw) as StoredState;
-    if (!Array.isArray(parsed.threads)) return { threads: [], activeId: null };
-    const threads = parsed.threads
-      .filter((t) => t && typeof t.id === "string" && Array.isArray(t.messages))
-      .slice(0, MAX_THREADS);
-    // seq continuity: new threads must sort AFTER everything already stored
-    seqCounter = threads.reduce((m, t) => Math.max(m, t.seq ?? 0), 0) + 1;
-    return {
-      threads,
-      activeId:
-        parsed.activeId && threads.some((t) => t.id === parsed.activeId)
-          ? parsed.activeId
-          : (threads[0]?.id ?? null),
-    };
-  } catch {
-    return { threads: [], activeId: null };
-  }
+function parseState(raw: unknown): StoredState {
+  if (!raw || typeof raw !== "object") return EMPTY_STATE;
+  const parsed = raw as StoredState;
+  if (!Array.isArray(parsed.threads)) return EMPTY_STATE;
+  const threads = parsed.threads
+    .filter((t) => t && typeof t.id === "string" && Array.isArray(t.messages))
+    .slice(0, MAX_THREADS);
+  // seq continuity: new threads must sort AFTER everything already loaded
+  seqCounter = threads.reduce((m, t) => Math.max(m, t.seq ?? 0), 0) + 1;
+  return {
+    threads,
+    activeId:
+      parsed.activeId && threads.some((t) => t.id === parsed.activeId)
+        ? parsed.activeId
+        : (threads[0]?.id ?? null),
+  };
+}
+
+// T-ACCOUNT-ONLY run-001 — the one-time legacy adoption + the reset law
+// (the tutor store's shape, verbatim; see threads.ts for the full law)
+if (typeof window !== "undefined") {
+  adoptLegacyStorage(DOC_KEY, [KEY, ACTIVE_KEY], () => {
+    try {
+      const raw = window.localStorage.getItem(KEY);
+      return raw ? parseState(JSON.parse(raw) as unknown) : null;
+    } catch {
+      return null;
+    }
+  });
+  onAccountDocsReset(() => {
+    state = EMPTY_STATE;
+    snap = notifySnapshot();
+    for (const l of listeners) l();
+  });
 }
 
 let persistTimer: ReturnType<typeof setTimeout> | null = null;
 
 function persist() {
   if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(KEY, JSON.stringify(state));
-    window.localStorage.setItem(ACTIVE_KEY, state.activeId ?? "");
-  } catch {
-    // quota exceeded / private mode — the session still works in memory
-  }
+  // T-AUDIT-TIER1 run-003 → T-ACCOUNT-ONLY run-001 — the account mirror IS
+  // the store (the DC-6 copy-adapt disclosure extends to the plane: zero
+  // shared files with the tutor — the plane KEY is the only join point).
+  mirrorThreadState(DOC_KEY, notifySnapshot());
 }
 
 /** Trailing-edge throttle: disk writes wait (tutor parity). */
@@ -125,15 +146,6 @@ function emit() {
     persist();
   }, 400);
   for (const l of listeners) l();
-}
-
-if (typeof window !== "undefined") {
-  window.addEventListener("storage", (e) => {
-    if (e.key === KEY || e.key === ACTIVE_KEY) {
-      state = load();
-      for (const l of listeners) l();
-    }
-  });
 }
 
 function notifySnapshot() {
@@ -418,3 +430,23 @@ function updateInPlace(id: string, patch: Partial<AssistantThread>) {
     threads: state.threads.map((t) => (t.id === id ? { ...t, ...patch } : t)),
   });
 }
+
+// ── T-AUDIT-TIER1 run-003 — the account mirror (bridge registration) ─────
+// Same reconcile law as the tutor pool (lib/account-docs-bridge.ts); the
+// shared ZERO-files discipline holds — only the DOC_KEY vocabulary joins.
+bridgeThreadStore<StoredState, AssistantThread>({
+  docKey: DOC_KEY,
+  maxThreads: MAX_THREADS,
+  maxMessages: MAX_MESSAGES_PER_THREAD,
+  readState: () => ({ threads: state.threads, activeId: state.activeId }),
+  readThreads: (s) => s.threads,
+  apply: (threads) => {
+    // dropped active pointer re-pins to the newest survivor / null
+    const ids = new Set(threads.map((t) => t.id));
+    const activeId =
+      state.activeId && ids.has(state.activeId) ? state.activeId : (threads[0]?.id ?? null);
+    commit({ threads, activeId });
+  },
+  getAuthEmail: () => readIdentitySnapshot()?.email ?? null,
+  isHydrated: () => isAccountDocsHydrated(),
+});

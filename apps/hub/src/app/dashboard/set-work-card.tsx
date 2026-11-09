@@ -40,6 +40,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { api, getToken } from "@/lib/api";
 import { formatDue } from "@/lib/format";
 import { useNow } from "@/lib/use-now";
+// Tier-3 follow-up 4: the probe-fixture filter is the ONE shared
+// implementation (@syllabai/shared) — the api's fetchAssignmentLists
+// drops these rows at the source; this presentation-side filter stays as
+// defense-in-depth and imports the same law.
+import { isSyntheticTitle } from "@syllabai/shared";
 import type { AgendaView } from "@/lib/types";
 
 export function SetWorkCard() {
@@ -69,35 +74,44 @@ export function SetWorkCard() {
 
   if (signedOut) return null;
 
+  // Dashboard UX review 2026-11-04: teacher-onboarding fixtures leaked into
+  // the live agenda ("probe late asprobe_1790628651") — synthetic join-code
+  // probe rows a student reads as their homework, one of them dated ~57
+  // years overdue. They are onboarding artefacts, not class work; filtered
+  // presentation-side until the agenda stops issuing them.
+  const assignments = (agenda?.assignments ?? []).filter(
+    ({ assignment }) => !isSyntheticTitle(assignment.title),
+  );
+
   return (
     <Card>
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base">
           <ClipboardList className="size-4 text-primary" aria-hidden="true" />
-          Set work
+          Homework
         </CardTitle>
         <CardDescription>
-          Assigned by your teacher, due-soonest first — with where your hand-in stands.
+          Set by your teacher, soonest deadline first — with where your hand-in stands.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-3">
         {failed ? (
           <p className="text-sm text-muted-foreground">
-            Set work is unavailable right now — your account still holds it; try again later.
+            Homework is unavailable right now — your account still holds it; try again later.
           </p>
         ) : agenda === null ? (
           <div className="space-y-1.5" aria-hidden>
             <Skeleton className="h-9 w-full" />
             <Skeleton className="h-9 w-full" />
           </div>
-        ) : agenda.assignments.length === 0 ? (
+        ) : assignments.length === 0 ? (
           <p className="text-sm text-muted-foreground">
-            No set work yet — assignments your teacher sets will appear here.
+            No homework yet — assignments your teacher sets will appear here.
           </p>
         ) : (
           <>
             <ul className="space-y-1.5">
-              {agenda.assignments.map(({ assignment, mySubmission }) => {
+              {assignments.map(({ assignment, mySubmission }) => {
                 const overdue =
                   assignment.status === "open" && Date.parse(assignment.dueAt) < now;
                 return (
@@ -123,10 +137,7 @@ export function SetWorkCard() {
                         </Badge>
                       )}
                       {overdue && !mySubmission && (
-                        <Badge
-                          variant="outline"
-                          className="text-xs text-destructive"
-                        >
+                        <Badge variant="destructive" className="text-xs">
                           Overdue
                         </Badge>
                       )}

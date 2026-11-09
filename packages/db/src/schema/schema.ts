@@ -1889,6 +1889,15 @@ export const markAwards = pgTable("mark_awards", {
         workingRef: uuid("working_ref"),
         pipelineVersion: text("pipeline_version").notNull(),
         feedback: jsonb().notNull(),
+        // T-MG-MARK-DELTA-1 (rollout plan Lane E): the 2026-11-04 live-capture
+        // contract delta — attempt classification (full|partial|blank, the
+        // observed `attempt: "full"` verdict field) + the re-mark content hash
+        // ({crop bytes, ink-doc revision, mark_points version} — identical
+        // re-marks short-circuit to the standing award; "mark again" forces
+        // fresh). BOTH nullable: pre-existing rows stay honest (absence =
+        // the additive law; one migration, 0027).
+        attemptClass: text("attempt_class"),
+        cacheHash: text("cache_hash"),
         createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
 }, (table) => [
         index("ix_mark_awards_learner_doc").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.documentRefType.asc().nullsLast().op("text_ops"), table.documentRefId.asc().nullsLast().op("uuid_ops")),
@@ -1907,6 +1916,7 @@ export const markAwards = pgTable("mark_awards", {
         check("mark_awards_max_score_check", sql`max_score > 0`),
         check("mark_awards_ordinal_check", sql`ordinal >= 0`),
         check("mark_awards_page_check", sql`page IS NULL OR page > 0`),
+        check("mark_awards_attempt_class_check", sql`attempt_class IS NULL OR attempt_class IN ('full', 'partial', 'blank')`),
 ]);
 
 // T-MG-AWARDS-1 run-001 (plan §3.2, the "mark_working_blocks (additive,
@@ -2027,7 +2037,9 @@ export const teachObjectives = pgTable("teach_objectives", {
                 foreignColumns: [teachSessions.id],
                 name: "teach_objectives_session_id_fkey"
         }),
-        check("teach_objectives_ordinal_check", sql`ordinal BETWEEN 1 AND 4`),
+        // T-TEACHGENIE-001 / 0025: ordinal relax 1–4 → 1–8 (In-Depth carries
+        // SIX objectives — MG "Objective 1/6" parity; ceiling 8 for headroom).
+        check("teach_objectives_ordinal_check", sql`ordinal BETWEEN 1 AND 8`),
         check("teach_objectives_status_check", sql`status IN ('not_started','covered','not_covered','flagged')`),
 ]);
 export const teachObjectiveCoverages = pgTable("teach_objective_coverages", {
@@ -2240,4 +2252,28 @@ export const learnerMockResults = pgTable("learner_mock_results", {
         check("learner_mock_results_ended_check", sql`(ended)::text = ANY (ARRAY[('time-up'::character varying)::text, ('self'::character varying)::text, ('exited'::character varying)::text])`),
         check("learner_mock_results_marks_check", sql`marks >= 0 AND total >= 0 AND duration_min >= 0 AND time_used_sec >= 0`),
         check("learner_mock_results_questions_check", sql`questions IS NULL OR jsonb_typeof(questions) = 'array'`),
+]);
+
+// T-AUDIT-TIER1 run-003 — the workspace-document plane (0026). ONE row per
+// (user, docKey): the durable copy of a hub workspace store's state (the
+// tutor/assistant/CLA thread pools this band; deck/guided-flow/progress/
+// teacher-classes/test-builder-drafts follow in run-004 under the closed
+// vocabulary of packages/contracts workspaceDocKeySchema). Values are
+// OPAQUE jsonb — the server never interprets them (the reconcile law is
+// the hub's per-store bridge); last-write-wins per key with a server
+// updated_at of record. FK discipline follows the 0022/0023 personal-state
+// precedent: these rows ARE the user's own working state; a deleted user
+// takes them with them.
+export const userDocuments = pgTable("user_documents", {
+        userId: uuid("user_id").notNull(),
+        docKey: varchar("doc_key", { length: 100 }).notNull(),
+        value: jsonb().notNull(),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        primaryKey({ columns: [table.userId, table.docKey], name: "user_documents_pk" }),
+        foreignKey({
+                columns: [table.userId],
+                foreignColumns: [users.id],
+                name: "user_documents_user_id_fkey"
+        }).onDelete("cascade"),
 ]);

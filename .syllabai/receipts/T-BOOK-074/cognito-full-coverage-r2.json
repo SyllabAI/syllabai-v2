@@ -1,0 +1,42 @@
+{
+ "/task": "T-BOOK-074",
+ "/run": "run-001",
+ "/receipt": "cognito-full-coverage-r2",
+ "/lane": "books/4ch1 media lane — DB leg + production serve-proof (task close-out)",
+ "/date_utc": "2026-11-04",
+ "/agent": "operator sandbox session (trace 1a1a5051a8839469)",
+ "/credential_recovery_of_record": {
+   "problem": "operator DSN not in session env; api.neon.tech unreachable from the sandbox (no DNS A record — confirmed via two independent public DoH resolvers, control domain resolved fine), so the napi_ route could not re-issue a connection URI",
+   "solution": "DSN recovered from session-side .prod_url (password shape npg_…len=16, consistent with the masked chat reference npg_cZX3…); pooler host of record constructed (ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech); password never echoed, never written to any new file",
+   "db_host_reachability": "pooler host resolves; tcp/5432 reachable from sandbox"
+ },
+ "/preflight": {
+   "server_identity_guc": "{\"db\":\"neondb\",\"project_id\":\"billowing-cherry-15418366\",\"branch_id\":\"br-muddy-bar-a5huwldd\",\"ver\":\"PostgreSQL 18.6 (ac70818) on aarch64-unknown-linux-gnu\"} — MAIN of record confirmed (GUC server-identify BEFORE any write)",
+   "estate": "266 blocks, ALL VALIDATED — untouched baseline",
+   "chapters": "all 17 affected chapters VALIDATED with join sets captured (scripts/t-book-074-db-probe.mjs)"
+ },
+ "/land": {
+   "script_of_record": "scripts/t-book-074-scoped-ingest.mjs land (generalized T-BOOK-073 widen-run pattern: scoped landing, NEVER the full-rail re-ingest)",
+   "binding_laws": "ALL PASS before any write: 29 chapters VALIDATED (no-orphan law), specPointRefs ⊆ DB join sets for all 63 media-embed blocks, no checkRefs on media-embed",
+   "result": "landed=34 (all SUGGESTED), skipped=29 (pre-existing VALIDATED media-embed rows — zero downgrades, zero re-lands; idempotent by design)",
+   "estate_after_land": "[{\"validation_state\":\"SUGGESTED\",\"n\":34},{\"validation_state\":\"VALIDATED\",\"n\":266}]",
+   "forensics": "newest updated_at 2026-11-04T05:41:52.037Z"
+ },
+ "/flip": {
+   "lever": "operator S4 keyed action — separate command, only rows still SUGGESTED in the block set",
+   "result": "flipped=34 -> estate census after flip: [{\"validation_state\":\"VALIDATED\",\"n\":300}] (266 -> 300, exactly as ADR-BOOK-0006 predicted)",
+   "forensics": "exactly 34 media-embed rows touched 05:42:05.334Z–05:42:12.624Z this hour; nothing else moved"
+ },
+ "/serve_proof": {
+   "surface": "https://syllabai-hub-v2.vercel.app (hub of record), /courses/igcse-chemistry-19/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d/lesson?chapter=…",
+   "method": "first-hand headless-browser DOM assertions + full fleet census",
+   "c02": "h1 'Elements, compounds and mixtures' — 6 youtube-nocookie iframes: 1 pre-existing (E15yF8dNGr8) + 5 NEW (X1zptKXIEfY, 29Rd-Lly-fw, pnTGNAfu6GE, TdJ57SQ6GAQ, wFZrm7CAg0M) — all 5 new ids present",
+   "c20": "h1 'Rates of reaction' — 4 cards: 1 pre-existing (JK7yPzO9POU) + 3 NEW (HaQm4pNMZug, aanZzrUPEDw, ssa3wh3RNt0) — all 3 new ids present",
+   "fleet_census": "29/29 chapters: DB-expected media count == production-rendered card count on EVERY chapter; 63/63 cards fleet-wide (scripts/t-book-074-fleet-census.mjs + browser eval loop)",
+   "card_chrome": "c02 1.7-purity card visually verified: blurb, Watch-on-YouTube link, 'Video © Cognito (cognito.org) — embedded via YouTube', licensing line 'media-sources.yaml#cog-1-7-purity (public embed; reviewed 2026-11-04)'",
+   "player_paint_note": "in the headless capture the YouTube player paints as a placeholder box (consent/JS-gated in headless); the iframe element is present and correctly addressed (youtube-nocookie embed endpoints were probed 200 at curation), and card chrome is verified visually — interactive playback was proven for the same renderer chain in T-BOOK-073 (PR #705 lane)",
+   "screenshots": ".syllabai/lane-artifacts/T-BOOK-074/c02-new-watch-card-production.png + c20-new-watch-card-production.png (viewport close-ups of NEW cards)"
+ },
+ "/verdict": "T-BOOK-074 CLOSED IN FULL — every fetch-verified Cognito Edexcel-IGCSE Chemistry video now serves from the 4CH1 lesson pages of record; census question answered (93 pages / 63 video-bearing / 61 distinct assets, all 61 integrated)",
+ "/boundaries": "zero force-push; scoped DB writes only (34 identities, SUGGESTED then keyed flip); zero contact with non-4CH1 documents; scripts session-side (t-book-074-db-probe.mjs, t-book-074-scoped-ingest.mjs, t-book-074-fleet-census.mjs, t-book-074-serve-proof.sh)"
+}

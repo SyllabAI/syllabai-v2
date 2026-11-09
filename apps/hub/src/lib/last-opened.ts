@@ -6,11 +6,13 @@
  * course cards).
  *
  * It records REAL navigation only (the tracker mounts on course routes),
- * never simulated progress. Since the frontend deep-audit Tier 1 (operator
- * order 2026-11-03: "things that are localStorage-only, make them saved to
- * account") the record is ACCOUNT-BACKED (T-TIER1): the versioned
- * localStorage record stays the UI cache, and while signed in it mirrors
- * the learner's core account (learner_last_opened, one row per account).
+ * never simulated progress. T-ACCOUNT-ONLY run-001 (operator order
+ * 2026-11-05: "remove device-local things completely"): the pointer lives
+ * in module memory and the ACCOUNT (learner_last_opened, one row per
+ * account) is its only durable store. The retired localStorage record
+ * (syllabai.lastOpened.v1) adopts ONCE per tab (it seeds the memory pointer
+ * so the reconcile's recency/seed law migrates it) and is removed after the
+ * first successful server contact.
  *
  * Implementation: useSyncExternalStore keeps all hook instances reactive
  * without setState-in-effect cascades; the sync layer below follows the
@@ -21,7 +23,7 @@ import { useEffect, useSyncExternalStore } from "react";
 import { api } from "@/lib/api";
 import { readIdentitySnapshot, useIdentity } from "@/lib/identity";
 
-const KEY = "syllabai.lastOpened.v1";
+const KEY = "syllabai.lastOpened.v1"; // RETIRED (legacy adoption pin)
 const EVENT = "syllabai:last-opened-changed";
 
 export type ResourceKind =
@@ -51,36 +53,52 @@ export interface LastOpened {
 
 const EMPTY: LastOpened | null = null;
 
-function readEntry(): LastOpened | null {
+// ── the in-memory pointer of record + the one-time legacy adoption ────────
+let entry: LastOpened | null = EMPTY;
+let snapshot: LastOpened | null = EMPTY;
+let legacyKeyPresent = false;
+
+function parseEntry(raw: unknown): LastOpened | null {
+  if (
+    raw &&
+    typeof raw === "object" &&
+    typeof (raw as LastOpened).slug === "string" &&
+    typeof (raw as LastOpened).resource === "string" &&
+    RESOURCE_KINDS.includes((raw as LastOpened).resource as ResourceKind)
+  ) {
+    return raw as LastOpened;
+  }
+  return EMPTY;
+}
+
+if (typeof window !== "undefined") {
   try {
     const raw = window.localStorage.getItem(KEY);
-    if (!raw) return EMPTY;
-    const parsed: unknown = JSON.parse(raw);
-    if (
-      parsed &&
-      typeof parsed === "object" &&
-      typeof (parsed as LastOpened).slug === "string" &&
-      typeof (parsed as LastOpened).resource === "string" &&
-      RESOURCE_KINDS.includes((parsed as LastOpened).resource as ResourceKind)
-    ) {
-      return parsed as LastOpened;
+    if (raw) {
+      const parsed = parseEntry(JSON.parse(raw) as unknown);
+      if (parsed) {
+        entry = parsed;
+        snapshot = parsed;
+        legacyKeyPresent = true;
+      }
     }
-    return EMPTY;
   } catch {
-    return EMPTY;
+    // corrupt record → the account reconcile decides alone
   }
 }
 
-let snapshot: LastOpened | null = EMPTY;
+function readEntry(): LastOpened | null {
+  return entry;
+}
+
 function getSnapshot(): LastOpened | null {
-  const next = readEntry();
   if (
     !snapshot ||
-    !next ||
-    snapshot.slug !== next.slug ||
-    snapshot.resource !== next.resource
+    !entry ||
+    snapshot.slug !== entry.slug ||
+    snapshot.resource !== entry.resource
   ) {
-    snapshot = next;
+    snapshot = entry;
   }
   return snapshot;
 }
@@ -88,13 +106,36 @@ function getServerSnapshot(): LastOpened | null {
   return EMPTY;
 }
 
-function write(entry: LastOpened) {
-  try {
-    window.localStorage.setItem(KEY, JSON.stringify(entry));
-  } catch {
-    // storage full / private mode — last-opened just won't persist
-  }
+function write(e: LastOpened) {
+  entry = e;
+  snapshot = e;
   window.dispatchEvent(new CustomEvent(EVENT));
+}
+
+/** The one-time legacy adoption's retirement (after the first successful
+ *  server contact — the memory pointer already owns the data). */
+function retireLegacyPointerKey(): void {
+  if (!legacyKeyPresent || typeof window === "undefined") return;
+  try {
+    window.localStorage.removeItem(KEY);
+  } catch {
+    // best-effort
+  }
+  legacyKeyPresent = false;
+}
+
+/** Plain (non-hook) read of the current pointer — for plain async stores
+ *  and the law tests. The pointer is the in-memory store of record
+ *  (T-ACCOUNT-ONLY run-001). */
+export function readLastOpened(): LastOpened | null {
+  return entry;
+}
+
+/** Test seam: the explicit-empty state without a device or a network. */
+export function __resetLastOpenedForTests(): void {
+  entry = EMPTY;
+  snapshot = EMPTY;
+  legacyKeyPresent = false;
 }
 
 /** Record a real course-surface visit. Client-side only (tracker calls this from an effect). */
@@ -109,10 +150,8 @@ export function useLastOpened(): LastOpened | null {
   return useSyncExternalStore(
     (onChange) => {
       window.addEventListener(EVENT, onChange);
-      window.addEventListener("storage", onChange);
       return () => {
         window.removeEventListener(EVENT, onChange);
-        window.removeEventListener("storage", onChange);
       };
     },
     getSnapshot,
@@ -132,25 +171,24 @@ export function resourceFromPathname(pathname: string): { slug: string; resource
   return { slug, resource };
 }
 
-// ── server sync (T-TIER1) — the account-backed pointer ──────────────────────
-// Operator order 2026-11-03 ("things that are localStorage-only, make them
-// saved to account"); the my-subjects.ts T-TEACH-001 write-through law,
-// recency edition:
+// ── server sync (T-TIER1 → T-ACCOUNT-ONLY run-001) — the account IS the
+// store ─────────────────────────────────────────────────────────────────
+// Operator order 2026-11-05 ("remove device-local things completely"); the
+// my-subjects.ts write-through law, recency edition:
 //
 // Law of record:
-//  - The localStorage record stays the UI truth (reactive, instant, works
-//    signed-out exactly as before).
-//  - Signed in, every LOCAL write is mirrored to core as an idempotent PUT
-//    (debounced per tick to coalesce navigation bursts); a failed PUT
-//    leaves the local record untouched (cache law) and the next write or
-//    reconcile re-mirrors.
-//  - On identity acquisition (mount / login / cross-tab session), the sync
-//    reconciles ONCE and RECENCY decides — a "last" pointer carries its own
-//    time ordering, unlike a roster set: the newer of (server updatedAt,
-//    local ts) wins; a tie goes to the server (deterministic). Server null
-//    + local present → seed the server from local (the one-time migration
-//    of an existing pointer); server present + local absent → mirror the
-//    server down.
+//  - The memory pointer is the UI truth (reactive, instant); the ACCOUNT is
+//    its only durable store.
+//  - Every LOCAL write mirrors to core as an idempotent PUT (debounced per
+//    tick to coalesce navigation bursts); a failed PUT leaves the memory
+//    pointer untouched and the next write or reconcile re-mirrors.
+//  - On identity acquisition (mount / login), the sync reconciles ONCE and
+//    RECENCY decides — a "last" pointer carries its own time ordering,
+//    unlike a roster set: the newer of (server updatedAt, local ts) wins; a
+//    tie goes to the server (deterministic). Server null + local present →
+//    seed the server from local (the one-time migration of an existing
+//    pointer — including the adopted device record); server present + local
+//    absent → mirror the server down.
 //  - Remote-driven writes set applyingRemote so the mirror does not echo
 //    the pointer back to core (one PUT per intent, never two).
 //  - Registry membership is validated at READ time by the callers (the
@@ -158,6 +196,9 @@ export function resourceFromPathname(pathname: string): { slug: string; resource
 
 let applyingRemote = false;
 let putScheduled = false;
+/** The account the in-tab pointer currently mirrors (the cross-account
+ *  guard: a stale pointer from account A never surfaces in account B). */
+let syncedForEmail: string | null = null;
 
 function putCurrentLocal(): void {
   if (putScheduled || applyingRemote) return;
@@ -217,12 +258,18 @@ export function useLastOpenedSync(): void {
       try {
         const envelope = await api.lastOpened();
         if (cancelled) return;
+        if (syncedForEmail !== identity.email) {
+          // fresh acquisition: a stale in-tab pointer from ANOTHER account is
+          // cleared (the legacy seed is exempt — its one-time migration IS
+          // the point of this reconcile)
+          if (!legacyKeyPresent && entry) write(EMPTY as LastOpened);
+          syncedForEmail = identity.email;
+        }
         const verdict = reconcileLastOpened(envelope.lastOpened, readEntry());
         if (verdict.action === "mirror-down" && verdict.entry) {
           // server wins: mirror silently (no echo PUT)
           applyingRemote = true;
-          window.localStorage.setItem(KEY, JSON.stringify(verdict.entry));
-          window.dispatchEvent(new CustomEvent(EVENT));
+          write(verdict.entry);
           applyingRemote = false;
         } else if (verdict.action === "put-up" && verdict.entry) {
           applyingRemote = false; // this PUT carries LOCAL intent (seed or re-mirror)
@@ -230,6 +277,7 @@ export function useLastOpenedSync(): void {
             .setLastOpened({ courseSlug: verdict.entry.slug, resource: verdict.entry.resource })
             .catch(() => {});
         }
+        retireLegacyPointerKey(); // a successful server contact ends the device record
       } catch {
         // core unreachable — cache law: local record stays as-is
       }

@@ -110,11 +110,29 @@ const REVIEW = {
 };
 
 describe("teach-me contract pins (T-TEACHME-001 run-001, ADR-040)", () => {
-  it("positive: a ruled session shape parses (Quick=3/In-Depth=4 objectives, ≤3 spec points)", () => {
+  it("positive: a ruled session shape parses (objectives 3–6; spec codes now note-driven, ceiling 8)", () => {
     const s = teachSessionSchema.parse(SESSION);
     expect(s.objectives).toHaveLength(3);
-    expect(s.specPointIds.length).toBeLessThanOrEqual(3);
+    expect(s.specPointIds.length).toBeLessThanOrEqual(8);
     expect(s.status).toBe("active");
+  });
+
+  it("positive: a note-driven session (T-TEACHGENIE-002) parses — one note's 4-code canon set", () => {
+    // the corpus max of record: "Crude Oil & Fractional Distillation" (4CH1-4.7…4.10)
+    const s = teachSessionSchema.parse({
+      ...SESSION,
+      specPointIds: ["4CH1-4.7", "4CH1-4.8", "4CH1-4.9", "4CH1-4.10"],
+    });
+    expect(s.specPointIds).toHaveLength(4);
+    expect(
+      createSessionRequestSchema.parse({
+        courseId: "igcse-chemistry-19",
+        specPointIds: ["4CH1-4.7", "4CH1-4.8", "4CH1-4.9", "4CH1-4.10"],
+        difficulty: "easy",
+        length: "quick",
+        mode: "chat",
+      }).specPointIds,
+    ).toHaveLength(4);
   });
 
   it("positive: the review card of record parses, corrections carry statement+correction (D2)", () => {
@@ -143,11 +161,11 @@ describe("teach-me contract pins (T-TEACHME-001 run-001, ADR-040)", () => {
     expect(() => verdictChipSchema.parse({ ...CHIP, score: 10 })).toThrow();
   });
 
-  it("negative: 4 spec points and a 6-objective array are over the ruled ceilings", () => {
+  it("negative: 9 spec points and a 9-objective array are over the ceilings (T-TEACHGENIE-002: code ceiling 8; T-TEACHGENIE-001: 3–6 objectives, schema ceiling 8)", () => {
     expect(() =>
       createSessionRequestSchema.parse({
         courseId: "igcse-chemistry-19",
-        specPointIds: ["a", "b", "c", "d"],
+        specPointIds: ["a", "b", "c", "d", "e", "f", "g", "h", "i"],
         difficulty: "easy",
         length: "quick",
         mode: "chat",
@@ -156,27 +174,22 @@ describe("teach-me contract pins (T-TEACHME-001 run-001, ADR-040)", () => {
     expect(() =>
       teachSessionSchema.parse({
         ...SESSION,
-        objectives: [
-          ...OBJECTIVES,
-          {
-            id: "8d9e0f1a-4b5c-4d6e-9f0a-1b2c3d4e5f6a",
-            ordinal: 4,
-            text: "extra",
-            specPointIds: ["4CH1-1.27"],
-            status: "not_started",
-          },
-          {
-            id: "9e0f1a2b-5c6d-4e7f-8a1b-2c3d4e5f6a7b",
-            ordinal: 4,
-            text: "extra",
-            specPointIds: ["4CH1-1.28"],
-            status: "not_started",
-          },
-        ],
+        // 9 objectives — over the T-TEACHGENIE-001 schema ceiling of 8
+        objectives: Array.from({ length: 9 }, (_, i) => ({
+          id: `a0e0f1a2-5c6d-4e7f-8a1b-${String(i).padStart(12, "0")}`,
+          ordinal: i + 1,
+          text: `extra ${i + 1}`,
+          specPointIds: ["4CH1-1.27"],
+          status: "not_started" as const,
+        })),
       }),
     ).toThrow();
+    // ordinal 0 is under the floor; ordinal 9 is over the ceiling
     expect(() =>
-      teachSessionSchema.parse({ ...SESSION, objectives: [{ ...OBJECTIVES[0], ordinal: 4 }] }),
+      teachSessionSchema.parse({ ...SESSION, objectives: [{ ...OBJECTIVES[0], ordinal: 0 }] }),
+    ).toThrow();
+    expect(() =>
+      teachSessionSchema.parse({ ...SESSION, objectives: [{ ...OBJECTIVES[0], ordinal: 9 }] }),
     ).toThrow();
   });
 

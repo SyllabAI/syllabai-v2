@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { boardOf, loadHubCourse } from "@/lib/courses";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { FlashcardsIndex, type DeckCard, type FcTopic } from "./flashcards-index";
 import { allCourseParams } from "@/lib/static-params";
 
@@ -85,12 +85,12 @@ export default async function FlashcardsIndexPage({
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
-      <CourseHeader
+    <div className="px-4 py-6 sm:px-6 lg:px-8">
+      <CoursePageHeader
         meta={meta}
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Flashcards`}
         crumb="Flashcards"
-        description={`Choose a deck to practise active recall — ${cardTotal} flashcard${cardTotal === 1 ? "" : "s"} across ${deckCount} deck${deckCount === 1 ? "" : "s"}, imported verbatim from the licensed deck corpus; rated cards return on an expanding review schedule.`}
+        description={`Choose a deck to practise active recall — ${cardTotal} flashcard${cardTotal === 1 ? "" : "s"} across ${deckCount} deck${deckCount === 1 ? "" : "s"}; rated cards return on an expanding review schedule.`}
       />
       {/* MathsGenie toolbar + numbered-section listing + empty states — client
           (flashcards-index) over the slim payload above. The no-decks card

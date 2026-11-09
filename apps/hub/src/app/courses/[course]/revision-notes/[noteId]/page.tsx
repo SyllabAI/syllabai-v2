@@ -8,6 +8,7 @@ import { findGuidedEntry, loadGuidedIndex } from "@/lib/guided-lessons";
 import { sanitizeNoteBody } from "@/lib/note-body-fix";
 import { Markdown } from "@/components/markdown";
 import { Breadcrumbs } from "@/components/hub/chrome";
+import { PageHeader } from "@/components/layout/page-header";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import { NoteCla } from "@/components/cla/note-cla";
 import { NoteFootnote } from "./note-footnote";
@@ -78,17 +79,30 @@ export default async function NoteReaderPage({
             ]}
           />
 
-          <header className="space-y-3">
-            <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-[28px]">
-              {note.title}{" "}
-              <span className="text-muted-foreground">
-                ({boardOf(meta)} {meta.level} {meta.subject})
-              </span>
-            </h1>
+          {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
+              (was sm:text-[28px]); the trust meta rides as a child. */}
+          <PageHeader
+            title={
+              <>
+                {note.title}{" "}
+                <span className="text-muted-foreground">
+                  ({boardOf(meta)} {meta.level} {meta.subject})
+                </span>
+              </>
+            }
+          >
             {/* trust meta — the SyllabAI analogue of SME's authorship block.
                 Board-aware (CIE wave): registry-explicit board, else the
                 founding "Pearson Edexcel" — pre-CIE rows render byte-identical. */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-muted-foreground">
+              {/* RN-DEBRIS-11 run-005: exam-skills notes carry their explicit
+                  fold label at the point of reading — exam technique, not
+                  spec-tied (no spec-point anchor by design). */}
+              {note.contentKind === "exam-technique" && (
+                <span className="rounded-md bg-muted px-1.5 py-0.5 text-[11px] font-medium text-muted-foreground">
+                  Exam technique — not tied to a spec point
+                </span>
+              )}
               <span>
                 Exam board{" "}
                 <span className="font-medium text-foreground">{meta.board ?? "Pearson Edexcel"}</span> ·{" "}
@@ -103,7 +117,7 @@ export default async function NoteReaderPage({
                   stays in the data contract (corpus tooling joins on it), it
                   just no longer renders on the page. */}
             </div>
-          </header>
+          </PageHeader>
 
           {/* contextual help (CLA) — the note-anchored assistant. The floating
               CLA button opens the overlay (the guided-study banner was removed
@@ -158,10 +172,13 @@ export default async function NoteReaderPage({
           <Card>
             <CardContent className="p-4">
               <p className="mb-2 text-sm font-semibold">Build on this topic</p>
+              {/* t-ui-polish run-005: these two card-links carry the house
+                  hover voice (border-primary/60 + shadow-sm lift) — they were
+                  legacy /40 border-shifts, off the runs-001-003 signature. */}
               <div className="grid gap-2 sm:grid-cols-2">
                 <Link
                   href={subtopicCode ? hub.hrefs.questions[subtopicCode] ?? `${base}/exam-questions` : `${base}/exam-questions`}
-                  className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-colors hover:border-primary/40"
+                  className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
                 >
                   <FileQuestion className="size-4 text-primary" aria-hidden />
                   <span className="text-[13px] font-medium">
@@ -172,7 +189,7 @@ export default async function NoteReaderPage({
                 </Link>
                 <Link
                   href={subtopicCode ? hub.hrefs.flashcards[subtopicCode] ?? `${base}/flashcards` : `${base}/flashcards`}
-                  className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-colors hover:border-primary/40"
+                  className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
                 >
                   <SquareStack className="size-4 text-primary" aria-hidden />
                   <span className="text-[13px] font-medium">

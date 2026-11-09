@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ChevronRight, Files } from "lucide-react";
 import { boardOf, loadHubCourse } from "@/lib/courses";
 import { buildPracticePapers, paperEstTime } from "@/lib/practice-papers";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { allCourseParams } from "@/lib/static-params";
 
@@ -36,11 +36,11 @@ export default async function PracticePapersPage({
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Practice Papers`}
         crumb="Practice Papers"
-        description="Full-length mixed-topic papers assembled from this course's question bank — every question is real corpus content with its attested mark scheme. Each paper is deterministic: the same paper every time you open it."
+        description="Full-length mixed-topic papers assembled from this course's question bank — the same paper every time you open it."
       />
 
       {papers.length === 0 ? (

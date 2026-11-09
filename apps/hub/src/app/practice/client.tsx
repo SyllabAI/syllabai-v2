@@ -18,6 +18,7 @@ import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { AnswerTextarea, answerPlaceholder } from "@/components/answer-textarea";
 import { Atom, CheckCircle2, ChevronRight } from "lucide-react";
+import { PageHeader } from "@/components/layout/page-header";
 import type { ExamQuestionTopic } from "@/lib/contracts";
 import { Markdown } from "@/components/markdown";
 import { PartProblem } from "@/components/part-problem";
@@ -96,22 +97,21 @@ export function PracticeClient({ topics }: Props) {
 
   return (
     <div className="space-y-4">
-      <div>
-        <h1 className="flex items-center gap-2 text-2xl font-bold tracking-tight">
-          <Atom className="size-5 text-primary" aria-hidden />
-          Practice
-        </h1>
-        <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-          Real exam-question parts with production-shaped attempt telemetry (confidence,
-          self-doubt). Marks self-assess against the mark scheme — the SIMULATED overlay updates
-          from that, exactly as the governed pipeline would from server-marked evidence.
-        </p>
-      </div>
+      {/* T-HEADER-1: the shared tool-page header — one text-2xl title law. */}
+      <PageHeader
+        title={
+          <span className="flex items-center gap-2">
+            <Atom className="size-5 text-primary" aria-hidden />
+            Practice
+          </span>
+        }
+        description="Real exam-question parts with in-browser attempt telemetry (confidence, self-doubt). Marks self-assess against the mark scheme — the illustrative mastery overlay updates from that, exactly as the governed pipeline would from server-marked evidence."
+      />
 
       <SimulatedBanner>
-        Attempt results update a <strong>SIMULATED</strong> mastery overlay in this browser session.
-        No canonical learner state is touched; with <span className="font-mono">core-api</span> mode
-        the same payload shape targets <span className="font-mono">/api/v1/attempts/structured</span>.
+        Attempt results update an <strong>illustrative</strong> mastery overlay in this browser
+        session. Your account record is never touched — the same attempt payload targets the
+        real marked-attempts pipeline.
       </SimulatedBanner>
 
       <div className="grid gap-4 lg:grid-cols-[1fr_280px]">
@@ -227,7 +227,7 @@ export function PracticeClient({ topics }: Props) {
 
         <Card className="h-fit">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">Session overlay (SIMULATED)</CardTitle>
+            <CardTitle className="text-sm">Session overlay (illustrative)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 text-sm">
             <p className="text-2xl font-bold tabular-nums">

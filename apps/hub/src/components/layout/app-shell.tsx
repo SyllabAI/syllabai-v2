@@ -50,12 +50,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { AigniteBadge } from "@/components/brand/aignite-badge";
 import { clearIdentity, useIdentity } from "@/lib/identity";
+import { unmirrorRoutingSession } from "@/lib/session-cookie";
 import { roleHome } from "@/lib/role-home";
 import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { useLastOpenedSync } from "@/lib/last-opened";
 import { useMockResultsSync } from "@/lib/mock-results";
 import { useTeacherStoresSync } from "@/lib/teacher/stores";
+import { useAccountDocsSync } from "@/lib/account-docs";
 import { isImmersiveRoute, isViewerRoute } from "@/lib/focus-routes";
 import { useLastOpened } from "@/lib/last-opened";
 import { cn } from "@/lib/utils";
@@ -101,6 +104,19 @@ const MORE_TOOLS = [
 // (run-015, audit F7 — extracted from this file and unit-tested); consumed via
 // the @/lib/tool-hrefs import above.
 
+// t-ui-polish run-001 — the MG/RD header signature: the most-used tools sit
+// INLINE in the header as quiet links with the run-004b active pill
+// (bg-accent-primary / text-accent-primary-foreground), exactly the course
+// nav row's recipe. Both references keep a visible top nav and relegate the
+// long tail to a menu — the dropdown stays for the full list at every width.
+// Hover rides @media(hover:hover) per the run-005 tier-a capture law.
+const QUICK_NAV_HREFS = ["/dashboard", "/courses", "/past-papers", "/plan"] as const;
+const quickNavItems = QUICK_NAV_HREFS.map((href) =>
+  TOOLS.find((t) => t.href === href),
+).filter((t) => t !== undefined);
+// Set form of the same list for the menu's lg+ de-duplication law below.
+const quickNavHrefs = new Set<string>(QUICK_NAV_HREFS);
+
 export function AppShell({
   children,
   // `config` stays part of the call contract (root layout still passes it);
@@ -127,17 +143,26 @@ export function AppShell({
   // mirror the account while a TEACHER is signed in; the hook is a no-op for
   // students and signed-out sessions (the surface is teacher-owned).
   useTeacherStoresSync();
+  // T-AUDIT-TIER1 run-003 — the workspace-document plane's hydration hook
+  // (ONE mount for the whole app): the account mirror for the remaining
+  // localStorage-only pools (tutor / assistant / CLA this band).
+  useAccountDocsSync();
   // course pages manage their own horizontal rhythm (course shell + resource
   // panel); the graph surfaces are full-bleed (the visualizer canvas wants
   // the whole viewport); the tutor workspace is an immersive app surface
-  // (its own rail + header + composer, sized to the viewport); every other
-  // page gets the centred content column
+  // (its own rail + header + composer, sized to the viewport); T-DASH-SIDEBAR-001:
+  // the dashboard manages its own rhythm too (dashboard shell: persistent
+  // sidebar + content column); T-TEACH-SHELL-1: the teacher workspace joins
+  // them (teacher shell: the same sidebar posture over every /teacher
+  // surface); every other page gets the centred content column
   const inCourse = pathname.startsWith("/courses/");
   const inExplorer =
     pathname.startsWith("/graph-explorer") || pathname.startsWith("/knowledge-graph");
   const inTutor = pathname.startsWith("/tutor");
+  const inDashboard = pathname.startsWith("/dashboard");
+  const inTeacher = pathname.startsWith("/teacher");
   const viewerRoute = isViewerRoute(pathname);
-  const bare = inCourse || inExplorer || inTutor;
+  const bare = inCourse || inExplorer || inTutor || inDashboard || inTeacher;
 
   // UX audit 2026-10-02 #22: Experiments is the developer area — it sat next
   // to Tutor/Assistant for every signed-out visitor and student. Staff-only;
@@ -164,6 +189,22 @@ export function AppShell({
           the PDF is the screen there; the skip link below still targets the
           main landmark either way. */}
       {!viewerRoute && (
+      <>
+      {/* T-BRAND-AIGNITE-101 — buildathon compliance strip: the official
+          "Built For Ostad Presents YUNet AIgnite Buildathon 2026" sticker
+          rides directly above the navbar (the buildathon's "navbar or
+          another prominent area near the top" placement) on every route the
+          header itself renders, at every width — the packed h-14 header row
+          has no slack for a 3.4:1 badge between lg and xl, where the
+          quick-nav joins. Announcement-bar posture: NOT sticky (the header
+          keeps the sticky slot), scrolls away with the page, and the paper
+          viewer keeps its header-stands-down contract. Removal with the
+          task: components/brand/aignite-badge.tsx documents the checklist. */}
+      <aside aria-label="Buildathon badge" className="border-b bg-muted/40 print:hidden">
+        <div className="flex h-11 items-center justify-center px-4">
+          <AigniteBadge className="h-9 w-auto" />
+        </div>
+      </aside>
       <header className="sticky top-0 z-40 border-b bg-background print:hidden">
         <div className="flex h-14 items-center gap-3 px-4 sm:px-6">
           {/* C-5 (frontend-flow audit): the logo means "home". For a
@@ -212,7 +253,18 @@ export function AppShell({
                     <Link
                       href={courseScopedToolHref(t.href, pathname, lastOpened?.slug ?? null)}
                       aria-current={active ? "page" : undefined}
-                      className={cn("cursor-pointer", active && "bg-muted font-medium")}
+                      className={cn(
+                        "cursor-pointer",
+                        active && "bg-muted font-medium",
+                        // UX review 2026-11-04 deferred nit — dropdown vs
+                        // quick-nav overlap: at lg+ the inline "Quick tools"
+                        // nav already shows Dashboard/Courses/Past Papers/Study
+                        // plan, so the menu stops repeating them (the standard
+                        // responsive-nav law — a menu never duplicates what is
+                        // visible beside it; below lg the dropdown is the ONLY
+                        // nav and keeps the full index).
+                        quickNavHrefs.has(t.href) && "lg:hidden",
+                      )}
                     >
                       <t.icon className="size-4" aria-hidden />
                       <span className="flex-1">{t.label}</span>
@@ -268,8 +320,38 @@ export function AppShell({
             </DropdownMenuContent>
           </DropdownMenu>
 
+          {/* t-ui-polish run-001 — the MG/RD inline quick nav (lg+): quiet
+              links, the run-004b filled pill marks the active tool. Icons
+              ride inline at this width (the references' idiom); below lg
+              the Study tools dropdown remains the only nav. */}
+          <nav aria-label="Quick tools" className="hidden items-center gap-0.5 lg:flex">
+            {quickNavItems.map((t) => {
+              const active = isToolActive(t.href, pathname);
+              return (
+                <Link
+                  key={t.href}
+                  href={courseScopedToolHref(t.href, pathname, lastOpened?.slug ?? null)}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "group inline-flex h-9 items-center gap-1.5 rounded-md px-3 text-sm font-medium transition-colors",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                    active
+                      ? "bg-accent-primary text-accent-primary-foreground"
+                      : "text-muted-foreground [@media(hover:hover)]:hover:bg-muted [@media(hover:hover)]:hover:text-foreground",
+                  )}
+                >
+                  <t.icon className="size-4 opacity-60 [@media(hover:hover)]:group-hover:opacity-100" aria-hidden />
+                  <span>{t.label}</span>
+                </Link>
+              );
+            })}
+          </nav>
+
           <span className="ml-1 hidden text-xs text-muted-foreground xl:inline">
-            IGCSE &amp; IAL revision · 4CH1 pilot
+            {/* T-HUB-COURSES-PUBLIC-1 fix ②: the registry runs IGCSE + AS +
+                A-Level + IAL on two boards — the chrome tagline undercounted
+                both axes (metadata twin fixed in app/layout.tsx). */}
+            IGCSE &amp; A-Level revision
           </span>
 
           {/* SME header parity: persistent primary CTA + session identity
@@ -285,7 +367,7 @@ export function AppShell({
                   )}
                 >
                   <User className="size-3.5" aria-hidden />
-                  <span className="max-w-16 truncate sm:max-w-28">{identity.name}</span>
+                  <span className="max-w-12 truncate sm:max-w-28">{identity.name}</span>
                   <ChevronDown className="size-3 text-muted-foreground" aria-hidden />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
@@ -317,7 +399,34 @@ export function AppShell({
                     </DropdownMenuItem>
                   )}
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={() => clearIdentity()} className="cursor-pointer">
+                  {/*
+                    T-HUBFIX-SIGNOUT-LANDING — sign-out lands on the signed-out
+                    showcase landing ("/"), never the login page. The hard
+                    navigation is the SAME law as the sign-in fix
+                    (T-HUBFIX-SIGNIN-NAV-RACE): a hard assign, NOT router.push —
+                    clearIdentity fires the identity event (the shell re-renders
+                    signed-out in place), and the route gate's 307 would
+                    otherwise race the in-app redirect on gated routes. "/"
+                    sits outside the gate policy, so the assign always lands.
+
+                    RUN-002: the assign must WAIT for the routing-cookie
+                    unmirror. clearSession() fires the DELETE /api/session as
+                    fire-and-forget (api.ts:1052) — a naive assign races it,
+                    the stale sai_session cookie rides the GET /, and the
+                    proxy's role-home redirect (proxy.ts roleHomeRedirect)
+                    bounces the fresh sign-out straight back to /dashboard.
+                    Awaiting unmirrorRoutingSession() (best-effort by design:
+                    it catches its own network errors, so a blip degrades to
+                    the old bounce, never a hang) keeps the landing honest.
+                  */}
+                  <DropdownMenuItem
+                    onClick={async () => {
+                      clearIdentity();
+                      await unmirrorRoutingSession();
+                      window.location.assign("/");
+                    }}
+                    className="cursor-pointer"
+                  >
                     <LogOut className="size-4" aria-hidden />
                     Sign out
                   </DropdownMenuItem>
@@ -337,26 +446,33 @@ export function AppShell({
                 </Link>
               </Button>
             )}
-            {/* B-1 (frontend-flow audit): the persistent CTA resolves the
-                role home too — a teacher's header button opens the workspace,
-                never the student dashboard. Signed-out keeps the demo
-                target (B-2's split is Tier 1). */}
+            {/* B-1 (frontend-flow audit): a teacher's header button opens
+                the workspace, never the student dashboard. Students and
+                signed-out visitors get /practice (UX review 2026-11-04). */}
             <Button
               asChild
               size="sm"
               className="gap-1.5 px-2 sm:px-3"
-              aria-label={identity?.role === "teacher" ? "Open workspace" : "Start studying"}
+              aria-label={identity?.role === "teacher" ? "Open workspace" : "Practise"}
             >
-              <Link href={roleHome(identity)}>
+              {/* UX review 2026-11-04: the student CTA was "Start studying"
+                  → the student's own home — a primary button that reloads the
+                  page it sits on. /practice is the always-valid open surface
+                  (index is ungated), and the verb family stays coherent:
+                  Practise = questions here, Review = the due queue (strip),
+                  Revise = course content (cards). Anonymous visitors get an
+                  open destination instead of a login bounce. */}
+              <Link href={identity?.role === "teacher" ? roleHome(identity) : "/practice"}>
                 <Zap className="size-3.5" aria-hidden />
                 <span className="hidden sm:inline">
-                  {identity?.role === "teacher" ? "Open workspace" : "Start studying"}
+                  {identity?.role === "teacher" ? "Open workspace" : "Practise"}
                 </span>
               </Link>
             </Button>
           </div>
         </div>
       </header>
+      </>
       )}
 
       {/* content */}
@@ -372,14 +488,18 @@ export function AppShell({
           (repo names, attestation dates, the data-plane chip) in the one
           strip every page renders. Same honesty, student nouns. On
           document-focus routes (paper viewer / player) it is omitted
-          entirely (the immersive contract). */}
+          entirely (the immersive contract).
+          T-UX-STUDENT-COPY r0: the pledge sentence dropped the remaining
+          operator nouns ("committed content traced to its specification",
+          "labelled, never faked" — repo/QA vocabulary) for student nouns;
+          the link to the full provenance register stays. */}
       {!isImmersiveRoute(pathname) && (
       <footer className="mx-auto w-full max-w-6xl px-4 pb-10 sm:px-6 lg:px-8 print:hidden">
         <div className="flex flex-wrap items-center gap-1.5 border-t pt-4">
           <ThemeToggle variant="row" />
           <span className="text-[11px] text-muted-foreground">
-            Every note, question and flashcard here is real, committed content traced to its
-            specification — and a resource that isn&apos;t ready yet is labelled, never faked.{" "}
+            Every note, question and flashcard is written against the official specification and
+            checked before it ships — anything not ready yet is marked as coming soon.{" "}
             {/* F-1 (frontend-flow audit): the student-safe statement stays; the
                 full tier register (RULE_DERIVED / AI_SUGGESTED / DEMO_DERIVED /
                 SIMULATED) lives at /about/provenance, linked from its own room. */}
@@ -387,13 +507,13 @@ export function AppShell({
               href="/about/provenance"
               className="underline underline-offset-2 hover:text-foreground"
             >
-              How each kind of content is checked
+              How content is checked
             </Link>
           </span>
         </div>
         <p className="mt-2 text-xs text-muted-foreground">
-          SyllabAI Hub — revision for Edexcel IGCSE &amp; IAL and Cambridge International
-          qualifications.
+          SyllabAI Hub — IGCSE &amp; A-Level revision for Edexcel and Cambridge
+          International qualifications.
         </p>
       </footer>
       )}

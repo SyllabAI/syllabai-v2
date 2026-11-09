@@ -85,6 +85,14 @@ export {
 } from "./rrf";
 export { retrievalQuery, RETRIEVAL_WINDOW_TURNS, RETRIEVAL_QUERY_MAX_CHARS } from "./retrieval-query";
 export {
+  // T-TUTOR-PIVOT-1: the model-worded refusal truth
+  modelRefusalLikely,
+  CANONICAL_REFUSAL_STEMS,
+  SOURCE_STEMS,
+  REFUSAL_REDIRECT_SUFFIX,
+  withRefusalRedirect,
+} from "./refusal-detect";
+export {
   // prompt identity + fences + the v10 assembly
   promptIdentity,
   PROMPT_REGISTRY_KEY,
@@ -144,6 +152,7 @@ export {
   TUTOR_MAX_TOPICS,
   TUTOR_VECTOR_CANDIDATES,
   TUTOR_EVIDENCE_LIMIT,
+  TUTOR_COMPLETION_BUDGET_DEFAULT,
   type AskResult,
   type TutorStreamEvent,
   type TutorGenerator,

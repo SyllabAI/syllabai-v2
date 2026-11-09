@@ -10,6 +10,7 @@ import {
 } from "@/lib/pastpapers-reconstruction";
 import { corpusPapersForCourse, doubleAwardScopeNote } from "@/lib/pastpapers-corpus";
 import { Breadcrumbs, ExamCodePill } from "@/components/hub/chrome";
+import { PageHeader } from "@/components/layout/page-header";
 import { Badge } from "@/components/ui/badge";
 import { QuestionPlayer } from "@/app/courses/[course]/exam-questions/[topicSlug]/question-player";
 
@@ -69,20 +70,20 @@ export default async function PastPaperPage({
           ]}
         />
 
-        <header className="space-y-3">
-          <div className="flex flex-wrap items-start justify-between gap-3">
-            <h1 className="max-w-2xl text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
+        {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
+            (was sm:text-3xl); the paper furniture rides as children. */}
+        <PageHeader
+          title={
+            <>
               {paper.number} — {paper.date}{" "}
               <span className="text-muted-foreground">
                 ({boardOf(meta)} {meta.level} {meta.subject}): Past Paper
               </span>
-            </h1>
-            <ExamCodePill code={meta.code} href={`/courses/${meta.slug}/specification`} />
-          </div>
-          <p className="text-sm text-muted-foreground">
-            {paper.questions.length} questions · {paper.totalMarks} marks ·{" "}
-            {paperEstTime(paper.totalMarks)}
-          </p>
+            </>
+          }
+          description={`${paper.questions.length} questions · ${paper.totalMarks} marks · ${paperEstTime(paper.totalMarks)}`}
+          actions={<ExamCodePill code={meta.code} href={`/courses/${meta.slug}/specification`} />}
+        >
           {/* paper furniture (SME-style header facts): calculator rule +
               "answer all" instruction. Maths-B-only: 4MB1/01 is the
               non-calculator paper, /02 allows calculators — other
@@ -124,7 +125,7 @@ export default async function PastPaperPage({
               {scopeNote.note}
             </p>
           )}
-        </header>
+        </PageHeader>
 
         <QuestionPlayer
           course={meta.slug}
@@ -133,6 +134,12 @@ export default async function PastPaperPage({
           subtopicCode={null}
           subtopicTitle={null}
           questions={paper.questions}
+          // T-PAPER-PLAYBACK-1: fixed-paper playback — the cards, the jump
+          // grid and the CLA chip carry the printed paper question numbers
+          // (position fallback where provenance is null), and the difficulty
+          // bar never mounts (filtering a paper would renumber it).
+          variant="paper"
+          questionNumbers={paper.questionNumbers}
         />
       </div>
     </div>

@@ -1,0 +1,129 @@
+{
+  "source": "AI concept-web startup run (F8 rollout batch six; T-KG-PRE-8, lane IALP2). The web is the AI_SUGGESTED, UNVALIDATED concept lattice authored by the F8 lane for this syllabus, every anchor machine-verified against the served spine's point ids (0 unmapped pass law) and exported in-order only by the calibrated law of scripts/kg_f8al_project.py. Bases mirror the operator-validated store vocabulary. prereqValidated stays EMPTY — the renderer labels every shipped pair INFERRED PROTOTYPE; the named gate before any of this is treated as truth remains the SME validation pass.",
+  "generatedUtc": "2026-11-04T01:31:13Z",
+  "curriculumCode": "YMA01",
+  "hubCourseSlug": "ial-maths-20-pure-2",
+  "conceptAnchors": {
+    "IAP2-CON-PROOF": [
+      "1.1",
+      "1.2",
+      "1.3"
+    ],
+    "IAP2-CON-POLY-DIVISION": [
+      "2.1"
+    ],
+    "IAP2-CON-CIRCLE-COORD": [
+      "3.1"
+    ],
+    "IAP2-CON-SEQUENCES": [
+      "4.1"
+    ],
+    "IAP2-CON-AP": [
+      "4.2"
+    ],
+    "IAP2-CON-SEQ-BEHAVIOUR": [
+      "4.3"
+    ],
+    "IAP2-CON-GP": [
+      "4.4"
+    ],
+    "IAP2-CON-BINOMIAL": [
+      "4.5"
+    ],
+    "IAP2-CON-EXP-FN": [
+      "5.1"
+    ],
+    "IAP2-CON-LOG-LAWS": [
+      "5.2"
+    ],
+    "IAP2-CON-EXP-EQUATIONS": [
+      "5.3"
+    ],
+    "IAP2-CON-TRIG-IDENTITIES": [
+      "6.1"
+    ],
+    "IAP2-CON-TRIG-EQUATIONS": [
+      "6.2"
+    ],
+    "IAP2-CON-STATIONARY": [
+      "7.1"
+    ],
+    "IAP2-CON-DEF-INTEGRALS": [
+      "8.1"
+    ],
+    "IAP2-CON-AREA-UNDER": [
+      "8.2"
+    ],
+    "IAP2-CON-TRAPEZIUM": [
+      "8.3"
+    ]
+  },
+  "validatedPrerequisiteEdges": [],
+  "inferredPrototypePre": [],
+  "inferredPrototypeRel": [],
+  "conceptWebPrerequisiteEdges": [
+    {
+      "prerequisite": "IAP2-CON-SEQUENCES",
+      "dependent": "IAP2-CON-AP",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP2-CON-SEQUENCES",
+      "dependent": "IAP2-CON-SEQ-BEHAVIOUR",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP2-CON-SEQUENCES",
+      "dependent": "IAP2-CON-GP",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP2-CON-AP",
+      "dependent": "IAP2-CON-SEQ-BEHAVIOUR",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAP2-CON-EXP-FN",
+      "dependent": "IAP2-CON-LOG-LAWS",
+      "basis": "USED_WITHOUT_RETEACHING"
+    },
+    {
+      "prerequisite": "IAP2-CON-EXP-FN",
+      "dependent": "IAP2-CON-EXP-EQUATIONS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP2-CON-LOG-LAWS",
+      "dependent": "IAP2-CON-EXP-EQUATIONS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP2-CON-TRIG-IDENTITIES",
+      "dependent": "IAP2-CON-TRIG-EQUATIONS",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP2-CON-DEF-INTEGRALS",
+      "dependent": "IAP2-CON-AREA-UNDER",
+      "basis": "DEFINITIONAL_DEPENDENCY"
+    },
+    {
+      "prerequisite": "IAP2-CON-DEF-INTEGRALS",
+      "dependent": "IAP2-CON-TRAPEZIUM",
+      "basis": "USED_WITHOUT_RETEACHING"
+    }
+  ],
+  "counts": {
+    "anchoredConcepts": 17,
+    "conceptWebEdges": 10,
+    "validatedEdges": 0,
+    "inferredPre": 0,
+    "inferredRel": 0
+  },
+  "exportCounts": {
+    "candidates": 10,
+    "selfLoops": 0,
+    "reversedDropped": 0,
+    "preExported": 10
+  }
+}

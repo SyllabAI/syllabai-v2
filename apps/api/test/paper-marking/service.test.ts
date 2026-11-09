@@ -78,7 +78,18 @@ function makeSql(extra: Route[] = []) {
     match: /insert into mark_working_blocks/,
     rowsFor: () => [{ id: crypto.randomUUID() }],
   };
-  const all = [...extra, partRoute, questionRoute, partBridge, rectPage, contextRoute, claimRoute, blockRoute];
+  // T-MG-MARK-DELTA-1 (Lane E) default stubs: no ink doc (revision lookup
+  // honest-empty) and no standing award (the cache select honest-empty) —
+  // old-test world: every re-mark runs fresh.
+  const inkRevisionRoute: Route = {
+    match: /select revision\s+from learner_pdf_drawings/,
+    rows: [],
+  };
+  const standingRoute: Route = {
+    match: /a\.cache_hash = \?/,
+    rows: [],
+  };
+  const all = [...extra, partRoute, questionRoute, partBridge, rectPage, contextRoute, claimRoute, blockRoute, inkRevisionRoute, standingRoute];
   const sql = (async (strings: TemplateStringsArray, ...params: unknown[]) => {
     const text = strings.join(" ? ").replace(/\s+/g, " ").trim();
     if (/insert into mark_awards/.test(text)) counters.claims += 1;
@@ -134,11 +145,13 @@ function verdictFor(
   const reasoning = opts.prefixTranscription ? `${opts.transcription}\n\n${body}` : body;
   return {
     chatMessage: "Almost — show your working for each step.",
+    attempt: null,
     reasoning,
     points: defs.map((d, i) => ({
       ref: d.ref,
       awarded: opts.awardedPositions.includes(i),
       comment: opts.awardedPositions.includes(i) ? "shown in the attempt" : "not evidenced in the attempt",
+      workingRef: null,
     })),
     strategiesForImprovement: opts.awardedPositions.length === defs.length ? [] : ["Write the scale-factor step explicitly."],
   };

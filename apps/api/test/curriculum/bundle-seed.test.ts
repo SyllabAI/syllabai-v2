@@ -1027,8 +1027,11 @@ describe("ruling A — the optionA identity laws (trace 1a15b161bf960249)", () =
     // 0580: core/extended official C/E sections -> SC/SE disjoint
     expect(mapBundleNodes(load("cie-igcse-maths-25-core"), "p").get("cie-igcse-maths-2025-2027-TC1")!.dbCode).toBe("0580-2025-2027-SC1");
     expect(mapBundleNodes(load("cie-igcse-maths-25-extended"), "p").get("cie-igcse-maths-2025-2027-TE1")!.dbCode).toBe("0580-2025-2027-SE1");
-    // 0500: the syllabus's own S-prefixed sections land SS (mechanical, official)
-    expect(mapBundleNodes(load("cie-igcse-english-language-20"), "p").get("cie-igcse-english-language-2024-2026-TS1")!.dbCode).toBe("0500-2024-2026-SS1");
+    // 0500: the run-012 spine-rebuild containers mint the fleet T-code convention
+    // (T1/T2/T3, the run-011 node template) — plain digit tails land the S law;
+    // the old S-prefixed TS1->SS1 wreck-parse class is gone of record (PR #855)
+    expect(mapBundleNodes(load("cie-igcse-english-language-20"), "p").get("cie-igcse-english-language-2024-2026-T1")!.dbCode).toBe("0500-2024-2026-S1");
+    expect(mapBundleNodes(load("cie-igcse-english-language-25"), "p").get("cie-igcse-english-language-2027-2029-T1")!.dbCode).toBe("0500-2027-2029-S1");
     // 0452: plain digit tails
     expect(mapBundleNodes(load("cie-igcse-accounting-21"), "p").get("cie-igcse-accounting-2023-2025-T1")!.dbCode).toBe("0452-2023-2025-S1");
   });
@@ -1063,6 +1066,150 @@ describe("ruling A — the optionA identity laws (trace 1a15b161bf960249)", () =
       ),
     } as BundleCurriculum;
     expect(() => mapBundleNodes(drifted, "p")).toThrow(/does not carry the official -T tail/);
+  });
+
+  test("the ADR-039 §4 SME section rows skip the seed map (the disclosed childless leaf class, T-SME-REDS-FIX r0 trace 1a1a722ebe477629)", () => {
+    // the six rows of record — childless leaf TOPICs off the SUBJECT root,
+    // zero corpus anchors, UI-level selector rows of the hub corpus plane
+    // (ADR-039 §4). No UNIT identity lands for them: the CIE -T law would
+    // refuse (the CI verify red of record) and the Edexcel order law would
+    // graft an invented -S<order> UNIT the DB never carried. The skip is
+    // fleet-wide (both boards); nothing dangles — the rows carry no children.
+    const geo = mapBundleNodes(load("cie-igcse-geography-25"), "p");
+    expect(geo.has("cie-igcse-geography-2025-2026-SME-CLIMATE-CHANGE")).toBe(false);
+    expect(geo.has("cie-igcse-geography-2025-2026-SME-GEOGRAPHICAL-SKILLS")).toBe(false);
+    expect(
+      mapBundleNodes(load("cie-igcse-maths-international-maths-23-core"), "p")
+        .has("cie-igcse-maths-international-maths-2025-2027-TC-SME-INVESTIGATIONS"),
+    ).toBe(false);
+    expect(
+      mapBundleNodes(load("cie-igcse-maths-international-maths-23-extended"), "p")
+        .has("cie-igcse-maths-international-maths-2025-2027-TE-SME-INVESTIGATIONS-MODELLING"),
+    ).toBe(false);
+    expect(
+      mapBundleNodes(load("cie-igcse-science-combined-science-23-biology"), "p")
+        .has("cie-igcse-science-combined-science-2023-2024-SME-DRUGS"),
+    ).toBe(false);
+    expect(mapBundleNodes(load("ial-biology-18"), "p").has("ial-biology-SME-SYNOPTIC-ASSESSMENT")).toBe(false);
+    // T-SME-SEL-W2 run-002: the wave-1/2 picker-layer class skips like the r0
+    // class — the section rows AND their :<slug> topic rows land NOTHING in
+    // the DB plane (hub-UI navigation only); official rows stay byte-identical
+    for (const [slug, sec, row] of [
+      ["ial-physics-19", "ial-physics-19-SME-S1", "ial-physics-19-SME-S1:motion"],
+      ["ial-chemistry-17", "ial-chemistry-17-SME-S1", "ial-chemistry-17-SME-S1:atomic-structure"],
+      ["ial-biology-18", "ial-biology-18-SME-S1", "ial-biology-18-SME-S1:biological-molecules"],
+    ] as const) {
+      const mapped = mapBundleNodes(load(slug), "p");
+      expect(mapped.has(sec)).toBe(false);
+      expect(mapped.has(row)).toBe(false);
+      expect([...mapped.keys()].filter((k) => k.includes("-SME-"))).toEqual([]);
+    }
+    // the official grammar is untouched: biology's official spine still maps
+    expect(mapBundleNodes(load("ial-biology-18"), "p").has("ial-biology-T1")).toBe(true);
+    // the official grammar is untouched: geography-25's official -T topics
+    // still map byte-identically under the optionA namespace law
+    expect(geo.get("cie-igcse-geography-2025-2026-T1")!.dbCode).toBe("0460-2025-2026-S1");
+    expect(geo.get("cie-igcse-geography-2025-2026-T3")!.dbCode).toBe("0460-2025-2026-S3");
+  });
+
+  test("the -SME- shape guard refuses a data-bearing -SME- row (fail-closed, never a silent drop)", () => {
+    // a future -SME- row that is NOT the disclosed childless SUBJECT-root
+    // leaf shape (here: it carries a SPEC_POINT child) refuses rather than
+    // being silently skipped — the skip can never eat a data-bearing row
+    const b = load("cie-igcse-geography-25");
+    const subject = b.nodes.find((n) => n.family === "SUBJECT")!;
+    const bearing = {
+      ...b,
+      nodes: [
+        ...b.nodes,
+        {
+          family: "SPEC_POINT",
+          code: "0460-2025-2026-SME-FAKE.1",
+          title: "fake spec point",
+          description: null,
+          order: 1,
+          parents: ["cie-igcse-geography-2025-2026-SME-FAKE"],
+          provenanceTier: "RULE_DERIVED",
+          applicability: null,
+        },
+        {
+          family: "TOPIC",
+          code: "cie-igcse-geography-2025-2026-SME-FAKE",
+          title: "Fake (SME section)",
+          description: null,
+          order: 9,
+          parents: [subject.code],
+          provenanceTier: "RULE_DERIVED",
+          applicability: null,
+        },
+      ],
+    } as BundleCurriculum;
+    expect(() => mapBundleNodes(bearing, "p")).toThrow(
+      /not the disclosed childless SUBJECT-root leaf shape/,
+    );
+  });
+
+  test("the T-SME-SEL-W2 picker-layer guard: a -SME-S<n> section row with a non-picker child refuses fail-closed", () => {
+    // the wave-1/2 class is lawful ONLY with exclusively :<slug> picker
+    // topic-row children — a SPEC_POINT (or official) child under a
+    // -SME-S<n> row refuses with its own message (never silently skipped)
+    const b = load("ial-biology-18");
+    const subject = b.nodes.find((n) => n.family === "SUBJECT")!;
+    const bearing = {
+      ...b,
+      nodes: [
+        ...b.nodes,
+        {
+          family: "SPEC_POINT",
+          code: "ial-biology-18-SME-S99.FAKE.1",
+          title: "fake spec point under a picker section",
+          description: null,
+          order: 1,
+          parents: ["ial-biology-18-SME-S99"],
+          provenanceTier: "SME_REFERENCE",
+          applicability: null,
+        },
+        {
+          family: "TOPIC",
+          code: "ial-biology-18-SME-S99",
+          title: "99. Fake (SME section)",
+          description: null,
+          order: 200,
+          parents: [subject.code],
+          provenanceTier: "SME_REFERENCE",
+          applicability: null,
+        },
+      ],
+    } as BundleCurriculum;
+    expect(() => mapBundleNodes(bearing, "p")).toThrow(
+      /not the disclosed picker-layer section shape/,
+    );
+  });
+
+  test("the T-SME-SEL-W2 picker-topic-row guard: a malformed -SME- SUBTOPIC refuses fail-closed", () => {
+    // a :<slug> row that is NOT childless (here it carries a SPEC_POINT
+    // child) must refuse in the SUBTOPIC branch — the :SUBx grammar must
+    // never graft an identity onto a picker row
+    const b = load("ial-biology-18");
+    const bearing = {
+      ...b,
+      nodes: [
+        ...b.nodes,
+        {
+          family: "SPEC_POINT",
+          code: "ial-biology-18-SME-S1:biological-molecules.FAKE.1",
+          title: "fake spec point under a picker row",
+          description: null,
+          order: 1,
+          parents: ["ial-biology-18-SME-S1:biological-molecules"],
+          provenanceTier: "SME_REFERENCE",
+          applicability: null,
+        },
+      ],
+    } as BundleCurriculum;
+    expect(() => mapBundleNodes(bearing, "p")).toThrow(
+      /not the disclosed picker topic row/,
+    );
   });
 
   test("the title-drift refusal: a shared dbCode whose titles disagree is tree drift (honest red)", async () => {

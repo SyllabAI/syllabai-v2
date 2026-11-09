@@ -1,0 +1,733 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_8859pDM2R7Y4qVKc",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "9c43248acf03d7e3b0c9c79b4c6a97c35fa1326826a0bc35d27e283e9353ebf5",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "packageId": "igcse-physics::rn_8859pDM2R7Y4qVKc",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L1::Q1",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L1",
+      "stem": "When is a voltage induced in a straight conductor?",
+      "misconceptionClass": "condition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "when it moves through a magnetic field",
+          "correct": true,
+          "explanation": "Relative motion between conductor and field induces the voltage.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "whenever it is near a magnet, moving or not",
+          "correct": false,
+          "explanation": "Proximity alone induces nothing.",
+          "misconception": "proximity myth"
+        },
+        {
+          "key": "C",
+          "text": "only when connected to a battery",
+          "correct": false,
+          "explanation": "Induction GENERATES voltage — no battery needed.",
+          "misconception": "source confusion"
+        },
+        {
+          "key": "D",
+          "text": "only when the field is switched off",
+          "correct": false,
+          "explanation": "The field is required, not removed.",
+          "misconception": "condition inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L1::Q2",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L1",
+      "stem": "A wire is held still in a steady, unchanging magnetic field. The induced voltage is:",
+      "misconceptionClass": "static case",
+      "options": [
+        {
+          "key": "A",
+          "text": "equal to the field strength",
+          "correct": false,
+          "explanation": "Field strength alone is not a voltage.",
+          "misconception": "quantity confusion"
+        },
+        {
+          "key": "B",
+          "text": "zero",
+          "correct": true,
+          "explanation": "No relative change means no induction.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "large and constant",
+          "correct": false,
+          "explanation": "A steady field through a still wire induces nothing.",
+          "misconception": "steady myth"
+        },
+        {
+          "key": "D",
+          "text": "alternating",
+          "correct": false,
+          "explanation": "Nothing changes, so nothing alternates.",
+          "misconception": "alternation invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L1::Q3",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L1",
+      "stem": "The field through a stationary conductor is changed by pushing a magnet towards it. What happens?",
+      "misconceptionClass": "coil reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the coil becomes a permanent magnet",
+          "correct": false,
+          "explanation": "The coil gains an induced voltage, not permanent magnetism.",
+          "misconception": "outcome confusion"
+        },
+        {
+          "key": "B",
+          "text": "the magnet loses its strength",
+          "correct": false,
+          "explanation": "Inducing does not demagnetise the magnet.",
+          "misconception": "side effect invention"
+        },
+        {
+          "key": "C",
+          "text": "a voltage is induced because the field through the coil changes",
+          "correct": true,
+          "explanation": "The changing field is the induction trigger.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "nothing — the coil must move instead",
+          "correct": false,
+          "explanation": "Either side moving induces; relative change is what counts.",
+          "misconception": "actor confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L1::Q4",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L1",
+      "stem": "The same wire is swept through the same field twice as fast. The induced voltage:",
+      "misconceptionClass": "factor reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "halves",
+          "correct": false,
+          "explanation": "That inverts the speed link.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "B",
+          "text": "stays the same",
+          "correct": false,
+          "explanation": "Speed is a size factor for induction.",
+          "misconception": "no-change claim"
+        },
+        {
+          "key": "C",
+          "text": "reverses direction",
+          "correct": false,
+          "explanation": "Same sweep direction gives the same polarity.",
+          "misconception": "direction confusion"
+        },
+        {
+          "key": "D",
+          "text": "doubles",
+          "correct": true,
+          "explanation": "Induced voltage grows with the speed of cutting.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L1::Q5",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L1",
+      "stem": "Which change DECREASES the induced voltage in a moving wire?",
+      "misconceptionClass": "factor reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "sweeping through a weaker magnetic field",
+          "correct": true,
+          "explanation": "Field strength is a size factor — weaker field, smaller voltage.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "sweeping faster through the same field",
+          "correct": false,
+          "explanation": "Faster sweeping increases the voltage.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "C",
+          "text": "using a stronger magnet",
+          "correct": false,
+          "explanation": "A stronger magnet increases the voltage.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "D",
+          "text": "adding more turns to the coil",
+          "correct": false,
+          "explanation": "More turns increase the coil's induced voltage.",
+          "misconception": "factor inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L1::Q6",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L1",
+      "stem": "State the two ways a conductor or coil can have a voltage induced in it.",
+      "misconceptionClass": "condition recall",
+      "kind": "recall",
+      "modelAnswer": "It moves through a magnetic field, or the magnetic field through it changes.",
+      "keywords": [
+        "moves",
+        "magnetic",
+        "field",
+        "changes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L1::Q7",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L1",
+      "stem": "State three factors that affect the size of an induced voltage.",
+      "misconceptionClass": "factor recall",
+      "kind": "recall",
+      "modelAnswer": "The speed of movement, the strength of the magnetic field, and the number of turns on the coil.",
+      "keywords": [
+        "speed",
+        "strength",
+        "turns"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L1::Q8",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L1",
+      "stem": "Explain why a wire carried ALONG the field lines, never cutting them, induces no voltage.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Induction depends on cutting across the field lines: the induced voltage arises from the relative sweeping of conductor through field. A wire that slides parallel to the lines never crosses any of them, so there is no cutting, no change in the field through the wire, and no induced voltage.",
+      "keywords": [
+        "cutting",
+        "parallel",
+        "change",
+        "induced"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L1::Q9",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L1",
+      "stem": "A bar magnet is held still inside a large coil while the coil is slid rapidly sideways past it. State whether a voltage appears and justify the answer.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Yes — a voltage appears. Induction needs relative change between coil and field: with the magnet still and the coil moving, the field threading the coil changes as the coil slides, which is one of the two induction triggers, so an induced voltage shows on the meter.",
+      "keywords": [
+        "relative",
+        "coil",
+        "field",
+        "voltage"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L2::Q1",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L2",
+      "stem": "What does the meter show while a wire sweeps steadily through a field?",
+      "misconceptionClass": "reading reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "rapid random flickering",
+          "correct": false,
+          "explanation": "Steady sweeping gives a steady reading.",
+          "misconception": "noise invention"
+        },
+        {
+          "key": "B",
+          "text": "a steady deflection to one side",
+          "correct": true,
+          "explanation": "Constant cutting speed gives a constant induced voltage.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a permanent full-scale swing",
+          "correct": false,
+          "explanation": "The deflection matches the cutting rate, not infinity.",
+          "misconception": "magnitude invention"
+        },
+        {
+          "key": "D",
+          "text": "zero at all times",
+          "correct": false,
+          "explanation": "Motion across the lines induces a real voltage.",
+          "misconception": "denial claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L2::Q2",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L2",
+      "stem": "The wire sweep is reversed. The meter needle:",
+      "misconceptionClass": "polarity reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "stays at zero",
+          "correct": false,
+          "explanation": "Reversed motion still induces.",
+          "misconception": "denial claim"
+        },
+        {
+          "key": "B",
+          "text": "oscillates rapidly",
+          "correct": false,
+          "explanation": "One reversal gives one opposite deflection.",
+          "misconception": "oscillation invention"
+        },
+        {
+          "key": "C",
+          "text": "deflects the opposite way",
+          "correct": true,
+          "explanation": "Polarity follows the sweep direction.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "deflects further the same way",
+          "correct": false,
+          "explanation": "Direction, not size, changes with reversal.",
+          "misconception": "magnitude confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L2::Q3",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L2",
+      "stem": "The wire stops mid-gap, still inside the field. The meter reads:",
+      "misconceptionClass": "static reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the same deflection as during the sweep",
+          "correct": false,
+          "explanation": "The kick dies when the motion stops.",
+          "misconception": "retention myth"
+        },
+        {
+          "key": "B",
+          "text": "a doubled deflection",
+          "correct": false,
+          "explanation": "Stopping removes the induction entirely.",
+          "misconception": "magnitude invention"
+        },
+        {
+          "key": "C",
+          "text": "a reversed deflection",
+          "correct": false,
+          "explanation": "No motion means no direction to reverse.",
+          "misconception": "reversal invention"
+        },
+        {
+          "key": "D",
+          "text": "zero — no cutting, no induced voltage",
+          "correct": true,
+          "explanation": "Motion is required for induction here.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L2::Q4",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L2",
+      "stem": "The sweep speed is doubled with everything else fixed. The deflection:",
+      "misconceptionClass": "factor reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "grows larger",
+          "correct": true,
+          "explanation": "Faster cutting induces a bigger voltage.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "shrinks",
+          "correct": false,
+          "explanation": "That inverts the speed link.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "C",
+          "text": "flips to the other side",
+          "correct": false,
+          "explanation": "Same direction of sweep, same side of deflection.",
+          "misconception": "direction confusion"
+        },
+        {
+          "key": "D",
+          "text": "stays exactly the same",
+          "correct": false,
+          "explanation": "Size tracks the cutting speed.",
+          "misconception": "no-change claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L2::Q5",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L2",
+      "stem": "Which change makes the meter kick REVERSE without touching the wire?",
+      "misconceptionClass": "setup reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "cleaning the meter glass",
+          "correct": false,
+          "explanation": "Cosmetics do not touch the physics.",
+          "misconception": "irrelevant change"
+        },
+        {
+          "key": "B",
+          "text": "swapping the magnet's poles over",
+          "correct": true,
+          "explanation": "Field reversal flips the induced polarity.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "using a longer wire",
+          "correct": false,
+          "explanation": "Length changes size, not polarity.",
+          "misconception": "factor confusion"
+        },
+        {
+          "key": "D",
+          "text": "sweeping the wire faster",
+          "correct": false,
+          "explanation": "Speed changes size, not direction.",
+          "misconception": "factor confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L2::Q6",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L2",
+      "stem": "State what the wire does to the field lines in this setup.",
+      "misconceptionClass": "mechanism recall",
+      "kind": "recall",
+      "modelAnswer": "The wire cuts across the field lines as it sweeps through the gap.",
+      "keywords": [
+        "cuts",
+        "field",
+        "lines",
+        "sweeps"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L2::Q7",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L2",
+      "stem": "State the meter reading when the wire is held motionless between the poles.",
+      "misconceptionClass": "static recall",
+      "kind": "recall",
+      "modelAnswer": "The meter reads zero because no field lines are being cut.",
+      "keywords": [
+        "zero",
+        "no",
+        "cut"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L2::Q8",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L2",
+      "stem": "Explain why the needle kick is only momentary if the wire is given one short push.",
+      "misconceptionClass": "dynamic reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The push moves the wire for only a moment, so field lines are cut for only that moment. Induced voltage exists while cutting happens; once the wire settles, the cutting stops, the induced voltage falls to zero, and the needle springs back to the centre.",
+      "keywords": [
+        "moment",
+        "cutting",
+        "zero",
+        "needle"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L2::Q9",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L2",
+      "stem": "A student sweeps the wire left-right-left rhythmically through the gap. Describe the meter trace and connect it to the motion.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The needle kicks one way for each leftward sweep, swings through zero and kicks the other way for each rightward sweep, tracing a back-and-forth pattern that mirrors the wire's motion. The trace is alternating because the cutting direction alternates — the meter is effectively plotting the wire's velocity.",
+      "keywords": [
+        "kicks",
+        "alternating",
+        "direction",
+        "motion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L3::Q1",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L3",
+      "stem": "Why does a coil induce more voltage than a single wire in the same changing field?",
+      "misconceptionClass": "turns reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the coil's wire is thicker",
+          "correct": false,
+          "explanation": "Thickness is not the induction lever.",
+          "misconception": "factor confusion"
+        },
+        {
+          "key": "B",
+          "text": "single wires cannot induce at all",
+          "correct": false,
+          "explanation": "They can — coils just add more.",
+          "misconception": "denial claim"
+        },
+        {
+          "key": "C",
+          "text": "every turn adds its own induced voltage",
+          "correct": true,
+          "explanation": "The turns' voltages sum along the coil.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the coil stores voltage for release later",
+          "correct": false,
+          "explanation": "Nothing is stored; induction is immediate.",
+          "misconception": "storage myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L3::Q2",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L3",
+      "stem": "A magnet is pushed into a coil, then pulled back out at the same speed. The second kick is:",
+      "misconceptionClass": "polarity reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "larger and the same direction",
+          "correct": false,
+          "explanation": "Same speed gives the same size; direction flips.",
+          "misconception": "comparison error"
+        },
+        {
+          "key": "B",
+          "text": "zero",
+          "correct": false,
+          "explanation": "Leaving still changes the field through the coil.",
+          "misconception": "denial claim"
+        },
+        {
+          "key": "C",
+          "text": "doubled",
+          "correct": false,
+          "explanation": "Symmetric motion gives symmetric size.",
+          "misconception": "magnitude invention"
+        },
+        {
+          "key": "D",
+          "text": "the same size but the opposite direction",
+          "correct": true,
+          "explanation": "Exit reverses the field change, flipping the polarity.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L3::Q3",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L3",
+      "stem": "Which change increases the induced voltage in a coil-and-magnet setup?",
+      "misconceptionClass": "factor reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "moving the magnet faster",
+          "correct": true,
+          "explanation": "Speed is one of the three factors.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "using a weaker magnet",
+          "correct": false,
+          "explanation": "A weaker field reduces the voltage.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "C",
+          "text": "removing turns from the coil",
+          "correct": false,
+          "explanation": "Fewer turns reduce the summed voltage.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "D",
+          "text": "holding the magnet perfectly still inside the coil",
+          "correct": false,
+          "explanation": "A steady field through the coil induces nothing.",
+          "misconception": "static myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L3::Q4",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L3",
+      "stem": "A magnet sits motionless inside a large coil. Why does the meter read zero?",
+      "misconceptionClass": "static reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the meter is disconnected",
+          "correct": false,
+          "explanation": "The circuit is complete; the physics gives zero.",
+          "misconception": "equipment blame"
+        },
+        {
+          "key": "B",
+          "text": "the field through the coil is not changing",
+          "correct": true,
+          "explanation": "Induction needs a changing field or cutting.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the coil is too large to induce",
+          "correct": false,
+          "explanation": "Larger coils with more turns induce MORE.",
+          "misconception": "size myth"
+        },
+        {
+          "key": "D",
+          "text": "the magnet has no field",
+          "correct": false,
+          "explanation": "The field exists — it just is not changing.",
+          "misconception": "denial claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L3::Q5",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L3",
+      "stem": "Two identical coils are threaded by the same changing field; one has 100 turns, the other 500. The 500-turn coil's induced voltage is:",
+      "misconceptionClass": "comparison reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the same",
+          "correct": false,
+          "explanation": "Turn count is a size factor.",
+          "misconception": "equality claim"
+        },
+        {
+          "key": "B",
+          "text": "zero — extra turns cancel",
+          "correct": false,
+          "explanation": "Same-direction turns add; they never cancel.",
+          "misconception": "cancellation myth"
+        },
+        {
+          "key": "C",
+          "text": "five times larger",
+          "correct": true,
+          "explanation": "Voltage scales with the number of turns.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "five times smaller",
+          "correct": false,
+          "explanation": "More turns induce more, not less.",
+          "misconception": "comparison inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L3::Q6",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L3",
+      "stem": "State the effect on induced voltage of each of the three factors, increasing one at a time.",
+      "misconceptionClass": "factor recall",
+      "kind": "recall",
+      "modelAnswer": "Faster movement, a stronger magnetic field and more turns each increase the induced voltage.",
+      "keywords": [
+        "faster",
+        "stronger",
+        "turns",
+        "increase"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L3::Q7",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L3",
+      "stem": "State the polarity relationship between a magnet entering and leaving a coil.",
+      "misconceptionClass": "polarity recall",
+      "kind": "recall",
+      "modelAnswer": "The induced voltage reverses: entering gives one polarity and leaving gives the opposite.",
+      "keywords": [
+        "reverses",
+        "entering",
+        "leaving",
+        "opposite"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L3::Q8",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L3",
+      "stem": "Explain why more turns on a coil give a larger induced voltage.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The changing field threads every turn of the coil identically, so each turn has its own induced voltage. The turns are connected in series along the coil, so the voltages add: double the turns doubles the total induced potential difference across the coil.",
+      "keywords": [
+        "turn",
+        "induced",
+        "add",
+        "series"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8859pDM2R7Y4qVKc::L3::Q9",
+      "moduleId": "rn_8859pDM2R7Y4qVKc::L3",
+      "stem": "A generator demo uses a hand-cranked magnet spinning near a coil. Predict the meter trace as the crank turns steadily, and predict the change when the crank is turned twice as fast.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Steady cranking makes the field through the coil swing one way then the other each revolution, so the meter traces an alternating back-and-forth pattern in step with the crank. Twice the crank speed gives an alternating trace of the same shape but with twice the size and twice the frequency, because faster relative motion induces larger voltages more often.",
+      "keywords": [
+        "alternating",
+        "crank",
+        "larger",
+        "faster"
+      ],
+      "options": []
+    }
+  ]
+}

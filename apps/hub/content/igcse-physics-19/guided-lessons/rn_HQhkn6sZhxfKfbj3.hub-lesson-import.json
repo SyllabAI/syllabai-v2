@@ -1,0 +1,194 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_HQhkn6sZhxfKfbj3",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "e383ccd90ec1f287512771d995b84636f31706d2bc6bc41c6f4e6ac353f5b304",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_HQhkn6sZhxfKfbj3",
+    "topicTitle": "5. Solids, Liquids and Gases",
+    "subtopicTitle": "Density & Pressure",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/5-solids-liquids-and-gases/5-1-density-and-pressure/5-1-4-pressure-in-liquids",
+    "specAnchors": [
+      {
+        "code": "5.6",
+        "text": "understand how the pressure at a point in a gas or liquid at rest acts equally in all directions"
+      },
+      {
+        "code": "5.7",
+        "text": "know and use the relationship for pressure difference: pressure difference = height × density × gravitational field strength p = h × ρ × g"
+      }
+    ],
+    "primer": {
+      "text": "Divers feel it in their ears: fluid pressure grows with depth. These lessons show why a fluid at rest squeezes equally in all directions, then build the pressure-difference equation that turns depth, density and gravity into pascals.",
+      "prerequisiteSubtopic": "Density & Pressure"
+    },
+    "modules": [
+      {
+        "id": "rn_HQhkn6sZhxfKfbj3::L1",
+        "title": "Pressure in fluids acts in all directions",
+        "sourceHeadings": [
+          "Pressure in a liquid"
+        ],
+        "specRefs": [
+          "5.6"
+        ],
+        "opening": "A fluid at rest — liquid or gas — pushes on anything immersed in it from every side at once. The squeeze is even, and where it meets a surface the push always arrives head-on, at right angles.",
+        "keyPoints": [
+          "A fluid is a liquid or a gas.",
+          "An object at rest in a fluid is squeezed by pressure acting evenly over its whole surface and in all directions.",
+          "The fluid's pressure creates forces against the surfaces it touches.",
+          "Those forces always act at right angles to the surface."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Sink a ball into water: every point of its skin feels the same steady squeeze, from every compass direction, always straight into the surface. Fluids are democratic squeezers.",
+            "analogy": "A group hug with no favourite side: the water's push arrives from everywhere, each push perpendicular to wherever it lands.",
+            "examPointer": "Draw the force arrows at 90 degrees to the surface in every fluid-pressure diagram — slanted arrows lose the mark."
+          },
+          "medium": {
+            "restatement": "For a fluid at rest, pressure at a point is directionless: it acts equally in all directions, delivering normal forces on any immersed surface. The evenness is what distinguishes fluid pressure from a single contact push, and it holds for liquids and gases alike.",
+            "analogy": "Inflation: a balloon's skin is pressed outward equally everywhere by the air inside — no side is favoured, and every patch is pushed straight out.",
+            "examPointer": "State 'acts equally in all directions' verbatim for 5.6 — it is the sentence the specification rewards — then attach the right-angle rule for forces."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_HQhkn6sZhxfKfbj3::L1::Q1",
+          "rn_HQhkn6sZhxfKfbj3::L1::Q2",
+          "rn_HQhkn6sZhxfKfbj3::L1::Q3",
+          "rn_HQhkn6sZhxfKfbj3::L1::Q4",
+          "rn_HQhkn6sZhxfKfbj3::L1::Q5",
+          "rn_HQhkn6sZhxfKfbj3::L1::Q6",
+          "rn_HQhkn6sZhxfKfbj3::L1::Q7",
+          "rn_HQhkn6sZhxfKfbj3::L1::Q8",
+          "rn_HQhkn6sZhxfKfbj3::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_HQhkn6sZhxfKfbj3::L2",
+        "title": "Pressure difference with depth",
+        "sourceHeadings": [
+          "Calculating pressure in a liquid",
+          "Pressure in a liquid with a density is applied at a depth"
+        ],
+        "specRefs": [
+          "5.7"
+        ],
+        "opening": "Dive deeper and the squeeze strengthens: the fluid column above grows heavier. The pressure-difference equation multiplies depth by density by gravitational field strength, and rearranges to predict pressures or depths.",
+        "keyPoints": [
+          "The pressure on an object in a fluid rises as the object sits deeper.",
+          "Pressure difference = height × density × gravitational field strength, written p = h × ρ × g.",
+          "Height (depth) enters in metres, density in kilograms per metre cubed, g in newtons per kilogram, giving pascals.",
+          "The equation rearranges for any of the four quantities — including a depth prediction from a measured pressure."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Every metre down adds another layer of fluid pressing from above, so the deeper you go, the harder the squeeze. Multiply depth by the fluid's density by g and you have the extra pressure in pascals.",
+            "analogy": "A stack of mattresses: the bottom sleeper feels every mattress above; the top sleeper feels none. Depth is position in the stack.",
+            "examPointer": "Rearranging is examined: h = p ÷ (ρ × g) predicts depth from pressure — the swimming-pool style question — and watch the kilopascal conversion."
+          },
+          "medium": {
+            "restatement": "The pressure-difference equation p = hρg prices the fluid column above the point of interest: deeper points carry taller columns, denser fluids heavier ones, and g converts mass to weight. It rearranges freely — depth from pressure, density from a measured difference — with all inputs in SI units so the answer lands in pascals.",
+            "analogy": "A skyscraper's ground-floor lobby carries every floor's weight above it; higher floors feel lighter loads. The lobby is the deep point; the penthouse is the surface.",
+            "examPointer": "Convert kilopascals to pascals before substituting, and quote pascals or kilopascals consistently in the final line."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_HQhkn6sZhxfKfbj3::L2::Q1",
+          "rn_HQhkn6sZhxfKfbj3::L2::Q2",
+          "rn_HQhkn6sZhxfKfbj3::L2::Q3",
+          "rn_HQhkn6sZhxfKfbj3::L2::Q4",
+          "rn_HQhkn6sZhxfKfbj3::L2::Q5",
+          "rn_HQhkn6sZhxfKfbj3::L2::Q6",
+          "rn_HQhkn6sZhxfKfbj3::L2::Q7",
+          "rn_HQhkn6sZhxfKfbj3::L2::Q8",
+          "rn_HQhkn6sZhxfKfbj3::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "fluid",
+          "definition": "Either a liquid or a gas — a state that flows and exerts pressure in all directions.",
+          "firstLesson": 1
+        },
+        {
+          "term": "pressure difference",
+          "definition": "The extra pressure at depth in a fluid, equal to height × density × gravitational field strength.",
+          "firstLesson": 2
+        },
+        {
+          "term": "kilopascal",
+          "definition": "One thousand pascals, the unit in which large fluid pressures are often quoted.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Calculate the depth of water in a swimming pool where a pressure of 20 kPa is exerted. The density of water is 1000 kg/m³ and the gravitational field strength on Earth is 9.8 N/kg.",
+        "steps": [
+          "List the known quantities: pressure p = 20 kPa, density ρ = 1000 kg/m³, field strength g = 9.8 N/kg.",
+          "State the equation: p = h × ρ × g.",
+          "Rearrange for depth: h = p ÷ (ρ × g).",
+          "Convert units: 20 kPa = 20 000 Pa.",
+          "Substitute: h = 20 000 ÷ (1000 × 9.8) ≈ 2.0 m."
+        ],
+        "finalAnswer": "The water is about 2.0 m deep where the pressure is 20 kPa."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/bf63aff2620b-pressure-force.png",
+        "alt": "pressure-&-force, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Pressure in a liquid",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The pressure of a fluid on an object creates a force normal (at right angles) to the surface"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/143ce2b06875-pressure-in-liquids.png",
+        "alt": "pressure-in-liquids, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Pressure in a liquid with a density is applied at a depth",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The force from the pressure of objects in a liquid is exerted evenly across its whole surface"
+      }
+    ]
+  }
+}

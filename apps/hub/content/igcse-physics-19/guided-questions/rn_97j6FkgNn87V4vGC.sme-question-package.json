@@ -1,0 +1,735 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_97j6FkgNn87V4vGC",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "7487c6a2cc20739a09c2a493c9bb1a734ab68422ede4799911cc0b26bffc2ae7",
+    "pinnedRef": "c40b8b2849356ad2c27c4ef9c9e89d301622dcaf"
+  },
+  "packageId": "igcse-physics::rn_97j6FkgNn87V4vGC",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L1::Q1",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L1",
+      "stem": "Which instrument suits measuring a small object's dimensions most precisely?",
+      "misconceptionClass": "method detail",
+      "options": [
+        {
+          "key": "A",
+          "text": "a micrometer",
+          "correct": true,
+          "explanation": "Its 0.001 mm resolution is the finest of the three.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a 30 cm ruler",
+          "correct": false,
+          "explanation": "Its 1 mm resolution is the coarsest.",
+          "misconception": "instrument swap"
+        },
+        {
+          "key": "C",
+          "text": "a digital balance",
+          "correct": false,
+          "explanation": "The balance measures mass, not length.",
+          "misconception": "instrument swap"
+        },
+        {
+          "key": "D",
+          "text": "a measuring cylinder",
+          "correct": false,
+          "explanation": "That reads liquid volumes.",
+          "misconception": "instrument swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L1::Q2",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L1",
+      "stem": "What is the dependent variable in the regular-objects experiment?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the ruler's resolution",
+          "correct": false,
+          "explanation": "Resolution is fixed by the instrument.",
+          "misconception": "confusion"
+        },
+        {
+          "key": "B",
+          "text": "the mass of the object",
+          "correct": true,
+          "explanation": "Mass answers to the changed shape or volume.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the type of shape or volume",
+          "correct": false,
+          "explanation": "That is the independent variable.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "D",
+          "text": "the density of water",
+          "correct": false,
+          "explanation": "Water is not part of experiment 1.",
+          "misconception": "experiment swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L1::Q3",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L1",
+      "stem": "Why are the dimension measurements repeated and averaged?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because the balance requires three readings",
+          "correct": false,
+          "explanation": "The balance reading is taken once per object.",
+          "misconception": "invented rule"
+        },
+        {
+          "key": "B",
+          "text": "to change the object's true volume",
+          "correct": false,
+          "explanation": "Repetition reveals the value; it never changes the object.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "C",
+          "text": "to reduce the random error in the length readings",
+          "correct": true,
+          "explanation": "Averaging evens out the scatter of single readings.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "to fix any zero error on the balance",
+          "correct": false,
+          "explanation": "Zero errors are systematic and need re-zeroing, not averaging.",
+          "misconception": "error swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L1::Q4",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L1",
+      "stem": "Which sequence states the regular-objects method correctly?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "fill the eureka can, lower the object, read the displacement",
+          "correct": false,
+          "explanation": "That is the irregular-objects technique.",
+          "misconception": "experiment swap"
+        },
+        {
+          "key": "B",
+          "text": "zero the balance with liquid aboard, then weigh",
+          "correct": false,
+          "explanation": "The balance is zeroed empty, never loaded with liquid.",
+          "misconception": "method slip"
+        },
+        {
+          "key": "C",
+          "text": "measure the volume directly with a micrometer",
+          "correct": false,
+          "explanation": "A micrometer reads lengths, not volumes.",
+          "misconception": "instrument swap"
+        },
+        {
+          "key": "D",
+          "text": "weigh the object, measure its dimensions, average repeats, calculate density",
+          "correct": true,
+          "explanation": "Mass, dimensions, repeats, then the equation.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L1::Q5",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L1",
+      "stem": "After the volume is rebuilt from the dimensions, what completes the density determination?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "divide the averaged mass by the volume",
+          "correct": true,
+          "explanation": "ρ = m ÷ V closes the practical.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "multiply the mass by the volume",
+          "correct": false,
+          "explanation": "The equation divides.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "subtract the volume from the mass",
+          "correct": false,
+          "explanation": "Subtracting unlike quantities is meaningless.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "D",
+          "text": "compare the mass with water's density alone",
+          "correct": false,
+          "explanation": "The division by the object's own volume is required.",
+          "misconception": "short-cut slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L1::Q6",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L1",
+      "stem": "State the aim of the regular-objects experiment.",
+      "misconceptionClass": "method reasoning",
+      "kind": "recall",
+      "modelAnswer": "The experiment determines the densities of regular objects from their measured dimensions and their mass.",
+      "keywords": [
+        "determines",
+        "densities",
+        "regular",
+        "dimensions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L1::Q7",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L1",
+      "stem": "State which three instruments can take the dimension measurements, in decreasing size suitability.",
+      "misconceptionClass": "method detail",
+      "kind": "recall",
+      "modelAnswer": "The 30 cm ruler serves larger objects, the vernier calipers smaller ones, and the micrometer the smallest objects.",
+      "keywords": [
+        "ruler",
+        "calipers",
+        "micrometer",
+        "objects"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L1::Q8",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L1",
+      "stem": "Explain why the digital balance reading is taken before any dimension work begins.",
+      "misconceptionClass": "method reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The mass is a single direct reading best taken cleanly at the start, so the object is weighed first and its dimensions gathered afterwards. Sequencing the weighing first also keeps handling from transferring moisture or grease that would bias the mass.",
+      "keywords": [
+        "mass",
+        "weighed",
+        "dimensions",
+        "balance"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L1::Q9",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L1",
+      "stem": "A student measures a cube's edge three times: 10 mm, 11 mm and 10 mm. State the averaged edge and explain the benefit of averaging.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The averaged edge is (10 + 11 + 10) ÷ 3 ≈ 10.3 mm, and averaging steadies the random scatter of single readings so the volume — and hence the density — rests on a fairer value.",
+      "keywords": [
+        "averaged",
+        "10.3",
+        "random",
+        "fairer"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L2::Q1",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L2",
+      "stem": "What does the volume of displaced water equal?",
+      "misconceptionClass": "concept recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "half the object's volume",
+          "correct": false,
+          "explanation": "The displacement is complete, not partial.",
+          "misconception": "over-narrow reading"
+        },
+        {
+          "key": "B",
+          "text": "the volume of the submerged object",
+          "correct": true,
+          "explanation": "Displacement hands over the object's volume exactly.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the mass of the object",
+          "correct": false,
+          "explanation": "Mass comes from the balance.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "D",
+          "text": "the density of the water",
+          "correct": false,
+          "explanation": "Density is not what the spout delivers.",
+          "misconception": "quantity swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L2::Q2",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L2",
+      "stem": "Why must the measuring cylinder sit below the spout before the object goes in?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "so the can can be emptied first",
+          "correct": false,
+          "explanation": "Emptying the cylinder is a separate preparatory step.",
+          "misconception": "method slip"
+        },
+        {
+          "key": "B",
+          "text": "so the water warms to room temperature",
+          "correct": false,
+          "explanation": "Temperature is not the concern here.",
+          "misconception": "invented mechanism"
+        },
+        {
+          "key": "C",
+          "text": "so none of the displaced water is lost before it is read",
+          "correct": true,
+          "explanation": "Every drop of displacement must reach the cylinder.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "so the object has somewhere to land",
+          "correct": false,
+          "explanation": "The object goes into the can, not the cylinder.",
+          "misconception": "method slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L2::Q3",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L2",
+      "stem": "What is the dependent variable in the irregular-objects experiment?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the type of irregular shape or mass",
+          "correct": false,
+          "explanation": "That is the independent variable.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "B",
+          "text": "the can's overflow rate",
+          "correct": false,
+          "explanation": "Overflow is preparatory, not the measured outcome.",
+          "misconception": "confusion"
+        },
+        {
+          "key": "C",
+          "text": "the density of the object",
+          "correct": false,
+          "explanation": "Density is the final calculation, not the variable read.",
+          "misconception": "role swap"
+        },
+        {
+          "key": "D",
+          "text": "the volume of displaced water",
+          "correct": true,
+          "explanation": "Displacement answers to each new shape or mass.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L2::Q4",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L2",
+      "stem": "Why lower the object gently rather than drop it?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "dropping splashes water out, giving an incorrect volume reading",
+          "correct": true,
+          "explanation": "Splash losses corrupt the displacement.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the object might dissolve",
+          "correct": false,
+          "explanation": "Dissolving is not the cited risk.",
+          "misconception": "invented mechanism"
+        },
+        {
+          "key": "C",
+          "text": "gentle objects displace more water",
+          "correct": false,
+          "explanation": "Displacement depends on volume, not on entry speed.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "the spout closes when startled",
+          "correct": false,
+          "explanation": "Nothing closes; physics is not sentimental.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L2::Q5",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L2",
+      "stem": "Which extra step does the irregular-object method need that the regular-object method does not?",
+      "misconceptionClass": "concept transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "using the density equation",
+          "correct": false,
+          "explanation": "Both methods end in the same equation.",
+          "misconception": "shared step"
+        },
+        {
+          "key": "B",
+          "text": "collecting displaced water from a eureka can",
+          "correct": true,
+          "explanation": "Displacement replaces the geometry step.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "weighing the object on a balance",
+          "correct": false,
+          "explanation": "Both methods weigh the object.",
+          "misconception": "shared step"
+        },
+        {
+          "key": "D",
+          "text": "repeating readings and averaging",
+          "correct": false,
+          "explanation": "Both methods repeat and average.",
+          "misconception": "shared step"
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L2::Q6",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L2",
+      "stem": "State the aim of the irregular-objects experiment.",
+      "misconceptionClass": "method reasoning",
+      "kind": "recall",
+      "modelAnswer": "The experiment finds the densities of irregular objects through a displacement technique.",
+      "keywords": [
+        "finds",
+        "densities",
+        "irregular",
+        "displacement"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L2::Q7",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L2",
+      "stem": "State what must be done with the measuring cylinder just before lowering the object in.",
+      "misconceptionClass": "method detail",
+      "kind": "recall",
+      "modelAnswer": "An empty measuring cylinder is placed below the spout, and the cylinder is emptied of any earlier overflow before the object enters.",
+      "keywords": [
+        "measuring",
+        "cylinder",
+        "spout",
+        "emptied"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L2::Q8",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L2",
+      "stem": "Explain why the eureka can is filled until water overflows and then allowed to settle before the object is added.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Filling to overflowing guarantees the can is full to the spout's lip, so any later displacement escapes only through the spout. Allowing it to settle means the pre-experiment drips have finished; without that, stray drips would join the object's true displacement and inflate the reading.",
+      "keywords": [
+        "overflow",
+        "spout",
+        "displacement",
+        "drips"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L2::Q9",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L2",
+      "stem": "An irregular object of mass 240 g displaces 30 cm³ of water. Calculate its density in g/cm³.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "Density = 240 ÷ 30 = 8 g/cm³, since the displaced volume equals the object's volume.",
+      "keywords": [
+        "density",
+        "240",
+        "30",
+        "8"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L3::Q1",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L3",
+      "stem": "How is the liquid's mass obtained?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "weigh the liquid in an open beaker only",
+          "correct": false,
+          "explanation": "The method weighs the cylinder, empty and filled.",
+          "misconception": "method swap"
+        },
+        {
+          "key": "B",
+          "text": "multiply the volume by the density",
+          "correct": false,
+          "explanation": "That would need the density already known.",
+          "misconception": "circular slip"
+        },
+        {
+          "key": "C",
+          "text": "subtract the empty cylinder's mass from the filled cylinder's reading",
+          "correct": true,
+          "explanation": "The difference isolates the liquid.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "read it directly from the cylinder's scale",
+          "correct": false,
+          "explanation": "The scale reads volume, not mass.",
+          "misconception": "quantity swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L3::Q2",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L3",
+      "stem": "Why is the balance zeroed with the empty cylinder on it?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "to reduce the random error of pouring",
+          "correct": false,
+          "explanation": "Random error is the repeats' job.",
+          "misconception": "error swap"
+        },
+        {
+          "key": "B",
+          "text": "because the balance cannot read a cylinder",
+          "correct": false,
+          "explanation": "The balance reads anything placed on it.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "C",
+          "text": "to warm the balance up",
+          "correct": false,
+          "explanation": "Warm-up is not the cited reason.",
+          "misconception": "invented mechanism"
+        },
+        {
+          "key": "D",
+          "text": "to remove the systematic offset the cylinder's own mass would add",
+          "correct": true,
+          "explanation": "Zeroing kills the constant bias; repeats cannot.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L3::Q3",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L3",
+      "stem": "Which hazard belongs in this practical's safety notes alongside its glassware?",
+      "misconceptionClass": "method detail",
+      "options": [
+        {
+          "key": "A",
+          "text": "pouring water onto the electric balance risks a shock",
+          "correct": true,
+          "explanation": "The safety notes warn exactly this.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the eureka can's steam burns",
+          "correct": false,
+          "explanation": "No steam appears in a density practical.",
+          "misconception": "experiment swap"
+        },
+        {
+          "key": "C",
+          "text": "radioactive samples under test",
+          "correct": false,
+          "explanation": "Nothing radioactive is involved.",
+          "misconception": "absurd limit"
+        },
+        {
+          "key": "D",
+          "text": "pressure vessels bursting",
+          "correct": false,
+          "explanation": "No pressurised equipment is used.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L3::Q4",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L3",
+      "stem": "Which error family do repeat-and-average fixes address?",
+      "misconceptionClass": "evaluation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "equipment failure",
+          "correct": false,
+          "explanation": "Broken equipment needs replacing, not averaging.",
+          "misconception": "category slip"
+        },
+        {
+          "key": "B",
+          "text": "random error",
+          "correct": true,
+          "explanation": "Averaging evens out scatter in both directions.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "systematic error",
+          "correct": false,
+          "explanation": "Systematic offsets need re-zeroing or recalibration.",
+          "misconception": "error swap"
+        },
+        {
+          "key": "D",
+          "text": "human dishonesty",
+          "correct": false,
+          "explanation": "The fix is statistical, not moral.",
+          "misconception": "absurd limit"
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L3::Q5",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L3",
+      "stem": "A student records 50 g for the empty cylinder and 130 g with liquid aboard. The liquid's mass is",
+      "misconceptionClass": "arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "50 g",
+          "correct": false,
+          "explanation": "That is the cylinder alone.",
+          "misconception": "subtraction slip"
+        },
+        {
+          "key": "B",
+          "text": "180 g",
+          "correct": false,
+          "explanation": "That adds instead of subtracting.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "80 g",
+          "correct": true,
+          "explanation": "130 − 50 = 80 grams of liquid.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "130 g",
+          "correct": false,
+          "explanation": "That includes the cylinder.",
+          "misconception": "subtraction slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L3::Q6",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L3",
+      "stem": "State the mass-difference sentence used in the liquid experiment.",
+      "misconceptionClass": "method reasoning",
+      "kind": "recall",
+      "modelAnswer": "Mass of liquid equals the mass of the cylinder with liquid minus the mass of the empty cylinder.",
+      "keywords": [
+        "mass",
+        "liquid",
+        "cylinder",
+        "difference"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L3::Q7",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L3",
+      "stem": "State one systematic-error fix and one random-error fix from these experiments.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "recall",
+      "modelAnswer": "Zeroing the digital balance before readings fixes a systematic error; repeating measurements and taking averages fixes random error.",
+      "keywords": [
+        "zeroing",
+        "systematic",
+        "repeating",
+        "random"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L3::Q8",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L3",
+      "stem": "Explain why the measuring cylinder must never sit on the balance while water is poured into it.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The balance is an electrical instrument and spilled water inside it can cause an electric shock, so the cylinder is filled away from the balance and only then placed aboard for the reading.",
+      "keywords": [
+        "water",
+        "balance",
+        "shock",
+        "electrical"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_97j6FkgNn87V4vGC::L3::Q9",
+      "moduleId": "rn_97j6FkgNn87V4vGC::L3",
+      "stem": "A student obtains liquid masses of 78 g, 82 g and 80 g across three repeats. State the averaged mass and the density if the poured volume was 100 cm³.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The averaged mass is (78 + 82 + 80) ÷ 3 = 80 g, and the density is 80 ÷ 100 = 0.8 g/cm³.",
+      "keywords": [
+        "averaged",
+        "80",
+        "density",
+        "0.8"
+      ],
+      "options": []
+    }
+  ]
+}

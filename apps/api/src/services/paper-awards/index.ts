@@ -61,15 +61,25 @@ import type { SqlFn } from "./sql";
 export type { SqlFn };
 
 /** The bridge resolution: the region's ledger identity + its wired part
- * (null for question regions). */
+ * (null for question regions). T-MG-MARK-DELTA-1: `stem` — the question
+ * stem TEXT the bridge already reads (question_parts.prompt for part
+ * regions, questions.stem for question regions), the Lane E doctrine-match
+ * CONTEXT of record (never a mark source — the prompt's context law). */
 export interface ResolvedRegion {
   documentRefType: "paper_asset";
   documentRefId: string;
   regionKey: string;
   questionPartId: string | null;
+  stem: string | null;
 }
 
-/** The lane-supplied event: everything the publisher holds at the claim. */
+/** The lane-supplied event: everything the publisher holds at the claim.
+ * T-MG-MARK-DELTA-1 additions: attemptClass (the verdict's attempt
+ * classification, nullable — pre-existing honest absence) and
+ * workingRefCitation (the RESOLVED prior working block the point's evidence
+ * rests on — when set it wins the row's working_ref column over the run's
+ * own region-grain block, and the block insert is skipped: the citation
+ * points at an EXISTING row, the zero-orphan law by construction). */
 export interface PaperAwardEvent {
   learnerId: string;
   documentRefType: string;
@@ -85,6 +95,11 @@ export interface PaperAwardEvent {
   pipelineVersion: string;
   feedback: MarkAwardFeedback;
   working?: { kind: "ink" | "text" | "structure"; content?: unknown };
+  attemptClass?: "full" | "partial" | "blank" | null;
+  workingRefCitation?: string | null;
+  /** The run's re-mark content hash (T-MG-MARK-DELTA-1 cache law) — one
+   * value for the whole run, stamped on every claimed row. */
+  cacheHash?: string | null;
 }
 
 /**
@@ -115,7 +130,13 @@ export const frozenParityPaperAwardPublisher: PaperAwardPublisher = {
 export function createPaperAwardPublisher(sql: SqlFn): PaperAwardPublisher {
   return {
     publishAward: async (event) => {
-      const workingRef = event.working ? crypto.randomUUID() : null;
+      // T-MG-MARK-DELTA-1 citation arbitration: a resolved prior-block
+      // citation wins the row's working_ref over the run's own region-grain
+      // block (the more specific evidence); the block insert runs ONLY for
+      // the own pointer (the citation targets an EXISTING row — zero-orphan
+      // by construction, no suppression can strand a citation).
+      const ownWorkingRef = event.working ? crypto.randomUUID() : null;
+      const rowWorkingRef = event.workingRefCitation ?? ownWorkingRef;
       // THE CLAIM (createGradedEvidencePublisher's evidence_emitted guard,
       // award-shaped): already-fired (learner, doc, region, code, ordinal)
       // is suppressed BEFORE any working-block write — once-only, not a
@@ -123,21 +144,22 @@ export function createPaperAwardPublisher(sql: SqlFn): PaperAwardPublisher {
       const inserted = (await sql`
         insert into mark_awards (id, learner_id, document_ref_type, document_ref_id,
           region_key, mark_point_id, page, code, awarded, score, max_score,
-          ordinal, working_ref, pipeline_version, feedback)
+          ordinal, working_ref, pipeline_version, feedback, attempt_class, cache_hash)
         values (gen_random_uuid(), ${event.learnerId}, ${event.documentRefType},
           ${event.documentRefId}, ${event.regionKey}, ${event.markPointId},
           ${event.page}, ${event.code}, ${event.awarded}, ${event.score},
-          ${event.maxScore}, ${event.ordinal}, ${workingRef},
-          ${event.pipelineVersion}, ${JSON.stringify(event.feedback)}::jsonb)
+          ${event.maxScore}, ${event.ordinal}, ${rowWorkingRef},
+          ${event.pipelineVersion}, ${JSON.stringify(event.feedback)}::jsonb,
+          ${event.attemptClass ?? null}, ${event.cacheHash ?? null})
         on conflict (learner_id, document_ref_id, region_key, code, ordinal) do nothing
         returning id
       `) as unknown as Array<{ id: string }>;
       if (inserted.length === 0) return false;
-      if (workingRef && event.working) {
+      if (!event.workingRefCitation && ownWorkingRef && event.working) {
         await sql`
           insert into mark_working_blocks (id, learner_id, document_ref_type,
             document_ref_id, region_key, kind, content)
-          values (${workingRef}, ${event.learnerId}, ${event.documentRefType},
+          values (${ownWorkingRef}, ${event.learnerId}, ${event.documentRefType},
             ${event.documentRefId}, ${event.regionKey}, ${event.working.kind},
             ${JSON.stringify(event.working.content ?? null)}::jsonb)
         `;
@@ -153,6 +175,9 @@ const LABELED_PART = /^[a-z]/i;
 interface PartHit {
   part_id: string;
   label: string;
+  /** T-MG-MARK-DELTA-1: the part's printed question text (p.prompt aliased
+   * as stem — the Lane E doctrine-match context). */
+  stem?: string | null;
   ordering: number;
   question_id: string;
 }
@@ -160,6 +185,7 @@ interface QuestionHit {
   question_id: string;
   external_ref: string | null;
   exam_paper_id: string;
+  stem?: string | null;
 }
 interface PositionHit {
   position: string | number;
@@ -178,6 +204,7 @@ interface AwardRow {
   working_ref: string | null;
   pipeline_version: string;
   feedback: MarkAwardFeedback;
+  attempt_class: string | null;
   created_at: string;
   wb_id: string | null;
   wb_kind: string | null;
@@ -201,7 +228,7 @@ export class PaperAwards {
     const rows = (await this.sql`
       select a.id, a.region_key, a.page, a.code, a.awarded, a.score, a.max_score,
              a.ordinal, a.mark_point_id, a.working_ref, a.pipeline_version,
-             a.feedback, a.created_at,
+             a.feedback, a.attempt_class, a.created_at,
              wb.id as wb_id, wb.kind as wb_kind, wb.content as wb_content,
              wb.created_at as wb_created_at
       from mark_awards a
@@ -234,6 +261,7 @@ export class PaperAwards {
         workingRef: r.working_ref,
         pipelineVersion: r.pipeline_version,
         feedback: r.feedback,
+        attemptClass: (r.attempt_class ?? null) as ServedMarkAward["attemptClass"],
         createdAt: r.created_at,
       };
       region.awards.push(award);
@@ -266,7 +294,7 @@ export class PaperAwards {
    */
   async resolveRegion(regionId: string): Promise<ResolvedRegion> {
     const partHits = (await this.sql`
-      select p.id as part_id, p.label, p.ordering, v.question_id
+      select p.id as part_id, p.label, p.prompt as stem, p.ordering, v.question_id
       from question_parts p
       join question_versions v on v.id = p.question_version_id
       where p.id = ${regionId}
@@ -285,17 +313,17 @@ export class PaperAwards {
       const regionKey = LABELED_PART.test(part.label)
         ? `${questionKey}.${part.label.toLowerCase()}`
         : `${questionKey}.p${part.ordering + 1}`;
-      return { documentRefType: "paper_asset", documentRefId: q.exam_paper_id, regionKey, questionPartId: part.part_id };
+      return { documentRefType: "paper_asset", documentRefId: q.exam_paper_id, regionKey, questionPartId: part.part_id, stem: part.stem ?? null };
     }
 
     const qHits = (await this.sql`
-      select q.id as question_id, q.external_ref, q.exam_paper_id
+      select q.id as question_id, q.external_ref, q.exam_paper_id, q.stem
       from questions q
       where q.id = ${regionId}
     `) as unknown as QuestionHit[];
     if (qHits.length === 0) throw new NotFoundException("region", regionId);
     const q = qHits[0]!;
-    return { documentRefType: "paper_asset", documentRefId: q.exam_paper_id, regionKey: await this.questionKey(q), questionPartId: null };
+    return { documentRefType: "paper_asset", documentRefId: q.exam_paper_id, regionKey: await this.questionKey(q), questionPartId: null, stem: q.stem ?? null };
   }
 
   /** questionKey = external_ref, else the deterministic q{n} fallback
@@ -327,6 +355,9 @@ export class PaperAwards {
     resolution: ResolvedRegion;
     pipelineVersion: string;
     awards: MarkAwardWrite[];
+    /** T-MG-MARK-DELTA-1: the run's re-mark content hash — stamped on every
+     * claimed row (the cache law's standing-award key). */
+    cacheHash?: string | null;
   }): Promise<PaperAwardWriteResponse> {
     let emitted = 0;
     let suppressed = 0;
@@ -347,11 +378,14 @@ export class PaperAwards {
         pipelineVersion: input.pipelineVersion,
         feedback: award.feedback,
         working: award.working,
+        attemptClass: award.attemptClass ?? null,
+        workingRefCitation: award.workingRefCitation ?? null,
+        cacheHash: input.cacheHash ?? null,
       };
       const won = await this.publisher.publishAward(event);
       if (won) {
         emitted += 1;
-        if (award.working) workingBlocks += 1;
+        if (award.working && !award.workingRefCitation) workingBlocks += 1;
       } else {
         suppressed += 1;
       }

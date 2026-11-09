@@ -1,0 +1,43 @@
+{
+  "card": "T-TEACH-REPORTS-1",
+  "receipt": "run-002-api-bake-r0",
+  "lane": "operator-direct (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, trace 1a1a81e8ff890a11 'Merge #766 <VT supplied>')",
+  "created_at_utc": "2026-11-04T20:15Z",
+  "purpose": "the post-merge api bake of record — the operator's Vercel token supply IS the redeploy order (the lever the T-MIG-107/133 posture named as operator-gated): bake main cb0ae9df into the serving carrier so the #706 tutor budget fix (PR #724) and the #759 refusal-detect band go live",
+  "state_at_fetch_first": [
+    "PR #766 MERGED first-hand via the merge API (merge commit cb0ae9dff5e7b475804738d6e2181420b201c47b) after TWO worklog-union rebases (onto ad852640 then ac056ba3, both CI 2/2 green at heads 25bc4e57 / 0a3f6c76 — the first merge attempt 405ed on the second main advance; the union-resolve law held: main's lines verified fully present, lane sections byte-intact at tail)",
+    "the api carrier incumbent was dpl_Dcv8thG3PjZ4Uc6eYSESjDiCh1eB (READY, created 2026-11-03T14:20Z, alias syllabai-v2.vercel.app) — meta.githubCommitMessage 'diagnostic: surface tutor ask 500 stack (temporary, path-gated)', githubCommitSha ABSENT: an out-of-band build whose commit is NOT IN main history (git log --all --grep zero hits) — the prod api ran foreign bytes predating #724 (11-04 18:36Z) and #759",
+    "the api project has link=null (v9/projects) and zero git-integration commit statuses — manual CLI bakes by construction (the T-MIG-135 mechanism of record re-confirmed first-hand)"
+  ],
+  "build_of_record": {
+    "recipe": "faithful re-run of the T-MIG-093 chain (.syllabai/receipts/T-MIG-093/tools/deploy_bundle_build.py), shim v3 — ADAPTED to current main shape, disclosed: the six concept-graph YAMLs are now COMMITTED inline via teacher/concept-graph-assets.gen.ts (T-TUTOR-EXP-1, the 2026-11-03 outage law) so the v2 generated-module and readResource/learnerDir shims are RETIRED; the learner-me NBA loader was NOT converted (still import.meta.dir disk reads) so the shim points loadSnapshotYaml at the same committed inline module (keys concept-graph/<file>.yaml); the requireHash pins still verify at boot, fail-closed; the only Bun.* on the bundled path (CryptoHasher/YAML.parse in the two files) shim to node:crypto + js-yaml (resolves from the hoisted root store; zero manifest changes)",
+    "source": "main cb0ae9df, worktree clean pre-shim, git-verified PRISTINE post-build (0 dirty files first-hand)",
+    "assets": "the 6 inlined YAML sha256 prefixes first-hand at build: concepts 24fa91ac7149682b, concept_edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, specification_points b1fea69953205077, topics a7b14cbdd34bb9fe — ALL EXACT to the of-record pins",
+    "bundle": "404 modules, 3,798,281 bytes CJS; sha256-16 of record: 756e7055a77a7f39 (stage /tmp/api-stage-r766/api/index.js); bun target=node format=cjs, entry = the r1c Node adapter (unchanged)",
+    "local_gate_8_of_8": "node v24.22.2 real http server on the bundle, of-record DATABASE_URL via the env API (the t139 value=true single-env-GET law — the census LIST returns encrypted envelopes now; run-008's LIST-decrypt law is superseded), local-only 44-byte JWT key, staged 0600 SHREDDED post-gate never printed: health 200; login-malformed 400 validation_failed; register 201 (real Neon INSERT, r0-092gate-* learner of record); tutor create 201 / list non-empty 200 / latest 200 / delete 204 / list-after-delete 200 — ALL PASS first-hand"
+  },
+  "deploy": {
+    "method": "vercel CLI 65.11.0 deploy --prod --yes --token from the 2-file stage (api/index.js + vercel.json rewrites; .vercel/project.json prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX) — CLI version drift vs the of-record 62.7.0 disclosed",
+    "deployment": "dpl_7Q3CRpcTWavgD6VMbXvSrpshCVKV (syllabai-v2-jos9sui33-syllab-ai.vercel.app) READY createdAt 2026-11-04T20:08Z",
+    "production_alias_switched": true,
+    "alias": "syllabai-v2.vercel.app — aliasAssigned True first-hand (v13 by-url detail + v6 list)"
+  },
+  "post_deploy_live_battery_7_of_7": [
+    "1/7 PASS health: 200 {groups:[liveness,readiness],status:UP}",
+    "2/7 PASS unknown path: 401 (the /api/v1 filter chain)",
+    "3/7 PASS cron fail-closed: 401 {reason:'missing or wrong Authorization bearer — the hub seam forwards the Vercel Cron bearer verbatim'}",
+    "4/7 PASS register probe: 201 + accessToken (real Neon INSERT, r766-bake-* learner of record)",
+    "5/7 PASS tutor session create: 201",
+    "6/7 PASS tutor list non-empty: 200",
+    "7/7 PASS tutor delete: 204 (net rows: one probe learner, zero tutor sessions)"
+  ],
+  "fix_liveness_of_record": "the serving bytes are main cb0ae9df (stage built from that worktree; the sha chain: merge cb0ae9df -> shimmed worktree -> bundle 756e7055a77a7f39 -> dpl_7Q3CRpcTWavgD6VMbXvSrpshCVKV): the #706 completion-budget fix (TUTOR_COMPLETION_BUDGET_DEFAULT=4000 + the SYLLABAI_TUTOR_MAX_TOKENS env law, PR #724) and the #759 refusal-detect band are LIVE; the live scenario-9 walkthrough re-run remains the T-TUTOR-EXP-2 card's own gate (#698) — this bake removes its deployment blocker",
+  "hub_side_of_record": "hub prod serves ac056ba3 byte-exact (favicon sha 019e1a6b first-hand == repo @ ac056ba3); the cb0ae9df hub auto-bake did NOT fire by 20:25Z (the known dropped-event class) and the manual API trigger hit payment_required — 'api-deployments-free-per-day' 100/day exhausted, resets ~22:18Z 11-04: the #766 hub delta (reports page + nav tab) rides the next git push or the reset window; zero learner/teacher-facing regression (a new page only)",
+  "rollback": "the incumbent dpl_Dcv8thG3PjZ4Uc6eYSESjDiCh1eB stays READY and re-aliasable (the MIGRATION_PLAN §5 lever); zero env changes made by this lane (the DATABASE_URL fetch was read-only, in-memory, shredded)",
+  "disclosures": [
+    "the deployed bundle differs from main-tip source ONLY by the disclosed worktree-only shims (Bun.* -> node APIs; the NBA loader re-pointed at the committed inline module); shimmed files git-restored, worktree pristine verified",
+    "the retired incumbent's 'temporary, path-gated' tutor diagnostic is GONE from prod with this bake (it was never on main)",
+    "the free-tier deployment quota (100 API deploys/day, payment_required) is a NEW operational constraint on manual bakes — bakes are a scarce lever until the plan tier changes"
+  ],
+  "verdict": "BAKED AND VERIFIED — the api of record serves main cb0ae9df; the #706 deployment blocker is cleared"
+}

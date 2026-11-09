@@ -20,7 +20,7 @@
  */
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import {
   Atom,
   BookOpen,
@@ -49,7 +49,7 @@ const ROLE_STORY: Record<
     heading: "Revision that knows the spec.",
     sub: "Every note, question and hint is grounded in the Edexcel syllabus.",
     bullets: [
-      { icon: BookOpen, text: "Spec-grounded revision notes for 94 course lanes" },
+      { icon: BookOpen, text: "Spec-grounded revision notes for 94 courses" },
       { icon: FileQuestion, text: "Exam-style questions with self-marking" },
       { icon: Sparkles, text: "A tutor that cites the syllabus, not vibes" },
     ],
@@ -72,7 +72,6 @@ function nextDestination(search: URLSearchParams, isTeacher: boolean): string {
 }
 
 export function LoginClient() {
-  const router = useRouter();
   const search = useSearchParams();
   const identity = useIdentity();
   const initialRole: Role = search.get("mode") === "teacher" ? "teacher" : "student";
@@ -129,12 +128,21 @@ export function LoginClient() {
       setSession(auth);
       announceSessionChange();
       // A-2: mirror the session into the signed routing cookie and AWAIT it
-      // — router.push must not race the proxy (a missing cookie here would
+      // — the navigation must not race the proxy (a missing cookie here would
       // bounce a fresh teacher back to /login). Failure surfaces through
       // this block's existing error banner; retry is the fix.
       await mirrorRoutingSession(auth.user);
       const isTeacher = auth.user.roles.some((r) => r === "TEACHER" || r === "ADMIN");
-      router.push(nextDestination(search, isTeacher));
+      // T-HUBFIX-SIGNIN-NAV-RACE — hard navigation, NOT router.push: a
+      // signed-out visit prefetches gated routes and the proxy's 307 sign-in
+      // redirect for those prefetches stays cached in the client router —
+      // replaying on ANY later client-side navigation to /dashboard or
+      // /teacher, even with the fresh cookie aboard (observed live: the
+      // just-signed-in push landed on /login?next=… and the login page's
+      // own "Go to my dashboard" link bounced back onto itself). A full
+      // document load bypasses the client router cache entirely; the one-
+      // shot load is the correct price for a deterministic sign-in.
+      window.location.assign(nextDestination(search, isTeacher));
     } catch (e) {
       const message = e instanceof Error ? e.message : "Sign-in failed";
       setError(
@@ -185,7 +193,7 @@ export function LoginClient() {
 
         <div className="space-y-1 text-xs text-primary-foreground">
           <p className="font-medium">
-            Pearson Edexcel &amp; Cambridge International (CIE) · 4CH1 pilot corpus · 94 lanes
+            Pearson Edexcel &amp; Cambridge International (CIE)
           </p>
           <p>Grounded AI, honest citations, spec-anchored everything.</p>
         </div>

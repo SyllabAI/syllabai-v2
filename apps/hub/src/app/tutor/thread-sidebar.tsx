@@ -291,7 +291,9 @@ export function ThreadSidebar({
                   return (
                     <li key={t.id}>
                       {renamingId === t.id ? (
-                        <div className="flex items-center gap-1 rounded-md border border-primary/40 bg-background p-1">
+                        /* t-ui-polish run-006: the rename shell speaks the house
+                           active voice (border-primary/60), not the legacy /40. */
+                        <div className="flex items-center gap-1 rounded-md border border-primary/60 bg-background p-1">
                           <Input
                             autoFocus
                             value={renameDraft}
@@ -414,13 +416,7 @@ export function ThreadSidebar({
             variant="ghost"
             size="sm"
             className="h-7 w-full justify-start gap-1.5 px-2 text-[11px] text-muted-foreground hover:text-destructive"
-            onClick={() => {
-              onClearAll();
-              toast({
-                title: "Conversations cleared",
-                description: "This tutor's conversations were cleared from this browser. Other courses are untouched.",
-              });
-            }}
+            onClick={() => onClearAll()}
           >
             <Trash2 className="size-3" aria-hidden /> Clear all conversations
           </Button>

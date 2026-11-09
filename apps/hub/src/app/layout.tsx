@@ -97,10 +97,14 @@ const inter = localFont({
 
 /**
  * No-flash theme bootstrap — runs before first paint, mirrors the logic in
- * src/lib/theme-store.ts (same storage key + parsing). Reads
- * { theme: "sme"|"quiet-green"|"candy-shop"|"chat-app-plum",
- *   mode: "light"|"dark"|"system" }
- * from localStorage["syllabai-theme"] and applies data-theme + .dark.
+ * src/lib/theme-store.ts (same storage key + parsing — keep both in sync).
+ * T-THEME-LOCAL-1 run-001 ("Theme must be browser saved only"): the theme
+ * is a BROWSER record again — this reads { theme: "sme"|"quiet-green"|
+ * "candy-shop"|"chat-app-plum", mode: "light"|"dark"|"system" } from
+ * localStorage["syllabai-theme"] and applies data-theme + .dark before any
+ * content paints. (The account-only sweep's bootstrap applied the system
+ * default only and let the account theme land post-hydration — the flash
+ * cost this restore removes.)
  */
 const themeBootstrap = `(function(){try{
 var t=JSON.parse(localStorage.getItem("syllabai-theme")||"{}");
@@ -117,15 +121,23 @@ export const metadata: Metadata = {
   // UX review 2026-10-31 F-08: canonical + Open Graph URLs on the course
   // pages are relative — metadataBase is the absolute base they resolve
   // against (the deployment's canonical home).
-  metadataBase: new URL("https://syllabai-hub-v2.vercel.app"),
+  // T-HUB-COURSES-PUBLIC-2 (⑤): production of record is www.syllab-ai.com —
+  // the old syllabai-hub-v2.vercel.app project answers 402
+  // DEPLOYMENT_DISABLED (the disclosed cap-class halt), so every canonical /
+  // og: URL on the now-public site must resolve against the LIVE domain.
+  metadataBase: new URL("https://www.syllab-ai.com"),
   // UX audit 2026-10-02 #14: a template brands every nested title (pages
   // export the bare page name; the suffix is appended exactly once here).
   title: {
-    default: "SyllabAI Hub — IGCSE & IAL revision",
+    // T-HUB-COURSES-PUBLIC-1 fix ②: the registry outgrew the tagline —
+    // 106 courses across IGCSE/AS/A-Level/IAL on two boards, so "IGCSE &
+    // IAL" undercounted the A-Level/AS lanes and the Edexcel-only framing
+    // hid Cambridge International entirely.
+    default: "SyllabAI Hub — IGCSE & A-Level revision",
     template: "%s — SyllabAI Hub",
   },
   description:
-    "Spec-anchored revision for Edexcel IGCSE & IAL: notes, exam questions, flashcards, past papers and a grounded AI tutor — mapped to your syllabus.",
+    "Spec-anchored revision for Edexcel & Cambridge International: notes, exam questions, flashcards, past papers and a grounded AI tutor — mapped to your syllabus.",
 };
 
 export default function RootLayout({

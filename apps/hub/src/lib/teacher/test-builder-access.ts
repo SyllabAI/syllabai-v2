@@ -28,12 +28,107 @@
  */
 
 import type { SwitchableCourse } from "@/lib/teacher/types";
+import {
+  atOf,
+  bridgeDocPool,
+  isAccountDocsHydrated,
+  mirrorDocPoolState,
+  unionByStamp,
+} from "@/lib/account-docs-records";
+import { adoptLegacyStorage, onAccountDocsReset } from "@/lib/account-docs";
+import { readIdentitySnapshot } from "@/lib/identity";
 
-/** The single-slot draft of the pre-separation era (read-only after this band). */
+// ── T-AUDIT-TIER1 run-004 — the account mirror ─────────────────────────
+// The per-course builder drafts (T-TEACH-008) mirror the account under the
+// "test-builder-drafts" key of record. The union is per course slug, the
+// NEWER savedAt wins (the stamp the draft has carried since day one), tie
+// -> server, capped. The legacy v1 slot stays read-only (its migration
+// path lands in the v2 key and mirrors like any other write).
+// DISCLOSED: a draft CLEARED on this device loses to a server copy whose
+// savedAt is newer (the conservative union never loses a record) — the
+// cleared draft can resurrect on the next hydration, the same law the
+// thread pools' deletions follow.
+/** The single-slot draft of the pre-separation era (a legacy adoption pin). */
 export const LEGACY_DRAFT_KEY = "syllabai.testBuilderDraft.v1";
 
-export function draftKeyFor(slug: string): string {
-  return `syllabai.testBuilderDraft.v2.${slug}`;
+/** The RETIRED v2 device-key family (the legacy adoption's other pin; kept
+ *  as a name for the migration tests — nothing reads it at runtime). */
+export const draftKeyFor = (slug: string): string =>
+  `syllabai.testBuilderDraft.v2.${slug}`;
+
+const DRAFT_PREFIX = "syllabai.testBuilderDraft.v2."; // RETIRED (legacy adoption pin)
+const DRAFT_DOC_KEY = "test-builder-drafts";
+const MAX_DRAFTS = 20;
+
+// the in-memory draft pool of record (T-ACCOUNT-ONLY run-001)
+const draftPool = new Map<string, object>();
+
+function draftPoolKey(storageKey: string): string {
+  return storageKey.slice(DRAFT_PREFIX.length);
+}
+
+function readDraftPool(): Record<string, object> {
+  return Object.fromEntries(draftPool);
+}
+
+function writeDraftPool(pool: Record<string, object>) {
+  draftPool.clear();
+  for (const [slug, draft] of Object.entries(pool)) draftPool.set(slug, draft);
+}
+
+if (typeof window !== "undefined") {
+  // T-ACCOUNT-ONLY run-001 — the one-time legacy adoption: BOTH retired
+  // families (the v2 per-course keys and the pre-separation v1 single slot)
+  // seed the engine; they commit up only when the account has no doc of its
+  // own, and the sweep retires the device keys on clean
+  const legacyKeys: string[] = [];
+  const legacyDrafts: Record<string, object> = {};
+  try {
+    for (let i = 0; i < window.localStorage.length; i++) {
+      const k = window.localStorage.key(i);
+      if (!k || !k.startsWith(DRAFT_PREFIX)) continue;
+      const raw = window.localStorage.getItem(k);
+      if (!raw) continue;
+      const parsed = JSON.parse(raw) as unknown;
+      if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+        legacyDrafts[draftPoolKey(k)] = parsed as object;
+        legacyKeys.push(k);
+      }
+    }
+    const legacyV1 = window.localStorage.getItem(LEGACY_DRAFT_KEY);
+    if (legacyV1) {
+      const parsed = JSON.parse(legacyV1) as unknown;
+      if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+        const course = (parsed as { course?: unknown }).course;
+        if (typeof course === "string" && !legacyDrafts[course]) {
+          legacyDrafts[course] = parsed as object;
+          legacyKeys.push(LEGACY_DRAFT_KEY);
+        }
+      }
+    }
+  } catch {
+    // a torn scan degrades to the pool it could read
+  }
+  if (legacyKeys.length > 0) {
+    for (const [slug, draft] of Object.entries(legacyDrafts)) draftPool.set(slug, draft);
+    adoptLegacyStorage(DRAFT_DOC_KEY, legacyKeys, () => legacyDrafts);
+  }
+  // account switch / sign-out: the pool clears with the engine
+  onAccountDocsReset(() => {
+    draftPool.clear();
+  });
+
+  bridgeDocPool<Record<string, object>, object>({
+    docKey: DRAFT_DOC_KEY,
+    cap: MAX_DRAFTS,
+    readState: () => readDraftPool(),
+    readPool: (p) => p,
+    apply: (pool) => writeDraftPool(pool),
+    merge: (local, server) => unionByStamp(local, server, "savedAt"),
+    stamp: (p) => Object.entries(p).map(([k, v]) => `${k}:${atOf((v as { savedAt?: unknown }).savedAt)}`).sort().join("|"),
+    getAuthEmail: () => readIdentitySnapshot()?.email ?? null,
+    isHydrated: () => isAccountDocsHydrated(),
+  });
 }
 
 /** The wire-invariant slice every stored draft carries (the full builder
@@ -53,28 +148,14 @@ function parseDraft(raw: unknown, slug: string): object | null {
 }
 
 /**
- * Read the draft for ONE course: the v2 per-course key first; the legacy
- * single-slot draft only if it belongs to this course (adopted in place —
- * written to the v2 key and the legacy slot vacated so the migration is
- * one-time per course). Returns the parsed object (identity law v+course
- * enforced here; the caller owns its own shape law) or null.
+ * Read the draft for ONE course: the in-memory pool (hydrated from the
+ * account doc; the legacy device drafts arrived through the engine's
+ * one-time adoption at module init). Returns the parsed object (identity
+ * law v+course enforced here; the caller owns its own shape law) or null.
  */
 export function readBuilderDraft(slug: string): object | null {
-  try {
-    const raw = window.localStorage.getItem(draftKeyFor(slug));
-    if (raw) {
-      return parseDraft(JSON.parse(raw), slug);
-    }
-    const legacy = window.localStorage.getItem(LEGACY_DRAFT_KEY);
-    if (!legacy) return null;
-    const d = parseDraft(JSON.parse(legacy), slug);
-    if (!d) return null; // belongs to another course — leave it for that visit
-    window.localStorage.setItem(draftKeyFor(slug), JSON.stringify(d));
-    window.localStorage.removeItem(LEGACY_DRAFT_KEY);
-    return d;
-  } catch {
-    return null;
-  }
+  const d = draftPool.get(slug);
+  return d ? parseDraft(d, slug) : null;
 }
 
 /**
@@ -82,15 +163,14 @@ export function readBuilderDraft(slug: string): object | null {
  * "committed to Your tests" and "nothing to resume" path.
  */
 export function writeBuilderDraft(slug: string, draft: object | null): void {
-  try {
-    if (draft === null) {
-      window.localStorage.removeItem(draftKeyFor(slug));
-    } else {
-      window.localStorage.setItem(draftKeyFor(slug), JSON.stringify(draft));
-    }
-  } catch {
-    // private mode / quota — the draft just won't persist
+  if (draft === null) {
+    draftPool.delete(slug);
+  } else {
+    draftPool.set(slug, draft);
   }
+  // T-AUDIT-TIER1 run-004 → T-ACCOUNT-ONLY run-001 — the account mirror IS
+  // the store (the persist-tail law)
+  mirrorDocPoolState(DRAFT_DOC_KEY, readDraftPool());
 }
 
 /**

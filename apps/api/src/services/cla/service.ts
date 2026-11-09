@@ -31,14 +31,28 @@
  *    ADR-031 intact).
  *
  * RUNTIME STEP (disclosed): the four dependency-served kinds dispatch
- * (KG_TOPIC, SPECIFICATION_POINT, PAST_PAPER_QUESTION, QUESTION_PART); the
- * NOTE_SECTION lead-evidence branch (:746-790 noteSectionEvidence +
- * noteEvidenceLimit) DEFERS with its resolver branch (the 053 t3/t4 gate —
- * the constants NOTE_CHUNK_LIMIT / NOTE_CONTEXT_EVIDENCE_LIMIT /
- * NOTE_DOCUMENT_FILE_PREFIX defer with it); the frozen lessonAction /
- * noteTitle brief branches port verbatim but are unreachable in this
- * runtime (their context fields are null on the served kinds — the
- * deferral law, never silent).
+ * (KG_TOPIC, SPECIFICATION_POINT, PAST_PAPER_QUESTION, QUESTION_PART) and —
+ * with T-MIG-053 t3 (the revision-notes read model) landed on main —
+ * NOTE_SECTION dispatches too: the note-serving lane wires the resolver's
+ * note branch and the note lead-evidence branch below. The SMART_LESSON
+ * resolver branch still DEFERS (SmartLessonService rides T-MIG-053 t4's
+ * serving lane) and stays the closed-enum default refusal, disclosed.
+ *
+ * NOTE lead-evidence branch (:746-790 noteSectionEvidence +
+ * noteEvidenceLimit) — the v2 port of record, two disclosures:
+ *  1. the frozen lead items were the note's INGESTED document chunks (kind
+ *     EXTERNAL_NOTES under NOTE_DOCUMENT_FILE_PREFIX); the v2 note corpus is
+ *     the V27 revision_note table (053-t3) — body_md native, no chunk
+ *     substrate — so NOTE_DOCUMENT_FILE_PREFIX is inapplicable of record and
+ *     the lead segments come from a DETERMINISTIC split of the note's own
+ *     body (blank-line blocks folded under NOTE_CHUNK_BOUND, the
+ *     PART_PROMPT_BOUND discipline), first NOTE_CHUNK_LIMIT segments, stored
+ *     order, never re-ordered;
+ *  2. the frozen constants' values are unrecoverable at the accessible pin
+ *     (the frozen sha is unreachable; the constants defer with the branch
+ *     they rode) — NOTE_CHUNK_LIMIT = 4 and NOTE_CONTEXT_EVIDENCE_LIMIT = 8
+ *     are the RECONSTRUCTED bounds of record (bounded windows, disclosed;
+ *     the lead displaces the fused pool tail, never the anchor/spec items).
  *
  * DORMANT SEAM (the tutor posture, the claim card's law of record): the
  * generator is the tutor's injected seam — the composition root wires the
@@ -95,6 +109,7 @@ import {
   type ClaToolTrace,
 } from "./tool-registry";
 import {
+  isNoteContext,
   isQuestionContext,
   isQuestionPartContext,
   isTopicContext,
@@ -146,6 +161,20 @@ export const PART_PROMPT_BOUND = 1200;
 /** the frozen @Value defaults (:193-194) */
 export const CLA_VECTOR_CANDIDATES = 12;
 export const CLA_EVIDENCE_LIMIT = 6;
+
+/**
+ * NOTE lead-evidence bounds (the :746-790 branch — see the header law for
+ * the reconstruction disclosure). NOTE_CHUNK_LIMIT caps the deterministic
+ * body segments that lead the window; NOTE_CHUNK_BOUND caps each segment
+ * (the PART_PROMPT_BOUND discipline — the tutor prompt renders non-paper
+ * evidence at 600 chars, so a segment at or under the bound never renders
+ * mid-truncated); NOTE_CONTEXT_EVIDENCE_LIMIT is the note context's own
+ * whole-list cap (the noteEvidenceLimit override — the lead needs room, so
+ * it is wider than the standard CLA_EVIDENCE_LIMIT).
+ */
+export const NOTE_CHUNK_LIMIT = 4;
+export const NOTE_CHUNK_BOUND = 600;
+export const NOTE_CONTEXT_EVIDENCE_LIMIT = 8;
 
 /** ClaInteractionEvent (:422-438 + shared/events/ClaInteractionEvent) — the
  *  provenance-bearing interaction record. The sink is the injected 061
@@ -708,6 +737,65 @@ export function buildClaService(deps: ClaServiceDeps) {
     return leadItem("MARK_SCHEME", "Mark scheme points: " + content, context.topicNodeId);
   };
 
+  /**
+   * NOTE lead-evidence (:746-790 noteSectionEvidence, the v2 port of record
+   * — see the header law). The note the learner is LOOKING at leads the
+   * evidence window: its own body, deterministically segmented (blank-line
+   * markdown blocks folded under NOTE_CHUNK_BOUND — stored order, never
+   * re-ordered), first NOTE_CHUNK_LIMIT segments as NOTE-source lead items
+   * attributed to the resolved anchor topic. The body read is the SERVICE's
+   * own repo read over the 053-t3 substrate (the frozen topology's second
+   * consumer — the resolver carries the identity, the evidence carries the
+   * content); an unresolvable note row here is a server defect after the
+   * resolver's own fail-closed gate, so the read degrades honestly to ZERO
+   * lead items (the anchored pool still grounds the ask — never a pipeline
+   * failure from the same row the resolver just resolved).
+   */
+  const noteBodySegments = (bodyMd: string): string[] => {
+    const segments: string[] = [];
+    let current = "";
+    for (const block of bodyMd.split(/\n\n+/)) {
+      const trimmed = block.trim();
+      if (trimmed.length === 0) continue;
+      if (current.length === 0) {
+        current = trimmed.slice(0, NOTE_CHUNK_BOUND);
+      } else if (current.length + 2 + trimmed.length <= NOTE_CHUNK_BOUND) {
+        current += "\n\n" + trimmed;
+      } else {
+        segments.push(current);
+        current = trimmed.slice(0, NOTE_CHUNK_BOUND);
+      }
+      if (segments.length >= NOTE_CHUNK_LIMIT) break;
+    }
+    if (current.length > 0 && segments.length < NOTE_CHUNK_LIMIT) {
+      segments.push(current);
+    }
+    return segments.slice(0, NOTE_CHUNK_LIMIT);
+  };
+
+  const noteSectionEvidence = async (context: ClaResourceContext): Promise<EvidenceItem[]> => {
+    if (context.noteId === null) return [];
+    const rows = (await sql`
+      select title, body_md from revision_note where note_id = ${context.noteId}`) as unknown as Array<{
+      title: string;
+      body_md: string;
+    }>;
+    const row = rows[0];
+    if (row == null || row.body_md.trim().length === 0) return [];
+    // the note lead items mirror the frozen fromChunk provenance shape (the
+    // corpus row IS the v2 document face): the note's own title rides
+    // sourceTitle (the landed 001 titled-label law — "Revision notes —
+    // <title>"), document provenance stays honestly null (no document row)
+    return noteBodySegments(row.body_md).map((segment) => ({
+      ...leadItem("NOTE", segment, context.topicNodeId),
+      sourceTitle: row.title,
+    }));
+  };
+
+  /** noteEvidenceLimit (:746-790) — the note context's own whole-list cap
+   *  (NOTE_CONTEXT_EVIDENCE_LIMIT; see the header reconstruction law). */
+  const noteEvidenceLimit = (): number => NOTE_CONTEXT_EVIDENCE_LIMIT;
+
   /** deterministic mode constraint (:459-536 modePlan — the mode rewrites
    *  the plan; the anchored-label builder keeps every frozen branch even
    *  where the served kinds make them unreachable). */
@@ -914,9 +1002,17 @@ export function buildClaService(deps: ClaServiceDeps) {
           context = await resolver.resolveQuestionPart(input.partId, input.rootId, learnerId);
           break;
         }
+        case "NOTE_SECTION": {
+          if (input.rootId === null || input.noteId === null) {
+            throw new BadRequestException("NOTE_SECTION context requires rootId and noteId");
+          }
+          context = await resolver.resolveNoteSection(input.rootId, input.noteId, learnerId);
+          break;
+        }
         default:
-          // SMART_LESSON / NOTE_SECTION (and any undeclared value) — the
-          // frozen default branch :279-281
+          // SMART_LESSON (and any undeclared value) — the frozen default
+          // branch :279-281 (the NOTE_SECTION deferral is SERVED now; the
+          // t4 SmartLessonService lane still rides the closed-enum law)
           throw new BadRequestException(
             "context kind not supported by this runtime step: " + String(kind),
           );
@@ -1015,6 +1111,17 @@ export function buildClaService(deps: ClaServiceDeps) {
         }
         lead.push(...evidence);
         evidence = lead.slice(0, Math.min(lead.length, evidenceLimit));
+      }
+
+      // note contexts lead with the note's OWN content outside the fusion
+      // pool (:746-790 noteSectionEvidence): the learner is LOOKING at this
+      // text — the deterministic body segments go in first, then the
+      // anchored pool, and the note context's own bounded cap applies to
+      // the whole list (noteEvidenceLimit)
+      if (isNoteContext(context)) {
+        const noteLead = await noteSectionEvidence(context);
+        const withLead = [...noteLead, ...evidence];
+        evidence = withLead.slice(0, Math.min(withLead.length, noteEvidenceLimit()));
       }
 
       // 5. grounding gate → mode-constrained grounded generation (:379-416).

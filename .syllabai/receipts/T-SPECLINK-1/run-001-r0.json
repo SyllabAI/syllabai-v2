@@ -1,0 +1,38 @@
+{
+ "schema": "syllabai-demo.lane-receipt/1.0",
+ "lane": "T-SPECLINK-1",
+ "run": "run-001",
+ "kind": "feature+backfill",
+ "operatorTrace": "1a1a8234fb51adb1",
+ "generatedUtc": "2026-11-05T00:00:00Z",
+ "operatorOrder": {
+  "trace": "1a1a8234fb51adb1",
+  "order": "'I want all the Revision Notes, Exam Questions, and Flashcards (the savemyexam ones that we imported) to be attached to their respective specification points [...] clicking on any spec point will allow us to see the resources connected to it. And at the very last you have to give the list of any resourse that is not anchored.' — course of record: cie-igcse-chemistry-23"
+ },
+ "task": "anchor the SME corpus (notes / exam questions / flashcards) to spec points and surface the connection on the specification explorer; deliver the unanchored-resource list",
+ "findingsOfRecord": {
+  "revisionNotes": "107 notes; 100 carry curriculum-code anchors of record (specPointIds, 156 note-point links, 0 dangling); 7 notes anchor ONLY via upstream smeSpecPointIds (spcpt_*) with NO of-record bridge to 2023 curriculum codes — enumerated and pinned in the test; the slug->code shortcut was TESTED and REJECTED (19 corpus violations — SME URL slugs are stale vs the 2023 numbering; all 7 path-codes are not even in the curriculum) — writing them would be invention",
+  "examQuestions": "73/73 sets anchored of record — 69 via part-level specPointIds, 3 via part-level specPointCodes (the 2026-11-03 tagBackfill vintage), 1 via the corpus's own relatedNoteIds -> note.specPointIds fallback; 154 distinct codes, all in-curriculum",
+  "flashcards": "1133 cards carried ZERO spec anchors in this course's bundle AND upstream (SME-Flashcards decks at pin main@1a5c37bc AND current main: spec_link_cards 0; no flashcard_spec_map.json for this course, unlike the 100%-anchored courses). Backfilled of record via the repo's own D0 tag-backfill law ('derived from the course's own map — SME section/topic-slug joins — never guessed'): card.topicSlug == note.topicSlug join (28/28 exact), card.specPointIds = the curriculum-ordered union of the same subtopic's notes' of-record specPointIds; 1133/1133 anchored; every written code exists in the curriculum AND is of record on >=1 note of that subtopic"
+ },
+ "apply": {
+  "files": {
+   "apps/hub/content/cie-igcse-chemistry-23/flashcards.json": "1133 cards' specPointIds filled in place (field order preserved; serializer indent=1 ensure_ascii=False + trailing newline round-trip byte-exact; card order + all other fields byte-identical)",
+   "apps/hub/src/lib/spec-resources.ts": "NEW — the spec-point -> resources join of record (of-record anchors only; honest absence for unanchored sets; out-of-course refs dropped; legend + id-list payload shape)",
+   "apps/hub/src/app/courses/[course]/specification/page.tsx": "the explorer page feeds the join (server-side, prerendered) and passes legend+res to the client",
+   "apps/hub/src/app/courses/[course]/specification/client.tsx": "per-statement resource affordance: 'N resources' toggle expands an inline panel (Revision notes / Exam questions / Flashcards) with corpus-native titles and route links; zero-resource statements render no affordance",
+   "apps/hub/src/lib/spec-resources.test.ts": "NEW — fixture legs (join laws, fallback, honest absence, dedupe, out-of-course drop) + the real-bundle census of record pins (100/107 code-anchored notes with the 7 sme-only ids pinned, 73/73 sets, 1133/1133 cards / 28 decks, coverage 154/252)"
+  }
+ },
+ "gates": {
+  "backfill": "G1 join exact 28/28; G2 every written code in curriculum; G3 every written code of record on the subtopic's notes; G4 serializer round-trip byte-exact on the original; G5 post 1133/1133 non-empty + structure invariants",
+  "ui": "tsc --noEmit clean; bun test src/lib/spec-resources.test.ts 9/9; hub lib suite: only pre-existing failures remain (1 in isolation on clean main: the T-UGM-RENDER-1 KaTeX corpus leg; the account-docs store-law failures reproduce on main too, order-dependent) — zero failures in files this band touches",
+  "buildNote": "the full next build (4647 prerendered pages + standalone copy) does not fit the 9.9GB sandbox disk (two ENOSPC kills; node_modules wiped once by the disk-full event) — the build gate is CI's to run; typecheck + the join smoke against the REAL bundle (scripts/tspeclink1_smoke.ts, workspace) cover the logic locally"
+ },
+ "censusOfRecord": {
+  "anchoredResources": "notes 100/107 at code level (7 sme-only), question sets 73/73, flashcards 1133/1133 (subtopic-granular, derived of record)",
+  "unanchoredResources": "NONE at the resource level — see the unanchored list in the run report; the honest nuances: (a) the 7 sme-only notes are corpus-anchored but not to printed 2023 spec points; (b) 98/252 spec points carry no resources (a coverage gap, not an anchoring defect); (c) flashcard links are deck/subtopic-granular by evidence class, so a deck appears under each of its subtopic's anchored points"
+ },
+ "boundaries": "content/cie-igcse-chemistry-23/flashcards.json + hub spec-explorer files + this receipt/worklogs; zero backend/db changes; zero other courses touched (the same join pattern is a follow-up decision for the other 48 deck-bearing courses)",
+ "antiTruncation": "worklog appended append-only (new = old + section; byte delta == len(section); line delta == section newlines), asserted by this filing script before commit"
+}

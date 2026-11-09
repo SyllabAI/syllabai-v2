@@ -17,7 +17,7 @@ import {
 import { booksRawUrl } from "@/lib/pastpapers-shared";
 import { fetchLessonShelfEntries, normalizedChapterKey } from "@/lib/books-lesson";
 import { strengthCheckCount } from "@/lib/books-strength";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { CorpusPdfLink } from "@/components/pastpapers/corpus-pdf-link";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -60,20 +60,20 @@ export default async function BooksShelfPage({
   const unavailable = shelf === null;
 
   return (
-    <div className="px-3 py-4 sm:px-5 lg:px-6">
+    <div className="px-4 py-6 sm:px-6 lg:px-8">
       <PreconnectCorpus />
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         // T-MIG-140: the board is the registry row's own (boardOf — explicit
         // "Cambridge International" on the CIE wave rows, else "Edexcel"),
         // not a hardcode — the books rollout now reaches CIE/IAL lanes.
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Student Books`}
         crumb="Student Books"
-        description="The course's student books as first-class content: every chapter opens the book PDF at its own page range — the same pages, citations and spec joins the tutor grounds in."
+        description="The course's student books — every chapter opens the book PDF at its own page range."
       />
 
       {unavailable ? (
-        <Card>
+        <Card className="mt-6">
           <CardContent className="flex flex-col items-center gap-2 py-10 text-center">
             <BookOpen className="h-8 w-8 text-muted-foreground" />
             <p className="font-medium">Student books are temporarily unavailable</p>
@@ -84,7 +84,7 @@ export default async function BooksShelfPage({
           </CardContent>
         </Card>
       ) : shelf.length === 0 ? (
-        <Card>
+        <Card className="mt-6">
           <CardContent className="flex flex-col items-center gap-2 py-10 text-center">
             <BookOpen className="h-8 w-8 text-muted-foreground" />
             <p className="font-medium">No student books published for this course yet</p>
@@ -95,7 +95,9 @@ export default async function BooksShelfPage({
           </CardContent>
         </Card>
       ) : (
-        <div className="space-y-8">
+        /* t-ui-polish run-004: hero→body join at the mt-6 family rhythm —
+            this page's three branch roots were the only gapless surfaces. */
+        <div className="mt-6 space-y-8">
           {shelf.map((book) => (
             <BookCard key={book.documentId} slug={slug} book={book} />
           ))}

@@ -1,0 +1,77 @@
+version: 1
+task:
+  id: T-HUB-COURSES-PUBLIC-1
+  title: "Courses directory design upgrade — option 1 un-gate of /courses (directory root), login-loop closure, honest copy pass, card identity & legibility (audit ①–⑥)"
+  owner: "operator-delegate (Z.ai, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, chat d889551c-b3b5-4885-b1c1-57af82e11b0a, run trace 1a1b613d0f556479)"
+  status: "IN_REVIEW run-001 (PR open, awaiting operator/integrator review)"
+  priority: P1
+  band: T-HUB (frontend — courses directory surface)
+  wave: hub-courses-directory
+  deps: [T-ACCOUNT-ONLY, T-HEADER-1]
+  execution_record: >
+    run-000 (2026-11-07, audit trace 1a1b4cc98f41944d): diagnostic-first audit
+    of https://www.syllab-ai.com/courses per the elayadesign/redesign-skill
+    method (scan → diagnose → report → operator gate) delivered BEFORE any
+    change; evidence screenshots under the agent workspace (download/courses-audit/,
+    9 captures incl. dark mode, mobile, focus/hover, empty state, prod gate 307).
+    Report of record: P1 loop (login "Browse without an account →" 307-bounces back
+    to /login because T-ACCOUNT-ONLY gated the very route the link names; three
+    contradicting artifacts — route-gate.ts policy comment, GATED_ROUTES row,
+    login metadata); layout/copy findings (113-word provenance paragraph owns the
+    intro; title truncate kills 9/106 distinguishing tails at 1440px; ~35% dead
+    card height from min-h; group order is size-coincidence; ghost lane tellable
+    only by an absent tint; empty state is a dead end); measured WCAG (Lab→sRGB
+    numeric): group counts muted-foreground/60 = 2.29:1 AA FAIL (muted-foreground
+    itself = 4.73:1 PASS), badge sizes 10–10.5px below the 12px floor. The
+    redesign-skill's own visual identity (Geist/Manrope, its dark palette,
+    Phosphor) is VETOED by house law — its audit CATEGORIES were applied inside
+    the existing token system instead.
+    run-001 (2026-11-07, trace 1a1b613d0f556479, operator ruling "option 1"):
+    implementing the audited fixes ①–⑥ inside Tailwind v4 + existing tokens,
+    zero new dependencies, zero network at build. Fix order and scope in
+    receipts/T-HUB-COURSES-PUBLIC-1/run-001.md.
+    run-001 RESULT: all six fixes landed (route-gate un-gate with
+    trailing-slash subtree law + slash normalization, login metadata, intro
+    113→31 words with provenance disclosure, card identity/2-line titles/
+    ghost lane/continue chip, stage order, contrast+badge floors+empty-state
+    action, hover lanes) + a disclosed scope amendment adding app-shell.tsx
+    (header/footer tagline lines only — a fourth copy of the stale string).
+    Gates: typecheck PASS (x2), eslint PASS (8 files), route-gate tests 8/8,
+    full-suite fail-band byte-identical to pristine origin/main in the same
+    worktree (20 lines, all pre-existing); next build compile+prerender
+    complete (BUILD_ID + courses.html static), standalone packaging cp
+    blocked by sandbox disk — disclosed in receipt, CI is of-record.
+    Runtime: anon /courses 200 (was 307 loop), anon hub page 307 → login?next,
+    login "Browse without an account" lands on /courses (P1 closed in
+    browser), anon SSR chip-free 0/4, signed-in local-mint chip renders after
+    in-tab course visit, dark/mobile evidence shots captured.
+    House notes: redesign-skill's visual identity VETOED (house law) — its
+    audit categories only; PAT used env-only for push+PR, rotation
+    recommended post-review; worklog ff-adopted upstream (the recycled
+    staged union's only unpushed content byte-verified upstream, 4/4 lines).
+base:
+  repo: "syllabai-v2 @ aa5959a7 (origin/main at claim; ff from 1dd5335 — 93 upstream commits adopted)"
+basis: >
+  Operator order 2026-11-07 trace 1a1b4cc98f41944d ("use the redesign-skill,
+  audit /courses, upgrade the design, report before changing anything") +
+  product ruling 2026-11-07 trace 1a1b53d8068b9b7d ("option 1"): the course
+  DIRECTORY /courses is public — static registry data, no user state; every
+  surface touching user data (progress overlays, flashcards, tutor chats,
+  saved answers — i.e. the /courses/<slug> hub subtree) KEEPS the login wall.
+scope:
+  allowed:
+    - "apps/hub/src/lib/route-gate.ts"
+    - "apps/hub/src/lib/route-gate.test.ts"
+    - "apps/hub/src/proxy.ts (matcher literal rows only)"
+    - "apps/hub/src/app/login/page.tsx (metadata description only)"
+    - "apps/hub/src/app/layout.tsx (metadata title/description lines only)"
+    - "apps/hub/src/app/courses/page.tsx"
+    - "apps/hub/src/app/courses/course-directory.tsx"
+    - "apps/hub/src/components/layout/app-shell.tsx (header tagline + footer line only — run-001 scope amendment, see execution_record)"
+    - ".syllabai/tasks/T-HUB-COURSES-PUBLIC-1.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-HUB-COURSES-PUBLIC-1/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/hub/src/app/courses/[course]/** (hub subtree stays gated; untouched)"
+    - "fonts/palette/theme-pack changes (house design system is law; skill identity vetoed)"
+    - "packages/**, apps/api/**, golden/** (out of band)"

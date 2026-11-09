@@ -27,11 +27,26 @@ import { z } from "zod";
 /* Shared primitives                                                   */
 /* ------------------------------------------------------------------ */
 
-/** A session teaches at most 3 spec points (MG parity: ≤3 topics). */
+/**
+ * The canon spec codes a session grounds on.
+ *
+ * T-TEACHME-001 (MG parity): a learner picked ≤3 spec points by hand —
+ * max(3) mirrored MG's ≤3 topics.
+ *
+ * T-TEACHGENIE-002 (operator order, chat trace 1a1a84b5cf0e865d): the picker
+ * now selects ONE revision note of the course (organized under unit/topic
+ * dropdowns) and the session grounds on THAT NOTE's canon code set instead of
+ * hand-picked points. The committed 4CH1 corpus carries 1–4 codes per note
+ * (72×1, 27×2, 12×3, 1×4), so the ceiling moves 3 → 8 — headroom for corpus
+ * growth, aligned with the objective ordinal ceiling (1–8, migration 0025).
+ * The engine shape law is unchanged: every requested code must still be
+ * covered by ≥1 generated objective, and no objective may cite a code
+ * outside the requested set.
+ */
 export const teachSpecPointIdsSchema = z
   .array(z.string().min(1))
   .min(1)
-  .max(3);
+  .max(8);
 export type TeachSpecPointIds = z.infer<typeof teachSpecPointIdsSchema>;
 
 export const teachDifficultySchema = z.enum(["easy", "medium", "hard"]);
@@ -66,13 +81,16 @@ export type TeachObjectiveStatus = z.infer<typeof teachObjectiveStatusSchema>;
 export const teachObjectiveSchema = z
   .object({
     id: z.string().uuid(),
-    ordinal: z.number().int().min(1).max(4),
+    // T-TEACHGENIE-001: In-Depth carries 6 objectives (MG Teach Genie parity,
+    // "Objective 1/6") — ordinals relax 1–4 → 1–8 (migration 0025).
+    ordinal: z.number().int().min(1).max(8),
     text: z.string().min(1),
     specPointIds: teachSpecPointIdsSchema,
     status: teachObjectiveStatusSchema,
   })
   .strict();
 export type TeachObjective = z.infer<typeof teachObjectiveSchema>;
+// (T-TEACHGENIE-002: per-objective code citations inherit the 1–8 note-driven ceiling.)
 
 /** Expandable chip under each student message (probe of record: "Great"). */
 export const verdictChipSchema = z
@@ -81,7 +99,7 @@ export const verdictChipSchema = z
     verdict: z.string().min(1),
     /** Extractive one-sentence feedback naming the covered learning point. */
     feedbackLine: z.string().min(1),
-    coveredObjectiveIds: z.array(z.string().uuid()).max(4),
+    coveredObjectiveIds: z.array(z.string().uuid()).max(8),
     /** ADR-040 D2 guardrail input: the pupil must NOT affirm this message. */
     contradictionDetected: z.boolean(),
     wordFloorPassed: z.boolean(),
@@ -211,12 +229,15 @@ export const teachSessionSchema = z
   .object({
     id: z.string().uuid(),
     courseId: z.string().min(1),
+    /** T-TEACHGENIE-002: for note-driven sessions this is the picked note's
+     *  canon code set (1–8), not a hand-picked ≤3 list. */
     specPointIds: teachSpecPointIdsSchema,
     difficulty: teachDifficultySchema,
     length: teachSessionLengthSchema,
     mode: teachSessionModeSchema,
     status: teachSessionStatusSchema,
-    objectives: z.array(teachObjectiveSchema).min(3).max(4),
+    // T-TEACHGENIE-001: 3 (Quick) … 6 (In-Depth, MG parity) — schema ceiling 8.
+    objectives: z.array(teachObjectiveSchema).min(3).max(8),
     messageCount: z.number().int().min(0),
     llmCallCount: z.number().int().min(0),
     tokensUsed: z.number().int().min(0),
@@ -234,8 +255,8 @@ export const teachMeErrorCodeSchema = z.enum([
   "TEACH_ME_FLAG_DISABLED",
   "COURSE_NOT_ELIGIBLE", // content gate G1–G4 failed (e.g. no indexed corpus)
   "QUOTA_EXCEEDED", // 3 sessions/day (ADR-040 D3)
-  "MESSAGE_CEILING", // Quick ≤ 5 / In-Depth ≤ 6
-  "TOKEN_CEILING", // ≤ 10 calls / ≤ 60k tokens per session
+  "MESSAGE_CEILING", // Quick ≤ 5 / In-Depth ≤ 8 (T-TEACHGENIE-001)
+  "TOKEN_CEILING", // ≤ 12 calls / ≤ 90k estimated tokens per session (T-TEACHGENIE-001)
   "LLM_SHAPE_DRIFT", // T-MIG-039 fail-closed refusal
   "SESSION_NOT_ACTIVE",
   "NOT_OWNER",

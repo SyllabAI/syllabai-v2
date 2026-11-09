@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
  * s-maxage bounds staleness, stale-while-revalidate keeps serving through
  * revalidation. Not `immutable` — URLs are not deploy-versioned.
  */
-const CONTENT_CACHE = { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=86400" };
+const CONTENT_CACHE = { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=86400" };
 
 /**
  * GET /api/notes/[course]/[noteId] — one revision note's body, resolved

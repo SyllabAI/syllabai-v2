@@ -19,10 +19,15 @@ describe("route gate policy", () => {
   });
 
   it("PROXY_MATCHER is exactly the gated rows + / and /login", () => {
+    // Mirrors route-gate.ts's derivation — including the trailing-slash
+    // strip on the :path* arm (the "/courses/" row's arm is "/courses/:path*").
     const expected = [
       "/",
       "/login",
-      ...GATED_ROUTES.flatMap(({ prefix }) => [prefix, `${prefix}/:path*`]),
+      ...GATED_ROUTES.flatMap(({ prefix }) => [
+        prefix,
+        `${prefix.replace(/\/+$/, "")}/:path*`,
+      ]),
     ];
     expect([...PROXY_MATCHER].sort()).toEqual(expected.sort());
   });
@@ -53,27 +58,45 @@ describe("route gate policy", () => {
     expect(gateForPath("/teacher/classes/xyz")).toBe("teacher");
   });
 
-  it("corpus surfaces stay open — browsing never meets a login wall", () => {
+  it("T-ACCOUNT-ONLY run-001 — every stateful surface gates (the account is the only store)", () => {
+    // The sweep moved ALL user state onto the account, so the course hub
+    // PAGES (progress overlays, flashcards, guided lessons, question
+    // players), past papers (mocks, marking, ink) and the practice launcher
+    // now gate exactly like the dashboard. (The directory root /courses was
+    // re-opened afterwards by the option 1 ruling — see the test below.)
     for (const path of [
-      "/",
-      "/courses",
       "/courses/igcse-chemistry-19",
       "/courses/igcse-chemistry-19/revision-notes",
       "/past-papers",
       "/practice",
       "/practice/",
+    ]) {
+      expect(gateForPath(path)).toBe("session");
+    }
+  });
+
+  it("option 1 (trace 1a1b53d8068b9b7d) — the directory root is open, the hub subtree gates", () => {
+    // Operator ruling "option 1": /courses renders static registry data —
+    // no user state, no session read — so anonymous browsing of the
+    // directory is honest, and the login page's "Browse without an
+    // account" link finally resolves instead of 307-looping. Everything
+    // UNDER the root still touches account data and keeps the gate. The
+    // trailing slash is the same open root, normalized.
+    expect(gateForPath("/courses")).toBeNull();
+    expect(gateForPath("/courses/")).toBeNull();
+    expect(gateForPath("/courses/igcse-chemistry-19")).toBe("session");
+    expect(gateForPath("/courses/igcse-chemistry-19/")).toBe("session");
+    expect(gateForPath("/courses/igcse-chemistry-19/flashcards")).toBe("session");
+  });
+
+  it("marketing/public surfaces stay open — only stateless browsing is anonymous", () => {
+    for (const path of [
+      "/",
       "/knowledge-graph",
       "/login",
       "/about/provenance",
     ]) {
       expect(gateForPath(path)).toBeNull();
     }
-  });
-
-  it("/practice itself is open even though its drill and battle gate", () => {
-    // the launcher is a corpus surface; the identity-bearing modes gate.
-    // The prefix rows must not swallow the open parent.
-    expect(gateForPath("/practice")).toBeNull();
-    expect(gateForPath("/practice/drill")).toBe("session");
   });
 });

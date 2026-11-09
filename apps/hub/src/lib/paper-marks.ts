@@ -36,6 +36,12 @@ const assembledAwardMirror = z.object({
   ordinal: z.number().int().min(0),
   markPointId: z.string().uuid().nullable(),
   page: z.number().int().min(1).nullable(),
+  // T-MG-MARK-DELTA-1 (Lane E, additive optional — the contracts disclosure):
+  // attemptClass = the verdict's attempt classification (absent = honest
+  // absence); workingRefLabel = the echoed evidence-citation label ("W2")
+  // the honest panel renders as "this mark came from your working at W2".
+  attemptClass: z.enum(["full", "partial", "blank"]).nullable().optional(),
+  workingRefLabel: z.string().min(1).optional(),
 });
 
 const feedbackMirror = z.object({
@@ -60,6 +66,9 @@ const pollSnapshotMirror = z.object({
       emitted: z.number().int().min(0),
       suppressed: z.number().int().min(0),
       workingBlocks: z.number().int().min(0),
+      // T-MG-MARK-DELTA-1: true = the standing award served from the
+      // content-hash cache (the identical re-mark short-circuit).
+      cached: z.boolean().optional(),
     })
     .optional(),
   error: z
@@ -105,17 +114,22 @@ export type RegionMarkRequestResult =
   | { outcome: "failed" };
 
 /**
- * POST /api/v1/paper-marks/regions/:regionId/mark {imageDataUrl}.
+ * POST /api/v1/paper-marks/regions/:regionId/mark {imageDataUrl, forceFresh?}.
  * 202 → accepted {markId} (the poll handle; the client polls, never
  * re-POSTs). The DEFINED 4xx envelopes (malformed/crop_malformed 400 ·
  * crop_too_large 413 · unknown region 404 · no_mark_points 422) surface
  * their honest message as "rejected"; everything else is "failed".
+ * T-MG-MARK-DELTA-1: forceFresh (optional) = the explicit "mark again with
+ * AI" affordance — a fresh job even when the content hash matches (MG's
+ * re-mark semantics + our cost law); absent = identical re-marks may
+ * short-circuit to the standing award.
  */
 export async function requestRegionMark(
   regionId: string,
   imageDataUrl: string,
   token: string | null,
   fetchImpl: typeof fetch = fetch,
+  forceFresh = false,
 ): Promise<RegionMarkRequestResult> {
   // Token-first: a signed-out learner is no_token regardless of server
   // config (the caller-supplied posture); unconfigured is the honest
@@ -129,7 +143,7 @@ export async function requestRegionMark(
       headers: { ...authHeaders(token), "Content-Type": "application/json" },
       cache: "no-store",
       signal: AbortSignal.timeout(15_000),
-      body: JSON.stringify({ imageDataUrl }),
+      body: JSON.stringify(forceFresh ? { imageDataUrl, forceFresh: true } : { imageDataUrl }),
     });
     if (res.status === 202) {
       const parsed = acceptedMirror.safeParse(await res.json().catch(() => null));
@@ -142,6 +156,66 @@ export async function requestRegionMark(
       return env.success
         ? { outcome: "rejected", message: env.data.message }
         : { outcome: "rejected", message: `marking refused the crop (HTTP ${res.status})` };
+    }
+    return { outcome: "failed" };
+  } catch {
+    return { outcome: "failed" };
+  }
+}
+
+/** The defined POST /parts/:partId/regrade outcomes — the typed channel's
+ * request half (T-MG-PLAYER-MARK-1; rollout plan Lane C). No 413 class:
+ * there is no crop, the answer rides as text (the api's own taxonomy —
+ * 400 malformed/validation, 404 unknown part, 422 no_mark_points). */
+export type PartRegradeRequestResult =
+  | { outcome: "accepted"; markId: string }
+  | { outcome: "rejected"; message: string }
+  | { outcome: "unconfigured" }
+  | { outcome: "no_token" }
+  | { outcome: "failed" };
+
+/**
+ * POST /api/v1/paper-marks/parts/:partId/regrade {answerHtml, forceFresh?} —
+ * the typed channel: the learner's typed answer IS the transcription (no
+ * vision step); the same doctrine-match + once-only ledger write runs
+ * beneath it. 202 → accepted {markId} (the poll handle; the client polls,
+ * never re-POSTs — retry: 0). The DEFINED 4xx envelopes (malformed/validation
+ * 400 · unknown part 404 · no_mark_points 422) surface their honest message
+ * as "rejected"; everything else is "failed". T-MG-MARK-DELTA-1: forceFresh
+ * (optional) = the explicit re-mark — a fresh job even when the content
+ * hash matches (MG's re-mark semantics + our cost law).
+ */
+export async function requestPartRegrade(
+  partId: string,
+  answerHtml: string,
+  token: string | null,
+  fetchImpl: typeof fetch = fetch,
+  forceFresh = false,
+): Promise<PartRegradeRequestResult> {
+  // Token-first (the caller-supplied posture); unconfigured is the honest
+  // missing-origin class — the same order as requestRegionMark.
+  if (!token) return { outcome: "no_token" };
+  const base = marksBaseUrl();
+  if (!base) return { outcome: "unconfigured" };
+  try {
+    const res = await fetchImpl(`${base}/api/v1/paper-marks/parts/${encodeURIComponent(partId)}/regrade`, {
+      method: "POST",
+      headers: { ...authHeaders(token), "Content-Type": "application/json" },
+      cache: "no-store",
+      signal: AbortSignal.timeout(15_000),
+      body: JSON.stringify(forceFresh ? { answerHtml, forceFresh: true } : { answerHtml }),
+    });
+    if (res.status === 202) {
+      const parsed = acceptedMirror.safeParse(await res.json().catch(() => null));
+      return parsed.success
+        ? { outcome: "accepted", markId: (parsed.data as PaperMarkAccepted).markId }
+        : { outcome: "failed" };
+    }
+    if (res.status === 400 || res.status === 404 || res.status === 422) {
+      const env = apiErrorMirror.safeParse(await res.json().catch(() => null));
+      return env.success
+        ? { outcome: "rejected", message: env.data.message }
+        : { outcome: "rejected", message: `marking refused the answer (HTTP ${res.status})` };
     }
     return { outcome: "failed" };
   } catch {

@@ -4,9 +4,17 @@ import { ArrowRight, GraduationCap } from "lucide-react";
 import { boardOf, loadHubCourse } from "@/lib/courses";
 import { loadGuidedIndex } from "@/lib/guided-lessons";
 import { looseAnchorCopy } from "@/lib/loose-copy";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 
-export const dynamic = "force-dynamic";
+/**
+ * T-VERCEL-USAGE: params-only page over the committed corpus (no
+ * request-time APIs — cookies()/headers() verified absent from this
+ * page and its loaders), so ISR replaces force-dynamic: the first
+ * request renders and caches, the CDN serves repeats until the next
+ * deploy resets the cache. 1-day revalidate keeps Hobby ISR writes
+ * inside quota.
+ */
+export const revalidate = 86400;
 
 /**
  * Guided-lessons index — entry-path lane (c), operator decision of record
@@ -53,10 +61,12 @@ export default async function GuidedLessonsIndexPage({
   const unmapped = rows.filter((r) => !r.topic);
 
   const renderRow = (entry: (typeof rows)[number]["entry"], note: (typeof rows)[number]["note"]) => (
+    /* t-ui-polish run-005: the lesson rows speak the house card-hover voice
+       (border-primary/60 + shadow-sm lift), not the legacy /40 shift. */
     <Link
       key={entry.noteId}
       href={`/courses/${meta.slug}/guided-lessons/${entry.noteId}`}
-      className="group flex items-start gap-2.5 rounded-md border bg-card px-3 py-2.5 text-[13px] transition-colors hover:border-primary/40"
+      className="group flex items-start gap-2.5 rounded-md border bg-card px-3 py-2.5 text-[13px] transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
     >
       <GraduationCap aria-hidden className="mt-0.5 size-4 shrink-0 text-primary" />
       <span className="min-w-0 flex-1">
@@ -79,11 +89,11 @@ export default async function GuidedLessonsIndexPage({
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         title={`${boardOf(meta)} ${meta.level} ${meta.label} Guided Lessons`}
         crumb="Guided Lessons"
-        description={`Step-by-step guided lessons mapped to the official ${meta.code} specification — live for ${index.counts.notes} note${index.counts.notes === 1 ? "" : "s"} · ${index.counts.lessons} lesson${index.counts.lessons === 1 ? "" : "s"}, each with confidence gating, plain-words depth layers and fully explained checks.`}
+        description={`Step-by-step guided lessons mapped to the official ${meta.code} specification — live for ${index.counts.notes} note${index.counts.notes === 1 ? "" : "s"} · ${index.counts.lessons} lesson${index.counts.lessons === 1 ? "" : "s"}.`}
       />
       <div className="mt-6 space-y-6">
         {groups.map(({ topic, rows: tRows }) => (

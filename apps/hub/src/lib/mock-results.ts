@@ -1,14 +1,16 @@
 /**
- * Mock exam results — the ACCOUNT-BACKED self-marked tallies (T-TIER1).
+ * Mock exam results — the ACCOUNT-backed self-marked tallies (T-TIER1 →
+ * T-ACCOUNT-ONLY run-001).
  *
- * Mocks are graded by the student against the official MS PDF. Since the
- * frontend deep-audit Tier 1 (operator order 2026-11-03: "things that are
- * localStorage-only, make them saved to account") the tally is saved to the
- * learner's account (learner_mock_results, server cap 20 per course — the
- * same MAX_PER_COURSE bound here) while the localStorage record stays the
- * UI cache, per the my-subjects.ts T-TEACH-001 write-through law. Signed
- * out, the store behaves exactly as before (this-browser-only, honestly
- * disclosed by the strip).
+ * Mocks are graded by the student against the official MS PDF. Operator
+ * order 2026-11-05 ("remove device-local things completely — every single
+ * thing must be saved in account"): the tallies live in module memory and
+ * the learner's account (learner_mock_results, server cap 50 per course —
+ * the same MAX_PER_COURSE bound here; T-CAPS-POLICY-1 raised 20 → 50 on
+ * all three sites) is their only durable store. The retired localStorage
+ * record (syllabai.mockResults.v1) adopts ONCE per tab (it seeds the
+ * memory tallies so the reconcile's union law migrates them) and is
+ * removed after the first successful server contact.
  *
  * Nothing here touches canonical learner state or the marking plane — these
  * are the student's OWN tallies (the self-marked honesty is preserved).
@@ -44,28 +46,60 @@ export interface MockResult {
   questions?: Array<{ label: string; marks: number; max: number | null }>;
 }
 
-const KEY = "syllabai.mockResults.v1";
-const MAX_PER_COURSE = 20;
+const KEY = "syllabai.mockResults.v1"; // RETIRED (legacy adoption pin)
+/** T-CAPS-POLICY-1: 20 → 50, both sides (the contracts'
+ *  MOCK_RESULTS_PER_COURSE and the server's MOCK_RESULTS_CAP move with
+ *  this — one law, three sites, never disagreeing). */
+const MAX_PER_COURSE = 50;
 export const MOCK_RESULTS_EVENT = "syllabai:mock-results-changed";
 
-export function loadMockResults(course?: string): MockResult[] {
-  if (typeof window === "undefined") return [];
+// ── the in-memory tallies of record + the one-time legacy adoption ────────
+let all: MockResult[] = [];
+let legacyKeyPresent = false;
+
+if (typeof window !== "undefined") {
   try {
     const raw = window.localStorage.getItem(KEY);
-    const all: MockResult[] = raw ? (JSON.parse(raw) as MockResult[]) : [];
-    return course ? all.filter((r) => r.course === course) : all;
+    const parsed: unknown = raw ? JSON.parse(raw) : null;
+    if (Array.isArray(parsed)) {
+      const valid = parsed.filter(
+        (r): r is MockResult =>
+          !!r && typeof r === "object" && typeof (r as MockResult).id === "string" && typeof (r as MockResult).course === "string",
+      );
+      if (valid.length > 0) {
+        all = valid;
+        legacyKeyPresent = true;
+      }
+    }
   } catch {
-    return [];
+    // corrupt record → the account reconcile decides alone
   }
 }
 
-function writeAll(all: MockResult[]): void {
+function retireLegacyKey(): void {
+  if (!legacyKeyPresent || typeof window === "undefined") return;
   try {
-    window.localStorage.setItem(KEY, JSON.stringify(all));
+    window.localStorage.removeItem(KEY);
   } catch {
-    /* storage full/unavailable — the session keeps its in-memory copy */
+    // best-effort
   }
+  legacyKeyPresent = false;
+}
+
+export function loadMockResults(course?: string): MockResult[] {
+  if (typeof window === "undefined") return [];
+  return course ? all.filter((r) => r.course === course) : all;
+}
+
+function writeAll(next: MockResult[]): void {
+  all = next;
   window.dispatchEvent(new CustomEvent(MOCK_RESULTS_EVENT));
+}
+
+/** Test seam: the explicit-empty state without a device or a network. */
+export function __resetMockResultsForTests(): void {
+  all = [];
+  legacyKeyPresent = false;
 }
 
 export function saveMockResult(result: MockResult): void {
@@ -92,13 +126,11 @@ export function clearMockResults(course: string): void {
   }
 }
 
-/** Subscribe to store changes (same-tab custom event + cross-tab storage). */
+/** Subscribe to store changes (same-tab custom event; cross-tab is the ACCOUNT). */
 export function subscribeMockResults(onChange: () => void): () => void {
   window.addEventListener(MOCK_RESULTS_EVENT, onChange);
-  window.addEventListener("storage", onChange);
   return () => {
     window.removeEventListener(MOCK_RESULTS_EVENT, onChange);
-    window.removeEventListener("storage", onChange);
   };
 }
 
@@ -112,7 +144,7 @@ export function useMockResults(course: string): MockResult[] | null {
   const [results, setResults] = useState<MockResult[] | null>(null);
   useEffect(() => {
     let alive = true;
-    // deferred one microtask: hydration-safe localStorage read
+    // deferred one microtask: hydration-safe memory read
     // (react-hooks/set-state-in-effect; the strip's posture of record)
     void Promise.resolve().then(() => {
       if (alive) setResults(loadMockResults(course));
@@ -128,29 +160,30 @@ export function useMockResults(course: string): MockResult[] | null {
   return results;
 }
 
-// ── server sync (T-TIER1) — the account-backed tallies ──────────────────────
-// The my-subjects.ts T-TEACH-001 write-through law, union-merge edition:
+// ── server sync (T-TIER1 → T-ACCOUNT-ONLY run-001) — the account IS the
+// store ─────────────────────────────────────────────────────────────────
+// The my-subjects.ts write-through law, union-merge edition:
 //
 // Law of record:
-//  - The localStorage record stays the UI truth (reactive, instant, works
-//    signed-out exactly as before).
-//  - Signed in, every LOCAL write mirrors to core as a per-course FULL-set
-//    PUT (idempotent replace, debounced per course to coalesce bursts); a
-//    failed PUT leaves the local record untouched (cache law) and the next
-//    write or reconcile re-mirrors.
-//  - On identity acquisition (mount / login / cross-tab session) the sync
-//    reconciles ONCE with a UNION MERGE per course (by the deterministic
+//  - The memory tallies are the UI truth (reactive, instant); the ACCOUNT
+//    is their only durable store.
+//  - Every LOCAL write mirrors to core as a per-course FULL-set PUT
+//    (idempotent replace, debounced per course to coalesce bursts); a
+//    failed PUT leaves the memory record untouched and the next write or
+//    reconcile re-mirrors.
+//  - On identity acquisition (mount / login) the sync reconciles ONCE with
+//    a UNION MERGE per course (by the deterministic
 //    `id` — `${course}:${sessionId}:${dir}:${startedAt}`, so the same mock
 //    retaken is a distinct record and a replay is a true duplicate): the
-//    merged newest-first set (capped 20) is written down locally and any
+//    merged newest-first set (capped 20) is written down to memory and any
 //    course whose merged set differs from the server's is PUT back up. A
 //    union never loses a record from either side — the conservative merge
 //    law (a set has no single "newest wins" answer; the pointer store's
 //    recency law does not apply here).
 //  - Remote-driven writes set applyingRemote so the mirror does not echo
 //    the set back to core (one PUT per intent, never two).
-//  - Per-course cap: 20 of record, both sides (MAX_PER_COURSE here, the
-//    server's own bound) — cache and account can never disagree on shape.
+//  - Per-course cap: 50 of record, both sides (MAX_PER_COURSE here, the
+//    server's own bound) — memory and account can never disagree on shape.
 
 const wireToLocal = (
   r: Awaited<ReturnType<typeof api.mockResults>>["results"][number],
@@ -172,6 +205,9 @@ const wireToLocal = (
 let applyingRemote = false;
 const dirtyCourses = new Set<string>();
 const putScheduled = new Set<string>();
+/** The account the in-tab tallies currently mirror (the cross-account
+ *  guard: a stale tally from account A never unions into account B). */
+let syncedForEmail: string | null = null;
 
 function putCourse(course: string): void {
   if (putScheduled.has(course) || applyingRemote) return;
@@ -287,6 +323,13 @@ export function useMockResultsSync(): void {
       try {
         const view = await api.mockResults();
         if (cancelled) return;
+        if (syncedForEmail !== identity.email) {
+          // fresh acquisition: a stale in-tab tally from ANOTHER account is
+          // cleared (the legacy seed is exempt — its one-time migration IS
+          // the point of this reconcile)
+          if (!legacyKeyPresent && all.length > 0) writeAll([]);
+          syncedForEmail = identity.email;
+        }
 
         // the wire row does not name its course — the PUT path does; the
         // course comes from the client id's own grammar (its first segment)
@@ -307,6 +350,7 @@ export function useMockResultsSync(): void {
           dirtyCourses.add(course);
           putCourse(course);
         }
+        retireLegacyKey(); // a successful server contact ends the device record
       } catch {
         // core unreachable — cache law: local tallies stay as-is
       }

@@ -209,11 +209,10 @@ export type SetLastOpenedRequest = z.infer<typeof setLastOpenedRequestSchema>;
 // moves them to the account with the SAME law as my-courses: localStorage
 // stays the UI cache; signed in, the per-course full set mirrors here and
 // the server wins on reconcile.
-//
 // Law:
 //  - GET  /api/v1/learners/me/mock-results → MockResultsView — every
 //         course's tally (newest finished first), capped at
-//         MOCK_RESULTS_PER_COURSE (20, the hub's own MAX_PER_COURSE) per
+//         MOCK_RESULTS_PER_COURSE (50, the hub's own MAX_PER_COURSE) per
 //         course server-side.
 //  - PUT  /api/v1/learners/me/mock-results/{courseSlug} ←
 //         PutMockResultsRequest — the FULL desired set for that ONE course
@@ -226,7 +225,11 @@ export type SetLastOpenedRequest = z.infer<typeof setLastOpenedRequestSchema>;
 //         opaque and round-trips it verbatim.
 //  - Self-marked honesty is preserved on the wire: nothing here claims
 //    canonical marking — these are the student's own tallies.
-export const MOCK_RESULTS_PER_COURSE = 20;
+/** T-CAPS-POLICY-1: 20 → 50 (a weekly-mock cadence covers a full school
+ *  year per course; raised on BOTH sides — this constant, the hub's
+ *  MAX_PER_COURSE, and the server's MOCK_RESULTS_CAP — so cache and
+ *  account can never disagree on the shape). */
+export const MOCK_RESULTS_PER_COURSE = 50;
 export const MOCK_RESULT_MAX_QUESTIONS = 100;
 
 export const mockResultEndedSchema = z.enum(["time-up", "self", "exited"]);

@@ -50,6 +50,7 @@ import {
 import { api, ApiError } from "@/lib/api";
 import { TeacherNav } from "@/components/teacher/teacher-nav";
 import { formatRelative, humanizeCode } from "@/lib/format";
+import { PageHeader } from "@/components/layout/page-header";
 import type {
   AnswerMarkingView,
   KappaEvaluationView,
@@ -439,17 +440,11 @@ export function MarkingConsoleClient() {
 
   return (
     <div className="space-y-6">
-      <div className="min-w-0">
-        <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
-          Marking review
-        </h1>
-        <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Live from the SyllabAI backend: the class list is the whole pilot cohort (classes are a
-          Cycle-2+ concept). Human marks are the authoritative grade; Smart Mark results are
-          provisional until the κ agreement gate passes. This surface presents facts only — no
-          recommendations.
-        </p>
-      </div>
+      {/* T-HEADER-1: the shared tool-page header. */}
+      <PageHeader
+        title="Marking review"
+        description="Live from the SyllabAI backend: the class list is the whole pilot cohort (classes are a Cycle-2+ concept). Human marks are the authoritative grade; Smart Mark results are provisional until the κ agreement gate passes. This surface presents facts only — no recommendations."
+      />
 
       <TeacherNav />
 

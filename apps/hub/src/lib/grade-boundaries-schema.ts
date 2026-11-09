@@ -55,12 +55,105 @@ export const GradeBoundariesSchema = z.object({
           aStar: z
             .object({
               overallMin: z.number(),
-              a2Min: z.number(),
-              a2Units: z.array(z.string()),
+              // T-GRADE-10: the two A* forms are mutually exclusive —
+              // pair-mode courses carry the fixed a2Min (e.g. 180/200
+              // from P3+P4); selection-mode courses carry the rate
+              // (a2Rate 0.9) because the A2 UMS maximum depends on which
+              // units the candidate's combination uses
+              a2Min: z.number().optional(),
+              a2Rate: z.number().optional(),
+              // T-GB-STRUCT-3: modular IGCSE top-grade laws (9-1 ladder)
+              // carry only overallMin — no A2 units exist on those ladders
+              a2Units: z.array(z.string()).optional(),
+              note: z.string().optional(),
+            })
+            .optional(),
+          // T-GB-STRUCT-3: the modular IGCSE award law — fixed UMS grade
+          // thresholds published in the modular specifications, unit UMS
+          // maxima, per-unit fixed tables and the resit rule
+          umsMax: z.number().optional(),
+          unitUmsMax: z.record(z.string(), z.number()).optional(),
+          gradeThresholds: z.record(z.string(), z.number()).optional(),
+          unitGradeTables: z
+            .record(z.string(), z.record(z.string(), z.number()))
+            .optional(),
+          resitRule: z.string().optional(),
+          // selection-mode cash-ins (T-GRADE-10, YFM01): the candidate's
+          // `size` units are drawn from the official pool — mustInclude
+          // and atLeastOneOf guard eligibility (IAL 2018 Mathematics
+          // Aggregation Rules & Guidance + the info manual's routes)
+          selection: z
+            .object({
+              pool: z.array(z.string()),
+              size: z.number(),
+              mustInclude: z.array(z.string()).optional(),
+              atLeastOneOf: z.array(z.string()).optional(),
             })
             .optional(),
         })
         .nullable(),
+      // T-GB-STRUCT-1: the qualification-structure layer (curated/
+      // structure.json in the resources lane) — papers, official
+      // weightings, the graded-total derivation and award rules, every
+      // value transcribed from full-sha256-pinned specification
+      // documents. Optional: absent stays absent (honest, never a stub).
+      structure: z
+        .object({
+          kind: z.string(),
+          gradeScale: z.string().nullable().optional(),
+          papers: z.array(
+            z.object({
+              code: z.string(),
+              paperLabel: z.string().optional(),
+              title: z.string().nullable().optional(),
+              rawMax: z.number(),
+              duration: z.string().nullable().optional(),
+              tier: z.string().nullable().optional(),
+              weight: z.object({
+                num: z.number(),
+                den: z.number(),
+                asPrinted: z.string().optional(),
+              }),
+              weightFactor: z.number(),
+              regionalVariant: z.string().nullable().optional(),
+            }),
+          ),
+          total: z.object({
+            maxMark: z.number(),
+            derivation: z.string(),
+            note: z.string().nullable().optional(),
+          }),
+          awardRules: z
+            .object({
+              kind: z.string().nullable().optional(),
+              note: z.string().nullable().optional(),
+            })
+            .nullable()
+            .optional(),
+          // T-GB-STRUCT-3: official adapted sessions (COVID-era Nov 2021,
+          // advance-information June 2022) whose totals Pearson printed at
+          // other than the spec figure — the served bundle carries its own
+          // evidence
+          adaptedSessions: z
+            .record(
+              z.string(),
+              z.object({
+                servedMaxMark: z.number(),
+                note: z.string(),
+              }),
+            )
+            .optional(),
+          sources: z.array(
+            z.object({
+              id: z.string(),
+              title: z.string(),
+              url: z.string(),
+              sha256_16: z.string(),
+              usedFor: z.string(),
+            }),
+          ),
+        })
+        .optional(),
       reviewRequired: z.boolean(),
       series: z.array(
         z.object({

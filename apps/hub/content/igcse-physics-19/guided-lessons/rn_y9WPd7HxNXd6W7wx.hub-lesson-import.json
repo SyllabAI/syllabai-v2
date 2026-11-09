@@ -1,0 +1,290 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_y9WPd7HxNXd6W7wx",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "00a2c97f68d0a97435e44369e84d6018daae4c5f111d3b53598a2532e0666a53",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_y9WPd7HxNXd6W7wx",
+    "topicTitle": "6. Magnetism and Electromagnetism",
+    "subtopicTitle": "Magnetism and Electromagnetism",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/6-magnetism-and-electromagnetism/6-1-magnetism-and-electromagnetism/6-1-4-core-practical-investigating-magnetic-fields",
+    "specAnchors": [
+      {
+        "code": "6.6",
+        "text": "practical: investigate the magnetic field pattern for a permanent bar magnet and between two bar magnets"
+      }
+    ],
+    "primer": {
+      "text": "This practical draws the invisible: a plotting compass, a pencil and a chain of dots turn a bar magnet's field into a visible map. The method steps the compass tail-to-dot, the analysis reads crowding as strength and straightness as uniformity, and the honest error analysis is part of the mark scheme.",
+      "prerequisiteSubtopic": "Magnetism and Electromagnetism"
+    },
+    "modules": [
+      {
+        "id": "rn_y9WPd7HxNXd6W7wx::L1",
+        "title": "Aim and equipment of the field-mapping practical",
+        "sourceHeadings": [
+          "Aim of the experiment",
+          "Equipment"
+        ],
+        "specRefs": [
+          "6.6"
+        ],
+        "opening": "The investigation maps two field patterns on paper: the field of one permanent bar magnet, and the field in the region between two bar magnets. The kit is deliberately minimal — bar magnets, a plotting compass, paper and a pencil — because the compass itself is the sensor.",
+        "keyPoints": [
+          "The aim is to plot the field patterns for one bar magnet and for the gap between two of them.",
+          "A plotting compass is the sensor: its needle aligns with the local field line direction.",
+          "Paper, pencil and a ruler record each needle direction as a small arrow.",
+          "Two bar magnets and a support setup extend the map to the between-magnet region.",
+          "Every arrow is drawn where the compass sits, so the pattern builds point by point."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Put a magnet on the paper, place the compass near one pole, and draw a tiny arrow showing where the needle points. Move the compass a little further along the arrow and repeat — the arrows join up into the field lines.",
+            "analogy": "It is like mapping a wind field with a tiny weathervane: record its direction at each spot, then connect the spots into streamlines.",
+            "examPointer": "Quote the aim in the question's own terms — the pattern FOR a bar magnet AND between two bar magnets — quoting only one half drops a mark."
+          },
+          "medium": {
+            "restatement": "The design treats the compass needle as a north-pole test dipole: at each position the needle's north end is pushed along the local field direction, so the marked arrow is a tangent to the field line through that point. Chaining tangent-to-tangent steps reconstructs the full line without ever measuring field strength directly.",
+            "analogy": "Each compass reading is one frame of a time-lapse: no single frame shows the path, but playing them in order reveals the whole trajectory.",
+            "examPointer": "If asked why the compass is small, answer: a small needle samples the direction at a point instead of averaging the field across a large area."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_y9WPd7HxNXd6W7wx::L1::Q1",
+          "rn_y9WPd7HxNXd6W7wx::L1::Q2",
+          "rn_y9WPd7HxNXd6W7wx::L1::Q3",
+          "rn_y9WPd7HxNXd6W7wx::L1::Q4",
+          "rn_y9WPd7HxNXd6W7wx::L1::Q5",
+          "rn_y9WPd7HxNXd6W7wx::L1::Q6",
+          "rn_y9WPd7HxNXd6W7wx::L1::Q7",
+          "rn_y9WPd7HxNXd6W7wx::L1::Q8",
+          "rn_y9WPd7HxNXd6W7wx::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_y9WPd7HxNXd6W7wx::L2",
+        "title": "Method: stepping the compass around the magnets",
+        "sourceHeadings": [
+          "Method"
+        ],
+        "specRefs": [
+          "6.6"
+        ],
+        "opening": "The method is a deliberate walk: place the compass near a pole, mark the needle's two ends with dots, slide the compass so its tail sits on the last dot, and repeat. The dot-chain grows into a field line, and enough chains make the whole pattern.",
+        "keyPoints": [
+          "Place the magnet on paper and the compass near one pole to start.",
+          "Mark dots at both ends of the needle, then move the compass so its tail end sits on the far dot.",
+          "Repeating the dot-marking builds a chain of dots along one field line.",
+          "Join the dots with a smooth curve and add an arrow showing the direction away from the north pole.",
+          "Repeat from several starting points to reveal the complete pattern."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Dot the needle ends, leapfrog the compass to the next dot, dot again. Join the dots into a curve, arrow it away from the north pole, and start a new chain somewhere else on the paper.",
+            "analogy": "It is like hopping along a path in the dark: each hop lands where the last heading pointed, and the footprints trace the route.",
+            "examPointer": "The mark scheme wants 'mark the needle positions' and 'join the dots' — quote both steps in method answers."
+          },
+          "medium": {
+            "restatement": "Leapfrogging keeps every new reading tangent to the same field line: the compass tail on the last dot means the next needle direction continues the previous heading, so small alignment errors do not accumulate into a different line. Starting chains from many points around the pole fills in the density picture as well as the direction picture.",
+            "analogy": "A relay runner hands over exactly at the baton mark — each leg continues the same route instead of drifting to a new one.",
+            "examPointer": "For the between-two-magnets map, start chains across the whole gap: the mid-region lines come out straight and parallel — evidence of uniformity."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_y9WPd7HxNXd6W7wx::L2::Q1",
+          "rn_y9WPd7HxNXd6W7wx::L2::Q2",
+          "rn_y9WPd7HxNXd6W7wx::L2::Q3",
+          "rn_y9WPd7HxNXd6W7wx::L2::Q4",
+          "rn_y9WPd7HxNXd6W7wx::L2::Q5",
+          "rn_y9WPd7HxNXd6W7wx::L2::Q6",
+          "rn_y9WPd7HxNXd6W7wx::L2::Q7",
+          "rn_y9WPd7HxNXd6W7wx::L2::Q8",
+          "rn_y9WPd7HxNXd6W7wx::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03",
+          "fig-04",
+          "fig-05"
+        ]
+      },
+      {
+        "id": "rn_y9WPd7HxNXd6W7wx::L3",
+        "title": "Analysis: reading the mapped patterns",
+        "sourceHeadings": [
+          "Analysis of results",
+          "Evaluating the experiment"
+        ],
+        "specRefs": [
+          "6.6"
+        ],
+        "opening": "The finished map is read twice: once for direction — arrows leaving north, entering south — and once for strength, where crowded lines mean a strong field. Between two magnets the straight, evenly spaced central lines are the evidence for a uniform field, and the wobbly edge chains are the honest error analysis.",
+        "keyPoints": [
+          "Arrows on every curve run away from the north pole and into the south pole.",
+          "Lines crowd together at the poles, showing the strongest field regions.",
+          "Between opposite poles the central lines are straight, parallel and equally spaced — a uniform field.",
+          "Compass misalignment accumulates along a chain, so chains are restarted often.",
+          "Earth's field slightly bends the outer chains — a disclosed limitation of the method."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Look at the map: arrows out of the north end, into the south end; lines bunched at the poles; and, between two magnets, a neat ladder of straight lines in the middle. Bunching means strong, spacing means uniform.",
+            "analogy": "Reading the map is like reading traffic flow on a road plan: arrow direction gives the way, lane crowding gives the congestion.",
+            "examPointer": "Use the phrase 'uniform field' with its drawing evidence — straight, parallel, equally spaced — analysis marks live on that pairing."
+          },
+          "medium": {
+            "restatement": "The dot-chain method samples direction only, so strength is inferred from chain density — more chains per unit area where the field is strong. Systematic bends from Earth's field appear at the map's edges where the magnet's field weakens, and chain-accumulated angle error shows as wobbling curves; both are disclosed rather than smoothed away.",
+            "analogy": "The map is a pencil sketch of the field: good in the middle where the field is bold, shakier at the edges where the subject fades.",
+            "examPointer": "Evaluation answers earn credit for NAMED improvements: restart chains frequently, work away from steel desks, and keep phones with magnets out of the way."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_y9WPd7HxNXd6W7wx::L3::Q1",
+          "rn_y9WPd7HxNXd6W7wx::L3::Q2",
+          "rn_y9WPd7HxNXd6W7wx::L3::Q3",
+          "rn_y9WPd7HxNXd6W7wx::L3::Q4",
+          "rn_y9WPd7HxNXd6W7wx::L3::Q5",
+          "rn_y9WPd7HxNXd6W7wx::L3::Q6",
+          "rn_y9WPd7HxNXd6W7wx::L3::Q7",
+          "rn_y9WPd7HxNXd6W7wx::L3::Q8",
+          "rn_y9WPd7HxNXd6W7wx::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-06",
+          "fig-07"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "plotting compass",
+          "definition": "A small magnetic compass used to find the direction of a magnetic field at a point.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dot-chain",
+          "definition": "The sequence of needle-end dots that traces one field line on the map.",
+          "firstLesson": 2
+        },
+        {
+          "term": "uniform field",
+          "definition": "A field with the same strength and direction at every point, drawn as straight parallel equally spaced lines.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1af066e58e5f-7-1-3-direction-of-magnetic-field-step-1.png",
+        "alt": "Direction of Magnetic field Step 1, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Method",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/02221e3e6ebb-7-1-3-direction-of-magnetic-field-step-2.png",
+        "alt": "Direction of Magnetic field Step 2, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Method",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/242e736453c5-7-1-3-direction-of-magnetic-field-step-3.png",
+        "alt": "Direction of Magnetic field Step 3, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Method",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/4802d6128e8d-7-1-3-direction-of-magnetic-field-step-4.png",
+        "alt": "Direction of Magnetic field Step 4, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Method",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a022555bf90a-7-1-3-direction-of-magnetic-field-step-5.png",
+        "alt": "Direction of Magnetic field Step 5, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Method",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/2237e45b524e-6-1-4-direction-of-magnetic-field-around-a-bar-m.png",
+        "alt": "Direction of Magnetic field around a Bar magnet, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Analysis of results",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "The magnetic field of a bar magnet plotted"
+      },
+      {
+        "id": "fig-07",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3e5c689399bb-6-1-4-magnetic-field-around-two-bar-magnets.png",
+        "alt": "Magnetic Field around two Bar Magnets, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Analysis of results",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Magnetic field of two bar magnets interacting"
+      }
+    ]
+  }
+}

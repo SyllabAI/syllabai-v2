@@ -13,6 +13,12 @@
  * branch-1 document law (SUGGESTED documents serve, REJECTED top versions
  * never do, kind must match), chunk order = chunk_index, and the
  * active-agnostic bank rows with marks in external_ref order.
+ *
+ * T-AIBANK-CARDDEDUP-1 pins — the card-level dedup: a double-ingested slot
+ * (same paper + same external_ref, or a ref-less row re-inserted) serves
+ * once, first-wins in the SQL order, the census total and the marks sums
+ * read AFTER the dedup, the limit cut applies to the DISTINCT rows, and
+ * cross-paper same-ref rows never collapse (real rows, own paper ref).
  */
 import { describe, expect, test } from "bun:test";
 import type { SqlFn } from "../../src/services/tutor/sql";
@@ -196,7 +202,14 @@ describe("bank band (1) — axis precedence + node resolution", () => {
   });
 
   test("limit: the census (total) precedes the cut", async () => {
-    const rows = Array.from({ length: 5 }, (_, i) => listingRow({ id: `q-${i}`, marks: i + 1 }));
+    // T-AIBANK-CARDDEDUP-1 fixture repair: the rows used to share the
+    // default external_ref "q01-x" — distinct ids, same slot — which the
+    // card-level dedup now (correctly) collapses. The pin's own law is
+    // unchanged (distinct slots: the census total precedes the limit cut);
+    // the fixture now names a distinct ref per row.
+    const rows = Array.from({ length: 5 }, (_, i) =>
+      listingRow({ id: `q-${i}`, external_ref: `q0${i + 1}-x`, marks: i + 1 }),
+    );
     const { sql } = fakeSql({
       "lower(n.title) = lower": [{ id: "topic-1" }],
       "SELECT id FROM subtree": [],
@@ -425,5 +438,101 @@ describe("bank band (2) — binding + serving laws", () => {
     expect(view.items[0]!.figures).toHaveLength(1);
     expect(view.items[0]!.figures[0]!.page).toBe(2);
     expect(view.items[1]!.figures).toEqual([]); // p-2c has no bridge record
+  });
+});
+
+// ── the card-level dedup (T-AIBANK-CARDDEDUP-1) ─────────────────────────────
+
+describe("the card-level dedup — a slot serves once (T-AIBANK-CARDDEDUP-1)", () => {
+  test("band 1: a double-ingested slot serves once, first-wins; the census total counts distinct slots", async () => {
+    const { sql } = fakeSql({
+      "lower(n.title) = lower": [{ id: "topic-1" }],
+      "SELECT id FROM subtree": [],
+      "n.id = any": [{ id: "topic-1", node_type: "TOPIC", title: "Crude oil", code: null }],
+      "left join exam_papers ep": [
+        listingRow({ id: "q-1", external_ref: "q01-x" }),
+        // the double-run ingestion twin: different row id, SAME paper + slot
+        listingRow({ id: "q-1b", external_ref: "q01-x" }),
+        listingRow({ id: "q-2", external_ref: "q02-x" }),
+      ],
+      "from question_spec_points qsp": [],
+    });
+    const bands = buildBankBands(sql);
+    const view = await bands.listQuestions({ topic: "Crude oil", limit: 200 }, SCOPE);
+    expect(view.total).toBe(2); // distinct slots, not raw rows (3)
+    expect(view.items).toHaveLength(2);
+    expect(view.items.map((i) => i.questionId)).toEqual(["q-1", "q-2"]); // the FIRST row wins, order untouched
+  });
+
+  test("band 1: ref-less rows collapse by normalized stem + marks (case/whitespace-insensitive); a differing slot stays", async () => {
+    const { sql } = fakeSql({
+      "lower(n.title) = lower": [{ id: "topic-1" }],
+      "SELECT id FROM subtree": [],
+      "n.id = any": [{ id: "topic-1", node_type: "TOPIC", title: "Crude oil", code: null }],
+      "left join exam_papers ep": [
+        listingRow({ id: "q-1", external_ref: null, stem: "  The  diagram shows an  electrolytic cell. ", marks: 4 }),
+        listingRow({ id: "q-1b", external_ref: null, stem: "the diagram shows an electrolytic cell.", marks: 4 }),
+        listingRow({ id: "q-2", external_ref: null, stem: "The diagram shows an electrolytic cell.", marks: 6 }), // marks differ → a different slot
+      ],
+      "from question_spec_points qsp": [],
+    });
+    const bands = buildBankBands(sql);
+    const view = await bands.listQuestions({ topic: "Crude oil", limit: 200 }, SCOPE);
+    expect(view.total).toBe(2);
+    expect(view.items.map((i) => i.questionId)).toEqual(["q-1", "q-2"]);
+  });
+
+  test("band 1: cross-paper same-ref rows NEVER collapse (real rows with their own paper ref)", async () => {
+    const { sql } = fakeSql({
+      "lower(n.title) = lower": [{ id: "topic-1" }],
+      "SELECT id FROM subtree": [],
+      "n.id = any": [{ id: "topic-1", node_type: "TOPIC", title: "Crude oil", code: null }],
+      "left join exam_papers ep": [
+        listingRow({ id: "q-1", external_ref: "q01-x", paper_id: "p-1c", paper_code: "4CH1/1C" }),
+        listingRow({ id: "q-2", external_ref: "q01-x", paper_id: "p-2c", paper_code: "4CH1/2C" }),
+      ],
+      "from question_spec_points qsp": [],
+    });
+    const bands = buildBankBands(sql);
+    const view = await bands.listQuestions({ topic: "Crude oil", limit: 200 }, SCOPE);
+    expect(view.total).toBe(2);
+    expect(view.items.map((i) => i.paper!.paperCode)).toEqual(["4CH1/1C", "4CH1/2C"]);
+  });
+
+  test("band 1: the limit cut applies AFTER the dedup — a collapse frees a shown slot", async () => {
+    const { sql } = fakeSql({
+      "lower(n.title) = lower": [{ id: "topic-1" }],
+      "SELECT id FROM subtree": [],
+      "n.id = any": [{ id: "topic-1", node_type: "TOPIC", title: "Crude oil", code: null }],
+      "left join exam_papers ep": [
+        listingRow({ id: "q-1", external_ref: "q01-x" }),
+        listingRow({ id: "q-1b", external_ref: "q01-x" }), // collapses into q-1
+        listingRow({ id: "q-2", external_ref: "q02-x" }),
+        listingRow({ id: "q-3", external_ref: "q03-x" }),
+      ],
+      "from question_spec_points qsp": [],
+    });
+    const bands = buildBankBands(sql);
+    const view = await bands.listQuestions({ topic: "Crude oil", limit: 2 }, SCOPE);
+    expect(view.total).toBe(3); // distinct census, not the raw 4
+    expect(view.items.map((i) => i.externalRef)).toEqual(["q01-x", "q02-x"]); // q03's slot is NOT eaten by the twin
+  });
+
+  test("band 2: a double-ingested paper slot serves once — the card's marks sum stops double-counting", async () => {
+    const { sql } = bankHarness({
+      "order by q.external_ref, q.id": [
+        { id: "q-1", external_ref: "q01-x", question_type: "STRUCTURED", stem: "s1", marks: 4, command_word: null },
+        { id: "q-1b", external_ref: "q01-x", question_type: "STRUCTURED", stem: "s1", marks: 4, command_word: null },
+        { id: "q-2", external_ref: "q02-x", question_type: "STRUCTURED", stem: "s2", marks: 6, command_word: "Explain" },
+      ],
+    });
+    const bands = buildBankBands(sql);
+    const result = await bands.fetchPaper("2019 june paper 1", SCOPE);
+    const view = (result as { status: "FULL"; view: { questions: Array<{ questionId: string; externalRef: string; marks: number }> } }).view;
+    expect(view.questions).toHaveLength(2);
+    expect(view.questions.map((q) => q.questionId)).toEqual(["q-1", "q-2"]); // first-wins
+    // the honest marks sum: 4 + 6 = 10 — the duplicate slot's 4 stops
+    // inflating the "N questions · M marks" header (was 14 pre-dedup)
+    expect(view.questions.reduce((s, q) => s + q.marks, 0)).toBe(10);
   });
 });

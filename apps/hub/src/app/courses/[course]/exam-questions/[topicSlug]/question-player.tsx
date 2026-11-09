@@ -3,6 +3,10 @@
 /**
  * Question set player — the SME practice loop (research §6.2–6.4), upgraded:
  *   - difficulty tabs + question-number grid above the question list;
+ *   - two view modes (T-QVIEW-MODES-1): "All on one page" (the classic
+ *     scroll) and "One at a time" (one question per view — the number grid
+ *     and a Previous/Next footer navigate, the grid ring is the truth);
+ *     the choice persists locally (localStorage) across visits;
  *   - per-question toolbar: Full screen, Save (bookmark), difficulty chip;
  *   - MCQs are ANSWERABLE (SME parity — live SME markup verified 2026-09-18):
  *     the answer UI is always "Choose your answer" letter buttons → Submit
@@ -33,7 +37,14 @@
  *     per-part lightbulbs stay as precision shortcuts that pre-aim the
  *     Approach target.
  */
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -42,6 +53,8 @@ import {
   BookmarkCheck,
   CheckCircle2,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   ChevronUp,
   Lightbulb,
   Loader2,
@@ -64,6 +77,7 @@ import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { AnswerTextarea, answerPlaceholder } from "@/components/answer-textarea";
@@ -85,6 +99,8 @@ import { scrollBehavior } from "@/lib/reduced-motion";
 import { radioNav, rovingTabIndex } from "@/lib/radio-nav";
 import { partDisplayLabel } from "@/lib/part-label";
 import { api, ApiError, aiAskErrorMessage } from "@/lib/api";
+import { pollUntilTerminal, requestPartRegrade, type MirroredPollSnapshot } from "@/lib/paper-marks";
+import { feedbackCopyModel } from "@/components/pastpapers/region-mark/paper-feedback";
 import type {
   SmartMarkAttemptView,
   SmartMarkFeedbackExplanation,
@@ -102,6 +118,46 @@ import { cn } from "@/lib/utils";
 
 const DIFFICULTIES = ["all", "easy", "medium", "hard"] as const;
 type Difficulty = (typeof DIFFICULTIES)[number];
+
+// T-QVIEW-MODES-1 — the player's two view modes; "all" (one-page scroll,
+// the historical default) and "single" (one question per view). The choice
+// persists device-locally under one key across all surfaces that mount the
+// player.
+const VIEW_MODE_STORAGE_KEY = "syllabai-player-viewmode";
+type ViewMode = "all" | "single";
+
+// tiny external store for the persisted view mode: localStorage is not
+// reactive, so subscribers are pinged explicitly on write (same tab) and
+// via the `storage` event (other tabs). useSyncExternalStore keeps SSR and
+// first paint on the "all" snapshot — no hydration mismatch ever renders.
+const viewModeListeners = new Set<() => void>();
+function subscribeViewMode(onChange: () => void) {
+  viewModeListeners.add(onChange);
+  window.addEventListener("storage", onChange);
+  return () => {
+    viewModeListeners.delete(onChange);
+    window.removeEventListener("storage", onChange);
+  };
+}
+function getViewModeSnapshot(): ViewMode {
+  try {
+    const v = window.localStorage.getItem(VIEW_MODE_STORAGE_KEY);
+    return v === "single" ? "single" : "all";
+  } catch {
+    return "all"; // storage unavailable (private mode, disabled) — default stands
+  }
+}
+function getServerViewModeSnapshot(): ViewMode {
+  return "all"; // hydration truth: server and first paint agree on "all"
+}
+function writeViewMode(m: ViewMode) {
+  try {
+    window.localStorage.setItem(VIEW_MODE_STORAGE_KEY, m);
+  } catch {
+    // storage unavailable — the in-session choice still applies
+  }
+  viewModeListeners.forEach((cb) => cb());
+}
 
 interface McqChoice {
   label: string;
@@ -149,6 +205,8 @@ export function QuestionPlayer({
   subtopicCode,
   subtopicTitle,
   questions,
+  variant = "bank",
+  questionNumbers,
 }: {
   course: Course;
   topicName: string;
@@ -156,6 +214,18 @@ export function QuestionPlayer({
   subtopicCode: string | null;
   subtopicTitle: string | null;
   questions: ExamQuestion[];
+  /** "bank" (default): difficulty tabs + guided practice, positional
+   *  numbering. "paper" (T-PAPER-PLAYBACK-1): fixed-paper playback — the
+   *  printed question numbers are the navigation, so the difficulty
+   *  controls never mount (filtering a paper would renumber it, and
+   *  corpus difficulty is nullable — untagged questions would silently
+   *  vanish under easy/hard). */
+  variant?: "bank" | "paper";
+  /** printed paper question number per entry, aligned with `questions`
+   *  (PastPaper.questionNumbers). Null entries — provenance didn't carry
+   *  a number — fall back to the 1-based position; the array is ignored
+   *  entirely unless its length matches `questions` (fail-closed). */
+  questionNumbers?: Array<number | null>;
 }) {
   const progress = useCourseProgress(course);
   const [difficulty, setDifficulty] = useState<Difficulty>("all");
@@ -194,6 +264,26 @@ export function QuestionPlayer({
   const isAttempted = (q: ExamQuestion) =>
     !!progress.selfScores[q.id] || q.parts.some((p) => !!progress.mcqAnswers[p.id]);
 
+  // T-PAPER-PLAYBACK-1 — ONE label language for the card chips, the jump
+  // grid and the CLA anchor chip: the printed paper question number when
+  // the corpus attests one (paper playback), else the 1-based position.
+  // A partial reconstruction must not renumber itself — when Q3 is missing
+  // the held cards still read 1, 2, 4… exactly as the coverage line next
+  // to them says.
+  const printedById = useMemo(() => {
+    if (!questionNumbers || questionNumbers.length !== questions.length) return null;
+    const m = new Map<string, string>();
+    questions.forEach((q, i) => {
+      const n = questionNumbers[i];
+      if (n != null && n > 0) m.set(q.id, String(n));
+    });
+    return m.size > 0 ? m : null;
+  }, [questions, questionNumbers]);
+  const qLabel = (i: number) => {
+    const q = visible[i];
+    return (printedById && q && printedById.get(q.id)) || String(i + 1);
+  };
+
   /** the CLA anchors resolve ONLY through the verified join — an unverified
    *  question gets no entries at all (same honesty rule as attempts) */
   const openCla = (q: ExamQuestion, index: number, targetId: string | null) => {
@@ -215,9 +305,92 @@ export function QuestionPlayer({
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
 
+  // audit 2026-10-30 (motion review): grid jumps honor reduced motion —
+  // the unguarded spelling of the contract TypedAnswerWorkspace already
+  // implemented inline (scrollBehavior() consolidates all three sites).
+  const scrollTo = useCallback((id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
+  }, []);
+
+  // ── view modes (T-QVIEW-MODES-1) ─────────────────────────────────────
+  // "all" = today's one-page scroll (the default, so nothing changes for
+  // anyone who hasn't opted in); "single" = one question per view, navigated
+  // by the number grid above and a Previous/Next footer below. The choice
+  // persists in localStorage (device-local, one preference across surfaces)
+  // through a tiny external store: useSyncExternalStore keeps SSR and first
+  // paint on the "all" snapshot (no hydration mismatch ever renders) and the
+  // `storage` event carries the choice across open tabs for free.
+  const viewMode = useSyncExternalStore(
+    subscribeViewMode,
+    getViewModeSnapshot,
+    getServerViewModeSnapshot,
+  );
+  const single = viewMode === "single";
+  // the question the player is actually ON — derived, never stored: clamped
+  // into the visible list in single mode (difficulty filters shrink it),
+  // passthrough in "all" where the scroll-spy owns it
+  const viewIdx = single
+    ? Math.max(0, Math.min(activeIdx ?? 0, visible.length - 1))
+    : activeIdx;
+  const switchViewMode = (m: ViewMode) => {
+    writeViewMode(m);
+    // after commit: entering single lands at the top of the page (the card
+    // is the page now); returning to all restores the question being read
+    setTimeout(() => {
+      if (m === "single") {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      } else if (viewIdx != null && visible[viewIdx]) {
+        scrollTo(`q-${visible[viewIdx].id}`);
+      }
+    }, 0);
+  };
+  const goTo = useCallback(
+    (i: number) => {
+      const q = visible[i];
+      if (!q) return;
+      setActiveIdx(i);
+      if (single) {
+        // card swap, not anchor scroll — the card IS the page; land at the top
+        window.scrollTo({ top: 0, behavior: scrollBehavior() });
+      } else {
+        scrollTo(`q-${q.id}`);
+      }
+    },
+    [single, visible, scrollTo, setActiveIdx],
+  );
+  // ←/→ step through questions in single mode — but never while typing, in
+  // a dialog/overlay, or on the difficulty tablist (its arrows mean tabs)
+  useEffect(() => {
+    if (!single) return;
+    const onKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement | null;
+      if (
+        !t ||
+        t.tagName === "INPUT" ||
+        t.tagName === "TEXTAREA" ||
+        t.tagName === "SELECT" ||
+        t.isContentEditable ||
+        t.closest('[role="dialog"], [role="tablist"]')
+      ) {
+        return;
+      }
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const cur = viewIdx ?? 0;
+      const next = e.key === "ArrowRight" ? cur + 1 : cur - 1;
+      if (next < 0 || next >= visible.length) return;
+      e.preventDefault();
+      goTo(next);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [single, viewIdx, visible, goTo]);
+
   useEffect(() => {
     const root = listRef.current;
-    if (!root || typeof IntersectionObserver === "undefined") return;
+    // single mode (T-QVIEW-MODES-1): one card is always in view and active
+    // is set directly by the grid / footer / arrows — the scroll-spy is
+    // an "all"-mode instrument only
+    if (single || !root || typeof IntersectionObserver === "undefined") return;
     const ratios = new Map<Element, number>();
     const io = new IntersectionObserver(
       (entries) => {
@@ -240,7 +413,7 @@ export function QuestionPlayer({
     );
     root.querySelectorAll("article[data-qidx]").forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [visible]);
+  }, [visible, single]);
 
   /** the question the floating button will anchor — the active one when it
    *  can anchor (verified join), else the nearest that can; null = no
@@ -249,151 +422,241 @@ export function QuestionPlayer({
     if (visible.length === 0) return null;
     const canAnchor = (i: number) =>
       !!visible[i] && bridge.kind === "ready" && !!bridge.data.questions[visible[i].id];
-    const a = activeIdx ?? 0;
+    const a = viewIdx ?? 0;
     if (canAnchor(a)) return a;
     for (let d = 1; d < visible.length; d++) {
       if (canAnchor(a + d)) return a + d;
       if (canAnchor(a - d)) return a - d;
     }
     return null;
-  }, [activeIdx, visible, bridge]);
+  }, [viewIdx, visible, bridge]);
 
-  // audit 2026-10-30 (motion review): grid jumps honor reduced motion —
-  // the unguarded spelling of the contract TypedAnswerWorkspace already
-  // implemented inline (scrollBehavior() consolidates all three sites).
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
-  };
+  /** the floating button's disclosure — when the question in view cannot
+   *  anchor, the button opens for the nearest anchorable one. In single
+   *  mode the click ALSO swaps the card to that question (openCla pins
+   *  activeIdx and the single-mode viewIdx follows it), so the disclosure
+   *  names the swap explicitly (T-QVIEW-AUDIT-BCD-1 batch D, the nuance
+   *  disclosed at T-QVIEW-MODES-1); "all" keeps the compact parenthetical
+   *  (the discrepancy there is transient — the scroll-spy re-ties it). */
+  const claAnchorDisclosure =
+    claAnchorIdx !== null && viewIdx !== null && viewIdx !== claAnchorIdx
+      ? single
+        ? ` — question ${qLabel(viewIdx)} in view has no assistant link yet, so this opens question ${qLabel(claAnchorIdx)} instead`
+        : ` (question ${qLabel(viewIdx)} is not anchored for the assistant yet)`
+      : "";
 
   return (
     <div className="space-y-5">
       {/* 4CH1 bridge status — one honest line, never a blocker */}
       <BridgeBanner status={bridge} />
 
-      {/* difficulty tabs + guided practice (SME controls, research §6.2) */}
-      <div className="flex flex-wrap items-center gap-3 rounded-lg border bg-card px-4 py-3">
-        <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="Difficulty">
-          {DIFFICULTIES.map((d) => (
-            <button
-              key={d}
-              role="tab"
-              aria-selected={difficulty === d}
-              onClick={() => setDifficulty(d)}
-              className={cn(
-                "rounded-md px-3 py-2.5 text-[13px] font-medium capitalize transition-colors",
-                difficulty === d
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground",
-              )}
-            >
-              {d === "all" ? "All" : d}
-              <span className="ml-1.5 text-[11px] tabular-nums opacity-70">{counts[d]}</span>
-            </button>
-          ))}
+      {/* difficulty tabs + guided practice (SME controls, research §6.2) —
+          bank playback ONLY (T-PAPER-PLAYBACK-1): a past paper is a fixed
+          document played back in paper order — its printed question numbers
+          are the navigation, difficulty filtering would renumber it, and
+          corpus difficulty is nullable (null reads as "medium", so untagged
+          questions would silently vanish under easy/hard). */}
+      {variant === "bank" && (
+        <div className="flex flex-wrap items-center gap-3 rounded-lg border bg-card px-4 py-3">
+          <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="Difficulty">
+            {DIFFICULTIES.map((d) => (
+              <button
+                key={d}
+                role="tab"
+                aria-selected={difficulty === d}
+                onClick={() => setDifficulty(d)}
+                className={cn(
+                  "rounded-md px-3 py-2.5 text-[13px] font-medium capitalize transition-colors",
+                  difficulty === d
+                    ? "bg-primary/10 text-primary"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                )}
+              >
+                {d === "all" ? "All" : d}
+                <span className="ml-1.5 text-[11px] tabular-nums opacity-70">{counts[d]}</span>
+              </button>
+            ))}
+          </div>
+          <label className="ml-auto flex cursor-not-allowed items-center gap-2 text-[13px] text-muted-foreground" title="Adaptive sessions are coming soon">
+            Guided practice
+            <Switch disabled aria-label="Guided practice (roadmap)" />
+          </label>
         </div>
-        <label className="ml-auto flex cursor-not-allowed items-center gap-2 text-[13px] text-muted-foreground" title="Adaptive sessions are Phase C of the build plan">
-          Guided practice
-          <Switch disabled aria-label="Guided practice (roadmap)" />
-        </label>
+      )}
+
+      {/* view-mode toggle (T-QVIEW-MODES-1) — one preference for both
+          surfaces; "all" is the default so current readers see no change */}
+      <div className="flex gap-1 rounded-lg border bg-card p-1" role="group" aria-label="View mode">
+        <button
+          aria-pressed={viewMode === "all"}
+          onClick={() => switchViewMode("all")}
+          className={cn(
+            "rounded-md px-3 py-1.5 text-[13px] font-medium transition-colors",
+            viewMode === "all"
+              ? "bg-primary/10 text-primary"
+              : "text-muted-foreground hover:bg-muted hover:text-foreground",
+          )}
+        >
+          All on one page
+        </button>
+        <button
+          aria-pressed={viewMode === "single"}
+          onClick={() => switchViewMode("single")}
+          className={cn(
+            "rounded-md px-3 py-1.5 text-[13px] font-medium transition-colors",
+            viewMode === "single"
+              ? "bg-primary/10 text-primary"
+              : "text-muted-foreground hover:bg-muted hover:text-foreground",
+          )}
+        >
+          One at a time
+        </button>
       </div>
 
-      {/* question number grid (SME) */}
+      {/* question number grid (SME) — printed paper numbers on paper
+          playback (T-PAPER-PLAYBACK-1); the ring marks the question
+          currently in view ("you are here") and layers over the attempted
+          fill, so the cell being read is findable either way. In single
+          mode the ring is the WHOLE navigation truth (no scroll-spy) and a
+          click swaps the card instead of scrolling. */}
       <div ref={gridRef} className="flex flex-wrap gap-1.5" aria-label="Jump to question">
         {visible.map((q, i) => (
           <button
             key={q.id}
-            onClick={() => {
-              setActiveIdx(i);
-              scrollTo(`q-${q.id}`);
-            }}
-            aria-label={`Question ${i + 1}${isAttempted(q) ? " (attempted)" : ""}`}
+            onClick={() => goTo(i)}
+            aria-label={`Question ${qLabel(i)}${isAttempted(q) ? " (attempted)" : ""}`}
+            aria-current={viewIdx === i || undefined}
             className={cn(
               "flex size-10 items-center justify-center rounded-md border text-[13px] font-medium transition-colors",
               isAttempted(q)
                 ? "border-primary bg-primary text-primary-foreground"
-                : "hover:border-primary/50 hover:text-primary",
+                : viewIdx === i
+                  ? "border-primary bg-primary/10 text-primary"
+                  : "hover:border-primary/60 hover:text-primary",
+              viewIdx === i && "ring-2 ring-primary/60 ring-offset-2 ring-offset-background",
             )}
           >
-            {i + 1}
+            {qLabel(i)}
           </button>
         ))}
       </div>
 
-      {/* questions — data-qidx feeds the floating button's anchor tracker */}
+      {/* questions — data-qidx feeds the floating button's anchor tracker.
+          Single mode renders exactly ONE card of the same list (same keys,
+          same real index qi — so printed numbers, CLA anchoring and the
+          full-screen/mark-scheme targets are all unchanged). */}
       <div ref={listRef} className="space-y-4">
-        {visible.map((q, qi) => (
-          <article key={q.id} id={`q-${q.id}`} data-qidx={qi} className="scroll-mt-24 rounded-xl border bg-card">
-            <div className="flex flex-wrap items-center gap-2 border-b px-4 py-2.5">
-              <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">{qi + 1}</span>
-              <Badge variant="outline" className="text-[10px]">
-                {q.totalMarks} mark{q.totalMarks === 1 ? "" : "s"}
-              </Badge>
-              {q.difficulty && (
-                <Badge variant="secondary" className="text-[10px] capitalize">
-                  {q.difficulty}
+        {visible.map((q, qi) =>
+          single && qi !== viewIdx ? null : (
+            <article key={q.id} id={`q-${q.id}`} data-qidx={qi} className="scroll-mt-24 rounded-xl border bg-card">
+              <div className="flex flex-wrap items-center gap-2 border-b px-4 py-2.5">
+                {/* printed paper number when attested, else position (T-PAPER-PLAYBACK-1) */}
+                <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">{qLabel(qi)}</span>
+                <Badge variant="outline" className="text-[10px]">
+                  {q.totalMarks} mark{q.totalMarks === 1 ? "" : "s"}
                 </Badge>
-              )}
-              {isAttempted(q) && (
-                <Badge variant="outline" className="border-success/30 text-[10px] text-success">
-                  <CheckCircle2 className="mr-0.5 size-3" aria-hidden /> attempted
-                </Badge>
-              )}
-              <div className="ml-auto flex items-center gap-1">
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="h-9 gap-1.5 px-2 text-xs"
-                  onClick={() => {
-                    setActiveIdx(qi);
-                    setFullFor({ q, index: qi });
-                  }}
-                >
-                  <Maximize2 className="size-3.5" aria-hidden /> Full screen
-                </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="h-9 gap-1.5 px-2 text-xs"
-                  onClick={() => toggleSavedQuestion(course, q.id, topicSlug, subtopicCode)}
-                  aria-pressed={!!progress.saved[q.id]}
-                >
-                  {progress.saved[q.id] ? (
-                    <>
-                      <BookmarkCheck className="size-3.5 text-primary" aria-hidden /> Saved
-                    </>
-                  ) : (
-                    <>
-                      <Bookmark className="size-3.5" aria-hidden /> Save
-                    </>
-                  )}
-                </Button>
+                {variant === "bank" && q.difficulty && (
+                  <Badge variant="secondary" className="text-[10px] capitalize">
+                    {q.difficulty}
+                  </Badge>
+                )}
+                {isAttempted(q) && (
+                  <Badge variant="outline" className="border-success/30 text-[10px] text-success">
+                    <CheckCircle2 className="mr-0.5 size-3" aria-hidden /> attempted
+                  </Badge>
+                )}
+                <div className="ml-auto flex items-center gap-1">
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-9 gap-1.5 px-2 text-xs"
+                    onClick={() => {
+                      setActiveIdx(qi);
+                      setFullFor({ q, index: qi });
+                    }}
+                  >
+                    <Maximize2 className="size-3.5" aria-hidden /> Full screen
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-9 gap-1.5 px-2 text-xs"
+                    onClick={() => toggleSavedQuestion(course, q.id, topicSlug, subtopicCode)}
+                    aria-pressed={!!progress.saved[q.id]}
+                  >
+                    {progress.saved[q.id] ? (
+                      <>
+                        <BookmarkCheck className="size-3.5 text-primary" aria-hidden /> Saved
+                      </>
+                    ) : (
+                      <>
+                        <Bookmark className="size-3.5" aria-hidden /> Save
+                      </>
+                    )}
+                  </Button>
+                </div>
               </div>
-            </div>
 
-            <div className="px-4 py-4">
-              <QuestionBody
-                course={course}
-                question={q}
-                topicSlug={topicSlug}
-                subtopicCode={subtopicCode}
-                subtopicTitle={subtopicTitle}
-                onViewModel={() => {
-                  setActiveIdx(qi);
-                  setSchemeFor(q);
-                }}
-                bridge={bridge}
-                onAskCla={() => openCla(q, qi, null)}
-                onAskClaPart={(partId) => openCla(q, qi, partId)}
-              />
-            </div>
-          </article>
-        ))}
+              <div className="px-4 py-4">
+                <QuestionBody
+                  course={course}
+                  question={q}
+                  topicSlug={topicSlug}
+                  subtopicCode={subtopicCode}
+                  subtopicTitle={subtopicTitle}
+                  onViewModel={() => {
+                    setActiveIdx(qi);
+                    setSchemeFor(q);
+                  }}
+                  bridge={bridge}
+                  onAskCla={() => openCla(q, qi, null)}
+                  onAskClaPart={(partId) => openCla(q, qi, partId)}
+                />
+              </div>
+            </article>
+          ),
+        )}
         {visible.length === 0 && (
           <p className="rounded-lg border bg-muted/30 px-4 py-6 text-center text-sm text-muted-foreground">
             No {difficulty} questions in this set.
           </p>
         )}
       </div>
+
+      {/* single-mode pagination footer (T-QVIEW-MODES-1) — Previous /
+          Question N of M / Next, endpoints disabled (a paper has ends; it
+          does not wrap). The counter is aria-live so a screen reader hears
+          the step; labels carry the printed question numbers. */}
+      {single && visible.length > 0 && (
+        <nav
+          aria-label="Question pagination"
+          className="flex items-center justify-between gap-3 rounded-lg border bg-card px-4 py-3"
+        >
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-1.5"
+            disabled={(viewIdx ?? 0) === 0}
+            aria-keyshortcuts="ArrowLeft"
+            onClick={() => goTo((viewIdx ?? 0) - 1)}
+          >
+            <ChevronLeft className="size-4" aria-hidden /> Previous
+          </Button>
+          <p className="text-[13px] tabular-nums text-muted-foreground" aria-live="polite">
+            Question {qLabel(viewIdx ?? 0)} of {visible.length}
+          </p>
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-1.5"
+            disabled={(viewIdx ?? 0) >= visible.length - 1}
+            aria-keyshortcuts="ArrowRight"
+            onClick={() => goTo((viewIdx ?? 0) + 1)}
+          >
+            Next <ChevronRight className="size-4" aria-hidden />
+          </Button>
+        </nav>
+      )}
 
       {/* the FLOATING CLA entry (Revision Notes parity — operator 2026-09-29,
           trace 1a0ec14f2f7e3581). One page holds MANY questions, so the
@@ -411,18 +674,16 @@ export function QuestionPlayer({
           // label swap itself stays INSTANT: it re-fires on every anchor
           // change while scrolling (IntersectionObserver), and animating a
           // high-frequency swap would breach frequency-appropriateness.
-          className="fixed bottom-6 right-6 z-40 h-12 gap-2 rounded-full px-5 shadow-lg animate-in fade-in-0 zoom-in-95 duration-200 ease-out"
+          // T-QVIEW-AUDIT-BCD-1 batch D (CLA-button clearance): in single
+          // mode the button rides above the pagination footer band
+          // (bottom-24) instead of overlapping the footer's Next control.
+          className={cn(
+            "fixed right-6 z-40 h-12 gap-2 rounded-full px-5 shadow-lg animate-in fade-in-0 zoom-in-95 duration-200 ease-out",
+            single ? "bottom-24" : "bottom-6",
+          )}
           aria-haspopup="dialog"
-          aria-label={`Ask the contextual assistant about question ${claAnchorIdx + 1}${
-            activeIdx !== null && activeIdx !== claAnchorIdx
-              ? ` (question ${activeIdx + 1} is not anchored for the assistant yet)`
-              : ""
-          }`}
-          title={`Ask CLA about question ${claAnchorIdx + 1}${
-            activeIdx !== null && activeIdx !== claAnchorIdx
-              ? ` (question ${activeIdx + 1} is not anchored for the assistant yet)`
-              : ""
-          }`}
+          aria-label={`Ask the contextual assistant about question ${qLabel(claAnchorIdx)}${claAnchorDisclosure}`}
+          title={`Ask CLA about question ${qLabel(claAnchorIdx)}${claAnchorDisclosure}`}
           onClick={() => openCla(visible[claAnchorIdx], claAnchorIdx, null)}
         >
           <Sparkles className="size-4" aria-hidden />
@@ -431,7 +692,7 @@ export function QuestionPlayer({
             className="rounded-full bg-primary-foreground/15 px-2 py-0.5 text-[11px] font-semibold tabular-nums"
             aria-hidden
           >
-            Q{claAnchorIdx + 1}
+            Q{qLabel(claAnchorIdx)}
           </span>
         </Button>
       )}
@@ -600,6 +861,15 @@ function QuestionBody({
   )}${anchorSpec ? `&spec=${encodeURIComponent(anchorSpec)}` : ""}`;
   const recorded = progress.selfScores[question.id];
 
+  // T-QVIEW-AUDIT-BCD-1 batch D (self-score validation): the box validates
+  // BEFORE saving — a whole number within 0..totalMarks — and says so
+  // inline, replacing the silent clamp (typing 99 saved as the cap, typing
+  // 3.7 saved the fraction, both without a word). Save stays disabled
+  // until the draft is valid; the hint names the exact legal range.
+  const scoreNum = Number(scoreDraft);
+  const scoreValid = /^\d+$/.test(scoreDraft.trim()) && scoreNum >= 0 && scoreNum <= question.totalMarks;
+  const scoreInvalidVisible = scoreDraft.trim() !== "" && !scoreValid;
+
   /** SME: MCQs are marked instantly — no manual "How did you do?" box.
    * Mixed MCQ+structured questions keep the self-score box (their MCQ parts
    * still record instant per-part marks). Multi-select MCQs (attested
@@ -611,6 +881,12 @@ function QuestionBody({
   const coreJoin: BridgeQuestion | null =
     bridge.kind === "ready" ? (bridge.data.questions[question.id] ?? null) : null;
   const coreLive = bridge.kind === "ready" && coreJoin !== null;
+  // T-QBANK-AILANE-DEDUP-1: the per-box lane badge renders only when it is
+  // the SOLE liveness signifier on the card. When the core marking flow
+  // owns the question (same gate as the flow below), its header "live"
+  // badge is the one liveness statement — a per-box "live draft" badge on
+  // every structured part repeated that fact N+1 times on one card.
+  const coreFlowActive = coreLive && coreJoin !== null && coreJoin.structured.length > 0;
 
   return (
     <div className="space-y-4" data-question-block={question.id}>
@@ -630,7 +906,6 @@ function QuestionBody({
               topicSlug={topicSlug}
               subtopicCode={subtopicCode}
               optionsVisible={mcqOptionsVisible(question, idx)}
-              onViewModel={onViewModel}
               coreJoin={coreJoin?.mcq[p.id] ?? null}
               labelChip={labelChip}
               partLabel={labelChip ?? (question.parts.length > 1 ? String.fromCharCode(97 + idx) : null)}
@@ -650,6 +925,7 @@ function QuestionBody({
             labelChip={labelChip}
             partLabel={labelChip ?? (question.parts.length > 1 ? String.fromCharCode(97 + idx) : null)}
             coreLive={coreLive}
+            showLaneBadge={!coreFlowActive}
             onAskClaPart={coreJoin ? () => onAskClaPart(p.id) : undefined}
           />
         );
@@ -678,19 +954,25 @@ function QuestionBody({
                   onChange={(e) => setScoreDraft(e.target.value)}
                   placeholder="–"
                   aria-label={`Self score out of ${question.totalMarks}`}
+                  aria-invalid={scoreInvalidVisible}
+                  aria-describedby={scoreInvalidVisible ? `self-score-hint-${question.id}` : undefined}
                   className="h-9 w-16 text-center"
                 />
                 <span className="text-muted-foreground">/ {question.totalMarks}</span>
               </span>
             </label>
+            {scoreInvalidVisible && (
+              <span id={`self-score-hint-${question.id}`} className="text-xs text-destructive">
+                Whole number between 0 and {question.totalMarks}
+              </span>
+            )}
             <Button
               size="sm"
               variant="outline"
-              disabled={scoreDraft === "" || Number.isNaN(Number(scoreDraft))}
+              disabled={!scoreValid}
               onClick={() => {
-                const v = Math.max(0, Math.min(question.totalMarks, Number(scoreDraft)));
-                recordSelfScore(course, question.id, topicSlug, subtopicCode, v, question.totalMarks);
-                setScoreDraft(String(v));
+                recordSelfScore(course, question.id, topicSlug, subtopicCode, scoreNum, question.totalMarks);
+                setScoreDraft(String(scoreNum));
               }}
             >
               Save score
@@ -744,6 +1026,7 @@ function StructuredPart({
   labelChip,
   partLabel,
   coreLive,
+  showLaneBadge,
   onAskClaPart,
 }: {
   course: Course;
@@ -752,6 +1035,10 @@ function StructuredPart({
   topicSlug: string;
   subtopicCode: string | null;
   showPartBadge: boolean;
+  /** T-QBANK-AILANE-DEDUP-1: false = the core flow's header badge owns the
+   *  card's liveness statement; true = this box's lane badge is the sole
+   *  signifier (legacy/demo planes) and stays */
+  showLaneBadge: boolean;
   /** the printed label ("(a)", "(a)(i)") when the corpus attests one; null = no chip */
   labelChip: string | null;
   /** true label when known, else the legacy index letter — CLA aria text only
@@ -810,7 +1097,7 @@ function StructuredPart({
           layout-identical to the bare pre-467 block. */}
       <div className="flex items-baseline gap-x-1.5" data-part-row={part.id}>
         {labelChip && (
-          <span className="shrink-0 text-sm font-semibold tabular-nums" data-part-label={labelChip}>
+          <span className="shrink-0 text-[13px] font-semibold tabular-nums" data-part-label={labelChip}>
             {labelChip}
           </span>
         )}
@@ -826,6 +1113,8 @@ function StructuredPart({
           topicSlug={topicSlug}
           subtopicCode={subtopicCode}
           coreLive={coreLive}
+          showLaneBadge={showLaneBadge}
+          partLabel={labelChip}
         />
       )}
     </div>
@@ -841,6 +1130,8 @@ function TypedAnswerWorkspace({
   topicSlug,
   subtopicCode,
   coreLive,
+  showLaneBadge,
+  partLabel,
 }: {
   course: Course;
   question: ExamQuestion;
@@ -848,6 +1139,14 @@ function TypedAnswerWorkspace({
   topicSlug: string;
   subtopicCode: string | null;
   coreLive: boolean;
+  /** T-QBANK-AILANE-DEDUP-1: when the core marking flow owns this card its
+   *  header "live" badge is the only liveness signifier — this per-box lane
+   *  badge renders only when it would otherwise be the sole statement */
+  showLaneBadge: boolean;
+  /** the attested printed label ("(a)") when the corpus carries one; null =
+   *  honestly unlabeled — the aria drops the part qualifier instead of
+   *  guessing an order number (T-QVIEW-AUDIT-BCD-1 batch C) */
+  partLabel: string | null;
 }) {
   const progress = useCourseProgress(course);
   const savedText = progress.typedAnswers[part.id]?.text ?? "";
@@ -974,7 +1273,7 @@ function TypedAnswerWorkspace({
           kind: "error",
           message:
             j.detail ??
-            "AI marking is unavailable right now — use “How did you do?” to self-mark instead.",
+            AI_MARK_UNAVAILABLE,
         });
         return;
       }
@@ -989,7 +1288,7 @@ function TypedAnswerWorkspace({
     } catch {
       setMark({
         kind: "error",
-        message: "Network error while marking — use “How did you do?” to self-mark instead.",
+        message: `Network error while marking — ${SELF_MARK_POINTER}`,
       });
     }
   };
@@ -1005,26 +1304,28 @@ function TypedAnswerWorkspace({
         onChange={onType}
         onBlur={flushNow}
         label="Your answer"
-        ariaLabel={`Your typed answer for part ${part.order + 1}`}
+        ariaLabel={partLabel ? `Your typed answer for part ${partLabel}` : "Your typed answer"}
         placeholder={answerPlaceholder(part.problemMd)}
         marks={part.marks}
         onSubmitShortcut={submitShortcut}
         // wave 1 honesty features, demoted into the active state (SME's box
-        // "looks normal at first"): lane badge + derived save chip ride the
-        // strip's right side; the where-drafts-live copy is the muted line
-        // under it. Both still appear the moment there is content (a typed
-        // or reloaded draft keeps the box active).
+        // "looks normal at first"): the derived save chip rides the strip's
+        // right side; the where-drafts-live copy is the muted line under it.
+        // T-QBANK-AILANE-DEDUP-1: the lane badge rides the same slot only
+        // when it is the card's sole liveness signifier (showLaneBadge).
         statusSlot={
           <>
-            <Badge
-              variant="outline"
-              className={cn(
-                "px-1 text-[10.5px] uppercase",
-                coreLive ? "border-success/30 text-success" : "text-muted-foreground",
-              )}
-            >
-              {coreLive ? "live draft" : "simulated"}
-            </Badge>
+            {showLaneBadge && (
+              <Badge
+                variant="outline"
+                className={cn(
+                  "px-1 text-[11px] uppercase",
+                  coreLive ? "border-success/30 text-success" : "text-muted-foreground",
+                )}
+              >
+                {coreLive ? "live draft" : "simulated"}
+              </Badge>
+            )}
             {text.length > 0 && (
               <span
                 aria-live="polite"
@@ -1066,7 +1367,7 @@ function TypedAnswerWorkspace({
           </Button>
         ) : (
           <span className="text-[11px] text-muted-foreground">
-            AI marking needs a provider key on the server — self-mark via “How did you do?” below.
+            {AI_MARK_UNAVAILABLE}
           </span>
         )}
         {aiAvailable === true && text.trim().length === 0 && (
@@ -1102,7 +1403,7 @@ function TypedAnswerWorkspace({
               <Sparkles className="size-3" aria-hidden /> AI-suggested mark: {mark.score}/{mark.max}
             </Badge>
             <span className="text-[11px] text-muted-foreground">
-              via {mark.provider} · AI_SUGGESTED — check against the mark scheme
+              via {mark.provider} — check against the mark scheme
             </span>
             {singlePart && !applied && (
               <Button
@@ -1152,6 +1453,15 @@ function TypedAnswerWorkspace({
 }
 
 // ── MCQ part — answerable, marked instantly (SME, research figure 24) ───
+
+// T-QVIEW-AUDIT-BCD-1 batch D (answer-wording unification): ONE tail for
+// the AI-unavailable fallback, single-sourced — the render sites (legacy
+// error, network error, the probed-off static line, the core advisory
+// lane) previously spelled the self-mark pointer three ways. "How did you
+// do?" is the exact footer box label, in every lane (the box renders for
+// structured questions in both the local and the core lane).
+const SELF_MARK_POINTER = 'use “How did you do?” to self-mark instead.';
+const AI_MARK_UNAVAILABLE = `AI marking is unavailable right now — ${SELF_MARK_POINTER}`;
 
 function hasUsableChoices(part: ExamQuestion["parts"][number]): boolean {
   const c = part.choices;
@@ -1221,7 +1531,6 @@ function McqPart({
   topicSlug,
   subtopicCode,
   optionsVisible,
-  onViewModel,
   coreJoin,
   labelChip,
   partLabel,
@@ -1233,7 +1542,6 @@ function McqPart({
   subtopicCode: string | null;
   /** option content is visible somewhere (stem media or an earlier part) */
   optionsVisible: boolean;
-  onViewModel: () => void;
   /** core identity for this part, when the 4CH1 bridge verified the join */
   coreJoin: BridgeMcqPart | null;
   /** the printed label ("(a)", "(a)(i)") when the corpus attests one; null = no chip */
@@ -1390,7 +1698,7 @@ function McqPart({
           than the stem (T-OEQ-PARTLABEL-3 font note). */}
       <div className="flex items-baseline gap-x-1.5" data-part-row={part.id}>
         {labelChip && (
-          <span className="shrink-0 text-sm font-semibold tabular-nums" data-part-label={labelChip}>
+          <span className="shrink-0 text-[13px] font-semibold tabular-nums" data-part-label={labelChip}>
             {labelChip}
           </span>
         )}
@@ -1474,7 +1782,7 @@ function McqPart({
                         ? "border-success/40 bg-success/10"
                         : isChosen
                           ? "border-primary bg-primary/5"
-                          : "hover:border-primary/50",
+                          : "hover:border-primary/60",
                   )}
                 >
                   <span
@@ -1671,11 +1979,9 @@ function McqPart({
       ) : (
         <div className="rounded-md border border-warn/30 bg-warn/10 px-3 py-2 text-xs leading-relaxed text-warn-ink">
           This is a multiple-choice question, but its option content and answer key were not
-          captured by the authorized import — the demo never fabricates content. Use{" "}
-          <button className="font-medium underline underline-offset-2" onClick={onViewModel}>
-            View answer
-          </button>{" "}
-          for the final answer and explanation.
+          captured by the authorized import — the demo never fabricates content. Use the{" "}
+          <span className="font-medium">View answer</span> button below for the final answer
+          and explanation.
         </div>
       )}
     </div>
@@ -1693,6 +1999,16 @@ function markFlowError(e: unknown): string {
     "The backend marking pipeline is unavailable right now — your answers are saved locally; try again in a moment.",
   );
 }
+
+/** T-MG-PLAYER-MARK-1 — the advisory draft mark's per-part state. The
+ * honest classes mirror the poll loop's own (loading | done | failed |
+ * lost | timeout); `done` carries the mirrored poll snapshot. */
+type AdvisoryMarkState =
+  | { kind: "loading" }
+  | { kind: "done"; snapshot: MirroredPollSnapshot }
+  | { kind: "failed"; message: string }
+  | { kind: "lost" }
+  | { kind: "timeout" };
 
 /**
  * The pilot's real practice loop for structured questions: submit every
@@ -1727,6 +2043,76 @@ function CoreMarkingFlow({
   const [extras, setExtras] = useState<
     Record<string, SmartMarkFeedbackExplanation | SmartMarkImprovementPlan | "loading" | "error">
   >({});
+  // ── T-MG-PLAYER-MARK-1: the advisory draft mark (the typed regrade
+  // channel's hub consumer). MG-parity value moment (live capture
+  // 2026-11-04, rollout plan Lane C): type → mark → read, with NOTHING
+  // written to the attempt plane. Each structured part's draft rides
+  // POST /parts/:partId/regrade (partId = the bridge join's core part
+  // UUID — the same ids submitStructuredAttempt consumes) and polls via
+  // the shipped loop; the verdict renders through feedbackCopyModel (the
+  // five-field copy law + failure-only strategies, single-sourced with
+  // the paper panel). The authoritative Smart Mark flow is untouched.
+  const [advisory, setAdvisory] = useState<Record<string, AdvisoryMarkState>>({});
+  const advisoryRunning = Object.values(advisory).some((s) => s.kind === "loading");
+
+  const markDraftWithAi = async () => {
+    const token = window.localStorage.getItem("syllabai.token");
+    // dedupe by hub part id; only parts with a non-empty draft (the wire
+    // schema is min(1) — an empty draft is not an answer to mark)
+    const targets: Array<{ hubPartId: string; corePartId: string }> = [];
+    for (const sub of join.structured) {
+      for (const [hubPartId, corePartId] of Object.entries(sub.parts)) {
+        if (answerFor(hubPartId).trim().length > 0 && !targets.some((t) => t.hubPartId === hubPartId)) {
+          targets.push({ hubPartId, corePartId });
+        }
+      }
+    }
+    if (targets.length === 0) return;
+    const initial: Record<string, AdvisoryMarkState> = {};
+    for (const t of targets) initial[t.hubPartId] = { kind: "loading" };
+    setAdvisory(initial);
+    await Promise.all(
+      targets.map(async (t) => {
+        // T-MG-MARK-DELTA-1: re-marking a part that already carries a
+        // completed advisory read is the EXPLICIT "mark again" — force a
+        // fresh job (MG's re-mark semantics); a first mark rides the
+        // content-hash cache law.
+        const reMark = advisory[t.hubPartId]?.kind === "done";
+        const req = await requestPartRegrade(t.corePartId, answerFor(t.hubPartId), token, fetch, reMark);
+        if (req.outcome !== "accepted") {
+          const message =
+            req.outcome === "rejected"
+              ? req.message
+              : req.outcome === "no_token"
+                ? "Sign in to use AI marking."
+                : req.outcome === "unconfigured"
+                  ? "AI marking is not configured on the server yet."
+                  : AI_MARK_UNAVAILABLE;
+          setAdvisory((prev) => ({ ...prev, [t.hubPartId]: { kind: "failed", message } }));
+          return;
+        }
+        const poll = await pollUntilTerminal({ markId: req.markId, token });
+        if (poll.status === "succeeded") {
+          setAdvisory((prev) => ({ ...prev, [t.hubPartId]: { kind: "done", snapshot: poll.snapshot } }));
+        } else if (poll.status === "failed") {
+          setAdvisory((prev) => ({
+            ...prev,
+            [t.hubPartId]: {
+              kind: "failed",
+              message: poll.snapshot?.error?.message ?? "The marking pipeline could not complete this mark.",
+            },
+          }));
+        } else if (poll.status === "lost") {
+          // the non-durable registry's honest restart path (ADR-043)
+          setAdvisory((prev) => ({ ...prev, [t.hubPartId]: { kind: "lost" } }));
+        } else {
+          // timeout | cancelled — retry: 0 (never a re-POST): the honest
+          // recovery is the learner's own re-mark
+          setAdvisory((prev) => ({ ...prev, [t.hubPartId]: { kind: "timeout" } }));
+        }
+      }),
+    );
+  };
 
   const structuredHubParts = question.parts.filter(
     (p) => p.questionType !== "multiple_choice",
@@ -1817,7 +2203,7 @@ function CoreMarkingFlow({
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <Sparkles className="size-3.5 text-primary" aria-hidden />
         <span className="text-[13px] font-medium">Submit for marking — SyllabAI core</span>
-        <Badge variant="outline" className="border-success/30 px-1 text-[10.5px] uppercase text-success">
+        <Badge variant="outline" className="border-success/30 px-1 text-[11px] uppercase text-success">
           live
         </Badge>
         <span className="text-[11px] text-muted-foreground">
@@ -1841,7 +2227,10 @@ function CoreMarkingFlow({
                 <Loader2 className="size-3.5 animate-spin" aria-hidden /> Submitting…
               </>
             ) : (
-              "Submit answers"
+              // T-QVIEW-ACTION-1 (the MG marks-weighted verb steal): the
+              // action carries the stake it fires for — MathsGenie's
+              // "1⚡ Grade answer" law. Verb-first, marks on the button.
+              `Submit · ${question.totalMarks} mark${question.totalMarks === 1 ? "" : "s"}`
             )}
           </Button>
           <span className="text-[11px] text-muted-foreground">
@@ -1849,6 +2238,151 @@ function CoreMarkingFlow({
               ? "then Smart Mark marks every part against the mark scheme"
               : "type an answer above first"}
           </span>
+        </div>
+      )}
+
+      {/* T-MG-PLAYER-MARK-1: the advisory draft mark — an instant AI read on
+          the typed drafts via the typed regrade channel; writes no attempt
+          (the ledger write lands on the paper plane; Smart Mark below stays
+          the authoritative attempt-plane mark). Draft phase only: once real
+          attempts exist, Smart Mark is the source of truth. */}
+      {phase === "draft" && (
+        <div className="mt-2 space-y-2">
+          <div className="flex flex-wrap items-center gap-3">
+            <Button
+              size="sm"
+              variant="outline"
+              disabled={!hasAnyText || advisoryRunning}
+              onClick={markDraftWithAi}
+            >
+              {advisoryRunning ? (
+                <>
+                  <Loader2 className="size-3.5 animate-spin" aria-hidden /> Marking draft…
+                </>
+              ) : (
+                <>
+                  <Sparkles className="size-3.5 text-primary" aria-hidden /> Mark my draft with AI
+                </>
+              )}
+            </Button>
+            <span className="text-[11px] text-muted-foreground">
+              advisory — writes no attempt; marks each typed part against its mark scheme
+            </span>
+          </div>
+          {Object.entries(advisory).map(([hubPartId, state]) => {
+            const hub = structuredHubParts.find((p) => p.id === hubPartId);
+            // T-QVIEW-AUDIT-BCD-1 batch C: the attested printed label when
+            // the corpus carries one; the honest POSITIONAL fallback
+            // ("answer box 2" — claims position, never print identity)
+            // replaces the "Part 2" order-number guess.
+            const label = hub
+              ? (partDisplayLabel(hub) ?? `Answer box ${hub.order + 1}`)
+              : "Your answer";
+            if (state.kind === "loading") {
+              return (
+                <div key={hubPartId} className="flex items-center gap-2 rounded-lg border bg-background p-2 text-[13px]">
+                  <Loader2 className="size-3.5 animate-spin" aria-hidden />
+                  <span>{label} — marking…</span>
+                </div>
+              );
+            }
+            if (state.kind !== "done") {
+              const copy =
+                state.kind === "failed"
+                  ? state.message
+                  : state.kind === "lost"
+                    ? "the marking job was lost (server restart) — run “Mark my draft with AI” again"
+                    : "still running past the wait cap — run “Mark my draft with AI” again to refresh";
+              return (
+                <div key={hubPartId} className="rounded-lg border bg-background p-2 text-[13px]">
+                  <span className="font-medium">{label}</span>{" "}
+                  <span className="text-muted-foreground">{copy}</span>
+                </div>
+              );
+            }
+            const awards = state.snapshot.awards ?? [];
+            const score = awards.reduce((a, x) => a + x.score, 0);
+            const max = awards.reduce((a, x) => a + x.maxScore, 0);
+            const verdict = state.snapshot.feedback
+              ? feedbackCopyModel(state.snapshot.feedback, score, max)
+              : null;
+            // T-MG-MARK-DELTA-1: the verdict's evidence citations + attempt
+            // class — additive renderings; the five-field copy law is
+            // untouched.
+            const citations = awards.filter((a) => a.workingRefLabel);
+            const attemptClass = awards.map((a) => a.attemptClass).find((c) => c) ?? null;
+            return (
+              <div key={hubPartId} className="rounded-lg border bg-background p-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-[13px] font-medium">{label}</span>
+                  <Badge
+                    variant="outline"
+                    className={cn(
+                      "text-[11px]",
+                      score > 0 ? "border-success/40 text-success" : "text-destructive",
+                    )}
+                  >
+                    {score}/{max}
+                  </Badge>
+                </div>
+                {attemptClass && (
+                  <p className="mt-1 text-[11px] text-muted-foreground">Attempt read as: {attemptClass}</p>
+                )}
+                {citations.length > 0 && (
+                  <ul className="mt-1 space-y-0.5 text-[11px] text-muted-foreground">
+                    {citations.map((a) => (
+                      <li key={`cite-${a.ordinal}-${a.code}`}>
+                        {a.code}: this mark came from your working at {a.workingRefLabel}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {state.snapshot.receipt?.cached && (
+                  <p className="mt-1 text-[11px] text-muted-foreground">
+                    served from your standing mark — identical content, no new run
+                  </p>
+                )}
+                {verdict && (
+                  <>
+                    {verdict.chatMessage && (
+                      <Markdown>{verdict.chatMessage}</Markdown>
+                    )}
+                    {verdict.scored.length > 0 && (
+                      <ul className="mt-1.5 list-disc space-y-0.5 pl-5 text-[13px]">
+                        {verdict.scored.map((p, i) => (
+                          <li key={i}>{p}</li>
+                        ))}
+                      </ul>
+                    )}
+                    {verdict.notScored.length > 0 && (
+                      <>
+                        <p className="mt-1.5 text-[13px] font-medium">Not scored</p>
+                        <ul className="list-disc space-y-0.5 pl-5 text-[13px]">
+                          {verdict.notScored.map((p, i) => (
+                            <li key={i}>{p}</li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                    {verdict.strategies && verdict.strategies.length > 0 && (
+                      <>
+                        <p className="mt-1.5 text-[13px] font-medium">How to improve</p>
+                        <ul className="list-disc space-y-0.5 pl-5 text-[13px]">
+                          {verdict.strategies.map((p, i) => (
+                            <li key={i}>{p}</li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                    {/* the transcription (thoughtProcess) rides the paper
+                        panel's collapsed section — the five-field FULL copy
+                        law lives there; the player card keeps the four
+                        learner-facing fields */}
+                  </>
+                )}
+              </div>
+            );
+          })}
         </div>
       )}
 
@@ -1923,7 +2457,10 @@ function CoreMarkingFlow({
                 <div key={p.partId} className="rounded-lg border bg-background p-3">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="text-[13px] font-medium">
-                      Part {p.label}
+                      {/* T-QVIEW-AUDIT-BCD-1 batch C: the hub part's attested
+                          printed label ("(a)") leads; core's own label stays
+                          the fallback — no second numbering language */}
+                      {(hub && partDisplayLabel(hub)) || `Part ${p.label}`}
                       {hub && question.parts.filter((x) => x.questionType !== "multiple_choice").length > 1
                         ? ` · ${hub.marks} mark${hub.marks === 1 ? "" : "s"}`
                         : ""}
@@ -1943,7 +2480,7 @@ function CoreMarkingFlow({
                       </Badge>
                     )}
                     {p.modelId && (
-                      <span className="text-[10.5px] text-muted-foreground">via {p.modelId}</span>
+                      <span className="text-[11px] text-muted-foreground">via {p.modelId}</span>
                     )}
                     <div className="ml-auto flex items-center gap-1.5">
                       <Button
@@ -2089,34 +2626,107 @@ function MarkSchemeDialog({
   onClose: () => void;
 }) {
   const [expanded, setExpanded] = useState(false);
+  // T-QVIEW-ACTION-1 (the MG blur-teaser steal): the completed answer waits
+  // behind ONE deliberate reveal until the learner has done the honest
+  // pass. Two keys unlock it per part: a saved self-score for this
+  // question (the store of record — MCQs auto-record, so MCQ answers
+  // never blur), or the reveal button below. The MARKING POINTS stay
+  // visible either way — the dialog's own law ("compare it with the
+  // marking points — award yourself the marks you clearly earned") is
+  // untouched; only the model answer is gated.
+  const [revealed, setRevealed] = useState<ReadonlySet<string>>(() => new Set());
   const progress = useCourseProgress(course);
+  // each question opens fresh: the reveal set and the long-restate expand
+  // reset on question change (expanded previously stuck across questions —
+  // a pre-existing quirk this reset closes). Render-phase state adjustment
+  // — the React-documented reset pattern, no effect needed.
+  const qid = question?.id ?? null;
+  const [seenQid, setSeenQid] = useState<string | null>(null);
+  if (qid !== seenQid) {
+    setSeenQid(qid);
+    setRevealed(new Set());
+    setExpanded(false);
+  }
+  const selfScored = question ? progress.selfScores[question.id] != null : false;
   const restated = question ? firstLine(question) : "";
   const longRestate = restated.length > 220;
 
   return (
-    <Dialog open={!!question} onOpenChange={(o) => !o && onClose()}>
-      {/* sm:max-w-4xl: keep the base's mobile cap max-w-[calc(100%-2rem)] —
-          an unprefixed max-w override wins the tailwind-merge conflict and
-          renders full-bleed on phones (s133) */}
-      <DialogContent aria-describedby={undefined} className="h-[92dvh] sm:max-w-4xl overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="flex flex-wrap items-center gap-2 text-base">
+    <Sheet open={!!question} onOpenChange={(o) => !o && onClose()}>
+      {/* T-QVIEW-ACTION-1 (the MG non-occluding drawer steal): the scheme
+          reads as a RIGHT DRAWER — the question card stays visible beside
+          it instead of a centered modal covering the page. Full-bleed on
+          phones (the drawer idiom), 36rem at sm, 42rem at lg. The Sheet's
+          built-in close sits at the same top-right spot the dialog's
+          bespoke button occupied; its sr-only label is the generic
+          "Close" (the title announces the surface). */}
+      <SheetContent
+        side="right"
+        aria-describedby={undefined}
+        overlayClassName="bg-black/10"
+        className="w-full gap-0 sm:max-w-xl lg:max-w-[42rem]"
+      >
+        <SheetHeader className="border-b pr-12">
+          <SheetTitle className="flex flex-wrap items-center gap-2 text-base">
             <Badge variant="outline" className="rounded-full px-3 py-1 text-xs font-medium">
               {subtopicTitle ?? topicName}
             </Badge>
             <span className="text-sm font-normal text-muted-foreground">Mark scheme</span>
-          </DialogTitle>
-        </DialogHeader>
+          </SheetTitle>
+        </SheetHeader>
         {question && (
-          <div className="space-y-4">
+          <div className="min-h-0 flex-1 overflow-y-auto p-4 sm:p-6">
+            {question.parts.some((p) => partDisplayLabel(p)) && (
+              /* the drawer's part jump-row: the attested printed labels
+                 (same law as the section chips below — never an order
+                 number), scroll the drawer to the part */
+              <nav
+                aria-label="Jump to a part"
+                className="sticky top-0 z-10 -mx-4 -mt-4 mb-3 flex flex-wrap gap-1.5 border-b bg-background px-4 pb-2.5 pt-4 sm:-mx-6 sm:px-6"
+              >
+                {question.parts.map((p) => {
+                  const chip = partDisplayLabel(p) ?? (question.parts.length === 1 ? "Q" : null);
+                  return chip ? (
+                    <button
+                      key={p.id}
+                      type="button"
+                      className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold transition-colors [@media(hover:hover)]:hover:bg-primary/10"
+                      onClick={() =>
+                        document.getElementById(`ms-part-${p.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" })
+                      }
+                    >
+                      {chip}
+                    </button>
+                  ) : null;
+                })}
+              </nav>
+            )}
+            <div className="space-y-4">
             {question.parts.map((p) => {
               const typed = progress.typedAnswers[p.id]?.text ?? null;
+              // T-QVIEW-AUDIT-BCD-1 batch C (part-label unification): the
+              // modal's section chips speak the SAME printed-label law as
+              // the cards — the attested "(a)"-form label from
+              // lib/part-label, never an order-number guess (the card rows
+              // render "(a)"; the modal rendering "1" renumbered the
+              // question against its own card and against a partial paper's
+              // printed numbers). Fallbacks are honest: single-part
+              // questions with no attested label keep the whole-question
+              // "Q"; multi-part unlabeled parts render no chip at all (the
+              // marks stay right-aligned) — exactly the card's null law.
+              const label = partDisplayLabel(p) ?? (question.parts.length === 1 ? "Q" : null);
               return (
-                <section key={p.id} className="space-y-2 rounded-lg border bg-card p-4">
+                <section
+                  key={p.id}
+                  id={`ms-part-${p.id}`}
+                  className="scroll-mt-20 space-y-2 rounded-lg border bg-card p-4"
+                >
                   <div className="flex items-center gap-2">
-                    <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">
-                      {question.parts.length > 1 ? `${p.order + 1}` : "Q"}
-                    </span>
+                    {label && (
+                      <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">
+                        {label}
+                      </span>
+                    )}
                     {/* SME (figure 16): part marks right-aligned in the scheme row */}
                     <span className="ml-auto text-[13px] text-muted-foreground">
                       {p.marks} mark{p.marks === 1 ? "" : "s"}
@@ -2134,7 +2744,9 @@ function MarkSchemeDialog({
                     </Button>
                   )}
                   {typed && (
-                    <div className="rounded-md border border-dashed border-primary/40 bg-primary/5 p-3">
+                    // t-ui-polish run-007: the typed-answer shell speaks the
+                    // house active voice (border-primary/60), not the legacy /40.
+                    <div className="rounded-md border border-dashed border-primary/60 bg-primary/5 p-3">
                       <p className="mb-1 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-primary">
                         <PenLine className="size-3" aria-hidden /> Your typed answer
                       </p>
@@ -2149,10 +2761,36 @@ function MarkSchemeDialog({
                       <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                         The completed answer should show:
                       </p>
-                      {hasMarkCodes(p.solutionMd) ? (
-                        <MarkScheme md={p.solutionMd} />
+                      {selfScored || revealed.has(p.id) ? (
+                        hasMarkCodes(p.solutionMd) ? (
+                          <MarkScheme md={p.solutionMd} />
+                        ) : (
+                          <Markdown>{transformMarkTags(p.solutionMd)}</Markdown>
+                        )
                       ) : (
-                        <Markdown>{transformMarkTags(p.solutionMd)}</Markdown>
+                        <>
+                          {/* the blurred teaser: clipped, unselectable,
+                              uninteractive; the gradient idiom is the same
+                              one the long-restate fade already uses */}
+                          <div aria-hidden="true" className="relative max-h-36 select-none overflow-hidden">
+                            <div className="pointer-events-none blur-[5px]">
+                              {hasMarkCodes(p.solutionMd) ? (
+                                <MarkScheme md={p.solutionMd} />
+                              ) : (
+                                <Markdown>{transformMarkTags(p.solutionMd)}</Markdown>
+                              )}
+                            </div>
+                            <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-card to-transparent" aria-hidden />
+                          </div>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="mt-2 h-9 text-xs"
+                            onClick={() => setRevealed((prev) => new Set(prev).add(p.id))}
+                          >
+                            Reveal the completed answer
+                          </Button>
+                        </>
                       )}
                     </div>
                   )}
@@ -2166,7 +2804,7 @@ function MarkSchemeDialog({
                         {p.markPoints.map((mp) => (
                           <li key={mp.id} className="flex items-start gap-2 text-[13px] leading-relaxed">
                             <span
-                              className="mt-0.5 shrink-0 rounded bg-muted px-1.5 py-0.5 text-[10.5px] font-semibold tabular-nums text-muted-foreground"
+                              className="mt-0.5 shrink-0 rounded bg-muted px-1.5 py-0.5 text-[11px] font-semibold tabular-nums text-muted-foreground"
                               title={`${mp.marks} mark${mp.marks === 1 ? "" : "s"}`}
                             >
                               {mp.id}
@@ -2184,20 +2822,14 @@ function MarkSchemeDialog({
               );
             })}
             <p className="text-xs text-muted-foreground">
-              Marking points are AND-joined in the corpus (all required for the mark). Self-mark
+              Every marking point listed is required for the mark. Self-mark
               honestly — your score stays in this browser only.
             </p>
+            </div>
           </div>
         )}
-        <button
-          className="absolute top-4 right-4 -m-2.5 flex size-9 items-center justify-center rounded-md opacity-70 transition-opacity hover:bg-accent hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          onClick={onClose}
-          aria-label="Close mark scheme"
-        >
-          <X className="size-4" aria-hidden />
-        </button>
-      </DialogContent>
-    </Dialog>
+      </SheetContent>
+    </Sheet>
   );
 }
 

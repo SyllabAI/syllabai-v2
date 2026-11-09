@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { boardOf, loadHubCourse } from "@/lib/courses";
 import { buildPracticePapers, getPaper, isPaperId, paperEstTime } from "@/lib/practice-papers";
 import { Breadcrumbs, ExamCodePill } from "@/components/hub/chrome";
+import { PageHeader } from "@/components/layout/page-header";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import { Badge } from "@/components/ui/badge";
 import { QuestionPlayer } from "@/app/courses/[course]/exam-questions/[topicSlug]/question-player";
@@ -46,27 +47,26 @@ export default async function PracticePaperPage({
           ]}
         />
 
-        <header className="space-y-3">
-          <div className="flex flex-wrap items-start justify-between gap-3">
-            <h1 className="max-w-2xl text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
+        {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
+            (was sm:text-3xl); the provenance badge rides as a child. */}
+        <PageHeader
+          title={
+            <>
               {paper.title}{" "}
               <span className="text-muted-foreground">
                 ({boardOf(meta)} {meta.level} {meta.subject})
               </span>
-            </h1>
-            <ExamCodePill code={meta.code} href={`/courses/${meta.slug}/specification`} />
-          </div>
-          <p className="text-sm text-muted-foreground">
-            {paper.items.length} questions · {paper.totalMarks} marks ·{" "}
-            {paperEstTime(paper.totalMarks)} · spans {paper.coveredTopics} of {paper.totalTopics}{" "}
-            topics
-          </p>
+            </>
+          }
+          description={`${paper.items.length} questions · ${paper.totalMarks} marks · ${paperEstTime(paper.totalMarks)} · spans ${paper.coveredTopics} of ${paper.totalTopics} topics`}
+          actions={<ExamCodePill code={meta.code} href={`/courses/${meta.slug}/specification`} />}
+        >
           {/* long sentence, not a chip — the Badge base's whitespace-nowrap
               blew the row past 375px (s133); wrap it like text instead */}
           <Badge variant="secondary" className="max-w-full whitespace-normal text-left font-medium">
             Assembled from the topic question banks — not an official {boardOf(meta)} paper
           </Badge>
-        </header>
+        </PageHeader>
 
         <QuestionPlayer
           course={meta.slug}

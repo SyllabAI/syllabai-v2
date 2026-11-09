@@ -4,8 +4,10 @@
  * Dashboard — the student's SME-style home (Task 21 + 21-b fidelity pass,
  * matched against the real savemyexams.com /members/ reference page):
  *
- *   1. Greeting header ("Hi {name} 👋" — server-rendered from the routing
- *        session; B-2 made /dashboard an account surface)
+ *   1. Greeting header ("Welcome back 👋" — server-rendered from the
+ *        routing session; B-2 made /dashboard an account surface; the
+ *        neutral form — the session carries an account handle, not a
+ *        display name)
  *   2. My courses — one card per added subject:
  *        eyebrow "Edexcel · {level}" · subject name · Last viewed badge ·
  *        "Continue revising" · per-resource rows with corpus counts AND
@@ -51,25 +53,38 @@ import {
   CloudCheck,
   FileQuestion,
   GraduationCap,
-  Info,
   Plus,
   RotateCcw,
   SquareStack,
   X,
+  Zap,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ToastAction } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+// dashboard-redesign kit (T-DASH-SKIN-2): the page wears the course pages'
+// hero-band + band-section spine — the opening band and every section
+// header come from the kit, so the dashboard and the course page can never
+// grow apart again.
+import { PageHero } from "@/components/dashboard/kit/page-hero";
+import { BandSection } from "@/components/dashboard/kit/band-section";
+import { StatChip } from "@/components/dashboard/kit/stat-chip";
 import { useMyCoursesSync, useMySubjects } from "@/lib/my-subjects";
+import { DashboardSyncStatus } from "./dashboard-sync-status";
 import { useToast } from "@/hooks/use-toast";
 import { useIdentity } from "@/lib/identity";
 import { useLastOpened, resourceLabel } from "@/lib/last-opened";
 import { useCourseProgress } from "@/lib/progress";
 // UX audit 2026-10-02 #17: the dashboard's sub-1%-decimal formatting is now
 // the shared contract (progress-ring and strengths-panel had rounded to 0%)
-import { formatPercent } from "@/lib/format";
+import { formatPercent, percentLabel } from "@/lib/format";
+// Tier-3 follow-up 5: the trailing tile is the grid's terminator — its
+// span/shape adapt to the row it lands in (the parity law + its tests live
+// in lib/subject-grid.ts).
+import { addCourseTileClasses } from "@/lib/subject-grid";
+import { cn } from "@/lib/utils";
 import { api, getToken } from "@/lib/api";
 import { railTodayCopy, useStudyPlan } from "@/lib/study-plan-client";
 import { boardOf, hasExamSeriesCalendar } from "@/lib/board";
@@ -207,11 +222,11 @@ function ResourceRow({
         {value}
         {percent !== undefined && (
           <span
-            className={`w-9 shrink-0 text-right text-xs font-semibold tabular-nums ${
+            className={`w-20 shrink-0 whitespace-nowrap text-right text-xs font-semibold tabular-nums ${
               percent > 0 ? "text-foreground" : "text-muted-foreground"
             }`}
           >
-            {formatPercent(percent)}
+            {percentLabel(percent)}
           </span>
         )}
         <ChevronRight
@@ -282,7 +297,7 @@ function SubjectCard({
     : null;
 
   return (
-    <Card className="relative h-full border-primary/25 transition-colors hover:border-primary/60">
+    <Card className="relative h-full border-primary/25 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm">
       <Button
         variant="ghost"
         size="icon"
@@ -330,6 +345,7 @@ function SubjectCard({
               level={meta.level}
               board={boardOf(meta)}
               target={examTarget}
+              label={`${meta.subject} (${meta.code || "code pending"})`}
               compact
             />
           )}
@@ -343,22 +359,15 @@ function SubjectCard({
           <ChevronRight className="size-3.5" aria-hidden />
         </Link>
 
-        {/* per-resource rows: corpus counts + live progress % (SME parity).
+        {/* per-resource rows: corpus counts + live progress (SME parity).
             D-3: ONE number, one definition — these rows are this device's
-            activity against the course's corpus totals, said once on the
-            line above (hover the info icon for the fine print); the
+            activity against the course's corpus totals; the rule is stated
+            ONCE in the dashboard header sentence (UX review 2026-11-04:
+            the per-card "Progress on this device" label + tooltip repeated
+            the same provenance line five times down one page). The
             account-level trail lives at the My subjects section level. */}
         {counts && percents ? (
           <>
-            <p className="mt-1 flex items-center gap-1 border-t pt-2 text-[11px] font-medium text-muted-foreground">
-              Progress on this device
-              <span
-                className="cursor-help"
-                title="Notes read, questions attempted and flashcards rated on this device. Your account trail — the line under My subjects — follows you across devices."
-              >
-                <Info className="size-3" aria-hidden />
-              </span>
-            </p>
             <ul className="space-y-0.5 pt-0.5">
             <ResourceRow
               href={`${base}/revision-notes`}
@@ -412,11 +421,8 @@ function SubjectCard({
 
 export function DashboardClient({
   courses,
-  name,
 }: {
   courses: CourseMeta[];
-  /** the routing session's display name — server-rendered (B-2) */
-  name: string;
 }) {
   useMyCoursesSync(); // T-TEACH-001 — mirror the roster to core while signed in (write-through + reconcile)
   // T-TIER1: the last-opened + mock-results mirrors mount in the app shell
@@ -427,6 +433,14 @@ export function DashboardClient({
   const studyPlan = useStudyPlan(); // the Study plan rail (spec §5.3) — one server projection
   const signedIn = identity !== null; // the identity session of record (token + user)
   const [addOpen, setAddOpen] = useState(false);
+  // T-DASH-SIDEBAR-001: the sidebar's footer "Add subject" opens THIS
+  // overlay (a window event, not prop drilling — the shell is chrome, not
+  // an owner of the roster state).
+  useEffect(() => {
+    const open = () => setAddOpen(true);
+    window.addEventListener("syllabai:dashboard-add-course", open);
+    return () => window.removeEventListener("syllabai:dashboard-add-course", open);
+  }, []);
   const [stats, setStats] = useState<Record<string, CourseStat>>({});
 
   const bySlug = useMemo(() => {
@@ -588,38 +602,52 @@ export function DashboardClient({
 
   return (
     <div className="space-y-8">
-      {/* greeting (SME: "Hi, {name} 👋") — the name rides the routing
-          session and renders on the server (B-2): no more "Hi there" frame
-          before localStorage hydrates */}
-      <header className="space-y-1.5">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Hi {name} 👋
-        </h1>
-        <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Welcome to your SyllabAI dashboard — your launchpad for stress-free, spec-anchored
-          study. Add the courses you are taking, then revise each one from notes, exam questions
-          and flashcards mapped to its syllabus.{" "}
-          {/* HUB-DASH-CORE P0-2 (operator trace 1a0ec29c8c8cfb71): the progress
-              sentence tells the account truth unconditionally — B-2 removed the
-              signed-out branch along with the demo itself, so the old
-              "saved on this device" posture no longer has an audience here. */}
-          Your measured progress follows your account across devices — self-marked answers and
-          reading history stay on this device.
-        </p>
-      </header>
+      {/* T-SYNC-OBS-001 — the account-sync health notifier (pure chrome,
+          renders nothing; toasts sync failures with a manual Retry). */}
+      <DashboardSyncStatus />
+      {/* greeting — the neutral form (UX review 2026-11-04): the routing
+          session carries only the account handle (initials + a code, e.g.
+          "HNA 269a"), not a display name, and "Hi HNA 269a" read as a
+          login chip where a greeting belongs. "Welcome back" is honest
+          for every session; the header's identity chip already shows the
+          handle. Renders on the server (B-2): no "Hi there" frame.
+          T-DASH-SKIN-2: the plain header becomes the course pages' hero
+          band (PageHero), and the roster count rides it as a StatChip —
+          the hero's one honest number until the account trail loads. */}
+      <PageHero
+        title="Welcome back 👋"
+        description="Your launchpad for spec-anchored revision — notes, exam questions and flashcards mapped to each of your courses. Your progress syncs to your account across devices; self-marked answers and reading history stay on this device."
+        stats={
+          <StatChip
+            icon={GraduationCap}
+            label={mySubjects.length === 1 ? "subject" : "subjects"}
+            value={mySubjects.length}
+          />
+        }
+      />
 
       {/* ---- Act now (D-1): the dashboard's first row answers "what should
           I do now?" — the retention loop's headline (HUB-DASH-CORE P1-5:
           account queue when the resolved course's core path is live, the
           device's Ebbinghaus derivation otherwise) beside the server-composed
           set-work facts (T-C78 agenda). One row, one card each; either may
-          render nothing when it has no news. ---- */}
-      <section aria-label="Act now">
+          render nothing when it has no news. T-DASH-SKIN-2: the band gets
+          its visible header (BandSection) instead of a bare aria-label. ---- */}
+      <BandSection icon={Zap} title="Act now">
         <div className="grid gap-3 lg:grid-cols-2">
           <ReviewDueStrip courses={mySubjects} />
           <SetWorkCard />
         </div>
-      </section>
+      </BandSection>
+
+      {/* t-ui-polish run-001 — the MG/RD dashboard split: the working surfaces
+          (resume, subjects) own the main column; the advice layer (progress
+          attribution, next best actions, study plan) reads from a narrower
+          rail at xl. Below xl the single-column stack survives unchanged —
+          main's D-1 order (act now → jump back in → subjects → advice) is
+          exactly the below-xl order, so the split only re-plumbs xl+. */}
+      <div className="xl:grid xl:grid-cols-[minmax(0,1fr)_340px] xl:items-start xl:gap-8">
+        <div className="space-y-8">
 
       {/* ---- Jump back in (D-1: the returning student's highest-frequency
           action leaves the page bottom) — ONE surface (SME resume card +
@@ -627,13 +655,9 @@ export function DashboardClient({
           fills the gap. The source badge explains why the card can differ
           between the phone and the school lab instead of reading as a bug. ---- */}
       {resume && (
-        <section aria-label="Jump back in" className="space-y-2">
-          <h2 className="flex items-center gap-2 text-lg font-semibold">
-            <RotateCcw className="size-4 text-primary" aria-hidden />
-            Jump back in
-          </h2>
+        <BandSection icon={RotateCcw} title="Jump back in">
           <Link href={resume.href} className="group block focus-visible:outline-none">
-            <Card className="transition-colors group-hover:border-primary/50">
+            <Card className="transition-colors group-hover:border-primary/60">
               <CardContent className="flex flex-wrap items-center gap-x-3 gap-y-1 p-4">
                 <Badge variant="secondary" className="font-medium">
                   {resourceLabel(resume.resource)}
@@ -660,15 +684,15 @@ export function DashboardClient({
               </CardContent>
             </Card>
           </Link>
-        </section>
+        </BandSection>
       )}
 
       {/* ---- My courses ---- */}
-      <section aria-label="My subjects" className="space-y-3">
-        <div className="flex items-center justify-between gap-3">
-          <h2 className="text-lg font-semibold">
-            My subjects <span className="text-sm font-normal text-muted-foreground">· {mySubjects.length}</span>
-          </h2>
+      <BandSection
+        icon={GraduationCap}
+        title="My subjects"
+        count={`· ${mySubjects.length}`}
+        action={
           <Button
             size="sm"
             variant="outline"
@@ -678,8 +702,8 @@ export function DashboardClient({
             <Plus className="size-3.5" aria-hidden />
             Add course
           </Button>
-        </div>
-
+        }
+      >
         {/* D-3/D-4: the account trail is ONE section-level line — the
             per-learner coverage the course-stats contract returns — instead
             of a second, disagreeing number duplicated onto one pilot card.
@@ -699,7 +723,7 @@ export function DashboardClient({
               {plural(accountStats.attempts, "attempt")} ·{" "}
               {plural(accountStats.distinctQuestions, "question")} ·{" "}
               {plural(accountStats.notesViewed, "note")} ·{" "}
-              {plural(accountStats.flashcardsRated, "card")} on your account
+              {plural(accountStats.flashcardsRated, "card")}
             </span>
           </p>
         )}
@@ -732,7 +756,7 @@ export function DashboardClient({
             </CardContent>
           </Card>
         ) : (
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 2xl:grid-cols-3">
             {mySubjects.map((c) => (
               <SubjectCard
                 key={c.slug}
@@ -746,11 +770,17 @@ export function DashboardClient({
               />
             ))}
             {/* SME's trailing slot cell: "Got another course?" — opens the
-                cascading board → level → subject overlay */}
+                cascading board → level → subject overlay. The terminator
+                law (lib/subject-grid.ts): the tile completes its last row
+                at both bands — spanning rows render it as a slim ghost
+                bar, pairing rows keep the 10rem cell. */}
             <button
               type="button"
               onClick={() => setAddOpen(true)}
-              className="flex min-h-[10rem] flex-col items-start justify-center gap-2 rounded-xl border border-dashed border-muted-foreground/40 p-4 text-left transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className={cn(
+                "flex flex-col items-start justify-center gap-2 rounded-2xl border border-dashed border-muted-foreground/40 p-4 text-left transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                addCourseTileClasses(mySubjects.length),
+              )}
             >
               <p className="text-sm font-semibold">Got another course?</p>
               <p className="text-xs text-muted-foreground">
@@ -763,14 +793,22 @@ export function DashboardClient({
             </button>
           </div>
         )}
-      </section>
+      </BandSection>
+
+        </div>
+
+        {/* t-ui-polish run-001 — the advice rail: the three read-model cards
+            that render nothing signed out. A complementary landmark so the
+            rail is skippable alongside the main landmark. */}
+        <aside aria-label="Advice and planning" className="space-y-8">
 
       {/* ---- DC-7 progress attribution (measured facts — the SAME projection
           the trees' rings read; never advice, never a local counter; renders
-          nothing signed out) ---- */}
-      <section aria-label="Today's progress">
-        <ProgressAttributionCard courses={mySubjects} />
-      </section>
+          nothing signed out). The labelled section + h2 live inside the
+          component and mount only when at least one course resolved — the
+          old bare wrapper shipped an empty labelled landmark (UX review
+          2026-11-04). ---- */}
+      <ProgressAttributionCard courses={mySubjects} />
 
       {/* ---- Next best actions (recommendation output — advice, not facts) ---- */}
       <section aria-label="Next best actions">
@@ -782,11 +820,7 @@ export function DashboardClient({
           completed 1 of 4 tasks today" with a progress bar. The counters
           ride the same server payload as the plan page — one projection,
           never a local counter; docs/STUDY-PLAN-BUILDER-PLAN.md) ---- */}
-      <section aria-label="Study plan" className="space-y-2">
-        <h2 className="flex items-center gap-2 text-lg font-semibold">
-          <CalendarCheck className="size-4 text-primary" aria-hidden />
-          Study plan
-        </h2>
+      <BandSection icon={CalendarCheck} title="Study plan">
         {signedIn && studyPlan ? (
           <Card>
             <CardContent className="space-y-2 p-4">
@@ -817,7 +851,10 @@ export function DashboardClient({
             </CardContent>
           </Card>
         )}
-      </section>
+      </BandSection>
+
+        </aside>
+      </div>
 
       {/* ---- Add course — cascading board → level → subject overlay ---- */}
       <AddCourseOverlay

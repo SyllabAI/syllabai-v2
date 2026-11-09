@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Class-bearing modules outside app/components (the grid terminator law in
+   src/lib/subject-grid.ts was the first): v4 auto-detection missed lib/, so
+   the helpers' breakpoint variants never compiled. Explicit beats implicit
+   now that lib emits utility classes by design. */
+@source "../lib/**/*.{ts,tsx}";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -157,7 +163,10 @@
   --accent-primary: color-mix(in srgb, var(--primary) 24%, var(--background));
   --accent-primary-foreground: color-mix(in srgb, var(--primary) 50%, white);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
+  /* Tier-3 theme audit (2026-11-08): white/10 over the dark card composited
+     to 1.32:1 — card hairlines were effectively invisible. 15% (1.58:1)
+     matches --input below, so every dark hairline reads the same strength. */
+  --border: oklch(1 0 0 / 15%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
@@ -284,7 +293,18 @@
   --ink: #ecedea;  --ink-soft: #a9acb1;  --ink-faint: #74777d;  --ink-faintest: #63666c;
   --line: #2e3036;  --line-soft: #26282d;  --line-strong: #ecedea;
 
-  --primary-qg: #3d8e67;  --primary-qg-hover: #479e74;  --on-primary-qg: #ecf7f0;
+  --primary-qg: #3d8e67;  --primary-qg-hover: #479e74;
+  /* Tier-3 theme audit (2026-11-08): the inherited near-white ink measured
+     3.63:1 on the lightened fern — the one UNdocumented fill FAIL in the
+     8-cell matrix. The ink flips dark, the house dark idiom (SME dark runs
+     dark ink on its lightened fill at 7.4:1; this theme's own success-ink
+     already does it on fern chips): #04110b clears AA on the solid fill
+     (4.83), the hover token (5.88) and the /70 gradient end (3.9 — icons
+     only, aria-hidden avatars). The dark hover is pinned to
+     --primary-qg-hover in the authored layer below: bg-primary/90
+     composites DARKER over dark surfaces and even #000 fails there
+     (4.30), so the alpha hover can't carry this ink. */
+  --on-primary-qg: #04110b;
   --danger-qg: #df7c63;
 
   color-scheme: dark;
@@ -352,6 +372,22 @@
 [data-theme="quiet-green"] :is(.shadow-2xs, .shadow-xs, .shadow-sm, .shadow, .shadow-md, .shadow-lg, .shadow-xl) {
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
+}
+
+/* --- primary hover: Tier-3 theme audit (2026-11-08), dark mode only.
+       The component's hover:bg-primary/90 composites the fern 90% over
+       whatever dark surface it sits on — DARKER than the fill itself — and
+       no ink carries that composite at AA (even #000 measures 4.30 on the
+       worst one, hover:bg-primary/90 over the page bg). Pin the hover to
+       --primary-qg-hover, which lightens toward the viewer (the CS/plum
+       authored-hover idiom): the dark ink holds 5.88 there and the token
+       finally gets its consumer. Light mode keeps the component default —
+       its /90 composite passes with white ink (~4.9) and is out of scope.
+       Broad .bg-primary selector: it only fires on elements that hover, so
+       static fills are untouched (also covers the plain <button> on
+       app/error.tsx, which carries no data-slot). --- */
+[data-theme="quiet-green"].dark .bg-primary:hover {
+  background: var(--primary-qg-hover);
 }
 
 /* --- tabs: the signature underline style (fern spine) --- */
@@ -451,6 +487,8 @@
      arbitrary or pill radii)
    - known spec exception (§13 option 1, documented): white-on-cherry
      fills ≈3.6:1 — carried by the 800-weight uppercase label style
+     (buttons via the authored signature below; badges pinned onto the
+     same voice — Tier-3 theme audit 2026-11-08)
    ==================================================================== */
 [data-theme="candy-shop"] {
   /* brand constants — identical in both themes */
@@ -588,6 +626,17 @@
   border-radius: 14px;
 }
 [data-theme="candy-shop"] [data-slot="badge"] { border-radius: 999px; }
+
+/* --- Tier-3 theme audit (2026-11-08): the documented cherry exception is
+       mitigated on buttons by the 800-weight uppercase signature, but the
+       default badge variant renders the SAME white-on-cherry pair at 12px
+       with no label voice. Pin the identical mitigation onto
+       primary-filled badges so every cherry label surface carries it. --- */
+[data-theme="candy-shop"] [data-slot="badge"].bg-primary {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
 
 /* --- audit F4: floating slots ride the exact rungs. Menus/tooltips/
        alerts = radius-sm (14); sheets = radius-lg (40). The shipped
@@ -1483,4 +1532,60 @@ math-field.answer-mathfield:focus {
   font-weight: 500;
   font-style: normal;
   font-display: swap;
+}
+
+/*
+ * T-TEACHGENIE-004 — Teach SillyAI joins the house design system (operator
+ * order 2026-11-05: "the frontend flow of Teach me/SillyAI is not like the
+ * other pages. Design is not consistent"). The T-TEACHGENIE-001 `.tg-scope`
+ * MathsGenie token override (light + dark), the `.tg-title` Inter re-face
+ * and the `.tg-bubble-user` purple bubble are RETIRED — the lane now rides
+ * the hub's own token sheet (SME primary, theme-aware dark mode, house
+ * radius) exactly like the seventeen sibling course pages; the learner-
+ * visible flow (landing → picker → session → review) and every engine law
+ * are unchanged. What survives here is persona, not palette: the typing
+ * dots.
+ */
+
+/* SillyAI's typing dots (landing hero, thinking state, review pending). */
+@keyframes tg-dot-bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40% { transform: translateY(-3px); opacity: 1; }
+}
+.tg-dot {
+  animation: tg-dot-bounce 1.2s infinite ease-in-out;
+}
+.tg-dot:nth-child(2) { animation-delay: 0.15s; }
+.tg-dot:nth-child(3) { animation-delay: 0.3s; }
+@media (prefers-reduced-motion: reduce) {
+  .tg-dot { animation: none; opacity: 0.4; }
+}
+
+/*
+ * T-HUB-COURSES-UI-1 run-002 — the /courses directory redesign (stage 2 of
+ * the approved plan): each course card renders its subject's bespoke glyph
+ * (components/icons/subject-glyph.tsx) on a tile tinted with the
+ * subject-identity colour pair (lib/subject-identity.ts — the approved
+ * mockup's values, carried since run-001 as the subject-brand constants).
+ *
+ * The pair reaches this block as inline custom props (--subj-bg/--subj-fg)
+ * and is consumed through the run-004b colour-derivation template, so all
+ * FOUR themes (sme / quiet-green / candy-shop / chat-app-plum) and both
+ * modes re-skin it for free (#500 — no per-theme rules anywhere):
+ *   - light: the mockup's own pastel wash + saturated ink, over a hairline
+ *     mixed from the same hue (a decorative aria-hidden glyph — the text
+ *     contrast law does not bind a glyph);
+ *   - dark: a deep tinted fill mixed over the THEME'S OWN card surface +
+ *     a lightened ink — the --accent-primary dark law exactly, so the tile
+ *     sits inside its card in quiet-green, candy-shop and plum too.
+ */
+.subject-tile {
+  background-color: var(--subj-bg);
+  color: var(--subj-fg);
+  border-color: color-mix(in srgb, var(--subj-fg) 18%, transparent);
+}
+.dark .subject-tile {
+  background-color: color-mix(in srgb, var(--subj-fg) 16%, var(--card));
+  color: color-mix(in srgb, var(--subj-fg) 60%, white);
+  border-color: color-mix(in srgb, var(--subj-fg) 28%, transparent);
 }

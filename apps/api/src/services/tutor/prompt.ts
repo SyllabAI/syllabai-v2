@@ -21,10 +21,10 @@ import type { MarkContext } from "./mark-context";
 // ── refusal texts (KaRagService.java :48-83, byte-verbatim) ─────────────────
 
 export const TUTOR_REFUSAL = `I can't answer that from the validated course material yet. There is no
-matching specification topic or source document for this question, so
-answering would mean guessing — which SyllabAI never does. Try naming the
-topic (e.g. "moles", "bonding", "equilibria") or ask your teacher to
-ingest the relevant material.`;
+matching specification topic or source document for this question here,
+so answering would mean guessing — which SyllabAI never does. Try naming
+the topic (e.g. "moles", "bonding", "equilibria"), or open the tutor from
+inside your course so it searches that course's material.`;
 
 /** The %s echo makes the refusal verifiable — the answer never cites
  *  wrong-paper chunks (the fail-open guard, 09-27 adjudication direction (a)). */
@@ -33,8 +33,8 @@ export function paperIdentityRefusal(identityLabel: string): string {
 find ${identityLabel} in the validated corpus — the paper or question may not be
 ingested yet, or it may still be awaiting validation. Answering would
 mean guessing, which SyllabAI never does. Try naming the topic (e.g.
-"moles", "bonding", "equilibria") or ask your teacher to ingest the
-relevant material.`;
+"moles", "bonding", "equilibria"), or check the paper's ingest status in
+the course hub.`;
 }
 
 /** V53 (ADR-030) per-course scope refusal — no cross-corpus fallback ever. */
@@ -43,8 +43,9 @@ export function courseScopeRefusal(courseRef: string): string {
 is scoped to the course "${courseRef}", and I can't find a validated, serving
 corpus for it — the course may not be available for tutoring yet, or
 it may still be awaiting validation. SyllabAI never answers across
-courses, so I won't borrow another course's material. Try asking your
-teacher to check the course's tutoring availability.`;
+courses, so I won't borrow another course's material. Try opening the
+tutor from a course that has one — it answers only from that course's
+own material.`;
 }
 
 // ── prompt identity (:23-39, :530-536) ──────────────────────────────────────
@@ -94,20 +95,16 @@ export const PROMPT_REGISTRY_KEY = "tutor-grounded";
  *  floor — the measured "alkenes in a rate quiz" tangential-citation
  *  class). The scaffolded path is untouched: its marks are the paper's
  *  OWN bank rows, deterministic.
- *  v17 (T-TUTOR-EXP-2 run-001; the Socratic-engagement work, design draft
- *  .syllabai/tasks/T-TUTOR-EXP-2-socratic-engagement.design.md §3, gated by
- *  its §5 A/B battery): the hand-back clause — after a substantive
- *  explanation turn the tutor ends with ONE short, grounded comprehension
- *  probe answerable from the SOURCES it just cited. Answer-first is the
- *  law (the probe never withholds, defers or conditions the explanation);
- *  the skip-set is explicit (quiz turns — scaffolded or improvised, tier-1
- *  hint turns, paper-question walkthroughs, quick lookups, turns that
- *  already ask something, direct-instruction intervention plans); the
- *  probe never carries a mark allocation (the v16 law reads through) and
- *  never asks for a spec reference, topic code, page number or source
- *  label (the spec-is-a-map law reads through). Prompt-only (option (a)):
- *  no pipeline state, no wire change, no budget change — the probe rides
- *  inside the existing 200-word concision bound as one sentence. */
+ *  v17 (T-TUTOR-PIVOT-1 run-001; operator directive "draft the fix card",
+ *  the 2026-11-05 live refusal report, session bd6c89ff seq 13-16): the
+ *  refusal shape law — a refusal opens with the deterministic family stem
+ *  ("I can't answer that from the validated course material yet.") and
+ *  closes with ONE learner redirect (rephrase, or start a new
+ *  conversation on the new topic). The measured defect: the model-worded
+ *  refusal ("I'm sorry, but the supplied sources do not contain …")
+ *  stonewalled a mid-chat topic pivot with no way forward for the
+ *  learner, and the turn recorded refused=false (evidence present but
+ *  wrong — the analytics gap the refusal-truth patch closes). */
 export const PROMPT_VERSION = "17";
 export function promptIdentity(): string {
   return `${PROMPT_REGISTRY_KEY}/v${PROMPT_VERSION}`;
@@ -135,6 +132,25 @@ export const CONVERSATION_REJUDGE_NOTE =
   "reuse an earlier turn's refusal wording as the reason a part fails now: the " +
   "only valid ground for refusing a part is that no row in the current SOURCES " +
   "corresponds to it.";
+
+// ── v17 refusal shape law (T-TUTOR-PIVOT-1) ─────────────────────────────────
+
+/** The refusal must be RECOGNISABLE and ACTIONABLE. The canonical stem is
+ *  the deterministic family's own opener (TUTOR_REFUSAL) — one refusal
+ *  voice across the deterministic and model-worded classes, and the anchor
+ *  the refusal-truth detector (refusal-detect.ts) keys on. The redirect
+ *  line is the measured student-experience fix: a bare apology stonewalls
+ *  a mid-chat topic pivot (the learner's question moved to a new topic and
+ *  the working-memory blend pulled the wrong evidence) — the way back is
+ *  a rephrased ask or a fresh conversation on the new topic, never silence. */
+const REFUSAL_SHAPE_LAW = `- Refusal shape. When the SOURCES cannot answer the QUESTION (or a part
+  of it), open the refusal exactly with "I can't answer that from the
+  validated course material yet." then state precisely what is missing,
+  and end with ONE short redirect inviting the learner to rephrase the
+  question or to start a new conversation on the new topic — a mid-chat
+  topic pivot is often best served by a fresh ask. Never refuse a part
+  the SOURCES do cover, and never open a refusal with any other
+  apology wording.`;
 
 // ── fence codes (v6 prompt-injection defence, :77-97 + :449-465) ────────────
 
@@ -195,6 +211,7 @@ Rules:
   repeat the fence markers in your answer.
 - If the SOURCES are insufficient to answer safely, say exactly what is
   missing and stop. Never fill gaps from general knowledge.
+${REFUSAL_SHAPE_LAW}
 - When the QUESTION names a specific exam-paper question and the SOURCES
   carry its question text and/or mark scheme, answer part by part in the
   paper's own order and label each part exactly as the paper labels it
@@ -234,20 +251,6 @@ Rules:
   value only when that value appears in the SOURCES for that question;
   when the SOURCES carry none, ask the question without a mark
   allocation. Never invent, estimate or borrow a mark allocation.
-- Hand the floor back on explanation turns: when you have just given a
-  substantive explanation (not a paper-question walkthrough, not a quiz
-  turn, not a tier-1 hint turn), end with ONE short comprehension probe
-  the learner can answer from what you just explained — for example "why
-  does X follow from Y?" or "what would happen to the rate if X
-  doubled?". The probe is grounded: its answer must be in the SOURCES
-  you cited this turn. Never ask more than one probe, never make it a
-  yes/no, never open a new topic with it, and never ask the learner to
-  recall a specification reference, topic code, page number or source
-  label. Skip the probe when the learner asked a quick lookup, when the
-  turn already asks them something, or when the INTERVENTION PLAN calls
-  for direct instruction. The answer always comes first: the probe never
-  withholds, defers or conditions the explanation, and it lives inside
-  the 200-word budget as one sentence.
 - When a QUIZ SCAFFOLD block is present, the learner has asked to be
   quizzed: serve ONLY the questions it lists, in its order, with their
   own numbers and marks. Do not invent or substitute questions and do

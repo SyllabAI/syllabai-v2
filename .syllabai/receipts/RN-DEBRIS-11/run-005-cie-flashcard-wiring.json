@@ -1,0 +1,720 @@
+{
+ "receipt": "rn11-run-005-cie-flashcard-wiring",
+ "family": "RN-DEBRIS-11",
+ "run": "005",
+ "lane": "CIE fleet flashcard\u2192spec wiring",
+ "operatorTrace": "1a1aef3e55afbedd",
+ "operatorOrder": "wire the unanchored flashcards to spec statements via their topic \u2192 subtopic \u2192 spec-point mapping (scope: the CIE fleet)",
+ "generatedUtc": "2026-11-06",
+ "mode": "apply",
+ "channels": {
+  "J2_spcptToOfficial": "card.smeSpecPointIds \u2192 content-maps spcptToOfficial (attach law channel b \u2014 the item's own declared SME links through the upstream spcpt\u2192official map), spine-gated",
+  "J1_topic_notes_union": "card.topicSlug == note.topicSlug \u2192 curriculum-ordered union of that subtopic\u2019s notes\u2019 of-record codes (the D0 tag-backfill law of record, igcse-chemistry-23 1133 cards)",
+  "J3_subtopicScope": "card.smeSpecPointIds \u2192 spcptSubtopicScope rows (available; 0 hits fleet-wide \u2014 scope table is note-inline oriented)",
+  "J4_set_subtopic": "card.topicSlug == set.topicSlug \u2192 set.subtopicCode (spine SUBTOPIC; contracts.ts: SME section/topic-slug joins, never guessed) \u2192 that SUBTOPIC\u2019s SPEC_POINT children, curriculum-ordered"
+ },
+ "fleetTotals": {
+  "already": 4125,
+  "unresolved": 5405,
+  "codes": 90497,
+  "J1_topic_notes_union": 20413,
+  "J2_spcptToOfficial": 1628,
+  "J4_set_subtopic": 873
+ },
+ "cardsTotal": 32444,
+ "postState": {
+  "official": 27039,
+  "sme": 4132,
+  "bare": 1273,
+  "officialPct": 83.3,
+  "officialPctBefore": 12.7
+ },
+ "gates": [
+  "every written code \u2208 the course curriculum SPEC_POINT set (asserted per course)",
+  "wired cards differ ONLY in specPointIds/specPointCode; smeSpecPointIds byte-equal everywhere",
+  "untouched cards byte-equal (full-dict assert)",
+  "serializer round-trip byte-exact (indent=1, ensure_ascii=False, trailing NL)",
+  "already-anchored cards (4,125) byte-untouched",
+  "set subtopicCode conflicts: 0 fleet-wide"
+ ],
+ "disclosure": {
+  "unresolved": 5405,
+  "unresolvedNote": "cards whose topicSlug has no coded notes, no subtopicCode sets, and whose sme anchors are unmapped upstream \u2014 left honestly unanchored (zero-invention); heaviest: maths decks (extended 474, int-extended 457, core 301, pure-1 248), CS-19 583, env-mgmt-25 399",
+  "crossSubtopicJ2": "18 of 1,628 J2 cards carry multi-subtopic of-record upstream verdicts (kept per attach law: honest cross-unit attachments, never silently rewritten)"
+ },
+ "perCourse": [
+  {
+   "course": "cie-a-level-accounting-21",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-a-level-biology-25",
+   "wired": {
+    "already": 1098,
+    "new": 487
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 481,
+    "J2_spcptToOfficial": 6
+   },
+   "unresolved": 0,
+   "codesWritten": 3146,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-a-level-business-23",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-a-level-chemistry-25",
+   "wired": {
+    "new": 1858
+   },
+   "byChannel": {
+    "J4_set_subtopic": 490,
+    "J1_topic_notes_union": 943,
+    "J2_spcptToOfficial": 425
+   },
+   "unresolved": 294,
+   "codesWritten": 6324,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-a-level-computer-science-19",
+   "wired": {
+    "already": 12,
+    "new": 2061
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 2003,
+    "J4_set_subtopic": 58
+   },
+   "unresolved": 583,
+   "codesWritten": 5394,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-a-level-economics-23",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-a-level-geography-21",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-a-level-maths-20-mechanics",
+   "wired": {
+    "new": 70
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 70
+   },
+   "unresolved": 137,
+   "codesWritten": 114,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-a-level-maths-20-probability-and-statistics-1",
+   "wired": {
+    "new": 69
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 69
+   },
+   "unresolved": 161,
+   "codesWritten": 207,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-a-level-maths-20-probability-and-statistics-2",
+   "wired": {
+    "new": 63
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 63
+   },
+   "unresolved": 67,
+   "codesWritten": 113,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-a-level-maths-20-pure-1",
+   "wired": {
+    "new": 200
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 200
+   },
+   "unresolved": 248,
+   "codesWritten": 448,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-a-level-maths-20-pure-2",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-a-level-maths-20-pure-3",
+   "wired": {
+    "new": 467
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 467
+   },
+   "unresolved": 6,
+   "codesWritten": 1346,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-a-level-physics-25",
+   "wired": {
+    "new": 1230
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 771,
+    "J2_spcptToOfficial": 391,
+    "J4_set_subtopic": 68
+   },
+   "unresolved": 70,
+   "codesWritten": 3018,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-as-accounting-21",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-as-biology-25",
+   "wired": {
+    "already": 564,
+    "new": 251
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 251
+   },
+   "unresolved": 0,
+   "codesWritten": 1169,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-as-business-23",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-as-chemistry-25",
+   "wired": {
+    "new": 1008
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 689,
+    "J2_spcptToOfficial": 157,
+    "J4_set_subtopic": 162
+   },
+   "unresolved": 181,
+   "codesWritten": 3407,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-as-computer-science-19",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-as-english-general-paper-21",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-as-environmental-management-20",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-as-maths-20-mechanics",
+   "wired": {
+    "new": 103
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 64,
+    "J2_spcptToOfficial": 39
+   },
+   "unresolved": 104,
+   "codesWritten": 136,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-as-maths-20-probability-and-statistics-1",
+   "wired": {
+    "new": 123
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 96,
+    "J2_spcptToOfficial": 27
+   },
+   "unresolved": 107,
+   "codesWritten": 241,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-as-maths-20-pure-1",
+   "wired": {
+    "new": 153
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 124,
+    "J2_spcptToOfficial": 29
+   },
+   "unresolved": 295,
+   "codesWritten": 305,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-as-maths-20-pure-2",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 236,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-as-physics-25",
+   "wired": {
+    "new": 601
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 397,
+    "J2_spcptToOfficial": 189,
+    "J4_set_subtopic": 15
+   },
+   "unresolved": 0,
+   "codesWritten": 1591,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-accounting-21",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-accounting-25",
+   "wired": {
+    "already": 17,
+    "new": 698
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 698
+   },
+   "unresolved": 66,
+   "codesWritten": 4784,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-biology-23",
+   "wired": {
+    "new": 863
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 863
+   },
+   "unresolved": 0,
+   "codesWritten": 8852,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-business-23",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-business-25",
+   "wired": {
+    "new": 513
+   },
+   "byChannel": {
+    "J4_set_subtopic": 21,
+    "J1_topic_notes_union": 492
+   },
+   "unresolved": 181,
+   "codesWritten": 1297,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-chemistry-23",
+   "wired": {
+    "already": 1133,
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-computer-science-23",
+   "wired": {
+    "already": 499,
+    "new": 346
+   },
+   "byChannel": {
+    "J2_spcptToOfficial": 68,
+    "J1_topic_notes_union": 278
+   },
+   "unresolved": 60,
+   "codesWritten": 1148,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-economics-20",
+   "wired": {
+    "new": 815
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 815
+   },
+   "unresolved": 21,
+   "codesWritten": 1946,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-economics-25",
+   "wired": {
+    "already": 114,
+    "new": 612
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 583,
+    "J4_set_subtopic": 29
+   },
+   "unresolved": 101,
+   "codesWritten": 1531,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-english-language-20",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-english-language-25",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 119,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-english-literature-21",
+   "wired": {
+    "new": 329
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 329
+   },
+   "unresolved": 38,
+   "codesWritten": 1068,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-environmental-management-25",
+   "wired": {
+    "new": 950
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 950
+   },
+   "unresolved": 399,
+   "codesWritten": 2455,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-further-maths-additional-maths-25",
+   "wired": {
+    "already": 8,
+    "new": 486
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 486
+   },
+   "unresolved": 18,
+   "codesWritten": 1721,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-geography-20",
+   "wired": {
+    "already": 1,
+    "new": 606
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 606
+   },
+   "unresolved": 69,
+   "codesWritten": 3043,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-geography-25",
+   "wired": {
+    "already": 14,
+    "new": 1105
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 1093,
+    "J2_spcptToOfficial": 12
+   },
+   "unresolved": 38,
+   "codesWritten": 3487,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-history-18",
+   "wired": {
+    "already": 76,
+    "new": 974
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 974
+   },
+   "unresolved": 0,
+   "codesWritten": 7345,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-ict-21",
+   "wired": {
+    "already": 300,
+    "new": 576
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 576
+   },
+   "unresolved": 87,
+   "codesWritten": 2184,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-maths-25-core",
+   "wired": {
+    "already": 6,
+    "new": 457
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 457
+   },
+   "unresolved": 301,
+   "codesWritten": 902,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-maths-25-extended",
+   "wired": {
+    "new": 507
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 507
+   },
+   "unresolved": 474,
+   "codesWritten": 982,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-maths-international-maths-23-core",
+   "wired": {
+    "already": 6,
+    "new": 462
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 462
+   },
+   "unresolved": 302,
+   "codesWritten": 787,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-maths-international-maths-23-extended",
+   "wired": {
+    "new": 514
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 514
+   },
+   "unresolved": 457,
+   "codesWritten": 737,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-physics-23",
+   "wired": {
+    "already": 46,
+    "new": 1079
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 1079
+   },
+   "unresolved": 0,
+   "codesWritten": 9076,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-religious-studies-23",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-science-co-ordinated-sciences-double-award-23-biology",
+   "wired": {
+    "new": 596
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 596
+   },
+   "unresolved": 21,
+   "codesWritten": 5179,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry",
+   "wired": {
+    "already": 199,
+    "new": 365
+   },
+   "byChannel": {
+    "J1_topic_notes_union": 293,
+    "J2_spcptToOfficial": 72
+   },
+   "unresolved": 39,
+   "codesWritten": 1678,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-science-co-ordinated-sciences-double-award-23-physics",
+   "wired": {
+    "already": 18,
+    "new": 864
+   },
+   "byChannel": {
+    "J2_spcptToOfficial": 120,
+    "J1_topic_notes_union": 744
+   },
+   "unresolved": 0,
+   "codesWritten": 2226,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-science-combined-science-23-biology",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-science-combined-science-23-chemistry",
+   "wired": {
+    "already": 14,
+    "new": 453
+   },
+   "byChannel": {
+    "J2_spcptToOfficial": 93,
+    "J1_topic_notes_union": 330,
+    "J4_set_subtopic": 30
+   },
+   "unresolved": 125,
+   "codesWritten": 1110,
+   "setConflicts": []
+  },
+  {
+   "course": "cie-igcse-science-combined-science-23-physics",
+   "wired": {
+    "new": 0
+   },
+   "byChannel": {},
+   "unresolved": 0,
+   "codesWritten": 0,
+   "setConflicts": []
+  }
+ ]
+}

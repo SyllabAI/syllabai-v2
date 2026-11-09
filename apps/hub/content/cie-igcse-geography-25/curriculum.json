@@ -1498,6 +1498,28 @@
    ],
    "provenanceTier": "RULE_DERIVED",
    "order": 113
+  },
+  {
+   "code": "cie-igcse-geography-2025-2026-SME-CLIMATE-CHANGE",
+   "family": "TOPIC",
+   "title": "Climate change (SME section)",
+   "description": null,
+   "parents": [
+    "cie-igcse-geography-25"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 4
+  },
+  {
+   "code": "cie-igcse-geography-2025-2026-SME-GEOGRAPHICAL-SKILLS",
+   "family": "TOPIC",
+   "title": "Geographical skills (SME section)",
+   "description": null,
+   "parents": [
+    "cie-igcse-geography-25"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 5
   }
  ],
  "edges": [
@@ -2309,6 +2331,18 @@
    "source": "cie-igcse-geography-2025-2026-T3:SUB3.7",
    "relation": "PART_OF",
    "target": "3.7.17",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-igcse-geography-25",
+   "relation": "PART_OF",
+   "target": "cie-igcse-geography-2025-2026-SME-CLIMATE-CHANGE",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-igcse-geography-25",
+   "relation": "PART_OF",
+   "target": "cie-igcse-geography-2025-2026-SME-GEOGRAPHICAL-SKILLS",
    "provenanceTier": "RULE_DERIVED"
   }
  ]

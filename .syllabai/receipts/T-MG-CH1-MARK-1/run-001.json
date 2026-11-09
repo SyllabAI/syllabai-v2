@@ -1,0 +1,53 @@
+{
+ "task": "T-MG-CH1-MARK-1",
+ "run": "run-001",
+ "date": "2026-11-08",
+ "plan_of_record": "operator order 2026-11-08 ('create/activate it for a paper that exists in our website \u2014 e.g. one chemistry 4ch1 past paper pdf')",
+ "target": {
+  "paper": "Edexcel 4CH1/1C June 2026 (print code P79401A, 28 pages)",
+  "exam_papers_row": "ef899774-7aa1-4246-8fb1-99b4d3cdfa95 (VALIDATED, PAST_PAPER, QP+MS document links, verified live via /paper-assets/resolve)",
+  "why_this_paper": "browsable in the hub corpus (the 1MA1 seed family resolves 404 in prod \u2014 the seed never landed), the ink lane's production sweep paper, QP+MS archived + byte-verified"
+ },
+ "fix": {
+  "what": "GET /paper-assets/:id/regions 500'd on every paper WITH a question tree (live probe January 2023: 'operator does not exist: uuid = uuid[]')",
+  "root_cause": "the service's 3 array-membership templates used the parenthesized IN form; postgres.js binds a JS array as ONE uuid[] parameter, so uuid IN (uuid[]) is a runtime operator absence; every other serving module uses = any(...::uuid[])",
+  "evidence": "scripts/pg_in_vs_any_test.js (local PG 17.11 + postgres.js 3.4.9: IN -> the exact error, = any -> OK); the stubbed fakeSql tests could never catch it",
+  "fix": "3 sites to = any(${ids}::uuid[]); source-law test pins the idiom (bans the IN form, requires 3 = any sites)"
+ },
+ "tree": {
+  "driver": "apps/api/scripts/ch1-anchor-tree.ts (find-or-create, ONE createSql transaction, idempotent)",
+  "source": "apps/hub/content/igcse-chemistry-19/official-papers.json slug official-4ch1-1c-2026-06 (the operator-validated ADR-037 verbatim archive corpus, G7 part-sum gate)",
+  "shape": "9 questions (external_ref 4ch1/past-papers/2026-06/4CH1-1C#qN, STRUCTURED, PAST_PAPER, 90s/mark) / 9 versions (VALIDATED, source_document_id = the row's QP documentId) / 56 parts (label = printed sub-path, hygienicStem prompts) / 9 POINTS schemes (version-level, MS documentId) / 95 mark_points (DIRECT part binding, refs q{n}{part}-{k} in MS row order)",
+  "validation_posture": "VALIDATED rows \u2014 the content of record is the operator-validated ADR-037 corpus; the derivation is mechanical (no LLM); disclosed here and in the worklog",
+  "local_apply": "9/9/56/9/95 inserted, 0 updates, then re-run idempotence: 0 inserts / N updates (converges)"
+ },
+ "rects": {
+  "instrument": "scripts/ch1_extract_rects.py (sandbox, adapted from the T-MG-MP-RECT-2 instrument of record to the chemistry layout: question/part/subpart line anchors + inline '(b) (i)' rows + orphan-part drop + page-break multi-rect + footer caps from the unfiltered line set)",
+  "fixture": "apps/api/scripts/fixtures/mark-point-rects-4ch1-1c-jun2026.json",
+  "manifest_sha256": "bf1cd968e1918b74414d1a41c63a69357c9d839248011d6e0350dc07c7e3f4e6",
+  "sources": {
+   "qp_sha256": "231c05743b0853aa408ae22103faf2645baca81e44fbc839972adc493abbede3",
+   "ms_sha256": "d4febc1650d2632a220e5ed367d05d99880bcf2b5cf73c434eb2ff7aac3c5040"
+  },
+  "census": "G1 56/56 labels+order exact; G2 no undercounts (7 disclosed collapses: 4.e-ii 6->1, 5.a 7->1, 6.a 4->1, 6.b 3->2, 6.c 3->2, 7.a-iii 6->1, 8.b-i 4->1 \u2014 marks agree on every row); G3 per-part marks exact; G4 per-question sums == QP footers == 110",
+  "overlays": "pages 4/17/20 sandbox-checked visually (labeled parts / inline subparts / inline question-part+part); pages covered 4,5,6,7,9-14,16-25"
+ },
+ "end_to_end": {
+  "local_rehearsal": "local PG 17.11 + the full 28-migration schema + mirrored production row: tree apply -> seed DRY-RUN gate green (95/95 refs 1:1) -> seed apply -> PaperRegions.regions() = {extracted:true, markable:true, groundingComplete:true, regions:65}, 56 part regions ALL carrying rects + wired questionPartId (script: scripts/pg_regions_final_check.ts)",
+  "gates": "api suite 2884 pass / 0 fail / 13 skip (159 files); typecheck 5/5 clean; CI-of-record = typecheck + tests + golden + census"
+ },
+ "activation": {
+  "workflow": ".github/workflows/t-mg-ch1-mark-1-db-apply.yml (dispatch-ONLY, the operator fire order per the 093/133b law; mode cow+prod | prod-only)",
+  "guard": "COW branch (133d protocol, 138 mirror): tree driver -> seed DRY-RUN gate -> seed apply -> postverify 9/95/95 -> DROP + 404-verify even on failure; prod-apply needs the COW ALL GREEN",
+  "post_deploy": "the API deploy carries the = any() fix; then the regions endpoint serves the June 2026 payload and the hub arms the affordance on the browsable paper"
+ },
+ "provenance": {
+  "session": "zai-web (this lane)",
+  "sandbox_recycles": "2 (clone re-established from origin each time; scripts persisted under /home/z/my-project/scripts/)"
+ },
+ "residuals": [
+  "the deploy-bake law: the API deploy must complete before the live verify (the hub-only-status gap of record 2026-11-04/05)",
+  "the typed regrade channel's core parts are a DIFFERENT namespace (exam-questions) \u2014 untouched",
+  "1MA1/1F June 2025 remains prod-absent (its fixture waits for a corpus route or a Lane-B decision)"
+ ]
+}

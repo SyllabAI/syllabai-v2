@@ -1,0 +1,307 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_KQ2Z3k364fVw9Gkq",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "207d7144048b5879ca73431d5102ac0b4a13cf0fa2bcc71883e444c7f0450ded",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_KQ2Z3k364fVw9Gkq",
+    "topicTitle": "5. Solids, Liquids and Gases",
+    "subtopicTitle": "Changes of State",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/5-solids-liquids-and-gases/5-2-changes-of-state/5-2-5-core-practical-investigating-specific-heat-capacity",
+    "specAnchors": [
+      {
+        "code": "5.14P",
+        "text": "practical: investigate the specific heat capacity of materials including water and some solids"
+      }
+    ],
+    "primer": {
+      "text": "Here the ΔQ = mcΔT equation is turned around and measured, not just used. An immersion heater delivers counted joules into a known mass, a thermometer logs the rise, and the gradient machinery of the plotted graph yields the capacity of water or a solid block — with honest error analysis attached.",
+      "prerequisiteSubtopic": "Changes of State"
+    },
+    "modules": [
+      {
+        "id": "rn_KQ2Z3k364fVw9Gkq::L1",
+        "title": "Aim and variables of the SHC investigation",
+        "sourceHeadings": [
+          "Aims of the experiment",
+          "Variables"
+        ],
+        "specRefs": [
+          "5.14P"
+        ],
+        "opening": "The aim is to measure a specific heat capacity from first principles: supply counted electrical energy to a known mass and watch the temperature respond. Naming the variables precisely is what turns a heating demonstration into a fair test.",
+        "keyPoints": [
+          "The aim is to determine the specific heat capacity of water or a solid material.",
+          "The independent variable is the energy supplied by the heater.",
+          "The dependent variable is the temperature rise of the material.",
+          "The mass of material and the starting temperature are controlled variables.",
+          "Energy supplied is computed from the heater's voltage, current and heating time."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Heat a known mass with an electric heater, count the energy from voltage times current times time, and measure how many degrees the mass climbs. Divide the energy by the mass and the rise to get the capacity.",
+            "analogy": "Metering a taxi journey: the meter (heater) counts the fare (energy), the passengers (mass) and distance (degrees) are known, so the per-passenger-per-kilometre rate (capacity) can be worked out.",
+            "examPointer": "Variable-naming marks are free if you keep the roles straight: energy supplied is what you change, temperature rise is what you measure, mass is what you hold fixed."
+          },
+          "medium": {
+            "restatement": "The design computes ΔQ as VIt from ammeter and voltmeter readings timed with a stopwatch, so the energy is known without calorimetry assumptions. Controlling the mass pins the proportionality between energy and temperature rise, and the starting temperature is held near room value to limit unquantified exchange with the surroundings.",
+            "analogy": "Calibrating a fuel gauge by driving a known distance at a metered flow: fix the tank size (mass), count the litres (energy), read the needle (temperature), and the car's thirst per kilometre emerges.",
+            "examPointer": "If asked why the heater is switched off between readings or readings taken while switching on and off, answer energy accounting — every second of heating counts, including brief overshoots."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_KQ2Z3k364fVw9Gkq::L1::Q1",
+          "rn_KQ2Z3k364fVw9Gkq::L1::Q2",
+          "rn_KQ2Z3k364fVw9Gkq::L1::Q3",
+          "rn_KQ2Z3k364fVw9Gkq::L1::Q4",
+          "rn_KQ2Z3k364fVw9Gkq::L1::Q5",
+          "rn_KQ2Z3k364fVw9Gkq::L1::Q6",
+          "rn_KQ2Z3k364fVw9Gkq::L1::Q7",
+          "rn_KQ2Z3k364fVw9Gkq::L1::Q8",
+          "rn_KQ2Z3k364fVw9Gkq::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_KQ2Z3k364fVw9Gkq::L2",
+        "title": "Equipment, method and the heating set-up",
+        "sourceHeadings": [
+          "Method",
+          "The experiment set up for the specific heat capacity practical"
+        ],
+        "specRefs": [
+          "5.14P"
+        ],
+        "opening": "The set-up is an insulated beaker, a known mass of water, an immersion heater wired to meters, and a thermometer watching the rise. The method is an energy ledger: read the meters, time the run, log the temperature on the beat.",
+        "keyPoints": [
+          "The kit comprises a balance, insulated beaker, immersion heater, voltmeter, ammeter, stopwatch and thermometer.",
+          "The mass of water is measured on the balance before heating begins.",
+          "The heater is switched on and the meters read at the same time as the stopwatch starts.",
+          "Temperature readings are taken at regular intervals while the heater runs.",
+          "The set-up keeps the heater fully submerged so all delivered energy enters the water."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Weigh the water, drop in the heater, wire up the meters, and switch on while starting the clock. Note the temperature every half-minute and read the meters so the energy can be counted.",
+            "analogy": "A cooking show with a scoreboard: the balance weighs the pot, the meters count the gas, the thermometer reports the result every round.",
+            "examPointer": "Method marks live in the sequence: mass first, then meters zeroed and read, then heating with timed temperature readings — describe the order, not just the list."
+          },
+          "medium": {
+            "restatement": "The apparatus couples electrical metering to thermal sensing so that ΔQ is known independently of the water's properties. Full submersion and lagging minimise the two leakage classes — energy bypassing the water and heat escaping to air — while fixed-interval sampling turns the run into an energy-versus-temperature dataset suitable for a gradient method.",
+            "analogy": "An audit trail: every joule is receipted by the meters (VIt), every degree is receipted by the thermometer, and the auditor (the calculation) compares the two books.",
+            "examPointer": "Quote the insulation purpose explicitly — lagging reduces the systematic error of heat lost to the surroundings, which otherwise inflates the measured capacity."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_KQ2Z3k364fVw9Gkq::L2::Q1",
+          "rn_KQ2Z3k364fVw9Gkq::L2::Q2",
+          "rn_KQ2Z3k364fVw9Gkq::L2::Q3",
+          "rn_KQ2Z3k364fVw9Gkq::L2::Q4",
+          "rn_KQ2Z3k364fVw9Gkq::L2::Q5",
+          "rn_KQ2Z3k364fVw9Gkq::L2::Q6",
+          "rn_KQ2Z3k364fVw9Gkq::L2::Q7",
+          "rn_KQ2Z3k364fVw9Gkq::L2::Q8",
+          "rn_KQ2Z3k364fVw9Gkq::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_KQ2Z3k364fVw9Gkq::L3",
+        "title": "Results table and the energy ledger",
+        "sourceHeadings": [
+          "Results",
+          "An example of a results table for the specific heat capacity practical"
+        ],
+        "specRefs": [
+          "5.14P"
+        ],
+        "opening": "The results live in two books: the meters' energy ledger and the thermometer's temperature column. Tabulating both against time lets every joule be matched to every degree at the moment it arrived.",
+        "keyPoints": [
+          "The table records time, temperature, and the meter readings at each interval.",
+          "Energy supplied is accumulated as voltage × current × elapsed time.",
+          "Each temperature is paired with the energy delivered up to that moment.",
+          "The energy-per-degree relationship becomes visible once the table is complete."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Every half-minute, write down the clock, the temperature, and the meters. Multiply voltage by current by the seconds elapsed to stack up the energy next to each temperature.",
+            "analogy": "A shared spreadsheet: one column counts money in (energy), another counts the rise it bought (temperature), and each row is a receipt.",
+            "examPointer": "The table earns marks when the energy column is cumulative and aligned with each temperature — a mismatched ledger loses the analysis marks later."
+          },
+          "medium": {
+            "restatement": "Structuring the table with a cumulative energy column converts the run into paired (ΔQ, ΔT) points suitable for plotting energy against temperature rise. Because ΔQ = mcΔT, the gradient of that plot equals m × c, so the ledger format feeds directly into the gradient analysis rather than relying on a single end-point ratio.",
+            "analogy": "Mileage versus fuel burned, logged at every petrol stop: the slope of the log reveals the car's consumption far better than one end-to-end division.",
+            "examPointer": "If the table shows the temperature levelling while energy keeps flowing, suspect a state change or a heater fault — do not force the linear analysis through curved data."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_KQ2Z3k364fVw9Gkq::L3::Q1",
+          "rn_KQ2Z3k364fVw9Gkq::L3::Q2",
+          "rn_KQ2Z3k364fVw9Gkq::L3::Q3",
+          "rn_KQ2Z3k364fVw9Gkq::L3::Q4",
+          "rn_KQ2Z3k364fVw9Gkq::L3::Q5",
+          "rn_KQ2Z3k364fVw9Gkq::L3::Q6",
+          "rn_KQ2Z3k364fVw9Gkq::L3::Q7",
+          "rn_KQ2Z3k364fVw9Gkq::L3::Q8",
+          "rn_KQ2Z3k364fVw9Gkq::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_KQ2Z3k364fVw9Gkq::L4",
+        "title": "Analysis by gradient, evaluation and safety",
+        "sourceHeadings": [
+          "Analysis of specific heat capacity practical results",
+          "An example graph for the specific heat capacity practical"
+        ],
+        "specRefs": [
+          "5.14P"
+        ],
+        "opening": "Plot the ledger and the slope speaks: gradient one over mass times capacity gives the answer, provided the joules all landed — which is where losses, repetition and mains safety take over the evaluation.",
+        "keyPoints": [
+          "Plot temperature rise on the vertical axis against energy supplied on the horizontal axis.",
+          "The gradient of the line equals 1 ÷ (m × c), so c = 1 ÷ (m × gradient).",
+          "Heat lost to the surroundings is the main systematic error and makes the measured c too high.",
+          "Lagging the beaker and fully submerging the heater cut the dominant systematic loss.",
+          "Parallax and reaction-time wobble are random errors, reduced by repetition and smoothing.",
+          "Mains heaters demand dry hands, insulated leads, eye protection and safe handling of scalding water."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Take the slope, divide one by mass times slope, and the capacity appears — as long as no joules leaked, so lag the beaker, repeat the run, and keep the mains wiring dry and guarded.",
+            "analogy": "A scales-and-tilt audit: read the honest line (gradient), fence off the leak (lagging), take several weighings (repetition), and keep the plug socket dry throughout.",
+            "examPointer": "Order the evaluation: name the error, give its direction on c, then the fix — and keep every mains-safety point separate from the thermal analysis."
+          },
+          "medium": {
+            "restatement": "Rearranging ΔQ = mcΔT gives ΔT = (1/mc)·ΔQ, so the fitted slope yields c for the fixed mass; the dominant systematic term is unaccounted power dissipated outside the sample, biasing c upward, while parallax and timing scatter are random and average out over repeats. Mains safety — dry hands, insulated leads, supervised switching — is a separate, non-negotiable layer.",
+            "analogy": "Auditing a delivery route: the odometer counts every kilometre including detours, so the true fuel-per-kilometre needs the detours fenced (lagging) and several runs averaged (repetition) — all with the driver gloved and grounded.",
+            "examPointer": "Distinguish the two bias directions before naming fixes: losses and an underestimated rise both inflate c, while a mass overestimate would deflate it — then separate the mains-safety list from the thermal list."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_KQ2Z3k364fVw9Gkq::L4::Q1",
+          "rn_KQ2Z3k364fVw9Gkq::L4::Q2",
+          "rn_KQ2Z3k364fVw9Gkq::L4::Q3",
+          "rn_KQ2Z3k364fVw9Gkq::L4::Q4",
+          "rn_KQ2Z3k364fVw9Gkq::L4::Q5",
+          "rn_KQ2Z3k364fVw9Gkq::L4::Q6",
+          "rn_KQ2Z3k364fVw9Gkq::L4::Q7",
+          "rn_KQ2Z3k364fVw9Gkq::L4::Q8",
+          "rn_KQ2Z3k364fVw9Gkq::L4::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "immersion heater",
+          "definition": "An electric heater designed to transfer its energy directly into a liquid it is submerged in.",
+          "firstLesson": 1
+        },
+        {
+          "term": "systematic error",
+          "definition": "A repeatable bias that shifts results in one direction, such as heat loss inflating capacity.",
+          "firstLesson": 4
+        },
+        {
+          "term": "gradient method",
+          "definition": "Deriving a property from the slope of a best-fit line through many paired readings.",
+          "firstLesson": 4
+        },
+        {
+          "term": "lagging",
+          "definition": "Insulation wrapped around a vessel to reduce energy exchange with the surroundings.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/37532604cff7-14-1-10-practical-shc-diagram-of-setup.png",
+        "alt": "Practical SHC Diagram of setup, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The experiment set up for the specific heat capacity practical",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Apparatus for heating water and measuring energy supplied"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/d1bdb34256c9-5-2-5-specific-heat-capacity-results-table.png",
+        "alt": "Specific Heat Capacity Results Table, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "An example of a results table for the specific heat capacity practical",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "An example of a suitable results table for the specific heat capacity experiment looks like this. Energy supplies = voltage x current x time."
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/75326c25c6ac-14-1-10-practical-shc-taking-gradient.png",
+        "alt": "Practical SHC Taking gradient, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "An example graph for the specific heat capacity practical",
+        "moduleIds": [
+          "L4"
+        ],
+        "binding": "heading-unique",
+        "caption": "The gradient of the graph is equal to the specific heat capacity of the substance, assuming a perfectly efficient immersion heater"
+      }
+    ]
+  }
+}

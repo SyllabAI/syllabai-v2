@@ -1,0 +1,255 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_VrW4vQKk2VCQ2sQd",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "cc0322e39d6bfebc9c873b846714c3d392221c713fe3c054f222c6a1333cd923",
+    "pinnedRef": "8788fc85a2c111be22458fcefa3dac247e0d1f46"
+  },
+  "packageId": "igcse-physics::rn_VrW4vQKk2VCQ2sQd",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_VrW4vQKk2VCQ2sQd::L1::Q1",
+      "moduleId": "rn_VrW4vQKk2VCQ2sQd::L1",
+      "stem": "What is the correct form of the pressure law?",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "p1/T1 = p2/T2",
+          "correct": true,
+          "explanation": "Pressure divided by kelvin temperature is constant at fixed volume.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "p1 × T1 = p2 × T2",
+          "correct": false,
+          "explanation": "The relation is proportionality, so it is the ratio that is constant.",
+          "misconception": "operation slip"
+        },
+        {
+          "key": "C",
+          "text": "p1V1 = p2V2",
+          "correct": false,
+          "explanation": "That is Boyle's law, a different constant-volume story's cousin.",
+          "misconception": "law tangle"
+        },
+        {
+          "key": "D",
+          "text": "p1/T2 = p2/T1",
+          "correct": false,
+          "explanation": "The temperatures are crossed wrongly.",
+          "misconception": "subscript tangle"
+        }
+      ]
+    },
+    {
+      "id": "rn_VrW4vQKk2VCQ2sQd::L1::Q2",
+      "moduleId": "rn_VrW4vQKk2VCQ2sQd::L1",
+      "stem": "A sealed rigid container holds gas at 300 K and 1.2 × 10^5 Pa. Heated to 600 K, the pressure becomes:",
+      "misconceptionClass": "proportional reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "2.4 × 10^3 Pa",
+          "correct": false,
+          "explanation": "That dropped a factor of a hundred.",
+          "misconception": "arithmetic slip"
+        },
+        {
+          "key": "B",
+          "text": "2.4 × 10^5 Pa",
+          "correct": true,
+          "explanation": "Doubling the kelvin temperature doubles the pressure.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "6.0 × 10^4 Pa",
+          "correct": false,
+          "explanation": "That halves the pressure — backwards.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "D",
+          "text": "1.2 × 10^5 Pa",
+          "correct": false,
+          "explanation": "The temperature changed, so the pressure did.",
+          "misconception": "no-change slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_VrW4vQKk2VCQ2sQd::L1::Q3",
+      "moduleId": "rn_VrW4vQKk2VCQ2sQd::L1",
+      "stem": "A tyre's pressure law problem gives temperatures of 27 °C and 57 °C. What must happen before substitution?",
+      "misconceptionClass": "unit discipline",
+      "options": [
+        {
+          "key": "A",
+          "text": "convert to Fahrenheit",
+          "correct": false,
+          "explanation": "Fahrenheit plays no role here.",
+          "misconception": "unit invention"
+        },
+        {
+          "key": "B",
+          "text": "average the two temperatures first",
+          "correct": false,
+          "explanation": "Averaging destroys the two-state comparison.",
+          "misconception": "procedure invention"
+        },
+        {
+          "key": "C",
+          "text": "both convert to kelvin: 300 K and 330 K",
+          "correct": true,
+          "explanation": "The law speaks kelvin only.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "use the Celsius values directly",
+          "correct": false,
+          "explanation": "Celsius substitution gives a wrong ratio — 27/57 is meaningless physically.",
+          "misconception": "unit slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_VrW4vQKk2VCQ2sQd::L1::Q4",
+      "moduleId": "rn_VrW4vQKk2VCQ2sQd::L1",
+      "stem": "Why does the pressure law require constant volume?",
+      "misconceptionClass": "condition reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because the law would become too easy",
+          "correct": false,
+          "explanation": "Conditions are physics, not difficulty settings.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "B",
+          "text": "because pressure cannot change at fixed volume",
+          "correct": false,
+          "explanation": "Fixed volume is exactly when pressure CAN change freely with temperature.",
+          "misconception": "contradiction slip"
+        },
+        {
+          "key": "C",
+          "text": "because temperature is undefined in a changing volume",
+          "correct": false,
+          "explanation": "Temperature is defined regardless.",
+          "misconception": "absurd claim"
+        },
+        {
+          "key": "D",
+          "text": "otherwise the density change would alter the collision rate independently of temperature",
+          "correct": true,
+          "explanation": "Changing volume adds a second pressure lever.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_VrW4vQKk2VCQ2sQd::L1::Q5",
+      "moduleId": "rn_VrW4vQKk2VCQ2sQd::L1",
+      "stem": "A rigid gas cylinder's internal pressure doubles during a fire. Using the pressure law, how did its kelvin temperature change?",
+      "misconceptionClass": "inverse reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it doubled",
+          "correct": true,
+          "explanation": "p ∝ T at fixed volume — the ratio carries both ways.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "it halved",
+          "correct": false,
+          "explanation": "The temperature rose, not fell.",
+          "misconception": "direction inversion"
+        },
+        {
+          "key": "C",
+          "text": "it quadrupled",
+          "correct": false,
+          "explanation": "The relation is linear, not squared.",
+          "misconception": "squaring slip"
+        },
+        {
+          "key": "D",
+          "text": "it is unchanged",
+          "correct": false,
+          "explanation": "Pressure changes required a temperature change.",
+          "misconception": "no-change slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_VrW4vQKk2VCQ2sQd::L1::Q6",
+      "moduleId": "rn_VrW4vQKk2VCQ2sQd::L1",
+      "stem": "State the pressure law in words.",
+      "misconceptionClass": "law recall",
+      "kind": "recall",
+      "modelAnswer": "With the sample sealed in a rigid container, the pressure is directly proportional to the kelvin temperature.",
+      "keywords": [
+        "pressure",
+        "proportional",
+        "kelvin",
+        "volume"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VrW4vQKk2VCQ2sQd::L1::Q7",
+      "moduleId": "rn_VrW4vQKk2VCQ2sQd::L1",
+      "stem": "State the conversion that must be applied to temperatures before using the pressure law.",
+      "misconceptionClass": "unit recall",
+      "kind": "recall",
+      "modelAnswer": "Celsius temperatures must be converted to kelvin by adding 273 before substituting into the law.",
+      "keywords": [
+        "convert",
+        "kelvin",
+        "273",
+        "substituting"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VrW4vQKk2VCQ2sQd::L1::Q8",
+      "moduleId": "rn_VrW4vQKk2VCQ2sQd::L1",
+      "stem": "Explain why the pressure–kelvin temperature graph of a fixed gas at constant volume is a straight line through the origin.",
+      "misconceptionClass": "evaluation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Pressure is proportional to kelvin temperature: at 0 K the molecules would have minimum energy, deliver no wall collisions, and produce no pressure. A proportional relationship plotted from its true zero is a straight line through the origin, which is exactly what the extrapolated measurements show for every gas.",
+      "keywords": [
+        "proportional",
+        "zero",
+        "pressure",
+        "temperature"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VrW4vQKk2VCQ2sQd::L1::Q9",
+      "moduleId": "rn_VrW4vQKk2VCQ2sQd::L1",
+      "stem": "A bicycle tyre holds air at a pressure of 5.10 × 10^5 Pa with the temperature at 279 K. Once ridden, the air warms to 299 K while the volume stays fixed. Calculate the new pressure.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "p2 = p1 × T2/T1 = 5.10 × 10^5 × 299/279 = 5.47 × 10^5 Pa (3 s.f.). The warmer tyre holds proportionally higher pressure.",
+      "keywords": [
+        "5.47",
+        "10^5",
+        "299",
+        "279"
+      ],
+      "options": []
+    }
+  ]
+}

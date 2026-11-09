@@ -178,7 +178,10 @@ export function QuestionbankIndex({
       {/* MathsGenie-pattern toolbar (trace 1a19acb6ec437e25): search left,
           Resume right — Resume renders only once this course's learner
           overlay holds a scored part in a set listed here. */}
-      <div className="mt-4">
+      {/* t-ui-polish run-004: hero→body join at the mt-6 family rhythm
+          (was mt-4; when the paper filter bar renders, both joins now sit
+          at the same 24px step as every other course-header surface). */}
+      <div className="mt-6">
         <SelectToolbar
           searchLabel="Search exam questions"
           searchPlaceholder="Search topics or sets..."

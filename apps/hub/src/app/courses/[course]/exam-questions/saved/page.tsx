@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { loadHubCourse } from "@/lib/courses";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import { SavedQuestionsList, type SavedQuestionMeta } from "./saved-list";
 import { allCourseParams } from "@/lib/static-params";
@@ -52,11 +52,11 @@ export default async function SavedQuestionsPage({
     <div className="flex w-full">
       <ResourcePanel variant="questions" />
       <div className="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-8">
-        <CourseHeader
+        <CoursePageHeader
           meta={meta}
           title="Saved questions"
           crumb="Saved questions"
-          description="Questions you bookmarked with the Save control in the question player. Saved to your browser — no account, no canonical writes."
+          description="Questions you bookmarked with the Save control in the question player — saved in this browser."
         />
         <div className="mt-6">
           <SavedQuestionsList course={meta.slug} all={all} />

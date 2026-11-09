@@ -1,0 +1,37 @@
+{
+  "task": "T-BOOK-073",
+  "run": "run-001",
+  "receipt": "c17-media-embed-r2",
+  "lane": "books/4ch1 media lane — c17 close-out DB leg + production serve proof (TASK CLOSED IN FULL)",
+  "operator_order": "trace 1a1a20d3cc3c4e65 — 'hunt a curated video for c17 to close that out. And also check if video can be played from the lesson page'; DB leg on the operator's MAIN pooler DSN re-knock (trace 1a1a4819e2faa119, 2026-11-04)",
+  "date_utc": "2026-11-04",
+  "agent": "operator sandbox session (trace 1a1a4819e2faa119)",
+  "baseline_of_record": {
+    "sandbox_recycle_recovery": "the recycle rolled the checkout back to a stale snapshot (t-book-015/books-doctrine @ 3002b509, 1573 behind) — fetch-first re-pin: origin/main at 87d8e660 (PR #711 tip; 3b7dd7f4 the T-BOOK-073 merge of record is an ancestor); bun install restored workspace deps (the tracked apps/api/node_modules symlink's store target was recycled away)",
+    "session_side_tools": "dev-manifest generator recreated verbatim (scripts/t-book-073-dev-manifest.py, T-BOOK-070 disclosure intact); the r1 close-out receipt r0/r1 landed previously at d10e6a15"
+  },
+  "db_leg": {
+    "endpoint_identity_check": "server-identified via GUCs BEFORE any write: project billowing-cherry-15418366, branch br-muddy-bar-a5huwldd (the production branch of record per docs/BASELINE_DB.md §2 + HUB-TEACH t-teach-011 precedent), PG 18.6 — the operator-supplied DSN is the MAIN of record; DSN env-injected per command, never echoed or written to disk",
+    "preflight_census": "265/265 rows VALIDATED (uniform estate); c17 chapter VALIDATED with join set size 10 containing 2.37 + 2.39 (b07's refs pass the DB binding law); c17 had exactly 6 rows (no media-embed); every serving media-embed chapter VALIDATED — c16 b08 updated 2026-11-02 while its b01-b07 kept 2026-10-27 dates",
+    "scoped_not_full": "the WRITE is a SCOPED single-block landing (the of-record widen-run pattern, deduced from the updated_at forensics above) — NOT the full books-ingest-rail.ts re-ingest, whose ON CONFLICT clause would have reset all 265 VALIDATED rows to SUGGESTED (a regression); the full script ran --dry-run only (266 blocks across 29 chapters, u2:c17 #7 media-embed p.196 refs=2.37,2.39 rides the shape)",
+    "serving_law_of_record": "apps/api/src/services/books.ts railBlocksForChapter DOUBLE gate: parent book VALIDATED AND bb.validation_state = 'VALIDATED' — a SUGGESTED row does not serve, so the operator flip is REQUIRED, not optional",
+    "land": "b07 INSERT..ON CONFLICT(identity) landed as SUGGESTED (same column shape as the rail script; binding laws checked live first: chapter VALIDATED, refs ⊆ join set, no checkRefs)",
+    "flip": "operator S4 lever executed as a separate keyed action: b07 SUGGESTED -> VALIDATED; post-flip estate census 266/266 VALIDATED — nothing else moved",
+    "scripts": "scripts/ session-side: t-book-073-db-probe.mjs (identity + census), t-book-073-scoped-ingest.mjs (land|flip), t-book-073-dev-manifest.py"
+  },
+  "production_serve_proof": {
+    "verdict": "THE c17 WATCH CARD SERVES — the ticket's playback ask is closed first-hand on production",
+    "surface": "https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d/lesson?chapter=u2:c17",
+    "observed": "h1 'Salt preparations'; iframe src https://www.youtube-nocookie.com/embed/vcxlISVJ6Os?rel=0 rendered at 708x398 client px; iframe title 'GCSE Chemistry - Neutralisation Reactions | Reactions of Acids (2027/28 exams)'; 'Watch on YouTube' link https://www.youtube.com/watch?v=vcxlISVJ6Os; Cognito attribution + media-sources.yaml licensing line present",
+    "evidence": ".syllabai/lane-artifacts/T-BOOK-073/c17-watch-card-production.png (153,253 bytes)"
+  },
+  "final_state": {
+    "git": "PR #705 merged as 3b7dd7f4 (29/29 packs have a curated video of-record); bookkeeping main-direct",
+    "db": "book_blocks 266 rows ALL VALIDATED for documentId e6c0db50 v1; u2:c17 = 7 rows (prose, table-fill, sort-match, drag-label, callout, mcq-embed, media-embed@ord7)",
+    "coverage": "the 28-video question of record ('Does our Course Lessons have videos?') now answers 29/29 — every content pack has exactly one curated provider video, strength check packs designed bare per law"
+  },
+  "boundaries": "zero code changes this run (scripts are session-side); zero force-push; DB contact scoped to the two keyed statements + read-only probes on the operator-supplied MAIN pooler DSN; no receipt rewriting (r0/r1 stand; this r2 documents the DB+serve legs)",
+  "pending": [
+    "credential rotation reminder stands (ghp_/vcp_/napi_/npg_ x2 all chat-exposed)"
+  ]
+}

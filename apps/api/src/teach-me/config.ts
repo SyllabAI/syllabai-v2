@@ -1,5 +1,6 @@
 /**
  * T-TEACHME-001 · run-002 · apps/api/src/teach-me/config.ts
+ * T-TEACHGENIE-001 · Teach Genie reskin (MG Teach Genie parity, 2026-11-04)
  *
  * SINGLE SOURCE for every Teach-Me constant (ADR-040 D3/D4, ruling Q4/Q5).
  * The vague-explanation re-probe retunes THIS FILE ONLY — no code changes, no
@@ -14,7 +15,13 @@
 
 export const TEACH_ME_CONFIG = {
   feature: "teach-me",
-  pupilName: "the Pupil", // ruling Q1/D5 — no mascot art in v1
+  /** T-TEACHGENIE-001: the learner-facing persona of record (MG parity — the
+   *  student teaches a confused younger pupil, Feynman-style).
+   *  T-TEACHGENIE-003: the persona is renamed to SillyAI (the "Teach SillyAI"
+   *  rebrand); charter v3 carries the identity, voice and invariants unchanged.
+   *  Still no mascot art in the API contract; the hub renders an original
+   *  stand-in avatar (no MathsGenie assets are copied). */
+  pupilName: "SillyAI",
 
   /** Runtime render gate lives in flags.json; this mirror is the serving scope of record. */
   flags: {
@@ -24,22 +31,33 @@ export const TEACH_ME_CONFIG = {
     },
   },
 
-  /** Ruling Q4 — cost protection, NOT a monetization meter. Enforced server-side. */
+  /** Ruling Q4 — cost protection, NOT a monetization meter. Enforced server-side.
+   *  T-TEACHGENIE-007 (2026-11-06, live operator order "Remove the limits for
+   *  now", trace f9485122fd9a94a93659e25f350af676): the DAILY CAP IS LIFTED —
+   *  999/day is de-facto unlimited for human learners. The remaining real
+   *  bounds are unchanged: the per-session 12-call ceiling (D3) and the
+   *  20/min per-learner LLM-tier rate limit. Restore cost protection by
+   *  setting 3 (the config-sanity test mirrors this value). */
   quota: {
-    dailySessionCap: 3,
+    dailySessionCap: 999,
     /** "back tomorrow" honest state; no countdown/upsell dark patterns. */
   },
 
-  /** Original-faithful session shape (probe of record). */
+  /** Session shape (probe of record). T-TEACHGENIE-001: In-Depth carries SIX
+   *  objectives — the MG Teach Genie header is literally "Objective 1/6" —
+   *  with 8 message slots so six objectives stay coverable in one sitting. */
   sessionShape: {
-    objectivesByLength: { quick: 3, in_depth: 4 } as const,
-    maxMessagesByLength: { quick: 5, in_depth: 6 } as const,
+    objectivesByLength: { quick: 3, in_depth: 6 } as const,
+    maxMessagesByLength: { quick: 5, in_depth: 8 } as const,
   },
 
-  /** Hard ceilings asserted in CI (ADR-040 D3). */
+  /** Hard ceilings asserted in CI (ADR-040 D3). T-TEACHGENIE-001: the worst
+   *  In-Depth shape is 1 (objectives) + 8 (turns) + 1 (review) = 10 calls —
+   *  ceiling 12 keeps two calls of headroom; token estimate follows the same
+   *  proportional bump (8 judged turns × longer transcripts). */
   cost: {
-    maxLlmCallsPerSession: 10, // worst-case shape is 1 + 6 + 1 = 8; headroom 2
-    maxTokensPerSession: 60_000,
+    maxLlmCallsPerSession: 12,
+    maxTokensPerSession: 90_000,
     /**
      * The chain response carries no usage payload (LlmChainResponse has
      * text/model/providerName/finishReason only), so tokens_used is a
@@ -77,11 +95,14 @@ export const TEACH_ME_CONFIG = {
     appendOnly: true,
   },
 
-  /** Pinned prompts v1 (fixture-replayed in CI; bump version, never edit). */
+  /** Pinned prompts (fixture-replayed in CI; bump version, never edit).
+   *  T-TEACHGENIE-001 bumped the charter (MG casual voice + in-character opener);
+   *  T-TEACHGENIE-003 bumps pupil/turn/objectives to v3 for the "Teach SillyAI"
+   *  persona rename — identity, voice and invariants carry over unchanged. */
   prompts: {
-    pupilCharter: "pupil.v1",
-    turn: "teachme.turn.v1",
-    objectives: "teachme.objectives.v1", // inline canon-grounding system prompt (not a version-pinned file)
+    pupilCharter: "pupil.v3",
+    turn: "teachme.turn.v3",
+    objectives: "teachme.objectives.v3", // inline canon-grounding system prompt (not a version-pinned file)
     review: "teachme.review.v1",
   },
 } as const;

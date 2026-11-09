@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { listCourses, boardOf, loadHubCourse } from "@/lib/courses";
 import { getGradeBoundaries } from "@/lib/grade-boundaries";
-import { CourseHeader } from "@/components/hub/course-header";
+import { CoursePageHeader } from "@/components/hub/course-header";
 import { GradeBoundariesWorkspace } from "@/components/hub/grade-boundaries/grade-boundaries-workspace";
 
 /**
@@ -50,7 +50,7 @@ export default async function GradeBoundariesPage({
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
-      <CourseHeader
+      <CoursePageHeader
         meta={meta}
         title={`Grade Boundaries — ${meta.code}`}
         crumb="Grade Boundaries"
@@ -58,7 +58,7 @@ export default async function GradeBoundariesPage({
       {entry ? (
         <GradeBoundariesWorkspace entry={entry} />
       ) : (
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto mt-6 max-w-3xl">
           <div className="rounded-2xl border-2 bg-card p-8 text-center">
             <p className="text-sm font-medium">No boundaries in the corpus yet</p>
             <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">

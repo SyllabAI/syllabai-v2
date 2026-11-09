@@ -1,0 +1,399 @@
+"""9618 AS Level Computer Science concept lattice — T-KG-PRE-14
+(F8 rollout batch twelve, the computer-science family tranche 9;
+serves cie-as-computer-science-19, 161 served points).
+
+AI_SUGGESTED / UNVALIDATED concept web authored by the F8 lane from the CIE
+9618 AS Level Computer Science syllabus (topics 1-12: information
+representation, communication, hardware, processor fundamentals, system
+software, security/privacy/integrity, ethics, databases, problem-solving,
+programming, pseudocode, software development), anchored to the served
+spine's point ids. Every anchor is machine-verified against the spine before
+any byte is written (0-unmapped pass law, enforced in kg_f8ma_generate.py).
+
+Relationship to the A Level sibling, of record: the AS spine's 161 points
+are id+text IDENTICAL to the corresponding subset of the A Level spine
+(verified in code before authoring), so this module is the topic 1-12 web of
+f8cs_lattice_9618al.py re-authored on the C1S- prefix and bound only to AS
+point ids — a sibling lattice, not a projection (projection is only defined
+inside one course) and not a shared two-course module (the point SETS
+differ: the AL spine carries the A2 block 13-20 this web deliberately does
+not touch).
+
+Structure of record: each topic is a definitional chain (foundation concept
+-> process -> evaluation -> application), with honest cross-topic bridges
+only where the syllabus itself names the dependency (number systems ->
+binary shifts; logic gates -> bit manipulation; fetch-execute and interrupts
+-> OS management; assembly -> the assembler translator; networks -> security
+threats; file-based approach -> relational databases; flowcharts ->
+pseudocode). The 20.2.x teacher-guidance block of the AL spine has no AS
+counterpart to anchor. Three authored edges sit in knowingly served-order-
+reversed territory (gate functions -> monitor/control systems, addressing
+modes -> assembly trace, fetch-execute -> performance factors), exactly as
+in the A Level web; the first expands over both of its gate bindings, so
+the calibrated in-order law drops four cross-product pairs, counted and
+disclosed — the law working as designed.
+
+Honesty: prereqValidated stays EMPTY; the renderer labels every exported pair
+INFERRED PROTOTYPE; the named gate remains the SME validation pass.
+"""
+
+DD = "DEFINITIONAL_DEPENDENCY"
+UWR = "USED_WITHOUT_RETEACHING"
+
+CONCEPTS = {
+    # 1 Information representation — 1.1 number systems
+    "C1S-CON-BIN-MAGNITUDES": ["1.1.1"],
+    "C1S-CON-NUMBER-SYSTEMS": ["1.1.2"],
+    "C1S-CON-BINARY-ARITH": ["1.1.3"],
+    "C1S-CON-BCD-HEX-USES": ["1.1.4"],
+    "C1S-CON-CHAR-FORMATS": ["1.1.5"],
+    # 1.2 multimedia
+    "C1S-CON-BITMAP-ENCODING": ["1.2.1"],
+    "C1S-CON-BITMAP-SIZE": ["1.2.2"],
+    "C1S-CON-BITMAP-QUALITY": ["1.2.3"],
+    "C1S-CON-VECTOR-ENCODING": ["1.2.4"],
+    "C1S-CON-BITMAP-VS-VECTOR": ["1.2.5"],
+    "C1S-CON-SOUND-ENCODING": ["1.2.7"],
+    "C1S-CON-SOUND-SAMPLING-IMPACT": ["1.2.8"],
+    # 1.3 compression
+    "C1S-CON-COMPRESSION-NEED": ["1.3.1"],
+    "C1S-CON-LOSSY-LOSSLESS": ["1.3.2"],
+    "C1S-CON-FILE-COMPRESSION": ["1.3.3"],
+    # 2 Communication
+    "C1S-CON-NETWORK-DEVICES": ["2.1.1"],
+    "C1S-CON-LAN-WAN": ["2.1.2"],
+    "C1S-CON-CLIENT-PEER-MODELS": ["2.1.3"],
+    "C1S-CON-THIN-THICK-CLIENT": ["2.1.4"],
+    "C1S-CON-TOPOLOGIES": ["2.1.5"],
+    "C1S-CON-CLOUD-COMPUTING": ["2.1.6"],
+    "C1S-CON-WIRELESS-WIRED": ["2.1.7"],
+    "C1S-CON-LAN-HARDWARE": ["2.1.8"],
+    "C1S-CON-ROUTER-ROLE": ["2.1.9"],
+    "C1S-CON-ETHERNET-COLLISIONS": ["2.1.10"],
+    "C1S-CON-BIT-STREAMING": ["2.1.11"],
+    "C1S-CON-WWW-VS-INTERNET": ["2.1.12"],
+    "C1S-CON-INTERNET-HARDWARE": ["2.1.13"],
+    # 3 Hardware — 3.1 computers and memory
+    "C1S-CON-HW-IO-MEMORY-NEED": ["3.1.1"],
+    "C1S-CON-EMBEDDED-SYSTEMS": ["3.1.2"],
+    "C1S-CON-HW-DEVICE-OPS": ["3.1.3"],
+    "C1S-CON-BUFFERS": ["3.1.4"],
+    "C1S-CON-RAM-VS-ROM": ["3.1.5"],
+    "C1S-CON-SRAM-VS-DRAM": ["3.1.6"],
+    "C1S-CON-PROM-EPROM-EEPROM": ["3.1.7"],
+    "C1S-CON-MONITOR-CONTROL": ["3.1.8"],
+    # 3.2 logic gates
+    "C1S-CON-GATE-SYMBOLS": ["3.2.1", "3.2.2", "3.2.3"],
+    "C1S-CON-GATE-FUNCTIONS": ["3.2.4", "3.2.5"],
+    "C1S-CON-GATE-TRUTH-TABLES": ["3.2.6"],
+    "C1S-CON-LOGIC-CIRCUIT": ["3.2.7"],
+    "C1S-CON-CIRCUIT-TRUTH-TABLE": ["3.2.8"],
+    "C1S-CON-LOGIC-EXPRESSION": ["3.2.9"],
+    # 4 Processor fundamentals — 4.1 architecture
+    "C1S-CON-VON-NEUMANN": ["4.1.1"],
+    "C1S-CON-REGISTERS": ["4.1.2"],
+    "C1S-CON-ALU-CU-ROLES": ["4.1.3"],
+    "C1S-CON-BUS-TRANSFER": ["4.1.4"],
+    "C1S-CON-PERFORMANCE-FACTORS": ["4.1.5"],
+    "C1S-CON-PORTS-PERIPHERALS": ["4.1.6"],
+    "C1S-CON-FETCH-EXECUTE": ["4.1.7"],
+    "C1S-CON-INTERRUPTS": ["4.1.8"],
+    # 4.2 assembly
+    "C1S-CON-ASM-MACHINE-CODE": ["4.2.1"],
+    "C1S-CON-ASM-TWO-PASS": ["4.2.2"],
+    "C1S-CON-ASM-TRACE": ["4.2.3"],
+    "C1S-CON-INSTRUCTION-GROUPS": ["4.2.4"],
+    "C1S-CON-ADDRESSING-MODES": ["4.2.5"],
+    # 4.3 bit manipulation
+    "C1S-CON-BINARY-SHIFTS": ["4.3.1"],
+    "C1S-CON-BIT-MANIPULATION": ["4.3.2"],
+    "C1S-CON-ASM-OPERATIONS": ["4.3.3", "4.3.4"],
+    # 5 System software — 5.1 OS
+    "C1S-CON-OS-NEED": ["5.1.1"],
+    "C1S-CON-OS-MANAGEMENT-TASKS": ["5.1.2"],
+    "C1S-CON-UTILITY-SOFTWARE": ["5.1.3"],
+    "C1S-CON-PROGRAM-LIBRARIES": ["5.1.4"],
+    # 5.2 translators
+    "C1S-CON-TRANSLATOR-NEED": ["5.2.1"],
+    "C1S-CON-ASSEMBLER-TRANSLATION": ["5.2.2"],
+    "C1S-CON-COMPILER-TRANSLATION": ["5.2.3"],
+    "C1S-CON-INTERPRETER-TRANSLATION": ["5.2.4"],
+    "C1S-CON-COMPILER-VS-INTERPRETER": ["5.2.5"],
+    "C1S-CON-PARTIAL-COMPILED": ["5.2.6"],
+    "C1S-CON-IDE-FEATURES": ["5.2.7"],
+    # 6 Security, privacy and data integrity
+    "C1S-CON-SEC-PRIVACY-INTEGRITY": ["6.1.1"],
+    "C1S-CON-SECURITY-NEED": ["6.1.2"],
+    "C1S-CON-SECURITY-MEASURES": ["6.1.3"],
+    "C1S-CON-NETWORK-THREATS": ["6.1.4"],
+    "C1S-CON-THREAT-MITIGATION": ["6.1.5"],
+    "C1S-CON-DATA-SECURITY-METHODS": ["6.1.6"],
+    "C1S-CON-VALIDATION-VERIFICATION": ["6.2.1"],
+    "C1S-CON-VALIDATION-METHODS": ["6.2.2"],
+    "C1S-CON-VERIFICATION-METHODS": ["6.2.3"],
+    # 7 Ethics and ownership
+    "C1S-CON-ETHICS-PROFESSIONAL": ["7.1.1"],
+    "C1S-CON-ETHICS-IMPACT": ["7.1.2"],
+    "C1S-CON-COPYRIGHT": ["7.1.3"],
+    "C1S-CON-SOFTWARE-LICENSING": ["7.1.4"],
+    "C1S-CON-AI-AWARENESS": ["7.1.5"],
+    # 8 Databases
+    "C1S-CON-FILE-APPROACH-LIMITS": ["8.1.1"],
+    "C1S-CON-RELATIONAL-DB": ["8.1.2"],
+    "C1S-CON-RELATIONAL-TERMS": ["8.1.3"],
+    "C1S-CON-ER-DIAGRAM": ["8.1.4"],
+    "C1S-CON-NORMALISATION": ["8.1.5"],
+    "C1S-CON-3NF-JUDGEMENT": ["8.1.6"],
+    "C1S-CON-NORMALISED-DESIGN": ["8.1.7"],
+    "C1S-CON-DBMS-FEATURES": ["8.2.1"],
+    "C1S-CON-DBMS-TOOLS": ["8.2.2"],
+    "C1S-CON-DDL-ROLE": ["8.3.1"],
+    "C1S-CON-DML-ROLE": ["8.3.2"],
+    "C1S-CON-SQL-STANDARD": ["8.3.3"],
+    "C1S-CON-SQL-DDL-WRITE": ["8.3.4"],
+    # 9 Problem-solving
+    "C1S-CON-ABSTRACTION": ["9.1.1"],
+    "C1S-CON-DECOMPOSITION": ["9.1.2"],
+    "C1S-CON-ALGORITHM-DEF": ["9.2.1"],
+    "C1S-CON-IDENTIFIERS-DATA": ["9.2.2"],
+    "C1S-CON-PSEUDOCODE-IPO": ["9.2.3"],
+    "C1S-CON-BASIC-CONSTRUCTS": ["9.2.4"],
+    "C1S-CON-ALG-DOCUMENTATION": ["9.2.5"],
+    "C1S-CON-PSEUDOCODE-FROM-DESIGN": ["9.2.6", "9.2.7", "9.2.8"],
+    "C1S-CON-FLOWCHART-FROM-DESIGN": ["9.2.9", "9.2.10", "9.2.11"],
+    # 10 Programming
+    "C1S-CON-DATA-TYPE-SELECTION": ["10.1.1"],
+    "C1S-CON-RECORD-STRUCTURE": ["10.1.2"],
+    "C1S-CON-ARRAY-TERMS": ["10.2.1"],
+    "C1S-CON-ARRAY-SELECTION": ["10.2.2"],
+    "C1S-CON-ARRAY-PSEUDOCODE": ["10.2.3"],
+    "C1S-CON-ARRAY-PROCESSING": ["10.2.4"],
+    "C1S-CON-FILE-NEED": ["10.3.1"],
+    "C1S-CON-TEXT-FILE-PSEUDOCODE": ["10.3.2"],
+    "C1S-CON-ADT-DEF": ["10.4.1"],
+    "C1S-CON-STACK-QUEUE-LIST": ["10.4.2"],
+    "C1S-CON-ADT-USE": ["10.4.3"],
+    "C1S-CON-ADT-ARRAY-IMPL": ["10.4.4"],
+    # 11 Pseudocode — 11.1 statements
+    "C1S-CON-PSEUDOCODE-FROM-FLOWCHART": ["11.1.1"],
+    "C1S-CON-CONSTANTS": ["11.1.3"],
+    "C1S-CON-VARIABLES": ["11.1.4"],
+    "C1S-CON-ASSIGNMENT": ["11.1.5"],
+    "C1S-CON-EXPRESSIONS-OPERATORS": ["11.1.6"],
+    "C1S-CON-BUILT-IN-FUNCTIONS": ["11.1.7"],
+    # 11.2 constructs
+    "C1S-CON-IF-STATEMENTS": ["11.2.2"],
+    "C1S-CON-CASE-STRUCTURE": ["11.2.3"],
+    "C1S-CON-COUNT-CONTROLLED-LOOP": ["11.2.4"],
+    "C1S-CON-POST-CONDITION-LOOP": ["11.2.5"],
+    "C1S-CON-PRE-CONDITION-LOOP": ["11.2.6"],
+    "C1S-CON-LOOP-CHOICE": ["11.2.7"],
+    # 11.3 procedures and functions
+    "C1S-CON-PROCEDURE-DEF": ["11.3.1"],
+    "C1S-CON-PROCEDURE-WHEN": ["11.3.2"],
+    "C1S-CON-PARAMETERS": ["11.3.3"],
+    "C1S-CON-FUNCTION-DEF": ["11.3.4"],
+    "C1S-CON-FUNCTION-WHEN": ["11.3.5"],
+    "C1S-CON-PROCFUNC-TERMS": ["11.3.6"],
+    "C1S-CON-EFFICIENT-PSEUDOCODE": ["11.3.7"],
+    # 12 Software development
+    "C1S-CON-LIFECYCLE-PURPOSE": ["12.1.1"],
+    "C1S-CON-LIFECYCLE-CHOICE": ["12.1.2"],
+    "C1S-CON-LIFECYCLE-COMPARE": ["12.1.3"],
+    "C1S-CON-LIFECYCLE-STAGES": ["12.1.4"],
+    "C1S-CON-STRUCTURE-CHART": ["12.2.1"],
+    "C1S-CON-STATE-TRANSITION-DIAGRAM": ["12.2.2"],
+    "C1S-CON-FAULT-EXPOSURE": ["12.3.1"],
+    "C1S-CON-ERROR-TYPES": ["12.3.2"],
+    "C1S-CON-ERROR-CORRECTION": ["12.3.3"],
+    "C1S-CON-TESTING-METHODS": ["12.3.4"],
+    "C1S-CON-TEST-STRATEGY": ["12.3.5"],
+    "C1S-CON-TEST-DATA": ["12.3.6"],
+    "C1S-CON-MAINTENANCE-TYPES": ["12.3.7"],
+    "C1S-CON-PROGRAM-AMENDMENTS": ["12.3.8"],
+}
+
+EDGES = [
+    # 1.1 number systems
+    ("C1S-CON-BIN-MAGNITUDES", "C1S-CON-NUMBER-SYSTEMS", DD),
+    ("C1S-CON-NUMBER-SYSTEMS", "C1S-CON-BINARY-ARITH", DD),
+    ("C1S-CON-NUMBER-SYSTEMS", "C1S-CON-BCD-HEX-USES", DD),
+    ("C1S-CON-NUMBER-SYSTEMS", "C1S-CON-CHAR-FORMATS", DD),
+    # 1.2 multimedia
+    ("C1S-CON-NUMBER-SYSTEMS", "C1S-CON-BITMAP-ENCODING", UWR),
+    ("C1S-CON-BITMAP-ENCODING", "C1S-CON-BITMAP-SIZE", DD),
+    ("C1S-CON-BITMAP-ENCODING", "C1S-CON-BITMAP-QUALITY", DD),
+    ("C1S-CON-BITMAP-ENCODING", "C1S-CON-BITMAP-VS-VECTOR", UWR),
+    ("C1S-CON-VECTOR-ENCODING", "C1S-CON-BITMAP-VS-VECTOR", UWR),
+    ("C1S-CON-NUMBER-SYSTEMS", "C1S-CON-SOUND-ENCODING", UWR),
+    ("C1S-CON-SOUND-ENCODING", "C1S-CON-SOUND-SAMPLING-IMPACT", DD),
+    # 1.3 compression
+    ("C1S-CON-BITMAP-ENCODING", "C1S-CON-COMPRESSION-NEED", UWR),
+    ("C1S-CON-SOUND-ENCODING", "C1S-CON-COMPRESSION-NEED", UWR),
+    ("C1S-CON-COMPRESSION-NEED", "C1S-CON-LOSSY-LOSSLESS", DD),
+    ("C1S-CON-LOSSY-LOSSLESS", "C1S-CON-FILE-COMPRESSION", DD),
+    # 2 Communication
+    ("C1S-CON-NETWORK-DEVICES", "C1S-CON-LAN-WAN", UWR),
+    ("C1S-CON-LAN-WAN", "C1S-CON-CLIENT-PEER-MODELS", UWR),
+    ("C1S-CON-CLIENT-PEER-MODELS", "C1S-CON-THIN-THICK-CLIENT", UWR),
+    ("C1S-CON-LAN-WAN", "C1S-CON-TOPOLOGIES", UWR),
+    ("C1S-CON-CLIENT-PEER-MODELS", "C1S-CON-CLOUD-COMPUTING", UWR),
+    ("C1S-CON-LAN-WAN", "C1S-CON-WIRELESS-WIRED", UWR),
+    ("C1S-CON-NETWORK-DEVICES", "C1S-CON-LAN-HARDWARE", UWR),
+    ("C1S-CON-LAN-HARDWARE", "C1S-CON-ROUTER-ROLE", UWR),
+    ("C1S-CON-LAN-HARDWARE", "C1S-CON-ETHERNET-COLLISIONS", UWR),
+    ("C1S-CON-CLIENT-PEER-MODELS", "C1S-CON-BIT-STREAMING", UWR),
+    ("C1S-CON-LAN-WAN", "C1S-CON-WWW-VS-INTERNET", UWR),
+    ("C1S-CON-ROUTER-ROLE", "C1S-CON-INTERNET-HARDWARE", UWR),
+    # 3.1 computers and memory
+    ("C1S-CON-HW-IO-MEMORY-NEED", "C1S-CON-HW-DEVICE-OPS", DD),
+    ("C1S-CON-HW-IO-MEMORY-NEED", "C1S-CON-RAM-VS-ROM", UWR),
+    ("C1S-CON-RAM-VS-ROM", "C1S-CON-SRAM-VS-DRAM", DD),
+    ("C1S-CON-RAM-VS-ROM", "C1S-CON-PROM-EPROM-EEPROM", DD),
+    ("C1S-CON-HW-IO-MEMORY-NEED", "C1S-CON-BUFFERS", UWR),
+    ("C1S-CON-HW-IO-MEMORY-NEED", "C1S-CON-EMBEDDED-SYSTEMS", UWR),
+    ("C1S-CON-EMBEDDED-SYSTEMS", "C1S-CON-MONITOR-CONTROL", DD),
+    # 3.2 logic gates
+    ("C1S-CON-GATE-SYMBOLS", "C1S-CON-GATE-FUNCTIONS", DD),
+    ("C1S-CON-GATE-FUNCTIONS", "C1S-CON-GATE-TRUTH-TABLES", DD),
+    ("C1S-CON-GATE-TRUTH-TABLES", "C1S-CON-LOGIC-CIRCUIT", UWR),
+    ("C1S-CON-LOGIC-CIRCUIT", "C1S-CON-CIRCUIT-TRUTH-TABLE", DD),
+    ("C1S-CON-CIRCUIT-TRUTH-TABLE", "C1S-CON-LOGIC-EXPRESSION", DD),
+    # 4.1 architecture
+    ("C1S-CON-VON-NEUMANN", "C1S-CON-REGISTERS", DD),
+    ("C1S-CON-VON-NEUMANN", "C1S-CON-ALU-CU-ROLES", DD),
+    ("C1S-CON-REGISTERS", "C1S-CON-BUS-TRANSFER", UWR),
+    ("C1S-CON-REGISTERS", "C1S-CON-FETCH-EXECUTE", UWR),
+    ("C1S-CON-ALU-CU-ROLES", "C1S-CON-FETCH-EXECUTE", UWR),
+    ("C1S-CON-FETCH-EXECUTE", "C1S-CON-PERFORMANCE-FACTORS", UWR),
+    ("C1S-CON-HW-IO-MEMORY-NEED", "C1S-CON-PORTS-PERIPHERALS", UWR),
+    ("C1S-CON-FETCH-EXECUTE", "C1S-CON-INTERRUPTS", UWR),
+    # 4.2 assembly
+    ("C1S-CON-VON-NEUMANN", "C1S-CON-ASM-MACHINE-CODE", UWR),
+    ("C1S-CON-ASM-MACHINE-CODE", "C1S-CON-ASM-TWO-PASS", DD),
+    ("C1S-CON-ASM-TWO-PASS", "C1S-CON-ASM-TRACE", UWR),
+    ("C1S-CON-REGISTERS", "C1S-CON-ASM-TRACE", UWR),
+    ("C1S-CON-ASM-MACHINE-CODE", "C1S-CON-INSTRUCTION-GROUPS", UWR),
+    ("C1S-CON-INSTRUCTION-GROUPS", "C1S-CON-ADDRESSING-MODES", DD),
+    # 4.3 bit manipulation
+    ("C1S-CON-NUMBER-SYSTEMS", "C1S-CON-BINARY-SHIFTS", UWR),
+    ("C1S-CON-BINARY-SHIFTS", "C1S-CON-BIT-MANIPULATION", DD),
+    ("C1S-CON-GATE-FUNCTIONS", "C1S-CON-BIT-MANIPULATION", UWR),
+    ("C1S-CON-REGISTERS", "C1S-CON-ASM-OPERATIONS", UWR),
+    ("C1S-CON-ASM-TRACE", "C1S-CON-ASM-OPERATIONS", UWR),
+    # 5.1 OS
+    ("C1S-CON-OS-NEED", "C1S-CON-OS-MANAGEMENT-TASKS", DD),
+    ("C1S-CON-OS-NEED", "C1S-CON-UTILITY-SOFTWARE", UWR),
+    ("C1S-CON-OS-NEED", "C1S-CON-PROGRAM-LIBRARIES", UWR),
+    ("C1S-CON-INTERRUPTS", "C1S-CON-OS-MANAGEMENT-TASKS", UWR),
+    # 5.2 translators
+    ("C1S-CON-TRANSLATOR-NEED", "C1S-CON-ASSEMBLER-TRANSLATION", DD),
+    ("C1S-CON-TRANSLATOR-NEED", "C1S-CON-COMPILER-TRANSLATION", DD),
+    ("C1S-CON-TRANSLATOR-NEED", "C1S-CON-INTERPRETER-TRANSLATION", DD),
+    ("C1S-CON-ASM-MACHINE-CODE", "C1S-CON-ASSEMBLER-TRANSLATION", UWR),
+    ("C1S-CON-COMPILER-TRANSLATION", "C1S-CON-COMPILER-VS-INTERPRETER", DD),
+    ("C1S-CON-INTERPRETER-TRANSLATION", "C1S-CON-COMPILER-VS-INTERPRETER", DD),
+    ("C1S-CON-COMPILER-VS-INTERPRETER", "C1S-CON-PARTIAL-COMPILED", DD),
+    ("C1S-CON-COMPILER-VS-INTERPRETER", "C1S-CON-IDE-FEATURES", UWR),
+    # 6 security, privacy, integrity
+    ("C1S-CON-SEC-PRIVACY-INTEGRITY", "C1S-CON-SECURITY-NEED", DD),
+    ("C1S-CON-SECURITY-NEED", "C1S-CON-SECURITY-MEASURES", UWR),
+    ("C1S-CON-SECURITY-NEED", "C1S-CON-NETWORK-THREATS", UWR),
+    ("C1S-CON-LAN-WAN", "C1S-CON-NETWORK-THREATS", UWR),
+    ("C1S-CON-NETWORK-THREATS", "C1S-CON-THREAT-MITIGATION", UWR),
+    ("C1S-CON-THREAT-MITIGATION", "C1S-CON-DATA-SECURITY-METHODS", UWR),
+    ("C1S-CON-VALIDATION-VERIFICATION", "C1S-CON-VALIDATION-METHODS", DD),
+    ("C1S-CON-VALIDATION-VERIFICATION", "C1S-CON-VERIFICATION-METHODS", DD),
+    # 7 ethics and ownership
+    ("C1S-CON-ETHICS-PROFESSIONAL", "C1S-CON-ETHICS-IMPACT", DD),
+    ("C1S-CON-ETHICS-PROFESSIONAL", "C1S-CON-COPYRIGHT", UWR),
+    ("C1S-CON-COPYRIGHT", "C1S-CON-SOFTWARE-LICENSING", DD),
+    ("C1S-CON-ETHICS-PROFESSIONAL", "C1S-CON-AI-AWARENESS", UWR),
+    # 8 databases
+    ("C1S-CON-FILE-APPROACH-LIMITS", "C1S-CON-RELATIONAL-DB", DD),
+    ("C1S-CON-RELATIONAL-DB", "C1S-CON-RELATIONAL-TERMS", DD),
+    ("C1S-CON-RELATIONAL-TERMS", "C1S-CON-ER-DIAGRAM", DD),
+    ("C1S-CON-RELATIONAL-TERMS", "C1S-CON-NORMALISATION", UWR),
+    ("C1S-CON-NORMALISATION", "C1S-CON-3NF-JUDGEMENT", DD),
+    ("C1S-CON-NORMALISATION", "C1S-CON-NORMALISED-DESIGN", UWR),
+    ("C1S-CON-3NF-JUDGEMENT", "C1S-CON-NORMALISED-DESIGN", UWR),
+    ("C1S-CON-FILE-APPROACH-LIMITS", "C1S-CON-DBMS-FEATURES", UWR),
+    ("C1S-CON-RELATIONAL-TERMS", "C1S-CON-DBMS-FEATURES", UWR),
+    ("C1S-CON-DBMS-FEATURES", "C1S-CON-DBMS-TOOLS", DD),
+    ("C1S-CON-DBMS-FEATURES", "C1S-CON-DDL-ROLE", UWR),
+    ("C1S-CON-DBMS-FEATURES", "C1S-CON-DML-ROLE", UWR),
+    ("C1S-CON-DDL-ROLE", "C1S-CON-SQL-STANDARD", UWR),
+    ("C1S-CON-DML-ROLE", "C1S-CON-SQL-STANDARD", UWR),
+    ("C1S-CON-SQL-STANDARD", "C1S-CON-SQL-DDL-WRITE", DD),
+    # 9 problem-solving
+    ("C1S-CON-ABSTRACTION", "C1S-CON-DECOMPOSITION", UWR),
+    ("C1S-CON-DECOMPOSITION", "C1S-CON-ALGORITHM-DEF", UWR),
+    ("C1S-CON-ALGORITHM-DEF", "C1S-CON-IDENTIFIERS-DATA", UWR),
+    ("C1S-CON-IDENTIFIERS-DATA", "C1S-CON-PSEUDOCODE-IPO", UWR),
+    ("C1S-CON-PSEUDOCODE-IPO", "C1S-CON-BASIC-CONSTRUCTS", DD),
+    ("C1S-CON-BASIC-CONSTRUCTS", "C1S-CON-ALG-DOCUMENTATION", UWR),
+    ("C1S-CON-ALG-DOCUMENTATION", "C1S-CON-PSEUDOCODE-FROM-DESIGN", UWR),
+    ("C1S-CON-ALG-DOCUMENTATION", "C1S-CON-FLOWCHART-FROM-DESIGN", UWR),
+    # 10 programming
+    ("C1S-CON-BASIC-CONSTRUCTS", "C1S-CON-DATA-TYPE-SELECTION", UWR),
+    ("C1S-CON-DATA-TYPE-SELECTION", "C1S-CON-RECORD-STRUCTURE", DD),
+    ("C1S-CON-DATA-TYPE-SELECTION", "C1S-CON-ARRAY-TERMS", UWR),
+    ("C1S-CON-ARRAY-TERMS", "C1S-CON-ARRAY-SELECTION", DD),
+    ("C1S-CON-ARRAY-SELECTION", "C1S-CON-ARRAY-PSEUDOCODE", DD),
+    ("C1S-CON-ARRAY-PSEUDOCODE", "C1S-CON-ARRAY-PROCESSING", UWR),
+    ("C1S-CON-DATA-TYPE-SELECTION", "C1S-CON-FILE-NEED", UWR),
+    ("C1S-CON-FILE-NEED", "C1S-CON-TEXT-FILE-PSEUDOCODE", DD),
+    ("C1S-CON-ARRAY-TERMS", "C1S-CON-ADT-DEF", UWR),
+    ("C1S-CON-ADT-DEF", "C1S-CON-STACK-QUEUE-LIST", DD),
+    ("C1S-CON-STACK-QUEUE-LIST", "C1S-CON-ADT-USE", UWR),
+    ("C1S-CON-ADT-USE", "C1S-CON-ADT-ARRAY-IMPL", DD),
+    ("C1S-CON-ARRAY-PSEUDOCODE", "C1S-CON-ADT-ARRAY-IMPL", UWR),
+    # 11.1 statements
+    ("C1S-CON-FLOWCHART-FROM-DESIGN", "C1S-CON-PSEUDOCODE-FROM-FLOWCHART", UWR),
+    ("C1S-CON-PSEUDOCODE-FROM-FLOWCHART", "C1S-CON-CONSTANTS", UWR),
+    ("C1S-CON-CONSTANTS", "C1S-CON-VARIABLES", UWR),
+    ("C1S-CON-VARIABLES", "C1S-CON-ASSIGNMENT", DD),
+    ("C1S-CON-ASSIGNMENT", "C1S-CON-EXPRESSIONS-OPERATORS", UWR),
+    # 11.2 constructs
+    ("C1S-CON-BASIC-CONSTRUCTS", "C1S-CON-IF-STATEMENTS", UWR),
+    ("C1S-CON-EXPRESSIONS-OPERATORS", "C1S-CON-IF-STATEMENTS", UWR),
+    ("C1S-CON-IF-STATEMENTS", "C1S-CON-CASE-STRUCTURE", UWR),
+    ("C1S-CON-BASIC-CONSTRUCTS", "C1S-CON-COUNT-CONTROLLED-LOOP", UWR),
+    ("C1S-CON-COUNT-CONTROLLED-LOOP", "C1S-CON-POST-CONDITION-LOOP", UWR),
+    ("C1S-CON-COUNT-CONTROLLED-LOOP", "C1S-CON-PRE-CONDITION-LOOP", UWR),
+    ("C1S-CON-POST-CONDITION-LOOP", "C1S-CON-LOOP-CHOICE", UWR),
+    ("C1S-CON-PRE-CONDITION-LOOP", "C1S-CON-LOOP-CHOICE", UWR),
+    # 11.3 procedures and functions
+    ("C1S-CON-BUILT-IN-FUNCTIONS", "C1S-CON-FUNCTION-DEF", UWR),
+    ("C1S-CON-PROCEDURE-DEF", "C1S-CON-PROCEDURE-WHEN", UWR),
+    ("C1S-CON-PROCEDURE-DEF", "C1S-CON-PARAMETERS", DD),
+    ("C1S-CON-PROCEDURE-DEF", "C1S-CON-FUNCTION-DEF", UWR),
+    ("C1S-CON-FUNCTION-DEF", "C1S-CON-FUNCTION-WHEN", UWR),
+    ("C1S-CON-PROCEDURE-DEF", "C1S-CON-PROCFUNC-TERMS", UWR),
+    ("C1S-CON-FUNCTION-DEF", "C1S-CON-PROCFUNC-TERMS", UWR),
+    ("C1S-CON-LOOP-CHOICE", "C1S-CON-EFFICIENT-PSEUDOCODE", UWR),
+    ("C1S-CON-PROCFUNC-TERMS", "C1S-CON-EFFICIENT-PSEUDOCODE", UWR),
+    # 12 software development
+    ("C1S-CON-LIFECYCLE-PURPOSE", "C1S-CON-LIFECYCLE-CHOICE", DD),
+    ("C1S-CON-LIFECYCLE-CHOICE", "C1S-CON-LIFECYCLE-COMPARE", UWR),
+    ("C1S-CON-LIFECYCLE-PURPOSE", "C1S-CON-LIFECYCLE-STAGES", UWR),
+    ("C1S-CON-DECOMPOSITION", "C1S-CON-STRUCTURE-CHART", UWR),
+    ("C1S-CON-ALG-DOCUMENTATION", "C1S-CON-STATE-TRANSITION-DIAGRAM", UWR),
+    ("C1S-CON-LIFECYCLE-STAGES", "C1S-CON-STRUCTURE-CHART", UWR),
+    ("C1S-CON-LIFECYCLE-STAGES", "C1S-CON-FAULT-EXPOSURE", UWR),
+    ("C1S-CON-FAULT-EXPOSURE", "C1S-CON-ERROR-TYPES", UWR),
+    ("C1S-CON-ERROR-TYPES", "C1S-CON-ERROR-CORRECTION", DD),
+    ("C1S-CON-FAULT-EXPOSURE", "C1S-CON-TESTING-METHODS", UWR),
+    ("C1S-CON-TESTING-METHODS", "C1S-CON-TEST-STRATEGY", UWR),
+    ("C1S-CON-TEST-STRATEGY", "C1S-CON-TEST-DATA", UWR),
+    ("C1S-CON-LIFECYCLE-STAGES", "C1S-CON-MAINTENANCE-TYPES", UWR),
+    ("C1S-CON-ERROR-CORRECTION", "C1S-CON-PROGRAM-AMENDMENTS", UWR),
+    # knowingly served-order-reversed authored pairs (honest teaching
+    # direction; the in-order law drops them, counted and disclosed):
+    # gate functions -> monitor/control systems (3.2.4 teaches the logic
+    # behind the 3.1.8 control application, but 3.1.8 is served first)
+    ("C1S-CON-GATE-FUNCTIONS", "C1S-CON-MONITOR-CONTROL", UWR),
+    # addressing modes -> assembly trace (tracing needs the addressing
+    # modes, but 4.2.3 is served before 4.2.5)
+    ("C1S-CON-ADDRESSING-MODES", "C1S-CON-ASM-TRACE", UWR),
+]

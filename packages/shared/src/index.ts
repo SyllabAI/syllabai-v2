@@ -59,3 +59,13 @@ export * from "./answerDebris";
  */
 export * from "./specQuiz";
 export * from "./smeRef";
+
+/**
+ * Tier-3 follow-up 4 (dashboard UX review 2026-11-04): the synthetic
+ * assignment-title filter as the ONE implementation for both learner
+ * surfaces — the api's `fetchAssignmentLists` source filter (probe rows
+ * stop being issued) and the hub's set-work-card defense-in-depth filter.
+ * Law and false-positive boundary pinned first-hand in
+ * synthetic-assignment.test.ts.
+ */
+export * from "./synthetic-assignment";

@@ -59,9 +59,11 @@ widthFrac — ink on paper doesn't shrink).
 
 ## 3. Disclosed deviations (each deliberate)
 
-- **The consent gate stays**: MG's toolbar is always visible; ours keeps the
-  T-MG-INK-3 gate ("Ink" launcher + the migration notice law). Once opened, parity
-  holds; the gate is a product posture, not a UX gap.
+- **The consent gate was retired by T-MG-INK-11** (2026-11-03, the operator's
+  100%-parity dispatch): the "Ink" launcher and the "Close ink layer" chrome are
+  GONE; the toolbar is always visible (MG's law) and the sync gate (!sourceUrl)
+  stays the only mount condition. The migration-notice law itself is untouched
+  (sync mode still offers Upload/Discard for pre-existing local ink).
 - **No MathLive**: MG edits math in a WYSIWYG math-field; we edit raw LaTeX in the
   textarea per the MG-INK-SDK-GATE verdict (bundle/licence discipline). The COMMITTED
   render (KaTeX) is identical.
@@ -177,3 +179,24 @@ simply not the current arming. One disclosed refinement: re-clicking
 the already-armed tool counts as a re-arm (the chip returns) — MG's
 behavior on that exact gesture was not probed; the law above (re-arm
 after tool change) is proven.
+
+## 7. T-MG-INK-11 — the full-parity verification: the gate dies, the palette takes MG's shape
+
+The operator ordered a 100%-parity verification ("verify the frontend … exactly
+like maths genie"). MG was re-extracted FRESH (live paper viewer, 2026-11-03):
+every §1 number still holds — 18 ungated toolbar buttons, the chips, the hint
+card, Shantell — and the palette anatomy was captured properly this time: ONE
+trigger per row (a 16px round dot of the CURRENT colour under a dynamic label
+"Pen colour: Black" / "Pen thickness: Medium") opening a menu of the six NAMED
+colours / the four NAMED thicknesses. Our inline 6-swatch and 4-dot rows were
+never MG's shape and had never been recorded as a deviation — found by the
+sweep, fixed to MG's anatomy. The text chip's line-height was measured at MG's
+1.35 (32.4px box at 24px) and pinned. And the §3 consent-gate posture is
+RETIRED by the same dispatch: the "Ink" launcher and the "Close ink layer"
+chrome are deleted; the toolbar is always visible (MG's law), the sync gate
+(!sourceUrl) stays the only mount condition. Post-deploy live verification:
+toolbar visible on load with zero interaction, dynamic triggers re-skin on
+pick (Red / Extra thick), chip 32.4px centred on the cursor, editor posture
+byte-equal, local ink persists across reload. Disclosed: a chevron on the
+triggers is ours (not proven against MG's DOM); everything else in the
+annotator surface is MG's, measured.

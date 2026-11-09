@@ -67,6 +67,7 @@ import { cn } from "@/lib/utils";
 import {
   aggregateUms,
   averageBoundariesAcrossSeries,
+  bestAggregationSelection,
   gradeForMark,
   gradeFromAggregation,
   isRegionalVariant,
@@ -227,12 +228,25 @@ export function GradeBoundariesWorkspace({
   const aggSessions = useMemo(() => {
     if (!isAgg) return [];
     const required = calc?.required ?? [];
+    const sel = calc?.selection;
     return sessions.map((s) => {
       const units = s.primary.calculatorUnits ?? [];
       const codes = new Set(units.map((u) => u.code));
       const requiredOk = required.every((c) => codes.has(c));
       const pairs = usableOptionalPairs(calc?.optionalPairs, units);
       const hasUms = units.every((u) => !!u.ums);
+      // selection-mode (T-GRADE-10, YFM01): the session is calculator-
+      // eligible only when the official Rule can actually be applied —
+      // mustInclude + atLeastOneOf present among the convertible units
+      // and enough pool units to draw `size` of them
+      const withUms = units
+        .filter((u) => !!u.ums)
+        .map((u) => u.code);
+      const selOk = !sel
+        || (sel.mustInclude ?? []).every((c) => withUms.includes(c))
+          && (sel.atLeastOneOf ?? []).some((c) => withUms.includes(c))
+          && withUms.filter((c) => sel.pool.includes(c)).length
+            >= sel.size;
       const cashIn = s.primary.cashIns?.find(
         (c) => c.code === calc?.cashIn,
       );
@@ -242,7 +256,7 @@ export function GradeBoundariesWorkspace({
         units,
         cashIn,
         pairs,
-        eligible: requiredOk && hasUms && !!cashIn
+        eligible: requiredOk && hasUms && !!cashIn && selOk
           && (pairs.length > 0 || !calc?.optionalPairs?.length),
       };
     });
@@ -255,9 +269,18 @@ export function GradeBoundariesWorkspace({
     isAgg && activeAgg?.pairs.length
       ? activeAgg.pairs[Math.min(pairIdx, activeAgg.pairs.length - 1)]
       : null;
+  const selectionRule = calc?.selection ?? null;
 
   const compositionUnits = useMemo<AggregationUnit[]>(() => {
     if (!isAgg || !activeAgg?.eligible) return [];
+    if (selectionRule) {
+      // selection-mode (YFM01): the user enters marks for every pool unit
+      // the session can convert; the engine picks the award's six per the
+      // board's Rule 1 — there is no fixed composition to assemble
+      return activeAgg.units.filter(
+        (u) => !!u.ums && selectionRule.pool.includes(u.code),
+      );
+    }
     const byCode = new Map(
       activeAgg.units.map((u) => [u.code, u] as const),
     );
@@ -268,21 +291,43 @@ export function GradeBoundariesWorkspace({
       .map((c) => byCode.get(c))
       .filter((u): u is AggregationUnit => !!u);
     return [...req, ...pairUnits];
-  }, [isAgg, activeAgg, pairPick, calc]);
+  }, [isAgg, activeAgg, pairPick, calc, selectionRule]);
+
+  // selection-mode: Rule 1 over every eligible six — best grade first,
+  // then best UMS total (official Aggregation Rules & Guidance); the
+  // result's perUnit already describes only the units the award uses
+  const aggSel = useMemo(() => {
+    if (!selectionRule || !activeAgg?.cashIn || !compositionUnits.length) {
+      return null;
+    }
+    return bestAggregationSelection(
+      compositionUnits,
+      unitMarks,
+      selectionRule,
+      activeAgg.cashIn,
+      calc?.aStar,
+    );
+  }, [selectionRule, activeAgg, compositionUnits, unitMarks, calc]);
 
   const aggResult = useMemo(() => {
     if (!compositionUnits.length) return null;
+    if (selectionRule) return aggSel?.outcome ?? null;
     return aggregateUms({ units: compositionUnits, marks: unitMarks });
-  }, [compositionUnits, unitMarks]);
+  }, [compositionUnits, unitMarks, selectionRule, aggSel]);
 
   const aggGrade = useMemo(() => {
     if (!isAgg || !aggResult || !activeAgg?.cashIn) return null;
+    if (selectionRule) {
+      return aggSel
+        ? { grade: aggSel.grade, aStarRuleApplied: aggSel.aStarRuleApplied }
+        : null;
+    }
     return gradeFromAggregation(
       activeAgg.cashIn,
       calc?.aStar,
       aggResult,
     );
-  }, [isAgg, aggResult, activeAgg, calc]);
+  }, [isAgg, aggResult, activeAgg, calc, selectionRule, aggSel]);
 
   const aggNext = useMemo(() => {
     if (!aggResult || !activeAgg?.cashIn) return null;
@@ -299,13 +344,30 @@ export function GradeBoundariesWorkspace({
     if (!aggResult || !aStar || !aggGrade) return null;
     if (aggGrade.aStarRuleApplied) return null;
     if (aggResult.totalUms < aStar.overallMin) return null;
+    // modular IGCSE laws (T-GB-STRUCT-3) carry no A2 units: the A2
+    // shortfall text is an A-level concept, absent stays absent
+    if (!aStar.a2Units) return null;
     const a2Ums = aStar.a2Units.reduce(
       (acc, code) =>
         acc + (aggResult.perUnit.find((p) => p.code === code)?.ums ?? 0),
       0,
     );
-    if (a2Ums >= aStar.a2Min) return null;
-    return { have: a2Ums, need: aStar.a2Min };
+    // rate form (T-GRADE-10, selection mode): the A2 ceiling is the sum
+    // of the maxima of the A2 units the combination actually uses
+    const need = aStar.a2Rate !== undefined
+      ? Math.round(
+          aStar.a2Rate *
+            aStar.a2Units.reduce(
+              (acc, code) =>
+                acc +
+                (aggResult.perUnit.find((p) => p.code === code)?.maxUms ??
+                  0),
+              0,
+            ),
+        )
+      : aStar.a2Min;
+    if (need === undefined || a2Ums >= need || need <= 0) return null;
+    return { have: a2Ums, need };
   }, [aggResult, aggGrade, calc]);
 
   // Average mode for the aggregation: MG's mean-row semantics on the
@@ -525,7 +587,7 @@ export function GradeBoundariesWorkspace({
     "flex size-14 items-center justify-center rounded-xl border-2 bg-background font-display text-2xl font-bold tabular-nums sm:size-16 sm:rounded-2xl";
 
   return (
-    <div className="mx-auto max-w-3xl space-y-3">
+    <div className="mx-auto mt-6 max-w-3xl space-y-3">
       {/* the MG calculator box — one bordered card for the whole surface */}
       <div className="rounded-2xl border-2 bg-card p-4 sm:p-6">
         <div className="flex flex-col gap-4">
@@ -733,6 +795,24 @@ export function GradeBoundariesWorkspace({
                           needed for the A* rule.
                         </p>
                       )}
+                      {selectionRule && aggSel && (
+                        <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                          Pearson&apos;s aggregation rule picks the best
+                          eligible six of your units — best grade first,
+                          then best UMS total. This award uses{" "}
+                          {aggSel.usedCodes.join(", ")};{" "}
+                          {aggSel.unusedCodes.length
+                            ? `${aggSel.unusedCodes.join(", ")} stay${
+                                aggSel.unusedCodes.length === 1 ? "s" : ""
+                              } in the bank.`
+                            : "every unit you entered is used."}{" "}
+                          Official post-rule: IAL Mathematics must be awarded
+                          first or concurrently, and units lock to their
+                          qualification group once certificated — re-entering
+                          the Mathematics cash-ins can unlock a better
+                          combination across the two titles.
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -809,13 +889,29 @@ export function GradeBoundariesWorkspace({
                   </div>
 
                   <p className="text-sm text-muted-foreground">
-                    Raw marks convert to UMS through each unit&apos;s own
-                    published boundaries; the {activeAgg.cashIn!.code} cash-in
-                    grades the UMS total
-                    {aggGrade?.aStarRuleApplied
-                      ? " — A* via the A2-aggregate rule (A overall + 90% of A2 UMS)"
-                      : ""}
-                    .
+                    {selectionRule ? (
+                      <>
+                        Enter the raw mark for each{" "}
+                        {activeAgg.cashIn!.code} unit this session published —
+                        the cash-in takes your best eligible six (FP1 plus at
+                        least one of FP2/FP3) and grades their UMS total
+                        {aggGrade?.aStarRuleApplied
+                          ? " — A* via the A2-aggregate rule (A overall + 90% of A2 UMS)"
+                          : ""}
+                        . Unit results can also be banked across series; this
+                        per-session view grades one session&apos;s papers.
+                      </>
+                    ) : (
+                      <>
+                        Raw marks convert to UMS through each unit&apos;s own
+                        published boundaries; the {activeAgg.cashIn!.code}{" "}
+                        cash-in grades the UMS total
+                        {aggGrade?.aStarRuleApplied
+                          ? " — A* via the A2-aggregate rule (A overall + 90% of A2 UMS)"
+                          : ""}
+                        .
+                      </>
+                    )}
                   </p>
                 </>
               )}
@@ -1339,6 +1435,96 @@ export function GradeBoundariesWorkspace({
           </Tabs>
         </div>
       </div>
+
+      {/* T-GB-STRUCT-1: how this qualification is graded — the paper/
+          weighting/award layer from the curated structure of record
+          (official spec documents, sha-pinned). Absent stays absent. */}
+      {entry.structure && (
+        <div className="rounded-2xl border-2 bg-card p-4 sm:p-6">
+          <h5 className="font-display text-lg font-bold tracking-tight">
+            How this qualification is graded
+          </h5>
+          <div className="mt-3 overflow-x-auto">
+            <table className="w-full border-collapse text-sm">
+              <thead>
+                <tr className="bg-muted/60 text-left">
+                  <th className="border-b-2 border-border py-2 pl-3 pr-3 font-medium text-muted-foreground">
+                    Paper
+                  </th>
+                  <th className="border-b-2 border-border px-3 py-2 text-right font-medium text-muted-foreground">
+                    Raw marks
+                  </th>
+                  <th className="border-b-2 border-border px-3 py-2 text-right font-medium text-muted-foreground">
+                    Weight
+                  </th>
+                  <th className="border-b-2 border-border px-3 py-2 text-right font-medium text-muted-foreground">
+                    Counts as
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {entry.structure.papers.map((p) => (
+                  <tr key={p.code} className="border-b border-border/60">
+                    <td className="py-2 pl-3 pr-3">
+                      <span className="font-medium">{p.title ?? p.code}</span>
+                      <span className="ml-2 text-xs tabular-nums text-muted-foreground">
+                        {p.code}
+                        {p.duration ? ` · ${p.duration}` : ""}
+                      </span>
+                    </td>
+                    <td className="px-3 py-2 text-right tabular-nums">
+                      {p.rawMax}
+                    </td>
+                    <td className="px-3 py-2 text-right tabular-nums">
+                      {p.weight.asPrinted ??
+                        `${Math.round((p.weight.num / p.weight.den) * 100)}%`}
+                    </td>
+                    <td className="px-3 py-2 text-right font-medium tabular-nums">
+                      ×{p.weightFactor} → {p.rawMax * p.weightFactor}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Graded total:{" "}
+            <span className="font-medium text-foreground">
+              {entry.structure.total.derivation} ={" "}
+              {entry.structure.total.maxMark}
+            </span>
+            {entry.structure.total.note
+              ? ` — ${entry.structure.total.note}`
+              : ""}
+          </p>
+          {entry.structure.awardRules?.note && (
+            <p className="mt-1.5 text-sm text-muted-foreground">
+              {entry.structure.awardRules.note}
+            </p>
+          )}
+          <p className="mt-2 flex items-start gap-1.5 text-xs text-muted-foreground">
+            <Info className="mt-0.5 size-3.5 shrink-0" aria-hidden />
+            <span>
+              Structure verified against the official specifications:{" "}
+              {entry.structure.sources.map((s, i) => (
+                <span key={s.id}>
+                  {i > 0 && "; "}
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-border underline-offset-2 hover:decoration-foreground"
+                  >
+                    {s.title}
+                  </a>{" "}
+                  (sha256 {s.sha256_16}…)
+                </span>
+              ))}
+              .
+            </span>
+          </p>
+        </div>
+      )}
 
       {/* provenance footer (MG's muted page footer slot) */}
       <p className="flex items-start gap-1.5 px-1 text-sm text-muted-foreground">

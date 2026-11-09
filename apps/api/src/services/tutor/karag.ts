@@ -49,7 +49,7 @@ import {
 } from "./prompt";
 import { promptVariantFor } from "./subject-profile";
 import { evidenceFromNode, withRerankScore, type EvidenceItem } from "./evidence";
-import { kgRetrieve } from "./kg-retriever";
+import { kgRetrieve, mergeKnowledgeContexts } from "./kg-retriever";
 import {
   TUTOR_REFUSAL,
   courseScopeRefusal,
@@ -57,6 +57,7 @@ import {
   promptIdentity,
 } from "./prompt";
 import { retrievalQuery } from "./retrieval-query";
+import { modelRefusalLikely, withRefusalRedirect } from "./refusal-detect";
 import { fuseWithPlanWeights } from "./rrf";
 import {
   defaultSpecBoostIndex,
@@ -94,6 +95,24 @@ export const TUTOR_EVIDENCE_LIMIT = 6; // syllabai.tutor.evidence-limit
  *  capped at this many admitted items (run-004/005 live: 3 of 6 citations
  *  were front-matter the learner never needs). A no-pin ask is untouched. */
 export const TUTOR_PIN_FILLER_CAP = 2;
+
+/** The tutor completion budget (GeneratorOptions.maxTokens default).
+ * HISTORY OF THE VALUE: the frozen yml @ 6cad6ef bound
+ * syllabai.tutor.max-tokens=900 — calibrated when the groq member's
+ * effective default model was the NON-reasoning llama-3.3-70b-versatile.
+ * The chain of record (ruling4 §2, main de30ef8) retired that default for
+ * openai/gpt-oss-120b, a REASONING model whose reasoning tokens count
+ * against the completion cap — so a complex pinned ask (the paper
+ * walkthrough class, issue #706: 3/3 live reproductions) can exhaust the
+ * whole budget inside the reasoning channel, stream ZERO content deltas,
+ * and die on the L2 empty-generation law (karagAskStream) as the fixed
+ * wire error. 4000 gives the reasoning phase plus the longest shaped
+ * answer headroom; the truncation disclosure law (isTruncationFinish)
+ * keeps an over-long generation honest on the wire, and the env knob
+ * (SYLLABAI_TUTOR_MAX_TOKENS at the composition root — the frozen
+ * syllabai.tutor.max-tokens binding the tranche-2 port documented but
+ * never wired) tunes it without a code change. */
+export const TUTOR_COMPLETION_BUDGET_DEFAULT = 4000;
 
 /** Run-013 honest truncation law — the tutor's own copy of the marking
  *  pipeline's isTruncationFinish (services/llmchain/bridges.ts; per-module
@@ -346,10 +365,31 @@ export async function prepare(
   const enriched = retrievalQuery(query, turns);
 
   // 1. deterministic intent + KG context
-  const knowledge: KnowledgeContext =
+  const knowledgeBlend: KnowledgeContext =
     scope == null
       ? { topics: [], prerequisites: [], misconceptions: [] }
       : await kgRetrieve(deps.kgGraph, enriched, deps.maxTopics ?? TUTOR_MAX_TOPICS, scope);
+
+  // 1.1 the KG intent pivot arm (T-TUTOR-PIVOT-2 run-001; prereg of record
+  //  docs/DC9-TUTOR-KG-INTENT-PIVOT-ARM-PLAN.md — the DC7 §4 disclosed
+  //  residual, escalated on the T-TUTOR-AUDIT-1 live receipts: on a pivot
+  //  the intent surface described only the PREVIOUS topic, so that topic's
+  //  rows anchored at the 1.0 spec-boost tier and owned the head of the
+  //  pool the honesty floor reads while the pivot topic contributed
+  //  nothing — the audit's potassium-vs-sodium and "New topic: moles"
+  //  repro classes). The blend keeps its frozen primary arm; the BARE
+  //  question resolves its OWN intent under the exact DC7 pivot condition
+  //  (enriched !== query), and the two contexts merge (mergeKnowledgeContexts
+  //  laws). The bare topics then carry their own KG rows into the pool AND
+  //  join the spec-boost set — on-pivot rows reach the anchor tier the
+  //  previous topic's rows already held. A single-turn ask (or all-blank
+  //  history) degenerates to enriched === query: no second resolution,
+  //  byte-identical behaviour, zero extra queries.
+  const knowledgeBare: KnowledgeContext =
+    scope == null || enriched === query
+      ? { topics: [], prerequisites: [], misconceptions: [] }
+      : await kgRetrieve(deps.kgGraph, query, deps.maxTopics ?? TUTOR_MAX_TOPICS, scope);
+  const knowledge = mergeKnowledgeContexts(knowledgeBlend, knowledgeBare);
 
   // 2. hybrid retrieval: KG evidence + vector evidence
   const kgCandidates = knowledge.topics.map((topic) =>
@@ -367,6 +407,36 @@ export async function prepare(
       ? []
       : await deps.vectorRetriever(
           enriched,
+          deps.vectorCandidates ?? TUTOR_VECTOR_CANDIDATES,
+          scope,
+        );
+
+  // 2.1 the pivot arm (T-TUTOR-PIVOT-1 run-001; prereg of record
+  //  docs/DC7-TUTOR-PIVOT-RETRIEVAL-AND-REFUSAL-TRUTH-PLAN.md). The measured
+  //  defect (2026-11-05 live, session bd6c89ff seq 13-16): after five
+  //  exam-technique turns, the 4-turn/1200-char working-memory blend pulled
+  //  six exam-technique rows for "difference between boiling and
+  //  evaporation" and the honesty floor refused a corpus that holds the
+  //  answer (9/9 cold single-turn probes hit it with the bare question).
+  //  When working memory actually contributed to the retrieval query
+  //  (enriched !== query), the BARE question also retrieves on its own and
+  //  fuses as a third ranked list through the EXISTING weighted RRF — the
+  //  frozen math, tiebreak order and weight map untouched. The blended arm
+  //  keeps its frozen behaviour (genuine follow-ups like "why?" keep their
+  //  history signal; rows both arms agree on now fuse with a double
+  //  contribution — the RRF consensus bonus); the bare arm guarantees the
+  //  pivot's topic survives into the pool the honesty floor reads. A
+  //  single-turn ask (or an all-blank history) degenerates to
+  //  enriched === query: this arm is a no-op — byte-identical behaviour,
+  //  zero extra retrieval work. The KG intent arm is deliberately UNTOUCHED
+  //  (the disclosed residual in the DC7 card §5). The retriever's own
+  //  posture (honest empty on an unavailable embedding provider) governs
+  //  this arm exactly as the primary arm's.
+  const pivotVectorList: EvidenceItem[] =
+    scope == null || enriched === query
+      ? []
+      : await deps.vectorRetriever(
+          query,
           deps.vectorCandidates ?? TUTOR_VECTOR_CANDIDATES,
           scope,
         );
@@ -457,9 +527,12 @@ export async function prepare(
     boostIndex,
     knowledge.topics.map((t) => t.code),
   );
-  const fused = fuseWithPlanWeights([kgCandidates, vectorCandidatesList], {
-    weightDecorator: (item, planWeight) => specBoostWeight(boostSet, item, planWeight),
-  });
+  const fused = fuseWithPlanWeights(
+    [kgCandidates, vectorCandidatesList, pivotVectorList],
+    {
+      weightDecorator: (item, planWeight) => specBoostWeight(boostSet, item, planWeight),
+    },
+  );
 
   // 4. lead-first merge, dedup, rerank + cap (:493-515)
   //    v2 run-004 proposal #2 (operator trace 1a1446156b9d046d) — TWO
@@ -672,7 +745,8 @@ export async function karagAsk(
 ): Promise<AskResult> {
   const startedAt = Date.now();
   const prep = await prepare(deps, learnerId, question, history, courseRef, paperPinId);
-  const refused = prep.evidence.length === 0;
+  const deterministicRefusal = prep.evidence.length === 0;
+  const refused = deterministicRefusal;
 
   let generated: GeneratedAnswer;
   let interventionType: string | null = null;
@@ -706,6 +780,24 @@ export async function karagAsk(
     generated = await deps.generator.generate(prep.query, prep.turns, context);
   }
 
+  // T-TUTOR-PIVOT-1 refusal truth: a MODEL-worded refusal (evidence present
+  // but wrong — the honesty floor fires in the model's own words) now
+  // records refused=true. The deterministic classes stay refused BY
+  // CONSTRUCTION (the first disjunct); the detector keys on the v17 refusal
+  // shape law's canonical stem (tolerant family for provider-rotated
+  // wording). The telemetry event and the persisted turn inherit the truth
+  // through this one computation (routes persist answer.refused verbatim).
+  const modelWordedRefusal = !refused && modelRefusalLikely(generated.answer);
+  const refusedFinal = refused || modelWordedRefusal;
+  // T-TUTOR-PIVOT-1 run-002: the DETERMINISTIC redirect. Run-001's live
+  // replay measured the small-model pool ignoring the v17 redirect law
+  // (6/6 model-worded refusals ended bare — no way forward). The pipeline
+  // appends the redirect line itself on every detected model-worded
+  // refusal; an answer that already carries one is returned untouched.
+  if (modelWordedRefusal) {
+    generated = { ...generated, answer: withRefusalRedirect(generated.answer) };
+  }
+
   const citations = resolveCitations(prep.evidence);
   const latencyMs = (Date.now() - startedAt) / 1000.0;
 
@@ -718,7 +810,7 @@ export async function karagAsk(
     matchedTopicIds: matchedTopicIds(prep.knowledge),
     evidenceCount: prep.evidence.length,
     evidenceSources: prep.evidence.map((i) => i.source),
-    refused,
+    refused: refusedFinal,
     model: generated.model,
     promptIdentity: promptIdentity(),
     latencyMs,
@@ -738,7 +830,7 @@ export async function karagAsk(
     evidenceCount: prep.evidence.length,
     model: generated.model,
     provider: generated.provider,
-    refused,
+    refused: refusedFinal,
     truncated: isTruncationFinish(generated.finishReason),
     latencyMs,
   };
@@ -857,13 +949,30 @@ export async function* karagAskStream(
   }
 
   const latencyMs = (Date.now() - startedAt) / 1000.0;
+  // T-TUTOR-PIVOT-1 refusal truth (stream parity): the detector runs on the
+  // ACCUMULATED text — the same verdict the blocking path computes. The
+  // mid-stream Meta event keeps its pre-generation contract (a refusal is
+  // only knowable there when it is deterministic — handled above); the
+  // completed event, the telemetry event and the persisted turn (routes
+  // persist event.refused verbatim) carry the truth.
+  const modelRefused = modelRefusalLikely(full);
+  // T-TUTOR-PIVOT-1 run-002: the DETERMINISTIC redirect (stream parity with
+  // the blocking path) — appended as a TAIL DELTA before the completed
+  // event, so the rendered chat itself carries the way forward; the
+  // completed event's fullAnswer and the persisted turn match the wire.
+  if (modelRefused) {
+    const redirected = withRefusalRedirect(full);
+    const tail = redirected.slice(full.length);
+    full = redirected;
+    if (tail.length > 0) yield { kind: "delta", text: tail };
+  }
   deps.telemetry({
     learnerId,
     query: prep.query,
     matchedTopicIds: matchedTopicIds(prep.knowledge),
     evidenceCount,
     evidenceSources: prep.evidence.map((i) => i.source),
-    refused: false,
+    refused: modelRefused,
     model,
     promptIdentity: promptIdentity(),
     latencyMs,
@@ -878,7 +987,7 @@ export async function* karagAskStream(
     fullAnswer: full,
     provider: provider ?? "unknown",
     model,
-    refused: false,
+    refused: modelRefused,
     evidenceCount,
     latencyMs,
     topics,
@@ -936,7 +1045,7 @@ export function buildGroundedTutorGenerator(
   opts: GeneratorOptions = {},
 ): TutorGenerator {
   const temperature = opts.temperature ?? 0.2;
-  const maxTokens = opts.maxTokens ?? 900;
+  const maxTokens = opts.maxTokens ?? TUTOR_COMPLETION_BUDGET_DEFAULT;
 
   const requireAvailable = (): void => {
     if (!chain.available()) {

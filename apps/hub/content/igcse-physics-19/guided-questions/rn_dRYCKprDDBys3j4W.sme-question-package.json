@@ -1,0 +1,494 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_dRYCKprDDBys3j4W",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "ec4858be65e1d1c172e0f2827390f409b5975cd8386e07af1d183be4c9daa0bc",
+    "pinnedRef": "6312d659ec0db635b658e43ed74f1960e547eeb4"
+  },
+  "packageId": "igcse-physics::rn_dRYCKprDDBys3j4W",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L1::Q1",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L1",
+      "stem": "What does rotating a magnet inside a coil of wire generate?",
+      "misconceptionClass": "function recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "an induced alternating voltage in the coil",
+          "correct": true,
+          "explanation": "Rotation changes the field and induction delivers voltage.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a steady direct voltage",
+          "correct": false,
+          "explanation": "The rotating field reverses each half turn, so the output alternates.",
+          "misconception": "output confusion"
+        },
+        {
+          "key": "C",
+          "text": "a magnetic force on the coil",
+          "correct": false,
+          "explanation": "That is the motor effect; generation is induction.",
+          "misconception": "effect swap"
+        },
+        {
+          "key": "D",
+          "text": "permanent magnetism in the coil",
+          "correct": false,
+          "explanation": "The coil gains voltage, not permanent magnetism.",
+          "misconception": "outcome confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L1::Q2",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L1",
+      "stem": "Which arrangement also generates electricity by rotation?",
+      "misconceptionClass": "arrangement recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "winding more wire but never moving anything",
+          "correct": false,
+          "explanation": "Turns scale the effect; motion is still required.",
+          "misconception": "static myth"
+        },
+        {
+          "key": "B",
+          "text": "rotating a coil of wire inside a magnetic field",
+          "correct": true,
+          "explanation": "Both 6.16 arrangements generate.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "holding a coil still inside a steady field",
+          "correct": false,
+          "explanation": "No change means no induction.",
+          "misconception": "static myth"
+        },
+        {
+          "key": "D",
+          "text": "sliding a magnet along beside the coil without entering",
+          "correct": false,
+          "explanation": "The field through the coil must change.",
+          "misconception": "geometry error"
+        }
+      ]
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L1::Q3",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L1",
+      "stem": "Why is the generator's output voltage alternating?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the magnet switches off twice per turn",
+          "correct": false,
+          "explanation": "The magnet stays magnetised; the field direction swings.",
+          "misconception": "magnet myth"
+        },
+        {
+          "key": "B",
+          "text": "the wires overheat and flicker",
+          "correct": false,
+          "explanation": "Heating is irrelevant to the alternation.",
+          "misconception": "thermal confusion"
+        },
+        {
+          "key": "C",
+          "text": "the rotation reverses the field change every half turn",
+          "correct": true,
+          "explanation": "Each half turn flips the induced polarity.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the coil's resistance oscillates",
+          "correct": false,
+          "explanation": "Resistance is not the cause of alternation.",
+          "misconception": "electrical confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L1::Q4",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L1",
+      "stem": "Which change increases the size of a generator's induced voltage?",
+      "misconceptionClass": "factor reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "spinning the magnet more slowly",
+          "correct": false,
+          "explanation": "Slower rotation gives a smaller voltage.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "B",
+          "text": "using fewer turns on the coil",
+          "correct": false,
+          "explanation": "Fewer turns reduce the summed voltage.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "C",
+          "text": "using a weaker magnet",
+          "correct": false,
+          "explanation": "A weaker field gives a smaller voltage.",
+          "misconception": "factor inversion"
+        },
+        {
+          "key": "D",
+          "text": "spinning the magnet faster",
+          "correct": true,
+          "explanation": "Faster change of field gives larger induced voltage.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L1::Q5",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L1",
+      "stem": "A hand-cranked generator lights a lamp dimly at one crank speed. To brighten the lamp the student should:",
+      "misconceptionClass": "application reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "crank faster to induce a larger voltage",
+          "correct": true,
+          "explanation": "More speed, more voltage, brighter lamp.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "crank more slowly",
+          "correct": false,
+          "explanation": "Slower cranking dims the lamp further.",
+          "misconception": "action inversion"
+        },
+        {
+          "key": "C",
+          "text": "remove turns from the generator coil",
+          "correct": false,
+          "explanation": "Fewer turns induce less voltage.",
+          "misconception": "action inversion"
+        },
+        {
+          "key": "D",
+          "text": "disconnect the lamp briefly",
+          "correct": false,
+          "explanation": "The lamp needs the circuit to glow at all.",
+          "misconception": "absurd action"
+        }
+      ]
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L1::Q6",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L1",
+      "stem": "State the two rotation arrangements that generate electricity.",
+      "misconceptionClass": "arrangement recall",
+      "kind": "recall",
+      "modelAnswer": "Rotating a magnet inside a coil of wire, or rotating a coil of wire inside a magnetic field.",
+      "keywords": [
+        "rotating",
+        "magnet",
+        "coil",
+        "magnetic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L1::Q7",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L1",
+      "stem": "State three factors that change how large a generator's induced voltage is.",
+      "misconceptionClass": "factor recall",
+      "kind": "recall",
+      "modelAnswer": "The speed of rotation, the strength of the magnetic field, and the number of turns on the coil.",
+      "keywords": [
+        "speed",
+        "rotation",
+        "strength",
+        "turns"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L1::Q8",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L1",
+      "stem": "Explain why the induced voltage of a spinning-magnet generator changes direction twice per revolution.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Each revolution carries the magnet's field through the coil one way, then the other: the field threading the coil grows, peaks, falls, and reverses as the magnet turns. The induced voltage follows the field change, so its polarity flips at the half-turn points — twice per revolution.",
+      "keywords": [
+        "field",
+        "reverses",
+        "half",
+        "polarity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L1::Q9",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L1",
+      "stem": "A bicycle dynamo drives a lamp; the rider speeds up. Describe the change in the lamp's brightness and explain it by the generator factors.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "The lamp brightens. The faster wheel spins the generator's magnet faster, so the field through the coil changes more quickly and the induced voltage grows — a larger voltage drives a larger current through the lamp, making it brighter.",
+      "keywords": [
+        "faster",
+        "voltage",
+        "larger",
+        "brighter"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L2::Q1",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L2",
+      "stem": "What does a dynamo deliver to the external circuit?",
+      "misconceptionClass": "output recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "current whose direction is random",
+          "correct": false,
+          "explanation": "The output is one-way by design.",
+          "misconception": "chaos claim"
+        },
+        {
+          "key": "B",
+          "text": "direct current in one direction only",
+          "correct": true,
+          "explanation": "The split-ring commutator rectifies the output.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "alternating current",
+          "correct": false,
+          "explanation": "That is the alternator's slip-ring output.",
+          "misconception": "output swap"
+        },
+        {
+          "key": "D",
+          "text": "no current at all",
+          "correct": false,
+          "explanation": "The dynamo is a working generator.",
+          "misconception": "denial claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L2::Q2",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L2",
+      "stem": "What does the split-ring commutator do in a dynamo?",
+      "misconceptionClass": "component recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "amplifies the induced voltage",
+          "correct": false,
+          "explanation": "The commutator reroutes; it never amplifies.",
+          "misconception": "function invention"
+        },
+        {
+          "key": "B",
+          "text": "disconnects the circuit twice per turn",
+          "correct": false,
+          "explanation": "It swaps contacts; it does not break the circuit twice per turn as its purpose.",
+          "misconception": "function confusion"
+        },
+        {
+          "key": "C",
+          "text": "swaps the external connection every half turn",
+          "correct": true,
+          "explanation": "The swap folds the alternation into one-way flow.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "stops the coil from spinning",
+          "correct": false,
+          "explanation": "The coil keeps spinning; the contacts follow it.",
+          "misconception": "function invention"
+        }
+      ]
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L2::Q3",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L2",
+      "stem": "The voltage induced IN the dynamo coil itself is:",
+      "misconceptionClass": "inner/outer reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "direct current, because it is a dynamo",
+          "correct": false,
+          "explanation": "The DC label describes the delivery, not the coil voltage.",
+          "misconception": "label confusion"
+        },
+        {
+          "key": "B",
+          "text": "zero",
+          "correct": false,
+          "explanation": "The spinning coil induces a real voltage.",
+          "misconception": "denial claim"
+        },
+        {
+          "key": "C",
+          "text": "steadily increasing",
+          "correct": false,
+          "explanation": "The induced voltage oscillates with the rotation.",
+          "misconception": "ramp invention"
+        },
+        {
+          "key": "D",
+          "text": "alternating, as in any rotating generator",
+          "correct": true,
+          "explanation": "Rectification happens outside the coil, at the contacts.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L2::Q4",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L2",
+      "stem": "Which component would you fit to keep the ALTERNATING output of a generator unchanged?",
+      "misconceptionClass": "component choice",
+      "options": [
+        {
+          "key": "A",
+          "text": "two full slip rings",
+          "correct": true,
+          "explanation": "Slip rings pass the alternating output through untouched.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a split-ring commutator",
+          "correct": false,
+          "explanation": "That rectifies the output into DC.",
+          "misconception": "component swap"
+        },
+        {
+          "key": "C",
+          "text": "an extra magnet",
+          "correct": false,
+          "explanation": "Extra field changes size, not the AC character.",
+          "misconception": "irrelevant change"
+        },
+        {
+          "key": "D",
+          "text": "a longer axle",
+          "correct": false,
+          "explanation": "Axle length is electrically irrelevant.",
+          "misconception": "irrelevant change"
+        }
+      ]
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L2::Q5",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L2",
+      "stem": "The rotation of a dynamo speeds up. The lamp it feeds:",
+      "misconceptionClass": "system reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "glows the same",
+          "correct": false,
+          "explanation": "The induced voltage grows with speed.",
+          "misconception": "no-change claim"
+        },
+        {
+          "key": "B",
+          "text": "glows brighter, with current still flowing one way",
+          "correct": true,
+          "explanation": "Bigger induced voltage, same one-way delivery.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "starts flickering in polarity",
+          "correct": false,
+          "explanation": "The commutator keeps the delivery one-way.",
+          "misconception": "polarity myth"
+        },
+        {
+          "key": "D",
+          "text": "goes out",
+          "correct": false,
+          "explanation": "More rotation means more voltage, not none.",
+          "misconception": "denial claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L2::Q6",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L2",
+      "stem": "State the component that converts a generator's alternating output to direct.",
+      "misconceptionClass": "component recall",
+      "kind": "recall",
+      "modelAnswer": "A split-ring commutator swaps the connection every half turn, delivering direct current.",
+      "keywords": [
+        "split-ring",
+        "commutator",
+        "direct",
+        "current"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L2::Q7",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L2",
+      "stem": "State what slip rings deliver that a split-ring commutator does not.",
+      "misconceptionClass": "contrast recall",
+      "kind": "recall",
+      "modelAnswer": "Slip rings deliver the alternating current unchanged, while the commutator delivers one-way direct current.",
+      "keywords": [
+        "alternating",
+        "unchanged",
+        "direct"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L2::Q8",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L2",
+      "stem": "Explain why the dynamo's output current never reverses even though the coil's induced voltage does.",
+      "misconceptionClass": "rectification reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Each half turn, the split-ring commutator swaps which brush connects to which coil end. When the coil's induced voltage reverses, the external connections have just been swapped too, so the reversal inside is cancelled outside: the circuit always sees the same polarity, and the current flows one way throughout.",
+      "keywords": [
+        "commutator",
+        "swaps",
+        "reversal",
+        "one"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dRYCKprDDBys3j4W::L2::Q9",
+      "moduleId": "rn_dRYCKprDDBys3j4W::L2",
+      "stem": "A bicycle lamp is fed first by a slip-ring alternator, then by a split-ring dynamo of the same coil and magnet. Compare the currents in the lamp circuit.",
+      "misconceptionClass": "application transfer",
+      "kind": "application",
+      "modelAnswer": "With slip rings the lamp current alternates direction every half turn at the same frequency as the wheel. With the split-ring dynamo the current always flows the same way through the lamp, pulsing in size but never reversing. The peak sizes match — the same coil and magnet induce the same voltages — only the delivery differs.",
+      "keywords": [
+        "alternates",
+        "one",
+        "pulsing",
+        "delivery"
+      ],
+      "options": []
+    }
+  ]
+}

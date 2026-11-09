@@ -22,7 +22,7 @@ export const dynamic = "force-dynamic";
  * The corpus behind this route is committed and immutable between deploys
  * (same policy as /api/course-stats, ADR-021 perf pass tranche 4.12).
  */
-const CONTENT_CACHE = { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=86400" };
+const CONTENT_CACHE = { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=86400" };
 
 interface GeographySubtopic {
   code: string;
@@ -67,7 +67,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "no valid slugs requested" }, { status: 400 });
   }
 
-  const [{ getCourseBundle }, { buildSpecTreeIndex, resourceCounts }] = await Promise.all([
+  const [{ getCourseBundle }, { buildSpecTreeIndex, generalTopicsOfQuestionTopics, resourceCounts }] = await Promise.all([
     import("@/lib/courses"),
     import("@/lib/spec-tree"),
   ]);
@@ -85,7 +85,11 @@ export async function GET(request: Request) {
       // honest-absent: registered-without-bundle or unknown slug
       geo = { slug, hasBundle: false, subjectTitle: null, specPoints: 0, topics: [] };
     } else {
-      const index = buildSpecTreeIndex(bundle.curriculum);
+      // parity with courses.ts: pre-create -gen rows so corpus-stamped sets
+      // resolve identically on every surface (ADR-039 r2)
+      const index = buildSpecTreeIndex(bundle.curriculum, {
+        generalTopics: generalTopicsOfQuestionTopics(bundle.questionTopics),
+      });
       const counts = resourceCounts(bundle.notes, bundle.questionTopics, bundle.flashcards, index);
       geo = {
         slug,

@@ -244,7 +244,10 @@ export async function fetchBookManifests(
       try {
         const res = await fetch(booksRawUrl(`books/${p}`), {
           headers: { Accept: "application/json" },
-          next: { revalidate: 900 },
+          // T-VERCEL-USAGE: manifest files are committed and immutable
+          // between deploys (archive law) — 1-day TTL; each deploy resets
+          // the cache (was 900s).
+          next: { revalidate: 86400 },
           signal: AbortSignal.timeout(15_000),
         });
         if (!res.ok) return null;

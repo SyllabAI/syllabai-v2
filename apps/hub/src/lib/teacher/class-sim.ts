@@ -145,7 +145,7 @@ export function buildClassOverview(bundle: CourseBundle): ClassOverview {
   const setsBySubtopic = new Map<string, string[]>();
   const setBySlug = new Map(bundle.questionTopics.map((t) => [t.slug, t]));
   for (const t of bundle.questionTopics) {
-    const code = subtopicOfQuestionSet(t, index);
+    const code = subtopicOfQuestionSet(t, index, bundle.notes);
     if (code) {
       const list = setsBySubtopic.get(code) ?? [];
       list.push(t.slug);

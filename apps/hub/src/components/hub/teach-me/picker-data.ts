@@ -14,9 +14,9 @@
  * offered; create() refuses honestly when the serving corpus cannot ground
  * a pick (COURSE_NOT_ELIGIBLE, by design — run-002 receipt).
  */
-import type { Curriculum } from "@/lib/contracts";
+import type { Curriculum, RevisionNote } from "@/lib/contracts";
 import { normalizeSpecText } from "@/lib/spec-text";
-import { bySpecPointOrder } from "@/lib/spec-tree";
+import { buildSpecTreeIndex, bySpecPointOrder, subtopicOfNote } from "@/lib/spec-tree";
 
 export interface TeachMePickerPoint {
   /** the canon spec code of record, e.g. "4CH1-2.3" */
@@ -128,4 +128,116 @@ export const TEACH_ME_MAX_SPEC_POINTS = 3;
 
 export function canPickMore(selected: readonly string[]): boolean {
   return selected.length < TEACH_ME_MAX_SPEC_POINTS;
+}
+
+/* ---------------------------------------------------------------------- */
+/* T-TEACHGENIE-002 — the note-driven picker projection                    */
+/* The operator order (chat trace 1a1a84b5cf0e865d): Teach Genie should    */
+/* let the learner choose a REVISION NOTE of the course — organized under  */
+/* unit/topic dropdowns — instead of hand-picking spec points. The         */
+/* grouping of record is the SAME canonical spec tree every other notes    */
+/* surface uses (never a second taxonomy): TOPIC = the unit dropdown,      */
+/* SUBTOPIC = the topic dropdown, and each note rides the sub-topic its    */
+/* canon codes anchor it to (subtopicOfNote — the notes-index law).        */
+/* Notes that no code/topicSlug anchors keep the honest loose-notes group. */
+/*                                                                        */
+/* A picked note's specPointCodes ARE the session's ground truth: the      */
+/* client sends them verbatim as the create request's specPointIds (the    */
+/* contract ceiling is 8 since T-TEACHGENIE-002 — corpus max 4). The API's */
+/* G1 canon gate stays the fail-closed law of what is actually servable;   */
+/* no hub-side eligibility is fabricated here, exactly like the            */
+/* spec-point picker above.                                                */
+/* ---------------------------------------------------------------------- */
+
+export interface TeachGeniePickerNote {
+  noteId: string;
+  title: string;
+  /** canon spec codes of record — sent verbatim as the session's specPointIds */
+  specPointCodes: string[];
+}
+
+export interface TeachGeniePickerSubtopicNotes {
+  code: string;
+  /** the official-tree suffix label ("a", "b" …) or corpus label */
+  label: string;
+  title: string;
+  notes: TeachGeniePickerNote[];
+}
+
+export interface TeachGeniePickerNoteTopic {
+  code: string;
+  /** 1-based display number (corpus order) */
+  number: number;
+  title: string;
+  subtopics: TeachGeniePickerSubtopicNotes[];
+}
+
+/** The trailing group for notes no code/topicSlug anchors to a sub-topic. */
+export const TEACH_GENIE_LOOSE_TOPIC_CODE = "teach-genie-loose";
+
+export function buildTeachGenieNoteTree(
+  curriculum: Curriculum,
+  notes: RevisionNote[],
+): TeachGeniePickerNoteTopic[] {
+  const index = buildSpecTreeIndex(curriculum);
+
+  // bucket every note once, by its first placed sub-topic (the notes-index
+  // law of record); input order is the corpus order — preserved, never re-sorted
+  const bySubtopic = new Map<string, TeachGeniePickerNote[]>();
+  const loose: TeachGeniePickerNote[] = [];
+  for (const n of notes) {
+    if (n.specPointCodes.length === 0) {
+      // a note with no canon code cannot ground a session (the create gate
+      // would refuse it) — it is not offered, honestly, by omission
+      continue;
+    }
+    const note: TeachGeniePickerNote = {
+      noteId: n.noteId,
+      title: n.title,
+      specPointCodes: [...n.specPointCodes],
+    };
+    const s = subtopicOfNote(n, index);
+    if (s == null) {
+      loose.push(note);
+    } else {
+      const list = bySubtopic.get(s);
+      if (list) list.push(note);
+      else bySubtopic.set(s, [note]);
+    }
+  }
+
+  const pickerTopics: TeachGeniePickerNoteTopic[] = [];
+  for (const [i, topic] of index.tree.topics.entries()) {
+    const subtopics: TeachGeniePickerSubtopicNotes[] = [];
+    for (const sub of topic.subtopics) {
+      const group = bySubtopic.get(sub.code);
+      if (!group || group.length === 0) continue;
+      subtopics.push({ code: sub.code, label: sub.label, title: sub.title, notes: group });
+    }
+    if (subtopics.length === 0) continue; // a unit with no notes is not offered
+    pickerTopics.push({
+      code: topic.code,
+      number: i + 1,
+      title: topic.title,
+      subtopics,
+    });
+  }
+
+  if (loose.length > 0) {
+    pickerTopics.push({
+      code: TEACH_GENIE_LOOSE_TOPIC_CODE,
+      number: pickerTopics.length + 1,
+      title: "Other notes",
+      subtopics: [
+        {
+          code: `${TEACH_GENIE_LOOSE_TOPIC_CODE}-all`,
+          label: "·",
+          title: "Notes without a spec-tree home yet",
+          notes: loose,
+        },
+      ],
+    });
+  }
+
+  return pickerTopics;
 }

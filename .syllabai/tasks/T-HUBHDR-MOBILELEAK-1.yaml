@@ -1,0 +1,51 @@
+version: 1
+task:
+  id: T-HUBHDR-MOBILELEAK-1
+  title: 'Header identity cluster no longer overflows the 390px viewport
+    (operator order: "file the 19px header fix as a tiny task card" — the
+    visual-pass finding: html.scrollWidth 409 vs 390 on a signed-in phone)'
+  owner: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4,
+    chat 0fe43d89-ff92-4e81-857a-1b1c6040a895)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P2
+  band: T-UI-POLISH (global chrome — outside the question box, found by the
+    2026-11-08 production visual pass)
+  wave: ui-polish
+  deps: [T-QVIEW-AUDIT-BCD-1]
+  scope:
+    allowed:
+    - apps/hub/src/components/layout/app-shell.tsx (ONE class change: the
+      identity chip's name span max-w-16 -> max-w-12 below sm — the same
+      law as the existing "Hub suffix returns at sm" precedent: below-sm
+      the header defers room to the identity cluster; sm:max-w-28 stays)
+    - apps/hub/src/components/theme-toggle.tsx (ONE class change: the icon
+      trigger size-10 -> size-8 sm:size-10 — at sm+ pixel-identical; below
+      sm the 32px trigger matches its h-8 neighbours in the same cluster)
+    - .syllabai/tasks/T-HUBHDR-MOBILELEAK-1.yaml (this card)
+    - .syllabai/worklog.md + worklog.md (append-only lane sections,
+      byte-asserted)
+    - .syllabai/receipts/T-HUBHDR-MOBILELEAK-1/run-001.md (receipt of
+      record)
+  non_goals:
+  - the question box (clean on mobile — math contained, tables internally
+    scrollable, per the same pass)
+  - the all-modes floater's transient pass over the in-flow pagination
+    chips (cosmetic, scroll-spy re-anchors; not a regression)
+  evidence:
+  - production (www.syllab-ai.com, 390x844, signed-in): html.scrollWidth 409
+    vs clientWidth 390 = 19px page-level horizontal scroll; culprit isolated
+    to the header ml-auto cluster (theme icon trigger 40px + identity chip
+    124px + practise 34px); breadcrumbs self-contain in their own
+    overflow-x-auto scroller; content tables are internally wrapped
+  - reproduced locally at main a3561bd1 with the injected pilot-shape
+    identity (id/email/displayName/roles['STUDENT'] in localStorage —
+    the same store currentUser() shape-checks): overflow exactly 19px,
+    cluster 210px
+  - after the two class changes: overflow 0 (cluster 186px, -24px, 5px
+    slack); desktop 1440 unchanged (theme trigger back to 40px, overflow 0)
+  definition_of_done:
+  - tsc --noEmit clean; eslint clean on both touched files
+  - route-gate suite green (the header's gate-adjacent law)
+  - signed-in 390px viewport: document scrollWidth == clientWidth
+  - sm+ rendering pixel-identical (both changes are sub-sm only)
+  - aria labels untouched (the theme trigger's long a11y name survives)

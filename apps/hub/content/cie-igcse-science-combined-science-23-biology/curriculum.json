@@ -1275,6 +1275,17 @@
    "order": 70,
    "tier": "Supplement",
    "scope": "Biology"
+  },
+  {
+   "code": "cie-igcse-science-combined-science-2023-2024-SME-DRUGS",
+   "family": "TOPIC",
+   "title": "Drugs (SME section 13)",
+   "description": null,
+   "parents": [
+    "cie-igcse-science-combined-science-23-biology"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 13
   }
  ],
  "edges": [
@@ -1888,6 +1899,12 @@
    "source": "cie-igcse-science-combined-science-2023-2024-TB12:SUBB12.1",
    "relation": "PART_OF",
    "target": "B12.1.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-igcse-science-combined-science-23-biology",
+   "relation": "PART_OF",
+   "target": "cie-igcse-science-combined-science-2023-2024-SME-DRUGS",
    "provenanceTier": "RULE_DERIVED"
   }
  ]

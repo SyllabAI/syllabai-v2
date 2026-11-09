@@ -1,0 +1,39 @@
+version: 1
+task:
+  id: T-TEACHGENIE-004
+  title: 'Teach SillyAI frontend joins the house design system — the .tg-scope MathsGenie skin
+    retired, CourseHeader chrome + house tokens end to end, sidebar Learn-band row; flow and
+    engine laws unchanged'
+  owner: Super Z (zai-web session web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2,
+    dispatch trace 1a1ab2fc81bfd909 — operator order "Also the frontend flow of the Teach
+    me/sillyai, is not like the other pages. Design is not consistent. Compare with other pages")
+  status: 'IN_PROGRESS # run-001 (house-design restyle + chrome + sidebar row) — PR of record, stacked on T-TEACHGENIE-003'
+  priority: P1
+  band: T-TEACHGENIE (MathsGenie-parity learn-by-teaching surface)
+  wave: teachme-phase-A
+  deps: [T-TEACHGENIE-001, T-TEACHGENIE-002, T-TEACHGENIE-003]
+  scope:
+    allowed:
+    - apps/hub/src/app/globals.css (RETIRE the .tg-scope token override light+dark, .tg-title, .tg-bubble-user; keep .tg-dot)
+    - apps/hub/src/app/courses/[course]/teach-genie/page.tsx (CourseHeader chrome + house max-w-3xl column, all states)
+    - apps/hub/src/components/hub/teach-genie/** (restyle to house tokens/Button/composer voice; single-column landing + review; zero logic changes)
+    - apps/hub/src/components/hub/teach-genie/teach-genie-laws.test.ts + util.ts (the one MG-hex dot law re-pinned to house primary)
+    - apps/hub/src/components/hub/course-shell.tsx + course-data-context.tsx + app/courses/[course]/layout.tsx
+      (⚠️ OUT-OF-FENCE additive mount: hasTeachMe SidebarData gate + Learn-band row, own commit, R0
+      ratification per the T-TEACHME-001 run-003 course-tile precedent)
+    - docs/TEACH_GENIE.md (§9 record incl. the comparison table)
+    - .syllabai/tasks/T-TEACHGENIE-004.yaml + .syllabai/receipts/T-TEACHGENIE-004/** + .syllabai/worklog.md (append-only)
+    forbidden:
+    - routes/slugs, flags key, TeachGenie* identifiers, DB, contracts, API bytes (engine wire is byte-untouched)
+    - the learner-visible FLOW (landing → picker → session → overlay → review; permalinks; poll law; chips; dictation) — mechanics unchanged
+    - the avatar art (persona of record)
+    - the pinned prompt files and apps/api/** entirely
+    - self-merge (the T-TUTOR-FIX-1 fence posture — integrator merges; PR stacked on T-TEACHGENIE-003's)
+  notes: 'DESIGN of record: T-TEACHGENIE-001 shipped the lane as "MathsGenie inside the hub"
+    (the .tg-scope token override) under the operator''s then-order "Exactly like mathsgenie".
+    T-TEACHGENIE-004 supersedes that order for the SKIN ONLY: the operator''s 2026-11-05 order is
+    design consistency with the hub''s other pages. The comparison of record lives in docs §9
+    (12-dimension table). Everything MG about the lane that was FLOW or PERSONA survives
+    (five-view flow, SillyAI persona, typing dots, avatar, objectives, dictation, honest states);
+    everything that was PALETTE or CHROME goes house (tokens, CourseHeader, narrow column,
+    hairline borders, house Button, tutor-composer voice, single-column review, sidebar row).'

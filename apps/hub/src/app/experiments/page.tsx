@@ -49,7 +49,9 @@ export default function ExperimentsPage() {
       <div className="grid gap-3 sm:grid-cols-2">
         {EXPERIMENTS.map((e) => (
           <Link key={e.href} href={e.href} className="group focus-visible:outline-none">
-            <Card className="h-full transition-colors group-hover:border-primary/40">
+            {/* t-ui-polish run-007: the experiment cards speak the house
+                card-hover voice (border-primary/60 + shadow-sm). */}
+            <Card className="h-full transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center gap-2 text-base">
                   <e.icon className="size-4 text-primary" aria-hidden />

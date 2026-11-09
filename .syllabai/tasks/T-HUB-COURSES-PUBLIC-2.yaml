@@ -1,0 +1,86 @@
+version: 1
+task:
+  id: T-HUB-COURSES-PUBLIC-2
+  title: "Public directory substance upgrade — card counts + tutor signal, jump-nav, shareable search, JSON-LD, honest ghost copy, metadataBase correction (the seven /courses improvements)"
+  owner: "operator-delegate (Z.ai, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, chat d889551c-b3b5-4885-b1c1-57af82e11b0a, run trace 1a1b92942f7bc099)"
+  status: "IN_REVIEW run-001 (PR open, awaiting operator/integrator review)"
+  priority: P1
+  band: T-HUB (frontend — courses directory surface)
+  wave: hub-courses-directory
+  deps: [T-HUB-COURSES-PUBLIC-1, T-HUB-COURSES-UI-1]
+  execution_record: >
+    run-000 (2026-11-07/08, advisory trace 1a1b91d703aaaa15): the operator asked
+    "how can we improve the /courses page" and attached the saved Chemistry
+    IGCSE hub page as reference. The hub page's resource richness (Course
+    Tutor, 112 notes, 1,716 Seneca resources, exam questions, paper replay,
+    battles, grade boundaries) vs the directory card's thin shelf (glyph tile,
+    name, code, papers badge) framed the seven-improvement proposal; registry
+    census backed it: 102/106 courses now status=full (real bundles), 60/106
+    carry curriculumCode (tutor genuinely scoped), manifest counts exist on
+    ALL 106 bundles. The per-course-imagery thread from the earlier turn is
+    MOOT: the approved mockup's identity tiles + 17 bespoke glyphs shipped in
+    T-HUB-COURSES-UI-1 runs 001/002.
+    run-001 (2026-11-08, trace 1a1b92942f7bc099, operator "Ok proceed"):
+    implementing the seven improvements inside Tailwind v4 + existing tokens,
+    zero new dependencies, zero network at build; the local clone was first
+    re-synced to origin/main 24205d26 (the sandbox recycle had reverted it;
+    stale state kept in a stash, disclosed). Fix order and scope in
+    receipts/T-HUB-COURSES-PUBLIC-2/run-001.md.
+    run-001 RESULT: (1) card substance line — real manifest counts
+    (notes/flashcards/questions) read at build from each course's own
+    manifest.json, server-plumbed like archivePapers, formatted by the new
+    pure lib/directory-stats.ts with the honesty law (zero parts omitted,
+    all-zero lane renders no line); (2) "Tutor ready" signal led on the same
+    line where the registry's curriculumCode genuinely scopes a tutor (60/106)
+    — the max-two-badges law untouched; (3) level jump-nav (anchor ids from
+    the new courseLevelAnchor law in directory-groups.ts) + scroll-mt clearance
+    for the sticky header + a reduced-motion-honoring back-to-top; (4) the
+    search query joins board= in the URL (?q=, replaceState, apply-after-mount
+    — shareable filtered views, hydration-safe); (5) ItemList JSON-LD on the
+    public directory (F-08 house pattern from [course]/page.tsx) + the
+    disclosed scope amendment: layout.tsx metadataBase
+    syllabai-hub-v2.vercel.app (402 DEPLOYMENT_DISABLED domain) →
+    www.syllab-ai.com (production of record — every canonical/og URL was
+    resolving against a dead domain); (6) ghost badge gained an honest
+    hover-title naming what the import queues; (7) a11y verified: board chips
+    already carry aria-pressed (t-ui-polish), reduced-motion respected on the
+    new scroll action, no transform animations introduced.
+    Gates: bun test targeted 17/17 (5 new stats + 2 new anchor laws, 33
+    expects); tsc --noEmit clean; eslint clean on all 7 changed/new files;
+    build:hub prebuild verify chain + compile + in-build TypeScript COMPLETE —
+    the 4647-page prerender was cut by the tool's own timeout once and the
+    re-run completed/failed per the receipt's build section (CI hub job is the
+    packaging gate of record, per three-run precedent).
+    Runtime: dev-server verification of the live page (stats line + tutor
+    signal on real cards, jump-nav anchors, ?q= shareable link, JSON-LD in
+    served HTML) — evidence in the receipt.
+    House notes: no font/palette/theme changes (house law); the operator's
+    GitHub PAT used env-only for push+PR (rotation still outstanding — it
+    transited chat in plaintext 2026-11-07).
+base:
+  repo: "syllabai-v2 @ 24205d26 (origin/main at claim; local re-synced after recycle, stale tree in stash)"
+basis: >
+  Operator order 2026-11-08 traces 1a1b91d703aaaa15 ("How can we improve the
+  www.syllab-ai.com/courses page?" + the saved Chemistry IGCSE hub page
+  attached as reference) and 1a1b92942f7bc099 ("Ok proceed"). Continues the
+  public-directory program of T-HUB-COURSES-PUBLIC-1 (option 1) on top of
+  T-HUB-COURSES-UI-1's approved redesign (identity tiles, family grouping).
+  Everything touching user data stays behind the login wall; the directory
+  shows only static registry + committed-bundle facts.
+scope:
+  allowed:
+    - "apps/hub/src/lib/directory-stats.ts (new)"
+    - "apps/hub/src/lib/directory-stats.test.ts (new)"
+    - "apps/hub/src/lib/directory-groups.ts (courseLevelAnchor append only)"
+    - "apps/hub/src/lib/directory-groups.test.ts (anchor-law tests append only)"
+    - "apps/hub/src/app/courses/page.tsx (counts plumb + JSON-LD)"
+    - "apps/hub/src/app/courses/course-directory.tsx (substance line, tutor signal, jump-nav, q sync, ghost title, back-to-top)"
+    - "apps/hub/src/app/layout.tsx (metadataBase line + its comment ONLY — run-001 scope amendment, see execution_record)"
+    - ".syllabai/tasks/T-HUB-COURSES-PUBLIC-2.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-HUB-COURSES-PUBLIC-2/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/hub/src/app/courses/[course]/** (hub subtree untouched)"
+    - "fonts/palette/theme-pack changes (house design system is law)"
+    - "packages/**, apps/api/**, golden/** (out of band)"
+    - "any user-data surface on the public directory (option-1 law)"

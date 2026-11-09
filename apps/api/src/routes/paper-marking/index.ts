@@ -124,10 +124,20 @@ export function createPaperMarkingRouter(marking: PaperMarking, registry: MarkJo
       const auth = getAuth(c)!;
       const plan = await marking.plan(path.data.regionId); // 404 unknown | 422 no definitions
       const markId = registry.enqueue((id) =>
-        marking.markRegion({ learnerId: auth.userId, plan, imageDataUrl: body.data.imageDataUrl }).then((res) => {
-          void id;
-          return res;
-        }),
+        marking
+          .markRegion({
+            learnerId: auth.userId,
+            plan,
+            imageDataUrl: body.data.imageDataUrl,
+            // T-MG-MARK-DELTA-1: the explicit "mark again" affordance forces
+            // a fresh job (the cache law); absent/undefined short-circuits
+            // to the standing award on an identical re-mark.
+            forceFresh: body.data.forceFresh === true,
+          })
+          .then((res) => {
+            void id;
+            return res;
+          }),
       );
       return c.json({ markId, status: "queued" as const }, 202 as const);
     } catch (err) {
@@ -150,7 +160,12 @@ export function createPaperMarkingRouter(marking: PaperMarking, registry: MarkJo
       const auth = getAuth(c)!;
       const plan = await marking.plan(path.data.partId); // 404 unknown | 422 no definitions
       const markId = registry.enqueue(() =>
-        marking.regradePart({ learnerId: auth.userId, plan, answerHtml: body.data.answerHtml }),
+        marking.regradePart({
+          learnerId: auth.userId,
+          plan,
+          answerHtml: body.data.answerHtml,
+          forceFresh: body.data.forceFresh === true,
+        }),
       );
       return c.json({ markId, status: "queued" as const }, 202 as const);
     } catch (err) {

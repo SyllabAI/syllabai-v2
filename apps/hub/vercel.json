@@ -6,6 +6,7 @@
       "*": false
     }
   },
+  "ignoreCommand": "case \"$VERCEL_GIT_COMMIT_REF\" in main|\"\") ;; *) exit 0;; esac; cd \"$(git rev-parse --show-toplevel)\" && git diff --quiet HEAD^ HEAD -- apps/hub packages/ package.json bun.lock bunfig.toml turbo.json tsconfig.base.json",
   "crons": [
     {
       "path": "/api/cron/nightly-decay",

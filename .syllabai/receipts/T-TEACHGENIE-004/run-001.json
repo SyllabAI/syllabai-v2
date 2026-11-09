@@ -1,0 +1,23 @@
+{
+ "task": "T-TEACHGENIE-004",
+ "run": "run-001",
+ "agent": "Super Z (zai-web session web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6, chat f8d27d04-db81-4ade-aec2-4b420f08b8d2)",
+ "date": "2026-11-05",
+ "branch": "t-teachgenie-004/run-001",
+ "base": "stacked on t-teachgenie-003/run-001 (PR #785, head dae3f2f6, itself rebased on main 04e3c40a) — PR of record opens with that branch as base so the diff shows ONLY this task's delta; merge order: #785 first",
+ "operator_commission": {
+  "order": "\"Also the frontend flow of the Teach me/sillyai, is not like the other pages. Design is not consistent. Compare with other pages.\" (trace 1a1ab2fc81bfd909, same chat)"
+ },
+ "scope": "the Teach SillyAI lane rejoins the house design system: the T-TEACHGENIE-001 .tg-scope MathsGenie token override (light+dark), .tg-title and .tg-bubble-user RETIRED from globals.css (.tg-dot survives); the page mounts the SAME CourseHeader hero band + max-w-3xl column as the seventeen sibling lanes in every state; landing (MG left rail → house Recent-sessions section), picker, session (tutor-composer voice, destructive End Session, hairline cards) and review (two-pane rail → house single column, replay re-unified with the live view's bubble anatomy) restyled to hub tokens + house Button with ZERO logic/flow changes; statusDotClass active dot → bg-primary (the one MG-hex law test re-pinned); sidebar Learn band gains a gated Teach SillyAI row (hasTeachMe on SidebarData from the SAME cached teachMeEnabledForCourse read — ⚠️ out-of-fence additive mount, own commit, R0 ratification per the T-TEACHME-001 run-003 course-tile precedent)",
+ "comparison_of_record": "docs/TEACH_GENIE.md §9 — 12-dimension table (page chrome, theme, colours, type, shape, buttons, layout, history, chat voice, review layout, reachability) each against the named house pattern",
+ "gates": {
+  "hub_teachgenie_suite": "bun test src/components/hub/teach-genie/ → 9 pass / 0 fail / 37 expects (laws + note-picker projection)",
+  "hub_typecheck": "bun run typecheck (tsc --noEmit) exit 0",
+  "lint": "eslint over every changed file: 0 problems; the 2 set-state-in-effect errors in teach-genie-client.tsx:243 + session-screen.tsx:432 are the A/B-verified pre-existing main baseline (git stash run returned the identical pair)",
+  "api_side": "byte-untouched by this task — the rename PR #785's CI (hub ✅ verify ✅ Vercel ✅ on dae3f2f6) covers the engine; the behavioural 22/22 E2E battery result carries over verbatim",
+  "next_build": "NOT run locally (same 6.2G-free disk constraint recorded in the -003 receipt) — covered by the PR's CI hub gate on the exact head, disclosed",
+  "visual_walk": "dev-server render on igcse-chemistry-19: pilot landing + picker + sidebar row verified by headless-Chromium screenshots (CourseHeader band with breadcrumb/H1/exam-code pill/gradient present, zero tg-scope in the served HTML, Start button house primary, step badges primary/10); non-pilot cie-igcse-biology-23 renders HTTP 200 honest 'isn't live' state under the same header with ZERO sidebar teach links (absent-when-absent law); session/review view states are client-side and ride the PR's Vercel preview for the integrator"
+ },
+ "boundaries": "13 modified files + task yaml + this receipt + worklog section + docs §9; zero apps/api/**, packages/**, route, flags, DB bytes; the sidebar mount (3 files) ships as its own commit for ratification; no secrets in the diff; PR opened NOT self-merged (fence posture)",
+ "anti_truncation": "worklog appended append-only (new = old + section; byte delta == len(section); line delta == section newlines), asserted by script before commit"
+}

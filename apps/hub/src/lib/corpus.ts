@@ -54,8 +54,10 @@
  * recursion; previews fetch their own deployment's copy.
  *
  * CACHING: corpus files are committed and immutable between deploys
- * (ADR-021 discipline), so fetches use `next: { revalidate: 300 }` — the
- * same 300s bounded staleness the CDN responses already declare.
+ * (ADR-021 discipline), so fetches use `next: { revalidate: 86400 }` —
+ * the deploy itself resets the data cache, so staleness stays bounded by
+ * the deploy cadence, and the 1-day TTL (T-VERCEL-USAGE) keeps Hobby-plan
+ * ISR writes inside quota (the 300s TTL drove ~288 regens per page/day).
  */
 import "server-only";
 import { existsSync } from "node:fs";
@@ -90,7 +92,7 @@ async function fetchStaticJson<T>(urlPrefix: string, rel: string): Promise<T | n
   if (!origin) return null;
   try {
     const res = await fetch(staticUrl(urlPrefix, rel), {
-      next: { revalidate: 300 },
+      next: { revalidate: 86400 },
       signal: AbortSignal.timeout(20_000),
     });
     if (!res.ok) return null;
@@ -195,7 +197,7 @@ async function corpusIndex(): Promise<Set<string> | null> {
   indexPromise ??= (async () => {
     try {
       const res = await fetch(`${origin}/corpus-index.json`, {
-        next: { revalidate: 300 },
+        next: { revalidate: 86400 },
         signal: AbortSignal.timeout(20_000),
       });
       if (!res.ok) return null;

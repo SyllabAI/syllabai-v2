@@ -1,0 +1,220 @@
+"""CIE co-ordinated sciences (double award) biology concept lattice — T-KG-PRE-23
+(F8 rollout batch twenty-one, the CIE science family, the rollout tail; serves
+cie-igcse-science-co-ordinated-sciences-double-award-23-biology, 230 served points).
+
+AI_SUGGESTED / UNVALIDATED concept web DERIVED from the separate-science
+0610 2023 master web (scripts/f8bi_lattice_0610.py (F8 batch three, T-KG-PRE-5)), re-anchored onto the co-ordinated
+spine's own point ids.
+
+DERIVATION DISCLOSED (law of record: scripts/f8ci_derive.py): the
+co-ordinated biology register is a verified TEXT restatement of the
+separate-science 2023 register — mapcheck of record: 228 of 230 co-ordinated
+points mapped by exact or composite text match (composite = max(seq,
+token-containment) >= 0.85 with token-Jaccard >= 0.45; the 61
+auto sub-exact pairs, each eyeballed: B1.1.1->1.1.1 (score 0.991, jacc 0.975); B10.1.13->10.1.11 (score 1.000, jacc 1.000); B10.1.3->10.1.3 (score 1.000, jacc 1.000); B10.1.4->10.1.4 (score 1.000, jacc 0.900); B10.1.5->10.1.5 (score 1.000, jacc 1.000); B12.1.1->12.1.1 (score 1.000, jacc 0.935); B12.1.4->12.2.3 (score 0.943, jacc 0.882); B12.1.9->12.3.7 (score 1.000, jacc 1.000); B13.1.2->14.1.2 (score 1.000, jacc 0.974); B13.2.2->14.3.2 (score 1.000, jacc 1.000); B13.2.3->14.3.3 (score 1.000, jacc 1.000); B13.3.5->14.4.7 (score 1.000, jacc 0.697); B15.1.3->16.1.3 (score 1.000, jacc 0.773); B15.2.4->16.2.4 (score 1.000, jacc 0.773); B15.3.5->16.3.7 (score 1.000, jacc 1.000); B15.4.5->16.5.2 (score 1.000, jacc 0.720); B15.4.6->16.4.4 (score 1.000, jacc 0.833); B16.1.4->17.1.4 (score 0.988, jacc 0.750); B16.2.6->17.3.2 (score 1.000, jacc 0.968); B16.3.5->17.4.5 (score 1.000, jacc 1.000); B17.1.2->18.1.2 (score 1.000, jacc 0.850); B17.1.3->18.1.3 (score 1.000, jacc 0.679); B17.1.4->18.1.6 (score 1.000, jacc 0.833); B17.2.1->18.3.1 (score 0.981, jacc 0.962); B17.2.2->18.3.2 (score 1.000, jacc 1.000); B17.2.4->18.3.5 (score 1.000, jacc 1.000); B18.2.11->19.2.13 (score 0.941, jacc 0.800); B18.2.12->19.2.14 (score 1.000, jacc 0.920); B18.2.6->19.2.6 (score 1.000, jacc 0.950); B19.1.3->20.2.2 (score 1.000, jacc 0.778); B19.1.4->20.2.4 (score 0.971, jacc 0.933); B19.2.2->20.4.4 (score 1.000, jacc 0.962); B2.1.6->2.1.6 (score 1.000, jacc 1.000); B2.2.1->2.2.1 (score 1.000, jacc 1.000); B2.2.3->2.2.3 (score 1.000, jacc 1.000); B4.1.2->4.1.2 (score 1.000, jacc 1.000); B4.1.3->4.1.3 (score 1.000, jacc 0.838); B5.1.2->5.1.5 (score 1.000, jacc 0.667); B5.1.3->5.1.6 (score 1.000, jacc 0.824); B5.1.4->5.1.7 (score 1.000, jacc 0.909); B6.1.10->6.1.9 (score 0.961, jacc 0.909); B6.1.5->6.1.10 (score 0.933, jacc 0.824); B6.1.7->6.1.5 (score 1.000, jacc 0.958); B6.1.8->6.1.6 (score 1.000, jacc 1.000); B6.1.9->6.1.8 (score 0.960, jacc 0.900); B7.1.2->7.1.2 (score 1.000, jacc 1.000); B7.2.1->7.2.1 (score 1.000, jacc 0.976); B7.2.2->7.2.2 (score 1.000, jacc 1.000); B7.3.3->7.4.1 (score 0.995, jacc 0.812); B7.3.5->7.4.3 (score 1.000, jacc 1.000); B7.3.7->7.4.5 (score 1.000, jacc 0.833); B7.3.8->7.4.8 (score 1.000, jacc 0.886); B8.1.1->8.1.1 (score 1.000, jacc 1.000); B8.2.3->8.2.3 (score 1.000, jacc 0.955); B8.3.4->8.3.6 (score 1.000, jacc 0.944); B8.4.2->8.4.2 (score 1.000, jacc 1.000); B9.2.3->9.2.3 (score 1.000, jacc 0.955); B9.2.5->9.2.5 (score 1.000, jacc 0.667); B9.3.5->9.3.3 (score 1.000, jacc 0.791); B9.4.3->9.4.3 (score 1.000, jacc 1.000); B9.4.5->9.4.6 (score 1.000, jacc 1.000)),
+plus 3 manual overrides with stated evidence (B12.1.8->12.3.6 (donor text corrupted (extracted as '12 6 2 5 2 blood during vigorous exercise causing an oxygen debt continued') — carries the oxygen-debt statement the co-ord point states cleanly); B16.2.4->17.2.4 (exact-substring: sep 17.2.4 text = the co-ord statement + the next statement's continuation glued on; containment blocked only by the Jaccard guard); B6.1.4->6.1.7 (reworded: co-ord 'Investigate and understand the need for' vs sep 'Investigate the need for ... using appropriate controls')),
+plus 2 disclosed split/collapse claimants (B10.1.6->10.1.12 (core/supplement collapse: co-ord carries BOTH the Core 'State that vaccinations are available for some pathogens' (this point) and the Supplement 'Explain the role of vaccination in controlling the spread of diseases' (B10.1.14, auto-claimed, exact text of sep 10.1.12); sep carries one statement); B19.1.5->20.2.4 (core/supplement collapse: co-ord carries BOTH the Core 'State the undesirable effects of deforestation' (B19.1.4, auto-claimed) and the Supplement 'Explain ...' (this point, exact text of sep 20.2.4); sep carries one statement)),
+plus 0 points with NO served separate-science counterpart,
+left UNANCHORED ().
+The lattice is the master web with anchors renumbered through the verified
+map; the master's authored edges are kept VERBATIM minus the edges whose
+endpoints die in the re-anchoring (41 dropped).
+NO edge is re-authored, re-weighted or re-oriented. Concept ids mirror the
+master for traceability. Coverage disclosure: 230 of 230 co-ordinated points
+carry at least one concept (the master web does not anchor every separate
+point either — the inherited coverage pattern); points mapped but not
+concept-covered: none. The exact reversed list for this course, computed
+against the co-ordinated spine's own point order via the law of record
+(scripts/kg_f8al_project.py export_pairs):
+  - 0610-CON-ACTIVE-IMMUNITY-IGCSE [B10.1.10] -> 0610-CON-VACCINATION-IGCSE [B10.1.6]
+  - 0610-CON-ACTIVE-IMMUNITY-IGCSE [B10.1.11] -> 0610-CON-VACCINATION-IGCSE [B10.1.6]
+  - 0610-CON-ACTIVE-IMMUNITY-IGCSE [B10.1.12] -> 0610-CON-VACCINATION-IGCSE [B10.1.6]
+  - 0610-CON-ACTIVE-IMMUNITY-IGCSE [B10.1.8] -> 0610-CON-VACCINATION-IGCSE [B10.1.6]
+  - 0610-CON-ACTIVE-IMMUNITY-IGCSE [B10.1.9] -> 0610-CON-VACCINATION-IGCSE [B10.1.6]
+  - 0610-CON-ENZYME-ACTION-IGCSE [B5.1.3] -> 0610-CON-ENZYME-TEMP-PH [B5.1.2]
+  - 0610-CON-ENZYME-ACTION-IGCSE [B5.1.4] -> 0610-CON-ENZYME-TEMP-PH [B5.1.2]
+  - 0610-CON-FLOWERS-POLLINATION [B15.3.5] -> 0610-CON-FERTILISATION-PLANTS [B15.3.4]
+  - 0610-CON-FLOWERS-POLLINATION [B15.3.7] -> 0610-CON-FERTILISATION-PLANTS [B15.3.4]
+  - 0610-CON-GAS-EXCHANGE-SURFACES [B11.1.5] -> 0610-CON-BREATHING-ACTIVITY [B11.1.4]
+  - 0610-CON-HEART-IGCSE [B9.2.7] -> 0610-CON-CHD [B9.2.5]
+  - 0610-CON-HEART-IGCSE [B9.2.8] -> 0610-CON-CHD [B9.2.5]
+  - 0610-CON-INSPIRED-EXPIRED [B11.1.6] -> 0610-CON-BREATHING-ACTIVITY [B11.1.4]
+  - 0610-CON-NATURAL-SELECTION-IGCSE [B17.2.4] -> 0610-CON-SELECTIVE-BREEDING-IGCSE [B17.2.2]
+  - 0610-CON-NATURAL-SELECTION-IGCSE [B17.2.4] -> 0610-CON-SELECTIVE-BREEDING-IGCSE [B17.2.3]
+  - 0610-CON-PHOTOSYNTHESIS-BASICS [B6.1.5] -> 0610-CON-PHOTOSYNTHESIS-EXPTS [B6.1.4]
+  - 0610-CON-PHOTOSYNTHESIS-BASICS [B6.1.6] -> 0610-CON-PHOTOSYNTHESIS-EXPTS [B6.1.4]
+  - 0610-CON-PHYSICAL-DIGESTION [B7.3.9] -> 0610-CON-CHEMICAL-DIGESTION [B7.3.3]
+  - 0610-CON-PHYSICAL-DIGESTION [B7.3.9] -> 0610-CON-CHEMICAL-DIGESTION [B7.3.4]
+  - 0610-CON-PHYSICAL-DIGESTION [B7.3.9] -> 0610-CON-CHEMICAL-DIGESTION [B7.3.5]
+  - 0610-CON-PHYSICAL-DIGESTION [B7.3.9] -> 0610-CON-CHEMICAL-DIGESTION [B7.3.6]
+  - 0610-CON-PHYSICAL-DIGESTION [B7.3.9] -> 0610-CON-CHEMICAL-DIGESTION [B7.3.7]
+  - 0610-CON-PHYSICAL-DIGESTION [B7.3.9] -> 0610-CON-CHEMICAL-DIGESTION [B7.3.8]
+  - 0610-CON-PLANT-ANIMAL-CELLS [B2.1.3] -> 0610-CON-BACTERIAL-CELL [B2.1.2]
+  - 0610-CON-PLANT-ANIMAL-CELLS [B2.1.4] -> 0610-CON-BACTERIAL-CELL [B2.1.2]
+
+Honesty: prereqValidated stays EMPTY; the renderer labels every exported
+pair INFERRED PROTOTYPE; the named gate remains the SME validation pass.
+"""
+
+DD = "DEFINITIONAL_DEPENDENCY"
+UWR = "USED_WITHOUT_RETEACHING"
+
+CONCEPTS = {
+    "0610-CON-LIVING-CHARACTERISTICS": ["B1.1.1"],
+    "0610-CON-CLASSIFICATION-SPECIES": ["B15.2.2"],
+    "0610-CON-VIRUS-FEATURES": ["B10.1.7"],
+    "0610-CON-PLANT-ANIMAL-CELLS": ["B2.1.1", "B2.1.3", "B2.1.4"],
+    "0610-CON-BACTERIAL-CELL": ["B2.1.2"],
+    "0610-CON-CELL-DIVISION-NEW": ["B2.1.5"],
+    "0610-CON-SPECIALISED-CELLS": ["B2.1.6"],
+    "0610-CON-LEVELS-ORGANISATION": ["B2.1.7"],
+    "0610-CON-MAGNIFICATION-CALC": ["B2.2.1", "B2.2.2", "B2.2.3"],
+    "0610-CON-DIFFUSION": ["B3.1.1", "B3.1.2", "B3.1.3", "B3.1.4"],
+    "0610-CON-OSMOSIS": ["B3.2.1", "B3.2.2", "B3.2.3"],
+    "0610-CON-TURGOR-PLASMOLYSIS": ["B3.2.4", "B3.2.5", "B3.2.6"],
+    "0610-CON-ACTIVE-TRANSPORT": ["B3.3.1", "B3.3.2"],
+    "0610-CON-BIO-MOLECULES-ELEMENTS": ["B4.1.1", "B4.1.2"],
+    "0610-CON-FOOD-TESTS": ["B4.1.3"],
+    "0610-CON-CATALYST-ENZYME": ["B5.1.1"],
+    "0610-CON-ENZYME-ACTION-IGCSE": ["B5.1.3", "B5.1.4"],
+    "0610-CON-ENZYME-TEMP-PH": ["B5.1.2", "B5.1.5", "B5.1.6"],
+    "0610-CON-PHOTOSYNTHESIS-BASICS": ["B6.1.1", "B6.1.2", "B6.1.3", "B6.1.5", "B6.1.6"],
+    "0610-CON-PHOTOSYNTHESIS-USES": ["B6.1.7", "B6.1.8"],
+    "0610-CON-PHOTOSYNTHESIS-EXPTS": ["B6.1.10", "B6.1.4", "B6.1.9"],
+    "0610-CON-LEAF-STRUCTURE": ["B6.2.1", "B6.2.2", "B6.2.3"],
+    "0610-CON-BALANCED-DIET": ["B7.1.1", "B7.1.2", "B7.1.3"],
+    "0610-CON-DIGESTIVE-SYSTEM": ["B7.2.1", "B7.2.2"],
+    "0610-CON-PHYSICAL-DIGESTION": ["B7.3.1", "B7.3.2", "B7.3.9"],
+    "0610-CON-CHEMICAL-DIGESTION": ["B7.3.3", "B7.3.4", "B7.3.5", "B7.3.6", "B7.3.7", "B7.3.8"],
+    "0610-CON-XYLEM-PHLOEM": ["B8.1.1", "B8.1.2"],
+    "0610-CON-ROOT-HAIRS-UPTAKE": ["B8.2.1", "B8.2.2", "B8.2.3"],
+    "0610-CON-TRANSPIRATION-IGCSE": ["B8.3.1", "B8.3.2", "B8.3.3", "B8.3.4", "B8.3.5"],
+    "0610-CON-TRANSLOCATION-IGCSE": ["B8.4.1", "B8.4.2"],
+    "0610-CON-CIRCULATION-IGCSE": ["B9.1.1", "B9.1.2", "B9.1.3", "B9.1.4"],
+    "0610-CON-HEART-IGCSE": ["B9.2.1", "B9.2.2", "B9.2.3", "B9.2.4", "B9.2.7", "B9.2.8"],
+    "0610-CON-CHD": ["B9.2.5"],
+    "0610-CON-BLOOD-VESSELS-IGCSE": ["B9.3.1", "B9.3.2", "B9.3.3", "B9.3.4", "B9.3.5"],
+    "0610-CON-BLOOD-COMPONENTS": ["B9.4.1", "B9.4.2", "B9.4.3", "B9.4.4", "B9.4.5", "B9.4.6"],
+    "0610-CON-PATHOGENS-IGCSE": ["B10.1.1", "B10.1.2", "B10.1.3"],
+    "0610-CON-BODY-DEFENCES": ["B10.1.4", "B10.1.5"],
+    "0610-CON-ACTIVE-IMMUNITY-IGCSE": ["B10.1.10", "B10.1.11", "B10.1.12", "B10.1.8", "B10.1.9"],
+    "0610-CON-VACCINATION-IGCSE": ["B10.1.13", "B10.1.14", "B10.1.6"],
+    "0610-CON-GAS-EXCHANGE-SURFACES": ["B11.1.1", "B11.1.5"],
+    "0610-CON-INSPIRED-EXPIRED": ["B11.1.2", "B11.1.3", "B11.1.6"],
+    "0610-CON-BREATHING-ACTIVITY": ["B11.1.4", "B11.1.7"],
+    "0610-CON-ENERGY-USES": ["B12.1.1"],
+    "0610-CON-AEROBIC-RESPIRATION": ["B12.1.2", "B12.1.3", "B12.1.4"],
+    "0610-CON-ANAEROBIC-RESPIRATION": ["B12.1.5", "B12.1.6", "B12.1.7"],
+    "0610-CON-OXYGEN-DEBT": ["B12.1.8", "B12.1.9"],
+    "0610-CON-NEURONES-IGCSE": ["B13.1.1", "B13.1.2", "B13.1.3", "B13.1.4"],
+    "0610-CON-REFLEX-ARC": ["B13.1.5", "B13.1.6"],
+    "0610-CON-SENSE-ORGANS-EYE": ["B13.1.7"],
+    "0610-CON-HORMONES": ["B13.2.1", "B13.2.2", "B13.2.3", "B13.2.4"],
+    "0610-CON-HOMEOSTASIS-IGCSE": ["B13.3.1", "B13.3.2", "B13.3.3"],
+    "0610-CON-THERMOREGULATION": ["B13.3.4", "B13.3.5"],
+    "0610-CON-DRUGS-ANTIBIOTICS": ["B14.1.1", "B14.1.2", "B14.1.3", "B14.1.4", "B14.1.5"],
+    "0610-CON-ASEXUAL-REPRODUCTION": ["B15.1.1", "B15.1.2", "B15.1.3"],
+    "0610-CON-SEXUAL-REPRODUCTION": ["B15.2.1", "B15.2.3", "B15.2.4"],
+    "0610-CON-FLOWERS-POLLINATION": ["B15.3.1", "B15.3.2", "B15.3.3", "B15.3.5", "B15.3.7"],
+    "0610-CON-FERTILISATION-PLANTS": ["B15.3.4"],
+    "0610-CON-GERMINATION": ["B15.3.6"],
+    "0610-CON-REPRODUCTIVE-SYSTEMS": ["B15.4.1", "B15.4.2"],
+    "0610-CON-GAMETES-FERTILISATION": ["B15.4.3", "B15.4.6", "B15.4.7", "B15.4.8"],
+    "0610-CON-PUBERTY-MENSTRUAL": ["B15.4.4", "B15.4.5"],
+    "0610-CON-STI-HIV": ["B15.5.1", "B15.5.2", "B15.5.3", "B15.5.4", "B15.5.5"],
+    "0610-CON-CHROMOSOMES-DNA-GENES": ["B16.1.1", "B16.1.2", "B16.1.3"],
+    "0610-CON-SEX-INHERITANCE": ["B16.1.4"],
+    "0610-CON-HAPLOID-DIPLOID-IGCSE": ["B16.1.5", "B16.1.6", "B16.1.7"],
+    "0610-CON-MITOSIS-IGCSE": ["B16.2.1", "B16.2.2", "B16.2.3", "B16.2.4"],
+    "0610-CON-MEIOSIS-IGCSE": ["B16.2.5", "B16.2.6"],
+    "0610-CON-INHERITANCE-TERMS": ["B16.3.1", "B16.3.2", "B16.3.3", "B16.3.4", "B16.3.5", "B16.3.6", "B16.3.7", "B16.3.8", "B16.3.9"],
+    "0610-CON-MONOHYBRID-IGCSE": ["B16.3.10", "B16.3.11", "B16.3.12"],
+    "0610-CON-VARIATION-IGCSE": ["B17.1.1", "B17.1.2", "B17.1.3"],
+    "0610-CON-MUTATION-IGCSE": ["B17.1.4", "B17.1.5"],
+    "0610-CON-NATURAL-SELECTION-IGCSE": ["B17.2.1", "B17.2.4"],
+    "0610-CON-SELECTIVE-BREEDING-IGCSE": ["B17.2.2", "B17.2.3"],
+    "0610-CON-ENERGY-FLOW": ["B18.1.1", "B18.1.2"],
+    "0610-CON-FOOD-CHAINS-WEBS": ["B18.2.1", "B18.2.10", "B18.2.2", "B18.2.3", "B18.2.4", "B18.2.5", "B18.2.6", "B18.2.7", "B18.2.8", "B18.2.9"],
+    "0610-CON-ECOLOGICAL-PYRAMIDS": ["B18.2.11", "B18.2.12", "B18.2.13", "B18.2.14", "B18.2.15"],
+    "0610-CON-CARBON-NITROGEN-CYCLES": ["B18.3.1"],
+    "0610-CON-POPULATIONS": ["B19.1.1"],
+    "0610-CON-BIODIVERSITY-IGCSE": ["B19.1.2", "B19.1.3", "B19.1.4", "B19.1.5"],
+    "0610-CON-SUSTAINABILITY-CONSERVATION": ["B19.2.1", "B19.2.2"],
+}
+
+EDGES = [
+    ("0610-CON-PLANT-ANIMAL-CELLS", "0610-CON-BACTERIAL-CELL", UWR),
+    ("0610-CON-PLANT-ANIMAL-CELLS", "0610-CON-SPECIALISED-CELLS", DD),
+    ("0610-CON-PLANT-ANIMAL-CELLS", "0610-CON-LEVELS-ORGANISATION", DD),
+    ("0610-CON-CELL-DIVISION-NEW", "0610-CON-SPECIALISED-CELLS", UWR),
+    ("0610-CON-DIFFUSION", "0610-CON-OSMOSIS", DD),
+    ("0610-CON-DIFFUSION", "0610-CON-ACTIVE-TRANSPORT", UWR),
+    ("0610-CON-OSMOSIS", "0610-CON-TURGOR-PLASMOLYSIS", DD),
+    ("0610-CON-TURGOR-PLASMOLYSIS", "0610-CON-TRANSPIRATION-IGCSE", UWR),
+    ("0610-CON-ACTIVE-TRANSPORT", "0610-CON-ROOT-HAIRS-UPTAKE", UWR),
+    ("0610-CON-BIO-MOLECULES-ELEMENTS", "0610-CON-FOOD-TESTS", UWR),
+    ("0610-CON-BIO-MOLECULES-ELEMENTS", "0610-CON-BALANCED-DIET", UWR),
+    ("0610-CON-BIO-MOLECULES-ELEMENTS", "0610-CON-CHEMICAL-DIGESTION", UWR),
+    ("0610-CON-CATALYST-ENZYME", "0610-CON-ENZYME-ACTION-IGCSE", DD),
+    ("0610-CON-ENZYME-ACTION-IGCSE", "0610-CON-ENZYME-TEMP-PH", DD),
+    ("0610-CON-PHOTOSYNTHESIS-BASICS", "0610-CON-PHOTOSYNTHESIS-USES", DD),
+    ("0610-CON-PHOTOSYNTHESIS-BASICS", "0610-CON-PHOTOSYNTHESIS-EXPTS", DD),
+    ("0610-CON-PHOTOSYNTHESIS-BASICS", "0610-CON-LEAF-STRUCTURE", DD),
+    ("0610-CON-LEAF-STRUCTURE", "0610-CON-TRANSPIRATION-IGCSE", UWR),
+    ("0610-CON-PHOTOSYNTHESIS-BASICS", "0610-CON-FOOD-CHAINS-WEBS", UWR),
+    ("0610-CON-BALANCED-DIET", "0610-CON-DIGESTIVE-SYSTEM", UWR),
+    ("0610-CON-DIGESTIVE-SYSTEM", "0610-CON-PHYSICAL-DIGESTION", DD),
+    ("0610-CON-PHYSICAL-DIGESTION", "0610-CON-CHEMICAL-DIGESTION", UWR),
+    ("0610-CON-XYLEM-PHLOEM", "0610-CON-ROOT-HAIRS-UPTAKE", UWR),
+    ("0610-CON-XYLEM-PHLOEM", "0610-CON-TRANSLOCATION-IGCSE", DD),
+    ("0610-CON-ROOT-HAIRS-UPTAKE", "0610-CON-TRANSPIRATION-IGCSE", DD),
+    ("0610-CON-OSMOSIS", "0610-CON-TRANSPIRATION-IGCSE", UWR),
+    ("0610-CON-CIRCULATION-IGCSE", "0610-CON-HEART-IGCSE", DD),
+    ("0610-CON-CIRCULATION-IGCSE", "0610-CON-BLOOD-VESSELS-IGCSE", DD),
+    ("0610-CON-HEART-IGCSE", "0610-CON-BLOOD-VESSELS-IGCSE", UWR),
+    ("0610-CON-HEART-IGCSE", "0610-CON-CHD", DD),
+    ("0610-CON-SPECIALISED-CELLS", "0610-CON-BLOOD-COMPONENTS", UWR),
+    ("0610-CON-PATHOGENS-IGCSE", "0610-CON-BODY-DEFENCES", UWR),
+    ("0610-CON-BLOOD-COMPONENTS", "0610-CON-BODY-DEFENCES", UWR),
+    ("0610-CON-BODY-DEFENCES", "0610-CON-ACTIVE-IMMUNITY-IGCSE", DD),
+    ("0610-CON-ACTIVE-IMMUNITY-IGCSE", "0610-CON-VACCINATION-IGCSE", DD),
+    ("0610-CON-PATHOGENS-IGCSE", "0610-CON-STI-HIV", UWR),
+    ("0610-CON-SEXUAL-REPRODUCTION", "0610-CON-STI-HIV", UWR),
+    ("0610-CON-BACTERIAL-CELL", "0610-CON-DRUGS-ANTIBIOTICS", UWR),
+    ("0610-CON-DRUGS-ANTIBIOTICS", "0610-CON-NATURAL-SELECTION-IGCSE", UWR),
+    ("0610-CON-INSPIRED-EXPIRED", "0610-CON-BREATHING-ACTIVITY", UWR),
+    ("0610-CON-GAS-EXCHANGE-SURFACES", "0610-CON-BREATHING-ACTIVITY", UWR),
+    ("0610-CON-GAS-EXCHANGE-SURFACES", "0610-CON-AEROBIC-RESPIRATION", UWR),
+    ("0610-CON-ENERGY-USES", "0610-CON-AEROBIC-RESPIRATION", DD),
+    ("0610-CON-AEROBIC-RESPIRATION", "0610-CON-ANAEROBIC-RESPIRATION", DD),
+    ("0610-CON-ANAEROBIC-RESPIRATION", "0610-CON-OXYGEN-DEBT", DD),
+    ("0610-CON-BREATHING-ACTIVITY", "0610-CON-OXYGEN-DEBT", UWR),
+    ("0610-CON-SPECIALISED-CELLS", "0610-CON-NEURONES-IGCSE", UWR),
+    ("0610-CON-NEURONES-IGCSE", "0610-CON-REFLEX-ARC", DD),
+    ("0610-CON-REFLEX-ARC", "0610-CON-SENSE-ORGANS-EYE", UWR),
+    ("0610-CON-HORMONES", "0610-CON-HOMEOSTASIS-IGCSE", DD),
+    ("0610-CON-HOMEOSTASIS-IGCSE", "0610-CON-THERMOREGULATION", DD),
+    ("0610-CON-HORMONES", "0610-CON-PUBERTY-MENSTRUAL", DD),
+    ("0610-CON-SEXUAL-REPRODUCTION", "0610-CON-FLOWERS-POLLINATION", UWR),
+    ("0610-CON-FLOWERS-POLLINATION", "0610-CON-FERTILISATION-PLANTS", DD),
+    ("0610-CON-SEXUAL-REPRODUCTION", "0610-CON-REPRODUCTIVE-SYSTEMS", DD),
+    ("0610-CON-REPRODUCTIVE-SYSTEMS", "0610-CON-GAMETES-FERTILISATION", DD),
+    ("0610-CON-ASEXUAL-REPRODUCTION", "0610-CON-MITOSIS-IGCSE", UWR),
+    ("0610-CON-CHROMOSOMES-DNA-GENES", "0610-CON-INHERITANCE-TERMS", DD),
+    ("0610-CON-CHROMOSOMES-DNA-GENES", "0610-CON-HAPLOID-DIPLOID-IGCSE", DD),
+    ("0610-CON-HAPLOID-DIPLOID-IGCSE", "0610-CON-MITOSIS-IGCSE", UWR),
+    ("0610-CON-HAPLOID-DIPLOID-IGCSE", "0610-CON-MEIOSIS-IGCSE", DD),
+    ("0610-CON-CELL-DIVISION-NEW", "0610-CON-MITOSIS-IGCSE", UWR),
+    ("0610-CON-MEIOSIS-IGCSE", "0610-CON-INHERITANCE-TERMS", UWR),
+    ("0610-CON-MEIOSIS-IGCSE", "0610-CON-VARIATION-IGCSE", UWR),
+    ("0610-CON-INHERITANCE-TERMS", "0610-CON-MONOHYBRID-IGCSE", DD),
+    ("0610-CON-VARIATION-IGCSE", "0610-CON-NATURAL-SELECTION-IGCSE", DD),
+    ("0610-CON-MUTATION-IGCSE", "0610-CON-NATURAL-SELECTION-IGCSE", UWR),
+    ("0610-CON-NATURAL-SELECTION-IGCSE", "0610-CON-SELECTIVE-BREEDING-IGCSE", UWR),
+    ("0610-CON-ENERGY-FLOW", "0610-CON-FOOD-CHAINS-WEBS", DD),
+    ("0610-CON-FOOD-CHAINS-WEBS", "0610-CON-ECOLOGICAL-PYRAMIDS", DD),
+    ("0610-CON-FOOD-CHAINS-WEBS", "0610-CON-CARBON-NITROGEN-CYCLES", UWR),
+    ("0610-CON-FOOD-CHAINS-WEBS", "0610-CON-POPULATIONS", UWR),
+    ("0610-CON-POPULATIONS", "0610-CON-BIODIVERSITY-IGCSE", UWR),
+    ("0610-CON-BIODIVERSITY-IGCSE", "0610-CON-SUSTAINABILITY-CONSERVATION", DD),
+]

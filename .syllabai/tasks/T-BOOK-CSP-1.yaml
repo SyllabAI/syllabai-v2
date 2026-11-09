@@ -1,0 +1,44 @@
+version: 1
+task:
+  id: T-BOOK-CSP-1
+  title: "The lesson embeds' frame-src law — the books rail's video (youtube-nocookie) and PhET sim iframes were blocked by the hub CSP's frame-src 'self'"
+  owner: "operator-delegate (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7, run trace 1a1bc844616c4d39)"
+  status: "SHIPPED run-001 (PR #875 merged dc766c5d; production CSP verified live 19:25:22Z 2026-11-08 — both embed hosts serving)"
+  priority: P1
+  band: T-BOOK (content serving — the lesson rail embed widgets)
+  wave: books-lesson-embeds
+  deps: [T-BOOK-006]
+  execution_record: >
+    run-000 (2026-11-08, advisory trace 1a1bc330e9b925cd): the operator asked
+    whether the course-lesson videos were loading now ("Previously they
+    weren't"). Live diagnosis: the data plane is complete (63/63 media-embed
+    blocks with youtubeId + licenseRef across all 29 chapters of the serving
+    chemistry book; sim-embed PhET blocks live in the same book), but the
+    hub CSP's frame-src 'self' — written for the same-origin KG/graph
+    explorer frames and never widened when the embed widgets shipped —
+    refuses both cross-origin hosts in every browser. Card + fallback link
+    render; the player/sim iframe does not.
+    run-001 (2026-11-08, trace 1a1bc844616c4d39, operator "go ahead and
+    ship that fix"): frame-src widened to exactly 'self' +
+    https://www.youtube-nocookie.com + https://phet.colorado.edu (the two
+    shipped widget hosts and nothing else), CSP comment amended to name the
+    widget laws; new lib/csp-frames.test.ts pins the CLOSED allow-list and
+    the untouched framing posture (frame-ancestors 'self' + XFO SAMEORIGIN)
+    so header and rail can never drift apart again. Gates: turbo typecheck
+    5/5; bun test apps/hub 1212 pass / 12 fail / 2 errors = the pristine
+    stash-baseline band (13 fail / 2 errors same tree, ±1 timing flake —
+    zero new failures); csp-frames 2/2. Scope note disclosed in the
+    receipt: the PhET host rides the same one-line lever as the videos —
+    the same defect class on the same line, verified live, rather than a
+    knowingly half-fixed header.
+scope:
+  allowed:
+    - "apps/hub/next.config.ts"
+    - "apps/hub/src/lib/csp-frames.test.ts"
+    - ".syllabai/tasks/T-BOOK-CSP-1.yaml"
+    - ".syllabai/receipts/T-BOOK-CSP-1/run-001.md"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "apps/api/** (the serialized operator-gated lever)"
+    - "frame-ancestors / X-Frame-Options (the who-frames-us posture — deliberately untouched)"
+    - "any new embed host (a provider must amend the header AND the test, via a reviewed lane)"

@@ -1,0 +1,30 @@
+version: 1
+task:
+  id: T-TIER1-DB-APPLY
+  title: "The T-TIER1 / T-AUDIT-TIER1 account-persistence migrations (0022 learner_last_opened + learner_mock_results, 0023 teacher_saved_tests + teacher_teaching_coverage + teacher_content_reviews, 0026 user_documents) are committed and carried by the DEPLOYED hub+api builds, but were never applied to the PRODUCTION Neon branch — every backing endpoint 500s (live-probed 2026-11-05: GET /learners/me/last-opened, GET /learners/me/mock-results, GET /teachers/me/saved-tests, GET /teachers/me/teaching-coverage, GET /me/documents — all HTTP 500), the hub sync layers swallow the 500s by the cache law and silently stay localStorage-only, so the account mirrors the operator ordered on 2026-11-03 ('things that are localStorage-only, make them saved to account') never persist across logins/sessions. This lane lands the additive schema on production behind the guard protocol of record (COW-branch proof job → owner-capable prod apply job, receipt artifacts, app-role DML grants per the F5-S7 production-grant law)."
+  owner: "operator-direct (zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355) — claimed under the operator chat order 'go' (trace 1a1ab2eac6ead959), answering 'I want everything to be persisting across logins/sessions. Do you need database access?'"
+  status: RUN-001
+  claimed_at: "2026-11-05"
+  priority: P1
+  wave: account-persistence
+  deps: [T-TIER1, T-AUDIT-TIER1, T-TEACHME-001, T-TEACHGENIE-001]
+  endpoints:
+  - GET/PUT /api/v1/learners/me/last-opened
+  - GET /api/v1/learners/me/mock-results
+  - PUT /api/v1/learners/me/mock-results/:courseSlug
+  - GET/PUT /api/v1/teachers/me/saved-tests
+  - GET/PUT /api/v1/teachers/me/teaching-coverage
+  - GET/PUT /api/v1/teachers/me/content-reviews
+  - GET/PUT /api/v1/me/documents
+  service_status: not a provider lane — DB-plane DDL only, executed in CI (the neon-replay.yml executor doctrine: agent sandboxes are DNS-blocked; CI is not)
+  scope:
+    allowed:
+    - scripts/t-tier1-apply-0022-0023-0026.ts (NEW — the frozen apply driver, RAW SQL from the committed migration files only)
+    - .github/workflows/t-tier1-db-apply-0022-0023-0026.yml (NEW — the dispatch-only guard-protocol runner, cow-apply + prod-apply)
+    - .syllabai/tasks/T-TIER1-DB-APPLY.yaml; .syllabai/receipts/T-TIER1-DB-APPLY/**; .syllabai/worklog.md (append-only)
+    forbidden:
+    - ANY edit to packages/db/drizzle/* (the migration files are FROZEN — sha256-pinned in the receipt, applied verbatim)
+    - ANY non-additive DDL (no ALTER on existing tables, no drops, no drizzle bookkeeping, flyway_schema_history untouched)
+    - any apps/api or apps/hub code change (the wire is already deployed and correct)
+    - any production secret printed, echoed, or persisted in the repo or receipts (host-only scrub law)
+    - any direct DB connection from the agent sandbox (DNS-blocked law; CI is the executor)

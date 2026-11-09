@@ -74,6 +74,11 @@ import type { SqlFn } from "../assessment/sql";
 import { BadRequestError, ConflictError, type SubmitClock } from "../selfmark";
 import { buildNbaEngine, type NbaDeps } from "./nba";
 import { LearnerMeForbiddenError, LearnerMeNotImplementedError, LearnerMeNotFoundError } from "./errors";
+// Tier-3 follow-up 4: the probe-fixture filter is the ONE shared
+// implementation (@syllabai/shared) — the hub's set-work-card
+// defense-in-depth filter imports the same law; the contract is pinned in
+// packages/shared/src/synthetic-assignment.test.ts.
+import { isSyntheticTitle } from "@syllabai/shared";
 import type {
   AssignmentSubmissionRequest,
   CardScheduleView,
@@ -1057,8 +1062,11 @@ export async function setLastOpened(
   return view;
 }
 
-/** The per-course bound of record (the hub's own MAX_PER_COURSE). */
-const MOCK_RESULTS_CAP = 20;
+/** The per-course bound of record (the hub's own MAX_PER_COURSE).
+ *  T-CAPS-POLICY-1: 20 → 50, moving with the contracts'
+ *  MOCK_RESULTS_PER_COURSE and the hub's MAX_PER_COURSE — one law, three
+ *  sites (a weekly-mock cadence now covers a full school year per course). */
+const MOCK_RESULTS_CAP = 50;
 
 interface MockResultRow {
   client_id: string;
@@ -1090,7 +1098,7 @@ const toMockResultView = (r: MockResultRow) => ({
 
 /**
  * GET /api/v1/learners/me/mock-results — every course's self-marked mock
- * tallies, newest finished first, capped at 20 per course server-side (the
+ * tallies, newest finished first, capped at 50 per course server-side (the
  * same bound the hub's store enforces locally — the cap is a law, not a
  * UI choice, so cache and account can never disagree about the shape).
  */
@@ -1185,6 +1193,19 @@ interface AssignmentLists {
  * target = members only — the membership rows are the authorization, no
  * membership row, no classroom work).
  */
+/**
+ * Teacher-onboarding probe fixtures (dashboard UX review 2026-11-04, item 3 —
+ * the source fix; follow-up 4 — the ONE shared predicate). Join-code probe
+ * rows ("probe late asprobe_1790628651", seeded with a bogus epoch-0 dueAt)
+ * are QA artefacts whose class_id is NULL — and the V49 visibility law makes
+ * NULL-class rows visible to EVERY enabled student, so the probe account's
+ * homework leaked into every live agenda and assignment list. The hub also
+ * filters these presentation-side (apps/hub set-work-card.tsx) as
+ * defense-in-depth; this filter stops the learner surfaces ISSUING them at
+ * all. A real assignment titled e.g. "Temperature probes" survives (the
+ * law's pinned false-positive boundary lives with the shared contract).
+ */
+
 async function fetchAssignmentLists(
   deps: FlashcardRatingRecordDeps,
   learnerId: string,
@@ -1218,7 +1239,9 @@ async function fetchAssignmentLists(
       limit 1`) as unknown as Array<{ one: number }>;
     if (memberRows.length > 0) visible.push(a);
   }
-  return { mine, visible };
+  // Probe fixtures out at the source (see isSyntheticTitle above) — both the
+  // list endpoint and the agenda re-order inherit this filter.
+  return { mine, visible: visible.filter((a) => !isSyntheticTitle(a.title)) };
 }
 
 /**

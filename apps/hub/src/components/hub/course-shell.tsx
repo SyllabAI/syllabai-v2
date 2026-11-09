@@ -19,36 +19,12 @@ import {
   useRef,
   useState,
 } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  BookMarked,
-  BookOpen,
-  Bookmark,
-  ChevronDown,
-  Compass,
-  FileQuestion,
-  Files,
-  GraduationCap,
-  LayoutDashboard,
-  Lightbulb,
-  ListChecks,
-  ListTree,
-  Map,
-  Menu,
-  PanelLeftClose,
-  PanelLeftOpen,
-  ScrollText,
-  Sparkles,
-  SquareStack,
-  Target,
-  TrendingUp,
-  X,
-} from "lucide-react";
+import { Menu, PanelLeftClose, PanelLeftOpen, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
+import { createAccountStore } from "@/lib/account-stores";
 import {
   CourseDataProvider,
   type SidebarData,
@@ -56,32 +32,20 @@ import {
 } from "@/components/hub/course-data-context";
 import { TopicTreeWithIndexAuto } from "@/components/hub/topic-tree";
 import { isDocumentFocusRoute, isViewerRoute } from "@/lib/focus-routes";
-import { courseHasBookArchive } from "@/lib/books-registry";
+// T-NAV-STRIP-1: the ONE course-nav registry (moved verbatim from the inline
+// navGroups below-removed) + the MG navigation-tab strip that reads it.
+import { buildCourseNavGroups, buildCourseStripItems } from "@/lib/course-nav";
+import { CourseToolNav } from "@/components/hub/course-tool-nav";
+// T-DASH-SIDEBAR-001: the run-004b nav renderer (rows, folds, rail shapes)
+// now lives in components/layout/side-nav.tsx, shared with the dashboard
+// sidebar — one active-row law, zero drift between the two sidebars.
+import {
+  SideNav,
+  SIDEBAR_RAIL_PX,
+  type SideNavGroup,
+} from "@/components/layout/side-nav";
 
 export type { SidebarData, SidebarVariant } from "@/components/hub/course-data-context";
-
-/** The collapsed rail is fixed 44px (`w-11`) by design — run-008 C-1 made only
- * the EXPANDED width continuous; the rail never takes inline width. run-010
- * uses the same constant as the hover-intent boundary (pointerenter must
- * arrive through the rail strip, not the panel area). Keep in lockstep with
- * the `w-11` classes below. */
-const SIDEBAR_RAIL_PX = 44;
-
-type NavItem = {
-  /** run-013 ghost law (audit C1+C3): disabled rows carry NO href — a ghost
-   * is not a link (the old `href: "#"` rendered nowhere but lied in the
-   * data). Enabled rows always carry one — the NavRow renderer guards it. */
-  href?: string;
-  label: string;
-  icon: typeof BookOpen;
-  disabled?: boolean;
-  badge?: string;
-  exact?: boolean;
-  /** run-004b: tree children (RD's collapsible-group pattern) — rendered
-      under the parent with the 2px tree rail; only real hierarchy ships
-      (Saved questions under Exam Questions), never invented depth. */
-  children?: NavItem[];
-};
 
 // run-008 C-1 (tier-c-mining.md): the drag-resize handle constants. Clamps
 // and default are OURS (MG's are not in the capture); default = 256 = the
@@ -89,282 +53,43 @@ type NavItem = {
 const SIDEBAR_MIN_W = 200;
 const SIDEBAR_MAX_W = 340;
 const SIDEBAR_DEFAULT_W = 256;
-const SIDEBAR_WIDTH_KEY = "hub:course-rail-width";
+const SIDEBAR_WIDTH_KEY = "hub:course-rail-width"; // RETIRED (legacy adoption pin)
 const SIDEBAR_RESIZE_STEP = 16;
 
 const clampSidebarWidth = (n: number) =>
   Math.min(SIDEBAR_MAX_W, Math.max(SIDEBAR_MIN_W, n));
 
-/** run-013: NavItem.href is optional (ghost rows carry none) — a missing
- * href can never prefix-match, so a ghost row can never pill. */
-const pathActive = (href: string | undefined, pathname: string) =>
-  href !== undefined && pathname.startsWith(href);
+/**
+ * The course-shell preference doc — the "course-shell-prefs" key of the
+ * workspace-document plane (T-ACCOUNT-ONLY run-001): the sidebar width
+ * lives in the account. The retired localStorage record is adopted once
+ * per tab, then removed.
+ */
+const courseShellStore = createAccountStore<{ sidebarWidth: number | null }>({
+  docKey: "course-shell-prefs",
+  initial: { sidebarWidth: null },
+  parse: (raw) => {
+    if (!raw || typeof raw !== "object") return { sidebarWidth: null };
+    const w = (raw as { sidebarWidth?: unknown }).sidebarWidth;
+    return {
+      sidebarWidth: typeof w === "number" && Number.isFinite(w) ? clampSidebarWidth(Math.round(w)) : null,
+    };
+  },
+  legacyKeys: [SIDEBAR_WIDTH_KEY],
+  readLegacy: () => {
+    try {
+      const raw = window.localStorage.getItem(SIDEBAR_WIDTH_KEY);
+      if (raw === null || raw.trim() === "") return { sidebarWidth: null };
+      const n = Number(raw);
+      return { sidebarWidth: Number.isFinite(n) ? n : null };
+    } catch {
+      return { sidebarWidth: null };
+    }
+  },
+});
 
 function persistSidebarWidth(w: number) {
-  try {
-    window.localStorage.setItem(SIDEBAR_WIDTH_KEY, String(w));
-  } catch {
-    // storage blocked / full — the width just won't survive a reload
-    // (honest degrade, same posture as the other hub prefs)
-  }
-}
-
-/**
- * run-004b — the course nav row, corrected against the operator-supplied
- * saved captures of the real MathsGenie + RevisionDojo sidebars
- * (scripts/rd-sidebar.html, scripts/mg-sidebar.html): MG's airy rhythm
- * (px-2 py-2 rows, hairline panel, sentence-case group labels) with RD's
- * accent idiom — the ACTIVE row is a FILLED PILL in the
- * --accent-primary/--accent-primary-foreground token pair, exactly their
- * bg-accent-primary recipe. Icons are INLINE (both references — the
- * run-004 icon tiles were a wrong guess and cost 28px of label width),
- * inactive ink is the references' neutral 60%. Badges split by semantics:
- * harvest counts = quiet neutral pill (MG's only count badge is a red
- * todo-dot — a library size is metadata, not an alert); "roadmap" = the
- * accent pair inverted, RD's "New" chip. Every colour is a token ride —
- * --primary/--muted raws per the #500 alias contract, no hardcoded hex.
- * course-nav-item stays on the row as the documented theme hook
- * (globals.css); aria-current stays load-bearing for it and for a11y.
- *
- * run-005 tier-a (interactivity feel, capture-verbatim — see the
- * interactivity analysis over the operator-supplied captures):
- * (1) hover affordances ride [@media(hover:hover)] — BOTH references gate
- *     every hover that way, so touch devices never sticky-hover a row;
- * (2) icons brighten on row hover via the named group (group/navitem,
- *     opacity-60 → group-hover:opacity-100). No transition class on the
- *     icon — neither reference transitions it, they snap; (3) the keyboard
- *     focus ring rides the accent pair token (ring-accent-primary-foreground/50),
- *     the references' focus-visible recipe, replacing ring-ring/60;
- * (4) the shell's content swaps fade in (animate-in fade-in, 200ms ease-out,
- *     matching the aside's width ease) so the collapse/expand ease no longer
- *     ends in a hard pop. Opacity-only, which the 2026-10-30 reduced-motion
- *     audit keeps by design ("fewer and gentler, not zero").
- *
- * run-005 tier-b (structure, capture-verbatim): the row gains a second
- * shape — the 44px rail (collapsed) KEEPS rows mounted as 36px icon pills
- * (MG's rail-keep: labels hide, rows never unmount), each labelled by a
- * Radix tooltip (MG's data-slot="tooltip-trigger" recipe; the portal
- * escapes the aside's overflow-hidden) plus aria-label. Badges and tree
- * indent are expanded-only — a count pill has no business in a 36px icon
- * row. The tier-a content-swap fade retires here: rail-keep turns the
- * collapse swap into a morph, so there is nothing left to fade.
- */
-function NavRow({
-  item,
-  active,
-  onNavigate,
-  indent = false,
-  collapsed = false,
-}: {
-  item: NavItem;
-  active: boolean;
-  onNavigate?: () => void;
-  indent?: boolean;
-  /** run-005 tier-b: the 44px rail shape — icon-only 36px row + tooltip. */
-  collapsed?: boolean;
-}) {
-  // numeric badges (harvested counts, e.g. Seneca "1,736") render as quiet
-  // neutral pills; "roadmap" renders as the accent pair inverted (RD "New")
-  const isCount = item.badge !== undefined && /^\d/.test(item.badge);
-  const badge = item.badge && (
-    <span
-      className={cn(
-        "ml-auto shrink-0",
-        isCount
-          ? "rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium tabular-nums text-muted-foreground"
-          : "rounded-md bg-accent-primary-foreground px-1.5 py-px text-[10px] font-medium uppercase tracking-wide text-accent-primary",
-      )}
-    >
-      {item.badge}
-    </span>
-  );
-  if (item.disabled || !item.href) {
-    return (
-      <span
-        aria-disabled
-        title="On the roadmap"
-        className={cn(
-          "flex cursor-not-allowed items-center rounded-xl text-sm text-muted-foreground",
-          collapsed ? "size-9 justify-center" : "gap-2.5 px-2 py-2",
-        )}
-      >
-        <item.icon className="size-4 shrink-0 text-muted-foreground/70" aria-hidden />
-        {!collapsed && <span className="min-w-0 flex-1 truncate">{item.label}</span>}
-        {!collapsed && badge}
-      </span>
-    );
-  }
-  const link = (
-    <Link
-      href={item.href}
-      onClick={onNavigate}
-      aria-current={active ? "page" : undefined}
-      aria-label={collapsed ? item.label : undefined}
-      className={cn(
-        "course-nav-item group/navitem relative flex rounded-xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-foreground/50 focus-visible:ring-inset",
-        collapsed
-          ? "size-9 items-center justify-center"
-          : "items-center gap-2.5 px-2 py-2",
-        indent && !collapsed && "ml-7",
-        active
-          ? "bg-accent-primary text-accent-primary-foreground"
-          : "text-foreground/60 [@media(hover:hover)]:hover:bg-muted [@media(hover:hover)]:hover:text-foreground",
-      )}
-    >
-      {/* run-005 tier-a: idle icons sit at 60% and brighten on ROW hover
-          (the references' exact recipe, touch-gated); the active pill's
-          icon stays at full ink like MG's active row. */}
-      <item.icon
-        aria-hidden
-        className={cn(
-          "size-4 shrink-0",
-          active
-            ? "opacity-100"
-            : "opacity-60 [@media(hover:hover)]:group-hover/navitem:opacity-100",
-        )}
-      />
-      {/* run-007 C-3: MG's label guard (min-w-0 flex-1, capture bytes
-          2309898/2344575) — a flex item's implicit min-width is its content,
-          so a bare `truncate` span never ellipsized, it hard-clipped at the
-          aside's overflow-hidden edge. title = the v1 overflow affordance. */}
-      {!collapsed && <span className="min-w-0 flex-1 truncate" title={item.label}>{item.label}</span>}
-      {!collapsed && badge}
-    </Link>
-  );
-  // run-005 tier-b: rail rows are labelled by tooltips (hover AND focus —
-  // a native title never fires on keyboard focus), MG's collapsed-rail
-  // recipe. The wrapper is UNCONDITIONAL: asChild keeps the Link identity
-  // so the collapse toggle never remounts the row or drops focus; the
-  // content only mounts on the rail, where the label is otherwise hidden.
-  if (!collapsed) return link;
-  return (
-    <Tooltip>
-      <TooltipTrigger asChild>{link}</TooltipTrigger>
-      <TooltipContent side="right">{item.label}</TooltipContent>
-    </Tooltip>
-  );
-}
-
-/**
- * run-004b — the shared nav renderer (desktop sidebar + mobile drawer).
- * Group labels go MG's way: sentence case, text-sm muted, carrying their
- * own top rhythm (px-2.5 pt-5 pb-1) — the 10.5px uppercase micro-tracking
- * read techy where both references read calm. Tree children render under
- * their parent behind RD's 2px rail at 17px. One renderer so the two
- * surfaces cannot drift (the pre-run-004 duplication is what let them).
- *
- * run-005 tier-b: groups FOLD. The label becomes a disclosure button
- * (aria-expanded, WAI-ARIA disclosure pattern; the chevron rides MG's
- * transition-transform rotate idiom, instant fold like the references'
- * un-animated collapsibles; run-006: motion-reduce:transition-none kills
- * the rotate easing under prefers-reduced-motion — the audit law stays
- * "fewer and gentler, not zero": the rotation turns instant and keeps
- * communicating fold state, same posture as the aside width morph).
- * Fold state is per-renderer in-memory — the
- * sidebar and the drawer each remember their own, a reload opens all.
- * On the rail the labels step aside for MG's hairline dividers
- * (h-0.5 w-6 mx-auto) with the name kept for AT in sr-only.
- */
-function CourseNav({
-  navGroups,
-  pathname,
-  onNavigate,
-  collapsed = false,
-}: {
-  navGroups: { label: string; items: NavItem[] }[];
-  pathname: string;
-  onNavigate?: () => void;
-  collapsed?: boolean;
-}) {
-  const [closedGroups, setClosedGroups] = useState<Record<string, boolean>>({});
-  const navId = useId();
-  return (
-    <nav aria-label="Course sections">
-      {navGroups.map((g) => {
-        // the rail never folds (hairlines are not controls); expanded
-        // groups fold on their own label — closed state is in-memory only
-        const closed = !collapsed && closedGroups[g.label] === true;
-        const regionId = `${navId}-${g.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
-        return (
-        <div key={g.label}>
-          {collapsed ? (
-            <>
-              <p className="sr-only">{g.label}</p>
-              <div aria-hidden className="mx-auto my-1.5 h-0.5 w-6 rounded-full bg-border" />
-            </>
-          ) : (
-            <button
-              type="button"
-              onClick={() => setClosedGroups((s) => ({ ...s, [g.label]: !closed }))}
-              aria-expanded={!closed}
-              aria-controls={closed ? undefined : regionId}
-              className="flex w-full cursor-pointer items-center justify-between gap-2 rounded-xl px-2.5 pb-1 pt-5 text-sm font-medium text-muted-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-foreground/50 focus-visible:ring-inset [@media(hover:hover)]:hover:text-foreground"
-            >
-              {g.label}
-              <ChevronDown
-                aria-hidden
-                className={cn(
-                  "size-4 shrink-0 transition-transform duration-200 motion-reduce:transition-none",
-                  closed && "-rotate-90",
-                )}
-              />
-            </button>
-          )}
-          {!closed && (
-          <ul id={regionId} className="space-y-0.5">
-            {g.items.map((item) => {
-              // UX audit 2026-10-02 #13: a sibling row that claims the
-              // current path via `exact` (e.g. Saved questions under
-              // /exam-questions/saved) suppresses prefix rows — without
-              // this, both rows highlighted at once. run-004b: the check
-              // scopes to the item's own children when it has them (a tree
-              // parent and its child must never pill at the same time),
-              // else to the group's exact rows as before.
-              const exactSiblings = (item.children ?? g.items).some(
-                (s) => s.exact === true,
-              );
-              const active = item.disabled
-                ? false
-                : (item.exact ??
-                  (pathActive(item.href, pathname) && !exactSiblings));
-              return (
-                <li key={item.label}>
-                  <NavRow item={item} active={active} onNavigate={onNavigate} collapsed={collapsed} />
-                  {item.children && (
-                    <div className="relative mt-0.5 mb-1 space-y-0.5">
-                      {/* RD's tree rail: 2px hairline at 17px spanning the
-                          children — the parent-child visual contract */}
-                      <div
-                        aria-hidden
-                        className="pointer-events-none absolute inset-y-0 left-[17px] border-l-2 border-border"
-                      />
-                      {item.children.map((child) => {
-                        const childActive = child.disabled
-                          ? false
-                          : (child.exact ?? pathActive(child.href, pathname));
-                        return (
-                          <NavRow
-                            key={child.label}
-                            item={child}
-                            active={childActive}
-                            onNavigate={onNavigate}
-                            indent
-                            collapsed={collapsed}
-                          />
-                        );
-                      })}
-                    </div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-          )}
-        </div>
-        );
-      })}
-    </nav>
-  );
+  courseShellStore.set({ sidebarWidth: w });
 }
 
 /**
@@ -465,18 +190,19 @@ export function CourseShell({
   const dragWidthRef = useRef<number | null>(null);
   const asideId = useId();
 
-  // restore a saved width once on mount (guarded like the other hub prefs)
+  // restore the account's saved width (guarded like the other hub prefs);
+  // re-restores when the account hydration lands
   useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem(SIDEBAR_WIDTH_KEY);
-      if (raw === null || raw.trim() === "") return;
-      const n = Number(raw);
-      if (!Number.isFinite(n)) return;
+    const restore = () => {
+      const w = courseShellStore.get().sidebarWidth;
+      if (w === null) return;
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setSidebarWidth(clampSidebarWidth(Math.round(n)));
-    } catch {
-      // private mode / blocked storage — default width
-    }
+      setSidebarWidth(clampSidebarWidth(Math.round(w)));
+    };
+    restore();
+    return courseShellStore.subscribe(() => {
+      if (courseShellStore.hydrated()) restore();
+    });
   }, []);
 
   // stable + idempotent: safe to call from pointerup, lostpointercapture,
@@ -659,133 +385,16 @@ export function CourseShell({
 
   const base = `/courses/${data.course.slug}`;
 
-  const navGroups: {
-    label: string;
-    items: NavItem[];
-  }[] = [
-    {
-      label: "Course",
-      items: [
-        // run-013 R1/G2 (sidebar content audit): the dashboard's band-1
-        // flagship — the tutor — finally rides the persistent chrome. The
-        // gate is the ADR-030 law itself (the registry curriculumCode, the
-        // SAME field the band card and the /tutor page key on); a course
-        // without a validated serving corpus shows NO row here — the honest
-        // "not yet connected" state stays on the dashboard card. The row
-        // never pills: /tutor sits outside /courses/*, which is correct —
-        // it is a session surface, not a course route.
-        ...(data.course.curriculumCode
-          ? [{ href: `/tutor?course=${data.course.slug}`, label: "Course Tutor", icon: GraduationCap }]
-          : []),
-        { href: base, label: "Course Resources", icon: LayoutDashboard, exact: pathname === base },
-        // run-013 R1/G1 (audit HIGH): the corpus spine — prerendered for ALL
-        // 109 courses (ADR-021 allCourseParams) — was chrome-less on desktop;
-        // its only persistent entry was a small exam-code pill in the page
-        // header, which on a phone was the sole route into the most
-        // subject-specific tool the platform has.
-        { href: `${base}/specification`, label: "Specification", icon: ListTree },
-      ],
-    },
-    {
-      // run-013 C2: the dashboard's Learn band taxonomy (T-COURSE-BANDS-1) —
-      // the group stops being "Revision" and mirrors the band that actually
-      // holds these tools.
-      label: "Learn",
-      items: [
-        { href: `${base}/revision-notes`, label: "Revision Notes", icon: BookOpen },
-        // run-013 C1 (sidebar content audit): ONE ghost law per class —
-        // data-conditional tools are ABSENT-WHEN-ABSENT (the law Seneca has
-        // obeyed since T-SENECA-001), never disabled placeholders. T-MIG-140's
-        // disabled+roadmap row is superseded: the chrome no longer advertises
-        // a tool this course cannot open; the honest roadmap state stays on
-        // the dashboard's Learn-band card. Same committed-registry gate as
-        // the card (courseHasBookArchive); the shelf behind the link stays
-        // the live T-C20 gate.
-        ...(courseHasBookArchive(data.course.slug)
-          ? [{ href: `${base}/books`, label: "Student Book", icon: BookMarked }]
-          : []),
-        // run-014 (audit F2): SquareStack — the old CircleHelp glyph read as
-        // "Help"; same glyph as the header dropdown's Flashcards row.
-        { href: `${base}/flashcards`, label: "Flashcards", icon: SquareStack },
-        // run-013 R1/G4 (audit MEDIUM): guided lessons — the committed
-        // guided-import.json gate (the SAME loadGuidedIndex the Learn-band
-        // card keys on). Absent-when-absent (the Seneca law) means this row
-        // self-updates as the corpus rollout progresses — coverage 1/109
-        // today, and the chrome never shows a placeholder for the other 108.
-        ...(data.hasGuidedLessons
-          ? [{ href: `${base}/guided-lessons`, label: "Guided lessons", icon: Lightbulb }]
-          : []),
-        // run-013 R1/G5 (audit MEDIUM-LOW): Underground Mathematics — the
-        // SAME absent=OFF law as lib/ugm.ts (flag + committed bundle or
-        // nothing, errors degrade to OFF); the SAME getUgmBundle the
-        // Learn-band card keys on. 10 maths courses today.
-        ...(data.hasUgm
-          ? [{ href: `${base}/ugm`, label: "Underground Mathematics", icon: Map }]
-          : []),
-        // T-SENECA-001 Task 43: harvested Seneca course content — the row
-        // only renders for courses with a registered Seneca bundle under the
-        // live flag (courses without a mapping show nothing, never a
-        // disabled placeholder).
-        ...(data.seneca
-          ? [{ href: `${base}/seneca`, label: "Seneca Resources", icon: Sparkles, badge: data.seneca.total.toLocaleString() }]
-          : []),
-      ],
-    },
-    {
-      // run-013 C2: the dashboard's Practise band name, verbatim.
-      label: "Practise",
-      items: [
-        {
-          href: `${base}/exam-questions`,
-          label: "Exam Questions",
-          icon: FileQuestion,
-          // run-004b: Saved questions is real hierarchy (a facet of the
-          // question bank), so it rides RD's tree-child pattern — the only
-          // nesting the content honestly has
-          children: [
-            { href: `${base}/exam-questions/saved`, label: "Saved questions", icon: Bookmark, exact: pathname.endsWith("/saved") },
-          ],
-        },
-        // run-013 C1: same class law. The OFFICIAL-PLANE-ONLY gate below is
-        // unchanged (official parsed plane OR corpus PDF archive — never the
-        // SME bank's sourcePaper citations); only the missing-data
-        // presentation changes: disabled+roadmap → absent. The dashboard
-        // keeps the honest roadmap card.
-        ...(data.hasPastPapers || data.hasCorpusPapers
-          ? [{ href: `${base}/past-papers`, label: "Past Papers", icon: ScrollText }]
-          : []),
-        { href: `${base}/practice-papers`, label: "Practice Papers", icon: Files },
-        // run-013 C1+C3: the OTHER class — platform roadmap items render as
-        // ghost rows (disabled + roadmap badge, NO href: the old "#" was an
-        // inert-but-sloppy real anchor, and a disabled row is not a link).
-        // Target Test keeps the one chrome ghost it already had; the
-        // dashboard-only roadmap cards (Mock Exams, Mistakes Log, Strength
-        // Battle) stay dashboard-only — the chrome is curated navigation and
-        // this lane adds no new ghost rows.
-        { label: "Target Test", icon: Target, disabled: true, badge: "roadmap" },
-      ],
-    },
-    {
-      // run-013 C2 (audit C2): the dashboard's Track & improve band — the
-      // sidebar taxonomy was left behind by the band reorg ("Strengths &
-      // Weaknesses" is a Track tool that sat under "Course"; Grade
-      // Boundaries had no group to live in). Both rows move here so the two
-      // information architectures agree about the same tools.
-      label: "Track & improve",
-      items: [
-        // T-KG-COV-1: the coarse weekly question ("how far through the
-        // specification am I?") rides beside the per-point one it feeds.
-        { href: `${base}/coverage`, label: "Syllabus coverage", icon: ListChecks },
-        { href: `${base}/strengths`, label: "Strengths & Weaknesses", icon: Compass, exact: pathname === `${base}/strengths` },
-        // run-013 R1/G3: official boundaries live for 106/109 courses — the
-        // same getGradeBoundariesSummary the Track card keys on;
-        // absent-when-absent.
-        ...(data.hasGradeBoundaries
-          ? [{ href: `${base}/grade-boundaries`, label: "Grade Boundaries", icon: TrendingUp }]
-          : []),
-      ],
-    },
-  ];
+  // T-NAV-STRIP-1: the groups moved VERBATIM into lib/course-nav.ts — the ONE
+  // course-nav registry — so the sidebar and the new course tool strip are two
+  // views of the same gated list and can never drift (same groups, order,
+  // absent-when-absent gates; the investigation lives in
+  // download/course-tool-nav-investigation.md).
+  const navGroups = buildCourseNavGroups(data, pathname);
+  // the strip view: flattened, real links only — ghost/roadmap rows (Target
+  // Test) and tree facets (Saved questions) are chrome-only concepts and never
+  // ride the strip (see buildCourseStripItems).
+  const stripItems = buildCourseStripItems(data);
 
   // NOTE (run-004b): the rail is no longer its own <aside> — the shell is
   // ONE element that animates its width between the expanded panel and the
@@ -953,7 +562,13 @@ export function CourseShell({
               preserved; the bar itself suppressed — one scroller serves all
               three shapes (expanded, 44px rail, run-009 float). */}
           <div className={cn("scrollbar-none min-h-0 flex-1 overflow-y-auto pb-6", sidebarOpen ? "px-3" : "px-1")}>
-            <CourseNav navGroups={navGroups} pathname={pathname} onNavigate={() => setOpen(false)} collapsed={!sidebarOpen} />
+            <SideNav
+              ariaLabel="Course sections"
+              navGroups={navGroups}
+              pathname={pathname}
+              onNavigate={() => setOpen(false)}
+              collapsed={!sidebarOpen}
+            />
           </div>
 
           {/* run-005 tier-b footer dock: MG pins a theme/settings footer
@@ -1005,6 +620,15 @@ export function CourseShell({
             <span className="min-w-0 truncate text-sm font-medium">{data.course.label ?? data.course.subject}</span>
           </div>
           )}
+          {/* T-NAV-STRIP-1 — the course tool strip (MG's navigation tab) on every
+              course-scoped tool page. Suppressions of record: the course ROOT
+              (the CourseBodyTabs trio is the root nav — MG's root carries no
+              strip either), the paper-viewer route (s146 chrome stand-down) and
+              the document-focus player routes (full-height surfaces). Active
+              law + items live in lib/course-nav.ts + course-tool-nav.tsx. */}
+          {!viewerRoute && !focusRoute && pathname !== base && (
+            <CourseToolNav items={stripItems} pathname={pathname} />
+          )}
           {children}
         </div>
       </div>
@@ -1023,10 +647,7 @@ function MobileDrawerInner({
   variant: SidebarVariant;
   pathname: string;
   onNavigate: () => void;
-  navGroups: {
-    label: string;
-    items: NavItem[];
-  }[];
+  navGroups: SideNavGroup[];
 }) {
   const base = `/courses/${data.course.slug}`;
 
@@ -1040,7 +661,12 @@ function MobileDrawerInner({
       </div>
       {/* run-011: RD's mobile drawer ships scrollbar-none too. */}
       <div className="scrollbar-none min-h-0 flex-1 overflow-y-auto px-3 pb-6">
-        <CourseNav navGroups={navGroups} pathname={pathname} onNavigate={onNavigate} />
+        <SideNav
+          ariaLabel="Course sections"
+          navGroups={navGroups}
+          pathname={pathname}
+          onNavigate={onNavigate}
+        />
 
         {/* resource-flavoured topic tree (mobile navigation). Papers are
             linear documents — the Exam-Questions spec tree is noise on

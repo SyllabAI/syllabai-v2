@@ -38,6 +38,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useMyClasses } from "@/lib/teacher/my-classes";
 import type { TeacherCourseLite } from "../../../teacher-client";
 import { LocalClassMissing } from "../class-workspace-local";
+import { PageHeader } from "@/components/layout/page-header";
 
 interface GeographySubtopic {
   code: string;
@@ -130,8 +131,10 @@ function GeographyView({
 
   return (
     <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-8 sm:px-6">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
+      {/* T-HEADER-1: the shared tool-page header (back link rides the
+          breadcrumbs slot; the count badge the actions slot). */}
+      <PageHeader
+        breadcrumbs={
           <Link
             href={`/teacher/classes/${classId}`}
             className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
@@ -139,18 +142,15 @@ function GeographyView({
             <ArrowLeft className="size-3.5" aria-hidden />
             Back to the class workspace
           </Link>
-          <h1 className="mt-1 text-2xl font-bold tracking-tight">
-            {cls.name} — geography progress
-          </h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            My Class Geography Progress — the curriculum map for every subject this class covers,
-            with the corpus behind each subtopic.
-          </p>
-        </div>
-        <Badge variant="outline" className="font-mono text-[10px]">
-          {covered.length} subject{covered.length === 1 ? "" : "s"}
-        </Badge>
-      </div>
+        }
+        title={`${cls.name} — geography progress`}
+        description="My Class Geography Progress — the curriculum map for every subject this class covers, with the corpus behind each subtopic."
+        actions={
+          <Badge variant="outline" className="font-mono text-[10px]">
+            {covered.length} subject{covered.length === 1 ? "" : "s"}
+          </Badge>
+        }
+      />
 
       <div className="flex items-start gap-2 rounded-md border border-dashed bg-muted/40 p-3 text-xs leading-relaxed text-muted-foreground">
         <MapIcon className="mt-0.5 size-3.5 shrink-0" aria-hidden />

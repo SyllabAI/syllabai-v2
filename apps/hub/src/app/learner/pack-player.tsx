@@ -93,7 +93,9 @@ function TaskCard({
     <div
       className={cn(
         "rounded-lg border p-3",
-        done && "border-primary/40 bg-primary/5",
+        // t-ui-polish run-007: the completed state speaks the house active
+        // voice (border-primary/60), not the legacy /40.
+        done && "border-primary/60 bg-primary/5",
       )}
     >
       <button

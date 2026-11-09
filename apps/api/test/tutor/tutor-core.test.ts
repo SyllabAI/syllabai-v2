@@ -18,7 +18,7 @@ import {
   sanitizeAnswer,
   streamThrough,
 } from "../../src/services/tutor/sanitize";
-import { fuse, fuseWithPlanWeights, PLAN_V2_WEIGHTS } from "../../src/services/tutor/rrf";
+import { fuse, fuseWithPlanWeights, PLAN_V2_WEIGHTS, DEFAULT_RRF_K } from "../../src/services/tutor/rrf";
 import { evidenceFromChunk, evidenceFromNode, type EvidenceItem } from "../../src/services/tutor/evidence";
 import {
   noReranker,
@@ -38,7 +38,11 @@ import {
   systemPrompt,
   userPrompt,
 } from "../../src/services/tutor/prompt";
-import { kgRetrieve, tokensOf } from "../../src/services/tutor/kg-retriever";
+import {
+  kgRetrieve,
+  mergeKnowledgeContexts,
+  tokensOf,
+} from "../../src/services/tutor/kg-retriever";
 import {
   INTERVENTION_THRESHOLD,
   assembleTutorContext,
@@ -329,6 +333,14 @@ describe("citation resolution", () => {
     );
     // the graceful null: no title → the pre-001 frozen label byte-for-byte
     expect(resolveCitations([note(null)])[0]?.label).toBe("Revision notes — p1");
+    // T-TUTOR-UX-1 (TU-5): a raw-id-shaped title renders as absent — the
+    // frozen label stands, never a fabricated one
+    expect(resolveCitations([note("sme-note-rn_T6S7R66N2wSZpWyc")])[0]?.label).toBe(
+      "Revision notes — p1",
+    );
+    expect(resolveCitations([note("Chemical tests")])[0]?.label).toBe(
+      "Revision notes — Chemical tests — p1",
+    );
     // blank/whitespace titles degrade too (never "Revision notes —  — p1")
     expect(resolveCitations([note("   ")])[0]?.label).toBe("Revision notes — p1");
 
@@ -347,16 +359,31 @@ describe("citation resolution", () => {
 // ── refusal texts (frozen KaRagService :48-83, byte-verbatim) ───────────────
 
 describe("refusal texts", () => {
-  test("the three refusal laws are the frozen bytes", () => {
+  // T-TUTOR-UX-1 (TU-7) ruling: the CANONICAL STEM stays byte-frozen (the
+  // refusal-detect tier-1 law keys on it); the TAILS speak to students —
+  // the admin-language redirect ("ask your teacher to ingest") is retired,
+  // the redirects name the learner's own next step. Parity break documented
+  // in the PR of record.
+  test("the three refusal laws: frozen stem, student-facing tails (TU-7)", () => {
     expect(TUTOR_REFUSAL).toBe(`I can't answer that from the validated course material yet. There is no
-matching specification topic or source document for this question, so
-answering would mean guessing — which SyllabAI never does. Try naming the
-topic (e.g. "moles", "bonding", "equilibria") or ask your teacher to
-ingest the relevant material.`);
+matching specification topic or source document for this question here,
+so answering would mean guessing — which SyllabAI never does. Try naming
+the topic (e.g. "moles", "bonding", "equilibria"), or open the tutor from
+inside your course so it searches that course's material.`);
     expect(courseScopeRefusal("4CH1")).toContain('scoped to the course "4CH1"');
     expect(courseScopeRefusal("4CH1")).toContain("SyllabAI never answers across\ncourses");
-    // v17 (T-TUTOR-EXP-2): the hand-back clause follows the bumped prompt
+    // v17 (T-TUTOR-PIVOT-1): the refusal shape law follows the bumped prompt
     expect(promptIdentity()).toBe("tutor-grounded/v17");
+  });
+
+  test("the v17 refusal shape law is in the system prompt", () => {
+    const prompt = systemPrompt();
+    expect(prompt).toContain(
+      'open the refusal exactly with "I can\'t answer that from the\n  validated course material yet."',
+    );
+    expect(prompt).toContain("state precisely what is missing");
+    expect(prompt).toContain("start a new conversation on the new topic");
+    expect(prompt).toContain("Never refuse a part\n  the SOURCES do cover");
   });
 
   test("the v11 spec-is-a-map quiz law is in the system prompt", () => {
@@ -366,26 +393,6 @@ ingest the relevant material.`);
     );
     expect(prompt).toContain("Never ask the\n  learner to recall or state a specification reference");
     expect(prompt).toContain("the specification is a map the tutor\n  reads, not content the learner memorises");
-  });
-
-  test("the v17 hand-back clause is in the system prompt (T-TUTOR-EXP-2)", () => {
-    const prompt = systemPrompt();
-    expect(prompt).toContain("Hand the floor back on explanation turns");
-    expect(prompt).toContain("end with ONE short comprehension probe");
-    expect(prompt).toContain("its answer must be in the SOURCES");
-    expect(prompt).toContain("never make it a\n  yes/no");
-    expect(prompt).toContain("Skip the probe when the learner asked a quick lookup");
-    expect(prompt).toContain("when the INTERVENTION PLAN calls\n  for direct instruction");
-    // answer-first is the law: the probe never withholds or conditions the answer
-    expect(prompt).toContain("The answer always comes first: the probe never");
-    expect(prompt).toContain("withholds, defers or conditions the explanation");
-    // the probe rides the EXISTING 200-word bound — no budget change
-    expect(prompt).toContain("it lives inside\n  the 200-word budget as one sentence");
-    expect(prompt).toContain("- Be concise: at most 200 words plus citations.");
-    // the skip-set: quiz turns, tier-1 hints, paper walkthroughs
-    expect(prompt).toContain("(not a paper-question walkthrough, not a quiz\n  turn, not a tier-1 hint turn)");
-    // the probe must not launder a spec-recall ask (the v11 law reads through)
-    expect(prompt).toContain("never ask the learner to\n  recall a specification reference, topic code, page number or source\n  label");
   });
 
   test("the v12 QUIZ SCAFFOLD serving rule is in the system prompt", () => {
@@ -1427,5 +1434,605 @@ describe("DC-1 mark context — karag prepare() step 2.8 (spec §3.1 P0016)", ()
     expect(prep.markContext).toBeNull();
     expect(prep.disclosureTier).toBe(1);
     void events;
+  });
+});
+
+// ── T-TUTOR-PIVOT-1 run-001 — the pivot arm + the refusal truth ─────────────
+//  Prereg of record docs/DC7-TUTOR-PIVOT-RETRIEVAL-AND-REFUSAL-TRUTH-PLAN.md.
+//  Measured defect (2026-11-05 live, session bd6c89ff seq 13-16): a
+//  mid-conversation topic pivot refused a corpus that holds the answer, and
+//  the model-worded refusal recorded refused=false.
+
+describe("ka-rag pivot arm — T-TUTOR-PIVOT-1 (the bare question retrieves on a topic pivot)", () => {
+  const emptyGraph = {
+    async structureNodes() {
+      return [];
+    },
+    async prerequisiteChains() {
+      return new Map();
+    },
+    async misconceptionsForTopics() {
+      return new Map();
+    },
+  };
+  const scopes = {
+    async resolveActive() {
+      return { curriculumVersionId: "cv", code: "4CH1", surface: new Set(["n1"]) };
+    },
+    async resolveForCourse() {
+      return null;
+    },
+  };
+
+  const chunkItem = (
+    row: string,
+    page: number | null,
+    chunkId: string,
+    kind: string,
+    cosine = 0.9,
+  ): EvidenceItem =>
+    evidenceFromChunk({
+      documentRowId: row,
+      documentId: "doc-" + row,
+      documentVersion: 1,
+      chunkId,
+      chunkIndex: 0,
+      kind,
+      content: `content-${chunkId}`,
+      pageStart: page,
+      pageEnd: null,
+      elementIds: [],
+      embeddingModel: "test",
+      cosine,
+    });
+
+  const examHistory = [
+    { role: "user", text: "How should I structure my answers to get full marks?" },
+    { role: "assistant", text: "Read the command word and plan your points." },
+    { role: "user", text: "What about six-mark questions?" },
+    { role: "assistant", text: "Plan, develop each point, conclude." },
+  ];
+
+  test("a topic pivot retrieves on the BARE question too — the pivot row survives into the pool", async () => {
+    const examRow = chunkItem("rowExam", 3, "c-exam", "TEXTBOOK", 0.9);
+    const pivotRow = chunkItem("rowPivot", 7, "c-pivot", "TEXTBOOK", 0.88);
+    const seenQueries: string[] = [];
+    const prep = await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: emptyGraph,
+        scopes,
+        vectorRetriever: async (query: string) => {
+          seenQueries.push(query);
+          // the working-memory blend lands in exam-technique territory; the
+          // bare pivot question lands on the corpus rows that hold the answer
+          return query.includes("structure my answers") ? [examRow] : [pivotRow];
+        },
+        paperQuestionResolver: async () => ({
+          items: [],
+          identityParsed: false,
+          identityLabel: null,
+        }),
+      } as never,
+      "l1",
+      "Difference between boiling and evaporation",
+      examHistory,
+      null,
+    );
+    expect(seenQueries.length).toBe(2); // the blend + the bare question
+    expect(seenQueries[1]).toBe("Difference between boiling and evaporation");
+    expect(prep.evidence.map((i) => i.chunkId)).toContain("c-pivot");
+  });
+
+  test("single-turn posture is byte-identical: ONE retrieval call, no pivot arm", async () => {
+    let calls = 0;
+    const prep = await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: emptyGraph,
+        scopes,
+        vectorRetriever: async (query: string) => {
+          calls += 1;
+          return [chunkItem("rowA", 1, "c1", "TEXTBOOK", 0.9), ...(query === "" ? [] : [])];
+        },
+        paperQuestionResolver: async () => ({
+          items: [],
+          identityParsed: false,
+          identityLabel: null,
+        }),
+      } as never,
+      "l1",
+      "what is a mole?",
+      [],
+      null,
+    );
+    expect(calls).toBe(1);
+    expect(prep.evidence.map((i) => i.chunkId)).toEqual(["c1"]);
+  });
+
+  test("an all-blank history degenerates to the single-turn posture (no pivot call)", async () => {
+    let calls = 0;
+    await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: emptyGraph,
+        scopes,
+        vectorRetriever: async () => {
+          calls += 1;
+          return [];
+        },
+        paperQuestionResolver: async () => ({
+          items: [],
+          identityParsed: false,
+          identityLabel: null,
+        }),
+      } as never,
+      "l1",
+      "what is a mole?",
+      [
+        { role: "user", text: "   " },
+        { role: "assistant", text: "" },
+      ],
+      null,
+    );
+    expect(calls).toBe(1);
+  });
+
+  test("RRF consensus: a row both arms agree on accumulates BOTH rank contributions", () => {
+    const shared = chunkItem("rowS", 2, "c-shared", "TEXTBOOK", 0.9);
+    const blendedOnly = chunkItem("rowB", 4, "c-blended", "TEXTBOOK", 0.8);
+    const bareOnly = chunkItem("rowP", 7, "c-pivot", "TEXTBOOK", 0.7);
+    const fused = fuseWithPlanWeights([[blendedOnly, shared], [bareOnly, shared]]);
+    const scores = new Map(fused.map((i) => [i.chunkId, i.fusedScore]));
+    const w = PLAN_V2_WEIGHTS.TEXTBOOK;
+    // shared: rank 1 in list A + rank 1 in list B → 2 · w/(k+2); the others: w/(k+1)
+    expect(scores.get("c-shared")).toBeCloseTo((2 * w) / (DEFAULT_RRF_K + 2), 12);
+    expect(scores.get("c-blended")).toBeCloseTo(w / (DEFAULT_RRF_K + 1), 12);
+    expect(scores.get("c-pivot")).toBeCloseTo(w / (DEFAULT_RRF_K + 1), 12);
+  });
+});
+
+describe("refusal truth — T-TUTOR-PIVOT-1 (the model-worded refusal records refused)", () => {
+  const emptyGraph = {
+    async structureNodes() {
+      return [];
+    },
+    async prerequisiteChains() {
+      return new Map();
+    },
+    async misconceptionsForTopics() {
+      return new Map();
+    },
+  };
+  const scopes = {
+    async resolveActive() {
+      return { curriculumVersionId: "cv", code: "4CH1", surface: new Set(["n1"]) };
+    },
+    async resolveForCourse() {
+      return null;
+    },
+  };
+  const notPaper = async () => ({ items: [], identityParsed: false, identityLabel: null });
+  const evidenceRow = evidenceFromChunk({
+    documentRowId: "row1",
+    documentId: "doc-row1",
+    documentVersion: 1,
+    chunkId: "c1",
+    chunkIndex: 0,
+    kind: "TEXTBOOK",
+    content: "Boiling happens throughout a liquid at its boiling point.",
+    pageStart: 7,
+    pageEnd: null,
+    elementIds: [],
+    embeddingModel: "test",
+    cosine: 0.9,
+  });
+
+  const events: unknown[] = [];
+  const baseDeps = (generator: unknown) => ({
+    sql: fakeSql({}),
+    clock: fixedClock,
+    kgGraph: emptyGraph,
+    scopes,
+    vectorRetriever: async () => [evidenceRow],
+    paperQuestionResolver: notPaper,
+    generator,
+    telemetry: (e: unknown) => events.push(e),
+  });
+
+  test("blocking ask: evidence present but the model refuses → refused=true, provider stays the generator's", async () => {
+    events.length = 0;
+    const deps = baseDeps({
+      async generate() {
+        return {
+          answer:
+            "I'm sorry, but the supplied sources do not contain any information about the difference between boiling and evaporation. You could rephrase the question, or start a new conversation on this topic.",
+          model: "gpt-oss-20b",
+          provider: "groq",
+          finishReason: "stop",
+        };
+      },
+    });
+    const mod = buildTutorModule((deps as { sql: SqlFn }).sql, fixedClock, deps as never);
+    const result = await mod.ask(
+      "l1",
+      "Difference between boiling and evaporation",
+      [
+        { role: "user", text: "How do I answer six-mark questions?" },
+        { role: "assistant", text: "Plan, develop, conclude." },
+      ],
+      null,
+      null,
+    );
+    expect(result.refused).toBe(true);
+    expect(result.provider).toBe("groq"); // NOT a deterministic refusal
+    expect(result.evidenceCount).toBe(1);
+    const tel = events[0] as { refused: boolean; provider: string };
+    expect(tel.refused).toBe(true);
+    expect(tel.provider).toBe("groq");
+  });
+
+  test("blocking ask: a normal grounded answer stays refused=false", async () => {
+    events.length = 0;
+    const deps = baseDeps({
+      async generate() {
+        return {
+          answer:
+            "Boiling happens throughout the liquid at its boiling point [1], while evaporation happens only at the surface.",
+          model: "gpt-oss-20b",
+          provider: "groq",
+          finishReason: "stop",
+        };
+      },
+    });
+    const mod = buildTutorModule((deps as { sql: SqlFn }).sql, fixedClock, deps as never);
+    const result = await mod.ask("l1", "boiling vs evaporation", [], null, null);
+    expect(result.refused).toBe(false);
+    const tel = events[0] as { refused: boolean };
+    expect(tel.refused).toBe(false);
+  });
+
+  test("stream parity: meta keeps the pre-generation contract; completed + telemetry carry the truth", async () => {
+    events.length = 0;
+    const deps = baseDeps({
+      async *streamGenerate() {
+        yield {
+          answer: "I'm sorry, but the supplied sources do not contain ",
+          model: "gpt-oss-20b",
+          provider: "groq",
+          finishReason: null,
+        };
+        yield {
+          answer: "any information about the difference between boiling and evaporation.",
+          model: "gpt-oss-20b",
+          provider: "groq",
+          finishReason: "stop",
+        };
+      },
+    });
+    const mod = buildTutorModule((deps as { sql: SqlFn }).sql, fixedClock, deps as never);
+    const refusedFlags: boolean[] = [];
+    for await (const event of mod.askStream("l1", "boiling vs evaporation", [], null, null)) {
+      if (event.kind === "meta") refusedFlags.push(event.refused);
+      if (event.kind === "completed") refusedFlags.push(event.refused);
+    }
+    // meta: false (pre-generation — a model-worded refusal is not knowable
+    // before the text arrives); completed: true (the accumulated text)
+    expect(refusedFlags).toEqual([false, true]);
+    const tel = events[0] as { refused: boolean };
+    expect(tel.refused).toBe(true);
+  });
+});
+
+// ── T-TUTOR-PIVOT-1 run-002 — the deterministic redirect (live-measured) ────
+
+describe("refusal redirect — T-TUTOR-PIVOT-1 run-002 (the pipeline carries the way forward)", () => {
+  const emptyGraph = {
+    async structureNodes() {
+      return [];
+    },
+    async prerequisiteChains() {
+      return new Map();
+    },
+    async misconceptionsForTopics() {
+      return new Map();
+    },
+  };
+  const scopes = {
+    async resolveActive() {
+      return { curriculumVersionId: "cv", code: "4CH1", surface: new Set(["n1"]) };
+    },
+    async resolveForCourse() {
+      return null;
+    },
+  };
+  const notPaper = async () => ({ items: [], identityParsed: false, identityLabel: null });
+  const evidenceRow = evidenceFromChunk({
+    documentRowId: "row1",
+    documentId: "doc-row1",
+    documentVersion: 1,
+    chunkId: "c1",
+    chunkIndex: 0,
+    kind: "TEXTBOOK",
+    content: "Boiling happens throughout a liquid at its boiling point.",
+    pageStart: 7,
+    pageEnd: null,
+    elementIds: [],
+    embeddingModel: "test",
+    cosine: 0.9,
+  });
+  const events: unknown[] = [];
+  const baseDeps = (generator: unknown) => ({
+    sql: fakeSql({}),
+    clock: fixedClock,
+    kgGraph: emptyGraph,
+    scopes,
+    vectorRetriever: async () => [evidenceRow],
+    paperQuestionResolver: notPaper,
+    generator,
+    telemetry: (e: unknown) => events.push(e),
+  });
+  // the LIVE-MEASURED groq wording (run-001 replay): no apology stem, no redirect
+  const LIVE_GROQ_REFUSAL =
+    "The supplied sources do not contain information about the capital city of France.";
+
+  test("blocking ask: a non-compliant model refusal still ends with the redirect line", async () => {
+    events.length = 0;
+    const deps = baseDeps({
+      async generate() {
+        return { answer: LIVE_GROQ_REFUSAL, model: "gpt-oss-20b", provider: "groq", finishReason: "stop" };
+      },
+    });
+    const mod = buildTutorModule((deps as { sql: SqlFn }).sql, fixedClock, deps as never);
+    const result = await mod.ask("l1", "What is the capital city of France?", [], null, null);
+    expect(result.refused).toBe(true);
+    expect(result.answer.startsWith(LIVE_GROQ_REFUSAL)).toBe(true);
+    expect(result.answer).toContain("Could you rephrase the question, or start a new conversation");
+  });
+
+  test("blocking ask: an answer that already carries a redirect stays byte-identical", async () => {
+    events.length = 0;
+    const compliant =
+      "I can't answer that from the validated course material yet. Nothing here covers it. " +
+      "Could you rephrase the question, or start a new conversation on this topic?";
+    const deps = baseDeps({
+      async generate() {
+        return { answer: compliant, model: "m", provider: "p", finishReason: "stop" };
+      },
+    });
+    const mod = buildTutorModule((deps as { sql: SqlFn }).sql, fixedClock, deps as never);
+    const result = await mod.ask("l1", "q", [], null, null);
+    expect(result.answer).toBe(compliant);
+  });
+
+  test("stream parity: the redirect rides a TAIL DELTA; completed.fullAnswer matches the wire", async () => {
+    events.length = 0;
+    const deps = baseDeps({
+      async *streamGenerate() {
+        yield { answer: "The supplied sources do not contain ", model: "gpt-oss-20b", provider: "groq", finishReason: null };
+        yield { answer: "information about the capital city of France.", model: "gpt-oss-20b", provider: "groq", finishReason: "stop" };
+      },
+    });
+    const mod = buildTutorModule((deps as { sql: SqlFn }).sql, fixedClock, deps as never);
+    const kinds: string[] = [];
+    let tailText = "";
+    let completedFull = "";
+    for await (const event of mod.askStream("l1", "capital of France?", [], null, null)) {
+      kinds.push(event.kind);
+      if (event.kind === "delta") tailText = event.text;
+      if (event.kind === "completed") completedFull = event.fullAnswer;
+    }
+    expect(kinds).toEqual(["citations", "meta", "delta", "delta", "delta", "completed"]);
+    expect(tailText).toContain("Could you rephrase the question");
+    expect(completedFull.startsWith("The supplied sources do not contain")).toBe(true);
+    expect(completedFull).toContain("Could you rephrase the question");
+    const tel = events[0] as { refused: boolean };
+    expect(tel.refused).toBe(true);
+  });
+});
+
+// ── T-TUTOR-PIVOT-2 run-001 — the KG intent pivot arm (DC9) ────────────────
+// Prereg of record: docs/DC9-TUTOR-KG-INTENT-PIVOT-ARM-PLAN.md. The DC7 §4
+// disclosed residual, escalated on the T-TUTOR-AUDIT-1 live receipts: on a
+// pivot, KG intent ran on the blended query only, so the intent surface (and
+// with it the spec-boost anchor tier) described the PREVIOUS topic and the
+// pivot topic contributed nothing to the pool's head.
+
+describe("mergeKnowledgeContexts — T-TUTOR-PIVOT-2 union laws", () => {
+  const topic = (nodeId: string, code: string, score: number) => ({
+    nodeId,
+    code,
+    title: `title-${nodeId}`,
+    matchScore: score,
+  });
+  const ctx = (
+    topics: ReturnType<typeof topic>[],
+    prerequisites: Array<{ forTopicId: string; nodeId: string; title: string; depth: number }> = [],
+    misconceptions: Array<{ forTopicId: string; nodeId: string; title: string }> = [],
+  ) => ({ topics, prerequisites, misconceptions });
+
+  test("empty arms are identities", () => {
+    const full = ctx([topic("a", "c1", 1)]);
+    expect(mergeKnowledgeContexts({ topics: [], prerequisites: [], misconceptions: [] }, full)).toBe(full);
+    expect(mergeKnowledgeContexts(full, { topics: [], prerequisites: [], misconceptions: [] })).toBe(full);
+  });
+
+  test("topics dedup by node id at the MAX matchScore, re-sorted by the frozen law (specificity desc, code asc)", () => {
+    const merged = mergeKnowledgeContexts(
+      ctx([topic("n1", "b-code", 0.5), topic("n2", "a-code", 0.9)]),
+      ctx([topic("n1", "b-code", 1.0), topic("n3", "c-code", 0.7)]),
+    );
+    expect(merged.topics.map((t) => t.nodeId)).toEqual(["n1", "n2", "n3"]);
+    expect(merged.topics[0]?.matchScore).toBe(1.0);
+  });
+
+  test("prerequisites dedup per (forTopicId, nodeId) at the max depth; misconceptions dedup", () => {
+    const merged = mergeKnowledgeContexts(
+      ctx([topic("a", "c1", 1)], [
+        { forTopicId: "a", nodeId: "p1", title: "p1", depth: 2 },
+        { forTopicId: "a", nodeId: "p2", title: "p2", depth: 1 },
+      ], [{ forTopicId: "a", nodeId: "m1", title: "m1" }]),
+      ctx([topic("b", "c2", 0.9)], [
+        { forTopicId: "b", nodeId: "p1", title: "p1", depth: 3 },
+        { forTopicId: "a", nodeId: "p1", title: "p1", depth: 1 },
+      ], [{ forTopicId: "b", nodeId: "m1", title: "m1" }]),
+    );
+    const p1a = merged.prerequisites.find((p) => p.forTopicId === "a" && p.nodeId === "p1");
+    const p1b = merged.prerequisites.find((p) => p.forTopicId === "b" && p.nodeId === "p1");
+    expect(p1a?.depth).toBe(2); // same (topic, node) pair dedups at max depth
+    expect(p1b?.depth).toBe(3); // different topic ⇒ distinct link
+    expect(merged.misconceptions).toHaveLength(2); // keyed per topic
+  });
+
+  test("merge is idempotent", () => {
+    const a = ctx([topic("n1", "c1", 0.6)]);
+    const b = ctx([topic("n2", "c2", 0.8)]);
+    expect(mergeKnowledgeContexts(mergeKnowledgeContexts(a, b), mergeKnowledgeContexts(a, b))).toEqual(
+      mergeKnowledgeContexts(a, b),
+    );
+  });
+});
+
+describe("ka-rag KG intent pivot arm — T-TUTOR-PIVOT-2 (the bare question resolves its own intent)", () => {
+  const scopes = {
+    async resolveActive() {
+      return { curriculumVersionId: "cv", code: "4CH1", surface: new Set(["node-moles", "node-answers"]) };
+    },
+    async resolveForCourse() {
+      return null;
+    },
+  };
+  const graph = (titles: Array<[string, string]>) => {
+    let kgCalls = 0;
+    return {
+      calls: () => kgCalls,
+      async structureNodes() {
+        kgCalls += 1;
+        return titles.map(([id, title]) => ({
+          id,
+          code: `4CH1-${id}`,
+          title,
+          validation_status: "VALIDATED",
+        }));
+      },
+      async prerequisiteChains() {
+        return new Map();
+      },
+      async misconceptionsForTopics() {
+        return new Map();
+      },
+    };
+  };
+  const resolver = async () => ({ items: [], identityParsed: false, identityLabel: null });
+  // local copy — the DC7 block's examHistory fixture is describe-scoped
+  const pivotHistory = [
+    { role: "user", text: "How should I structure my answers to get full marks?" },
+    { role: "assistant", text: "Read the command word and plan your points." },
+    { role: "user", text: "What about six-mark questions?" },
+    { role: "assistant", text: "Plan, develop each point, conclude." },
+  ];
+
+  test("a topic pivot resolves the BARE question's KG intent too — the pivot topic enters the intent surface and the pool", async () => {
+    const g = graph([["node-moles", "Moles"]]);
+    const seen: string[] = [];
+    const prep = await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: g,
+        scopes,
+        vectorRetriever: async (q: string) => {
+          seen.push(q);
+          return [];
+        },
+        paperQuestionResolver: resolver,
+      } as never,
+      "l1",
+      "New topic: calculate moles in 8.0 g of methane",
+      pivotHistory,
+      null,
+    );
+    expect(seen.length).toBe(2); // the blend arm + the bare arm (vector)
+    expect(seen[1]).toBe("New topic: calculate moles in 8.0 g of methane");
+    expect(g.calls()).toBe(2); // the blend intent + the bare intent (KG)
+    const codes = prep.knowledge.topics.map((t) => t.code);
+    expect(codes).toContain("4CH1-node-moles"); // the pivot topic resolved on the BARE question
+    expect(prep.evidence.some((i) => i.source === "KNOWLEDGE_NODE" && i.nodeId === "node-moles")).toBe(true);
+  });
+
+  test("both arms' topics ride one intent surface — the blend topic and the pivot topic co-exist", async () => {
+    // "Answer structure" matches the exam-technique blend tokens; "Moles"
+    // matches only the bare pivot question — the union keeps BOTH.
+    const g = graph([
+      ["node-answers", "Answer structure"],
+      ["node-moles", "Moles"],
+    ]);
+    const prep = await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: g,
+        scopes,
+        vectorRetriever: async () => [],
+        paperQuestionResolver: resolver,
+      } as never,
+      "l1",
+      "New topic: calculate moles in 8.0 g of methane",
+      pivotHistory,
+      null,
+    );
+    const codes = prep.knowledge.topics.map((t) => t.code);
+    expect(codes).toContain("4CH1-node-answers"); // the blend arm keeps its signal
+    expect(codes).toContain("4CH1-node-moles"); // the bare arm adds the pivot topic
+  });
+
+  test("single-turn posture is byte-identical: ONE intent resolution, no bare arm", async () => {
+    const g = graph([["node-moles", "Moles"]]);
+    let vectorCalls = 0;
+    const prep = await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: g,
+        scopes,
+        vectorRetriever: async () => {
+          vectorCalls += 1;
+          return [];
+        },
+        paperQuestionResolver: resolver,
+      } as never,
+      "l1",
+      "what is a mole?",
+      [],
+      null,
+    );
+    expect(g.calls()).toBe(1);
+    expect(vectorCalls).toBe(1);
+    expect(prep.knowledge.topics.map((t) => t.code)).toContain("4CH1-node-moles");
+  });
+
+  test("an all-blank history degenerates to the single-turn intent posture", async () => {
+    const g = graph([["node-moles", "Moles"]]);
+    await prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: g,
+        scopes,
+        vectorRetriever: async () => [],
+        paperQuestionResolver: resolver,
+      } as never,
+      "l1",
+      "what is a mole?",
+      [
+        { role: "user", text: "   " },
+        { role: "assistant", text: "" },
+      ],
+      null,
+    );
+    expect(g.calls()).toBe(1); // the blank blend equals the bare query — no second arm
   });
 });

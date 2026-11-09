@@ -1,0 +1,47 @@
+{
+  "task": "T-MG-INK-11 run-001",
+  "date": "2026-11-03",
+  "operator": {
+    "dispatch": "Verify the frontend to check if everything is 100% working exactly like maths genie (the continuation 'Continue' discharged the deploy+receipt tail)",
+    "trace": "operator word this session — read as the pre-staged mandate for full MG parity (the ink-10 receipt had left the T-MG-INK-3 consent gate as 'the one user-visible divergence — operator-gated removal, one word and it ships'; this dispatch is that word)",
+    "session": "this container session (the sandbox recycled between the dispatch and the continuation; the lane state was rebuilt from origin/main)"
+  },
+  "context_of_record": "the full-parity verification of the shipped annotator against MathsGenie, everything re-extracted FRESH from MG's live paper viewer (mathsgenie.co.uk /paper/gcse/maths/edexcel/gcse-maths-2025-june-1ma1-1f, 2026-11-03, signed-out) and swept end-to-end on our production 4CH1/1C June-2026 viewer. MG today: all 18 toolbar buttons render ungated on the paper page (Zoom out/in, Undo, Redo, Clear all, Browse, Select, Text, Math text box, Draw, Erase, 'Pen colour: Black', 'Pen thickness: Medium', Line, Ruler, Protractor, Compasses, Collapse toolbar); the armed-Text chip measured again at 700,283.8 @ 107.3x32.4 (rgb(159,168,178) @ 0.6, Shantell Sans 24px — line-height box 32.4 = 1.35); the pen-colour control is ONE trigger (16px round dot of the CURRENT colour, dynamic label 'Pen colour: Black') opening a menu of the six NAMED colours (Black/Red/Blue/Green/Violet/Orange); the pen-thickness control likewise (Fine/Medium/Thick/Extra thick). Our sweep: chip/editor/keyboard/undo/redo/persistence all MG-exact on the then-deployed build — except three divergences, one recorded and two not (defect_of_record)",
+  "defect_of_record": "three divergences, all fixed this run: (1) THE RECORDED ONE — the T-MG-INK-3 consent gate ('Ink' launcher + 'Close ink layer'): MG's toolbar is always visible, ours was behind a launcher (the ink-8 spec had disclosed it as 'a product posture, not a UX gap'; the operator's 100%-parity dispatch retired that posture); (2) THE UNRECORDED ONE — our palette shipped as an inline 6-swatch row + inline 4-dot thickness row, never MG's shape (one dynamic trigger + menu per row) and never written down as a deviation — found by this run's census and fixed to MG's anatomy; (3) a measured nit — our text hover chip painted at line-height 1.5 (36px box) vs MG's measured 1.35 (32.4px box), both centred on the cursor",
+  "class": "additive hub ink code + tests + spec doc + .syllabai bookkeeping — zero schema, zero contracts, zero api bytes, zero db, zero identity plane; pdf-pane.tsx untouched; the CLA fences byte-identical base↔head",
+  "what_lands": {
+    "gate_removal": "apps/hub/src/components/pastpapers/ink/InkLayer.tsx — the 'enabled' state DIES: the toolbar renders unconditionally (MG's law), the 'Ink' launcher branch and the 'Close ink layer' button are deleted, the hint/kb-host/canvas-portal gates drop their enabled condition; the sync gate (!sourceUrl) stays the only mount condition — canvases mount the moment the layer renders",
+    "palette_menus": "InkLayer.tsx — the inline rows are replaced by MG's anatomy: ONE DropdownMenuTrigger per row (16px round dot of the CURRENT colour / the CURRENT thickness dot + a chevron, dynamic aria-label 'Pen colour: {Name}' / 'Pen thickness: {Name}') opening the six named colours / four named thicknesses (values, names, dot diameters 4/7/11/16 unchanged — MG's constants); picking re-skins the trigger (verified live: Red → 'Pen colour: Red' + rgb(224,49,49) dot; Extra thick → 'Pen thickness: Extra thick')",
+    "chip_lh": "InkLayer.tsx — the text chip paints at line-height 1.35 (MG measured 32.39px @ 24px = 1.3496); maths stays leading-none",
+    "tests": "ink-layer-holder-selfheal.test.ts — the mount law now asserts UNGATED rendering (no launcher may exist, toolbar + canvases immediately) and a new T-MG-INK-11 describe pins the menu census: 9 tool labels, no Close chrome, exactly ONE trigger per row with dynamic labels, item order = MG's, dot anatomy (rgb(29,29,29) black), re-skin on pick",
+    "spec": "docs/MG-INK-UX-PARITY-SPEC.md — §3's 'The consent gate stays' bullet amended (retired by this dispatch) + new §7 recording this run's fresh extraction and the three landings",
+    "receipt": "this file"
+  },
+  "pins_verification": {
+    "mg_fresh": "PASS — MG live 2026-11-03: 18 buttons ALL visible with zero interaction (spec §1 re-confirmed); chip 'Add text' exact; colour/thickness menu anatomy captured by real hovers/presses",
+    "prod_pre_fix": "PASS (sweep on the old build) — chip 600,282 @ 105x36 rgb(159,168,178)@0.6 Shantell 24px; editor 48x44 border 0 transparent Shantell 16px/500 focused, Enter=newline, Escape commits, auto-grow 227x44; math editor + keyboard: 4 tabs (123/∞≠∈/abc/αβγ), π inserts \\pi into the KaTeX preview, ⏎ commits to the [data-mtext-id] overlay and closes the panel, keyboard never auto-opens; undo/redo 1↔0↔1 on the overlay; persistence IndexedDB syllabai-ink/docs keyed sourceUrl ('line one\\ntwo' + π survived a reload+re-enable)",
+    "prod_post_fix": "PASS (deploy ba0b1980 live) — toolbar VISIBLE ON LOAD with zero clicks (14 buttons: 9 tools + 2 triggers + undo/redo/clear), launcher false, Close false, 28 canvases mounted; exactly one 'Pen colour: Black' + one 'Pen thickness: Medium' trigger, black dot rgb(29,29,29) = MG's #1d1d1d; menus open on the press with MG's item order and re-skin on pick; chip now 32.4px (lh 1.35) centred on the cursor; editor posture byte-equal (48x44/0/transparent/Shantell 16/500/21.6 lh/I-beam); a pen stroke + a text shape survive reload in IndexedDB",
+    "suite": "PASS — bun test apps/hub/src/components/pastpapers: 174 pass / 0 fail (13 files); bun x tsc --noEmit exit 0; eslint error set IDENTICAL to clean main (13 pre-existing, line-shifted only, diffed via JSON)"
+  },
+  "local_verification": "CI verify + hub BOTH success at the head sha 78a12147 (PR #694); squash-merged as ba0b1980e623; post-deploy live re-verify on production recorded in pins_verification.prod_post_fix",
+  "disclosures": [
+    "ONE-TIME LOCAL-STORE LOSS, environmental not product: the pre-merge session's IndexedDB doc (text + π) was found EMPTY after the turn-boundary continuation; proven NOT a code defect — neither build has any delete path reachable in LOCAL mode (inkLocalClear fires only from the token-gated migration epilogue or the explicit Discard button; DB_VERSION constant 1 since T-MG-INK-3, no upgrade path), and the sandbox browser restarted across the turn boundary (the MG tab present before the boundary was gone after it — an ephemeral profile wipe carries IndexedDB with it). Persistence re-verified END-TO-END on the deployed build (stroke + text commit → docs:1 → reload → docs:1) and on the pre-merge build earlier (reload + re-enable → mtext:1)",
+    "the trigger chevron is OURS: MG's trigger sample showed the colour dot within the sampled markup; a size-3 ChevronDown was added as the standard menu affordance — the ONE pixel not proven against MG's DOM",
+    "the recorded deviations that REMAIN (unchanged, each deliberate): no MathLive (raw LaTeX textarea; the COMMITTED KaTeX render is identical — the MG-INK-SDK-GATE verdict stands, not reopened); the hint card anchors above the toolbar, not to a parsed answer region; MG extras out of scope: their zoom-only main bar (we keep fit-width/fit-page/spread/find), Browse, Collapse-toolbar chrome, the measurement tool, Genie AI marking",
+    "bookkeeping: receipts T-MG-INK-8/9/10 never landed under .syllabai/receipts/ (the upstream worklog restructure predates them) — their content of record lives in docs/MG-INK-UX-PARITY-SPEC.md §5/§6 + git history; not reconstructed this run",
+    "title form: the squash-merge title used 'ink(T-MG-INK-11) run-001: …' where recent main history uses bare 'T-<LANE> run-00N: …' — cosmetic, recorded here, not force-pushed back"
+  ],
+  "gates_this_run": {
+    "gate_1_identity": "PASS — the diff is InkLayer.tsx + ink-layer-holder-selfheal.test.ts + docs/MG-INK-UX-PARITY-SPEC.md + this receipt + the worklog section; zero identity-plane paths (prompt.ts / PROMPT_VERSION / packages/** / apps/api/** byte-absent)",
+    "gate_2_ci": "PASS — verify + hub green at 78a12147 (PR #694), merge ba0b1980",
+    "gate_3_fences": "PASS — no CLA-adjacent file touched (routes/cla.ts, services/cla/** byte-absent from the diff)",
+    "gate_4_mergeability": "PASS — ff-only push of the branch, squash via the GitHub merge API, no force anywhere",
+    "gate_5_title_form": "PASS with the cosmetic note in disclosures"
+  },
+  "next_of": "the verification verdict goes to the operator this session; if MG's census drifts again, the re-extraction recipe is this receipt's context_of_record (URL + the three probes: ungated census, chip rect/font, menu anatomy)",
+  "lineage": {
+    "spec_of_record": "docs/MG-INK-UX-PARITY-SPEC.md (ink-8/9/10) + this run's fresh 2026-11-03 extraction; §3's gate bullet amended by §7",
+    "ink_laws_inherited": "PR #494/#509 + T-MG-INK-3 run-002 (local posture, sync gate) + T-MG-INK-4 (mtext/tombstone/select) + T-MG-INK-6 run-002 (pointerdown) + T-MG-INK-7 (self-heal) + T-MG-INK-8 (palette/widths/hint) + T-MG-INK-9 (editor/keyboard) + T-MG-INK-10 (chips/spend law)",
+    "census_of_record": "the 2026-11-03 live extraction + the pre/post-fix production sweeps (this receipt's pins_verification)"
+  }
+}

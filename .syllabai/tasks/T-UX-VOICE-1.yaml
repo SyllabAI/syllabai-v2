@@ -1,0 +1,51 @@
+version: 1
+task:
+  id: T-UX-VOICE-1
+  title: "Student-voice residue sweep + AI-IDENTIFIED retirement — the rendered internal-vocabulary instances the frontend audit confirmed (#1/#9/#11), extending T-UX-STUDENT-COPY r0 / t-ui-polish run-006"
+  owner: "main agent (Z.ai, zai-web session web-492a326d-6012-425c-b687-c4c21bd008c9, trace 1a1aa31bd31ac699)"
+  status: IN_REVIEW
+  priority: P2
+  band: T-UX-VOICE (frontend-audit remediation; operator order "Remove the AI-IDENTIFIED label / Finish the student-voice sweep for the confirmed leaks (#1/#9/#11)", 2026-11-05)
+  wave: hub-honesty
+  deps: []
+  execution_record: >
+    run-001 (trace 1a1aa31bd31ac699): 12 files, copy-only + one optional badge
+    prop. AI-IDENTIFIED -> "Auto-matched" (chip + title + both archive notes)
+    with the verification-in-progress disclosure KEPT in student words.
+    ProvenanceBadge gains studentVoice? (default voice UNCHANGED raw, of-record
+    register untouched); applied at state-drawer / learner / coverage.
+    SimulatedBanner badge -> "Illustrative" (raw tier in tooltip). seneca
+    harvest badge -> "Imported from Seneca". question-player: Phase C tooltip ->
+    "coming soon"; AND-joined sentence -> student words. KG picker + footnote
+    de-jargoned (kg_export.py / canonicalKG / OpenHuman fork / T-C11 out of
+    student copy; provenance-panel disclosure kept). coverage demo-lane ->
+    local-data. core-api displayName -> "Official syllabus data" (id unchanged).
+    Gates: tsc --noEmit exit 0; targeted 169/0; full hub battery A/B-identical
+    fail set vs stashed clean main (zero regressions); hub build exit 0.
+    Receipt: .syllabai/receipts/T-UX-VOICE-1/run-001.md
+  scope:
+    allowed:
+      - "apps/hub/src/components/provenance.tsx (studentVoice prop + banner label)"
+      - "apps/hub/src/components/pastpapers/paper-viewer-client.tsx (chip + title only)"
+      - "apps/hub/src/app/past-papers/page.tsx (provenance-note sentence only)"
+      - "apps/hub/src/app/courses/[course]/past-papers/page.tsx (provenance-note sentence only)"
+      - "apps/hub/src/app/courses/[course]/seneca/page.tsx (badge label only)"
+      - "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx (two copy strings only)"
+      - "apps/hub/src/app/knowledge-graph/client.tsx (picker + footnote copy only)"
+      - "apps/hub/src/app/knowledge-graph/state-drawer.tsx (two badge labels only)"
+      - "apps/hub/src/app/learner/client.tsx (badge prop only)"
+      - "apps/hub/src/app/courses/[course]/coverage/coverage-panel.tsx (badge prop + one sentence only)"
+      - "apps/hub/src/app/practice/client.tsx (three copy strings only)"
+      - "apps/hub/src/lib/data/core-api.ts (displayName only)"
+    forbidden:
+      - "apps/hub/content/**, content-maps/**, spines/**, public/** (zero bundle/data bytes)"
+      - "apps/hub/src/app/about/provenance/** (the raw register keeps the raw vocabulary)"
+      - "any provenance tier enum, zod contract, API route, or data file"
+  notes: >
+    Doctrine of record: raw tiers remain the default badge voice and the
+    /about/provenance register prints the raw vocabulary; student surfaces get
+    student words with the raw tier one hover away (title tooltip). The
+    ratification-pending disclosure is reworded, never removed. "SME · System"
+    (audit #1) is UNVERIFIABLE — string absent from hub src at e262525; no edit
+    made. KG meta description OpenHuman/GRAPH_CONTRACT (audit #3) is OUT of the
+    ordered scope (#1/#9/#11 + AI-IDENTIFIED) — left for a follow-up order.

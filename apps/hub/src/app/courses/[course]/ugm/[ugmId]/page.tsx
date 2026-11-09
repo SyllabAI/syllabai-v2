@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Landmark, ShieldCheck, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { PageHeader } from "@/components/layout/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { boardOf, getCourseMeta } from "@/lib/courses";
 import { getUgmBundle, ugmResourceById } from "@/lib/ugm";
@@ -18,10 +19,16 @@ import { MathText } from "@/components/hub/math-text";
  * external links are flattened by the renderer's outbound-link law, so the
  * source URL appears as attribution text, never a live hop).
  *
- * Honesty surfaces: per-spec-point provenance (AI_SUGGESTED tier +
- * confidence from the corpus of record), rights holder + attestation line,
- * teacher-support disclosure, and the declared non-overlap reason when the
- * resource is one.
+ * Honesty surfaces: rights holder, teacher-support disclosure, and the
+ * declared non-overlap reason when the resource is one.
+ *
+ * T-UX-STUDENT-COPY r0 (operator order, trace 1a1a719a34bc5761): the
+ * operator-vocabulary surfaces left the page — the per-chip AI confidence
+ * suffix, the "operator attestation of 2026-10-23" rights line, the
+ * import repo/ref hash and the "outbound-link law" / "review gate"
+ * phrasing. The bundle data is untouched (the attestation + review state
+ * stay in the committed bundle of record); they are just no longer
+ * rendered to students.
  *
  * Static-serving (T-UGM-RENDER-2): the reader joins the ADR-021 tranche-4.12
  * posture — the former force-dynamic was demo-era inheritance that forced
@@ -90,10 +97,12 @@ export default async function UgmReaderPage({
         ]}
       />
 
-      <header className="mt-4 space-y-3">
-        <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-[28px]">
-          <MathText text={resource.title} />
-        </h1>
+      {/* t-ui-polish run-005: the crumb→header join aligns with the 20px
+          stack rhythm every other bare-breadcrumb reader uses (space-y-5).
+          The page's internal furniture/content/footer tiering stays. */}
+      {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
+          (was sm:text-[28px]); the resource badges ride as children. */}
+      <PageHeader className="mt-5" title={<MathText text={resource.title} />}>
         <div className="flex flex-wrap items-center gap-1.5">
           {resource.resourceTypeLabel || resource.resourceType ? (
             <Badge variant="outline" className="text-[10px]">
@@ -112,7 +121,7 @@ export default async function UgmReaderPage({
           ) : null}
           {resource.nonOverlap ? (
             <Badge variant="outline" className="border-dashed text-[10px]">
-              not mapped to this lane
+              beyond the specification map
             </Badge>
           ) : (
             specCodes.map((code) => {
@@ -123,22 +132,21 @@ export default async function UgmReaderPage({
                     <Star className="mr-0.5 size-2.5 text-primary" aria-hidden />
                   ) : null}
                   {code}
-                  {sp?.confidence ? ` · ${sp.confidence}` : ""}
                 </Badge>
               );
             })
           )}
         </div>
-      </header>
+      </PageHeader>
 
       {resource.nonOverlap && resource.nonOverlapReason ? (
         <Card className="mt-4 border-dashed">
           <CardContent className="flex items-start gap-2.5 p-3.5 text-[13px] leading-relaxed text-muted-foreground">
             <Landmark className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
             <span>
-              <span className="font-medium text-foreground">Declared non-overlap.</span>{" "}
-              {resource.nonOverlapReason} It is kept in the library for its maths, not as
-              spec-point coverage — no coverage is manufactured.
+              <span className="font-medium text-foreground">Beyond the specification map.</span>{" "}
+              {resource.nonOverlapReason} It is kept in the library for extra maths practice, not
+              as specification-point coverage.
             </span>
           </CardContent>
         </Card>
@@ -148,14 +156,8 @@ export default async function UgmReaderPage({
         <CardContent className="flex flex-wrap items-start gap-2.5 p-3.5 text-[12px] leading-relaxed text-muted-foreground">
           <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
           <span>
-            <span className="font-medium text-foreground">{ugm.rights.holder}</span>. Use inside
-            SyllabAI under the operator attestation of 2026-10-23 — {ugm.rights.license}. Source:
-            undergroundmathematics.org (text mention per the outbound-link law), imported from{" "}
-            <span className="font-mono text-[11px]">
-              {ugm.source.repo} {ugm.source.ref.slice(0, 16)}…
-            </span>{" "}
-            · alignment {ugm.reviewState.state.toLowerCase()} (AI-suggested, per-row confidence
-            shown on the spec-point chips).
+            <span className="font-medium text-foreground">{ugm.rights.holder}</span>. Source:
+            undergroundmathematics.org.
           </span>
         </CardContent>
       </Card>
@@ -167,6 +169,8 @@ export default async function UgmReaderPage({
       {siblings.length > 0 ? (
         <nav aria-label="More from these spec points" className="mt-8 border-t pt-4">
           <p className="mb-2 text-sm font-semibold">More from these spec points</p>
+          {/* t-ui-polish run-005: sibling links speak the house card-hover
+              voice (border-primary/60 + shadow-sm lift), not the legacy /40. */}
           <ul className="grid gap-2 sm:grid-cols-2">
             {siblings.map((id) => {
               const r = ugm.resources.find((x) => x.ugmId === id);
@@ -175,7 +179,7 @@ export default async function UgmReaderPage({
                 <li key={id}>
                   <Link
                     href={`${base}/ugm/${r.ugmId}`}
-                    className="flex items-center gap-2 rounded-md border px-3 py-2 text-[13px] transition-colors hover:border-primary/40"
+                    className="flex items-center gap-2 rounded-md border px-3 py-2 text-[13px] transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
                   >
                     <ArrowLeft className="size-3.5 rotate-180 text-primary" aria-hidden />
                     <span className="min-w-0 truncate">

@@ -1,6 +1,15 @@
 "use client";
 
 import { useCallback, useSyncExternalStore } from "react";
+import {
+  atOf,
+  bridgeDocPool,
+  isAccountDocsHydrated,
+  mirrorDocPoolState,
+  unionByStamp,
+} from "@/lib/account-docs-records";
+import { adoptLegacyStorage, onAccountDocsReset } from "@/lib/account-docs";
+import { readIdentitySnapshot } from "@/lib/identity";
 
 /**
  * Progress overlay — the demo's honest stand-in for SaveMyExams accounts.
@@ -75,45 +84,122 @@ export const emptyProgress = (): CourseProgress => ({
  *  lib/flashcard-review.ts (the scheduler that reads it). */
 export const TRAIL_CAP = 10;
 
-const keyFor = (course: string) => `syllabai-hub:progress:${course}`;
+const keyFor = (course: string) => `syllabai-hub:progress:${course}`; // RETIRED (legacy adoption pin)
 const isBrowser = typeof window !== "undefined";
+
+// ── T-AUDIT-TIER1 run-004 — the account mirror ─────────────────────────
+// The per-course overlay mirrors the account through the workspace-document
+// plane under the `progress:<slug>` key of record (ONE doc per course —
+// the closed-vocabulary family regex). The union law is per-FAMILY: every
+// family is a Record keyed by entity id whose entries carry an `at` stamp
+// (notesRead / selfScores / mcqAnswers / flashcards / saved / typedAnswers
+// — rateFlashcard bumps `at` on every trail append, so the trail rides the
+// record), and the conservative union keeps the NEWER entry per entity,
+// tie → server. The stamp is the family:key:at multiset — the cap
+// ping-pong guard of record.
+const registeredCourses = new Set<string>();
+
+type Family = Record<string, Record<string, unknown>>;
+
+function progressStamp(pool: Family): string {
+  return Object.entries(pool)
+    .flatMap(([fam, records]) =>
+      Object.entries(records ?? {}).map(([k, v]) => `${fam}:${k}:${atOf((v as { at?: unknown })?.at)}`),
+    )
+    .sort()
+    .join("|");
+}
+
+function progressUnion(local: Family, server: Family): Family {
+  const out: Family = {};
+  for (const k of new Set([...Object.keys(local), ...Object.keys(server)])) {
+    const l = local[k];
+    const sv = server[k];
+    if (l && sv && typeof l === "object" && typeof sv === "object") {
+      out[k] = unionByStamp(l, sv);
+    } else {
+      out[k] = (sv && typeof sv === "object" ? sv : l && typeof l === "object" ? l : {}) as Record<string, unknown>;
+    }
+  }
+  return out;
+}
+
+function ensureProgressBridge(course: string) {
+  if (!isBrowser || registeredCourses.has(course)) return;
+  registeredCourses.add(course);
+  // T-ACCOUNT-ONLY run-001: the retired localStorage record seeds the engine
+  // as a legacy-dirty doc — it commits up ONLY when the account has no
+  // progress:<slug> doc of its own, and the device key retires on clean.
+  adoptLegacyStorage(`progress:${course}`, [keyFor(course)], () => {
+    try {
+      const raw = window.localStorage.getItem(keyFor(course));
+      return raw ? (JSON.parse(raw) as unknown) : null;
+    } catch {
+      return null;
+    }
+  });
+  bridgeDocPool<CourseProgress, Record<string, unknown>>({
+    docKey: `progress:${course}`,
+    cap: 32, // the pool's entries are the SIX families — the cap never
+             // fires (the family set is closed); it bounds junk, not state
+    readState: () => load(course),
+    readPool: (p) => {
+      // an all-families-empty overlay is the honest EMPTY pool (the shell's
+      // "nothing on either side" no-op — never a PUT of empty families)
+      const families = Object.values(p as unknown as Record<string, Record<string, unknown>>);
+      const nonEmpty = families.some((f) => f && Object.keys(f).length > 0);
+      return nonEmpty ? (p as unknown as Record<string, Record<string, unknown>>) : {};
+    },
+    apply: (pool) => {
+      persist(course, { ...emptyProgress(), ...pool } as CourseProgress);
+    },
+    merge: (local, server) => progressUnion(local as Family, server as Family) as Record<string, Record<string, unknown>>,
+    stamp: (pool) => progressStamp(pool as Family),
+    getAuthEmail: () => readIdentitySnapshot()?.email ?? null,
+    isHydrated: () => isAccountDocsHydrated(),
+  });
+}
 
 // module-level cache so every hook instance sees the same object graph
 const cache = new Map<string, CourseProgress>();
 const listeners = new Map<string, Set<() => void>>();
 
+// T-ACCOUNT-ONLY run-001: on sign-out / account switch the engine resets —
+// this store's memory cache clears with it, so account B never unions
+// account A's in-tab overlay into its own hydration.
+onAccountDocsReset(() => {
+  cache.clear();
+});
+
 function load(course: string): CourseProgress {
   if (cache.has(course)) return cache.get(course)!;
-  let data = emptyProgress();
-  if (isBrowser) {
-    try {
-      const raw = window.localStorage.getItem(keyFor(course));
-      if (raw) {
-        const parsed = JSON.parse(raw) as Partial<CourseProgress>;
-        data = { ...emptyProgress(), ...parsed };
-      }
-    } catch {
-      // corrupted state → reset (progress is disposable overlay by design)
-    }
-  }
+  ensureProgressBridge(course);
+  // T-ACCOUNT-ONLY run-001: NO localStorage — the account doc (via the
+  // bridge's apply) is the only durable source; until hydration lands the
+  // overlay is the honest empty.
+  const data = emptyProgress();
   cache.set(course, data);
   return data;
 }
 
 function persist(course: string, next: CourseProgress) {
+  ensureProgressBridge(course); // idempotent — the mirror needs its bridge registered
   cache.set(course, next);
-  if (isBrowser) {
-    try {
-      window.localStorage.setItem(keyFor(course), JSON.stringify(next));
-    } catch {
-      // storage full / private mode — overlay stays in-memory for the session
-    }
-  }
   listeners.get(course)?.forEach((fn) => fn());
+  // T-AUDIT-TIER1 run-004 → T-ACCOUNT-ONLY run-001: the account mirror IS
+  // the store now (echo-guarded on the remote-apply path; the registration
+  // rides load() AND persist()). There is no localStorage write behind it.
+  mirrorDocPoolState(`progress:${course}`, next);
 }
 
 function mutate(course: string, fn: (p: CourseProgress) => CourseProgress) {
   persist(course, fn(load(course)));
+}
+
+/** Test seam: replace one course's overlay (the fixtures' "local writes"
+ *  with historical stamps the mutators can't express). */
+export function __setProgressForTests(course: string, p: CourseProgress): void {
+  persist(course, p);
 }
 
 export function subscribeProgress(course: string, fn: () => void): () => void {

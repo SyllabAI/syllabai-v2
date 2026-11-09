@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, ExternalLink, ScrollText } from "lucide-react";
+import { PageHeader } from "@/components/layout/page-header";
 import { allArchiveSpecs, corpusIndex, type CorpusArchiveSpec } from "@/lib/pastpapers-corpus";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,7 +10,7 @@ import officialLinksJson from "@/data/pastpapers-official-links.json";
 export const metadata: Metadata = {
   title: "Past papers archive",
   description:
-    "Every specification in the syllabai-pastpapers corpus — Pearson Edexcel and Cambridge International — browsable by qualification and subject.",
+    "Every past-paper specification — Pearson Edexcel and Cambridge International — browsable by qualification and subject.",
 };
 
 interface OfficialLinkEntry {
@@ -93,30 +94,36 @@ export default function PastPapersArchivePage() {
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
       <PreconnectCorpus />
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="flex items-center gap-2 text-xl font-bold tracking-tight">
+      {/* T-HEADER-1: the shared tool-page header — one text-2xl title law
+          (was text-xl); the corpus-count badge rides the actions slot. */}
+      <PageHeader
+        title={
+          <span className="flex items-center gap-2">
             <ScrollText className="size-5 text-primary" aria-hidden />
             Past papers archive
-          </h1>
-          <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
+          </span>
+        }
+        description={
+          <>
             Every specification held in the{" "}
             <span className="font-mono text-xs">syllabai-pastpapers</span> corpus — grouped by
             board, qualification and subject. Specs with a hub course open the full archive
             (mocks, interactive play); the rest open a direct PDF browser.
-          </p>
-        </div>
-        <Badge variant="secondary" className="font-medium">
-          {specs.length} specifications · {paperTotal} papers
-          {officialCount > 0 ? ` · ${officialCount} with official links` : ""}
-        </Badge>
-      </div>
+          </>
+        }
+        actions={
+          <Badge variant="secondary" className="font-medium">
+            {specs.length} specifications · {paperTotal} papers
+            {officialCount > 0 ? ` · ${officialCount} with official links` : ""}
+          </Badge>
+        }
+      />
 
       <div className="mt-4 rounded-xl border bg-muted/30 p-3 text-xs leading-relaxed text-muted-foreground print:hidden">
         <p>
           Official exam documents streamed from the{" "}
-          <span className="font-mono text-[11px]">syllabai-pastpapers</span> archive — AI-IDENTIFIED
-          provenance, operator ratification pending · index generated{" "}
+          <span className="font-mono text-[11px]">syllabai-pastpapers</span> archive — auto-matched
+          to each course, official-source verification in progress · index generated{" "}
           {corpusIndex.meta.generatedAt.slice(0, 10)}, tree{" "}
           <span className="font-mono text-[11px]">{corpusIndex.meta.treeSha.slice(0, 7)}</span>.
         </p>
@@ -149,11 +156,21 @@ export default function PastPapersArchivePage() {
                         .get(subject)!
                         .sort((a, b) => a.specKey.localeCompare(b.specKey));
                       return (
-                        <ul key={subject} className="overflow-hidden rounded-xl border">
-                          {rows.map((s) => (
-                            <SpecRow key={s.specKey} s={s} />
-                          ))}
-                        </ul>
+                        // t-ui-polish run-002 — the subject becomes a visible
+                        // card: the grouping level the page was missing (rows
+                        // no longer repeat the subject inline). The header
+                        // rides the quiet recipe, count included.
+                        <div key={subject} className="overflow-hidden rounded-xl border">
+                          <p className="border-b bg-muted/30 px-3 py-2 text-[13px] font-semibold sm:px-4">
+                            {subject}
+                            <span className="font-normal text-muted-foreground/60"> · {rows.length}</span>
+                          </p>
+                          <ul>
+                            {rows.map((s) => (
+                              <SpecRow key={s.specKey} s={s} />
+                            ))}
+                          </ul>
+                        </div>
                       );
                     })}
                   </div>
@@ -175,7 +192,8 @@ function SpecRow({ s }: { s: CorpusArchiveSpec }) {
         <div className="min-w-0 flex-1 basis-52">
           <p className="flex flex-wrap items-center gap-1.5">
             <span className="font-mono text-sm font-semibold">{s.spec.spec.toUpperCase()}</span>
-            <span className="text-sm">{s.spec.subject}</span>
+            {/* t-ui-polish run-002 — the subject lives on the card header
+                now; the row carries only what varies (spec code + badges). */}
             {s.courseSlug && (
               <Badge variant="outline" className="text-[10px] text-muted-foreground">
                 hub course
@@ -188,7 +206,8 @@ function SpecRow({ s }: { s: CorpusArchiveSpec }) {
             {s.courseSlug ? " · mocks + interactive in the hub archive" : " · direct PDF browsing"}
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-1.5">
+        {/* t-ui-polish run-002 — right-aligned, never wrapping at sm+. */}
+        <div className="flex flex-wrap items-center gap-1.5 sm:flex-nowrap sm:justify-end">
           {s.courseSlug && (
             <Button asChild size="sm" variant="secondary" className="h-7 text-xs">
               <Link href={`/courses/${s.courseSlug}/past-papers`}>

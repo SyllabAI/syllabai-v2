@@ -42,8 +42,10 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { createAccountStore } from "@/lib/account-stores";
 import { api, getToken } from "@/lib/api";
 import { useIdentity } from "@/lib/identity";
+import { toast } from "@/hooks/use-toast";
 import type { TutorSessionSummary, TutorSessionTurnView } from "@/lib/types";
 import { Composer, QUESTION_CAP } from "./composer";
 import { MessageItem } from "./message-item";
@@ -151,7 +153,30 @@ const STARTERS: { icon: typeof BookOpen; label: string; prompt: string }[] = sta
 
 /** "near the bottom" tolerance (px) for auto-follow + jump-button visibility. */
 const NEAR_BOTTOM_PX = 96;
-const SIDEBAR_KEY = "syllabai.tutor.sidebar";
+const SIDEBAR_KEY = "syllabai.tutor.sidebar"; // RETIRED (legacy adoption pin)
+
+/**
+ * The tutor preference doc — the "tutor-prefs" key of the workspace-document
+ * plane (T-ACCOUNT-ONLY run-001): the chat sidebar open/closed choice lives
+ * in the account. The retired localStorage record is adopted once per tab,
+ * then removed.
+ */
+const tutorPrefsStore = createAccountStore<{ sidebarOpen: boolean }>({
+  docKey: "tutor-prefs",
+  initial: { sidebarOpen: true },
+  parse: (raw) =>
+    raw && typeof raw === "object"
+      ? { sidebarOpen: (raw as { sidebarOpen?: unknown }).sidebarOpen !== false }
+      : { sidebarOpen: true },
+  legacyKeys: [SIDEBAR_KEY],
+  readLegacy: () => {
+    try {
+      return { sidebarOpen: window.localStorage.getItem(SIDEBAR_KEY) !== "closed" };
+    } catch {
+      return { sidebarOpen: true };
+    }
+  },
+});
 
 /**
  * Map a stored §22 transcript turn back to the thread's Turn shape (web s140
@@ -173,20 +198,11 @@ function restoredTurn(turn: TutorSessionTurnView): Turn {
 
 /**
  * Sidebar preference, hydration-safe: server snapshot is "open", client
- * snapshot reads the stored pref; same-tab toggles go through an override so
+ * snapshot is the account doc; same-tab toggles go through an override so
  * no effect ever needs to sync state.
  */
-const subscribeSidebarPref = (cb: () => void) => {
-  window.addEventListener("storage", cb);
-  return () => window.removeEventListener("storage", cb);
-};
-const getSidebarPref = () => {
-  try {
-    return window.localStorage.getItem(SIDEBAR_KEY) !== "closed";
-  } catch {
-    return true;
-  }
-};
+const subscribeSidebarPref = tutorPrefsStore.subscribe;
+const getSidebarPref = () => tutorPrefsStore.get().sidebarOpen;
 
 /**
  * V53 (ADR-030) course gate: the tutor is honestly unavailable here. A
@@ -218,7 +234,7 @@ export function TutorCourseGate({
         <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
           {unknown
             ? `No course is registered under "${label}" — check the link or pick the course from its hub.`
-            : `The ${label} tutor is not connected to a validated serving corpus yet. SyllabAI never answers across courses, so there is nothing to chat with here — the gate is honest, not a fallback to another course's material.`}
+            : `The ${label} tutor isn't connected yet — it answers only from that course's own material, so there's nothing to chat with here.`}
         </p>
         <div className="mt-4 flex justify-center gap-2">
           <Button asChild size="sm" variant="outline">
@@ -260,7 +276,6 @@ export function TutorChat({
   const [streamingId, setStreamingId] = useState<string | null>(null);
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
   const [atBottom, setAtBottom] = useState(true);
-  const [meta, setMeta] = useState<{ provider?: string; model?: string | null }>({});
   const sidebarPref = useSyncExternalStore(subscribeSidebarPref, getSidebarPref, () => true);
   const [sidebarOverride, setSidebarOverride] = useState<boolean | null>(null);
   const sidebarOpen = sidebarOverride ?? sidebarPref;
@@ -273,6 +288,9 @@ export function TutorChat({
   const [conversationsError, setConversationsError] = useState<string | null>(null);
   const [openingId, setOpeningId] = useState<string | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<TutorSessionSummary | null>(null);
+  // T-TUTOR-UX-1 (TU-12): the bulk clear is destructive and gets the same
+  // confirm law as the s143 server delete — no one-click wipes.
+  const [clearAllOpen, setClearAllOpen] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const hydratedServerRef = useRef(false);
 
@@ -288,7 +306,7 @@ export function TutorChat({
   // Each course's tutor is a SEPARATE tutor: its rail, its active thread,
   // its synced pane and its restores see ONLY this course's history; the
   // legacy /tutor entry sees only course-less threads. The global store
-  // stays shared (one localStorage, one server session list) — the SCOPE
+  // stays shared (one store, one server session list) — the SCOPE
   // is applied at the component boundary, slug-to-slug (never the label).
   // `activeThread` from here on is the scoped active — every downstream
   // use (send/ask/clear/export/busy) can never reach another course's
@@ -321,11 +339,7 @@ export function TutorChat({
   const toggleSidebar = () => {
     const next = !sidebarOpen;
     setSidebarOverride(next);
-    try {
-      window.localStorage.setItem(SIDEBAR_KEY, next ? "open" : "closed");
-    } catch {
-      /* private mode — session-only */
-    }
+    tutorPrefsStore.set({ ...tutorPrefsStore.get(), sidebarOpen: next });
   };
 
   const scrollToBottom = useCallback((smooth = false) => {
@@ -483,7 +497,6 @@ export function TutorChat({
               // pre-ask probe resolved — zero LLM behind this turn)
               patchTurn({ band: data.band });
             } else if (event === "meta") {
-              setMeta({ provider: data.provider, model: data.model });
               patchTurn({ provider: data.provider, refused: data.refused });
             } else if (event === "delta") {
               answer += data.text as string;
@@ -552,8 +565,9 @@ export function TutorChat({
   // s143: the synced pane's list loads on mount — and, s140 adapted to the
   // hub: a SIGNED-IN browser with an empty local store (fresh device, cleared
   // storage, private mode) restores the most recent server conversation, so
-  // the chat picks up where the account left off. Local transcripts already
-  // survive refresh via localStorage; the server is the store of record.
+  // the chat picks up where the account left off. Transcripts survive
+  // refresh via the account (the store of record, T-ACCOUNT-ONLY run-001);
+  // the tab's memory is the reactive cache.
   // Skipped when a deep-link boot is armed (it creates its own thread).
   useEffect(() => {
     void refreshConversations();
@@ -709,7 +723,6 @@ export function TutorChat({
    *  local threads only — other courses' histories are untouched. */
   const clearScopedThreads = () => {
     clearThreadsWhere((t) => threadInScope(t, courseSlug));
-    setMeta({});
   };
 
   const clearConversation = () => {
@@ -717,7 +730,6 @@ export function TutorChat({
     if (activeThread) {
       updateThread(activeThread.id, (t) => ({ ...t, messages: [], title: "New chat" }));
     }
-    setMeta({});
   };
 
   const newChat = () => {
@@ -749,7 +761,7 @@ export function TutorChat({
           openingId={openingId}
           onOpenConversation={openServerConversation}
           onDeleteConversation={setDeleteTarget}
-          onClearAll={clearScopedThreads}
+          onClearAll={() => setClearAllOpen(true)}
         />
       </aside>
 
@@ -774,7 +786,7 @@ export function TutorChat({
                 void openServerConversation(s);
               }}
               onDeleteConversation={setDeleteTarget}
-              onClearAll={clearScopedThreads}
+              onClearAll={() => setClearAllOpen(true)}
             />
           </div>
         </SheetContent>
@@ -811,22 +823,13 @@ export function TutorChat({
               {activeThread?.title ?? "New chat"}
             </p>
             <p className="truncate text-[10.5px] text-muted-foreground">
-              SyllabAI tutor · answers only from validated course content
+              SyllabAI tutor · answers come only from this course's own content
             </p>
           </div>
 
-          <Badge
-            variant="outline"
-            className="hidden gap-1 font-mono text-[10px] md:inline-flex"
-            title={meta.model ?? undefined}
-          >
-            <Sparkles className="size-3 text-primary" aria-hidden />
-            {meta.provider ?? "auto"}
-          </Badge>
-          <Badge variant="outline" className="hidden gap-1 text-[10px] font-normal sm:inline-flex">
-            <Database className="size-3" aria-hidden />
-            {courseLabel ? `${courseLabel} corpus` : "4CH1 corpus"}
-          </Badge>
+          {/* T-UX-COPY-SWEEP: the provider/model and corpus badges left the
+              header — serving instrumentation is operator telemetry, not a
+              learner affordance. The thread header keeps the honesty line. */}
 
           {/* the reference's New chat action (itutor.study header, verbatim
               anatomy): bordered pill, Plus glyph, label on sm+ and icon-only
@@ -951,7 +954,10 @@ export function TutorChat({
                           type="button"
                           onClick={() => send(chip)}
                           disabled={busyHere}
-                          className="rounded-full border bg-background px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground disabled:opacity-50"
+                          // t-ui-polish run-006: follow-up chips speak the
+                          // house hover voice (border-primary/60), not the
+                          // legacy /40.
+                          className="rounded-full border bg-background px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground disabled:opacity-50"
                         >
                           {chip}
                         </button>
@@ -1015,9 +1021,12 @@ export function TutorChat({
               onStop={() => abortsRef.current.get(activeThread?.id ?? "")?.abort()}
             />
             <p className="text-center text-[10px] leading-relaxed text-muted-foreground">
-              Answers cite the {courseLabel ? `${courseLabel} corpus` : "4CH1 corpus"} and can make
+              Answers cite the {courseLabel ? `${courseLabel} material` : "4CH1 material"} and can make
               mistakes — check citations before an exam. By asking you agree to the{" "}
-              <Link href="/" className="underline underline-offset-2 hover:text-foreground">
+              <Link
+                href="/about/study-use"
+                className="underline underline-offset-2 hover:text-foreground"
+              >
                 study-use terms
               </Link>
               .
@@ -1048,6 +1057,40 @@ export function TutorChat({
               }}
             >
               {deleting ? "Deleting…" : "Delete"}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* T-TUTOR-UX-1 (TU-12): the bulk clear-all confirm — the s143 law
+          generalized: a destructive action with no undo never fires on one
+          click. The toast rides the confirm path (it used to fire before
+          the dialog even opened). */}
+      <AlertDialog open={clearAllOpen} onOpenChange={(o) => !o && setClearAllOpen(false)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Clear all conversations?</AlertDialogTitle>
+            <AlertDialogDescription>
+              All conversations in this tutor
+              {courseLabel ? ` (${courseLabel})` : ""} will be cleared from this browser.
+              Other courses are untouched, and your account's server-side
+              transcripts are not affected. This cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Keep them</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-white hover:bg-destructive/90 dark:bg-destructive/60"
+              onClick={() => {
+                setClearAllOpen(false);
+                clearScopedThreads();
+                toast({
+                  title: "Conversations cleared",
+                  description: "This tutor's conversations were cleared from this browser. Other courses are untouched.",
+                });
+              }}
+            >
+              Clear all
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -1099,8 +1142,8 @@ function Welcome({
           </h1>
           <p className="mx-auto max-w-md text-sm leading-relaxed text-muted-foreground">
             {courseRef != null && !/^4CH/.test(courseRef)
-              ? `Your grounded study companion for this course's ${courseBoard ?? "Edexcel"} specification. Every answer cites the spec points and notes it draws on — and tells you honestly when the evidence runs thin.`
-              : "Your grounded study companion for Pearson Edexcel IGCSE Chemistry. Every answer cites the spec points and notes it draws on — and tells you honestly when the evidence runs thin."}
+              ? `Answers come from this course's ${courseBoard ?? "Edexcel"} specification and notes — every one cites the spec points it draws on.`
+              : "Answers come from the Pearson Edexcel IGCSE Chemistry specification and notes — every one cites the spec points it draws on."}
           </p>
         </div>
       </div>
@@ -1111,7 +1154,8 @@ function Welcome({
             type="button"
             onClick={() => onPick(s.prompt)}
             title={s.prompt}
-            className="inline-flex items-center gap-1.5 rounded-full border bg-card px-3.5 py-1.5 text-xs text-muted-foreground shadow-sm transition-colors hover:border-primary/40 hover:text-foreground"
+            // t-ui-polish run-006: starter pills join the same house hover voice.
+            className="inline-flex items-center gap-1.5 rounded-full border bg-card px-3.5 py-1.5 text-xs text-muted-foreground shadow-sm transition-colors hover:border-primary/60 hover:text-foreground"
           >
             <s.icon className="size-3.5" aria-hidden />
             {s.label}

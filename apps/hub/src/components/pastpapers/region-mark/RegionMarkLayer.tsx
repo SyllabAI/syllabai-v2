@@ -49,10 +49,10 @@ import { readLiveInk } from "@/components/pastpapers/ink/live-ink";
 import type { PaperAssetRegion } from "@syllabai/contracts";
 import {
   planRegionViewRect,
-  readViewerRotation,
   type NormRect,
   type ViewRotation,
 } from "./region-crop";
+import { getPpPrefs } from "@/lib/pp-viewer-prefs";
 import { produceRegionCrop } from "./produce-crop";
 import {
   awardsTotals,
@@ -198,7 +198,9 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
     cancelledRef.current.delete(region.id);
     dispatch({ type: "start", regionId: region.id, label });
 
-    const rot: ViewRotation = readViewerRotation();
+    const storedRot = getPpPrefs().rot;
+    const rot: ViewRotation =
+      storedRot === 90 || storedRot === 180 || storedRot === 270 ? storedRot : 0;
     const viewRect: NormRect | null = planRegionViewRect(region.rects, page, rot);
     if (!viewRect) {
       dispatch({ type: "failed", regionId: region.id, detail: "The region has no grounded rect on that page." });
@@ -219,7 +221,13 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
     }
     dispatch({ type: "cropped", regionId: region.id });
 
-    const accepted = await requestRegionMark(region.id, crop.dataUrl, token);
+    // T-MG-MARK-DELTA-1: re-tapping a region that already carries a
+    // completed mark is the EXPLICIT "mark again with AI" affordance —
+    // force a fresh job (MG's re-mark semantics); a first tap rides the
+    // content-hash cache law (an identical re-mark would short-circuit
+    // server-side anyway).
+    const reMark = marks.entries[region.id]?.phase === "succeeded";
+    const accepted = await requestRegionMark(region.id, crop.dataUrl, token, fetch, reMark);
     if (accepted.outcome !== "accepted") {
       const detail =
         accepted.outcome === "rejected"
@@ -529,11 +537,19 @@ function PanelBody({
   // model of record — chatMessage as markdown, both point lists, the
   // transcription-first reasoning, and the FAILURE-ONLY strategies law.
   const copy = snap.feedback ? feedbackCopyModel(snap.feedback, totals.score, totals.max) : null;
+  // T-MG-MARK-DELTA-1: the attempt classification (the verdict's honest
+  // read of what the learner produced) — rendered only when carried.
+  const attemptClass = snap.awards?.map((a) => a.attemptClass).find((c) => c) ?? null;
   return (
     <div className="space-y-2">
       <p className="flex items-center gap-1.5 font-medium text-emerald-700">
         <Check className="size-4" aria-hidden /> {totals.score} / {totals.max} marks
       </p>
+      {attemptClass && (
+        <p className="text-[11px] text-muted-foreground">
+          Attempt read as: {attemptClass}
+        </p>
+      )}
       {snap.awards && snap.awards.length > 0 && (
         <ul className="space-y-0.5 text-[13px]">
           {snap.awards.map((a) => (
@@ -546,6 +562,19 @@ function PanelBody({
               </span>
             </li>
           ))}
+        </ul>
+      )}
+      {/* T-MG-MARK-DELTA-1 (the citation pin): the evidence pointers of the
+          verdict, rendered as the honest panel's own voice. */}
+      {snap.awards?.some((a) => a.workingRefLabel) && (
+        <ul className="space-y-0.5 text-[11px] text-muted-foreground">
+          {snap.awards
+            .filter((a) => a.workingRefLabel)
+            .map((a) => (
+              <li key={`cite-${a.ordinal}-${a.code}`}>
+                {a.code}: this mark came from your working at {a.workingRefLabel}
+              </li>
+            ))}
         </ul>
       )}
       {copy && copy.chatMessage.length > 0 && <Markdown className="text-[13px]">{copy.chatMessage}</Markdown>}
@@ -593,7 +622,12 @@ function PanelBody({
       )}
       {snap.receipt && (
         <p className="text-[11px] text-muted-foreground">
-          Ledger: {snap.receipt.emitted} written{snap.receipt.suppressed > 0 ? `, ${snap.receipt.suppressed} duplicate write(s) absorbed` : ""}.
+          {snap.receipt.cached
+            ? // T-MG-MARK-DELTA-1: the identical re-mark short-circuit — the
+              // standing award served from the content-hash cache (zero new
+              // writes; "mark again" forces a fresh run).
+              "Ledger: served from your standing mark — identical content, no new run."
+            : `Ledger: ${snap.receipt.emitted} written${snap.receipt.suppressed > 0 ? `, ${snap.receipt.suppressed} duplicate write(s) absorbed` : ""}.`}
         </p>
       )}
       <Button size="sm" variant="outline" onClick={onDismiss}>

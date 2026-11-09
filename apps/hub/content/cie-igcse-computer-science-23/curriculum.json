@@ -1289,6 +1289,39 @@
    ],
    "provenanceTier": "RULE_DERIVED",
    "order": 88
+  },
+  {
+   "code": "cie-igcse-computer-science-2023-2025-T7",
+   "family": "TOPIC",
+   "title": "Algorithm design and problem solving",
+   "description": null,
+   "parents": [
+    "cie-igcse-computer-science-23"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 7
+  },
+  {
+   "code": "cie-igcse-computer-science-2023-2025-T9",
+   "family": "TOPIC",
+   "title": "Databases",
+   "description": null,
+   "parents": [
+    "cie-igcse-computer-science-23"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 9
+  },
+  {
+   "code": "cie-igcse-computer-science-2023-2025-T10",
+   "family": "TOPIC",
+   "title": "Boolean logic",
+   "description": null,
+   "parents": [
+    "cie-igcse-computer-science-23"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 10
   }
  ],
  "edges": [
@@ -1986,6 +2019,24 @@
    "source": "cie-igcse-computer-science-2023-2025-T8:SUB8.3",
    "relation": "PART_OF",
    "target": "8.3.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-igcse-computer-science-23",
+   "relation": "PART_OF",
+   "target": "cie-igcse-computer-science-2023-2025-T7",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-igcse-computer-science-23",
+   "relation": "PART_OF",
+   "target": "cie-igcse-computer-science-2023-2025-T9",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-igcse-computer-science-23",
+   "relation": "PART_OF",
+   "target": "cie-igcse-computer-science-2023-2025-T10",
    "provenanceTier": "RULE_DERIVED"
   }
  ]
