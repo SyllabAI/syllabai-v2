@@ -77,7 +77,7 @@ function CourseTodayCard({
             today&apos;s progress · from your events
           </p>
         </div>
-        <span className="shrink-0 text-[13px] tabular-nums text-foreground/70">
+        <span className="shrink-0 text-xs tabular-nums text-foreground/70">
           {total > 0
             ? `${t.notesChecked} note${t.notesChecked === 1 ? "" : "s"} · ${t.markedParts} part${t.markedParts === 1 ? "" : "s"} marked · ${t.mcqSubmitted} MCQ${t.mcqSubmitted === 1 ? "" : "s"}`
             : "No progress events today"}

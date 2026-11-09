@@ -144,7 +144,7 @@ export function ReviewDueStrip({ courses }: { courses: CourseMeta[] }) {
               <Badge
                 key={d.slug}
                 variant="outline"
-                className="h-5 px-1.5 text-[11px] font-normal text-muted-foreground"
+                className="h-5 px-1.5 text-2xs font-normal text-muted-foreground"
                 title={
                   d.source === "account"
                     ? "Counted from your SyllabAI account's review schedule"

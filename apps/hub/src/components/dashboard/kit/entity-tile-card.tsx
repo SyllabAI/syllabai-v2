@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
  * SubjectCard (student dashboard) and ClassCard / CoreClassCard (teacher
  * dashboard) are one anatomy wearing different data: eyebrow, name link,
  * code line, per-resource rows, footer link — plus the top-right remove
- * affordance and the card-entity hover law (border-primary/25 → 60).
+ * affordance and the card-entity hover law (border-primary/30 → 60).
  * This chassis is that shared shell; the variants keep their data hooks
  * and rows, the chassis owns the frame so the two dashboards can never
  * drift apart again. Server-safe: interactive slots (remove button,
@@ -55,7 +55,7 @@ export function EntityTileCard({
   return (
     <Card
       className={cn(
-        "relative h-full border-primary/25 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm",
+        "relative h-full border-primary/30 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm",
         muted && "opacity-70",
         className,
       )}
@@ -67,7 +67,7 @@ export function EntityTileCard({
         {(eyebrow || badge) && (
           <div className="flex items-center justify-between gap-2">
             {eyebrow ? (
-              <p className="min-w-0 truncate text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+              <p className="min-w-0 truncate text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
                 {eyebrow}
               </p>
             ) : (

@@ -209,7 +209,7 @@ export function TeachMeWizard({ topics, onStart, busy }: TeachMeWizardProps) {
                                   className="mt-0.5 size-4 accent-[var(--primary)]"
                                 />
                                 <span>
-                                  <span className="mr-1.5 font-mono text-[11px] text-muted-foreground">
+                                  <span className="mr-1.5 font-mono text-2xs text-muted-foreground">
                                     {p.code}
                                   </span>
                                   {p.title}
@@ -304,7 +304,7 @@ export function TeachMeWizard({ topics, onStart, busy }: TeachMeWizardProps) {
               className="cursor-not-allowed rounded-lg border border-border bg-card p-3 text-left opacity-60"
             >
               <span className="text-sm font-semibold">
-                Voice <Badge className="ml-1 text-[10px]">New</Badge>
+                Voice <Badge className="ml-1 text-2xs">New</Badge>
               </span>
               <span className="mt-1 block text-xs text-muted-foreground">
                 Speak your explanation — not rolled out yet.

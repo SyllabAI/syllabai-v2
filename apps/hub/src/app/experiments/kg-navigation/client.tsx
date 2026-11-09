@@ -71,7 +71,7 @@ export function KgNavigationExperiment({
         <h1 className="flex items-center gap-2 text-xl font-bold tracking-tight">
           <FlaskConical className="size-5 text-primary" aria-hidden />
           <span className="font-mono">kg-navigation</span>
-          <Badge variant="secondary" className="text-[10px]">
+          <Badge variant="secondary" className="text-2xs">
             SEED
           </Badge>
         </h1>
@@ -90,7 +90,7 @@ export function KgNavigationExperiment({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="filter spec points…"
-              className="w-full rounded-md border px-2.5 py-1.5 text-sm outline-none focus:ring-1 focus:ring-primary"
+              className="w-full rounded-md border px-2.5 py-1.5 text-sm outline-none transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
               aria-label="Filter specification points"
             />
           </CardHeader>
@@ -140,7 +140,7 @@ export function KgNavigationExperiment({
                         href={`/revision-notes/${n.noteId}`}
                         className="block rounded px-2 py-1 text-xs hover:bg-muted"
                       >
-                        {n.title} <span className="font-mono text-[10px] text-muted-foreground">{n.noteId}</span>
+                        {n.title} <span className="font-mono text-2xs text-muted-foreground">{n.noteId}</span>
                       </Link>
                     ))
                   )}

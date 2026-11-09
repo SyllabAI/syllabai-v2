@@ -91,9 +91,9 @@ export function WidgetCard({
           : "border-border bg-card"
       }`}
     >
-      <p className="mb-1 flex items-center gap-2 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+      <p className="mb-1 flex items-center gap-2 text-2xs font-medium uppercase tracking-wide text-muted-foreground">
         <span>{typeLabel}</span>
-        <span className="text-[10px] font-normal normal-case opacity-60">block {ord}</span>
+        <span className="text-2xs font-normal normal-case opacity-60">block {ord}</span>
       </p>
       {prompt && <p className="mb-2 whitespace-pre-line font-medium leading-snug">{prompt}</p>}
       {children}

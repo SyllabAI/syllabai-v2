@@ -78,7 +78,7 @@ export function TableFillBlock({ block }: { block: RailBlock }) {
   };
 
   const inputCls = (ri: number, ci: number) =>
-    `w-full rounded-md border bg-background px-2 py-1 text-[13px] ${
+    `w-full rounded-md border bg-background px-2 py-1 text-xs ${
       checked[ri]?.[ci]
         ? matchesAny(inputs[ri]?.[ci] ?? "", rows[ri]!.cells[ci]!.accepts)
           ? "border-emerald-400 dark:border-emerald-700"
@@ -89,7 +89,7 @@ export function TableFillBlock({ block }: { block: RailBlock }) {
   return (
     <WidgetCard ord={block.ord} typeLabel="Fill the table" prompt={prompt}>
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse text-[13px]">
+        <table className="w-full border-collapse text-xs">
           <thead>
             <tr>
               {columns.map((col, i) => (
@@ -115,7 +115,7 @@ export function TableFillBlock({ block }: { block: RailBlock }) {
                       aria-invalid={checked[ri]?.[ci] === true && !matchesAny(inputs[ri]?.[ci] ?? "", cell.accepts)}
                     />
                     {checked[ri]?.[ci] && cell.hint && !matchesAny(inputs[ri]?.[ci] ?? "", cell.accepts) && (
-                      <p className="mt-0.5 text-[11px] text-muted-foreground">{cell.hint}</p>
+                      <p className="mt-0.5 text-2xs text-muted-foreground">{cell.hint}</p>
                     )}
                   </td>
                 ))}

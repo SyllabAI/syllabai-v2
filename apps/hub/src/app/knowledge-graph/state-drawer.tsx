@@ -107,7 +107,7 @@ function StatTile({
         <Icon className={cn("size-3.5 shrink-0", tone ?? "text-primary")} aria-hidden />
         <span className="text-lg font-semibold tabular-nums leading-none">{value}</span>
       </div>
-      <p className="mt-1 text-[10px] leading-tight text-muted-foreground">{label}</p>
+      <p className="mt-1 text-2xs leading-tight text-muted-foreground">{label}</p>
     </div>
   );
 }
@@ -121,7 +121,7 @@ function PointChips({ codes, max = 3 }: { codes: string[]; max?: number }) {
         <SpecChip key={c} code={c} />
       ))}
       {codes.length > shown.length && (
-        <span className="text-[10px] text-muted-foreground">+{codes.length - shown.length}</span>
+        <span className="text-2xs text-muted-foreground">+{codes.length - shown.length}</span>
       )}
     </span>
   );
@@ -160,10 +160,10 @@ function MisconceptionWatchCard({ watch, live = false }: { watch: MisconceptionW
       <header className="flex flex-wrap items-center gap-2 border-b px-3 py-2">
         <TriangleAlert className="size-4 text-destructive" aria-hidden />
         <h3 className="text-sm font-semibold">Misconception watch</h3>
-        <Badge variant="outline" className="font-mono text-[10px] text-muted-foreground">
+        <Badge variant="outline" className="font-mono text-2xs text-muted-foreground">
           {active.length} active · {watching.length} watching
         </Badge>
-        <Badge variant="outline" className="ml-auto text-[10px] text-muted-foreground">
+        <Badge variant="outline" className="ml-auto text-2xs text-muted-foreground">
           {live ? "From your account" : "Illustrative — this browser"}
         </Badge>
       </header>
@@ -185,8 +185,8 @@ function MisconceptionWatchCard({ watch, live = false }: { watch: MisconceptionW
                     variant="outline"
                     className={
                       m.active
-                        ? "border-destructive/40 text-[10px] text-destructive"
-                        : "text-[10px] text-muted-foreground"
+                        ? "border-destructive/40 text-2xs text-destructive"
+                        : "text-2xs text-muted-foreground"
                     }
                   >
                     {m.active ? "active" : "watching"}
@@ -194,7 +194,7 @@ function MisconceptionWatchCard({ watch, live = false }: { watch: MisconceptionW
                   <span className="text-xs font-medium">{m.title}</span>
                 </div>
                 <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
-                  <span className="text-[10px] text-muted-foreground">
+                  <span className="text-2xs text-muted-foreground">
                     {Math.round(m.probability * 100)}% likelihood · {m.evidenceCount} evidence
                     {m.evidenceCount === 1 ? " signal" : " signals"}
                   </span>
@@ -206,7 +206,7 @@ function MisconceptionWatchCard({ watch, live = false }: { watch: MisconceptionW
         </ul>
       </div>
       <footer className="border-t px-3 py-2">
-        <p className="flex items-start gap-1.5 text-[10px] leading-relaxed text-muted-foreground">
+        <p className="flex items-start gap-1.5 text-2xs leading-relaxed text-muted-foreground">
           <Info className="mt-0.5 size-3 shrink-0" aria-hidden />
           <span>
             {live
@@ -270,10 +270,10 @@ export function StateTab({
           <header className="flex flex-wrap items-center gap-2 border-b px-3 py-2">
             <Gauge className="size-4 text-primary" aria-hidden />
             <h3 className="text-sm font-semibold">Topic mastery</h3>
-            <Badge variant="outline" className="font-mono text-[10px] text-muted-foreground">
+            <Badge variant="outline" className="font-mono text-2xs text-muted-foreground">
               {drawer.topicStates.length} measured
             </Badge>
-            <Badge variant="outline" className="ml-auto text-[10px] text-muted-foreground">
+            <Badge variant="outline" className="ml-auto text-2xs text-muted-foreground">
               CORE_MEASURED
             </Badge>
           </header>
@@ -281,14 +281,14 @@ export function StateTab({
             <ul className="divide-y">
               {drawer.topicStates.map((t) => (
                 <li key={t.title} className="flex flex-wrap items-center gap-2 py-2 first:pt-0 last:pb-0">
-                  <span className="min-w-0 flex-1 truncate text-[13px] font-medium">{t.title}</span>
-                  <span className="text-[11px] tabular-nums text-muted-foreground">
+                  <span className="min-w-0 flex-1 truncate text-xs font-medium">{t.title}</span>
+                  <span className="text-2xs tabular-nums text-muted-foreground">
                     {t.stored}% → {t.effective}%
                   </span>
                   <Badge
                     variant="outline"
                     className={cn(
-                      "text-[10px]",
+                      "text-2xs",
                       t.band === "strong"
                         ? "border-success/40 text-success"
                         : t.band === "developing"
@@ -298,13 +298,13 @@ export function StateTab({
                   >
                     {t.band ?? "low"}
                   </Badge>
-                  <span className="text-[10px] text-muted-foreground">
+                  <span className="text-2xs text-muted-foreground">
                     {t.attempts} attempt{t.attempts === 1 ? "" : "s"}
                   </span>
                 </li>
               ))}
             </ul>
-            <p className="border-t pt-2 text-[10px] leading-relaxed text-muted-foreground">
+            <p className="border-t pt-2 text-2xs leading-relaxed text-muted-foreground">
               Measured by the backend from your real attempts (Smart Mark and auto-marked
               answers). Questions mapped to spec points measure those points directly;
               topic-level mastery also fills its points in the graph (marked "via
@@ -324,7 +324,7 @@ export function StateTab({
         <header className="flex items-center gap-2 border-b px-3 py-2">
           <CalendarClock className="size-4 text-primary" aria-hidden />
           <h3 className="text-sm font-semibold">Review queue</h3>
-          <Badge variant="outline" className="font-mono text-[10px] text-muted-foreground">
+          <Badge variant="outline" className="font-mono text-2xs text-muted-foreground">
             {drawer.reviewQueue.length}
           </Badge>
         </header>
@@ -342,7 +342,7 @@ export function StateTab({
                       <SpecChip code={r.pointId} />
                       <span
                         className={cn(
-                          "text-[10px] font-medium",
+                          "text-2xs font-medium",
                           r.effective < 55 ? "text-destructive" : "text-warn",
                         )}
                       >
@@ -359,7 +359,7 @@ export function StateTab({
                     <Badge
                       variant="outline"
                       className={cn(
-                        "text-[10px]",
+                        "text-2xs",
                         r.effective < 55
                           ? "border-destructive/40 text-destructive"
                           : "border-warn/40 text-warn",
@@ -376,14 +376,14 @@ export function StateTab({
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-1.5">
                       <SpecChip code={r.pointId} />
-                      <span className="text-[10px] text-muted-foreground">
+                      <span className="text-2xs text-muted-foreground">
                         {r.stored}% → {r.effective}%
                       </span>
                     </div>
                   </div>
                   <Badge
                     variant="outline"
-                    className="shrink-0 text-[10px] text-muted-foreground"
+                    className="shrink-0 text-2xs text-muted-foreground"
                   >
                     {formatDue(r.dueAt, Date.now())}
                   </Badge>
@@ -402,7 +402,7 @@ export function StateTab({
           <header className="flex items-center gap-2 border-b px-3 py-2">
             <Layers className="size-4 text-primary" aria-hidden />
             <h3 className="text-sm font-semibold">Flashcards due</h3>
-            <Badge variant="outline" className="font-mono text-[10px] text-muted-foreground">
+            <Badge variant="outline" className="font-mono text-2xs text-muted-foreground">
               {drawer.cardReviews.due}
             </Badge>
           </header>
@@ -422,7 +422,7 @@ export function StateTab({
                     <SpecChip code={d.subtopic} />
                     <Badge
                       variant="outline"
-                      className="shrink-0 border-warn/40 text-[10px] text-warn"
+                      className="shrink-0 border-warn/40 text-2xs text-warn"
                     >
                       {d.due} due
                     </Badge>
@@ -431,7 +431,7 @@ export function StateTab({
                         asChild
                         size="sm"
                         variant="ghost"
-                        className="ml-auto h-7 shrink-0 gap-1 px-2 text-[11px]"
+                        className="ml-auto h-7 shrink-0 gap-1 px-2 text-2xs"
                       >
                         <Link href={`/courses/${course}/flashcards/${d.subtopic}`}>
                           open deck
@@ -442,7 +442,7 @@ export function StateTab({
                 ))}
               </ul>
             )}
-            <p className="mt-2 border-t pt-2 text-[10px] leading-relaxed text-muted-foreground">
+            <p className="mt-2 border-t pt-2 text-2xs leading-relaxed text-muted-foreground">
               {drawer.cardReviews.coverage === "device+account-merged"
                 ? "Scheduled from your ratings on this browser and on your account — per-card trails truly merged (each rating counted once, offline ratings included; the newest ratings lead): “still learning” resurfaces immediately; “know” returns on an expanding Ebbinghaus ladder (1 · 2 · 4 · 8 · 16 · 32 days) and every re-rate resets its clock."
                 : drawer.cardReviews.coverage === "device+account"
@@ -459,7 +459,7 @@ export function StateTab({
         <header className="flex items-center gap-2 border-b px-3 py-2">
           <Gauge className="size-4 text-primary" aria-hidden />
           <h3 className="text-sm font-semibold">Mastery — stored → effective</h3>
-          <Badge variant="outline" className="font-mono text-[10px] text-muted-foreground">
+          <Badge variant="outline" className="font-mono text-2xs text-muted-foreground">
             {drawer.pointStates.length} touched
           </Badge>
         </header>
@@ -482,7 +482,7 @@ export function StateTab({
                         </span>
                       )}
                     </div>
-                    <span className="shrink-0 text-[10px] text-muted-foreground">
+                    <span className="shrink-0 text-2xs text-muted-foreground">
                       {formatRelative(p.lastAt, Date.now())}
                     </span>
                   </div>
@@ -493,13 +493,13 @@ export function StateTab({
                         className={cn("h-2 flex-1", bandBarClass(p.band))}
                         aria-label={`Effective mastery ${p.effective} percent (${bandLabel(p.band)})`}
                       />
-                      <span className="w-20 shrink-0 text-right text-[11px] tabular-nums text-muted-foreground">
+                      <span className="w-20 shrink-0 text-right text-2xs tabular-nums text-muted-foreground">
                         {p.stored}% → {p.effective}%
                       </span>
                       {p.derivedFrom && (
                         <Badge
                           variant="outline"
-                          className="shrink-0 text-[10px] text-muted-foreground"
+                          className="shrink-0 text-2xs text-muted-foreground"
                           title={`Topic-derived: the ${p.derivedFrom} topic's measured mastery fills this point until it has direct marked attempts of its own`}
                         >
                           via {p.derivedFrom}
@@ -508,7 +508,7 @@ export function StateTab({
                       {p.misconception && (
                         <Badge
                           variant="outline"
-                          className="shrink-0 border-destructive/40 text-[10px] text-destructive"
+                          className="shrink-0 border-destructive/40 text-2xs text-destructive"
                           title={p.misconception}
                         >
                           misconception
@@ -517,7 +517,7 @@ export function StateTab({
                       {p.reviewDue && (
                         <Badge
                           variant="outline"
-                          className="shrink-0 border-warn/40 text-[10px] text-warn"
+                          className="shrink-0 border-warn/40 text-2xs text-warn"
                         >
                           review
                         </Badge>
@@ -528,13 +528,13 @@ export function StateTab({
                       {p.misconception && (
                         <Badge
                           variant="outline"
-                          className="border-destructive/40 text-[10px] text-destructive"
+                          className="border-destructive/40 text-2xs text-destructive"
                           title={p.misconception}
                         >
                           misconception — unmeasured point
                         </Badge>
                       )}
-                      <Badge variant="outline" className="text-[10px] text-muted-foreground">
+                      <Badge variant="outline" className="text-2xs text-muted-foreground">
                         exposure only — no marked attempt
                       </Badge>
                     </div>
@@ -546,7 +546,7 @@ export function StateTab({
         </div>
       </section>
 
-      <p className="flex items-start gap-1.5 text-[11px] leading-relaxed text-muted-foreground">
+      <p className="flex items-start gap-1.5 text-2xs leading-relaxed text-muted-foreground">
         <Info className="mt-0.5 size-3 shrink-0" aria-hidden />
         <span>
           Effective mastery = stored mastery × Ebbinghaus retention (τ = 30/90/365 days by band;
@@ -565,7 +565,7 @@ function EventBadge({ ev }: { ev: LearnerEvent }) {
     return (
       <Badge
         variant="outline"
-        className="gap-1 border-warn/40 text-[10px] text-warn"
+        className="gap-1 border-warn/40 text-2xs text-warn"
       >
         <Hourglass className="size-3" aria-hidden />
         awaiting marks
@@ -574,7 +574,7 @@ function EventBadge({ ev }: { ev: LearnerEvent }) {
   }
   if (ev.kind === "exposure") {
     return (
-      <Badge variant="outline" className="gap-1 text-[10px] text-muted-foreground">
+      <Badge variant="outline" className="gap-1 text-2xs text-muted-foreground">
         <BookOpen className="size-3" aria-hidden />
         exposure
       </Badge>
@@ -584,7 +584,7 @@ function EventBadge({ ev }: { ev: LearnerEvent }) {
   // its marks value as the fact (no invented classification)
   if (ev.value === "1/1") {
     return (
-      <Badge variant="outline" className="gap-1 border-success/40 text-[10px] text-success">
+      <Badge variant="outline" className="gap-1 border-success/40 text-2xs text-success">
         correct
       </Badge>
     );
@@ -593,14 +593,14 @@ function EventBadge({ ev }: { ev: LearnerEvent }) {
     return (
       <Badge
         variant="outline"
-        className="gap-1 border-destructive/40 text-[10px] text-destructive"
+        className="gap-1 border-destructive/40 text-2xs text-destructive"
       >
         not correct
       </Badge>
     );
   }
   return (
-    <Badge variant="outline" className="gap-1 text-[10px] text-muted-foreground">
+    <Badge variant="outline" className="gap-1 text-2xs text-muted-foreground">
       marked
     </Badge>
   );
@@ -640,14 +640,14 @@ export function HistoryTab({ drawer }: { drawer: LearnerDrawerState }) {
 
   return (
     <div className="space-y-4">
-      <p className="text-[11px] leading-relaxed text-muted-foreground">
+      <p className="text-2xs leading-relaxed text-muted-foreground">
         Facts only — what was answered, how it was marked, when it happened. No advice and no
         re-derived mastery: those live in the graph and the next-best-action panel.
       </p>
 
       {groups.map((g) => (
         <section key={g.label}>
-          <h3 className="mb-1 text-[10px] font-semibold tracking-wide text-muted-foreground uppercase">
+          <h3 className="mb-1 text-2xs font-semibold tracking-wide text-muted-foreground uppercase">
             {g.label}
           </h3>
           <ul className="space-y-1">
@@ -658,12 +658,12 @@ export function HistoryTab({ drawer }: { drawer: LearnerDrawerState }) {
                     <EventBadge ev={ev} />
                     <span className="text-xs font-medium">{ev.label}</span>
                     {ev.value && (
-                      <span className="font-mono text-[11px] tabular-nums text-foreground/80">
+                      <span className="font-mono text-2xs tabular-nums text-foreground/80">
                         {ev.value}
                       </span>
                     )}
                   </div>
-                  <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
+                  <span className="flex items-center gap-1 text-2xs text-muted-foreground">
                     {ev.href && (
                       <Button
                         asChild
@@ -684,7 +684,7 @@ export function HistoryTab({ drawer }: { drawer: LearnerDrawerState }) {
                   </span>
                 </div>
                 <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
-                  <span className="text-[11px] text-muted-foreground">{ev.detail}</span>
+                  <span className="text-2xs text-muted-foreground">{ev.detail}</span>
                   <PointChips codes={ev.points} />
                 </div>
               </li>
@@ -694,7 +694,7 @@ export function HistoryTab({ drawer }: { drawer: LearnerDrawerState }) {
       ))}
 
       {drawer.eventCount > drawer.events.length && (
-        <p className="text-[10px] text-muted-foreground">
+        <p className="text-2xs text-muted-foreground">
           Showing the latest {drawer.events.length} of {drawer.eventCount} recorded signals.
         </p>
       )}

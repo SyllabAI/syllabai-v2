@@ -1091,6 +1091,21 @@ describe("ruling A — the optionA identity laws (trace 1a15b161bf960249)", () =
         .has("cie-igcse-science-combined-science-2023-2024-SME-DRUGS"),
     ).toBe(false);
     expect(mapBundleNodes(load("ial-biology-18"), "p").has("ial-biology-SME-SYNOPTIC-ASSESSMENT")).toBe(false);
+    // T-SME-SEL-W2 run-002: the wave-1/2 picker-layer class skips like the r0
+    // class — the section rows AND their :<slug> topic rows land NOTHING in
+    // the DB plane (hub-UI navigation only); official rows stay byte-identical
+    for (const [slug, sec, row] of [
+      ["ial-physics-19", "ial-physics-19-SME-S1", "ial-physics-19-SME-S1:motion"],
+      ["ial-chemistry-17", "ial-chemistry-17-SME-S1", "ial-chemistry-17-SME-S1:atomic-structure"],
+      ["ial-biology-18", "ial-biology-18-SME-S1", "ial-biology-18-SME-S1:biological-molecules"],
+    ] as const) {
+      const mapped = mapBundleNodes(load(slug), "p");
+      expect(mapped.has(sec)).toBe(false);
+      expect(mapped.has(row)).toBe(false);
+      expect([...mapped.keys()].filter((k) => k.includes("-SME-"))).toEqual([]);
+    }
+    // the official grammar is untouched: biology's official spine still maps
+    expect(mapBundleNodes(load("ial-biology-18"), "p").has("ial-biology-T1")).toBe(true);
     // the official grammar is untouched: geography-25's official -T topics
     // still map byte-identically under the optionA namespace law
     expect(geo.get("cie-igcse-geography-2025-2026-T1")!.dbCode).toBe("0460-2025-2026-S1");
@@ -1131,6 +1146,69 @@ describe("ruling A — the optionA identity laws (trace 1a15b161bf960249)", () =
     } as BundleCurriculum;
     expect(() => mapBundleNodes(bearing, "p")).toThrow(
       /not the disclosed childless SUBJECT-root leaf shape/,
+    );
+  });
+
+  test("the T-SME-SEL-W2 picker-layer guard: a -SME-S<n> section row with a non-picker child refuses fail-closed", () => {
+    // the wave-1/2 class is lawful ONLY with exclusively :<slug> picker
+    // topic-row children — a SPEC_POINT (or official) child under a
+    // -SME-S<n> row refuses with its own message (never silently skipped)
+    const b = load("ial-biology-18");
+    const subject = b.nodes.find((n) => n.family === "SUBJECT")!;
+    const bearing = {
+      ...b,
+      nodes: [
+        ...b.nodes,
+        {
+          family: "SPEC_POINT",
+          code: "ial-biology-18-SME-S99.FAKE.1",
+          title: "fake spec point under a picker section",
+          description: null,
+          order: 1,
+          parents: ["ial-biology-18-SME-S99"],
+          provenanceTier: "SME_REFERENCE",
+          applicability: null,
+        },
+        {
+          family: "TOPIC",
+          code: "ial-biology-18-SME-S99",
+          title: "99. Fake (SME section)",
+          description: null,
+          order: 200,
+          parents: [subject.code],
+          provenanceTier: "SME_REFERENCE",
+          applicability: null,
+        },
+      ],
+    } as BundleCurriculum;
+    expect(() => mapBundleNodes(bearing, "p")).toThrow(
+      /not the disclosed picker-layer section shape/,
+    );
+  });
+
+  test("the T-SME-SEL-W2 picker-topic-row guard: a malformed -SME- SUBTOPIC refuses fail-closed", () => {
+    // a :<slug> row that is NOT childless (here it carries a SPEC_POINT
+    // child) must refuse in the SUBTOPIC branch — the :SUBx grammar must
+    // never graft an identity onto a picker row
+    const b = load("ial-biology-18");
+    const bearing = {
+      ...b,
+      nodes: [
+        ...b.nodes,
+        {
+          family: "SPEC_POINT",
+          code: "ial-biology-18-SME-S1:biological-molecules.FAKE.1",
+          title: "fake spec point under a picker row",
+          description: null,
+          order: 1,
+          parents: ["ial-biology-18-SME-S1:biological-molecules"],
+          provenanceTier: "SME_REFERENCE",
+          applicability: null,
+        },
+      ],
+    } as BundleCurriculum;
+    expect(() => mapBundleNodes(bearing, "p")).toThrow(
+      /not the disclosed picker topic row/,
     );
   });
 

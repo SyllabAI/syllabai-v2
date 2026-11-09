@@ -481,11 +481,11 @@ export function AssignmentsClient({
       <PageHeader
         eyebrow={
           <span className="flex items-center gap-2">
-            <Badge variant="outline" className="gap-1 text-[10px] font-normal">
+            <Badge variant="outline" className="gap-1 text-2xs font-normal">
               <ClipboardList className="size-3" aria-hidden />
               Assignments
             </Badge>
-            <Badge variant="secondary" className="text-[10px] font-normal">
+            <Badge variant="secondary" className="text-2xs font-normal">
               core-backed · live
             </Badge>
           </span>
@@ -527,11 +527,11 @@ export function AssignmentsClient({
           <ChevronDown className="pointer-events-none absolute top-1/2 right-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" />
         </div>
         {current && (
-          <Badge variant="outline" className="gap-1 font-mono text-[10px] font-normal">
+          <Badge variant="outline" className="gap-1 font-mono text-2xs font-normal">
             {current.code} · {current.level}
           </Badge>
         )}
-        <span className="text-[11px] text-muted-foreground">
+        <span className="text-2xs text-muted-foreground">
           {targetClass === "cohort"
             ? courseClasses.length === 0 && classesLoadFailed
               ? "Cohort: every enabled student (class list unavailable right now)"
@@ -639,7 +639,7 @@ export function AssignmentsClient({
                   >
                     Seneca resources
                   </button>
-                  <span className="text-[11px] text-muted-foreground">
+                  <span className="text-2xs text-muted-foreground">
                     {source === "bank"
                       ? "Assemble marks-aware papers from the question bank."
                       : `Pick from the ${packLibrary?.courseLabel ?? current?.label ?? "course"} Seneca library — already linked to this course, no filtering needed.`}
@@ -711,7 +711,7 @@ export function AssignmentsClient({
                             })
                           }
                         />
-                        <span className="font-mono text-[10px] text-muted-foreground">{s.code}</span>
+                        <span className="font-mono text-2xs text-muted-foreground">{s.code}</span>
                         <span className="min-w-0 flex-1 truncate">{s.title}</span>
                         <span className="tabular-nums text-muted-foreground">
                           {(s.meanMastery * 100).toFixed(0)}% · {s.questionCount}q
@@ -797,12 +797,12 @@ export function AssignmentsClient({
                         <span className="min-w-0 flex-1">
                           <span className="block truncate">{row.title ?? "(untitled resource)"}</span>
                           {row.topicPath && (
-                            <span className="block truncate text-[10px] text-muted-foreground">
+                            <span className="block truncate text-2xs text-muted-foreground">
                               {row.topicPath}
                             </span>
                           )}
                         </span>
-                        <Badge variant="outline" className="shrink-0 text-[10px] font-normal">
+                        <Badge variant="outline" className="shrink-0 text-2xs font-normal">
                           {row.kind === "courseSection" ? "notes" : row.kind === "quiz" ? "quiz" : "exam q"}
                         </Badge>
                         {row.kind === "examQuestion" && row.marksTotal != null && (
@@ -820,7 +820,7 @@ export function AssignmentsClient({
                   {packPicked.length > 0 && (
                     <div className="max-h-28 space-y-1 overflow-y-auto rounded-md border p-2">
                       {packPicked.map((r, i) => (
-                        <p key={r.id} className="truncate text-[11px] text-muted-foreground">
+                        <p key={r.id} className="truncate text-2xs text-muted-foreground">
                           <span className="mr-1.5 font-semibold text-foreground">{i + 1}.</span>
                           {r.title ?? "(untitled resource)"}
                         </p>
@@ -866,7 +866,7 @@ export function AssignmentsClient({
                   )}
                   Create assignment
                 </Button>
-                <span className="text-[11px] text-muted-foreground">
+                <span className="text-2xs text-muted-foreground">
                   Assembles against the real bank, then registers on your SyllabAI account —
                   learners see it on their My Progress page.
                 </span>
@@ -917,23 +917,23 @@ export function AssignmentsClient({
                       <div className="flex flex-wrap items-center gap-2">
                         <p className="min-w-0 flex-1 truncate text-sm font-semibold">{a.title}</p>
                         {a.classId && (
-                          <Badge variant="outline" className="text-[10px] font-normal">
+                          <Badge variant="outline" className="text-2xs font-normal">
                             class: {teacherClasses.find((c) => c.id === a.classId)?.name ?? "targeted"}
                           </Badge>
                         )}
-                        <Badge variant="outline" className="font-mono text-[10px] font-normal">
+                        <Badge variant="outline" className="font-mono text-2xs font-normal">
                           {a.courseSlug}
                         </Badge>
                         {a.status === "closed" ? (
-                          <Badge variant="secondary" className="text-[10px] font-normal">
+                          <Badge variant="secondary" className="text-2xs font-normal">
                             closed
                           </Badge>
                         ) : overdue ? (
-                          <Badge variant="destructive" className="text-[10px] font-normal">
+                          <Badge variant="destructive" className="text-2xs font-normal">
                             overdue
                           </Badge>
                         ) : (
-                          <Badge variant="outline" className="text-[10px] font-normal">
+                          <Badge variant="outline" className="text-2xs font-normal">
                             open
                           </Badge>
                         )}
@@ -993,17 +993,17 @@ export function AssignmentsClient({
           )}
 
           <div className="mt-3 flex flex-wrap items-center gap-2">
-            <Badge variant="outline" className="gap-1 text-[10px] font-normal">
+            <Badge variant="outline" className="gap-1 text-2xs font-normal">
               <CheckCircle2 className="size-3" aria-hidden /> {selectedSummary.submitted} handed in
             </Badge>
-            <Badge variant="outline" className="gap-1 text-[10px] font-normal">
+            <Badge variant="outline" className="gap-1 text-2xs font-normal">
               <CircleAlert className="size-3" aria-hidden /> {selectedSummary.late} late
             </Badge>
-            <Badge variant="outline" className="gap-1 text-[10px] font-normal">
+            <Badge variant="outline" className="gap-1 text-2xs font-normal">
               <XCircle className="size-3" aria-hidden /> {selectedSummary.missing} missing
             </Badge>
             {selectedSummary.meanScore !== null && (
-              <Badge variant="secondary" className="text-[10px] font-normal tabular-nums">
+              <Badge variant="secondary" className="text-2xs font-normal tabular-nums">
                 mean {Math.round(selectedSummary.meanScore * 10) / 10}/
                 {selectedSummary.assignment.marksTotal}
               </Badge>
@@ -1103,7 +1103,7 @@ export function AssignmentsClient({
                 Reopen
               </Button>
             )}
-            <span className="self-center text-[11px] text-muted-foreground">
+            <span className="self-center text-2xs text-muted-foreground">
               Assignments are workflow records on core — close instead of delete, so a learner&apos;s
               handed-in evidence keeps its context.
             </span>

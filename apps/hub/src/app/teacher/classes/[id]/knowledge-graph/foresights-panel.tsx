@@ -139,15 +139,15 @@ export function ForesightsPanel({ view }: { view: ClassForesightsView }) {
       {/* ── (1) the C1 headline, styled by state — first thing read ───────── */}
       <div className={cn("rounded-lg border p-4", STATE_CARD[view.classState])}>
         <div className="flex flex-wrap items-center gap-2">
-          <Badge variant="outline" className={cn("text-[10px]", STATE_CHIP[view.classState].className)}>
+          <Badge variant="outline" className={cn("text-2xs", STATE_CHIP[view.classState].className)}>
             <Sparkles className="mr-1 size-3" aria-hidden />
             {STATE_CHIP[view.classState].label}
           </Badge>
-          <Badge variant="outline" className="font-mono text-[10px]">
+          <Badge variant="outline" className="font-mono text-2xs">
             {view.targetTopic.code}
           </Badge>
           {view.targetMeasured ? (
-            <Badge variant="outline" className="text-[10px]">
+            <Badge variant="outline" className="text-2xs">
               target already measured
             </Badge>
           ) : null}
@@ -216,7 +216,7 @@ export function ForesightsPanel({ view }: { view: ClassForesightsView }) {
                       </span>
                     ) : null}
                   </p>
-                  <p className="mt-0.5 text-[11px] leading-snug">
+                  <p className="mt-0.5 text-2xs leading-snug">
                     {p.title} · {p.learnersMeasured} measured
                     {p.derived ? ` · via ${p.derivedViaConceptCodes.join(", ")}` : ""}
                     {p.lastPracticedAt ? (
@@ -234,7 +234,7 @@ export function ForesightsPanel({ view }: { view: ClassForesightsView }) {
           </ul>
         )}
         {view.contextChain.length > 0 ? (
-          <p className="text-[11px] text-muted-foreground">
+          <p className="text-2xs text-muted-foreground">
             Further back in the chain ({view.contextChain.length} topic
             {view.contextChain.length === 1 ? "" : "s"}, context only — they never move this
             prediction):{" "}
@@ -275,7 +275,7 @@ export function ForesightsPanel({ view }: { view: ClassForesightsView }) {
           </div>
           {view.distribution.atRisk > 0 ? (
             <p
-              className="text-[11px] text-muted-foreground"
+              className="text-2xs text-muted-foreground"
               data-testid="foresights-atrisk-reasons"
             >
               At-risk detail:{" "}
@@ -294,7 +294,7 @@ export function ForesightsPanel({ view }: { view: ClassForesightsView }) {
               if (rows.length === 0) return null;
               return (
                 <div key={state} data-testid={`foresights-group-${state}`}>
-                  <p className="text-[11px] font-semibold tracking-wide text-muted-foreground uppercase">
+                  <p className="text-2xs font-semibold tracking-wide text-muted-foreground uppercase">
                     {GROUP_LABEL[state]} ({rows.length})
                   </p>
                   <ul className="mt-1 divide-y overflow-hidden rounded-md border">

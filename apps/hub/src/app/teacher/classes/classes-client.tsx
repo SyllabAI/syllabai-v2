@@ -189,8 +189,14 @@ export function TeacherClassesClient({
       )}
 
       {classes === null ? (
-        <div className="flex min-h-[30vh] items-center justify-center">
-          <Loader2 className="size-5 animate-spin text-muted-foreground" aria-label="Loading classes" />
+        <div className="min-h-[30vh]" role="status" aria-label="Loading classes">
+          {/* run-006 (P5): the class grid loads as skeletons. */}
+          <div className="h-9 w-40 animate-pulse rounded-md bg-muted motion-reduce:animate-none" aria-hidden />
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" aria-hidden>
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className="h-32 animate-pulse rounded-lg border bg-muted/50 motion-reduce:animate-none" />
+            ))}
+          </div>
         </div>
       ) : classes.length === 0 ? (
         <div className="rounded-lg border border-dashed px-6 py-12 text-center">
@@ -218,7 +224,7 @@ export function TeacherClassesClient({
                     </Link>
                     <p className="text-xs text-muted-foreground">{c.courseLabel}</p>
                   </div>
-                  <Badge variant="outline" className="font-mono text-[10px]">
+                  <Badge variant="outline" className="font-mono text-2xs">
                     {c.status}
                   </Badge>
                 </div>
@@ -263,11 +269,11 @@ export function TeacherClassesClient({
                   href={`/teacher/classes/${c.id}`}
                   className="flex items-center gap-2.5 rounded-lg border border-dashed px-3 py-2.5 transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <span className="shrink-0 rounded-full border bg-background px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-muted-foreground">
+                  <span className="shrink-0 rounded-full border bg-background px-2 py-0.5 text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
                     This browser
                   </span>
                   <span className="min-w-0 flex-1 truncate text-sm font-medium">{c.name}</span>
-                  <span className="shrink-0 text-[11px] text-muted-foreground">
+                  <span className="shrink-0 text-2xs text-muted-foreground">
                     {c.subjectSlugs.length} {c.subjectSlugs.length === 1 ? "subject" : "subjects"}
                   </span>
                 </Link>

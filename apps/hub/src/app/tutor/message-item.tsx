@@ -192,7 +192,7 @@ export function MessageItem({
               {/* the reference's date-aware stamp — always visible (rides its
                   own row; the copy/edit affordances stay hover-gated) */}
               <div className="flex items-center gap-0.5 pr-0.5">
-                <span className="mr-1 text-[10px] tabular-nums text-muted-foreground/70">
+                <span className="mr-1 text-2xs tabular-nums text-muted-foreground/70">
                   {formatChatTime(message.at)}
                 </span>
                 <div className="flex items-center gap-0.5 opacity-100 transition-opacity lg:opacity-0 lg:group-hover:opacity-100 lg:focus-within:opacity-100">
@@ -232,7 +232,7 @@ export function MessageItem({
       <div className="min-w-0 flex-1 space-y-1.5">
         <div className="flex items-center gap-2">
           <span className="text-xs font-semibold">SyllabAI Tutor</span>
-          <span className="text-[10px] tabular-nums text-muted-foreground/70">
+          <span className="text-2xs tabular-nums text-muted-foreground/70">
             {formatChatTime(message.at)}
           </span>
           {message.refused && (
@@ -354,7 +354,7 @@ export function MessageItem({
                   // ("Revision notes — p6", "Specification topic …") already
                   // carries the human source description
                   <>
-                    <span className="inline-flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-semibold text-primary">
+                    <span className="inline-flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/10 text-2xs font-semibold text-primary">
                       {c.index}
                     </span>
                     <FileText className="size-3 shrink-0 text-muted-foreground" aria-hidden />

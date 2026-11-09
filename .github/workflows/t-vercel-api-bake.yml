@@ -1,0 +1,120 @@
+# T-VERCEL-API-BAKE run-001 — the production bake floor for the API project.
+#
+# Mirrors the proven t-vercel-usage-bake law (run-001..005 receipts) for the
+# OTHER project of record: the API (syllabai-v2, prj_vf1MQaCuuGHd83HaTA3uqDx
+# ETpb5, rootDirectory = repo root, domains api.syllab-ai.com +
+# syllabai-v2-six.vercel.app — discovered first-hand by t-vercel-api-diag
+# run-001, 2026-11-09 06:07Z).
+#
+# WHY IT EXISTS: the API project's git integration has been silent since
+# Nov 4 (worklog #658: last status 04e3c40a, PR #783) and the account
+# migration left it unbaked — the regions fix (#864) plus every API-side
+# change since #783 is merged to main but never served. A dashboard
+# Redeploy of the stale deployment (2026-11-09 05:51Z, empty commit SHA)
+# reproduced OLD bytes — the regions endpoint still 500s (live probe,
+# 06:12Z). The CLI deploy uploads source directly and does not consult
+# ignoreCommand (the t-vercel-usage-bake run-002/003 first-hand proof).
+#
+# DELTA vs the hub floor: the CLI deployment carries
+# --meta githubCommitSha=<HEAD> so the state-aware skip works for CLI
+# deploys too (the hub floor's CLI deployments have no SHA and therefore
+# re-bake daily; this floor skips when the newest LIVE deployment already
+# carries main HEAD — idempotent by design).
+#
+# STRICT DISPOSITIONS (t-ops-plane doctrine class, unchanged):
+#   - VERCEL_BAKE_TOKEN is a repository secret: never printed, never
+#     echoed, never interpolated into log lines.
+#   - prod writes: at most ONE deployment per run, and ONLY when the
+#     newest LIVE (READY/BUILDING/QUEUED/INITIATING) production
+#     deployment's meta.githubCommitSha differs from main HEAD.
+#   - read-only preflight prints the project's build settings (never the
+#     token) so a failed bake explains itself.
+#   - no other environment touched; zero app/contracts/db bytes beyond
+#     the deployment itself.
+
+name: t-vercel-api-bake
+
+on:
+  schedule:
+    - cron: "30 3 * * *" # 03:30 UTC — staggered one hour after the hub floor
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bake-api-prod
+  cancel-in-progress: false
+
+env:
+  API_PROJECT_ID: prj_vf1MQaCuuGHd83HaTA3uqDxETpb5
+  API_PROJECT_NAME: syllabai-v2
+
+jobs:
+  bake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve main HEAD
+        id: head
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Read current production state (Vercel API, read-only)
+        id: prod
+        env:
+          VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
+          PROJECT_ID: ${{ env.API_PROJECT_ID }}
+        run: |
+          curl -sSf -H "Authorization: Bearer $VERCEL_BAKE_TOKEN" \
+            "https://api.vercel.com/v6/deployments?projectId=$PROJECT_ID&target=production&limit=5" \
+            | python3 -c "
+          import json, os, sys
+          live = {'READY', 'BUILDING', 'QUEUED', 'INITIATING'}
+          pick = next((d for d in json.load(sys.stdin).get('deployments', []) if d.get('state') in live), None)
+          sha = (pick.get('meta') or {}).get('githubCommitSha', '') if pick else ''
+          state = pick.get('state', 'none') if pick else 'none'
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write('sha=' + sha + chr(10) + 'state=' + state + chr(10))
+          print('newest live API deployment: ' + state + ' @ ' + (sha[:10] if sha else '(no commit sha — pre-meta deployment)'))
+          "
+
+      - name: Preflight — print the API project's build settings (read-only)
+        if: steps.prod.outputs.sha != steps.head.outputs.sha
+        env:
+          VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
+          PROJECT_ID: ${{ env.API_PROJECT_ID }}
+        run: |
+          curl -sSf -H "Authorization: Bearer $VERCEL_BAKE_TOKEN" \
+            "https://api.vercel.com/v9/projects/$PROJECT_ID" \
+            | python3 -c "
+          import json, sys
+          p = json.load(sys.stdin)
+          for k in ('name', 'framework', 'nodeVersion', 'buildCommand', 'devCommand', 'installCommand', 'outputDirectory', 'rootDirectory'):
+              print(k + ': ' + str(p.get(k)))
+          "
+
+      - name: Skip when production is already current
+        if: steps.prod.outputs.sha == steps.head.outputs.sha
+        run: echo "API production already at main HEAD — nothing to bake"
+
+      - name: Install Vercel CLI
+        if: steps.prod.outputs.sha != steps.head.outputs.sha
+        run: npm install -g vercel@latest
+
+      - name: Link project
+        if: steps.prod.outputs.sha != steps.head.outputs.sha
+        env:
+          VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
+        run: vercel link --yes --project "$API_PROJECT_NAME" --token="$VERCEL_BAKE_TOKEN"
+
+      - name: Bake production (CLI deploy from repo root; source-tagged with main HEAD)
+        if: steps.prod.outputs.sha != steps.head.outputs.sha
+        env:
+          VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
+        run: |
+          SHA="$(git rev-parse HEAD)"
+          vercel deploy --prod --yes \
+            --meta "githubCommitSha=$SHA" \
+            --meta "githubCommitRef=main" \
+            --token="$VERCEL_BAKE_TOKEN"

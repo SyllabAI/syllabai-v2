@@ -96,7 +96,7 @@ export default async function SpecArchivePage({
           </span>
         }
         description={
-          <span className="font-mono text-[11px]">{specKey}</span>
+          <span className="font-mono text-2xs">{specKey}</span>
         }
         actions={
           <Badge variant="secondary" className="font-medium">
@@ -165,17 +165,17 @@ export default async function SpecArchivePage({
                         <span className="font-mono text-sm font-semibold">{p.ref}</span>
                         <span className="text-xs text-muted-foreground">{p.title}</span>
                         {p.specBadge && (
-                          <Badge variant="outline" className="text-[10px] text-muted-foreground">
+                          <Badge variant="outline" className="text-2xs text-muted-foreground">
                             {p.specBadge}
                           </Badge>
                         )}
                         {p.variantChip && (
-                          <Badge variant="outline" className="text-[10px]">
+                          <Badge variant="outline" className="text-2xs">
                             {p.variantChip}
                           </Badge>
                         )}
                       </p>
-                      <p className="mt-0.5 text-[11px] text-muted-foreground">
+                      <p className="mt-0.5 text-2xs text-muted-foreground">
                         {p.qpBytes ? `QP ${prettyBytes(p.qpBytes)}` : "no QP held"}
                         {p.msBytes ? ` · MS ${prettyBytes(p.msBytes)}` : " · no MS held"}
                         {p.erBytes ? ` · ER ${prettyBytes(p.erBytes)}` : ""}

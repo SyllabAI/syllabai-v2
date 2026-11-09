@@ -113,7 +113,7 @@ export function ShowcaseLanding() {
   }
 
   return (
-    <div className="mx-auto flex min-h-[calc(100vh-6.75rem)] w-full max-w-4xl flex-col justify-center px-4 py-10 sm:px-6">
+    <div className="mx-auto flex min-h-[calc(100dvh-6.75rem)] w-full max-w-4xl flex-col justify-center px-4 py-10 sm:px-6">
       <div className="mb-8 flex items-center gap-2">
         <span className="flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
           <Atom className="size-4" aria-hidden />

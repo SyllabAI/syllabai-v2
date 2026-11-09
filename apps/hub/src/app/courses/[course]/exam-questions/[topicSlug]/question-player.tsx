@@ -466,18 +466,18 @@ export function QuestionPlayer({
                 aria-selected={difficulty === d}
                 onClick={() => setDifficulty(d)}
                 className={cn(
-                  "rounded-md px-3 py-2.5 text-[13px] font-medium capitalize transition-colors",
+                  "rounded-md px-3 py-2.5 text-xs font-medium capitalize transition-colors",
                   difficulty === d
                     ? "bg-primary/10 text-primary"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground",
                 )}
               >
                 {d === "all" ? "All" : d}
-                <span className="ml-1.5 text-[11px] tabular-nums opacity-70">{counts[d]}</span>
+                <span className="ml-1.5 text-2xs tabular-nums opacity-70">{counts[d]}</span>
               </button>
             ))}
           </div>
-          <label className="ml-auto flex cursor-not-allowed items-center gap-2 text-[13px] text-muted-foreground" title="Adaptive sessions are coming soon">
+          <label className="ml-auto flex cursor-not-allowed items-center gap-2 text-xs text-muted-foreground" title="Adaptive sessions are coming soon">
             Guided practice
             <Switch disabled aria-label="Guided practice (roadmap)" />
           </label>
@@ -491,7 +491,7 @@ export function QuestionPlayer({
           aria-pressed={viewMode === "all"}
           onClick={() => switchViewMode("all")}
           className={cn(
-            "rounded-md px-3 py-1.5 text-[13px] font-medium transition-colors",
+            "rounded-md px-3 py-1.5 text-xs font-medium transition-colors",
             viewMode === "all"
               ? "bg-primary/10 text-primary"
               : "text-muted-foreground hover:bg-muted hover:text-foreground",
@@ -503,7 +503,7 @@ export function QuestionPlayer({
           aria-pressed={viewMode === "single"}
           onClick={() => switchViewMode("single")}
           className={cn(
-            "rounded-md px-3 py-1.5 text-[13px] font-medium transition-colors",
+            "rounded-md px-3 py-1.5 text-xs font-medium transition-colors",
             viewMode === "single"
               ? "bg-primary/10 text-primary"
               : "text-muted-foreground hover:bg-muted hover:text-foreground",
@@ -527,7 +527,7 @@ export function QuestionPlayer({
             aria-label={`Question ${qLabel(i)}${isAttempted(q) ? " (attempted)" : ""}`}
             aria-current={viewIdx === i || undefined}
             className={cn(
-              "flex size-10 items-center justify-center rounded-md border text-[13px] font-medium transition-colors",
+              "flex size-10 items-center justify-center rounded-md border text-xs font-medium transition-colors",
               isAttempted(q)
                 ? "border-primary bg-primary text-primary-foreground"
                 : viewIdx === i
@@ -551,17 +551,17 @@ export function QuestionPlayer({
             <article key={q.id} id={`q-${q.id}`} data-qidx={qi} className="scroll-mt-24 rounded-xl border bg-card">
               <div className="flex flex-wrap items-center gap-2 border-b px-4 py-2.5">
                 {/* printed paper number when attested, else position (T-PAPER-PLAYBACK-1) */}
-                <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">{qLabel(qi)}</span>
-                <Badge variant="outline" className="text-[10px]">
+                <span className="rounded-md bg-muted px-2 py-0.5 text-xs font-semibold">{qLabel(qi)}</span>
+                <Badge variant="outline" className="text-2xs">
                   {q.totalMarks} mark{q.totalMarks === 1 ? "" : "s"}
                 </Badge>
                 {variant === "bank" && q.difficulty && (
-                  <Badge variant="secondary" className="text-[10px] capitalize">
+                  <Badge variant="secondary" className="text-2xs capitalize">
                     {q.difficulty}
                   </Badge>
                 )}
                 {isAttempted(q) && (
-                  <Badge variant="outline" className="border-success/30 text-[10px] text-success">
+                  <Badge variant="outline" className="border-success/30 text-2xs text-success">
                     <CheckCircle2 className="mr-0.5 size-3" aria-hidden /> attempted
                   </Badge>
                 )}
@@ -642,7 +642,7 @@ export function QuestionPlayer({
           >
             <ChevronLeft className="size-4" aria-hidden /> Previous
           </Button>
-          <p className="text-[13px] tabular-nums text-muted-foreground" aria-live="polite">
+          <p className="text-xs tabular-nums text-muted-foreground" aria-live="polite">
             Question {qLabel(viewIdx ?? 0)} of {visible.length}
           </p>
           <Button
@@ -689,7 +689,7 @@ export function QuestionPlayer({
           <Sparkles className="size-4" aria-hidden />
           Ask CLA
           <span
-            className="rounded-full bg-primary-foreground/15 px-2 py-0.5 text-[11px] font-semibold tabular-nums"
+            className="rounded-full bg-primary-foreground/15 px-2 py-0.5 text-2xs font-semibold tabular-nums"
             aria-hidden
           >
             Q{qLabel(claAnchorIdx)}
@@ -706,7 +706,7 @@ export function QuestionPlayer({
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2 text-base">
               {topicName}
-              {fullFor && <Badge variant="outline" className="text-[10px]">{fullFor.q.totalMarks} marks</Badge>}
+              {fullFor && <Badge variant="outline" className="text-2xs">{fullFor.q.totalMarks} marks</Badge>}
             </DialogTitle>
           </DialogHeader>
           {fullFor && (
@@ -789,7 +789,7 @@ function BridgeBanner({ status }: { status: AttemptBridgeStatus }) {
   if (status.kind === "ready") {
     const skipped = status.data.skipped.length;
     return (
-      <div className="rounded-lg border border-success/25 bg-success/5 px-4 py-2.5 text-[13px] leading-relaxed">
+      <div className="rounded-lg border border-success/25 bg-success/5 px-4 py-2.5 text-xs leading-relaxed">
         <span className="inline-flex items-center gap-1.5 font-medium text-success">
           <CheckCircle2 className="size-3.5" aria-hidden /> Live · SyllabAI core
         </span>{" "}
@@ -808,7 +808,7 @@ function BridgeBanner({ status }: { status: AttemptBridgeStatus }) {
   }
   if (status.kind === "unauthenticated") {
     return (
-      <div className="rounded-lg border bg-muted/30 px-4 py-2.5 text-[13px] leading-relaxed text-muted-foreground">
+      <div className="rounded-lg border bg-muted/30 px-4 py-2.5 text-xs leading-relaxed text-muted-foreground">
         Practice works locally right now.{" "}
         <Link
           href={signInHref(pathname, currentSearch)}
@@ -942,7 +942,7 @@ function QuestionBody({
       <div className="flex flex-wrap items-center gap-3 border-t pt-3">
         {!autoMarked && (
           <>
-            <label className="flex items-center gap-2 text-[13px]">
+            <label className="flex items-center gap-2 text-xs">
               How did you do?
               <span className="inline-flex items-center gap-1">
                 <Input
@@ -1097,7 +1097,7 @@ function StructuredPart({
           layout-identical to the bare pre-467 block. */}
       <div className="flex items-baseline gap-x-1.5" data-part-row={part.id}>
         {labelChip && (
-          <span className="shrink-0 text-[13px] font-semibold tabular-nums" data-part-label={labelChip}>
+          <span className="shrink-0 text-xs font-semibold tabular-nums" data-part-label={labelChip}>
             {labelChip}
           </span>
         )}
@@ -1319,7 +1319,7 @@ function TypedAnswerWorkspace({
               <Badge
                 variant="outline"
                 className={cn(
-                  "px-1 text-[11px] uppercase",
+                  "px-1 text-2xs uppercase",
                   coreLive ? "border-success/30 text-success" : "text-muted-foreground",
                 )}
               >
@@ -1330,7 +1330,7 @@ function TypedAnswerWorkspace({
               <span
                 aria-live="polite"
                 className={cn(
-                  "inline-flex items-center gap-1 text-[11px]",
+                  "inline-flex items-center gap-1 text-2xs",
                   dirty ? "text-muted-foreground" : "text-success",
                 )}
               >
@@ -1366,12 +1366,12 @@ function TypedAnswerWorkspace({
             Mark my answer
           </Button>
         ) : (
-          <span className="text-[11px] text-muted-foreground">
+          <span className="text-2xs text-muted-foreground">
             {AI_MARK_UNAVAILABLE}
           </span>
         )}
         {aiAvailable === true && text.trim().length === 0 && (
-          <span className="text-[11px] text-muted-foreground">Type an answer first</span>
+          <span className="text-2xs text-muted-foreground">Type an answer first</span>
         )}
         {mark.kind !== "loading" && mark.kind !== "idle" && (
           <Button asChild size="sm" variant="ghost" className="text-xs">
@@ -1399,10 +1399,10 @@ function TypedAnswerWorkspace({
       {mark.kind === "done" && (
         <div ref={resultRef} className="mt-3 space-y-2.5 rounded-lg border border-primary/30 bg-primary/5 p-3">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge className="gap-1 text-[11px]">
+            <Badge className="gap-1 text-2xs">
               <Sparkles className="size-3" aria-hidden /> AI-suggested mark: {mark.score}/{mark.max}
             </Badge>
-            <span className="text-[11px] text-muted-foreground">
+            <span className="text-2xs text-muted-foreground">
               via {mark.provider} — check against the mark scheme
             </span>
             {singlePart && !applied && (
@@ -1426,7 +1426,7 @@ function TypedAnswerWorkspace({
           </div>
           <ul className="space-y-1.5">
             {mark.points.map((pt, i) => (
-              <li key={i} className="flex items-start gap-2 text-[13px] leading-relaxed">
+              <li key={i} className="flex items-start gap-2 text-xs leading-relaxed">
                 {pt.achieved === "yes" ? (
                   <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" aria-hidden />
                 ) : pt.achieved === "no" ? (
@@ -1442,7 +1442,7 @@ function TypedAnswerWorkspace({
             ))}
           </ul>
           {mark.overall && (
-            <div className="border-t pt-2 text-[13px]">
+            <div className="border-t pt-2 text-xs">
               <Markdown>{mark.overall}</Markdown>
             </div>
           )}
@@ -1698,7 +1698,7 @@ function McqPart({
           than the stem (T-OEQ-PARTLABEL-3 font note). */}
       <div className="flex items-baseline gap-x-1.5" data-part-row={part.id}>
         {labelChip && (
-          <span className="shrink-0 text-[13px] font-semibold tabular-nums" data-part-label={labelChip}>
+          <span className="shrink-0 text-xs font-semibold tabular-nums" data-part-label={labelChip}>
             {labelChip}
           </span>
         )}
@@ -1714,7 +1714,7 @@ function McqPart({
       </div>
       {answerable ? (
         <>
-          <p className="text-[13px] font-medium">
+          <p className="text-xs font-medium">
             {multi ? `Choose ${nCorrect} answers` : "Choose your answer"}
           </p>
           {letterOnly && !optionsVisible && (
@@ -1787,7 +1787,7 @@ function McqPart({
                 >
                   <span
                     className={cn(
-                      "flex size-7 shrink-0 items-center justify-center rounded-full border text-[13px] font-semibold",
+                      "flex size-7 shrink-0 items-center justify-center rounded-full border text-xs font-semibold",
                       showWrong
                         ? "border-destructive/40 bg-destructive/15 text-destructive"
                         : showCorrect
@@ -1800,7 +1800,7 @@ function McqPart({
                   >
                     {o.label}
                   </span>
-                  <span className="flex-1 text-[13px] leading-relaxed">
+                  <span className="flex-1 text-xs leading-relaxed">
                     <Markdown>{o.textMd}</Markdown>
                   </span>
                   {showCorrect && (
@@ -1895,7 +1895,7 @@ function McqPart({
                 {multi ? (
                   <p
                     className={cn(
-                      "text-[13px] font-medium",
+                      "text-xs font-medium",
                       multiExact
                         ? "text-success"
                         : multiHits > 0
@@ -1912,7 +1912,7 @@ function McqPart({
                 ) : (
                   <p
                     className={cn(
-                      "text-[13px] font-medium",
+                      "text-xs font-medium",
                       chosen === correctLabel
                         ? "text-success"
                         : "text-destructive",
@@ -1937,17 +1937,17 @@ function McqPart({
                   <RotateCcw className="size-3.5" aria-hidden /> Try again
                 </Button>
                 {coreJoin && coreState === "sending" && (
-                  <span className="inline-flex items-center gap-1 text-[11px] text-muted-foreground">
+                  <span className="inline-flex items-center gap-1 text-2xs text-muted-foreground">
                     <Loader2 className="size-3 animate-spin" aria-hidden /> recording to your learner model…
                   </span>
                 )}
                 {coreJoin && coreState === "recorded" && (
-                  <span className="inline-flex items-center gap-1 text-[11px] text-success">
+                  <span className="inline-flex items-center gap-1 text-2xs text-success">
                     <CheckCircle2 className="size-3" aria-hidden /> recorded to your learner model
                   </span>
                 )}
                 {coreJoin && coreState === "failed" && (
-                  <span className="text-[11px] text-warn">
+                  <span className="text-2xs text-warn">
                     not recorded (backend unreachable) — your local mark is safe
                   </span>
                 )}
@@ -1957,7 +1957,7 @@ function McqPart({
           {submitted && part.solutionMd && (
             <div className="rounded-lg border bg-muted/20">
               <button
-                className="flex w-full items-center gap-1.5 px-3 py-2 text-[13px] font-medium"
+                className="flex w-full items-center gap-1.5 px-3 py-2 text-xs font-medium"
                 onClick={() => setShowWhy((v) => !v)}
                 aria-expanded={showWhy}
               >
@@ -2202,11 +2202,11 @@ function CoreMarkingFlow({
     <div className="rounded-lg border border-primary/30 bg-primary/[0.03] p-3">
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <Sparkles className="size-3.5 text-primary" aria-hidden />
-        <span className="text-[13px] font-medium">Submit for marking — SyllabAI core</span>
-        <Badge variant="outline" className="border-success/30 px-1 text-[11px] uppercase text-success">
+        <span className="text-xs font-medium">Submit for marking — SyllabAI core</span>
+        <Badge variant="outline" className="border-success/30 px-1 text-2xs uppercase text-success">
           live
         </Badge>
-        <span className="text-[11px] text-muted-foreground">
+        <span className="text-2xs text-muted-foreground">
           your written answers go to your real learner account
         </span>
       </div>
@@ -2233,7 +2233,7 @@ function CoreMarkingFlow({
               `Submit · ${question.totalMarks} mark${question.totalMarks === 1 ? "" : "s"}`
             )}
           </Button>
-          <span className="text-[11px] text-muted-foreground">
+          <span className="text-2xs text-muted-foreground">
             {hasAnyText
               ? "then Smart Mark marks every part against the mark scheme"
               : "type an answer above first"}
@@ -2265,7 +2265,7 @@ function CoreMarkingFlow({
                 </>
               )}
             </Button>
-            <span className="text-[11px] text-muted-foreground">
+            <span className="text-2xs text-muted-foreground">
               advisory — writes no attempt; marks each typed part against its mark scheme
             </span>
           </div>
@@ -2280,7 +2280,7 @@ function CoreMarkingFlow({
               : "Your answer";
             if (state.kind === "loading") {
               return (
-                <div key={hubPartId} className="flex items-center gap-2 rounded-lg border bg-background p-2 text-[13px]">
+                <div key={hubPartId} className="flex items-center gap-2 rounded-lg border bg-background p-2 text-xs">
                   <Loader2 className="size-3.5 animate-spin" aria-hidden />
                   <span>{label} — marking…</span>
                 </div>
@@ -2294,7 +2294,7 @@ function CoreMarkingFlow({
                     ? "the marking job was lost (server restart) — run “Mark my draft with AI” again"
                     : "still running past the wait cap — run “Mark my draft with AI” again to refresh";
               return (
-                <div key={hubPartId} className="rounded-lg border bg-background p-2 text-[13px]">
+                <div key={hubPartId} className="rounded-lg border bg-background p-2 text-xs">
                   <span className="font-medium">{label}</span>{" "}
                   <span className="text-muted-foreground">{copy}</span>
                 </div>
@@ -2314,11 +2314,11 @@ function CoreMarkingFlow({
             return (
               <div key={hubPartId} className="rounded-lg border bg-background p-3">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-[13px] font-medium">{label}</span>
+                  <span className="text-xs font-medium">{label}</span>
                   <Badge
                     variant="outline"
                     className={cn(
-                      "text-[11px]",
+                      "text-2xs",
                       score > 0 ? "border-success/40 text-success" : "text-destructive",
                     )}
                   >
@@ -2326,10 +2326,10 @@ function CoreMarkingFlow({
                   </Badge>
                 </div>
                 {attemptClass && (
-                  <p className="mt-1 text-[11px] text-muted-foreground">Attempt read as: {attemptClass}</p>
+                  <p className="mt-1 text-2xs text-muted-foreground">Attempt read as: {attemptClass}</p>
                 )}
                 {citations.length > 0 && (
-                  <ul className="mt-1 space-y-0.5 text-[11px] text-muted-foreground">
+                  <ul className="mt-1 space-y-0.5 text-2xs text-muted-foreground">
                     {citations.map((a) => (
                       <li key={`cite-${a.ordinal}-${a.code}`}>
                         {a.code}: this mark came from your working at {a.workingRefLabel}
@@ -2338,7 +2338,7 @@ function CoreMarkingFlow({
                   </ul>
                 )}
                 {state.snapshot.receipt?.cached && (
-                  <p className="mt-1 text-[11px] text-muted-foreground">
+                  <p className="mt-1 text-2xs text-muted-foreground">
                     served from your standing mark — identical content, no new run
                   </p>
                 )}
@@ -2348,7 +2348,7 @@ function CoreMarkingFlow({
                       <Markdown>{verdict.chatMessage}</Markdown>
                     )}
                     {verdict.scored.length > 0 && (
-                      <ul className="mt-1.5 list-disc space-y-0.5 pl-5 text-[13px]">
+                      <ul className="mt-1.5 list-disc space-y-0.5 pl-5 text-xs">
                         {verdict.scored.map((p, i) => (
                           <li key={i}>{p}</li>
                         ))}
@@ -2356,8 +2356,8 @@ function CoreMarkingFlow({
                     )}
                     {verdict.notScored.length > 0 && (
                       <>
-                        <p className="mt-1.5 text-[13px] font-medium">Not scored</p>
-                        <ul className="list-disc space-y-0.5 pl-5 text-[13px]">
+                        <p className="mt-1.5 text-xs font-medium">Not scored</p>
+                        <ul className="list-disc space-y-0.5 pl-5 text-xs">
                           {verdict.notScored.map((p, i) => (
                             <li key={i}>{p}</li>
                           ))}
@@ -2366,8 +2366,8 @@ function CoreMarkingFlow({
                     )}
                     {verdict.strategies && verdict.strategies.length > 0 && (
                       <>
-                        <p className="mt-1.5 text-[13px] font-medium">How to improve</p>
-                        <ul className="list-disc space-y-0.5 pl-5 text-[13px]">
+                        <p className="mt-1.5 text-xs font-medium">How to improve</p>
+                        <ul className="list-disc space-y-0.5 pl-5 text-xs">
                           {verdict.strategies.map((p, i) => (
                             <li key={i}>{p}</li>
                           ))}
@@ -2388,7 +2388,7 @@ function CoreMarkingFlow({
 
       {(phase === "submitted" || phase === "marking" || phase === "marked") && phase !== "marked" && (
         <div className="flex flex-wrap items-center gap-3">
-          <span className="inline-flex items-center gap-1 text-[13px] font-medium text-success">
+          <span className="inline-flex items-center gap-1 text-xs font-medium text-success">
             <CheckCircle2 className="size-3.5" aria-hidden /> Answers submitted
           </span>
           <Button size="sm" variant="outline" disabled={phase === "marking"} onClick={smartMark}>
@@ -2402,7 +2402,7 @@ function CoreMarkingFlow({
               </>
             )}
           </Button>
-          <span className="text-[11px] text-muted-foreground">
+          <span className="text-2xs text-muted-foreground">
             AI marks each part through the marking pipeline; marks drive your mastery
           </span>
         </div>
@@ -2411,10 +2411,10 @@ function CoreMarkingFlow({
       {phase === "marked" && (
         <div className="space-y-3">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge className="gap-1 text-[11px]">
+            <Badge className="gap-1 text-2xs">
               <Sparkles className="size-3" aria-hidden /> Smart Mark: {totalAwarded}/{totalPossible}
             </Badge>
-            <span className="text-[11px] text-muted-foreground">
+            <span className="text-2xs text-muted-foreground">
               {anyAuthoritative
                 ? "authoritative marks — they feed your mastery and review schedule"
                 : "indicative marks — the pipeline's κ release gate hasn't certified this batch yet, so treat them as AI-suggested and check against the scheme"}
@@ -2456,7 +2456,7 @@ function CoreMarkingFlow({
               return (
                 <div key={p.partId} className="rounded-lg border bg-background p-3">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-[13px] font-medium">
+                    <span className="text-xs font-medium">
                       {/* T-QVIEW-AUDIT-BCD-1 batch C: the hub part's attested
                           printed label ("(a)") leads; core's own label stays
                           the fallback — no second numbering language */}
@@ -2468,19 +2468,19 @@ function CoreMarkingFlow({
                     <Badge
                       variant="outline"
                       className={cn(
-                        "text-[11px]",
+                        "text-2xs",
                         p.marksAwarded > 0 ? "border-success/40 text-success" : "text-destructive",
                       )}
                     >
                       {p.marksAwarded}/{p.marksPossible}
                     </Badge>
                     {!p.authoritative && (
-                      <Badge variant="secondary" className="text-[10px]">
+                      <Badge variant="secondary" className="text-2xs">
                         indicative · κ gate
                       </Badge>
                     )}
                     {p.modelId && (
-                      <span className="text-[11px] text-muted-foreground">via {p.modelId}</span>
+                      <span className="text-2xs text-muted-foreground">via {p.modelId}</span>
                     )}
                     <div className="ml-auto flex items-center gap-1.5">
                       <Button
@@ -2515,7 +2515,7 @@ function CoreMarkingFlow({
                   {p.breakdown.length > 0 && (
                     <ul className="mt-2 space-y-1.5">
                       {p.breakdown.map((d, i) => (
-                        <li key={i} className="flex items-start gap-2 text-[13px] leading-relaxed">
+                        <li key={i} className="flex items-start gap-2 text-xs leading-relaxed">
                           {d.awarded ? (
                             <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" aria-hidden />
                           ) : (
@@ -2544,21 +2544,21 @@ function CoreMarkingFlow({
                     </p>
                   )}
                   {explain && explain !== "loading" && explain !== "error" && "explanation" in explain && (
-                    <div className="mt-2 rounded-md border border-primary/20 bg-primary/5 p-2.5">
-                      <p className="mb-1 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                    <div className="mt-2 rounded-md border border-primary/30 bg-primary/5 p-2.5">
+                      <p className="mb-1 text-2xs font-medium uppercase tracking-wide text-muted-foreground">
                         Why this feedback
                       </p>
-                      <div className="text-[13px] leading-relaxed">
+                      <div className="text-xs leading-relaxed">
                         <Markdown>{explain.explanation}</Markdown>
                       </div>
                     </div>
                   )}
                   {improve && improve !== "loading" && improve !== "error" && "plan" in improve && (
-                    <div className="mt-2 rounded-md border border-primary/20 bg-primary/5 p-2.5">
-                      <p className="mb-1 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                    <div className="mt-2 rounded-md border border-primary/30 bg-primary/5 p-2.5">
+                      <p className="mb-1 text-2xs font-medium uppercase tracking-wide text-muted-foreground">
                         How to improve
                       </p>
-                      <div className="text-[13px] leading-relaxed">
+                      <div className="text-xs leading-relaxed">
                         <Markdown>{improve.plan}</Markdown>
                       </div>
                     </div>
@@ -2690,7 +2690,7 @@ function MarkSchemeDialog({
                     <button
                       key={p.id}
                       type="button"
-                      className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold transition-colors [@media(hover:hover)]:hover:bg-primary/10"
+                      className="rounded-md bg-muted px-2 py-0.5 text-xs font-semibold transition-colors [@media(hover:hover)]:hover:bg-primary/10"
                       onClick={() =>
                         document.getElementById(`ms-part-${p.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" })
                       }
@@ -2723,12 +2723,12 @@ function MarkSchemeDialog({
                 >
                   <div className="flex items-center gap-2">
                     {label && (
-                      <span className="rounded-md bg-muted px-2 py-0.5 text-[13px] font-semibold">
+                      <span className="rounded-md bg-muted px-2 py-0.5 text-xs font-semibold">
                         {label}
                       </span>
                     )}
                     {/* SME (figure 16): part marks right-aligned in the scheme row */}
-                    <span className="ml-auto text-[13px] text-muted-foreground">
+                    <span className="ml-auto text-xs text-muted-foreground">
                       {p.marks} mark{p.marks === 1 ? "" : "s"}
                     </span>
                   </div>
@@ -2747,18 +2747,18 @@ function MarkSchemeDialog({
                     // t-ui-polish run-007: the typed-answer shell speaks the
                     // house active voice (border-primary/60), not the legacy /40.
                     <div className="rounded-md border border-dashed border-primary/60 bg-primary/5 p-3">
-                      <p className="mb-1 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-primary">
+                      <p className="mb-1 flex items-center gap-1.5 text-2xs font-medium uppercase tracking-wide text-primary">
                         <PenLine className="size-3" aria-hidden /> Your typed answer
                       </p>
-                      <p className="whitespace-pre-wrap text-[13px] leading-relaxed">{typed}</p>
-                      <p className="mt-1.5 text-[11px] text-muted-foreground">
+                      <p className="whitespace-pre-wrap text-xs leading-relaxed">{typed}</p>
+                      <p className="mt-1.5 text-2xs text-muted-foreground">
                         Compare it with the marking points below — award yourself the marks you clearly earned.
                       </p>
                     </div>
                   )}
                   {p.solutionMd && (
                     <div className="border-t pt-3">
-                      <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                      <p className="mb-1.5 text-2xs font-medium uppercase tracking-wide text-muted-foreground">
                         The completed answer should show:
                       </p>
                       {selfScored || revealed.has(p.id) ? (
@@ -2797,14 +2797,14 @@ function MarkSchemeDialog({
                   {p.markPoints && p.markPoints.length > 0 &&
                     p.solutionMd?.trim() !== p.markPoints[0]?.textMd?.trim() && (
                     <div className="border-t pt-3">
-                      <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                      <p className="mb-1.5 text-2xs font-medium uppercase tracking-wide text-muted-foreground">
                         Official mark scheme points
                       </p>
                       <ul className="space-y-1.5">
                         {p.markPoints.map((mp) => (
-                          <li key={mp.id} className="flex items-start gap-2 text-[13px] leading-relaxed">
+                          <li key={mp.id} className="flex items-start gap-2 text-xs leading-relaxed">
                             <span
-                              className="mt-0.5 shrink-0 rounded bg-muted px-1.5 py-0.5 text-[11px] font-semibold tabular-nums text-muted-foreground"
+                              className="mt-0.5 shrink-0 rounded bg-muted px-1.5 py-0.5 text-2xs font-semibold tabular-nums text-muted-foreground"
                               title={`${mp.marks} mark${mp.marks === 1 ? "" : "s"}`}
                             >
                               {mp.id}

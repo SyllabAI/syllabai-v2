@@ -19,6 +19,11 @@
   --font-sans: var(--app-font-sans);
   --font-mono: var(--app-font-mono);
   --font-display: var(--app-font-display);
+  /* T-HUB-AUDITFIX-1 run-003 — the sanctioned micro rung: 11px under
+     text-xs for badges/kickers/meta. Arbitrary px text sizes are retired;
+     anything smaller than 11px fails the review, not the build. */
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1rem;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -69,6 +74,16 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* ── The border-opacity ladder (T-HUB-AUDITFIX-1 run-001) ────────────────
+   Alpha-modified primary borders follow three sanctioned tiers — pick by
+   role, never by taste:
+     /30  REST      tinted callouts (border-primary/30 + bg-primary/5) and
+                    card rest states that lift to /60 on hover
+     /50  FOCUS     composer focus-within only (border-primary/50 +
+                    ring-2 ring-primary/15) — one voice across composers
+     /60  INTERACT  hover, selected, status chips — the house hover voice
+   Any other alpha (/20 /25 /40 …) is a stray: normalize to the nearest
+   tier in the same commit that introduces it. */
 :root {
   --radius: 0.625rem;
   /* font chains (runtime vars — themes re-point these) */
@@ -922,9 +937,12 @@
   /* geometry — soft, contained (pins below give the exact 10/18/28) */
   --radius: 28px;
 
-  /* fonts — Inter does everything (Law 8: one family, weight-driven) */
-  --app-font-sans: var(--font-inter), "Segoe UI", "Helvetica Neue", sans-serif;
-  --app-font-display: var(--font-inter), "Segoe UI", "Helvetica Neue", sans-serif;
+  /* fonts — Plus Jakarta Sans everywhere (T-HUB-AUDITFIX-1 run-002: plum
+     swaps off Inter to the default theme's body face — one family,
+     weight-driven, per Law 8; the pinned Inter woff2 stays committed per
+     the T-C36 bytes law but no theme references it anymore). */
+  --app-font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --app-font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
 
   color-scheme: light;
 }

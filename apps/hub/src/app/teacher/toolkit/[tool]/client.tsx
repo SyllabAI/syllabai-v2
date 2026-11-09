@@ -309,7 +309,7 @@ export function ToolkitToolClient({
                 setFreeTopic(g.topicTitle);
               }}
               title={`${g.untaughtCount} of ${g.totalCount} spec points not yet taught`}
-              className="rounded-full border px-2.5 py-0.5 text-[11px] text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+              className="rounded-full border px-2.5 py-0.5 text-2xs text-muted-foreground hover:bg-muted/60 hover:text-foreground"
             >
               {g.topicTitle} · {g.untaughtCount}/{g.totalCount} not taught
             </button>
@@ -576,16 +576,16 @@ export function ToolkitToolClient({
         <section aria-label="Generated document" data-print-root className="space-y-3">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="text-sm font-semibold">Generated document</h2>
-            <Badge variant="outline" className="text-[10px] font-normal">
+            <Badge variant="outline" className="text-2xs font-normal">
               {result.model}
               {result.providerName ? ` · ${result.providerName}` : ""}
             </Badge>
             {result.elapsedMs > 0 && (
-              <Badge variant="outline" className="text-[10px] font-normal">
+              <Badge variant="outline" className="text-2xs font-normal">
                 {(result.elapsedMs / 1000).toFixed(1)}s
               </Badge>
             )}
-            <Badge variant="secondary" className="text-[10px] font-normal">
+            <Badge variant="secondary" className="text-2xs font-normal">
               AI draft — review before use
             </Badge>
           </div>
@@ -651,7 +651,7 @@ export function ToolkitToolClient({
                     : "(stored document)"}
                 </span>
                 {row.status === "FAILED" && (
-                  <Badge variant="destructive" className="shrink-0 text-[10px] font-normal">
+                  <Badge variant="destructive" className="shrink-0 text-2xs font-normal">
                     failed
                   </Badge>
                 )}
