@@ -1,6 +1,6 @@
 # DC10 — Tutor upgrade: keep the grounding, add the aim (T-TUTOR-AIM-1)
 
-**Status:** proposed, not started · **Date:** 2026-11-09 · **Provenance:** operator-directed upgrade study — learnharness mechanism analysis → internal v1/v2/v3 proposal → adversarial external review (Claude, relayed by operator, 2026-11) + GLM substitute review · **Trace:** 1a1bcaac733073a1 · **Succeeds:** DC7 / DC9 (tutor retrieval, pivot, refusal — untouched; this plan layers above them)
+**Status:** proposed, not started · **Date:** 2026-11-09 · **Provenance:** operator-directed upgrade study — learnharness mechanism analysis → internal v1/v2/v3 proposal → adversarial external review (Claude, relayed by operator, 2026-11) + GLM substitute review + ai-memory governance review (hardening only, 2026-11) · **Trace:** 1a1bcaac733073a1 · **Succeeds:** DC7 / DC9 (tutor retrieval, pivot, refusal — untouched; this plan layers above them)
 
 ## 1. Thesis
 
@@ -44,6 +44,9 @@ time and is therefore rationed to one optional post-answer probe.
 5. **External review (Claude, relayed by operator)** — the decisive input.
    Its full text lives in operator chat; §9 carries the condensed decision
    log with the load-bearing quotes.
+6. **ai-memory governance review** (akitaonrails/ai-memory, MIT, 2026-11) —
+   a post-approval hardening pass, not a mechanism source: no mechanism
+   adopted, three governance patterns adopted as §13.
 
 Convergence rule applied: where at least two of the three reviews converged
 independently, adopted; where they split, the operator's phasing directive
@@ -359,6 +362,61 @@ ledger-covered nodes vs uncovered nodes, directional only, no causal claim.
    priori.
 6. Worked-example fading (external review's surfaced item) — parked; only
    meaningful once §7.5 ships.
+
+## 13. Hardening amendments (ai-memory review, 2026-11-09)
+
+Post-approval review of akitaonrails/ai-memory (MIT-licensed Rust
+agent-memory layer, v3.4.4). Different problem class — one operator's
+context across disposable coding-agent sessions, stored as an
+LLM-consolidated prose wiki — versus one learner's structured,
+ground-truth-backed state; its storage model is exactly what §5.3/§5.4
+already rejected for learner memory. **No mechanism adopted.** Three
+governance patterns adopted as amendments below; all lint-or-wording,
+zero new LLM calls, zero schema changes.
+
+### 13.1 Prompt instruction budget (governs the §7.2/§7.3/§7.5 bumps)
+
+Reliable instruction-follow tops out around 150–200 instructions; past
+~200 lines measured adherence drops by more than 30%, and the drop hits
+the load-bearing rules too — prompt bloat weakens the laws that already
+matter. DC10 adds law text to pinned prompts in every phase, so:
+
+- each pinned tutor prompt carries a hard imperative-line budget,
+  enforced by a build-time lint that fails the bump over cap;
+- admission test per line: "would removing this cause a mistake?" — if
+  no, it is retrieval knowledge, not prompt law;
+- promotion is subtractive: admitting a law names the law it replaces or
+  evicts; a bump never grows the budget silently.
+
+### 13.2 Offer-not-claim nudge semantics (governs §7.6 and §7.8)
+
+The probe, the drill-scheduling directive and the Teach SillyAI handoff
+are OFFERS: they claim nothing and consume nothing until the learner's
+explicit tap. Ambient surfaces carry metadata only (count, node id,
+availability) — never learner-derived free text, which stays behind the
+explicit accept; this sharpens the §11.1 injection law (node IDs, never
+free-text readings). A claimable artefact (e.g. one scheduled drill set)
+is claimed exactly once under two independent state guards, so a
+re-render cannot double-schedule it.
+
+### 13.3 Gate taxonomy: mechanism evidence ≠ default-on (governs §6 and §10)
+
+Two separable decisions, never collapsed: (a) the mechanism passed its
+benchmark, (b) the mechanism ships default-on and its copy is frozen.
+DC10's retirement tests prove (a); (b) is a separate bump with its own
+byte-equality test. A passing measurement never silently implies a
+default flip or a prompt-copy change.
+
+### 13.4 Parked, explicitly not adopted
+
+Verbatim residue for budgeted projections: when a bounded projection
+drops items, regex-mine literal tokens (quantities, units, command words,
+spec codes) from exactly the dropped text and append them as a bounded
+zero-LLM block, byte-identical when off. Plausible refinement for long
+quantitative threads under the 4-turn/1200-char working-memory blend;
+parked because DC7/DC9 already own the retrieval-side pollution and this
+is a refinement, not a lever. Revisit only if live multi-turn threads
+show lost quantities mattering.
 
 ## Appendix A — the consultation brief (reconstructed)
 

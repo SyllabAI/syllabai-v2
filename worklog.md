@@ -2006,6 +2006,35 @@ Stage Summary:
 - Merge order: run-013 (bb43a0c8..313ea2bd + merge b78e4397) then this branch; both are run-009 queue discharges. Zero src bytes, zero code, zero spec-point/stamp bytes; author does not self-merge.
 - Receipt: .syllabai/receipts/RN-DEBRIS-11/run-014-edexcel-rowlabel-titles.json; artifacts: .syllabai/lane-artifacts/RN-DEBRIS-11/run014_* + run014docs/. Branch lane/rn-debris-11-run-014-edexcel-rowlabel-titles stacked on run-013 tip b78e4397 (which race-guard-merges origin/main 42c1471e).
 
+## t-ugm-link-fix run-007 (2026-11-09) — OPTIONAL-1 re-consume lane (operator order trace 1a1bfa803d7c9d4d) lands as NULL-DELTA VERIFICATION + CORRECTION OF RECORD; zero content changes
+
+- THE FINDING OF RECORD: run-004's "22 upstream-only figures the hub never imported" is
+  DISPROVEN — the hub bodies already carry 12/3/12 = 27 figure refs across the three notes,
+  basename-identical to upstream at BOTH pins (aa0b4de1 AND 1a5c37bc; upstream ref-lists
+  identical across pins; 0 missing). Nothing to resurrect; no re-consume owed on the figure
+  plane.
+- THE ROOT CAUSE OF THE "22": run-004's UPSTREAM SUPERSET disclosure counted RELATIVE-FORM
+  refs only (12 vs 2, 3 vs 1, 12 vs 2) and was blind to the hub's pre-existing ABSOLUTE
+  hotlinks (10/2/10 at the aa0b4de1 vintage — corroborated by run-004's own diff carrying 686
+  pre-existing aa0b4de1 hotlinks in the macbeth file). Form difference, not presence
+  difference. This correction supersedes the run-006 OPTIONAL-1 facts (run-006 quoted run-004
+  verbatim; the re-derivation law was stated but first executed THIS run).
+- EVIDENCE: balanced-bracket parser (the SME nested-bracket alt class run-004 itself flagged —
+  a naive regex undercounts 2/1/2); ground truth = asset FILENAME not URL form; upstream .md
+  fetched via raw at both pins after tree-correcting the upstream layout
+  (SME-RevisionNotes/<course>/notes/<hub-path> — first attempt 404'd, disclosed); TEXT PARITY:
+  hub = upstream after the documented consume transforms (front-matter strip, spcpt_* -> hub
+  spec codes) + 3 whitespace microvariants (ionic) — zero missing text; LIVE BATTERY 27/27
+  figure URLs GET 200 (21 image-magic + 6 WebP-as-.png upstream quirk, content-type
+  image/png, sizes verified — zero hub impact).
+- HYGIENE (not a defect): mixed consume pins in these bodies (aa0b4de1 vintage + run-004's
+  1a5c37bc absolutizations), all resolve 200; corpus-wide single-pin consolidation = separate
+  optional lane, NOT dispatched.
+- DISPOSITION: OPTIONAL-1 CLOSED (null-delta, correction filed); OPTIONAL-2 (run-003's
+  309-suspect citation-hygiene class) remains the only open optional of the band. Receipt:
+  .syllabai/receipts/t-ugm-link-fix/run-007-reconsume-null-delta-correction-r0.json.
+  Ledger-only (receipt + both worklogs; zero code/content). fetch-first, no force.
+
 ## T-SME-SEL-W4-1 run-001 (2026-11-09) — SME picker layer for the Exam Questions selector, wave 4 (cie-igcse-biology-23 + the three co-ordinated-sciences-double-award-23 slices) — the double-award wave
 
 - Operator order: "bless #886 and #890 (whoever lands second gets a routine worklog union), then wave 4 (cie-igcse-biology-23 + double-award slices)". Both blesses verified merged of record: #886 cosmetics 09:58:31Z (4391c269), #890 wave-3 chem-23 10:05:46Z (fd937b24) — #890 landed second and its head ba333b85 already carried the routine worklog union of main 4391c269; union verified zero-loss on main (both worklogs carry the COSM-1 tail and the W3-1 entry, nothing dropped). Wave 4 takes the next census-queue stratum: CIE IGCSE Biology 0610 (54 sets) + the three Science Co-ordinated Sciences (Double Award) 0973 slices (19/26/21 sets).
