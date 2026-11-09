@@ -67,7 +67,7 @@ export function EntityTileCard({
         {(eyebrow || badge) && (
           <div className="flex items-center justify-between gap-2">
             {eyebrow ? (
-              <p className="min-w-0 truncate text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+              <p className="min-w-0 truncate text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
                 {eyebrow}
               </p>
             ) : (

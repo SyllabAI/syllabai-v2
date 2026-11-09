@@ -167,14 +167,14 @@ export function TopicTree({
               onClick={() => toggle(topic.code)}
               aria-expanded={isOpen}
               className={cn(
-                "flex w-full items-center gap-2 rounded-md px-2 py-2 text-left text-[13px] transition-colors hover:bg-muted",
+                "flex w-full items-center gap-2 rounded-md px-2 py-2 text-left text-xs transition-colors hover:bg-muted",
                 activeTopic === topic.code && "bg-muted",
               )}
             >
               <span className="size-4 shrink-0 rounded-full border-2 border-muted-foreground/25" aria-hidden />
               <span className="min-w-0 flex-1">
                 <NumberedLabel number={topic.number} title={topic.title} />
-                <span className="block text-[11px] text-foreground/70">
+                <span className="block text-2xs text-foreground/70">
                   {subCount} Topics · {metaRight}
                   {shownTopicPercent > 0 ? ` · ${formatPercent(shownTopicPercent)}` : ""}
                 </span>
@@ -271,7 +271,7 @@ export function TopicTree({
                                 className={cn(
                                   // flex: the count span must sit beside the title,
                                   // not flow inline after it ("matter5 notes", P2-8)
-                                  "flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-1.5 text-[13px] transition-colors",
+                                  "flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-1.5 text-xs transition-colors",
                                   isActive
                                     ? "font-medium text-primary"
                                     : "text-foreground/75 hover:bg-muted hover:text-foreground",
@@ -284,7 +284,7 @@ export function TopicTree({
                               // row counts EVERY set's questions, so silently
                               // opening the first one mislinked it. Expand instead.
                               <div
-                                className="flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-1.5 text-[13px] text-foreground/75"
+                                className="flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-1.5 text-xs text-foreground/75"
                               >
                                 {row}
                               </div>
@@ -348,7 +348,7 @@ export function TopicTree({
                           href={href}
                           aria-current={activeSubtopic === sub.code ? "true" : undefined}
                           className={cn(
-                            "flex items-center gap-2 rounded-md px-2 py-1.5 text-[13px] transition-colors",
+                            "flex items-center gap-2 rounded-md px-2 py-1.5 text-xs transition-colors",
                             activeSubtopic === sub.code
                               ? "bg-primary/10 font-medium text-primary"
                               : "text-foreground/75 hover:bg-muted hover:text-foreground",
@@ -359,7 +359,7 @@ export function TopicTree({
                       ) : (
                         <span
                           title="No resources for this sub-topic in the corpus yet"
-                          className="flex items-center gap-2 rounded-md px-2 py-1.5 text-[13px] text-muted-foreground"
+                          className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground"
                         >
                           {row}
                         </span>

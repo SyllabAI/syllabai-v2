@@ -29,13 +29,13 @@ export function MockResultsStrip({ course }: { course: string }) {
       <div className="flex items-center gap-2">
         <Timer className="size-4 text-primary" aria-hidden />
         <h2 className="text-sm font-semibold">Your recent mocks</h2>
-        <span className="text-[11px] text-muted-foreground">
+        <span className="text-2xs text-muted-foreground">
           {identity ? "saved to your account" : "saved in this browser only"}
         </span>
         <Button
           size="sm"
           variant="ghost"
-          className="ml-auto h-7 gap-1 px-2 text-[11px] text-muted-foreground"
+          className="ml-auto h-7 gap-1 px-2 text-2xs text-muted-foreground"
           onClick={() => clearMockResults(course)}
         >
           <Trash2 className="size-3" aria-hidden />
@@ -48,8 +48,8 @@ export function MockResultsStrip({ course }: { course: string }) {
             key={r.id}
             className="w-44 shrink-0 snap-start rounded-lg border bg-background p-2.5 text-xs"
           >
-            <p className="truncate font-mono text-[11px] font-semibold">{r.ref}</p>
-            <p className="mt-0.5 text-[10px] text-muted-foreground">
+            <p className="truncate font-mono text-2xs font-semibold">{r.ref}</p>
+            <p className="mt-0.5 text-2xs text-muted-foreground">
               {new Date(r.finishedAt).toLocaleDateString()} · {formatSpent(r.timeUsedSec)} spent
               {r.ended === "time-up" ? " · time-up" : ""}
             </p>
@@ -57,7 +57,7 @@ export function MockResultsStrip({ course }: { course: string }) {
               {r.marks}
               <span className="text-xs font-normal text-muted-foreground"> / {r.total}</span>
               <span
-                className={`ml-1.5 text-[11px] font-medium ${
+                className={`ml-1.5 text-2xs font-medium ${
                   pct(r) >= 50 ? "text-success" : "text-destructive"
                 }`}
               >
@@ -69,7 +69,7 @@ export function MockResultsStrip({ course }: { course: string }) {
           </li>
         ))}
       </ul>
-      <p className="mt-1 text-[10px] text-muted-foreground">
+      <p className="mt-1 text-2xs text-muted-foreground">
         Mock grading is self-marked against the official mark scheme — your own tally, not a
         canonical marked result.
       </p>

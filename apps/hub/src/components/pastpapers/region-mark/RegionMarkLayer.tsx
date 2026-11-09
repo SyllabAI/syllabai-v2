@@ -334,7 +334,7 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
             succeeded mark. Hidden while zero marks exist. */}
         {paperTotals && (
           <span
-            className="rounded-full border bg-background/95 px-2 py-0.5 text-[11px] font-medium tabular-nums text-emerald-700 shadow-sm backdrop-blur"
+            className="rounded-full border bg-background/95 px-2 py-0.5 text-2xs font-medium tabular-nums text-emerald-700 shadow-sm backdrop-blur"
             title="Your AI-marked total for this paper (from the award ledger)"
           >
             Marked {paperTotals.score}/{paperTotals.max}
@@ -391,7 +391,7 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
                     onClick={() => void markRegion(region, page)}
                   >
                     {awarded && (
-                      <span className="absolute -top-2.5 right-1 rounded-full bg-emerald-600 px-1.5 py-px text-[10px] font-semibold leading-tight text-white shadow">
+                      <span className="absolute -top-2.5 right-1 rounded-full bg-emerald-600 px-1.5 py-px text-2xs font-semibold leading-tight text-white shadow">
                         {awarded.score}/{awarded.max}
                       </span>
                     )}
@@ -418,7 +418,7 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
                           height: `${rect.height * 100}%`,
                         }}
                       >
-                        <span className="absolute -top-2.5 right-1 rounded-full bg-emerald-600 px-1.5 py-px text-[10px] font-semibold leading-tight text-white shadow">
+                        <span className="absolute -top-2.5 right-1 rounded-full bg-emerald-600 px-1.5 py-px text-2xs font-semibold leading-tight text-white shadow">
                           {total.score}/{total.max}
                         </span>
                       </div>
@@ -546,12 +546,12 @@ function PanelBody({
         <Check className="size-4" aria-hidden /> {totals.score} / {totals.max} marks
       </p>
       {attemptClass && (
-        <p className="text-[11px] text-muted-foreground">
+        <p className="text-2xs text-muted-foreground">
           Attempt read as: {attemptClass}
         </p>
       )}
       {snap.awards && snap.awards.length > 0 && (
-        <ul className="space-y-0.5 text-[13px]">
+        <ul className="space-y-0.5 text-xs">
           {snap.awards.map((a) => (
             <li key={`${a.ordinal}-${a.code}`} className="flex items-baseline justify-between gap-2">
               <span>
@@ -567,7 +567,7 @@ function PanelBody({
       {/* T-MG-MARK-DELTA-1 (the citation pin): the evidence pointers of the
           verdict, rendered as the honest panel's own voice. */}
       {snap.awards?.some((a) => a.workingRefLabel) && (
-        <ul className="space-y-0.5 text-[11px] text-muted-foreground">
+        <ul className="space-y-0.5 text-2xs text-muted-foreground">
           {snap.awards
             .filter((a) => a.workingRefLabel)
             .map((a) => (
@@ -577,9 +577,9 @@ function PanelBody({
             ))}
         </ul>
       )}
-      {copy && copy.chatMessage.length > 0 && <Markdown className="text-[13px]">{copy.chatMessage}</Markdown>}
+      {copy && copy.chatMessage.length > 0 && <Markdown className="text-xs">{copy.chatMessage}</Markdown>}
       {copy && copy.scored.length > 0 && (
-        <div className="text-[13px]">
+        <div className="text-xs">
           <p className="font-medium">Scored</p>
           <ul className="list-disc pl-4">
             {copy.scored.map((p, i) => (
@@ -589,7 +589,7 @@ function PanelBody({
         </div>
       )}
       {copy && copy.notScored.length > 0 && (
-        <div className="text-[13px]">
+        <div className="text-xs">
           <p className="font-medium">Not scored</p>
           <ul className="list-disc pl-4">
             {copy.notScored.map((p, i) => (
@@ -599,7 +599,7 @@ function PanelBody({
         </div>
       )}
       {copy && copy.strategies && (
-        <div className="text-[13px]">
+        <div className="text-xs">
           <p className="font-medium">How to improve</p>
           <ul className="list-disc pl-4">
             {copy.strategies.map((p, i) => (
@@ -609,19 +609,19 @@ function PanelBody({
         </div>
       )}
       {snap.transcription && (
-        <details className="text-[13px]">
+        <details className="text-xs">
           <summary className="cursor-pointer text-muted-foreground">Your working (transcribed)</summary>
           <p className="mt-1 whitespace-pre-wrap">{snap.transcription}</p>
         </details>
       )}
       {copy && copy.transcription && (
-        <details className="text-[13px]">
+        <details className="text-xs">
           <summary className="cursor-pointer text-muted-foreground">Marker reasoning (transcription-first)</summary>
           <p className="mt-1 whitespace-pre-wrap">{copy.transcription}</p>
         </details>
       )}
       {snap.receipt && (
-        <p className="text-[11px] text-muted-foreground">
+        <p className="text-2xs text-muted-foreground">
           {snap.receipt.cached
             ? // T-MG-MARK-DELTA-1: the identical re-mark short-circuit — the
               // standing award served from the content-hash cache (zero new

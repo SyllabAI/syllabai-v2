@@ -57,13 +57,13 @@ export function SavedQuestionsList({
                 >
                   {q.topicName}
                 </Link>
-                <p className="mt-1 line-clamp-2 text-[13px] text-muted-foreground">{q.snippet}</p>
+                <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">{q.snippet}</p>
                 <div className="mt-2 flex flex-wrap gap-1.5">
-                  <Badge variant="outline" className="text-[10px]">
+                  <Badge variant="outline" className="text-2xs">
                     {q.marks} marks
                   </Badge>
                   {q.subtopicCode && (
-                    <code className="rounded bg-muted px-1 text-[10px]">{q.subtopicCode}</code>
+                    <code className="rounded bg-muted px-1 text-2xs">{q.subtopicCode}</code>
                   )}
                 </div>
               </div>

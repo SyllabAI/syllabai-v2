@@ -120,12 +120,12 @@ export function PracticeClient({ topics }: Props) {
             <CardTitle className="flex flex-wrap items-center gap-2 text-sm">
               <Badge variant="outline">{item.topic}</Badge>
               {item.difficulty && (
-                <Badge variant="secondary" className="text-[10px]">
+                <Badge variant="secondary" className="text-2xs">
                   {item.difficulty}
                 </Badge>
               )}
               {item.part.commandWord && (
-                <Badge variant="outline" className="text-[10px] capitalize">
+                <Badge variant="outline" className="text-2xs capitalize">
                   {item.part.commandWord}
                 </Badge>
               )}
@@ -190,7 +190,7 @@ export function PracticeClient({ topics }: Props) {
 
             {revealed && (
               <div className="rounded-md border-t pt-3">
-                <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                <p className="mb-1.5 text-2xs font-medium uppercase tracking-wide text-muted-foreground">
                   Mark scheme / solution
                 </p>
                 <Markdown>{item.part.solutionMd ?? "No scheme bundled for this part."}</Markdown>
@@ -253,7 +253,7 @@ export function PracticeClient({ topics }: Props) {
                     key={`${l.partId}-${i}`}
                     className="flex items-center justify-between rounded border px-2 py-1 text-xs"
                   >
-                    <span className="font-mono text-[10px] text-muted-foreground">
+                    <span className="font-mono text-2xs text-muted-foreground">
                       {l.partId.slice(0, 14)}…
                     </span>
                     <span className={l.marks / Math.max(l.possible, 1) >= 0.5 ? "text-success" : "text-destructive"}>

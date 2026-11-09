@@ -252,7 +252,7 @@ function ChoiceList({ choices }: { choices: { label: string; textMd: string }[] 
   return (
     <ul className="mt-1.5 list-none space-y-1 pl-1">
       {choices.map((choice) => (
-        <li key={choice.label} className="text-[13px] [overflow-wrap:anywhere]">
+        <li key={choice.label} className="text-xs [overflow-wrap:anywhere]">
           <span className="font-medium">{choice.label})</span>{" "}
           <RichChoiceText text={choice.textMd} />
         </li>
@@ -330,7 +330,7 @@ function ProgressRing({ value, max }: { value: number; max: number | null }) {
           }
         />
       </svg>
-      <span className="absolute text-[9px] font-bold">{max && max > 0 ? `${Math.round(pct * 100)}%` : value}</span>
+      <span className="absolute text-2xs font-bold">{max && max > 0 ? `${Math.round(pct * 100)}%` : value}</span>
     </span>
   );
 }
@@ -1340,11 +1340,11 @@ export function TestBuilderClient({
                 All tests
               </button>
             )}
-            <Badge variant="outline" className="gap-1 text-[10px] font-normal">
+            <Badge variant="outline" className="gap-1 text-2xs font-normal">
               <ClipboardList className="size-3" aria-hidden />
               Assessment · teacher
             </Badge>
-            <Badge variant="secondary" className="text-[10px] font-normal">
+            <Badge variant="secondary" className="text-2xs font-normal">
               TEACHER_ARCHITECTURE §6
             </Badge>
           </span>
@@ -1750,7 +1750,7 @@ export function TestBuilderClient({
                   </span>
                 </p>
                 {laneSource === "live" && (
-                  <p className="mb-1.5 text-[11px] text-muted-foreground" data-testid="tb-tree-note">
+                  <p className="mb-1.5 text-2xs text-muted-foreground" data-testid="tb-tree-note">
                     Targeting is on class evidence — pick weak areas above; assembly runs on the
                     server's validated questions. Topic checkboxes resume with the sample lane.
                   </p>
@@ -1758,7 +1758,7 @@ export function TestBuilderClient({
                 <div className="max-h-64 space-y-2.5 overflow-y-auto rounded-md border p-2.5">
                   {data?.class.sections.map((section) => (
                     <div key={section.code}>
-                      <p className="text-[11px] font-semibold text-muted-foreground">
+                      <p className="text-2xs font-semibold text-muted-foreground">
                         <span className="font-mono">{section.code}</span> {section.title}
                       </p>
                       <div className="mt-0.5 space-y-0.5">
@@ -1777,7 +1777,7 @@ export function TestBuilderClient({
                             />
                             <span className="min-w-0">
                               {sub.title}{" "}
-                              <span className="text-[10px] text-muted-foreground">
+                              <span className="text-2xs text-muted-foreground">
                                 · {sub.questionCount}q · {sub.totalMarks} marks
                               </span>
                             </span>
@@ -1865,18 +1865,18 @@ export function TestBuilderClient({
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex min-w-0 flex-wrap items-center gap-1.5">
-                      <Badge variant="outline" className="h-5 px-1.5 font-mono text-[10px]">
+                      <Badge variant="outline" className="h-5 px-1.5 font-mono text-2xs">
                         [{q.marks}]
                       </Badge>
                       {q.difficulty && (
                         <Badge
                           variant="outline"
-                          className={`h-5 px-1.5 text-[10px] ${difficultyBadgeClass(q.difficulty)}`}
+                          className={`h-5 px-1.5 text-2xs ${difficultyBadgeClass(q.difficulty)}`}
                         >
                           {capDifficulty(q.difficulty)}
                         </Badge>
                       )}
-                      <span className="truncate font-mono text-[10px] text-muted-foreground">
+                      <span className="truncate font-mono text-2xs text-muted-foreground">
                         {q.subtopic.code} · {q.subtopic.title}
                       </span>
                     </div>
@@ -1911,7 +1911,7 @@ export function TestBuilderClient({
                     </div>
                   </div>
                   <div className={expanded ? "mt-2" : "mt-2 line-clamp-3"}>
-                    <Markdown className="text-[13px] [overflow-wrap:anywhere] [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+                    <Markdown className="text-xs [overflow-wrap:anywhere] [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
                       {q.parts[0]?.problemMd ?? ""}
                     </Markdown>
                   </div>
@@ -1925,12 +1925,12 @@ export function TestBuilderClient({
                         return next;
                       })
                     }
-                    className="mt-1 text-[11px] font-medium text-primary underline underline-offset-2 hover:text-primary/80"
+                    className="mt-1 text-2xs font-medium text-primary underline underline-offset-2 hover:text-primary/80"
                   >
                     {expanded ? "Show less" : "Show question"}
                   </button>
                   {q.parts.length > 1 && (
-                    <span className="ml-2 text-[10px] text-muted-foreground">
+                    <span className="ml-2 text-2xs text-muted-foreground">
                       {q.parts.length} part{q.parts.length === 1 ? "" : "s"}
                     </span>
                   )}
@@ -2134,7 +2134,7 @@ export function TestBuilderClient({
             }`}
           >
             {test && pdf.copy === "teacher" && (
-              <p className="rounded bg-muted/50 px-3 py-1.5 text-[10px] text-muted-foreground print:hidden">
+              <p className="rounded bg-muted/50 px-3 py-1.5 text-2xs text-muted-foreground print:hidden">
                 Teacher copy — spec codes, sources and the mark scheme are on the paper. Switch to
                 the student copy in “Download PDF” for the clean handout.
               </p>
@@ -2189,7 +2189,7 @@ export function TestBuilderClient({
                 </DndContext>
 
                 {pdf.copy === "teacher" && (
-                  <footer className="border-t pt-2 text-[10px] leading-relaxed text-muted-foreground">
+                  <footer className="border-t pt-2 text-2xs leading-relaxed text-muted-foreground">
                     Assembled by the SyllabAI Hub Test Builder from the committed, validated
                     question corpus — every part cites its spec points and source paper. No
                     AI-generated content is included. Assembled{" "}
@@ -2227,7 +2227,7 @@ export function TestBuilderClient({
                     <div className="mt-2 space-y-2 pl-3">
                       {q.parts.map((p) => (
                         <div key={`scheme-${p.id}`}>
-                          <p className="text-[11px] font-medium text-muted-foreground">
+                          <p className="text-2xs font-medium text-muted-foreground">
                             ({String.fromCharCode(97 + p.order)}) [{p.marks}]
                             {p.sourcePaper &&
                               (p.sourcePaper.date || p.sourcePaper.number) &&
@@ -2236,7 +2236,7 @@ export function TestBuilderClient({
                                 .join(" ")}`}
                           </p>
                           {p.solutionMd ? (
-                            <Markdown className="text-[13px] [&]:[overflow-wrap:anywhere]">
+                            <Markdown className="text-xs [&]:[overflow-wrap:anywhere]">
                               {p.solutionMd}
                             </Markdown>
                           ) : (
@@ -2326,18 +2326,18 @@ export function TestBuilderClient({
           {viewing && (
             <div className="space-y-3">
               <div className="flex flex-wrap items-center gap-1.5">
-                <Badge variant="outline" className="h-5 px-1.5 font-mono text-[10px]">
+                <Badge variant="outline" className="h-5 px-1.5 font-mono text-2xs">
                   [{viewing.marks}]
                 </Badge>
                 {viewing.difficulty && (
                   <Badge
                     variant="outline"
-                    className={`h-5 px-1.5 text-[10px] ${difficultyBadgeClass(viewing.difficulty)}`}
+                    className={`h-5 px-1.5 text-2xs ${difficultyBadgeClass(viewing.difficulty)}`}
                   >
                     {capDifficulty(viewing.difficulty)}
                   </Badge>
                 )}
-                <span className="font-mono text-[10px] text-muted-foreground">
+                <span className="font-mono text-2xs text-muted-foreground">
                   {viewing.subtopic.code} · {viewing.subtopic.title}
                 </span>
               </div>
@@ -2557,7 +2557,7 @@ function PositionInput({
       defaultValue={index + 1}
       aria-label={`Move question ${index + 1} to position (1–${total})`}
       title={`Type a position (1–${total}), press Enter to move this question there`}
-      className="h-6 w-11 rounded-md border border-input bg-transparent px-1 text-center font-mono text-[11px] tabular-nums outline-none focus-visible:ring-2 focus-visible:ring-ring print:hidden"
+      className="h-6 w-11 rounded-md border border-input bg-transparent px-1 text-center font-mono text-2xs tabular-nums outline-none focus-visible:ring-2 focus-visible:ring-ring print:hidden"
       onBlur={(e) => {
         const n = Number.parseInt(e.currentTarget.value, 10);
         if (!Number.isNaN(n) && n >= 1 && n <= total && n - 1 !== index) onCommit(n - 1);
@@ -2658,7 +2658,7 @@ function TestQuestion({
         </p>
         <span className="flex shrink-0 items-center gap-0.5 print:hidden">
           {!forStudent && (
-            <span className="mr-1 font-mono text-[10px] text-muted-foreground">
+            <span className="mr-1 font-mono text-2xs text-muted-foreground">
               {q.subtopic.code}
             </span>
           )}
@@ -2705,7 +2705,7 @@ function TestQuestion({
                 ({String.fromCharCode(97 + p.order)}){" "}
                 {p.commandWord && <span className="normal-case">{p.commandWord}</span>}
                 {!forStudent && p.specPointCodes.length > 0 && (
-                  <span className="ml-1 font-mono text-[10px]">
+                  <span className="ml-1 font-mono text-2xs">
                     · {p.specPointCodes.join(", ")}
                   </span>
                 )}
@@ -2721,7 +2721,7 @@ function TestQuestion({
               (p.sourcePaper.date ||
                 p.sourcePaper.number ||
                 p.sourcePaper.questionNumber !== null) && (
-                <p className="mt-1 text-[10px] text-muted-foreground">
+                <p className="mt-1 text-2xs text-muted-foreground">
                   source:{" "}
                   {[p.sourcePaper.date, p.sourcePaper.number].filter(Boolean).join(" paper ")}
                   {p.sourcePaper.questionNumber !== null &&
@@ -2744,7 +2744,7 @@ function TestQuestion({
                 <div className="mt-1 space-y-2 pl-3">
                   {q.parts.map((kp) => (
                     <div key={`key-${kp.id}`}>
-                      <p className="text-[11px] font-medium text-muted-foreground">
+                      <p className="text-2xs font-medium text-muted-foreground">
                         ({String.fromCharCode(97 + kp.order)}) [{kp.marks}]
                         {kp.sourcePaper &&
                           (kp.sourcePaper.date || kp.sourcePaper.number) &&

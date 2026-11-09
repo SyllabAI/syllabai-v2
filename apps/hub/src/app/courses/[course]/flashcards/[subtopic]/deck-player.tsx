@@ -365,7 +365,7 @@ export function DeckPlayer({
           <Badge
             variant="outline"
             className={cn(
-              "text-[10px]",
+              "text-2xs",
               syncMode === "account" && "border-success/30 text-success",
               syncMode === "device" && "text-muted-foreground",
               syncMode === "offline" && "border-destructive/30 text-destructive",
@@ -387,14 +387,14 @@ export function DeckPlayer({
         )}
         <div className="ml-auto flex flex-wrap items-center gap-2">
           {dueStalestFirst.length > 0 && (
-            <Badge variant="outline" className="border-warn/40 text-[10px] text-warn">
+            <Badge variant="outline" className="border-warn/40 text-2xs text-warn">
               {dueStalestFirst.length} due for review
             </Badge>
           )}
-          <Badge variant="outline" className="border-destructive/30 text-[10px] text-destructive">
+          <Badge variant="outline" className="border-destructive/30 text-2xs text-destructive">
             {stillLearning} still learning
           </Badge>
-          <Badge variant="outline" className="border-success/30 text-[10px] text-success">
+          <Badge variant="outline" className="border-success/30 text-2xs text-success">
             {know} know
           </Badge>
           {/* DC-11 player filters — a property of the session player, not
@@ -405,7 +405,7 @@ export function DeckPlayer({
               <Button size="sm" variant="ghost" className="gap-1.5 text-xs">
                 <ListFilter className="size-3.5" aria-hidden /> Filters
                 {activeTerms > 0 && (
-                  <span className="ml-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-semibold leading-none text-primary-foreground tabular-nums">
+                  <span className="ml-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-2xs font-semibold leading-none text-primary-foreground tabular-nums">
                     {activeTerms}
                   </span>
                 )}
@@ -519,13 +519,13 @@ export function DeckPlayer({
       >
         <CardContent className="flex min-h-64 flex-col justify-between gap-4 p-6">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <Badge variant="outline" className="text-[10px]">
+            <Badge variant="outline" className="text-2xs">
               {current.provenanceTier}
             </Badge>
             {scheduleById.get(current.id)?.due && (
               <Badge
                 variant="outline"
-                className="text-[10px] border-warn/40 text-warn"
+                className="text-2xs border-warn/40 text-warn"
                 title="Your rating trail says this card is due for review again"
               >
                 due for review

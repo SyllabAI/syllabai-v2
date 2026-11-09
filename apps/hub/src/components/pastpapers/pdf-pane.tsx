@@ -1927,9 +1927,9 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
               inputMode="numeric"
               aria-label={`Page number of ${numPages}`}
               title={`Go to page (1–${numPages})`}
-              className="h-7 w-9 rounded-md bg-transparent text-center font-mono text-[11px] tabular-nums outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
+              className="h-7 w-9 rounded-md bg-transparent text-center font-mono text-2xs tabular-nums outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
             />
-            <span className="pointer-events-none font-mono text-[11px] tabular-nums text-muted-foreground">
+            <span className="pointer-events-none font-mono text-2xs tabular-nums text-muted-foreground">
               / {numPages}
             </span>
             <Button
@@ -2092,7 +2092,7 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
             className="h-9 w-32 bg-transparent text-xs outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] sm:w-44"
           />
           <span
-            className="whitespace-nowrap px-0.5 text-[11px] tabular-nums text-muted-foreground"
+            className="whitespace-nowrap px-0.5 text-2xs tabular-nums text-muted-foreground"
             aria-live="polite"
           >
             {findCountLabel}
@@ -2213,7 +2213,7 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
               </div>
             ));
           })()}
-          <p className="pb-2 pt-1 text-center text-[10px] text-muted-foreground">
+          <p className="pb-2 pt-1 text-center text-2xs text-muted-foreground">
             End of document · {numPages} page{numPages === 1 ? "" : "s"}
           </p>
         </div>

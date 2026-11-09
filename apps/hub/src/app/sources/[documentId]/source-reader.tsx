@@ -235,7 +235,7 @@ function SourceReaderInner() {
       {state.status === "ready" && !pending && !openingHref && (
         <>
           <div className="mb-6 space-y-1.5">
-            <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+            <p className="flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
               <FileText className="size-3.5 shrink-0" aria-hidden />
               Source · {kindLabel(state.doc.kind)}
             </p>

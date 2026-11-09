@@ -193,7 +193,7 @@ export function StrengthCheckFlow({ documentId, unit, unitLabel, checks }: FlowP
                       reveal ? "cursor-default" : "",
                     ].join(" ")}
                   >
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-[11px] font-semibold">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-2xs font-semibold">
                       {o.label}
                     </span>
                     <span className="min-w-0 flex-1">{o.text}</span>

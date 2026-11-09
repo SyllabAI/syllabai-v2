@@ -841,7 +841,7 @@ export function MarkingConsoleClient() {
                                   </span>
                                 )}
                                 <span
-                                  className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${
+                                  className={`rounded-full px-2 py-0.5 text-2xs font-medium ${
                                     stateBadgeClass[item.answer.markingState] ?? ""
                                   }`}
                                 >

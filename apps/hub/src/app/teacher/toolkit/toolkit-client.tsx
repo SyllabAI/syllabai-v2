@@ -186,7 +186,7 @@ export function ToolkitClient({
         title={
           <span className="flex flex-wrap items-center gap-2">
             Teaching Toolkit
-            <Badge variant="outline" className="text-[10px] font-normal">
+            <Badge variant="outline" className="text-2xs font-normal">
               Phase 3
             </Badge>
             <QuotaBadge quota={quota} />
@@ -321,7 +321,7 @@ export function ToolkitClient({
                       {resourceLabel(row)}
                     </span>
                     {row.status === "FAILED" && (
-                      <Badge variant="destructive" className="shrink-0 text-[10px] font-normal">
+                      <Badge variant="destructive" className="shrink-0 text-2xs font-normal">
                         failed
                       </Badge>
                     )}

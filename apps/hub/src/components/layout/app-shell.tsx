@@ -269,7 +269,7 @@ export function AppShell({
                       <t.icon className="size-4" aria-hidden />
                       <span className="flex-1">{t.label}</span>
                       {"desc" in t && t.desc && (
-                        <span className="text-[11px] text-muted-foreground">{t.desc}</span>
+                        <span className="text-2xs text-muted-foreground">{t.desc}</span>
                       )}
                       {active && <Check className="size-3.5 text-primary" aria-hidden />}
                     </Link>
@@ -497,7 +497,7 @@ export function AppShell({
       <footer className="mx-auto w-full max-w-6xl px-4 pb-10 sm:px-6 lg:px-8 print:hidden">
         <div className="flex flex-wrap items-center gap-1.5 border-t pt-4">
           <ThemeToggle variant="row" />
-          <span className="text-[11px] text-muted-foreground">
+          <span className="text-2xs text-muted-foreground">
             Every note, question and flashcard is written against the official specification and
             checked before it ships — anything not ready yet is marked as coming soon.{" "}
             {/* F-1 (frontend-flow audit): the student-safe statement stays; the

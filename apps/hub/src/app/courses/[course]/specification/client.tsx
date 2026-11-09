@@ -250,7 +250,7 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
           type="button"
           onClick={() => setOpenCode(open ? null : p.code)}
           aria-expanded={open}
-          className="inline-flex shrink-0 items-center gap-1 rounded-md border px-2 py-0.5 text-[11px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          className="inline-flex shrink-0 items-center gap-1 rounded-md border px-2 py-0.5 text-2xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
         >
           <BookOpen className="size-3" aria-hidden />
           {resourceCount(r)} resource{resourceCount(r) === 1 ? "" : "s"}
@@ -338,7 +338,7 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
                 <Filter className="size-4 text-muted-foreground" aria-hidden />
                 Scope the specification
               </CardTitle>
-              <Badge variant="outline" className="font-mono text-[10px]">
+              <Badge variant="outline" className="font-mono text-2xs">
                 {filterActive ? `${visible} / ${totalPoints}` : totalPoints} spec points
               </Badge>
             </div>
@@ -403,7 +403,7 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
                             className="flex flex-col gap-1 rounded-md px-2 py-1.5 hover:bg-muted/50"
                           >
                             <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-3">
-                              <Badge variant="outline" className="shrink-0 font-mono text-[10px]">
+                              <Badge variant="outline" className="shrink-0 font-mono text-2xs">
                                 {p.code}
                               </Badge>
                               {p.statement.items ? (
@@ -435,7 +435,7 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
                                     <Badge
                                       key={c}
                                       variant="secondary"
-                                      className="cursor-help text-[10px]"
+                                      className="cursor-help text-2xs"
                                     >
                                       {c}
                                     </Badge>

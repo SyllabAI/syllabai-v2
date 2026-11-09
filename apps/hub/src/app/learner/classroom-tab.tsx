@@ -115,16 +115,16 @@ export function ClassroomTab() {
                     that predates T-TEACH-002 serves no features block — the
                     honest render is NO badge, never a false "off". */}
                 {!c.features?.tutor && (
-                  <span className="text-[10px] text-muted-foreground">· tutor off</span>
+                  <span className="text-2xs text-muted-foreground">· tutor off</span>
                 )}
                 {!c.features?.cla && (
-                  <span className="text-[10px] text-muted-foreground">· fact-check off</span>
+                  <span className="text-2xs text-muted-foreground">· fact-check off</span>
                 )}
                 {!c.features?.smartMark && (
-                  <span className="text-[10px] text-muted-foreground">· smart mark off</span>
+                  <span className="text-2xs text-muted-foreground">· smart mark off</span>
                 )}
                 {c.unreadAnnouncements > 0 ? (
-                  <span className="inline-flex items-center gap-0.5 rounded-full bg-primary px-1.5 text-[10px] font-semibold text-primary-foreground">
+                  <span className="inline-flex items-center gap-0.5 rounded-full bg-primary px-1.5 text-2xs font-semibold text-primary-foreground">
                     {c.unreadAnnouncements} new
                   </span>
                 ) : (
@@ -160,7 +160,7 @@ export function ClassroomTab() {
                   {a.title}
                 </p>
                 <div className="flex items-center gap-2">
-                  <Badge variant="outline" className="text-[10px]">
+                  <Badge variant="outline" className="text-2xs">
                     {CATEGORY_LABEL[a.category] ?? a.category}
                   </Badge>
                   {!a.read && (
@@ -183,7 +183,7 @@ export function ClassroomTab() {
                 </div>
               </div>
               <p className="mt-1.5 whitespace-pre-wrap text-sm text-muted-foreground">{a.body}</p>
-              <p className="mt-1.5 text-[10px] text-muted-foreground">
+              <p className="mt-1.5 text-2xs text-muted-foreground">
                 <Megaphone className="mr-1 inline size-3 align-[-1px]" aria-hidden />
                 {a.className} · {a.teacherName}
               </p>

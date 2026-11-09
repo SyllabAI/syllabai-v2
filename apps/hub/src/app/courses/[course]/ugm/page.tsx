@@ -62,12 +62,12 @@ export default async function CourseUgmPage({
             Source &amp; rights
           </CardTitle>
           <CardDescription className="flex flex-wrap items-center gap-2 pt-1">
-            <Badge variant="outline" className="font-mono text-[10px]">
+            <Badge variant="outline" className="font-mono text-2xs">
               {ugm.specPoints.length} specification points
             </Badge>
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-2 text-[13px] leading-relaxed text-muted-foreground">
+        <CardContent className="space-y-2 text-xs leading-relaxed text-muted-foreground">
           <p>
             <span className="font-medium text-foreground">{rights.holder}</span>. Source:
             undergroundmathematics.org.
@@ -83,7 +83,7 @@ export default async function CourseUgmPage({
               <h2 className="text-lg font-bold tracking-tight">
                 <span className="font-mono text-primary">{sp.code}</span> · {sp.officialText}
               </h2>
-              <Badge variant="outline" className="font-mono text-[10px]">
+              <Badge variant="outline" className="font-mono text-2xs">
                 {sp.ugmIds.length} resource{sp.ugmIds.length === 1 ? "" : "s"}
               </Badge>
             </div>
@@ -104,11 +104,11 @@ export default async function CourseUgmPage({
                     >
                       <Compass className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
                       <span className="min-w-0">
-                        <span className="block text-[13px] font-medium leading-snug">
+                        <span className="block text-xs font-medium leading-snug">
                           <MathText text={r.title} />
                           {primary ? (
                             <span
-                              className="ml-1.5 inline-flex items-center gap-0.5 rounded bg-primary/10 px-1 py-0.5 align-middle text-[10px] font-semibold text-primary"
+                              className="ml-1.5 inline-flex items-center gap-0.5 rounded bg-primary/10 px-1 py-0.5 align-middle text-2xs font-semibold text-primary"
                               title="Recommended for this specification point"
                             >
                               <Star className="size-2.5" aria-hidden /> recommended
@@ -139,7 +139,7 @@ export default async function CourseUgmPage({
               {nonOverlaps.length} in the library
             </span>
           </h2>
-          <p className="text-[13px] text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             These {ugmStationNames(ugm)} resources are kept for extra maths practice — they are
             not tied to the specification points above, and each one says why.
           </p>
@@ -152,7 +152,7 @@ export default async function CourseUgmPage({
                 >
                   <Landmark className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
                   <span className="min-w-0">
-                    <span className="block text-[13px] font-medium leading-snug">
+                    <span className="block text-xs font-medium leading-snug">
                       <MathText text={r.title} />
                     </span>
                     <span className="mt-0.5 block text-xs text-muted-foreground">

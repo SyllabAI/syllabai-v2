@@ -34,7 +34,7 @@ export function DeckDueBadge({
   return (
     <Badge
       variant="outline"
-      className="shrink-0 border-warn/40 text-[10px] text-warn"
+      className="shrink-0 border-warn/40 text-2xs text-warn"
       title={
         core.state === "ready"
           ? `${due} card${due === 1 ? "" : "s"} in this deck are due for review again (this device ∪ your account)`

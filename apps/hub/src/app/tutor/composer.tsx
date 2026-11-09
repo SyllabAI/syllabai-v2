@@ -125,7 +125,7 @@ export function Composer({
       {/* subject context pill — the reference's affordance, honestly scoped:
           the tutor answers inside the pilot corpus (HUB-TUTOR-CLA-LOOK) */}
       <div className="flex items-center px-3.5 pt-3">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-[11px] font-medium">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-2xs font-medium">
           <span className="size-1.5 rounded-full bg-success" aria-hidden="true" />
           {subjectLabel ?? SUBJECT_LABEL}
         </span>
@@ -192,7 +192,7 @@ export function Composer({
           </Button>
         )}
       </div>
-      <div className="flex items-center justify-between border-t px-3 py-1 text-[10px] text-muted-foreground">
+      <div className="flex items-center justify-between border-t px-3 py-1 text-2xs text-muted-foreground">
         {/* T-TUTOR-UX-1 (TU-15): keyboard hints are desktop noise on touch —
             they render only where a hardware keyboard plausibly exists. */}
         <span className="hidden [@media(pointer:fine)]:inline">

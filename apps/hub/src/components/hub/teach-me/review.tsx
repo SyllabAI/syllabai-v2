@@ -54,7 +54,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
             {review.strengths.map((s, i) => (
               <li key={i} className="border-l-2 border-emerald-500/50 pl-3 text-sm leading-relaxed">
                 <span className="text-muted-foreground">“{s.quote}”</span>
-                <span className="ml-1.5 text-[11px] text-muted-foreground/60">
+                <span className="ml-1.5 text-2xs text-muted-foreground/60">
                   (your turn {s.messageSeq})
                 </span>
               </li>
@@ -79,7 +79,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
                   <span className="font-medium">Actually: </span>
                   {imp.correction}
                 </p>
-                <p className="mt-1 font-mono text-[10px] text-muted-foreground/70">
+                <p className="mt-1 font-mono text-2xs text-muted-foreground/70">
                   {imp.specPointIds.join(" · ")}
                 </p>
               </li>
@@ -95,10 +95,10 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
               key={v.specPointId}
               className="rounded-lg border border-border px-3 py-2 text-xs leading-relaxed"
             >
-              <span className="font-mono text-[11px] text-muted-foreground">
+              <span className="font-mono text-2xs text-muted-foreground">
                 {v.specPointId}
               </span>{" "}
-              <Badge variant="outline" className={`text-[10px] ${VERDICT_BADGE[v.verdict]}`}>
+              <Badge variant="outline" className={`text-2xs ${VERDICT_BADGE[v.verdict]}`}>
                 {v.verdict.replace(/_/g, " ")}
               </Badge>
               {v.evidenceQuote && (
@@ -118,7 +118,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
             {review.misconceptionNotes.map((m, i) => (
               <li key={i} className="rounded-md border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-sm leading-relaxed">
                 <span className="text-muted-foreground">“{m.statement}”</span>
-                <span className="ml-2 text-[10px] uppercase tracking-wide text-amber-600 dark:text-amber-400">
+                <span className="ml-2 text-2xs uppercase tracking-wide text-amber-600 dark:text-amber-400">
                   candidate · {(m.confidence * 100).toFixed(0)}%
                 </span>
               </li>
@@ -132,7 +132,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
           <ul className="space-y-1.5 text-sm">
             {review.examAnchors.map((a, i) => (
               <li key={i} className="flex flex-wrap items-baseline gap-x-2">
-                <span className="font-mono text-[11px] text-muted-foreground">
+                <span className="font-mono text-2xs text-muted-foreground">
                   {a.specPointId}
                 </span>
                 <span>
@@ -149,7 +149,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
           <ul className="space-y-1.5 text-sm">
             {review.prereqWarnings.map((w, i) => (
               <li key={i}>
-                <span className="font-mono text-[11px] text-muted-foreground">
+                <span className="font-mono text-2xs text-muted-foreground">
                   {w.prereqSpecPointId}
                 </span>{" "}
                 — {w.note}
@@ -184,7 +184,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
         </Section>
       )}
 
-      <p className="text-center text-[11px] text-muted-foreground/60">
+      <p className="text-center text-2xs text-muted-foreground/60">
         Review generated {new Date(review.generatedAt).toLocaleString()}
       </p>
     </div>

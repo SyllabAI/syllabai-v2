@@ -75,7 +75,7 @@ function CoverageChip({
 }) {
   return (
     <span
-      className={`inline-flex items-center gap-1 font-mono text-[11px] tabular-nums ${
+      className={`inline-flex items-center gap-1 font-mono text-2xs tabular-nums ${
         n === 0 ? "text-muted-foreground/50" : "text-foreground"
       }`}
     >
@@ -146,7 +146,7 @@ function GeographyView({
         title={`${cls.name} — geography progress`}
         description="My Class Geography Progress — the curriculum map for every subject this class covers, with the corpus behind each subtopic."
         actions={
-          <Badge variant="outline" className="font-mono text-[10px]">
+          <Badge variant="outline" className="font-mono text-2xs">
             {covered.length} subject{covered.length === 1 ? "" : "s"}
           </Badge>
         }
@@ -191,11 +191,11 @@ function GeographyView({
               </div>
               <div className="flex items-center gap-2">
                 {g && !g.hasBundle ? (
-                  <Badge variant="outline" className="text-[10px] font-normal">
+                  <Badge variant="outline" className="text-2xs font-normal">
                     no corpus package
                   </Badge>
                 ) : g ? (
-                  <Badge variant="outline" className="font-mono text-[10px]">
+                  <Badge variant="outline" className="font-mono text-2xs">
                     {g.specPoints} spec points · {g.topics.length} topics
                   </Badge>
                 ) : null}
@@ -230,7 +230,7 @@ function GeographyView({
                           <h3 className="text-sm font-semibold">
                             {t.number}. {t.title}
                           </h3>
-                          <span className="font-mono text-[11px] text-muted-foreground tabular-nums">
+                          <span className="font-mono text-2xs text-muted-foreground tabular-nums">
                             {t.specPoints} spec points
                           </span>
                         </div>
@@ -248,13 +248,13 @@ function GeographyView({
                                   }`}
                                 >
                                   <span className="font-mono">{s.label}</span> · {s.title}
-                                  <span className="ml-2 font-mono text-[10px] text-muted-foreground/70">
+                                  <span className="ml-2 font-mono text-2xs text-muted-foreground/70">
                                     {s.specPoints} SP
                                   </span>
                                 </span>
                                 <span className="flex shrink-0 items-center gap-3">
                                   {bare ? (
-                                    <span className="text-[10px] uppercase tracking-wide text-muted-foreground/60">
+                                    <span className="text-2xs uppercase tracking-wide text-muted-foreground/60">
                                       no coverage yet
                                     </span>
                                   ) : null}
