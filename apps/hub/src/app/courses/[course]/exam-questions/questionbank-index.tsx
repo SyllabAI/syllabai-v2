@@ -300,7 +300,7 @@ export function QuestionbankIndex({
                             <li key={s.slug}>
                               <Link
                                 href={`${base}/exam-questions/${s.slug}`}
-                                className="flex items-center justify-between gap-2 rounded-md px-2 py-1.5 text-[13px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                                className="flex items-center justify-between gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                               >
                                 <span className="min-w-0 truncate">{s.title}</span>
                                 <span className="shrink-0 tabular-nums">

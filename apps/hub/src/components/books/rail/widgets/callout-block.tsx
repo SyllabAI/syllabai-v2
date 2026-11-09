@@ -17,7 +17,7 @@ export function CalloutBlock({ block }: { block: RailBlock }) {
       className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm leading-relaxed dark:border-amber-900 dark:bg-amber-950/40"
       data-ord={block.ord}
     >
-      <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-amber-800 dark:text-amber-300">
+      <p className="mb-1 text-2xs font-semibold uppercase tracking-wide text-amber-800 dark:text-amber-300">
         {label}
       </p>
       <p className="whitespace-pre-line">

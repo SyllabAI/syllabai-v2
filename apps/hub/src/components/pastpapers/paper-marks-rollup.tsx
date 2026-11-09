@@ -102,7 +102,7 @@ export function PaperMarksRollup({ paperCode, sessionLabel }: { paperCode: strin
   // failed) — never a fabricated 0/0.
   if (!token || !totals) return null;
   return (
-    <Badge variant="outline" className="border-emerald-600/50 text-[10px] tabular-nums text-emerald-700">
+    <Badge variant="outline" className="border-emerald-600/50 text-2xs tabular-nums text-emerald-700">
       AI-marked {totals.score}/{totals.max}
     </Badge>
   );

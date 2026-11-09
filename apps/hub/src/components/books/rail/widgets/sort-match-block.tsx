@@ -93,7 +93,7 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
               <button
                 type="button"
                 onClick={() => setSelectedItem(item.id === selectedItem ? null : item.id)}
-                className={`rounded-md border px-2 py-1 text-left text-[13px] ${
+                className={`rounded-md border px-2 py-1 text-left text-xs ${
                   selectedItem === item.id ? "border-primary bg-primary/10" : "border-border bg-background"
                 }`}
                 aria-pressed={selectedItem === item.id}
@@ -103,7 +103,7 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
               <span aria-hidden className="text-muted-foreground">→</span>
               <span
                 role="status"
-                className={`rounded-md border px-2 py-1 text-[13px] ${
+                className={`rounded-md border px-2 py-1 text-xs ${
                   assign[item.id] ? "border-border bg-muted/60" : "border-dashed border-muted-foreground/40 text-muted-foreground"
                 }`}
               >
@@ -117,7 +117,7 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
                 <button
                   key={t.id}
                   type="button"
-                  className="rounded-md border border-dashed px-2 py-1 text-[13px] hover:bg-muted"
+                  className="rounded-md border border-dashed px-2 py-1 text-xs hover:bg-muted"
                   onClick={() => {
                     if (selectedItem != null) {
                       setAssign((a) => ({ ...a, [selectedItem]: t.id }));
@@ -137,7 +137,7 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
           {order.map((id, idx) => (
             <li key={id} className="flex items-center gap-1.5">
               <span className="w-5 text-center text-xs text-muted-foreground">{idx + 1}</span>
-              <span className="flex-1 rounded-md border px-2 py-1 text-[13px]">{byId.get(id)?.text}</span>
+              <span className="flex-1 rounded-md border px-2 py-1 text-xs">{byId.get(id)?.text}</span>
               <button
                 type="button"
                 className="rounded border px-1.5 text-xs"

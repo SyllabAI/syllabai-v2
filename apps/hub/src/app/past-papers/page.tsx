@@ -122,10 +122,10 @@ export default function PastPapersArchivePage() {
       <div className="mt-4 rounded-xl border bg-muted/30 p-3 text-xs leading-relaxed text-muted-foreground print:hidden">
         <p>
           Official exam documents streamed from the{" "}
-          <span className="font-mono text-[11px]">syllabai-pastpapers</span> archive — auto-matched
+          <span className="font-mono text-2xs">syllabai-pastpapers</span> archive — auto-matched
           to each course, official-source verification in progress · index generated{" "}
           {corpusIndex.meta.generatedAt.slice(0, 10)}, tree{" "}
-          <span className="font-mono text-[11px]">{corpusIndex.meta.treeSha.slice(0, 7)}</span>.
+          <span className="font-mono text-2xs">{corpusIndex.meta.treeSha.slice(0, 7)}</span>.
         </p>
         <p className="mt-1">
           Where the archive has known gaps (cancelled sessions, unpublished mark schemes), the spec
@@ -161,7 +161,7 @@ export default function PastPapersArchivePage() {
                         // no longer repeat the subject inline). The header
                         // rides the quiet recipe, count included.
                         <div key={subject} className="overflow-hidden rounded-xl border">
-                          <p className="border-b bg-muted/30 px-3 py-2 text-[13px] font-semibold sm:px-4">
+                          <p className="border-b bg-muted/30 px-3 py-2 text-xs font-semibold sm:px-4">
                             {subject}
                             <span className="font-normal text-muted-foreground/60"> · {rows.length}</span>
                           </p>
@@ -195,12 +195,12 @@ function SpecRow({ s }: { s: CorpusArchiveSpec }) {
             {/* t-ui-polish run-002 — the subject lives on the card header
                 now; the row carries only what varies (spec code + badges). */}
             {s.courseSlug && (
-              <Badge variant="outline" className="text-[10px] text-muted-foreground">
+              <Badge variant="outline" className="text-2xs text-muted-foreground">
                 hub course
               </Badge>
             )}
           </p>
-          <p className="mt-0.5 text-[11px] text-muted-foreground">
+          <p className="mt-0.5 text-2xs text-muted-foreground">
             {s.paperCount} paper{s.paperCount === 1 ? "" : "s"} · {s.sessionCount} session
             {s.sessionCount === 1 ? "" : "s"}
             {s.courseSlug ? " · mocks + interactive in the hub archive" : " · direct PDF browsing"}

@@ -211,7 +211,7 @@ export function PlanClient() {
             </div>
             <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
               <div
-                className="h-2 rounded-full bg-primary transition-all"
+                className="h-2 rounded-full bg-primary transition-[width]"
                 style={{ width: `${week.counters.percentToday}%` }}
               />
             </div>

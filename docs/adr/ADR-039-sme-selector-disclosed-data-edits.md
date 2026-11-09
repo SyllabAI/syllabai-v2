@@ -2,8 +2,8 @@
 
 | | |
 |---|---|
-| **Status** | Executed (r3 — placement 2,574/2,574 = 100%; §4 rows 1–13 executed r2, rows 14–17 executed r3) |
-| **Date** | 2026-11-04 (r1) / 2026-11-04 (r2 execution) / 2026-11-05 (r3 check-again pass) |
+| **Status** | Executed (r4 — placement 2,574/2,574 = 100%; §4 rows 1–13 executed r2, rows 14–17 executed r3, rows 18–20 executed r4) |
+| **Date** | 2026-11-04 (r1) / 2026-11-04 (r2 execution) / 2026-11-05 (r3 check-again pass) / 2026-11-09 (r4 spine-cosmetics lane) |
 | **Deciders** | SME selector lane (T-SME-SEL), operator-directed |
 | **Basis** | SME selector blast-radius audit (81 SME courses / 2,012 sets / 34,940 questions; defect classes D0–D9); `apps/hub/src/lib/spec-tree.ts` (production anchoring); `SME-ExamQuestion` reference manifests (syllabai-resources @ main); ADR-039 principle: **the pipeline improves; provenance discloses** — no silent data surgery |
 
@@ -180,6 +180,20 @@ queued with the cosmetics class):
   (they match SME's own sub-topic order `1-1`/`1-2`… from the manifest), so
   placement stands; the row labels are the queued defect.
 
+### r4 — the spine-cosmetics lane (2026-11-09): chemistry T8/T19 titles + the synoptic setName
+
+Wave 1's receipt queued the pre-existing chemistry cosmetics with this class; executed here (T-SME-SEL-COSM-1 run-001). Evidence of record: the official spec PDF itself, committed in the corpus — `Official-Specifications/ial-chemistry/International-A-Level-Chemistry-Spec.pdf` (Pearson Edexcel IAL Chemistry, Issue 1, September 2017) @ pin 1a5c37bc. All 20 official topic titles diffed against the spine: T8/T19 are the ONLY truncations, both cut exactly at the PDF's line wrap (the import kept the first printed line of each wrapped title).
+
+| # | Course | Node / row | Defect | Edit of record |
+|---|--------|-----------|--------|----------------|
+| 18 | ial-chemistry-17 | spine `…-T8` TOPIC + `…-T8:SUB_` SUBTOPIC | title truncated: "Redox Chemistry and Groups 1, 2 and" (dropped " 7") | title edit → "Redox Chemistry and Groups 1, 2 and 7" (spec extraction line 1267; also the printed Unit 2 topic list, line 403) |
+| 19 | ial-chemistry-17 | spine `…-T19` TOPIC + `…-T19:SUB_` SUBTOPIC | title truncated at the PDF line wrap: "Organic Nitrogen Compounds: Amines, Amides," | title edit → "Organic Nitrogen Compounds: Amines, Amides, Amino Acids and Proteins" (spec extraction lines 2616–2617) |
+| 20 | ial-chemistry-17 | set `synoptic-exam-questions-section-c--exam-questions` | `setName` null — the only row of 72 without a kind label | `setName` → "Exam Questions" (the row's slug suffix `--exam-questions`; the 71-row kind law: "Multiple-Choice Questions" ×35 / "Structured Questions" ×36; SME's own per-topic set naming) |
+
+- Edits are byte-disciplined (round-trip identity asserted, deep-diff exactly the 5 leaves, +54/+12 bytes); r3 row-15 precedent followed — the serving curriculum is the fix surface, the committed derivation-vintage spine `apps/hub/spines/ial-chemistry-17.json` stays byte-carried (disclosed).
+- Derived-data reconcile (disclosed): `public/kg/data/ial-chemistry-17.json` was stale at its 2026-11-05 vintage — truncated labels AND the wave-1 SME picker layer never re-exported after 48540486 (wave-1's inventory missed the kg plane). Regenerated (kg_export.py v1.6); verified surgical: 344 AI concept-web pre edges byte-identical, prereqValidated untouched, exactly 4 shared nodes changed (label-only), +47 nodes = exactly the wave-1 SME layer, points/pointSubtopics/subPointCounts byte-identical. Queued (product question, own lane): whether the kg exporter should EXCLUDE selector-navigation rows from the spec graph.
+- Receipt-of-record correction: wave 1's "T8 empty spec container" does NOT reproduce — `T8:SUB_` carries 28 spec points (8.1–8.28) and no chemistry container has zero (the 20 containers sum to 319 exact); the truncated-title half was real and is fixed above.
+
 ### Count reconciliation
 
 - Workbook (pre-notes-bridge joins): 101 high + 144 medium + 205 manual = 450.
@@ -223,3 +237,15 @@ queued with the cosmetics class):
   (T10-gen / SUB4.1 / T4-gen); `verify_corpus_23a` and
   `validate_cie_bundles` PASS; tsc untouched (data-only edits — the
   sandbox's missing node_modules makes tsc vacuous here, disclosed).
+- r4 gates (2026-11-09, tip edfd1e76 + two serving files + one derived
+  file): NEW `apps/hub/scripts/verify_sme_cosmetics1.ts` PASS (the four
+  restored titles == the official spec strings; no truncated title survives
+  the serving corpus; spine 20/319 + the 7-row SME layer intact; the
+  synoptic setName + the 3-value kind law across all 72 sets; the kg data
+  carries the full titles, zero truncated labels and the 344-edge concept
+  web). Regression: `verify_sme_wave1` PASS, `verify_sme_wave2` PASS,
+  `verify_sme_wire_r0` PASS (2,574/2,574 placed, 0 unplaced, gen-row homes
+  29 — unchanged: the title edits touch zero placement rungs, verified by
+  the repo-wide grep showing no set name or note title equals the old
+  truncated strings); `tsc --noEmit` clean; eslint clean (scripts/
+  ignore-listed per config).
