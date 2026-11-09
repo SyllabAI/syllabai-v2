@@ -54,12 +54,12 @@ export function PageHero({
       <div className="space-y-3 p-5 sm:p-6">
         {breadcrumbs}
         {eyebrow && (
-          <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+          <p className="text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
             {eyebrow}
           </p>
         )}
         <div className="flex flex-wrap items-start justify-between gap-3">
-          <h1 className="max-w-2xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
+          <h1 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
             {title}
           </h1>
           {actions && (

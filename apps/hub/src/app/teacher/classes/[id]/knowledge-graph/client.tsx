@@ -145,7 +145,7 @@ export function ClassKGClient({ classId }: { classId: string }) {
               ← {detail ? detail.name : "Class"}
             </Link>
             {archived ? (
-              <Badge variant="outline" className="font-mono text-[10px]">
+              <Badge variant="outline" className="font-mono text-2xs">
                 archived · read-only
               </Badge>
             ) : null}
@@ -156,7 +156,7 @@ export function ClassKGClient({ classId }: { classId: string }) {
             <Network className="size-6 text-primary" aria-hidden />
             Class KG heatmap
             {subject ? (
-              <Badge variant="outline" className="font-mono text-[10px]">
+              <Badge variant="outline" className="font-mono text-2xs">
                 {subject.code}
               </Badge>
             ) : null}

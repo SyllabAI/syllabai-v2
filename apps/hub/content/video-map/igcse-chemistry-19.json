@@ -1,0 +1,2819 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "igcse-chemistry-19",
+ "qual": "IGCSE",
+ "source": {
+  "provider": "multi (freesciencelessons / doodlescience / amoeba-sisters / cognito channel-only)",
+  "label": "igcse-chemistry-19",
+  "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY",
+  "enumeratedUtc": "2026-11-01T01:04:15Z"
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P2C",
+  "ruledUtc": "2026-11-09T06:10:24Z",
+  "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+  "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+  "evidenceBasis": "Same title-only posture as P2B. Self-review rejects are rows where the video title names only an adjacent or generic topic and the evidence field itself concedes the spec's distinctive clause is not title-evidenced.",
+  "rowsApproved": 87,
+  "rowsRejected": 8,
+  "rejects": [
+   {
+    "lessonRef": null,
+    "video": "7wguWXOZ8dc",
+    "spec": "1.53C",
+    "reason": "FSL 'Metals' is a generic title; metallic bonding as electrostatic attraction between ions and delocalised electrons (1.53C) is not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "o56nWrsp-hI",
+    "spec": "1.54C",
+    "reason": "FSL 'Metals and Alloys' — conductivity/malleability explanation (1.54C) not title-evidenced; adjacent hit."
+   },
+   {
+    "lessonRef": null,
+    "video": "AhTRiL6xjBA",
+    "spec": "1.58C",
+    "reason": "FSL 'Introducing Electrolysis' is concept-level; the molten-compound experiment clause of 1.58C is not title-evidenced, and 1.58C already carries a stronger medium binding (Electrolysis of Aluminium Oxide)."
+   },
+   {
+    "lessonRef": null,
+    "video": "4pIHhXfGZlE",
+    "spec": "2.35",
+    "reason": "FSL 'Strong and Weak Acids' — proton-transfer framing of 2.35 is a different frame from strength vs concentration; donor/acceptor definitions not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "4pIHhXfGZlE",
+    "spec": "2.36",
+    "reason": "Same video: 'acid is a proton donor' definition (2.36) not title-evidenced in a strong/weak acids video."
+   },
+   {
+    "lessonRef": null,
+    "video": "4HS6D0hTzdg",
+    "spec": "3.14C",
+    "reason": "Reaction-profile diagrams with ΔH and activation energy (3.14C) — evidence concedes 'likely drawn but not title-evidenced'. Fails the bar."
+   },
+   {
+    "lessonRef": null,
+    "video": "66qcNNJFy6E",
+    "spec": "3.19C",
+    "reason": "Dynamic equilibrium in a sealed container (3.19C) not title-evidenced in 'Reversible Reactions'."
+   },
+   {
+    "lessonRef": null,
+    "video": "7AWwjKbRa_o",
+    "spec": "4.18",
+    "reason": "FSL 'Cracking' names the process; the supply/demand rationale of 4.18 is a sidebar clause, not title-evidenced."
+   }
+  ]
+ },
+ "videos": [
+  {
+   "id": "CTwJEtjYffY",
+   "title": "GCSE Chemistry Revision \"The Three States of Matter\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=CTwJEtjYffY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 315,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "nUzOXy9V-K0",
+   "title": "GCSE Chemistry Revision \"Elements, Compounds and Mixtures\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=nUzOXy9V-K0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 258,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "r49wo5ficzg",
+   "title": "GCSE Chemistry Revision \"Filtration and Crystallisation\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=r49wo5ficzg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 252,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "wXxFg7tdPjw",
+   "title": "GCSE Chemistry Revision \"Simple Distillation\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=wXxFg7tdPjw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 195,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "XKOgDiFNkiA",
+   "title": "GCSE Chemistry Revision \"Fractional Distillation\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=XKOgDiFNkiA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 279,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "dsKz9eF1Sc0",
+   "title": "GCSE Chemistry Revision \"Paper Chromatography\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=dsKz9eF1Sc0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 237,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "nyvVjJf7RAU",
+   "title": "GCSE Chemistry Revision \"Atomic Number and Mass Number\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=nyvVjJf7RAU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 333,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "yOsMN89wIQc",
+   "title": "GCSE Chemistry Revision \"Relative Atomic Mass\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=yOsMN89wIQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 222,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "NuUDkub7N9A",
+   "title": "GCSE Chemistry Revision \"Electron Energy Levels\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=NuUDkub7N9A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 269,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "EReyx5QoUSs",
+   "title": "GCSE Chemistry Revision \"Group 0\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=EReyx5QoUSs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 200,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "h7ErVAZbeu0",
+   "title": "GCSE Chemistry - State Symbols & Predicting States of Matter",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=h7ErVAZbeu0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 179,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "vxCyzR6uETs",
+   "title": "GCSE Chemistry Revision \"Balancing Chemical Equations\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=vxCyzR6uETs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 347,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "q49NwIrjaFw",
+   "title": "GCSE Chemistry Revision \"Relative Formula Mass\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=q49NwIrjaFw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 249,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "-_-fNVmDwJk",
+   "title": "GCSE Chemistry Revision \"Calculating Moles of an Element\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=-_-fNVmDwJk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 316,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "kMak1TQ3YgU",
+   "title": "GCSE Chemistry Revision \"Calculating Mass of a Number of Moles\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=kMak1TQ3YgU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 283,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "TV6n5MFH6IU",
+   "title": "GCSE Chemistry Revision \"Reacting Masses 1\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=TV6n5MFH6IU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 336,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "9EV0Oq8g708",
+   "title": "GCSE Chemistry Revision \"Calculating Percentage Yield 1\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=9EV0Oq8g708",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 252,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "u2V8b7M_caA",
+   "title": "GCSE Chemistry Revision (Edexcel) \"Empirical Formula\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=u2V8b7M_caA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 316,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "JXHjWpo3Yxg",
+   "title": "GCSE Chemistry Revision (Edexcel) \"Determining Empirical Formula from Reacting Masses\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=JXHjWpo3Yxg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 245,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "3G3KQIyoZDI",
+   "title": "GCSE Chemistry Revision \"Concentration of Solutions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=3G3KQIyoZDI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 251,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "tYE-1nywlFs",
+   "title": "GCSE Chemistry Revision \"Using Gas Volumes\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=tYE-1nywlFs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 213,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "V28_L3gteDo",
+   "title": "GCSE Chemistry Revision \"Charges on Ions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=V28_L3gteDo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 252,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "tV8Cv2x0SD0",
+   "title": "GCSE Chemistry Revision \"Formula of Ionic Compounds\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=tV8Cv2x0SD0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 312,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "XbDtmORzKO8",
+   "title": "GCSE Chemistry Revision \"Ionic Bonding 1: Ionic Bonding between Group 1 and Group 7\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=XbDtmORzKO8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 304,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "3hUwVYOue5s",
+   "title": "GCSE Chemistry Revision \"Properties of Ionic Compounds\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=3hUwVYOue5s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 268,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "m5u4STdFlOE",
+   "title": "GCSE Chemistry Revision \"Covalent Bonding 1: Bonding in Hydrogen, Chlorine and Hydrogen chloride\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=m5u4STdFlOE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 301,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "4SNY8yK4gzw",
+   "title": "GCSE Chemistry Revision \"Covalent Bonding 2: Bonding in Water, Ammonia and Methane\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4SNY8yK4gzw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 265,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "xvYA7KBLipY",
+   "title": "GCSE Chemistry Revision \"Covalent Bonding 3: Bonding in Oxygen, Nitrogen and Carbon Dioxide\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=xvYA7KBLipY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 225,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "u_KR0UaZFkY",
+   "title": "GCSE Chemistry Revision \"Properties of Small Covalent Molecules\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=u_KR0UaZFkY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 269,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "gUNkLFf2WXU",
+   "title": "GCSE Chemistry Revision \"Diamond and Silicon Dioxide\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=gUNkLFf2WXU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 267,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "iPoPeYHctPs",
+   "title": "GCSE Chemistry Revision \"Graphite\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=iPoPeYHctPs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 226,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "cjgODRJU79Y",
+   "title": "GCSE Chemistry Revision \"Graphene and Fullerenes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=cjgODRJU79Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 236,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "7wguWXOZ8dc",
+   "title": "GCSE Chemistry Revision \"Metals\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=7wguWXOZ8dc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 300,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "o56nWrsp-hI",
+   "title": "GCSE Chemistry Revision \"Metals and Alloys\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=o56nWrsp-hI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 214,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "YcyMElBEzAY",
+   "title": "GCSE Chemistry Revision \"Electrolysis of Aluminium Oxide\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=YcyMElBEzAY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 289,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "AhTRiL6xjBA",
+   "title": "GCSE Chemistry Revision \"Introducing Electrolysis\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=AhTRiL6xjBA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 290,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "gnbuTl2ariI",
+   "title": "GCSE Chemistry Revision \"Oxidation and Reduction in Terms of Electrons\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=gnbuTl2ariI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 240,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "mL7mkqyLpSo",
+   "title": "GCSE Chemistry Revision \"Electrolysis of Aqueous Solutions 2\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=mL7mkqyLpSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 232,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "ukbtTTG1Kew",
+   "title": "GCSE Chemistry Revision \"Required Practical 3: Electrolysis\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ukbtTTG1Kew",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 237,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "Z9U0728-fPY",
+   "title": "GCSE Chemistry Revision \"Group 1 Part 1\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Z9U0728-fPY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 271,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "PxdVHydF_U4",
+   "title": "GCSE Chemistry Revision \"Group 1 Part 2\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=PxdVHydF_U4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 238,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "5l-5sKDudq8",
+   "title": "GCSE Chemistry Revision \"Group 7 Part 1 The Halogens\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=5l-5sKDudq8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 212,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "yxL0xvfBy3k",
+   "title": "GCSE Chemistry Revision \"Group 7 Part 3 Reactivity of the Halogens\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=yxL0xvfBy3k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 271,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "t1Z3GlNldLA",
+   "title": "GCSE Chemistry Revision \"The Atmosphere\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=t1Z3GlNldLA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 254,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "Lk1V0buHEFs",
+   "title": "GCSE Chemistry Revision \"Reaction of Metals with Oxygen\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Lk1V0buHEFs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 207,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "K5vXnDGcOE4",
+   "title": "GCSE Chemistry Revision \"The Greenhouse Effect\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=K5vXnDGcOE4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 188,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "MDQr5QFVGkk",
+   "title": "GCSE Chemistry Revision \"The Reactivity Series\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=MDQr5QFVGkk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 274,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "Gl1ctcnUnJ0",
+   "title": "GCSE Chemistry Revision \"Corrosion\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Gl1ctcnUnJ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 248,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "ofw6oHSYGFI",
+   "title": "GCSE Chemistry Revision \"Acids Reacting with Metals\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ofw6oHSYGFI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 222,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "MXTSels6e2Y",
+   "title": "GCSE Chemistry Revision \"Extraction of Metals\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=MXTSels6e2Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 254,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "QRDctnk7sF4",
+   "title": "GCSE Chemistry Revision \"Alloys\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=QRDctnk7sF4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 216,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "ZWZTDiwOWiI",
+   "title": "GCSE Chemistry Revision \"Acids and Alkalis\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ZWZTDiwOWiI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 287,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "4pIHhXfGZlE",
+   "title": "GCSE Chemistry Revision \"Strong and Weak Acids\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4pIHhXfGZlE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 267,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "saRBT5oZfh8",
+   "title": "GCSE Chemistry Revision \"Required Practical 2: Carrying out a Titration\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=saRBT5oZfh8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 222,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "QlSsle_jSQ8",
+   "title": "GCSE Chemistry Revision \"Three Reactions of Acids\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=QlSsle_jSQ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 288,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "9GH95172Js8",
+   "title": "GCSE Chemistry Revision \"Required Practical 1: Making Soluble Salts\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=9GH95172Js8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 291,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "jVkGKurtaiE",
+   "title": "GCSE Chemistry Revision \"Testing for Gases\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=jVkGKurtaiE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 146,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "Bd0A44Iv2OI",
+   "title": "GCSE Chemistry Revision \"Flame Tests\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Bd0A44Iv2OI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 236,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "dBvpd9RhX8E",
+   "title": "GCSE Chemistry Revision \"Metal Hydroxide Precipitates\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=dBvpd9RhX8E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 177,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "n1SiWOIJayI",
+   "title": "GCSE Chemistry Revision \"Identifying non-metal ions\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=n1SiWOIJayI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 139,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "4HS6D0hTzdg",
+   "title": "GCSE Chemistry Revision \"Exothermic and Endothermic Reactions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4HS6D0hTzdg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 245,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "rdI7xEq4Ew8",
+   "title": "GCSE Chemistry Revision \"Required Practical 4: Temperature Changes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=rdI7xEq4Ew8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 290,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "eExCBkp4jB4",
+   "title": "GCSE Chemistry Revision \"Bond Energy Calculations 1\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=eExCBkp4jB4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 241,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "WojotwxPD6I",
+   "title": "GCSE Chemistry Revision \"Effect of Surface Area on Rate\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=WojotwxPD6I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 243,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "G2TEfhwgq84",
+   "title": "GCSE Chemistry Revision \"Effect of Temperature on Rate\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=G2TEfhwgq84",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 211,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "u4Co4N-Jmbs",
+   "title": "GCSE Chemistry Revision \"Effect of Concentration on Rate\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=u4Co4N-Jmbs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 230,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "hel8fQjxcO8",
+   "title": "GCSE Chemistry Revision \"Catalysts\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=hel8fQjxcO8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 183,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "N5p06i9ilmo",
+   "title": "GCSE Chemistry Revision \"Required Practical 5: Rates of Reaction\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=N5p06i9ilmo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 272,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "66qcNNJFy6E",
+   "title": "GCSE Chemistry Revision \"Reversible Reactions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=66qcNNJFy6E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 240,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "utmV4Q0t6MI",
+   "title": "GCSE Chemistry Revision \"Concentration and Reversible Reactions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=utmV4Q0t6MI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 207,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "SlI5m0RQqik",
+   "title": "GCSE Chemistry Revision \"Temperature and reversible reactions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=SlI5m0RQqik",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 188,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "hngzmRrAXTE",
+   "title": "GCSE Chemistry Revision \"Pressure and Reversible Reactions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=hngzmRrAXTE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 190,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "CX2IYWggEBc",
+   "title": "GCSE Chemistry Revision \"Crude oil and Hydrocarbons\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=CX2IYWggEBc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 278,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "CjmriZq5xRo",
+   "title": "GCSE Chemistry - Crude Oil and Fractional Distillation",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=CjmriZq5xRo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 330,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "4EAh9E2KhOE",
+   "title": "GCSE Chemistry Revision \"Properties of Hydrocarbons\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4EAh9E2KhOE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 156,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "14XIKuOZ2Yw",
+   "title": "GCSE Chemistry Revision \"Fossil Fuels\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=14XIKuOZ2Yw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 161,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "8PM_tWNFbGY",
+   "title": "GCSE Chemistry Revision \"Combustion of Hydrocarbons\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=8PM_tWNFbGY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 279,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "yLp6LOgPHmI",
+   "title": "GCSE Chemistry Revision \"Pollutants from Fuels\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=yLp6LOgPHmI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 263,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "bOiYLKX9ZRY",
+   "title": "GCSE Chemistry - Cracking Crude Oil & Alkenes",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=bOiYLKX9ZRY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 390,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "7AWwjKbRa_o",
+   "title": "GCSE Chemistry Revision \"Cracking\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=7AWwjKbRa_o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 285,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "CmANMHeeZgw",
+   "title": "GCSE Chemistry Revision \"Alkenes\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=CmANMHeeZgw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 234,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "3ZLpmNJu-e0",
+   "title": "GCSE Chemistry Revision \"Reactions of Alkenes 1\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=3ZLpmNJu-e0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 192,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "uFZasZ-hs_A",
+   "title": "GCSE Chemistry Revision \"Alcohols\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=uFZasZ-hs_A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 214,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "w3IBYDJ5XmM",
+   "title": "GCSE Chemistry Revision \"Reactions of Alcohols\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=w3IBYDJ5XmM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 262,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "ketAGS1gkQM",
+   "title": "GCSE Chemistry Revision \"Carboxylic Acids\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ketAGS1gkQM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 221,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "EP0zfm_FVqc",
+   "title": "GCSE Chemistry - What is a Polymer? Polymers / Monomers / Their Properties Explained (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=EP0zfm_FVqc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 213,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "GhvevdJU_DM",
+   "title": "GCSE Chemistry Revision \"Addition Polymers\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=GhvevdJU_DM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 251,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "QBuSFPOtcJ4",
+   "title": "GCSE Chemistry Revision \"Condensation Polymers\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=QBuSFPOtcJ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 206,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "8PQDf0ZG6n0",
+   "title": "KS3 Chemistry - Metal & Non metal Oxides",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=8PQDf0ZG6n0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ks3",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 233,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "ROQKZ_d1C2k",
+   "title": "KS3 Chemistry - Metals & Non metals",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=ROQKZ_d1C2k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ks3",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 270,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "Dh0y1Lq8aLA",
+   "title": "KS3 Chemistry - Extracting Metals from Ores",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Dh0y1Lq8aLA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ks3",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 229,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  }
+ ],
+ "mappings": [
+  {
+   "video": "CTwJEtjYffY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1",
+    "1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Three States of Matter' = arrangement/interconversions of 1.1/1.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "nUzOXy9V-K0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Elements, Compounds and Mixtures' = the classification of 1.8",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "r49wo5ficzg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.10"
+   ],
+   "confidence": "medium",
+   "evidence": "filtration + crystallisation clauses of 1.10",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "wXxFg7tdPjw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.10"
+   ],
+   "confidence": "medium",
+   "evidence": "simple distillation clause of 1.10",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "XKOgDiFNkiA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.10"
+   ],
+   "confidence": "medium",
+   "evidence": "fractional distillation clause of 1.10",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "dsKz9eF1Sc0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.11",
+    "1.12",
+    "1.13"
+   ],
+   "confidence": "medium",
+   "evidence": "paper chromatography incl. chromatogram/Rf = 1.11/1.12/1.13",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "nyvVjJf7RAU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.15",
+    "1.16"
+   ],
+   "confidence": "medium",
+   "evidence": "atomic/mass number = sub-atomic structure (1.15) + term definitions (1.16)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "yOsMN89wIQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.17"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Relative Atomic Mass' = Ar-from-abundances calculation of 1.17",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "NuUDkub7N9A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.19",
+    "1.22"
+   ],
+   "confidence": "low",
+   "evidence": "electron energy levels adjacent to configuration/PT-position link; PT-based deduction not title-evidenced",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "EReyx5QoUSs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.24"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Group 0' = noble-gases-unreactive of 1.24",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "h7ErVAZbeu0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.25"
+   ],
+   "confidence": "low",
+   "evidence": "Cognito channel-only: state-symbols clause of 1.25; equation-writing clauses not title-evidenced",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "vxCyzR6uETs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.25"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Balancing Chemical Equations' = the writing/balancing clause of 1.25",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "q49NwIrjaFw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.26"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Relative Formula Mass' = Mr-from-Ar of 1.26",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "-_-fNVmDwJk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.27"
+   ],
+   "confidence": "medium",
+   "evidence": "moles of an element = the mole as amount of substance (1.27)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "kMak1TQ3YgU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.28"
+   ],
+   "confidence": "medium",
+   "evidence": "mass-from-moles calculation = 1.28 Ar/Mr mole calculations",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "TV6n5MFH6IU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.29"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Reacting Masses 1' = reacting-mass calculations of 1.29",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "9EV0Oq8g708",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.30"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Calculating Percentage Yield' = 1.30",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "u2V8b7M_caA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.32"
+   ],
+   "confidence": "medium",
+   "evidence": "FSL's own (Edexcel) empirical-formula video = the 1.32 terms",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "JXHjWpo3Yxg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.33"
+   ],
+   "confidence": "medium",
+   "evidence": "FSL (Edexcel) empirical-from-reacting-masses = the 1.33 calculation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "3G3KQIyoZDI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.34C"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Concentration of Solutions' = mol/dm3 calculations of 1.34C",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "tYE-1nywlFs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.35C"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Using Gas Volumes' = molar-volume calculations of 1.35C",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "V28_L3gteDo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.37",
+    "1.38"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Charges on Ions' = ion formation (1.37) + the charge list (1.38)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "tV8Cv2x0SD0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.39"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Formula of Ionic Compounds' = formulae-from-ions of 1.39",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "XbDtmORzKO8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.40",
+    "1.41"
+   ],
+   "confidence": "medium",
+   "evidence": "ionic bonding Group1-Group7 = dot-and-cross formation (1.40) + electrostatic attraction (1.41)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "3hUwVYOue5s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.42",
+    "1.43"
+   ],
+   "confidence": "medium",
+   "evidence": "properties of ionic compounds = high mp/bp (1.42) + conductivity when molten/aqueous (1.43)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "m5u4STdFlOE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.44",
+    "1.45"
+   ],
+   "confidence": "medium",
+   "evidence": "covalent bonding in H2/Cl2/HCl = shared pair (1.44) + electrostatic attraction (1.45)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "4SNY8yK4gzw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.46"
+   ],
+   "confidence": "medium",
+   "evidence": "dot-and-cross for H2O/NH3/CH4 = part of the 1.46 molecule list",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "xvYA7KBLipY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.46"
+   ],
+   "confidence": "medium",
+   "evidence": "dot-and-cross for O2/N2/CO2 = rest of the 1.46 molecule list",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "u_KR0UaZFkY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.47",
+    "1.48"
+   ],
+   "confidence": "medium",
+   "evidence": "properties of small covalent molecules = low mp/bp reasoning (1.47/1.48)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "gUNkLFf2WXU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.49"
+   ],
+   "confidence": "medium",
+   "evidence": "diamond (giant covalent) = high mp/bp reasoning of 1.49",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "iPoPeYHctPs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.50"
+   ],
+   "confidence": "medium",
+   "evidence": "graphite structure/properties = part of 1.50",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "cjgODRJU79Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.50"
+   ],
+   "confidence": "medium",
+   "evidence": "graphene/fullerenes incl. C60 = part of 1.50",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "YcyMElBEzAY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.58C",
+    "2.23C"
+   ],
+   "confidence": "medium",
+   "evidence": "electrolysis of molten aluminium oxide = molten-compound electrolysis (1.58C) + extraction-above-carbon example (2.23C)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "gnbuTl2ariI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.59C",
+    "2.20"
+   ],
+   "confidence": "medium",
+   "evidence": "oxidation/reduction in terms of electrons = half-equation electron transfer (1.59C) + the 2.20 terms",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "mL7mkqyLpSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.60C"
+   ],
+   "confidence": "medium",
+   "evidence": "electrolysis of aqueous solutions = the 1.60C practical",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ukbtTTG1Kew",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.60C"
+   ],
+   "confidence": "medium",
+   "evidence": "AQA RP3 electrolysis = practical support for 1.60C",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Z9U0728-fPY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "Group 1 reactions with water = the evidence-for-recognition clause of 2.1",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "PxdVHydF_U4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2",
+    "2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "Group 1 trends/predictions = 2.2 differences + 2.3 prediction",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "PxdVHydF_U4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4C"
+   ],
+   "confidence": "low",
+   "evidence": "reactivity-trend explanation via electronic configuration not title-evidenced",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "5l-5sKDudq8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.5"
+   ],
+   "confidence": "medium",
+   "evidence": "Group 7 Part 1 = colours/states/trends of 2.5",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "yxL0xvfBy3k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.6",
+    "2.7",
+    "2.8C"
+   ],
+   "confidence": "medium",
+   "evidence": "Group 7 reactivity = prediction (2.6) + halogen displacement evidence (2.7) + trend explanation (2.8C)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "t1Z3GlNldLA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Atmosphere' = the air-percentage composition of 2.9",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Lk1V0buHEFs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.11"
+   ],
+   "confidence": "medium",
+   "evidence": "metals reacting with oxygen = the combustion clause of 2.11 (Mg/H/S clauses not all title-evidenced)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "K5vXnDGcOE4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.13"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Greenhouse Effect' = CO2 greenhouse/climate clause of 2.13",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "MDQr5QFVGkk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.15",
+    "2.16",
+    "2.17"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Reactivity Series' = arrangement by reactions (2.15) + displacement (2.16) + the order (2.17)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Gl1ctcnUnJ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.18",
+    "2.19"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Corrosion' = rusting conditions (2.18) + prevention methods (2.19)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ofw6oHSYGFI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.21"
+   ],
+   "confidence": "medium",
+   "evidence": "acids reacting with metals = the 2.21 practical reactions",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "MXTSels6e2Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.22C"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Extraction of Metals' = ores/crust + unreactive-native clause of 2.22C",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "QRDctnk7sF4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.26C",
+    "2.27C"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Alloys' = alloy definition (2.26C) + harder-than-pure-metal explanation (2.27C)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ZWZTDiwOWiI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.29",
+    "2.31",
+    "2.32"
+   ],
+   "confidence": "medium",
+   "evidence": "'Acids and Alkalis' = pH scale classification (2.29) + H+/OH- sources (2.31) + neutralisation (2.32)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "saRBT5oZfh8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.33C",
+    "2.40C"
+   ],
+   "confidence": "medium",
+   "evidence": "titration RP = carrying out an acid-alkali titration (2.33C) + titration salt prep (2.40C)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "QlSsle_jSQ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.37"
+   ],
+   "confidence": "medium",
+   "evidence": "'Three Reactions of Acids' = acids with metals/bases/carbonates of 2.37",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "9GH95172Js8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.39",
+    "2.42"
+   ],
+   "confidence": "medium",
+   "evidence": "making soluble salts RP = acid + insoluble reactant prep (2.39) + copper sulfate crystal prep (2.42)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "jVkGKurtaiE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.44"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Testing for Gases' = the 2.44 gas tests",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Bd0A44Iv2OI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.45",
+    "2.46"
+   ],
+   "confidence": "medium",
+   "evidence": "flame tests = method (2.45) + colours (2.46)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "dBvpd9RhX8E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.47"
+   ],
+   "confidence": "medium",
+   "evidence": "metal hydroxide precipitates = NaOH cation tests of 2.47 (NH4+ clause partial)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "n1SiWOIJayI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.48"
+   ],
+   "confidence": "medium",
+   "evidence": "identifying non-metal ions = the anion tests of 2.48",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "4HS6D0hTzdg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1",
+    "3.5C"
+   ],
+   "confidence": "medium",
+   "evidence": "exo/endothermic = the 3.1 terms + energy-level diagrams (3.5C)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "rdI7xEq4Ew8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.8"
+   ],
+   "confidence": "medium",
+   "evidence": "temperature-changes RP = the 3.8 practical",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "eExCBkp4jB4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.6C",
+    "3.7C"
+   ],
+   "confidence": "medium",
+   "evidence": "bond-energy calculations = bond breaking/making (3.6C) + enthalpy-from-bond-energies (3.7C)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "WojotwxPD6I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.9",
+    "3.10",
+    "3.11"
+   ],
+   "confidence": "medium",
+   "evidence": "surface-area factor = investigate/describe/explain clauses of 3.9/3.10/3.11",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "G2TEfhwgq84",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.9",
+    "3.10",
+    "3.11"
+   ],
+   "confidence": "medium",
+   "evidence": "temperature factor = same clauses",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "u4Co4N-Jmbs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.9",
+    "3.10",
+    "3.11"
+   ],
+   "confidence": "medium",
+   "evidence": "concentration factor = same clauses",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "hel8fQjxcO8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.12",
+    "3.13"
+   ],
+   "confidence": "medium",
+   "evidence": "catalysts = rate-increase-unchanged definition (3.12) + lower-activation-pathway (3.13)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "N5p06i9ilmo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.15"
+   ],
+   "confidence": "medium",
+   "evidence": "rates RP = marble chips/concentration investigation of 3.15",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "66qcNNJFy6E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.17",
+    "3.18"
+   ],
+   "confidence": "medium",
+   "evidence": "reversible reactions = the 3.17 symbol clause + 3.18 examples (partial)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "utmV4Q0t6MI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.22C"
+   ],
+   "confidence": "medium",
+   "evidence": "concentration effect on equilibrium position = part of 3.22C",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "SlI5m0RQqik",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.22C"
+   ],
+   "confidence": "medium",
+   "evidence": "temperature effect on equilibrium position = part of 3.22C",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "hngzmRrAXTE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.22C"
+   ],
+   "confidence": "medium",
+   "evidence": "pressure effect on equilibrium position = part of 3.22C",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CX2IYWggEBc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1",
+    "4.7"
+   ],
+   "confidence": "medium",
+   "evidence": "crude oil and hydrocarbons = H-C-only definition (4.1) + crude-oil-as-mixture (4.7)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CjmriZq5xRo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.8"
+   ],
+   "confidence": "medium",
+   "evidence": "Cognito channel-only: crude oil fractional distillation = the industrial separation of 4.8",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "4EAh9E2KhOE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10"
+   ],
+   "confidence": "low",
+   "evidence": "properties of hydrocarbons adjacent to bp/viscosity trends of fractions; fraction-specific trend not title-evidenced",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "14XIKuOZ2Yw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.11"
+   ],
+   "confidence": "medium",
+   "evidence": "fossil fuels = fuels-releasing-heat definition of 4.11",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "8PM_tWNFbGY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.12"
+   ],
+   "confidence": "medium",
+   "evidence": "combustion of hydrocarbons = complete/incomplete products of 4.12",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "yLp6LOgPHmI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.13",
+    "4.14",
+    "4.15",
+    "4.16"
+   ],
+   "confidence": "medium",
+   "evidence": "pollutants from fuels = CO toxicity (4.13) + NOx (4.14) + SO2 (4.15) + acid rain (4.16)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "bOiYLKX9ZRY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.17"
+   ],
+   "confidence": "medium",
+   "evidence": "Cognito channel-only: cracking crude oil & alkenes = the long-chain conversion of 4.17 (catalyst clause not title-evidenced)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CmANMHeeZgw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.23",
+    "4.24",
+    "4.25"
+   ],
+   "confidence": "medium",
+   "evidence": "alkenes = C=C functional group (4.23) + general formula (4.24) + unsaturated classification (4.25)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "3ZLpmNJu-e0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.27",
+    "4.28"
+   ],
+   "confidence": "medium",
+   "evidence": "alkene reactions = bromine to dibromoalkanes (4.27) + bromine-water distinction (4.28)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "uFZasZ-hs_A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.29C",
+    "4.30C"
+   ],
+   "confidence": "medium",
+   "evidence": "alcohols = OH functional group (4.29C) + formulae of the series (4.30C)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "w3IBYDJ5XmM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.31C"
+   ],
+   "confidence": "medium",
+   "evidence": "reactions of alcohols = the oxidation routes of 4.31C",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ketAGS1gkQM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.34C",
+    "4.35C",
+    "4.36C",
+    "4.37C"
+   ],
+   "confidence": "medium",
+   "evidence": "carboxylic acids = functional group (4.34C) + formulae (4.35C) + reactions (4.36C) + vinegar (4.37C)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "EP0zfm_FVqc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.44"
+   ],
+   "confidence": "medium",
+   "evidence": "Cognito channel-only: monomers joined into polymers = the 4.44 addition-polymer definition",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "GhvevdJU_DM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.44",
+    "4.45",
+    "4.46"
+   ],
+   "confidence": "medium",
+   "evidence": "addition polymers = definition (4.44) + repeat units incl. poly(ethene) (4.45) + monomer-from-repeat-unit (4.46)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "QBuSFPOtcJ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.48C",
+    "4.49C"
+   ],
+   "confidence": "medium",
+   "evidence": "condensation polymers = dicarboxylic-acid + diol polyester/water (4.48C) + repeat-unit formula (4.49C)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "8PQDf0ZG6n0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.20"
+   ],
+   "confidence": "low",
+   "evidence": "KS3 tier: metal/non-metal oxides = the acid-base-character classification of 1.20, below IGCSE level",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ROQKZ_d1C2k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.21"
+   ],
+   "confidence": "low",
+   "evidence": "KS3 tier: metals vs non-metals = PT-position classification of 1.21, below IGCSE level",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Dh0y1Lq8aLA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.22C"
+   ],
+   "confidence": "low",
+   "evidence": "KS3 tier: extracting metals from ores = the 2.22C ores clause, below IGCSE level",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 182,
+  "specPointsMapped": 119,
+  "specPointsUnmapped": 63,
+  "videosTotal": 91,
+  "videosMapped": 86,
+  "videosUnmapped": 5,
+  "mappingRows": 87,
+  "byConfidence": {
+   "high": 0,
+   "medium": 80,
+   "low": 7
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/igcse-chemistry-19.json",
+   "sha256": "6767146af4a83657bdce68114e9bf7a399a2c35bb85b90ee44fecdd2a79100b5"
+  },
+  "draft": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-chemistry-19/video-map.draft.external.json",
+   "task": "T-VIDEOMAP-P2C",
+   "reviewAppliedUtc": "2026-11-09T06:10:24Z"
+  }
+ },
+ "generatedUtc": "2026-11-09T06:12:44.901Z"
+}

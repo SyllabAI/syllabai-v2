@@ -106,7 +106,7 @@ function TaskCard({
       >
         <span
           className={cn(
-            "flex size-5 shrink-0 items-center justify-center rounded-full border text-[10px] font-semibold",
+            "flex size-5 shrink-0 items-center justify-center rounded-full border text-2xs font-semibold",
             done ? "border-primary bg-primary text-primary-foreground" : "text-muted-foreground",
           )}
         >
@@ -117,14 +117,14 @@ function TaskCard({
             {task.title ?? (task.kind === "examQuestion" ? "Exam question" : task.kind === "quiz" ? "Quiz" : "Study notes")}
           </span>
           {task.topicPath && (
-            <span className="block truncate text-[11px] text-muted-foreground">{task.topicPath}</span>
+            <span className="block truncate text-2xs text-muted-foreground">{task.topicPath}</span>
           )}
         </span>
-        <Badge variant="outline" className="shrink-0 text-[10px] font-normal">
+        <Badge variant="outline" className="shrink-0 text-2xs font-normal">
           {task.kind === "courseSection" ? "notes" : task.kind === "quiz" ? "quiz" : "exam q"}
         </Badge>
         {task.kind === "examQuestion" && task.marksTotal != null && (
-          <span className="shrink-0 text-[11px] tabular-nums text-muted-foreground">
+          <span className="shrink-0 text-2xs tabular-nums text-muted-foreground">
             {task.marksTotal} mk
           </span>
         )}
@@ -252,12 +252,12 @@ export function PackPlayer({
           Resource pack — {doneCount}/{pack.tasks.length} tasks done
           {marksRecorded > 0 && ` · ${marksRecorded}/${pack.marksTotal} marks recorded`}
         </p>
-        <Badge variant="secondary" className="text-[10px] font-normal">
+        <Badge variant="secondary" className="text-2xs font-normal">
           Seneca resources · {pack.courseLabel}
         </Badge>
       </div>
       {closed && (
-        <p className="text-[11px] text-muted-foreground">
+        <p className="text-2xs text-muted-foreground">
           This assignment is closed — no new completions. Your recorded work stays on your account.
         </p>
       )}
@@ -278,7 +278,7 @@ export function PackPlayer({
           />
         ))}
       </div>
-      <p className="text-[11px] leading-relaxed text-muted-foreground">
+      <p className="text-2xs leading-relaxed text-muted-foreground">
         Completion is recorded on your SyllabAI account (server-side scored — exam-question marks
         are clamped into the question's mark band). Hand in from the button below; it is completion
         evidence only and never writes mastery.

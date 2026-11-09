@@ -91,7 +91,7 @@ export function TopicPicker({
           onChange={(e) => onFreeTopic(e.target.value)}
         />
       )}
-      <p className="text-[11px] text-muted-foreground">
+      <p className="text-2xs text-muted-foreground">
         The subject never appears here — the picked class resolves it server-side.
       </p>
     </div>
@@ -188,7 +188,7 @@ export function LessonPlanForm({
         <div className="space-y-1.5">
           <div className="flex items-center justify-between">
             <Label>Learning objectives (attached verbatim from the curriculum)</Label>
-            <Badge variant="outline" className="text-[10px] font-normal">
+            <Badge variant="outline" className="text-2xs font-normal">
               {outcomeSel.size} / {outcomes.length} attached
             </Badge>
           </div>
@@ -208,7 +208,7 @@ export function LessonPlanForm({
                 />
                 <span>{o.title}</span>
                 {o.coverage === "TAUGHT" && (
-                  <Badge variant="secondary" className="ml-auto shrink-0 text-[10px] font-normal">
+                  <Badge variant="secondary" className="ml-auto shrink-0 text-2xs font-normal">
                     taught
                   </Badge>
                 )}
@@ -308,7 +308,7 @@ export function RubricForm({
           value={value.taskDescription}
           onChange={(e) => onChange({ taskDescription: e.target.value })}
         />
-        <p className="text-[11px] text-muted-foreground">{value.taskDescription.length} / 600</p>
+        <p className="text-2xs text-muted-foreground">{value.taskDescription.length} / 600</p>
       </div>
       <div className="space-y-1.5">
         <Label>Marks per criterion</Label>
@@ -331,7 +331,7 @@ export function RubricForm({
       <div className="space-y-1.5">
         <div className="flex items-center justify-between">
           <Label>Criteria assessed (up to 4)</Label>
-          <Badge variant="outline" className="text-[10px] font-normal">
+          <Badge variant="outline" className="text-2xs font-normal">
             {value.criteria.length} / 4
           </Badge>
         </div>
@@ -438,7 +438,7 @@ export function SowForm({
       <div className="space-y-1.5">
         <div className="flex items-center justify-between">
           <Label>Emphasis areas (optional)</Label>
-          <Badge variant="outline" className="text-[10px] font-normal">
+          <Badge variant="outline" className="text-2xs font-normal">
             {value.emphasisAreas.length} selected
           </Badge>
         </div>
@@ -544,7 +544,7 @@ export function CoachForm({
             </SelectContent>
           </Select>
           {attachedTitle && (
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-2xs text-muted-foreground">
               Attached: {attachedTitle}{" "}
               <button
                 type="button"
@@ -571,7 +571,7 @@ export function CoachForm({
             onChange({ inputText: e.target.value });
           }}
         />
-        <p className="text-[11px] text-muted-foreground">{value.inputText.length} / 2000</p>
+        <p className="text-2xs text-muted-foreground">{value.inputText.length} / 2000</p>
       </div>
     </div>
   );

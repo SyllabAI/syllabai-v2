@@ -869,24 +869,24 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
           {token ? (
             <>
               {snap.status === "saving" && (
-                <span className="flex items-center gap-1 px-1 text-[11px] text-muted-foreground" role="status">
+                <span className="flex items-center gap-1 px-1 text-2xs text-muted-foreground" role="status">
                   <Loader2 className="size-3 animate-spin" aria-hidden /> Saving…
                 </span>
               )}
               {snap.status === "synced" && (
-                <span className="flex items-center gap-1 px-1 text-[11px] text-muted-foreground" role="status">
+                <span className="flex items-center gap-1 px-1 text-2xs text-muted-foreground" role="status">
                   <Check className="size-3" aria-hidden /> {snap.dirty ? "Saving…" : "Saved"}
                 </span>
               )}
               {snap.status === "conflict" && (
-                <span className="flex items-center gap-1 px-1 text-[11px] text-amber-600" role="alert">
+                <span className="flex items-center gap-1 px-1 text-2xs text-amber-600" role="alert">
                   <AlertTriangle className="size-3" aria-hidden /> Edited elsewhere
                 </span>
               )}
               {snap.status === "error" && (
                 <button
                   type="button"
-                  className="flex items-center gap-1 rounded px-1 text-[11px] text-destructive underline underline-offset-2"
+                  className="flex items-center gap-1 rounded px-1 text-2xs text-destructive underline underline-offset-2"
                   onClick={() => sync.retry()}
                 >
                   <AlertTriangle className="size-3" aria-hidden /> Retry sync
@@ -1821,7 +1821,7 @@ export function InkCanvas({
         <div
           role="status"
           aria-label="Swept angle"
-          className="pointer-events-none absolute z-40 rounded border bg-background/95 px-1.5 py-0.5 text-[11px] shadow-md"
+          className="pointer-events-none absolute z-40 rounded border bg-background/95 px-1.5 py-0.5 text-2xs shadow-md"
           style={{
             left: `${protractor.x * 100}%`,
             top: `${protractor.y * 100}%`,

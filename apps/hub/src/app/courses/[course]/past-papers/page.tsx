@@ -179,7 +179,7 @@ export default async function PastPapersPage({
             </p>
             <p className="mt-1">
               Official {meta.board ?? "Pearson Edexcel"} documents streamed from the{" "}
-              <span className="font-mono text-[11px]">syllabai-pastpapers</span> archive
+              <span className="font-mono text-2xs">syllabai-pastpapers</span> archive
               (auto-matched — official-source verification in progress · index generated{" "}
               {corpusIndex.meta.generatedAt.slice(0, 10)}).
             </p>
@@ -212,12 +212,12 @@ export default async function PastPapersPage({
                           <PaperMarksRollup paperCode={p.ref} sessionLabel={sessionLabel(p.sessionId)} />
                           <span className="text-xs text-muted-foreground">{p.title}</span>
                           {p.specBadge && (
-                            <Badge variant="outline" className="text-[10px] text-muted-foreground">
+                            <Badge variant="outline" className="text-2xs text-muted-foreground">
                               {p.specBadge}
                             </Badge>
                           )}
                           {p.variantChip && (
-                            <Badge variant="outline" className="text-[10px]">
+                            <Badge variant="outline" className="text-2xs">
                               {p.variantChip}
                             </Badge>
                           )}
@@ -226,14 +226,14 @@ export default async function PastPapersPage({
                               variant="outline"
                               // t-ui-polish run-007: the playable badge speaks the
                               // house primary-tinted voice (border-primary/60).
-                              className="gap-1 border-primary/60 text-[10px] text-primary"
+                              className="gap-1 border-primary/60 text-2xs text-primary"
                             >
                               <Puzzle className="size-3" aria-hidden />
                               playable
                             </Badge>
                           )}
                         </p>
-                        <p className="mt-0.5 text-[11px] text-muted-foreground">
+                        <p className="mt-0.5 text-2xs text-muted-foreground">
                           {p.specTitle}
                           {p.durationMin != null
                             ? ` · ${Math.floor(p.durationMin / 60)}h${p.durationMin % 60 ? ` ${p.durationMin % 60}m` : ""} official`
@@ -372,7 +372,7 @@ function ReconstructionArchive({
                     {scope && (
                       <Badge
                         variant="outline"
-                        className="text-[10px] text-muted-foreground"
+                        className="text-2xs text-muted-foreground"
                         title={scope.note}
                       >
                         {scope.label}
@@ -384,7 +384,7 @@ function ReconstructionArchive({
                     {p.totalMarks} marks · {paperEstTime(p.totalMarks)}
                   </span>
                   {scope && (
-                    <span className="mt-0.5 block text-[11px] leading-snug text-muted-foreground/80">
+                    <span className="mt-0.5 block text-2xs leading-snug text-muted-foreground/80">
                       {scope.note}
                     </span>
                   )}

@@ -125,17 +125,17 @@ function QuestionViewer({ resource }: { resource: SenecaResource }) {
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-2">
         {resource.questionType && (
-          <Badge variant="outline" className="text-[10px] uppercase">
+          <Badge variant="outline" className="text-2xs uppercase">
             {resource.questionType}
           </Badge>
         )}
         {resource.marksTotal != null && (
-          <Badge variant="secondary" className="text-[10px]">
+          <Badge variant="secondary" className="text-2xs">
             {resource.marksTotal} {resource.marksTotal === 1 ? "mark" : "marks"}
           </Badge>
         )}
         {resource.topicPath && (
-          <span className="text-[11px] text-muted-foreground">{resource.topicPath}</span>
+          <span className="text-2xs text-muted-foreground">{resource.topicPath}</span>
         )}
       </div>
       <Markdown className="max-w-none text-sm">{stem || plaintext(resource.title) || "(question unavailable)"}</Markdown>
@@ -156,7 +156,7 @@ function QuestionViewer({ resource }: { resource: SenecaResource }) {
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="mt-3 rounded-md border bg-muted/40 p-3">
-              <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+              <p className="mb-1 text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
                 Mark scheme
               </p>
               <Markdown className="max-w-none">{senecaMd(resource.content.markScheme)}</Markdown>
@@ -346,11 +346,11 @@ export function SenecaBrowser({
                 />
               </div>
             ) : mode === "questions" ? (
-              <p className="px-1 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+              <p className="px-1 text-2xs font-medium uppercase tracking-wide text-muted-foreground">
                 Source course & topic
               </p>
             ) : (
-              <p className="px-1 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+              <p className="px-1 text-2xs font-medium uppercase tracking-wide text-muted-foreground">
                 Quizzes
               </p>
             )}
@@ -373,7 +373,7 @@ export function SenecaBrowser({
                 {[...origins.keys()].map((o) => (
                   <div key={o}>
                     {origins.size > 1 && (
-                      <p className="px-2 pb-1 pt-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                      <p className="px-2 pb-1 pt-2 text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
                         {o}
                       </p>
                     )}
@@ -393,7 +393,7 @@ export function SenecaBrowser({
                         >
                           <CircleHelp className="size-3.5 shrink-0 text-muted-foreground" aria-hidden />
                           <span className="truncate">{t}</span>
-                          <span className="ml-auto shrink-0 text-[10px] tabular-nums text-muted-foreground">
+                          <span className="ml-auto shrink-0 text-2xs tabular-nums text-muted-foreground">
                             {qs.length}
                           </span>
                         </button>
@@ -408,7 +408,7 @@ export function SenecaBrowser({
             </div>
           ) : (
             <div className="max-h-[60vh] overflow-y-auto p-2 lg:max-h-[calc(100dvh-16rem)]">
-              <p className="px-2 pb-1.5 text-[10px] text-muted-foreground">
+              <p className="px-2 pb-1.5 text-2xs text-muted-foreground">
                 Showing {list.length.toLocaleString()} of {(mode === "lessons" ? sections.length : quizzes.length).toLocaleString()}
               </p>
               <div className="space-y-0.5">
@@ -423,7 +423,7 @@ export function SenecaBrowser({
                   >
                     <span className="truncate">{r.title ?? "(untitled)"}</span>
                     {r.kind === "courseSection" && r.content.imageUrl && (
-                      <span className="ml-auto shrink-0 rounded bg-muted px-1 text-[9px] uppercase text-muted-foreground">
+                      <span className="ml-auto shrink-0 rounded bg-muted px-1 text-2xs uppercase text-muted-foreground">
                         illus.
                       </span>
                     )}
@@ -464,7 +464,7 @@ export function SenecaBrowser({
                 >
                   <ChevronLeft className="size-4" aria-hidden /> Back
                 </Button>
-                <span className="text-[11px] tabular-nums text-muted-foreground">
+                <span className="text-2xs tabular-nums text-muted-foreground">
                   {selectedIndex + 1} / {list.length.toLocaleString()}
                 </span>
                 <div className="ml-auto flex gap-1">
@@ -498,7 +498,7 @@ export function SenecaBrowser({
           ) : mode === "questions" && topicQuestions.length > 0 ? (
             /* topic picked, no question yet — list the topic's questions here */
             <div className="max-h-[70vh] overflow-y-auto">
-              <p className="border-b px-4 py-2.5 text-[11px] text-muted-foreground">
+              <p className="border-b px-4 py-2.5 text-2xs text-muted-foreground">
                 <span className="font-medium text-foreground">{originName}</span>
                 {" › "}
                 <span className="font-medium text-foreground">{topicName}</span>
@@ -512,7 +512,7 @@ export function SenecaBrowser({
                     onClick={() => pick(r.id)}
                     className="flex w-full items-start gap-3 px-4 py-2.5 text-left text-xs transition-colors hover:bg-muted"
                   >
-                    <span className="w-8 shrink-0 pt-0.5 text-[10px] tabular-nums text-muted-foreground">
+                    <span className="w-8 shrink-0 pt-0.5 text-2xs tabular-nums text-muted-foreground">
                       Q{i + 1}
                     </span>
                     <span className="line-clamp-2 flex-1 leading-relaxed">
@@ -521,7 +521,7 @@ export function SenecaBrowser({
                       ) || "(question)"}
                     </span>
                     {r.marksTotal != null && (
-                      <span className="shrink-0 pt-0.5 text-[10px] tabular-nums text-muted-foreground">
+                      <span className="shrink-0 pt-0.5 text-2xs tabular-nums text-muted-foreground">
                         {r.marksTotal}m
                       </span>
                     )}

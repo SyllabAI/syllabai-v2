@@ -297,7 +297,7 @@ function SubjectCard({
     : null;
 
   return (
-    <Card className="relative h-full border-primary/25 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm">
+    <Card className="relative h-full border-primary/30 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm">
       <Button
         variant="ghost"
         size="icon"
@@ -311,7 +311,7 @@ function SubjectCard({
         {/* eyebrow: board · level (SME: "IGCSE · Edexcel") — the row's real
             board via lib/board ("Edexcel" for the pre-CIE rows, the row's
             registry value for the CIE wave) */}
-        <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+        <p className="text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
           {boardOf(meta)} · {meta.level}
         </p>
 
@@ -323,7 +323,7 @@ function SubjectCard({
             </span>
           </Link>
           {isLastViewed && (
-            <Badge variant="secondary" className="px-1.5 py-0 text-[10px] font-medium">
+            <Badge variant="secondary" className="px-1.5 py-0 text-2xs font-medium">
               Last viewed
             </Badge>
           )}
@@ -668,7 +668,7 @@ export function DashboardClient({
                 </span>
                 <Badge
                   variant="outline"
-                  className="gap-1 px-1.5 py-0 text-[10px] font-medium text-primary"
+                  className="gap-1 px-1.5 py-0 text-2xs font-medium text-primary"
                   title={
                     resume.source === "account"
                       ? "From your SyllabAI account — it follows you across devices"
@@ -715,7 +715,7 @@ export function DashboardClient({
           >
             <Badge
               variant="outline"
-              className="gap-1 px-1.5 py-0 text-[10px] font-medium text-primary"
+              className="gap-1 px-1.5 py-0 text-2xs font-medium text-primary"
             >
               <CloudCheck className="size-3" aria-hidden /> Live
             </Badge>
@@ -827,7 +827,7 @@ export function DashboardClient({
               <p className="text-sm font-medium">{railTodayCopy(studyPlan)}</p>
               <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
                 <div
-                  className="h-2 rounded-full bg-primary transition-all"
+                  className="h-2 rounded-full bg-primary transition-[width]"
                   style={{ width: `${studyPlan.week.counters.percentToday}%` }}
                 />
               </div>

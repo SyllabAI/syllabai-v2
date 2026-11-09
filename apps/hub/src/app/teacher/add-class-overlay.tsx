@@ -186,7 +186,7 @@ function AddClassForm({
                 }
               >
                 {bname}
-                <Badge variant="secondary" className="px-1.5 text-[10px]">
+                <Badge variant="secondary" className="px-1.5 text-2xs">
                   {count}
                 </Badge>
               </Button>
@@ -225,7 +225,7 @@ function AddClassForm({
                   }
                 >
                   {lname}
-                  <Badge variant="secondary" className="px-1.5 text-[10px]">
+                  <Badge variant="secondary" className="px-1.5 text-2xs">
                     {count}
                   </Badge>
                 </Button>

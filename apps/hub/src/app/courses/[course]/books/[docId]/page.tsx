@@ -263,9 +263,9 @@ export default async function BookViewerPage({
                     href={`/courses/${slug}/revision-notes/${n.noteId}`}
                     className="flex flex-col items-start gap-0.5"
                   >
-                    <span className="line-clamp-2 text-[13px] font-medium leading-snug">{n.title}</span>
+                    <span className="line-clamp-2 text-xs font-medium leading-snug">{n.title}</span>
                     {n.path ? (
-                      <span className="max-w-full truncate text-[11px] text-muted-foreground">{n.path}</span>
+                      <span className="max-w-full truncate text-2xs text-muted-foreground">{n.path}</span>
                     ) : null}
                   </Link>
                 </DropdownMenuItem>
