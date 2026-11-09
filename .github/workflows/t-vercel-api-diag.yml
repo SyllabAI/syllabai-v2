@@ -1,0 +1,78 @@
+# T-VERCEL-API-DIAG run-001 — read-only discovery for the API bake floor.
+#
+# CONTEXT (T-MG-CH1-MARK-1 follow-up, 2026-11-09): the regions fix is merged
+# to main (#864, Nov 8) and the data of record is verified in production
+# (workflow run 7 postverify: 9 questions / 95 mark points / 95 rects), but
+# api.syllab-ai.com still serves a pre-fix build. The worklog of record
+# (.syllabai/worklog.md #658, #857) documents why: the OLD Vercel account is
+# usage-blocked (the Nov 5 bake failure -> "why is my account deployment
+# blocked"), production of record moved to a SECOND account (the hub's
+# manual CLI bakes), and the API project's git integration went silent Nov 4
+# (last status 04e3c40a, PR #783) — the API never moved and never baked.
+#
+# This workflow answers, with ZERO writes, the three facts the bake job
+# needs: (1) which team the VERCEL_BAKE_TOKEN sees, (2) whether an API
+# project exists there (name / id / rootDirectory), (3) where the
+# api.syllab-ai.com domain is assigned. Every request is a GET.
+#
+# SECRET LAW (t-ops-plane class, unchanged): the token is never printed,
+# echoed, or interpolated into log lines; only project/team/domain NAMES and
+# ids are printed.
+
+name: t-vercel-api-diag
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enumerate teams, projects, domains (READ-ONLY GETs)
+        env:
+          VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+
+          def vapi(url):
+              req = urllib.request.Request(url, headers={
+                  "Authorization": "Bearer " + os.environ["VERCEL_BAKE_TOKEN"],
+                  "Accept": "application/json", "User-Agent": "t-vercel-api-diag/1"})
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return json.loads(r.read().decode())
+
+          try:
+              teams = vapi("https://api.vercel.com/v2/teams").get("teams", [])
+              print("TEAMS visible to the token:", len(teams))
+              for t in teams:
+                  print("  ", t.get("id"), "| slug", t.get("slug"), "|", (t.get("name") or "")[:48])
+          except Exception as e:
+              print("teams probe failed (personal-account token?):", type(e).__name__, str(e)[:120])
+
+          projects = vapi("https://api.vercel.com/v9/projects?limit=100").get("projects", [])
+          print("PROJECTS on the token's scope:", len(projects))
+          for p in projects:
+              pid, name = p.get("id"), p.get("name")
+              root = p.get("rootDirectory") or "(repo root)"
+              latest = "(no production deployments)"
+              try:
+                  ds = vapi(f"https://api.vercel.com/v6/deployments?projectId={pid}&target=production&limit=1").get("deployments", [])
+                  if ds:
+                      d = ds[0]
+                      latest = f"{d.get('state')} @ {(d.get('meta') or {}).get('githubCommitSha','')[:10]} created {d.get('createdAt')}"
+              except Exception as e:
+                  latest = f"deployments probe failed: {type(e).__name__}"
+              doms = "(none)"
+              try:
+                  dd = vapi(f"https://api.vercel.com/v9/projects/{pid}/domains").get("domains", [])
+                  doms = ",".join(x.get("name", "") for x in dd) or "(none)"
+              except Exception as e:
+                  doms = f"domains probe failed: {type(e).__name__}"
+              print(f"  {name} | id {pid} | rootDirectory {root}")
+              print(f"      prod: {latest}")
+              print(f"      domains: {doms}")
+          PY
