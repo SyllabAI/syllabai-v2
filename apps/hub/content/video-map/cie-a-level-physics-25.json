@@ -1,0 +1,1705 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "cie-a-level-physics-25",
+ "qual": "A Level (CIE)",
+ "source": {
+  "provider": "multi (freesciencelessons / doodlescience / cognito channel-only / amoeba-sisters / malmesbury)",
+  "label": "cie-a-level-physics-25",
+  "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY; AQA<->CIE divergence handled by conservative binding (medium/low only, no high rows). NOTE: freesciencelessons videos with embedding disabled (oEmbed 401) were identity-checked via i.ytimg.com thumbnail liveness + the channel uploads-playlist enumeration instead; identityMethod field records which path each video used",
+  "enumeratedUtc": "2026-11-09T05:12:35Z"
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P2D",
+  "ruledUtc": "2026-11-09T06:10:24Z",
+  "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+  "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+  "evidenceBasis": "Title-only posture, tightened rule. 11 spec-level rejects: A-level-only formalisations carried by GCSE videos (flux definitions, binding energy, first law, I-V sketching, polarisation, I=Anvq, centre of gravity, hydrostatic derivation, equilibrium-with-torque) where the title does not name the clause.",
+  "rowsApproved": 51,
+  "rowsRejected": 11,
+  "rejects": [
+   {
+    "lessonRef": null,
+    "video": "63OTIdNb-TE",
+    "spec": "13.4.3",
+    "reason": "GCSE 'Gravitational Potential Energy' teaches ΔE=mgΔh; the gravitational-potential field concept of 13.4.3 is a distinct A-level framing, not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "FodEDHaEY68",
+    "spec": "20.5.1",
+    "reason": "GCSE 'Magnetic Fields' — the magnetic-flux definition of 20.5.1 is not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "FodEDHaEY68",
+    "spec": "20.2.3",
+    "reason": "Same video: flux-density definition (F=BIL formalisation, 20.2.3) not title-evidenced; a Doodle 'Motor Effect' medium binding already serves 20.2.3."
+   },
+   {
+    "lessonRef": null,
+    "video": "onkW8BF5I3Q",
+    "spec": "23.1.6",
+    "reason": "Binding energy per nucleon (23.1.6) is A-level-only, not title-evidenced in a GCSE fission/fusion video."
+   },
+   {
+    "lessonRef": null,
+    "video": "r1WV68nraoc",
+    "spec": "7.5.1",
+    "reason": "Polarisation (7.5.1) is an A-level-only clause, not title-evidenced in a GCSE transverse/longitudinal waves video."
+   },
+   {
+    "lessonRef": null,
+    "video": "WzSh6ykqn9I",
+    "spec": "9.3.3",
+    "reason": "'Resistance of a Filament Lamp' — the I–V characteristics sketching clause of 9.3.3 is a distinct skill, not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "5WVT5NR0iLA",
+    "spec": "16.2.2",
+    "reason": "GCSE 'Internal Energy' — the first law of thermodynamics ΔU=q+W (16.2.2) not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "PL8ATKipoB4",
+    "spec": "4.2.2",
+    "reason": "GCSE 'Resultant Forces' — the equilibrium condition incl. zero resultant torque (4.2.2) not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "s8C2RktZtbM",
+    "spec": "4.3.3",
+    "reason": "GCSE 'Atmospheric Pressure' — the hydrostatic Δp=ρgΔh derivation of 4.3.3 is a different frame, not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "W2aBVbcHr_k",
+    "spec": "4.1.1",
+    "reason": "'Gravity and Weight' — the centre-of-gravity clause of 4.1.1 not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "y9fgfQ078wc",
+    "spec": "9.1.4",
+    "reason": "I=Anvq (9.1.4) is an A-level-only formula, not title-evidenced in a GCSE charge/current/voltage video."
+   }
+  ]
+ },
+ "videos": [
+  {
+   "id": "x7GZ2DXef84",
+   "title": "GCSE Physics Revision \"Specific Latent Heat\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=x7GZ2DXef84",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 270,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Hs5x0-IU2F4",
+   "title": "GCSE Physics Revision \"Specific Heat Capacity\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Hs5x0-IU2F4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 236,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "63OTIdNb-TE",
+   "title": "GCSE Physics Revision \"Gravitational Potential Energy\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=63OTIdNb-TE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 204,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "P1lSWWUkMdQ",
+   "title": "GCSE Physics Revision \"Scalar and Vector Quantities\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=P1lSWWUkMdQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 182,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bb7sRiLKCvg",
+   "title": "GCSE Physics Revision \"Light-Dependent Resistors\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=bb7sRiLKCvg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 239,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "m19-8Vtewkw",
+   "title": "GCSE Physics Revision \"Work Done on a Gas\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=m19-8Vtewkw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 118,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FodEDHaEY68",
+   "title": "GCSE Physics Revision \"Magnetic Fields\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=FodEDHaEY68",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 244,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "onkW8BF5I3Q",
+   "title": "GCSE Physics Revision \"Nuclear Fission and Nuclear Fusion\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=onkW8BF5I3Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 217,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MtDeczF0azY",
+   "title": "Nuclear Fission and Fusion | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=MtDeczF0azY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 90,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DBDl6OOxyck",
+   "title": "GCSE Science Revision \"Systematic Errors\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=DBDl6OOxyck",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 281,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "evIa9edpJ6k",
+   "title": "GCSE Science Revision \"Random Errors\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=evIa9edpJ6k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 270,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ViY0-lOzbg0",
+   "title": "Gravitational Fields | A-Level Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=ViY0-lOzbg0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 300,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4yK3d88s3LU",
+   "title": "A Level Chemistry Revision \"Calculating the Amount of Substance from Mass\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4yK3d88s3LU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 274,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "r1WV68nraoc",
+   "title": "Cognito platform - GCSE Physics: Transverse & Longitudinal Waves (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=r1WV68nraoc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 473,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0f5iYCNCnow",
+   "title": "GCSE Physics Revision \"Transverse and Longitudinal Waves\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=0f5iYCNCnow",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 253,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WzSh6ykqn9I",
+   "title": "GCSE Physics Revision \"Resistance of a Filament Lamp\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=WzSh6ykqn9I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 196,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5WVT5NR0iLA",
+   "title": "GCSE Physics Revision \"Internal Energy\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=5WVT5NR0iLA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 212,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2SM13HG3Cpk",
+   "title": "Simple Harmonic Motion | A-Level Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=2SM13HG3Cpk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 289,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NuUDkub7N9A",
+   "title": "GCSE Chemistry Revision \"Electron Energy Levels\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=NuUDkub7N9A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 269,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xpSBhUpBXic",
+   "title": "GCSE Physics Revision \"Nuclear Equations\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=xpSBhUpBXic",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 316,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4iI7f4xw0Bk",
+   "title": "Distance-Time and Velocity-Time Graphs | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=4iI7f4xw0Bk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 117,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YEHcQD6Hij8",
+   "title": "GCSE Physics Revision \"Conservation of Momentum\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=YEHcQD6Hij8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 255,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ib64WwbhwkY",
+   "title": "Conservation of Momentum | A-Level Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=Ib64WwbhwkY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 136,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PL8ATKipoB4",
+   "title": "GCSE Physics Revision \"Resultant Forces\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=PL8ATKipoB4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 263,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "s8C2RktZtbM",
+   "title": "GCSE Physics - Atmospheric Pressure",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=s8C2RktZtbM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 192,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UR2rjO0TkU0",
+   "title": "Refraction and Diffraction | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=UR2rjO0TkU0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 85,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4ZjzbqtP-tY",
+   "title": "GCSE Physics Revision \"Potential Difference from Batteries\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4ZjzbqtP-tY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 212,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vJRXozSVTI8",
+   "title": "GCSE Physics Revision \"Resistors in Series and Parallel",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=vJRXozSVTI8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 312,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Dw50SCHEzOM",
+   "title": "Energy Transfer and Efficiency | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=Dw50SCHEzOM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 69,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Qw_9kX9PARc",
+   "title": "GCSE Physics Revision \"Elastic Potential Energy\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Qw_9kX9PARc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 218,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tL8ugCAz07g",
+   "title": "Newton's Laws of Motion | A-Level Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=tL8ugCAz07g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 196,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6yx0fQrK3fA",
+   "title": "GCSE Physics Revision \"Change in Momentum\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=6yx0fQrK3fA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 223,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Z9IcyAg8usM",
+   "title": "Electromagnets and Electromagnetic Induction | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=Z9IcyAg8usM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 110,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JHEmPZ-YnrU",
+   "title": "GCSE Physics Revision \"Work Done by a Force\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=JHEmPZ-YnrU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 256,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "u5vkYjV1V1A",
+   "title": "GCSE Physics Revision \"Electromagnetic Waves\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=u5vkYjV1V1A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 227,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Aucu7YshyQ0",
+   "title": "GCSE Physics Revision \"The Wave Equation\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Aucu7YshyQ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 323,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZXAmiRC0GBo",
+   "title": "GCSE Physics Revision \"Required Practical 8: Waves in a solid\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ZXAmiRC0GBo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 258,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3QxG29Vw8YA",
+   "title": "A Level Chemistry Revisions \"Using the Ideal Gas Equation to determine the Molar Mass of a Chemical\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=3QxG29Vw8YA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 242,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "CzcmUiD39VI",
+   "title": "Circular Motion | A-Level Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=CzcmUiD39VI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 275,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QQCJeAqBumE",
+   "title": "Hooke's Law - GCSE Science Required Practical",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=QQCJeAqBumE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Malmesbury Education required-practicals channel",
+   "durationS": 919,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "U-OUP_mXMCw",
+   "title": "The Big Bang Theory and Red-Shift | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=U-OUP_mXMCw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 80,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "W2aBVbcHr_k",
+   "title": "GCSE Physics Revision \"Gravity and Weight\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=W2aBVbcHr_k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 256,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "y9fgfQ078wc",
+   "title": "Charge, Current and Voltage | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=y9fgfQ078wc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 142,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8bGYV6ypP5o",
+   "title": "The Kinetic Theory | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=8bGYV6ypP5o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 96,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qAlpNXO_FRE",
+   "title": "GCSE Chemistry Revision \"Alpha Scattering Experiment\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=qAlpNXO_FRE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 244,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nyvVjJf7RAU",
+   "title": "GCSE Chemistry Revision \"Atomic Number and Mass Number\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=nyvVjJf7RAU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 333,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bjt4CrRL8yM",
+   "title": "GCSE Physics Revision \"Thermistors\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=bjt4CrRL8yM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 210,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Gyj444FK0zs",
+   "title": "Heat Transfer - Conduction and Convection | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=Gyj444FK0zs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 87,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "l1F6h9skFXU",
+   "title": "GCSE Physics Revision \"Ultrasound\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=l1F6h9skFXU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 194,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NuHzBKvuf3o",
+   "title": "The Motor Effect | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=NuHzBKvuf3o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "UK Doodle Science channel; A-Level/GCSE physics explainers",
+   "durationS": 97,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  }
+ ],
+ "mappings": [
+  {
+   "video": "x7GZ2DXef84",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names specific latent heat",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Hs5x0-IU2F4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names specific heat capacity",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "63OTIdNb-TE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2.1",
+    "5.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names gravitational potential energy (dE=mgh)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "P1lSWWUkMdQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names scalar and vector quantities",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "bb7sRiLKCvg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.3.7",
+    "10.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names light-dependent resistors",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "m19-8Vtewkw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "16.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names work done on a gas",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "onkW8BF5I3Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "23.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names nuclear fission and fusion",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "MtDeczF0azY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "23.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names nuclear fission and fusion",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "DBDl6OOxyck",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names systematic errors",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "evIa9edpJ6k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names random errors",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ViY0-lOzbg0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "13.1.1",
+    "13.2.1a"
+   ],
+   "confidence": "medium",
+   "evidence": "title names gravitational fields (A-Level)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ViY0-lOzbg0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "13.3.1"
+   ],
+   "confidence": "low",
+   "evidence": "field named; g=GM/r^2 derivation not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "4yK3d88s3LU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "15.1.1",
+    "15.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names calculating amount of substance (mole)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "r1WV68nraoc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.1",
+    "7.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names transverse and longitudinal waves",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "0f5iYCNCnow",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.1",
+    "7.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names transverse and longitudinal waves",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "WzSh6ykqn9I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names resistance of a filament lamp",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "5WVT5NR0iLA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "16.1.1",
+    "16.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names internal energy",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "2SM13HG3Cpk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "17.1.1",
+    "17.1.2",
+    "17.1.5",
+    "17.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names simple harmonic motion (A-Level)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "2SM13HG3Cpk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "17.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "SHM named; energy formula not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "NuUDkub7N9A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names electron energy levels",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "xpSBhUpBXic",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "23.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names nuclear equations",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "4iI7f4xw0Bk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1",
+    "2.1.2",
+    "2.1.3",
+    "2.1.4",
+    "2.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names distance-time and velocity-time graphs",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "YEHcQD6Hij8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names conservation of momentum",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Ib64WwbhwkY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names conservation of momentum (A-Level)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "UR2rjO0TkU0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names diffraction",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "4ZjzbqtP-tY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names potential difference",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "vJRXozSVTI8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.2.3",
+    "10.2.4",
+    "10.2.5",
+    "10.2.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names resistors in series and parallel",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Dw50SCHEzOM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names energy transfer and efficiency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Qw_9kX9PARc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names elastic potential energy",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Qw_9kX9PARc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "elastic named; plastic-deformation terms not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "tL8ugCAz07g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names Newton's laws of motion (A-Level)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "6yx0fQrK3fA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names change in momentum (force as rate of change)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "6yx0fQrK3fA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "momentum change named; inelastic-energy clause not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Z9IcyAg8usM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "20.5.4",
+    "20.5.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names electromagnetic induction",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "JHEmPZ-YnrU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names work done by a force",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "u5vkYjV1V1A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.4.1",
+    "7.4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names electromagnetic waves",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Aucu7YshyQ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the wave equation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ZXAmiRC0GBo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "waves named; stationary-wave demonstrations not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "3QxG29Vw8YA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "15.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names using the ideal gas equation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CzcmUiD39VI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names circular motion (A-Level)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "QQCJeAqBumE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names Hooke's law (tensile deformation)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "U-OUP_mXMCw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "25.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names Big Bang and red-shift",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "W2aBVbcHr_k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names gravity and weight",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "y9fgfQ078wc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names charge, current and voltage",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "8bGYV6ypP5o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "15.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the kinetic theory",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "qAlpNXO_FRE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the alpha scattering experiment",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "nyvVjJf7RAU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names atomic number and mass number",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "bjt4CrRL8yM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.3.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names thermistors",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Gyj444FK0zs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names heat transfer by conduction and convection",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "l1F6h9skFXU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "24.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names ultrasound",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "NuHzBKvuf3o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "20.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the motor effect (F=BIL)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 303,
+  "specPointsMapped": 66,
+  "specPointsUnmapped": 237,
+  "videosTotal": 50,
+  "videosMapped": 47,
+  "videosUnmapped": 3,
+  "mappingRows": 51,
+  "byConfidence": {
+   "high": 0,
+   "medium": 46,
+   "low": 5
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/cie-a-level-physics-25.json",
+   "sha256": "1e3d8321e9599818003dac06a34276a39370507471d6d356a5cc447400943ee6"
+  },
+  "draft": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-physics-25/video-map.draft.external.json",
+   "task": "T-VIDEOMAP-P2D",
+   "reviewAppliedUtc": "2026-11-09T06:10:24Z"
+  }
+ },
+ "generatedUtc": "2026-11-09T06:12:44.921Z"
+}
