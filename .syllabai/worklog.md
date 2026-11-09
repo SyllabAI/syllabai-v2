@@ -2037,3 +2037,11 @@ Stage Summary:
 origin/main
 origin/main
 origin/main
+
+## receipt(RN-DEBRIS-11) run-013 — the CIE batch row-label title repairs (2026-11-09) — 33 rows / 6 courses / 3 planes, evidence-passed per the run-008/009 standard
+
+- Source of record: syllabai-resources @ 34aa6fab (sparse blobless; RS-23 PDF sha256 901548ef… byte-matches the run-009 pin). pdftotext -layout official-code extraction: title column + wrapped-continuation join, '(continued)' page-repeat dedupe; upstream parsed titles (same PDF pins) carry the same fragments and are completed by the extraction — 29 rows direct PDF prose, 4 rows composed (0606 4.1/4.2/10.4/14.11 formula bullet lists flattened per the corpus's own Unicode-glyph convention, flagged composed=true with source pins).
+- Repairs of record: 33 title edits x3 planes — content curriculum.json (6 files), public/kg/data labels (6 files, 66 string-leaf sites — dict labels + [id,label] tuple mirrors, 2 per row), apps/hub/spines mirrors (6 files) — the spine-mirror law applied from the start (run-011/012 lesson); serializer law preserved per file (CIE content indent=1 pretty-printed r5-era state, run-010 precedent; spine+KG compact).
+- Gates of record: G0 exactly 18 files; G2 title-only (content+spine) / label-only (KG, 33 sites, deep path-diff); G3 node/edge/point counts byte-equal; G6 mirror equality 33/33 both mirrors + old-title extinction in all three planes (string-leaf law); G7 no new title dups; placement verify_sme_wire_r0 A/B IDENTICAL (90/2,574/43,232, placed 2,574, unplaced 0, gen-row homes 30); prebuild chain ALL GREEN (corpus/flashcard-sync/CIE/gradeB/subject-identity).
+- Disclosed (not repaired, queue additions): the 0606 title+notes glue class beyond the census fragments (SUB4.3/8.1/8.2/10.5/10.6/14.2/14.12/14.13/14.15) and the cie-a-level-maths-20-pure-1 glued/interleaved class — each needs its own evidence pass. run-014 (Edexcel batch, 25 rows) is stacked on this branch; merge order 013 then 014. Zero src bytes, zero code, zero spec-point/stamp bytes; author does not self-merge.
+- Receipt: .syllabai/receipts/RN-DEBRIS-11/run-013-cie-rowlabel-titles.json; artifacts: .syllabai/lane-artifacts/RN-DEBRIS-11/run013_* + run013docs/. Branch lane/rn-debris-11-run-013-cie-rowlabel-titles from origin/main 676bbc6d.
