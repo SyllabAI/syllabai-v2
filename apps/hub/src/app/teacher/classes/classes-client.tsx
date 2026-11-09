@@ -189,8 +189,14 @@ export function TeacherClassesClient({
       )}
 
       {classes === null ? (
-        <div className="flex min-h-[30vh] items-center justify-center">
-          <Loader2 className="size-5 animate-spin text-muted-foreground" aria-label="Loading classes" />
+        <div className="min-h-[30vh]" role="status" aria-label="Loading classes">
+          {/* run-006 (P5): the class grid loads as skeletons. */}
+          <div className="h-9 w-40 animate-pulse rounded-md bg-muted motion-reduce:animate-none" aria-hidden />
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" aria-hidden>
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className="h-32 animate-pulse rounded-lg border bg-muted/50 motion-reduce:animate-none" />
+            ))}
+          </div>
         </div>
       ) : classes.length === 0 ? (
         <div className="rounded-lg border border-dashed px-6 py-12 text-center">

@@ -349,8 +349,21 @@ export function ClassDetailClient({
 
   if (loading) {
     return (
-      <div className="flex min-h-[40vh] items-center justify-center">
-        <Loader2 className="size-5 animate-spin text-muted-foreground" aria-label="Loading class" />
+      <div className="min-h-[40vh]" role="status" aria-label="Loading class">
+        {/* run-006 (P5): the class workspace loads as a header + two-zone
+            skeleton (sidebar rail + content cards). */}
+        <div className="h-9 w-64 max-w-full animate-pulse rounded-md bg-muted motion-reduce:animate-none" aria-hidden />
+        <div className="mt-4 flex flex-col gap-6 md:flex-row" aria-hidden>
+          <div className="w-full shrink-0 space-y-2 md:w-56">
+            {["w-24", "w-36", "w-32", "w-40"].map((w, i) => (
+              <div key={i} className={`h-5 animate-pulse rounded-md bg-muted motion-reduce:animate-none ${w}`} />
+            ))}
+          </div>
+          <div className="min-w-0 flex-1 space-y-3">
+            <div className="h-24 animate-pulse rounded-lg border bg-muted/50 motion-reduce:animate-none" />
+            <div className="h-24 animate-pulse rounded-lg border bg-muted/50 motion-reduce:animate-none" />
+          </div>
+        </div>
       </div>
     );
   }
