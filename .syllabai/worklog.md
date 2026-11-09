@@ -2085,3 +2085,12 @@ origin/main
 - Disclosed boundary: the /graph-explorer prototype builds stay byte-faithful (no-patch
   law) — affordance ships on the product surface where the served corpus lives; export
   path + weekly report are Phase 2. Standing PAT-rotation reminder (fifth filing).
+
+
+## T-VERCEL-API-BAKE run-001 receipt (2026-11-09 06:52Z) — the law proven, the quota is the last wall
+
+- THE PIPELINE PROVEN END-TO-END: diag run-001 (read-only: both projects of record on the bake token's team; the API = syllabai-v2, repo-root rootDirectory, api.syllab-ai.com assigned) -> PR #887 (the dirty-state union-merge per the house law; the 504 infra-flake verify red re-triggered per the empty-commit law; CI green on e7145c5e) -> dispatch run-001: state-aware read (newest live = READY @ no-SHA = the stale dashboard Redeploy) -> preflight (framework/buildCommand/outputDirectory all None, rootDirectory None = repo-root default) -> vercel link ✓ (syllabainoreply-4440/syllabai-v2) -> deploy uploaded 4.9MB of source -> **"Resource is limited - try again in 24 hours (more than 100, code: api-deployments-free-per-day)"**.
+- THE READING: the new account is on the Hobby plan's 100-deployments/day cap, exhausted by today's merge-train churn (per-PR previews across lanes + the hub floor + the operator's Redeploys). The bake itself is byte-perfect — the ONLY failure is the quota.
+- THE SELF-HEAL: the workflow's 03:30 UTC schedule fires off-peak by design (ahead of the merge train, per the t-vercel-usage-bake doctrine). When the quota resets, the state-aware read still sees the pre-meta stale deployment != main HEAD and the bake fires on its own — NO operator action required. If the churn exhausts the quota earlier than 03:30 again, the upgrade lever (Pro) is the operator's.
+- UNAFFECTED AND GREEN: the data of record (9 questions / 95 mark points / 95 rects, postverify-gated) — the quota is a deployment-plane limit, not a data-plane one. Live regions probe (self-registered viewer account, 06:12Z): resolve 200, regions 500 — the stale build serves until the bake lands.
+- THE HUB: the dispatched bake (run 11) completed exit-0 (production deployment 436f510be6, READY posture at dispatch time; CLI deploy exits 0 only on completion).
