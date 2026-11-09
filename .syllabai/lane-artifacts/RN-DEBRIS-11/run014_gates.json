@@ -1,0 +1,76 @@
+{
+ "G0_fileScope": [
+  "apps/hub/content/ial-biology-18/curriculum.json",
+  "apps/hub/content/ial-chemistry-17/curriculum.json",
+  "apps/hub/content/igcse-history-17/curriculum.json",
+  "apps/hub/content/igcse-ict-17/curriculum.json",
+  "apps/hub/content/igcse-maths-a-modular-24-foundation-unit-2/curriculum.json",
+  "apps/hub/public/kg/data/ial-biology-18.json",
+  "apps/hub/public/kg/data/ial-chemistry-17.json",
+  "apps/hub/public/kg/data/igcse-history-17.json",
+  "apps/hub/public/kg/data/igcse-ict-17.json",
+  "apps/hub/public/kg/data/igcse-maths-a-modular-24-foundation-unit-2.json",
+  "apps/hub/spines/ial-biology-18.json",
+  "apps/hub/spines/ial-chemistry-17.json",
+  "apps/hub/spines/igcse-history-17.json",
+  "apps/hub/spines/igcse-ict-17.json",
+  "apps/hub/spines/igcse-maths-a-modular-24-foundation-unit-2.json"
+ ],
+ "G1_serializer": {
+  "ial-biology-18": {
+   "content": "compact",
+   "spine": "compact",
+   "kg": "compact"
+  },
+  "ial-chemistry-17": {
+   "content": "compact",
+   "spine": "compact",
+   "kg": "compact"
+  },
+  "igcse-history-17": {
+   "content": "indent2_nl",
+   "spine": "compact",
+   "kg": "compact"
+  },
+  "igcse-ict-17": {
+   "content": "compact",
+   "spine": "compact",
+   "kg": "compact"
+  },
+  "igcse-maths-a-modular-24-foundation-unit-2": {
+   "content": "compact",
+   "spine": "compact",
+   "kg": "compact"
+  }
+ },
+ "G2_fieldDiffs": "title-only (content+spine nodes); KG label sites id-resolved (section node + sections dict + SubTopic node + subtopics tuple mirrors), pair-idempotent",
+ "G3_structure": "node/edge/point counts byte-equal all planes (gates_run014.py)",
+ "G6_mirrorEquality": "KG labels + spine titles == new content titles 25/25 + old-title extinction in all three planes (string-leaf law)",
+ "G7_uniqueness": "no NEW cross-section title collisions (TOPIC+:SUB_ pair sharing is lawful pre-existing structure) (gates_run014.py)",
+ "placementGate": {
+  "script": "apps/hub/scripts/verify_sme_wire_r0.ts A/B",
+  "A": "courses 90 sets 2574 questions 43232 placed 2574 unplaced 0 gen-row homes 30",
+  "B": "courses 90 sets 2574 questions 43232 placed 2574 unplaced 0 gen-row homes 30",
+  "verdict": "IDENTICAL"
+ },
+ "prebuildChain": {
+  "verify_corpus_23a": "OK",
+  "verify_flashcard_sync_courses": "OK",
+  "validate_cie_bundles": "OK (census unchanged)",
+  "validate_gradeb_bundle": "OK",
+  "verify_subject_identity": "OK"
+ },
+ "resourcesPin": "34aa6fab67f060236cd4d307963fde7f68ccd658 (sparse blobless)",
+ "pdfSha256": {
+  "664560-2025-2027-syllabus.pdf": "5e6fe634a2c2ae95bf823c742e585140e7a4495224373b5aaaccb78fe2e35db1",
+  "664563-2025-2027-syllabus.pdf": "bc40af1d0789b3217524f380337d3a36e49264f5f28ab991e3e85c9102d53ad2",
+  "662470-2025-2027-syllabus.pdf": "7d5412763f74834a441e45f4b0f983d163d6fc7511568a8c63bdf830ec8508a8",
+  "663158-2025-2027-syllabus.pdf": "901548ef9380eafc623122a4a82df733984e26f5b42e6ab3b93889aa09494b6f",
+  "International-A-Level-Biology-Spec.pdf": "9197bf761e06353b492fa04ee3ac4352a02e7e5baf56f277782f4ca0f53d2703",
+  "International-A-Level-Chemistry-Spec.pdf": "1e68fdf7d854f7a61b7d505456fc00eb6727b92bd003d03226963bd8ea6f832c",
+  "int-gcse-history-specification.pdf": "c8efe4433e9b03bb80b206838ceeb44c77b89b7af97a18fae1d2891c43d540f0",
+  "international-gcse-in-ict-spec.pdf": "12f15eeaae987589d221fac12bf3de2f6684bc2b01a20ffb0e056b339641a9dc",
+  "int-gcse-mathematics-spec-a-modular.pdf": "21c974c55021ca5ebcfdfcd4da1a5ccd9935d608483fff8ae96dc42df8c9003f"
+ },
+ "rows": 25
+}
