@@ -932,9 +932,12 @@
   /* geometry — soft, contained (pins below give the exact 10/18/28) */
   --radius: 28px;
 
-  /* fonts — Inter does everything (Law 8: one family, weight-driven) */
-  --app-font-sans: var(--font-inter), "Segoe UI", "Helvetica Neue", sans-serif;
-  --app-font-display: var(--font-inter), "Segoe UI", "Helvetica Neue", sans-serif;
+  /* fonts — Plus Jakarta Sans everywhere (T-HUB-AUDITFIX-1 run-002: plum
+     swaps off Inter to the default theme's body face — one family,
+     weight-driven, per Law 8; the pinned Inter woff2 stays committed per
+     the T-C36 bytes law but no theme references it anymore). */
+  --app-font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --app-font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
 
   color-scheme: light;
 }
