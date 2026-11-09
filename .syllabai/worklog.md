@@ -2239,3 +2239,4 @@ Stage Summary:
   .syllabai/receipts/ADR-044/run-001-spec-of-record.md. Circulation copy (md + docx + pdf)
   regenerated outside the repo at download/editor-role/. Standing reminder (TENTH filing): the PAT
   remains exposed from chat transmission and MUST be revoked/rotated.
+- MERGED (same trace): PR #883 -> main 9c6dd883 on the operator explicit order; review pass recorded in the receipt landing addendum; landing loops 1-6 (worklog union-merge each time, append-only law); Phase 1 landed as run-003 during the chase; sixth sandbox recycle — rotation reminder sixth filing this lane.
