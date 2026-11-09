@@ -311,7 +311,7 @@ function SubjectCard({
         {/* eyebrow: board · level (SME: "IGCSE · Edexcel") — the row's real
             board via lib/board ("Edexcel" for the pre-CIE rows, the row's
             registry value for the CIE wave) */}
-        <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+        <p className="text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
           {boardOf(meta)} · {meta.level}
         </p>
 
@@ -323,7 +323,7 @@ function SubjectCard({
             </span>
           </Link>
           {isLastViewed && (
-            <Badge variant="secondary" className="px-1.5 py-0 text-[10px] font-medium">
+            <Badge variant="secondary" className="px-1.5 py-0 text-2xs font-medium">
               Last viewed
             </Badge>
           )}
@@ -668,7 +668,7 @@ export function DashboardClient({
                 </span>
                 <Badge
                   variant="outline"
-                  className="gap-1 px-1.5 py-0 text-[10px] font-medium text-primary"
+                  className="gap-1 px-1.5 py-0 text-2xs font-medium text-primary"
                   title={
                     resume.source === "account"
                       ? "From your SyllabAI account — it follows you across devices"
@@ -715,7 +715,7 @@ export function DashboardClient({
           >
             <Badge
               variant="outline"
-              className="gap-1 px-1.5 py-0 text-[10px] font-medium text-primary"
+              className="gap-1 px-1.5 py-0 text-2xs font-medium text-primary"
             >
               <CloudCheck className="size-3" aria-hidden /> Live
             </Badge>

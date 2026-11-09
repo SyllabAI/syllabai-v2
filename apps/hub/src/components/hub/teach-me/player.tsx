@@ -65,7 +65,7 @@ export function objectivesPanel(objectives: TeachObjective[]) {
         const badge = OBJECTIVE_BADGE[o.status];
         return (
           <li key={o.id} className="flex items-start gap-2 text-xs leading-relaxed">
-            <Badge variant="outline" className={`shrink-0 text-[10px] ${badge.className}`}>
+            <Badge variant="outline" className={`shrink-0 text-2xs ${badge.className}`}>
               {badge.label}
             </Badge>
             <span className={o.status === "not_started" ? "text-muted-foreground" : ""}>
@@ -125,11 +125,11 @@ export function TeachMePlayer({
         {transcript.map((row) =>
           row.role === "pupil" ? (
             <div key={row.id} className="flex items-start gap-2.5">
-              <div className="mt-1 flex size-7 shrink-0 items-center justify-center rounded-full bg-primary/15 text-[11px] font-semibold text-primary">
+              <div className="mt-1 flex size-7 shrink-0 items-center justify-center rounded-full bg-primary/15 text-2xs font-semibold text-primary">
                 P
               </div>
               <div className="max-w-[85%] rounded-2xl rounded-tl-sm border border-border bg-card px-3.5 py-2.5">
-                <p className="text-[10px] uppercase tracking-wide text-muted-foreground">
+                <p className="text-2xs uppercase tracking-wide text-muted-foreground">
                   the Pupil · {row.kind ? KIND_LABEL[row.kind] : "replies"}
                 </p>
                 <p className="mt-1 whitespace-pre-wrap text-sm leading-relaxed">{row.text}</p>
@@ -181,7 +181,7 @@ export function TeachMePlayer({
               {sending ? "Sending…" : "Send"}
             </Button>
           </div>
-          <p className="mt-1 text-[11px] text-muted-foreground/70">
+          <p className="mt-1 text-2xs text-muted-foreground/70">
             Tip: ⌘/Ctrl + Enter sends. Short replies may earn a nudge instead of a verdict.
           </p>
         </section>
@@ -248,7 +248,7 @@ export function VerdictChipView({ chip }: { chip: VerdictChip }) {
           </p>
         )}
         {chip.overlapScore !== null && (
-          <p className="text-[11px] text-muted-foreground/70">
+          <p className="text-2xs text-muted-foreground/70">
             corpus-overlap check: {(chip.overlapScore * 100).toFixed(0)}%
           </p>
         )}

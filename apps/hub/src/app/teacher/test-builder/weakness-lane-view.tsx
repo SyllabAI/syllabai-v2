@@ -60,7 +60,7 @@ export function WeaknessLaneRows({
   return (
     <div>
       <p
-        className="mb-1.5 text-[11px] font-medium text-muted-foreground"
+        className="mb-1.5 text-2xs font-medium text-muted-foreground"
         data-testid="weak-lane-source"
       >
         {source === "live"
@@ -88,14 +88,14 @@ export function WeaknessLaneRows({
               className="mt-0.5"
             />
             <span className="min-w-0">
-              <span className="font-mono text-[10px] text-muted-foreground">{w.code}</span>{" "}
+              <span className="font-mono text-2xs text-muted-foreground">{w.code}</span>{" "}
               {w.title}
               {w.reasons.map((r) => (
-                <Badge key={r} variant="outline" className="ml-1 h-4 px-1 text-[9px]">
+                <Badge key={r} variant="outline" className="ml-1 h-4 px-1 text-2xs">
                   {WEAKNESS_REASON_LABELS[r] ?? r}
                 </Badge>
               ))}
-              <span className="block text-[10px] text-muted-foreground" data-testid="weak-lane-row-evidence">
+              <span className="block text-2xs text-muted-foreground" data-testid="weak-lane-row-evidence">
                 {w.meanMastery === null
                   ? "mastery unmeasured"
                   : `mean mastery ${(w.meanMastery * 100).toFixed(0)}%`}{" "}
@@ -109,7 +109,7 @@ export function WeaknessLaneRows({
               </span>
               {w.blockedBy.length > 0 && (
                 <span
-                  className="block text-[10px] text-muted-foreground"
+                  className="block text-2xs text-muted-foreground"
                   data-testid="weak-lane-blocked"
                 >
                   blocked by prerequisites: {w.blockedBy.join(", ")}
@@ -126,7 +126,7 @@ export function WeaknessLaneRows({
           >
             <Info className="mt-0.5 size-3 shrink-0" aria-hidden />
             <span>
-              <span className="font-mono text-[10px]">{g.code}</span> {g.title} — no class
+              <span className="font-mono text-2xs">{g.code}</span> {g.title} — no class
               evidence yet · {g.questionCount} validated question
               {g.questionCount === 1 ? "" : "s"} available
             </span>

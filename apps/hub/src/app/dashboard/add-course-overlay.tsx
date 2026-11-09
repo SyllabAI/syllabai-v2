@@ -171,7 +171,7 @@ export function AddCourseOverlay({
                   }
                 >
                   {name}
-                  <Badge variant="secondary" className="px-1.5 text-[10px]">
+                  <Badge variant="secondary" className="px-1.5 text-2xs">
                     {count}
                   </Badge>
                 </Button>
@@ -208,7 +208,7 @@ export function AddCourseOverlay({
                     }
                   >
                     {name}
-                    <Badge variant="secondary" className="px-1.5 text-[10px]">
+                    <Badge variant="secondary" className="px-1.5 text-2xs">
                       {count}
                     </Badge>
                   </Button>

@@ -183,7 +183,7 @@ export function TeachGenieLanding({
         </section>
       )}
 
-      <p className="text-center text-[11px] leading-relaxed text-muted-foreground">
+      <p className="text-center text-2xs leading-relaxed text-muted-foreground">
         What you cover is saved as an AI_SUGGESTED suggestion your teacher can ratify — the end-of-session review
         is the correction of record, so read it even when everything ticks green.
       </p>

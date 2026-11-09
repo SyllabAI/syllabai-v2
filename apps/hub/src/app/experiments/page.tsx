@@ -56,7 +56,7 @@ export default function ExperimentsPage() {
                 <CardTitle className="flex items-center gap-2 text-base">
                   <e.icon className="size-4 text-primary" aria-hidden />
                   <span className="font-mono">{e.title}</span>
-                  <Badge variant="secondary" className="ml-auto text-[10px]">
+                  <Badge variant="secondary" className="ml-auto text-2xs">
                     {e.status}
                   </Badge>
                 </CardTitle>

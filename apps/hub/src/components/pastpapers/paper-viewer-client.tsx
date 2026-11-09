@@ -422,7 +422,7 @@ export function PaperViewerClient({
             <X className="size-4" aria-hidden />
           </Button>
         </div>
-        <p className="shrink-0 bg-muted/50 px-3 py-1 text-center text-[11px] text-muted-foreground">
+        <p className="shrink-0 bg-muted/50 px-3 py-1 text-center text-2xs text-muted-foreground">
           Exam conditions — solve in your physical notebook. The mark scheme stays hidden until you
           finish.
         </p>
@@ -532,7 +532,7 @@ export function PaperViewerClient({
               ) : breakSource === "detected" ? (
                 <Badge
                   variant="outline"
-                  className="text-[10px]"
+                  className="text-2xs"
                   title="Extracted from the mark scheme text in this browser — check it against the paper"
                 >
                   auto-detected — check totals
@@ -663,7 +663,7 @@ export function PaperViewerClient({
                 </p>
                 <p className="mt-1 text-sm font-semibold">{durationLabel}</p>
                 {paper.durationMin == null && (
-                  <p className="mt-1 flex items-start gap-1 text-[11px] text-muted-foreground">
+                  <p className="mt-1 flex items-start gap-1 text-2xs text-muted-foreground">
                     <Info className="mt-0.5 size-3 shrink-0" aria-hidden />
                     Not attested for this paper — the pre-filled value below is an estimate, adjust
                     it before you begin.
@@ -743,10 +743,10 @@ export function PaperViewerClient({
           {paper.title}
           {paper.variantChip ? ` · ${paper.variantChip}` : ""} · {sessionLabelStr}
         </span>
-        {examCode && <ExamCodePill code={examCode} href={`/courses/${course}/specification`} className="hidden py-1 text-[11px] sm:inline-flex" />}
+        {examCode && <ExamCodePill code={examCode} href={`/courses/${course}/specification`} className="hidden py-1 text-2xs sm:inline-flex" />}
         <Badge
           variant="outline"
-          className="hidden text-[10px] md:inline-flex"
+          className="hidden text-2xs md:inline-flex"
           title={`Auto-matched index — official-source verification in progress · index generated ${metaGeneratedAt.slice(0, 10)}`}
         >
           Auto-matched

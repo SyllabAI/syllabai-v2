@@ -237,7 +237,7 @@ export function NoteCla({
     <>
       {/* SME's one-line banner — their verbatim copy, on the hub's
           theme-aware warn tokens */}
-      <div className="flex items-center gap-2 border-b bg-warn/10 px-4 py-2 text-[11px] leading-snug text-warn-ink">
+      <div className="flex items-center gap-2 border-b bg-warn/10 px-4 py-2 text-2xs leading-snug text-warn-ink">
         <Info className="size-3.5 shrink-0 text-warn" aria-hidden />
         <p>Chat can make mistakes. Please check all responses carefully.</p>
       </div>
@@ -270,7 +270,7 @@ export function NoteCla({
         )}
         {thread.map((m, i) =>
           m.role === "user" ? (
-            <div key={i} className="ml-auto w-fit max-w-[85%] rounded-2xl rounded-br-md bg-muted px-3 py-2 text-[13px]">
+            <div key={i} className="ml-auto w-fit max-w-[85%] rounded-2xl rounded-br-md bg-muted px-3 py-2 text-xs">
               {m.content}
             </div>
           ) : (
@@ -282,7 +282,7 @@ export function NoteCla({
               )}
             >
               {m.refused && (
-                <p className="flex items-center gap-1.5 text-[11px] font-semibold text-warn">
+                <p className="flex items-center gap-1.5 text-2xs font-semibold text-warn">
                   <TriangleAlert className="size-3.5" aria-hidden />
                   Not covered by this note
                 </p>
@@ -295,10 +295,10 @@ export function NoteCla({
                     // reader for corpus documents) becomes a link; everything
                     // else stays the honest read-only badge
                     const badgeClass =
-                      "inline-flex max-w-full items-center gap-1.5 rounded-full border bg-background px-2.5 py-1 text-[11px]";
+                      "inline-flex max-w-full items-center gap-1.5 rounded-full border bg-background px-2.5 py-1 text-2xs";
                     const badge = (
                       <>
-                        <span className="inline-flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-semibold text-primary">
+                        <span className="inline-flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/10 text-2xs font-semibold text-primary">
                           {c.index}
                         </span>
                         <FileText className="size-3 shrink-0 text-muted-foreground" aria-hidden />
@@ -335,7 +335,7 @@ export function NoteCla({
               {/* the §19-style traceability footer — collapsed behind a
                   tiny disclosure (SME shows nothing; the data stays one
                   click away) */}
-              <details className="text-[10px] text-muted-foreground">
+              <details className="text-2xs text-muted-foreground">
                 <summary className="w-fit cursor-pointer select-none hover:text-foreground">
                   trace
                 </summary>
@@ -364,7 +364,7 @@ export function NoteCla({
       {/* free input — the two live mode pills + the ask box */}
       <div className="space-y-2 border-t px-4 py-3">
         {error && (
-          <p className="rounded-md border border-destructive/40 bg-destructive/10 px-2.5 py-1.5 text-[11px] text-destructive">
+          <p className="rounded-md border border-destructive/40 bg-destructive/10 px-2.5 py-1.5 text-2xs text-destructive">
             {error}
           </p>
         )}
@@ -378,7 +378,7 @@ export function NoteCla({
               className={cn(
                 // t-ui-polish run-006: the inactive pill's hover speaks the
                 // house hover voice (border-primary/60), not the legacy /40.
-                "rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors",
+                "rounded-full border px-2.5 py-0.5 text-2xs font-medium transition-colors",
                 freeMode === m
                   ? "border-primary bg-primary text-primary-foreground"
                   : "border-border text-muted-foreground hover:border-primary/60",

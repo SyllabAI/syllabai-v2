@@ -341,7 +341,7 @@ export function AnswerInkPad({
       )}
 
       {status === "converting" && (
-        <p className="mt-2 flex items-center gap-1.5 text-[11px] text-muted-foreground">
+        <p className="mt-2 flex items-center gap-1.5 text-2xs text-muted-foreground">
           <Loader2 className="size-3.5 animate-spin" aria-hidden /> reading your writing…
         </p>
       )}
@@ -350,7 +350,7 @@ export function AnswerInkPad({
         <div className="mt-2">
           <label
             htmlFor="answer-ink-preview"
-            className="text-[11px] font-medium text-muted-foreground"
+            className="text-2xs font-medium text-muted-foreground"
           >
             We read your writing as — check and fix it before inserting:
           </label>
@@ -359,7 +359,7 @@ export function AnswerInkPad({
             value={preview}
             onChange={(e) => setPreview(e.target.value)}
             rows={3}
-            className="mt-1 min-h-16 bg-background text-[13px]"
+            className="mt-1 min-h-16 bg-background text-xs"
           />
           <div className="mt-2 flex flex-wrap items-center gap-2">
             <Button
@@ -388,14 +388,14 @@ export function AnswerInkPad({
       )}
 
       {status === "drawing" && (
-        <p className="mt-1.5 text-[11px] leading-snug text-muted-foreground">
+        <p className="mt-1.5 text-2xs leading-snug text-muted-foreground">
           Write text or equations and we&apos;ll convert it to text — check the result before it
           goes into your answer. The image itself is never stored.
         </p>
       )}
 
       {error && (
-        <p className="mt-1.5 text-[11px] leading-snug text-destructive" role="alert">
+        <p className="mt-1.5 text-2xs leading-snug text-destructive" role="alert">
           {error}
         </p>
       )}

@@ -297,7 +297,7 @@ export function Markdown({
             const variant = blockquoteVariant(node as HastNode);
             if (!variant) {
               return (
-                <blockquote className="rounded-r-md border-l-2 border-primary/50 bg-primary/5 px-3 py-1.5 text-[13px]">
+                <blockquote className="rounded-r-md border-l-2 border-primary/50 bg-primary/5 px-3 py-1.5 text-xs">
                   {children}
                 </blockquote>
               );
@@ -305,11 +305,11 @@ export function Markdown({
             return (
               <blockquote
                 className={cn(
-                  "rounded-r-md border-l-[3px] px-3 py-2 text-[13px]",
+                  "rounded-r-md border-l-[3px] px-3 py-2 text-xs",
                   variant.className,
                 )}
               >
-                <span className="mb-1 block text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                <span className="mb-1 block text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
                   {variant.label}
                 </span>
                 {children}

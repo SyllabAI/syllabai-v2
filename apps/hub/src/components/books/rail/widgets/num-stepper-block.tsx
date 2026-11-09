@@ -115,14 +115,14 @@ export function NumStepperBlock({ block }: { block: RailBlock }) {
           const locked = i > activeIdx;
           return (
             <li key={i} className={`rounded-md border px-2 py-1.5 ${isActive ? "border-primary/60" : "border-border"} ${locked ? "opacity-60" : ""}`}>
-              <p className="flex items-start gap-1.5 text-[13px] leading-snug">
+              <p className="flex items-start gap-1.5 text-xs leading-snug">
                 <span className="font-mono text-muted-foreground">{i + 1}{DOT}</span>
                 <span>{s.prompt}</span>
               </p>
               {locked ? null : (
                 <div className="mt-1 flex flex-wrap items-center gap-1.5">
                   <input
-                    className="w-32 rounded-md border border-border bg-background px-2 py-1 text-[13px]"
+                    className="w-32 rounded-md border border-border bg-background px-2 py-1 text-xs"
                     value={inputs[i] ?? ""}
                     onChange={(e) => setStep(i, e.target.value)}
                     onKeyDown={(e) => {

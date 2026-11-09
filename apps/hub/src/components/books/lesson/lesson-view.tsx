@@ -73,7 +73,7 @@ function Box({ type, md }: { type: string; md: string }) {
   const Icon = style.icon;
   return (
     <div className={`my-4 rounded-r-md border border-l-4 p-3 sm:p-4 ${style.cls}`}>
-      <div className="mb-1.5 flex items-center gap-1.5 text-[13px] font-semibold">
+      <div className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold">
         <Icon className="h-4 w-4" aria-hidden />
         {style.label}
       </div>
@@ -90,7 +90,7 @@ function GlossaryStrip({ slugs, glossary }: { slugs: string[]; glossary: LessonG
   const entries = slugs.map((s) => bySlug.get(s)).filter((g): g is LessonGlossaryEntry => g != null);
   if (entries.length === 0) return null;
   return (
-    <div className="mt-4 rounded-md border bg-card p-3 text-[13px]">
+    <div className="mt-4 rounded-md border bg-card p-3 text-xs">
       <div className="mb-1.5 font-semibold">Key terms in this section</div>
       <dl className="grid gap-1.5 sm:grid-cols-2">
         {entries.map((g) => (
@@ -126,7 +126,7 @@ function DerivedLinks({
   const cards = flashcardsForSpecRefs(codes, flashcards);
   if (relNotes.length === 0 && topics.length === 0 && cards.length === 0) return null;
   return (
-    <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-md border border-dashed p-2.5 text-[13px]">
+    <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-md border border-dashed p-2.5 text-xs">
       <span className="inline-flex items-center gap-1 font-semibold text-muted-foreground">
         <Layers className="h-3.5 w-3.5" aria-hidden />
         Keep going
@@ -203,7 +203,7 @@ function SectionBlock({
       <div className="mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <h2 className="text-xl font-semibold tracking-tight">{section.title}</h2>
         {section.bookPage != null && (
-          <span className="rounded bg-muted px-1.5 py-0.5 text-[11px] font-medium text-muted-foreground">
+          <span className="rounded bg-muted px-1.5 py-0.5 text-2xs font-medium text-muted-foreground">
             SB p.{section.bookPage}
           </span>
         )}
@@ -280,10 +280,10 @@ export function LessonView({
   return (
     <div className="mx-auto flex max-w-6xl gap-8 px-4 pb-16 pt-4">
       <aside className="sticky top-14 hidden h-[calc(100dvh-5rem)] w-56 shrink-0 overflow-y-auto lg:block">
-        <div className="pb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+        <div className="pb-2 text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
           {pack.title}
         </div>
-        <nav aria-label="Lesson sections" className="flex flex-col gap-0.5 text-[13px]">
+        <nav aria-label="Lesson sections" className="flex flex-col gap-0.5 text-xs">
           {pack.sections.map((s, i) => (
             <a
               key={s.id}
@@ -315,11 +315,11 @@ export function LessonView({
           <Link href={`/courses/${courseSlug}/books`} className="text-muted-foreground hover:text-foreground">
             Book shelf
           </Link>
-          <span className="rounded bg-muted px-1.5 py-0.5 text-[11px] font-medium text-muted-foreground">
+          <span className="rounded bg-muted px-1.5 py-0.5 text-2xs font-medium text-muted-foreground">
             {pack.paperRoute === "chemistry-only" ? "Chemistry only (Paper 2)" : "Core (Papers 1C & 2C)"}
           </span>
           {preview && (
-            <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[11px] font-semibold text-amber-900 dark:bg-amber-900/40 dark:text-amber-200">
+            <span className="rounded bg-amber-100 px-1.5 py-0.5 text-2xs font-semibold text-amber-900 dark:bg-amber-900/40 dark:text-amber-200">
               DRAFT PREVIEW — not published
             </span>
           )}
@@ -352,7 +352,7 @@ export function LessonView({
         {extraBlocks != null && extraBlocks.length > 0 && railChapterKey != null && (
           <section id="lesson-extras" data-progress-idx={pack.sections.length} className="mt-2 scroll-mt-16 border-t py-6">
             <h2 className="mb-1 text-xl font-semibold tracking-tight">Interactive extras</h2>
-            <p className="mb-3 text-[13px] text-muted-foreground">
+            <p className="mb-3 text-xs text-muted-foreground">
               Interactive elements for this chapter without a spec-anchored section — honest placement, never dropped.
             </p>
             <LessonInteractive

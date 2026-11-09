@@ -24,7 +24,7 @@ export function AddToTestLink({
       href={`/teacher/test-builder?course=${courseSlug}&subtopics=${encodeURIComponent(codes.join(","))}`}
       // t-ui-polish run-007: the link chip speaks the house hover voice
       // (border-primary/60), not the legacy /40.
-      className="ml-auto flex h-7 shrink-0 items-center gap-1.5 rounded-md border px-2 text-[11px] font-medium text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground"
+      className="ml-auto flex h-7 shrink-0 items-center gap-1.5 rounded-md border px-2 text-2xs font-medium text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground"
     >
       <ClipboardList className="size-3" aria-hidden />
       Add topic to Test Builder

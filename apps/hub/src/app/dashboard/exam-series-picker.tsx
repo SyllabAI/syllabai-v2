@@ -133,7 +133,7 @@ export function ExamSeriesPicker({
       </select>
       {target && (
         <span
-          className={`shrink-0 whitespace-nowrap text-[11px] font-semibold tabular-nums ${
+          className={`shrink-0 whitespace-nowrap text-2xs font-semibold tabular-nums ${
             // UX review 2026-11-04: a closed entry window was rendered in
             // destructive red — four cards, four red chips, zero failures.
             // Red is for overdue work; an informational countdown (even one

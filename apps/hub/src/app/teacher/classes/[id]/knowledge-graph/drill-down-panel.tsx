@@ -77,7 +77,7 @@ function bandBadge(band: string | null) {
   if (!band) return <span className="text-xs text-muted-foreground">No evidence yet</span>;
   const b = BAND_BADGE[band] ?? { label: band, className: "" };
   return (
-    <Badge variant="outline" className={`text-[10px] ${b.className}`}>
+    <Badge variant="outline" className={`text-2xs ${b.className}`}>
       {b.label}
     </Badge>
   );
@@ -181,12 +181,12 @@ export function NodeDrillDown({
                 <Users className="size-5 text-primary" aria-hidden />
                 {data ? data.nodeTitle : "Node detail"}
                 {data?.nodeCode ? (
-                  <Badge variant="outline" className="font-mono text-[10px]">
+                  <Badge variant="outline" className="font-mono text-2xs">
                     {data.nodeCode}
                   </Badge>
                 ) : null}
                 {data ? (
-                  <Badge variant="outline" className="text-[10px]">
+                  <Badge variant="outline" className="text-2xs">
                     {COVERAGE_LABEL[data.coverageState] ?? data.coverageState}
                   </Badge>
                 ) : null}
@@ -280,7 +280,7 @@ export function NodeDrillDown({
                                     <Badge
                                       key={m.misconceptionNodeId}
                                       variant="outline"
-                                      className="border-destructive/30 bg-destructive/10 text-[10px] text-destructive-ink"
+                                      className="border-destructive/30 bg-destructive/10 text-2xs text-destructive-ink"
                                     >
                                       <TriangleAlert className="mr-1 size-3" aria-hidden />
                                       {m.title}
@@ -314,7 +314,7 @@ export function NodeDrillDown({
                                       <Badge
                                         key={a.attemptId}
                                         variant="outline"
-                                        className={`font-mono text-[10px] ${
+                                        className={`font-mono text-2xs ${
                                           a.correct
                                             ? "border-success/30 bg-success/10 text-success"
                                             : "border-destructive/30 bg-destructive/10 text-destructive-ink"
@@ -359,7 +359,7 @@ export function NodeDrillDown({
               <DialogTitle className="flex flex-wrap items-center gap-2 text-lg">
                 <GraduationCap className="size-5 text-primary" aria-hidden />
                 {student.displayName} — individual subject graph
-                <Badge variant="outline" className="text-[10px]">
+                <Badge variant="outline" className="text-2xs">
                   teacher view
                 </Badge>
               </DialogTitle>

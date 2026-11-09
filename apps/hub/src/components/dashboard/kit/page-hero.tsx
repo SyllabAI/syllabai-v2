@@ -54,7 +54,7 @@ export function PageHero({
       <div className="space-y-3 p-5 sm:p-6">
         {breadcrumbs}
         {eyebrow && (
-          <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+          <p className="text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
             {eyebrow}
           </p>
         )}

@@ -320,7 +320,7 @@ export function NotesIndex({
                           {subNotes.map((n) => (
                             <li
                               key={n.noteId}
-                              className="flex items-center gap-2 rounded-md px-2 py-1 text-[13px] transition-colors hover:bg-muted"
+                              className="flex items-center gap-2 rounded-md px-2 py-1 text-xs transition-colors hover:bg-muted"
                             >
                               <ReadTick read={Boolean(progress.notesRead[n.noteId])} />
                               <Link
@@ -356,7 +356,7 @@ export function NotesIndex({
                 {examTechnique.map((n) => (
                   <li
                     key={n.noteId}
-                    className="flex items-center gap-2 rounded-md px-2 py-1 text-[13px] transition-colors hover:bg-muted"
+                    className="flex items-center gap-2 rounded-md px-2 py-1 text-xs transition-colors hover:bg-muted"
                   >
                     <ReadTick read={Boolean(progress.notesRead[n.noteId])} />
                     <FileText className="size-3.5 shrink-0 text-primary" aria-hidden />
@@ -383,7 +383,7 @@ export function NotesIndex({
                 {looseOthers.map((n) => (
                   <li
                     key={n.noteId}
-                    className="flex items-center gap-2 rounded-md px-2 py-1 text-[13px] transition-colors hover:bg-muted"
+                    className="flex items-center gap-2 rounded-md px-2 py-1 text-xs transition-colors hover:bg-muted"
                   >
                     <ReadTick read={Boolean(progress.notesRead[n.noteId])} />
                     <FileText className="size-3.5 shrink-0 text-primary" aria-hidden />

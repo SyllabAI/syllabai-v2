@@ -108,8 +108,8 @@ export function SideNavRow({
       className={cn(
         "ml-auto shrink-0",
         isCount
-          ? "rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium tabular-nums text-muted-foreground"
-          : "rounded-md bg-accent-primary-foreground px-1.5 py-px text-[10px] font-medium uppercase tracking-wide text-accent-primary",
+          ? "rounded-full bg-muted px-2 py-0.5 text-2xs font-medium tabular-nums text-muted-foreground"
+          : "rounded-md bg-accent-primary-foreground px-1.5 py-px text-2xs font-medium uppercase tracking-wide text-accent-primary",
       )}
     >
       {item.badge}

@@ -71,7 +71,7 @@ export function KgNavigationExperiment({
         <h1 className="flex items-center gap-2 text-xl font-bold tracking-tight">
           <FlaskConical className="size-5 text-primary" aria-hidden />
           <span className="font-mono">kg-navigation</span>
-          <Badge variant="secondary" className="text-[10px]">
+          <Badge variant="secondary" className="text-2xs">
             SEED
           </Badge>
         </h1>
@@ -140,7 +140,7 @@ export function KgNavigationExperiment({
                         href={`/revision-notes/${n.noteId}`}
                         className="block rounded px-2 py-1 text-xs hover:bg-muted"
                       >
-                        {n.title} <span className="font-mono text-[10px] text-muted-foreground">{n.noteId}</span>
+                        {n.title} <span className="font-mono text-2xs text-muted-foreground">{n.noteId}</span>
                       </Link>
                     ))
                   )}

@@ -392,7 +392,7 @@ export function ClassDetailClient({
         title={
           <span className="flex flex-wrap items-center gap-2">
             {detail.name}
-            <Badge variant="outline" className="font-mono text-[10px]">
+            <Badge variant="outline" className="font-mono text-2xs">
               {detail.status}
             </Badge>
           </span>
@@ -494,7 +494,7 @@ export function ClassDetailClient({
               <div className="min-w-0">
                 <p className="text-sm font-medium">
                   Smart Mark{" "}
-                  <Badge variant="outline" className="ml-1 font-mono text-[10px]">
+                  <Badge variant="outline" className="ml-1 font-mono text-2xs">
                     recorded
                   </Badge>
                 </p>
@@ -528,7 +528,7 @@ export function ClassDetailClient({
             <h2 id="course-resources" className="text-sm font-semibold">
               Course resources · {course.subject}
             </h2>
-            <span className="text-[11px] text-muted-foreground">
+            <span className="text-2xs text-muted-foreground">
               the same hub surfaces students use — not class-private copies
             </span>
           </div>
@@ -555,7 +555,7 @@ export function ClassDetailClient({
                   </p>
                   <p className="mt-1 text-xs text-muted-foreground tabular-nums">
                     {stat && !stat.hasBundle && !papers ? (
-                      <Badge variant="outline" className="text-[10px] font-normal">
+                      <Badge variant="outline" className="text-2xs font-normal">
                         no corpus package
                       </Badge>
                     ) : papers ? (
@@ -585,7 +585,7 @@ export function ClassDetailClient({
                     <span className="flex size-9 items-center justify-center rounded-md bg-primary/10">
                       <t.icon className="size-4 text-primary" aria-hidden />
                     </span>
-                    <Badge variant="outline" className="text-[10px] font-normal">
+                    <Badge variant="outline" className="text-2xs font-normal">
                       {t.badge}
                     </Badge>
                   </div>
@@ -617,7 +617,7 @@ export function ClassDetailClient({
                     >
                       <t.icon className="size-4" style={{ color: t.color }} aria-hidden />
                     </span>
-                    <Badge variant="outline" className="text-[10px] font-normal">
+                    <Badge variant="outline" className="text-2xs font-normal">
                       {t.badge}
                     </Badge>
                   </div>
@@ -758,12 +758,12 @@ export function ClassDetailClient({
                     <li key={a.id} className="rounded-lg border px-3 py-2">
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <p className="text-sm font-medium">{a.title}</p>
-                        <Badge variant="outline" className="text-[10px]">
+                        <Badge variant="outline" className="text-2xs">
                           {CATEGORY_LABEL[a.category] ?? a.category}
                         </Badge>
                       </div>
                       <p className="mt-1 whitespace-pre-wrap text-xs text-muted-foreground">{a.body}</p>
-                      <p className={cn("mt-1.5 text-[10px] text-muted-foreground")} title={`${a.readCount} of ${a.memberCount} members read this`}>
+                      <p className={cn("mt-1.5 text-2xs text-muted-foreground")} title={`${a.readCount} of ${a.memberCount} members read this`}>
                         read by {a.readCount} of {a.memberCount}
                       </p>
                       <div className="mt-1 h-1 w-full overflow-hidden rounded-full bg-muted">
