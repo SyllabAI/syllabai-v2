@@ -336,20 +336,29 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // composite PK (not an index), 1 FK, 0 checks; T-MG-MARK-DELTA-1 run-001
   // (Lane E) adds mark_awards.attempt_class + cache_hash — 2 nullable cols,
   // 1 check, 0 indexes/FKs — the 0027 additive migration).
-  test("99/926/131/100/181 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // ADR-044 run-002 (0028_editor-planes, the editor role & content workbench —
+  // docs/ADR-044-EDITOR_ROLE_CONTENT_WORKBENCH.md §3/§7): editor_grants (6 cols,
+  // the grant row IS the role; the partial-open unique index uq_editor_grants_active_user),
+  // editor_edit_proposals (12 cols, 2 indexes, 1 fk, 4 checks — the server-classified
+  // tier + the closed state/bank vocabularies) and editor_edit_receipts (9 cols, 1 index,
+  // 1 fk, 1 check — the append-only journal; actor deliberately FK-free so the audit
+  // survives actor-account deletion) on top of the T-MG-MARK-DELTA-1 baseline
+  // -> 102/953/135/103/186 (measured: rebaseline.ts verify PASS, 0 drifts, on
+  // the union end-state).
+  test("102/953/135/103/186 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 99/99");
-    expect(v.inventory).toContain("columns 926");
-    expect(v.inventory).toContain("indexes 131");
-    expect(v.inventory).toContain("fks 100");
-    expect(v.inventory).toContain("checks 181");
+    expect(v.inventory).toContain("tables 102/102");
+    expect(v.inventory).toContain("columns 953");
+    expect(v.inventory).toContain("indexes 135");
+    expect(v.inventory).toContain("fks 103");
+    expect(v.inventory).toContain("checks 186");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(99);
+    expect(run.size).toBe(102);
     expect(run.has("public.teach_sessions")).toBe(true); // T-TEACHME-001 — the learn-by-teaching lane
     expect(run.has("public.teach_messages")).toBe(true); // T-TEACHME-001 run-002 — the transcript plane
     expect(run.has("public.teach_review_cards")).toBe(true); // T-TEACHME-001 run-002 — the ReviewCard of record
@@ -395,6 +404,11 @@ describe("verifyBaseline (checked-in baseline)", () => {
     // Study-Plan Builder — the learner's plan-config row (additive, v2-owned;
     // the ONLY persisted state of the lane — the week stays a projection)
     expect(run.has("public.study_plans")).toBe(true);
+    // ADR-044 run-002 — the editor planes (the grant row IS the role; the §7
+    // proposal/receipt planes stay unwritten until Phase 2's router lands)
+    expect(run.has("public.editor_grants")).toBe(true);
+    expect(run.has("public.editor_edit_proposals")).toBe(true);
+    expect(run.has("public.editor_edit_receipts")).toBe(true);
   });
 });
 

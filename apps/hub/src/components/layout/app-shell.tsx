@@ -51,7 +51,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { AigniteBadge } from "@/components/brand/aignite-badge";
-import { clearIdentity, useIdentity } from "@/lib/identity";
+import { clearIdentity, useEditorCapabilitySync, useIdentity } from "@/lib/identity";
 import { unmirrorRoutingSession } from "@/lib/session-cookie";
 import { roleHome } from "@/lib/role-home";
 import { signInHref, useCurrentSearch } from "@/lib/sign-in-link";
@@ -147,6 +147,13 @@ export function AppShell({
   // (ONE mount for the whole app): the account mirror for the remaining
   // localStorage-only pools (tutor / assistant / CLA this band).
   useAccountDocsSync();
+  // ADR-044 run-002 Phase 1 — the editor capability bootstrap (the grant
+  // row IS the role): ONE /editor/me probe per signed-in session feeds the
+  // additive identity.capabilities field that gates the editor-plane
+  // surfaces (the per-question edit-history view; the Phase 2 Workbench).
+  // No-op for signed-out sessions; never a fetch loop (settled probes
+  // short-circuit).
+  useEditorCapabilitySync();
   // course pages manage their own horizontal rhythm (course shell + resource
   // panel); the graph surfaces are full-bleed (the visualizer canvas wants
   // the whole viewport); the tutor workspace is an immersive app surface
