@@ -180,7 +180,7 @@ export function StrengthsPanel({ course }: { course: string }) {
               </div>
               <div className="h-2 overflow-hidden rounded-full bg-muted">
                 <div
-                  className={cn("h-full rounded-full transition-all duration-500", BAND_FILL[b.band])}
+                  className={cn("h-full rounded-full transition-[width] duration-500", BAND_FILL[b.band])}
                   style={{ width: `${b.strength * 100}%` }}
                 />
               </div>

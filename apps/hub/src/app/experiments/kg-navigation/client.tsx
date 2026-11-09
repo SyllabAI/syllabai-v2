@@ -90,7 +90,7 @@ export function KgNavigationExperiment({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="filter spec points…"
-              className="w-full rounded-md border px-2.5 py-1.5 text-sm outline-none focus:ring-1 focus:ring-primary"
+              className="w-full rounded-md border px-2.5 py-1.5 text-sm outline-none transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
               aria-label="Filter specification points"
             />
           </CardHeader>

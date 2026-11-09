@@ -51,7 +51,7 @@ export default function ExperimentsPage() {
           <Link key={e.href} href={e.href} className="group focus-visible:outline-none">
             {/* t-ui-polish run-007: the experiment cards speak the house
                 card-hover voice (border-primary/60 + shadow-sm). */}
-            <Card className="h-full transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm">
+            <Card className="h-full transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center gap-2 text-base">
                   <e.icon className="size-4 text-primary" aria-hidden />

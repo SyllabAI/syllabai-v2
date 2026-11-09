@@ -295,7 +295,7 @@ function Segmented({
             role="radio"
             aria-checked={value === o.value}
             onClick={() => onChange(o.value)}
-            className={`flex-1 cursor-pointer rounded-md px-2 py-1.5 text-sm font-medium transition-all ${
+            className={`flex-1 cursor-pointer rounded-md px-2 py-1.5 text-sm font-medium transition-[color,background-color,box-shadow] ${
               value === o.value ? "bg-card shadow-sm ring-1 ring-border" : "text-muted-foreground hover:text-foreground"
             }`}
           >

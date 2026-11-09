@@ -498,7 +498,7 @@ export function DeckPlayer({
 
       <div className="h-1 overflow-hidden rounded-full bg-muted">
         <div
-          className="h-full rounded-full bg-primary transition-all duration-300"
+          className="h-full rounded-full bg-primary transition-[width] duration-300"
           style={{ width: `${((pos + 1) / run.length) * 100}%` }}
         />
       </div>

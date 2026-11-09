@@ -149,7 +149,7 @@ export function SemanticSearchExperiment({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search everything — e.g. “diffusion”, “electronic configuration”, “separation”…"
-        className="w-full rounded-md border px-3.5 py-2.5 text-sm outline-none focus:ring-1 focus:ring-primary"
+        className="w-full rounded-md border px-3.5 py-2.5 text-sm outline-none transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
         aria-label="Search the corpus"
       />
 

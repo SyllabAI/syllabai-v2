@@ -827,7 +827,7 @@ export function DashboardClient({
               <p className="text-sm font-medium">{railTodayCopy(studyPlan)}</p>
               <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
                 <div
-                  className="h-2 rounded-full bg-primary transition-all"
+                  className="h-2 rounded-full bg-primary transition-[width]"
                   style={{ width: `${studyPlan.week.counters.percentToday}%` }}
                 />
               </div>

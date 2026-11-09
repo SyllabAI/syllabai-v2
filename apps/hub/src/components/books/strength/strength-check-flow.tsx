@@ -149,7 +149,7 @@ export function StrengthCheckFlow({ documentId, unit, unitLabel, checks }: FlowP
       </div>
       <div className="h-1 w-full overflow-hidden rounded-full bg-muted">
         <div
-          className="h-full rounded-full bg-primary transition-all"
+          className="h-full rounded-full bg-primary transition-[width]"
           style={{
             width: `${Math.round(((idx + (state?.result != null ? 1 : 0)) / checks.length) * 100)}%`,
           }}
