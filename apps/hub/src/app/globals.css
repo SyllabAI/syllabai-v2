@@ -69,6 +69,16 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* ── The border-opacity ladder (T-HUB-AUDITFIX-1 run-001) ────────────────
+   Alpha-modified primary borders follow three sanctioned tiers — pick by
+   role, never by taste:
+     /30  REST      tinted callouts (border-primary/30 + bg-primary/5) and
+                    card rest states that lift to /60 on hover
+     /50  FOCUS     composer focus-within only (border-primary/50 +
+                    ring-2 ring-primary/15) — one voice across composers
+     /60  INTERACT  hover, selected, status chips — the house hover voice
+   Any other alpha (/20 /25 /40 …) is a stray: normalize to the nearest
+   tier in the same commit that introduces it. */
 :root {
   --radius: 0.625rem;
   /* font chains (runtime vars — themes re-point these) */
