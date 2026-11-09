@@ -1,0 +1,99 @@
+{
+ "receipt": "rn11-run-014-edexcel-rowlabel-titles",
+ "family": "RN-DEBRIS-11",
+ "run": "014",
+ "lane": "the Edexcel batch row-label title repairs — run-009 fleet-sweep fragments discharged (4IT1 ICT x9 pairs, 4HI1 history x3, WCH11 chemistry T8 pair, WBI11 biology (i), 4XMA1 modular maths 6.1)",
+ "operatorOrder": "run the CIE batch (33 rows, run-013) and the Edexcel batch (25 rows, run-014)",
+ "mode": "apply+verify",
+ "base": "run-013 tip 313ea2bd (stacked; merge order 013 then 014)",
+ "defectOfRecord": {
+  "queue": "run-009 fleet-sweep fragment-ending class: 25 rows across 5 slugs (4IT1 9 sections x TOPIC+SUBTOPIC pairs = 18; 4HI1 3; WCH11 T8 pair = 2; WBI11 1; 4XMA1-F2 1)",
+  "classes": "fragment-ending, all PDF-extractable prose (0 composed)"
+ },
+ "evidenceOfRecord": {
+  "source": "syllabai-resources @ 34aa6fab (sparse blobless clone); PDF sha256 pins in run014_gates.json",
+  "extraction": "pdftotext -layout; per-doc templates: 4IT1 numbered-section title column (right learning-outcome column skipped); 4HI1 wreck-anchored sub-topic title columns with interleaved right-column skip; WCH11 'Topic 8:' header; WBI11 '(i)' stem + continuation; 4XMA1 vertical section-title stack ('Graphical/representation of/data'); scripts in run014docs/",
+  "crossValidation": "upstream parsed specs for the five families carry the same fragments; all 15 distinct titles verified verbatim against the doc title columns",
+  "composed": "none — every new title is doc-verbatim prose"
+ },
+ "repair": {
+  "files": "5x content curriculum.json (25 title edits) + 5x apps/hub/public/kg/data (48 label sites, id-resolved via the pointSubtopics bridge so the shared 'Impact of the internet on' triple takes per-section distinct news) + 5x apps/hub/spines (25 title edits)",
+  "law": "title-only, placement-neutral, zero code changes; serializer law preserved per file (4HI1 content is indent=2 pretty-printed — detected, not assumed; spine+KG compact)"
+ },
+ "gates": {
+  "G0_fileScope": [
+   "apps/hub/content/ial-biology-18/curriculum.json",
+   "apps/hub/content/ial-chemistry-17/curriculum.json",
+   "apps/hub/content/igcse-history-17/curriculum.json",
+   "apps/hub/content/igcse-ict-17/curriculum.json",
+   "apps/hub/content/igcse-maths-a-modular-24-foundation-unit-2/curriculum.json",
+   "apps/hub/public/kg/data/ial-biology-18.json",
+   "apps/hub/public/kg/data/ial-chemistry-17.json",
+   "apps/hub/public/kg/data/igcse-history-17.json",
+   "apps/hub/public/kg/data/igcse-ict-17.json",
+   "apps/hub/public/kg/data/igcse-maths-a-modular-24-foundation-unit-2.json",
+   "apps/hub/spines/ial-biology-18.json",
+   "apps/hub/spines/ial-chemistry-17.json",
+   "apps/hub/spines/igcse-history-17.json",
+   "apps/hub/spines/igcse-ict-17.json",
+   "apps/hub/spines/igcse-maths-a-modular-24-foundation-unit-2.json"
+  ],
+  "G1_serializer": {
+   "ial-biology-18": {
+    "content": "compact",
+    "spine": "compact",
+    "kg": "compact"
+   },
+   "ial-chemistry-17": {
+    "content": "compact",
+    "spine": "compact",
+    "kg": "compact"
+   },
+   "igcse-history-17": {
+    "content": "indent2_nl",
+    "spine": "compact",
+    "kg": "compact"
+   },
+   "igcse-ict-17": {
+    "content": "compact",
+    "spine": "compact",
+    "kg": "compact"
+   },
+   "igcse-maths-a-modular-24-foundation-unit-2": {
+    "content": "compact",
+    "spine": "compact",
+    "kg": "compact"
+   }
+  },
+  "G2_fieldDiffs": "title-only (content+spine nodes); KG label sites id-resolved (section node + sections dict + SubTopic node + subtopics tuple mirrors), pair-idempotent",
+  "G3_structure": "node/edge/point counts byte-equal all planes (gates_run014.py)",
+  "G6_mirrorEquality": "KG labels + spine titles == new content titles 25/25 + old-title extinction in all three planes (string-leaf law)",
+  "G7_uniqueness": "no NEW cross-section title collisions (TOPIC+:SUB_ pair sharing is lawful pre-existing structure) (gates_run014.py)",
+  "placementGate": {
+   "script": "apps/hub/scripts/verify_sme_wire_r0.ts A/B",
+   "A": "courses 90 sets 2574 questions 43232 placed 2574 unplaced 0 gen-row homes 30",
+   "B": "courses 90 sets 2574 questions 43232 placed 2574 unplaced 0 gen-row homes 30",
+   "verdict": "IDENTICAL"
+  },
+  "prebuildChain": {
+   "verify_corpus_23a": "OK",
+   "verify_flashcard_sync_courses": "OK",
+   "validate_cie_bundles": "OK (census unchanged)",
+   "validate_gradeb_bundle": "OK",
+   "verify_subject_identity": "OK"
+  }
+ },
+ "disclosures": [
+  "RUN NUMBER: run-014 per the zero-collision law; STACKED on run-013 (313ea2bd) — merge order 013 then 014; CI runs both gates on this branch's tree",
+  "KG id-resolution: the 4IT1 KG's opaque section ids (sec15/17/18 for T3.2/3.4/3.5) were bridged via pointSubtopics set-equality with the curriculum's spec-point kids; fail-closed unique-match asserted",
+  "pair structure: TOPIC + its own :SUB_ child share one title by corpus design (pre-existing) — G7 refined to cross-section collision law",
+  "tsc/CI: data-only JSON edits; the hub prebuild chain + placement A/B are the of-record local proof (bun 1.3.14)"
+ ],
+ "artifacts": [
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run014_title_map.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run014_census_pre.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run014_gates.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run014docs/"
+ ],
+ "boundaries": "zero src/ bytes; zero code changes; zero spec-point/code/stamp bytes; author does not self-merge"
+}
