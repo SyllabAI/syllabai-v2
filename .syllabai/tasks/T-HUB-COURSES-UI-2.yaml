@@ -3,7 +3,7 @@ task:
   id: T-HUB-COURSES-UI-2
   title: "The /courses directory adopts the course-page design language — the operator's approved PageHero band (gradient wash, display title, honest StatChip row), course-page section-title recipes, pill chips and the proportionate identity tile"
   owner: "operator-delegate (Z.ai, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, chat d889551c-b3b5-4885-b1c1-57af82e11b0a, run trace 1a1bc441088a9629)"
-  status: "IN_REVIEW run-001 (PR open, awaiting operator/integrator review)"
+  status: "IN_REVIEW run-002 (PR open, awaiting operator/integrator review)"
   priority: P1
   band: T-HUB (frontend — courses directory surface)
   wave: hub-courses-directory
@@ -46,6 +46,51 @@ task:
     font/palette/theme changes (the gradient wash and every colour ride the
     existing token sheet, all four themes re-skin for free); no network added;
     the operator's GitHub PAT env-only, rotation still outstanding.
+    run-002 (2026-11-09, operator trace 1a1beb40a15f8125): the operator's card
+    design round — "What about the courses cards (in the course page). How can
+    we improve their design?" — answered with five attachment-derived deltas
+    and one flagged taste call; the operator DECIDED: "retire the full corpus
+    pill and fold papers into the count line". Shipped (course-directory.tsx
+    only, className/comment-level): ① card tiles to the attachment's own tile
+    verbatim (size-14 rounded-2xl borderless — the run-001 size-12/rounded-xl
+    compromise echo retired; .subject-tile template keeps driving bg/fg for
+    all four themes + dark); ② card title becomes the loudest line
+    (text-sm font-semibold → text-[15px] font-bold tracking-tight — 15px is
+    already in the design of record's vocabulary, its hero description rides
+    text-[15px]); ③ the meta line to the attachment's mixed-weight recipe
+    (board font-medium text-foreground, thin | separators, code mono — the
+    bare mono line wrapped cold, a 22-char board name in mono was the worst
+    offender); ④ the substance line carries the past papers TOO (folded out
+    of the badge row per the operator's decision) and flips to the
+    attachment's count-line emphasis (counts at font-medium text-foreground,
+    full ink — the old all-muted caption inverted it; tutor lead keeps the
+    primary sparkle); ⑤ the badge row is RETIRED for the common path — the
+    always-on full-corpus pill (102/106 cards) is gone, the hero StatChip row
+    owns the aggregate, per-card honesty is carried by the real counts line +
+    the committed border; pilot and import-pending survive as the rare,
+    differentiating statuses and lose the uppercase shout; a full card now
+    renders ZERO badges. Gates: prebuild verify chain PASS (subject-identity
+    106/106, 18 identities); tsc clean; eslint clean; bun test targeted
+    28/28 (75 expects, directory-stats + directory-groups + route-gate);
+    FULL hub suite A/B fail-band verified — 1234 pass / 6 fail / 1 error
+    BYTE-IDENTICAL on the branch and on clean main (pre-existing band, not
+    this run's); next build compile 19.4s + STATIC PRERENDER COMPLETE
+    4647/4647 in 8.4min (BUILD_ID written; one attempt cut at 4524/4647 by
+    the 10-minute tool cap, re-run complete) — standalone emit ENOSPC, the
+    identical disclosed failure mode of five prior runs (CI hub job = the
+    packaging gate of record). Runtime verified on the built artifact (next
+    start :3111): /courses 200 with every run-002 marker (size-14 tiles,
+    15px bold titles, mixed-weight meta, papers in the full-ink count line,
+    zero full-corpus pills, non-uppercase import pending ×3, exactly one h1,
+    SSR generic, 60 × Tutor ready); / 200. Browser evidence
+    download/courses-ui2-run2/. Environment: the sandbox recycle reverted the
+    clone to 1dd5335 a THIRD time (run-001's local branch and stash both
+    wiped; node_modules emptied); re-synced hard to origin/main 676bbc6d
+    (#874 had already MERGED with the union-merge landing commit 2196d52d),
+    the re-materialized +17-line dirty worklog byte-verified ALREADY ON main
+    again (stale duplicate, discarded after the grep census), bun install
+    988 packages fresh. House lane, no self-merge; PAT rotation SEVENTH
+    filing — still outstanding.
 base:
   repo: "syllabai-v2 @ a3561bd1 (origin/main at claim; local clone re-synced after a sandbox recycle reverted it to the 1dd5335 snapshot — stale worklog state verified byte-identical upstream and kept in a local stash, disclosed)"
 basis: >
