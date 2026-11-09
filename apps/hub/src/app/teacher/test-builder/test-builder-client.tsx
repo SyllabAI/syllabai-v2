@@ -90,6 +90,16 @@ import {
   X,
 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -467,6 +477,16 @@ export function TestBuilderClient({
   const [testName, setTestName] = useState("");
   const [tab, setTab] = useState<"questions" | "scheme">("questions");
   const [downloadOpen, setDownloadOpen] = useState(false);
+
+  // T-HUB-AUDITFIX-1 run-004: the shared confirm dialog — replaces the two
+  // window.confirm gates (presentation layer; the confirmed actions run
+  // verbatim through run()).
+  const [confirmAction, setConfirmAction] = useState<{
+    title: string;
+    description: string;
+    confirmLabel: string;
+    run: () => void;
+  } | null>(null);
   const [pdf, setPdf] = useState<PdfSettings>({
     copy: "teacher",
     coverPage: false,
@@ -1082,14 +1102,23 @@ export function TestBuilderClient({
     });
   }
 
-  /** clear the whole paper — explicit, confirmed (destructive). */
+  /** clear the whole paper — explicit, confirmed (destructive).
+   *  T-HUB-AUDITFIX-1 run-004: the gate is the shared AlertDialog
+   *  (confirmAction state), not window.confirm. */
   function clearTest() {
-    if (
-      test &&
-      test.questions.length > 0 &&
-      !window.confirm("Clear the whole test? This can't be undone.")
-    )
+    if (test && test.questions.length > 0) {
+      setConfirmAction({
+        title: "Clear the whole test?",
+        description: "This can't be undone.",
+        confirmLabel: "Clear test",
+        run: clearTestConfirmed,
+      });
       return;
+    }
+    clearTestConfirmed();
+  }
+
+  function clearTestConfirmed() {
     setTest(null);
     setStale(false);
     setBuildError(null);
@@ -1252,14 +1281,13 @@ export function TestBuilderClient({
     // is suppressed for exactly that arrival.
     if (t.course !== course && !(taughtCourses ?? []).some((c) => c.slug === t.course)) return;
     const crossing = t.course !== course;
-    if (crossing) suppressRestoreRef.current = true;
-    if (
-      test &&
-      test.questions.length > 0 &&
-      !window.confirm("Open this saved test? Your current test will be replaced.")
-    )
-      return;
-    setCourse(t.course);
+    // T-HUB-AUDITFIX-1 run-004: the window.confirm gate became the shared
+    // AlertDialog; the open action is deferred, so CANCEL no longer leaks
+    // suppressRestoreRef (the old ordering set it before asking — a canceled
+    // open used to wrongly suppress the next restore-on-arrival).
+    const openSaved = () => {
+      if (crossing) suppressRestoreRef.current = true;
+      setCourse(t.course);
     setSelected(new Set(t.subtopics));
     setMode(t.targetMarks !== null ? "marks" : "count");
     setTargetMarks(t.targetMarks !== null ? String(t.targetMarks) : "40");
@@ -1318,6 +1346,17 @@ export function TestBuilderClient({
       setTest(null);
       setStale(false);
     }
+    };
+    if (test && test.questions.length > 0) {
+      setConfirmAction({
+        title: "Open this saved test?",
+        description: "Your current test will be replaced.",
+        confirmLabel: "Open saved test",
+        run: openSaved,
+      });
+      return;
+    }
+    openSaved();
   }
 
   return (
@@ -2529,6 +2568,33 @@ export function TestBuilderClient({
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* ── shared confirm dialog (run-004: replaces window.confirm) ── */}
+      <AlertDialog
+        open={confirmAction !== null}
+        onOpenChange={(open) => {
+          if (!open) setConfirmAction(null);
+        }}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>{confirmAction?.title}</AlertDialogTitle>
+            <AlertDialogDescription>{confirmAction?.description}</AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => {
+                const action = confirmAction;
+                setConfirmAction(null);
+                action?.run();
+              }}
+            >
+              {confirmAction?.confirmLabel ?? "Confirm"}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
