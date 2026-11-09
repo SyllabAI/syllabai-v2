@@ -94,10 +94,24 @@ export function lessonBoxTypes(body: string): string[] {
 }
 
 /**
- * `[[slug]]` glossary chips → **bold** (the renderer shows the section's
- * glossary strip from the pack's glossarySlugs; the inline surface stays
- * sanitize-safe markdown with no raw-HTML dependency).
+ * `[[slug]]` / `[[slug|Display]]` glossary chips → **bold** text of record.
+ *
+ * Resolution order (f-0009): the authored display half wins; otherwise the
+ * glossary term for the slug (hub passes the pack glossary it already
+ * holds — books-lesson.ts fetchLessonGlossary); otherwise the bare slug
+ * (honest-absent law: an unresolved slug still renders, sanitize-safe
+ * markdown only). The old body bolded group 1 (the slug) and discarded the
+ * pipe display half, so `[[diffusion|spreads]]` rendered "**diffusion**"
+ * and hyphenated slugs leaked to students as visible hyphen-jargon.
  */
-export function rewriteGlossaryChips(md: string): string {
-  return md.replace(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g, "**$1**");
+export function rewriteGlossaryChips(
+  md: string,
+  glossary?: ReadonlyArray<{ slug: string; term: string }>,
+): string {
+  const terms = new Map((glossary ?? []).map((g) => [g.slug, g.term]));
+  return md.replace(
+    /\[\[([^\]|]+)(?:\|([^\]]*))?\]\]/g,
+    (_m, slug: string, display?: string) =>
+      `**${display?.trim() || terms.get(slug.trim()) || slug.trim()}**`,
+  );
 }
