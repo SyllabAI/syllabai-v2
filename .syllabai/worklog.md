@@ -2161,3 +2161,46 @@ Stage Summary:
 - Acceptance ALL PASS (independently re-verified): section-6 schema header byte-equal; verdict/reviewer/review_date byte-empty 3/3; append-only byte-assert PASS and same-day re-run appended 0 bytes (dedup by already-OPEN, the queue is a work queue not a log); calibration cohort + all four confounds present; prereqValidated 0/106 by JSON-parse walk; git delta scope scripts/ + .syllabai/ only; zero content/public/label bytes.
 - Environment: fifth sandbox recycle (everything rebuilt); PAT lost with it — branch t-kg-tripwire-1/run-004 is local of record, push+PR commands handed to the operator; PAT rotation reminder fifth filing (chat-transit exposure still unrotated).
 - Landing (same day): PAT refiled; full-fetch collision with the Phase 1 lane (remote branch run-003 = open PR #877 with its own run-003.md receipt) resolved by renumbering this run run-003 -> run-004 BEFORE first push (no facts/traces/artifacts changed, Phase 1 branch untouched — fetch-first no force); branch t-kg-tripwire-1/run-004 pushed (tip c1f19026); PR #883 opened — operator merges, no self-merge; PAT rotation reminder re-filed (this PAT also chat-transited).
+
+
+## T-HUB-COURSES-UI-2 run-002 PRODUCTION PICKUP (2026-11-09) — watch item CLOSED: git auto-bake account-blocked, the documented bake-lane floor fired and verified (operator order "re-check production", trace 1a1bf7086060b1bd)
+
+- RE-CHECK (~25 min post-merge): www.syllab-ai.com/courses still served the run-001-era build
+  (size-12 ×106, text-sm font-semibold ×122, zero run-002 markers; import pending ×3, Tutor
+  ready ×60, hero census intact). First-hand cause on record: BOTH post-merge main tips carry a
+  [failure] Vercel commit status "syllabai-hub-v2 → why-is-my-account-deployment-blocked"
+  (c9316450 @08:15:50Z, 4e889ea7 @08:39:00Z) — the git-triggered auto-bake path is
+  account-blocked, not a one-off flake.
+- REMEDY (the DONE-flip's documented first option, "the bake lane's SHA-tagged floor"):
+  dispatched .github/workflows/t-vercel-usage-bake.yml on main (workflow_dispatch run#12,
+  idempotent SHA-gated, at most ONE prod deployment, VERCEL_BAKE_TOKEN stays a repo secret —
+  no token in this lane's hands). Run 08:45:47Z → SUCCESS 09:01:24Z (~15.6 min); the CLI deploy
+  bypasses ignoreCommand by design and proves the account still admits CLI deploys while git
+  builds are blocked. The empty-commit re-trigger was the rejected alternative: git builds ARE
+  the blocked path, so a re-trigger would fail identically and pollute main.
+- PRODUCTION VERIFIED 22/22 (marker battery on the SSR HTML, scripts/verify_prod_courses.py in
+  the session area): run-002 markers LIVE on www.syllab-ai.com/courses — size-14 borderless
+  tiles ×106, rounded-2xl ×107, text-[15px] font-bold tracking-tight ×106, mixed-weight meta
+  separator ×106, papers tooltip ×59 inside the full-ink count line, ZERO full-corpus pills /
+  rounded-full+uppercase pairs, import pending ×3 lowercase, Tutor ready ×60, one h1, hero
+  census 106/102/60/4,382, old size-12 gone (×0). Route-gate law intact: /courses public 200;
+  /courses/<slug> 307 → /login?next=%2F… (session gate, Tier-0 signInHref contract); the
+  trailing-slash variant 308-strips to the bare path (Next normalization) then gates
+  identically — "the directory is public, the courses themselves are not" (operator ruling
+  option 1, route-gate.test). Screenshot evidence in the session download area
+  (prod-run002-{hero,cards}.png, 1440×1000).
+- CONTEXT for the bake lane (adjacent, NOT touched here): t-vercel-api-bake run#1 (the API
+  floor, #898) FAILED at its CLI deploy step 06:51Z — api.syllab-ai.com remains stale since
+  Nov 4; whether the account-level block hits the API project's CLI deploys too is the bake
+  lane's / operator's call.
+- Bookkeeping: yaml status + the execution_record closure paragraph + this entry in both
+  worklogs. Ledger-only, zero code/content. .syllabai-only direct-main, fetch-first, no force.
+- Standing reminder (NINTH filing): the PAT remains exposed from chat transmission and MUST be
+  revoked/rotated.
+
+Stage Summary:
+- The run-002 card design is LIVE of record: production serves borderless size-14 tiles, bold
+  15px titles, mixed-weight meta, papers inside the full-ink count line, zero full-corpus pills
+  — verified 22/22 against www.syllab-ai.com. The dropped git auto-bake was remedied by the
+  documented bake-lane floor (run#12, success). One thread hands off to the bake lane: the
+  account-level git-build block + the API floor's failed CLI deploy.
