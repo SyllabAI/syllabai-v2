@@ -2103,3 +2103,23 @@ origin/main
 - Env discipline: production env values fingerprint-identical pre/post (verified per-var); the only Vercel mutation is ADDING the preview target to the 15 existing env vars (additive, reversible, production untouched). PAT + Vercel token env-var-only; provider keys in process memory only, in no artifact.
 - NEXT (design §6 law — the battery verdict is the gate, not taste): revise the clause with R1 firing-consistency / R2 the insufficiency skip / R3 the probe no-repeat guard (or design option (b) cadence state), then re-run THIS battery unchanged; the re-run verdict gates the merge.
 - Anti-truncation asserts: worklog appended append-only (new = old + this section incl. leading blank-line separator); byte delta == len(section); asserted by this script before commit.
+
+## t-ugm-link-fix run-006 (2026-11-09) — OPTIONAL NOTES filed (operator order trace 1a1bf52e99bc7da9); the run-003/run-004 optional residuals promoted to standing notes of record; no lane dispatched
+
+- OPTIONAL-1 — notes re-consume lane (upstream ships 22 figures the hub never imported):
+  run-004's UPSTREAM SUPERSET disclosure is now the standing note — the upstream note .md at
+  the consume pin main@1a5c37bc carries macbeth 12 vs 2, ionic-product 3 vs 1, benzene 12 vs 2
+  = 22 upstream-only figures; hub bundles are faithful subsets, the extras are NOT shipped and
+  cannot 404 on the hub; resurrection is a re-consume lane decision (RN-RECONSUME-1 pattern:
+  re-pin first, per-figure origin evidence, referencing-line assertions; corpus gate
+  relativeImages already fail-closed at 0).
+- OPTIONAL-2 — run-003's 309-suspect citation-hygiene class: split-URL markdown citations +
+  'ttps://'/'ttp://' typos + U+2010 hyphens across 10 files (top-5 of record:
+  cie-igcse-business-25 96, cie-igcse-business-23 94, cie-a-level-business-23 43,
+  igcse-economics-17 14, cie-igcse-english-language-25 12 = 259; remaining 50 elided across 5
+  more files) — a content-hygiene lane candidate, never individually live-verified; these sit
+  in citation/attribution TEXT, not rendered links (flattening law) = zero navigation impact.
+- DISPOSITION: both filed OPTIONAL, no lane fired this run; the dispatch law is unchanged
+  ('dispatch the <x> lane' fires work). Receipt:
+  .syllabai/receipts/t-ugm-link-fix/run-006-optional-notes-r0.json. Ledger-only (receipt +
+  both worklogs; zero code/content). fetch-first, no force.
