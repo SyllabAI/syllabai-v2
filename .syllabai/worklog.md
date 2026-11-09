@@ -2276,3 +2276,32 @@ Stage Summary:
 - Gates of record: G0 exactly 15 files; G2 title-only/label-only; G3 counts byte-equal; G6 mirror equality 25/25 + old-title extinction in all three planes; G7 no NEW cross-section collisions (TOPIC+:SUB_ pair sharing is lawful pre-existing structure); placement verify_sme_wire_r0 A/B IDENTICAL (90/2,574/43,232, placed 2,574, unplaced 0, gen-row homes 30); prebuild chain ALL GREEN.
 - Merge order: run-013 (bb43a0c8..313ea2bd + merge b78e4397) then this branch; both are run-009 queue discharges. Zero src bytes, zero code, zero spec-point/stamp bytes; author does not self-merge.
 - Receipt: .syllabai/receipts/RN-DEBRIS-11/run-014-edexcel-rowlabel-titles.json; artifacts: .syllabai/lane-artifacts/RN-DEBRIS-11/run014_* + run014docs/. Branch lane/rn-debris-11-run-014-edexcel-rowlabel-titles stacked on run-013 tip b78e4397 (which race-guard-merges origin/main 42c1471e).
+
+## t-ugm-link-fix run-007 (2026-11-09) — OPTIONAL-1 re-consume lane (operator order trace 1a1bfa803d7c9d4d) lands as NULL-DELTA VERIFICATION + CORRECTION OF RECORD; zero content changes
+
+- THE FINDING OF RECORD: run-004's "22 upstream-only figures the hub never imported" is
+  DISPROVEN — the hub bodies already carry 12/3/12 = 27 figure refs across the three notes,
+  basename-identical to upstream at BOTH pins (aa0b4de1 AND 1a5c37bc; upstream ref-lists
+  identical across pins; 0 missing). Nothing to resurrect; no re-consume owed on the figure
+  plane.
+- THE ROOT CAUSE OF THE "22": run-004's UPSTREAM SUPERSET disclosure counted RELATIVE-FORM
+  refs only (12 vs 2, 3 vs 1, 12 vs 2) and was blind to the hub's pre-existing ABSOLUTE
+  hotlinks (10/2/10 at the aa0b4de1 vintage — corroborated by run-004's own diff carrying 686
+  pre-existing aa0b4de1 hotlinks in the macbeth file). Form difference, not presence
+  difference. This correction supersedes the run-006 OPTIONAL-1 facts (run-006 quoted run-004
+  verbatim; the re-derivation law was stated but first executed THIS run).
+- EVIDENCE: balanced-bracket parser (the SME nested-bracket alt class run-004 itself flagged —
+  a naive regex undercounts 2/1/2); ground truth = asset FILENAME not URL form; upstream .md
+  fetched via raw at both pins after tree-correcting the upstream layout
+  (SME-RevisionNotes/<course>/notes/<hub-path> — first attempt 404'd, disclosed); TEXT PARITY:
+  hub = upstream after the documented consume transforms (front-matter strip, spcpt_* -> hub
+  spec codes) + 3 whitespace microvariants (ionic) — zero missing text; LIVE BATTERY 27/27
+  figure URLs GET 200 (21 image-magic + 6 WebP-as-.png upstream quirk, content-type
+  image/png, sizes verified — zero hub impact).
+- HYGIENE (not a defect): mixed consume pins in these bodies (aa0b4de1 vintage + run-004's
+  1a5c37bc absolutizations), all resolve 200; corpus-wide single-pin consolidation = separate
+  optional lane, NOT dispatched.
+- DISPOSITION: OPTIONAL-1 CLOSED (null-delta, correction filed); OPTIONAL-2 (run-003's
+  309-suspect citation-hygiene class) remains the only open optional of the band. Receipt:
+  .syllabai/receipts/t-ugm-link-fix/run-007-reconsume-null-delta-correction-r0.json.
+  Ledger-only (receipt + both worklogs; zero code/content). fetch-first, no force.
