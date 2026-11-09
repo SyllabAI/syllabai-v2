@@ -2067,6 +2067,12 @@ origin/main
 - THIS workflow: zero-write GETs with VERCEL_BAKE_TOKEN — teams visible, every project's name/id/rootDirectory, each project's newest production deployment (state + commit + date), each project's assigned domains. It answers the three facts the API bake job needs: does an API project exist on the bake token's scope, with which rootDirectory, and where api.syllabai-v2's domain sits.
 - Secret law unchanged (t-ops-plane): the token is never printed; only names/ids/states.
 
+
+## T-VERCEL-API-BAKE run-001 (2026-11-09) — the API project's production bake floor
+
+- t-vercel-api-diag run-001 discovered (first-hand, read-only): the bake token's team (syllabainoreply-4440 / team_oRKtmWlfLMR0hNaqViyWj7NZ) holds BOTH projects of record — syllabai-hub-v2 (rootDirectory apps/hub) AND syllabai-v2 (the API, rootDirectory repo root, domains api.syllab-ai.com + syllabai-v2-six.vercel.app). The migration question of record is closed: the API project DID move to the second account — but nothing ever baked it (its newest production was a dashboard Redeploy of stale bytes, 05:51:51Z, empty commit SHA; live probe 06:12Z with a self-registered viewer account: /paper-assets/resolve 200, /regions 500 — the pre-#864 build).
+- THIS workflow mirrors the t-vercel-usage-bake law for the API project, with one delta: the CLI deployment carries --meta githubCommitSha=<HEAD> (and githubCommitRef=main) so the state-aware skip works for CLI deploys — the floor skips when the newest LIVE production deployment already carries main HEAD, idempotent by design (the hub floor re-bakes daily because its CLI deployments carry no SHA).
+- Strict dispositions unchanged (t-ops-plane class): VERCEL_BAKE_TOKEN never printed; at most ONE deployment per run, only when the newest live deployment's meta SHA differs from main HEAD; read-only preflight prints the project's build settings so a failed bake explains itself; schedule 03:30 UTC staggered after the hub's 02:30.
 ## receipt(T-KG-TRIPWIRE-1) — Phase 1 T1 thumbs-down — run-003 — 2026-11-09 (trace 1a1bc99cd7f38ef1)
 
 - Shipped: T1 affordance in the provenance drawer (product fork), browser-local course-keyed
@@ -2079,6 +2085,161 @@ origin/main
 - Disclosed boundary: the /graph-explorer prototype builds stay byte-faithful (no-patch
   law) — affordance ships on the product surface where the served corpus lives; export
   path + weekly report are Phase 2. Standing PAT-rotation reminder (fifth filing).
+
+
+## T-VERCEL-API-BAKE run-001 receipt (2026-11-09 06:52Z) — the law proven, the quota is the last wall
+
+- THE PIPELINE PROVEN END-TO-END: diag run-001 (read-only: both projects of record on the bake token's team; the API = syllabai-v2, repo-root rootDirectory, api.syllab-ai.com assigned) -> PR #887 (the dirty-state union-merge per the house law; the 504 infra-flake verify red re-triggered per the empty-commit law; CI green on e7145c5e) -> dispatch run-001: state-aware read (newest live = READY @ no-SHA = the stale dashboard Redeploy) -> preflight (framework/buildCommand/outputDirectory all None, rootDirectory None = repo-root default) -> vercel link ✓ (syllabainoreply-4440/syllabai-v2) -> deploy uploaded 4.9MB of source -> **"Resource is limited - try again in 24 hours (more than 100, code: api-deployments-free-per-day)"**.
+- THE READING: the new account is on the Hobby plan's 100-deployments/day cap, exhausted by today's merge-train churn (per-PR previews across lanes + the hub floor + the operator's Redeploys). The bake itself is byte-perfect — the ONLY failure is the quota.
+- THE SELF-HEAL: the workflow's 03:30 UTC schedule fires off-peak by design (ahead of the merge train, per the t-vercel-usage-bake doctrine). When the quota resets, the state-aware read still sees the pre-meta stale deployment != main HEAD and the bake fires on its own — NO operator action required. If the churn exhausts the quota earlier than 03:30 again, the upgrade lever (Pro) is the operator's.
+- UNAFFECTED AND GREEN: the data of record (9 questions / 95 mark points / 95 rects, postverify-gated) — the quota is a deployment-plane limit, not a data-plane one. Live regions probe (self-registered viewer account, 06:12Z): resolve 200, regions 500 — the stale build serves until the bake lands.
+- THE HUB: the dispatched bake (run 11) completed exit-0 (production deployment 436f510be6, READY posture at dispatch time; CLI deploy exits 0 only on completion).
+## receipt(T-TUTOR-EXP-2) — run-001: the v17 A/B battery of record — 2026-11-04 (the design §5 gate executed)
+
+- THE GATE FAILS — the v17 draft clause does not land: the controlled A/B (both arms over the REAL prompt assembly, system prompts asserted to differ by the clause block alone, user prompts byte-identical per scenario) reads explanation probe-rate 3/5 (gate 5/5; S1/S2 under-fired), ONE insufficiency-turn probe whose answer had drifted beyond the sources (S11b — the clause's own grounding law violated in the same event), and a VERBATIM probe repeat across turns (S12 — a defect class the design did not enumerate; the no-verbatim-repeat law governs answers, the clause never guarded the probe). The skip-set is REAL: quiz/scaffold/tier-1-hint/walkthrough/lookup turns held 5/5 clean, and on the tier-1 hint turn v17 IMPROVED on the v16 baseline (v16 probed organically; v17 served a clean 28-word hint). Receipt of record: .syllabai/receipts/T-TUTOR-EXP-2/run-001.md (full matrices + the disclosed model substitution).
+- Method of record (two layers): LIVE prod arm A on courseRef 4CH1-2017 (the curriculum_versions.code — "4CH1" alone resolves NOTHING and refuses; the earlier session's "4CH1" probes were the wrong ref, not an outage) with the REAL paper pin 34c56cfa (4CH1/2C Jan-2022 VALIDATED); controlled arm B via the harness importing prompt.ts twice (run-001 merge head 1483cd82 = v16 vs run-002 1b881001 = v17) over the REAL 4CH1 sources (frozen spec YAML verbatim statements + the pilot's authored notes.json + the live bank fetch's QP/MS chunks). LLM seam disclosed: groq 403 from the sandbox egress on the exact stored key (the SAME key serves prod — 4/13 prod turns answered groq; the block is egress-side), gemini geo-blocked, openrouter/nemotron reasoning-only turns return empty content through the adapter, and the team's api-deployments-free-per-day quota (100/day) is exhausted — the v17 preview deployment was refused 402; the v16 preview (dpl_4KZd558uBq9S) sits QUEUED. Sandbox SDK model = the seam for both arms, identical settings.
+- LIVE prod defects the battery surfaced (tutor lane, NOT this card): (1) paper-pinned WALKTHROUGH asks die after stream open 3/3 ("the tutor is temporarily unavailable"; hint + scaffold quiz on the SAME pin succeed; retrieval serves 5 cites first — the failure is in generation for this ask shape); (2) one transient stream error on the hint ask (retry OK).
+- Baseline signal of record: today's prod tutor emits trailing questions on 4/5 substantive explanation asks and organically labels an "Understanding check" on a tier-1 hint — the 11-03 broadcast posture has softened on the failover chain; the v17 delta must be sold as CONSISTENCY + grounding + skip discipline, not probe-creation ex nihilo.
+- Env discipline: production env values fingerprint-identical pre/post (verified per-var); the only Vercel mutation is ADDING the preview target to the 15 existing env vars (additive, reversible, production untouched). PAT + Vercel token env-var-only; provider keys in process memory only, in no artifact.
+- NEXT (design §6 law — the battery verdict is the gate, not taste): revise the clause with R1 firing-consistency / R2 the insufficiency skip / R3 the probe no-repeat guard (or design option (b) cadence state), then re-run THIS battery unchanged; the re-run verdict gates the merge.
+- Anti-truncation asserts: worklog appended append-only (new = old + this section incl. leading blank-line separator); byte delta == len(section); asserted by this script before commit.
+
+
+## T-HUB-COURSES-UI-2 run-002 (2026-11-09) — the cards adopt the course page's row recipes; the badge row retires for the common path
+
+- Operator order: trace 1a1beb40a15f8125 "What about the courses cards (in the course page). How can we improve their design?" — answered with five deltas re-extracted from the design of record (the saved Chemistry IGCSE page re-parsed this run: its Learn/Practise rows are borderless rounded-2xl rows with size-14 rounded-2xl tinted tiles, font-bold titles and a full-ink mt-1 text-xs font-medium text-foreground count line; meta is mixed weight — board medium full-ink, thin | separators, code mono). One taste call flagged; the operator DECIDED: "retire the full corpus pill and fold papers into the count line". run-001's PR #874 verified ALREADY MERGED before branching (with its union-merge landing commit 2196d52d) — run-002 branches clean off origin/main 676bbc6d, no stacking.
+- THE FIVE DELTAS (course-directory.tsx only, className/comment-level; zero new data/props/deps): ① card tiles size-12 rounded-xl border → size-14 rounded-2xl BORDERLESS (the attachment's own tile verbatim; .subject-tile template keeps driving bg/fg across all four themes + dark; fallback tile follows); ② title text-sm font-semibold → text-[15px] font-bold tracking-tight (the loudest line in the card; 15px is the design of record's own vocabulary — its hero description rides it; two-line clamp + ghost foreground law unchanged); ③ meta line to the mixed-weight recipe (board font-medium text-foreground, mx-1.5 text-muted-foreground/50 |, code mono) — the bare mono line wrapped cold, a 22-char board name in mono was the worst offender; ④ the substance line carries the past papers TOO (folded out of the badge row per the operator's decision) and flips to the attachment's count-line emphasis — counts + papers at font-medium text-foreground (tabular-nums on papers, tooltip carried over), tutor lead keeps its primary sparkle, gate widens to statsLine ∨ papers>0 ∨ tutorReady; ⑤ the badge row RETIRES for the common path — the always-on FULL CORPUS pill (102/106 cards) is gone, the hero StatChip row owns the aggregate, per-card honesty = the real counts line + the committed border; pilot + import-pending survive as the rare differentiating statuses and LOSE the uppercase shout (the last uppercase survivors after run-001 de-shouted the headings). Card gap-3.5 → gap-4 (the row rhythm). Hover UNCHANGED by design (border-primary/60 + shadow-sm already matches the attachment's chip hover); cards keep Card chrome (a 3-col grid of 106 needs containment).
+- GATES: prebuild verify chain PASS (subject-identity 106/106, 18 identities, no stale mappings; CIE validator PASS — the card paper-count assertions hold); tsc --noEmit clean; eslint clean; bun test targeted 28/28 (75 expects: directory-stats + directory-groups + route-gate 8/8 law intact); FULL hub suite A/B fail-band verified — 1234 pass / 6 fail / 1 error BYTE-IDENTICAL on the branch and on clean main (change stashed for the A/B; requestPartRegrade, T-UGM-RENDER-1 katex, question-cla isolation, T-MG-INK-11 b+c are the pre-existing band, NOT this run's); next build attempt 1 cut at 4524/4647 by the 10-minute tool cap, re-run compile 19.4s + STATIC PRERENDER COMPLETE 4647/4647 in 8.4min + BUILD_ID written — standalone emit ENOSPC, the identical disclosed failure mode of FIVE prior runs (CI hub job = the packaging gate of record).
+- Runtime verification (the built artifact, next start :3111): GET /courses 200 — size-14 borderless tiles served (zero size-12 left), 15px bold tracking-tight titles, mixed-weight meta spans, papers inside the full-ink count line, ZERO full-corpus pills (the string survives only in the hero StatChip aggregate "102 full corpus" and the three ghost tooltips — both by design), rounded-full uppercase gone from the page, import pending ×3 non-uppercase, exactly one h1, SSR generic, 60 × Tutor ready, StatChips census-exact (106/102/60/4,382); GET / 200. Browser evidence (1440×1000): download/courses-ui2-run2/ui2r2-hero.png + ui2r2-section.png.
+- Environment (disclosed): the recycle reverted the clone to 1dd5335 a THIRD time (run-001's local branch + stash wiped, node_modules emptied); the first recovery read parroted a stale-ref fallacy ("run-001 not in main") from a silently-timeouted fetch — corrected with a single-ref fetch before any action (main 676bbc6d, #874 merged); the re-materialized +17-line dirty worklog byte-verified ALREADY ON main again (grep census 17/17 — stale duplicate, discarded); bun install 988 packages fresh. OBSERVATION for the integrator: worklog.md's tail carries three stray bare "origin/main" lines (pre-existing append artifacts, left intact per the append-only law).
+- Receipt: .syllabai/receipts/T-HUB-COURSES-UI-2/run-002.md. Branch t-hub-courses-ui-2/run-002, PR against main; NOT self-merged per house law. Standing reminder (SEVENTH filing): the PAT remains exposed from chat transmission and MUST be revoked/rotated.
+
+Stage Summary:
+- The directory cards now speak the course page's row language end to end: borderless row-scale tiles, bold titles, mixed-weight meta, one full-ink substance line — and the common card renders zero badges, with the honesty moved to where it is true (the counts line) and where it belongs (the hero aggregate).
+- Bookkeeping: task yaml status → IN_REVIEW run-002 + the run-002 execution_record paragraph; receipt run-002.md; this entry. All appended, nothing rewritten.
+
+## T-HUB-COURSES-UI-2 run-002 MERGE (2026-11-09) — PR #882 merged on the operator's explicit order; production pickup = watch item
+
+- Operator order: trace 1a1bf536fb061c11 "merge #882" — the explicit merge command the house law requires; no self-merge ambiguity.
+- PRE-MERGE: PR #882 mergeable_state dirty — main had advanced 676bbc6d → 391de0cd (15 merged PRs: T-HUB-AUDITFIX-1 runs 1-6, t-sme-sel-w2, t-tutor-aim/exp-2, t-kg-tripwire-1, t-ugm-link-fix r4 + r4-ledger, t-vercel-api-bake-1, video-map data) with ZERO overlap on run-002's code files; the collision was the worklog tail-append, resolved by the union-merge law — both sides kept append-only (main's landing entries first, this lane's run-002 entry last), merge commit 5509875e pushed fetch-first NO FORCE.
+- ENVIRONMENT: the sandbox recycled a FOURTH time mid-merge (HEAD fell back to 1dd5335, the local run-002 branch wiped, node_modules gone, the +17-line dirty worklog artifact re-materialized and re-verified already-on-main 17/17) — recovery ran off the pushed remote branch (b7f4e2c5 was safe on origin; the recycle-proofing of commit-early-push-early held).
+- CI: on 5509875e the hub job FAILED at setup-bun@v2 — infra flake BEFORE any compile step (the repo's documented re-trigger class, two prior precedents); verify + Vercel preview success. The job re-run went GREEN (hub success, verify success, preview success).
+- MERGE: #882 merged via API merge-method merge (the house merge commit), main → c9316450.
+- PRODUCTION WATCH (hand-off, NOT closed in-sandbox): anonymous polling of www.syllab-ai.com/courses for ~9 min post-merge still served run-001's build (zero run-002 markers; import pending ×3 present, size-14 tiles absent). The auto-bake of a 4647-page build runs long and the repo carries the documented dropped-bake class (empty-commit re-trigger precedent) + the bake-lane floor (t-vercel-api-bake: SHA-tagged CLI deploys of record). Deliberately NOT self-fired: the deploy-incident disclosure (the 8-minute API-carrier alias drift) keeps CLI bakes out of this lane's hands. Next check: the served build should flip to run-002 markers (size-14 borderless tiles, text-[15px] font-bold tracking-tight titles, mixed-weight meta, papers inside the full-ink count line, zero full-corpus pills, non-uppercase import pending); if the auto-bake dropped, the remedy is the bake lane's SHA-tagged floor or an empty-commit re-trigger.
+- Bookkeeping: task yaml status → DONE (merged via PR #882, operator order; production pickup watch item) + the merge paragraph in execution_record; this entry. .syllabai-only direct-main, fetch-first, no force.
+- Standing reminder (EIGHTH filing): the PAT remains exposed from chat transmission and MUST be revoked/rotated.
+
+Stage Summary:
+- The card-design round is CLOSED of record: run-002 merged with CI green after one documented infra-flake re-run; the /courses cards now render the course page's row recipes with zero badges on the common path. The one open thread is the production bake pickup — a watch item with a documented remedy, not a defect.
+
+## t-ugm-link-fix run-006 (2026-11-09) — OPTIONAL NOTES filed (operator order trace 1a1bf52e99bc7da9); the run-003/run-004 optional residuals promoted to standing notes of record; no lane dispatched
+
+- OPTIONAL-1 — notes re-consume lane (upstream ships 22 figures the hub never imported):
+  run-004's UPSTREAM SUPERSET disclosure is now the standing note — the upstream note .md at
+  the consume pin main@1a5c37bc carries macbeth 12 vs 2, ionic-product 3 vs 1, benzene 12 vs 2
+  = 22 upstream-only figures; hub bundles are faithful subsets, the extras are NOT shipped and
+  cannot 404 on the hub; resurrection is a re-consume lane decision (RN-RECONSUME-1 pattern:
+  re-pin first, per-figure origin evidence, referencing-line assertions; corpus gate
+  relativeImages already fail-closed at 0).
+- OPTIONAL-2 — run-003's 309-suspect citation-hygiene class: split-URL markdown citations +
+  'ttps://'/'ttp://' typos + U+2010 hyphens across 10 files (top-5 of record:
+  cie-igcse-business-25 96, cie-igcse-business-23 94, cie-a-level-business-23 43,
+  igcse-economics-17 14, cie-igcse-english-language-25 12 = 259; remaining 50 elided across 5
+  more files) — a content-hygiene lane candidate, never individually live-verified; these sit
+  in citation/attribution TEXT, not rendered links (flattening law) = zero navigation impact.
+- DISPOSITION: both filed OPTIONAL, no lane fired this run; the dispatch law is unchanged
+  ('dispatch the <x> lane' fires work). Receipt:
+  .syllabai/receipts/t-ugm-link-fix/run-006-optional-notes-r0.json. Ledger-only (receipt +
+  both worklogs; zero code/content). fetch-first, no force.
+- Bookkeeping: task yaml status → IN_REVIEW run-002 + the run-002 execution_record paragraph; receipt run-002.md; this entry. All appended, nothing rewritten.
+## receipt(T-KG-TRIPWIRE-1) — tripwire spec phase 2: kg_tripwire_report.py + first weekly run — run-004 — 2026-11-09 (operator trace 1a1bebd26cb5d9a9)
+
+- Scope: operator order "Phase 2 (kg_tripwire_report.py + the first weekly run)" — spec section 8 phase 2: the weekly report script + first run, queue filing, calibration cohort section, verdict fields byte-empty, append-only queue byte-asserted.
+- Shipped: scripts/kg_tripwire_report.py (stdlib-only; QA-of-record law set P1-P6 + F8.1-F8.7 in COLLECTION mode + Kahn cycles + inversion census; census re-derived every run; T1 >=3-sessions/7d window + long-tail; T2 n>=30 insufficient_data law, Wald CI, threshold 0.10 web / any-direction control; section-6 routing; four confounds every report; L1-L5 self-laws) + .syllabai/lane-artifacts/T-KG-TRIPWIRE-1/ (weekly-report-2026-11-09.md+csv, review-queue.csv header+3 rows, 3 evidence bundles).
+- The finding of record: QA of record FAILS at main 676bbc6d — [F8.1] el20 11 + el25 9 dead-anchor concepts, [F8.5] el20 drift sym 2 (the 2 disclosed reversed-governance pairs). Attribution: RN-DEBRIS-11 run-012 (a52c187a) rebuilt the 0500 spines and disclosed the drops but left aims anchors byte-untouched; its gates covered surviving pairs, not corpus-wide F8 laws. 3 OPEN rows filed (highest priority, blocks nothing); repair belongs to the owning lane, not this run.
+- Census re-derived: 106 courses / 20,351 served / web 20,264 / validated 124 (118+6 retarget-sole — run-002 rows reconciled) / inferred 30 / unclassified 0 / cycles 0 / inversions 0; web edges 9,072 unchanged. Retarget law corrected BEFORE any of-record artifact: provenance strings are untouched by design, the class is structural (direct-endpoint validated edges; 12 edges -> 6 sole-derivation served pairs — run-002's assert reproduced exactly).
+- Acceptance ALL PASS (independently re-verified): section-6 schema header byte-equal; verdict/reviewer/review_date byte-empty 3/3; append-only byte-assert PASS and same-day re-run appended 0 bytes (dedup by already-OPEN, the queue is a work queue not a log); calibration cohort + all four confounds present; prereqValidated 0/106 by JSON-parse walk; git delta scope scripts/ + .syllabai/ only; zero content/public/label bytes.
+- Environment: fifth sandbox recycle (everything rebuilt); PAT lost with it — branch t-kg-tripwire-1/run-004 is local of record, push+PR commands handed to the operator; PAT rotation reminder fifth filing (chat-transit exposure still unrotated).
+- Landing (same day): PAT refiled; full-fetch collision with the Phase 1 lane (remote branch run-003 = open PR #877 with its own run-003.md receipt) resolved by renumbering this run run-003 -> run-004 BEFORE first push (no facts/traces/artifacts changed, Phase 1 branch untouched — fetch-first no force); branch t-kg-tripwire-1/run-004 pushed (tip c1f19026); PR #883 opened — operator merges, no self-merge; PAT rotation reminder re-filed (this PAT also chat-transited).
+
+
+## T-HUB-COURSES-UI-2 run-002 PRODUCTION PICKUP (2026-11-09) — watch item CLOSED: git auto-bake account-blocked, the documented bake-lane floor fired and verified (operator order "re-check production", trace 1a1bf7086060b1bd)
+
+- RE-CHECK (~25 min post-merge): www.syllab-ai.com/courses still served the run-001-era build
+  (size-12 ×106, text-sm font-semibold ×122, zero run-002 markers; import pending ×3, Tutor
+  ready ×60, hero census intact). First-hand cause on record: BOTH post-merge main tips carry a
+  [failure] Vercel commit status "syllabai-hub-v2 → why-is-my-account-deployment-blocked"
+  (c9316450 @08:15:50Z, 4e889ea7 @08:39:00Z) — the git-triggered auto-bake path is
+  account-blocked, not a one-off flake.
+- REMEDY (the DONE-flip's documented first option, "the bake lane's SHA-tagged floor"):
+  dispatched .github/workflows/t-vercel-usage-bake.yml on main (workflow_dispatch run#12,
+  idempotent SHA-gated, at most ONE prod deployment, VERCEL_BAKE_TOKEN stays a repo secret —
+  no token in this lane's hands). Run 08:45:47Z → SUCCESS 09:01:24Z (~15.6 min); the CLI deploy
+  bypasses ignoreCommand by design and proves the account still admits CLI deploys while git
+  builds are blocked. The empty-commit re-trigger was the rejected alternative: git builds ARE
+  the blocked path, so a re-trigger would fail identically and pollute main.
+- PRODUCTION VERIFIED 22/22 (marker battery on the SSR HTML, scripts/verify_prod_courses.py in
+  the session area): run-002 markers LIVE on www.syllab-ai.com/courses — size-14 borderless
+  tiles ×106, rounded-2xl ×107, text-[15px] font-bold tracking-tight ×106, mixed-weight meta
+  separator ×106, papers tooltip ×59 inside the full-ink count line, ZERO full-corpus pills /
+  rounded-full+uppercase pairs, import pending ×3 lowercase, Tutor ready ×60, one h1, hero
+  census 106/102/60/4,382, old size-12 gone (×0). Route-gate law intact: /courses public 200;
+  /courses/<slug> 307 → /login?next=%2F… (session gate, Tier-0 signInHref contract); the
+  trailing-slash variant 308-strips to the bare path (Next normalization) then gates
+  identically — "the directory is public, the courses themselves are not" (operator ruling
+  option 1, route-gate.test). Screenshot evidence in the session download area
+  (prod-run002-{hero,cards}.png, 1440×1000).
+- CONTEXT for the bake lane (adjacent, NOT touched here): t-vercel-api-bake run#1 (the API
+  floor, #898) FAILED at its CLI deploy step 06:51Z — api.syllab-ai.com remains stale since
+  Nov 4; whether the account-level block hits the API project's CLI deploys too is the bake
+  lane's / operator's call.
+- Bookkeeping: yaml status + the execution_record closure paragraph + this entry in both
+  worklogs. Ledger-only, zero code/content. .syllabai-only direct-main, fetch-first, no force.
+- Standing reminder (NINTH filing): the PAT remains exposed from chat transmission and MUST be
+  revoked/rotated.
+
+Stage Summary:
+- The run-002 card design is LIVE of record: production serves borderless size-14 tiles, bold
+  15px titles, mixed-weight meta, papers inside the full-ink count line, zero full-corpus pills
+  — verified 22/22 against www.syllab-ai.com. The dropped git auto-bake was remedied by the
+  documented bake-lane floor (run#12, success). One thread hands off to the bake lane: the
+  account-level git-build block + the API floor's failed CLI deploy.
+
+## ADR-044 run-001 (2026-11-09) — the editor role & the content workbench: the design of record filed
+
+- Operator order: "Re-file the spec where it counts" (trace 1a1bf9b23f1d45a9) — re-filing the
+  editor-role engagement after its sandbox artifacts were lost to a workspace recycle; the design
+  itself survived in the session of record and is now the repo's law candidate.
+- THE ADR (docs/ADR-044-EDITOR_ROLE_CONTENT_WORKBENCH.md, PROPOSED -> ACCEPTED on merge): E-0 — the
+  serving plane is never directly editable; every human edit flows corpus -> gates -> tiered merge ->
+  receipt -> census -> serve. Editor = v2-native grant plane (editor_grants rows; the frozen Role
+  enum { STUDENT, TEACHER, ADMIN } untouched — zero capture-band divergence, the workspace-docs
+  class), requireEditor shell per the teacher-me class (401 before everything, 403 otherwise), the
+  capability matrix strictly content-scoped (no platform powers; composable with TEACHER), the
+  server-side tier classifier (Tier 1 typography auto-merge on green — the operator ruling of
+  record; Tier 2 content-bearing four-eyes via G-EYES author-independence + post-merge census
+  receipt; Tier 3 structural refused to the lane process), the gate engine as ONE module consumed
+  twice (hub pre-flight + CI gates; families G-CANON / G-SER / G-FIELD / G-CHAR / G-ASSET / G-EYES
+  / G-SCOPE), the data plane carded at packages/db/drizzle/0028_editor-planes.sql (next free after
+  0027_mark-award-delta; editor_edit_proposals + editor_edit_receipts per the 0022/0023
+  personal-state law; the F5-S7 grants lane as a Phase 1 exit criterion; caps per T-CAPS-POLICY-1),
+  /api/v1/editor/* v2-native additive with NO editor-reachable serve/merge endpoint, phasing 0-4,
+  and the negative space of record (no free-text AI rewrite passes over banks, no direct plane
+  writes, no edits without PRs, no per-field locking, no self-merge above Tier 1).
+- Rulings carried verbatim from the originating session: Tier 1 auto-merge acceptable; scope = all
+  banks at once and future ones (no per-bank entitlement list); the role is named "editor"; holders
+  internal + external. Re-rulings amend the ADR in public; they never re-interpret it silently.
+- Evidence: grounding reads from live main at filing time (auth.ts frozen Role pin /
+  content-writes.ts teacher-ingestion band / middleware auth shell / identity.ts derived mapping /
+  the docs/ ADR series 037-043 with ADR-044 next free / drizzle 0000-0027 with 0028 next free);
+  the reference MVP's verified golden path (API 20/20, browser 10/10, lint clean, real
+  syllabai-resources fixtures incl. the three wave-D-repaired physics questions) recorded as
+  companion evidence.
+- Docs-only, zero src/test bytes; PR opened against main, NOT self-merged per house law. Receipt:
+  .syllabai/receipts/ADR-044/run-001-spec-of-record.md. Circulation copy (md + docx + pdf)
+  regenerated outside the repo at download/editor-role/. Standing reminder (TENTH filing): the PAT
+  remains exposed from chat transmission and MUST be revoked/rotated.
+- MERGED (same trace): PR #883 -> main 9c6dd883 on the operator explicit order; review pass recorded in the receipt landing addendum; landing loops 1-6 (worklog union-merge each time, append-only law); Phase 1 landed as run-003 during the chase; sixth sandbox recycle — rotation reminder sixth filing this lane.
 
 ## T-SME-SEL-COSM-1 run-001 (2026-11-09) — the chemistry spine-cosmetics lane: T8/T19 official titles restored from the spec PDF of record + the synoptic set's kind label (ADR-039 r4)
 

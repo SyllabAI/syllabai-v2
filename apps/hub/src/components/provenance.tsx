@@ -11,7 +11,7 @@ export function ValidationBadge({ status }: { status: string | null | undefined 
     REJECTED: "border-destructive/30 bg-destructive/10 text-destructive",
   };
   return (
-    <Badge variant="outline" className={cn("text-[10px]", map[status])}>
+    <Badge variant="outline" className={cn("text-2xs", map[status])}>
       {status}
     </Badge>
   );
@@ -58,7 +58,7 @@ export function ProvenanceBadge({
   return (
     <Badge
       variant="outline"
-      className={cn("text-[10px]", map[tier] ?? "text-muted-foreground")}
+      className={cn("text-2xs", map[tier] ?? "text-muted-foreground")}
       title={studentVoice ? `Provenance tier: ${tier}` : undefined}
     >
       {label}
@@ -69,7 +69,7 @@ export function ProvenanceBadge({
 /** Canonical spec-point anchor chip (e.g. 4CH1-1.25). */
 export function SpecChip({ code }: { code: string }) {
   return (
-    <code className="rounded bg-muted px-1.5 py-0.5 text-[11px] font-medium text-foreground/80">
+    <code className="rounded bg-muted px-1.5 py-0.5 text-2xs font-medium text-foreground/80">
       {code}
     </code>
   );
@@ -82,7 +82,7 @@ export function SpecChip({ code }: { code: string }) {
 export function SimulatedBanner({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 flex items-start gap-2 rounded-md border border-sim/30 bg-sim/10 px-3 py-2 text-xs text-sim">
-      <Badge variant="outline" className="shrink-0 border-sim/40 text-[10px] text-sim" title="Provenance tier: SIMULATED">
+      <Badge variant="outline" className="shrink-0 border-sim/40 text-2xs text-sim" title="Provenance tier: SIMULATED">
         Illustrative
       </Badge>
       <p className="leading-relaxed">{children}</p>

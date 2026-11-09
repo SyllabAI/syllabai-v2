@@ -119,12 +119,12 @@ function SubjectRow({
         <Users className="size-4 shrink-0 text-muted-foreground" aria-hidden />
         <span className="min-w-0 flex-1">
           <span className="block truncate text-sm">{label}</span>
-          <span className="block truncate font-mono text-[10px] text-muted-foreground">
+          <span className="block truncate font-mono text-2xs text-muted-foreground">
             {code}
           </span>
         </span>
         {stat?.hasBundle ? (
-          <span className="shrink-0 text-right text-[11px] leading-tight text-muted-foreground">
+          <span className="shrink-0 text-right text-2xs leading-tight text-muted-foreground">
             {rowValue(stat.notes, "note")} · {rowValue(stat.questions, "question")} ·{" "}
             {rowValue(stat.flashcards, "card")}
           </span>

@@ -71,7 +71,7 @@ export function DragLabelBlock({ block }: { block: RailBlock }) {
     <WidgetCard ord={block.ord} typeLabel="Label the diagram" prompt={prompt} accent>
       <LiveHint text={selected ? `Selected label: ${selected}` : ""} />
       {diagramCaption && (
-        <p className="mb-2 rounded-md border bg-muted/50 px-2 py-1.5 text-[13px] text-muted-foreground">
+        <p className="mb-2 rounded-md border bg-muted/50 px-2 py-1.5 text-xs text-muted-foreground">
           {diagramCaption}
           {hotspotPage != null ? ` · book p.${hotspotPage}` : ""}
         </p>
@@ -85,7 +85,7 @@ export function DragLabelBlock({ block }: { block: RailBlock }) {
               type="button"
               onClick={() => setSelected(l === selected ? null : l)}
               aria-pressed={selected === l}
-              className={`rounded-md border px-2 py-1 text-[13px] ${
+              className={`rounded-md border px-2 py-1 text-xs ${
                 selected === l ? "border-primary bg-primary/10" : "border-border bg-background"
               }`}
             >
@@ -107,7 +107,7 @@ export function DragLabelBlock({ block }: { block: RailBlock }) {
                   place(s.id);
                 }
               }}
-              className={`flex w-full items-center justify-between rounded-md border px-2 py-1.5 text-left text-[13px] ${
+              className={`flex w-full items-center justify-between rounded-md border px-2 py-1.5 text-left text-xs ${
                 got ? "border-border bg-muted/60" : "border-dashed border-muted-foreground/40 text-muted-foreground"
               } ${selected != null ? "hover:border-primary" : ""}`}
               disabled={selected == null}

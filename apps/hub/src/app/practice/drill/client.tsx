@@ -291,7 +291,7 @@ export function DrillClient({ course }: { course: string }) {
             <CardTitle className="flex flex-wrap items-center gap-2 text-sm">
               <Badge variant="outline">{draw.code}</Badge>
               {part.commandWord && (
-                <Badge variant="outline" className="text-[10px] capitalize">
+                <Badge variant="outline" className="text-2xs capitalize">
                   {part.commandWord}
                 </Badge>
               )}
@@ -341,7 +341,7 @@ export function DrillClient({ course }: { course: string }) {
 
             {revealed ? (
               <div className="space-y-3 rounded-md border-t pt-3">
-                <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                <p className="flex items-center gap-2 text-2xs font-medium uppercase tracking-wide text-muted-foreground">
                   {revealed.correct === true && (
                     <span className="flex items-center gap-1 text-success">
                       <CheckCircle2 className="size-4" aria-hidden /> Correct
@@ -361,7 +361,7 @@ export function DrillClient({ course }: { course: string }) {
                 </p>
                 {revealed.markScheme ? (
                   <div className="space-y-2 rounded-md border bg-muted/30 p-3" aria-label="Mark scheme of record">
-                    <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                    <p className="text-2xs font-medium uppercase tracking-wide text-muted-foreground">
                       Mark scheme — the examiner&apos;s points of record ({revealed.markScheme.marksTotal}{" "}
                       {revealed.markScheme.marksTotal === 1 ? "mark" : "marks"})
                     </p>
@@ -370,7 +370,7 @@ export function DrillClient({ course }: { course: string }) {
                         const verdict = revealed.methodCredit?.allocations.find((a) => a.ref === pt.ref);
                         return (
                           <li key={pt.ref} className="flex items-start gap-2 text-sm">
-                            <Badge variant="outline" className="mt-0.5 shrink-0 font-mono text-[10px]">
+                            <Badge variant="outline" className="mt-0.5 shrink-0 font-mono text-2xs">
                               {msPointLabel(pt.ref)}
                             </Badge>
                             <span className="min-w-0 flex-1">

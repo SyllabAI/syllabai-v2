@@ -8,7 +8,12 @@
   "label": "GCSE Biology (IGCSE Edexcel)",
   "courseUrl": "https://cognito.org/courses/gcse/biology-triple/iedexcel",
   "crawledUtc": "2026-10-31T05:47:45.810Z",
-  "crawlMethod": "sitemap+RSC-payload (P1) + enrichment fetch (P2)"
+  "crawlMethod": "sitemap+RSC-payload (P1) + enrichment fetch (P2)",
+  "external": {
+   "provider": "multi (freesciencelessons, malmesbury-education, amoeba-sisters, cognito-ks3)",
+   "method": "yt-dlp flat channel enumeration + oEmbed identity sweep (27/27 verified) + LLM title-to-spec adjudication; no transcripts/descriptions available from sandbox (watch pages consent-walled, per-video extraction bot-walled) — evidence is TITLE-ONLY and rows carry confidence accordingly",
+   "enumeratedUtc": "2026-10-31T19:19:49Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P2",
@@ -16,16 +21,93 @@
   "ruling": "'approve all except 4.16' — owner chat, 2026-11-01",
   "reviewer": "owner (chat ruling 2026-11-01)",
   "evidenceBasis": "Page keyPoints + oEmbed identity sweep (73/73 official titles, caption-validation.json) — transcript re-validation closed after 30 logged paths (caption-validation.md); medium rows are topic-consistent but clause-level unverified.",
-  "rowsApproved": 104,
-  "rowsRejected": 1,
+  "rowsApproved": 129,
+  "rowsRejected": 4,
   "rejects": [
    {
     "lessonRef": "8.8",
     "video": "cickRHnPKvc",
     "spec": "4.16",
-    "reason": "Video identity conflict: the video's own official title is 'How Humans Reduce Biodiversity', which does not support the sewage/eutrophication clause of spec 4.16 (draft evidence itself noted 'sewage specifically not covered'). Owner adopted the caption-validation recommendation; binding removed from the shipped map and spec 4.16 falls back to the honest no-video list."
+    "reason": "Video identity conflict: the video's own official title is 'How Humans Reduce Biodiversity', which does not support the sewage/eutrophication clause of spec 4.16 (draft evidence itself noted 'sewage specifically not covered'). Owner adopted the caption-validation recommendation; binding removed from the shipped map and spec 4.16 falls back to the honest no-video list.",
+    "lane": "T-VIDEOMAP-P2"
+   },
+   {
+    "lessonRef": null,
+    "video": "1Z405uGDZGo",
+    "spec": "4.16",
+    "reason": "FSL 'Waste Management' — the sewage/eutrophication clause of 4.16 is not title-evidenced; the owner already rejected the previous 4.16 binding (cickRHnPKvc) on exactly this ground. Spec stays honestly unmapped.",
+    "lane": "T-VIDEOMAP-P2B"
+   },
+   {
+    "lessonRef": null,
+    "video": "RNLceVI8jcc",
+    "spec": "2.89",
+    "reason": "Amoeba 'Nervous System' is a generic survey title; 'neurotransmitters at synapses' (2.89) is not title-evidenced — the evidence field itself concedes 'likely covered'. Fails the title-only bar.",
+    "lane": "T-VIDEOMAP-P2B"
+   },
+   {
+    "lessonRef": null,
+    "video": "DGpPHrLF-5M",
+    "spec": "2.55B",
+    "reason": "Amoeba '(OLD VIDEO) Plant Structure and Adaptations' — root-hair water absorption (2.55B) not title-evidenced, video marked OLD by the channel. Keyword-adjacent hit.",
+    "lane": "T-VIDEOMAP-P2B"
    }
-  ]
+  ],
+  "lanes": [
+   {
+    "lane": "site (cognito pages)",
+    "task": "T-VIDEOMAP-P2",
+    "ruling": "'approve all except 4.16' — owner chat, 2026-11-01",
+    "reviewer": "owner (chat ruling 2026-11-01)",
+    "ruledUtc": "2026-10-31T17:45:00Z",
+    "evidenceBasis": "Page keyPoints + oEmbed identity sweep (73/73 official titles, caption-validation.json) — transcript re-validation closed after 30 logged paths (caption-validation.md); medium rows are topic-consistent but clause-level unverified.",
+    "rowsApproved": 104,
+    "rowsRejected": 1,
+    "rejects": [
+     {
+      "lessonRef": "8.8",
+      "video": "cickRHnPKvc",
+      "spec": "4.16",
+      "reason": "Video identity conflict: the video's own official title is 'How Humans Reduce Biodiversity', which does not support the sewage/eutrophication clause of spec 4.16 (draft evidence itself noted 'sewage specifically not covered'). Owner adopted the caption-validation recommendation; binding removed from the shipped map and spec 4.16 falls back to the honest no-video list.",
+      "lane": "T-VIDEOMAP-P2"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels",
+    "task": "T-VIDEOMAP-P2B",
+    "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-09T06:10:24Z",
+    "evidenceBasis": "yt-dlp flat channel enumeration + oEmbed/thumbnail identity (title-only posture; no high rows possible). Self-review standard applied: medium kept when the video title names the spec's distinctive topic (partial clause coverage acceptable where the clause is the standard body of that topic); low kept only where the partial support is genuine and inline, rejected where the evidence itself concedes the distinctive clause is not title-evidenced or the hit is keyword-adjacent. Spec 4.16 kept honestly unmapped, consistent with the owner's P2 ruling on the previous 4.16 binding (identity conflict).",
+    "rowsApproved": 25,
+    "rowsRejected": 3,
+    "rejects": [
+     {
+      "lessonRef": null,
+      "video": "1Z405uGDZGo",
+      "spec": "4.16",
+      "reason": "FSL 'Waste Management' — the sewage/eutrophication clause of 4.16 is not title-evidenced; the owner already rejected the previous 4.16 binding (cickRHnPKvc) on exactly this ground. Spec stays honestly unmapped.",
+      "lane": "T-VIDEOMAP-P2B"
+     },
+     {
+      "lessonRef": null,
+      "video": "RNLceVI8jcc",
+      "spec": "2.89",
+      "reason": "Amoeba 'Nervous System' is a generic survey title; 'neurotransmitters at synapses' (2.89) is not title-evidenced — the evidence field itself concedes 'likely covered'. Fails the title-only bar.",
+      "lane": "T-VIDEOMAP-P2B"
+     },
+     {
+      "lessonRef": null,
+      "video": "DGpPHrLF-5M",
+      "spec": "2.55B",
+      "reason": "Amoeba '(OLD VIDEO) Plant Structure and Adaptations' — root-hair water absorption (2.55B) not title-evidenced, video marked OLD by the channel. Keyword-adjacent hit.",
+      "lane": "T-VIDEOMAP-P2B"
+     }
+    ]
+   }
+  ],
+  "selfReviewNote": "External lane adjudicated by delegated self-review per owner chat 2026-11-09 ('For now, approve and review yourself'); site-lane rulings unchanged from the owner's P2 chat ruling."
  },
  "videos": [
   {
@@ -901,6 +983,381 @@
    "durationS": null,
    "guestVisible": true,
    "subelementOfPrimary": false
+  },
+  {
+   "id": "Lomr_t5Pdjs",
+   "title": "GCSE Biology Revision \"Inheritance of Sex\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Lomr_t5Pdjs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE biology",
+   "durationS": 144,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "vWZWPlFmua4",
+   "title": "GCSE Biology Revision The Nitrogen Cycle (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=vWZWPlFmua4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE biology",
+   "durationS": 282,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "QekStThHD2M",
+   "title": "GCSE Biology Revision \"Cloning Plants\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=QekStThHD2M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel (Triple); cloning content generic",
+   "durationS": 175,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "hNq-y2Kg5CE",
+   "title": "GCSE Biology Revision \"Cloning Animals\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=hNq-y2Kg5CE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel (Triple); adult-cell cloning generic",
+   "durationS": 209,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "nrbJl3R4YJU",
+   "title": "GCSE Biology Revision \"Modern Farming Methods\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=nrbJl3R4YJU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel (Triple); farming methods generic",
+   "durationS": 264,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "u59Eg1uNr5g",
+   "title": "GCSE Biology Revision \"Sustainable Fisheries\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=u59Eg1uNr5g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel (Triple); fish farming generic",
+   "durationS": 153,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "DbLVB_EDnRs",
+   "title": "GCSE Biology Revision \"The Kidneys\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=DbLVB_EDnRs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel (Triple); kidney/urine generic",
+   "durationS": 326,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "kmRh_yRbAR4",
+   "title": "GCSE Biology Revision \"Maintaining the Body's Water Balance\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=kmRh_yRbAR4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel (Triple); ADH/water balance generic",
+   "durationS": 336,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "iXswGsfeHJg",
+   "title": "GCSE Biology Revision \"The Menstrual Cycle\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=iXswGsfeHJg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; menstrual hormones generic",
+   "durationS": 307,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "yLHz2Ea10Mg",
+   "title": "GCSE Biology Revision \"Required Practical 9: Sampling Organisms\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=yLHz2Ea10Mg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; RP9 quadrats/transects generic",
+   "durationS": 274,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "1Z405uGDZGo",
+   "title": "GCSE Biology Revision \"Waste Management\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=1Z405uGDZGo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; waste/pollution generic",
+   "durationS": 179,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "9yTDokLRZs0",
+   "title": "GCSE Biology Revision \"Transpiration\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=9yTDokLRZs0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; transpiration stream generic",
+   "durationS": 235,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "gu9T91GJXDo",
+   "title": "GCSE Biology Revision \"Genetic Engineering\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=gu9T91GJXDo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; genetic engineering generic",
+   "durationS": 240,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "1Dx7LDwINLU",
+   "title": "Biomolecules (Updated 2023)",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=1Dx7LDwINLU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; NGSS vocabulary, concept animations",
+   "durationS": 469,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "ALFE2tNIY5c",
+   "title": "Dehydration Synthesis and Hydrolysis",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=ALFE2tNIY5c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; NGSS vocabulary, concept animations",
+   "durationS": 368,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "NHqEthRCqQ4",
+   "title": "Carbon and Nitrogen Cycles",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=NHqEthRCqQ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; NGSS vocabulary, concept animations",
+   "durationS": 476,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "QMBGMUgAqCs",
+   "title": "Angiosperm (Flowering Plants) Reproduction UPDATED",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=QMBGMUgAqCs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; NGSS vocabulary, concept animations",
+   "durationS": 496,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "YbdkbCU20_M",
+   "title": "Fermentation",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=YbdkbCU20_M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; NGSS vocabulary, concept animations",
+   "durationS": 514,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "YJHGfbW55l0",
+   "title": "Incomplete Dominance, Codominance, Polygenic Traits, and Epistasis!",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=YJHGfbW55l0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; non-Mendelian genetics, US scope",
+   "durationS": 432,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "CDw4WPng2iE",
+   "title": "Genetic Engineering",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=CDw4WPng2iE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; NGSS vocabulary, concept animations",
+   "durationS": 505,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "RNLceVI8jcc",
+   "title": "Nervous System",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=RNLceVI8jcc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; neuron/synapse intro, US scope",
+   "durationS": 692,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "DGpPHrLF-5M",
+   "title": "(OLD VIDEO) Plant Structure and Adaptations",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=DGpPHrLF-5M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; 2016 'OLD VIDEO' — superseded style",
+   "durationS": 507,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "UrTchvRUMW0",
+   "title": "KS3 Biology - Exercise, Smoking & Asthma",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=UrTchvRUMW0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ks3",
+   "boardNote": "Cognito's own channel, KS3 tier — below IGCSE level",
+   "durationS": 300,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "als-gv_D7bc",
+   "title": "KS3 Biology - Human Reproductive Systems",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=als-gv_D7bc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ks3",
+   "boardNote": "Cognito's own channel, KS3 tier — below IGCSE level",
+   "durationS": 318,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "BIf0sIKQm_E",
+   "title": "KS3 Biology - Fertilisation & Pregnancy",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=BIf0sIKQm_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ks3",
+   "boardNote": "Cognito's own channel, KS3 tier — below IGCSE level",
+   "durationS": 338,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
   }
  ],
  "mappings": [
@@ -2417,20 +2874,401 @@
    "reviewer": "owner (chat ruling 2026-11-01)",
    "reviewedUtc": "2026-10-31T17:45:00Z",
    "boardMismatch": false
+  },
+  {
+   "video": "Lomr_t5Pdjs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.26",
+    "3.27"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Inheritance of Sex' = the XX/XY sex-chromosome determination of 3.26 and the genetic-diagram offspring sex of 3.27; clause detail title-only (unverified)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "vWZWPlFmua4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.11B"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Nitrogen Cycle' names the exact process of 4.11B; bacterial roles (fixing/nitrifying/denitrifying) not title-evidenced",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "QekStThHD2M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Cloning Plants' covers the artificial methods clause (cuttings/tissue culture); natural runners clause not title-evidenced",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "QekStThHD2M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.17B",
+    "5.18B"
+   ],
+   "confidence": "medium",
+   "evidence": "AQA 'Cloning Plants' includes tissue culture = micropropagation of 5.17B and commercial-quantity identical plants of 5.18B; explant/in-vitro detail title-only",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "hNq-y2Kg5CE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.19B"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Cloning Animals' = AQA adult-cell cloning = the diploid-nucleus-transfer stages of 5.19B; enucleated-egg/electric-stimulus clauses title-only",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "nrbJl3R4YJU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1",
+    "5.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Modern Farming Methods' covers glasshouse/polytunnel yield methods (5.1) and CO2/temperature management (5.2); clause coverage title-only",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "nrbJl3R4YJU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.3",
+    "5.4"
+   ],
+   "confidence": "medium",
+   "evidence": "same title covers fertiliser use (5.3) and pest control incl. pesticides vs biological (5.4); pros/cons detail title-only",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "u59Eg1uNr5g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.9B"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Sustainable Fisheries' covers fish-farming methods = 5.9B (maintaining water quality/feeding); intraspecific-predation control clause title-only",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "DbLVB_EDnRs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.79B"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Kidneys' covers urine production = water/urea/ions composition of 2.79B; the three-component clause itself title-only",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "kmRh_yRbAR4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.95B"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Maintaining the Body's Water Balance' = the ADH clause of 2.95B (source/role/effects); FSH/LH clauses are separate row (iXswGsfeHJg)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "iXswGsfeHJg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.95B"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Menstrual Cycle' = FSH and LH roles of 2.95B; pituitary source + effects detail title-only; ADH clause separate row (kmRh_yRbAR4)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "yLHz2Ea10Mg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4B"
+   ],
+   "confidence": "medium",
+   "evidence": "AQA 'Required Practical 9: Sampling Organisms' = quadrats/transects for distribution (4.4B); biodiversity measurement clause title-only",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "RhMOCxXcDrQ",
+   "lessonRef": "10.13",
+   "lessonUrl": "https://cognitoedu.org/courses/gcse/biology-triple/iedexcel/notes/S0NkdUJaRWg/10.13-field-sampling-with-quadrats",
+   "specs": [
+    "4.4B"
+   ],
+   "confidence": "medium",
+   "evidence": "already-mapped Malmesbury quadrats practical (committed 4.2 binding) — distribution-by-quadrat content directly serves 4.4B; second binding of a vetted video",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true,
+   "note": "extension of an already-committed video (existing 4.2 binding); no new video row"
+  },
+  {
+   "video": "1Dx7LDwINLU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Biomolecules' = elements/structure of carbohydrates, proteins, lipids (2.7); per-molecule element lists title-only; US channel",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ALFE2tNIY5c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Dehydration Synthesis and Hydrolysis' = large molecules built from smaller units (2.8); monomer-per-polymer naming title-only; US channel",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "NHqEthRCqQ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.11B"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Carbon and Nitrogen Cycles' includes the 4.11B nitrogen cycle; alternative to vWZWPlFmua4 — pick one; bacterial roles title-only; US channel",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "QMBGMUgAqCs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Angiosperm (Flowering Plants) Reproduction' covers pollen tube, fertilisation, seed and fruit formation (3.4); clause order title-only; US channel",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "YbdkbCU20_M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Fermentation' = yeast anaerobic respiration incl. bread/food production (5.5); yoghurt is bacterial (separate spec 5.7) — not title-evidenced here; US channel",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "YJHGfbW55l0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.21B"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 'Codominance' = the definition-and-crosses of 3.21B; US non-Mendelian framing, content on-point",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "9yTDokLRZs0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.58B"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Transpiration' covers the process; the 2.58B practical clause (potometer/environmental factors) is not title-evidenced — the video may be concept-only",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "gu9T91GJXDo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.20B"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Genetic Engineering' covers transgenic organisms but 5.20B is specifically cloned TRANSGENIC ANIMALS producing human proteins — animal example clause title-only",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CDw4WPng2iE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.20B"
+   ],
+   "confidence": "low",
+   "evidence": "US 'Genetic Engineering' covers transgenic organisms incl. animals conceptually; cloned-transgenic-animal protein-production clause title-only",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "UrTchvRUMW0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.49"
+   ],
+   "confidence": "low",
+   "evidence": "Cognito's own channel, KS3 tier: title names Smoking = 2.49 topic, but video is below IGCSE level; lungs/circulatory clause detail unverified; only smoking candidate found",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "als-gv_D7bc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.8"
+   ],
+   "confidence": "low",
+   "evidence": "Cognito KS3 tier: title 'Human Reproductive Systems' = the structure/function of 3.8, but below IGCSE level; adaptation language unverified",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "BIf0sIKQm_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.11",
+    "3.12"
+   ],
+   "confidence": "low",
+   "evidence": "Cognito KS3 tier: title 'Fertilisation & Pregnancy' covers placenta nutrition (3.11) and amniotic protection (3.12) contextually, below IGCSE level; clause detail unverified",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 176,
-  "specPointsMapped": 136,
-  "specPointsUnmapped": 40,
-  "videosTotal": 73,
-  "videosMapped": 72,
-  "videosUnmapped": 1,
-  "mappingRows": 104,
+  "specPointsMapped": 162,
+  "specPointsUnmapped": 14,
+  "videosTotal": 98,
+  "videosMapped": 94,
+  "videosUnmapped": 4,
+  "mappingRows": 129,
   "byConfidence": {
    "high": 73,
-   "medium": 30,
-   "low": 1
+   "medium": 49,
+   "low": 7
   }
  },
  "inputs": {
@@ -2440,10 +3278,10 @@
   },
   "draft": {
    "repo": "SyllabAI/syllabai-resources",
-   "path": "Videos/drafts/igcse-biology-19/video-map.draft.json",
-   "task": "T-VIDEOMAP-P2",
-   "reviewAppliedUtc": "2026-10-31T17:45:00Z"
+   "path": "Videos/drafts/igcse-biology-19/video-map.draft.external.json",
+   "task": "T-VIDEOMAP-P2B",
+   "reviewAppliedUtc": "2026-11-09T06:10:24Z"
   }
  },
- "generatedUtc": "2026-10-31T17:50:11.883Z"
+ "generatedUtc": "2026-11-09T06:12:44.927Z"
 }

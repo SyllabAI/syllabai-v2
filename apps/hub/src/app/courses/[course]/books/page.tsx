@@ -279,7 +279,7 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
                         </Link>
                       )}
                     </div>
-                    <div className="shrink-0 text-right text-[11px] leading-tight text-muted-foreground">
+                    <div className="shrink-0 text-right text-2xs leading-tight text-muted-foreground">
                       {unitExam.pdfRange[1] !== unitExam.pdfRange[0]
                         ? `pp ${unitExam.pdfRange[0]}–${unitExam.pdfRange[1]}`
                         : `p ${unitExam.pdfRange[0]}`}
@@ -330,7 +330,7 @@ function PageRangeBadge({ ch }: { ch: BookChapter }) {
         : `SB p.${ch.bookPageStart}`
       : null;
   return (
-    <div className="shrink-0 text-right text-[11px] leading-tight text-muted-foreground">
+    <div className="shrink-0 text-right text-2xs leading-tight text-muted-foreground">
       <div>{pdf}</div>
       {sb && <div>{sb}</div>}
     </div>

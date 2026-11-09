@@ -89,7 +89,7 @@ export function TeachGenieLanding({
           </div>
         </div>
         <BabyGenieAvatar size={180} />
-        <h2 className="mt-6 text-balance text-3xl font-extrabold tracking-tight text-foreground">Learn by Teaching</h2>
+        <h2 className="mt-6 text-balance text-3xl font-bold tracking-tight text-foreground">Learn by Teaching</h2>
         <p className="mt-3 text-balance text-base font-normal text-muted-foreground">
           Review a concept by teaching it to SillyAI.
           <br />
@@ -183,7 +183,7 @@ export function TeachGenieLanding({
         </section>
       )}
 
-      <p className="text-center text-[11px] leading-relaxed text-muted-foreground">
+      <p className="text-center text-2xs leading-relaxed text-muted-foreground">
         What you cover is saved as an AI_SUGGESTED suggestion your teacher can ratify — the end-of-session review
         is the correction of record, so read it even when everything ticks green.
       </p>

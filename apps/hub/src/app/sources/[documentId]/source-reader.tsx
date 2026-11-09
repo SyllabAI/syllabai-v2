@@ -197,8 +197,12 @@ function SourceReaderInner() {
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-10">
       {state.status === "loading" && (
-        <div className="flex min-h-[40vh] items-center justify-center" aria-hidden>
-          <Loader2 className="size-5 animate-spin text-muted-foreground" />
+        <div className="min-h-[40vh] space-y-3 pt-2" role="status" aria-label="Loading document">
+          {/* run-006 (P5): the document surface loads as a prose skeleton. */}
+          <div className="h-8 w-72 max-w-full animate-pulse rounded-md bg-muted motion-reduce:animate-none" aria-hidden />
+          {["w-full", "w-full", "w-11/12", "w-full", "w-10/12", "w-9/12"].map((w, i) => (
+            <div key={i} className={`h-4 animate-pulse rounded-md bg-muted motion-reduce:animate-none ${w}`} aria-hidden />
+          ))}
         </div>
       )}
 
@@ -235,7 +239,7 @@ function SourceReaderInner() {
       {state.status === "ready" && !pending && !openingHref && (
         <>
           <div className="mb-6 space-y-1.5">
-            <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+            <p className="flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
               <FileText className="size-3.5 shrink-0" aria-hidden />
               Source · {kindLabel(state.doc.kind)}
             </p>
@@ -246,7 +250,7 @@ function SourceReaderInner() {
           </div>
 
           {paperLinkHref && (
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-md border border-primary/20 bg-primary/5 px-3 py-2.5">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-md border border-primary/30 bg-primary/5 px-3 py-2.5">
               <p className="text-xs text-muted-foreground">
                 This text was parsed from the real{" "}
                 {state.doc.paper?.role === "MS" ? "mark scheme" : "question paper"}.

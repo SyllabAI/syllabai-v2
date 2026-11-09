@@ -58,13 +58,13 @@ export default async function SenecaPage({
       {/* t-ui-polish run-004: hero→body joins sit at mt-6 across the 16
           CourseHeader surfaces — this row was the mt-5 outlier. */}
       <div className="mt-6 flex flex-wrap items-center gap-2">
-        <Badge variant="outline" className="border-muted-foreground/30 text-[10px] text-muted-foreground">
+        <Badge variant="outline" className="border-muted-foreground/30 text-2xs text-muted-foreground">
           Imported from Seneca
         </Badge>
-        <Badge variant="secondary" className="text-[10px]">
+        <Badge variant="secondary" className="text-2xs">
           {sections.toLocaleString()} lessons
         </Badge>
-        <Badge variant="secondary" className="text-[10px]">
+        <Badge variant="secondary" className="text-2xs">
           {questions.toLocaleString()} exam questions
         </Badge>
         <p className="w-full max-w-3xl text-xs leading-relaxed text-muted-foreground">

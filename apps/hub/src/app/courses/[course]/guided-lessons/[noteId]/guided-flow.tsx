@@ -542,7 +542,7 @@ export function GuidedLessonFlow({
                       >
                         <span
                           className={cn(
-                            "flex size-6 shrink-0 items-center justify-center rounded-full border text-[11px] font-semibold",
+                            "flex size-6 shrink-0 items-center justify-center rounded-full border text-2xs font-semibold",
                             done && "border-success/50 bg-success/10 text-success",
                             !done && active && "border-primary/60 text-primary",
                             !done && !active && "text-muted-foreground",
@@ -552,7 +552,7 @@ export function GuidedLessonFlow({
                           {done ? <Check className="size-3.5" /> : mi + 1}
                         </span>
                         <span className="min-w-0 flex-1">
-                          <span className="block text-[13px] font-medium">{mod.title}</span>
+                          <span className="block text-xs font-medium">{mod.title}</span>
                           <span className="block truncate text-xs text-muted-foreground">{mod.opening}</span>
                         </span>
                         <span className="shrink-0 text-xs font-medium text-muted-foreground">
@@ -584,7 +584,7 @@ export function GuidedLessonFlow({
                 className="flex w-full flex-wrap items-center justify-between gap-2 rounded-md text-left transition-colors hover:text-foreground"
               >
                 <span className="min-w-0">
-                  <span className="block text-[13px] font-semibold">Guided lessons for this note</span>
+                  <span className="block text-xs font-semibold">Guided lessons for this note</span>
                   <span className="block truncate text-xs text-muted-foreground">
                     Lesson {moduleIndex + 1} of {modules.length} — {m.title}
                   </span>
@@ -713,13 +713,13 @@ function GateStage(p: StageProps) {
             Lesson {moduleOrdinal + 1} of {p.moduleCount}
           </p>
           <h2 className="text-lg font-semibold tracking-tight">{m.title}</h2>
-          <p className="text-[13px] leading-relaxed text-muted-foreground">{m.opening}</p>
+          <p className="text-xs leading-relaxed text-muted-foreground">{m.opening}</p>
         </div>
 
         <div className="space-y-2">
           <p className="text-sm font-medium">What you know already</p>
           {moduleOrdinal === 0 ? (
-            <p className="text-[13px] leading-relaxed text-muted-foreground">
+            <p className="text-xs leading-relaxed text-muted-foreground">
               {lesson.lesson.primer.text}
             </p>
           ) : (
@@ -730,7 +730,7 @@ function GateStage(p: StageProps) {
                 </p>
                 <ul className="space-y-1.5">
                   {prevKeyPoints.map((kp, i) => (
-                    <li key={i} className="flex gap-2.5 text-[13px] leading-relaxed">
+                    <li key={i} className="flex gap-2.5 text-xs leading-relaxed">
                       <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/60" aria-hidden />
                       <span>{kp}</span>
                     </li>
@@ -755,7 +755,7 @@ function GateStage(p: StageProps) {
           <p className="text-sm font-medium">Key points of understanding</p>
           <ul className="space-y-1.5">
             {m.keyPoints.map((kp, i) => (
-              <li key={i} className="flex gap-2.5 text-[13px] leading-relaxed">
+              <li key={i} className="flex gap-2.5 text-xs leading-relaxed">
                 <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/60" aria-hidden />
                 <span>{kp}</span>
               </li>
@@ -794,7 +794,7 @@ function GateStage(p: StageProps) {
                   {isSelected && <span className="size-2 rounded-full bg-primary" />}
                 </span>
                 <span>
-                  <span className="block text-[13px] font-medium">
+                  <span className="block text-xs font-medium">
                     {RATING_LABEL[r]}
                     {written && isSelected && (
                       <span className="ml-2 text-xs font-normal text-muted-foreground">
@@ -847,7 +847,7 @@ function ModuleFigures({ figures }: { figures: GuidedFigure[] }) {
           </span>
           {f.caption && (
             <figcaption className="space-y-0.5">
-              <p className="text-[13px] leading-relaxed">{f.caption}</p>
+              <p className="text-xs leading-relaxed">{f.caption}</p>
             </figcaption>
           )}
         </figure>
@@ -865,7 +865,7 @@ function LayerStage(p: StageProps & { stage: Extract<Stage, { kind: "layer" }> }
       <CardContent className="space-y-4 p-4 sm:p-5">
         <div className="flex items-center justify-between">
           <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{stage.label}</p>
-          <Badge variant="secondary" className="text-[11px]">
+          <Badge variant="secondary" className="text-2xs">
             Layer {stage.i + 1} of {stage.n}
           </Badge>
         </div>
@@ -886,13 +886,13 @@ function RefresherStage(p: StageProps) {
       <CardContent className="space-y-4 p-4 sm:p-5">
         <div className="space-y-1">
           <p className="text-sm font-semibold">Straight to the checks</p>
-          <p className="text-[13px] text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             You rated yourself confident — so no walkthrough layers. If anything feels shaky, the
             refresher below unpacks it in plain words first.
           </p>
         </div>
         <details className="rounded-md border px-3 py-2.5">
-          <summary className="cursor-pointer text-[13px] font-medium">Refresher — the plain-words layers</summary>
+          <summary className="cursor-pointer text-xs font-medium">Refresher — the plain-words layers</summary>
           <div className="mt-3 space-y-3">
             <LayerBlock label="In plain words" text={m.depthLayers.low.restatement} />
             <LayerBlock label="Think of it like this" text={m.depthLayers.low.analogy} />
@@ -913,7 +913,7 @@ function LayerBlock({ label, text }: { label: string; text: string }) {
   return (
     <div>
       <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{label}</p>
-      <p className="mt-1 text-[13px] leading-relaxed">{text}</p>
+      <p className="mt-1 text-xs leading-relaxed">{text}</p>
     </div>
   );
 }
@@ -926,12 +926,12 @@ function GlossaryStage(p: StageProps) {
       <CardContent className="space-y-4 p-4 sm:p-5">
         <div className="space-y-1">
           <p className="text-sm font-semibold">Helpful terms</p>
-          <p className="text-[13px] text-muted-foreground">The vocabulary this lesson leans on.</p>
+          <p className="text-xs text-muted-foreground">The vocabulary this lesson leans on.</p>
         </div>
         <dl className="grid gap-3 sm:grid-cols-2">
           {terms.map((g) => (
             <div key={g.term} className="rounded-md border p-3">
-              <dt className="text-[13px] font-semibold">{g.term}</dt>
+              <dt className="text-xs font-semibold">{g.term}</dt>
               <dd className="mt-1 text-xs leading-relaxed text-muted-foreground">{g.definition}</dd>
             </div>
           ))}
@@ -956,13 +956,13 @@ function ExampleStage(p: StageProps) {
           <Lightbulb className="size-4 text-primary" aria-hidden />
           An example
         </p>
-        <p className="text-[13px] font-medium leading-relaxed">{we.prompt}</p>
-        <ol className="list-decimal space-y-1.5 pl-5 text-[13px] leading-relaxed text-muted-foreground">
+        <p className="text-xs font-medium leading-relaxed">{we.prompt}</p>
+        <ol className="list-decimal space-y-1.5 pl-5 text-xs leading-relaxed text-muted-foreground">
           {we.steps.map((s, i) => (
             <li key={i}>{s}</li>
           ))}
         </ol>
-        <p className="rounded-md bg-muted px-3 py-2 text-[13px] font-medium">{we.finalAnswer}</p>
+        <p className="rounded-md bg-muted px-3 py-2 text-xs font-medium">{we.finalAnswer}</p>
         <Button onClick={onNext} className="w-full sm:w-auto">
           Continue to the checks
           <ArrowRight className="size-4" aria-hidden />
@@ -996,7 +996,7 @@ function CheckStage(p: StageProps) {
             <ListChecks className="size-4 text-primary" aria-hidden />
             Understanding check
           </p>
-          <Badge variant="secondary" className="text-[11px]">
+          <Badge variant="secondary" className="text-2xs">
             Question {clampedQi + 1} of {questions.length}
           </Badge>
         </div>
@@ -1054,7 +1054,7 @@ function RecalibrateStage(p: StageProps) {
       <CardContent className="space-y-4 p-4 sm:p-5">
         <div className="space-y-1">
           <p className="text-sm font-semibold">How confident do you feel now?</p>
-          <p className="text-[13px] text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             You got {answered} of {m.checkRefs.length} checks correct. Re-rate for next time —
             we&apos;ll pre-select this as your starting confidence for the next lesson. You can
             always change it there.
@@ -1086,7 +1086,7 @@ function RecalibrateStage(p: StageProps) {
               >
                 {choice === r && <span className="size-2 rounded-full bg-primary" />}
               </span>
-              <span className="text-[13px] font-medium">{RATING_LABEL[r]}</span>
+              <span className="text-xs font-medium">{RATING_LABEL[r]}</span>
             </button>
           ))}
         </fieldset>
@@ -1117,7 +1117,7 @@ function RecalibrateStage(p: StageProps) {
             <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               Keep going
             </p>
-            <p className="text-[13px] text-muted-foreground">
+            <p className="text-xs text-muted-foreground">
               Done with this guided lesson? Try this topic&apos;s practice before the next one.
             </p>
             <div className="flex flex-wrap gap-2">
@@ -1145,7 +1145,7 @@ function RecalibrateStage(p: StageProps) {
  */
 function TrajectoryChip({ from, to }: { from: Rating; to?: Rating }) {
   return (
-    <span className="inline-flex items-center gap-1 rounded-full border bg-muted/40 px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
+    <span className="inline-flex items-center gap-1 rounded-full border bg-muted/40 px-2 py-0.5 text-2xs font-medium text-muted-foreground">
       Started {RATING_LABEL[from]}
       {to && (
         <>
@@ -1191,7 +1191,7 @@ function CheckQuestion({
         </p>
         {gradable && (
           <div className="grid gap-1.5">
-            <label htmlFor={`flow-written-${question.id.replace(/[^a-z0-9]/gi, "-")}`} className="text-[13px] font-medium">
+            <label htmlFor={`flow-written-${question.id.replace(/[^a-z0-9]/gi, "-")}`} className="text-xs font-medium">
               Your answer
             </label>
             <textarea
@@ -1201,7 +1201,7 @@ function CheckQuestion({
               disabled={settled}
               rows={2}
               className={cn(
-                "min-h-[56px] w-full rounded-md border bg-transparent px-3 py-2 text-[13px] leading-relaxed",
+                "min-h-[56px] w-full rounded-md border bg-transparent px-3 py-2 text-xs leading-relaxed",
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
                 "disabled:cursor-default disabled:opacity-70",
               )}
@@ -1233,19 +1233,19 @@ function CheckQuestion({
           <div className="space-y-2" role="status">
             {gradable &&
               (answered.correct ? (
-                <p className="flex items-center gap-2 text-[13px] font-semibold text-success">
+                <p className="flex items-center gap-2 text-xs font-semibold text-success">
                   <ThumbsUp className="size-4" aria-hidden />
                   Great job!
                 </p>
               ) : (
-                <p className="text-[13px] font-semibold text-destructive">Not quite.</p>
+                <p className="text-xs font-semibold text-destructive">Not quite.</p>
               ))}
             {modelAnswer ? (
-              <p className="text-[13px] leading-relaxed text-muted-foreground">
+              <p className="text-xs leading-relaxed text-muted-foreground">
                 Model answer: <span className="font-medium text-foreground">{modelAnswer}</span>
               </p>
             ) : (
-              <p className="text-[13px] text-muted-foreground">Model answer unavailable for this item.</p>
+              <p className="text-xs text-muted-foreground">Model answer unavailable for this item.</p>
             )}
           </div>
         )}
@@ -1283,7 +1283,7 @@ function CheckQuestion({
               disabled={settled}
               onClick={() => setPicked(o.key)}
               className={cn(
-                "flex items-start gap-3 rounded-md border px-3 py-2.5 text-left text-[13px] transition-colors",
+                "flex items-start gap-3 rounded-md border px-3 py-2.5 text-left text-xs transition-colors",
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
                 // t-ui-polish run-007: the idle hover speaks the house voice,
                 // matching the picked state's border-primary/60 below.
@@ -1296,7 +1296,7 @@ function CheckQuestion({
             >
               <span
                 className={cn(
-                  "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border text-[11px] font-semibold",
+                  "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border text-2xs font-semibold",
                   state === "correct" && "border-success/60 text-success",
                   state === "wrong" && "border-destructive/60 text-destructive-ink",
                   (state === "idle" || state === "picked") && "text-muted-foreground",
@@ -1327,16 +1327,16 @@ function CheckQuestion({
       {settled && answered && (
         <div className="space-y-2" role="status">
           {answered.correct ? (
-            <p className="flex items-center gap-2 text-[13px] font-semibold text-success">
+            <p className="flex items-center gap-2 text-xs font-semibold text-success">
               <ThumbsUp className="size-4" aria-hidden />
               Great job!
             </p>
           ) : (
-            <p className="text-[13px] font-semibold text-destructive">
+            <p className="text-xs font-semibold text-destructive">
               Not quite — the answer is {correctOption?.key}.
             </p>
           )}
-          <p className="text-[13px] leading-relaxed text-muted-foreground">{correctOption?.explanation}</p>
+          <p className="text-xs leading-relaxed text-muted-foreground">{correctOption?.explanation}</p>
           {!answered.correct && pickedOption?.misconception && (
             <p className="text-xs text-muted-foreground">Misconception flagged: {pickedOption.misconception}</p>
           )}
@@ -1384,7 +1384,7 @@ function FinishedView({
             Lesson set complete
           </p>
           <h2 className="text-lg font-semibold tracking-tight">{noteTitle}</h2>
-          <p className="text-[13px] text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             You worked through all {modules.length} lessons — {totalCorrect} of {totalChecks} checks
             correct across the set.
           </p>
@@ -1398,7 +1398,7 @@ function FinishedView({
               <li key={mod.id} className="flex items-center gap-3 rounded-md border px-3 py-2.5">
                 <Check className="size-4 shrink-0 text-success" aria-hidden />
                 <span className="min-w-0 flex-1">
-                  <span className="block text-[13px] font-medium">{mod.title}</span>
+                  <span className="block text-xs font-medium">{mod.title}</span>
                   {/* R-6: the confidence trajectory this lesson actually had */}
                   {walkedIn && (
                     <span className="mt-1 block">
@@ -1424,7 +1424,7 @@ function FinishedView({
         <div className="space-y-2 border-t pt-4">
           <p className="text-sm font-semibold">Was this guided lesson helpful?</p>
           {state.feedback ? (
-            <p className="text-[13px] text-muted-foreground" role="status">
+            <p className="text-xs text-muted-foreground" role="status">
               {state.feedback === "up"
                 ? "Thanks — glad it helped. Your answer stays on this device."
                 : "Thanks — noted. Your answer stays on this device."}
@@ -1655,7 +1655,7 @@ function MixedPractice({
           <Sparkles className="size-4 text-primary" aria-hidden />
           Go further — mixed practice
         </p>
-        <Badge variant="secondary" className="text-[11px]">
+        <Badge variant="secondary" className="text-2xs">
           Item {Math.min(pi + 1, items.length)} of {items.length}
         </Badge>
       </div>
@@ -1666,7 +1666,7 @@ function MixedPractice({
 
       {marked ? (
         <div className="space-y-3" role="status">
-          <p className="text-[13px] font-medium">
+          <p className="text-xs font-medium">
             {marked === "hit" ? "Nice — noted for you." : "Fair enough — the model answer is above."}
           </p>
           {pi < items.length - 1 ? (
@@ -1675,7 +1675,7 @@ function MixedPractice({
               <ArrowRight className="size-4" aria-hidden />
             </Button>
           ) : (
-            <p className="text-[13px] font-medium text-success">
+            <p className="text-xs font-medium text-success">
               Mixed practice done — nice work.
             </p>
           )}
@@ -1709,7 +1709,7 @@ function MixedPractice({
               {auto !== null && (
                 <p
                   className={cn(
-                    "text-[13px] font-medium",
+                    "text-xs font-medium",
                     auto
                       ? "text-success"
                       : "text-warn",
@@ -1723,7 +1723,7 @@ function MixedPractice({
                   </span>
                 </p>
               )}
-              <p className="text-[13px] leading-relaxed text-muted-foreground">
+              <p className="text-xs leading-relaxed text-muted-foreground">
                 <span className="font-semibold text-foreground">Model answer: </span>
                 {item.model}
               </p>

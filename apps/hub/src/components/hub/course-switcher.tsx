@@ -86,7 +86,7 @@ export function CourseSwitcher({
         >
           <Check className={cn("size-4", active ? "opacity-100" : "opacity-0")} aria-hidden />
           <span className="min-w-0 flex-1 truncate">{c.label}</span>
-          <span className="shrink-0 text-[11px] text-muted-foreground">
+          <span className="shrink-0 text-2xs text-muted-foreground">
             {[boardShort(c.board), c.level].filter(Boolean).join(" · ")}
           </span>
         </Link>
